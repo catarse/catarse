@@ -161,3 +161,4 @@
             = t('.funding_period')
           p.body-medium
             = "#{@project.display_online_date} - #{@project.display_expires_at}  (#{t('datetime.distance_in_words.x_days', count: @project.online_days)})"
+= render 'shared/footer_big'

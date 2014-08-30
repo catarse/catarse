@@ -1,11 +1,18 @@
-footer.w-hidden-small.w-hidden-tiny.footer-simple
+footer.footer-simple
   .w-container
     .footer-signature-text.caption #{CatarseSettings[:company_name]} #{Time.now.strftime("%Y")}
     ul.w-list-unstyled.footer-simple-links.caption
-      li.footer-simple-links-item = link_to t('layouts.footer.links.blog'), CatarseSettings[:blog_url], class: "link-footer"
-      li.footer-simple-links-item = link_to t('layouts.footer.links.discover'), explore_path, class: "link-footer"
-      li.footer-simple-links-item = link_to t('layouts.footer.links.start'), start_path, class: "link-footer"
-      li.footer-simple-links-item = link_to t('layouts.footer.links.faq'), CatarseSettings[:faq_url], class: "link-footer"
-      li.footer-simple-links-item = link_to t('layouts.footer.links.feedback'), CatarseSettings[:feedback_url], class: "link-footer"
-      li.footer-simple-links-item = link_to t('layouts.footer.links.terms'), terms_of_use_path, class: "link-footer"
-      li.footer-simple-links-item = link_to t('layouts.footer.links.privacy'), privacy_policy_path, class: "link-footer"
+      li.footer-simple-links-list
+        a.w-hidden-small.w-hidden-tiny.link-footer href="#{CatarseSettings[:blog_url]}" #{t('layouts.footer.links.blog')}
+      li.footer-simple-links-list
+        a.w-hidden-small.w-hidden-tiny.link-footer href="#{explore_path}"  #{t('layouts.footer.links.discover')}
+      li.footer-simple-links-list
+        a.w-hidden-small.w-hidden-tiny.link-footer href="#{start_path}"  #{t('layouts.footer.links.start')}
+      li.footer-simple-links-list
+        a.link-footer href="#{CatarseSettings[:faq_url]}"  #{t('layouts.footer.links.faq')}
+      li.footer-simple-links-list
+        a.link-footer href="#{CatarseSettings[:feedback_url]}"  #{t('layouts.footer.links.feedback')}
+      li.footer-simple-links-list
+        a.link-footer href="#{terms_of_use_path}"  #{t('layouts.footer.links.terms')}
+      li.footer-simple-links-list
+        a.link-footer href="#{privacy_policy_path}"  #{t('layouts.footer.links.privacy')}

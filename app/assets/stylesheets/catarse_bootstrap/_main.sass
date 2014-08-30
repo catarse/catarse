@@ -92,8 +92,6 @@ p
   color: rgba(241, 244, 244, 0.45)
 
 .h4-neg
-  font-size: 14px
-  line-height: 18px
   width: auto
   color: $gray-two
 
@@ -533,9 +531,12 @@ button
 
 // Footer -----------------------------------------------------------------------------------------
 .main-footer
-  padding: 35px 0
-  background: $gray-one
-  margin-top: 60px
+  position: static
+  top: 61px
+  margin-top: 0px
+  padding: 35px 0 35px 0
+  background-color: $gray-one
+  
   h4
     margin: 24px 0
     font-size: 16px
@@ -568,9 +569,47 @@ button
   .twitter-box
     margin-bottom: 20px
 
+.link-footer.link-footer-negative
+  color: rgba(241, 242, 243, 0.65)
+
+.main-footer.main-footer-neg
+  position: static
+  padding-bottom: 45px
+  background-color: $blue-one
+
+.text-field.form-footer
+  margin-bottom: 0px
+
+.twitter-follow-button
+  margin-top: 15px
+
+.button-news
+  position: relative
+  left: 183px
+  top: -37px
+  right: auto
+  display: block
+  overflow-x: visible
+  overflow-y: visible
+  width: 34px
+  height: 34px
+  border-radius: 4px
+  background-color: $blue-note
+
+.footer-full-signature-text
+  margin-bottom: 20px
+  color: white
+  font-weight: 600
+
+.footer-full-copyleft
+  margin-top: 30px
+  padding-top: 25px
+  border-top: 1px solid rgba(121, 128, 139, 0.76)
+  color: rgba(241, 244, 244, 0.54)
+
 .footer-simple
-  padding: 15px 0
-  background-color: $gray-one
+  padding: 15px 0 15px 0
+  background-color: $blue-one
 
 .footer-simple-links-item
   display: inline-block
@@ -581,6 +620,10 @@ button
   float: right
   text-align: left
 
+.footer-simple-links-list
+  display: inline-block
+  margin-right: 30px
+
 .footer-signature
   margin: 30px 0 0 0
   padding: 25px 0 0 0 
@@ -589,13 +632,16 @@ button
 
 .footer-signature-text
   display: inline-block
-  margin: 8px 0 0 0
+  margin-top: 8px
+  float: left
+  color: $gray-one
   font-weight: 600
 
 .link-footer
+  position: static
   display: block
-  padding: 7px 0
-  color: $blue_two
+  padding: 7px 0 7px 0
+  color: rgba(241, 244, 244, 0.54)
   text-decoration: none
   &:hover
     text-decoration: underline
@@ -604,7 +650,7 @@ button
 .page-header
   padding: 46px 0 54px
   margin-bottom: 4px
-  background-color: #3f4752
+  background-color: $blue-one
   h1
     color: $white
     text-align: center
@@ -1261,6 +1307,19 @@ button
     display: none
 
 @media screen and (max-width: 991px)
+  .footer-simple-links-list
+    margin-right: 20px
+
+  .footer-signature-text
+    float: left
+
+  .button-news
+    left: 130px
+    top: -37px
+
+  .main-footer.main-footer-neg
+    padding: 0 20px 0 20px
+
   .display-medium
     font-size: 34px
     line-height: 34px
@@ -1369,6 +1428,37 @@ button
     display: block
 
 @media screen and (max-width: 767px)
+  .footer-simple-links-list
+    display: inline-block
+
+  .footer-signature-text
+    float: left
+
+  .footer-simple
+    position: static
+    left: 0px
+    right: 0px
+    bottom: 0px
+    display: block
+
+  .footer-full-copyleft
+    text-align: center
+
+  .button-news
+    position: relative
+    left: 392px
+    top: -37px
+    right: auto
+    bottom: auto
+
+  .text-field.form-footer
+    width: 70%
+    margin-right: auto
+    margin-left: auto
+
+  .main-footer.main-footer-neg
+    padding: 0 20px 0 20px
+
   .display-small
     font-size: 20px
     line-height: 20px
@@ -1388,41 +1478,15 @@ button
 
   .project-about-mobile-back-link
     margin-bottom: 10px
-    text-align: left
 
   .main-footer.main-footer-neg
     padding: 0 9px 0 9px
     background-color: $blue-one
 
-  .link-footer.link-footer-negative
-    color: rgba(241, 242, 243, 0.65)
-    padding: 4px 0 4px 0
-    font-size: 12px
-
   .column-social-media-footer
     margin-bottom: 0px
     padding-top: 23px
     text-align: center
-
-  .text-field.form-footer
-    margin-right: auto
-    margin-left: auto
-    margin-bottom: 0px
-    width: 100%
-
-  .button-news
-    position: relative
-    right: auto
-    display: block
-    overflow-x: visible
-    overflow-y: visible
-    width: 34px
-    height: 34px
-    border-radius: 4px
-    background-color: $blue-note
-    bottom: auto
-    left: 87%
-    top: -37px
 
   .back-reward-button
     width: 40%
@@ -1515,6 +1579,59 @@ button
 
 
 @media screen and (max-width: 479px)
+  .footer-simple-links-list
+    display: block
+
+  .footer-simple-links
+    display: block
+    float: none
+
+  .footer-signature-text
+    display: block
+    margin-bottom: 10px
+    float: none
+
+  .column-social-media-footer
+    padding-top: 33px
+
+  .link-footer.link-footer-negative
+    padding: 4px 0 4px 0
+    font-size: 12px
+
+  .project-about-mobile-back-link
+    margin-bottom: 10px
+    text-align: left
+
+  .h4-neg
+    font-size: 14px
+    line-height: 18px
+
+  .button-news
+    left: 87%
+    top: -37px
+    right: 0px
+    bottom: 0px
+
+  .text-field.form-footer
+    width: 100%
+
+  .footer-full-lastcolumn
+    left: auto
+    margin-left: 21%
+
+  .footer-full-firstcolumn
+    margin-left: 5%
+
+  .link-footer
+    display: block
+    float: none
+
+  .footer-full-signature-text
+    margin-bottom: 10px
+
+  .main-footer.main-footer-neg
+    padding: 0 9px 0 9px
+
   .display-medium
     font-size: 20px
 
