@@ -36,27 +36,4 @@ describe ProjectPost do
     it{ should == "<p>this is a comment<br />\n<a href=\"http://vimeo.com/6944344\" target=\"_blank\">http://vimeo.com/6944344</a><br />\n<img src=\"http://catarse.me/assets/catarse/logo164x54.png\" alt=\"\" style=\"max-width:513px\" /></p>" }
   end
 
-  describe "#notify_contributors" do
-    before do
-      @project = create(:project)
-      contribution = create(:contribution, state: 'confirmed', project: @project)
-      create(:contribution, state: 'confirmed', project: @project, user: contribution.user)
-      @project.reload
-      ActionMailer::Base.deliveries = []
-      @post = ProjectPost.create!(user: @project.user, project: @project, title: "title", comment: "this is a comment\nhttp://vimeo.com/6944344\nhttp://catarse.me/assets/catarse/logo164x54.png")
-      ProjectPostNotification.should_receive(:notify_once).with(
-        :posts,
-        contribution.user,
-        @post,
-        {
-          from_email: @post.project.user.email,
-          from_name: @post.project.user.display_name
-        }
-      ).once.and_call_original
-    end
-
-    it 'should call Notification.notify once' do
-      @post.notify_contributors
-    end
-  end
 end
