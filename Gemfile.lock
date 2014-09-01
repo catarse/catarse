@@ -24,7 +24,7 @@ GIT
       nokogiri (>= 1.5.0)
 
 PATH
-  remote: ~/store/code/catarse_pagarme
+  remote: ~/code/catarse_pagarme
   specs:
     catarse_pagarme (0.0.1)
       pagarme (~> 1.9.4)
