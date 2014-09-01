@@ -43,41 +43,7 @@ Catarse::Application.routes.draw do
   mount CatarseCredits::Engine => "/", as: :catarse_credits
 #  mount CatarseWepay::Engine => "/", as: :catarse_wepay
 
-  # Channels
-  constraints subdomain: /^(?!www|secure|test|local|bootstrap)(\w+)/ do
-    namespace :channels, path: '' do
-
-      namespace :admin do
-        namespace :reports do
-          resources :subscriber_reports, only: [ :index ]
-        end
-        resources :posts
-        resources :partners
-        resources :followers, only: [ :index ]
-      end
-
-      resources :posts
-      get '/', to: 'profiles#show', as: :profile
-      get '/how-it-works', to: 'profiles#how_it_works', as: :about
-      resource :profile
-      # NOTE We use index instead of create to subscribe comming back from auth via GET
-      resource :channels_subscriber, only: [:show, :destroy], as: :subscriber
-    end
-  end
-
-  # Root path should be after channel constraints
-  root to: 'projects#index'
-
-  get "/explore" => "explore#index", as: :explore
-
-  namespace :reports do
-    resources :contribution_reports_for_project_owners, only: [:index]
-  end
-
-  # Feedback form
-  resources :feedbacks, only: [:create]
-
-  resources :projects, only: [:index, :create, :update, :new, :show] do
+resources :projects, only: [:index, :create, :update, :new, :show] do
     resources :posts, controller: 'projects/posts', only: [ :index, :create, :destroy ]
     resources :rewards, only: [ :index, :create, :update, :destroy, :new, :edit ] do
       member do
@@ -122,6 +88,45 @@ Catarse::Application.routes.draw do
     end
   end
 
+  get "/terms-of-use" => 'high_voltage/pages#show', id: 'terms_of_use'
+  get "/privacy-policy" => 'high_voltage/pages#show', id: 'privacy_policy'
+  get "/start" => 'high_voltage/pages#show', id: 'start'
+
+
+  # Channels
+  constraints SubdomainConstraint do
+    namespace :channels, path: '' do
+
+      namespace :admin do
+        namespace :reports do
+          resources :subscriber_reports, only: [ :index ]
+        end
+        resources :posts
+        resources :partners
+        resources :followers, only: [ :index ]
+      end
+
+      resources :posts
+      get '/', to: 'profiles#show', as: :profile
+      get '/how-it-works', to: 'profiles#how_it_works', as: :about
+      resource :profile
+      # NOTE We use index instead of create to subscribe comming back from auth via GET
+      resource :channels_subscriber, only: [:show, :destroy], as: :subscriber
+    end
+  end
+
+  # Root path should be after channel constraints
+  root to: 'projects#index'
+
+  get "/explore" => "explore#index", as: :explore
+
+  namespace :reports do
+    resources :contribution_reports_for_project_owners, only: [:index]
+  end
+
+  # Feedback form
+  resources :feedbacks, only: [:create]
+
   namespace :admin do
     resources :projects, only: [ :index, :update, :destroy ] do
       member do
@@ -153,8 +158,6 @@ Catarse::Application.routes.draw do
     end
   end
 
-  get "/terms-of-use" => 'high_voltage/pages#show', id: 'terms_of_use'
-  get "/privacy-policy" => 'high_voltage/pages#show', id: 'privacy_policy'
-  get "/start" => 'high_voltage/pages#show', id: 'start'
   get "/:permalink" => "projects#show", as: :project_by_slug
+
 end
