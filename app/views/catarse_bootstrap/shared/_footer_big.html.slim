@@ -1,23 +1,28 @@
-.footer.main-footer
+footer.main-footer.main-footer-neg
   .w-container
     .w-row
-      .w-col.w-col-3
-        = render 'shared/footer_welcome' 
-      .w-col.w-col-3
-        = render 'shared/footer_about' 
-      .w-col.w-col-3
-        = render 'shared/footer_navigate' 
-      .w-col.w-col-3
-        h4 = t('layouts.footer.titles.newsletter')
-        .newsletter-footer
-          = render 'layouts/newsletter'
-        h4 = t('layouts.footer.titles.social')
-        .twitter-box
+      .w-col.w-col-9
+        .w-row
+          .w-col.w-col-4.w-col-small-4.w-col-tiny-4.w-hidden-tiny
+            = render 'shared/footer_welcome'
+          .w-col.w-col-4.w-col-small-4.w-col-tiny-4.footer-full-firstcolumn
+            = render 'shared/footer_about'
+          .w-col.w-col-4.w-col-small-4.w-col-tiny-4.footer-full-lastcolumn
+            = render 'shared/footer_navigate'
+      .w-col.w-col-3.column-social-media-footer
+        .footer-full-signature-text.body-medium Assine nossa news
+        .w-form
+          = form_tag CatarseSettings['mailchimp_url'], id: 'mailee-form', method: 'post' do
+            = email_field_tag 'EMAIL', nil, placeholder: t('projects.index.sidebar.placeholders.email'), label: 'email', class: 'w-input text-field form-footer'
+            = submit_tag "", class: 'button-news'
+          .w-form-done
+            p Thank you! Your submission has been received!
+          .w-form-fail
+            p Oops! Something went wrong while submitting the form :(
+        .footer-full-signature-text.body-medium Redes sociais
+        .w-widget.w-widget-facebook
+          = render 'layouts/facebook_like'
+        .w-widget.w-widget-twitter
           = link_to "Follow @#{CatarseSettings[:twitter_username]}", "http://twitter.com/#{CatarseSettings[:twitter_username]}", :class => 'twitter-follow-button', :"data-button"=>"blue", :"data-text-color" => "#ffffff", :"data-link-color"=>"#fffffff", :"data-width" => "224px"
-        .facebook-box
-          = render_facebook_like colorscheme: "dark", width: "171"
   .w-container
-    hr.separator
-    p.prg2.copyleft
-      = "Feito com amor. Catarse, 2014 | Open source"
-      = link_to (image_tag "/assets/catarse_bootstrap/git-footer.png"), "http://github.com/catarse/catarse", target: '_blank'
+    .footer-full-copyleft Feito com amor. Catarse, 2014 | Open source
