@@ -44,7 +44,7 @@ Catarse::Application.routes.draw do
 #  mount CatarseWepay::Engine => "/", as: :catarse_wepay
 
   # Channels
-  constraints subdomain: /^(?!www|secure|test|local|bootstrap)(\w+)/ do
+  constraints SubdomainConstraint do
     namespace :channels, path: '' do
 
       namespace :admin do
