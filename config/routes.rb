@@ -91,7 +91,7 @@ resources :projects, only: [:index, :create, :update, :new, :show] do
   get "/terms-of-use" => 'high_voltage/pages#show', id: 'terms_of_use'
   get "/privacy-policy" => 'high_voltage/pages#show', id: 'privacy_policy'
   get "/start" => 'high_voltage/pages#show', id: 'start'
-  get "/:permalink" => "projects#show", as: :project_by_slug
+
 
   # Channels
   constraints SubdomainConstraint do
@@ -157,5 +157,7 @@ resources :projects, only: [:index, :create, :update, :new, :show] do
       resources :contribution_reports, only: [ :index ]
     end
   end
+
+  get "/:permalink" => "projects#show", as: :project_by_slug
 
 end
