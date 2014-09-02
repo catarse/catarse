@@ -1,6 +1,6 @@
 .project_posts
   h3.headline
-    = link_to "#posts/#{project_post.id}", id: "posts/#{project_post.id}" do
+    = link_to "#posts/#{project_post.id}", id: "posts/#{project_post.id}", class: 'link-hidden-dark' do
       = project_post.title
   p.project-news-date.body-medium
     = l(project_post.created_at, format: :posts)
@@ -13,6 +13,3 @@
     .facebook_share= render_facebook_like href: url, width: '360'
   - if policy(project_post).destroy?
     = link_to t('.destroy'), project_post_path(project_id: @project.id, id: project_post.id), data: {confirm: t('.destroy_confirmation')}, remote: true, method: :delete, class: 'destroy_post'
-    .deleting_post.hide= image_tag "loading.gif"
-
-
