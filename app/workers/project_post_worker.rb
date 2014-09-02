@@ -1,6 +1,6 @@
 class ProjectPostWorker
   include Sidekiq::Worker
-  sidekiq_options retry: false
+  sidekiq_options retry: 5
 
   def perform post_id
     post = ProjectPost.find post_id
