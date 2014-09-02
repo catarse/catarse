@@ -25,7 +25,7 @@
           .back-payment-formwrapper
             .back-payment-address-subtitle.body-big Endereço de entrega
             .w-form
-              = form.input :address_country, as: :select, wrapper_html: {class: 'back-payment-form-box-half block'}, input_html: {class: 'w-select text-field'}
+              = form.association :country, as: :select, wrapper_html: {class: 'back-payment-form-box-half block'}, input_html: {class: 'w-select text-field'}
               = form.input :address_street, as: :string, wrapper_html: {class: 'back-payment-form-box-half'}, input_html: {class: 'w-input text-field'}
               = form.input :address_number, as: :string, wrapper_html: {class: 'back-payment-form-box-quarter'}, input_html: {class: 'w-input text-field'}
               = form.input :address_complement, as: :string, wrapper_html: {class: 'back-payment-form-box-quarter last'}, input_html: {class: 'w-input text-field'}
