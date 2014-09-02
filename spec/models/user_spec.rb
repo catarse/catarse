@@ -17,6 +17,7 @@ describe User do
     it{ should have_many :channels_subscribers }
     it{ should have_one :user_total }
     it{ should belong_to :channel }
+    it{ should belong_to :country }
     it{ should have_and_belong_to_many :subscriptions }
   end
 

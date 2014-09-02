@@ -10,7 +10,7 @@ pt:
       contribution:
         payer_name: "Nome Completo"
         payer_email: "Email"
-        address_country: "País"
+        country: "País"
         address_street: "Rua"
         address_number: "Número"
         address_complement: "Complemento"
