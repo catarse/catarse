@@ -36,24 +36,19 @@
               = form.input :address_phone_number, as: :string, wrapper_html: {class: 'back-payment-form-box-quarter last'}, input_html: {class: 'w-input text-field'}
           .back-payment-button-next-step
             a.bt-large data-ix="display-step2-back-payment" href="#step2"  Próximo passo
-          #step2.back-payment-step2 data-ix="display-none-on-load-2" 
-            div
-              .back-payment-headline.headline Escolha o meio de pagamento
-              .back-payment-safe-pay
-                img.back-payment-icon-lock alt="53edd86954f8e79e17592c73_icon_lock.png" src="images/icon_lock.png" 
-                  .back-payment-safe-pay-text.caption PAGAMENTO SEGURO
-              .back-reward-error-form.form-error data-ix="display-none-on-load" 
-                div
-                  strong This is some text inside of a div block.
-                div This is some text inside of a div block.
-                div This is some text inside of a div block.
-              .back-payment-tab-container
-                .back-payment-tab data-ix="credit-card" 
-                  div Moip
-                .back-payment-tab.off data-ix="paypal" 
-                  div Paypal
-                .back-payment-tab.off data-ix="creditos" 
-                  div Créditos
+          #payment-engines.back-payment-step2
+            .back-payment-headline.headline Escolha o meio de pagamento
+            .back-payment-safe-pay
+              = image_tag("catarse_bootstrap/icon-lock.png", class: 'back-payment-icon-lock')
+              .back-payment-safe-pay-text.caption PAGAMENTO SEGURO
+            .tab-container
+              - avaiable_payment_engines.each do |engine|
+                .tab.off[id=engine.name data-target="##{engine.name}_payment"]
+                  = t("projects.contributions.review.#{engine.name}")
+            .tab_content_container
+              - avaiable_payment_engines.each do |engine|
+                div[id="#{engine.name}_payment" class="payments_type hide" data-path=engine.review_path(@contribution) ]
+                  .results
       .w-col.w-col-4
         .w-hidden-small.w-hidden-tiny.back-faq-box
           = render 'selected_reward'

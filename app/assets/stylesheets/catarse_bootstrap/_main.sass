@@ -292,39 +292,36 @@ button
   text-align: center
   text-decoration: none
   font-family: "proxima-nova",sans-serif
+
 // Tabs  -----------------------------------------------------------------------------------------
 .tab
+  cursor: pointer
   position: relative
   top: 1px
   display: inline-block
   margin-right: 6px
-  padding: 13px 13px 6px
+  padding: 13px 13px 5px
   border-style: solid solid none
   border-width: 1px
-  border-color: #ddd #ddd white
+  border-color: $border-strong $border-strong white
   border-top-left-radius: 5px
   border-top-right-radius: 6px
-  background-color: white
   font-size: 16px
-  font-weight: 600
-
-.back-payment-tab.off
-  top: 1px
-  padding-bottom: 5px
-  background-color: #f1f4f4
-  -webkit-transition: all 500ms ease
-  -o-transition: all 500ms ease
-  transition: all 500ms ease
+  background-color: $gray-one
+  +transition(all 500ms ease)
   color: rgba(121, 128, 139, 0.70)
   font-weight: 400
 
-.back-payment-tab.off:hover
-  background-color: white
-  color: #3f4752
+  &.selected,&:hover
+    color: $blue-one
+    padding-bottom: 6px
+    background-color: white
+    font-weight: 600
 
-.back-payment-tab-container
+
+.tab-container
   margin-bottom: 30px
-  border-bottom: 1px solid #ddd
+  border-bottom: 1px solid $border-strong
 
 // Devise -----------------------------------------------------------------------------------------
 .box-login
@@ -1818,6 +1815,21 @@ button
     color: $green
     font-size: 34px
 
+  .back-payment-safe-pay
+    display: inline-block
+    opacity: 0.49
+    color: $blue-two
+    font-weight: 600
+
+  .back-payment-icon-lock
+    margin-right: 5px
+    margin-left: 20px
+    padding-bottom: 6px
+    opacity: 0.31
+
+  .back-payment-safe-pay-text
+    display: inline-block
+
 @media screen and (max-width: 991px)
   .back-reward-content
     .back-payment-button-next-step
@@ -1886,6 +1898,11 @@ button
       font-size: 16px
       font-weight: 600
 
+    .back-payment-safe-pay
+      display: block
+      margin-top: -20px
+      margin-bottom: 17px
+
   .project-funding-period
     text-align: center
 
@@ -1915,3 +1932,5 @@ button
     .back-payment-info-reward-value
       font-size: 14px
 
+    .back-payment-safe-pay
+      margin-top: -16px
