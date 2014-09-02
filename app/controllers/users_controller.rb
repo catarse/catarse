@@ -1,10 +1,10 @@
 # coding: utf-8
 class UsersController < ApplicationController
-  after_filter :verify_authorized, except: %i[uservoice_gadget reactivate]
+  after_filter :verify_authorized, except: %i[reactivate]
   skip_before_filter :force_http, only: [:update_password]
   inherit_resources
   defaults finder: :find_active!
-  actions :show, :update, :update_password, :unsubscribe_notifications, :uservoice_gadget, :credits, :destroy
+  actions :show, :update, :update_password, :unsubscribe_notifications, :credits, :destroy
   respond_to :json, only: [:contributions, :projects]
 
   def destroy
@@ -23,14 +23,6 @@ class UsersController < ApplicationController
   def credits
     authorize resource
     redirect_to user_path(current_user, anchor: 'credits')
-  end
-
-  def uservoice_gadget
-    if params[:secret] == CatarseSettings[:uservoice_secret_gadget]
-      @user = User.find_by_email params[:email]
-    end
-
-    render :uservoice_gadget, layout: false
   end
 
   def show
