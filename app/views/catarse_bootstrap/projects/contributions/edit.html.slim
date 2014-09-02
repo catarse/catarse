@@ -36,19 +36,19 @@
               = form.input :address_phone_number, as: :string, wrapper_html: {class: 'back-payment-form-box-quarter last'}, input_html: {class: 'w-input text-field'}
           .back-payment-button-next-step
             a.bt-large data-ix="display-step2-back-payment" href="#step2"  Próximo passo
-          #payment-engines.back-payment-step2
-            .back-payment-headline.headline Escolha o meio de pagamento
-            .back-payment-safe-pay
-              = image_tag("catarse_bootstrap/icon-lock.png", class: 'back-payment-icon-lock')
-              .back-payment-safe-pay-text.caption PAGAMENTO SEGURO
-            .tab-container
-              - avaiable_payment_engines.each do |engine|
-                .tab.off[id=engine.name data-target="##{engine.name}_payment"]
-                  = t("projects.contributions.review.#{engine.name}")
-            .tab_content_container
-              - avaiable_payment_engines.each do |engine|
-                div[id="#{engine.name}_payment" class="payments_type hide" data-path=engine.review_path(@contribution) ]
-                  .results
+        #payment-engines.back-payment-step2
+          .back-payment-headline.headline Escolha o meio de pagamento
+          .back-payment-safe-pay
+            = image_tag("catarse_bootstrap/icon-lock.png", class: 'back-payment-icon-lock')
+            .back-payment-safe-pay-text.caption PAGAMENTO SEGURO
+          .tab-container
+            - avaiable_payment_engines.each do |engine|
+              .tab.off[id=engine.name data-target="##{engine.name}_payment"]
+                = t("projects.contributions.review.#{engine.name}")
+          .tab_content_container
+            - avaiable_payment_engines.each do |engine|
+              div[id="#{engine.name}_payment" class="payments_type hide" data-path=engine.review_path(@contribution) ]
+                .results
       .w-col.w-col-4
         .w-hidden-small.w-hidden-tiny.back-faq-box
           = render 'selected_reward'
