@@ -43,8 +43,58 @@ Catarse::Application.routes.draw do
   mount CatarseCredits::Engine => "/", as: :catarse_credits
 #  mount CatarseWepay::Engine => "/", as: :catarse_wepay
 
+resources :projects, only: [:index, :create, :update, :new, :show] do
+    resources :posts, controller: 'projects/posts', only: [ :index, :create, :destroy ]
+    resources :rewards, only: [ :index, :create, :update, :destroy, :new, :edit ] do
+      member do
+        post 'sort'
+      end
+    end
+    resources :contributions, {controller: 'projects/contributions'}.merge(ssl_options) do
+      member do
+        put 'credits_checkout'
+      end
+    end
+    collection do
+      get 'video'
+    end
+    member do
+      put 'pay'
+      get 'embed'
+      get 'video_embed'
+      get 'embed_panel'
+      get 'send_to_analysis'
+    end
+  end
+  resources :users do
+    resources :projects, controller: 'users/projects', only: [ :index ]
+    member do
+      get :unsubscribe_notifications
+      get :credits
+      get :reactivate
+    end
+    resources :contributions, controller: 'users/contributions', only: [:index] do
+      member do
+        get :request_refund
+      end
+    end
+
+    resources :unsubscribes, only: [:create]
+    member do
+      get 'projects'
+      put 'unsubscribe_update'
+      put 'update_email'
+      put 'update_password', ssl_options
+    end
+  end
+
+  get "/terms-of-use" => 'high_voltage/pages#show', id: 'terms_of_use'
+  get "/privacy-policy" => 'high_voltage/pages#show', id: 'privacy_policy'
+  get "/start" => 'high_voltage/pages#show', id: 'start'
+
+
   # Channels
-  constraints subdomain: /^(?!www|secure|test|local|bootstrap)(\w+)/ do
+  constraints SubdomainConstraint do
     namespace :channels, path: '' do
 
       namespace :admin do
@@ -77,54 +127,6 @@ Catarse::Application.routes.draw do
   # Feedback form
   resources :feedbacks, only: [:create]
 
-  resources :projects, only: [:index, :create, :update, :new, :show] do
-    resources :posts, controller: 'projects/posts', only: [ :index, :create, :destroy ]
-    resources :rewards, only: [ :index, :create, :update, :destroy, :new, :edit ] do
-      member do
-        post 'sort'
-      end
-    end
-    resources :contributions, {controller: 'projects/contributions'}.merge(ssl_options) do
-      member do
-        put 'credits_checkout'
-      end
-    end
-    collection do
-      get 'video'
-    end
-    member do
-      put 'pay'
-      get 'embed'
-      get 'video_embed'
-      get 'embed_panel'
-      get 'send_to_analysis'
-    end
-  end
-  resources :users do
-    resources :projects, controller: 'users/projects', only: [ :index ]
-    member do
-      get :unsubscribe_notifications
-      get :credits
-      get :reactivate
-    end
-    collection do
-      get :uservoice_gadget
-    end
-    resources :contributions, controller: 'users/contributions', only: [:index] do
-      member do
-        get :request_refund
-      end
-    end
-
-    resources :unsubscribes, only: [:create]
-    member do
-      get 'projects'
-      put 'unsubscribe_update'
-      put 'update_email'
-      put 'update_password', ssl_options
-    end
-  end
-
   namespace :admin do
     resources :projects, only: [ :index, :update, :destroy ] do
       member do
@@ -156,12 +158,6 @@ Catarse::Application.routes.draw do
     end
   end
 
-  get "/terms-of-use" => 'high_voltage/pages#show', id: 'terms_of_use'
-  get "/privacy-policy" => 'high_voltage/pages#show', id: 'privacy_policy'
-
   get "/:permalink" => "projects#show", as: :project_by_slug
 
-
 end
-
-
