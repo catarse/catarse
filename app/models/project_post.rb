@@ -22,12 +22,6 @@ class ProjectPost < ActiveRecord::Base
     catarse_email_auto_html_for comment, image_width: 513
   end
 
-  def notify_contributors
-    project.subscribed_users.each do |user|
-      notify_once(:posts, user, self, {from_email: project.user.email, from_name: project.user.display_name})
-    end
-  end
-
   def to_partial_path
     "projects/posts/project_post"
   end
