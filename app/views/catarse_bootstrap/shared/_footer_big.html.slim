@@ -12,9 +12,7 @@ footer.main-footer.main-footer-neg
       .w-col.w-col-3.column-social-media-footer
         .footer-full-signature-text.body-medium Assine nossa news
         .w-form
-          = form_tag CatarseSettings['mailchimp_url'], id: 'mailee-form', method: 'post' do
-            = email_field_tag 'EMAIL', nil, placeholder: t('projects.index.sidebar.placeholders.email'), label: 'email', class: 'w-input text-field form-footer'
-            = submit_tag "", class: 'button-news'
+          = render 'layouts/newsletter'
           .w-form-done
             p Thank you! Your submission has been received!
           .w-form-fail
