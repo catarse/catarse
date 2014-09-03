@@ -8,7 +8,7 @@ pt:
       category: Categoria
     attributes:
       contribution:
-        value: valor
+        value: valor do apoio
         reward: recompensa
         project: projeto
       reward:
@@ -84,6 +84,7 @@ pt:
             goal:
               blank: "O valor da meta não pode ficar em branco"
               greater_than: "A meta deve ser maior que 9"
+              not_a_number: "Meta de arrecadação aceita somente números"
             online_days:
               greater_than: "O prazo para arrecadação deve ser maior que 0 dias"
               not_a_number: "O prazo para arrecadação deve ser um número de dias"
