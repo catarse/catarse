@@ -308,4 +308,24 @@ describe ProjectObserver do
 
   end
 
+  describe "#request_refund_for_failed_project" do
+    let(:project){ create(:project, state: 'online') }
+    let(:user){ create(:user) }
+    let(:contribution) { create(:contribution, state: 'confirmed', payment_method: 'PayPal', project_id: project.id, user_id: user.id, value: 10, credits: false)}
+    before do
+      project
+      user
+      contribution
+      project.stub(:should_fail?).and_return(true)
+      project.stub(:pending_contributions_reached_the_goal?).and_return(false)
+      project.finish
+      contribution.reload
+    end
+
+    it "should change contribution state to requested_refund" do
+      expect(contribution.reload.state).to eq 'requested_refund'
+    end
+
+  end
+
 end
