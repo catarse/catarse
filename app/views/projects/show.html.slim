@@ -139,6 +139,49 @@
             p.body-small
               = t(".contribute_project.display_status.#{@project.display_status}", goal: @project.display_goal, date: @project.display_expires_at)
 
+          - if @project.online? && !@project.expired?
+            #pledge
+              = form_tag(new_project_contribution_path(@project), method: :get, id: 'contribute_project_form') do
+                fieldset
+                  = submit_tag t('.contribute_project.submit'), disabled: (not @project.online?)
+        #creator_profile
+          h3= t('.project_by')
+          .avatar = @project.user.display_image_html width: 80, height: 80
+          .personal_info
+            p.name
+             = link_to @project.user.display_name, user_path(@project.user)
+            #bio
+              p= @project.user.bio
+          #city
+            p.contribution= t('.count_contributed_projects', total: @project.user.total_contributed_projects)
+            p.city
+              | #{@project.user.address_city}
+        .user_social
+          ul
+            - if @project.user.facebook_link
+              li
+                = link_to "Perfil no facebook", @project.user.facebook_link, target: '_blank', class: 'facebook'
+            - if @project.user.twitter_link
+              li
+                = link_to "Perfil no twitter", @project.user.twitter_link, target: '_blank', class: 'twitter'
+            - if @project.user.email
+              li
+                = mail_to @project.user.email, @project.user.email, target: '_blank', class: 'email'
+            - if @project.user.other_link
+              li.other
+                = link_to @project.user.other_link, @project.user.other_link, target: '_blank'
+
+        .clearfix
+        - if policy(@project).update?
+          .bootstrap-twitter.bootstrap-form
+            .alert.alert-info
+              h4.alert-header= t('.no_rewards_warning_title')
+              p style="margin:0; padding:0;"
+                = t('.no_rewards_warning')
+              br/
+              .new_reward_content.hide
+                = image_tag 'loading.gif'
+
           .project-author
             = image_tag @project.user.display_image, width: "80", height: "80", class: "thumb-author"
             p.body-medium

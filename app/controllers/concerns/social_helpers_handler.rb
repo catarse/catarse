@@ -1,4 +1,3 @@
-require 'uservoice_sso'
 module Concerns
   module SocialHelpersHandler
     extend ActiveSupport::Concern
