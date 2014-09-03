@@ -106,7 +106,7 @@
             - if @project.online? && !@project.expired?
               = link_to t('.contribute_project.submit'), new_project_contribution_path(@project), id: 'contribute_project_form', class: "project-back-button bt-large"
 
-            p.body-small
+            p.body-small.project-stats-final[class=@project.display_status]
               = t(".contribute_project.display_status.#{@project.display_status}", goal: @project.display_goal, date: @project.display_expires_at)
 
           .project-author

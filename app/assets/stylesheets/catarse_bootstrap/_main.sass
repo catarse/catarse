@@ -116,6 +116,12 @@ p
   &:hover
     font-weight: 600
 
+.link-hidden-dark
+  color: #3f4752
+  text-decoration: none
+  &:hover
+    text-decoration: underline
+
 // Forms -----------------------------------------------------------------------------------------
 .text-field
   display: block
@@ -916,7 +922,7 @@ button
 .project-nav-tab
   display: inline-block
   margin: 15px 6px 0 0
-  color: $blue-one
+  color: $blue-two
   padding: 13px
   font-size: 15px
   text-decoration: none
@@ -992,6 +998,31 @@ button
 .project-back-button
   margin: 28px 0 15px
 
+.project-stats-final-box
+  margin-top: 19px
+  padding: 15px
+  border-radius: 5px
+  box-shadow: rgba(0, 0, 0, 0.49) 1px 1px 3px 1px
+  color: white
+  line-height: 22px
+  font-size: 16px
+
+.project-stats-final
+  &.successful
+    @extend .project-stats-final-box
+    background: $green
+  &.waiting_funds
+    @extend .project-stats-final-box
+    background: $dark-yellow
+    color: $blue-one
+  &.draft
+    @extend .project-stats-final-box
+    background: $blue-one
+  &.failed
+    @extend .project-stats-final-box
+    background: $red
+
+
 .project-author
   margin: 45px 0 0
   padding: 15px
@@ -1033,8 +1064,9 @@ button
     text-decoration: underline
 
 .project-funding-period
-  margin: 30px 0 0
-  font-weight: 600
+  margin: 30px 0
+  p
+    margin-bottom: 0
 
 .project-share-sidebar
   display: none
@@ -1111,6 +1143,8 @@ button
   border-bottom: 1px solid $border-gray
   &:last-child
     border: none
+  img
+    width: 100%
 
 .project-news-date
   margin: -14px 0 30px
@@ -1130,7 +1164,7 @@ button
   width: 80px
   height: 80px
 
-.backs-backer-name
+.project-backer-name
   margin-bottom: 6px
   font-weight: 600
   text-decoration: none
@@ -1301,12 +1335,20 @@ button
 
 // Responsive -----------------------------------------------------------------------------------------
 @media screen and (max-width: 1200px)
+  .project-content
+    iframe
+      height: 350px !important // important to be stronger than the iframe atribute
+
   .header-link
     padding: 10px
   .feedback-box, .icon-feedback-box
     display: none
 
 @media screen and (max-width: 991px)
+  .project-content
+    iframe
+      height: 270px !important // important to be stronger than the iframe atribute
+
   .footer-simple-links-list
     margin-right: 20px
 
@@ -1354,9 +1396,6 @@ button
 
   .show-password
     display: none
-
-  .no-mobile
-    display: none !important // I know important is ugly but this is to avoid problems with elements that we need to show and hide
 
   .mobile-menu-link
     display: inline-block
@@ -1424,10 +1463,18 @@ button
   .project-reward-box-gone
     &:hover
       background-color: $gray-one
-  .project-share-sidebar
-    display: block
+
+  .thumb-author
+    margin-bottom: 20px
 
 @media screen and (max-width: 767px)
+  .project-content
+    iframe
+      height: 325px !important // important to be stronger than the iframe atribute
+
+  .no-mobile
+    display: none !important
+
   .footer-simple-links-list
     display: inline-block
 
@@ -1463,11 +1510,20 @@ button
     font-size: 20px
     line-height: 20px
 
+  .display-medium
+    font-size: 24px
+    line-height: 24px
+
   .body-big
     line-height: 24px
 
+  .body-medium
+    font-size: 14px
+    line-height: 20px
+
   .body-small
     font-size: 14px
+    line-height: 20px
 
   .back-reward-cheers
     font-weight: 600
@@ -1544,7 +1600,7 @@ button
     padding: 0
 
   .project-stats-numbers
-    padding: 24px 0
+    padding: 24px 37px
     border-top: 1px solid $border-strong
     border-bottom: 1px solid $border-strong
     margin: 0 0 10px
@@ -1555,7 +1611,10 @@ button
 
   .project-back-button
     width: 80%
-    margin: 18px 0
+    margin: 18px 10%
+
+  .project-stats-final
+    padding: 0 15%
 
   .project-author
     margin-top: 34px
@@ -1570,15 +1629,21 @@ button
     margin-bottom: 35px
     text-align: center
 
+  .project-share-sidebar
+    display: block
+
   .project-share-link
     display: inline-block
     margin: 0 2%
-    width: 36%
+    width: 41%
     margin-top: 10px
     cursor: pointer
 
-
 @media screen and (max-width: 479px)
+  .project-content
+    iframe
+      height: 190px !important // important to be stronger than the iframe atribute
+
   .footer-simple-links-list
     display: block
 
@@ -1710,7 +1775,7 @@ button
     width: 25%
     padding-right: 3%
 
-  .back-payment-button-next-step 
+  .back-payment-button-next-step
     width: 40%
     margin: 40px auto
 
@@ -1727,7 +1792,7 @@ button
 
 @media screen and (max-width: 767px)
   .back-reward-content
-    .faq-box-title 
+    .faq-box-title
       margin-bottom: 6px
       color: $blue-two
       &.mobile
@@ -1788,6 +1853,9 @@ button
       font-size: 16px
       font-weight: 600
 
+  .project-funding-period
+    text-align: center
+
 @media screen and (max-width: 479px)
   .footer-full-signature-text
     margin-top: 30px
@@ -1819,3 +1887,4 @@ button
 
     .back-payment-info-reward-value
       font-size: 14px
+
