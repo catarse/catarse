@@ -135,9 +135,9 @@
 
           .project-share.project-share-sidebar
             .project-share-link
-              .button.bt-medium.bt-fb = "Compartilhe"
+              #facebook_share = render_facebook_like title: @project.name, href: project_by_slug_url(@project.permalink, locale: I18n.locale), data_width: "180px"
             .project-share-link
-              .button.bt-medium.bt-twitter = "Tweet"
+              #twitter_share= render_twitter(url: project_by_slug_url(permalink: @project.permalink), title: @project.name)
 
           - if policy(@project).update?
             h4 = t('.no_rewards_warning_title')
