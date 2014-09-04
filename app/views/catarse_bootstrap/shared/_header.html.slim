@@ -2,10 +2,10 @@
   .w-row
     .w-col.w-col-2.w-col-small-4.w-col-tiny-4
       = link_to (image_tag "catarse_bootstrap/catarse-logo.png"), root_url(host: CatarseSettings[:base_domain] || request.domain), class: 'header-logo', :title => CatarseSettings[:company_name]
-    .header-nav.w-col.w-col-7.w-col-small-1.w-col-tiny-1
+    .header-nav.w-col.w-col-6.w-col-small-1.w-col-tiny-1
       = yield :header_controls
 
-    .header-nav.w-col.w-col-3.w-col-small-7.w-col-tiny-7
+    .header-nav.w-col.w-col-4.w-col-small-7.w-col-tiny-7
       .user-profile
         - if current_user
           = link_to '#', class: 'user-options' do
