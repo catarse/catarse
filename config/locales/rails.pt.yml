@@ -112,7 +112,7 @@ pt:
       invalid: "não é válido"
       less_than: "deve ser menor que %{count}"
       less_than_or_equal_to: "deve ser menor ou igual a %{count}"
-      not_a_number: "não é um número"
+      not_a_number: "aceita somente números"
       not_an_integer: "não é um número inteiro"
       odd: "deve ser ímpar"
       record_invalid: "A validação falhou: %{errors}"
