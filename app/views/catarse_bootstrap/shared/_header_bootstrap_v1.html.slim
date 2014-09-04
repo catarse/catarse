@@ -1,0 +1,40 @@
+header
+  .row
+    .large-3.columns
+      h1
+        = link_to "#{CatarseSettings[:company_name]}", root_url(host: CatarseSettings[:base_domain] || request.domain), class: 'logo', :title => CatarseSettings[:company_name]
+    .large-3.columns.call-to-action
+      = link_to t('layouts.header.submit'), page_path(:how_it_works), :class => 'project'
+      = link_to t('layouts.header.discover'), explore_path, :class => 'project'
+    .large-3.columns
+      = form_tag explore_path, :method => 'GET', :class=>'discover-form' do
+        = text_field_tag :pg_search, nil, autocomplete: "off", value: params[:pg_search], class: "discover-form-input"
+        = submit_tag
+    .large-1.columns.user-utilities
+      = link_to t('layouts.header.help'), CatarseSettings[:support_forum], target: :_blank, :class => 'header-nav-item',  id: 'guidelines_header_modal' if CatarseSettings[:support_forum].present?
+      = link_to t('layouts.header.blog'), CatarseSettings['blog_url'], target: :_blank, class: 'header-nav-item' if CatarseSettings['blog_url'].present?
+
+    .large-2.columns.user-dropdown
+      - if current_user
+        = link_to '#', class: 'user-menu' do
+          = image_tag(current_user.display_image, :size => "40x40", class: 'user-avatar')
+        ul.dropdown
+          li= link_to t('layouts.header.profile'), current_user
+          li= link_to t('layouts.user.my_contributions'), user_path(current_user, anchor: 'contributions')
+          - if current_user.project_owner?
+            li= link_to t('.projects'), user_path(current_user, anchor: 'projects')
+          li
+            = link_to t('layouts.user.my_credits'), user_path(current_user, anchor: 'credits')
+            .small
+              | (#{current_user.display_credits})
+          li
+            = link_to t('layouts.user.refund_link'), user_path(current_user, anchor: 'credits')
+          - if current_user.admin? || current_user.channel
+            li.divider
+              - for menu, path in controller.menu do
+                li= link_to menu, path
+          li.divider= link_to t('layouts.user.logout'), destroy_user_session_path, method: :delete
+      - else
+        = link_to t('channels.header.signup'), new_user_registration_url, class: 'header-nav-item'
+        = link_to t('channels.header.signin'), new_user_session_url, class: 'header-nav-item'
+
