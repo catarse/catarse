@@ -1,4 +1,4 @@
-= render 'shared/header'
+= render 'shared/header_bootstrap_v1'
 .row.admin.admin-contributions
   h1
     = @title = t('channels.admin.management.title')
@@ -100,4 +100,4 @@
                   li= link_to t('admin.contributions.index.push_to_trash'), push_to_trash_admin_contribution_path(contribution, local_params: params), method: :put
 = paginate @contributions
 
-= render 'shared/footer'
+= render 'shared/footer_bootstrap_v1'
