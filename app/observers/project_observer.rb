@@ -77,6 +77,8 @@ class ProjectObserver < ActiveRecord::Observer
       contribution.notify_to_contributor(:pending_contribution_project_unsuccessful)
     end
 
+    request_refund_for_failed_project(project)
+
     project.notify_owner(:project_unsuccessful, { from_email: CatarseSettings[:email_projects] })
   end
 
@@ -97,6 +99,12 @@ class ProjectObserver < ActiveRecord::Observer
   end
 
   private
+
+  def request_refund_for_failed_project(project)
+    project.contributions.where("state = 'confirmed' AND (payment_method = 'PayPal' OR payment_choice = 'CartaoDeCredito')").each do |contribution|
+      contribution.request_refund
+    end
+  end
 
   def deliver_default_notification_for(project, notification_type)
     template_name = project.notification_type(notification_type)
