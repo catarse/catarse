@@ -1,6 +1,6 @@
 - content_for(:title)
   = t(".title")
-= render 'shared/header'
+= render 'shared/header_bootstrap_v1'
 .row.admin.use-sort
   h1= @title = t('.title')
   = simple_form_for admin_users_path, method: :get, class: 'form-horizontal' do |form|
@@ -51,4 +51,4 @@
             td= user.credits
   = paginate @users
   .clearfix
-= render 'shared/footer'
+= render 'shared/footer_bootstrap_v1'
