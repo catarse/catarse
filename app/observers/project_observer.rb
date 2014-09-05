@@ -90,7 +90,11 @@ class ProjectObserver < ActiveRecord::Observer
   def notify_users(project)
     project.contributions.with_state('confirmed').each do |contribution|
       unless contribution.notified_finish
-        template_name = (project.successful? ? :contribution_project_successful : :contribution_project_unsuccessful)
+        template_name = if project.successful?
+                          :contribution_project_successful
+                        elsif (contribution.credits? || contribution.slip_payment?)
+                          :contribution_project_unsuccessful
+                        end
 
         contribution.notify_to_contributor(template_name)
         contribution.update_attributes({ notified_finish: true })
