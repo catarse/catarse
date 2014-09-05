@@ -30,6 +30,7 @@ class User < ActiveRecord::Base
   validates_length_of :password, within: Devise.password_length, allow_blank: true
 
   belongs_to :channel
+  belongs_to :country
   has_one :user_total
   has_many :contributions
   has_many :authorizations
