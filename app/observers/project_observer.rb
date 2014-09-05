@@ -96,7 +96,7 @@ class ProjectObserver < ActiveRecord::Observer
                           :contribution_project_unsuccessful
                         end
 
-        contribution.notify_to_contributor(template_name)
+        contribution.notify_to_contributor(template_name) if template_name
         contribution.update_attributes({ notified_finish: true })
       end
     end
