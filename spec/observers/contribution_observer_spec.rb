@@ -126,7 +126,19 @@ describe ContributionObserver do
         contribution.notify_observers :from_confirmed_to_requested_refund
       end
 
-      it "should notify admin and contributor upon refund request" do
+      it "should notify admin upon refund request" do
+        expect(ContributionNotification.where(template_name: 'refund_request', user_id: admin.id, from_email: contribution.user.email, from_name: contribution.user.name).count).to eq 1
+      end
+    end
+
+   context "when contribution is made with credits" do
+      before do
+        contribution.update_attributes(credits: true)
+        contribution.should_receive(:direct_refund)
+        contribution.notify_observers :from_confirmed_to_requested_refund
+      end
+
+      it "should notify admin upon refund request" do
         expect(ContributionNotification.where(template_name: 'refund_request', user_id: admin.id, from_email: contribution.user.email, from_name: contribution.user.name).count).to eq 1
         expect(ContributionNotification.where(template_name: 'requested_refund', user_id: contribution.user.id).count).to eq 1
       end
