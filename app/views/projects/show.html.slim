@@ -109,7 +109,7 @@
           #condition[class="#{@project.display_status}"]
             p
               = t(".contribute_project.display_status.#{@project.display_status}", goal: @project.display_goal, date: @project.display_expires_at)
-          - if @project.online? && !@project.expired?
+          - if @project.accept_contributions?
             #pledge
               = form_tag(new_project_contribution_path(@project), method: :get, id: 'contribute_project_form') do
                 fieldset

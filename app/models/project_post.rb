@@ -12,10 +12,6 @@ class ProjectPost < ActiveRecord::Base
 
   catarse_auto_html_for field: :comment, video_width: 560, video_height: 340
 
-  scope :for_non_contributors, ->() {
-    where("not exclusive")
-  }
-
   scope :ordered, ->() { order("created_at desc") }
 
   def email_comment_html
