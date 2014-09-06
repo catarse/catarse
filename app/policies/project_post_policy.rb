@@ -3,13 +3,7 @@ class ProjectPostPolicy < ApplicationPolicy
   self::Scope = Struct.new(:user, :scope) do
 
     def resolve
-      project = scope.proxy_association.owner
-
-      if user && (user.try(:admin) || user.project_ids.include?(project.id) || user.made_any_contribution_for_this_project?(project.id))
-        scope.load
-      else
-        scope.for_non_contributors
-      end
+      scope
     end
 
   end
@@ -24,6 +18,10 @@ class ProjectPostPolicy < ApplicationPolicy
 
   def destroy?
     done_by_owner_or_admin?
+  end
+
+  def show?
+    !record.exclusive || (user && (user.try(:admin) || user.project_ids.include?(record.project.id) || user.made_any_contribution_for_this_project?(record.project.id)))
   end
 
   def permitted_attributes
