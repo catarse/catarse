@@ -163,6 +163,10 @@ class Project < ActiveRecord::Base
     rewards.sort_asc.where(id: contributions.with_state('confirmed').map(&:reward_id))
   end
 
+  def accept_contributions?
+    online? && !expired?
+  end
+
   def reached_goal?
     pledged >= goal
   end
