@@ -94,9 +94,11 @@ class ProjectObserver < ActiveRecord::Observer
                           :contribution_project_successful
                         elsif (contribution.credits? || contribution.slip_payment?)
                           :contribution_project_unsuccessful
+                        else
+                          :automatic_refund
                         end
 
-        contribution.notify_to_contributor(template_name) if template_name
+        contribution.notify_to_contributor(template_name)
         contribution.update_attributes({ notified_finish: true })
       end
     end
