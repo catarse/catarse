@@ -7,6 +7,9 @@ pt:
       a_project_by_html: Um projeto de %{link} no
     posts:
       project_post:
+        unavailable: Esta novidade só está disponível para apoiadores.
+        contribute: Apoie
+        unavailable_contribute: este projeto para visualizá-la.
         destroy: Remover Novidade
         destroy_confirmation: Deseja remover esta novidade?
       new:
