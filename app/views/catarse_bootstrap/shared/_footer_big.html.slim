@@ -12,11 +12,7 @@ footer.main-footer.main-footer-neg
       .w-col.w-col-3.column-social-media-footer
         .footer-full-signature-text.fontsize-small Assine nossa news
         .w-form
-          = render 'layouts/newsletter'
-          .w-form-done
-            p Thank you! Your submission has been received!
-          .w-form-fail
-            p Oops! Something went wrong while submitting the form :(
+          = render 'shared/newsletter'
         .footer-full-signature-text.fontsize-small Redes sociais
         .w-widget.w-widget-facebook
           = render_facebook_like colorscheme: "dark"
