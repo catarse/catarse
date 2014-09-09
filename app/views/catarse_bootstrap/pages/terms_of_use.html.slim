@@ -1,36 +1,39 @@
 = render 'shared/header_big'
 = render 'shared/feedback'
 
-.page-header
-  h1.headingcenter = t('.title')
+.page-header.negative
+  .w-container
+    h1.fontsize-largest.u-text-center = t('.title')
 
-.w-container.text-page
-  h2 = t('.content.start')
-  p.prg2 = t('.content.start_text').html_safe
+.w-container
+  .w-row
+    .w-col.w-col-push-1.w-col-10
+      .headline = t('.content.start')
+      p.fontsize-base.u-marginbottom-60 = t('.content.start_text').html_safe
 
-  h2 = t('.content.guidelines')
-  p.prg2 = t('.content.guidelines_text').html_safe
+      .headline = t('.content.guidelines')
+      p.fontsize-base.u-marginbottom-60 = t('.content.guidelines_text').html_safe
 
-  h2 = t('.content.how_works')
-  p.prg2 = t('.content.how_works_text').html_safe
+      .headline = t('.content.how_works')
+      p.fontsize-base.u-marginbottom-60 = t('.content.how_works_text').html_safe
 
-  h2 = t('.content.responsabilities')
-  p.prg2 = t('.content.responsabilities_text').html_safe
+      .headline = t('.content.responsabilities')
+      p.fontsize-base.u-marginbottom-60 = t('.content.responsabilities_text').html_safe
 
-  h2 = t('.content.access')
-  p.prg2 = t('.content.access_text').html_safe
+      .headline = t('.content.access')
+      p.fontsize-base.u-marginbottom-60 = t('.content.access_text').html_safe
 
-  h2 = t('.content.tax')
-  p.prg2 = t('.content.tax_text').html_safe
+      .headline = t('.content.tax')
+      p.fontsize-base.u-marginbottom-60 = t('.content.tax_text').html_safe
 
-  h2 = t('.content.rights')
-  p.prg2 = t('.content.rights_text').html_safe
+      .headline = t('.content.rights')
+      p.fontsize-base.u-marginbottom-60 = t('.content.rights_text').html_safe
 
-  h2 = t('.content.content')
-  p.prg2 = t('.content.content_text').html_safe
+      .headline = t('.content.content')
+      p.fontsize-base.u-marginbottom-60 = t('.content.content_text').html_safe
 
-  h2 = t('.content.law')
-  p.prg2 = t('.content.law_text').html_safe
+      .headline = t('.content.law')
+      p.fontsize-base.u-marginbottom-60 = t('.content.law_text').html_safe
 
 
 = render 'shared/footer_big'
