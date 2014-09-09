@@ -1,11 +1,10 @@
 - content_for :header_controls do
-  = link_to t('layouts.header.discover'), explore_path, class: 'header-link left-side no-mobile'
+  = link_to t('layouts.header.discover'), explore_path, class: 'header-link'
 
-  = link_to t('layouts.header.submit'), start_path, class: 'header-link left-side no-mobile'
+  = link_to t('layouts.header.submit'), start_path, class: 'w-hidden-small w-hidden-tiny header-link'
 
-  .w-form.form-search.no-mobile
+  .w-form.w-hidden-small.w-hidden-tiny.header-search
     = form_tag explore_path, :method => 'GET', :class=>'discover-form' do
-      = text_field_tag :pg_search, nil, autocomplete: "off", value: params[:pg_search], class: "form-search-input", placeholder: t('layouts.header.search')
-      = submit_tag class: "form-search-image"
+      = text_field_tag :pg_search, nil, autocomplete: "off", value: params[:pg_search], class: "w-input text-field negative", placeholder: t('layouts.header.search')
 
 = render 'shared/header'

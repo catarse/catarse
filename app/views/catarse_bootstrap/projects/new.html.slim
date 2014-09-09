@@ -38,7 +38,7 @@
 
           fieldset
             legend.send-project-form-headline.headline = t('.form.blocks.first.title')
-            p.body-medium = t('.form.blocks.first.description')
+            p.fontsize-small = t('.form.blocks.first.description')
 
             = form.input :name, as: :string, label: t('.form.labels.name'), hint: t('.form.hints.name'), input_html: { class: 'w-input text-field' }, autofocus: true
             = form.input :permalink, as: :string, label: t('.form.labels.permalink'), hint: t('.form.hints.permalink'), input_html: { class: 'w-input text-field permalink-input' }
@@ -51,7 +51,7 @@
 
           fieldset
             legend.send-project-form-headline-with-margin.headline = t('.form.blocks.second.title')
-            p.body-medium = t('.form.blocks.second.description')
+            p.fontsize-small = t('.form.blocks.second.description')
 
             = form.input :video_url, as: :string, label: t('.form.labels.video_url'), hint: t('.form.hints.video_url'), input_html: { class: 'w-input text-field' }
 
