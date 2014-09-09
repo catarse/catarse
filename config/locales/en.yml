@@ -76,6 +76,9 @@ en:
   tell_about_this_project: "Tell the world about your project!"
   share_my_projects: "See my projects in Catarse!"
   count_contributed_projects: "contributed %{total} projects"
+  rewards:
+    index:
+      dont_want: "I don't want any reward"
   footer:
     titles:
       about: "About us"
@@ -135,7 +138,8 @@ en:
       title: Recent
     channels:
       title: "Asas Channel"
-  accept_terms_html: "I have read and accepted the %{link}."
+  shared:
+    accept_terms_html: "I have read and accepted the %{link}."
   activerecord:
     errors:
       models:
@@ -260,7 +264,7 @@ en:
     hints:
       contribution:
         credits: "You have <strong>%{credits}</strong> in credits and can contribution with up to this amount without needing to make a new payment."
-        value: "You chose the amount ;) starting with R$10, any amount is great."
+        value: "You choose the amount ;) starting with R$10, any amount is great."
       project:
         video_url_edit: 'Paste here the URL of your Vimeo/Youtube video.'
         about: "Tell us about what inspired you to come up with this project . Be objective end charming, present your readers with something that moves them while being very transparent over the expectations on your project!"
@@ -281,7 +285,7 @@ en:
         days_to_delivery: "Total of days to deliver the reward."
     labels:
       contribution:
-        anonymous: "I want my contribute to be anonymous."
+        anonymous: "I want my contribution to be anonymous."
         credits: "I want to use my credits on this contribute."
         reward: "Select your reward"
         value: "How much do you want to contribute with?"
