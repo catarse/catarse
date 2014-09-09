@@ -30,7 +30,7 @@
           .maximum_contributions.in_time_to_confirm.clearfix
             .pending= t('.contributions_to_confirm', count: in_time_to_confirm)
 
-    .body-medium = reward.display_description
+    .fontsize-small = reward.display_description
 
     - if reward.days_to_delivery.present?
         p.caption = "#{t('.reward_deliver_time', estimate: reward.display_deliver_estimate)}".html_safe

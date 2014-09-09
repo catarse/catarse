@@ -2,7 +2,7 @@
   h3.headline
     = link_to "#posts/#{project_post.id}", id: "posts/#{project_post.id}", class: 'link-hidden-dark' do
       = project_post.title
-  p.project-news-date.body-medium
+  p.project-news-date.fontsize-small
     = l(project_post.created_at, format: :posts)
   .body-big
     = raw(project_post.comment_html)
