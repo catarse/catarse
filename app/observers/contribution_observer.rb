@@ -33,7 +33,7 @@ class ContributionObserver < ActiveRecord::Observer
     contribution.direct_refund if contribution.can_do_refund?
     template_name = if contribution.slip_payment?
                       :requested_refund_slip
-                    elsif contribution.credits?
+                    elsif contribution.is_credit_card? || contribution.is_paypal?
                       :requested_refund
                     end
     contribution.notify_to_contributor(template_name) if template_name
