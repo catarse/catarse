@@ -38,7 +38,6 @@ class ProjectObserver < ActiveRecord::Observer
     notify_admin_that_project_reached_deadline(project)
     notify_admin_that_project_is_successful(project)
     notify_users(project)
-
   end
 
   def notify_admin_that_project_reached_deadline(project)
@@ -61,12 +60,12 @@ class ProjectObserver < ActiveRecord::Observer
 
   def from_in_analysis_to_online(project)
     deliver_default_notification_for(project, :project_visible)
-    project.update_attributes({ online_date: DateTime.now,
-                                audited_user_name: project.user.full_name,
-                                audited_user_cpf: project.user.cpf,
-                                audited_user_moip_login: project.user.moip_login,
-                                audited_user_phone_number: project.user.phone_number
-
+    project.update_attributes({
+      online_date: DateTime.now,
+      audited_user_name: project.user.full_name,
+      audited_user_cpf: project.user.cpf,
+      audited_user_moip_login: project.user.moip_login,
+      audited_user_phone_number: project.user.phone_number
     })
   end
 
@@ -116,7 +115,7 @@ class ProjectObserver < ActiveRecord::Observer
     template_name = project.notification_type(notification_type)
 
     project.notify_owner(
-      template_name, 
+      template_name,
       {
         from_email: project.last_channel.try(:email) || CatarseSettings[:email_projects],
         from_name: project.last_channel.try(:name) || CatarseSettings[:company_name]
