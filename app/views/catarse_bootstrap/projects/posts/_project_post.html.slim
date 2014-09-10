@@ -4,7 +4,7 @@
       = project_post.title
   p.project-news-date.fontsize-small
     = l(project_post.created_at, format: :posts)
-  .body-big
+  .fontsize-base
     = raw(project_post.comment_html)
 
   .project-share
