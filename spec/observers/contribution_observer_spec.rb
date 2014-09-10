@@ -42,7 +42,7 @@ describe ContributionObserver do
         project.stub(:project_total).and_return(project_total)
         contribution.project = project
         ProjectNotification.should_receive(:notify).with(
-          :project_success, 
+          :project_success,
           contribution.project.user,
           contribution.project,
           {}
@@ -129,17 +129,8 @@ describe ContributionObserver do
       it "should notify admin upon refund request" do
         expect(ContributionNotification.where(template_name: 'refund_request', user_id: admin.id, from_email: contribution.user.email, from_name: contribution.user.name).count).to eq 1
       end
-    end
 
-   context "when contribution is made with credits" do
-      before do
-        contribution.update_attributes(credits: true)
-        contribution.should_receive(:direct_refund)
-        contribution.notify_observers :from_confirmed_to_requested_refund
-      end
-
-      it "should notify admin upon refund request" do
-        expect(ContributionNotification.where(template_name: 'refund_request', user_id: admin.id, from_email: contribution.user.email, from_name: contribution.user.name).count).to eq 1
+      it "should notify contributor about the refund request" do
         expect(ContributionNotification.where(template_name: 'requested_refund', user_id: contribution.user.id).count).to eq 1
       end
     end
