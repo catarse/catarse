@@ -22,7 +22,7 @@
             = form.input :payer_name, as: :string, wrapper_html: {class: 'back-payment-form-box-half'}, input_html: {class: 'w-input text-field'}
             = form.input :payer_email, as: :string, wrapper_html: {class: 'back-payment-form-box-half'}, input_html: {class: 'w-input text-field'}
           .back-payment-formwrapper
-            .back-payment-address-subtitle.body-big Endereço de entrega
+            .back-payment-address-subtitle.fontsize-base Endereço de entrega
             .w-form
               = form.association :country, as: :select, wrapper_html: {class: 'back-payment-form-box-half block'}, input_html: {class: 'w-select text-field'}
               = form.input :address_street, as: :string, wrapper_html: {class: 'back-payment-form-box-half'}, input_html: {class: 'w-input text-field'}
@@ -39,7 +39,7 @@
           .back-payment-headline.headline Escolha o meio de pagamento
           .back-payment-safe-pay
             = image_tag("catarse_bootstrap/icon-lock.png", class: 'back-payment-icon-lock')
-            .back-payment-safe-pay-text.caption PAGAMENTO SEGURO
+            .back-payment-safe-pay-text.fontsize-smallest PAGAMENTO SEGURO
           .tab-container
             - avaiable_payment_engines.each do |engine|
               .tab.off[id=engine.name data-target="##{engine.name}_payment"]

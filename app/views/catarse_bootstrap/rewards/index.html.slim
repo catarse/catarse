@@ -13,15 +13,15 @@
             i.icon-pencil.icon-white
 
     .project-reward-box-title
-      p.body-big = t('.reward_title', minimum: reward.display_minimum).html_safe
-      p.body-small = pluralize(reward.contributions.with_state('confirmed').count(:all), t('contribution_singular'), t('contribution_plural'))
+      p.fontsize-base = t('.reward_title', minimum: reward.display_minimum).html_safe
+      p.fontsize-smaller = pluralize(reward.contributions.with_state('confirmed').count(:all), t('contribution_singular'), t('contribution_plural'))
 
       - if reward.maximum_contributions
         - if reward.sold_out?
-          .body-small.project-reward-box-limited-label.project-reward-box-gone-label
+          .fontsize-smaller.project-reward-box-limited-label.project-reward-box-gone-label
             = t('.sold_out')
         - else
-          .body-small.project-reward-box-limited-label
+          .fontsize-smaller.project-reward-box-limited-label
             = t('.limited')
             |
             = " (" + reward.display_remaining + ")"
@@ -33,10 +33,10 @@
     .fontsize-small = reward.display_description
 
     - if reward.days_to_delivery.present?
-        p.caption = "#{t('.reward_deliver_time', estimate: reward.display_deliver_estimate)}".html_safe
+        p.fontsize-smallest = "#{t('.reward_deliver_time', estimate: reward.display_deliver_estimate)}".html_safe
 
     - if current_user && current_user.admin
-        p.caption = "Modificado em: #{I18n.l(reward.updated_at.to_date)} #{parent.online_date.nil? ? '' : ((parent.online_date > reward.updated_at)? '(draft)' : '(online)')}"
+        p.fontsize-smallest = "Modificado em: #{I18n.l(reward.updated_at.to_date)} #{parent.online_date.nil? ? '' : ((parent.online_date > reward.updated_at)? '(draft)' : '(online)')}"
 
     .project-reward-box-hover
       .project-reward-box-hover-text = "Selecione esta recompensa"

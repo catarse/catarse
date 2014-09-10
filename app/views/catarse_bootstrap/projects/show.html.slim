@@ -89,23 +89,23 @@
           .project-stats
             .project-stats-numbers
               .project-stats-digits
-                p.display-medium = @project.display_pledged
+                p.fontsize-largest = @project.display_pledged
                 p.fontsize-small = t('.sidebar.goal', total: @project.display_goal).html_safe
               .project-stats-digits
-                p.display-medium = @project.total_contributions
+                p.fontsize-largest = @project.total_contributions
                 p.fontsize-small = t('.sidebar.contributions')
               .project-stats-digits
                 - if @project.draft? || @project.rejected?
-                  p.display-medium = @project.online_days
+                  p.fontsize-largest = @project.online_days
                   p.fontsize-small #{@project.online_days} #{pluralize_without_number(@project.online_days, I18n.t('datetime.prompts.day').downcase)} #{pluralize_without_number(@project.online_days, t('remaining_singular'), t('remaining_plural'))}
                 - else
-                  p.display-medium = @project.remaining_days
+                  p.fontsize-largest = @project.remaining_days
                   p.fontsize-small #{@project.time_to_go[:unit].capitalize} #{pluralize_without_number(@project.time_to_go[:time], t('remaining_singular'), t('remaining_plural'))}
 
             - if @project.online? && !@project.expired?
               = link_to t('.contribute_project.submit'), new_project_contribution_path(@project), id: 'contribute_project_form', class: "project-back-button bt-large"
 
-            p.body-small.project-stats-final[class=@project.display_status]
+            p.fontsize-smaller.project-stats-final[class=@project.display_status]
               = t(".contribute_project.display_status.#{@project.display_status}", goal: @project.display_goal, date: @project.display_expires_at)
 
           .project-author
@@ -113,20 +113,20 @@
             p.fontsize-small
               = link_to @project.user.display_name, user_path(@project.user)
 
-            p.project-author-city.caption = @project.user.address_city
-            .caption = "1 projeto criado"
-            .caption = t('.count_contributed_projects', total: @project.user.total_contributed_projects)
+            p.project-author-city.fontsize-smallest = @project.user.address_city
+            .fontsize-smallest = "1 projeto criado"
+            .fontsize-smallest = t('.count_contributed_projects', total: @project.user.total_contributed_projects)
 
             .project-author-contacts
               ul.w-list-unstyled
                 - if @project.user.facebook_link
-                  li.project-author-item.body-small
+                  li.project-author-item.fontsize-smaller
                     = link_to "Perfil no facebook", @project.user.facebook_link, target: '_blank', class: 'facebook'
                 - if @project.user.twitter
-                  li.project-author-item.body-small
+                  li.project-author-item.fontsize-smaller
                     = link_to "Perfil no twitter", @project.user.twitter_link, target: '_blank', class: 'twitter'
                 - if @project.user.other_link
-                  li.project-author-item.body-small
+                  li.project-author-item.fontsize-smaller
                     = link_to @project.user.other_link, @project.user.other_link, target: '_blank'
 
           .project-author-send-message
