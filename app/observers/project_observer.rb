@@ -93,6 +93,8 @@ class ProjectObserver < ActiveRecord::Observer
                           :contribution_project_successful
                         elsif (contribution.credits? || contribution.slip_payment?)
                           :contribution_project_unsuccessful
+                        elsif contribution.is_paypal? || contribution.is_credit_card?
+                          :contribution_project_unsuccessful_credit_card
                         else
                           :automatic_refund
                         end
