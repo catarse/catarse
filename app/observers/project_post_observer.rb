@@ -2,6 +2,6 @@ class ProjectPostObserver < ActiveRecord::Observer
   observe :project_post
 
   def after_create(post)
-    post.notify_contributors
+    ProjectPostWorker.perform_async(post.id)
   end
 end

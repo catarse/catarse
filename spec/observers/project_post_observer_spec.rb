@@ -4,10 +4,10 @@ describe ProjectPostObserver do
   describe 'after_create' do
     context "notify contributions" do
       let(:project) { create(:project) }
-      let(:project_post) { build(:project_post) }
+      let(:project_post) { create(:project_post) }
 
       it "should satisfy expectations" do
-        project_post.should_receive(:notify_contributors)
+        ProjectPostWorker.should_receive(:perform_async).with(project_post.id)
         project_post.save
       end
     end
