@@ -26,7 +26,7 @@
           - if @user.facebook_link
             li.facebook
               = link_to t('.user_social.facebook'), @user.facebook_link, target: '_blank'
-          - if @user.twitter
+          - if @user.twitter_link
             li.twitter
               = link_to t('.user_social.twitter'), @user.twitter_link, target: '_blank'
           - if @user.other_link
@@ -58,7 +58,7 @@
           - if current_user != @user
             p.empty.hide= t('.projects.no_projects', name: @user.display_name)
           - else
-            p.empty.hide= t('.projects.no_projects_current_user_html', link: link_to(t('.projects.here'), page_path(:how_it_works))).html_safe
+            p.empty.hide= t('.projects.no_projects_current_user_html', link: link_to(t('.projects.here'), start_path)).html_safe
           .results
           .clearfix
           .loading= image_tag "loading.gif"

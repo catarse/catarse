@@ -115,5 +115,7 @@ CatarseSettings.all.each do |conf|
   puts "  #{a['name']}: #{a['value']}"
 end
 
+Rails.cache.clear
+
 puts '---------------------------------------------'
 puts 'Done!'

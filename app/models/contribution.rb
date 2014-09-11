@@ -66,6 +66,14 @@ class Contribution < ActiveRecord::Base
     confirmed? && project.failed?
   end
 
+  def is_paypal?
+    payment_method.try(:downcase) == 'paypal'
+  end
+
+  def is_credit_card?
+    payment_choice.try(:downcase) == 'cartaodecredito'
+  end
+
   def available_rewards
     project.rewards.where('minimum_value <= ?', self.value).order(:minimum_value)
   end

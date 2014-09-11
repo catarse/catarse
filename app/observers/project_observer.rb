@@ -38,7 +38,6 @@ class ProjectObserver < ActiveRecord::Observer
     notify_admin_that_project_reached_deadline(project)
     notify_admin_that_project_is_successful(project)
     notify_users(project)
-
   end
 
   def notify_admin_that_project_reached_deadline(project)
@@ -61,12 +60,12 @@ class ProjectObserver < ActiveRecord::Observer
 
   def from_in_analysis_to_online(project)
     deliver_default_notification_for(project, :project_visible)
-    project.update_attributes({ online_date: DateTime.now,
-                                audited_user_name: project.user.full_name,
-                                audited_user_cpf: project.user.cpf,
-                                audited_user_moip_login: project.user.moip_login,
-                                audited_user_phone_number: project.user.phone_number
-
+    project.update_attributes({
+      online_date: DateTime.now,
+      audited_user_name: project.user.full_name,
+      audited_user_cpf: project.user.cpf,
+      audited_user_moip_login: project.user.moip_login,
+      audited_user_phone_number: project.user.phone_number
     })
   end
 
@@ -76,6 +75,8 @@ class ProjectObserver < ActiveRecord::Observer
     project.contributions.with_state('waiting_confirmation').each do |contribution|
       contribution.notify_to_contributor(:pending_contribution_project_unsuccessful)
     end
+
+    request_refund_for_failed_project(project)
 
     project.notify_owner(:project_unsuccessful, { from_email: CatarseSettings[:email_projects] })
   end
@@ -88,7 +89,15 @@ class ProjectObserver < ActiveRecord::Observer
   def notify_users(project)
     project.contributions.with_state('confirmed').each do |contribution|
       unless contribution.notified_finish
-        template_name = (project.successful? ? :contribution_project_successful : :contribution_project_unsuccessful)
+        template_name = if project.successful?
+                          :contribution_project_successful
+                        elsif (contribution.credits? || contribution.slip_payment?)
+                          :contribution_project_unsuccessful
+                        elsif contribution.is_paypal? || contribution.is_credit_card?
+                          :contribution_project_unsuccessful_credit_card
+                        else
+                          :automatic_refund
+                        end
 
         contribution.notify_to_contributor(template_name)
         contribution.update_attributes({ notified_finish: true })
@@ -98,11 +107,17 @@ class ProjectObserver < ActiveRecord::Observer
 
   private
 
+  def request_refund_for_failed_project(project)
+    project.contributions.where("state = 'confirmed' AND (payment_method = 'PayPal' OR payment_choice = 'CartaoDeCredito')").each do |contribution|
+      contribution.request_refund
+    end
+  end
+
   def deliver_default_notification_for(project, notification_type)
     template_name = project.notification_type(notification_type)
 
     project.notify_owner(
-      template_name, 
+      template_name,
       {
         from_email: project.last_channel.try(:email) || CatarseSettings[:email_projects],
         from_name: project.last_channel.try(:name) || CatarseSettings[:company_name]

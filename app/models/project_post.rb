@@ -12,20 +12,10 @@ class ProjectPost < ActiveRecord::Base
 
   catarse_auto_html_for field: :comment, video_width: 560, video_height: 340
 
-  scope :for_non_contributors, ->() {
-    where("not exclusive")
-  }
-
   scope :ordered, ->() { order("created_at desc") }
 
   def email_comment_html
     catarse_email_auto_html_for comment, image_width: 513
-  end
-
-  def notify_contributors
-    project.subscribed_users.each do |user|
-      notify_once(:posts, user, self, {from_email: project.user.email, from_name: project.user.display_name})
-    end
   end
 
   def to_partial_path

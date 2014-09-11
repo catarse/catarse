@@ -25,7 +25,7 @@ footer.footer
         .footer-list
           h3.footer-title= t('.titles.sitemap')
           ul.footer-list
-            li= link_to t('.links.submit'), page_path(:how_it_works)
+            li= link_to t('.links.submit'), start_path
             li= link_to t('.links.discover'), explore_path
             - if current_user
               li= link_to t('.links.near'), explore_path(anchor: "near_of/#{current_user.address_state}")

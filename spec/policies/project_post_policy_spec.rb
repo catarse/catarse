@@ -62,45 +62,53 @@ describe ProjectPostPolicy do
     end
   end
 
-  describe 'Scope' do
-    describe ".resolve" do
-      let(:project) { create(:project) }
-      let(:user) {}
+  describe ".show?" do
+    let(:project) { create(:project) }
+    let(:user) { }
 
-      before do
-        @exclusive_update = create(:project_post, exclusive: true, project: project)
-        @project_post = create(:project_post, project: project)
-      end
-
-      subject { ProjectPostPolicy::Scope.new(user, project.posts).resolve }
+    context "when post is exclusive" do
+      let(:project_post){ create(:project_post, project: project, exclusive: true) }
+      let(:policy){ ProjectPostPolicy.new(user, project_post).show? }
+      subject{ policy }
 
       context "when user is a contributor" do
         let(:user) { create(:contribution, state: 'confirmed', project: project).user }
-
-        it { should have(2).itens }
+        it { should eq true }
       end
 
       context "when user is not a contributor" do
         let(:user) { create(:contribution, state: 'pending', project: project).user }
 
-        it { should eq([@project_post]) }
+        it { should eq false }
       end
 
       context "when user is a project owner" do
         let(:user) { project.user }
 
-        it { should have(2).itens }
+        it { should eq true }
       end
 
       context "when user is an admin" do
         let(:user) { create(:user, admin: true) }
 
-        it { should have(2).itens }
+        it { should eq true }
       end
 
       context "when user is a guest" do
-        it { should eq([@project_post]) }
+        it { should be nil }
       end
     end
+
+    context "when post is not exclusive" do
+      let(:project_post){ create(:project_post, project: project, exclusive: false) }
+      let(:policy){ ProjectPostPolicy.new(user, project_post).show? }
+      subject{ policy }
+
+      context "when user is a guest" do
+        it { should be true }
+      end
+
+    end
   end
+
 end

@@ -1,11 +1,11 @@
 .main-header
   .w-row
     .w-col.w-col-2.w-col-small-4.w-col-tiny-4
-      = link_to (image_tag "/assets/catarse_bootstrap/catarse-logo.png"), root_url(host: CatarseSettings[:base_domain] || request.domain), class: 'header-logo', :title => CatarseSettings[:company_name]
+      = link_to (image_tag "catarse_bootstrap/catarse-logo.png"), root_url(host: CatarseSettings[:base_domain] || request.domain), class: 'header-logo', :title => CatarseSettings[:company_name]
     .header-nav.w-col.w-col-10.w-col-small-8.w-col-tiny-8
       = link_to t('layouts.header.discover'), explore_path, class: 'header-link left-side no-mobile'
 
-      = link_to t('layouts.header.submit'), page_path(:how_it_works), class: 'header-link left-side no-mobile'
+      = link_to t('layouts.header.submit'), start_path, class: 'header-link left-side no-mobile'
 
       .user-profile
         - if current_user
@@ -53,7 +53,7 @@ ul.mobile-menu
     = link_to t('layouts.header.discover'), explore_path, class: 'header-link left-side'
 
   li
-    = link_to t('layouts.header.submit'), page_path(:how_it_works), class: 'header-link left-side'
+    = link_to t('layouts.header.submit'), start_path, class: 'header-link left-side'
 
   li
     = link_to t('layouts.header.help'), CatarseSettings[:support_forum], target: :_blank, class: 'header-link right-side',  id: 'guidelines_header_modal' if CatarseSettings[:support_forum].present?

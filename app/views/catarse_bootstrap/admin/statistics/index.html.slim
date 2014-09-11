@@ -1,5 +1,5 @@
 = javascript_include_tag "//www.google.com/jsapi", "chartkick"
-= render 'shared/header'
+= render 'shared/header_bootstrap_v1'
 .row.admin
   h1= @title = t('.title')
 .row
@@ -29,4 +29,4 @@
   = line_chart ProjectsInAnalysisByPeriod.chart
   h1= t('admin.statistics.contributions_by_week.title')
   = line_chart ContributionsByPeriod.chart
-= render 'shared/footer'
+= render 'shared/footer_bootstrap_v1'
