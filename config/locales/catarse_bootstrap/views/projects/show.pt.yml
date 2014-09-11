@@ -28,6 +28,8 @@ pt:
       embed: embed
       embed_title: Incorpore este projeto no seu site
     show:
+      share: "Compartilhe"
+      tweet: "Tweet"
       contribute_project:
         display_status:
           reached_goal: "Este projeto será bem-sucedido e financiado em %{date}"
@@ -41,7 +43,6 @@ pt:
         submit: Apoiar este projeto
       project_by: projeto por
       funding_period: Período de campanha
-      count_contributed_projects: apoiou %{total} projetos
       project_header:
         subtitle_html: "Um projeto de %{link}"
         without_city: "Um projeto de"
