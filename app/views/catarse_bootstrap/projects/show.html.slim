@@ -22,144 +22,123 @@
 
 = render 'shared/header_big'
 
-.project-page#page_content
-  = render 'project_header'
+= render 'project_header'
 
-  nav.project-nav.w-hidden-small.w-hidden-tiny
-    .w-container
-      .w-row
-        .w-col.w-col-9
-          = link_to '#about', 'id' => 'about_link', 'class' => 'selected project-nav-tab', 'data-target' => '#project_about.content' do
-            = t('.menu.about')
+= render 'mobile_video'
 
-          = link_to '#posts', 'id' => 'posts_link', 'class' => 'project-nav-tab' , 'data-target' => '#project_posts' do
-            = t('.menu.posts')
-            span.project-nav-tab-quantity = "#{@posts_count}"
+nav.project-nav
+  .w-container
+    .w-row
+      .w-col.w-col-9.w-hidden-small.w-hidden-tiny
+        = link_to '#about', id: 'about_link', class: 'nav-tab selected', data: {target: '#project_about.content'} do
+          = t('.menu.about')
+        = link_to '#posts', id: 'posts_link', class: 'nav-tab' , data: {target: '#project_posts'} do
+          => t('.menu.posts')
+          span.badge = @posts_count
+        = link_to '#contributions', id: 'contributions_link', class: 'nav-tab' , data: {target: '#project_contributions'} do
+          => t('.menu.contributions')
+          span.badge = @project.total_contributions
 
-          = link_to '#contributions', 'id' => 'contributions_link', 'class' => 'project-nav-tab' , 'data-target' => '#project_contributions' do
-            = t('.menu.contributions')
-            span.project-nav-tab-quantity = "#{@project.total_contributions}"
+        = link_to '#comments', id: 'comments_link', class: 'nav-tab' , data: {target: '#project_comments'} do
+          => t('.menu.comments')
+          fb:comments-count href="#{request.base_url}/#{request.fullpath.split('/')[2]}" class="badge"
 
-          = link_to '#comments', 'id' => 'comments_link', 'class' => 'project-nav-tab' , 'data-target' => '#project_comments' do
-            = t('.menu.comments')
-            fb:comments-count href="#{request.base_url}/#{request.fullpath.split('/')[2]}" class="project-nav-tab-quantity"
+      .w-col.w-col-3.w-hidden-small.w-hidden-tiny.w-clearfix.project-nav-category
+        = link_to @project.category, explore_path(anchor: "by_category_id/#{@project.category_id}"), class: 'link-hidden-light u-right'
+        = image_tag 'catarse_bootstrap/tag-icon.png', class: 'project-nav-category-icon', width: "22" 
 
+
+section.section
+  .w-container
+    .w-row
+      article.w-col.w-col-8.w-hidden-small.w-hidden-tiny
+        #project_about.content = render 'project_about'
+
+        #project_content
+        - if policy(@project).update?
+          #project_reports.content.hide
+            = render partial: 'project_reports'
+          #project_edit.content.hide
+            = render partial: 'project_edit'
+
+        #project_posts.content.hide[data-path=project_posts_path(project_id: @project.id)]
           - if policy(@project).update?
-            = link_to '#edit', 'id' => 'edit_link', 'class' => 'project-nav-tab' , 'data-target' => '#project_edit' do
-              = t('.menu.edit')
-            = link_to '#reports', 'id' => 'reports_link', 'class' => 'project-nav-tab' , 'data-target' => '#project_reports' do
-              = t('.menu.reports')
+            = render template: 'projects/posts/new'
+          .results
+            | &nbsp;
 
-        .w-col.w-col-3
-          = link_to @project.category, explore_path(anchor: "by_category_id/#{@project.category_id}"), class: 'project-nav-category'
-
-  section.project-main-content
-    .w-container
-      .w-row
-        article.w-col.w-col-8.project-content
-          #project_about.content = render 'project_about'
-
-          #project_content
+        #project_contributions.content.hide[data-path=project_contributions_path(project_id: @project.id)]
           - if policy(@project).update?
-            #project_reports.content.hide
-              = render partial: 'project_reports'
-            #project_edit.content.hide
-              = render partial: 'project_edit'
+            = radio_button_tag(:contribution_state, "available_to_count", checked: true)
+            = label_tag(:contribution_state, t('.contribution_states.confirmed'))
+            = radio_button_tag(:contribution_state, "waiting_confirmation")
+            = label_tag(:contribution_state, t('.contributions_states.pending'))
+          .results
+            | &nbsp;
 
-          #project_posts.content.hide[data-path=project_posts_path(project_id: @project.id)]
-            - if policy(@project).update?
-              = render template: 'projects/posts/new'
-            .results
-              | &nbsp;
-
-          #project_contributions.content.hide[data-path=project_contributions_path(project_id: @project.id)]
-            - if policy(@project).update?
-              = radio_button_tag(:contribution_state, "available_to_count", checked: true)
-              = label_tag(:contribution_state, t('.contribution_states.confirmed'))
-              = radio_button_tag(:contribution_state, "waiting_confirmation")
-              = label_tag(:contribution_state, t('.contributions_states.pending'))
-            .results
-              | &nbsp;
-
-          #project_comments.content.hide
+        #project_comments.content.hide
 
 
 
-        aside.project-info.w-col.w-col-4
-          .project-stats
-            .project-stats-numbers
-              .project-stats-digits
-                p.fontsize-largest = @project.display_pledged
-                p.fontsize-small = t('.sidebar.goal', total: @project.display_goal).html_safe
-              .project-stats-digits
-                p.fontsize-largest = @project.total_contributions
-                p.fontsize-small = t('.sidebar.contributions')
-              .project-stats-digits
-                - if @project.draft? || @project.rejected?
-                  p.fontsize-largest = @project.online_days
-                  p.fontsize-small #{@project.online_days} #{pluralize_without_number(@project.online_days, I18n.t('datetime.prompts.day').downcase)} #{pluralize_without_number(@project.online_days, t('remaining_singular'), t('remaining_plural'))}
-                - else
-                  p.fontsize-largest = @project.remaining_days
-                  p.fontsize-small #{@project.time_to_go[:unit].capitalize} #{pluralize_without_number(@project.time_to_go[:time], t('remaining_singular'), t('remaining_plural'))}
+      aside.w-col.w-col-4
+        .project-stats
+          .project-stats-numbers.u-marginbottom-20.w-hidden-small.w-hidden-tiny
+            .w-hidden-small.w-hidden-tiny.u-marginbottom-10
+              .fontsize-largest = @project.display_pledged
+              .fontsize-small = t('.sidebar.goal', total: @project.display_goal).html_safe
+            .w-hidden-small.w-hidden-tiny.u-marginbottom-10
+              .fontsize-largest = @project.total_contributions
+              .fontsize-small = t('.sidebar.contributions')
+            .w-hidden-small.w-hidden-tiny.u-marginbottom-10
+              - if @project.draft? || @project.rejected?
+                .fontsize-largest = @project.online_days
+                .fontsize-small #{@project.online_days} #{pluralize_without_number(@project.online_days, I18n.t('datetime.prompts.day').downcase)} #{pluralize_without_number(@project.online_days, t('remaining_singular'), t('remaining_plural'))}
+              - else
+                .fontsize-largest = @project.remaining_days
+                .fontsize-small #{@project.time_to_go[:unit].capitalize} #{pluralize_without_number(@project.time_to_go[:time], t('remaining_singular'), t('remaining_plural'))}
 
-            - if @project.online? && !@project.expired?
-              = link_to t('.contribute_project.submit'), new_project_contribution_path(@project), id: 'contribute_project_form', class: "project-back-button bt-large"
+          - if @project.online? && !@project.expired?
+            = link_to t('.contribute_project.submit'), new_project_contribution_path(@project), id: 'contribute_project_form', class: "btn btn-large u-marginbottom-20"
 
-            p.fontsize-smaller.project-stats-final[class=@project.display_status]
-              = t(".contribute_project.display_status.#{@project.display_status}", goal: @project.display_goal, date: @project.display_expires_at)
+          .fontsize-smaller[class=@project.display_status]
+            = t(".contribute_project.display_status.#{@project.display_status}", goal: @project.display_goal, date: @project.display_expires_at)
 
-          .project-author
-            = image_tag @project.user.display_image, width: "80", height: "80", class: "thumb-author"
-            p.fontsize-small
-              = link_to @project.user.display_name, user_path(@project.user)
-
-            p.project-author-city.fontsize-smallest = @project.user.address_city
-            .fontsize-smallest = "1 projeto criado"
-            .fontsize-smallest = t('.count_contributed_projects', total: @project.user.total_contributed_projects)
-
-            .project-author-contacts
-              ul.w-list-unstyled
-                - if @project.user.facebook_link
-                  li.project-author-item.fontsize-smaller
-                    = link_to "Perfil no facebook", @project.user.facebook_link, target: '_blank', class: 'facebook'
-                - if @project.user.twitter
-                  li.project-author-item.fontsize-smaller
-                    = link_to "Perfil no twitter", @project.user.twitter_link, target: '_blank', class: 'twitter'
-                - if @project.user.other_link
-                  li.project-author-item.fontsize-smaller
-                    = link_to @project.user.other_link, @project.user.other_link, target: '_blank'
-
+        .card.card-user.u-radius.u-marginbottom-30
+          .w-clearfix
+            = image_tag @project.user.display_image, width: "100", class: "thumb u-left u-radius"
+            .fontsize-small.fontweight-semibold = link_to @project.user.display_name, user_path(@project.user), class: 'link-hidden'
+            .fontsize-smallest = @project.user.address_city
+            .fontsize-smallest = t('created_project', count: @project.user.projects.size)
+            .fontsize-smallest = t('contributed_project', count: @project.user.total_contributed_projects)
+          .w-hidden-small.w-hidden-tiny.project-author-contacts
+            ul.w-list-unstyled.fontsize-smaller.fontweight-semibold
+              - if @project.user.facebook_link
+                li
+                  = link_to "Perfil no facebook", @project.user.facebook_link, target: '_blank', class: 'link-hidden'
+              - if @project.user.twitter
+                li
+                  = link_to "Perfil no twitter", @project.user.twitter_link, target: '_blank', class: 'link-hidden'
+              - if @project.user.other_link
+                li
+                  = link_to @project.user.other_link, @project.user.other_link, target: '_blank', class: 'link-hidden'
           .project-author-send-message
             = mail_to @project.user.email, "Entre em contato", target: '_blank', class: 'fontsize-small alt-link'
 
-          .project-share.project-share-sidebar
-            .project-share-link
-              #facebook_share = render_facebook_like title: @project.name, href: project_by_slug_url(@project.permalink, locale: I18n.locale), data_width: "180px"
-            .project-share-link
-              #twitter_share= render_twitter(url: project_by_slug_url(permalink: @project.permalink), title: @project.name)
+        .w-hidden-main.w-hidden-medium.project-share
+          .div-share-mobile-fb
+            = link_to '#', class: 'btn bt-medium bt-fb bt-fb-mobile' do
+              = image_tag 'catarse_bootstrap/facebook-xxl.png', class: 'icon-share-mobile twitter'
+              = t('.share')
+          .div-share-mobile-fb
+            = link_to '#', class: 'btn bt-medium bt-fb bt-fb-mobile bt-tweet-mobile' do
+              = image_tag 'catarse_bootstrap/twitter-256.png', class: 'icon-share-mobile twitter'
+              = t('.tweet')
 
-          - if policy(@project).update?
-            h4 = t('.no_rewards_warning_title')
-            p = t('.no_rewards_warning')
-            .new_reward_content.hide
-              = image_tag 'loading.gif'
+        #rewards.u-marginbottom-30[data-can_update="#{policy(@project).update?}" data-index_path=project_rewards_path(@project)]
+          .reward-loader= image_tag 'catarse_bootstrap/loader.gif'
+        .fontsize-small.fontweight-semibold.u-text-center-small-only = t('.funding_period')
+        .fontsize-small.u-text-center-small-only = "#{@project.online_date} - #{@project.expires_at}"
+        br
+        = "#{@project.display_online_date} - #{@project.display_expires_at}  (#{t('datetime.distance_in_words.x_days', count: @project.online_days)})"
 
-            = link_to t('.menu.add_reward'), 'javascript:void(0);', data: {target: '.new_reward_content', path: new_project_reward_path(@project)}, class: 'btn btn-success pull-right show_reward_form'
-
-            .skull-modal.new_reward_content.hide
-              .skull-modal-header
-                h3= t('projects.rewards.new_reward')
-                a class='skull-modal-close' href='javascript:void(0);' &times;
-              .skull-modal-body
-                = image_tag 'loading.gif'
-
-          #rewards[data-can_update="#{policy(@project).update?}" data-index_path=project_rewards_path(@project)]
-            .reward-loader= image_tag 'loading.gif'
-
-          .project-funding-period
-            p.fontsize-small
-              strong
-                = t('.funding_period')
-            p.fontsize-small
-              = "#{@project.display_online_date} - #{@project.display_expires_at}  (#{t('datetime.distance_in_words.x_days', count: @project.online_days)})"
 = render 'shared/footer_big'
