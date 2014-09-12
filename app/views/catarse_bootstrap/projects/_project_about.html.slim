@@ -1,36 +1,35 @@
-iframe src="#{@project.display_video_embed_url}" class="embedly-embed" width="100%" height="379" frameborder="0" allowFullScreen
+.w-embed.w-video.project-video
+  iframe src="#{@project.display_video_embed_url}" class="embedly-embed" width="100%" height="379" frameborder="0" allowFullScreen
 
-ul.project-share.no-mobile
-  li
-    #facebook_share = render_facebook_like title: @project.name, href: project_by_slug_url(@project.permalink, locale: I18n.locale)
-  li
-    #twitter_share= render_twitter(url: project_by_slug_url(permalink: @project.permalink), title: @project.name)
-  li
+.project-share.u-marginbottom-20
+    #facebook_share.img-share = render_facebook_like title: @project.name, href: project_by_slug_url(@project.permalink, locale: I18n.locale)
+    #twitter_share.img-share = render_twitter(url: project_by_slug_url(permalink: @project.permalink), title: @project.name)
     = link_to t('.embed'), '#embed', id: 'embed_link', class: 'link embed'
 
 .project-about
-  .project-channel-banner.no-mobile
-    - @project.channels.each do |channel|
+  - @project.channels.each do |channel|
+    .card.card-secondary.u-marginbottom-40
       .w-row
         .w-colw-col-2
-          .project-channel-banner-thumbnail
-            = image_tag channel.users.first.display_image, title: channel.name
+          = image_tag channel.users.first.display_image, title: channel.name, class: 'thumb u-radius'
         .w-col.w-col-6
-          .project-channel-banner-description
+          .fontsize-smaller
             = "Este projeto faz parte do Canal"
+          .fontweight-bold.u-marginbottom-10.fontsize-smaller
             = channel.name
-            = link_to "Conheça o Canal", root_url(subdomain: channel.permalink), class: 'alt-link'
+            = link_to "Conheça o Canal", root_url(subdomain: channel.permalink), class: 'alt-link fontsize-smaller'
         .w-col.w-col-4
-          - if channel.has_subscriber?(current_user)
-            = link_to channels_subscriber_path, {method: :delete, class: "bt-large bt-small bt-dark bt-channel-project-banner"} do
-              .stop_following= t('channels.unfollow')
-          - else
-              = link_to t('channels.follow'), channels_subscriber_path, class: [:button, :medium, :negative], title: t('channels.follow')
-          p.project-channel-banner-followers
-            = t('channels.subscribed', count: channel.channels_subscribers.size)
+          .project-follow-channel
+            - if channel.has_subscriber?(current_user)
+              = link_to channels_subscriber_path, {method: :delete, class: "bt-large bt-small bt-dark bt-channel-project-banner"} do
+                .stop_following= t('channels.unfollow')
+            - else
+                = link_to t('channels.follow'), channels_subscriber_path, class: 'btn btn-small btn-dark', title: t('channels.follow')
+            .fontsize-smaller
+              = t('channels.subscribed', count: channel.channels_subscribers.size)
 
-  p.fontsize-large.u-marginbottom-30 = @project.headline
+  .fontsize-large.u-marginbottom-30 = @project.headline
   = link_to "Leia mais", about_mobile_project_path(@project), class: "alt-link fontsize-small read-more-link"
   .no-mobile
-    p.fontsize-base
+    .fontsize-base
       = @project.about_html.html_safe
