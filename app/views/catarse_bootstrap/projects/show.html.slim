@@ -106,10 +106,10 @@ section.section
         .card.card-user.u-radius.u-marginbottom-30
           .w-clearfix
             = image_tag @project.user.display_image, width: "100", class: "thumb u-left u-radius u-marginbottom-30"
-            .fontsize-small.fontweight-semibold = link_to @project.user.display_name, user_path(@project.user), class: 'link-hidden'
-            .fontsize-smallest = @project.user.address_city
-            .fontsize-smallest = t('created_project', count: @project.user.projects.size)
-            .fontsize-smallest = t('contributed_project', count: @project.user.total_contributed_projects)
+            .fontsize-small.fontweight-semibold.lineheight-tighter = link_to @project.user.display_name, user_path(@project.user), class: 'link-hidden'
+            .fontsize-smallest.lineheight-looser = @project.user.address_city
+          .fontsize-smallest = t('created_project', count: @project.user.projects.size)
+          .fontsize-smallest = t('contributed_project', count: @project.user.total_contributed_projects)
           .w-hidden-small.w-hidden-tiny.project-author-contacts
             ul.w-list-unstyled.fontsize-smaller.fontweight-semibold
               - if @project.user.facebook_link
@@ -121,9 +121,7 @@ section.section
               - if @project.user.other_link
                 li
                   = link_to @project.user.other_link, @project.user.other_link, target: '_blank', class: 'link-hidden'
-          .project-author-send-message
-            = mail_to @project.user.email, "Entre em contato", target: '_blank', class: 'fontsize-small alt-link'
-          a.btn.btn-medium.btn-message href="mailto:@project.user.email," target="_blank" Enviar mensagem
+          a.btn.btn-medium.btn-message href="mailto:@project.user.email," target="_blank" Entre em contato
 
         .w-hidden-main.w-hidden-medium.project-share
           .div-share-mobile-fb

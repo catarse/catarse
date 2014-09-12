@@ -1078,12 +1078,13 @@ p {
   text-align: center;
 }
 .project-reward-box-select-text {
+  position: absolute;
   display: block;
-  height: auto;
-  padding-top: 118px;
-  padding-bottom: 118px;
+  width: 100%;
+  padding-top: 40%;
   font-size: 19px;
   font-weight: 400;
+  text-align: center;
 }
 .project-nav-category {
   position: static;
@@ -1360,7 +1361,7 @@ p {
 }
 .fontsize-smaller {
   font-size: 14px;
-  line-height: 22px;
+  line-height: 150%;
 }
 .white {
   color: white;
@@ -1384,7 +1385,7 @@ p {
 }
 .fontsize-small {
   font-size: 16px;
-  line-height: 24px;
+  line-height: 150%;
 }
 .fontsize-small.inline {
   display: inline-block;
@@ -1419,7 +1420,7 @@ p {
 .fontsize-base {
   position: relative;
   font-size: 18px;
-  line-height: 28px;
+  line-height: 150%;
 }
 .fontsize-megajumbo {
   font-size: 84px;
@@ -1447,7 +1448,7 @@ p {
 }
 .fontsize-smallest {
   font-size: 13px;
-  line-height: 18px;
+  line-height: 150%;
 }
 .col-right-bootstrap-buttons {
   padding-right: 150px;
@@ -2818,6 +2819,21 @@ p {
 .fontcolor-secondary {
   color: #79808b;
 }
+.lineheight-tighter {
+  line-height: 115%;
+}
+.lineheight-tightest {
+  line-height: 100%;
+}
+.lineheight-tight {
+  line-height: 130%;
+}
+.lineheight-loose {
+  line-height: 170%;
+}
+.lineheight-looser {
+  line-height: 200%;
+}
 html.w-mod-js *[data-ix="fade-in"] {
   opacity: 0;
 }
@@ -3153,7 +3169,7 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
     padding: 10px;
   }
   .thumb {
-    width: 60px;
+    width: 55px;
   }
   .card-reward {
     -webkit-transition: all 500ms ease;
