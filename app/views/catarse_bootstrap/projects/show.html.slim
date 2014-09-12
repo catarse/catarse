@@ -80,7 +80,7 @@ section.section
 
 
 
-      aside.w-col.w-col-4
+      #project-sidebar.aside.w-col.w-col-4
         .project-stats
           .project-stats-numbers.u-marginbottom-20.w-hidden-small.w-hidden-tiny
             .w-hidden-small.w-hidden-tiny.u-marginbottom-10
@@ -136,7 +136,7 @@ section.section
               = t('.tweet')
 
         #rewards.u-marginbottom-30[data-can_update="#{policy(@project).update?}" data-index_path=project_rewards_path(@project)]
-          .reward-loader= image_tag 'catarse_bootstrap/loader.gif'
+          .u-text-center = image_tag 'catarse_bootstrap/loader.gif'
         .fontsize-small.fontweight-semibold.u-text-center-small-only = t('.funding_period')
         .fontsize-small.u-text-center-small-only = "#{@project.online_date} - #{@project.expires_at}"
         br
