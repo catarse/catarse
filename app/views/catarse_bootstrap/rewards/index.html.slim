@@ -1,29 +1,18 @@
 - collection.rank(:row_order).each do |reward|
 
-  .project-reward-box[id="reward_#{reward.id}" data-new_contribution_url=new_project_contribution_path(parent, reward_id: reward.id) data-update_url=sort_project_reward_path(parent, reward) class="#{(policy(reward).update? ? 'clickable_owner sortable' : '')} #{(parent.online? && !reward.sold_out? && !policy(reward).update?  ? 'clickable'  : '' )} #{reward.sold_out? ? 'project-reward-box-gone' : ''} "]
-
-    - if policy(reward).update?
-
-      .bootstrap-form.bootstrap-twitter
-        .hide id="reward#{reward.id}Editor"
-          = image_tag 'loading.gif'
-
-        .bootstrap-twitter
-          = link_to "javascript:void(0);", data: {target: "#reward#{reward.id}Editor", path: edit_project_reward_path(parent, reward)}, class: 'show_reward_form btn btn-mini pull-right btn-primary' do
-            i.icon-pencil.icon-white
-
+  .card.card-secondary.u-marginbottom-10.card-reward[id="reward_#{reward.id}" data-new_contribution_url=new_project_contribution_path(parent, reward_id: reward.id) data-update_url=sort_project_reward_path(parent, reward) class="#{(policy(reward).update? ? 'clickable_owner sortable' : '')} #{(parent.online? && !reward.sold_out? && !policy(reward).update?  ? 'clickable'  : '' )} #{reward.sold_out? ? 'project-reward-box-gone' : ''} "]
     .project-reward-box-title
-      p.fontsize-base = t('.reward_title', minimum: reward.display_minimum).html_safe
-      p.fontsize-smaller = pluralize(reward.contributions.with_state('confirmed').count(:all), t('contribution_singular'), t('contribution_plural'))
+      .fontsize-base.fontweight-semibold = t('.reward_title', minimum: reward.display_minimum).html_safe
+      .fontsize-smaller.u-marginbottom-20.fontweight-semibold = pluralize(reward.contributions.with_state('confirmed').count(:all), t('contribution_singular'), t('contribution_plural'))
 
       - if reward.maximum_contributions
         - if reward.sold_out?
-          .fontsize-smaller.project-reward-box-limited-label.project-reward-box-gone-label
+          span.badge.badge-gone.fontsize-smaller
             = t('.sold_out')
         - else
-          .fontsize-smaller.project-reward-box-limited-label
-            = t('.limited')
-            |
+          span.badge.badge-attention.fontsize-smaller
+            span.fontweight-bold
+              => t('.limited')
             = " (" + reward.display_remaining + ")"
         - in_time_to_confirm = reward.contributions.with_state('waiting_confirmation').count(:all)
         - if in_time_to_confirm > 0
@@ -33,10 +22,10 @@
     .fontsize-small = reward.display_description
 
     - if reward.days_to_delivery.present?
-        p.fontsize-smallest = "#{t('.reward_deliver_time', estimate: reward.display_deliver_estimate)}".html_safe
+        .fontsize-smallest = "#{t('.reward_deliver_time', estimate: reward.display_deliver_estimate)}".html_safe
 
     - if current_user && current_user.admin
-        p.fontsize-smallest = "Modificado em: #{I18n.l(reward.updated_at.to_date)} #{parent.online_date.nil? ? '' : ((parent.online_date > reward.updated_at)? '(draft)' : '(online)')}"
+        .fontsize-smallest = "Modificado em: #{I18n.l(reward.updated_at.to_date)} #{parent.online_date.nil? ? '' : ((parent.online_date > reward.updated_at)? '(draft)' : '(online)')}"
 
     .project-reward-box-hover
-      .project-reward-box-hover-text = "Selecione esta recompensa"
+      .project-reward-box-select-text = "Selecione esta recompensa"
