@@ -18,7 +18,6 @@ en:
     meta_title:  "%{title} · %{company_name}"
     description: "O Catarse é uma ferramenta diferente – e colaborativa – para tirar o seu projeto do papel!"
     keywords: "catarse, crowdfunding, project, community, open source"
-
   login:
     forgot_password:
       welcome: 'Reset password'
@@ -378,22 +377,48 @@ en:
       reached_goal: funded
       draft: "draft"
   projects:
-    send_to_analysis: 'Your project has sent to our team'
-    box:
-      by: by
-      when: in
-    admin_fields:
-      title: "Admin fields"
-    contribute_project:
-      display_status:
-        reached_goal: "This project will be successful and funded on %{date}"
-        not_reached_goal: "This project will only be funded if at least %{goal} is contributed until %{date}"
-        failed: "This project didn't reach the goal of %{goal} until %{date} and wasn't funded"
-        successful: "This project was successful and was funded on %{date}"
-        waiting_funds: "Waiting confirmation from payments to know if this project will be funded."
-        draft: "This project is in draft mode and is not open to contributions yet."
-      reached_of: "Reached of"
-      submit: "Contribute this project"
+    no_projects: "%{name} haven't started any project on Catarse yet. We wonder if inspiration will hit one of these days!"
+    no_projects_current_user_html: "You haven't submitted any project to Catarse yet. Let the inspiration flow and %{link} to start!"
+    title: "%{name}'s projects"
+    title_current_user: "My projects"
+    show:
+      rejected: "This project does not fit our <a href='https://docs.google.com/document/d/1Heh9LlvoSoD0lUfbmV5WlISJ3nqmGpEQiw15TBuCn-0/edit' target='_blank'>selection criteria.</a>"
+      waiting: "This project is waiting for approval and soon we'll know if it will go online on Catarse ;)"
+      waiting_owner: "To edit the project info, click on 'Edit project' tab. The rewards you can edit on reward column."
+      about_title: "About this project"
+      no_rewards_warning_title: 'Create here your rewards'
+      no_rewards_warning: "Don't go nuts! Think about how you're going to deliver them and include those costs in your budget. People are putting their trust in you, don't kid around with that!"
+      reports:
+        no_contributions: "This project don't have any contribution yet."
+        link_reports: 'Download report of '
+        all_contributions: 'all contributions'
+        all_contributions_without_reward: "all contributions that don't select any reward"
+        link_reward: 'Download the report of contributions that selected the reward'
+      menu:
+        about: About
+        contributions: Contributions
+        comments: Comments
+        updates: Updates
+        edit: Edit
+        reports: Reports
+        add_reward: 'Add Rewards'
+      share:
+        embed: embed
+        embed_title: "Embed this project on your site"
+        link: Link
+        link_title: "Share the link"
+        take_a_look: "Check out the project"
+        title: "Be part of it and share this project"
+      contribute_project:
+        submit: "Back this project"
+        display_status:
+          reached_goal: "This project will be successful and funded on %{date}"
+          not_reached_goal: "This project will only be funded if at least %{goal} is contributed until %{date}"
+          failed: "This project didn't reach the goal of %{goal} until %{date} and wasn't funded"
+          successful: "This project was successful and was funded on %{date}"
+          waiting_funds: "Waiting confirmation from payments to know if this project will be funded."
+          draft: "This project is in draft mode and is not open to contributions yet."
+        reached_of: "Reached of"
     contributions:
       contribution:
         anonymous_contribution: "Anonymous contribution"
@@ -531,34 +556,6 @@ en:
       title: "Contribute and receive..."
     send_mail:
       success: "Your project was successfully sent! We'll soon contact you. Thanks a lot!"
-    show:
-      rejected: "This project does not fit our <a href='https://docs.google.com/document/d/1Heh9LlvoSoD0lUfbmV5WlISJ3nqmGpEQiw15TBuCn-0/edit' target='_blank'>selection criteria.</a>"
-      waiting: "This project is waiting for approval and soon we'll know if it will go online on Catarse ;)"
-      waiting_owner: "To edit the project info, click on 'Edit project' tab. The rewards you can edit on reward column."
-      about_title: "About this project"
-      no_rewards_warning_title: 'Create here your rewards'
-      no_rewards_warning: "Don't go nuts! Think about how you're going to deliver them and include those costs in your budget. People are putting their trust in you, don't kid around with that!"
-      reports:
-        no_contributions: "This project don't have any contribution yet."
-        link_reports: 'Download report of '
-        all_contributions: 'all contributions'
-        all_contributions_without_reward: "all contributions that don't select any reward"
-        link_reward: 'Download the report of contributions that selected the reward'
-      menu:
-        about: About
-        contributions: Contributions
-        comments: Comments
-        updates: Updates
-        edit: Edit
-        reports: Reports
-        add_reward: 'Add Rewards'
-      share:
-        embed: embed
-        embed_title: "Embed this project on your site"
-        link: Link
-        link_title: "Share the link"
-        take_a_look: "Check out the project"
-        title: "Be part of it and share this project"
     new:
       legend_html: "After filling in the form below, you will receive a project page in Draft mode. In this draft you will add the rewards for your contributions. You may also share the page with your friends to collect feedback and sharpen your project even more.<br><br>The information filled in below is not definitive, but remember that the more consistent you are in your project submission, the faster it will go on air.<br><br><b>Very Important:</b> <i>Catharsis is cured platform, which means that our board will evaluate the focus, the feasibility and consistency of your project during the Draft. If we understand that your project does not comply with our <a href='https://docs.google.com/a/catarse.me/document/d/1wLDS2lphQ6monovg9rEaTIDcxBD3FRZV9dfGKmajyj8/edit' target='_blank' >selection criteria</a>, it may be refused by the team of curators.</i>"
       permalink_important: 'Try not to use underline, hyphen etc.'
@@ -897,25 +894,7 @@ en:
     header:
       bio_tooltip: "Click here to write about you..."
       name_tooltip: "Click here to fill your name..."
-    projects:
-      no_projects: "%{name} haven't started any project on Catarse yet. We wonder if inspiration will hit one of these days!"
-      no_projects_current_user_html: "You haven't submitted any project to Catarse yet. Let the inspiration flow and %{link} to start!"
-      title: "%{name}'s projects"
-      title_current_user: "My projects"
-  users_mailer:
-    notification_email:
-      alt: "You must enable images in order to correctly view this message."
-      forward: "Forward to your friends"
-      hello: Hi
-      intro: "You are receiving this message because you signed up on Catarse"
-      mailee: "Message delivered by Mailee.me"
-      salutation: "Big hugs,"
-      signature: "Catarse's Team"
-      unsubscribe: Unsubscribe
-      unsubscribe_long: "If you don't want to receive these emails"
-      weblink: "View on the web"
-      whitelist: "Add contact"
-      whitelist_long: "Add our email to your contacts"
+    
   notifications:
     contributions:
       to_contribution:
