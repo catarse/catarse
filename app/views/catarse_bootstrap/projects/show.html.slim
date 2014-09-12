@@ -52,7 +52,7 @@ section.section
   .w-container
     .w-row
       article.w-col.w-col-8.w-hidden-small.w-hidden-tiny
-        #project_about.content = render 'project_about'
+        #project_about.content.about = render 'project_about'
 
         #project_content
         - if policy(@project).update?
@@ -114,14 +114,14 @@ section.section
             ul.w-list-unstyled.fontsize-smaller.fontweight-semibold
               - if @project.user.facebook_link
                 li
-                  = link_to "Perfil no facebook", @project.user.facebook_link, target: '_blank', class: 'link-hidden'
+                  = link_to t('.facebook_profile'), @project.user.facebook_link, target: '_blank', class: 'link-hidden'
               - if @project.user.twitter
                 li
-                  = link_to "Perfil no twitter", @project.user.twitter_link, target: '_blank', class: 'link-hidden'
+                  = link_to t('.twitter_profile'), @project.user.twitter_link, target: '_blank', class: 'link-hidden'
               - if @project.user.other_link
                 li
-                  = link_to @project.user.other_link, @project.user.other_link, target: '_blank', class: 'link-hidden'
-          a.btn.btn-medium.btn-message href="mailto:@project.user.email," target="_blank" Entre em contato
+                  = link_to t('.author_website'), @project.user.other_link, target: '_blank', class: 'link-hidden'
+          = mail_to @project.user.email, t('.contact_author'), target: '_blank', class: 'btn btn-medium btn-message'
 
         .w-hidden-main.w-hidden-medium.project-share
           .div-share-mobile-fb
@@ -136,8 +136,6 @@ section.section
         #rewards.u-marginbottom-30[data-can_update="#{policy(@project).update?}" data-index_path=project_rewards_path(@project)]
           .u-text-center = image_tag 'catarse_bootstrap/loader.gif'
         .fontsize-small.fontweight-semibold.u-text-center-small-only = t('.funding_period')
-        .fontsize-small.u-text-center-small-only = "#{@project.online_date} - #{@project.expires_at}"
-        br
-        = "#{@project.display_online_date} - #{@project.display_expires_at}  (#{t('datetime.distance_in_words.x_days', count: @project.online_days)})"
+        .fontsize-small.u-text-center-small-only = "#{@project.display_online_date} - #{@project.display_expires_at}  (#{t('datetime.distance_in_words.x_days', count: @project.online_days)})"
 
 = render 'shared/footer_big'
