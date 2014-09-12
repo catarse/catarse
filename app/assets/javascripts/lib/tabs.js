@@ -17,9 +17,11 @@ Skull.Tabs = {
 
   loadTab: function($tabContent){
     var that = this;
-    if($.trim($tabContent.html()) == '' && $tabContent.data('path')){
+    var results = $tabContent.find('.results');
+
+    if($.trim(results.html()) == '' && $tabContent.data('path')){
       $.get($tabContent.data('path')).success(function(data){
-        $tabContent.html(data);
+        results.html(data);
       });
     }
   }
