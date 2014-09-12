@@ -26,7 +26,7 @@
 
 = render 'mobile_video'
 
-nav.project-nav
+nav.project-nav.w-hidden-small.w-hidden-tiny
   .w-container
     .w-row
       .w-col.w-col-9.w-hidden-small.w-hidden-tiny
@@ -100,12 +100,12 @@ section.section
           - if @project.online? && !@project.expired?
             = link_to t('.contribute_project.submit'), new_project_contribution_path(@project), id: 'contribute_project_form', class: "btn btn-large u-marginbottom-20"
 
-          .fontsize-smaller[class=@project.display_status]
+          .fontsize-smaller.u-marginbottom-30[class=@project.display_status]
             = t(".contribute_project.display_status.#{@project.display_status}", goal: @project.display_goal, date: @project.display_expires_at)
 
         .card.card-user.u-radius.u-marginbottom-30
           .w-clearfix
-            = image_tag @project.user.display_image, width: "100", class: "thumb u-left u-radius"
+            = image_tag @project.user.display_image, width: "100", class: "thumb u-left u-radius u-marginbottom-30"
             .fontsize-small.fontweight-semibold = link_to @project.user.display_name, user_path(@project.user), class: 'link-hidden'
             .fontsize-smallest = @project.user.address_city
             .fontsize-smallest = t('created_project', count: @project.user.projects.size)
@@ -123,6 +123,7 @@ section.section
                   = link_to @project.user.other_link, @project.user.other_link, target: '_blank', class: 'link-hidden'
           .project-author-send-message
             = mail_to @project.user.email, "Entre em contato", target: '_blank', class: 'fontsize-small alt-link'
+          a.btn.btn-medium.btn-message href="mailto:@project.user.email," target="_blank" Enviar mensagem
 
         .w-hidden-main.w-hidden-medium.project-share
           .div-share-mobile-fb
