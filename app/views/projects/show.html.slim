@@ -1,3 +1,5 @@
+= javascript_include_tag "//www.google.com/jsapi", "chartkick"
+
 = content_for :meta_tags do
   - if ['online', 'waiting_funds', 'successful'].include? @project.state
     meta name="robots" content="index, follow"
@@ -61,6 +63,8 @@
             = t('.menu.edit')
           = link_to '#reports', 'id' => 'reports_link', 'data-target' => '#project_reports' do
             = t('.menu.reports')
+          = link_to '#metrics', id: 'metrics_link', data: {target: '#project_metrics'} do
+            = t('.menu.metrics')
     .main
       #project_content
         - if policy(@project).update?
@@ -86,6 +90,10 @@
           #contributions-loading.loading= image_tag "loading.gif"
         #project_comments.content.hide
         #project_about.content= render 'project_about'
+        #project_metrics.content.hide[data-path=metrics_project_path(id: @project.id)]
+          .results
+          .clearfix
+          #metrics-loading.loading= image_tag "loading.gif"
 
       .clearfix
     .sidebar
