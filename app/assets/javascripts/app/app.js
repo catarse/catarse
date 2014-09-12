@@ -6,6 +6,12 @@ var App = window.App = Skull.View.extend({
     "click a.mobile-menu-link" : "mobileMenu",
     "click .zendesk_widget" : "showWidget",
     "click a.icon-feedback-box" : "toggleBox",
+    "click #pg_search_submit" : "searchProject"
+  },
+
+  searchProject: function(){
+    this.$('#search-form').submit();
+    return false;
   },
 
   beforeActivate: function(){
