@@ -60,12 +60,19 @@ section.section
 
         #project_contributions.content.hide[data-path=project_contributions_path(project_id: @project.id)]
           - if policy(@project).update?
-            = radio_button_tag(:contribution_state, "available_to_count", checked: true)
-            = label_tag(:contribution_state, t('.contribution_states.confirmed'))
-            = radio_button_tag(:contribution_state, "waiting_confirmation")
-            = label_tag(:contribution_state, t('.contributions_states.pending'))
+            .w-row
+              .w-col.w-col-1
+                = radio_button_tag(:contribution_state, "available_to_count", checked: true)
+              .w-col.w-col-5
+                = label_tag(:contribution_state_available_to_count, t('.contribution_states.confirmed'))
+              .w-col.w-col-1
+                = radio_button_tag(:contribution_state, "waiting_confirmation")
+              .w-col.w-col-5
+                = label_tag(:contribution_state_waiting_confirmation, t('.contributions_states.pending'))
+            .divider.u-marginbottom-20
           .results
             | &nbsp;
+          #contributions-loading.loader.u-text-center.w-col.w-col-12 = image_tag "catarse_bootstrap/loader.gif"
 
         #project_comments.content.hide
 
