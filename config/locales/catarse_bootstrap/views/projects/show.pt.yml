@@ -28,8 +28,12 @@ pt:
       embed: embed
       embed_title: Incorpore este projeto no seu site
     show:
+      twitter_profile: "Perfil no Twitter"
+      facebook_profile: "Perfil no Facebook"
+      author_website: "Site do autor"
       share: "Compartilhe"
       tweet: "Tweet"
+      contact_author: "Enviar mensagem"
       contribute_project:
         display_status:
           reached_goal: "Este projeto será bem-sucedido e financiado em %{date}"
