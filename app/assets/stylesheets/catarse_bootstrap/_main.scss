@@ -1283,12 +1283,7 @@ p {
   padding-left: 0px;
 }
 .project-news {
-  padding-top: 20px;
   padding-right: 14px;
-  padding-bottom: 60px;
-  border-bottom: 1px solid #e9e9ec;
-  border-top-style: none;
-  border-top-color: #ddd;
 }
 .project-news.project-news-top {
   margin-top: 0px;
@@ -2572,7 +2567,7 @@ p {
   position: relative;
 }
 .divider {
-  border-top: 1px solid #ddd;
+  border-top: 1px solid #e9e9ec;
 }
 .success {
   color: #00b22d;
@@ -2615,7 +2610,6 @@ p {
   font-weight: 700;
 }
 .u-marginbottom-30 {
-  display: inline-block;
   margin-bottom: 30px;
 }
 .u-marginbottom-60 {
@@ -2626,7 +2620,6 @@ p {
 }
 .u-right {
   float: right;
-  color: #3f4752;
 }
 .dropdown-icon {
   position: absolute;
@@ -2821,6 +2814,9 @@ p {
 .project-name {
   padding-right: 145px;
   padding-left: 145px;
+}
+.fontcolor-secondary {
+  color: #79808b;
 }
 html.w-mod-js *[data-ix="fade-in"] {
   opacity: 0;
