@@ -9,6 +9,7 @@ class Project < ActiveRecord::Base
   include Project::StateMachineHandler
   include Project::VideoHandler
   include Project::CustomValidators
+  include Project::RemindersHandler
 
   has_notifications
 
