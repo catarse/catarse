@@ -1,5 +1,10 @@
 pt:
   projects:
+    metrics:
+      titles:
+        confirmed_by_day: 'Total de apoios confirmados por dia'
+        confirmed_amount_by_day: 'Total arrecadado por dia'
+        address_state: 'Total de apoios confirmados por Estado'
     reminder:
       ok: 'Ok! Vamos te mandar um lembrete por e-mail 48 horas antes do fim da campanha, a não ser que você já tenha apoiado o projeto'
       active_btn: 'Lembre-me deste projeto'
@@ -58,6 +63,7 @@ pt:
         add_reward: Adicionar recompensa
         comments: Comentários
         contributions: Apoiadores
+        metrics: Métricas
         edit: Edição
         reports: Relatórios
         posts: Novidades
