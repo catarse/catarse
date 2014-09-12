@@ -28,4 +28,4 @@
         .fontsize-smallest = "Modificado em: #{I18n.l(reward.updated_at.to_date)} #{parent.online_date.nil? ? '' : ((parent.online_date > reward.updated_at)? '(draft)' : '(online)')}"
 
     .project-reward-box-hover
-      .project-reward-box-select-text = "Selecione esta recompensa"
+      .project-reward-box-select-text.t-text-center = t('.select_reward')
