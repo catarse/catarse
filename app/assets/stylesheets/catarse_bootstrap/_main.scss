@@ -44,7 +44,6 @@ p {
 .btn {
   display: block;
   margin-right: auto;
-  margin-bottom: 2px;
   margin-left: auto;
   border: 1px solid #00b22d;
   border-radius: 5px;
@@ -1284,12 +1283,7 @@ p {
   padding-left: 0px;
 }
 .project-news {
-  padding-top: 20px;
   padding-right: 14px;
-  padding-bottom: 60px;
-  border-bottom: 1px solid #e9e9ec;
-  border-top-style: none;
-  border-top-color: #ddd;
 }
 .project-news.project-news-top {
   margin-top: 0px;
@@ -1589,22 +1583,23 @@ p {
   margin-bottom: 10px;
   font-weight: 600;
 }
-.project-author-send-message {
+.btn-message {
   margin-bottom: 0px;
   padding-top: 12px;
   padding-bottom: 12px;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgba(64, 155, 255, 0.09);
   background-color: rgba(64, 155, 255, 0.09);
-  -webkit-transition: all 500ms ease;
-  -o-transition: all 500ms ease;
-  transition: all 500ms ease;
-  font-weight: 600;
-  text-align: center;
+  -webkit-transition-delay: initial;
+  -o-transition-delay: initial;
+  transition-delay: initial;
+  color: #409bff;
+  text-decoration: none;
 }
-.project-author-send-message:hover {
+.btn-message:hover {
+  border-color: rgba(64, 155, 255, 0.09);
   background-color: rgba(64, 155, 255, 0.2);
-  text-decoration: underline;
 }
 .project-back-button {
   margin-top: 28px;
@@ -2572,7 +2567,7 @@ p {
   position: relative;
 }
 .divider {
-  border-top: 1px solid #ddd;
+  border-top: 1px solid #e9e9ec;
 }
 .success {
   color: #00b22d;
@@ -2615,7 +2610,6 @@ p {
   font-weight: 700;
 }
 .u-marginbottom-30 {
-  display: inline-block;
   margin-bottom: 30px;
 }
 .u-marginbottom-60 {
@@ -2626,7 +2620,6 @@ p {
 }
 .u-right {
   float: right;
-  color: #3f4752;
 }
 .dropdown-icon {
   position: absolute;
@@ -2818,6 +2811,13 @@ p {
 .card-gone {
   color: rgba(121, 128, 139, 0.36);
 }
+.project-name {
+  padding-right: 145px;
+  padding-left: 145px;
+}
+.fontcolor-secondary {
+  color: #79808b;
+}
 html.w-mod-js *[data-ix="fade-in"] {
   opacity: 0;
 }
@@ -2893,6 +2893,7 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
     font-weight: 400;
   }
   .project-nav {
+    height: 39px;
     margin-top: -20px;
   }
   .paragraph3.deadline {
@@ -2967,6 +2968,10 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
   }
   .project-nav-category.dashboard {
     opacity: 0.6;
+  }
+  .badge {
+    padding: 1px 4px;
+    font-size: 11px;
   }
   .project-nav-tab {
     font-size: 13px;
@@ -3134,6 +3139,13 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
     font-size: 20px;
     line-height: 30px;
   }
+  .nav-tab {
+    font-size: 13px;
+  }
+  .nav-tab.selected {
+    height: 39px;
+    padding: 10px 10px 6px;
+  }
   .u-round {
     width: 50px;
   }
@@ -3142,6 +3154,18 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
   }
   .thumb {
     width: 60px;
+  }
+  .card-reward {
+    -webkit-transition: all 500ms ease;
+    -o-transition: all 500ms ease;
+    transition: all 500ms ease;
+  }
+  .card-reward:hover {
+    background-color: #e3e6e6;
+  }
+  .project-name {
+    padding-right: 80px;
+    padding-left: 80px;
   }
 }
 @media (max-width: 767px) {
@@ -3219,7 +3243,7 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
     margin-top: 12px;
   }
   .project-stats {
-    padding: 10px 37px 0px;
+    padding: 20px 30px;
     border-top: 1px solid #e9e9ec;
     text-align: center;
   }
@@ -3323,7 +3347,7 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
     line-height: 24px;
   }
   .page-header {
-    margin-bottom: 5px;
+    margin-bottom: 0px;
     padding-top: 25px;
     padding-bottom: 20px;
   }
@@ -3641,6 +3665,10 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
   .dropdown-icon {
     font-size: 13px;
   }
+  .project-name {
+    padding-right: 65px;
+    padding-left: 65px;
+  }
 }
 @media (max-width: 479px) {
   h2 {
@@ -3759,7 +3787,11 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
     line-height: 18px;
   }
   .column-social-media-footer {
+    position: relative;
     padding-top: 33px;
+  }
+  .fontsize-smaller {
+    line-height: 18px;
   }
   .fontsize-jumbo {
     font-size: 27px;
@@ -3778,6 +3810,7 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
   }
   .fontsize-largest {
     font-size: 22px;
+    line-height: 26px;
   }
   .col-right-bootstrap-buttons {
     padding-right: 0px;
@@ -3997,6 +4030,10 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
   }
   .footer-newsletter {
     width: 86.4%;
+  }
+  .project-name {
+    padding-right: 0px;
+    padding-left: 0px;
   }
 }
 

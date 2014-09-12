@@ -29,7 +29,7 @@ ul.project-share.no-mobile
           p.project-channel-banner-followers
             = t('channels.subscribed', count: channel.channels_subscribers.size)
 
-  p.headline.project-about-highlight = @project.headline
+  p.fontsize-large.u-marginbottom-30 = @project.headline
   = link_to "Leia mais", about_mobile_project_path(@project), class: "alt-link fontsize-small read-more-link"
   .no-mobile
     p.fontsize-base
