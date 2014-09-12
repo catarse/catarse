@@ -2,3 +2,16 @@
 h1, h2, h3, h4, h5, h6
   font-weight: normal
 
+.card-reward
+  .project-reward-box-hover
+    opacity: 0
+    transition: opacity 650ms
+    -webkit-transition: opacity 650ms
+  &:hover .project-reward-box-hover
+    z-index: 10
+    opacity: 1
+    transition: opacity 650ms
+    -webkit-transition: opacity 650ms
+    .project-reward-box-hover-text
+      +transform(translateY(-50%) scale(1))
+
