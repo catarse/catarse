@@ -15,6 +15,7 @@ App.addChild('Project', _.extend({
     this.route('comments');
     this.route('edit');
     this.route('reports');
+    this.route('metrics');
   },
 
   toggleWarning: function(){
@@ -32,6 +33,12 @@ App.addChild('Project', _.extend({
     var $tab = this.$('nav#project_menu a[href="' + window.location.hash + '"]');
     if($tab.length > 0){
       this.onTabClick({ currentTarget: $tab });
+
+      if($tab.prop('id') == 'metrics_link') {
+        $('.sidebar').hide();
+      } else {
+        $('.sidebar').show();
+      }
     }
   },
 
