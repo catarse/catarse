@@ -60,6 +60,9 @@ resources :projects, only: [:index, :create, :update, :new, :show] do
       get 'video'
     end
     member do
+      post :reminder, to: 'projects/reminders#create'
+      delete :reminder, to: 'projects/reminders#destroy'
+      get :metrics, to: 'projects/metrics#index'
       put 'pay'
       get 'embed'
       get 'video_embed'

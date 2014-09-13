@@ -10,6 +10,12 @@
           = link_to '#embed', id: 'embed_link' do
             = image_tag "catarse/embed_icon19x9.png", title: t('.embed_title')
             = t('.embed')
+        li.reminder
+          .bootstrap-twitter
+              - if user_signed_in? && @project.user_already_in_reminder?(current_user.id)
+                small= link_to t('projects.reminder.deactive_btn'), reminder_project_path(@project), class: 'btn btn-small btn-extra-small', method: :delete
+              - else
+                small= link_to t('projects.reminder.active_btn'), reminder_project_path(@project), class: 'btn btn-small btn-extra-small', method: :post
       #twitter_share= render_twitter(url: project_by_slug_url(permalink: @project.permalink), title: @project.name)
       .clearfix
 
