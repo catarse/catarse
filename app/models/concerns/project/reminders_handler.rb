@@ -9,19 +9,22 @@ module Project::RemindersHandler
 
     def user_in_reminder_queue?(user_id)
       scheduler_set.any? do |job|
-        job['class'] == 'ReminderProjectWorker' &&
-        job.args[0] == user_id &&
-        job.args[1] == self.id
+        job_matches?(job, user_id)
       end
     end
 
     def delete_from_reminder_queue(user_id)
       job = scheduler_set.select do |job|
-        job['class'] == 'ReminderProjectWorker' &&
-        job.args[0] == user_id &&
-        job.args[1] == self.id
+        job_matches?(job, user_id)
       end
+
       job.each(&:delete)
+    end
+
+    def job_matches?(job, user_id)
+      job['class'] == 'ReminderProjectWorker' &&
+      job.args[0] == user_id &&
+      job.args[1] == self.id
     end
 
     def scheduler_set
