@@ -1,8 +1,11 @@
-.bootstrap-form
+.bootstrap-form.use-preview
   = semantic_form_for ProjectPost.new(user: current_user, project: @project), url: project_posts_path(project_id: @project.id), remote: true do |form|
     = form.inputs do
       = form.input :title, as: :string, label: t('.title')
-      = form.input :comment, as: :text, label: t('.comment'), input_html: {rows: 10}
+      .post-preview
+        h2.title Preview
+        .preview
+      = form.input :comment, as: :text, label: t('.comment'), input_html: {rows: 10, class: 'preview-input'}
       = form.input :exclusive, as: :boolean, label: t('.exclusive')
       br/
       br/
