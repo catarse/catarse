@@ -14,6 +14,14 @@ GIT
       rails (>= 4.0.0)
 
 GIT
+  remote: git://github.com/catarse/catarse_pagarme.git
+  revision: 48dae2880f7172811417955caaadfeb69e1b22ea
+  specs:
+    catarse_pagarme (0.0.1)
+      pagarme (~> 1.9.4)
+      rails (~> 4.0)
+
+GIT
   remote: git://github.com/catarse/moip-ruby.git
   revision: c0225ad71645cd1df35dafa1e45c9f092b3abb9e
   ref: c0225ad71645cd1df35dafa1e45c9f092b3abb9e
@@ -22,13 +30,6 @@ GIT
       activesupport (>= 2.3.2)
       httparty (~> 0.6.1)
       nokogiri (>= 1.5.0)
-
-PATH
-  remote: ~/code/catarse_pagarme
-  specs:
-    catarse_pagarme (0.0.1)
-      pagarme (~> 1.9.4)
-      rails (~> 4.0)
 
 GEM
   remote: https://rubygems.org/
