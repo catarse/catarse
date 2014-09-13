@@ -41,9 +41,10 @@ Catarse::Application.routes.draw do
   mount CatarsePaypalExpress::Engine => "/", as: :catarse_paypal_express
   mount CatarseMoip::Engine => "/", as: :catarse_moip
   mount CatarseCredits::Engine => "/", as: :catarse_credits
-#  mount CatarseWepay::Engine => "/", as: :catarse_wepay
+  #  mount CatarseWepay::Engine => "/", as: :catarse_wepay
 
-resources :projects, only: [:index, :create, :update, :new, :show] do
+  get '/post_preview' => 'post_preview#show', as: :post_preview
+  resources :projects, only: [:index, :create, :update, :new, :show] do
     resources :posts, controller: 'projects/posts', only: [ :index, :create, :destroy ]
     resources :rewards, only: [ :index, :create, :update, :destroy, :new, :edit ] do
       member do
