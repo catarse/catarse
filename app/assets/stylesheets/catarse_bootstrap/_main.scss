@@ -3337,13 +3337,17 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
     position: relative;
     display: inline-block;
     width: 40%;
+    margin-right: 10px;
+    margin-left: 10px;
     padding-left: 0px;
     text-align: center;
   }
   .icon-share-mobile {
     position: absolute;
-    left: 18px;
-    top: 26px;
+    left: 0px;
+    top: 0px;
+    margin-top: 10px;
+    margin-left: 10px;
   }
   .icon-share-mobile.twitter {
     left: 25px;
@@ -3706,6 +3710,15 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
     padding-right: 15px;
     padding-left: 15px;
   }
+  .btn-tweet {
+    border: 1px solid #3cf;
+    background-color: #3cf;
+    color: white;
+  }
+  .btn-tweet:hover {
+    border-color: #27bff2;
+    background-color: #27bff2;
+  }
 }
 @media (max-width: 479px) {
   h2 {
@@ -3813,11 +3826,15 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
     bottom: 0px;
   }
   .div-share-mobile-fb {
-    width: 50%;
+    width: 45%;
+    margin-right: 5px;
+    margin-left: 5px;
     text-align: center;
   }
   .icon-share-mobile {
     left: 8px;
+    margin-top: 8px;
+    margin-left: -5px;
   }
   .icon-share-mobile.twitter {
     left: 18px;
