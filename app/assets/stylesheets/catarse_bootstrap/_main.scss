@@ -1561,7 +1561,7 @@ p {
   background-color: #f1f4f4;
 }
 .page-header.negative {
-  border-top: 1px none rgba(0, 0, 0, 0.21);
+  border-top: 1px none rgba(0, 0, 0, 0.20);
   background-color: #3f4752;
   color: #f1f4f4;
 }
@@ -3362,9 +3362,6 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
   .fontsize-jumbo {
     font-size: 34px;
   }
-  .fontsize-base {
-    line-height: 24px;
-  }
   .fontsize-megajumbo {
     font-size: 54px;
   }
@@ -3697,8 +3694,8 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
     font-size: 13px;
   }
   .project-name {
-    padding-right: 65px;
-    padding-left: 65px;
+    padding-right: 63px;
+    padding-left: 63px;
   }
   .card-notification {
     width: auto;
@@ -3833,9 +3830,6 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
     position: relative;
     padding-top: 33px;
   }
-  .fontsize-smaller {
-    line-height: 18px;
-  }
   .fontsize-jumbo {
     font-size: 27px;
   }
@@ -3853,7 +3847,6 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
   }
   .fontsize-largest {
     font-size: 22px;
-    line-height: 26px;
   }
   .col-right-bootstrap-buttons {
     padding-right: 0px;
@@ -4078,8 +4071,8 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
     font-size: 18px;
   }
   .project-name {
-    padding-right: 0px;
-    padding-left: 0px;
+    padding-right: 10px;
+    padding-left: 10px;
   }
   .section-one-column {
     padding: 20px 12px 0px;
