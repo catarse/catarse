@@ -1,12 +1,13 @@
 - collection.rank(:row_order).each do |reward|
 
-  .card.card-secondary.u-marginbottom-10.card-reward[id="reward_#{reward.id}" data-new_contribution_url=new_project_contribution_path(parent, reward_id: reward.id) data-update_url=sort_project_reward_path(parent, reward) class="#{(policy(reward).update? ? 'clickable_owner sortable' : '')} #{(parent.online? && !reward.sold_out? && !policy(reward).update?  ? 'clickable'  : '' )} #{reward.sold_out? ? 'project-reward-box-gone' : ''} "]
+  - sold_out = reward.sold_out?
+  .card.card-secondary.u-marginbottom-10[id="reward_#{reward.id}" data-new_contribution_url=new_project_contribution_path(parent, reward_id: reward.id) data-update_url=sort_project_reward_path(parent, reward) class="#{(policy(reward).update? ? 'clickable_owner sortable' : '')} #{(parent.online? && !policy(reward).update?  ? 'clickable'  : '' )} #{sold_out ? 'card-gone' : 'card-reward'} "]
     .u-marginbottom-20
       .fontsize-base.fontweight-semibold = t('.reward_title', minimum: reward.display_minimum).html_safe
       .fontsize-smaller.u-marginbottom-10.fontweight-semibold = pluralize(reward.contributions.with_state('confirmed').count(:all), t('contribution_singular'), t('contribution_plural'))
 
       - if reward.maximum_contributions
-        - if reward.sold_out?
+        - if sold_out
           span.badge.badge-gone.fontsize-smaller
             = t('.sold_out')
         - else
@@ -27,5 +28,6 @@
     - if current_user && current_user.admin
         .fontsize-smallest = "Modificado em: #{I18n.l(reward.updated_at.to_date)} #{parent.online_date.nil? ? '' : ((parent.online_date > reward.updated_at)? '(draft)' : '(online)')}"
 
-    .project-reward-box-hover
-      .project-reward-box-select-text.t-text-center = t('.select_reward')
+    - unless sold_out
+      .project-reward-box-hover
+        .project-reward-box-select-text.t-text-center = t('.select_reward')
