@@ -52,7 +52,7 @@ section.section
   .w-container
     .w-row
       article.w-col.w-col-8.w-hidden-small.w-hidden-tiny
-        #project_about.content.about = render 'project_about'
+        #project_about.content = render 'project_about'
 
         #project_posts.content.w-hidden[data-path=project_posts_path(project_id: @project.id)]
           .results
