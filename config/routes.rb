@@ -60,7 +60,7 @@ Catarse::Application.routes.draw do
       get 'video'
     end
     member do
-      post :reminder, to: 'projects/reminders#create'
+      get :reminder, to: 'projects/reminders#create'
       delete :reminder, to: 'projects/reminders#destroy'
       get :metrics, to: 'projects/metrics#index'
       put 'pay'
