@@ -60,4 +60,5 @@
           .tab_content_container
             - avaiable_payment_engines.each do |engine|
               div[id="#{engine.name}_payment" class="payments_type hide" data-path=engine.review_path(@contribution) ]
+                .results
     .clearfix
