@@ -1,19 +1,19 @@
 - content_for :title, @project.name + " · " + CatarseSettings[:company_name]
 = render 'shared/header'
 
-.project-header
+.page-header.u-text-center
   .w-container
-    .project-heading.fontsize-larger = @project.name
-    .project-sub-heading.fontsize-base
+    .fontsize-larger.fontweight-semibold.project-name = @project.name
+    .fontsize-base
       | por&nbsp;
       a.link-hidden = @project.user.name
-.project-content-about-mobile
-  .w-container.project-about-mobile-back-link
+.section-one-column
+  .w-container.fontsize-base.fontweight-semibold.u-marginbottom-20
     a.alt-link href=project_path(@project)
       strong &lt; Voltar
   .w-container
     = @project.about_html.html_safe
-  .w-container.project-about-mobile-back-link
+  .w-container.fontsize-base.fontweight-semibold
     a.alt-link href=project_path(@project)
       strong &lt; Voltar
 = render 'shared/footer_big'
