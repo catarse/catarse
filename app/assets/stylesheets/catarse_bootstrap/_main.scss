@@ -56,8 +56,8 @@ p {
   text-decoration: none;
 }
 .btn:hover {
-  border-color: #02c433;
-  background-color: #02c433;
+  border-color: #27bff2;
+  background-color: #27bff2;
   opacity: 1;
 }
 .btn.bt-medium {
@@ -1561,7 +1561,7 @@ p {
   background-color: #f1f4f4;
 }
 .page-header.negative {
-  border-top: 1px none rgba(0, 0, 0, 0.21);
+  border-top: 1px none rgba(0, 0, 0, 0.2);
   background-color: #3f4752;
   color: #f1f4f4;
 }
@@ -2560,7 +2560,7 @@ p {
 .divider {
   border-top: 1px solid #e9e9ec;
 }
-.success {
+.text-success {
   color: #00b22d;
   font-weight: 600;
 }
@@ -2737,6 +2737,9 @@ p {
   color: #3f4752;
   font-weight: 600;
 }
+.nav-tab.dashboard {
+  color: #409bff;
+}
 .link-hidden-light {
   color: #79808b;
   text-decoration: none;
@@ -2847,6 +2850,23 @@ p {
 .section-one-column {
   padding-top: 30px;
   padding-bottom: 30px;
+}
+.btn-tweet {
+  border-color: #3cf;
+  background-color: #3cf;
+}
+.fontcolor-dashboard {
+  color: #409bff;
+}
+.out-of-focus {
+  display: inline-block;
+  opacity: 0.45;
+  -webkit-transition: all 500ms ease;
+  -o-transition: all 500ms ease;
+  transition: all 500ms ease;
+}
+.out-of-focus:hover {
+  opacity: 1;
 }
 html.w-mod-js *[data-ix="fade-in"] {
   opacity: 0;
@@ -3198,6 +3218,10 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
     padding-top: 20px;
     padding-bottom: 20px;
   }
+  .btn-tweet {
+    border-color: #3cf;
+    background-color: #3cf;
+  }
 }
 @media (max-width: 767px) {
   h2 {
@@ -3337,13 +3361,17 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
     position: relative;
     display: inline-block;
     width: 40%;
+    margin-right: 10px;
+    margin-left: 10px;
     padding-left: 0px;
     text-align: center;
   }
   .icon-share-mobile {
     position: absolute;
-    left: 18px;
-    top: 26px;
+    left: 0px;
+    top: 0px;
+    margin-top: 10px;
+    margin-left: 10px;
   }
   .icon-share-mobile.twitter {
     left: 25px;
@@ -3361,9 +3389,6 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
   }
   .fontsize-jumbo {
     font-size: 34px;
-  }
-  .fontsize-base {
-    line-height: 24px;
   }
   .fontsize-megajumbo {
     font-size: 54px;
@@ -3697,8 +3722,8 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
     font-size: 13px;
   }
   .project-name {
-    padding-right: 65px;
-    padding-left: 65px;
+    padding-right: 63px;
+    padding-left: 63px;
   }
   .card-notification {
     width: auto;
@@ -3708,6 +3733,15 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
     padding-top: 25px;
     padding-right: 15px;
     padding-left: 15px;
+  }
+  .btn-tweet {
+    border: 1px solid #3cf;
+    background-color: #3cf;
+    color: white;
+  }
+  .btn-tweet:hover {
+    border-color: #27bff2;
+    background-color: #27bff2;
   }
 }
 @media (max-width: 479px) {
@@ -3816,11 +3850,15 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
     bottom: 0px;
   }
   .div-share-mobile-fb {
-    width: 50%;
+    width: 45%;
+    margin-right: 5px;
+    margin-left: 5px;
     text-align: center;
   }
   .icon-share-mobile {
     left: 8px;
+    margin-top: 8px;
+    margin-left: -5px;
   }
   .icon-share-mobile.twitter {
     left: 18px;
@@ -3832,9 +3870,6 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
   .column-social-media-footer {
     position: relative;
     padding-top: 33px;
-  }
-  .fontsize-smaller {
-    line-height: 18px;
   }
   .fontsize-jumbo {
     font-size: 27px;
@@ -3853,7 +3888,6 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
   }
   .fontsize-largest {
     font-size: 22px;
-    line-height: 26px;
   }
   .col-right-bootstrap-buttons {
     padding-right: 0px;
@@ -4078,8 +4112,8 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
     font-size: 18px;
   }
   .project-name {
-    padding-right: 0px;
-    padding-left: 0px;
+    padding-right: 10px;
+    padding-left: 10px;
   }
   .section-one-column {
     padding: 20px 12px 0px;
