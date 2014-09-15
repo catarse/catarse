@@ -16,7 +16,7 @@
               = link_to t('.projects'), user_path(current_user, anchor: 'projects'), class: 'w-dropdown-link dropdown-link fontsize-smaller'
             = link_to user_path(current_user, anchor: 'credits'), class: 'w-dropdown-link dropdown-link fontsize-smaller' do
               = t('layouts.user.my_credits')
-              .fontsize-smallest.success
+              .fontsize-smallest.text-success
                 | (#{current_user.display_credits})
             = link_to t('layouts.user.refund_link'), user_path(current_user, anchor: 'credits'), class: 'w-dropdown-link dropdown-link fontsize-smaller'
             - if current_user.admin? || current_user.channel
