@@ -56,8 +56,8 @@ p {
   text-decoration: none;
 }
 .btn:hover {
-  border-color: #02c433;
-  background-color: #02c433;
+  border-color: #27bff2;
+  background-color: #27bff2;
   opacity: 1;
 }
 .btn.bt-medium {
@@ -1561,7 +1561,7 @@ p {
   background-color: #f1f4f4;
 }
 .page-header.negative {
-  border-top: 1px none rgba(0, 0, 0, 0.20);
+  border-top: 1px none rgba(0, 0, 0, 0.2);
   background-color: #3f4752;
   color: #f1f4f4;
 }
@@ -2560,7 +2560,7 @@ p {
 .divider {
   border-top: 1px solid #e9e9ec;
 }
-.success {
+.text-success {
   color: #00b22d;
   font-weight: 600;
 }
@@ -2737,6 +2737,9 @@ p {
   color: #3f4752;
   font-weight: 600;
 }
+.nav-tab.dashboard {
+  color: #409bff;
+}
 .link-hidden-light {
   color: #79808b;
   text-decoration: none;
@@ -2847,6 +2850,23 @@ p {
 .section-one-column {
   padding-top: 30px;
   padding-bottom: 30px;
+}
+.btn-tweet {
+  border-color: #3cf;
+  background-color: #3cf;
+}
+.fontcolor-dashboard {
+  color: #409bff;
+}
+.out-of-focus {
+  display: inline-block;
+  opacity: 0.45;
+  -webkit-transition: all 500ms ease;
+  -o-transition: all 500ms ease;
+  transition: all 500ms ease;
+}
+.out-of-focus:hover {
+  opacity: 1;
 }
 html.w-mod-js *[data-ix="fade-in"] {
   opacity: 0;
@@ -3197,6 +3217,10 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
   .section-one-column {
     padding-top: 20px;
     padding-bottom: 20px;
+  }
+  .btn-tweet {
+    border-color: #3cf;
+    background-color: #3cf;
   }
 }
 @media (max-width: 767px) {
