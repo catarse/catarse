@@ -16,7 +16,7 @@ class PostPreviewController < ApplicationController
         '<' => '&lt;',
         '"' => '"'
       }
-      image
+      image width: 600
       youtube width: 600, height: 403, wmode: "opaque"
       vimeo width: 600, height: 403
       redcloth target: :_blank
