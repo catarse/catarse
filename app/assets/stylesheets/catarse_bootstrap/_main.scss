@@ -38,8 +38,6 @@ h6 {
 p {
   margin-top: 0px;
   margin-bottom: 20px;
-  font-size: 18px;
-  line-height: 28px;
 }
 .btn {
   display: block;
@@ -56,8 +54,8 @@ p {
   text-decoration: none;
 }
 .btn:hover {
-  border-color: #27bff2;
-  background-color: #27bff2;
+  border-color: #27bff2 #27bff2 #08bd35;
+  background-color: #08bd35;
   opacity: 1;
 }
 .btn.bt-medium {
@@ -1069,9 +1067,9 @@ p {
 }
 .project-reward-box-select-text {
   position: absolute;
+  top: 50%;
   display: block;
   width: 100%;
-  padding-top: 40%;
   font-size: 19px;
   font-weight: 400;
   text-align: center;
@@ -1419,7 +1417,6 @@ p {
 .fontsize-larger {
   font-size: 34px;
   line-height: 100%;
-  font-weight: 400;
 }
 .fontsize-large {
   font-size: 22px;
@@ -2282,7 +2279,7 @@ p {
   padding-top: 10px;
   border-bottom-color: #e9e9ec;
 }
-.project-admin-nav-link {
+.dashboard-nav-link {
   display: inline-block;
   margin-right: 20px;
   padding: 10px;
@@ -2292,14 +2289,14 @@ p {
   font-weight: 600;
   text-decoration: none;
 }
-.project-admin-nav-link.off {
+.dashboard-nav-link.off {
   border-bottom-color: white;
   -webkit-transition-delay: initial;
   -o-transition-delay: initial;
   transition-delay: initial;
   font-weight: 400;
 }
-.project-admin-nav-link.off:hover {
+.dashboard-nav-link.off:hover {
   border-bottom-color: #409bff;
 }
 .project-admin-draft-video-home {
@@ -2716,6 +2713,7 @@ p {
 }
 .nav-tab {
   display: inline-block;
+  height: 42px;
   margin-right: 5px;
   padding: 13px 13px 8px;
   border-top-left-radius: 4px;
@@ -2803,6 +2801,7 @@ p {
   position: relative;
 }
 .card-gone {
+  position: relative;
   color: rgba(121, 128, 139, 0.36);
 }
 .project-name {
@@ -2855,6 +2854,10 @@ p {
   border-color: #3cf;
   background-color: #3cf;
 }
+.btn-tweet:hover {
+  border: 1px solid #7ed9f7;
+  background-color: #7ed9f7;
+}
 .fontcolor-dashboard {
   color: #409bff;
 }
@@ -2867,6 +2870,24 @@ p {
 }
 .out-of-focus:hover {
   opacity: 1;
+}
+.dashboard-nav {
+  margin-top: 10px;
+  border-bottom: 1px solid #e9e9ec;
+}
+.card-success {
+  border: 1px solid #00b22d;
+  background-color: #00b22d;
+  color: white;
+}
+.card-waiting {
+  border: 1px solid #faf64d;
+  background-color: #faf64d;
+}
+.card-dark {
+  border: 1px solid #3f4752;
+  background-color: #3f4752;
+  color: white;
 }
 html.w-mod-js *[data-ix="fade-in"] {
   opacity: 0;
@@ -3107,11 +3128,11 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
   .back-payment-button-next-step {
     width: 65%;
   }
-  .project-admin-nav-link {
+  .dashboard-nav-link {
     margin-right: 12px;
     font-size: 13px;
   }
-  .project-admin-nav-link.off {
+  .dashboard-nav-link.off {
     margin-right: 12px;
     font-size: 13px;
   }
