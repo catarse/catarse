@@ -44,7 +44,8 @@ Catarse::Application.routes.draw do
   mount CatarsePagarme::Engine => "/", as: :catarse_pagarme
 #  mount CatarseWepay::Engine => "/", as: :catarse_wepay
 
-resources :projects, only: [:index, :create, :update, :new, :show] do
+  get '/post_preview' => 'post_preview#show', as: :post_preview
+  resources :projects, only: [:index, :create, :update, :new, :show] do
     resources :posts, controller: 'projects/posts', only: [ :index, :create, :destroy ]
     resources :rewards, only: [ :index, :create, :update, :destroy, :new, :edit ] do
       member do
@@ -60,7 +61,7 @@ resources :projects, only: [:index, :create, :update, :new, :show] do
       get 'video'
     end
     member do
-      post :reminder, to: 'projects/reminders#create'
+      get :reminder, to: 'projects/reminders#create'
       delete :reminder, to: 'projects/reminders#destroy'
       get :metrics, to: 'projects/metrics#index'
       put 'pay'
