@@ -7,8 +7,6 @@ pt:
         address_state: 'Total de apoios confirmados por Estado'
     reminder:
       ok: 'Ok! Vamos te mandar um lembrete por e-mail 48 horas antes do fim da campanha, a não ser que você já tenha apoiado o projeto'
-      active_btn: 'Lembre-me deste projeto'
-      deactive_btn: 'Não quero mais ser lembrado'
     send_to_analysis: Seu projeto foi enviado para nossa equipe.
     twitter:
       take_a_look: Confira o projeto %{name} no @catarse
@@ -39,6 +37,8 @@ pt:
     project_about:
       embed: < embed >
       embed_title: Incorpore este projeto no seu site
+      active_btn: ' Lembrar-me'
+      deactive_btn: ' Não lembrar-me'
     show:
       twitter_profile: "Perfil no Twitter"
       facebook_profile: "Perfil no Facebook"
