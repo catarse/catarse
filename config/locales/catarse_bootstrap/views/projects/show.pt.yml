@@ -25,7 +25,7 @@ pt:
         com boleto impresso
       link_reward: Baixar relatório dos apoiadores da recompensa de %{value}
     project_about:
-      embed: embed
+      embed: < embed >
       embed_title: Incorpore este projeto no seu site
     show:
       twitter_profile: "Perfil no Twitter"
