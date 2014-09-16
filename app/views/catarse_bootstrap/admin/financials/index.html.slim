@@ -1,4 +1,4 @@
-= render 'shared/header'
+= render 'shared/header_bootstrap_v1'
 .row.admin
   h1= @title = t('.title')
   = simple_form_for '', url: admin_financials_path, method: :get do |form|
@@ -82,4 +82,4 @@
                 span.label= project.state
 
   = paginate @projects
-= render 'shared/footer'
+= render 'shared/footer_bootstrap_v1'

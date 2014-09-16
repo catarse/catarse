@@ -1,5 +1,14 @@
 pt:
   projects:
+    metrics:
+      titles:
+        confirmed_by_day: 'Total de apoios confirmados por dia'
+        confirmed_amount_by_day: 'Total arrecadado por dia'
+        address_state: 'Total de apoios confirmados por Estado'
+    reminder:
+      ok: 'Ok! Vamos te mandar um lembrete por e-mail 48 horas antes do fim da campanha, a não ser que você já tenha apoiado o projeto'
+      active_btn: 'Lembre-me deste projeto'
+      deactive_btn: 'Não quero mais ser lembrado'
     send_to_analysis: Seu projeto foi enviado para nossa equipe.
     twitter:
       take_a_look: Confira o projeto %{name} no @catarse
@@ -7,6 +16,9 @@ pt:
       a_project_by_html: Um projeto de %{link} no
     posts:
       project_post:
+        unavailable: Esta novidade só está disponível para apoiadores.
+        contribute: Apoie
+        unavailable_contribute: este projeto para visualizá-la.
         destroy: Remover Novidade
         destroy_confirmation: Deseja remover esta novidade?
       new:
@@ -56,6 +68,7 @@ pt:
         add_reward: Adicionar recompensa
         comments: Comentários
         contributions: Apoiadores
+        metrics: Métricas
         edit: Edição
         reports: Relatórios
         posts: Novidades

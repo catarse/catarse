@@ -1,0 +1,20 @@
+.project-metrics style='width: 980px;'
+  h1= t('projects.metrics.titles.confirmed_by_day')
+  = line_chart @metrics[:confirmed]
+  
+  h1= t('projects.metrics.titles.confirmed_amount_by_day')
+  = line_chart @metrics[:confirmed_amount_by_day]
+  
+  h1= t('projects.metrics.titles.address_state')
+  br
+  .bootstrap-twitter
+    table.table.table-bordered.table-striped
+      thead
+        tr
+          th= 'Estado'
+          th= 'Total de apoios confirmados'
+      tbody
+        - @metrics[:address_state].sort{|a,b| b[1] <=> a[1]}.each do |metric|
+          tr
+            td= metric[0] || 'Internacional'
+            td= metric[1]

@@ -13,19 +13,6 @@ describe ProjectPost do
     it{ should belong_to :project }
   end
 
-  describe ".for_non_contributors" do
-    let(:project) { create(:project) }
-
-    before do
-      @exclusive_post = create(:project_post, exclusive: true, project: project)
-      @post = create(:project_post, project: project)
-    end
-
-    subject { ProjectPost.for_non_contributors }
-
-    it { should eq([@post]) }
-  end
-
   describe ".create" do
     subject{ create(:project_post, comment: "this is a comment\n") }
     its(:comment_html){ should == "<p>this is a comment</p>" }
