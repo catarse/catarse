@@ -27,7 +27,7 @@ class ProjectDecorator < Draper::Decorator
     aditional = ""
     if source.waiting_funds?
       aditional = 'card-waiting'
-    elsif source.reached_goal?
+    elsif source.successful?
       aditional = 'card-success'
     elsif source.failed?
       aditional = 'card-error'

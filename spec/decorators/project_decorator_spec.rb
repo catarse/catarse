@@ -174,7 +174,7 @@ describe ProjectDecorator do
         project.stub(:reached_goal?).and_return(true)
       end
       let(:aditional){ "card-success" }
-      it{ should == card_class }
+      it{ should == " " }
     end
     context "when online and have not reached goal yet" do
       before do
@@ -209,6 +209,13 @@ describe ProjectDecorator do
         project.stub(:state).and_return('waiting_funds')
       end
       let(:aditional){ "card-waiting" }
+      it{ should == card_class }
+    end
+    context "when successful" do
+      before do
+        project.stub(:state).and_return('successful')
+      end
+      let(:aditional){ "card-success" }
       it{ should == card_class }
     end
   end
