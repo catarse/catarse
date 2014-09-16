@@ -201,7 +201,7 @@ describe ProjectObserver do
       end
 
       before do
-        ContributionNotification.should_receive(:notify_once).at_least(3)
+        ContributionNotification.should_receive(:notify_once).at_least(1)
         project.finish!
       end
       it("should notify the project contributions and owner"){ subject }
@@ -304,6 +304,26 @@ describe ProjectObserver do
 
     it "should create notification for admin" do
       ProjectNotification.where(user_id: user.id, template_name: 'redbooth_task', project_id: project.id).first.should_not be_nil
+    end
+
+  end
+
+  describe "#request_refund_for_failed_project" do
+    let(:project){ create(:project, state: 'online') }
+    let(:user){ create(:user) }
+    let(:contribution) { create(:contribution, state: 'confirmed', payment_method: 'PayPal', project_id: project.id, user_id: user.id, value: 10, credits: false)}
+    before do
+      project
+      user
+      contribution
+      project.stub(:should_fail?).and_return(true)
+      project.stub(:pending_contributions_reached_the_goal?).and_return(false)
+      project.finish
+      contribution.reload
+    end
+
+    it "should change contribution state to requested_refund" do
+      expect(contribution.reload.state).to eq 'requested_refund'
     end
 
   end

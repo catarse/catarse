@@ -9,6 +9,7 @@ class Project < ActiveRecord::Base
   include Project::StateMachineHandler
   include Project::VideoHandler
   include Project::CustomValidators
+  include Project::RemindersHandler
 
   has_notifications
 
@@ -162,6 +163,10 @@ class Project < ActiveRecord::Base
 
   def selected_rewards
     rewards.sort_asc.where(id: contributions.with_state('confirmed').map(&:reward_id))
+  end
+
+  def accept_contributions?
+    online? && !expired?
   end
 
   def reached_goal?

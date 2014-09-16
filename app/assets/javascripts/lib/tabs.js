@@ -17,10 +17,11 @@ Skull.Tabs = {
 
   loadTab: function($tabContent){
     var that = this;
+    var results = $tabContent.find('.results');
 
-    if($.trim($tabContent.data('path')) != ''){
+    if($.trim(results.html()) == '' && $tabContent.data('path') && !results.is('[data-skiptab]')){
       $.get($tabContent.data('path')).success(function(data){
-        that.$('.results', $tabContent).html(data);
+        results.html(data);
       });
     }
   }
