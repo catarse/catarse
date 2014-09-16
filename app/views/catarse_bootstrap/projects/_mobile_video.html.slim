@@ -5,18 +5,17 @@
       iframe.embedly-embed src="#{@project.display_video_embed_url}"  width="100%" height="379" frameborder="0" allowFullScreen
 .w-hidden-main.w-hidden-medium.project-about-highlight
   .w-container
-    p.w-hidden-main.w-hidden-medium.project-about-highlight-mobile-text.fontsize-small
-      | Nova linha de óculos de serragem desenvolvida a partir do reaproveitamento dos resíduos gerados na produção dos óculos Zerezes! &nbsp;&nbsp;
+    p.w-hidden-main.w-hidden-medium.fontsize-small = @project.headline
     = link_to "Leia mais", about_mobile_project_path(@project), class: "alt-link fontsize-small"
 .w-container.w-hidden-main.w-hidden-medium.project-stats
   .w-row.w-hidden-main.w-hidden-medium
-    .w-col.w-col-4.w-col-small-4.w-col-tiny-4.project-stats-digits
+    .w-col.w-col-4.w-col-small-4.w-col-tiny-4.fontweight-semibold
       .fontsize-largest = @project.total_contributions
       .fontsize-smaller = t('projects.show.sidebar.contributions')
-    .w-col.w-col-4.w-col-small-4.w-col-tiny-4.project-stats-digits
+    .w-col.w-col-4.w-col-small-4.w-col-tiny-4.fontweight-semibold
       .fontsize-largest = @project.display_pledged
       .fontsize-smaller = t('projects.show.sidebar.goal', total: @project.display_goal)
-    .w-col.w-col-4.w-col-small-4.w-col-tiny-4.project-stats-digits
+    .w-col.w-col-4.w-col-small-4.w-col-tiny-4.fontweight-semibold
       .fontsize-largest = @project.remaining_days
       .fontsize-smaller #{@project.time_to_go[:unit].capitalize} #{pluralize_without_number(@project.time_to_go[:time], t('remaining_singular'), t('remaining_plural'))}
 
