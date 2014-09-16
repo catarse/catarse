@@ -56,8 +56,9 @@ section.section
         #project_about.content = render 'project_about'
 
         #project_posts.content.w-hidden[data-path=project_posts_path(project_id: @project.id)]
-          .results
+          .posts
             | &nbsp;
+          #posts-loading.loader.u-text-center.w-col.w-col-12 = image_tag "catarse_bootstrap/loader.gif"
 
         #project_contributions.content.w-hidden[data-path=project_contributions_path(project_id: @project.id)]
           - if policy(@project).update?

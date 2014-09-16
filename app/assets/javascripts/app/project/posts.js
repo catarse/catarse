@@ -18,7 +18,7 @@ App.views.Project.addChild('Posts', _.extend({
   activate: function(){
     this.$loader = this.$("#posts-loading img");
     this.$loaderDiv = this.$("#posts-loading");
-    this.$results = this.$(".results");
+    this.$results = this.$(".posts");
     this.path = this.$el.data('path');
     this.filter = {};
     this.setupScroll();
