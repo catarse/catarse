@@ -9,6 +9,10 @@ module Shared::CatarseAutoHtml
       end
     end
 
+    AutoHtml.add_filter(:add_alt_link_class) do |text, options|
+      text.gsub(/<a/i, '<a class="alt-link"')
+    end
+
     def self.catarse_auto_html_for options={}
       self.auto_html_for options[:field] do
         html_escape map: {
@@ -22,6 +26,7 @@ module Shared::CatarseAutoHtml
         vimeo width: options[:video_width], height: options[:video_height]
         redcloth target: :_blank
         link target: :_blank
+        add_alt_link_class
       end
     end
 
