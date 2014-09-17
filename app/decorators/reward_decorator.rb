@@ -15,19 +15,17 @@ class RewardDecorator < Draper::Decorator
 
   def name
     deliver = %{
-        <div class="fontsize-smallest fontcolor-secondary">
+        <div class="back-reward-delivery-date caption">
           Estimativa de entrega:&nbsp;#{source.display_deliver_estimate || I18n.t('projects.contributions.no_estimate')}
         </div>
     }
     %{
-      <label data-minimum-value="#{source.minimum_value > 0 ? source.minimum_value.to_i : '10'}" class="w-form-label fontsize-large fontweight-semibold" for="contribution_reward#{source.id && "_#{source.id}"}">#{source.minimum_value > 0 ? source.display_minimum+'+' : I18n.t('rewards.index.dont_want')}</label>
-      <div>
-        <span class="badge badge-success fontsize-smaller">#{I18n.t('projects.contributions.you_selected')}</span>
-      </div>  
-      <p class="fontsize-small u-margintop-20">
-      #{html_escape(source.description)}
-      </p>
-      <div class="fontsize-smallest fontcolor-secondary">  
+      <label data-minimum-value="#{source.minimum_value > 0 ? source.minimum_value.to_i : '10'}" class="w-form-label headline" for="contribution_reward#{source.id && "_#{source.id}"}">#{source.minimum_value > 0 ? source.display_minimum+'+' : I18n.t('rewards.index.dont_want')}</label>
+      <div class="back-reward-selected-badge caption no-mobile">#{I18n.t('projects.contributions.you_selected')}</div>
+      <div class="back-reward-reward-description">
+        <p class="body-medium">
+        #{html_escape(source.description)}
+        </p>
         #{source.id ? deliver : ''}
       </div>
     }.html_safe
