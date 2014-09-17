@@ -1685,18 +1685,19 @@ p {
 }
 .back-reward-form {
   margin-top: 15px;
+  border-radius: 5px;
 }
 .back-reward-input-reward {
-  display: block;
-  width: 64%;
+  display: inline-block;
+  width: 55%;
   height: 70px;
-  margin-right: 20px;
-  margin-bottom: 35px;
-  float: left;
-  clear: none;
-  border: 1px solid #00b22d;
-  border-radius: 5px;
-  background-color: #f1f4f4;
+  margin-bottom: 0px;
+  padding-top: 0px;
+  border-style: solid solid solid none;
+  border-width: 1px;
+  border-color: #00b22d;
+  border-radius: 0px 5px 5px 0px;
+  background-color: white;
   -webkit-transition: all 500ms ease;
   -o-transition: all 500ms ease;
   transition: all 500ms ease;
@@ -1722,12 +1723,25 @@ p {
   border-color: #00b22d;
   background-color: white;
 }
+.back-reward-input-reward.placeholder {
+  display: inline-block;
+  width: 87px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  padding-top: 24px;
+  padding-left: 17px;
+  float: left;
+  border-style: solid none solid solid;
+  border-color: #00b22d;
+  border-radius: 5px 0px 0px 5px;
+  background-color: rgba(255, 255, 255, 0.74);
+  color: #00b22d;
+}
 .back-reward-cheers {
   margin-bottom: 15px;
 }
 .back-reward-radio-reward {
   display: block;
-  width: 95%;
   margin-top: 0px;
   margin-bottom: 0px;
   padding: 15px 40px 20px 35px;
@@ -1738,6 +1752,11 @@ p {
   transition: all 500ms ease;
 }
 .back-reward-radio-reward:hover {
+  background-color: #f1f4f4;
+}
+.back-reward-radio-reward.selected {
+  padding-left: 35px;
+  border: 1px solid #00b22d;
   background-color: #f1f4f4;
 }
 .back-reward-radio-button {
@@ -1766,20 +1785,9 @@ p {
   margin-bottom: 20px;
 }
 .back-reward-button-section {
-  position: fixed;
-  left: 0px;
-  right: 0px;
-  bottom: 0px;
   z-index: 1;
-  display: block;
-  border-top: 1px solid #ddd;
+  margin-top: 30px;
   background-color: white;
-  box-shadow: rgba(0, 0, 0, 0.18) 0px -1px 10px 0px;
-  opacity: 1;
-  -webkit-transform: translate(0px, 100px);
-  -ms-transform: translate(0px, 100px);
-  -o-transform: translate(0px, 100px);
-  transform: translate(0px, 100px);
 }
 .back-reward-button-section.alt {
   position: static;
@@ -2283,11 +2291,14 @@ p {
   display: inline-block;
   margin-right: 20px;
   padding: 10px;
-  border-bottom: 3px solid #409bff;
+  border-bottom: 3px solid white;
   color: #79808b;
   font-size: 15px;
-  font-weight: 600;
+  font-weight: 400;
   text-decoration: none;
+}
+.dashboard-nav-link:hover {
+  border-bottom-color: #409bff;
 }
 .dashboard-nav-link.off {
   border-bottom-color: white;
@@ -2298,6 +2309,10 @@ p {
 }
 .dashboard-nav-link.off:hover {
   border-bottom-color: #409bff;
+}
+.dashboard-nav-link.selected {
+  border-bottom-color: #409bff;
+  font-weight: 600;
 }
 .project-admin-draft-video-home {
   margin-top: 0px;
@@ -2751,6 +2766,7 @@ p {
 }
 .u-marginbottom-20 {
   margin-bottom: 20px;
+  padding-top: 4px;
 }
 .project-stats-numbers {
   font-weight: 600;
@@ -2795,6 +2811,7 @@ p {
 }
 .thumb {
   width: 70px;
+  height: 70px;
   margin-right: 20px;
 }
 .card-reward {
@@ -2887,6 +2904,45 @@ p {
 .card-dark {
   border: 1px solid #3f4752;
   background-color: #3f4752;
+  color: white;
+}
+.icon-reminder {
+  display: inline-block;
+  width: 17px;
+  margin-top: 3px;
+  margin-right: 7px;
+}
+.icon-reminder-2 {
+  display: inline-block;
+  font-family: Entypo, sans-serif;
+  font-weight: 400;
+}
+.fa.fa-clock-o:hover {
+  color: #00b22d;
+}
+.fb-share {
+  display: inline-block;
+}
+.tweet-share {
+  top: 7px;
+  display: inline-block;
+  margin-right: 11px;
+  margin-left: 11px;
+}
+.u-margintop-30 {
+  margin-top: 30px;
+}
+.card-message {
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgba(64, 155, 255, 0.09);
+  background-color: rgba(64, 155, 255, 0.09);
+}
+.u-margintop-20 {
+  margin-top: 20px;
+}
+.badge-success {
+  background-color: #00b22d;
   color: white;
 }
 html.w-mod-js *[data-ix="fade-in"] {
@@ -3098,6 +3154,14 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
   .back-reward-content {
     padding-top: 32px;
   }
+  .back-reward-input-reward {
+    width: 45%;
+    font-size: 36px;
+  }
+  .back-reward-input-reward.placeholder {
+    width: 71px;
+    padding-left: 12px;
+  }
   .back-reward-button {
     width: 40%;
   }
@@ -3261,7 +3325,7 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
     width: 60%;
   }
   .section {
-    padding: 0px;
+    padding: 20px 0px 0px;
   }
   .section.header.header-blue-one {
     padding-top: 0px;
@@ -3470,15 +3534,19 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
     padding-bottom: 42px;
   }
   .back-reward-input-reward {
+    width: 82%;
     margin-right: auto;
-    margin-bottom: -5px;
     margin-left: auto;
     float: none;
+    font-size: 36px;
   }
   .back-reward-input-reward.alt {
     width: 69%;
     margin-right: auto;
     margin-left: auto;
+  }
+  .back-reward-input-reward.placeholder {
+    float: left;
   }
   .back-reward-cheers {
     font-weight: 600;
@@ -3779,7 +3847,7 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
     font-size: 16px;
   }
   .section {
-    padding: 0px;
+    padding: 20px 0px 0px;
   }
   .title {
     margin-top: 10px;
@@ -3937,13 +4005,16 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
     box-shadow: none;
   }
   .back-reward-input-reward {
-    width: 94%;
+    width: 72%;
   }
   .back-reward-input-reward.alt {
     position: static;
     width: 100%;
     margin-right: auto;
     margin-left: auto;
+  }
+  .back-reward-input-reward.placeholder {
+    width: 71px;
   }
   .back-reward-radio-reward {
     width: auto;
@@ -4141,3 +4212,21 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
   }
 }
 
+@font-face {
+  font-family: 'Fontawesome webfont';
+  src: url('../fonts/fontawesome-webfont.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Entypo';
+  src: url('../fonts/entypo.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Entypo social';
+  src: url('../fonts/entypo-social.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
