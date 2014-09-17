@@ -65,7 +65,8 @@ Catarse::Application.configure do
       :failover => true,
       :socket_timeout => 1.5,
       :socket_failure_delay => 0.2
-    }]
+    }
+  ]
 
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
