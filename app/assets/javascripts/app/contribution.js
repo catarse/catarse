@@ -3,7 +3,7 @@ App.addChild('Contribution', {
 
   events: {
     'click label.back-reward-radio-reward' : 'clickReward',
-    'click button#submit' : 'submitForm'
+    'click #submit' : 'submitForm'
   },
 
   submitForm: function(){
@@ -49,7 +49,7 @@ App.addChild('FaqBox', {
   el: '#faq-box',
 
   events: {
-    'click li.faq-box-question' : 'clickQuestion'
+    'click li.list-question' : 'clickQuestion'
   },
 
   clickQuestion: function(event){
@@ -60,6 +60,6 @@ App.addChild('FaqBox', {
   },
 
   activate: function(){
-    this.$('li.faq-box-answer').hide();
+    this.$('li.list-answer').hide();
   }
 });
