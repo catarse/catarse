@@ -1882,7 +1882,7 @@ p {
   margin-bottom: 17px;
   font-weight: 600;
 }
-.faq-box-question {
+.list-question {
   display: block;
   margin-bottom: 10px;
   line-height: 18px;
@@ -1898,8 +1898,8 @@ p {
   line-height: 22px;
   font-weight: 800;
 }
-.faq-box-answer {
-  padding-left: 18px;
+.list-answer {
+  padding-left: 14px;
 }
 .footer-simple-links-list {
   display: inline-block;
@@ -1918,6 +1918,7 @@ p {
   font-weight: 600;
 }
 .footer-simple {
+  margin-top: 80px;
   padding-top: 15px;
   padding-bottom: 15px;
   background-color: #3f4752;
@@ -2574,7 +2575,6 @@ p {
 }
 .text-success {
   color: #00b22d;
-  font-weight: 600;
 }
 .header-search {
   display: inline-block;
@@ -3176,7 +3176,7 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
   .back-reward-input-reward-div.alt {
     padding-right: 0px;
   }
-  .faq-box-answer {
+  .list-answer {
     padding-left: 0px;
   }
   .footer-simple-links-list {
