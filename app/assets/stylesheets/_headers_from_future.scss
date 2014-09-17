@@ -101,14 +101,14 @@
   width: 86.4%;
 }
 .btn-edit {
-  border-color: #409bff;
-  background-color: #409bff;
-  color: white;
-  text-decoration: none;
+  border-color: #409bff !important;
+  background-color: #409bff !important;
+  color: white !important;
+  text-decoration: none !important;
 }
 .btn-edit:hover {
-  border-color: #409bff;
-  background-color: #2f8bed;
+  border-color: #409bff !important;
+  background-color: #2f8bed !important;
 }
 .footer-news-icon {
   margin-top: 7px;
@@ -169,13 +169,13 @@
 
 .postfix {
   position: absolute;
-  display: inline-block;
+  display: inline-block !important;
   overflow-x: hidden;
   overflow-y: hidden;
   height: 40px;
   float: none;
-  border-top-left-radius: 0px;
-  border-bottom-left-radius: 0px;
+  border-top-left-radius: 0px !important;
+  border-bottom-left-radius: 0px !important;
 }
 .prefix {
   border-top-right-radius: 0px;
@@ -279,4 +279,65 @@
 .fontsize-small {
   font-size: 16px;
   line-height: 150%;
+}
+.main-footer {
+  font-family: proxima-nova, sans-serif !important;
+  font-size: 14px !important;
+  position: static;
+  top: 61px;
+  margin-top: 0px;
+  padding-top: 35px;
+  padding-bottom: 35px;
+  background-color: #f1f4f4;
+}
+.main-footer.main-footer-neg {
+  position: static;
+  margin-top: 80px;
+  padding-bottom: 45px;
+  background-color: #3f4752;
+}
+.link-footer {
+  position: static;
+  display: block;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  color: rgba(241, 244, 244, 0.54);
+  text-decoration: none;
+  line-height: 20px;
+}
+.link-footer:hover {
+  text-decoration: underline;
+}
+.link-footer.link-footer-negative {
+  color: rgba(241, 242, 243, 0.65);
+}
+.footer-full-signature-text {
+  margin-bottom: 20px;
+  color: white;
+  font-weight: 600;
+}
+.footer-full-copyleft {
+  margin-top: 30px;
+  padding-top: 25px;
+  border-top: 1px solid rgba(121, 128, 139, 0.76);
+  color: rgba(241, 244, 244, 0.54);
+}
+.btn {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  border: 1px solid #00b22d;
+  border-radius: 5px;
+  background-color: #00b22d;
+  -webkit-transition: all 500ms ease;
+  -o-transition: all 500ms ease;
+  transition: all 500ms ease;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+}
+.btn:hover {
+  border-color: #27bff2 #27bff2 #08bd35;
+  background-color: #08bd35;
+  opacity: 1;
 }
