@@ -12,7 +12,7 @@
         .fontsize-base.u-marginbottom-10.u-text-center-small-only = t('.choose_reward')
         - if current_user.credits > 0
           .card.card-message.zindex-10.u-radius.u-marginbottom-30.fontsize-small
-          == t('.you_have_credits', credits: number_to_currency(current_user.credits))
+            == t('.you_have_credits', credits: number_to_currency(current_user.credits))
         .w-form.back-reward-form
           = simple_form_for [parent, @contribution], html: { id: 'contribution_form' } do |form|
             = render 'devise/shared/alert'
