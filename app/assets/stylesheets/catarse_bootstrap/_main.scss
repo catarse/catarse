@@ -1692,7 +1692,7 @@ p {
   width: 55%;
   height: 70px;
   margin-bottom: 0px;
-  padding-top: 0px;
+  padding-top: 4px;
   border-style: solid solid solid none;
   border-width: 1px;
   border-color: #00b22d;
@@ -2766,7 +2766,6 @@ p {
 }
 .u-marginbottom-20 {
   margin-bottom: 20px;
-  padding-top: 4px;
 }
 .project-stats-numbers {
   font-weight: 600;
@@ -4212,21 +4211,3 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
   }
 }
 
-@font-face {
-  font-family: 'Fontawesome webfont';
-  src: url('../fonts/fontawesome-webfont.ttf') format('truetype');
-  font-weight: 400;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Entypo';
-  src: url('../fonts/entypo.ttf') format('truetype');
-  font-weight: 400;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Entypo social';
-  src: url('../fonts/entypo-social.ttf') format('truetype');
-  font-weight: 400;
-  font-style: normal;
-}
