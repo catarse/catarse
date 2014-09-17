@@ -1,40 +1,29 @@
 - content_for :title, t('.titles.site')
 
 .w-container
-  = render 'devise/shared/header'
-
+  .u-marginbottom-10
+    = render 'devise/shared/header'
   .w-row
-    .w-col.w-col-3
-    .w-col.w-col-6.box-login
-      h2.text-center = t '.titles.header'
-
-      .register
-        .text = t '.have_account_html'
-        = link_to t('.links.login'), new_user_session_url, class: 'link'
-
+    .w-col.w-col-6.box-login.w-col-push-3
+      div
+        .fontweight-semibold.u-text-center.fontsize-large.u-marginbottom-10= t '.titles.header'
+      .fontsize-small.u-text-center.u-marginbottom-10
+        span.fontcolor-secondary=> t '.have_account_html'
+        = link_to t('.links.login'), new_user_session_url, class: 'link alt-link fontweight-semibold'
       .login-fb
-        = button_to t('.form.inputs.facebook'), user_omniauth_authorize_path(provider: :facebook, locale: nil), class: 'button bt-medium bt-fb'
-
+        = link_to t('.form.inputs.facebook'), user_omniauth_authorize_path(provider: :facebook, locale: nil), class: 'btn btn-medium btn-fb'
       .separator
         .text.or = t('or')
-
-      .w-form.form-login
-        = simple_form_for resource, as: resource_name, url: sign_up_url, html: {novalidate: true} do |form|
+      .w-form
+        = simple_form_for resource, as: resource_name, html: {novalidate: true}, url: sign_up_url  do |form|
           = render 'devise/shared/alert'
-
           = form.input :name, as: :string, label: t('.form.labels.name'), input_html: { class: 'w-input text-field' }
-
-          = form.input :email, as: :email, wrapper_html: { class: 'no-asterisk' }, input_html: { class: 'w-input text-field' }
-
-          .password
-            = form.input :password, as: :password, label: t('.form.labels.password'), hint: t('.form.hint.password_length'), input_html: { class: 'w-input text-field' }
-
-            .show-password
-              = check_box_tag :show_password
-              = label_tag :show_password, t('.form.labels.show_password')
-
-          = form.input :newsletter, as: :boolean, inline_label: t('.form.labels.newsletter'), input_html: { class: 'w-checkbox-input', checked: true }, wrapper_html: {class: 'w-checkbox-input w-clearfix' }
-
-          = form.submit t('.form.inputs.submit'), class: 'w-button button bt-medium'
-
-          p.accept = t(".form.labels.accept", terms_url: CatarseSettings[:terms_url], privacy_url: CatarseSettings[:privacy_url]).html_safe
+          = form.input :email, as: :email, wrapper_html: { class: 'no-asterisk' }, input_html: { class: 'w-input text-field' }, required: false
+          .fontsize-smallest.fontcolor-secondary.u-right= label_tag :show_password, t('.form.labels.show_password')
+          .u-right= check_box_tag :show_password
+          = form.input :password, as: :password, label: t('.form.labels.password'), input_html: { class: 'w-input text-field' }
+          .w-checkbox.w-clearfix.checkbox.u-marginbottom-20
+            = form.input :newsletter, as: :boolean, label: '', inline_label: t('.form.labels.newsletter'), input_html: { class: 'w-checkbox-input', checked: true }
+          a.btn.btn-medium= form.button :submit, t('.form.inputs.submit')
+      .fontsize-smallest.u-text-center
+        = t(".form.labels.accept", terms_url: CatarseSettings[:terms_url], privacy_url: CatarseSettings[:privacy_url]).html_safe
