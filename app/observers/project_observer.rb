@@ -108,7 +108,7 @@ class ProjectObserver < ActiveRecord::Observer
   private
 
   def request_refund_for_failed_project(project)
-    project.contributions.where("state = 'confirmed' AND (payment_method = 'PayPal' OR payment_choice = 'CartaoDeCredito')").each do |contribution|
+    project.contributions.where("state = 'confirmed' AND (payment_method = 'PayPal' OR payment_method = 'Pagarme' OR payment_choice = 'CartaoDeCredito')").each do |contribution|
       contribution.request_refund
     end
   end
