@@ -48,7 +48,7 @@ class ApplicationController < ActionController::Base
       current_user.try(:change_locale, params[:locale])
     elsif request.method == "GET"
       new_locale = current_user.try(:locale) || I18n.default_locale
-      redirect_to params.merge(locale: new_locale, only_path: true)
+      redirect_to url_for(params.merge(locale: new_locale, only_path: true))
     end
   end
 
