@@ -41,7 +41,7 @@ var App = window.App = Skull.View.extend({
     var that = this;
     setTimeout( function(){ this.$('.notice-box').fadeIn('slow') }, 100)
     if(this.$('.notice-box').length) setTimeout( function(){ that.$('.notice-box').fadeOut('slow') }, 16000)
-    $('.notice-box a.notice-close').on('click', function(){ that.$('.notice-box').fadeOut('slow') })
+    $('.icon-close').on('click', function(){ that.$('.card-notification').fadeOut('slow') })
   },
 
   maskElement: function(index, el){

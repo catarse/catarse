@@ -4,7 +4,7 @@ pt:
       edit:
         titles:
           site: 'Defina uma nova senha'
-          header: 'Defina uma nova senha'
+          header: 'Definir nova senha'
         form:
           hint:
             password_length: 'Mínimo de 6 caracteres'
