@@ -53,6 +53,11 @@ module Contribution::StateMachineHandler
 
       after_transition do |contribution, transition|
         contribution.notify_observers :"from_#{transition.from}_to_#{transition.to}"
+
+        to_column = "#{transition.to}_at".to_sym
+        if contribution.has_attribute?(to_column)
+          contribution.update_attribute to_column, DateTime.now
+        end
       end
 
       after_transition any => [:refunded_and_canceled] do |contribution, transition|
