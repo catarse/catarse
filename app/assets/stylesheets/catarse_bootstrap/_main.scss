@@ -131,6 +131,9 @@ p {
 .btn.bt-blue:hover {
   background-color: #2685eb;
 }
+.btn.btn:hover {
+  border-color: #08bd35;
+}
 .section {
   padding-top: 30px;
   padding-bottom: 30px;
@@ -1010,7 +1013,6 @@ p {
   font-weight: 400;
 }
 .column-stats-envio {
-  margin-top: 59px;
   padding-top: 0px;
   text-align: center;
 }
@@ -2681,7 +2683,7 @@ p {
   border-color: rgba(37, 49, 57, 0.88);
   background-color: rgba(37, 49, 57, 0.88);
 }
-.btn-secondary {
+.btn-secondary-dark {
   border: 1px solid white;
   background-color: transparent;
 }
@@ -2943,6 +2945,24 @@ p {
 .badge-success {
   background-color: #00b22d;
   color: white;
+}
+.btn-secondary {
+  border: 1px solid #3f4752;
+  background-color: transparent;
+  color: #3f4752;
+}
+.btn-secondary:hover {
+  color: white;
+}
+.u-margintop-40 {
+  margin-top: 40px;
+}
+.start-stats {
+  padding-right: 34px;
+  padding-left: 34px;
+}
+.u-marginbottom-70 {
+  margin-bottom: 70px;
 }
 html.w-mod-js *[data-ix="fade-in"] {
   opacity: 0;
