@@ -28,12 +28,13 @@
               = check_box_tag 'live_in_brazil', 'live', params[:locale] == 'pt'
               = label_tag 'live_in_brazil', t('.live_in_brazil'), class: 'inline'
             = form.input :full_name, required: true, as: :string
-            /= form.input :cpf, as: :string, input_html: {autocomplete: 'off'}
             = form.input :email, required: true, as: :string
             .clearfix
             fieldset.address_data
               .title
                 h2
+              = form.input :cpf, as: :string, input_html: {autocomplete: 'off', data: {mask: '999.999.999-99'}}, required: true
+              .clearfix
               = form.input :address_street, as: :string, required: true
               = form.input :address_number, as: :string, required: true
               = form.input :address_complement, required: false, as: :string
