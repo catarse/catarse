@@ -7,7 +7,7 @@ class Contribution < ActiveRecord::Base
   include Contribution::CustomValidators
   include Contribution::PaymentEngineHandler
 
-  delegate :display_value, :display_confirmed_at, to: :decorator
+  delegate :display_value, :display_confirmed_at, :display_slip_url, to: :decorator
 
   belongs_to :project
   belongs_to :reward
