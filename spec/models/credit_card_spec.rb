@@ -9,6 +9,6 @@ describe CreditCard do
     it{ should validate_presence_of(:user) }
     it{ should validate_presence_of(:last_digits) }
     it{ should validate_presence_of(:card_brand) }
-    it{ should validate_presence_of(:object_id) }
+    it{ should validate_presence_of(:subscription_id) }
   end
 end
