@@ -143,8 +143,8 @@ describe Projects::ContributionsController do
 
     context "when project.online? is true" do
       it{ should render_template("projects/contributions/new") }
-      its(:body) { should =~ /#{I18n.t('projects.contributions.new.header.title')}/ }
-      its(:body) { should =~ /#{I18n.t('projects.contributions.new.submit')}/ }
+      its(:body) { should =~ /#{I18n.t('projects.contributions.new.title')}/ }
+      its(:body) { should =~ /#{I18n.t('projects.contributions.new.next_step')}/ }
       its(:body) { should =~ /#{I18n.t('projects.contributions.new.no_reward')}/ }
       its(:body) { should =~ /#{project.name}/ }
     end

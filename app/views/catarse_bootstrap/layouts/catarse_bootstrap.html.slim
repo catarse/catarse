@@ -3,10 +3,12 @@ html
   head
     title= content_for(:title)
 
-    = stylesheet_link_tag content_for(:main_stylesheet) || :catarse
+    = stylesheet_link_tag 'catarse_bootstrap/catarse'
+    = stylesheet_link_tag '//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css'
+    = content_for(:stylesheets)
     = favicon_link_tag 'favicon.ico'
     = csrf_meta_tag
-    meta name="viewport" content="width=device-width"
+    meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"
 
     - if content_for? :meta_tags
       /project specific meta tags
@@ -28,9 +30,10 @@ html
     = render 'layouts/catarse_bootstrap_notices' if notice.present?
     = render 'layouts/webfont'
 
-    .content= yield
+    .content[data-controller-class=controller.class.name.downcase data-controller-name=controller.controller_name.downcase data-action=controller.action_name.downcase data-locale="#{I18n.locale}" data-user="#{current_user.to_json}"]= yield
     = render 'layouts/crazzy_egg'
   = javascript_include_tag :application
   = render_google_analytics_script
   = render_mixpanel_script
+  = render '/layouts/new_zendesk'
   = render 'layouts/intercom'

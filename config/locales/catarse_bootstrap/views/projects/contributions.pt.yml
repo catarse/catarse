@@ -1,6 +1,8 @@
 pt:
   projects:
     contributions:
+      no_estimate: "Não disponível"
+      you_selected: "Você escolheu essa!"
       contribute_text:
         credits_tab: Meus créditos
       checkout:
@@ -10,8 +12,12 @@ pt:
         anonymous_contribution: Apoiador anônimo
         anonymous_description: Optou por permanecer incógnito
         no_reward: Este apoiador não selecionou nenhuma recompensa
+      selected_reward:
+        review_without_reward_html: Você irá apoiar com <strong>%{value}</strong>
+          e não quer nenhuma recompensa por seu apoio.
       edit:
         reward_sold_out: Essa recompensa está esgotada. Inicie um novo apoio.
+        page-title: Apoie o %{name}
         credits_preview_html: "Você possui <strong>%{credits}</strong> em créditos para realizar este apoio."
         credits_submit: 'Efetuar pagamento'
         credits_title: 'Pagamento com créditos'
@@ -31,8 +37,6 @@ pt:
         payment_card: Pagamento com Cartão
         review_with_reward_html: 'Você irá apoiar com <strong>%{value}</strong> e
           ganhará a seguinte recompensa:'
-        review_without_reward_html: Você irá apoiar com <strong>%{value}</strong>
-          e não quer nenhuma recompensa por seu apoio.
         select_account: 'Você será redirecionado para o site do seu banco:'
         select_boleto: 'Para prosseguir, por favor selecione:'
         submit:
@@ -43,13 +47,14 @@ pt:
         you_are_about_html: Você está prestes a fazer parte do grupo que faz de tudo
           para o %{link} acontecer.
       new:
-        header:
-          subtitle: Você está a poucos passos de fazer a diferença e se tornar parte
-            deste projeto.
-          title: Oohh yeah!
+        page-title: Apoie o %{name}
+        title: Oohh yeah!
+        you_have_credits: "Você tem <strong>%{credits}</strong> em créditos para realizar este apoio."
+        choose_reward: Escolha sua recompensa e em seguida o valor do apoio. 
+        choose_value: Digite o valor do seu apoio.
+        minimum_disclaimer: 'A partir de R$ <span id="minimum-value">10</span> está ótimo ;)'
+        next_step: "Revisar e realizar pagamento"
         no_reward: Obrigado. Eu só quero ajudar o projeto.
-        submit: Revisar e realizar pagamento
-        title: Apoie o %{name}
       review:
         Credits: 'Créditos'
         error: Ooops. Ocorreu um erro ao registrar seu apoio. Por favor, tente novamente.

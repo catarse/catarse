@@ -27,6 +27,15 @@ App.addChild('FeedbackBox', {
     }
   },
 
+  toggleBox: function(){
+    if(this.$el.hasClass("feedback-box-closed")){
+      this.openBox();
+    }
+    else{
+      this.closeBox();
+    }
+  },
+
   openBox: function(){
     store.set('feedbackFormClosed', false);
     this.$el.removeClass("feedback-box-closed");

@@ -38,6 +38,7 @@ class Projects::ContributionsController < ApplicationController
 
   def new
     @contribution = Contribution.new(project: parent, user: current_user)
+    @contribution.value = 10
     authorize @contribution
 
     @title = t('projects.contributions.new.title', name: @project.name)
@@ -90,5 +91,9 @@ class Projects::ContributionsController < ApplicationController
 
   def collection
     @contributions ||= apply_scopes(end_of_association_chain).available_to_display.order("confirmed_at DESC").per(10)
+  end
+
+  def use_catarse_boostrap
+    ["new", "create", "edit", "update"].include?(action_name) ? 'catarse_bootstrap' : 'application'
   end
 end

@@ -14,7 +14,23 @@ class RewardDecorator < Draper::Decorator
   end
 
   def name
-    "<div class='reward_minimum_value'>#{source.minimum_value > 0 ? source.display_minimum+'+' : I18n.t('rewards.index.dont_want')}</div><div class='reward_description'>#{html_escape(source.description)}</div>#{'<div class="sold_out">' + I18n.t('rewards.index.sold_out') + '</div>' if source.sold_out?}<div class='clear'></div>".html_safe
+    deliver = %{
+        <div class="fontsize-smallest fontcolor-secondary">
+          Estimativa de entrega:&nbsp;#{source.display_deliver_estimate || I18n.t('projects.contributions.no_estimate')}
+        </div>
+    }
+    %{
+      <label data-minimum-value="#{source.minimum_value > 0 ? source.minimum_value.to_i : '10'}" class="w-form-label fontsize-large fontweight-semibold" for="contribution_reward#{source.id && "_#{source.id}"}">#{source.minimum_value > 0 ? source.display_minimum+'+' : I18n.t('rewards.index.dont_want')}</label>
+      <div>
+        <span class="badge badge-success fontsize-smaller">#{I18n.t('projects.contributions.you_selected')}</span>
+      </div>  
+      <p class="fontsize-small u-margintop-20">
+      #{html_escape(source.description)}
+      </p>
+      <div class="fontsize-smallest fontcolor-secondary">  
+        #{source.id ? deliver : ''}
+      </div>
+    }.html_safe
   end
 
   def display_minimum

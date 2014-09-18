@@ -1,34 +1,26 @@
-- content_for :main_stylesheet, :webflow
 - content_for :title, t('.titles.site')
 
 .w-container
   = render 'devise/shared/header'
-
   .w-row
-    .w-col.w-col-3
-    .w-col.w-col-6.box-login.animated.fadeIn
-      h2.text-center= t '.titles.header'
-
-      .register
-        .text = t ('.no_account_html')
-        = link_to t('.links.register'), new_user_registration_url, class: 'link'
-
-      .login-fb
-        = button_to t('.form.inputs.facebook'), user_omniauth_authorize_path(provider: :facebook, locale: nil), class: 'button bt-medium bt-fb'
-
-      .separator
-        .text.or = t('or')
-
-      .w-form.form-login
-        = simple_form_for resource, as: resource_name, url: session_url(resource_name), html: {novalidate: true}, class: 'email-form' do |form|
-
-          = render 'devise/shared/alert'
-
-          = form.input :email, as: :email, label: t('.email'), input_html: { class: 'w-input text-field' }
-
-          = form.input :password, as: :password, label: t('.form.inputs.password'), input_html: { class: 'w-input text-field' }
-          = link_to t('.links.forgot_password'), new_password_path(resource_name), class: 'link forget-password'
-
-          = form.input :remember_me, as: :boolean, inline_label: t('.form.labels.remember_me'), input_html: { class: 'w-checkbox-input', checked: true }, wrapper_html: {class: 'w-checkbox-input' }
-
-          = form.button :submit, t('.form.inputs.submit'), class: 'w-button button bt-medium'
+    .w-col.w-col-12.u-text-center
+      .fontweight-semibold.fontsize-large.u-marginbottom-10= t '.titles.header'
+  .w-container
+    .w-row
+      .w-col.w-col-6.box-login.w-col-push-3
+        .fontsize-small.u-text-center.u-marginbottom-10
+          span.fontcolor-secondary=>t ('.no_account_html')
+          = link_to t('.links.register'), new_user_registration_url, class: 'alt-link fontweight-semibold'
+        .login-fb
+          = link_to t('.form.inputs.facebook'), user_omniauth_authorize_path(provider: :facebook, locale: nil), class: 'btn btn-medium btn-fb'
+        .separator
+          .text.or= t('or')
+        .w-form
+          = simple_form_for resource, as: resource_name, url: session_url(resource_name), html: {novalidate: true}, class: 'email-form' do |form|
+            = render 'devise/shared/alert'
+            = form.input :email, as: :email, label: t('.email'), input_html: { class: 'w-input text-field' }, required: false
+            = link_to t('.links.forgot_password'), new_password_path(resource_name), class: 'fontsize-smallest link-hidden fontcolor-secondary u-right'
+            = form.input :password, as: :password, label: t('.form.inputs.password'), input_html: { class: 'w-input text-field' }
+            .w-checkbox.w-clearfix.checkbox.u-marginbottom-20
+              = form.input :remember_me, as: :boolean, inline_label: t('.form.labels.remember_me'), label: '', input_html: { class: 'w-checkbox-input', checked: true }
+            a.btn.btn-medium= form.button :submit, t('.form.inputs.submit')

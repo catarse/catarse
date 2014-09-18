@@ -1,20 +1,20 @@
-- content_for :main_stylesheet, :webflow
-
 = render 'shared/header_big'
 = render 'shared/feedback'
 
-.page-header
-  h1.headingcenter = t('.title')
+.page-header.negative.u-marginbottom-40
+  .w-container
+    h1.fontsize-largest.u-text-center = t('.title')
 
-.w-container.text-page
-  h2 = t('.content.explanation')
-  p.prg2 = t('.content.explanation_text').html_safe
-  p.prg2 = t('.content.explanation_text_cont').html_safe
+.section-one-column  
+  .w-container
+    .headline = t('.content.explanation')
+    p.fontsize-base = t('.content.explanation_text').html_safe
+    p.fontsize-base.u-marginbottom-60 = t('.content.explanation_text_cont').html_safe
+    
+    .headline = t('.content.email')
+    p.fontsize-base.u-marginbottom-60 = t('.content.email_text').html_safe
 
-  h2 = t('.content.email')
-  p.prg2 = t('.content.email_text').html_safe
-
-  h2 = t('.content.update')
-  p.prg2 = t('.content.update_text').html_safe
+    .headline = t('.content.update')
+    p.fontsize-base.u-marginbottom-60 = t('.content.update_text').html_safe
 
 = render 'shared/footer_big'

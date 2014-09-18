@@ -1,0 +1,7 @@
+.page-header.u-text-center
+  .w-container
+    .fontsize-larger.fontweight-semibold.project-name = @project.name
+    .fontsize-base.lineheight-looser
+      = t('projects.index.box.by')
+      |&nbsp;
+      = link_to @project.user.display_name, user_path(@project.user), class: 'link-hidden'

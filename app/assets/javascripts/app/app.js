@@ -2,10 +2,16 @@ var App = window.App = Skull.View.extend({
   el: 'html',
 
   events: {
-    "click a.user-menu" : "toggleMenu",
+    "click a#user-menu" : "toggleMenu",
     "click a.mobile-menu-link" : "mobileMenu",
     "click .zendesk_widget" : "showWidget",
     "click a.icon-feedback-box" : "toggleBox",
+    "click #pg_search_submit" : "searchProject"
+  },
+
+  searchProject: function(){
+    this.$('#search-form').submit();
+    return false;
   },
 
   beforeActivate: function(){
@@ -15,7 +21,7 @@ var App = window.App = Skull.View.extend({
 
   activate: function(){
     this.$(".best_in_place").best_in_place();
-    this.$dropdown = this.$('.dropdown.user');
+    this.$dropdown = this.$('.dropdown-list.user-menu');
     this.flash();
     this.notices();
     Backbone.history.start({pushState: false});
@@ -49,16 +55,12 @@ var App = window.App = Skull.View.extend({
   },
 
   toggleMenu: function(){
-    this.$dropdown.slideToggle('fast');
+    this.$dropdown.toggleClass('w--open');
     return false;
   },
 
-  mobileMenu: function(){
-    $(".mobile-menu").slideToggle(500);
-  },
-
   toggleBox: function() {
-    this.feedbackBox.openBox();
+    this.feedbackBox.toggleBox();
     return false;
   },
 });

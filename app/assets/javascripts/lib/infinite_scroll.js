@@ -25,7 +25,7 @@ Skull.InfiniteScroll = {
       this.EOF = true;
     }
     this.$results.append(data);
-    this.$loader.hide();
+    this.$loader.toggle();
     this.trigger('scroll:success', data);
   },
 
