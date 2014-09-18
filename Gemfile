@@ -9,7 +9,6 @@ gem 'rails-observers', '~> 0.1.2'
 
 gem 'sidekiq',  '~> 3.1.3'
 gem 'sinatra', require: false # required by sidekiq web interface mounted on /sidekiq
-gem 'dalli'
 
 # Turns every field on a editable one
 gem "best_in_place", :git => "git://github.com/bernat/best_in_place", ref: "ee95961e639022e6aa528704b8cb4789596ea61b"
@@ -24,7 +23,7 @@ gem 'pg_search'
 
 gem 'schema_plus'
 gem 'chartkick'
-gem 'catarse_settings_db'
+gem 'catarse_settings_db', '>= 0.1.0'
 
 # Notifications
 gem 'user_notifier'
