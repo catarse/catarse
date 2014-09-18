@@ -1,22 +1,19 @@
 - content_for :title, t('.titles.site')
 
-.w-container.proxima
-  = render 'devise/shared/header'
-
+.w-container
+  .u-marginbottom-10
+    = render 'devise/shared/header'
   .w-row
     .w-col.w-col-3
-    .w-col.w-col-6.box-login.animated.fadeIn
-      h2.text-center = t '.titles.header'
-
-      .register
-        .text = t '.no_account_html'
-        = link_to t('.links.register'), new_user_registration_url, class: 'link'
-
+    .w-col.w-col-6.box-login
+      .fontweight-semibold.u-text-center.fontsize-large.u-marginbottom-10 Redefinir senha
+      .fontsize-small.u-text-center.u-marginbottom-30
+        span.fontcolor-secondary=> t '.no_account_html'
+        = link_to t('.links.register'), new_user_registration_url, class: 'alt-link fontweight-semibold'
+      .login-fb
       .w-form.form-login
-        = simple_form_for resource, as: resource_name, url: password_url(resource_name), html: {novalidate: true}, class: 'email-form' do |form|
-
+        = simple_form_for resource, as: resource_name, url: password_url(resource_name), html: {novalidate: true} do |form|
           = render 'devise/shared/alert'
-
-          = form.input :email, as: :email, label: t('.form.labels.email'), input_html: { class: 'w-input text-field' }, label_html: { class: 'instructions'}
-
-          = form.button :submit, t('.form.inputs.submit'), class: 'w-button button bt-medium'
+          label.field-label.fontsize-smaller.fontcolor-secondary for="name"= t('.form.labels.email')
+          = form.input :email, as: :email, input_html: { class: 'w-input text-field' }, label: '', required: false
+          a.btn.btn-medium= form.button :submit, t('.form.inputs.submit')
