@@ -148,6 +148,7 @@ Catarse::Application.routes.draw do
 
     resources :contributions, only: [ :index, :update, :show ] do
       member do
+        get :second_slip
         put 'confirm'
         put 'pendent'
         put 'change_reward'
