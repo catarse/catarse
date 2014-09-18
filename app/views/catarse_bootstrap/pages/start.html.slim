@@ -5,10 +5,9 @@
 
 .page-header
   .w-container.no-responsive
-    .fontsize-largest.u-text-center = t('.title')
-
+    .fontsize-largest.u-text-center.u-marginbottom-80.u-margintop-30 = t('.title')
     - statistics = Statistics.first
-    .w-row.stats-send-project
+    .w-row.u-text-center.u-marginbottom-60
       .w-col.w-col-4.column-stats-submit
         .fontsize-jumbo.text-success = number_to_human(statistics.total_contributors)
         p.fontsize-base = t('.header.people')
@@ -19,15 +18,15 @@
         .fontsize-jumbo.text-success = number_to_human(statistics.total_contributed)
         p.fontsize-base = t('.header.money')
 
-    .w-row
-      .w-col.w-col-8.w-col-push-2.bt-center-header
-        = link_to t('.learn-more'), '#learn', class: 'button bt-medium bt-aprenda'
-        span = "ou"
-        = link_to t('.submit'), new_project_path, class: 'button bt-medium bt-rascunhooff'
+    .w-row.u-margintop-20.u-marginbottom-30
+      .w-col.w-col-3.w-col-push-3
+        = link_to t('.learn-more'), '#learn', class: 'btn btn-medium'
+      .w-col.w-col-3.w-col-push-3
+        = link_to t('.submit'), new_project_path, class: 'btn btn-medium btn-secondary'
 
 #learn
-  .w-container.no-responsive
-    .w-row.row-infosline
+  .w-container.no-responsive.section
+    .w-row.u-marginbottom-30.u-margintop-30
       .w-col.w-col-6.column-images-center
         = image_tag "catarse_bootstrap/how-it-works/inscreva-seu-projeto.png", class: "img-envie-01"
       .w-col.w-col-6
@@ -35,7 +34,7 @@
         p.fontsize-base = t('.start.content')
         = link_to t('.start.link'), 'http://suporte.catarse.me/hc/pt-br/sections/200406978-Realizadores-Primeiros-passos', class: "alt-link fontsize-base", target: '_blank'
 
-    .w-row.row-infosline
+    .w-row.u-marginbottom-30
       .w-col.w-col-6
         .headline = t('.people.title')
         p.fontsize-base = t('.people.content')
@@ -44,7 +43,7 @@
       .w-col.w-col-6.column-images-center
         = image_tag "catarse_bootstrap/how-it-works/mobilze-interessados.png", class: "img-envie-02"
 
-    .w-row.row-infosline
+    .w-row.u-marginbottom-30
       .w-col.w-col-6.column-images-center
         = image_tag "catarse_bootstrap/how-it-works/trabalhe-muito.png", class: "img-envie-03"
       .w-col.w-col-6
@@ -52,7 +51,7 @@
         p.fontsize-base = t('.work.content')
         = link_to t('.work.link'), 'http://blog.catarse.me/category/dicas/', class: 'alt-link fontsize-base', target: '_blank'
 
-    .w-row.row-infosline
+    .w-row.u-marginbottom-30
       .w-col.w-col-6
         .headline = t('.time.title')
         p.fontsize-base = t('.time.content')
