@@ -10,6 +10,9 @@ p
   br/
   | Valor da contribuição: #{number_to_currency contribution.value}
   br/
+  - if contribution.installments.present?
+    | Número de parcelas:
+    br/
   -if contribution.reward.present?
     | Recompensa selecionada: #{contribution.reward.description}
     br/
