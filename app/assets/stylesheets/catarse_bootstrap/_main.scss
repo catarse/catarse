@@ -229,7 +229,6 @@ p {
   margin-bottom: 61px;
 }
 .text-field {
-  display: block;
   height: 40px;
   margin-top: 0px;
   margin-bottom: 20px;
@@ -321,6 +320,10 @@ p {
   border-color: rgba(37, 49, 57, 0.6);
   background-color: rgba(37, 49, 57, 0.6);
   box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 23px 0px inset;
+}
+.text-field.medium {
+  height: 60px;
+  font-size: 22px;
 }
 .field-label {
   display: inline-block;
@@ -2963,6 +2966,10 @@ p {
 }
 .u-marginbottom-70 {
   margin-bottom: 70px;
+}
+.zindex-20 {
+  z-index: 20;
+  box-shadow: rgba(0, 0, 0, 0.61) 0px 1px 4px 0px;
 }
 html.w-mod-js *[data-ix="fade-in"] {
   opacity: 0;
