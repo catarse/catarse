@@ -147,5 +147,5 @@ SimpleForm.setup do |config|
   # config.cache_discovery = !Rails.env.development?
 
   # Default class for inputs
-  # config.input_class = nil
+  config.input_class = 'w-input text-field'
 end
