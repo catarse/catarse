@@ -1,6 +1,6 @@
-= render 'shared/header_bootstrap_v1'
+= render 'shared/header_big'
 
-.row
+.w-row
   h3= t('.contribution_info', key: resource.key)
   p
     strong= t('.payment_method')
@@ -31,4 +31,4 @@
     | &nbsp;
     = l(resource.created_at)
 
-= render 'shared/footer_bootstrap_v1'
+= render 'shared/footer_big'
