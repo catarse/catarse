@@ -121,6 +121,7 @@ pt:
     reward_description: Descrição da recompensa
     confirmed_at: Data da confirmação do pagamento
     contribution_value: Valor do apoio
+    reward_deliver_at: Estimativa de entrega
     service_fee: Taxa do Catarse
     user_name: Nome do apoiador
     user_email: Email perfil Catarse
