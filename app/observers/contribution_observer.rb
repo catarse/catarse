@@ -14,10 +14,6 @@ class ContributionObserver < ActiveRecord::Observer
     end
   end
 
-  def after_save(contribution)
-    contribution.project.notify_owner(:project_success) if contribution.project.reached_goal?
-  end
-
   def from_requested_refund_to_refunded(contribution)
     contribution.notify_to_contributor((contribution.slip_payment? ? :refund_completed_slip : :refund_completed))
   end

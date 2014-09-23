@@ -32,38 +32,6 @@ describe ContributionObserver do
       it("should notify the contribution"){ subject }
     end
 
-    context "when project reached the goal" do
-      let(:project){ create(:project, state: 'failed', goal: 20) }
-      let(:contribution){ create(:contribution, key: 'should be updated', payment_method: 'should be updated', state: 'confirmed', confirmed_at: Time.now, value: 20) }
-      before do
-        project_total = mock()
-        project_total.stub(:pledged).and_return(20.0)
-        project_total.stub(:total_contributions).and_return(1)
-        project.stub(:project_total).and_return(project_total)
-        contribution.project = project
-        ProjectNotification.should_receive(:notify).with(
-          :project_success,
-          contribution.project.user,
-          contribution.project,
-          {}
-        )
-        contribution.save!
-      end
-      it("should notify the project owner"){ subject }
-    end
-
-    context "when project is already successful" do
-      let(:project){ create(:project, state: 'online') }
-      let(:contribution){ create(:contribution, key: 'should be updated', payment_method: 'should be updated', state: 'confirmed', confirmed_at: Time.now, project: project) }
-      before do
-        contribution
-        project.update_attributes state: 'successful'
-        ContributionNotification.should_receive(:notify).never
-        contribution.save!
-      end
-      it("should not send project_successful notification again"){ subject }
-    end
-
     context "when is not yet confirmed" do
       context 'notify the contribution' do
         before do
