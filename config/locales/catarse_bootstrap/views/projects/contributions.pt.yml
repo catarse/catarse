@@ -67,7 +67,7 @@ pt:
           em contato com o Moip. Um email será enviado quando o pagamento for confirmado.
         recommended_projects: 'Você também poderá curtir esses projetos:'
         text_subtitle: Conte para todo mundo o que você acabou de fazer
-        text_title_html: Você agora é parte do grupo que faz de tudo para o %{link}
+        text_title_html: Você agora é parte do grupo que faz de tudo para o projeto %{link}
           acontecer.
         title: Muito obrigado
 
