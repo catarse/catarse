@@ -10,7 +10,7 @@
     = link_to t('.embed'), '#embed', id: 'embed_link', class: 'link-hidden fontsize-small fontcolor-secondary'
   .w-col.w-col-3
     - if user_signed_in? && @project.user_already_in_reminder?(current_user.id)
-      = link_to t('.deactive_btn'), reminder_project_path(@project), class: 'fa fa-clock-o link-hidden fontsize-small u-right fontcolor-secondary', method: :delete
+      = link_to t('.deactive_btn'), reminder_project_path(@project), class: 'fa fa-clock-o link-hidden fontsize-small u-right fontcolor-secondary active', method: :delete
     - else
       = link_to t('.active_btn'), reminder_project_path(@project), class: 'fa fa-clock-o link-hidden fontsize-small u-right fontcolor-secondary'
 

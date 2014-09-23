@@ -78,24 +78,6 @@ p {
 .btn.bt-medium.bt-fb:hover {
   background-color: #547fd6;
 }
-.btn.bt-medium.bt-aprenda {
-  display: inline-block;
-  width: 30%;
-}
-.btn.bt-medium.bt-rascunhooff {
-  display: inline-block;
-  width: 35%;
-  border: 2px solid white;
-  background-color: transparent;
-  -webkit-transition: all 500ms ease, all 500ms ease, all 500ms ease, all 500ms ease;
-  -o-transition: all 500ms ease, all 500ms ease, all 500ms ease, all 500ms ease;
-  transition: all 500ms ease, all 500ms ease, all 500ms ease, all 500ms ease;
-}
-.btn.bt-medium.bt-rascunhooff:hover {
-  border-style: none;
-  background-color: #00b22d;
-  color: white;
-}
 .btn.bt-small {
   padding-top: 9px;
   padding-bottom: 9px;
@@ -229,7 +211,6 @@ p {
   margin-bottom: 61px;
 }
 .text-field {
-  display: block;
   height: 40px;
   margin-top: 0px;
   margin-bottom: 20px;
@@ -322,6 +303,10 @@ p {
   background-color: rgba(37, 49, 57, 0.6);
   box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 23px 0px inset;
 }
+.text-field.medium {
+  height: 60px;
+  font-size: 22px;
+}
 .field-label {
   display: inline-block;
   margin-bottom: 8px;
@@ -384,11 +369,6 @@ p {
   border: 0px solid #e9e9ec;
   border-radius: 5px;
 }
-.text-center {
-  margin-top: 7px;
-  margin-bottom: 5px;
-  text-align: center;
-}
 .text {
   display: inline-block;
   margin-right: 9px;
@@ -413,10 +393,6 @@ p {
 .text.date-news {
   margin-bottom: 32px;
 }
-.register {
-  margin-bottom: 16px;
-  text-align: center;
-}
 .link {
   -webkit-transition: all 500ms ease;
   -o-transition: all 500ms ease;
@@ -428,12 +404,6 @@ p {
 }
 .link:hover {
   text-decoration: underline;
-}
-.link.forget-password {
-  color: #79808b;
-  font-size: 12px;
-  font-weight: 400;
-  text-align: left;
 }
 .link.link-header {
   position: relative;
@@ -494,16 +464,6 @@ p {
   border-top: 1px solid #e9e9ec;
   text-align: center;
 }
-.show-password {
-  position: absolute;
-  top: 409px;
-  right: 82px;
-  bottom: 0px;
-  overflow-x: hidden;
-  overflow-y: hidden;
-  color: #79808b;
-  font-size: 14px;
-}
 .header-profile {
   text-align: right;
 }
@@ -556,9 +516,6 @@ p {
   margin-top: 22px;
   margin-right: auto;
   margin-left: auto;
-}
-.div-espaco {
-  height: 26px;
 }
 .project-stats {
   padding-top: 24px;
@@ -891,9 +848,6 @@ p {
   font-weight: 300;
   text-align: center;
 }
-.headingcenter.headingcenter-middle {
-  margin-top: 45px;
-}
 .prg2 {
   display: block;
   margin-top: 0px;
@@ -997,28 +951,6 @@ p {
   top: auto;
   display: inline-block;
 }
-.prg1.sub-description {
-  margin-top: 25px;
-  margin-bottom: 16px;
-  padding-right: 34px;
-  padding-left: 34px;
-  color: rgba(241, 244, 244, 0.84);
-  font-size: 15px;
-  font-weight: 300;
-}
-.big-number {
-  margin-top: 14px;
-  color: #29e357;
-  font-size: 63px;
-  font-weight: 400;
-}
-.column-stats-envio {
-  padding-top: 0px;
-  text-align: center;
-}
-.row-infosline {
-  margin-bottom: 35px;
-}
 .column-images-center {
   left: 0px;
   top: 0px;
@@ -1026,26 +958,6 @@ p {
   margin-bottom: 51px;
   padding-top: 65px;
   text-align: center;
-}
-.or-space-envie {
-  display: inline-block;
-  margin-right: 23px;
-  margin-left: 23px;
-  color: #f1f4f4;
-  font-size: 16px;
-}
-.img-envie-01 {
-  margin-top: 30px;
-}
-.img-envie-02 {
-  margin-top: 66px;
-}
-.img-envie-03 {
-  margin-top: 44px;
-  padding-top: 0px;
-}
-.img-envie-04 {
-  margin-top: 23px;
 }
 .project-content {
   position: static;
@@ -1250,9 +1162,6 @@ p {
 .first-check {
   margin-top: 24px;
 }
-.stats-send-project {
-  margin: 25px auto 32px;
-}
 .project-author-contacts {
   margin-top: 15px;
   padding-top: 8px;
@@ -1308,12 +1217,6 @@ p {
 }
 .icon-feedback-box:hover {
   background-color: #368deb;
-}
-.bt-center-header {
-  margin-top: 25px;
-  margin-bottom: 51px;
-  padding-top: 0px;
-  text-align: center;
 }
 .project-video {
   height: 418px;
@@ -1472,9 +1375,6 @@ p {
   right: 0px;
   bottom: 0px;
   display: inline-block;
-}
-.send-project-content {
-  padding-top: 70px;
 }
 .menu-list-head {
   margin-top: 50px;
@@ -1665,15 +1565,9 @@ p {
   color: white;
   line-height: 22px;
 }
-.project-stats-status.status--funded {
-  background-color: #00b22d;
-}
 .project-stats-status.status--waiting {
   background-color: #ffcc40;
   color: #3f4752;
-}
-.project-stats-status.status--notfunded {
-  background-color: #e86666;
 }
 .project-stats-status.status--draft {
   background-color: #3f4752;
@@ -1716,14 +1610,6 @@ p {
 }
 .back-reward-input-reward:focus {
   border-top-color: #00b22d;
-}
-.back-reward-input-reward.alt {
-  width: 59%;
-  margin-top: 30px;
-  margin-bottom: 0px;
-  margin-left: 0px;
-  border-color: #00b22d;
-  background-color: white;
 }
 .back-reward-input-reward.placeholder {
   display: inline-block;
@@ -1846,13 +1732,6 @@ p {
 }
 .back-reward-input-reward-div {
   display: inline-block;
-}
-.back-reward-input-reward-div.alt {
-  display: block;
-  margin-top: 50px;
-  padding: 28px 48px 48px 23px;
-  border-radius: 5px;
-  background-color: #f1f4f4;
 }
 .back-faq-box {
   margin-bottom: 20px;
@@ -2124,7 +2003,7 @@ p {
   margin-bottom: 17px;
   font-weight: 600;
 }
-.back-payment-formwrapper {
+.formwrapper {
   margin-bottom: 20px;
 }
 .back-payment-button-next-step {
@@ -2195,6 +2074,7 @@ p {
   color: #3f4752;
 }
 .back-payment-tab-container {
+  height: 42px;
   margin-bottom: 30px;
   border-bottom: 1px solid #ddd;
 }
@@ -2211,9 +2091,6 @@ p {
   border-radius: 5px;
   background-color: rgba(64, 155, 255, 0.09);
   box-shadow: rgba(63, 71, 82, 0.29) 1px 1px 3px 0px;
-}
-.message-light.back-reward-message-light {
-  margin-top: 10px;
 }
 .back-payment-subheadline {
   margin-top: -20px;
@@ -2733,6 +2610,7 @@ p {
   height: 42px;
   margin-right: 5px;
   padding: 13px 13px 8px;
+  border-bottom: 1px solid transparent;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
   -webkit-transition: all 500ms ease;
@@ -2748,6 +2626,7 @@ p {
 }
 .nav-tab.selected {
   height: 42px;
+  border-bottom-color: white;
   background-color: white;
   color: #3f4752;
   font-weight: 600;
@@ -2795,9 +2674,6 @@ p {
 .badge-gone {
   background-color: #79808b;
   color: white;
-}
-.u-inline {
-  display: inline-block;
 }
 .u-left {
   float: left;
@@ -2907,17 +2783,6 @@ p {
   background-color: #3f4752;
   color: white;
 }
-.icon-reminder {
-  display: inline-block;
-  width: 17px;
-  margin-top: 3px;
-  margin-right: 7px;
-}
-.icon-reminder-2 {
-  display: inline-block;
-  font-family: Entypo, sans-serif;
-  font-weight: 400;
-}
 .fa.fa-clock-o:hover {
   color: #00b22d;
 }
@@ -2963,6 +2828,27 @@ p {
 }
 .u-marginbottom-70 {
   margin-bottom: 70px;
+}
+.zindex-20 {
+  z-index: 20;
+  box-shadow: rgba(0, 0, 0, 0.61) 0px 1px 4px 0px;
+}
+.w-sub-col {
+  padding-right: 20px;
+}
+.w-sub-col-middle {
+  padding-right: 20px;
+}
+.w-sub-col-last {
+  padding-right: 0px;
+}
+.nav-tab-light {
+  border: 1px solid #ddd;
+  background-color: #f1f4f4;
+}
+.nav-light {
+  height: 42px;
+  border-bottom: 1px solid #ddd;
 }
 html.w-mod-js *[data-ix="fade-in"] {
   opacity: 0;
@@ -3013,9 +2899,6 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
     padding-bottom: 0px;
     font-size: 14px;
   }
-  .link.forget-password {
-    left: 142px;
-  }
   .link.link-header.link-header2.link-login {
     top: 13px;
   }
@@ -3024,9 +2907,6 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
     margin-left: auto;
     padding-right: 0px;
     padding-left: 0px;
-  }
-  .show-password {
-    right: 48px;
   }
   .project-stats {
     padding-top: 8px;
@@ -3092,13 +2972,6 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
   .button-news {
     left: 130px;
     top: -37px;
-  }
-  .prg1.sub-description {
-    padding-right: 19px;
-    padding-left: 19px;
-  }
-  .big-number {
-    font-size: 44px;
   }
   .project-content {
     padding-top: 22px;
@@ -3193,9 +3066,6 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
   .back-reward-input-reward-tip {
     padding-right: 20px;
   }
-  .back-reward-input-reward-div.alt {
-    padding-right: 0px;
-  }
   .list-answer {
     padding-left: 0px;
   }
@@ -3205,7 +3075,7 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
   .footer-signature-text {
     float: left;
   }
-  .back-payment-formwrapper {
+  .formwrapper {
     margin-bottom: 20px;
   }
   .back-payment-button-next-step {
@@ -3288,11 +3158,12 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
     line-height: 30px;
   }
   .nav-tab {
+    height: 39px;
+    padding: 10px 10px 6px;
     font-size: 13px;
   }
   .nav-tab.selected {
     height: 39px;
-    padding: 10px 10px 6px;
   }
   .u-round {
     width: 50px;
@@ -3325,6 +3196,9 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
   .btn-tweet {
     border-color: #3cf;
     background-color: #3cf;
+  }
+  .nav-light {
+    height: 39px;
   }
 }
 @media (max-width: 767px) {
@@ -3370,17 +3244,9 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
     border-style: solid;
     border-width: 0px;
   }
-  .text-center {
-    margin-top: 0px;
-    margin-bottom: 0px;
-  }
   .text.number {
     margin-right: 0px;
     font-size: 13px;
-  }
-  .link.forget-password {
-    left: 339px;
-    right: 0px;
   }
   .link.link-header.link-header2.link-login {
     top: -40px;
@@ -3542,9 +3408,6 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
     margin-left: auto;
     box-shadow: none;
   }
-  .project-stats-status.status--notfunded {
-    box-shadow: none;
-  }
   .project-stats-status.status--draft {
     box-shadow: none;
   }
@@ -3558,11 +3421,6 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
     margin-left: auto;
     float: none;
     font-size: 36px;
-  }
-  .back-reward-input-reward.alt {
-    width: 69%;
-    margin-right: auto;
-    margin-left: auto;
   }
   .back-reward-input-reward.placeholder {
     float: left;
@@ -3608,14 +3466,6 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
     margin-left: auto;
     border-bottom: 1px solid #ddd;
   }
-  .back-reward-input-reward-div.alt {
-    margin-bottom: 0px;
-    padding-right: 40px;
-    padding-bottom: 18px;
-    padding-left: 40px;
-    font-weight: 600;
-    text-align: center;
-  }
   .back-reward-input-reward--10 {
     margin-right: auto;
     margin-bottom: -5px;
@@ -3649,12 +3499,6 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
     padding-left: 20px;
   }
   .project-about-highlight-mobile-text {
-    margin-bottom: 10px;
-  }
-  .project-content-about-mobile {
-    padding: 20px 30px;
-  }
-  .project-about-mobile-back-link {
     margin-bottom: 10px;
   }
   .card-description {
@@ -3712,15 +3556,13 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
     color: #79808b;
     text-align: left;
   }
-  .back-payment-formwrapper {
+  .formwrapper {
     margin-bottom: 0px;
     padding: 15px;
-    border-top: 1px solid #ddd;
-    border-bottom: 0px none #ddd;
-    border-radius: 0px;
+    border-top: 1px solid #e9e9ec;
     text-align: left;
   }
-  .back-payment-formwrapper.records-choice {
+  .formwrapper.records-choice {
     border-top-style: none;
     border-top-width: 0px;
   }
@@ -3851,6 +3693,9 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
     border-color: #27bff2;
     background-color: #27bff2;
   }
+  .w-sub-col {
+    padding-right: 0px;
+  }
 }
 @media (max-width: 479px) {
   h2 {
@@ -3899,17 +3744,10 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
     border-style: solid;
     border-width: 0px;
   }
-  .text-center {
-    margin-top: -2px;
-    margin-bottom: 0px;
-  }
   .text.number {
     margin-right: 0px;
     font-size: 12px;
     line-height: 16px;
-  }
-  .link.forget-password {
-    left: 100px;
   }
   .logo-login {
     height: 44px;
@@ -4026,12 +3864,6 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
   .back-reward-input-reward {
     width: 72%;
   }
-  .back-reward-input-reward.alt {
-    position: static;
-    width: 100%;
-    margin-right: auto;
-    margin-left: auto;
-  }
   .back-reward-input-reward.placeholder {
     width: 71px;
   }
@@ -4056,10 +3888,6 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
     width: auto;
     padding-right: 20px;
   }
-  .back-reward-input-reward-div.alt {
-    padding: 28px 19px;
-    float: none;
-  }
   .back-reward-input-reward--10 {
     width: 94%;
   }
@@ -4083,10 +3911,6 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
     display: block;
     margin-bottom: 10px;
     float: none;
-  }
-  .project-about-mobile-back-link {
-    margin-bottom: 10px;
-    text-align: left;
   }
   .card-description {
     display: block;
@@ -4115,7 +3939,7 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
   .back-reward-error-form {
     width: 100%;
   }
-  .back-payment-formwrapper {
+  .formwrapper {
     margin-bottom: 0px;
     padding-right: 10px;
     padding-left: 10px;
