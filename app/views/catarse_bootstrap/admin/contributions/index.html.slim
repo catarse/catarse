@@ -98,7 +98,7 @@
                   li= link_to t('admin.contributions.index.refund_and_hide'), hide_admin_contribution_path(contribution, local_params: params), method: :put
                   li= link_to t('admin.contributions.index.cancel'), cancel_admin_contribution_path(contribution, local_params: params), method: :put
                   li= link_to t('admin.contributions.index.push_to_trash'), push_to_trash_admin_contribution_path(contribution, local_params: params), method: :put
-                  - if (contribution.waiting_confirmation? || contribution.pending?) && contribution.slip_payment? && contribution.can_generate_second_slip?
+                  - if (contribution.waiting_confirmation? || contribution.pending? || contribution.canceled?) && contribution.slip_payment? && contribution.can_generate_second_slip?
                     li= link_to 'Segunda via de boleto', contribution.second_slip_path, target: '__blank', method: :put
 = paginate @contributions
 
