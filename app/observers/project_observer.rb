@@ -92,7 +92,11 @@ class ProjectObserver < ActiveRecord::Observer
         template_name = if project.successful?
                           :contribution_project_successful
                         elsif (contribution.credits? || contribution.slip_payment?)
-                          :contribution_project_unsuccessful
+                          if contribution.payment_engine.try(:name) == 'Pagarme'
+                            :contribution_project_unsuccessful_slip
+                          else
+                            :contribution_project_unsuccessful
+                          end
                         elsif contribution.is_paypal? || contribution.is_credit_card?
                           :contribution_project_unsuccessful_credit_card
                         end
