@@ -50,7 +50,7 @@
             p.empty.hide= t('.contributions.no_contributions', name: @user.display_name)
           - else
             p.empty.hide= t('.contributions.no_contributions_current_user_html', link: CatarseSettings[:base_url])
-          .results
+          .results data-skiptab=""
           .clearfix
           .loading= image_tag "loading.gif"
           .clearfix
@@ -59,7 +59,7 @@
             p.empty.hide= t('.projects.no_projects', name: @user.display_name)
           - else
             p.empty.hide= t('.projects.no_projects_current_user_html', link: link_to(t('.projects.here'), start_path)).html_safe
-          .results
+          .results data-skiptab=""
           .clearfix
           .loading= image_tag "loading.gif"
           .clearfix

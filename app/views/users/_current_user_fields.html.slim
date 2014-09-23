@@ -94,7 +94,7 @@
             = f.label :current_password
             = f.password_field :current_password, class:'empty'
           .div
-            = f.label :password, t('passwords.edit.label_new_password')
+            = f.label :password, t('devise.passwords.edit.form.labels.password')
             = f.password_field :password, class:'empty'
           .bootstrap-twitter
             p= f.submit 'OK', class: 'btn', id: 'password_submit'
