@@ -31,7 +31,10 @@ class ContributionObserver < ActiveRecord::Observer
   def from_confirmed_to_requested_refund(contribution)
     contribution.notify_to_backoffice :refund_request, {from_email: contribution.user.email, from_name: contribution.user.name}
     contribution.direct_refund if contribution.can_do_refund?
-    contribution.notify_to_contributor(:requested_refund_slip) if contribution.slip_payment?
+
+    if contribution.slip_payment? && contribution.payment_method.downcase != 'pagarme'
+      contribution.notify_to_contributor(:requested_refund_slip)
+    end
   end
 
   def from_confirmed_to_canceled(contribution)
