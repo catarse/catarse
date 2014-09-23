@@ -1,5 +1,6 @@
 - project = @notification.project
 - project_link = project_by_slug_url(permalink: project.permalink)
+- bank_account = project.user.bank_account
 |#renato420
 br/
 = project.name
@@ -22,3 +23,16 @@ br/
 br/
 'CPF/CNPJ do realizador:
 = project.user.cpf
+br/
+br/
+'Dados Bancarios:'
+br/
+| Banco: #{bank_account.try(:name)}
+br/
+| Agência: #{bank_account.try(:agency)}- #{bank_account.try(:agency_digit)}
+br/
+| Conta: #{bank_account.try(:account)} - #{bank_account.try(:account_digit)}
+br/
+| Nome do titular: #{bank_account.try(:user_name)}
+br/
+| CPF: #{bank_account.try(:user_document)}
