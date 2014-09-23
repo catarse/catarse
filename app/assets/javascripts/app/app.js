@@ -33,7 +33,7 @@ var App = window.App = Skull.View.extend({
     this.$flash = this.$('.flash');
 
     setTimeout( function(){ that.$flash.slideDown('slow') }, 100)
-    if( ! this.$('.flash a').length) setTimeout( function(){ that.$flash.slideUp('slow') }, 16000)
+    if( ! this.$('.flash a').length) setTimeout( function(){ that.$flash.fadeOut('slow') }, 5000)
     $(window).click(function(){ that.$('.flash a').slideUp() })
   },
 
