@@ -12,9 +12,13 @@ br
   br
   br
   | Banco: #{bank_account.try(:name)}
+  br
   | Agência: #{bank_account.try(:agency)}
+  br
   | Conta: #{bank_account.try(:account)} - #{bank_account.try(:account_digit)}
+  br
   | Nome do titular: #{bank_account.try(:user_name)}
+  br
   | CPF: #{bank_account.try(:user_document)}  
   br
   br
