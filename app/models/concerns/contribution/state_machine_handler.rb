@@ -30,7 +30,7 @@ module Contribution::StateMachineHandler
       end
 
       event :confirm do
-        transition all => :confirmed
+        transition [:pending, :confirmed, :waiting_confirmation, :canceled, :deleted] => :confirmed
       end
 
       event :cancel do
