@@ -2,6 +2,9 @@
 h1, h2, h3, h4, h5, h6, label
   font-weight: normal
 
+.project-reward-box-hover
+  cursor: pointer
+
 .loader
   img
     display: none
@@ -31,15 +34,16 @@ h1, h2, h3, h4, h5, h6, label
 .list-question
   cursor: pointer
   &.open
+    font-weight: 600
     &:before
       font-family: "FontAwesome"
       display: inline-block
-      content: "\f105"
+      content: "\f105 "
       +transition(all 1s ease)
       +rotate(90deg)
 
   &:before
     font-family: "FontAwesome"
     display: inline-block
-    content: "\f105"
+    content: "\f105 "
     +transition(all 1s ease)
