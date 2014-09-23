@@ -1,5 +1,5 @@
-- contribution = @notification.contribution
-|Olá #{contribution.user.name}, tudo bem?
+- user = @notification.user
+|Olá #{user.name}, tudo bem?
 br
 |Sabe quando você acha aquela nota de dinheiro no bolso de uma calça que não usava faz tempo? Pois esse e-mail é pra relembrarmos essa gostosa sensação. =D
 br
@@ -7,13 +7,13 @@ br
 br
 |Pra isso, precisaremos que vocês preencham o formulário abaixo com seus dados bancários: #{link_to 'http://bit.ly/reembolsoCatarse', 'http://bit.ly/reembolsoCatarse'}
 br
-|O valor do apoio que você fez e que será reembolsado é de: R$#{contribution.user.contributions.where(state:'requested_refund').sum(:value)}.
+|O valor do apoio que você fez e que será reembolsado é de: R$#{user.contributions.where(state:'requested_refund').sum(:value)}.
 br
 |Infelizmente, como seu apoio foi feito há mais de 120 dias, não conseguiremos reembolsar a taxa do meio de pagamento (cartão ou boleto) e a descontaremos na hora de efetuar o depósito. Esta taxa é diferente de acordo com a forma de pagamento utilizada, sendo que pode variar entre 2% e 6% do seu apoio.
 br
 |O(s) número(s) de identificação do seu apoio é:
 br
-- contribution.user.contributions.each do |contribution|
+- user.contributions.each do |contribution|
   |#{contribution.key}
   br
 |Iremos fazer o depósito na sua conta até novembro/2014. Isso porque teremos que fazer, uma a uma, quase 8 mil operações. Preferimos definir um prazo mais longo e entregar como prometido do que prometer algo pra amanhã e não cumprir.
