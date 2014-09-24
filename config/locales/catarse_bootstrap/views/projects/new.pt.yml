@@ -20,8 +20,8 @@ pt:
       form:
         blocks:
           first:
-            title: "1. Informações básicas"
-            description: "Você está criando o rascunho de seu projeto. As informações preenchidas nesse primeiro bloco não podem ser  alteradas após o seu projeto entrar no ar."
+            title: "Bem-vindo ;)"
+            description: "Só precisamos saber 3 coisas para que você passe para o próximo passo, onde você já terá uma visualização do seu projeto, tal como ele irá ao ar, caso seja selecionado."
           second:
             title: "2. História do projeto"
             description: "As informações abaixo poderão ser editadas por você a qualquer momento, até quando seu projeto estiver no ar."

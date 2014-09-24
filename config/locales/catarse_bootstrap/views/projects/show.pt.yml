@@ -38,7 +38,7 @@ pt:
       embed: < embed >
       embed_title: Incorpore este projeto no seu site
       active_btn: ' Lembrar-me'
-      deactive_btn: ' Não lembrar-me'
+      deactive_btn: ' Lembrete ativo'
     show:
       twitter_profile: "Perfil no Twitter"
       facebook_profile: "Perfil no Facebook"
