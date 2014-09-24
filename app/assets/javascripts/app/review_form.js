@@ -2,18 +2,30 @@ App.addChild('ReviewForm', _.extend({
   el: 'form#review_form',
 
   events: {
-    'blur input' : 'checkInput',
-    'click #accept' : 'acceptTerms',
-    'click #live_in_brazil' : 'toggleAddressFields',
+    'change #contribution_country_id' : 'onCountryChange',
     'change #contribution_anonymous' : 'toggleAnonymousConfirmation'
   },
 
   toggleAnonymousConfirmation: function(){
-    this.$('#anonymous-confirmation').fadeToggle('slow');
+    this.$('#anonymous-confirmation').slideToggle('slow');
   },
 
-  toggleAddressFields: function(){
-    this.$('fieldset.address_data').fadeToggle();
+  onCountryChange: function(){
+    if(this.$country.val() == '36'){
+      this.nationalAddress();
+    }
+    else{
+      this.internationalAddress();
+    }
+  },
+
+  internationalAddress: function(){
+    this.$state.data('old_value', this.$state.val());
+    this.$state.val('outro / other')
+  },
+
+  nationalAddress: function(){
+    this.$state.val(this.$state.data('old_value'))
   },
 
   acceptTerms: function(){
@@ -26,21 +38,24 @@ App.addChild('ReviewForm', _.extend({
   },
 
   activate: function(){
+    this.$country = this.$('#contribution_country_id');
+    this.$country.val('36');
+    this.$state = this.$('#contribution_address_state');
     this.setupForm();
   },
 
   updateContribution: function(){
     var contribution_data = {
-      payer_name: this.$('#user_full_name').val(),
-      payer_email: this.$('#user_email').val(),
-      address_street: this.$('#user_address_street').val(),
-      address_number: this.$('#user_address_number').val(),
-      address_complement: this.$('#user_address_complement').val(),
-      address_neighbourhood: this.$('#user_address_neighbourhood').val(),
-      address_zip_code: this.$('#user_address_zip_code').val(),
-      address_city: this.$('#user_address_city').val(),
-      address_state: this.$('#user_address_state').val(),
-      address_phone_number: this.$('#user_phone_number').val()
+      payer_name: this.$('#contribution_full_name').val(),
+      payer_email: this.$('#contribution_email').val(),
+      address_street: this.$('#contribution_address_street').val(),
+      address_number: this.$('#contribution_address_number').val(),
+      address_complement: this.$('#contribution_address_complement').val(),
+      address_neighbourhood: this.$('#contribution_address_neighbourhood').val(),
+      address_zip_code: this.$('#contribution_address_zip_code').val(),
+      address_city: this.$('#contribution_address_city').val(),
+      address_state: this.$('#contribution_address_state').val(),
+      address_phone_number: this.$('#contribution_phone_number').val()
     }
     $.post(this.$el.data('update-info-path'), {
       _method: 'put',

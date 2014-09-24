@@ -44,7 +44,7 @@
                 = form.input :address_neighbourhood, as: :string, wrapper_html: {class: 'w-col w-col-6 w-sub-col'}
                 = form.input :address_city, as: :string, wrapper_html: {class: 'w-col w-col-6'}
               .w-row
-                = form.input :address_state, as: :string, wrapper_html: {class: 'w-col w-col-6 w-sub-col'}
+                = form.input :address_state, as: :select, collection: State.array, wrapper_html: {class: 'w-col w-col-6 w-sub-col'}
                 = form.input :address_zip_code, as: :string, wrapper_html: {class: 'w-col w-col-3 w-sub-col-middle'}
                 = form.input :address_phone_number, as: :string, wrapper_html: {class: 'w-col w-col-3'}
           .w-row.u-marginbottom-40
@@ -52,13 +52,15 @@
               a.btn.btn-large href="#step2"  Próximo passo
         #payment-engines
           .fontsize-large.fontweight-semibold.u-marginbottom-40.u-text-center-small-only
-            | Escolha o meio de pagamento &nbsp;&nbsp;&nbsp;&nbsp;
+            = t('.choose_payment')
+            | &nbsp;&nbsp;&nbsp;&nbsp;
             span.fontsize-smallest.fontcolor-secondary
               span.fa.fa-lock
-              |  PAGAMENTO SEGURO
-          .tab-container
+              |  
+              = t('.choose_payment_subtitle')
+          .nav-light.u-marginbottom-30
             - avaiable_payment_engines.each do |engine|
-              .tab.off[id=engine.name data-target="##{engine.name}_payment"]
+              .nav-tab.nav-tab-light[id=engine.name data-target="##{engine.name}_payment"]
                 = t("projects.contributions.review.#{engine.name}")
           .tab_content_container
             - avaiable_payment_engines.each do |engine|
