@@ -15,6 +15,9 @@ pt:
       selected_reward:
         review_without_reward_html: Você irá apoiar com <strong>%{value}</strong>
           e não quer nenhuma recompensa por seu apoio.
+        value: 'Valor do apoio'
+        reward: 'Recompensa selecionada'
+        edit: 'Editar'
       edit:
         anonymous_confirmation_title: "Você tem certeza que quer que seu apoio seja anônimo?"
         anonymous_confirmation: "O valor do seu apoio não será divulgado para ninguém além do dono do projeto. Somente o proponente terá acesso a essa informação, independente se o seu investimento seja público ou anônimo."
