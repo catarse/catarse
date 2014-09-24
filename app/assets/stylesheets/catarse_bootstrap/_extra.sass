@@ -47,3 +47,22 @@ h1, h2, h3, h4, h5, h6, label
     display: inline-block
     content: "\f105 "
     +transition(all 1s ease)
+
+// Edit contribution page
+.w-col 
+  .w-col
+    &.w-sub-col
+      padding-right: 20px
+    &.w-sub-col-middle
+      padding-right: 20px
+
+@media (max-width: 767px)
+  .w-col 
+    .w-col.w-sub-col
+      padding-right: 0px
+
+.text-field.checkbox-fix
+  display: inline-block
+  width: 24px
+  height: 24px
+  margin: 0

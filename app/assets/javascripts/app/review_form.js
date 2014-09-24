@@ -4,7 +4,12 @@ App.addChild('ReviewForm', _.extend({
   events: {
     'blur input' : 'checkInput',
     'click #accept' : 'acceptTerms',
-    'click #live_in_brazil' : 'toggleAddressFields'
+    'click #live_in_brazil' : 'toggleAddressFields',
+    'change #contribution_anonymous' : 'toggleAnonymousConfirmation'
+  },
+
+  toggleAnonymousConfirmation: function(){
+    this.$('#anonymous-confirmation').fadeToggle('slow');
   },
 
   toggleAddressFields: function(){
@@ -22,9 +27,6 @@ App.addChild('ReviewForm', _.extend({
 
   activate: function(){
     this.setupForm();
-    if(this.$('#live_in_brazil:checked').length == 0){
-      this.$('fieldset.address_data').hide();
-    }
   },
 
   updateContribution: function(){

@@ -16,30 +16,46 @@
               strong This is some text inside of a div block.
             div This is some text inside of a div block.
             div This is some text inside of a div block.
-          .w-hidden-main.w-hidden-medium.w-clearfix.back-payment-formwrapper
+          .w-hidden-main.w-hidden-medium.w-clearfix.formwrapper
             = render 'selected_reward'
-          .w-form.back-payment-formwrapper.w-row
-            = form.input :payer_name, as: :string, wrapper_html: {class: 'w-col w-col-6 w-sub-col'}, input_html: {class: 'w-input text-field'}
-            = form.input :payer_email, as: :string, wrapper_html: {class: 'w-col w-col-6'}, input_html: {class: 'w-input text-field'}
-          .back-payment-formwrapper
+          .w-form.formwrapper
+            .w-row
+              = form.input :payer_name, as: :string, wrapper_html: {class: 'w-col w-col-6 w-sub-col'}
+              = form.input :payer_email, as: :string, wrapper_html: {class: 'w-col w-col-6'}
+            .w-row
+              .w-col.w-col-12
+                = form.input_field :anonymous, boolean_style: :inline, class: 'checkbox-fix'
+                label.w-form-label.fontsize-smallest[for="contribution_anonymous"] = t('.anonymous_contribution')
+            .w-row
+              .w-col.w-col-12
+                #anonymous-confirmation.card.card-message.u-radius.zindex-10.fontsize-smallest.w-hidden
+                  .fontweight-bold = t('.anonymous_confirmation_title')
+                  = t('.anonymous_confirmation')
+          .formwrapper
             .back-payment-address-subtitle.fontsize-base Endereço de entrega
             .w-form
-              = form.association :country, as: :select, wrapper_html: {class: 'back-payment-form-box-half block'}, input_html: {class: 'w-select text-field'}
-              = form.input :address_street, as: :string, wrapper_html: {class: 'back-payment-form-box-half'}, input_html: {class: 'w-input text-field'}
-              = form.input :address_number, as: :string, wrapper_html: {class: 'back-payment-form-box-quarter'}, input_html: {class: 'w-input text-field'}
-              = form.input :address_complement, as: :string, wrapper_html: {class: 'back-payment-form-box-quarter last'}, input_html: {class: 'w-input text-field'}
-              = form.input :address_neighbourhood, as: :string, wrapper_html: {class: 'back-payment-form-box-half'}, input_html: {class: 'w-input text-field'}
-              = form.input :address_city, as: :string, wrapper_html: {class: 'back-payment-form-box-half'}, input_html: {class: 'w-input text-field'}
-              = form.input :address_state, as: :string, wrapper_html: {class: 'back-payment-form-box-half'}, input_html: {class: 'w-input text-field'}
-              = form.input :address_zip_code, as: :string, wrapper_html: {class: 'back-payment-form-box-quarter'}, input_html: {class: 'w-input text-field'}
-              = form.input :address_phone_number, as: :string, wrapper_html: {class: 'back-payment-form-box-quarter last'}, input_html: {class: 'w-input text-field'}
-          .back-payment-button-next-step
-            a.bt-large data-ix="display-step2-back-payment" href="#step2"  Próximo passo
-        #payment-engines.back-payment-step2
-          .back-payment-headline.headline Escolha o meio de pagamento
-          .back-payment-safe-pay
-            = image_tag("catarse_bootstrap/icon-lock.png", class: 'back-payment-icon-lock')
-            .back-payment-safe-pay-text.fontsize-smallest PAGAMENTO SEGURO
+              .w-row
+                = form.association :country, as: :select, wrapper_html: {class: 'w-col w-col-6 w-sub-col'}, input_html: {class: 'w-select'}
+              .w-row
+                = form.input :address_street, as: :string, wrapper_html: {class: 'w-col w-col-6 w-sub-col'}
+                = form.input :address_number, as: :string, wrapper_html: {class: 'w-col w-col-3 w-sub-col-middle'}
+                = form.input :address_complement, as: :string, wrapper_html: {class: 'w-col w-col-3'}
+              .w-row
+                = form.input :address_neighbourhood, as: :string, wrapper_html: {class: 'w-col w-col-6 w-sub-col'}
+                = form.input :address_city, as: :string, wrapper_html: {class: 'w-col w-col-6'}
+              .w-row
+                = form.input :address_state, as: :string, wrapper_html: {class: 'w-col w-col-6 w-sub-col'}
+                = form.input :address_zip_code, as: :string, wrapper_html: {class: 'w-col w-col-3 w-sub-col-middle'}
+                = form.input :address_phone_number, as: :string, wrapper_html: {class: 'w-col w-col-3'}
+          .w-row.u-marginbottom-40
+            .w-col.w-col-push-3.w-col-6
+              a.btn.btn-large href="#step2"  Próximo passo
+        #payment-engines
+          .fontsize-large.fontweight-semibold.u-marginbottom-40.u-text-center-small-only
+            | Escolha o meio de pagamento &nbsp;&nbsp;&nbsp;&nbsp;
+            span.fontsize-smallest.fontcolor-secondary
+              span.fa.fa-lock
+              |  PAGAMENTO SEGURO
           .tab-container
             - avaiable_payment_engines.each do |engine|
               .tab.off[id=engine.name data-target="##{engine.name}_payment"]
