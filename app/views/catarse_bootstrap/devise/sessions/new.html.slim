@@ -21,6 +21,7 @@
             = form.input :email, as: :email, label: t('.email'), input_html: { class: 'w-input text-field' }, required: false
             = link_to t('.links.forgot_password'), new_password_path(resource_name), class: 'fontsize-smallest link-hidden fontcolor-secondary u-right'
             = form.input :password, as: :password, label: t('.form.inputs.password'), input_html: { class: 'w-input text-field' }
-            .w-checkbox.w-clearfix.checkbox.u-marginbottom-20
-              = form.input :remember_me, as: :boolean, inline_label: t('.form.labels.remember_me'), label: '', input_html: { class: 'w-checkbox-input', checked: true }
+            .u-marginbottom-10
+              = form.input_field :remember_me, as: :boolean, boolean_style: :inline, class: 'checkbox-fix', checked: true
+              label.w-form-label.fontsize-smallest= t('.form.labels.remember_me')
             a.btn.btn-medium= form.button :submit, t('.form.inputs.submit')
