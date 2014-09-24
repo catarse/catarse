@@ -43,7 +43,7 @@ pt:
       title: "Meus créditos"
     current_user_fields:
       bank_account_title: "Dados bancários"
-      bank_account_hint: "Seus dados bancária é utilizado para fazer o reembolso de um apoio feito com boleto."
+      bank_account_hint: "Seus dados bancários serão utilizados para realizar o reembolso integral do seu apoio, caso o projeto não atinja 100% da meta estabelecida."
       my_facebook: 'Integração com o facebook'
       bio_limit: 'até 140 caracteres'
       updated: "As suas informações foram atualizadas"
