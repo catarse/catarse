@@ -1,7 +1,7 @@
 .w-embed.w-video.project-video
   iframe src="#{@project.display_video_embed_url}" class="embedly-embed" width="100%" height="379" frameborder="0" allowFullScreen
 
-.project-share.u-marginbottom-20.w-row
+.project-share.u-marginbottom-30.w-row
   .w-col.w-col-3
     #facebook_share.img-share = render_facebook_like title: @project.name, href: project_by_slug_url(@project.permalink, locale: I18n.locale)
   .w-col.w-col-3
@@ -10,9 +10,11 @@
     = link_to t('.embed'), '#embed', id: 'embed_link', class: 'link-hidden fontsize-small fontcolor-secondary'
   .w-col.w-col-3
     - if user_signed_in? && @project.user_already_in_reminder?(current_user.id)
-      = link_to t('.deactive_btn'), reminder_project_path(@project), class: 'fa fa-clock-o link-hidden fontsize-small u-right fontcolor-secondary active', method: :delete
+      .fontsize-small
+        = link_to t('.deactive_btn'), reminder_project_path(@project), class: 'fa fa-clock-o link-hidden-success u-right', method: :delete
     - else
-      = link_to t('.active_btn'), reminder_project_path(@project), class: 'fa fa-clock-o link-hidden fontsize-small u-right fontcolor-secondary'
+      .fontsize-small
+        = link_to t('.active_btn'), reminder_project_path(@project), class: 'fa fa-clock-o link-hidden u-right fontcolor-secondary'
 
 
 - @project.channels.each do |channel|

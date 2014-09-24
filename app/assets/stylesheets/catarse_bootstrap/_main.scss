@@ -271,9 +271,8 @@ p {
   float: right;
   color: #3f4752;
 }
-.text-field.back-payment-credit-card {
+.text-field.text-field-creditcard {
   display: inline-block;
-  width: 30.3%;
   margin-top: 0px;
   margin-bottom: 0px;
   float: right;
@@ -281,13 +280,13 @@ p {
   color: #00b22d;
   font-weight: 600;
 }
-.text-field.back-payment-credit-card:hover {
+.text-field.text-field-creditcard:hover {
   border-color: #00b22d;
 }
-.text-field.back-payment-credit-card:focus {
+.text-field.text-field-creditcard:focus {
   border-color: #00b22d;
 }
-.text-field.back-payment-credit-card.off {
+.text-field.text-field-creditcard.off {
   opacity: 0;
 }
 .text-field.negative {
@@ -308,7 +307,6 @@ p {
   font-size: 22px;
 }
 .field-label {
-  display: inline-block;
   margin-bottom: 8px;
   color: #3f4752;
   font-size: 16px;
@@ -1625,9 +1623,6 @@ p {
   background-color: rgba(255, 255, 255, 0.74);
   color: #00b22d;
 }
-.back-reward-cheers {
-  margin-bottom: 15px;
-}
 .back-reward-radio-reward {
   display: block;
   margin-top: 0px;
@@ -1657,81 +1652,6 @@ p {
 .back-reward-reward-description {
   margin-top: -5px;
   margin-left: 10px;
-}
-.back-reward-delivery-date {
-  margin-top: -7px;
-  color: #79808b;
-}
-.back-reward-button {
-  position: static;
-  left: 0px;
-  right: 0px;
-  bottom: 0px;
-  z-index: 1;
-  width: 33%;
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-.back-reward-button-section {
-  z-index: 1;
-  margin-top: 30px;
-  background-color: white;
-}
-.back-reward-button-section.alt {
-  position: static;
-  left: 0px;
-  right: 0px;
-  bottom: 0px;
-  margin-top: 30px;
-  border-top-style: none;
-  box-shadow: none;
-  -webkit-transform: none;
-  -ms-transform: none;
-  -o-transform: none;
-  transform: none;
-}
-.back-reward-input-reward-tip {
-  display: block;
-  margin-top: 43px;
-  padding-right: 80px;
-  clear: none;
-  font-weight: 600;
-}
-.back-reward-must-select-warning {
-  display: block;
-  width: 61.6%;
-  margin-top: 70px;
-  margin-right: auto;
-  margin-left: auto;
-  padding: 24px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-}
-.back-reward-must-select-warning.alt {
-  display: none;
-}
-.back-reward-selected-badge {
-  position: static;
-  top: 0px;
-  right: 0px;
-  display: inline-block;
-  margin-left: 14px;
-  padding: 3px 10px;
-  float: none;
-  background-color: #00b22d;
-  color: white;
-  font-weight: 600;
-}
-.back-reward-radio-reward--selected {
-  display: block;
-  width: 95%;
-  padding: 15px 40px 20px 35px;
-  border: 1px solid #00b22d;
-  border-radius: 5px;
-  background-color: #f1f4f4;
-}
-.back-reward-input-reward-div {
-  display: inline-block;
 }
 .back-faq-box {
   margin-bottom: 20px;
@@ -2044,40 +1964,6 @@ p {
   display: inline-block;
   margin-bottom: 20px;
 }
-.back-payment-tab {
-  position: relative;
-  top: 1px;
-  display: inline-block;
-  margin-right: 6px;
-  padding: 13px 13px 6px;
-  border-style: solid solid none;
-  border-width: 1px;
-  border-color: #ddd #ddd white;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 6px;
-  background-color: white;
-  font-size: 16px;
-  font-weight: 600;
-}
-.back-payment-tab.off {
-  top: 1px;
-  padding-bottom: 5px;
-  background-color: #f1f4f4;
-  -webkit-transition: all 500ms ease;
-  -o-transition: all 500ms ease;
-  transition: all 500ms ease;
-  color: rgba(121, 128, 139, 0.70);
-  font-weight: 400;
-}
-.back-payment-tab.off:hover {
-  background-color: white;
-  color: #3f4752;
-}
-.back-payment-tab-container {
-  height: 42px;
-  margin-bottom: 30px;
-  border-bottom: 1px solid #ddd;
-}
 .back-payment-radio-button {
   margin-top: 24px;
 }
@@ -2288,7 +2174,7 @@ p {
 .radio-button-label-null {
   display: none;
 }
-.back-payment-creditcard-records {
+.creditcard-records {
   margin-top: -1px;
   padding: 11px 14px;
   border: 1px solid #ddd;
@@ -2296,10 +2182,10 @@ p {
   -o-transition: all 500ms ease;
   transition: all 500ms ease;
 }
-.back-payment-creditcard-records:hover {
+.creditcard-records:hover {
   background-color: rgba(241, 244, 244, 0.36);
 }
-.back-payment-creditcard-records.selected {
+.creditcard-records.selected {
   position: relative;
   z-index: 1;
   border-color: #00b22d;
@@ -2521,6 +2407,7 @@ p {
   border-bottom-left-radius: 0px;
 }
 .prefix {
+  display: inline-block;
   border-top-right-radius: 0px;
   border-bottom-right-radius: 0px;
 }
@@ -2839,9 +2726,6 @@ p {
 .w-sub-col-middle {
   padding-right: 20px;
 }
-.w-sub-col-last {
-  padding-right: 0px;
-}
 .nav-tab-light {
   border: 1px solid #ddd;
   background-color: #f1f4f4;
@@ -2849,6 +2733,27 @@ p {
 .nav-light {
   height: 42px;
   border-bottom: 1px solid #ddd;
+}
+.card-brand {
+  width: 25%;
+  padding-top: 11px;
+  padding-bottom: 12px;
+  opacity: 0.6;
+}
+.card-number {
+  position: absolute;
+  display: inline-block;
+  width: 75%;
+}
+.link-hidden-success {
+  -webkit-transition: all 500ms ease;
+  -o-transition: all 500ms ease;
+  transition: all 500ms ease;
+  color: #00b22d;
+  text-decoration: none;
+}
+.link-hidden-success:hover {
+  text-decoration: underline;
 }
 html.w-mod-js *[data-ix="fade-in"] {
   opacity: 0;
@@ -3054,18 +2959,6 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
     width: 71px;
     padding-left: 12px;
   }
-  .back-reward-button {
-    width: 40%;
-  }
-  .back-reward-button-section.alt {
-    -webkit-transform: none;
-    -ms-transform: none;
-    -o-transform: none;
-    transform: none;
-  }
-  .back-reward-input-reward-tip {
-    padding-right: 20px;
-  }
   .list-answer {
     padding-left: 0px;
   }
@@ -3199,6 +3092,9 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
   }
   .nav-light {
     height: 39px;
+  }
+  .card-brand {
+    padding-top: 9px;
   }
 }
 @media (max-width: 767px) {
@@ -3425,46 +3321,8 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
   .back-reward-input-reward.placeholder {
     float: left;
   }
-  .back-reward-cheers {
-    font-weight: 600;
-    text-align: center;
-  }
   .back-reward-radio-reward {
     width: auto;
-  }
-  .back-reward-button {
-    width: 60%;
-  }
-  .back-reward-button-section.alt {
-    position: static;
-    border-top-style: none;
-    box-shadow: none;
-    -webkit-transform: none;
-    -ms-transform: none;
-    -o-transform: none;
-    transform: none;
-  }
-  .back-reward-input-reward-tip {
-    margin-top: 24px;
-    margin-bottom: 20px;
-    padding-right: 0px;
-    text-align: center;
-  }
-  .back-reward-must-select-warning {
-    display: block;
-    width: 71.6%;
-  }
-  .back-reward-must-select-warning.alt {
-    display: block;
-  }
-  .back-reward-radio-reward--selected {
-    width: auto;
-  }
-  .back-reward-input-reward-div {
-    width: 100%;
-    margin-right: auto;
-    margin-left: auto;
-    border-bottom: 1px solid #ddd;
   }
   .back-reward-input-reward--10 {
     margin-right: auto;
@@ -3720,12 +3578,12 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
   .text-field.form-footer {
     width: 100%;
   }
-  .text-field.back-payment-credit-card {
+  .text-field.text-field-creditcard {
     width: 99.8%;
     margin: 10px auto;
     float: none;
   }
-  .text-field.back-payment-credit-card.off {
+  .text-field.text-field-creditcard.off {
     display: none;
   }
   .logo {
@@ -3868,23 +3726,6 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
     width: 71px;
   }
   .back-reward-radio-reward {
-    width: auto;
-    padding-right: 20px;
-  }
-  .back-reward-button {
-    width: 90%;
-  }
-  .back-reward-button-section.alt {
-    box-shadow: none;
-    -webkit-transform: none;
-    -ms-transform: none;
-    -o-transform: none;
-    transform: none;
-  }
-  .back-reward-must-select-warning {
-    width: 91.6%;
-  }
-  .back-reward-radio-reward--selected {
     width: auto;
     padding-right: 20px;
   }
