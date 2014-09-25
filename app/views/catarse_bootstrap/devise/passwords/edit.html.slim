@@ -14,4 +14,4 @@
           = form.hidden_field :reset_password_token
           = form.input :password, as: :password, label: t('.form.labels.password'), input_html: { class: 'w-input text-field' }
           = form.input :password_confirmation, as: :password, label: t('.form.labels.password_confirmation'), input_html: { class: 'w-input text-field' }
-          a.btn.btn-medium= form.button :submit, t('.form.inputs.submit')
+          = form.button :submit, t('.form.inputs.submit'), class:'btn btn-medium'
