@@ -2,7 +2,7 @@ App.addChild("Registration", {
   el: '#catarse_bootstrap[data-controller-name="registrations"]',
 
   events: {
-    'change input#show_password': 'showPassword'
+    'change input#user_show_password': 'showPassword'
   },
 
   showPassword: function(event) {
