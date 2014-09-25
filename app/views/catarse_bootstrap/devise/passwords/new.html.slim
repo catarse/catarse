@@ -16,4 +16,4 @@
           = render 'devise/shared/alert'
           label.field-label.fontsize-smaller.fontcolor-secondary for="name"= t('.form.labels.email')
           = form.input :email, as: :email, input_html: { class: 'w-input text-field' }, label: '', required: false
-          a.btn.btn-medium= form.button :submit, t('.form.inputs.submit')
+          = form.button :submit, t('.form.inputs.submit'), class:'btn btn-medium'
