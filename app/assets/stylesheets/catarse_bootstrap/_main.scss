@@ -41,6 +41,7 @@ p {
 }
 .btn {
   display: block;
+  width: 100%;
   margin-right: auto;
   margin-left: auto;
   border: 1px solid #00b22d;
@@ -2401,6 +2402,7 @@ p {
   display: inline-block;
   overflow-x: hidden;
   overflow-y: hidden;
+  width: auto;
   height: 40px;
   float: none;
   border-top-left-radius: 0px;

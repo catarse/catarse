@@ -24,4 +24,4 @@
             .u-marginbottom-10
               = form.input_field :remember_me, as: :boolean, boolean_style: :inline, class: 'checkbox-fix', checked: true
               label.w-form-label.fontsize-smallest= t('.form.labels.remember_me')
-            a.btn.btn-medium= form.button :submit, t('.form.inputs.submit')
+            = form.button :submit, t('.form.inputs.submit'), class:'btn btn-medium'

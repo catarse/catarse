@@ -14,15 +14,15 @@
             legend.fontsize-larger.lineheight-looser = t('.form.blocks.first.title')
             p.fontsize-small.u-marginbottom-40 = t('.form.blocks.first.description')
 
-            .u-marginbottom-60
+            .u-marginbottom-40
               = form.label :name, class: 'fontsize-large'
               = form.input_field :name, as: :string, class: 'medium'
               = form.hint :name, class: 'fontsize-small foncolor-secondary'
-            .u-marginbottom-60
+            .u-marginbottom-40
               = form.label :permalink, class: 'fontsize-large'
               = form.input_field :permalink, as: :string, class: 'medium'
               = form.hint :permalink, class: 'fontsize-small fontcolor-secondary'
-            .u-marginbottom-60
+            .u-marginbottom-40
               = form.label :category, class: 'fontsize-large'
               = form.input_field :category, as: :select, collection: Category.order(:name_pt), prompt: t('simple_form.prompts.project.category'), class: 'medium'
               = form.hint :category, class: 'fontsize-small fontcolor-secondary'
