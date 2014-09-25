@@ -23,7 +23,7 @@ gem 'pg_search'
 
 gem 'schema_plus'
 gem 'chartkick'
-gem 'catarse_settings_db'
+gem 'catarse_settings_db', '>= 0.1.0'
 
 # Notifications
 gem 'user_notifier'
@@ -33,7 +33,7 @@ gem 'mixpanel-ruby'
 
 # Payment engines
 gem 'catarse_paypal_express', '2.2.3'
-gem 'catarse_moip', '~> 2.3.5'
+gem 'catarse_moip', '~> 2.3.6'
 gem 'catarse_credits', '0.0.6'
 gem 'catarse_contribution_validator', github: 'catarse/catarse_contribution_validator'
 # gem 'catarse_wepay', '~> 0.0.1'
