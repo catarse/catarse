@@ -18,11 +18,13 @@
           = render 'devise/shared/alert'
           = form.input :name, as: :string, label: t('.form.labels.name'), input_html: { class: 'w-input text-field' }
           = form.input :email, as: :email, wrapper_html: { class: 'no-asterisk' }, input_html: { class: 'w-input text-field' }, required: false
-          .fontsize-smallest.fontcolor-secondary.u-right= label_tag :show_password, t('.form.labels.show_password')
-          .u-right= check_box_tag :show_password
+          .u-right
+            = form.input_field :show_password, as: :boolean, boolean_style: :inline, class: 'checkbox-fix', checked: false
+            label.w-form-label.fontsize-smallest= t('.form.labels.show_password')
           = form.input :password, as: :password, label: t('.form.labels.password'), input_html: { class: 'w-input text-field' }
-          .w-checkbox.w-clearfix.checkbox.u-marginbottom-20
-            = form.input :newsletter, as: :boolean, label: '', inline_label: t('.form.labels.newsletter'), input_html: { class: 'w-checkbox-input', checked: true }
+          .u-marginbottom-10
+            = form.input_field :newsletter, as: :boolean, boolean_style: :inline, class: 'checkbox-fix', checked: true
+            label.w-form-label.fontsize-smallest= t('.form.labels.newsletter')
           a.btn.btn-medium= form.button :submit, t('.form.inputs.submit')
-      .fontsize-smallest.u-text-center
+      .fontsize-smallest.u-text-center.u-marginbottom-30
         = t(".form.labels.accept", terms_url: CatarseSettings[:terms_url], privacy_url: CatarseSettings[:privacy_url]).html_safe
