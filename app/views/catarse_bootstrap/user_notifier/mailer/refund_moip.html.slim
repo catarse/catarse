@@ -13,7 +13,7 @@ br
 br
 |O(s) número(s) de identificação do seu apoio é:
 br
-- user.contributions.each do |contribution|
+- user.contributions.where(state:'requested_refund').each do |contribution|
   |#{contribution.key}
   br
 |Iremos fazer o depósito na sua conta até novembro/2014. Isso porque teremos que fazer, uma a uma, quase 8 mil operações. Preferimos definir um prazo mais longo e entregar como prometido do que prometer algo pra amanhã e não cumprir.
