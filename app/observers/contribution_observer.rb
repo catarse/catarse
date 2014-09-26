@@ -28,7 +28,7 @@ class ContributionObserver < ActiveRecord::Observer
     contribution.notify_to_backoffice :refund_request, {from_email: contribution.user.email, from_name: contribution.user.name}
     contribution.direct_refund if contribution.can_do_refund?
 
-    if contribution.slip_payment? && contribution.payment_method.downcase != 'pagarme'
+    if contribution.slip_payment? && !contribution.is_pagarme?
       contribution.notify_to_contributor(:requested_refund_slip)
     end
   end
