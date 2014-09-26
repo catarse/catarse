@@ -115,7 +115,7 @@ p {
   background-color: #2685eb;
 }
 .btn.btn:hover {
-  border-color: #08bd35;
+  border-color: rgba(64, 155, 255, 0.09);
 }
 .section {
   padding-top: 30px;
@@ -2473,6 +2473,9 @@ p {
   border-color: #409bff;
   background-color: #2f8bed;
 }
+.btn-edit.btn-attached {
+  width: auto;
+}
 .footer-news-icon {
   margin-top: 7px;
   margin-right: 14px;
@@ -2762,6 +2765,9 @@ p {
 }
 .u-margintop-10 {
   margin-top: 10px;
+}
+.btn-attached {
+  width: auto;
 }
 html.w-mod-js *[data-ix="fade-in"] {
   opacity: 0;
