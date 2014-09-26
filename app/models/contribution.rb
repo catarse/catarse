@@ -6,6 +6,7 @@ class Contribution < ActiveRecord::Base
   include Contribution::StateMachineHandler
   include Contribution::CustomValidators
   include Contribution::PaymentEngineHandler
+  include Contribution::PaymentMethods
 
   delegate :display_value, :display_confirmed_at, :display_slip_url, to: :decorator
 
@@ -67,14 +68,6 @@ class Contribution < ActiveRecord::Base
 
   def can_refund?
     confirmed? && project.failed?
-  end
-
-  def is_paypal?
-    payment_method.try(:downcase) == 'paypal'
-  end
-
-  def is_credit_card?
-    payment_choice.try(:downcase) == 'cartaodecredito'
   end
 
   def available_rewards
