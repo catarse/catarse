@@ -189,7 +189,7 @@ class Project < ActiveRecord::Base
   end
 
   def new_draft_recipient
-    User.where(email: CatarseSettings[:email_projects]).first
+    User.find_by_email CatarseSettings[:email_projects]
   end
 
   def last_channel
