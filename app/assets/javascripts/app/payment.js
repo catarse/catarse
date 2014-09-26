@@ -2,20 +2,14 @@ App.addChild('Payment', _.extend({
   el: '#payment-engines',
 
   events: {
-    'click .tab' : 'onTabClick'
+    'click .nav-tab' : 'onTabClick'
   },
 
   activate: function(){
-    _this = this;
-
-    this.loadPaymentChoices();
-    $('#live_in_brazil').on('change', function(){
-      _this.loadPaymentChoices();
-    });
   },
 
   updatePaymentMethod: function() {
-    var $selected_tab = this.$('.tab.selected');
+    var $selected_tab = this.$('.nav-tab.selected');
     $.ajax({
       url: this.$el.data('update-info-path'),
       type: 'PUT',
@@ -33,12 +27,12 @@ App.addChild('Payment', _.extend({
   },
 
   loadPaymentChoices: function() {
-    if(!$('#live_in_brazil').prop('checked')) {
+    if($('#contribution_country_id').val() == '36') {
+      this.$('#MoIP').show();
+      this.onTabClick({currentTarget: this.$('.nav-tab:first')});
+    } else {
       this.hideNationalPayment();
       this.selectInternationalPayment();
-    } else {
-      this.$('#payment-engines #MoIP').show();
-      this.onTabClick({currentTarget: this.$('.tabs:first')});
     }
 
     this.on('selectTab', this.updatePaymentMethod);
