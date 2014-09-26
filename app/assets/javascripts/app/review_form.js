@@ -26,6 +26,7 @@ App.addChild('ReviewForm', _.extend({
 
   nationalAddress: function(){
     this.$state.val(this.$state.data('old_value'))
+    this.parent.payment.loadPaymentChoices();
   },
 
   acceptTerms: function(){
@@ -41,6 +42,7 @@ App.addChild('ReviewForm', _.extend({
     this.$country = this.$('#contribution_country_id');
     this.$country.val('36');
     this.$state = this.$('#contribution_address_state');
+    this.parent.payment.loadPaymentChoices();
     this.setupForm();
   },
 
