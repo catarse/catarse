@@ -33,7 +33,7 @@ strong
     br
   |Pledge date: #{contribution.created_at.strftime("%d/%m/%Y")}
   br
-  |Key: #{contribution.key}
+  |Key: #{contribution.payment_id}
   br
   br
 |If you want to talk to #{contribution.project.user.name}, send an email to #{mail_to contribution.project.user.email}
