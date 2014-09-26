@@ -1310,7 +1310,6 @@ p {
   margin-top: 0px;
 }
 .fontsize-base {
-  position: relative;
   font-size: 18px;
   line-height: 150%;
 }
@@ -2402,7 +2401,6 @@ p {
   display: inline-block;
   overflow-x: hidden;
   overflow-y: hidden;
-  width: auto;
   height: 40px;
   float: none;
   border-top-left-radius: 0px;
@@ -2442,6 +2440,7 @@ p {
   background-color: #30353d;
 }
 .btn-dark.btn-attached {
+  width: auto;
   border-color: rgba(37, 49, 57, 0.6);
   background-color: rgba(37, 49, 57, 0.6);
 }
@@ -2756,6 +2755,13 @@ p {
 }
 .link-hidden-success:hover {
   text-decoration: underline;
+}
+.prefix-permalink {
+  padding-top: 15px;
+  opacity: 0.6;
+}
+.u-margintop-10 {
+  margin-top: 10px;
 }
 html.w-mod-js *[data-ix="fade-in"] {
   opacity: 0;
