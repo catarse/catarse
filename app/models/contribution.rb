@@ -32,6 +32,9 @@ class Contribution < ActiveRecord::Base
   scope :credits, -> { where("credits OR lower(payment_method) = 'credits'") }
   scope :not_anonymous, -> { where(anonymous: false) }
   scope :confirmed_today, -> { with_state('confirmed').where("contributions.confirmed_at::date = to_date(?, 'yyyy-mm-dd')", Time.now.strftime('%Y-%m-%d')) }
+  scope :avaiable_to_automatic_refund, -> {
+    with_state('confirmed').where("contributions.payment_method in ('PayPal', 'Pagarme') OR contributions.payment_choice = 'CartaoDeCredito'")
+  }
 
   scope :can_cancel, -> { where("contributions.can_cancel") }
 
