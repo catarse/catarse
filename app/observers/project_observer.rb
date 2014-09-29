@@ -86,19 +86,27 @@ class ProjectObserver < ActiveRecord::Observer
     notify_admin_that_project_reached_deadline(project)
   end
 
+  # TODO: we need to remove these comments when
+  # we go generate automatic request refund when project fails
   def notify_users(project)
     project.contributions.with_state('confirmed').each do |contribution|
       unless contribution.notified_finish
         template_name = if project.successful?
                           :contribution_project_successful
-                        elsif (contribution.credits? || contribution.slip_payment?)
+                        else #if (contribution.credits? || contribution.slip_payment?)
                           if contribution.is_pagarme?
-                            :contribution_project_unsuccessful_slip
+                            if contribution.is_credit_card
+                              :contribution_project_unsuccessful_credit_card
+                            else
+                              :contribution_project_unsuccessful_slip
+                            end
                           else
                             :contribution_project_unsuccessful
                           end
-                        elsif contribution.is_paypal? || contribution.is_credit_card?
-                          :contribution_project_unsuccessful_credit_card
+                        #elsif contribution.is_paypal? || contribution.is_credit_card?
+                        #  :contribution_project_unsuccessful_credit_card
+                        #else
+                        #  :automatic_refund
                         end
 
         contribution.notify_to_contributor(template_name)
@@ -109,8 +117,11 @@ class ProjectObserver < ActiveRecord::Observer
 
   private
 
+  # TODO: uncomment when we use automatic
+  # request refund when project fails
   def request_refund_for_failed_project(project)
-    project.contributions.avaiable_to_automatic_refund.each do |contribution|
+    #project.contributions.avaiable_to_automatic_refund.each do |contribution|
+    project.contributions.with_state('confirmed').where(payment_method: 'Pagarme').each do |contribution|
       contribution.request_refund
     end
   end
