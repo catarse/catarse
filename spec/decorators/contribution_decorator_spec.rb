@@ -30,5 +30,17 @@ describe ContributionDecorator do
       it{ should == "R$ 1" }
     end
   end
+
+  describe "#display_slip_url" do
+    context "when slip_url is filled" do
+      subject { build(:contribution, slip_url: 'http://foo.bar/').display_slip_url }
+      it{ should == 'http://foo.bar/'}
+    end
+
+    context "when slip_url is not filled" do
+      subject { build(:contribution).display_slip_url }
+      it{ should match(/www\.moip\.com\.br/) }
+    end
+  end
 end
 

@@ -41,6 +41,8 @@
             = link_to t('.tabs.credits'), '#credits', id: 'credits_link', data: { target: '#user_credits' }
             = link_to t('.tabs.settings'), '#settings', id: 'settings_link', data: { target: '#user_settings' }
             = link_to t('.tabs.unsubscribes'), '#unsubscribes', id: 'unsubscribes_link', data: { target: '#user_unsubscribes' }
+            - if @credit_cards.present?
+              = link_to t('.tabs.credit_cards'), '#credit_cards', id: 'credit_cards_link', data: { target: '#user_credit_cards' }
       .clearfix
       #user_profile_content
         #user_contributed_projects.content[data-path=user_contributions_path(@user)]
@@ -68,5 +70,8 @@
             = render 'current_user_fields'
           #user_credits.content.hide
             = render 'credits'
+          - if @credit_cards.present?
+            #user_credit_cards.content.hide
+              = render 'credit_cards'
       .clearfix
     .clearfix
