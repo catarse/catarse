@@ -76,7 +76,7 @@ class ProjectObserver < ActiveRecord::Observer
       contribution.notify_to_contributor(:pending_contribution_project_unsuccessful)
     end
 
-    request_refund_for_failed_project(project)
+    #request_refund_for_failed_project(project)
 
     project.notify_owner(:project_unsuccessful, { from_email: CatarseSettings[:email_projects] })
   end
@@ -91,12 +91,12 @@ class ProjectObserver < ActiveRecord::Observer
       unless contribution.notified_finish
         template_name = if project.successful?
                           :contribution_project_successful
-                        elsif (contribution.credits? || contribution.slip_payment?)
+                        else #if (contribution.credits? || contribution.slip_payment?)
                           :contribution_project_unsuccessful
-                        elsif contribution.is_paypal? || contribution.is_credit_card?
-                          :contribution_project_unsuccessful_credit_card
-                        else
-                          :automatic_refund
+                        #elsif contribution.is_paypal? || contribution.is_credit_card?
+                        #  :contribution_project_unsuccessful_credit_card
+                        #else
+                        #  :automatic_refund
                         end
 
         contribution.notify_to_contributor(template_name)
