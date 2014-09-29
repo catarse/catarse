@@ -28,6 +28,20 @@ describe Contribution do
     it{ should allow_value(20).for(:value) }
   end
 
+  describe ".avaiable_to_automatic_refund" do
+    before do
+      create(:contribution, state: 'confirmed', payment_choice: 'CartaoDeCredito', payment_method: nil)
+      create(:contribution, state: 'confirmed', payment_choice: 'BoletoBancario', payment_method: 'Pagarme')
+      create(:contribution, state: 'confirmed', payment_choice: nil, payment_method: 'PayPal')
+
+      14.times { create(:contribution, state: 'confirmed', payment_choice: 'BoletoBancario', payment_method: 'MoIP') }
+    end
+
+    subject { Contribution.avaiable_to_automatic_refund }
+
+    it { should have(3).itens }
+  end
+
   describe ".confirmed_today" do
     before do
       3.times { create(:contribution, state: 'confirmed', confirmed_at: 2.days.ago) }

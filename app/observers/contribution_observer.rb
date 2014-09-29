@@ -6,16 +6,14 @@ class ContributionObserver < ActiveRecord::Observer
     PendingContributionWorker.perform_at(2.day.from_now, contribution.id)
   end
 
-  def before_save(contribution)
-    notify_confirmation(contribution) if contribution.confirmed? && contribution.confirmed_at.nil?
-
+  def after_save(contribution)
     if contribution.payment_choice_was.nil? && contribution.payment_choice == 'BoletoBancario'
       contribution.notify_to_contributor(:payment_slip)
     end
   end
 
-  def after_save(contribution)
-    contribution.project.notify_owner(:project_success) if contribution.project.reached_goal?
+  def before_save(contribution)
+    notify_confirmation(contribution) if contribution.confirmed? && contribution.confirmed_at.nil?
   end
 
   def from_requested_refund_to_refunded(contribution)
@@ -31,7 +29,11 @@ class ContributionObserver < ActiveRecord::Observer
   def from_confirmed_to_requested_refund(contribution)
     contribution.notify_to_backoffice :refund_request, {from_email: contribution.user.email, from_name: contribution.user.name}
     contribution.direct_refund if contribution.can_do_refund?
-    contribution.notify_to_contributor(:requested_refund_slip) if contribution.slip_payment?
+
+    unless contribution.is_pagarme?
+      template = (contribution.slip_payment? ? :requested_refund_slip : :requested_refund)
+      contribution.notify_to_contributor(template)
+    end
   end
 
   def from_confirmed_to_canceled(contribution)

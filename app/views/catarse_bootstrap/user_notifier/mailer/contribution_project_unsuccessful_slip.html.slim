@@ -1,0 +1,35 @@
+- contribution = @notification.contribution
+- user = @notification.contribution.user
+- bank_account = user.bank_account
+
+|Olá, #{contribution.user.name}!
+br
+br
+| Infelizmente o projeto #{link_to(contribution.project.name, project_by_slug_url(permalink: contribution.project.permalink))} que você apoiou não atingiu a meta estabelecida e não foi financiado no #{CatarseSettings[:company_name]}.
+br
+br
+| Como o seu apoio foi efetuado através de boleto, iremos realizar o reembolso diretamente na conta bancária:
+br
+br
+| Banco: #{bank_account.try(:name)}
+br
+| Agência: #{bank_account.try(:agency)}
+br
+| Conta: #{bank_account.try(:account)} - #{bank_account.try(:account_digit)}
+br
+| Nome do titular: #{bank_account.try(:user_name)}
+br
+| CPF: #{bank_account.try(:user_document)}
+br
+br
+| Assim que o reembolso for feito, você receberá um e-mail de confirmação da operação.
+br
+br
+| Se ficou com alguma dúvida, entre em contato conosco respondendo a esta mensagem ou através do e-mail #{mail_to CatarseSettings[:email_contact]} 
+| e nos informe a chave de identificação do seu apoio, que é: #{contribution.payment_id}
+br
+br
+|Um abraço,
+br
+| #{CatarseSettings[:company_name]}
+
