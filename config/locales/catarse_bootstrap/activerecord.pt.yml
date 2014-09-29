@@ -10,8 +10,8 @@ pt:
     attributes:
       bank_account:
         name: 'Banco'
-        user_name: 'Nome do titular'
-        user_document: 'CPF / CNPJ do titular'
+        owner_name: 'Nome do titular'
+        owner_document: 'CPF / CNPJ do titular'
         agency: 'Agência'
         agency_digit: 'Digito'
         account: 'Número da conta'
