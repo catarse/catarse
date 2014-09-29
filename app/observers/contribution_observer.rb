@@ -30,8 +30,9 @@ class ContributionObserver < ActiveRecord::Observer
     contribution.notify_to_backoffice :refund_request, {from_email: contribution.user.email, from_name: contribution.user.name}
     contribution.direct_refund if contribution.can_do_refund?
 
-    if contribution.slip_payment? && !contribution.is_pagarme?
-      contribution.notify_to_contributor(:requested_refund_slip)
+    unless contribution.is_pagarme?
+      template = (contribution.slip_payment? ? :requested_refund_slip : :requested_refund)
+      contribution.notify_to_contributor(template)
     end
   end
 
