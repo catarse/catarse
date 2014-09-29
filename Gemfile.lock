@@ -23,6 +23,28 @@ GIT
       httparty (~> 0.6.1)
       nokogiri (>= 1.5.0)
 
+PATH
+  remote: ../catarse_credits
+  specs:
+    catarse_credits (0.0.6)
+      rails (>= 4.0)
+
+PATH
+  remote: ../catarse_moip
+  specs:
+    catarse_moip (3.3.6)
+      enumerate_it
+      libxml-ruby (~> 2.6.0)
+      rails (~> 4.0)
+
+PATH
+  remote: ../catarse_paypal_express
+  specs:
+    catarse_paypal_express (2.2.3)
+      activemerchant (>= 1.34.0)
+      rails (~> 4.0)
+      slim-rails
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -40,10 +62,10 @@ GEM
       activesupport (= 4.1.4)
       builder (~> 3.1)
       erubis (~> 2.7.0)
-    active_utils (2.2.1)
+    active_utils (2.2.2)
       activesupport (>= 2.3.11)
       i18n
-    activemerchant (1.43.1)
+    activemerchant (1.43.3)
       active_utils (~> 2.0, >= 2.0.1)
       activesupport (>= 2.3.14, < 5.0.0)
       builder (>= 2.1.2, < 4.0.0)
@@ -90,20 +112,10 @@ GEM
       activesupport (>= 3.2.0)
       json (>= 1.7)
       mime-types (>= 1.16)
-    catarse_credits (0.0.6)
-      rails (>= 4.0)
-    catarse_moip (2.3.6)
-      enumerate_it
-      libxml-ruby (~> 2.6.0)
-      rails (~> 4.0)
     catarse_monkeymail (0.1.6)
       mailchimp-api (~> 2.0.4)
       rails (>= 4.0.3)
       rails-observers
-    catarse_paypal_express (2.2.3)
-      activemerchant (>= 1.34.0)
-      rails (~> 4.0)
-      slim-rails
     catarse_settings_db (0.1.0)
       rails (~> 4.1.1)
     celluloid (0.15.2)
@@ -493,10 +505,10 @@ DEPENDENCIES
   capybara (~> 2.1.0)
   carrierwave (~> 0.10.0)
   catarse_contribution_validator!
-  catarse_credits (= 0.0.6)
-  catarse_moip (~> 2.3.6)
+  catarse_credits!
+  catarse_moip!
   catarse_monkeymail (>= 0.1.6)
-  catarse_paypal_express (= 2.2.3)
+  catarse_paypal_express!
   catarse_settings_db (>= 0.1.0)
   chartkick
   coffee-rails (~> 4.0.0)
