@@ -22,23 +22,27 @@ describe Contribution::StateMachineHandler do
       before { contribution.invalid}
       context 'when in confirmed state' do
         it("should switch to invalid payment state"){ contribution.invalid_payment?.should be_true}
+        it("should fill invalid_payment_at") { contribution.invalid_payment_at.should_not be_nil }
       end
     end
 
     describe '#confirm' do
       before { contribution.confirm }
       it("should switch to confirmed state") { contribution.confirmed?.should be_true }
+      it("should fill confirmed_at") { contribution.confirmed_at.should_not be_nil }
     end
 
     describe "#push_to_trash" do
       before { contribution.push_to_trash }
       it("switch to deleted state") { contribution.deleted?.should be_true }
+      it("should fill deleted_at") { contribution.deleted_at.should_not be_nil }
     end
 
     describe '#waiting' do
       before { contribution.waiting }
       context "when in peding state" do
         it("should switch to waiting_confirmation state") { contribution.waiting_confirmation?.should be_true }
+        it("should fill waiting_confirmation_at") { contribution.waiting_confirmation_at.should_not be_nil }
       end
       context 'when in confirmed state' do
         let(:initial_state){ 'confirmed' }
@@ -49,6 +53,7 @@ describe Contribution::StateMachineHandler do
     describe '#cancel' do
       before { contribution.cancel }
       it("should switch to canceled state") { contribution.canceled?.should be_true }
+      it("should fill canceled_at") { contribution.canceled_at.should_not be_nil }
     end
 
     describe '#request_refund' do
@@ -66,6 +71,7 @@ describe Contribution::StateMachineHandler do
 
       context 'when contribution is confirmed' do
         it('should switch to requested_refund state') { should be_true }
+        it("should fill requested_refund_at") { contribution.requested_refund_at.should_not be_nil }
       end
 
       context 'when contribution is credits' do
@@ -92,6 +98,7 @@ describe Contribution::StateMachineHandler do
       context 'when contribution is confirmed' do
         let(:initial_state){ 'confirmed' }
         it('should switch to refunded state') { contribution.refunded?.should be_true }
+        it("should fill refunded_at") { contribution.refunded_at.should_not be_nil }
       end
 
       context 'when contribution is requested refund' do
@@ -113,6 +120,7 @@ describe Contribution::StateMachineHandler do
       context "when contribution is confirmed" do
         let(:initial_state) { 'confirmed' }
         it('should switch to refund_and_canceled state') { contribution.refunded_and_canceled?.should be_true }
+        it("should fill refunded_and_canceled_at") { contribution.refunded_and_canceled_at.should_not be_nil }
       end
 
       context "when contribution is pending" do
