@@ -6,12 +6,14 @@ class ContributionObserver < ActiveRecord::Observer
     PendingContributionWorker.perform_at(2.day.from_now, contribution.id)
   end
 
-  def before_save(contribution)
-    notify_confirmation(contribution) if contribution.confirmed? && contribution.confirmed_at.nil?
-
+  def after_save(contribution)
     if contribution.payment_choice_was.nil? && contribution.payment_choice == 'BoletoBancario'
       contribution.notify_to_contributor(:payment_slip)
     end
+  end
+
+  def before_save(contribution)
+    notify_confirmation(contribution) if contribution.confirmed? && contribution.confirmed_at.nil?
   end
 
   def from_requested_refund_to_refunded(contribution)

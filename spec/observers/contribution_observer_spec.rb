@@ -21,7 +21,7 @@ describe ContributionObserver do
     end
   end
 
-  describe "before_save" do
+  describe "after_save" do
     context "when payment_choice is updated to BoletoBancario" do
       let(:contribution){ create(:contribution, key: 'should be updated', payment_method: 'should be updated', state: 'confirmed', confirmed_at: Time.now) }
       before do
@@ -31,7 +31,9 @@ describe ContributionObserver do
       end
       it("should notify the contribution"){ subject }
     end
+  end
 
+  describe "before_save" do
     context "when is not yet confirmed" do
       context 'notify the contribution' do
         before do
