@@ -11,8 +11,8 @@ describe BankAccount do
     it{ should validate_presence_of(:agency_digit) }
     it{ should validate_presence_of(:account) }
     it{ should validate_presence_of(:account_digit) }
-    it{ should validate_presence_of(:user_name) }
-    it{ should validate_presence_of(:user_document) }
+    it{ should validate_presence_of(:owner_name) }
+    it{ should validate_presence_of(:owner_document) }
   end
 
   describe "#bank_code" do

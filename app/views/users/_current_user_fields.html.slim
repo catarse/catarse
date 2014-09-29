@@ -76,8 +76,8 @@
               = bank_form.input :account, as: :string
               = bank_form.input :account_digit, as: :string
               .clearfix
-              = bank_form.input :user_name, as: :string, input_html: { value: bank_form.object.user_name || @user.full_name }
-              = bank_form.input :user_document, as: :string, input_html: { value: bank_form.object.user_document || @user.cpf }
+              = bank_form.input :owner_name, as: :string, input_html: { value: bank_form.object.owner_name || @user.full_name }
+              = bank_form.input :owner_document, as: :string, input_html: { value: bank_form.object.owner_document || @user.cpf }
               .clearfix
           .bootstrap-twitter
             p= f.submit t('.update_social_info'), class: 'btn'
