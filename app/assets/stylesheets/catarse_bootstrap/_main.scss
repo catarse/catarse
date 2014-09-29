@@ -307,6 +307,9 @@ p {
   height: 60px;
   font-size: 22px;
 }
+.text-field.no-hover:hover {
+  border-color: #ddd;
+}
 .field-label {
   margin-bottom: 8px;
   color: #3f4752;
