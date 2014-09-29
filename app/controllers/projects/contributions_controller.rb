@@ -98,6 +98,8 @@ class Projects::ContributionsController < ApplicationController
 
   def enabled_to_use_pagarme
     CatarseSettings[:projects_enabled_to_use_pagarme].split(',').map(&:strip)
+  rescue
+    []
   end
 
   def collection
