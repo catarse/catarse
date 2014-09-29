@@ -1,0 +1,25 @@
+- user = @notification.user
+|Olá #{user.name}, tudo bem?
+br
+|Sabe quando você acha aquela nota de dinheiro no bolso de uma calça que não usava faz tempo? Pois esse e-mail é pra relembrarmos essa gostosa sensação. =D
+br
+|Para muitos casos, não tínhamos uma solução simples para fazer o reembolso. Agora estamos em um processo para otimizar essa etapa. Como você fez o seu apoio via Paypal, a maneira mais simples é fazermos uma transferência direto para a sua conta Paypal, cadastrada no nosso sistema através do e-mail #{user.contributions.last.payer_email}.
+br
+|O valor do apoio que você fez e que será reembolsado é de: R$#{user.contributions.where(state:'requested_refund').sum(:value)}.
+br
+|Infelizmente, como seu apoio foi feito há mais de 120 dias, não conseguiremos reembolsar a taxa do meio de pagamento (cartão ou boleto) e a descontaremos na hora de efetuar o depósito. Esta taxa é diferente de acordo com a forma de pagamento utilizada, sendo que pode variar entre 2% e 6% do seu apoio.
+br
+|O(s) número(s) de identificação do seu apoio é:
+br
+- user.contributions.where(state:'requested_refund').each do |contribution|
+  |#{contribution.key}
+  br
+|Iremos fazer o depósito na sua conta até o dia 30/09/2014. 
+br
+|Espero que vocês compreendam e estamos aqui para tirar qualquer dúvida. Para isso, é só responder a esta mensagem.
+br
+|Muito obrigado!
+br
+|Diego Reeberg
+br
+|Malabarista Organizacional

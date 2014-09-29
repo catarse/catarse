@@ -56,7 +56,6 @@ Catarse::Application.configure do
   config.logger = Logger.new(STDOUT)
   config.logger.level = Logger.const_get((ENV["LOG_LEVEL"] || "ERROR").upcase)
 
-
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
 
