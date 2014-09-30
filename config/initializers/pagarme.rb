@@ -5,4 +5,5 @@ CatarsePagarme.configure do |config|
   config.interest_rate = CatarseSettings.get_without_cache(:pagarme_interest_rate)
   config.credit_card_cents_fee = CatarseSettings.get_without_cache(:pagarme_cents_fee)
   config.host = CatarseSettings.get_without_cache(:host)
+  config.subdomain = 'wwww'
 end
