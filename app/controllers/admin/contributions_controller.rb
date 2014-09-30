@@ -8,8 +8,11 @@ class Admin::ContributionsController < Admin::BaseController
   def self.contribution_actions
     %w[confirm pendent refund hide cancel push_to_trash].each do |action|
       define_method action do
-        resource.send(action)
-        flash[:notice] = I18n.t("admin.contributions.messages.successful.#{action}")
+        if resource.send(action)
+          flash[:notice] = I18n.t("admin.contributions.messages.successful.#{action}")
+        else
+          flash[:notice] = t("activerecord.errors.models.contribution")
+        end
         redirect_to admin_contributions_path(params[:local_params])
       end
     end

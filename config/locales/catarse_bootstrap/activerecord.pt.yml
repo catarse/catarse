@@ -80,6 +80,7 @@ pt:
         visible: 'Publicar (Marque caso queira publicar essa nóvidade)'
     errors:
       models:
+        contribution: "Erro ao salvar apoio"
         project:
           attributes:
             name:
