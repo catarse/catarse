@@ -20,8 +20,8 @@
             = render 'selected_reward'
           .w-form.formwrapper
             .w-row
-              = form.input :payer_name, as: :string, wrapper_html: {class: 'w-col w-col-6 w-sub-col'}, input_html: {required: true}, validation_text: 'test'
-              = form.input :payer_email, as: :email, wrapper_html: {class: 'w-col w-col-6'}
+              = form.input :payer_name, as: :string, wrapper_html: {class: 'w-col w-col-6 w-sub-col'}, input_html: {required: true}, validation_text: true
+              = form.input :payer_email, as: :email, wrapper_html: {class: 'w-col w-col-6'}, validation_text: true
             .w-row
               .w-col.w-col-12
                 = form.input_field :anonymous, boolean_style: :inline, class: 'checkbox-fix'
