@@ -18,6 +18,8 @@ pt:
           payment_card_date: 'Data de Expiração'
           payment_card_name: 'Nome impresso no cartão de crédito'
           payment_card_installments: 'Parcelas'
+        installment_with_tax: 'com juros'
+        transaction_error: 'Transação recusada, por favor verifique novamente seus dados ou entre em contato com o banco/emissor do cartão para maiores informações.'
         pagarme_warning_html: "O Catarse está em fase de teste de um novo meio de pagamento que facilitará o apoio financeiro e o eventual reembolso dos valores aos apoiadores. Dessa forma, alertamos que poderão ser exigidos dados extras, além daqueles mencionados nos Termos de Uso para apoiar este projeto. Qualquer dúvida ou dificuldade, entre em contato conosco pelo e-mail %{mailto} . Obrigado."
         payment_save_card: 'Quero salvar meu cartão de crédito para facilitar apoios futuros.'
         reward_sold_out: Essa recompensa está esgotada. Inicie um novo apoio.
