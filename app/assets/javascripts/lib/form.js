@@ -10,7 +10,9 @@ Skull.Form = {
   },
 
   invalid: function(event){
-    this.$(event.currentTarget).addClass("error");
+    var $target = this.$(event.currentTarget);
+    $target.addClass("error");
+    this.$('[data-for=' + $target.prop('id') + ']').show();
   },
 
   validate: function(){
