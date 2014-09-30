@@ -1,7 +1,9 @@
 Skull.Form = {
   checkInput: function(event){
     if(event.currentTarget.checkValidity()){
-      this.$(event.currentTarget).removeClass("error");
+      var $target = this.$(event.currentTarget);
+      $target.removeClass("error");
+      this.$('[data-for=' + $target.prop('id') + ']').hide();
     }
   },
 

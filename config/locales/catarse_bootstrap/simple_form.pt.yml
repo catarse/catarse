@@ -4,6 +4,11 @@ pt:
       contribution:
         payer_name: "Por favor digite o nome do apoiador"
         payer_email: "Por favor digite um email válido"
+        address_street: "Digite o nome da rua"
+        address_number: "Digite o número do endereço"
+        address_city: "Digite o nome da cidade"
+        address_zip_code: "Digite o CEP"
+        address_phone_number: "Digite o número de telefone"
     prompts:
       project:
         category: "Selecione uma categoria"
