@@ -310,6 +310,11 @@ p {
 .text-field.no-hover:hover {
   border-color: #ddd;
 }
+.text-field.error {
+  margin-bottom: 5px;
+  border-color: #e86666;
+  background-color: rgba(232, 102, 102, 0.15);
+}
 .field-label {
   margin-bottom: 8px;
   color: #3f4752;
@@ -1011,12 +1016,16 @@ p {
   opacity: 1;
 }
 .badge {
-  margin-top: 10px;
-  padding: 2px 6px;
+  padding: 0px 4px;
   border-radius: 2px;
   background-color: #ddd;
   color: #79808b;
   font-size: 12px;
+}
+.badge.badge-share {
+  background-color: #202429;
+  color: white;
+  font-size: 10px;
 }
 .inform-column {
   position: fixed;
@@ -1149,8 +1158,7 @@ p {
   background-color: #e86666;
 }
 .text-error {
-  color: white;
-  font-weight: 400;
+  color: #e86666;
 }
 .project-nav-category-icon {
   position: relative;
@@ -1194,9 +1202,6 @@ p {
 }
 .project-news.last-news {
   border-bottom-style: none;
-}
-.project-about {
-  padding-right: 14px;
 }
 .icon-feedback-box {
   position: fixed;
@@ -1285,15 +1290,6 @@ p {
 .fontsize-small.inline {
   display: inline-block;
   margin-right: 10px;
-}
-.fontsize-small.inline.opacity50 {
-  opacity: 0.6;
-}
-.fontsize-small.inline.red {
-  color: #e86666;
-}
-.fontsize-small.inline.yellow {
-  color: #b3ad00;
 }
 .fontsize-small.green {
   margin-top: -12px;
@@ -2375,6 +2371,8 @@ p {
   font-weight: 300;
 }
 .fontweight-semibold {
+  padding-top: 1px;
+  padding-bottom: 1px;
   font-weight: 600;
 }
 .fontweight-bold {
@@ -2772,6 +2770,27 @@ p {
 .btn-attached {
   width: auto;
 }
+.text-waiting {
+  color: #b8b651;
+}
+.icon-recommend {
+  margin-top: 3px;
+  margin-right: 6px;
+  margin-left: 3px;
+}
+.btn-light {
+  border: 1px solid #e9e9ec;
+  background-color: #f1f4f4;
+}
+.btn-recommend {
+  width: 100px;
+  margin-right: 20px;
+  text-align: left;
+}
+.share-block {
+  display: inline;
+  margin-right: 4px;
+}
 html.w-mod-js *[data-ix="fade-in"] {
   opacity: 0;
 }
@@ -3107,11 +3126,17 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
     border-color: #3cf;
     background-color: #3cf;
   }
+  .dashboard-nav {
+    margin-top: 0px;
+  }
   .nav-light {
     height: 39px;
   }
   .card-brand {
     padding-top: 9px;
+  }
+  .share-block {
+    margin-right: 0px;
   }
 }
 @media (max-width: 767px) {
