@@ -48,6 +48,7 @@ SimpleForm.setup do |config|
     b.use :label_text, wrap_with: { tag: :label, class: "field-label" }
     b.use :hint,  wrap_with: { tag: :span, class: :hint }
     b.use :input
+    b.use :validation_text, wrap_with: { tag: :div, class: 'fontsize-smaller text-error u-marginbottom-20 fa fa-exclamation-triangle w-hidden' }
     #b.use :error, wrap_with: { tag: :span, class: :error }
   end
 
