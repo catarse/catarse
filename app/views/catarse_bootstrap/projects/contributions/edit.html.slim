@@ -37,16 +37,16 @@
               .w-row
                 = form.association :country, as: :select, wrapper_html: {class: 'w-col w-col-6 w-sub-col'}, input_html: {class: 'w-select'}
               .w-row
-                = form.input :address_street, as: :string, wrapper_html: {class: 'w-col w-col-6 w-sub-col'}
-                = form.input :address_number, as: :string, wrapper_html: {class: 'w-col w-col-3 w-sub-col-middle'}
+                = form.input :address_street, as: :string, wrapper_html: {class: 'w-col w-col-6 w-sub-col'}, input_html: {data: {required_in_brazil: true}}, validation_text: true
+                = form.input :address_number, as: :string, wrapper_html: {class: 'w-col w-col-3 w-sub-col-middle'}, input_html: {data: {required_in_brazil: true}}, validation_text: true
                 = form.input :address_complement, as: :string, wrapper_html: {class: 'w-col w-col-3'}
               .w-row
                 = form.input :address_neighbourhood, as: :string, wrapper_html: {class: 'w-col w-col-6 w-sub-col'}
-                = form.input :address_city, as: :string, wrapper_html: {class: 'w-col w-col-6'}
+                = form.input :address_city, as: :string, wrapper_html: {class: 'w-col w-col-6'}, input_html: {data: {required_in_brazil: true}}, validation_text: true
               .w-row
-                = form.input :address_state, as: :select, collection: State.array, wrapper_html: {class: 'w-col w-col-6 w-sub-col'}
-                = form.input :address_zip_code, as: :string, wrapper_html: {class: 'w-col w-col-3 w-sub-col-middle'}
-                = form.input :address_phone_number, as: :string, wrapper_html: {class: 'w-col w-col-3'}
+                = form.input :address_state, as: :select, collection: State.array, wrapper_html: {class: 'w-col w-col-6 w-sub-col'}, input_html: {data: {required_in_brazil: true}}, validation_text: true
+                = form.input :address_zip_code, as: :string, wrapper_html: {class: 'w-col w-col-3 w-sub-col-middle'}, input_html: {data: {required_in_brazil: true}}, validation_text: true
+                = form.input :address_phone_number, as: :string, wrapper_html: {class: 'w-col w-col-3'}, input_html: {data: {required_in_brazil: true}}, validation_text: true
           .w-row.u-marginbottom-40
             .w-col.w-col-push-3.w-col-6
               a.btn.btn-large href="#step2"  Próximo passo

@@ -23,11 +23,13 @@ App.addChild('ReviewForm', _.extend({
   internationalAddress: function(){
     this.$state.data('old_value', this.$state.val());
     this.$state.val('outro / other')
+    this.$('[data-required-in-brazil]').prop('required', false);
   },
 
   nationalAddress: function(){
     this.$state.val(this.$state.data('old_value'))
     this.parent.payment.loadPaymentChoices();
+    this.$('[data-required-in-brazil]').prop('required', 'required');
   },
 
   acceptTerms: function(){
@@ -45,6 +47,7 @@ App.addChild('ReviewForm', _.extend({
     this.$state = this.$('#contribution_address_state');
     this.parent.payment.loadPaymentChoices();
     this.setupForm();
+    this.onCountryChange();
   },
 
   updateContribution: function(){
