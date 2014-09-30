@@ -1,5 +1,9 @@
 pt:
   simple_form:
+    validation_texts:
+      contribution:
+        payer_name: "Por favor digite o nome do apoiador"
+        payer_email: "Por favor digite um email válido"
     prompts:
       project:
         category: "Selecione uma categoria"

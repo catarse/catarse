@@ -6,7 +6,7 @@ module SimpleForm
       def validation_text(wrapper_options = nil)
         options[:validation_text_html] = {data: {for: "#{object_name}_#{attribute_name}"}}
         @validation_text ||= begin
-          options[:validation_text].to_s.html_safe if options[:validation_text].present?
+           " " + I18n.t("simple_form.validation_texts.#{object_name}.#{attribute_name}").html_safe if options[:validation_text]
         end
       end
 
