@@ -49,8 +49,8 @@
                 = form.input :address_phone_number, as: :string, wrapper_html: {class: 'w-col w-col-3'}, input_html: {data: {required_in_brazil: true}}, validation_text: true
           .w-row.u-marginbottom-40
             .w-col.w-col-push-3.w-col-6
-              a.btn.btn-large href="#step2"  Próximo passo
-        #payment-engines
+              a#next-step.btn.btn-large href="#payment-engines" Próximo passo
+        #payment-engines.w-hidden
           .fontsize-large.fontweight-semibold.u-marginbottom-40.u-text-center-small-only
             = t('.choose_payment')
             | &nbsp;&nbsp;&nbsp;&nbsp;
