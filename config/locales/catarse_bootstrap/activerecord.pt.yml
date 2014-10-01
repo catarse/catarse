@@ -9,13 +9,14 @@ pt:
       bank_account: Dados bancários
     attributes:
       bank_account:
-        name: 'Banco'
+        bank: 'Banco'
+        bank_id: 'Banco'
         owner_name: 'Nome do titular'
         owner_document: 'CPF / CNPJ do titular'
         agency: 'Agência'
-        agency_digit: 'Digito'
+        agency_digit: 'Dígito'
         account: 'Número da conta'
-        account_digit: 'Digito'
+        account_digit: 'Dígito'
       contribution:
         value: valor do apoio
         reward: recompensa
