@@ -4,7 +4,14 @@ App.addChild('ReviewForm', _.extend({
   events: {
     'blur input' : 'checkInput',
     'change #contribution_country_id' : 'onCountryChange',
-    'change #contribution_anonymous' : 'toggleAnonymousConfirmation'
+    'change #contribution_anonymous' : 'toggleAnonymousConfirmation',
+    'click #next-step' : 'onNextStepClick'
+  },
+
+  onNextStepClick: function(){
+    if(this.validate()){
+      alert('valido');
+    }
   },
 
   toggleAnonymousConfirmation: function(){
