@@ -74,10 +74,8 @@ describe Projects::ContributionsController do
 
   describe "POST create" do
     let(:value){ '20.00' }
-    let(:set_expectations) {}
     before do
       request.env['REQUEST_URI'] = "/test_path"
-      set_expectations
       post :create, {locale: :pt, project_id: project.id, contribution: { value: value, reward_id: nil, anonymous: '0' }}
     end
 
@@ -87,9 +85,13 @@ describe Projects::ContributionsController do
     end
 
     context "when user is logged in" do
-      let(:set_expectations) { Contribution.any_instance.should_receive(:update_current_billing_info) }
       let(:user){ create(:user) }
-      it{ should redirect_to edit_project_contribution_path(project_id: project.id, id: Contribution.last.id) }
+      let(:contribution){ Contribution.last }
+      it{ should redirect_to edit_project_contribution_path(project_id: project.id, id: contribution.id) }
+      it "should copy user data to newly created contribution" do
+        expect(contribution.payer_name).to eq user.display_name
+        expect(contribution.payer_email).to eq user.email
+      end
     end
 
     context "without value" do

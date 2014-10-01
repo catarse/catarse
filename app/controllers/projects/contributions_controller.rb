@@ -57,13 +57,13 @@ class Projects::ContributionsController < ApplicationController
     @contribution = Contribution.new(params[:contribution].merge(user: current_user, project: parent))
     @contribution.reward_id = nil if params[:contribution][:reward_id].to_i == 0
     authorize @contribution
+    @contribution.update_current_billing_info
     create! do |success,failure|
       failure.html do
         flash[:alert] = resource.errors.full_messages.to_sentence
         return redirect_to new_project_contribution_path(@project)
       end
       success.html do
-        resource.update_current_billing_info
         flash[:notice] = nil
         session[:thank_you_contribution_id] = @contribution.id
         return redirect_to edit_project_contribution_path(project_id: @project.id, id: @contribution.id)
