@@ -40,6 +40,8 @@ class ContributionObserver < ActiveRecord::Observer
     contribution.notify_to_backoffice :contribution_canceled_after_confirmed
     contribution.notify_to_contributor((contribution.slip_payment? ? :contribution_canceled_slip : :contribution_canceled))
   end
+  alias :from_waiting_confirmation_to_canceled :from_confirmed_to_canceled
+  alias :from_pending_to_canceled :from_confirmed_to_canceled
 
   private
   def notify_confirmation(contribution)
