@@ -19,6 +19,8 @@ pt:
         reward: 'Recompensa selecionada'
         edit: 'Editar'
       edit:
+        review_errors_title: "Verifique os dados informados abaixo"
+        review_errors: "Alguma informação está faltando ou não foi informada corretamente, corrija todos os campos marcados em vermelho e tesnte novamente"
         anonymous_confirmation_title: "Você tem certeza que quer que seu apoio seja anônimo?"
         anonymous_confirmation: "O valor do seu apoio não será divulgado para ninguém além do dono do projeto. Somente o proponente terá acesso a essa informação, independente se o seu investimento seja público ou anônimo."
         anonymous_contribution: "Quero que meu apoio seja anônimo"
