@@ -11,11 +11,9 @@
         = simple_form_for [@project, @contribution], html: { data: { update_info_path: project_contribution_path(project_id: @contribution.project.id, id: @contribution.id, format: :json) }, id: 'review_form', method: 'put' } do |form|
           .back-payment-headline.headline Preencha e revise os dados para pagamento
           .w-hidden-tiny.back-payment-subheadline.fontsize-small Esses dados serão informados ao realizador do projeto
-          /.back-reward-error-form.form-error data-ix="display-none-on-load" 
-            div
-              strong This is some text inside of a div block.
-            div This is some text inside of a div block.
-            div This is some text inside of a div block.
+          #error-message.card.card-error.u-radius.zindex-10.u-marginbottom-30.w-hidden
+            .fontsize-smaller.fontweight-bold.u-marginbottom-10= t('.review_errors_title')
+            .fontsize-smaller = t('.review_errors')
           .w-hidden-main.w-hidden-medium.w-clearfix.formwrapper
             = render 'selected_reward'
           .w-form.formwrapper

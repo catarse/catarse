@@ -10,7 +10,12 @@ App.addChild('ReviewForm', _.extend({
 
   onNextStepClick: function(){
     if(this.validate()){
-      alert('valido');
+      this.$errorMessage.hide();
+      this.$('#next-step').hide();
+      this.parent.payment.show();
+    }
+    else{
+      this.$errorMessage.slideDown('slow');
     }
   },
 
@@ -34,7 +39,9 @@ App.addChild('ReviewForm', _.extend({
   },
 
   nationalAddress: function(){
-    this.$state.val(this.$state.data('old_value'))
+    if(this.$state.data('old_value')){
+      this.$state.val(this.$state.data('old_value'))
+    }
     this.parent.payment.loadPaymentChoices();
     this.$('[data-required-in-brazil]').prop('required', 'required');
   },
@@ -52,6 +59,7 @@ App.addChild('ReviewForm', _.extend({
     this.$country = this.$('#contribution_country_id');
     this.$country.val('36');
     this.$state = this.$('#contribution_address_state');
+    this.$errorMessage = this.$('#error-message');
     this.parent.payment.loadPaymentChoices();
     this.setupForm();
     this.onCountryChange();
