@@ -8,6 +8,10 @@ App.addChild('Payment', _.extend({
   activate: function(){
   },
 
+  show: function(){
+    this.$el.slideDown('slow');
+  },
+
   updatePaymentMethod: function() {
     var $selected_tab = this.$('.nav-tab.selected');
     $.ajax({
