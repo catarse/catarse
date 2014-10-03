@@ -12,21 +12,51 @@ The official repo is https://github.com/catarse/catarse
 
 ## Getting started
 
-### Quick Installation
+### Dependencies
 
-**IMPORTANT**: Make sure you have postgresql-contrib ([Aditional Modules](http://www.postgresql.org/docs/9.3/static/contrib.html)) installed on your system.
+To run this project you need to have:
 
+* Ruby 2.1.2
+* [PostgreSQL](http://www.postgresql.org/)
+  * OSX - [Postgress.app](http://postgresapp.com/)
+  * Linux - `$ sudo apt-get install postgresql`
+  * Windows - [PostgreSQL for Windows](http://www.postgresql.org/download/windows/)
+
+  **IMPORTANT**: Make sure you have postgresql-contrib ([Aditional Modules](http://www.postgresql.org/docs/9.3/static/contrib.html)) installed on your system.
+
+### Setup the project
+
+* Clone the project
+
+        $ git clone https://github.com/catarse/catarse.git
+
+* Enter project folder
+
+        $ cd catarse
+
+* Create the `database.yml`
+
+        $ cp config/database.sample.yml config/database.yml
+
+    Add your datbase credentials
+
+* Install the gems
+
+        $ bundle install
+
+* Create the database
+
+        $ rake db:create db:migrate db:seed
+
+If everything goes OK, you can now run the project!
+
+### Running the project
 
 ```bash
-$ git clone https://github.com/catarse/catarse.git
-$ cd catarse
-$ cp config/database.sample.yml config/database.yml
-$ vim config/database.yml
-# change username/password and save
-$ bundle install
-$ rake db:create db:migrate db:seed
 $ rails server
 ```
+
+Open [http://localhost:3000](http://localhost:3000)
 
 ### Translations
 
