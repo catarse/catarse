@@ -3,7 +3,7 @@ Skull.Form = {
     if(event.currentTarget.checkValidity()){
       var $target = this.$(event.currentTarget);
       $target.removeClass("error");
-      this.$('[data-for=' + $target.prop('id') + ']').hide();
+      this.$('[data-error-for=' + $target.prop('id') + ']').hide();
     }
   },
 
@@ -14,13 +14,13 @@ Skull.Form = {
   invalid: function(event){
     var $target = this.$(event.currentTarget);
     $target.addClass("error");
-    this.$('[data-for=' + $target.prop('id') + ']').show();
+    this.$('[data-error-for=' + $target.prop('id') + ']').show();
   },
 
   validate: function(){
     var valid = true;
     this.$('input:visible').each(function(){
-      valid = valid && this.checkValidity();
+      valid = this.checkValidity() && valid;
     });
     this.$('input.error:visible:first').select();
     return valid;
