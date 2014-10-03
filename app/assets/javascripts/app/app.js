@@ -25,7 +25,7 @@ var App = window.App = Skull.View.extend({
     this.flash();
     this.notices();
     Backbone.history.start({pushState: false});
-    this.$('input[data-mask]').each(this.maskElement);
+    this.maskAllElements();
   },
 
   flash: function() {
@@ -42,6 +42,10 @@ var App = window.App = Skull.View.extend({
     setTimeout( function(){ this.$('.notice-box').fadeIn('slow') }, 100)
     if(this.$('.notice-box').length) setTimeout( function(){ that.$('.notice-box').fadeOut('slow') }, 16000)
     $('.icon-close').on('click', function(){ that.$('.card-notification').fadeOut('slow') })
+  },
+
+  maskAllElements: function(){
+    this.$('input[data-mask]').each(this.maskElement);
   },
 
   maskElement: function(index, el){
