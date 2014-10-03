@@ -15,4 +15,8 @@ class Category < ActiveRecord::Base
   def to_s
     self.send('name_' + I18n.locale.to_s)
   end
+
+  def total_projects state = 'online'
+    self.projects.with_state(state).count
+  end
 end
