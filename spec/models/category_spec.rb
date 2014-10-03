@@ -29,25 +29,13 @@ describe Category do
     end
   end
 
-  describe ".total_projects" do
-    context "with online projects" do
-      before do
-        2.times { create(:project, category: category, state: 'online') }
-        create(:project, category: category, state: 'successful')
-      end
-
-      subject { category.total_projects('online') }
-      it { expect(subject).to eq(2) }
+  describe ".total_online_projects" do
+    before do
+      2.times { create(:project, category: category, state: 'online') }
+      create(:project, category: category, state: 'successful')
     end
 
-    context "with successful projects" do
-      before do
-        2.times { create(:project, category: category, state: 'online') }
-        5.times { create(:project, category: category, state: 'successful') }
-      end
-
-      subject { category.total_projects('successful') }
-      it { expect(subject).to eq(5) }
-    end
+    subject { category.total_online_projects }
+    it { expect(subject).to eq(2) }
   end
 end
