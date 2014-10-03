@@ -32,9 +32,9 @@ gem 'user_notifier'
 gem 'mixpanel-ruby'
 
 # Payment engines
-gem 'catarse_paypal_express', '2.2.3'
-gem 'catarse_moip', '~> 2.3.6'
-gem 'catarse_credits', '0.0.6'
+gem 'catarse_paypal_express', '3.0.0'
+gem 'catarse_moip', '~> 3.0.0'
+gem 'catarse_credits', '1.0.0'
 #gem 'catarse_paypal_express', path: '../catarse_paypal_express'
 #gem 'catarse_moip', path: '../catarse_moip'
 #gem 'catarse_credits', path: '../catarse_credits'
