@@ -60,7 +60,6 @@ App.addChild('ReviewForm', _.extend({
     this.$country.val('36');
     this.$state = this.$('#contribution_address_state');
     this.$errorMessage = this.$('#error-message');
-    this.parent.payment.loadPaymentChoices();
     this.setupForm();
     this.onCountryChange();
   },
