@@ -26,7 +26,7 @@ pt:
         current_credits_html: "Seu saldo atual é de <span id=\"current_credits\">%{credits}</span> em créditos."
         important_html: "Para saber todas as regras de funcionamento de reembolso, <a href='http://suporte.catarse.me/hc/pt-br/articles/202365507-Regras-e-funcionamento-dos-reembolsos-estornos' target='_blank'>clique aqui</a>. Qualquer dúvida, acesse nosso <a href='http://suporte.catarse.me' target='_blank'>suporte</a>."
         project: Projeto
-        refunded: "Reembolso efetuado"
+        refunded: "Solicitação confirmada. Entraremos em contato em até 4 dias uteís."
         insufficient_credits: "Você não tem créditos suficientes para realizar este estorno."
         refunds_title: "Apoios que podem ter estorno realizado"
         request_refund: "Solicitar estorno"
