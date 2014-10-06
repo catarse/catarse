@@ -55,7 +55,7 @@ RSpec.configure do |config|
   end
 
   config.before(:each) do
-    if example.metadata[:type] == :feature
+    if RSpec.current_example.metadata[:type] == :feature
       DatabaseCleaner.strategy = :truncation
     else
       DatabaseCleaner.strategy = :transaction
