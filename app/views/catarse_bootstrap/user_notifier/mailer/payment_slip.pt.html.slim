@@ -6,7 +6,7 @@ p
   | Quando essa confirmação ocorrer, mandaremos outro email com todos os detalhes da transação.
 p 
   | Para imprimir o boleto gerado, basta 
-  = link_to 'clicar aqui', "https://www.moip.com.br/Boleto.do?id=#{contribution.payment_id.gsub('.', '').to_i}"
+  = link_to 'clicar aqui', contribution.display_slip_url
   | .
 
 p O prazo de vencimento do boleto é de 2 dias úteis. Para alterar a data de vencimento, entre em contato conosco respondendo a esta mensagem ou através do e-mail #{mail_to CatarseSettings[:email_contact]}

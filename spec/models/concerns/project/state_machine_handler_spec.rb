@@ -112,7 +112,7 @@ describe Project::StateMachineHandler do
 
       context 'when project is expired and the sum of the pending contributions and confirmed contributions dont reached the goal' do
         before do
-          create(:contribution, value: 100, project: subject, created_at: 2.days.ago)
+          create(:contribution, value: 100, project: subject, created_at: 2.days.ago, payment_choice: 'BoletoBancario')
           subject.finish
         end
 
@@ -154,7 +154,7 @@ describe Project::StateMachineHandler do
 
       context 'when project not hit the goal' do
         let(:user) { create(:user) }
-        let(:contribution) { create(:contribution, project: main_project, user: user, value: 20, payment_token: 'ABC') }
+        let(:contribution) { create(:contribution, project: main_project, user: user, value: 20, payment_token: 'ABC', payment_choice: 'BoletoBancario') }
 
         before do
           contribution

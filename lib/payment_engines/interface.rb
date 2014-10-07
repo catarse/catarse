@@ -11,5 +11,9 @@ class PaymentEngines
 
     def direct_refund(contribution); end
 
+    def can_generate_second_slip?; end
+
+    def second_slip_path(contribution); end
+
   end
 end
