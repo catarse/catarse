@@ -6,8 +6,9 @@ class Contribution < ActiveRecord::Base
   include Contribution::StateMachineHandler
   include Contribution::CustomValidators
   include Contribution::PaymentEngineHandler
+  include Contribution::PaymentMethods
 
-  delegate :display_value, :display_confirmed_at, to: :decorator
+  delegate :display_value, :display_confirmed_at, :display_slip_url, to: :decorator
 
   belongs_to :project
   belongs_to :reward
@@ -32,6 +33,9 @@ class Contribution < ActiveRecord::Base
   scope :credits, -> { where("credits OR lower(payment_method) = 'credits'") }
   scope :not_anonymous, -> { where(anonymous: false) }
   scope :confirmed_today, -> { with_state('confirmed').where("contributions.confirmed_at::date = to_date(?, 'yyyy-mm-dd')", Time.now.strftime('%Y-%m-%d')) }
+  scope :avaiable_to_automatic_refund, -> {
+    with_state('confirmed').where("contributions.payment_method in ('PayPal', 'Pagarme') OR contributions.payment_choice = 'CartaoDeCredito'")
+  }
 
   scope :can_cancel, -> { where("contributions.can_cancel") }
 
@@ -64,14 +68,6 @@ class Contribution < ActiveRecord::Base
 
   def can_refund?
     confirmed? && project.failed?
-  end
-
-  def is_paypal?
-    payment_method.try(:downcase) == 'paypal'
-  end
-
-  def is_credit_card?
-    payment_choice.try(:downcase) == 'cartaodecredito'
   end
 
   def available_rewards

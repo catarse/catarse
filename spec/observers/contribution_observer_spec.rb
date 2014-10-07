@@ -21,7 +21,7 @@ describe ContributionObserver do
     end
   end
 
-  describe "before_save" do
+  describe "after_save" do
     context "when payment_choice is updated to BoletoBancario" do
       let(:contribution){ create(:contribution, key: 'should be updated', payment_method: 'should be updated', state: 'confirmed', confirmed_at: Time.now) }
       before do
@@ -31,39 +31,9 @@ describe ContributionObserver do
       end
       it("should notify the contribution"){ subject }
     end
+  end
 
-    context "when project reached the goal" do
-      let(:project){ create(:project, state: 'failed', goal: 20) }
-      let(:contribution){ create(:contribution, key: 'should be updated', payment_method: 'should be updated', state: 'confirmed', confirmed_at: Time.now, value: 20) }
-      before do
-        project_total = mock()
-        project_total.stub(:pledged).and_return(20.0)
-        project_total.stub(:total_contributions).and_return(1)
-        project.stub(:project_total).and_return(project_total)
-        contribution.project = project
-        ProjectNotification.should_receive(:notify).with(
-          :project_success,
-          contribution.project.user,
-          contribution.project,
-          {}
-        )
-        contribution.save!
-      end
-      it("should notify the project owner"){ subject }
-    end
-
-    context "when project is already successful" do
-      let(:project){ create(:project, state: 'online') }
-      let(:contribution){ create(:contribution, key: 'should be updated', payment_method: 'should be updated', state: 'confirmed', confirmed_at: Time.now, project: project) }
-      before do
-        contribution
-        project.update_attributes state: 'successful'
-        ContributionNotification.should_receive(:notify).never
-        contribution.save!
-      end
-      it("should not send project_successful notification again"){ subject }
-    end
-
+  describe "before_save" do
     context "when is not yet confirmed" do
       context 'notify the contribution' do
         before do
@@ -130,21 +100,36 @@ describe ContributionObserver do
         expect(ContributionNotification.where(template_name: 'refund_request', user_id: admin.id, from_email: contribution.user.email, from_name: contribution.user.name).count).to eq 1
       end
 
-      it "should not notify contributor about the refund request" do
-        expect(ContributionNotification.where(template_name: 'requested_refund', user_id: contribution.user.id).count).to eq 0
+      it "should notify contributor about the refund request" do
+        expect(ContributionNotification.where(template_name: 'requested_refund', user_id: contribution.user.id).count).to eq 1
       end
     end
 
     context "when contribution is made with boleto" do
-      before do
-        contribution.update_attributes(payment_choice: 'BoletoBancario', payment_method: 'MoIP')
-        contribution.should_receive(:direct_refund)
-        contribution.notify_observers :from_confirmed_to_requested_refund
+      context "via MoIP" do
+        before do
+          contribution.update_attributes(payment_choice: 'BoletoBancario', payment_method: 'MoIP')
+          contribution.should_receive(:direct_refund)
+          contribution.notify_observers :from_confirmed_to_requested_refund
+        end
+
+        it "should notify admin and contributor upon refund request" do
+          expect(ContributionNotification.where(template_name: 'refund_request', user_id: admin.id, from_email: contribution.user.email, from_name: contribution.user.name).count).to eq 1
+          expect(ContributionNotification.where(template_name: 'requested_refund_slip', user_id: contribution.user.id).count).to eq 1
+        end
       end
 
-      it "should notify admin and contributor upon refund request" do
-        expect(ContributionNotification.where(template_name: 'refund_request', user_id: admin.id, from_email: contribution.user.email, from_name: contribution.user.name).count).to eq 1
-        expect(ContributionNotification.where(template_name: 'requested_refund_slip', user_id: contribution.user.id).count).to eq 1
+      context "via PagarMe" do
+        before do
+          contribution.update_attributes(payment_choice: 'BoletoBancario', payment_method: 'Pagarme')
+          contribution.should_receive(:direct_refund)
+          contribution.notify_observers :from_confirmed_to_requested_refund
+        end
+
+        it "should notify admin and contributor upon refund request" do
+          expect(ContributionNotification.where(template_name: 'refund_request', user_id: admin.id, from_email: contribution.user.email, from_name: contribution.user.name).count).to eq 1
+          expect(ContributionNotification.where(template_name: 'requested_refund_slip', user_id: contribution.user.id).count).to eq 0
+        end
       end
     end
   end

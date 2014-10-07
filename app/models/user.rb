@@ -15,7 +15,8 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :name,
     :image_url, :uploaded_image, :bio, :newsletter, :full_name, :address_street, :address_number,
     :address_complement, :address_neighbourhood, :address_city, :address_state, :address_zip_code, :phone_number,
-    :cpf, :state_inscription, :locale, :twitter, :facebook_link, :other_link, :moip_login, :deactivated_at, :reactivate_token
+    :cpf, :state_inscription, :locale, :twitter, :facebook_link, :other_link, :moip_login, :deactivated_at, :reactivate_token,
+    :bank_account_attributes
 
   mount_uploader :uploaded_image, UserUploader
 
@@ -32,6 +33,8 @@ class User < ActiveRecord::Base
   belongs_to :channel
   belongs_to :country
   has_one :user_total
+  has_one :bank_account
+  has_many :credit_cards
   has_many :contributions
   has_many :authorizations
   has_many :channel_posts
@@ -44,6 +47,7 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :subscriptions, join_table: :channels_subscribers, class_name: 'Channel'
 
   accepts_nested_attributes_for :unsubscribes, allow_destroy: true rescue puts "No association found for name 'unsubscribes'. Has it been defined yet?"
+  accepts_nested_attributes_for :bank_account, allow_destroy: true
 
   scope :active, ->{ where('deactivated_at IS NULL') }
   scope :with_user_totals, -> {
@@ -175,7 +179,7 @@ class User < ActiveRecord::Base
   end
 
   def fix_facebook_link
-    if !self.facebook_link.blank?
+    if self.facebook_link.present?
       self.facebook_link = ('http://' + self.facebook_link) unless self.facebook_link[/^https?:\/\//]
     end
   end
