@@ -1,6 +1,10 @@
 #my_data
+  strong= t('.projects_in_reminder')
+  - @user.projects_in_reminder.each do |project|
+    p== "- #{link_to project.name, project_path(project)}"
+  br
   ul
-    = t('.title')
+   strong = t('.title')
   ul
     li
       .bootstrap-form
