@@ -10,7 +10,7 @@ br/
 br/
 br/
 | Existem pagamentos pendentes para o seu projeto. Para computar essas quantias ficaremos
-' aguardando a confirmação dessas contribuições de última hora pelos próximos 3 dias úteis. 
+'  aguardando a confirmação dessas contribuições de última hora pelos próximos 3 dias úteis. 
 br/
 br/
 | Confira alguns cenários nos quais seu projeto pode se encaixar:
@@ -18,9 +18,9 @@ br/
 br/
 - if project.using_pagarme?
   | <strong>1) Se o seu projeto já ultrapassou a meta:</strong> a gente apenas vai contabilizar caso
-  ' haja alguma confirmação de pagamento e irá fazer o repasse para você depois desse prazo. 
-  ' Em até 7 dias utéis, você receberá o valor arrecadado (descontada as taxas do meio de pagamento e do Catarse) 
-  ' diretamente na sua conta bancária cadastrada.
+  '  haja alguma confirmação de pagamento e irá fazer o repasse para você depois desse prazo. 
+  '  Em até 7 dias utéis, você receberá o valor arrecadado (descontada as taxas do meio de pagamento e do Catarse) 
+  '  diretamente na sua conta bancária cadastrada.
   br/
   br/
   | <strong>2) Se o seu projeto ainda não chegou na meta, mas tem pagamentos pendentes que podem fazer com que 
@@ -28,8 +28,8 @@ br/
   br/
   br/
   | <strong>3) Se o seu projeto não atingir a meta mesmo com esses pagamentos de última hora:</strong>
-  ' os apoiadores receberão o reembolso integral do valor do apoio. Para cartão de crédito, esse reembolso 
-  ' virá como crédito na próxima fatura, já para boletos bancários, o valor será depositado diretamente na conta bancária do apoiador.
+  '  os apoiadores receberão o reembolso integral do valor do apoio. Para cartão de crédito, esse reembolso 
+  '  virá como crédito na próxima fatura, já para boletos bancários, o valor será depositado diretamente na conta bancária do apoiador.
 - else
   | <strong>1) Se o seu projeto já ultrapassou a meta:</strong> a gente apenas vai contabilizar caso 
   | haja alguma confirmação de pagamento e irá fazer o repasse para você depois desse prazo. 
@@ -53,8 +53,8 @@ br/
   | Confira: #{link_to 'Regras e Funcionamento dos Reembolsos', 'http://suporte.catarse.me/hc/pt-br/articles/202365507-Regras-e-funcionamento-dos-reembolsos-estornos', target: '__blank'}.
   br/
   br/
-  | Lembrando que apoios utilizando créditos poderão ser realizados <strong>até o dia 10/11</strong>, conforme as 
-  ' #{link_to 'novas regras', 'http://blog.catarse.me/simplificacao-dos-reembolsos-e-o-fim-dos-creditos/', target: '__blank'} divulgadas pelo #{company_name}. Após esse prazo, entraremos em contato para reembolsar o valor do apoio.
+  | Lembrando que apoios utilizando créditos poderão ser realizados <strong>até o dia 10/11</strong>, conforme as
+  '  #{link_to 'novas regras', 'http://blog.catarse.me/simplificacao-dos-reembolsos-e-o-fim-dos-creditos/', target: '__blank'} divulgadas pelo #{company_name}. Após esse prazo, entraremos em contato para reembolsar o valor do apoio.
 br/
 br/
 | Se ficou com alguma dúvida, responda a esta mensagem diretamente ou fale conosco através do e-mail #{mail_to CatarseSettings[:email_projects]}
