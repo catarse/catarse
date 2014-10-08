@@ -9,9 +9,18 @@ br/
 | Infelizmente o projeto #{link_to project.name, project_link } não alcançou a meta estipulada por você no #{company_name}.
 br/
 br/
-| Todos os apoiadores receberam um email com instruções sobre como utilizar seus créditos ou pedir o reembolso do seu apoio. 
-br/
-| Confira: #{link_to 'Regras e Funcionamento dos Reembolsos', 'http://suporte.catarse.me/hc/pt-br/articles/202365507-Regras-e-funcionamento-dos-reembolsos-estornos', target: '__blank' }
+
+- if project.using_pagarme?
+  | Todos os apoiadores receberam um email com instruções sobre o reembolso do seu apoio.
+- else
+  | Todos os apoiadores receberam um email com instruções sobre como utilizar seus créditos ou pedir o reembolso do seu apoio. 
+  br/
+  | Confira: #{link_to 'Regras e Funcionamento dos Reembolsos', 'http://suporte.catarse.me/hc/pt-br/articles/202365507-Regras-e-funcionamento-dos-reembolsos-estornos', target: '__blank' }
+  br/
+  br/
+  | Lembrando que apoios utilizando créditos poderão ser realizados <strong>até o dia 10/11</strong>, conforme as 
+  ' #{link_to 'novas regras', 'http://blog.catarse.me/simplificacao-dos-reembolsos-e-o-fim-dos-creditos/', target: '__blank'} divulgadas pelo #{company_name}. Após esse prazo, entraremos em contato para reembolsar o valor do apoio.
+
 br/
 br/
 strong Último pedido =)
@@ -29,7 +38,7 @@ br/
 strong 2. O que você mais sentiu falta na plataforma do #{company_name}?
 br/
 br/
-|Parabéns pela campanha, seu projeto pode não ter atingido a meta mas com certeza você aprendeu alguma coisa e pode tirar grande proveito dessa experiência se quiser!
+| Parabéns pela campanha, seu projeto pode não ter atingido a meta mas com certeza você aprendeu alguma coisa e pode tirar grande proveito dessa experiência se quiser!
 br/
 br/
 | Muito muito obrigado por entrar nessa com a gente! Te esperamos numa próxima.

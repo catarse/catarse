@@ -23,7 +23,7 @@ pt:
         pagarme_warning_html: "O Catarse está em fase de teste de um novo meio de pagamento que facilitará o apoio financeiro e o eventual reembolso dos valores aos apoiadores. Dessa forma, alertamos que poderão ser exigidos dados extras, além daqueles mencionados nos Termos de Uso para apoiar este projeto. Qualquer dúvida ou dificuldade, entre em contato conosco pelo e-mail %{mailto} . Obrigado."
         payment_save_card: 'Quero salvar meu cartão de crédito para facilitar apoios futuros.'
         reward_sold_out: Essa recompensa está esgotada. Inicie um novo apoio.
-        credits_preview_html: "Você possui <strong>%{credits}</strong> em créditos para realizar este apoio."
+        credits_preview_html: "Você possui <strong>%{credits}</strong> em créditos para realizar esse apoio <strong>até o dia 10/11</strong>, conforme <a href='http://blog.catarse.me/simplificacao-dos-reembolsos-e-o-fim-dos-creditos/' target='__blank'>novas regras</a> divulgadas pelo Catarse."
         credits_submit: 'Efetuar pagamento'
         credits_title: 'Pagamento com créditos'
         insufficient_credits: "Você possui %{credits} em créditos. Esse valor não é suficiente para realizar o apoio, por favor escolha outro meio de pagamento."
