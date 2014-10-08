@@ -131,6 +131,17 @@ class User < ActiveRecord::Base
     user_total.try(:credits).to_f
   end
 
+  def projects_in_reminder
+    p = Array.new
+    reminder_jobs = Sidekiq::ScheduledSet.new.select do |job|
+      job['class'] == 'ReminderProjectWorker' && job.args[0] == self.id
+    end
+    reminder_jobs.each do |job|
+      p << Project.find(job.args[1])
+    end
+    return p
+  end
+
   def total_contributed_projects
     user_total.try(:total_contributed_projects).to_i
   end
