@@ -77,7 +77,7 @@ class Projects::ContributionsController < ApplicationController
   end
 
   def avaiable_payment_engines
-    if enabled_to_use_pagarme.include?(parent.permalink)
+    if parent.using_pagarme?
       engines = PaymentEngines.engines.select do |engine|
         engine if engine.name == 'Pagarme'
       end
@@ -94,12 +94,6 @@ class Projects::ContributionsController < ApplicationController
     end
 
     @engines ||= engines
-  end
-
-  def enabled_to_use_pagarme
-    CatarseSettings[:projects_enabled_to_use_pagarme].split(',').map(&:strip)
-  rescue
-    []
   end
 
   def collection
