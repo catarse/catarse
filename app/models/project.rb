@@ -137,6 +137,20 @@ class Project < ActiveRecord::Base
     order(sort_field)
   end
 
+  def self.enabled_to_use_pagarme
+    begin
+      permalinks = CatarseSettings[:projects_enabled_to_use_pagarme].split(',').map(&:strip)
+    rescue
+      permalinks = []
+    end
+
+    Project.where(permalink: permalinks)
+  end
+
+  def using_pagarme?
+    Project.enabled_to_use_pagarme.include?(self)
+  end
+
   def subscribed_users
     User.subscribed_to_posts.subscribed_to_project(self.id)
   end
