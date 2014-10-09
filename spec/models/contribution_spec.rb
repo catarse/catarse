@@ -104,7 +104,7 @@ describe Contribution do
       before do
         contribution.update_attributes payment_choice: 'BoletoBancario'
       end
-      it { should be_true}
+      it { should eq(true)}
     end
 
     context "when contribution is not made with Boleto" do
@@ -180,7 +180,7 @@ describe Contribution do
 
     context "when it's a valid refund" do
       let(:contribution){ valid_refund }
-      it{ should be_true }
+      it{ should eq(true) }
     end
   end
 

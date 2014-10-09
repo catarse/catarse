@@ -41,7 +41,7 @@ describe Contribution::PaymentEngineHandler do
         PaymentEngines.register(engine)
       end
 
-      it { should be_true }
+      it { should eq(true) }
     end
 
     context "when contribution has a payment engine without direct refund enabled" do
@@ -63,7 +63,7 @@ describe Contribution::PaymentEngineHandler do
         PaymentEngines.register(engine)
       end
 
-      it { should be_true }
+      it { should eq(true) }
     end
 
     context "when contribution has a payment engine without direct refund enabled" do

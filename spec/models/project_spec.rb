@@ -379,7 +379,7 @@ describe Project do
       before do
         create(:contribution, value: 4000, project: project)
       end
-      it { should be_true }
+      it { should eq(true) }
     end
 
     context "when sum of all contributions don't hit the goal" do
@@ -392,7 +392,7 @@ describe Project do
     subject { contribution.project.in_time_to_wait? }
 
     context 'when project expiration is in time to wait' do
-      it { should be_true }
+      it { should eq(true) }
     end
 
     context 'when project expiration time is not more on time to wait' do
@@ -496,7 +496,7 @@ describe Project do
     context "when expires_at is in the past" do
       let(:project){ build(:project, online_date: 3.days.ago, online_days: 1) }
       before{project.save!}
-      it{ should be_true }
+      it{ should eq(true) }
     end
   end
 
@@ -545,7 +545,7 @@ describe Project do
     context 'when reached the goal with pending contributions' do
       before { 2.times { create(:contribution, project: project, value: 120, state: 'waiting_confirmation') } }
 
-      it { should be_true }
+      it { should eq(true) }
     end
 
     context 'when dont reached the goal with pending contributions' do

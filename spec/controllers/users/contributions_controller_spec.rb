@@ -52,7 +52,7 @@ describe Users::ContributionsController do
 
       it do
         failed_contribution.reload
-        failed_contribution.requested_refund?.should be_true
+        failed_contribution.requested_refund?.should eq(true)
       end
 
       it { should redirect_to user_path(current_user, anchor: 'credits') }

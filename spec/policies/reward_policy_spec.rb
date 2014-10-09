@@ -83,17 +83,17 @@ describe RewardPolicy do
 
         context "and want to update description" do
           let(:field){ :description }
-          it{ should be_true }
+          it{ should eq(true) }
         end
 
         context "and want to update maximum_contributions" do
           let(:field){ :maximum_contributions }
-          it{ should be_true }
+          it{ should eq(true) }
         end
 
         context "and want to update deliver_at" do
           let(:field){ :deliver_at}
-          it{ should be_true }
+          it{ should eq(true) }
         end
       end
     end
@@ -103,17 +103,17 @@ describe RewardPolicy do
         let(:reward){ create(:reward, project: create(:project, state: state)) }
         context "and want to update minimum_value" do
           let(:field){ :minimum_value }
-          it{ should be_true }
+          it{ should eq(true) }
         end
 
         context "and want to update description" do
           let(:field){ :description }
-          it{ should be_true }
+          it{ should eq(true) }
         end
 
         context "and want to update maximum_contributions" do
           let(:field){ :maximum_contributions }
-          it{ should be_true }
+          it{ should eq(true) }
         end
 
         context "and want to update deliver_at" do
@@ -127,22 +127,22 @@ describe RewardPolicy do
       let(:reward){ create(:reward, project: create(:project, state: 'online')) }
       context "and want to update minimum_value" do
         let(:field){ :minimum_value }
-        it{ should be_true }
+        it{ should eq(true) }
       end
 
       context "and want to update description" do
         let(:field){ :description }
-        it{ should be_true }
+        it{ should eq(true) }
       end
 
       context "and want to update maximum_contributions" do
         let(:field){ :maximum_contributions }
-        it{ should be_true }
+        it{ should eq(true) }
       end
 
       context "and want to update deliver_at" do
         let(:field){ :deliver_at }
-        it{ should be_true }
+        it{ should eq(true) }
       end
     end
   end

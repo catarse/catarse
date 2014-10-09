@@ -13,7 +13,7 @@ describe Project::StateMachineHandler do
         project.send_to_analysis
       end
 
-      it { should be_true }
+      it { should eq(true) }
 
       it "should store sent_to_analysis_at" do
         expect(project.sent_to_analysis_at).to_not be_nil
@@ -23,7 +23,7 @@ describe Project::StateMachineHandler do
     describe '#draft?' do
       subject { project.draft? }
       context "when project is new" do
-        it { should be_true }
+        it { should eq(true) }
       end
     end
 
@@ -33,7 +33,7 @@ describe Project::StateMachineHandler do
         project.push_to_draft
         project
       end
-      its(:draft?){ should be_true }
+      its(:draft?){ should eq(true) }
     end
 
     describe '#rejected?' do
@@ -43,7 +43,7 @@ describe Project::StateMachineHandler do
         project.reject
       end
       context 'when project is not accepted' do
-        it { should be_true }
+        it { should eq(true) }
       end
     end
 
@@ -54,7 +54,7 @@ describe Project::StateMachineHandler do
         project.reject
         project
       end
-      its(:rejected?){ should be_true }
+      its(:rejected?){ should eq(true) }
     end
 
     describe '#push_to_trash' do
@@ -65,7 +65,7 @@ describe Project::StateMachineHandler do
         project
       end
 
-      its(:deleted?) { should be_true }
+      its(:deleted?) { should eq(true) }
       its(:permalink) { should == "deleted_project_#{project.id}" }
     end
 
@@ -78,7 +78,7 @@ describe Project::StateMachineHandler do
         project
       end
 
-      its(:online?){ should be_true }
+      its(:online?){ should eq(true) }
       it('should call after transition method to notify the project owner'){ subject }
       it 'should persist the online_date' do
         project.approve
@@ -96,7 +96,7 @@ describe Project::StateMachineHandler do
         project.approve
       end
       subject { project.online? }
-      it { should be_true }
+      it { should eq(true) }
     end
 
     describe '#finish' do
@@ -116,7 +116,7 @@ describe Project::StateMachineHandler do
           subject.finish
         end
 
-        its(:failed?) { should be_true }
+        its(:failed?) { should eq(true) }
       end
 
       context 'when project is expired and have recent contributions without confirmation' do
@@ -125,7 +125,7 @@ describe Project::StateMachineHandler do
           subject.finish
         end
 
-        its(:waiting_funds?) { should be_true }
+        its(:waiting_funds?) { should eq(true) }
       end
 
       context 'when project already hit the goal and passed the waiting_funds time' do
@@ -138,7 +138,7 @@ describe Project::StateMachineHandler do
           subject.online_date = Time.now - 2.days
           subject.finish
         end
-        its(:successful?) { should be_true }
+        its(:successful?) { should eq(true) }
       end
 
       context 'when project already hit the goal and still is in the waiting_funds time' do
@@ -164,7 +164,7 @@ describe Project::StateMachineHandler do
           subject.finish
         end
 
-        its(:failed?) { should be_true }
+        its(:failed?) { should eq(true) }
 
         it "should generate credits for users" do
           contribution.confirm!

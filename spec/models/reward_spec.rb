@@ -92,7 +92,7 @@ describe Reward do
         create(:contribution, state: 'waiting_confirmation', reward: reward, project: reward.project)
       end
 
-      it { should be_true }
+      it { should eq(true) }
     end
 
     context 'when reward contributions waiting confirmation and confirmed are lower than limit' do

@@ -70,7 +70,7 @@ describe Channel do
         channel.subscribers = [user]
         channel.save!
       end
-      it{ should be_true }
+      it{ should eq(true) }
     end
 
     context "when user is not a channel subscriber" do

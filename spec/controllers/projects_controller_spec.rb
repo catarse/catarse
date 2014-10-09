@@ -35,7 +35,7 @@ describe ProjectsController do
         project.reload
       end
 
-      it { project.in_analysis?.should be_true }
+      it { project.in_analysis?.should eq(true) }
     end
 
     context "with referal link" do
