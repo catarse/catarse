@@ -41,7 +41,7 @@ describe Users::ContributionsController do
 
       it "should not set requested_refund" do
         failed_contribution.reload
-        failed_contribution.requested_refund?.should be_false
+        failed_contribution.requested_refund?.should eq(false)
       end
       it{ should redirect_to new_user_registration_path }
     end
@@ -64,7 +64,7 @@ describe Users::ContributionsController do
 
       it do
         unconfirmed_contribution.reload
-        unconfirmed_contribution.requested_refund?.should be_false
+        unconfirmed_contribution.requested_refund?.should eq(false)
       end
 
       it { should redirect_to user_path(current_user, anchor: 'credits') }
@@ -77,7 +77,7 @@ describe Users::ContributionsController do
 
       it do
         other_contribution.reload
-        other_contribution.requested_refund?.should be_false
+        other_contribution.requested_refund?.should eq(false)
       end
 
       it { should redirect_to root_path }

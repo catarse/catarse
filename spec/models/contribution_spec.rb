@@ -111,7 +111,7 @@ describe Contribution do
       before do
         contribution.update_attributes payment_choice: 'CartaoDeCredito'
       end
-      it { should be_false}
+      it { should eq(false)}
     end
   end
 
@@ -165,17 +165,17 @@ describe Contribution do
 
     context "when project is successful" do
       let(:contribution){ sucessful_project_contribution }
-      it{ should be_false }
+      it{ should eq(false) }
     end
 
     context "when project is not finished" do
       let(:contribution){ unfinished_project_contribution }
-      it{ should be_false }
+      it{ should eq(false) }
     end
 
     context "when contribution is not confirmed" do
       let(:contribution){ not_confirmed_contribution }
-      it{ should be_false }
+      it{ should eq(false) }
     end
 
     context "when it's a valid refund" do

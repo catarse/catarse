@@ -75,7 +75,7 @@ describe Admin::ContributionsController do
 
     it do
       contribution.reload
-      should be_false
+      should eq(false)
     end
   end
 

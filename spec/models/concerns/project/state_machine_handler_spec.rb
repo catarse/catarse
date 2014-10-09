@@ -107,7 +107,7 @@ describe Project::StateMachineHandler do
         before do
           main_project.update_attributes state: 'draft'
         end
-        its(:finish) { should be_false }
+        its(:finish) { should eq(false) }
       end
 
       context 'when project is expired and the sum of the pending contributions and confirmed contributions dont reached the goal' do
@@ -149,7 +149,7 @@ describe Project::StateMachineHandler do
           main_project.update_attributes state: 'waiting_funds'
           subject.finish
         end
-        its(:successful?) { should be_false }
+        its(:successful?) { should eq(false) }
       end
 
       context 'when project not hit the goal' do

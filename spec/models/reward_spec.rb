@@ -83,7 +83,7 @@ describe Reward do
 
     context 'when reward not have limits' do
       let(:reward) { create(:reward, maximum_contributions: nil) }
-      it { should be_false }
+      it { should eq(nil) }
     end
 
     context 'when reward contributions waiting confirmation and confirmed are greater than limit' do
@@ -100,7 +100,7 @@ describe Reward do
         create(:contribution, state: 'confirmed', reward: reward, project: reward.project)
         create(:contribution, state: 'waiting_confirmation', reward: reward, project: reward.project)
       end
-      it { should be_false }
+      it { should eq(false) }
 
     end
   end

@@ -46,7 +46,7 @@ describe Contribution::StateMachineHandler do
       end
       context 'when in confirmed state' do
         let(:initial_state){ 'confirmed' }
-        it("should not switch to waiting_confirmation state") { contribution.waiting_confirmation?.should be_false }
+        it("should not switch to waiting_confirmation state") { contribution.waiting_confirmation?.should eq(false) }
       end
     end
 
@@ -76,17 +76,17 @@ describe Contribution::StateMachineHandler do
 
       context 'when contribution is credits' do
         let(:contribution_is_credits) { true }
-        it('should not switch to requested_refund state') { should be_false }
+        it('should not switch to requested_refund state') { should eq(false) }
       end
 
       context 'when contribution is not confirmed' do
         let(:initial_state){ 'pending' }
-        it('should not switch to requested_refund state') { should be_false }
+        it('should not switch to requested_refund state') { should eq(false) }
       end
 
       context 'when contribution value is above user credits' do
         let(:credits){ contribution.value - 1 }
-        it('should not switch to requested_refund state') { should be_false }
+        it('should not switch to requested_refund state') { should eq(false) }
       end
     end
 
@@ -107,7 +107,7 @@ describe Contribution::StateMachineHandler do
       end
 
       context 'when contribution is pending' do
-        it('should not switch to refunded state') { contribution.refunded?.should be_false }
+        it('should not switch to refunded state') { contribution.refunded?.should eq(false) }
       end
     end
 

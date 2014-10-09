@@ -79,7 +79,7 @@ describe Project do
       end
 
       it { should have(2).items }
-      it { subject.include?(project_02).should be_false }
+      it { subject.include?(project_02).should eq(false) }
     end
 
     context "when does not have any confirmed contribution today" do
@@ -174,7 +174,7 @@ describe Project do
 
     it { should = [@project_02] }
   end
-    
+
   describe '.video_url' do
     before do
       CatarseSettings[:minimum_goal_for_video] = 5000
@@ -383,7 +383,7 @@ describe Project do
     end
 
     context "when sum of all contributions don't hit the goal" do
-      it { should be_false }
+      it { should eq(false) }
     end
   end
 
@@ -397,7 +397,7 @@ describe Project do
 
     context 'when project expiration time is not more on time to wait' do
       let(:contribution) { create(:contribution, created_at: 1.week.ago) }
-      it {should be_false}
+      it {should eq(false)}
     end
   end
 
@@ -485,12 +485,12 @@ describe Project do
 
     context "when online_date is nil" do
       let(:project){ Project.new online_date: nil, online_days: 0 }
-      it{ should be_false }
+      it{ should eq(nil) }
     end
 
     context "when expires_at is in the future" do
       let(:project){ Project.new online_date: 2.days.from_now, online_days: 0 }
-      it{ should be_false }
+      it{ should eq(nil) }
     end
 
     context "when expires_at is in the past" do
@@ -551,7 +551,7 @@ describe Project do
     context 'when dont reached the goal with pending contributions' do
       before { 2.times { create(:contribution, project: project, value: 30, state: 'waiting_confirmation') } }
 
-      it { should be_false }
+      it { should eq(false) }
     end
   end
 
