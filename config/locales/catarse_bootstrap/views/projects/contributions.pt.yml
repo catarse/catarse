@@ -29,7 +29,7 @@ pt:
           payment_card_number: 'Número do cartão de crédito'
           payment_card_flag: 'Bandeira'
           payment_card_source: 'Cód. Segurança'
-          payment_card_date: 'Data de Expiração'
+          payment_card_date: 'Expiração'
           payment_card_name: 'Nome impresso no cartão de crédito'
           payment_card_installments: 'Parcelas'
         installment_with_tax: 'com juros'
