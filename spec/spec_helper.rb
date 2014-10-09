@@ -42,6 +42,8 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
 
+  config.infer_spec_type_from_file_location!
+
   config.before(:suite) do
     ActiveRecord::Base.connection.execute "SET client_min_messages TO warning;"
     ActiveRecord::Base.connection.execute "SET timezone TO 'utc';"
