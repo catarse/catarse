@@ -20,7 +20,7 @@ describe Admin::ContributionsController do
 
     it do
       contribution.reload
-      should be_true
+      should eq(true)
     end
   end
 
@@ -33,7 +33,7 @@ describe Admin::ContributionsController do
       contribution.reload
     end
 
-    it { should be_true }
+    it { should eq(true) }
   end
 
   describe 'PUT hide' do
@@ -47,7 +47,7 @@ describe Admin::ContributionsController do
 
     it do
       contribution.reload
-      should be_true
+      should eq(true)
     end
   end
 
@@ -61,7 +61,7 @@ describe Admin::ContributionsController do
 
     it do
       contribution.reload
-      should be_true
+      should eq(true)
     end
   end
 
@@ -89,7 +89,7 @@ describe Admin::ContributionsController do
 
     it do
       contribution.reload
-      should be_true
+      should eq(true)
     end
   end
 

@@ -78,7 +78,7 @@ describe ProjectPolicy do
       let(:project){ create(:project) }
       let(:policy){ ProjectPolicy.new(project.user, project) }
       subject{ policy.permitted_for?(:about, :update) }
-      it{ should be_true }
+      it{ should eq(true) }
     end
   end
 
@@ -88,7 +88,7 @@ describe ProjectPolicy do
       [:about, :video_url, :uploaded_image, :headline].each do |field|
         context "when field is #{field}" do
           subject{ policy.permitted?(field) }
-          it{ should be_true }
+          it{ should eq(true) }
         end
       end
       context "when field is title" do
@@ -109,7 +109,7 @@ describe ProjectPolicy do
       Project.attribute_names.each do |field|
         context "when field is #{field}" do
           subject{ policy.permitted?(field.to_sym) }
-          it{ should be_true }
+          it{ should eq(true) }
         end
       end
     end

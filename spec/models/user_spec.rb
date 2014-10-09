@@ -231,7 +231,7 @@ describe User do
     end
 
     it "should set all contributions as anonymous" do
-      expect(@contribution.reload.anonymous).to be_true
+      expect(@contribution.reload.anonymous).to eq(true)
     end
 
     it "should set reatiactivate_token" do
@@ -267,7 +267,7 @@ describe User do
         user.stub(:sign_in_count).and_return(0)
       end
 
-      it { should be_true }
+      it { should eq(true) }
     end
 
     context "when user is created today and already signed in more that once time" do
@@ -407,7 +407,7 @@ describe User do
         create(:contribution, project: project, state: 'confirmed', user: user)
       end
 
-      it { should be_true }
+      it { should eq(true) }
     end
 
     context "when user don't have contributions for the project" do

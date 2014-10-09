@@ -46,7 +46,7 @@ describe User::OmniauthHandler do
         create(:authorization, user: user, oauth_provider: facebook_provider)
       end
 
-      it { should be_true }
+      it { should eq(true) }
     end
 
     context "when user don't has a facebook account linked" do

@@ -7,7 +7,7 @@ describe Project::CustomValidators do
     end
 
     it 'should not allow a permalink to be one of catarse\'s routes' do
-      Project.permalink_on_routes?('projects').should be_true
+      Project.permalink_on_routes?('projects').should eq(true)
     end
   end
 end

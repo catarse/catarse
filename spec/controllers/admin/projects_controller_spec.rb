@@ -20,7 +20,7 @@ describe Admin::ProjectsController do
 
     it do
       project.reload
-      should be_true
+      should eq(true)
     end
   end
 
@@ -33,7 +33,7 @@ describe Admin::ProjectsController do
       project.reload
     end
 
-    it { should be_true }
+    it { should eq(true) }
   end
 
   describe 'PUT push_to_draft' do
@@ -47,7 +47,7 @@ describe Admin::ProjectsController do
 
     it do
       project.reload
-      should be_true
+      should eq(true)
     end
   end
 
@@ -60,7 +60,7 @@ describe Admin::ProjectsController do
       put :push_to_trash, id: project, locale: :pt
     end
 
-    it{ should be_true }
+    it{ should eq(true) }
   end
 
 
@@ -117,7 +117,7 @@ describe Admin::ProjectsController do
       its(:status){ should redirect_to admin_projects_path }
 
       it 'should change state to deleted' do
-        expect(project.reload.deleted?).to be_true
+        expect(project.reload.deleted?).to eq(true)
       end
     end
   end

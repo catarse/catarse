@@ -7,41 +7,41 @@ describe Contribution::StateMachineHandler do
 
     describe 'initial state' do
       let(:contribution) { Contribution.new }
-      it('should be pending') { contribution.pending?.should be_true }
+      it('should be pending') { contribution.pending?.should eq(true) }
     end
 
     describe '#pendent' do
       before { contribution.pendent }
       context 'when in confirmed state' do
         let(:initial_state){ 'confirmed' }
-        it("should switch to pending state"){ contribution.pending?.should be_true}
+        it("should switch to pending state"){ contribution.pending?.should eq(true)}
       end
     end
 
     describe '#invalid' do
       before { contribution.invalid}
       context 'when in confirmed state' do
-        it("should switch to invalid payment state"){ contribution.invalid_payment?.should be_true}
+        it("should switch to invalid payment state"){ contribution.invalid_payment?.should eq(true)}
         it("should fill invalid_payment_at") { contribution.invalid_payment_at.should_not be_nil }
       end
     end
 
     describe '#confirm' do
       before { contribution.confirm }
-      it("should switch to confirmed state") { contribution.confirmed?.should be_true }
+      it("should switch to confirmed state") { contribution.confirmed?.should eq(true) }
       it("should fill confirmed_at") { contribution.confirmed_at.should_not be_nil }
     end
 
     describe "#push_to_trash" do
       before { contribution.push_to_trash }
-      it("switch to deleted state") { contribution.deleted?.should be_true }
+      it("switch to deleted state") { contribution.deleted?.should eq(true) }
       it("should fill deleted_at") { contribution.deleted_at.should_not be_nil }
     end
 
     describe '#waiting' do
       before { contribution.waiting }
       context "when in peding state" do
-        it("should switch to waiting_confirmation state") { contribution.waiting_confirmation?.should be_true }
+        it("should switch to waiting_confirmation state") { contribution.waiting_confirmation?.should eq(true) }
         it("should fill waiting_confirmation_at") { contribution.waiting_confirmation_at.should_not be_nil }
       end
       context 'when in confirmed state' do
@@ -52,7 +52,7 @@ describe Contribution::StateMachineHandler do
 
     describe '#cancel' do
       before { contribution.cancel }
-      it("should switch to canceled state") { contribution.canceled?.should be_true }
+      it("should switch to canceled state") { contribution.canceled?.should eq(true) }
       it("should fill canceled_at") { contribution.canceled_at.should_not be_nil }
     end
 
@@ -70,7 +70,7 @@ describe Contribution::StateMachineHandler do
       subject { contribution.requested_refund? }
 
       context 'when contribution is confirmed' do
-        it('should switch to requested_refund state') { should be_true }
+        it('should switch to requested_refund state') { should eq(true) }
         it("should fill requested_refund_at") { contribution.requested_refund_at.should_not be_nil }
       end
 
@@ -97,13 +97,13 @@ describe Contribution::StateMachineHandler do
 
       context 'when contribution is confirmed' do
         let(:initial_state){ 'confirmed' }
-        it('should switch to refunded state') { contribution.refunded?.should be_true }
+        it('should switch to refunded state') { contribution.refunded?.should eq(true) }
         it("should fill refunded_at") { contribution.refunded_at.should_not be_nil }
       end
 
       context 'when contribution is requested refund' do
         let(:initial_state){ 'requested_refund' }
-        it('should switch to refunded state') { contribution.refunded?.should be_true }
+        it('should switch to refunded state') { contribution.refunded?.should eq(true) }
       end
 
       context 'when contribution is pending' do
@@ -119,13 +119,13 @@ describe Contribution::StateMachineHandler do
 
       context "when contribution is confirmed" do
         let(:initial_state) { 'confirmed' }
-        it('should switch to refund_and_canceled state') { contribution.refunded_and_canceled?.should be_true }
+        it('should switch to refund_and_canceled state') { contribution.refunded_and_canceled?.should eq(true) }
         it("should fill refunded_and_canceled_at") { contribution.refunded_and_canceled_at.should_not be_nil }
       end
 
       context "when contribution is pending" do
         let(:initial_state) { 'pending' }
-        it('should switch to refund_and_canceled state') { contribution.refunded_and_canceled?.should be_true }
+        it('should switch to refund_and_canceled state') { contribution.refunded_and_canceled?.should eq(true) }
       end
     end
   end
