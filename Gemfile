@@ -38,7 +38,7 @@ gem 'catarse_credits', '1.0.0'
 #gem 'catarse_paypal_express', path: '../catarse_paypal_express'
 #gem 'catarse_moip', path: '../catarse_moip'
 #gem 'catarse_credits', path: '../catarse_credits'
-gem 'catarse_pagarme', '1.0.0'
+gem 'catarse_pagarme', '1.0.1'
 
 gem 'catarse_contribution_validator', github: 'catarse/catarse_contribution_validator'
 # gem 'catarse_wepay', '~> 0.0.1'
