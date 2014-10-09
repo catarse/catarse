@@ -127,6 +127,7 @@ end
 
 group :test, :development do
   gem 'rspec-rails', '~> 2.14'
+  gem 'rspec-its'
   gem 'pry'
   gem 'jasmine-rails'
 end
