@@ -78,7 +78,7 @@ describe RewardPolicy do
 
         context "and want to update minimum_value" do
           let(:field){ :minimum_value }
-          it{ should be_false }
+          it{ should eq(false) }
         end
 
         context "and want to update description" do
@@ -118,7 +118,7 @@ describe RewardPolicy do
 
         context "and want to update deliver_at" do
           let(:field){ :deliver_at}
-          it{ should be_false }
+          it{ should eq(false) }
         end
       end
     end

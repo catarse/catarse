@@ -276,7 +276,7 @@ describe User do
         user.stub(:sign_in_count).and_return(2)
       end
 
-      it { should be_false }
+      it { should eq(false) }
     end
 
     context "when user is created yesterday and not sign in yet" do
@@ -285,7 +285,7 @@ describe User do
         user.stub(:sign_in_count).and_return(1)
       end
 
-      it { should be_false }
+      it { should eq(false) }
     end
   end
 
@@ -411,7 +411,7 @@ describe User do
     end
 
     context "when user don't have contributions for the project" do
-      it { should be_false }
+      it { should eq(false) }
     end
   end
 end

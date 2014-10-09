@@ -50,7 +50,7 @@ describe User::OmniauthHandler do
     end
 
     context "when user don't has a facebook account linked" do
-      it { should be_false }
+      it { should eq(nil) }
     end
   end
 end

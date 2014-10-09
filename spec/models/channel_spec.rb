@@ -62,7 +62,7 @@ describe Channel do
 
     context "when user is nil" do
       let(:user) { nil }
-      it{ should be_false }
+      it{ should eq(nil) }
     end
 
     context "when user is a channel subscriber" do
@@ -74,7 +74,7 @@ describe Channel do
     end
 
     context "when user is not a channel subscriber" do
-      it{ should be_false }
+      it{ should eq(false) }
     end
   end
 
@@ -85,7 +85,7 @@ describe Channel do
     let(:curator) { create(:user, channel: channel) }
     before do
       curator
-      create(:user, channel: channel) 
+      create(:user, channel: channel)
     end
     it{ should == curator }
   end

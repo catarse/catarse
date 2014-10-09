@@ -71,7 +71,7 @@ describe ProjectPolicy do
     context "when user is nil and I want to update about" do
       let(:policy){ ProjectPolicy.new(nil, Project.new) }
       subject{ policy.permitted_for?(:about, :update) }
-      it{ should be_false }
+      it{ should eq(false) }
     end
 
     context "when user is project owner and I want to update about" do
@@ -93,7 +93,7 @@ describe ProjectPolicy do
       end
       context "when field is title" do
         subject{ policy.permitted?(:title) }
-        it{ should be_false }
+        it{ should eq(false) }
       end
     end
     context "when user is admin" do

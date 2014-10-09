@@ -49,7 +49,7 @@ describe Contribution::PaymentEngineHandler do
         PaymentEngines.register(engine)
       end
 
-      it { should be_false }
+      it { should eq(false) }
     end
   end
 
@@ -71,7 +71,7 @@ describe Contribution::PaymentEngineHandler do
         PaymentEngines.register(engine)
       end
 
-      it { should be_false }
+      it { should eq(false) }
     end
   end
 
