@@ -28,12 +28,12 @@
               = form.hint :permalink, class: 'fontsize-small fontcolor-secondary'
             .u-marginbottom-40
               = form.label :category, class: 'fontsize-large'
-              = form.input_field :category, as: :select, collection: Category.order(:name_pt), prompt: t('simple_form.prompts.project.category'), class: 'medium'
+              = form.association :category, as: :select, collection: Category.order(:name_pt), prompt: t('simple_form.prompts.project.category'), class: 'medium', label: '', required: false
               = form.hint :category, class: 'fontsize-small fontcolor-secondary'
       
-        .w-row
-          .w-col.w-col-6.w-col-push-3   
-            a#submit.btn.btn-large href="#" = t('.form.submit')
+          .w-row
+            .w-col.w-col-6.w-col-push-3   
+              = form.button :submit, t('.form.submit'), class:'btn btn-large'
    
       .w-col.w-col-4
         .w-hidden-small.w-hidden-tiny.card.u-radius.u-marginbottom-20
