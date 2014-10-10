@@ -8,7 +8,6 @@ describe BankAccount do
   describe "Validations" do
     it{ should validate_presence_of(:bank_id) }
     it{ should validate_presence_of(:agency) }
-    it{ should validate_presence_of(:agency_digit) }
     it{ should validate_presence_of(:account) }
     it{ should validate_presence_of(:account_digit) }
     it{ should validate_presence_of(:owner_name) }
