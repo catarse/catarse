@@ -39,7 +39,7 @@
             = t('channels.subscribed', count: channel.channels_subscribers.size)
 
 .project-about
-  .fontsize-large.u-marginbottom-30 = @project.headline.strip
+  .fontsize-large.u-marginbottom-30 = @project.headline.try(:strip)
   .no-mobile
     .fontsize-base
       = @project.about_html.html_safe
