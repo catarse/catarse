@@ -14,6 +14,11 @@ header.header
           = form_tag explore_path, :method => 'GET', :class=>'discover-form' do
             = text_field_tag :pg_search, nil, autocomplete: "off", value: params[:pg_search], class: "discover-form-input"
             = submit_tag
+            .search-pre-result
+              ul.result
+                li style='text-align: center' = image_tag('loading.gif')
+              .see-more-projects
+                = link_to 'ver todos', 'javascript:void(0);'
 
         li.header-nav-li
           = link_to t('.help'), CatarseSettings[:support_forum], target: :_blank, :class => 'header-nav-item',  id: 'guidelines_header_modal' if CatarseSettings[:support_forum].present?
