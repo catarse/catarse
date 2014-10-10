@@ -254,6 +254,7 @@ describe User do
       create(:contribution, state: 'confirmed', user: user, project: project)
       create(:contribution, state: 'confirmed', user: user, project: project)
       create(:contribution, state: 'confirmed', user: user)
+      user.reload
     end
 
     it { should == 2}
