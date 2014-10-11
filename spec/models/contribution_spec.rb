@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Contribution do
+describe Contribution, :type => :model do
   let(:user){ create(:user) }
   let(:failed_project){ create(:project, state: 'online') }
   let(:unfinished_project){ create(:project, state: 'online') }
@@ -13,19 +13,19 @@ describe Contribution do
 
 
   describe "Associations" do
-    it { should have_many(:payment_notifications) }
-    it { should belong_to(:project) }
-    it { should belong_to(:user) }
-    it { should belong_to(:reward) }
+    it { is_expected.to have_many(:payment_notifications) }
+    it { is_expected.to belong_to(:project) }
+    it { is_expected.to belong_to(:user) }
+    it { is_expected.to belong_to(:reward) }
   end
 
   describe "Validations" do
-    it{ should validate_presence_of(:project) }
-    it{ should validate_presence_of(:user) }
-    it{ should validate_presence_of(:value) }
-    it{ should_not allow_value(9.99).for(:value) }
-    it{ should allow_value(10).for(:value) }
-    it{ should allow_value(20).for(:value) }
+    it{ is_expected.to validate_presence_of(:project) }
+    it{ is_expected.to validate_presence_of(:user) }
+    it{ is_expected.to validate_presence_of(:value) }
+    it{ is_expected.not_to allow_value(9.99).for(:value) }
+    it{ is_expected.to allow_value(10).for(:value) }
+    it{ is_expected.to allow_value(20).for(:value) }
   end
 
   describe ".avaiable_to_automatic_refund" do
@@ -39,7 +39,7 @@ describe Contribution do
 
     subject { Contribution.avaiable_to_automatic_refund }
 
-    it { should have(3).itens }
+    it { is_expected.to have(3).itens }
   end
 
   describe ".confirmed_today" do
@@ -54,7 +54,7 @@ describe Contribution do
 
     subject { Contribution.confirmed_today }
 
-    it { should have(7).items }
+    it { is_expected.to have(7).items }
   end
 
   describe ".between_values" do
@@ -67,7 +67,7 @@ describe Contribution do
       create(:contribution, value: 20)
       create(:contribution, value: 21)
     end
-    it { should have(3).itens }
+    it { is_expected.to have(3).itens }
   end
 
   describe ".can_cancel" do
@@ -77,7 +77,7 @@ describe Contribution do
       before do
         create(:contribution, state: 'waiting_confirmation', created_at: 3.weekdays_ago)
       end
-      it { should have(0).item }
+      it { is_expected.to have(0).item }
     end
 
     context "when contribution is by bank transfer and is passed the confirmation time" do
@@ -85,7 +85,7 @@ describe Contribution do
         create(:contribution, state: 'waiting_confirmation', payment_choice: 'DebitoBancario', created_at: 2.weekdays_ago)
         create(:contribution, state: 'waiting_confirmation', payment_choice: 'DebitoBancario', created_at: 0.weekdays_ago)
       end
-      it { should have(1).item }
+      it { is_expected.to have(1).item }
     end
 
     context "when we have contributions that is passed the confirmation time" do
@@ -93,7 +93,7 @@ describe Contribution do
         create(:contribution, state: 'waiting_confirmation', created_at: 3.weekdays_ago)
         create(:contribution, state: 'waiting_confirmation', created_at: 6.weekdays_ago)
       end
-      it { should have(1).itens }
+      it { is_expected.to have(1).itens }
     end
   end
 
@@ -104,14 +104,14 @@ describe Contribution do
       before do
         contribution.update_attributes payment_choice: 'BoletoBancario'
       end
-      it { should eq(true)}
+      it { is_expected.to eq(true)}
     end
 
     context "when contribution is not made with Boleto" do
       before do
         contribution.update_attributes payment_choice: 'CartaoDeCredito'
       end
-      it { should eq(false)}
+      it { is_expected.to eq(false)}
     end
   end
 
@@ -124,7 +124,7 @@ describe Contribution do
         # add a project successful that should not apear as recommended
         create(:project, category: contribution.project.category, state: 'successful')
       end
-      it{ should eq [@recommended] }
+      it{ is_expected.to eq [@recommended] }
     end
 
     context "when another user has contributed the same project" do
@@ -135,7 +135,7 @@ describe Contribution do
         create(:contribution, user: @another_contribution.user, project: successful_project)
         successful_project.update_attributes state: 'successful'
       end
-      it{ should eq [@recommended] }
+      it{ is_expected.to eq [@recommended] }
     end
   end
 
@@ -151,7 +151,7 @@ describe Contribution do
       successful_project.update_attributes state: 'successful'
       failed_project.update_attributes state: 'failed'
     end
-    it{ should == [valid_refund] }
+    it{ is_expected.to eq([valid_refund]) }
   end
 
   describe "#can_refund?" do
@@ -165,22 +165,22 @@ describe Contribution do
 
     context "when project is successful" do
       let(:contribution){ sucessful_project_contribution }
-      it{ should eq(false) }
+      it{ is_expected.to eq(false) }
     end
 
     context "when project is not finished" do
       let(:contribution){ unfinished_project_contribution }
-      it{ should eq(false) }
+      it{ is_expected.to eq(false) }
     end
 
     context "when contribution is not confirmed" do
       let(:contribution){ not_confirmed_contribution }
-      it{ should eq(false) }
+      it{ is_expected.to eq(false) }
     end
 
     context "when it's a valid refund" do
       let(:contribution){ valid_refund }
-      it{ should eq(true) }
+      it{ is_expected.to eq(true) }
     end
   end
 
@@ -191,7 +191,7 @@ describe Contribution do
         create(:contribution, state: 'confirmed', user: user, project: successful_project)
         successful_project.update_attributes state: 'successful'
       end
-      it{ should == 0 }
+      it{ is_expected.to eq(0) }
     end
 
     context "when contributions are confirmed and not done with credits" do
@@ -199,7 +199,7 @@ describe Contribution do
         create(:contribution, state: 'confirmed', user: user, project: failed_project)
         failed_project.update_attributes state: 'failed'
       end
-      it{ should == 10 }
+      it{ is_expected.to eq(10) }
     end
 
     context "when contributions are done with credits" do
@@ -207,7 +207,7 @@ describe Contribution do
         create(:contribution, credits: true, state: 'confirmed', user: user, project: failed_project)
         failed_project.update_attributes state: 'failed'
       end
-      it{ should == 0 }
+      it{ is_expected.to eq(0) }
     end
 
     context "when contributions are not confirmed" do
@@ -215,7 +215,7 @@ describe Contribution do
         create(:contribution, user: user, project: failed_project, state: 'pending')
         failed_project.update_attributes state: 'failed'
       end
-      it{ should == 0 }
+      it{ is_expected.to eq(0) }
     end
   end
 end

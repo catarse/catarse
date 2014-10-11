@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Project::StateMachineHandler do
+describe Project::StateMachineHandler, :type => :model do
   let(:user){ create(:user, full_name: 'Lorem Ipsum', cpf: '99999999999', phone_number: '99999999', moip_login: 'foobar') }
 
   describe "state machine" do
@@ -9,11 +9,11 @@ describe Project::StateMachineHandler do
     describe "#send_to_analysis" do
       subject { project.in_analysis? }
       before do
-        project.should_receive(:notify_observers).with(:from_draft_to_in_analysis).and_call_original
+        expect(project).to receive(:notify_observers).with(:from_draft_to_in_analysis).and_call_original
         project.send_to_analysis
       end
 
-      it { should eq(true) }
+      it { is_expected.to eq(true) }
 
       it "should store sent_to_analysis_at" do
         expect(project.sent_to_analysis_at).to_not be_nil
@@ -23,7 +23,7 @@ describe Project::StateMachineHandler do
     describe '#draft?' do
       subject { project.draft? }
       context "when project is new" do
-        it { should eq(true) }
+        it { is_expected.to eq(true) }
       end
     end
 
@@ -43,14 +43,14 @@ describe Project::StateMachineHandler do
         project.reject
       end
       context 'when project is not accepted' do
-        it { should eq(true) }
+        it { is_expected.to eq(true) }
       end
     end
 
     describe '#reject' do
       before { project.update_attributes state: 'in_analysis' }
       subject do
-        project.should_receive(:notify_observers).with(:from_in_analysis_to_rejected)
+        expect(project).to receive(:notify_observers).with(:from_in_analysis_to_rejected)
         project.reject
         project
       end
@@ -73,7 +73,7 @@ describe Project::StateMachineHandler do
       before { project.send_to_analysis }
 
       subject do
-        project.should_receive(:notify_observers).with(:from_in_analysis_to_online)
+        expect(project).to receive(:notify_observers).with(:from_in_analysis_to_online)
         project.approve
         project
       end
@@ -96,7 +96,7 @@ describe Project::StateMachineHandler do
         project.approve
       end
       subject { project.online? }
-      it { should eq(true) }
+      it { is_expected.to eq(true) }
     end
 
     describe '#finish' do
@@ -131,8 +131,8 @@ describe Project::StateMachineHandler do
       context 'when project already hit the goal and passed the waiting_funds time' do
         before do
           main_project.update_attributes state: 'waiting_funds'
-          subject.stub(:pending_contributions_reached_the_goal?).and_return(true)
-          subject.stub(:reached_goal?).and_return(true)
+          allow(subject).to receive(:pending_contributions_reached_the_goal?).and_return(true)
+          allow(subject).to receive(:reached_goal?).and_return(true)
           subject.online_date = 2.weeks.ago
           subject.online_days = 1
           subject.online_date = Time.now - 2.days
@@ -143,8 +143,8 @@ describe Project::StateMachineHandler do
 
       context 'when project already hit the goal and still is in the waiting_funds time' do
         before do
-          subject.stub(:pending_contributions_reached_the_goal?).and_return(true)
-          subject.stub(:reached_goal?).and_return(true)
+          allow(subject).to receive(:pending_contributions_reached_the_goal?).and_return(true)
+          allow(subject).to receive(:reached_goal?).and_return(true)
           create(:contribution, project: main_project, user: user, value: 20, state: 'waiting_confirmation')
           main_project.update_attributes state: 'waiting_funds'
           subject.finish
@@ -169,7 +169,7 @@ describe Project::StateMachineHandler do
         it "should generate credits for users" do
           contribution.confirm!
           user.reload
-          user.credits.should == 20
+          expect(user.credits).to eq(20)
         end
       end
     end

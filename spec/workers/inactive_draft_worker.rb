@@ -9,7 +9,7 @@ describe InactiveDraftWorker do
 
   context "when project is in draft" do
     before do
-      Notification.should_receive(:notify_once).with(
+      expect(Notification).to receive(:notify_once).with(
         :inactive_draft,
         project.user,
         { project_id: project.id, channel_id: nil },
@@ -24,9 +24,9 @@ describe InactiveDraftWorker do
 
   context "whe contribution is not in draft" do
     before do
-      project.stub(:draft?).and_return(false)
+      allow(project).to receive(:draft?).and_return(false)
 
-      Notification.any_instance.should_not_receive(:notify_once).with(
+      expect_any_instance_of(Notification).not_to receive(:notify_once).with(
         :inactive_draft,
         project.user,
         { project_id: project.id },

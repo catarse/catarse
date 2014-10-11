@@ -5,17 +5,17 @@ describe ChannelDecorator do
 
   describe "#display_facebook" do
     subject{ channel.display_facebook }
-    it{ should eq('foobar') }
+    it{ is_expected.to eq('foobar') }
   end
 
   describe "#display_twitter" do
     subject{ channel.display_twitter }
-    it{ should eq('@foobar') }
+    it{ is_expected.to eq('@foobar') }
   end
 
   describe "#display_website" do
     subject{ channel.display_website }
-    it{ should eq('foobar.com') }
+    it{ is_expected.to eq('foobar.com') }
   end
 end
 

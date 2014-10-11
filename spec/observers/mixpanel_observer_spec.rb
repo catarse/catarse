@@ -5,13 +5,13 @@ describe MixpanelObserver do
   let(:tracker){ double('mixpanel-ruby tracker', {track: nil}) }
 
   before do
-    MixpanelObserver.any_instance.unstub(:tracker)
+    allow_any_instance_of(MixpanelObserver).to receive(:tracker).and_call_original
     MixpanelObserver.any_instance.stub(tracker: tracker)
   end
 
   describe "#from_waiting_confirmation_to_confirmed" do
     it "should send tracker a track call with the user id of the contribution" do
-      tracker.should_receive(:track).with(contribution.user.id.to_s, "Contribution confirmed", {
+      expect(tracker).to receive(:track).with(contribution.user.id.to_s, "Contribution confirmed", {
         user_id: contribution.user.id.to_s,
         created: contribution.user.created_at,
         last_login: contribution.user.last_sign_in_at,
@@ -27,7 +27,7 @@ describe MixpanelObserver do
 
   describe "#from_pending_to_confirmed" do
     it "should send tracker a track call with the user id of the contribution" do
-      tracker.should_receive(:track).with(contribution.user.id.to_s, "Contribution confirmed", {
+      expect(tracker).to receive(:track).with(contribution.user.id.to_s, "Contribution confirmed", {
         user_id: contribution.user.id.to_s,
         created: contribution.user.created_at,
         last_login: contribution.user.last_sign_in_at,

@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe UserTotal do
+describe UserTotal, :type => :model do
   skip "put some tests here"
 end
