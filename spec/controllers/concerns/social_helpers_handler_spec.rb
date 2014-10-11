@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Concerns::SocialHelpersHandler, :type => :controller do
   render_views

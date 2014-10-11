@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe SubscriberReport, :type => :model do
   let(:subscriber){ SubscriberReport.first }

@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe ProjectDownloaderWorker do
   let(:project) { create(:project, video_url: nil, goal: 3000) }

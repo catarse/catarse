@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Contribution::StateMachineHandler, :type => :model do
   describe 'state_machine' do

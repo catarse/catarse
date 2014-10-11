@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 require 'securerandom'
 
 describe 'find_secure_token' do

@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Channels::Admin::Reports::SubscriberReportsController, :type => :controller do
   subject{ response }

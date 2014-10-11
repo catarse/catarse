@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Admin::FinancialsController, :type => :controller do
   let(:admin) { create(:user, admin: true) }

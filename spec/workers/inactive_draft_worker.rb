@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe InactiveDraftWorker do
   let(:project) { create(:project, state: 'draft') }

@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe ChannelPostObserver do
   let(:channel_post) { create(:channel_post, visible: false) }

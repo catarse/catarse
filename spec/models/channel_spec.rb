@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Channel, :type => :model do
   describe "Validations & Assoaciations" do

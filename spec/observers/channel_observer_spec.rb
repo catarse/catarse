@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe ChannelObserver do
   subject { build(:channel, video_url: 'http://www.youtube.com/watch?v=YWj8ws6jc0g') }

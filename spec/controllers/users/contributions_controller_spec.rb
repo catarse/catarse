@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Users::ContributionsController, :type => :controller do
   subject{ response }

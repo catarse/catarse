@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe PendingContributionWorker do
   let(:project) { create(:project) }

@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe OauthProvider, :type => :model do
   describe "Associations" do

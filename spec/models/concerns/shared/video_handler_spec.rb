@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Shared::VideoHandler, :type => :model do
   let(:project) { create(:project) }

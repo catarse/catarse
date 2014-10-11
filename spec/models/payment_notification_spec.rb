@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe PaymentNotification, :type => :model do
   describe "Associations" do

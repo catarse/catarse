@@ -1,5 +1,5 @@
 # coding: utf-8
-require 'spec_helper'
+require 'rails_helper'
 
 describe Project, :type => :model do
   let(:project){ build(:project, goal: 3000) }

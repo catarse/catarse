@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Project::CustomValidators, :type => :model do
   describe '#permalink_on_routes?' do
