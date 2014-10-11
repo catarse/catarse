@@ -126,7 +126,7 @@ group :development do
 end
 
 group :test, :development do
-  gem 'rspec-rails', '~> 2.14'
+  gem 'rspec-rails', '~> 3.1'
   gem 'rspec-its'
   gem 'rspec-collection_matchers'
   gem 'pry'
@@ -140,7 +140,7 @@ group :test do
   gem 'database_cleaner'
   gem 'shoulda'
   gem 'factory_girl_rails'
-  gem 'capybara',   '~> 2.1.0'
+  gem 'capybara',   '~> 2.2.0'
   gem 'coveralls', require: false
   gem 'selenium-webdriver'
 end
