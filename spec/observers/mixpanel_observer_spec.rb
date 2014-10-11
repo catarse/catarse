@@ -6,7 +6,7 @@ describe MixpanelObserver do
 
   before do
     allow_any_instance_of(MixpanelObserver).to receive(:tracker).and_call_original
-    MixpanelObserver.any_instance.stub(tracker: tracker)
+    allow_any_instance_of(MixpanelObserver).to receive_messages(tracker: tracker)
   end
 
   describe "#from_waiting_confirmation_to_confirmed" do
