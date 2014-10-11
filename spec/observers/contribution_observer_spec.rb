@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe ContributionObserver do
+RSpec.describe ContributionObserver do
   let(:contribution){ create(:contribution, key: 'should be updated', payment_method: 'should be updated', state: 'confirmed', confirmed_at: nil) }
   subject{ contribution }
 

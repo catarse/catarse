@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe UnsubscribesController, :type => :controller do
+RSpec.describe UnsubscribesController, :type => :controller do
   subject{ response }
 
   describe "POST create" do

@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe Reward, :type => :model do
+RSpec.describe Reward, :type => :model do
   let(:reward){ create(:reward, description: 'envie um email para foo@bar.com') }
 
   describe "Log modifications" do

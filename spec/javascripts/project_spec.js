@@ -1,4 +1,4 @@
-describe("Project", function() {
+RSpec.describe("Project", function() {
   var view;
   var parentView = { router: {route: function(){} } };
 

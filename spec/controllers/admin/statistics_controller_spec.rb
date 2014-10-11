@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Admin::StatisticsController, :type => :controller do
+RSpec.describe Admin::StatisticsController, :type => :controller do
   subject{ response }
   let(:admin) { create(:user, admin: true) }
   before do

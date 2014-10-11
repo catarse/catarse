@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe ProjectObserver do
+RSpec.describe ProjectObserver do
   let(:contribution){ create(:contribution, key: 'should be updated', payment_method: 'should be updated', state: 'confirmed', confirmed_at: nil) }
   let(:project) { create(:project, goal: 3000) }
   let(:channel) { create(:channel) }

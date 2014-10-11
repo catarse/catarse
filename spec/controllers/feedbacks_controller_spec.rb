@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe FeedbacksController, :type => :controller do
+RSpec.describe FeedbacksController, :type => :controller do
   subject{ response }
 
   let(:delivery){ ActionMailer::Base.deliveries.last }

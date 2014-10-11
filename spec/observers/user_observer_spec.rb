@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe UserObserver do
+RSpec.describe UserObserver do
 
   describe "after_create" do
     before do

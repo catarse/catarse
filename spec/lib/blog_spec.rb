@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe Blog do
+RSpec.describe Blog do
   describe ".fetch_last_posts" do
     it "should fetch last posts from the blog url in configuration" do
       CatarseSettings[:blog_url] = 'test'

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe ContributionDecorator do
+RSpec.describe ContributionDecorator do
   before do
     I18n.locale = :pt
   end

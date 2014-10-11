@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe ImageUploader do
+RSpec.describe ImageUploader do
   include CarrierWave::Test::Matchers
   let(:project){ FactoryGirl.create(:project) }
 

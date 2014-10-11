@@ -1,6 +1,6 @@
-require "spec_helper"
+require 'rails_helper'
 
-describe UserPolicy do
+RSpec.describe UserPolicy do
   subject { UserPolicy }
 
   let(:user){ create(:user) }

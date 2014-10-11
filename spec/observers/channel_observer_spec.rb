@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe ChannelObserver do
+RSpec.describe ChannelObserver do
   subject { build(:channel, video_url: 'http://www.youtube.com/watch?v=YWj8ws6jc0g') }
 
   describe '.after_save' do

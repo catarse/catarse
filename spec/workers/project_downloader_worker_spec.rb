@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe ProjectDownloaderWorker do
+RSpec.describe ProjectDownloaderWorker do
   let(:project) { create(:project, video_url: nil, goal: 3000) }
   let(:perform_project) { ProjectDownloaderWorker.perform_async(project.id) }
 

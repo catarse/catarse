@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Contribution::CustomValidators, :type => :model do
+RSpec.describe Contribution::CustomValidators, :type => :model do
   let(:unfinished_project){ create(:project, state: 'online') }
 
   describe "#reward_must_be_from_project" do

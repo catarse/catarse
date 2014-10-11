@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Contribution::PaymentEngineHandler, :type => :model do
+RSpec.describe Contribution::PaymentEngineHandler, :type => :model do
   let(:contribution){ create(:contribution, payment_method: 'MoIP') }
   let(:moip_engine) { double }
 

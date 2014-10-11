@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Project::VideoHandler, :type => :model do
+RSpec.describe Project::VideoHandler, :type => :model do
   let(:project) { create(:project) }
 
   describe "#download_video_thumbnail" do

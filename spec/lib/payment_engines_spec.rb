@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe PaymentEngines do
+RSpec.describe PaymentEngines do
   let(:contribution){ FactoryGirl.create(:contribution) }
   let(:paypal_engine) { double }
   let(:moip_engine) { double }

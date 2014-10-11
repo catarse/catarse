@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe ChannelDecorator do
+RSpec.describe ChannelDecorator do
   let(:channel){ build(:channel, facebook: 'http://www.facebook.com/foobar', twitter: 'http://twitter.com/foobar', website: 'http://foobar.com') }
 
   describe "#display_facebook" do

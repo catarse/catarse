@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Statistics, :type => :model do
+RSpec.describe Statistics, :type => :model do
   before do
     create(:project, state: 'successful')
     create(:project, state: 'draft')

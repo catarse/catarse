@@ -1,6 +1,6 @@
-require "spec_helper"
+require 'rails_helper'
 
-describe AdminPolicy do
+RSpec.describe AdminPolicy do
   let(:user) { nil }
   let(:channel) { nil }
 

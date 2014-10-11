@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe PostPreviewController, :type => :controller do
+RSpec.describe PostPreviewController, :type => :controller do
   subject{ response }
 
   describe "GET show" do

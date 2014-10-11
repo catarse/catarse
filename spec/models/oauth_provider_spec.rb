@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe OauthProvider, :type => :model do
+RSpec.describe OauthProvider, :type => :model do
   describe "Associations" do
     it{ is_expected.to have_many :authorizations }
   end

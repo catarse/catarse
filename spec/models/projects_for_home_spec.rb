@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe ProjectsForHome, :type => :model do
+RSpec.describe ProjectsForHome, :type => :model do
   describe "association" do
     it{ is_expected.to have_one :project_total } 
   end

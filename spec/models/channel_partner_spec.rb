@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe ChannelPartner, :type => :model do
+RSpec.describe ChannelPartner, :type => :model do
   describe "associations" do
     it{ is_expected.to belong_to :channel }
   end

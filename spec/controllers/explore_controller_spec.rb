@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe ExploreController, :type => :controller do
+RSpec.describe ExploreController, :type => :controller do
   subject{ response }
   before do
     allow(controller).to receive(:current_user).and_return(user)

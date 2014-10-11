@@ -1,6 +1,6 @@
-require "spec_helper"
+require 'rails_helper'
 
-describe ChannelPolicy do
+RSpec.describe ChannelPolicy do
   subject{ ChannelPolicy }
 
   let(:channel){ create(:channel) }

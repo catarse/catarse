@@ -1,7 +1,7 @@
 #encoding:utf-8
 require 'rails_helper'
 
-describe UsersController, :type => :controller do
+RSpec.describe UsersController, :type => :controller do
   render_views
   subject{ response }
   before do

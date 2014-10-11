@@ -1,6 +1,6 @@
-require "spec_helper"
+require 'rails_helper'
 
-describe ChannelsSubscriberPolicy do
+RSpec.describe ChannelsSubscriberPolicy do
   subject{ ChannelsSubscriberPolicy }
 
   let(:subscription){ create(:channels_subscriber) }
