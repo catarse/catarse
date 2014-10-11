@@ -106,7 +106,7 @@ RSpec.configure do |config|
     UserNotifier.from_name        = CatarseSettings[:company_name]
 
     allow_any_instance_of(Contribution).to receive(:payment_engine).and_return(PaymentEngines::Interface.new)
-    MixpanelObserver.any_instance.stub(tracker: double('mixpanel tracker', track: nil))
+    allow_any_instance_of(MixpanelObserver).to receive_messages(tracker: double('mixpanel tracker', track: nil))
   end
 end
 
@@ -115,11 +115,11 @@ RSpec::Matchers.define :custom_permit do |action|
     policy.public_send("#{action}")
   end
 
-  failure_message_for_should do |policy|
+  failure_message do |policy|
     "#{policy.class} does not permit #{action} on #{policy.record} for #{policy.user.inspect}."
   end
 
-  failure_message_for_should_not do |policy|
+  failure_message_when_negated do |policy|
     "#{policy.class} does not forbid #{action} on #{policy.record} for #{policy.user.inspect}."
   end
 end
