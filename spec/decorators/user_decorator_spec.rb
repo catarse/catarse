@@ -42,7 +42,7 @@ describe UserDecorator do
     context "when we have an uploaded image" do
       let(:user){ build(:user, uploaded_image: 'image.png' )}
       before do
-        image = stub(url: 'image.png')
+        image = double(url: 'image.png')
         image.stub(:thumb_avatar).and_return(image)
         user.stub(:uploaded_image).and_return(image)
       end
