@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe RewardDecorator do
+RSpec.describe RewardDecorator do
   include ActionView::Helpers::NumberHelper
 
   let(:reward){ create(:reward, description: 'envie um email para foo@bar.com') }

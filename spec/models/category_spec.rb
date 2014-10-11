@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Category, :type => :model do
+RSpec.describe Category, :type => :model do
   describe "Associations" do
     before do
       FactoryGirl.create :category

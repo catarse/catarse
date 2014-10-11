@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Channels::ChannelsSubscribersController, :type => :controller do
+RSpec.describe Channels::ChannelsSubscribersController, :type => :controller do
   subject{ response }
   let(:channel_subscriber){ nil }
   let(:channel){ FactoryGirl.create(:channel) }

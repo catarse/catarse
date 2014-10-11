@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Contribution::StateMachineHandler, :type => :model do
+RSpec.describe Contribution::StateMachineHandler, :type => :model do
   describe 'state_machine' do
     let(:contribution) { create(:contribution, state: initial_state) }
     let(:initial_state){ 'pending' }

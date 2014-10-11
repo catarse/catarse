@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe UserUploader do
+RSpec.describe UserUploader do
   include CarrierWave::Test::Matchers
   let(:user){ FactoryGirl.create(:user) }
 

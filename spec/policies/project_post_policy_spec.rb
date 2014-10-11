@@ -1,6 +1,6 @@
-require "spec_helper"
+require 'rails_helper'
 
-describe ProjectPostPolicy do
+RSpec.describe ProjectPostPolicy do
   subject { ProjectPostPolicy }
 
   shared_examples_for "create permissions" do

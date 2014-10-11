@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe "Users", :type => :feature do
+RSpec.describe "Users", :type => :feature do
   before do
     OauthProvider.create! name: 'facebook', key: 'dummy_key', secret: 'dummy_secret'
   end

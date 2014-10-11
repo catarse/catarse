@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Contribution, :type => :model do
+RSpec.describe Contribution, :type => :model do
   let(:user){ create(:user) }
   let(:failed_project){ create(:project, state: 'online') }
   let(:unfinished_project){ create(:project, state: 'online') }

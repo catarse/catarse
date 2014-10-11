@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe ProjectPostObserver do
+RSpec.describe ProjectPostObserver do
   describe 'after_create' do
     context "notify contributions" do
       let(:project_post) { build(:project_post) }

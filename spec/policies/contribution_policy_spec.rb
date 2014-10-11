@@ -1,6 +1,6 @@
-require "spec_helper"
+require 'rails_helper'
 
-describe ContributionPolicy do
+RSpec.describe ContributionPolicy do
   subject{ ContributionPolicy }
 
   let(:project){ create(:project) }

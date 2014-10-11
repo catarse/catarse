@@ -1,7 +1,7 @@
 # coding: utf-8
 require 'rails_helper'
 
-describe Project, :type => :model do
+RSpec.describe Project, :type => :model do
   let(:project){ build(:project, goal: 3000) }
   let(:user){ create(:user) }
   let(:channel){ create(:channel, users: [ user ]) }

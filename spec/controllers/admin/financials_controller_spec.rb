@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Admin::FinancialsController, :type => :controller do
+RSpec.describe Admin::FinancialsController, :type => :controller do
   let(:admin) { create(:user, admin: true) }
 
   before do

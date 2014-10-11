@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Admin::UsersController, :type => :controller do
+RSpec.describe Admin::UsersController, :type => :controller do
   subject{ response }
   let(:admin) { create(:user, admin: true) }
   let(:current_user){ admin }

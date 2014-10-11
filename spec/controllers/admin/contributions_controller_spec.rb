@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Admin::ContributionsController, :type => :controller do
+RSpec.describe Admin::ContributionsController, :type => :controller do
   subject{ response }
   let(:admin) { create(:user, admin: true) }
   let(:unconfirmed_contribution) { create(:contribution) }

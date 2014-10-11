@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe ProjectDecorator do
+RSpec.describe ProjectDecorator do
   let(:project){ create(:project, about: 'Foo Bar http://www.foo.bar <javascript>xss()</javascript>"Click here":http://click.here') }
 
   describe "#state_warning_template" do

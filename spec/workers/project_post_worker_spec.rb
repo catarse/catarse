@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe ProjectPostWorker do
+RSpec.describe ProjectPostWorker do
   let(:perform_post) { ProjectPostWorker.perform_async(@post.id) }
 
   before do

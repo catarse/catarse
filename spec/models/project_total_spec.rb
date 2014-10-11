@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe ProjectTotal, :type => :model do
+RSpec.describe ProjectTotal, :type => :model do
   before do
     @project_id = create(:contribution, value: 10.0, payment_service_fee: 1, state: 'pending').project_id
     create(:contribution, value: 10.0, payment_service_fee: 1, state: 'confirmed', project_id: @project_id)

@@ -1,6 +1,6 @@
-require "spec_helper"
+require 'rails_helper'
 
-describe ChannelOwnerPolicy do
+RSpec.describe ChannelOwnerPolicy do
   let(:user) { nil }
   let(:channel) { nil }
 

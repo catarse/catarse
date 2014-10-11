@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe ProjectSchedulerWorker do
+RSpec.describe ProjectSchedulerWorker do
   let(:project) { build(:project, state: 'in_analysis', online_date: 10.days.from_now) }
 
   before do

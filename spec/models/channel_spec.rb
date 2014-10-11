@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Channel, :type => :model do
+RSpec.describe Channel, :type => :model do
   describe "Validations & Assoaciations" do
 
     [:name, :description, :permalink].each do |attribute|

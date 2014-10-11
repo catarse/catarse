@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Authorization, :type => :model do
+RSpec.describe Authorization, :type => :model do
     let(:oauth_data){
     Hashie::Mash.new({
       credentials: {

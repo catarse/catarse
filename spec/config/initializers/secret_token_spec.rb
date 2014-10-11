@@ -1,7 +1,7 @@
 require 'rails_helper'
 require 'securerandom'
 
-describe 'find_secure_token' do
+RSpec.describe 'find_secure_token' do
   subject{ find_secure_token }
 
   it "should have been configured in initializer" do
@@ -18,7 +18,7 @@ describe 'find_secure_token' do
 
 end
 
-describe 'find_secure_key_base' do
+RSpec.describe 'find_secure_key_base' do
   subject{ find_secure_key_base }
 
   it "should have been configured in initializer" do

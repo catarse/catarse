@@ -1,4 +1,4 @@
-describe("ProjectComments", function() {
+RSpec.describe("ProjectComments", function() {
   var view, FB;
   var parentView = { on: function() {} };
 

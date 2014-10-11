@@ -1,6 +1,6 @@
-require "spec_helper"
+require 'rails_helper'
 
-describe RewardPolicy do
+RSpec.describe RewardPolicy do
   subject{ RewardPolicy }
 
   let(:policy){ RewardPolicy.new(user, reward) }

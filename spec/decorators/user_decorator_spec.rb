@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe UserDecorator do
+RSpec.describe UserDecorator do
   before(:all) do
     I18n.locale = :pt
   end

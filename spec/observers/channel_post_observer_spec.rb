@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe ChannelPostObserver do
+RSpec.describe ChannelPostObserver do
   let(:channel_post) { create(:channel_post, visible: false) }
   let(:user) { create(:user) }
 
