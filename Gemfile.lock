@@ -555,6 +555,7 @@ DEPENDENCIES
   ranked-model
   rmagick
   routing-filter (~> 0.4.0.pre)
+  rspec-collection_matchers
   rspec-its
   rspec-rails (~> 2.14)
   sass-rails (~> 4.0.0)

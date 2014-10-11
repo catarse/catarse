@@ -128,6 +128,7 @@ end
 group :test, :development do
   gem 'rspec-rails', '~> 2.14'
   gem 'rspec-its'
+  gem 'rspec-collection_matchers'
   gem 'pry'
   gem 'jasmine-rails'
 end
