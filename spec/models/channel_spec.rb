@@ -1,11 +1,11 @@
 require 'spec_helper'
 
-describe Channel do
+describe Channel, :type => :model do
   describe "Validations & Assoaciations" do
 
     [:name, :description, :permalink].each do |attribute|
-      it { should validate_presence_of      attribute }
-      it { should allow_mass_assignment_of  attribute }
+      it { is_expected.to validate_presence_of      attribute }
+      it { is_expected.to allow_mass_assignment_of  attribute }
     end
 
     it "validates uniqueness of permalink" do
@@ -13,15 +13,15 @@ describe Channel do
       # Because permalink is also being validated on Database with not
       # NULL constraint
       create(:channel)
-      should validate_uniqueness_of :permalink
+      is_expected.to validate_uniqueness_of :permalink
     end
 
 
-    it { should have_many :subscriber_reports }
-    it { should have_many :channels_subscribers }
-    it { should have_many :users }
-    it { should have_and_belong_to_many :projects }
-    it { should have_and_belong_to_many :subscribers }
+    it { is_expected.to have_many :subscriber_reports }
+    it { is_expected.to have_many :channels_subscribers }
+    it { is_expected.to have_many :users }
+    it { is_expected.to have_and_belong_to_many :projects }
+    it { is_expected.to have_and_belong_to_many :subscribers }
   end
 
   describe ".by_permalink" do
@@ -32,7 +32,7 @@ describe Channel do
 
     subject { Channel.by_permalink('foo') }
 
-    it { should == [@c1] }
+    it { is_expected.to eq([@c1]) }
   end
 
   describe '.find_by_permalink!' do
@@ -43,7 +43,7 @@ describe Channel do
 
     subject { Channel.find_by_permalink!('foo') }
 
-    it { should == @c1 }
+    it { is_expected.to eq(@c1) }
   end
 
 
@@ -62,7 +62,7 @@ describe Channel do
 
     context "when user is nil" do
       let(:user) { nil }
-      it{ should eq(nil) }
+      it{ is_expected.to eq(nil) }
     end
 
     context "when user is a channel subscriber" do
@@ -70,11 +70,11 @@ describe Channel do
         channel.subscribers = [user]
         channel.save!
       end
-      it{ should eq(true) }
+      it{ is_expected.to eq(true) }
     end
 
     context "when user is not a channel subscriber" do
-      it{ should eq(false) }
+      it{ is_expected.to eq(false) }
     end
   end
 
@@ -87,7 +87,7 @@ describe Channel do
       curator
       create(:user, channel: channel)
     end
-    it{ should == curator }
+    it{ is_expected.to eq(curator) }
   end
 
   describe "#projects" do

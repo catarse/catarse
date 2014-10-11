@@ -6,7 +6,7 @@ describe ProjectSchedulerWorker do
   before do
     Sidekiq::Testing.inline!
 
-    Project.any_instance.should_receive(:approve)
+    expect_any_instance_of(Project).to receive(:approve)
   end
 
   it("should satisfy expectations") { project.save }

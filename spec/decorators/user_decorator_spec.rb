@@ -10,22 +10,22 @@ describe UserDecorator do
 
     context "when we only have a full name" do
       let(:user){ create(:user, name: nil, full_name: "Full Name") }
-      it{ should == 'Full Name' }
+      it{ is_expected.to eq('Full Name') }
     end
 
     context "when we have only a name" do
       let(:user){ create(:user, name: nil, name: 'name') }
-      it{ should == 'name' }
+      it{ is_expected.to eq('name') }
     end
 
     context "when we have a name and a full name" do
       let(:user){ create(:user, name: 'name', full_name: 'full name') }
-      it{ should == 'name' }
+      it{ is_expected.to eq('name') }
     end
 
     context "when we have no name" do
       let(:user){ create(:user, name: nil) }
-      it{ should == I18n.t('user.no_name') }
+      it{ is_expected.to eq(I18n.t('user.no_name')) }
     end
   end
 
@@ -33,7 +33,7 @@ describe UserDecorator do
     let(:user){ build(:user, image_url: 'http://image.jpg', uploaded_image: nil )}
     let(:options){ {width: 300, height: 300} }
     subject{ user.display_image_html(options) }
-    it{ should == "<div class=\"avatar_wrapper\" style=\"width: #{options[:width]}px; height: #{options[:height]}px\"><img alt=\"User\" src=\"#{user.display_image}\" style=\"width: #{options[:width]}px; height: auto\" /></div>" }
+    it{ is_expected.to eq("<div class=\"avatar_wrapper\" style=\"width: #{options[:width]}px; height: #{options[:height]}px\"><img alt=\"User\" src=\"#{user.display_image}\" style=\"width: #{options[:width]}px; height: auto\" /></div>") }
   end
 
   describe "#display_image" do
@@ -43,20 +43,20 @@ describe UserDecorator do
       let(:user){ build(:user, uploaded_image: 'image.png' )}
       before do
         image = double(url: 'image.png')
-        image.stub(:thumb_avatar).and_return(image)
-        user.stub(:uploaded_image).and_return(image)
+        allow(image).to receive(:thumb_avatar).and_return(image)
+        allow(user).to receive(:uploaded_image).and_return(image)
       end
-      it{ should == 'image.png' }
+      it{ is_expected.to eq('image.png') }
     end
 
     context "when we have an image url" do
       let(:user){ build(:user, image_url: 'image.png') }
-      it{ should == 'image.png' }
+      it{ is_expected.to eq('image.png') }
     end
 
     context "when we have an email" do
       let(:user){ create(:user, image_url: nil, email: 'diogob@gmail.com') }
-      it{ should == "https://gravatar.com/avatar/5e2a237dafbc45f79428fdda9c5024b1.jpg?default=#{CatarseSettings[:base_url]}/assets/user.png" }
+      it{ is_expected.to eq("https://gravatar.com/avatar/5e2a237dafbc45f79428fdda9c5024b1.jpg?default=#{CatarseSettings[:base_url]}/assets/user.png") }
     end
   end
 

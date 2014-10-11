@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Users::ContributionsController do
+describe Users::ContributionsController, :type => :controller do
   subject{ response }
   let(:user){ create(:user, password: 'current_password', password_confirmation: 'current_password', authorizations: [create(:authorization, uid: 666, oauth_provider: create(:oauth_provider, name: 'facebook'))]) }
   let(:successful_project){ create(:project, state: 'online') }
@@ -13,7 +13,7 @@ describe Users::ContributionsController do
   let(:format){ 'json' }
   before do
     CatarseSettings[:base_url] = 'http://catarse.me'
-    controller.stub(:current_user).and_return(current_user)
+    allow(controller).to receive(:current_user).and_return(current_user)
     successful_contribution
     failed_contribution
     unconfirmed_contribution
@@ -32,7 +32,7 @@ describe Users::ContributionsController do
 
   describe "POST request_refund" do
     before do
-      ContributionObserver.any_instance.stub(:notify_backoffice)
+      allow_any_instance_of(ContributionObserver).to receive(:notify_backoffice)
     end
 
     context "without user" do
@@ -41,9 +41,9 @@ describe Users::ContributionsController do
 
       it "should not set requested_refund" do
         failed_contribution.reload
-        failed_contribution.requested_refund?.should eq(false)
+        expect(failed_contribution.requested_refund?).to eq(false)
       end
-      it{ should redirect_to new_user_registration_path }
+      it{ is_expected.to redirect_to new_user_registration_path }
     end
 
     context "when current_user have a confirmed contribution" do
@@ -52,10 +52,10 @@ describe Users::ContributionsController do
 
       it do
         failed_contribution.reload
-        failed_contribution.requested_refund?.should eq(true)
+        expect(failed_contribution.requested_refund?).to eq(true)
       end
 
-      it { should redirect_to user_path(current_user, anchor: 'credits') }
+      it { is_expected.to redirect_to user_path(current_user, anchor: 'credits') }
     end
 
     context "when current_user have a unconfirmed contribution" do
@@ -64,10 +64,10 @@ describe Users::ContributionsController do
 
       it do
         unconfirmed_contribution.reload
-        unconfirmed_contribution.requested_refund?.should eq(false)
+        expect(unconfirmed_contribution.requested_refund?).to eq(false)
       end
 
-      it { should redirect_to user_path(current_user, anchor: 'credits') }
+      it { is_expected.to redirect_to user_path(current_user, anchor: 'credits') }
     end
 
     context "when current_user is not owner of the contribution" do
@@ -77,10 +77,10 @@ describe Users::ContributionsController do
 
       it do
         other_contribution.reload
-        other_contribution.requested_refund?.should eq(false)
+        expect(other_contribution.requested_refund?).to eq(false)
       end
 
-      it { should redirect_to root_path }
+      it { is_expected.to redirect_to root_path }
     end
   end
 end

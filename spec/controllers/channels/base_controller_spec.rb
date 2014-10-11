@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe Channels::BaseController do
+describe Channels::BaseController, :type => :controller do
 
 end

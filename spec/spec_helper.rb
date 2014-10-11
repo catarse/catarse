@@ -75,23 +75,23 @@ RSpec.configure do |config|
   [:controller, :feature].each do |spec_type|
     config.before(:each, type: spec_type) do
       [:detect_old_browsers, :render_facebook_sdk, :render_facebook_like, :render_twitter].each do |method|
-        ApplicationController.any_instance.stub(method)
+        allow_any_instance_of(ApplicationController).to receive(method)
       end
     end
   end
 
   # Stubs and configuration
   config.before(:each) do
-    Sidekiq::ScheduledSet.stub(:new).and_return({})
-    User.any_instance.stub(:subscribe_to_newsletter_list).and_return(true)
-    User.any_instance.stub(:unsubscribe_to_newsletter_list).and_return(true)
-    Project.any_instance.stub(:subscribe_to_list).and_return(true)
-    Project.any_instance.stub(:store_image_url).and_return('http://www.store_image_url.com')
-    ProjectObserver.any_instance.stub(:after_create)
-    UserObserver.any_instance.stub(:after_create)
-    Project.any_instance.stub(:download_video_thumbnail)
-    Calendar.any_instance.stub(:fetch_events_from)
-    Blog.stub(:fetch_last_posts).and_return([])
+    allow(Sidekiq::ScheduledSet).to receive(:new).and_return({})
+    allow_any_instance_of(User).to receive(:subscribe_to_newsletter_list).and_return(true)
+    allow_any_instance_of(User).to receive(:unsubscribe_to_newsletter_list).and_return(true)
+    allow_any_instance_of(Project).to receive(:subscribe_to_list).and_return(true)
+    allow_any_instance_of(Project).to receive(:store_image_url).and_return('http://www.store_image_url.com')
+    allow_any_instance_of(ProjectObserver).to receive(:after_create)
+    allow_any_instance_of(UserObserver).to receive(:after_create)
+    allow_any_instance_of(Project).to receive(:download_video_thumbnail)
+    allow_any_instance_of(Calendar).to receive(:fetch_events_from)
+    allow(Blog).to receive(:fetch_last_posts).and_return([])
 
     # Default configurations
     CatarseSettings[:base_domain] = 'localhost'
@@ -105,7 +105,7 @@ RSpec.configure do |config|
     UserNotifier.from_email       = CatarseSettings[:email_contact]
     UserNotifier.from_name        = CatarseSettings[:company_name]
 
-    Contribution.any_instance.stub(:payment_engine).and_return(PaymentEngines::Interface.new)
+    allow_any_instance_of(Contribution).to receive(:payment_engine).and_return(PaymentEngines::Interface.new)
     MixpanelObserver.any_instance.stub(tracker: double('mixpanel tracker', track: nil))
   end
 end
