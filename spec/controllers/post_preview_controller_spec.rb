@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe PostPreviewController, :type => :controller do
   subject{ response }

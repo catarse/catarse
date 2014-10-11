@@ -1,6 +1,6 @@
 # coding: utf-8
 
-require 'spec_helper'
+require 'rails_helper'
 
 describe Reward, :type => :model do
   let(:reward){ create(:reward, description: 'envie um email para foo@bar.com') }

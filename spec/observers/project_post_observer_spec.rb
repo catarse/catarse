@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe ProjectPostObserver do
   describe 'after_create' do

@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Contribution, :type => :model do
   let(:user){ create(:user) }

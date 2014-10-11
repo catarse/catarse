@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Contribution::CustomValidators, :type => :model do
   let(:unfinished_project){ create(:project, state: 'online') }

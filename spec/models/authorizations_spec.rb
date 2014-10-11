@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Authorization, :type => :model do
     let(:oauth_data){

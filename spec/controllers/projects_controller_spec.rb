@@ -1,5 +1,5 @@
 #encoding:utf-8
-require 'spec_helper'
+require 'rails_helper'
 
 describe ProjectsController, :type => :controller do
   before{ allow(controller).to receive(:current_user).and_return(current_user) }

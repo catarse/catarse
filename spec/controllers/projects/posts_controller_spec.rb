@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Projects::PostsController, :type => :controller do
   let(:project_post){ FactoryGirl.create(:project_post) }

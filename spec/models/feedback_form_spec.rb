@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe FeedbackForm, :type => :model do
   let(:form){ FeedbackForm.new email: 'diogo@biazus.me', message: 'test' }

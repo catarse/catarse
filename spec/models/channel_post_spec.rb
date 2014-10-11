@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe ChannelPost, :type => :model do
   describe "validations" do

@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe ProjectPostWorker do
   let(:perform_post) { ProjectPostWorker.perform_async(@post.id) }

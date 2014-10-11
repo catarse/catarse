@@ -1,6 +1,6 @@
 # coding: utf-8
 
-require 'spec_helper'
+require 'rails_helper'
 
 describe "Projects", :type => :feature do
   let(:project){ build(:project) }

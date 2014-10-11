@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe ImageUploader do
   include CarrierWave::Test::Matchers
