@@ -35,26 +35,26 @@ RSpec.describe Contribution, :type => :model do
         let(:contribution) { build(:contribution, user: user) }
 
         before do
-          user.stub(:credits).and_return(5)
+          allow(user).to receive(:credits).and_return(5)
           contribution.value = 5
           contribution.save
         end
 
-        it { contribution.valid?.should be_true }
-        it { contribution.errors.should be_empty }
+        it { expect(contribution.valid?).to be_truthy }
+        it { expect(contribution.errors).to be_empty }
       end
 
       context "when user not have credits" do
         let(:contribution) { build(:contribution, user: user) }
 
         before do
-          user.stub(:credits).and_return(0)
+          allow(user).to receive(:credits).and_return(0)
           contribution.value = 5
           contribution.save
         end
 
-        it { contribution.valid?.should be_false }
-        it { contribution.errors.should_not be_empty }
+        it { expect(contribution.valid?).to be_falsey }
+        it { expect(contribution.errors).not_to be_empty }
       end
     end
   end
