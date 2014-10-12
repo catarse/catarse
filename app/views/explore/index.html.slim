@@ -45,6 +45,9 @@
               - @categories.each_with_index do |category, index|
                 li
                   a.explore-link[href="#by_category_id/#{category.id}"]
-                    = category
+                    .bootstrap-twitter
+                      = category
+                      ' 
+                      span.label= category.total_online_projects
 
     .clearfix

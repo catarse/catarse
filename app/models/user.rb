@@ -31,6 +31,7 @@ class User < ActiveRecord::Base
   validates_length_of :password, within: Devise.password_length, allow_blank: true
 
   belongs_to :channel
+  belongs_to :country
   has_one :user_total
   has_one :bank_account
   has_many :credit_cards
@@ -128,6 +129,17 @@ class User < ActiveRecord::Base
 
   def credits
     user_total.try(:credits).to_f
+  end
+
+  def projects_in_reminder
+    p = Array.new
+    reminder_jobs = Sidekiq::ScheduledSet.new.select do |job|
+      job['class'] == 'ReminderProjectWorker' && job.args[0] == self.id
+    end
+    reminder_jobs.each do |job|
+      p << Project.find(job.args[1])
+    end
+    return p
   end
 
   def total_contributed_projects

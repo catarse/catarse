@@ -573,4 +573,40 @@ RSpec.describe Project, :type => :model do
       it{ is_expected.to eq(:foo_channel) }
     end
   end
+
+  describe ".enabled_to_use_pagarme" do
+    before do
+      @project_01 = create(:project, permalink: 'a')
+      @project_02 = create(:project, permalink: 'b')
+      @project_03 = create(:project, permalink: 'c')
+
+      CatarseSettings[:projects_enabled_to_use_pagarme] = 'a, c'
+    end
+
+    subject { Project.enabled_to_use_pagarme }
+
+    it { should == [@project_01, @project_03]}
+  end
+
+  describe "#using_pagarme?" do
+    let(:project) { create(:project, permalink: 'foo') }
+
+    subject { project.using_pagarme? }
+
+    context "when project is using pagarme" do
+      before do
+        CatarseSettings[:projects_enabled_to_use_pagarme] = 'foo'
+      end
+
+      it { should be_true }
+    end
+
+    context "when project is not using pagarme" do
+      before do
+        CatarseSettings[:projects_enabled_to_use_pagarme] = nil
+      end
+
+      it { should be_false }
+    end
+  end
 end

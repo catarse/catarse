@@ -8,7 +8,6 @@ RSpec.describe BankAccount, :type => :model do
   describe "Validations" do
     it{ is_expected.to validate_presence_of(:bank_id) }
     it{ is_expected.to validate_presence_of(:agency) }
-    it{ is_expected.to validate_presence_of(:agency_digit) }
     it{ is_expected.to validate_presence_of(:account) }
     it{ is_expected.to validate_presence_of(:account_digit) }
     it{ is_expected.to validate_presence_of(:owner_name) }

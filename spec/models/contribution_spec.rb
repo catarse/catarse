@@ -17,15 +17,46 @@ RSpec.describe Contribution, :type => :model do
     it { is_expected.to belong_to(:project) }
     it { is_expected.to belong_to(:user) }
     it { is_expected.to belong_to(:reward) }
+    it { is_expected.to belong_to(:country) }
   end
 
   describe "Validations" do
     it{ is_expected.to validate_presence_of(:project) }
     it{ is_expected.to validate_presence_of(:user) }
     it{ is_expected.to validate_presence_of(:value) }
-    it{ is_expected.not_to allow_value(9.99).for(:value) }
     it{ is_expected.to allow_value(10).for(:value) }
     it{ is_expected.to allow_value(20).for(:value) }
+  end
+
+  describe "Custom validations" do
+    let(:user) { create(:user) }
+    describe "validates_numericality_of :value" do
+      context "when user has credits" do
+        let(:contribution) { build(:contribution, user: user) }
+
+        before do
+          user.stub(:credits).and_return(5)
+          contribution.value = 5
+          contribution.save
+        end
+
+        it { contribution.valid?.should be_true }
+        it { contribution.errors.should be_empty }
+      end
+
+      context "when user not have credits" do
+        let(:contribution) { build(:contribution, user: user) }
+
+        before do
+          user.stub(:credits).and_return(0)
+          contribution.value = 5
+          contribution.save
+        end
+
+        it { contribution.valid?.should be_false }
+        it { contribution.errors.should_not be_empty }
+      end
+    end
   end
 
   describe ".avaiable_to_automatic_refund" do
@@ -198,6 +229,7 @@ RSpec.describe Contribution, :type => :model do
       before do
         create(:contribution, state: 'confirmed', user: user, project: failed_project)
         failed_project.update_attributes state: 'failed'
+        user.reload
       end
       it{ is_expected.to eq(10) }
     end
