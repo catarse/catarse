@@ -585,7 +585,7 @@ RSpec.describe Project, :type => :model do
 
     subject { Project.enabled_to_use_pagarme }
 
-    it { should == [@project_01, @project_03]}
+    it { is_expected.to eq([@project_01, @project_03])}
   end
 
   describe "#using_pagarme?" do
@@ -598,7 +598,7 @@ RSpec.describe Project, :type => :model do
         CatarseSettings[:projects_enabled_to_use_pagarme] = 'foo'
       end
 
-      it { should be_true }
+      it { is_expected.to be_truthy }
     end
 
     context "when project is not using pagarme" do
@@ -606,7 +606,7 @@ RSpec.describe Project, :type => :model do
         CatarseSettings[:projects_enabled_to_use_pagarme] = nil
       end
 
-      it { should be_false }
+      it { is_expected.to be_falsey }
     end
   end
 end
