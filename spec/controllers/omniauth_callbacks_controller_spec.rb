@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe OmniauthCallbacksController, :type => :controller do
+RSpec.describe OmniauthCallbacksController, type: :controller do
   before do
     facebook_provider
     OmniauthCallbacksController.add_providers

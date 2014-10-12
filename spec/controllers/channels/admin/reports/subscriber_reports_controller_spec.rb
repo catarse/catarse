@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Channels::Admin::Reports::SubscriberReportsController, :type => :controller do
+RSpec.describe Channels::Admin::Reports::SubscriberReportsController, type: :controller do
   subject{ response }
   let(:channel){ create(:channel) }
   let(:admin) { create(:user, admin: false) }

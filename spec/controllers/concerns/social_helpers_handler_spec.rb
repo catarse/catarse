@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Concerns::SocialHelpersHandler, :type => :controller do
+RSpec.describe Concerns::SocialHelpersHandler, type: :controller do
   render_views
   before do
     [:render_facebook_sdk, :render_facebook_like, :render_twitter].each do |method|

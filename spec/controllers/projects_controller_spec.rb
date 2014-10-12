@@ -1,7 +1,7 @@
 #encoding:utf-8
 require 'rails_helper'
 
-RSpec.describe ProjectsController, :type => :controller do
+RSpec.describe ProjectsController, type: :controller do
   before{ allow(controller).to receive(:current_user).and_return(current_user) }
   before{ CatarseSettings[:base_url] = 'http://catarse.me' }
   before{ CatarseSettings[:email_projects] = 'foo@bar.com' }

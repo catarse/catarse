@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe RewardsController, :type => :controller do
+RSpec.describe RewardsController, type: :controller do
   subject{ response }
   let(:project) { FactoryGirl.create(:project) }
   let(:reward) { FactoryGirl.create(:reward, project: project) }

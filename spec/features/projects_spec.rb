@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe "Projects", :type => :feature do
+RSpec.describe "Projects", type: :feature do
   let(:project){ build(:project) }
 
   before {
