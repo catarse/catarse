@@ -538,8 +538,6 @@ RSpec.describe Project, :type => :model do
   describe '#pending_contributions_reached_the_goal?' do
     let(:project) { create(:project, goal: 200) }
 
-    before { allow(project).to receive(:pleged) { 100 } }
-
     subject { project.pending_contributions_reached_the_goal? }
 
     context 'when reached the goal with pending contributions' do

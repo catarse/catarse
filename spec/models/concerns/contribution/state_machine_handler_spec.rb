@@ -61,7 +61,6 @@ RSpec.describe Contribution::StateMachineHandler, :type => :model do
       let(:initial_state){ 'confirmed' }
       let(:contribution_is_credits) { false }
       before do
-        allow_any_instance_of(ContributionObserver).to receive(:notify_backoffice)
         contribution.update_attributes({ credits: contribution_is_credits })
         allow(contribution.user).to receive(:credits).and_return(credits)
         contribution.request_refund

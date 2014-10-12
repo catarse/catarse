@@ -31,10 +31,6 @@ RSpec.describe Users::ContributionsController, :type => :controller do
   end
 
   describe "POST request_refund" do
-    before do
-      allow_any_instance_of(ContributionObserver).to receive(:notify_backoffice)
-    end
-
     context "without user" do
       let(:current_user){ nil }
       before { post :request_refund, { user_id: user.id, id: failed_contribution.id } }
