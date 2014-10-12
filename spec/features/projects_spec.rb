@@ -8,7 +8,6 @@ RSpec.describe "Projects", :type => :feature do
   before {
     #NOTE: Weird bug on edit project test
     RoutingFilter.active = true
-    allow_any_instance_of(ProjectsController).to receive(:last_tweets).and_return([])
   }
   before {
     CatarseSettings[:base_url] = 'http://catarse.me'

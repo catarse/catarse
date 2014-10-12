@@ -51,7 +51,6 @@ RSpec.describe ProjectsController, :type => :controller do
 
   describe "GET index" do
     before do
-      allow(controller).to receive(:last_tweets).and_return([])
       get :index, locale: :pt
     end
     it { is_expected.to be_success }

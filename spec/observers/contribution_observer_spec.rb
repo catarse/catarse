@@ -186,7 +186,7 @@ RSpec.describe ContributionObserver do
 
     context "when contribution change to confirmed" do
       before do
-        expect(ContributionNotification).not_to receive(:notify).with(:contribution_canceled_after_confirmed)
+        expect(ContributionNotification).not_to receive(:notify).with(:contribution_canceled_after_confirmed, anything)
       end
 
       it { contribution.confirm }
