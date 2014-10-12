@@ -18,6 +18,7 @@ RSpec.describe User, :type => :model do
     it{ is_expected.to have_one :user_total }
     it{ is_expected.to have_one :bank_account }
     it{ is_expected.to belong_to :channel }
+    it{ is_expected.to belong_to :country }
     it{ is_expected.to have_and_belong_to_many :subscriptions }
   end
 
@@ -253,6 +254,7 @@ RSpec.describe User, :type => :model do
       create(:contribution, state: 'confirmed', user: user, project: project)
       create(:contribution, state: 'confirmed', user: user, project: project)
       create(:contribution, state: 'confirmed', user: user)
+      user.reload
     end
 
     it { is_expected.to eq(2)}
