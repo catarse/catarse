@@ -25,7 +25,6 @@ RSpec.configure do |config|
   # examples within a transaction, remove the following line or assign false
   # instead of true.
   config.use_transactional_fixtures = false
-  config.infer_spec_type_from_file_location!
 
   config.include ActionView::Helpers::TextHelper
   config.include FactoryGirl::Syntax::Methods
