@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe PaymentNotification, :type => :model do
+RSpec.describe PaymentNotification, type: :model do
   describe "Associations" do
     it{ is_expected.to belong_to :contribution }
   end

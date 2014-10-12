@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe State, :type => :model do
+RSpec.describe State, type: :model do
   subject { create(:state) }
 
   describe "validations" do

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Projects::ContributionsController, :type => :controller do
+RSpec.describe Projects::ContributionsController, type: :controller do
   render_views
   let(:project) { create(:project) }
   let(:contribution){ create(:contribution, value: 10.00, credits: true, project: project, state: 'pending') }

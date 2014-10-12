@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Shared::VideoHandler, :type => :model do
+RSpec.describe Shared::VideoHandler, type: :model do
   let(:project) { create(:project) }
   subject { project }
 

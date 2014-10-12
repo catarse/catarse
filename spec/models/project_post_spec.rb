@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe ProjectPost, :type => :model do
+RSpec.describe ProjectPost, type: :model do
   describe "validations" do
     it{ is_expected.to validate_presence_of :project_id }
     it{ is_expected.to validate_presence_of :user_id }

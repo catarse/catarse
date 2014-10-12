@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Project::CustomValidators, :type => :model do
+RSpec.describe Project::CustomValidators, type: :model do
   describe '#permalink_on_routes?' do
     it 'should allow a unique permalink' do
       expect(Project.permalink_on_routes?('permalink_test')).to eq(false)

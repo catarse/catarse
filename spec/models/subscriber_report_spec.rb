@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe SubscriberReport, :type => :model do
+RSpec.describe SubscriberReport, type: :model do
   let(:subscriber){ SubscriberReport.first }
   before do
     CatarseSettings[:email_contact] = 'foo@bar.com'

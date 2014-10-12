@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Channels::ProfilesController, :type => :controller do
+RSpec.describe Channels::ProfilesController, type: :controller do
   subject{ response }
   let(:channel){ FactoryGirl.create(:channel) }
 
