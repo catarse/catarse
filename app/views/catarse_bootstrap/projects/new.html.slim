@@ -15,19 +15,19 @@
             p.fontsize-small.u-marginbottom-40 = t('.form.blocks.first.description')
 
             .u-marginbottom-40
-              = form.label :name, class: 'fontsize-large'
-              = form.input_field :name, as: :string, class: 'medium'
-              = form.hint :name, class: 'fontsize-small foncolor-secondary'
+              = form.label :name, class: 'fontsize-large', required: false, as: :string
+              = form.input_field :name, class: 'medium'
+              = form.hint :name, class: 'fontsize-small fontcolor-secondary'
             .u-marginbottom-40
-              = form.label :permalink, class: 'fontsize-large'
+              = form.label :permalink, class: 'fontsize-large', required: false, as: :string
               .w-row
                 .w-col.w-col-4.w-col.w-col-small-6.w-col-tiny-6.text-field.prefix.medium.prefix-permalink.no-hover
                   .fontcolor-secondary.fontsize-base.u-text-center = t('.form.info.permalink')
-                .w-col.w-col-8.w-col-small-6.w-col-tiny-6    
-                    = form.input_field :permalink, as: :string, class: 'medium medium postfix'
+                .w-col.w-col-8.w-col-small-6.w-col-tiny-6
+                    = form.input_field :permalink, as: :string, class: 'medium medium postfix', required: false
               = form.hint :permalink, class: 'fontsize-small fontcolor-secondary'
             .u-marginbottom-40
-              = form.label :category, class: 'fontsize-large'
+              = form.label :category, class: 'fontsize-large', required: false
               = form.association :category, as: :select, collection: Category.order(:name_pt), prompt: t('simple_form.prompts.project.category'), class: 'medium', label: '', required: false
               = form.hint :category, class: 'fontsize-small fontcolor-secondary'
       
