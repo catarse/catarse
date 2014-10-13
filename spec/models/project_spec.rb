@@ -405,11 +405,11 @@ RSpec.describe Project, type: :model do
     before { @p = create(:project, name: 'foo') }
     context "when project exists" do
       subject{ [Project.search_on_name('foo'), Project.pg_search('fóõ')] }
-      it{ should == [[@p],[@p]] }
+      it{ is_expected.to eq([[@p],[@p]]) }
     end
     context "when project is not found" do
       subject{ Project.search_on_name('lorem') }
-      it{ should == [] }
+      it{ is_expected.to eq([]) }
     end
   end
 
