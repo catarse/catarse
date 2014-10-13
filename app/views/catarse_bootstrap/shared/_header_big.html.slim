@@ -38,7 +38,7 @@
         = form_tag explore_path, :method => 'GET', :class=>'discover-form' do
           = text_field_tag :pg_search, nil, autocomplete: "off", value: params[:pg_search], class: "form-search-input search-input", placeholder: t('layouts.header.search')
           = submit_tag class: "form-search-image"
-          .search-pre-result
+          .search-pre-result data-searchpath=auto_complete_projects_path
             ul.result
               li style='text-align: center' = image_tag('loading.gif')
             .see-more-projects
