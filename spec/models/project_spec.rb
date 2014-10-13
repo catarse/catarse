@@ -401,6 +401,17 @@ describe Project do
     end
   end
 
+  describe "#search_on_name" do
+    before { @p = create(:project, name: 'foo') }
+    context "when project exists" do
+      subject{ [Project.search_on_name('foo'), Project.pg_search('fóõ')] }
+      it{ should == [[@p],[@p]] }
+    end
+    context "when project is not found" do
+      subject{ Project.search_on_name('lorem') }
+      it{ should == [] }
+    end
+  end
 
   describe "#pg_search" do
     before { @p = create(:project, name: 'foo') }
