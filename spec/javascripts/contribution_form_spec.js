@@ -1,4 +1,4 @@
-describe("ContributionForm", function() {
+RSpec.describe("ContributionForm", function() {
   var view;
   var reward = $('<input type="radio" />');
 

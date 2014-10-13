@@ -1,6 +1,6 @@
-require "spec_helper"
+require 'rails_helper'
 
-describe ChannelOwnerPolicy do
+RSpec.describe ChannelOwnerPolicy do
   let(:user) { nil }
   let(:channel) { nil }
 
@@ -10,14 +10,14 @@ describe ChannelOwnerPolicy do
 
     context "when user is nil" do
       it "should deny access if user is nil" do
-        should_not custom_permit(:access?)
+        is_expected.not_to custom_permit(:access?)
       end
     end
 
     context "whe user is not admin" do
       let(:user) { User.new }
       it "should deny access if user is not admin" do
-        should_not custom_permit(:access?)
+        is_expected.not_to custom_permit(:access?)
       end
     end
 
@@ -26,7 +26,7 @@ describe ChannelOwnerPolicy do
       let(:channel) { user.channel }
 
       it "should permit access if user is channel admin" do
-        should custom_permit(:access?)
+        is_expected.to custom_permit(:access?)
       end
     end
 
@@ -37,7 +37,7 @@ describe ChannelOwnerPolicy do
         _user
       }
       it "should permit access if user is admin" do
-        should custom_permit(:access?)
+        is_expected.to custom_permit(:access?)
       end
     end
   end

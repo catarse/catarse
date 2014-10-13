@@ -1,4 +1,4 @@
-describe("FeedbackSupport", function() {
+RSpec.describe("FeedbackSupport", function() {
   var view;
 
   beforeEach(function() {

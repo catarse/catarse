@@ -1,8 +1,8 @@
 #encoding:utf-8
-require 'spec_helper'
+require 'rails_helper'
 
-describe ProjectsController do
-  before{ controller.stub(:current_user).and_return(current_user) }
+RSpec.describe ProjectsController, type: :controller do
+  before{ allow(controller).to receive(:current_user).and_return(current_user) }
   before{ CatarseSettings[:base_url] = 'http://catarse.me' }
   before{ CatarseSettings[:email_projects] = 'foo@bar.com' }
   render_views
@@ -17,12 +17,12 @@ describe ProjectsController do
     end
 
     context "when no user is logged in" do
-      it{ should redirect_to new_user_registration_path }
+      it{ is_expected.to redirect_to new_user_registration_path }
     end
 
     context "when user is logged in" do
       let(:current_user){ create(:user) }
-      it{ should redirect_to project_by_slug_path(project.permalink) }
+      it{ is_expected.to redirect_to project_by_slug_path(project.permalink) }
     end
   end
 
@@ -35,7 +35,7 @@ describe ProjectsController do
         project.reload
       end
 
-      it { project.in_analysis?.should be_true }
+      it { expect(project.in_analysis?).to eq(true) }
     end
 
     context "with referal link" do
@@ -45,16 +45,15 @@ describe ProjectsController do
         project.reload
       end
 
-      it { should == 'referal' }
+      it { is_expected.to eq('referal') }
     end
   end
 
   describe "GET index" do
     before do
-      controller.stub(:last_tweets).and_return([])
       get :index, locale: :pt
     end
-    it { should be_success }
+    it { is_expected.to be_success }
 
     context "with referal link" do
       subject { controller.session[:referal_link] }
@@ -63,7 +62,7 @@ describe ProjectsController do
         get :index, locale: :pt, ref: 'referal'
       end
 
-      it { should == 'referal' }
+      it { is_expected.to eq('referal') }
     end
   end
 
@@ -71,12 +70,12 @@ describe ProjectsController do
     before { get :new, locale: :pt }
 
     context "when user is a guest" do
-      it { should_not be_success }
+      it { is_expected.not_to be_success }
     end
 
     context "when user is a registered user" do
       let(:current_user){ create(:user, admin: false) }
-      it { should be_success }
+      it { is_expected.to be_success }
     end
   end
 
@@ -86,16 +85,16 @@ describe ProjectsController do
         before { put :update, id: project.id, project: { name: 'My Updated Title' },locale: :pt }
         it {
           project.reload
-          project.name.should == 'My Updated Title'
+          expect(project.name).to eq('My Updated Title')
         }
 
-        it{ should redirect_to project_by_slug_path(project.permalink, anchor: 'edit') }
+        it{ is_expected.to redirect_to project_by_slug_path(project.permalink, anchor: 'edit') }
       end
 
       context "with invalid permalink" do
         before { put :update, id: project.id, project: { permalink: '', name: 'My Updated Title' },locale: :pt }
 
-        it{ should redirect_to project_by_slug_path(project.permalink, anchor: 'edit') }
+        it{ is_expected.to redirect_to project_by_slug_path(project.permalink, anchor: 'edit') }
       end
     end
 
@@ -103,7 +102,7 @@ describe ProjectsController do
       before { put :update, id: project.id, project: { name: 'My Updated Title' },locale: :pt }
       it {
         project.reload
-        project.name.should == 'Foo bar'
+        expect(project.name).to eq('Foo bar')
       }
     end
 
@@ -122,14 +121,14 @@ describe ProjectsController do
         let(:project) { create(:project, state: 'online') }
 
         before do
-          controller.stub(:current_user).and_return(project.user)
+          allow(controller).to receive(:current_user).and_return(project.user)
         end
 
         context "when I try to update the project name and the about field" do
           before{ put :update, id: project.id, project: { name: 'new_title', about: 'new_description' }, locale: :pt }
           it "should not update title" do
             project.reload
-            project.name.should_not == 'new_title'
+            expect(project.name).not_to eq('new_title')
           end
         end
 
@@ -137,7 +136,7 @@ describe ProjectsController do
           before{ put :update, id: project.id, project: { about: 'new_description' }, locale: :pt }
           it "should update it" do
             project.reload
-            project.about.should == 'new_description'
+            expect(project.about).to eq('new_description')
           end
         end
       end
@@ -173,7 +172,7 @@ describe ProjectsController do
       let(:project){ create(:project) }
       let(:project_post){ create(:project_post, project: project) }
       before{ get :show, permalink: project.permalink, project_post_id: project_post.id, locale: :pt }
-      it("should assign update to @update"){ assigns(:post).should == project_post }
+      it("should assign update to @update"){ expect(assigns(:post)).to eq(project_post) }
     end
   end
 
@@ -181,7 +180,7 @@ describe ProjectsController do
     context 'url is a valid video' do
       let(:video_url){ 'http://vimeo.com/17298435' }
       before do
-        VideoInfo.stub(:get).and_return({video_id: 'abcd'})
+        allow(VideoInfo).to receive(:get).and_return({video_id: 'abcd'})
         get :video, locale: :pt, url: video_url
       end
 
