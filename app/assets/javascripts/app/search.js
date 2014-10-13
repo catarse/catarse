@@ -12,7 +12,7 @@ App.addChild('Search', {
   watchSearchForm: function() {
     var that = this;
 
-    this.$('.discover-form-input').typeWatch({
+    this.$('.search-input').typeWatch({
       wait: 300,
       highlight: true,
       captureLength: 0,
