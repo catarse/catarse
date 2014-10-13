@@ -34,7 +34,7 @@ App.addChild('Search', {
 
     this.$('.search-pre-result').show();
 
-    $.get('/auto_complete_projects', { search_on_name: value, limit: 5 }, function(response){
+    $.get(this.$('.search-pre-result').data('searchpath'), { search_on_name: value, limit: 5 }, function(response){
       that.$('.result').html(response);
     });
   }
