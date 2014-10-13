@@ -12,7 +12,7 @@ header.header
 
         li.header-nav-li.search
           = form_tag explore_path, :method => 'GET', :class=>'discover-form' do
-            = text_field_tag :pg_search, nil, autocomplete: "off", value: params[:pg_search], class: "discover-form-input"
+            = text_field_tag :pg_search, nil, autocomplete: "off", value: params[:pg_search], class: "discover-form-input search-input"
             = submit_tag
             .search-pre-result
               ul.result
