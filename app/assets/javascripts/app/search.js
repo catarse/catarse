@@ -11,25 +11,31 @@ App.addChild('Search', {
 
   watchSearchForm: function() {
     var that = this;
-
-    this.$('.search-input').typeWatch({
+    var options = {
       wait: 300,
       highlight: true,
       captureLength: 0,
-      callback: function(value) {
-        if(value == "") {
-          return that.$('.search-pre-result').hide();
-        }
-        that.$('.search-pre-result').show();
+      callback: this.onTypeWatch
+    };
 
-        $.get('/auto_complete_projects', { search_on_name: value, limit: 5 }, function(response){
-          that.$('.result').html(response);
-        });
-      }
-    });
+    this.$('.search-input').typeWatch(options);
   },
 
   goToExplore: function() {
     this.el.submit();
   },
+
+  onTypeWatch: function(value) {
+    var that = this;
+
+    if(value == "") {
+      return this.$('.search-pre-result').hide();
+    }
+
+    this.$('.search-pre-result').show();
+
+    $.get('/auto_complete_projects', { search_on_name: value, limit: 5 }, function(response){
+      that.$('.result').html(response);
+    });
+  }
 });
