@@ -1,7 +1,7 @@
 #encoding:utf-8
 require 'rails_helper'
 
-RSpec.describe ProjectsController, type: :controller do
+RSpec.describe AutoCompleteProjectsController, type: :controller do
   render_views
   subject{ response }
 
