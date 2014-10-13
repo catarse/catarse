@@ -1,17 +1,11 @@
 #encoding:utf-8
-require 'spec_helper'
+require 'rails_helper'
 
-describe AutoCompleteProjectsController do
+RSpec.describe ProjectsController, type: :controller do
   render_views
   subject{ response }
 
   describe "GET index" do
-    before do
-      controller.stub(:last_tweets).and_return([])
-      get :index, locale: :pt
-    end
-    it { should be_success }
-
     context "search_on_name param" do
       before do
         @project_01 = create(:project, name: 'lorem dolor')
