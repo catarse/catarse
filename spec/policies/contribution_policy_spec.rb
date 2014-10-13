@@ -1,6 +1,6 @@
-require "spec_helper"
+require 'rails_helper'
 
-describe ContributionPolicy do
+RSpec.describe ContributionPolicy do
   subject{ ContributionPolicy }
 
   let(:project){ create(:project) }
@@ -9,20 +9,20 @@ describe ContributionPolicy do
 
   shared_examples_for "update permissions" do
     it "should deny access if user is nil" do
-      should_not permit(nil, contribution)
+      is_expected.not_to permit(nil, contribution)
     end
 
     it "should deny access if user is not updating his contribution" do
-      should_not permit(User.new, contribution)
+      is_expected.not_to permit(User.new, contribution)
     end
 
     it "should permit access if user is contribution owner" do
-      should permit(user, contribution)
+      is_expected.to permit(user, contribution)
     end
 
     it "should permit access if user is admin" do
       admin = build(:user, admin: true)
-      should permit(admin, contribution)
+      is_expected.to permit(admin, contribution)
     end
   end
 
@@ -32,7 +32,7 @@ describe ContributionPolicy do
     ['draft', 'deleted', 'rejected', 'successful', 'failed', 'waiting_funds', 'in_analysis'].each do |state|
       it "should deny access if project is #{state}" do
         contribution.project.update_attributes state: state
-        should_not permit(user, contribution)
+        is_expected.not_to permit(user, contribution)
       end
     end
   end
@@ -66,16 +66,16 @@ describe ContributionPolicy do
       context "when user is admin" do
         let(:current_user) { create(:user, admin: true) }
 
-        it { should have(3).itens }
+        it { is_expected.to have(3).itens }
       end
 
       context "when user is a contributor" do
         let(:current_user) { user }
-        it { should eq [@anon_contribution, @contribution] }
+        it { is_expected.to eq [@anon_contribution, @contribution] }
       end
 
       context "when user is not an admin" do
-        it { should eq [@contribution] }
+        it { is_expected.to eq [@contribution] }
       end
     end
   end
@@ -85,11 +85,11 @@ describe ContributionPolicy do
     subject{ policy }
 
     %i[user_attributes user_id user payment_service_fee payment_id].each do |field|
-      it{ should_not be_permitted(field) }
+      it{ is_expected.not_to be_permitted(field) }
     end
 
     %i[value].each do |field|
-      it{ should be_permitted(field) }
+      it{ is_expected.to be_permitted(field) }
     end
   end
 

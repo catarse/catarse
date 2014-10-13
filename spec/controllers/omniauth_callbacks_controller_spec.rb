@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe OmniauthCallbacksController do
+RSpec.describe OmniauthCallbacksController, type: :controller do
   before do
     facebook_provider
     OmniauthCallbacksController.add_providers
@@ -55,7 +55,7 @@ describe OmniauthCallbacksController do
 
   describe ".add_providers" do
     subject{ controller }
-    it{ should respond_to(:facebook) }
+    it{ is_expected.to respond_to(:facebook) }
   end
 
   describe "GET facebook" do
@@ -64,7 +64,7 @@ describe OmniauthCallbacksController do
       let(:user) { FactoryGirl.create(:user, name: 'Foo') }
 
       before do
-        controller.stub(:current_user).and_return(user)
+        allow(controller).to receive(:current_user).and_return(user)
         session[:return_to] = return_to
         request.env['omniauth.auth'] = oauth_data
         get :facebook
@@ -73,10 +73,10 @@ describe OmniauthCallbacksController do
       describe "assigned user" do
         subject{ assigns(:auth).user }
         its(:name){ should == "Foo" }
-        it { subject.authorizations.should have(1).item }
+        it { expect(subject.authorizations).to have(1).item }
       end
 
-      it{ should redirect_to root_path }
+      it{ is_expected.to redirect_to root_path }
     end
 
     describe 'when user not loged in' do
@@ -94,18 +94,18 @@ describe OmniauthCallbacksController do
           its(:email){ should == "diogob@gmail.com" }
           its(:name){ should == "Diogo, Biazus" }
         end
-        it{ should redirect_to root_path }
+        it{ is_expected.to redirect_to root_path }
       end
 
       context "when there is a valid user with this provider and uid and session return_to is /foo" do
         let(:return_to){ '/foo' }
-        it{ assigns(:auth).user.should == user }
-        it{ should redirect_to '/foo' }
+        it{ expect(assigns(:auth).user).to eq(user) }
+        it{ is_expected.to redirect_to '/foo' }
       end
 
       context "when there is a valid user with this provider and uid and session return_to is nil" do
-        it{ assigns(:auth).user.should == user }
-        it{ should redirect_to root_path }
+        it{ expect(assigns(:auth).user).to eq(user) }
+        it{ is_expected.to redirect_to root_path }
       end
     end
   end

@@ -1,4 +1,4 @@
-describe("MixPanel", function() {
+RSpec.describe("MixPanel", function() {
   var view;
   var mixpanel;
   var default_options = {

@@ -1,30 +1,30 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe RewardsController do
+RSpec.describe RewardsController, type: :controller do
   subject{ response }
   let(:project) { FactoryGirl.create(:project) }
   let(:reward) { FactoryGirl.create(:reward, project: project) }
 
   shared_examples_for "GET rewards index" do
     before { get :index, project_id: project.id, locale: :pt }
-    it { should be_success }
+    it { is_expected.to be_success }
   end
 
   shared_examples_for "POST rewards create" do
     before { post :create, project_id: project.id, reward: { description: 'Lorem ipsum', minimum_value: 10, deliver_at: DateTime.now }, locale: :pt }
-    it { project.rewards.should_not be_empty}
+    it { expect(project.rewards).not_to be_empty}
   end
 
   shared_examples_for "POST rewards create without permission" do
     before { post :create, project_id: project.id, reward: { description: 'Lorem ipsum', minimum_value: 10, deliver_at: DateTime.now }, locale: :pt }
-    it { project.rewards.should be_empty}
+    it { expect(project.rewards).to be_empty}
   end
 
   shared_examples_for "PUT rewards update" do
     before { put :update, project_id: project.id, id: reward.id, reward: { description: 'Amenori ipsum' }, locale: :pt }
     it {
       reward.reload
-      reward.description.should == 'Amenori ipsum'
+      expect(reward.description).to eq('Amenori ipsum')
     }
   end
 
@@ -32,22 +32,22 @@ describe RewardsController do
     before { put :update, project_id: project.id, id: reward.id, reward: { description: 'Amenori ipsum' }, locale: :pt }
     it {
       reward.reload
-      reward.description.should == 'Foo bar'
+      expect(reward.description).to eq('Foo bar')
     }
   end
 
   shared_examples_for "DELETE rewards destroy" do
     before { delete :destroy, project_id: project.id, id: reward.id, locale: :pt }
-    it { project.rewards.should be_empty}
+    it { expect(project.rewards).to be_empty}
   end
 
   shared_examples_for "DELETE rewards destroy without permission" do
     before { delete :destroy, project_id: project.id, id: reward.id, locale: :pt }
-    it { project.rewards.should_not be_empty}
+    it { expect(project.rewards).not_to be_empty}
   end
 
   context "When current_user is a guest" do
-    before { controller.stub(:current_user).and_return(nil) }
+    before { allow(controller).to receive(:current_user).and_return(nil) }
 
     it_should_behave_like "GET rewards index"
     it_should_behave_like "POST rewards create without permission"
@@ -56,7 +56,7 @@ describe RewardsController do
   end
 
   context "When current_user is a project owner" do
-    before { controller.stub(:current_user).and_return(project.user) }
+    before { allow(controller).to receive(:current_user).and_return(project.user) }
 
     it_should_behave_like "GET rewards index"
     it_should_behave_like "POST rewards create"
@@ -70,7 +70,7 @@ describe RewardsController do
         before { put :update, project_id: project.id, id: reward.id, reward: { minimum_value: 15, description: 'Amenori ipsum' }, locale: :pt }
         it {
           reward.reload
-          reward.minimum_value.should_not eq(15.0)
+          expect(reward.minimum_value).not_to eq(15.0)
         }
       end
 
@@ -88,7 +88,7 @@ describe RewardsController do
   end
 
   context "when current_user is admin" do
-    before { controller.stub(:current_user).and_return(FactoryGirl.create(:user, admin: true))}
+    before { allow(controller).to receive(:current_user).and_return(FactoryGirl.create(:user, admin: true))}
 
     it_should_behave_like "GET rewards index"
     it_should_behave_like "POST rewards create"
@@ -97,7 +97,7 @@ describe RewardsController do
   end
 
   context "When current_user is a registered user" do
-    before { controller.stub(:current_user).and_return(FactoryGirl.create(:user)) }
+    before { allow(controller).to receive(:current_user).and_return(FactoryGirl.create(:user)) }
 
     it_should_behave_like "GET rewards index"
     it_should_behave_like "POST rewards create without permission"
