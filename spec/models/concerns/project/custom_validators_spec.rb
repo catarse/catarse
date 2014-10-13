@@ -1,13 +1,13 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe Project::CustomValidators do
+RSpec.describe Project::CustomValidators, type: :model do
   describe '#permalink_on_routes?' do
     it 'should allow a unique permalink' do
-      Project.permalink_on_routes?('permalink_test').should be_false
+      expect(Project.permalink_on_routes?('permalink_test')).to eq(false)
     end
 
     it 'should not allow a permalink to be one of catarse\'s routes' do
-      Project.permalink_on_routes?('projects').should be_true
+      expect(Project.permalink_on_routes?('projects')).to eq(true)
     end
   end
 end

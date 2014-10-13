@@ -1,13 +1,13 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe User::OmniauthHandler do
+RSpec.describe User::OmniauthHandler, type: :model do
   let(:user){ create(:user) }
   let(:facebook_provider){ create :oauth_provider, name: 'facebook' }
 
   subject { user }
 
   describe "Associations" do
-    it{ should have_many(:oauth_providers).through(:authorizations) }
+    it{ is_expected.to have_many(:oauth_providers).through(:authorizations) }
   end
 
   describe ".create_from_hash" do
@@ -23,7 +23,7 @@ describe User::OmniauthHandler do
     }
     end
     subject{ User.create_from_hash(auth) }
-    it{ should be_persisted }
+    it{ is_expected.to be_persisted }
     its(:email){ should == auth['info']['email'] }
   end
 
@@ -31,11 +31,11 @@ describe User::OmniauthHandler do
     subject{ user.facebook_id }
     context "when user have a FB authorization" do
       let(:user){ create(:user, authorizations: [ create(:authorization, uid: 'bar', oauth_provider: facebook_provider)]) }
-      it{ should == 'bar' }
+      it{ is_expected.to eq('bar') }
     end
     context "when user do not have a FB authorization" do
       let(:user){ create(:user) }
-      it{ should == nil }
+      it{ is_expected.to eq(nil) }
     end
   end
 
@@ -46,11 +46,11 @@ describe User::OmniauthHandler do
         create(:authorization, user: user, oauth_provider: facebook_provider)
       end
 
-      it { should be_true }
+      it { is_expected.to eq(true) }
     end
 
     context "when user don't has a facebook account linked" do
-      it { should be_false }
+      it { is_expected.to eq(nil) }
     end
   end
 end

@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe ChannelPostObserver do
+RSpec.describe ChannelPostObserver do
   let(:channel_post) { create(:channel_post, visible: false) }
   let(:user) { create(:user) }
 
@@ -12,7 +12,7 @@ describe ChannelPostObserver do
 
     context "when post is not published" do
       before do
-        ChannelPostNotification.should_receive(:notify_once).with(
+        expect(ChannelPostNotification).to receive(:notify_once).with(
           :channel_post,
           user,
           channel_post,
@@ -24,7 +24,7 @@ describe ChannelPostObserver do
       end
 
       it 'should not fill published at field' do
-        channel_post.published_at.should be_nil
+        expect(channel_post.published_at).to be_nil
       end
 
       it 'should not call Notification.notify once' do
@@ -34,7 +34,7 @@ describe ChannelPostObserver do
 
     context "when post is published" do
       before do
-        ChannelPostNotification.should_receive(:notify_once).with(
+        expect(ChannelPostNotification).to receive(:notify_once).with(
           :channel_post,
           user,
           channel_post,
@@ -51,7 +51,7 @@ describe ChannelPostObserver do
 
       it 'should fill published at field' do
         channel_post.update_attributes(visible: true)
-        channel_post.published_at.should_not be_nil
+        expect(channel_post.published_at).not_to be_nil
       end
     end
   end

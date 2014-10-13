@@ -1,13 +1,16 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe ProjectPostObserver do
+RSpec.describe ProjectPostObserver do
   describe 'after_create' do
     context "notify contributions" do
-      let(:project) { create(:project) }
-      let(:project_post) { create(:project_post) }
+      let(:project_post) { build(:project_post) }
+
+      before do
+        allow(project_post).to receive(:id).and_return(42)
+      end
 
       it "should satisfy expectations" do
-        ProjectPostWorker.should_receive(:perform_async).with(project_post.id)
+        expect(ProjectPostWorker).to receive(:perform_async).with(project_post.id)
         project_post.save
       end
     end

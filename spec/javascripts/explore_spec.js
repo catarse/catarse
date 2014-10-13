@@ -1,4 +1,4 @@
-describe("Explore", function() {
+RSpec.describe("Explore", function() {
   var view;
   var parentView = { $search: { val: function(){} }, router: {route: function(){} } };
 

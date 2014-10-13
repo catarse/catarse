@@ -1,4 +1,4 @@
-describe("Posts", function() {
+RSpec.describe("Posts", function() {
   var view;
 
   beforeEach(function() {

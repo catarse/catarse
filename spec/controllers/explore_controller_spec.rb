@@ -1,9 +1,9 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe ExploreController do
+RSpec.describe ExploreController, type: :controller do
   subject{ response }
   before do
-    controller.stub(:current_user).and_return(user)
+    allow(controller).to receive(:current_user).and_return(user)
   end
 
   describe "GET index" do
@@ -12,7 +12,7 @@ describe ExploreController do
       before do
         get :index, locale: :pt
       end
-      it{ should be_successful }
+      it{ is_expected.to be_successful }
     end
   end
 end
