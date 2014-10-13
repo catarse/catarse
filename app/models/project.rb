@@ -34,7 +34,11 @@ class Project < ActiveRecord::Base
 
   catarse_auto_html_for field: :about, video_width: 600, video_height: 403
 
-  pg_search_scope :search_on_name, against: [[:name, 'A'], [:headline, 'B']],
+  pg_search_scope :search_on_name,
+    against: [[:name, 'A'], [:headline, 'B']],
+    associated_against: {
+      category: [:name_pt, :name_en]
+    },
     using: {tsearch: {dictionary: "portuguese"}},
     ignoring: :accents
 
