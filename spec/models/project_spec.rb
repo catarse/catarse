@@ -401,6 +401,17 @@ RSpec.describe Project, type: :model do
     end
   end
 
+  describe "#search_on_name" do
+    before { @p = create(:project, name: 'foo') }
+    context "when project exists" do
+      subject{ [Project.search_on_name('foo'), Project.pg_search('fóõ')] }
+      it{ is_expected.to eq([[@p],[@p]]) }
+    end
+    context "when project is not found" do
+      subject{ Project.search_on_name('lorem') }
+      it{ is_expected.to eq([]) }
+    end
+  end
 
   describe "#pg_search" do
     before { @p = create(:project, name: 'foo') }
