@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe Projects::ContributionsController do
+RSpec.describe Projects::ContributionsController, type: :controller do
   render_views
   let(:project) { create(:project) }
   let(:contribution){ create(:contribution, value: 10.00, credits: true, project: project, state: 'pending') }
@@ -10,8 +10,8 @@ describe Projects::ContributionsController do
   subject{ response }
 
   before do
-    PaymentEngines.stub(:engines).and_return([])
-    controller.stub(:current_user).and_return(user)
+    allow(PaymentEngines).to receive(:engines).and_return([])
+    allow(controller).to receive(:current_user).and_return(user)
   end
 
   describe "PUT update" do
@@ -23,17 +23,17 @@ describe Projects::ContributionsController do
     end
 
     context "when no user is logged in" do
-      it{ should redirect_to(new_user_registration_path) }
+      it{ is_expected.to redirect_to(new_user_registration_path) }
     end
 
     context "when contribution don't exist in current_user" do
       let(:user){ create(:user) }
-      it{ should redirect_to(root_path) }
-      it('should set flash failure'){ request.flash[:alert].should_not be_empty }
+      it{ is_expected.to redirect_to(root_path) }
+      it('should set flash failure'){ expect(request.flash[:alert]).not_to be_empty }
     end
 
     context "when we have the right user" do
-      let(:set_expectations) { Contribution.any_instance.should_receive(:update_user_billing_info) }
+      let(:set_expectations) { expect_any_instance_of(Contribution).to receive(:update_user_billing_info) }
       let(:user){ contribution.user }
       its(:body){ should == { message: "updated" }.to_json  }
     end
@@ -41,7 +41,7 @@ describe Projects::ContributionsController do
     context "when try pass unpermitted attributes" do
       let(:contribution_info) { { payment_service_fee: 1000, value: 1000,  address_city: 'Porto Alegre', address_complement: '24', address_neighbourhood: 'Rio Branco', address_number: '1004', address_phone_number: '(51)2112-8397', address_state: 'RS', address_street: 'Rua Mariante', address_zip_code: '90430-180', payer_email: 'diogo@biazus.me', payer_name: 'Diogo de Oliveira Biazus'  } }
 
-      it { should be_redirect }
+      it { is_expected.to be_redirect }
     end
   end
 
@@ -52,8 +52,8 @@ describe Projects::ContributionsController do
     end
 
     context "when no user is logged" do
-      it{ should redirect_to new_user_registration_path }
-      it('should set the session[:return_to]'){ session[:return_to].should == "/test_path" }
+      it{ is_expected.to redirect_to new_user_registration_path }
+      it('should set the session[:return_to]'){ expect(session[:return_to]).to eq("/test_path") }
     end
 
     context "when user is logged in" do
@@ -66,9 +66,9 @@ describe Projects::ContributionsController do
 
     context "when reward is sold out" do
       before do
-        Reward.any_instance.stub(:sold_out?).and_return(true)
+        allow_any_instance_of(Reward).to receive(:sold_out?).and_return(true)
       end
-      it { should be_redirect }
+      it { is_expected.to be_redirect }
     end
   end
 
@@ -82,28 +82,28 @@ describe Projects::ContributionsController do
     end
 
     context "when no user is logged" do
-      it{ should redirect_to new_user_registration_path }
-      it('should set the session[:return_to]'){ session[:return_to].should == "/test_path" }
+      it{ is_expected.to redirect_to new_user_registration_path }
+      it('should set the session[:return_to]'){ expect(session[:return_to]).to eq("/test_path") }
     end
 
     context "when user is logged in" do
-      let(:set_expectations) { Contribution.any_instance.should_receive(:update_current_billing_info) }
+      let(:set_expectations) { expect_any_instance_of(Contribution).to receive(:update_current_billing_info) }
       let(:user){ create(:user) }
-      it{ should redirect_to edit_project_contribution_path(project_id: project.id, id: Contribution.last.id) }
+      it{ is_expected.to redirect_to edit_project_contribution_path(project_id: project.id, id: Contribution.last.id) }
     end
 
     context "without value" do
       let(:user){ create(:user) }
       let(:value){ '' }
 
-      it{ should redirect_to new_project_contribution_path(project_id: project.id) }
+      it{ is_expected.to redirect_to new_project_contribution_path(project_id: project.id) }
     end
 
     context "with invalid contribution values" do
       let(:user){ create(:user) }
       let(:value) { 2.0 }
 
-      it{ should redirect_to new_project_contribution_path(project) }
+      it{ is_expected.to redirect_to new_project_contribution_path(project) }
     end
   end
 
@@ -115,34 +115,34 @@ describe Projects::ContributionsController do
 
     before do
       CatarseSettings[:secure_review_host] = secure_review_host
-      Project.any_instance.stub(:online?).and_return(online)
-      controller.stub(:browser).and_return(browser)
-      ApplicationController.any_instance.unstub(:detect_old_browsers)
+      allow_any_instance_of(Project).to receive(:online?).and_return(online)
+      allow(controller).to receive(:browser).and_return(browser)
+      allow_any_instance_of(ApplicationController).to receive(:detect_old_browsers).and_call_original
       get :new, {locale: :pt, project_id: project.id}
     end
 
     context "when browser is IE 9" do
       let(:browser){ double("browser", ie9?: true, modern?: true) }
-      it{ should redirect_to page_path("bad_browser") }
+      it{ is_expected.to redirect_to page_path("bad_browser") }
     end
 
     context "when browser is old" do
       let(:browser){ double("browser", ie9?: false, modern?: false) }
-      it{ should redirect_to page_path("bad_browser") }
+      it{ is_expected.to redirect_to page_path("bad_browser") }
     end
 
     context "when no user is logged" do
       let(:user){ nil }
-      it{ should redirect_to new_user_registration_path }
+      it{ is_expected.to redirect_to new_user_registration_path }
     end
 
     context "when user is logged in but project.online? is false" do
       let(:online){ false }
-      it{ should redirect_to root_path }
+      it{ is_expected.to redirect_to root_path }
     end
 
     context "when project.online? is true" do
-      it{ should render_template("projects/contributions/new") }
+      it{ is_expected.to render_template("projects/contributions/new") }
       its(:body) { should =~ /#{I18n.t('projects.contributions.new.header.title')}/ }
       its(:body) { should =~ /#{I18n.t('projects.contributions.new.submit')}/ }
       its(:body) { should =~ /#{I18n.t('projects.contributions.new.no_reward')}/ }
@@ -157,18 +157,18 @@ describe Projects::ContributionsController do
     end
 
     context "when no user is logged in" do
-      it{ should redirect_to new_user_registration_path }
+      it{ is_expected.to redirect_to new_user_registration_path }
     end
 
     context "when user logged in is different from contribution" do
       let(:user){ create(:user) }
-      it{ should redirect_to root_path }
-      it('should set flash failure'){ request.flash[:alert].should_not be_empty }
+      it{ is_expected.to redirect_to root_path }
+      it('should set flash failure'){ expect(request.flash[:alert]).not_to be_empty }
     end
 
     context "when contribution is logged in" do
       let(:user){ contribution.user }
-      it{ should be_successful }
+      it{ is_expected.to be_successful }
       its(:body){ should =~ /#{I18n.t('projects.contributions.show.title')}/ }
     end
   end

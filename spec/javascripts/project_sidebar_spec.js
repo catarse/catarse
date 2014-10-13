@@ -1,4 +1,4 @@
-describe("ProjectSidebar", function() {
+RSpec.describe("ProjectSidebar", function() {
   var view;
 
   beforeEach(function() {
