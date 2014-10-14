@@ -1,5 +1,5 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe Channels::BaseController do
+RSpec.describe Channels::BaseController, type: :controller do
 
 end

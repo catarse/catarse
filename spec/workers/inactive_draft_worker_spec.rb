@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe InactiveDraftWorker do
+RSpec.describe InactiveDraftWorker do
 
   before do
     Sidekiq::Testing.inline!

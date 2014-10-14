@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe SubscriberReport do
+RSpec.describe SubscriberReport, type: :model do
   let(:subscriber){ SubscriberReport.first }
   before do
     CatarseSettings[:email_contact] = 'foo@bar.com'
@@ -10,12 +10,12 @@ describe SubscriberReport do
   end
 
   describe "Associations" do
-    it{ should belong_to :channel }
+    it{ is_expected.to belong_to :channel }
   end
 
   describe ".count" do
     subject{ SubscriberReport.count }
-    it{ should eq 1 }
+    it{ is_expected.to eq 1 }
   end
 
   #describe "#id" do
@@ -25,16 +25,16 @@ describe SubscriberReport do
 
   describe "#channel_id" do
     subject{ subscriber.channel_id }
-    it{ should eq @channel.id }
+    it{ is_expected.to eq @channel.id }
   end
 
   describe "#name" do
     subject{ subscriber.name }
-    it{ should eq @user.name }
+    it{ is_expected.to eq @user.name }
   end
 
   describe "#email" do
     subject{ subscriber.email }
-    it{ should eq @user.email }
+    it{ is_expected.to eq @user.email }
   end
 end

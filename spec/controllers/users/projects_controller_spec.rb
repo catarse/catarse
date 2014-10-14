@@ -1,13 +1,13 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe Users::ProjectsController do
+RSpec.describe Users::ProjectsController, type: :controller do
   let(:project) { create(:project) }
   let(:user) { create(:user) }
 
   subject{ response }
 
   before do
-    controller.stub(:current_user).and_return(user)
+    allow(controller).to receive(:current_user).and_return(user)
   end
 
   describe "GET index" do

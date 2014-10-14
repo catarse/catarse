@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe UnsubscribesController do
+RSpec.describe UnsubscribesController, type: :controller do
   subject{ response }
 
   describe "POST create" do
@@ -16,14 +16,14 @@ describe UnsubscribesController do
         unsub = create(:unsubscribe, project_id: @project.id, user_id: user.id)
         post :create, user_id: user.id, locale: 'pt', user: { unsubscribes_attributes: {'1' => {subscribed:'1', id: unsub.id, project_id: @project.id, user_id: user.id}}}
       end
-      it("should destroy the unsubscribe"){ Unsubscribe.where(user_id: user.id, project_id: @project.id).count.should == 0 }
+      it("should destroy the unsubscribe"){ expect(Unsubscribe.where(user_id: user.id, project_id: @project.id).count).to eq(0) }
     end
 
     context "when we do not have such unsubscribe" do
       before do
         post :create, user_id: user.id, locale: 'pt', user: { unsubscribes_attributes: {'1' => {subscribed:'0', project_id: @project.id, user_id: user.id}}}
       end
-      it("should create an unsubscribe"){ Unsubscribe.where(user_id: user.id, project_id: @project.id).count.should == 1 }
+      it("should create an unsubscribe"){ expect(Unsubscribe.where(user_id: user.id, project_id: @project.id).count).to eq(1) }
     end
   end
 

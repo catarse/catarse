@@ -1,4 +1,4 @@
-describe("ReviewForm", function() {
+RSpec.describe("ReviewForm", function() {
   var view;
 
   beforeEach(function() {
