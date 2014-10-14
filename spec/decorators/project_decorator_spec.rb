@@ -140,7 +140,7 @@ RSpec.describe ProjectDecorator do
 
   describe "#about_html" do
     subject{ project.about_html }
-    it{ is_expected.to eq('<p>Foo Bar <a href="http://www.foo.bar" target="_blank">http://www.foo.bar</a> &lt;javascript&gt;xss()&lt;/javascript&gt;<a target="_blank" href="http://click.here">Click here</a></p>') }
+    it{ is_expected.to eq('<p>Foo Bar <a class="alt-link" href="http://www.foo.bar" target="_blank">http://www.foo.bar</a> &lt;javascript&gt;xss()&lt;/javascript&gt;<a class="alt-link" target="_blank" href="http://click.here">Click here</a></p>')}
   end
 
   describe "#display_progress" do
@@ -170,50 +170,50 @@ RSpec.describe ProjectDecorator do
     let(:card_class){ "#{default_card} #{aditional}" }
     context "when online and reached goal" do
       before do
-        project.stub(:state).and_return('online')
-        project.stub(:reached_goal?).and_return(true)
+        allow(project).to receive(:state).and_return('online')
+        allow(project).to receive(:reached_goal?).and_return(true)
       end
       let(:aditional){ "card-success" }
-      it{ should == " " }
+      it{ is_expected.to eq(" ") }
     end
     context "when online and have not reached goal yet" do
       before do
-        project.stub(:state).and_return('online')
-        project.stub(:reached_goal?).and_return(false)
+        allow(project).to receive(:state).and_return('online')
+        allow(project).to receive(:reached_goal?).and_return(false)
       end
       it{ should == " " }
     end
     context "when failed" do
       before do
-        project.stub(:state).and_return('failed')
+        allow(project).to receive(:state).and_return('failed')
       end
       let(:aditional){ "card-error" }
       it{ should == card_class }
     end
     context "when in_analysis" do
       before do
-        project.stub(:state).and_return('in_analysis')
+        allow(project).to receive(:state).and_return('in_analysis')
       end
       let(:aditional){ "card-dark" }
       it{ should == card_class }
     end
     context "when draft" do
       before do
-        project.stub(:state).and_return('draft')
+        allow(project).to receive(:state).and_return('draft')
       end
       let(:aditional){ "card-dark" }
       it{ should == card_class }
     end
     context "when waiting funds" do
       before do
-        project.stub(:state).and_return('waiting_funds')
+        allow(project).to receive(:state).and_return('waiting_funds')
       end
       let(:aditional){ "card-waiting" }
       it{ should == card_class }
     end
     context "when successful" do
       before do
-        project.stub(:state).and_return('successful')
+        allow(project).to receive(:state).and_return('successful')
       end
       let(:aditional){ "card-success" }
       it{ should == card_class }
