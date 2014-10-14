@@ -10,6 +10,20 @@
           h4= t('.subtitle')
 
       #explore_results[data-projects-path=projects_path]
+        .follow-category
+          .category-info
+            h3 Category-name
+          .category-follow
+            p.following 
+              span.count
+                | 0
+              '  #{t('.following')}
+            a href="javascript:(void);" class='button small action follow-btn'
+              = t('.follow')
+            a href="javascript:(void);" class='button small negative unfollow-btn'
+              = t('.unfollow')
+
+          .clearfix
         .results &nbsp;
         .clearfix
         #loading= image_tag "loading.gif"
@@ -44,7 +58,15 @@
             ul
               - @categories.each_with_index do |category, index|
                 li
-                  a.explore-link[href="#by_category_id/#{category.id}"]
+                  a.explore-link[
+                    href="#by_category_id/#{category.id}" 
+                    data-name=(params[:locale] == 'en' ? category.name_en : category.name_pt)
+                    data-categoryid=category.id
+                    data-isfollowing=(current_user.try(:following_this_category?, category.id) ? 'true' : 'false') 
+                    data-followpath=subscribe_category_path(category)
+                    data-unfollowpath=unsubscribe_category_path(category)
+                    data-totalfollowers=category.users.count
+                    ]
                     .bootstrap-twitter
                       = category
                       ' 
