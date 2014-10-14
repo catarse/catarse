@@ -82,6 +82,10 @@ class User < ActiveRecord::Base
   scope :by_id, ->(id){ where(id: id) }
   scope :by_key, ->(key){ where('EXISTS(SELECT true FROM contributions WHERE contributions.user_id = users.id AND contributions.key ~* ?)', key) }
   scope :has_credits, -> { joins(:user_total).where('user_totals.credits > 0') }
+  scope :already_used_credits, -> {
+    has_credits.
+    where("EXISTS (SELECT true FROM contributions b WHERE b.credits AND b.state = 'confirmed' AND b.user_id = users.id)")
+  }
   scope :has_not_used_credits_last_month, -> { has_credits.
     where("NOT EXISTS (SELECT true FROM contributions b WHERE current_timestamp - b.created_at < '1 month'::interval AND b.credits AND b.state = 'confirmed' AND b.user_id = users.id)")
   }
