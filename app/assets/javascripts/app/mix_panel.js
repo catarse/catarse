@@ -25,14 +25,6 @@ App.addChild('MixPanel', {
     this.trackPageVisit('projects', 'show', 'Visited project page');
     this.trackPageVisit('explore', 'index', 'Explored projects');
     this.trackPageLoad('contributions', 'edit', 'Selected reward');
-    this.trackOnPage('contributions', 'show', function(){
-      var contribution_data = self.$('.contribution_data')
-
-      self.track('Finished contribution', {
-        payment_method: contribution_data.data('payment_method'),
-        payment_choice: contribution_data.data('payment_choice')
-      });
-    });
   },
 
   trackPageLoad: function(controller, action, text){
