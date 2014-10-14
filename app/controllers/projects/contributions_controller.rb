@@ -78,19 +78,23 @@ class Projects::ContributionsController < ApplicationController
   end
 
   def avaiable_payment_engines
-    if parent.using_pagarme?
-      engines = PaymentEngines.engines.select do |engine|
-        engine if engine.name == 'Pagarme'
-      end
-    else
-      engines = PaymentEngines.engines.inject([]) do |total, item|
-        if item.name == 'Credits' && current_user.credits > 0
-          total << item
-        elsif !item.name.match(/(Credits|Pagarme)/)
-          total << item
-        end
+    engines = []
 
-        total
+    if resource.value < 10
+      engines.push PaymentEngines.find_engine('Credits')
+    else
+      if parent.using_pagarme?
+        engines.push PaymentEngines.find_engine('Pagarme')
+      else
+        engines = PaymentEngines.engines.inject([]) do |total, item|
+          if item.name == 'Credits' && current_user.credits > 0
+            total << item
+          elsif !item.name.match(/(Credits|Pagarme)/)
+            total << item
+          end
+
+          total
+        end
       end
     end
 

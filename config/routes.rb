@@ -45,6 +45,7 @@ Catarse::Application.routes.draw do
 #  mount CatarseWepay::Engine => "/", as: :catarse_wepay
 
   get '/post_preview' => 'post_preview#show', as: :post_preview
+  resources :auto_complete_projects, only: [:index]
   resources :projects, only: [:index, :create, :update, :new, :show] do
     resources :posts, controller: 'projects/posts', only: [ :index, :create, :destroy ]
     resources :rewards, only: [ :index, :create, :update, :destroy, :new, :edit ] do

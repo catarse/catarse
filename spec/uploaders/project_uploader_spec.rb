@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe ProjectUploader do
+RSpec.describe ProjectUploader do
   include CarrierWave::Test::Matchers
   let(:project){ FactoryGirl.create(:project) }
 
@@ -17,21 +17,21 @@ describe ProjectUploader do
 
   describe '#project_thumb' do
     subject{ @uploader.project_thumb }
-    it{ should have_dimensions(220, 172) }
+    it{ is_expected.to have_dimensions(220, 172) }
   end
 
   describe '#project_thumb' do
     subject{ @uploader.project_thumb_small }
-    it{ should have_dimensions(85, 67) }
+    it{ is_expected.to have_dimensions(85, 67) }
   end
 
   describe '#project_thumb' do
     subject{ @uploader.project_thumb_facebook }
-    it{ should have_dimensions(512, 400) }
+    it{ is_expected.to have_dimensions(512, 400) }
   end
 
   describe "#store_dir" do
     subject{ @uploader.store_dir }
-    it{ should == "uploads/project/uploaded_image/#{project.id}" }
+    it{ is_expected.to eq("uploads/project/uploaded_image/#{project.id}") }
   end
 end

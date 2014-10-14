@@ -1,14 +1,14 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe Channels::Admin::Reports::SubscriberReportsController do
+RSpec.describe Channels::Admin::Reports::SubscriberReportsController, type: :controller do
   subject{ response }
   let(:channel){ create(:channel) }
   let(:admin) { create(:user, admin: false) }
 
   before do
     admin.channel = channel
-    controller.stub(:current_user).and_return(admin)
-    request.stub(:subdomain).and_return(channel.permalink)
+    allow(controller).to receive(:current_user).and_return(admin)
+    allow(request).to receive(:subdomain).and_return(channel.permalink)
   end
 
   describe "GET index" do
@@ -18,7 +18,7 @@ describe Channels::Admin::Reports::SubscriberReportsController do
       get :index, locale: :pt, format: :csv
     end
 
-    it{ should be_successful }
+    it{ is_expected.to be_successful }
   end
 end
 

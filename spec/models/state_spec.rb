@@ -1,12 +1,12 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe State do
+RSpec.describe State, type: :model do
   subject { create(:state) }
 
   describe "validations" do
     %w[name acronym].each do |field|
-      it{ should validate_presence_of field }
-      it{ should validate_uniqueness_of field }
+      it{ is_expected.to validate_presence_of field }
+      it{ is_expected.to validate_uniqueness_of field }
     end
   end
 end

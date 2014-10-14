@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe User do
+RSpec.describe User, type: :model do
   let(:user){ create(:user) }
   let(:unfinished_project){ create(:project, state: 'online') }
   let(:successful_project){ create(:project, state: 'online') }
@@ -8,29 +8,29 @@ describe User do
   let(:facebook_provider){ create :oauth_provider, name: 'facebook' }
 
   describe "associations" do
-    it{ should have_many :contributions }
-    it{ should have_many :projects }
-    it{ should have_many :notifications }
-    it{ should have_many :project_posts }
-    it{ should have_many :unsubscribes }
-    it{ should have_many :authorizations }
-    it{ should have_many :channels_subscribers }
-    it{ should have_one :user_total }
-    it{ should have_one :bank_account }
-    it{ should belong_to :channel }
-    it{ should belong_to :country }
-    it{ should have_and_belong_to_many :subscriptions }
+    it{ is_expected.to have_many :contributions }
+    it{ is_expected.to have_many :projects }
+    it{ is_expected.to have_many :notifications }
+    it{ is_expected.to have_many :project_posts }
+    it{ is_expected.to have_many :unsubscribes }
+    it{ is_expected.to have_many :authorizations }
+    it{ is_expected.to have_many :channels_subscribers }
+    it{ is_expected.to have_one :user_total }
+    it{ is_expected.to have_one :bank_account }
+    it{ is_expected.to belong_to :channel }
+    it{ is_expected.to belong_to :country }
+    it{ is_expected.to have_and_belong_to_many :subscriptions }
   end
 
   describe "validations" do
     before{ user }
-    it{ should allow_value('foo@bar.com').for(:email) }
-    it{ should_not allow_value('foo').for(:email) }
-    it{ should_not allow_value('foo@bar').for(:email) }
-    it{ should allow_value('a'.center(139)).for(:bio) }
-    it{ should allow_value('a'.center(140)).for(:bio) }
-    it{ should_not allow_value('a'.center(141)).for(:bio) }
-    it{ should validate_uniqueness_of(:email) }
+    it{ is_expected.to allow_value('foo@bar.com').for(:email) }
+    it{ is_expected.not_to allow_value('foo').for(:email) }
+    it{ is_expected.not_to allow_value('foo@bar').for(:email) }
+    it{ is_expected.to allow_value('a'.center(139)).for(:bio) }
+    it{ is_expected.to allow_value('a'.center(140)).for(:bio) }
+    it{ is_expected.not_to allow_value('a'.center(141)).for(:bio) }
+    it{ is_expected.to validate_uniqueness_of(:email) }
   end
 
   describe ".find_active!" do
@@ -52,7 +52,7 @@ describe User do
       create(:user, deactivated_at: Time.now)
     end
 
-    it{ should eq [user] }
+    it{ is_expected.to eq [user] }
   end
 
   describe ".has_credits" do
@@ -65,7 +65,7 @@ describe User do
         @u = b.user
         b = create(:contribution, state: 'confirmed', value: 100, project: successful_project)
       end
-      it{ should == [@u] }
+      it{ is_expected.to eq([@u]) }
     end
   end
 
@@ -77,7 +77,7 @@ describe User do
         b = create(:contribution, state: 'confirmed', value: 100, credits: true)
         @u = b.user
       end
-      it{ should == [] }
+      it{ is_expected.to eq([]) }
     end
     context "when he has not used credits in the last month" do
       before do
@@ -85,7 +85,7 @@ describe User do
         failed_project.update_attributes state: 'failed'
         @u = b.user
       end
-      it{ should == [@u] }
+      it{ is_expected.to eq([@u]) }
     end
   end
 
@@ -104,7 +104,7 @@ describe User do
       p.save!
     end
     subject{ User.by_payer_email 'foo@bar.com' }
-    it{ should == [@u] }
+    it{ is_expected.to eq([@u]) }
   end
 
   describe ".by_key" do
@@ -121,7 +121,7 @@ describe User do
       b.save!
     end
     subject{ User.by_key 'abc' }
-    it{ should == [@u] }
+    it{ is_expected.to eq([@u]) }
   end
 
   describe ".by_id" do
@@ -130,7 +130,7 @@ describe User do
       create(:user)
     end
     subject{ User.by_id @u.id }
-    it{ should == [@u] }
+    it{ is_expected.to eq([@u]) }
   end
 
   describe ".by_name" do
@@ -139,7 +139,7 @@ describe User do
       create(:user, name: 'Baz Qux')
     end
     subject{ User.by_name 'Bar' }
-    it{ should == [@u] }
+    it{ is_expected.to eq([@u]) }
   end
 
   describe ".by_email" do
@@ -148,7 +148,7 @@ describe User do
       create(:user, email: 'another_email@bar.com')
     end
     subject{ User.by_email 'foo@bar' }
-    it{ should == [@u] }
+    it{ is_expected.to eq([@u]) }
   end
 
   describe ".who_contributed_project" do
@@ -158,7 +158,7 @@ describe User do
       create(:contribution, state: 'confirmed', project: successful_project, user: @contribution.user)
       create(:contribution, state: 'pending', project: successful_project)
     end
-    it{ should == [@contribution.user] }
+    it{ is_expected.to eq([@contribution.user]) }
   end
 
   describe ".create" do
@@ -179,7 +179,7 @@ describe User do
 
     context "when user already has a locale" do
       before do
-        user.should_not_receive(:update_attributes).with(locale: 'pt')
+        expect(user).not_to receive(:update_attributes).with(locale: 'pt')
       end
 
       it { user.change_locale('pt') }
@@ -187,7 +187,7 @@ describe User do
 
     context "when locale is diff from the user locale" do
       before do
-        user.should_receive(:update_attributes).with(locale: 'en')
+        expect(user).to receive(:update_attributes).with(locale: 'en')
       end
 
       it { user.change_locale('en') }
@@ -232,7 +232,7 @@ describe User do
     end
 
     it "should set all contributions as anonymous" do
-      expect(@contribution.reload.anonymous).to be_true
+      expect(@contribution.reload.anonymous).to eq(true)
     end
 
     it "should set reatiactivate_token" do
@@ -254,9 +254,10 @@ describe User do
       create(:contribution, state: 'confirmed', user: user, project: project)
       create(:contribution, state: 'confirmed', user: user, project: project)
       create(:contribution, state: 'confirmed', user: user)
+      user.reload
     end
 
-    it { should == 2}
+    it { is_expected.to eq(2)}
   end
 
   describe "#created_today?" do
@@ -264,36 +265,36 @@ describe User do
 
     context "when user is created today and not sign in yet" do
       before do
-        user.stub(:created_at).and_return(Date.today)
-        user.stub(:sign_in_count).and_return(0)
+        allow(user).to receive(:created_at).and_return(Date.today)
+        allow(user).to receive(:sign_in_count).and_return(0)
       end
 
-      it { should be_true }
+      it { is_expected.to eq(true) }
     end
 
     context "when user is created today and already signed in more that once time" do
       before do
-        user.stub(:created_at).and_return(Date.today)
-        user.stub(:sign_in_count).and_return(2)
+        allow(user).to receive(:created_at).and_return(Date.today)
+        allow(user).to receive(:sign_in_count).and_return(2)
       end
 
-      it { should be_false }
+      it { is_expected.to eq(false) }
     end
 
     context "when user is created yesterday and not sign in yet" do
       before do
-        user.stub(:created_at).and_return(Date.yesterday)
-        user.stub(:sign_in_count).and_return(1)
+        allow(user).to receive(:created_at).and_return(Date.yesterday)
+        allow(user).to receive(:sign_in_count).and_return(1)
       end
 
-      it { should be_false }
+      it { is_expected.to eq(false) }
     end
   end
 
   describe "#to_analytics_json" do
     subject{ user.to_analytics_json }
     it do
-      should == {
+      is_expected.to eq({
         id: user.id,
         email: user.email,
         total_contributed_projects: user.total_contributed_projects,
@@ -301,7 +302,7 @@ describe User do
         last_sign_in_at: user.last_sign_in_at,
         sign_in_count: user.sign_in_count,
         created_today: user.created_today?
-      }.to_json
+      }.to_json)
     end
   end
 
@@ -322,7 +323,7 @@ describe User do
 
     subject{ @u.credits }
 
-    it{ should == 50.0 }
+    it{ is_expected.to eq(50.0) }
   end
 
   describe "#update_attributes" do
@@ -330,7 +331,7 @@ describe User do
       before do
         user.update_attributes moip_login: 'test'
       end
-      it("should perform the update"){ user.moip_login.should == 'test' }
+      it("should perform the update"){ expect(user.moip_login).to eq('test') }
     end
   end
 
@@ -341,17 +342,17 @@ describe User do
       create(:contribution, state: 'confirmed', user: other_contribution.user, project: unfinished_project)
       create(:contribution, state: 'confirmed', user: user, project: other_contribution.project)
     end
-    it{ should == [unfinished_project]}
+    it{ is_expected.to eq([unfinished_project])}
   end
 
   describe "#posts_subscription" do
     subject{user.posts_subscription}
     context "when user is subscribed to all projects" do
-      it{ should be_new_record }
+      it{ is_expected.to be_new_record }
     end
     context "when user is unsubscribed from all projects" do
       before { @u = create(:unsubscribe, project_id: nil, user_id: user.id )}
-      it{ should == @u}
+      it{ is_expected.to eq(@u)}
     end
   end
 
@@ -362,7 +363,7 @@ describe User do
       create(:contribution, user: user, project: @p1)
       @u1 = create(:unsubscribe, project_id: @p1.id, user_id: user.id )
     end
-    it{ should == [@u1]}
+    it{ is_expected.to eq([@u1])}
   end
 
   describe "#contributed_projects" do
@@ -372,7 +373,7 @@ describe User do
       create(:contribution, user: user, project: @p1)
       create(:contribution, user: user, project: @p1)
     end
-    it{should == [@p1]}
+    it{is_expected.to eq([@p1])}
   end
 
   describe "#failed_contributed_projects" do
@@ -384,18 +385,18 @@ describe User do
       create(:contribution, user: user, project: @online_project)
       @failed_project.update_columns state: 'failed'
     end
-    it{should == [@failed_project]}
+    it{is_expected.to eq([@failed_project])}
   end
 
   describe "#fix_facebook_link" do
     subject{ user.facebook_link }
     context "when user provides invalid url" do
       let(:user){ create(:user, facebook_link: 'facebook.com/foo') }
-      it{ should == 'http://facebook.com/foo' }
+      it{ is_expected.to eq('http://facebook.com/foo') }
     end
     context "when user provides valid url" do
       let(:user){ create(:user, facebook_link: 'http://facebook.com/foo') }
-      it{ should == 'http://facebook.com/foo' }
+      it{ is_expected.to eq('http://facebook.com/foo') }
     end
   end
 
@@ -408,11 +409,11 @@ describe User do
         create(:contribution, project: project, state: 'confirmed', user: user)
       end
 
-      it { should be_true }
+      it { is_expected.to eq(true) }
     end
 
     context "when user don't have contributions for the project" do
-      it { should be_false }
+      it { is_expected.to eq(false) }
     end
   end
 end

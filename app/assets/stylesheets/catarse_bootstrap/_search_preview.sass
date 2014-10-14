@@ -1,0 +1,79 @@
+.search-pre-result
+  border-radius: 5px
+  display: none
+  width: 310px
+  background-color: white
+  padding: 10px
+  border: 1px #ededed solid
+  position: absolute
+  z-index: 9999
+  margin-top: 5px
+  .see-more-projects
+    a
+      display: block
+      clear: both
+      background: #f8f8f8
+      text-align: center
+      font-size: 13px
+      border-radius: 5px
+      font-weight: bolder
+      color: $green
+      padding-top: 5px
+      padding-bottom: 5px
+  ul.result
+    list-style: none
+    padding: 0
+    li.auto-complete-project
+      border: 1px #ededed solid
+      clear: both
+      float: left
+      width: 285px
+      padding: 5px
+      background: #f7f7f7
+      border-radius: 5px
+      margin-bottom: 10px
+      .pledged, .time
+        font-size: 12px
+        color: #777
+        padding: 5px 0
+      .time
+        text-align: left
+        float: left
+      .pledged
+        text-align: right
+        float: right
+
+      .image
+        width: 50px
+        height: 50px
+        float: left
+        img
+          border-radius: 5px
+      .project_info
+        width: 213px
+        float: left
+        margin-left: 10px
+        h6
+          text-align: left
+          padding: 4px 0 0
+          margin: 0
+          color: #333
+          font-weight: bolder
+          width: 100%
+          font-size: 13px
+          line-height: 1
+
+        .progress-bar
+          clear: both !important
+          width: 100%
+          #progress_wrapper, #progress
+            height: .4em
+            border-radius: 6px
+            box-shadow: inset 0 0 4px lighten(gray, 15%)
+          #progress
+            background: $green
+            +background-image(linear-gradient(0deg,lighten($green, 5%) 0%,$green 1%,lighten($green, 5%) 100%,lighten($green, 15%) 100%))
+
+
+
+
