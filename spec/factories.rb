@@ -136,6 +136,21 @@ FactoryGirl.define do
     acronym "RJ"
   end
 
+  factory :bank do
+    name "Foo"
+    code "000"
+  end
+
+  factory :bank_account do |f|
+    f.association :user, factory: :user
+    f.association :bank, factory: :bank
+    owner_name "Foo"
+    owner_document "000"
+    account_digit "1"
+    agency "1"
+    account "1"
+  end
+
   factory :channel_post do |f|
     f.association :user, factory: :user
     f.association :channel, factory: :channel
