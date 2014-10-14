@@ -1,10 +1,10 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe Concerns::SocialHelpersHandler do
+RSpec.describe Concerns::SocialHelpersHandler, type: :controller do
   render_views
   before do
     [:render_facebook_sdk, :render_facebook_like, :render_twitter].each do |method|
-      ApplicationController.any_instance.unstub(method)
+      allow_any_instance_of(ApplicationController).to receive(method).and_call_original
     end
     @controller = ApplicationController.new
   end

@@ -1,46 +1,20 @@
-# This file is copied to spec/ when you run 'rails generate rspec:install'
-ENV["RAILS_ENV"] ||= 'test'
-require 'coveralls'
-Coveralls.wear!('rails')
-
-require File.expand_path("../../config/environment", __FILE__)
-require 'rspec/rails'
-require 'sidekiq/testing'
-require 'fakeweb'
-require "pundit/rspec"
-
-# Requires supporting ruby files with custom matchers and macros, etc,
-# in spec/support/ and its subdirectories.
-Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
-
-def fixture_path(basename)
-  "spec/fixtures/#{basename}"
-end
-
-
-# Checks for pending migrations before tests are run.
-# If you are not using ActiveRecord, you can remove this line.
-ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
-
 RSpec.configure do |config|
-  config.include FactoryGirl::Syntax::Methods
-  config.include ActionView::Helpers::TextHelper
 
-  # If you're not using ActiveRecord, or you'd prefer not to run each of your
-  # examples within a transaction, remove the following line or assign false
-  # instead of true.
-  config.use_transactional_fixtures = false
-
-  # If true, the base class of anonymous controllers will be inferred
-  # automatically. This will be the default behavior in future versions of
-  # rspec-rails.
-  #config.infer_base_class_for_anonymous_controllers = false
-
-  # Run specs in random order to surface order dependencies. If you find an
-  # order dependency and want to debug it, you can fix the order by providing
-  # the seed, which is printed after each run.
-  #     --seed 1234
-  config.order = "random"
+  config.disable_monkey_patching!
+  config.order = :random
+  Kernel.srand config.seed
+  config.filter_run focus: true
+  config.run_all_when_everything_filtered = true
+  config.expect_with :rspec do |expectations|
+    expectations.syntax = :expect
+  end
+  config.mock_with :rspec do |mocks|
+    mocks.syntax = :expect
+    mocks.verify_partial_doubles = true
+  end
+  if config.files_to_run.one?
+    config.default_formatter = 'doc'
+  end
 
   config.before(:suite) do
     ActiveRecord::Base.connection.execute "SET client_min_messages TO warning;"
@@ -55,7 +29,7 @@ RSpec.configure do |config|
   end
 
   config.before(:each) do
-    if example.metadata[:type] == :feature
+    if RSpec.current_example.metadata[:type] == :feature
       DatabaseCleaner.strategy = :truncation
     else
       DatabaseCleaner.strategy = :transaction
@@ -73,23 +47,21 @@ RSpec.configure do |config|
   [:controller, :feature].each do |spec_type|
     config.before(:each, type: spec_type) do
       [:detect_old_browsers, :render_facebook_sdk, :render_facebook_like, :render_twitter].each do |method|
-        ApplicationController.any_instance.stub(method)
+        allow_any_instance_of(ApplicationController).to receive(method)
       end
     end
   end
 
   # Stubs and configuration
   config.before(:each) do
-    Sidekiq::ScheduledSet.stub(:new).and_return({})
-    User.any_instance.stub(:subscribe_to_newsletter_list).and_return(true)
-    User.any_instance.stub(:unsubscribe_to_newsletter_list).and_return(true)
-    Project.any_instance.stub(:subscribe_to_list).and_return(true)
-    Project.any_instance.stub(:store_image_url).and_return('http://www.store_image_url.com')
-    ProjectObserver.any_instance.stub(:after_create)
-    UserObserver.any_instance.stub(:after_create)
-    Project.any_instance.stub(:download_video_thumbnail)
-    Calendar.any_instance.stub(:fetch_events_from)
-    Blog.stub(:fetch_last_posts).and_return([])
+    allow(Sidekiq::ScheduledSet).to receive(:new).and_return({})
+    allow_any_instance_of(User).to receive(:subscribe_to_newsletter_list).and_return(true)
+    allow_any_instance_of(Project).to receive(:subscribe_to_list).and_return(true)
+    allow_any_instance_of(ProjectObserver).to receive(:after_create)
+    allow_any_instance_of(UserObserver).to receive(:after_create)
+    allow_any_instance_of(Project).to receive(:download_video_thumbnail)
+    allow_any_instance_of(Calendar).to receive(:fetch_events_from)
+    allow(Blog).to receive(:fetch_last_posts).and_return([])
 
     # Default configurations
     CatarseSettings[:base_domain] = 'localhost'
@@ -103,8 +75,8 @@ RSpec.configure do |config|
     UserNotifier.from_email       = CatarseSettings[:email_contact]
     UserNotifier.from_name        = CatarseSettings[:company_name]
 
-    Contribution.any_instance.stub(:payment_engine).and_return(PaymentEngines::Interface.new)
-    MixpanelObserver.any_instance.stub(tracker: double('mixpanel tracker', track: nil))
+    allow_any_instance_of(Contribution).to receive(:payment_engine).and_return(PaymentEngines::Interface.new)
+    allow_any_instance_of(MixpanelObserver).to receive_messages(tracker: double('mixpanel tracker', track: nil))
   end
 end
 
@@ -113,11 +85,11 @@ RSpec::Matchers.define :custom_permit do |action|
     policy.public_send("#{action}")
   end
 
-  failure_message_for_should do |policy|
+  failure_message do |policy|
     "#{policy.class} does not permit #{action} on #{policy.record} for #{policy.user.inspect}."
   end
 
-  failure_message_for_should_not do |policy|
+  failure_message_when_negated do |policy|
     "#{policy.class} does not forbid #{action} on #{policy.record} for #{policy.user.inspect}."
   end
 end

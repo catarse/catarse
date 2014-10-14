@@ -1,14 +1,13 @@
 # coding: utf-8
 
-require 'spec_helper'
+require 'rails_helper'
 
-describe "Projects" do
+RSpec.describe "Projects", type: :feature do
   let(:project){ build(:project) }
 
   before {
     #NOTE: Weird bug on edit project test
     RoutingFilter.active = true
-    ProjectsController.any_instance.stub(:last_tweets).and_return([])
   }
   before {
     CatarseSettings[:base_url] = 'http://catarse.me'
@@ -25,7 +24,7 @@ describe "Projects" do
 
     it "should show recent projects" do
       recent = all(".recents_projects.list .project-box")
-      recent.should have(1).items
+      expect(recent.size).to eq(1)
     end
   end
 
@@ -38,7 +37,7 @@ describe "Projects" do
     end
     it "should show recommended projects" do
       recommended = all(".results .project-box")
-      recommended.should have(1).items
+      expect(recommended.size).to eq(1)
     end
   end
 
@@ -51,7 +50,7 @@ describe "Projects" do
     end
     it "should show recommended projects" do
       recommended = all(".results .project-box")
-      recommended.should have(1).items
+      expect(recommended.size).to eq(1)
     end
   end
 
@@ -65,7 +64,7 @@ describe "Projects" do
     end
 
     it "should present the form and save the data" do
-      all("form#project_form").should have(1).items
+      expect(all("form#project_form").size).to eq(1)
       [
         'permalink', 'name', 'video_url',
         'headline', 'goal', 'online_days',
@@ -86,7 +85,7 @@ describe "Projects" do
     end
 
     it 'edit tab should be present' do
-      page.should have_selector('a#edit_link')
+      expect(page).to have_selector('a#edit_link')
     end
   end
 end

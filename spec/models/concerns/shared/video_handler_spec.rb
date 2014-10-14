@@ -1,17 +1,17 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe Shared::VideoHandler do
+RSpec.describe Shared::VideoHandler, type: :model do
   let(:project) { create(:project) }
   subject { project }
 
   describe '.validations' do
-    it{ should allow_value('http://vimeo.com/12111').for(:video_url) }
-    it{ should allow_value('vimeo.com/12111').for(:video_url) }
-    it{ should allow_value('https://vimeo.com/12111').for(:video_url) }
-    it{ should allow_value('http://youtube.com/watch?v=UyU-xI').for(:video_url) }
-    it{ should allow_value('youtube.com/watch?v=UyU-xI').for(:video_url) }
-    it{ should allow_value('https://youtube.com/watch?v=UyU-xI').for(:video_url) }
-    it{ should_not allow_value('http://www.foo.bar').for(:video_url) }
+    it{ is_expected.to allow_value('http://vimeo.com/12111').for(:video_url) }
+    it{ is_expected.to allow_value('vimeo.com/12111').for(:video_url) }
+    it{ is_expected.to allow_value('https://vimeo.com/12111').for(:video_url) }
+    it{ is_expected.to allow_value('http://youtube.com/watch?v=UyU-xI').for(:video_url) }
+    it{ is_expected.to allow_value('youtube.com/watch?v=UyU-xI').for(:video_url) }
+    it{ is_expected.to allow_value('https://youtube.com/watch?v=UyU-xI').for(:video_url) }
+    it{ is_expected.not_to allow_value('http://www.foo.bar').for(:video_url) }
   end
 
   describe '#display_video_embed_url' do
@@ -28,7 +28,7 @@ describe Shared::VideoHandler do
         project.reload
       end
 
-      it { should == '//player.vimeo.com/video/17298435?title=0&byline=0&portrait=0&autoplay=0' }
+      it { is_expected.to eq('//player.vimeo.com/video/17298435?title=0&byline=0&portrait=0&autoplay=0') }
     end
 
     context 'source has an Youtube video' do
@@ -38,7 +38,7 @@ describe Shared::VideoHandler do
         project.reload
       end
 
-      it { should == '//www.youtube.com/embed/Brw7bzU_t4c?title=0&byline=0&portrait=0&autoplay=0' }
+      it { is_expected.to eq('//www.youtube.com/embed/Brw7bzU_t4c?title=0&byline=0&portrait=0&autoplay=0') }
     end
 
     context 'source does not have a video' do
@@ -47,7 +47,7 @@ describe Shared::VideoHandler do
       end
       let(:project) { create(:project, video_url: "", goal: 3000) }
 
-      it { should be_nil }
+      it { is_expected.to be_nil }
     end
   end
 
@@ -77,7 +77,7 @@ describe Shared::VideoHandler do
 
       it 'caches the response object' do
         video_obj = VideoInfo.get(project.video_url)
-        VideoInfo.should_receive(:get).once.and_return(video_obj)
+        expect(VideoInfo).to receive(:get).once.and_return(video_obj)
         5.times { project.video }
       end
     end
