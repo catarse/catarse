@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe ProjectObserver do
+RSpec.describe ProjectObserver do
   let(:contribution){ create(:contribution, key: 'should be updated', payment_method: 'should be updated', state: 'confirmed', confirmed_at: nil) }
   let(:project) { create(:project, goal: 3000) }
   let(:channel) { create(:channel) }
@@ -20,8 +20,8 @@ describe ProjectObserver do
 
     context "when change the online_date" do
       before do
-        project.should_receive(:remove_scheduled_job).with('ProjectSchedulerWorker')
-        ProjectSchedulerWorker.should_receive(:perform_at)
+        expect(project).to receive(:remove_scheduled_job).with('ProjectSchedulerWorker')
+        expect(ProjectSchedulerWorker).to receive(:perform_at)
       end
 
       it { project.save }
@@ -30,19 +30,19 @@ describe ProjectObserver do
 
   describe "after_create" do
     before do
-      ProjectObserver.any_instance.should_receive(:after_create).and_call_original
+      expect_any_instance_of(ProjectObserver).to receive(:after_create).and_call_original
       project
     end
 
     it "should create notification for project owner" do
-      ProjectNotification.where(user_id: project.user.id, template_name: 'project_received', project_id: project.id).first.should_not be_nil
+      expect(ProjectNotification.where(user_id: project.user.id, template_name: 'project_received', project_id: project.id).first).not_to be_nil
     end
 
     context "after creating the project" do
       let(:project) { build(:project) }
 
       before do
-        InactiveDraftWorker.should_receive(:perform_at)
+        expect(InactiveDraftWorker).to receive(:perform_at)
       end
 
       it "should call perform at in inactive draft worker" do
@@ -62,7 +62,7 @@ describe ProjectObserver do
     end
 
     it "should create notification for catarse admin" do
-      ProjectNotification.where(user_id: user.id, template_name: :new_draft_project, project_id: project.id).first.should_not be_nil
+      expect(ProjectNotification.where(user_id: user.id, template_name: :new_draft_project, project_id: project.id).first).not_to be_nil
     end
   end
 
@@ -77,7 +77,7 @@ describe ProjectObserver do
       end
 
       it "should call notify using channel data" do
-        ProjectNotification.should_receive(:notify_once).with(
+        expect(ProjectNotification).to receive(:notify_once).with(
           :project_visible_channel,
           project.user,
           project,
@@ -93,11 +93,11 @@ describe ProjectObserver do
     context "when project is approved" do
       before do
         project.update_attributes state: 'in_analysis'
-        ProjectDownloaderWorker.should_receive(:perform_async).with(project.id).never
+        expect(ProjectDownloaderWorker).to receive(:perform_async).with(project.id).never
       end
 
       it "should call notify and do not call download_video_thumbnail" do
-        ProjectNotification.should_receive(:notify_once).with(
+        expect(ProjectNotification).to receive(:notify_once).with(
           :project_visible,
           project.user,
           project,
@@ -112,9 +112,9 @@ describe ProjectObserver do
 
     context "when video_url changes" do
       before do
-        ProjectDownloaderWorker.should_receive(:perform_async).with(project.id).at_least(1)
-        ProjectNotification.should_receive(:notify).never
-        ProjectNotification.should_receive(:notify_once).never
+        expect(ProjectDownloaderWorker).to receive(:perform_async).with(project.id).at_least(1)
+        expect(ProjectNotification).to receive(:notify).never
+        expect(ProjectNotification).to receive(:notify_once).never
       end
 
       it "should call project downloader service and do not call create_notification" do
@@ -130,7 +130,7 @@ describe ProjectObserver do
 
     before do
       create(:contribution, project: project, value: 200, state: 'confirmed')
-      ProjectNotification.should_receive(:notify_once).with(
+      expect(ProjectNotification).to receive(:notify_once).with(
         :project_in_waiting_funds,
         project.user,
         project,
@@ -171,7 +171,7 @@ describe ProjectObserver do
       before do
         contribution
         project.update_attributes state: 'waiting_funds'
-        ProjectNotification.should_receive(:notify_once).at_least(:once)
+        expect(ProjectNotification).to receive(:notify_once).at_least(:once)
         contribution.save!
         project.finish!
       end
@@ -184,7 +184,7 @@ describe ProjectObserver do
       before do
         contribution
         project.update_attributes state: 'waiting_funds'
-        ProjectNotification.should_receive(:notify_once).at_least(:once)
+        expect(ProjectNotification).to receive(:notify_once).at_least(:once)
         contribution.save!
         project.finish!
       end
@@ -201,7 +201,7 @@ describe ProjectObserver do
       end
 
       before do
-        ContributionNotification.should_receive(:notify_once).at_least(1)
+        expect(ContributionNotification).to receive(:notify_once).at_least(1)
         project.finish!
       end
       it("should notify the project contributions and owner"){ subject }
@@ -213,13 +213,13 @@ describe ProjectObserver do
     let(:project){ create(:project, goal: 30, online_days: 1, online_date: Time.now - 8.days, state: 'waiting_funds') }
 
     before do
-      project.stub(:reached_goal?).and_return(true)
-      project.stub(:in_time_to_wait?).and_return(false)
+      allow(project).to receive(:reached_goal?).and_return(true)
+      allow(project).to receive(:in_time_to_wait?).and_return(false)
       project.finish
     end
 
     it "should create notification for project owner" do
-      ProjectNotification.where(user_id: project.user.id, template_name: 'project_success', project_id: project.id).first.should_not be_nil
+      expect(ProjectNotification.where(user_id: project.user.id, template_name: 'project_success', project_id: project.id).first).not_to be_nil
     end
   end
 
@@ -232,7 +232,7 @@ describe ProjectObserver do
       end
 
       it "should create notification for project owner" do
-        ProjectNotification.where(user_id: project.user.id, template_name: 'project_visible', project_id: project.id).first.should_not be_nil
+        expect(ProjectNotification.where(user_id: project.user.id, template_name: 'project_visible', project_id: project.id).first).not_to be_nil
       end
     end
 
@@ -243,7 +243,7 @@ describe ProjectObserver do
       end
 
       it "should create notification for project owner" do
-        ProjectNotification.where(user_id: project.user.id, template_name: 'project_visible_channel', project_id: project.id).first.should_not be_nil
+        expect(ProjectNotification.where(user_id: project.user.id, template_name: 'project_visible_channel', project_id: project.id).first).not_to be_nil
       end
     end
   end
@@ -256,7 +256,7 @@ describe ProjectObserver do
         project.reject
       end
       it "should create notification for project owner" do
-        ProjectNotification.where(user_id: project.user.id, template_name: 'project_rejected', project_id: project.id).first.should_not be_nil
+        expect(ProjectNotification.where(user_id: project.user.id, template_name: 'project_rejected', project_id: project.id).first).not_to be_nil
       end
     end
 
@@ -267,7 +267,7 @@ describe ProjectObserver do
       end
 
       it "should create notification for project owner" do
-        ProjectNotification.where(user_id: project.user.id, template_name: 'project_rejected_channel', project_id: project.id).first.should_not be_nil
+        expect(ProjectNotification.where(user_id: project.user.id, template_name: 'project_rejected_channel', project_id: project.id).first).not_to be_nil
       end
     end
 
@@ -280,13 +280,13 @@ describe ProjectObserver do
       CatarseSettings[:email_payments] = 'foo@foo.com'
       CatarseSettings[:email_system] = 'foo2@foo.com'
       user
-      project.stub(:reached_goal?).and_return(true)
-      project.stub(:in_time_to_wait?).and_return(false)
+      allow(project).to receive(:reached_goal?).and_return(true)
+      allow(project).to receive(:in_time_to_wait?).and_return(false)
       project.finish
     end
 
     it "should create notification for admin" do
-      ProjectNotification.where(user_id: user.id, template_name: 'adm_project_deadline', project_id: project.id).first.should_not be_nil
+      expect(ProjectNotification.where(user_id: user.id, template_name: 'adm_project_deadline', project_id: project.id).first).not_to be_nil
     end
 
   end
@@ -297,13 +297,13 @@ describe ProjectObserver do
     before do
       CatarseSettings[:email_redbooth] = 'foo@foo.com'
       user
-      project.stub(:reached_goal?).and_return(true)
-      project.stub(:in_time_to_wait?).and_return(false)
+      allow(project).to receive(:reached_goal?).and_return(true)
+      allow(project).to receive(:in_time_to_wait?).and_return(false)
       project.finish
     end
 
     it "should create notification for admin" do
-      ProjectNotification.where(user_id: user.id, template_name: 'redbooth_task', project_id: project.id).first.should_not be_nil
+      expect(ProjectNotification.where(user_id: user.id, template_name: 'redbooth_task', project_id: project.id).first).not_to be_nil
     end
 
   end

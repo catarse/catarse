@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe Channels::ChannelsSubscribersController do
+RSpec.describe Channels::ChannelsSubscribersController, type: :controller do
   subject{ response }
   let(:channel_subscriber){ nil }
   let(:channel){ FactoryGirl.create(:channel) }
@@ -8,8 +8,8 @@ describe Channels::ChannelsSubscribersController do
   let(:current_user){ user }
 
   before do
-    request.stub(:subdomain).and_return(channel.permalink)
-    controller.stub(:current_user).and_return(current_user)
+    allow(request).to receive(:subdomain).and_return(channel.permalink)
+    allow(controller).to receive(:current_user).and_return(current_user)
   end
 
   describe "GET show" do
@@ -19,12 +19,12 @@ describe Channels::ChannelsSubscribersController do
     end
 
     context "when user is signed in" do 
-      it{ should redirect_to root_path }
+      it{ is_expected.to redirect_to root_path }
     end
 
     context "when no user is signed in" do 
       let(:current_user){ nil }
-      it{ should redirect_to new_user_registration_path }
+      it{ is_expected.to redirect_to new_user_registration_path }
     end
   end
 
@@ -35,12 +35,12 @@ describe Channels::ChannelsSubscribersController do
     end
 
     context "when signed in user owns the subscription" do
-      it{ should redirect_to root_path }
+      it{ is_expected.to redirect_to root_path }
     end
 
     context "when signed in user does not own the subscription" do
       let(:current_user){ FactoryGirl.create(:user) }
-      it{ should_not be_successful }
+      it{ is_expected.not_to be_successful }
     end
   end
 end

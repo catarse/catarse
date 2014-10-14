@@ -1,5 +1,5 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe UserTotal do
-  pending "put some tests here"
+RSpec.describe UserTotal, type: :model do
+  skip "put some tests here"
 end

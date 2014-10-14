@@ -1,0 +1,14 @@
+li.auto-complete-project
+  = link_to project_by_slug_path(project.permalink), title: project.name do
+    .image = image_tag(project.display_image, size: '50x50')
+    .project_info
+      h6= truncate(project.name, lenght: 34)
+      .time
+        - unless project.expired?
+          = t('projects.project.time_remaining_html', count: project.time_to_go[:time], unit: project.time_to_go[:unit])
+        - else
+          span = t("projects.project.display_status.#{project.display_status}").capitalize        
+      .pledged
+        = t('projects.project.pledged_html', value: number_to_currency(project.pledged, precision: 0))
+      .clearfix
+      .progress-bar = project.progress_bar

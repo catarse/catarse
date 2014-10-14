@@ -1,4 +1,4 @@
-describe("Skull.View", function(){
+RSpec.describe("Skull.View", function(){
   var ViewClass, view, parent, root;
 
   beforeEach(function(){

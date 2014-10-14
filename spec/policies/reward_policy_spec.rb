@@ -1,6 +1,6 @@
-require "spec_helper"
+require 'rails_helper'
 
-describe RewardPolicy do
+RSpec.describe RewardPolicy do
   subject{ RewardPolicy }
 
   let(:policy){ RewardPolicy.new(user, reward) }
@@ -9,21 +9,21 @@ describe RewardPolicy do
 
   shared_examples_for "create permissions" do
     it "should deny access if user is nil" do
-      should_not permit(nil, reward)
+      is_expected.not_to permit(nil, reward)
     end
 
     it "should deny access if user is not project owner" do
-      should_not permit(User.new, reward)
+      is_expected.not_to permit(User.new, reward)
     end
 
     it "should permit access if user is project owner" do
       new_user = reward.project.user
-      should permit(new_user, reward)
+      is_expected.to permit(new_user, reward)
     end
 
     it "should permit access if user is admin" do
       admin = build(:user, admin: true)
-      should permit(admin, reward)
+      is_expected.to permit(admin, reward)
     end
   end
 
@@ -32,12 +32,12 @@ describe RewardPolicy do
 
     it "should deny access if reward has one contribution waiting for confirmation" do
       create(:contribution, project: reward.project, reward: reward, state: 'waiting_confirmation')
-      should_not permit(reward.project.user, reward)
+      is_expected.not_to permit(reward.project.user, reward)
     end
 
     it "should deny access if reward has one confirmed contribution" do
       create(:contribution, project: reward.project, reward: reward, state: 'confirmed')
-      should_not permit(reward.project.user, reward)
+      is_expected.not_to permit(reward.project.user, reward)
     end
   end
 
@@ -78,22 +78,22 @@ describe RewardPolicy do
 
         context "and want to update minimum_value" do
           let(:field){ :minimum_value }
-          it{ should be_false }
+          it{ is_expected.to eq(false) }
         end
 
         context "and want to update description" do
           let(:field){ :description }
-          it{ should be_true }
+          it{ is_expected.to eq(true) }
         end
 
         context "and want to update maximum_contributions" do
           let(:field){ :maximum_contributions }
-          it{ should be_true }
+          it{ is_expected.to eq(true) }
         end
 
         context "and want to update deliver_at" do
           let(:field){ :deliver_at}
-          it{ should be_true }
+          it{ is_expected.to eq(true) }
         end
       end
     end
@@ -103,22 +103,22 @@ describe RewardPolicy do
         let(:reward){ create(:reward, project: create(:project, state: state)) }
         context "and want to update minimum_value" do
           let(:field){ :minimum_value }
-          it{ should be_true }
+          it{ is_expected.to eq(true) }
         end
 
         context "and want to update description" do
           let(:field){ :description }
-          it{ should be_true }
+          it{ is_expected.to eq(true) }
         end
 
         context "and want to update maximum_contributions" do
           let(:field){ :maximum_contributions }
-          it{ should be_true }
+          it{ is_expected.to eq(true) }
         end
 
         context "and want to update deliver_at" do
           let(:field){ :deliver_at}
-          it{ should be_false }
+          it{ is_expected.to eq(false) }
         end
       end
     end
@@ -127,22 +127,22 @@ describe RewardPolicy do
       let(:reward){ create(:reward, project: create(:project, state: 'online')) }
       context "and want to update minimum_value" do
         let(:field){ :minimum_value }
-        it{ should be_true }
+        it{ is_expected.to eq(true) }
       end
 
       context "and want to update description" do
         let(:field){ :description }
-        it{ should be_true }
+        it{ is_expected.to eq(true) }
       end
 
       context "and want to update maximum_contributions" do
         let(:field){ :maximum_contributions }
-        it{ should be_true }
+        it{ is_expected.to eq(true) }
       end
 
       context "and want to update deliver_at" do
         let(:field){ :deliver_at }
-        it{ should be_true }
+        it{ is_expected.to eq(true) }
       end
     end
   end

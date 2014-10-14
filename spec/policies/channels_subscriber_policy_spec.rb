@@ -1,6 +1,6 @@
-require "spec_helper"
+require 'rails_helper'
 
-describe ChannelsSubscriberPolicy do
+RSpec.describe ChannelsSubscriberPolicy do
   subject{ ChannelsSubscriberPolicy }
 
   let(:subscription){ create(:channels_subscriber) }
@@ -8,20 +8,20 @@ describe ChannelsSubscriberPolicy do
 
   shared_examples_for "show permissions" do
     it "should deny access if user is nil" do
-      should_not permit(nil, subscription)
+      is_expected.not_to permit(nil, subscription)
     end
 
     it "should deny access if user is not updating his subscription" do
-      should_not permit(User.new, subscription)
+      is_expected.not_to permit(User.new, subscription)
     end
 
     it "should permit access if user is subscription owner" do
-      should permit(user, subscription)
+      is_expected.to permit(user, subscription)
     end
 
     it "should permit access if user is admin" do
       admin = build(:user, admin: true)
-      should permit(admin, subscription)
+      is_expected.to permit(admin, subscription)
     end
   end
 
