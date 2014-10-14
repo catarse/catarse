@@ -97,6 +97,10 @@ class User < ActiveRecord::Base
     self.active.where(id: id).first!
   end
 
+  def following_this_category?(category_id)
+    category_followers.pluck(:category_id).include?(category_id)
+  end
+
   def failed_contributed_projects
     contributed_projects.where(state: 'failed')
   end
