@@ -1,5 +1,7 @@
 class Category < ActiveRecord::Base
   has_many :projects
+  has_many :category_followers
+  has_many :users, through: :category_followers
 
   validates_presence_of :name_pt
   validates_uniqueness_of :name_pt
