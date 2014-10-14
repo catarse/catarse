@@ -1,11 +1,11 @@
 #encoding:utf-8
-require 'spec_helper'
+require 'rails_helper'
 
-describe UsersController do
+RSpec.describe UsersController, type: :controller do
   render_views
   subject{ response }
   before do
-    controller.stub(:current_user).and_return(current_user)
+    allow(controller).to receive(:current_user).and_return(current_user)
   end
 
   let(:successful_project){ create(:project, state: 'successful') }
@@ -33,7 +33,7 @@ describe UsersController do
         expect(user.reload.deactivated_at).to_not be_nil
       end
 
-      it { should redirect_to root_path  }
+      it { is_expected.to redirect_to root_path  }
     end
 
     context "when token is NOT valid" do
@@ -48,7 +48,7 @@ describe UsersController do
         expect(user.reload.deactivated_at).to_not be_nil
       end
 
-      it { should redirect_to root_path  }
+      it { is_expected.to redirect_to root_path  }
     end
 
     context "when token is valid" do
@@ -63,14 +63,14 @@ describe UsersController do
         expect(user.reload.deactivated_at).to be_nil
       end
 
-      it { should redirect_to root_path  }
+      it { is_expected.to redirect_to root_path  }
     end
   end
 
   describe "DELETE destroy" do
     context "when user is beign deactivated by admin" do
       before do
-        controller.unstub(:current_user)
+        allow(controller).to receive(:current_user).and_call_original
         sign_in(create(:user, admin: true))
         delete :destroy, id: user.id, locale: :pt
       end
@@ -83,12 +83,12 @@ describe UsersController do
         expect(controller.current_user).to_not be_nil
       end
 
-      it { should redirect_to root_path  }
+      it { is_expected.to redirect_to root_path  }
     end
 
     context "when user is loged" do
       before do
-        controller.unstub(:current_user)
+        allow(controller).to receive(:current_user).and_call_original
         sign_in(current_user)
         delete :destroy, id: user.id, locale: :pt
       end
@@ -101,7 +101,7 @@ describe UsersController do
         expect(controller.current_user).to be_nil
       end
 
-      it { should redirect_to root_path  }
+      it { is_expected.to redirect_to root_path  }
     end
 
     context "when user is not loged" do
@@ -114,7 +114,7 @@ describe UsersController do
         expect(user.reload.deactivated_at).to be_nil
       end
 
-      it { should_not redirect_to user_path(user, anchor: 'settings')  }
+      it { is_expected.not_to redirect_to user_path(user, anchor: 'settings')  }
     end
   end
 
@@ -124,7 +124,7 @@ describe UsersController do
         get :unsubscribe_notifications, id: user.id, locale: 'pt'
       end
 
-      it { should redirect_to user_path(user, anchor: 'unsubscribes')  }
+      it { is_expected.to redirect_to user_path(user, anchor: 'unsubscribes')  }
     end
 
     context "when user is not loged" do
@@ -133,7 +133,7 @@ describe UsersController do
         get :unsubscribe_notifications, id: user.id, locale: 'pt'
       end
 
-      it { should_not redirect_to user_path(user, anchor: 'unsubscribes')  }
+      it { is_expected.not_to redirect_to user_path(user, anchor: 'unsubscribes')  }
     end
   end
 
@@ -143,9 +143,9 @@ describe UsersController do
     end
     it("should update the user") do
       user.reload
-      user.twitter.should ==  'test'
+      expect(user.twitter).to eq('test')
     end
-    it{ should redirect_to user_path(user, anchor: 'settings') }
+    it{ is_expected.to redirect_to user_path(user, anchor: 'settings') }
   end
 
   describe "PUT update_password" do
@@ -158,14 +158,14 @@ describe UsersController do
 
     context "with wrong current password" do
       let(:current_password){ 'wrong_password' }
-      it{ flash[:error].should_not be_empty }
-      it{ should redirect_to user_path(user, anchor: 'settings') }
+      it{ expect(flash[:error]).not_to be_empty }
+      it{ is_expected.to redirect_to user_path(user, anchor: 'settings') }
     end
 
     context "with right current password and right confirmation" do
-      it{ flash[:notice].should_not be_empty }
-      it{ flash[:error].should be_nil }
-      it{ should redirect_to user_path(user, anchor: 'settings') }
+      it{ expect(flash[:notice]).not_to be_empty }
+      it{ expect(flash[:error]).to be_nil }
+      it{ is_expected.to redirect_to user_path(user, anchor: 'settings') }
     end
   end
 
@@ -180,8 +180,8 @@ describe UsersController do
     end
 
     context "when user is active" do
-      it{ should be_successful }
-      it{ assigns(:fb_admins).should include(user.facebook_id.to_i) }
+      it{ is_expected.to be_successful }
+      it{ expect(assigns(:fb_admins)).to include(user.facebook_id.to_i) }
     end
   end
 end

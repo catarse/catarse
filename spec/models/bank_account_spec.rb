@@ -1,17 +1,16 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe BankAccount do
+RSpec.describe BankAccount, type: :model do
   describe "associations" do
-    it{ should belong_to :user }
+    it{ is_expected.to belong_to :user }
   end
 
   describe "Validations" do
-    it{ should validate_presence_of(:bank_id) }
-    it{ should validate_presence_of(:agency) }
-    it{ should validate_presence_of(:agency_digit) }
-    it{ should validate_presence_of(:account) }
-    it{ should validate_presence_of(:account_digit) }
-    it{ should validate_presence_of(:owner_name) }
-    it{ should validate_presence_of(:owner_document) }
+    it{ is_expected.to validate_presence_of(:bank_id) }
+    it{ is_expected.to validate_presence_of(:agency) }
+    it{ is_expected.to validate_presence_of(:account) }
+    it{ is_expected.to validate_presence_of(:account_digit) }
+    it{ is_expected.to validate_presence_of(:owner_name) }
+    it{ is_expected.to validate_presence_of(:owner_document) }
   end
 end

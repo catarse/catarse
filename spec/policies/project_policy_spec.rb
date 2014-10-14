@@ -1,26 +1,26 @@
-require "spec_helper"
+require 'rails_helper'
 
-describe ProjectPolicy do
+RSpec.describe ProjectPolicy do
   subject{ ProjectPolicy }
 
   shared_examples_for "create permissions" do
     it "should deny access if user is nil" do
-      should_not permit(nil, Project.new)
+      is_expected.not_to permit(nil, Project.new)
     end
 
     it "should deny access if user is not project owner" do
-      should_not permit(User.new, Project.new(user: User.new))
+      is_expected.not_to permit(User.new, Project.new(user: User.new))
     end
 
     it "should permit access if user is project owner" do
       new_user = User.new
-      should permit(new_user, Project.new(user: new_user))
+      is_expected.to permit(new_user, Project.new(user: new_user))
     end
 
     it "should permit access if user is admin" do
       admin = User.new
       admin.admin = true
-      should permit(admin, Project.new(user: User.new))
+      is_expected.to permit(admin, Project.new(user: User.new))
     end
   end
 
@@ -40,16 +40,16 @@ describe ProjectPolicy do
       context "when user is admin" do
         let(:current_user) { create(:user, admin: true) }
 
-        it { should have(3).itens }
+        it { is_expected.to have(3).itens }
       end
 
       context "when user is a project owner" do
         let(:current_user) { user }
-        it { should eq [@in_analysis, @online, @draft] }
+        it { is_expected.to eq [@in_analysis, @online, @draft] }
       end
 
       context "when user is not an admin and project owner" do
-        it { should eq [@online] }
+        it { is_expected.to eq [@online] }
       end
     end
   end
@@ -71,14 +71,14 @@ describe ProjectPolicy do
     context "when user is nil and I want to update about" do
       let(:policy){ ProjectPolicy.new(nil, Project.new) }
       subject{ policy.permitted_for?(:about, :update) }
-      it{ should be_false }
+      it{ is_expected.to eq(false) }
     end
 
     context "when user is project owner and I want to update about" do
       let(:project){ create(:project) }
       let(:policy){ ProjectPolicy.new(project.user, project) }
       subject{ policy.permitted_for?(:about, :update) }
-      it{ should be_true }
+      it{ is_expected.to eq(true) }
     end
   end
 
@@ -88,12 +88,12 @@ describe ProjectPolicy do
       [:about, :video_url, :uploaded_image, :headline].each do |field|
         context "when field is #{field}" do
           subject{ policy.permitted?(field) }
-          it{ should be_true }
+          it{ is_expected.to eq(true) }
         end
       end
       context "when field is title" do
         subject{ policy.permitted?(:title) }
-        it{ should be_false }
+        it{ is_expected.to eq(false) }
       end
     end
     context "when user is admin" do
@@ -109,7 +109,7 @@ describe ProjectPolicy do
       Project.attribute_names.each do |field|
         context "when field is #{field}" do
           subject{ policy.permitted?(field.to_sym) }
-          it{ should be_true }
+          it{ is_expected.to eq(true) }
         end
       end
     end

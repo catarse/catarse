@@ -1,7 +1,7 @@
 #encoding: utf-8
-require 'spec_helper'
+require 'rails_helper'
 
-describe StaticController do
+RSpec.describe StaticController, type: :controller do
   render_views
   subject{ response }
 
@@ -14,11 +14,11 @@ describe StaticController do
         get :thank_you, { locale: :pt }
       end
 
-      it{ should redirect_to(project_contribution_path(contribution.project, contribution)) }
+      it{ is_expected.to redirect_to(project_contribution_path(contribution.project, contribution)) }
     end
 
     context 'without session' do
-      it{ should be_successful }
+      it{ is_expected.to be_successful }
     end
   end
 end

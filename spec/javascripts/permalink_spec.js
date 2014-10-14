@@ -1,4 +1,4 @@
-describe("Permalink", function() {
+RSpec.describe("Permalink", function() {
   var view;
 
   beforeEach(function() {

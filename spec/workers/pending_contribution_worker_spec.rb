@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe PendingContributionWorker do
+RSpec.describe PendingContributionWorker do
   let(:project) { create(:project) }
   let(:user) { create(:user) }
   let(:contribution) { create(:contribution, state: 'pending', project_id: project.id, user_id: user.id) }
