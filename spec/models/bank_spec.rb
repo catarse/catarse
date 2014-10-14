@@ -14,7 +14,7 @@ RSpec.describe Bank, type: :model do
       bank_02
     end
 
-    context "we have bank accounts"
+    context "we have bank accounts" do
       before do
         @bank_account01 = create(:bank_account, user: user_01, bank: bank_01)
         @bank_account02 = create(:bank_account, user: user_01, bank: bank_01)
@@ -24,6 +24,7 @@ RSpec.describe Bank, type: :model do
       it "should return a collection with banks in order of most used" do
         is_expected.to eq([bank_01, bank_02])
       end
+    end
   end
 
 end
