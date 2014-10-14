@@ -1,5 +1,5 @@
 ## coding: utf-8
-#require 'spec_helper'
+#require 'rails_helper'
 
 #feature "Channels Moderation", %q{
   #In order to curate my channel and comunicate my decisions to the project owners

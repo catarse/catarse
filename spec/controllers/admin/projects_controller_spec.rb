@@ -1,12 +1,12 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe Admin::ProjectsController do
+RSpec.describe Admin::ProjectsController, type: :controller do
   subject{ response }
   let(:admin) { create(:user, admin: true) }
   let(:current_user){ admin }
 
   before do
-    controller.stub(:current_user).and_return(current_user)
+    allow(controller).to receive(:current_user).and_return(current_user)
     request.env['HTTP_REFERER'] = admin_projects_path
   end
 
@@ -20,7 +20,7 @@ describe Admin::ProjectsController do
 
     it do
       project.reload
-      should be_true
+      is_expected.to eq(true)
     end
   end
 
@@ -33,7 +33,7 @@ describe Admin::ProjectsController do
       project.reload
     end
 
-    it { should be_true }
+    it { is_expected.to eq(true) }
   end
 
   describe 'PUT push_to_draft' do
@@ -41,13 +41,13 @@ describe Admin::ProjectsController do
     subject { project.draft? }
 
     before do
-      controller.stub(:current_user).and_return(admin)
+      allow(controller).to receive(:current_user).and_return(admin)
       put :push_to_draft, id: project, locale: :pt
     end
 
     it do
       project.reload
-      should be_true
+      is_expected.to eq(true)
     end
   end
 
@@ -56,11 +56,11 @@ describe Admin::ProjectsController do
     subject{ project.reload.deleted? }
 
     before do
-      controller.stub(:current_user).and_return(admin)
+      allow(controller).to receive(:current_user).and_return(admin)
       put :push_to_trash, id: project, locale: :pt
     end
 
-    it{ should be_true }
+    it{ is_expected.to eq(true) }
   end
 
 
@@ -70,7 +70,7 @@ describe Admin::ProjectsController do
       before do
         get :index, locale: :pt
       end
-      it{ should redirect_to new_user_registration_path }
+      it{ is_expected.to redirect_to new_user_registration_path }
     end
 
     context "when I'm logged as admin" do
@@ -87,14 +87,14 @@ describe Admin::ProjectsController do
       before do
         get :index, locale: :pt, pg_search: 'Project for search'
       end
-      it{ assigns(:projects).should eq([project]) }
+      it{ expect(assigns(:projects)).to eq([project]) }
     end
 
     context "when there is no match" do
       before do
         get :index, locale: :pt, pg_search: 'Foo Bar'
       end
-      it{ assigns(:projects).should eq([]) }
+      it{ expect(assigns(:projects)).to eq([]) }
     end
   end
 
@@ -106,7 +106,7 @@ describe Admin::ProjectsController do
       before do
         delete :destroy, id: project, locale: :pt
       end
-      it{ should redirect_to new_user_registration_path }
+      it{ is_expected.to redirect_to new_user_registration_path }
     end
 
     context "when I'm logged as admin" do
@@ -117,7 +117,7 @@ describe Admin::ProjectsController do
       its(:status){ should redirect_to admin_projects_path }
 
       it 'should change state to deleted' do
-        expect(project.reload.deleted?).to be_true
+        expect(project.reload.deleted?).to eq(true)
       end
     end
   end

@@ -1,8 +1,8 @@
 # coding: utf-8
 
-require 'spec_helper'
+require 'rails_helper'
 
-describe "Users" do
+RSpec.describe "Users", type: :feature do
   before do
     OauthProvider.create! name: 'facebook', key: 'dummy_key', secret: 'dummy_secret'
   end
@@ -14,7 +14,7 @@ describe "Users" do
       login
     end
 
-    it { current_path.should == project_by_slug_path(permalink: @project.permalink) }
+    it { expect(current_path).to eq(project_by_slug_path(permalink: @project.permalink)) }
   end
 
   describe "the notification tab" do
@@ -27,7 +27,7 @@ describe "Users" do
 
     it "should show unsubscribe from all updates" do
       updates_unsubscribe = all("#user_unsubscribes_attributes_0_subscribed")
-      updates_unsubscribe.should have(1).items
+      expect(updates_unsubscribe.size).to eq(1)
     end
   end
 end

@@ -1,13 +1,13 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe ChannelPartner do
+RSpec.describe ChannelPartner, type: :model do
   describe "associations" do
-    it{ should belong_to :channel }
+    it{ is_expected.to belong_to :channel }
   end
 
   describe "validations" do
     %w[channel_id url image].each do |field|
-      it{ should validate_presence_of field }
+      it{ is_expected.to validate_presence_of field }
     end
   end
 

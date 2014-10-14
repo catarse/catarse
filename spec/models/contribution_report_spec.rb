@@ -1,5 +1,5 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe ContributionReport do
-  pending "add some examples to (or delete) #{__FILE__}"
+RSpec.describe ContributionReport, type: :model do
+  skip "add some examples to (or delete) #{__FILE__}"
 end
