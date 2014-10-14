@@ -416,4 +416,31 @@ RSpec.describe User, type: :model do
       it { is_expected.to eq(false) }
     end
   end
+
+  describe "#following_this_category?" do
+    let(:category) { create(:category) }
+    let(:category_extra) { create(:category) }
+    let(:user) { create(:user) }
+    subject { user.following_this_category?(category.id)}
+
+    context "when is following the category" do
+      before do
+        user.categories << category
+      end
+
+      it { is_expected.to eq(true) }
+    end
+
+    context "when not following the category" do
+      before do
+        user.categories << category_extra
+      end
+
+      it { is_expected.to eq(false) }
+    end
+
+    context "when not following any category" do
+      it { is_expected.to eq(false) }
+    end
+  end
 end
