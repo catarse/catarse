@@ -103,6 +103,13 @@ task :migrate_project_thumbnails => :environment do
 
 end
 
+desc "Deliver a collection of recents projects of a category"
+task deliver_projects_of_week: :environment do
+  Category.with_projects_on_this_week.each do |category|
+    category.deliver_projects_of_week_notification
+  end
+end
+
 desc "Deliver credits waning for users that have credits less than R$ 10"
 task :deliver_credits_less_10, [:percent] => :environment do |t, args|
   total_percent = (args.percent.to_f/100.0)
