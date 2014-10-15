@@ -1,8 +1,8 @@
 pt:
   explore:
     index:
-      success_follow: "Você agora segue a categoria, toda semana ira receber uma lista dos projetos dessa categoria."
-      success_unfollow: "Você deixou de seguir a categoria."
+      success_follow: "Agora, você segue essa categoria e irá receber semanalmente uma lista com projetos recentes."
+      success_unfollow: "Você deixou de seguir essa categoria"
       follow: Seguir
       unfollow: Deixar de seguir
       following: seguindo
