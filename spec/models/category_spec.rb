@@ -14,6 +14,22 @@ RSpec.describe Category, type: :model do
     it{ is_expected.to validate_uniqueness_of :name_pt }
   end
 
+  describe "#with_projects_on_this_week" do
+    let(:category_1) { create(:category) }
+    let(:category_2) { create(:category) }
+    let(:category_3) { create(:category) }
+
+    subject { Category.with_projects_on_this_week }
+
+    before do
+      3.times { create(:project, category: category_1) }
+      4.times { create(:project, category: category_2) }
+      5.times { create(:project, category: category_3, online_date: 2.weeks.ago) }
+    end
+
+    it { is_expected.to eq([category_1, category_2]) }
+  end
+
   describe "#with_projects" do
     before do
       create(:project, category: category, state: 'online')
