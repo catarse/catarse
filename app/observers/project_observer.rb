@@ -51,7 +51,6 @@ class ProjectObserver < ActiveRecord::Observer
 
   def from_in_analysis_to_rejected(project)
     project.update_attributes({ rejected_at: DateTime.now })
-    deliver_default_notification_for(project, :project_rejected)
   end
 
   def from_in_analysis_to_draft(project)
