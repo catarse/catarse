@@ -1,5 +1,3 @@
-require 'sidekiq/web'
-
 Catarse::Application.routes.draw do
   def ssl_options
     if Rails.env.production? && CatarseSettings.get_without_cache(:secure_host)
