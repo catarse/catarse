@@ -3,7 +3,7 @@ class MixpanelObserver < ActiveRecord::Observer
 
   def from_waiting_confirmation_to_confirmed(contribution)
     user = contribution.user
-    tracker.track(contribution.user.id.to_s, "Contribution confirmed", {
+    properties = {
       user_id: user.id.to_s,
       created: user.created_at,
       last_login: user.last_sign_in_at,
@@ -12,7 +12,9 @@ class MixpanelObserver < ActiveRecord::Observer
       project: contribution.project.name,
       payment_method: contribution.payment_method,
       payment_choice: contribution.payment_choice
-    })
+    }
+    tracker.track(contribution.user.id.to_s, "Engaged with Catarse", properties.merge(action: 'contribution confirmed'))
+    tracker.track(contribution.user.id.to_s, "Contribution confirmed", properties)
   end
   alias :from_pending_to_confirmed :from_waiting_confirmation_to_confirmed
 
