@@ -111,6 +111,10 @@ class Project < ActiveRecord::Base
     with_state('online').where("(projects.expires_at - current_date) <= ?", time)
   }
 
+  scope :of_current_week, -> {
+    where("to_char(projects.online_date AT TIME ZONE '#{Time.zone.tzinfo.name}', 'yyyy-ww') = to_char(current_timestamp AT TIME ZONE '#{Time.zone.tzinfo.name}', 'yyyy-ww')")
+  }
+
   attr_accessor :accepted_terms
 
   validates_acceptance_of :accepted_terms, on: :create

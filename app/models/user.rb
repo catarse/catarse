@@ -43,6 +43,8 @@ class User < ActiveRecord::Base
   has_many :unsubscribes
   has_many :project_posts
   has_many :contributed_projects, -> { where(contributions: { state: 'confirmed' } ).uniq } ,through: :contributions, source: :project
+  has_many :category_followers
+  has_many :categories, through: :category_followers
   has_and_belongs_to_many :recommended_projects, join_table: :recommendations, class_name: 'Project'
   has_and_belongs_to_many :subscriptions, join_table: :channels_subscribers, class_name: 'Channel'
 
@@ -89,10 +91,23 @@ class User < ActiveRecord::Base
   scope :has_not_used_credits_last_month, -> { has_credits.
     where("NOT EXISTS (SELECT true FROM contributions b WHERE current_timestamp - b.created_at < '1 month'::interval AND b.credits AND b.state = 'confirmed' AND b.user_id = users.id)")
   }
+
+  scope :to_send_category_notification, -> (category_id) {
+    where("NOT EXISTS (
+          select true from category_notifications n
+          where n.template_name = 'categorized_projects_of_the_week' AND
+          n.category_id = ? AND
+          to_char(n.created_at AT TIME ZONE '#{Time.zone.tzinfo.name}', 'yyyy-ww') = to_char(current_timestamp AT TIME ZONE '#{Time.zone.tzinfo.name}', 'yyyy-ww') AND
+          n.user_id = users.id)", category_id)
+  }
   scope :order_by, ->(sort_field){ order(sort_field) }
 
   def self.find_active!(id)
     self.active.where(id: id).first!
+  end
+
+  def following_this_category?(category_id)
+    category_followers.pluck(:category_id).include?(category_id)
   end
 
   def failed_contributed_projects
