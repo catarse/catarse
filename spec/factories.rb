@@ -21,6 +21,11 @@ FactoryGirl.define do
     f.association :channel
   end
 
+  factory :category_follower do |f|
+    f.association :user
+    f.association :category
+  end
+
   factory :user do |f|
     f.name "Foo bar"
     f.password "123456"
