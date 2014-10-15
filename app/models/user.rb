@@ -163,6 +163,7 @@ class User < ActiveRecord::Base
       id: self.id,
       email: self.email,
       total_contributed_projects: self.total_contributed_projects,
+      total_created_projects: self.projects.count,
       created_at: self.created_at,
       last_sign_in_at: self.last_sign_in_at,
       sign_in_count: self.sign_in_count,
