@@ -40,7 +40,7 @@ App.addChild('Explore', _.extend({
     link.addClass('selected');
 
     if(link.data('categoryid')) {
-      this.setupFollowHeader(link);
+      this.followCategory.setupFollowHeader(link);
     }
   },
 
@@ -73,14 +73,18 @@ App.addChild('Explore', _.extend({
     }
   },
 
-  setupFollowHeader: function(selectedItem) {
-    var root_element = this.$('.follow-category');
-    var unfollow_btn = this.$('.unfollow-btn', root_element);
-    var follow_btn = this.$('.follow-btn', root_element);
+}, Skull.InfiniteScroll));
 
-    this.$('.button', root_element).hide();
-    this.$('.category-info h3', root_element).html(selectedItem.data('name'));
-    this.$('.category-follow span.count', root_element).html(selectedItem.data('totalfollowers'));
+App.views.Explore.addChild('FollowCategory', {
+  el: '.follow-category',
+
+  setupFollowHeader: function(selectedItem) {
+    var unfollow_btn = this.$('.unfollow-btn');
+    var follow_btn = this.$('.follow-btn');
+
+    this.$('.button').hide();
+    this.$('.category-info h3').html(selectedItem.data('name'));
+    this.$('.category-follow span.count').html(selectedItem.data('totalfollowers'));
 
     if(selectedItem.data('isfollowing')) {
       unfollow_btn.prop('href', selectedItem.data('unfollowpath'))
@@ -90,6 +94,8 @@ App.addChild('Explore', _.extend({
       follow_btn.show();
     }
 
-    root_element.show();
+    this.$el.show();
   }
-}, Skull.InfiniteScroll));
+
+});
+
