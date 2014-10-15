@@ -17,7 +17,11 @@ class Contribution < ActiveRecord::Base
   has_many :payment_notifications
 
   validates_presence_of :project, :user, :value
-  validates_numericality_of :value, greater_than_or_equal_to: 10.00
+  validates_numericality_of :value,
+    greater_than_or_equal_to: 10.00,
+    unless: -> (contribution) {
+      contribution.user.try(:credits).to_f > 0
+    }
 
   scope :available_to_count, ->{ with_states(['confirmed', 'requested_refund', 'refunded']) }
   scope :available_to_display, ->{ with_states(['confirmed', 'requested_refund', 'refunded', 'waiting_confirmation']) }
