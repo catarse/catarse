@@ -4,7 +4,7 @@
 | Olá #{user.name},
 br/
 br/
-| Segue a lista dos projetos mais recentes dessa semana da categoria #{category.name_pt}:
+| Segue a lista dos projetos que entraram essa semana na categoria #{category.name_pt}:
 br/
 br/
 - category.projects.of_current_week.each do |project|
@@ -15,9 +15,9 @@ br/
   br
 br/
 br/
-| Caso você não queira mais receber essa notificação, #{link_to 'clique aqui', unsubscribe_category_url(category), target:'__blank'}
-br/
-br/
 |Um abraço,
 br/
 | #{CatarseSettings[:company_name]}
+br/
+br/
+| #{link_to 'Descadastrar', unsubscribe_category_url(category), target:'__blank'} o recebimento de projetos recentes dessa categoria.
