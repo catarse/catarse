@@ -33,6 +33,25 @@ RSpec.describe User, type: :model do
     it{ is_expected.to validate_uniqueness_of(:email) }
   end
 
+  describe ".that_dont_receive_categoried_notifications_for" do
+    let(:category) { create(:category) }
+    let(:user_1) { create(:user) }
+    let(:user_2) { create(:user) }
+
+    before do
+      create(:project, category: category, user: user)
+      category.users << user_1
+      category.users << user_2
+      category.deliver_projects_of_week_notification
+      category.users << user
+    end
+
+    subject { User.that_dont_receive_categoried_notifications_for(category.id) }
+
+    it { is_expected.to eq([user]) }
+
+  end
+
   describe ".find_active!" do
     it "should raise error when user is inactive" do
       @inactive_user = create(:user, deactivated_at: Time.now)
