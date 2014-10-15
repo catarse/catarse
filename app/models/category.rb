@@ -8,7 +8,7 @@ class Category < ActiveRecord::Base
   validates_uniqueness_of :name_pt
 
   scope :with_projects_on_this_week, -> {
-    joins(:projects).merge(Project.of_current_week)
+    joins(:projects).merge(Project.of_current_week).uniq
   }
 
   def self.with_projects
