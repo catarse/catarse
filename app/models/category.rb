@@ -26,4 +26,10 @@ class Category < ActiveRecord::Base
   def total_online_projects
     self.projects.with_state('online').count
   end
+
+  def deliver_projects_of_week_notification
+    self.users.that_dont_receive_categoried_notifications_for(self.id).each do |user|
+      self.notify(:categorized_projects_of_the_week, user, self)
+    end
+  end
 end
