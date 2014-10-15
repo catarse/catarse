@@ -1,4 +1,4 @@
-describe("TimedInput", function() {
+RSpec.describe("TimedInput", function() {
   var ViewClass, view;
 
   beforeEach(function() {

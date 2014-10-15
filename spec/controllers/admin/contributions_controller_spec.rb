@@ -1,13 +1,13 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe Admin::ContributionsController do
+RSpec.describe Admin::ContributionsController, type: :controller do
   subject{ response }
   let(:admin) { create(:user, admin: true) }
   let(:unconfirmed_contribution) { create(:contribution) }
   let(:current_user){ admin }
 
   before do
-    controller.stub(:current_user).and_return(current_user)
+    allow(controller).to receive(:current_user).and_return(current_user)
   end
 
   describe 'PUT confirm' do
@@ -20,7 +20,7 @@ describe Admin::ContributionsController do
 
     it do
       contribution.reload
-      should be_true
+      is_expected.to eq(true)
     end
   end
 
@@ -33,7 +33,7 @@ describe Admin::ContributionsController do
       contribution.reload
     end
 
-    it { should be_true }
+    it { is_expected.to eq(true) }
   end
 
   describe 'PUT hide' do
@@ -41,13 +41,13 @@ describe Admin::ContributionsController do
     subject { contribution.refunded_and_canceled? }
 
     before do
-      controller.stub(:current_user).and_return(admin)
+      allow(controller).to receive(:current_user).and_return(admin)
       put :hide, id: contribution.id, locale: :pt
     end
 
     it do
       contribution.reload
-      should be_true
+      is_expected.to eq(true)
     end
   end
 
@@ -61,7 +61,7 @@ describe Admin::ContributionsController do
 
     it do
       contribution.reload
-      should be_true
+      is_expected.to eq(true)
     end
   end
 
@@ -75,7 +75,7 @@ describe Admin::ContributionsController do
 
     it do
       contribution.reload
-      should be_false
+      is_expected.to eq(false)
     end
   end
 
@@ -89,7 +89,7 @@ describe Admin::ContributionsController do
 
     it do
       contribution.reload
-      should be_true
+      is_expected.to eq(true)
     end
   end
 
@@ -99,7 +99,7 @@ describe Admin::ContributionsController do
       before do
         get :index, locale: :pt
       end
-      it{ should redirect_to new_user_registration_path }
+      it{ is_expected.to redirect_to new_user_registration_path }
     end
 
     context "when I'm logged as admin" do
@@ -116,14 +116,14 @@ describe Admin::ContributionsController do
       before do
         get :index, locale: :pt, payer_email_contains: 'foo@foo.com'
       end
-      it{ assigns(:contributions).should eq([contribution]) }
+      it{ expect(assigns(:contributions)).to eq([contribution]) }
     end
 
     context "when there is no match" do
       before do
         get :index, locale: :pt, payer_email_contains: '2foo@foo.com'
       end
-      it{ assigns(:contributions).should eq([]) }
+      it{ expect(assigns(:contributions)).to eq([]) }
     end
   end
 end
