@@ -43,7 +43,7 @@ RSpec.describe Project, type: :model do
   describe ".of_current_week" do
     subject { Project.of_current_week }
     before do
-      3.times { create(:project, state: 'online', online_date: 3.hours.from_now) }
+      3.times { create(:project, state: 'online', online_date: DateTime.now) }
       5.times { create(:project, state: 'online', online_date: 1.week.ago) }
       5.times { create(:project, state: 'online', online_date: 2.week.ago) }
     end
