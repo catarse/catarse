@@ -26,7 +26,7 @@ gem 'chartkick'
 gem 'catarse_settings_db', '>= 0.1.0'
 
 # Notifications
-gem 'user_notifier'
+gem 'user_notifier', '~> 0.0.5'
 
 # Mixpanel for backend tracking
 gem 'mixpanel-ruby'
