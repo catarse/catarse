@@ -596,7 +596,7 @@ RSpec.describe Project, type: :model do
 
     subject { Project.enabled_to_use_pagarme }
 
-    it { is_expected.to eq([@project_01, @project_03])}
+    it { is_expected.to match_array([@project_01, @project_03])}
   end
 
   describe "#using_pagarme?" do
