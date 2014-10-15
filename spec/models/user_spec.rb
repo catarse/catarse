@@ -33,7 +33,7 @@ RSpec.describe User, type: :model do
     it{ is_expected.to validate_uniqueness_of(:email) }
   end
 
-  describe ".that_dont_receive_categoried_notifications_for" do
+  describe ".to_send_category_notification" do
     let(:category) { create(:category) }
     let(:user_1) { create(:user) }
     let(:user_2) { create(:user) }
@@ -46,7 +46,7 @@ RSpec.describe User, type: :model do
       category.users << user
     end
 
-    subject { User.that_dont_receive_categoried_notifications_for(category.id) }
+    subject { User.to_send_category_notification(category.id) }
 
     it { is_expected.to eq([user]) }
 

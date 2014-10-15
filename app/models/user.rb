@@ -92,7 +92,7 @@ class User < ActiveRecord::Base
     where("NOT EXISTS (SELECT true FROM contributions b WHERE current_timestamp - b.created_at < '1 month'::interval AND b.credits AND b.state = 'confirmed' AND b.user_id = users.id)")
   }
 
-  scope :that_dont_receive_categoried_notifications_for, -> (category_id) {
+  scope :to_send_category_notification, -> (category_id) {
     where("NOT EXISTS (
           select true from category_notifications n
           where n.template_name = 'categorized_projects_of_the_week' AND

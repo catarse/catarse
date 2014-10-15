@@ -28,7 +28,7 @@ class Category < ActiveRecord::Base
   end
 
   def deliver_projects_of_week_notification
-    self.users.that_dont_receive_categoried_notifications_for(self.id).each do |user|
+    self.users.to_send_category_notification(self.id).each do |user|
       self.notify(:categorized_projects_of_the_week, user, self)
     end
   end
