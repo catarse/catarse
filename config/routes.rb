@@ -1,5 +1,3 @@
-require 'sidekiq/web'
-
 Catarse::Application.routes.draw do
   def ssl_options
     if Rails.env.production? && CatarseSettings.get_without_cache(:secure_host)
@@ -20,23 +18,13 @@ Catarse::Application.routes.draw do
     }
   )
 
-
   devise_scope :user do
     post '/sign_up', {to: 'devise/registrations#create', as: :sign_up}.merge(ssl_options)
   end
 
-
   get '/thank_you' => "static#thank_you"
 
-
-  check_user_admin = lambda { |request| request.env["warden"].authenticate? and request.env['warden'].user.admin }
-
   filter :locale, exclude: /\/auth\//
-
-  # Mountable engines
-  constraints check_user_admin do
-    mount Sidekiq::Web => '/sidekiq'
-  end
 
   mount CatarsePaypalExpress::Engine => "/", as: :catarse_paypal_express
   mount CatarseMoip::Engine => "/", as: :catarse_moip
@@ -45,6 +33,12 @@ Catarse::Application.routes.draw do
 #  mount CatarseWepay::Engine => "/", as: :catarse_wepay
 
   get '/post_preview' => 'post_preview#show', as: :post_preview
+  resources :categories, only: [] do
+    member do
+      get :subscribe, to: 'categories/subscriptions#create'
+      get :unsubscribe, to: 'categories/subscriptions#destroy'
+    end
+  end
   resources :auto_complete_projects, only: [:index]
   resources :projects, only: [:index, :create, :update, :new, :show] do
     resources :posts, controller: 'projects/posts', only: [ :index, :create, :destroy ]
