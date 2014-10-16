@@ -1,5 +1,7 @@
 pt:
   admin: &admin
+    filter:
+      title: 'Filtros'
     confirm_dialog: 'Você tem certeza?'
     financials:
       index:
@@ -105,6 +107,12 @@ pt:
         user_email: 'Email utilizado no catarse'
         created_at: 'Iniciado em'
       index:
+        placeholders:
+          project: 'Permalink ou nome do projeto'
+          acquirer: 'Nome da operadora de cartão'
+          user: 'ID, Nome, Email ou Email de pagamento'
+          payment_id: Chave, ID do meio de pagamento ou TID da operadora'
+        acquirer: 'Operadora'
         payment_tax: 'Taxa meio de pagamento'
         send_refund_request_contribution: 'Enviar solicitação de reembolso'
         payer_email: 'Email do meio de pagamento'
@@ -125,7 +133,7 @@ pt:
         anonymous: Anônimo?
         contribution: Apoio
         confirmed: Confirmado?
-        credits: "Usou créditos?"
+        credits_html: "Usou créditos? &nbsp;"
         id: Id
         key: Chave
         no_contributions: "Nenhum apoiador encontrado."
