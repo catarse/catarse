@@ -71,7 +71,21 @@
                   - contribution.available_rewards.each do |reward|
                     li title=("#{reward.display_minimum} - #{reward.description}" ) = link_to reward.minimum_value, change_reward_admin_contribution_path(contribution, reward_id: reward.id, local_params: params), method: :put
 
-            td.key= contribution.key
+            td.key
+              strong Chave
+              br/
+              = contribution.key
+              br/
+              br/
+              strong ID do meio de pagamento
+              br/
+              = contribution.payment_id
+              - if contribution.acquirer_tid.present?
+                br/
+                br/
+                strong ID da operadora
+                br/
+                = contribution.acquirer_tid
             td.checkbox= best_in_place [:admin, contribution], :anonymous, method: :put, type: :checkbox, collection: [t('no'), t('yes')]
             td= (contribution.credits ? t('yes') : t('no'))
             td= contribution.state
