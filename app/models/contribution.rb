@@ -2,6 +2,7 @@
 class Contribution < ActiveRecord::Base
   has_notifications
 
+  include PgSearch
   include Shared::StateMachineHelpers
   include Contribution::StateMachineHandler
   include Contribution::CustomValidators
@@ -22,6 +23,23 @@ class Contribution < ActiveRecord::Base
     unless: -> (contribution) {
       contribution.user.try(:credits).to_f > 0
     }
+
+  pg_search_scope :search_on_user,
+    against: [:payer_email],
+    associated_against: {
+      user: [:name, :full_name, :email, :id]
+    },
+    using: {tsearch: {dictionary: "portuguese"}},
+    ignoring: :accents
+
+  pg_search_scope :search_on_payment_data,
+    against: [:key, :payment_id, :acquirer_tid],
+    using: {tsearch: {dictionary: "portuguese"}},
+    ignoring: :accents
+
+  pg_search_scope :search_on_acquirer,
+    against: [:acquirer_name],
+    ignoring: :accents
 
   scope :available_to_count, ->{ with_states(['confirmed', 'requested_refund', 'refunded']) }
   scope :available_to_display, ->{ with_states(['confirmed', 'requested_refund', 'refunded', 'waiting_confirmation']) }
