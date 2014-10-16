@@ -110,8 +110,9 @@ task :deliver_credits_less_10, [:percent] => :environment do |t, args|
     where("user_totals.credits < 10
           and not exists(
             select true
-            from contribution_notifications cn
-            where cn.template_name = 'credits_warning_less_group'
+            from user_notifications cn
+            where cn.template_name = 'credits_warning_less_group' and
+            cn.user_id = users.id
          )")
   limit = (args.percent.present? ? (collection.count * total_percent).to_i : nil)
 
@@ -127,8 +128,9 @@ task :deliver_credits_more_than_10, [:percent] => :environment do |t, args|
       where("user_totals.credits >= 10
           and not exists(
             select true
-            from contribution_notifications cn
-            where cn.template_name = 'credits_warning_less_group'
+            from user_notifications cn
+            where cn.template_name = 'credits_warning_less_group' and
+            cn.user_id = users.id
          )")
 
   limit = (args.percent.present? ? (collection.count * total_percent).to_i : nil)
