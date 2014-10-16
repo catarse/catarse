@@ -103,12 +103,13 @@
               table style='border: 1px #ededed solid'
                 thead
                   th= 'Chave'
-                  th= 'ID do meio de pagamento'
+                  th= 'ID Pagamento'
                   th= 'TID Operadora'
                   th= 'Meio de pagamento'
                   th= 'Opção de pagamento'
                   th= 'Operadora de cartão'
                   th= 'Parcelas'
+                  th= 'Iniciado em'
                 tbody
                   tr
                     td= contribution.key
@@ -118,6 +119,7 @@
                     td= contribution.payment_choice
                     td= contribution.acquirer_name
                     td= contribution.installments
+                    td= l(contribution.created_at, format: :simple) if contribution.created_at.present?
 = paginate @contributions
 
 = render 'shared/footer_bootstrap_v1'
