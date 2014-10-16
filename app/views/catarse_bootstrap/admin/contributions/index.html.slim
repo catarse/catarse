@@ -1,37 +1,29 @@
 = render 'shared/header_bootstrap_v1'
 .row.admin.admin-contributions
-  h1
-    = @title = t('channels.admin.management.title')
-    ' :
-  h3 = t('channels.admin.filter.title')
+  h3 = t('admin.filter.title')
   = simple_form_for '', url: admin_contributions_path, method: :get do |form|
     .row
-      .large-2.columns
-        = form.input :by_user_id, as: :integer, label: t('.user_id'), input_html: { value: current_scopes[:by_user_id] }
       .large-2.columns
         = form.input 'between_values[start_at]', as: :integer, label: t(".between_values"), input_html: { value: current_scopes[:between_values].try(:[], "start_at") }
       .large-2.columns.no-label
         = form.input 'between_values[ends_at]', as: :integer, label: '', input_html: { value: current_scopes[:between_values].try(:[], "ends_at") }
-      .large-3.columns
-        = form.input :payer_email_contains, as: :string, label: t('.payer_email'), input_html: { value: current_scopes[:payer_email_contains] }
       .large-2.columns
-        = form.input :by_payment_id, as: :string, label: t('.payment_id'), input_html: { value: current_scopes[:by_payment_id] }
+        = form.input :project_name_contains, as: :string, label: t('.project'), input_html: { placeholder: t('.placeholders.project'), title: t('.placeholders.project'), value: current_scopes[:project_name_contains] }
+      .large-2.columns
+        = form.input :search_on_user, as: :string, label: t('.user'), input_html: { placeholder: t('.placeholders.user'), title: t('.placeholders.user'), value: current_scopes[:search_on_user] }
+      .large-2.columns
+        = form.input :search_on_payment_data, as: :string, label: t('.payment_id'), input_html: { placeholder: t('.placeholders.payment_id'), title: t('.placeholders.payment_id'), value: current_scopes[:search_on_payment_data] }
+      .large-2.columns
+        = form.input :search_on_acquirer, as: :string, label: t('.acquirer'), input_html: { placeholder: t('.placeholders.acquirer'), title: t('.placeholders.acquirer'), value: current_scopes[:search_on_acquirer] }
     .row
       .large-2.columns
         = form.input :with_state, collection: Contribution.state_names, label: t('channels.admin.filter.with_state'), as: :select, selected: current_scopes[:with_state], include_blank: true
-      .large-3.columns
-        = form.input :project_name_contains, as: :string, label: t('.project'), input_html: { value: current_scopes[:project_name_contains] }
       .large-2.columns
-        = form.input :user_name_contains, as: :string, label: t('.user'), input_html: { value: current_scopes[:user_name_contains] }
+        br/
+        = form.input :credits, as: :boolean, label: t('.credits_html')
       .large-2.columns
-        = form.input :by_key, as: :string, label: t('.key'), input_html: { value: current_scopes[:by_key] }
-      .large-3.columns
-        = form.input :user_email_contains, as: :string, label: t('.user_email'), input_html: { value: current_scopes[:user_email_contains] }
-
-    .row
-      .large-9.columns
-        = form.input :credits, as: :boolean, label: t('.credits')
-      .large-2.columns
+        label
+          | &nbsp;
         = form.button :submit, t('channels.admin.filter.submit'), class: 'button medium negative'
 
   = paginate @contributions
