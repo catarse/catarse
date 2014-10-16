@@ -1,6 +1,11 @@
 pt:
   explore:
     index:
+      success_follow: "Agora você segue a categoria e vai receber semanalmente uma lista com os novos projetos de %{name}"
+      success_unfollow: "Você deixou de seguir essa categoria %{name}"
+      follow: Seguir
+      unfollow: Deixar de seguir
+      following: seguindo
       categories: Categorias
       expiring: Na reta final
       in_funding: No ar

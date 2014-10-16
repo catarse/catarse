@@ -14,6 +14,22 @@ RSpec.describe Category, type: :model do
     it{ is_expected.to validate_uniqueness_of :name_pt }
   end
 
+  describe "#with_projects_on_this_week" do
+    let(:category_1) { create(:category) }
+    let(:category_2) { create(:category) }
+    let(:category_3) { create(:category) }
+
+    subject { Category.with_projects_on_this_week.order(id: :asc) }
+
+    before do
+      3.times { create(:project, category: category_1) }
+      4.times { create(:project, category: category_2) }
+      5.times { create(:project, category: category_3, online_date: 2.weeks.ago) }
+    end
+
+    it { is_expected.to eq([category_1, category_2]) }
+  end
+
   describe "#with_projects" do
     before do
       create(:project, category: category, state: 'online')
@@ -38,4 +54,38 @@ RSpec.describe Category, type: :model do
     subject { category.total_online_projects }
     it { expect(subject).to eq(2) }
   end
+
+  describe ".deliver_projects_of_week_notification" do
+    let(:category) { create(:category) }
+    let(:user) { create(:user) }
+
+    before do
+      category.users << user
+    end
+
+    context "when user don't have received the notification of this week" do
+      before do
+        expect(category).to receive(:notify).with(:categorized_projects_of_the_week, user, category).and_call_original
+        category.deliver_projects_of_week_notification
+      end
+
+      it do
+        expect(category.notifications.where(template_name: 'categorized_projects_of_the_week')).to have(1).item
+      end
+    end
+
+    context "when user already received the notification of this week" do
+      before do
+        category.deliver_projects_of_week_notification
+        category.reload
+        category.deliver_projects_of_week_notification
+      end
+
+      it do
+        expect(category.notifications.where(template_name: 'categorized_projects_of_the_week')).to have(1).item
+      end
+    end
+
+  end
+
 end

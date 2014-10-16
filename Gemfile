@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.1.2'
+ruby '2.1.3'
 
 gem 'rails', '~> 4.1.1'
 
@@ -25,7 +25,7 @@ gem 'chartkick'
 gem 'catarse_settings_db', '>= 0.1.0'
 
 # Notifications
-gem 'user_notifier'
+gem 'user_notifier', '~> 0.0.5'
 
 # Mixpanel for backend tracking
 gem 'mixpanel-ruby'
