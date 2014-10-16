@@ -30,22 +30,22 @@
   - if @contributions.empty?
     = t('.no_contributions')
   - else
-    table.admin-contributions
-      thead
-        tr
-          th= t('.contribution')
-          th= t('.project')
-          th= t('.user')
-          th= t('.value')
-          th= t('.payment_tax')
-          th= t('.reward')
-          th= t('.key')
-          th= t('.anonymous')
-          th= t('.credits')
-          th= t('.state')
-          th
-      tbody
-        - @contributions.includes(:project, :user, :reward).each do |contribution|
+    - @contributions.includes(:project, :user, :reward).each do |contribution|
+      table.admin-contributions
+        thead
+          tr
+            th= t('.contribution')
+            th= t('.project')
+            th= t('.user')
+            th= t('.value')
+            th= t('.payment_tax')
+            th= t('.reward')
+            th= t('.emails')
+            th= t('.anonymous')
+            th= t('.credits')
+            th= t('.state')
+            th
+        tbody
           tr id=contribution.id class=cycle("even", "odd")
             td
               = link_to contribution.id, admin_contribution_path(contribution)
@@ -57,7 +57,7 @@
                 = image_tag contribution.user.display_image, class: 'user_img'
               .user_id= best_in_place [:admin, contribution], :user_id, method: :put, type: :input
             td= best_in_place [:admin, contribution], :value, method: :put, type: :input
-            td= contribution.payment_service_fee
+            td= best_in_place [:admin, contribution], :payment_service_fee, method: :put, type: :input
             td.reward.large-1.columns.project-events-dropdown title=("#{contribution.reward.display_minimum} - #{contribution.reward.description}" if contribution.reward)
               - if contribution.reward
                 span = contribution.reward.display_minimum
@@ -72,20 +72,13 @@
                     li title=("#{reward.display_minimum} - #{reward.description}" ) = link_to reward.minimum_value, change_reward_admin_contribution_path(contribution, reward_id: reward.id, local_params: params), method: :put
 
             td.key
-              strong Chave
+              strong E-mail do meio de pagamento
               br/
-              = contribution.key
+              = contribution.payer_email
               br/
+              strong E-mail no Catarse
               br/
-              strong ID do meio de pagamento
-              br/
-              = contribution.payment_id
-              - if contribution.acquirer_tid.present?
-                br/
-                br/
-                strong ID da operadora
-                br/
-                = contribution.acquirer_tid
+              = contribution.user.email
             td.checkbox= best_in_place [:admin, contribution], :anonymous, method: :put, type: :checkbox, collection: [t('no'), t('yes')]
             td= (contribution.credits ? t('yes') : t('no'))
             td= contribution.state
@@ -105,6 +98,26 @@
                   li= link_to t('admin.contributions.index.push_to_trash'), push_to_trash_admin_contribution_path(contribution, local_params: params), method: :put
                   - if (contribution.waiting_confirmation? || contribution.pending? || contribution.canceled?) && contribution.slip_payment? && contribution.can_generate_second_slip?
                     li= link_to 'Segunda via de boleto', contribution.second_slip_path, target: '__blank', method: :put
+          tr class='detail_tr' id="contribution_details-#{contribution.id}"
+            td colspan='11'
+              table style='border: 1px #ededed solid'
+                thead
+                  th= 'Chave'
+                  th= 'ID do meio de pagamento'
+                  th= 'TID Operadora'
+                  th= 'Meio de pagamento'
+                  th= 'Opção de pagamento'
+                  th= 'Operadora de cartão'
+                  th= 'Parcelas'
+                tbody
+                  tr
+                    td= contribution.key
+                    td= contribution.payment_id
+                    td= contribution.acquirer_tid
+                    td= contribution.payment_method
+                    td= contribution.payment_choice
+                    td= contribution.acquirer_name
+                    td= contribution.installments
 = paginate @contributions
 
 = render 'shared/footer_bootstrap_v1'
