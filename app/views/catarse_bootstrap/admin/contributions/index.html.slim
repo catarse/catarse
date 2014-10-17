@@ -72,11 +72,11 @@
                     li title=("#{reward.display_minimum} - #{reward.description}" ) = link_to reward.minimum_value, change_reward_admin_contribution_path(contribution, reward_id: reward.id, local_params: params), method: :put
 
             td.key
-              strong E-mail do meio de pagamento
+              strong= t('.details.payer_email') 
               br/
               = contribution.payer_email
               br/
-              strong E-mail no Catarse
+              strong= t('.details.normal_email')
               br/
               = contribution.user.email
             td.checkbox= best_in_place [:admin, contribution], :anonymous, method: :put, type: :checkbox, collection: [t('no'), t('yes')]
@@ -102,14 +102,14 @@
             td colspan='11'
               table style='border: 1px #ededed solid'
                 thead
-                  th= 'Chave'
-                  th= 'ID Pagamento'
-                  th= 'TID Operadora'
-                  th= 'Meio de pagamento'
-                  th= 'Opção de pagamento'
-                  th= 'Operadora de cartão'
-                  th= 'Parcelas'
-                  th= 'Iniciado em'
+                  th= t('.key')
+                  th= t('.details.payment_id')
+                  th= t('.details.acquirer_tid')
+                  th= t('.details.payment_method')
+                  th= t('.details.payment_choice')
+                  th= t('.details.acquirer_name')
+                  th= t('.details.installments')
+                  th= t('.details.created_at')
                 tbody
                   tr
                     td= contribution.key
