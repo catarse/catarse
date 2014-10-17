@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe ProjectDownloaderWorker do
+RSpec.describe ProjectDownloaderWorker do
   let(:project) { create(:project, video_url: nil, goal: 3000) }
   let(:perform_project) { ProjectDownloaderWorker.perform_async(project.id) }
 
@@ -10,8 +10,8 @@ describe ProjectDownloaderWorker do
 
     project.video_url = 'http://vimeo.com/66698435'
 
-    Project.any_instance.should_receive(:update_video_embed_url).and_call_original
-    Project.any_instance.should_receive(:download_video_thumbnail)
+    expect_any_instance_of(Project).to receive(:update_video_embed_url).and_call_original
+    expect_any_instance_of(Project).to receive(:download_video_thumbnail)
   end
 
   it("should satisfy expectations") { perform_project }

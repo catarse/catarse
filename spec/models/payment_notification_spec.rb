@@ -1,8 +1,8 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe PaymentNotification do
+RSpec.describe PaymentNotification, type: :model do
   describe "Associations" do
-    it{ should belong_to :contribution }
+    it{ is_expected.to belong_to :contribution }
   end
 
   describe "#extra_data" do
@@ -12,12 +12,12 @@ describe PaymentNotification do
       @p.save!
     end
     subject{ @p.extra_data }
-    it{ should == test_hash }
+    it{ is_expected.to eq(test_hash) }
   end
 
   describe "#deliver_process_notification" do
     before do
-      ContributionNotification.should_receive(:notify_once)
+      expect(ContributionNotification).to receive(:notify_once)
     end
 
     subject do
@@ -29,7 +29,7 @@ describe PaymentNotification do
 
   describe "#deliver_slip_canceled_notification" do
     before do
-      ContributionNotification.should_receive(:notify_once)
+      expect(ContributionNotification).to receive(:notify_once)
     end
 
     subject do

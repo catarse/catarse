@@ -2,7 +2,7 @@
   .w-clearfix.u-marginbottom-20
 
     = link_to user_path(contribution.user) do
-      .thumb.u-left.u-round[style="background-image: image-url('#{contribution.user.display_image}')"]
+      .thumb.u-left.u-round[style="background-image: url('#{contribution.user.display_image}'); background-size: contain;"]
 
     .fontsize-base.fontweight-semibold
       = link_to user_path(contribution.user), class: 'link-hidden-dark' do

@@ -41,9 +41,11 @@ Catarse::Application.routes.draw do
   mount CatarsePaypalExpress::Engine => "/", as: :catarse_paypal_express
   mount CatarseMoip::Engine => "/", as: :catarse_moip
   mount CatarseCredits::Engine => "/", as: :catarse_credits
-  #  mount CatarseWepay::Engine => "/", as: :catarse_wepay
+  mount CatarsePagarme::Engine => "/", as: :catarse_pagarme
+#  mount CatarseWepay::Engine => "/", as: :catarse_wepay
 
   get '/post_preview' => 'post_preview#show', as: :post_preview
+  resources :auto_complete_projects, only: [:index]
   resources :projects, only: [:index, :create, :update, :new, :show] do
     resources :posts, controller: 'projects/posts', only: [ :index, :create, :destroy ]
     resources :rewards, only: [ :index, :create, :update, :destroy, :new, :edit ] do
@@ -73,6 +75,7 @@ Catarse::Application.routes.draw do
   end
   resources :users do
     resources :projects, controller: 'users/projects', only: [ :index ]
+    resources :credit_cards, controller: 'users/credit_cards', only: [ :destroy ]
     member do
       get :unsubscribe_notifications
       get :credits
@@ -147,6 +150,7 @@ Catarse::Application.routes.draw do
 
     resources :contributions, only: [ :index, :update, :show ] do
       member do
+        get :second_slip
         put 'confirm'
         put 'pendent'
         put 'change_reward'

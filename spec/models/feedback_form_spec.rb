@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe FeedbackForm do
+RSpec.describe FeedbackForm, type: :model do
   let(:form){ FeedbackForm.new email: 'diogo@biazus.me', message: 'test' }
   let(:delivery){ ActionMailer::Base.deliveries.last }
   describe "#deliver" do

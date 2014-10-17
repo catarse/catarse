@@ -1,7 +1,7 @@
-require 'spec_helper'
+require 'rails_helper'
 require 'securerandom'
 
-describe 'find_secure_token' do
+RSpec.describe 'find_secure_token' do
   subject{ find_secure_token }
 
   it "should have been configured in initializer" do
@@ -12,13 +12,13 @@ describe 'find_secure_token' do
     before do
       ::CatarseSettings[:secret_token] = nil
     end
-    it{ should_not be_nil }
-    it{ should == ::CatarseSettings[:secret_token] }
+    it{ is_expected.not_to be_nil }
+    it{ is_expected.to eq(::CatarseSettings[:secret_token]) }
   end
 
 end
 
-describe 'find_secure_key_base' do
+RSpec.describe 'find_secure_key_base' do
   subject{ find_secure_key_base }
 
   it "should have been configured in initializer" do
@@ -29,8 +29,8 @@ describe 'find_secure_key_base' do
     before do
       ::CatarseSettings[:secret_key_base] = nil
     end
-    it{ should_not be_nil }
-    it{ should == ::CatarseSettings[:secret_key_base] }
+    it{ is_expected.not_to be_nil }
+    it{ is_expected.to eq(::CatarseSettings[:secret_key_base]) }
   end
 
 end
