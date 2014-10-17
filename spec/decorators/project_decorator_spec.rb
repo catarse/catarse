@@ -72,19 +72,6 @@ RSpec.describe ProjectDecorator do
     end
   end
 
-  describe "#display_traffic_sources" do
-    subject{ project.display_traffic_sources }
-
-    context "when trafic_sources is nil" do
-      it{ is_expected.to be_nil }
-    end
-
-    context "when traffic_sources has elements" do
-      let(:project){ create(:project, traffic_sources: ['foo', 'bar']) }
-      it{ is_expected.to eq(project.traffic_sources.join(', ')) }
-    end
-  end
-
   describe "#display_expires_at" do
     subject{ project.display_expires_at }
 
