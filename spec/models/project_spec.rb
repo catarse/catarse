@@ -40,6 +40,19 @@ RSpec.describe Project, type: :model do
     it{ is_expected.not_to allow_value('users').for(:permalink) }
   end
 
+  describe ".of_current_week" do
+    subject { Project.of_current_week }
+    before do
+      3.times { create(:project, state: 'online', online_date: DateTime.now) }
+      5.times { create(:project, state: 'online', online_date: 1.week.ago) }
+      5.times { create(:project, state: 'online', online_date: 2.week.ago) }
+    end
+
+    it "should return a collection with projects of current week" do
+      is_expected.to have(3).itens
+    end
+  end
+
   describe ".expiring_in_less_of" do
     subject { Project.expiring_in_less_of('7 days') }
 

@@ -33,6 +33,25 @@ RSpec.describe User, type: :model do
     it{ is_expected.to validate_uniqueness_of(:email) }
   end
 
+  describe ".to_send_category_notification" do
+    let(:category) { create(:category) }
+    let(:user_1) { create(:user) }
+    let(:user_2) { create(:user) }
+
+    before do
+      create(:project, category: category, user: user)
+      category.users << user_1
+      category.users << user_2
+      category.deliver_projects_of_week_notification
+      category.users << user
+    end
+
+    subject { User.to_send_category_notification(category.id) }
+
+    it { is_expected.to eq([user]) }
+
+  end
+
   describe ".find_active!" do
     it "should raise error when user is inactive" do
       @inactive_user = create(:user, deactivated_at: Time.now)
@@ -298,6 +317,7 @@ RSpec.describe User, type: :model do
         id: user.id,
         email: user.email,
         total_contributed_projects: user.total_contributed_projects,
+        total_created_projects: user.projects.count,
         created_at: user.created_at,
         last_sign_in_at: user.last_sign_in_at,
         sign_in_count: user.sign_in_count,
@@ -413,6 +433,33 @@ RSpec.describe User, type: :model do
     end
 
     context "when user don't have contributions for the project" do
+      it { is_expected.to eq(false) }
+    end
+  end
+
+  describe "#following_this_category?" do
+    let(:category) { create(:category) }
+    let(:category_extra) { create(:category) }
+    let(:user) { create(:user) }
+    subject { user.following_this_category?(category.id)}
+
+    context "when is following the category" do
+      before do
+        user.categories << category
+      end
+
+      it { is_expected.to eq(true) }
+    end
+
+    context "when not following the category" do
+      before do
+        user.categories << category_extra
+      end
+
+      it { is_expected.to eq(false) }
+    end
+
+    context "when not following any category" do
       it { is_expected.to eq(false) }
     end
   end
