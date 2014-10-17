@@ -113,6 +113,17 @@ pt:
         user_email: 'Email utilizado no catarse'
         created_at: 'Iniciado em'
       index:
+        details:
+          payer_email: 'E-mail do meio de pagamento'
+          normal_email: 'E-mail no Catarse'
+          payment_id: 'ID Pagamento'
+          acquirer_tid: 'TID Operadora'
+          payment_method: 'Meio de pagamento'
+          payment_choice: 'Opção de pagamento'
+          acquirer_name: 'Operadora de cartão'
+          installments: 'Parcelas'
+          created_at: 'Iniciado em'
+
         placeholders:
           project: 'Permalink ou nome do projeto'
           acquirer: 'Nome da operadora de cartão'
