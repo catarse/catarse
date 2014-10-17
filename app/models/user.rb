@@ -9,8 +9,8 @@ class User < ActiveRecord::Base
     :recoverable, :rememberable, :trackable, :omniauthable
 
   delegate  :display_name, :display_image, :short_name, :display_image_html,
-    :medium_name, :display_credits, :display_total_of_contributions, :contributions_text, :twitter_link, :gravatar_url,
-    to: :decorator
+    :medium_name, :display_credits, :display_total_of_contributions, :contributions_text,
+    :twitter_link, :gravatar_url, :display_bank_account, :display_bank_account_owner, to: :decorator
 
   attr_accessible :email, :password, :password_confirmation, :remember_me, :name,
     :image_url, :uploaded_image, :bio, :newsletter, :full_name, :address_street, :address_number,

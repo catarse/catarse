@@ -27,6 +27,12 @@ pt:
         by_state: 'Por estado'
         between_expires_at: 'Expiram entre'
         by_progress: Por progresso %
+        details:
+          name: 'Razão social'
+          bank_data: 'Dados bancarios'
+          document: 'CPF / CNPJ'
+          email: 'E-mail'
+          permalink: 'Permalink do projeto'
     projects:
       index:
         with_state: 'Por estado'
