@@ -97,7 +97,7 @@ class User < ActiveRecord::Base
           select true from category_notifications n
           where n.template_name = 'categorized_projects_of_the_week' AND
           n.category_id = ? AND
-          to_char(n.created_at AT TIME ZONE '#{Time.zone.tzinfo.name}', 'yyyy-ww') = to_char(current_timestamp AT TIME ZONE '#{Time.zone.tzinfo.name}', 'yyyy-ww') AND
+          (n.created_at AT TIME ZONE '#{Time.zone.tzinfo.name}' + '7 days'::interval) >= current_timestamp AT TIME ZONE '#{Time.zone.tzinfo.name}' AND
           n.user_id = users.id)", category_id)
   }
   scope :order_by, ->(sort_field){ order(sort_field) }
