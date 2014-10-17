@@ -138,7 +138,7 @@
               | #{@project.user.address_city}
         .user_social
           ul
-            - if @project.user.facebook_link
+            - if @project.user.facebook_link.present?
               li
                 = link_to "Perfil no facebook", @project.user.facebook_link, target: '_blank', class: 'facebook'
             - if @project.user.twitter_link

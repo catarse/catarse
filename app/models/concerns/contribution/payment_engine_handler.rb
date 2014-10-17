@@ -17,6 +17,14 @@ module Contribution::PaymentEngineHandler
       payment_engine.direct_refund(self)
     end
 
+    def second_slip_path
+      payment_engine.try(:second_slip_path, self)
+    end
+
+    def can_generate_second_slip?
+      payment_engine.try(:can_generate_second_slip?)
+    end
+
     def update_current_billing_info
       self.address_street = user.address_street
       self.address_number = user.address_number

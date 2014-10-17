@@ -1,18 +1,18 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe Contribution::PaymentEngineHandler do
+RSpec.describe Contribution::PaymentEngineHandler, type: :model do
   let(:contribution){ create(:contribution, payment_method: 'MoIP') }
   let(:moip_engine) { double }
 
   before do
-    Contribution.any_instance.unstub(:payment_engine)
+    allow_any_instance_of(Contribution).to receive(:payment_engine).and_call_original
     PaymentEngines.clear
 
-    moip_engine.stub(:name).and_return('MoIP')
-    moip_engine.stub(:review_path).and_return("/#{contribution}")
-    moip_engine.stub(:locale).and_return('pt')
-    moip_engine.stub(:can_do_refund?).and_return(false)
-    moip_engine.stub(:direct_refund).and_return(false)
+    allow(moip_engine).to receive(:name).and_return('MoIP')
+    allow(moip_engine).to receive(:review_path).and_return("/#{contribution}")
+    allow(moip_engine).to receive(:locale).and_return('pt')
+    allow(moip_engine).to receive(:can_do_refund?).and_return(false)
+    allow(moip_engine).to receive(:direct_refund).and_return(false)
 
   end
 
@@ -24,11 +24,11 @@ describe Contribution::PaymentEngineHandler do
     context "when contribution has a payment engine" do
       before { PaymentEngines.register engine }
 
-      it { should eq(engine) }
+      it { is_expected.to eq(engine) }
     end
 
     context "when contribution don't have a payment engine" do
-      it { should be_a_kind_of(PaymentEngines::Interface) }
+      it { is_expected.to be_a_kind_of(PaymentEngines::Interface) }
     end
   end
 
@@ -37,11 +37,11 @@ describe Contribution::PaymentEngineHandler do
 
     context "when contribution has a payment engine with direct refund enabled" do
       before do
-        moip_engine.stub(:can_do_refund?).and_return(true)
+        allow(moip_engine).to receive(:can_do_refund?).and_return(true)
         PaymentEngines.register(engine)
       end
 
-      it { should be_true }
+      it { is_expected.to eq(true) }
     end
 
     context "when contribution has a payment engine without direct refund enabled" do
@@ -49,7 +49,7 @@ describe Contribution::PaymentEngineHandler do
         PaymentEngines.register(engine)
       end
 
-      it { should be_false }
+      it { is_expected.to eq(false) }
     end
   end
 
@@ -58,12 +58,12 @@ describe Contribution::PaymentEngineHandler do
 
     context "when contribution has a payment engine with direct refund enabled" do
       before do
-        moip_engine.stub(:can_do_refund?).and_return(true)
-        moip_engine.stub(:direct_refund).and_return(true)
+        allow(moip_engine).to receive(:can_do_refund?).and_return(true)
+        allow(moip_engine).to receive(:direct_refund).and_return(true)
         PaymentEngines.register(engine)
       end
 
-      it { should be_true }
+      it { is_expected.to eq(true) }
     end
 
     context "when contribution has a payment engine without direct refund enabled" do
@@ -71,7 +71,7 @@ describe Contribution::PaymentEngineHandler do
         PaymentEngines.register(engine)
       end
 
-      it { should be_false }
+      it { is_expected.to eq(false) }
     end
   end
 
@@ -80,15 +80,15 @@ describe Contribution::PaymentEngineHandler do
 
     context "when contribution has a payment engine" do
       before do
-        contribution.stub(:payment_engine).and_return(engine)
+        allow(contribution).to receive(:payment_engine).and_return(engine)
         PaymentEngines.register engine
       end
 
-      it { should eq(engine.review_path(contribution)) }
+      it { is_expected.to eq(engine.review_path(contribution)) }
     end
 
     context "when contribution don't have a payment engine" do
-      it { should eq(nil) }
+      it { is_expected.to eq(nil) }
     end
   end
 
@@ -153,7 +153,7 @@ describe Contribution::PaymentEngineHandler do
       before do
         contribution.update_attributes payer_document: '123'
         contribution.reload
-        user.should_receive(:update_attributes).with(contribution_attributes)
+        expect(user).to receive(:update_attributes).with(contribution_attributes)
       end
 
       it("should update user billing info attributes") { contribution.update_user_billing_info}
@@ -166,7 +166,7 @@ describe Contribution::PaymentEngineHandler do
       before do
         user.update_column :cpf, '000'
         user.reload
-        user.should_receive(:update_attributes).with(contribution_attributes.merge!({cpf: user.cpf}))
+        expect(user).to receive(:update_attributes).with(contribution_attributes.merge!({cpf: user.cpf}))
       end
 
       it("should update user billing info attributes") { contribution.update_user_billing_info }

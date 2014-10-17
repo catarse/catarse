@@ -1,13 +1,13 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe ChannelsSubscriber do
+RSpec.describe ChannelsSubscriber, type: :model do
   describe "associations" do
-    it{ should belong_to :user }
-    it{ should belong_to :channel }
+    it{ is_expected.to belong_to :user }
+    it{ is_expected.to belong_to :channel }
   end
 
   describe "validations" do
-    it{ should validate_presence_of :user_id }
-    it{ should validate_presence_of :channel_id }
+    it{ is_expected.to validate_presence_of :user_id }
+    it{ is_expected.to validate_presence_of :channel_id }
   end
 end

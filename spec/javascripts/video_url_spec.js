@@ -1,4 +1,4 @@
-describe("VideoUrl", function(){
+RSpec.describe("VideoUrl", function(){
   var view;
 
   beforeEach(function(){

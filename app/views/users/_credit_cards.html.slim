@@ -1,0 +1,15 @@
+.table_content
+  table.table.table-striped
+    thead
+      th= t('.index.last_digits')
+      th= t('.index.brand')
+      th
+    - @credit_cards.each do |card|
+      tr
+        td.card_name= card.display_digits
+        td.brand= card.card_brand
+        td.actions
+          .bootstrap-twitter
+            = link_to t('.index.remove'), user_credit_card_path(@user, card), class: 'btn btn-danger', method: :delete, data: { confirm: 'você tem certeza?' }
+
+

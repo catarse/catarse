@@ -1,21 +1,21 @@
 # encoding: utf-8
 
-require 'spec_helper'
+require 'rails_helper'
 
-describe PaymentEngines do
+RSpec.describe PaymentEngines do
   let(:contribution){ FactoryGirl.create(:contribution) }
   let(:paypal_engine) { double }
   let(:moip_engine) { double }
 
   before do
     PaymentEngines.clear
-    paypal_engine.stub(:name).and_return('PayPal')
-    paypal_engine.stub(:review_path).with(contribution).and_return("/#{contribution}")
-    paypal_engine.stub(:locale).and_return('en')
+    allow(paypal_engine).to receive(:name).and_return('PayPal')
+    allow(paypal_engine).to receive(:review_path).with(contribution).and_return("/#{contribution}")
+    allow(paypal_engine).to receive(:locale).and_return('en')
 
-    moip_engine.stub(:name).and_return('MoIP')
-    moip_engine.stub(:review_path).with(contribution).and_return("/#{contribution}")
-    moip_engine.stub(:locale).and_return('pt')
+    allow(moip_engine).to receive(:name).and_return('MoIP')
+    allow(moip_engine).to receive(:review_path).with(contribution).and_return("/#{contribution}")
+    allow(moip_engine).to receive(:locale).and_return('pt')
   end
 
   let(:engine){ paypal_engine }
@@ -29,19 +29,19 @@ describe PaymentEngines do
 
     context "when engine name is not nil" do
       subject { PaymentEngines.find_engine('MoIP') }
-      it { should == engine_pt }
+      it { is_expected.to eq(engine_pt) }
     end
 
     context "when engine name is nil" do
       subject { PaymentEngines.find_engine(nil) }
-      it { should be_nil }
+      it { is_expected.to be_nil }
     end
   end
 
   describe ".register" do
     before{ PaymentEngines.register engine }
     subject{ PaymentEngines.engines }
-    it{ should == [engine] }
+    it{ is_expected.to eq([engine]) }
   end
 
   describe ".clear" do
@@ -50,22 +50,22 @@ describe PaymentEngines do
       PaymentEngines.clear
     end
     subject{ PaymentEngines.engines }
-    it{ should be_empty }
+    it{ is_expected.to be_empty }
   end
 
   describe ".configuration" do
     subject{ PaymentEngines.configuration }
-    it{ should == CatarseSettings }
+    it{ is_expected.to eq(CatarseSettings) }
   end
 
   describe ".create_payment_notification" do
     subject{ PaymentEngines.create_payment_notification({ contribution_id: contribution.id, extra_data: { test: true } }) }
-    it{ should == PaymentNotification.where(contribution_id: contribution.id).first }
+    it{ is_expected.to eq(PaymentNotification.where(contribution_id: contribution.id).first) }
   end
 
   describe ".find_payment" do
     subject{ PaymentEngines.find_payment({ id: contribution.id }) }
-    it{ should == contribution }
+    it{ is_expected.to eq(contribution) }
   end
 
   describe ".engines" do
@@ -78,14 +78,14 @@ describe PaymentEngines do
       before do
         I18n.locale = :pt
       end
-      it{ should == [engine_pt, engine] }
+      it{ is_expected.to eq([engine_pt, engine]) }
     end
 
     context "when locale is en" do
       before do
         I18n.locale = :en
       end
-      it{ should == [engine, engine_pt] }
+      it{ is_expected.to eq([engine, engine_pt]) }
     end
   end
 end

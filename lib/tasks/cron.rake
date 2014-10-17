@@ -102,3 +102,38 @@ task :migrate_project_thumbnails => :environment do
   end
 
 end
+
+desc "Deliver credits waning for users that have credits less than R$ 10"
+task :deliver_credits_less_10, [:percent] => :environment do |t, args|
+  total_percent = (args.percent.to_f/100.0)
+  collection = User.already_used_credits.
+    where("user_totals.credits < 10
+          and not exists(
+            select true
+            from contribution_notifications cn
+            where cn.template_name = 'credits_warning_less_group'
+         )")
+  limit = (args.percent.present? ? (collection.count * total_percent).to_i : nil)
+
+  collection.limit(limit).each do |user|
+    user.notify_once(:credits_warning_less_group)
+  end
+end
+
+desc "Deliver credits waning for users that have credits more than R$ 10"
+task :deliver_credits_more_than_10, [:percent] => :environment do |t, args|
+  total_percent = (args.percent.to_f/100.0)
+  collection = User.already_used_credits.
+      where("user_totals.credits >= 10
+          and not exists(
+            select true
+            from contribution_notifications cn
+            where cn.template_name = 'credits_warning_less_group'
+         )")
+
+  limit = (args.percent.present? ? (collection.count * total_percent).to_i : nil)
+
+  collection.limit(limit).each do |user|
+    user.notify_once(:credits_warning_more_group)
+  end
+end

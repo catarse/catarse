@@ -35,6 +35,14 @@ class Project < ActiveRecord::Base
 
   catarse_auto_html_for field: :about, video_width: 600, video_height: 403
 
+  pg_search_scope :search_on_name,
+    against: [[:name, 'A'], [:headline, 'B']],
+    associated_against: {
+      category: [:name_pt, :name_en]
+    },
+    using: {tsearch: {dictionary: "portuguese"}},
+    ignoring: :accents
+
   pg_search_scope :pg_search, against: [
       [:name, 'A'],
       [:headline, 'B'],
@@ -136,6 +144,20 @@ class Project < ActiveRecord::Base
   def self.order_by(sort_field)
     return self.all unless sort_field =~ /^\w+(\.\w+)?\s(desc|asc)$/i
     order(sort_field)
+  end
+
+  def self.enabled_to_use_pagarme
+    begin
+      permalinks = CatarseSettings[:projects_enabled_to_use_pagarme].split(',').map(&:strip)
+    rescue
+      permalinks = []
+    end
+
+    Project.where(permalink: permalinks)
+  end
+
+  def using_pagarme?
+    Project.enabled_to_use_pagarme.include?(self)
   end
 
   def subscribed_users

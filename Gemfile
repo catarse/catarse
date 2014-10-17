@@ -33,11 +33,13 @@ gem 'mixpanel-ruby'
 
 # Payment engines
 gem 'catarse_paypal_express', '3.0.0'
-gem 'catarse_moip', '~> 3.0.1'
+gem 'catarse_moip', '~> 3.0.2'
 gem 'catarse_credits', '1.0.0'
+gem 'catarse_pagarme', '2.0.3'
 #gem 'catarse_paypal_express', path: '../catarse_paypal_express'
 #gem 'catarse_moip', path: '../catarse_moip'
 #gem 'catarse_credits', path: '../catarse_credits'
+#gem 'catarse_pagarme', path: '../catarse_pagarme'
 
 gem 'catarse_contribution_validator', github: 'catarse/catarse_contribution_validator'
 # gem 'catarse_wepay', '~> 0.0.1'
@@ -129,7 +131,9 @@ group :development do
 end
 
 group :test, :development do
-  gem 'rspec-rails', '~> 2.14.0'
+  gem 'rspec-rails', '~> 3.1'
+  gem 'rspec-its'
+  gem 'rspec-collection_matchers'
   gem 'pry'
   gem 'jasmine-rails'
 end
@@ -141,7 +145,7 @@ group :test do
   gem 'database_cleaner'
   gem 'shoulda'
   gem 'factory_girl_rails'
-  gem 'capybara',   '~> 2.1.0'
+  gem 'capybara',   '~> 2.2.0'
   gem 'coveralls', require: false
   gem 'selenium-webdriver'
 end

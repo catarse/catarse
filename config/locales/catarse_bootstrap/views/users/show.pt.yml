@@ -8,6 +8,12 @@ pt:
       requested_refund: "Reembolso solicitado"
       waiting_confirmation: "Aguardando confirmação"
       tell_about_this_contribution: Conte para o mundo sobre o seu apoio!
+    credit_cards:
+      index:
+        last_digits: 'Cartão'
+        brand: 'Operadora'
+        title: 'Cartões de credito'
+        remove: 'Remover'
     credits:
       modal:
         title: 'Quer mesmo solicitar o reembolso do seu apoio?'
@@ -20,7 +26,7 @@ pt:
         current_credits_html: "Seu saldo atual é de <span id=\"current_credits\">%{credits}</span> em créditos."
         important_html: "Para saber todas as regras de funcionamento de reembolso, <a href='http://suporte.catarse.me/hc/pt-br/articles/202365507-Regras-e-funcionamento-dos-reembolsos-estornos' target='_blank'>clique aqui</a>. Qualquer dúvida, acesse nosso <a href='http://suporte.catarse.me' target='_blank'>suporte</a>."
         project: Projeto
-        refunded: "Reembolso efetuado"
+        refunded: "Solicitação confirmada. Entraremos em contato em até 4 dias uteís."
         insufficient_credits: "Você não tem créditos suficientes para realizar este estorno."
         refunds_title: "Apoios que podem ter estorno realizado"
         request_refund: "Solicitar estorno"
@@ -36,6 +42,8 @@ pt:
         requested_refund: "Você já solicitou estorno para este apoio."
       title: "Meus créditos"
     current_user_fields:
+      bank_account_title: "Dados bancários"
+      bank_account_hint: "Seus dados bancários serão utilizados para realizar o reembolso integral do seu apoio, caso o projeto não atinja 100% da meta estabelecida."
       my_facebook: 'Integração com o facebook'
       bio_limit: 'até 140 caracteres'
       updated: "As suas informações foram atualizadas"
@@ -60,6 +68,7 @@ pt:
       deactivate_confirm: "Você deseja desativar essa conta?"
       deactivate_hint: "Todos os seus apoios serão convertidos em apoios anônimos, seus dados não serão mais visíveis, você sairá automaticamente do sistema e sua conta será desativada permanentemente."
     unsubscribes:
+      projects_in_reminder: "Projetos com lembrete ativo:"
       title: "Escolha de quais projetos você deseja receber notificações:"
       posts: "Eu quero receber atualizações dos projetos"
     show:
@@ -79,6 +88,7 @@ pt:
         your_reward: "Sua recompensa"
       attention: "Atenção"
       tabs:
+        credit_cards: 'Cartões de credito'
         contributed_projects: "Projetos apoiados"
         created_projects: "Projetos criados"
         comments: Comentários

@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe FeedbacksController do
+RSpec.describe FeedbacksController, type: :controller do
   subject{ response }
 
   let(:delivery){ ActionMailer::Base.deliveries.last }
@@ -9,7 +9,7 @@ describe FeedbacksController do
     before do
       post :create, feedback: {email: 'foo@bar.com', message: 'test'}
     end
-    it{ should be_success }
+    it{ is_expected.to be_success }
 
     it "should deliver feedback" do
       expect(delivery).to_not be_nil

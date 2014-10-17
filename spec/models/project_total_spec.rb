@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe ProjectTotal do
+RSpec.describe ProjectTotal, type: :model do
   before do
     @project_id = create(:contribution, value: 10.0, payment_service_fee: 1, state: 'pending').project_id
     create(:contribution, value: 10.0, payment_service_fee: 1, state: 'confirmed', project_id: @project_id)
@@ -11,16 +11,16 @@ describe ProjectTotal do
 
   describe "#pledged" do
     subject{ ProjectTotal.where(project_id: @project_id).first.pledged }
-    it{ should == 30 }
+    it{ is_expected.to eq(30) }
   end
 
   describe "#total_contributions" do
     subject{ ProjectTotal.where(project_id: @project_id).first.total_contributions }
-    it{ should == 3 }
+    it{ is_expected.to eq(3) }
   end
 
   describe "#total_payment_service_fee" do
     subject { ProjectTotal.where(project_id: @project_id).first.total_payment_service_fee }
-    it { should == 3 }
+    it { is_expected.to eq(3) }
   end
 end
