@@ -112,7 +112,9 @@ class Project < ActiveRecord::Base
   }
 
   scope :of_current_week, -> {
-    where("to_char(projects.online_date AT TIME ZONE '#{Time.zone.tzinfo.name}', 'yyyy-ww') = to_char(current_timestamp AT TIME ZONE '#{Time.zone.tzinfo.name}', 'yyyy-ww')")
+    where("
+      projects.online_date AT TIME ZONE '#{Time.zone.tzinfo.name}' >= (current_timestamp AT TIME ZONE '#{Time.zone.tzinfo.name}' - '7 days'::interval)
+    ")
   }
 
   attr_accessor :accepted_terms
