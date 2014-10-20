@@ -42,8 +42,7 @@ class Projects::ContributionsController < ApplicationController
     authorize @contribution
 
     @title = t('projects.contributions.new.title', name: @project.name)
-    empty_reward = Reward.new(minimum_value: 0, description: t('projects.contributions.new.no_reward'))
-    @rewards = [empty_reward] + @project.rewards.remaining.order(:minimum_value)
+    load_rewards
 
     # Select
     if params[:reward_id] && (@selected_reward = @project.rewards.find params[:reward_id]) && !@selected_reward.sold_out?
@@ -61,7 +60,8 @@ class Projects::ContributionsController < ApplicationController
     create! do |success,failure|
       failure.html do
         flash[:alert] = resource.errors.full_messages.to_sentence
-        return redirect_to new_project_contribution_path(@project)
+        load_rewards
+        render :new
       end
       success.html do
         flash[:notice] = nil
@@ -73,6 +73,11 @@ class Projects::ContributionsController < ApplicationController
   end
 
   protected
+  def load_rewards
+    empty_reward = Reward.new(minimum_value: 0, description: t('projects.contributions.new.no_reward'))
+    @rewards = [empty_reward] + @project.rewards.remaining.order(:minimum_value)
+  end
+
   def permitted_params
     params.permit(policy(resource).permitted_attributes)
   end
