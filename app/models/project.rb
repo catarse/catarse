@@ -117,12 +117,13 @@ class Project < ActiveRecord::Base
   validates_acceptance_of :accepted_terms, on: :create
 
   validates :video_url, presence: true, if: ->(p) { p.state == 'online' && p.goal >= (CatarseSettings[:minimum_goal_for_video].to_i) }
-  validates_presence_of :name, :user, :category, :about, :headline, :goal, :permalink
+  validates_presence_of :name, :user, :category, :permalink
+  validates_presence_of :about, :headline, :goal, if: ->(p) {p.state == 'online'}
   validates_length_of :headline, maximum: 140
-  validates_numericality_of :online_days, less_than_or_equal_to: 60, greater_than: 0
-  validates_numericality_of :goal, greater_than: 9
+  validates_numericality_of :online_days, less_than_or_equal_to: 60, greater_than: 0, if: ->(p){ p.online_days.present? }
+  validates_numericality_of :goal, greater_than: 9, allow_blank: true
   validates_uniqueness_of :permalink, case_sensitive: false
-  validates_format_of :permalink, with: /\A(\w|-)*\z/, allow_blank: true
+  validates_format_of :permalink, with: /(\w|-)*/, allow_blank: true
 
   [:between_created_at, :between_expires_at, :between_online_date, :between_updated_at].each do |name|
     define_singleton_method name do |starts_at, ends_at|

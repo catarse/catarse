@@ -15,25 +15,27 @@
             p.fontsize-small.u-marginbottom-40 = t('.form.blocks.first.description')
 
             .u-marginbottom-40
-              = form.label :name, class: 'fontsize-large'
-              = form.input_field :name, as: :string, class: 'medium'
-              = form.hint :name, class: 'fontsize-small foncolor-secondary'
+              = form.label :name, class: 'fontsize-large', required: false, as: :string
+              .fontsize-small.fontcolor-secondary.u-marginbottom-10= form.hint :name
+              = form.input_field :name, class: 'medium', as: :string
             .u-marginbottom-40
-              = form.label :permalink, class: 'fontsize-large'
+              = form.label :category, class: 'fontsize-large', required: false
+              .fontsize-small.fontcolor-secondary.u-marginbottom-10= form.hint :category
+              = form.association :category, as: :select, collection: Category.order(:name_pt), prompt: t('simple_form.prompts.project.category'), class: 'medium', label: '', required: false, hint: ''
+            .u-marginbottom-40
+              = form.label :permalink, class: 'fontsize-large', required: false, as: :string
+              .fontsize-small.fontcolor-secondary.u-marginbottom-10= form.hint :permalink
               .w-row
                 .w-col.w-col-4.w-col.w-col-small-6.w-col-tiny-6.text-field.prefix.medium.prefix-permalink.no-hover
                   .fontcolor-secondary.fontsize-base.u-text-center = t('.form.info.permalink')
-                .w-col.w-col-8.w-col-small-6.w-col-tiny-6    
-                    = form.input_field :permalink, as: :string, class: 'medium medium postfix'
-              = form.hint :permalink, class: 'fontsize-small fontcolor-secondary'
+                .w-col.w-col-8.w-col-small-6.w-col-tiny-6
+                    = form.input_field :permalink, as: :string, class: 'medium medium postfix', required: false
             .u-marginbottom-40
-              = form.label :category, class: 'fontsize-large'
-              = form.input_field :category, as: :select, collection: Category.order(:name_pt), prompt: t('simple_form.prompts.project.category'), class: 'medium'
-              = form.hint :category, class: 'fontsize-small fontcolor-secondary'
-      
-        .w-row
-          .w-col.w-col-6.w-col-push-3   
-            a#submit.btn.btn-large href="#" = t('.form.submit')
+              label.fontsize-large.field-label for="field"= t('simple_form.prompts.project.traffic_sources')
+              = form.input :traffic_sources, as: :select, collection: t('simple_form.collections.project.traffic_sources').values, prompt: t('simple_form.prompts.project.select'), class: 'medium', label: '', required: false, hint: ''
+          .w-row
+            .w-col.w-col-6.w-col-push-3   
+              = form.button :submit, t('.form.submit'), class:'btn btn-large'
    
       .w-col.w-col-4
         .w-hidden-small.w-hidden-tiny.card.u-radius.u-marginbottom-20
