@@ -248,31 +248,6 @@ RSpec.describe ProjectObserver do
     end
   end
 
-  describe "#notify_owner_that_project_is_rejected" do
-    let(:project){ create(:project, state: 'in_analysis') }
-
-    context "when project don't belong to any channel" do
-      before do
-        project.reject
-      end
-      it "should create notification for project owner" do
-        expect(ProjectNotification.where(user_id: project.user.id, template_name: 'project_rejected', project_id: project.id).first).not_to be_nil
-      end
-    end
-
-    context "when project belong to a channel" do
-      before do
-        project.channels << channel
-        project.reject
-      end
-
-      it "should create notification for project owner" do
-        expect(ProjectNotification.where(user_id: project.user.id, template_name: 'project_rejected_channel', project_id: project.id).first).not_to be_nil
-      end
-    end
-
-  end
-
   describe "#notify_admin_that_project_reached_deadline" do
     let(:project){ create(:project, goal: 30, online_days: 1, online_date: Time.now - 8.days, state: 'waiting_funds') }
     let(:user) { create(:user, email: 'foo@foo.com')}

@@ -18,8 +18,7 @@ class Project < ActiveRecord::Base
   delegate  :display_online_date, :display_status, :progress, :display_progress,
             :display_image, :display_expires_at, :remaining_text, :time_to_go,
             :display_pledged, :display_goal, :remaining_days, :progress_bar,
-            :status_flag, :state_warning_template, :display_traffic_sources, 
-            :display_card_class, to: :decorator
+            :status_flag, :state_warning_template, :display_card_class, to: :decorator
 
   belongs_to :user
   belongs_to :category
@@ -110,6 +109,10 @@ class Project < ActiveRecord::Base
 
   scope :expiring_in_less_of, ->(time) {
     with_state('online').where("(projects.expires_at - current_date) <= ?", time)
+  }
+
+  scope :of_current_week, -> {
+    where("to_char(projects.online_date AT TIME ZONE '#{Time.zone.tzinfo.name}', 'yyyy-ww') = to_char(current_timestamp AT TIME ZONE '#{Time.zone.tzinfo.name}', 'yyyy-ww')")
   }
 
   attr_accessor :accepted_terms
