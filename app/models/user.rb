@@ -9,8 +9,8 @@ class User < ActiveRecord::Base
     :recoverable, :rememberable, :trackable, :omniauthable
 
   delegate  :display_name, :display_image, :short_name, :display_image_html,
-    :medium_name, :display_credits, :display_total_of_contributions, :contributions_text, :twitter_link, :gravatar_url,
-    to: :decorator
+    :medium_name, :display_credits, :display_total_of_contributions, :contributions_text,
+    :twitter_link, :gravatar_url, :display_bank_account, :display_bank_account_owner, to: :decorator
 
   attr_accessible :email, :password, :password_confirmation, :remember_me, :name,
     :image_url, :uploaded_image, :bio, :newsletter, :full_name, :address_street, :address_number,
@@ -97,7 +97,7 @@ class User < ActiveRecord::Base
           select true from category_notifications n
           where n.template_name = 'categorized_projects_of_the_week' AND
           n.category_id = ? AND
-          to_char(n.created_at AT TIME ZONE '#{Time.zone.tzinfo.name}', 'yyyy-ww') = to_char(current_timestamp AT TIME ZONE '#{Time.zone.tzinfo.name}', 'yyyy-ww') AND
+          (n.created_at AT TIME ZONE '#{Time.zone.tzinfo.name}' + '7 days'::interval) >= current_timestamp AT TIME ZONE '#{Time.zone.tzinfo.name}' AND
           n.user_id = users.id)", category_id)
   }
   scope :order_by, ->(sort_field){ order(sort_field) }

@@ -35,7 +35,7 @@ class Project < ActiveRecord::Base
   catarse_auto_html_for field: :about, video_width: 600, video_height: 403
 
   pg_search_scope :search_on_name,
-    against: [[:name, 'A'], [:headline, 'B']],
+    against: [[:name, 'A'], [:permalink, 'C'], [:headline, 'B']],
     associated_against: {
       category: [:name_pt, :name_en]
     },
@@ -112,7 +112,9 @@ class Project < ActiveRecord::Base
   }
 
   scope :of_current_week, -> {
-    where("to_char(projects.online_date AT TIME ZONE '#{Time.zone.tzinfo.name}', 'yyyy-ww') = to_char(current_timestamp AT TIME ZONE '#{Time.zone.tzinfo.name}', 'yyyy-ww')")
+    where("
+      projects.online_date AT TIME ZONE '#{Time.zone.tzinfo.name}' >= (current_timestamp AT TIME ZONE '#{Time.zone.tzinfo.name}' - '7 days'::interval)
+    ")
   }
 
   attr_accessor :accepted_terms

@@ -47,6 +47,22 @@ class UserDecorator < Draper::Decorator
     number_to_currency source.credits
   end
 
+  def display_bank_account
+    if source.bank_account.present?
+      "#{source.bank_account.bank.code} - #{source.bank_account.bank.name} /
+      AG. #{source.bank_account.agency}-#{source.bank_account.agency_digit} /
+      CC. #{source.bank_account.account}-#{source.bank_account.account_digit}"
+    else
+      I18n.t('not_filled')
+    end
+  end
+
+  def display_bank_account_owner
+    if source.bank_account.present?
+      "#{source.bank_account.owner_name} / CPF: #{source.bank_account.owner_document}"
+    end
+  end
+
   def display_total_of_contributions
     number_to_currency source.contributions.with_state('confirmed').sum(:value)
   end
