@@ -12,9 +12,9 @@ App.addChild('Contribution', {
   },
 
   activate: function(){
-    this.$('input[type=radio]:checked').parent().addClass('selected');
     this.$value = this.$('#contribution_value');
     this.$minimum = this.$('#minimum-value')
+    this.clickReward({currentTarget: this.$('input[type=radio]:checked').parent()[0]});
   },
 
   resetReward: function(event){
