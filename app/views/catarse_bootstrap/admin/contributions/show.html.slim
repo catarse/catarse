@@ -29,6 +29,6 @@
   p
     strong= t('.created_at')
     | &nbsp;
-    = l(resource.created_at)
+    = l(resource.created_at) if resource.created_at.present?
 
 = render 'shared/footer_big'

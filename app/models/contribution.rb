@@ -2,6 +2,7 @@
 class Contribution < ActiveRecord::Base
   has_notifications
 
+  include PgSearch
   include Shared::StateMachineHelpers
   include Contribution::StateMachineHandler
   include Contribution::CustomValidators
@@ -23,6 +24,23 @@ class Contribution < ActiveRecord::Base
       contribution.user.try(:credits).to_f > 0
     }
 
+  pg_search_scope :search_on_user,
+    against: [:payer_email],
+    associated_against: {
+      user: [:name, :full_name, :email, :id]
+    },
+    using: {tsearch: {dictionary: "portuguese"}},
+    ignoring: :accents
+
+  pg_search_scope :search_on_payment_data,
+    against: [:key, :payment_id, :acquirer_tid],
+    using: {tsearch: {dictionary: "portuguese"}},
+    ignoring: :accents
+
+  pg_search_scope :search_on_acquirer,
+    against: [:acquirer_name],
+    ignoring: :accents
+
   scope :available_to_count, ->{ with_states(['confirmed', 'requested_refund', 'refunded']) }
   scope :available_to_display, ->{ with_states(['confirmed', 'requested_refund', 'refunded', 'waiting_confirmation']) }
   scope :by_id, ->(id) { where(id: id) }
@@ -32,7 +50,9 @@ class Contribution < ActiveRecord::Base
   scope :user_name_contains, ->(term) { joins(:user).where("unaccent(upper(users.name)) LIKE ('%'||unaccent(upper(?))||'%')", term) }
   scope :user_email_contains, ->(term) { joins(:user).where("unaccent(upper(users.email)) LIKE ('%'||unaccent(upper(?))||'%')", term) }
   scope :payer_email_contains, ->(term) { where("unaccent(upper(payer_email)) LIKE ('%'||unaccent(upper(?))||'%')", term) }
-  scope :project_name_contains, ->(term) { joins(:project).where("unaccent(upper(projects.name)) LIKE ('%'||unaccent(upper(?))||'%')", term) }
+  scope :project_name_contains, ->(term) {
+    joins(:project).merge(Project.search_on_name(term))
+  }
   scope :anonymous, -> { where(anonymous: true) }
   scope :credits, -> { where("credits OR lower(payment_method) = 'credits'") }
   scope :not_anonymous, -> { where(anonymous: false) }

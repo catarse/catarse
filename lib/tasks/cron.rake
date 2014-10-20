@@ -105,7 +105,7 @@ end
 
 desc "Deliver a collection of recents projects of a category"
 task deliver_projects_of_week: :environment do
-  if Time.now.in_time_zone(Time.zone.tzinfo.name).friday?
+  if Time.now.in_time_zone(Time.zone.tzinfo.name).monday?
     Category.with_projects_on_this_week.each do |category|
       category.deliver_projects_of_week_notification
     end
