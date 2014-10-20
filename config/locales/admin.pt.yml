@@ -1,5 +1,7 @@
 pt:
   admin: &admin
+    filter:
+      title: 'Filtros'
     confirm_dialog: 'Você tem certeza?'
     financials:
       index:
@@ -25,6 +27,12 @@ pt:
         by_state: 'Por estado'
         between_expires_at: 'Expiram entre'
         by_progress: Por progresso %
+        details:
+          name: 'Razão social'
+          bank_data: 'Dados bancarios'
+          document: 'CPF / CNPJ'
+          email: 'E-mail'
+          permalink: 'Permalink do projeto'
     projects:
       index:
         with_state: 'Por estado'
@@ -105,6 +113,23 @@ pt:
         user_email: 'Email utilizado no catarse'
         created_at: 'Iniciado em'
       index:
+        details:
+          payer_email: 'E-mail do meio de pagamento'
+          normal_email: 'E-mail no Catarse'
+          payment_id: 'ID Pagamento'
+          acquirer_tid: 'TID Operadora'
+          payment_method: 'Meio de pagamento'
+          payment_choice: 'Opção de pagamento'
+          acquirer_name: 'Operadora de cartão'
+          installments: 'Parcelas'
+          created_at: 'Iniciado em'
+
+        placeholders:
+          project: 'Permalink ou nome do projeto'
+          acquirer: 'Nome da operadora de cartão'
+          user: 'ID, Nome, Email ou Email de pagamento'
+          payment_id: Chave, ID do meio de pagamento ou TID da operadora'
+        acquirer: 'Operadora'
         payment_tax: 'Taxa meio de pagamento'
         send_refund_request_contribution: 'Enviar solicitação de reembolso'
         payer_email: 'Email do meio de pagamento'
@@ -125,7 +150,7 @@ pt:
         anonymous: Anônimo?
         contribution: Apoio
         confirmed: Confirmado?
-        credits: "Usou créditos?"
+        credits_html: "Usou créditos? &nbsp;"
         id: Id
         key: Chave
         no_contributions: "Nenhum apoiador encontrado."

@@ -8,6 +8,10 @@ table
     background: $gray-two
   tr:nth-child(2n)
     background: $gray-two
+  tr.even
+    background: white
+  tr.odd
+    background: $gray-two
   td, th
     padding: 0.7em
   .user_info
@@ -22,6 +26,19 @@ table
 
 table.no-bottom
   margin-bottom: 5em
+
+table.admin-contributions, table.admin-table
+  margin-bottom: 30px
+  border-radius: 5px
+  tbody
+    tr
+      background: white !important
+  tr.detail_tr
+    font-size: 15px
+    background: white
+    thead
+      tr
+        background: #f8f8f8 !important
 
 .project-events-dropdown
   position: relative

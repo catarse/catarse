@@ -1,4 +1,5 @@
 pt:
+  not_filled: 'Não preenchido'
   days: dias
   facebook_locale: pt_BR
   failure_title: 'Por favor, corrija os seguintes erros:'
