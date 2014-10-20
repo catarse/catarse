@@ -28,6 +28,8 @@ pt:
         traffic_sources: "Como você conheceu o Catarse?"
     hints:
       project:
+        select: "Selecione uma opção"
+        traffic_sources: "Como você conheceu o Catarse?"
         name: "Quanto mais direto melhor. Não ultrapasse 50 caracteres"
         permalink: "É o endereço do seu projeto, deixe-a simples. Tente não usar underline, hífen e etc."
         category: "Antes de enviar, explore e se inspire em outros projetos da mesma categoria."

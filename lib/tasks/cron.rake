@@ -103,6 +103,15 @@ task :migrate_project_thumbnails => :environment do
 
 end
 
+desc "Deliver a collection of recents projects of a category"
+task deliver_projects_of_week: :environment do
+  if Time.now.in_time_zone(Time.zone.tzinfo.name).friday?
+    Category.with_projects_on_this_week.each do |category|
+      category.deliver_projects_of_week_notification
+    end
+  end
+end
+
 desc "Deliver credits waning for users that have credits less than R$ 10"
 task :deliver_credits_less_10, [:percent] => :environment do |t, args|
   total_percent = (args.percent.to_f/100.0)
@@ -110,8 +119,9 @@ task :deliver_credits_less_10, [:percent] => :environment do |t, args|
     where("user_totals.credits < 10
           and not exists(
             select true
-            from contribution_notifications cn
-            where cn.template_name = 'credits_warning_less_group'
+            from user_notifications cn
+            where cn.template_name = 'credits_warning_less_group' and
+            cn.user_id = users.id
          )")
   limit = (args.percent.present? ? (collection.count * total_percent).to_i : nil)
 
@@ -127,8 +137,9 @@ task :deliver_credits_more_than_10, [:percent] => :environment do |t, args|
       where("user_totals.credits >= 10
           and not exists(
             select true
-            from contribution_notifications cn
-            where cn.template_name = 'credits_warning_less_group'
+            from user_notifications cn
+            where cn.template_name = 'credits_warning_less_group' and
+            cn.user_id = users.id
          )")
 
   limit = (args.percent.present? ? (collection.count * total_percent).to_i : nil)

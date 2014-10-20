@@ -135,6 +135,8 @@ App.addChild('MixPanel', {
       'last_login':         null,
       'contributions':      null,
       'has_contributions':  null,
+      'projects':           null,
+      'has_projects':       null,
       'project':            ref,
       'url':                window.location
     };
@@ -144,6 +146,8 @@ App.addChild('MixPanel', {
       default_options.last_login = this.user.last_sign_in_at;
       default_options.contributions = this.user.total_contributed_projects;
       default_options.has_contributions = (this.user.total_contributed_projects > 0);
+      default_options.projects = this.user.total_created_projects;
+      default_options.has_projects = (this.user.total_created_projects > 0);
     }
     var opt     = $.fn.extend(default_options, opt);
 
