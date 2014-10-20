@@ -46,7 +46,7 @@ RSpec.describe Project, type: :model do
       3.times { create(:project, state: 'online', online_date: DateTime.now) }
       3.times { create(:project, state: 'draft', online_date: 3.days.ago) }
       3.times { create(:project, state: 'successful', online_date: 6.days.ago) }
-      5.times { create(:project, state: 'online', online_date: 1.week.ago) }
+      5.times { create(:project, state: 'online', online_date: 8.days.ago) }
       5.times { create(:project, state: 'online', online_date: 2.weeks.ago) }
       2.times { create(:project, state: 'in_analysis', online_date: 3.days.from_now)}
     end
