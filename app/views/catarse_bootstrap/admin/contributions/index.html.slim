@@ -10,9 +10,9 @@
       .large-2.columns
         = form.input :project_name_contains, as: :string, label: t('.project'), input_html: { placeholder: t('.placeholders.project'), title: t('.placeholders.project'), value: current_scopes[:project_name_contains] }
       .large-2.columns
-        = form.input :user_name_contains, as: :string, label: t('.email'), input_html: { title: t('.placeholders.user'), value: current_scopes[:user_name_contains] }
+        = form.input :user_email_contains, as: :string, label: t('.email'), input_html: { title: t('.placeholders.user'), value: current_scopes[:user_email_contains] }
       .large-2.columns
-        = form.input :user_email_contains, as: :string, label: t('.user'), input_html: { title: t('.placeholders.user'), value: current_scopes[:user_email_contains] }
+        = form.input :user_name_contains, as: :string, label: t('.user'), input_html: { title: t('.placeholders.user'), value: current_scopes[:user_name_contains] }
       .large-2.columns
         = form.input :search_on_payment_data, as: :string, label: t('.payment_id'), input_html: { placeholder: t('.placeholders.payment_id'), title: t('.placeholders.payment_id'), value: current_scopes[:search_on_payment_data] }
     .row
