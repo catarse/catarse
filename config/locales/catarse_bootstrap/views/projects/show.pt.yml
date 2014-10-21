@@ -1,5 +1,8 @@
 pt:
   projects:
+    draft:
+      form:
+        submit: 'Salvar'
     metrics:
       titles:
         confirmed_by_day: 'Total de apoios confirmados por dia'
