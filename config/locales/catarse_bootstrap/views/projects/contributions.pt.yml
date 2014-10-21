@@ -76,6 +76,8 @@ pt:
         next_step: "Revisar e realizar pagamento"
         no_reward: Obrigado. Eu só quero ajudar o projeto.
       review:
+        PayPal: "PayPal"
+        MoIP: "MoIP"
         Credits: 'Créditos'
         error: Ooops. Ocorreu um erro ao registrar seu apoio. Por favor, tente novamente.
       show:
