@@ -66,6 +66,7 @@
             - avaiable_payment_engines.each do |engine|
               div[id="#{engine.name}_payment" class="payments_type hide" data-path=engine.review_path(@contribution) ]
                 .results
+                  .tab-loader.loader.u-text-center.w-col.w-col-12.u-marginbottom-30 = image_tag "catarse_bootstrap/loader.gif"
       .w-col.w-col-4
         .w-hidden-small.w-hidden-tiny
           = render 'selected_reward'
