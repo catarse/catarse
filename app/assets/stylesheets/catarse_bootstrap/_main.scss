@@ -142,10 +142,6 @@ p {
 .bootstrap-color-swatch.gray-one {
   background-color: #f1f4f4;
 }
-.bootstrap-color-swatch.secondary {
-  height: 80px;
-  background-color: transparent;
-}
 .bootstrap-color-swatch.blue-two {
   background-color: #79808b;
 }
@@ -234,13 +230,16 @@ p {
   height: 60px;
   font-size: 22px;
 }
+.text-field.no-hover {
+  margin-bottom: 0px;
+}
 .text-field.no-hover:hover {
   border-color: #ddd;
 }
 .text-field.error {
   margin-bottom: 5px;
   border-color: #e86666;
-  background-color: rgba(232, 102, 102, 0.15);
+  background-color: rgba(232, 102, 102, 0.13);
 }
 .text-field.bottom {
   border-top-left-radius: 0px;
@@ -541,27 +540,6 @@ p {
   float: left;
   clear: none;
 }
-.project-by {
-  display: block;
-}
-.project-by.name {
-  margin-top: 12px;
-  margin-bottom: 3px;
-  font-size: 16px;
-  font-weight: 700;
-}
-.project-by.name.deliver-date {
-  margin-top: 22px;
-  font-size: 13px;
-  font-weight: 400;
-}
-.project-by.name.reward-limited {
-  display: inline-block;
-  padding: 2px 10px;
-  background-color: rgba(250, 246, 77, 0.70);
-  font-size: 14px;
-  font-weight: 400;
-}
 .author-description {
   display: block;
   margin-top: 26px;
@@ -733,11 +711,6 @@ p {
   padding-top: 8px;
   border-top: 1px solid #79808b;
   color: rgba(241, 244, 244, 0.45);
-}
-.prg2.reward-description {
-  margin-top: 20px;
-  margin-bottom: 28px;
-  line-height: 24px;
 }
 .main-footer {
   position: static;
@@ -993,10 +966,6 @@ p {
   border-top: 1px solid rgba(255, 255, 255, 0.61);
   font-family: proxima-nova, sans-serif;
 }
-.project-news-share {
-  display: inline-block;
-  margin-top: 13px;
-}
 .project-news {
   padding-right: 14px;
 }
@@ -1161,27 +1130,6 @@ p {
   padding-top: 30px;
   background-color: #f1f4f4;
   text-align: center;
-}
-.button-dark {
-  display: block;
-  width: 100%;
-  height: auto;
-  margin-top: 24px;
-  margin-bottom: 24px;
-  padding-top: 19px;
-  padding-bottom: 19px;
-  border-radius: 5px;
-  background-color: #3f4752;
-  -webkit-transition-delay: initial;
-  -o-transition-delay: initial;
-  transition-delay: initial;
-  color: white;
-  font-size: 18px;
-  text-align: center;
-  text-decoration: none;
-}
-.button-dark:hover {
-  background-color: #505966;
 }
 .project-heading {
   font-weight: 600;
@@ -1575,12 +1523,10 @@ p {
   float: right;
 }
 .card-project-stats {
-  position: static;
-  left: 0px;
-  right: 0px;
-  bottom: 0px;
-  padding: 8px;
+  height: 90px;
+  padding: 13px;
   border-top: 1px solid #ddd;
+  background-color: #f1f4f4;
 }
 .card-project-stats._1 {
   padding: 12px;
@@ -1589,6 +1535,7 @@ p {
   background-color: #f1f4f4;
 }
 .card-project-stats._2 {
+  height: 90px;
   padding: 13px;
   border-top-style: none;
   background-color: #f1f4f4;
@@ -1631,10 +1578,6 @@ p {
   margin-bottom: 20px;
   border-bottom: 1px solid #ddd;
   text-align: center;
-}
-.explore-content {
-  padding-top: 30px;
-  padding-bottom: 30px;
 }
 .card-author {
   margin-top: -9px;
@@ -2326,14 +2269,18 @@ p {
   width: 70px;
   height: 70px;
   margin-right: 20px;
+  background-image: url('../images/user-avatar_1.jpeg');
+  background-position: 50% 50%;
+  background-size: cover;
 }
 .thumb.small {
   width: 40px;
   height: 40px;
+  min-height: 0px;
+  min-width: 0px;
   margin-right: 10px;
   background-image: url('../images/thumb_avatar_MARCIO_menor_2.jpg');
   background-position: 50% 50%;
-  background-size: cover;
 }
 .card-reward {
   position: relative;
@@ -2582,6 +2529,7 @@ p {
   padding: 0px;
 }
 .card-project-author {
+  height: 65px;
   padding: 10px 14px 15px;
 }
 .card-terciary {
@@ -2612,6 +2560,12 @@ p {
 }
 .link-edit:hover {
   color: #409bff;
+}
+.card-author-name {
+  padding-top: 8px;
+}
+.u-text-right {
+  text-align: right;
 }
 html.w-mod-js *[data-ix="fade-in"] {
   opacity: 0;
@@ -2674,9 +2628,6 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
     height: 39px;
     margin-top: -20px;
   }
-  .project-by.name.reward-limited {
-    font-size: 13px;
-  }
   .project-reward-box:hover {
     background-color: #ddd;
   }
@@ -2705,10 +2656,6 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
     display: inline-block;
     padding-top: 6px;
     padding-bottom: 6px;
-  }
-  .prg2.reward-description {
-    font-size: 14px;
-    line-height: 20px;
   }
   .main-footer.main-footer-neg {
     padding-right: 20px;
@@ -2808,6 +2755,14 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
   .footer-signature-text {
     float: left;
   }
+  .card-project-description._3 {
+    height: 165px;
+    padding-top: 8px;
+    padding-bottom: 10px;
+  }
+  .card-project-thumb {
+    height: 140px;
+  }
   .formwrapper {
     margin-bottom: 20px;
   }
@@ -2905,6 +2860,9 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
   .thumb {
     width: 55px;
   }
+  .thumb.small {
+    width: 40px;
+  }
   .card-reward {
     -webkit-transition: all 500ms ease;
     -o-transition: all 500ms ease;
@@ -2939,6 +2897,11 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
   }
   .share-block {
     margin-right: 0px;
+  }
+  .card-project-author {
+    height: 55px;
+    padding-top: 5px;
+    padding-bottom: 5px;
   }
 }
 @media (max-width: 767px) {
@@ -3074,7 +3037,7 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
     text-align: center;
   }
   .fontsize-smaller {
-    font-size: 14px;
+    font-size: 13px;
   }
   .fontsize-jumbo {
     font-size: 34px;
@@ -3186,14 +3149,18 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
     display: block;
     padding-left: 238px;
   }
+  .card-project-description._3 {
+    height: 45px;
+    margin-bottom: -13px;
+  }
   .meter {
     display: block;
   }
+  .meter._1 {
+    height: 9px;
+  }
   .card-project-thumb {
-    display: block;
-    width: auto;
-    height: auto;
-    float: left;
+    display: inline-block;
     clear: none;
     border-radius: 5px 0px 0px 5px;
   }
@@ -3202,8 +3169,8 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
     clear: none;
   }
   .card-project-stats {
+    height: 87px;
     padding-bottom: 0px;
-    padding-left: 238px;
     text-align: left;
   }
   .back-reward-error-form {
@@ -3239,7 +3206,7 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
   }
   .formwrapper {
     margin-bottom: 0px;
-    padding: 15px;
+    padding: 15px 0px;
     border-top: 1px solid #e9e9ec;
     text-align: left;
   }
@@ -3352,6 +3319,10 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
   .dropdown-icon {
     font-size: 13px;
   }
+  .thumb.small {
+    width: 35px;
+    height: 35px;
+  }
   .project-name {
     padding-right: 63px;
     padding-left: 63px;
@@ -3376,6 +3347,16 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
   }
   .w-sub-col {
     padding-right: 0px;
+  }
+  .card-project-author {
+    height: 45px;
+    padding-bottom: 0px;
+  }
+  .text-success-small-only {
+    color: #00b22d;
+  }
+  .card-author-name {
+    padding-top: 0px;
   }
 }
 @media (max-width: 479px) {
@@ -3566,6 +3547,9 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
     padding-left: 8px;
     text-align: left;
   }
+  .card-project-description._3 {
+    margin-bottom: -16px;
+  }
   .card-title {
     margin-bottom: 0px;
     text-align: center;
@@ -3573,6 +3557,7 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
   .card-project-thumb {
     display: block;
     width: 100%;
+    height: 130px;
     float: none;
     border-radius: 5px 5px 0px 0px;
   }
@@ -3580,7 +3565,8 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
     margin-right: 16%;
   }
   .card-project-stats {
-    padding-bottom: 8px;
+    height: 85px;
+    padding-bottom: 0px;
     padding-left: 8px;
     border-top-style: none;
   }
@@ -3589,8 +3575,8 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
   }
   .formwrapper {
     margin-bottom: 0px;
-    padding-right: 10px;
-    padding-left: 10px;
+    padding-right: 0px;
+    padding-left: 0px;
     border-bottom-style: none;
     border-bottom-width: 0px;
   }
@@ -3700,6 +3686,9 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
   }
   .section-one-column {
     padding: 20px 12px 0px;
+  }
+  .card-project-author {
+    height: 40px;
   }
 }
 
