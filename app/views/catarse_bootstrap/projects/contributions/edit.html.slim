@@ -11,7 +11,7 @@
         = simple_form_for [@project, @contribution], html: { data: { update_info_path: project_contribution_path(project_id: @contribution.project.id, id: @contribution.id, format: :json) }, id: 'review_form', method: 'put' } do |form|
           = form.input :id, as: :hidden, label: false
           = form.input :project_id, as: :hidden, label: false
-          .u-marginbottom-40.u-text-center-small-only
+          .u-marginbottom-30.u-text-center-small-only
             .fontsize-large.fontweight-semibold.lineheight-tight.text-success-small-only Preencha e revise os dados para pagamento
             .w-hidden-tiny.fontsize-small Esses dados serão informados ao realizador do projeto
           #error-message.card.card-error.u-radius.zindex-10.u-marginbottom-30.w-hidden
