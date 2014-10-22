@@ -98,14 +98,14 @@ RSpec.describe Projects::ContributionsController, type: :controller do
       let(:user){ create(:user) }
       let(:value){ '' }
 
-      it{ is_expected.to redirect_to new_project_contribution_path(project_id: project.id) }
+      it{ is_expected.to render_template(:new) }
     end
 
     context "with invalid contribution values" do
       let(:user){ create(:user) }
       let(:value) { 2.0 }
 
-      it{ is_expected.to redirect_to new_project_contribution_path(project) }
+      it{ is_expected.to render_template(:new) }
     end
   end
 

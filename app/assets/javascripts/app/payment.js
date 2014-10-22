@@ -2,7 +2,12 @@ App.addChild('Payment', _.extend({
   el: '#payment-engines',
 
   events: {
-    'click .nav-tab' : 'onTabClick'
+    'click .nav-tab' : 'onClickPayment'
+  },
+
+  onClickPayment: function(event){
+    this.$('.tab-loader img').show();
+    this.onTabClick(event);
   },
 
   activate: function(){
