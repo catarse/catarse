@@ -7,7 +7,7 @@ class Admin::ContributionsController < Admin::BaseController
   before_filter :set_title
 
   def self.contribution_actions
-    %w[confirm pendent refund hide cancel push_to_trash].each do |action|
+    %w[confirm pendent refund hide cancel push_to_trash request_refund].each do |action|
       define_method action do
         if resource.send(action)
           flash[:notice] = I18n.t("admin.contributions.messages.successful.#{action}")
