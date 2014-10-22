@@ -26,7 +26,7 @@ class UserDecorator < Draper::Decorator
   end
 
   def display_image
-    source.uploaded_image.thumb_avatar.url || source.image_url || source.gravatar_url || '/assets/user.png'
+    source.uploaded_image.thumb_avatar.url || source.image_url || source.gravatar_url || '/user.png'
   end
 
   def display_image_html options={width: 119, height: 121}
