@@ -11,8 +11,9 @@
         = simple_form_for [@project, @contribution], html: { data: { update_info_path: project_contribution_path(project_id: @contribution.project.id, id: @contribution.id, format: :json) }, id: 'review_form', method: 'put' } do |form|
           = form.input :id, as: :hidden, label: false
           = form.input :project_id, as: :hidden, label: false
-          .fontsize-large.fontweight-semibold.lineheight-tight.text-success-small-only Preencha e revise os dados para pagamento
-          .w-hidden-tiny.fontsize-small Esses dados serão informados ao realizador do projeto
+          .u-marginbottom-40.u-text-center-small-only
+            .fontsize-large.fontweight-semibold.lineheight-tight.text-success-small-only Preencha e revise os dados para pagamento
+            .w-hidden-tiny.fontsize-small Esses dados serão informados ao realizador do projeto
           #error-message.card.card-error.u-radius.zindex-10.u-marginbottom-30.w-hidden
             .fontsize-smaller.fontweight-bold.u-marginbottom-10= t('.review_errors_title')
             .fontsize-smaller = t('.review_errors')
@@ -53,9 +54,9 @@
         #payment-engines.w-hidden
           .u-marginbottom-30.u-text-center-small-only
             .fontsize-large.fontweight-semibold.text-success-small-only= t('.choose_payment')
-            .fontcolor-secondary.fontweight-semiboldfontsize-smallest.fontcolor-secondary
+            .fontcolor-secondary.fontweight-semibold.fontsize-smallest.fontcolor-secondary
               span.fa.fa-lock
-              |  
+              |&nbsp;&nbsp;&nbsp;  
               = t('.choose_payment_subtitle')
           #payment-methods.nav-light.u-marginbottom-30[class=(avaiable_payment_engines.size == 1 ? 'w-hidden' : '')]
             - avaiable_payment_engines.each do |engine|
