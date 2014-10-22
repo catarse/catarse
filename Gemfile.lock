@@ -101,7 +101,7 @@ GEM
       mailchimp-api (~> 2.0.4)
       rails (>= 4.0.3)
       rails-observers
-    catarse_pagarme (2.2.0)
+    catarse_pagarme (2.2.1)
       pagarme (~> 1.9.5)
       rails (~> 4.0)
     catarse_paypal_express (3.0.1)
@@ -539,7 +539,7 @@ DEPENDENCIES
   catarse_credits (= 1.0.0)
   catarse_moip (~> 3.0.3)
   catarse_monkeymail (>= 0.1.6)
-  catarse_pagarme (= 2.2.0)
+  catarse_pagarme (= 2.2.1)
   catarse_paypal_express (= 3.0.1)
   catarse_settings_db (>= 0.1.0)
   chartkick
