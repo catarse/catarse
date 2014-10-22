@@ -1,3 +1,4 @@
+@import catarse_bootstrap/colors
 .ch_button
   font-size: 1.05em
   text-align: center
@@ -39,3 +40,55 @@
   background: $button_gray
   &:hover
     background: darken($button_gray, 10%)
+
+
+.button, a.button
+  display: inline-block
+  padding: 1.35em 1.1em
+  width: 100%
+  text-align: center
+  border: none
+  border-radius: 3px
+  font-weight: 700
+  font-size: em(15px)
+  text-decoration: none
+  transition: .2s background
+
+  &.small
+    font-size: em(12px)
+    padding: 0.7em 1em
+
+  &.medium
+    font-size: em(15px)
+    padding: 0.7em 1.5em
+
+  &.negative
+    background: $blue-one
+    color: $white
+    &:hover
+      background: lighten($blue-one, 5%)
+
+  &.facebook
+    background: $blue-facebook
+    color: $white
+    &:hover
+      background: lighten($blue-facebook, 5%)
+
+  &.info
+    background: $orange
+    color: $white
+    &:hover
+      background: lighten($orange, 5%)
+
+  &.action
+    background: $green
+    color: $white
+    &:hover
+      background: lighten($green, 5%)
+
+  &:active
+    position: relative
+    top: 2px
+
+  &.submit
+    margin: 3em 0
