@@ -12,6 +12,8 @@ p
   br/
   | Número de parcelas: #{contribution.installments}
   br/
+  | Valor da parcela: #{contribution.installment_value}
+  br/
   -if contribution.reward.present?
     | Recompensa selecionada: #{contribution.reward.description}
     br/
