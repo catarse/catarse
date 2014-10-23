@@ -22,7 +22,7 @@ RSpec.describe ProjectsController, type: :controller do
 
     context "when user is logged in" do
       let(:current_user){ create(:user) }
-      it{ is_expected.to redirect_to project_by_slug_path(project.permalink) }
+      it{ is_expected.to redirect_to project_by_slug_path(project.permalink, anchor: 'basics') }
     end
   end
 
