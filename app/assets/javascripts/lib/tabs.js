@@ -19,8 +19,9 @@ Skull.Tabs = {
     var that = this;
     var results = $tabContent.find('.results');
 
-    if($.trim(results.html()) == '' && $tabContent.data('path') && !results.is('[data-skiptab]')){
+    if($tabContent.data('path') && !results.data('skiptab')){
       $.get($tabContent.data('path')).success(function(data){
+        results.data('skiptab', true);
         results.html(data);
       });
     }
