@@ -39,7 +39,7 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new params[:project].merge(user: current_user)
     authorize @project
-    create! { project_by_slug_path(@project.permalink) }
+    create! { project_by_slug_path(@project.permalink, anchor: 'basics') }
   end
 
   def destroy
@@ -78,9 +78,6 @@ class ProjectsController < ApplicationController
     fb_admins_add(resource.user.facebook_id) if resource.user.facebook_id
     @posts_count = resource.posts.count(:all)
     @post = resource.posts.where(id: params[:project_post_id]).first if params[:project_post_id].present?
-    if @project.state == 'draft'
-      render 'draft'
-    end
   end
 
   def video
