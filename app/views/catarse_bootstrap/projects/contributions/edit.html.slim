@@ -4,15 +4,16 @@
 
 = render 'projects/project_header'
 
-#project_review.back-reward-content[data-thank-you-path=project_contribution_path(project_id: @project.id, id: @contribution.id)]
+#project_review.section[data-thank-you-path=project_contribution_path(project_id: @project.id, id: @contribution.id)]
   .w-container
     .w-row
-      .w-col.w-col-8.back-payment-column-form
+      .w-col.w-col-8
         = simple_form_for [@project, @contribution], html: { data: { update_info_path: project_contribution_path(project_id: @contribution.project.id, id: @contribution.id, format: :json) }, id: 'review_form', method: 'put' } do |form|
           = form.input :id, as: :hidden, label: false
           = form.input :project_id, as: :hidden, label: false
-          .back-payment-headline.headline Preencha e revise os dados para pagamento
-          .w-hidden-tiny.back-payment-subheadline.fontsize-small Esses dados serão informados ao realizador do projeto
+          .u-marginbottom-30.u-text-center-small-only
+            .fontsize-large.fontweight-semibold.lineheight-tight.text-success-small-only Preencha e revise os dados para pagamento
+            .w-hidden-tiny.fontsize-small Esses dados serão informados ao realizador do projeto
           #error-message.card.card-error.u-radius.zindex-10.u-marginbottom-30.w-hidden
             .fontsize-smaller.fontweight-bold.u-marginbottom-10= t('.review_errors_title')
             .fontsize-smaller = t('.review_errors')
@@ -32,7 +33,7 @@
                   .fontweight-bold = t('.anonymous_confirmation_title')
                   = t('.anonymous_confirmation')
           .formwrapper
-            .back-payment-address-subtitle.fontsize-base Endereço de entrega
+            .fontsize-base.fontweight-semibold.fontcolor-secondary.u-marginbottom-20 Endereço de entrega
             .w-form
               .w-row
                 = form.association :country, as: :select, wrapper_html: {class: 'w-col w-col-6 w-sub-col'}, input_html: {class: 'w-select'}
@@ -51,12 +52,11 @@
             .w-col.w-col-push-3.w-col-6
               a#next-step.btn.btn-large href="#payment-engines" Próximo passo
         #payment-engines.w-hidden
-          .fontsize-large.fontweight-semibold.u-marginbottom-40.u-text-center-small-only
-            = t('.choose_payment')
-            | &nbsp;&nbsp;&nbsp;&nbsp;
-            span.fontsize-smallest.fontcolor-secondary
+          .u-marginbottom-30.u-text-center-small-only
+            .fontsize-large.fontweight-semibold.text-success-small-only= t('.choose_payment')
+            .fontcolor-secondary.fontweight-semibold.fontsize-smallest.fontcolor-secondary
               span.fa.fa-lock
-              |  
+              |&nbsp;&nbsp;&nbsp;  
               = t('.choose_payment_subtitle')
           #payment-methods.nav-light.u-marginbottom-30[class=(avaiable_payment_engines.size == 1 ? 'w-hidden' : '')]
             - avaiable_payment_engines.each do |engine|
