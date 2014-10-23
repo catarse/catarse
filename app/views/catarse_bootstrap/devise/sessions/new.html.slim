@@ -10,13 +10,13 @@
       .w-col.w-col-6.box-login.w-col-push-3
         .fontsize-small.u-text-center.u-marginbottom-10
           span.fontcolor-secondary=>t ('.no_account_html')
-          = link_to t('.links.register'), new_user_registration_url, class: 'alt-link fontweight-semibold'
+          = link_to t('.links.register'), new_user_registration_path, class: 'alt-link fontweight-semibold'
         .login-fb
           = link_to t('.form.inputs.facebook'), user_omniauth_authorize_path(provider: :facebook, locale: nil), class: 'btn btn-medium btn-fb'
         .separator
           .text.or= t('or')
         .w-form
-          = simple_form_for resource, as: resource_name, url: session_url(resource_name), html: {novalidate: true}, class: 'email-form' do |form|
+          = simple_form_for resource, as: resource_name, url: session_path(resource_name), html: {novalidate: true}, class: 'email-form' do |form|
             = render 'devise/shared/alert'
             = form.input :email, as: :email, label: t('.email'), input_html: { class: 'w-input text-field' }, required: false
             = link_to t('.links.forgot_password'), new_password_path(resource_name), class: 'fontsize-smallest link-hidden fontcolor-secondary u-right'
