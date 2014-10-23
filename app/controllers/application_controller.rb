@@ -11,7 +11,6 @@ class ApplicationController < ActionController::Base
 
   before_filter :redirect_user_back_after_login, unless: :devise_controller?
   before_filter :configure_permitted_parameters, if: :devise_controller?
-  before_filter :force_http, unless: :devise_controller?
 
   helper_method :channel, :namespace, :referal_link
 
@@ -65,10 +64,6 @@ class ApplicationController < ActionController::Base
     return_to = session[:return_to]
     session[:return_to] = nil
     (return_to || root_path)
-  end
-
-  def force_http
-    redirect_to(protocol: 'http', host: CatarseSettings[:base_domain]) if request.ssl?
   end
 
   def redirect_user_back_after_login
