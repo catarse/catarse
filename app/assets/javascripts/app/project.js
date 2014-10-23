@@ -10,6 +10,7 @@ App.addChild('Project', _.extend({
     this.$warning = this.$('#project_warning_text');
     this.$embed= this.$('#project_embed');
     this.route('about');
+    this.route('basics');
     this.route('posts');
     this.route('contributions');
     this.route('comments');
@@ -30,14 +31,14 @@ App.addChild('Project', _.extend({
   },
 
   followRoute: function(name){
-    var $tab = this.$('nav.project-nav a[href="' + window.location.hash + '"]');
+    var $tab = this.$('nav a[href="' + window.location.hash + '"]');
     if($tab.length > 0){
       this.onTabClick({ currentTarget: $tab });
 
-      if($tab.prop('id') == 'metrics_link') {
-        $('.sidebar').hide();
+      if(($tab.prop('id') == 'metrics_link') || ($tab.prop('id') == 'basics_link')) {
+        $('#project-sidebar').hide();
       } else {
-        $('.sidebar').show();
+        $('#project-sidebar').show();
       }
     }
   },

@@ -20,47 +20,71 @@
   meta property="og:site_name" content=CatarseSettings[:company_name]
   meta property="fb:admins" content="#{fb_admins}"
 
-= render 'shared/header_big'
+- if @project.draft?
+  = render 'shared/header'
+- else
+  = render 'shared/header_big'
 
 = render 'project_header'
 
 = render 'mobile_video'
 
-nav.project-nav.w-hidden-small.w-hidden-tiny
+- if !@project.draft?
+  nav.project-nav.w-hidden-small.w-hidden-tiny
+    .w-container
+      .w-row
+        .w-col.w-col-9.w-hidden-small.w-hidden-tiny
+          = link_to '#about', id: 'about_link', class: 'nav-tab selected', data: {target: '#project_about.content'} do
+            = t('.menu.about')
+          = link_to '#posts', id: 'posts_link', class: 'nav-tab' , data: {target: '#project_posts'} do
+            => t('.menu.posts')
+            span.badge = @posts_count
+          = link_to '#contributions', id: 'contributions_link', class: 'nav-tab' , data: {target: '#project_contributions'} do
+            => t('.menu.contributions')
+            span.badge = @project.total_contributions
+
+          = link_to '#comments', id: 'comments_link', class: 'nav-tab' , data: {target: '#project_comments'} do
+            => t('.menu.comments')
+            fb:comments-count href="#{request.base_url}/#{request.fullpath.split('/')[2]}" class="badge" style="display: inline"
+              |&nbsp;
+
+        .w-col.w-col-3.w-hidden-small.w-hidden-tiny.w-clearfix.project-nav-category
+          = link_to @project.category, explore_path(anchor: "by_category_id/#{@project.category_id}"), class: 'link-hidden-light u-right'
+          = image_tag 'catarse_bootstrap/tag-icon.png', class: 'project-nav-category-icon', width: "22" 
+
+- if policy(@project).update?
+  nav.dashboard-nav.w-hidden-small.w-hidden-tiny
+    .w-container
+      = link_to '#basics', id: 'basics_link', class: 'dashboard-nav-link ' , data: {target: '#project_basics'} do
+        span.fa.fa-warning.text-error
+          | \&nbsp;Básico
+      a.dashboard-nav-link href="/project-dashboard-edit" 
+        span.fa.fa-check-circle.text-success .
+        | \&nbsp;Projeto
+      a.dashboard-nav-link href="#" 
+        span.fa.fa-check-circle .
+        | \&nbsp;Recompensas
+      a.dashboard-nav-link href="#" 
+        span.fa.fa-check-circle .
+        | \&nbsp;Sobre você
+      a.dashboard-nav-link href="#"  Preview
+      - if @project.draft?
+        .btn-send-draft
+           = link_to 'Enviar projeto para análise', send_to_analysis_project_path(@project), class: 'btn btn-small'
+  section.section
   .w-container
     .w-row
-      .w-col.w-col-9.w-hidden-small.w-hidden-tiny
-        = link_to '#about', id: 'about_link', class: 'nav-tab selected', data: {target: '#project_about.content'} do
-          = t('.menu.about')
-        = link_to '#posts', id: 'posts_link', class: 'nav-tab' , data: {target: '#project_posts'} do
-          => t('.menu.posts')
-          span.badge = @posts_count
-        = link_to '#contributions', id: 'contributions_link', class: 'nav-tab' , data: {target: '#project_contributions'} do
-          => t('.menu.contributions')
-          span.badge = @project.total_contributions
+      article.w-hidden-small.w-hidden-tiny
+        #project_basics.content.w-hidden
+          = render 'project_basics'
+        #project_about.content.w-col.w-col-8 = render 'project_about'
 
-        = link_to '#comments', id: 'comments_link', class: 'nav-tab' , data: {target: '#project_comments'} do
-          => t('.menu.comments')
-          fb:comments-count href="#{request.base_url}/#{request.fullpath.split('/')[2]}" class="badge" style="display: inline"
-            |&nbsp;
-
-      .w-col.w-col-3.w-hidden-small.w-hidden-tiny.w-clearfix.project-nav-category
-        = link_to @project.category, explore_path(anchor: "by_category_id/#{@project.category_id}"), class: 'link-hidden-light u-right'
-        = image_tag 'catarse_bootstrap/tag-icon.png', class: 'project-nav-category-icon', width: "22" 
-
-
-section.section
-  .w-container
-    .w-row
-      article.w-col.w-col-8.w-hidden-small.w-hidden-tiny
-        #project_about.content = render 'project_about'
-
-        #project_posts.content.w-hidden[data-path=project_posts_path(project_id: @project.id)]
+        #project_posts.content.w-col.w-col-8.w-hidden[data-path=project_posts_path(project_id: @project.id)]
           .posts
             | &nbsp;
           #posts-loading.loader.u-text-center.w-col.w-col-12 = image_tag "catarse_bootstrap/loader.gif"
 
-        #project_contributions.content.w-hidden[data-path=project_contributions_path(project_id: @project.id)]
+        #project_contributions.content.w-col.w-col-8.w-hidden[data-path=project_contributions_path(project_id: @project.id)]
           - if policy(@project).update?
             .w-row
               .w-col.w-col-1
@@ -76,7 +100,7 @@ section.section
             | &nbsp;
           #contributions-loading.loader.u-text-center.w-col.w-col-12 = image_tag "catarse_bootstrap/loader.gif"
 
-        #project_comments.content.w-hidden
+        #project_comments.content.w-col.w-col-8.w-hidden
 
 
 
@@ -138,4 +162,7 @@ section.section
         .fontsize-small.fontweight-semibold.u-text-center-small-only = t('.funding_period')
         .fontsize-small.u-text-center-small-only = "#{@project.display_online_date} - #{@project.display_expires_at}  (#{t('datetime.distance_in_words.x_days', count: @project.online_days)})"
 
-= render 'shared/footer_big'
+- if @project.draft?
+  = render 'shared/footer'
+- else
+  = render 'shared/footer_big'
