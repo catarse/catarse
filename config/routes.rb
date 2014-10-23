@@ -1,25 +1,16 @@
 Catarse::Application.routes.draw do
-  def ssl_options
-    if Rails.env.production? && CatarseSettings.get_without_cache(:secure_host)
-      {protocol: 'https', host: CatarseSettings.get_without_cache(:secure_host)}
-    else
-      {}
-    end
-  end
-
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
   devise_for(
     :users,
     {
       path: '',
       path_names:   { sign_in: :login, sign_out: :logout, sign_up: :sign_up },
-      controllers:  { omniauth_callbacks: :omniauth_callbacks, passwords: :passwords },
-      defaults: ssl_options
+      controllers:  { omniauth_callbacks: :omniauth_callbacks, passwords: :passwords }
     }
   )
 
   devise_scope :user do
-    post '/sign_up', {to: 'devise/registrations#create', as: :sign_up}.merge(ssl_options)
+    post '/sign_up', {to: 'devise/registrations#create', as: :sign_up}
   end
 
   get '/thank_you' => "static#thank_you"
@@ -47,7 +38,7 @@ Catarse::Application.routes.draw do
         post 'sort'
       end
     end
-    resources :contributions, {controller: 'projects/contributions'}.merge(ssl_options) do
+    resources :contributions, {controller: 'projects/contributions'} do
       member do
         put 'credits_checkout'
       end
@@ -86,7 +77,7 @@ Catarse::Application.routes.draw do
       get 'projects'
       put 'unsubscribe_update'
       put 'update_email'
-      put 'update_password', ssl_options
+      put 'update_password'
     end
   end
 
