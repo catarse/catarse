@@ -18,16 +18,23 @@ App.addChild('MixPanel', {
     this.trackPageVisit('projects', 'show', 'Visited project page');
     this.trackPageVisit('explore', 'index', 'Explored projects');
     this.trackPageLoad('contributions', 'edit', 'Selected reward');
-    this.trackPageLoad('contributions', 'edit', 'Engaged with Catarse');
     this.trackTwitterShare();
     this.trackFacebookShare();
     this.trackReminderClick();
+    this.trackFollowCategory();
     try {
       this.trackOnFacebookLike();
       this.trackOnFacebookComment();
     } catch(e) {
       console.log(e);
     }
+  },
+
+  trackFollowCategory: function(){
+    this.$('.category-follow .follow-btn').on('click', function(event){
+      self.track('Engaged with Catarse', { ref: $(event.currentTarget).data('title'), action: 'click follow category' });
+      return true;
+    });
   },
 
   trackReminderClick: function(){
