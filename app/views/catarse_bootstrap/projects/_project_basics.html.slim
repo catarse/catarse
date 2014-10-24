@@ -14,7 +14,7 @@
           .w-form
             = simple_form_for @project, html: { id: 'project_form', class: 'w-form' } do |form|
               = render 'devise/shared/alert'
-              - if current_user.admin
+              - if (current_user && current_user.admin?)
                 - if @project.in_analysis?
                   .w-row.card.card-terciary.u-marginbottom-20
                     .w-col.w-col-5
