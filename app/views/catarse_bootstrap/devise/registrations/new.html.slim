@@ -8,13 +8,13 @@
       .fontweight-semibold.u-text-center.fontsize-large.u-marginbottom-10= t '.titles.header'
       .fontsize-small.u-text-center.u-marginbottom-10
         span.fontcolor-secondary=> t '.have_account_html'
-        = link_to t('.links.login'), new_user_session_url, class: 'link alt-link fontweight-semibold'
+        = link_to t('.links.login'), new_user_session_path, class: 'link alt-link fontweight-semibold'
       .login-fb
         = link_to t('.form.inputs.facebook'), user_omniauth_authorize_path(provider: :facebook, locale: nil), class: 'btn btn-medium btn-fb'
       .separator
         .text.or = t('or')
       .w-form
-        = simple_form_for resource, as: resource_name, html: {novalidate: true}, url: sign_up_url  do |form|
+        = simple_form_for resource, as: resource_name, html: {novalidate: true}, url: sign_up_path  do |form|
           = render 'devise/shared/alert'
           = form.input :name, as: :string, label: t('.form.labels.name'), input_html: { class: 'w-input text-field' }
           = form.input :email, as: :email, wrapper_html: { class: 'no-asterisk' }, input_html: { class: 'w-input text-field' }, required: false

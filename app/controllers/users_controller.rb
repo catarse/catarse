@@ -1,7 +1,6 @@
 # coding: utf-8
 class UsersController < ApplicationController
   after_filter :verify_authorized, except: %i[reactivate]
-  skip_before_filter :force_http, only: [:update_password]
   inherit_resources
   defaults finder: :find_active!
   actions :show, :update, :update_password, :unsubscribe_notifications, :credits, :destroy
