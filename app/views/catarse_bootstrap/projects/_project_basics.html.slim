@@ -7,12 +7,12 @@
           .fontweight-semibold.fontsize-large= t('.project_start')
           p.fontsize-base= t('.project_start_subtitle') 
         .w-col.w-col-2
+= simple_form_for @project, html: { id: 'project_form', class: 'w-form' } do |form|
   .section
     .w-container
       .w-row
         .w-col.w-col-8.w-hidden-small.w-hidden-tiny
           .w-form
-            = simple_form_for @project, html: { id: 'project_form', class: 'w-form' } do |form|
               = render 'devise/shared/alert'
               - if current_user.admin
                 - if @project.in_analysis?
@@ -75,11 +75,7 @@
                       = form.input_field :online_days, class: 'prefix positive', as: :string
                     .w-col.w-col-4.w-col-small-6.w-col-tiny-6.text-field.postfix.no-hover
                       .fontcolor-secondary.u-text-center.fontsize-base.lineheight-tightest Dias
-              .divider
-              .section
-                .w-container
-                  .w-row
-                    = form.button :submit, t('.form.submit'), class:'btn btn-large'
+              
         .w-col.w-col-4
           .w-hidden-main.w-hidden-medium.card.u-radius.card-notification.zindex-20
             .u-marginbottom-20.fontsize-base.fontweight-bold Painel de controle
@@ -110,3 +106,11 @@
                 a.alt-link href="http://suporte.catarse.me/" target="_blank"  Central de Suporte
               li.fontsize-smaller.alt-link
                 a.alt-link href="https://equipecatarse.zendesk.com/account/dropboxes/20298537" target="_blank"  Entre em contato com a gente
+  .divider
+    .section
+      .w-container
+        .w-row
+          .w-col.w-col-4
+          .w-col.w-col-4
+            = form.button :submit, t('.form.submit'), class:'btn btn-large'
+          .w-col.w-col-4
