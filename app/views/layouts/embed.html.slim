@@ -10,6 +10,7 @@ html lang="#{I18n.locale}" xmlns:fb="http://ogp.me/ns/fb#"
     / Embeds shouls never be indexed
     meta name="robots" content="noindex, nofollow"
     link rel='shortcut icon' href="/images/favicon.ico"
+    = render 'layouts/webfont'
     = render '/layouts/analytics'
   body#platform.body_embed
     = yield
