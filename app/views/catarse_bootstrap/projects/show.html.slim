@@ -71,96 +71,96 @@
       - if @project.draft?
         .btn-send-draft
            = link_to 'Enviar projeto para análise', send_to_analysis_project_path(@project), class: 'btn btn-small'
-  section.section
-  .w-container
-    .w-row
-      article.w-hidden-small.w-hidden-tiny
-        #project_basics.content.w-hidden
-          = render 'project_basics'
-        #project_about.content.w-col.w-col-8 = render 'project_about'
+section.section
+.w-container
+  .w-row
+    article.w-hidden-small.w-hidden-tiny
+      #project_basics.content.w-hidden
+        = render 'project_basics'
+      #project_about.content.w-col.w-col-8 = render 'project_about'
 
-        #project_posts.content.w-col.w-col-8.w-hidden[data-path=project_posts_path(project_id: @project.id)]
-          .posts
-            | &nbsp;
-          #posts-loading.loader.u-text-center.w-col.w-col-12 = image_tag "catarse_bootstrap/loader.gif"
+      #project_posts.content.w-col.w-col-8.w-hidden[data-path=project_posts_path(project_id: @project.id)]
+        .posts
+          | &nbsp;
+        #posts-loading.loader.u-text-center.w-col.w-col-12 = image_tag "catarse_bootstrap/loader.gif"
 
-        #project_contributions.content.w-col.w-col-8.w-hidden[data-path=project_contributions_path(project_id: @project.id)]
-          - if policy(@project).update?
-            .w-row
-              .w-col.w-col-1
-                = radio_button_tag(:contribution_state, "available_to_count", checked: true)
-              .w-col.w-col-5
-                = label_tag(:contribution_state_available_to_count, t('.contribution_states.confirmed'))
-              .w-col.w-col-1
-                = radio_button_tag(:contribution_state, "waiting_confirmation")
-              .w-col.w-col-5
-                = label_tag(:contribution_state_waiting_confirmation, t('.contributions_states.pending'))
-            .divider.u-marginbottom-20
-          .results
-            | &nbsp;
-          #contributions-loading.loader.u-text-center.w-col.w-col-12 = image_tag "catarse_bootstrap/loader.gif"
+      #project_contributions.content.w-col.w-col-8.w-hidden[data-path=project_contributions_path(project_id: @project.id)]
+        - if policy(@project).update?
+          .w-row
+            .w-col.w-col-1
+              = radio_button_tag(:contribution_state, "available_to_count", checked: true)
+            .w-col.w-col-5
+              = label_tag(:contribution_state_available_to_count, t('.contribution_states.confirmed'))
+            .w-col.w-col-1
+              = radio_button_tag(:contribution_state, "waiting_confirmation")
+            .w-col.w-col-5
+              = label_tag(:contribution_state_waiting_confirmation, t('.contributions_states.pending'))
+          .divider.u-marginbottom-20
+        .results
+          | &nbsp;
+        #contributions-loading.loader.u-text-center.w-col.w-col-12 = image_tag "catarse_bootstrap/loader.gif"
 
-        #project_comments.content.w-col.w-col-8.w-hidden
+      #project_comments.content.w-col.w-col-8.w-hidden
 
 
 
-      #project-sidebar.aside.w-col.w-col-4
-        .project-stats
-          .project-stats-numbers.u-marginbottom-20.w-hidden-small.w-hidden-tiny
-            .w-hidden-small.w-hidden-tiny.u-marginbottom-10
-              .fontsize-largest = @project.display_pledged
-              .fontsize-small = t('.sidebar.goal', total: @project.display_goal).html_safe
-            .w-hidden-small.w-hidden-tiny.u-marginbottom-10
-              .fontsize-largest = @project.total_contributions
-              .fontsize-small = t('.sidebar.contributions')
-            .w-hidden-small.w-hidden-tiny.u-marginbottom-10
-              - if @project.draft? || @project.rejected?
-                .fontsize-largest = @project.online_days
-                .fontsize-small #{@project.online_days} #{pluralize_without_number(@project.online_days, I18n.t('datetime.prompts.day').downcase)} #{pluralize_without_number(@project.online_days, t('remaining_singular'), t('remaining_plural'))}
-              - else
-                .fontsize-largest = @project.remaining_days
-                .fontsize-small #{@project.time_to_go[:unit].capitalize} #{pluralize_without_number(@project.time_to_go[:time], t('remaining_singular'), t('remaining_plural'))}
+    #project-sidebar.aside.w-col.w-col-4
+      .project-stats
+        .project-stats-numbers.u-marginbottom-20.w-hidden-small.w-hidden-tiny
+          .w-hidden-small.w-hidden-tiny.u-marginbottom-10
+            .fontsize-largest = @project.display_pledged
+            .fontsize-small = t('.sidebar.goal', total: @project.display_goal).html_safe
+          .w-hidden-small.w-hidden-tiny.u-marginbottom-10
+            .fontsize-largest = @project.total_contributions
+            .fontsize-small = t('.sidebar.contributions')
+          .w-hidden-small.w-hidden-tiny.u-marginbottom-10
+            - if @project.draft? || @project.rejected?
+              .fontsize-largest = @project.online_days
+              .fontsize-small #{@project.online_days} #{pluralize_without_number(@project.online_days, I18n.t('datetime.prompts.day').downcase)} #{pluralize_without_number(@project.online_days, t('remaining_singular'), t('remaining_plural'))}
+            - else
+              .fontsize-largest = @project.remaining_days
+              .fontsize-small #{@project.time_to_go[:unit].capitalize} #{pluralize_without_number(@project.time_to_go[:time], t('remaining_singular'), t('remaining_plural'))}
 
-          - if @project.online? && !@project.expired?
-            = link_to t('.contribute_project.submit'), new_project_contribution_path(@project), id: 'contribute_project_form', class: "btn btn-large u-marginbottom-20"
+        - if @project.online? && !@project.expired?
+          = link_to t('.contribute_project.submit'), new_project_contribution_path(@project), id: 'contribute_project_form', class: "btn btn-large u-marginbottom-20"
 
-          .fontsize-smaller.u-marginbottom-30[class=@project.display_card_class]
-            = t(".contribute_project.display_status.#{@project.display_status}", goal: @project.display_goal, date: @project.display_expires_at)
+        .fontsize-smaller.u-marginbottom-30[class=@project.display_card_class]
+          = t(".contribute_project.display_status.#{@project.display_status}", goal: @project.display_goal, date: @project.display_expires_at)
 
-        .card.card-user.u-radius.u-marginbottom-30
-          .w-clearfix
-            = image_tag @project.user.display_image, width: "100", class: "thumb u-left u-radius u-marginbottom-30"
-            .fontsize-small.fontweight-semibold.lineheight-tighter = link_to @project.user.display_name, user_path(@project.user), class: 'link-hidden'
-            .fontsize-smallest.lineheight-looser = @project.user.address_city
-          .fontsize-smallest = t('created_project', count: @project.user.projects.size)
-          .fontsize-smallest = t('contributed_project', count: @project.user.total_contributed_projects)
-          .project-author-contacts
-            ul.w-list-unstyled.fontsize-smaller.fontweight-semibold
-              - if @project.user.facebook_link
-                li
-                  = link_to t('.facebook_profile'), @project.user.facebook_link, target: '_blank', class: 'link-hidden'
-              - if @project.user.twitter
-                li
-                  = link_to t('.twitter_profile'), @project.user.twitter_link, target: '_blank', class: 'link-hidden'
-              - if @project.user.other_link
-                li
-                  = link_to t('.author_website'), @project.user.other_link, target: '_blank', class: 'link-hidden'
-          = mail_to @project.user.email, t('.contact_author'), target: '_blank', class: 'btn btn-medium btn-message'
+      .card.card-user.u-radius.u-marginbottom-30
+        .w-clearfix
+          = image_tag @project.user.display_image, width: "100", class: "thumb u-left u-radius u-marginbottom-30"
+          .fontsize-small.fontweight-semibold.lineheight-tighter = link_to @project.user.display_name, user_path(@project.user), class: 'link-hidden'
+          .fontsize-smallest.lineheight-looser = @project.user.address_city
+        .fontsize-smallest = t('created_project', count: @project.user.projects.size)
+        .fontsize-smallest = t('contributed_project', count: @project.user.total_contributed_projects)
+        .project-author-contacts
+          ul.w-list-unstyled.fontsize-smaller.fontweight-semibold
+            - if @project.user.facebook_link
+              li
+                = link_to t('.facebook_profile'), @project.user.facebook_link, target: '_blank', class: 'link-hidden'
+            - if @project.user.twitter
+              li
+                = link_to t('.twitter_profile'), @project.user.twitter_link, target: '_blank', class: 'link-hidden'
+            - if @project.user.other_link
+              li
+                = link_to t('.author_website'), @project.user.other_link, target: '_blank', class: 'link-hidden'
+        = mail_to @project.user.email, t('.contact_author'), target: '_blank', class: 'btn btn-medium btn-message'
 
-        .w-hidden-main.w-hidden-medium.project-share
-          .div-share-mobile-fb
-            = link_to '#', class: 'btn btn-medium btn-fb' do
-              = image_tag 'catarse_bootstrap/facebook-xxl.png', class: 'icon-share-mobile'
-              = t('.share')
-          .div-share-mobile-fb
-            = link_to '#', class: 'btn btn-medium btn-fb btn-tweet' do
-              = image_tag 'catarse_bootstrap/twitter-256.png', class: 'icon-share-mobile'
-              = t('.tweet')
+      .w-hidden-main.w-hidden-medium.project-share
+        .div-share-mobile-fb
+          = link_to '#', class: 'btn btn-medium btn-fb' do
+            = image_tag 'catarse_bootstrap/facebook-xxl.png', class: 'icon-share-mobile'
+            = t('.share')
+        .div-share-mobile-fb
+          = link_to '#', class: 'btn btn-medium btn-fb btn-tweet' do
+            = image_tag 'catarse_bootstrap/twitter-256.png', class: 'icon-share-mobile'
+            = t('.tweet')
 
-        #rewards.u-marginbottom-30[data-can_update="#{policy(@project).update?}" data-index_path=project_rewards_path(@project)]
-          .u-text-center = image_tag 'catarse_bootstrap/loader.gif'
-        .fontsize-small.fontweight-semibold.u-text-center-small-only = t('.funding_period')
-        .fontsize-small.u-text-center-small-only = "#{@project.display_online_date} - #{@project.display_expires_at}  (#{t('datetime.distance_in_words.x_days', count: @project.online_days)})"
+      #rewards.u-marginbottom-30[data-can_update="#{policy(@project).update?}" data-index_path=project_rewards_path(@project)]
+        .u-text-center = image_tag 'catarse_bootstrap/loader.gif'
+      .fontsize-small.fontweight-semibold.u-text-center-small-only = t('.funding_period')
+      .fontsize-small.u-text-center-small-only = "#{@project.display_online_date} - #{@project.display_expires_at}  (#{t('datetime.distance_in_words.x_days', count: @project.online_days)})"
 
 - if @project.draft?
   = render 'shared/footer'
