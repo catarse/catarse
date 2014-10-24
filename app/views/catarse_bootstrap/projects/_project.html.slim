@@ -1,0 +1,29 @@
+- target = defined?(embed_link) ? '__blank' : ''
+.card-project.card.u-radius
+  meta[itemprop="dateCreated" content=@project.created_at.to_date]
+  .card-project-thumb style="background-image: url(#{@project.display_image})"
+  .card-project-description._3
+    .fontweight-semibold.fontsize-base.u-marginbottom-10.u-text-center-small-only=link_to truncate(@project.name, length: 50, separator: ''), project_by_slug_path(@project.permalink), title: @project.name, target: target
+    .w-hidden-small.w-hidden-tiny.fontcolor-secondary.fontsize-smaller= link_to truncate(@project.headline, length: 140), project_by_slug_path(@project.permalink), title: @project.headline, target: target
+  .w-clearfix.card-project-author.u-text-center-small-only
+    .w-hidden-small.w-hidden-tiny.thumb.small.u-round.u-left
+      .thumb.small.u-round.u-left
+        = link_to image_tag(@project.user.display_image), user_path(@project.user), title:@project.user.name, target: target
+    .card-author-name
+      = link_to @project.user.display_name, user_path(@project.user), class: 'link-hidden fontsize-smaller'
+  .card-project-stats
+    .meter._1
+      = @project.progress_bar
+    .w-row
+      .w-col.w-col-4.w-col-small-4.w-col-tiny-4
+        .fontsize-smaller.fontweight-semibold= "#{@project.progress}%"
+        .fontsize-smallest Financiados
+      .w-col.w-col-4.w-col-small-4.w-col-tiny-4.u-text-center-small-only
+        .fontsize-smaller.fontweight-semibold=number_to_currency(@project.pledged, precision: 0)
+        .fontsize-smallest Levantados
+      .w-col.w-col-4.w-col-small-4.w-col-tiny-4.u-text-right
+        - unless @project.expired?
+          .fontsize-smaller.fontweight-semibold= t('.time_remaining_html', count: @project.time_to_go[:time], unit: @project.time_to_go[:unit])
+        - else
+          .fontsize-smaller.fontweight-semibold.w-row= t(".display_status.#{@project.display_status}").capitalize
+          = @project.display_expires_at
