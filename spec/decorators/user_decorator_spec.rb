@@ -20,7 +20,7 @@ RSpec.describe UserDecorator do
 
     context "when we have a name and a full name" do
       let(:user){ create(:user, name: 'name', full_name: 'full name') }
-      it{ is_expected.to eq('name') }
+      it{ is_expected.to eq('full name') }
     end
 
     context "when we have no name" do
