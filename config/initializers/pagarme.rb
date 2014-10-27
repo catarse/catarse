@@ -7,4 +7,6 @@ CatarsePagarme.configure do |config|
   config.host = CatarseSettings.get_without_cache(:host)
   config.subdomain = 'www'
   config.protocol = 'http'
+  config.max_installments = CatarseSettings.get_without_cache(:pagarme_max_installments)
+  config.minimum_value_for_installment = CatarseSettings.get_without_cache(:pagarme_minimum_value_for_installment)
 end
