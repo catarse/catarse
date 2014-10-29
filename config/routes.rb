@@ -142,6 +142,7 @@ Catarse::Application.routes.draw do
         put 'refund'
         put 'hide'
         put 'cancel'
+        put 'request_refund'
         put 'push_to_trash'
       end
     end

@@ -1,12 +1,13 @@
 class Admin::ContributionsController < Admin::BaseController
   layout 'catarse_bootstrap'
   has_scope :project_name_contains, :search_on_payment_data, :with_state, :search_on_user, :search_on_acquirer
+  has_scope :user_name_contains, :user_email_contains
   has_scope :credits, type: :boolean
   has_scope :between_values, using: [ :start_at, :ends_at ], allow_blank: true
   before_filter :set_title
 
   def self.contribution_actions
-    %w[confirm pendent refund hide cancel push_to_trash].each do |action|
+    %w[confirm pendent refund hide cancel push_to_trash request_refund].each do |action|
       define_method action do
         if resource.send(action)
           flash[:notice] = I18n.t("admin.contributions.messages.successful.#{action}")
