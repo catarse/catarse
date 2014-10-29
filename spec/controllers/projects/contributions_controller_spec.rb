@@ -103,7 +103,7 @@ RSpec.describe Projects::ContributionsController, type: :controller do
 
     context "with invalid contribution values" do
       let(:user){ create(:user) }
-      let(:value) { 2.0 }
+      let(:value) { "2" }
 
       it{ is_expected.to render_template(:new) }
     end
