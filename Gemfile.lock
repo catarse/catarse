@@ -247,6 +247,9 @@ GEM
     httpauth (0.2.1)
     httpclient (2.5.1)
     i18n (0.7.0.beta1)
+    i18n_alchemy (0.2.1)
+      activesupport (>= 3.2.0, < 4.2)
+      i18n (~> 0.6)
     inflecto (0.0.2)
     inherited_resources (1.4.1)
       has_scope (~> 0.6.0.rc)
@@ -563,6 +566,7 @@ DEPENDENCIES
   http_accept_language
   httparty (~> 0.6.1)
   httpclient (>= 2.2.5)
+  i18n_alchemy
   inherited_resources (~> 1.4.1)
   jasmine-rails
   jquery-rails
