@@ -116,11 +116,8 @@ class ProjectObserver < ActiveRecord::Observer
 
   private
 
-  # TODO: uncomment when we use automatic
-  # request refund when project fails
   def request_refund_for_failed_project(project)
-    #project.contributions.avaiable_to_automatic_refund.each do |contribution|
-    project.contributions.with_state('confirmed').where(payment_method: 'Pagarme').each do |contribution|
+    project.contributions.with_state('confirmed').each do |contribution|
       contribution.request_refund
     end
   end
