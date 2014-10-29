@@ -94,7 +94,7 @@ class ProjectObserver < ActiveRecord::Observer
                           :contribution_project_successful
                         else #if (contribution.credits? || contribution.slip_payment?)
                           if contribution.is_pagarme?
-                            if contribution.is_credit_card
+                            if contribution.is_credit_card?
                               :contribution_project_unsuccessful_credit_card
                             else
                               :contribution_project_unsuccessful_slip
