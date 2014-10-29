@@ -2,6 +2,7 @@
 class Contribution < ActiveRecord::Base
   has_notifications
 
+  include I18n::Alchemy
   include PgSearch
   include Shared::StateMachineHelpers
   include Contribution::StateMachineHandler
