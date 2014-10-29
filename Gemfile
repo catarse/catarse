@@ -19,6 +19,7 @@ gem 'state_machine', require: 'state_machine/core'
 gem 'pg'
 gem 'postgres-copy'
 gem 'pg_search'
+gem 'i18n_alchemy'
 
 gem 'schema_plus'
 gem 'chartkick'

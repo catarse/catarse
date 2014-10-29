@@ -3,7 +3,7 @@ class ContributionDecorator < Draper::Decorator
   include Draper::LazyHelpers
 
   def display_value
-    number_to_currency source.value
+    number_to_currency source.localized.value
   end
 
   def display_confirmed_at
