@@ -1373,7 +1373,7 @@ p {
 }
 .list-question {
   display: block;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   line-height: 18px;
   font-weight: 400;
 }
@@ -2743,6 +2743,9 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
   .back-reward-input-reward.placeholder {
     width: 71px;
     padding-left: 12px;
+  }
+  .list-question {
+    margin-bottom: 20px;
   }
   .list-answer {
     padding-left: 0px;
