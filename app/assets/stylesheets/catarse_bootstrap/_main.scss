@@ -3361,6 +3361,9 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
   .card-author-name {
     padding-top: 0px;
   }
+  .fontsize-large-small-only {
+    font-size: 20px;
+  }
 }
 @media (max-width: 479px) {
   h2 {
@@ -3692,6 +3695,9 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
   }
   .card-project-author {
     height: 40px;
+  }
+  .fontsize-large-small-only {
+    font-size: 18px;
   }
 }
 
