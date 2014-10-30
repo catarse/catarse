@@ -71,7 +71,7 @@ RSpec.describe ContributionObserver do
       end
 
       it "should notify contributor about refund" do
-        expect(ContributionNotification.where(template_name: 'refund_completed', user_id: contribution.user.id).count).to eq 1
+        expect(ContributionNotification.where(template_name: 'refund_completed_credit_card', user_id: contribution.user.id).count).to eq 1
       end
     end
 
