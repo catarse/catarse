@@ -34,8 +34,7 @@ class Projects::MetricsController < ApplicationController
   end
 
   def collection
-    @contributions ||= parent.contributions.
-      where.not("contributions.created_at::date = current_timestamp::date")
+    @contributions ||= parent.contributions.not_created_today
   end
 
   def parent
