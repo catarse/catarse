@@ -103,6 +103,18 @@ class Contribution < ActiveRecord::Base
     notify_once(template_name, _user, self, options) if _user
   end
 
+  def notification_template_for_failed_project
+    if is_credit_card? || is_paypal?
+      :contribution_project_unsuccessful_credit_card
+    else
+      if is_pagarme?
+        :contribution_project_unsuccessful_slip
+      else
+        :contribution_project_unsuccessful
+      end
+    end
+  end
+
   # Used in payment engines
   def price_in_cents
     (self.value * 100).round
