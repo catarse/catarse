@@ -104,10 +104,6 @@ RSpec.describe ContributionObserver do
       it "should notify admin upon refund request" do
         expect(ContributionNotification.where(template_name: 'refund_request', user_id: admin.id, from_email: contribution.user.email, from_name: contribution.user.name).count).to eq 1
       end
-
-      it "should notify contributor about the refund request" do
-        expect(ContributionNotification.where(template_name: 'requested_refund', user_id: contribution.user.id).count).to eq 1
-      end
     end
 
     context "when contribution is made with boleto" do
