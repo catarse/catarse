@@ -73,10 +73,6 @@ class Contribution < ActiveRecord::Base
     where("value between ? and ?", start_at, ends_at)
   end
 
-  def slip_payment?
-    payment_choice.try(:downcase) == 'boletobancario'
-  end
-
   def decorator
     @decorator ||= ContributionDecorator.new(self)
   end
