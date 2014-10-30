@@ -90,23 +90,7 @@ class ProjectObserver < ActiveRecord::Observer
   def notify_users(project)
     project.contributions.with_state('confirmed').each do |contribution|
       unless contribution.notified_finish
-        template_name = if project.successful?
-                          :contribution_project_successful
-                        else #if (contribution.credits? || contribution.slip_payment?)
-                          if contribution.is_pagarme?
-                            if contribution.is_credit_card?
-                              :contribution_project_unsuccessful_credit_card
-                            else
-                              :contribution_project_unsuccessful_slip
-                            end
-                          else
-                            :contribution_project_unsuccessful
-                          end
-                        #elsif contribution.is_paypal? || contribution.is_credit_card?
-                        #  :contribution_project_unsuccessful_credit_card
-                        #else
-                        #  :automatic_refund
-                        end
+        template_name = project.successful? ? :contribution_project_successful : contribution.notification_template_for_failed_project
 
         contribution.notify_to_contributor(template_name)
         contribution.update_attributes({ notified_finish: true })
