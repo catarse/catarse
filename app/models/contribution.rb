@@ -62,6 +62,7 @@ class Contribution < ActiveRecord::Base
     with_state('confirmed').where("contributions.payment_method in ('PayPal', 'Pagarme') OR contributions.payment_choice = 'CartaoDeCredito'")
   }
 
+  scope :not_created_today, -> { where.not("contributions.created_at::date AT TIME ZONE '#{Time.zone.tzinfo.name}' = current_timestamp::date AT TIME ZONE '#{Time.zone.tzinfo.name}'") }
   scope :can_cancel, -> { where("contributions.can_cancel") }
 
   # Contributions already refunded or with requested_refund should appear so that the user can see their status on the refunds list
