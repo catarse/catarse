@@ -21,7 +21,7 @@ class ContributionObserver < ActiveRecord::Observer
   end
 
   def from_requested_refund_to_refunded(contribution)
-    contribution.notify_to_contributor((contribution.slip_payment? ? :refund_completed_slip : :refund_completed))
+    contribution.notify_to_contributor((contribution.slip_payment? ? :refund_completed_slip : :refund_completed_credit_card))
   end
   alias :from_confirmed_to_refunded :from_requested_refund_to_refunded
 
