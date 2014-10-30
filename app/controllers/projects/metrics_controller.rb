@@ -23,13 +23,13 @@ class Projects::MetricsController < ApplicationController
 
   def total_confirmed_by_day
     @metrics[:confirmed] = collection.with_state('confirmed').
-      group("contributions.created_at::date").
+      group("contributions.created_at::date AT TIME ZONE '#{Time.zone.tzinfo.name}'").
       count
   end
 
   def confirmed_amount_by_day
     @metrics[:confirmed_amount_by_day] = collection.with_state('confirmed').
-      group("contributions.created_at::date").
+      group("contributions.created_at::date AT TIME ZONE '#{Time.zone.tzinfo.name}'").
       sum(:value)
   end
 
