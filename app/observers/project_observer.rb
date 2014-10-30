@@ -85,8 +85,6 @@ class ProjectObserver < ActiveRecord::Observer
     notify_admin_that_project_reached_deadline(project)
   end
 
-  # TODO: we need to remove these comments when
-  # we go generate automatic request refund when project fails
   def notify_users(project)
     project.contributions.with_state('confirmed').each do |contribution|
       unless contribution.notified_finish
