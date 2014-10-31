@@ -12,6 +12,7 @@ App.addChild('Project', _.extend({
     this.route('about');
     this.route('basics');
     this.route('dashboard_project');
+    this.route('dashboard_reward');
     this.route('posts');
     this.route('contributions');
     this.route('comments');
@@ -35,8 +36,9 @@ App.addChild('Project', _.extend({
     var $tab = this.$('nav a[href="' + window.location.hash + '"]');
     if($tab.length > 0){
       this.onTabClick({ currentTarget: $tab });
+      var tabs = ['basics_link', 'dashboard_reward_link', 'dashboard_project_link', 'metrics_link'];
 
-      if(($tab.prop('id') == 'metrics_link') || ($tab.prop('id') == 'basics_link') || ($tab.prop('id') == 'dashboard_project_link')) {
+      if($.inArray($tab.prop('id'), tabs) !== -1) {
         $('#project-sidebar').hide();
       } else {
         $('#project-sidebar').show();

@@ -61,7 +61,7 @@
       = link_to '#dashboard_project', id: 'dashboard_project_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_project'} do
         span.fa.fa-check-circle.text-success .
         | \&nbsp;Projeto
-      a.dashboard-nav-link href="#" 
+      = link_to '#dashboard_reward', id: 'dashboard_reward_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_reward'} do
         span.fa.fa-check-circle .
         | \&nbsp;Recompensas
       a.dashboard-nav-link href="#" 
@@ -79,6 +79,8 @@ section.section
         = render 'project_basics'
       #dashboard_project.content.w-hidden
         = render 'dashboard_project'
+      #dashboard_reward.content.w-hidden
+        = render 'dashboard_reward'
       #project_about.content.w-col.w-col-8 = render 'project_about'
 
       #project_posts.content.w-col.w-col-8.w-hidden[data-path=project_posts_path(project_id: @project.id)]
