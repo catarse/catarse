@@ -8,7 +8,7 @@ br
 | Infelizmente o projeto #{link_to(contribution.project.name, project_by_slug_url(permalink: contribution.project.permalink))} que você apoiou não atingiu a meta estabelecida e não foi financiado no #{CatarseSettings[:company_name]}.
 br
 br
-| Como o seu apoio foi efetuado através de boleto, iremos realizar o reembolso diretamente na conta bancária:
+| Como o seu apoio foi efetuado através de boleto, iremos realizar o reembolso diretamente na conta em até 10 dias úteis.
 br
 br
 | Banco: #{bank_account.try(:name)}
@@ -17,9 +17,9 @@ br
 br
 | Conta: #{bank_account.try(:account)} - #{bank_account.try(:account_digit)}
 br
-| Nome do titular: #{bank_account.try(:user_name)}
+| Nome do titular: #{bank_account.try(:owner_name)}
 br
-| CPF: #{bank_account.try(:user_document)}
+| CPF: #{bank_account.try(:owner_document)}
 br
 br
 | Assim que o reembolso for feito, você receberá um e-mail de confirmação da operação.
