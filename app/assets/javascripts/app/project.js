@@ -11,6 +11,7 @@ App.addChild('Project', _.extend({
     this.$embed= this.$('#project_embed');
     this.route('about');
     this.route('basics');
+    this.route('dashboard_project');
     this.route('posts');
     this.route('contributions');
     this.route('comments');
@@ -35,7 +36,7 @@ App.addChild('Project', _.extend({
     if($tab.length > 0){
       this.onTabClick({ currentTarget: $tab });
 
-      if(($tab.prop('id') == 'metrics_link') || ($tab.prop('id') == 'basics_link')) {
+      if(($tab.prop('id') == 'metrics_link') || ($tab.prop('id') == 'basics_link') || ($tab.prop('id') == 'dashboard_project_link')) {
         $('#project-sidebar').hide();
       } else {
         $('#project-sidebar').show();
