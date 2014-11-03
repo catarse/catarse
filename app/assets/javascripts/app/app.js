@@ -45,12 +45,9 @@ var App = window.App = Skull.View.extend({
   },
 
   maskAllElements: function(){
-    this.$('input[data-mask]').each(this.maskElement);
-  },
-
-  maskElement: function(index, el){
-    var $el = this.$(el);
-    $el.mask($el.data('mask') + '');
+    this.$('input[data-fixed-mask]').each(function(){
+      $(this).fixedMask();
+    });
   },
 
   showWidget: function(){
