@@ -4,4 +4,4 @@
     .fontsize-base.lineheight-looser
       = t('projects.index.box.by')
       |&nbsp;
-      = link_to @project.user.display_name, user_path(@project.user), class: 'link-hidden'
+      = @project.user.display_name
