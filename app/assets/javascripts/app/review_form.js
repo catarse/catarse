@@ -35,7 +35,17 @@ App.addChild('ReviewForm', _.extend({
   internationalAddress: function(){
     this.$state.data('old_value', this.$state.val());
     this.$state.val('outro / other')
+    this.makeFieldsOptional();
+  },
+
+  makeFieldsRequired: function(){
+    this.$('[data-required-in-brazil]').prop('required', 'required');
+    this.$('[data-required-in-brazil]').parent().removeClass('optional').addClass('required');
+  },
+
+  makeFieldsOptional: function(){
     this.$('[data-required-in-brazil]').prop('required', false);
+    this.$('[data-required-in-brazil]').parent().removeClass('required').addClass('optional');
   },
 
   nationalAddress: function(){
@@ -43,7 +53,7 @@ App.addChild('ReviewForm', _.extend({
       this.$state.val(this.$state.data('old_value'))
     }
     this.parent.payment.loadPaymentChoices();
-    this.$('[data-required-in-brazil]').prop('required', 'required');
+    this.makeFieldsRequired();
   },
 
   acceptTerms: function(){
