@@ -1,5 +1,19 @@
 pt:
   projects:
+    dashboard_project:
+      start: "Conte o que você tem a dizer para o mundo!"
+      start_subtitle: "Use esse espaço abaixo para contar sobre seu projeto e o porquê as pessoas deveriam se empolgar com ele e abraçar sua ideia"
+      video_url: "URL do vídeo"
+      video_url_hint: "Link do seu vídeo no Vimeo ou Youtube."
+      about: "Descrição do projeto"
+      about_hint_html: 'Fale sobre o que será realizado, como o dinheiro será utilizado, quem está por trás do projeto, como e quando o projeto será entregue. Seja informal e direto, essa é uma conversa entre pessoas que querem compartilhar uma ideia, não um projeto de edital. Lembre-se que <a class="alt-link" target="_blank" href="http://suporte.catarse.me/hc/pt-br/articles/203083017-Adicionar-imagens-e-v%C3%ADdeos-na-descri%C3%A7%C3%A3o-do-projeto">você pode utilizar imagens e vídeos</a> para ilustrar melhor o seu projeto na descrição.'
+      card: 'Card do projeto'
+      card_subtitle: 'Sabe aquele cardzinho de projeto que aparece na home e na busca? Pois então, faz bonito pois dizem que a primeira impressão é a que fica ;)'
+      image: 'Imagem do projeto'
+      image_hint: 'Essa imagem será utilizada como a miniatura de seu projeto (PNG, JPG tamanho 512x400)'
+      headline: 'Frase de efeito'
+      headline_hint: 'Será utilizada no card do projeto, junto com a imagem acima (miniatura). No máximo 100 caracteres.'
+      submit: 'Salvar e visualizar'
     project_basics:
       project_start: 'Comece a construir o seu projeto'
       project_start_subtitle: 'Após percorrer todas as etapas acima, você pode enviar seu projeto para análise'
