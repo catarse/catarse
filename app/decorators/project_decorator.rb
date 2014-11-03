@@ -67,7 +67,7 @@ class ProjectDecorator < Draper::Decorator
   end
 
   def progress
-    return 0 if source.goal == 0.0
+    return 0 if source.goal == 0.0 || source.goal.nil?
     ((source.pledged / source.goal) * 100).to_i
   end
 
@@ -81,9 +81,7 @@ class ProjectDecorator < Draper::Decorator
 
   def progress_bar
     width = source.progress > 100 ? 100 : source.progress
-    content_tag(:div, id: :progress_wrapper) do
-      content_tag(:div, nil, id: :progress, style: "width: #{width}%")
-    end
+    content_tag(:div, nil, id: :progress, class: 'meter-fill', style: "width: #{width}%;")
   end
 
 

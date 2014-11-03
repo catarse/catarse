@@ -101,7 +101,7 @@ GEM
       mailchimp-api (~> 2.0.4)
       rails (>= 4.0.3)
       rails-observers
-    catarse_pagarme (2.3.0)
+    catarse_pagarme (2.3.1)
       pagarme (~> 1.9.5)
       rails (~> 4.0)
     catarse_paypal_express (3.0.1)
@@ -246,7 +246,10 @@ GEM
       crack (= 0.1.8)
     httpauth (0.2.1)
     httpclient (2.5.1)
-    i18n (0.6.11)
+    i18n (0.7.0.beta1)
+    i18n_alchemy (0.2.1)
+      activesupport (>= 3.2.0, < 4.2)
+      i18n (~> 0.6)
     inflecto (0.0.2)
     inherited_resources (1.4.1)
       has_scope (~> 0.6.0.rc)
@@ -539,7 +542,7 @@ DEPENDENCIES
   catarse_credits (= 1.0.0)
   catarse_moip (~> 3.0.3)
   catarse_monkeymail (>= 0.1.6)
-  catarse_pagarme (= 2.3.0)
+  catarse_pagarme (= 2.3.1)
   catarse_paypal_express (= 3.0.1)
   catarse_settings_db (>= 0.1.0)
   chartkick
@@ -563,6 +566,7 @@ DEPENDENCIES
   http_accept_language
   httparty (~> 0.6.1)
   httpclient (>= 2.2.5)
+  i18n_alchemy
   inherited_resources (~> 1.4.1)
   jasmine-rails
   jquery-rails

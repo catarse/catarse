@@ -144,6 +144,7 @@ pt:
         confirm_contribution: 'Confirmar apoio'
         unconfirm_contribution: 'Desconfirmar apoio'
         refund_contribution: 'Estornar apoio'
+        request_refund: 'Solicitar reembolso direto'
         title: "Gerenciamento de apoios"
         state: 'Estado'
         menu: "Apoios"

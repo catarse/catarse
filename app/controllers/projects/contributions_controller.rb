@@ -52,8 +52,10 @@ class Projects::ContributionsController < ApplicationController
 
   def create
     @title = t('projects.contributions.create.title')
-    @contribution = Contribution.new(params[:contribution].merge(user: current_user, project: parent))
-    @contribution.reward_id = nil if params[:contribution][:reward_id].to_i == 0
+    @contribution = parent.contributions.new.localized
+    @contribution.user = current_user
+    @contribution.value = permitted_params[:contribution][:value]
+    @contribution.reward_id = (params[:contribution][:reward_id].to_i == 0 ? nil : params[:contribution][:reward_id])
     authorize @contribution
     @contribution.update_current_billing_info
     create! do |success,failure|
