@@ -166,10 +166,10 @@ RSpec.describe Project::StateMachineHandler, type: :model do
 
         its(:failed?) { should eq(true) }
 
-        it "should generate credits for users" do
+        it "should not generate credits for users" do
           contribution.confirm!
           user.reload
-          expect(user.credits).to eq(20)
+          expect(user.credits).to eq(0)
         end
       end
     end
