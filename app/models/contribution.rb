@@ -74,10 +74,6 @@ class Contribution < ActiveRecord::Base
     where("value between ? and ?", start_at, ends_at)
   end
 
-  def slip_payment?
-    payment_choice.try(:downcase) == 'boletobancario'
-  end
-
   def decorator
     @decorator ||= ContributionDecorator.new(self)
   end
@@ -106,6 +102,18 @@ class Contribution < ActiveRecord::Base
   def notify_to_backoffice(template_name, options = {})
     _user = User.find_by(email: CatarseSettings[:email_payments])
     notify_once(template_name, _user, self, options) if _user
+  end
+
+  def notification_template_for_failed_project
+    if is_credit_card? || is_paypal?
+      :contribution_project_unsuccessful_credit_card
+    else
+      if is_pagarme?
+        :contribution_project_unsuccessful_slip
+      else
+        :contribution_project_unsuccessful
+      end
+    end
   end
 
   # Used in payment engines
