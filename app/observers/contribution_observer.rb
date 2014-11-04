@@ -45,6 +45,9 @@ class ContributionObserver < ActiveRecord::Observer
   private
   def do_direct_refund(contribution)
     contribution.direct_refund if contribution.can_do_refund?
+  rescue Exception => e
+    Rails.logger.info "[REFUND ERROR] - #{e.inspect}"
+    contribution.invalid_refund
   end
 
   def notify_confirmation(contribution)
