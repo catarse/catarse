@@ -7,7 +7,7 @@ br/
 | O reembolso do apoio ao projeto #{link_to(project.name, project_by_slug_url(permalink: project.permalink))} não foi efetuado devido a erros nos dados bancários preenchidos:
 br/
 br/
-| Banco: #{bank_account.try(:name)}
+| Banco: #{bank_account.bank.to_s}
 br
 | Agência: #{bank_account.try(:agency)}
 br
