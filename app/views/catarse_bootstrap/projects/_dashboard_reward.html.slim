@@ -1,0 +1,58 @@
+#dashboard-rewards-tab
+  .dashboard-header
+    .w-container.u-text-center
+      .fontsize-large.fontweight-semibold Crie e edite aqui suas recompensas
+      p.fontsize-base Não viaje! Pense em como irá entregá-las e coloque tudo isso no orçamento. Prometeu?! CUMPRA! :D
+  .section
+    .w-container
+      .w-row
+        .w-col.w-col-8.w-hidden-small.w-hidden-tiny
+          #dashboard-rewards
+            - @project.rewards.rank(:row_order).each_with_index do |reward, index|
+              .w-row.card.card-terciary.u-marginbottom-20[id="reward_#{reward.id}" data-update_url=sort_project_reward_path(@project, reward) class="sortable"]
+                .w-col.w-col-4.w-sub-col
+                  .fontweight-semibold.fontsize-smallest.u-marginbottom-10
+                    = "Recompensa ##{index + 1}"
+                .w-col.w-col-8
+                  .card
+                    .w-row
+                      .w-col.w-col-11
+                        .fontsize-base.fontweight-semibold= t('rewards.index.reward_title', minimum: reward.display_minimum).html_safe
+                      .w-col.w-col-1
+                        = link_to "javascript:void(0);", data: {target: ".edit_reward_content_#{reward.id}", path: edit_project_reward_path(@project, reward)}, class: 'show_reward_form' do
+                          .btn.btn-small.btn-terciary.fa.fa-lg.fa-edit.btn-no-border
+                    .fontsize-smaller.u-marginbottom-20.fontweight-semibold= pluralize(reward.contributions.with_state('confirmed').count(:all), t('contribution_singular'), t('contribution_plural'))
+                    p.fontsize-small
+                      br= reward.display_description
+                    .fontsize-smallest
+                      =t('rewards.index.reward_deliver_time', estimate: reward.display_deliver_estimate).html_safe
+              .w-hidden[class="edit_reward_content_#{reward.id}"]
+
+
+
+          = link_to "+ Adicionar recompensa", 'javascript:void(0);', data: {target: '.new_reward_content', path: new_project_reward_path(@project)}, class: 'btn btn-large btn-message show_reward_form'
+          .new_reward_content.w-hidden
+
+        .w-col.w-col-4
+          .w-hidden-small.w-hidden-tiny.card.u-radius.u-marginbottom-20 data-ix="new-interaction" 
+            .fontsize-small.fontweight-semibold.u-marginbottom-20 Links úteis
+            ul.w-list-unstyled
+              li.alt-link.fontsize-smaller.u-marginbottom-10
+                a.alt-link href="http://suporte.catarse.me/hc/pt-br/articles/202387638-Diretrizes-para-a-cria%C3%A7%C3%A3o-de-projetos" target="_blank"  Critérios de seleção
+              li.alt-link.fontsize-smaller.u-marginbottom-10
+                a.alt-link href="http://suporte.catarse.me/hc/pt-br/articles/202446018-Como-funciona-a-sele%C3%A7%C3%A3o-de-projetos-no-Catarse-" target="_blank"  Como os projetos são selecionados?
+              li.fontsize-smaller.alt-link.u-marginbottom-10
+                a.alt-link href="http://suporte.catarse.me/hc/pt-br/articles/202037363-O-que-%C3%A9-um-projeto-em-Rascunho-" target="_blank"  O que é um projeto em Rascunho?
+              li.fontsize-smaller.alt-link.u-marginbottom-10
+                a.alt-link href="http://suporte.catarse.me/hc/pt-br/articles/203073937-O-que-%C3%A9-obrigat%C3%B3rio-para-um-projeto-ir-ao-ar-" target="_blank"  Itens obrigatórios para um projeto ir ao ar
+          .w-hidden-small.w-hidden-tiny.card.u-radius data-ix="new-interaction" 
+            .fontsize-small.fontweight-semibold.u-marginbottom-20 Suporte
+            ul.w-list-unstyled
+              li.alt-link.fontsize-smaller.u-marginbottom-10
+                a.alt-link href="http://suporte.catarse.me/hc/pt-br/sections/200426037-Realizadores-repasse-do-dinheiro" target="_blank"  Como o Catarse funciona?
+              li.fontsize-smaller.alt-link.u-marginbottom-10
+                a.alt-link href="http://suporte.catarse.me/hc/pt-br/sections/200406978-Realizadores-Primeiros-passos" target="_blank"  Realizadores - Primeiros passos
+              li.alt-link.fontsize-smaller.u-marginbottom-10
+                a.alt-link href="http://suporte.catarse.me/" target="_blank"  Central de Suporte
+              li.fontsize-smaller.alt-link
+                a.alt-link href="https://equipecatarse.zendesk.com/account/dropboxes/20298537" target="_blank"  Entre em contato com a gente
