@@ -20,10 +20,7 @@
   meta property="og:site_name" content=CatarseSettings[:company_name]
   meta property="fb:admins" content="#{fb_admins}"
 
-- if @project.draft?
-  = render 'shared/header'
-- else
-  = render 'shared/header_big'
+= render 'shared/header_big'
 
 = render 'project_header'
 
@@ -52,35 +49,10 @@
           = link_to @project.category, explore_path(anchor: "by_category_id/#{@project.category_id}"), class: 'link-hidden-light u-right'
           = image_tag 'catarse_bootstrap/tag-icon.png', class: 'project-nav-category-icon', width: "22" 
 
-- if policy(@project).update?
-  nav.dashboard-nav.w-hidden-small.w-hidden-tiny
-    .w-container
-      = link_to '#basics', id: 'basics_link', class: 'dashboard-nav-link ' , data: {target: '#project_basics'} do
-        span.fa.fa-warning.text-error
-          | \&nbsp;Básico
-      = link_to '#dashboard_project', id: 'dashboard_project_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_project'} do
-        span.fa.fa-check-circle.text-success .
-        | \&nbsp;Projeto
-      = link_to '#dashboard_reward', id: 'dashboard_reward_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_reward'} do
-        span.fa.fa-check-circle .
-        | \&nbsp;Recompensas
-      a.dashboard-nav-link href="#" 
-        span.fa.fa-check-circle .
-        | \&nbsp;Sobre você
-      a.dashboard-nav-link href="#"  Preview
-      - if @project.draft?
-        .btn-send-draft
-           = link_to 'Enviar projeto para análise', send_to_analysis_project_path(@project), class: 'btn btn-small'
 section.section
 .w-container
   .w-row
     article.w-hidden-small.w-hidden-tiny
-      #project_basics.content.w-hidden
-        = render 'project_basics'
-      #dashboard_project.content.w-hidden
-        = render 'dashboard_project'
-      #dashboard_reward.content.w-hidden
-        = render 'dashboard_reward'
       #project_about.content.w-col.w-col-8 = render 'project_about'
 
       #project_posts.content.w-col.w-col-8.w-hidden[data-path=project_posts_path(project_id: @project.id)]
@@ -105,8 +77,6 @@ section.section
         #contributions-loading.loader.u-text-center.w-col.w-col-12 = image_tag "catarse_bootstrap/loader.gif"
 
       #project_comments.content.w-col.w-col-8.w-hidden
-
-
 
     #project-sidebar.aside.w-col.w-col-4
       .project-stats
@@ -166,7 +136,4 @@ section.section
       .fontsize-small.fontweight-semibold.u-text-center-small-only = t('.funding_period')
       .fontsize-small.u-text-center-small-only = "#{@project.display_online_date} - #{@project.display_expires_at}  (#{t('datetime.distance_in_words.x_days', count: @project.online_days)})"
 
-- if @project.draft?
-  = render 'shared/footer'
-- else
-  = render 'shared/footer_big'
+= render 'shared/footer_big'
