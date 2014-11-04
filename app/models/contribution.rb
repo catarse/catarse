@@ -95,6 +95,10 @@ class Contribution < ActiveRecord::Base
     confirmed? && project.failed?
   end
 
+  def invalid_refund
+    notify_to_backoffice :invalid_refund
+  end
+
   def available_rewards
     project.rewards.where('minimum_value <= ?', self.value).order(:minimum_value)
   end
