@@ -11,7 +11,7 @@ br
 | Como o seu apoio foi efetuado através de boleto, iremos realizar o reembolso diretamente na conta em até 10 dias úteis.
 br
 br
-| Banco: #{bank_account.try(:name)}
+| Banco: #{bank_account.bank.to_s}
 br
 | Agência: #{bank_account.try(:agency)}
 br
