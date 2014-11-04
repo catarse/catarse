@@ -1,4 +1,4 @@
-App.views.Project.addChild('DashboardRewards', {
+App.addChild('DashboardRewards', {
   el: '#dashboard-rewards-tab',
 
   events:{

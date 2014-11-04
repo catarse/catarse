@@ -36,7 +36,7 @@ App.addChild('Project', _.extend({
     var $tab = this.$('nav a[href="' + window.location.hash + '"]');
     if($tab.length > 0){
       this.onTabClick({ currentTarget: $tab });
-      var tabs = ['basics_link', 'dashboard_reward_link', 'dashboard_project_link', 'metrics_link'];
+      var tabs = ['metrics_link'];
 
       if($.inArray($tab.prop('id'), tabs) !== -1) {
         $('#project-sidebar').hide();
