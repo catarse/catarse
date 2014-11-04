@@ -94,7 +94,7 @@ class Contribution < ActiveRecord::Base
 
   def invalid_refund
     _user = User.find_by(email: CatarseSettings[:email_contact])
-    notify(:invalid_refund, _user, self) if _user
+    notify_once(:invalid_refund, _user, self) if _user
   end
 
   def available_rewards
