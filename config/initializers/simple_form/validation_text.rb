@@ -4,9 +4,10 @@ module SimpleForm
     module ValidationTexts
       # Name of the component method
       def validation_text(wrapper_options = nil)
-        options[:validation_text_html] = {data: {error_for: "#{object_name}_#{attribute_name}"}}
+        for_id = object_name.to_s.gsub(/\[/, '_').gsub(/\]/, '')
+        options[:validation_text_html] = {data: {error_for: "#{for_id}_#{attribute_name}"}}
         @validation_text ||= begin
-           " " + I18n.t("simple_form.validation_texts.#{object_name}.#{attribute_name}").html_safe if options[:validation_text]
+          " " + I18n.t("simple_form.validation_texts.#{object.class.model_name.singular}.#{attribute_name}").html_safe if options[:validation_text]
         end
       end
 
