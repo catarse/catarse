@@ -13,6 +13,13 @@ pt:
           eight: "fiz uma busca na internet sobre financiamento coletivo / formas alternativas de captação"
           nine: "Outro"
     validation_texts:
+      bank_account:
+        bank_id: "Selecione um banco"
+        agency: "Qual o número da agência?"
+        account: "Qual o número da conta?"
+        account_digit: "Qual o dígito verificador?"
+        owner_name: "Qual o nome do correntista?"
+        owner_document: "Qual o CPF ou CNPJ do correntista?"
       contribution:
         payer_name: "Por favor digite o nome do apoiador"
         payer_email: "Por favor digite um email válido"
