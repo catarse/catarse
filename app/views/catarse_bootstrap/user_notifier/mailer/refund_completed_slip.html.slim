@@ -22,10 +22,10 @@ br
   | CPF: #{bank_account.try(:owner_document)}  
   br
   br
-  | A chave de identificação do seu apoio é: #{contribution.payment_id}
+  | Lembrando que há um prazo determinado por cada banco para a realização dessa transferência, confira seu extrato bancário pelos próximos 3 dias úteis.
   br
   br
-  | Se ficou com alguma dúvida ou teve algum problema nesse processo, entre em contato conosco respondendo a esta mensagem ou através do e-mail #{mail_to contact_email}. Para agilizar o atendimento, pedimos que indique o código de identificação.
+  | Se ficou com alguma dúvida ou teve algum problema nesse processo, entre em contato conosco respondendo a esta mensagem ou através do e-mail #{mail_to contact_email}. Para agilizar o atendimento, pedimos que indique a chave de identificação do seu apoio: #{contribution.payment_id}.
 
 - else
   | Seu reembolso foi feito com sucesso!
