@@ -6,9 +6,9 @@
       .large-2.columns
         = form.input :search_on_name, as: :string, label: t('.permalink'), input_html: {value: current_scopes[:search_on_name]}
       .large-2.columns
-        = form.input "between_expires_at[start_at]", as: :string, label: t(".between_expires_at"), input_html: {value: params[:between_expires_at] && params[:between_expires_at][:start_at], data: { mask: '99/99/9999' } }
+        = form.input "between_expires_at[start_at]", as: :string, label: t(".between_expires_at"), input_html: {value: params[:between_expires_at] && params[:between_expires_at][:start_at], data: { fixed_mask: '99/99/9999' } }
       .large-2.columns.no-label
-        = form.input "between_expires_at[ends_at]", as: :string, label: '', input_html: {value: params[:between_expires_at] && params[:between_expires_at][:ends_at], data: { mask: '99/99/9999' } }
+        = form.input "between_expires_at[ends_at]", as: :string, label: '', input_html: {value: params[:between_expires_at] && params[:between_expires_at][:ends_at], data: { fixed_mask: '99/99/9999' } }
       .large-2.columns
         = form.input :by_progress, as: :string, label: t('.by_progress'), input_html: {value: params[:by_progress]}
       .large-2.columns

@@ -3,8 +3,8 @@
   meta[itemprop="dateCreated" content=@project.created_at.to_date]
   .card-project-thumb style="background-image: url(#{@project.display_image})"
   .card-project-description._3
-    .fontweight-semibold.fontsize-base.u-marginbottom-10.u-text-center-small-only=link_to truncate(@project.name, length: 50, separator: ''), project_by_slug_path(@project.permalink), title: @project.name, target: target
-    .w-hidden-small.w-hidden-tiny.fontcolor-secondary.fontsize-smaller= link_to truncate(@project.headline, length: 140), project_by_slug_path(@project.permalink), title: @project.headline, target: target
+    .fontweight-semibold.fontsize-base.u-marginbottom-10.u-text-center-small-only=link_to truncate(@project.name, length: 50, separator: ''), project_by_slug_path(@project.permalink), title: @project.name, target: target, class: 'link-hidden'
+    .w-hidden-small.w-hidden-tiny.fontcolor-secondary.fontsize-smaller= link_to truncate(@project.headline, length: 140), project_by_slug_path(@project.permalink), title: @project.headline, target: target, class: 'link-hidden'
   .w-clearfix.card-project-author.u-text-center-small-only
     .w-hidden-small.w-hidden-tiny.thumb.small.u-round.u-left
       .thumb.small.u-round.u-left
