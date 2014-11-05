@@ -526,7 +526,7 @@ PLATFORMS
 
 DEPENDENCIES
   RedCloth
-  auto_html (= 1.4.2)
+  auto_html
   best_in_place!
   better_errors
   binding_of_caller
