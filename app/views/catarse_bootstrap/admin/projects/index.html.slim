@@ -53,7 +53,8 @@
     table.admin-projects-table.no-bottom
       thead
         tr
-          th.w-col-2.w-col= t('channels.admin.table.name')
+          th.w-col-1.w-col= t('channels.admin.table.name')
+          th.w-col-1.w-col= t('.pagarme')
           th.w-col-1.w-col= t('channels.admin.table.category')
           th.w-col-1.w-col= t('channels.admin.table.user_id')
           th.w-col-1.w-col
@@ -80,7 +81,8 @@
       tbody
         - @projects.includes(:category).each do |project|
           tr id=project.id class=cycle("even", "odd")
-            td.w-col-2.w-col= link_to project.name, project_by_slug_path(permalink: project.permalink)
+            td.w-col-1.w-col= link_to project.name, project_by_slug_path(permalink: project.permalink)
+            td.w-col-1.w-col= (project.using_pagarme? ? t('yes') : t('no'))
             td.w-col-1.w-col= project.category
             td.w-col-1.w-col= best_in_place [:admin, project], :user_id, method: :put, type: :input
             td.w-col-1.w-col= best_in_place [:admin, project], :goal, method: :put, type: :input, display_as: :display_goal
