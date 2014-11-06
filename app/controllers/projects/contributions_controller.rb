@@ -79,7 +79,7 @@ class Projects::ContributionsController < ApplicationController
   def avaiable_payment_engines
     engines = []
 
-    if resource.value < 10
+    if resource.value < 10 && !parent.using_pagarme?
       engines.push PaymentEngines.find_engine('Credits')
     else
       if parent.using_pagarme?
