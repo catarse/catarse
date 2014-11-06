@@ -21,7 +21,7 @@ RSpec.describe ChannelPost, type: :model do
 
   describe "#email_body_html" do
     subject{ create(:channel_post, body: "this is a comment\nhttp://vimeo.com/6944344\nhttp://catarse.me/assets/catarse/logo164x54.png").email_body_html }
-    it{ is_expected.to eq("<p>this is a comment<br />\n<a href=\"http://vimeo.com/6944344\" target=\"_blank\">http://vimeo.com/6944344</a><br />\n<img src=\"http://catarse.me/assets/catarse/logo164x54.png\" alt=\"\" style=\"max-width:513px\" /></p>") }
+    it{ is_expected.to eq("<p>this is a comment\n<a href=\"http://vimeo.com/6944344\" target=\"_blank\">http://vimeo.com/6944344</a>\n<img src=\"http://catarse.me/assets/catarse/logo164x54.png\" alt=\"\" style=\"max-width:513px\" /></p>\n") }
   end
 
 end

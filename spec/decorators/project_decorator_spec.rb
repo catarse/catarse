@@ -127,7 +127,7 @@ RSpec.describe ProjectDecorator do
 
   describe "#about_html" do
     subject{ project.about_html }
-    it{ is_expected.to eq('<p>Foo Bar <a href="http://www.foo.bar" target="_blank">http://www.foo.bar</a> &lt;javascript&gt;xss()&lt;/javascript&gt;<a target="_blank" href="http://click.here">Click here</a></p>') }
+    it{ is_expected.to eq("<p>Foo Bar <a class=\"alt-link\" href=\"http://www.foo.bar\" target=\"_blank\">http://www.foo.bar</a> &lt;javascript&gt;xss()&lt;/javascript&gt;<a class=\"alt-link\" target=\"_blank\" href=\"http://click.here\">Click here</a></p>\n")}
   end
 
   describe "#display_progress" do
