@@ -53,7 +53,8 @@
     table.admin-projects-table.no-bottom
       thead
         tr
-          th.large-2.columns= t('channels.admin.table.name')
+          th.large-1.columns= t('channels.admin.table.name')
+          th.large-1.columns= t('.pagarme')
           th.large-1.columns= t('channels.admin.table.category')
           th.large-1.columns= t('channels.admin.table.user_id')
           th.large-1.columns
@@ -80,7 +81,8 @@
       tbody
         - @projects.includes(:category).each do |project|
           tr id=project.id class=cycle("even", "odd")
-            td.large-2.columns= link_to project.name, project_by_slug_path(permalink: project.permalink)
+            td.large-1.columns= link_to project.name, project_by_slug_path(permalink: project.permalink)
+            td.large-1.columns= (project.using_pagarme? ? t('yes') : t('no'))
             td.large-1.columns= project.category
             td.large-1.columns= best_in_place [:admin, project], :user_id, method: :put, type: :input
             td.large-1.columns= best_in_place [:admin, project], :goal, method: :put, type: :input, display_as: :display_goal
