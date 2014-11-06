@@ -37,6 +37,7 @@
         thead
           tr
             th style="width: 200px"= t('.name')
+            th= t('.pagarme')
             th= t('.user')
             th= t('.goal')
             th= t('.pledged')
@@ -49,6 +50,7 @@
         tbody
           tr id=project.id class=cycle("even", "odd")
             td= link_to project.name, project_by_slug_path(permalink: project.permalink), target: '_blank'
+            td= (project.using_pagarme? ? t('yes') : t('no'))
             td= link_to (project.user.moip_login.blank? ? 'Não preenchido' : project.user.moip_login), user_path(project.user, anchor: :settings), target: '_blank'
             td= project.display_goal
             td= project.display_pledged
@@ -74,7 +76,7 @@
               - else
                 span.label= project.state
           tr class='detail_tr' id="project_details-#{project.id}"
-            td colspan='10'
+            td colspan='11'
               table style='border: 1px #ededed solid'
                 thead
                   th style='width: 350px'= t('.details.bank_data')
