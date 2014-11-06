@@ -3,7 +3,13 @@ App.addChild('Contribution', {
 
   events: {
     'click label.back-reward-radio-reward' : 'clickReward',
-    'click #submit' : 'submitForm'
+    'click #submit' : 'submitForm',
+    'input #contribution_value' : 'restrictChars'
+  },
+
+  restrictChars: function(event){
+    var $target = $(event.target);
+    $target.val($target.val().replace(/[^\d,]/, ''));
   },
 
   submitForm: function(){
