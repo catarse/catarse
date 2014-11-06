@@ -1,7 +1,5 @@
 class RewardsController < ApplicationController
   after_filter :verify_authorized, except: %i[index]
-  inherit_resources
-  belongs_to :project
   respond_to :html, :json
 
   def index
@@ -11,28 +9,40 @@ class RewardsController < ApplicationController
   def new
     @reward = Reward.new(project: parent)
     authorize @reward
-    render layout: false
+    render_form
   end
 
   def edit
     authorize resource
-    render layout: false
+    render_form
   end
 
   def update
     authorize resource
-    update!(notice: t('project.update.success')) { project_by_slug_path(permalink: parent.permalink, anchor: :dashboard_reward) }
+    if resource.update permitted_params[:reward]
+      flash[:notice] = t('project.update.success')
+      redirect_to edit_project_path(parent, anchor: 'dashboard_reward')
+    else
+      render_form
+    end
   end
 
   def create
-    @reward = Reward.new(params[:reward].merge(project: parent))
-    authorize resource
-    create!(notice: t('project.update.success')) { project_by_slug_path(permalink: parent.permalink) }
+    @reward = parent.rewards.new
+    @reward.assign_attributes(permitted_params[:reward])
+    authorize @reward
+    if @reward.save
+      flash[:notice] = t('project.update.success')
+      redirect_to edit_project_path(parent, anchor: 'dashboard_reward')
+    else
+      render_form
+    end
   end
 
   def destroy
     authorize resource
-    destroy! { project_by_slug_path(permalink: resource.project.permalink) }
+    resource.destroy
+    redirect_to project_by_slug_path(permalink: resource.project.permalink)
   end
 
   def sort
@@ -41,7 +51,19 @@ class RewardsController < ApplicationController
     render nothing: true
   end
 
+  def resource
+    @reward ||= parent.rewards.find params[:id]
+  end
+
+  def parent
+    @project ||= Project.find params[:project_id]
+  end
+
   private
+  def render_form
+    render partial: 'rewards/form', layout: false
+  end
+
   def permitted_params
     params.permit(policy(resource).permitted_attributes)
   end
