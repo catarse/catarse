@@ -606,13 +606,14 @@ RSpec.describe Project, type: :model do
       @project_01 = create(:project, permalink: 'a')
       @project_02 = create(:project, permalink: 'b')
       @project_03 = create(:project, permalink: 'c')
+      @project_04 = create(:project, online_date: '2014-11-10'.to_date)
 
       CatarseSettings[:projects_enabled_to_use_pagarme] = 'a, c'
     end
 
     subject { Project.enabled_to_use_pagarme }
 
-    it { is_expected.to match_array([@project_01, @project_03])}
+    it { is_expected.to eq([@project_01, @project_03, @project_04])}
   end
 
   describe "#using_pagarme?" do
@@ -625,6 +626,15 @@ RSpec.describe Project, type: :model do
         CatarseSettings[:projects_enabled_to_use_pagarme] = 'foo'
       end
 
+      it { is_expected.to be_truthy }
+    end
+
+    context "when project is online_date >= 10/11" do
+      before do
+        project.update_attribute(:online_date, '2014-11-10'.to_date)
+      end
+
+      subject { project.using_pagarme? }
       it { is_expected.to be_truthy }
     end
 

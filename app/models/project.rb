@@ -117,6 +117,12 @@ class Project < ActiveRecord::Base
     ")
   }
 
+  scope :using_pagarme, -> (permalinks) {
+    where("projects.permalink in (:permalinks) OR
+           projects.online_date::date  AT TIME ZONE '#{Time.zone.tzinfo.name}' >= '2014-11-10'::date AT TIME ZONE '#{Time.zone.tzinfo.name}'",
+          { permalinks: permalinks })
+  }
+
   attr_accessor :accepted_terms
 
   validates_acceptance_of :accepted_terms, on: :create
@@ -158,7 +164,7 @@ class Project < ActiveRecord::Base
       permalinks = []
     end
 
-    Project.where(permalink: permalinks)
+    self.using_pagarme(permalinks)
   end
 
   def using_pagarme?
