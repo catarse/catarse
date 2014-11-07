@@ -11,7 +11,7 @@ RSpec.describe PostPreviewController, type: :controller do
     it{ is_expected.to be_success }
 
     it "should convert text to html" do
-      expect(subject.body).to eq('<p><strong>should convert me! :D</strong></p>')
+      expect(subject.body).to eq("<p><strong>should convert me! :D</strong></p>\n")
     end
   end
 end
