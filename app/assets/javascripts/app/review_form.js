@@ -5,7 +5,8 @@ App.addChild('ReviewForm', _.extend({
     'blur input' : 'checkInput',
     'change #contribution_country_id' : 'onCountryChange',
     'change #contribution_anonymous' : 'toggleAnonymousConfirmation',
-    'click #next-step' : 'onNextStepClick'
+    'click #next-step' : 'onNextStepClick',
+    'focus #contribution_payer_document' : 'onUserDocumentFocus'
   },
 
   onNextStepClick: function(){
@@ -70,39 +71,48 @@ App.addChild('ReviewForm', _.extend({
     this.$country.val('36');
     this.$state = this.$('#contribution_address_state');
     this.$errorMessage = this.$('#error-message');
+    this.$('#contribution_payer_document').data('custom-validation', this.onUserDocumentChange);
     this.setupForm();
     this.onCountryChange();
   },
 
-  onUserDocumentKeyup: function(e) {
+  onUserDocumentFocus: function(e) {
     var $documentField = $(e.currentTarget);
+    $documentField.fixedMask('off');
+  },
+
+  onUserDocumentChange: function(input) {
+    var $documentField = input;
     var documentNumber = $documentField.val();
     $documentField.prop('maxlength', 18);
     var resultCpf = this.validateCpf(documentNumber);
     var resultCnpj = this.validateCnpj(documentNumber.replace(/[\/.\-\_ ]/g, ''));
     var numberLength = documentNumber.replace(/[.\-\_ ]/g, '').length
     if(numberLength > 10) {
-     if($documentField.attr('id') != 'payment_card_cpf'){
-         if(numberLength == 11) {$documentField.mask('999.999.999-99?999'); }//CPF
-         else if(numberLength == 14 ){$documentField.mask('99.999.999/9999-99');}//CNPJ
-         if(numberLength != 14 || numberLength != 11){ $documentField.unmask()}
-        }
+      if($documentField.attr('id') != 'payment_card_cpf'){
+        $documentField.fixedMask('off');
+        if(numberLength == 11) {$documentField.fixedMask('999.999.999-99'); }//CPF
+        else if(numberLength == 14 ){$documentField.fixedMask('99.999.999/9999-99');}//CNPJ
+      }
 
-     if(resultCpf || resultCnpj) {
-        $documentField.addClass('ok').removeClass('error');
+      if(resultCpf || resultCnpj) {
+        return true;
       } else {
-        $documentField.addClass('error').removeClass('ok');
+        $documentField.trigger('invalid');
+        return false;
       }
     }
-     else{
-        $documentField.addClass('error').removeClass('ok');
-     }
+    else{
+      $documentField.trigger('invalid');
+      return false;
+    }
   },
 
   updateContribution: function(){
     var contribution_data = {
       payer_name: this.$('#contribution_full_name').val(),
       payer_email: this.$('#contribution_email').val(),
+      payer_document: this.$('#contribution_payer_document').val(),
       address_street: this.$('#contribution_address_street').val(),
       address_number: this.$('#contribution_address_number').val(),
       address_complement: this.$('#contribution_address_complement').val(),
