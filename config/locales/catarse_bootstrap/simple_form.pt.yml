@@ -13,6 +13,9 @@ pt:
           eight: "fiz uma busca na internet sobre financiamento coletivo / formas alternativas de captação"
           nine: "Outro"
     validation_texts:
+      reward:
+        minimum_value: "Informe um valor mínimo maior ou igual a 10"
+        description: "Informe uma descrição para a recompensa"
       contribution:
         payer_name: "Por favor digite o nome do apoiador"
         payer_email: "Por favor digite um email válido"

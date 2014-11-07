@@ -1,6 +1,7 @@
 class RewardsController < ApplicationController
   after_filter :verify_authorized, except: %i[index]
   respond_to :html, :json
+  helper_method :resource, :parent, :collection
 
   def index
     render layout: false
@@ -21,7 +22,7 @@ class RewardsController < ApplicationController
     authorize resource
     if resource.update permitted_params[:reward]
       flash[:notice] = t('project.update.success')
-      redirect_to edit_project_path(parent, anchor: 'dashboard_reward')
+      render nothing: true, status: 302
     else
       render_form
     end
@@ -33,7 +34,7 @@ class RewardsController < ApplicationController
     authorize @reward
     if @reward.save
       flash[:notice] = t('project.update.success')
-      redirect_to edit_project_path(parent, anchor: 'dashboard_reward')
+      render nothing: true, status: 302
     else
       render_form
     end
@@ -57,6 +58,10 @@ class RewardsController < ApplicationController
 
   def parent
     @project ||= Project.find params[:project_id]
+  end
+
+  def collection
+    apply_scopes parent.rewards
   end
 
   private
