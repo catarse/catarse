@@ -20,6 +20,7 @@ pt:
       contribution:
         payer_name: "Nome Completo"
         payer_email: "Email"
+        payer_document: "CPF ou CNPJ"
         country: "País"
         address_street: "Rua"
         address_number: "Número"
