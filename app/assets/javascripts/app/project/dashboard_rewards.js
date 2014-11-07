@@ -17,9 +17,10 @@ App.addChild('DashboardRewards', {
     this.$('.reward-explanation').toggle();
   },
 
-  closeForm: function() {
+  closeForm: function(event) {
     event.preventDefault();
-    this.$('.reward-explanation').toggle();
+    var $target = this.$(event.currentTarget);
+    $target.closest('.reward-card').hide();
   },
 
   sortableRewards: function() {
@@ -52,15 +53,41 @@ App.addChild('DashboardRewards', {
 
 
   showRewardForm: function(event) {
+    var that = this;
     event.preventDefault();
     var $target = this.$(event.currentTarget);
-    $target.fadeOut('fast');
+    //$target.fadeOut('fast');
 
     $.get($target.data('path')).success(function(data){
       $($target.data('target')).html(data);
+      that.rewardForm;
     });
 
     this.$($target.data('target')).fadeIn('fast');
   }
 });
 
+App.views.DashboardRewards.addChild('RewardForm', _.extend({
+  el: '.reward-card',
+
+  events: {
+    'ajax:complete' : 'onComplete',
+    'blur input' : 'checkInput',
+    'submit form' : 'validate'
+  },
+
+  onComplete: function(event, data){
+    console.log(data);
+    if(data.status === 302){
+      window.location.reload();
+    }
+    else{
+      var form = $(data.responseText).html();
+      this.$el.html(form)
+    }
+  },
+
+  activate: function(){
+    this.setupForm();
+  }
+}, Skull.Form));
