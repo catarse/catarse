@@ -61,7 +61,7 @@ RSpec.describe RewardsController, type: :controller do
 
     context "when user is project owner and update works" do
       let(:user){ project.user }
-      it{ is_expected.to redirect_to edit_project_path(project, anchor: 'dashboard_reward') }
+      its(:status){ should == 302 }
     end
 
     context "when user is project owner and update fails" do
@@ -84,7 +84,7 @@ RSpec.describe RewardsController, type: :controller do
 
     context "when user is project owner and create works" do
       let(:user){ project.user }
-      it{ is_expected.to redirect_to edit_project_path(project, anchor: 'dashboard_reward') }
+      its(:status){ should == 302 }
     end
 
     context "when user is project owner and create fails" do
