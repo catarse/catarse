@@ -23,6 +23,7 @@ pt:
       contribution:
         payer_name: "Por favor digite o nome do apoiador"
         payer_email: "Por favor digite um email válido"
+        payer_document: "Por favor digite um CPF ou CNPJ válido"
         address_street: "Digite o nome da rua"
         address_number: "Digite o número do endereço"
         address_city: "Digite o nome da cidade"
