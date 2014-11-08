@@ -16,6 +16,10 @@ class ContributionObserver < ActiveRecord::Observer
     notify_confirmation(contribution) if contribution.confirmed? && contribution.confirmed_at.nil?
   end
 
+  def from_confirmed_to_refunded_and_canceled(contribution)
+    do_direct_refund(contribution)
+  end
+
   def from_requested_refund_to_refunded(contribution)
     contribution.notify_to_contributor((contribution.slip_payment? ? :refund_completed_slip : :refund_completed))
   end
@@ -28,7 +32,7 @@ class ContributionObserver < ActiveRecord::Observer
 
   def from_confirmed_to_requested_refund(contribution)
     contribution.notify_to_backoffice :refund_request, {from_email: contribution.user.email, from_name: contribution.user.name}
-    contribution.direct_refund if contribution.can_do_refund?
+    do_direct_refund(contribution)
 
     unless contribution.is_pagarme?
       template = (contribution.slip_payment? ? :requested_refund_slip : :requested_refund)
@@ -44,6 +48,13 @@ class ContributionObserver < ActiveRecord::Observer
   alias :from_pending_to_canceled :from_confirmed_to_canceled
 
   private
+  def do_direct_refund(contribution)
+    contribution.direct_refund if contribution.can_do_refund?
+  rescue Exception => e
+    Rails.logger.info "[REFUND ERROR] - #{e.inspect}"
+    contribution.invalid_refund
+  end
+
   def notify_confirmation(contribution)
     contribution.confirmed_at = Time.now
     contribution.notify_to_contributor(:confirm_contribution)

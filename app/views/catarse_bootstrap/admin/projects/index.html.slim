@@ -28,9 +28,9 @@
         - if index % 3 == 0
           .w-row
         .w-col-2.w-col
-          = form.input "#{between_field}[start_at]", as: :string, label: t(".#{between_field}"), input_html: {value: params[between_field] && params[between_field][:start_at], data: { mask: mask } , class: 'w-input text-field'}
+          = form.input "#{between_field}[start_at]", as: :string, label: t(".#{between_field}"), input_html: {value: params[between_field] && params[between_field][:start_at], data: { fixed_mask: mask } , class: 'w-input text-field'}
         .w-col-2.no-label.w-col
-          = form.input "#{between_field}[ends_at]", as: :string, label: false, input_html: { value: params[between_field] && params[between_field][:ends_at], data: { mask: mask } , class: 'w-input text-field'}
+          = form.input "#{between_field}[ends_at]", as: :string, label: false, input_html: { value: params[between_field] && params[between_field][:ends_at], data: { fixed_mask: mask } , class: 'w-input text-field'}
       .w-col-2.w-col
         = form.input :by_channel, as: :select, collection: Channel.all, selected: params[:by_channel], include_blank: true, input_html: { class: 'w-input text-field' }
 
