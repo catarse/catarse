@@ -86,6 +86,12 @@ App.views.Explore.addChild('FollowCategory', {
     this.$('.category-info h3').html(selectedItem.data('name'));
     this.$('.category-follow span.count').html(selectedItem.data('totalfollowers'));
 
+    if(selectedItem.data('totalfollowers') > 0) {
+      this.$('p.following').show();
+    } else {
+      this.$('p.following').hide();
+    }
+
     if(selectedItem.data('isfollowing')) {
       unfollow_btn.prop('href', selectedItem.data('unfollowpath'))
       unfollow_btn.show();

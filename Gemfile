@@ -19,6 +19,7 @@ gem 'state_machine', require: 'state_machine/core'
 gem 'pg'
 gem 'postgres-copy'
 gem 'pg_search'
+gem 'i18n_alchemy'
 
 gem 'schema_plus'
 gem 'chartkick'
@@ -32,9 +33,9 @@ gem 'mixpanel-ruby'
 
 # Payment engines
 gem 'catarse_paypal_express', '3.0.1'
-gem 'catarse_moip', '~> 3.0.3'
+gem 'catarse_moip', '~> 3.0.4'
 gem 'catarse_credits', '1.0.0'
-gem 'catarse_pagarme', '2.3.0'
+gem 'catarse_pagarme', '2.3.4'
 #gem 'catarse_paypal_express', path: '../catarse_paypal_express'
 #gem 'catarse_moip', path: '../catarse_moip'
 #gem 'catarse_credits', path: '../catarse_credits'
@@ -69,7 +70,7 @@ gem 'catarse_monkeymail', '>= 0.1.6'
 gem 'formtastic',   '~> 2.2.1'
 gem 'simple_form'
 gem 'mail_form'
-gem "auto_html",    '= 1.4.2'
+gem "auto_html"
 gem "RedCloth"
 gem 'kaminari'
 

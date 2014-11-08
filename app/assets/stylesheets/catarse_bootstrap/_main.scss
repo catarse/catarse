@@ -239,7 +239,7 @@ p {
 .text-field.error {
   margin-bottom: 5px;
   border-color: #e86666;
-  background-color: rgba(232, 102, 102, 0.14);
+  background-color: rgba(232, 102, 102, 0.12);
 }
 .text-field.bottom {
   border-top-left-radius: 0px;
@@ -1373,7 +1373,7 @@ p {
 }
 .list-question {
   display: block;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   line-height: 18px;
   font-weight: 400;
 }
@@ -1487,7 +1487,6 @@ p {
 }
 .meter-fill {
   position: relative;
-  width: 67%;
   height: 100%;
   border-radius: 3px;
   background-color: #00b22d;
@@ -2745,6 +2744,9 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
     width: 71px;
     padding-left: 12px;
   }
+  .list-question {
+    margin-bottom: 20px;
+  }
   .list-answer {
     padding-left: 0px;
   }
@@ -2807,6 +2809,7 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
     display: block;
   }
   .header-search {
+    margin-left: 0px;
     font-size: 12px;
   }
   .header-logo {
@@ -2816,6 +2819,7 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
   }
   .postfix {
     height: 35px;
+    padding-top: 7px;
   }
   .btn-large {
     padding-top: 16px;
@@ -2858,6 +2862,7 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
   }
   .thumb {
     width: 55px;
+    height: 55px;
   }
   .thumb.small {
     width: 40px;
@@ -3360,6 +3365,9 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
   .card-author-name {
     padding-top: 0px;
   }
+  .fontsize-large-small-only {
+    font-size: 20px;
+  }
 }
 @media (max-width: 479px) {
   h2 {
@@ -3691,5 +3699,8 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
   }
   .card-project-author {
     height: 40px;
+  }
+  .fontsize-large-small-only {
+    font-size: 18px;
   }
 }
