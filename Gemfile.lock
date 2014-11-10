@@ -592,6 +592,7 @@ DEPENDENCIES
   routing-filter (~> 0.4.0.pre)
   rspec-collection_matchers
   rspec-its
+  rspec-mocks
   rspec-rails (~> 3.1)
   sass-rails (~> 4.0.0)
   schema_plus
