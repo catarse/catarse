@@ -31,7 +31,7 @@ Catarse::Application.routes.draw do
     end
   end
   resources :auto_complete_projects, only: [:index]
-  resources :projects, only: [:index, :create, :update, :new, :show] do
+  resources :projects, only: [:index, :create, :update, :edit, :new, :show] do
     resources :posts, controller: 'projects/posts', only: [ :index, :create, :destroy ]
     resources :rewards, only: [ :index, :create, :update, :destroy, :new, :edit ] do
       member do

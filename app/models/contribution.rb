@@ -95,6 +95,11 @@ class Contribution < ActiveRecord::Base
     confirmed? && project.failed?
   end
 
+  def invalid_refund
+    _user = User.find_by(email: CatarseSettings[:email_contact])
+    notify(:invalid_refund, _user, self) if _user
+  end
+
   def available_rewards
     project.rewards.where('minimum_value <= ?', self.value).order(:minimum_value)
   end
