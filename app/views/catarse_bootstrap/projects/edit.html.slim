@@ -1,0 +1,35 @@
+= render 'shared/header'
+
+= render 'project_header'
+
+nav.dashboard-nav.w-hidden-small.w-hidden-tiny
+  .w-container
+    = link_to '#basics', id: 'basics_link', class: 'dashboard-nav-link ' , data: {target: '#project_basics'} do
+      span.fa.fa-warning.text-error
+        | \&nbsp;Básico
+    = link_to '#dashboard_project', id: 'dashboard_project_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_project'} do
+      span.fa.fa-check-circle.text-success .
+      | \&nbsp;Projeto
+    = link_to '#dashboard_reward', id: 'dashboard_reward_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_reward'} do
+      span.fa.fa-check-circle .
+      | \&nbsp;Recompensas
+    a.dashboard-nav-link href="#"
+      span.fa.fa-check-circle .
+      | \&nbsp;Sobre você
+    a.dashboard-nav-link href="#"  Preview
+    - if @project.draft?
+      .btn-send-draft
+         = link_to 'Enviar projeto para análise', send_to_analysis_project_path(@project), class: 'btn btn-small'
+
+section.section
+.w-container
+  .w-row
+    article.w-hidden-small.w-hidden-tiny
+      #project_basics.content.w-hidden
+        = render 'project_basics'
+      #dashboard_project.content.w-hidden
+        = render 'dashboard_project'
+      #dashboard_reward.content.w-hidden
+        = render 'dashboard_reward'
+
+= render 'shared/footer'
