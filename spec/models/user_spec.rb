@@ -420,6 +420,18 @@ RSpec.describe User, type: :model do
     end
   end
 
+  describe "#fix_other_link" do
+    subject{ user.other_link }
+    context "when user provides invalid url" do
+      let(:user){ create(:user, other_link: 'foo.com/foo') }
+      it{ is_expected.to eq('http://foo.com/foo') }
+    end
+    context "when user provides valid url" do
+      let(:user){ create(:user, other_link: 'http://foo.com/foo') }
+      it{ is_expected.to eq('http://foo.com/foo') }
+    end
+  end
+
   describe "#made_any_contribution_for_this_project?" do
     let(:project) { create(:project) }
     subject { user.made_any_contribution_for_this_project?(project.id) }
