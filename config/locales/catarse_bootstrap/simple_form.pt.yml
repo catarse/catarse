@@ -13,6 +13,9 @@ pt:
           eight: "fiz uma busca na internet sobre financiamento coletivo / formas alternativas de captação"
           nine: "Outro"
     validation_texts:
+      reward:
+        minimum_value: "Informe um valor mínimo maior ou igual a 10"
+        description: "Informe uma descrição para a recompensa"
       bank_account:
         bank_id: "Selecione um banco"
         agency: "Qual o número da agência?"
