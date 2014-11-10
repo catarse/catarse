@@ -34,7 +34,7 @@ gem 'mixpanel-ruby'
 gem 'catarse_paypal_express', '2.2.3'
 gem 'catarse_moip', '~> 2.3.6'
 gem 'catarse_credits', '0.0.6'
-gem 'catarse_pagarme', '1.4.2'
+gem 'catarse_pagarme', '1.4.3'
 gem 'catarse_contribution_validator', github: 'catarse/catarse_contribution_validator'
 # gem 'catarse_wepay', '~> 0.0.1'
 
@@ -126,6 +126,7 @@ end
 
 group :test, :development do
   gem 'rspec-rails', '~> 3.1'
+  gem 'rspec-mocks'
   gem 'rspec-its'
   gem 'rspec-collection_matchers'
   gem 'pry'

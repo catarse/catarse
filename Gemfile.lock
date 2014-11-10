@@ -101,7 +101,7 @@ GEM
       mailchimp-api (~> 2.0.4)
       rails (>= 4.0.3)
       rails-observers
-    catarse_pagarme (1.4.2)
+    catarse_pagarme (1.4.3)
       pagarme (~> 1.9.5)
       rails (~> 4.0)
     catarse_paypal_express (2.2.3)
@@ -329,7 +329,7 @@ GEM
       multi_json (~> 1.3)
       omniauth-oauth (~> 1.0)
     orm_adapter (0.5.0)
-    pagarme (1.9.7)
+    pagarme (1.9.8)
       multi_json
       rest-client
     pg (0.17.1)
@@ -539,7 +539,7 @@ DEPENDENCIES
   catarse_credits (= 0.0.6)
   catarse_moip (~> 2.3.6)
   catarse_monkeymail (>= 0.1.6)
-  catarse_pagarme (= 1.4.2)
+  catarse_pagarme (= 1.4.3)
   catarse_paypal_express (= 2.2.3)
   catarse_settings_db (>= 0.1.0)
   chartkick
@@ -591,6 +591,7 @@ DEPENDENCIES
   routing-filter (~> 0.4.0.pre)
   rspec-collection_matchers
   rspec-its
+  rspec-mocks
   rspec-rails (~> 3.1)
   sass-rails (~> 4.0.0)
   schema_plus
