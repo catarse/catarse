@@ -59,9 +59,7 @@ RSpec.describe Projects::ContributionsController, type: :controller do
     context "when user is logged in" do
       let(:user){ create(:user) }
       let(:contribution){ create(:contribution, value: 10.00, credits: true, project: project, state: 'pending', user: user) }
-      its(:body){ should =~ /#{I18n.t('projects.contributions.edit.title')}/ }
-      its(:body){ should =~ /#{project.name}/ }
-      its(:body){ should =~ /R\$ 10/ }
+      it{ is_expected.to render_template(:edit) }
     end
 
     context "when reward is sold out" do
@@ -145,9 +143,6 @@ RSpec.describe Projects::ContributionsController, type: :controller do
 
     context "when project.online? is true" do
       it{ should render_template("projects/contributions/new") }
-      its(:body) { should =~ /#{I18n.t('projects.contributions.new.title')}/ }
-      its(:body) { should =~ /#{I18n.t('projects.contributions.new.next_step')}/ }
-      its(:body) { should =~ /#{I18n.t('projects.contributions.new.no_reward')}/ }
       its(:body) { should =~ /#{project.name}/ }
     end
   end
