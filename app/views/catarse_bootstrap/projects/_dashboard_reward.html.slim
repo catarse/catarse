@@ -28,8 +28,8 @@
                       =t('rewards.index.reward_deliver_time', estimate: reward.display_deliver_estimate).html_safe
               .w-hidden[class="edit_reward_content_#{reward.id}"]
 
-          = link_to "+ Adicionar recompensa", 'javascript:void(0);', data: {target: '.new_reward_content', path: new_project_reward_path(@project)}, class: 'btn btn-large btn-message show_reward_form'
           .new_reward_content.w-hidden
+          = link_to "+ Adicionar recompensa", 'javascript:void(0);', data: {target: '.new_reward_content', path: new_project_reward_path(@project)}, class: 'btn btn-large btn-message show_reward_form'
 
         .w-col.w-col-4
           .w-hidden-small.w-hidden-tiny.card.u-radius.u-marginbottom-20 data-ix="new-interaction" 
