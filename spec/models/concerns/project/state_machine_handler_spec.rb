@@ -113,10 +113,12 @@ RSpec.describe Project::StateMachineHandler, type: :model do
       context 'when project is expired and the sum of the pending contributions and confirmed contributions dont reached the goal' do
         before do
           create(:contribution, value: 100, project: subject, created_at: 2.days.ago, payment_choice: 'BoletoBancario')
+          create(:contribution, value: 100, project: subject, state: 'waiting_confirmation')
           subject.finish
         end
 
-        its(:failed?) { should eq(true) }
+        its(:failed?) { should eq(false) }
+        its(:waiting_funds?) { should eq(true) }
       end
 
       context 'when project is expired and have recent contributions without confirmation' do
@@ -131,7 +133,6 @@ RSpec.describe Project::StateMachineHandler, type: :model do
       context 'when project already hit the goal and passed the waiting_funds time' do
         before do
           main_project.update_attributes state: 'waiting_funds'
-          allow(subject).to receive(:pending_contributions_reached_the_goal?).and_return(true)
           allow(subject).to receive(:reached_goal?).and_return(true)
           subject.online_date = 2.weeks.ago
           subject.online_days = 1
@@ -143,7 +144,6 @@ RSpec.describe Project::StateMachineHandler, type: :model do
 
       context 'when project already hit the goal and still is in the waiting_funds time' do
         before do
-          allow(subject).to receive(:pending_contributions_reached_the_goal?).and_return(true)
           allow(subject).to receive(:reached_goal?).and_return(true)
           create(:contribution, project: main_project, user: user, value: 20, state: 'waiting_confirmation')
           main_project.update_attributes state: 'waiting_funds'
