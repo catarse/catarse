@@ -578,24 +578,6 @@ RSpec.describe Project, type: :model do
     it{ is_expected.to eq(channel) }
   end
 
-  describe '#pending_contributions_reached_the_goal?' do
-    let(:project) { create(:project, goal: 200) }
-
-    subject { project.pending_contributions_reached_the_goal? }
-
-    context 'when reached the goal with pending contributions' do
-      before { 2.times { create(:contribution, project: project, value: 120, state: 'waiting_confirmation') } }
-
-      it { is_expected.to eq(true) }
-    end
-
-    context 'when dont reached the goal with pending contributions' do
-      before { 2.times { create(:contribution, project: project, value: 30, state: 'waiting_confirmation') } }
-
-      it { is_expected.to eq(false) }
-    end
-  end
-
   describe "#new_draft_recipient" do
     subject { project.new_draft_recipient }
     before do
