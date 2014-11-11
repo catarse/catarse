@@ -12,14 +12,14 @@ RSpec.describe RewardsController, type: :controller do
 
   describe "GET index" do
     before do
-      get :index, project_id: project.id
+      get :index, project_id: project.id, locale: :pt
     end
     it{ is_expected.to be_successful }
   end
 
   describe "GET new" do
     before do
-      get :new, project_id: project.id
+      get :new, project_id: project.id, locale: :pt
     end
 
     context "when user is not logged in" do
@@ -35,7 +35,7 @@ RSpec.describe RewardsController, type: :controller do
 
   describe "GET edit" do
     before do
-      get :edit, project_id: project.id, id: reward.id
+      get :edit, project_id: project.id, id: reward.id, locale: :pt
     end
 
     context "when user is not logged in" do
@@ -52,7 +52,7 @@ RSpec.describe RewardsController, type: :controller do
   describe "PATCH update" do
     let(:reward_attributes){ nil }
     before do
-      patch :update, project_id: project.id, id: reward.id, reward: reward_attributes
+      patch :update, project_id: project.id, id: reward.id, reward: reward_attributes, locale: :pt
     end
 
     context "when user is not logged in" do
@@ -75,7 +75,7 @@ RSpec.describe RewardsController, type: :controller do
   describe "POST create" do
     let(:reward_attributes){ {minimum_value: 10, description: 'foo bar', deliver_at: Time.now} }
     before do
-      post :create, project_id: project.id, reward: reward_attributes
+      post :create, project_id: project.id, reward: reward_attributes, locale: :pt
     end
 
     context "when user is not logged in" do
@@ -97,7 +97,7 @@ RSpec.describe RewardsController, type: :controller do
 
   describe "DELETE destroy" do
     before do
-      delete :destroy, project_id: project.id, id: reward.id
+      delete :destroy, project_id: project.id, id: reward.id, locale: :pt
     end
 
     context "when user is not logged in" do
@@ -112,7 +112,7 @@ RSpec.describe RewardsController, type: :controller do
 
   describe "POST sort" do
     before do
-      post :sort, project_id: project.id, id: reward.id, reward: {row_order_position: 1}
+      post :sort, project_id: project.id, id: reward.id, reward: {row_order_position: 1}, locale: :pt
     end
 
     context "when user is not logged in" do

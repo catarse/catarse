@@ -49,7 +49,7 @@
   function isCharAllowed(maskCharDefinitions){
     return function(maskDefinition){
       return function(position, newChar){
-        if(position === maskDefinition.length){
+        if(position >= maskDefinition.length){
           return false;
         }
 
@@ -100,9 +100,11 @@
             }, ''));
           }
 
+          // Initial formatting
+          reformat();
+
           // Bind events
           input.
-            on('keypress.fixedmask', restrictChars).
             on('input.fixedmask', reformat);
         }
         else{
