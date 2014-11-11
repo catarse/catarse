@@ -215,6 +215,12 @@ class User < ActiveRecord::Base
     end
   end
 
+  def fix_other_link
+    if self.other_link.present?
+      self.other_link = ('http://' + self.other_link) unless self.other_link[/^https?:\/\//]
+    end
+  end
+
   def password_required?
     !persisted? || !password.nil? || !password_confirmation.nil?
   end

@@ -62,6 +62,7 @@ class Contribution < ActiveRecord::Base
     with_state('confirmed').where("contributions.payment_method in ('PayPal', 'Pagarme') OR contributions.payment_choice = 'CartaoDeCredito'")
   }
 
+  scope :not_created_today, -> { where.not("contributions.created_at::date AT TIME ZONE '#{Time.zone.tzinfo.name}' = current_timestamp::date AT TIME ZONE '#{Time.zone.tzinfo.name}'") }
   scope :can_cancel, -> { where("contributions.can_cancel") }
 
   # Contributions already refunded or with requested_refund should appear so that the user can see their status on the refunds list
@@ -72,10 +73,6 @@ class Contribution < ActiveRecord::Base
   def self.between_values(start_at, ends_at)
     return all unless start_at.present? && ends_at.present?
     where("value between ? and ?", start_at, ends_at)
-  end
-
-  def slip_payment?
-    payment_choice.try(:downcase) == 'boletobancario'
   end
 
   def decorator
@@ -111,6 +108,18 @@ class Contribution < ActiveRecord::Base
   def notify_to_backoffice(template_name, options = {})
     _user = User.find_by(email: CatarseSettings[:email_payments])
     notify_once(template_name, _user, self, options) if _user
+  end
+
+  def notification_template_for_failed_project
+    if is_credit_card? || is_paypal?
+      :contribution_project_unsuccessful_credit_card
+    else
+      if is_pagarme?
+        :contribution_project_unsuccessful_slip
+      else
+        :contribution_project_unsuccessful
+      end
+    end
   end
 
   # Used in payment engines

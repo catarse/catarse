@@ -132,6 +132,7 @@ end
 
 group :test, :development do
   gem 'rspec-rails', '~> 3.1'
+  gem 'rspec-mocks'
   gem 'rspec-its'
   gem 'rspec-collection_matchers'
   gem 'pry'
