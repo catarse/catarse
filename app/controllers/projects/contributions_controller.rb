@@ -104,7 +104,7 @@ class Projects::ContributionsController < ApplicationController
       end
     end
 
-    @engines ||= engines
+    @engines ||= engines.compact
   end
 
   def collection
