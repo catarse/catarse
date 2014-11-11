@@ -89,8 +89,8 @@ class ProjectObserver < ActiveRecord::Observer
     project.contributions.with_state('confirmed').each do |contribution|
       unless contribution.notified_finish
         template_name = project.successful? ? :contribution_project_successful : contribution.notification_template_for_failed_project
-
         contribution.notify_to_contributor(template_name)
+
         contribution.update_attributes({ notified_finish: true })
       end
     end

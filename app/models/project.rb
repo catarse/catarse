@@ -217,10 +217,6 @@ class Project < ActiveRecord::Base
     contributions.with_state('waiting_confirmation').present?
   end
 
-  def pending_contributions_reached_the_goal?
-    pledged_and_waiting >= goal
-  end
-
   def pledged_and_waiting
     contributions.with_states(['confirmed', 'waiting_confirmation']).sum(:value)
   end
