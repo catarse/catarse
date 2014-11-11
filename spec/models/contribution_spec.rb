@@ -59,6 +59,18 @@ RSpec.describe Contribution, type: :model do
     end
   end
 
+  describe '.not_created_today' do
+    before do
+      create(:contribution, created_at: 1.day.ago)
+      create(:contribution, created_at: 2.day.ago)
+      create(:contribution, created_at: 10.minutes.ago)
+    end
+
+    subject { Contribution.not_created_today }
+
+    it { is_expected.to have(2).itens }
+  end
+
   describe ".avaiable_to_automatic_refund" do
     before do
       create(:contribution, state: 'confirmed', payment_choice: 'CartaoDeCredito', payment_method: nil)

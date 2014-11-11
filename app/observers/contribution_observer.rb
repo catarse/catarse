@@ -21,7 +21,7 @@ class ContributionObserver < ActiveRecord::Observer
   end
 
   def from_requested_refund_to_refunded(contribution)
-    contribution.notify_to_contributor((contribution.slip_payment? ? :refund_completed_slip : :refund_completed))
+    contribution.notify_to_contributor((contribution.slip_payment? ? :refund_completed_slip : :refund_completed_credit_card))
   end
   alias :from_confirmed_to_refunded :from_requested_refund_to_refunded
 
@@ -33,11 +33,6 @@ class ContributionObserver < ActiveRecord::Observer
   def from_confirmed_to_requested_refund(contribution)
     contribution.notify_to_backoffice :refund_request, {from_email: contribution.user.email, from_name: contribution.user.name}
     do_direct_refund(contribution)
-
-    unless contribution.is_pagarme?
-      template = (contribution.slip_payment? ? :requested_refund_slip : :requested_refund)
-      contribution.notify_to_contributor(template)
-    end
   end
 
   def from_confirmed_to_canceled(contribution)

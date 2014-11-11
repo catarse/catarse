@@ -365,15 +365,31 @@ RSpec.describe Project, type: :model do
   end
 
   describe "send_verify_moip_account_notification" do
-    before do
-      @p = create(:project, state: 'online', online_date: DateTime.now, online_days: 3)
-      create(:project, state: 'draft')
+    context "when not have projects on pagarme" do
+      before do
+        @p = create(:project, state: 'online', online_date: '2014-10-9'.to_date, online_days: 3)
+        create(:project, state: 'draft')
+      end
+
+      it "should create notification for all projects that is expiring" do
+        expect(ProjectNotification).to receive(:notify_once).
+          with(:verify_moip_account, @p.user, @p, {from_email: CatarseSettings[:email_payments]})
+        Project.send_verify_moip_account_notification
+      end
     end
 
-    it "should create notification for all projects that is expiring" do
-      expect(ProjectNotification).to receive(:notify_once).
-        with(:verify_moip_account, @p.user, @p, {from_email: CatarseSettings[:email_payments]})
-      Project.send_verify_moip_account_notification
+    context "when have projects using pagarme" do
+      before do
+        @p = create(:project, state: 'online', online_date: DateTime.now, online_days: 3)
+        CatarseSettings[:projects_enabled_to_use_pagarme] = @p.permalink
+        create(:project, state: 'draft')
+      end
+
+      it "should not create notification for projects that using pagarme" do
+        expect(ProjectNotification).to_not receive(:notify_once).
+          with(:verify_moip_account, @p.user, @p, {from_email: CatarseSettings[:email_payments]})
+        Project.send_verify_moip_account_notification
+      end
     end
   end
 
@@ -603,10 +619,10 @@ RSpec.describe Project, type: :model do
 
   describe ".enabled_to_use_pagarme" do
     before do
-      @project_01 = create(:project, permalink: 'a')
-      @project_02 = create(:project, permalink: 'b', online_date: '2014-11-01'.to_date)
-      @project_03 = create(:project, permalink: 'c')
-      @project_04 = create(:project, online_date: '2014-11-11'.to_date)
+      @project_01 = create(:project, permalink: 'a', online_date: '2014-10-9'.to_date)
+      @project_02 = create(:project, permalink: 'b', online_date: '2014-10-9'.to_date)
+      @project_03 = create(:project, permalink: 'c', online_date: '2014-10-9'.to_date)
+      @project_04 = create(:project, online_date: '2014-11-10'.to_date)
 
       CatarseSettings[:projects_enabled_to_use_pagarme] = 'a, c'
     end
@@ -617,7 +633,7 @@ RSpec.describe Project, type: :model do
   end
 
   describe "#using_pagarme?" do
-    let(:project) { create(:project, permalink: 'foo', online_date: '2014-11-01'.to_date) }
+    let(:project) { create(:project, permalink: 'foo', online_date: '2014-10-01'.to_date) }
 
     subject { project.using_pagarme? }
 

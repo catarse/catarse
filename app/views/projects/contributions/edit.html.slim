@@ -61,9 +61,5 @@
           .tab_content_container
             - avaiable_payment_engines.each do |engine|
               div[id="#{engine.name}_payment" class="payments_type hide" data-path=engine.review_path(@contribution) ]
-                - if engine.name == 'Pagarme'
-                  .bootstrap-twitter
-                    .alert.alert-warning
-                      = t('.pagarme_warning_html', mailto: mail_to(CatarseSettings[:email_contact]))
                 .results
     .clearfix

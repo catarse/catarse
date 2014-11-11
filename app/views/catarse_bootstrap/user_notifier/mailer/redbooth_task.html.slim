@@ -29,6 +29,10 @@ br/
 = project.user.phone_number
 br/
 br/
+| Usando pagar.me?
+= (project.using_pagarme? ? 'Sim' : 'Não')
+br/
+br/
 | Dados Bancarios:
 br/
 | Banco: #{bank_account.try(:name)}

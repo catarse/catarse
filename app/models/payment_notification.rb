@@ -8,7 +8,7 @@ class PaymentNotification < ActiveRecord::Base
   end
 
   def deliver_slip_canceled_notification
-    deliver_contributor_notification(:slip_payment_canceled)
+    deliver_contributor_notification(:contribution_canceled_slip)
   end
 
   private

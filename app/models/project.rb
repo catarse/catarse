@@ -144,7 +144,9 @@ class Project < ActiveRecord::Base
 
   def self.send_verify_moip_account_notification
     expiring_in_less_of('7 days').find_each do |project|
-      project.notify_owner(:verify_moip_account, { from_email: CatarseSettings[:email_payments]})
+      unless project.using_pagarme?
+        project.notify_owner(:verify_moip_account, { from_email: CatarseSettings[:email_payments]})
+      end
     end
   end
 
