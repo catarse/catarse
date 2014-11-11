@@ -42,7 +42,6 @@ class ApplicationController < ActionController::Base
   end
 
   def set_locale
-    return if Rails.env.test?
     if params[:locale]
       I18n.locale = params[:locale]
       current_user.try(:change_locale, params[:locale])
