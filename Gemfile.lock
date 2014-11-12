@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: git://github.com/catarse/catarse_contribution_validator.git
-  revision: 10e244d93563085e784107f764960f541473304e
+  revision: a5ce1407c402b3b3aba640aab54af6a8474e910a
   specs:
     catarse_contribution_validator (0.0.1)
       rails (>= 4.0.0)
