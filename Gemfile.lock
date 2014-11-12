@@ -104,7 +104,7 @@ GEM
     catarse_pagarme (1.4.4)
       pagarme (~> 1.9.5)
       rails (~> 4.0)
-    catarse_paypal_express (2.2.3)
+    catarse_paypal_express (2.2.4)
       activemerchant (>= 1.34.0)
       rails (~> 4.0)
       slim-rails
@@ -288,8 +288,8 @@ GEM
     mini_portile (0.6.0)
     minitest (5.4.3)
     mixpanel-ruby (1.5.0)
-    money (6.3.0)
-      i18n (>= 0.6.4, <= 0.7.0.dev)
+    money (6.4.0)
+      i18n (>= 0.6.4, <= 0.7.0.beta1)
     multi_json (1.10.1)
     multipart-post (2.0.0)
     net-scp (1.2.1)
@@ -540,7 +540,7 @@ DEPENDENCIES
   catarse_moip (~> 2.3.6)
   catarse_monkeymail (>= 0.1.6)
   catarse_pagarme (= 1.4.4)
-  catarse_paypal_express (= 2.2.3)
+  catarse_paypal_express (= 2.2.4)
   catarse_settings_db (>= 0.1.0)
   chartkick
   coffee-rails (~> 4.0.0)

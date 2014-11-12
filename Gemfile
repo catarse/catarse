@@ -31,7 +31,7 @@ gem 'user_notifier', '~> 0.0.5'
 gem 'mixpanel-ruby'
 
 # Payment engines
-gem 'catarse_paypal_express', '2.2.3'
+gem 'catarse_paypal_express', '2.2.4'
 gem 'catarse_moip', '~> 2.3.6'
 gem 'catarse_credits', '0.0.6'
 gem 'catarse_pagarme', '1.4.4'
