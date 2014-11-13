@@ -91,6 +91,10 @@ class ProjectObserver < ActiveRecord::Observer
         template_name = project.successful? ? :contribution_project_successful : contribution.notification_template_for_failed_project
         contribution.notify_to_contributor(template_name)
 
+        if contribution.credits? && project.failed?
+          contribution.notify_to_backoffice(:requested_refund_for_credits)
+        end
+
         contribution.update_attributes({ notified_finish: true })
       end
     end
