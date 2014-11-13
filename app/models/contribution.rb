@@ -19,11 +19,7 @@ class Contribution < ActiveRecord::Base
   has_many :payment_notifications
 
   validates_presence_of :project, :user, :value
-  validates_numericality_of :value,
-    greater_than_or_equal_to: 10.00,
-    unless: -> (contribution) {
-      contribution.user.try(:credits).to_f > 0
-    }
+  validates_numericality_of :value, greater_than_or_equal_to: 10.00
 
   pg_search_scope :search_on_user,
     against: [:payer_email],
