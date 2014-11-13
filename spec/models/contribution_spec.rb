@@ -140,6 +140,36 @@ RSpec.describe Contribution, type: :model do
     end
   end
 
+  describe "#notification_template_for_failed_project" do
+    let(:contribution) { create(:contribution, payment_method: nil, payment_choice: nil) }
+
+    subject { contribution.notification_template_for_failed_project }
+
+    context "when contribution is made via credits" do
+      before { allow(contribution).to receive(:credits?).and_return(true) }
+      it { is_expected.to eq(:contribution_project_unsuccessful_credit) }
+    end
+
+    context "when contribution is made via credit card" do
+      before { allow(contribution).to receive(:is_credit_card?).and_return(true) }
+      it { is_expected.to eq(:contribution_project_unsuccessful_credit_card) }
+    end
+
+    context "when contribution is made via paypal" do
+      before { allow(contribution).to receive(:is_paypal?).and_return(true) }
+      it { is_expected.to eq(:contribution_project_unsuccessful_credit_card) }
+    end
+
+    context "when contribution is made via pagar.me and not is credit_card" do
+      before { allow(contribution).to receive(:is_pagarme?).and_return(true) }
+      it { is_expected.to eq(:contribution_project_unsuccessful_slip) }
+    end
+
+    context "when contribution is made via MoIP and not is credit_card" do
+      it { is_expected.to eq(:contribution_project_unsuccessful) }
+    end
+  end
+
   describe '#slip_payment?' do
     subject { contribution.slip_payment? }
 
