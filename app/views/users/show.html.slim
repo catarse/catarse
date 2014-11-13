@@ -38,7 +38,8 @@
           = link_to t('.tabs.contributed_projects'), '#contributions', id: 'contributed_projects_link', class: 'selected', data: { target: '#user_contributed_projects' }
           = link_to t('.tabs.created_projects'), '#projects', id: 'created_projects_link', data: { target: '#user_created_projects' }
           - if policy(@user).update?
-            = link_to t('.tabs.credits'), '#credits', id: 'credits_link', data: { target: '#user_credits' }
+            - if @user.credits > 0
+              = link_to t('.tabs.credits'), '#credits', id: 'credits_link', data: { target: '#user_credits' }
             = link_to t('.tabs.settings'), '#settings', id: 'settings_link', data: { target: '#user_settings' }
             = link_to t('.tabs.unsubscribes'), '#unsubscribes', id: 'unsubscribes_link', data: { target: '#user_unsubscribes' }
             - if @credit_cards.present?
@@ -68,8 +69,9 @@
             = render 'unsubscribes'
           #user_settings.content.hide
             = render 'current_user_fields'
-          #user_credits.content.hide
-            = render 'credits'
+          - if @user.credits > 1
+            #user_credits.content.hide
+              = render 'credits'
           - if @credit_cards.present?
             #user_credit_cards.content.hide
               = render 'credit_cards'
