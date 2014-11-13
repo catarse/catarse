@@ -106,14 +106,14 @@ class Contribution < ActiveRecord::Base
   end
 
   def notification_template_for_failed_project
+    return :contribution_project_unsuccessful_credit if self.credits?
+
     if is_credit_card? || is_paypal?
       :contribution_project_unsuccessful_credit_card
+    elsif is_pagarme?
+      :contribution_project_unsuccessful_slip
     else
-      if is_pagarme?
-        :contribution_project_unsuccessful_slip
-      else
-        :contribution_project_unsuccessful
-      end
+      :contribution_project_unsuccessful
     end
   end
 
