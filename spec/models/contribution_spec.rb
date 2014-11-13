@@ -24,40 +24,11 @@ RSpec.describe Contribution, type: :model do
     it{ is_expected.to validate_presence_of(:project) }
     it{ is_expected.to validate_presence_of(:user) }
     it{ is_expected.to validate_presence_of(:value) }
+    it{ is_expected.to_not allow_value(9).for(:value) }
     it{ is_expected.to allow_value(10).for(:value) }
     it{ is_expected.to allow_value(20).for(:value) }
   end
 
-  describe "Custom validations" do
-    let(:user) { create(:user) }
-    describe "validates_numericality_of :value" do
-      context "when user has credits" do
-        let(:contribution) { build(:contribution, user: user) }
-
-        before do
-          allow(user).to receive(:credits).and_return(5)
-          contribution.value = 5
-          contribution.save
-        end
-
-        it { expect(contribution.valid?).to be_truthy }
-        it { expect(contribution.errors).to be_empty }
-      end
-
-      context "when user not have credits" do
-        let(:contribution) { build(:contribution, user: user) }
-
-        before do
-          allow(user).to receive(:credits).and_return(0)
-          contribution.value = 5
-          contribution.save
-        end
-
-        it { expect(contribution.valid?).to be_falsey }
-        it { expect(contribution.errors).not_to be_empty }
-      end
-    end
-  end
 
   describe '.not_created_today' do
     before do
