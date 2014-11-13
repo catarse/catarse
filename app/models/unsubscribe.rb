@@ -13,4 +13,5 @@ class Unsubscribe < ActiveRecord::Base
   def self.drop_all_for_project(project_id)
     by_project_id(project_id).destroy_all
   end
+
 end

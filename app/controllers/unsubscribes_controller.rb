@@ -17,10 +17,10 @@ class UnsubscribesController < ApplicationController
       subscribed = subscription[:subscribed].to_i
 
       #change from unsubscribed to subscribed
-      if subscribed && !subscription[:id].nil?
+      if subscribed == 1 && subscription[:id].present?
         user_unsubscribes.drop_all_for_project(project_id)
       #change from subscribed to unsubscribed
-      elsif subscribed && subscription[:id].nil?
+      elsif subscribed == 0 && subscription[:id].nil?
         user_unsubscribes.create!(project_id: subscription[:project_id])
       end
     end
