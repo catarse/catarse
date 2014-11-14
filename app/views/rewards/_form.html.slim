@@ -3,7 +3,21 @@
     = f.input :minimum_value, required: true, as: :number, input_html: {pattern: "^[\\d+.]+"}
 
   - if resource.new_record? || policy(resource).permitted_for?(:deliver_at, :update)
-    = f.input :deliver_at, required: true, as: :date_select, discard_day: true, labels: { day: false }
+    li#reward_deliver_at_input.date_select.input.required
+      fieldset.fragments
+        legend.label
+          label for="reward_deliver_at_3i" 
+            = Reward.human_attribute_name(:deliver_at)
+            abbr title="required"  *
+        ol.fragments-group
+          li.fragment
+            input#reward_deliver_at_3i name="reward[deliver_at(3i)]" type="hidden" value="1" /
+          li.fragment
+            label for="reward_deliver_at_2i" = t('datetime.prompts.month')
+            = select_month(resource.deliver_at, prefix: 'reward', field_name: "deliver_at(2i)")
+          li.fragment
+            label for="reward_deliver_at_1i" = t('datetime.prompts.year')
+            = select_year(resource.deliver_at, prefix: 'reward', field_name: "deliver_at(1i)")
 
   - if resource.new_record? || policy(resource).permitted_for?(:description, :update)
     = f.input :description, required: true
