@@ -123,12 +123,10 @@ section.section
 
         .w-hidden-main.w-hidden-medium.project-share
           .div-share-mobile-fb
-            = link_to '#', class: 'btn btn-medium btn-fb' do
-              = image_tag 'catarse_bootstrap/facebook-xxl.png', class: 'icon-share-mobile'
-              = t('.share')
+            = render_facebook_share_mobile(url: project_by_slug_url(permalink: @project.permalink), title: @project.name)
           .div-share-mobile-fb
-            = link_to '#', class: 'btn btn-medium btn-fb btn-tweet' do
-              = image_tag 'catarse_bootstrap/twitter-256.png', class: 'icon-share-mobile'
+            .btn.btn-medium.btn-fb.btn-tweet
+              = render_twitter_mobile(url: project_by_slug_url(permalink: @project.permalink), title: @project.name)
               = t('.tweet')
 
         #rewards.u-marginbottom-30[data-can_update="#{policy(@project).update?}" data-index_path=project_rewards_path(@project)]
