@@ -30,7 +30,15 @@ App.addChild('Payment', _.extend({
   },
 
   selectInternationalPayment: function() {
-    this.onTabClick({currentTarget: this.$('#payment_menu a#PayPal')});
+    if(this.$('#payment_menu a#PayPal').length > 0) {
+      this.onTabClick({currentTarget: this.$('#payment_menu a#PayPal')});
+    } else {
+      this.selectFirstTab();
+    }
+  },
+
+  selectFirstTab: function() {
+    this.onTabClick({currentTarget: this.$('#payment_menu a:first')});
   },
 
   loadPaymentChoices: function() {
@@ -39,7 +47,7 @@ App.addChild('Payment', _.extend({
       this.selectInternationalPayment();
     } else {
       this.$('#payment_menu a#MoIP').show();
-      this.onTabClick({currentTarget: this.$('#payment_menu a:first')});
+      this.selectFirstTab();
     }
 
     this.on('selectTab', this.updatePaymentMethod);
