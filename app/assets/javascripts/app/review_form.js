@@ -12,6 +12,7 @@ App.addChild('ReviewForm', _.extend({
 
   onNextStepClick: function(){
     if(this.validate()){
+      this.updateContribution();
       this.$errorMessage.hide();
       this.$('#next-step').hide();
       this.parent.payment.show();
@@ -56,15 +57,6 @@ App.addChild('ReviewForm', _.extend({
     }
     this.parent.payment.loadPaymentChoices();
     this.makeFieldsRequired();
-  },
-
-  acceptTerms: function(){
-    if(this.validate()){
-      $('#payment').show();
-      this.updateContribution();
-    } else {
-      return false;
-    }
   },
 
   activate: function(){
