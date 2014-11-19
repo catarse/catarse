@@ -55,7 +55,7 @@
 
           .tab_container
             nav#payment_menu
-              - avaiable_payment_engines.each do |engine|
+              - avaiable_payment_engines.compact.each do |engine|
                 = link_to "##{engine.name}_payment", id: engine.name, class: 'selected enabled' , data: {target: "##{engine.name}_payment"} do
                   = t("projects.contributions.review.#{engine.name}")
           .tab_content_container

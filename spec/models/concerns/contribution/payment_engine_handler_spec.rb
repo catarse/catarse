@@ -127,6 +127,7 @@ RSpec.describe Contribution::PaymentEngineHandler, type: :model do
       {
         address_street: contribution.address_street,
         address_number: contribution.address_number,
+        address_complement: contribution.address_complement,
         address_neighbourhood: contribution.address_neighbourhood,
         address_zip_code: contribution.address_zip_code,
         address_city: contribution.address_city,
@@ -141,6 +142,7 @@ RSpec.describe Contribution::PaymentEngineHandler, type: :model do
         {
           address_street: contribution.address_street,
           address_number: contribution.address_number,
+          address_complement: contribution.address_complement,
           address_neighbourhood: contribution.address_neighbourhood,
           address_zip_code: contribution.address_zip_code,
           address_city: contribution.address_city,
