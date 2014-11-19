@@ -31,10 +31,11 @@ html
     = render 'layouts/webfont'
 
     .content[data-controller-class=controller.class.name.downcase data-controller-name=controller.controller_name.downcase data-action=controller.action_name.downcase data-locale="#{I18n.locale}" data-user="#{current_user.to_json}"]= yield
+  = javascript_include_tag :application
+  - if Rails.env.production?
     = render 'layouts/crazzy_egg'
     = render 'layouts/hot_jar'
-  = javascript_include_tag :application
-  = render_google_analytics_script
-  = render_mixpanel_script
-  = javascript_include_tag "//cdn.optimizely.com/js/2188501553.js"
-  = render 'layouts/intercom'
+    = render_google_analytics_script
+    = render_mixpanel_script
+    = javascript_include_tag "//cdn.optimizely.com/js/2188501553.js"
+    = render 'layouts/intercom'
