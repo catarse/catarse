@@ -16,7 +16,7 @@ class ProjectsController < ApplicationController
             .most_recent_first
             .includes(:project_total, :user, :category)
             .page(params[:page]).per(6)
-          return render partial: 'project', collection: @projects, layout: false
+          return render partial: 'project', collection: @projects, layout: false, locals: {ref: "explore"}
         else
           @title = t("site.title")
 
