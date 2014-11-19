@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   before_filter :configure_permitted_parameters, if: :devise_controller?
   before_filter :force_http, unless: :devise_controller?
 
-  helper_method :channel, :namespace, :referal_link
+  helper_method :channel, :namespace, :referal_link, :render_projects
 
   before_filter :set_locale
 
@@ -25,6 +25,10 @@ class ApplicationController < ActionController::Base
 
   def referal_link
     session[:referal_link]
+  end
+
+  def render_projects collection, ref
+    render_to_string partial: 'projects/project', collection: collection, locals: {ref: ref}
   end
 
   private
