@@ -11,7 +11,7 @@
               = link_to t('.sections.near.title'), explore_path(anchor: "near_of/" ) + current_user.address_state
             = link_to t('.links.near'), explore_path(anchor: "near_of/" ) + current_user.address_state, class: "more-projects"
           .projects
-            == render @projects_near
+            == render_projects @projects_near, 'home_near'
 
       section.selected_projects.list
         header
@@ -19,7 +19,7 @@
             = link_to t('.sections.recommended.title'), explore_path(anchor: :recommended)
           = link_to t('.links.recommended'), explore_path(anchor: :recommended), class: "more-projects"
         .projects
-          == render @recommends
+          == render_projects @recommends, 'home_recommended'
 
       section.expiring_projects.list
         header
@@ -27,7 +27,7 @@
             = link_to t('.sections.expiring.title'), explore_path(anchor: :expiring)
           = link_to t('.links.expiring'), explore_path(anchor: :expiring), class: "more-projects"
         .projects
-          == render @expiring
+          == render_projects @expiring, 'home_expiring'
 
       section.recents_projects.list
         header
@@ -35,7 +35,7 @@
             = link_to t('.sections.recents.title'), explore_path(anchor: :recent)
           = link_to t('.links.recents'), explore_path(anchor: :recent), class: "more-projects"
         .projects
-          == render @recent
+          == render_projects @recent, 'home_recent'
 
     aside.main-sidebar
       section.main-sidebar-division
