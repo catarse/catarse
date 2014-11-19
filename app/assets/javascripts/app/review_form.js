@@ -77,6 +77,9 @@ App.addChild('ReviewForm', _.extend({
   onUserDocumentChange: function(input) {
     var $documentField = input;
     var documentNumber = $documentField.val();
+    if(documentNumber.length === 0){
+      return true;
+    }
     $documentField.prop('maxlength', 18);
     var resultCpf = this.validateCpf(documentNumber);
     var resultCnpj = this.validateCnpj(documentNumber.replace(/[\/.\-\_ ]/g, ''));
