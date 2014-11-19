@@ -47,7 +47,7 @@ section.line-box
 
 section.row.projects
   - @profile.projects.visible.each do |project|
-    = render partial: 'shared/project', locals: { project: project }
+    = render partial: 'shared/project', locals: { project: project, ref: "channel_#{@profile.permalink}" }
 
 - if @profile.partners.present?
   section.row.partners id="partners"

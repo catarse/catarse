@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   before_filter :redirect_user_back_after_login, unless: :devise_controller?
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
-  helper_method :channel, :namespace, :referal_link
+  helper_method :channel, :namespace, :referal_link, :render_projects
 
   before_filter :set_locale
 
@@ -26,9 +26,13 @@ class ApplicationController < ActionController::Base
     session[:referal_link]
   end
 
+  def render_projects collection, ref
+    render_to_string partial: 'projects/project', collection: collection, locals: {ref: ref}
+  end
+
   private
   def referal_it!
-    session[:referal_link] = params[:ref] if params[:ref].present?
+    session[:referal_link] ||= params[:ref] if params[:ref].present?
   end
 
   def detect_old_browsers
