@@ -32,6 +32,7 @@ App.addChild('MixPanel', {
   },
 
   trackFollowCategory: function(){
+    var self = this;
     this.$('.category-follow .follow-btn').on('click', function(event){
       self.track('Engaged with Catarse', { ref: $(event.currentTarget).data('title'), action: 'click follow category' });
       return true;
@@ -39,6 +40,7 @@ App.addChild('MixPanel', {
   },
 
   trackReminderClick: function(){
+    var self = this;
     this.$('.reminder a:not([data-method])').on('click', function(event){
       self.track('Engaged with Catarse', { ref: $(event.currentTarget).data('title'), action: 'click reminder' });
       return true;
