@@ -1,0 +1,8 @@
+- contribution = @notification.contribution
+p Olá, <strong>#{contribution.user.display_name}</strong>!
+p
+  | Parabéns! O projeto #{link_to(contribution.project.name, project_by_slug_url(permalink: contribution.project.permalink))} que, 
+  | incluindo você, teve #{contribution.project.total_contributions} apoiadores, foi financiado com sucesso no #{CatarseSettings[:company_name]}.
+p Esse e-mail serve como um <strong>recibo definitivo da sua contribuição</strong>.
+= render partial: 'contribution_data', locals: {contribution: contribution}
+

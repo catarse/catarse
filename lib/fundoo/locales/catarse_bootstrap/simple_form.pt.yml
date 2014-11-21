@@ -1,0 +1,38 @@
+pt:
+  simple_form:
+    collections:
+      project:
+        traffic_sources:
+          one: "eu já tive outro projeto no Catarse"
+          two: "indicação de uma pessoa que já teve um projeto no Catarse"
+          three: "indicação de amigo/colega/contato profissional"
+          four: "a partir de um projeto que estava captando na plataforma"
+          five: "artigo em um blog"
+          six: "uma matéria na imprensa (portal de notícias na internet, TV, jornal, revista)"
+          seven: "em uma aula/curso/palestra/evento"
+          eight: "fiz uma busca na internet sobre financiamento coletivo / formas alternativas de captação"
+          nine: Outro
+    validation_texts:
+      contribution:
+        payer_name: "Por favor digite o nome do apoiador"
+        payer_email: "Por favor digite um email válido"
+        address_street: "Digite o nome da rua"
+        address_number: "Digite o número do endereço"
+        address_city: "Digite o nome da cidade"
+        address_zip_code: "Digite o CEP"
+        address_phone_number: "Digite o número de telefone"
+    prompts:
+      project:
+        category: "Selecione uma categoria"
+        select: "Selecione uma opção"
+        traffic_sources: "Como você conheceu o Catarse?"
+    hints:
+      project:
+        name: "Quanto mais direto melhor. Não ultrapasse 50 caracteres"
+        permalink: "É o endereço do seu projeto, deixe-a simples. Tente não usar underline, hífen e etc."
+        category: "Antes de enviar, explore e se inspire em outros projetos da mesma categoria."
+        goal: "Grande parte dos apoios serão de pessoas próximas a você. Pense como conseguir pelo menos 50% do valor da meta dentro da sua rede de contatos. Não se esqueça da taxa de 13% cobrada pelo Catarse caso seu projeto seja bem-sucedido."
+        online_days: "Em média os projetos ficam no ar por 40 dias. O prazo máximo da campanha é de 60 dias."
+        video_url: "Insira aqui o link do seu vídeo. Ele deve estar hospedado no Youtube ou no Vimeo. Se ainda não o tiver, tudo bem, você pode adicioná-lo depois. O vídeo é muito importante para o sucesso de sua campanha e obrigatório para projetos com metas de € 5.000 ou mais."
+        about: "Fale sobre o que será realizado, como o dinheiro será utilizado, quem está por trás do projeto, como e quando o projeto será entregue. Seja informal e direto, essa é uma conversa entre pessoas que querem compartilhar uma ideia, não um projeto de edital. Lembre-se que <a href=http://support.fundoo.es/hc/pt-br/articles/203083017-Adicionar-imagens-e-v%C3%ADdeos-na-descri%C3%A7%C3%A3o-do-projeto class='alt-link' target='_blank'>você pode utilizar imagens e vídeos</a> para ilustrar melhor o seu projeto na descrição."
+        headline: "No máximo 100 caracteres."

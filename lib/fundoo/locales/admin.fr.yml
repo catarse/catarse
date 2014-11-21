@@ -1,0 +1,109 @@
+fr:
+  admin: &admin
+    confirm_dialog: 'êtes-vous certain ?'
+    projects:
+      index:
+        by_state: 'Par état'
+        between_created_at: 'créé entre'
+        submit: 'Filtrer'
+        send_to_trash: 'Supprimer'
+        send_to_draft: 'Envoyer à la corbeille'
+        reject: 'Rejeter!'
+        approve: 'Approuver!'
+        order_asc: 'Ordre croissant'
+        order_desc: 'Ordre décroissant'
+        order_created_at: 'Date de soumission'
+        last_modification: 'Dernière modification'
+    financials:
+      index:
+        submit: 'Filtrer'
+        by_state: 'Par état'
+        by_progress: Avancement %
+    users:
+      index:
+        title: "Gestion des bailleurs"
+        menu: Users
+        credits: Credits
+        credits_view: "Crédits calculés"
+        id: ID
+        key: Key
+        submit: Search
+        has_credits_difference: "Différence entre les crédits"
+        total_contributed: contributed
+        total_contributors: contributors
+        total_contributions: contributions
+        total_users: users
+        total_credits: credits
+        total_credits_view: "Crédits calculés"
+        user: User
+        value: Value
+        provider: Provider
+    contributions:
+      messages:
+        successful:
+          confirm: 'Bailleur confirmé'
+          pendent: 'Bailleur non confirmé'
+          refund: 'Bailleur remboursé!'
+          change_reward: 'Récompense changée!'
+          hide: 'Bailleur caché'
+          cancel: 'Bailleur retiré'
+          push_to_trash: 'Bailleur supprimé'
+      index:
+        send_refund_request_contribution: 'Envoyer une demande de remboursement'
+        push_to_trash: 'Supprimer ce bailler'
+        cancel: 'Retirer ce bailleur'
+        refund_and_hide: 'Rembourser et cacher'
+        contribution_info: 'Infos sur le bailleur %{key}'
+        payment_id: 'ID du paiement'
+        payment_method: 'Méthode de paiement'
+        payment_fee: 'Payment method fee'
+        payment_choice: 'Payment choice'
+        payer_email: 'Payer email'
+        user_email: 'Catarse user email'
+        pending_to_refund: 'Pending to refund'
+        created_at: 'Created at'
+        title: "Contributions management"
+        menu: Contributions
+        anonymous: Anonymous?
+        confirmed: Confirmed?
+        credits: "Crédits utilisés"
+        id: ID
+        key: Key
+        no_contributions: "Aucun bailleur trouvé!"
+        project: Project
+        refunded: Refunded?
+        requested_refund: "Remboursement demandé?"
+        reward: Reward
+        no_reward: "Pas de récompense"
+        submit: Search
+        total_contributed: contributed
+        total_contributors: contributors
+        total_contributions: contributions
+        total_users: Users
+        user: User
+        value: Value
+    statistics:
+      index:
+        menu: "Statistiques"
+        title: "Statistiques"
+        total_users: "Utilisateurs"
+        total_contributions: "Fonds"
+        total_contributions: "Bailleurs"
+        total_contributed: "Financés"
+        total_projects: "Projets"
+        total_projects_success: "avec succès"
+        total_projects_online: "En ligne"
+      projects_by_week:
+        title: "Projets soumis par semaine"
+        current_period: "8 dernières semaines"
+        previous_period: "les 8 semaines passées"
+        last_year: "L'an dernier"
+      contributions_by_week:
+        title: "Financement confirmé par semaine"
+        current_period: "8 dernières semaines"
+        previous_period: "les 8 semaines passées"
+        last_year: "L'an dernier"
+
+  channels:
+    admin:
+      <<: *admin

@@ -1,0 +1,17 @@
+- contribution = @notification.contribution
+p Olá, <strong>#{contribution.user.display_name}</strong> !
+p Você acabou de gerar um boleto para apoiar o projeto #{link_to(contribution.project.name, project_by_slug_url(permalink: contribution.project.permalink))}.
+p 
+  | Após o pagamento, levamos até 3 dias úteis para receber a confirmação. 
+  | Quando essa confirmação ocorrer, mandaremos outro email com todos os detalhes da transação.
+p 
+  | Para imprimir o boleto gerado, basta 
+  = link_to 'clicar aqui', contribution.display_slip_url
+  | .
+
+p O prazo de vencimento do boleto é de 2 dias úteis. Para alterar a data de vencimento, entre em contato conosco respondendo a esta mensagem ou através do e-mail #{mail_to CatarseSettings[:email_contact]}
+
+p 
+  | Um abraço,
+  br/
+  | #{CatarseSettings[:company_name]}

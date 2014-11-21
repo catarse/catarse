@@ -1,0 +1,11 @@
+- box_width = "240px"
+- box_height = "425px"
+- video_width = "384px"
+- video_height = "425px"
+#project_box_embed
+  iframe frameborder='0' height=box_height width=box_width src=embed_project_path(@project)
+  form.html= text_area_tag 'project_box_embed_html', '<iframe frameborder="0" height="' + box_height + '" src="' + embed_project_url(@project) + '" width="' + box_width + '"></iframe>', readonly: true
+#project_video_embed
+  iframe frameborder='0' height=video_height width=video_width src=video_embed_project_path(@project)
+  form.html= text_area_tag 'project_video_embed_html', '<iframe frameborder="0" height="' + video_height + '" src="' + video_embed_project_url(@project) + '" width="' + video_width + '"></iframe>', readonly: true
+.clearfix

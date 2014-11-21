@@ -1,0 +1,33 @@
+es:
+  channels:
+    projects:
+      new:
+        title: "Envíe su proyecto a la % {canal}!"
+        subtitle: "Después de que rellene el siguiente formulario, usted recibirá una página del proyecto. Se agregará las recompensas y puedes compartir con tus amigos para tener un proyecto aún más fuerte. La información proporcionada a continuación no son definitiva, pero recuerda que tu proyecto en esta presentación es la más consistente, más rápido irá al aire."
+        important: "importante: <strong></strong> El {canal de} % seleccionar proyectos según sus propios criterios de selección, lo que significa que su proyecto puede ser rechazado por el equipo de curadores."
+        permalink: "URL del proyecto"
+        permalink_hint: "URL es la dirección de su proyecto, que la simple. No intente utilizar subrayado, guión y etc.."
+        permalink_over: "% {canal}. fundoo.es/"
+        name: "Nombre del proyecto"
+        name_hint: "El mejor directo. Vamos a describir tu proyecto en sobre y en video. No exceda 50 caracteres."
+        about: "Historia del proyecto y cómo se utilizará el dinero"
+        about_hint: "Hablar de su inspiración para crear el proyecto, su historia y lo que se logrará. Ejecutar esas formalidades de edictos. Dar a sus lectores con algo que se mueve con ellos y ser muy transparente en relación con las expectativas sobre el proyecto. No dejes que el texto demasiado grande! Poner enlaces para el partidario pueden explorar más de su trabajo."
+        headline: Soundbite
+        headline_hint: "Crear una breve descripción del proyecto, con un máximo de 140 caracteres. Esta frase será el primer contacto de las personas con su proyecto, incluso antes de ver el video. Ser creativa, directa y transparente."
+        category_id: "¿Qué es la categoría de tu proyecto?"
+        category_id_hint: "Antes de enviar, explorar e inspirar a otros proyectos de la misma < un href = '% {href}' target = '_blank' ></a> categoría."
+        goal: "¿Cuánto quieres subir? (sólo números)"
+        goal_hint: "Muchos de los fondos provendrán de gente cercana a ti entonces, piensa en su capacidad para movilizar al menos el 50% del valor dentro de su red de contactos. Recuerda el 13% de tasa cargada por catarsis si su proyecto es exitoso. Simplemente divida su presupuesto por 0,87 para llegar al valor total."
+        online_days: "¿Que el período de días para alcanzar el mínimo?"
+        online_days_hint: "El plazo máximo para dejar el proyecto en el aire es de 60 días, con una estancia media en el aire durante 40 días."
+        video_url: Video
+        video_url_hint: "El video es la pieza principal del proyecto, pero usted puede enviarla más tarde. Hacer un hermoso video y pegue el enlace aquí."
+        more_links: "Queremos saber más"
+        more_links_hint: "Queremos saber más sobre ti y tu proyecto. Pegue aquí los enlaces (el sitio del proyecto, facebook, twitter y blogs) para entender más acerca de tu trabajo y lo que estás planeando para la campaña."
+        first_contributions: "Lista de los primeros partidarios"
+        first_contributions_hint: "En su campaña alcanzar el éxito, es esencial para traer su red de contactos más cercanos. Así, lista que crees serán sus primeros 20 seguidores. Estas personas serán claves para tener éxito en su proyecto."
+        how_know: "¿Cómo sabes el canal?"
+        how_know_hint: "Cuéntanos cómo conociste el canal y lo que espera de nosotros."
+        accept_terms: "He leído y estoy de acuerdo con el % {link}."
+        terms: "términos de uso"
+        submit: "Guardar borrador"

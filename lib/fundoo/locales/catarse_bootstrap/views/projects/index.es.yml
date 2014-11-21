@@ -1,0 +1,38 @@
+es:
+  projects:
+    index_header:
+      subtitle: "Financiar proyectos de manera colaborativa y formar parte de algo más grande. Promover una catarsis colectiva. Eres la pieza que falta en esta historia."
+      title: "Hacerlo realidad, qué cree diseños"
+    index:
+      box:
+        by: por
+        when: en
+      banner: "Cumplir con la investigación"
+      links:
+        channels: "Descubrir las alas de canal"
+        recommended: "Descubrir proyectos recomendados"
+        expiring: "Descubrir proyectos en recta final"
+        recents: "Descubre los proyectos más recientes"
+        near: "Descubrir proyectos cerca de ti"
+      sidebar:
+        titles:
+          blog: blog
+          facebook: "¿Disfruté nuestro rostro?"
+          newsletter: "Suscríbete a nuestras noticias"
+          faq: ¿preguntas?
+          schedule: Agenda
+        placeholders:
+          email: "Introduce tu email"
+        buttons:
+          newsletter: Enviar
+      sections:
+        near:
+          title: "Más cercanas a mí"
+        recommended:
+          title: "Se recomienda"
+        expiring:
+          title: "En la recta final"
+        recents:
+          title: Recientes
+        channels:
+          title: "Canal alas"

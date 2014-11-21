@@ -1,0 +1,67 @@
+es:
+  projects:
+    contributions:
+      contribute_text:
+        credits_tab: "Mis créditos"
+      checkout:
+        no_credits: "No tienes suficientes créditos para lograr este apoyo."
+        success: "Su apoyo fue realizado con éxito. ¡Muchas gracias!"
+      contribution:
+        anonymous_contribution: "Anónimo partidario"
+        anonymous_description: "Has optado por permanecer incógnito"
+        no_reward: "Este partidario no seleccione ninguna recompensa"
+      edit:
+        form_labels:
+          payment_card_number: "Número de tarjeta de crédito"
+          payment_card_flag: Bandera
+          payment_card_source: "Código de seguridad"
+          payment_card_date: "Fecha de caducidad"
+          payment_card_name: "Nombre imprimido en la tarjeta de crédito"
+          payment_card_installments: Parcelas
+        installment_with_tax: "con interés"
+        transaction_error: "Transacción se negó, por favor, vuelva a verificar sus datos o póngase en contacto con el emisor de su tarjeta bancaria/para obtener más información."
+        pagarme_warning_html: "La catarsis está en fase de pruebas de un nuevo medio de pago que facilitará el apoyo financiero y la eventual devolución de los valores a los partidarios. Por lo tanto, te advertimos que dato adicional puede ser requerido, además de los mencionados en los términos de uso para apoyar este proyecto. Cualquier duda o dificultad, en contacto con nosotros por correo electrónico a % {mailto}. Gracias."
+        payment_save_card: "Yo quiero salvar mi tarjeta de crédito para facilitar la ayuda futura."
+        reward_sold_out: "Esta recompensa se agota. Empieza un nuevo soporte."
+        credits_preview_html: "Tienes <strong>% {créditos de}</strong> en créditos para realizar esta <strong>soporte hasta el día 10/11</strong>, como < un href = 'http://blog.fundoo.es/simplificacao-dos-reembolsos-e-o-fim-dos-creditos/' target = '_blank' _ ></a> nuevas reglas publicaron por catarsis."
+        credits_submit: "Hacer el pago"
+        credits_title: "Pago con crédito"
+        insufficient_credits: "Tienes % {créditos de} créditos. Este valor no es suficiente para realizar el apoyo, por favor, elija otro medio de pago."
+        choose_payment: "¿Cómo quieres pagar?"
+        choose_payment_subtitle: "Seleccione a continuación para un método de pago"
+        cpf: "Para continuar, por favor notifique:"
+        credits_notice_html: "Este apoyo se pagará con sus créditos. Después de la confirmación, usted tendrá un saldo de <strong>{créditos de} %</strong> en créditos para apoyar otros proyectos."
+        live_in_brazil: "Vivo en Brasil. (Desmarcar si tu apoyo es internacional)"
+        number_card: "Datos de la tarjeta"
+        owner_card: "Datos del titular"
+        payment_account: "Pago mediante domiciliación bancaria"
+        payment_boleto: "Pago del billete"
+        payment_card: "Pago con tarjeta"
+        review_with_reward_html: "Usted estará apoyando con <strong>{valor} %</strong> y va a ganar los siguientes premios:"
+        review_without_reward_html: "Usted estará apoyando con <strong>% {valor}</strong> y no quiere ninguna recompensa por su apoyo."
+        select_account: "Será redirigido al sitio Web de su banco:"
+        select_boleto: "Para continuar, por favor seleccione:"
+        submit:
+          credits: Confirmar
+          moip: "Hacer el pago por MolP"
+        subtitle: "Estos datos serán notificados al organizador del proyecto."
+        title: "Completar y revisar los datos de pago"
+        you_are_about_html: "Estás a punto de ser parte del grupo que hace de todo para el % {link} pasar."
+      new:
+        header:
+          subtitle: "Usted está a pocos pasos de marcar la diferencia y formar parte de este proyecto."
+          title: "Oohh ¡ Sí!"
+        no_reward: "Gracias. Sólo quiero ayudar al proyecto."
+        submit: "Revisar y realizar el pago"
+        title: "Soportes % {nombre}"
+      review:
+        Credits: Créditos
+        error: "Ooops. Error al registrar su apoyo. Por favor intentelo nuevamente."
+      show:
+        header_subtitle: "Sin ti este proyecto no tuvo una oportunidad. ¡ Bienvenido al equipo!"
+        header_title: "¡Muchas gracias! : D"
+        moip_message: "Verificación de la transacción está en curso y el MolP es código \"% {código}\".<br>Si usted tiene alguna pregunta relacionada con la transacción, en contacto con el MolP. Cuando se confirme el pago, se enviará un correo electrónico."
+        recommended_projects: "Usted también puede disfrutar de estos proyectos:"
+        text_subtitle: "Dile a todos lo que hiciste"
+        text_title_html: "Usted es ahora parte del grupo que hace todo para el % {link} pasar."
+        title: "Muchas gracias"

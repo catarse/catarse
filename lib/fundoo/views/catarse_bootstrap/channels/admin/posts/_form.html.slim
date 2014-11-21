@@ -1,0 +1,15 @@
+= simple_form_for resource, url: url, class: 'channel-post-new' do |form|
+  = form.input :title, as: :string, required: false
+  = form.input :body, as: :text, input_html: {rows: 10}, required: false
+
+  .row
+    .large-3.columns
+      = form.button :submit, t('.save_submit'), class: 'button action medium'
+  .clearfix
+    br/
+
+  = render partial: 'projects/formatting_tips'
+
+.clearfix
+br/
+br/

@@ -1,0 +1,19 @@
+es:
+  devise:
+    sessions:
+      new:
+        no_account_html: "¿No tienes una cuenta?"
+        titles:
+          site: "Inicio de sesión"
+          header: "Inicio de sesión"
+        links:
+          register: Únete
+          password: Contraseña
+          forgot_password: "He olvidado mi contraseña"
+        form:
+          labels:
+            remember_me: "Manténgase conectado"
+          inputs:
+            submit: "Inicia sesión"
+            password: Contraseña
+            facebook: "Iniciar sesión con Facebook"

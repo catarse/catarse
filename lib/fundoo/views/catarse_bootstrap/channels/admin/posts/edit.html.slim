@@ -1,0 +1,14 @@
+= render 'shared/header_channel'
+
+.row.admin-posts
+  br/
+  br/
+  .large-4.columns
+    = link_to t('channels.admin.posts.back_to_list'), channels_admin_posts_path, class: 'navigation-link'
+
+  .large-12.columns
+    h1
+      = @title = t('.edit_news')
+    .clearfix
+
+    = render 'form', url: channels_admin_post_path(resource)

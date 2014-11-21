@@ -1,0 +1,21 @@
+es:
+  projects:
+    project:
+      contributed: criado
+      reached: golpear
+      progress_html: "<span>{%} %</span> financiado"
+      time_remaining_html:
+        one: "resto de <span>% {count} {unidad}</span>"
+        other: "resto de <span>% {count} {unidad}</span>"
+      pledged_html: "<span>{valor} %</span> planteado"
+      display_status:
+        expired: finalizado
+        rejected: rechazado
+        failed: "no financiado"
+        successful: "financiado por"
+        reached_goal: "financiado por"
+        waiting_confirmation: "a la espera de"
+        waiting_funds: "a la espera de"
+        not_reached_goal: "a la espera de"
+        draft: proyecto
+        in_analysis: "en el análisis"

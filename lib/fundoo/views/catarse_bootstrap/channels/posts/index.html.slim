@@ -1,0 +1,41 @@
+= render 'shared/header_channel'
+= content_for :title, channel.name
+
+section.line-box
+  .row
+    .large-12.columns
+      .presentation
+        h1.channel-title
+          = t('.title')
+          | : 
+          = link_to channel.name, root_path, class: 'standard-link'
+        .row
+          .large-4.columns
+            .channel-followers-wrapper
+              - if channel.has_subscriber?(current_user)
+                .large-6.columns.no-padding
+                  = link_to channels_subscriber_path, {method: :delete, class: [:button, :medium, :negative]} do
+                    .stop_following= t('channels.unfollow')
+              - else
+                .large-6.columns.no-padding
+                  = link_to t('channels.follow'), channels_subscriber_path, class: [:button, :medium, :negative], title: t('channels.follow')
+              .large-6.columns
+                .channel-followers[title=t('channels.subscribed', count: channel.channels_subscribers.size)]
+                  = t('channels.subscribed', count: channel.channels_subscribers.size)
+
+
+
+article.row.channel-posts-wrapper
+  - collection.each do |resource|
+    section.large-9.columns.channel-post
+      h3.channel-post-title= link_to resource.title, channels_post_path(resource), class: 'standard-link-one'
+      p= l(resource.created_at, format: :posts)
+      == resource.body_html
+      .row
+        .large-1.columns
+          .twitter_share= render_twitter text: "#{resource.title}", url: channels_post_url(resource, locale: I18n.locale)
+        .large-6.columns.left
+          .facebook_share= render_facebook_like href: channels_post_url(resource, locale: I18n.locale), width: '360'
+    .large-3.columns
+.clearfix
+= render 'shared/footer_channel'

@@ -1,0 +1,24 @@
+- target = defined?(embed_link) ? '__blank' : ''
+.project-box[itemscope itemtype="http://schema.org/CreativeWork" class=(custom_class if defined?(custom_class))]
+  meta[itemprop="dateCreated" content=project.created_at.to_date]
+  - if project.expired?
+    .status-flag
+      = link_to project_by_slug_path(permalink: project.permalink), target: target do
+        = project.status_flag
+  .image = link_to image_tag(project.display_image, size: '220x172'), project_by_slug_path(project.permalink), title: project.name, target: target
+  .padding
+    h4.title    = link_to truncate(project.name, length: 50, separator: ''), project_by_slug_path(project.permalink), title: project.name, target: target
+    p.headline  = link_to truncate(project.headline, length: 140), project_by_slug_path(project.permalink), title: project.headline, target: target
+  .status
+    .padding
+      p.progress-percent = t('.progress_html', percent: project.progress)
+      .progress-bar = project.progress_bar
+      = link_to(project_by_slug_path(project.permalink), target: target, title: project.name, class: 'time-remaining') do
+        - unless project.expired?
+          = t('.time_remaining_html', count: project.time_to_go[:time], unit: project.time_to_go[:unit])
+        - else
+          span = t(".display_status.#{project.display_status}").capitalize
+          = project.display_expires_at
+      = link_to t('.pledged_html', value: number_to_currency(project.pledged, precision: 0)), project_by_slug_path(project.permalink), title: project.name, class: 'money-raised', target: target
+
+

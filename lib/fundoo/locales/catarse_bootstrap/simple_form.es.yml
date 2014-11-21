@@ -1,0 +1,38 @@
+es:
+  simple_form:
+    collections:
+      project:
+        traffic_sources:
+          one: "He tenido otro proyecto en catarsis"
+          two: "indicación de una persona que ya tenía un proyecto en catarsis"
+          three: "indicación de contacto amigo/colega/profesional"
+          four: "de un proyecto que fue recogiendo en la plataforma"
+          five: "artículo publicado en un blog"
+          six: "una historia en la prensa (portal de noticias en el periódico a internet, televisión, revisto)"
+          seven: "en una clase/curso/conferencias/eventos"
+          eight: "Hice una búsqueda en internet sobre formas colectivas de financiamiento y alternativas de financiación"
+          nine: Otro
+    validation_texts:
+      contribution:
+        payer_name: "Por favor, introduzca el nombre del partidario"
+        payer_email: "Introduzca una dirección válida de correo electrónico"
+        address_street: "Escriba el nombre de la calle"
+        address_number: "Introduzca el número de la dirección"
+        address_city: "Escriba el nombre de la ciudad"
+        address_zip_code: "Ingrese el código postal"
+        address_phone_number: "Ingrese el número telefónico"
+    prompts:
+      project:
+        category: "Seleccione una categoría"
+        select: "Seleccione una opción"
+        traffic_sources: "¿Cómo conociste la catarsis?"
+    hints:
+      project:
+        name: "El mejor directo. No exceda 50 caracteres"
+        permalink: "Es la dirección de su proyecto, que la simple. No intente utilizar subrayado, guión y etc.."
+        category: "Antes de enviar, explorar e inspirar a otros proyectos de la misma categoría."
+        goal: "Gran parte de la ayuda será de gente cercana a ti. Piensa en cómo conseguir al menos un 50% del valor de la meta dentro de su red de contactos. No te olvides el 13% de tasa cargada por catarsis si su proyecto es exitoso."
+        online_days: "En promedio los proyectos están en el aire durante 40 días. La duración máxima de la campaña es de 60 días."
+        video_url: "Inserte aquí el link de tu video. Se deben ser alojado en Youtube o Vimeo. Si no lo ha hecho, está bien, que puede agregarlo más adelante. El video es muy importante para el éxito de su campaña y obligatorio para proyectos con objetivos de $ 5,000 o más."
+        about: "Hablar de lo que se logrará, cómo el dinero será utilizado, quién está detrás del proyecto, cómo y cuándo se entregará el proyecto. Ser directo y informal, es una conversación entre personas que quieren compartir una idea, no un proyecto de la notificación pública. Recuerda que < un href = http://support.fundoo.es/hc/pt-br/articles/203083017-Adicionar-imagens-e-v%C3%ADdeos-na-descri%C3%A7%C3%A3o-do-projeto class = 'alt-enlace' target = '_blank' > puede utilizar imágenes y videos</a> para mejor ilustrar su descripción del proyecto."
+        headline: "Un máximo de 100 caracteres."

@@ -25,3 +25,6 @@ Cookbooks
 .project
 .secret.rvmrc
 .rvmrc
+
+# Ignore application configuration
+/config/application.yml

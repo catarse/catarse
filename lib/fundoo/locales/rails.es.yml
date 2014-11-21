@@ -1,0 +1,235 @@
+es:
+  date:
+    abbr_day_names: "[El Dom, el Lun, el mar, el Mié, Jue, el Vie, se sentó."
+    abbr_month_names:
+      - Ene
+      - Feb
+      - Mar
+      - Abr
+      - mayo
+      - junio
+      - julio
+      - agosto
+      - Sep
+      - Oct
+      - Nov
+      - Dic
+    day_names: "[Domingo, el lunes, el martes, el miércoles, el jueves, el viernes, sábado."
+    formats:
+      default: "% d/% m/% Y"
+      with_time: "% d/% m/% Y a % Hh Mmin"
+      long: "%d de % B Y"
+      short: "%d de % B"
+    month_names: "[, Enero, febrero, marzo, abril, mayo, junio, julio, agosto, septiembre, octubre, noviembre, diciembre."
+    order:
+      - ": d ay"
+      - ": mes: año"
+  datetime:
+    distance_in_words:
+      about_x_hours:
+        one: "1:0"
+        other: "1:0"
+      about_x_months:
+        one: "aproximadamente 1 mes"
+        other: "aproximadamente 1 mes"
+      about_x_years:
+        one: "aproximadamente 1 año"
+        other: "aproximadamente 1 año"
+      almost_x_years:
+        one: "casi 1 año"
+        other: "casi 1 año"
+      half_a_minute: "medio minuto"
+      less_than_x_minutes:
+        one: "menos de un minuto"
+        other: "menos de un minuto"
+      less_than_x_seconds:
+        one: "menos de 1 segundo"
+        other: "menos de 1 segundo"
+      over_x_years:
+        one: "más de 1 año"
+        other: "más de 1 año"
+      x_days:
+        one: "1 día"
+        other: "1 día"
+      x_minutes:
+        one: "1 minuto"
+        other: "1 minuto"
+      x_months:
+        one: "1 mes"
+        other: "1 mes"
+      x_seconds:
+        one: "1 segundo"
+        other: "1 segundo"
+    prompts:
+      day: Día
+      hour: Tiempo
+      minute: Minuto
+      month: Mes
+      second: Segundo
+      year: Año
+  errors:
+    format: "% {atributo} {mensaje}"
+    messages:
+      accepted: "debe ser aceptado"
+      blank: "No puede ser en blanco"
+      confirmation: "La contraseña y la confirmación contraseña llena no son iguales"
+      empty: "No puede estar vacío"
+      equal_to: "debe ser igual a % {count}"
+      even: "debe tener en cuenta"
+      exclusion: "No está disponible"
+      greater_than: "debe ser mayor que % {count}"
+      greater_than_or_equal_to: "debe ser mayor o igual a % {count}"
+      inclusion: "No está incluido en la lista"
+      invalid: "No es válido"
+      less_than: "debe ser menos de % {count}"
+      less_than_or_equal_to: "debe ser menor o igual a % {count}"
+      not_a_number: "acepta sólo números"
+      not_an_integer: "No es un entero"
+      odd: "debe ser impar"
+      record_invalid: "Error de validación: % {errores}"
+      taken: "Ya está en uso"
+      too_long: "es demasiado largo (máximo: % {count} caracteres)"
+      too_short: "es demasiado corto (mínimo: % {count} caracteres)"
+      wrong_length: "No tiene el tamaño esperado (% {count} caracteres)"
+    template:
+      body: "Por favor consulte el siguiente campo (s):"
+      header:
+        one: "No se puede escribir a % {modelo}: 1 error"
+        other: "No se puede escribir a % {modelo}: 1 error"
+  helpers:
+    select:
+      prompt: "Por favor, seleccione"
+    submit:
+      create: "Crear % {modelo}"
+      submit: "Ahorre % {modelo}"
+      update: "Actualización % {modelo}"
+  number:
+    currency:
+      format:
+        delimiter: "."
+        format: "% u % n"
+        precision: 0
+        separator: ","
+        significant: falso
+        strip_insignificant_zeros: falso
+        unit: "€"
+    format:
+      delimiter: "."
+      precision: 3
+      separator: ","
+      significant: falso
+      strip_insignificant_zeros: falso
+    human:
+      decimal_units:
+        format: "% n % u"
+        units:
+          billion:
+            one: "mil millones"
+            other: "mil millones"
+          million:
+            one: millones
+            other: millones
+          quadrillion:
+            one: "mil billones"
+            other: "mil billones"
+          thousand: mil
+          trillion:
+            one: trillón
+            other: trillón
+          unit: "número humanos. decimal_units. unidades. unidad"
+      format:
+        delimiter: "."
+        precision: 2
+        significant: verdadero
+        strip_insignificant_zeros: verdadero
+      storage_units:
+        format: "% n % u"
+        units:
+          byte:
+            one: Byte
+            other: Byte
+          gb: GB
+          kb: KB
+          mb: MB
+          tb: TB
+    percentage:
+      format:
+        delimiter: "."
+    precision:
+      format:
+        delimiter: "."
+  support:
+    array:
+      last_word_connector: " y "
+      two_words_connector: " y "
+      words_connector: ", "
+  time:
+    am: AM
+    formats:
+      estimate: "% B/% Y"
+      simple: "% d/% m/% Y, % H: %M h"
+      default: "% A % d de % B Y, % H: %M h"
+      long: "% A % d de % B Y, % H: %M h"
+      short: "% d/% m % H: %M h"
+      posts: "% d % b Y"
+    pm: PM
+  activemodel:
+    errors:
+      format: "% {atributo} {mensaje}"
+      messages:
+        accepted: "debe ser aceptado"
+        blank: "No puede ser en blanco"
+        confirmation: "La contraseña y la confirmación contraseña llena no son iguales"
+        empty: "No puede estar vacío"
+        equal_to: "debe ser igual a % {count}"
+        even: "debe tener en cuenta"
+        exclusion: "No está disponible"
+        greater_than: "debe ser mayor que % {count}"
+        greater_than_or_equal_to: "debe ser mayor o igual a % {count}"
+        inclusion: "No está incluido en la lista"
+        invalid: "No es válido"
+        less_than: "debe ser menos de % {count}"
+        less_than_or_equal_to: "debe ser menor o igual a % {count}"
+        not_a_number: "acepta sólo números"
+        not_an_integer: "No es un entero"
+        odd: "debe ser impar"
+        record_invalid: "Error de validación: % {errores}"
+        taken: "Ya está en uso"
+        too_long: "es demasiado largo (máximo: % {count} caracteres)"
+        too_short: "es demasiado corto (mínimo: % {count} caracteres)"
+        wrong_length: "No tiene el tamaño esperado (% {count} caracteres)"
+      template:
+        body: "Por favor consulte el siguiente campo (s):"
+        header:
+          one: "No se puede escribir a % {modelo}: 1 error"
+          other: "No se puede escribir a % {modelo}: 1 error"
+  activerecord:
+    errors:
+      format: "% {atributo} {mensaje}"
+      messages:
+        accepted: "debe ser aceptado"
+        blank: "No puede ser en blanco"
+        confirmation: "La contraseña y la confirmación contraseña llena no son iguales"
+        empty: "No puede estar vacío"
+        equal_to: "debe ser igual a % {count}"
+        even: "debe tener en cuenta"
+        exclusion: "No está disponible"
+        greater_than: "debe ser mayor que % {count}"
+        greater_than_or_equal_to: "debe ser mayor o igual a % {count}"
+        inclusion: "No está incluido en la lista"
+        invalid: "No es válido"
+        less_than: "debe ser menos de % {count}"
+        less_than_or_equal_to: "debe ser menor o igual a % {count}"
+        not_a_number: "acepta sólo números"
+        not_an_integer: "No es un entero"
+        odd: "debe ser impar"
+        record_invalid: "Error de validación: % {errores}"
+        taken: "Ya está en uso"
+        too_long: "es demasiado largo (máximo: % {count} caracteres)"
+        too_short: "es demasiado corto (mínimo: % {count} caracteres)"
+        wrong_length: "No tiene el tamaño esperado (% {count} caracteres)"
+      template:
+        body: "Por favor consulte el siguiente campo (s):"
+        header:
+          one: "No se puede escribir a % {modelo}: 1 error"
+          other: "No se puede escribir a % {modelo}: 1 error"

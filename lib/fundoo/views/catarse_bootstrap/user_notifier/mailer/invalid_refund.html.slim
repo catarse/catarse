@@ -1,0 +1,31 @@
+- contribution = @notification.contribution
+- bank_account = contribution.user.bank_account
+- project = contribution.project
+
+| Olá Comunidade!
+br/
+br/
+| O reembolso do apoio ao projeto #{link_to(project.name, project_by_slug_url(permalink: project.permalink))} não foi efetuado devido a erros nos dados bancários preenchidos:
+br/
+br/
+- if bank_account
+  | Banco: #{bank_account.bank.to_s}
+  br
+  | Agência: #{bank_account.try(:agency)}
+  br
+  | Conta: #{bank_account.try(:account)} - #{bank_account.try(:account_digit)}
+  br
+  | Nome do titular: #{bank_account.try(:owner_name)}
+  br
+  | CPF: #{bank_account.try(:owner_document)}  
+  br/
+  br/
+| Chave de identificação do apoio: #{contribution.payment_id}
+br/
+br/
+| Favor entrar em contato com o usuário através do email cadastrado para realizar o reembolso: #{mail_to contribution.user.email}
+br/
+br/
+| Beijos
+br/
+| Catarse

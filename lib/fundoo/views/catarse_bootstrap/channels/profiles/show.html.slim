@@ -1,0 +1,59 @@
+= render 'shared/header_channel'
+= content_for :title, @profile.name
+
+section.line-box
+  .row#channel-profile
+    .large-12.columns
+      .big-video
+        = content_tag(:iframe, nil, src: @profile.display_video_embed_url, width: '100%', height: '582px', :class => "load-video")
+      .big-video-close
+        = "×"
+    .channel-bio
+      .large-4.columns
+        .presentation
+          h1.channel-title = @profile.name
+          p.channel-description = truncate(@profile.description, length: 210)
+          - if resource.has_subscriber?(current_user)
+            .large-7.columns.no-padding
+              = link_to channels_subscriber_path, {method: :delete, class: [:button, :medium, :negative]} do
+                .stop_following= t('channels.unfollow')
+          - else
+            .large-7.columns.no-padding
+              = link_to t('channels.follow'), channels_subscriber_path, class: [:button, :medium, :negative], title: t('channels.follow')
+          .large-5.columns
+            .channel-followers[title=t('channels.subscribed', count: @profile.channels_subscribers.size)]
+              = t('channels.subscribed', count: @profile.channels_subscribers.size)
+
+      .large-4.columns.video-thumb
+        = image_tag(@profile.video.try(:thumbnail_large), width: '100%')
+        span
+          = image_tag 'catarse_bootstrap/icon-play.png'
+
+      .large-3.large-offset-1.columns
+        = image_tag @profile.curator.display_image, title: @profile.name, :class => "curator-image large-4 columns"
+        .large-8.columns
+          h2.curator-name = @profile.curator.name
+          h3.curator-bio = @profile.curator.bio
+        ul.curator-social
+          - if @profile.website.present?
+            li = link_to @profile.display_website, @profile.website, title: t('.accessibility.link_to_website'), class: [:"icon-earth"], target: :blank
+          - if @profile.facebook.present?
+            li = link_to @profile.display_facebook, @profile.facebook, title: t('.accessibility.link_to_facebook'), class: [:"icon-facebook"], target: :blank
+          - if @profile.twitter.present?
+            li = link_to @profile.display_twitter, @profile.twitter, title: t('.accessibility.link_to_twitter'), class: [:"icon-twitter"], target: :blank
+
+section.row.projects
+  - @profile.projects.visible.each do |project|
+    = render partial: 'shared/project', locals: { project: project }
+
+- if @profile.partners.present?
+  section.row.partners id="partners"
+    .large-12.columns
+      h3 Parceiros
+    - @profile.partners.each do |partner|
+      .large-3.columns.left
+        .partner-box
+          = link_to image_tag(partner.image.thumb.url), partner.url
+
+
+= render 'shared/footer_channel'

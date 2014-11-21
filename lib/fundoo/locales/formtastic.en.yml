@@ -1,0 +1,43 @@
+en:
+  formtastic:
+    hints:
+      reward:
+        description: "Describe your reward in a way that arouse people's interest to support the project. Don't be shy!"
+        maximum_contributions: "If your reward is limited, tell as many people as possible."
+        minimum_value: "This is the minimum value of support to choose this reward."
+        days_to_delivery: "Enter in how many days after the success of the project you plan to deliver this reward"
+      contribution:
+        credits: "You have <strong> %{credits} </strong> in credits and can support up to this value without having to make a new payment."
+      project:
+        about: "Tell us a bit about your inspiration to accomplish the project, its history and what will be delivered at the end. Be succinct and run those formalities of edicts. No OBJECTIVE, RATIONALE, public-target ... Give your readers with something that moves with them and be very transparent in relation to expectations about the project."
+        category: "Before sending your project, explore and inspire yourself with other projects that passed through the site."
+        first_contributions: "For his campaign to succeed, it is essential to bring its network of closest contact. So, list here who you believe will be its first 20 supporters"
+        goal: "It is important to remember that a large part of the funding will come from people close to you (1st and 2nd level of relationship): <a href = ' http://blog.fundoo.es/sua-campanha-no-catarse-precisa-de-um-empurrazinho ' target = ' _blank ' > click here! </a> Thus, when defining the value that you want to collect through Fundoo is critical thinking in their ability to mobilize at least 50% of the value within your network of contacts."
+        headline: "Summarize in 140 characters your project. This phrase will be the first contact of people with your project, even before seeing the video. Be creative, direct and transparent:)"
+        more_links: "What will be the mobilization channels used? (Put links like Facebook, Twitter, Blogs ... everything that will help you publicize your project)"
+        name: "The more best direct. Let to describe your project in On and on video."
+        online_days: "On average the projects are in the air for 40 days."
+        uploaded_image: "Here you upload an image (.jpg) with 512x400 size."
+        video_url: "The video is the main piece of the project. If you haven't already, you don't need to send ... But I go thinking about how to make a KILLER video!"
+        video_url_edit: "Paste here the link of your video hosted on Vimeo or Youtube."
+    labels:
+      reward:
+        description: Description
+        minimum_value: "Minimum value"
+        days_to_delivery: "Delivery forecast"
+        maximum_contributions: "Maximum of supporters (optional)"
+      contribution:
+        credits: "I want to use my credits for this support."
+        anonymous: "I want my support is anonymous."
+        value: "How much do you want to support?"
+        reward: "Select your reward"
+      project:
+        about: "History of your project and how the $ will be used *"
+        expires_at: "Which the period to achieve the minimum? *"
+        first_contributions: "List of the first supporters *"
+        goal: "How much you want to raise? (only numbers) *"
+        headline: "Soundbite *"
+        traffic_sources: "How did you hear about Fundoo?? *"
+        more_links: "List of Links related to your project *"
+        name: "Project name *"
+        video_url: Video

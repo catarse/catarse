@@ -1,0 +1,34 @@
+= render 'shared/header_channel'
+= content_for :title, channel.name
+= content_for :meta_tags do
+  meta property="og:title"        content= resource.title
+
+article.row.channel-posts-wrapper
+  br/
+  br/
+  .large-9.columns
+    = link_to t('channels.back_to_news'), channels_posts_path, class: 'navigation-link'
+    br/
+    br/
+  section.large-9.columns
+    h1.channel-post-title
+      = resource.title
+    p= l(resource.created_at, format: :posts)
+    == resource.body_html
+    br/
+    br/
+    .row
+      .large-1.columns
+        .twitter_share= render_twitter text: "#{resource.title}", url: channels_post_url(resource, locale: I18n.locale)
+      .large-6.columns.left
+        .facebook_share= render_facebook_like href: channels_post_url(resource, locale: I18n.locale), width: '360'
+    .large-3.columns
+  .large-3.columns
+
+br/
+
+/article.row.channel-posts-comments-wrapper
+  section.large-9.columns.channel-posts-comments
+    #channel_posts_comments
+
+= render 'shared/footer_channel'

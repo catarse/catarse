@@ -1,0 +1,43 @@
+- project = @notification.project
+- confirmed_contributions_today = project.contributions.confirmed_today
+
+- project_link = project_by_slug_url(permalink: project.permalink)
+- company_name = CatarseSettings[:company_name]
+
+| Olá, <strong>#{project.user.display_name}</strong>!
+br
+br
+| Hoje, seu projeto teve #{confirmed_contributions_today.length} apoios!
+br
+br
+| Alguns dados sobre esses apoios:
+br
+br
+table width="500" border="1" cellpadding="10" cellspacing="0" style='font-size: 13px;'
+  thead
+    tr
+      th width="100" Nome do apoiador
+      th width="100" Email do apoiador
+      th width="100" Valor apoiado
+      th width="200" Recompensa selecionada
+  tbody
+    - confirmed_contributions_today.each do |contribution|
+      tr
+        td= contribution.user.display_name
+        td= contribution.user.email
+        td= contribution.display_value
+        td= contribution.reward.try(:display_description)
+br/
+br/
+| Veja todos os seus apoiadores #{link_to 'aqui', project_by_slug_url(permalink: project.permalink, anchor: 'contributions', target: '__blank')}!
+br/
+br/
+| Comunique-se com eles pela aba de #{link_to 'Novidades', project_by_slug_url(permalink: project.permalink, anchor: 'updates', target: '__blank')}
+br/
+br/
+| E baixe planilhas com as informações completas de todos os apoiadores eles #{link_to 'aqui', project_by_slug_url(permalink: project.permalink, anchor: 'reports', target: '__blank')}!
+br/
+br/
+|Um abraço,
+br
+= company_name

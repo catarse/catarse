@@ -1,0 +1,29 @@
+- contribution = @notification.contribution
+
+| Olá Comunidade!
+br/
+br/
+| Esse apoio para projeto não-financiado, foi realizado através de créditos. Por favor, entre em contato com o realizador para efetuar o reembolso.
+br/
+br/
+| Usuário #{contribution.user.display_name}
+br/
+| Email do usuário: #{contribution.user.email}
+br/
+| Email de pagamento: #{contribution.payer_email}
+br/
+| Nome de pagamento: #{contribution.payer_name}
+br/
+| Projeto: #{contribution.project.name}
+br/
+| Chave do apoio: #{contribution.key}
+br/
+| Identificador no meio de pagamento: #{contribution.payment_id}
+br/
+| Valor do apoio: #{contribution.display_value} 
+br/
+| Meio de pagamento: #{contribution.payment_method}
+br/
+| Forma de pagamento: #{contribution.payment_choice}
+br/
+| Data de criação: #{contribution.created_at}

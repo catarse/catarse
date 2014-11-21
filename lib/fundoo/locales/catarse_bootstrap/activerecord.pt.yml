@@ -1,0 +1,173 @@
+pt:
+  activerecord:
+    models:
+      channel: Canal
+      project: Projeto
+      reward: Recompensa
+      contribution: Apoiador
+      category: Categoria
+      bank_account: "Dados bancários"
+    attributes:
+      bank_account:
+        bank: Banco
+        bank_id: Banco
+        owner_name: "Nome do titular"
+        owner_document: "CPF / CNPJ do titular"
+        agency: Agência
+        agency_digit: Dígito
+        account: "Número da conta"
+        account_digit: Dígito
+      contribution:
+        value: "valor do apoio"
+        payer_name: "Nome Completo"
+        payer_email: Email
+        country: País
+        address_street: Rua
+        address_number: Número
+        address_complement: Complemento
+        address_neighbourhood: Bairro
+        address_state: Estado
+        address_city: Cidade
+        address_zip_code: CEP
+        address_phone_number: Telefone
+        reward: recompensa
+        project: projeto
+      reward:
+        deliver_at: "Previsão de entrega"
+      project:
+        channels: Canais
+        category: Categoria
+        expires_at: Prazo
+        online_days: "Quantos dias você precisa para atingir sua meta? O tempo máximo é de 60 dias"
+        headline: "Uma frase de efeito sobre o seu projeto. Máximo de 140 caracteres."
+        image_url: "URL da imagem"
+        name: "Nome do projeto"
+        goal: "Quanto você pretende arrecadar? (Utilize apenas números)."
+        about: "Conte a história do seu projeto e como pretende gastar o dinheiro arrecadado."
+        user_id: "Id do usuário"
+        video_url: "URL do vídeo"
+        permalink: "URL do seu projeto"
+        more_links: "Indique links para as pessoas conhecerem mais sobre o seu projeto e sua trajetória."
+        traffic_sources: "Como você conheceu o Catarse?"
+        first_contributions: "Quem são as primeiras pessoas que você vai pedir para apoiar o seu projeto?"
+      user:
+        address_city: Cidade
+        address_complement: Complemento
+        address_neighbourhood: Bairro
+        address_number: Número
+        address_state: Estado
+        address_street: Endereço
+        address_zip_code: CEP
+        cpf: "CPF / CNPJ "
+        cpf_hint: (?)
+        state_inscription: "Inscrição Estadual"
+        current_password: "Senha atual"
+        email: Email
+        full_name: "Nome completo / Razão Social"
+        bio: "Mini Bio"
+        name: Apelido
+        newsletter: "Quero receber novidades do Catarse"
+        password: Senha
+        password_confirmation: "Confirmação de senha"
+        phone_number: "Telefone (fixo ou celular)"
+        cpf_hint_title: "Nota Fiscal será emitida para esse documento"
+        id: ID
+        moip_login: "Login do MoIP"
+        moip_login_hint: "(Como criar uma conta)"
+        reset_password_token: "Link para recriar senha"
+      channel:
+        ga_code: "Código do Analytics"
+        description: Descrição
+        how_it_works: "Como funciona"
+        image: "Imagem da novidade"
+        name: Nome
+        video_url: Vídeo
+      channel_partner:
+        name: Nome
+        url: Site
+        image: Imagem
+      channel_post:
+        title: Título
+        body: Conteúdo
+        visible: "Publicar (Marque caso queira publicar essa nóvidade)"
+    errors:
+      models:
+        contribution: "Erro ao salvar apoio"
+        project:
+          attributes:
+            name:
+              blank: "O nome do projeto não pode ficar em branco"
+            permalink:
+              blank: "A URL do projeto não pode ficar em branco"
+              invalid: "A URL do projeto é inválida"
+              taken: "Essa URL de projeto já existe"
+            category:
+              blank: "Você deve escolher uma categoria para seu projeto"
+            goal:
+              blank: "O valor da meta não pode ficar em branco"
+              greater_than: "A meta deve ser maior que 9"
+              not_a_number: "Meta de arrecadação aceita somente números"
+            online_days:
+              greater_than: "O prazo para arrecadação deve ser maior que 0 dias"
+              not_a_number: "O prazo para arrecadação deve ser um número de dias"
+            about:
+              blank: "A descrição do projeto não pode ficar em branco"
+            headline:
+              blank: "A frase de efeito do projeto não pode ficar em branco"
+              too_long: "A frase de efeito é muito longa. Você pode usar um máximo de 140 caracteres."
+        user:
+          attributes:
+            email:
+              not_found: "O email não está cadastrado, verifique o endereço ou faça seu cadastro"
+              taken: "O email já está cadastrado, faça seu login"
+              invalid: "Esse endereço de email é inválido"
+              blank: "O email não pode ficar em branco"
+            password:
+              too_short: "A senha que você escolheu é muito curta"
+              confirmation: "A senha e a confirmação de senha preenchidas não estão iguais"
+              blank: "A senha não pode ficar em branco"
+            reset_password_token:
+              invalid: "expirou. Vá para <a href=\"/password/new\">redefinir senha</a> e solicite novamente a redefinição da senha."
+  project:
+    update:
+      success: "As informações foram atualizadas"
+    video_regex_validation: "somente URLs do Vimeo são aceitas"
+  contribution:
+    project_should_be_online: "Você não pode apoiar um projeto que não está no ar"
+    reward_must_be_from_project: "deve ser do mesmo projeto"
+    should_not_contribute_if_maximum_contributions_been_reached: "já atingiu seu número máximo de apoiadores"
+    value_must_be_at_least_rewards_value: "deve ser pelo menos %{minimum_value} para a recompensa selecionada"
+  contribution_report_to_project_owner:
+    reward_description: Descrição da recompensa
+    confirmed_at: Data da confirmação do pagamento
+    contribution_value: Valor do apoio
+    service_fee: Taxa do Catarse
+    user_name: Nome do apoiador
+    user_email: Email perfil Catarse
+    payer_email: Email do meio de pagamento
+    payment_method: Meio de pagamento
+    street: Rua
+    address_number: Número
+    complement: Complemento
+    neighbourhood: Bairro
+    city: Cidade
+    address_state: Estado
+    zip_code: CEP
+    anonymous: Anônimo
+  user:
+    no_name: "Sem nome"
+    contributions_text:
+      one: "Apoiou somente este projeto até agora"
+      two: "Apoiou este e mais 1 outro projeto"
+      many: "Apoiou este e mais outros %{total} projetos"
+  channels_subscribers:
+    created: "Agora você segue o %{channel}"
+    deleted: "Você deixou de seguir o %{channel}"
+  channels:
+    edit: "Atualizar canal"
+    image_hint: "Tamanho máximo (600x121px)"
+    subscribed: "%{count} seguindo o canal"
+    back_to_news: "← Voltar para as novidades"
+    follow: "Siga o canal"
+    following: Seguindo
+    unfollow: "Deixar de seguir"

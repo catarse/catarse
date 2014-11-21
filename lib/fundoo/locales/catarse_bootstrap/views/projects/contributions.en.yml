@@ -1,0 +1,67 @@
+en:
+  projects:
+    contributions:
+      contribute_text:
+        credits_tab: "My credits"
+      checkout:
+        no_credits: "You do not have enough credits to accomplish this support."
+        success: "Their support was carried out successfully. Thank you very much!"
+      contribution:
+        anonymous_contribution: "Anonymous supporter"
+        anonymous_description: "You've opted to remain incognito"
+        no_reward: "This supporter didn't select any reward"
+      edit:
+        form_labels:
+          payment_card_number: "Credit card number"
+          payment_card_flag: Flag
+          payment_card_source: "Security code"
+          payment_card_date: "Expiration date"
+          payment_card_name: "Name printed on the credit card"
+          payment_card_installments: Parcels
+        installment_with_tax: "with interest"
+        transaction_error: "Transaction refused, please recheck your data or contact your bank/card issuer for more information."
+        pagarme_warning_html: "The Fundoo is in the testing phase of a new means of payment which will facilitate the financial support and the eventual repayment of values to the supporters. Therefore, we caution you that extra data may be required, in addition to those mentioned in the terms of use to support this project. Any doubt or difficulty, contact us by email at %{mailto}. Thank you."
+        payment_save_card: "I want to save my credit card to facilitate future support."
+        reward_sold_out: "This reward is depleted. Start a new support."
+        credits_preview_html: "You have <strong> %{credits} </strong> in credits to perform this <strong> support until the day 10/11 </strong>, as <a href = ' http://blog.fundoo.es/simplificacao-dos-reembolsos-e-o-fim-dos-creditos/' target = ' _blank ' _ > </a> new rules published by Fundoo."
+        credits_submit: "Make payment"
+        credits_title: "Payment with credit"
+        insufficient_credits: "You have %{credits} credits. This value is not sufficient to perform the support, please choose another means of payment."
+        choose_payment: "How you want to pay?"
+        choose_payment_subtitle: "Select below for a method of payment"
+        cpf: "To proceed, please notify:"
+        credits_notice_html: "This support will be paid with your credits. After confirmation, you will have a balance of <strong> %{credits} </strong> in credits to support other projects."
+        live_in_brazil: "I live in Brazil. (Uncheck if your support is international)"
+        number_card: "Card data"
+        owner_card: "Cardholder data"
+        payment_account: "Payment with direct debit"
+        payment_boleto: "Payment with billet"
+        payment_card: "Payment with card"
+        review_with_reward_html: "You will be supporting with <strong> %{value} </strong> and you will earn the following rewards:"
+        review_without_reward_html: "You will be supporting with <strong> %{value} </strong> and doesn't want any reward for their support."
+        select_account: "You will be redirected to your bank's Web site:"
+        select_boleto: "To proceed, please select:"
+        submit:
+          credits: Confirm
+          moip: "Make payment by MoIP"
+        subtitle: "These data will be notified to the organizer of the project."
+        title: "Fill out and review the data for payment"
+        you_are_about_html: "You're about to be part of the group that does everything for the %{link} happen."
+      new:
+        header:
+          subtitle: "You are a few steps to make a difference and become part of this project."
+          title: "Oohh yeah!"
+        no_reward: "Thank you. I just want to help the project."
+        submit: "Review and perform payment"
+        title: "Supports %{name}"
+      review:
+        Credits: Credits
+        error: "Ooops. An error occurred while registering their support. Please try again."
+      show:
+        header_subtitle: "Without you this project didn't have a chance. Welcome to the team!"
+        header_title: "Thank you very much! :D"
+        moip_message: "Verification of your transaction is in progress and the Moip is code \" %{code}\".<br> If you have any questions regarding the transaction, contact the Moip. An email will be sent when the payment is confirmed."
+        recommended_projects: "You may also enjoy these projects:"
+        text_subtitle: "Tell everyone what you just did"
+        text_title_html: "You are now part of the group that does everything for the %{link} happen."
+        title: "Thank you very much"

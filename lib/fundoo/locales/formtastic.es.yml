@@ -1,0 +1,43 @@
+es:
+  formtastic:
+    hints:
+      reward:
+        description: "Describa su recompensa de una manera que despiertan el interés de la gente a apoyar el proyecto. No seas tímido!"
+        maximum_contributions: "Si tu recompensa es limitada, Dile a tantas personas como sea posible."
+        minimum_value: "Este es el valor mínimo de apoyo para elegir esta recompensa."
+        days_to_delivery: "¿Cuántos días después del éxito del proyecto que planea entregar este premio a entrar"
+      contribution:
+        credits: "Usted tiene <strong>{créditos de} %</strong> en créditos y puede soportar hasta este valor sin tener que realizar un nuevo pago."
+      project:
+        about: "Cuéntanos un poco sobre tu inspiración para llevar a cabo el proyecto, su historia y lo que se entregará al final. Ser conciso y ejecutar esas formalidades de edictos. Ningún objetivo, justificación, público objetivo... Dar a sus lectores con algo que se mueve con ellos y ser muy transparente en relación con las expectativas sobre el proyecto."
+        category: "Antes de enviar tu proyecto, explorar e inspirarte con otros proyectos que pasan a través del sitio."
+        first_contributions: "En su campaña alcanzar el éxito, es esencial para traer su red de contactos más cercanos. Así, lista que crees serán sus primeros 20 seguidores"
+        goal: "Es importante recordar que una gran parte de los fondos provendrán de gente cercana a ti (1er y 2do nivel de relación): < un href = 'http://blog.fundoo.es/sua-campanha-no-catarse-precisa-de-um-empurrazinho' target = '_blank' > haga clic aquí!</a> Así, al definir el valor que desea recopilar a través de la catarsis es pensamiento crítico en su capacidad para movilizar al menos el 50% del valor dentro de su red de contactos."
+        headline: "Resumir en 140 caracteres su proyecto. Esta frase será el primer contacto de las personas con su proyecto, incluso antes de ver el video. Ser creativa, directa y transparente:)"
+        more_links: "¿Cuáles serán los canales de movilización utilizados? (Poner enlaces como Facebook, Twitter, Blogs... todo lo que le ayudará a conocer su proyecto)"
+        name: "El mejor directo. Vamos a describir tu proyecto en sobre y en video."
+        online_days: "En promedio los proyectos están en el aire durante 40 días."
+        uploaded_image: "Aquí usted subir una imagen (.jpg) con tamaño 512 x 400."
+        video_url: "El video es la pieza principal del proyecto. Si no lo ha hecho, no tienes que enviar... Pero sigo pensando en cómo hacer que un asesino video!"
+        video_url_edit: "Pega aquí el link de tu vídeo alojado en Vimeo o Youtube."
+    labels:
+      reward:
+        description: Descripción
+        minimum_value: "Valor mínimo"
+        days_to_delivery: "Previsión de entrega"
+        maximum_contributions: "Máximo de partidarios (opcionales)"
+      contribution:
+        credits: "Quiero usar mis créditos de este apoyo."
+        anonymous: "Quiero que mi apoyo es anónimo."
+        value: "¿Cuánto quieres apoyar?"
+        reward: "Selecciona tu recompensa"
+      project:
+        about: "Historia del proyecto y cómo se utilizará el $ *"
+        expires_at: "¿Que el período para alcanzar el mínimo? *"
+        first_contributions: "Lista de los primeros partidarios *"
+        goal: "¿Cuánto quieres subir? (sólo números) *"
+        headline: "Soundbite *"
+        traffic_sources: "¿Cómo conociste la catarsis? *"
+        more_links: "Lista de enlaces relacionados con su proyecto *"
+        name: "Nombre del proyecto *"
+        video_url: Video

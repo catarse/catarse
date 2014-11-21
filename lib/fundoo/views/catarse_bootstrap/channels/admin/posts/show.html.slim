@@ -1,0 +1,43 @@
+= render 'shared/header_channel'
+= content_for :title, channel.name
+
+section
+  .row
+    br/
+    br/
+    .large-4.columns
+      = link_to t('channels.admin.posts.back_to_list'), channels_admin_posts_path, class: 'navigation-link'
+      br/
+      br/
+      br/
+
+    .large-12.columns
+      .presentation
+        h1.channel-title
+          = resource.title
+        p= l(resource.created_at, format: :posts)
+
+article.row.admin-channel-posts-wrapper
+  section.large-9.columns.channel-post
+    == resource.body_html
+  .large-3.columns
+
+br/
+br/
+
+article.row.channel-posts-wrapper
+  - unless resource.visible
+    .large-12.columns
+      .advise-box.gray
+        p= t('channels.admin.posts.warning_html')
+      br/
+      br/
+
+    .large-2.columns.left
+      = link_to t('channels.admin.table.edit_action'), edit_channels_admin_post_path(resource), class: [:button, :negative, :medium]
+    .large-2.columns.left
+      = link_to t('channels.admin.table.publish_action'), channels_admin_post_path(resource, channel_post: { visible: true }), method: :put, class: [:button, :action, :medium]
+
+br/
+br/
+= render 'shared/footer_channel'

@@ -1,0 +1,11 @@
+= simple_form_for resource, url: url, class: 'channel-partner-new' do |form|
+  = form.input :url, as: :string, required: false
+  = form.input :image, as: :file, hint: t('.hint_image')
+
+  .row
+    .large-3.columns
+      = form.button :submit, t('.save_submit'), class: 'button action medium'
+
+.clearfix
+br/
+br/

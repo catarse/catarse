@@ -1,0 +1,25 @@
+.bootstrap-form.use-preview
+  = semantic_form_for ProjectPost.new(user: current_user, project: @project), url: project_posts_path(project_id: @project.id), remote: true do |form|
+    = form.inputs do
+      = form.input :title, as: :string, label: t('.title')
+      .post-preview
+        h2.title Preview
+        .preview
+      = form.input :comment, as: :text, label: t('.comment'), input_html: {rows: 10, class: 'preview-input'}
+      = form.input :exclusive, as: :boolean, label: t('.exclusive')
+      br/
+      br/
+      .clearfix
+      .bootstrap-twitter
+        .alert.alert-info
+          p = t('.warning')
+      = render partial: 'projects/formatting_tips'
+    = form.actions do
+      .bootstrap-twitter
+        = form.submit t('.submit'), class: "btn", id: "post_submit"
+
+- content_for :custom_flahses do
+  .hide.ghost-flash
+    div class="notice wrapper"
+      div class="notice"
+        = t('.notice')

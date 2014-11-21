@@ -31,11 +31,16 @@ gem 'user_notifier', '~> 0.0.5'
 gem 'mixpanel-ruby'
 
 # Payment engines
-gem 'catarse_paypal_express', '2.2.4'
+# gem 'catarse_paypal_express', '2.2.4'
 gem 'catarse_moip', '~> 2.3.6'
 gem 'catarse_pagarme', '1.4.7'
 gem 'catarse_contribution_validator', github: 'catarse/catarse_contribution_validator'
 # gem 'catarse_wepay', '~> 0.0.1'
+
+## Fundoo
+gem 'catarse_stripe', github: 'Betahackers/catarse_stripe'
+# gem 'catarse_stripe', path: '../'
+gem "figaro"
 
 # Decorators
 gem 'draper'

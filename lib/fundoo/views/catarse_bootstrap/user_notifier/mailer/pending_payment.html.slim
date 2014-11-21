@@ -1,0 +1,24 @@
+- contribution = @notification.contribution
+
+|Olá, <strong>#{contribution.user.display_name}</strong>!
+br
+br
+' Verificamos que você iniciou um apoio para o projeto #{link_to contribution.project.name, project_by_slug_url(permalink: contribution.project.permalink, ref: 'notificacao_pending')},
+|porém não chegou a concluí-lo.
+br
+br
+| O seu apoio é essencial e você pode juntar-se a outras #{contribution.project.total_contributions} pessoas para tornar esse projeto uma realidade.
+br
+br
+| #{ link_to "Você tem até #{l(contribution.project.expires_at)} para realizar sua contribuição de onde parou.", edit_project_contribution_url(project_id: contribution.project.id, id: contribution.id, ref: 'notification_pending') }
+br
+br
+| Caso o motivo para não ter concluído seu apoio foi algum problema técnico, recomendamos tentar novamente utilizando outro navegador.
+br
+br
+| Se o problema persistir, entre em contato imediatamente respondendo a esta mensagem ou através do e-mail #{mail_to CatarseSettings[:email_contact]}
+br
+br
+|Um abraço,
+br
+|#{CatarseSettings[:company_name]}

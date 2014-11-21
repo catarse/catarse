@@ -1,0 +1,27 @@
+en:
+  pages:
+    how_it_works:
+      page-title: "How does Fundoo?"
+      title: "Enable your project collectively"
+      submit: "Start your project"
+      learn-more: "Learn more"
+      header:
+        people: "People have supported at least 01 project in Fundoo"
+        success: "Projects already have been successful here"
+        money: "Were invested in ideas published in Fundoo"
+      start:
+        title: "Start your project"
+        content: "Start the draft of your project now! You can take as long as you want to make the video from the fundraiser, come up with attractive rewards, calculate the budget and outline strategies for communication and public engagement. When you feel that the project is well formatted, send it to our team and receive tips to increase your chances of success."
+        link: "Learn more about the first steps of a project"
+      people:
+        title: "Mobilize interested"
+        content: "At least 50% of supporters will come from your own network of contacts. The Fundoo is a form of you close to people who enjoy their work and expand this network. Many of the people support projects for the relationship with the Director, others by the admiration of the work and others to receive a reward only, but the main reason is the identification with the project proposal."
+        link: "Learn how many supporters you need to mobilize"
+      work:
+        title: "Work hard on before, during and after the period of storage"
+        content: "Study projects similar to yours. Map, review, expand and prepare your network and other communities that might be interested in realization of your idea. Plan each day of his campaign and take actions to win more supporters. Explain why you are asking for the money and how are you going to use it. Communicate at all times with the supporters of your project. Execute and deliver the rewards within the prescribed time limit."
+        link: "Receive tips on successful campaigns in Fundoo"
+      time:
+        title: "All or nothing"
+        content: "You can choose a term between 1 and 60 days to reach the goal of fundraising, in the system that we call Everything or Nothing. When a project achieves the goal of fundraising, Fundoo is with 13% of this value. If the project does not reach the point of collection, we do not charge anything and give the money to the supporters."
+        link: "Learn how our fee helps maintain Fundoo"

@@ -1,0 +1,38 @@
+en:
+  simple_form:
+    collections:
+      project:
+        traffic_sources:
+          one: "I've had another project in Fundoo"
+          two: "indication of a person who already had a project in Fundoo"
+          three: "indication of friend/colleague/professional contact"
+          four: "from a project that was picking up on the platform"
+          five: "article in a blog"
+          six: "a story in the press (news portal on the internet, TV, newspaper, magazine)"
+          seven: "in a class/course/lecture/event"
+          eight: "did a search on the internet about collective financing/alternative forms of funding"
+          nine: Another
+    validation_texts:
+      contribution:
+        payer_name: "Please enter the name of the supporter"
+        payer_email: "Please enter a valid email address"
+        address_street: "Type the name of the street"
+        address_number: "Enter the number of the address"
+        address_city: "Type the name of the city"
+        address_zip_code: "Enter the ZIP CODE"
+        address_phone_number: "Enter the phone number"
+    prompts:
+      project:
+        category: "Select a category"
+        select: "Select an option"
+        traffic_sources: "How did you hear about Fundoo??"
+    hints:
+      project:
+        name: "The more best direct. Do not exceed 50 characters"
+        permalink: "Is the address of your project, let the simple. Try not to use underline, hyphen and etc."
+        category: "Before sending, explore and inspire other projects of the same category."
+        goal: "Much of the aid will be of people close to you. Think about how to get at least 50% of the value of the goal within your network of contacts."
+        online_days: "On average the projects are in the air for 40 days. The maximum period of the campaign is of 60 days."
+        video_url: "Insert here the link of your video. It must be hosted on Youtube or Vimeo. If he hasn't, that's fine, you can add it later. The video is very important to the success of your campaign and mandatory for projects with targets of $ 5,000 or more."
+        about: "Talk about what will be accomplished, how the money will be used, who is behind the project, how and when the project will be delivered. Be direct and informal, this is a conversation between people who want to share an idea, not a project of the public notice. Remember that <a href = http://support.fundoo.es/hc/pt-br/articles/203083017-Adicionar-imagens-e-v%C3%ADdeos-na-descri%C3%A7%C3%A3o-do-projeto class = ' alt-link ' target = ' _blank ' > you can use images and videos </a> to better illustrate your project description."
+        headline: "A maximum of 100 characters."

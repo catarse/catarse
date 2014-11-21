@@ -1,0 +1,27 @@
+#my_data
+  strong= t('.projects_in_reminder')
+  - @user.projects_in_reminder.each do |project|
+    p== "- #{link_to project.name, project_path(project)}"
+  br
+  ul
+   strong = t('.title')
+  ul
+    li
+      .bootstrap-form
+      = semantic_form_for(@user, url: user_unsubscribes_path(user_id: @user.id), html:{ method: :post}) do |f|
+        = f.inputs do
+          = f.semantic_fields_for :unsubscribes, @subscribed_to_posts do |u|
+            - u.object.created_at.nil? ? (checked = { checked: 'checked' }) : (checked = nil)
+            #subscribed_check
+              = u.input :subscribed, as: :boolean, input_html: checked, label: t('.posts')
+          - if @unsubscribes
+            .unsubscribes
+              = f.semantic_fields_for :unsubscribes, @unsubscribes do |u|
+                = u.inputs do
+                  - u.object.created_at.nil? ? (checked = { checked: 'checked' }) : (checked = {})
+                  .subscribed_projects
+                    = u.input :subscribed, as: :boolean, input_html: {id: "user_unsubscribes_#{u.object.project_id}"}.merge(checked), label: (u.object.project.name rescue nil)
+                  = u.input :project_id, as: :hidden
+                  = u.input :user_id, as: :hidden
+
+              p= f.submit t('users.current_user_fields.update_social_info'), class: 'btn', id: "unsubscribe_submit"

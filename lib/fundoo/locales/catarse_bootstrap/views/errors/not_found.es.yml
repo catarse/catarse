@@ -1,0 +1,5 @@
+es:
+  errors:
+    not_found:
+      text: "Tal vez escribiste mal dirección o en la página puede haber sido movida."
+      title: "No podemos encontrar a esta dirección: ()"

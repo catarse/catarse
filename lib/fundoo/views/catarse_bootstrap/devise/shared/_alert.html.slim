@@ -1,0 +1,9 @@
+- if flash[:alert].present?
+  .form-error.animated.shake
+    p.form-error-title = t('failure_title')
+    p.form-error-text = flash[:alert]
+- elsif resource.errors.present?
+  .form-error.animated.shake
+    p.form-error-title = t('failure_title')
+    - resource.errors.messages.each do |message|
+      p.form-error-text == message[1].to_sentence

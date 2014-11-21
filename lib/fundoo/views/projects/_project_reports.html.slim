@@ -1,0 +1,36 @@
+- selected_r = @project.selected_rewards
+ul
+  li
+    .bootstrap-twitter
+      .alert.alert-info
+        p
+          =' t('.link_reports_confirmed')
+          =' link_to 'csv', reports_contribution_reports_for_project_owners_path(project_id: @project.id, format: :csv)
+          ',
+          = link_to 'xls', reports_contribution_reports_for_project_owners_path(project_id: @project.id, format: :xls)
+  li
+    .bootstrap-twitter
+      .alert.alert-info
+        p
+          =' t('.link_reports_waiting_confirmation')
+          =' link_to 'csv', reports_contribution_reports_for_project_owners_path(project_id: @project.id, state: 'waiting_confirmation', format: :csv)
+          ',
+          = link_to 'xls', reports_contribution_reports_for_project_owners_path(project_id: @project.id,state: 'waiting_confirmation', format: :xls)
+  li
+    .bootstrap-twitter
+      .alert.alert-info
+        p
+          =' t('.all_contributions_without_reward')
+          =' link_to 'csv', reports_contribution_reports_for_project_owners_path(project_id: @project.id, reward_id: 0, format: :csv)
+          ',
+          =' link_to 'xls', reports_contribution_reports_for_project_owners_path(project_id: @project.id, reward_id: 0, format: :xls)
+  - if selected_r.length > 0
+      - selected_r.each do |reward|
+        li
+          .bootstrap-twitter
+            .alert.alert-info
+              p
+                =' t('.link_reward', value: reward.display_minimum)
+                =' link_to 'csv', reports_contribution_reports_for_project_owners_path(project_id: @project.id, reward_id: reward.id, format: :csv)
+                ',
+                =' link_to 'xls', reports_contribution_reports_for_project_owners_path(project_id: @project.id, reward_id: reward.id, format: :xls)

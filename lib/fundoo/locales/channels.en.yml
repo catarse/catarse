@@ -1,0 +1,44 @@
+en:
+  channels_subscribers:
+    created: 'You are now following %{channel}'
+    deleted: 'You are no longer following %{channel}'
+  channels:
+    send_your_project: "Submit your project"
+    send_a_email: "Send a email"
+    follow: "Follow channel"
+    following: "Following"
+    unfollow: "Unfollow"
+    subscribed: "%{count} subscribed to this channel"
+    admin:
+      menu: "Channel moderation"
+      statistics_menu: "Statistics"
+      profile_menu: "Channel profile"
+      statistics:
+        title: 'Channel statistics'
+        total_subscribers: 'Total subscribers'
+    projects:
+      send: "Submit your project"
+      see_how_it_works: "See how it works and submit your project."
+      how_it_works: "How it works"
+      progress_html: "<span>%{percent}%</span> funded"
+      time_remaining_html:
+        one: "<span>%{count} %{unit}</span> remaining"
+        other: "<span>%{count} %{unit}</span> remaining"
+      pledged_html: "<span>%{value}</span> pledged"
+    how_it_works:
+      title: "How %{channel} works?"
+    footer:
+      terms: "Terms of use"
+      privacy_policy: "Privacy Policy"
+      how_it_works: "How %{name} works"
+      how_channels_work: "Understand Catarse channels"
+      contact: "Contact"
+    accessibility:
+      how_it_works: "Clique para saber como o Canal funciona e enviar o seu projeto"
+      send_your_project: "Click to submit your project"
+      link_to_twitter: "Channel twitter link"
+      link_to_facebook: "Channel facebook link"
+      link_to_website: "Channel website"
+    presentation:
+      link-to-follow: 'Follow channel'
+      followers: 'followers'

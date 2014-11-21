@@ -1,0 +1,13 @@
+.large-3.columns.project-column
+  = project.status_flag
+  .project-box
+    = link_to image_tag(project.display_image), project_by_slug_path(project.permalink), title: project.name, :class => 'image'
+    .padding
+      h4.title    = link_to truncate(project.name, length: 50, separator: ''), project_by_slug_path(project.permalink), title: project.name
+      p.headline  = link_to truncate(project.headline, length: 140), project_by_slug_path(project.permalink), title: project.headline
+    .status
+      .padding
+        p.progress-percent = t('projects.project.progress_html', percent: project.progress)
+        .progress-bar     = project.progress_bar
+        = link_to t('projects.project.time_remaining_html', count: project.time_to_go[:time], unit: project.time_to_go[:unit]), project_by_slug_path(project.permalink), title: project.name, class: 'time-remaining'
+        = link_to t('projects.project.pledged_html', value: number_to_currency(project.pledged, precision: 0)), project_by_slug_path(project.permalink), title: project.name, class: 'money-raised'

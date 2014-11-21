@@ -1,0 +1,74 @@
+es:
+  projects:
+    metrics:
+      titles:
+        confirmed_by_day: "Total de confirmado apoyo por día"
+        confirmed_amount_by_day: "Total recogido por día"
+        address_state: "Total confirmado financiamiento por estado"
+    reminder:
+      ok: "¡Vale! Le enviaremos un recordatorio por correo electrónico 48 horas antes del final de la campaña"
+      active_btn: "Me recuerda a este proyecto"
+      deactive_btn: "No quiero ser recordado"
+    send_to_analysis: "El proyecto ha sido enviado a nuestro equipo."
+    twitter:
+      take_a_look: "Echale un vistazo al proyecto % {nombre} en @catarse"
+    video_embed:
+      a_project_by_html: "Un proyecto de % {link}"
+    posts:
+      project_post:
+        unavailable: "Esta noticia sólo está disponible para los fanáticos."
+        contribute: Apoyo
+        unavailable_contribute: "Este proyecto para visualizarlo."
+        destroy: "Eliminar noticias"
+        destroy_confirmation: "¿Desea eliminar esta noticia?"
+      new:
+        notice: "Noticias enviadas correctamente!"
+        comment: "Texto de la noticia"
+        exclusive: "Visible sólo para los seguidores"
+        submit: "Enviar noticias"
+        title: "Título de la noticia"
+        warning: "Recordando que todos los puestos de la novedad irá directamente al correo electrónico de sus partidarios. Entonces, revisar su texto antes de enviarlo."
+    project_reports:
+      all_contributions_without_reward: "Descargar informe de todos los fanáticos que han seleccionado una recompensa"
+      link_reports_confirmed: "Descargar informe confirmado partidarios todos"
+      link_reports_waiting_confirmation: "Descargar informe de todos los fanáticos con billete impreso"
+      link_reward: "Descargar el informe de los partidarios de la recompensa de % {valor}"
+    project_about:
+      embed: Insertar
+      embed_title: "Esto incrustar en el diseño de su sitio"
+    show:
+      contribute_project:
+        display_status:
+          reached_goal: "Este proyecto será exitoso y financiado en % {fecha}"
+          not_reached_goal: "Este proyecto se financiará sólo si al menos % {meta} se alcanzan incluso % {fecha}"
+          failed: "Este proyecto no ha alcanzado el mínimo de % {meta} % {fecha} y no fue financiado"
+          rejected: "Este proyecto no fue aceptado. No puede realizar una copia de seguridad."
+          in_analysis: "Este proyecto está bajo revisión y todavía no está abierto a recibir apoyo."
+          successful: "Este proyecto fue un éxito y fue financiado en % {fecha}"
+          waiting_funds: "A la espera de la confirmación de las cuentas para ver si este proyecto será financiado."
+          draft: "Este proyecto es sólo un borrador y aún no está abierto a recibir apoyo."
+        submit: "Apoyar este proyecto"
+      project_by: "diseño de"
+      funding_period: "Periodo de campaña"
+      count_contributed_projects: "apoyado proyectos {total} %"
+      project_header:
+        subtitle_html: "Un proyecto de % {link}"
+        without_city: "Un proyecto de"
+        with_city: "Un proyecto de % {discussion.category_name} % {author} % {ciudad}"
+      menu:
+        about: "Acerca de"
+        add_reward: "Añadir recompensa"
+        comments: Comentarios
+        contributions: Partidarios
+        metrics: Métricas
+        edit: Edición
+        reports: Informes
+        posts: Noticias
+      no_rewards_warning: "No viajar! Piense en cómo se las entrego y poner todo esto en el presupuesto. ¿Prometió? OBEDECER! : D"
+      no_rewards_warning_title: "Crea aquí tu recompensa"
+      contribution_states:
+        confirmed: Confirmado
+        pending: "Comprobantes impresos"
+      sidebar:
+        contributions: partidarios
+        goal: "golpe % {total}"

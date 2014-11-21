@@ -1,0 +1,33 @@
+= semantic_form_for [parent, resource], html: { class: 'remote-form' } do |f|
+  - if resource.new_record? || policy(resource).permitted_for?(:minimum_value, :update)
+    = f.input :minimum_value, required: true, as: :number, input_html: {pattern: "^[\\d+.]+"}
+
+  - if resource.new_record? || policy(resource).permitted_for?(:deliver_at, :update)
+    li#reward_deliver_at_input.date_select.input.required
+      fieldset.fragments
+        legend.label
+          label for="reward_deliver_at_3i" 
+            = Reward.human_attribute_name(:deliver_at)
+            abbr title="required"  *
+        ol.fragments-group
+          li.fragment
+            input#reward_deliver_at_3i name="reward[deliver_at(3i)]" type="hidden" value="1" /
+          li.fragment
+            label for="reward_deliver_at_2i" = t('datetime.prompts.month')
+            = select_month(resource.deliver_at, prefix: 'reward', field_name: "deliver_at(2i)")
+          li.fragment
+            label for="reward_deliver_at_1i" = t('datetime.prompts.year')
+            = select_year(resource.deliver_at, prefix: 'reward', field_name: "deliver_at(1i)")
+
+  - if resource.new_record? || policy(resource).permitted_for?(:description, :update)
+    = f.input :description, required: true
+
+  - if resource.new_record? || policy(resource).permitted_for?(:maximum_contributions, :update)
+    = f.input :maximum_contributions
+
+  .clearfix
+  = f.submit class: 'btn', disable_with: I18n.t('sending')
+  - if resource.persisted? && policy(resource).destroy?
+    br/
+    = link_to [parent, resource], class: 'btn btn-danger', method: :delete, data: {confirm: 'Are you sure?'} do
+      i.icon-trash.icon-white

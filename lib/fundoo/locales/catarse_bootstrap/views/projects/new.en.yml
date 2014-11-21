@@ -1,0 +1,49 @@
+en:
+  projects:
+    new:
+      page-title: "Start your project"
+      faq:
+        titles:
+          support: Support
+          know_more: "Learn more"
+        links:
+          criteria: "Selection criteria"
+          suport_central: "Support Central"
+          support_contact: "Contact us"
+          how_it_works: "How does Fundoo work?"
+          money: "How will I receive the money?"
+          selection: "How are projects selected?"
+          all_or_nothing: "Why is everything or Nothing?"
+      form:
+        blocks:
+          first:
+            title: "1. basic information"
+            description: "You are creating the first draft of your project. The information filled in this first block cannot be changed after your project goes live."
+          second:
+            title: "2. Project History"
+            description: "The information below may be edited by you at any time, even when your project is in the air."
+          disclaimer: "Not all projects sent airs, our staff will evaluate the focus, the feasibility, consistency and the presentation of your project. If he does not comply with the <a href = ' http://support.fundoo.es/hc/pt-br/articles/202387638-Diretrizes-para-a-cria%C3%A7%C3%A3o-de-projetos ' class = ' alt-link ' target = ' _blank ' > </a> platform selection criteria, he or she may be refused."
+        labels:
+          name: "Project name"
+          permalink: "Project URL"
+          category: "Choose category"
+          goal: "Amount to be collected"
+          online_days: "Deadline for fundraising"
+          video_url: "Video URL"
+          about: "Project description"
+          headline: Soundbite
+          traffic_sources: "How did you hear about Fundoo??"
+        hints:
+          name: "The more best direct. Do not exceed 50 characters"
+          permalink: "Is the address of your project, it should be easy to remember. Try not to use underline, hyphen and etc."
+          category: "Before sending, explore and inspire other projects of the same category as yours."
+          goal: "Much of the aid will be of people close to you. Think about how to get at least 50% of the value of the goal within your network of contacts."
+          online_days: "On average the projects are in the air for 40 days. The maximum period of the campaign is of 60 days."
+          video_url: "Insert here the link of your video. It must be hosted on Youtube or Vimeo. If he hasn't, that's fine, you can add it later. The video is very important to the success of your campaign and mandatory for projects with targets of $ 5,000 or more."
+          about: "Talk about what will be accomplished, how the money will be used, who is behind the project, how and when the project will be delivered. Be direct and informal, this is a conversation between people who want to share an idea, not a project of the public notice. Remember that <a href = http://support.fundoo.es/hc/pt-br/articles/203083017-Adicionar-imagens-e-v%C3%ADdeos-na-descri%C3%A7%C3%A3o-do-projeto class = ' alt-link ' target = ' _blank ' > you can use images and videos </a> to better illustrate your project description."
+          headline: "A maximum of 100 characters."
+        info:
+          permalink: "http://fundoo.es/"
+          goal: "€"          
+          online_days: days
+        submit: "Save and continue"

@@ -1,0 +1,91 @@
+es:
+  devise:
+    feedback_tab:
+      title: "Retroalimentación y ayuda"
+      header_html: "¡ Bienvenido a <br/> nuevo inicio de sesión de catarsis"
+      blog_button: "Leer más en el blog"
+      form_feedback_link: "Enviar comentarios"
+      contact_link: Contacto
+    links:
+      forgot_password: "He olvidado mi contraseña"
+    confirmations:
+      confirmed: "Su cuenta ha sido confirmada con éxito. Usted se autentica."
+      send_instructions: "En pocos minutos, usted recibirá un correo electrónico con instrucciones para confirmar tu cuenta."
+      send_paranoid_instructions: "Si su dirección de email existe en nuestra base de datos, usted recibirá un correo electrónico con instrucciones sobre cómo confirmar tu cuenta en pocos minutos."
+    failure:
+      password_token: "El enlace para recuperar contraseña ha caducado. Ingrese nuevamente su correo electrónico"
+      already_authenticated: "devise. already_authenticated falla."
+      inactive: "Este correo electrónico pertenece a una cuenta deshabilitada"
+      invalid: "Correo electrónico o contraseña no válido"
+      invalid_token: "El token de autenticación no es válido."
+      locked: "Tu cuenta está bloqueada."
+      not_found_in_database: "Correo electrónico o contraseña no válido"
+      timeout: "La sesión ha caducado, por favor ingresar nuevamente para continuar."
+      unauthenticated: devise.failure.unauthenticated
+      unconfirmed: "Antes de continuar, confirmar tu cuenta."
+    mailer:
+      confirmation_instructions:
+        subject: "Instrucciones de confirmación"
+      reset_password_instructions:
+        subject: "Restablecer la contraseña"
+      unlock_instructions:
+        subject: "Las instrucciones de desbloqueo"
+    omniauth_callbacks:
+      failure: "No se puede autorizar una cuenta de % {tipo} porque \"% {razón}\"."
+      success: "éxito de idear. omniauth_callbacks."
+    passwords:
+      no_token: "símbolo (token) _ devise.passwords.no"
+      send_instructions: "Envíanos un correo electrónico con instrucciones para restablecer una contraseña nueva"
+      send_paranoid_instructions: "Si su dirección de email existe en nuestra base de datos, usted recibirá un correo electrónico con un enlace para la recuperación de la contraseña."
+      updated: devise.passwords.updated
+      updated_not_active: "Su contraseña fue cambiada con éxito."
+      new:
+        site_title: "He olvidado mi contraseña"
+        title: "Confirme su correo electrónico y solicitar cambio de contraseña"
+        submit: "Enviar instrucciones para cambiar mi contraseña"
+      edit:
+        site_title: "Establecer una nueva contraseña"
+        label_new_password: "Nueva contraseña"
+        title: "Establecer una nueva contraseña"
+        subtitle: "Establecer una nueva contraseña para utilizar su dirección de correo electrónico y contraseña cuando usted quiere inscribir la catarsis."
+        submit: "Establecer nueva contraseña"
+    registrations:
+      destroyed: "Adiós! Su cuenta ha sido cancelada con éxito. Espero verte pronto."
+      signed_up: "devise. signed_up registros."
+      signed_up_but_inactive: "Usted ha suscrito con éxito, sin embargo nosotros no podemos autenticar porque no se ha activado su cuenta."
+      signed_up_but_locked: "Usted se ha suscrito con éxito. Sin embargo no podemos autenticar porque tu cuenta está bloqueada."
+      signed_up_but_unconfirmed: "Un mensaje con un enlace de confirmación ha sido enviado a su correo electrónico. Por favor visite el enlace para activar tu cuenta."
+      update_needs_confirmation: "Su cuenta fue actualizado con éxito, pero tenemos que verificar la nueva dirección de correo electrónico. Por favor revise su correo electrónico y haga clic en el enlace de confirmación para completar su nuevo correo electrónico confirmando."
+      updated: "Su cuenta se ha actualizado correctamente."
+    sessions:
+      new:
+        site_title: "Inicia sesión"
+        submit: "Inicia sesión"
+        title: "Entre el uso de tu dirección de correo electrónico"
+        login_title: "Inicio de sesión"
+        login_subtitle: "Si ya tienes una cuenta"
+        register_title: Únete
+        register_subtitle: "Utiliza tu dirección de correo electrónico"
+        with_facebook: "Entre el uso de facebook"
+        with_facebook_subtitle: "Una forma muy rápida para acceder a"
+        with_another_social: "Twitter se quitará en una semana"
+        google_warning_html: "Si usted usa una cuenta para Google <strong></strong>:"
+        google_step_1: "1-haga clic en % {link}"
+        google_step_2: "2-los próximos pasos para crear una nueva contraseña."
+        with_another_social_subtitle: "< el target = \"_blank\" href = \"\" http://blog.fundoo.es/mudanca-no-sistema-de-login/ > leer este post</a> para obtener más información"
+      signed_in: "devise. sesiones. signed_in"
+      signed_out: "devise. sesiones. signed_out"
+    unlocks:
+      send_instructions: "En pocos minutos, usted recibirá un correo electrónico con instrucciones para desbloquear tu cuenta."
+      send_paranoid_instructions: "Si tu cuenta existe en nuestra base de datos, usted recibirá un correo electrónico con instrucciones para desbloquearlo."
+      unlocked: "Su cuenta ha sido desbloqueada con éxito. Usted se autentica."
+  errors:
+    messages:
+      already_confirmed: "Ya ha sido confirmado"
+      confirmation_period_expired: "Usted debe ser un confirmado detro de % {periodo}, por favor solicite un nuevo usuario."
+      expired: "ha caducado, por favor solicite una nueva"
+      not_found: "No se encontró"
+      not_locked: "No ha sido bloqueada"
+      not_saved:
+        one: "Sys.messages errores not_saved"
+        other: "Sys.messages errores not_saved"

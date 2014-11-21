@@ -1,0 +1,7 @@
+header.main-header
+  .w-row
+    .w-col.w-col-6.w-clearfix
+      = link_to root_path do
+        = link_to (image_tag "catarse_bootstrap/catarse-logo.png"), root_url(host: CatarseSettings[:base_domain] || request.domain), class: 'header-logo', :title => CatarseSettings[:company_name]
+    .w-col.w-col-6
+

@@ -1,0 +1,20 @@
+pt:
+  not_filled: 'Não preenchido'
+  days: dias
+  facebook_locale: pt_BR
+  failure_title: 'Por favor, corrija os seguintes erros:'
+  i_just_contributed: Eu acabei de apoiar o projeto %{name} no @catarse
+  'no': Não
+  'yes': Sim
+  not_informed: não informado
+  or: ou
+  sending: Enviando...
+  share_my_contributions: 'Confira o projeto '
+  site:
+    description: O Catarse é uma ferramenta diferente – e colaborativa – para tirar
+      o seu projeto do papel!
+    keywords: catarse, crowdfunding, financiamento coletivo, projeto, comunidade,
+      open source
+    meta_title: "%{title} · %{company_name}"
+    title: A maior comunidade de financiamento coletivo do Brasil!
+

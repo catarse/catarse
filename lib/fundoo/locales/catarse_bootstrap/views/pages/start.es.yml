@@ -1,0 +1,27 @@
+es:
+  pages:
+    start:
+      page-title: "¿Cómo funciona la catarsis?"
+      title: "Permiten su proyecto colectivamente"
+      submit: "Iniciar tu proyecto"
+      learn-more: "Aprende más"
+      header:
+        people: "Personas han apoyado al menos 01 proyecto en catarsis"
+        success: "Proyectos ya han tenido éxito aquí"
+        money: "Se invirtieron en ideas publicados en catarsis"
+      start:
+        title: "Iniciar tu proyecto"
+        content: "El borrador del proyecto empiece ahora! Puede tomar tanto como quieres hacer el video de la recaudación de fondos, con atractivos premios, calcular los presupuesto y contorno estrategias para la comunicación y participación del público. Cuando sientes que el proyecto es bien formateado, enviarlo a nuestro equipo y recibir consejos para aumentar sus posibilidades de éxito."
+        link: "Más información sobre los primeros pasos de un proyecto"
+      people:
+        title: "Movilizar interesado"
+        content: "Por lo menos el 50% de los fanáticos vendrá de su propia red de contactos. La catarsis es una forma de cerca de la gente que disfruta su trabajo y ampliar esta red. Muchas de las personas apoyan proyectos para la relación con el Director, otros por la admiración de la obra y otros para recibir una recompensa, pero la razón principal es la identificación con la propuesta del proyecto."
+        link: "Aprender cómo muchos seguidores necesita movilizar"
+      work:
+        title: "Trabajar duro en antes, durante y después del período de almacenamiento"
+        content: "Estudio de proyectos similares al suyo. Mapa, revisar, ampliar y preparar su red y otras comunidades que podrían estar interesados en la realización de su idea. Planificar cada día de su campaña y tomar acciones para ganar más seguidores. Explicar por qué están pidiendo el dinero y cómo vas a usar. Comunicar en todo momento con los partidarios de su proyecto. Ejecutar y entregar las recompensas dentro del plazo fijado."
+        link: "Recibir consejos sobre campañas exitosas en catarsis"
+      time:
+        title: "Todo o nada"
+        content: "Usted puede elegir un plazo entre 1 y 60 días para alcanzar la meta de recaudación de fondos, en el sistema que llamamos a todo o nada. Cuando un proyecto logra la meta de recaudación de fondos, la catarsis es con el 13% de este valor. Si el proyecto no alcanza el punto de colección, no cobramos nada y darle el dinero a los hinchas."
+        link: "Aprenda cómo nuestros honorarios ayuda a mantener la catarsis"

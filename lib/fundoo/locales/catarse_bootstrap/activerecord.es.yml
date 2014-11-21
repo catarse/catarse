@@ -1,0 +1,173 @@
+es:
+  activerecord:
+    models:
+      channel: Canal
+      project: Proyecto
+      reward: Recompensa
+      contribution: Partidario
+      category: Categoría
+      bank_account: "Datos bancarios"
+    attributes:
+      bank_account:
+        bank: Banco
+        bank_id: Banco
+        owner_name: "Nombre del titular"
+        owner_document: "CPF/CNPJ del titular"
+        agency: Agencia
+        agency_digit: Dígito
+        account: "Número de cuenta"
+        account_digit: Dígito
+      contribution:
+        value: "valor de apoyo"
+        payer_name: "Nombre completo"
+        payer_email: "Correo electrónico"
+        country: País
+        address_street: Calle
+        address_number: Número
+        address_complement: Add-on
+        address_neighbourhood: Barrio
+        address_state: Estado
+        address_city: Ciudad
+        address_zip_code: CEP
+        address_phone_number: Teléfono
+        reward: recompensa
+        project: proyecto
+      reward:
+        deliver_at: "Previsión de entrega"
+      project:
+        channels: Canales
+        category: Categoría
+        expires_at: "Fecha límite"
+        online_days: "¿Cuántos días necesita para alcanzar su meta? Es el tiempo máximo de 60 días"
+        headline: "Una frase acerca de su proyecto. Máximo de 140 caracteres."
+        image_url: "URL de la imagen"
+        name: "Nombre del proyecto"
+        goal: "¿Cuánto quieres subir? (Utilice solamente números)."
+        about: "Contar la historia de tu proyecto y cómo piensa gastar el dinero recaudado."
+        user_id: "ID de usuario"
+        video_url: "URL del video"
+        permalink: "URL del proyecto"
+        more_links: "Proporcionar enlaces para la gente saber más sobre su proyecto y su trayectoria."
+        traffic_sources: "¿Cómo conociste la catarsis?"
+        first_contributions: "¿Quiénes son las primeras personas que pediré a apoyar su proyecto?"
+      user:
+        address_city: Ciudad
+        address_complement: Add-on
+        address_neighbourhood: Barrio
+        address_number: Número
+        address_state: Estado
+        address_street: Dirección
+        address_zip_code: CEP
+        cpf: "CPF/CNPJ "
+        cpf_hint: (?)
+        state_inscription: "Estado inscripción"
+        current_password: "Contraseña actual"
+        email: "Correo electrónico"
+        full_name: "Nombre completo nombre/empresa"
+        bio: "Mini Bio"
+        name: Apellido
+        newsletter: "Deseo recibir noticias de catarsis"
+        password: Contraseña
+        password_confirmation: "Confirmación de contraseña"
+        phone_number: "Teléfono (fijo o móvil)"
+        cpf_hint_title: "Este documento se emitirá factura"
+        id: ID
+        moip_login: "MoIP login"
+        moip_login_hint: "(Cómo crear una cuenta)"
+        reset_password_token: "Enlace a recrear la contraseña"
+      channel:
+        ga_code: "Código de Analytics"
+        description: Descripción
+        how_it_works: "Cómo funciona"
+        image: "Imagen de la novedad"
+        name: Nombre
+        video_url: Video
+      channel_partner:
+        name: Nombre
+        url: Sitio
+        image: Imagen
+      channel_post:
+        title: Título
+        body: Contenido
+        visible: "Publicar (Verifica si desea publicar este nóvidade)"
+    errors:
+      models:
+        contribution: "Error al guardar la ayuda"
+        project:
+          attributes:
+            name:
+              blank: "El nombre del proyecto no puede ser en blanco"
+            permalink:
+              blank: "La URL del proyecto no puede ser en blanco"
+              invalid: "El proyecto URL no es válida"
+              taken: "URL de este proyecto ya existe"
+            category:
+              blank: "Debe elegir una categoría para su proyecto"
+            goal:
+              blank: "El valor de la meta no puede ser en blanco"
+              greater_than: "El objetivo debe ser mayor a 9"
+              not_a_number: "Colección meta acepta solamente números"
+            online_days:
+              greater_than: "El plazo para la recolección debe ser mayor que 0 días"
+              not_a_number: "El plazo para la recolección debe ser un número de días"
+            about:
+              blank: "La descripción del proyecto no puede ser en blanco"
+            headline:
+              blank: "La frase del proyecto no puede ser en blanco"
+              too_long: "La frase es muy larga. Puede utilizar un máximo de 140 caracteres."
+        user:
+          attributes:
+            email:
+              not_found: "El email no está registrado, revise la dirección o su registro"
+              taken: "El email ya está registrado, Inicio de sesión"
+              invalid: "Esta dirección de e-mail no es válida"
+              blank: "El correo electrónico no puede ser en blanco"
+            password:
+              too_short: "La contraseña que elegiste es demasiado corta"
+              confirmation: "La contraseña y la confirmación contraseña llena no son iguales"
+              blank: "La contraseña no puede estar en blanco"
+            reset_password_token:
+              invalid: "expiró. Ir a < a href = \"/ contraseña/nuevo\" ></a> restablecer contraseña y petición contraseña restablecer otra vez."
+  project:
+    update:
+      success: "Se ha actualizado la información"
+    video_regex_validation: "se aceptan solamente las direcciones URL de Vimeo"
+  contribution:
+    project_should_be_online: "Usted no puede apoyar un proyecto que no está en el aire"
+    reward_must_be_from_project: "debe ser del mismo diseño"
+    should_not_contribute_if_maximum_contributions_been_reached: "ha alcanzado su máximo número de partidarios"
+    value_must_be_at_least_rewards_value: "debe ser al menos % {minimum_value} para la recompensa seleccionada"
+  contribution_report_to_project_owner:
+    reward_description: "Descripción de recompensa"
+    confirmed_at: "Fecha de confirmación del pago"
+    contribution_value: "Valor de apoyo"
+    reward_deliver_at: "Estimación de entrega"
+    service_fee: "Tasa de catarsis"
+    user_name: "Nombre del partidario"
+    user_email: "Perfil de correo electrónico catarsis"
+    payer_email: "Correo electrónico de los medios de pago"
+    payment_method: "Medios de pago"
+    street: Calle
+    address_number: Número
+    complement: Add-on
+    neighbourhood: Barrio
+    city: Ciudad
+    address_state: Estado
+    zip_code: CEP
+    anonymous: Anónimo
+  user:
+    no_name: "Sin nombre"
+    contributions_text:
+      one: "Apoyó este y más otros proyectos {total} %"
+      other: "Apoyó este y más otros proyectos {total} %"
+  channels_subscribers:
+    created: "Ahora sigue el {canal de} %"
+    deleted: "Ya no sigues el % {canal}"
+  channels:
+    edit: "Canal de actualización"
+    image_hint: "Tamaño máximo (600x121px)"
+    subscribed: "% {count} siguiendo el canal"
+    back_to_news: "← Volver a noticias"
+    follow: "Siga el canal"
+    following: Siguiendo
+    unfollow: "Dejar de seguir"

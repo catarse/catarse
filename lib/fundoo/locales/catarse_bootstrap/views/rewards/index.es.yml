@@ -1,0 +1,14 @@
+es:
+  rewards:
+    index:
+      display_remaining: "{restante} % de % {máximo} disponible"
+      dont_want: "No quiero recompensa"
+      limited: Limitada
+      sold_out: Agotado
+      contributions_to_confirm:
+        one: "1 soporte en término de confirmación."
+        other: "1 soporte en término de confirmación."
+      edit_reward: "Editar recompensa"
+      new_reward: "Registro de recompensa"
+      reward_deliver_time: "<b>entrega estimación:</b> % {estimación}"
+      reward_title: "{Mínimo} % o más"

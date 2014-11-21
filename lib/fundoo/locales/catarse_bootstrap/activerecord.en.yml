@@ -1,0 +1,173 @@
+en:
+  activerecord:
+    models:
+      channel: Channel
+      project: Project
+      reward: Reward
+      contribution: Supporter
+      category: Category
+      bank_account: "Bank details"
+    attributes:
+      bank_account:
+        bank: Bank
+        bank_id: Bank
+        owner_name: "Name of the holder"
+        owner_document: "CPF/CNPJ of the holder"
+        agency: Agency
+        agency_digit: Digit
+        account: "Account number"
+        account_digit: Digit
+      contribution:
+        value: "value of support"
+        payer_name: "Full Name"
+        payer_email: Email
+        country: Country
+        address_street: Street
+        address_number: Number
+        address_complement: Add-on
+        address_neighbourhood: Neighborhood
+        address_state: State
+        address_city: City
+        address_zip_code: CEP
+        address_phone_number: Phone
+        reward: reward
+        project: project
+      reward:
+        deliver_at: "Delivery forecast"
+      project:
+        channels: Channels
+        category: Category
+        expires_at: Deadline
+        online_days: "How many days you need to achieve your goal? The maximum time is 60 days"
+        headline: "A catch phrase about your project. Maximum of 140 characters."
+        image_url: "URL of the image"
+        name: "Project name"
+        goal: "How much you want to raise? (Use only numbers)."
+        about: "Tell the story of your project and how you intend to spend the money raised."
+        user_id: "User Id"
+        video_url: "Video URL"
+        permalink: "URL of your project"
+        more_links: "Provide links for people to know more about your project and its trajectory."
+        traffic_sources: "How did you hear about Fundoo??"
+        first_contributions: "Who are the first people you'll ask to support your project?"
+      user:
+        address_city: City
+        address_complement: Add-on
+        address_neighbourhood: Neighborhood
+        address_number: Number
+        address_state: State
+        address_street: Address
+        address_zip_code: CEP
+        cpf: "CPF/CNPJ "
+        cpf_hint: (?)
+        state_inscription: "State Enrollment"
+        current_password: "Current password"
+        email: Email
+        full_name: "Full name/company name"
+        bio: "Mini Bio"
+        name: Surname
+        newsletter: "I want to receive news of Fundoo"
+        password: Password
+        password_confirmation: "Confirmation of password"
+        phone_number: "Phone (landline or mobile)"
+        cpf_hint_title: "Invoice will be issued for this document"
+        id: ID
+        moip_login: "MoIP Login"
+        moip_login_hint: "(How to create an account)"
+        reset_password_token: "Link to recreate password"
+      channel:
+        ga_code: "Analytics code"
+        description: Description
+        how_it_works: "How it works"
+        image: "Image of novelty"
+        name: Name
+        video_url: Video
+      channel_partner:
+        name: Name
+        url: Site
+        image: Image
+      channel_post:
+        title: Title
+        body: Content
+        visible: "Publish (check if you want to publish this nóvidade)"
+    errors:
+      models:
+        contribution: "Error saving support"
+        project:
+          attributes:
+            name:
+              blank: "The project name cannot be blank"
+            permalink:
+              blank: "The URL of the project cannot be blank"
+              invalid: "Invalid project URL"
+              taken: "This project URL already exists"
+            category:
+              blank: "You must choose a category for your project"
+            goal:
+              blank: "The meta value cannot be blank"
+              greater_than: "The goal should be greater than 9"
+              not_a_number: "Meta collection accepts only numbers"
+            online_days:
+              greater_than: "The deadline for collection must be greater than 0 days"
+              not_a_number: "The deadline for collection must be a number of days"
+            about:
+              blank: "The project description cannot be blank"
+            headline:
+              blank: "The catch phrase of the project cannot be blank"
+              too_long: "The catch phrase is very long. You can use a maximum of 140 characters."
+        user:
+          attributes:
+            email:
+              not_found: "Email not found, please sign up"
+              taken: "Email has already been taken"
+              invalid: "This e-mail address is invalid"
+              blank: "The email can not be blank"
+            password:
+              too_short: "The password you chose is too short"
+              confirmation: "The password and confirmation password filled are not equal"
+              blank: "The password cannot be blank"
+            reset_password_token:
+              invalid: "expired. Go to <a href = \"/password/new\" > </a> reset password and request password reset again."
+  project:
+    update:
+      success: "The information has been updated"
+    video_regex_validation: "only Vimeo URLs are accepted"
+  contribution:
+    project_should_be_online: "You can not support a project that is not in the air"
+    reward_must_be_from_project: "must be of the same design"
+    should_not_contribute_if_maximum_contributions_been_reached: "has reached its maximum number of supporters"
+    value_must_be_at_least_rewards_value: "must be at least %{minimum_value} for the selected reward"
+  contribution_report_to_project_owner:
+    reward_description: "Reward description"
+    confirmed_at: "Date of payment confirmation"
+    contribution_value: "Value of support"
+    reward_deliver_at: "Delivery estimate"
+    service_fee: "Rate of Fundoo"
+    user_name: "Name of the supporter"
+    user_email: "Email profile Fundoo"
+    payer_email: "Email of the means of payment"
+    payment_method: "Means of payment"
+    street: Street
+    address_number: Number
+    complement: Add-on
+    neighbourhood: Neighborhood
+    city: City
+    address_state: State
+    zip_code: CEP
+    anonymous: Anonymous
+  user:
+    no_name: "Without name"
+    contributions_text:
+      one: "Supported this and most other %{total} projects"
+      other: "Supported this and most other %{total} projects"
+  channels_subscribers:
+    created: "Now you follow the %{channel}"
+    deleted: "You no longer follow the %{channel}"
+  channels:
+    edit: "Update channel"
+    image_hint: "Maximum size (600x121px)"
+    subscribed: " %{count} following the channel"
+    back_to_news: "← Back to news"
+    follow: "Follow the channel"
+    following: Following
+    unfollow: Unfollow

@@ -1,0 +1,22 @@
+- project = @notification.project
+|Olá #{project.user.name}, tudo bem? Aqui quem fala é a Luciana do Catarse!
+br/
+br/
+|Vi que você criou o rascunho do projeto #{link_to(project.name, project_by_slug_url(permalink: project.permalink, ref: 'notificação_resgate_rascunho' ))} mas ainda não nos enviou. Após o envio, você vai começar a receber uma consultoria especial minha ou da nossa super equipe de atendimento, lembrando que todas as informações do seu projeto poderão ser editadas e é você que escolhe o dia para iniciar sua arrecadação.
+br/
+br/
+= link_to image_tag("#{CatarseSettings[:base_url]}/assets/catarse_bootstrap/botao_envie.png", style: "display:block;margin-left:auto;margin-right:auto;"), project_by_slug_url(permalink: project.permalink, ref: 'notificação_resgate_botao' )
+br/
+br/
+|Se ainda não está pronto para receber um feedback do Catarse, recomendo dar um passeio pela nossa #{link_to('Central de Suporte', CatarseSettings[:support_forum])}. Lá você vai encontrar as respostas para as dúvidas mais frequentes de nossos realizadores, além de sugestões #{link_to('de o que oferecer como recompensa', CatarseSettings[:choose_reward_link])} e também #{link_to('dicas de como fazer um vídeo matador', CatarseSettings[:video_how_to_link])}.
+br/
+br/
+|Lembrando que você também pode entrar em contato comigo a hora que quiser respondendo diretamente a esta mensagem ou através do e-mail #{mail_to CatarseSettings[:email_contact]}.
+br/
+br/
+|Beijo,
+br/
+strong
+  |Luciana Masini
+br/
+|Catalisadora de projetos criativos

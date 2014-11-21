@@ -1,0 +1,18 @@
+#bootstrap-feedback
+  .feedback-support data-toggle="closed" style="display: none"
+    = link_to (content_tag(:span, "", :class => "close-arrow")), 'javascript:void(0)', class: 'toggle close'
+    .clearfix
+    .icon
+    p= t('devise.feedback_tab.header_html')
+    p
+      = link_to t('devise.feedback_tab.blog_button'), 'http://blog.fundoo.es/o-redesenho-do-login-na-plataforma/', target: '__blank', class: 'button negative medium'
+    hr/
+    nav
+      = link_to t('devise.feedback_tab.form_feedback_link'), 'http://bit.ly/1dkdorL', target: '__blank'
+      br/
+      .zendesk_widget= link_to t('devise.feedback_tab.contact_link'), "#{CatarseSettings[:zendesk_url]}/account/dropboxes/#{CatarseSettings[:zendesk_dropbox_id]}"
+  .feedback-support data-toggle="opened"
+    = link_to (content_tag(:span, "", :class => "open-arrow")), 'javascript:void(0)', class: 'toggle open'
+    p.toggle.text
+      = t('devise.feedback_tab.title')
+= render '/layouts/new_zendesk'

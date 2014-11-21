@@ -1,0 +1,41 @@
+- content_for :main_stylesheet, :webflow
+- content_for :title, t('.titles.site')
+
+.w-container
+  = render 'devise/shared/header'
+
+  .w-row
+    .w-col.w-col-3
+    .w-col.w-col-6.box-login
+      h2.text-center = t '.titles.header'
+
+      .register
+        .text = t '.have_account_html'
+        = link_to t('.links.login'), new_user_session_url, class: 'link'
+
+      .login-fb
+        = button_to t('.form.inputs.facebook'), user_omniauth_authorize_path(provider: :facebook, locale: nil), class: 'button bt-medium bt-fb'
+
+      .separator
+        .text.or = t('or')
+
+      .w-form.form-login
+        = simple_form_for resource, as: resource_name, url: sign_up_url, html: {novalidate: true} do |form|
+          = render 'devise/shared/alert'
+
+          = form.input :name, as: :string, label: t('.form.labels.name'), input_html: { class: 'w-input text-field' }
+
+          = form.input :email, as: :email, wrapper_html: { class: 'no-asterisk' }, input_html: { class: 'w-input text-field' }
+
+          .password
+            = form.input :password, as: :password, label: t('.form.labels.password'), hint: t('.form.hint.password_length'), input_html: { class: 'w-input text-field' }
+
+            .show-password
+              = check_box_tag :show_password
+              = label_tag :show_password, t('.form.labels.show_password')
+
+          = form.input :newsletter, as: :boolean, inline_label: t('.form.labels.newsletter'), input_html: { class: 'w-checkbox-input', checked: true }, wrapper_html: {class: 'w-checkbox-input w-clearfix' }
+
+          = form.submit t('.form.inputs.submit'), class: 'w-button button bt-medium'
+
+          p.accept = t(".form.labels.accept", terms_url: CatarseSettings[:terms_url], privacy_url: CatarseSettings[:privacy_url]).html_safe

@@ -1,0 +1,44 @@
+fr:
+  channels_subscribers:
+    created: 'vous êtes désormais abonné à %{channel}'
+    deleted: "vous n'êtes plus abonné à %{channel}"
+  channels:
+    send_your_project: "Soumettez votre projet"
+    send_a_email: "Envoyer un courriel"
+    follow: "s'abonner"
+    following: "abonné"
+    unfollow: "se désabonner"
+    subscribed: "%{count} abonnés"
+    admin:
+      menu: "Modération"
+      statistics_menu: "Statistiques"
+      profile_menu: "Profil"
+      statistics:
+        title: 'statistiques'
+        total_subscribers: 'Total des abonnés'
+    projects:
+      send: "Soumettez votre project"
+      see_how_it_works: "Regardez comment ça marche et soumettez votre projet"
+      how_it_works: "Comment ça marche"
+      progress_html: "financé à hauter de <span>%{percent}%</span>"
+      time_remaining_html:
+        one: "<span>%{count} %{unit}</span> restant"
+        other: "<span>%{count} %{unit}</span> restant"
+      pledged_html: "<span>%{value}</span> promis"
+    how_it_works:
+      title: "Comment ça marche"
+    footer:
+      terms: "Conditions d'utilisation"
+      privacy_policy: "Politique de confidentialité"
+      how_it_works: "Comment ça marche"
+      how_channels_work: "Comprendre les chaînes Catarse"
+      contact: "Contact"
+    accessibility:
+      how_it_works: "Voir comment ça marche et soumettre un projet"
+      send_your_project: "Cliquez pour soumettre votre projet"
+      link_to_twitter: "cette chaîne sur Twitter"
+      link_to_facebook: "cette chaîne sur Facebook"
+      link_to_website: "site web de cette chaîne"
+    presentation:
+      link-to-follow: "s'abonner"
+      followers: 'abonnés'

@@ -1,0 +1,16 @@
+en:
+  shared:
+    feedback:
+      button: "Give a feedback"
+      inputs:
+        submit: "Send feedback"
+        close: Close
+      placeholders:
+        email: Email
+        text: "Write your feedback"
+      texts:
+        title: "Give us the pleasure of his word!"
+        content: "In recent months we have worked day and night in a series of changes in the platform, which are detailed in this <a target = ' _blank ' href = ' http://blog.fundoo.es/os-passos-para-um-novo-catarse/' class = ' link-underline ' > special post </a>. It would be amazing if we could hear from you what you think of this transformation. <br> release the verb!"
+        response:
+          title: "Wow! <br> Thanks;)"
+          content: "We appreciate every feedback received. We can't respond to each one individually, but we listened carefully to every criticism and suggestion. Your comment is sure to be very important in our walk, and will help us to continuously improve your experience here at Fundoo."

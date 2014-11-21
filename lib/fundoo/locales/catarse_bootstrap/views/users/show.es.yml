@@ -1,0 +1,101 @@
+es:
+  users:
+    failed_reactivation: "El enlace para la reactivación no es válido, por favor contacte con nuestro equipo."
+    reactivated: "Bienvenido, tu cuenta ha sido reactivada."
+    project:
+      confirmed: Confirmado
+      refunded: Reembolsado
+      requested_refund: "Reembolso solicitado"
+      waiting_confirmation: "A la espera de confirmación"
+      tell_about_this_contribution: "Dile al mundo sobre su apoyo!"
+    credit_cards:
+      index:
+        last_digits: Tarjeta
+        brand: Operador
+        title: "Tarjetas de crédito"
+        remove: Quitar
+    credits:
+      modal:
+        title: "¿Quieres solicitar un reembolso de tu apoyo?"
+        text: "Aprender cómo procesa el reembolso en catarsis:"
+        link: "Normas y funcionamiento de los reembolsos/anulaciones"
+        reject_btn: "No, yo mantendría mis créditos"
+        accept_btn: "Sí, quiero solicitar un reembolso de mi apoyo"
+      index:
+        contribution_date: "Fecha de la ayuda"
+        current_credits_html: "El saldo actual es < span id = \"current_credits\" > % {créditos de}</span> en créditos."
+        important_html: "Para aprender todas las reglas de operación, reembolso < un href = 'http://support.fundoo.es/hc/pt-br/articles/202365507-Regras-e-funcionamento-dos-reembolsos-estornos' target = '_blank' > haga clic aquí</a>. Si usted tiene alguna pregunta, visite nuestro < un href = 'http://support.fundoo.es' target = '_blank' ></a> apoyo."
+        project: Proyecto
+        refunded: "Solicitud confirmada. Nosotros le contactaremos dentro de 4 días útiles."
+        insufficient_credits: "No tienes suficientes créditos para cumplir con este cargo."
+        refunds_title: "Endosos que tenga chargeback celebrada"
+        request_refund: "Contracargo petición"
+        requested_refund: "Chargeback solicitada"
+        status: Estado
+        title: "Mis créditos"
+        value: Valor
+      refund:
+        cannot_refund: "Este apoyo no puede revertirse."
+        error: "Uy. Se ha producido un error al solicitar su cargo."
+        no_credits: "No tienes suficientes créditos para cumplir con este cargo."
+        refunded: "Este apoyo se ha invertido ya."
+        requested_refund: "Se ha solicitado alguna vez contracargo de este apoyo."
+      title: "Mis créditos"
+    current_user_fields:
+      bank_account_title: "Datos bancarios"
+      bank_account_hint: "Se utilizará sus datos bancarios para realizar el reembolso completo de su apoyo, si el proyecto no llega al 100% del conjunto blanco."
+      my_facebook: "Integración con facebook"
+      bio_limit: "hasta 140 caracteres"
+      updated: "Se ha actualizado su información"
+      update_social_info: "Actualización de información"
+      social_info: "Información de contacto"
+      twitter: "Twitter (usuario)"
+      facebook_link: "Perfil de Facebook (link completo)"
+      other_link: "Enlace a su página en internet"
+      change_password: "Cambiar mi contraseña"
+      current_password_hint: "<i>Para cambiar la contraseña es usted debe confirmar su contraseña actual.</i>"
+      email_hint: "Su correo electrónico se utilizará únicamente para el envío de comunicaciones de catarsis y diseños que usted apoya. No será visible en tu perfil. Cuando usted apoya un proyecto, le daremos su correo electrónico al dueño del proyecto así puede proporcionar las recompensas."
+      email_tooltip: "Haga clic aquí para llenar en tu email..."
+      gravatar_hint_html: "También puedes cambiar tu foto usando el % {link} con su correo electrónico. <br>es tan sencillo como enviar una foto y ahora trabaja para otros sitios así;)"
+      local_avatar: "Mi avatar"
+      submit_text: "Elige tu imagen"
+      submit: Enviar
+      my_data: "Mis datos"
+      newsletter: "Deseo recibir noticias de catarsis por correo electrónico"
+      password_hint: "<i>deje en blanco si no quieres cambiar tu contraseña.</i>"
+      deactivate: "Desactivar mi cuenta"
+      deactivate_notice: "Se ha deshabilitado el % {nombre}."
+      deactivate_confirm: "¿Que desea desactivar esta cuenta?"
+      deactivate_hint: "Todas sus copias de seguridad se convertirá en apoyo anónimo, sus datos no serán visibles, saldrás automáticamente el sistema y su cuenta será desactivada permanentemente."
+    unsubscribes:
+      projects_in_reminder: "Proyectos con activo recordatorio:"
+      title: "Elegir proyectos que desea recibir notificaciones:"
+      posts: "Deseo recibir actualizaciones de proyectos"
+    show:
+      projects:
+        here: aquí
+        no_projects: "{nombre} % aún no ha realizado ningún proyecto en catarsis. ¿La inspiración se llegará algún día?"
+        no_projects_current_user_html: "No haber realizado ningún proyecto en catarsis. Deja que la inspiración golpeó y haga clic en {link} % para empezar!"
+        title: "Proyectos de % {nombre}"
+        title_current_user: "Mis proyectos"
+      contributions:
+        anonymous: "Anónimo apoyo."
+        no_contributions: "% {nombre} no ha apoyado a cualquier proyecto. Pero sabemos que es sólo cuestión de tiempo. : D"
+        no_contributions_current_user_html: "Usted aún no apoya cualquier proyecto. ¿Qué tal < a href = \"/\" > empezar ahora</a>?"
+        no_reward: "No ha seleccionado ninguna recompensa"
+        title: "Proyectos ha respaldado ese % {nombre}"
+        title_current_user: "Proyectos que ya apoyó"
+        your_reward: "Tu recompensa"
+      attention: Atención
+      tabs:
+        credit_cards: "Tarjetas de crédito"
+        contributed_projects: "Proyectos apoyados"
+        created_projects: "Proyectos creados"
+        comments: Comentarios
+        credits: Créditos
+        settings: Preferencias
+        unsubscribes: Notificaciones
+      user_social:
+        email: "Enviarme un correo electrónico"
+        facebook: "Perfil de Facebook"
+        twitter: "Perfil en twitter"

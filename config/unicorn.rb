@@ -4,7 +4,7 @@
 if ENV['PX_DYNO']
   worker_processes 18
 else
-  worker_processes 3
+  worker_processes 1
 end
 
 # Requests with more than 30 sec will be killed

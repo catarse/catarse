@@ -1,0 +1,25 @@
+en:
+  shared:
+    terms: "terms of use"
+    accept_terms_html: "I have read and I agree with the %{link}."
+    header_channel:
+      contact: Contact
+      logout: Exit
+      my_credits: "My credits"
+      partners: Partners
+      posts: News
+      profile: "My profile"
+      signin: Login
+      signup: "Sign up"
+      submit: "Send project"
+      how_work: "How it works"
+    footer_channel:
+      contact: Contact
+      how_works: "How it works"
+      privacy_policy: "Privacy policy"
+      terms: "Terms of use"
+      what_is_channel: "What are channels?"
+      how_it_works: "How does the %{name}"
+      how_channels_work: "Understand the channels in Fundoo"
+    header_big:
+      projects: "My Projects"

@@ -1,0 +1,23 @@
+- user = @notification.user
+- category = @notification.category
+
+| Olá #{user.name},
+br/
+br/
+| Novidades dessa semana na categoria #{category.name_pt} do Catarse
+br/
+br/
+- category.projects.of_current_week.each do |project|
+  |#{link_to(project.name, project_by_slug_url(permalink: project.permalink, ref: 'notificacao_subscription_category'))}
+  br
+  |#{project.headline}
+  br
+  br
+br/
+br/
+|Um abraço,
+br/
+| #{CatarseSettings[:company_name]}
+br/
+br/
+| #{link_to 'Descadastrar', unsubscribe_category_url(category), target:'__blank'} o recebimento de projetos recentes dessa categoria.

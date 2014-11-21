@@ -1,0 +1,34 @@
+- content_for :main_stylesheet, :webflow
+- content_for :title, t('.titles.site')
+
+.w-container
+  = render 'devise/shared/header'
+
+  .w-row
+    .w-col.w-col-3
+    .w-col.w-col-6.box-login.animated.fadeIn
+      h2.text-center= t '.titles.header'
+
+      .register
+        .text = t ('.no_account_html')
+        = link_to t('.links.register'), new_user_registration_url, class: 'link'
+
+      .login-fb
+        = button_to t('.form.inputs.facebook'), user_omniauth_authorize_path(provider: :facebook, locale: nil), class: 'button bt-medium bt-fb'
+
+      .separator
+        .text.or = t('or')
+
+      .w-form.form-login
+        = simple_form_for resource, as: resource_name, url: session_url(resource_name), html: {novalidate: true}, class: 'email-form' do |form|
+
+          = render 'devise/shared/alert'
+
+          = form.input :email, as: :email, label: t('.email'), input_html: { class: 'w-input text-field' }
+
+          = form.input :password, as: :password, label: t('.form.inputs.password'), input_html: { class: 'w-input text-field' }
+          = link_to t('.links.forgot_password'), new_password_path(resource_name), class: 'link forget-password'
+
+          = form.input :remember_me, as: :boolean, inline_label: t('.form.labels.remember_me'), input_html: { class: 'w-checkbox-input', checked: true }, wrapper_html: {class: 'w-checkbox-input' }
+
+          = form.button :submit, t('.form.inputs.submit'), class: 'w-button button bt-medium'

@@ -1,5 +1,5 @@
 class PaymentEngines
-  @@engines = []
+  @@engines ||= []
 
   def self.find_engine name
     # if name is nil we should return nil

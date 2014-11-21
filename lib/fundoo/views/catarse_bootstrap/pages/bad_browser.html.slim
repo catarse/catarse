@@ -1,0 +1,22 @@
+- chrome_url = "http://www.google.com/chrome/"
+- firefox_url = "http://www.mozilla.org/firefox/"
+- content_for :title, t('.title')
+= render 'devise/shared/header'
+.row
+  .large-5.large-centered.columns
+    .box.animated.fadeIn
+      h2.text-center= t('.title')
+      hr
+      .large-11.columns.large-centered
+        p= t('.text')
+      .browser-icons.large-12.columns.large-centered
+        .large-6.columns.text-center
+          = link_to chrome_url, target: :blank do
+            = image_tag "browser_logos/chrome.png"
+        .large-6.columns.text-center
+          = link_to firefox_url, target: :blank do
+            = image_tag "browser_logos/firefox.png"
+        .large-6.columns.text-center
+          = link_to "Download Chrome", chrome_url, target: :blank, class: "button action medium"
+        .large-6.columns.text-center
+          = link_to "Download Firefox", firefox_url, target: :blank, class: "button action medium"

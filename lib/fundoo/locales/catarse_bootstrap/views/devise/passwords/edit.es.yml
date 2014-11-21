@@ -1,0 +1,15 @@
+es:
+  devise:
+    passwords:
+      edit:
+        titles:
+          site: "Establecer una nueva contraseña"
+          header: "Establecer una nueva contraseña"
+        form:
+          hint:
+            password_length: "Mínimo de 6 caracteres"
+          labels:
+            password: "Nueva contraseña"
+            password_confirmation: "Confirmación de contraseña"
+          inputs:
+            submit: "Guardar y escribe"

@@ -1,0 +1,20 @@
+- content_for :main_stylesheet, :webflow
+
+= render 'shared/header_big'
+= render 'shared/feedback'
+
+.page-header
+  h1.headingcenter = t('.title')
+
+.w-container.text-page
+  h2 = t('.content.explanation')
+  p.prg2 = t('.content.explanation_text').html_safe
+  p.prg2 = t('.content.explanation_text_cont').html_safe
+
+  h2 = t('.content.email')
+  p.prg2 = t('.content.email_text').html_safe
+
+  h2 = t('.content.update')
+  p.prg2 = t('.content.update_text').html_safe
+
+= render 'shared/footer_big'

@@ -1,0 +1,101 @@
+en:
+  users:
+    failed_reactivation: "The link for reactivation is invalid, please contact our team."
+    reactivated: "Welcome back, your account has been reactivated."
+    project:
+      confirmed: Confirmed
+      refunded: Refunded
+      requested_refund: "Refund requested"
+      waiting_confirmation: "Awaiting confirmation"
+      tell_about_this_contribution: "Tell the world about your support!"
+    credit_cards:
+      index:
+        last_digits: Card
+        brand: Operator
+        title: "Credit cards"
+        remove: Remove
+    credits:
+      modal:
+        title: "Want to request a refund of your support?"
+        text: "Learn how does the reimbursement process in Fundoo:"
+        link: "Rules and operation of the refunds/chargebacks"
+        reject_btn: "No, I would keep my credits"
+        accept_btn: "Yes, I want to request a refund of my support"
+      index:
+        contribution_date: "Date of the support"
+        current_credits_html: "Your current balance is <span id = \"current_credits\" > %{credits} </span> in credits."
+        important_html: "To learn all the rules of operation, refund <a href = ' http://support.fundoo.es/hc/pt-br/articles/202365507-Regras-e-funcionamento-dos-reembolsos-estornos ' target = ' _blank ' > click here </a>. If you have any questions, visit our <a href = ' http://support.fundoo.es ' target = ' _blank ' > </a> support."
+        project: Project
+        refunded: "Request confirmed. We will contact you within 4 days useful."
+        insufficient_credits: "You do not have enough credits to accomplish this chargeback."
+        refunds_title: "Endorsements you may have chargeback held"
+        request_refund: "Chargeback request"
+        requested_refund: "Requested chargeback"
+        status: Status
+        title: "My credits"
+        value: Value
+      refund:
+        cannot_refund: "This support cannot be reversed."
+        error: "Oops. An error occurred when requesting your chargeback."
+        no_credits: "You do not have enough credits to accomplish this chargeback."
+        refunded: "This support has already been reversed."
+        requested_refund: "Have you ever requested chargeback for this support."
+      title: "My credits"
+    current_user_fields:
+      bank_account_title: "Bank details"
+      bank_account_hint: "Your bank details will be used to perform the full refund of your support, if the project does not reach 100% of the target set."
+      my_facebook: "Integration with facebook"
+      bio_limit: "up to 140 characters"
+      updated: "Your information has been updated"
+      update_social_info: "Update information"
+      social_info: "Information for contact"
+      twitter: "twitter (user)"
+      facebook_link: "facebook profile (full link)"
+      other_link: "link to your page on the internet"
+      change_password: "Change my password"
+      current_password_hint: "<i> For the password is changed you must confirm your current password. </i>"
+      email_hint: "Your email will be used only for sending communications of Fundoo and designs that you support. He will not be visible in your profile. When you support a project, we will give your email to the owner of the project so that it can provide the rewards."
+      email_tooltip: "Click here to fill in your email ..."
+      gravatar_hint_html: "You can also change your photo using the %{link} with your email. <br> is as simple as sending a picture and now works for other sites as well;)"
+      local_avatar: "My avatar"
+      submit_text: "Choose your image"
+      submit: Send
+      my_data: "My data"
+      newsletter: "I want to receive news of Fundoo by email"
+      password_hint: "<i> leave blank if you do not want to change your password. </i>"
+      deactivate: "Deactivate my account"
+      deactivate_notice: "The %{name} has been disabled."
+      deactivate_confirm: "You want to disable this account?"
+      deactivate_hint: "All your backups will be converted into anonymous support, your data will no longer be visible, you will automatically exit the system and your account will be deactivated permanently."
+    unsubscribes:
+      projects_in_reminder: "Projects with active reminder:"
+      title: "Choosing which projects you want to receive notifications:"
+      posts: "I want to receive updates of projects"
+    show:
+      projects:
+        here: here
+        no_projects: " %{name} has not yet conducted any project in Fundoo. Will the inspiration will hit sometime?"
+        no_projects_current_user_html: "You have not performed any project in Fundoo. Let inspiration hit and click %{link} to start!"
+        title: "Projects of %{name}"
+        title_current_user: "My projects"
+      contributions:
+        anonymous: "Anonymous support."
+        no_contributions: " %{name} has not supported any project. But we know it's only a matter of time! :D"
+        no_contributions_current_user_html: "You still haven't supported any project. How about <a href = \"/\" > start now </a>?"
+        no_reward: "You have not selected any reward"
+        title: "Projects that %{name} has backed"
+        title_current_user: "Projects that already supported"
+        your_reward: "Your reward"
+      attention: Attention
+      tabs:
+        credit_cards: "Credit cards"
+        contributed_projects: "Projects supported"
+        created_projects: "Projects created"
+        comments: Comments
+        credits: Credits
+        settings: Preferences
+        unsubscribes: Notifications
+      user_social:
+        email: "Send Me an email"
+        facebook: "Facebook profile"
+        twitter: "Profile on twitter"

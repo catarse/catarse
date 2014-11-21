@@ -1,0 +1,93 @@
+es:
+  channels:
+    admin:
+      menu: "Moderación de canales"
+      followers_menu: Seguidores
+      statistics_menu: Estadísticas
+      profile_menu: "Editar canal"
+      partners_menu: "Editar socios"
+      statistics:
+        title: "Estadísticas de canal"
+        total_subscribers: "Totales suscriptores"
+      confirmations:
+        destroy: "¿Está seguro que desea eliminar?"
+      filter:
+        between_created_at: "Creado entre"
+        by_id: "Por id"
+        order_table: "Tabla de tipo"
+        pg_search: Proyecto
+        submit: Filtro
+        title: Filtro
+        user_name_contains: Usuario
+        with_state: "Con el estado"
+      followers:
+        index:
+          download: "Descargar lista"
+          title: Seguidores
+      management:
+        no_partners: "Cualquier pareja de hecho registrada"
+        no_posts: "No hay noticias registradas"
+        title: Gestión
+        total: "totales proyectos"
+      partners:
+        back_to_list: "← Volver a gestionar los socios"
+        new:
+          add_partner: "Añadir socio"
+        edit:
+          edit_title: "Editar socio"
+        form:
+          hint_image: "Tamaño de la imagen 370 x 320"
+          save_submit: Salvar
+        index:
+          new_button: "Añadir socio"
+          table:
+            created_at: "Creado en"
+            image: Imagen
+            name: Nombre
+            url: Sitio
+            actions: Acciones
+          title: "Gestión de socios"
+      posts:
+        back_to_list: "← Volver a gestionar noticias"
+        new:
+          create_news: "Crear un nuevo"
+        edit:
+          edit_news: "Editar noticias"
+        index:
+          new_post_button: "Crear un nuevo"
+          table:
+            actions: Acciones
+            created_at: "Creado en"
+            published_at: "Publicada en"
+            title: "Título de la novedad"
+          title: "Administrar noticias"
+        form:
+          save_submit: "Guardar y escuchar"
+        update:
+          published_message: "La novedad fue publicada y enviada por correo electrónico a seguidores del canal."
+        warning_html: "Recordar que cada nuevo publicado va directamente al correo electrónico de sus seguidores. Entonces, revisar su texto antes de enviarlo."
+      posts_menu: "Administrar noticias"
+      table:
+        approve: Aprueban
+        category: Categoría
+        confirmation: "¿Está seguro que desea eliminar este proyecto?"
+        contributed_projects: "Proyectos apoyados"
+        created_projects: "Proyecto creado"
+        destroy_action: Borrar
+        edit_action: Editar
+        expires_at: Terminación
+        goal: Meta
+        name: Título
+        online_date: Publicación
+        pledged: Logrado
+        publish_action: Publicar
+        recommended: Recomendar
+        reject: Rechazan
+        send_to_draft: "Enviar al proyecto"
+        send_to_trash: "ELIMINAR PROYECTO"
+        show_action: Mostrar
+        state: Estado
+        total_contributions: Apoyo
+        unpublish_action: "Anular la publicación"
+        user: Usuario
+        user_id: Usuario

@@ -1,0 +1,35 @@
+.bootstrap-twitter
+  .alert.alert-info
+    p
+      = "Para saber tudo sobre como estruturar o seu projeto, baixe o #{link_to 'Guia Completo', "#{CatarseSettings[:base_url]}/guia_realizadores.pdf", target: '_blank'}".html_safe
+.bootstrap-form
+  = simple_form_for @project do |form|
+    - if current_user.admin
+      - if @project.in_analysis?
+        = form.input :online_date, as: :datetime, include_blank: true
+      = form.input :user_id
+      = form.input :permalink, as: :string
+    - if policy(@project).permitted_for?(:name, :update)
+      = form.input :name, as: :string, required: false
+    - if policy(@project).permitted_for?(:headline, :update)
+      = form.input :headline, as: :string, required: false
+    - if policy(@project).permitted_for?(:category_id, :update)
+      = form.association :category, as: :select, required: false
+    - if policy(@project).permitted_for?(:video_url, :update)
+      = form.input :video_url, as: :string, hint: t('formtastic.hints.project.video_url_edit'),required: false
+    - if policy(@project).permitted_for?(:uploaded_image, :update)
+      = form.input :uploaded_image, as: :file, required: false,
+        hint: (@project.uploaded_image.present? ? image_tag(@project.uploaded_image.project_thumb.url, size: '220x172') : t('formtastic.hints.project.uploaded_image') )
+    - if policy(@project).permitted_for?(:online_days, :update)
+      = form.input :online_days, as: :numeric, required: false
+    - if policy(@project).permitted_for?(:goal, :update)
+      = form.input :goal, as: :numeric, required: false, hint: t('formtastic.hints.project.goal').html_safe
+    - if policy(@project).permitted_for?(:about, :update)
+      = form.input :about, required: false, input_html: {rows: 20}
+      = render 'formatting_tips'
+
+    - if current_user.admin
+      = form.association :channels, as: :check_boxes
+
+    .form-actions.bootstrap-twitter
+      = form.submit class: 'btn'

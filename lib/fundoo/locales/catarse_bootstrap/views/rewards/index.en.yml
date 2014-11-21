@@ -1,0 +1,14 @@
+en:
+  rewards:
+    index:
+      display_remaining: " %{remaining} of %{maximum} available"
+      dont_want: "I don't want to reward"
+      limited: Limited
+      sold_out: Exhausted
+      contributions_to_confirm:
+        one: "1 support in term of confirmation."
+        other: "1 support in term of confirmation."
+      edit_reward: "Edit reward"
+      new_reward: "Register reward"
+      reward_deliver_time: "<b> delivery Estimate: </b> %{estimate}"
+      reward_title: "For %{minimum} or more"

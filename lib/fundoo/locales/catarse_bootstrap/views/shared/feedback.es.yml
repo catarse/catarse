@@ -1,0 +1,16 @@
+es:
+  shared:
+    feedback:
+      button: "Dar una respuesta"
+      inputs:
+        submit: "Enviar comentarios"
+        close: Cerrar
+      placeholders:
+        email: "Correo electrónico"
+        text: "Escriba sus comentarios"
+      texts:
+        title: "Denos el placer de su palabra!"
+        content: "En los últimos meses hemos trabajado día y noche en una serie de cambios en la plataforma, que se detallan en este < target = \"_blank\" href = 'http://blog.fundoo.es/os-passos-para-um-novo-catarse/' class = 'enlace-subrayado' > puesto especial</a>. Sería increíble que oíamos de ti lo que piensas de esta transformación. <br>versión del verbo!"
+        response:
+          title: "¡ Wow! Gracias <br>;)"
+          content: "Agradecemos todos los comentarios recibidos. No podemos responder a cada uno individualmente, pero escuchamos atentamente a cada crítica y sugerencia. Tu comentario es seguro que será muy importante en nuestro caminar y nos ayudará a mejorar continuamente su experiencia aquí en catarsis."

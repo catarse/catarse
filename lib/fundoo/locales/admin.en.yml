@@ -1,0 +1,374 @@
+en:
+  admin:
+    filter:
+      title: Filters
+    confirm_dialog: "You are sure?"
+    financials:
+      index:
+        id: ID
+        name: Title
+        user: "User MoIP"
+        user_id: "User ID"
+        goal: Meta
+        total_payment_service_fee: "Rate of MP"
+        total_catarse_fee: "Rate of Fundoo"
+        repass_value: "Vl. Pass-through"
+        expires_at: Finalizes
+        online_date: "Went on the air"
+        pledged: Achieved
+        recommended: Recommended?
+        state: State
+        menu: "Rel. Money"
+        title: "Financial reports"
+        contribution_report: "Supporters report"
+        search_report: "Search report"
+        total_projects: projects
+        submit: Filter
+        by_state: "By state"
+        between_expires_at: "Expire between"
+        by_progress: "By progress %"
+        details:
+          name: "Corporate name"
+          bank_data: "Banking data"
+          document: CPF/CNPJ
+          email: Email
+          permalink: "Project Permalink"
+    projects:
+      index:
+        with_state: "By State"
+        by_category: "By category"
+        project: Project
+        user: User
+        between_created_at: "Created at between"
+        goal_between: "Come between"
+        between_expires_at: "Expire between"
+        between_online_date: "Entered in the air between"
+        between_updated_at: "Updated between"
+        by_user_email: "Director's e-mail"
+        id: ID
+        name: Title
+        send_to_trash: Delete
+        send_to_draft: "Send to DRAFT!"
+        reject: Reject!
+        approve: Approve!
+        user_id: "User ID"
+        goal: Meta
+        total_contributions: Support
+        online_date: "Went on the air"
+        pledged: Achieved
+        recommended: Recommended?
+        state: State
+        no_projects: "No project found"
+        menu: "Admin projects"
+        title: "Project management"
+        total_projects: projects
+        submit: Filter
+        expires_at: "Ends in"
+        category: Category
+        order_table: "Sort table"
+        order_date: "Date of shipment"
+        order_asc: "Goal asc"
+        order_desc: "Goal desc"
+        order_created_at: "Submission date"
+        last_modification: "Last update"
+    actions:
+      confirm: Confirm
+    users:
+      index:
+        title: "Management contributions"
+        menu: Users
+        credits: Credits
+        credits_view: "Calculated credits"
+        id: ID
+        key: Key
+        submit: Search
+        has_credits_difference: "Discrepancy in credits"
+        total_contributed: contributed
+        total_contributions: contributions
+        total_users: users
+        total_credits: credits
+        total_credits_view: "calculated credits"
+        user: User
+        value: Value
+        payer_email: "Payment Email"
+        provider: Provider
+    contributions:
+      messages:
+        successful:
+          confirm: "Contribution confirmed!"
+          pendent: "Contribution unconfirmed!"
+          refund: "Contribution refunded!"
+          change_reward: "Reward changed!"
+          hide: "Contribution hidden!"
+          cancel: "Contribution canceled!"
+          push_to_trash: "Contribution deleted!"
+      show:
+        contribution_info: "Contribution information %{key}"
+        payment_id: "Payment ID"
+        payment_method: "Means of payment"
+        payment_fee: "Rate of payment"
+        payment_choice: "Payment option"
+        payer_email: "Email used for the means of payment"
+        user_email: "Email used in fundoo"
+        created_at: "Initiated in"
+      index:
+        details:
+          payer_email: "E-mail of the means of payment"
+          normal_email: "Email at Fundoo"
+          payment_id: "Payment ID"
+          acquirer_tid: "TID Operator"
+          payment_method: "Means of payment"
+          payment_choice: "Payment option"
+          acquirer_name: "Card carrier"
+          installments: Parcels
+          created_at: "Initiated in"
+        placeholders:
+          project: "Permalink or project name"
+          acquirer: "Name of the card carrier"
+          user: "ID, name, Email or payment Email"
+          payment_id: "Key means of payment ID or TID of the operator"
+        acquirer: Operator
+        payment_tax: "Fee payment method"
+        send_refund_request_contribution: "Send refund request"
+        payer_email: "Payer email"
+        payment_id: "Payment ID"
+        user_email: "Catarse user email"
+        push_to_trash: "Delete contribution"
+        cancel: "Cancel contribution"
+        between_values: "Values between"
+        by_state: State
+        refund_and_hide: "Refund and hide"
+        pending_to_refund: "Pending to refund"
+        confirm_contribution: "Confirm support"
+        unconfirm_contribution: "Desconfirmar support"
+        refund_contribution: "Reverse support"
+        request_refund: "Direct reimbursement request"
+        title: "Contributions management"
+        state: State
+        menu: Contributions
+        anonymous: Anonymous?
+        contribution: Support
+        confirmed: Confirmed?
+        credits_html: "Used credits? &NBSP;"
+        id: ID
+        key: Key
+        no_contributions: "No contributions found."
+        project: Project
+        refunded: Refunded?
+        requested_refund: "Requested refund?"
+        reward: Reward
+        no_reward: "No reward"
+        submit: Search
+        total_contributed: contributed
+        total_contributions: contributions
+        total_contribution: support
+        total_users: Users
+        user: User
+        value: Value
+    statistics:
+      index:
+        menu: Statistics
+        title: Statistics
+        total_users: Users
+        total_contributions: Contributions
+        total_contributors: Contributors
+        total_contributed: Contributed
+        total_projects: Projects
+        total_projects_success: Successful
+        total_projects_online: Online
+      projects_in_analysis_by_week:
+        title: "Projects submitted for curation per week"
+      projects_by_week:
+        title: "Projects sent per week"
+      contributions_by_week:
+        title: "Contributed value confirmed per week"
+      charts:
+        current_period: "Latest 8 without."
+        last_year: "Previous year"
+  channels:
+    admin:
+      filter:
+        title: Filters
+      confirm_dialog: "You are sure?"
+      financials:
+        index:
+          id: ID
+          name: Title
+          user: "User MoIP"
+          user_id: "User ID"
+          goal: Meta
+          total_payment_service_fee: "Rate of MP"
+          total_catarse_fee: "Rate of Fundoo"
+          repass_value: "Vl. Pass-through"
+          expires_at: Finalizes
+          online_date: "Went on the air"
+          pledged: Achieved
+          recommended: Recommended?
+          state: State
+          menu: "Rel. Money"
+          title: "Financial reports"
+          contribution_report: "Supporters report"
+          search_report: "Search report"
+          total_projects: projects
+          submit: Filter
+          by_state: "By state"
+          between_expires_at: "Expire between"
+          by_progress: "By progress %"
+          details:
+            name: "Corporate name"
+            bank_data: "Banking data"
+            document: CPF/CNPJ
+            email: Email
+            permalink: "Project Permalink"
+      projects:
+        index:
+          with_state: "By State"
+          by_category: "By category"
+          project: Project
+          user: User
+          between_created_at: "Created at between"
+          goal_between: "Come between"
+          between_expires_at: "Expire between"
+          between_online_date: "Entered in the air between"
+          between_updated_at: "Updated between"
+          by_user_email: "Director's e-mail"
+          id: ID
+          name: Title
+          send_to_trash: Delete
+          send_to_draft: "Send to DRAFT!"
+          reject: Reject!
+          approve: Approve!
+          user_id: "User ID"
+          goal: Meta
+          total_contributions: Support
+          online_date: "Went on the air"
+          pledged: Achieved
+          recommended: Recommended?
+          state: State
+          no_projects: "No project found"
+          menu: "Admin projects"
+          title: "Project management"
+          total_projects: projects
+          submit: Filter
+          expires_at: "Ends in"
+          category: Category
+          order_table: "Sort table"
+          order_date: "Date of shipment"
+          order_asc: "Goal asc"
+          order_desc: "Goal desc"
+          order_created_at: "Submission date"
+          last_modification: "Last update"
+      actions:
+        confirm: Confirm
+      users:
+        index:
+          title: "Management contributions"
+          menu: Users
+          credits: Credits
+          credits_view: "Calculated credits"
+          id: ID
+          key: Key
+          submit: Search
+          has_credits_difference: "Discrepancy in credits"
+          total_contributed: contributed
+          total_contributions: contributions
+          total_users: users
+          total_credits: credits
+          total_credits_view: "calculated credits"
+          user: User
+          value: Value
+          payer_email: "Payment Email"
+          provider: Provider
+      contributions:
+        messages:
+          successful:
+            confirm: "Contribution confirmed!"
+            pendent: "Contribution unconfirmed!"
+            refund: "Contribution refunded!"
+            change_reward: "Reward changed!"
+            hide: "Contribution hidden!"
+            cancel: "Contribution canceled!"
+            push_to_trash: "Contribution deleted!"
+        show:
+          contribution_info: "Contribution information %{key}"
+          payment_id: "Payment ID"
+          payment_method: "Means of payment"
+          payment_fee: "Rate of payment"
+          payment_choice: "Payment option"
+          payer_email: "Email used for the means of payment"
+          user_email: "Email used in fundoo"
+          created_at: "Initiated in"
+        index:
+          details:
+            payer_email: "E-mail of the means of payment"
+            normal_email: "Email at Fundoo"
+            payment_id: "Payment ID"
+            acquirer_tid: "TID Operator"
+            payment_method: "Means of payment"
+            payment_choice: "Payment option"
+            acquirer_name: "Card carrier"
+            installments: Parcels
+            created_at: "Initiated in"
+          placeholders:
+            project: "Permalink or project name"
+            acquirer: "Name of the card carrier"
+            user: "ID, name, Email or payment Email"
+            payment_id: "Key means of payment ID or TID of the operator"
+          acquirer: Operator
+          payment_tax: "Fee payment method"
+          send_refund_request_contribution: "Send refund request"
+          payer_email: "Payer email"
+          payment_id: "Payment ID"
+          user_email: "Catarse user email"
+          push_to_trash: "Delete contribution"
+          cancel: "Cancel contribution"
+          between_values: "Values between"
+          by_state: State
+          refund_and_hide: "Refund and hide"
+          pending_to_refund: "Pending to refund"
+          confirm_contribution: "Confirm support"
+          unconfirm_contribution: "Desconfirmar support"
+          refund_contribution: "Reverse support"
+          request_refund: "Direct reimbursement request"
+          title: "Contributions management"
+          state: State
+          menu: Contributions
+          anonymous: Anonymous?
+          contribution: Support
+          confirmed: Confirmed?
+          credits_html: "Used credits? &NBSP;"
+          id: ID
+          key: Key
+          no_contributions: "No contributions found."
+          project: Project
+          refunded: Refunded?
+          requested_refund: "Requested refund?"
+          reward: Reward
+          no_reward: "No reward"
+          submit: Search
+          total_contributed: contributed
+          total_contributions: contributions
+          total_contribution: support
+          total_users: Users
+          user: User
+          value: Value
+      statistics:
+        index:
+          menu: Statistics
+          title: Statistics
+          total_users: Users
+          total_contributions: Contributions
+          total_contributors: Contributors
+          total_contributed: Contributed
+          total_projects: Projects
+          total_projects_success: Successful
+          total_projects_online: Online
+        projects_in_analysis_by_week:
+          title: "Projects submitted for curation per week"
+        projects_by_week:
+          title: "Projects sent per week"
+        contributions_by_week:
+          title: "Contributed value confirmed per week"
+        charts:
+          current_period: "Latest 8 without."
+          last_year: "Previous year"

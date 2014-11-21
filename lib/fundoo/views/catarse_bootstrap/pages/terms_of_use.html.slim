@@ -1,0 +1,42 @@
+- content_for :main_stylesheet, :webflow
+
+= render 'shared/header_big'
+= render 'shared/feedback'
+
+.page-header
+  h1.headingcenter = t('.title')
+
+.w-container.text-page
+  h2 = t('.content.start')
+  p.prg2 = t('.content.start_text').html_safe
+
+  h2 = t('.content.guidelines')
+  p.prg2 = t('.content.guidelines_text').html_safe
+
+  h2 = t('.content.how_works')
+  p.prg2 = t('.content.how_works_text').html_safe
+
+  h2 = t('.content.responsabilities')
+  p.prg2 = t('.content.responsabilities_text').html_safe
+
+  h2 = t('.content.access')
+  p.prg2 = t('.content.access_text').html_safe
+
+  h2 = t('.content.tax')
+  p.prg2 = t('.content.tax_text').html_safe
+
+  h2 = t('.content.rights')
+  p.prg2 = t('.content.rights_text').html_safe
+
+  h2 = t('.content.content')
+  p.prg2 = t('.content.content_text').html_safe
+
+  h2 = t('.content.law')
+  p.prg2 = t('.content.law_text').html_safe
+  p.prg2 = t('.content.last_update').html_safe
+
+
+= render 'shared/footer_big'
+
+
+

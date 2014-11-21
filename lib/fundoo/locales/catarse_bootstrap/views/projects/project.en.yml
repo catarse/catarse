@@ -1,0 +1,21 @@
+en:
+  projects:
+    project:
+      contributed: raised
+      reached: hit
+      progress_html: "<span> %{percent}% </span> funded"
+      time_remaining_html:
+        one: "<span> %{count} %{unit} </span> rest"
+        other: "<span> %{count} %{unit} </span> rest"
+      pledged_html: "<span> %{value} </span> raised"
+      display_status:
+        expired: finalized
+        rejected: rejected
+        failed: "not funded"
+        successful: funded
+        reached_goal: funded
+        waiting_confirmation: awaiting
+        waiting_funds: awaiting
+        not_reached_goal: awaiting
+        draft: draft
+        in_analysis: "in analysis"

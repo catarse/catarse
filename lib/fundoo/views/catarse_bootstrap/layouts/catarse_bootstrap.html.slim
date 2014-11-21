@@ -1,0 +1,38 @@
+doctype 5
+html
+  head
+    title= content_for(:title)
+
+    = stylesheet_link_tag content_for(:main_stylesheet) || :catarse
+    = favicon_link_tag 'favicon.ico'
+    = csrf_meta_tag
+    meta name="viewport" content="width=device-width"
+
+    - if content_for? :meta_tags
+      /project specific meta tags
+      = yield :meta_tags
+    - else
+      /meta tags for the whole site
+      meta name="description"         content=t('site.description')
+      meta name="keywords"            content=t('site.keywords')
+      meta property="og:title"        content=( channel.try(:name) || t('site.title'))
+      meta property="og:type"         content=:cause
+      meta property="og:url"          content=root_url
+      meta property="og:image"        content=CatarseSettings[:company_logo]
+      meta property="og:site_name"    content=CatarseSettings[:company_name]
+      meta property="fb:app_id"       content=CatarseSettings[:facebook_app_id]
+      meta property="og:description"  content=( channel.try(:description) || t('projects.index_header.title') + '. ' +  t('projects.index_header.subtitle'))
+
+  body#catarse_bootstrap[data-namespace=namespace data-controller-name=controller_name data-action=action_name data-user="#{current_user.try(:to_analytics_json)}"]
+    = render_facebook_sdk
+    = render 'layouts/catarse_bootstrap_notices' if notice.present?
+    = render 'layouts/webfont'
+
+    .content= yield
+    = render 'layouts/crazzy_egg'
+    = render 'layouts/hot_jar'
+  = javascript_include_tag "//cdn.optimizely.com/js/2188501553.js"
+  = javascript_include_tag :application
+  = render_google_analytics_script
+  = render_mixpanel_script
+  = render 'layouts/intercom'

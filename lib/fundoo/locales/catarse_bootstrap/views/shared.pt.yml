@@ -1,0 +1,25 @@
+pt:
+  shared:
+    terms: "termos de uso"
+    accept_terms_html: "Eu li e estou de acordo com os %{link}."
+    header_channel:
+      contact: Contato
+      logout: Sair
+      my_credits: "Meus créditos"
+      partners: Parceiros
+      posts: Novidades
+      profile: "Meu perfil"
+      signin: Login
+      signup: Cadastre-se
+      submit: "Enviar projeto"
+      how_work: "Como funciona"
+    footer_channel:
+      contact: Contato
+      how_works: "Como funciona"
+      privacy_policy: "Política de Privacidade"
+      terms: "Termos de uso"
+      what_is_channel: "O que são canais?"
+      how_it_works: "Como funciona o %{name}"
+      how_channels_work: "Entenda os Canais no Catarse"
+    header_big:
+      projects: "Meus Projetos"

@@ -1,0 +1,74 @@
+en:
+  projects:
+    metrics:
+      titles:
+        confirmed_by_day: "Total of confirmed support per day"
+        confirmed_amount_by_day: "Total collected per day"
+        address_state: "Total confirmed funding by State"
+    reminder:
+      ok: "Ok! We will send you a reminder via email 48 hours before the end of the campaign"
+      active_btn: "Remind me of this project"
+      deactive_btn: "I don't want to be remembered"
+    send_to_analysis: "Your project has been sent to our team."
+    twitter:
+      take_a_look: "Check out the project %{name} in @catarse"
+    video_embed:
+      a_project_by_html: "A project of %{link} in"
+    posts:
+      project_post:
+        unavailable: "This news is only available to supporters."
+        contribute: Support
+        unavailable_contribute: "This project to view it."
+        destroy: "Remove News"
+        destroy_confirmation: "Want to remove this news?"
+      new:
+        notice: "News submitted successfully!"
+        comment: "Text of your News"
+        exclusive: "Visible only to supporters"
+        submit: "Send News"
+        title: "Title of your News"
+        warning: "Remembering that every post of novelty will go directly to the e-mail from his supporters. So, check your text before sending it."
+    project_reports:
+      all_contributions_without_reward: "Download report of all supporters who have selected a reward"
+      link_reports_confirmed: "Download all confirmed supporters report"
+      link_reports_waiting_confirmation: "Download report of all supporters with billet printed"
+      link_reward: "Download report of the supporters of the reward of %{value}"
+    project_about:
+      embed: embed
+      embed_title: "Embed this on your site design"
+    show:
+      contribute_project:
+        display_status:
+          reached_goal: "This project will be successful and funded in %{date}"
+          not_reached_goal: "This project will only be funded if at least %{goal} are reached even %{date}"
+          failed: "This project has not reached the minimum of %{goal} to %{date} and was not funded"
+          rejected: "This project was not accepted. Cannot perform a backup."
+          in_analysis: "This project is under review and is not yet open to receive support."
+          successful: "This project was successful and was funded in %{date}"
+          waiting_funds: "Awaiting the confirmation of bills to see if this project will be funded."
+          draft: "This project is only a draft and is not yet open to receive support."
+        submit: "Support this project"
+      project_by: "design by"
+      funding_period: "Campaign period"
+      count_contributed_projects: "supported %{total} projects"
+      project_header:
+        subtitle_html: "A project of %{link}"
+        without_city: "A project of"
+        with_city: "A project of %{discussion.category_name} for %{author} in %{city}"
+      menu:
+        about: About
+        add_reward: "Add reward"
+        comments: Comments
+        contributions: Supporters
+        metrics: Metrics
+        edit: Edition
+        reports: Reports
+        posts: News
+      no_rewards_warning: "Do not travel! Think about how you will deliver them and put all of this in the budget. Promised?! OBEY! :D"
+      no_rewards_warning_title: "Create here your rewards"
+      contribution_states:
+        confirmed: Confirmed
+        pending: "Printed slips"
+      sidebar:
+        contributions: supporters
+        goal: "hit %{total}"

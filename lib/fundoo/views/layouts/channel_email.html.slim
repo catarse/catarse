@@ -1,0 +1,23 @@
+doctype html
+html
+  head
+    meta content="text/html; charset=utf-8" http-equiv="Content-Type"
+    title= message.subject
+  body
+    div style="background-image: url(http://gallery.mailchimp.com/9d9950758917a323093e71034/images/background.jpg); background-repeat:repeat; margin:0px;padding: 0px; width: 700px;float: left"
+      div style="width: 600px;padding-left: 18px; float:left"
+        = image_tag asset_path('channels/logo_asas_notificacao.png'), style: "float: left; margin-left: 250px; margin-top: 30px"
+
+        div style="width: 599px;height: 68px;float: left; background:url(#{asset_path('channels/header_system.png')}); margin-top: 30px;margin-left: 6px"
+          h3 style="color: #143A8A; font-size: 18px;margin-left: 60px;float: left;font-family:Helvetica, Arial, Sans-serif;margin-top: 32px; margin-bottom: 0px; font-style: normal; "
+            = @header || message.subject
+        div style="background: url(http://gallery.mailchimp.com/9d9950758917a323093e71034/images/back_box.jpg);background-repeat: repeat-y; width: 620px; float: left;"
+          #content
+            div style="font-family: Helvetica, Arial, Sans-serif;color: #5d5d5d; font-size: 13px; line-height: 21px;width: 513px; margin-left: 60px; font-style:normal; "
+              br
+              = yield
+        div style="background: url(http://gallery.mailchimp.com/9d9950758917a323093e71034/images/close_box2.png); width: 589px; height: 19px;float: left;margin-left: 15px"
+        div style="float: right; margin-right: 15px; margin-top: 20px; margin-bottom: 30px; height: 25px;width: 100px;"
+          img src="http://gallery.mailchimp.com/ebfcd0d16dbb0001a0bea3639/images/logo_system.png" width="119px" height="30px" style="float: left; margin-left: 0px; margin-top: 0px"
+      p
+        br

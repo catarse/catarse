@@ -1,0 +1,22 @@
+es:
+  devise:
+    registrations:
+      new:
+        have_account_html: "¿Ya tienes cuenta?"
+        titles:
+          site: Únete
+          header: Únete
+        links:
+          login: "Inicio de sesión"
+        form:
+          labels:
+            show_password: "Contraseña de la pantalla"
+            name: "Nombre completo"
+            password: Contraseña
+            newsletter: "Deseo recibir noticias de catarsis en mi email"
+            accept: "Al realizar un registro, usted está aceptando nuestros < a href = \"% {terms_url}\" class = \"alt-link\" target = \"_blank\" > términos de uso</a> y < la clase \"alt-link\" href = = \"% {privacy_url}\" target = \"_blank\" ></a> política de privacidad"
+          hint:
+            password_length: "Mínimo de 6 caracteres"
+          inputs:
+            submit: Registro
+            facebook: "Iniciar sesión con Facebook"

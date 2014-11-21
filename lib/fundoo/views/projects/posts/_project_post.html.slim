@@ -1,0 +1,23 @@
+.post
+  - if policy(project_post).show?
+    h3= link_to "#posts/#{project_post.id}", id: "posts/#{project_post.id}" do
+      = project_post.title
+    .time= l(project_post.created_at, format: :posts)
+    .clearfix
+    .comment= raw(project_post.comment_html)
+    .media
+      .social
+        .update_share
+          - url = project_by_slug_url(@project.permalink, project_post_id: project_post.id, locale: I18n.locale, anchor: 'posts')
+          .twitter_share= render_twitter text: "#{project_post.title}", url: url
+          .facebook_share= render_facebook_like href: url, width: '360'
+    - if policy(project_post).destroy?
+      = link_to t('.destroy'), project_post_path(project_id: @project.id, id: project_post.id), data: {confirm: t('.destroy_confirmation')}, remote: true, method: :delete, class: 'destroy_post'
+      .deleting_post.hide= image_tag "loading.gif"
+
+  - else
+    h3
+      =' t('.unavailable')
+      - if @project.accept_contributions?
+        =' link_to t('.contribute'), new_project_contribution_path(@project)
+        = t('.unavailable_contribute')

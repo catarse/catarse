@@ -1,0 +1,38 @@
+- collection.rank(:row_order).each do |reward|
+
+  div[id="reward_#{reward.id}" data-new_contribution_url=new_project_contribution_path(parent, reward_id: reward.id) data-update_url=sort_project_reward_path(parent, reward) class="box #{(policy(reward).update? ? 'clickable_owner sortable' : '')} #{(parent.online? && !reward.sold_out? && !policy(reward).update?  ? 'clickable'  : '' )}"]
+    - if policy(reward).update?
+
+      .bootstrap-form.bootstrap-twitter
+        .hide id="reward#{reward.id}Editor"
+          = image_tag 'loading.gif'
+
+        .bootstrap-twitter
+          = link_to "javascript:void(0);", data: {target: "#reward#{reward.id}Editor", path: edit_project_reward_path(parent, reward)}, class: 'show_reward_form btn btn-mini pull-right btn-primary' do
+            i.icon-pencil.icon-white
+
+    h2= t('.reward_title', minimum: reward.display_minimum).html_safe
+    em= pluralize(reward.contributions.with_state('confirmed').count(:all), t('contribution_singular'), t('contribution_plural'))
+    .clearfix
+    p
+      = reward.display_description
+    - if reward.maximum_contributions
+      .maximum_contributions.clearfix
+        - if reward.sold_out?
+          .sold_out= t('.sold_out')
+        - else
+          .limited= t('.limited')
+          .remaining
+            = reward.display_remaining
+      - in_time_to_confirm = reward.contributions.with_state('waiting_confirmation').count(:all)
+      - if in_time_to_confirm > 0
+        .maximum_contributions.in_time_to_confirm.clearfix
+          .pending= t('.contributions_to_confirm', count: in_time_to_confirm)
+      .clearfix
+    - if reward.deliver_at.present?
+      div class="reward_deliver_at"
+        p= "#{t('.reward_deliver_time', estimate: reward.display_deliver_estimate)}".html_safe
+    - if current_user && current_user.admin
+      div class="reward_updated_at"
+        p= "Modificado em: #{I18n.l(reward.updated_at.to_date)} #{parent.online_date.nil? ? '' : ((parent.online_date > reward.updated_at)? '(draft)' : '(online)')}"
+.clearfix

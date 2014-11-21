@@ -1,0 +1,38 @@
+en:
+  projects:
+    index_header:
+      subtitle: "Finance projects in a collaborative way and become part of something bigger. Promote a collective fundoo. You're the missing piece in this story."
+      title: "Make it happen, what do you believe designs"
+    index:
+      box:
+        by: by
+        when: in
+      banner: "Meet the research"
+      links:
+        channels: "Discover the channel Wings"
+        recommended: "Discover projects recommended"
+        expiring: "Discover projects in final stretch"
+        recents: "Discover recent projects"
+        near: "Discover projects near you"
+      sidebar:
+        titles:
+          blog: blog
+          facebook: "I enjoyed our face?"
+          newsletter: "Subscribe to our news"
+          faq: "got questions?"
+          schedule: agenda
+        placeholders:
+          email: "Enter your email"
+        buttons:
+          newsletter: Send
+      sections:
+        near:
+          title: "Closest to me"
+        recommended:
+          title: Recommended
+        expiring:
+          title: "In the final stretch"
+        recents:
+          title: Recent
+        channels:
+          title: "Channel Wings"

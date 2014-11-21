@@ -1,0 +1,13 @@
+- channel = @notification.channel_post.channel
+- post = @notification.channel_post
+- user = @notification.user
+
+= content_for :email_logo do
+  = image_tag(channel.image, alt: channel.name)
+
+br/
+strong= post.title
+== post.email_body_html
+br/
+| Veja o canal: #{link_to channel.name, root_url(subdomain: channel.permalink)}
+br/

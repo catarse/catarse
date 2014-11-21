@@ -1,0 +1,34 @@
+- project = @notification.project
+| Hey!
+br
+br
+| Mais um projeto foi criado no #{CatarseSettings[:company_name]}!
+== " por #{link_to project.user.name, user_url(project.user)}"
+br
+== "Email do realizador: #{mail_to project.user.email}"
+br
+br
+| Detalhes do projeto abaixo:
+br
+br
+b Nome:
+= " #{project.name}"
+br
+b Meta:
+= " #{project.display_goal}"
+br
+b Lista de Links relacionados:
+br
+= simple_format(project.more_links)
+br
+b Primeiros apoiadores:
+br
+= simple_format(project.first_contributions)
+br
+b Como conheceu o #{CatarseSettings[:company_name].downcase}:
+br
+= project.traffic_sources
+br
+br
+= link_to 'Veja mais sobre o projeto', project_by_slug_url(permalink: project.permalink)
+

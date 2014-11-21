@@ -1,0 +1,41 @@
+- user = @notification.user
+- project = @notification.project
+
+- project_link = project_by_slug_url(permalink: project.permalink)
+- company_name = CatarseSettings[:company_name]
+
+|Olá, #{user.name}!
+br
+br
+| Nossa equipe acabou de receber o projeto  #{link_to project.name, project_link, target: '__blank'}
+br/
+br/
+| Durante os próximos 4 dias úteis, iremos analisar o rascunho de projeto que você nos enviou e te daremos uma resposta.
+br
+br
+strong Você pode receber 3 tipos de resposta: 
+br/
+br/
+strong Opção 1: 
+| Seu rascunho passou na análise, foi aceito e poderá ir ao ar! 
+br/
+| Agora é só marcarmos o dia e hora para estreiar seu projeto no site do Catarse!
+br/
+br/
+strong Opção 2: 
+| Nos parece que o seu projeto tem muito ver com o #{company_name}, mas ainda precisa de alguns ajustes para ir para o ar. Vamos entrar em contato para entender possibilidades , sugerir coisas e tirar algumas dúvidas. 
+br/
+br/
+strong Opção 3: 
+| Infelizmente, o rascunho de projeto que você enviou não se encaixa no perfil do site do #{company_name}. 
+| Enviaremos um email notificando a recusa. Sim, sabemos que recusas são sempre desagradáveis. Mas o lema aqui é 
+| "levanta, sacode a poeira e dá a volta por cima". Mas antes de sacudir qualquer poeira, 
+| estude nossa #{link_to 'Central de Suporte', CatarseSettings[:support_forum], target: '__blank'}  para que você saiba tudo sobre nossos pré-requisitos para a construção do seu próximo projeto.
+br/
+br/
+| Lembrando que você pode tirar dúvidas conosco respondendo diretamente a esta mensagem ou através do e-mail #{mail_to CatarseSettings[:email_projects]}
+br/
+br/
+|Um abraço,
+br/
+= company_name

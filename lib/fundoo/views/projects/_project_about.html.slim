@@ -1,0 +1,28 @@
+.media
+  - if resource.video_url.present?
+    .video
+      iframe src="#{@project.display_video_embed_url}" width="640" height="430" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen
+  .social
+    #project_share
+      #facebook_share= render_facebook_like title: @project.name, href: project_by_slug_url(@project.permalink, locale: I18n.locale)
+      ul
+        li.embed
+          = link_to '#embed', id: 'embed_link' do
+            = image_tag "catarse/embed_icon19x9.png", title: t('.embed_title')
+            = t('.embed')
+        - if @project.online?
+          li.reminder
+            .bootstrap-twitter
+                - if user_signed_in? && @project.user_already_in_reminder?(current_user.id)
+                  small= link_to t('projects.reminder.deactive_btn'), reminder_project_path(@project), class: 'btn btn-small btn-extra-small', method: :delete
+                - else
+                  small= link_to t('projects.reminder.active_btn'), reminder_project_path(@project), class: 'btn btn-small btn-extra-small'
+      #twitter_share= render_twitter(url: project_by_slug_url(permalink: @project.permalink), title: @project.name)
+      .clearfix
+
+.clearfix
+#project_embed.hide data-path=embed_panel_project_path(@project)
+  = image_tag "loading.gif", class: 'loader'
+.text
+  p
+    = @project.about_html.html_safe

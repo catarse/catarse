@@ -1,0 +1,50 @@
+header
+  = content_for :meta_tags do
+    -if ! @post
+      meta property="og:title"        content= channel.name
+    meta property="og:type"         content=:cause
+    meta property="og:url"          content=url_for(only_path: false)
+    meta property="og:image"        content=channel.image.curator_thumb.url
+    meta property="og:site_name"    content=channel.name
+    meta property="fb:app_id"       content=CatarseSettings[:facebook_app_id]
+    meta property="og:description"  content=channel.description
+  .row
+    h1.large-2.columns.no-padding
+      = link_to "#{CatarseSettings[:company_name]}", root_url(host: CatarseSettings[:base_domain] || request.domain), class: 'logo-image', :title => CatarseSettings[:company_name]
+    .large-10.columns.no-padding
+      nav.channel-header
+        ul
+          li.nav-item
+            = link_to t('.how_work'), channels_about_path, id: 'guidelines_header_modal', class: 'standard-link-green'
+          li.nav-item
+            = link_to t('.posts'), channels_posts_path, class: 'standard-link'
+          - if channel.partners.present?
+            li.nav-item
+              = link_to t('.partners'), root_url(anchor: 'partners'), class: 'standard-link'
+          li.nav-item
+            = mail_to channel.email, t('.contact'), title: t('.contact'), class: 'standard-link', target: '_blank'
+          - if current_user
+            li.nav-item
+              = link_to '#', class: 'user-menu' do
+                = image_tag(current_user.display_image, :size => "40x40", class: 'user-avatar')
+              ul.dropdown.user
+                li= link_to t('.profile'), current_user
+                li= link_to t('layouts.user.my_contributions'), user_path(current_user, anchor: 'contributions')
+                - if current_user.project_owner?
+                  li= link_to t('.projects'), user_path(current_user, anchor: 'projects')
+                li
+                  = link_to t('.my_credits'), user_path(current_user, anchor: 'credits')
+                  .small
+                    | (#{current_user.display_credits})
+                li
+                  = link_to t('layouts.user.refund_link'), user_path(current_user, anchor: 'credits')
+                - if current_user.admin? || current_user.channel
+                  li.divider
+                  - for menu, path in controller.menu do
+                    li= link_to menu, path
+                li.divider= link_to t('.logout'), destroy_user_session_path, method: :delete
+          - else
+            li.nav-item
+              = link_to t('.signup'), new_user_registration_url, class: 'standard-link'
+            li.nav-item
+              = link_to t('.signin'), new_user_session_url, class: 'standard-link'

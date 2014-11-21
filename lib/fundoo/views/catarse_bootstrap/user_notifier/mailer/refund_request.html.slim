@@ -1,0 +1,12 @@
+- contribution = @notification.contribution
+p Usuário #{contribution.user.display_name}
+p Email do usuário: #{contribution.user.email}
+p Email de pagamento: #{contribution.payer_email}
+p Nome de pagamento: #{contribution.payer_name}
+p Projeto: #{contribution.project.name}
+p Chave do apoio: #{contribution.key}
+p Identificador no meio de pagamento: #{contribution.payment_id}
+p Valor do apoio: #{contribution.display_value} 
+p Meio de pagamento: #{contribution.payment_method}
+p Forma de pagamento: #{contribution.payment_choice}
+p Data de criação: #{contribution.created_at}
