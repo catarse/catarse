@@ -10,8 +10,10 @@ end
 
 Catarse::Application.configure do
   config.session_store :cookie_store, key: CatarseSettings.get_without_cache(:secret_token)
-  config.i18n.load_path += Dir[Rails.root.join('lib', 'fundoo', 'locales', '*.{rb,yml}').to_s]
+  config.i18n.load_path += Dir[Rails.root.join('lib', 'fundoo', 'locales','**', '*.{rb,yml}').to_s] 
   config.i18n.default_locale = :en
-  config.paths["app/views"].unshift("#{Rails.root}/lib/fundoo/views/")
-  
+end
+
+ApplicationController.class_eval do
+  prepend_view_path "#{Rails.root}/lib/fundoo/views/"
 end

@@ -88,7 +88,7 @@ Channel.find_or_create_by!(name: "Channel name") do |c|
   c.description = "Lorem Ipsum"
 end
 
-oauth = OauthProvider.find_or_initialize_by!(name: 'facebook') 
+oauth = OauthProvider.find_or_initialize_by(name: 'facebook') 
 oauth.update_attributes({
   key: ENV['FACEBOOK_API_ID'],
   secret: ENV['FACEBOOK_SECRET'],
