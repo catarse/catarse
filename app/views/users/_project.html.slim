@@ -1,8 +1,9 @@
+- link_options = {ref: ref} if defined?(ref)
 div class=(policy(parent).update? ? 'project_land' : 'small_project_land')
   - if project.expired?
     .status_image
       a href=""
-      = link_to project_by_slug_path(project.permalink) do
+      = link_to project_by_slug_path(project.permalink, link_options) do
         - if project.successful?
           = image_tag "successful.#{I18n.locale}.png"
         - elsif project.waiting_funds?
@@ -17,7 +18,7 @@ div class=(policy(parent).update? ? 'project_land' : 'small_project_land')
   .project_infos
     .title
       h4
-        = link_to project.name, project_by_slug_path(project.permalink)
+        = link_to project.name, project_by_slug_path(project.permalink, link_options)
       p.author== "#{t('projects.show.project_by')} #{project.user.name}"
       p.headline= project.headline
     .status_bar
@@ -55,7 +56,7 @@ div class=(policy(parent).update? ? 'project_land' : 'small_project_land')
     .tell_about
       p= t('.tell_about_this_contribution')
       ul
-        li= link_to(image_tag('catarse/facebook_black_icon.png'), "http://www.facebook.com/sharer.php?s=100&p[url]=#{project_by_slug_url(permalink: project.permalink)}&p[summary]=#{t('share_my_contributions')} #{project.name}", target: '_blank').html_safe
-        li= link_to image_tag('catarse/twitter_black_icon.png'), "http://twitter.com/share?text=#{t('share_my_contributions')}#{project.name}&url=#{project_by_slug_url(permalink: project.permalink)}", target: '_blank'
+        li= link_to(image_tag('catarse/facebook_black_icon.png'), "http://www.facebook.com/sharer.php?s=100&p[url]=#{project_by_slug_url(project.permalink, {ref: 'facebook'})}&p[summary]=#{t('share_my_contributions')} #{project.name}", target: '_blank').html_safe
+        li= link_to image_tag('catarse/twitter_black_icon.png'), "http://twitter.com/share?text=#{t('share_my_contributions')}#{project.name}&url=#{project_by_slug_url(project.permalink, {ref: 'twitter'})}", target: '_blank'
 .clearfix
 

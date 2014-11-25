@@ -168,6 +168,8 @@ RSpec.describe ContributionObserver do
         contribution.update_attributes payment_choice: 'BoletoBancario'
         contribution.confirm
 
+        expect(ContributionNotification).not_to receive(:notify).with(:contribution_canceled_after_confirmed, anything)
+
         expect(ContributionNotification).to receive(:notify_once).with(
           :contribution_canceled_slip,
           contribution.user,
