@@ -108,6 +108,8 @@ pt:
         payment_id: 'ID do pagamento'
         payment_method: 'Meio de pagamento'
         payment_fee: 'Taxa do meio de pagamento'
+        successful: 'bem-sucedido'
+        project_state: 'Estado do projeto'
         payment_choice: 'Opção de pagamento'
         payer_email: 'Email utilizado no meio de pagamento'
         user_email: 'Email utilizado no catarse'
