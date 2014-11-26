@@ -30,5 +30,11 @@
     strong= t('.created_at')
     | &nbsp;
     = l(resource.created_at) if resource.created_at.present?
+  p
+    strong= t('.project_state')
+    | &nbsp;
+    = resource.project.state
+    - if resource.project.reached_goal?
+      = " (#{t('.successful')})"
 
 = render 'shared/footer_bootstrap_v1'
