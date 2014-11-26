@@ -2,25 +2,31 @@
 
 = render 'project_header'
 
-nav.dashboard-nav.w-hidden-small.w-hidden-tiny
+nav.w-hidden-small.w-hidden-tiny.dashboard-nav
   .w-container
-    = link_to '#basics', id: 'basics_link', class: 'dashboard-nav-link ' , data: {target: '#project_basics'} do
-      span.fa.fa-warning.text-error
-        | \&nbsp;Básico
-    = link_to '#dashboard_project', id: 'dashboard_project_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_project'} do
-      span.fa.fa-check-circle.text-success .
-      | \&nbsp;Projeto
-    = link_to '#dashboard_reward', id: 'dashboard_reward_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_reward'} do
-      span.fa.fa-check-circle .
-      | \&nbsp;Recompensas
-    a.dashboard-nav-link href="#"
-      span.fa.fa-check-circle .
-      | \&nbsp;Sobre você
-    a.dashboard-nav-link href="#"  Preview
-    - if @project.draft?
-      .btn-send-draft
-         = link_to 'Enviar projeto para análise', send_to_analysis_project_path(@project), class: 'btn btn-small'
-
+    .w-row
+      .w-col.w-col-9
+        a.dashboard-nav-link.selected href="../../dashboard/draft/home.html"  Início
+        = link_to '#basics', id: 'basics_link', class: 'dashboard-nav-link ' , data: {target: '#project_basics'} do
+          span.fa.fa-check-circle.fontcolor-terciary .
+            Básico
+        = link_to '#dashboard_project', id: 'dashboard_project_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_project'} do
+          span.fa.fa-check-circle.fontcolor-terciary .
+            Projeto
+        = link_to '#dashboard_reward', id: 'dashboard_reward_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_reward'} do
+          span.fa.fa-check-circle.fontcolor-terciary .
+            Recompensas
+        a.dashboard-nav-link href="../../dashboard/draft/about.html" 
+          span.fa.fa-check-circle.fontcolor-terciary .
+          | Sobre você
+        a.dashboard-nav-link href="#" 
+          span.fa.fa-check-circle.fontcolor-terciary .
+          | Conta
+      .w-col.w-col-3.w-clearfix
+        a.dashboard-nav-link href="../../dashboard/draft/preview.html"  Preview
+        - if @project.draft?
+          .btn-send-draft
+             = link_to 'Enviar', send_to_analysis_project_path(@project), class: 'btn btn-small'
 section.section
   .w-container
     .w-row
