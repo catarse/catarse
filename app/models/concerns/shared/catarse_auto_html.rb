@@ -28,7 +28,6 @@ module Shared::CatarseAutoHtml
           '"' => '"'
         }
         image
-        named_link
         youtube width: options[:video_width], height: options[:video_height], wmode: "opaque"
         vimeo width: options[:video_width], height: options[:video_height]
         redcarpet target: :_blank
