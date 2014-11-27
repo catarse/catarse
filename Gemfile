@@ -63,7 +63,7 @@ gem 'catarse_monkeymail', '>= 0.1.6'
 gem 'formtastic',   '~> 2.2.1'
 gem 'simple_form'
 gem 'mail_form'
-gem "auto_html",    '= 1.4.2'
+gem "auto_html"
 gem "RedCloth"
 gem 'kaminari'
 
