@@ -33,6 +33,7 @@ module Shared::CatarseAutoHtml
         vimeo width: options[:video_width], height: options[:video_height]
         redcarpet target: :_blank
         link target: :_blank
+        add_alt_link_class
       end
     end
 
