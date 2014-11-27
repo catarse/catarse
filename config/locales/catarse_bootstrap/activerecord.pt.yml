@@ -141,11 +141,13 @@ pt:
       a recompensa selecionada
   contribution_report_to_project_owner:
     reward_description: Descrição da recompensa
+    deliver_at: Data de entrega da recompensa
     confirmed_at: Data da confirmação do pagamento
     contribution_value: Valor do apoio
     service_fee: Taxa do Catarse
     user_name: Nome do apoiador
     user_email: Email perfil Catarse
+    cpf: Cpf do apoiador
     payer_email: Email do meio de pagamento
     payment_method: Meio de pagamento
     street: Rua
