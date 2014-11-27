@@ -14,17 +14,6 @@ GIT
       rails (>= 4.0.0)
 
 GIT
-  remote: git://github.com/catarse/catarse_moip.git
-  revision: ce40ddc51dc972a5b0a91e9c9c6ccb8d3a9e2c9e
-  branch: v2.0
-  specs:
-    catarse_moip (2.3.6)
-      enumerate_it
-      httparty
-      libxml-ruby (~> 2.6.0)
-      rails (~> 4.0)
-
-GIT
   remote: git://github.com/catarse/moip-ruby.git
   revision: c0225ad71645cd1df35dafa1e45c9f092b3abb9e
   ref: c0225ad71645cd1df35dafa1e45c9f092b3abb9e
@@ -102,6 +91,11 @@ GEM
       activesupport (>= 3.2.0)
       json (>= 1.7)
       mime-types (>= 1.16)
+    catarse_moip (2.4.0)
+      enumerate_it
+      httparty
+      libxml-ruby (~> 2.6.0)
+      rails (~> 4.0)
     catarse_monkeymail (0.1.6)
       mailchimp-api (~> 2.0.4)
       rails (>= 4.0.3)
@@ -541,7 +535,7 @@ DEPENDENCIES
   capybara (~> 2.2.0)
   carrierwave (~> 0.10.0)
   catarse_contribution_validator!
-  catarse_moip!
+  catarse_moip (~> 2.4.0)
   catarse_monkeymail (>= 0.1.6)
   catarse_pagarme (= 1.4.7)
   catarse_paypal_express (= 2.2.4)
