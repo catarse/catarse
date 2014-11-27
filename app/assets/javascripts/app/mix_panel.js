@@ -7,7 +7,7 @@ App.addChild('MixPanel', {
     this.controller = this.$el.data('controller');
     this.action = this.$el.data('action');
     this.user = this.$el.data('user');
-    if(window.mixpanel){
+    if(window.mixpanel && !_.isArray(window.mixpanel)){
       this.detectLogin();
       this.startTracking();
     }
