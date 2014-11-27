@@ -71,6 +71,7 @@ Catarse::Application.routes.draw do
     member do
       get :unsubscribe_notifications
       get :credits
+      get :settings
       get :reactivate
     end
     resources :contributions, controller: 'users/contributions', only: [:index] do
