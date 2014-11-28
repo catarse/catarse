@@ -43,4 +43,4 @@
   .fontsize-large.u-marginbottom-30 = @project.headline.try(:strip)
   .no-mobile
     .fontsize-base
-      = @project.about_html.html_safe
+      = @project.about_html.try(:html_safe)

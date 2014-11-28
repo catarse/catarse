@@ -10,6 +10,7 @@ App.addChild('DashboardRewards', {
   activate: function() {
     this.$rewards = this.$('#dashboard-rewards');
     this.sortableRewards();
+    this.showNewRewardForm();
   },
 
   toggleExplanation: function() {
@@ -52,12 +53,25 @@ App.addChild('DashboardRewards', {
     })
   },
 
+  showNewRewardForm: function(event) {
+    var that = this;
+    var $target = this.$('.new_reward_button');
+    if(this.$('.sortable').length == 0)
+    {
+      $.get($target.data('path')).success(function(data){
+        $($target.data('target')).html(data);
+        that.rewardForm;
+      });
+
+      this.$($target.data('target')).fadeIn('fast');
+    }
+
+  },
 
   showRewardForm: function(event) {
     var that = this;
     event.preventDefault();
     var $target = this.$(event.currentTarget);
-    var $parent = $target.data('parent');
 
     $.get($target.data('path')).success(function(data){
       $($target.data('target')).html(data);
