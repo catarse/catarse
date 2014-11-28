@@ -21,13 +21,14 @@ App.addChild('DashboardRewards', {
     event.preventDefault();
     var $target = this.$(event.currentTarget);
     $target.closest('.reward-card').hide();
+    $target.closest('.reward-card').parent().prev().show();
   },
 
   sortableRewards: function() {
     this.$rewards.sortable({
       axis: 'y',
       placeholder: "ui-state-highlight",
-      start: function(e, ui) {
+      skart: function(e, ui) {
         return ui.placeholder.height(ui.item.height());
       },
       update: function(e, ui) {
@@ -56,14 +57,16 @@ App.addChild('DashboardRewards', {
     var that = this;
     event.preventDefault();
     var $target = this.$(event.currentTarget);
-    //$target.fadeOut('fast');
+    var $parent = $target.data('parent');
 
     $.get($target.data('path')).success(function(data){
       $($target.data('target')).html(data);
       that.rewardForm;
     });
 
+    this.$($target.data('parent')).hide();
     this.$($target.data('target')).fadeIn('fast');
+
   }
 });
 
