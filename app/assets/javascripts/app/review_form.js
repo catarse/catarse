@@ -61,7 +61,9 @@ App.addChild('ReviewForm', _.extend({
 
   activate: function(){
     this.$country = this.$('#contribution_country_id');
-    this.$country.val('36');
+    if(this.$country.val() === ''){
+      this.$country.val('36');
+    }
     this.$state = this.$('#contribution_address_state');
     this.$errorMessage = this.$('#error-message');
     this.$('#contribution_payer_document').data('custom-validation', this.onUserDocumentChange);
@@ -106,6 +108,7 @@ App.addChild('ReviewForm', _.extend({
 
   updateContribution: function(){
     var contribution_data = {
+      country_id: this.$('#contribution_country_id').val(),
       payer_name: this.$('#contribution_full_name').val(),
       payer_email: this.$('#contribution_email').val(),
       payer_document: this.$('#contribution_payer_document').val(),

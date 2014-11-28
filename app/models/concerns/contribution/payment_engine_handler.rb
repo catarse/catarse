@@ -26,6 +26,7 @@ module Contribution::PaymentEngineHandler
     end
 
     def update_current_billing_info
+      self.country_id = user.country_id
       self.address_street = user.address_street
       self.address_number = user.address_number
       self.address_complement = user.address_complement
@@ -41,6 +42,7 @@ module Contribution::PaymentEngineHandler
 
     def update_user_billing_info
       user.update_attributes({
+        country_id: country_id.presence || user.country_id,
         address_street: address_street.presence || user.address_street,
         address_number: address_number.presence || user.address_number,
         address_complement: address_complement.presence || user.address_complement,
