@@ -5,8 +5,6 @@ var App = window.App = Skull.View.extend({
     "click a#user-menu" : "toggleMenu",
     "click a.mobile-menu-link" : "mobileMenu",
     "click .zendesk_widget" : "showWidget",
-    "click a.icon-feedback-box" : "toggleBox",
-    "click #pg_search_submit" : "searchProject"
   },
 
   searchProject: function(){
@@ -60,10 +58,6 @@ var App = window.App = Skull.View.extend({
     return false;
   },
 
-  toggleBox: function() {
-    this.feedbackBox.toggleBox();
-    return false;
-  },
 });
 
 $(function(){

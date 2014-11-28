@@ -10,12 +10,12 @@
     meta name="description" content=@post.title
     meta property="og:title" content=@post.title
     meta property="og:description" content=@post.comment
-    meta property="og:url" content=project_by_slug_url(@project.permalink, project_post_id: @post.id, locale: I18n.locale)
+    meta property="og:url" content=project_by_slug_url(@project.permalink, project_post_id: @post.id, locale: I18n.locale, ref: 'facebook')
   - else
     meta name="description" content=@project.headline
     meta property="og:title" content=@project.name
     meta property="og:description" content=@project.headline
-    meta property="og:url" content=project_by_slug_url(@project.permalink, locale: I18n.locale)
+    meta property="og:url" content=project_by_slug_url(@project.permalink, locale: I18n.locale, ref: 'facebook')
   meta property="og:type" content='cause'
   meta property="og:image" content=@project.display_image('project_thumb_facebook')
   meta property="og:site_name" content=CatarseSettings[:company_name]
@@ -56,7 +56,7 @@
           = t('.menu.comments')
           | &nbsp; (
           / we need to remove the locale from the url
-          fb:comments-count href="#{request.base_url}/#{request.fullpath}"
+          fb:comments-count href="#{request.base_url}/#{request.path}"
           | )
         - if policy(@project).update?
           = link_to '#edit', 'id' => 'edit_link', 'data-target' => '#project_edit' do
