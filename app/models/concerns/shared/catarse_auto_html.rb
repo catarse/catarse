@@ -30,9 +30,9 @@ module Shared::CatarseAutoHtml
         image
         youtube width: options[:video_width], height: options[:video_height], wmode: "opaque"
         vimeo width: options[:video_width], height: options[:video_height]
+        named_link
         redcarpet target: :_blank
         link target: :_blank
-        named_link
         add_alt_link_class
       end
     end
