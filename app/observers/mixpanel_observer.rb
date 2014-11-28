@@ -11,7 +11,8 @@ class MixpanelObserver < ActiveRecord::Observer
       has_contributions: (user.total_contributed_projects > 0),
       project: contribution.project.name,
       payment_method: contribution.payment_method,
-      payment_choice: contribution.payment_choice
+      payment_choice: contribution.payment_choice,
+      referral: contribution.referal_link
     }
     tracker.track(contribution.user.id.to_s, "Engaged with Catarse", properties.merge(action: 'contribution confirmed'))
     tracker.track(contribution.user.id.to_s, "Contribution confirmed", properties)
