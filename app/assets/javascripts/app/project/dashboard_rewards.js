@@ -29,7 +29,7 @@ App.addChild('DashboardRewards', {
     this.$rewards.sortable({
       axis: 'y',
       placeholder: "ui-state-highlight",
-      skart: function(e, ui) {
+      start: function(e, ui) {
         return ui.placeholder.height(ui.item.height());
       },
       update: function(e, ui) {
