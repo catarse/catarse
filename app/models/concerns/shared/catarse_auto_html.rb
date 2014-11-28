@@ -14,7 +14,7 @@ module Shared::CatarseAutoHtml
     end
 
     AutoHtml.add_filter(:named_link) do |text, options|
-      text.gsub(/"(.+?)":http([^\s]+)/) do |match|
+      text.gsub(/"(.+?)":(http[^\s]+)/) do |match|
         "<a target=\"_blank\" href=\"#{$2}\">#{$1}</a>"
       end
     end
