@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Projects::ContributionsController, type: :controller do
-  render_views
   let(:project) { create(:project) }
   let(:contribution){ create(:contribution, value: 10.00, credits: true, project: project, state: 'pending') }
   let(:user){ nil }
@@ -35,7 +34,7 @@ RSpec.describe Projects::ContributionsController, type: :controller do
     context "when we have the right user" do
       let(:set_expectations) { expect_any_instance_of(Contribution).to receive(:update_user_billing_info) }
       let(:user){ contribution.user }
-      its(:body){ should == { message: "updated" }.to_json  }
+      it{ is_expected.to be_successful }
     end
 
     context "when try pass unpermitted attributes" do
@@ -142,8 +141,7 @@ RSpec.describe Projects::ContributionsController, type: :controller do
     end
 
     context "when project.online? is true" do
-      it{ should render_template("projects/contributions/new") }
-      its(:body) { should =~ /#{project.name}/ }
+      it{ is_expected.to render_template("projects/contributions/new") }
     end
   end
 
@@ -166,7 +164,6 @@ RSpec.describe Projects::ContributionsController, type: :controller do
     context "when contribution is logged in" do
       let(:user){ contribution.user }
       it{ is_expected.to be_successful }
-      its(:body){ should =~ /#{I18n.t('projects.contributions.show.title')}/ }
     end
   end
 

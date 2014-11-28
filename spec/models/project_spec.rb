@@ -604,7 +604,7 @@ RSpec.describe Project, type: :model do
       @project_01 = create(:project, permalink: 'a', online_date: '2014-10-9'.to_date)
       @project_02 = create(:project, permalink: 'b', online_date: '2014-10-9'.to_date)
       @project_03 = create(:project, permalink: 'c', online_date: '2014-10-9'.to_date)
-      @project_04 = create(:project, online_date: '2014-11-10'.to_date)
+      @project_04 = create(:project, online_date: '2014-11-11'.to_date)
 
       CatarseSettings[:projects_enabled_to_use_pagarme] = 'a, c'
     end

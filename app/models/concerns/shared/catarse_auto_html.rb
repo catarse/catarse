@@ -14,7 +14,7 @@ module Shared::CatarseAutoHtml
     end
 
     AutoHtml.add_filter(:named_link) do |text, options|
-      text.gsub(/"(.+)":([^\s]+)/) do |match|
+      text.gsub(/"(.+?)":([^\s,;]+)/) do |match|
         "<a target=\"_blank\" href=\"#{$2}\">#{$1}</a>"
       end
     end
@@ -28,9 +28,9 @@ module Shared::CatarseAutoHtml
           '"' => '"'
         }
         image
-        named_link
         youtube width: options[:video_width], height: options[:video_height], wmode: "opaque"
         vimeo width: options[:video_width], height: options[:video_height]
+        named_link
         redcarpet target: :_blank
         link target: :_blank
         add_alt_link_class
