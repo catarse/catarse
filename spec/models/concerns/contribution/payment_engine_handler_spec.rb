@@ -125,6 +125,7 @@ RSpec.describe Contribution::PaymentEngineHandler, type: :model do
     let(:contribution) { create(:contribution) }
     let(:contribution_attributes) {
       {
+        country_id: contribution.country_id,
         address_street: contribution.address_street,
         address_number: contribution.address_number,
         address_complement: contribution.address_complement,
@@ -140,6 +141,7 @@ RSpec.describe Contribution::PaymentEngineHandler, type: :model do
       let(:user) { contribution.user }
       let(:contribution_attributes) {
         {
+          country_id: contribution.country_id,
           address_street: contribution.address_street,
           address_number: contribution.address_number,
           address_complement: contribution.address_complement,
@@ -168,7 +170,7 @@ RSpec.describe Contribution::PaymentEngineHandler, type: :model do
       before do
         user.update_column :cpf, '000'
         user.reload
-        expect(user).to receive(:update_attributes).with(contribution_attributes.merge!({cpf: user.cpf}))
+        expect(user).to receive(:update_attributes).with(contribution_attributes)
       end
 
       it("should update user billing info attributes") { contribution.update_user_billing_info }
