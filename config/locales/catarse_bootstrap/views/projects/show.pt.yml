@@ -13,7 +13,7 @@ pt:
       image_hint: 'Essa imagem será utilizada como a miniatura de seu projeto (PNG, JPG tamanho 512x400)'
       headline: 'Frase de efeito'
       headline_hint: 'Será utilizada no card do projeto, junto com a imagem acima (miniatura). No máximo 100 caracteres.'
-      submit: 'Salvar e visualizar'
+      submit: 'Salvar'
     project_basics:
       project_start: 'Comece a construir o seu projeto'
       project_start_subtitle: 'Após percorrer todas as etapas acima, você pode enviar seu projeto para análise'

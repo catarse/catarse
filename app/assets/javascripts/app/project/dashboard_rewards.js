@@ -10,6 +10,7 @@ App.addChild('DashboardRewards', {
   activate: function() {
     this.$rewards = this.$('#dashboard-rewards');
     this.sortableRewards();
+    this.showNewRewardForm();
   },
 
   toggleExplanation: function() {
@@ -21,6 +22,7 @@ App.addChild('DashboardRewards', {
     event.preventDefault();
     var $target = this.$(event.currentTarget);
     $target.closest('.reward-card').hide();
+    $target.closest('.reward-card').parent().prev().show();
   },
 
   sortableRewards: function() {
@@ -51,19 +53,34 @@ App.addChild('DashboardRewards', {
     })
   },
 
+  showNewRewardForm: function(event) {
+    var that = this;
+    var $target = this.$('.new_reward_button');
+    if(this.$('.sortable').length == 0)
+    {
+      $.get($target.data('path')).success(function(data){
+        $($target.data('target')).html(data);
+        that.rewardForm;
+      });
+
+      this.$($target.data('target')).fadeIn('fast');
+    }
+
+  },
 
   showRewardForm: function(event) {
     var that = this;
     event.preventDefault();
     var $target = this.$(event.currentTarget);
-    //$target.fadeOut('fast');
 
     $.get($target.data('path')).success(function(data){
       $($target.data('target')).html(data);
       that.rewardForm;
     });
 
+    this.$($target.data('parent')).hide();
     this.$($target.data('target')).fadeIn('fast');
+
   }
 });
 
