@@ -983,6 +983,9 @@ p {
 .project-news.last-news {
   border-bottom-style: none;
 }
+.project-about {
+  margin-bottom: 40px;
+}
 .project-video {
   height: 418px;
 }
@@ -1175,9 +1178,15 @@ p {
   background-image: url('../images/wings-blur.jpg');
   background-attachment: scroll;
 }
+.page-header.picure-bg.home {
+  padding-top: 220px;
+  padding-bottom: 220px;
+  background-image: url('../images/Home_COLABORE_APOIADOR (1).jpg');
+  background-repeat: no-repeat;
+}
 .page-header.dark {
   background-color: #3f4752;
-  box-shadow: rgba(0, 0, 0, 0.00) 0px 0px 44px 20px inset;
+  box-shadow: rgba(0, 0, 0, 0) 0px 0px 44px 20px inset;
   color: #f1f4f4;
 }
 .project-about-highlight {
@@ -2632,11 +2641,17 @@ p {
   text-align: center;
 }
 .global-alert {
-  height: 60px;
-  padding: 15px 19px;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  right: 0px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  height: 70px;
+  padding: 20px 38px;
   background-color: #409bff;
-  box-shadow: rgba(24, 95, 171, 0.29) 0px 0px 28px 11px inset;
-  color: rgba(255, 255, 255, 0.50);
+  box-shadow: rgba(24, 95, 171, 0.27) 0px 0px 28px 11px inset, rgba(0, 0, 0, 0.74) 1px 1px 6px -1px;
+  color: #85f1ff;
 }
 .link-icon-light {
   opacity: 0.7;
@@ -2645,6 +2660,9 @@ p {
 }
 .link-icon-light:hover {
   opacity: 1;
+}
+.body-padding-top {
+  padding-top: 70px;
 }
 html.w-mod-js *[data-ix="fade-in"] {
   opacity: 0;
@@ -2988,6 +3006,10 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
   .btn-send-draft {
     width: 90px;
     margin-top: 0px;
+  }
+  .global-alert {
+    padding-right: 24px;
+    padding-left: 24px;
   }
 }
 @media (max-width: 767px) {
@@ -3785,3 +3807,4 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     font-size: 18px;
   }
 }
+

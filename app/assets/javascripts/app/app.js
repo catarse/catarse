@@ -12,11 +12,8 @@ var App = window.App = Skull.View.extend({
   openAlert: function(){
     if(!window.store.get('globalClosed')){
       $('#global-alert').show();
-      $('body').css('padding-top', '60px');
+      $('body').css('padding-top', '70px');
       $('#global-alert')
-        .css('position', 'fixed')
-        .css('margin-top', '-60px')
-        .css('width', '100%')
         .css('z-index', '100');
     }
   },
