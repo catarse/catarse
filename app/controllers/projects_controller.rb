@@ -39,7 +39,7 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new params[:project].merge(user: current_user)
     authorize @project
-    create! { edit_project_path(@project, anchor: 'basics') }
+    create! { edit_project_path(@project, anchor: 'home') }
   end
 
   def destroy
