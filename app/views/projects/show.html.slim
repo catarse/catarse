@@ -56,7 +56,7 @@
           = t('.menu.comments')
           | &nbsp; (
           / we need to remove the locale from the url
-          fb:comments-count href="#{request.base_url}/#{request.path.split('/').last}"
+          fb:comments-count href=controller.fb_comments_link
           | )
         - if policy(@project).update?
           = link_to '#edit', 'id' => 'edit_link', 'data-target' => '#project_edit' do

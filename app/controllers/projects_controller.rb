@@ -72,6 +72,10 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def fb_comments_link
+    "#{request.base_url}/#{request.path.split('/').last}"
+  end
+
   def show
     @title = resource.name
     authorize @project
