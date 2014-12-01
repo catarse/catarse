@@ -1,0 +1,55 @@
+= render 'mobile_video'
+.section
+  .w-container.u-text-center
+    .w-row
+      .w-col.w-col-2
+      .w-col.w-col-8
+        .fontsize-large.fontweight-semibold.u-marginbottom-10= "#{@project.name}, comece a construir o seu projeto!"
+        p.fontsize-base
+          br>/
+          | Siga o passo-a-passo acima (abas Básico, Projeto, Recompensas e Sobre você). Você pode salvar as alterações e voltar aqui quantas vezes quiser (no seu perfil de usuário tem um link para o projeto). Quando sentir que preencheu todas as abas da forma mais completa possível, clique no botão ENVIAR e nosso atendimento irá entrar em contato com você.
+        .w-hidden-small.w-hidden-tiny.card.u-radius
+          .fontsize-small.fontweight-semibold
+            span.fontcolor-secondary> Status:
+            span>= t("projects.project.display_status.#{@project.state}").upcase
+      .w-col.w-col-2
+.section
+  .w-container
+    .w-row
+      .w-col.w-col-8.w-hidden-small.w-hidden-tiny
+        .fontsize-base.u-marginbottom-40.card.card-terciary
+          p.fontweight-bold Sentiu que precisa estudar mais para montar seu projeto? Confira os links no box ao lado.
+          p
+            | A pequisa&nbsp;
+            a.alt-link href="http://pesquisa.catarse.me/" target="_blank" Retrato do Financiamento Coletivo Brasil
+            | &nbsp;também é ótima fonte de dados sobre o cenário brasileiro. Uma boa lida no&nbsp;
+            a.alt-link href="http://blog.catarse.me/" target="_blank" Blog do Catarse
+            | &nbsp;pode ser inspiradora. Lá você encontra histórias de projetos bem sucedidos e dicas de campanha.
+      .w-col.w-col-4
+        .w-hidden-main.w-hidden-medium.card.u-radius.card-notification.zindex-20
+          .u-marginbottom-20.fontsize-base.fontweight-bold Painel de controle
+          p.fontsize-smaller
+            | Olá
+            | para editar as informações do seu projeto, baixar relatórios e receber dicas de campanha, acesse esta página no seu computador ou tablet. Lá você vai ter acesso ao painel de controle do seu projeto ;)
+        .w-hidden-small.w-hidden-tiny.card.u-radius.u-marginbottom-20 data-ix="new-interaction" 
+          .fontsize-small.fontweight-semibold.u-marginbottom-20 Links úteis
+          ul.w-list-unstyled
+            li.alt-link.fontsize-smaller.u-marginbottom-10
+              a.alt-link href="http://suporte.catarse.me/hc/pt-br/articles/202387638-Diretrizes-para-a-cria%C3%A7%C3%A3o-de-projetos" target="_blank"  Critérios de seleção
+            li.alt-link.fontsize-smaller.u-marginbottom-10
+              a.alt-link href="http://suporte.catarse.me/hc/pt-br/articles/202446018-Como-funciona-a-sele%C3%A7%C3%A3o-de-projetos-no-Catarse-" target="_blank"  Como os projetos são selecionados?
+            li.fontsize-smaller.alt-link.u-marginbottom-10
+              a.alt-link href="http://suporte.catarse.me/hc/pt-br/articles/202037363-O-que-%C3%A9-um-projeto-em-Rascunho-" target="_blank"  O que é um projeto em Rascunho?
+            li.fontsize-smaller.alt-link.u-marginbottom-10
+              a.alt-link href="http://suporte.catarse.me/hc/pt-br/articles/203073937-O-que-%C3%A9-obrigat%C3%B3rio-para-um-projeto-ir-ao-ar-" target="_blank"  Itens obrigatórios para um projeto ir ao ar
+        .w-hidden-small.w-hidden-tiny.card.u-radius data-ix="new-interaction" 
+          .fontsize-small.fontweight-semibold.u-marginbottom-20 Suporte
+          ul.w-list-unstyled
+            li.alt-link.fontsize-smaller.u-marginbottom-10
+              a.alt-link href="http://suporte.catarse.me/hc/pt-br/sections/200426037-Realizadores-repasse-do-dinheiro" target="_blank"  Como o Catarse funciona?
+            li.fontsize-smaller.alt-link.u-marginbottom-10
+              a.alt-link href="http://suporte.catarse.me/hc/pt-br/articles/202265256-Por-que-o-Tudo-ou-Nada-" target="_blank"  Por quê Tudo-ou-nada?
+            li.alt-link.fontsize-smaller.u-marginbottom-10
+              a.alt-link href="http://suporte.catarse.me/" target="_blank"  Central de Suporte
+            li.fontsize-smaller.alt-link
+              a.alt-link href="https://equipecatarse.zendesk.com/account/dropboxes/20298537" target="_blank"  Entre em contato com a gente
