@@ -14,9 +14,6 @@ var App = window.App = Skull.View.extend({
       $('#global-alert').show();
       $('body').css('padding-top', '60px');
       $('#global-alert')
-        .css('position', 'fixed')
-        .css('margin-top', '-60px')
-        .css('width', '100%')
         .css('z-index', '100');
     }
   },
