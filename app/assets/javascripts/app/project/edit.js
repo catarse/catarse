@@ -3,6 +3,7 @@ App.addChild('ProjectEdit', _.extend({
 
   activate: function(){
     this.route('basics');
+    this.route('home');
     this.route('project');
     this.route('reward');
     this.route('edit');
