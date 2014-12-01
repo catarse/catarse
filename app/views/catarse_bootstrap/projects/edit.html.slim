@@ -6,7 +6,9 @@ nav.w-hidden-small.w-hidden-tiny.dashboard-nav
   .w-container
     .w-row
       .w-col.w-col-9
-        a.dashboard-nav-link.selected href="../../dashboard/draft/home.html"  Início
+        = link_to '#home', id: 'dashboard_home_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_home'} do
+          span.fa.fa-check-circle.fontcolor-terciary .
+            Início
         = link_to '#basics', id: 'basics_link', class: 'dashboard-nav-link ' , data: {target: '#project_basics'} do
           span.fa.fa-check-circle.fontcolor-terciary .
             Básico
@@ -31,6 +33,8 @@ section.section
   .w-container
     .w-row
       article.w-hidden-small.w-hidden-tiny
+        #dashboard_home.content.w-hidden
+          = render 'dashboard_home'
         #project_basics.content.w-hidden
           = render 'project_basics'
         #dashboard_project.content.w-hidden
