@@ -2,9 +2,34 @@ var App = window.App = Skull.View.extend({
   el: 'html',
 
   events: {
-    "click a.user-menu" : "toggleMenu",
+    "click #close-global-alert" : "closeAlert",
+    "click a#user-menu" : "toggleMenu",
     "click a.mobile-menu-link" : "mobileMenu",
     "click .zendesk_widget" : "showWidget",
+    "click #pg_search_submit" : "searchProject"
+  },
+
+  openAlert: function(){
+    if(!window.store.get('globalClosed')){
+      $('#global-alert').show();
+      $('body').css('padding-top', '60px');
+      $('#global-alert')
+        .css('position', 'fixed')
+        .css('margin-top', '-60px')
+        .css('width', '100%')
+        .css('z-index', '100');
+    }
+  },
+
+  closeAlert: function(event){
+    $('body').css('padding-top', '0');
+    $('#global-alert').slideUp('slow');
+    window.store.set('globalClosed', true);
+  },
+
+  searchProject: function(){
+    this.$('#search-form').submit();
+    return false;
   },
 
   beforeActivate: function(){
@@ -13,6 +38,7 @@ var App = window.App = Skull.View.extend({
   },
 
   activate: function(){
+    this.openAlert();
     this.$(".best_in_place").best_in_place();
     this.$dropdown = this.$('.dropdown.user');
     this.flash();
