@@ -22,7 +22,7 @@ RSpec.describe ProjectsController, type: :controller do
 
     context "when user is logged in" do
       let(:current_user){ create(:user) }
-      it{ is_expected.to redirect_to edit_project_path(Project.last, anchor: 'basics') }
+      it{ is_expected.to redirect_to edit_project_path(Project.last, anchor: 'home') }
     end
   end
 
