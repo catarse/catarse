@@ -7,23 +7,23 @@ nav.w-hidden-small.w-hidden-tiny.dashboard-nav
     .w-row
       .w-col.w-col-9
         = link_to '#home', id: 'dashboard_home_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_home'} do
-          span.fa.fa-check-circle.fontcolor-terciary .
-            Início
+          span.fa.fa-check-circle.fontcolor-terciary 
+          | &nbsp;&nbsp;Início
         = link_to '#basics', id: 'basics_link', class: 'dashboard-nav-link ' , data: {target: '#project_basics'} do
-          span.fa.fa-check-circle.fontcolor-terciary .
-            Básico
+          span.fa.fa-check-circle.fontcolor-terciary 
+          | &nbsp;&nbsp;Básico
         = link_to '#project', id: 'dashboard_project_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_project'} do
-          span.fa.fa-check-circle.fontcolor-terciary .
-            Projeto
+          span.fa.fa-check-circle.fontcolor-terciary 
+          | &nbsp;&nbsp;Projeto
         = link_to '#reward', id: 'dashboard_reward_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_reward'} do
-          span.fa.fa-check-circle.fontcolor-terciary .
-            Recompensas
+          span.fa.fa-check-circle.fontcolor-terciary 
+          | &nbsp;&nbsp;Recompensas
         a.dashboard-nav-link href="../../dashboard/draft/about.html" 
-          span.fa.fa-check-circle.fontcolor-terciary .
-          | Sobre você
+          span.fa.fa-check-circle.fontcolor-terciary 
+          | &nbsp;&nbsp;Sobre você
         a.dashboard-nav-link href="#" 
-          span.fa.fa-check-circle.fontcolor-terciary .
-          | Conta
+          span.fa.fa-check-circle.fontcolor-terciary 
+          | &nbsp;&nbsp;Conta
       .w-col.w-col-3.w-clearfix
         a.dashboard-nav-link href="../../dashboard/draft/preview.html"  Preview
         - if @project.draft?
