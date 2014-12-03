@@ -7,7 +7,7 @@
         .fontsize-large.fontweight-semibold.u-marginbottom-10= "#{@project.user.display_name}, continue a construir o seu projeto!"
         p.fontsize-base
           | Antes de enviar seu projeto para nossa análise, você tem que preencher todos os dados das abas acima (Básico, Projeto, Recompensas e Sobre você). Você pode salvar as alterações e voltar aqui ao rascunho quantas vezes quiser (no seu perfil de usuário tem um link para o projeto). Quando sentir que preencheu todas as abas da forma mais completa possível, clique no botão ENVIAR e nosso atendimento irá entrar em contato com você.
-        .w-hidden-small.w-hidden-tiny.card.u-radius
+        .w-hidden-small.w-hidden-tiny.card.u-radius.u-marginbottom-30
           .fontsize-small.fontweight-semibold
             span.fontcolor-secondary> Status:
             span>= t("projects.project.display_status.#{@project.state}").upcase
