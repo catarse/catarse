@@ -15,8 +15,8 @@ pt:
       headline_hint: 'Será utilizada no card do projeto, junto com a imagem acima (miniatura). No máximo 100 caracteres.'
       submit: 'Salvar'
     project_basics:
-      project_start: 'Comece a construir o seu projeto'
-      project_start_subtitle: 'Após percorrer todas as etapas acima, você pode enviar seu projeto para análise'
+      project_start: 'Complete as informações abaixo'
+      project_start_subtitle: 'Os dados informados nesta seção não poderão ser alterados com o seu projeto no ar! Preencha os campos com carinho e atenção '
       online_date: 'Data de entrada no ar'
       user_id: 'Id do usuário'
       name: 'Nome do projeto'
