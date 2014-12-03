@@ -61,6 +61,6 @@
 
       .w-row.u-margin-top-40
         .w-col.w-col-4.w-col-push-4
-          = link_to t('.submit'), new_project_path, class: 'btn btn-large'
+          = link_to t('.submit'), new_project_url(protocol: 'http', host: CatarseSettings[:base_url]), class: 'btn btn-large'
 
   = render 'shared/footer_big'
