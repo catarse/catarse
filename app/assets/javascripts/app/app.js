@@ -19,11 +19,14 @@ var App = window.App = Skull.View.extend({
       $('#global-alert')
         .css('z-index', '100');
     }
+    else{
+      this.closeAlert();
+    }
   },
 
   closeAlert: function(event){
     $('body').css('padding-top', '0');
-    $('#global-alert').slideUp('slow');
+    $('#global-alert').hide();
     window.store.set('globalClosed', true);
   },
 
