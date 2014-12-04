@@ -33,7 +33,7 @@ class User < ActiveRecord::Base
   belongs_to :channel
   belongs_to :country
   has_one :user_total
-  has_one :bank_account
+  has_one :bank_account, dependent: :destroy
   has_many :credit_cards
   has_many :contributions
   has_many :authorizations
