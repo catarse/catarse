@@ -72,7 +72,7 @@ section.section
               .w-col.w-col-5
                 = label_tag(:contribution_state_waiting_confirmation, t('.contributions_states.pending'))
             .divider.u-marginbottom-20
-          .results
+          .results[data-skiptab="true"]
             | &nbsp;
           #contributions-loading.loader.u-text-center.w-col.w-col-12 = image_tag "catarse_bootstrap/loader.gif"
 
