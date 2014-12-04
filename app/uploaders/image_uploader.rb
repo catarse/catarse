@@ -8,7 +8,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   def self.choose_storage
-    Rails.env.production? ? :fog : :file
+    CatarseSettings.get_without_cache(:aws_access_key).present? ? :fog : :file
   end
 
   storage choose_storage
