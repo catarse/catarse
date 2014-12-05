@@ -75,6 +75,7 @@ class ProjectsController < ApplicationController
   def edit
     authorize resource
     @posts_count = resource.posts.count(:all)
+    @user = resource.user
   end
 
   def show
