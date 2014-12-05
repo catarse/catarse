@@ -18,7 +18,7 @@ nav.w-hidden-small.w-hidden-tiny.dashboard-nav
         = link_to '#reward', id: 'dashboard_reward_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_reward'} do
           span.fa.fa-check-circle.fontcolor-terciary 
           | &nbsp;&nbsp;Recompensas
-        a.dashboard-nav-link href="../../dashboard/draft/about.html" 
+        = link_to '#user_about', id: 'dashboard_user_about_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_user_about'} do
           span.fa.fa-check-circle.fontcolor-terciary 
           | &nbsp;&nbsp;Sobre você
         a.dashboard-nav-link href="#" 
@@ -41,5 +41,7 @@ section.section
           = render 'dashboard_project'
         #dashboard_reward.content.w-hidden
           = render 'dashboard_reward'
+        #dashboard_user_about.content.w-hidden
+          = render 'dashboard_user_about'
 
 = render 'shared/footer'
