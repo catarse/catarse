@@ -38,6 +38,7 @@
           tr
             th= t('.contribution')
             th= t('.project')
+            th= t('.project_state')
             th= t('.user')
             th= t('.value')
             th= t('.payment_tax')
@@ -54,6 +55,8 @@
             td.project_info title=contribution.project.name
               = link_to project_by_slug_path(permalink: contribution.project.permalink) do
                 = image_tag contribution.project.display_image, class: 'project_img'
+            td.project_info
+              = contribution.project.state
             td.user_info title=contribution.user.display_name
               = link_to user_path(contribution.user) do
                 = image_tag contribution.user.display_image, class: 'user_img'
