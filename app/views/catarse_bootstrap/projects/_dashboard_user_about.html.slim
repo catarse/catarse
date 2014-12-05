@@ -1,0 +1,76 @@
+.w-hidden-small.w-hidden-tiny.dashboard-header.u-text-center
+  .w-container.w-hidden-small.w-hidden-tiny
+    .w-row
+      .w-col.w-col-2
+      .w-col.w-col-8
+        .fontweight-semibold.fontsize-large Agora um pouco sobre você
+        p.fontsize-base Conte pessoas quem é você. Links que ajudem a contar sua história são sempre bem-vindos!
+      .w-col.w-col-2.fontcolor-terciary
+
+= simple_form_for @user, html: { id: 'user_form', class: 'w-form' } do |form|
+  .w-hidden-small.w-hidden-tiny.section
+    .w-container.w-hidden-small.w-hidden-tiny
+      .w-row
+        .w-col.w-col-8.w-hidden-small.w-hidden-tiny
+          .w-form
+              = render 'devise/shared/alert'
+              .w-row.u-marginbottom-30.card.card-terciary
+                .w-col.w-col-5.w-sub-col
+                  label.field-label.fontweight-semibold   Imagem do perfil
+                  label.field-label.fontsize-smallest.fontcolor-secondary   Essa imagem será utilizada como a miniatura de seu perfil (PNG, JPG tamanho&nbsp;512x400)
+                .w-col.w-col-4.w-sub-col
+                  = form.input :uploaded_image, label: '', as: :file, required: false, hint: (@user.uploaded_image.present? ? image_tag(@user.uploaded_image.thumb_avatar.url, size: '220x172') : t('formtastic.hints.project.uploaded_image') ) 
+          .w-row.u-marginbottom-30.card.card-terciary
+            .w-col.w-col-5.w-sub-col
+              label.field-label.fontweight-semibold   Nome
+              label.field-label.fontsize-smallest.fontcolor-secondary   Esse é o nome que os usuários irão ver no seu perfil
+            .w-col.w-col-7
+              = form.input_field :name, as: :string, class: 'positive'
+          .w-form.card.card-terciary.u-marginbottom-30
+              .w-row
+                .w-col.w-col-5.w-sub-col
+                  label.field-label.fontweight-semibold   Biografia
+                  label.field-label.fontsize-smallest.fontcolor-secondary   Se você pudesse falar sobre você em um tweet?&nbsp;Máximo 140 caracteres
+                .w-col.w-col-7
+                  = form.input_field :bio, as: :text, class: 'positive big'
+          .w-form.card.card-terciary.u-marginbottom-30
+              .w-row.u-marginbottom-10
+                .w-col.w-col-5.w-sub-col
+                  label.field-label.fontweight-semibold   Perfil do facebook
+                  label.field-label.fontsize-smallest.fontcolor-secondary   Cole o link do seu perfil
+                .w-col.w-col-7
+                  = form.input_field :facebook_link, as: :string, class: 'positive'
+              .w-row.u-marginbottom-10
+                .w-col.w-col-5.w-sub-col
+                  label.field-label.fontweight-semibold   Perfil do twitter
+                  label.field-label.fontsize-smallest.fontcolor-secondary   Cole o link do seu perfil
+                .w-col.w-col-7
+                  = form.input_field :twitter, as: :string, class: 'positive'
+          .w-form.card.card-terciary.u-marginbottom-30
+              .w-row.u-marginbottom-10
+                .w-col.w-col-5.w-sub-col
+                  label.field-label.fontweight-semibold   Página na internet
+                  label.field-label.fontsize-smallest.fontcolor-secondary   Inclua links que ajudem os apoiadores a saber mais sobre você e suas qualificações para executar o projeto.&nbsp;
+                .w-col.w-col-7
+                  .w-row
+                    .w-col.w-col-12
+                      = form.input_field :other_link, as: :string, class: 'positive'
+        .w-col.w-col-4
+          .w-hidden-small.w-hidden-tiny.card.u-radius.u-marginbottom-20 data-ix="new-interaction" 
+            .fontsize-small.fontweight-semibold.u-marginbottom-20 Links úteis
+            ul.w-list-unstyled
+              li.alt-link.fontsize-smaller.u-marginbottom-10
+                a.alt-link href="http://suporte.catarse.me/hc/pt-br/articles/202387638-Diretrizes-para-a-cria%C3%A7%C3%A3o-de-projetos" target="_blank"  Critérios de seleção
+              li.alt-link.fontsize-smaller.u-marginbottom-10
+                a.alt-link href="http://suporte.catarse.me/hc/pt-br/articles/202446018-Como-funciona-a-sele%C3%A7%C3%A3o-de-projetos-no-Catarse-" target="_blank"  Como os projetos são selecionados?
+              li.fontsize-smaller.alt-link.u-marginbottom-10
+                a.alt-link href="http://suporte.catarse.me/hc/pt-br/articles/202037363-O-que-%C3%A9-um-projeto-em-Rascunho-" target="_blank"  O que é um projeto em Rascunho?
+              li.fontsize-smaller.alt-link.u-marginbottom-10
+                a.alt-link href="http://suporte.catarse.me/hc/pt-br/articles/203073937-O-que-%C3%A9-obrigat%C3%B3rio-para-um-projeto-ir-ao-ar-" target="_blank"  Itens obrigatórios para um projeto ir ao ar
+  div
+    .w-container
+      .w-row
+        .w-col.w-col-4
+        .w-col.w-col-4
+          = form.button :submit, 'Salvar',  class:'btn btn-large'
+        .w-col.w-col-4
