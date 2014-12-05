@@ -4,6 +4,7 @@ class ProjectsController < ApplicationController
   inherit_resources
   has_scope :pg_search, :by_category_id, :near_of
   has_scope :recent, :expiring, :successful, :in_funding, :recommended, :not_expired, type: :boolean
+  before_filter :detect_mobile_browsers, only: [:show]
 
   respond_to :html
   respond_to :json, only: [:index, :show, :update]
