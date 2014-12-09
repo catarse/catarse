@@ -21,6 +21,8 @@
         = form.input :by_user_email, as: :string, label: t('.by_user_email'), input_html: {value: params[:by_user_email]}
       .large-2.columns
         = form.input :with_state, collection: Project.state_names, label: t('channels.admin.filter.with_state'), as: :select, selected: params[:with_state], include_blank: true
+      .large-2.columns
+        = form.input :with_payment_engine, collection: ['pagarme', 'moip'], label: 'Meio de pagamento', as: :select, include_blank: true, selected: params[:with_payment_engine]
 
     .row
       - [:between_created_at, :between_expires_at, :between_online_date, :between_updated_at, :goal_between].each_with_index do |between_field, index|
