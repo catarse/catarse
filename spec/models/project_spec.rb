@@ -67,7 +67,7 @@ RSpec.describe Project, type: :model do
     end
 
     it "should return a collection with projects that is expiring time less of the time in param" do
-      is_expected.to eq([@project_01, @project_04])
+      is_expected.to match_array([@project_01, @project_04])
     end
   end
 
