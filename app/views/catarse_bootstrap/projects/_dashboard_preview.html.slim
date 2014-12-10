@@ -1,0 +1,16 @@
+.w-hidden-small.w-hidden-tiny.dashboard-header.u-text-center
+  .w-container.w-hidden-small.w-hidden-tiny
+    .w-row
+      .w-col.w-col-2
+      .w-col.w-col-8
+        .fontweight-semibold.fontsize-large Quer colher feedbacks?
+        p.fontsize-base Compartilhe o link abaixo com seus amigos e aproveite o momento para fazer ajustes finos que ajudem na sua campanha.
+        .w-row.u-marginbottom-30
+          .w-col.w-col-3
+          .w-col.w-col-6
+            input.w-input.text-field value="http://#{CatarseSettings[:host]}/#{@project.permalink}" type="text"
+          .w-col.w-col-3
+      .w-col.w-col-2
+
+.divider
+=  render 'project_main'
