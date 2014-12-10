@@ -25,7 +25,8 @@ nav.w-hidden-small.w-hidden-tiny.dashboard-nav
           span.fa.fa-check-circle.fontcolor-terciary 
           | &nbsp;&nbsp;Conta
       .w-col.w-col-3.w-clearfix
-        a.dashboard-nav-link href="../../dashboard/draft/preview.html"  Preview
+        = link_to '#preview', id: 'dashboard_preview_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_preview'} do
+          | Preview
         - if @project.draft?
           .btn-send-draft
              = link_to 'Enviar', send_to_analysis_project_path(@project), class: 'btn btn-small'
@@ -43,5 +44,7 @@ section.section
           = render 'dashboard_reward'
         #dashboard_user_about.content.w-hidden
           = render 'dashboard_user_about'
+        #dashboard_preview.content.w-hidden
+          = render 'dashboard_preview'
 
 = render 'shared/footer'
