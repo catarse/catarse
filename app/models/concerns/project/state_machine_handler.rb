@@ -42,17 +42,18 @@ module Project::StateMachineHandler
           project.expired?
         }
 
+        transition waiting_funds: :waiting_funds,      if: ->(project) {
+          project.in_time_to_wait?
+        }
+
         transition waiting_funds: :successful,  if: ->(project) {
-          project.reached_goal? && !project.in_time_to_wait?
+          project.reached_goal?
         }
 
         transition waiting_funds: :failed,      if: ->(project) {
-          project.should_fail? && !project.in_time_to_wait?
+          project.should_fail?
         }
 
-        transition waiting_funds: :waiting_funds,      if: ->(project) {
-          project.should_fail? && project.in_time_to_wait?
-        }
       end
 
       after_transition do |project, transition|
