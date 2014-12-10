@@ -4,7 +4,7 @@ App.addChild('MixPanel', {
   activate: function(){
     this.VISIT_MIN_TIME = 10000;
     this.user = null;
-    this.controller = this.$el.data('controller');
+    this.controller = this.$el.data('controller') || this.$el.data('controller-name');
     this.action = this.$el.data('action');
     this.user = this.$el.data('user');
     if(window.mixpanel){
