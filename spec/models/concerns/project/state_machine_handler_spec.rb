@@ -14,6 +14,29 @@ RSpec.describe Project::StateMachineHandler, type: :model do
     let(:project_state){ 'draft' }
 
     describe "#send_to_analysis" do
+      context "when project has no goal" do
+        subject { project.send_to_analysis }
+        let(:project) { create(:project, goal: nil, state: 'draft') }
+
+        it "should raise an error" do
+          subject
+          expect(project.errors).to_not be_nil
+        end
+
+      end
+
+      context "when project user has no name" do
+        subject { project.send_to_analysis }
+        let(:user) { create(:user, name: nil)}
+        let(:project) { create(:project, user: user, state: 'draft') }
+
+        it "should raise an error" do
+          subject
+          expect(project.errors).to_not be_nil
+        end
+
+      end
+
       context "when project is draft" do
         let(:project_state){ 'draft' }
 
@@ -65,14 +88,26 @@ RSpec.describe Project::StateMachineHandler, type: :model do
     end
 
     describe '#approve' do
-      before do
-        expect(project).to receive(:notify_observers).with(:from_in_analysis_to_online).and_call_original
-      end
+      let(:project_state){ 'in_analysis' }
 
       subject{ project.approve }
 
+      context "when project has no video" do
+        before do
+          project.update_attribute :video_url, nil
+        end
+
+        it "should raise an error" do
+          subject
+          expect(project.errors).to_not be_nil
+        end
+
+      end
+
       context "when project is in_analysis" do
-        let(:project_state){ 'in_analysis' }
+        before do
+          expect(project).to receive(:notify_observers).with(:from_in_analysis_to_online).and_call_original
+        end
         it{ is_expected.to eq true }
         it 'should persist the online_date' do
           subject
