@@ -32,7 +32,8 @@ RSpec.describe ProjectPolicy do
       before do
         @draft = create(:project, state: 'draft', user: user)
         @online = create(:project, state: 'online', user: user)
-        @in_analysis = create(:project, state: 'in_analysis', user: user)
+        @in_analysis = build(:project, state: 'in_analysis', user: user)
+        @in_analysis.save(validate: false)
       end
 
       subject { ProjectPolicy::UserScope.new(current_user, user, user.projects).resolve.order('created_at desc') }
