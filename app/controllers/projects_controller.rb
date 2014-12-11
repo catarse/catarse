@@ -39,7 +39,11 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new params[:project].merge(user: current_user)
     authorize @project
-    create! { edit_project_path(@project, anchor: 'home') }
+    if @project.save
+      redirect_to edit_project_path(@project, anchor: 'home')
+    else
+      render :new
+    end
   end
 
   def destroy
@@ -67,7 +71,7 @@ class ProjectsController < ApplicationController
           flash[:notice] = t('project.update.success')
         end
 
-        redirect_to edit_project_path(@project)
+        redirect_to edit_project_path(@project, anchor: 'basics')
       end
     end
   end
