@@ -7,6 +7,7 @@ App.addChild('ProjectEdit', _.extend({
     this.route('project');
     this.route('reward');
     this.route('user_about');
+    this.route('preview');
     this.route('edit');
   },
 
