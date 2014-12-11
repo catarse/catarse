@@ -31,6 +31,7 @@ RSpec.describe ProjectsController, type: :controller do
 
     context "without referal link" do
       before do
+        create(:reward, project: project)
         get :send_to_analysis, id: project.id, locale: :pt
         project.reload
       end
