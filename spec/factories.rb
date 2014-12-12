@@ -29,6 +29,7 @@ FactoryGirl.define do
   factory :user do |f|
     f.name "Foo bar"
     f.password "123456"
+    f.uploaded_image File.open("#{Rails.root}/spec/support/testimg.png")
     f.email { generate(:email) }
     f.bio "This is Foo bar's biography."
   end

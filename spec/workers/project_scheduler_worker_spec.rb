@@ -9,5 +9,5 @@ RSpec.describe ProjectSchedulerWorker do
     expect_any_instance_of(Project).to receive(:approve)
   end
 
-  it("should satisfy expectations") { project.save }
+  it("should satisfy expectations") { project.save(validate: false) }
 end

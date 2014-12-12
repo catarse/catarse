@@ -48,11 +48,11 @@ RSpec.describe Project, type: :model do
       3.times { create(:project, state: 'successful', online_date: 6.days.ago) }
       5.times { create(:project, state: 'online', online_date: 8.days.ago) }
       5.times { create(:project, state: 'online', online_date: 2.weeks.ago) }
-      2.times { create(:project, state: 'in_analysis', online_date: 3.days.from_now)}
+      build(:project, state: 'in_analysis', online_date: 3.days.from_now).save(validate: false)
     end
 
     it "should return a collection with projects of current week" do
-      is_expected.to have(11).itens
+      is_expected.to have(10).itens
     end
   end
 
@@ -111,9 +111,10 @@ RSpec.describe Project, type: :model do
 
   describe ".visible" do
     before do
-      [:draft, :rejected, :deleted, :in_analysis].each do |state|
+      [:draft, :rejected, :deleted].each do |state|
         create(:project, state: state)
       end
+      build(:project, state: :in_analysis).save(validate: false)
       @project = create(:project, state: :online)
     end
     subject{ Project.visible }
