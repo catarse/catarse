@@ -73,6 +73,16 @@ pt:
       active_btn: ' Lembrar-me'
       deactive_btn: ' Lembrete ativo'
     show:
+      menu:
+        about: Sobre
+        add_reward: Adicionar recompensa
+        comments: Comentários
+        contributions: Apoiadores
+        metrics: Métricas
+        edit: Edição
+        reports: Relatórios
+        posts: Novidades
+    project_main:
       twitter_profile: "Perfil no Twitter"
       facebook_profile: "Perfil no Facebook"
       author_website: "Site do autor"
@@ -96,15 +106,6 @@ pt:
         subtitle_html: "Um projeto de %{link}"
         without_city: "Um projeto de"
         with_city: "Um projeto de %{category_name} por %{author} em %{city}"
-      menu:
-        about: Sobre
-        add_reward: Adicionar recompensa
-        comments: Comentários
-        contributions: Apoiadores
-        metrics: Métricas
-        edit: Edição
-        reports: Relatórios
-        posts: Novidades
       no_rewards_warning: Não viaje! Pense em como irá entregá-las e coloque tudo
         isso no orçamento. Prometeu?! CUMPRA! :D
       no_rewards_warning_title: Crie aqui suas recompensas
