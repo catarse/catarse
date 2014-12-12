@@ -10,6 +10,9 @@ var App = window.App = Skull.View.extend({
   },
 
   openAlert: function(){
+    if($('#global-alert').length === 0){
+      return;
+    }
     if(!window.store.get('globalClosed')){
       $('#global-alert').show();
       $('body').css('padding-top', '70px');
