@@ -89,13 +89,13 @@ RSpec.describe ProjectsController, type: :controller do
           expect(project.name).to eq('My Updated Title')
         }
 
-        it{ is_expected.to redirect_to edit_project_path(project) }
+        it{ is_expected.to redirect_to edit_project_path(project, anchor: 'basics') }
       end
 
       context "with invalid permalink" do
         before { put :update, id: project.id, project: { permalink: '', name: 'My Updated Title' },locale: :pt }
 
-        it{ is_expected.to redirect_to edit_project_path(project) }
+        it{ is_expected.to redirect_to edit_project_path(project, anchor: 'basics') }
       end
     end
 
