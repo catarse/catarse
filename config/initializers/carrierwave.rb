@@ -1,5 +1,5 @@
 CarrierWave.configure do |config|
-  if Rails.env.production? and CatarseSettings.get_without_cache(:aws_access_key)
+  if CatarseSettings.get_without_cache(:aws_access_key)
     config.fog_credentials = {
       provider: 'AWS',
       host: 's3.amazonaws.com',

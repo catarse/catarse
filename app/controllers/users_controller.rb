@@ -25,6 +25,11 @@ class UsersController < ApplicationController
     redirect_to user_path(current_user, anchor: 'credits')
   end
 
+  def settings
+    authorize resource
+    redirect_to user_path(current_user, anchor: 'settings')
+  end
+
   def show
     authorize resource
     show!{

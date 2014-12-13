@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   before_filter :configure_permitted_parameters, if: :devise_controller?
   before_filter :force_http, unless: :devise_controller?
 
-  helper_method :channel, :namespace, :referal_link, :render_projects
+  helper_method :channel, :namespace, :referal_link, :render_projects, :should_show_beta_banner?
 
   before_filter :set_locale
 
@@ -31,9 +31,17 @@ class ApplicationController < ActionController::Base
     render_to_string partial: 'projects/project', collection: collection, locals: {ref: ref}
   end
 
+  def should_show_beta_banner?
+    current_user.nil? || current_user.projects.empty?
+  end
+
   private
   def referal_it!
     session[:referal_link] ||= params[:ref] if params[:ref].present?
+  end
+
+  def detect_mobile_browsers
+    return redirect_to url_for(host: 'beta.catarse.me') if browser.mobile? && should_show_beta_banner?
   end
 
   def detect_old_browsers

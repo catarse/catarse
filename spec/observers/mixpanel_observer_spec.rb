@@ -12,7 +12,8 @@ RSpec.describe MixpanelObserver do
       has_contributions: (contribution.user.total_contributed_projects > 0),
       project: contribution.project.name,
       payment_method: contribution.payment_method,
-      payment_choice: contribution.payment_choice
+      payment_choice: contribution.payment_choice,
+      referral: contribution.referal_link
     }
   end
 

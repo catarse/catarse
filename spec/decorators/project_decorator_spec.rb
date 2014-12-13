@@ -126,9 +126,26 @@ RSpec.describe ProjectDecorator do
   end
 
   describe "#about_html" do
-    subject{ project.about_html }
-    it{ is_expected.to eq('<p>Foo Bar <a href="http://www.foo.bar" target="_blank">http://www.foo.bar</a> &lt;javascript&gt;xss()&lt;/javascript&gt;<a target="_blank" href="http://click.here">Click here</a></p>') }
+    context "when about has some named links and newlines" do
+      subject{ create(:project, about: %{ conheça mais o levante SP no nosso "blog":http://sp.levante.org.br; no nosso "face":www.facebook.com/levanteSP; no nosso "canal no youtube":https://www.youtube.com/channel/UCYnc2e9rNHv-JRxKzycI46A; no "face nacional":www.facebook.com/levantepopulardajuventude e no "site nacional":www.levante.org.br. (como você vai perceber, estamos melhorando a cada dia nossa comunicação, com muito trabalho, esforço, dedicação e criatividade!)
+pra você que quer organizar o levante na sua realidade, preencha "este formulário":http://goo.gl/FbAaKW
+                      }).about_html }
+      it{ is_expected.to eq(%{<p>conheça mais o levante SP no nosso <a class="alt-link" target="_blank" href="http://sp.levante.org.br">blog</a>; no nosso <a class="alt-link" target="_blank" href="www.facebook.com/levanteSP">face</a>; no nosso <a class="alt-link" target="_blank" href="https://www.youtube.com/channel/UCYnc2e9rNHv-JRxKzycI46A">canal no youtube</a>; no <a class="alt-link" target="_blank" href="www.facebook.com/levantepopulardajuventude">face nacional</a> e no <a class="alt-link" target="_blank" href="www.levante.org.br.">site nacional</a> (como você vai perceber, estamos melhorando a cada dia nossa comunicação, com muito trabalho, esforço, dedicação e criatividade!)
+pra você que quer organizar o levante na sua realidade, preencha <a class="alt-link" target="_blank" href="http://goo.gl/FbAaKW">este formulário</a></p>
+}) }
+    end
+
+    context "when about has named link syntax fallowed by open tag" do
+      subject{ create(:project, about: %{"video":https://www.youtube.com/watch?v=h4aCqpZ2dVU}).about_html }
+      it{ is_expected.to eq(%{<p>&quot;video&quot;:<div class=\"video youtube\"><iframe width=\"600\" height=\"403\" src=\"//www.youtube.com/embed/h4aCqpZ2dVU?wmode=opaque\" frameborder=\"0\" allowfullscreen></iframe></div></p>\n}) }
+    end
+
+    context "when about has JS tags and some links" do
+      subject{ project.about_html }
+      it{ is_expected.to eq("<p>Foo Bar <a class=\"alt-link\" href=\"http://www.foo.bar\" target=\"_blank\">http://www.foo.bar</a> &lt;javascript&gt;xss()&lt;/javascript&gt;<a class=\"alt-link\" target=\"_blank\" href=\"http://click.here\">Click here</a></p>\n")}
+    end
   end
+
 
   describe "#display_progress" do
     subject{ project.display_progress }

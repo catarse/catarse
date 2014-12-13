@@ -21,8 +21,8 @@ RSpec.describe "Users", type: :feature do
     before do
       login
       @project = create(:contribution, user: current_user).project
-      visit user_path(current_user, locale: :pt)
-      click_link 'unsubscribes_link'
+      visit user_path(current_user, locale: :pt, anchor: 'unsubscribes')
+      sleep 1
     end
 
     it "should show unsubscribe from all updates" do
