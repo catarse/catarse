@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.1.3'
+ruby '2.1.5'
 
 gem 'rails', '~> 4.1.6'
 
@@ -34,8 +34,8 @@ gem 'mixpanel-ruby'
 
 # Payment engines
 gem 'catarse_paypal_express', '2.2.4'
-gem 'catarse_moip', '~> 2.3.6'
-gem 'catarse_pagarme', '1.4.7'
+gem 'catarse_moip', '~> 2.4.0'
+gem 'catarse_pagarme', '1.4.8'
 gem 'catarse_contribution_validator', github: 'catarse/catarse_contribution_validator'
 # gem 'catarse_wepay', '~> 0.0.1'
 
@@ -65,7 +65,7 @@ gem 'catarse_monkeymail', '>= 0.1.6'
 gem 'formtastic',   '~> 2.2.1'
 gem 'simple_form'
 gem 'mail_form'
-gem "auto_html",    '= 1.4.2'
+gem "auto_html"
 gem "RedCloth"
 gem 'kaminari'
 

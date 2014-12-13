@@ -2,10 +2,37 @@ var App = window.App = Skull.View.extend({
   el: 'html',
 
   events: {
+    "click #close-global-alert" : "closeAlert",
     "click a.user-menu" : "toggleMenu",
     "click a.mobile-menu-link" : "mobileMenu",
     "click .zendesk_widget" : "showWidget",
-    "click a.icon-feedback-box" : "toggleBox",
+    "click #pg_search_submit" : "searchProject"
+  },
+
+  openAlert: function(){
+    if($('#global-alert').length === 0){
+      return;
+    };
+    if(!window.store.get('globalClosed')){
+      $('#global-alert').show();
+      $('body').css('padding-top', '60px');
+      $('#global-alert')
+        .css('z-index', '100');
+    }
+    else{
+      this.closeAlert();
+    }
+  },
+
+  closeAlert: function(event){
+    $('body').css('padding-top', '0');
+    $('#global-alert').hide();
+    window.store.set('globalClosed', true);
+  },
+
+  searchProject: function(){
+    this.$('#search-form').submit();
+    return false;
   },
 
   beforeActivate: function(){
@@ -14,6 +41,7 @@ var App = window.App = Skull.View.extend({
   },
 
   activate: function(){
+    this.openAlert();
     this.$(".best_in_place").best_in_place();
     this.$dropdown = this.$('.dropdown.user');
     this.flash();
@@ -57,10 +85,6 @@ var App = window.App = Skull.View.extend({
     $(".mobile-menu").slideToggle(500);
   },
 
-  toggleBox: function() {
-    this.feedbackBox.openBox();
-    return false;
-  },
 });
 
 $(function(){

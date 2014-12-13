@@ -108,7 +108,7 @@ RSpec.describe Projects::ContributionsController, type: :controller do
     let(:secure_review_host){ nil }
     let(:user){ create(:user) }
     let(:online){ true }
-    let(:browser){ double("browser", ie9?: false, modern?: true) }
+    let(:browser){ double("browser", ie9?: false, modern?: true, mobile?: false) }
 
     before do
       CatarseSettings[:secure_review_host] = secure_review_host
@@ -116,6 +116,11 @@ RSpec.describe Projects::ContributionsController, type: :controller do
       allow(controller).to receive(:browser).and_return(browser)
       allow_any_instance_of(ApplicationController).to receive(:detect_old_browsers).and_call_original
       get :new, {locale: :pt, project_id: project.id}
+    end
+
+    context "when browser is mobile" do
+      let(:browser){ double("browser", ie9?: false, modern?: true, mobile?: true) }
+      it{ is_expected.to redirect_to new_project_contribution_url(host: 'beta.catarse.me') }
     end
 
     context "when browser is IE 9" do

@@ -9,6 +9,16 @@ module Shared::CatarseAutoHtml
       end
     end
 
+    AutoHtml.add_filter(:add_alt_link_class) do |text, options|
+      text.gsub(/<a/i, '<a class="alt-link"')
+    end
+
+    AutoHtml.add_filter(:named_link) do |text, options|
+      text.gsub(/"(.+?)":([^\s,;<]+)/) do |match|
+        "<a target=\"_blank\" href=\"#{$2}\">#{$1}</a>"
+      end
+    end
+
     def self.catarse_auto_html_for options={}
       self.auto_html_for options[:field] do
         html_escape map: {
@@ -20,8 +30,10 @@ module Shared::CatarseAutoHtml
         image
         youtube width: options[:video_width], height: options[:video_height], wmode: "opaque"
         vimeo width: options[:video_width], height: options[:video_height]
-        redcloth target: :_blank
+        named_link
+        redcarpet target: :_blank
         link target: :_blank
+        add_alt_link_class
       end
     end
 
@@ -34,7 +46,8 @@ module Shared::CatarseAutoHtml
           '"' => '"'
         }
         email_image width: options[:image_width]
-        redcloth target: :_blank
+        named_link
+        redcarpet target: :_blank
         link target: :_blank
       end
     end

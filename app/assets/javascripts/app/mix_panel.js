@@ -148,7 +148,8 @@ App.addChild('MixPanel', {
       'projects':           null,
       'has_projects':       null,
       'project':            ref,
-      'url':                window.location
+      'url':                window.location,
+      'host':               window.location.host
     };
     if(this.user){
       default_options.user_id = this.user.id;
