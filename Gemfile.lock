@@ -7,6 +7,15 @@ GIT
       actionpack (>= 3.2)
 
 GIT
+  remote: git://github.com/catarse/catarse_api.git
+  revision: e1fa2cb285c3b8f0fafbc4639d9f075396590381
+  specs:
+    catarse_api (0.0.1)
+      active_model_serializers (= 0.8.0)
+      has_scope
+      rails (~> 4.0)
+
+GIT
   remote: git://github.com/catarse/catarse_contribution_validator.git
   revision: a5ce1407c402b3b3aba640aab54af6a8474e910a
   specs:
@@ -40,6 +49,8 @@ GEM
       activesupport (= 4.1.7)
       builder (~> 3.1)
       erubis (~> 2.7.0)
+    active_model_serializers (0.8.0)
+      activemodel (>= 3.0)
     active_utils (2.2.3)
       activesupport (>= 2.3.11)
       i18n
@@ -533,6 +544,7 @@ DEPENDENCIES
   browser
   capybara (~> 2.2.0)
   carrierwave (~> 0.10.0)
+  catarse_api!
   catarse_contribution_validator!
   catarse_moip (~> 2.3.6)
   catarse_monkeymail (>= 0.1.6)
