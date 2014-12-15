@@ -62,7 +62,7 @@ pt:
         about: Sobre
         add_reward: Adicionar recompensa
         comments: Comentários
-        contributions: Apoiadores
+        contributions: Apoios
         metrics: Métricas
         edit: Edição
         reports: Relatórios
@@ -74,5 +74,5 @@ pt:
         confirmed: Confirmados
         pending: Boletos impressos
       sidebar:
-        contributions: apoiadores
+        contributions: apoios
         goal: atingidos de %{total}
