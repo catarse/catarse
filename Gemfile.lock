@@ -8,11 +8,12 @@ GIT
 
 GIT
   remote: git://github.com/catarse/catarse_api.git
-  revision: e1fa2cb285c3b8f0fafbc4639d9f075396590381
+  revision: eb11743e8a81fe4f567e0a34b5c575bd7ae48ffb
   specs:
     catarse_api (0.0.1)
       active_model_serializers (= 0.8.0)
       has_scope
+      kaminari
       rails (~> 4.0)
 
 GIT
@@ -294,7 +295,7 @@ GEM
     method_source (0.8.2)
     mime-types (2.4.3)
     mini_portile (0.6.0)
-    minitest (5.4.3)
+    minitest (5.5.0)
     mixpanel-ruby (1.5.0)
     money (6.4.0)
       i18n (>= 0.6.4, <= 0.7.0.beta1)
@@ -390,7 +391,7 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     raindrops (0.13.0)
-    rake (10.4.0)
+    rake (10.4.2)
     ranked-model (0.4.0)
       activerecord (>= 3.1.12)
     rb-fsevent (0.9.4)
