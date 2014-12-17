@@ -78,9 +78,7 @@ section.section
               = render_twitter_mobile(url: project_by_slug_url(permalink: @project.permalink), title: @project.name)
               = t('.tweet')
 
-        #rewards.u-marginbottom-30[data-can_update="#{policy(@project).update?}" data-index_path=project_rewards_path(@project)]
+        #rewards.u-marginbottom-30[data-index_path=project_rewards_path(@project)]
           .u-text-center = image_tag 'catarse_bootstrap/loader.gif'
         .fontsize-small.fontweight-semibold.u-text-center-small-only = t('.funding_period')
         .fontsize-small.u-text-center-small-only = "#{@project.display_online_date} - #{@project.display_expires_at}  (#{t('datetime.distance_in_words.x_days', count: @project.online_days)})"
-
-
