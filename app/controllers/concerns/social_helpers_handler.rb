@@ -13,7 +13,7 @@ module Concerns
     end
 
     def fb_admins
-      @fb_admins.join(',')
+      @fb_admins
     end
 
     def fb_admins_add(ids)
