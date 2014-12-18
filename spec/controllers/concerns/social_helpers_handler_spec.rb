@@ -21,12 +21,6 @@ RSpec.describe Concerns::SocialHelpersHandler, type: :controller do
     end
   end
 
-  describe '#fb_adminsd' do
-    before { @controller.instance_variable_set(:@fb_admins, [1, 2, 3]) }
-
-    it { expect(@controller.fb_admins).to eq '1,2,3' }
-  end
-
   describe '#render_facebook_sdk' do
     it { expect(@controller.render_facebook_sdk).to render_template(partial: 'layouts/_facebook_sdk') }
   end
