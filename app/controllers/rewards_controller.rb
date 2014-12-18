@@ -43,7 +43,7 @@ class RewardsController < ApplicationController
   def destroy
     authorize resource
     resource.destroy
-    redirect_to project_by_slug_path(permalink: resource.project.permalink)
+    redirect_to edit_project_path(@project, anchor: 'reward')
   end
 
   def sort

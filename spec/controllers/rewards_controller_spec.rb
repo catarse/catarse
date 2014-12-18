@@ -106,7 +106,7 @@ RSpec.describe RewardsController, type: :controller do
 
     context "when user is project owner and delete works" do
       let(:user){ project.user }
-      it{ is_expected.to redirect_to project_by_slug_path(permalink: project.permalink) }
+      it{ is_expected.to redirect_to edit_project_path(project, anchor: 'reward') }
     end
   end
 
