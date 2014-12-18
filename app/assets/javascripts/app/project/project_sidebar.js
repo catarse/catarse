@@ -1,4 +1,4 @@
-App.views.Project.addChild('ProjectSidebar', {
+App.addChild('ProjectSidebar', {
   el: '#project-sidebar',
 
   events:{
