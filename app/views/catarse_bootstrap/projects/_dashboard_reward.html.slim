@@ -28,6 +28,22 @@
                     .fontsize-smaller.u-marginbottom-20.fontweight-semibold= pluralize(reward.contributions.with_state('confirmed').count(:all), t('contribution_singular'), t('contribution_plural'))
                     p.fontsize-small
                       br= reward.display_description
+                    - if reward.maximum_contributions
+                      - in_time_to_confirm = reward.contributions.with_state('waiting_confirmation').count(:all)
+                      - if in_time_to_confirm > 0
+                        .maximum_contributions.in_time_to_confirm.clearfix
+                          .pending.fontsize-smallest.fontcolor-secondary= t('rewards.index.contributions_to_confirm', count: in_time_to_confirm)
+                      - if reward.sold_out?
+                        .u-margintop-10
+                          span.badge.badge-gone.fontsize-smaller
+                            = t('rewards.index.sold_out')
+                      - else
+                        .u-margintop-10
+                          span.badge.badge-attention.fontsize-smaller
+                            span.fontweight-bold
+                              => t('rewards.index.limited')
+                            = " (" + reward.display_remaining + ")"
+
                     .fontsize-smallest
                       =t('rewards.index.reward_deliver_time', estimate: reward.display_deliver_estimate).html_safe
               .w-hidden[class="edit_reward_content_#{reward.id}"]
