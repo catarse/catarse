@@ -86,6 +86,17 @@ RSpec.describe User, type: :model do
       end
       it{ is_expected.to eq([@u]) }
     end
+
+    context "when he has credits in the user_total but is checked with zero credits" do
+      before do
+        b = create(:contribution, state: 'confirmed', value: 100, project: failed_project)
+        failed_project.update_attributes state: 'failed'
+        @u = b.user
+        b = create(:contribution, state: 'confirmed', value: 100, project: successful_project)
+        @u.update_attributes(zero_credits: true)
+      end
+      it{ is_expected.to eq([]) }
+    end
   end
 
   describe ".has_not_used_credits_last_month" do

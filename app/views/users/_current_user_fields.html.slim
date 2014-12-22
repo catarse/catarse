@@ -1,3 +1,12 @@
+- if current_user && current_user.admin?
+.user_data
+  = simple_form_for @user, html: {method: :put, id: 'user_form'}  do |f|
+    = f.input_field :zero_credits, as: :boolean
+    = f.label :zero_credits, 'Zerar creditos'
+    .clearfix
+    br/
+    = f.submit 'Salvar'
+
 #bank_account.user_data
   h1= t('.bank_account_title')
   ul
