@@ -44,3 +44,4 @@
   .no-mobile
     .fontsize-base
       = @project.about_html.try(:html_safe)
+      = @project.budget.try(:html_safe)
