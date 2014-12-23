@@ -7,6 +7,12 @@ CatarsePagarme.configure do |config|
   config.host = CatarseSettings.get_without_cache(:host)
   config.subdomain = 'www'
   config.protocol = 'http'
-  config.max_installments = CatarseSettings.get_without_cache(:pagarme_max_installments).to_i
+  config.max_installments = CatarseSettings.get_without_cache(:pagarme_max_installments)
   config.minimum_value_for_installment = CatarseSettings.get_without_cache(:pagarme_minimum_value_for_installment)
+
+  config.cielo_tax = CatarseSettings.get_without_cache(:cielo_tax)
+  config.stone_tax = CatarseSettings.get_without_cache(:stone_tax)
+  config.cielo_installment_diners_tax = CatarseSettings.get_without_cache(:cielo_installment_diners_tax)
+  config.cielo_installment_not_diners_tax = CatarseSettings.get_without_cache(:cielo_installment_not_diners_tax)
 end
+
