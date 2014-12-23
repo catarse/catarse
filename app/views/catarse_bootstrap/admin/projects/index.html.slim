@@ -1,6 +1,6 @@
 = render 'shared/header_big'
 .w-row.admin.use-sort
-  h1
+  h1.fontsize-largest
     = @title = t('channels.admin.management.title')
     ' :
     = @total_projects
@@ -35,12 +35,12 @@
         = form.input :by_channel, as: :select, collection: Channel.all, selected: params[:by_channel], include_blank: true, input_html: { class: 'w-input text-field' }
 
       .w-col-2.no-label.w-col
-        = form.button :submit, t('channels.admin.filter.submit'), class: 'button medium negative'
+        = form.button :submit, t('channels.admin.filter.submit'), class: 'btn btn-medium'
 
     .w-row
       .w-col-2.w-col-offset-10.w-col
-        p.filtered-number = @scoped_projects.count(:all)
-        p.filtered-number-label
+        .fontsize-largest = @scoped_projects.count(:all)
+        .fontsize-base
           = pluralize_without_number(@scoped_projects.count(:all), t('project_singular'), t('project_plural'))
           '
           = pluralize_without_number @scoped_projects.count(:all), t('found_singular'), t('found_plural')
@@ -50,8 +50,8 @@
   - if @scoped_projects.count(:all) < 1
     = t('.no_projects')
   - else
-    table.admin-projects-table.no-bottom
-      thead
+    table.fontsize-smallest
+      thead.card.card-secondary
         tr
           th.w-col-1.w-col= t('channels.admin.table.name')
           th.w-col-1.w-col= t('.pagarme')
@@ -80,7 +80,7 @@
           th.w-col-1.w-col
       tbody
         - @projects.includes(:category).each do |project|
-          tr id=project.id class=cycle("even", "odd")
+          tr id=project.id class=cycle("card", "card card-secondary")
             td.w-col-1.w-col= link_to project.name, project_by_slug_path(permalink: project.permalink)
             td.w-col-1.w-col= (project.using_pagarme? ? t('yes') : t('no'))
             td.w-col-1.w-col= project.category
@@ -104,7 +104,6 @@
                   span.label.label-warning= project.state
                 - else
                   span.label= project.state
-
                 nav.w-dropdown-list.dropdown-list.user-menu
                   - if project.can_approve?
                     li
