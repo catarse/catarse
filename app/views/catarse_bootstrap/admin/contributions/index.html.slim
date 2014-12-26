@@ -41,7 +41,7 @@
   - else
     - @contributions.includes(:project, :user, :reward).each do |contribution|
       table.admin-contributions
-        thead
+        thead.card.card-secondary
           tr
             th= t('.contribution')
             th= t('.project')
@@ -55,7 +55,7 @@
             th= t('.state')
             th
         tbody
-          tr id=contribution.id class=cycle("even", "odd")
+          tr id=contribution.id class=cycle("card", "card card-secondary")
             td
               = link_to contribution.id, admin_contribution_path(contribution)
             td.project_info title=contribution.project.name
@@ -66,13 +66,9 @@
                 = image_tag contribution.user.display_image, class: 'user_img'
               .user_id= best_in_place [:admin, contribution], :user_id, method: :put, type: :input
             td= best_in_place [:admin, contribution], :value, method: :put, type: :input
-<<<<<<< HEAD
             td= contribution.payment_service_fee
-            td.reward.w-col-1.w-col.project-events-dropdown title=("#{contribution.reward.display_minimum} - #{contribution.reward.description}" if contribution.reward)
-=======
             td= best_in_place [:admin, contribution], :payment_service_fee, method: :put, type: :input
             td.reward.large-1.columns.project-events-dropdown title=("#{contribution.reward.display_minimum} - #{contribution.reward.description}" if contribution.reward)
->>>>>>> a6012be81e966e09fc6704b63cc61de4fdf1e0f5
               - if contribution.reward
                 span = contribution.reward.display_minimum
               - else
@@ -96,11 +92,11 @@
             td.checkbox= best_in_place [:admin, contribution], :anonymous, method: :put, type: :checkbox, collection: [t('no'), t('yes')]
             td= (contribution.credits ? t('yes') : t('no'))
             td= contribution.state
-            td.w-col-1.w-col.project-events-dropdown
-              .btn-group
+            td.w-col-1.w-col
+              .w-dropdown-toggle.dropdown-toggle.project-admin-menu
                 = link_to 'javascript:void(0);', data: {toggle: 'dropdown'}, class: 'btn btn-mini dropdown-toggle' do
                   span.caret
-                ul.dropdown
+                nav.w-dropdown-list.dropdown-list.user-menu
                   - if contribution.confirmed?
                     li= link_to t('admin.contributions.index.unconfirm_contribution'), pendent_admin_contribution_path(contribution, local_params: params), method: :put
                   - else
