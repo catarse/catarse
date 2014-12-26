@@ -48,7 +48,7 @@
             th= t('.reports')
             th= t('.state')
         tbody
-          tr id=project.id class=cycle("even", "odd")
+          tr id=project.id class=cycle("card", "card card-secondary")
             td= link_to project.name, project_by_slug_path(permalink: project.permalink), target: '_blank'
             td= (project.using_pagarme? ? t('yes') : t('no'))
             td= link_to (project.user.moip_login.blank? ? 'Não preenchido' : project.user.moip_login), user_path(project.user, anchor: :settings), target: '_blank'
