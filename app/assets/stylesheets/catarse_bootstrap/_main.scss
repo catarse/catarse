@@ -486,7 +486,6 @@ p {
   background-color: #f1f4f4;
 }
 .project-nav.profile {
-  margin-top: 0px;
   padding-top: 20px;
   padding-bottom: 42px;
 }
@@ -633,8 +632,8 @@ p {
   z-index: 10;
   border-bottom-style: none;
   background-color: transparent;
-  background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.63), transparent);
-  background-image: linear-gradient(rgba(0, 0, 0, 0.63), transparent);
+  background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.38), transparent);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.38), transparent);
 }
 .img-logo {
   margin-top: 8px;
@@ -1182,21 +1181,34 @@ p {
   color: white;
 }
 .page-header.picure-bg.blur {
-  margin-top: -236px;
+  margin-top: -218px;
   padding-bottom: 64px;
   background-image: url('../images/wings-blur.jpg');
   background-attachment: scroll;
 }
 .page-header.picure-bg.home {
-  padding-top: 220px;
-  padding-bottom: 220px;
-  background-image: url('../images/Home_COLABORE_APOIADOR (1).jpg');
+  padding-top: 230px;
+  padding-bottom: 230px;
+  background-image: url('../images/home-apoiador.jpg');
   background-repeat: no-repeat;
+}
+.page-header.picure-bg.home.green {
+  padding-top: 152px;
+  padding-bottom: 136px;
+  background-image: url('../images/home-gui-blueone.jpg');
 }
 .page-header.dark {
   background-color: #3f4752;
-  box-shadow: rgba(0, 0, 0, 0) 0px 0px 44px 20px inset;
+  box-shadow: none;
   color: #f1f4f4;
+}
+.page-header.green-over {
+  margin-top: -65px;
+  padding-top: 120px;
+  padding-bottom: 120px;
+  background-color: #9fdf6a;
+  background-image: -webkit-linear-gradient(#84cc49, #9fdf6a);
+  background-image: linear-gradient(#84cc49, #9fdf6a);
 }
 .project-about-highlight {
   margin-top: 38px;
@@ -1482,6 +1494,7 @@ p {
   background-color: white;
 }
 .card {
+  margin-bottom: -1px;
   padding: 18px;
   border: 1px solid #ddd;
   background-color: white;
@@ -2092,8 +2105,6 @@ p {
   font-weight: 300;
 }
 .fontweight-semibold {
-  padding-top: 1px;
-  padding-bottom: 1px;
   font-weight: 600;
 }
 .fontweight-bold {
@@ -2313,8 +2324,8 @@ p {
   min-height: 0px;
   min-width: 0px;
   margin-right: 10px;
-  background-position: 50% 50%;
-  background-size: cover;
+  background-position: 0% 0%;
+  background-size: 125px;
 }
 .card-reward {
   position: relative;
@@ -2540,16 +2551,14 @@ p {
   position: relative;
 }
 .btn-terciary {
-  border-style: solid;
-  border-width: 1px;
-  border-color: rgba(121, 128, 139, 0.2);
-  background-color: transparent;
-  color: rgba(121, 128, 139, 0.54);
-}
-.btn-terciary:hover {
-  border-color: #79808b;
+  border: 1px solid #79808b;
   background-color: transparent;
   color: #79808b;
+}
+.btn-terciary:hover {
+  border-color: #3f4752;
+  background-color: transparent;
+  color: #3f4752;
 }
 .btn-no-border {
   border: 1px solid transparent;
@@ -2662,6 +2671,14 @@ p {
   box-shadow: rgba(24, 95, 171, 0.27) 0px 0px 28px 11px inset, rgba(0, 0, 0, 0.74) 1px 1px 6px -1px;
   color: #85f1ff;
 }
+.global-alert.alternative {
+  position: static;
+  height: auto;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-size: 14px;
+  text-align: center;
+}
 .link-icon-light {
   opacity: 0.7;
   color: white;
@@ -2672,6 +2689,29 @@ p {
 }
 .body-padding-top {
   padding-top: 70px;
+}
+.btn-light {
+  padding-left: 16px;
+  border: 1px solid #ddd;
+  background-color: transparent;
+  color: #3f4752;
+  text-align: left;
+}
+.btn-light:hover {
+  border-color: #ddd;
+  background-color: #ddd;
+}
+.thumb-project {
+  margin-right: 15px;
+}
+.table {
+  width: 100%;
+}
+.project_img {
+  width: 50px;
+}
+.user_img {
+  width: 30px;
 }
 html.w-mod-js *[data-ix="fade-in"] {
   opacity: 0;
@@ -2842,6 +2882,10 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     margin-bottom: 10px;
     padding-top: 34px;
     padding-bottom: 34px;
+  }
+  .page-header.picure-bg.home {
+    padding-top: 160px;
+    padding-bottom: 160px;
   }
   .back-reward-content {
     padding-top: 32px;
@@ -3175,6 +3219,9 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     margin-bottom: 0px;
     padding-top: 25px;
     padding-bottom: 20px;
+  }
+  .page-header.picure-bg.home {
+    padding: 150px 15px;
   }
   .project-about-highlight {
     margin-top: 0px;
@@ -3611,6 +3658,9 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     margin-bottom: 0px;
     padding-top: 15px;
     padding-bottom: 16px;
+  }
+  .page-header.picure-bg.home {
+    padding: 150px 15px;
   }
   .project-about-highlight {
     padding-right: 20px;
