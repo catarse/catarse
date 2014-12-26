@@ -2,26 +2,26 @@
 .row.admin
   h1= @title = t('.title')
   = simple_form_for '', url: admin_financials_path, method: :get do |form|
-    .row
-      .large-2.columns
+    .w-row
+      .w-col-2.w-col
         = form.input :search_on_name, as: :string, label: t('.permalink'), input_html: {value: current_scopes[:search_on_name]}
-      .large-2.columns
+      .w-col-2.w-col
         = form.input "between_expires_at[start_at]", as: :string, label: t(".between_expires_at"), input_html: {value: params[:between_expires_at] && params[:between_expires_at][:start_at], data: { fixed_mask: '99/99/9999' } }
-      .large-2.columns.no-label
+      .w-col-2.w-col
         = form.input "between_expires_at[ends_at]", as: :string, label: '', input_html: {value: params[:between_expires_at] && params[:between_expires_at][:ends_at], data: { fixed_mask: '99/99/9999' } }
-      .large-2.columns
+      .w-col-2.w-col
         = form.input :by_progress, as: :string, label: t('.by_progress'), input_html: {value: params[:by_progress]}
-      .large-2.columns
+      .w-col-2.w-col
         = form.input :user_name_contains, as: :string, label: t('.user'), input_html: {value: params[:user_name_contains]}
-      .large-2.columns
+      .w-col-2.w-col
         = form.input :with_state, collection: Project.state_names, label: t('channels.admin.filter.with_state'), as: :select, selected: params[:with_state], include_blank: true
 
-    .row
-      .large-2.columns.large-uncentered
+    .w-row
+      .w-col-2.w-col
         = form.button :submit, t('channels.admin.filter.submit'), class: 'button medium negative'
-      .large-2.columns.columns.search_report
+      .w-col-2.w-col
         = link_to t('.search_report'), admin_financials_path(params: params,format: :csv)
-      .large-2.columns
+      .w-col-2.w-col
         p.filtered-number = @scoped_projects.count(:all)
         p.filtered-number-label
           = pluralize_without_number(@scoped_projects.count(:all), t('project_singular'), t('project_plural'))
@@ -33,8 +33,8 @@
     = t('.no_projects')
   - else
     - @projects.each do |project|
-      table.admin-table
-        thead
+      table.table.fontsize-smallest
+        thead.card.card-secondary
           tr
             th style="width: 200px"= t('.name')
             th= t('.pagarme')

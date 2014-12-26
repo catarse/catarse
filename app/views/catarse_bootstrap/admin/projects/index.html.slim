@@ -50,7 +50,7 @@
   - if @scoped_projects.count(:all) < 1
     = t('.no_projects')
   - else
-    table.fontsize-smallest
+    table.table.fontsize-smallest
       thead.card.card-secondary
         tr
           th.w-col-1.w-col= t('channels.admin.table.name')
