@@ -40,11 +40,12 @@
     = t('.no_contributions')
   - else
     - @contributions.includes(:project, :user, :reward).each do |contribution|
-      table.admin-contributions
+      table.table.admin-contributions
         thead.card.card-secondary
           tr
             th= t('.contribution')
             th= t('.project')
+            th= t('.project_state')
             th= t('.user')
             th= t('.value')
             th= t('.payment_tax')
@@ -61,22 +62,23 @@
             td.project_info title=contribution.project.name
               = link_to project_by_slug_path(permalink: contribution.project.permalink) do
                 = image_tag contribution.project.display_image, class: 'project_img'
+            td.project_info
+              = contribution.project.state
             td.user_info title=contribution.user.display_name
               = link_to user_path(contribution.user) do
                 = image_tag contribution.user.display_image, class: 'user_img'
               .user_id= best_in_place [:admin, contribution], :user_id, method: :put, type: :input
             td= best_in_place [:admin, contribution], :value, method: :put, type: :input
             td= contribution.payment_service_fee
-            td= best_in_place [:admin, contribution], :payment_service_fee, method: :put, type: :input
             td.reward.large-1.columns.project-events-dropdown title=("#{contribution.reward.display_minimum} - #{contribution.reward.description}" if contribution.reward)
               - if contribution.reward
                 span = contribution.reward.display_minimum
               - else
                 | -
-              .btn-group
+              .w-dropdown-toggle.dropdown-toggle.project-admin-menu
                 = link_to 'javascript:void(0);', data: {toggle: 'dropdown'}, class: 'btn btn-mini dropdown-toggle' do
                   span.caret
-                ul.dropdown
+                nav.w-dropdown-list.dropdown-list.user-menu
                   li title=("#{t('.no_reward')}" ) = link_to t('.no_reward'), change_reward_admin_contribution_path(contribution, reward_id: nil), method: :put
                   - contribution.available_rewards.each do |reward|
                     li title=("#{reward.display_minimum} - #{reward.description}" ) = link_to reward.minimum_value, change_reward_admin_contribution_path(contribution, reward_id: reward.id, local_params: params), method: :put
@@ -114,7 +116,7 @@
                     li= link_to 'Segunda via de boleto', contribution.second_slip_path, target: '__blank', method: :put
           tr class='detail_tr' id="contribution_details-#{contribution.id}"
             td colspan='11'
-              table style='border: 1px #ededed solid'
+              table.table style='border: 1px #ededed solid; margin-bottom: 30px'
                 thead
                   th= t('.key')
                   th= t('.details.payment_id')
