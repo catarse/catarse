@@ -50,7 +50,7 @@
   - if @scoped_projects.count(:all) < 1
     = t('.no_projects')
   - else
-    table.fontsize-smallest
+    table.table.fontsize-smallest
       thead.card.card-secondary
         tr
           th.w-col-1.w-col= t('channels.admin.table.name')
@@ -92,41 +92,38 @@
             td.w-col-1.w-col= project.online_date.strftime('%d/%m/%Y') if project.online_date
             td.w-col-1.w-col= project.display_expires_at
             td.w-col-1.w-col= project.updated_at.strftime('%d/%m/%Y')
-            td.w-col-1.w-col.project-events-dropdown
-              - if project.online?
-                span.badge.badge-success= project.state
-              - elsif project.successful?
-                span.badge.badge-success= project.state
-              - elsif project.failed? or project.rejected?
-                span.badge.badge-gone= project.state
-              - elsif project.waiting_funds?
-                span.badge.badge-attention= project.state
-              - else
-                span.badge= project.state
-              .btn-group
-                = link_to 'javascript:void(0);', data: {toggle: 'dropdown'}, class: 'btn btn-mini dropdown-toggle' do
-                  span.caret
-              ul.dropdown
-                - if project.can_approve?
-                  li
-                    = link_to approve_admin_project_path(project), method: :put do
-                      i.icon-ok
-                      = t('channels.admin.table.approve')
+            td.w-col-1.w-col
+              .w-dropdown-toggle.dropdown-toggle.project-admin-menu
+                - if project.online?
+                    span.label.label-online= project.state
+                - elsif project.successful?
+                  span.label.label-success= project.state
+                - elsif project.failed? or project.rejected?
+                  span.label.label-important= project.state
+                - elsif project.waiting_funds?
+                  span.label.label-warning= project.state
+                - else
+                  span.label= project.state
+                nav.w-dropdown-list.dropdown-list.user-menu
+                  - if project.can_approve?
+                    li
+                      = link_to approve_admin_project_path(project), class: 'w-dropdown-link dropdown-link fontsize-smaller', method: :put do
+                        = t('channels.admin.table.approve')
 
-                - if project.can_reject?
-                  li
-                    = link_to reject_admin_project_path(project), method: :put  do
-                      i.icon-ban-circle
-                      = t('channels.admin.table.reject')
+                  - if project.can_reject?
+                    li
+                      = link_to reject_admin_project_path(project), class: 'w-dropdown-link dropdown-link fontsize-smaller', method: :put  do
+                        = t('channels.admin.table.reject')
 
-                - if project.can_push_to_draft?
-                  li
-                    = link_to  push_to_draft_admin_project_path(project), method: :put  do
-                      = t('channels.admin.table.send_to_draft')
-                - if project.can_push_to_trash?
-                  li
-                    = link_to  push_to_trash_admin_project_path(project), data:{ confirm: t('channels.admin.table.confirmation')}, method: :put  do
-                      = t('channels.admin.table.send_to_trash')
+                  - if project.can_push_to_draft?
+                    li
+                      = link_to  push_to_draft_admin_project_path(project), class: 'w-dropdown-link dropdown-link fontsize-smaller', method: :put  do
+                        = t('channels.admin.table.send_to_draft')
+                  - if project.can_push_to_trash?
+                    li
+                      = link_to  push_to_trash_admin_project_path(project),class: 'w-dropdown-link dropdown-link fontsize-smaller', data:{ confirm: t('channels.admin.table.confirmation')}, method: :put  do
+                        = t('channels.admin.table.send_to_trash')
+
 
   = paginate @projects
 = render 'shared/footer_big'
