@@ -106,7 +106,32 @@ RSpec.describe Project::StateMachineHandler, type: :model do
 
       context "when project is in_analysis" do
         before do
-          expect(project).to receive(:notify_observers).with(:from_in_analysis_to_online).and_call_original
+          expect(project).to receive(:notify_observers).with(:from_in_analysis_to_approved).and_call_original
+        end
+        it{ is_expected.to eq true }
+      end
+    end
+
+    describe '#put_online' do
+      let(:project_state){ 'approved' }
+
+      subject{ project.put_online }
+
+      context "when project user has no email" do
+        before do
+          project.user.update_attribute :email, nil
+        end
+
+        it "should raise an error" do
+          subject
+          expect(project.errors).to_not be_nil
+        end
+
+      end
+
+      context "when project is approved" do
+        before do
+          expect(project).to receive(:notify_observers).with(:from_approved_to_online).and_call_original
         end
         it{ is_expected.to eq true }
         it 'should persist the online_date' do
