@@ -6,6 +6,7 @@ module Project::StateMachineHandler
     state_machine :state, initial: :draft do
       state :draft, value: 'draft'
       state :rejected, value: 'rejected'
+      state :approved, value: 'approved'
       state :online, value: 'online'
       state :successful, value: 'successful'
       state :waiting_funds, value: 'waiting_funds'
@@ -30,7 +31,11 @@ module Project::StateMachineHandler
       end
 
       event :approve do
-        transition in_analysis: :online
+        transition in_analysis: :approved
+      end
+
+      event :put_online do
+        transition approved: :online
       end
 
       event :finish do
