@@ -10,7 +10,7 @@ br
 | O reembolso do seu apoio para o projeto #{link_to(contribution.project.name, project_by_slug_url(permalink: contribution.project.permalink))} no #{company_name} acabou de ser realizado para a conta bancária:
 br
 br
-| Banco: #{bank_account.bank.to_s}
+| Banco: #{bank_account.try(:bank).to_s}
 br
 | Agência: #{bank_account.try(:agency)}
 br
