@@ -122,7 +122,7 @@ RSpec.describe Project, type: :model do
   end
 
   describe '.state_names' do
-    let(:states) { [:draft, :rejected, :online, :successful, :waiting_funds, :failed, :in_analysis] }
+    let(:states) { [:draft, :rejected, :approved, :online, :successful, :waiting_funds, :failed, :in_analysis] }
 
     subject { Project.state_names }
 
@@ -200,7 +200,7 @@ RSpec.describe Project, type: :model do
       subject { @project_01 }
 
       before do
-        @project_01 = create(:project, goal: 6000, state: 'online')
+        @project_01 = create(:project, goal: 6000, state: 'approved')
       end
 
       it{ is_expected.not_to allow_value(nil).for(:video_url) }
@@ -221,7 +221,7 @@ RSpec.describe Project, type: :model do
       subject { @project_03 }
 
       before do
-        @project_03 = build(:project, goal: 5000, state: 'online', video_url: nil)
+        @project_03 = build(:project, goal: 5000, state: 'approved', video_url: nil)
       end
 
       it{ is_expected.not_to allow_value(nil).for(:video_url) }

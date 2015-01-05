@@ -17,7 +17,7 @@ RSpec.describe Admin::ProjectsController, type: :controller do
       project.update_attribute :state, 'in_analysis'
       project
     end
-    subject { project.online? }
+    subject { project.approved? }
 
     before do
       put :approve, id: project, locale: :pt

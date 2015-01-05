@@ -42,6 +42,7 @@ RSpec.describe ProjectsController, type: :controller do
     context "with referal link" do
       subject { project.referal_link }
       before do
+        create(:reward, project: project)
         get :send_to_analysis, id: project.id, locale: :pt, ref: 'referal'
         project.reload
       end

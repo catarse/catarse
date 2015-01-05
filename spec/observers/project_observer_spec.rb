@@ -21,7 +21,7 @@ RSpec.describe ProjectObserver do
   end
 
   describe "after_save" do
-    let(:project) { build(:project, state: 'in_analysis', online_date: 10.days.from_now) }
+    let(:project) { build(:project, state: 'approved', online_date: 10.days.from_now) }
 
     context "when change the online_date" do
       before do
@@ -82,7 +82,7 @@ RSpec.describe ProjectObserver do
     context "when project is approved and belongs to a channel" do
       let(:project){ create(:project, video_url: 'http://vimeo.com/11198435', state: 'draft', channels: [channel])}
       before do
-        project.update_attributes state: 'in_analysis'
+        project.update_attributes state: 'approved'
       end
 
       it "should call notify using channel data" do
@@ -95,13 +95,13 @@ RSpec.describe ProjectObserver do
             from_name: channel.name
           }
         )
-        project.approve
+        project.put_online
       end
     end
 
     context "when project is approved" do
       before do
-        project.update_attributes state: 'in_analysis'
+        project.update_attributes state: 'approved'
         expect(ProjectDownloaderWorker).to receive(:perform_async).with(project.id).never
       end
 
@@ -115,7 +115,7 @@ RSpec.describe ProjectObserver do
             from_name: CatarseSettings[:company_name]
           }
         )
-        project.approve
+        project.put_online
       end
     end
 
@@ -240,13 +240,13 @@ RSpec.describe ProjectObserver do
     let(:project) do
       project = create(:project, state: 'draft')
       create(:reward, project: project)
-      project.update_attribute :state, :in_analysis
+      project.update_attribute :state, :approved
       project
     end
 
     context "when project don't belong to any channel" do
       before do
-        project.approve
+        project.put_online
       end
 
       it "should create notification for project owner" do
@@ -257,7 +257,7 @@ RSpec.describe ProjectObserver do
     context "when project belong to a channel" do
       before do
         project.channels << channel
-        project.approve
+        project.put_online
       end
 
       it "should create notification for project owner" do
