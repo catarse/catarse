@@ -13,6 +13,7 @@ pt:
         rejected: "rejeitado"
         failed: "não financiado"
         successful: financiado
+        approved: aprovado
         reached_goal: financiado
         waiting_confirmation: aguardando
         waiting_funds: aguardando
@@ -32,6 +33,7 @@ pt:
         rejected: "rejeitado"
         failed: "não financiado"
         successful: financiado
+        approved: aprovado
         reached_goal: financiado
         waiting_confirmation: aguardando
         waiting_funds: aguardando

@@ -29,7 +29,7 @@ RSpec.describe UserDecorator do
     end
 
     context "when we have no name" do
-      let(:user){ create(:user, name: nil) }
+      let(:user){ create(:user, name: nil, full_name: nil) }
       it{ is_expected.to eq(I18n.t('user.no_name')) }
     end
   end

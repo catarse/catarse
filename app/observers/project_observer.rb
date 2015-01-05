@@ -6,7 +6,7 @@ class ProjectObserver < ActiveRecord::Observer
       ProjectDownloaderWorker.perform_async(project.id)
     end
 
-    if project.try(:online_date_changed?) && project.online_date.present? && project.in_analysis?
+    if project.try(:online_date_changed?) && project.online_date.present? && project.approved?
       project.remove_scheduled_job('ProjectSchedulerWorker')
       ProjectSchedulerWorker.perform_at(project.online_date, project.id)
     end
@@ -57,7 +57,7 @@ class ProjectObserver < ActiveRecord::Observer
     project.update_attributes({ sent_to_draft_at: DateTime.now })
   end
 
-  def from_in_analysis_to_online(project)
+  def from_approved_to_online(project)
     deliver_default_notification_for(project, :project_visible)
     project.update_attributes({
       online_date: DateTime.now,
