@@ -451,6 +451,7 @@ p {
 .project-stats {
   padding-top: 24px;
   padding-left: 20px;
+  text-align: left;
 }
 .warning {
   position: absolute;
@@ -479,6 +480,10 @@ p {
 .project-nav.profile {
   padding-top: 20px;
   padding-bottom: 42px;
+}
+.project-nav.fixed {
+  height: 62px;
+  padding-top: 20px;
 }
 .link-hidden {
   -webkit-transition: all 500ms ease;
@@ -2704,6 +2709,10 @@ p {
 .user_img {
   width: 30px;
 }
+.project-main {
+  background-color: #f1f4f4;
+  text-align: left;
+}
 html.w-mod-js *[data-ix="fade-in"] {
   opacity: 0;
 }
@@ -3499,6 +3508,9 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     border-color: #27bff2;
     background-color: #27bff2;
   }
+  .dashboard-nav {
+    text-align: center;
+  }
   .w-sub-col {
     padding-right: 0px;
   }
@@ -3517,6 +3529,16 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
   }
   .fontsize-large-small-only {
     font-size: 20px;
+  }
+  .col-btn-send-draft {
+    position: fixed;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    z-index: 20;
+    padding-top: 10px;
+    background-color: white;
+    text-align: left;
   }
 }
 @media (max-width: 479px) {
@@ -3568,6 +3590,14 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
   }
   .warning {
     width: 305px;
+  }
+  .project-nav.fixed {
+    height: auto;
+    margin-top: 0px;
+    padding-top: 14px;
+    padding-bottom: 15px;
+    background-color: white;
+    text-align: center;
   }
   .column-logo-header {
     text-align: left;
@@ -3842,6 +3872,14 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
   }
   .headline {
     font-size: 18px;
+  }
+  .nav-tab {
+    margin-right: 8px;
+    padding: 10px 7px;
+  }
+  .nav-tab.selected {
+    border-radius: 4px;
+    background-color: #f1f4f4;
   }
   .project-name {
     padding-right: 10px;

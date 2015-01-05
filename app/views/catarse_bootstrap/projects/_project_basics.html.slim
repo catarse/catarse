@@ -11,7 +11,7 @@
   .section
     .w-container
       .w-row
-        .w-col.w-col-8.w-hidden-small.w-hidden-tiny
+        .w-col.w-col-8
           .w-form
               = render 'devise/shared/alert'
               - if (current_user && current_user.admin?)
@@ -76,14 +76,6 @@
                     .w-col.w-col-4.w-col-small-6.w-col-tiny-6.text-field.postfix.no-hover
                       .fontcolor-secondary.u-text-center.fontsize-base.lineheight-tightest Dias
               
-        .w-col.w-col-4
-          .w-hidden-main.w-hidden-medium.card.u-radius.card-notification.zindex-20
-            .u-marginbottom-20.fontsize-base.fontweight-bold Painel de controle
-            p.fontsize-smaller
-              | Olá
-                span.fontweight-bold Zerezes
-              | para editar as informações do seu projeto, baixar relatórios e receber dicas de campanha, acesse esta página no seu computador ou tablet. Lá você vai ter acesso ao painel de controle do seu
-              | projeto ;)
           .w-hidden-small.w-hidden-tiny.card.u-radius.u-marginbottom-20 data-ix="new-interaction" 
             .fontsize-small.fontweight-semibold.u-marginbottom-20 Links úteis
             ul.w-list-unstyled
