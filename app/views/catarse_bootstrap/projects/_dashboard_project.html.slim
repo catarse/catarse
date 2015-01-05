@@ -1,5 +1,5 @@
-.w-hidden-small.w-hidden-tiny.u-text-center
-  .w-container.w-hidden-small.w-hidden-tiny
+.u-text-center
+  .w-container
     .w-row
       .w-col.w-col-2
       .w-col.w-col-8
@@ -7,10 +7,10 @@
         p.fontsize-base= t('.start_subtitle')
       .w-col.w-col-2
 = simple_form_for @project, html: { id: 'project_form', class: 'w-form' } do |form|
-  .w-hidden-small.w-hidden-tiny.section
-    .w-container.w-hidden-small.w-hidden-tiny
+  .section
+    .w-container
       .w-row
-        .w-col.w-col-8.w-hidden-small.w-hidden-tiny
+        .w-col.w-col-8
           .w-form
               = render 'devise/shared/alert'
               .w-row.u-marginbottom-30.card.card-terciary
@@ -41,8 +41,8 @@
                   a.alt-link href="http://suporte.catarse.me/hc/pt-br/articles/203073937-O-que-%C3%A9-obrigat%C3%B3rio-para-um-projeto-ir-ao-ar-" target="_blank"  Itens obrigatórios para um projeto ir ao ar
             = render 'formatting_tips'
   .divider
-  .w-hidden-small.w-hidden-tiny.section
-    .w-container.w-hidden-small.w-hidden-tiny
+  .section
+    .w-container
       .w-row
         .w-col.w-col-8
           .fontsize-large.fontweight-semibold= t('.card')
@@ -63,7 +63,7 @@
         .w-col.w-col-4
           = render 'card'
     .section
-      .w-container.w-hidden-small.w-hidden-tiny
+      .w-container
         .w-row
           .w-col.w-col-4
           .w-col.w-col-4

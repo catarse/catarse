@@ -2,7 +2,7 @@
 
 = render 'project_header'
 
-nav.w-hidden-small.w-hidden-tiny.dashboard-nav
+nav.dashboard-nav
   .w-container
     .w-row
       .w-col.w-col-9
@@ -24,7 +24,7 @@ nav.w-hidden-small.w-hidden-tiny.dashboard-nav
         a.dashboard-nav-link href="#" 
           span.fa.fa-check-circle.fontcolor-terciary 
           | &nbsp;&nbsp;Conta
-      .w-col.w-col-3.w-clearfix
+      .w-col.w-col-3.w-clearfix.col-btn-send-draft
         = link_to '#preview', id: 'dashboard_preview_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_preview'} do
           | Preview
         - if @project.draft?
@@ -33,7 +33,7 @@ nav.w-hidden-small.w-hidden-tiny.dashboard-nav
 section.section
   .w-container
     .w-row
-      article.w-hidden-small.w-hidden-tiny
+      article
         #dashboard_home.content.w-hidden
           = render 'dashboard_home'
         #project_basics.content.w-hidden
