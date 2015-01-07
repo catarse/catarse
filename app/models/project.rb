@@ -170,6 +170,10 @@ class Project < ActiveRecord::Base
     self.using_pagarme(permalinks)
   end
 
+  def can_show_account_link?
+    ['online', 'waiting_funds', 'successful', 'approved'].include? state
+  end
+
   def can_show_funding_period?
     ['online', 'waiting_funds', 'successful', 'failed'].include? state
   end

@@ -21,9 +21,10 @@ nav.dashboard-nav
         = link_to '#user_about', id: 'dashboard_user_about_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_user_about'} do
           span.fa.fa-check-circle.fontcolor-terciary 
           | &nbsp;&nbsp;Sobre você
-        a.dashboard-nav-link href="#" 
-          span.fa.fa-check-circle.fontcolor-terciary 
-          | &nbsp;&nbsp;Conta
+        - if @project.can_show_account_link?
+          a.dashboard-nav-link href="#" 
+            span.fa.fa-check-circle.fontcolor-terciary 
+            | &nbsp;&nbsp;Conta
       .w-col.w-col-3.w-clearfix.col-btn-send-draft
         = link_to '#preview', id: 'dashboard_preview_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_preview'} do
           | Preview
