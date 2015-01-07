@@ -12,6 +12,7 @@ footer
     .large-3.columns
       h3.footer-title= t('footer.titles.about')
       ul.footer-list
+        li= link_to t('.links.jobs'), "#{CatarseSettings[:jobs_url]}", target: '_blank'
         li= link_to t('footer.links.faq'), "#{CatarseSettings[:faq_url]}", target: '_blank'
         li= link_to t('footer.links.feedback'), "#{CatarseSettings[:feedback_url]}", target: '_blank'
         li= link_to t('footer.links.terms'), terms_of_use_path, target: '_blank'

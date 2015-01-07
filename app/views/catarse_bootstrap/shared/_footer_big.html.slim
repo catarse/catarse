@@ -13,6 +13,7 @@
       .w-col.w-col-3
         h4 = t('layouts.footer.titles.about')
         ul
+          li= link_to t('layouts.footer.links.jobs'), "#{CatarseSettings[:jobs_url]}", target: '_blank'
           li= link_to t('layouts.footer.links.faq'), "#{CatarseSettings[:faq_url]}", target: '_blank'
           li= mail_to CatarseSettings[:email_press], t('layouts.footer.links.press')
           li= link_to t('layouts.footer.links.feedback'), "#{CatarseSettings[:feedback_url]}", target: '_blank'
