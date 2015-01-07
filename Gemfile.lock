@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: git://github.com/catarse/catarse_api.git
-  revision: eb11743e8a81fe4f567e0a34b5c575bd7ae48ffb
+  revision: dea6f27d89de72d3e5474c672d5cda029edf5a7f
   specs:
     catarse_api (0.0.1)
       active_model_serializers (= 0.8.0)
