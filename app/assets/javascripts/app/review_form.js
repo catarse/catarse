@@ -119,7 +119,7 @@ App.addChild('ReviewForm', _.extend({
       address_zip_code: this.$('#contribution_address_zip_code').val(),
       address_city: this.$('#contribution_address_city').val(),
       address_state: this.$('#contribution_address_state').val(),
-      address_phone_number: this.$('#contribution_phone_number').val()
+      address_phone_number: this.$('#contribution_address_phone_number').val()
     }
     $.post(this.$el.data('update-info-path'), {
       _method: 'put',
