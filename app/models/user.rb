@@ -42,7 +42,7 @@ class User < ActiveRecord::Base
   has_many :projects
   has_many :unsubscribes
   has_many :project_posts
-  has_many :contributed_projects, -> { where(contributions: { state: 'confirmed' } ).uniq } ,through: :contributions, source: :project
+  has_many :contributed_projects, -> { where(contributions: { state: ['confirmed', 'requested_refund', 'refunded'] } ).uniq } ,through: :contributions, source: :project
   has_many :category_followers
   has_many :categories, through: :category_followers
   has_and_belongs_to_many :recommended_projects, join_table: :recommendations, class_name: 'Project'
@@ -197,7 +197,7 @@ class User < ActiveRecord::Base
   end
 
   def project_unsubscribes
-    contributions.with_state('confirmed', 'requested_refund', 'refunded').map do |p|
+    contributed_projects.map do |p|
       unsubscribes.posts_unsubscribe(p.id)
     end
   end
