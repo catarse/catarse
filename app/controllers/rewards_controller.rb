@@ -31,6 +31,9 @@ class RewardsController < ApplicationController
   def create
     @reward = parent.rewards.new
     @reward.assign_attributes(permitted_params[:reward])
+    if !params[:limit_reward]
+      @reward.maximum_contributions = nil
+    end
     authorize @reward
     if @reward.save
       flash[:notice] = t('project.update.success')
