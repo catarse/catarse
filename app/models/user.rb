@@ -42,7 +42,7 @@ class User < ActiveRecord::Base
   has_many :projects
   has_many :unsubscribes
   has_many :project_posts
-  has_many :contributed_projects, -> { where(contributions: { state: 'confirmed' } ).uniq } ,through: :contributions, source: :project
+  has_many :contributed_projects, -> { where(contributions: { state: ['confirmed', 'requested_refund', 'refunded'] } ).uniq } ,through: :contributions, source: :project
   has_many :category_followers
   has_many :categories, through: :category_followers
   has_and_belongs_to_many :recommended_projects, join_table: :recommendations, class_name: 'Project'
@@ -57,7 +57,7 @@ class User < ActiveRecord::Base
   }
 
   scope :who_contributed_project, ->(project_id) {
-    where("id IN (SELECT user_id FROM contributions WHERE contributions.state = 'confirmed' AND project_id = ?)", project_id)
+    where("id IN (SELECT user_id FROM contributions WHERE contributions.state IN ('confirmed', 'refunded', 'requested_refund') AND project_id = ?)", project_id)
   }
 
   scope :subscribed_to_posts, -> {
