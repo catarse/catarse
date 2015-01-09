@@ -124,6 +124,7 @@ Catarse::Application.routes.draw do
     resources :projects, only: [ :index, :update, :destroy ] do
       member do
         put 'approve'
+        put 'put_online'
         put 'reject'
         put 'push_to_draft'
         put 'push_to_trash'
