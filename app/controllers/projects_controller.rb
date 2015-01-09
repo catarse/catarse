@@ -75,7 +75,11 @@ class ProjectsController < ApplicationController
           flash[:notice] = t('project.update.success')
         end
 
-        redirect_to edit_project_path(@project, anchor: 'basics')
+        if params[:anchor]
+          redirect_to edit_project_path(@project, anchor: params[:anchor])
+        else
+          redirect_to edit_project_path(@project, anchor: 'home')
+        end
       end
     end
   end

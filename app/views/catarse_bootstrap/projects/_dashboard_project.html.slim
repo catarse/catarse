@@ -67,5 +67,6 @@
         .w-row
           .w-col.w-col-4
           .w-col.w-col-4
+            = hidden_field_tag 'anchor', 'project'
             = form.button :submit, t('.submit'),  class:'btn btn-large'
           .w-col.w-col-4
