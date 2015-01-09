@@ -70,7 +70,12 @@ class ProjectsController < ApplicationController
     update! do |format|
       format.html do
         if resource.errors.present?
-          flash[:alert] = resource.errors.full_messages.to_sentence
+          error_message = ''
+          resource.errors.each do |error|
+            error_message += resource.errors[error][0]
+            error_message += '<br/>'
+          end
+          flash[:alert] = error_message.html_safe
         else
           flash[:notice] = t('project.update.success')
         end
