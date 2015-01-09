@@ -12,7 +12,7 @@ class Project::StateValidator < ActiveModel::Validator
   end
 
   def approved
-    if @record.goal >= CatarseSettings[:minimum_goal_for_video].to_i
+    if (@record.goal || 0) >= CatarseSettings[:minimum_goal_for_video].to_i
       @record.errors.add_on_blank(:video_url)
     end
   end
