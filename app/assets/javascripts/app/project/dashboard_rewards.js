@@ -74,7 +74,14 @@ App.addChild('DashboardRewards', {
     var $target = this.$(event.currentTarget);
 
     $.get($target.data('path')).success(function(data){
-      $($target.data('target')).html(data);
+      total_saved_cards = $('#dashboard-rewards .sortable').length;
+      total_new_cards = $('.new_reward_content .reward-card').length;
+      total_cards = total_saved_cards + total_new_cards;
+
+      $data = $(data);
+      $('.custom-f-reward-counter', $data).html(total_cards+1);
+
+      $($target.data('target')).append($data);
       that.rewardForm;
     });
 
