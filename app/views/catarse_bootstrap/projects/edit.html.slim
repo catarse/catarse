@@ -25,9 +25,9 @@ nav.dashboard-nav
           a.dashboard-nav-link href="#" 
             span.fa.fa-check-circle.fontcolor-terciary 
             | &nbsp;&nbsp;Conta
-      .w-col.w-col-3.w-clearfix.col-btn-send-draft
-        = link_to '#preview', id: 'dashboard_preview_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_preview'} do
+        = link_to '#preview', id: 'dashboard_preview_link', class: 'dashboard-nav-link project_preview_tab' , data: {target: '#dashboard_preview'} do
           | Preview
+      .w-col.w-col-3.w-clearfix.col-btn-send-draft
         - if @project.draft?
           .btn-send-draft
              = link_to 'Enviar', send_to_analysis_project_path(@project), class: 'btn btn-small'
