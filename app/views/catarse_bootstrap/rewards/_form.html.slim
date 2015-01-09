@@ -1,7 +1,8 @@
 .w-row.card.reward-card.card-terciary.u-marginbottom-20
   .fontweight-semibold.fontsize-smallest.u-marginbottom-10
     - if resource.new_record?
-      = "Recompensa ##{parent.rewards.count + 1}"
+      | Recompensa #
+      span.custom-f-reward-counter= parent.rewards.count + 1
     - else
       = "Editar recompensa"
     |&nbsp;
