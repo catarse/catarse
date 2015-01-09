@@ -10,7 +10,7 @@ pt:
       pledged_html: "<span>%{value}</span> levantados"
       display_status:
         expired: "finalizado"
-        rejected: "rejeitado"
+        rejected: "recusado"
         failed: "não financiado"
         successful: financiado
         approved: aprovado
