@@ -14,9 +14,9 @@ pt:
         owner_name: 'Nome do titular'
         owner_document: 'CPF / CNPJ do titular'
         agency: 'Agência'
-        agency_digit: 'Dígito'
-        account: 'Número da conta'
-        account_digit: 'Dígito'
+        agency_digit: 'Dígito agência'
+        account: 'No. da conta'
+        account_digit: 'Dígito conta'
       contribution:
         payer_name: "Nome Completo"
         payer_email: "Email"
@@ -81,7 +81,7 @@ pt:
         newsletter: 'Quero receber novidades do Catarse'
         password: Senha
         password_confirmation: "Confirmação de senha"
-        phone_number: "Telefone (fixo ou celular)"
+        phone_number: "Telefone"
         cpf_hint_title: Nota Fiscal será emitida para esse documento
         id: ID
         moip_login: Login do MoIP

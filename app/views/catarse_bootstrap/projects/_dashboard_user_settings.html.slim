@@ -1,0 +1,199 @@
+.u-text-center
+  .w-container
+    .w-row
+      .w-col.w-col-2
+      .w-col.w-col-8
+        .fontweight-semibold.fontsize-large Se prepare para receber apoios!
+        p.fontsize-base
+          | Com os dados abaixo, seu projeto estará pronto para ir ao ar. Após concluir o preenchimento, clique em Salvar. Se tudo estiver correto, o próximo passo é colocar o projeto no ar, na hora que você quiser. Basta apertar o botão
+          span.fontweight-semibold Publicar
+          | e mãos a obra!
+      .w-col.w-col-2.fontcolor-terciary
+
+= simple_form_for @user, html: { class: 'w-form' } do |form|
+  = hidden_field_tag :project_id, @project.id
+  = hidden_field_tag :anchor, 'user_settings'
+  .section
+    .w-container
+      .w-col.w-col-8.u-marginbottom-30
+        - if can_show_errors_on('user_settings')
+          = render 'devise/shared/alert'
+        .w-form.card.card-terciary
+          #email-form
+            .fontsize-base.fontweight-semibold Dados Cadastrais e endereço
+            .fontsize-small.u-marginbottom-20 Precisamos desses dados abaixo pois emitimos uma Nota Fiscal ao final do projeto, no caso de ele ser bem-sucedido.&nbsp;
+            .divider.u-marginbottom-20
+            .w-row
+              .w-col.w-col-6.w-sub-col
+                = form.label :full_name, class: 'field-label fontweight-semibold force-text-dark'
+                = form.input_field :full_name, as: :string, class: 'positive'
+              .w-col.w-col-6
+                = form.label :email, class: 'field-label fontweight-semibold force-text-dark'
+                = form.input_field :email, as: :email, class: 'positive'
+            .w-row
+              .w-col.w-col-6.w-sub-col
+                = form.label :cpf, class: 'field-label fontweight-semibold force-text-dark'
+                = form.input_field :cpf, as: :tel, class: 'positive'
+              .w-col.w-col-6
+                = form.label :state_inscription, class: 'field-label fontweight-semibold force-text-dark'
+                = form.input_field :state_inscription, as: :string, class: 'positive'
+            .w-row
+              .w-col.w-col-6.w-sub-col
+                = form.label :address_street, class: 'field-label fontweight-semibold force-text-dark'
+                = form.input_field :address_street, as: :string, class: 'positive'
+              .w-col.w-col-6
+                .w-row
+                  .w-col.w-col-6.w-col-small-6.w-col-tiny-6.w-sub-col-middle
+                    = form.label :address_number, class: 'field-label fontweight-semibold force-text-dark'
+                    = form.input_field :address_number, as: :string, class: 'positive'
+                  .w-col.w-col-6.w-col-small-6.w-col-tiny-6
+                    = form.label :address_complement, class: 'field-label fontweight-semibold force-text-dark'
+                    = form.input_field :address_complement, as: :string, class: 'positive'
+            .w-row
+              .w-col.w-col-6.w-sub-col
+                = form.label :address_neighbourhood, class: 'field-label fontweight-semibold force-text-dark'
+                = form.input_field :address_neighbourhood, as: :string, class: 'positive'
+              .w-col.w-col-6
+                = form.label :address_city, class: 'field-label fontweight-semibold force-text-dark'
+                = form.input_field :address_city, as: :string, class: 'positive'
+            .w-row
+              .w-col.w-col-6.w-sub-col
+                = form.label :address_state, class: 'field-label fontweight-semibold force-text-dark'
+                = form.input_field :address_state, as: :select, collection: State.array, class: 'w-select positive'
+              .w-col.w-col-6
+                .w-row
+                  .w-col.w-col-6.w-col-small-6.w-col-tiny-6.w-sub-col-middle
+                    = form.label :address_zip_code, class: 'field-label fontweight-semibold force-text-dark'
+                    = form.input_field :address_zip_code, as: :string, class: 'positive'
+                  .w-col.w-col-6.w-col-small-6.w-col-tiny-6
+                    = form.label :phone_number, class: 'field-label fontweight-semibold force-text-dark'
+                    = form.input_field :phone_number, as: :string, class: 'positive'
+        .w-form.card.card-terciary
+          = form.simple_fields_for :bank_account do |bform|
+            .fontsize-base.fontweight-semibold Dados bancários
+            .fontsize-small.u-marginbottom-20 Para efetuar o pagamento em sua conta, no caso de seu projeto ser bem-sucedido, precisamos que você nos informe seus dados bancários
+            .divider.u-marginbottom-20
+            .w-row
+              .w-col.w-col-6.w-sub-col
+                = bform.label :bank_id, class: 'field-label fontweight-semibold force-text-dark'
+                = bform.input_field :bank_id, as: :select, collection: Bank.to_collection, class: 'w-select positive'
+              .w-col.w-col-6
+                .w-row
+                  .w-col.w-col-6.w-col-small-6.w-col-tiny-6.w-sub-col-middle
+                    = bform.label :agency, class: 'field-label fontweight-semibold force-text-dark'
+                    = bform.input_field :agency, as: :string, class: 'positive'
+                  .w-col.w-col-6.w-col-small-6.w-col-tiny-6
+                    = bform.label :agency_digit, class: 'field-label fontweight-semibold force-text-dark'
+                    = bform.input_field :agency_digit, as: :string, class: 'positive'
+            .w-row
+              .w-col.w-col-6.w-sub-col
+                .w-row
+                  .w-col.w-col-6.w-col-small-6.w-col-tiny-6.w-sub-col-middle
+                    = bform.label :account, class: 'field-label fontweight-semibold force-text-dark'
+                    = bform.input_field :account, as: :string, class: 'positive'
+                  .w-col.w-col-6.w-col-small-6.w-col-tiny-6
+                    = bform.label :account_digit, class: 'field-label fontweight-semibold force-text-dark'
+                    = bform.input_field :account_digit, as: :string, class: 'positive'
+              .w-col.w-col-6
+                = bform.label :owner_name, class: 'field-label fontweight-semibold force-text-dark'
+                = bform.input_field :owner_name, as: :string, class: 'positive'
+            .w-row
+              .w-col.w-col-6.w-sub-col
+                = bform.label :owner_document, class: 'field-label fontweight-semibold force-text-dark'
+                = bform.input_field :owner_document, as: :tel, class: 'positive'
+              .w-col.w-col-6
+          .w-form-done
+            p Thank you! Your submission has been received!
+          .w-form-fail
+            p Oops! Something went wrong while submitting the form :(
+  
+      .w-col.w-col-4
+        .w-hidden-small.w-hidden-tiny.card.u-radius.u-marginbottom-20 data-ix="new-interaction" 
+          .fontsize-small.fontweight-semibold.u-marginbottom-20 Links úteis
+          ul.w-list-unstyled
+            li.alt-link.fontsize-smaller.u-marginbottom-10
+              a.alt-link href="http://suporte.catarse.me/hc/pt-br/articles/202387638-Diretrizes-para-a-cria%C3%A7%C3%A3o-de-projetos" target="_blank"  Critérios de seleção
+            li.alt-link.fontsize-smaller.u-marginbottom-10
+              a.alt-link href="http://suporte.catarse.me/hc/pt-br/articles/202446018-Como-funciona-a-sele%C3%A7%C3%A3o-de-projetos-no-Catarse-" target="_blank"  Como os projetos são selecionados?
+            li.fontsize-smaller.alt-link.u-marginbottom-10
+              a.alt-link href="http://suporte.catarse.me/hc/pt-br/articles/202037363-O-que-%C3%A9-um-projeto-em-Rascunho-" target="_blank"  O que é um projeto em Rascunho?
+            li.fontsize-smaller.alt-link.u-marginbottom-10
+              a.alt-link href="http://suporte.catarse.me/hc/pt-br/articles/203073937-O-que-%C3%A9-obrigat%C3%B3rio-para-um-projeto-ir-ao-ar-" target="_blank"  Itens obrigatórios para um projeto ir ao ar
+  
+    div
+      .w-container
+        .w-row
+          .w-col.w-col-4
+          .w-col.w-col-4
+            = form.button :submit, 'Salvar',  class:'btn btn-large'
+          .w-col.w-col-4
+    
+        
+/= simple_form_for @user, html: { id: 'user_form', class: 'w-form' } do |form|
+  .section
+    .w-container
+      .w-row
+        .w-col.w-col-8
+          .w-form
+              = render 'devise/shared/alert'
+              .w-row.u-marginbottom-30.card.card-terciary
+                .w-col.w-col-5.w-sub-col
+                  label.field-label.fontweight-semibold   Imagem do perfil
+                  label.field-label.fontsize-smallest.fontcolor-secondary   Essa imagem será utilizada como a miniatura de seu perfil (PNG, JPG tamanho&nbsp;512x400)
+                .w-col.w-col-4.w-sub-col
+                  = form.input :uploaded_image, label: '', as: :file, required: false, hint: (@user.uploaded_image.present? ? image_tag(@user.uploaded_image.thumb_avatar.url, size: '220x172') : t('formtastic.hints.project.uploaded_image') ) 
+          .w-row.u-marginbottom-30.card.card-terciary
+            .w-col.w-col-5.w-sub-col
+              label.field-label.fontweight-semibold   Nome
+              label.field-label.fontsize-smallest.fontcolor-secondary   Esse é o nome que os usuários irão ver no seu perfil
+            .w-col.w-col-7
+              = form.input_field :name, as: :string, class: 'positive'
+          .w-form.card.card-terciary.u-marginbottom-30
+              .w-row
+                .w-col.w-col-5.w-sub-col
+                  label.field-label.fontweight-semibold   Biografia
+                  label.field-label.fontsize-smallest.fontcolor-secondary   Se você pudesse falar sobre você em um tweet?&nbsp;Máximo 140 caracteres
+                .w-col.w-col-7
+                  = form.input_field :bio, as: :text, class: 'positive big'
+          .w-form.card.card-terciary.u-marginbottom-30
+              .w-row.u-marginbottom-10
+                .w-col.w-col-5.w-sub-col
+                  label.field-label.fontweight-semibold   Perfil do facebook
+                  label.field-label.fontsize-smallest.fontcolor-secondary   Cole o link do seu perfil
+                .w-col.w-col-7
+                  = form.input_field :facebook_link, as: :string, class: 'positive'
+              .w-row.u-marginbottom-10
+                .w-col.w-col-5.w-sub-col
+                  label.field-label.fontweight-semibold   Perfil do twitter
+                  label.field-label.fontsize-smallest.fontcolor-secondary   Cole o link do seu perfil
+                .w-col.w-col-7
+                  = form.input_field :twitter, as: :string, class: 'positive'
+          .w-form.card.card-terciary.u-marginbottom-30
+              .w-row.u-marginbottom-10
+                .w-col.w-col-5.w-sub-col
+                  label.field-label.fontweight-semibold   Página na internet
+                  label.field-label.fontsize-smallest.fontcolor-secondary   Inclua links que ajudem os apoiadores a saber mais sobre você e suas qualificações para executar o projeto.&nbsp;
+                .w-col.w-col-7
+                  .w-row
+                    .w-col.w-col-12
+                      = form.input_field :other_link, as: :string, class: 'positive'
+        .w-col.w-col-4
+          .w-hidden-small.w-hidden-tiny.card.u-radius.u-marginbottom-20 data-ix="new-interaction" 
+            .fontsize-small.fontweight-semibold.u-marginbottom-20 Links úteis
+            ul.w-list-unstyled
+              li.alt-link.fontsize-smaller.u-marginbottom-10
+                a.alt-link href="http://suporte.catarse.me/hc/pt-br/articles/202387638-Diretrizes-para-a-cria%C3%A7%C3%A3o-de-projetos" target="_blank"  Critérios de seleção
+              li.alt-link.fontsize-smaller.u-marginbottom-10
+                a.alt-link href="http://suporte.catarse.me/hc/pt-br/articles/202446018-Como-funciona-a-sele%C3%A7%C3%A3o-de-projetos-no-Catarse-" target="_blank"  Como os projetos são selecionados?
+              li.fontsize-smaller.alt-link.u-marginbottom-10
+                a.alt-link href="http://suporte.catarse.me/hc/pt-br/articles/202037363-O-que-%C3%A9-um-projeto-em-Rascunho-" target="_blank"  O que é um projeto em Rascunho?
+              li.fontsize-smaller.alt-link.u-marginbottom-10
+                a.alt-link href="http://suporte.catarse.me/hc/pt-br/articles/203073937-O-que-%C3%A9-obrigat%C3%B3rio-para-um-projeto-ir-ao-ar-" target="_blank"  Itens obrigatórios para um projeto ir ao ar
+  div
+    .w-container
+      .w-row
+        .w-col.w-col-4
+        .w-col.w-col-4
+          = form.button :submit, 'Salvar',  class:'btn btn-large'
+        .w-col.w-col-4
+

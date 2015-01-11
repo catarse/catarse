@@ -85,6 +85,7 @@ class ProjectsController < ApplicationController
     authorize resource
     @posts_count = resource.posts.count(:all)
     @user = resource.user
+    @user.build_bank_account unless @user.bank_account.present?
   end
 
   def show
