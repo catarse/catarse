@@ -13,7 +13,8 @@
       .w-row
         .w-col.w-col-8
           .w-form
-              = render 'devise/shared/alert'
+              - if can_show_errors_on('user_about')
+                = render 'devise/shared/alert'
               .w-row.u-marginbottom-30.card.card-terciary
                 .w-col.w-col-5.w-sub-col
                   label.field-label.fontweight-semibold   Imagem do perfil

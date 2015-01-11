@@ -62,6 +62,7 @@ class UsersController < ApplicationController
       end
       failure.html do
         flash[:error] = @user.errors.full_messages.to_sentence
+        save_anchor_session_error
       end
     end
     return redirect_to user_path(@user, anchor: 'settings')

@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   include Concerns::MenuHandler
   include Concerns::SocialHelpersHandler
   include Concerns::AnalyticsHelpersHandler
+  include Concerns::AnchorSessions
   include Pundit
 
   layout :use_catarse_boostrap
