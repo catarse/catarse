@@ -65,6 +65,20 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def publish
+    authorize resource
+    u = resource.user
+    u.validating_for_approved_project = true
+
+    if u.valid? && resource.put_online
+      flash[:notice] = t('projects.put_online')
+      redirect_to project_by_slug_path(@project.permalink)
+    else
+      flash[:alert] = u.errors.full_messages.to_sentence
+      redirect_to edit_project_path(@project, anchor: 'user_settings')
+    end
+  end
+
   def update
     authorize resource
     update! do |format|

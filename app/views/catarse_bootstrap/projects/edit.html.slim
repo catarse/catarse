@@ -34,7 +34,7 @@ nav.dashboard-nav
              = link_to 'Enviar', send_to_analysis_project_path(@project), class: 'btn btn-small'
         - if @project.approved?
           .btn-send-draft
-             = link_to '#', class: 'btn btn-small' do
+             = link_to publish_project_path(@project), class: 'btn btn-small' do
               | Publicar&nbsp;&nbsp;
               span.fa.fa-chevron-right .
 section.section

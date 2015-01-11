@@ -22,6 +22,10 @@ class ProjectPolicy < ApplicationPolicy
     create?
   end
 
+  def publish?
+    create? && record.approved?
+  end
+
   def permitted_attributes
     if user.present? && (user.admin? || (record.draft? || record.rejected? || record.in_analysis?))
       p_attr = [channel_ids: []]
