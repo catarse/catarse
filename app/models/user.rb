@@ -18,6 +18,8 @@ class User < ActiveRecord::Base
     :cpf, :state_inscription, :locale, :twitter, :facebook_link, :other_link, :moip_login, :deactivated_at, :reactivate_token,
     :bank_account_attributes, :country_id
 
+  attr_accessor :validating_for_approved_project
+
   mount_uploader :uploaded_image, UserUploader
 
   validates_length_of :bio, maximum: 140
@@ -29,6 +31,11 @@ class User < ActiveRecord::Base
   validates_presence_of :password, if: :password_required?
   validates_confirmation_of :password, if: :password_confirmation_required?
   validates_length_of :password, within: Devise.password_length, allow_blank: true
+
+  with_options if: :validating_for_approved_project do |opt|
+    opt.validates :email, :full_name, :cpf, :address_city, :address_state, :address_street,
+      :address_number, :address_neighbourhood, :address_zip_code, :phone_number, :bank_account, presence: true
+  end
 
   belongs_to :channel
   belongs_to :country
