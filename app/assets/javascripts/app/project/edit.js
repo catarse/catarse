@@ -9,6 +9,7 @@ App.addChild('ProjectEdit', _.extend({
     this.route('user_about');
     this.route('preview');
     this.route('edit');
+    this.route('user_settings');
   },
 
   followRoute: function(name){
