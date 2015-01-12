@@ -138,7 +138,6 @@ class Project < ActiveRecord::Base
 
   validates_with StateValidator
 
-
   [:between_created_at, :between_expires_at, :between_online_date, :between_updated_at].each do |name|
     define_singleton_method name do |starts_at, ends_at|
       between_dates name.to_s.gsub('between_',''), starts_at, ends_at
