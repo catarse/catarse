@@ -62,6 +62,8 @@ pt:
         more_links: 'Indique links para as pessoas conhecerem mais sobre o seu projeto e sua trajetória.'
         traffic_sources: 'Como você conheceu o Catarse?'
         first_contributions: "Quem são as primeiras pessoas que você vai pedir para apoiar o seu projeto?"
+        budget: 'Orçamento'
+        uploaded_image: 'Imagem do projeto'
       user:
         address_city: Cidade
         address_complement: Complemento
@@ -110,6 +112,10 @@ pt:
         contribution: "Erro ao salvar apoio"
         project:
           attributes:
+            budget:
+              blank: 'O orçamento do projeto não pode ficar em branco'
+            uploaded_image:
+              blank: 'A imagem do projeto não pode ficar em branco'
             name:
               blank: "O nome do projeto não pode ficar em branco"
             permalink:
