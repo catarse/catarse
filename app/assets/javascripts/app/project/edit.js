@@ -11,6 +11,10 @@ App.addChild('ProjectEdit', _.extend({
     this.route('preview');
     this.route('edit');
     this.route('user_settings');
+
+    if(this.$('.dashboard-nav-link.selected').length < 1) {
+      window.location.hash = 'home'
+    }
   },
 
   followRoute: function(name){
@@ -45,6 +49,10 @@ App.addChild('ProjectSendToAnalysis', _.extend({
     this.route('preview');
     this.route('edit');
     this.route('user_settings');
+
+    if(this.$('.dashboard-nav-link.selected').length < 1) {
+      window.location.hash = 'home'
+    }
   },
 
   followRoute: function(name){
