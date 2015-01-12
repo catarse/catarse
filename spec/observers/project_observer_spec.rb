@@ -95,7 +95,7 @@ RSpec.describe ProjectObserver do
             from_name: channel.name
           }
         )
-        project.put_online
+        project.push_to_online
       end
     end
 
@@ -115,7 +115,7 @@ RSpec.describe ProjectObserver do
             from_name: CatarseSettings[:company_name]
           }
         )
-        project.put_online
+        project.push_to_online
       end
     end
 
@@ -246,7 +246,7 @@ RSpec.describe ProjectObserver do
 
     context "when project don't belong to any channel" do
       before do
-        project.put_online
+        project.push_to_online
       end
 
       it "should create notification for project owner" do
@@ -257,7 +257,7 @@ RSpec.describe ProjectObserver do
     context "when project belong to a channel" do
       before do
         project.channels << channel
-        project.put_online
+        project.push_to_online
       end
 
       it "should create notification for project owner" do

@@ -34,7 +34,7 @@ module Project::StateMachineHandler
         transition in_analysis: :approved
       end
 
-      event :put_online do
+      event :push_to_online do
         transition approved: :online
       end
 
