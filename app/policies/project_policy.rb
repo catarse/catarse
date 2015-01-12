@@ -30,11 +30,16 @@ class ProjectPolicy < ApplicationPolicy
     if user.present? && (user.admin? || (record.draft? || record.rejected? || record.in_analysis?))
       p_attr = [channel_ids: []]
       p_attr << record.attribute_names.map(&:to_sym)
+      p_attr << user_attributes
 
       {project: p_attr.flatten}
     else
-      {project: [:about, :video_url, :uploaded_image, :headline]}
+      {project: [:about, :video_url, :uploaded_image, :headline, user_attributes]}
     end
+  end
+
+  def user_attributes
+    { user_attributes: [User.attr_accessible[:default].to_a.map(&:to_sym), :id] }
   end
 end
 

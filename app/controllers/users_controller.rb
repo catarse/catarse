@@ -56,18 +56,16 @@ class UsersController < ApplicationController
 
   def update
     authorize resource
-    check_requiments_to_use_approved_project_validation
     update! do |success,failure|
       success.html do
         flash[:notice] = t('users.current_user_fields.updated')
       end
       failure.html do
         flash[:alert] = @user.errors.full_messages.to_sentence
-        save_anchor_session_error
       end
     end
 
-    return parse_redirect_using_params
+    redirect_to user_path(@user, anchor: 'settings')
   end
 
   def update_password
@@ -87,22 +85,5 @@ class UsersController < ApplicationController
 
   def permitted_params
     params.permit(policy(resource).permitted_attributes)
-  end
-
-  def parse_redirect_using_params
-    case params[:anchor]
-    when 'user_about' then
-      redirect_to edit_project_path(params[:project_id], anchor: 'user_about')
-    when 'user_settings' then
-      redirect_to edit_project_path(params[:project_id], anchor: 'user_settings')
-    else
-      redirect_to user_path(@user, anchor: 'settings')
-    end
-  end
-
-  def check_requiments_to_use_approved_project_validation
-    if params[:anchor] == 'user_settings'
-      resource.validating_for_approved_project = true
-    end
   end
 end
