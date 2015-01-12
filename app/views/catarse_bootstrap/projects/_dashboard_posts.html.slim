@@ -1,0 +1,116 @@
+.section
+  .w-container
+    .w-row
+      .w-col.w-col-8
+        .project-news.u-marginbottom-60
+          .fontsize-large.fontweight-semibold.u-marginbottom-30 Escrever uma novidade
+          = simple_form_for ProjectPost.new(user: current_user, project: @project), url: project_posts_path(project_id: @project.id), html: { class: 'w-form' } do |form|
+            = form.label :title, as: :string
+            = form.input_field :title, as: :string
+
+            = form.label :comment, as: :string
+            = form.input_field :comment, class: 'text-field jumbo'
+            .w-row
+              .w-col.w-col-4.w-sub-col
+                a.btn.btn-medium href="#"  Publicar novidade
+              .w-col.w-col-3
+                a.btn.btn-medium.btn-terciary href="#"  Descartar
+              .w-col.w-col-5
+        .divider.u-marginbottom-30
+        .fontsize-large.fontweight-semibold.u-marginbottom-30 Novidades antigas
+        .project-news.u-marginbottom-30
+          .w-row
+            .w-col.w-col-11
+              .fontsize-large.fontweight-semibold As recompensas foram enviadas!
+            .w-col.w-col-1
+              a.btn.btn-small.btn-terciary.fa.fa-lg.fa-trash.btn-no-border href="#" 
+          .fontsize-small.fontcolor-secondary 18 JUNHO 2014
+          .project-share.div-share2
+            img.img-share alt="53a015970b65bf5f0c0f9c33_fb-bt.png" src="https://daks2k3a4ib2z.cloudfront.net/5460f4b273582afc3085d4ec/53a015970b65bf5f0c0f9c33_fb-bt.png" /
+            a.alt-link.alt-link-fb href="#"  Compartilhe
+            img.img-share alt="53a0179096ff9bc11fe1acb4_share-bubble.png" src="https://daks2k3a4ib2z.cloudfront.net/5460f4b273582afc3085d4ec/53a0179096ff9bc11fe1acb4_share-bubble.png" /
+            img.img-share.img-share-tweet alt="53a0165ae33e8a5d0c576cca_tweet-bt.png" src="https://daks2k3a4ib2z.cloudfront.net/5460f4b273582afc3085d4ec/53a0165ae33e8a5d0c576cca_tweet-bt.png" /
+            a.alt-link.alt-link-fb.alt-link-tweet href="#"  Tweet
+            img.img-share alt="53a0179096ff9bc11fe1acb4_share-bubble.png" src="https://daks2k3a4ib2z.cloudfront.net/5460f4b273582afc3085d4ec/53a0179096ff9bc11fe1acb4_share-bubble.png" /
+        .divider.u-marginbottom-30
+        .project-news.u-marginbottom-30
+          .w-row
+            .w-col.w-col-11
+              .fontsize-large.fontweight-semibold Olha a gente aí no jornal
+            .w-col.w-col-1
+              a.btn.btn-small.btn-terciary.fa.fa-lg.fa-trash.btn-no-border href="#" 
+          .fontsize-small.fontcolor-secondary 18 JUNHO 2014
+          .project-share.div-share2
+            img.img-share alt="53a015970b65bf5f0c0f9c33_fb-bt.png" src="https://daks2k3a4ib2z.cloudfront.net/5460f4b273582afc3085d4ec/53a015970b65bf5f0c0f9c33_fb-bt.png" /
+            a.alt-link.alt-link-fb href="#"  Compartilhe
+            img.img-share alt="53a0179096ff9bc11fe1acb4_share-bubble.png" src="https://daks2k3a4ib2z.cloudfront.net/5460f4b273582afc3085d4ec/53a0179096ff9bc11fe1acb4_share-bubble.png" /
+            img.img-share.img-share-tweet alt="53a0165ae33e8a5d0c576cca_tweet-bt.png" src="https://daks2k3a4ib2z.cloudfront.net/5460f4b273582afc3085d4ec/53a0165ae33e8a5d0c576cca_tweet-bt.png" /
+            a.alt-link.alt-link-fb.alt-link-tweet href="#"  Tweet
+            img.img-share alt="53a0179096ff9bc11fe1acb4_share-bubble.png" src="https://daks2k3a4ib2z.cloudfront.net/5460f4b273582afc3085d4ec/53a0179096ff9bc11fe1acb4_share-bubble.png" /
+        .divider.u-marginbottom-30
+        .project-news.u-marginbottom-30
+          .w-row
+            .w-col.w-col-11
+              .fontsize-large.fontweight-semibold Porque tem que ter isso aqui
+            .w-col.w-col-1
+              a.btn.btn-small.btn-terciary.fa.fa-lg.fa-trash.btn-no-border href="#" 
+          .fontsize-small.fontcolor-secondary 18 JUNHO 2014
+          .project-share.div-share2
+            img.img-share alt="53a015970b65bf5f0c0f9c33_fb-bt.png" src="https://daks2k3a4ib2z.cloudfront.net/5460f4b273582afc3085d4ec/53a015970b65bf5f0c0f9c33_fb-bt.png" /
+            a.alt-link.alt-link-fb href="#"  Compartilhe
+            img.img-share alt="53a0179096ff9bc11fe1acb4_share-bubble.png" src="https://daks2k3a4ib2z.cloudfront.net/5460f4b273582afc3085d4ec/53a0179096ff9bc11fe1acb4_share-bubble.png" /
+            img.img-share.img-share-tweet alt="53a0165ae33e8a5d0c576cca_tweet-bt.png" src="https://daks2k3a4ib2z.cloudfront.net/5460f4b273582afc3085d4ec/53a0165ae33e8a5d0c576cca_tweet-bt.png" /
+            a.alt-link.alt-link-fb.alt-link-tweet href="#"  Tweet
+            img.img-share alt="53a0179096ff9bc11fe1acb4_share-bubble.png" src="https://daks2k3a4ib2z.cloudfront.net/5460f4b273582afc3085d4ec/53a0179096ff9bc11fe1acb4_share-bubble.png" /
+      .w-col.w-col-4
+        .w-hidden-main.w-hidden-medium.project-share
+          .div-share-mobile-fb
+            img.icon-share-mobile alt="53a3f66e05eb6144171d8edb_facebook-xxl.png" src="https://daks2k3a4ib2z.cloudfront.net/5460f4b273582afc3085d4ec/53a3f66e05eb6144171d8edb_facebook-xxl.png" /
+            a.btn.bt-medium.bt-fb.bt-fb-mobile href="#"  Compartilhe
+          .div-share-mobile-fb
+            a.btn.bt-medium.bt-fb.bt-fb-mobile.bt-tweet-mobile href="#"  Tweet
+            img.icon-share-mobile.twitter alt="53a3f65105eb6144171d8eda_twitter-256.png" src="https://daks2k3a4ib2z.cloudfront.net/5460f4b273582afc3085d4ec/53a3f65105eb6144171d8eda_twitter-256.png" /
+        .w-hidden-small.w-hidden-tiny.card.u-radius.u-marginbottom-20 data-ix="new-interaction" 
+          .fontsize-small.fontweight-semibold.u-marginbottom-20 Dicas de formatação
+          ul.w-list-unstyled
+            li.u-marginbottom-20.fontsize-smallest
+              .w-row
+                .w-col.w-col-2.fa.fa-image.fa-lg.fontcolor-secondary
+                .w-col.w-col-10
+                  div Se você colar a url de uma imagem ou de um vídeo do vimeo ou do youtube, eles irão aparecer na descrição da ideia. experimente!
+            li.u-marginbottom-20.fontsize-smallest
+              .w-row
+                .w-col.w-col-2.fa.fa-lg.fontcolor-secondary.fa-link
+                .w-col.w-col-10
+                  div
+                    | Ao colar uma url qualquer, ela virará um link. Por exemplo, http://catarse.me virará
+                    a.alt-link href="#"  http://catarse.me
+            li.u-marginbottom-20.fontsize-smallest
+              .w-row
+                .w-col.w-col-2.fa.fa-lg.fontcolor-secondary.fa-external-link
+                .w-col.w-col-10
+                  div
+                    | Se você quiser colocar um texto no link, basta usar o seguinte formato: "texto que você quer":http://sua.url. Por exemplo, "Catarse":http://catarse.me virará&nbsp;
+                    a.alt-link href="#" > Catarse
+                    | \.
+                    a.alt-link href="#" 
+            li.u-marginbottom-20.fontsize-smallest
+              .w-row
+                .w-col.w-col-2.fa.fa-lg.fontcolor-secondary.fa-bold
+                .w-col.w-col-10
+                  div
+                    | Você pode usar negrito adicionando dois asteriscos (**) antes e depois do texto que você quer formatar. Por exemplo, **meu texto em negrito** irá aparecer como&nbsp;
+                    span.fontweight-bold> meu texto em negrito
+                    | \.
+                    a.alt-link href="#" 
+            li.u-marginbottom-20.fontsize-smallest
+              .w-row
+                .w-col.w-col-2.fa.fa-lg.fontcolor-secondary.fa-italic
+                .w-col.w-col-10
+                  div
+                    | Você pode usar itálico adicionando um underline (_) antes e depois do texto que você quer formatar. Por exemplo, _meu texto em itálico_ irá aparecer como&nbsp;
+                    em> meu texto em itálico
+                    | \.
+                    a.alt-link href="#" 
+        .u-marginbottom-30
+
