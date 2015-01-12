@@ -7,39 +7,24 @@
 |Olá, <strong>#{contribution.user.display_name}</strong>!
 br
 br
-- if contribution.payment_method.try(:downcase) == 'pagarme'
-  | O reembolso do seu apoio para o projeto #{link_to(contribution.project.name, project_by_slug_url(permalink: contribution.project.permalink))} no #{company_name} acabou de ser realizado para a conta bancária:
-  br
-  br
-  | Banco: #{bank_account.bank.to_s}
-  br
-  | Agência: #{bank_account.try(:agency)}
-  br
-  | Conta: #{bank_account.try(:account)} - #{bank_account.try(:account_digit)}
-  br
-  | Nome do titular: #{bank_account.try(:owner_name)}
-  br
-  | CPF: #{bank_account.try(:owner_document)}  
-  br
-  br
-  | Lembrando que há um prazo determinado por cada banco para a realização dessa transferência, confira seu extrato bancário pelos próximos 3 dias úteis.
-  br
-  br
-  | Se ficou com alguma dúvida ou teve algum problema nesse processo, entre em contato conosco respondendo a esta mensagem ou através do e-mail #{mail_to contact_email}. Para agilizar o atendimento, pedimos que indique a chave de identificação do seu apoio: #{contribution.payment_id}.
-
-- else
-  | Seu reembolso foi feito com sucesso!
-  br
-  br
-  | Você já pode entrar lá na sua conta MOIP e solicitar o saque. Aqui tem um #{link_to 'passo-a-passo', 'http://suporte.catarse.me/hc/pt-br/articles/203083027-Como-sacar-o-dinheiro-no-Moip-'} sobre como fazer este processo.
-  br
-  br
-  | A chave de identificação do seu apoio é: #{contribution.payment_id}
-  br/
-  br/
-  | Se ficou com alguma dúvida ou teve algum problema nesse processo, entre em contato conosco respondendo a
-  | esta mensagem ou através do e-mail #{mail_to contact_email}. Para agilizar o atendimento, pedimos que indique a chave de identificação.
-
+| O reembolso do seu apoio para o projeto #{link_to(contribution.project.name, project_by_slug_url(permalink: contribution.project.permalink))} no #{company_name} acabou de ser realizado para a conta bancária:
+br
+br
+| Banco: #{bank_account.try(:bank).to_s}
+br
+| Agência: #{bank_account.try(:agency)}
+br
+| Conta: #{bank_account.try(:account)} - #{bank_account.try(:account_digit)}
+br
+| Nome do titular: #{bank_account.try(:owner_name)}
+br
+| CPF: #{bank_account.try(:owner_document)}  
+br
+br
+| A chave de identificação do seu apoio é: #{contribution.payment_id}
+br
+br
+| Se ficou com alguma dúvida ou teve algum problema nesse processo, entre em contato conosco respondendo a esta mensagem ou através do e-mail #{mail_to contact_email}. Para agilizar o atendimento, pedimos que indique o código de identificação.
 br
 br
 |Um abraço,

@@ -8,6 +8,7 @@ class Projects::ContributionsController < ApplicationController
   after_filter :verify_authorized, except: [:index]
   belongs_to :project
   before_filter :detect_old_browsers, only: [:new, :create]
+  before_filter :detect_mobile_browsers, only: [:new, :create]
 
   helper_method :avaiable_payment_engines
 
