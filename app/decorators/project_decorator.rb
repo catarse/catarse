@@ -75,13 +75,23 @@ class ProjectDecorator < Draper::Decorator
     number_to_currency source.pledged
   end
 
-  def display_errors
-    error_message = ''
-    source.errors.each do |error|
-      error_message += source.errors[error][0]
-      error_message += '<br/>'
+  def display_errors group_name
+    #source.valid?
+    if source.errors.present?
+      error_messages = ''
+      source.errors.each do |error|
+        if source.error_included_on_group?(error, group_name)
+          error_messages += content_tag(:div, source.errors[error][0], class: 'fontsize-smaller')
+        end
+      end
+
+      unless error_messages.blank?
+        content_tag(:div, class: 'card card-error u-radius zindex-10 u-marginbottom-30') do
+          content_tag(:div, I18n.t('failure_title'), class: 'fontsize-smaller fontweight-bold u-marginbottom-10') +
+          error_messages.html_safe
+        end
+      end
     end
-    error_message.html_safe
   end
 
   def display_goal
