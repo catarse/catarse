@@ -98,6 +98,9 @@ pt:
         name: 'Nome'
         url: 'Site'
         image: 'Imagem'
+      project_post:
+        title: 'Título'
+        comment: 'Texto'
       channel_post:
         title: 'Título'
         body: 'Conteúdo'

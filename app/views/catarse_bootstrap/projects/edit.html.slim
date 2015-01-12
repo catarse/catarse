@@ -6,6 +6,7 @@ nav.dashboard-nav
   .w-container
     .w-row
       .w-col.w-col-9
+      div class="w-col #{(@project.online? || @project.failed? || @project.successful?) ? 'w-col-12' : 'w-col-9'}"
         = link_to '#home', id: 'dashboard_home_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_home'} do
           span.fa.fa-check-circle.fontcolor-terciary 
           | &nbsp;&nbsp;Início
@@ -15,6 +16,10 @@ nav.dashboard-nav
         = link_to '#project', id: 'dashboard_project_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_project'} do
           span.fa.fa-check-circle.fontcolor-terciary 
           | &nbsp;&nbsp;Projeto
+        - if @project.online? || @project.failed? || @project.successful?
+          = link_to '#posts', id: 'dashboard_posts_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_posts'} do
+            | Novidades&nbsp;
+            span.badge= @project.posts.count
         = link_to '#reward', id: 'dashboard_reward_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_reward'} do
           span.fa.fa-check-circle.fontcolor-terciary 
           | &nbsp;&nbsp;Recompensas
@@ -25,18 +30,19 @@ nav.dashboard-nav
           = link_to '#user_settings', id: 'dashboard_user_settings_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_user_settings'} do
             span.fa.fa-check-circle.fontcolor-terciary 
             | &nbsp;&nbsp;Conta
-      .w-col.w-col-3.w-clearfix.col-btn-send-draft
-        - if @project.draft? || @project.approved? || @project.rejected?
-          = link_to '#preview', id: 'dashboard_preview_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_preview'} do
-            | Preview
-        - if @project.draft?
-          .btn-send-draft
-             = link_to 'Enviar', send_to_analysis_project_path(@project), class: 'btn btn-small'
-        - if @project.approved?
-          .btn-send-draft
-             = link_to publish_project_path(@project), class: 'btn btn-small' do
-              | Publicar&nbsp;&nbsp;
-              span.fa.fa-chevron-right .
+      - if @project.draft? || @project.approved? || @project.rejected?
+        .w-col.w-col-3.w-clearfix.col-btn-send-draft
+          - if @project.draft? || @project.approved? || @project.rejected?
+            = link_to '#preview', id: 'dashboard_preview_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_preview'} do
+              | Preview
+          - if @project.draft?
+            .btn-send-draft
+               = link_to 'Enviar', send_to_analysis_project_path(@project), class: 'btn btn-small'
+          - if @project.approved?
+            .btn-send-draft
+               = link_to publish_project_path(@project), class: 'btn btn-small' do
+                | Publicar&nbsp;&nbsp;
+                span.fa.fa-chevron-right .
 section.section
   .w-container
     .w-row
@@ -47,6 +53,8 @@ section.section
           = render 'project_basics'
         #dashboard_project.content.w-hidden
           = render 'dashboard_project'
+        #dashboard_posts.content.w-hidden
+          = render 'dashboard_posts'
         #dashboard_reward.content.w-hidden
           = render 'dashboard_reward'
         #dashboard_user_about.content.w-hidden
