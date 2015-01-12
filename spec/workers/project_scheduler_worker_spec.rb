@@ -6,7 +6,7 @@ RSpec.describe ProjectSchedulerWorker do
   before do
     Sidekiq::Testing.inline!
 
-    expect_any_instance_of(Project).to receive(:put_online)
+    expect_any_instance_of(Project).to receive(:push_to_online)
   end
 
   it("should satisfy expectations") { project.save(validate: false) }

@@ -91,6 +91,8 @@ class UsersController < ApplicationController
 
   def parse_redirect_using_params
     case params[:anchor]
+    when 'user_about' then
+      redirect_to edit_project_path(params[:project_id], anchor: 'user_about')
     when 'user_settings' then
       redirect_to edit_project_path(params[:project_id], anchor: 'user_settings')
     else

@@ -5,6 +5,6 @@ class ProjectSchedulerWorker
   def perform project_id
     resource = Project.find project_id
     Rails.logger.info "[PROJECT ONLINE #{resource.id}] #{resource.name}"
-    resource.put_online
+    resource.push_to_online
   end
 end
