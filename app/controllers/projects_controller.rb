@@ -81,7 +81,13 @@ class ProjectsController < ApplicationController
 
   def update
     authorize resource
-    update! do |format|
+
+    resource.attributes = permitted_params[:project]
+    resource.save(validate: false)
+
+    @user = resource.user
+
+    respond_to do |format|
       format.html do
         if resource.errors.present?
           flash[:alert] = resource.display_errors
