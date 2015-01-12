@@ -75,6 +75,18 @@ class ProjectDecorator < Draper::Decorator
     number_to_currency source.pledged
   end
 
+  def status_icon_for group_name
+    has_error = source.errors.any? do |error|
+      source.error_included_on_group?(error, group_name)
+    end
+
+    if has_error
+      content_tag(:i, nil, class: 'fa fa-excalamation-circle fontcolor-terciary')
+    else
+      content_tag(:i, nil, class: 'fa fa-check-circle fontcolor-terciary')
+    end
+  end
+
   def display_errors group_name
     #source.valid?
     if source.errors.present?
