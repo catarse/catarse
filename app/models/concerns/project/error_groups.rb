@@ -6,7 +6,8 @@ module Project::ErrorGroups
       basics: [:name, :permalink, :category_id, :goal, :online_days],
       project: [ :video_url, :about, :budget, :uploaded_image, :headline],
       reward: [:'rewards.size'],
-      user_about: [:'user.uploaded_image', :'user.name', :'user.bio']
+      user_about: [:'user.uploaded_image', :'user.name', :'user.bio'],
+      user_settings: []
     }
 
     def error_included_on_group? error_attr, group_name
