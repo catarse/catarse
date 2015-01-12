@@ -19,10 +19,10 @@ class Project::StateValidator < ActiveModel::Validator
 
   def in_analysis
     @record.errors.add_on_blank([:about, :headline, :goal, :online_days])
-    @record.errors[:base] << "Nome do usuário não pode ficar em branco" if @record.user.name.blank?
-    @record.errors[:base] << "Biografia do usuário não pode ficar em branco" if @record.user.bio.blank?
-    @record.errors[:base] << "Imagem do usuário não pode ficar em branco" if @record.user.uploaded_image.blank?
-    @record.errors[:base] << "Deve haver pelo menos uma recompensa" if @record.rewards.count == 0
+    @record.errors['user.name'] << "Nome do usuário não pode ficar em branco" if @record.user.name.blank?
+    @record.errors['user.bio'] << "Biografia do usuário não pode ficar em branco" if @record.user.bio.blank?
+    @record.errors['user.uploaded_image'] << "Imagem do usuário não pode ficar em branco" if @record.user.uploaded_image.blank?
+    @record.errors['rewards.size'] << "Deve haver pelo menos uma recompensa" if @record.rewards.count == 0
   end
 
   def draft; end
