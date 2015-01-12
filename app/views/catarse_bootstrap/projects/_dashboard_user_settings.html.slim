@@ -17,8 +17,7 @@
     .section
       .w-container
         .w-col.w-col-8.u-marginbottom-30
-          - if can_show_errors_on('user_settings')
-            = render 'devise/shared/alert'
+          = @project.display_errors(:user_settings)
           .w-form.card.card-terciary
             #email-form
               .fontsize-base.fontweight-semibold Dados Cadastrais e endereço
