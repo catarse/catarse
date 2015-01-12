@@ -134,7 +134,8 @@ RSpec.describe Contribution::PaymentEngineHandler, type: :model do
         address_city: contribution.address_city,
         address_state: contribution.address_state,
         phone_number: contribution.address_phone_number,
-        cpf: contribution.payer_document
+        cpf: contribution.payer_document,
+        full_name: contribution.payer_name
       }
     }
     context "when cpf on contribution is not null" do
@@ -150,7 +151,8 @@ RSpec.describe Contribution::PaymentEngineHandler, type: :model do
           address_city: contribution.address_city,
           address_state: contribution.address_state,
           phone_number: contribution.address_phone_number,
-          cpf: contribution.payer_document
+          cpf: contribution.payer_document,
+          full_name: contribution.payer_name
         }
       }
 
