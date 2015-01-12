@@ -74,7 +74,7 @@ class ProjectsController < ApplicationController
     u = resource.user
     u.validating_for_approved_project = true
 
-    if u.valid? && resource.put_online
+    if u.valid? && resource.push_to_online
       flash[:notice] = t('projects.put_online')
       redirect_to project_by_slug_path(@project.permalink)
     else
