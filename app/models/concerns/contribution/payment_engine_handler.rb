@@ -42,8 +42,10 @@ module Contribution::PaymentEngineHandler
 
     def update_user_billing_info
       user.update_attributes({
+        country_id: country_id.presence || user.country_id,
         address_street: address_street.presence || user.address_street,
         address_number: address_number.presence || user.address_number,
+        address_complement: address_complement.presence || user.address_complement,
         address_neighbourhood: address_neighbourhood.presence || user.address_neighbourhood,
         address_zip_code: address_zip_code.presence|| user.address_zip_code,
         address_city: address_city.presence || user.address_city,
