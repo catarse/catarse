@@ -135,7 +135,7 @@ RSpec.describe Contribution::PaymentEngineHandler, type: :model do
         address_state: contribution.address_state,
         phone_number: contribution.address_phone_number,
         cpf: contribution.payer_document,
-        full_name: contribution.payer_name
+        full_name: contribution.payer_name || user.full_name
       }
     }
     context "when cpf on contribution is not null" do
@@ -152,7 +152,7 @@ RSpec.describe Contribution::PaymentEngineHandler, type: :model do
           address_state: contribution.address_state,
           phone_number: contribution.address_phone_number,
           cpf: contribution.payer_document,
-          full_name: contribution.payer_name
+          full_name: contribution.payer_name || user.full_name
         }
       }
 
@@ -172,7 +172,7 @@ RSpec.describe Contribution::PaymentEngineHandler, type: :model do
       before do
         user.update_column :cpf, '000'
         user.reload
-        expect(user).to receive(:update_attributes).with(contribution_attributes)
+        expect(user).to receive(:update_attributes).with(contribution_attributes.merge!({cpf: user.cpf}))
       end
 
       it("should update user billing info attributes") { contribution.update_user_billing_info }

@@ -120,11 +120,6 @@ RSpec.describe Projects::ContributionsController, type: :controller do
       get :new, {locale: :pt, project_id: project.id}
     end
 
-    context "when browser is mobile" do
-      let(:browser){ double("browser", ie9?: false, modern?: true, mobile?: true) }
-      it{ is_expected.to redirect_to new_project_contribution_url(host: 'beta.catarse.me') }
-    end
-
     context "when browser is IE 9" do
       let(:browser){ double("browser", ie9?: true, modern?: true) }
       it{ is_expected.to redirect_to page_path("bad_browser") }
