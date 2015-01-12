@@ -6,28 +6,28 @@ nav.dashboard-nav
   .w-container
     .w-row
       .w-col.w-col-9
-        = link_to '#home', id: 'dashboard_home_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_home'} do
-          span.fa.fa-check-circle.fontcolor-terciary 
+        = link_to '#home', id: 'dashboard_home_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_home', tab_group: 'edit'} do
+          span.fa.fa-check-circle.fontcolor-terciary
           | &nbsp;&nbsp;Início
-        = link_to '#basics', id: 'basics_link', class: 'dashboard-nav-link ' , data: {target: '#project_basics'} do
-          span.fa.fa-check-circle.fontcolor-terciary 
+        = link_to '#basics', id: 'basics_link', class: 'dashboard-nav-link ' , data: {target: '#project_basics', tab_group: 'edit'} do
+          span.fa.fa-check-circle.fontcolor-terciary
           | &nbsp;&nbsp;Básico
-        = link_to '#project', id: 'dashboard_project_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_project'} do
-          span.fa.fa-check-circle.fontcolor-terciary 
+        = link_to '#project', id: 'dashboard_project_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_project', tab_group: 'edit'} do
+          span.fa.fa-check-circle.fontcolor-terciary
           | &nbsp;&nbsp;Projeto
-        = link_to '#reward', id: 'dashboard_reward_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_reward'} do
-          span.fa.fa-check-circle.fontcolor-terciary 
+        = link_to '#reward', id: 'dashboard_reward_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_reward', tab_group: 'edit'} do
+          span.fa.fa-check-circle.fontcolor-terciary
           | &nbsp;&nbsp;Recompensas
-        = link_to '#user_about', id: 'dashboard_user_about_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_user_about'} do
-          span.fa.fa-check-circle.fontcolor-terciary 
+        = link_to '#user_about', id: 'dashboard_user_about_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_user_about', tab_group: 'edit'} do
+          span.fa.fa-check-circle.fontcolor-terciary
           | &nbsp;&nbsp;Sobre você
         - if @project.can_show_account_link?
-          a.dashboard-nav-link href="#" 
-            span.fa.fa-check-circle.fontcolor-terciary 
+          a.dashboard-nav-link href="#"
+            span.fa.fa-check-circle.fontcolor-terciary
             | &nbsp;&nbsp;Conta
-        = link_to '#preview', id: 'dashboard_preview_link', class: 'dashboard-nav-link project_preview_tab' , data: {target: '#dashboard_preview'} do
-          | Preview
       .w-col.w-col-3.w-clearfix.col-btn-send-draft
+        = link_to '#preview', id: 'dashboard_preview_link', class: 'dashboard-nav-link' , data: {target: '#dashboard_preview' , tab_group: 'edit'} do
+          | Preview
         - if @project.draft?
           .btn-send-draft
              = link_to 'Enviar', send_to_analysis_project_path(@project), class: 'btn btn-small'

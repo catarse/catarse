@@ -1,6 +1,10 @@
 Skull.Tabs = {
   selectTab: function($tab, $tabContent){
-    $tab.siblings('.selected').removeClass('selected');
+    var $group = $('[data-tab-group=' + $tab.data('tab-group') + ']');
+    if($group.length == 0){
+      $group = $tab.siblings('.selected');
+    }
+    $group.removeClass('selected');
     $tab.addClass('selected');
     $tabContent.siblings(':visible').hide();
     $tabContent.show();
