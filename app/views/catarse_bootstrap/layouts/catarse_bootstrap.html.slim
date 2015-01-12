@@ -26,7 +26,7 @@ html
       meta property="og:description"  content=( channel.try(:description) || t('projects.index_header.title') + '. ' +  t('projects.index_header.subtitle'))
 
   body#catarse_bootstrap[data-namespace=namespace data-controller-name=controller_name data-action=action_name data-user="#{current_user.try(:to_analytics_json)}"]
-    = render 'layouts/global_alert' if content_for(:main_stylesheet).blank? && channel.nil?
+    = render 'layouts/global_alert'
     = render_facebook_sdk
     = render 'layouts/flash' if notice.present?
     = render 'layouts/webfont'
