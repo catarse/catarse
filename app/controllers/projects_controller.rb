@@ -84,13 +84,17 @@ class ProjectsController < ApplicationController
     update! do |format|
       format.html do
         if resource.errors.present?
-          flash[:alert] = resource.errors.full_messages.to_sentence
+          flash[:alert] = resource.display_errors
           save_anchor_session_error
         else
           flash[:notice] = t('project.update.success')
         end
 
-        redirect_to edit_project_path(@project, anchor: 'basics')
+        if params[:anchor]
+          redirect_to edit_project_path(@project, anchor: params[:anchor])
+        else
+          redirect_to edit_project_path(@project, anchor: 'home')
+        end
       end
     end
   end
