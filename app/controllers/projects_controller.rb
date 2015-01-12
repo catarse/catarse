@@ -7,6 +7,7 @@ class ProjectsController < ApplicationController
 
   respond_to :html
   respond_to :json, only: [:index, :show, :update]
+  layout 'catarse_bootstrap'
 
   def index
     index! do |format|
@@ -53,6 +54,8 @@ class ProjectsController < ApplicationController
 
   def send_to_analysis
     authorize resource
+    @user = resource.user
+
     if resource.send_to_analysis
       if referal_link.present?
         resource.update_attribute :referal_link, referal_link
@@ -60,8 +63,9 @@ class ProjectsController < ApplicationController
       flash[:notice] = t('projects.send_to_analysis')
       redirect_to project_by_slug_path(@project.permalink)
     else
-      flash[:notice] = t('projects.send_to_analysis_error')
-      redirect_to edit_project_path(@project, anchor: 'home')
+      flash.now[:notice] = t('projects.send_to_analysis_error')
+      @user = resource.user
+      render :edit
     end
   end
 
