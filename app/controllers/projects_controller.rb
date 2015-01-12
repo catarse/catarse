@@ -95,7 +95,6 @@ class ProjectsController < ApplicationController
       format.html do
         if resource.errors.present?
           flash[:alert] = resource.display_errors
-          save_anchor_session_error
         else
           flash[:notice] = t('project.update.success')
         end
