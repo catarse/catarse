@@ -1,5 +1,5 @@
 = render 'shared/header_big'
-.row.admin
+.w-row.admin
   h1= @title = t('.title')
   = simple_form_for '', url: admin_financials_path, method: :get do |form|
     .w-row
@@ -50,7 +50,7 @@
             th= t('.reports')
             th= t('.state')
         tbody
-          tr id=project.id class=cycle("card", "card card-secondary")
+          tr id=project.id
             td= link_to project.name, project_by_slug_path(permalink: project.permalink), target: '_blank'
             td= (project.using_pagarme? ? t('yes') : t('no'))
             td= link_to (project.user.moip_login.blank? ? 'Não preenchido' : project.user.moip_login), user_path(project.user, anchor: :settings), target: '_blank'
