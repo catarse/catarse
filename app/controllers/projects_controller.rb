@@ -7,7 +7,6 @@ class ProjectsController < ApplicationController
 
   respond_to :html
   respond_to :json, only: [:index, :show, :update]
-  layout 'catarse_bootstrap'
 
   def index
     index! do |format|
@@ -65,7 +64,7 @@ class ProjectsController < ApplicationController
     else
       flash.now[:notice] = t('projects.send_to_analysis_error')
       edit
-      render :edit
+      render :edit, layout: 'catarse_bootstrap'
     end
   end
 
@@ -78,7 +77,7 @@ class ProjectsController < ApplicationController
     else
       flash.now[:notice] = t('projects.put_online_error')
       edit
-      render :edit
+      render :edit, layout: 'catarse_bootstrap'
     end
   end
 
