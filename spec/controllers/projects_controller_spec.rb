@@ -83,6 +83,12 @@ RSpec.describe ProjectsController, type: :controller do
 
   describe "PUT update" do
     shared_examples_for "updatable project" do
+      context "with tab anchor" do
+        before { put :update, id: project.id, project: { name: 'My Updated Title' },locale: :pt , anchor: 'basics'}
+
+        it{ is_expected.to redirect_to edit_project_path(project, anchor: 'basics') }
+      end
+
       context "with valid permalink" do
         before { put :update, id: project.id, project: { name: 'My Updated Title' },locale: :pt }
         it {
@@ -90,13 +96,13 @@ RSpec.describe ProjectsController, type: :controller do
           expect(project.name).to eq('My Updated Title')
         }
 
-        it{ is_expected.to redirect_to edit_project_path(project, anchor: 'basics') }
+        it{ is_expected.to redirect_to edit_project_path(project, anchor: 'home') }
       end
 
       context "with invalid permalink" do
         before { put :update, id: project.id, project: { permalink: '', name: 'My Updated Title' },locale: :pt }
 
-        it{ is_expected.to redirect_to edit_project_path(project, anchor: 'basics') }
+        it{ is_expected.to redirect_to edit_project_path(project, anchor: 'home') }
       end
     end
 

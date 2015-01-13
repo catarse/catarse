@@ -75,6 +75,15 @@ class ProjectDecorator < Draper::Decorator
     number_to_currency source.pledged
   end
 
+  def display_errors
+    error_message = ''
+    source.errors.each do |error|
+      error_message += source.errors[error][0]
+      error_message += '<br/>'
+    end
+    error_message.html_safe
+  end
+
   def display_goal
     number_to_currency source.goal
   end
