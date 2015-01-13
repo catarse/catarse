@@ -43,6 +43,7 @@ pt:
     send_to_analysis: Seu projeto foi enviado para nossa equipe.
     send_to_analysis_error: Erro ao enviar projeto para análise. Preencha todos os campos obrigatórios.
     put_online: Seu projeto está online!
+    put_online_error: Erro ao colocar o projeto online. Preencha todos os campos obrigatórios.
     twitter:
       take_a_look: Confira o projeto %{name} no @catarse
     video_embed:
