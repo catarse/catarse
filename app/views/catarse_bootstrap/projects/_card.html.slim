@@ -26,4 +26,4 @@
           .fontsize-smaller.fontweight-semibold= t('.time_remaining_html', count: @project.time_to_go[:time], unit: @project.time_to_go[:unit])
         - else
           .fontsize-smaller.fontweight-semibold.w-row= t(".display_status.#{@project.display_status}").capitalize
-          = @project.display_expires_at
+          = @project.display_expires_at 
