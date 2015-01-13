@@ -4,6 +4,8 @@ ruby '2.1.5'
 
 gem 'rails', '~> 4.1.6'
 
+#gem 'catarse_api', path: '~/code/catarse_api'
+gem 'catarse_api', github: 'catarse/catarse_api'
 gem 'protected_attributes', '~> 1.0.5' # When upgrade to strong_parameters, remove this gem.
 gem 'rails-observers', '~> 0.1.2'
 
@@ -40,6 +42,7 @@ gem 'catarse_pagarme', '2.4.1'
 #gem 'catarse_credits', path: '../catarse_credits'
 #gem 'catarse_pagarme', path: '../catarse_pagarme'
 
+#gem 'catarse_pagarme', path: '~/code/catarse_pagarme'
 gem 'catarse_contribution_validator', github: 'catarse/catarse_contribution_validator'
 # gem 'catarse_wepay', '~> 0.0.1'
 
