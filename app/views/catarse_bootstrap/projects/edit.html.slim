@@ -1,3 +1,4 @@
+= javascript_include_tag "//www.google.com/jsapi", "chartkick"
 = render 'shared/header'
 
 = render 'project_header'
@@ -5,23 +6,26 @@
 nav.dashboard-nav
   .w-container
     .w-row
-      div class="w-col #{(@project.online? || @project.failed? || @project.successful?) ? 'w-col-12' : 'w-col-9'}"
+      div class="w-col #{(@project.already_deployed?) ? 'w-col-12' : 'w-col-9'}"
         = link_to '#home', id: 'dashboard_home_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_home', tab_group: 'edit'} do
           | &nbsp;&nbsp;Início
-        - if @project.draft? || @project.in_analysis? || @project.rejected?
+        - unless @project.already_deployed?
           = link_to '#basics', id: 'basics_link', class: 'dashboard-nav-link ' , data: {target: '#project_basics', tab_group: 'edit'} do
             = @project.decorate.status_icon_for('basics')
             | &nbsp;&nbsp;Básico
         = link_to '#project', id: 'dashboard_project_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_project', tab_group: 'edit'} do
           = @project.decorate.status_icon_for('project')
           | &nbsp;&nbsp;Projeto
-        - if @project.online? || @project.failed? || @project.successful?
+        - if @project.already_deployed?
           = link_to '#posts', id: 'dashboard_posts_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_posts', tab_group: 'edit'} do
             | Novidades&nbsp;
             span.badge= @project.posts.count
         = link_to '#reward', id: 'dashboard_reward_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_reward', tab_group: 'edit'} do
           = @project.decorate.status_icon_for('reward')
           | &nbsp;&nbsp;Recompensas
+        - if @project.already_deployed?
+          = link_to '#reports', id: 'dashboard_reports_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_reports', tab_group: 'edit'} do
+            | Relatórios&nbsp;
         = link_to '#user_about', id: 'dashboard_user_about_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_user_about', tab_group: 'edit'} do
           = @project.decorate.status_icon_for('user_about')
           | &nbsp;&nbsp;Sobre você
@@ -48,15 +52,19 @@ section.section
       article
         #dashboard_home.content.w-hidden
           = render 'dashboard_home'
-        - if @project.draft? || @project.in_analysis? || @project.rejected?
+        - unless @project.already_deployed?
           #project_basics.content.w-hidden
             = render 'project_basics'
         #dashboard_project.content.w-hidden
           = render 'dashboard_project'
-        #dashboard_posts.content.w-hidden
-          = render 'dashboard_posts'
+        - if @project.already_deployed?
+          #dashboard_posts.content.w-hidden
+            = render 'dashboard_posts'
         #dashboard_reward.content.w-hidden
           = render 'dashboard_reward'
+        - if @project.already_deployed?
+          #dashboard_reports.content.w-hidden data-path=metrics_project_path(@project)
+            .results
         #dashboard_user_about.content.w-hidden
           = render 'dashboard_user_about'
         #dashboard_preview.content.w-hidden

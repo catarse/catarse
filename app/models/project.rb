@@ -268,6 +268,10 @@ class Project < ActiveRecord::Base
     end
   end
 
+  def already_deployed?
+    self.online? || self.successful? || self.failed? || self.waiting_funds?
+  end
+
   private
   def self.between_dates(attribute, starts_at, ends_at)
     return all unless starts_at.present? && ends_at.present?
@@ -280,4 +284,5 @@ class Project < ActiveRecord::Base
     end
     routes.compact.uniq
   end
+
 end
