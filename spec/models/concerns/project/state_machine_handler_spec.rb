@@ -112,10 +112,10 @@ RSpec.describe Project::StateMachineHandler, type: :model do
       end
     end
 
-    describe '#put_online' do
+    describe '#push_to_online' do
       let(:project_state){ 'approved' }
 
-      subject{ project.put_online }
+      subject{ project.push_to_online }
 
       context "when project user has no email" do
         before do

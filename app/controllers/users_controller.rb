@@ -64,7 +64,11 @@ class UsersController < ApplicationController
         flash[:error] = @user.errors.full_messages.to_sentence
       end
     end
-    return redirect_to user_path(@user, anchor: 'settings')
+    if params[:project_id]#comes from dashboard
+      return redirect_to edit_project_path(params[:project_id], anchor: 'user_about')
+    else
+      return redirect_to user_path(@user, anchor: 'settings')
+    end
   end
 
   def update_password
