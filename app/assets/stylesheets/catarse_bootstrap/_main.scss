@@ -2574,18 +2574,18 @@ p {
   padding-left: 13px;
   background-color: #f1f4f4;
 }
-.card-project-meter.funded {
+.card-project-meter.successful {
   padding-top: 4px;
   background-color: #00b22d;
   color: white;
   font-size: 14px;
 }
-.card-project-meter.not-funded {
+.card-project-meter.failed {
   padding-top: 4px;
   background-color: #79808b;
   color: white;
 }
-.card-project-meter.waiting {
+.card-project-meter.waiting_funds {
   padding-top: 4px;
   background-color: #bdbb46;
   color: white;
@@ -2920,7 +2920,7 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     padding-right: 24px;
     padding-left: 24px;
   }
-  .card-project-meter.funded {
+  .card-project-meter.successful {
     font-size: 13px;
   }
 }
@@ -3356,14 +3356,14 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     box-shadow: rgba(63, 71, 82, 0.52) 0px -2px 12px -3px;
     text-align: left;
   }
-  .card-project-meter.funded {
+  .card-project-meter.successful {
     text-align: center;
   }
-  .card-project-meter.not-funded {
+  .card-project-meter.failed {
     font-size: 13px;
     text-align: center;
   }
-  .card-project-meter.waiting {
+  .card-project-meter.waiting_funds {
     font-size: 13px;
     text-align: center;
   }
