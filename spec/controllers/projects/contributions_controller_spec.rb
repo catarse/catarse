@@ -110,7 +110,7 @@ RSpec.describe Projects::ContributionsController, type: :controller do
     let(:secure_review_host){ nil }
     let(:user){ create(:user) }
     let(:online){ true }
-    let(:browser){ double("browser", ie9?: false, modern?: true) }
+    let(:browser){ double("browser", ie9?: false, modern?: true, mobile?: false) }
 
     before do
       CatarseSettings[:secure_review_host] = secure_review_host

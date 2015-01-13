@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
     :image_url, :uploaded_image, :bio, :newsletter, :full_name, :address_street, :address_number,
     :address_complement, :address_neighbourhood, :address_city, :address_state, :address_zip_code, :phone_number,
     :cpf, :state_inscription, :locale, :twitter, :facebook_link, :other_link, :moip_login, :deactivated_at, :reactivate_token,
-    :bank_account_attributes, :country_id
+    :bank_account_attributes, :country_id, :zero_credits
 
   attr_accessor :validating_for_approved_project
 
@@ -49,7 +49,7 @@ class User < ActiveRecord::Base
   has_many :projects
   has_many :unsubscribes
   has_many :project_posts
-  has_many :contributed_projects, -> { where(contributions: { state: 'confirmed' } ).uniq } ,through: :contributions, source: :project
+  has_many :contributed_projects, -> { where(contributions: { state: ['confirmed', 'requested_refund', 'refunded'] } ).uniq } ,through: :contributions, source: :project
   has_many :category_followers
   has_many :categories, through: :category_followers
   has_and_belongs_to_many :recommended_projects, join_table: :recommendations, class_name: 'Project'
@@ -64,7 +64,7 @@ class User < ActiveRecord::Base
   }
 
   scope :who_contributed_project, ->(project_id) {
-    where("id IN (SELECT user_id FROM contributions WHERE contributions.state = 'confirmed' AND project_id = ?)", project_id)
+    where("id IN (SELECT user_id FROM contributions WHERE contributions.state IN ('confirmed', 'refunded', 'requested_refund') AND project_id = ?)", project_id)
   }
 
   scope :subscribed_to_posts, -> {
@@ -90,7 +90,7 @@ class User < ActiveRecord::Base
   scope :by_name, ->(name){ where('users.name ~* ?', name) }
   scope :by_id, ->(id){ where(id: id) }
   scope :by_key, ->(key){ where('EXISTS(SELECT true FROM contributions WHERE contributions.user_id = users.id AND contributions.key ~* ?)', key) }
-  scope :has_credits, -> { joins(:user_total).where('user_totals.credits > 0') }
+  scope :has_credits, -> { joins(:user_total).where('user_totals.credits > 0 and not users.zero_credits') }
   scope :already_used_credits, -> {
     has_credits.
     where("EXISTS (SELECT true FROM contributions b WHERE b.credits AND b.state = 'confirmed' AND b.user_id = users.id)")
@@ -154,6 +154,7 @@ class User < ActiveRecord::Base
   end
 
   def credits
+    return 0 if zero_credits
     user_total.try(:credits).to_f
   end
 

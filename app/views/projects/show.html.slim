@@ -19,8 +19,9 @@
   meta property="og:type" content='cause'
   meta property="og:image" content=@project.display_image('project_thumb_facebook')
   meta property="og:site_name" content=CatarseSettings[:company_name]
-  meta property="fb:admins" content="#{fb_admins}"
-  
+  - fb_admins.each do |admin|
+    meta property="fb:admins" content="#{admin}"
+
 #page_content
   .container
 
@@ -56,7 +57,7 @@
           = t('.menu.comments')
           | &nbsp; (
           / we need to remove the locale from the url
-          fb:comments-count href="#{request.base_url}/#{request.path}"
+          fb:comments-count href=controller.fb_comments_link
           | )
         - if policy(@project).update?
           = link_to '#edit', 'id' => 'edit_link', 'data-target' => '#project_edit' do

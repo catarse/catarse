@@ -126,6 +126,11 @@ class Project < ActiveRecord::Base
           { permalinks: permalinks })
   }
 
+  scope :not_using_pagarme, -> {
+    where("projects.permalink not in (:permalinks) AND projects.online_date::date AT TIME ZONE '#{Time.zone.tzinfo.name}' < '2014-11-10'::date AT TIME ZONE '#{Time.zone.tzinfo.name}'",
+          { permalinks: (CatarseSettings[:projects_enabled_to_use_pagarme].split(',').map(&:strip) rescue []) })
+  }
+
   attr_accessor :accepted_terms
 
   # Draft state validtions
@@ -142,6 +147,17 @@ class Project < ActiveRecord::Base
   [:between_created_at, :between_expires_at, :between_online_date, :between_updated_at].each do |name|
     define_singleton_method name do |starts_at, ends_at|
       between_dates name.to_s.gsub('between_',''), starts_at, ends_at
+    end
+  end
+
+  def self.with_payment_engine(payment_engine_name)
+    case payment_engine_name
+    when 'pagarme' then
+      self.enabled_to_use_pagarme
+    when 'moip' then
+      self.not_using_pagarme
+    else
+      self
     end
   end
 

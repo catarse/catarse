@@ -1,0 +1,28 @@
+= render 'shared/header', overlayer: true
+
+.hero-jobs.hero-full
+      .w-container.u-text-center
+        = image_tag "icon-jobs.png"
+        .u-text-center.u-marginbottom-20.fontsize-jumbo Trabalhe conosco
+        .w-row
+          .w-col.w-col-2
+          .w-col.w-col-8
+            .fontsize-base O financiamento coletivo não para de crescer e a super equipe do&nbsp;Catarse precisa crescer junto. Venha fazer parte dessa história com a gente.&nbsp;
+          .w-col.w-col-2
+
+.section
+  .w-container.u-margintop-40
+    .w-row
+      .w-col.w-col-2
+      .w-col.w-col-8
+        .w-embed.w-script
+          script src="https://www.workable.com/assets/embed.js" type="text/javascript" 
+          script charset="utf-8" type="text/javascript" 
+            | whr(document).ready(function(){whr_embed(12575, {detail: 'titles', base: 'jobs', zoom: 'country', grouping: 'none'});});
+          #whr_embed_hook
+      .w-col.w-col-2
+
+= render 'shared/footer_big'
+
+
+

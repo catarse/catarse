@@ -1,3 +1,34 @@
+- if current_user && current_user.admin?
+.user_data
+  = simple_form_for @user, html: {method: :put, id: 'user_form'}  do |f|
+    = f.input_field :zero_credits, as: :boolean
+    = f.label :zero_credits, 'Zerar creditos'
+    .clearfix
+    br/
+    = f.submit 'Salvar'
+
+#bank_account.user_data
+  h1= t('.bank_account_title')
+  ul
+    li
+      .bootstrap-form
+        = semantic_form_for @user, html: {method: :put, id: 'user_form'}  do |f|
+          .bank_accounts
+            = f.semantic_fields_for :bank_account do |bank_form|
+              = bank_form.input :bank_id, as: :select, collection: Bank.to_collection
+              .clearfix
+              = bank_form.input :agency, as: :string
+              = bank_form.input :agency_digit, as: :string
+              .clearfix
+              = bank_form.input :account, as: :string
+              = bank_form.input :account_digit, as: :string
+              .clearfix
+              = bank_form.input :owner_name, as: :string, input_html: { value: bank_form.object.owner_name || @user.full_name }
+              = bank_form.input :owner_document, as: :string, input_html: { value: bank_form.object.owner_document || @user.cpf }
+              .clearfix
+          .bootstrap-twitter
+            p= f.submit t('.update_social_info'), class: 'btn'        
+
 #my_avatar.user_data
   h1 = t('.local_avatar')
   ul
@@ -21,6 +52,9 @@
     ul
       li
         = link_to t('layouts.login.login_with_facebook'), user_omniauth_authorize_path(provider: 'facebook', locale: nil), class: 'facebook_start'
+
+
+
 #my_data.user_data
   h1= t('.my_data')
   ul
@@ -59,27 +93,6 @@
           .bootstrap-twitter
             p= f.submit t('.update_social_info'), class: 'btn', id: "user_submit"
 
-#bank_account.user_data
-  h1= t('.bank_account_title')
-  ul
-    li
-      .bootstrap-form
-        = semantic_form_for @user, html: {method: :put, id: 'user_form'}  do |f|
-          .bank_accounts
-            = f.semantic_fields_for :bank_account do |bank_form|
-              = bank_form.input :bank_id, as: :select, collection: Bank.to_collection
-              .clearfix
-              = bank_form.input :agency, as: :string
-              = bank_form.input :agency_digit, as: :string
-              .clearfix
-              = bank_form.input :account, as: :string
-              = bank_form.input :account_digit, as: :string
-              .clearfix
-              = bank_form.input :owner_name, as: :string, input_html: { value: bank_form.object.owner_name || @user.full_name }
-              = bank_form.input :owner_document, as: :string, input_html: { value: bank_form.object.owner_document || @user.cpf }
-              .clearfix
-          .bootstrap-twitter
-            p= f.submit t('.update_social_info'), class: 'btn'
 
 #change_password.user_data
   h1= t('.change_password')
