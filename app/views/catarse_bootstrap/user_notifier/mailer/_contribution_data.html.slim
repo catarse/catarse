@@ -22,7 +22,7 @@ p
     br/
   | ID do apoio: #{contribution.payment_id}
   br/
-  | Nome/Razão Social do realizador: #{contribution.project.user.display_name}
+  | Nome/Razão Social do realizador: #{ contribution.project.user.full_name.presence || contribution.project.user.name.presence }
   br/
   | CPF/CNPJ do realizador: #{contribution.project.user.cpf}
 
