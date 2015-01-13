@@ -4,64 +4,53 @@
       .w-col.w-col-8
         .project-news.u-marginbottom-60
           .fontsize-large.fontweight-semibold.u-marginbottom-30 Escrever uma novidade
-          = simple_form_for ProjectPost.new(user: current_user, project: @project), url: project_posts_path(project_id: @project.id), html: { class: 'w-form' } do |form|
-            = form.label :title, as: :string
-            = form.input_field :title, as: :string
+          = simple_form_for @project,  html: { class: 'w-form' } do |f|
+            =  hidden_field_tag 'anchor', 'posts'
+            = f.simple_fields_for :posts, @project.posts.build do |form|
+              = form.label :title, as: :string
+              = form.input_field :title, as: :string
 
-            = form.label :comment, as: :string
-            = form.input_field :comment, class: 'text-field jumbo'
-            .w-row
-              .w-col.w-col-4.w-sub-col
-                a.btn.btn-medium href="#"  Publicar novidade
-              .w-col.w-col-3
-                a.btn.btn-medium.btn-terciary href="#"  Descartar
-              .w-col.w-col-5
+              = form.label :comment, as: :string
+              = form.input_field :comment, class: 'text-field jumbo'
+
+              .w-checkbox.w-clearfix.u-marginbottom-30
+                = form.check_box :exclusive, class: 'w-checkbox-input'
+                = form.label :exclusive, 'Visível apenas para apoiadores', class: 'w-form-label fontsize-small'
+
+              .card.card-message.u-radius.u-marginbottom-40
+                .fontsize-small Lembre-se que todo post de novidade vai diretamente para o email de seus apoiadores. Por isso, revise bem seu texto antes de publicá-lo.
+              
+              .w-row
+                .w-col.w-col-4.w-sub-col
+                  = form.submit 'Publicar novidate', class: 'btn btn-medium'
+                .w-col.w-col-3
+                  = link_to 'Descartar', 'javascript:location.reload();', class: 'btn btn-medium btn-terciary'
+                .w-col.w-col-5
         .divider.u-marginbottom-30
         .fontsize-large.fontweight-semibold.u-marginbottom-30 Novidades antigas
-        .project-news.u-marginbottom-30
-          .w-row
-            .w-col.w-col-11
-              .fontsize-large.fontweight-semibold As recompensas foram enviadas!
-            .w-col.w-col-1
-              a.btn.btn-small.btn-terciary.fa.fa-lg.fa-trash.btn-no-border href="#" 
-          .fontsize-small.fontcolor-secondary 18 JUNHO 2014
-          .project-share.div-share2
-            img.img-share alt="53a015970b65bf5f0c0f9c33_fb-bt.png" src="https://daks2k3a4ib2z.cloudfront.net/5460f4b273582afc3085d4ec/53a015970b65bf5f0c0f9c33_fb-bt.png" /
-            a.alt-link.alt-link-fb href="#"  Compartilhe
-            img.img-share alt="53a0179096ff9bc11fe1acb4_share-bubble.png" src="https://daks2k3a4ib2z.cloudfront.net/5460f4b273582afc3085d4ec/53a0179096ff9bc11fe1acb4_share-bubble.png" /
-            img.img-share.img-share-tweet alt="53a0165ae33e8a5d0c576cca_tweet-bt.png" src="https://daks2k3a4ib2z.cloudfront.net/5460f4b273582afc3085d4ec/53a0165ae33e8a5d0c576cca_tweet-bt.png" /
-            a.alt-link.alt-link-fb.alt-link-tweet href="#"  Tweet
-            img.img-share alt="53a0179096ff9bc11fe1acb4_share-bubble.png" src="https://daks2k3a4ib2z.cloudfront.net/5460f4b273582afc3085d4ec/53a0179096ff9bc11fe1acb4_share-bubble.png" /
-        .divider.u-marginbottom-30
-        .project-news.u-marginbottom-30
-          .w-row
-            .w-col.w-col-11
-              .fontsize-large.fontweight-semibold Olha a gente aí no jornal
-            .w-col.w-col-1
-              a.btn.btn-small.btn-terciary.fa.fa-lg.fa-trash.btn-no-border href="#" 
-          .fontsize-small.fontcolor-secondary 18 JUNHO 2014
-          .project-share.div-share2
-            img.img-share alt="53a015970b65bf5f0c0f9c33_fb-bt.png" src="https://daks2k3a4ib2z.cloudfront.net/5460f4b273582afc3085d4ec/53a015970b65bf5f0c0f9c33_fb-bt.png" /
-            a.alt-link.alt-link-fb href="#"  Compartilhe
-            img.img-share alt="53a0179096ff9bc11fe1acb4_share-bubble.png" src="https://daks2k3a4ib2z.cloudfront.net/5460f4b273582afc3085d4ec/53a0179096ff9bc11fe1acb4_share-bubble.png" /
-            img.img-share.img-share-tweet alt="53a0165ae33e8a5d0c576cca_tweet-bt.png" src="https://daks2k3a4ib2z.cloudfront.net/5460f4b273582afc3085d4ec/53a0165ae33e8a5d0c576cca_tweet-bt.png" /
-            a.alt-link.alt-link-fb.alt-link-tweet href="#"  Tweet
-            img.img-share alt="53a0179096ff9bc11fe1acb4_share-bubble.png" src="https://daks2k3a4ib2z.cloudfront.net/5460f4b273582afc3085d4ec/53a0179096ff9bc11fe1acb4_share-bubble.png" /
-        .divider.u-marginbottom-30
-        .project-news.u-marginbottom-30
-          .w-row
-            .w-col.w-col-11
-              .fontsize-large.fontweight-semibold Porque tem que ter isso aqui
-            .w-col.w-col-1
-              a.btn.btn-small.btn-terciary.fa.fa-lg.fa-trash.btn-no-border href="#" 
-          .fontsize-small.fontcolor-secondary 18 JUNHO 2014
-          .project-share.div-share2
-            img.img-share alt="53a015970b65bf5f0c0f9c33_fb-bt.png" src="https://daks2k3a4ib2z.cloudfront.net/5460f4b273582afc3085d4ec/53a015970b65bf5f0c0f9c33_fb-bt.png" /
-            a.alt-link.alt-link-fb href="#"  Compartilhe
-            img.img-share alt="53a0179096ff9bc11fe1acb4_share-bubble.png" src="https://daks2k3a4ib2z.cloudfront.net/5460f4b273582afc3085d4ec/53a0179096ff9bc11fe1acb4_share-bubble.png" /
-            img.img-share.img-share-tweet alt="53a0165ae33e8a5d0c576cca_tweet-bt.png" src="https://daks2k3a4ib2z.cloudfront.net/5460f4b273582afc3085d4ec/53a0165ae33e8a5d0c576cca_tweet-bt.png" /
-            a.alt-link.alt-link-fb.alt-link-tweet href="#"  Tweet
-            img.img-share alt="53a0179096ff9bc11fe1acb4_share-bubble.png" src="https://daks2k3a4ib2z.cloudfront.net/5460f4b273582afc3085d4ec/53a0179096ff9bc11fe1acb4_share-bubble.png" /
+        - @project.posts.each do |post|
+          - if post.persisted?
+            .project-news.u-marginbottom-30
+              .w-row
+                .w-col.w-col-11
+                  .fontsize-large.fontweight-semibold= post.title
+                .w-col.w-col-1
+                  = link_to '', project_post_path(@project, post), class: 'btn btn-small btn-terciary fa fa-lg fa-trash btn-no-border', method: :delete
+              .fontsize-small.fontcolor-secondary= l(post.created_at, format: :posts)
+              .project-share.div-share2
+                - url = project_by_slug_url(@project.permalink, project_post_id: post.id, locale: I18n.locale, anchor: 'posts')
+                .w-col.w-col-3
+                  .twitter_share= render_twitter text: "#{post.title}", url: url
+                .w-col.w-col-3
+                  .facebook_share= render_facebook_share href: url, width: '360'                
+                /img.img-share alt="53a015970b65bf5f0c0f9c33_fb-bt.png" src="https://daks2k3a4ib2z.cloudfront.net/5460f4b273582afc3085d4ec/53a015970b65bf5f0c0f9c33_fb-bt.png" /
+                /a.alt-link.alt-link-fb href="#"  Compartilhe
+                /img.img-share alt="53a0179096ff9bc11fe1acb4_share-bubble.png" src="https://daks2k3a4ib2z.cloudfront.net/5460f4b273582afc3085d4ec/53a0179096ff9bc11fe1acb4_share-bubble.png" /
+                /img.img-share.img-share-tweet alt="53a0165ae33e8a5d0c576cca_tweet-bt.png" src="https://daks2k3a4ib2z.cloudfront.net/5460f4b273582afc3085d4ec/53a0165ae33e8a5d0c576cca_tweet-bt.png" /
+                /a.alt-link.alt-link-fb.alt-link-tweet href="#"  Tweet
+                /img.img-share alt="53a0179096ff9bc11fe1acb4_share-bubble.png" src="https://daks2k3a4ib2z.cloudfront.net/5460f4b273582afc3085d4ec/53a0179096ff9bc11fe1acb4_share-bubble.png" /
+            .divider.u-marginbottom-30
+
       .w-col.w-col-4
         .w-hidden-main.w-hidden-medium.project-share
           .div-share-mobile-fb

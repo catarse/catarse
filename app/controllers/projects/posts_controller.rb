@@ -23,7 +23,10 @@ class Projects::PostsController < ApplicationController
 
   def destroy
     authorize resource
-    destroy!{ return index }
+    destroy! {
+      flash[:notice] = t('project.delete.posts')
+      return redirect_to edit_project_path(parent, anchor: 'posts')
+    }
   end
 
   def collection

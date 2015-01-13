@@ -154,6 +154,9 @@ pt:
   project:
     update:
       success: As informações foram atualizadas
+      failed: 'As informações não foram salvas, verifique se todos os campos foram preenchidos corretamente'
+    delete:
+      posts: 'Novidade apagada com sucesso'
     video_regex_validation: somente URLs do Vimeo são aceitas
   contribution:
     project_should_be_online: Você não pode apoiar um projeto que não está no ar
