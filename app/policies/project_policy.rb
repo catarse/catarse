@@ -34,12 +34,12 @@ class ProjectPolicy < ApplicationPolicy
 
       {project: p_attr.flatten}
     else
-      {project: [:about, :video_url, :uploaded_image, :headline, user_attributes]}
+      {project: [:about, :video_url, :uploaded_image, :headline, :budget, user_attributes]}
     end
   end
 
   def user_attributes
-    { user_attributes: [User.attr_accessible[:default].to_a.map(&:to_sym), :id] }
+    { user_attributes: [User.attr_accessible[:default].to_a.map(&:to_sym), :id, bank_account_attributes: [:id, :bank_id, :agency, :agency_digit, :account, :account_digit, :owner_name, :owner_document]] }
   end
 end
 

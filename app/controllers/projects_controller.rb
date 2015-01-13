@@ -64,22 +64,21 @@ class ProjectsController < ApplicationController
       redirect_to project_by_slug_path(@project.permalink)
     else
       flash.now[:notice] = t('projects.send_to_analysis_error')
-      @user = resource.user
+      edit
       render :edit
     end
   end
 
   def publish
     authorize resource
-    u = resource.user
-    u.validating_for_approved_project = true
 
-    if u.valid? && resource.push_to_online
+    if resource.push_to_online
       flash[:notice] = t('projects.put_online')
       redirect_to project_by_slug_path(@project.permalink)
     else
-      flash[:alert] = u.errors.full_messages.to_sentence
-      redirect_to edit_project_path(@project, anchor: 'user_settings')
+      flash.now[:notice] = t('projects.put_online_error')
+      edit
+      render :edit
     end
   end
 
@@ -93,11 +92,7 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       format.html do
-        if resource.errors.present?
-          flash[:alert] = resource.display_errors
-        else
-          flash[:notice] = t('project.update.success')
-        end
+        flash[:notice] = t('project.update.success')
 
         if params[:anchor]
           redirect_to edit_project_path(@project, anchor: params[:anchor])

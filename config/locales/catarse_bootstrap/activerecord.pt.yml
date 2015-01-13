@@ -112,6 +112,8 @@ pt:
         contribution: "Erro ao salvar apoio"
         project:
           attributes:
+            video_url:
+              blank: 'O vídeo do projeto não pode ficar em branco'
             budget:
               blank: 'O orçamento do projeto não pode ficar em branco'
             uploaded_image:

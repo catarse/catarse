@@ -8,9 +8,10 @@ nav.dashboard-nav
       div class="w-col #{(@project.online? || @project.failed? || @project.successful?) ? 'w-col-12' : 'w-col-9'}"
         = link_to '#home', id: 'dashboard_home_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_home', tab_group: 'edit'} do
           | &nbsp;&nbsp;Início
-        = link_to '#basics', id: 'basics_link', class: 'dashboard-nav-link ' , data: {target: '#project_basics', tab_group: 'edit'} do
-          = @project.decorate.status_icon_for('basics')
-          | &nbsp;&nbsp;Básico
+        - if @project.draft? || @project.in_analysis? || @project.rejected?
+          = link_to '#basics', id: 'basics_link', class: 'dashboard-nav-link ' , data: {target: '#project_basics', tab_group: 'edit'} do
+            = @project.decorate.status_icon_for('basics')
+            | &nbsp;&nbsp;Básico
         = link_to '#project', id: 'dashboard_project_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_project', tab_group: 'edit'} do
           = @project.decorate.status_icon_for('project')
           | &nbsp;&nbsp;Projeto
@@ -47,8 +48,9 @@ section.section
       article
         #dashboard_home.content.w-hidden
           = render 'dashboard_home'
-        #project_basics.content.w-hidden
-          = render 'project_basics'
+        - if @project.draft? || @project.in_analysis? || @project.rejected?
+          #project_basics.content.w-hidden
+            = render 'project_basics'
         #dashboard_project.content.w-hidden
           = render 'dashboard_project'
         #dashboard_posts.content.w-hidden

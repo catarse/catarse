@@ -12,7 +12,7 @@ App.addChild('ProjectEdit', _.extend({
     this.route('edit');
     this.route('user_settings');
 
-    if(this.$('.dashboard-nav-link.selected').length < 1) {
+    if(this.$('.dashboard-nav-link.selected').length < 1 &&  window.location.hash == '') {
       window.location.hash = 'home'
     }
   },
@@ -50,7 +50,44 @@ App.addChild('ProjectSendToAnalysis', _.extend({
     this.route('edit');
     this.route('user_settings');
 
-    if(this.$('.dashboard-nav-link.selected').length < 1) {
+    if(this.$('.dashboard-nav-link.selected').length < 1 && window.location.hash == '') {
+      window.location.hash = 'home'
+    }
+  },
+
+  followRoute: function(name){
+    var $tab = this.$('nav a[href="' + window.location.hash + '"]');
+    if($tab.length > 0){
+      this.onTabClick({ currentTarget: $tab });
+    }
+  },
+
+  loadEmbed: function() {
+    var that = this;
+
+    if(this.$embed.find('.loader').length > 0) {
+      $.get(this.$embed.data('path')).success(function(data){
+        that.$embed.html(data);
+      });
+    }
+  }
+}, Skull.Tabs));
+
+App.addChild('ProjectPublish', _.extend({
+  el: '.content[data-action="publish"][data-controller-name="projects"]',
+
+  activate: function(){
+    this.route('basics');
+    this.route('home');
+    this.route('project');
+    this.route('posts');
+    this.route('reward');
+    this.route('user_about');
+    this.route('preview');
+    this.route('edit');
+    this.route('user_settings');
+
+    if(this.$('.dashboard-nav-link.selected').length < 1 && window.location.hash == '') {
       window.location.hash = 'home'
     }
   },

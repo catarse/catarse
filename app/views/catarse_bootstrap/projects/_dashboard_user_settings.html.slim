@@ -10,8 +10,7 @@
           | e mãos a obra!
       .w-col.w-col-2.fontcolor-terciary
 
-= simple_form_for @user, html: { class: 'w-form' } do |f|
-  = hidden_field_tag :project_id, @project.id
+= simple_form_for @project, html: { id: 'user_form', class: 'w-form' } do |f|
   = hidden_field_tag :anchor, 'user_settings'
   = f.simple_fields_for :user do |form|
     .section
