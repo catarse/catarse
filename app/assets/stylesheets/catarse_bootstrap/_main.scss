@@ -1336,7 +1336,8 @@ p {
   background-color: white;
 }
 .card-project-description {
-  padding: 8px;
+  height: 155px;
+  padding: 13px 14px 20px;
 }
 .card-project-description._1 {
   padding-right: 12px;
@@ -1364,9 +1365,9 @@ p {
   margin-left: 5px;
 }
 .meter {
-  height: 12px;
+  height: 11px;
   margin-top: 5px;
-  margin-bottom: 5px;
+  margin-bottom: 0px;
   border: 1px solid #ddd;
   border-radius: 5px;
   background-color: white;
@@ -1414,9 +1415,9 @@ p {
   float: right;
 }
 .card-project-stats {
-  height: 90px;
-  padding: 13px;
-  border-top: 1px solid #ddd;
+  height: 54px;
+  padding: 3px 13px 13px;
+  border-top: 1px none #ddd;
   background-color: #f1f4f4;
 }
 .card-project-stats._1 {
@@ -2201,8 +2202,9 @@ p {
   color: white;
 }
 .card-waiting {
-  border: 1px solid #faf64d;
-  background-color: #faf64d;
+  border: 1px solid #bdbb46;
+  background-color: #bdbb46;
+  color: white;
 }
 .card-dark {
   border: 1px solid #3f4752;
@@ -2565,6 +2567,29 @@ p {
   line-height: 150%;
   list-style-type: none;
 }
+.card-project-meter {
+  height: 28px;
+  padding-top: 10px;
+  padding-right: 13px;
+  padding-left: 13px;
+  background-color: #f1f4f4;
+}
+.card-project-meter.funded {
+  padding-top: 4px;
+  background-color: #00b22d;
+  color: white;
+  font-size: 14px;
+}
+.card-project-meter.not-funded {
+  padding-top: 4px;
+  background-color: #79808b;
+  color: white;
+}
+.card-project-meter.waiting {
+  padding-top: 4px;
+  background-color: #bdbb46;
+  color: white;
+}
 html.w-mod-js *[data-ix="fade-in"] {
   opacity: 0;
 }
@@ -2895,6 +2920,9 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     padding-right: 24px;
     padding-left: 24px;
   }
+  .card-project-meter.funded {
+    font-size: 13px;
+  }
 }
 @media (max-width: 767px) {
   h2 {
@@ -3110,7 +3138,8 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
   }
   .card-project-description {
     display: block;
-    padding-left: 238px;
+    height: 50px;
+    padding-bottom: 0px;
   }
   .card-project-description._3 {
     height: 45px;
@@ -3132,7 +3161,8 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     clear: none;
   }
   .card-project-stats {
-    height: 87px;
+    height: 57px;
+    padding-top: 8px;
     padding-bottom: 0px;
     text-align: left;
   }
@@ -3325,6 +3355,17 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     background-color: white;
     box-shadow: rgba(63, 71, 82, 0.52) 0px -2px 12px -3px;
     text-align: left;
+  }
+  .card-project-meter.funded {
+    text-align: center;
+  }
+  .card-project-meter.not-funded {
+    font-size: 13px;
+    text-align: center;
+  }
+  .card-project-meter.waiting {
+    font-size: 13px;
+    text-align: center;
   }
 }
 @media (max-width: 479px) {
@@ -3522,7 +3563,7 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     margin-right: 16%;
   }
   .card-project-stats {
-    height: 85px;
+    height: 55px;
     padding-bottom: 0px;
     padding-left: 8px;
     border-top-style: none;
