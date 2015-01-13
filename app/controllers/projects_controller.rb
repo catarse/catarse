@@ -60,7 +60,7 @@ class ProjectsController < ApplicationController
         resource.update_attribute :referal_link, referal_link
       end
       flash[:notice] = t('projects.send_to_analysis')
-      redirect_to project_by_slug_path(@project.permalink)
+      redirect_to edit_project_path(@project, anchor: 'home')
     else
       flash.now[:notice] = t('projects.send_to_analysis_error')
       edit
@@ -73,7 +73,7 @@ class ProjectsController < ApplicationController
 
     if resource.push_to_online
       flash[:notice] = t('projects.put_online')
-      redirect_to project_by_slug_path(@project.permalink)
+      redirect_to edit_project_path(@project, anchor: 'home')
     else
       flash.now[:notice] = t('projects.put_online_error')
       edit
