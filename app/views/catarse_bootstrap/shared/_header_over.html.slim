@@ -1,0 +1,32 @@
+.main-header.overlayer
+  .w-row
+    .w-col.w-col-8.w-col-small-6.w-col-tiny-6.w-clearfix
+      = link_to (image_tag "catarse_bootstrap/logo_small.png"), root_path, class: 'header-logo w-nav-brand', :title => CatarseSettings[:company_name]
+      = yield :header_controls
+    .w-col.w-col-4.w-col-small-6.w-col-tiny-6.w-clearfix
+      - if current_user
+        .w-dropdown.user-profile
+          = link_to '#', id: 'user-menu', class: 'w-dropdown-toggle dropdown-toggle' do
+            = image_tag(current_user.display_image, :size => "40x40", class: 'user-avatar')
+            .w-icon-dropdown-toggle.dropdown-icon.positive
+          nav.w-dropdown-list.dropdown-list.user-menu
+            = link_to t('layouts.header.profile'), current_user, class: 'w-dropdown-link dropdown-link fontsize-smaller'
+            = link_to t('layouts.user.my_contributions'), user_path(current_user, anchor: 'contributions'), class: 'w-dropdown-link dropdown-link fontsize-smaller'
+            - if current_user.project_owner?
+              = link_to t('.projects'), user_path(current_user, anchor: 'projects'), class: 'w-dropdown-link dropdown-link fontsize-smaller'
+            = link_to user_path(current_user, anchor: 'credits'), class: 'w-dropdown-link dropdown-link fontsize-smaller' do
+              = t('layouts.user.my_credits')
+              .fontsize-smallest.text-success
+                | (#{current_user.display_credits})
+            = link_to t('layouts.user.refund_link'), user_path(current_user, anchor: 'credits'), class: 'w-dropdown-link dropdown-link fontsize-smaller'
+            - if current_user.admin? || current_user.channel
+              .divider
+              - for menu, path in controller.menu do
+                = link_to menu, path, class: 'w-dropdown-link dropdown-link fontsize-smaller'
+            .divider
+            = link_to t('layouts.user.logout'), destroy_user_session_path, method: :delete, class: 'w-dropdown-link dropdown-link fontsize-smaller'
+      - else
+        = link_to t('layouts.header.signin'), new_user_session_path, class: 'w-nav-link header-link w-nav-link btn-edit u-right'
+
+      = link_to t('layouts.header.help'), CatarseSettings[:support_forum], target: :_blank, class: 'w-nav-link w-hidden-small w-hidden-tiny header-link w-nav-link u-right',  id: 'guidelines_header_modal' if CatarseSettings[:support_forum].present?
+
