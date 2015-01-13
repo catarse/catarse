@@ -64,7 +64,7 @@ class ProjectsController < ApplicationController
     else
       flash.now[:notice] = t('projects.send_to_analysis_error')
       edit
-      render :edit, layout: 'catarse_bootstrap'
+      render :edit
     end
   end
 
@@ -77,7 +77,7 @@ class ProjectsController < ApplicationController
     else
       flash.now[:notice] = t('projects.put_online_error')
       edit
-      render :edit, layout: 'catarse_bootstrap'
+      render :edit
     end
   end
 
@@ -152,6 +152,6 @@ class ProjectsController < ApplicationController
   end
 
   def use_catarse_boostrap
-    ["edit", "new", "create", "show", "about_mobile"].include?(action_name) ? 'catarse_bootstrap' : 'application'
+    ["edit", "new", "create", "show", "about_mobile", 'send_to_analysis', 'publish', 'update'].include?(action_name) ? 'catarse_bootstrap' : 'application'
   end
 end
