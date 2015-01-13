@@ -27,12 +27,13 @@ class Project < ActiveRecord::Base
   has_one :project_total
   has_many :rewards
   has_many :contributions
-  has_many :posts, class_name: "ProjectPost"
+  has_many :posts, class_name: "ProjectPost", inverse_of: :project
   has_many :unsubscribes
 
   accepts_nested_attributes_for :rewards
   accepts_nested_attributes_for :channels
   accepts_nested_attributes_for :user
+  accepts_nested_attributes_for :posts, allow_destroy: true#, reject_if: ->(x) { x[:title].blank? || x[:comment].blank? }
 
   catarse_auto_html_for field: :about, video_width: 600, video_height: 403
 

@@ -85,20 +85,18 @@ class ProjectsController < ApplicationController
     authorize resource
 
     resource.attributes = permitted_params[:project]
-    resource.save(validate: false)
-
     @user = resource.user
 
-    respond_to do |format|
-      format.html do
-        flash[:notice] = t('project.update.success')
+    if resource.save(validate: (resource.online? || resource.failed? || resource.successful? ? true : false))
+      flash[:notice] = t('project.update.success')
+    else
+      flash[:notice] = t('project.update.failed')
+    end
 
-        if params[:anchor]
-          redirect_to edit_project_path(@project, anchor: params[:anchor])
-        else
-          redirect_to edit_project_path(@project, anchor: 'home')
-        end
-      end
+    if params[:anchor]
+      redirect_to edit_project_path(@project, anchor: params[:anchor])
+    else
+      redirect_to edit_project_path(@project, anchor: 'home')
     end
   end
 
