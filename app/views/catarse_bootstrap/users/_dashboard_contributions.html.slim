@@ -9,7 +9,7 @@
   .w-col.w-col-3
     .fontsize-small.fontweight-semibold Estimativa de entrega
 
-- resource.contributions.for_successful_projects.each do |contribution|
+- resource.contributions.for_successful_projects.ordered.each do |contribution|
   - project = contribution.project
   .w-row.card
     .w-col.w-col-3
@@ -47,7 +47,7 @@
     .w-col.w-col-3
       .fontsize-small.fontweight-semibold
         | Status do projeto
-  - resource.contributions.for_successful_projects.each do |contribution|
+  - resource.contributions.for_failed_projects.ordered.each do |contribution|
     - project = contribution.project
     .w-row.card
       .w-col.w-col-3

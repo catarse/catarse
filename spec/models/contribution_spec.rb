@@ -42,7 +42,7 @@ RSpec.describe Contribution, type: :model do
       create(:contribution, value: 100, state: 'pending', project: project)
     end
 
-    it { is_expected.to have(3).itens }
+    it { is_expected.to have(2).itens }
   end
 
   describe '.for_failed_projects' do
