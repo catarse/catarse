@@ -25,9 +25,7 @@
         .w-col.w-col-2.w-col-small-6.w-col-tiny-6
           = link_to 'Ver todos', explore_path(ref: 'home_near', anchor: "near_of/" ) + current_user.address_state, class: 'btn btn-small btn-terciary'
       .w-row
-        - @projects_near.each do |project|
-          .w-col.w-col-4
-            = render 'projects/card', :'@project' => project, ref: 'home_near'        
+        == render_projects @projects_near, 'home_near', { wrapper_class: 'w-col w-col-4' }
 
 .section.u-marginbottom-40
   .w-container
@@ -39,9 +37,7 @@
       .w-col.w-col-2.w-col-small-6.w-col-tiny-6
         = link_to 'Ver todos', explore_path(ref: :home_recommended, anchor: :recommended), class: 'btn btn-small btn-terciary'
     .w-row
-      - @recommends.each do |project|
-        .w-col.w-col-4
-          = render 'projects/card', :'@project' => project, ref: 'home_recommended'
+      == render_projects @recommends, 'home_recommended', { wrapper_class: 'w-col w-col-4' }
 
 .section.u-marginbottom-40
   .w-container
@@ -53,9 +49,7 @@
       .w-col.w-col-2.w-col-small-6.w-col-tiny-6
         = link_to 'Ver todos', explore_path(ref: :home_expiring, anchor: :expiring), class: 'btn btn-small btn-terciary'
     .w-row
-      - @expiring.each do |project|
-        .w-col.w-col-4
-          = render 'projects/card', :'@project' => project, ref: 'home_expiring'
+      == render_projects @expiring, 'home_expiring', { wrapper_class: 'w-col w-col-4' }
 
 .section.u-marginbottom-40.recent-projects
   .w-container
@@ -67,9 +61,7 @@
       .w-col.w-col-2.w-col-small-6.w-col-tiny-6
         = link_to 'Ver todos', explore_path(ref: :home_recent, anchor: :recent), class: 'btn btn-small btn-terciary'
     .w-row
-      - @recent.each do |project|
-        .w-col.w-col-4
-          = render 'projects/card', :'@project' => project, ref: 'home_recent'
+      == render_projects @recent, 'home_recent', { wrapper_class: 'w-col w-col-4' }
 
 .section.section-gray-one
   .w-container

@@ -26,8 +26,8 @@ class ApplicationController < ActionController::Base
     session[:referal_link]
   end
 
-  def render_projects collection, ref
-    render_to_string partial: 'projects/project', collection: collection, locals: {ref: ref}
+  def render_projects collection, ref, locals = {}
+    render_to_string partial: 'projects/card', collection: collection, locals: {ref: ref}.merge!(locals)
   end
 
   def should_show_beta_banner?
