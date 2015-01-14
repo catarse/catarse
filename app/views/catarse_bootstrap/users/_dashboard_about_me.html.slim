@@ -36,15 +36,19 @@
                   label.field-label.fontsize-smallest.fontcolor-secondary   Cole o link do seu perfil
                 .w-col.w-col-7
                   = form.input_field :twitter, as: :string, class: 'positive'
+
           .w-form.card.card-terciary.u-marginbottom-30
               .w-row.u-marginbottom-10
                 .w-col.w-col-5.w-sub-col
-                  label.field-label.fontweight-semibold   Página na internet
-                  label.field-label.fontsize-smallest.fontcolor-secondary   Inclua links que ajudem os apoiadores a saber mais sobre você e suas qualificações para executar o projeto.&nbsp;
+                  label.field-label.fontweight-semibold for="name-8"  Página na internet
+                  label.field-label.fontsize-smallest.fontcolor-secondary for="name-8"  Inclua links que ajudem os apoiadores a saber mais sobre você e suas qualificações para executar o projeto.&nbsp;
                 .w-col.w-col-7
-                  .w-row
-                    .w-col.w-col-12
-                      = form.input_field :other_link, as: :string, class: 'positive'
+                  #links
+                    = form.simple_fields_for :links do |link_form|
+                      = render partial: 'link_fields', locals: { f: link_form, parent_form: form }
+
+                    = link_to_add_association " . ", form, :links, :'data-association-insertion-method' => :after, class: 'w-hidden user-links'                  
+
   div
     .w-container
       .w-row

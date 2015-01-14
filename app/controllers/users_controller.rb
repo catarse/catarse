@@ -56,6 +56,7 @@ class UsersController < ApplicationController
 
   def edit
     authorize resource
+    resource.links.build
   end
 
   def update
