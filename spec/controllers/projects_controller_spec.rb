@@ -11,7 +11,7 @@ RSpec.describe ProjectsController, type: :controller do
   let(:current_user){ nil }
 
   describe "POST create" do
-    let(:project){ build(:project) }
+    let(:project){ build(:project, state: 'draft') }
     before do
       post :create, { locale: :pt, project: project.attributes }
     end
