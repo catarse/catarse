@@ -122,61 +122,31 @@ RSpec.describe Contribution::PaymentEngineHandler, type: :model do
   end
 
   describe "#update_user_billing_info" do
+    let(:user) { contribution.user }
     let(:contribution) { create(:contribution) }
     let(:contribution_attributes) {
       {
-        country_id: contribution.country_id,
-        address_street: contribution.address_street,
-        address_number: contribution.address_number,
-        address_complement: contribution.address_complement,
-        address_neighbourhood: contribution.address_neighbourhood,
-        address_zip_code: contribution.address_zip_code,
-        address_city: contribution.address_city,
-        address_state: contribution.address_state,
-        phone_number: contribution.address_phone_number,
-        cpf: contribution.payer_document,
-        full_name: contribution.payer_name || user.full_name
+        country_id: (contribution.country_id || user.country_id),
+        address_street: (contribution.address_street || user.address_street),
+        address_number: (contribution.address_number || user.address_number),
+        address_complement: (contribution.address_complement || user.address_complement),
+        address_neighbourhood: (contribution.address_neighbourhood || user.address_neighbourhood),
+        address_zip_code: (contribution.address_zip_code || user.address_zip_code),
+        address_city: (contribution.address_city || user.address_city),
+        address_state: (contribution.address_state || user.address_state),
+        phone_number: (contribution.address_phone_number || user.phone_number),
+        cpf: (contribution.payer_document || user.cpf),
+        full_name: (contribution.payer_name || user.full_name)
       }
     }
-    context "when cpf on contribution is not null" do
-      let(:user) { contribution.user }
-      let(:contribution_attributes) {
-        {
-          country_id: contribution.country_id,
-          address_street: contribution.address_street,
-          address_number: contribution.address_number,
-          address_complement: contribution.address_complement,
-          address_neighbourhood: contribution.address_neighbourhood,
-          address_zip_code: contribution.address_zip_code,
-          address_city: contribution.address_city,
-          address_state: contribution.address_state,
-          phone_number: contribution.address_phone_number,
-          cpf: contribution.payer_document,
-          full_name: contribution.payer_name || user.full_name
-        }
-      }
 
-      before do
-        contribution.update_attributes payer_document: '123'
-        contribution.reload
-        expect(user).to receive(:update_attributes).with(contribution_attributes)
-      end
-
-      it("should update user billing info attributes") { contribution.update_user_billing_info}
+    before do
+      contribution.update_attributes payer_document: '123'
+      contribution.reload
+      expect(user).to receive(:update_attributes).with(contribution_attributes)
     end
 
-    context "when cpf on contributions is null" do
-      let(:contribution) { create(:contribution, payer_document: '') }
-      let(:user) { contribution.user }
-
-      before do
-        user.update_column :cpf, '000'
-        user.reload
-        expect(user).to receive(:update_attributes).with(contribution_attributes.merge!({cpf: user.cpf}))
-      end
-
-      it("should update user billing info attributes") { contribution.update_user_billing_info }
-    end
+    it("should update user billing info attributes") { contribution.update_user_billing_info}
   end
 
 end

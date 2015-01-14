@@ -61,14 +61,11 @@ class UsersController < ApplicationController
         flash[:notice] = t('users.current_user_fields.updated')
       end
       failure.html do
-        flash[:error] = @user.errors.full_messages.to_sentence
+        flash[:alert] = @user.errors.full_messages.to_sentence
       end
     end
-    if params[:project_id]#comes from dashboard
-      return redirect_to edit_project_path(params[:project_id], anchor: 'user_about')
-    else
-      return redirect_to user_path(@user, anchor: 'settings')
-    end
+
+    redirect_to user_path(@user, anchor: 'settings')
   end
 
   def update_password

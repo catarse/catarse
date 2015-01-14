@@ -1,14 +1,21 @@
 App.addChild('ProjectEdit', _.extend({
-  el: '.content[data-action="edit"][data-controller-name="projects"]',
+  el: '.project-dashboard-edit',
 
   activate: function(){
     this.route('basics');
     this.route('home');
     this.route('project');
+    this.route('posts');
     this.route('reward');
     this.route('user_about');
     this.route('preview');
     this.route('edit');
+    this.route('user_settings');
+    this.route('reports')
+
+    if(this.$('.dashboard-nav-link.selected').length < 1 &&  window.location.hash == '') {
+      window.location.hash = 'home'
+    }
   },
 
   followRoute: function(name){
@@ -28,4 +35,3 @@ App.addChild('ProjectEdit', _.extend({
     }
   }
 }, Skull.Tabs));
-
