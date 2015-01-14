@@ -37,6 +37,8 @@
           #dashboard_contributions.content.w-hidden
             = render 'dashboard_contributions'
           #dashboard_projects.content.w-hidden
+            .w-row
+              == render_projects resource.projects, 'profile_dashboard_created_projects', { wrapper_class: 'w-col w-col-4 u-marginbottom-40' }
           #dashboard_about_me.content.w-hidden
           #dashboard_settings.content.w-hidden
           #dashboard_credit_cards.content.w-hidden
