@@ -23,11 +23,11 @@
 
       = link_to '#settings', id: 'dashboard_settings_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_settings' } do
         | Conta
-
-      = link_to '#credit_cards', id: 'dashboard_credit_cards_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_credit_cards' } do
+      
+      /= link_to '#credit_cards', id: 'dashboard_credit_cards_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_credit_cards' } do
         | Cartões de crédito
 
-      = link_to user_path(resource), id: 'dashboard_credit_cards_link', class: 'dashboard-nav-link u-right-big-only' do
+      /= link_to user_path(resource), id: 'dashboard_credit_cards_link', class: 'dashboard-nav-link u-right-big-only' do
         | Ir para o perfil público
 
   section.section-one-column
@@ -40,5 +40,6 @@
             .w-row
               == render_projects resource.projects, 'profile_dashboard_created_projects', { wrapper_class: 'w-col w-col-4 u-marginbottom-40' }
           #dashboard_about_me.content.w-hidden
-          #dashboard_settings.content.w-hidden
-          #dashboard_credit_cards.content.w-hidden
+            = render 'dashboard_about_me'
+          /#dashboard_settings.content.w-hidden
+          /#dashboard_credit_cards.content.w-hidden
