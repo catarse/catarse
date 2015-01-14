@@ -553,8 +553,7 @@ RSpec.describe Project, type: :model do
     context "when we have an online_date" do
       let(:project){ create(:project, online_date: Time.zone.now, online_days: 2)}
       before{project.save!}
-      #it{ is_expected.to eq(Time.zone.tomorrow.end_of_day.to_s(:db)) }
-      it{ is_expected.to eq(Time.zone.now + 2.days) }
+      it{ is_expected.to eq(Time.zone.tomorrow.end_of_day.to_s(:db)) }
     end
   end
 
