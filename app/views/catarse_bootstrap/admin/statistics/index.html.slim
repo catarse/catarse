@@ -1,8 +1,8 @@
 = javascript_include_tag "//www.google.com/jsapi", "chartkick"
 = render 'shared/header_big'
-.row.admin
+.w-row.admin
   h1= @title = t('.title')
-.row
+.w-row
   table.no-bottom
     thead
       tr
@@ -24,7 +24,7 @@
         td= statistics.total_projects
         td= statistics.total_projects_success
         td= statistics.total_projects_online
-.row
+.w-row
   h1= t('admin.statistics.projects_in_analysis_by_week.title')
   = line_chart ProjectsInAnalysisByPeriod.chart
   h1= t('admin.statistics.contributions_by_week.title')
