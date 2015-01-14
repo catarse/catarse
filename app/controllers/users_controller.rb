@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   after_filter :verify_authorized, except: %i[reactivate]
   inherit_resources
   defaults finder: :find_active!
-  actions :show, :update, :update_password, :unsubscribe_notifications, :credits, :destroy
+  actions :show, :update, :update_password, :unsubscribe_notifications, :credits, :destroy, :edit
   respond_to :json, only: [:contributions, :projects]
 
   def destroy
@@ -54,6 +54,10 @@ class UsersController < ApplicationController
     redirect_to root_path
   end
 
+  def edit
+    authorize resource
+  end
+
   def update
     authorize resource
     update! do |success,failure|
@@ -88,5 +92,9 @@ class UsersController < ApplicationController
 
   def permitted_params
     params.permit(policy(resource).permitted_attributes)
+  end
+
+  def use_catarse_boostrap
+    ["edit"].include?(action_name) ? 'catarse_bootstrap' : 'application'
   end
 end
