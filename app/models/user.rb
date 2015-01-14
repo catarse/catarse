@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
     :image_url, :uploaded_image, :bio, :newsletter, :full_name, :address_street, :address_number,
     :address_complement, :address_neighbourhood, :address_city, :address_state, :address_zip_code, :phone_number,
     :cpf, :state_inscription, :locale, :twitter, :facebook_link, :other_link, :moip_login, :deactivated_at, :reactivate_token,
-    :bank_account_attributes, :country_id, :zero_credits
+    :bank_account_attributes, :country_id, :zero_credits, :links_attributes
 
   mount_uploader :uploaded_image, UserUploader
 
@@ -51,6 +51,7 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :unsubscribes, allow_destroy: true rescue puts "No association found for name 'unsubscribes'. Has it been defined yet?"
   accepts_nested_attributes_for :bank_account, allow_destroy: true
+  accepts_nested_attributes_for :links, allow_destroy: true, reject_if: ->(x) { x['link'].blank? }
 
   scope :active, ->{ where('deactivated_at IS NULL') }
   scope :with_user_totals, -> {

@@ -2,11 +2,19 @@ App.addChild('UserEdit', _.extend({
   el: '.user-dashboard-edit',
 
   activate: function(){
+    var that = this;
+
     this.route('contributions');
     this.route('projects');
     this.route('about_me');
     this.route('settings');
     this.route('credit_cards');
+
+
+    this.nestedLinksSetup();
+    this.$('#links').on('cocoon:after-insert', function(e, insertedItem) {
+      that.nestedLinksSetup();
+    });
   },
 
   followRoute: function(name){
@@ -24,6 +32,14 @@ App.addChild('UserEdit', _.extend({
         that.$embed.html(data);
       });
     }
+  },
+
+  nestedLinksSetup: function() {
+    var that = this;
+    this.$('a.add-user-link').unbind('click');
+    this.$('a.add-user-link').bind('click', function(event) {
+      that.$('a.user-links.add_fields').trigger('click');
+    });
   }
 }, Skull.Tabs));
 
