@@ -27,7 +27,7 @@
       /= link_to '#credit_cards', id: 'dashboard_credit_cards_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_credit_cards' } do
         | Cartões de crédito
 
-      /= link_to user_path(resource), id: 'dashboard_credit_cards_link', class: 'dashboard-nav-link u-right-big-only' do
+      = link_to user_path(resource), class: 'dashboard-nav-link u-right-big-only' do
         | Ir para o perfil público
 
   section.section-one-column
