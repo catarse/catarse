@@ -551,9 +551,9 @@ RSpec.describe Project, type: :model do
       it{ is_expected.to be_nil }
     end
     context "when we have an online_date" do
-      let(:project){ create(:project, online_date: Time.zone.now, online_days: 2)}
+      let(:project){ create(:project, online_date: Time.zone.now, online_days: 1)}
       before{project.save!}
-      it{ is_expected.to eq(Time.zone.tomorrow.end_of_day.to_s(:db)) }
+      it{ expect(subject.to_s(:simple)).to eq(Time.zone.tomorrow.end_of_day.to_s(:simple)) }
     end
   end
 
