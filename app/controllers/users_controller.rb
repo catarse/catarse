@@ -68,10 +68,11 @@ class UsersController < ApplicationController
         flash[:error] = @user.errors.full_messages.to_sentence
       end
     end
+
     if params[:project_id]#comes from dashboard
       return redirect_to edit_project_path(params[:project_id], anchor: 'user_about')
     else
-      return redirect_to user_path(@user, anchor: 'settings')
+      return redirect_to edit_user_path(@user, anchor: params[:anchor])
     end
   end
 
