@@ -23,7 +23,7 @@ RSpec.describe "Projects", type: :feature do
     end
 
     it "should show recent projects" do
-      recent = all(".recents_projects.list .project-box")
+      recent = all(".recent-projects .card-project")
       expect(recent.size).to eq(1)
     end
   end

@@ -32,12 +32,11 @@ pt:
       display_status:
         expired: "finalizado"
         rejected: "rejeitado"
-        failed: "não financiado"
-        successful: financiado
+        failed: "Não-financiado"
+        successful: "Bem-sucedido"
         approved: aprovado
         reached_goal: financiado
-        waiting_confirmation: aguardando
-        waiting_funds: aguardando
+        waiting_funds: "Aguardando boletos"
         not_reached_goal: aguardando
         draft: "rascunho"
         in_analysis: "em análise"
