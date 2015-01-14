@@ -1,0 +1,30 @@
+App.addChild('UserEdit', _.extend({
+  el: '.user-dashboard-edit',
+
+  activate: function(){
+    this.route('contributions');
+    this.route('projects');
+    this.route('about_me');
+    this.route('settings');
+    this.route('credit_cards');
+  },
+
+  followRoute: function(name){
+    var $tab = this.$('nav a[href="' + window.location.hash + '"]');
+    if($tab.length > 0){
+      this.onTabClick({ currentTarget: $tab });
+    }
+  },
+
+  loadEmbed: function() {
+    var that = this;
+
+    if(this.$embed.find('.loader').length > 0) {
+      $.get(this.$embed.data('path')).success(function(data){
+        that.$embed.html(data);
+      });
+    }
+  }
+}, Skull.Tabs));
+
+

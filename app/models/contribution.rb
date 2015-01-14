@@ -64,6 +64,14 @@ class Contribution < ActiveRecord::Base
   # Contributions already refunded or with requested_refund should appear so that the user can see their status on the refunds list
   scope :can_refund, ->{ where("contributions.can_refund") }
 
+  scope :for_successful_projects, -> {
+    joins(project: [:project_total]).where("projects.goal >= project_totals.pledged").with_state(['confirmed', 'refunded', 'requested_refund', 'refunded_and_canceled'])
+  }
+
+  scope :for_failed_projects, -> {
+    joins(:project).merge(Project.with_state('failed')).with_state(['confirmed', 'refunded', 'requested_refund', 'refunded_and_canceled'])
+  }
+
   attr_protected :state, :user_id
 
   def self.between_values(start_at, ends_at)
