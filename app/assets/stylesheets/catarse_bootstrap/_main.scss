@@ -199,9 +199,6 @@ p {
 .text-field.text-field-creditcard:focus {
   border-color: #00b22d;
 }
-.text-field.text-field-creditcard.off {
-  opacity: 0;
-}
 .text-field.negative {
   display: block;
   margin-top: 0px;
@@ -1486,11 +1483,6 @@ p {
   margin-right: auto;
   margin-left: auto;
 }
-.back-payment-form-box-half {
-  display: inline-block;
-  width: 50%;
-  padding-right: 3%;
-}
 .back-payment-form-box-quarter {
   display: inline-block;
   width: 25%;
@@ -1503,59 +1495,17 @@ p {
 .formwrapper {
   margin-bottom: 20px;
 }
-.back-payment-button-next-step {
-  width: 50%;
-  margin: 40px auto;
-}
-.back-payment-step2 {
-  padding-top: 40px;
-}
 .back-payment-info-reward {
   margin-bottom: 35px;
 }
-.back-payment-terms-advice {
-  margin-top: 23px;
-  color: #79808b;
-  text-align: center;
-}
 .back-payment-reward-description {
   margin-top: -7px;
-}
-.back-payment-headline {
-  display: inline-block;
-  margin-bottom: 20px;
 }
 .back-payment-radio-button {
   margin-top: 12px;
 }
 .back-payment-moip-options {
   margin-bottom: 20px;
-}
-.back-payment-icon-lock {
-  margin-right: 5px;
-  margin-left: 20px;
-  padding-bottom: 6px;
-  opacity: 0.31;
-}
-.back-payment-safe-pay {
-  display: inline-block;
-  opacity: 0.49;
-  color: #79808b;
-  font-weight: 600;
-}
-.back-payment-safe-pay-text {
-  display: inline-block;
-}
-.back-payment-credit-card-brand {
-  position: relative;
-  left: -13px;
-  top: -38px;
-  display: inline;
-  margin-top: -10px;
-  float: right;
-  color: #79808b;
-  font-weight: 600;
-  text-align: right;
 }
 .project-admin-icon {
   position: relative;
@@ -1707,11 +1657,6 @@ p {
   display: inline-block;
   width: 28.2%;
 }
-.back-payment-credicard-radio-button {
-  display: block;
-  margin-right: 30px;
-  margin-bottom: -12px;
-}
 .back-payment-credit-card-radio-field {
   display: inline-block;
 }
@@ -1734,13 +1679,6 @@ p {
   border-color: #00b22d;
   background-color: rgba(241, 244, 244, 0.36);
 }
-.back-payment-creditcard-records-number {
-  display: inline-block;
-  float: none;
-  color: #3f4752;
-  font-weight: 600;
-  text-align: right;
-}
 .back-payment-creditcard-records-brand {
   display: inline-block;
   width: 91px;
@@ -1748,23 +1686,6 @@ p {
   float: none;
   color: #79808b;
   font-weight: 600;
-}
-.back-payment-creditcard-records-brand.on {
-  display: inline-block;
-  color: #00b22d;
-}
-.back-payment-creditcard-records-group {
-  margin-bottom: 50px;
-}
-.back-payment-credit-card-other {
-  display: inline-block;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  font-weight: 600;
-}
-.back-payment-save-card-box {
-  margin-top: 10px;
-  margin-bottom: 20px;
 }
 .footer-full-signature-text {
   margin-bottom: 20px;
@@ -1776,31 +1697,6 @@ p {
   padding-top: 25px;
   border-top: 1px solid rgba(121, 128, 139, 0.76);
   color: rgba(241, 244, 244, 0.54);
-}
-.dashboard-edit-divform40 {
-  display: inline-block;
-  width: 40%;
-  padding-right: 20px;
-  float: left;
-}
-.dashboard-edit-divformline {
-  position: relative;
-  margin-bottom: 20px;
-}
-.dashboard-edit-headline {
-  margin-bottom: 35px;
-}
-.dashboard-edit-form-info {
-  margin-bottom: 20px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid #ddd;
-}
-.dashboard-edit-format-tip-call {
-  position: absolute;
-  top: 60px;
-  right: 15px;
-  opacity: 0.65;
-  text-align: right;
 }
 .user-profile {
   position: relative;
@@ -2115,6 +2011,12 @@ p {
   margin-right: 10px;
   background-position: 0% 0%;
   background-size: 125px;
+}
+.thumb.big {
+  width: 140px;
+  height: 140px;
+  margin-right: auto;
+  margin-left: auto;
 }
 .card-reward {
   position: relative;
@@ -2469,6 +2371,7 @@ p {
 }
 .thumb-project {
   margin-right: 15px;
+  margin-bottom: 5px;
 }
 .table {
   width: 100%;
@@ -2527,13 +2430,6 @@ p {
   background-size: cover;
   color: white;
 }
-.thumb-post-blog {
-  height: 125px;
-  margin-bottom: 20px;
-  background-image: url('../images/hackbike-7406.jpg');
-  background-position: 0px 0px;
-  background-size: cover;
-}
 .whr-title {
   font-family: proxima-nova, sans-serif;
   color: #409bff;
@@ -2574,21 +2470,43 @@ p {
   padding-left: 13px;
   background-color: #f1f4f4;
 }
-.card-project-meter.funded {
+.card-project-meter.successful {
   padding-top: 4px;
   background-color: #00b22d;
   color: white;
   font-size: 14px;
 }
-.card-project-meter.not-funded {
+.card-project-meter.failed {
   padding-top: 4px;
   background-color: #79808b;
   color: white;
 }
-.card-project-meter.waiting {
+.card-project-meter.waiting_funds {
   padding-top: 4px;
   background-color: #bdbb46;
   color: white;
+}
+.hero-half {
+  height: 560px;
+  margin-top: -65px;
+  padding-top: 130px;
+}
+.hero-profile {
+  background-color: #3f4752;
+  color: white;
+}
+.hero-small {
+  margin-top: -65px;
+  padding-top: 110px;
+  padding-bottom: 50px;
+  background-color: #3f4752;
+  color: white;
+}
+.u-text-center-big-only {
+  text-align: center;
+}
+.u-right-big-only {
+  float: right;
 }
 html.w-mod-js *[data-ix="fade-in"] {
   opacity: 0;
@@ -2780,21 +2698,12 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
   .formwrapper {
     margin-bottom: 20px;
   }
-  .back-payment-button-next-step {
-    width: 65%;
-  }
   .dashboard-nav-link {
     font-size: 13px;
   }
   .dashboard-nav-link.off {
     margin-right: 12px;
     font-size: 13px;
-  }
-  .back-payment-credicard-radio-button {
-    margin-right: 14px;
-  }
-  .back-payment-creditcard-records-number {
-    margin-left: 15px;
   }
   .back-payment-creditcard-records-brand {
     width: 62px;
@@ -2895,9 +2804,6 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     border-color: #3cf;
     background-color: #3cf;
   }
-  .dashboard-nav {
-    margin-top: -3px;
-  }
   .nav-light {
     height: 39px;
   }
@@ -2920,7 +2826,7 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     padding-right: 24px;
     padding-left: 24px;
   }
-  .card-project-meter.funded {
+  .card-project-meter.successful {
     font-size: 13px;
   }
 }
@@ -3176,17 +3082,9 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     float: left;
     clear: none;
   }
-  .back-payment-form-box-half {
-    display: block;
-    width: 100%;
-    padding-right: 0px;
-  }
   .back-payment-form-box-quarter {
     width: 50%;
     padding-right: 0px;
-  }
-  .back-payment-form-box-quarter.last {
-    padding-left: 15px;
   }
   .back-payment-address-subtitle {
     color: #79808b;
@@ -3202,57 +3100,19 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     border-top-style: none;
     border-top-width: 0px;
   }
-  .back-payment-button-next-step {
-    width: 100%;
-    margin-top: 0px;
-    padding-top: 20px;
-    padding-right: 20%;
-    padding-left: 20%;
-    border-top: 1px solid #ddd;
-  }
   .back-payment-info-reward {
     margin-bottom: 19px;
-  }
-  .back-payment-terms-advice {
-    padding-right: 30px;
-    padding-left: 30px;
-  }
-  .back-payment-headline {
-    display: block;
-    color: #00b22d;
   }
   .back-payment-moip-options-column {
     display: block;
     margin-left: 0px;
     text-align: left;
   }
-  .back-payment-icon-lock {
-    -webkit-transform: scale(0.75);
-    -ms-transform: scale(0.75);
-    transform: scale(0.75);
-  }
-  .back-payment-safe-pay {
-    display: block;
-    margin-top: -20px;
-    margin-bottom: 17px;
-  }
   .dashboard-nav-link {
     padding: 4px 8px;
   }
   .back-payment-creditcard-records-brand {
     width: 71px;
-  }
-  .back-payment-creditcard-records-group {
-    margin-bottom: 10px;
-  }
-  .back-payment-save-card-box {
-    margin-bottom: 0px;
-    text-align: center;
-  }
-  .back-payment-save-card-checkbox {
-    margin-right: 10px;
-    margin-left: 0px;
-    float: none;
   }
   .footer-full-lastcolumn {
     left: 20px;
@@ -3321,7 +3181,6 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     background-color: #27bff2;
   }
   .dashboard-nav {
-    margin-top: 0px;
     padding-top: 5px;
     padding-bottom: 0px;
     text-align: center;
@@ -3356,16 +3215,29 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     box-shadow: rgba(63, 71, 82, 0.52) 0px -2px 12px -3px;
     text-align: left;
   }
-  .card-project-meter.funded {
+  .card-project-meter.successful {
     text-align: center;
   }
-  .card-project-meter.not-funded {
+  .card-project-meter.failed {
     font-size: 13px;
     text-align: center;
   }
-  .card-project-meter.waiting {
+  .card-project-meter.waiting_funds {
     font-size: 13px;
     text-align: center;
+  }
+  .hero-small {
+    padding-top: 90px;
+    padding-bottom: 30px;
+  }
+  .inline-block {
+    display: inline;
+  }
+  .u-text-center-big-only {
+    text-align: left;
+  }
+  .u-right-big-only {
+    float: none;
   }
 }
 @media (max-width: 479px) {
@@ -3387,9 +3259,6 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     width: 99.8%;
     margin: 10px auto;
     float: none;
-  }
-  .text-field.text-field-creditcard.off {
-    display: none;
   }
   .box-login {
     padding-right: 9px;
@@ -3578,64 +3447,17 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     border-bottom-style: none;
     border-bottom-width: 0px;
   }
-  .back-payment-button-next-step {
-    width: 100%;
-    margin-top: 0px;
-    padding-top: 20px;
-    padding-right: 6%;
-    padding-left: 6%;
-    border-top: 1px solid #ddd;
-  }
-  .back-payment-step2 {
-    padding-top: 20px;
-  }
-  .back-payment-terms-advice {
-    padding-right: 0px;
-    padding-left: 0px;
-  }
-  .back-payment-headline {
-    margin-bottom: 20px;
-    padding-right: 29px;
-    padding-left: 29px;
-    line-height: 20px;
-  }
   .back-payment-moip-options-column {
     padding-left: 30px;
     text-align: left;
-  }
-  .back-payment-safe-pay {
-    margin-top: -16px;
   }
   .dashboard-nav-link {
     margin-bottom: 3px;
     padding-bottom: 0px;
   }
-  .back-payment-creditcard-records-number {
-    margin-top: 6px;
-    margin-left: 8px;
-    float: none;
-    font-size: 13px;
-  }
   .back-payment-creditcard-records-brand {
     width: auto;
     font-size: 14px;
-  }
-  .back-payment-creditcard-records-brand.on {
-    width: auto;
-  }
-  .back-payment-save-card-box {
-    text-align: left;
-  }
-  .back-payment-save-card-checkbox {
-    display: inline-block;
-    float: left;
-    clear: none;
-  }
-  .back-payment-save-card-label {
-    display: inline;
-  }
-  .back-payment-save-card-field {
-    padding-left: 0px;
   }
   .footer-full-signature-text {
     margin-bottom: 10px;
@@ -3688,11 +3510,16 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
   .section-one-column {
     padding: 20px 12px 0px;
   }
+  .dashboard-nav {
+    padding-bottom: 5px;
+  }
   .card-project-author {
     height: 40px;
   }
   .fontsize-large-small-only {
     font-size: 18px;
   }
+  .hero-small {
+    padding-bottom: 20px;
+  }
 }
-
