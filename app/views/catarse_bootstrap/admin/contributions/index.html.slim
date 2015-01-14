@@ -56,7 +56,7 @@
             th= t('.state')
             th
         tbody
-          tr id=contribution.id class=cycle("card", "card card-secondary")
+          tr id=contribution.id
             td
               = link_to contribution.id, admin_contribution_path(contribution)
             td.project_info title=contribution.project.name
