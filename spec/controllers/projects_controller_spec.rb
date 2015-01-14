@@ -11,7 +11,7 @@ RSpec.describe ProjectsController, type: :controller do
   let(:current_user){ nil }
 
   describe "POST create" do
-    let(:project){ build(:project) }
+    let(:project){ build(:project, state: 'draft') }
     before do
       post :create, { locale: :pt, project: project.attributes }
     end
@@ -24,6 +24,29 @@ RSpec.describe ProjectsController, type: :controller do
       let(:current_user){ create(:user) }
       it{ is_expected.to redirect_to edit_project_path(Project.last, anchor: 'home') }
     end
+  end
+
+  describe "GET publish" do
+    let(:project){ create(:project, state: 'approved') }
+    let(:current_user) { project.user }
+
+    before do
+      current_user.update_attributes({
+        address_city: 'foo',
+        address_state: 'MG',
+        address_street: 'bar',
+        address_number: '123',
+        address_neighbourhood: 'MMs',
+        address_zip_code: '000000',
+        phone_number: '33344455333'
+      })
+      create(:reward, project: project)
+      create(:bank_account, user: current_user)
+      get :publish, id: project.id, locale: :pt
+      project.reload
+    end
+
+    it { expect(project.online?).to eq(true) }
   end
 
   describe "GET send_to_analysis" do

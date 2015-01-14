@@ -53,34 +53,50 @@ class ProjectsController < ApplicationController
 
   def send_to_analysis
     authorize resource
+    @user = resource.user
+
     if resource.send_to_analysis
       if referal_link.present?
         resource.update_attribute :referal_link, referal_link
       end
       flash[:notice] = t('projects.send_to_analysis')
-      redirect_to project_by_slug_path(@project.permalink)
-    else
-      flash[:notice] = t('projects.send_to_analysis_error')
       redirect_to edit_project_path(@project, anchor: 'home')
+    else
+      flash.now[:notice] = t('projects.send_to_analysis_error')
+      edit
+      render :edit
+    end
+  end
+
+  def publish
+    authorize resource
+
+    if resource.push_to_online
+      flash[:notice] = t('projects.put_online')
+      redirect_to edit_project_path(@project, anchor: 'home')
+    else
+      flash.now[:notice] = t('projects.put_online_error')
+      edit
+      render :edit
     end
   end
 
   def update
     authorize resource
-    update! do |format|
-      format.html do
-        if resource.errors.present?
-          flash[:alert] = resource.display_errors
-        else
-          flash[:notice] = t('project.update.success')
-        end
 
-        if params[:anchor]
-          redirect_to edit_project_path(@project, anchor: params[:anchor])
-        else
-          redirect_to edit_project_path(@project, anchor: 'home')
-        end
-      end
+    resource.attributes = permitted_params[:project]
+    @user = resource.user
+
+    if resource.save(validate: (resource.online? || resource.failed? || resource.successful? ? true : false))
+      flash[:notice] = t('project.update.success')
+    else
+      flash[:notice] = t('project.update.failed')
+    end
+
+    if params[:anchor]
+      redirect_to edit_project_path(@project, anchor: params[:anchor])
+    else
+      redirect_to edit_project_path(@project, anchor: 'home')
     end
   end
 
@@ -88,6 +104,8 @@ class ProjectsController < ApplicationController
     authorize resource
     @posts_count = resource.posts.count(:all)
     @user = resource.user
+    @user.build_bank_account unless @user.bank_account.present?
+    @post =  resource.posts.build
   end
 
   def fb_comments_link
@@ -136,6 +154,6 @@ class ProjectsController < ApplicationController
   end
 
   def use_catarse_boostrap
-    ['index', "edit", "new", "create", "show", "about_mobile"].include?(action_name) ? 'catarse_bootstrap' : 'application'
+    ['index', "edit", "new", "create", "show", "about_mobile", 'send_to_analysis', 'publish', 'update'].include?(action_name) ? 'catarse_bootstrap' : 'application'
   end
 end

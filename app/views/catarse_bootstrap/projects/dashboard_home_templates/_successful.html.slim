@@ -1,0 +1,52 @@
+.u-text-center
+  .w-container
+    .w-row
+      .w-col.w-col-2
+      .w-col.w-col-8
+        .fontsize-large.fontweight-semibold.u-marginbottom-10= "#{@project.user.display_name}, comemore que você merece!"
+        p.fontsize-base
+          | Seu projeto foi bem sucedido e agora é a hora de iniciar o trabalho de relacionamento com seus apoiadores! Prometeu? Cumpra!
+        .card.u-radius.u-marginbottom-30
+          .fontsize-small.fontweight-semibold
+            span.fontcolor-secondary> Status:
+            span class="text-color-for-status #{@project.state}"
+              ' #{t("projects.project.display_status.#{@project.state}").upcase}
+          = render 'projects/dashboard_home_templates/project_numbers', project: @project
+.section
+  .w-container
+    .w-row
+      .w-col.w-col-8.w-hidden-small.w-hidden-tiny
+        .fontsize-base.card.card-terciary
+          p.fontweight-bold E não se esqueça: transparência é tudo.
+          p
+            | Manter um apoiador informado é manter um apoiador feliz. Mesmo que você vá informá-lo de uma falha ou contratempo. Apoiadores felizes são
+            a.alt-link href="http://blog.catarse.me/financiamento-coletivo-recorrente-as-quatro-campanhas-de-koff-e-a-base-de-fas-para-muitas-mais/" target="_blank"  promessas de projetos subsequentes bem sucedidos
+            ' . Portanto, use e abuse (sempre com moderação) da aba novidades. O que você escrever por lá chega direto na caixa de emails dos seus apoiadores. Já vai começar a entrega de recompensas? Na aba "relatórios" você baixa informações para que você possa fazer a gestão de entrega de recompensas do seu projeto.
+          p.fontweight-bold Não deixe de ler:
+          p
+            a.alt-link href="http://suporte.catarse.me/hc/pt-br/articles/202037483-Presta%C3%A7%C3%A3o-de-contas-projeto-financiado" target="_blank" 
+              | Transparência e prestação de contas para projetos financiados
+              br xmlns="http://www.w3.org/1999/xhtml" /
+            a.alt-link href="http://suporte.catarse.me/hc/pt-br/articles/203083077-Como-gerenciar-a-entrega-das-recompensas-" target="_blank"  Como gerenciar a entrega de recompensas
+      .w-col.w-col-4
+        .w-hidden-small.w-hidden-tiny.card.u-radius.u-marginbottom-20 data-ix="new-interaction" 
+          .fontsize-small.fontweight-semibold.u-marginbottom-20 Links úteis
+          ul.w-list-unstyled
+            li.alt-link.fontsize-smaller.u-marginbottom-10
+              a.alt-link href="http://suporte.catarse.me/hc/pt-br/sections/200426037-Realizadores-repasse-do-dinheiro" target="_blank"  O que preciso fazer para receber o dinheiro?
+            li.fontsize-smaller.alt-link.u-marginbottom-10
+              a.alt-link href="http://suporte.catarse.me/hc/pt-br/articles/202037483-Presta%C3%A7%C3%A3o-de-contas-projeto-financiado" target="_blank"  Prestação de contas
+            li.fontsize-smaller.alt-link.u-marginbottom-10
+              a.alt-link href="http://suporte.catarse.me/hc/pt-br/articles/203083077-Como-gerenciar-a-entrega-das-recompensas-" target="_blank"  Como gerenciar a entrega de recompensas?
+        .w-hidden-small.w-hidden-tiny.card.u-radius data-ix="new-interaction" 
+          .fontsize-small.fontweight-semibold.u-marginbottom-20 Suporte
+          ul.w-list-unstyled
+            li.alt-link.fontsize-smaller.u-marginbottom-10
+              a.alt-link href="http://suporte.catarse.me/hc/pt-br/sections/200426037-Realizadores-repasse-do-dinheiro" target="_blank"  Como o Catarse funciona?
+            li.fontsize-smaller.alt-link.u-marginbottom-10
+              a.alt-link href="http://suporte.catarse.me/hc/pt-br/articles/202265256-Por-que-o-Tudo-ou-Nada-" target="_blank"  Por quê Tudo-ou-nada?
+            li.alt-link.fontsize-smaller.u-marginbottom-10
+              a.alt-link href="http://suporte.catarse.me/" target="_blank"  Central de Suporte
+            li.fontsize-smaller.alt-link
+              a.alt-link href="https://equipecatarse.zendesk.com/account/dropboxes/20298537" target="_blank"  Entre em contato com a gente
+          

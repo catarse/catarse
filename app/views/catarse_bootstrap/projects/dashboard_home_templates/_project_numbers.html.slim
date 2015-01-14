@@ -1,0 +1,26 @@
+.card-project-numbers
+  .meter.u-marginbottom-10.u-margintop-10
+    = @project.progress_bar
+  .w-row
+    .w-col.w-col-3.w-col-small-3.w-col-tiny-6
+      .fontweight-semibold.fontsize-large.lineheight-tight
+        = "#{@project.display_progress} %"
+      .fontcolor-secondary.lineheight-tighter.fontsize-small.u-marginbottom-10
+        | financiado
+    .w-col.w-col-3.w-col-small-3.w-col-tiny-6
+      .fontweight-semibold.fontsize-large.lineheight-tight
+        = @project.display_pledged
+      .fontcolor-secondary.lineheight-tighter.fontsize-small.u-marginbottom-10
+        | levantados
+    .w-col.w-col-3.w-col-small-3.w-col-tiny-6
+      .fontweight-semibold.fontsize-large.lineheight-tight
+        = @project.total_contributions
+      .fontcolor-secondary.lineheight-tighter.fontsize-small
+        | apoios
+    .w-col.w-col-3.w-col-small-3.w-col-tiny-6
+      .fontweight-semibold.fontsize-large.lineheight-tight
+        = @project.time_to_go[:time]
+      .fontcolor-secondary.lineheight-tighter.fontsize-small
+        = @project.time_to_go[:unit]
+        '  restantes
+   

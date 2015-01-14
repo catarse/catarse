@@ -13,7 +13,7 @@
       .w-row
         .w-col.w-col-8
           .w-form
-              = render 'devise/shared/alert'
+              = @project.display_errors(:basics)
               - if (current_user && current_user.admin?)
                 - if @project.in_analysis?
                   .w-row.card.card-terciary.u-marginbottom-20
