@@ -3,6 +3,10 @@ FactoryGirl.define do
     "Foo bar #{n}"
   end
 
+  sequence :bank_number do |n|
+    "0000#{n}"
+  end
+
   sequence :email do |n|
     "person#{n}@example.com"
   end
@@ -26,7 +30,7 @@ FactoryGirl.define do
     f.association :category
   end
 
-  factory :user do |f|
+  factory :user_without_bank_data, class: User do |f|
     f.name "Foo bar"
     f.full_name "Foo bar"
     f.password "123456"
@@ -34,6 +38,31 @@ FactoryGirl.define do
     f.uploaded_image File.open("#{Rails.root}/spec/support/testimg.png")
     f.email { generate(:email) }
     f.bio "This is Foo bar's biography."
+    f.address_street 'fooo'
+    f.address_number '123'
+    f.address_city 'fooo bar'
+    f.address_state 'fooo'
+    f.address_neighbourhood 'bar'
+    f.address_zip_code '123344333'
+    f.phone_number '1233443355'
+  end
+
+  factory :user do |f|
+    f.association :bank_account
+    f.name "Foo bar"
+    f.full_name "Foo bar"
+    f.password "123456"
+    f.cpf "123456"
+    f.uploaded_image File.open("#{Rails.root}/spec/support/testimg.png")
+    f.email { generate(:email) }
+    f.bio "This is Foo bar's biography."
+    f.address_street 'fooo'
+    f.address_number '123'
+    f.address_city 'fooo bar'
+    f.address_state 'fooo'
+    f.address_neighbourhood 'bar'
+    f.address_zip_code '123344333'
+    f.phone_number '1233443355'
   end
 
   factory :category do |f|
@@ -41,10 +70,16 @@ FactoryGirl.define do
   end
 
   factory :project do |f|
+    #after(:create) do |project|
+    #  create(:reward, project: project)
+    #  if project.state == 'change_to_online_after_create'
+    #    project.update_attributes(state: 'online')
+    #  end
+    #end
     f.name "Foo bar"
     f.permalink { generate(:permalink) }
-    f.association :user, factory: :user
-    f.association :category, factory: :category
+    f.association :user
+    f.association :category
     f.about "Foo bar"
     f.headline "Foo bar"
     f.goal 10000
@@ -54,6 +89,8 @@ FactoryGirl.define do
     f.first_contributions 'Foo bar'
     f.video_url 'http://vimeo.com/17298435'
     f.state 'online'
+    f.budget '1000'
+    f.uploaded_image File.open("#{Rails.root}/spec/support/testimg.png")
   end
 
   factory :channels_subscriber do |f|
@@ -82,6 +119,13 @@ FactoryGirl.define do
     f.description "Foo bar"
     f.deliver_at 10.days.from_now
   end
+
+  factory :rewards, class: Reward do |f|
+    f.minimum_value 10.00
+    f.description "Foo bar"
+    f.deliver_at 10.days.from_now
+  end
+
 
   factory :contribution do |f|
     f.association :project, factory: :project
@@ -146,17 +190,27 @@ FactoryGirl.define do
 
   factory :bank do
     name "Foo"
-    code "000"
+    code { generate(:bank_number) }
   end
 
   factory :bank_account do |f|
-    f.association :user, factory: :user
+    #f.association :user, factory: :user
     f.association :bank, factory: :bank
     owner_name "Foo"
     owner_document "000"
     account_digit "1"
     agency "1"
+    agency_digit "1"
     account "1"
+  end
+
+  factory :single_bank_account, class: BankAccount do |f|
+    f.association :bank, factory: :bank
+    owner_name "Foo"
+    owner_document "000"
+    account_digit "1"
+    agency "1"
+    account '1'
   end
 
   factory :channel_post do |f|
