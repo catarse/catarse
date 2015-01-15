@@ -11,7 +11,7 @@
           = link_to '#home', id: 'dashboard_home_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_home', tab_group: 'edit'} do
             | &nbsp;&nbsp;Início
           - unless @project.already_deployed?
-            = link_to '#basics', id: 'basics_link', class: 'dashboard-nav-link ' , data: {target: '#project_basics', tab_group: 'edit'} do
+            = link_to '#basics', id: 'basics_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_basics', tab_group: 'edit'} do
               = @project.decorate.status_icon_for('basics')
               | &nbsp;&nbsp;Básico
           = link_to '#project', id: 'dashboard_project_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_project', tab_group: 'edit'} do
@@ -54,8 +54,8 @@
           #dashboard_home.content.w-hidden
             = render 'dashboard_home'
           - unless @project.already_deployed?
-            #project_basics.content.w-hidden
-              = render 'project_basics'
+            #dashboard_basics.content.w-hidden
+              = render 'dashboard_basics'
           #dashboard_project.content.w-hidden
             = render 'dashboard_project'
           - if @project.already_deployed?
