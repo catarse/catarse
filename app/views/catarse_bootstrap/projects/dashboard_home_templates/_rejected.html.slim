@@ -3,14 +3,12 @@
     .w-row
       .w-col.w-col-2
       .w-col.w-col-8
-        .fontsize-large.fontweight-semibold.u-marginbottom-10= "#{@project.user.display_name}, infelizmente não foi dessa vez."
+        .fontsize-large.fontweight-semibold.u-marginbottom-10= t('.title', name: @project.user.display_name ) 
         p.fontsize-base
-          | Você enviou seu projeto para análise da equipe do Catarse e entendemos que ele não está de acordo com o perfil da plataforma. Lembrando que ter um projeto recusado não impede que você envie novos projetos para avaliação ou reformule seu projeto atual para que ele se adeque aos 
-          ' #{link_to 'critérios da plataforma.' ,'http://suporte.catarse.me/hc/pt-br/articles/202387638-Diretrizes-para-a-cria%C3%A7%C3%A3o-de-projetos', target: '__blank'}
-          ' .Converse com nosso atendimento! Você ainda pode editar seu projeto e solicitar uma reavaliação. Encare como um processo de aprendizado! Levanta, sacode a poeira e dá a volta por cima!
+          = t('.subtitle_html', link1: (link_to 'critérios da plataforma' ,'http://suporte.catarse.me/hc/pt-br/articles/202387638-Diretrizes-para-a-cria%C3%A7%C3%A3o-de-projetos', target: '__blank'))
         .card.u-radius.u-marginbottom-30
           .fontsize-small.fontweight-semibold
-            span.fontcolor-secondary> Status:
+            span.fontcolor-secondary>= t('projects.dashboard_home_templates.status')
             span class="text-color-for-status #{@project.state}"
               ' #{t("projects.project.display_status.#{@project.state}").upcase}
       .w-col.w-col-2

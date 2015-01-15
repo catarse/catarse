@@ -3,7 +3,7 @@
     .w-row
       .w-col.w-col-8
         .project-news.u-marginbottom-60
-          .fontsize-large.fontweight-semibold.u-marginbottom-30 Escrever uma novidade
+          .fontsize-large.fontweight-semibold.u-marginbottom-30= t('.title')
           = simple_form_for @project,  html: { class: 'w-form' } do |f|
             =  hidden_field_tag 'anchor', 'posts'
             = f.simple_fields_for :posts, @project.posts.build do |form|
@@ -15,19 +15,18 @@
 
               .w-checkbox.w-clearfix.u-marginbottom-30
                 = form.check_box :exclusive, class: 'w-checkbox-input'
-                = form.label :exclusive, 'Visível apenas para apoiadores', class: 'w-form-label fontsize-small'
+                = form.label :exclusive, t('.only_to_backers'), class: 'w-form-label fontsize-small'
 
               .card.card-message.u-radius.u-marginbottom-40
-                .fontsize-small Lembre-se que todo post de novidade vai diretamente para o email de seus apoiadores. Por isso, revise bem seu texto antes de publicá-lo.
-              
+                .fontsize-small= t('.warning')
               .w-row
                 .w-col.w-col-4.w-sub-col
-                  = form.submit 'Publicar novidate', class: 'btn btn-medium'
+                  = form.submit t('.publish'), class: 'btn btn-medium'
                 .w-col.w-col-3
-                  = link_to 'Descartar', 'javascript:location.reload();', class: 'btn btn-medium btn-terciary'
+                  = link_to t('.discard'), 'javascript:location.reload();', class: 'btn btn-medium btn-terciary'
                 .w-col.w-col-5
         .divider.u-marginbottom-30
-        .fontsize-large.fontweight-semibold.u-marginbottom-30 Novidades antigas
+        .fontsize-large.fontweight-semibold.u-marginbottom-30= t('.old_posts') 
         - @project.posts.each do |post|
           - if post.persisted?
             .project-news.u-marginbottom-30

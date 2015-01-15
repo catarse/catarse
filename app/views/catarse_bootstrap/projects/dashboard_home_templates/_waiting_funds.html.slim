@@ -3,12 +3,12 @@
     .w-row
       .w-col.w-col-2
       .w-col.w-col-8
-        .fontsize-large.fontweight-semibold.u-marginbottom-10= "#{@project.user.display_name}, estamos processando os últimos pagamentos."
+        .fontsize-large.fontweight-semibold.u-marginbottom-10= t('.title', name: @project.user.display_name)
         p.fontsize-base
-          | Seu projeto foi finalizado em #{@project.display_expires_at} e está aguardando confirmação de boletos e pagamentos. Em geral os projetos ficam por até 4 dias úteis nesse status, contados a partir da data de finalização do projeto.
+          = t('.subtitle', expires: @project.display_expires_at)
         .card.u-radius.u-marginbottom-30
           .fontsize-small.fontweight-semibold
-            span.fontcolor-secondary> Status:
+            span.fontcolor-secondary>= t('projects.dashboard_home_templates.status')
             span class="text-color-for-status #{@project.state}"
               ' #{t("projects.project.display_status.#{@project.state}").upcase}
           = render 'projects/dashboard_home_templates/project_numbers', project: @project
@@ -17,14 +17,15 @@
     .w-row
       .w-col.w-col-8.w-hidden-small.w-hidden-tiny
         .fontsize-base.card.card-terciary
-          p.fontweight-bold A partir daqui o seu projeto pode bater a meta ou não. Veja o que acontece em cada um dos casos:
+          p.fontweight-bold= t('.header') 
           p
-            | Bati a meta:
+            = t('.success')
             a.alt-link href="http://suporte.catarse.me/hc/pt-br/articles/202037493-Como-ser%C3%A1-feito-o-repasse-do-dinheiro-" target="_blank"  Como será feito o repasse do dinheiro?
           p
-            | Não bati a meta:
+            = t('.failed')
             a.alt-link href="http://suporte.catarse.me/hc/pt-br/articles/202365507-Regras-e-funcionamento-dos-reembolsos-estornos" target="_blank"  Entenda como fazemos estornos e reembolsos
-          p Boa sorte!
+          p 
+            = t('.good_luck')
       .w-col.w-col-4
         .w-hidden-small.w-hidden-tiny.card.u-radius.u-marginbottom-20 data-ix="new-interaction" 
           .fontsize-small.fontweight-semibold.u-marginbottom-20 Links úteis
