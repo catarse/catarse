@@ -13,9 +13,7 @@ App.addChild('ProjectEdit', _.extend({
     this.route('user_settings');
     this.route('reports')
 
-    if(this.$('.dashboard-nav-link.selected').length < 1 &&  window.location.hash == '') {
-      window.location.hash = 'home'
-    }
+    this.lookAnchors();
   },
 
   followRoute: function(name){
