@@ -10,6 +10,7 @@ class Project < ActiveRecord::Base
   include Project::VideoHandler
   include Project::CustomValidators
   include Project::RemindersHandler
+  include Project::ErrorGroups
 
   has_notifications
 
@@ -26,11 +27,13 @@ class Project < ActiveRecord::Base
   has_one :project_total
   has_many :rewards
   has_many :contributions
-  has_many :posts, class_name: "ProjectPost"
+  has_many :posts, class_name: "ProjectPost", inverse_of: :project
   has_many :unsubscribes
 
   accepts_nested_attributes_for :rewards
   accepts_nested_attributes_for :channels
+  accepts_nested_attributes_for :user
+  accepts_nested_attributes_for :posts, allow_destroy: true#, reject_if: ->(x) { x[:title].blank? || x[:comment].blank? }
 
   catarse_auto_html_for field: :about, video_width: 600, video_height: 403
 
@@ -140,7 +143,6 @@ class Project < ActiveRecord::Base
   validates_format_of :permalink, with: /(\w|-)*/
 
   validates_with StateValidator
-
 
   [:between_created_at, :between_expires_at, :between_online_date, :between_updated_at].each do |name|
     define_singleton_method name do |starts_at, ends_at|
@@ -282,6 +284,10 @@ class Project < ActiveRecord::Base
     end
   end
 
+  def already_deployed?
+    self.online? || self.successful? || self.failed? || self.waiting_funds?
+  end
+
   private
   def self.between_dates(attribute, starts_at, ends_at)
     return all unless starts_at.present? && ends_at.present?
@@ -294,4 +300,5 @@ class Project < ActiveRecord::Base
     end
     routes.compact.uniq
   end
+
 end

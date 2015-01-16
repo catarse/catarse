@@ -56,6 +56,7 @@ Catarse::Application.routes.draw do
       get 'about_mobile'
       get 'embed_panel'
       get 'send_to_analysis'
+      get 'publish'
     end
   end
   resources :users do

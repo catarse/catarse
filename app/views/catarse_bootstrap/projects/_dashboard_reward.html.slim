@@ -11,6 +11,7 @@
     .w-container
       .w-row
         .w-col.w-col-8
+          = @project.display_errors(:reward)
           #dashboard-rewards
             - @project.rewards.rank(:row_order).each_with_index do |reward, index|
               .w-row.card.card-terciary.u-marginbottom-20[id="reward_#{reward.id}" data-update_url=sort_project_reward_path(@project, reward) class="sortable"]
