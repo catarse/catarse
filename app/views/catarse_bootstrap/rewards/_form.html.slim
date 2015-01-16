@@ -41,9 +41,9 @@
           .w-row
             .w-col.w-col-5
               .w-checkbox
-                input#checkbox.w-checkbox-input data-name="Checkbox" name="limit_reward" type="checkbox" 
-                  label.w-form-label for="checkbox" Limitar recompensa
-            .w-col.w-col-7
+                .w-checkbox-input= check_box_tag  "limit_reward", '', (resource.maximum_contributions.present?), id: 'limit_reward' 
+                label.w-form-label for="limit_reward" Limitar recompensa
+            .w-col.w-col-7 class="#{ resource.maximum_contributions.present? ?  '' : 'w-hidden'}"
               = form.input_field :maximum_contributions, class: 'u-marginbottom-30 positive', placeholder: "Quantidade disponível"
           .w-row
             .w-col.w-col-6.w-col-small-6.w-col-tiny-6.w-sub-col-middle
