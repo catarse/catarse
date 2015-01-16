@@ -20,6 +20,9 @@ class RewardsController < ApplicationController
 
   def update
     authorize resource
+    if !params[:limit_reward]
+      params[:reward][:maximum_contributions] = nil
+    end
     if resource.update permitted_params[:reward]
       flash[:notice] = t('project.update.success')
       render nothing: true, status: 302
