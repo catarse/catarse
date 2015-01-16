@@ -16,15 +16,7 @@ App.addChild('UserEdit', _.extend({
       that.nestedLinksSetup();
     });
 
-    $anchor = this.$('#current_anchor').data('anchor');
-
-    if($anchor != '' && $anchor != undefined) {
-      window.location.hash = $anchor;
-    } else {
-      if(this.$('.dashboard-nav-link.selected').length < 1 && (window.location.hash == '' || window.location.hash == '_#_')) {
-        window.location.hash = 'home';
-      }
-    }
+    this.lookAnchors();
   },
 
   followRoute: function(name){

@@ -29,6 +29,18 @@ Skull.Tabs = {
         results.html(data);
       });
     }
+  },
+
+  lookAnchors: function() {
+    $anchor = this.$('#current_anchor').data('anchor');
+
+    if($anchor != '' && $anchor != undefined) {
+      window.location.hash = $anchor;
+    } else {
+      if(this.$('.dashboard-nav-link.selected').length < 1 && (window.location.hash == '' || window.location.hash == '_#_')) {
+        this.$('.dashboard-nav-link:first').trigger('click');
+      }
+    }
   }
 };
 
