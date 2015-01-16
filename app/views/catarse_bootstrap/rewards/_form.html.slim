@@ -1,12 +1,13 @@
 .w-row.card.reward-card.card-terciary.u-marginbottom-20
-  .fontweight-semibold.fontsize-smallest.u-marginbottom-10
-    - if resource.new_record?
-      = "Recompensa ##{parent.rewards.count + 1}"
-    - else
-      = "Editar recompensa"
-    |&nbsp;
-    a.link-edit.fa.fa-question-circle href="#"
   .w-col.w-col-4.w-sub-col
+    .fontweight-semibold.fontsize-smallest.u-marginbottom-10
+      - if resource.new_record?
+        | Recompensa #
+        span.custom-f-reward-counter= parent.rewards.count + 1
+      - else
+        = "Editar recompensa"
+      |&nbsp;
+      a.link-edit.fa.fa-question-circle href="#"
     .fontsize-smallest.fontcolor-secondary.reward-explanation.w-hidden.u-marginbottom-20
       | Você pode limitar a quantidade disponível de uma recompensa. Uma vez que o limite é atingido, a recompensa será marcada como ESGOTADA. A previsão de entrega é a data que você pretende entregar a recompensa aos apoiadores. Se você quiser mudar a ordem das recompensas, basta arrastá-las por aqui. Experimente!
   .w-col.w-col-8

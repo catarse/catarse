@@ -99,6 +99,16 @@ select.date
 .hidden
   display: none
 
+.text-color-for-status
+  &.rejected, &.failed
+    color: $red
+  &.approved, &.online, &.successful
+    color: $green
+  &.waiting_funds
+    color: #b8b651
+.force-text-dark
+  color: #3f4752 !important
+
 // Hero images
 .hero-jobs
   padding-top: 190px
@@ -121,4 +131,3 @@ select.date
   background-size: cover
   background-attachment: scroll
   color: white
-

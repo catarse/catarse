@@ -1,0 +1,35 @@
+.u-text-center
+  .w-container
+    .w-row
+      .w-col.w-col-2
+      .w-col.w-col-8
+        .fontsize-large.fontweight-semibold.u-marginbottom-10= "#{@project.user.display_name}, não desanime!"
+        p.fontsize-base
+          | Seu projeto não bateu a meta e sabemos que isso não é a melhor das sensações. Mas não desanime. 
+          '  O recorde mundial de maior arrecadação da atualidade é uma segunda tentativa de um projeto. E não se preocupe, 
+          '  todos os seus apoiadores terão seu dinheiro de volta. #{link_to 'Entenda como fazemos estornos e reembolsos', 'http://suporte.catarse.me/hc/pt-br/articles/202365507-Regras-e-funcionamento-dos-reembolsos-estornos', target: '__blank'}.
+        .card.u-radius.u-marginbottom-30
+          .fontsize-small.fontweight-semibold
+            span.fontcolor-secondary> Status:
+            span class="text-color-for-status #{@project.state}"
+              ' #{t("projects.project.display_status.#{@project.state}").upcase}
+          = render 'projects/dashboard_home_templates/project_numbers', project: @project
+.section
+  .w-container
+    .w-row
+      .w-col.w-col-8.w-hidden-small.w-hidden-tiny.card.card-terciary
+        .fontsize-base.u-marginbottom-40
+          p Enviamos também um email para você com duas perguntinhas. Se você tiver tempo e cabeça, seria ótimo se pudesse dar uma olhada. Seu feedback nos ajuda a construir um Catarse melhor e mais legal pra você.
+      .w-col.w-col-4
+        .w-hidden-small.w-hidden-tiny.card.u-radius data-ix="new-interaction" 
+          .fontsize-small.fontweight-semibold.u-marginbottom-20 Suporte
+          ul.w-list-unstyled
+            li.alt-link.fontsize-smaller.u-marginbottom-10
+              a.alt-link href="http://suporte.catarse.me/hc/pt-br/articles/202365507-Regras-e-funcionamento-dos-reembolsos-estornos" target="_blank"  Regras de estornos e reembolsos
+            li.fontsize-smaller.alt-link.u-marginbottom-10
+              a.alt-link href="http://suporte.catarse.me/hc/pt-br/articles/202265256-Por-que-o-Tudo-ou-Nada-" target="_blank"  Por quê Tudo-ou-nada?
+            li.alt-link.fontsize-smaller.u-marginbottom-10
+              a.alt-link href="http://suporte.catarse.me/" target="_blank"  Central de Suporte
+            li.fontsize-smaller.alt-link
+              a.alt-link href="https://equipecatarse.zendesk.com/account/dropboxes/20298537" target="_blank"  Entre em contato com a gente
+

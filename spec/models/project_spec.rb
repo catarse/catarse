@@ -211,7 +211,7 @@ RSpec.describe Project, type: :model do
 
       before do
         CatarseSettings[:minumum_goal_for_video] = 5000
-        @project_02 = create(:project, goal: 4000, state: 'online')
+        @project_02 = create(:project, goal: 4000)
       end
 
       it{ is_expected.to allow_value(nil).for(:video_url) }
@@ -551,9 +551,9 @@ RSpec.describe Project, type: :model do
       it{ is_expected.to be_nil }
     end
     context "when we have an online_date" do
-      let(:project){ create(:project, online_date: Time.now, online_days: 1)}
+      let(:project){ create(:project, online_date: Time.zone.now, online_days: 1)}
       before{project.save!}
-      it{ is_expected.to eq(Time.zone.tomorrow.end_of_day.to_s(:db)) }
+      it{ expect(subject.to_time).to eq(Time.zone.tomorrow.end_of_day.to_s(:simple)) }
     end
   end
 

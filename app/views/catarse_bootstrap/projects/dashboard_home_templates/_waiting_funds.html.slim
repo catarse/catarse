@@ -1,0 +1,47 @@
+.u-text-center
+  .w-container
+    .w-row
+      .w-col.w-col-2
+      .w-col.w-col-8
+        .fontsize-large.fontweight-semibold.u-marginbottom-10= "#{@project.user.display_name}, estamos processando os últimos pagamentos."
+        p.fontsize-base
+          | Seu projeto foi finalizado em #{@project.display_expires_at} e está aguardando confirmação de boletos e pagamentos. Em geral os projetos ficam por até 4 dias úteis nesse status, contados a partir da data de finalização do projeto.
+        .card.u-radius.u-marginbottom-30
+          .fontsize-small.fontweight-semibold
+            span.fontcolor-secondary> Status:
+            span class="text-color-for-status #{@project.state}"
+              ' #{t("projects.project.display_status.#{@project.state}").upcase}
+          = render 'projects/dashboard_home_templates/project_numbers', project: @project
+.section
+  .w-container
+    .w-row
+      .w-col.w-col-8.w-hidden-small.w-hidden-tiny
+        .fontsize-base.card.card-terciary
+          p.fontweight-bold A partir daqui o seu projeto pode bater a meta ou não. Veja o que acontece em cada um dos casos:
+          p
+            | Bati a meta:
+            a.alt-link href="http://suporte.catarse.me/hc/pt-br/articles/202037493-Como-ser%C3%A1-feito-o-repasse-do-dinheiro-" target="_blank"  Como será feito o repasse do dinheiro?
+          p
+            | Não bati a meta:
+            a.alt-link href="http://suporte.catarse.me/hc/pt-br/articles/202365507-Regras-e-funcionamento-dos-reembolsos-estornos" target="_blank"  Entenda como fazemos estornos e reembolsos
+          p Boa sorte!
+      .w-col.w-col-4
+        .w-hidden-small.w-hidden-tiny.card.u-radius.u-marginbottom-20 data-ix="new-interaction" 
+          .fontsize-small.fontweight-semibold.u-marginbottom-20 Links úteis
+          ul.w-list-unstyled
+            li.alt-link.fontsize-smaller.u-marginbottom-10
+              a.alt-link href="http://suporte.catarse.me/hc/pt-br/sections/200426037-Realizadores-repasse-do-dinheiro" target="_blank"  O que preciso fazer para receber o dinheiro?
+            li.fontsize-smaller.alt-link.u-marginbottom-10
+              a.alt-link href="http://suporte.catarse.me/hc/pt-br/articles/202365507-Regras-e-funcionamento-dos-reembolsos-estornos" target="_blank"  Regras de estornos e reembolsos
+        .w-hidden-small.w-hidden-tiny.card.u-radius data-ix="new-interaction" 
+          .fontsize-small.fontweight-semibold.u-marginbottom-20 Suporte
+          ul.w-list-unstyled
+            li.alt-link.fontsize-smaller.u-marginbottom-10
+              a.alt-link href="http://suporte.catarse.me/hc/pt-br/sections/200426037-Realizadores-repasse-do-dinheiro" target="_blank"  Como o Catarse funciona?
+            li.fontsize-smaller.alt-link.u-marginbottom-10
+              a.alt-link href="http://suporte.catarse.me/hc/pt-br/articles/202265256-Por-que-o-Tudo-ou-Nada-" target="_blank"  Por quê Tudo-ou-nada?
+            li.alt-link.fontsize-smaller.u-marginbottom-10
+              a.alt-link href="http://suporte.catarse.me/" target="_blank"  Central de Suporte
+            li.fontsize-smaller.alt-link
+              a.alt-link href="https://equipecatarse.zendesk.com/account/dropboxes/20298537" target="_blank"  Entre em contato com a gente
+    
