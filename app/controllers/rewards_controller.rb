@@ -20,7 +20,7 @@ class RewardsController < ApplicationController
 
   def update
     authorize resource
-    if !params[:limit_reward]
+    if params[:reward] && !params[:limit_reward]
       params[:reward][:maximum_contributions] = nil
     end
     if resource.update permitted_params[:reward]
