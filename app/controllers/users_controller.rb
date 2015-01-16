@@ -64,13 +64,14 @@ class UsersController < ApplicationController
     update! do |success,failure|
       success.html do
         flash[:notice] = t('users.current_user_fields.updated')
+        redirect_to edit_user_path(@user, anchor: params[:anchor])
       end
       failure.html do
-        flash[:alert] = @user.errors.full_messages.to_sentence
+        flash.now[:notice] = @user.errors.full_messages.to_sentence
+        render :edit
       end
     end
 
-    return redirect_to edit_user_path(@user, anchor: params[:anchor])
   end
 
   def update_password
@@ -93,6 +94,6 @@ class UsersController < ApplicationController
   end
 
   def use_catarse_boostrap
-    ["edit"].include?(action_name) ? 'catarse_bootstrap' : 'application'
+    ["edit", "update"].include?(action_name) ? 'catarse_bootstrap' : 'application'
   end
 end
