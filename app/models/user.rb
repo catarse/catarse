@@ -16,9 +16,7 @@ class User < ActiveRecord::Base
     :image_url, :uploaded_image, :bio, :newsletter, :full_name, :address_street, :address_number,
     :address_complement, :address_neighbourhood, :address_city, :address_state, :address_zip_code, :phone_number,
     :cpf, :state_inscription, :locale, :twitter, :facebook_link, :other_link, :moip_login, :deactivated_at, :reactivate_token,
-    :bank_account_attributes, :country_id, :zero_credits
-
-  attr_accessor :validating_for_approved_project
+    :bank_account_attributes, :country_id, :zero_credits, :links_attributes
 
   mount_uploader :uploaded_image, UserUploader
 
@@ -31,11 +29,6 @@ class User < ActiveRecord::Base
   validates_presence_of :password, if: :password_required?
   validates_confirmation_of :password, if: :password_confirmation_required?
   validates_length_of :password, within: Devise.password_length, allow_blank: true
-
-  with_options if: :validating_for_approved_project do |opt|
-    opt.validates :email, :full_name, :cpf, :address_city, :address_state, :address_street,
-      :address_number, :address_neighbourhood, :address_zip_code, :phone_number, :bank_account, presence: true
-  end
 
   belongs_to :channel
   belongs_to :country
@@ -52,10 +45,12 @@ class User < ActiveRecord::Base
   has_many :contributed_projects, -> { where(contributions: { state: ['confirmed', 'requested_refund', 'refunded'] } ).uniq } ,through: :contributions, source: :project
   has_many :category_followers
   has_many :categories, through: :category_followers
+  has_many :links, class_name: 'UserLink', inverse_of: :user
   has_and_belongs_to_many :recommended_projects, join_table: :recommendations, class_name: 'Project'
   has_and_belongs_to_many :subscriptions, join_table: :channels_subscribers, class_name: 'Channel'
 
   accepts_nested_attributes_for :unsubscribes, allow_destroy: true rescue puts "No association found for name 'unsubscribes'. Has it been defined yet?"
+  accepts_nested_attributes_for :links, allow_destroy: true, reject_if: ->(x) { x['link'].blank? }
   accepts_nested_attributes_for :bank_account, allow_destroy: true, reject_if: -> (attr) { attr[:bank_id].blank? }
 
   scope :active, ->{ where('deactivated_at IS NULL') }

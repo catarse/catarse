@@ -1,0 +1,47 @@
+= render 'shared/header_big', overlayer: true
+
+.user-dashboard-edit
+  .hero-small.hero-profile
+    .w-container
+      .w-row.u-text-center
+        .w-col.w-col-3
+        .w-col.w-col-6
+          .fontsize-largest.fontweight-semibold.u-marginbottom-20
+            = resource.name
+        .w-col.w-col-3
+  
+  nav.dashboard-nav.u-text-center
+    .w-container
+      = link_to '#contributions', id: 'dashboard_contributions_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_contributions' } do
+        | Apoiados
+
+      = link_to '#projects', id: 'dashboard_projects_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_projects' } do
+        | Criados
+
+      = link_to '#about_me', id: 'dashboard_about_me_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_about_me' } do
+        | Sobre você
+
+      = link_to '#settings', id: 'dashboard_settings_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_settings' } do
+        | Conta
+      
+      /= link_to '#credit_cards', id: 'dashboard_credit_cards_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_credit_cards' } do
+        | Cartões de crédito
+
+      = link_to user_path(resource), class: 'dashboard-nav-link u-right-big-only' do
+        | Ir para o perfil público
+
+  section.section-one-column
+    #current_anchor data-anchor="#{params[:anchor]}"
+    .w-container
+      .w-row
+        article
+          #dashboard_contributions.content.w-hidden
+            = render 'dashboard_contributions'
+          #dashboard_projects.content.w-hidden
+            .w-row
+              == render_projects resource.projects, 'profile_dashboard_created_projects', { wrapper_class: 'w-col w-col-4 u-marginbottom-40' }
+          #dashboard_about_me.content.w-hidden
+            = render 'dashboard_about_me'
+          #dashboard_settings.content.w-hidden
+            = render 'dashboard_settings'
+          /#dashboard_credit_cards.content.w-hidden
