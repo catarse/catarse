@@ -145,7 +145,7 @@ RSpec.describe UsersController, type: :controller do
       user.reload
       expect(user.twitter).to eq('test')
     end
-    it{ is_expected.to redirect_to user_path(user, anchor: 'settings') }
+    it{ is_expected.to redirect_to edit_user_path(user) }
   end
 
   describe "PUT update_password" do
