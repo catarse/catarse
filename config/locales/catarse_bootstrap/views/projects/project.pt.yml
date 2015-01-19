@@ -22,6 +22,10 @@ pt:
         draft: "rascunho"
         in_analysis: "em análise"
     card:
+      by: por
+      remaining:
+        one: "restante"
+        other: "restantes"
       contributed: levantados
       reached: atingido
       progress_html: "<span>%{percent}%</span> financiado"
