@@ -24,6 +24,8 @@
                 label.field-label.fontsize-smallest.fontcolor-secondary.u-marginbottom-20= t('.about_hint_html')
                 = form.input_field :about, as: :text, class: 'bottom jumbo positive'
               .card.card-terciary
+                label.field-label.fontweight-semibold= t('.budget_label') 
+                label.field-label.fontsize-smallest.fontcolor-secondary.u-marginbottom-20= t('.budget_hint') 
                 /.w-form
                   form#email-form-3 data-name=("Email Form 3") name="email-form-3" 
                     label.field-label.fontweight-semibold.u-margintop-30 for="name-8"  Detalhe do orçamento
@@ -57,13 +59,10 @@
                     p Thank you! Your submission has been received!
                   .w-form-fail
                     p Oops! Something went wrong while submitting the form :(
-                
-                label.field-label.fontweight-semibold Orçamento do projeto
-                label.field-label.fontsize-smallest.fontcolor-secondary.u-marginbottom-20 for="field-6"  Como o seu dinheiro será utilizado?&nbsp;Procure ser o mais transparente possível. Não existe um modelo padrão para mostrar o seu orçamento, no entanto gráficos de tabelas são sempre bem-vindos!
                 = form.input_field :budget, as: :text, class: 'big bottom positive'
         .w-col.w-col-4
             .w-hidden-small.w-hidden-tiny.card.u-radius.u-marginbottom-20 data-ix="new-interaction" 
-              .fontsize-small.fontweight-semibold.u-marginbottom-20 Links úteis
+              .fontsize-small.fontweight-semibold.u-marginbottom-20= t('.links_title') 
               ul.w-list-unstyled
                 li.alt-link.fontsize-smaller.u-marginbottom-10
                   a.alt-link href="http://suporte.catarse.me/hc/pt-br/articles/202387638-Diretrizes-para-a-cria%C3%A7%C3%A3o-de-projetos" target="_blank"  Critérios de seleção
