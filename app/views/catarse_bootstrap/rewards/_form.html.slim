@@ -2,14 +2,13 @@
   .w-col.w-col-4.w-sub-col
     .fontweight-semibold.fontsize-smallest.u-marginbottom-10
       - if resource.new_record?
-        | Recompensa #
+        | #{t('.reward')} #
         span.custom-f-reward-counter= parent.rewards.count + 1
       - else
-        = "Editar recompensa"
+        = t('.edit')
       |&nbsp;
       a.link-edit.fa.fa-question-circle href="#"
-    .fontsize-smallest.fontcolor-secondary.reward-explanation.w-hidden.u-marginbottom-20
-      | Você pode limitar a quantidade disponível de uma recompensa. Uma vez que o limite é atingido, a recompensa será marcada como ESGOTADA. A previsão de entrega é a data que você pretende entregar a recompensa aos apoiadores. Se você quiser mudar a ordem das recompensas, basta arrastá-las por aqui. Experimente!
+    .fontsize-smallest.fontcolor-secondary.reward-explanation.w-hidden.u-marginbottom-20= t('.info_box')
   .w-col.w-col-8
     .card
       .w-form
@@ -17,7 +16,7 @@
           = render 'devise/shared/alert'
           .w-row.u-marginbottom-20
             .w-col.w-col-5
-              label.fontsize-smaller Valor mínimo:
+              label.fontsize-smaller= t('.minimum_value') 
             .w-col.w-col-7
               .w-row
                 .w-col.w-col-3.w-col-small-3.w-col-tiny-3.text-field.positive.prefix.no-hover
@@ -27,14 +26,14 @@
               .fontsize-smaller.text-error.u-marginbottom-20.fa.fa-exclamation-triangle.w-hidden[data-error-for="reward_minimum_value"] = t('simple_form.validation_texts.reward.minimum_value')
           .w-row
             .w-col.w-col-5
-              label.fontsize-smaller Previsão de entrega:
+              label.fontsize-smaller= t('.deliver_at') 
             .w-col.w-col-7
               .w-row
                 .w-col.w-col-6.w-sub-col.deliver-at-date
                   = form.input_field :deliver_at, required: true, as: :date, discard_day: true, start_year: Time.now.year, use_short_month: true, discard_day: true, required: true
           .w-row
             .w-col.w-col-5
-              label.fontsize-smaller Descrição:
+              label.fontsize-smaller= t('.description') 
             .w-col.w-col-7
               = form.input_field :description, as: :text,  class: 'positive', placeholder: "Descreva sua recompensa", required: true
               .fontsize-smaller.text-error.u-marginbottom-20.fa.fa-exclamation-triangle.w-hidden[data-error-for="reward_description"] = t('simple_form.validation_texts.reward.description')
@@ -42,12 +41,12 @@
             .w-col.w-col-5
               .w-checkbox
                 .w-checkbox-input= check_box_tag  "limit_reward", '', (resource.maximum_contributions.present?), id: 'limit_reward' 
-                label.w-form-label for="limit_reward" Limitar recompensa
+                label.w-form-label for="limit_reward"= t('.limit_reward') 
             .w-col.w-col-7 class="#{ resource.maximum_contributions.present? ?  '' : 'w-hidden'}"
-              = form.input_field :maximum_contributions, class: 'u-marginbottom-30 positive', placeholder: "Quantidade disponível"
+              = form.input_field :maximum_contributions, class: 'u-marginbottom-30 positive', placeholder: t('.available')
           .w-row
             .w-col.w-col-6.w-col-small-6.w-col-tiny-6.w-sub-col-middle
-              = form.button :submit, "Salvar",  class:'btn btn-small'
+              = form.button :submit, t('.submit'),  class:'btn btn-small'
             .w-col.w-col-5.w-col-small-5.w-col-tiny-5.w-sub-col-middle
               input.w-button.btn-terciary.btn.btn-small.reward-close-button type="submit" value="Fechar" 
             - if resource.persisted? && policy(resource).destroy?
