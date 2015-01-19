@@ -2,7 +2,7 @@ en:
   devise:
     passwords:
       new:
-        no_account_html: "Need an account? <strong>%{link}</strong>"
+        no_account_html: "Need an account?"
         titles:
           site: 'Forgot your password?'
           header: 'Forgot your password?'
