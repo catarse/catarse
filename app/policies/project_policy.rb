@@ -31,11 +31,16 @@ class ProjectPolicy < ApplicationPolicy
       p_attr = [channel_ids: []]
       p_attr << record.attribute_names.map(&:to_sym)
       p_attr << user_attributes
+      p_attr << budget_attributes
 
       {project: p_attr.flatten}
     else
-      {project: [:about, :video_url, :uploaded_image, :headline, :budget, user_attributes, posts_attributes]}
+      {project: [:about, :video_url, :uploaded_image, :headline, :budget, user_attributes, posts_attributes, budget_attributes]}
     end
+  end
+
+  def budget_attributes
+    { budgets_attributes: [:id, :name, :value, :_destroy] }
   end
 
   def user_attributes
