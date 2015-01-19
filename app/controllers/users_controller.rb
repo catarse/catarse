@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   after_filter :verify_authorized, except: %i[reactivate]
   inherit_resources
   defaults finder: :find_active!
-  actions :show, :update, :update_password, :unsubscribe_notifications, :credits, :destroy
+  actions :show, :update, :update_password, :unsubscribe_notifications, :credits, :destroy, :edit
   respond_to :json, only: [:contributions, :projects]
 
   def destroy
@@ -54,18 +54,24 @@ class UsersController < ApplicationController
     redirect_to root_path
   end
 
+  def edit
+    authorize resource
+    resource.links.build
+  end
+
   def update
     authorize resource
     update! do |success,failure|
       success.html do
         flash[:notice] = t('users.current_user_fields.updated')
+        redirect_to edit_user_path(@user, anchor: params[:anchor])
       end
       failure.html do
-        flash[:alert] = @user.errors.full_messages.to_sentence
+        flash.now[:notice] = @user.errors.full_messages.to_sentence
+        render :edit
       end
     end
 
-    redirect_to user_path(@user, anchor: 'settings')
   end
 
   def update_password
@@ -85,5 +91,9 @@ class UsersController < ApplicationController
 
   def permitted_params
     params.permit(policy(resource).permitted_attributes)
+  end
+
+  def use_catarse_boostrap
+    ["edit", "update"].include?(action_name) ? 'catarse_bootstrap' : 'application'
   end
 end

@@ -53,6 +53,7 @@ gem 'draper'
 gem 'slim-rails'
 gem 'jquery-rails'
 gem 'browser'
+gem "cocoon"
 
 # Static pages
 gem 'high_voltage'

@@ -26,6 +26,39 @@
               .card.card-terciary
                 label.field-label.fontweight-semibold= t('.budget_label') 
                 label.field-label.fontsize-smallest.fontcolor-secondary.u-marginbottom-20= t('.budget_hint') 
+                /.w-form
+                  form#email-form-3 data-name=("Email Form 3") name="email-form-3" 
+                    label.field-label.fontweight-semibold.u-margintop-30 for="name-8"  Detalhe do orçamento
+                    label.field-label.fontsize-smallest.fontcolor-secondary.u-marginbottom-20 for="field-6"  Informe uma lista com os principais itens do orçamento. Não precisa entrar em detalhes minuciosos, basta uma visão geral. Seus apoiadores gostarão de saber onde o dinheiro deles estará indo. Não existe uma regra&nbsp;quanto a quantidade de itens na lista, mas normalmente 5 costuma ser um bom número!
+                    .w-row
+                      .w-col.w-col-7.w-sub-col
+                        label.field-label for="field-16"  Item de orçamento
+                        input#field-16.w-input.text-field.positive name="field-16" placeholder=("Example Text") required="required" type="text" /
+                      .w-col.w-col-5
+                        label.field-label Valor
+                        .w-row
+                          .w-col.w-col-4.w-col-small-4.w-col-tiny-4.text-field.prefix.no-hover
+                            .fontcolor-secondary.u-text-center.fontsize-base.lineheight-tightest R$
+                          .w-col.w-col-8.w-col-small-8.w-col-tiny-8
+                            input#name-24.w-input.text-field.postfix.positive data-name=("Name 24") name="name-24" type="text" /
+                    .w-row
+                      .w-col.w-col-7.w-sub-col
+                        input#field-17.w-input.text-field.positive data-name=("Field 17") name="field-17" placeholder=("Example Text") required="required" type="text" /
+                      .w-col.w-col-5
+                        .w-row
+                          .w-col.w-col-4.w-col-small-4.w-col-tiny-4.text-field.prefix.no-hover
+                            .fontcolor-secondary.u-text-center.fontsize-base.lineheight-tightest R$
+                          .w-col.w-col-8.w-col-small-8.w-col-tiny-8
+                            input#name-25.w-input.text-field.postfix.positive data-name=("Name 25") name="name-25" type="text" /
+                    .w-row
+                      .w-col.w-col-4
+                      .w-col.w-col-4
+                      .w-col.w-col-4
+                        a.btn.btn-medium.btn-terciary href="#"  Adicionar item
+                  .w-form-done
+                    p Thank you! Your submission has been received!
+                  .w-form-fail
+                    p Oops! Something went wrong while submitting the form :(
                 = form.input_field :budget, as: :text, class: 'big bottom positive'
         .w-col.w-col-4
             .w-hidden-small.w-hidden-tiny.card.u-radius.u-marginbottom-20 data-ix="new-interaction" 
