@@ -3,11 +3,8 @@
     .w-row
       .w-col.w-col-2
       .w-col.w-col-8
-        .fontweight-semibold.fontsize-large Se prepare para receber apoios!
-        p.fontsize-base
-          | Com os dados abaixo, seu projeto estará pronto para ir ao ar. Após concluir o preenchimento, clique em Salvar. Se tudo estiver correto, o próximo passo é colocar o projeto no ar, na hora que você quiser. Basta apertar o botão
-          span.fontweight-semibold Publicar
-          | e mãos a obra!
+        .fontweight-semibold.fontsize-large= t('.title')
+        p.fontsize-base= t('.subtitle_html')
       .w-col.w-col-2.fontcolor-terciary
 
 = simple_form_for @project, html: { id: 'user_form', class: 'w-form' } do |f|
@@ -19,8 +16,8 @@
           = @project.display_errors(:user_settings)
           .w-form.card.card-terciary
             #email-form
-              .fontsize-base.fontweight-semibold Dados Cadastrais e endereço
-              .fontsize-small.u-marginbottom-20 Precisamos desses dados abaixo pois emitimos uma Nota Fiscal ao final do projeto, no caso de ele ser bem-sucedido.&nbsp;
+              .fontsize-base.fontweight-semibold= t('.user_data_title') 
+              .fontsize-small.u-marginbottom-20= t('.user_data_subtitle') 
               .divider.u-marginbottom-20
               .w-row
                 .w-col.w-col-6.w-sub-col
@@ -69,8 +66,8 @@
                       = form.input_field :phone_number, as: :string, class: 'positive'
           .w-form.card.card-terciary
             = form.simple_fields_for :bank_account do |bform|
-              .fontsize-base.fontweight-semibold Dados bancários
-              .fontsize-small.u-marginbottom-20 Para efetuar o pagamento em sua conta, no caso de seu projeto ser bem-sucedido, precisamos que você nos informe seus dados bancários
+              .fontsize-base.fontweight-semibold= t('.account_title')
+              .fontsize-small.u-marginbottom-20= t('.account_subtitle')
               .divider.u-marginbottom-20
               .w-row
                 .w-col.w-col-6.w-sub-col
@@ -120,7 +117,7 @@
           .w-row
             .w-col.w-col-4
             .w-col.w-col-4
-              = form.button :submit, 'Salvar',  class:'btn btn-large'
+              = form.button :submit, t('.submit'),  class:'btn btn-large'
             .w-col.w-col-4
       
           

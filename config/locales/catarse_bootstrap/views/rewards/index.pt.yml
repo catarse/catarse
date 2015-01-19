@@ -1,5 +1,15 @@
 pt:
   rewards:
+    form:
+      edit: "Editar recompensa"
+      reward: Recompensa
+      info_box: "Você pode limitar a quantidade disponível de uma recompensa. Uma vez que o limite é atingido, a recompensa será marcada como ESGOTADA. A previsão de entrega é a data que você pretende entregar a recompensa aos apoiadores. Se você quiser mudar a ordem das recompensas, basta arrastá-las por aqui. Experimente!"
+      minimum_value: "Valor mínimo:"
+      deliver_at: "Previsão de entrega:"
+      description: "Descrição:"
+      limit_reward: "Limitar recompensa"
+      available: "Quantidade disponível"
+      submit: "Salvar"
     index:
       select_reward: "Selecione essa recompensa"
       display_remaining: "%{remaining} de %{maximum} disponíveis"
