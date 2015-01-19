@@ -4,13 +4,18 @@ App.addChild('DashboardRewards', {
   events:{
     "click .show_reward_form": "showRewardForm",
     "click .reward-close-button": "closeForm",
-    "click .fa-question-circle": "toggleExplanation"
+    "click .fa-question-circle": "toggleExplanation",
+    "click #limit_reward": "showInput"
   },
 
   activate: function() {
     this.$rewards = this.$('#dashboard-rewards');
     this.sortableRewards();
     this.showNewRewardForm();
+  },
+
+  showInput: function(event) {
+    $('#reward_maximum_contributions').parent().toggle();
   },
 
   toggleExplanation: function() {
