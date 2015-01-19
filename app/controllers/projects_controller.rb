@@ -106,6 +106,7 @@ class ProjectsController < ApplicationController
     @user = resource.user
     @user.build_bank_account unless @user.bank_account.present?
     @post =  resource.posts.build
+    @budget = resource.budgets.build
   end
 
   def fb_comments_link

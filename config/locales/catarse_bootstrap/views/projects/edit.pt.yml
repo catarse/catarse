@@ -53,7 +53,7 @@ pt:
                         Precisa de mais informações sobre processos de campanha? Veja o box ao lado.
                       </p>
                       <p>
-                        A pequisa&nbsp;%{link1} também é ótima fonte de dados sobre o cenário brasileiro. Uma boa lida no&nbsp; %{link2} pode ser inspiradora. Lá você encontra histórias de projetos bem sucedidos e dicas de campanha. 
+                        A pequisa&nbsp;%{link1} também é ótima fonte de dados sobre o cenário brasileiro. Uma boa lida no&nbsp; %{link2} pode ser inspiradora. Lá você encontra histórias de projetos bem sucedidos e dicas de campanha.
                       </p>
                     </div>
                     <div class='fontsize-base fontweight-bold u-marginbottom-10'>
@@ -74,11 +74,11 @@ pt:
       approved:
         title: "%{name}, seu projeto foi aprovado!"
         subtitle_html: "Para colocar seu projeto no ar e dar início a sua campanha, preencha os dados requisitados na aba %{link}. "
-      in_analysis: 
+      in_analysis:
         title: "%{name}, em breve enviaremos um feedback sobre seu projeto."
         subtitle_html: "Você enviou seu projeto para análise da equipe do Catarse. Em até <strong>4 dias úteis</strong> nosso atendimento entrará em contato com você para dar o OK para ir ao ar ou para sugerir ajustes. Frio na barriga? Não se deixe tomar pela ansiedade e revise o seu projeto. Essa é a hora de deixar ele bem redondo. Colete feedbacks com os mais próximos e escute as sugestões da equipe do Catarse. Lembre-se, algumas modificações não serão permitidas quando o seu projeto for ao ar."
     edit:
-      start_tab: Início 
+      start_tab: Início
       basics_tab: Básico
       project_tab: Projeto
       posts_tab: Novidades
@@ -121,7 +121,7 @@ pt:
       warning: "Lembre-se que todo post de novidade vai diretamente para o email de seus apoiadores. Por isso, revise bem seu texto antes de publicá-lo."
       old_posts: "Novidades antigas"
     dashboard_project:
-      budget_hint: "Como o seu dinheiro será utilizado?&nbsp;Procure ser o mais transparente possível. Não existe um modelo padrão para mostrar o seu orçamento, no entanto gráficos de tabelas são sempre bem-vindos!"
+      budget_hint: "Informe uma lista com os principais itens do orçamento. Não precisa entrar em detalhes minuciosos, basta uma visão geral. Seus apoiadores gostarão de saber onde o dinheiro deles estará indo. Não existe uma regra&nbsp;quanto a quantidade de itens na lista, mas normalmente 5 costuma ser um bom número!"
       budget_label: "Orçamento do projeto"
       start: "Conte o que você tem a dizer para o mundo!"
       start_subtitle: "Use esse espaço abaixo para contar sobre seu projeto e o porquê as pessoas deveriam se empolgar com ele e abraçar sua ideia"
