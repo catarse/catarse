@@ -11,6 +11,10 @@ class UserPolicy < ApplicationPolicy
     done_by_owner_or_admin?
   end
 
+  def edit?
+    done_by_owner_or_admin?
+  end
+
   def update?
     done_by_owner_or_admin?
   end
@@ -26,6 +30,7 @@ class UserPolicy < ApplicationPolicy
   def permitted_attributes
     u_attrs = [ bank_account_attributes: [:bank_id, :name, :agency, :account, :owner_name, :owner_document, :account_digit, :agency_digit] ]
     u_attrs << record.attribute_names.map(&:to_sym)
+    u_attrs << { links_attributes: [:id, :_destroy, :link] }
     u_attrs.flatten!
 
     unless user.try(:admin?)
