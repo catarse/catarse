@@ -2,7 +2,7 @@ en:
   devise:
     sessions:
       new:
-        no_account_html: "Need an account? <strong>%{link}</strong>"
+        no_account_html: "Need an account?"
         titles:
           site: 'Log in'
           header: 'Log in'
