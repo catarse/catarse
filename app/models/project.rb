@@ -28,12 +28,14 @@ class Project < ActiveRecord::Base
   has_many :rewards
   has_many :contributions
   has_many :posts, class_name: "ProjectPost", inverse_of: :project
+  has_many :budgets, class_name: "ProjectBudget", inverse_of: :project
   has_many :unsubscribes
 
   accepts_nested_attributes_for :rewards
   accepts_nested_attributes_for :channels
   accepts_nested_attributes_for :user
   accepts_nested_attributes_for :posts, allow_destroy: true#, reject_if: ->(x) { x[:title].blank? || x[:comment].blank? }
+  accepts_nested_attributes_for :budgets, allow_destroy: true, reject_if: ->(x) { x[:name].blank? || x[:value].blank? }
 
   catarse_auto_html_for field: :about, video_width: 600, video_height: 403
 

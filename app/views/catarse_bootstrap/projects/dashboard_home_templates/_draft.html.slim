@@ -3,12 +3,12 @@
     .w-row
       .w-col.w-col-2
       .w-col.w-col-8
-        .fontsize-large.fontweight-semibold.u-marginbottom-10= "#{@project.user.display_name}, continue a construir o seu projeto!"
+        .fontsize-large.fontweight-semibold.u-marginbottom-10= t('.title', name: @project.user.display_name)
         p.fontsize-base
-          | Antes de enviar seu projeto para nossa análise, você tem que preencher todos os dados das abas acima (Básico, Projeto, Recompensas e Sobre você). Você pode salvar as alterações e voltar aqui ao rascunho quantas vezes quiser (no seu perfil de usuário tem um link para o projeto). Quando sentir que preencheu todas as abas da forma mais completa possível, clique no botão ENVIAR e nosso atendimento irá entrar em contato com você.
+          = t('.subtitle')
         .card.u-radius.u-marginbottom-30
           .fontsize-small.fontweight-semibold
-            span.fontcolor-secondary> Status:
+            span.fontcolor-secondary>= t('projects.dashboard_home_templates.status')
             span class="text-color-for-status #{@project.state}"
               ' #{t("projects.project.display_status.#{@project.state}").upcase}
       .w-col.w-col-2
@@ -17,7 +17,7 @@
     .w-row
       .w-col.w-col-8.w-hidden-small.w-hidden-tiny
         .fontsize-base.u-marginbottom-40.card.card-terciary
-          p.fontweight-bold Sentiu que precisa estudar mais para montar seu projeto? Confira os links no box ao lado.
+          p.fontweight-bold= t('.study_title') 
           p
             | A pequisa&nbsp;
             a.alt-link href="http://pesquisa.catarse.me/" target="_blank" Retrato do Financiamento Coletivo Brasil

@@ -3,7 +3,7 @@
     .w-row
       .w-col.w-col-8
         .project-news.u-marginbottom-60
-          .fontsize-large.fontweight-semibold.u-marginbottom-30 Escrever uma novidade
+          .fontsize-large.fontweight-semibold.u-marginbottom-30= t('.title')
           = simple_form_for @project,  html: { class: 'w-form' } do |f|
             =  hidden_field_tag 'anchor', 'posts'
             = f.simple_fields_for :posts, @project.posts.build do |form|
@@ -15,19 +15,18 @@
 
               .w-checkbox.w-clearfix.u-marginbottom-30
                 = form.check_box :exclusive, class: 'w-checkbox-input'
-                = form.label :exclusive, 'Visível apenas para apoiadores', class: 'w-form-label fontsize-small'
+                = form.label :exclusive, t('.only_to_backers'), class: 'w-form-label fontsize-small'
 
               .card.card-message.u-radius.u-marginbottom-40
-                .fontsize-small Lembre-se que todo post de novidade vai diretamente para o email de seus apoiadores. Por isso, revise bem seu texto antes de publicá-lo.
-              
+                .fontsize-small= t('.warning')
               .w-row
                 .w-col.w-col-4.w-sub-col
-                  = form.submit 'Publicar novidate', class: 'btn btn-medium'
+                  = form.submit t('.publish'), class: 'btn btn-medium'
                 .w-col.w-col-3
-                  = link_to 'Descartar', 'javascript:location.reload();', class: 'btn btn-medium btn-terciary'
+                  = link_to t('.discard'), 'javascript:location.reload();', class: 'btn btn-medium btn-terciary'
                 .w-col.w-col-5
         .divider.u-marginbottom-30
-        .fontsize-large.fontweight-semibold.u-marginbottom-30 Novidades antigas
+        .fontsize-large.fontweight-semibold.u-marginbottom-30= t('.old_posts') 
         - @project.posts.each do |post|
           - if post.persisted?
             .project-news.u-marginbottom-30
@@ -42,51 +41,8 @@
                 .w-col.w-col-3
                   .twitter_share= render_twitter text: "#{post.title}", url: url
                 .w-col.w-col-3
-                  .facebook_share= render_facebook_share href: url, width: '360'                
+                  .facebook_share= render_facebook_share href: url, width: '360'
             .divider.u-marginbottom-30
 
       .w-col.w-col-4
-        .w-hidden-small.w-hidden-tiny.card.u-radius.u-marginbottom-20 data-ix="new-interaction" 
-          .fontsize-small.fontweight-semibold.u-marginbottom-20 Dicas de formatação
-          ul.w-list-unstyled
-            li.u-marginbottom-20.fontsize-smallest
-              .w-row
-                .w-col.w-col-2.fa.fa-image.fa-lg.fontcolor-secondary
-                .w-col.w-col-10
-                  div Se você colar a url de uma imagem ou de um vídeo do vimeo ou do youtube, eles irão aparecer na descrição da ideia. experimente!
-            li.u-marginbottom-20.fontsize-smallest
-              .w-row
-                .w-col.w-col-2.fa.fa-lg.fontcolor-secondary.fa-link
-                .w-col.w-col-10
-                  div
-                    | Ao colar uma url qualquer, ela virará um link. Por exemplo, http://catarse.me virará
-                    a.alt-link href="#"  http://catarse.me
-            li.u-marginbottom-20.fontsize-smallest
-              .w-row
-                .w-col.w-col-2.fa.fa-lg.fontcolor-secondary.fa-external-link
-                .w-col.w-col-10
-                  div
-                    | Se você quiser colocar um texto no link, basta usar o seguinte formato: "texto que você quer":http://sua.url. Por exemplo, "Catarse":http://catarse.me virará&nbsp;
-                    a.alt-link href="#" > Catarse
-                    | \.
-                    a.alt-link href="#" 
-            li.u-marginbottom-20.fontsize-smallest
-              .w-row
-                .w-col.w-col-2.fa.fa-lg.fontcolor-secondary.fa-bold
-                .w-col.w-col-10
-                  div
-                    | Você pode usar negrito adicionando dois asteriscos (**) antes e depois do texto que você quer formatar. Por exemplo, **meu texto em negrito** irá aparecer como&nbsp;
-                    span.fontweight-bold> meu texto em negrito
-                    | \.
-                    a.alt-link href="#" 
-            li.u-marginbottom-20.fontsize-smallest
-              .w-row
-                .w-col.w-col-2.fa.fa-lg.fontcolor-secondary.fa-italic
-                .w-col.w-col-10
-                  div
-                    | Você pode usar itálico adicionando um underline (_) antes e depois do texto que você quer formatar. Por exemplo, _meu texto em itálico_ irá aparecer como&nbsp;
-                    em> meu texto em itálico
-                    | \.
-                    a.alt-link href="#" 
-        .u-marginbottom-30
-
+        = render 'formatting_tips'
