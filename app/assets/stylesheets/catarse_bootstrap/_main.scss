@@ -107,6 +107,10 @@ p {
   padding-bottom: 30px;
 }
 .section.section-gray-one {
+  margin-top: 60px;
+  margin-bottom: -80px;
+  padding-top: 79px;
+  padding-bottom: 119px;
   background-color: #f1f4f4;
 }
 .section.negative {
@@ -564,6 +568,7 @@ p {
   padding-top: 9px;
   padding-bottom: 9px;
   background-color: rgba(37, 49, 57, 0.6);
+  color: #f1f2f3;
   line-height: 20px;
 }
 .header-link.help {
@@ -1569,6 +1574,8 @@ p {
 .dashboard-nav-link.w--current {
   border-bottom-color: #409bff;
   background-color: white;
+  color: #3f4752;
+  font-weight: 600;
 }
 .dashboard-nav-link.off {
   border-bottom-color: white;
@@ -1949,7 +1956,6 @@ p {
   text-decoration: none;
 }
 .link-hidden-light:hover {
-  color: #3f4752;
   text-decoration: underline;
 }
 .u-marginbottom-40 {
@@ -2404,9 +2410,9 @@ p {
   margin-left: 15px;
 }
 .hero-full {
-  height: 760px;
   margin-top: -65px;
-  padding-top: 100px;
+  padding-top: 240px;
+  padding-bottom: 240px;
 }
 .hero-guide {
   padding-top: 150px;
@@ -2417,14 +2423,12 @@ p {
   color: white;
 }
 .hero-jobs {
-  padding-top: 190px;
   background-image: url('../images/HOME-CAREIRAS.jpg');
   background-position: 50% 50%;
   background-size: cover;
   color: white;
 }
 .hero-back {
-  padding-top: 240px;
   background-image: url('../images/home-apoiador.jpg');
   background-position: 50% 50%;
   background-size: cover;
@@ -2507,6 +2511,15 @@ p {
 }
 .u-right-big-only {
   float: right;
+}
+.col-blog-post {
+  padding-right: 30px;
+  padding-left: 30px;
+}
+.embed-content {
+  position: relative;
+  width: 940px;
+  height: 550px;
 }
 html.w-mod-js *[data-ix="fade-in"] {
   opacity: 0;
@@ -2693,7 +2706,8 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     padding-bottom: 10px;
   }
   .card-project-thumb {
-    height: 140px;
+    width: 100%;
+    height: 129px;
   }
   .formwrapper {
     margin-bottom: 20px;
@@ -2826,8 +2840,16 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     padding-right: 24px;
     padding-left: 24px;
   }
+  .hero-full {
+    padding-top: 210px;
+    padding-bottom: 170px;
+  }
   .card-project-meter.successful {
     font-size: 13px;
+  }
+  .embed-content {
+    width: 728px;
+    height: 552px;
   }
 }
 @media (max-width: 767px) {
@@ -3059,6 +3081,8 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
   }
   .card-project-thumb {
     display: inline-block;
+    width: 100%;
+    height: 240px;
     clear: none;
     border-radius: 5px 0px 0px 5px;
   }
@@ -3215,6 +3239,9 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     box-shadow: rgba(63, 71, 82, 0.52) 0px -2px 12px -3px;
     text-align: left;
   }
+  .hero-full {
+    padding-top: 90px;
+  }
   .card-project-meter.successful {
     text-align: center;
   }
@@ -3238,6 +3265,13 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
   }
   .u-right-big-only {
     float: none;
+  }
+  .col-blog-post {
+    margin-bottom: 50px;
+  }
+  .embed-content {
+    width: 568px;
+    height: 552px;
   }
 }
 @media (max-width: 479px) {
@@ -3424,7 +3458,7 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
   .card-project-thumb {
     display: block;
     width: 100%;
-    height: 130px;
+    height: 170px;
     float: none;
     border-radius: 5px 5px 0px 0px;
   }
@@ -3519,7 +3553,15 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
   .fontsize-large-small-only {
     font-size: 18px;
   }
+  .hero-full {
+    padding-top: 150px;
+  }
   .hero-small {
     padding-bottom: 20px;
   }
+  .embed-content {
+    width: 320px;
+    height: 552px;
+  }
 }
+
