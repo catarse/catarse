@@ -65,15 +65,15 @@
 
 .section.section-gray-one
   .w-container
-    .fontsize-large.u-text-center.u-marginbottom-20
+    .fontsize-large.u-text-center.u-marginbottom-60
       span.fa.fa-rss.text-success
       = t('.blog')
     .w-row
       - (Blog.fetch_last_posts rescue [])[0..2].each do |post|
-        .w-col.w-col-4
-          .fontweight-semibold.fontsize-base.u-marginbottom-10.u-text-center-small-only
-            /= link_to post.url, target: '__blank', class: 'fontweight-semibold fontsize-base u-marginbottom-10 u-text-center-small-only' do
-            /span.fontweight-semibold.fontsize-base.u-marginbottom-10.u-text-center-small-only
+        .w-col.w-col-4.col-blog-post
+          .fontweight-semibold.fontsize-base.u-marginbottom-10
+            /= link_to post.url, target: '__blank', class: 'fontweight-semibold fontsize-base u-marginbottom-10' do
+            /span.fontweight-semibold.fontsize-base.u-marginbottom-10
             = truncate(post.title, length: 80)
           .fontsize-smaller.fontcolor-secondary
             /= link_to post.url, target: '__blank', class: 'fontsize-smaller fontcolor-secondary ' do

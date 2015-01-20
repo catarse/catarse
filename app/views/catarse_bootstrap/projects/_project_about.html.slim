@@ -17,28 +17,6 @@
       .fontsize-small
         = link_to t('.active_btn'), reminder_project_path(@project), class: 'fa fa-clock-o link-hidden u-right fontcolor-secondary'
 
-
-- @project.channels.each do |channel|
-  .card.card-secondary.u-marginbottom-40
-    .w-row
-      .w-col.w-col-2
-        = image_tag channel.users.first.display_image, title: channel.name, class: 'thumb u-radius'
-      .w-col.w-col-6
-        .fontsize-smaller
-          = "Este projeto faz parte do Canal"
-        .fontweight-bold.u-marginbottom-10.fontsize-smaller
-          = channel.name
-        = link_to "Conheça o Canal", root_url(subdomain: channel.permalink), class: 'alt-link fontsize-smaller'
-      .w-col.w-col-4
-        .project-follow-channel
-          - if channel.has_subscriber?(current_user)
-            = link_to channels_subscriber_path, {method: :delete, class: "btn btn-small btn-dark"} do
-              .stop_following= t('channels.unfollow')
-          - else
-              = link_to t('channels.follow'), channels_subscriber_path, class: 'btn btn-small btn-dark', title: t('channels.follow')
-          .fontsize-smaller
-            = t('channels.subscribed', count: channel.channels_subscribers.size)
-
 .project-about
   .fontsize-large.u-marginbottom-30 = @project.headline.try(:strip)
   .no-mobile
