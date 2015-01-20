@@ -5,12 +5,12 @@
     .w-row.u-text-center
       .w-col.w-col-2
       .w-col.w-col-8
-        .fontweight-semibold.u-marginbottom-20.fontsize-jumbo Tire projetos do papel!
-        .fontsize-large.lineheight-tight.u-marginbottom-30 Ciências, música, quadrinhos, cinema, impacto social e muito mais. Conheça, inspire-se e apoie projetos&nbsp;
+        .fontweight-semibold.u-marginbottom-20.fontsize-jumbo= t('.banner_title') 
+        .fontsize-large.lineheight-tight.u-marginbottom-30= t('.banner_subtitle')
         .w-row
           .w-col.w-col-3
           .w-col.w-col-6
-            = link_to 'Apoie um projeto', explore_path(ref: 'home_banner_explore'), class: 'btn btn-large'
+            = link_to t('.back_a_project'), explore_path(ref: 'home_banner_explore'), class: 'btn btn-large'
           .w-col.w-col-3
       .w-col.w-col-2
 
@@ -20,10 +20,10 @@
       .w-row.u-marginbottom-20
         .w-col.w-col-10.w-col-small-6.w-col-tiny-6
           .fontsize-large.lineheight-looser
-            span.fa.fa-heart.text-success>.
-            | &nbsp;Próximos a você
+            span.fa.fa-heart.text-success>
+            = t('.near_you')
         .w-col.w-col-2.w-col-small-6.w-col-tiny-6
-          = link_to 'Ver todos', explore_path(ref: 'home_near', anchor: "near_of/" ) + current_user.address_state, class: 'btn btn-small btn-terciary'
+          = link_to t('.see_all'), explore_path(ref: 'home_near', anchor: "near_of/" ) + current_user.address_state, class: 'btn btn-small btn-terciary'
       .w-row
         == render_projects @projects_near, 'home_near', { wrapper_class: 'w-col w-col-4' }
 
@@ -32,10 +32,10 @@
     .w-row.u-marginbottom-20
       .w-col.w-col-10.w-col-small-6.w-col-tiny-6
         .fontsize-large.lineheight-looser
-          span.fa.fa-heart.text-success>.
-          | &nbsp;Recomendados
+          span.fa.fa-heart.text-success>
+          = t('.recommended')
       .w-col.w-col-2.w-col-small-6.w-col-tiny-6
-        = link_to 'Ver todos', explore_path(ref: :home_recommended, anchor: :recommended), class: 'btn btn-small btn-terciary'
+        = link_to t('.see_all'), explore_path(ref: :home_recommended, anchor: :recommended), class: 'btn btn-small btn-terciary'
     .w-row
       == render_projects @recommends, 'home_recommended', { wrapper_class: 'w-col w-col-4' }
 
@@ -44,10 +44,10 @@
     .w-row.u-marginbottom-20
       .w-col.w-col-10.w-col-small-6.w-col-tiny-6
         .fontsize-large.lineheight-looser
-          span.fa.fa-heart.text-success>.
-          | &nbsp;Na reta final
+          span.fa.fa-heart.text-success>
+          = t('.expiring')
       .w-col.w-col-2.w-col-small-6.w-col-tiny-6
-        = link_to 'Ver todos', explore_path(ref: :home_expiring, anchor: :expiring), class: 'btn btn-small btn-terciary'
+        = link_to t('.see_all'), explore_path(ref: :home_expiring, anchor: :expiring), class: 'btn btn-small btn-terciary'
     .w-row
       == render_projects @expiring, 'home_expiring', { wrapper_class: 'w-col w-col-4' }
 
@@ -56,18 +56,18 @@
     .w-row.u-marginbottom-20
       .w-col.w-col-10.w-col-small-6.w-col-tiny-6
         .fontsize-large.lineheight-looser
-          span.fa.fa-heart.text-success>.
-          | &nbsp;Recentes
+          span.fa.fa-heart.text-success>
+          = t('.recents')
       .w-col.w-col-2.w-col-small-6.w-col-tiny-6
-        = link_to 'Ver todos', explore_path(ref: :home_recent, anchor: :recent), class: 'btn btn-small btn-terciary'
+        = link_to t('.see_all'), explore_path(ref: :home_recent, anchor: :recent), class: 'btn btn-small btn-terciary'
     .w-row
       == render_projects @recent, 'home_recent', { wrapper_class: 'w-col w-col-4' }
 
 .section.section-gray-one
   .w-container
     .fontsize-large.u-text-center.u-marginbottom-60
-      span.fa.fa-rss.text-success .
-      | Blog do Catarse
+      span.fa.fa-rss.text-success
+      = t('.blog')
     .w-row
       - (Blog.fetch_last_posts rescue [])[0..2].each do |post|
         .w-col.w-col-4.col-blog-post

@@ -4,8 +4,8 @@
       .w-row
         .w-col.w-col-2
         .w-col.w-col-8
-          .fontsize-large.fontweight-semibold Crie e edite aqui suas recompensas
-          p.fontsize-base Não viaje! Pense em como irá entregá-las e coloque tudo isso no orçamento. Prometeu?! CUMPRA! :D
+          .fontsize-large.fontweight-semibold= t('.title') 
+          p.fontsize-base= t('.subtitle') 
         .w-col.w-col-2
   .section
     .w-container
@@ -17,7 +17,7 @@
               .w-row.card.card-terciary.u-marginbottom-20[id="reward_#{reward.id}" data-update_url=sort_project_reward_path(@project, reward) class="sortable"]
                 .w-col.w-col-4.w-sub-col
                   .fontweight-semibold.fontsize-smallest.u-marginbottom-10
-                    = "Recompensa ##{index + 1}"
+                    = "#{t('.reward')} ##{index + 1}"
                 .w-col.w-col-8
                   .card
                     .w-row
@@ -50,7 +50,7 @@
               .w-hidden[class="edit_reward_content_#{reward.id}"]
 
           .new_reward_content.w-hidden
-          = link_to "+ Adicionar recompensa", 'javascript:void(0);', data: {target: '.new_reward_content', path: new_project_reward_path(@project)}, class: 'btn btn-large btn-message show_reward_form new_reward_button'
+          = link_to "+ #{t('.add_reward')}", 'javascript:void(0);', data: {target: '.new_reward_content', path: new_project_reward_path(@project)}, class: 'btn btn-large btn-message show_reward_form new_reward_button'
 
         .w-col.w-col-4
           .w-hidden-small.w-hidden-tiny.card.u-radius.u-marginbottom-20 data-ix="new-interaction" 

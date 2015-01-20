@@ -3,16 +3,12 @@
     .w-row
       .w-col.w-col-2
       .w-col.w-col-8
-        .fontsize-large.fontweight-semibold.u-marginbottom-10= "#{@project.user.display_name}, sua campanha está no ar!"
+        .fontsize-large.fontweight-semibold.u-marginbottom-10= t('.title', name: @project.user.display_name)
         p.fontsize-base
-          | Seu projeto está no ar e sua campanha se encerrará em #{@project.display_expires_at}. 
-          ' Você poderá receber apoios até o seu último minuto de campanha. Lembre-se, é tudo-ou-nada e você só levará os 
-          ' recursos captados se bater a meta que foi estipulada. Não esqueça de se informar sobre como o 
-          ' #{link_to 'repasse de dinheiro é feito para projetos bem sucedidos', 'http://suporte.catarse.me/hc/pt-br/articles/202037493-Como-ser%C3%A1-feito-o-repasse-do-dinheiro-', target: '__blank'}. 
-          ' É MUITO IMPORTANTE! Confira também #{link_to 'as principais dúvidas de realizadores','http://suporte.catarse.me/hc/pt-br/sections/200415988-Realizadores-projeto-no-ar', target: '__blank'}.
+          = t('.subtitle_html', date: @project.display_expires_at, link1: (link_to 'repasse de dinheiro é feito para projetos bem sucedidos', 'http://suporte.catarse.me/hc/pt-br/articles/202037493-Como-ser%C3%A1-feito-o-repasse-do-dinheiro-', target: '__blank'), link2: (link_to 'as principais dúvidas de realizadores','http://suporte.catarse.me/hc/pt-br/sections/200415988-Realizadores-projeto-no-ar', target: '__blank'))
         .card.u-radius.u-marginbottom-30
           .fontsize-small.fontweight-semibold
-            span.fontcolor-secondary> Status:
+            span.fontcolor-secondary>= t('projects.dashboard_home_templates.status')
             span class="text-color-for-status #{@project.state}"
               ' #{t("projects.project.display_status.#{@project.state}").upcase}
           = render 'projects/dashboard_home_templates/project_numbers', project: @project
@@ -20,26 +16,7 @@
   .w-container
     .w-row
       .w-col.w-col-8.w-hidden-small.w-hidden-tiny
-        .fontsize-base.u-marginbottom-40.card.card-terciary
-          p.fontweight-bold Com o projeto no ar, algumas informações não podem mais ser editadas
-          p
-            | Você não poderá mais alterar:
-            br>/
-            | - a sua meta de captação;
-            br>/
-            | - o prazo final;
-            br>/
-            | - a URL do projeto;
-            br>/
-            | - o usuário dono do projeto.
-          p.fontweight-bold Precisa de mais informações sobre processos de campanha? Veja o box ao lado.
-          p
-            | A pequisa&nbsp;
-            a.alt-link href="http://pesquisa.catarse.me/" target="_blank" Retrato do Financiamento Coletivo Brasil
-            '  também é ótima fonte de dados sobre o cenário brasileiro. Uma boa lida no&nbsp;
-            a.alt-link href="http://blog.catarse.me/" target="_blank" Blog do Catarse
-            '  pode ser inspiradora. Lá você encontra histórias de projetos bem sucedidos e dicas de campanha.
-        
+        = t('.explanation_html', link1: (link_to 'Retrato do Financiamento Coletivo Brasil', 'http://pesquisa.catarse.me/', target: '_blank' ), link2: (link_to 'Blog do Catarse', 'http://blog.catarse.me/', target: '_blank'))
 
       .w-col.w-col-4
         .w-hidden-small.w-hidden-tiny.card.u-radius.u-marginbottom-20 data-ix="new-interaction" 
