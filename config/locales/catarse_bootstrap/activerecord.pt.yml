@@ -131,6 +131,7 @@ pt:
               greater_than: "A meta deve ser maior que 9"
               not_a_number: "Meta de arrecadação aceita somente números"
             online_days:
+              blank: "O prazo de arrecadação não pode ficar em branco"
               greater_than: "O prazo para arrecadação deve ser maior que 0 dias"
               not_a_number: "O prazo para arrecadação deve ser um número de dias"
             about:
@@ -157,7 +158,7 @@ pt:
       failed: 'As informações não foram salvas, verifique se todos os campos foram preenchidos corretamente'
     delete:
       posts: 'Novidade apagada com sucesso'
-    video_regex_validation: somente URLs do Vimeo são aceitas
+    video_regex_validation: Somente URLs do Youtube ou Vimeo são aceitas
   contribution:
     project_should_be_online: Você não pode apoiar um projeto que não está no ar
     reward_must_be_from_project: deve ser do mesmo projeto

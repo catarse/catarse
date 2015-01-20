@@ -135,9 +135,9 @@ class Project < ActiveRecord::Base
 
   attr_accessor :accepted_terms
 
-  # Draft state validtions
+  # Draft state validations
   validates_acceptance_of :accepted_terms, on: :create
-  validates_presence_of :name, :user, :category, :permalink
+  validates_presence_of :name, :user, :category
   validates_length_of :headline, maximum: 140
   validates_numericality_of :online_days, less_than_or_equal_to: 60, greater_than: 0, if: ->(p){ p.online_days.present? }
   validates_numericality_of :goal, greater_than: 9, allow_blank: true
