@@ -87,10 +87,12 @@ class ProjectsController < ApplicationController
     resource.attributes = permitted_params[:project]
     @user = resource.user
 
-    if resource.save(validate: (resource.online? || resource.failed? || resource.successful? ? true : false))
+    if resource.save(validate: should_use_validate)
       flash[:notice] = t('project.update.success')
     else
       flash[:notice] = t('project.update.failed')
+      edit
+      return render :edit
     end
 
     if params[:anchor]
@@ -145,6 +147,10 @@ class ProjectsController < ApplicationController
   end
 
   protected
+
+  def should_use_validate
+    (resource.online? || resource.failed? || resource.successful? || permitted_params[:project][:permalink].present? ? true : false)
+  end
 
   def permitted_params
     params.permit(policy(resource).permitted_attributes)
