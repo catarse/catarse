@@ -20,7 +20,6 @@
       .w-row.u-marginbottom-20
         .w-col.w-col-10.w-col-small-6.w-col-tiny-6
           .fontsize-large.lineheight-looser
-            span.fa.fa-heart.text-success>
             = t('.near_you')
         .w-col.w-col-2.w-col-small-6.w-col-tiny-6
           = link_to t('.see_all'), explore_path(ref: 'home_near', anchor: "near_of/" ) + current_user.address_state, class: 'btn btn-small btn-terciary'
@@ -32,7 +31,6 @@
     .w-row.u-marginbottom-20
       .w-col.w-col-10.w-col-small-6.w-col-tiny-6
         .fontsize-large.lineheight-looser
-          span.fa.fa-heart.text-success>
           = t('.recommended')
       .w-col.w-col-2.w-col-small-6.w-col-tiny-6
         = link_to t('.see_all'), explore_path(ref: :home_recommended, anchor: :recommended), class: 'btn btn-small btn-terciary'
@@ -44,7 +42,6 @@
     .w-row.u-marginbottom-20
       .w-col.w-col-10.w-col-small-6.w-col-tiny-6
         .fontsize-large.lineheight-looser
-          span.fa.fa-heart.text-success>
           = t('.expiring')
       .w-col.w-col-2.w-col-small-6.w-col-tiny-6
         = link_to t('.see_all'), explore_path(ref: :home_expiring, anchor: :expiring), class: 'btn btn-small btn-terciary'
@@ -56,7 +53,6 @@
     .w-row.u-marginbottom-20
       .w-col.w-col-10.w-col-small-6.w-col-tiny-6
         .fontsize-large.lineheight-looser
-          span.fa.fa-heart.text-success>
           = t('.recents')
       .w-col.w-col-2.w-col-small-6.w-col-tiny-6
         = link_to t('.see_all'), explore_path(ref: :home_recent, anchor: :recent), class: 'btn btn-small btn-terciary'
@@ -66,7 +62,6 @@
 .section.section-gray-one
   .w-container
     .fontsize-large.u-text-center.u-marginbottom-60
-      span.fa.fa-rss.text-success
       = t('.blog')
     .w-row
       - (Blog.fetch_last_posts rescue [])[0..2].each do |post|
