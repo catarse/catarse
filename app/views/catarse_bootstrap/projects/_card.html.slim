@@ -7,13 +7,12 @@ div class="#{defined?(wrapper_class) ? wrapper_class : ''}"
     .card-project-description
       .fontweight-semibold.fontsize-base.u-marginbottom-10.u-text-center-small-only=link_to truncate(@project.name, length: 50, separator: ''), project_by_slug_path(@project.permalink), title: @project.name, target: target, class: 'link-hidden'
       .w-hidden-small.w-hidden-tiny.fontcolor-secondary.fontsize-smaller= link_to truncate(@project.headline, length: 140), project_by_slug_path(@project.permalink), title: @project.headline, target: target, class: 'link-hidden'
-    .w-clearfix.card-project-author.u-text-center-small-only
+    .w-clearfix.card-project-author.w-hidden-small.w-hidden-tiny
       .w-hidden-small.w-hidden-tiny.thumb.small.u-round.u-left
         .u-left
           = link_to image_tag(@project.user.display_image, class: 'u-round thumb small'), user_path(@project.user), title:@project.user.name, target: target
       .card-author-name
-        span.w-hidden-main.w-hidden-medium>= t('.by')
-        = link_to @project.user.display_name, user_path(@project.user), class: 'link-hidden fontsize-smaller'
+        = link_to @project.user.display_name, user_path(@project.user), class: 'link-hidden w-hidden-small w-hidden-tiny fontsize-smaller'
     .card-project-meter class=@project.state
       -if ['successful', 'failed', 'waiting_funds'].include? @project.state
         div= t("projects.card.display_status.#{@project.display_status}")
@@ -32,5 +31,5 @@ div class="#{defined?(wrapper_class) ? wrapper_class : ''}"
             .fontsize-smaller.fontweight-semibold= "#{@project.time_to_go[:time]}  #{@project.time_to_go[:unit]}"
             .fontsize-smallest.lineheight-tightest= t('.remaining', count: @project.time_to_go[:time])
           - else
-            .fontsize-smallest.fontweight-semibold.w-row= t("projects.card.display_status.#{@project.display_status}").capitalize
+            .fontsize-smallest.lineheight-tight.fontweight-semibold.w-row= t("projects.card.display_status.#{@project.display_status}").capitalize
             = @project.display_expires_at 
