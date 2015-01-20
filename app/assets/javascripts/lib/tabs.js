@@ -4,7 +4,7 @@ Skull.Tabs = {
     if($group.length == 0){
       $group = $tab.siblings('.selected');
     }
-    $('.selected').removeClass('selected');
+    $group.removeClass('selected');
     $tab.addClass('selected');
     $tabContent.siblings(':visible').hide();
     $tabContent.show();
