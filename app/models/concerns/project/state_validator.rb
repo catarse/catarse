@@ -37,7 +37,7 @@ class Project::StateValidator < ActiveModel::Validator
     @record.errors.add_on_blank([:about, :headline, :goal, :online_days, :budget, :uploaded_image])
     @record.errors['user.name'] << "Nome do usuário não pode ficar em branco" if user.name.blank?
     @record.errors['user.bio'] << "Biografia do usuário não pode ficar em branco" if user.bio.blank?
-    @record.errors['user.uploaded_image'] << "Imagem do usuário não pode ficar em branco" if user.uploaded_image.blank?
+    @record.errors['user.uploaded_image'] << "Imagem do usuário não pode ficar em branco" if user.personal_image.blank?
     #@record.errors['rewards.size'] << "Deve haver pelo menos uma recompensa" if @record.rewards.count == 0
   end
 
