@@ -110,8 +110,8 @@ GEM
       mailchimp-api (~> 2.0.4)
       rails (>= 4.0.3)
       rails-observers
-    catarse_pagarme (1.5.1)
-      pagarme (~> 1.9.8)
+    catarse_pagarme (1.5.2)
+      pagarme (~> 1.9.9)
       rails (~> 4.0)
     catarse_paypal_express (2.2.4)
       activemerchant (>= 1.34.0)
@@ -270,7 +270,7 @@ GEM
     jquery-rails (3.1.2)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
-    json (1.8.1)
+    json (1.8.2)
     jwt (0.1.13)
       multi_json (>= 1.5)
     kaminari (0.16.1)
@@ -295,7 +295,7 @@ GEM
     method_source (0.8.2)
     mime-types (2.4.3)
     mini_portile (0.6.0)
-    minitest (5.5.0)
+    minitest (5.5.1)
     mixpanel-ruby (1.5.0)
     money (6.4.0)
       i18n (>= 0.6.4, <= 0.7.0.beta1)
@@ -338,7 +338,7 @@ GEM
       multi_json (~> 1.3)
       omniauth-oauth (~> 1.0)
     orm_adapter (0.5.0)
-    pagarme (1.9.8)
+    pagarme (1.9.9)
       multi_json
       rest-client
     pg (0.17.1)
@@ -366,7 +366,7 @@ GEM
     pundit (0.3.0)
       activesupport (>= 3.0.0)
     rack (1.5.2)
-    rack-test (0.6.2)
+    rack-test (0.6.3)
       rack (>= 1.0)
     rails (4.1.9)
       actionmailer (= 4.1.9)
@@ -547,7 +547,7 @@ DEPENDENCIES
   catarse_contribution_validator!
   catarse_moip (~> 2.4.0)
   catarse_monkeymail (>= 0.1.6)
-  catarse_pagarme (= 1.5.1)
+  catarse_pagarme (= 1.5.2)
   catarse_paypal_express (= 2.2.4)
   catarse_settings_db (>= 0.1.0)
   chartkick
