@@ -66,11 +66,10 @@
     .w-row
       - (Blog.fetch_last_posts rescue [])[0..2].each do |post|
         .w-col.w-col-4.col-blog-post
-          .fontweight-semibold.fontsize-base.u-marginbottom-10
-            /= link_to post.url, target: '__blank', class: 'fontweight-semibold fontsize-base u-marginbottom-10' do
+          = link_to post.url, target: '__blank', class: 'link-hidden fontweight-semibold fontsize-base u-marginbottom-10' do
             /span.fontweight-semibold.fontsize-base.u-marginbottom-10
             = truncate(post.title, length: 80)
-          .fontsize-smaller.fontcolor-secondary
+          .fontsize-smaller.fontcolor-secondary.u-margintop-10
             /= link_to post.url, target: '__blank', class: 'fontsize-smaller fontcolor-secondary ' do
             /span.fontsize-smaller.fontcolor-secondary
             = truncate(post.summary, length: 130).html_safe    
