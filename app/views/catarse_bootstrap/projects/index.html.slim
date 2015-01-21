@@ -17,10 +17,9 @@
 - if current_user && @projects_near.present?
   .section.u-marginbottom-40
     .w-container
-      .w-row.u-marginbottom-20
+      .w-row.u-marginbottom-30
         .w-col.w-col-10.w-col-small-6.w-col-tiny-6
           .fontsize-large.lineheight-looser
-            span.fa.fa-heart.text-success>
             = t('.near_you')
         .w-col.w-col-2.w-col-small-6.w-col-tiny-6
           = link_to t('.see_all'), explore_path(ref: 'home_near', anchor: "near_of/" ) + current_user.address_state, class: 'btn btn-small btn-terciary'
@@ -29,10 +28,9 @@
 
 .section.u-marginbottom-40
   .w-container
-    .w-row.u-marginbottom-20
+    .w-row.u-marginbottom-30
       .w-col.w-col-10.w-col-small-6.w-col-tiny-6
         .fontsize-large.lineheight-looser
-          span.fa.fa-heart.text-success>
           = t('.recommended')
       .w-col.w-col-2.w-col-small-6.w-col-tiny-6
         = link_to t('.see_all'), explore_path(ref: :home_recommended, anchor: :recommended), class: 'btn btn-small btn-terciary'
@@ -41,10 +39,9 @@
 
 .section.u-marginbottom-40
   .w-container
-    .w-row.u-marginbottom-20
+    .w-row.u-marginbottom-30
       .w-col.w-col-10.w-col-small-6.w-col-tiny-6
         .fontsize-large.lineheight-looser
-          span.fa.fa-heart.text-success>
           = t('.expiring')
       .w-col.w-col-2.w-col-small-6.w-col-tiny-6
         = link_to t('.see_all'), explore_path(ref: :home_expiring, anchor: :expiring), class: 'btn btn-small btn-terciary'
@@ -53,10 +50,9 @@
 
 .section.u-marginbottom-40.recent-projects
   .w-container
-    .w-row.u-marginbottom-20
+    .w-row.u-marginbottom-30
       .w-col.w-col-10.w-col-small-6.w-col-tiny-6
         .fontsize-large.lineheight-looser
-          span.fa.fa-heart.text-success>
           = t('.recents')
       .w-col.w-col-2.w-col-small-6.w-col-tiny-6
         = link_to t('.see_all'), explore_path(ref: :home_recent, anchor: :recent), class: 'btn btn-small btn-terciary'
@@ -66,16 +62,14 @@
 .section.section-gray-one
   .w-container
     .fontsize-large.u-text-center.u-marginbottom-60
-      span.fa.fa-rss.text-success
       = t('.blog')
     .w-row
       - (Blog.fetch_last_posts rescue [])[0..2].each do |post|
         .w-col.w-col-4.col-blog-post
-          .fontweight-semibold.fontsize-base.u-marginbottom-10
-            /= link_to post.url, target: '__blank', class: 'fontweight-semibold fontsize-base u-marginbottom-10' do
+          = link_to post.url, target: '__blank', class: 'link-hidden fontweight-semibold fontsize-base u-marginbottom-10' do
             /span.fontweight-semibold.fontsize-base.u-marginbottom-10
             = truncate(post.title, length: 80)
-          .fontsize-smaller.fontcolor-secondary
+          .fontsize-smaller.fontcolor-secondary.u-margintop-10
             /= link_to post.url, target: '__blank', class: 'fontsize-smaller fontcolor-secondary ' do
             /span.fontsize-smaller.fontcolor-secondary
             = truncate(post.summary, length: 130).html_safe    
