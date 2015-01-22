@@ -67,6 +67,9 @@ class Contribution < ActiveRecord::Base
   scope :for_successful_projects, -> {
     joins(:project).merge(Project.with_state('successful')).with_state(['confirmed', 'refunded', 'requested_refund', 'refunded_and_canceled'])
   }
+
+  scope :for_online_projects, -> {
+    joins(:project).merge(Project.with_state(['online', 'waiting_funds'])).with_state(['confirmed', 'refunded', 'requested_refund', 'refunded_and_canceled'])
   }
 
   scope :for_failed_projects, -> {
