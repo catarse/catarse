@@ -24,8 +24,11 @@
       = link_to '#settings', id: 'dashboard_settings_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_settings' } do
         | Conta
       
-      /= link_to '#credit_cards', id: 'dashboard_credit_cards_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_credit_cards' } do
-        | Cartões de crédito
+      = link_to '#notifications', id: 'dashboard_notifications_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_notifications' } do
+        | Notificações
+
+      = link_to '#billing', id: 'dashboard_billing_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_billing' } do
+        | Banco e cartões
 
       = link_to user_path(resource), class: 'dashboard-nav-link u-right-big-only' do
         | Ir para o perfil público
@@ -44,4 +47,7 @@
             = render 'dashboard_about_me'
           #dashboard_settings.content.w-hidden
             = render 'dashboard_settings'
-          /#dashboard_credit_cards.content.w-hidden
+          #dashboard_notifications.content.w-hidden
+            = render 'dashboard_notifications'
+          #dashboard_billing.content.w-hidden
+            = render 'dashboard_billing'
