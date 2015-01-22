@@ -9,6 +9,7 @@ App.addChild('UserEdit', _.extend({
     this.route('about_me');
     this.route('settings');
     this.route('billing');
+    this.route('notifications');
 
 
     this.nestedLinksSetup();
