@@ -8,7 +8,7 @@ App.addChild('UserEdit', _.extend({
     this.route('projects');
     this.route('about_me');
     this.route('settings');
-    this.route('credit_cards');
+    this.route('billing');
 
 
     this.nestedLinksSetup();
