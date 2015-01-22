@@ -300,7 +300,7 @@ class Project < ActiveRecord::Base
     routes = Rails.application.routes.routes.map do |r|
       r.path.spec.to_s.split('/').second.to_s.gsub(/\(.*?\)/, '')
     end
-    routes.compact.uniq
+    routes.compact.uniq.reject(&:empty?)
   end
 
 end
