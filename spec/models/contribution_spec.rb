@@ -31,7 +31,7 @@ RSpec.describe Contribution, type: :model do
 
 
   describe '.for_successful_projects' do
-    let(:project) { create(:project, goal: 200) }
+    let(:project) { create(:project, goal: 200, state: 'online') }
 
     subject { Contribution.for_successful_projects }
 
@@ -40,6 +40,8 @@ RSpec.describe Contribution, type: :model do
       create(:contribution, value: 100, state: 'confirmed', project: project)
       create(:contribution, value: 10, state: 'confirmed')
       create(:contribution, value: 100, state: 'pending', project: project)
+
+      project.update_attributes(state: 'successful')
     end
 
     it { is_expected.to have(2).itens }

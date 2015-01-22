@@ -65,7 +65,8 @@ class Contribution < ActiveRecord::Base
   scope :can_refund, ->{ where("contributions.can_refund") }
 
   scope :for_successful_projects, -> {
-    joins(project: [:project_total]).where("project_totals.pledged >= projects.goal").with_state(['confirmed', 'refunded', 'requested_refund', 'refunded_and_canceled'])
+    joins(:project).merge(Project.with_state('successful')).with_state(['confirmed', 'refunded', 'requested_refund', 'refunded_and_canceled'])
+  }
   }
 
   scope :for_failed_projects, -> {
