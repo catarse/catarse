@@ -34,7 +34,7 @@ class Project::StateValidator < ActiveModel::Validator
   end
 
   def in_analysis
-    @record.errors.add_on_blank([:about, :headline, :goal, :online_days, :budget, :uploaded_image])
+    @record.errors.add_on_blank([:about, :headline, :goal, :online_days, :uploaded_image])
     @record.errors['user.name'] << "Nome do usuário não pode ficar em branco" if user.name.blank?
     @record.errors['user.bio'] << "Biografia do usuário não pode ficar em branco" if user.bio.blank?
     @record.errors['user.uploaded_image'] << "Imagem do usuário não pode ficar em branco" if user.personal_image.blank?
