@@ -24,6 +24,9 @@
       = link_to '#settings', id: 'dashboard_settings_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_settings' } do
         | Conta
       
+      = link_to '#notifications', id: 'dashboard_notifications_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_notifications' } do
+        | Notificações
+
       = link_to '#billing', id: 'dashboard_billing_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_billing' } do
         | Banco e cartões
 
@@ -44,5 +47,7 @@
             = render 'dashboard_about_me'
           #dashboard_settings.content.w-hidden
             = render 'dashboard_settings'
+          #dashboard_notifications.content.w-hidden
+            = render 'dashboard_notifications'
           #dashboard_billing.content.w-hidden
             = render 'dashboard_billing'
