@@ -133,7 +133,7 @@ pt:
       card: 'Card do projeto'
       card_subtitle: 'Sabe aquele cardzinho de projeto que aparece na home e na busca? Pois então, faz bonito pois dizem que a primeira impressão é a que fica ;)'
       image: 'Imagem do projeto'
-      image_hint: 'Essa imagem será utilizada como a miniatura de seu projeto (PNG, JPG tamanho 512x400)'
+      image_hint: 'Essa imagem será utilizada como a miniatura de seu projeto (PNG, JPG tamanho 650px x350px)'
       headline: 'Frase de efeito'
       headline_hint: 'Será utilizada no card do projeto, junto com a imagem acima (miniatura). No máximo 100 caracteres.'
       submit: 'Salvar'
