@@ -102,7 +102,7 @@ pt:
       facebook_link_label: "Perfil do facebook"
       facebook_link_hint: "Cole o link do seu perfil"
       uploaded_image_label: "Imagem do perfil"
-      uploaded_image_hint: "Essa imagem será utilizada como a miniatura de seu perfil (PNG, JPG tamanho&nbsp;650px x 350px)"
+      uploaded_image_hint: "Essa imagem será utilizada como a miniatura de seu perfil (PNG, JPG tamanho ideal&nbsp;140px x 140px)"
       name_label: "Nome"
       name_hint: "Esse é o nome que os usuários irão ver no seu perfil"
     dashboard_reward:
