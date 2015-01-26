@@ -56,12 +56,6 @@ pt:
                         A pequisa&nbsp;%{link1} também é ótima fonte de dados sobre o cenário brasileiro. Uma boa lida no&nbsp; %{link2} pode ser inspiradora. Lá você encontra histórias de projetos bem sucedidos e dicas de campanha.
                       </p>
                     </div>
-                    <div class='fontsize-base fontweight-bold u-marginbottom-10'>
-                      Confira abaixo um screencast sobre como utilizar o painel de controle e editar seu projeto.
-                    </div>
-                    <div class='w-embed w-video' style='padding-top: 56.20608899297424%;'>
-                      <iframe allowfullscreen='1' frameborder='0' height='360' id='player' src='https://www.youtube.com/embed/1JCNBRuLye4?wmode=opaque&amp;amp;enablejsapi=1&amp;amp;origin=http%3A%2F%2Fcdn.embedly.com' title='YouTube video player' width='640'></iframe>
-                    </div>
 "
       failed:
         title: "%{name}, não desanime!"
