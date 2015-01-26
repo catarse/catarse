@@ -5,7 +5,7 @@
       .w-col.w-col-8
         .fontsize-large.fontweight-semibold.u-marginbottom-10= t('.title', name: @project.user.display_name) 
         p.fontsize-base
-          = t('.subtitle_html', link: link_to( 'Conta' , '#user_settings'))
+          = t('.subtitle_html', link: link_to( 'Conta' , '#user_settings', class: 'alt-link'))
         .card.u-radius.u-marginbottom-30
           .fontsize-small.fontweight-semibold
             span.fontcolor-secondary>= t('projects.dashboard_home_templates.status')
