@@ -198,6 +198,10 @@ class Project < ActiveRecord::Base
     ['online', 'waiting_funds', 'successful', 'failed'].include? state
   end
 
+  def can_show_preview_link?
+    ['draft', 'approved', 'rejected', 'in_analysis'].include? state
+  end
+
   def using_pagarme?
     Project.enabled_to_use_pagarme.include?(self)
   end
