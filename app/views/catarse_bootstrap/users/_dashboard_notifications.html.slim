@@ -1,25 +1,23 @@
-.section
-  .w-container
-    .w-row
-      .w-col.w-col-1
-      .w-col.w-col-10
-        .w-form.card.card-terciary
-            .w-row.u-marginbottom-20
-              .w-col.w-col-4
-                .fontweight-semibold.fontsize-small.u-marginbottom-10 Assinaturas:
-              .w-col.w-col-8
-                .w-checkbox.w-clearfix
-                  = simple_form_for @user do |f| 
-                    = f.check_box :newsletter, class: 'w-checkbox-input'
-                    label.w-form-label.fontsize-base.fontweight-semibold for="checkbox"  Newsletter do Catarse (semanal)
-                    div Projetos em destaque e pílulas direto do nosso Blog&nbsp;
-                    = f.button :submit, 'Salvar',  class:'btn btn-large'
-            .w-row.u-marginbottom-20
-              .w-col.w-col-4
-                .fontweight-semibold.fontsize-small.u-marginbottom-10 Projetos que você apoiou:
-              .w-col.w-col-8
-                .w-checkbox.w-clearfix
-                  = simple_form_for(@user, url: user_unsubscribes_path(user_id: @user.id), html:{ method: :post}) do |f|
+= simple_form_for @user do |f| 
+  .section
+    .w-container
+      .w-row
+        .w-col.w-col-1
+        .w-col.w-col-10
+          .w-form.card.card-terciary
+              .w-row.u-marginbottom-20
+                .w-col.w-col-4
+                  .fontweight-semibold.fontsize-small.u-marginbottom-10 Assinaturas:
+                .w-col.w-col-8
+                  .w-checkbox.w-clearfix
+                      = f.check_box :newsletter, class: 'w-checkbox-input'
+                      label.w-form-label.fontsize-base.fontweight-semibold for="checkbox"  Newsletter do Catarse (semanal)
+                      div Projetos em destaque e pílulas direto do nosso Blog&nbsp;
+              .w-row.u-marginbottom-20
+                .w-col.w-col-4
+                  .fontweight-semibold.fontsize-small.u-marginbottom-10 Projetos que você apoiou:
+                .w-col.w-col-8
+                  .w-checkbox.w-clearfix
                     = f.simple_fields_for :unsubscribes, @subscribed_to_posts do |u|
                       = check_box_tag :subscribed, "1", @user.subscribed_to_posts?, class: 'w-checkbox-input'
                       label.w-form-label.fontsize-base.fontweight-semibold  Quero receber atualizações dos projetos
@@ -33,28 +31,30 @@
                               = hidden_field_tag "unsubscribes[#{u.object.project.id}]", '' 
                               = check_box_tag "user_unsubscribes_#{u.object.project_id}", "1", u.object.created_at.nil?, class: 'w-checkbox-input', name: "unsubscribes[#{u.object.project.id}]"
                               label.w-form-label.fontsize-small= u.object.project.name
-                        = f.button :submit, 'Salvar',  class:'btn btn-large'
-            .w-row.u-marginbottom-20
-              .w-col.w-col-4
-                .fontweight-semibold.fontsize-small.u-marginbottom-10 Categorias que você segue:
-              .w-col.w-col-8
-                = simple_form_for @user do |f|
+              .w-row.u-marginbottom-20
+                .w-col.w-col-4
+                  .fontweight-semibold.fontsize-small.u-marginbottom-10 Categorias que você segue:
+                .w-col.w-col-8
                   - Category.all.each do |category|
                     .w-checkbox.w-clearfix
                       - check_flag = @user.category_followers.any? { |category_follower| category_follower.category_id == category.id }
                       = check_box_tag "user[category_followers_attributes][][category_id]", category.id, check_flag, class: 'w-checkbox-input'
                       = hidden_field_tag "anchor", 'notifications' 
                       label.w-form-label.fontsize-small= category.name_pt
-                  = f.button :submit, 'Salvar',  class:'btn btn-large'
-            .w-row.u-marginbottom-20
-              .w-col.w-col-4
-                .fontweight-semibold.fontsize-small.u-marginbottom-10 Lembretes de projetos:
-              .w-col.w-col-8
-                = simple_form_for(@user, url: update_reminders_user_path(user_id: @user.id), html:{ method: :put}) do |f|
+              .w-row.u-marginbottom-20
+                .w-col.w-col-4
+                  .fontweight-semibold.fontsize-small.u-marginbottom-10 Lembretes de projetos:
+                .w-col.w-col-8
                   - @user.projects_in_reminder.each do |project|
                     .w-checkbox.w-clearfix
                       = check_box_tag "user[reminders][][project_id]", project.id, true, class: 'w-checkbox-input'
                       label.w-form-label.fontsize-small for="checkbox-14"= project.name
-                  = f.button :submit, 'Salvar',  class:'btn btn-large'
-      .w-col.w-col-1
+        .w-col.w-col-1
+      .u-margintop-30
+        .w-container
+          .w-row
+            .w-col.w-col-4.w-col-offset-4
+              = f.submit 'Salvar',  class:'btn btn-large'
+ 
+
 
