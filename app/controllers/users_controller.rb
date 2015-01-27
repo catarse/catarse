@@ -59,15 +59,13 @@ class UsersController < ApplicationController
     @unsubscribes = @user.project_unsubscribes
     @subscribed_to_posts = @user.posts_subscription
     resource.links.build
-    @categories_follow = []
-    Category.all.each do |category|
-      @categories_follow << CategoryFollower.find_or_initialize_by(category: category, user: @user)
-    end
   end
 
   def update
     authorize resource
-    params[:user][:category_follower_ids] ||= []
+    if params[:user] && params[:user][:category_followers_attributes]
+      resource.category_followers.clear
+    end
     update! do |success,failure|
       success.html do
         flash[:notice] = t('users.current_user_fields.updated')
@@ -79,6 +77,16 @@ class UsersController < ApplicationController
       end
     end
 
+  end
+
+  def update_reminders
+    authorize resource
+    @user.projects_in_reminder.each do |project|
+      unless params[:user] && params[:user][:reminders].find {|p| p['project_id'] == project.id.to_s}
+        project.delete_from_reminder_queue(@user.id)
+      end
+    end
+    redirect_to edit_user_path(@user, anchor: 'notifications')
   end
 
   def update_password
