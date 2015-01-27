@@ -43,23 +43,18 @@
                     .w-checkbox.w-clearfix
                       - check_flag = @user.category_followers.any? { |category_follower| category_follower.category_id == category.id }
                       = check_box_tag "user[category_followers_attributes][][category_id]", category.id, check_flag, class: 'w-checkbox-input'
+                      = hidden_field_tag "anchor", 'notifications' 
                       label.w-form-label.fontsize-small= category.name_pt
                   = f.button :submit, 'Salvar',  class:'btn btn-large'
             .w-row.u-marginbottom-20
               .w-col.w-col-4
                 .fontweight-semibold.fontsize-small.u-marginbottom-10 Lembretes de projetos:
               .w-col.w-col-8
-                .w-checkbox.w-clearfix
-                  input#checkbox-14.w-checkbox-input data-name=("Checkbox 14") name="checkbox-14" type="checkbox" /
-                  label.w-form-label.fontsize-small for="checkbox-14"  Projeto 1
-                .w-checkbox.w-clearfix
-                  input#checkbox-15.w-checkbox-input data-name=("Checkbox 15") name="checkbox-15" type="checkbox" /
-                  label.w-form-label.fontsize-small for="checkbox-15"  Projeto 2
-                .w-checkbox.w-clearfix
-                  input#checkbox-16.w-checkbox-input data-name=("Checkbox 16") name="checkbox-16" type="checkbox" /
-                  label.w-form-label.fontsize-small for="checkbox-16"  Projeto 3
-                .w-checkbox.w-clearfix
-                  input#checkbox-17.w-checkbox-input data-name=("Checkbox 17") name="checkbox-17" type="checkbox" /
-                  label.w-form-label.fontsize-small for="checkbox-17"  Projeto 4
+                = simple_form_for(@user, url: update_reminders_user_path(user_id: @user.id), html:{ method: :put}) do |f|
+                  - @user.projects_in_reminder.each do |project|
+                    .w-checkbox.w-clearfix
+                      = check_box_tag "user[reminders][][project_id]", project.id, true, class: 'w-checkbox-input'
+                      label.w-form-label.fontsize-small for="checkbox-14"= project.name
+                  = f.button :submit, 'Salvar',  class:'btn btn-large'
       .w-col.w-col-1
 

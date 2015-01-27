@@ -80,6 +80,7 @@ Catarse::Application.routes.draw do
       put 'unsubscribe_update'
       put 'update_email'
       put 'update_password'
+      put 'update_reminders'
     end
   end
 
