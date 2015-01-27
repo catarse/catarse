@@ -14,6 +14,10 @@
   
   nav.dashboard-nav.u-text-center style='z-index: 10; position: relative;'
     .w-container
+      span style='visibility: hidden;'
+        = link_to '#feeds', id: 'dashboard_feeds_link', class: 'dashboard-nav-link' , data: {target: '#dashboard_feeds' } do
+          | Atividades
+
       = link_to '#contributions', id: 'dashboard_contributions_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_contributions' } do
         | Apoiados
 
@@ -40,6 +44,8 @@
     .w-container
       .w-row
         article
+          #dashboard_feeds.content.w-hidden
+            = render 'dashboard_feeds'
           #dashboard_contributions.content.w-hidden
             = render 'dashboard_contributions'
           #dashboard_projects.content.w-hidden
