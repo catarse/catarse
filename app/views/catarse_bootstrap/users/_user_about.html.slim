@@ -37,5 +37,5 @@
                 = link_to link.link, link.link, class: 'link-hidden', target: '__blank'
             li.project-author-list.fontsize-smaller
               a.link-hidden href="#" 
-        a.btn.btn-medium.btn-message href="mailto:@project.user.email" target="_blank"  Enviar mensagem
+        = mail_to resource.email, 'Enviar mensagem', class: 'btn btn-medium btn-message', target: '__blank'
 

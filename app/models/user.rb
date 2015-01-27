@@ -21,9 +21,10 @@ class User < ActiveRecord::Base
     :image_url, :uploaded_image, :bio, :newsletter, :full_name, :address_street, :address_number,
     :address_complement, :address_neighbourhood, :address_city, :address_state, :address_zip_code, :phone_number,
     :cpf, :state_inscription, :locale, :twitter, :facebook_link, :other_link, :moip_login, :deactivated_at, :reactivate_token,
-    :bank_account_attributes, :country_id, :zero_credits, :links_attributes, :about
+    :bank_account_attributes, :country_id, :zero_credits, :links_attributes, :about, :cover_image
 
   mount_uploader :uploaded_image, UserUploader
+  mount_uploader :cover_image, CoverUploader
 
   validates_length_of :bio, maximum: 140
 
