@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :omniauthable
 
-  before_save -> {self.about = about.gsub(/^[^\S\n]+/, "")}
+  before_save -> {self.about = about.gsub(/^[^\S\n]+/, "") if about.present? }
 
   catarse_auto_html_for field: :about, video_width: 600, video_height: 350
 
