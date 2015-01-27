@@ -6,22 +6,26 @@ class UnsubscribesController < ApplicationController
     drop_and_create_subscriptions
 
     flash[:notice] = t('users.current_user_fields.updated')
-    return redirect_to user_path(parent, anchor: 'unsubscribes')
+    return redirect_to edit_user_path(parent, anchor: 'notifications')
   end
 
   protected
 
   def drop_and_create_subscriptions
-    params[:user][:unsubscribes_attributes].each_value do |subscription|
-      project_id = subscription[:project_id]
-      subscribed = subscription[:subscribed].to_i
-
+    #unsubscribe to all projects
+    if params[:subscribed].nil?
+      user_unsubscribes.create!(project_id: nil)
+    else
+      user_unsubscribes.drop_all_for_project(nil)
+    end
+    params[:unsubscribes].each do |subscription|
+      project_id = subscription[0].to_i
       #change from unsubscribed to subscribed
-      if subscribed == 1 && subscription[:id].present?
+      if subscription[1].present?
         user_unsubscribes.drop_all_for_project(project_id)
       #change from subscribed to unsubscribed
-      elsif subscribed == 0 && subscription[:id].nil?
-        user_unsubscribes.create!(project_id: subscription[:project_id])
+      else
+        user_unsubscribes.create!(project_id: project_id)
       end
     end
   end

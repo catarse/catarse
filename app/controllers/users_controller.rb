@@ -56,11 +56,18 @@ class UsersController < ApplicationController
 
   def edit
     authorize resource
+    @unsubscribes = @user.project_unsubscribes
+    @subscribed_to_posts = @user.posts_subscription
     resource.links.build
+    @categories_follow = []
+    Category.all.each do |category|
+      @categories_follow << CategoryFollower.find_or_initialize_by(category: category, user: @user)
+    end
   end
 
   def update
     authorize resource
+    params[:user][:category_follower_ids] ||= []
     update! do |success,failure|
       success.html do
         flash[:notice] = t('users.current_user_fields.updated')
