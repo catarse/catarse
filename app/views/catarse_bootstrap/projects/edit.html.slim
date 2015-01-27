@@ -43,7 +43,7 @@
               = t('.account_tab')
         - if @project.draft? || @project.approved? || @project.rejected?
           .w-col.w-col-3.w-clearfix.col-btn-send-draft
-            - if @project.draft? || @project.approved? || @project.rejected?
+            - if @project.can_show_preview_link?
               = link_to '#preview', id: 'dashboard_preview_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_preview', tab_group: 'edit'} do
                 = t('.preview_tab')
             - if @project.draft?

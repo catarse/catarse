@@ -92,7 +92,7 @@ pt:
       other_link_label: "Página na internet"
       other_link_hint: "Inclua links que ajudem os apoiadores a saber mais sobre você e suas qualificações para executar o projeto.&nbsp;"
       bio_label: "Biografia"
-      bio_hint: "Se você pudesse falar sobre você em um tweet?&nbsp;Máximo 140 caracteres"
+      bio_hint: "Se você pudesse falar sobre você em um tweet? Máximo 140 caracteres"
       facebook_link_label: "Perfil do facebook"
       facebook_link_hint: "Cole o link do seu perfil"
       uploaded_image_label: "Imagem do perfil"
