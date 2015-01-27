@@ -1,12 +1,17 @@
 # coding: utf-8
 class User < ActiveRecord::Base
   include User::OmniauthHandler
+  include Shared::CatarseAutoHtml
   has_notifications
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   # :validatable
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :omniauthable
+
+  before_save -> {self.about = about.gsub(/^[^\S\n]+/, "")}
+
+  catarse_auto_html_for field: :about, video_width: 600, video_height: 350
 
   delegate  :display_name, :display_image, :short_name, :display_image_html,
     :medium_name, :display_credits, :display_total_of_contributions, :contributions_text,
@@ -16,7 +21,7 @@ class User < ActiveRecord::Base
     :image_url, :uploaded_image, :bio, :newsletter, :full_name, :address_street, :address_number,
     :address_complement, :address_neighbourhood, :address_city, :address_state, :address_zip_code, :phone_number,
     :cpf, :state_inscription, :locale, :twitter, :facebook_link, :other_link, :moip_login, :deactivated_at, :reactivate_token,
-    :bank_account_attributes, :country_id, :zero_credits, :links_attributes
+    :bank_account_attributes, :country_id, :zero_credits, :links_attributes, :about
 
   mount_uploader :uploaded_image, UserUploader
 
@@ -106,6 +111,10 @@ class User < ActiveRecord::Base
 
   def self.find_active!(id)
     self.active.where(id: id).first!
+  end
+
+  def created_projects
+    projects.with_state(['online', 'waiting_funds', 'successful', 'failed'])
   end
 
   def following_this_category?(category_id)
