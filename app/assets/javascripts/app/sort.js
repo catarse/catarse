@@ -6,7 +6,7 @@ App.addChild('Sort', {
   },
 
   activate: function(){
-    this.form = this.$('form');
+    this.form = this.$('form.simple_form');
     this.table = this.$('table');
     this.selectSorting();
   },
@@ -14,22 +14,27 @@ App.addChild('Sort', {
   getSorting: function(){
     var sortField = this.form.find('[id=_order_by]')
 
-    var sort = sortField.val().split(' ');
-    return {field: sort[0], order: sort[1]};
+    if(sortField.val()){
+      var sort = sortField.val().split(' ');
+      return {field: sort[0], order: sort[1]};
+    }
+    return undefined;
   },
 
   selectSorting: function(){
-    var link = this.$('a[data-sort="' + this.getSorting().field + '"]');
-    var sortOrder = link.siblings('span.sort-order');
-    // Clean old sort orders
-    this.$('[data-sort]').siblings('span.sort-order').html('');
+    if(this.getSorting()){
+      var link = this.$('a[data-sort="' + this.getSorting().field + '"]');
+      var sortOrder = link.siblings('span.sort-order');
+      // Clean old sort orders
+      this.$('[data-sort]').siblings('span.sort-order').html('');
 
-    // Add sorting order to header
-    if(this.getSorting().order == 'DESC'){
-      sortOrder.html('(desc)');
-    }
-    else {
-      sortOrder.html('(asc)');
+      // Add sorting order to header
+      if(this.getSorting().order == 'DESC'){
+        sortOrder.html('(desc)');
+      }
+      else {
+        sortOrder.html('(asc)');
+      }
     }
   },
 
