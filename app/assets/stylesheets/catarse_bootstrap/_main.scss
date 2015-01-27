@@ -1381,6 +1381,11 @@ p {
   height: 11px;
   border-radius: 5px;
 }
+.meter.small {
+  height: 8px;
+  margin-bottom: 4px;
+  border-radius: 4px;
+}
 .meter-fill {
   position: relative;
   height: 100%;
@@ -1769,6 +1774,7 @@ p {
   color: #00b22d;
 }
 .header-search {
+  position: relative;
   display: inline-block;
   width: 35%;
   margin-bottom: 0px;
@@ -2023,6 +2029,10 @@ p {
   height: 140px;
   margin-right: auto;
   margin-left: auto;
+}
+.thumb.medium {
+  width: 90px;
+  height: 90px;
 }
 .card-reward {
   position: relative;
@@ -2411,7 +2421,7 @@ p {
 }
 .hero-full {
   height: 720px;
-  margin-top: -65px;
+  margin-top: -75px;
   margin-bottom: 30px;
   padding-top: 235px;
   padding-bottom: 235px;
@@ -2493,20 +2503,33 @@ p {
   color: white;
 }
 .hero-half {
+  position: relative;
+  height: 550px;
   margin-top: -65px;
   padding-top: 130px;
   padding-bottom: 60px;
 }
 .hero-profile {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  width: 100%;
+  height: 100%;
   background-color: #3f4752;
   color: white;
 }
 .hero-small {
+  position: relative;
   margin-top: -65px;
   padding-top: 110px;
   padding-bottom: 50px;
   background-color: #3f4752;
   color: white;
+}
+.inline-block {
+  display: inline-block;
 }
 .u-text-center-big-only {
   text-align: center;
@@ -2549,6 +2572,29 @@ p {
   width: 120px;
   margin-top: -40px;
   margin-bottom: 10px;
+}
+.search-pre-result {
+  position: absolute;
+  z-index: 40;
+  width: 100%;
+  margin-top: -17px;
+  padding: 10px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgba(37, 49, 57, 0.88);
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  background-color: #f1f4f4;
+  box-shadow: rgba(0, 0, 0, 0.31) 1px 1px 3px 0px;
+}
+.content-hero-profile {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  right: 0px;
+  z-index: 10;
+  margin-top: 110px;
+  color: white;
 }
 html.w-mod-js *[data-ix="fade-in"] {
   opacity: 0;
@@ -2826,7 +2872,9 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     height: 55px;
   }
   .thumb.small {
-    width: 40px;
+    width: 30px;
+    height: 30px;
+    margin-bottom: 1px;
   }
   .thumb.big {
     width: 140px;
@@ -2885,6 +2933,7 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     font-size: 13px;
   }
   .hero-half {
+    height: 540px;
     padding-top: 110px;
     padding-bottom: 50px;
   }
@@ -3616,6 +3665,7 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     padding-left: 16px;
   }
   .hero-half {
+    height: 370px;
     padding: 80px 15px 30px;
   }
   .hero-small {
