@@ -172,10 +172,10 @@ App.addChild('MixPanel', {
     });
   },
 
-  trackVisit: function(eventName){
+  trackVisit: function(eventName, options){
     var self = this;
     window.setTimeout(function(){
-      self.track(eventName);
+      self.track(eventName, options);
     }, this.VISIT_MIN_TIME);
   }
 });
