@@ -40,6 +40,7 @@ class User < ActiveRecord::Base
   belongs_to :country
   has_one :user_total
   has_one :bank_account, dependent: :destroy
+  has_many :feeds, class_name: 'UserFeed'
   has_many :credit_cards
   has_many :contributions
   has_many :authorizations

@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   before_filter :redirect_user_back_after_login, unless: :devise_controller?
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
-  helper_method :channel, :namespace, :referal_link, :render_projects, :should_show_beta_banner?
+  helper_method :channel, :namespace, :referal_link, :render_projects, :should_show_beta_banner?, :render_feeds
 
   before_filter :set_locale
 
@@ -28,6 +28,10 @@ class ApplicationController < ActionController::Base
 
   def render_projects collection, ref, locals = {}
     render_to_string partial: 'projects/card', collection: collection, locals: {ref: ref}.merge!(locals)
+  end
+
+  def render_feeds collection, locals = {}
+    render_to_string partial: 'users/feeds/feed', collection: collection, locals: locals
   end
 
   def should_show_beta_banner?

@@ -1,0 +1,77 @@
+- if feed.is_project_post?
+  .card.u-marginbottom-30.u-radius.card-terciary
+    .w-clearfix.u-marginbottom-20
+      = image_tag feed.from_object.try(:decorate).try(:display_image), class: 'thumb u-radius u-left', alt: feed.from_object.try(:name)
+      .fontcolor-secondary.fontsize-smaller
+        = l(feed.event_date, format: :simple)
+      .fontsize-base
+        = link_to project_by_slug_path(permalink: feed.from_object.try(:permalink), anchor: "posts/#{feed.to_object.try(:id)}"), class: 'link-hidden fontweight-semibold' do
+          = feed.from_object.try(:name)
+        | &nbsp;postou:
+    = link_to project_by_slug_path(permalink: feed.from_object.try(:permalink), anchor: "posts/#{feed.to_object.try(:id)}"), class: 'fontsize-large fontweight-semibold link-hidden' do
+      = feed.to_object.try(:title)
+    p.fontsize-base
+      = truncate(feed.to_object.try(:comment), length: 310)
+      = link_to 'Leia mais', project_by_slug_path(permalink: feed.from_object.try(:permalink), anchor: "posts/#{feed.to_object.try(:id)}"), class: 'alt-link'
+- elsif feed.is_common_owner?      
+  .card.u-marginbottom-20.u-radius.card-terciary
+    .w-row
+      .w-col.w-col-7
+        .w-clearfix.u-marginbottom-20
+          = image_tag feed.from_object.try(:decorate).try(:display_image), class: 'thumb u-left u-round', alt: feed.from_object.try(:name)
+          .fontcolor-secondary.fontsize-smaller
+            = l(feed.event_date, format: :simple)
+          .fontweight-semibold.fontsize-base
+            = link_to feed.from_object.try(:decorate).try(:display_name), user_path(feed.from_object), class: 'link-hidden'
+        .fontsize-large.fontweight-semibold.u-marginbottom-20 Novo projeto no ar!
+      .w-col.w-col-5
+        = render_projects [feed.to_object], 'new_project_from_common_owner'
+
+    
+- elsif feed.is_category_follower_project?
+  .card.u-marginbottom-30.u-radius.card-terciary
+    .w-row
+      .w-col.w-col-7
+        .w-clearfix.u-marginbottom-20
+          img.thumb.u-left.u-round alt="54c71591a77a2c8d1a194dc9_icon-catarse.jpg" src="http://uploads.webflow.com/54b440b85608e3f4389db387/54c71591a77a2c8d1a194dc9_icon-catarse.jpg" /
+          .fontcolor-secondary.fontsize-smaller
+            = l(feed.event_date, format: :simple)
+          .fontweight-semibold.fontsize-base 
+            | Categoria:&nbsp;
+            = feed.from_object.try(:category).try(:name_pt)
+        .fontsize-large.fontweight-semibold.u-marginbottom-20 Novo projeto no ar!
+      .w-col.w-col-5
+        = render_projects [feed.to_object], 'new_project_on_category'
+- elsif feed.is_finished_project?
+  - if feed.to_object.try(:successful?)
+    .card.u-marginbottom-30.u-radius.u-text-center-small-only.card-terciary
+      .w-row
+        .w-col.w-col-3
+          = image_tag feed.to_object.try(:decorate).try(:display_image), class: 'thumb big u-radius u-marginbottom-10', alt: feed.to_object.try(:name)
+        .w-col.w-col-9
+          .fontsize-small.u-marginbottom-10
+            = l(feed.event_date, format: :simple)
+          = link_to project_by_slug_path(permalink: feed.to_object.try(:permalink)), class: 'fontsize-larger fontweight-semibold link-hidden-success' do
+            = feed.to_object.try(:name)
+          .fontsize-large.fontweight-semibold.u-marginbottom-20.text-success foi bem-sucedido!
+          .w-row
+            .w-col.w-col-3.w-col-small-3.w-col-tiny-3
+              .fontweight-semibold.fontsize-larger
+                = "#{feed.to_object.try(:progress)}%"
+            .w-col.w-col-4.w-col-small-4.w-col-tiny-4.u-text-center-small-only
+              .fontweight-semibold.fontsize-small= feed.to_object.try(:decorate).try(:display_pledged)
+              .fontsize-smallest.lineheight-tightest Levantados
+            .w-col.w-col-5.w-col-small-5.w-col-tiny-5
+              .fontweight-semibold.fontsize-small= feed.to_object.try(:total_contributions)
+              .fontsize-smallest.lineheight-tightest Apoiadores
+  - else
+    .card.u-marginbottom-30.u-radius.card-terciary
+      .w-clearfix.u-marginbottom-20
+        = image_tag feed.to_object.try(:decorate).try(:display_image), class: 'thumb u-radius u-left', alt: feed.to_object.try(:name)
+        .fontcolor-secondary.fontsize-smaller
+          = l(feed.event_date, format: :simple)
+        .fontsize-base
+          = link_to project_by_slug_path(permalink: feed.to_object.try(:permalink)), class: 'link-hidden fontweight-semibold' do
+            = feed.to_object.try(:name)
+          | finalizou mas não foi financiado
+        
