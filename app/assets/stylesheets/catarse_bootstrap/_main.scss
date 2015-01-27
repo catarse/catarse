@@ -2518,14 +2518,10 @@ p {
   width: 100%;
   height: 100%;
   background-color: #3f4752;
-  background-image: none;
-  background-position: 0% 0%;
-  background-size: auto;
-  background-repeat: repeat;
-  background-attachment: scroll;
   color: white;
 }
 .hero-small {
+  position: relative;
   margin-top: -65px;
   padding-top: 110px;
   padding-bottom: 50px;
