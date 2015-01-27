@@ -5,7 +5,7 @@ App.addChild('Admin', {
     'click .project-admin-menu' : "toggleAdminMenu",
   },
 
-  toggleAdminMenu: function(){
+  toggleAdminMenu: function(event){
     var link = $(event.target);
     this.$dropdown = link.parent().next('nav');
     $('w--open').not(this.$dropdown).removeClass('w--open');
