@@ -17,5 +17,9 @@ module Project::ErrorGroups
     def error_included_on_group? error_attr, group_name
       Project::ATTR_GROUPS[group_name.to_sym].include?(error_attr)
     end
+
+    def has_errors_for?(field)
+      errors.include?(field)
+    end
   end
 end

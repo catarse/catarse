@@ -48,6 +48,7 @@ var App = window.App = Skull.View.extend({
     this.notices();
     Backbone.history.start({pushState: false});
     this.maskAllElements();
+    this.applyErrors();
   },
 
   flash: function() {
@@ -81,6 +82,12 @@ var App = window.App = Skull.View.extend({
     this.$dropdown.toggleClass('w--open');
     return false;
   },
+
+  applyErrors: function() {
+    $.each($('[data-applyerror=true]'), function(i, item){
+      $(item).addClass('error');
+    })
+  }
 
 });
 
