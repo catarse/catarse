@@ -23,14 +23,20 @@ class UserPolicy < ApplicationPolicy
     done_by_owner_or_admin?
   end
 
+  def update_reminders?
+    done_by_owner_or_admin?
+  end
+
   def unsubscribe_notifications?
     done_by_owner_or_admin?
   end
 
   def permitted_attributes
-    u_attrs = [ bank_account_attributes: [:bank_id, :name, :agency, :account, :owner_name, :owner_document, :account_digit, :agency_digit] ]
+    u_attrs = [bank_account_attributes: [:bank_id, :name, :agency, :account, :owner_name, :owner_document, :account_digit, :agency_digit] ]
+    u_attrs << { category_follower_ids: [] }
     u_attrs << record.attribute_names.map(&:to_sym)
     u_attrs << { links_attributes: [:id, :_destroy, :link] }
+    u_attrs << { category_followers_attributes: [:id, :user_id, :category_id] }
     u_attrs.flatten!
 
     unless user.try(:admin?)
