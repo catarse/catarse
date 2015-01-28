@@ -42,7 +42,6 @@
             - if @user.credits > 0
               = link_to t('.tabs.credits'), '#credits', id: 'credits_link', data: { target: '#user_credits' }
             = link_to t('.tabs.settings'), '#settings', id: 'settings_link', data: { target: '#user_settings' }
-            = link_to t('.tabs.unsubscribes'), '#unsubscribes', id: 'unsubscribes_link', data: { target: '#user_unsubscribes' }
             - if @credit_cards.present?
               = link_to t('.tabs.credit_cards'), '#credit_cards', id: 'credit_cards_link', data: { target: '#user_credit_cards' }
       .clearfix
@@ -66,8 +65,6 @@
           .loading= image_tag "loading.gif"
           .clearfix
         - if policy(@user).update?
-          #user_unsubscribes.content.hide
-            = render 'unsubscribes'
           #user_settings.content.hide
             = render 'current_user_fields'
           - if @user.credits > 1
