@@ -28,6 +28,7 @@ html
 
   body#catarse_bootstrap[data-namespace=namespace data-controller-name=controller_name data-action=action_name data-user="#{current_user.try(:to_analytics_json)}"]
     = render 'layouts/global_alert'
+    = render 'layouts/new_zendesk'
     = render_facebook_sdk
     = render 'layouts/flash' if notice.present?
     = render 'layouts/webfont'
@@ -37,7 +38,6 @@ html
   - if Rails.env.production?
     = render 'layouts/crazzy_egg'
     = render 'layouts/hot_jar'
-  - if Rails.env.production?
     = render_google_analytics_script
     = render_mixpanel_script
     = javascript_include_tag "//cdn.optimizely.com/js/2188501553.js"
