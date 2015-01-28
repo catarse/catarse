@@ -28,14 +28,14 @@
                 label.field-label.fontweight-semibold= t('.name_label')
                 label.field-label.fontsize-smallest.fontcolor-secondary= t('.name_hint')   
               .w-col.w-col-7
-                = form.input_field :name, as: :string, class: 'positive'
+                = form.input_field :name, as: :string, class: 'positive', data: { applyerror: @project.has_errors_for?(:'user.name') }
             .w-form.card.card-terciary.u-marginbottom-30
                 .w-row
                   .w-col.w-col-5.w-sub-col
                     label.field-label.fontweight-semibold= t('.bio_label')   
                     label.field-label.fontsize-smallest.fontcolor-secondary= t('.bio_hint')   
                   .w-col.w-col-7
-                    = form.input_field :bio, as: :text, class: 'positive big'
+                    = form.input_field :bio, as: :text, class: 'positive big', data: { applyerror: @project.has_errors_for?(:'user.bio') }
             .w-form.card.card-terciary.u-marginbottom-30
                 .w-row.u-marginbottom-10
                   .w-col.w-col-5.w-sub-col
