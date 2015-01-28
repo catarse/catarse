@@ -33,7 +33,7 @@
                   label.field-label.fontweight-semibold for="name-8"= t('.name')
                   label.field-label.fontsize-smallest.fontcolor-secondary for="name-8"=t('.name_label')  
                 .w-col.w-col-7
-                  = form.input_field :name, as: :string, class: 'positive'
+                  = form.input_field :name, as: :string, class: 'positive', data: { applyerror: @project.has_errors_for?(:name) }
                     .text-error.fontsize-smallest
                       span.fa.fa-exclamation-triangle .
                       | \&nbsp;This is some text inside of a div block.
@@ -46,7 +46,7 @@
                     .w-col.w-col-4.w-col-small-6.w-col-tiny-6.text-field.prefix.no-hover
                       .fontcolor-secondary.u-text-center.fontsize-smallest www.catarse.me/
                     .w-col.w-col-8.w-col-small-6.w-col-tiny-6
-                      = form.input_field :permalink, as: :string, class: 'postfix positive', required: false
+                      = form.input_field :permalink, as: :string, class: 'postfix positive', data: { applyerror: @project.has_errors_for?(:permalink) }
               .w-row.u-marginbottom-30.card.card-terciary
                 .w-col.w-col-5.w-sub-col
                   label.field-label.fontweight-semibold for="name-8"= t('.category')
@@ -64,7 +64,7 @@
                     .w-col.w-col-4.w-col-small-6.w-col-tiny-6.text-field.prefix.no-hover
                       .fontcolor-secondary.u-text-center.fontsize-base.lineheight-tightest R$
                     .w-col.w-col-8.w-col-small-6.w-col-tiny-6
-                      = form.input_field :goal, as: :string, class: 'positive postfix'
+                      = form.input_field :goal, as: :string, class: "positive postfix", data: { applyerror: @project.has_errors_for?(:goal) }
               .w-row.card.card-terciary
                 .w-col.w-col-5.w-sub-col
                   label.field-label.fontweight-semibold for="name-8"=t('.online_days')
@@ -72,7 +72,7 @@
                 .w-col.w-col-7
                   .w-row
                     .w-col.w-col-8.w-col-small-6.w-col-tiny-6
-                      = form.input_field :online_days, class: 'prefix positive', as: :string
+                      = form.input_field :online_days, class: 'prefix positive', as: :string, data: { applyerror: @project.has_errors_for?(:online_days) }
                     .w-col.w-col-4.w-col-small-6.w-col-tiny-6.text-field.postfix.no-hover
                       .fontcolor-secondary.u-text-center.fontsize-base.lineheight-tightest Dias
         .w-col.w-col-4    
