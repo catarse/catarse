@@ -56,11 +56,16 @@ class UsersController < ApplicationController
 
   def edit
     authorize resource
+    @unsubscribes = @user.project_unsubscribes
+    @subscribed_to_posts = @user.posts_subscription
     resource.links.build
   end
 
   def update
     authorize resource
+    drop_and_create_subscriptions
+    update_reminders
+    resource.category_followers.clear
     update! do |success,failure|
       success.html do
         flash[:notice] = t('users.current_user_fields.updated')
@@ -85,6 +90,35 @@ class UsersController < ApplicationController
   end
 
   private
+  def update_reminders
+    @user.projects_in_reminder.each do |project|
+      unless params[:user][:reminders] && params[:user][:reminders].find {|p| p['project_id'] == project.id.to_s}
+        project.delete_from_reminder_queue(@user.id)
+      end
+    end
+  end
+
+  def drop_and_create_subscriptions
+    #unsubscribe to all projects
+    if params[:subscribed].nil?
+      @user.unsubscribes.create!(project_id: nil)
+    else
+      @user.unsubscribes.drop_all_for_project(nil)
+    end
+    if params[:unsubscribes]
+      params[:unsubscribes].each do |subscription|
+        project_id = subscription[0].to_i
+        #change from unsubscribed to subscribed
+        if subscription[1].present?
+          @user.unsubscribes.drop_all_for_project(project_id)
+        #change from subscribed to unsubscribed
+        else
+          @user.unsubscribes.create!(project_id: project_id)
+        end
+      end
+    end
+  end
+
   def build_bank_account
     @user.build_bank_account unless @user.bank_account
   end

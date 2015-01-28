@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
     :image_url, :uploaded_image, :bio, :newsletter, :full_name, :address_street, :address_number,
     :address_complement, :address_neighbourhood, :address_city, :address_state, :address_zip_code, :phone_number,
     :cpf, :state_inscription, :locale, :twitter, :facebook_link, :other_link, :moip_login, :deactivated_at, :reactivate_token,
-    :bank_account_attributes, :country_id, :zero_credits, :links_attributes, :about, :cover_image
+    :bank_account_attributes, :country_id, :zero_credits, :links_attributes, :about, :cover_image, :category_followers_attributes, :category_follower_ids
 
   mount_uploader :uploaded_image, UserUploader
   mount_uploader :cover_image, CoverUploader
@@ -50,7 +50,7 @@ class User < ActiveRecord::Base
   has_many :unsubscribes
   has_many :project_posts
   has_many :contributed_projects, -> { where(contributions: { state: ['confirmed', 'requested_refund', 'refunded'] } ).uniq } ,through: :contributions, source: :project
-  has_many :category_followers
+  has_many :category_followers, dependent: :destroy
   has_many :categories, through: :category_followers
   has_many :links, class_name: 'UserLink', inverse_of: :user
   has_and_belongs_to_many :recommended_projects, join_table: :recommendations, class_name: 'Project'
@@ -59,6 +59,7 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :unsubscribes, allow_destroy: true rescue puts "No association found for name 'unsubscribes'. Has it been defined yet?"
   accepts_nested_attributes_for :links, allow_destroy: true, reject_if: ->(x) { x['link'].blank? }
   accepts_nested_attributes_for :bank_account, allow_destroy: true, reject_if: -> (attr) { attr[:bank_id].blank? }
+  accepts_nested_attributes_for :category_followers, allow_destroy: true
 
   scope :active, ->{ where('deactivated_at IS NULL') }
   scope :with_user_totals, -> {
@@ -213,6 +214,10 @@ class User < ActiveRecord::Base
     contributed_projects.map do |p|
       unsubscribes.posts_unsubscribe(p.id)
     end
+  end
+
+  def subscribed_to_posts?
+    unsubscribes.where(project_id: nil).empty?
   end
 
   def project_owner?
