@@ -22,4 +22,7 @@
   .no-mobile
     .fontsize-base
       = @project.about_html.try(:html_safe)
-      = @project.budget.try(:html_safe)
+      - if @project.budgets.present?
+        .fontsize-large.fontweight-semibold
+          | Orçamento
+        = pie_chart @project.budgets.pluck(:name, :value)

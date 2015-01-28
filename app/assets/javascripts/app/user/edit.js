@@ -10,6 +10,7 @@ App.addChild('UserEdit', _.extend({
     this.route('settings');
     this.route('billing');
     this.route('notifications');
+    this.route('feeds');
 
 
     this.nestedLinksSetup();
