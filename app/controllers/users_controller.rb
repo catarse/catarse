@@ -105,14 +105,16 @@ class UsersController < ApplicationController
     else
       @user.unsubscribes.drop_all_for_project(nil)
     end
-    params[:unsubscribes].each do |subscription|
-      project_id = subscription[0].to_i
-      #change from unsubscribed to subscribed
-      if subscription[1].present?
-        @user.unsubscribes.drop_all_for_project(project_id)
-      #change from subscribed to unsubscribed
-      else
-        @user.unsubscribes.create!(project_id: project_id)
+    if params[:unsubscribes]
+      params[:unsubscribes].each do |subscription|
+        project_id = subscription[0].to_i
+        #change from unsubscribed to subscribed
+        if subscription[1].present?
+          @user.unsubscribes.drop_all_for_project(project_id)
+        #change from subscribed to unsubscribed
+        else
+          @user.unsubscribes.create!(project_id: project_id)
+        end
       end
     end
   end

@@ -138,12 +138,16 @@ RSpec.describe UsersController, type: :controller do
   end
 
   describe "PUT update" do
+    let(:project){ create(:project, state: 'successful') }
+    let(:category){ create(:category) }
     before do
-      put :update, id: user.id, locale: 'pt', user: { twitter: 'test' }
+      put :update, id: user.id, locale: 'pt', user: { twitter: 'test', unsubscribes: {project.id.to_s=>"1"}, category_followers_attributes: [{category_id: category.id}]}
     end
-    it("should update the user") do
+    it("should update the user and nested models") do
       user.reload
       expect(user.twitter).to eq('test')
+      expect(user.unsubscribes.size).to eq(1)
+      expect(user.category_followers.size).to eq(1)
     end
     it{ is_expected.to redirect_to edit_user_path(user) }
   end
