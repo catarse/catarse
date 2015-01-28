@@ -56,12 +56,6 @@ pt:
                         A pequisa&nbsp;%{link1} também é ótima fonte de dados sobre o cenário brasileiro. Uma boa lida no&nbsp; %{link2} pode ser inspiradora. Lá você encontra histórias de projetos bem sucedidos e dicas de campanha.
                       </p>
                     </div>
-                    <div class='fontsize-base fontweight-bold u-marginbottom-10'>
-                      Confira abaixo um screencast sobre como utilizar o painel de controle e editar seu projeto.
-                    </div>
-                    <div class='w-embed w-video' style='padding-top: 56.20608899297424%;'>
-                      <iframe allowfullscreen='1' frameborder='0' height='360' id='player' src='https://www.youtube.com/embed/1JCNBRuLye4?wmode=opaque&amp;amp;enablejsapi=1&amp;amp;origin=http%3A%2F%2Fcdn.embedly.com' title='YouTube video player' width='640'></iframe>
-                    </div>
 "
       failed:
         title: "%{name}, não desanime!"
@@ -98,11 +92,11 @@ pt:
       other_link_label: "Página na internet"
       other_link_hint: "Inclua links que ajudem os apoiadores a saber mais sobre você e suas qualificações para executar o projeto.&nbsp;"
       bio_label: "Biografia"
-      bio_hint: "Se você pudesse falar sobre você em um tweet?&nbsp;Máximo 140 caracteres"
+      bio_hint: "Se você pudesse falar sobre você em um tweet? Máximo 140 caracteres"
       facebook_link_label: "Perfil do facebook"
       facebook_link_hint: "Cole o link do seu perfil"
       uploaded_image_label: "Imagem do perfil"
-      uploaded_image_hint: "Essa imagem será utilizada como a miniatura de seu perfil (PNG, JPG tamanho&nbsp;650px x 350px)"
+      uploaded_image_hint: "Essa imagem será utilizada como a miniatura de seu perfil (PNG, JPG tamanho ideal&nbsp;140px x 140px)"
       name_label: "Nome"
       name_hint: "Esse é o nome que os usuários irão ver no seu perfil"
     dashboard_reward:
@@ -133,7 +127,7 @@ pt:
       card: 'Card do projeto'
       card_subtitle: 'Sabe aquele cardzinho de projeto que aparece na home e na busca? Pois então, faz bonito pois dizem que a primeira impressão é a que fica ;)'
       image: 'Imagem do projeto'
-      image_hint: 'Essa imagem será utilizada como a miniatura de seu projeto (PNG, JPG tamanho 512x400)'
+      image_hint: 'Essa imagem será utilizada como a miniatura de seu projeto (PNG, JPG tamanho 650px x350px)'
       headline: 'Frase de efeito'
       headline_hint: 'Será utilizada no card do projeto, junto com a imagem acima (miniatura). No máximo 100 caracteres.'
       submit: 'Salvar'

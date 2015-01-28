@@ -128,6 +128,6 @@ class UsersController < ApplicationController
   end
 
   def use_catarse_boostrap
-    ["edit", "update"].include?(action_name) ? 'catarse_bootstrap' : 'application'
+    ["show", "edit", "update"].include?(action_name) ? 'catarse_bootstrap' : 'application'
   end
 end
