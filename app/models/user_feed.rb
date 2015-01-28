@@ -32,11 +32,4 @@ class UserFeed < ActiveRecord::Base
       kclass.find(to_id)
     end
   end
-
-  def common_object
-    if common_type.present?
-      kclass = common_type.constantize
-      kclass.find(common_id)
-    end
-  end
 end
