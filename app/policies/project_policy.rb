@@ -32,6 +32,7 @@ class ProjectPolicy < ApplicationPolicy
       p_attr << record.attribute_names.map(&:to_sym)
       p_attr << user_attributes
       p_attr << budget_attributes
+      p_attr << posts_attributes
 
       {project: p_attr.flatten}
     else
