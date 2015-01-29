@@ -14,10 +14,6 @@
   
   nav.dashboard-nav.u-text-center style='z-index: 10; position: relative;'
     .w-container
-      span style='visibility: hidden;'
-        = link_to '#feeds', id: 'dashboard_feeds_link', class: 'dashboard-nav-link' , data: {target: '#dashboard_feeds' } do
-          | Atividades
-
       = link_to '#contributions', id: 'dashboard_contributions_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_contributions' } do
         | Apoiados
 
@@ -38,6 +34,10 @@
 
       = link_to user_path(resource), class: 'dashboard-nav-link u-right-big-only' do
         | Ir para o perfil público
+      span style='visibility: hidden;'
+        = link_to '#feeds', id: 'dashboard_feeds_link', class: 'dashboard-nav-link' , data: {target: '#dashboard_feeds' } do
+          | Atividades
+
 
   section.section-one-column
     #current_anchor data-anchor="#{params[:anchor]}"

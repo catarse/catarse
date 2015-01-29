@@ -7,6 +7,8 @@ App.addChild('UserShow', _.extend({
     this.route('contributed');
     this.route('created');
     this.route('about');
+
+    this.lookAnchors();
   },
 
   followRoute: function(name){
