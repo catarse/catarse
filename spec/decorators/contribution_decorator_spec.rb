@@ -5,6 +5,22 @@ RSpec.describe ContributionDecorator do
     I18n.locale = :pt
   end
 
+  describe "#display_date" do
+    [:confirmed_at, :refunded_at, :requested_refund_at].each do |field|
+      context "displaying #{field.to_s}" do
+        subject { contribution.decorate.display_date(field)}
+
+        let(:contribution) do
+          c = build(:contribution)
+          c[field] = Time.now
+          c
+        end
+
+        it{ is_expected.to eq(I18n.l(contribution.send(field).to_date)) }
+      end
+    end
+  end
+
   describe "#display_confirmed_at" do
     subject{ contribution.display_confirmed_at }
     context "when confirmet_at is not nil" do
