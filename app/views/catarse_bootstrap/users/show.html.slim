@@ -32,8 +32,6 @@ section.section
         == render_projects resource.contributed_projects.most_recent_first, 'profile_contributed_projects', { wrapper_class: 'w-col w-col-4 u-marginbottom-30' }
       #created.content.w-hidden
         == render_projects resource.created_projects.most_recent_first, 'profile_created_projects', { wrapper_class: 'w-col w-col-4 u-marginbottom-30' }
-        - if current_user && current_user.admin? || current_user == resource
-          == render_projects resource.projects.with_state(['draft', 'rejected', 'in_analysis']), 'profile_created_projects', { wrapper_class: 'w-col w-col-4 u-marginbottom-30' }
       #about.content.w-hidden
         = render 'user_about', resource: resource
 
