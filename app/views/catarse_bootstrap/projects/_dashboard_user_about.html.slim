@@ -74,9 +74,11 @@
                     label.field-label.fontweight-semibold= t('.other_link_label')   
                     label.field-label.fontsize-smallest.fontcolor-secondary= t('.other_link_hint')   
                   .w-col.w-col-7
-                    .w-row
-                      .w-col.w-col-12
-                        = form.input_field :other_link, as: :string, class: 'positive'
+                    #links
+                      = form.simple_fields_for :links do |link_form|
+                        = render partial: 'link_fields', locals: { f: link_form, parent_form: form }
+
+                      = link_to_add_association " . ", form, :links, :'data-association-insertion-method' => :after, class: 'w-hidden user-links'                  
           .w-col.w-col-4
             .w-hidden-small.w-hidden-tiny.card.u-radius.u-marginbottom-20 data-ix="new-interaction" 
               .fontsize-small.fontweight-semibold.u-marginbottom-20 Links úteis

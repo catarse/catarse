@@ -106,6 +106,7 @@ class ProjectsController < ApplicationController
     @posts_count = resource.posts.count(:all)
     @user = resource.user
     @user.build_bank_account unless @user.bank_account.present?
+    @user.links.build
     @post =  resource.posts.build
     @budget = resource.budgets.build
   end
