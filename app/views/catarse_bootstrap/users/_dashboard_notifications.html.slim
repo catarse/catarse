@@ -2,8 +2,7 @@
   .section
     .w-container
       .w-row
-        .w-col.w-col-1
-        .w-col.w-col-10
+        .w-col.w-col-10.w-col-push-1
           .w-form.card.card-terciary
               .w-row.u-marginbottom-20
                 .w-col.w-col-4
@@ -49,11 +48,10 @@
                     .w-checkbox.w-clearfix
                       = check_box_tag "user[reminders][][project_id]", project.id, true, class: 'w-checkbox-input'
                       label.w-form-label.fontsize-small for="checkbox-14"= project.name
-        .w-col.w-col-1
       .u-margintop-30
         .w-container
           .w-row
-            .w-col.w-col-4.w-col-offset-4
+            .w-col.w-col-4.w-col-push-4
               = f.submit 'Salvar',  class:'btn btn-large'
  
 
