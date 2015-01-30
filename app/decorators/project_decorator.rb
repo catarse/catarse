@@ -87,8 +87,6 @@ class ProjectDecorator < Draper::Decorator
         else
           content_tag(:span, '', class: 'fa fa-check-circle text-success')
         end
-      else
-        content_tag(:span, '', class: 'fa fa-check-circle fontcolor-terciary')
       end
     end
   end
