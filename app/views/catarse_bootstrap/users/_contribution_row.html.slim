@@ -29,10 +29,14 @@
         - else
           | Boleto bancario
       .fontsize-smallest
-        - if contribution.confirmed?
-          | Confirmado em #{contribution.decorate.display_confirmed_at}
-        - else
-          | Rembolsado em #{contribution.decorate.display_refunded_at}
+        - if contribution.waiting_confirmation?
+          | Aguardando confirmação do pagamento
+        - elsif contribution.confirmed?
+          | Confirmado em #{contribution.decorate.display_date(:confirmed_at)}
+        - elsif contribution.refunded?
+          | Rembolsado em #{contribution.decorate.display_date(:refunded_at)}
+        - elsif contribution.requested_refund?
+          | Reembolso solicitado em #{contribution.decorate.display_date(:requested_refund_at)}
     .w-col.w-col-4
       .fontsize-smallest
         span.w-hidden-main.w-hidden-medium.fontweight-semibold Recompensa:&nbsp;&nbsp;

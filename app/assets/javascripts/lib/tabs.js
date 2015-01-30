@@ -34,11 +34,17 @@ Skull.Tabs = {
   lookAnchors: function() {
     $anchor = this.$('#current_anchor').data('anchor');
 
+    if(this.$('.dashboard-nav-link').length > 0) {
+      selector = '.dashboard-nav-link';
+    } else {
+      selector = '.nav-tab';
+    }
+
     if($anchor != '' && $anchor != undefined) {
       window.location.hash = $anchor;
     } else {
-      if(this.$('.dashboard-nav-link.selected').length < 1 && (window.location.hash == '' || window.location.hash == '_#_')) {
-        this.$('.dashboard-nav-link:first').trigger('click');
+      if(this.$(selector).filter('.selected').length < 1 && (window.location.hash == '' || window.location.hash == '_#_')) {
+        this.$(selector).filter(':first')[0].click()
       }
     }
   }
