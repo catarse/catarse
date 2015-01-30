@@ -12,16 +12,18 @@
               .w-col.w-col-6.w-sub-col
                 = form.input_field :email, as: :string, class: 'w-input text-field positive'
               .w-col.w-col-6
-            /.divider.u-marginbottom-20
-            /.fontsize-base.fontweight-semibold Alterar minha senha
-            /.fontsize-small.u-marginbottom-20 Para que a senha seja alterada você precisa confirmar a sua senha atual.
-            /.w-row.u-marginbottom-20
+
+            .divider.u-marginbottom-20
+            .fontsize-base.fontweight-semibold Alterar minha senha
+            .fontsize-small.u-marginbottom-20 Para que a senha seja alterada você precisa confirmar a sua senha atual.
+            .w-row.u-marginbottom-20
               .w-col.w-col-6.w-sub-col
                 label.field-label.fontweight-semibold for="email-20"  Senha atual
-                input#email-20.w-input.text-field.error data-name=("Email 20") name="email-20" required="required" type="email" /
+                = form.input_field :current_password, class: 'w-input text-field'
               .w-col.w-col-6
                 label.field-label.fontweight-semibold for="email-21"  Nova senha
-                input#email-21.w-input.text-field.positive data-name=("Email 21") name="email-21" required="required" type="email" /
+                = form.input_field :password, class: 'w-input text-field positive'
+
             .divider.u-marginbottom-20
             .fontweight-semibold.fontsize-smaller Desativar minha conta
             .fontsize-smallest Todos os seus apoios serão convertidos em apoios anônimos, seus dados não serão mais visíveis, você sairá automaticamente do sistema e sua conta será desativada permanentemente.
