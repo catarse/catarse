@@ -6,23 +6,28 @@
         .fontweight-semibold.fontsize-large=t('.start')
         p.fontsize-base= t('.start_subtitle')
       .w-col.w-col-2
-= simple_form_for @project, html: { id: 'project_form', class: 'w-form' } do |form|
+= simple_form_for @project, html: { class: 'project-form w-form' } do |form|
   .section
     .w-container
       .w-row
         .w-col.w-col-8
           .w-form
               = @project.display_errors(:project)
-              .w-row.u-marginbottom-30.card.card-terciary
-                .w-col.w-col-5.w-sub-col
-                  label.field-label.fontweight-semibold=t('.video_url')
-                  label.field-label.fontsize-smallest.fontcolor-secondary=t('.video_url_hint')
-                .w-col.w-col-7
-                  = form.input_field :video_url, as: :string, class: 'positive', data: { applyerror: @project.has_errors_for?(:video_url) }
-              .card.card-terciary.u-marginbottom-30
-                label.field-label.fontweight-semibold= t('.about')  
-                label.field-label.fontsize-smallest.fontcolor-secondary.u-marginbottom-20= t('.about_hint_html')
-                = form.input_field :about, as: :text, class: 'bottom jumbo positive', data: { applyerror: @project.has_errors_for?(:about) }
+
+              = form.input :video_url, as: :string, 
+                wrapper: :two_columns,
+                wrapper_class: 'w-row u-marginbottom-30 card card-terciary',
+                label_wrapper_html: { class: 'w-col w-col-5 w-subcol' },
+                text_field_wrapper_html: { class: 'w-col w-col-7' },
+                input_html: { class: 'positive', required: false },
+                validation_text: false                  
+
+              = form.input :about, as: :text, 
+                wrapper: :one_col,
+                wrapper_class: 'w-row u-marginbottom-30 card card-terciary',
+                input_html: { class: 'bottom jumbo positive', required: true },
+                validation_text: false                 
+
               .card.card-terciary
                 label.field-label.fontweight-semibold= t('.budget_label') 
                 label.field-label.fontsize-smallest.fontcolor-secondary.u-marginbottom-20== t('.budget_hint') 
@@ -54,18 +59,22 @@
           .fontsize-large.fontweight-semibold= t('.card')
           p.fontsize-small.u-marginbottom-40= t('.card_subtitle') 
           .w-form
-            .w-row.u-marginbottom-30.card.card-terciary
-              .w-col.w-col-5.w-sub-col
-                label.field-label.fontweight-semibold=t('.image')
-                label.field-label.fontsize-smallest.fontcolor-secondary= t('.image_hint')
-              .w-col.w-col-6.w-sub-col
-                = form.input :uploaded_image, label: '', as: :file, required: false, hint: (@project.uploaded_image.present? ? image_tag(@project.uploaded_image.project_thumb.url, size: '220x172') : t('formtastic.hints.project.uploaded_image') ) 
-          .w-row.u-marginbottom-30.card.card-terciary
-            .w-col.w-col-5.w-sub-col
-              label.field-label.fontweight-semibold= t('.headline')
-              label.field-label.fontsize-smallest.fontcolor-secondary= t('.headline_hint') 
-            .w-col.w-col-7
-              = form.input_field :headline, as: :text, class: 'positive', data: { applyerror: @project.has_errors_for?(:headline) }
+            /= form.input :uploaded_image, label: '', as: :file, required: false, hint: (@project.uploaded_image.present? ? image_tag(@project.uploaded_image.project_thumb.url, size: '220x172') : t('formtastic.hints.project.uploaded_image') ) 
+            = form.input :uploaded_image, as: :file, 
+              wrapper: :two_columns,
+              wrapper_class: 'w-row u-marginbottom-30 card card-terciary',
+              label_wrapper_html: { class: 'w-col w-col-5 w-subcol' },
+              text_field_wrapper_html: { class: 'w-col w-col-6' },
+              input_html: { required: true },
+              validation_text: false                  
+
+          = form.input :headline, as: :text, 
+            wrapper: :two_columns,
+            wrapper_class: 'w-row u-marginbottom-30 card card-terciary',
+            label_wrapper_html: { class: 'w-col w-col-5 w-subcol' },
+            text_field_wrapper_html: { class: 'w-col w-col-7' },
+            input_html: { class: 'positive', required: true },
+            validation_text: false               
         .w-col.w-col-4
           = render 'card'
     .section

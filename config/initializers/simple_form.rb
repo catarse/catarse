@@ -5,8 +5,83 @@ SimpleForm.setup do |config|
   # wrapper, change the order or even add your own to the
   # stack. The options given below are used to wrap the
   # whole input.
+  config.wrappers :one_col, class: :input,
+    hint_class: :field_with_hint, error_class: [:field_with_errors, :error] do |b|
+
+    b.use :html5
+    b.use :placeholder
+    b.optional :maxlength
+    b.optional :pattern
+    b.optional :min_max
+    b.optional :readonly
+
+    b.use :label_text, wrap_with: { tag: :label, class: "field-label fontweight-semibold" }
+    b.use :hint,  wrap_with: { tag: :label, class: 'hint field-label fontsize-smallest fontcolor-secondary u-marginbottom-20'}
+
+    b.use :input
+    b.use :validation_text, wrap_with: { tag: :div, class: 'fontsize-smaller text-error u-marginbottom-20 fa fa-exclamation-triangle w-hidden' }
+  end
+
+  config.wrappers :two_columns, class: :input,
+    hint_class: :field_with_hint, error_class: [:field_with_errors, :error] do |b|
+
+    b.use :html5
+    b.use :placeholder
+    b.optional :maxlength
+    b.optional :pattern
+    b.optional :min_max
+    b.optional :readonly
+
+    b.wrapper :label_wrapper, tag: 'div' do |ba|
+      ba.use :label_text, wrap_with: { tag: :label, class: "field-label fontweight-semibold" }
+      ba.use :hint,  wrap_with: { tag: :label, class: 'hint field-label fontsize-smallest fontcolor-secondary'}
+    end
+
+    b.wrapper :text_field_wrapper, tag: 'div' do |ba|
+      ba.use :input
+      ba.use :validation_text, wrap_with: { tag: :div, class: 'fontsize-smaller text-error u-marginbottom-20 fa fa-exclamation-triangle w-hidden' }
+    end
+  end
+
+  config.wrappers :two_columns_with_postfix, class: :input,
+    hint_class: :field_with_hint, error_class: [:field_with_errors, :error] do |b|
+
+    b.use :html5
+    b.use :placeholder
+    b.optional :maxlength
+    b.optional :pattern
+    b.optional :min_max
+    b.optional :readonly
+
+    b.wrapper :label_wrapper, tag: 'div' do |ba|
+      ba.use :label_text, wrap_with: { tag: :label, class: "field-label fontweight-semibold" }
+      ba.use :hint,  wrap_with: { tag: :label, class: 'field-label hint fontsize-smallest fontcolor-secondary'}
+    end
+
+    b.wrapper :text_field_wrapper, tag: 'div' do |ba|
+      ba.wrapper tag: 'div', class: 'w-row' do |w_row|
+        w_row.wrapper :preppend_text_wrapper, tag: 'div' do |preppend|
+          preppend.wrapper :preppend_input_text_wrapper, tag: 'div', class: 'fontcolor-secondary u-text-center' do |p_wrapper|
+            p_wrapper.use :preppend_input_text
+          end
+        end
+
+        w_row.wrapper :field_wrapper do |field_wrapper|
+          field_wrapper.use :input
+          field_wrapper.use :validation_text, wrap_with: { tag: :div, class: 'fontsize-smaller text-error u-marginbottom-20 fa fa-exclamation-triangle w-hidden' }
+        end
+
+        w_row.wrapper :append_text_wrapper, tag: 'div' do |append|
+          append.wrapper :append_input_text_wrapper, tag: 'div', class: 'fontcolor-secondary u-text-center' do |a_wrapper|
+            a_wrapper.use :append_input_text
+          end
+        end
+      end
+    end
+  end
+
   config.wrappers :default, class: :input,
-    hint_class: :field_with_hint, error_class: :field_with_errors do |b|
+    hint_class: :field_with_hint, error_class: [:field_with_errors, :error] do |b|
     ## Extensions enabled by default
     # Any of these extensions can be disabled for a
     # given input by passing: `f.input EXTENSION_NAME => false`.
