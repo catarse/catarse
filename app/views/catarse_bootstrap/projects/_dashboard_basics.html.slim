@@ -15,66 +15,68 @@
           .w-form
               = @project.display_errors(:basics)
               - if (current_user && current_user.admin?)
-                - if @project.in_analysis?
-                  /.w-row.card.card-terciary.u-marginbottom-20
-                    .w-col.w-col-5
-                      label.field-label.fontweight-semibold for="name-8"= t('.online_date')
-                    .w-col.w-col-7
-                      .w-row
-                        .w-col.w-col-4.w-sub-col
-                          = form.input :online_date, as: :datetime, include_blank: true
-                .w-row.u-marginbottom-20.card.card-terciary
-                  .w-col.w-col-5
-                    label.field-label.fontweight-semibold for="name-8"= t('.user_id')
-                  .w-col.w-col-7
-                    = form.input_field :user_id, as: :string, class: 'positive'
-              .w-row.u-marginbottom-30.card.card-terciary
-                .w-col.w-col-5.w-sub-col
-                  label.field-label.fontweight-semibold for="name-8"= t('.name')
-                  label.field-label.fontsize-smallest.fontcolor-secondary for="name-8"=t('.name_label')  
-                .w-col.w-col-7
-                  = form.input_field :name, as: :string, class: 'positive', data: { applyerror: @project.has_errors_for?(:name) }
-                    .text-error.fontsize-smallest
-                      span.fa.fa-exclamation-triangle .
-                      | \&nbsp;This is some text inside of a div block.
-              .w-row.u-marginbottom-30.card.card-terciary
-                .w-col.w-col-5.w-sub-col
-                  label.field-label.fontweight-semibold for="name-8"= t('.url') 
-                  label.field-label.fontsize-smallest.fontcolor-secondary for="name-8"= t('.url_label')  
-                .w-col.w-col-7
-                  .w-row
-                    .w-col.w-col-4.w-col-small-6.w-col-tiny-6.text-field.prefix.no-hover
-                      .fontcolor-secondary.u-text-center.fontsize-smallest www.catarse.me/
-                    .w-col.w-col-8.w-col-small-6.w-col-tiny-6
-                      = form.input_field :permalink, as: :string, class: 'postfix positive', data: { applyerror: @project.has_errors_for?(:permalink) }
-              .w-row.u-marginbottom-30.card.card-terciary
-                .w-col.w-col-5.w-sub-col
-                  label.field-label.fontweight-semibold for="name-8"= t('.category')
-                  label.field-label.fontsize-smallest.fontcolor-secondary for="name-8"= t('.category_label')
-                .w-col.w-col-7
-                  = form.association :category, as: :select, collection: Category.order(:name_pt), prompt: t('simple_form.prompts.project.category'), class: 'w-select text-field positive', label: '', required: false, hint: ''
-              .w-row.u-marginbottom-30.card.card-terciary
-                .w-col.w-col-5.w-sub-col
-                  label.field-label.fontweight-semibold for="project_goal"= t('.value')
-                  label.field-label.fontsize-smallest.fontcolor-secondary for="project_goal"
-                    = t('.value_secondary')
-                    | .
-                .w-col.w-col-7
-                  .w-row
-                    .w-col.w-col-4.w-col-small-6.w-col-tiny-6.text-field.prefix.no-hover
-                      .fontcolor-secondary.u-text-center.fontsize-base.lineheight-tightest R$
-                    .w-col.w-col-8.w-col-small-6.w-col-tiny-6
-                      = form.input_field :goal, as: :string, class: "positive postfix", data: { applyerror: @project.has_errors_for?(:goal) }
-              .w-row.card.card-terciary
-                .w-col.w-col-5.w-sub-col
-                  label.field-label.fontweight-semibold for="name-8"=t('.online_days')
-                  label.field-label.fontsize-smallest.fontcolor-secondary for="name-8"= t('.online_days_label')
-                .w-col.w-col-7
-                  .w-row
-                    .w-col.w-col-8.w-col-small-6.w-col-tiny-6
-                      = form.input_field :online_days, class: 'prefix positive', as: :string, data: { applyerror: @project.has_errors_for?(:online_days) }
-                    .w-col.w-col-4.w-col-small-6.w-col-tiny-6.text-field.postfix.no-hover
-                      .fontcolor-secondary.u-text-center.fontsize-base.lineheight-tightest Dias
+                = form.input :user_id, as: :string, 
+                  wrapper: :two_columns,
+                  wrapper_class: 'w-row u-marginbottom-20 card card-terciary',
+                  label_wrapper_html: { class: 'w-col w-col-5' },
+                  text_field_wrapper_html: { class: 'w-col w-col-7' },
+                  input_html: { class: 'positive', required: true },
+                  validation_text: false
+
+              = form.input :name, as: :string, 
+                wrapper: :two_columns,
+                wrapper_class: 'w-row u-marginbottom-30 card card-terciary',
+                label_wrapper_html: { class: 'w-col w-col-5 w-subcol' },
+                text_field_wrapper_html: { class: 'w-col w-col-7 w-sub-col' },
+                input_html: { class: 'positive', required: true },
+                validation_text: false
+
+              = form.input :permalink, as: :string, 
+                wrapper: :two_columns_with_postfix,
+                wrapper_class: 'w-row u-marginbottom-30 card card-terciary',
+                label_wrapper_html: { class: 'w-col w-col-5 w-subcol' },
+                text_field_wrapper_html: { class: 'w-col w-col-7 w-sub-col' },
+                input_html: { class: 'postfix positive', required: true },
+                field_wrapper_html: { class: 'w-col w-col-8 w-col-small-6 w-col-tiny-6' },
+                validation_text: false,
+                preppend_text_wrapper_html: { class: 'w-col w-col-4 w-col-small-6 w-col-tiny-6 text-field prefix no-hover' },
+                preppend_input_text: 'www.catarse.me',
+                preppend_input_text_wrapper_html: { class: 'fontsize-smallest' }
+
+              = form.association :category, as: :select, 
+                collection: Category.order(:name_pt),
+                prompt: t('simple_form.prompts.project.category'),
+                wrapper: :two_columns,
+                wrapper_class: 'w-row u-marginbottom-30 card card-terciary',
+                label_wrapper_html: { class: 'w-col w-col-5 w-subcol' },
+                text_field_wrapper_html: { class: 'w-col w-col-7' },
+                input_html: { required: true },
+                validation_text: false
+
+              = form.input :goal, as: :float, 
+                wrapper: :two_columns_with_postfix,
+                wrapper_class: 'w-row u-marginbottom-30 card card-terciary',
+                label_wrapper_html: { class: 'w-col w-col-5 w-subcol' },
+                text_field_wrapper_html: { class: 'w-col w-col-7' },
+                input_html: { class: 'postfix positive', required: true },
+                field_wrapper_html: { class: 'w-col w-col-8 w-col-small-6 w-col-tiny-6' },
+                validation_text: false,
+                preppend_text_wrapper_html: { class: 'w-col w-col-4 w-col-small-6 w-col-tiny-6 text-field prefix no-hover' },
+                preppend_input_text: 'R$',
+                preppend_input_text_wrapper_html: { class: 'fontsize-base lineheight-tightest' }                
+
+              = form.input :online_days, as: :integer, 
+                wrapper: :two_columns_with_postfix,
+                wrapper_class: 'w-row u-marginbottom-30 card card-terciary',
+                label_wrapper_html: { class: 'w-col w-col-5 w-subcol' },
+                text_field_wrapper_html: { class: 'w-col w-col-7' },
+                input_html: { class: 'prefix positive', required: true },
+                field_wrapper_html: { class: 'w-col w-col-8 w-col-small-6 w-col-tiny-6' },
+                validation_text: false,
+                append_text_wrapper_html: { class: 'w-col w-col-4 w-col-small-6 w-col-tiny-6 text-field postfix no-hover' },
+                append_input_text: 'Dias',
+                append_input_text_wrapper_html: { class: 'fontsize-base lineheight-tightest' }                  
+
         .w-col.w-col-4    
           .w-hidden-small.w-hidden-tiny.card.u-radius.u-marginbottom-20 data-ix="new-interaction" 
             .fontsize-small.fontweight-semibold.u-marginbottom-20 Links úteis
