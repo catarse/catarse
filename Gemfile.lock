@@ -345,7 +345,7 @@ GEM
     pagarme (1.9.8)
       multi_json
       rest-client
-    pg (0.18.1)
+    pg (0.17.1)
     pg_search (0.7.8)
       activerecord (>= 3.1)
       activesupport (>= 3.1)
@@ -590,7 +590,7 @@ DEPENDENCIES
   omniauth
   omniauth-facebook (= 1.4.0)
   omniauth-twitter
-  pg
+  pg (= 0.17.1)
   pg_search
   poltergeist
   postgres-copy
