@@ -148,7 +148,7 @@ class ProjectsController < ApplicationController
   protected
 
   def should_use_validate
-    (resource.online? || resource.failed? || resource.successful? || permitted_params[:project][:permalink].present? ? true : false)
+    (resource.online? || resource.failed? || resource.successful? || permitted_params[:project][:permalink].present? ? false : true)
   end
 
   def permitted_params
