@@ -41,7 +41,7 @@ App.addChild('MixPanel', {
   trackProjectEdit: function(){
     var self = this;
     this.$('#project_video_url').change(function(){
-      self.$('#basics-save').click(function(){
+      self.$('#project-save').click(function(){
         self.track('Project owner engaged with Catarse', { action: 'Altered project video' });
       });
     });
