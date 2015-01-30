@@ -18,7 +18,7 @@ gem "best_in_place", :git => "git://github.com/bernat/best_in_place", ref: "ee95
 gem 'state_machine', require: 'state_machine/core'
 
 # Database and data related
-gem 'pg'
+gem 'pg', '0.17.1'
 gem 'postgres-copy'
 gem 'pg_search'
 gem 'i18n_alchemy'
