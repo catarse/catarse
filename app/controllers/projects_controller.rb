@@ -83,7 +83,6 @@ class ProjectsController < ApplicationController
 
   def update
     authorize resource
-
     resource.attributes = permitted_params[:project]
     @user = resource.user
 

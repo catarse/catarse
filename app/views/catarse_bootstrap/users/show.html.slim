@@ -1,0 +1,38 @@
+= render 'shared/header_big', overlayer: true
+
+.hero-half
+  .w-container.content-hero-profile
+    .w-row.u-text-center
+      .w-col.w-col-3
+      .w-col.w-col-6
+        .thumb.big.u-marginbottom-20.u-round
+          = resource.decorate.display_image_html({width: 119, height: 121, image_class: 'u-round'})
+        .fontsize-largest.fontweight-semibold.u-marginbottom-20
+          = resource.decorate.display_name
+        .w-hidden-small.w-hidden-tiny.fontsize-small.u-marginbottom-40 Se você tem um projeto criativo que promove transformação, inscreva-o neste canal. Aqui, usamos um mecanismo de gatilho, se você atingir 80% da sua meta, o Wings For Change® completa com os 20% restantes!
+      .w-col.w-col-3
+  .hero-profile style="background-image: url('#{resource.cover_image.try(:base).try(:url)}')"
+
+nav.project-nav.u-text-center.u-marginbottom-30.profile style='z-index: 10; position: relative;'
+  .w-container
+    = link_to '#contributed', id: 'contributed_link', class: 'nav-tab' , data: {target: '#contributed'} do
+      | Apoiados &nbsp;
+      span.badge= resource.total_contributed_projects
+    = link_to '#created', id: 'created_link', class: 'nav-tab' , data: {target: '#created'} do
+      | Criados &nbsp;
+      span.badge= resource.created_projects.count
+    = link_to '#about', id: 'about_link', class: 'nav-tab' , data: {target: '#about'} do
+      | Sobre
+
+
+section.section
+  .w-container
+    .w-row
+      #contributed.content.w-hidden
+        == render_projects resource.contributed_projects.most_recent_first, 'profile_contributed_projects', { wrapper_class: 'w-col w-col-4 u-marginbottom-30' }
+      #created.content.w-hidden
+        == render_projects resource.created_projects.most_recent_first, 'profile_created_projects', { wrapper_class: 'w-col w-col-4 u-marginbottom-30' }
+      #about.content.w-hidden
+        = render 'user_about', resource: resource
+
+= render 'shared/footer_big'

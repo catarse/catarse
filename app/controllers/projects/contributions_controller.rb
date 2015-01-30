@@ -85,7 +85,7 @@ class Projects::ContributionsController < ApplicationController
 
   def avaiable_payment_engines
     @engines ||= if parent.using_pagarme?
-      [PaymentEngines.find_engine('Pagarme')]
+      [PaymentEngines.find_engine('Pagarme')].compact
     else
       PaymentEngines.engines.inject([]) do |total, item|
         total << item unless item.name == 'Pagarme'
@@ -99,6 +99,6 @@ class Projects::ContributionsController < ApplicationController
   end
 
   def use_catarse_boostrap
-    ["new", "create", "edit", "update"].include?(action_name) ? 'catarse_bootstrap' : 'application'
+    ["show", "new", "create", "edit", "update"].include?(action_name) ? 'catarse_bootstrap' : 'application'
   end
 end
