@@ -16,7 +16,12 @@ App.addChild('MixPanel', {
   startTracking: function(){
     var self = this;
     this.trackOnPage('projects', 'show', function(){
-      self.trackVisit('Visited project page', {project_state: $('meta[property="project:state"]').prop('content')});
+      self.trackVisit('Visited project page', {project_state: self.$('#project-header').data('project-state')});
+    });
+    this.trackOnPage('projects', 'edit', function(){
+      if(self.$('#project-header').data('project-state') == 'online'){
+        self.trackProjectEdit();
+      }
     });
     this.trackPageVisit('projects', 'index', 'Visited home');
     this.trackPageVisit('explore', 'index', 'Explored projects');
@@ -31,6 +36,15 @@ App.addChild('MixPanel', {
     } catch(e) {
       console.log(e);
     }
+  },
+
+  trackProjectEdit: function(){
+    var self = this;
+    this.$('#project_video_url').change(function(){
+      self.$('#basics-save').click(function(){
+        self.track('Project owner engaged with Catarse', { action: 'Altered project video' });
+      });
+    });
   },
 
   trackFollowCategory: function(){
