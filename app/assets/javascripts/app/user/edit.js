@@ -12,12 +12,6 @@ App.addChild('UserEdit', _.extend({
     this.route('notifications');
     this.route('feeds');
 
-
-    this.nestedLinksSetup();
-    this.$('#links').on('cocoon:after-insert', function(e, insertedItem) {
-      that.nestedLinksSetup();
-    });
-
     this.lookAnchors();
   },
 
@@ -36,14 +30,6 @@ App.addChild('UserEdit', _.extend({
         that.$embed.html(data);
       });
     }
-  },
-
-  nestedLinksSetup: function() {
-    var that = this;
-    this.$('a.add-user-link').unbind('click');
-    this.$('a.add-user-link').bind('click', function(event) {
-      that.$('a.user-links.add_fields').trigger('click');
-    });
   }
 }, Skull.Tabs));
 
