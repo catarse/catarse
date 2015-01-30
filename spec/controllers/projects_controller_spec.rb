@@ -121,12 +121,6 @@ RSpec.describe ProjectsController, type: :controller do
 
         it{ is_expected.to redirect_to edit_project_path(project, anchor: 'home') }
       end
-
-      context "with invalid permalink" do
-        before { put :update, id: project.id, project: { permalink: '', name: 'My Updated Title' },locale: :pt }
-
-        it{ is_expected.to redirect_to edit_project_path(project, anchor: 'home') }
-      end
     end
 
     shared_examples_for "protected project" do

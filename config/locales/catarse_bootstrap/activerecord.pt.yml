@@ -50,12 +50,12 @@ pt:
         channels: Canais
         category: Categoria
         expires_at: Prazo
-        online_days: "Quantos dias você precisa para atingir sua meta? O tempo máximo é de 60 dias"
-        headline: "Uma frase de efeito sobre o seu projeto. Máximo de 140 caracteres."
+        online_days: "Prazo para arrecadação"
+        headline: "Frase de efeito"
         image_url: "URL da imagem"
         name: "Nome do projeto"
-        goal: "Quanto você pretende arrecadar? (Utilize apenas números)."
-        about: "Conte a história do seu projeto e como pretende gastar o dinheiro arrecadado."
+        goal: "Valor a ser arrecadado"
+        about: "Descrição do projeto"
         user_id: "Id do usuário"
         video_url: "URL do vídeo"
         permalink: 'URL do seu projeto'
