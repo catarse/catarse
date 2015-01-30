@@ -1,3 +1,15 @@
+App.addChild('ProjectEditForm', _.extend({
+  el: '.project-form',
+
+  events: {
+    'blur input' : 'checkInput'
+  },
+
+  activate: function() {
+    this.setupForm();
+  },
+}, Skull.Form));
+
 App.addChild('ProjectEdit', _.extend({
   el: '.project-dashboard-edit',
 
