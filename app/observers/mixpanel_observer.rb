@@ -51,7 +51,7 @@ class MixpanelObserver < ActiveRecord::Observer
 
   private
   def track_project_owner_engagement(user, action)
-    tracker.track(user.id, "Project owner engaged with Catarse", user_properties(user).merge(action: action))
+    tracker.track(user.id.to_s, "Project owner engaged with Catarse", user_properties(user).merge(action: action))
   end
 
   def user_properties(user)
