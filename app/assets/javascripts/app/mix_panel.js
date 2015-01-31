@@ -20,7 +20,11 @@ App.addChild('MixPanel', {
     });
     this.trackOnPage('projects', 'edit', function(){
       if(self.$('#project-header').data('project-state') == 'online'){
-        self.trackProjectEdit();
+        $(window).on('hashchange', function() {
+          if(window.location.hash == '#reports'){
+            self.track('Project owner engaged with Catarse', { action: 'Visited reports' });
+          }
+        });
       }
     });
     this.trackPageVisit('projects', 'index', 'Visited home');
@@ -36,15 +40,6 @@ App.addChild('MixPanel', {
     } catch(e) {
       console.log(e);
     }
-  },
-
-  trackProjectEdit: function(){
-    var self = this;
-    this.$('#project_video_url').change(function(){
-      self.$('#project-save').click(function(){
-        self.track('Project owner engaged with Catarse', { action: 'Altered project video' });
-      });
-    });
   },
 
   trackFollowCategory: function(){
