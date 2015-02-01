@@ -2120,8 +2120,9 @@ p {
   opacity: 1;
 }
 .dashboard-nav {
-  margin-top: 10px;
+  padding-top: 10px;
   border-bottom: 1px solid #e9e9ec;
+  background-color: white;
 }
 .card-success {
   border: 1px solid #00b22d;
@@ -3069,6 +3070,9 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
   .btn-tweet {
     border-color: #3cf;
     background-color: #3cf;
+  }
+  .dashboard-nav {
+    padding-top: 0px;
   }
   .nav-light {
     height: 39px;
