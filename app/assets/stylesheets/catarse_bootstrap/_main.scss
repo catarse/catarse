@@ -524,7 +524,7 @@ p {
 }
 .main-header.overlayer {
   position: relative;
-  z-index: 10;
+  z-index: 20;
   border-bottom-style: none;
   background-color: transparent;
   background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.38), transparent);
@@ -1752,7 +1752,7 @@ p {
 }
 .dropdown-list.user-menu.w--open {
   position: absolute;
-  z-index: 10;
+  z-index: 30;
   margin-top: 8px;
   margin-left: -110px;
 }
