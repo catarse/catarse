@@ -1,5 +1,5 @@
 class MixpanelObserver < ActiveRecord::Observer
-  observe :contribution, :project, :project_budget, :project_post, :user
+  observe :contribution, :project, :project_budget, :project_post, :user, :reward
 
   def from_waiting_confirmation_to_confirmed(contribution)
     user = contribution.user
