@@ -1,6 +1,7 @@
 # coding: utf-8
 class Project < ActiveRecord::Base
   include PgSearch
+  include Comparable
 
   include Shared::CatarseAutoHtml
   include Shared::StateMachineHelpers
@@ -191,15 +192,15 @@ class Project < ActiveRecord::Base
   end
 
   def can_show_account_link?
-    ['online', 'waiting_funds', 'successful', 'approved'].include? state
+    self >= :approved
   end
 
   def can_show_funding_period?
-    ['online', 'waiting_funds', 'successful', 'failed'].include? state
+    self >= :online
   end
 
   def can_show_preview_link?
-    ['draft', 'approved', 'rejected', 'in_analysis'].include? state
+    self.between?(:draft, :approved)
   end
 
   def using_pagarme?
@@ -277,6 +278,16 @@ class Project < ActiveRecord::Base
       self,
       params
     )
+  end
+
+  def <=>(state)
+    states_order = [[:draft, 0],
+                    [:in_analysis, 1],
+                    [:rejected, 2], [:approved, 2],
+                    [:online, 3],
+                    [:waiting_funds, 4],
+                    [:failed, 5], [:successful, 5]]
+    states_order.assoc(self.state.to_sym)[1] <=> states_order.assoc(state.to_sym)[1]
   end
 
   def notify_to_backoffice(template_name, options = {}, backoffice_user = User.find_by(email: CatarseSettings[:email_payments]))
