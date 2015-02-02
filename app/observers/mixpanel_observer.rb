@@ -16,33 +16,33 @@ class MixpanelObserver < ActiveRecord::Observer
 
   def after_update(record)
     # Detect project changes
-    if record.class == Project && record.state == 'online' && record.changed?
+    if record.kind_of?(Project) && record.online? && record.changed?
       [:video_url, :about, :headline, :uploaded_image].each do |attribute|
         track_project_owner_engagement(record.user, "Updated #{attribute}") if record.send("#{attribute}_changed?")
       end
     end
 
     # Detect project owner profile changes
-    if record.class == User && record.has_online_project? && record.changed?
+    if record.kind_of?(User) && record.has_online_project? && record.changed?
       track_project_owner_engagement(record, 'Updated profile')
     end
   end
 
   def after_create(record)
     # Detect project_post creation
-    if record.class == ProjectPost && record.project.state == 'online' && record.changed?
+    if record.kind_of?(ProjectPost) && record.project.online? && record.changed?
       track_project_owner_engagement(record.project.user, 'Created post')
     end
   end
 
   def after_save(record)
     # Detect budget changes
-    if record.class == ProjectBudget && record.project.state == 'online' && record.changed?
+    if record.kind_of?(ProjectBudget) && record.project.online? && record.changed?
       track_project_owner_engagement(record.project.user, 'Updated budget')
     end
 
     # Detect reward changes
-    if record.class == Reward && record.project.state == 'online' && record.changed?
+    if record.kind_of?(Reward) && record.project.online? && record.changed?
       track_project_owner_engagement(record.project.user, 'Updated reward')
     end
   end
