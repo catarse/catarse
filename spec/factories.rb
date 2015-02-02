@@ -93,6 +93,12 @@ FactoryGirl.define do
     f.uploaded_image File.open("#{Rails.root}/spec/support/testimg.png")
   end
 
+  factory :project_budget do |f|
+    f.association :project
+    f.name "Foo Bar"
+    f.value "10"
+  end
+
   factory :channels_subscriber do |f|
     f.association :user
     f.association :channel
