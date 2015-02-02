@@ -20,7 +20,8 @@ App.addChild('UserEdit', _.extend({
   },
 
   toggleNotifications: function(){
-    $('#notifications-box').toggle();
+    event.preventDefault();
+    this.$('#notifications-box').toggle();
   },
 
   followRoute: function(name){
