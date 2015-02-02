@@ -17,11 +17,9 @@ class MixpanelObserver < ActiveRecord::Observer
   def after_update(record)
     # Detect project changes
     if record.class == Project && record.state == 'online' && record.changed?
-      user = record.user
-      track_project_owner_engagement(user, 'Updated video') if record.video_url_changed?
-      track_project_owner_engagement(user, 'Updated about') if record.about_changed?
-      track_project_owner_engagement(user, 'Updated headline') if record.headline_changed?
-      track_project_owner_engagement(user, 'Updated image') if record.uploaded_image_changed?
+      [:video_url, :about, :headline, :uploaded_image].each do |attribute|
+        track_project_owner_engagement(record.user, "Updated #{attribute}") if record.send("#{attribute}_changed?")
+      end
     end
 
     # Detect project owner profile changes
