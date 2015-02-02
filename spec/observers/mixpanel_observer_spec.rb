@@ -50,14 +50,47 @@ RSpec.describe MixpanelObserver do
     end
   end
 
-  describe "#after_update" do
+  describe "#after_save" do
+    context "when we create a Reward" do
+      it "should send tracker a track call with the change" do
+        expect(tracker).to receive(:track).with(project.user.id.to_s, "Project owner engaged with Catarse", project_owner_properties.merge(action: "Updated reward"))
+        create(:reward, project: project)
+      end
+    end
 
+    context "when we create a ProjectBudget" do
+      it "should send tracker a track call with the change" do
+        expect(tracker).to receive(:track).with(project.user.id.to_s, "Project owner engaged with Catarse", project_owner_properties.merge(action: "Updated budget"))
+        create(:project_budget, project: project)
+      end
+    end
+  end
+
+  describe "#after_create" do
+    context "when we create a ProjectPost" do
+      it "should send tracker a track call with the change" do
+        expect(tracker).to receive(:track).with(project.user.id.to_s, "Project owner engaged with Catarse", project_owner_properties.merge(action: "Created post"))
+        create(:project_post, project: project)
+      end
+    end
+  end
+
+  describe "#after_update" do
     [:video_url, :about, :headline, :uploaded_image].each do |attribute|
       context "when we update a project's #{attribute}" do
         it "should send tracker a track call with the change" do
           expect(tracker).to receive(:track).with(project.user.id.to_s, "Project owner engaged with Catarse", project_owner_properties.merge(action: "Updated #{attribute}"))
           project.update_attributes attribute => 'http://youtu.be/teste'
         end
+      end
+    end
+
+
+    context "when we update a project owner profile" do
+      let(:user){ project.user }
+      it "should send tracker a track call with the change" do
+        expect(tracker).to receive(:track).with(user.id.to_s, "Project owner engaged with Catarse", project_owner_properties.merge(action: "Updated profile"))
+        user.update_attributes bio: 'test'
       end
     end
   end
