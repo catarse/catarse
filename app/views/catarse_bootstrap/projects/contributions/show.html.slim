@@ -6,7 +6,7 @@
         .u-text-center.u-marginbottom-20
           = image_tag @project.user.decorate.display_image, class: 'u-round thumb big', alt: @project.user.decorate.display_name
         .u-text-center
-          .fontsize-largest.text-success.u-marginbottom-20 Muito obrigado ;)
+          .fontsize-largest.text-success.u-marginbottom-20 Valeu ;)
           .fontsize-base.u-marginbottom-30
             | Agora você é parte do grupo de 124 pessoas que querem tirar o&nbsp;
             span.fontweight-semibold= link_to @project.name, project_by_slug_url(@project.permalink), class: 'alt-link'
