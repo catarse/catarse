@@ -21,9 +21,9 @@
                       = check_box_tag :subscribed, "1", @user.subscribed_to_posts?, class: 'w-checkbox-input'
                       label.w-form-label.fontsize-base.fontweight-semibold  Quero receber atualizações dos projetos
                     .u-marginbottom-20
-                      a.alt-link href="#"  Gerenciar as notificações de 07 projetos&nbsp;
+                      a.alt-link#toggle-notifications href="#"  Gerenciar as notificações de #{@user.contributed_projects.count} projetos
                     - if @unsubscribes
-                      ul.w-list-unstyled.u-radius.card.card-secondary
+                      ul.w-list-unstyled.u-radius.card.card-secondary.w-hidden#notifications-box
                         = f.simple_fields_for :unsubscribes, @unsubscribes do |u|
                           li
                             .w-checkbox.w-clearfix
