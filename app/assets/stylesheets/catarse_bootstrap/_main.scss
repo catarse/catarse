@@ -113,6 +113,13 @@ p {
   padding-bottom: 119px;
   background-color: #f1f4f4;
 }
+.section.section-gray-one.hover {
+  -webkit-transition: all 500ms ease;
+  transition: all 500ms ease;
+}
+.section.section-gray-one.hover:hover {
+  background-color: #bfed99;
+}
 .section.negative {
   background-color: #3f4752;
   color: #f1f4f4;
@@ -524,7 +531,8 @@ p {
 }
 .main-header.overlayer {
   position: relative;
-  z-index: 10;
+  z-index: 20;
+  margin-top: 0px;
   border-bottom-style: none;
   background-color: transparent;
   background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.38), transparent);
@@ -641,7 +649,8 @@ p {
 .main-footer.main-footer-neg {
   position: static;
   margin-top: 80px;
-  padding-bottom: 45px;
+  padding-top: 90px;
+  padding-bottom: 90px;
   background-color: #3f4752;
 }
 .link-footer {
@@ -738,6 +747,10 @@ p {
 }
 .badge.explore {
   background-color: transparent;
+  color: #a3b8cc;
+}
+.badge.explore.dark {
+  color: rgba(255, 255, 255, 0.43);
 }
 .inform-column {
   position: fixed;
@@ -1046,20 +1059,6 @@ p {
   border-top: 1px none rgba(0, 0, 0, 0.2);
   background-color: #3f4752;
   color: #f1f4f4;
-}
-.page-header.picure-bg {
-  margin-top: -65px;
-  padding-top: 264px;
-  background-image: url('../images/home-destaque01.jpg');
-  background-position: 50% 50%;
-  background-size: cover;
-  color: white;
-}
-.page-header.picure-bg.blur {
-  margin-top: -218px;
-  padding-bottom: 64px;
-  background-image: url('../images/wings-blur.jpg');
-  background-attachment: scroll;
 }
 .project-about-highlight {
   margin-top: 38px;
@@ -1502,11 +1501,6 @@ p {
   margin-right: auto;
   margin-left: auto;
 }
-.back-payment-form-box-quarter {
-  display: inline-block;
-  width: 25%;
-  padding-right: 3%;
-}
 .back-payment-address-subtitle {
   margin-bottom: 17px;
   font-weight: 600;
@@ -1700,14 +1694,6 @@ p {
   border-color: #00b22d;
   background-color: rgba(241, 244, 244, 0.36);
 }
-.back-payment-creditcard-records-brand {
-  display: inline-block;
-  width: 91px;
-  margin-top: 6px;
-  float: none;
-  color: #79808b;
-  font-weight: 600;
-}
 .footer-full-signature-text {
   margin-bottom: 20px;
   color: white;
@@ -1752,7 +1738,7 @@ p {
 }
 .dropdown-list.user-menu.w--open {
   position: absolute;
-  z-index: 10;
+  z-index: 30;
   margin-top: 8px;
   margin-left: -110px;
 }
@@ -1785,7 +1771,8 @@ p {
 .header-search {
   position: relative;
   display: inline-block;
-  width: 35%;
+  width: 40%;
+  height: 40px;
   margin-bottom: 0px;
   margin-left: 20px;
 }
@@ -2039,10 +2026,6 @@ p {
   margin-right: auto;
   margin-left: auto;
 }
-.thumb.medium {
-  width: 90px;
-  height: 90px;
-}
 .card-reward {
   position: relative;
 }
@@ -2120,8 +2103,9 @@ p {
   opacity: 1;
 }
 .dashboard-nav {
-  margin-top: 10px;
+  padding-top: 10px;
   border-bottom: 1px solid #e9e9ec;
+  background-color: white;
 }
 .card-success {
   border: 1px solid #00b22d;
@@ -2344,21 +2328,6 @@ p {
   border-right: 1px solid #ddd;
   line-height: 20px;
 }
-.lightbox-bg {
-  position: fixed;
-  left: 0px;
-  top: 0px;
-  right: 0px;
-  bottom: 0px;
-  z-index: 20;
-  height: 100%;
-  background-color: rgba(63, 71, 82, 0.92);
-}
-.lightbox-googleslide {
-  position: relative;
-  margin-top: 60px;
-  text-align: center;
-}
 .global-alert {
   position: fixed;
   left: 0px;
@@ -2422,15 +2391,9 @@ p {
   padding-bottom: 51px;
   background-color: white;
 }
-.list-item-inline {
-  display: inline-block;
-  overflow-x: hidden;
-  overflow-y: hidden;
-  margin-left: 15px;
-}
 .hero-full {
   height: 720px;
-  margin-top: -75px;
+  margin-top: -80px;
   margin-bottom: 30px;
   padding-top: 235px;
   padding-bottom: 235px;
@@ -2541,23 +2504,12 @@ p {
 .inline-block {
   display: inline-block;
 }
-.u-text-center-big-only {
-  text-align: center;
-}
 .u-right-big-only {
   float: right;
 }
 .col-blog-post {
   padding-right: 30px;
   padding-left: 30px;
-}
-.embed-content {
-  position: relative;
-  width: 940px;
-  height: 550px;
-}
-.page-current {
-  display: inline-block;
 }
 .page {
   display: inline-block;
@@ -2587,15 +2539,12 @@ p {
   position: absolute;
   z-index: 40;
   width: 100%;
-  margin-top: -17px;
+  margin-top: -16px;
   padding: 10px;
-  border-style: solid;
-  border-width: 1px;
-  border-color: rgba(37, 49, 57, 0.88);
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
   background-color: #f1f4f4;
-  box-shadow: rgba(0, 0, 0, 0.29) 1px 1px 3px 0px;
+  box-shadow: rgba(0, 0, 0, 0.32) 1px 1px 3px 0px;
 }
 .content-hero-profile {
   position: absolute;
@@ -2606,58 +2555,13 @@ p {
   margin-top: 110px;
   color: white;
 }
-.shadow {
-  box-shadow: rgba(0, 0, 0, 0.2) 1px 1px 8px 0px;
-}
-.share-inline-block {
-  display: inline-block;
-  margin-left: 20px;
-}
-.thumb-category {
-  display: inline-block;
-  width: 25px;
-  height: 25px;
-  margin-right: 10px;
-  margin-bottom: 10px;
-  float: left;
-  border-radius: 50%;
-}
-.thumb-category.design {
-  background-color: #afbac7;
-}
-.thumb-category.all {
-  background-color: #3f4752;
-}
-.thumb-category.arts {
-  background-color: #4389bf;
-}
-.thumb-category.technology {
-  background-color: #fdac4d;
-}
-.thumb-category.film {
-  background-color: #58606c;
-}
-.thumb-category.photo {
-  background-color: #777f89;
-}
-.thumb-category.dance {
-  background-color: #66a3d3;
-}
-.thumb-category.music {
-  background-color: #66c7d4;
-}
-.thumb-category.sport {
-  background-color: #437dbf;
-}
 .btn-category {
   overflow-x: hidden;
   overflow-y: hidden;
   width: 100%;
   height: 54px;
-  margin-right: 8px;
   margin-bottom: 8px;
-  margin-left: 8px;
-  padding: 15px 5px 5px;
+  padding: 16px 5px;
   border: 1px solid white;
   border-radius: 4px;
   -webkit-transition: all 500ms ease;
@@ -2673,43 +2577,10 @@ p {
   background-color: white;
   color: #3f4752;
 }
-.btn-category.selected {
-  background-color: #e9e9ec;
-}
-.btn-category._2 {
-  width: 100%;
-  height: 56px;
-  padding: 9px;
-  text-decoration: none;
-}
-.btn-category._3 {
-  overflow-x: hidden;
-  overflow-y: hidden;
-  width: 19%;
-  height: 47px;
-  margin-right: 8px;
-  margin-bottom: 4px;
-  border-color: rgba(255, 255, 255, 0.49);
-  background-color: transparent;
-  -webkit-transition-delay: initial;
-  transition-delay: initial;
-  color: rgba(255, 255, 255, 0.69);
-  font-weight: 600;
-}
-.btn-category._3:hover {
-  background-color: white;
-  color: #3f4752;
-}
-.btn-category._3.sel {
-  background-color: white;
-  color: #3f4752;
-}
 .btn-category.double-line {
   padding-top: 6px;
 }
 .btn-category.filters {
-  margin-right: 6px;
-  margin-left: 6px;
   border-color: #3f4752;
   color: #282f38;
   font-size: 14px;
@@ -2717,21 +2588,6 @@ p {
 .btn-category.filters:hover {
   background-color: rgba(0, 0, 0, 0.47);
   color: #f1f2f3;
-}
-.btn-category.alternative {
-  width: 22%;
-  margin: 5px 13px 13px;
-  background-color: transparent;
-  color: white;
-}
-.filter-category {
-  padding-top: 35px;
-  padding-bottom: 15px;
-  border-top: 1px solid rgba(121, 128, 139, 0.29);
-  border-bottom: 0px none rgba(121, 128, 139, 0.29);
-}
-.category-name {
-  margin-top: 4px;
 }
 .hero-search {
   margin-top: -65px;
@@ -2744,18 +2600,8 @@ p {
   background-size: cover;
   background-attachment: fixed;
 }
-.hero-search._2._3 {
-  padding-bottom: 10px;
-}
 .hero-search.closed {
   padding-bottom: 0px;
-}
-.hero-search.alternative {
-  background-color: #1f2329;
-  background-image: none;
-  background-position: 0% 0%;
-  background-size: auto;
-  background-attachment: scroll;
 }
 .following {
   padding-top: 9px;
@@ -2840,6 +2686,7 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
   .header-link {
     position: static;
     display: inline-block;
+    margin-right: 1px;
     padding: 6px 15px;
     font-size: 13px;
   }
@@ -2849,8 +2696,7 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     padding-bottom: 6px;
   }
   .main-footer.main-footer-neg {
-    padding-right: 20px;
-    padding-left: 20px;
+    padding: 54px 20px;
   }
   .button-news {
     left: 130px;
@@ -2965,9 +2811,6 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     margin-right: 12px;
     font-size: 13px;
   }
-  .back-payment-creditcard-records-brand {
-    width: 62px;
-  }
   .user-profile {
     margin-right: -10px;
   }
@@ -2987,12 +2830,14 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     display: block;
   }
   .header-search {
+    width: 42%;
     margin-left: 0px;
     font-size: 12px;
   }
   .header-logo {
     width: 28px;
     max-width: 28px;
+    margin-right: 10px;
     margin-left: 0px;
   }
   .postfix {
@@ -3070,6 +2915,9 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     border-color: #3cf;
     background-color: #3cf;
   }
+  .dashboard-nav {
+    padding-top: 0px;
+  }
   .nav-light {
     height: 39px;
   }
@@ -3105,16 +2953,15 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     padding-top: 110px;
     padding-bottom: 50px;
   }
-  .embed-content {
-    width: 728px;
-    height: 552px;
-  }
-  .share-inline-block {
-    margin-left: 20px;
-  }
   .btn-category {
-    margin-right: 6px;
-    margin-left: 6px;
+    padding-top: 19px;
+    padding-bottom: 19px;
+    font-size: 13px;
+    line-height: 16px;
+  }
+  .btn-category.double-line {
+    padding-top: 12px;
+    padding-bottom: 12px;
   }
   .btn-category.filters {
     font-size: 13px;
@@ -3143,6 +2990,9 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
   }
   .section.section-gray-one {
     padding-top: 50px;
+  }
+  .section.section-gray-one.hover:hover {
+    background-color: #f1f4f4;
   }
   .text-field.form-footer {
     width: 70%;
@@ -3382,10 +3232,6 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     float: left;
     clear: none;
   }
-  .back-payment-form-box-quarter {
-    width: 50%;
-    padding-right: 0px;
-  }
   .back-payment-address-subtitle {
     color: #79808b;
     text-align: left;
@@ -3411,9 +3257,6 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
   .dashboard-nav-link {
     padding: 4px 8px;
   }
-  .back-payment-creditcard-records-brand {
-    width: 71px;
-  }
   .footer-full-lastcolumn {
     left: 20px;
   }
@@ -3437,6 +3280,9 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     padding-right: 5px;
     padding-bottom: 5px;
   }
+  .header-search {
+    width: 100%;
+  }
   .header-logo {
     display: inline-block;
     width: 24px;
@@ -3453,6 +3299,9 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
   }
   .dropdown-icon {
     font-size: 13px;
+  }
+  .btn-dark.btn-attached {
+    width: 100%;
   }
   .thumb.small {
     width: 35px;
@@ -3537,26 +3386,32 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
   .inline-block {
     display: inline;
   }
-  .u-text-center-big-only {
-    text-align: left;
-  }
   .u-right-big-only {
     float: none;
   }
   .col-blog-post {
     margin-bottom: 50px;
   }
-  .embed-content {
-    width: 568px;
-    height: 552px;
-  }
   .icon-hero {
     width: 100px;
     margin-top: -30px;
   }
+  .search-pre-result {
+    margin-top: -15px;
+  }
   .btn-category {
+    padding-top: 19px;
+    padding-bottom: 19px;
     font-size: 15px;
     line-height: 17px;
+  }
+  .btn-category:hover {
+    background-color: transparent;
+    color: white;
+  }
+  .btn-category.double-line {
+    padding-top: 10px;
+    padding-bottom: 10px;
   }
   .hero-search {
     background-position: 50% 50%;
@@ -3621,8 +3476,7 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     font-size: 24px;
   }
   .main-footer.main-footer-neg {
-    padding-right: 9px;
-    padding-left: 9px;
+    padding: 71px 9px;
   }
   .link-footer {
     display: block;
@@ -3780,10 +3634,6 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     margin-bottom: 3px;
     padding-bottom: 0px;
   }
-  .back-payment-creditcard-records-brand {
-    width: auto;
-    font-size: 14px;
-  }
   .footer-full-signature-text {
     margin-bottom: 10px;
   }
@@ -3819,6 +3669,9 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
   .header-logo {
     width: 24px;
     padding: 0px;
+  }
+  .btn-dark.btn-attached {
+    width: 100%;
   }
   .footer-newsletter {
     width: 86.4%;
@@ -3873,25 +3726,12 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
   .hero-small {
     padding-bottom: 20px;
   }
-  .embed-content {
-    width: 320px;
-    height: 552px;
-  }
-  .margin-auto {
-    margin-top: auto;
-    margin-bottom: auto;
-  }
   .icon-hero {
     margin-top: -10px;
   }
-  .share-inline-block {
-    margin-top: 20px;
-  }
-  .thumb-category {
-    display: none;
-    background-color: #79808b;
-  }
   .btn-category {
+    padding-top: 18px;
+    padding-bottom: 18px;
     font-size: 14px;
     line-height: 16px;
   }
@@ -3906,13 +3746,5 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
   .following {
     padding-top: 13px;
     font-size: 11px;
-  }
-  .header-search-explore {
-    overflow-x: hidden;
-    overflow-y: hidden;
-    width: 100%;
-    margin-right: auto;
-    margin-left: auto;
-    text-align: center;
   }
 }
