@@ -116,6 +116,10 @@ class User < ActiveRecord::Base
     self.active.where(id: id).first!
   end
 
+  def has_online_project?
+    projects.with_state('online').exists?
+  end
+
   def created_projects
     projects.with_state(['online', 'waiting_funds', 'successful', 'failed'])
   end

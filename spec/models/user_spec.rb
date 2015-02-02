@@ -460,6 +460,31 @@ RSpec.describe User, type: :model do
     end
   end
 
+  describe "#has_online_project?" do
+    subject{ user.has_online_project? }
+    let(:user) { create(:user) }
+
+    context "when user has project online" do
+      before do
+        create(:project, user: user, state: 'online')
+      end
+
+      it{ is_expected.to eq(true) }
+    end
+
+    context "when user has project not online" do
+      before do
+        create(:project, user: user, state: 'draft')
+      end
+
+      it{ is_expected.to eq(false) }
+    end
+
+    context "when user has no project" do
+      it{ is_expected.to eq(false) }
+    end
+  end
+
   describe "#following_this_category?" do
     let(:category) { create(:category) }
     let(:category_extra) { create(:category) }
