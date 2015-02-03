@@ -25,7 +25,7 @@
         = form.input :with_payment_engine, collection: ['pagarme', 'moip'], label: 'Meio de pagamento', as: :select, include_blank: true, selected: params[:with_payment_engine]
     .w-row
       - [:between_created_at, :between_expires_at, :between_online_date, :between_updated_at, :goal_between].each_with_index do |between_field, index|
-        - mask = (between_field == :goal_between ? '' : '99/99/9999')
+        - mask = (between_field == :goal_between ? nil : '99/99/9999')
         - if index % 3 == 0
           .w-row
         .w-col-2.w-col
