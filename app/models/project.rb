@@ -1,7 +1,6 @@
 # coding: utf-8
 class Project < ActiveRecord::Base
   include PgSearch
-  include Comparable
 
   include Shared::CatarseAutoHtml
   include Shared::StateMachineHelpers
@@ -134,7 +133,7 @@ class Project < ActiveRecord::Base
           { permalinks: (CatarseSettings[:projects_enabled_to_use_pagarme].split(',').map(&:strip) rescue []) })
   }
 
-  attr_accessor :accepted_terms
+  attr_accessor :accepted_terms, :state
 
   # Draft state validtions
   validates_acceptance_of :accepted_terms, on: :create
@@ -192,15 +191,15 @@ class Project < ActiveRecord::Base
   end
 
   def can_show_account_link?
-    self >= :approved
+    self.state >= :approved
   end
 
   def can_show_funding_period?
-    self >= :online
+    self.state >= :online
   end
 
   def can_show_preview_link?
-    self.between?(:draft, :approved)
+    self.state.between?(:draft, :approved)
   end
 
   def using_pagarme?
@@ -280,16 +279,6 @@ class Project < ActiveRecord::Base
     )
   end
 
-  def <=>(state)
-    states_order = [[:draft, 0],
-                    [:in_analysis, 1],
-                    [:rejected, 2], [:approved, 2],
-                    [:online, 3],
-                    [:waiting_funds, 4],
-                    [:failed, 5], [:successful, 5]]
-    states_order.assoc(self.state.to_sym)[1] <=> states_order.assoc(state.to_sym)[1]
-  end
-
   def notify_to_backoffice(template_name, options = {}, backoffice_user = User.find_by(email: CatarseSettings[:email_payments]))
     if backoffice_user
       notify_once(
@@ -303,6 +292,10 @@ class Project < ActiveRecord::Base
 
   def already_deployed?
     self.online? || self.successful? || self.failed? || self.waiting_funds?
+  end
+
+  def state
+    ProjectState.new super
   end
 
   private
