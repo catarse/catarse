@@ -10,9 +10,7 @@
   h3 = t('channels.admin.filter.title')
   = simple_form_for '', url: admin_projects_path, method: :get do |form|
     .w-row
-      .w-col-2.w-col
-        = form.input :order_by, as: :hidden, input_html: {value: params[:order_by], class: 'w-input text-field'}
-        = form.input :by_id, as: :integer, label: t('channels.admin.filter.by_id'), input_html: {value: params[:by_id], class: 'w-input text-field'}
+      = form.input :order_by, as: :hidden, input_html: {value: params[:order_by], class: 'w-input text-field'}
       .w-col-3.w-col
         = form.input :pg_search, as: :string, label: t('channels.admin.filter.pg_search'), input_html: {value: params[:pg_search], class: 'w-input text-field'}
       .w-col-3.w-col
