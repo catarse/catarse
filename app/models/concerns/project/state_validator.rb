@@ -1,7 +1,7 @@
 class Project::StateValidator < ActiveModel::Validator
   def validate(record)
     @record = record
-    self.send record.state
+    self.send record.state.to_s
   end
 
   private

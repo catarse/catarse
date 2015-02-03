@@ -133,7 +133,7 @@ class Project < ActiveRecord::Base
           { permalinks: (CatarseSettings[:projects_enabled_to_use_pagarme].split(',').map(&:strip) rescue []) })
   }
 
-  attr_accessor :accepted_terms
+  attr_accessor :accepted_terms, :state
 
   # Draft state validtions
   validates_acceptance_of :accepted_terms, on: :create
@@ -191,15 +191,15 @@ class Project < ActiveRecord::Base
   end
 
   def can_show_account_link?
-    ['online', 'waiting_funds', 'successful', 'approved'].include? state
+    self.state >= :approved
   end
 
   def can_show_funding_period?
-    ['online', 'waiting_funds', 'successful', 'failed'].include? state
+    self.state >= :online
   end
 
   def can_show_preview_link?
-    ['draft', 'approved', 'rejected', 'in_analysis'].include? state
+    self.state.between?(:draft, :approved)
   end
 
   def using_pagarme?
@@ -292,6 +292,10 @@ class Project < ActiveRecord::Base
 
   def already_deployed?
     self.online? || self.successful? || self.failed? || self.waiting_funds?
+  end
+
+  def state
+    ProjectState.new super
   end
 
   private
