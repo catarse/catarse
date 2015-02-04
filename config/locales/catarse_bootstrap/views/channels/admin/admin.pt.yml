@@ -20,6 +20,7 @@ pt:
         title: Filtrar
         user_name_contains: Usuário
         with_state: Com o estado
+        by_payment_method: 'Meio de pagamento'
       followers:
         index:
           download: Baixar lista
