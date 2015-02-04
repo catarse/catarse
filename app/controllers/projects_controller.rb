@@ -108,6 +108,7 @@ class ProjectsController < ApplicationController
     @user.build_bank_account unless @user.bank_account.present?
     @user.links.build
     @post =  resource.posts.build
+    @rewards = @project.rewards.rank(:row_order)
     @budget = resource.budgets.build
   end
 
