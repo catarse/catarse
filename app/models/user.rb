@@ -116,6 +116,10 @@ class User < ActiveRecord::Base
     self.active.where(id: id).first!
   end
 
+  def has_online_project?
+    projects.with_state('online').exists?
+  end
+
   def created_projects
     projects.with_state(['online', 'waiting_funds', 'successful', 'failed'])
   end
@@ -211,8 +215,8 @@ class User < ActiveRecord::Base
   end
 
   def project_unsubscribes
-    contributed_projects.map do |p|
-      unsubscribes.posts_unsubscribe(p.id)
+    contributions.with_state('confirmed', 'requested_refund', 'refunded').map do |contribution|
+      unsubscribes.posts_unsubscribe(contribution.project_id)
     end
   end
 

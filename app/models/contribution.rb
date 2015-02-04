@@ -42,11 +42,11 @@ class Contribution < ActiveRecord::Base
   scope :available_to_display, ->{ with_states(['confirmed', 'requested_refund', 'refunded', 'waiting_confirmation']) }
   scope :by_id, ->(id) { where(id: id) }
   scope :by_key, ->(key) { where(key: key) }
-  scope :by_payment_id, ->(payment_id) { where(payment_id: payment_id) }
+  scope :by_payment_id, ->(term) { where("? IN (payment_id, key, acquirer_tid)", term) }
   scope :by_user_id, ->(user_id) { where(user_id: user_id) }
+  scope :by_payment_method, ->(payment_method) { where(payment_method: payment_method ) }
   scope :user_name_contains, ->(term) { joins(:user).where("unaccent(upper(users.name)) LIKE ('%'||unaccent(upper(?))||'%')", term) }
-  scope :user_email_contains, ->(term) { joins(:user).where("unaccent(upper(users.email)) LIKE ('%'||unaccent(upper(?))||'%')", term) }
-  scope :payer_email_contains, ->(term) { where("unaccent(upper(payer_email)) LIKE ('%'||unaccent(upper(?))||'%')", term) }
+  scope :user_email_contains, ->(term) { joins(:user).where("unaccent(upper(users.email)) LIKE ('%'||unaccent(upper(?))||'%') OR unaccent(upper(payer_email)) LIKE ('%'||unaccent(upper(?))||'%')", term, term) }
   scope :project_name_contains, ->(term) {
     joins(:project).merge(Project.search_on_name(term))
   }
@@ -130,6 +130,10 @@ class Contribution < ActiveRecord::Base
     else
       :contribution_project_unsuccessful
     end
+  end
+
+  def self.payment_method_names
+    ['Pagarme', 'PayPal', 'MoIP']
   end
 
   # Used in payment engines

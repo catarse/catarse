@@ -10,6 +10,7 @@ pt:
         expiring: Na reta final
         facebook: Facebook
         faq: Ajuda
+        guides: Guia dos Realizadores
         feedback: Feedback
         github: Github
         instagram: Instagram
@@ -24,8 +25,8 @@ pt:
       texts:
         copyleft: Feito com amor.
       titles:
-        about: Sobre nós
-        contact: Mantenha contato
+        about: Ajuda
+        contact: Bem-vindo
         newsletter: Assine nossa news
         sitemap: Navegue
         social: Redes sociais

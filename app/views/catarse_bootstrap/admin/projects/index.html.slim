@@ -10,9 +10,7 @@
   h3 = t('channels.admin.filter.title')
   = simple_form_for '', url: admin_projects_path, method: :get do |form|
     .w-row
-      .w-col-2.w-col
-        = form.input :order_by, as: :hidden, input_html: {value: params[:order_by], class: 'w-input text-field'}
-        = form.input :by_id, as: :integer, label: t('channels.admin.filter.by_id'), input_html: {value: params[:by_id], class: 'w-input text-field'}
+      = form.input :order_by, as: :hidden, input_html: {value: params[:order_by], class: 'w-input text-field'}
       .w-col-3.w-col
         = form.input :pg_search, as: :string, label: t('channels.admin.filter.pg_search'), input_html: {value: params[:pg_search], class: 'w-input text-field'}
       .w-col-3.w-col
@@ -25,7 +23,7 @@
         = form.input :with_payment_engine, collection: ['pagarme', 'moip'], label: 'Meio de pagamento', as: :select, include_blank: true, selected: params[:with_payment_engine]
     .w-row
       - [:between_created_at, :between_expires_at, :between_online_date, :between_updated_at, :goal_between].each_with_index do |between_field, index|
-        - mask = (between_field == :goal_between ? '' : '99/99/9999')
+        - mask = (between_field == :goal_between ? nil : '99/99/9999')
         - if index % 3 == 0
           .w-row
         .w-col-2.w-col
@@ -54,10 +52,9 @@
     table.table.fontsize-smallest
       thead.card.card-secondary
         tr
-          th.w-col-1.w-col= t('channels.admin.table.name')
+          th.w-col-2.w-col= t('channels.admin.table.name')
           th.w-col-1.w-col= t('.pagarme')
           th.w-col-1.w-col= t('channels.admin.table.category')
-          th.w-col-1.w-col= t('channels.admin.table.user_id')
           th.w-col-1.w-col
             a data-sort="goal" href='#'= t('.goal')
             span.sort-order
@@ -82,10 +79,9 @@
       tbody
         - @projects.includes(:category).each do |project|
           tr id=project.id class=cycle("card", "card card-secondary")
-            td.w-col-1.w-col= link_to project.name, project_by_slug_path(permalink: project.permalink)
+            td.w-col-2.w-col= link_to project.name, project_by_slug_path(permalink: project.permalink)
             td.w-col-1.w-col= (project.using_pagarme? ? t('yes') : t('no'))
             td.w-col-1.w-col= project.category
-            td.w-col-1.w-col= best_in_place [:admin, project], :user_id, method: :put, type: :input
             td.w-col-1.w-col= best_in_place [:admin, project], :goal, method: :put, type: :input, display_as: :display_goal
             td.w-col-1.w-col= "#{project.display_pledged} (#{project.progress}%)"
             td.w-col-1.w-col= project.total_contributions

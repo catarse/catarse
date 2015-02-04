@@ -17,6 +17,7 @@
     meta property="og:description" content=@project.headline
     meta property="og:url" content=project_by_slug_url(@project.permalink, locale: I18n.locale, ref: 'facebook')
   meta property="og:type" content='cause'
+  link href="#{@project.display_image('project_thumb_facebook')}" rel="image_src" type="image/jpeg"
   meta property="og:image" content=@project.display_image('project_thumb_facebook')
   meta property="og:site_name" content=CatarseSettings[:company_name]
   - fb_admins.each do |admin|
