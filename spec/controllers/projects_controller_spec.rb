@@ -11,7 +11,7 @@ RSpec.describe ProjectsController, type: :controller do
   let(:current_user){ nil }
 
   describe "POST create" do
-    let(:project){ build(:project) }
+    let(:project){ build(:project, state: 'draft') }
     before do
       post :create, { locale: :pt, project: project.attributes }
     end
@@ -22,8 +22,31 @@ RSpec.describe ProjectsController, type: :controller do
 
     context "when user is logged in" do
       let(:current_user){ create(:user) }
-      it{ is_expected.to redirect_to project_by_slug_path(project.permalink) }
+      it{ is_expected.to redirect_to edit_project_path(Project.last, anchor: 'home') }
     end
+  end
+
+  describe "GET publish" do
+    let(:project){ create(:project, state: 'approved') }
+    let(:current_user) { project.user }
+
+    before do
+      current_user.update_attributes({
+        address_city: 'foo',
+        address_state: 'MG',
+        address_street: 'bar',
+        address_number: '123',
+        address_neighbourhood: 'MMs',
+        address_zip_code: '000000',
+        phone_number: '33344455333'
+      })
+      create(:reward, project: project)
+      create(:bank_account, user: current_user)
+      get :publish, id: project.id, locale: :pt
+      project.reload
+    end
+
+    it { expect(project.online?).to eq(true) }
   end
 
   describe "GET send_to_analysis" do
@@ -31,6 +54,7 @@ RSpec.describe ProjectsController, type: :controller do
 
     context "without referal link" do
       before do
+        create(:reward, project: project)
         get :send_to_analysis, id: project.id, locale: :pt
         project.reload
       end
@@ -41,6 +65,7 @@ RSpec.describe ProjectsController, type: :controller do
     context "with referal link" do
       subject { project.referal_link }
       before do
+        create(:reward, project: project)
         get :send_to_analysis, id: project.id, locale: :pt, ref: 'referal'
         project.reload
       end
@@ -81,6 +106,12 @@ RSpec.describe ProjectsController, type: :controller do
 
   describe "PUT update" do
     shared_examples_for "updatable project" do
+      context "with tab anchor" do
+        before { put :update, id: project.id, project: { name: 'My Updated Title' },locale: :pt , anchor: 'basics'}
+
+        it{ is_expected.to redirect_to edit_project_path(project, anchor: 'basics') }
+      end
+
       context "with valid permalink" do
         before { put :update, id: project.id, project: { name: 'My Updated Title' },locale: :pt }
         it {
@@ -88,13 +119,7 @@ RSpec.describe ProjectsController, type: :controller do
           expect(project.name).to eq('My Updated Title')
         }
 
-        it{ is_expected.to redirect_to project_by_slug_path(project.permalink, anchor: 'edit') }
-      end
-
-      context "with invalid permalink" do
-        before { put :update, id: project.id, project: { permalink: '', name: 'My Updated Title' },locale: :pt }
-
-        it{ is_expected.to redirect_to project_by_slug_path(project.permalink, anchor: 'edit') }
+        it{ is_expected.to redirect_to edit_project_path(project, anchor: 'home') }
       end
     end
 

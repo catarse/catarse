@@ -1,6 +1,6 @@
 # coding: utf-8
 class ProjectsController < ApplicationController
-  after_filter :verify_authorized, except: %i[index video video_embed embed embed_panel]
+  after_filter :verify_authorized, except: %i[index video video_embed embed embed_panel about_mobile]
   inherit_resources
   has_scope :pg_search, :by_category_id, :near_of
   has_scope :recent, :expiring, :successful, :in_funding, :recommended, :not_expired, type: :boolean
@@ -40,7 +40,11 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new params[:project].merge(user: current_user)
     authorize @project
-    create! { project_by_slug_path(@project.permalink) }
+    if @project.save
+      redirect_to edit_project_path(@project, anchor: 'home')
+    else
+      render :new
+    end
   end
 
   def destroy
@@ -50,27 +54,62 @@ class ProjectsController < ApplicationController
 
   def send_to_analysis
     authorize resource
-    resource.send_to_analysis
-    if referal_link.present?
-      resource.update_attribute :referal_link, referal_link
+    @user = resource.user
+
+    if resource.send_to_analysis
+      if referal_link.present?
+        resource.update_attribute :referal_link, referal_link
+      end
+      flash[:notice] = t('projects.send_to_analysis')
+      redirect_to edit_project_path(@project, anchor: 'home')
+    else
+      flash.now[:notice] = t('projects.send_to_analysis_error')
+      edit
+      render :edit
     end
-    flash[:notice] = t('projects.send_to_analysis')
-    redirect_to project_by_slug_path(@project.permalink)
+  end
+
+  def publish
+    authorize resource
+
+    if resource.push_to_online
+      flash[:notice] = t('projects.put_online')
+      redirect_to edit_project_path(@project, anchor: 'home')
+    else
+      flash.now[:notice] = t('projects.put_online_error')
+      edit
+      render :edit
+    end
   end
 
   def update
     authorize resource
-    update! do |format|
-      format.html do
-        if resource.errors.present?
-          flash[:alert] = resource.errors.full_messages.to_sentence
-        else
-          flash[:notice] = t('project.update.success')
-        end
+    resource.attributes = permitted_params[:project]
+    @user = resource.user
 
-        redirect_to project_by_slug_path(@project.reload.permalink, anchor: 'edit')
-      end
+    if resource.save(validate: should_use_validate)
+      flash[:notice] = t('project.update.success')
+    else
+      flash[:notice] = t('project.update.failed')
+      edit
+      return render :edit
     end
+
+    if params[:anchor]
+      redirect_to edit_project_path(@project, anchor: params[:anchor])
+    else
+      redirect_to edit_project_path(@project, anchor: 'home')
+    end
+  end
+
+  def edit
+    authorize resource
+    @posts_count = resource.posts.count(:all)
+    @user = resource.user
+    @user.build_bank_account unless @user.bank_account.present?
+    @user.links.build
+    @post =  resource.posts.build
+    @budget = resource.budgets.build
   end
 
   def fb_comments_link
@@ -99,12 +138,20 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def about_mobile
+    resource
+  end
+
   def embed_panel
     @title = resource.name
     render layout: false
   end
 
   protected
+
+  def should_use_validate
+    (resource.online? || resource.failed? || resource.successful? || permitted_params[:project][:permalink].present? ? false : true)
+  end
 
   def permitted_params
     params.permit(policy(resource).permitted_attributes)
@@ -115,6 +162,6 @@ class ProjectsController < ApplicationController
   end
 
   def use_catarse_boostrap
-    action_name == "new" || action_name == "create" ? 'catarse_bootstrap' : 'application'
+    ['index', "edit", "new", "create", "show", "about_mobile", 'send_to_analysis', 'publish', 'update'].include?(action_name) ? 'catarse_bootstrap' : 'application'
   end
 end

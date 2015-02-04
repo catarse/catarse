@@ -1,0 +1,149 @@
+// Resetting headers as webflow does not provide this in its normalize
+h1, h2, h3, h4, h5, h6, label
+  font-weight: normal
+
+body
+  word-wrap: break-word
+
+.list-answer
+  display: none
+
+.required
+  .field-label
+    padding-top: 1px
+    padding-bottom: 1px
+    font-weight: 600
+
+.project-reward-box-hover
+  cursor: pointer
+
+.nav-tab
+  cursor: pointer
+
+select.date
+  float: left
+  width: 100px
+  margin-right: 5px
+.deliver-at-date
+  width: 230px
+
+.loader
+  img
+    display: none
+
+.card-reward
+  .project-reward-box-hover
+    opacity: 0
+    +transition(opacity 650ms)
+  &:hover .project-reward-box-hover
+    z-index: 10
+    opacity: 1
+    +transition(opacity 650ms)
+    .project-reward-box-hover-text
+      +transform(translateY(-50%) scale(1))
+
+.fb_comments_count_zero
+  display: inline
+
+// New contribution page
+.text-field.back-reward-input-reward // fix text-field height conflict
+  height: 70px
+
+.back-reward-radio-reward
+  .badge-success
+    display: none
+  &.selected
+    .badge-success
+      display: inline
+
+.list-question
+  cursor: pointer
+  &.open
+    font-weight: 600
+    &:before
+      font-family: "FontAwesome"
+      display: inline-block
+      content: "\f105 "
+      +transition(all 1s ease)
+      +rotate(90deg)
+
+  &:before
+    font-family: "FontAwesome"
+    display: inline-block
+    content: "\f105 "
+    +transition(all 1s ease)
+
+// Edit contribution page
+.w-col
+  .w-col
+    &.w-sub-col
+      padding-right: 20px
+    &.w-sub-col-middle
+      padding-right: 20px
+
+
+@media (max-width: 767px)
+  .w-col
+    .w-col.w-sub-col
+      padding-right: 0px
+
+.text-field.checkbox-fix
+  display: inline-block
+  width: 24px
+  height: 24px
+  margin: 0
+
+.text-error.w-hidden
+  display: none
+
+.hidden
+  display: none
+
+.text-color-for-status
+  &.rejected, &.failed
+    color: $red
+  &.approved, &.online, &.successful
+    color: $green
+  &.waiting_funds
+    color: #b8b651
+.force-text-dark
+  color: #3f4752 !important
+
+.field_with_errors
+  .text-field
+    margin-bottom: 5px
+    border-color: #e86666
+    background-color: rgba(232, 102, 102, 0.09)
+
+// Links rendered by workable embed
+.whr-title a
+  color: #409bff
+  text-decoration: none
+  &:hover
+    text-decoration: underline
+
+// Hero images
+.hero-jobs
+  background-image: url('/assets/hero-jobs.jpg') !important
+  background-position: 50% 50%
+  background-size: cover
+  color: white
+
+.hero-back
+  background-image: url('/assets/hero-home.jpg') !important
+  background-position: 50% 50%
+  background-size: cover
+  color: white
+
+.hero-guide
+  background-image: url('/assets/hero-guide.jpg') !important
+  background-position: 50% 50%
+  background-size: cover
+  color: white
+
+.hero-profile
+  width: 100%
+  height: 100%
+  -webkit-filter: blur(5px)
+  background-position: 50% 50%
+  background-size: cover

@@ -1,0 +1,38 @@
+= simple_form_for resource, html: { id: 'user_form', class: 'w-form' } do |form|
+  = hidden_field_tag :anchor, 'settings'
+  .section
+    .w-container
+      /.w-col.w-col-8.u-marginbottom-30
+      .w-col.w-col-10.w-col-push-1
+        .w-form.card.card-terciary.u-marginbottom-20
+          form#email-form.u-marginbottom-20 data-name=("Email Form") name="email-form" 
+            .fontsize-base.fontweight-semibold Email
+            .fontsize-small.u-marginbottom-20 É importante manter esse email atualizado, pois é por ele que a equipe do Catarse e a equipe dos projetos que você apoiou irão se comunicar com você.
+            .w-row.u-marginbottom-20
+              .w-col.w-col-6.w-sub-col
+                = form.input_field :email, as: :string, class: 'w-input text-field positive'
+              .w-col.w-col-6
+
+            .divider.u-marginbottom-20
+            .fontsize-base.fontweight-semibold Alterar minha senha
+            .fontsize-small.u-marginbottom-20 Para que a senha seja alterada você precisa confirmar a sua senha atual.
+            .w-row.u-marginbottom-20
+              .w-col.w-col-6.w-sub-col
+                label.field-label.fontweight-semibold for="email-20"  Senha atual
+                = form.input_field :current_password, class: 'w-input text-field'
+              .w-col.w-col-6
+                label.field-label.fontweight-semibold for="email-21"  Nova senha
+                = form.input_field :password, class: 'w-input text-field positive'
+
+            .divider.u-marginbottom-20
+            .fontweight-semibold.fontsize-smaller Desativar minha conta
+            .fontsize-smallest Todos os seus apoios serão convertidos em apoios anônimos, seus dados não serão mais visíveis, você sairá automaticamente do sistema e sua conta será desativada permanentemente.
+            = link_to 'Desativar minha conta no Catarse', resource, method: :delete, data: { confirm: 'Você deseja desativar essa conta?' }, class: 'alt-link fontsize-smaller'
+  
+    div
+      .w-container
+        .w-row
+          .w-col.w-col-4
+          .w-col.w-col-4
+            = form.button :submit, 'Salvar',  class:'btn btn-large'
+          .w-col.w-col-4

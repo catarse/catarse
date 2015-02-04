@@ -1,0 +1,48 @@
+.section
+  .w-container
+    .w-row
+      .w-col.w-col-8
+        .project-news.u-marginbottom-60
+          .fontsize-large.fontweight-semibold.u-marginbottom-30= t('.title')
+          = simple_form_for @project,  html: { class: 'w-form' } do |f|
+            =  hidden_field_tag 'anchor', 'posts'
+            = f.simple_fields_for :posts, @project.posts.build do |form|
+              = form.label :title, as: :string
+              = form.input_field :title, as: :string
+
+              = form.label :comment, as: :string
+              = form.input_field :comment, class: 'text-field jumbo'
+
+              .w-checkbox.w-clearfix.u-marginbottom-30
+                = form.check_box :exclusive, class: 'w-checkbox-input'
+                = form.label :exclusive, t('.only_to_backers'), class: 'w-form-label fontsize-small'
+
+              .card.card-message.u-radius.u-marginbottom-40
+                .fontsize-small= t('.warning')
+              .w-row
+                .w-col.w-col-4.w-sub-col.u-marginbottom-20
+                  = form.submit t('.publish'), class: 'btn btn-medium'
+                .w-col.w-col-3
+                  = link_to t('.discard'), 'javascript:location.reload();', class: 'btn btn-medium btn-terciary'
+                .w-col.w-col-5
+        .divider.u-marginbottom-30
+        .fontsize-large.fontweight-semibold.u-marginbottom-30= t('.old_posts') 
+        - @project.posts.each do |post|
+          - if post.persisted?
+            .project-news.u-marginbottom-30
+              .w-row
+                .w-col.w-col-11.w-col-small-11.w-col-tiny-11
+                  .fontsize-large.fontweight-semibold= post.title
+                .w-col.w-col-1.w-col-small-1.w-col-tiny-1
+                  = link_to '', project_post_path(@project, post), class: 'btn btn-small btn-terciary fa fa-lg fa-trash btn-no-border', method: :delete
+              .fontsize-small.fontcolor-secondary.u-marginbottom-20= l(post.created_at, format: :posts)
+              .w-row
+                - url = project_by_slug_url(@project.permalink, project_post_id: post.id, locale: I18n.locale, anchor: 'posts')
+                .w-col.w-col-3.w-col-small-3.w-col-tiny-4
+                  .twitter_share= render_twitter text: "#{post.title}", url: url
+                .w-col.w-col-9.w-col-small-9.w-col-tiny-8
+                  .facebook_share= render_facebook_share href: url, width: '360'
+            .divider.u-marginbottom-30
+
+      .w-col.w-col-4
+        = render 'formatting_tips'

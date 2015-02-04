@@ -1,0 +1,66 @@
+- content_for :title, t('.page-title')
+
+= render 'shared/header'
+
+.section
+  .w-container
+    .w-row
+      .w-col.w-col-8
+        = simple_form_for @project, html: { id: 'project_form', class: 'w-form' } do |form|
+          = render 'devise/shared/alert'
+
+          fieldset
+            legend.fontsize-larger.lineheight-looser = t('.form.blocks.first.title')
+            p.fontsize-small.u-marginbottom-40 = t('.form.blocks.first.description')
+
+            .u-marginbottom-40
+              = form.label :name, class: 'fontsize-large', required: false, as: :string
+              .fontsize-small.fontcolor-secondary.u-marginbottom-10= form.hint :name
+              = form.input_field :name, class: 'medium', as: :string
+            .u-marginbottom-40
+              = form.label :category, class: 'fontsize-large', required: false
+              .fontsize-small.fontcolor-secondary.u-marginbottom-10= form.hint :category
+              = form.association :category, as: :select, collection: Category.order(:name_pt), prompt: t('simple_form.prompts.project.category'), class: 'medium', label: '', required: false, hint: ''
+            .u-marginbottom-40
+              = form.label :permalink, class: 'fontsize-large', required: false, as: :string
+              .fontsize-small.fontcolor-secondary.u-marginbottom-10= form.hint :permalink
+              .w-row
+                .w-col.w-col-4.w-col.w-col-small-6.w-col-tiny-6.text-field.prefix.medium.prefix-permalink.no-hover
+                  .fontcolor-secondary.fontsize-base.u-text-center = t('.form.info.permalink')
+                .w-col.w-col-8.w-col-small-6.w-col-tiny-6
+                    = form.input_field :permalink, as: :string, class: 'medium medium postfix', required: false
+            .u-marginbottom-40
+              label.fontsize-large.field-label for="field"= t('simple_form.prompts.project.traffic_sources')
+              = form.input :traffic_sources, as: :select, collection: t('simple_form.collections.project.traffic_sources').values, prompt: t('simple_form.prompts.project.select'), class: 'medium', label: '', required: false, hint: ''
+          .w-row
+            .w-col.w-col-6.w-col-push-3   
+              = form.button :submit, t('.form.submit'), class:'btn btn-large'
+   
+      .w-col.w-col-4
+        .w-hidden-small.w-hidden-tiny.card.u-radius.u-marginbottom-20
+          .fontsize-small.fontweight-semibold.u-marginbottom-20 = t('.faq.titles.support')
+          ul.w-list-unstyled.fontsize-smaller
+            li.u-marginbottom-10
+              = link_to t('.faq.links.criteria'), "http://suporte.catarse.me/hc/pt-br/articles/202387638-Diretrizes-para-a-cria%C3%A7%C3%A3o-de-projetos", target: '_blank', class: "alt-link"
+
+            li.u-marginbottom-10
+              =link_to t('.faq.links.suport_central'), "#{CatarseSettings[:faq_url]}", target: '_blank', class: "alt-link"
+
+            li.zendesk_widget
+              =link_to t('.faq.links.support_contact'), "#{CatarseSettings[:zendesk_url]}/account/dropboxes/#{CatarseSettings[:zendesk_dropbox_id]}", target: '_blank', class: "alt-link"
+
+        .w-hidden-small.w-hidden-tiny.card.u-radius.u-marginbottom-20
+          .fontsize-small.fontweight-semibold.u-marginbottom-20 = t('.faq.titles.know_more')
+          ul.w-list-unstyled.fontsize-smaller
+            li.u-marginbottom-10
+              =link_to t('.faq.links.how_it_works'), "http://suporte.catarse.me/hc/pt-br/articles/201982466-O-que-%C3%A9-e-como-funciona-o-Catarse-", target: '_blank', class: "alt-link"
+
+            li.u-marginbottom-10
+              =link_to t('.faq.links.money'), "http://suporte.catarse.me/hc/pt-br/articles/202037493-Como-ser%C3%A1-feito-o-repasse-do-dinheiro-", target: '_blank', class: "alt-link"
+            li.u-marginbottom-10
+              =link_to t('.faq.links.selection'), "http://suporte.catarse.me/hc/pt-br/articles/202446018-Como-funciona-a-sele%C3%A7%C3%A3o-de-projetos-no-Catarse-", target: '_blank', class: "alt-link"
+            li
+              =link_to t('.faq.links.all_or_nothing'), "http://suporte.catarse.me/hc/pt-br/articles/202265256-Por-que-o-Tudo-ou-Nada-", target: '_blank', class: "alt-link"
+
+= render 'shared/footer'
+

@@ -110,17 +110,17 @@ RSpec.describe ProjectDecorator do
     subject{ project.display_image }
 
     context "when we have a video_url without thumbnail" do
-      let(:project){ create(:project, uploaded_image: nil, video_thumbnail: nil) }
+      let(:project){ create(:project, state: 'draft', uploaded_image: nil, video_thumbnail: nil) }
       it{ is_expected.to eq(project.video.thumbnail_large) }
     end
 
     context "when we have a video_thumbnail" do
-      let(:project){ create(:project, video_thumbnail: File.open("#{Rails.root}/spec/fixtures/image.png")) }
+      let(:project){ create(:project, state: 'draft', uploaded_image: nil, video_thumbnail: File.open("#{Rails.root}/spec/fixtures/image.png")) }
       it{ is_expected.to eq(project.video_thumbnail.project_thumb.url) }
     end
 
     context "when we have an uploaded_image" do
-      let(:project){ create(:project, uploaded_image: File.open("#{Rails.root}/spec/fixtures/image.png"), video_thumbnail: nil) }
+      let(:project){ create(:project, state: 'draft', uploaded_image: File.open("#{Rails.root}/spec/fixtures/image.png"), video_thumbnail: nil) }
       it{ is_expected.to eq(project.uploaded_image.project_thumb.url) }
     end
   end
@@ -164,6 +164,63 @@ pra você que quer organizar o levante na sua realidade, preencha <a class="alt-
     context "when progress is above 100" do
       before{ allow(project).to receive(:progress).and_return(101) }
       it{ is_expected.to eq(100) }
+    end
+  end
+
+  describe "#display_card_class" do
+    subject{ project.display_card_class }
+    let(:default_card){ "card u-radius zindex-10" }
+    let(:aditional){ "" }
+    let(:card_class){ "#{default_card} #{aditional}" }
+    context "when online and reached goal" do
+      before do
+        allow(project).to receive(:state).and_return('online')
+        allow(project).to receive(:reached_goal?).and_return(true)
+      end
+      let(:aditional){ "card-success" }
+      it{ is_expected.to eq(" ") }
+    end
+    context "when online and have not reached goal yet" do
+      before do
+        allow(project).to receive(:state).and_return('online')
+        allow(project).to receive(:reached_goal?).and_return(false)
+      end
+      it{ should == " " }
+    end
+    context "when failed" do
+      before do
+        allow(project).to receive(:state).and_return('failed')
+      end
+      let(:aditional){ "card-error" }
+      it{ should == card_class }
+    end
+    context "when in_analysis" do
+      before do
+        allow(project).to receive(:state).and_return('in_analysis')
+      end
+      let(:aditional){ "card-dark" }
+      it{ should == card_class }
+    end
+    context "when draft" do
+      before do
+        allow(project).to receive(:state).and_return('draft')
+      end
+      let(:aditional){ "card-dark" }
+      it{ should == card_class }
+    end
+    context "when waiting funds" do
+      before do
+        allow(project).to receive(:state).and_return('waiting_funds')
+      end
+      let(:aditional){ "card-waiting" }
+      it{ should == card_class }
+    end
+    context "when successful" do
+      before do
+        allow(project).to receive(:state).and_return('successful')
+      end
+      let(:aditional){ "card-success" }
+      it{ should == card_class }
     end
   end
 

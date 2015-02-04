@@ -3,7 +3,7 @@ var App = window.App = Skull.View.extend({
 
   events: {
     "click #close-global-alert" : "closeAlert",
-    "click a.user-menu" : "toggleMenu",
+    "click a#user-menu" : "toggleMenu",
     "click a.mobile-menu-link" : "mobileMenu",
     "click .zendesk_widget" : "showWidget",
     "click #pg_search_submit" : "searchProject"
@@ -26,7 +26,7 @@ var App = window.App = Skull.View.extend({
 
   closeAlert: function(event){
     $('body').css('padding-top', '0');
-    $('#global-alert').hide();
+    $('#global-alert').slideUp('slow');
     window.store.set('globalClosed', true);
   },
 
@@ -43,11 +43,12 @@ var App = window.App = Skull.View.extend({
   activate: function(){
     this.openAlert();
     this.$(".best_in_place").best_in_place();
-    this.$dropdown = this.$('.dropdown.user');
+    this.$dropdown = this.$('.dropdown-list.user-menu');
     this.flash();
     this.notices();
     Backbone.history.start({pushState: false});
-    this.$('input[data-mask]').each(this.maskElement);
+    this.maskAllElements();
+    this.applyErrors();
   },
 
   flash: function() {
@@ -55,7 +56,7 @@ var App = window.App = Skull.View.extend({
     this.$flash = this.$('.flash');
 
     setTimeout( function(){ that.$flash.slideDown('slow') }, 100)
-    if( ! this.$('.flash a').length) setTimeout( function(){ that.$flash.slideUp('slow') }, 16000)
+    if( ! this.$('.flash a').length) setTimeout( function(){ that.$flash.fadeOut('slow') }, 5000)
     $(window).click(function(){ that.$('.flash a').slideUp() })
   },
 
@@ -63,12 +64,13 @@ var App = window.App = Skull.View.extend({
     var that = this;
     setTimeout( function(){ this.$('.notice-box').fadeIn('slow') }, 100)
     if(this.$('.notice-box').length) setTimeout( function(){ that.$('.notice-box').fadeOut('slow') }, 16000)
-    $('.notice-box a.notice-close').on('click', function(){ that.$('.notice-box').fadeOut('slow') })
+    $('.icon-close').on('click', function(){ that.$('.card-notification').fadeOut('slow') })
   },
 
-  maskElement: function(index, el){
-    var $el = this.$(el);
-    $el.mask($el.data('mask') + '');
+  maskAllElements: function(){
+    this.$('input[data-fixed-mask]').each(function(){
+      $(this).fixedMask();
+    });
   },
 
   showWidget: function(){
@@ -77,13 +79,15 @@ var App = window.App = Skull.View.extend({
   },
 
   toggleMenu: function(){
-    this.$dropdown.slideToggle('fast');
+    this.$dropdown.toggleClass('w--open');
     return false;
   },
 
-  mobileMenu: function(){
-    $(".mobile-menu").slideToggle(500);
-  },
+  applyErrors: function() {
+    $.each($('[data-applyerror=true]'), function(i, item){
+      $(item).addClass('error');
+    })
+  }
 
 });
 

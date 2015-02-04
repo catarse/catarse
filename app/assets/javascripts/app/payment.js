@@ -1,22 +1,24 @@
 App.addChild('Payment', _.extend({
-  el: '#project_review #payment',
+  el: '#payment-engines',
 
   events: {
-    'click #payment_menu a' : 'onTabClick'
+    'click .nav-tab' : 'onClickPayment'
+  },
+
+  onClickPayment: function(event){
+    this.$('.tab-loader img').show();
+    this.onTabClick(event);
   },
 
   activate: function(){
-    _this = this;
+  },
 
-    this.loadPaymentChoices();
-
-    $('#live_in_brazil').on('change', function(){
-      _this.loadPaymentChoices();
-    });
+  show: function(){
+    this.$el.slideDown('slow');
   },
 
   updatePaymentMethod: function() {
-    var $selected_tab = this.$('#payment_menu a.selected');
+    var $selected_tab = this.$('.nav-tab.selected');
     $.ajax({
       url: this.$el.data('update-info-path'),
       type: 'PUT',
@@ -25,29 +27,21 @@ App.addChild('Payment', _.extend({
   },
 
   hideNationalPayment: function() {
-    this.$('#payment_menu a#MoIP').hide();
+    this.$('#MoIP').hide();
     this.$('.payments_type#MoIP_payment').hide();
   },
 
   selectInternationalPayment: function() {
-    if(this.$('#payment_menu a#PayPal').length > 0) {
-      this.onTabClick({currentTarget: this.$('#payment_menu a#PayPal')});
-    } else {
-      this.selectFirstTab();
-    }
-  },
-
-  selectFirstTab: function() {
-    this.onTabClick({currentTarget: this.$('#payment_menu a:first')});
+    this.onTabClick({currentTarget: this.$('#PayPal')});
   },
 
   loadPaymentChoices: function() {
-    if(!$('#live_in_brazil').prop('checked')) {
+    if($('#contribution_country_id').val() == '36') {
+      this.$('#MoIP').show();
+      this.onTabClick({currentTarget: this.$('.nav-tab:first')});
+    } else {
       this.hideNationalPayment();
       this.selectInternationalPayment();
-    } else {
-      this.$('#payment_menu a#MoIP').show();
-      this.selectFirstTab();
     }
 
     this.on('selectTab', this.updatePaymentMethod);

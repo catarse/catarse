@@ -1,6 +1,10 @@
 Skull.Tabs = {
   selectTab: function($tab, $tabContent){
-    $tab.siblings('.selected').removeClass('selected');
+    var $group = $('[data-tab-group=' + $tab.data('tab-group') + ']');
+    if($group.length == 0){
+      $group = $tab.siblings('.selected');
+    }
+    $group.removeClass('selected');
     $tab.addClass('selected');
     $tabContent.siblings(':visible').hide();
     $tabContent.show();
@@ -19,10 +23,29 @@ Skull.Tabs = {
     var that = this;
     var results = $tabContent.find('.results');
 
-    if($.trim(results.html()) == '' && $tabContent.data('path') && !results.is('[data-skiptab]')){
+    if($tabContent.data('path') && !results.data('skiptab')){
       $.get($tabContent.data('path')).success(function(data){
+        results.data('skiptab', true);
         results.html(data);
       });
+    }
+  },
+
+  lookAnchors: function() {
+    $anchor = this.$('#current_anchor').data('anchor');
+
+    if(this.$('.dashboard-nav-link').length > 0) {
+      selector = '.dashboard-nav-link';
+    } else {
+      selector = '.nav-tab';
+    }
+
+    if($anchor != '' && $anchor != undefined) {
+      window.location.hash = $anchor;
+    } else {
+      if(this.$(selector).filter('.selected').length < 1 && (window.location.hash == '' || window.location.hash == '_#_')) {
+        this.$(selector).filter(':first')[0].click()
+      }
     }
   }
 };

@@ -22,6 +22,23 @@ class ProjectDecorator < Draper::Decorator
     source.time_to_go[:time]
   end
 
+  def display_card_class
+    default_card = "card u-radius zindex-10"
+    aditional = ""
+    if source.waiting_funds?
+      aditional = 'card-waiting'
+    elsif source.successful?
+      aditional = 'card-success'
+    elsif source.failed?
+      aditional = 'card-error'
+    elsif source.draft? || source.in_analysis?
+      aditional = 'card-dark'
+    else
+      default_card = ""
+    end
+    "#{default_card} #{aditional}"
+  end
+
   def display_status
     if source.online?
       (source.reached_goal? ? 'reached_goal' : 'not_reached_goal')
@@ -50,12 +67,47 @@ class ProjectDecorator < Draper::Decorator
   end
 
   def progress
-    return 0 if source.goal == 0.0
+    return 0 if source.goal == 0.0 || source.goal.nil?
     ((source.pledged / source.goal) * 100).to_i
   end
 
   def display_pledged
     number_to_currency source.pledged
+  end
+
+  def status_icon_for group_name
+    if source.can_show_preview_link?
+      if source.errors.present?
+        has_error = source.errors.any? do |error|
+          source.error_included_on_group?(error, group_name)
+        end
+
+        if has_error
+          content_tag(:span, '', class: 'fa fa-exclamation-circle text-error')
+        else
+          content_tag(:span, '', class: 'fa fa-check-circle text-success')
+        end
+      end
+    end
+  end
+
+  def display_errors group_name
+    #source.valid?
+    if source.errors.present?
+      error_messages = ''
+      source.errors.each do |error|
+        if source.error_included_on_group?(error, group_name)
+          error_messages += content_tag(:div, source.errors[error][0], class: 'fontsize-smaller')
+        end
+      end
+
+      unless error_messages.blank?
+        content_tag(:div, class: 'card card-error u-radius zindex-10 u-marginbottom-30') do
+          content_tag(:div, I18n.t('failure_title'), class: 'fontsize-smaller fontweight-bold u-marginbottom-10') +
+          error_messages.html_safe
+        end
+      end
+    end
   end
 
   def display_goal
@@ -64,9 +116,7 @@ class ProjectDecorator < Draper::Decorator
 
   def progress_bar
     width = source.progress > 100 ? 100 : source.progress
-    content_tag(:div, id: :progress_wrapper) do
-      content_tag(:div, nil, id: :progress, style: "width: #{width}%")
-    end
+    content_tag(:div, nil, id: :progress, class: 'meter-fill', style: "width: #{width}%;")
   end
 
 

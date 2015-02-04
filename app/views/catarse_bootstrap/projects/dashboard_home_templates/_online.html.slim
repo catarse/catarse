@@ -1,0 +1,44 @@
+.u-text-center
+  .w-container
+    .w-row
+      .w-col.w-col-2
+      .w-col.w-col-8
+        .fontsize-large.fontweight-semibold.u-marginbottom-10= t('.title', name: @project.user.display_name)
+        p.fontsize-base
+          = t('.subtitle_html', date: @project.display_expires_at, link1: (link_to 'repasse de dinheiro é feito para projetos bem sucedidos', 'http://suporte.catarse.me/hc/pt-br/articles/202037493-Como-ser%C3%A1-feito-o-repasse-do-dinheiro-', target: '__blank'), link2: (link_to 'as principais dúvidas de realizadores','http://suporte.catarse.me/hc/pt-br/sections/200415988-Realizadores-projeto-no-ar', target: '__blank'))
+        .card.u-radius.u-marginbottom-30
+          .fontsize-small.fontweight-semibold
+            span.fontcolor-secondary>= t('projects.dashboard_home_templates.status')
+            span class="text-color-for-status #{@project.state}"
+              ' #{t("projects.project.display_status.#{@project.state}").upcase}
+          = render 'projects/dashboard_home_templates/project_numbers', project: @project
+.section
+  .w-container
+    .w-row
+      .w-col.w-col-8.w-hidden-small.w-hidden-tiny
+        = t('.explanation_html', link1: (link_to 'Retrato do Financiamento Coletivo Brasil', 'http://pesquisa.catarse.me/', target: '_blank' ), link2: (link_to 'Blog do Catarse', 'http://blog.catarse.me/', target: '_blank'))
+
+      .w-col.w-col-4
+        .w-hidden-small.w-hidden-tiny.card.u-radius.u-marginbottom-20 data-ix="new-interaction" 
+          .fontsize-small.fontweight-semibold.u-marginbottom-20 Links úteis
+          ul.w-list-unstyled
+            li.alt-link.fontsize-smaller.u-marginbottom-10
+              a.alt-link href="http://suporte.catarse.me/hc/pt-br/sections/200426037-Realizadores-repasse-do-dinheiro" target="_blank"  O que preciso fazer para receber o dinheiro?
+            li.fontsize-smaller.alt-link.u-marginbottom-10
+              a.alt-link href="http://suporte.catarse.me/hc/pt-br/articles/203083067-Como-eu-sei-se-meu-projeto-est%C3%A1-caminhando-bem-" target="_blank"  Meu projeto está caminhando bem?
+            li.fontsize-smaller.alt-link.u-marginbottom-10
+              a.alt-link href="http://suporte.catarse.me/hc/pt-br/articles/202226843-Promovendo-seu-projeto" target="_blank"  Promovendo seu projeto
+            li.alt-link.u-marginbottom-10
+              a.alt-link href="http://suporte.catarse.me/hc/pt-br/articles/202045706-O-projeto-pode-ser-editado-depois-de-come%C3%A7ada-a-capta%C3%A7%C3%A3o-" target="_blank"  O que posso editar quando o&nbsp;projeto no ar?
+        .w-hidden-small.w-hidden-tiny.card.u-radius data-ix="new-interaction" 
+          .fontsize-small.fontweight-semibold.u-marginbottom-20 Suporte
+          ul.w-list-unstyled
+            li.alt-link.fontsize-smaller.u-marginbottom-10
+              a.alt-link href="http://suporte.catarse.me/hc/pt-br/articles/201982466-O-que-%C3%A9-e-como-funciona-o-Catarse-" target="_blank"  Como o Catarse funciona?
+            li.fontsize-smaller.alt-link.u-marginbottom-10
+              a.alt-link href="http://suporte.catarse.me/hc/pt-br/articles/202265256-Por-que-o-Tudo-ou-Nada-" target="_blank"  Por quê Tudo-ou-nada?
+            li.alt-link.fontsize-smaller.u-marginbottom-10
+              a.alt-link href="http://suporte.catarse.me/" target="_blank"  Central de Suporte
+            li.fontsize-smaller.alt-link
+              a.alt-link href="https://equipecatarse.zendesk.com/account/dropboxes/20298537" target="_blank"  Entre em contato com a gente
+      

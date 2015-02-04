@@ -30,6 +30,40 @@ RSpec.describe Contribution, type: :model do
   end
 
 
+  describe '.for_successful_projects' do
+    let(:project) { create(:project, goal: 200, state: 'online') }
+
+    subject { Contribution.for_successful_projects }
+
+    before do
+      create(:contribution, value: 100, state: 'confirmed', project: project)
+      create(:contribution, value: 100, state: 'confirmed', project: project)
+      create(:contribution, value: 10, state: 'confirmed')
+      create(:contribution, value: 100, state: 'pending', project: project)
+
+      project.update_attributes(state: 'successful')
+    end
+
+    it { is_expected.to have(2).itens }
+  end
+
+  describe '.for_failed_projects' do
+    let(:project) { create(:project, goal: 200) }
+
+    subject { Contribution.for_failed_projects }
+
+    before do
+      create(:contribution, value: 100, state: 'confirmed', project: project)
+      create(:contribution, value: 10, state: 'confirmed', project: project)
+      create(:contribution, value: 10, state: 'requested_refund', project: project)
+      create(:contribution, value: 10, state: 'refunded', project: project)
+      create(:contribution, value: 10, state: 'confirmed')
+      create(:contribution, value: 100, state: 'pending', project: project)
+      project.update_attributes(state: 'failed')
+    end
+
+    it { is_expected.to have(4).itens }
+  end
   describe '.not_created_today' do
     before do
       create(:contribution, created_at: 1.day.ago)

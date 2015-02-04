@@ -17,3 +17,4 @@ CatarsePagarme.configure do |config|
   config.cielo_installment_amex_tax = CatarseSettings.get_without_cache(:cielo_installment_amex_tax)
   config.cielo_installment_not_amex_tax = CatarseSettings.get_without_cache(:cielo_installment_not_amex_tax)
 end
+

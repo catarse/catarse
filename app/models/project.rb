@@ -10,6 +10,7 @@ class Project < ActiveRecord::Base
   include Project::VideoHandler
   include Project::CustomValidators
   include Project::RemindersHandler
+  include Project::ErrorGroups
 
   has_notifications
 
@@ -18,7 +19,7 @@ class Project < ActiveRecord::Base
   delegate  :display_online_date, :display_status, :progress, :display_progress,
             :display_image, :display_expires_at, :remaining_text, :time_to_go,
             :display_pledged, :display_goal, :remaining_days, :progress_bar,
-            :status_flag, :state_warning_template, to: :decorator
+            :status_flag, :state_warning_template, :display_card_class, :display_errors, to: :decorator
 
   belongs_to :user
   belongs_to :category
@@ -26,11 +27,15 @@ class Project < ActiveRecord::Base
   has_one :project_total
   has_many :rewards
   has_many :contributions
-  has_many :posts, class_name: "ProjectPost"
+  has_many :posts, class_name: "ProjectPost", inverse_of: :project
+  has_many :budgets, class_name: "ProjectBudget", inverse_of: :project
   has_many :unsubscribes
 
   accepts_nested_attributes_for :rewards
   accepts_nested_attributes_for :channels
+  accepts_nested_attributes_for :user
+  accepts_nested_attributes_for :posts, allow_destroy: true#, reject_if: ->(x) { x[:title].blank? || x[:comment].blank? }
+  accepts_nested_attributes_for :budgets, allow_destroy: true, reject_if: ->(x) { x[:name].blank? || x[:value].blank? }
 
   catarse_auto_html_for field: :about, video_width: 600, video_height: 403
 
@@ -74,7 +79,7 @@ class Project < ActiveRecord::Base
   scope :user_name_contains, ->(term) { joins(:user).where("unaccent(upper(users.name)) LIKE ('%'||unaccent(upper(?))||'%')", term) }
   scope :near_of, ->(address_state) { where("EXISTS(SELECT true FROM users u WHERE u.id = projects.user_id AND lower(u.address_state) = lower(?))", address_state) }
   scope :to_finish, ->{ expired.with_states(['online', 'waiting_funds']) }
-  scope :visible, -> { without_states(['draft', 'rejected', 'deleted', 'in_analysis']) }
+  scope :visible, -> { without_states(['draft', 'rejected', 'deleted', 'in_analysis', 'approved']) }
   scope :financial, -> { with_states(['online', 'successful', 'waiting_funds']).where("projects.expires_at > (current_timestamp - '15 days'::interval)") }
   scope :expired, -> { where("projects.expires_at < current_timestamp") }
   scope :not_expired, -> { where("projects.expires_at >= current_timestamp") }
@@ -130,15 +135,16 @@ class Project < ActiveRecord::Base
 
   attr_accessor :accepted_terms
 
+  # Draft state validtions
   validates_acceptance_of :accepted_terms, on: :create
-
-  validates :video_url, presence: true, if: ->(p) { p.state == 'online' && p.goal >= (CatarseSettings[:minimum_goal_for_video].to_i) }
-  validates_presence_of :name, :user, :category, :about, :headline, :goal, :permalink
+  validates_presence_of :name, :user, :category, :permalink
   validates_length_of :headline, maximum: 140
-  validates_numericality_of :online_days, less_than_or_equal_to: 60, greater_than: 0
-  validates_numericality_of :goal, greater_than: 9
+  validates_numericality_of :online_days, less_than_or_equal_to: 60, greater_than: 0, if: ->(p){ p.online_days.present? }
+  validates_numericality_of :goal, greater_than: 9, allow_blank: true
   validates_uniqueness_of :permalink, case_sensitive: false
-  validates_format_of :permalink, with: /\A(\w|-)*\z/, allow_blank: true
+  validates_format_of :permalink, with: /(\w|-)*/
+
+  validates_with StateValidator
 
   [:between_created_at, :between_expires_at, :between_online_date, :between_updated_at].each do |name|
     define_singleton_method name do |starts_at, ends_at|
@@ -182,6 +188,18 @@ class Project < ActiveRecord::Base
     end
 
     self.using_pagarme(permalinks)
+  end
+
+  def can_show_account_link?
+    ['online', 'waiting_funds', 'successful', 'approved'].include? state
+  end
+
+  def can_show_funding_period?
+    ['online', 'waiting_funds', 'successful', 'failed'].include? state
+  end
+
+  def can_show_preview_link?
+    ['draft', 'approved', 'rejected', 'in_analysis'].include? state
   end
 
   def using_pagarme?
@@ -272,6 +290,10 @@ class Project < ActiveRecord::Base
     end
   end
 
+  def already_deployed?
+    self.online? || self.successful? || self.failed? || self.waiting_funds?
+  end
+
   private
   def self.between_dates(attribute, starts_at, ends_at)
     return all unless starts_at.present? && ends_at.present?
@@ -282,6 +304,7 @@ class Project < ActiveRecord::Base
     routes = Rails.application.routes.routes.map do |r|
       r.path.spec.to_s.split('/').second.to_s.gsub(/\(.*?\)/, '')
     end
-    routes.compact.uniq
+    routes.compact.uniq.reject(&:empty?)
   end
+
 end

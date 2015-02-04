@@ -3,69 +3,123 @@ App.addChild('ReviewForm', _.extend({
 
   events: {
     'blur input' : 'checkInput',
-    'click #accept' : 'acceptTerms',
-    'click #live_in_brazil' : 'toggleAddressFields',
-    'keyup #user_cpf' : 'onUserDocumentKeyup'
+    'change #contribution_address_state' : 'checkInput',
+    'change #contribution_country_id' : 'onCountryChange',
+    'change #contribution_anonymous' : 'toggleAnonymousConfirmation',
+    'click #next-step' : 'onNextStepClick',
+    'focus #contribution_payer_document' : 'onUserDocumentFocus'
   },
 
-  toggleAddressFields: function(){
-    this.$('fieldset.address_data').fadeToggle();
-  },
-
-  acceptTerms: function(){
+  onNextStepClick: function(){
     if(this.validate()){
-      $('#payment').show();
       this.updateContribution();
-    } else {
-      return false;
+      this.$errorMessage.hide();
+      this.$('#next-step').hide();
+      this.parent.payment.show();
     }
+    else{
+      this.$errorMessage.slideDown('slow');
+    }
+  },
+
+  toggleAnonymousConfirmation: function(){
+    this.$('#anonymous-confirmation').slideToggle('slow');
+  },
+
+  onCountryChange: function(){
+    if(this.$country.val() == '36'){
+      this.nationalAddress();
+    }
+    else{
+      this.internationalAddress();
+    }
+  },
+
+  internationalAddress: function(){
+    this.$state.data('old_value', this.$state.val());
+    this.$state.val('outro / other')
+    this.makeFieldsOptional();
+  },
+
+  makeFieldsRequired: function(){
+    this.$('[data-required-in-brazil]').prop('required', 'required');
+    this.$('[data-required-in-brazil]').parent().removeClass('optional').addClass('required');
+  },
+
+  makeFieldsOptional: function(){
+    this.$('[data-required-in-brazil]').prop('required', false);
+    this.$('[data-required-in-brazil]').parent().removeClass('required').addClass('optional');
+  },
+
+  nationalAddress: function(){
+    if(this.$state.data('old_value')){
+      this.$state.val(this.$state.data('old_value'))
+    }
+    this.parent.payment.loadPaymentChoices();
+    this.makeFieldsRequired();
   },
 
   activate: function(){
-    this.setupForm();
-    if(this.$('#live_in_brazil:checked').length == 0){
-      this.$('fieldset.address_data').hide();
+    this.$country = this.$('#contribution_country_id');
+    if(this.$country.val() === ''){
+      this.$country.val('36');
     }
+    this.$state = this.$('#contribution_address_state');
+    this.$errorMessage = this.$('#error-message');
+    this.$('#contribution_payer_document').data('custom-validation', this.onUserDocumentChange);
+    this.setupForm();
+    this.onCountryChange();
   },
 
-  onUserDocumentKeyup: function(e) {
+  onUserDocumentFocus: function(e) {
     var $documentField = $(e.currentTarget);
+    $documentField.fixedMask('off');
+  },
+
+  onUserDocumentChange: function(input) {
+    var $documentField = input;
     var documentNumber = $documentField.val();
+    if(documentNumber.length === 0){
+      return true;
+    }
     $documentField.prop('maxlength', 18);
     var resultCpf = this.validateCpf(documentNumber);
     var resultCnpj = this.validateCnpj(documentNumber.replace(/[\/.\-\_ ]/g, ''));
     var numberLength = documentNumber.replace(/[.\-\_ ]/g, '').length
     if(numberLength > 10) {
-     if($documentField.attr('id') != 'payment_card_cpf'){
-         if(numberLength == 11) {$documentField.mask('999.999.999-99?999'); }//CPF
-         else if(numberLength == 14 ){$documentField.mask('99.999.999/9999-99');}//CNPJ
-         if(numberLength != 14 || numberLength != 11){ $documentField.unmask()}
-        }
+      if($documentField.attr('id') != 'payment_card_cpf'){
+        $documentField.fixedMask('off');
+        if(numberLength == 11) {$documentField.fixedMask('999.999.999-99'); }//CPF
+        else if(numberLength == 14 ){$documentField.fixedMask('99.999.999/9999-99');}//CNPJ
+      }
 
-     if(resultCpf || resultCnpj) {
-        $documentField.addClass('ok').removeClass('error');
+      if(resultCpf || resultCnpj) {
+        return true;
       } else {
-        $documentField.addClass('error').removeClass('ok');
+        $documentField.trigger('invalid');
+        return false;
       }
     }
-     else{
-        $documentField.addClass('error').removeClass('ok');
-     }
+    else{
+      $documentField.trigger('invalid');
+      return false;
+    }
   },
 
   updateContribution: function(){
     var contribution_data = {
-      payer_name: this.$('#user_full_name').val(),
-      payer_email: this.$('#user_email').val(),
-      payer_document: this.$('#user_cpf').val(),
-      address_street: this.$('#user_address_street').val(),
-      address_number: this.$('#user_address_number').val(),
-      address_complement: this.$('#user_address_complement').val(),
-      address_neighbourhood: this.$('#user_address_neighbourhood').val(),
-      address_zip_code: this.$('#user_address_zip_code').val(),
-      address_city: this.$('#user_address_city').val(),
-      address_state: this.$('#user_address_state').val(),
-      address_phone_number: this.$('#user_phone_number').val()
+      country_id: this.$('#contribution_country_id').val(),
+      payer_name: this.$('#contribution_full_name').val(),
+      payer_email: this.$('#contribution_email').val(),
+      payer_document: this.$('#contribution_payer_document').val(),
+      address_street: this.$('#contribution_address_street').val(),
+      address_number: this.$('#contribution_address_number').val(),
+      address_complement: this.$('#contribution_address_complement').val(),
+      address_neighbourhood: this.$('#contribution_address_neighbourhood').val(),
+      address_zip_code: this.$('#contribution_address_zip_code').val(),
+      address_city: this.$('#contribution_address_city').val(),
+      address_state: this.$('#contribution_address_state').val(),
+      address_phone_number: this.$('#contribution_address_phone_number').val()
     }
     $.post(this.$el.data('update-info-path'), {
       _method: 'put',

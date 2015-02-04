@@ -1,0 +1,129 @@
+= simple_form_for @user, html: { id: 'user_form', class: 'w-form' } do |form|
+  .section-one-column
+    .w-container
+      .w-row
+        .w-col.w-col-10.w-col-push-1
+          .w-form
+              .w-row.u-marginbottom-30.card.card-terciary
+                .w-col.w-col-5.w-sub-col
+                  label.field-label.fontweight-semibold   Imagem do perfil
+                  label.field-label.fontsize-smallest.fontcolor-secondary   Essa imagem será utilizada como a miniatura de seu perfil (PNG, JPG tamanho&nbsp;512x400)
+                .w-col.w-col-4.w-sub-col
+                  = form.input :uploaded_image, label: '', as: :file, required: false, hint: (@user.uploaded_image.present? ? image_tag(@user.uploaded_image.thumb_avatar.url, size: '220x172#') : t('formtastic.hints.project.uploaded_image') ) 
+
+              .w-row.u-marginbottom-30.card.card-terciary
+                .w-col.w-col-5.w-sub-col
+                  label.field-label.fontweight-semibold   Header do perfil
+                  label.field-label.fontsize-smallest.fontcolor-secondary   Essa imagem será utilizada como o background do header de seu perfil público (PNG, JPG tamanho xxxxx)
+                .w-col.w-col-4.w-sub-col
+                  = form.input :cover_image, label: '', as: :file, required: false, hint: (@user.cover_image.present? ? image_tag(@user.cover_image.base.url, size: '220x172#') : t('formtastic.hints.project.uploaded_image') ) 
+
+          .w-row.u-marginbottom-30.card.card-terciary
+            .w-col.w-col-5.w-sub-col
+              label.field-label.fontweight-semibold   Nome
+              label.field-label.fontsize-smallest.fontcolor-secondary   Esse é o nome que os usuários irão ver no seu perfil
+            .w-col.w-col-7
+              = form.input_field :name, as: :string, class: 'positive'
+          .w-form.card.card-terciary.u-marginbottom-30
+              .w-row
+                .w-col.w-col-5.w-sub-col
+                  label.field-label.fontweight-semibold   Mini-bio
+                  label.field-label.fontsize-smallest.fontcolor-secondary   Se você pudesse falar sobre você em um tweet?&nbsp;Máximo 140 caracteres
+                .w-col.w-col-7
+                  = form.input_field :bio, as: :text, class: 'positive big'
+          .w-form.card.card-terciary.u-marginbottom-30
+              .w-row.u-marginbottom-10
+                .w-col.w-col-5.w-sub-col
+                  label.field-label.fontweight-semibold   Perfil do facebook
+                  label.field-label.fontsize-smallest.fontcolor-secondary   Cole o link do seu perfil
+                .w-col.w-col-7
+                  = form.input_field :facebook_link, as: :string, class: 'positive'
+              .w-row.u-marginbottom-10
+                .w-col.w-col-5.w-sub-col
+                  label.field-label.fontweight-semibold   Perfil do twitter
+                  label.field-label.fontsize-smallest.fontcolor-secondary   Cole o link do seu perfil
+                .w-col.w-col-7
+                  = form.input_field :twitter, as: :string, class: 'positive'
+
+          .w-form.card.card-terciary.u-marginbottom-30
+              .w-row.u-marginbottom-10
+                .w-col.w-col-5.w-sub-col
+                  label.field-label.fontweight-semibold for="name-8"  Página na internet
+                  label.field-label.fontsize-smallest.fontcolor-secondary for="name-8"  Inclua links que ajudem os apoiadores a saber mais sobre você e suas qualificações para executar o projeto.&nbsp;
+                .w-col.w-col-7
+                  #links
+                    = form.simple_fields_for :links do |link_form|
+                      = render partial: 'link_fields', locals: { f: link_form, parent_form: form }
+
+                    = link_to_add_association " . ", form, :links, :'data-association-insertion-method' => :after, class: 'w-hidden user-links'                  
+          .w-row
+            .w-col.w-col-8.w-sub-col
+              .card.card-terciary.u-marginbottom-30
+                label.field-label.fontweight-semibold for="name-8"  Sobre
+                label.field-label.fontsize-smallest.fontcolor-secondary.u-marginbottom-20 for="field-6"  Caso você queira descrever mais você, sua empresa ou sua instituição. Dar crédito a parceiros?&nbsp;Algum vídeo institucional?&nbsp;Use esse espaço abaixo para isso. Ele irá aparecer na Aba Sobre em seu Perfil Público.
+                .w-form
+                  .preview-container.u-marginbottom-40
+                    /.text-field.no-hover.top
+                      a.link-hidden.fa.fa-eye.fa-lg data-ix="display-preview" href="#" style=("transition: all 0.5s ease 0s; -webkit-transition: all 0.5s ease 0s;")  .
+                    /.preview data-ix="display-none-on-load" style=("display: none;") 
+                      .fontsize-large.fontweight-semibold.u-marginbottom-30 This is some text inside of a div block.
+                      p.fontsize-base Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.
+                      img.u-marginbottom-20 alt="542d9f4baf9e5c4227c9dedd_XJsoL5s.jpg" src="http://uploads.webflow.com/54b440b85608e3f4389db387/542d9f4baf9e5c4227c9dedd_XJsoL5s.jpg"
+                      p.fontsize-base Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.
+                      p.fontsize-base Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.
+                      img.u-marginbottom-20 alt="542d9f4baf9e5c4227c9dedd_XJsoL5s.jpg" src="http://uploads.webflow.com/54b440b85608e3f4389db387/542d9f4baf9e5c4227c9dedd_XJsoL5s.jpg"
+                    = form.input_field :about, class: 'w-input text-field bottom jumbo positive'
+            .w-col.w-col-4
+              .w-hidden-small.w-hidden-tiny.card.u-radius.u-marginbottom-20 data-ix="new-interaction" 
+                .fontsize-small.fontweight-semibold.u-marginbottom-20 Dicas de formatação
+                ul.w-list-unstyled
+                  li.u-marginbottom-20.fontsize-smallest
+                    .w-row
+                      .w-col.w-col-2.fa.fa-image.fa-lg.fontcolor-secondary
+                      .w-col.w-col-10
+                        div Se você colar a url de uma imagem ou de um vídeo do vimeo ou do youtube, eles irão aparecer na descrição da ideia. experimente!
+                  li.u-marginbottom-20.fontsize-smallest
+                    .w-row
+                      .w-col.w-col-2.fa.fa-lg.fontcolor-secondary.fa-link
+                      .w-col.w-col-10
+                        div
+                          | Ao colar uma url qualquer, ela virará um link. Por exemplo, http://catarse.me virará
+                          a.alt-link href="#"  http://catarse.me
+                  li.u-marginbottom-20.fontsize-smallest
+                    .w-row
+                      .w-col.w-col-2.fa.fa-lg.fontcolor-secondary.fa-external-link
+                      .w-col.w-col-10
+                        div
+                          | Se você quiser colocar um texto no link, basta usar o seguinte formato: "texto que você quer":http://sua.url. Por exemplo, "Catarse":http://catarse.me virará&nbsp;
+                          a.alt-link href="#" > Catarse
+                          | \.
+                          a.alt-link href="#" 
+                  li.u-marginbottom-20.fontsize-smallest
+                    .w-row
+                      .w-col.w-col-2.fa.fa-lg.fontcolor-secondary.fa-bold
+                      .w-col.w-col-10
+                        div
+                          | Você pode usar negrito adicionando dois asteriscos (**) antes e depois do texto que você quer formatar. Por exemplo, **meu texto em negrito** irá aparecer como&nbsp;
+                          span.fontweight-bold> meu texto em negrito
+                          | \.
+                          a.alt-link href="#" 
+                  li.u-marginbottom-20.fontsize-smallest
+                    .w-row
+                      .w-col.w-col-2.fa.fa-lg.fontcolor-secondary.fa-italic
+                      .w-col.w-col-10
+                        div
+                          | Você pode usar itálico adicionando um underline (_) antes e depois do texto que você quer formatar. Por exemplo, _meu texto em itálico_ irá aparecer como&nbsp;
+                          em> meu texto em itálico
+                          | \.
+                          a.alt-link href="#" 
+          
+
+  div
+    .w-container
+      .w-row
+        .w-col.w-col-4
+        .w-col.w-col-4
+          =  hidden_field_tag 'anchor', 'about_me'
+          = form.button :submit, 'Salvar',  class:'btn btn-large'
+        .w-col.w-col-4
+

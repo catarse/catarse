@@ -2,6 +2,7 @@
 class Contribution < ActiveRecord::Base
   has_notifications
 
+  include I18n::Alchemy
   include PgSearch
   include Shared::StateMachineHelpers
   include Contribution::StateMachineHandler
@@ -62,6 +63,20 @@ class Contribution < ActiveRecord::Base
 
   # Contributions already refunded or with requested_refund should appear so that the user can see their status on the refunds list
   scope :can_refund, ->{ where("contributions.can_refund") }
+
+  scope :for_successful_projects, -> {
+    joins(:project).merge(Project.with_state('successful')).with_state(['waiting_confirmation', 'confirmed', 'refunded', 'requested_refund', 'refunded_and_canceled'])
+  }
+
+  scope :for_online_projects, -> {
+    joins(:project).merge(Project.with_state(['online', 'waiting_funds'])).with_state(['waiting_confirmation', 'confirmed', 'refunded', 'requested_refund', 'refunded_and_canceled'])
+  }
+
+  scope :for_failed_projects, -> {
+    joins(:project).merge(Project.with_state('failed')).with_state(['waiting_confirmation', 'confirmed', 'refunded', 'requested_refund', 'refunded_and_canceled'])
+  }
+
+  scope :ordered, -> { order(id: :desc) }
 
   attr_protected :state, :user_id
 

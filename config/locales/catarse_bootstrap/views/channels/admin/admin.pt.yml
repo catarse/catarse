@@ -86,6 +86,7 @@ pt:
         recommended: Recomendar
         reject: Rejeitar
         send_to_draft: Enviar para rascunho
+        put_online: Colocar no ar
         send_to_trash: DELETAR PROJETO
         show_action: Visualizar
         state: Estado

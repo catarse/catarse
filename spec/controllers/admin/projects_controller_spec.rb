@@ -11,8 +11,13 @@ RSpec.describe Admin::ProjectsController, type: :controller do
   end
 
   describe 'PUT approve' do
-    let(:project) { create(:project, state: 'in_analysis') }
-    subject { project.online? }
+    let(:project) do
+      project = create(:project, state: 'draft')
+      create(:reward, project: project)
+      project.update_attribute :state, 'in_analysis'
+      project
+    end
+    subject { project.approved? }
 
     before do
       put :approve, id: project, locale: :pt
@@ -25,7 +30,13 @@ RSpec.describe Admin::ProjectsController, type: :controller do
   end
 
   describe 'PUT reject' do
-    let(:project) { create(:project, state: 'in_analysis') }
+    let(:project) do
+      project = create(:project, state: 'draft')
+      create(:reward, project: project)
+      project.update_attribute :state, 'in_analysis'
+      project
+    end
+
     subject { project.rejected? }
 
     before do

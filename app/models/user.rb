@@ -1,12 +1,17 @@
 # coding: utf-8
 class User < ActiveRecord::Base
   include User::OmniauthHandler
+  include Shared::CatarseAutoHtml
   has_notifications
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   # :validatable
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :omniauthable
+
+  before_save -> {self.about = about.gsub(/^[^\S\n]+/, "") if about.present? }
+
+  catarse_auto_html_for field: :about, video_width: 600, video_height: 350
 
   delegate  :display_name, :display_image, :short_name, :display_image_html,
     :medium_name, :display_credits, :display_total_of_contributions, :contributions_text,
@@ -16,9 +21,10 @@ class User < ActiveRecord::Base
     :image_url, :uploaded_image, :bio, :newsletter, :full_name, :address_street, :address_number,
     :address_complement, :address_neighbourhood, :address_city, :address_state, :address_zip_code, :phone_number,
     :cpf, :state_inscription, :locale, :twitter, :facebook_link, :other_link, :moip_login, :deactivated_at, :reactivate_token,
-    :bank_account_attributes, :zero_credits
+    :bank_account_attributes, :country_id, :zero_credits, :links_attributes, :about, :cover_image, :category_followers_attributes, :category_follower_ids
 
   mount_uploader :uploaded_image, UserUploader
+  mount_uploader :cover_image, CoverUploader
 
   validates_length_of :bio, maximum: 140
 
@@ -34,6 +40,7 @@ class User < ActiveRecord::Base
   belongs_to :country
   has_one :user_total
   has_one :bank_account, dependent: :destroy
+  has_many :feeds, class_name: 'UserFeed'
   has_many :credit_cards
   has_many :contributions
   has_many :authorizations
@@ -43,13 +50,16 @@ class User < ActiveRecord::Base
   has_many :unsubscribes
   has_many :project_posts
   has_many :contributed_projects, -> { where(contributions: { state: ['confirmed', 'requested_refund', 'refunded'] } ).uniq } ,through: :contributions, source: :project
-  has_many :category_followers
+  has_many :category_followers, dependent: :destroy
   has_many :categories, through: :category_followers
+  has_many :links, class_name: 'UserLink', inverse_of: :user
   has_and_belongs_to_many :recommended_projects, join_table: :recommendations, class_name: 'Project'
   has_and_belongs_to_many :subscriptions, join_table: :channels_subscribers, class_name: 'Channel'
 
   accepts_nested_attributes_for :unsubscribes, allow_destroy: true rescue puts "No association found for name 'unsubscribes'. Has it been defined yet?"
-  accepts_nested_attributes_for :bank_account, allow_destroy: true
+  accepts_nested_attributes_for :links, allow_destroy: true, reject_if: ->(x) { x['link'].blank? }
+  accepts_nested_attributes_for :bank_account, allow_destroy: true, reject_if: -> (attr) { attr[:bank_id].blank? }
+  accepts_nested_attributes_for :category_followers, allow_destroy: true
 
   scope :active, ->{ where('deactivated_at IS NULL') }
   scope :with_user_totals, -> {
@@ -104,6 +114,14 @@ class User < ActiveRecord::Base
 
   def self.find_active!(id)
     self.active.where(id: id).first!
+  end
+
+  def has_online_project?
+    projects.with_state('online').exists?
+  end
+
+  def created_projects
+    projects.with_state(['online', 'waiting_funds', 'successful', 'failed'])
   end
 
   def following_this_category?(category_id)
@@ -197,9 +215,13 @@ class User < ActiveRecord::Base
   end
 
   def project_unsubscribes
-    contributed_projects.map do |p|
+    contributions.with_state('confirmed', 'requested_refund', 'refunded').map do |p|
       unsubscribes.posts_unsubscribe(p.id)
     end
+  end
+
+  def subscribed_to_posts?
+    unsubscribes.where(project_id: nil).empty?
   end
 
   def project_owner?
@@ -208,6 +230,10 @@ class User < ActiveRecord::Base
 
   def fix_twitter_user
     self.twitter.gsub!(/@/, '') if self.twitter
+  end
+
+  def personal_image
+    self.uploaded_image.thumb_avatar.url || self.image_url || self.gravatar_url
   end
 
   def fix_facebook_link

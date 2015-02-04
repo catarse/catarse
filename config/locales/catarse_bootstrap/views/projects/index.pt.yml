@@ -5,6 +5,15 @@ pt:
         maior. Promova uma catarse coletiva! Você é a peça que falta nesta história.
       title: Faça acontecer os projetos em que você acredita
     index:
+      back_a_project: 'Apoie um projeto'
+      banner_title: 'Tire projetos do papel!'
+      see_all: 'Ver todos'
+      near_you: 'Próximos a você'
+      recents: Recentes
+      blog: Blog do Catarse
+      expiring: Na reta final
+      recommended: Recomendados
+      banner_subtitle: 'Ciências, música, quadrinhos, cinema, impacto social e muito mais. Conheça, inspire-se e apoie projetos'
       box:
         by: por
         when: em

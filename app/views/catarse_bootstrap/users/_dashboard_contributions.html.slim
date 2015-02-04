@@ -1,0 +1,13 @@
+.section-one-column.u-marginbottom-30
+  .fontsize-large.fontweight-semibold.u-marginbottom-30.u-text-center Projetos em andamento
+  = render 'contribution_row', collection: resource.contributions.for_online_projects.ordered
+
+  
+.section-one-column.u-marginbottom-30
+  .fontsize-large.fontweight-semibold.u-marginbottom-30.u-text-center Projetos bem-sucedidos
+  = render 'contribution_row', collection: resource.contributions.for_successful_projects.ordered
+
+
+.section-one-column.u-margintop-30
+  .fontsize-large.fontweight-semibold.u-marginbottom-30.u-text-center Projetos não-financiados
+  = render 'contribution_row', collection: resource.contributions.for_failed_projects.ordered

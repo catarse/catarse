@@ -1,0 +1,87 @@
+.u-text-center
+  .w-container
+    .w-row
+      .w-col.w-col-2
+      .w-col.w-col-8
+        .fontweight-semibold.fontsize-large=t('.start')
+        p.fontsize-base= t('.start_subtitle')
+      .w-col.w-col-2
+= simple_form_for @project, html: { class: 'project-form w-form' } do |form|
+  .section
+    .w-container
+      .w-row
+        .w-col.w-col-8
+          .w-form
+              = @project.display_errors(:project)
+
+              = form.input :video_url, as: :string, 
+                wrapper: :two_columns,
+                wrapper_class: 'w-row u-marginbottom-30 card card-terciary',
+                label_wrapper_html: { class: 'w-col w-col-5 w-subcol' },
+                text_field_wrapper_html: { class: 'w-col w-col-7' },
+                input_html: { class: 'positive', required: false },
+                validation_text: false
+
+              = form.input :about, as: :text, 
+                wrapper: :one_col,
+                wrapper_class: 'w-row u-marginbottom-30 card card-terciary',
+                input_html: { class: 'bottom jumbo positive', required: true },
+                validation_text: false
+
+              .card.card-terciary
+                label.field-label.fontweight-semibold= t('.budget_label') 
+                label.field-label.fontsize-smallest.fontcolor-secondary.u-marginbottom-20== t('.budget_hint') 
+                .w-form
+                  #budgets
+                    = form.simple_fields_for :budgets do |budget_form|
+                      = render partial: 'budget_fields', locals: { f: budget_form }
+                  .w-row
+                    .w-col.w-col-4.w-col-offset-8
+                      = link_to_add_association "Adicionar item", form, :budgets,  class: 'btn btn-medium btn-terciary'
+        .w-col.w-col-4
+            .w-hidden-small.w-hidden-tiny.card.u-radius.u-marginbottom-20 data-ix="new-interaction" 
+              .fontsize-small.fontweight-semibold.u-marginbottom-20= t('.links_title') 
+              ul.w-list-unstyled
+                li.alt-link.fontsize-smaller.u-marginbottom-10
+                  a.alt-link href="http://suporte.catarse.me/hc/pt-br/articles/202387638-Diretrizes-para-a-cria%C3%A7%C3%A3o-de-projetos" target="_blank"  Critérios de seleção
+                li.alt-link.fontsize-smaller.u-marginbottom-10
+                  a.alt-link href="http://suporte.catarse.me/hc/pt-br/articles/202446018-Como-funciona-a-sele%C3%A7%C3%A3o-de-projetos-no-Catarse-" target="_blank"  Como os projetos são selecionados?
+                li.fontsize-smaller.alt-link.u-marginbottom-10
+                  a.alt-link href="http://suporte.catarse.me/hc/pt-br/articles/202037363-O-que-%C3%A9-um-projeto-em-Rascunho-" target="_blank"  O que é um projeto em Rascunho?
+                li.fontsize-smaller.alt-link.u-marginbottom-10
+                  a.alt-link href="http://suporte.catarse.me/hc/pt-br/articles/203073937-O-que-%C3%A9-obrigat%C3%B3rio-para-um-projeto-ir-ao-ar-" target="_blank"  Itens obrigatórios para um projeto ir ao ar
+            = render 'formatting_tips'
+  .divider
+  .section
+    .w-container
+      .w-row
+        .w-col.w-col-8
+          .fontsize-large.fontweight-semibold= t('.card')
+          p.fontsize-small.u-marginbottom-40= t('.card_subtitle') 
+          .w-form
+            /= form.input :uploaded_image, label: '', as: :file, required: false, hint: (@project.uploaded_image.present? ? image_tag(@project.uploaded_image.project_thumb.url, size: '220x172') : t('formtastic.hints.project.uploaded_image') ) 
+            = form.input :uploaded_image, as: :file, 
+              wrapper: :two_columns,
+              wrapper_class: 'w-row u-marginbottom-30 card card-terciary',
+              label_wrapper_html: { class: 'w-col w-col-5 w-subcol' },
+              text_field_wrapper_html: { class: 'w-col w-col-6' },
+              input_html: { required: true },
+              validation_text: false                  
+
+          = form.input :headline, as: :text, 
+            wrapper: :two_columns,
+            wrapper_class: 'w-row u-marginbottom-30 card card-terciary',
+            label_wrapper_html: { class: 'w-col w-col-5 w-subcol' },
+            text_field_wrapper_html: { class: 'w-col w-col-7' },
+            input_html: { class: 'positive', required: true },
+            validation_text: false               
+        .w-col.w-col-4
+          = render 'card'
+    .section
+      .w-container
+        .w-row
+          .w-col.w-col-4
+          .w-col.w-col-4
+            = hidden_field_tag 'anchor', 'project'
+            = form.button :submit, t('.submit'),  class:'btn btn-large', id: 'project-save'
+          .w-col.w-col-4

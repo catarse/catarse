@@ -2,7 +2,12 @@ require 'rails_helper'
 
 RSpec.describe ProjectObserver do
   let(:contribution){ create(:contribution, key: 'should be updated', payment_method: 'should be updated', state: 'confirmed', confirmed_at: nil) }
-  let(:project) { create(:project, goal: 3000) }
+  let(:project) do
+    project = create(:project, state: 'draft', goal: 3000) 
+    create(:reward, project: project)
+    project.update_attribute :state, :online
+    project
+  end
   let(:channel) { create(:channel) }
 
   subject{ contribution }
@@ -16,7 +21,7 @@ RSpec.describe ProjectObserver do
   end
 
   describe "after_save" do
-    let(:project) { build(:project, state: 'in_analysis', online_date: 10.days.from_now) }
+    let(:project) { build(:project, state: 'approved', online_date: 10.days.from_now) }
 
     context "when change the online_date" do
       before do
@@ -24,7 +29,7 @@ RSpec.describe ProjectObserver do
         expect(ProjectSchedulerWorker).to receive(:perform_at)
       end
 
-      it { project.save }
+      it { project.save(validate: false) }
     end
   end
 
@@ -52,7 +57,11 @@ RSpec.describe ProjectObserver do
   end
 
   describe "when project is sent to curator" do
-    let(:project) { create(:project, goal: 3000, state: 'draft') }
+    let(:project) do
+      project = create(:project, state: 'draft')
+      create(:reward, project: project)
+      project
+    end
     let(:user) { create(:user, email: ::CatarseSettings[:email_projects])}
 
     before do
@@ -73,7 +82,7 @@ RSpec.describe ProjectObserver do
     context "when project is approved and belongs to a channel" do
       let(:project){ create(:project, video_url: 'http://vimeo.com/11198435', state: 'draft', channels: [channel])}
       before do
-        project.update_attributes state: 'in_analysis'
+        project.update_attributes state: 'approved'
       end
 
       it "should call notify using channel data" do
@@ -86,13 +95,13 @@ RSpec.describe ProjectObserver do
             from_name: channel.name
           }
         )
-        project.approve
+        project.push_to_online
       end
     end
 
     context "when project is approved" do
       before do
-        project.update_attributes state: 'in_analysis'
+        project.update_attributes state: 'approved'
         expect(ProjectDownloaderWorker).to receive(:perform_async).with(project.id).never
       end
 
@@ -106,7 +115,7 @@ RSpec.describe ProjectObserver do
             from_name: CatarseSettings[:company_name]
           }
         )
-        project.approve
+        project.push_to_online
       end
     end
 
@@ -144,8 +153,13 @@ RSpec.describe ProjectObserver do
   end
 
   describe "save_dates" do
+    let(:project) do
+      project = create(:project, state: 'draft')
+      create(:reward, project: project)
+      project.update_attribute :state, :in_analysis
+      project
+    end
     context "when project goes from in_analysis to rejected" do
-      let(:project){ create(:project, state: 'in_analysis') }
       before do
         project.reject
       end
@@ -153,7 +167,6 @@ RSpec.describe ProjectObserver do
     end
 
     context "when project goes from in_analysis to draft" do
-      let(:project){ create(:project, state: 'in_analysis') }
       before do
         project.push_to_draft
       end
@@ -224,11 +237,16 @@ RSpec.describe ProjectObserver do
   end
 
   describe "#notify_owner_that_project_is_online" do
-    let(:project) { create(:project, state: 'in_analysis') }
+    let(:project) do
+      project = create(:project, state: 'draft')
+      create(:reward, project: project)
+      project.update_attribute :state, :approved
+      project
+    end
 
     context "when project don't belong to any channel" do
       before do
-        project.approve
+        project.push_to_online
       end
 
       it "should create notification for project owner" do
@@ -239,7 +257,7 @@ RSpec.describe ProjectObserver do
     context "when project belong to a channel" do
       before do
         project.channels << channel
-        project.approve
+        project.push_to_online
       end
 
       it "should create notification for project owner" do

@@ -1,0 +1,56 @@
+= render 'shared/header_big', overlayer: true
+#page-guides
+  .hero-guide.hero-full
+    .w-container.u-text-center
+      = image_tag "icon-guides.png", class: "icon-hero"
+      .u-text-center.u-marginbottom-20.fontsize-jumbo Guia dos realizadores
+      .w-row
+        .w-col.w-col-2
+        .w-col.w-col-8
+          .fontsize-base.u-marginbottom-60
+            | Uma compilação dos pontos mais importantes de uma campanha para ajudar você a fazer um projeto incrível e bem-sucedido. Esperamos que esse Guia te ajude a elaborar mais a sua ideia e a ter sucesso em sua campanha ;)
+        .w-col.w-col-2
+  
+  .section
+    .w-container
+      .w-tabs data-duration-in="300" data-duration-out="100" 
+        nav.w-tab-menu.u-marginbottom-30.u-text-center
+          = link_to '#starting', id: 'guides_starting_link', class: 'w-tab w-inline-block dashboard-nav-link ' , data: {target: '#guides_starting' } do
+            div Começando
+          = link_to '#you_history', id: 'guides_you_history_link', class: 'w-tab w-inline-block dashboard-nav-link ' , data: {target: '#guides_you_history' } do
+            div Sua história
+          = link_to '#goals', id: 'guides_goals_link', class: 'w-tab w-inline-block dashboard-nav-link ' , data: {target: '#guides_goals' } do
+            div Meta e prazo
+          = link_to '#rewards', id: 'guides_rewards_link', class: 'w-tab w-inline-block dashboard-nav-link ' , data: {target: '#guides_rewards' } do
+            div Recompensas
+          = link_to '#social', id: 'guides_social_link', class: 'w-tab w-inline-block dashboard-nav-link ' , data: {target: '#guides_social' } do
+            div Mobilização
+          = link_to '#after_project', id: 'guides_after_project_link', class: 'w-tab w-inline-block dashboard-nav-link ' , data: {target: '#guides_after_project' } do
+            div Pós-campanha
+        .w-tab-content
+          #guides_starting.w-tab-pane.content.w-hide
+            .w-embed.w-iframe
+              iframe allowfullscreen="true" frameborder="0" height="546" mozallowfullscreen="true" src="https://docs.google.com/presentation/d/1ooIZKDeAV_AwZfL_HSo1e4KAgMgw9U_5UvyZ7LE64HQ/embed?start=false&amp;loop=false&amp;delayms=3000" webkitallowfullscreen="true" width="920" 
+
+          #guides_you_history.w-tab-pane.content.w-hide
+            .w-embed.w-iframe
+              iframe allowfullscreen="true" frameborder="0" height="546" mozallowfullscreen="true" src="https://docs.google.com/presentation/d/1FaKDNxu4yTOXPfhhCOTVTD6VFL7-B7IA9rbkW2bbu8g/embed?start=false&amp;loop=false&amp;delayms=3000" webkitallowfullscreen="true" width="920" 
+
+          #guides_goals.w-tab-pane.content.w-hide
+            .w-embed.w-iframe
+              iframe allowfullscreen="true" frameborder="0" height="546" mozallowfullscreen="true" src="https://docs.google.com/presentation/d/1zS3toUY9xD8Kz6EsNYlv1quu70B8zFIaazeq5a7aYGw/embed?start=false&amp;loop=false&amp;delayms=3000" webkitallowfullscreen="true" width="920" 
+
+          #guides_rewards.w-tab-pane.content.w-hide
+            .w-embed.w-iframe
+              iframe allowfullscreen="true" frameborder="0" height="546" mozallowfullscreen="true" src="https://docs.google.com/presentation/d/1awYJPz5BZNaA9OZn_yy2SFdGaouDb6ZIqfmJC2JGA38/embed?start=false&amp;loop=false&amp;delayms=3000" webkitallowfullscreen="true" width="920" 
+
+          #guides_social.w-tab-pane.content.w-hide
+            .w-embed.w-iframe
+              iframe allowfullscreen="true" frameborder="0" height="546" mozallowfullscreen="true" src="https://docs.google.com/presentation/d/1WAtUfII-wJFBASWDE56-8G3plxnSTdQ-szFi6OExwx8/embed?start=false&amp;loop=false&amp;delayms=3000" webkitallowfullscreen="true" width="920" 
+
+          #guides_after_project.w-tab-pane.content.w-hide
+            .w-embed.w-iframe
+              iframe allowfullscreen="true" frameborder="0" height="546" mozallowfullscreen="true" src="https://docs.google.com/presentation/d/1TxT63F1o7sDqk7v2lQNqaiAL-I7znWRHmHu-xZaLa0A/embed?start=false&amp;loop=false&amp;delayms=3000" webkitallowfullscreen="true" width="920" 
+          
+
+= render 'shared/footer_big'

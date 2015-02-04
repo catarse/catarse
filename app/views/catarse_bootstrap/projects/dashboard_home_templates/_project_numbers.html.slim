@@ -1,0 +1,25 @@
+.card-project-numbers
+  .meter.u-marginbottom-10.u-margintop-10
+    = @project.progress_bar
+  .w-row
+    .w-col.w-col-3.w-col-small-3.w-col-tiny-6
+      .fontweight-semibold.fontsize-large.lineheight-tight
+        = "#{@project.display_progress} %"
+      .fontcolor-secondary.lineheight-tighter.fontsize-small.u-marginbottom-10
+        = t('.financed')
+    .w-col.w-col-3.w-col-small-3.w-col-tiny-6
+      .fontweight-semibold.fontsize-large.lineheight-tight
+        = @project.display_pledged
+      .fontcolor-secondary.lineheight-tighter.fontsize-small.u-marginbottom-10
+        = t('.backed')
+    .w-col.w-col-3.w-col-small-3.w-col-tiny-6
+      .fontweight-semibold.fontsize-large.lineheight-tight
+        = @project.total_contributions
+      .fontcolor-secondary.lineheight-tighter.fontsize-small
+        = t('.contributions')
+    .w-col.w-col-3.w-col-small-3.w-col-tiny-6
+      .fontweight-semibold.fontsize-large.lineheight-tight
+        = @project.time_to_go[:time]
+      .fontcolor-secondary.lineheight-tighter.fontsize-small
+        = @project.time_to_go[:unit]
+        =< t('.left')
