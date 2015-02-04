@@ -28,6 +28,16 @@ RSpec.describe Reward, type: :model do
     expect(r).not_to be_valid
   end
 
+  describe "check_if_is_destroyable" do
+    before do
+      create(:contribution, state: 'confirmed', project: reward.project, reward: reward)
+      reward.reload
+      reward.destroy
+    end
+
+    it { expect(reward.persisted?).to eq(true) }
+  end
+
   it "should have a greater than 10.00 minimum value" do
     r = build(:reward)
     r.minimum_value = -0.01
