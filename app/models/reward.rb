@@ -11,6 +11,7 @@ class Reward < ActiveRecord::Base
   validates_presence_of :minimum_value, :description, :deliver_at #, :days_to_delivery
   validates_numericality_of :minimum_value, greater_than_or_equal_to: 10.00
   validates_numericality_of :maximum_contributions, only_integer: true, greater_than: 0, allow_nil: true
+  validate :deliver_at_cannot_be_in_the_past
   scope :remaining, -> { where("maximum_contributions IS NULL OR (maximum_contributions IS NOT NULL AND (SELECT COUNT(*) FROM contributions WHERE state IN ('confirmed', 'waiting_confirmation') AND reward_id = rewards.id) < maximum_contributions)") }
   scope :sort_asc, -> { order('id ASC') }
 
@@ -18,6 +19,10 @@ class Reward < ActiveRecord::Base
            :medium_description, :last_description, :display_description, to: :decorator
 
   before_save :log_changes
+
+  def deliver_at_cannot_be_in_the_past
+    self.errors.add(:deliver_at, "Previsão de entrega deve ser superior a data atual") if self.deliver_at < Time.now
+  end
 
   def log_changes
     self.last_changes = self.changes.to_json
