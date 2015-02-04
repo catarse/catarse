@@ -42,7 +42,7 @@ class Contribution < ActiveRecord::Base
   scope :available_to_display, ->{ with_states(['confirmed', 'requested_refund', 'refunded', 'waiting_confirmation']) }
   scope :by_id, ->(id) { where(id: id) }
   scope :by_key, ->(key) { where(key: key) }
-  scope :by_payment_id, ->(term) { where("payment_id = ? OR key = ? OR acquirer_tid = ?", term, term, term) }
+  scope :by_payment_id, ->(term) { where("? IN (payment_id, key, acquirer_tid)", term) }
   scope :by_user_id, ->(user_id) { where(user_id: user_id) }
   scope :by_payment_method, ->(payment_method) { where(payment_method: payment_method ) }
   scope :user_name_contains, ->(term) { joins(:user).where("unaccent(upper(users.name)) LIKE ('%'||unaccent(upper(?))||'%')", term) }
