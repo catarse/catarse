@@ -22,7 +22,7 @@
       .w-col-2.w-col
         = form.input :user_name_contains, as: :string, label: t('.user')
       .w-col-2.w-col
-        = form.input :by_payment_method, collection: Contribution.payment_method_names, label: t('channels.admin.filter.with_state'), as: :select, selected: params[:with_state], include_blank: true
+        = form.input :by_payment_method, collection: Contribution.payment_method_names, label: t('channels.admin.filter.by_payment_method'), as: :select, selected: params[:with_state], include_blank: true
       .w-col-9.w-col
         = form.input :credits, as: :boolean, label: t('.credits')
       .w-col-2.w-col
