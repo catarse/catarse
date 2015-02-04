@@ -8,8 +8,10 @@ class ProjectPost < ActiveRecord::Base
 
   validates_presence_of :user_id, :project_id, :comment, :comment_html
   #remove all whitespace from the start of the line so auto_html won't go crazy
-  before_save -> {self.comment = comment.gsub(/^[^\S\n]+/, "")}
-  before_validation -> { self.user_id = self.project.try(:user_id) }
+  before_save do
+    self.comment = comment.gsub(/^[^\S\n]+/, "")
+    self.user_id = self.project.try(:user_id)
+  end
 
   catarse_auto_html_for field: :comment, video_width: 560, video_height: 340
 
