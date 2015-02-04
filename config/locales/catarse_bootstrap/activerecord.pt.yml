@@ -14,10 +14,22 @@ pt:
         owner_name: 'Nome do titular'
         owner_document: 'CPF / CNPJ do titular'
         agency: 'Agência'
-        agency_digit: 'Dígito'
-        account: 'Número da conta'
-        account_digit: 'Dígito'
+        agency_digit: 'Dígito agência'
+        account: 'No. da conta'
+        account_digit: 'Dígito conta'
       contribution:
+        payer_name: "Nome Completo"
+        payer_email: "Email"
+        payer_document: "CPF ou CNPJ"
+        country: "País"
+        address_street: "Rua"
+        address_number: "Número"
+        address_complement: "Complemento"
+        address_neighbourhood: "Bairro"
+        address_state: "Estado"
+        address_city: "Cidade"
+        address_zip_code: "CEP"
+        address_phone_number: "Telefone"
         value: valor do apoio
         payer_name: "Nome Completo"
         payer_email: "Email"
@@ -38,18 +50,20 @@ pt:
         channels: Canais
         category: Categoria
         expires_at: Prazo
-        online_days: "Quantos dias você precisa para atingir sua meta? O tempo máximo é de 60 dias"
-        headline: "Uma frase de efeito sobre o seu projeto. Máximo de 140 caracteres."
+        online_days: "Prazo para arrecadação"
+        headline: "Frase de efeito"
         image_url: "URL da imagem"
         name: "Nome do projeto"
-        goal: "Quanto você pretende arrecadar? (Utilize apenas números)."
-        about: "Conte a história do seu projeto e como pretende gastar o dinheiro arrecadado."
+        goal: "Valor a ser arrecadado"
+        about: "Descrição do projeto"
         user_id: "Id do usuário"
         video_url: "URL do vídeo"
         permalink: 'URL do seu projeto'
         more_links: 'Indique links para as pessoas conhecerem mais sobre o seu projeto e sua trajetória.'
         traffic_sources: 'Como você conheceu o Catarse?'
         first_contributions: "Quem são as primeiras pessoas que você vai pedir para apoiar o seu projeto?"
+        budget: 'Orçamento'
+        uploaded_image: 'Imagem do projeto'
       user:
         address_city: Cidade
         address_complement: Complemento
@@ -69,7 +83,7 @@ pt:
         newsletter: 'Quero receber novidades do Catarse'
         password: Senha
         password_confirmation: "Confirmação de senha"
-        phone_number: "Telefone (fixo ou celular)"
+        phone_number: "Telefone"
         cpf_hint_title: Nota Fiscal será emitida para esse documento
         id: ID
         moip_login: Login do MoIP
@@ -86,6 +100,9 @@ pt:
         name: 'Nome'
         url: 'Site'
         image: 'Imagem'
+      project_post:
+        title: 'Título'
+        comment: 'Texto'
       channel_post:
         title: 'Título'
         body: 'Conteúdo'
@@ -95,6 +112,12 @@ pt:
         contribution: "Erro ao salvar apoio"
         project:
           attributes:
+            video_url:
+              blank: 'O vídeo do projeto não pode ficar em branco'
+            budget:
+              blank: 'O orçamento do projeto não pode ficar em branco'
+            uploaded_image:
+              blank: 'A imagem do projeto não pode ficar em branco'
             name:
               blank: "O nome do projeto não pode ficar em branco"
             permalink:
@@ -108,6 +131,7 @@ pt:
               greater_than: "A meta deve ser maior que 9"
               not_a_number: "Meta de arrecadação aceita somente números"
             online_days:
+              blank: "O prazo de arrecadação não pode ficar em branco"
               greater_than: "O prazo para arrecadação deve ser maior que 0 dias"
               not_a_number: "O prazo para arrecadação deve ser um número de dias"
             about:
@@ -131,7 +155,10 @@ pt:
   project:
     update:
       success: As informações foram atualizadas
-    video_regex_validation: somente URLs do Vimeo são aceitas
+      failed: 'As informações não foram salvas, verifique se todos os campos foram preenchidos corretamente'
+    delete:
+      posts: 'Novidade apagada com sucesso'
+    video_regex_validation: somente URLs do Youtube ou Vimeo são aceitas
   contribution:
     project_should_be_online: Você não pode apoiar um projeto que não está no ar
     reward_must_be_from_project: deve ser do mesmo projeto

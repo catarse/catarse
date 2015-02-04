@@ -1,0 +1,16 @@
+.project-news.u-marginbottom-60
+  .fontsize-large.fontweight-semibold
+    = link_to "#posts/#{project_post.id}", id: "posts/#{project_post.id}", class: 'link-hidden-dark' do
+      = project_post.title
+  .fontsize-small.u-marginbottom-30.fontcolor-secondary
+    = l(project_post.created_at, format: :posts)
+  .fontsize-base
+    = raw(project_post.comment_html)
+
+  .w-row.project-share
+    - url = project_by_slug_url(@project.permalink, project_post_id: project_post.id, locale: I18n.locale, anchor: 'posts')
+    .w-col.w-col-3
+      .twitter_share= render_twitter text: "#{project_post.title}", url: url
+    .w-col.w-col-3
+      .facebook_share= render_facebook_like href: url, width: '360'
+.divider.u-marginbottom-30

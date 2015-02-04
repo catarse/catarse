@@ -1,0 +1,78 @@
+= render 'shared/header_big', overlayer: true
+
+.hero-back.hero-full
+  .w-container
+    .w-row.u-text-center
+      .w-col.w-col-2
+      .w-col.w-col-8
+        .fontweight-semibold.u-marginbottom-20.fontsize-jumbo= t('.banner_title') 
+        .fontsize-large.lineheight-tight.u-marginbottom-30= t('.banner_subtitle')
+        .w-row
+          .w-col.w-col-3
+          .w-col.w-col-6
+            = link_to t('.back_a_project'), explore_path(ref: 'home_banner_explore'), class: 'btn btn-large'
+          .w-col.w-col-3
+      .w-col.w-col-2
+
+- if current_user && @projects_near.present?
+  .section.u-marginbottom-40
+    .w-container
+      .w-row.u-marginbottom-30
+        .w-col.w-col-10.w-col-small-6.w-col-tiny-6
+          .fontsize-large.lineheight-looser
+            = t('.near_you')
+        .w-col.w-col-2.w-col-small-6.w-col-tiny-6
+          = link_to t('.see_all'), explore_path(ref: 'home_near', anchor: "near_of/" ) + current_user.address_state, class: 'btn btn-small btn-terciary'
+      .w-row
+        == render_projects @projects_near, 'home_near', { wrapper_class: 'w-col w-col-4' }
+
+.section.u-marginbottom-40
+  .w-container
+    .w-row.u-marginbottom-30
+      .w-col.w-col-10.w-col-small-6.w-col-tiny-6
+        .fontsize-large.lineheight-looser
+          = t('.recommended')
+      .w-col.w-col-2.w-col-small-6.w-col-tiny-6
+        = link_to t('.see_all'), explore_path(ref: :home_recommended, anchor: :recommended), class: 'btn btn-small btn-terciary'
+    .w-row
+      == render_projects @recommends, 'home_recommended', { wrapper_class: 'w-col w-col-4' }
+
+.section.u-marginbottom-40
+  .w-container
+    .w-row.u-marginbottom-30
+      .w-col.w-col-10.w-col-small-6.w-col-tiny-6
+        .fontsize-large.lineheight-looser
+          = t('.expiring')
+      .w-col.w-col-2.w-col-small-6.w-col-tiny-6
+        = link_to t('.see_all'), explore_path(ref: :home_expiring, anchor: :expiring), class: 'btn btn-small btn-terciary'
+    .w-row
+      == render_projects @expiring, 'home_expiring', { wrapper_class: 'w-col w-col-4' }
+
+.section.u-marginbottom-40.recent-projects
+  .w-container
+    .w-row.u-marginbottom-30
+      .w-col.w-col-10.w-col-small-6.w-col-tiny-6
+        .fontsize-large.lineheight-looser
+          = t('.recents')
+      .w-col.w-col-2.w-col-small-6.w-col-tiny-6
+        = link_to t('.see_all'), explore_path(ref: :home_recent, anchor: :recent), class: 'btn btn-small btn-terciary'
+    .w-row
+      == render_projects @recent, 'home_recent', { wrapper_class: 'w-col w-col-4' }
+
+.section.section-gray-one
+  .w-container
+    .fontsize-large.u-text-center.u-marginbottom-60
+      = t('.blog')
+    .w-row
+      - (Blog.fetch_last_posts rescue [])[0..2].each do |post|
+        .w-col.w-col-4.col-blog-post
+          = link_to post.url, target: '__blank', class: 'link-hidden fontweight-semibold fontsize-base u-marginbottom-10' do
+            /span.fontweight-semibold.fontsize-base.u-marginbottom-10
+            = truncate(post.title, length: 80)
+          .fontsize-smaller.fontcolor-secondary.u-margintop-10
+            /= link_to post.url, target: '__blank', class: 'fontsize-smaller fontcolor-secondary ' do
+            /span.fontsize-smaller.fontcolor-secondary
+            = truncate(post.summary, length: 130).html_safe    
+
+
+= render 'shared/footer_big'

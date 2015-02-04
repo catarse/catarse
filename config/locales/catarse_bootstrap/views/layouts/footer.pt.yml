@@ -6,6 +6,7 @@ pt:
         blog: Blog
         contact: Contato
         discover: Descubra projetos
+        start: 'Como funciona'
         expiring: Na reta final
         facebook: Facebook
         faq: Ajuda
@@ -14,7 +15,7 @@ pt:
         instagram: Instagram
         near: Próximos a mim
         press: Imprensa
-        privacy: Privacidade
+        privacy: Política de privacidade
         recents: Recentes
         recommended: Recomendados
         submit: Envie seu projeto

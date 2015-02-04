@@ -1,0 +1,14 @@
+.nested-fields
+  .w-row
+    .w-col.w-col-6.w-sub-col
+      label.field-label for="field-16"  Item de orçamento
+      = f.input_field :name, as: :string, class: 'w-input text-field positive', required: true
+    .w-col.w-col-5.w-sub-col-middle
+      label.field-label Valor
+      .w-row
+        .w-col.w-col-4.w-col-small-4.w-col-tiny-4.text-field.prefix.no-hover
+          .fontcolor-secondary.u-text-center.fontsize-base.lineheight-tightest R$
+        .w-col.w-col-8.w-col-small-8.w-col-tiny-8
+          = f.input_field :value, as: :float, class: 'w-input text-field postfix positive', required: true
+    .w-col.w-col-1.w-col-small-1.w-col-tiny-1.u-margintop-20
+      = link_to_remove_association "", f, class: 'btn btn-small btn-terciary fa fa-lg fa-trash btn-no-border u-margintop-25'

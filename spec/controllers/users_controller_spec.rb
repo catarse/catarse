@@ -138,34 +138,40 @@ RSpec.describe UsersController, type: :controller do
   end
 
   describe "PUT update" do
-    before do
-      put :update, id: user.id, locale: 'pt', user: { twitter: 'test' }
-    end
-    it("should update the user") do
-      user.reload
-      expect(user.twitter).to eq('test')
-    end
-    it{ is_expected.to redirect_to user_path(user, anchor: 'settings') }
-  end
+    context "with password parameters" do
+      let(:current_password){ 'current_password' }
+      let(:password){ 'newpassword123' }
+      let(:password_confirmation){ 'newpassword123' }
 
-  describe "PUT update_password" do
-    let(:current_password){ 'current_password' }
-    let(:password){ 'newpassword123' }
-    let(:password_confirmation){ 'newpassword123' }
-    before do
-      put :update_password, id: user.id, locale: 'pt', user: { current_password: current_password, password: password, password_confirmation: password_confirmation }
-    end
+      before do
+        put :update, id: user.id, locale: 'pt', user: { current_password: current_password, password: password, password_confirmation: password_confirmation }
+      end
 
-    context "with wrong current password" do
-      let(:current_password){ 'wrong_password' }
-      it{ expect(flash[:error]).not_to be_empty }
-      it{ is_expected.to redirect_to user_path(user, anchor: 'settings') }
+      context "with wrong current password" do
+        let(:current_password){ 'wrong_password' }
+        it{ expect(flash[:notice]).not_to be_empty }
+        it{ is_expected.not_to redirect_to edit_user_path(user) }
+      end
+
+      context "with right current password and right confirmation" do
+        it{ expect(flash[:notice]).not_to be_empty }
+        it{ is_expected.to redirect_to edit_user_path(user) }
+      end
     end
 
-    context "with right current password and right confirmation" do
-      it{ expect(flash[:notice]).not_to be_empty }
-      it{ expect(flash[:error]).to be_nil }
-      it{ is_expected.to redirect_to user_path(user, anchor: 'settings') }
+    context "with out password parameters" do
+      let(:project){ create(:project, state: 'successful') }
+      let(:category){ create(:category) }
+      before do
+        put :update, id: user.id, locale: 'pt', user: { twitter: 'test', unsubscribes: {project.id.to_s=>"1"}, category_followers_attributes: [{category_id: category.id}]}
+      end
+      it("should update the user and nested models") do
+        user.reload
+        expect(user.twitter).to eq('test')
+        expect(user.unsubscribes.size).to eq(1)
+        expect(user.category_followers.size).to eq(1)
+      end
+      it{ is_expected.to redirect_to edit_user_path(user) }
     end
   end
 

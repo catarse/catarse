@@ -1,0 +1,7 @@
+#project-header.page-header.u-text-center[data-project-state=@project.state]
+  .w-container
+    .fontsize-larger.fontweight-semibold.project-name = @project.name
+    .fontsize-base.lineheight-looser
+      = t('projects.index.box.by')
+      |&nbsp;
+      = @project.user.display_name

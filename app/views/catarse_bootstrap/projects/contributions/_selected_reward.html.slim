@@ -1,0 +1,13 @@
+.card.u-radius.u-marginbottom-20
+  .fontsize-smaller.fontweight-semibold.u-marginbottom-20 = t('.value')
+  .w-clearfix.u-marginbottom-20
+    .fontsize-larger.text-success.u-left = @contribution.display_value
+    = link_to t('.edit'), new_project_contribution_path(@contribution.project), class: 'fontsize-small link-hidden u-right fontweight-semibold'
+  .back-payment-info-reward
+    .fontsize-smaller.fontweight-semibold.u-marginbottom-10 = t('.reward')
+    .fontsize-smallest
+      - if @contribution.reward
+        == @contribution.reward.display_description
+      - else
+        == t('.review_without_reward_html', value: @contribution.display_value)
+

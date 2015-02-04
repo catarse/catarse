@@ -10,6 +10,9 @@ pt:
       active_btn: 'Lembre-me deste projeto'
       deactive_btn: 'Não quero mais ser lembrado'
     send_to_analysis: Seu projeto foi enviado para nossa equipe.
+    send_to_analysis_error: Erro ao enviar projeto para análise. Preencha todos os campos obrigatórios.
+    put_online: Seu projeto está online!
+    put_online_error: Erro ao colocar o projeto online. Preencha todos os campos obrigatórios.
     twitter:
       take_a_look: Confira o projeto %{name} no @catarse
     video_embed:
@@ -37,9 +40,27 @@ pt:
         com boleto impresso
       link_reward: Baixar relatório dos apoiadores da recompensa de %{value}
     project_about:
-      embed: embed
+      embed: < embed >
       embed_title: Incorpore este projeto no seu site
+      active_btn: ' Lembrar-me'
+      deactive_btn: ' Lembrete ativo'
     show:
+      menu:
+        about: Sobre
+        add_reward: Adicionar recompensa
+        comments: Comentários
+        contributions: Apoios
+        metrics: Métricas
+        edit: Edição
+        reports: Relatórios
+        posts: Novidades
+    project_main:
+      twitter_profile: "Perfil no Twitter"
+      facebook_profile: "Perfil no Facebook"
+      author_website: "Site do autor"
+      share: "Compartilhe"
+      tweet: "Tweet"
+      contact_author: "Enviar mensagem"
       contribute_project:
         display_status:
           reached_goal: "Este projeto será bem-sucedido e financiado em %{date}"
@@ -53,7 +74,6 @@ pt:
         submit: Apoiar este projeto
       project_by: projeto por
       funding_period: Período de campanha
-      count_contributed_projects: apoiou %{total} projetos
       project_header:
         subtitle_html: "Um projeto de %{link}"
         without_city: "Um projeto de"

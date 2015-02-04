@@ -19,7 +19,7 @@ RSpec.describe Project, type: :model do
   end
 
   describe "validations" do
-    %w[name user category about headline goal permalink].each do |field|
+    %w[name user category permalink].each do |field|
       it{ is_expected.to validate_presence_of field }
     end
     it{ is_expected.to validate_numericality_of(:goal) }
@@ -48,11 +48,11 @@ RSpec.describe Project, type: :model do
       3.times { create(:project, state: 'successful', online_date: 6.days.ago) }
       5.times { create(:project, state: 'online', online_date: 8.days.ago) }
       5.times { create(:project, state: 'online', online_date: 2.weeks.ago) }
-      2.times { create(:project, state: 'in_analysis', online_date: 3.days.from_now)}
+      build(:project, state: 'in_analysis', online_date: 3.days.from_now).save(validate: false)
     end
 
     it "should return a collection with projects of current week" do
-      is_expected.to have(11).itens
+      is_expected.to have(10).itens
     end
   end
 
@@ -111,9 +111,10 @@ RSpec.describe Project, type: :model do
 
   describe ".visible" do
     before do
-      [:draft, :rejected, :deleted, :in_analysis].each do |state|
+      [:draft, :rejected, :deleted].each do |state|
         create(:project, state: state)
       end
+      build(:project, state: :in_analysis).save(validate: false)
       @project = create(:project, state: :online)
     end
     subject{ Project.visible }
@@ -121,7 +122,7 @@ RSpec.describe Project, type: :model do
   end
 
   describe '.state_names' do
-    let(:states) { [:draft, :rejected, :online, :successful, :waiting_funds, :failed, :in_analysis] }
+    let(:states) { [:draft, :rejected, :approved, :online, :successful, :waiting_funds, :failed, :in_analysis] }
 
     subject { Project.state_names }
 
@@ -199,7 +200,7 @@ RSpec.describe Project, type: :model do
       subject { @project_01 }
 
       before do
-        @project_01 = create(:project, goal: 6000, state: 'online')
+        @project_01 = create(:project, goal: 6000, state: 'approved')
       end
 
       it{ is_expected.not_to allow_value(nil).for(:video_url) }
@@ -210,7 +211,7 @@ RSpec.describe Project, type: :model do
 
       before do
         CatarseSettings[:minumum_goal_for_video] = 5000
-        @project_02 = create(:project, goal: 4000, state: 'online')
+        @project_02 = create(:project, goal: 4000)
       end
 
       it{ is_expected.to allow_value(nil).for(:video_url) }
@@ -220,7 +221,7 @@ RSpec.describe Project, type: :model do
       subject { @project_03 }
 
       before do
-        @project_03 = build(:project, goal: 5000, state: 'online', video_url: nil)
+        @project_03 = build(:project, goal: 5000, state: 'approved', video_url: nil)
       end
 
       it{ is_expected.not_to allow_value(nil).for(:video_url) }
@@ -550,9 +551,9 @@ RSpec.describe Project, type: :model do
       it{ is_expected.to be_nil }
     end
     context "when we have an online_date" do
-      let(:project){ create(:project, online_date: Time.now, online_days: 1)}
+      let(:project){ create(:project, online_date: Time.zone.now, online_days: 1)}
       before{project.save!}
-      it{ is_expected.to eq(Time.zone.tomorrow.end_of_day.to_s(:db)) }
+      it{ expect(subject.to_time).to eq(Time.zone.tomorrow.end_of_day.to_s(:simple)) }
     end
   end
 

@@ -18,9 +18,10 @@ gem "best_in_place", :git => "git://github.com/bernat/best_in_place", ref: "ee95
 gem 'state_machine', require: 'state_machine/core'
 
 # Database and data related
-gem 'pg'
+gem 'pg', '0.17.1'
 gem 'postgres-copy'
 gem 'pg_search'
+gem 'i18n_alchemy'
 
 gem 'schema_plus'
 gem 'chartkick'
@@ -33,9 +34,14 @@ gem 'user_notifier', '~> 0.0.5'
 gem 'mixpanel-ruby'
 
 # Payment engines
-gem 'catarse_paypal_express', '2.2.4'
-gem 'catarse_moip', '~> 2.4.0'
-gem 'catarse_pagarme', '1.5.3'
+gem 'catarse_paypal_express', '3.0.2'
+gem 'catarse_moip', '~> 3.1.0'
+gem 'catarse_pagarme', '2.4.2'
+#gem 'catarse_paypal_express', path: '../catarse_paypal_express'
+#gem 'catarse_moip', path: '../catarse_moip'
+#gem 'catarse_credits', path: '../catarse_credits'
+#gem 'catarse_pagarme', path: '../catarse_pagarme'
+
 #gem 'catarse_pagarme', path: '~/code/catarse_pagarme'
 gem 'catarse_contribution_validator', github: 'catarse/catarse_contribution_validator'
 # gem 'catarse_wepay', '~> 0.0.1'
@@ -47,6 +53,7 @@ gem 'draper'
 gem 'slim-rails'
 gem 'jquery-rails'
 gem 'browser'
+gem "cocoon"
 
 # Static pages
 gem 'high_voltage'

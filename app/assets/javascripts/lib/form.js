@@ -1,24 +1,31 @@
 Skull.Form = {
   checkInput: function(event){
-    if(event.currentTarget.checkValidity()){
-      this.$(event.currentTarget).removeClass("error");
+    var $target = this.$(event.currentTarget);
+    var customValidation = $target.data('custom-validation') || function(){ return true; };
+    if(event.currentTarget.checkValidity() && customValidation($target)){
+      $target.removeClass("error");
+      this.$('[data-error-for=' + $target.prop('id') + ']').hide();
     }
   },
 
   setupForm: function(){
-    this.$('input').on('invalid', this.invalid);
+    this.$('input,select,textarea').on('invalid', this.invalid);
   },
 
   invalid: function(event){
-    this.$(event.currentTarget).addClass("error");
+    var $target = this.$(event.currentTarget);
+    $target.addClass("error");
+    this.$('[data-error-for=' + $target.prop('id') + ']').show();
   },
 
   validate: function(){
     var valid = true;
-    this.$('input:visible').each(function(){
-      valid = valid && this.checkValidity();
+    this.$('input:visible,select:visible,textarea:visible').each(function(){
+      var $input = $(this);
+      var customValidation = $input.data('custom-validation') || function(){ return true; };
+      valid = this.checkValidity() && customValidation($input) && valid;
     });
-    this.$('input.error:visible:first').select();
+    this.$('[required].error:visible:first').select();
     return valid;
   }
 };

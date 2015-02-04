@@ -58,7 +58,7 @@ RSpec.describe Projects::ContributionsController, type: :controller do
     context "when user is logged in" do
       let(:user){ create(:user) }
       let(:contribution){ create(:contribution, value: 10.00, credits: true, project: project, state: 'pending', user: user) }
-      it{ is_expected.to be_successful }
+      it{ is_expected.to render_template(:edit) }
     end
 
     context "when reward is sold out" do
@@ -71,10 +71,8 @@ RSpec.describe Projects::ContributionsController, type: :controller do
 
   describe "POST create" do
     let(:value){ '20.00' }
-    let(:set_expectations) {}
     before do
       request.env['REQUEST_URI'] = "/test_path"
-      set_expectations
       post :create, {locale: :pt, project_id: project.id, contribution: { value: value, reward_id: nil, anonymous: '0' }}
     end
 
@@ -84,23 +82,27 @@ RSpec.describe Projects::ContributionsController, type: :controller do
     end
 
     context "when user is logged in" do
-      let(:set_expectations) { expect_any_instance_of(Contribution).to receive(:update_current_billing_info) }
       let(:user){ create(:user) }
-      it{ is_expected.to redirect_to edit_project_contribution_path(project_id: project.id, id: Contribution.last.id) }
+      let(:contribution){ Contribution.last }
+      it{ should redirect_to edit_project_contribution_path(project_id: project.id, id: contribution.id) }
+      it "should copy user data to newly created contribution" do
+        expect(contribution.payer_name).to eq user.display_name
+        expect(contribution.payer_email).to eq user.email
+      end
     end
 
     context "without value" do
       let(:user){ create(:user) }
       let(:value){ '' }
 
-      it{ is_expected.to redirect_to new_project_contribution_path(project_id: project.id) }
+      it{ is_expected.to render_template(:new) }
     end
 
     context "with invalid contribution values" do
       let(:user){ create(:user) }
-      let(:value) { 2.0 }
+      let(:value) { "2" }
 
-      it{ is_expected.to redirect_to new_project_contribution_path(project) }
+      it{ is_expected.to render_template(:new) }
     end
   end
 

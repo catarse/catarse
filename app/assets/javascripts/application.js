@@ -20,6 +20,8 @@
 //= require ./lib/skull.js
 //= require ./app/app.js
 //= require ./lib/jquery.sticky.js
+//= require ./lib/jquery.smooth-scroll.js
+//= require cocoon
 //= require_tree ./lib
 //= require_tree ./app
 

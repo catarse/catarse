@@ -6,6 +6,7 @@ module Project::StateMachineHandler
     state_machine :state, initial: :draft do
       state :draft, value: 'draft'
       state :rejected, value: 'rejected'
+      state :approved, value: 'approved'
       state :online, value: 'online'
       state :successful, value: 'successful'
       state :waiting_funds, value: 'waiting_funds'
@@ -30,7 +31,11 @@ module Project::StateMachineHandler
       end
 
       event :approve do
-        transition in_analysis: :online
+        transition in_analysis: :approved
+      end
+
+      event :push_to_online do
+        transition approved: :online
       end
 
       event :finish do
@@ -42,17 +47,18 @@ module Project::StateMachineHandler
           project.expired?
         }
 
+        transition waiting_funds: :waiting_funds,      if: ->(project) {
+          project.in_time_to_wait?
+        }
+
         transition waiting_funds: :successful,  if: ->(project) {
-          project.reached_goal? && !project.in_time_to_wait?
+          project.reached_goal?
         }
 
         transition waiting_funds: :failed,      if: ->(project) {
-          project.should_fail? && !project.in_time_to_wait?
+          project.should_fail?
         }
 
-        transition waiting_funds: :waiting_funds,      if: ->(project) {
-          project.should_fail? && project.in_time_to_wait?
-        }
       end
 
       after_transition do |project, transition|

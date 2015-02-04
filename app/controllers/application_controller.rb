@@ -11,9 +11,8 @@ class ApplicationController < ActionController::Base
 
   before_filter :redirect_user_back_after_login, unless: :devise_controller?
   before_filter :configure_permitted_parameters, if: :devise_controller?
-  before_filter :force_http, unless: :devise_controller?
 
-  helper_method :channel, :namespace, :referal_link, :render_projects, :should_show_beta_banner?
+  helper_method :channel, :namespace, :referal_link, :render_projects, :should_show_beta_banner?, :render_feeds
 
   before_filter :set_locale
 
@@ -27,8 +26,16 @@ class ApplicationController < ActionController::Base
     session[:referal_link]
   end
 
-  def render_projects collection, ref
-    render_to_string partial: 'projects/project', collection: collection, locals: {ref: ref}
+  def render_projects collection, ref, locals = {}
+    render_to_string partial: 'projects/card', collection: collection, locals: {ref: ref}.merge!(locals)
+  end
+
+  def render_feeds collection, locals = {}
+    render_to_string partial: 'users/feeds/feed', collection: collection, locals: locals
+  end
+
+  def should_show_beta_banner?
+    current_user.nil? || current_user.projects.empty?
   end
 
   def should_show_beta_banner?
@@ -79,10 +86,6 @@ class ApplicationController < ActionController::Base
     (return_to || root_path)
   end
 
-  def force_http
-    redirect_to(protocol: 'http', host: CatarseSettings[:base_domain]) if request.ssl?
-  end
-
   def redirect_user_back_after_login
     if request.env['REQUEST_URI'].present? && !request.xhr?
       session[:return_to] = request.env['REQUEST_URI']
@@ -93,9 +96,5 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:sign_up) do |u|
       u.permit(:name, :email, :password, :newsletter)
     end
-  end
-
-  def current_ability
-    @current_ability ||= Ability.new(current_user, { channel: channel })
   end
 end

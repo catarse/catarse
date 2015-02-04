@@ -1,0 +1,10 @@
+.footer-full-signature-text.fontsize-small #{t('layouts.footer.titles.sitemap')}
+a.w-hidden-small.w-hidden-tiny.link-footer href="#{start_path}"  #{t('layouts.footer.links.submit')}
+a.link-footer href="#{explore_path}"  #{t('layouts.footer.links.discover')}
+a.w-hidden-main.w-hidden-medium.w-hidden-small.link-footer href="#{CatarseSettings[:blog_url]}"  #{t('layouts.footer.links.blog')}
+a.w-hidden-main.w-hidden-medium.w-hidden-small.link-footer href="#{CatarseSettings[:zendesk_url]}/account/dropboxes/#{CatarseSettings[:zendesk_dropbox_id]}"  #{t('layouts.footer.links.contact')}
+- if current_user.try(:adress_state)
+  a.w-hidden-tiny.link-footer href="#{explore_path(anchor: ('near_of/' + current_user.address_state))}" #{t('layouts.footer.links.near')}
+a.w-hidden-tiny.link-footer href="#{explore_path(anchor: "recommended")}"  #{t('layouts.footer.links.recommended')}
+a.w-hidden-tiny.link-footer href="#{explore_path(anchor: "expiring")}"  #{t('layouts.footer.links.expiring')}
+a.w-hidden-tiny.link-footer href="#{explore_path(anchor: "recent")}"  #{t('layouts.footer.links.recents')}
