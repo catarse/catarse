@@ -12,7 +12,7 @@ class RewardPolicy < ApplicationPolicy
   end
 
   def destroy?
-    done_by_owner_or_admin? && not_yet_sold?
+    done_by_owner_or_admin? && !record.any_sold?
   end
 
   def permitted_attributes
@@ -23,9 +23,6 @@ class RewardPolicy < ApplicationPolicy
   end
 
   protected
-  def not_yet_sold?
-    record.total_compromised == 0
-  end
 
   def project_finished?
     record.project.failed? || record.project.successful?

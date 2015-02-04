@@ -31,6 +31,10 @@ class Reward < ActiveRecord::Base
     maximum_contributions && total_compromised >= maximum_contributions
   end
 
+  def any_sold?
+    total_compromised > 0
+  end
+
   def total_compromised
     contributions.with_states(['confirmed', 'waiting_confirmation']).count
   end
