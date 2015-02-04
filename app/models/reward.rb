@@ -3,6 +3,8 @@ class Reward < ActiveRecord::Base
   include RankedModel
   include ERB::Util
 
+  before_destroy :check_if_is_destroyable
+
   belongs_to :project
   has_many :contributions, dependent: :nullify
 
@@ -42,5 +44,12 @@ class Reward < ActiveRecord::Base
   def remaining
     return nil unless maximum_contributions
     maximum_contributions - total_compromised
+  end
+
+  def check_if_is_destroyable
+    if any_sold?
+      project.errors.add 'reward.destroy', "can't destroy"
+      return false
+    end
   end
 end
