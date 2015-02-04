@@ -1,6 +1,10 @@
 App.addChild('UserEdit', _.extend({
   el: '.user-dashboard-edit',
 
+  events:{
+    "click #toggle-notifications": "toggleNotifications"
+  },
+
   activate: function(){
     var that = this;
 
@@ -13,6 +17,11 @@ App.addChild('UserEdit', _.extend({
     this.route('feeds');
 
     this.lookAnchors();
+  },
+
+  toggleNotifications: function(){
+    event.preventDefault();
+    this.$('#notifications-box').toggle();
   },
 
   followRoute: function(name){

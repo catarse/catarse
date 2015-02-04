@@ -49,8 +49,20 @@
           #dashboard_contributions.content.w-hidden
             = render 'dashboard_contributions'
           #dashboard_projects.content.w-hidden
-            .w-row
-              == render_projects resource.projects, 'profile_dashboard_created_projects', { wrapper_class: 'w-col w-col-4 u-marginbottom-40' }
+            - if !@user.project_owner?
+              .w-row.u-margintop-30.u-text-center
+                .w-col.w-col-3
+                .w-col.w-col-6
+                  .fontsize-large.u-marginbottom-30 O que você está esperando para tirar seu projeto do papel aqui no Catarse?
+                  .w-row
+                    .w-col.w-col-3
+                    .w-col.w-col-6
+                      = link_to 'Comece agora!', start_path, class: 'btn btn-large'
+                    .w-col.w-col-3
+                .w-col.w-col-3
+            - else
+              .w-row
+                == render_projects resource.projects, 'profile_dashboard_created_projects', { wrapper_class: 'w-col w-col-4 u-marginbottom-40' }
           #dashboard_about_me.content.w-hidden
             = render 'dashboard_about_me'
           #dashboard_settings.content.w-hidden
@@ -59,3 +71,5 @@
             = render 'dashboard_notifications'
           #dashboard_billing.content.w-hidden
             = render 'dashboard_billing'
+
+= render 'shared/footer_big'

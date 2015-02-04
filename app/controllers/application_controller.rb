@@ -38,6 +38,10 @@ class ApplicationController < ActionController::Base
     current_user.nil? || current_user.projects.empty?
   end
 
+  def should_show_beta_banner?
+    current_user.nil? || current_user.projects.empty?
+  end
+
   private
   def referal_it!
     session[:referal_link] ||= params[:ref] if params[:ref].present?

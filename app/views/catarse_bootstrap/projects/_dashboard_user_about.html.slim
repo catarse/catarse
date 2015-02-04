@@ -24,7 +24,7 @@
               text_field_wrapper_html: { class: 'w-col w-col-6 w-sub-col' },
               input_html: { required: true },
               label: t('.uploaded_image_label'),
-              hint: t('.uploaded_image_hint'),
+              hint: image_tag(form.object.uploaded_image),
               validation_text: false
 
             = form.input :name, as: :string, 

@@ -73,7 +73,7 @@ RSpec.describe RewardsController, type: :controller do
   end
 
   describe "POST create" do
-    let(:reward_attributes){ {minimum_value: 10, description: 'foo bar', deliver_at: Time.now} }
+    let(:reward_attributes){ {minimum_value: 10, description: 'foo bar', deliver_at: Time.now + 1.day} }
     before do
       post :create, project_id: project.id, reward: reward_attributes, locale: :pt
     end
@@ -89,7 +89,7 @@ RSpec.describe RewardsController, type: :controller do
 
     context "when user is project owner and create fails" do
       let(:user){ project.user }
-      let(:reward_attributes){ {minimum_value: 0} }
+      let(:reward_attributes){ {minimum_value: 0, deliver_at: Time.now + 1.day} }
       it{ is_expected.to be_successful }
       it{ is_expected.to render_template('rewards/_form') }
     end

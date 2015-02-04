@@ -20,13 +20,13 @@
                 label_wrapper_html: { class: 'w-col w-col-5 w-subcol' },
                 text_field_wrapper_html: { class: 'w-col w-col-7' },
                 input_html: { class: 'positive', required: false },
-                validation_text: false                  
+                validation_text: false
 
               = form.input :about, as: :text, 
                 wrapper: :one_col,
                 wrapper_class: 'w-row u-marginbottom-30 card card-terciary',
                 input_html: { class: 'bottom jumbo positive', required: true },
-                validation_text: false                 
+                validation_text: false
 
               .card.card-terciary
                 label.field-label.fontweight-semibold= t('.budget_label') 
@@ -83,5 +83,5 @@
           .w-col.w-col-4
           .w-col.w-col-4
             = hidden_field_tag 'anchor', 'project'
-            = form.button :submit, t('.submit'),  class:'btn btn-large'
+            = form.button :submit, t('.submit'),  class:'btn btn-large', id: 'project-save'
           .w-col.w-col-4
