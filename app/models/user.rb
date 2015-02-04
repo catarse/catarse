@@ -17,7 +17,8 @@ class User < ActiveRecord::Base
     :medium_name, :display_credits, :display_total_of_contributions, :contributions_text,
     :twitter_link, :gravatar_url, :display_bank_account, :display_bank_account_owner, to: :decorator
 
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :name,
+  # FIXME: Please bitch...
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :permalink,
     :image_url, :uploaded_image, :bio, :newsletter, :full_name, :address_street, :address_number,
     :address_complement, :address_neighbourhood, :address_city, :address_state, :address_zip_code, :phone_number,
     :cpf, :state_inscription, :locale, :twitter, :facebook_link, :other_link, :moip_login, :deactivated_at, :reactivate_token,
@@ -30,6 +31,7 @@ class User < ActiveRecord::Base
 
   validates_presence_of :email
   validates_uniqueness_of :email, allow_blank: true, if: :email_changed?, message: I18n.t('activerecord.errors.models.user.attributes.email.taken')
+  validates_uniqueness_of :permalink
   validates_format_of :email, with: Devise.email_regexp, allow_blank: true, if: :email_changed?
 
   validates_presence_of :password, if: :password_required?
