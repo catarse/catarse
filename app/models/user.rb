@@ -215,8 +215,8 @@ class User < ActiveRecord::Base
   end
 
   def project_unsubscribes
-    contributions.with_state('confirmed', 'requested_refund', 'refunded').map do |p|
-      unsubscribes.posts_unsubscribe(p.id)
+    contributions.with_state('confirmed', 'requested_refund', 'refunded').map do |contribution|
+      unsubscribes.posts_unsubscribe(contribution.project_id)
     end
   end
 
