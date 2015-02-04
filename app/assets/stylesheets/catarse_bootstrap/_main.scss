@@ -2544,7 +2544,7 @@ p {
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
   background-color: #f1f4f4;
-  box-shadow: rgba(0, 0, 0, 0.31) 1px 1px 3px 0px;
+  box-shadow: rgba(0, 0, 0, 0.30) 1px 1px 3px 0px;
 }
 .content-hero-profile {
   position: absolute;
@@ -2959,8 +2959,8 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     padding-left: 24px;
   }
   .hero-full {
-    height: 660px;
-    padding-top: 210px;
+    height: 570px;
+    padding-top: 200px;
     padding-bottom: 170px;
   }
   .card-project-meter.successful {
@@ -3431,7 +3431,7 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     margin-top: -15px;
   }
   .content-hero-profile {
-    margin-top: 60px;
+    margin-top: 80px;
   }
   .btn-category {
     padding-top: 19px;
@@ -3623,6 +3623,8 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
   }
   .card-project-description {
     display: block;
+    height: 59px;
+    padding-top: 15px;
     padding-bottom: 0px;
     padding-left: 8px;
     text-align: left;
@@ -3749,7 +3751,7 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
   }
   .hero-full {
     height: 470px;
-    padding-top: 120px;
+    padding-top: 135px;
     padding-right: 16px;
     padding-left: 16px;
   }
