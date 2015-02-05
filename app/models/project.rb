@@ -290,6 +290,10 @@ class Project < ActiveRecord::Base
     end
   end
 
+  def has_blank_service_fee?
+    contributions.with_state(:confirmed).where("payment_service_fee IS NULL OR payment_service_fee = 0").present?
+  end
+
   def already_deployed?
     self.online? || self.successful? || self.failed? || self.waiting_funds?
   end

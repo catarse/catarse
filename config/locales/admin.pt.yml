@@ -12,6 +12,7 @@ pt:
         goal: 'Meta'
         total_payment_service_fee: 'Taxa do MP'
         total_catarse_fee: 'Taxa do Catarse'
+        zero_fee: 'Apoio sem taxa?'
         repass_value: 'Vl. Repasse'
         expires_at: 'Finaliza'
         online_date: 'Entrou no ar'
