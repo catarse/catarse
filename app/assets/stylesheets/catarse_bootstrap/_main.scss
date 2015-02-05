@@ -44,9 +44,9 @@ p {
   width: 100%;
   margin-right: auto;
   margin-left: auto;
-  border: 1px solid #00b22d;
+  border: 1px solid #7cc142;
   border-radius: 5px;
-  background-color: #00b22d;
+  background-color: #7cc142;
   -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
   color: white;
@@ -54,8 +54,8 @@ p {
   text-decoration: none;
 }
 .btn:hover {
-  border-color: #27bff2 #27bff2 #08bd35;
-  background-color: #08bd35;
+  border-color: #96d463;
+  background-color: #96d463;
   opacity: 1;
 }
 .btn.bt-medium {
@@ -102,8 +102,8 @@ p {
 .btn.bt-blue:hover {
   background-color: #2685eb;
 }
-.btn.btn:hover {
-  background-color: rgba(241, 244, 244, 0.43);
+.btn.btno:hover {
+  background-color: #13cf42;
 }
 .section {
   padding-top: 30px;
@@ -141,7 +141,7 @@ p {
   background-color: #3f4752;
 }
 .bootstrap-color-swatch.green-button {
-  background-color: #00b22d;
+  background-color: #7cc142;
 }
 .bootstrap-color-swatch.gray-one {
   background-color: #f1f4f4;
@@ -150,7 +150,7 @@ p {
   background-color: #79808b;
 }
 .bootstrap-color-swatch.blue-note {
-  background-color: #409bff;
+  background-color: #409ade;
 }
 .bootstrap-color-swatch.red-note {
   background-color: #e86666;
@@ -479,10 +479,11 @@ p {
   opacity: 1;
 }
 .alt-link {
-  color: #409bff;
+  color: #409ade;
   text-decoration: none;
 }
 .alt-link:hover {
+  color: #409ade;
   text-decoration: underline;
 }
 .alt-link.alt-link-2 {
@@ -1306,7 +1307,7 @@ p {
   background-color: white;
 }
 .card-project-description {
-  height: 155px;
+  height: 165px;
   padding: 14px 20px;
 }
 .card-project-description._1 {
@@ -1358,7 +1359,7 @@ p {
   position: relative;
   height: 100%;
   border-radius: 3px;
-  background-color: #00b22d;
+  background-color: #7cc142;
 }
 .card-project-thumb {
   width: 100%;
@@ -1537,10 +1538,10 @@ p {
   text-decoration: none;
 }
 .dashboard-nav-link:hover {
-  border-bottom: 3px solid #409bff;
+  border-bottom: 3px solid #409ade;
 }
 .dashboard-nav-link.w--current {
-  border-bottom-color: #409bff;
+  border-bottom-color: #409ade;
   background-color: white;
   color: #3f4752;
   font-weight: 600;
@@ -1555,7 +1556,7 @@ p {
   border-bottom-color: #409bff;
 }
 .dashboard-nav-link.selected {
-  border-bottom: 3px solid #409bff;
+  border-bottom: 3px solid #409ade;
   color: #3f4752;
   font-weight: 600;
 }
@@ -1715,7 +1716,7 @@ p {
   border-top: 1px solid #e9e9ec;
 }
 .text-success {
-  color: #00b22d;
+  color: #7cc142;
 }
 .header-search {
   position: relative;
@@ -1843,14 +1844,14 @@ p {
   width: 86.4%;
 }
 .btn-edit {
-  border-color: #409bff;
-  background-color: #409bff;
+  border-color: #409bff #409bff #4389bf;
+  background-color: #4389bf;
   color: white;
   text-decoration: none;
 }
 .btn-edit:hover {
   border-color: #409bff;
-  background-color: #2f8bed;
+  background-color: #3995db;
 }
 .btn-edit.btn-attached {
   width: auto;
@@ -2011,8 +2012,8 @@ p {
   width: 30%;
   margin-top: 20px;
   margin-right: 20px;
-  border-color: #409bff;
-  background-color: #409bff;
+  border-color: #409bff #409bff #409ade;
+  background-color: #409ade;
   color: white;
 }
 .zindex-10 {
@@ -2037,7 +2038,7 @@ p {
   background-color: #7ed9f7;
 }
 .fontcolor-dashboard {
-  color: #409bff;
+  color: #409ade;
 }
 .out-of-focus {
   display: inline-block;
@@ -2100,7 +2101,7 @@ p {
   margin-top: 20px;
 }
 .badge-success {
-  background-color: #00b22d;
+  background-color: #7cc142;
   color: white;
 }
 .btn-secondary {
@@ -2153,7 +2154,7 @@ p {
 .link-hidden-success {
   -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
-  color: #00b22d;
+  color: #7cc142;
   text-decoration: none;
 }
 .link-hidden-success:hover {
@@ -2208,7 +2209,7 @@ p {
 }
 .btn-terciary:hover {
   border-color: #3f4752;
-  background-color: transparent;
+  background-color: rgba(241, 244, 244, 0.79);
   color: #3f4752;
 }
 .btn-no-border {
@@ -2362,7 +2363,7 @@ p {
 }
 .whr-title {
   font-family: proxima-nova, sans-serif;
-  color: #409bff;
+  color: #409ade;
   font-size: 22px;
   line-height: 150%;
   text-decoration: none;
@@ -2402,7 +2403,7 @@ p {
 }
 .card-project-meter.successful {
   padding-top: 4px;
-  background-color: #00b22d;
+  background-color: #7cc142;
   color: white;
   font-size: 14px;
 }
