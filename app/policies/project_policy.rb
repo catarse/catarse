@@ -32,10 +32,12 @@ class ProjectPolicy < ApplicationPolicy
       p_attr << user_attributes
       p_attr << budget_attributes
       p_attr << posts_attributes
+      p_attr << reward_attributes
 
       {project: p_attr.flatten}
     else
-      {project: [:about, :video_url, :uploaded_image, :headline, :budget, user_attributes, posts_attributes, budget_attributes]}
+      {project: [:about, :video_url, :uploaded_image, :headline, :budget,
+                 user_attributes, posts_attributes, budget_attributes, reward_attributes]}
     end
   end
 
@@ -55,6 +57,11 @@ class ProjectPolicy < ApplicationPolicy
 
   def posts_attributes
     { posts_attributes: [:_destroy, :title, :comment, :exclusive, :id]}
+  end
+
+  def reward_attributes
+    { rewards_attributes: [:_destroy, :id, :maximum_contributions,
+                          :description, :deliver_at, :minimum_value] }
   end
 end
 
