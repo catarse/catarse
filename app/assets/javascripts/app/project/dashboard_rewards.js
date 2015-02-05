@@ -2,35 +2,22 @@ App.addChild('DashboardRewards', {
   el: '#dashboard-rewards-tab',
 
   events:{
-    "click .show_reward_form": "showRewardForm",
-    "click .reward-close-button": "closeForm",
-    "click .fa-question-circle": "toggleExplanation",
-    "click #limit_reward": "showInput"
+    "cocoon:after-insert #rewards": "reloadSubViews"
   },
 
   activate: function() {
-    this.$rewards = this.$('#dashboard-rewards');
+    this.$rewards = this.$('#dashboard-rewards #rewards');
     this.sortableRewards();
-    this.showNewRewardForm();
   },
 
-  showInput: function(event) {
-    $('#reward_maximum_contributions').parent().toggle();
-  },
-
-  toggleExplanation: function() {
-    event.preventDefault();
-    this.$('.reward-explanation').toggle();
-  },
-
-  closeForm: function(event) {
-    event.preventDefault();
-    var $target = this.$(event.currentTarget);
-    $target.closest('.reward-card').hide();
-    $target.closest('.reward-card').parent().prev().show();
+  reloadSubViews: function(event, insertedItem) {
+    this.rewardForm.undelegateEvents();
+    this._rewardForm = null;
+    this.rewardForm;
   },
 
   sortableRewards: function() {
+    that = this;
     this.$rewards.sortable({
       axis: 'y',
       placeholder: "ui-state-highlight",
@@ -39,11 +26,12 @@ App.addChild('DashboardRewards', {
       },
       update: function(e, ui) {
         var csrfToken, position;
-        position = $('#dashboard-rewards .sortable').index(ui.item);
+        position = that.$('#dashboard-rewards .reward-card').index(ui.item);
         csrfToken = $("meta[name='csrf-token']").attr("content");
+        update_url = that.$(ui.item).find('.card-persisted').data('update_url');
         return $.ajax({
           type: 'POST',
-          url: ui.item.data('update_url'),
+          url: update_url,
           dataType: 'json',
           headers: {
             'X-CSRF-Token': csrfToken
@@ -58,66 +46,47 @@ App.addChild('DashboardRewards', {
     })
   },
 
-  showNewRewardForm: function(event) {
-    var that = this;
-    var $target = this.$('.new_reward_button');
-    if(this.$('.sortable').length == 0)
-    {
-      $.get($target.data('path')).success(function(data){
-        $($target.data('target')).html(data);
-        that.rewardForm;
-      });
-
-      this.$($target.data('target')).fadeIn('fast');
-    }
-
-  },
-
-  showRewardForm: function(event) {
-    var that = this;
-    event.preventDefault();
-    var $target = this.$(event.currentTarget);
-
-    $.get($target.data('path')).success(function(data){
-      //total_saved_cards = $('#dashboard-rewards .sortable').length;
-      //total_new_cards = $('.new_reward_content .reward-card').length;
-      //total_cards = total_saved_cards + total_new_cards;
-
-      //$data = $(data);
-      //$('.custom-f-reward-counter', $data).html(total_cards+1);
-
-      //$($target.data('target')).html($data);
-      $($target.data('target')).html(data);
-      that.rewardForm;
-    });
-
-    this.$($target.data('parent')).hide();
-    this.$($target.data('target')).fadeIn('fast');
-
-  }
 });
 
 App.views.DashboardRewards.addChild('RewardForm', _.extend({
   el: '.reward-card',
 
   events: {
-    'ajax:complete' : 'onComplete',
     'blur input' : 'checkInput',
-    'submit form' : 'validate'
-  },
-
-  onComplete: function(event, data){
-    console.log(data);
-    if(data.status === 302){
-      window.location.reload();
-    }
-    else{
-      var form = $(data.responseText).html();
-      this.$el.html(form)
-    }
+    'submit form' : 'validate',
+    "click #limit_reward": "showInput",
+    "click .reward-close-button": "closeForm",
+    "click .fa-question-circle": "toggleExplanation",
+    "click .show_reward_form": "showRewardForm"
   },
 
   activate: function(){
     this.setupForm();
+  },
+
+  showInput: function(event) {
+    var $target = this.$(event.currentTarget);
+    $target.parent().parent().parent().next('.reward_maximum_contributions').toggle();
+  },
+
+  toggleExplanation: function(event) {
+    event.preventDefault();
+    var $target = this.$(event.currentTarget);
+    $target.parent().next('.reward-explanation').toggle();
+  },
+
+  closeForm: function(event) {
+    event.preventDefault();
+    var $target = this.$(event.currentTarget);
+    $target.closest('.card-edition').hide();
+    $target.closest('.card-edition').parent().find('.card-persisted').show();
+  },
+
+  showRewardForm: function(event) {
+    event.preventDefault();
+    var $target = this.$(event.currentTarget);
+    this.$($target.data('parent')).hide();
+    this.$($target.data('target')).show();
   }
+
 }, Skull.Form));
