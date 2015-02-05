@@ -10,8 +10,10 @@ class ProjectPost < ActiveRecord::Base
   #remove all whitespace from the start of the line so auto_html won't go crazy
   before_save do
     self.comment = comment.gsub(/^[^\S\n]+/, "")
-    self.user_id = self.project.try(:user_id)
+    reference_user
   end
+
+  before_validation :reference_user
 
   catarse_auto_html_for field: :comment, video_width: 560, video_height: 340
 
@@ -19,6 +21,10 @@ class ProjectPost < ActiveRecord::Base
 
   def email_comment_html
     catarse_email_auto_html_for comment, image_width: 513
+  end
+
+  def reference_user
+    self.user_id = self.project.try(:user_id)
   end
 
   def to_partial_path
