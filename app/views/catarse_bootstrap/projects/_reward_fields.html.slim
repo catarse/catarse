@@ -1,7 +1,4 @@
 - reward = f.object
-- parent = reward.project
-- resource = reward
-- index = reward.id
 
 .nested-fields
   .reward-card
@@ -9,7 +6,7 @@
       .w-row.card-persisted.card.card-terciary.u-marginbottom-20[id="reward_#{reward.id}" data-update_url=sort_project_reward_path(@project, reward) class="sortable"]
         .w-col.w-col-4.w-sub-col
           .fontweight-semibold.fontsize-smallest.u-marginbottom-10
-            = "#{t('projects.dashboard_reward.reward')} ##{index + 1}"
+            = "#{t('projects.dashboard_reward.reward')} ##{reward.id}"
         .w-col.w-col-8
           .card
             .w-row
@@ -39,12 +36,11 @@
             .fontsize-smallest
               =t('rewards.index.reward_deliver_time', estimate: reward.display_deliver_estimate).html_safe
   
-    .w-row.card.card-terciary.u-marginbottom-20.card-edition class=(resource.new_record? ? '' : "w-hidden edit_reward_content_#{resource.id}")
+    .w-row.card.card-terciary.u-marginbottom-20.card-edition class=(reward.new_record? ? '' : "w-hidden edit_reward_content_#{reward.id}")
       .w-col.w-col-4.w-sub-col
         .fontweight-semibold.fontsize-smallest.u-marginbottom-10
-          - if resource.new_record?
+          - if reward.new_record?
             | #{t('.reward')} #
-            span.custom-f-reward-counter= parent.rewards.count + 1
           - else
             = t('.edit')
           |&nbsp;
@@ -79,17 +75,17 @@
             .w-row
               .w-col.w-col-5
                 .w-checkbox
-                  .w-checkbox-input= check_box_tag  "limit_reward", '', (resource.maximum_contributions.present?), id: 'limit_reward' 
+                  .w-checkbox-input= check_box_tag  "limit_reward", '', (reward.maximum_contributions.present?), id: 'limit_reward' 
                   label.w-form-label for="limit_reward"= t('.limit_reward') 
-              .w-col.w-col-7 class="reward_maximum_contributions #{ resource.maximum_contributions.present? ?  '' : 'w-hidden'}"
+              .w-col.w-col-7 class="reward_maximum_contributions #{reward.maximum_contributions.present? ?  '' : 'w-hidden'}"
                 = f.input_field :maximum_contributions, class: 'u-marginbottom-30 positive', placeholder: t('.available')
             .w-row
               /.w-col.w-col-6.w-col-small-6.w-col-tiny-6.w-sub-col-middle
                 = f.button :submit, t('.submit'),  class:'btn btn-small'
-              - if resource.persisted?
+              - if reward.persisted?
                 .w-col.w-col-5.w-col-small-5.w-col-tiny-5.w-sub-col-middle
                   input.w-button.btn-terciary.btn.btn-small.reward-close-button type="submit" value="Fechar" 
-              - if resource.new_record? || (resource.persisted? && policy(resource).destroy?)
+              - if reward.new_record? || (reward.persisted? && policy(reward).destroy?)
                 .w-col.w-col-1.w-col-small-1.w-col-tiny-1
                   = link_to_remove_association f, data: { confirm: 'Tem certeza?' } do
                     .btn.btn-small.btn-terciary.fa.fa-lg.fa-trash.btn-no-border
