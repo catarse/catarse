@@ -31,7 +31,7 @@ class Project < ActiveRecord::Base
   has_many :budgets, class_name: "ProjectBudget", inverse_of: :project
   has_many :unsubscribes
 
-  accepts_nested_attributes_for :rewards
+  accepts_nested_attributes_for :rewards, allow_destroy: true
   accepts_nested_attributes_for :channels
   accepts_nested_attributes_for :user
   accepts_nested_attributes_for :posts, allow_destroy: true#, reject_if: ->(x) { x[:title].blank? || x[:comment].blank? }
