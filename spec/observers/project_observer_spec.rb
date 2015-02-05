@@ -3,12 +3,11 @@ require 'rails_helper'
 RSpec.describe ProjectObserver do
   let(:contribution){ create(:contribution, key: 'should be updated', payment_method: 'should be updated', state: 'confirmed', confirmed_at: nil) }
   let(:project) do
-    project = create(:project, state: 'draft', goal: 3000) 
+    project = create(:project, state: 'draft', goal: 3000)
     create(:reward, project: project)
     project.update_attribute :state, :online
     project
   end
-  let(:channel) { create(:channel) }
 
   subject{ contribution }
 
@@ -76,28 +75,7 @@ RSpec.describe ProjectObserver do
   end
 
   describe "before_save" do
-    let(:channel){ create(:channel) }
     let(:project){ create(:project, video_url: 'http://vimeo.com/11198435', state: 'draft')}
-
-    context "when project is approved and belongs to a channel" do
-      let(:project){ create(:project, video_url: 'http://vimeo.com/11198435', state: 'draft', channels: [channel])}
-      before do
-        project.update_attributes state: 'approved'
-      end
-
-      it "should call notify using channel data" do
-        expect(ProjectNotification).to receive(:notify_once).with(
-          :project_visible_channel,
-          project.user,
-          project,
-          {
-            from_email: channel.email,
-            from_name: channel.name
-          }
-        )
-        project.push_to_online
-      end
-    end
 
     context "when project is approved" do
       before do
@@ -244,25 +222,12 @@ RSpec.describe ProjectObserver do
       project
     end
 
-    context "when project don't belong to any channel" do
-      before do
-        project.push_to_online
-      end
-
-      it "should create notification for project owner" do
-        expect(ProjectNotification.where(user_id: project.user.id, template_name: 'project_visible', project_id: project.id).first).not_to be_nil
-      end
+    before do
+      project.push_to_online
     end
 
-    context "when project belong to a channel" do
-      before do
-        project.channels << channel
-        project.push_to_online
-      end
-
-      it "should create notification for project owner" do
-        expect(ProjectNotification.where(user_id: project.user.id, template_name: 'project_visible_channel', project_id: project.id).first).not_to be_nil
-      end
+    it "should create notification for project owner" do
+      expect(ProjectNotification.where(user_id: project.user.id, template_name: 'project_visible', project_id: project.id).first).not_to be_nil
     end
   end
 

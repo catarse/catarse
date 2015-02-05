@@ -4,8 +4,6 @@ require 'rails_helper'
 RSpec.describe Project, type: :model do
   let(:project){ build(:project, goal: 3000) }
   let(:user){ create(:user) }
-  let(:channel){ create(:channel, users: [ user ]) }
-  let(:channel_project){ create(:project, channels: [ channel ]) }
 
   describe "associations" do
     it{ is_expected.to belong_to :user }
@@ -15,7 +13,6 @@ RSpec.describe Project, type: :model do
     it{ is_expected.to have_many :rewards }
     it{ is_expected.to have_many :posts }
     it{ is_expected.to have_many :notifications }
-    it{ is_expected.to have_and_belong_to_many :channels }
   end
 
   describe "validations" do
@@ -394,16 +391,6 @@ RSpec.describe Project, type: :model do
     end
   end
 
-  describe ".from_channels" do
-    let(:channel){create(:channel)}
-    before do
-      @p = create(:project, channels: [channel])
-      create(:project, channels: [])
-    end
-    subject{ Project.from_channels([channel.id]) }
-    it{ is_expected.to eq([@p]) }
-  end
-
   describe '#reached_goal?' do
     let(:project) { create(:project, goal: 3000) }
     subject { project.reached_goal? }
@@ -572,13 +559,6 @@ RSpec.describe Project, type: :model do
     it { is_expected.to eq([reward_01, reward_03]) }
   end
 
-  describe "#last_channel" do
-    let(:channel){ create(:channel) }
-    let(:project){ create(:project, channels: [ create(:channel), channel ]) }
-    subject{ project.last_channel }
-    it{ is_expected.to eq(channel) }
-  end
-
   describe "#new_draft_recipient" do
     subject { project.new_draft_recipient }
     before do
@@ -586,18 +566,6 @@ RSpec.describe Project, type: :model do
       @user = create(:user, email: CatarseSettings[:email_projects])
     end
     it{ is_expected.to eq(@user) }
-  end
-
-  describe "#notification_type" do
-    subject { project.notification_type(:foo) }
-    context "when project does not belong to any channel" do
-      it { is_expected.to eq(:foo) }
-    end
-
-    context "when project does belong to a channel" do
-      let(:project) { channel_project }
-      it{ is_expected.to eq(:foo_channel) }
-    end
   end
 
   describe ".enabled_to_use_pagarme" do
