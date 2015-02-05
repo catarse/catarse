@@ -2,9 +2,8 @@ require 'rails_helper'
 
 RSpec.describe AdminPolicy do
   let(:user) { nil }
-  let(:channel) { nil }
 
-  subject{ AdminPolicy.new(user, Admin, channel) }
+  subject{ AdminPolicy.new(user, Admin) }
 
   context "permission access?" do
 
@@ -17,15 +16,6 @@ RSpec.describe AdminPolicy do
     context "whe user is not admin" do
       let(:user) { User.new }
       it "should deny access if user is not admin" do
-        is_expected.not_to custom_permit(:access?)
-      end
-    end
-
-    context "when user is channel admin" do
-      let(:user) { create(:user, channel: create(:channel))}
-      let(:channel) { user.channel }
-
-      it "should permit access if user is channel admin" do
         is_expected.not_to custom_permit(:access?)
       end
     end

@@ -23,7 +23,6 @@ class Project < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :category
-  has_and_belongs_to_many :channels
   has_one :project_total
   has_many :rewards
   has_many :contributions
@@ -32,7 +31,6 @@ class Project < ActiveRecord::Base
   has_many :unsubscribes
 
   accepts_nested_attributes_for :rewards
-  accepts_nested_attributes_for :channels
   accepts_nested_attributes_for :user
   accepts_nested_attributes_for :posts, allow_destroy: true#, reject_if: ->(x) { x[:title].blank? || x[:comment].blank? }
   accepts_nested_attributes_for :budgets, allow_destroy: true, reject_if: ->(x) { x[:name].blank? || x[:value].blank? }
@@ -64,7 +62,6 @@ class Project < ActiveRecord::Base
   scope :with_project_totals, -> { joins('LEFT OUTER JOIN project_totals ON project_totals.project_id = projects.id') }
 
   scope :by_progress, ->(progress) { joins(:project_total).where("project_totals.pledged >= projects.goal*?", progress.to_i/100.to_f) }
-  scope :by_channel, ->(channel_id) { joins(:channels).where("channels.id = ?", channel_id) }
   scope :by_user_email, ->(email) { joins(:user).where("users.email = ?", email) }
   scope :by_id, ->(id) { where(id: id) }
   scope :by_goal, ->(goal) { where(goal: goal) }
@@ -102,10 +99,6 @@ class Project < ActiveRecord::Base
             WHEN 'successful' THEN 3
             WHEN 'failed' THEN 4
             END ASC, projects.online_date DESC, projects.created_at DESC")
-  }
-
-  scope :from_channels, ->(channels){
-    where("EXISTS (SELECT true FROM channels_projects cp WHERE cp.project_id = projects.id AND cp.channel_id = ?)", channels)
   }
 
   scope :with_contributions_confirmed_today, -> {
@@ -258,12 +251,8 @@ class Project < ActiveRecord::Base
     User.find_by_email CatarseSettings[:email_projects]
   end
 
-  def last_channel
-    @last_channel ||= channels.last
-  end
-
   def notification_type type
-    channels.first ? "#{type}_channel".to_sym : type
+    type
   end
 
   def should_fail?

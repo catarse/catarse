@@ -28,7 +28,6 @@ class ProjectPolicy < ApplicationPolicy
 
   def permitted_attributes
     if user.present? && (user.admin? || (record.draft? || record.rejected? || record.in_analysis?))
-      p_attr = [channel_ids: []]
       p_attr << record.attribute_names.map(&:to_sym)
       p_attr << user_attributes
       p_attr << budget_attributes
