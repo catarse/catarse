@@ -14,7 +14,7 @@
     .w-col.w-col-3
       .w-row
         .w-col.w-col-4.u-marginbottom-10
-          = image_tag project.display_image, class: 'thumb-project u-radius', alt: project.name, width: 50
+          = link_to (image_tag project.display_image, class: 'thumb-project u-radius', alt: project.name, width: 50), project_by_slug_path(project.permalink)
         .w-col.w-col-8
           .fontsize-small.fontweight-semibold= project.name
     .w-col.w-col-2.u-marginbottom-10
