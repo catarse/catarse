@@ -113,6 +113,7 @@ class ProjectsController < ApplicationController
     @user.build_bank_account unless @user.bank_account.present?
     @user.links.build
     @post =  resource.posts.build
+    @rewards = @project.rewards.rank(:row_order)
     @budget = resource.budgets.build
   end
 
@@ -154,7 +155,8 @@ class ProjectsController < ApplicationController
   protected
 
   def should_use_validate
-    (resource.online? || resource.failed? || resource.successful? || permitted_params[:project][:permalink].present? ? false : true)
+    (resource.online? || resource.failed? || resource.successful? ||
+     permitted_params[:project][:permalink].present? || permitted_params[:project][:rewards_attributes].present?)
   end
 
   def permitted_params
