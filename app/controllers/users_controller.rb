@@ -129,7 +129,7 @@ class UsersController < ApplicationController
   end
 
   def resource
-    @user ||= params[:id].present? ? User.find(params[:id]) : User.with_permalink.find_by_permalink(request.subdomain)
+    @user ||= params[:id].present? ? User.find_active!(params[:id]) : User.with_permalink.find_by_permalink(request.subdomain)
   end
 
   def build_bank_account
