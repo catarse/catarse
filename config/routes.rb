@@ -93,24 +93,25 @@ Catarse::Application.routes.draw do
 
   # Channels
   constraints SubdomainConstraint do
-    namespace :channels, path: '' do
+    get "/", to: 'users#show'
+    #namespace :channels, path: '' do
 
-      namespace :admin do
-        namespace :reports do
-          resources :subscriber_reports, only: [ :index ]
-        end
-        resources :posts
-        resources :partners
-        resources :followers, only: [ :index ]
-      end
+    #  namespace :admin do
+    #    namespace :reports do
+    #      resources :subscriber_reports, only: [ :index ]
+    #    end
+    #    resources :posts
+    #    resources :partners
+    #    resources :followers, only: [ :index ]
+    #  end
 
-      resources :posts
-      get '/', to: 'profiles#show', as: :profile
-      get '/how-it-works', to: 'profiles#how_it_works', as: :about
-      resource :profile
-      # NOTE We use index instead of create to subscribe comming back from auth via GET
-      resource :channels_subscriber, only: [:show, :destroy], as: :subscriber
-    end
+    #  resources :posts
+    #  get '/', to: 'profiles#show', as: :profile
+    #  get '/how-it-works', to: 'profiles#how_it_works', as: :about
+    #  resource :profile
+    #  # NOTE We use index instead of create to subscribe comming back from auth via GET
+    #  resource :channels_subscriber, only: [:show, :destroy], as: :subscriber
+    #end
   end
 
   # Root path should be after channel constraints
