@@ -12,15 +12,11 @@ class ApplicationController < ActionController::Base
   before_filter :redirect_user_back_after_login, unless: :devise_controller?
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
-  helper_method :channel, :namespace, :referal_link, :render_projects, :should_show_beta_banner?, :render_feeds
+  helper_method :namespace, :referal_link, :render_projects, :should_show_beta_banner?, :render_feeds
 
   before_filter :set_locale
 
   before_action :referal_it!
-
-  def channel
-    Channel.find_by_permalink(request.subdomain.to_s)
-  end
 
   def referal_link
     session[:referal_link]

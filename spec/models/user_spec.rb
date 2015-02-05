@@ -14,12 +14,9 @@ RSpec.describe User, type: :model do
     it{ is_expected.to have_many :project_posts }
     it{ is_expected.to have_many :unsubscribes }
     it{ is_expected.to have_many :authorizations }
-    it{ is_expected.to have_many :channels_subscribers }
     it{ is_expected.to have_one :user_total }
     it{ is_expected.to have_one :bank_account }
-    it{ is_expected.to belong_to :channel }
     it{ is_expected.to belong_to :country }
-    it{ is_expected.to have_and_belong_to_many :subscriptions }
   end
 
   describe "validations" do

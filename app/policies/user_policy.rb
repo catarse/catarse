@@ -37,6 +37,7 @@ class UserPolicy < ApplicationPolicy
 
     unless user.try(:admin?)
       u_attrs.delete(:zero_credits)
+      u_attrs.delete(:permalink)
     end
 
     { user: u_attrs.flatten }
