@@ -37,6 +37,7 @@ FactoryGirl.define do
     f.cpf "123456"
     f.uploaded_image File.open("#{Rails.root}/spec/support/testimg.png")
     f.email { generate(:email) }
+    f.permalink { generate(:permalink) }
     f.bio "This is Foo bar's biography."
     f.address_street 'fooo'
     f.address_number '123'
@@ -49,6 +50,7 @@ FactoryGirl.define do
 
   factory :user do |f|
     f.association :bank_account
+    f.permalink { generate(:permalink) }
     f.name "Foo bar"
     f.full_name "Foo bar"
     f.password "123456"
@@ -97,11 +99,6 @@ FactoryGirl.define do
     f.association :project
     f.name "Foo Bar"
     f.value "10"
-  end
-
-  factory :channels_subscriber do |f|
-    f.association :user
-    f.association :channel
   end
 
   factory :unsubscribe do |f|
@@ -180,13 +177,6 @@ FactoryGirl.define do
     f.title "My title"
     f.comment "This is a comment"
     f.comment_html "<p>This is a comment</p>"
-  end
-
-  factory :channel do
-    name "Test"
-    email "email+channel@foo.bar"
-    description "Lorem Ipsum"
-    sequence(:permalink) { |n| "#{n}-test-page" }
   end
 
   factory :state do

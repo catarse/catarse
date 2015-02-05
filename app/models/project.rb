@@ -251,10 +251,6 @@ class Project < ActiveRecord::Base
     User.find_by_email CatarseSettings[:email_projects]
   end
 
-  def notification_type type
-    type
-  end
-
   def should_fail?
     expired? && !reached_goal?
   end
