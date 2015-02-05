@@ -141,6 +141,7 @@ RSpec.describe Project::StateMachineHandler, type: :model do
           expect(project.audited_user_cpf).to_not be_nil
           expect(project.audited_user_moip_login).to_not be_nil
           expect(project.audited_user_phone_number).to_not be_nil
+          expect(AuditedAccount.where(project: project)).to exist
         end
       end
     end

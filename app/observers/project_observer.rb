@@ -66,6 +66,29 @@ class ProjectObserver < ActiveRecord::Observer
       audited_user_moip_login: project.user.moip_login,
       audited_user_phone_number: project.user.phone_number
     })
+    AuditedAccount.create(
+      user: project.user,
+      project: project,
+      bank: project.user.bank_account.bank,
+      full_name: project.user.full_name,
+      email: project.user.email,
+      cpf: project.user.cpf,
+      state_inscription: project.user.state_inscription,
+      address_street: project.user.address_street,
+      address_number: project.user.address_number,
+      address_complement: project.user.address_complement,
+      address_neighbourhood: project.user.address_neighbourhood,
+      address_city: project.user.address_city,
+      address_state: project.user.address_state,
+      address_zip_code: project.user.address_zip_code,
+      phone_number: project.user.phone_number,
+      agency: project.user.bank_account.agency,
+      agency_digit: project.user.bank_account.agency_digit,
+      account: project.user.bank_account.account,
+      account_digit: project.user.bank_account.account_digit,
+      owner_document: project.user.bank_account.owner_document,
+      owner_name: project.user.bank_account.owner_name
+    )
   end
 
   def from_online_to_failed(project)
