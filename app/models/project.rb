@@ -183,6 +183,10 @@ class Project < ActiveRecord::Base
     self.using_pagarme(permalinks)
   end
 
+  def has_blank_service_fee?
+    contributions.with_state(:confirmed).where("payment_service_fee IS NULL OR payment_service_fee = 0").present?
+  end
+
   def can_show_account_link?
     ['online', 'waiting_funds', 'successful', 'approved'].include? state
   end
