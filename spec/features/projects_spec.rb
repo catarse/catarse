@@ -36,7 +36,7 @@ RSpec.describe "Projects", type: :feature do
       sleep 4
     end
     it "should show recommended projects" do
-      recommended = all(".results .project-box")
+      recommended = all(".results .card-project")
       expect(recommended.size).to eq(1)
     end
   end
@@ -49,7 +49,7 @@ RSpec.describe "Projects", type: :feature do
       sleep 4
     end
     it "should show recommended projects" do
-      recommended = all(".results .project-box")
+      recommended = all(".results .card-project")
       expect(recommended.size).to eq(1)
     end
   end
