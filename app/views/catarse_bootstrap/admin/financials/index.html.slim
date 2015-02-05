@@ -48,6 +48,7 @@
             th= t('.repass_value')
             th= t('.expires_at')
             th= t('.reports')
+            th= t('.zero_fee')
             th= t('.state')
         tbody
           tr id=project.id
@@ -66,6 +67,8 @@
               = project.display_expires_at
             td
               = link_to t('.contribution_report'), admin_reports_contribution_reports_path(project_id: project.id, format: :csv)
+            td
+              = project.has_blank_service_fee?
             td
               - if project.online?
                 span.label.label-online= project.state
