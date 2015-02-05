@@ -36,8 +36,7 @@ module Catarse
       g.test_framework :rspec, fixture: false, views: false
     end
     config.active_record.observers = [
-      :contribution_observer, :user_observer, :channel_observer,
-      :project_post_observer, :project_observer, :channel_post_observer,
+      :contribution_observer, :user_observer, :project_post_observer, :project_observer,
       :mixpanel_observer, '::CatarseMonkeymail::MonkeyProjectObserver',
     ]
 

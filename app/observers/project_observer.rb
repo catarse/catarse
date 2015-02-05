@@ -114,8 +114,8 @@ class ProjectObserver < ActiveRecord::Observer
     project.notify_owner(
       template_name,
       {
-        from_email: project.last_channel.try(:email) || CatarseSettings[:email_projects],
-        from_name: project.last_channel.try(:name) || CatarseSettings[:company_name]
+        from_email: CatarseSettings[:email_projects],
+        from_name: CatarseSettings[:company_name]
       }
     )
   end

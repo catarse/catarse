@@ -38,7 +38,6 @@ class User < ActiveRecord::Base
   validates_confirmation_of :password, if: :password_confirmation_required?
   validates_length_of :password, within: Devise.password_length, allow_blank: true
 
-  belongs_to :channel
   belongs_to :country
   has_one :user_total
   has_one :bank_account, dependent: :destroy
@@ -46,8 +45,6 @@ class User < ActiveRecord::Base
   has_many :credit_cards
   has_many :contributions
   has_many :authorizations
-  has_many :channel_posts
-  has_many :channels_subscribers
   has_many :projects
   has_many :unsubscribes
   has_many :project_posts
@@ -56,7 +53,6 @@ class User < ActiveRecord::Base
   has_many :categories, through: :category_followers
   has_many :links, class_name: 'UserLink', inverse_of: :user
   has_and_belongs_to_many :recommended_projects, join_table: :recommendations, class_name: 'Project'
-  has_and_belongs_to_many :subscriptions, join_table: :channels_subscribers, class_name: 'Channel'
 
   accepts_nested_attributes_for :unsubscribes, allow_destroy: true rescue puts "No association found for name 'unsubscribes'. Has it been defined yet?"
   accepts_nested_attributes_for :links, allow_destroy: true, reject_if: ->(x) { x['link'].blank? }

@@ -6,13 +6,7 @@ module Concerns
       helper_method :render_google_analytics_script, :render_mixpanel_script
 
       def render_google_analytics_script
-        partial_name =  if channel && channel.ga_code
-                          'layouts/channel_analytics'
-                        else
-                          'layouts/analytics'
-                        end
-
-        render_to_string(partial: partial_name).html_safe
+        render_to_string(partial: 'layouts/analytics').html_safe
       end
 
       def render_mixpanel_script
