@@ -1,6 +1,6 @@
 = simple_form_for resource, html: { id: 'user_form', class: 'w-form' } do |form|
   = hidden_field_tag :anchor, 'settings'
-  .section
+  div
     .w-container
       /.w-col.w-col-8.u-marginbottom-30
       .w-col.w-col-10.w-col-push-1
@@ -19,7 +19,7 @@
             .w-row.u-marginbottom-20
               .w-col.w-col-6.w-sub-col
                 label.field-label.fontweight-semibold for="email-20"  Senha atual
-                = form.input_field :current_password, class: 'w-input text-field'
+                = form.input_field :current_password, class: 'w-input text-field positive'
               .w-col.w-col-6
                 label.field-label.fontweight-semibold for="email-21"  Nova senha
                 = form.input_field :password, class: 'w-input text-field positive'
