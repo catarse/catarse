@@ -17,7 +17,8 @@ class User < ActiveRecord::Base
     :medium_name, :display_credits, :display_total_of_contributions, :contributions_text,
     :twitter_link, :gravatar_url, :display_bank_account, :display_bank_account_owner, to: :decorator
 
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :name,
+  # FIXME: Please bitch...
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :permalink,
     :image_url, :uploaded_image, :bio, :newsletter, :full_name, :address_street, :address_number,
     :address_complement, :address_neighbourhood, :address_city, :address_state, :address_zip_code, :phone_number,
     :cpf, :state_inscription, :locale, :twitter, :facebook_link, :other_link, :moip_login, :deactivated_at, :reactivate_token,
@@ -30,13 +31,13 @@ class User < ActiveRecord::Base
 
   validates_presence_of :email
   validates_uniqueness_of :email, allow_blank: true, if: :email_changed?, message: I18n.t('activerecord.errors.models.user.attributes.email.taken')
+  validates_uniqueness_of :permalink, allow_nil: true
   validates_format_of :email, with: Devise.email_regexp, allow_blank: true, if: :email_changed?
 
   validates_presence_of :password, if: :password_required?
   validates_confirmation_of :password, if: :password_confirmation_required?
   validates_length_of :password, within: Devise.password_length, allow_blank: true
 
-  belongs_to :channel
   belongs_to :country
   has_one :user_total
   has_one :bank_account, dependent: :destroy
@@ -44,8 +45,6 @@ class User < ActiveRecord::Base
   has_many :credit_cards
   has_many :contributions
   has_many :authorizations
-  has_many :channel_posts
-  has_many :channels_subscribers
   has_many :projects
   has_many :unsubscribes
   has_many :project_posts
@@ -54,13 +53,13 @@ class User < ActiveRecord::Base
   has_many :categories, through: :category_followers
   has_many :links, class_name: 'UserLink', inverse_of: :user
   has_and_belongs_to_many :recommended_projects, join_table: :recommendations, class_name: 'Project'
-  has_and_belongs_to_many :subscriptions, join_table: :channels_subscribers, class_name: 'Channel'
 
   accepts_nested_attributes_for :unsubscribes, allow_destroy: true rescue puts "No association found for name 'unsubscribes'. Has it been defined yet?"
   accepts_nested_attributes_for :links, allow_destroy: true, reject_if: ->(x) { x['link'].blank? }
   accepts_nested_attributes_for :bank_account, allow_destroy: true, reject_if: -> (attr) { attr[:bank_id].blank? }
   accepts_nested_attributes_for :category_followers, allow_destroy: true
 
+  scope :with_permalink, -> { where("users.permalink is not null") }
   scope :active, ->{ where('deactivated_at IS NULL') }
   scope :with_user_totals, -> {
     joins("LEFT OUTER JOIN user_totals on user_totals.user_id = users.id")

@@ -22,7 +22,7 @@ module Admin
     end
 
     def policy(record)
-      Admin.policy_class.new(current_user, record, channel)
+      Admin.policy_class.new(current_user, record)
     end
   end
 end

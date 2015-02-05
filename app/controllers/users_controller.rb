@@ -128,6 +128,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def resource
+    @user ||= params[:id].present? ? User.find_active!(params[:id]) : User.with_permalink.find_by_permalink(request.subdomain)
+  end
+
   def build_bank_account
     @user.build_bank_account unless @user.bank_account
   end
