@@ -1,5 +1,9 @@
 App.addChild('Explore', _.extend({
-  el: '#main_content[data-action="index"][data-controller-name="explore"]',
+  el: '.content[data-action="index"][data-controller-name="explore"]',
+
+  events: {
+    'click .explore-toggle':'toggleCategoryList'
+  },
 
   routeFilters: {
     recent: { recent: true },
@@ -31,15 +35,20 @@ App.addChild('Explore', _.extend({
     }
   },
 
+  toggleCategoryList: function(event) {
+    this.$('#categories-wrapper').slideToggle();
+  },
+
   selectLink: function(){
     this.$('.follow-category').hide();
+    this.toggleCategoryList();
 
     var link = this.$('a[href="' + window.location.hash + '"]')
     this.$('a.selected').removeClass('selected');
 
     link.addClass('selected');
 
-    if(link.data('categoryid')) {
+    if(link.data('categoryid') || link.data('name')) {
       this.followCategory.setupFollowHeader(link);
     }
   },
@@ -82,22 +91,24 @@ App.views.Explore.addChild('FollowCategory', {
     var unfollow_btn = this.$('.unfollow-btn');
     var follow_btn = this.$('.follow-btn');
 
-    this.$('.button').hide();
-    this.$('.category-info h3').html(selectedItem.data('name'));
-    this.$('.category-follow span.count').html(selectedItem.data('totalfollowers'));
+    this.$('.btn.btn-medium').hide();
+    this.$('.category-info').html(selectedItem.data('name'));
+    this.$('.following').hide();
 
-    if(selectedItem.data('totalfollowers') > 0) {
-      this.$('p.following').show();
-    } else {
-      this.$('p.following').hide();
-    }
+    if(selectedItem.data('categoryid') > 0) {
+      this.$('.category-follow span.count').html(selectedItem.data('totalfollowers'));
 
-    if(selectedItem.data('isfollowing')) {
-      unfollow_btn.prop('href', selectedItem.data('unfollowpath'))
-      unfollow_btn.show();
-    } else {
-      follow_btn.prop('href', selectedItem.data('followpath'))
-      follow_btn.show();
+      if(selectedItem.data('totalfollowers') > 0) {
+        this.$('.following').show();
+      }
+
+      if(selectedItem.data('isfollowing')) {
+        unfollow_btn.prop('href', selectedItem.data('unfollowpath'))
+        unfollow_btn.show();
+      } else {
+        follow_btn.prop('href', selectedItem.data('followpath'))
+        follow_btn.show();
+      }
     }
 
     this.$el.show();
