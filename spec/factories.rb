@@ -19,12 +19,6 @@ FactoryGirl.define do
     "foo_page_#{n}"
   end
 
-  factory :channel_partner do |f|
-    f.url "http://google.com"
-    f.image File.open("#{Rails.root}/spec/support/testimg.png")
-    f.association :channel
-  end
-
   factory :category_follower do |f|
     f.association :user
     f.association :category
@@ -209,13 +203,4 @@ FactoryGirl.define do
     account '1'
   end
 
-  factory :channel_post do |f|
-    f.association :user, factory: :user
-    f.association :channel, factory: :channel
-    title "My title"
-    f.body "This is a comment"
-    f.body_html "<p>This is a comment</p>"
-  end
-
 end
-
