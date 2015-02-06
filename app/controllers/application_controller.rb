@@ -44,7 +44,7 @@ class ApplicationController < ActionController::Base
   end
 
   def detect_mobile_browsers
-    return redirect_to url_for(host: 'beta.catarse.me') if browser.mobile? && should_show_beta_banner?
+    return redirect_to url_for(host: 'beta.catarse.me') if browser.mobile? && should_show_beta_banner? && request.host != 'beta.catarse.me'
   end
 
   def detect_old_browsers
