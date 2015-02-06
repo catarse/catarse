@@ -1,9 +1,9 @@
 = render 'shared/header_big'
 .w-row.admin.admin-contributions
   h1
-    = @title = t('channels.admin.management.title')
+    = @title = t('admin.management.title')
     ' :
-  h3 = t('channels.admin.filter.title')
+  h3 = t('admin.filter.title')
   = simple_form_for '', url: admin_contributions_path, method: :get do |form|
     .w-row
       .w-col-2.w-col
@@ -15,7 +15,7 @@
       .w-col-2.w-col
         = form.input :by_payment_id, as: :string, label: t('.payment_id')
       .w-col-2.w-col
-        = form.input :with_state, collection: Contribution.state_names, label: t('channels.admin.filter.with_state'), as: :select, selected: params[:with_state], include_blank: true
+        = form.input :with_state, collection: Contribution.state_names, label: t('admin.filter.with_state'), as: :select, selected: params[:with_state], include_blank: true
     .w-row
       .w-col-3.w-col
         = form.input :project_name_contains, as: :string, label: t('.project')
@@ -24,11 +24,11 @@
       .w-col-2.w-col
         = form.input :search_on_acquirer, as: :string, label: t('.acquirer'), input_html: { placeholder: t('.placeholders.acquirer'), title: t('.placeholders.acquirer'), value: current_scopes[:search_on_acquirer] }
       .w-col-2.w-col
-        = form.input :by_payment_method, collection: Contribution.payment_method_names, label: t('channels.admin.filter.by_payment_method'), as: :select, selected: params[:with_state], include_blank: true
+        = form.input :by_payment_method, collection: Contribution.payment_method_names, label: t('admin.filter.by_payment_method'), as: :select, selected: params[:with_state], include_blank: true
       .w-col-9.w-col
         = form.input :credits, as: :boolean, label: t('.credits')
       .w-col-2.w-col
-        = form.button :submit, t('channels.admin.filter.submit'), class: 'button medium negative'
+        = form.button :submit, t('admin.filter.submit'), class: 'button medium negative'
 
   = paginate @contributions
   - if @contributions.empty?

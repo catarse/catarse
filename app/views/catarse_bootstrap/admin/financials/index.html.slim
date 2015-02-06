@@ -14,13 +14,13 @@
       .w-col-2.w-col
         = form.input :user_name_contains, as: :string, label: t('.user'), input_html: {value: params[:user_name_contains]}
       .w-col-2.w-col
-        = form.input :with_state, collection: Project.state_names, label: t('channels.admin.filter.with_state'), as: :select, selected: params[:with_state], include_blank: true
+        = form.input :with_state, collection: Project.state_names, label: t('admin.filter.with_state'), as: :select, selected: params[:with_state], include_blank: true
       .large-1.columns
         = form.input :with_payment_engine, collection: ['pagarme', 'moip'], label: 'Meio de pagamento', as: :select, include_blank: true, selected: params[:with_payment_engine]
 
     .w-row
       .w-col-2.w-col
-        = form.button :submit, t('channels.admin.filter.submit'), class: 'button medium negative'
+        = form.button :submit, t('admin.filter.submit'), class: 'button medium negative'
       .w-col-2.w-col
         = link_to t('.search_report'), admin_financials_path(params: params,format: :csv)
       .w-col-2.w-col

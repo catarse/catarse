@@ -23,7 +23,7 @@
           = check_box_tag :has_credits, true, params[:has_credits].present?
           = form.label :has_credits, t('.credits')
         .w-col-2.w-col
-          = form.button :submit, t('channels.admin.filter.submit'), class: 'button medium negative'
+          = form.button :submit, t('admin.filter.submit'), class: 'button medium negative'
 
   = paginate @users
   - if @users.empty?
