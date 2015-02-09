@@ -10,10 +10,10 @@ div class="main-header #{((defined?(overlayer) && overlayer) ? 'overlayer' : '')
             = image_tag(current_user.display_image, :size => "40x40", class: 'user-avatar')
             .w-icon-dropdown-toggle.dropdown-icon.positive
           nav.w-dropdown-list.dropdown-list.user-menu
-            = link_to t('layouts.header.profile'), current_user, class: 'w-dropdown-link dropdown-link fontsize-smaller'
-            = link_to t('layouts.user.my_contributions'), user_path(current_user, anchor: 'contributions'), class: 'w-dropdown-link dropdown-link fontsize-smaller'
+            = link_to t('layouts.header.profile'), edit_user_path(current_user, anchor: :about_me), class: 'w-dropdown-link dropdown-link fontsize-smaller'
+            = link_to t('layouts.user.my_contributions'), edit_user_path(current_user, anchor: :contributions), class: 'w-dropdown-link dropdown-link fontsize-smaller'
             - if current_user.project_owner?
-              = link_to t('layouts.header.projects'), user_path(current_user, anchor: 'projects'), class: 'w-dropdown-link dropdown-link fontsize-smaller'
+              = link_to t('layouts.header.projects'), edit_user_path(current_user, anchor: :projects), class: 'w-dropdown-link dropdown-link fontsize-smaller'
             - if current_user.admin?
               .divider
               - for menu, path in controller.menu do
