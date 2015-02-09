@@ -83,7 +83,7 @@ class UsersController < ApplicationController
     if password_params_given?
       @user.update_with_password permitted_params[:user]
     else
-      @user.update_attributes permitted_params[:user]
+      @user.update_without_password permitted_params[:user]
     end
   end
 
