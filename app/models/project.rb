@@ -30,7 +30,7 @@ class Project < ActiveRecord::Base
   has_many :budgets, class_name: "ProjectBudget", inverse_of: :project
   has_many :unsubscribes
 
-  accepts_nested_attributes_for :rewards
+  accepts_nested_attributes_for :rewards, allow_destroy: true, reject_if: -> (x) { x[:description].blank? || x[:minimum_value].blank? }
   accepts_nested_attributes_for :user
   accepts_nested_attributes_for :posts, allow_destroy: true#, reject_if: ->(x) { x[:title].blank? || x[:comment].blank? }
   accepts_nested_attributes_for :budgets, allow_destroy: true, reject_if: ->(x) { x[:name].blank? || x[:value].blank? }
