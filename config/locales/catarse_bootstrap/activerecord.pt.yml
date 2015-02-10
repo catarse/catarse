@@ -62,7 +62,7 @@ pt:
         more_links: 'Indique links para as pessoas conhecerem mais sobre o seu projeto e sua trajetória.'
         traffic_sources: 'Como você conheceu o Catarse?'
         first_contributions: "Quem são as primeiras pessoas que você vai pedir para apoiar o seu projeto?"
-        budget: 'Orçamento'
+        budget: 'Orçamento do projeto'
         uploaded_image: 'Imagem do projeto'
       user:
         address_city: Cidade
