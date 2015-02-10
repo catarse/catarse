@@ -135,11 +135,8 @@ class ProjectsController < ApplicationController
     render json: nil
   end
 
-  %w(embed video_embed).each do |method_name|
-    define_method method_name do
-      @title = resource.name
-      render layout: 'embed'
-    end
+  def embed
+    respond_with resource, layout: 'embed'
   end
 
   def about_mobile
