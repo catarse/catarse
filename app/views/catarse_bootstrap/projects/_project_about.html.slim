@@ -18,6 +18,9 @@
         .fontsize-small
           = link_to t('.active_btn'), reminder_project_path(@project), class: 'fa fa-clock-o link-hidden u-right fontcolor-secondary'
 
+#project_embed.w-hidden
+  = render 'project_embed'
+
 .project-about
   .fontsize-large.u-marginbottom-30 = @project.headline.try(:strip)
   .no-mobile
