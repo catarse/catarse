@@ -4,19 +4,21 @@ class Categories::SubscriptionsController < ApplicationController
 
   def create
     parent.users << current_user
+    redirect_with_flash 'explore.index.success_follow'
 
-    flash[:notice] = I18n.t('explore.index.success_follow', name: parent.name_pt)
-    redirect_to explore_path(anchor: "by_category_id/#{parent.id}")
   end
 
   def destroy
     parent.users.delete(current_user)
-
-    flash[:notice] = I18n.t('explore.index.success_unfollow', name: parent.name_pt)
-    redirect_to explore_path(anchor: "by_category_id/#{parent.id}")
+    redirect_with_flash 'explore.index.success_unfollow'
   end
 
   protected
+
+  def redirect_with_flash notice_locale_key
+    flash[:notice] = I18n.t(notice_locale_key, name: parent.name_pt)
+    redirect_to explore_path(anchor: "by_category_id/#{parent.id}")
+  end
 
   def parent
     @category ||= Category.find params[:id]
