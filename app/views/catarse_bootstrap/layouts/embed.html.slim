@@ -1,0 +1,18 @@
+doctype 5
+html lang="#{I18n.locale}" xmlns:fb="http://ogp.me/ns/fb#"
+  head
+    meta charset='utf-8'
+    title= "#{@title}#{' · ' if @title}#{CatarseSettings[:company_name]}"
+    = stylesheet_link_tag 'catarse_bootstrap/catarse'
+    = stylesheet_link_tag '//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css'
+    = csrf_meta_tag
+
+    / Embeds shouls never be indexed
+    meta name="robots" content="noindex, nofollow"
+    link rel='shortcut icon' href="/images/favicon.ico"
+    meta name="viewport" content="width=800, initial-scale=1.0, user-scalable=no, maximum-scale=1"
+    = render_google_analytics_script
+  body#catarse_bootstrap[data-namespace=namespace data-controller-name=controller_name data-action=action_name data-user="#{current_user.try(:to_analytics_json)}"]
+    = render 'layouts/webfont'
+    = yield
+
