@@ -11,24 +11,8 @@ class ProjectsController < ApplicationController
   def index
     index! do |format|
       format.html do
-        if request.xhr?
-          @projects = apply_scopes(Project.visible.order_status)
-            .most_recent_first
-            .includes(:project_total, :user, :category)
-            .page(params[:page]).per(6)
-
-          return render partial: 'projects/card',
-            collection: @projects,
-            layout: false,
-            locals: {ref: "explore", wrapper_class: 'w-col w-col-4 u-marginbottom-20'}
-        else
-          @title = t("site.title")
-
-          @recommends = ProjectsForHome.recommends.includes(:project_total)
-          @projects_near = Project.with_state('online').near_of(current_user.address_state).order("random()").limit(3).includes(:project_total) if current_user
-          @expiring = ProjectsForHome.expiring.includes(:project_total)
-          @recent   = ProjectsForHome.recents.includes(:project_total)
-        end
+        return render_index_for_xhr_request if request.xhr?
+        projects_for_home
       end
     end
   end
@@ -153,6 +137,26 @@ class ProjectsController < ApplicationController
   end
 
   protected
+
+  def render_index_for_xhr_request
+    @projects = apply_scopes(Project.visible.order_status)
+      .most_recent_first
+      .includes(:project_total, :user, :category)
+      .page(params[:page]).per(6)
+
+    render partial: 'projects/card',
+      collection: @projects,
+      layout: false,
+      locals: {ref: "explore", wrapper_class: 'w-col w-col-4 u-marginbottom-20'}
+  end
+
+  def projects_for_home
+    @title = t("site.title")
+    @recommends = ProjectsForHome.recommends.includes(:project_total)
+    @projects_near = Project.with_state('online').near_of(current_user.address_state).order("random()").limit(3).includes(:project_total) if current_user
+    @expiring = ProjectsForHome.expiring.includes(:project_total)
+    @recent   = ProjectsForHome.recents.includes(:project_total)
+  end
 
   def should_use_validate
     (resource.online? || resource.failed? || resource.successful? || permitted_params[:project][:permalink].present?)

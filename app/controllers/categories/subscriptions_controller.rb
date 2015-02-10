@@ -5,7 +5,6 @@ class Categories::SubscriptionsController < ApplicationController
   def create
     parent.users << current_user
     redirect_with_flash 'explore.index.success_follow'
-
   end
 
   def destroy
