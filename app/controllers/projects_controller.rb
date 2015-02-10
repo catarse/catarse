@@ -146,11 +146,6 @@ class ProjectsController < ApplicationController
     resource
   end
 
-  def embed_panel
-    @title = resource.name
-    render layout: false
-  end
-
   protected
 
   def should_use_validate
