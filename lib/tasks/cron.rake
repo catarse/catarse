@@ -5,11 +5,6 @@ task :cron => :environment do
   end
 end
 
-desc "deliver verify moip account notifications"
-task :deliver_verify_moip_account_notifications do
-  Project.send_verify_moip_account_notification
-end
-
 desc "update paypal contributions without a payment_service_fee"
 task update_payment_service_fee: :environment do
   ActiveRecord::Base.connection.execute(<<-EOQ)

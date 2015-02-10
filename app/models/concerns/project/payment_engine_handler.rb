@@ -19,22 +19,9 @@ module Project::PaymentEngineHandler
     end
 
     def self.with_payment_engine(payment_engine_name)
-      case payment_engine_name
-      when 'pagarme' then
-        self.enabled_to_use_pagarme
-      when 'moip' then
-        self.not_using_pagarme
-      else
-        self
-      end
-    end
-
-    def self.send_verify_moip_account_notification
-      expiring_in_less_of('7 days').find_each do |project|
-        unless project.using_pagarme?
-          project.notify_owner(:verify_moip_account, { from_email: CatarseSettings[:email_payments]})
-        end
-      end
+      return enabled_to_use_pagarme if payment_engine_name == 'pagarme'
+      return not_using_pagarme if payment_engine_name == 'moip'
+      self
     end
 
     def using_pagarme?
