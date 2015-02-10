@@ -121,7 +121,8 @@ class ProjectsController < ApplicationController
   end
 
   def embed
-    respond_with resource, layout: 'embed'
+    resource
+    render partial: 'card', layout: 'embed'
   end
 
   def about_mobile
