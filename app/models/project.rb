@@ -131,8 +131,6 @@ class Project < ActiveRecord::Base
     end
   end
 
-
-
   def self.goal_between(starts_at, ends_at)
     where("goal BETWEEN ? AND ?", starts_at, ends_at)
   end
