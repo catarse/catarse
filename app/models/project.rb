@@ -292,12 +292,4 @@ class Project < ActiveRecord::Base
     return all unless starts_at.present? && ends_at.present?
     where("(projects.#{attribute} AT TIME ZONE '#{Time.zone.tzinfo.name}')::date between to_date(?, 'dd/mm/yyyy') and to_date(?, 'dd/mm/yyyy')", starts_at, ends_at)
   end
-
-  def self.get_routes
-    routes = Rails.application.routes.routes.map do |r|
-      r.path.spec.to_s.split('/').second.to_s.gsub(/\(.*?\)/, '')
-    end
-    routes.compact.uniq.reject(&:empty?)
-  end
-
 end
