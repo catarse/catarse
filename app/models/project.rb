@@ -11,6 +11,7 @@ class Project < ActiveRecord::Base
   include Project::CustomValidators
   include Project::RemindersHandler
   include Project::ErrorGroups
+  include Project::PaymentEngineHandler
 
   has_notifications
 
@@ -115,16 +116,7 @@ class Project < ActiveRecord::Base
     ")
   }
 
-  scope :using_pagarme, -> (permalinks) {
-    where("projects.permalink in (:permalinks) OR
-           projects.online_date::date  AT TIME ZONE '#{Time.zone.tzinfo.name}' >= '2014-11-10'::date AT TIME ZONE '#{Time.zone.tzinfo.name}'",
-          { permalinks: permalinks })
-  }
 
-  scope :not_using_pagarme, -> {
-    where("projects.permalink not in (:permalinks) AND projects.online_date::date AT TIME ZONE '#{Time.zone.tzinfo.name}' < '2014-11-10'::date AT TIME ZONE '#{Time.zone.tzinfo.name}'",
-          { permalinks: (CatarseSettings[:projects_enabled_to_use_pagarme].split(',').map(&:strip) rescue []) })
-  }
 
   attr_accessor :accepted_terms
 
@@ -145,24 +137,7 @@ class Project < ActiveRecord::Base
     end
   end
 
-  def self.with_payment_engine(payment_engine_name)
-    case payment_engine_name
-    when 'pagarme' then
-      self.enabled_to_use_pagarme
-    when 'moip' then
-      self.not_using_pagarme
-    else
-      self
-    end
-  end
 
-  def self.send_verify_moip_account_notification
-    expiring_in_less_of('7 days').find_each do |project|
-      unless project.using_pagarme?
-        project.notify_owner(:verify_moip_account, { from_email: CatarseSettings[:email_payments]})
-      end
-    end
-  end
 
   def self.goal_between(starts_at, ends_at)
     where("goal BETWEEN ? AND ?", starts_at, ends_at)
@@ -171,16 +146,6 @@ class Project < ActiveRecord::Base
   def self.order_by(sort_field)
     return self.all unless sort_field =~ /^\w+(\.\w+)?\s(desc|asc)$/i
     order(sort_field)
-  end
-
-  def self.enabled_to_use_pagarme
-    begin
-      permalinks = CatarseSettings[:projects_enabled_to_use_pagarme].split(',').map(&:strip)
-    rescue
-      permalinks = []
-    end
-
-    self.using_pagarme(permalinks)
   end
 
   def budget_text_html
@@ -201,10 +166,6 @@ class Project < ActiveRecord::Base
 
   def can_show_preview_link?
     ['draft', 'approved', 'rejected', 'in_analysis'].include? state
-  end
-
-  def using_pagarme?
-    Project.enabled_to_use_pagarme.include?(self)
   end
 
   def subscribed_users
