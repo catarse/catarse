@@ -106,17 +106,11 @@ class Project < ActiveRecord::Base
     joins(:contributions).merge(Contribution.confirmed_today).uniq
   }
 
-  scope :expiring_in_less_of, ->(time) {
-    with_state('online').where("(projects.expires_at - current_date) <= ?", time)
-  }
-
   scope :of_current_week, -> {
     where("
       projects.online_date AT TIME ZONE '#{Time.zone.tzinfo.name}' >= (current_timestamp AT TIME ZONE '#{Time.zone.tzinfo.name}' - '7 days'::interval)
     ")
   }
-
-
 
   attr_accessor :accepted_terms
 
