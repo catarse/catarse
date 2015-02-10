@@ -1,0 +1,16 @@
+.w-row.u-marginbottom-10
+  .w-col.w-col-3.w-hidden-small.w-hidden-tiny
+    = link_to project_by_slug_path(project.permalink), title: project.name do
+      = image_tag(project.display_image, size: '50x50', class: 'thumb small u-radius')
+  .w-col.w-col-9
+    = link_to project_by_slug_path(project.permalink), title: project.name, class: 'fontsize-smallest fontweight-semibold lineheight-tighter u-marginbottom-10 link-hidden' do
+      = truncate(project.name, lenght: 34)
+    .meter.small
+      = project.progress_bar
+    .w-row
+      .w-col.w-col-6
+        .fontsize-small.fontweight-semibold.lineheight-tightest
+          | #{project.progress}%
+      .w-col.w-col-6.u-text-center-small-only
+        = t('projects.project.time_remaining_small_html', count: project.time_to_go[:time], unit: project.time_to_go[:unit])
+.divider.u-marginbottom-10        
