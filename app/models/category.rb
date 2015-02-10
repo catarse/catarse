@@ -24,7 +24,7 @@ class Category < ActiveRecord::Base
   end
 
   def total_online_projects
-    self.projects.with_state('online').count
+    @total_online_projects ||= self.projects.with_state('online').count
   end
 
   def deliver_projects_of_week_notification
