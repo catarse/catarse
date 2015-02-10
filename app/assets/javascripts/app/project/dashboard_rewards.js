@@ -53,6 +53,7 @@ App.views.DashboardRewards.addChild('RewardForm', _.extend({
 
   events: {
     'blur input' : 'checkInput',
+    'blur textarea' : 'checkInput',
     'submit form' : 'validate',
     "click #limit_reward": "showInput",
     "click .reward-close-button": "closeForm",
