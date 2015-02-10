@@ -2487,7 +2487,7 @@ p {
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
   background-color: #f1f4f4;
-  box-shadow: rgba(0, 0, 0, 0.30) 1px 1px 3px 0px;
+  box-shadow: rgba(0, 0, 0, 0.29) 1px 1px 3px 0px;
 }
 .content-hero-profile {
   position: absolute;
@@ -2550,6 +2550,15 @@ p {
 .following {
   padding-top: 9px;
   padding-right: 12px;
+}
+.creditcard-brand {
+  margin-top: -15px;
+  color: #79808b;
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+.card-embed {
+  width: 292px;
 }
 html.w-mod-js *[data-ix="fade-in"] {
   opacity: 0;
@@ -2923,6 +2932,12 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
   .hero-search {
     padding-top: 99px;
     padding-bottom: 45px;
+  }
+  .creditcard-brand {
+    font-size: 15px;
+  }
+  .card-embed {
+    width: 220px;
   }
 }
 @media (max-width: 767px) {
@@ -3370,6 +3385,9 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
   }
   .hero-search {
     background-position: 50% 50%;
+  }
+  .creditcard-brand {
+    margin-bottom: 20px;
   }
 }
 @media (max-width: 479px) {
