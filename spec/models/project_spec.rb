@@ -362,35 +362,6 @@ RSpec.describe Project, type: :model do
     it{ is_expected.to eq([@p]) }
   end
 
-  describe "send_verify_moip_account_notification" do
-    context "when not have projects on pagarme" do
-      before do
-        @p = create(:project, state: 'online', online_date: '2014-10-9'.to_date, online_days: 3)
-        create(:project, state: 'draft')
-      end
-
-      it "should create notification for all projects that is expiring" do
-        expect(ProjectNotification).to receive(:notify_once).
-          with(:verify_moip_account, @p.user, @p, {from_email: CatarseSettings[:email_payments]})
-        Project.send_verify_moip_account_notification
-      end
-    end
-
-    context "when have projects using pagarme" do
-      before do
-        @p = create(:project, state: 'online', online_date: DateTime.now, online_days: 3)
-        CatarseSettings[:projects_enabled_to_use_pagarme] = @p.permalink
-        create(:project, state: 'draft')
-      end
-
-      it "should not create notification for projects that using pagarme" do
-        expect(ProjectNotification).to_not receive(:notify_once).
-          with(:verify_moip_account, @p.user, @p, {from_email: CatarseSettings[:email_payments]})
-        Project.send_verify_moip_account_notification
-      end
-    end
-  end
-
   describe '#reached_goal?' do
     let(:project) { create(:project, goal: 3000) }
     subject { project.reached_goal? }
