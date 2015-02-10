@@ -183,6 +183,10 @@ class Project < ActiveRecord::Base
     self.using_pagarme(permalinks)
   end
 
+  def budget_text_html
+    catarse_email_auto_html_for budget, image_width: 600
+  end
+
   def has_blank_service_fee?
     contributions.with_state(:confirmed).where("payment_service_fee IS NULL OR payment_service_fee = 0").present?
   end

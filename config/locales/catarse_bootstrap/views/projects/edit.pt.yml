@@ -138,8 +138,10 @@ pt:
       warning: "Lembre-se que todo post de novidade vai diretamente para o email de seus apoiadores. Por isso, revise bem seu texto antes de publicá-lo."
       old_posts: "Novidades antigas"
     dashboard_project:
-      budget_hint: "Informe uma lista com os principais itens do orçamento. Não precisa entrar em detalhes minuciosos, basta uma visão geral. Seus apoiadores gostarão de saber onde o dinheiro deles estará indo. Não existe uma regra&nbsp;quanto a quantidade de itens na lista, mas normalmente 5 costuma ser um bom número!"
+      budgets_hint_html: "Informe uma lista com os principais itens do orçamento. Não precisa entrar em detalhes minuciosos, basta uma visão geral. Seus apoiadores gostarão de saber onde o dinheiro deles estará indo. Não existe uma regra&nbsp;quanto a quantidade de itens na lista, mas normalmente 5 costuma ser um bom número!"
+      budget_hint_html: "Como o seu dinheiro será utilizado? Que etapas e processos estarão envolvidos no uso desses recursos. Descreva brevemente porque você precisa de financiamento para realizar o seu projeto"
       budget_label: "Orçamento do projeto"
+      budgets_label: "Detalhe do orçamento"
       start: "Conte o que você tem a dizer para o mundo!"
       start_subtitle: "Use esse espaço abaixo para contar sobre seu projeto e o porquê as pessoas deveriam se empolgar com ele e abraçar sua ideia"
       video_url: "URL do vídeo"
