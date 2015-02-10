@@ -30,6 +30,7 @@ Catarse::Application.routes.draw do
       get :unsubscribe, to: 'categories/subscriptions#destroy'
     end
   end
+  resources :project_accounts
   resources :auto_complete_projects, only: [:index]
   resources :projects, only: [:index, :create, :update, :edit, :new, :show] do
     resources :posts, controller: 'projects/posts', only: [ :index, :create, :destroy ]

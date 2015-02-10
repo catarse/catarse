@@ -24,6 +24,7 @@ class Project < ActiveRecord::Base
   belongs_to :user
   belongs_to :category
   has_one :project_total
+  has_one :project_account, class_name: "ProjectAccount",  inverse_of: :project
   has_many :rewards
   has_many :contributions
   has_many :posts, class_name: "ProjectPost", inverse_of: :project

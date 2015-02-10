@@ -43,6 +43,7 @@ class User < ActiveRecord::Base
   has_one :bank_account, dependent: :destroy
   has_many :feeds, class_name: 'UserFeed'
   has_many :credit_cards
+  has_many :project_accounts
   has_many :contributions
   has_many :authorizations
   has_many :projects
