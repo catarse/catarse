@@ -6,11 +6,8 @@ class ProjectAccountsController < ApplicationController
   def create
     @account = ProjectAccount.new params[:project_account]
     authorize @account
-    if @account.save
-      redirect_to edit_project_path(@account.project, anchor: 'user_settings')
-    else
-      redirect_to edit_project_path(@account.project, anchor: 'user_settings')
-    end
+    @account.save
+    redirect_to edit_project_path(@account.project, anchor: 'user_settings')
   end
 
   def update
@@ -19,11 +16,10 @@ class ProjectAccountsController < ApplicationController
 
     if resource.save
       flash[:notice] = t('users.current_user_fields.updated')
-      redirect_to edit_project_path(@account.project, anchor: 'user_settings')
     else
       flash.now[:notice] = @account.errors.full_messages.to_sentence
-      render :edit
     end
+    redirect_to edit_project_path(@account.project, anchor: 'user_settings')
   end
 
   private
