@@ -10,10 +10,6 @@ class ContributionDecorator < Draper::Decorator
     I18n.l(source[date_field.to_sym].to_date) if source[date_field.to_sym]
   end
 
-  def display_refunded_at
-    I18n.l(source.refunded_at.to_date) if source.refunded_at
-  end
-
   def display_slip_url
     return source.slip_url if source.slip_url.present?
     "https://www.moip.com.br/Boleto.do?id=#{source.payment_id.gsub('.', '').to_i}"
