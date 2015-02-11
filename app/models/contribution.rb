@@ -10,8 +10,6 @@ class Contribution < ActiveRecord::Base
   include Contribution::PaymentEngineHandler
   include Contribution::PaymentMethods
 
-  delegate :display_value, to: :decorator
-
   belongs_to :project
   belongs_to :reward
   belongs_to :user
