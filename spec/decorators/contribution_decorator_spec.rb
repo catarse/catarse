@@ -24,7 +24,7 @@ RSpec.describe ContributionDecorator do
   describe "#display_value" do
 
     context "when the value has decimal places" do
-      subject{ build(:contribution, value: 99.99).display_value }
+      subject{ build(:contribution, value: 99.99).decorate.display_value }
       it{ is_expected.to eq("R$ 99,99") }
     end
 
@@ -36,12 +36,12 @@ RSpec.describe ContributionDecorator do
 
   describe "#display_slip_url" do
     context "when slip_url is filled" do
-      subject { build(:contribution, slip_url: 'http://foo.bar/').display_slip_url }
+      subject { build(:contribution, slip_url: 'http://foo.bar/').decorate.display_slip_url }
       it{ is_expected.to eq('http://foo.bar/')}
     end
 
     context "when slip_url is not filled" do
-      subject { build(:contribution).display_slip_url }
+      subject { build(:contribution).decorate.display_slip_url }
       it{ is_expected.to match(/www\.moip\.com\.br/) }
     end
   end
