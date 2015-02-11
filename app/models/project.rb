@@ -141,7 +141,7 @@ class Project < ActiveRecord::Base
   end
 
   def budget_text_html
-    catarse_email_auto_html_for budget, image_width: 600
+    catarse_auto_html budget, image_width: 600
   end
 
   def has_blank_service_fee?

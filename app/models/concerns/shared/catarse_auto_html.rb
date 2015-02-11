@@ -37,7 +37,7 @@ module Shared::CatarseAutoHtml
       end
     end
 
-    def catarse_email_auto_html_for field_data, options= {}
+    def catarse_auto_html field_data, options= {}
       self.auto_html field_data do
         html_escape map: {
           '&' => '&amp;',
