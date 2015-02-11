@@ -9,7 +9,6 @@ class ApplicationController < ActionController::Base
   layout :use_catarse_boostrap
   protect_from_forgery
 
-  before_filter :redirect_user_back_after_login, unless: :devise_controller?
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
   helper_method :namespace, :referal_link, :render_projects, :should_show_beta_banner?, :render_feeds
