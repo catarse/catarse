@@ -395,7 +395,7 @@ RSpec.describe User, type: :model do
   end
 
   describe "#contributed_projects" do
-    subject{user.contributed_projects}
+    subject{user.contributed_projects.uniq}
     before do
       @p1 = create(:project)
       create(:contribution, user: user, project: @p1)
