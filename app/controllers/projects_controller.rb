@@ -99,7 +99,6 @@ class ProjectsController < ApplicationController
     @rewards = @project.rewards.rank(:row_order)
     @project.rewards.build unless @rewards.present?
     @budget = resource.budgets.build
-    @account = resource.project_account || resource.build_project_account
   end
 
   def fb_comments_link
