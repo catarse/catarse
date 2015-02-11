@@ -1,6 +1,8 @@
 # coding: utf-8
 class ProjectsController < ApplicationController
   after_filter :verify_authorized, except: %i[index video video_embed embed embed_panel about_mobile]
+  after_filter :redirect_user_back_after_login, only: %i[index show]
+
   inherit_resources
   has_scope :pg_search, :by_category_id, :near_of
   has_scope :recent, :expiring, :successful, :in_funding, :recommended, :not_expired, type: :boolean
@@ -121,7 +123,8 @@ class ProjectsController < ApplicationController
   end
 
   def embed
-    respond_with resource, layout: 'embed'
+    resource
+    render partial: 'card', layout: 'embed'
   end
 
   def about_mobile

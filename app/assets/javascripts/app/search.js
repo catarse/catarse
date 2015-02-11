@@ -1,8 +1,8 @@
 App.addChild('Search', {
-  el: '.discover-form',
+  el: '#discover-form-wrapper',
 
   events: {
-    'click .see-more-projects a': 'goToExplore'
+    'click a.see-more-projects': 'goToExplore'
   },
 
   activate: function() {
@@ -22,7 +22,7 @@ App.addChild('Search', {
   },
 
   goToExplore: function() {
-    this.el.submit();
+    this.$el.find('form.discover-form').submit();
   },
 
   onTypeWatch: function(value) {
