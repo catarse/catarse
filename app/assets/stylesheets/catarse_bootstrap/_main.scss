@@ -2329,7 +2329,12 @@ p {
   color: white;
 }
 .card-edition {
-  border: 2px solid #409bff;
+  border-style: solid;
+  border-width: 2px;
+  border-color: rgba(241, 244, 244, 0.49);
+}
+.card-edition:hover {
+  border: 2px solid #409ade;
 }
 .section-blue-one {
   padding-top: 51px;
@@ -2559,7 +2564,7 @@ p {
   letter-spacing: 1px;
 }
 .card-embed {
-  width: 292px;
+  width: 100%;
 }
 html.w-mod-js *[data-ix="fade-in"] {
   opacity: 0;
