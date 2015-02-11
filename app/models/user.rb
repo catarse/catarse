@@ -48,7 +48,9 @@ class User < ActiveRecord::Base
   has_many :projects
   has_many :unsubscribes
   has_many :project_posts
-  has_many :contributed_projects, -> { where(contributions: { state: ['confirmed', 'requested_refund', 'refunded'] } ).uniq } ,through: :contributions, source: :project
+  has_many :contributed_projects, -> do
+    where(contributions: { state: ['confirmed', 'requested_refund', 'refunded'] } ).order('contributions.id DESC')
+  end, through: :contributions, source: :project
   has_many :category_followers, dependent: :destroy
   has_many :categories, through: :category_followers
   has_many :links, class_name: 'UserLink', inverse_of: :user
