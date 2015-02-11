@@ -12,7 +12,7 @@ br
 br
 | Banco: #{bank_account.try(:bank).to_s}
 br
-| Agência: #{bank_account.try(:agency)}
+| Agência: #{bank_account.try(:agency)} - #{bank_account.try(:agency_digit)}
 br
 | Conta: #{bank_account.try(:account)} - #{bank_account.try(:account_digit)}
 br
