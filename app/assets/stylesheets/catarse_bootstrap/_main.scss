@@ -1689,8 +1689,10 @@ p {
 .dropdown-list.user-menu.w--open {
   position: absolute;
   z-index: 30;
+  width: 735px;
   margin-top: 8px;
-  margin-left: -110px;
+  margin-left: -650px;
+  padding: 21px;
 }
 .user-avatar {
   width: 35px;
@@ -2220,7 +2222,7 @@ p {
 }
 .card-project {
   padding: 0px;
-  box-shadow: rgba(121, 128, 139, 0.21) 0px 0px 6px 0px;
+  box-shadow: rgba(121, 128, 139, 0.20) 0px 0px 6px 0px;
 }
 .card-project-author {
   height: 65px;
@@ -2326,7 +2328,7 @@ p {
 .fontcolor-negative {
   color: white;
 }
-.card-edition:hover {
+.card-edition {
   border: 2px solid #409bff;
 }
 .section-blue-one {
@@ -2557,7 +2559,7 @@ p {
   letter-spacing: 1px;
 }
 .card-embed {
-  width: 100%;
+  width: 292px;
 }
 html.w-mod-js *[data-ix="fade-in"] {
   opacity: 0;
@@ -2777,8 +2779,9 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
   }
   .dropdown-list.user-menu.w--open {
     position: absolute;
+    width: 595px;
     margin-top: 3px;
-    margin-left: -100px;
+    margin-left: -520px;
   }
   .user-avatar {
     width: 35px;
@@ -3245,7 +3248,8 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     margin-right: -12px;
   }
   .dropdown-list.user-menu.w--open {
-    margin-left: -110px;
+    width: 231px;
+    margin-left: -160px;
   }
   .user-avatar {
     width: 28px;
@@ -3628,8 +3632,9 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     margin-right: -18px;
   }
   .dropdown-list.user-menu.w--open {
+    width: 201px;
     margin-top: 5px;
-    margin-left: -130px;
+    margin-left: -138px;
   }
   .user-avatar {
     width: 26px;
