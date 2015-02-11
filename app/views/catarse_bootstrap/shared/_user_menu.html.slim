@@ -4,7 +4,7 @@ nav.w-dropdown-list.dropdown-list.user-menu
       .fontweight-semibold.fontsize-smaller.u-marginbottom-10 Minhas coisas
       ul.w-list-unstyled.u-marginbottom-20
         li.lineheight-looser
-          = link_to 'Histórico de apoios', edit_user_path(current_user, anchor: :about_me), class: 'alt-link fontsize-smaller'
+          = link_to 'Histórico de apoios', edit_user_path(current_user, anchor: :contributions), class: 'alt-link fontsize-smaller'
         li.w-hidden-main.w-hidden-medium.lineheight-looser
           = link_to  'Projetos criados', edit_user_path(current_user, anchor: :projects), class: 'alt-link fontsize-smaller'
         /li.lineheight-looser
@@ -30,7 +30,7 @@ nav.w-dropdown-list.dropdown-list.user-menu
           li.u-margintop-20
             .w-row
               .w-col.w-col-6
-                = link_to 'Ver todos', edit_user_path(current_user, anchor: :about_me), class: 'btn btn-terciary'
+                = link_to 'Ver todos', edit_user_path(current_user, anchor: :contributions), class: 'btn btn-terciary'
               .w-col.w-col-6
     .w-col.w-col-4.w-hidden-small.w-hidden-tiny
       .fontweight-semibold.fontsize-smaller.u-marginbottom-10 Projetos criados
