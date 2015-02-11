@@ -21,19 +21,6 @@ RSpec.describe ContributionDecorator do
     end
   end
 
-  describe "#display_confirmed_at" do
-    subject{ contribution.display_confirmed_at }
-    context "when confirmet_at is not nil" do
-      let(:contribution){ build(:contribution, confirmed_at: Time.now) }
-      it{ is_expected.to eq(I18n.l(contribution.confirmed_at.to_date)) }
-    end
-
-    context "when confirmet_at is nil" do
-      let(:contribution){ build(:contribution, confirmed_at: nil) }
-      it{ is_expected.to be_nil }
-    end
-  end
-
   describe "#display_value" do
 
     context "when the value has decimal places" do
