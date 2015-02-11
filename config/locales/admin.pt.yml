@@ -33,6 +33,9 @@ pt:
           bank_data: 'Dados bancarios'
           document: 'CPF / CNPJ'
           email: 'E-mail'
+          state_inscription: 'Incrição estadual'
+          address: 'Endereço'
+          phone_number: 'Telefone'
           permalink: 'Permalink do projeto'
     projects:
       index:
