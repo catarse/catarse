@@ -124,7 +124,7 @@ class ProjectsController < ApplicationController
 
   def embed
     resource
-    render partial: 'card', layout: 'embed'
+    render partial: 'card', layout: 'embed', locals: {embed_link: true}
   end
 
   def about_mobile
