@@ -82,10 +82,6 @@ class Contribution < ActiveRecord::Base
     where("value between ? and ?", start_at, ends_at)
   end
 
-  def decorator
-    @decorator ||= ContributionDecorator.new(self)
-  end
-
   def recommended_projects
     user.recommended_projects.where("projects.id <> ?", project.id).order("count DESC")
   end
