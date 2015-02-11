@@ -7,113 +7,114 @@
         p.fontsize-base= t('.subtitle_html')
       .w-col.w-col-2.fontcolor-terciary
 
-= simple_form_for @account, html: { id: 'project_account_form', class: 'w-form' } do |form|
+= simple_form_for @project, html: { id: 'project_account_form', class: 'w-form' } do |f|
   = hidden_field_tag :anchor, 'user_settings'
-  .section
-    .w-container
-      .w-col.w-col-8.u-marginbottom-30
-        = @project.display_errors(:user_settings)
-        .w-form.card.card-terciary
-          #email-form
-            .fontsize-base.fontweight-semibold= t('.user_data_title') 
-            .fontsize-small.u-marginbottom-20= t('.user_data_subtitle') 
+  = f.simple_fields_for :account do |form|
+    .section
+      .w-container
+        .w-col.w-col-8.u-marginbottom-30
+          = @project.display_errors(:user_settings)
+          .w-form.card.card-terciary
+            #email-form
+              .fontsize-base.fontweight-semibold= t('.user_data_title') 
+              .fontsize-small.u-marginbottom-20= t('.user_data_subtitle') 
+              .divider.u-marginbottom-20
+              .w-row
+                .w-col.w-col-6.w-sub-col
+                  = form.hidden_field :project_id, value: @project.id
+                  = form.hidden_field :user_id, value: @project.user.id
+                  = form.label :full_name, class: 'field-label fontweight-semibold force-text-dark'
+                  = form.input_field :full_name, as: :string, class: 'positive'
+                .w-col.w-col-6
+                  = form.label :email, class: 'field-label fontweight-semibold force-text-dark'
+                  = form.input_field :email, as: :email, class: 'positive'
+              .w-row
+                .w-col.w-col-6.w-sub-col
+                  = form.label :cpf, class: 'field-label fontweight-semibold force-text-dark'
+                  = form.input_field :cpf, as: :tel, class: 'positive'
+                .w-col.w-col-6
+                  = form.label :state_inscription, class: 'field-label fontweight-semibold force-text-dark'
+                  = form.input_field :state_inscription, as: :string, class: 'positive'
+              .w-row
+                .w-col.w-col-6.w-sub-col
+                  = form.label :address_street, class: 'field-label fontweight-semibold force-text-dark'
+                  = form.input_field :address_street, as: :string, class: 'positive'
+                .w-col.w-col-6
+                  .w-row
+                    .w-col.w-col-6.w-col-small-6.w-col-tiny-6.w-sub-col-middle
+                      = form.label :address_number, class: 'field-label fontweight-semibold force-text-dark'
+                      = form.input_field :address_number, as: :string, class: 'positive'
+                    .w-col.w-col-6.w-col-small-6.w-col-tiny-6
+                      = form.label :address_complement, class: 'field-label fontweight-semibold force-text-dark'
+                      = form.input_field :address_complement, as: :string, class: 'positive'
+              .w-row
+                .w-col.w-col-6.w-sub-col
+                  = form.label :address_neighbourhood, class: 'field-label fontweight-semibold force-text-dark'
+                  = form.input_field :address_neighbourhood, as: :string, class: 'positive'
+                .w-col.w-col-6
+                  = form.label :address_city, class: 'field-label fontweight-semibold force-text-dark'
+                  = form.input_field :address_city, as: :string, class: 'positive'
+              .w-row
+                .w-col.w-col-6.w-sub-col
+                  = form.label :address_state, class: 'field-label fontweight-semibold force-text-dark'
+                  = form.input_field :address_state, as: :select, collection: State.array, class: 'w-select positive'
+                .w-col.w-col-6
+                  .w-row
+                    .w-col.w-col-6.w-col-small-6.w-col-tiny-6.w-sub-col-middle
+                      = form.label :address_zip_code, class: 'field-label fontweight-semibold force-text-dark'
+                      = form.input_field :address_zip_code, as: :string, class: 'positive'
+                    .w-col.w-col-6.w-col-small-6.w-col-tiny-6
+                      = form.label :phone_number, class: 'field-label fontweight-semibold force-text-dark'
+                      = form.input_field :phone_number, as: :string, class: 'positive'
+          .w-form.card.card-terciary
+            .fontsize-base.fontweight-semibold= t('.account_title')
+            .fontsize-small.u-marginbottom-20= t('.account_subtitle')
             .divider.u-marginbottom-20
             .w-row
               .w-col.w-col-6.w-sub-col
-                = form.hidden_field :project_id, value: @project.id
-                = form.hidden_field :user_id, value: @project.user.id
-                = form.label :full_name, class: 'field-label fontweight-semibold force-text-dark'
-                = form.input_field :full_name, as: :string, class: 'positive'
-              .w-col.w-col-6
-                = form.label :email, class: 'field-label fontweight-semibold force-text-dark'
-                = form.input_field :email, as: :email, class: 'positive'
-            .w-row
-              .w-col.w-col-6.w-sub-col
-                = form.label :cpf, class: 'field-label fontweight-semibold force-text-dark'
-                = form.input_field :cpf, as: :tel, class: 'positive'
-              .w-col.w-col-6
-                = form.label :state_inscription, class: 'field-label fontweight-semibold force-text-dark'
-                = form.input_field :state_inscription, as: :string, class: 'positive'
-            .w-row
-              .w-col.w-col-6.w-sub-col
-                = form.label :address_street, class: 'field-label fontweight-semibold force-text-dark'
-                = form.input_field :address_street, as: :string, class: 'positive'
+                = form.label :bank_id, class: 'field-label fontweight-semibold force-text-dark'
+                = form.input_field :bank_id, as: :select, collection: Bank.to_collection, class: 'w-select positive'
               .w-col.w-col-6
                 .w-row
                   .w-col.w-col-6.w-col-small-6.w-col-tiny-6.w-sub-col-middle
-                    = form.label :address_number, class: 'field-label fontweight-semibold force-text-dark'
-                    = form.input_field :address_number, as: :string, class: 'positive'
+                    = form.label :agency, class: 'field-label fontweight-semibold force-text-dark'
+                    = form.input_field :agency, as: :string, class: 'positive'
                   .w-col.w-col-6.w-col-small-6.w-col-tiny-6
-                    = form.label :address_complement, class: 'field-label fontweight-semibold force-text-dark'
-                    = form.input_field :address_complement, as: :string, class: 'positive'
+                    = form.label :agency_digit, class: 'field-label fontweight-semibold force-text-dark'
+                    = form.input_field :agency_digit, as: :string, class: 'positive'
             .w-row
               .w-col.w-col-6.w-sub-col
-                = form.label :address_neighbourhood, class: 'field-label fontweight-semibold force-text-dark'
-                = form.input_field :address_neighbourhood, as: :string, class: 'positive'
-              .w-col.w-col-6
-                = form.label :address_city, class: 'field-label fontweight-semibold force-text-dark'
-                = form.input_field :address_city, as: :string, class: 'positive'
-            .w-row
-              .w-col.w-col-6.w-sub-col
-                = form.label :address_state, class: 'field-label fontweight-semibold force-text-dark'
-                = form.input_field :address_state, as: :select, collection: State.array, class: 'w-select positive'
-              .w-col.w-col-6
                 .w-row
                   .w-col.w-col-6.w-col-small-6.w-col-tiny-6.w-sub-col-middle
-                    = form.label :address_zip_code, class: 'field-label fontweight-semibold force-text-dark'
-                    = form.input_field :address_zip_code, as: :string, class: 'positive'
+                    = form.label :account, class: 'field-label fontweight-semibold force-text-dark'
+                    = form.input_field :account, as: :string, class: 'positive'
                   .w-col.w-col-6.w-col-small-6.w-col-tiny-6
-                    = form.label :phone_number, class: 'field-label fontweight-semibold force-text-dark'
-                    = form.input_field :phone_number, as: :string, class: 'positive'
-        .w-form.card.card-terciary
-          .fontsize-base.fontweight-semibold= t('.account_title')
-          .fontsize-small.u-marginbottom-20= t('.account_subtitle')
-          .divider.u-marginbottom-20
-          .w-row
-            .w-col.w-col-6.w-sub-col
-              = form.label :bank_id, class: 'field-label fontweight-semibold force-text-dark'
-              = form.input_field :bank_id, as: :select, collection: Bank.to_collection, class: 'w-select positive'
-            .w-col.w-col-6
-              .w-row
-                .w-col.w-col-6.w-col-small-6.w-col-tiny-6.w-sub-col-middle
-                  = form.label :agency, class: 'field-label fontweight-semibold force-text-dark'
-                  = form.input_field :agency, as: :string, class: 'positive'
-                .w-col.w-col-6.w-col-small-6.w-col-tiny-6
-                  = form.label :agency_digit, class: 'field-label fontweight-semibold force-text-dark'
-                  = form.input_field :agency_digit, as: :string, class: 'positive'
-          .w-row
-            .w-col.w-col-6.w-sub-col
-              .w-row
-                .w-col.w-col-6.w-col-small-6.w-col-tiny-6.w-sub-col-middle
-                  = form.label :account, class: 'field-label fontweight-semibold force-text-dark'
-                  = form.input_field :account, as: :string, class: 'positive'
-                .w-col.w-col-6.w-col-small-6.w-col-tiny-6
-                  = form.label :account_digit, class: 'field-label fontweight-semibold force-text-dark'
-                  = form.input_field :account_digit, as: :string, class: 'positive'
-            .w-col.w-col-6
-              = form.label :owner_name, class: 'field-label fontweight-semibold force-text-dark'
-              = form.input_field :owner_name, as: :string, class: 'positive'
-          .w-row
-            .w-col.w-col-6.w-sub-col
-              = form.label :owner_document, class: 'field-label fontweight-semibold force-text-dark'
-              = form.input_field :owner_document, as: :tel, class: 'positive'
+                    = form.label :account_digit, class: 'field-label fontweight-semibold force-text-dark'
+                    = form.input_field :account_digit, as: :string, class: 'positive'
               .w-col.w-col-6
-      .w-col.w-col-4
-        .w-hidden-small.w-hidden-tiny.card.u-radius.u-marginbottom-20 data-ix="new-interaction" 
-          .fontsize-small.fontweight-semibold.u-marginbottom-20 Links úteis
-          ul.w-list-unstyled
-            li.alt-link.fontsize-smaller.u-marginbottom-10
-              a.alt-link href="http://suporte.catarse.me/hc/pt-br/articles/202387638-Diretrizes-para-a-cria%C3%A7%C3%A3o-de-projetos" target="_blank"  Critérios de seleção
-            li.alt-link.fontsize-smaller.u-marginbottom-10
-              a.alt-link href="http://suporte.catarse.me/hc/pt-br/articles/202446018-Como-funciona-a-sele%C3%A7%C3%A3o-de-projetos-no-Catarse-" target="_blank"  Como os projetos são selecionados?
-            li.fontsize-smaller.alt-link.u-marginbottom-10
-              a.alt-link href="http://suporte.catarse.me/hc/pt-br/articles/202037363-O-que-%C3%A9-um-projeto-em-Rascunho-" target="_blank"  O que é um projeto em Rascunho?
-            li.fontsize-smaller.alt-link.u-marginbottom-10
-              a.alt-link href="http://suporte.catarse.me/hc/pt-br/articles/203073937-O-que-%C3%A9-obrigat%C3%B3rio-para-um-projeto-ir-ao-ar-" target="_blank"  Itens obrigatórios para um projeto ir ao ar
-    div
-      .w-container
-        .w-row
-          .w-col.w-col-4
-          .w-col.w-col-4
-            = form.button :submit, t('.submit'),  class:'btn btn-large'
-          .w-col.w-col-4
+                = form.label :owner_name, class: 'field-label fontweight-semibold force-text-dark'
+                = form.input_field :owner_name, as: :string, class: 'positive'
+            .w-row
+              .w-col.w-col-6.w-sub-col
+                = form.label :owner_document, class: 'field-label fontweight-semibold force-text-dark'
+                = form.input_field :owner_document, as: :tel, class: 'positive'
+              .w-col.w-col-6
+        .w-col.w-col-4
+          .w-hidden-small.w-hidden-tiny.card.u-radius.u-marginbottom-20 data-ix="new-interaction" 
+            .fontsize-small.fontweight-semibold.u-marginbottom-20 Links úteis
+            ul.w-list-unstyled
+              li.alt-link.fontsize-smaller.u-marginbottom-10
+                a.alt-link href="http://suporte.catarse.me/hc/pt-br/articles/202387638-Diretrizes-para-a-cria%C3%A7%C3%A3o-de-projetos" target="_blank"  Critérios de seleção
+              li.alt-link.fontsize-smaller.u-marginbottom-10
+                a.alt-link href="http://suporte.catarse.me/hc/pt-br/articles/202446018-Como-funciona-a-sele%C3%A7%C3%A3o-de-projetos-no-Catarse-" target="_blank"  Como os projetos são selecionados?
+              li.fontsize-smaller.alt-link.u-marginbottom-10
+                a.alt-link href="http://suporte.catarse.me/hc/pt-br/articles/202037363-O-que-%C3%A9-um-projeto-em-Rascunho-" target="_blank"  O que é um projeto em Rascunho?
+              li.fontsize-smaller.alt-link.u-marginbottom-10
+                a.alt-link href="http://suporte.catarse.me/hc/pt-br/articles/203073937-O-que-%C3%A9-obrigat%C3%B3rio-para-um-projeto-ir-ao-ar-" target="_blank"  Itens obrigatórios para um projeto ir ao ar
+      div
+        .w-container
+          .w-row
+            .w-col.w-col-4
+            .w-col.w-col-4
+              = form.button :submit, t('.submit'),  class:'btn btn-large'
+            .w-col.w-col-4
