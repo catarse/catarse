@@ -25,7 +25,7 @@ table width="500" border="1" cellpadding="10" cellspacing="0" style='font-size: 
       tr
         td= contribution.user.display_name
         td= contribution.user.email
-        td= contribution.display_value
+        td= contribution.decorate.display_value
         td= contribution.reward.try(:display_description)
 br/
 br/

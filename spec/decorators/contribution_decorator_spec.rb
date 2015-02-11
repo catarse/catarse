@@ -29,7 +29,7 @@ RSpec.describe ContributionDecorator do
     end
 
     context "when the value does not have decimal places" do
-      subject{ build(:contribution, value: 1).display_value }
+      subject{ build(:contribution, value: 1).decorate.display_value }
       it{ is_expected.to eq("R$ 1,00") }
     end
   end
