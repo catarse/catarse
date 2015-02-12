@@ -29,7 +29,7 @@ section.section
         #project_comments.content.w-col.w-col-8.w-hidden
 
       #project-sidebar.aside.w-col.w-col-4
-        - cache ['project-stats', @project.id] do
+        - cache ['project-stats', @project.id], expires_in: 3.hours do
           .project-stats
             .project-stats-numbers.u-marginbottom-20.w-hidden-small.w-hidden-tiny
               .w-hidden-small.w-hidden-tiny.u-marginbottom-10
@@ -86,7 +86,7 @@ section.section
               = link_to 'Editar recompensas', edit_project_path(@project, anchor: 'reward'), class: 'btn btn-edit btn-small'
             .w-col.w-col-2
         
-        - cache ['project-funding_period', @project.id] do
+        - cache ['project-funding_period', @project.id], expires_in: 3.hours  do
           #rewards.u-marginbottom-30[data-index_path=project_rewards_path(@project)]
             .u-text-center = image_tag 'catarse_bootstrap/loader.gif'
           - if @project.can_show_funding_period?

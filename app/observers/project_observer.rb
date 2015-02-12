@@ -11,7 +11,12 @@ class ProjectObserver < ActiveRecord::Observer
       ProjectSchedulerWorker.perform_at(project.online_date, project.id)
     end
 
-    project.expire_cache_fragments!
+    project.expires_fragments(
+      'project-funding_period',
+      'project-stats',
+      'project-about',
+      'project-rewards'
+    )
   end
 
   def after_create(project)

@@ -11,7 +11,10 @@ class ContributionObserver < ActiveRecord::Observer
       contribution.notify_to_contributor(:payment_slip)
     end
 
-    contribution.project.expire_cache_fragments!
+    contribution.project.expires_fragments(
+      'project-stats',
+      'project-rewards'
+    )
   end
 
   def before_save(contribution)
