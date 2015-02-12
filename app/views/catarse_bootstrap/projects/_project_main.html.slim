@@ -29,55 +29,56 @@ section.section
         #project_comments.content.w-col.w-col-8.w-hidden
 
       #project-sidebar.aside.w-col.w-col-4
-        .project-stats
-          .project-stats-numbers.u-marginbottom-20.w-hidden-small.w-hidden-tiny
-            .w-hidden-small.w-hidden-tiny.u-marginbottom-10
-              .fontsize-largest = @project.display_pledged
-              .fontsize-small = t('.sidebar.goal', total: @project.display_goal).html_safe
-            .w-hidden-small.w-hidden-tiny.u-marginbottom-10
-              .fontsize-largest = @project.total_contributions
-              .fontsize-small = t('.sidebar.contributions')
-            .w-hidden-small.w-hidden-tiny.u-marginbottom-10
-              - if @project.draft? || @project.rejected?
-                .fontsize-largest = @project.online_days
-                .fontsize-small #{@project.online_days} #{pluralize_without_number(@project.online_days, I18n.t('datetime.prompts.day').downcase)} #{pluralize_without_number(@project.online_days, t('remaining_singular'), t('remaining_plural'))}
-              - else
-                .fontsize-largest = @project.remaining_days
-                .fontsize-small #{@project.time_to_go[:unit].capitalize} #{pluralize_without_number(@project.time_to_go[:time], t('remaining_singular'), t('remaining_plural'))}
+        - cache ['project-stats', @project.id] do
+          .project-stats
+            .project-stats-numbers.u-marginbottom-20.w-hidden-small.w-hidden-tiny
+              .w-hidden-small.w-hidden-tiny.u-marginbottom-10
+                .fontsize-largest = @project.display_pledged
+                .fontsize-small = t('.sidebar.goal', total: @project.display_goal).html_safe
+              .w-hidden-small.w-hidden-tiny.u-marginbottom-10
+                .fontsize-largest = @project.total_contributions
+                .fontsize-small = t('.sidebar.contributions')
+              .w-hidden-small.w-hidden-tiny.u-marginbottom-10
+                - if @project.draft? || @project.rejected?
+                  .fontsize-largest = @project.online_days
+                  .fontsize-small #{@project.online_days} #{pluralize_without_number(@project.online_days, I18n.t('datetime.prompts.day').downcase)} #{pluralize_without_number(@project.online_days, t('remaining_singular'), t('remaining_plural'))}
+                - else
+                  .fontsize-largest = @project.remaining_days
+                  .fontsize-small #{@project.time_to_go[:unit].capitalize} #{pluralize_without_number(@project.time_to_go[:time], t('remaining_singular'), t('remaining_plural'))}
 
-          - if @project.online? && !@project.expired?
-            = link_to t('.contribute_project.submit'), new_project_contribution_path(@project), id: 'contribute_project_form', class: "btn btn-large u-marginbottom-20"
+            - if @project.online? && !@project.expired?
+              = link_to t('.contribute_project.submit'), new_project_contribution_path(@project), id: 'contribute_project_form', class: "btn btn-large u-marginbottom-20"
 
-          .fontsize-smaller.u-marginbottom-30[class=@project.display_card_class]
-            = t(".contribute_project.display_status.#{@project.display_status}", goal: @project.display_goal, date: @project.display_expires_at)
+            .fontsize-smaller.u-marginbottom-30[class=@project.display_card_class]
+              = t(".contribute_project.display_status.#{@project.display_status}", goal: @project.display_goal, date: @project.display_expires_at)
 
-        .card.card-user.u-radius.u-marginbottom-30
-          .w-clearfix
-            = image_tag @project.user.display_image, width: "100", class: "thumb u-left u-radius u-marginbottom-30"
-            .fontsize-small.fontweight-semibold.lineheight-tighter = link_to @project.user.display_name, user_path(@project.user), class: 'link-hidden'
-            .fontsize-smallest.lineheight-looser = @project.user.address_city
-          .fontsize-smallest = t('created_project', count: @project.user.created_projects.count)
-          .fontsize-smallest = t('contributed_project', count: @project.user.total_contributed_projects)
-          .project-author-contacts
-            ul.w-list-unstyled.fontsize-smaller.fontweight-semibold
-              - if @project.user.facebook_link.present?
-                li
-                  = link_to t('.facebook_profile'), @project.user.facebook_link, target: '_blank', class: 'link-hidden'
-              - if @project.user.twitter_link
-                li
-                  = link_to t('.twitter_profile'), @project.user.twitter_link, target: '_blank', class: 'link-hidden'
-              - if @project.user.other_link.present?
-                li
-                  = link_to t('.author_website'), @project.user.other_link, target: '_blank', class: 'link-hidden'
-          = mail_to @project.user.email, t('.contact_author'), target: '_blank', class: 'btn btn-medium btn-message'
+          .card.card-user.u-radius.u-marginbottom-30
+            .w-clearfix
+              = image_tag @project.user.display_image, width: "100", class: "thumb u-left u-radius u-marginbottom-30"
+              .fontsize-small.fontweight-semibold.lineheight-tighter = link_to @project.user.display_name, user_path(@project.user), class: 'link-hidden'
+              .fontsize-smallest.lineheight-looser = @project.user.address_city
+            .fontsize-smallest = t('created_project', count: @project.user.projects.size)
+            .fontsize-smallest = t('contributed_project', count: @project.user.total_contributed_projects)
+            .project-author-contacts
+              ul.w-list-unstyled.fontsize-smaller.fontweight-semibold
+                - if @project.user.facebook_link.present?
+                  li
+                    = link_to t('.facebook_profile'), @project.user.facebook_link, target: '_blank', class: 'link-hidden'
+                - if @project.user.twitter_link
+                  li
+                    = link_to t('.twitter_profile'), @project.user.twitter_link, target: '_blank', class: 'link-hidden'
+                - if @project.user.other_link.present?
+                  li
+                    = link_to t('.author_website'), @project.user.other_link, target: '_blank', class: 'link-hidden'
+            = mail_to @project.user.email, t('.contact_author'), target: '_blank', class: 'btn btn-medium btn-message'
 
-        .w-hidden-main.w-hidden-medium.project-share
-          .div-share-mobile-fb
-            = render_facebook_share_mobile(url: project_by_slug_url(permalink: @project.permalink), title: @project.name)
-          .div-share-mobile-fb
-            .btn.btn-medium.btn-fb.btn-tweet
-              = render_twitter_mobile(url: project_by_slug_url(permalink: @project.permalink), title: @project.name)
-              = t('.tweet')
+          .w-hidden-main.w-hidden-medium.project-share
+            .div-share-mobile-fb
+              = render_facebook_share_mobile(url: project_by_slug_url(permalink: @project.permalink), title: @project.name)
+            .div-share-mobile-fb
+              .btn.btn-medium.btn-fb.btn-tweet
+                = render_twitter_mobile(url: project_by_slug_url(permalink: @project.permalink), title: @project.name)
+                = t('.tweet')
         - if policy(@project).update? && @project.can_show_funding_period?
           .w-row.w-hidden-small.w-hidden-tiny.u-marginbottom-30
             .w-col.w-col-2
@@ -85,8 +86,9 @@ section.section
               = link_to 'Editar recompensas', edit_project_path(@project, anchor: 'reward'), class: 'btn btn-edit btn-small'
             .w-col.w-col-2
         
-        #rewards.u-marginbottom-30[data-index_path=project_rewards_path(@project)]
-          .u-text-center = image_tag 'catarse_bootstrap/loader.gif'
-        - if @project.can_show_funding_period?
-          .fontsize-small.fontweight-semibold.u-text-center-small-only = t('.funding_period')
-          .fontsize-small.u-text-center-small-only = "#{@project.display_online_date} - #{@project.display_expires_at}  (#{t('datetime.distance_in_words.x_days', count: @project.online_days)})"
+        - cache ['project-funding_period', @project.id] do
+          #rewards.u-marginbottom-30[data-index_path=project_rewards_path(@project)]
+            .u-text-center = image_tag 'catarse_bootstrap/loader.gif'
+          - if @project.can_show_funding_period?
+            .fontsize-small.fontweight-semibold.u-text-center-small-only = t('.funding_period')
+            .fontsize-small.u-text-center-small-only = "#{@project.display_online_date} - #{@project.display_expires_at}  (#{t('datetime.distance_in_words.x_days', count: @project.online_days)})"
