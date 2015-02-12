@@ -10,6 +10,8 @@ class ContributionObserver < ActiveRecord::Observer
     if contribution.payment_choice_was.nil? && contribution.payment_choice == 'BoletoBancario'
       contribution.notify_to_contributor(:payment_slip)
     end
+
+    contribution.project.expire_cache_fragments!
   end
 
   def before_save(contribution)
