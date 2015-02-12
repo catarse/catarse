@@ -82,7 +82,9 @@ class UsersController < ApplicationController
     update_category_followers
 
     if password_params_given?
-      @user.update_with_password permitted_params[:user]
+      if @user.update_with_password permitted_params[:user]
+        sign_in(@user, bypass: true)
+      end
     else
       @user.update_without_password permitted_params[:user]
     end

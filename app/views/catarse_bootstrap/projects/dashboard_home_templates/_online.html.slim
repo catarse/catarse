@@ -5,7 +5,7 @@
       .w-col.w-col-8
         .fontsize-large.fontweight-semibold.u-marginbottom-10= t('.title', name: @project.user.display_name)
         p.fontsize-base
-          = t('.subtitle_html', date: @project.display_expires_at, link1: (link_to 'repasse de dinheiro é feito para projetos bem sucedidos', 'http://suporte.catarse.me/hc/pt-br/articles/202037493-Como-ser%C3%A1-feito-o-repasse-do-dinheiro-', target: '__blank'), link2: (link_to 'as principais dúvidas de realizadores','http://suporte.catarse.me/hc/pt-br/sections/200415988-Realizadores-projeto-no-ar', target: '__blank'))
+          = t('.subtitle_html', date: @project.display_expires_at, link1: (link_to 'repasse de dinheiro é feito para projetos bem sucedidos', 'http://suporte.catarse.me/hc/pt-br/articles/202037493-Como-ser%C3%A1-feito-o-repasse-do-dinheiro-', target: '__blank', class: 'alt-link'), link2: (link_to 'as principais dúvidas de realizadores','http://suporte.catarse.me/hc/pt-br/sections/200415988-Realizadores-projeto-no-ar', target: '__blank', class: 'alt-link'))
         .card.u-radius.u-marginbottom-30
           .fontsize-small.fontweight-semibold
             span.fontcolor-secondary>= t('projects.dashboard_home_templates.status')
