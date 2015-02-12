@@ -5,6 +5,7 @@ section.section
         #project_about.content.w-col.w-col-8 = render 'project_about'
 
         #project_posts.content.w-col.w-col-8.w-hidden[data-path=project_posts_path(project_id: @project.id)]
+          = render 'edit_action', text: 'Editar novidates', anchor: 'notifications'
           .posts
             | &nbsp;
           #posts-loading.loader.u-text-center.w-col.w-col-12 = image_tag "catarse_bootstrap/loader.gif"
@@ -77,7 +78,13 @@ section.section
             .btn.btn-medium.btn-fb.btn-tweet
               = render_twitter_mobile(url: project_by_slug_url(permalink: @project.permalink), title: @project.name)
               = t('.tweet')
-
+        - if policy(@project).update? && @project.can_show_funding_period?
+          .w-row.w-hidden-small.w-hidden-tiny.u-marginbottom-30
+            .w-col.w-col-2
+            .w-col.w-col-8
+              = link_to 'Editar recompensas', edit_project_path(@project, anchor: 'reward'), class: 'btn btn-edit btn-small'
+            .w-col.w-col-2
+        
         #rewards.u-marginbottom-30[data-index_path=project_rewards_path(@project)]
           .u-text-center = image_tag 'catarse_bootstrap/loader.gif'
         - if @project.can_show_funding_period?
