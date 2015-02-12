@@ -20,6 +20,11 @@ class ProjectUploader < ImageUploader
     process convert: :jpg
   end
 
+  version :project_thumb_large do
+    process resize_to_fill: [650,350]
+    process convert: :jpg
+  end
+
   #facebook requires a minimum thumb size
   version :project_thumb_facebook do
     process resize_to_fill: [512,400]
