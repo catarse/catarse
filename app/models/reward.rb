@@ -59,7 +59,7 @@ class Reward < ActiveRecord::Base
     end
   end
 
-  def expire_cache_fragments
+  def expires_project_cache
     project.expires_fragments 'project-rewards'
   end
 end
