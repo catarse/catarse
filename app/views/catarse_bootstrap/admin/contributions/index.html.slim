@@ -25,7 +25,7 @@
         = form.input :search_on_acquirer, as: :string, label: t('.acquirer'), input_html: { placeholder: t('.placeholders.acquirer'), title: t('.placeholders.acquirer'), value: current_scopes[:search_on_acquirer] }
       .w-col-2.w-col
         = form.input :by_payment_method, collection: Contribution.payment_method_names, label: t('admin.filter.by_payment_method'), as: :select, selected: params[:with_state], include_blank: true
-      .w-col-9.w-col
+      .w-col-2.w-col
         = form.input :credits, as: :boolean, label: t('.credits')
       .w-col-2.w-col
         = form.button :submit, t('admin.filter.submit'), class: 'button medium negative'
