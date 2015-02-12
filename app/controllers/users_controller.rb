@@ -142,8 +142,4 @@ class UsersController < ApplicationController
   def permitted_params
     params.permit(policy(resource).permitted_attributes)
   end
-
-  def use_catarse_boostrap
-    ["show", "edit", "update"].include?(action_name) ? 'catarse_bootstrap' : 'application'
-  end
 end

@@ -1,4 +1,4 @@
-- collection.rank(:row_order).each do |reward|
+- parent.rewards.rank(:row_order).each do |reward|
 
   - sold_out = reward.sold_out?
   .card.card-secondary.u-marginbottom-10[id="reward_#{reward.id}" data-new_contribution_url=new_project_contribution_path(parent, reward_id: reward.id) data-update_url=sort_project_reward_path(parent, reward) class="#{(policy(reward).update? ? 'clickable_owner sortable' : '')} #{(parent.online? && !policy(reward).update?  ? 'clickable'  : '' )} #{sold_out ? 'card-gone' : 'card-reward'} "]
