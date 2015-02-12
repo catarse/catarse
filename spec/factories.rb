@@ -87,6 +87,31 @@ FactoryGirl.define do
     f.state 'online'
     f.budget '1000'
     f.uploaded_image File.open("#{Rails.root}/spec/support/testimg.png")
+    after :build do |project|
+      project.account = build(:project_account, project: nil)
+    end
+  end
+
+  factory :project_account do |f|
+    f.association :project
+    f.association :user
+    f.association :bank
+    f.full_name "Foo Bar"
+    f.email "foo@bar.com"
+    f.cpf "foo"
+    f.address_zip_code "foo"
+    f.address_neighbourhood "foo"
+    f.address_state "foo"
+    f.address_city "foo"
+    f.address_number "foo"
+    f.address_street "foo"
+    f.phone_number "1234"
+    f.agency "foo"
+    f.agency_digit "foo"
+    f.owner_document "foo"
+    f.owner_name "foo"
+    f.account "1"
+    f.account_digit "1000"
   end
 
   factory :project_budget do |f|
