@@ -240,6 +240,13 @@ class Project < ActiveRecord::Base
     self.online? || self.successful? || self.failed? || self.waiting_funds?
   end
 
+  def expire_cache_fragments!
+    base = ActionController::Base.new
+    base.expire_fragment(['project-rewards', id])
+    base.expire_fragment(['project-about', id])
+    base.expire_fragment(['project-funding_period', id])
+  end
+
   private
   def self.between_dates(attribute, starts_at, ends_at)
     return all unless starts_at.present? && ends_at.present?
