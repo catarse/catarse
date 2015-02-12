@@ -33,19 +33,14 @@ Catarse::Application.routes.draw do
   resources :auto_complete_projects, only: [:index]
   resources :projects, only: [:index, :create, :update, :edit, :new, :show] do
     resources :posts, controller: 'projects/posts', only: [ :index ]
-    resources :rewards, only: [ :index, :create, :update, :destroy, :new, :edit ] do
-      member do
-        post 'sort'
-      end
+    resources :rewards, only: [ :index ] do
+      post :sort, on: :member
     end
     resources :contributions, {controller: 'projects/contributions'} do
-      member do
-        put 'credits_checkout'
-      end
+      put :credits_checkout, on: :member
     end
-    collection do
-      get 'video'
-    end
+
+    get 'video', on: :collection
     member do
       get :reminder, to: 'projects/reminders#create'
       delete :reminder, to: 'projects/reminders#destroy'
