@@ -3,6 +3,6 @@ class CampaignFinisherWorker < ProjectBaseWorker
   sidekiq_options retry: false
 
   def perform id
-    resource_action id, :finish
+    resource(id).finish
   end
 end
