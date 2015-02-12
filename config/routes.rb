@@ -32,7 +32,7 @@ Catarse::Application.routes.draw do
   end
   resources :auto_complete_projects, only: [:index]
   resources :projects, only: [:index, :create, :update, :edit, :new, :show] do
-    resources :posts, controller: 'projects/posts', only: [ :index, :create, :destroy ]
+    resources :posts, controller: 'projects/posts', only: [ :index ]
     resources :rewards, only: [ :index, :create, :update, :destroy, :new, :edit ] do
       member do
         post 'sort'
@@ -60,18 +60,12 @@ Catarse::Application.routes.draw do
     end
   end
   resources :users do
-    resources :projects, controller: 'users/projects', only: [ :index ]
     resources :credit_cards, controller: 'users/credit_cards', only: [ :destroy ]
     member do
       get :unsubscribe_notifications
       get :credits
       get :settings
       get :reactivate
-    end
-    resources :contributions, controller: 'users/contributions', only: [:index] do
-      member do
-        get :request_refund
-      end
     end
 
     resources :unsubscribes, only: [:create]
