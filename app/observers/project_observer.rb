@@ -10,6 +10,8 @@ class ProjectObserver < ActiveRecord::Observer
       project.remove_scheduled_job('ProjectSchedulerWorker')
       ProjectSchedulerWorker.perform_at(project.online_date, project.id)
     end
+
+    project.expire_cache_fragments!
   end
 
   def after_create(project)

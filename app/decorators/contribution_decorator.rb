@@ -6,16 +6,8 @@ class ContributionDecorator < Draper::Decorator
     number_to_currency source.localized.value
   end
 
-  def display_confirmed_at
-    I18n.l(source.confirmed_at.to_date) if source.confirmed_at
-  end
-
   def display_date date_field
     I18n.l(source[date_field.to_sym].to_date) if source[date_field.to_sym]
-  end
-
-  def display_refunded_at
-    I18n.l(source.refunded_at.to_date) if source.refunded_at
   end
 
   def display_slip_url
