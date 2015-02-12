@@ -67,7 +67,7 @@ class ProjectPolicy < ApplicationPolicy
 
   def account_attributes
     if done_by_owner_or_admin? && (['online', 'waiting_funds', 'successful'].exclude? record.state)
-      { account_attributes: record.account.attribute_names.map(&:to_sym) }
+      { account_attributes: ProjectAccount.attribute_names.map(&:to_sym) }
     else
       { account_attributes: [] }
     end

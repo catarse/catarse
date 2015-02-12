@@ -7,7 +7,7 @@
         p.fontsize-base= t('.subtitle_html')
       .w-col.w-col-2.fontcolor-terciary
 
-= simple_form_for @project, html: { id: 'project_account_form', class: 'w-form' } do |f|
+= simple_form_for @project, defaults: { disable: true, wrapper: :one_col, validation_text: false, label_wrapper_html: { class: 'w-col w-col-5 w-sub-col' } }, html: { id: 'project_account_form', class: 'w-form' } do |f|
   = hidden_field_tag :anchor, 'user_settings'
   = f.simple_fields_for :account do |form|
     .section
@@ -23,81 +23,81 @@
                 .w-col.w-col-6.w-sub-col
                   = form.hidden_field :project_id, value: @project.id
                   = form.hidden_field :user_id, value: @project.user.id
-                  = form.label :full_name, class: 'field-label fontweight-semibold force-text-dark'
-                  = form.input_field :full_name, as: :string, class: 'positive'
+                  = form.input :full_name, as: :string, 
+                  input_html: { class: 'positive', required: true }
                 .w-col.w-col-6
-                  = form.label :email, class: 'field-label fontweight-semibold force-text-dark'
-                  = form.input_field :email, as: :email, class: 'positive'
+                  = form.input :email, as: :string, 
+                  input_html: { class: 'positive', required: true }
               .w-row
                 .w-col.w-col-6.w-sub-col
-                  = form.label :cpf, class: 'field-label fontweight-semibold force-text-dark'
-                  = form.input_field :cpf, as: :tel, class: 'positive'
+                  = form.input :cpf, as: :tel, 
+                  input_html: { class: 'positive', required: true }
                 .w-col.w-col-6
-                  = form.label :state_inscription, class: 'field-label fontweight-semibold force-text-dark'
-                  = form.input_field :state_inscription, as: :string, class: 'positive'
+                  = form.input :state_inscription, as: :string, 
+                  input_html: { class: 'positive', required: true }
               .w-row
                 .w-col.w-col-6.w-sub-col
-                  = form.label :address_street, class: 'field-label fontweight-semibold force-text-dark'
-                  = form.input_field :address_street, as: :string, class: 'positive'
+                  = form.input :address_street, as: :string, 
+                  input_html: { class: 'positive', required: true }
                 .w-col.w-col-6
                   .w-row
                     .w-col.w-col-6.w-col-small-6.w-col-tiny-6.w-sub-col-middle
-                      = form.label :address_number, class: 'field-label fontweight-semibold force-text-dark'
-                      = form.input_field :address_number, as: :string, class: 'positive'
+                      = form.input :address_number, as: :string, 
+                      input_html: { class: 'positive', required: true }
                     .w-col.w-col-6.w-col-small-6.w-col-tiny-6
-                      = form.label :address_complement, class: 'field-label fontweight-semibold force-text-dark'
-                      = form.input_field :address_complement, as: :string, class: 'positive'
+                      = form.input :address_complement, as: :string, 
+                      input_html: { class: 'positive', required: false }
               .w-row
                 .w-col.w-col-6.w-sub-col
-                  = form.label :address_neighbourhood, class: 'field-label fontweight-semibold force-text-dark'
-                  = form.input_field :address_neighbourhood, as: :string, class: 'positive'
+                  = form.input :address_neighbourhood, as: :string, 
+                  input_html: { class: 'positive', required: true }
                 .w-col.w-col-6
-                  = form.label :address_city, class: 'field-label fontweight-semibold force-text-dark'
-                  = form.input_field :address_city, as: :string, class: 'positive'
+                  = form.input :address_city, as: :string, 
+                  input_html: { class: 'positive', required: true }
               .w-row
                 .w-col.w-col-6.w-sub-col
-                  = form.label :address_state, class: 'field-label fontweight-semibold force-text-dark'
-                  = form.input_field :address_state, as: :select, collection: State.array, class: 'w-select positive'
+                  = form.input :address_state, as: :select, collection: State.array, class: 'w-select positive', 
+                  input_html: { class: 'positive', required: true }
                 .w-col.w-col-6
                   .w-row
                     .w-col.w-col-6.w-col-small-6.w-col-tiny-6.w-sub-col-middle
-                      = form.label :address_zip_code, class: 'field-label fontweight-semibold force-text-dark'
-                      = form.input_field :address_zip_code, as: :string, class: 'positive'
+                      = form.input :address_zip_code, as: :string, 
+                      input_html: { class: 'positive', required: true }
                     .w-col.w-col-6.w-col-small-6.w-col-tiny-6
-                      = form.label :phone_number, class: 'field-label fontweight-semibold force-text-dark'
-                      = form.input_field :phone_number, as: :string, class: 'positive'
+                      = form.input :phone_number, as: :string, 
+                      input_html: { class: 'positive', required: true }
           .w-form.card.card-terciary
             .fontsize-base.fontweight-semibold= t('.account_title')
             .fontsize-small.u-marginbottom-20= t('.account_subtitle')
             .divider.u-marginbottom-20
             .w-row
               .w-col.w-col-6.w-sub-col
-                = form.label :bank_id, class: 'field-label fontweight-semibold force-text-dark'
-                = form.input_field :bank_id, as: :select, collection: Bank.to_collection, class: 'w-select positive'
+                = form.input :bank_id, as: :select, collection: Bank.to_collection, class: 'w-select positive', 
+                input_html: { class: 'positive', required: true }
               .w-col.w-col-6
                 .w-row
                   .w-col.w-col-6.w-col-small-6.w-col-tiny-6.w-sub-col-middle
-                    = form.label :agency, class: 'field-label fontweight-semibold force-text-dark'
-                    = form.input_field :agency, as: :string, class: 'positive'
+                    = form.input :agency, as: :string, 
+                    input_html: { class: 'positive', required: true }
                   .w-col.w-col-6.w-col-small-6.w-col-tiny-6
-                    = form.label :agency_digit, class: 'field-label fontweight-semibold force-text-dark'
-                    = form.input_field :agency_digit, as: :string, class: 'positive'
+                    = form.input :agency_digit, as: :string, 
+                    input_html: { class: 'positive', required: true }
             .w-row
               .w-col.w-col-6.w-sub-col
                 .w-row
                   .w-col.w-col-6.w-col-small-6.w-col-tiny-6.w-sub-col-middle
-                    = form.label :account, class: 'field-label fontweight-semibold force-text-dark'
-                    = form.input_field :account, as: :string, class: 'positive'
+                    = form.input :account, as: :string, 
+                    input_html: { class: 'positive', required: true }
                   .w-col.w-col-6.w-col-small-6.w-col-tiny-6
-                    = form.label :account_digit, class: 'field-label fontweight-semibold force-text-dark'
-                    = form.input_field :account_digit, as: :string, class: 'positive'
+                    = form.input :account_digit, as: :string, 
+                    input_html: { class: 'positive', required: true }
               .w-col.w-col-6
-                = form.label :owner_name, class: 'field-label fontweight-semibold force-text-dark'
-                = form.input_field :owner_name, as: :string, class: 'positive'
+                = form.input :owner_name, as: :string, 
+                input_html: { class: 'positive', required: true }
             .w-row
               .w-col.w-col-6.w-sub-col
-                = form.label :owner_document, class: 'field-label fontweight-semibold force-text-dark'
-                = form.input_field :owner_document, as: :tel, class: 'positive'
+                = form.input :owner_document, as: :tel, 
+                input_html: { class: 'positive', required: true }
               .w-col.w-col-6
         .w-col.w-col-4
           .w-hidden-small.w-hidden-tiny.card.u-radius.u-marginbottom-20 data-ix="new-interaction" 
