@@ -18,7 +18,7 @@
             =  hidden_field_tag 'anchor', 'reward'
             #dashboard-rewards
               #rewards
-                = f.simple_fields_for :rewards, @rewads do |form|
+                = f.simple_fields_for :rewards, @rewards do |form|
                   = render 'reward_fields', f: form
               = link_to_add_association "+ #{t('.add_reward')}", f, :rewards, :'data-association-insertion-node' => '#rewards', :'data-association-insertion-method' => :append, class: 'btn btn-large btn-message show_reward_form new_reward_button'
 
