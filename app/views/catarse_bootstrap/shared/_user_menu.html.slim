@@ -28,7 +28,7 @@ nav.w-dropdown-list.dropdown-list.user-menu
               .w-row
                 .w-col.w-col-3
                   = image_tag project.decorate.display_image, class: 'thumb small u-radius'
-                .w-col..w-col-9
+                .w-col.w-col-9
                   = link_to truncate(project.name), project_by_slug_path(project.permalink, ref: 'user_menu_my_contributions'), class: 'alt-link fontsize-smaller'
           li.u-margintop-20
             .w-row
