@@ -164,8 +164,4 @@ class ProjectsController < ApplicationController
   def resource
     @project ||= (params[:permalink].present? ? Project.by_permalink(params[:permalink]).first! : Project.find(params[:id]))
   end
-
-  def use_catarse_boostrap
-    ['index', "edit", "new", "create", "show", "about_mobile", 'send_to_analysis', 'publish', 'update'].include?(action_name) ? 'catarse_bootstrap' : 'application'
-  end
 end
