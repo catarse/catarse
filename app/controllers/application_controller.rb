@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   include Concerns::AnalyticsHelpersHandler
   include Pundit
 
-  layout :use_catarse_boostrap
+  layout 'catarse_bootstrap'
   protect_from_forgery
 
   before_filter :configure_permitted_parameters, if: :devise_controller?
@@ -64,10 +64,6 @@ class ApplicationController < ActionController::Base
       new_locale = current_user.try(:locale) || I18n.default_locale
       redirect_to url_for(params.merge(locale: new_locale, only_path: true))
     end
-  end
-
-  def use_catarse_boostrap
-    devise_controller? ? 'catarse_bootstrap' : 'application'
   end
 
   def redirect_back_or_default(default)
