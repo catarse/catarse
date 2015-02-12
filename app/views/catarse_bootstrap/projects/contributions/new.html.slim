@@ -10,9 +10,6 @@
       .w-col.w-col-8 
         .w-hidden-small.w-hidden-tiny.u-marginbottom-10.fontsize-largest = t('.title')
         .fontsize-base.fontweight-semibold.u-marginbottom-10.u-text-center-small-only.text-success-small-only.fontsize-large-small-only.lineheight-tight = t('.choose_reward')
-        - if current_user.credits > 0
-          .card.card-message.zindex-10.u-radius.u-marginbottom-30.fontsize-small
-            == t('.you_have_credits', credits: number_to_currency(current_user.credits))
         .w-form.back-reward-form
           = simple_form_for [parent, @contribution], html: { id: 'contribution_form' } do |form|
             = render 'devise/shared/alert'

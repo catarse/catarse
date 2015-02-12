@@ -43,32 +43,12 @@ class ProjectsController < ApplicationController
 
   def send_to_analysis
     authorize resource
-    @user = resource.user
-
-    if resource.send_to_analysis
-      if referal_link.present?
-        resource.update_attribute :referal_link, referal_link
-      end
-      flash[:notice] = t('projects.send_to_analysis')
-      redirect_to edit_project_path(@project, anchor: 'home')
-    else
-      flash.now[:notice] = t('projects.send_to_analysis_error')
-      edit
-      render :edit
-    end
+    resource_action :send_to_analysis
   end
 
   def publish
     authorize resource
-
-    if resource.push_to_online
-      flash[:notice] = t('projects.put_online')
-      redirect_to edit_project_path(@project, anchor: 'home')
-    else
-      flash.now[:notice] = t('projects.put_online_error')
-      edit
-      render :edit
-    end
+    resource_action :push_to_online
   end
 
   def update
@@ -132,6 +112,21 @@ class ProjectsController < ApplicationController
   end
 
   protected
+
+  def resource_action action_name
+    if resource.send(action_name)
+      if referal_link.present?
+        resource.update_attribute :referal_link, referal_link
+      end
+
+      flash[:notice] = t("projects.#{action_name.to_s}")
+      redirect_to edit_project_path(@project, anchor: 'home')
+    else
+      flash.now[:notice] = t("projects.#{action_name.to_s}_error")
+      edit
+      render :edit
+    end
+  end
 
   def render_index_for_xhr_request
     @projects = apply_scopes(Project.visible.order_status)
