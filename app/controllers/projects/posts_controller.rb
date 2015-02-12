@@ -1,5 +1,5 @@
 class Projects::PostsController < ApplicationController
-  after_filter :verify_authorized, except: %i[index]
+  after_filter :verify_authorized, except: %i[index destroy]
   after_action :verify_policy_scoped, only: %i[index]
 
   def index
@@ -9,5 +9,12 @@ class Projects::PostsController < ApplicationController
 
   def parent
     @project ||= Project.find params[:project_id]
+  end
+
+  def destroy
+    authorize resource
+    resource.destroy
+    flash[:notice] = t('project.delete.posts')
+    redirect_to edit_project_path(parent, anchor: 'posts')
   end
 end
