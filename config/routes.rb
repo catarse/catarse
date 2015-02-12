@@ -37,13 +37,10 @@ Catarse::Application.routes.draw do
       post :sort, on: :member
     end
     resources :contributions, {controller: 'projects/contributions'} do
-      member do
-        put 'credits_checkout'
-      end
+      put :credits_checkout, on: :member
     end
-    collection do
-      get 'video'
-    end
+
+    get 'video', on: :collection
     member do
       get :reminder, to: 'projects/reminders#create'
       delete :reminder, to: 'projects/reminders#destroy'
