@@ -22,7 +22,6 @@
               .w-row
                 .w-col.w-col-6.w-sub-col
                   = form.hidden_field :project_id, value: @project.id
-                  = form.hidden_field :user_id, value: @project.user.id
                   = form.input :full_name, as: :string, 
                   input_html: { class: 'positive', required: true }
                 .w-col.w-col-6
