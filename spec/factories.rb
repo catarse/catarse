@@ -94,7 +94,6 @@ FactoryGirl.define do
 
   factory :project_account do |f|
     f.association :project
-    f.association :user
     f.association :bank
     f.full_name "Foo Bar"
     f.email "foo@bar.com"
