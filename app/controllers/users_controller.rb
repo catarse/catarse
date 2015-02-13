@@ -54,6 +54,7 @@ class UsersController < ApplicationController
     @unsubscribes = @user.project_unsubscribes
     @subscribed_to_posts = @user.posts_subscription
     resource.links.build
+    build_bank_account
   end
 
   def update
