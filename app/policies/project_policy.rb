@@ -33,11 +33,12 @@ class ProjectPolicy < ApplicationPolicy
       p_attr << budget_attributes
       p_attr << posts_attributes
       p_attr << reward_attributes
+      p_attr << account_attributes
 
       {project: p_attr.flatten}
     else
       {project: [:about, :video_url, :uploaded_image, :headline, :budget,
-                 user_attributes, posts_attributes, budget_attributes, reward_attributes]}
+                 user_attributes, posts_attributes, budget_attributes, reward_attributes, account_attributes]}
     end
   end
 
@@ -63,5 +64,14 @@ class ProjectPolicy < ApplicationPolicy
     { rewards_attributes: [:_destroy, :id, :maximum_contributions,
                           :description, :deliver_at, :minimum_value] }
   end
+
+  def account_attributes
+    if done_by_owner_or_admin? && (['online', 'waiting_funds', 'successful'].exclude? record.state)
+      { account_attributes: ProjectAccount.attribute_names.map(&:to_sym) }
+    else
+      { account_attributes: [] }
+    end
+  end
+
 end
 
