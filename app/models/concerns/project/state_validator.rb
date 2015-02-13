@@ -8,23 +8,23 @@ class Project::StateValidator < ActiveModel::Validator
   def online
     in_analysis
     approved
-    @record.errors['user.full_name'] << "Razão social do usuário não pode ficar em branco" if user.full_name.blank?
-    @record.errors['user.email'] << "Email do usuário não pode ficar em branco" if user.email.blank?
-    @record.errors['user.cpf'] << "CPF do usuário não pode ficar em branco" if user.cpf.blank?
-    @record.errors['user.address_street'] << "Endereço do usuário não pode ficar em branco" if user.address_street.blank?
-    @record.errors['user.address_number'] << "Número no endereço do usuário não pode ficar em branco" if user.address_number.blank?
-    @record.errors['user.address_city'] << "Cidade do usuário não pode ficar em branco" if user.address_city.blank?
-    @record.errors['user.address_state'] << "Estado do usuário não pode ficar em branco" if user.address_state.blank?
-    @record.errors['user.address_zip_code'] << "CEP do usuário não pode ficar em branco" if user.address_zip_code.blank?
-    @record.errors['user.phone_number'] << "Telefone do usuário não pode ficar em branco" if user.phone_number.blank?
+    @record.errors['account.full_name'] << "Razão social do usuário não pode ficar em branco" if account.try(:full_name).blank?
+    @record.errors['account.email'] << "Email do usuário não pode ficar em branco" if account.try(:email).blank?
+    @record.errors['account.cpf'] << "CPF do usuário não pode ficar em branco" if account.try(:cpf).blank?
+    @record.errors['account.address_street'] << "Endereço do usuário não pode ficar em branco" if account.try(:address_street).blank?
+    @record.errors['account.address_number'] << "Número no endereço do usuário não pode ficar em branco" if account.try(:address_number).blank?
+    @record.errors['account.address_city'] << "Cidade do usuário não pode ficar em branco" if account.try(:address_city).blank?
+    @record.errors['account.address_state'] << "Estado do usuário não pode ficar em branco" if account.try(:address_state).blank?
+    @record.errors['account.address_zip_code'] << "CEP do usuário não pode ficar em branco" if account.try(:address_zip_code).blank?
+    @record.errors['account.phone_number'] << "Telefone do usuário não pode ficar em branco" if account.try(:phone_number).blank?
 
-    @record.errors['user.bank_account.bank'] << "Banco do usuário não pode ficar em branco" if bank_account.try(:bank).blank?
-    @record.errors['user.bank_account.agency'] << "Agência do usuário não pode ficar em branco" if bank_account.try(:agency).blank?
-    @record.errors['user.bank_account.agency_digit'] << "Dígito agência do usuário não pode ficar em branco" if bank_account.try(:agency_digit).blank?
-    @record.errors['user.bank_account.account'] << "No. da conta do usuário não pode ficar em branco" if bank_account.try(:account).blank?
-    @record.errors['user.bank_account.account_digit'] << "Dígito conta do usuário não pode ficar em branco" if bank_account.try(:account_digit).blank?
-    @record.errors['user.bank_account.owner_name'] << "Nome do titular do usuário não pode ficar em branco" if bank_account.try(:owner_name).blank?
-    @record.errors['user.bank_account.owner_document'] << "CPF / CNPJ do titular do usuário não pode ficar em branco" if bank_account.try(:owner_document).blank?
+    @record.errors['account.bank'] << "Banco do usuário não pode ficar em branco" if account.try(:bank).blank?
+    @record.errors['account.agency'] << "Agência do usuário não pode ficar em branco" if account.try(:agency).blank?
+    @record.errors['account.agency_digit'] << "Dígito agência do usuário não pode ficar em branco" if account.try(:agency_digit).blank?
+    @record.errors['account.account'] << "No. da conta do usuário não pode ficar em branco" if account.try(:account).blank?
+    @record.errors['account.account_digit'] << "Dígito conta do usuário não pode ficar em branco" if account.try(:account_digit).blank?
+    @record.errors['account.owner_name'] << "Nome do titular do usuário não pode ficar em branco" if account.try(:owner_name).blank?
+    @record.errors['account.owner_document'] << "CPF / CNPJ do titular do usuário não pode ficar em branco" if account.try(:owner_document).blank?
   end
 
   def approved
@@ -52,7 +52,7 @@ class Project::StateValidator < ActiveModel::Validator
     @record.user
   end
 
-  def bank_account
-    @record.user.try(:bank_account)
+  def account
+    @record.try(:account)
   end
 end
