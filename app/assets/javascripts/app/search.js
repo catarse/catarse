@@ -35,7 +35,11 @@ App.addChild('Search', {
     this.$('.search-pre-result').show();
 
     $.get(this.$('.search-pre-result').data('searchpath'), { search_on_name: value, limit: 5 }, function(response){
-      that.$('.result').html(response);
+      if($.trim(response) == "") {
+        that.$('.search-pre-result').hide();
+      } else {
+        that.$('.result').html(response);
+      }
     });
   }
 });

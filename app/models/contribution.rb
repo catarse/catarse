@@ -10,8 +10,6 @@ class Contribution < ActiveRecord::Base
   include Contribution::PaymentEngineHandler
   include Contribution::PaymentMethods
 
-  delegate :display_value, :display_confirmed_at, :display_slip_url, to: :decorator
-
   belongs_to :project
   belongs_to :reward
   belongs_to :user
@@ -82,10 +80,6 @@ class Contribution < ActiveRecord::Base
   def self.between_values(start_at, ends_at)
     return all unless start_at.present? && ends_at.present?
     where("value between ? and ?", start_at, ends_at)
-  end
-
-  def decorator
-    @decorator ||= ContributionDecorator.new(self)
   end
 
   def recommended_projects

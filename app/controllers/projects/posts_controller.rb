@@ -1,42 +1,25 @@
 class Projects::PostsController < ApplicationController
-  after_filter :verify_authorized, except: %i[index show]
+  after_filter :verify_authorized, except: %i[index destroy]
   after_action :verify_policy_scoped, only: %i[index]
-  inherit_resources
-
-  actions :index, :create, :destroy
-  belongs_to :project
-
-  def show
-    render resource
-  end
 
   def index
-    render collection.page(params[:page]).per(3)
+    @posts ||= policy_scope(parent.posts).ordered
+    render @posts.page(params[:page]).per(3)
   end
 
-  def create
-    @post = parent.posts.new(post_params)
-    authorize @post
-    @post.save
-    render @post
+  def parent
+    @project ||= Project.find params[:project_id]
   end
 
   def destroy
     authorize resource
-    destroy! {
-      flash[:notice] = t('project.delete.posts')
-      return redirect_to edit_project_path(parent, anchor: 'posts')
-    }
+    resource.destroy
+
+    flash[:notice] = t('project.delete.posts')
+    redirect_to edit_project_path(parent, anchor: 'posts')
   end
 
-  def collection
-    @posts ||= policy_scope(end_of_association_chain).ordered
+  def resource
+    @post ||= parent.posts.find params[:id]
   end
-
-  protected
-
-  def post_params
-    params.require(:project_post).permit(:title, :comment, :user_id, :exclusive).merge!(user_id: current_user.try(:id))
-  end
-
 end

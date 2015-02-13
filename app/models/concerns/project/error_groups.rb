@@ -7,11 +7,11 @@ module Project::ErrorGroups
       project: [ :video_url, :about, :budget, :uploaded_image, :headline],
       reward: [:'rewards.size'],
       user_about: [:'user.uploaded_image', :'user.name', :'user.bio'],
-      user_settings: [ :'user.full_name', :'user.email', :'user.cpf', :'user.address_street', :'user.address_number',
-                       :'user.address_city', :'user.address_state', :'user.address_zip_code', :'user.phone_number',
-                       :'user.bank_account.bank', :'user.bank_account.agency', :'user.bank_account.agency_digit',
-                       :'user.bank_account.account' ,:'user.bank_account.account_digit', :'user.bank_account.owner_name',
-                       :'user.bank_account.owner_document']
+      user_settings: [ :'account.full_name', :'account.email', :'account.cpf', :'account.address_street', :'account.address_number',
+                       :'account.address_city', :'account.address_state', :'account.address_zip_code', :'account.phone_number',
+                       :'account.bank', :'account.agency', :'account.agency_digit',
+                       :'account.account' ,:'account.account_digit', :'account.owner_name',
+                       :'account.owner_document']
     }
 
     def error_included_on_group? error_attr, group_name
