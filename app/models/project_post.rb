@@ -20,7 +20,7 @@ class ProjectPost < ActiveRecord::Base
   scope :ordered, ->() { order("created_at desc") }
 
   def email_comment_html
-    catarse_email_auto_html_for comment, image_width: 513
+    catarse_auto_html comment, image_width: 513
   end
 
   def reference_user

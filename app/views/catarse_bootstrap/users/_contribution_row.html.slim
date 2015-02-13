@@ -25,7 +25,7 @@
       .w-hidden-main.w-hidden-medium.fontsize-smallest.fontweight-semibold Status do apoio:
       .fontsize-smallest 
         - if contribution.is_credit_card?
-          | Cartão de credito
+          | Cartão de credito #{contribution.installments}xR$#{contribution.installment_value}
         - else
           | Boleto bancario
       .fontsize-smallest

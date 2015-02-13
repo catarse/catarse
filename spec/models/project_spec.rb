@@ -53,21 +53,6 @@ RSpec.describe Project, type: :model do
     end
   end
 
-  describe ".expiring_in_less_of" do
-    subject { Project.expiring_in_less_of('7 days') }
-
-    before do
-      @project_01 = create(:project, state: 'online', online_date: DateTime.now, online_days: 3)
-      @project_02 = create(:project, state: 'online', online_date: DateTime.now, online_days: 30)
-      @project_03 = create(:project, state: 'draft')
-      @project_04 = create(:project, state: 'online', online_date: DateTime.now, online_days: 3)
-    end
-
-    it "should return a collection with projects that is expiring time less of the time in param" do
-      is_expected.to match_array([@project_01, @project_04])
-    end
-  end
-
   describe ".with_contributions_confirmed_today" do
     let(:project_01) { create(:project, state: 'online') }
     let(:project_02) { create(:project, state: 'online') }
@@ -360,35 +345,6 @@ RSpec.describe Project, type: :model do
     end
     subject{ Project.recent }
     it{ is_expected.to eq([@p]) }
-  end
-
-  describe "send_verify_moip_account_notification" do
-    context "when not have projects on pagarme" do
-      before do
-        @p = create(:project, state: 'online', online_date: '2014-10-9'.to_date, online_days: 3)
-        create(:project, state: 'draft')
-      end
-
-      it "should create notification for all projects that is expiring" do
-        expect(ProjectNotification).to receive(:notify_once).
-          with(:verify_moip_account, @p.user, @p, {from_email: CatarseSettings[:email_payments]})
-        Project.send_verify_moip_account_notification
-      end
-    end
-
-    context "when have projects using pagarme" do
-      before do
-        @p = create(:project, state: 'online', online_date: DateTime.now, online_days: 3)
-        CatarseSettings[:projects_enabled_to_use_pagarme] = @p.permalink
-        create(:project, state: 'draft')
-      end
-
-      it "should not create notification for projects that using pagarme" do
-        expect(ProjectNotification).to_not receive(:notify_once).
-          with(:verify_moip_account, @p.user, @p, {from_email: CatarseSettings[:email_payments]})
-        Project.send_verify_moip_account_notification
-      end
-    end
   end
 
   describe '#reached_goal?' do
