@@ -35,26 +35,4 @@ RSpec.describe Projects::PostsController, type: :controller do
       it { is_expected.to redirect_to edit_project_path(project_post.project, anchor: 'posts') }
     end
   end
-
-  describe "POST create" do
-    before{ post :create, project_id: project_post.project.id, locale: 'pt', project_post: {title: 'title', comment: 'project_post comment'} }
-    context 'When user is a guest' do
-      it{ expect(ProjectPost.where(project_id: project_post.project.id).count).to eq(1) }
-    end
-
-    context "When user is a registered user but don't the project owner" do
-      let(:current_user){ create(:project).user }
-      it{ expect(ProjectPost.where(project_id: project_post.project.id).count).to eq(1) }
-    end
-
-    context 'When user is admin' do
-      let(:current_user) { FactoryGirl.create(:user, admin: true) }
-      it{ expect(ProjectPost.where(project_id: project_post.project.id).count).to eq(2) }
-    end
-
-    context 'When user is project_owner' do
-      let(:current_user) { project_post.project.user }
-      it{ expect(ProjectPost.where(project_id: project_post.project.id).count).to eq(2) }
-    end
-  end
 end

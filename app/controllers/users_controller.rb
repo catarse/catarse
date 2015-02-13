@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   after_filter :redirect_user_back_after_login, only: %i[show]
   inherit_resources
   defaults finder: :find_active!
-  actions :show, :update, :unsubscribe_notifications, :credits, :destroy, :edit
+  actions :show, :update, :unsubscribe_notifications, :destroy, :edit
   respond_to :json, only: [:contributions, :projects]
 
   def destroy
@@ -20,11 +20,6 @@ class UsersController < ApplicationController
     redirect_to user_path(current_user, anchor: 'unsubscribes')
   end
 
-  def credits
-    authorize resource
-    redirect_to user_path(current_user, anchor: 'credits')
-  end
-
   def settings
     authorize resource
     redirect_to user_path(current_user, anchor: 'settings')
@@ -35,7 +30,6 @@ class UsersController < ApplicationController
     show!{
       fb_admins_add(@user.facebook_id) if @user.facebook_id
       @title = "#{@user.display_name}"
-      @credits = @user.contributions.can_refund
       @subscribed_to_posts = @user.posts_subscription
       @unsubscribes = @user.project_unsubscribes
       @credit_cards = @user.credit_cards
@@ -141,9 +135,5 @@ class UsersController < ApplicationController
 
   def permitted_params
     params.permit(policy(resource).permitted_attributes)
-  end
-
-  def use_catarse_boostrap
-    ["show", "edit", "update"].include?(action_name) ? 'catarse_bootstrap' : 'application'
   end
 end
