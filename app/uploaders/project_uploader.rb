@@ -4,6 +4,7 @@ class ProjectUploader < ImageUploader
 
   version :project_thumb
   version :project_thumb_small
+  version :project_thumb_large
   version :project_thumb_facebook
 
   def store_dir
