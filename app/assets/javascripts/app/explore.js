@@ -33,6 +33,9 @@ App.addChild('Explore', _.extend({
     if(window.location.hash == ''){
       this.fetchPage();
     }
+    if(window.location.search.indexOf("pg_search") >= 0){
+      this.toggleCategoryList();
+    }
   },
 
   toggleCategoryList: function(event) {
