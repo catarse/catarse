@@ -119,7 +119,7 @@ pt:
       facebook_link_label: "Perfil do facebook"
       facebook_link_hint: "Cole o link do seu perfil"
       uploaded_image_label: "Imagem do perfil"
-      uploaded_image_hint: "Essa imagem será utilizada como a miniatura de seu perfil (PNG, JPG tamanho ideal 140px x 140px)"
+      uploaded_image_hint: "Essa imagem será utilizada como a miniatura de seu perfil (PNG, JPG tamanho ideal 280 x 280)"
       name_label: "Nome"
       name_hint: "Esse é o nome que os usuários irão ver no seu perfil"
     dashboard_reward:
@@ -152,7 +152,7 @@ pt:
       card: 'Card do projeto'
       card_subtitle: 'Sabe aquele cardzinho de projeto que aparece na home e na busca? Pois então, faz bonito pois dizem que a primeira impressão é a que fica ;)'
       image: 'Imagem do projeto'
-      image_hint: 'Essa imagem será utilizada como a miniatura de seu projeto (PNG, JPG tamanho 650px x350px)'
+      image_hint: 'Essa imagem será utilizada como a miniatura de seu projeto (PNG, JPG tamanho 600 x 340)'
       headline: 'Frase de efeito'
       headline_hint: 'Será utilizada no card do projeto, junto com a imagem acima (miniatura). No máximo 100 caracteres.'
       submit: 'Salvar'
