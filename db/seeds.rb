@@ -77,13 +77,6 @@ puts 'Seeding the database...'
    }) if conf.new_record?
 end
 
-
-Channel.find_or_create_by!(name: "Channel name") do |c|
-  c.permalink = "sample-permalink"
-  c.description = "Lorem Ipsum"
-end
-
-
 OauthProvider.find_or_create_by!(name: 'facebook') do |o|
   o.key = 'your_facebook_app_key'
   o.secret = 'your_facebook_app_secret'
