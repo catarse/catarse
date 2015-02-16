@@ -22,7 +22,7 @@ class ProjectUploader < ImageUploader
   end
 
   version :project_thumb_large do
-    process resize_to_fill: [650,350]
+    process resize_to_fill: [600,340]
     process convert: :jpg
   end
 
