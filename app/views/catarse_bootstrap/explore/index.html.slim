@@ -24,7 +24,7 @@
       a.explore-toggle.fontsize-largest.link-hidden-white.fontweight-light href="#" 
         | Explore projetos incríveis &nbsp;
         span.fa.fa-angle-down
-    #categories-wrapper
+    #categories-wrapper.w-hidden
       .w-row
         - unless @categories.empty?
           - @categories.each_with_index do |category, index|
