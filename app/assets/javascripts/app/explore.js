@@ -2,7 +2,8 @@ App.addChild('Explore', _.extend({
   el: '.content[data-action="index"][data-controller-name="explore"]',
 
   events: {
-    'click .explore-toggle':'toggleCategoryList'
+    'click .explore-toggle':'toggleCategoryList',
+    'click .explore-link' : 'toggleCategoryList'
   },
 
   routeFilters: {
@@ -32,6 +33,7 @@ App.addChild('Explore', _.extend({
 
     if(window.location.hash == ''){
       this.fetchPage();
+      this.toggleCategoryList();
     }
     if(window.location.search.indexOf("pg_search") >= 0){
       this.toggleCategoryList();
@@ -45,7 +47,6 @@ App.addChild('Explore', _.extend({
 
   selectLink: function(){
     this.$('.follow-category').hide();
-    this.toggleCategoryList();
 
     var link = this.$('a[href="' + window.location.hash + '"]')
     this.$('a.selected').removeClass('selected');
