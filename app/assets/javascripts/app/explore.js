@@ -35,9 +35,7 @@ App.addChild('Explore', _.extend({
     if(window.location.hash == '' && search_string == -1){
       this.toggleCategoryList();
     }
-    else if(search_string >= 0){
-      this.fetchPage();
-    }
+    this.fetchPage();
   },
 
   toggleCategoryList: function(event) {
