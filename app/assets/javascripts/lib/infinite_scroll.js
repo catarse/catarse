@@ -11,13 +11,9 @@ Skull.InfiniteScroll = {
   },
 
   fetchPage: function(){
-    // the isLoaderDivVisible check if the div is already in the view pane to load more content
-    // the $loader.is(:visible) is here to avoid trigerring two concurrent fetchPage calls
-    if(this.isLoaderDivVisible() && !this.$loader.is(':visible') && !this.EOF){
-      this.$loader.show();
-      $.get(this.path, this.filter).success(this.onSuccess);
-      this.filter.page += 1;
-    }
+    this.$loader.show();
+    $.get(this.path, this.filter).success(this.onSuccess);
+    this.filter.page += 1;
   },
 
   onSuccess: function(data){
@@ -38,6 +34,10 @@ Skull.InfiniteScroll = {
   },
 
   onScroll: function(event){
-    this.fetchPage();
+    // the isLoaderDivVisible check if the div is already in the view pane to load more content
+    // the $loader.is(:visible) is here to avoid trigerring two concurrent fetchPage calls
+    if(this.isLoaderDivVisible() && !this.$loader.is(':visible') && !this.EOF){
+      this.fetchPage();
+    }
   }
 };

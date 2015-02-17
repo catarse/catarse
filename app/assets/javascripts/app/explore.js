@@ -39,7 +39,6 @@ App.addChild('Explore', _.extend({
   },
 
   toggleCategoryList: function(event) {
-    this.fetchPage();
     this.$('#categories-wrapper').slideToggle();
   },
 
