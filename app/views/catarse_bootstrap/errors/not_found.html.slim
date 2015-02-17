@@ -1,8 +1,10 @@
 = render 'devise/shared/header'
-.row
-  .large-5.large-centered.columns
-    .box.animated.fadeIn
-      h2.text-center= t('.title')
-      hr
-      .large-11.columns.large-centered
+
+.section
+  .w-container.u-text-center
+    .w-row
+      .w-col.w-col-8.w-col-push-2
+        .fontsize-large= t('.title')
+        .divider
+        .large-11.columns.large-centered
         p= t('.text')
