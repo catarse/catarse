@@ -18,20 +18,20 @@
 
 nav.project-nav.u-text-center.u-marginbottom-30.profile style='z-index: 10; position: relative;'
   .w-container
-    = link_to '#contributed', id: 'contributed_link', class: 'nav-tab' , data: {target: '#contributed'} do
+    = link_to '#contributed', id: 'contributed_link', class: 'nav-tab' , data: {target: '#contributed-tab'} do
       | Apoiados &nbsp;
       span.badge= resource.total_contributed_projects
-    = link_to '#created', id: 'created_link', class: 'nav-tab' , data: {target: '#created'} do
+    = link_to '#created', id: 'created_link', class: 'nav-tab' , data: {target: '#created-tab'} do
       | Criados &nbsp;
       span.badge= resource.created_projects.count
-    = link_to '#about', id: 'about_link', class: 'nav-tab' , data: {target: '#about'} do
+    = link_to '#about', id: 'about_link', class: 'nav-tab' , data: {target: '#about-tab'} do
       | Sobre
 
 
 section.section
   .w-container
     .w-row
-      #contributed.content.w-hidden
+      #contributed-tab.content.w-hidden
         - if resource.contributed_projects.empty?
           .w-row.u-text-center
             .w-col.w-col-2
@@ -40,7 +40,7 @@ section.section
             .w-col.w-col-2
         - else
           == render_projects resource.contributed_projects.most_recent_first, 'profile_contributed_projects', { wrapper_class: 'w-col w-col-4 u-marginbottom-30' }
-      #created.content.w-hidden
+      #created-tab.content.w-hidden
         - if resource.created_projects.empty?
           .w-row.u-text-center
             .w-col.w-col-2
@@ -49,7 +49,7 @@ section.section
             .w-col.w-col-2
         - else
           == render_projects resource.created_projects.most_recent_first, 'profile_created_projects', { wrapper_class: 'w-col w-col-4 u-marginbottom-30' }
-      #about.content.w-hidden
+      #about-tab.content.w-hidden
         = render 'user_about', resource: resource
 
 = render 'shared/footer_big'
