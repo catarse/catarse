@@ -2317,7 +2317,7 @@ p {
   color: white;
 }
 .section-blue-one {
-  padding-top: 51px;
+  padding-top: 40px;
   padding-bottom: 51px;
   background-color: white;
 }
@@ -2461,9 +2461,8 @@ p {
   background-color: #3f4752;
 }
 .icon-hero {
-  width: 120px;
-  margin-top: -40px;
-  margin-bottom: 10px;
+  width: 100px;
+  margin-bottom: 15px;
 }
 .search-pre-result {
   position: absolute;
@@ -2557,6 +2556,16 @@ p {
 }
 .card-guide:hover {
   background-color: #f1f4f4;
+}
+.icon-hero-small {
+  width: 68px;
+  margin-right: 15px;
+}
+.hero-medium {
+  position: relative;
+  height: 370px;
+  margin-top: -65px;
+  padding-top: 130px;
 }
 html.w-mod-js *[data-ix="fade-in"] {
   opacity: 0;
@@ -2933,6 +2942,10 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
   }
   .creditcard-brand {
     font-size: 15px;
+  }
+  .hero-medium {
+    height: 330px;
+    padding-top: 120px;
   }
 }
 @media (max-width: 767px) {
@@ -3385,6 +3398,10 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
   .creditcard-brand {
     margin-bottom: 20px;
   }
+  .hero-medium {
+    height: 250px;
+    padding-top: 100px;
+  }
 }
 @media (max-width: 479px) {
   h2 {
@@ -3707,6 +3724,9 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
   .following {
     padding-top: 13px;
     font-size: 11px;
+  }
+  .hero-medium {
+    padding-top: 90px;
   }
 }
 
