@@ -20,8 +20,8 @@ pt:
       form:
         blocks:
           first:
-            title: "Bem-vindo ;)"
-            description: "Só precisamos saber 3 coisas para que você passe para o próximo passo, onde você já terá uma visualização do seu projeto, tal como ele irá ao ar, caso seja selecionado."
+            title: "Bem Vindo!"
+            description: "Preencha as informações abaixo para iniciar o rascunho do seu projeto."
 
         info:
           permalink: http://catarse.me/

@@ -7,14 +7,14 @@
               .w-row.u-marginbottom-30.card.card-terciary
                 .w-col.w-col-5.w-sub-col
                   label.field-label.fontweight-semibold   Imagem do perfil
-                  label.field-label.fontsize-smallest.fontcolor-secondary   Essa imagem será utilizada como a miniatura de seu perfil (PNG, JPG tamanho&nbsp;512x400)
+                  label.field-label.fontsize-smallest.fontcolor-secondary   Essa imagem será utilizada como a miniatura de seu perfil (PNG, JPG tamanho 280 x 280)
                 .w-col.w-col-4.w-sub-col
                   = form.input :uploaded_image, label: '', as: :file, required: false, hint: (@user.uploaded_image.present? ? image_tag(@user.uploaded_image.thumb_avatar.url, size: '220x172#') : t('formtastic.hints.project.uploaded_image') ) 
 
               .w-row.u-marginbottom-30.card.card-terciary
                 .w-col.w-col-5.w-sub-col
                   label.field-label.fontweight-semibold   Header do perfil
-                  label.field-label.fontsize-smallest.fontcolor-secondary   Essa imagem será utilizada como o background do header de seu perfil público (PNG, JPG tamanho xxxxx)
+                  label.field-label.fontsize-smallest.fontcolor-secondary   Essa imagem será utilizada como o background do header de seu perfil público (PNG, JPG)
                 .w-col.w-col-4.w-sub-col
                   = form.input :cover_image, label: '', as: :file, required: false, hint: (@user.cover_image.present? ? image_tag(@user.cover_image.base.url, size: '220x172#') : t('formtastic.hints.project.uploaded_image') ) 
 
