@@ -158,6 +158,10 @@ class Project < ActiveRecord::Base
     ['online', 'waiting_funds', 'successful', 'failed'].include? state
   end
 
+  def can_update_account?
+    ['online', 'waiting_funds', 'successful', 'failed'].exclude? state
+  end
+
   def can_show_preview_link?
     ['draft', 'approved', 'rejected', 'in_analysis'].include? state
   end
