@@ -37,7 +37,7 @@
             | &nbsp;&nbsp;
             = t('.about_you_tab')
           - if @project.can_show_account_link?
-            = link_to '#user_settings', id: 'dashboard_user_settings_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_user_settings'} do
+            = link_to '#user_settings', id: 'dashboard_user_settings_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_user_settings', tab_group: 'edit'} do
               = @project.decorate.status_icon_for('user_settings')
               | &nbsp;&nbsp;
               = t('.account_tab')
