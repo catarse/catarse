@@ -21,10 +21,15 @@
           - if current_user && current_user.admin?
             .w-row.u-marginbottom-30.card.card-terciary
               .w-col.w-col-5.w-sub-col
-                label.field-label.fontweight-semibold Permalink
-                label.field-label.fontsize-smallest.fontcolor-secondary   
+                label.field-label.fontweight-semibold URL do seu perfil
+                label.field-label.fontsize-smallest.fontcolor-secondary Seu perfil público pode ter um endereço personalizado   
               .w-col.w-col-7
-                = form.input_field :permalink, as: :string, class: 'positive'
+                .w-row
+                  .w-col.w-col-6.w-col-small-6.w-col-tiny-6
+                    = form.input_field :permalink, as: :string, class: 'text-field positive prefix'
+                  .w-col.w-col-6.w-col-small-6.w-col-tiny-6.text-field.postfix.no-hover
+                    .fontcolor-secondary.fontsize-smaller &nbsp;&nbsp;.catarse.me
+                
 
           .w-row.u-marginbottom-30.card.card-terciary
             .w-col.w-col-5.w-sub-col
