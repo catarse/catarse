@@ -117,6 +117,16 @@ p {
   border-top: 1px solid #e9e9ec;
   background-color: #f1f4f4;
 }
+.section.section-gray-one.hover {
+  -webkit-transition: all 500ms ease;
+  transition: all 500ms ease;
+}
+.section.section-gray-one.hover:hover {
+  background-color: #bfed99;
+}
+.section.section-gray-one.blue {
+  background-color: #9aa9a5;
+}
 .section.negative {
   background-color: #3f4752;
   color: #f1f4f4;
@@ -214,7 +224,7 @@ p {
   margin-top: 0px;
   margin-bottom: 0px;
   border-style: solid;
-  border-color: rgba(255, 255, 255, 0.13);
+  border-color: rgba(255, 255, 255, 0.12);
   background-color: transparent;
   color: rgba(255, 255, 255, 0.61);
 }
@@ -1034,7 +1044,7 @@ p {
   padding-bottom: 12px;
   border-style: solid;
   border-width: 1px;
-  border-color: rgba(64, 155, 255, 0.03);
+  border-color: rgba(64, 155, 255, 0.02);
   background-color: rgba(64, 155, 255, 0.09);
   -webkit-transition-delay: initial;
   transition-delay: initial;
@@ -1652,7 +1662,6 @@ p {
   padding-top: 35px;
   border-top: 1px solid rgba(121, 128, 139, 0.27);
   color: rgba(241, 244, 244, 0.54);
-  text-align: center;
 }
 .user-profile {
   position: relative;
@@ -1767,6 +1776,9 @@ p {
 .u-right {
   float: right;
 }
+.u-right.logo-footer {
+  margin-top: -13px;
+}
 .dropdown-icon {
   position: absolute;
   float: right;
@@ -1825,9 +1837,6 @@ p {
   width: auto;
   border-color: rgba(255, 255, 255, 0.13);
   background-color: transparent;
-}
-.btn-dark.btn-attached:hover {
-  background-color: #e9e9ec;
 }
 .btn-secondary-dark {
   border: 1px solid white;
@@ -2473,7 +2482,7 @@ p {
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
   background-color: #f1f4f4;
-  box-shadow: rgba(0, 0, 0, 0.32) 1px 1px 3px 0px;
+  box-shadow: rgba(0, 0, 0, 0.31) 1px 1px 3px 0px;
 }
 .content-hero-profile {
   position: absolute;
@@ -2537,8 +2546,8 @@ p {
   padding-right: 12px;
 }
 .btn {
-  background-image: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.07), transparent 38%);
-  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.07), transparent 38%);
+  background-image: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.06), transparent 38%);
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.06), transparent 38%);
 }
 .creditcard-brand {
   margin-top: -15px;
@@ -2549,6 +2558,9 @@ p {
 .card-embed {
   width: 100%;
 }
+.bg-green {
+  background-color: #e9e9ec;
+}
 .card-guide {
   width: 100%;
   -webkit-transition: background-color 500ms ease;
@@ -2558,11 +2570,18 @@ p {
 .card-guide:hover {
   background-color: #f1f4f4;
 }
+.icon-hero-small {
+  width: 68px;
+  margin-right: 15px;
+}
 .hero-medium {
   position: relative;
   height: 370px;
   margin-top: -65px;
   padding-top: 130px;
+}
+.logo-footer {
+  margin-top: -9px;
 }
 html.w-mod-js *[data-ix="fade-in"] {
   opacity: 0;
@@ -2963,6 +2982,9 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
   }
   .section.section-gray-one {
     padding-top: 50px;
+  }
+  .section.section-gray-one.hover:hover {
+    background-color: #f1f4f4;
   }
   .box-login {
     border-style: solid;
