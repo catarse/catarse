@@ -60,7 +60,7 @@
             td.project_info
               = contribution.project.state
             td.user_info title=contribution.user.display_name
-              = link_to user_path(contribution.user) do
+              = link_to edit_user_path(contribution.user) do
                 = image_tag contribution.user.display_image, class: 'user_img'
               .user_id= best_in_place [:admin, contribution], :user_id, method: :put, type: :input
             td= contribution.value

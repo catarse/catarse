@@ -12,7 +12,7 @@
         .w-hidden-small.w-hidden-tiny.u-marginbottom-40.fontsize-base
           | Chegou junto em #{localize(resource.created_at, format: "%B de %Y")}
           br
-          | Apoiou #{resource.contributed_projects.count} projetos e já criou #{resource.created_projects.count} projetos&nbsp;
+          | Apoiou #{resource.total_contributed_projects} projetos e já criou #{resource.created_projects.count} projetos&nbsp;
       .w-col.w-col-3
   .hero-profile style="background-image: url('#{resource.cover_image.try(:base).try(:url)}')"
 
@@ -48,7 +48,7 @@ section.section
               .fontsize-base #{resource.name} ainda não criou nenhum projeto.
             .w-col.w-col-2
         - else
-          == render_projects resource.created_projects.most_recent_first, 'profile_created_projects', { wrapper_class: 'w-col w-col-4 u-marginbottom-30' }
+          == render_projects resource.created_projects.order_status.most_recent_first, 'profile_created_projects', { wrapper_class: 'w-col w-col-4 u-marginbottom-30' }
       #about-tab.content.w-hidden
         = render 'user_about', resource: resource
 
