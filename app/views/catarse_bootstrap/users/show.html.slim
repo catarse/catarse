@@ -48,7 +48,7 @@ section.section
               .fontsize-base #{resource.name} ainda não criou nenhum projeto.
             .w-col.w-col-2
         - else
-          == render_projects resource.created_projects.most_recent_first, 'profile_created_projects', { wrapper_class: 'w-col w-col-4 u-marginbottom-30' }
+          == render_projects resource.created_projects.order_status.most_recent_first, 'profile_created_projects', { wrapper_class: 'w-col w-col-4 u-marginbottom-30' }
       #about-tab.content.w-hidden
         = render 'user_about', resource: resource
 
