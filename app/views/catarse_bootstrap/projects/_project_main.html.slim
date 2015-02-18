@@ -78,7 +78,7 @@ section.section
             .btn.btn-medium.btn-fb.btn-tweet
               = render_twitter_mobile(url: project_by_slug_url(permalink: @project.permalink), title: @project.name)
               = t('.tweet')
-        - if policy(@project).update? && @project.can_show_funding_period?
+        - if policy(@project).update?
           .w-row.w-hidden-small.w-hidden-tiny.u-marginbottom-30
             .w-col.w-col-2
             .w-col.w-col-8
