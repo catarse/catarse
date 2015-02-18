@@ -117,6 +117,16 @@ p {
   border-top: 1px solid #e9e9ec;
   background-color: #f1f4f4;
 }
+.section.section-gray-one.hover {
+  -webkit-transition: all 500ms ease;
+  transition: all 500ms ease;
+}
+.section.section-gray-one.hover:hover {
+  background-color: #bfed99;
+}
+.section.section-gray-one.blue {
+  background-color: #9aa9a5;
+}
 .section.negative {
   background-color: #3f4752;
   color: #f1f4f4;
@@ -1034,7 +1044,7 @@ p {
   padding-bottom: 12px;
   border-style: solid;
   border-width: 1px;
-  border-color: rgba(64, 155, 255, 0.03);
+  border-color: rgba(64, 155, 255, 0.01);
   background-color: rgba(64, 155, 255, 0.09);
   -webkit-transition-delay: initial;
   transition-delay: initial;
@@ -1652,7 +1662,6 @@ p {
   padding-top: 35px;
   border-top: 1px solid rgba(121, 128, 139, 0.27);
   color: rgba(241, 244, 244, 0.54);
-  text-align: center;
 }
 .user-profile {
   position: relative;
@@ -1767,6 +1776,9 @@ p {
 .u-right {
   float: right;
 }
+.u-right.logo-footer {
+  margin-top: -13px;
+}
 .dropdown-icon {
   position: absolute;
   float: right;
@@ -1823,11 +1835,8 @@ p {
 }
 .btn-dark.btn-attached {
   width: auto;
-  border-color: rgba(255, 255, 255, 0.13);
+  border-color: rgba(255, 255, 255, 0.12);
   background-color: transparent;
-}
-.btn-dark.btn-attached:hover {
-  background-color: #e9e9ec;
 }
 .btn-secondary-dark {
   border: 1px solid white;
@@ -2473,7 +2482,7 @@ p {
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
   background-color: #f1f4f4;
-  box-shadow: rgba(0, 0, 0, 0.32) 1px 1px 3px 0px;
+  box-shadow: rgba(0, 0, 0, 0.30) 1px 1px 3px 0px;
 }
 .content-hero-profile {
   position: absolute;
@@ -2533,8 +2542,9 @@ p {
   padding-bottom: 0px;
 }
 .following {
-  padding-top: 9px;
+  padding-top: 12px;
   padding-right: 12px;
+  font-size: 14px;
 }
 .btn {
   background-image: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.07), transparent 38%);
@@ -2549,6 +2559,9 @@ p {
 .card-embed {
   width: 100%;
 }
+.bg-green {
+  background-color: #e9e9ec;
+}
 .card-guide {
   width: 100%;
   -webkit-transition: background-color 500ms ease;
@@ -2558,11 +2571,28 @@ p {
 .card-guide:hover {
   background-color: #f1f4f4;
 }
+.icon-hero-small {
+  width: 68px;
+  margin-right: 15px;
+}
 .hero-medium {
   position: relative;
   height: 370px;
   margin-top: -65px;
   padding-top: 130px;
+}
+.logo-footer {
+  margin-top: -9px;
+}
+.btn-unfollow {
+  border: 1px solid #7cc142;
+  background-color: white;
+  color: #7cc142;
+}
+.btn-unfollow:hover {
+  border-color: #e86666;
+  background-color: white;
+  color: #e86666;
 }
 html.w-mod-js *[data-ix="fade-in"] {
   opacity: 0;
@@ -2963,6 +2993,16 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
   }
   .section.section-gray-one {
     padding-top: 50px;
+  }
+  .section.section-gray-one.hover:hover {
+    background-color: #f1f4f4;
+  }
+  .text-field.negative {
+    background-color: rgba(241, 244, 244, 0.61);
+    color: #3f4752;
+  }
+  .text-field.negative:hover {
+    background-color: rgba(241, 244, 244, 0.61);
   }
   .box-login {
     border-style: solid;
@@ -3389,6 +3429,9 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
   .hero-search {
     background-position: 50% 50%;
   }
+  .following {
+    display: none;
+  }
   .creditcard-brand {
     margin-bottom: 20px;
   }
@@ -3716,6 +3759,7 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     margin-bottom: 20px;
   }
   .following {
+    display: none;
     padding-top: 13px;
     font-size: 11px;
   }
