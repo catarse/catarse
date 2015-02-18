@@ -1,5 +1,5 @@
 class AutoCompleteProjectsController < ApplicationController
-  has_scope :search_on_name
+  has_scope :pg_search
   respond_to :html
 
   def index
