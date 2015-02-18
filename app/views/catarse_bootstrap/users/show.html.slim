@@ -12,7 +12,7 @@
         .w-hidden-small.w-hidden-tiny.u-marginbottom-40.fontsize-base
           | Chegou junto em #{localize(resource.created_at, format: "%B de %Y")}
           br
-          | Apoiou #{resource.contributed_projects.count} projetos e já criou #{resource.created_projects.count} projetos&nbsp;
+          | Apoiou #{resource.total_contributed_projects} projetos e já criou #{resource.created_projects.count} projetos&nbsp;
       .w-col.w-col-3
   .hero-profile style="background-image: url('#{resource.cover_image.try(:base).try(:url)}')"
 
