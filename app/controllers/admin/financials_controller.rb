@@ -3,7 +3,7 @@ class Admin::FinancialsController < Admin::BaseController
   inherit_resources
   defaults  resource_class: Project, collection_name: 'projects', instance_name: 'project'
 
-  has_scope :search_on_name, :user_name_contains, :financial, :with_state, :by_progress, :with_payment_engine
+  has_scope :pg_search, :user_name_contains, :financial, :with_state, :by_progress, :with_payment_engine
   has_scope :between_expires_at, using: [ :start_at, :ends_at ], allow_blank: true
 
   respond_to :html, :csv

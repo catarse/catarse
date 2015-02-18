@@ -34,7 +34,7 @@ App.addChild('Search', {
 
     this.$('.search-pre-result').show();
 
-    $.get(this.$('.search-pre-result').data('searchpath'), { search_on_name: value, limit: 5 }, function(response){
+    $.get(this.$('.search-pre-result').data('searchpath'), { pg_search: value, limit: 5 }, function(response){
       if($.trim(response) == "") {
         that.$('.search-pre-result').hide();
       } else {

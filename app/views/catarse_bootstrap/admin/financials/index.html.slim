@@ -4,7 +4,7 @@
   = simple_form_for '', url: admin_financials_path, method: :get do |form|
     .w-row
       .w-col-2.w-col
-        = form.input :search_on_name, as: :string, label: t('.permalink'), input_html: {value: current_scopes[:search_on_name]}
+        = form.input :pg_search, as: :string, label: t('.permalink'), input_html: {value: current_scopes[:search_on_name]}
       .w-col-2.w-col
         = form.input "between_expires_at[start_at]", as: :string, label: t(".between_expires_at"), input_html: {value: params[:between_expires_at] && params[:between_expires_at][:start_at], data: { fixed_mask: '99/99/9999' } }
       .w-col-2.w-col
