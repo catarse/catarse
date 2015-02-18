@@ -108,6 +108,11 @@ class ProjectsController < ApplicationController
     render partial: 'card', layout: 'embed', locals: {embed_link: true}
   end
 
+  def embed_panel
+    resource
+    render partial: 'project_embed'
+  end
+
   def about_mobile
     resource
   end
