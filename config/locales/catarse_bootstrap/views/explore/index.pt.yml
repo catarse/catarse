@@ -5,7 +5,7 @@ pt:
       success_unfollow: "Você deixou de seguir essa categoria %{name}"
       follow: Seguir
       unfollow: Deixar de seguir
-      following: seguindo
+      following: seguidores
       categories: Categorias
       expiring: Na reta final
       in_funding: No ar
