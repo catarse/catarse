@@ -46,7 +46,7 @@ App.addChild('Project', _.extend({
   loadEmbed: function() {
     var that = this;
 
-    if(this.$embed.find('.loader').length > 0) {
+    if(this.$embed.is(':empty')) {
       $.get(this.$embed.data('path')).success(function(data){
         that.$embed.html(data);
       });
