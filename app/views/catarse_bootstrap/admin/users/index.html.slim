@@ -44,7 +44,7 @@
       tbody
         - for user in @users do
           tr id=user.id class=cycle("card", "card card-secondary")
-            td.w-col-1.w-col= link_to user.id, user_path(user), target: '_blank'
+            td.w-col-1.w-col= link_to user.id, edit_user_path(user), target: '_blank'
             td.w-col-3.w-col= link_to user.name, admin_contributions_path(by_user_id: user.id), target: '_blank'
             td.w-col-3.w-col= user.email
             td.w-col-2.w-col= user.user_total ? user.user_total.sum : 0
