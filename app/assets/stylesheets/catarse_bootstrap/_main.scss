@@ -56,7 +56,7 @@ p {
 .btn:hover {
   border-color: #96d463;
   background-color: #96d463;
-  opacity: 1;
+  box-shadow: rgba(63, 71, 82, 0.38) 1px 1px 3px 0px;
 }
 .btn.bt-medium {
   display: block;
@@ -112,16 +112,10 @@ p {
 .section.section-gray-one {
   margin-top: 60px;
   margin-bottom: -80px;
-  padding-top: 79px;
-  padding-bottom: 119px;
+  padding-top: 95px;
+  padding-bottom: 139px;
+  border-top: 1px solid #e9e9ec;
   background-color: #f1f4f4;
-}
-.section.section-gray-one.hover {
-  -webkit-transition: all 500ms ease;
-  transition: all 500ms ease;
-}
-.section.section-gray-one.hover:hover {
-  background-color: #bfed99;
 }
 .section.negative {
   background-color: #3f4752;
@@ -220,15 +214,20 @@ p {
   margin-top: 0px;
   margin-bottom: 0px;
   border-style: solid;
-  border-color: rgba(37, 49, 57, 0.88);
-  background-color: rgba(37, 49, 57, 0.6);
-  color: #ddd;
+  border-color: rgba(255, 255, 255, 0.13);
+  background-color: transparent;
+  color: rgba(255, 255, 255, 0.61);
 }
 .text-field.negative:hover {
   border-style: solid;
-  border-color: rgba(37, 49, 57, 0.6);
-  background-color: rgba(37, 49, 57, 0.6);
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 23px 0px inset;
+  background-color: #f1f4f4;
+  box-shadow: rgba(0, 0, 0, 0.18) 0px 0px 23px 0px inset;
+  color: #3f4752;
+}
+.text-field.negative:focus {
+  background-color: #f1f4f4;
+  box-shadow: rgba(0, 0, 0, 0.18) 0px 0px 23px 0px inset;
+  color: #3f4752;
 }
 .text-field.medium {
   height: 60px;
@@ -1035,7 +1034,7 @@ p {
   padding-bottom: 12px;
   border-style: solid;
   border-width: 1px;
-  border-color: rgba(64, 155, 255, 0.09);
+  border-color: rgba(64, 155, 255, 0.03);
   background-color: rgba(64, 155, 255, 0.09);
   -webkit-transition-delay: initial;
   transition-delay: initial;
@@ -1649,10 +1648,11 @@ p {
   font-weight: 600;
 }
 .footer-full-copyleft {
-  margin-top: 30px;
-  padding-top: 25px;
-  border-top: 1px solid rgba(121, 128, 139, 0.76);
+  margin-top: 80px;
+  padding-top: 35px;
+  border-top: 1px solid rgba(121, 128, 139, 0.27);
   color: rgba(241, 244, 244, 0.54);
+  text-align: center;
 }
 .user-profile {
   position: relative;
@@ -1823,12 +1823,11 @@ p {
 }
 .btn-dark.btn-attached {
   width: auto;
-  border-color: rgba(37, 49, 57, 0.88);
-  background-color: rgba(37, 49, 57, 0.6);
+  border-color: rgba(255, 255, 255, 0.13);
+  background-color: transparent;
 }
 .btn-dark.btn-attached:hover {
-  border-color: rgba(37, 49, 57, 0.88);
-  background-color: rgba(37, 49, 57, 0.88);
+  background-color: #e9e9ec;
 }
 .btn-secondary-dark {
   border: 1px solid white;
@@ -1845,7 +1844,7 @@ p {
   width: 86.4%;
 }
 .btn-edit {
-  border-color: #409bff #409bff #4389bf;
+  border-color: #4389bf;
   background-color: #4389bf;
   color: white;
   text-decoration: none;
@@ -2204,14 +2203,15 @@ p {
   position: relative;
 }
 .btn-terciary {
-  border: 1px solid #79808b;
-  background-color: transparent;
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgba(121, 128, 139, 0.27);
+  background-color: white;
   color: #79808b;
 }
 .btn-terciary:hover {
-  border-color: #3f4752;
-  background-color: rgba(241, 244, 244, 0.79);
-  color: #3f4752;
+  border-color: #79808b;
+  background-color: white;
 }
 .btn-no-border {
   border: 1px solid transparent;
@@ -2330,20 +2330,20 @@ p {
   background-color: #f1f4f4;
 }
 .hero-guide {
-  background-image: url('../images/Home_guia3.jpg');
+  background-image: url('../images/hero-guia-green.jpg');
   background-position: 50% 50%;
   background-size: cover;
   background-attachment: scroll;
   color: white;
 }
 .hero-jobs {
-  background-image: url('../images/HOME-CAREIRAS.jpg');
+  background-image: url('../images/hero-jobs-gray.jpg');
   background-position: 50% 50%;
   background-size: cover;
   color: white;
 }
 .hero-back {
-  background-image: url('../images/home-apoiador.jpg');
+  background-image: url('../images/hero-back.jpg');
   background-position: 50% 50%;
   background-size: cover;
   color: white;
@@ -2473,7 +2473,7 @@ p {
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
   background-color: #f1f4f4;
-  box-shadow: rgba(0, 0, 0, 0.29) 1px 1px 3px 0px;
+  box-shadow: rgba(0, 0, 0, 0.32) 1px 1px 3px 0px;
 }
 .content-hero-profile {
   position: absolute;
@@ -2523,7 +2523,7 @@ p {
   margin-top: -65px;
   margin-bottom: 30px;
   padding-top: 110px;
-  background-color: #446d8a;
+  background-color: #5b97c6;
   background-image: url('../images/hero-explore.jpg');
   background-position: 50% 50%;
   background-size: cover;
@@ -2536,6 +2536,10 @@ p {
   padding-top: 9px;
   padding-right: 12px;
 }
+.btn {
+  background-image: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.07), transparent 38%);
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.07), transparent 38%);
+}
 .creditcard-brand {
   margin-top: -15px;
   color: rgba(121, 128, 139, 0.52);
@@ -2545,9 +2549,6 @@ p {
 .card-embed {
   width: 100%;
 }
-.bg-green {
-  background-color: #e9e9ec;
-}
 .card-guide {
   width: 100%;
   -webkit-transition: background-color 500ms ease;
@@ -2556,10 +2557,6 @@ p {
 }
 .card-guide:hover {
   background-color: #f1f4f4;
-}
-.icon-hero-small {
-  width: 68px;
-  margin-right: 15px;
 }
 .hero-medium {
   position: relative;
@@ -2966,9 +2963,6 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
   }
   .section.section-gray-one {
     padding-top: 50px;
-  }
-  .section.section-gray-one.hover:hover {
-    background-color: #f1f4f4;
   }
   .box-login {
     border-style: solid;
