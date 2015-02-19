@@ -24,10 +24,7 @@ class Contribution < ActiveRecord::Base
     using: {tsearch: {dictionary: "portuguese"}},
     ignoring: :accents
 
-  pg_search_scope :search_on_acquirer,
-    against: [:acquirer_name],
-    ignoring: :accents
-
+  scope :search_on_acquirer, ->(acquirer_name){ where(acquirer_name: acquirer_name) }
   scope :available_to_count, ->{ with_states(['confirmed', 'requested_refund', 'refunded']) }
   scope :available_to_display, ->{ with_states(['confirmed', 'requested_refund', 'refunded', 'waiting_confirmation']) }
   scope :by_id, ->(id) { where(id: id) }
