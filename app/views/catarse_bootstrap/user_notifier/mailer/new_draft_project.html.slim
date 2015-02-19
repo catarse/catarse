@@ -14,6 +14,9 @@ br
 b Nome:
 = " #{project.name}"
 br
+b Categoria:
+= " #{project.category.try(:name_pt)}"
+br
 b Meta:
 = " #{project.display_goal}"
 br
