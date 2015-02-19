@@ -1,5 +1,5 @@
 App.addChild('Project', _.extend({
-  el: '.content[data-action="show"][data-controller-name="projects"]',
+  el: 'body[data-action="show"][data-controller-name="projects"]',
 
   events: {
     'click #toggle_warning a' : 'toggleWarning',
