@@ -116,7 +116,7 @@ group :production do
   gem 'rails_12factor'
 
   # Monitoring with the new new relic
-  gem 'newrelic_rpm', '3.6.5.130'
+  gem 'newrelic_rpm'
 
   # Using dalli and memcachier have not presented significative performance gains
   # Probably this is due to our pattern of cache usage
@@ -132,6 +132,7 @@ group :development do
   gem 'thin'
   # Uncomment only for optimization, should be commented on master branch
   # gem 'rack-mini-profiler'
+  # gem 'ruby-prof'
 end
 
 group :test, :development do
