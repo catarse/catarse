@@ -12,7 +12,7 @@ html lang="#{I18n.locale}" xmlns:fb="http://ogp.me/ns/fb#"
     link rel='shortcut icon' href="/images/favicon.ico"
     meta name="viewport" content="width=device-width, initial-scale=1"
     = render_google_analytics_script
-  body#catarse_bootstrap[data-namespace=namespace data-controller-name=controller_name data-action=action_name data-user="#{current_user.try(:to_analytics_json)}"]
+  body#catarse_bootstrap[data-controller-name=controller_name data-action=action_name data-user="#{current_user.try(:to_analytics_json)}"]
     = render 'layouts/webfont'
     = yield
 
