@@ -47,6 +47,10 @@ class ProjectObserver < ActiveRecord::Observer
     notify_users(project)
   end
 
+  def from_in_analysis_to_approved(project)
+    project.notify_owner(:project_approved, { from_email: CatarseSettings[:email_projects] })
+  end
+
   def notify_admin_that_project_reached_deadline(project)
     project.notify_to_backoffice(:adm_project_deadline, { from_email: CatarseSettings[:email_system] })
   end
