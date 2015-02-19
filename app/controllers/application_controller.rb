@@ -42,10 +42,6 @@ class ApplicationController < ActionController::Base
     session[:referal_link] ||= params[:ref] if params[:ref].present?
   end
 
-  def detect_mobile_browsers
-    return redirect_to url_for(host: 'beta.catarse.me') if browser.mobile? && should_show_beta_banner? && request.host != 'beta.catarse.me'
-  end
-
   def detect_old_browsers
     return redirect_to page_path("bad_browser") if (!browser.modern? || browser.ie9?) && controller_name != 'pages'
   end
@@ -64,11 +60,6 @@ class ApplicationController < ActionController::Base
       new_locale = current_user.try(:locale) || I18n.default_locale
       redirect_to url_for(params.merge(locale: new_locale, only_path: true))
     end
-  end
-
-  def redirect_back_or_default(default)
-    redirect_to(session[:return_to] || default)
-    session[:return_to] = nil
   end
 
   def after_sign_in_path_for(resource_or_scope)
