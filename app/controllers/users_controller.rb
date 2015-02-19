@@ -64,7 +64,6 @@ class UsersController < ApplicationController
       flash[:notice] = t('users.current_user_fields.updated')
       redirect_to edit_user_path(@user, anchor: params[:anchor])
     else
-      flash.now[:notice] = @user.errors.full_messages.to_sentence
       render :edit
     end
   end

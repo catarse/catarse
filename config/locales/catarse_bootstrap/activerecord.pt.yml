@@ -131,6 +131,21 @@ pt:
     errors:
       models:
         contribution: "Erro ao salvar apoio"
+        bank_account:
+          attributes:
+            bank:
+              blank: 'Banco não pode ficar em branco'
+            owner_name:
+              blank: 'Nome do titular não pode ficar em branco'
+            owner_document:
+              blank: 'CPF / CNPJ do titular não pode ficar em branco'
+              invalid: 'CPF / CNPJ inválido'
+            agency:
+              blank: 'Agência não pode ficar em branco'
+            account:
+              blank: 'No. da conta não pode ficar em branco'
+            account_digit:
+              blank: 'Dígito da conta não pode ficar em branco'
         project_account:
           attributes:
             full_name:
