@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
 
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
-  helper_method :namespace, :referal_link, :render_projects, :should_show_beta_banner?, :render_feeds
+  helper_method :referal_link, :render_projects, :should_show_beta_banner?, :render_feeds
 
   before_filter :set_locale
 
@@ -42,18 +42,8 @@ class ApplicationController < ActionController::Base
     session[:referal_link] ||= params[:ref] if params[:ref].present?
   end
 
-  def detect_mobile_browsers
-    return redirect_to url_for(host: 'beta.catarse.me') if browser.mobile? && should_show_beta_banner? && request.host != 'beta.catarse.me'
-  end
-
   def detect_old_browsers
     return redirect_to page_path("bad_browser") if (!browser.modern? || browser.ie9?) && controller_name != 'pages'
-  end
-
-  def namespace
-    names = self.class.to_s.split('::')
-    return "null" if names.length < 2
-    names[0..(names.length-2)].map(&:downcase).join('_')
   end
 
   def set_locale
@@ -64,11 +54,6 @@ class ApplicationController < ActionController::Base
       new_locale = current_user.try(:locale) || I18n.default_locale
       redirect_to url_for(params.merge(locale: new_locale, only_path: true))
     end
-  end
-
-  def redirect_back_or_default(default)
-    redirect_to(session[:return_to] || default)
-    session[:return_to] = nil
   end
 
   def after_sign_in_path_for(resource_or_scope)
