@@ -12,39 +12,4 @@
             span class="text-color-for-status #{@project.state}"
               ' #{t("projects.project.display_status.#{@project.state}").upcase}
           = render 'projects/dashboard_home_templates/project_numbers', project: @project
-.section
-  .w-container
-    .w-row
-      .w-col.w-col-8.w-hidden-small.w-hidden-tiny
-        .fontsize-base.card.card-terciary
-          p.fontweight-bold= t('.header1') 
-          p
-            = t('.transparent_html', link: (link_to 'promessas de projetos subsequentes bem sucedidos', "http://blog.catarse.me/financiamento-coletivo-recorrente-as-quatro-campanhas-de-koff-e-a-base-de-fas-para-muitas-mais/", target: "_blank"))
-          p.fontweight-bold= t('.header2') 
-          p
-            a.alt-link href="http://suporte.catarse.me/hc/pt-br/articles/202037483-Presta%C3%A7%C3%A3o-de-contas-projeto-financiado" target="_blank" 
-              | Transparência e prestação de contas para projetos financiados
-              br xmlns="http://www.w3.org/1999/xhtml" /
-            a.alt-link href="http://suporte.catarse.me/hc/pt-br/articles/203083077-Como-gerenciar-a-entrega-das-recompensas-" target="_blank"  Como gerenciar a entrega de recompensas
-      .w-col.w-col-4
-        .w-hidden-small.w-hidden-tiny.card.u-radius.u-marginbottom-20 data-ix="new-interaction" 
-          .fontsize-small.fontweight-semibold.u-marginbottom-20 Links úteis
-          ul.w-list-unstyled
-            li.alt-link.fontsize-smaller.u-marginbottom-10
-              a.alt-link href="http://suporte.catarse.me/hc/pt-br/sections/200426037-Realizadores-repasse-do-dinheiro" target="_blank"  O que preciso fazer para receber o dinheiro?
-            li.fontsize-smaller.alt-link.u-marginbottom-10
-              a.alt-link href="http://suporte.catarse.me/hc/pt-br/articles/202037483-Presta%C3%A7%C3%A3o-de-contas-projeto-financiado" target="_blank"  Prestação de contas
-            li.fontsize-smaller.alt-link.u-marginbottom-10
-              a.alt-link href="http://suporte.catarse.me/hc/pt-br/articles/203083077-Como-gerenciar-a-entrega-das-recompensas-" target="_blank"  Como gerenciar a entrega de recompensas?
-        .w-hidden-small.w-hidden-tiny.card.u-radius data-ix="new-interaction" 
-          .fontsize-small.fontweight-semibold.u-marginbottom-20 Suporte
-          ul.w-list-unstyled
-            li.alt-link.fontsize-smaller.u-marginbottom-10
-              a.alt-link href="http://suporte.catarse.me/hc/pt-br/articles/201982466-O-que-%C3%A9-e-como-funciona-o-Catarse-" target="_blank"  Como o Catarse funciona?
-            li.fontsize-smaller.alt-link.u-marginbottom-10
-              a.alt-link href="http://suporte.catarse.me/hc/pt-br/articles/202265256-Por-que-o-Tudo-ou-Nada-" target="_blank"  Por quê Tudo-ou-nada?
-            li.alt-link.fontsize-smaller.u-marginbottom-10
-              a.alt-link href="http://suporte.catarse.me/" target="_blank"  Central de Suporte
-            li.fontsize-smaller.alt-link
-              a.alt-link href="https://equipecatarse.zendesk.com/account/dropboxes/20298537" target="_blank"  Entre em contato com a gente
-          
+

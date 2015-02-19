@@ -61,8 +61,10 @@
 
 .section.section-gray-one
   .w-container
-    .fontsize-large.u-text-center.u-marginbottom-60
-      = t('.blog')
+    .u-text-center
+      = image_tag "icon-blog.png", class: "u-marginbottom-10"
+      .fontsize-large.u-marginbottom-60.text-success
+        = t('.blog')
     .w-row
       - (Blog.fetch_last_posts rescue [])[0..2].each do |post|
         .w-col.w-col-4.col-blog-post
