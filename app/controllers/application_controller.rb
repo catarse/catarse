@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
 
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
-  helper_method :namespace, :referal_link, :render_projects, :should_show_beta_banner?, :render_feeds
+  helper_method :referal_link, :render_projects, :should_show_beta_banner?, :render_feeds
 
   before_filter :set_locale
 
@@ -44,12 +44,6 @@ class ApplicationController < ActionController::Base
 
   def detect_old_browsers
     return redirect_to page_path("bad_browser") if (!browser.modern? || browser.ie9?) && controller_name != 'pages'
-  end
-
-  def namespace
-    names = self.class.to_s.split('::')
-    return "null" if names.length < 2
-    names[0..(names.length-2)].map(&:downcase).join('_')
   end
 
   def set_locale
