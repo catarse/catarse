@@ -131,6 +131,40 @@ pt:
     errors:
       models:
         contribution: "Erro ao salvar apoio"
+        project_account:
+          attributes:
+            full_name:
+              blank: "Razão social do usuário não pode ficar em branco"
+            email:
+              blank: "Email do usuário não pode ficar em branco"
+            cpf:
+              blank: "CPF do usuário não pode ficar em branco"
+            address_street:
+              blank: "Endereço do usuário não pode ficar em branco"
+            address_number:
+              blank: "Número no endereço do usuário não pode ficar em branco"
+            address_city:
+              blank: "Cidade do usuário não pode ficar em branco"
+            address_state:
+              blank: "Estado do usuário não pode ficar em branco"
+            address_zip_code:
+              blank: "CEP do usuário não pode ficar em branco"
+            phone_number:
+              blank: "Telefone do usuário não pode ficar em branco"
+            bank:
+              blank: "Banco do usuário não pode ficar em branco"
+            agency:
+              blank: "Agência do usuário não pode ficar em branco"
+            agency_digit:
+              blank: "Dígito agência do usuário não pode ficar em branco"
+            account:
+              blank: "No. da conta do usuário não pode ficar em branco"
+            account_digit:
+              blank: "Dígito conta do usuário não pode ficar em branco"
+            owner_name:
+              blank: "Nome do titular do usuário não pode ficar em branco"
+            owner_document:
+              blank: "CPF / CNPJ do titular do usuário não pode ficar em branco"
         project:
           attributes:
             video_url:
@@ -173,6 +207,12 @@ pt:
               blank: "A senha não pode ficar em branco"
             reset_password_token:
               invalid: 'expirou. Vá para <a href="/password/new">redefinir senha</a> e solicite novamente a redefinição da senha.'
+            name:
+              blank: "Nome do usuário não pode ficar em branco"
+            bio:
+              blank: "Biografia do usuário não pode ficar em branco"
+            uploaded_image:
+              blank: "Imagem do usuário não pode ficar em branco"
   project:
     update:
       success: As informações foram atualizadas

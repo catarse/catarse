@@ -8,23 +8,9 @@ class Project::StateValidator < ActiveModel::Validator
   def online
     in_analysis
     approved
-    @record.errors['account.full_name'] << "Razão social do usuário não pode ficar em branco" if account.try(:full_name).blank?
-    @record.errors['account.email'] << "Email do usuário não pode ficar em branco" if account.try(:email).blank?
-    @record.errors['account.cpf'] << "CPF do usuário não pode ficar em branco" if account.try(:cpf).blank?
-    @record.errors['account.address_street'] << "Endereço do usuário não pode ficar em branco" if account.try(:address_street).blank?
-    @record.errors['account.address_number'] << "Número no endereço do usuário não pode ficar em branco" if account.try(:address_number).blank?
-    @record.errors['account.address_city'] << "Cidade do usuário não pode ficar em branco" if account.try(:address_city).blank?
-    @record.errors['account.address_state'] << "Estado do usuário não pode ficar em branco" if account.try(:address_state).blank?
-    @record.errors['account.address_zip_code'] << "CEP do usuário não pode ficar em branco" if account.try(:address_zip_code).blank?
-    @record.errors['account.phone_number'] << "Telefone do usuário não pode ficar em branco" if account.try(:phone_number).blank?
-
-    @record.errors['account.bank'] << "Banco do usuário não pode ficar em branco" if account.try(:bank).blank?
-    @record.errors['account.agency'] << "Agência do usuário não pode ficar em branco" if account.try(:agency).blank?
-    @record.errors['account.agency_digit'] << "Dígito agência do usuário não pode ficar em branco" if account.try(:agency_digit).blank?
-    @record.errors['account.account'] << "No. da conta do usuário não pode ficar em branco" if account.try(:account).blank?
-    @record.errors['account.account_digit'] << "Dígito conta do usuário não pode ficar em branco" if account.try(:account_digit).blank?
-    @record.errors['account.owner_name'] << "Nome do titular do usuário não pode ficar em branco" if account.try(:owner_name).blank?
-    @record.errors['account.owner_document'] << "CPF / CNPJ do titular do usuário não pode ficar em branco" if account.try(:owner_document).blank?
+    %w(full_name email cpf address_street address_number address_city address_state address_zip_code phone_number bank agency agency_digit account account_digit owner_name owner_document).each do |attribute|
+      validate_presence_of_nested_attribute(account, attribute)
+    end
   end
 
   def approved
@@ -35,8 +21,9 @@ class Project::StateValidator < ActiveModel::Validator
 
   def in_analysis
     @record.errors.add_on_blank([:about, :headline, :goal, :online_days, :uploaded_image, :budget])
-    @record.errors['user.name'] << "Nome do usuário não pode ficar em branco" if user.name.blank?
-    @record.errors['user.bio'] << "Biografia do usuário não pode ficar em branco" if user.bio.blank?
+    %w(name bio).each do |attribute|
+      validate_presence_of_nested_attribute(user, attribute)
+    end
     @record.errors['user.uploaded_image'] << "Imagem do usuário não pode ficar em branco" if user.personal_image.blank?
     #@record.errors['rewards.size'] << "Deve haver pelo menos uma recompensa" if @record.rewards.count == 0
   end
@@ -54,5 +41,14 @@ class Project::StateValidator < ActiveModel::Validator
 
   def account
     @record.try(:account)
+  end
+
+  private
+
+  def validate_presence_of_nested_attribute(association, attribute_name)
+    if association.send(attribute_name).blank?
+      association_name = association.class.model_name.i18n_key
+      @record.errors["#{association_name}.#{attribute_name}"] << I18n.t("activerecord.errors.models.#{association_name}.attributes.#{attribute_name}.blank")
+    end
   end
 end
