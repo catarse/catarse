@@ -84,10 +84,6 @@ class ProjectsController < ApplicationController
     resource.build_account unless resource.account
   end
 
-  def fb_comments_link
-    "#{request.base_url}/#{request.path.split('/').last}"
-  end
-
   def show
     @title = resource.name
     authorize @project
