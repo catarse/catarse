@@ -2,6 +2,7 @@
 class ProjectsController < ApplicationController
   after_filter :verify_authorized, except: %i[index video video_embed embed embed_panel about_mobile]
   after_filter :redirect_user_back_after_login, only: %i[index show]
+  before_action :authorize_and_build_resources, only: %i[edit show]
 
   inherit_resources
   has_scope :pg_search, :by_category_id, :near_of
@@ -22,7 +23,6 @@ class ProjectsController < ApplicationController
   def new
     @project = Project.new user: current_user
     authorize @project
-    @title = t('projects.new.title')
     @project.rewards.build
   end
 
@@ -54,13 +54,12 @@ class ProjectsController < ApplicationController
   def update
     authorize resource
     resource.attributes = permitted_params[:project]
-    @user = resource.user
 
     if resource.save(validate: should_use_validate)
       flash[:notice] = t('project.update.success')
     else
       flash[:notice] = t('project.update.failed')
-      edit
+      build_dependencies
       return render :edit
     end
 
@@ -71,25 +70,8 @@ class ProjectsController < ApplicationController
     end
   end
 
-  def edit
-    authorize resource
-    @posts_count = resource.posts.count(:all)
-    @user = resource.user
-    @user.build_bank_account unless @user.bank_account.present?
-    @user.links.build
-    @post =  resource.posts.build
-    @rewards = @project.rewards.rank(:row_order)
-    @project.rewards.build unless @rewards.present?
-    @budget = resource.budgets.build
-    resource.build_account unless resource.account
-  end
-
   def show
-    @title = resource.name
-    authorize @project
     fb_admins_add(resource.user.facebook_id) if resource.user.facebook_id
-    @posts_count = resource.posts.count(:all)
-    @post = resource.posts.where(id: params[:project_post_id]).first if params[:project_post_id].present?
   end
 
   def video
@@ -114,6 +96,22 @@ class ProjectsController < ApplicationController
   end
 
   protected
+  def authorize_and_build_resources
+    authorize resource
+    build_dependencies
+  end
+
+  def build_dependencies
+    @posts_count = resource.posts.count(:all)
+    @user = resource.user
+    @user.links.build
+    @post =  (params[:project_post_id].present? ? resource.posts.where(id: params[:project_post_id]).first : resource.posts.build)
+    @rewards = @project.rewards.rank(:row_order)
+    @project.rewards.build unless @rewards.present?
+    @budget = resource.budgets.build
+    
+    resource.build_account unless resource.account
+  end
 
   def resource_action action_name
     if resource.send(action_name)
@@ -143,7 +141,6 @@ class ProjectsController < ApplicationController
   end
 
   def projects_for_home
-    @title = t("site.title")
     @recommends = ProjectsForHome.recommends.includes(:project_total)
     @projects_near = Project.with_state('online').near_of(current_user.address_state).order("random()").limit(3).includes(:project_total) if current_user
     @expiring = ProjectsForHome.expiring.includes(:project_total)
