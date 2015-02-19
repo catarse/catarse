@@ -19,23 +19,7 @@ class Contribution < ActiveRecord::Base
   validates_presence_of :project, :user, :value
   validates_numericality_of :value, greater_than_or_equal_to: 10.00
 
-  pg_search_scope :search_on_user,
-    against: [:payer_email],
-    associated_against: {
-      user: [:name, :full_name, :email, :id]
-    },
-    using: {tsearch: {dictionary: "portuguese"}},
-    ignoring: :accents
-
-  pg_search_scope :search_on_payment_data,
-    against: [:key, :payment_id, :acquirer_tid],
-    using: {tsearch: {dictionary: "portuguese"}},
-    ignoring: :accents
-
-  pg_search_scope :search_on_acquirer,
-    against: [:acquirer_name],
-    ignoring: :accents
-
+  scope :search_on_acquirer, ->(acquirer_name){ where(acquirer_name: acquirer_name) }
   scope :available_to_count, ->{ with_states(['confirmed', 'requested_refund', 'refunded']) }
   scope :available_to_display, ->{ with_states(['confirmed', 'requested_refund', 'refunded', 'waiting_confirmation']) }
   scope :by_id, ->(id) { where(id: id) }
