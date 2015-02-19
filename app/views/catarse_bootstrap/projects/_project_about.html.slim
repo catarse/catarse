@@ -19,17 +19,17 @@
       - else
         .fontsize-small
           = link_to t('.active_btn'), reminder_project_path(@project), class: 'fa fa-clock-o link-hidden u-right fontcolor-secondary'
-  
-  #project_embed.w-hidden data-path=embed_panel_project_path(@project)
-  
-  .project-about
-    .fontsize-large.u-marginbottom-30 = @project.headline.try(:strip)
-    .no-mobile
-      .fontsize-base
-        = @project.about_html.try(:html_safe)
-        p.fontsize-large.fontweight-semibold
-          | Orçamento
-        p.fontsize-base
-          = @project.budget_text_html
-        - if @project.budgets.present?
-          = pie_chart @project.budgets.pluck(:name, :value)
+
+#project_embed.w-hidden data-path=embed_panel_project_path(@project)
+
+.project-about
+  .fontsize-large.u-marginbottom-30 = @project.headline.try(:strip)
+  .no-mobile
+    .fontsize-base
+      = @project.about_html.try(:html_safe)
+      p.fontsize-large.fontweight-semibold
+        | Orçamento
+      p.fontsize-base
+        = @project.budget_text_html
+      - if @project.budgets.present?
+        = pie_chart @project.budgets.pluck(:name, :value)
