@@ -1,5 +1,5 @@
 App.addChild('Explore', _.extend({
-  el: '.content[data-action="index"][data-controller-name="explore"]',
+  el: 'body[data-action="index"][data-controller-name="explore"]',
 
   events: {
     'click .explore-toggle':'toggleCategoryList',

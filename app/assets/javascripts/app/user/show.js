@@ -1,5 +1,5 @@
 App.addChild('UserShow', _.extend({
-  el: '.content[data-action="show"][data-controller-name="users"]',
+  el: 'body[data-action="show"][data-controller-name="users"]',
 
   activate: function(){
     var that = this;
