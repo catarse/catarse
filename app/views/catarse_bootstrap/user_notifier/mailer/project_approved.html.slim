@@ -1,0 +1,45 @@
+- project = @notification.project
+
+- project_link = project_by_slug_url(permalink: project.permalink)
+- company_name = CatarseSettings[:company_name]
+
+| Olá, #{project.user.name}, o <strong>seu projeto foi aprovado</strong> e pode ir ao ar quando você desejar.
+br/
+br/
+strong 
+  | Para iniciar a campanha você precisa fazer apenas 3 coisas!
+br/
+br/
+strong 
+  | 1. Preencher seus dados bancários na aba #{link_to 'CONTA', edit_project_url(project, anchor: 'user_settings')}.
+br/
+| Precisamos dos seus dados bancários para realizar o repasse do dinheiro arrecadado caso você atinja sua meta de financiamento. 
+br/
+br/
+strong
+  | 2. Escolher a melhor data para começar.
+br/
+| É você mesmo quem escolhe a data de lançamento.
+br/
+br/
+strong
+  | 3. E apertar o botão de publicar o projeto. 
+br/
+= image_tag 'https://s3.amazonaws.com/cdn.catarse/notifications_assets/btn-publish.gif', width: '600'
+br/
+br/
+strong
+  | Atenção
+br/
+| - Após a públicação é Tudo-ou-Nada e alguns aspectos do projeto não podem ser alterados! 
+br/
+| - Só cobramos nossa taxa de 13% caso você tenha sucesso em sua captação! 
+br/
+br/
+| Lembrando que você pode tirar dúvidas conosco respondendo diretamente a esta mensagem ou através do e-mail #{mail_to CatarseSettings[:email_projects]}
+br/
+br/
+| Um grande abraço,
+br/
+| A equipe do #{company_name} te deseja uma ótima campanha! 
+
