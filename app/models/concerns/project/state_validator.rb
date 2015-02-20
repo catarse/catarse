@@ -20,7 +20,7 @@ class Project::StateValidator < ActiveModel::Validator
   end
 
   def in_analysis
-    @record.errors.add_on_blank([:about, :headline, :goal, :online_days, :uploaded_image])
+    @record.errors.add_on_blank([:about, :headline, :goal, :online_days, :uploaded_image, :budget])
     %w(name bio).each do |attribute|
       validate_presence_of_nested_attribute(user, attribute)
     end
