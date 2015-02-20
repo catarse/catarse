@@ -32,7 +32,8 @@ Skull.Tabs = {
   },
 
   lookAnchors: function() {
-    $anchor = this.$('#current_anchor').data('anchor');
+    $anchor = this.$('#current_anchor').data('anchor') || window.location.hash;
+    $default_anchor = this.$('#default-tab').data('anchor');
 
     if(this.$('.dashboard-nav-link').length > 0) {
       selector = '.dashboard-nav-link';
@@ -42,6 +43,8 @@ Skull.Tabs = {
 
     if($anchor != '' && $anchor != undefined) {
       window.location.hash = $anchor;
+    } else if ($default_anchor != undefined) {
+      window.location.hash = $default_anchor;
     } else {
       if(this.$(selector).filter('.selected').length < 1 && (window.location.hash == '' || window.location.hash == '_#_')) {
         var clickEvent = document.createEvent('MouseEvent');
