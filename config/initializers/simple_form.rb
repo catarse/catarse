@@ -5,6 +5,19 @@ SimpleForm.setup do |config|
   # wrapper, change the order or even add your own to the
   # stack. The options given below are used to wrap the
   # whole input.
+  config.wrappers :input_with_error, class: :input,
+    error_class: [:field_with_errors, :error] do |b|
+
+    b.use :html5
+    b.use :placeholder
+    b.optional :maxlength
+    b.optional :pattern
+    b.optional :min_max
+    b.optional :readonly
+
+    b.use :input, class: 'medium'
+  end
+
   config.wrappers :one_col, class: :input,
     hint_class: :field_with_hint, error_class: [:field_with_errors, :error] do |b|
 
