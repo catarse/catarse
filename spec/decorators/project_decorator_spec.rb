@@ -26,8 +26,8 @@ RSpec.describe ProjectDecorator do
       allow(project).to receive(:expires_at).and_return(expires_at)
     end
 
-    context "when there is more than 1 day to go" do
-      let(:expires_at){ Time.zone.now + 2.days }
+    context "when there is more than 1 day to go but less than 2" do
+      let(:expires_at){ Time.zone.now + 25.hours }
       it{ is_expected.to eq({time:1, unit:"dia"}) }
     end
 
