@@ -29,7 +29,7 @@ SimpleForm.setup do |config|
     b.optional :readonly
 
     b.use :label_text, wrap_with: { tag: :label, class: "field-label fontweight-semibold" }
-    b.use :hint,  wrap_with: { tag: :label, class: 'hint field-label fontsize-smallest fontcolor-secondary u-marginbottom-20'}
+    b.use :hint,  wrap_with: { tag: :label, class: 'hint fontsize-smallest fontcolor-secondary u-marginbottom-20'}
 
     b.use :input
     b.use :validation_text, wrap_with: { tag: :div, class: 'fontsize-smaller text-error u-marginbottom-20 fa fa-exclamation-triangle w-hidden' }
