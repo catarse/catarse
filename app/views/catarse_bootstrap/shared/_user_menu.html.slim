@@ -39,7 +39,7 @@ nav.w-dropdown-list.dropdown-list.user-menu
       .fontweight-semibold.fontsize-smaller.u-marginbottom-10 Projetos criados
       - if current_user.projects.present?
         ul.w-list-unstyled.u-marginbottom-20
-          - current_user.created_projects.limit(3).each do |project|
+          - current_user.projects.without_state('rejected').ordered.limit(3).each do |project|
             li.u-marginbottom-10
               .w-row
                 .w-col.w-col-3
