@@ -9,7 +9,7 @@ class Project::StateValidator < ActiveModel::Validator
     in_analysis
     approved
     %w(full_name email cpf address_street address_number address_city address_state address_zip_code phone_number bank agency account account_digit owner_name owner_document).each do |attribute|
-      validate_presence_of_nested_attribute(account, attribute)
+      validate_presence_of_nested_attribute((account || build_account), attribute)
     end
   end
 
