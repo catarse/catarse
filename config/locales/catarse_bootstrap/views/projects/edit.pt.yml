@@ -95,6 +95,7 @@ pt:
         title: "%{name}, em breve enviaremos um feedback sobre seu projeto."
         subtitle_html: "Você enviou seu projeto para análise da equipe do Catarse. Em até <strong>4 dias úteis</strong> nosso atendimento entrará em contato com você para dar o OK para ir ao ar ou para sugerir ajustes. Frio na barriga? Não se deixe tomar pela ansiedade e revise o seu projeto. Essa é a hora de deixar ele bem redondo. Colete feedbacks com os mais próximos e escute as sugestões da equipe do Catarse. Lembre-se, algumas modificações não serão permitidas quando o seu projeto for ao ar."
     edit:
+      leave_link_html: "&nbsp; Sair do painel de controle"
       start_tab: Início
       basics_tab: Básico
       project_tab: Projeto
