@@ -220,6 +220,8 @@ pt:
               too_short: "A senha que você escolheu é muito curta"
               confirmation: "A senha e a confirmação de senha preenchidas não estão iguais"
               blank: "A senha não pode ficar em branco"
+            current_password:
+              invalid: "Senha atual não é válida"
             reset_password_token:
               invalid: 'expirou. Vá para <a href="/password/new">redefinir senha</a> e solicite novamente a redefinição da senha.'
             name:
