@@ -31,12 +31,12 @@
               label: t('.name_label'),
               hint: t('.name_hint')
 
-            = form.input :bio, as: :text, 
+            = form.input :about, as: :text, 
               wrapper_class: 'w-row u-marginbottom-30 card card-terciary',
               text_field_wrapper_html: { class: 'w-col w-col-7' },
               input_html: { class: 'positive big', required: true },
-              label: t('.bio_label'),
-              hint: t('.bio_hint')
+              label: t('.about_label'),
+              hint: t('.about_hint')
 
             .w-form.card.card-terciary.u-marginbottom-30
               = form.input :facebook_link, as: :string, 
