@@ -114,7 +114,7 @@ class Project < ActiveRecord::Base
   validates_numericality_of :online_days, less_than_or_equal_to: 60, greater_than: 0, if: ->(p){ p.online_days.present? }
   validates_numericality_of :goal, greater_than: 9, allow_blank: true
   validates_uniqueness_of :permalink, case_sensitive: false
-  validates_format_of :permalink, with: /(\w|-)*/
+  validates_format_of :permalink, with: /\A(\w|-)*\Z/
 
   validates_with StateValidator
 
