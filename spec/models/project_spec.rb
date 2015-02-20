@@ -31,10 +31,12 @@ RSpec.describe Project, type: :model do
     it{ is_expected.to allow_value('https://youtube.com/watch?v=UyU-xI').for(:video_url) }
     it{ is_expected.not_to allow_value('http://www.foo.bar').for(:video_url) }
     it{ is_expected.to allow_value('testproject').for(:permalink) }
+    it{ is_expected.to allow_value('test-project').for(:permalink) }
     it{ is_expected.to allow_value(1).for(:online_days) }
     it{ is_expected.not_to allow_value(0).for(:online_days) }
     it{ is_expected.not_to allow_value(61).for(:online_days) }
     it{ is_expected.not_to allow_value('users').for(:permalink) }
+    it{ is_expected.not_to allow_value('agua.sp.01').for(:permalink) }
   end
 
   describe ".of_current_week" do
