@@ -111,6 +111,25 @@ RSpec.describe ProjectObserver do
     end
   end
 
+  describe "#from_in_analysis_to_approved" do
+    let(:project) { create(:project, state: 'in_analysis')}
+
+    context "notify owner when projects is approved" do
+      before do
+        expect(ProjectNotification).to receive(:notify_once).with(
+          :project_approved,
+          project.user,
+          project,
+          {
+            from_email: CatarseSettings[:email_projects]
+          }
+        )
+      end
+
+      it { project.approve }
+    end
+  end
+
   describe "#notify_owner_that_project_is_waiting_funds" do
     let(:user) { create(:user) }
     let(:project) { create(:project, user: user, goal: 100, online_days: 1, online_date: Time.now - 2.days, state: 'online') }
