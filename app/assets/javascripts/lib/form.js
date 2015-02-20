@@ -4,6 +4,7 @@ Skull.Form = {
     var customValidation = $target.data('custom-validation') || function(){ return true; };
     if(event.currentTarget.checkValidity() && customValidation($target)){
       $target.removeClass("error");
+      $target.parents('.field_with_errors').removeClass('field_with_errors');
       this.$('[data-error-for=' + $target.prop('id') + ']').hide();
     }
   },
