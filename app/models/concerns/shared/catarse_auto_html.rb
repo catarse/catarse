@@ -14,7 +14,7 @@ module Shared::CatarseAutoHtml
     end
 
     AutoHtml.add_filter(:add_line_breaks) do |text, options|
-      text.gsub(/\r\n/i, '<br/>')
+      text.gsub(/\n/i, '<br/>')
     end
 
     AutoHtml.add_filter(:named_link) do |text, options|
