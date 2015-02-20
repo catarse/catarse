@@ -13,6 +13,10 @@ module Shared::CatarseAutoHtml
       text.gsub(/<a/i, '<a class="alt-link"')
     end
 
+    AutoHtml.add_filter(:add_line_breaks) do |text, options|
+      text.gsub(/\n/i, '<br/>')
+    end
+
     AutoHtml.add_filter(:named_link) do |text, options|
       text.gsub(/"(.+?)":([^\s,;<]+)/) do |match|
         "<a target=\"_blank\" href=\"#{$2}\">#{$1}</a>"
@@ -34,6 +38,7 @@ module Shared::CatarseAutoHtml
         redcarpet target: :_blank
         link target: :_blank
         add_alt_link_class
+        add_line_breaks
       end
     end
 
@@ -49,6 +54,7 @@ module Shared::CatarseAutoHtml
         named_link
         redcarpet target: :_blank
         link target: :_blank
+        add_line_breaks
       end
     end
   end
