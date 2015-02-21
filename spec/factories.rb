@@ -111,6 +111,7 @@ FactoryGirl.define do
     f.owner_name "foo"
     f.account "1"
     f.account_digit "1000"
+    f.account_type "foo"
   end
 
   factory :project_budget do |f|
