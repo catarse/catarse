@@ -3,8 +3,8 @@ pt:
     reward_fields:
       edit: "Editar recompensa"
       reward: Recompensa
-      info_box: "Você pode limitar a quantidade disponível de uma recompensa. Uma vez que o limite é atingido, a recompensa será marcada como ESGOTADA. A previsão de entrega é a data que você pretende entregar a recompensa aos apoiadores. Se você quiser mudar a ordem das recompensas, basta arrastá-las por aqui. Experimente!"
-      minimum_value: "Valor mínimo:"
+      info_box: "Descreva o valor da recompensa e coloque uma previsão de data de entrega real para os apoiadores. Você também pode limitar uma recompensa e quando o limite é atingido ela aparece como ESGOTADA. Se quiser mudar a ordem que as recompensas aparecem em seu projeto, basta fazer isso arrastando-as para cima ou para baixo."
+      minimum_value: "Valor:"
       deliver_at: "Previsão de entrega:"
       description: "Descrição:"
       limit_reward: "Limitar recompensa"
@@ -25,9 +25,9 @@ pt:
         reward_title: Para %{minimum} ou mais
     formatting_tips:
       title: "Dicas de formatação"
-      formatting_tip1: "Se você colar a url de uma imagem ou de um vídeo do vimeo ou do youtube, eles irão aparecer na descrição da ideia. experimente!"
-      formatting_tip2_html: 'Ao colar uma url qualquer, ela virará um link. Por exemplo, http://catarse.me virará <a class="alt-link" href="http://catarse.me"> http://catarse.me</a>.'
-      formatting_tip3_html: 'Se você quiser colocar um texto no link, basta usar o seguinte formato: "texto que você quer":http://sua.url. Por exemplo, "Catarse":http://catarse.me virará <a class="alt-link" href="http://catarse.me" > Catarse</a>.'
+      formatting_tip1_html: 'Você pode utilizar imagens e vídeos na descrição do seu projeto para ilustrar melhor seus objetivos e ações. Precisou de ajuda, <a class="alt-link" href="http://suporte.catarse.me/hc/pt-br/articles/203083017-Adicionar-imagens-e-v%C3%ADdeos-na-descri%C3%A7%C3%A3o-do-projeto" target="_blank"> acesse esse artigo </a>'
+      formatting_tip2_html: 'Ao colar uma url qualquer, ela virará um link. Por exemplo, http://catarse.me virará <a class="alt-link" href="http://catarse.me" target="_blank"> http://catarse.me</a>.'
+      formatting_tip3_html: 'Se você quiser colocar um texto no link, basta usar o seguinte formato: "texto que você quer":http://sua.url. Por exemplo, "Catarse":http://catarse.me virará <a class="alt-link" href="http://catarse.me" target="_blank"> Catarse</a>.'
       formatting_tip4_html: "Você pode usar negrito adicionando dois asteriscos (**) antes e depois do texto que você quer formatar. Por exemplo, **meu texto em negrito** irá aparecer como <strong>meu texto em negrito</strong>."
       formatting_tip5_html: "Você pode usar itálico adicionando um underline (_) antes e depois do texto que você quer formatar. Por exemplo, _meu texto em itálico_ irá aparecer como <i> meu texto em itálico</i>."
     dashboard_user_settings:
@@ -85,8 +85,8 @@ pt:
         subtitle_html: "Seu projeto não bateu a meta e sabemos que isso não é a melhor das sensações. Mas não desanime. O recorde mundial de maior arrecadação da atualidade é uma segunda tentativa de um projeto. E não se preocupe, todos os seus apoiadores terão seu dinheiro de volta. %{link}."
         questions: "Enviamos também um email para você com duas perguntinhas. Se você tiver tempo e cabeça, seria ótimo se pudesse dar uma olhada. Seu feedback nos ajuda a construir um Catarse melhor e mais legal pra você."
       draft:
-        title: "%{name}, continue a construir o seu projeto!"
-        subtitle: "Antes de enviar seu projeto para nossa análise, você tem que preencher todos os dados das abas acima (Básico, Projeto, Recompensas e Sobre você). Você pode salvar as alterações e voltar aqui ao rascunho quantas vezes quiser (no seu perfil de usuário tem um link para o projeto). Quando sentir que preencheu todas as abas da forma mais completa possível, clique no botão ENVIAR e nosso atendimento irá entrar em contato com você."
+        title: "%{name}, construa seu projeto!"
+        subtitle: "Quanto mais cuidadoso e bem formatado for um projeto, maiores as chances de ele ser bem sucedido na sua campanha de captação. Antes de enviar seu projeto para a nossa análise, preencha todas as abas acima com carinho. Você pode salvar as alterações e voltar ao rascunho de projeto quantas vezes quiser. Quando tudo estiver pronto, clique no botão ENVIAR e entraremos em contato para avaliar o seu projeto."
         study_title: "Sentiu que precisa estudar mais para montar seu projeto? Confira os links no box ao lado."
       approved:
         title: "%{name}, seu projeto foi aprovado!"
@@ -109,12 +109,12 @@ pt:
       publish: Publicar
     dashboard_user_about:
       submit: "Salvar"
-      title: "Agora um pouco sobre você"
-      subtitle: "Conte pessoas quem é você. Links que ajudem a contar sua história são sempre bem-vindos!"
+      title: "Fale mais sobre você!"
+      subtitle: "Apoiadores querem conhecer melhor os realizadores de projetos. Links que ajudam a contar sua história são sempre bem vindos. "
       twitter_label: "Perfil do twitter"
       twitter_hint: "Cole o link do seu perfil"
-      other_link_label: "Página na internet"
-      other_link_hint: "Inclua links que ajudem os apoiadores a saber mais sobre você e suas qualificações para executar o projeto.&nbsp;"
+      other_link_label: "Presença na internet"
+      other_link_hint: "Inclua links que ajudem os apoiadores a entender porque você é a pessoa certa para fazer esse projeto. "
       about_label: "Sobre você"
       about_hint: "Se você pudesse falar sobre você em um tweet? Máximo 140 caracteres"
       facebook_link_label: "Perfil do facebook"
@@ -122,14 +122,14 @@ pt:
       uploaded_image_label: "Imagem do perfil"
       uploaded_image_hint: "Essa imagem será utilizada como a miniatura de seu perfil (PNG, JPG tamanho ideal 280 x 280)"
       name_label: "Nome"
-      name_hint: "Esse é o nome que os usuários irão ver no seu perfil"
+      name_hint: "Seu nome público, visível para todos como autor do projeto."
     dashboard_reward:
       title: "Crie e edite aqui suas recompensas"
       add_reward: "Adicionar recompensa"
-      subtitle: "Não viaje! Pense em como irá entregá-las e coloque tudo isso no orçamento. Prometeu?! CUMPRA! :D"
+      subtitle: "Essa é sua demonstração de gratidão com os apoiadores. Lembre-se de incluir os custos das recompensas no seu orçamento. Prometeu, ENTREGUE! "
       reward: "Recompensa"
     dashboard_preview:
-      header_subtitle: "Quer colher feedbacks?"
+      header_subtitle: "É hora dos feedbacks!"
       header_text: "Compartilhe o link abaixo com seus amigos e aproveite o momento para fazer ajustes finos que ajudem na sua campanha."
     dashboard_posts:
       title: "Escrever uma novidade"
@@ -140,26 +140,26 @@ pt:
       old_posts: "Novidades antigas"
     dashboard_project:
       budgets_hint_html: "Informe uma lista com os principais itens do orçamento. Não precisa entrar em detalhes minuciosos, basta uma visão geral. Seus apoiadores gostarão de saber onde o dinheiro deles estará indo. Não existe uma regra&nbsp;quanto a quantidade de itens na lista, mas normalmente 5 costuma ser um bom número!"
-      budget_hint_html: "Como o seu dinheiro será utilizado? Que etapas e processos estarão envolvidos no uso desses recursos. Descreva brevemente porque você precisa de financiamento para realizar o seu projeto"
+      budget_hint_html: "Como o seu dinheiro será utilizado? Quanto mais transparência melhor. Mostre que etapas e processos estarão envolvidos no uso desses recursos. Uma lista com os principais itens do orçamento ou até mesmo um gráfico de pizza vão super bem aqui."
       budget_label: "Orçamento do projeto"
       budgets_label: "Detalhe do orçamento"
-      start: "Conte o que você tem a dizer para o mundo!"
-      start_subtitle: "Use esse espaço abaixo para contar sobre seu projeto e o porquê as pessoas deveriam se empolgar com ele e abraçar sua ideia"
+      start: "Conte a história do seu projeto!"
+      start_subtitle: "Pense bem na narrativa do projeto. É ela quem encantará as pessoas e trará apoiadores. Um bom video e descrição são diferenciais!"
       video_url: "URL do vídeo"
       video_url_hint: "Link do seu vídeo no Vimeo ou Youtube."
       about: "Descrição do projeto"
       links_title: "Links úteis"
-      about_hint_html: 'Fale sobre o que será realizado, como o dinheiro será utilizado, quem está por trás do projeto, como e quando o projeto será entregue. Seja informal e direto, essa é uma conversa entre pessoas que querem compartilhar uma ideia, não um projeto de edital. Lembre-se que <a class="alt-link" target="_blank" href="http://suporte.catarse.me/hc/pt-br/articles/203083017-Adicionar-imagens-e-v%C3%ADdeos-na-descri%C3%A7%C3%A3o-do-projeto">você pode utilizar imagens e vídeos</a> para ilustrar melhor o seu projeto na descrição.'
+      about_hint_html: 'Fale com paixão e clareza sobre o que será realizado. Esclareça possíveis dúvidas sobre como o dinheiro será utilizado, quem está por trás do projeto, como e quando o projeto será entregue. Transparência atrai mais apoiadores. Lembre-se: seu projeto será acessado por pessoas comuns que decidirão se querem ou não apoiar seu projeto. Capriche! '
       card: 'Card do projeto'
-      card_subtitle: 'Sabe aquele cardzinho de projeto que aparece na home e na busca? Pois então, faz bonito pois dizem que a primeira impressão é a que fica ;)'
+      card_subtitle: 'Sabe aquele cardzinho de projeto que aparece na home e na busca? Então, faz bonito aqui nessa parte pois dizem que a primeira impressão é a que fica!'
       image: 'Imagem do projeto'
       image_hint: 'Essa imagem será utilizada como a miniatura de seu projeto (PNG, JPG tamanho 600 x 340)'
-      headline: 'Frase de efeito'
+      headline: 'Chamada do Projeto'
       headline_hint: 'Será utilizada no card do projeto, junto com a imagem acima (miniatura). No máximo 100 caracteres.'
       submit: 'Salvar'
     dashboard_basics:
-      project_start: 'Complete as informações abaixo'
-      project_start_subtitle: 'Os dados informados nesta seção não poderão ser alterados com o seu projeto no ar! Preencha os campos com carinho e atenção '
+      project_start: 'Preencha as informações abaixo'
+      project_start_subtitle: 'Os dados informados nessa seção não poderão ser modificados quando o projeto for ao ar. Preencha com atenção e revise antes de lançar o projeto. '
       online_date: 'Data de entrada no ar'
       user_id: 'Id do usuário'
       name: 'Nome do projeto'
@@ -169,8 +169,8 @@ pt:
       category: 'Categoria'
       category_label: 'Explore e se inspire em outros projetos da mesma categoria que o seu.'
       online_days: 'Prazo para arrecadação'
-      online_days_label: 'Em média os projetos ficam no ar por 40 dias. O prazo máximo da campanha é de 60 dias.'
+      online_days_label: 'Você pode escolher entre 1 e 60 dias para a sua campanha. Confira o guia dos realizadores para dicas sobre prazos.'
       value: 'Valor a ser arrecadado'
-      value_secondary: 'Grande parte dos apoios serão de pessoas próximas a você. Pense como conseguir pelo menos 50% do valor da meta dentro da sua rede de contatos. Não se esqueça de incluir a taxa de 13% cobrada pelo Catarse caso seu projeto seja bem-sucedido'
+      value_secondary: 'Planeje uma meta coerente com o que seu projeto propõe. Revise seu orçamento e não esqueça de incluir a taxa de 13% cobrada pelo Catarse caso seu projeto seja bem-sucedido'
       form:
         submit: 'Salvar'
