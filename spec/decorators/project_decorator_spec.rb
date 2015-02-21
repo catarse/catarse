@@ -26,8 +26,8 @@ RSpec.describe ProjectDecorator do
       allow(project).to receive(:expires_at).and_return(expires_at)
     end
 
-    context "when there is more than 1 day to go" do
-      let(:expires_at){ Time.zone.now + 2.days }
+    context "when there is more than 1 day to go but less than 2" do
+      let(:expires_at){ Time.zone.now + 25.hours }
       it{ is_expected.to eq({time:1, unit:"dia"}) }
     end
 
@@ -130,8 +130,7 @@ RSpec.describe ProjectDecorator do
       subject{ create(:project, about: %{ conheça mais o levante SP no nosso "blog":http://sp.levante.org.br; no nosso "face":www.facebook.com/levanteSP; no nosso "canal no youtube":https://www.youtube.com/channel/UCYnc2e9rNHv-JRxKzycI46A; no "face nacional":www.facebook.com/levantepopulardajuventude e no "site nacional":www.levante.org.br. (como você vai perceber, estamos melhorando a cada dia nossa comunicação, com muito trabalho, esforço, dedicação e criatividade!)
 pra você que quer organizar o levante na sua realidade, preencha "este formulário":http://goo.gl/FbAaKW
                       }).about_html }
-      it{ is_expected.to eq(%{<p>conheça mais o levante SP no nosso <a class="alt-link" target="_blank" href="http://sp.levante.org.br">blog</a>; no nosso <a class="alt-link" target="_blank" href="www.facebook.com/levanteSP">face</a>; no nosso <a class="alt-link" target="_blank" href="https://www.youtube.com/channel/UCYnc2e9rNHv-JRxKzycI46A">canal no youtube</a>; no <a class="alt-link" target="_blank" href="www.facebook.com/levantepopulardajuventude">face nacional</a> e no <a class="alt-link" target="_blank" href="www.levante.org.br.">site nacional</a> (como você vai perceber, estamos melhorando a cada dia nossa comunicação, com muito trabalho, esforço, dedicação e criatividade!)
-pra você que quer organizar o levante na sua realidade, preencha <a class="alt-link" target="_blank" href="http://goo.gl/FbAaKW">este formulário</a></p>
+      it{ is_expected.to eq(%{<p>conheça mais o levante SP no nosso <a class="alt-link" target="_blank" href="http://sp.levante.org.br">blog</a>; no nosso <a class="alt-link" target="_blank" href="www.facebook.com/levanteSP">face</a>; no nosso <a class="alt-link" target="_blank" href="https://www.youtube.com/channel/UCYnc2e9rNHv-JRxKzycI46A">canal no youtube</a>; no <a class="alt-link" target="_blank" href="www.facebook.com/levantepopulardajuventude">face nacional</a> e no <a class="alt-link" target="_blank" href="www.levante.org.br.">site nacional</a> (como você vai perceber, estamos melhorando a cada dia nossa comunicação, com muito trabalho, esforço, dedicação e criatividade!)<br/>pra você que quer organizar o levante na sua realidade, preencha <a class="alt-link" target="_blank" href="http://goo.gl/FbAaKW">este formulário</a></p>
 }) }
     end
 

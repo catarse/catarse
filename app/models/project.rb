@@ -76,6 +76,7 @@ class Project < ActiveRecord::Base
   scope :expiring, -> { not_expired.where("projects.expires_at <= (current_timestamp + interval '2 weeks')") }
   scope :not_expiring, -> { not_expired.where("NOT (projects.expires_at <= (current_timestamp + interval '2 weeks'))") }
   scope :recent, -> { where("(current_timestamp - projects.online_date) <= '5 days'::interval") }
+  scope :ordered, -> { order(created_at: :desc)}
   scope :order_status, ->{ order("
                                      CASE projects.state
                                      WHEN 'online' THEN 1
@@ -113,7 +114,7 @@ class Project < ActiveRecord::Base
   validates_numericality_of :online_days, less_than_or_equal_to: 60, greater_than: 0, if: ->(p){ p.online_days.present? }
   validates_numericality_of :goal, greater_than: 9, allow_blank: true
   validates_uniqueness_of :permalink, case_sensitive: false
-  validates_format_of :permalink, with: /(\w|-)*/
+  validates_format_of :permalink, with: /\A(\w|-)*\Z/
 
   validates_with StateValidator
 

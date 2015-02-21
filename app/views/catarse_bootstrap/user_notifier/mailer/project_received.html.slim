@@ -5,39 +5,36 @@
 - company_name = CatarseSettings[:company_name]
 
 |Olá, #{user.name}!
-br
-br
+br/
+br/
 | Obrigado por iniciar o processo de inscrição de um projeto no #{company_name}! 
-| Este é apenas o passo inicial e quer dizer que você acabou de criar seu 
-| <strong>#{link_to 'rascunho de projeto', project_link, target: '__blank'}</strong> no #{company_name}.
+br/
+| Saiba que recebemos sua inscrição! 
 br/
 br/
-| As dicas fundamentais para estruturar o seu projeto podem ser encontradas em 
-| diversos artigos na nossa #{link_to "Central de Suporte do #{company_name}", CatarseSettings[:support_forum], target: '__blank'}. 
-| Ela pode ser utilizada como fonte de consulta para a maioria das dúvidas que você terá antes, durante e após a sua campanha. 
-| Mesmo assim resolvemos destacar alguns pontos nesse email. Leia todos com bastante atenção: 
+| Você acabou de criar a página de rascunho do projeto #{project.name} no #{company_name}. 
 br/
-= link_to "O Básico do #{company_name}", 'http://suporte.catarse.me/hc/pt-br/sections/200408863-O-B%C3%A1sico', target: '__blank'
-br/
-= link_to 'Realizadores - primeiros passos (rascunho)', 'http://suporte.catarse.me/hc/pt-br/sections/200406978-Realizadores-Primeiros-passos', target: '__blank'
+| Este é o seu link: #{link_to project_link, project_link}
 br/
 br/
-|Confira também:
+strong É hora de trabalhar na apresentação do seu projeto!
 br/
-= link_to "Quais são todos os passos que envolvem uma campanha no #{company_name}?", 'http://suporte.catarse.me/hc/pt-br/articles/202445898-Quais-s%C3%A3o-todos-os-passos-envolvidos-em-uma-campanha-no-Catarse-', target: '__blank'
-br/
-= link_to "Como promover seu projeto", 'http://suporte.catarse.me/hc/pt-br/articles/202226843-Promovendo-seu-projeto', target: '__blank'
-br/
-br/
-| Leia esses materiais e depois preencha tudo com bastante calma para aperfeiçoar seu projeto. 
-br/
-| Você pode ficar o tempo que quiser montando a página do seu projeto antes de enviá-lo. 
+| Seu projeto está no #{company_name} como um rascunho, ou seja, não está público.
+'  Você pode enviar o link acima para outras pessoas visualizarem a página e te ajudarem com críticas e sugestões.
 br/
 br/
-| Quando considerar que a sua página de projeto está pronta, basta clicar no botão “ENVIAR PROJETO” que entraremos em contato contigo.
+strong Ninguém poderá  apoiar o seu projeto até que ele seja aprovado e a campanha esteja no ar.
+br/
+| Para avançar para essas etapas você deve completar toda a página de rascunho do seu projeto e enviá-la para nossa análise. Quando considerar que a sua página está pronta, basta clicar no botão “ENVIAR”.
 br/
 br/
-| Se ficou com alguma dúvida, entre em contato conosco respondendo a esta mensagem ou através do e-mail #{mail_to CatarseSettings[:email_projects]}
+= image_tag 'https://s3.amazonaws.com/cdn.catarse/notifications_assets/btn-send-to-analysis.gif', width: 600
+br/
+br/
+| Depois disso, a equipe do #{company_name} vai avaliar se o projeto está de acordo com os critérios da plataforma e te enviará uma resposta (para este e-mail mesmo) em até 4 dias úteis!
+br/
+br/
+| Se ficou com alguma dúvida, responda a esta mensagem ou envie um email para #{mail_to CatarseSettings[:email_projects]}
 br/
 br/
 | E por falar nisso, por favor <strong>não esqueça de incluir na sua lista de contatos os e-mails:</strong> 
