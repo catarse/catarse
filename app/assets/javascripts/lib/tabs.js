@@ -32,7 +32,7 @@ Skull.Tabs = {
   },
 
   lookAnchors: function() {
-    $anchor = this.$('#current_anchor').data('anchor');
+    $anchor = this.$('#current_anchor').data('anchor') || window.location.hash || this.$('#default-tab').data('anchor');
 
     if(this.$('.dashboard-nav-link').length > 0) {
       selector = '.dashboard-nav-link';
