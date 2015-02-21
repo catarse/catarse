@@ -31,11 +31,14 @@ App.addChild('Explore', _.extend({
     this.setInitialFilter();
     this.setupScroll();
 
-    var search_string = window.location.search.indexOf("pg_search");
-    if(window.location.hash == '' && search_string == -1){
-      this.toggleCategoryList();
+    if(window.location.hash == ''){
+      var search_string = window.location.search.indexOf("pg_search");
+      this.fetchPage();
+
+      if(search_string == -1){
+        this.toggleCategoryList();
+      }
     }
-    this.fetchPage();
   },
 
   toggleCategoryList: function(event) {

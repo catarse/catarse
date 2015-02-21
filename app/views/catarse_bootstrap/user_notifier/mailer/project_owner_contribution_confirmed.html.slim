@@ -4,13 +4,16 @@
 - project_link = project_by_slug_url(permalink: project.permalink)
 - company_name = CatarseSettings[:company_name]
 
-| Olá, <strong>#{project.user.display_name}</strong>!
+| Olá, <strong>#{project.user.decorate.display_name}</strong>!
 br
 br
-| Hoje, seu projeto teve #{confirmed_contributions_today.length} apoios!
+| Hoje seu projeto recebeu #{link_to "#{confirmed_contributions_today.length} novos apoios", project_by_slug_url(permalink: project.permalink, anchor: 'contributions')}, parabéns!
+br/
+br/
+| #{link_to 'Poste uma mensagem para os apoiadores', edit_project_url(project, anchor: 'posts')} e #{link_to 'acompanhe as métricas da sua arrecadação', edit_project_url(project, anchor: 'reports')}!
 br
 br
-| Alguns dados sobre esses apoios:
+| Mais informações sobre os apoios do dia:
 br
 br
 table width="500" border="1" cellpadding="10" cellspacing="0" style='font-size: 13px;'
@@ -23,21 +26,15 @@ table width="500" border="1" cellpadding="10" cellspacing="0" style='font-size: 
   tbody
     - confirmed_contributions_today.each do |contribution|
       tr
-        td= contribution.user.display_name
+        td= contribution.user.decorate.display_name
         td= contribution.user.email
         td= contribution.decorate.display_value
-        td= contribution.reward.try(:display_description)
+        td= contribution.reward.try(:decorate).try(:display_description)
 br/
 br/
-| Veja todos os seus apoiadores #{link_to 'aqui', project_by_slug_url(permalink: project.permalink, anchor: 'contributions', target: '__blank')}!
+| Lembrando que você pode tirar dúvidas conosco respondendo diretamente a esta mensagem ou através do e-mail #{mail_to CatarseSettings[:email_projects] }
 br/
 br/
-| Comunique-se com eles pela aba de #{link_to 'Novidades', project_by_slug_url(permalink: project.permalink, anchor: 'updates', target: '__blank')}
-br/
-br/
-| E baixe planilhas com as informações completas de todos os apoiadores eles #{link_to 'aqui', project_by_slug_url(permalink: project.permalink, anchor: 'reports', target: '__blank')}!
-br/
-br/
-|Um abraço,
+| Um abraço,
 br
 = company_name

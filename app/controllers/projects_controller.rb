@@ -109,7 +109,7 @@ class ProjectsController < ApplicationController
     @rewards = @project.rewards.rank(:row_order)
     @project.rewards.build unless @rewards.present?
     @budget = resource.budgets.build
-    
+
     resource.build_account unless resource.account
   end
 
@@ -123,7 +123,7 @@ class ProjectsController < ApplicationController
       redirect_to edit_project_path(@project, anchor: 'home')
     else
       flash.now[:notice] = t("projects.#{action_name.to_s}_error")
-      edit
+      build_dependencies
       render :edit
     end
   end

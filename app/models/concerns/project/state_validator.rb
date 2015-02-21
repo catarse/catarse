@@ -8,7 +8,7 @@ class Project::StateValidator < ActiveModel::Validator
   def online
     in_analysis
     approved
-    %w(full_name email cpf address_street address_number address_city address_state address_zip_code phone_number bank agency agency_digit account account_digit owner_name owner_document).each do |attribute|
+    %w(full_name email cpf address_street address_number address_city address_state address_zip_code phone_number bank agency account account_digit owner_name owner_document).each do |attribute|
       validate_presence_of_nested_attribute(account, attribute)
     end
   end
@@ -40,7 +40,7 @@ class Project::StateValidator < ActiveModel::Validator
   end
 
   def account
-    @record.try(:account)
+    @record.try(:account) || @record.build_account
   end
 
   private

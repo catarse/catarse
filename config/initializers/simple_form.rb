@@ -5,6 +5,19 @@ SimpleForm.setup do |config|
   # wrapper, change the order or even add your own to the
   # stack. The options given below are used to wrap the
   # whole input.
+  config.wrappers :input_with_error, class: :input,
+    error_class: [:field_with_errors, :error] do |b|
+
+    b.use :html5
+    b.use :placeholder
+    b.optional :maxlength
+    b.optional :pattern
+    b.optional :min_max
+    b.optional :readonly
+
+    b.use :input, class: 'medium'
+  end
+
   config.wrappers :one_col, class: :input,
     hint_class: :field_with_hint, error_class: [:field_with_errors, :error] do |b|
 
@@ -16,7 +29,7 @@ SimpleForm.setup do |config|
     b.optional :readonly
 
     b.use :label_text, wrap_with: { tag: :label, class: "field-label fontweight-semibold" }
-    b.use :hint,  wrap_with: { tag: :label, class: 'hint field-label fontsize-smallest fontcolor-secondary u-marginbottom-20'}
+    b.use :hint,  wrap_with: { tag: :label, class: 'hint fontsize-smallest fontcolor-secondary u-marginbottom-20'}
 
     b.use :input
     b.use :validation_text, wrap_with: { tag: :div, class: 'fontsize-smaller text-error u-marginbottom-20 fa fa-exclamation-triangle w-hidden' }
@@ -34,7 +47,7 @@ SimpleForm.setup do |config|
 
     b.wrapper :label_wrapper, tag: 'div' do |ba|
       ba.use :label_text, wrap_with: { tag: :label, class: "field-label fontweight-semibold" }
-      ba.use :hint,  wrap_with: { tag: :label, class: 'hint field-label fontsize-smallest fontcolor-secondary'}
+      ba.use :hint,  wrap_with: { tag: :label, class: 'hint fontsize-smallest fontcolor-secondary'}
     end
 
     b.wrapper :text_field_wrapper, tag: 'div' do |ba|
@@ -55,7 +68,7 @@ SimpleForm.setup do |config|
 
     b.wrapper :label_wrapper, tag: 'div' do |ba|
       ba.use :label_text, wrap_with: { tag: :label, class: "field-label fontweight-semibold" }
-      ba.use :hint,  wrap_with: { tag: :label, class: 'field-label hint fontsize-smallest fontcolor-secondary'}
+      ba.use :hint,  wrap_with: { tag: :label, class: 'hint fontsize-smallest fontcolor-secondary'}
     end
 
     b.wrapper :text_field_wrapper, tag: 'div' do |ba|
@@ -174,7 +187,7 @@ SimpleForm.setup do |config|
   # config.item_wrapper_class = nil
 
   # How the label text should be generated altogether with the required text.
-  config.label_text = lambda { |label, required, explicit_label| "#{required} #{label}" }
+  config.label_text = lambda { |label, required, explicit_label| label }
 
   # You can define the class to use on all labels. Default is nil.
   config.label_class = 'field-label'
