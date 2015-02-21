@@ -46,6 +46,7 @@ pt:
       deactive_btn: ' Lembrete ativo'
     show:
       menu:
+        panel_html: "&nbsp;&nbsp;Painel de controle"
         about: Sobre
         add_reward: Adicionar recompensa
         comments: Comentários
