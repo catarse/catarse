@@ -184,7 +184,7 @@ pt:
             owner_document:
               blank: "CPF / CNPJ do titular do usuário não pode ficar em branco"
             account_type:
-              blank: "Tipoe de conta não pode ficar em branco"
+              blank: "Tipo de conta não pode ficar em branco"
         project:
           attributes:
             video_url:
