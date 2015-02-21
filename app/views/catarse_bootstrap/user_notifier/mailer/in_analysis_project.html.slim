@@ -1,15 +1,13 @@
 - user = @notification.user
 - project = @notification.project
 
-- project_link = project_by_slug_url(permalink: project.permalink)
+- project_link = edit_project_url(project)
 - company_name = CatarseSettings[:company_name]
 
 |Olá, #{user.name}!
 br
 br
-| Muito obrigado por nos enviar o projeto #{project.name}
-br/
-| O link é: #{link_to project.name, project_link, target: '__blank'}
+| Muito obrigado por nos enviar o projeto #{link_to project.name, project_link, target: '__blank'}
 br/
 br/
 | Apartir de agora, nossa equipe de projetos vai <strong>avaliar todo o conteúdo</strong> que você colocou na página e (em no máximo 4 dias úteis) 
@@ -35,7 +33,7 @@ br/
 br/
 br/
 strong
-  | Para acompanhar a mudança de status da página #{link_to project.name, edit_project_url(project, anchor: 'home'), target: '__blank'} fique de olho na caixa de entrada do seu e-mail e no painel de controle do seu projeto.
+  | Para acompanhar a mudança de status da página do projeto #{link_to project.name, project_link, target: '__blank'} fique de olho na caixa de entrada do seu e-mail e no painel de controle do seu projeto.
 br/
 br/
 | Lembrando que você pode tirar dúvidas conosco a qualquer momento respondendo diretamente a esta mensagem ou através do e-mail #{mail_to CatarseSettings[:email_projects]} 
