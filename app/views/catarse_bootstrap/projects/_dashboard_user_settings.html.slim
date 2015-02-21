@@ -98,6 +98,8 @@
                 = form.input :owner_document, as: :tel, 
                 input_html: { class: 'positive', required: true }
               .w-col.w-col-6
+                = form.input :account_type, as: :select, collection: ['Corrente', 'Poupança'], class: 'w-select positive',
+                input_html: { class: 'positive', required: true }
         .w-col.w-col-4
           .w-hidden-small.w-hidden-tiny.card.u-radius.u-marginbottom-20 data-ix="new-interaction" 
             .fontsize-small.fontweight-semibold.u-marginbottom-20 Links úteis
