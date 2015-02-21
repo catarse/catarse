@@ -25,7 +25,7 @@ App.addChild('ProjectEdit', _.extend({
     this.route('user_settings');
     this.route('reports')
 
-    if($('.fa-exclamation-circle').length > 1) {
+    if($('.fa-exclamation-circle').length >= 1) {
       window.location.hash = $('.fa-exclamation-circle:eq(0)').parent().attr('href');
     } else {
       this.lookAnchors();
