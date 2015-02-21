@@ -6,6 +6,6 @@ App.addChild('UserMenu', {
   },
 
   closeMenu: function(event) {
-    this.$el.hide();
+    this.$el.toggleClass('w--open');
   }
 });

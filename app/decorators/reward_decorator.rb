@@ -23,11 +23,11 @@ class RewardDecorator < Draper::Decorator
       <label data-minimum-value="#{source.minimum_value > 0 ? source.minimum_value.to_i : '10'}" class="w-form-label fontsize-large fontweight-semibold" for="contribution_reward#{source.id && "_#{source.id}"}">#{source.minimum_value > 0 ? source.display_minimum+'+' : I18n.t('rewards.index.dont_want')}</label>
       <div>
         <span class="badge badge-success fontsize-smaller">#{I18n.t('projects.contributions.you_selected')}</span>
-      </div>  
+      </div>
       <p class="fontsize-small u-margintop-20">
       #{html_escape(source.description)}
       </p>
-      <div class="fontsize-smallest fontcolor-secondary">  
+      <div class="fontsize-smallest fontcolor-secondary">
         #{source.id ? deliver : ''}
       </div>
     }.html_safe
@@ -53,6 +53,6 @@ class RewardDecorator < Draper::Decorator
   end
 
   def display_description
-    auto_html(source.description){ simple_format; link(target: '_blank', class: 'alt-link') }
+    auto_html(source.description){ html_escape; simple_format; link(target: '_blank', class: 'alt-link') }
   end
 end

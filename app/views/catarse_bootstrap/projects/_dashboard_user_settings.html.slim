@@ -7,7 +7,7 @@
         p.fontsize-base= t('.subtitle_html')
       .w-col.w-col-2.fontcolor-terciary
 
-= simple_form_for @project, defaults: { input_html: {disabled: !@project.can_update_account?}, wrapper: :one_col, validation_text: false, label_wrapper_html: { class: 'w-col w-col-5 w-sub-col' } }, html: { id: 'project_account_form', class: 'w-form' } do |f|
+= simple_form_for @project, defaults: { input_html: {disabled: !@project.can_update_account?}, wrapper: :one_col, validation_text: false, label_wrapper_html: { class: 'w-col w-col-5 w-sub-col' } }, html: { id: 'project_account_form', class: 'w-form project-form' } do |f|
   = hidden_field_tag :anchor, 'user_settings'
   = f.simple_fields_for :account do |form|
     .section
@@ -22,7 +22,7 @@
               .w-row
                 .w-col.w-col-6.w-sub-col
                   = form.hidden_field :project_id, value: @project.id
-                  = form.input :full_name, as: :string, 
+                  = form.input :full_name, as: :string,
                   input_html: { class: 'positive', required: true }
                 .w-col.w-col-6
                   = form.input :email, as: :string, 

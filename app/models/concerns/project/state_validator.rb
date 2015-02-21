@@ -40,15 +40,16 @@ class Project::StateValidator < ActiveModel::Validator
   end
 
   def account
-    @record.try(:account)
+    @record.try(:account) || @record.build_account
   end
-
-  private
 
   def validate_presence_of_nested_attribute(association, attribute_name)
     if association.send(attribute_name).blank?
       association_name = association.class.model_name.i18n_key
-      @record.errors["#{association_name}.#{attribute_name}"] << I18n.t("activerecord.errors.models.#{association_name}.attributes.#{attribute_name}.blank")
+      message = I18n.t("activerecord.errors.models.#{association_name}.attributes.#{attribute_name}.blank")
+
+      @record.errors["#{association_name}.#{attribute_name}"] << message
+      association.errors[attribute_name.to_sym] << message
     end
   end
 end

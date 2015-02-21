@@ -1,9 +1,9 @@
 - project = @notification.project
 
-- project_link = project_by_slug_url(permalink: project.permalink)
+- project_link = edit_project_url(project)
 - company_name = CatarseSettings[:company_name]
 
-| Olá, #{project.user.name}, o <strong>seu projeto foi aprovado</strong> e pode ir ao ar quando você desejar.
+| Olá, #{project.user.name}, o <strong>#{link_to 'seu projeto foi aprovado', project_link}</strong> e pode ir ao ar quando você desejar.
 br/
 br/
 strong 
