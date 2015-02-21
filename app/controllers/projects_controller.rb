@@ -107,7 +107,7 @@ class ProjectsController < ApplicationController
     @user.links.build
     @post =  (params[:project_post_id].present? ? resource.posts.where(id: params[:project_post_id]).first : resource.posts.build)
     @rewards = @project.rewards.rank(:row_order)
-    @project.rewards.build unless @rewards.present?
+    @rewards = @project.rewards.build unless @rewards.present?
     @budget = resource.budgets.build
 
     resource.build_account unless resource.account
