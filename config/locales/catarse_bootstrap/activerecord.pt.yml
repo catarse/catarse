@@ -29,6 +29,7 @@ pt:
         agency_digit: 'Dígito agência'
         account: 'No. da conta'
         account_digit: 'Dígito conta'
+        account_type: 'Tipo de conta'
       bank_account:
         bank: 'Banco'
         bank_id: 'Banco'
@@ -182,6 +183,8 @@ pt:
               blank: "Nome do titular do usuário não pode ficar em branco"
             owner_document:
               blank: "CPF / CNPJ do titular do usuário não pode ficar em branco"
+            account_type:
+              blank: "Tipoe de conta não pode ficar em branco"
         project:
           attributes:
             video_url:
