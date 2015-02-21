@@ -4,11 +4,12 @@
 .project-dashboard-edit
   = render 'project_header'
 
-  .project-nav
-    .w-container
-      .w-row
-        .w-col.w-col-9.u-text-center-small-only
-          = link_to t('.leave_link_html'), project_by_slug_path(@project.permalink), class: 'nav-tab dashboard fa fa-chevron-left'
+  - if @project.can_show_funding_period?
+    .project-nav
+      .w-container
+        .w-row
+          .w-col.w-col-9.u-text-center-small-only
+            = link_to t('.leave_link_html'), project_by_slug_path(@project.permalink), class: 'nav-tab dashboard fa fa-chevron-left'
 
   nav.dashboard-nav
     .w-container
@@ -16,7 +17,7 @@
         div class="w-col #{(@project.already_deployed?) ? 'w-col-12' : 'w-col-9'}"
           = link_to '#home', id: 'dashboard_home_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_home', tab_group: 'edit'} do
             = t('.start_tab')
-          - unless @project.already_deployed?
+          - unless @project.already_deployed? || @project.approved?
             = link_to '#basics', id: 'basics_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_basics', tab_group: 'edit'} do
               = @project.decorate.status_icon_for('basics')
               | &nbsp;&nbsp;
