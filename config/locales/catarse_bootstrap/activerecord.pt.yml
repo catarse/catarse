@@ -142,10 +142,12 @@ pt:
               invalid: 'CPF / CNPJ inválido'
             agency:
               blank: 'Agência não pode ficar em branco'
+              invalid: 'Agência inválida'
             account:
               blank: 'No. da conta não pode ficar em branco'
             account_digit:
               blank: 'Dígito da conta não pode ficar em branco'
+              invalid: 'Digito da agência inválido'
         project_account:
           attributes:
             full_name:
