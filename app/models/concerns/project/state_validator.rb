@@ -43,8 +43,6 @@ class Project::StateValidator < ActiveModel::Validator
     @record.try(:account) || @record.build_account
   end
 
-  private
-
   def validate_presence_of_nested_attribute(association, attribute_name)
     if association.send(attribute_name).blank?
       association_name = association.class.model_name.i18n_key
