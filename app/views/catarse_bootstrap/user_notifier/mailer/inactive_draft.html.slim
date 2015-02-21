@@ -1,14 +1,15 @@
 - project = @notification.project
+- project_link = edit_project_url(project)
 |Olá #{project.user.name}, tudo bem? Aqui quem fala é a Luciana do Catarse!
 br/
 br/
-| Vi que você criou a página de <strong>rascunho</strong> do projeto #{link_to(project.name, project_by_slug_url(permalink: project.permalink, ref: 'notificação_resgate_rascunho' ))}  mas ainda não nos enviou. Após o envio, a página ficará <strong>em análise</strong> por alguns dias e você será acompanhado por mim ou por outra pessoa da nossa equipe de atendimento.
+| Vi que você criou a página de <strong>rascunho</strong> do projeto #{link_to(project.name, project_link)}  mas ainda não nos enviou. Após o envio, a página ficará <strong>em análise</strong> por alguns dias e você será acompanhado por mim ou por outra pessoa da nossa equipe de atendimento.
 br/
 br/
 | Além de revisar as informações sobre a sua campanha, nós vamos te oferecer uma consultoria com dicas e orientações sobre o que melhorar no seu projeto. Quando estiver tudo pronto a página poderá ser <strong>aprovada</strong> e você escolherá o melhor dia para publicá-la no site, iniciando a arrecadação.
 br/
 br/
-| Deseja enviar o seu rascunho de projeto para a nossa análise?
+| Deseja enviar o #{link_to 'seu rascunho de projeto', project_link} para a nossa análise?
 br/
 br/
 = image_tag 'https://s3.amazonaws.com/cdn.catarse/notifications_assets/btn-send-to-analysis.gif', width: 600

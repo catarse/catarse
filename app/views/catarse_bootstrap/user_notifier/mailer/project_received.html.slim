@@ -1,7 +1,7 @@
 - user = @notification.user
 - project = @notification.project
 
-- project_link = project_by_slug_url(permalink: project.permalink)
+- project_link = edit_project_url(project)
 - company_name = CatarseSettings[:company_name]
 
 |Olá, #{user.name}!
@@ -12,9 +12,7 @@ br/
 | Saiba que recebemos sua inscrição! 
 br/
 br/
-| Você acabou de criar a página de rascunho do projeto #{project.name} no #{company_name}. 
-br/
-| Este é o seu link: #{link_to project_link, project_link}
+| Você acabou de criar a página de rascunho do projeto #{link_to project.name, project_link} no #{company_name}. 
 br/
 br/
 strong É hora de trabalhar na apresentação do seu projeto!
