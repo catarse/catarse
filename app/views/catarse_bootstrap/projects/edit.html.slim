@@ -4,11 +4,12 @@
 .project-dashboard-edit
   = render 'project_header'
 
-  .project-nav
-    .w-container
-      .w-row
-        .w-col.w-col-9.u-text-center-small-only
-          = link_to t('.leave_link_html'), project_by_slug_path(@project.permalink), class: 'nav-tab dashboard fa fa-chevron-left'
+  - if @project.can_show_funding_period?
+    .project-nav
+      .w-container
+        .w-row
+          .w-col.w-col-9.u-text-center-small-only
+            = link_to t('.leave_link_html'), project_by_slug_path(@project.permalink), class: 'nav-tab dashboard fa fa-chevron-left'
 
   nav.dashboard-nav
     .w-container
