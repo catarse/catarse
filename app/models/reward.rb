@@ -31,6 +31,10 @@ class Reward < ActiveRecord::Base
     self.last_changes = self.changes.to_json
   end
 
+  def to_s
+    display_description
+  end
+
   def decorator
     @decorator ||= RewardDecorator.new(self)
   end
