@@ -14,10 +14,8 @@ div class="#{defined?(wrapper_class) ? wrapper_class : ''}"
     .w-clearfix.card-project-author.w-hidden-small.w-hidden-tiny
       .w-hidden-small.w-hidden-tiny.thumb.small.u-round.u-left
         .u-left
-          = link_to user_path(@project.user), title:@project.user.name, target: target do
-            = image_tag(@project.user.display_image, class: 'u-round thumb small')
-      .card-author-name
-        = link_to user_path(@project.user), class: 'link-hidden w-hidden-small w-hidden-tiny fontsize-smaller' do
+          = image_tag(@project.user.display_image, class: 'u-round thumb small')
+      .card-author-name.fontsize-smaller
           = @project.user.display_name
     .card-project-meter class=@project.state
       -if ['successful', 'failed', 'waiting_funds'].include? @project.state

@@ -79,7 +79,7 @@
                   label.w-form-label for="limit_reward"= t('.limit_reward') 
               .w-col.w-col-7 class="reward_maximum_contributions #{reward.maximum_contributions.present? ?  '' : 'w-hidden'}"
                 = f.input_field :maximum_contributions, class: 'u-marginbottom-30 positive', placeholder: t('.available')
-            .w-row
+            .w-row.u-margintop-30
               /.w-col.w-col-6.w-col-small-6.w-col-tiny-6.w-sub-col-middle
                 = f.button :submit, t('.submit'),  class:'btn btn-small'
               - if reward.persisted?
