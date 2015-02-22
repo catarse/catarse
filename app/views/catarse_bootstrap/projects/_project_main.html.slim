@@ -53,7 +53,7 @@ section.section
 
         .card.card-user.u-radius.u-marginbottom-30
           .w-clearfix
-            = image_tag @project.user.display_image, width: "100", class: "thumb u-left u-radius u-marginbottom-30"
+            = image_tag @project.user.display_image, width: "100", class: "thumb u-left u-round u-marginbottom-30"
             .fontsize-small.fontweight-semibold.lineheight-tighter = link_to @project.user.display_name, user_path(@project.user), class: 'link-hidden'
             .fontsize-smallest.lineheight-looser = @project.user.address_city
           .fontsize-smallest = t('created_project', count: @project.user.created_projects.size)
