@@ -28,5 +28,5 @@ Skull.Form = {
     });
     this.$('[required].error:visible:first').select();
     return valid;
-  }
+  },
 };
