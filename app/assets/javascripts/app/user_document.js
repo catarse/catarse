@@ -10,7 +10,6 @@ App.addChild('UserDocumentView', _.extend({
   },
 
   onUserDocumentFocus: function(e) {
-    console.log('fooo');
     var $documentField = $(e.currentTarget);
     $documentField.fixedMask('off');
   },
