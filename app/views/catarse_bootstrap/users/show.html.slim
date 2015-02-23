@@ -18,6 +18,11 @@
 
 nav.project-nav.u-text-center.u-marginbottom-30.profile style='z-index: 10; position: relative;'
   .w-container#default-tab data-anchor=(resource.created_projects.empty? ? 'contributed' : 'created')
+    - if policy(resource).update?
+      = link_to edit_user_path(resource), class: 'nav-tab dashboard' do
+        span.fa.fa-cog
+        | &nbsp; Editar perfil
+    
     = link_to '#contributed', id: 'contributed_link', class: 'nav-tab' , data: {target: '#contributed-tab'} do
       | Apoiados &nbsp;
       span.badge= resource.total_contributed_projects
