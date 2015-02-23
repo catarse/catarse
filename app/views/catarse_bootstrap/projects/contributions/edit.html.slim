@@ -25,7 +25,7 @@
                 = form.input :payer_name, as: :string, wrapper_html: {class: 'w-col w-col-12'}, input_html: {required: true}, validation_text: true, required: true
               .w-row
                 = form.input :payer_email, as: :email, wrapper_html: {class: 'w-col w-col-6 w-sub-col'}, input_html: {required: true}, validation_text: true, required: true
-                = form.input :payer_document, as: :tel, wrapper_html: {class: 'w-col w-col-6'}, validation_text: true
+                = form.input :payer_document, as: :tel, wrapper_html: {class: 'w-col w-col-6'}, validation_text: true, input_html: { data: { :'validate-cpf-cnpj' => true } }
             - else
               .w-row
                 = form.input :payer_name, as: :string, wrapper_html: {class: 'w-col w-col-6 w-sub-col'}, input_html: {required: true}, validation_text: true, required: true
