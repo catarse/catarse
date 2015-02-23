@@ -271,6 +271,11 @@ p {
 .text-field.big {
   height: 290px;
 }
+.text-field.no-edit {
+  padding-left: 0px;
+  border-color: transparent;
+  background-color: transparent;
+}
 .field-label {
   color: #3f4752;
   font-size: 16px;
@@ -538,8 +543,8 @@ p {
   margin-top: 0px;
   border-bottom-style: none;
   background-color: transparent;
-  background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.38), transparent);
-  background-image: linear-gradient(rgba(0, 0, 0, 0.38), transparent);
+  background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.22), transparent);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.22), transparent);
 }
 .img-logo {
   margin-top: 8px;
@@ -1028,6 +1033,14 @@ p {
   border-top: 1px none rgba(0, 0, 0, 0.2);
   background-color: #3f4752;
   color: #f1f4f4;
+}
+.page-header.hero-start {
+  margin-top: -64px;
+  margin-bottom: -60px;
+  padding-top: 94px;
+  background-image: url('../images/hero-start.jpg');
+  background-size: cover;
+  color: white;
 }
 .project-about-highlight {
   margin-top: 38px;
@@ -1836,7 +1849,7 @@ p {
 }
 .btn-dark.btn-attached {
   width: auto;
-  border-color: rgba(255, 255, 255, 0.10);
+  border-color: rgba(255, 255, 255, 0.09);
   background-color: transparent;
 }
 .btn-secondary-dark {
@@ -1911,7 +1924,7 @@ p {
   font-weight: 600;
 }
 .nav-tab.dashboard {
-  color: #409bff;
+  color: #409ade;
 }
 .link-hidden-light {
   color: #79808b;
@@ -2289,11 +2302,12 @@ p {
   right: 0px;
   overflow-x: hidden;
   overflow-y: hidden;
-  height: 70px;
-  padding: 20px 38px;
-  background-color: #409bff;
-  box-shadow: rgba(24, 95, 171, 0.27) 0px 0px 28px 11px inset, rgba(0, 0, 0, 0.74) 1px 1px 6px -1px;
+  height: 30px;
+  padding: 5px 38px;
+  background-color: #409ade;
+  box-shadow: rgba(0, 0, 0, 0.74) 1px 1px 6px -1px;
   color: #85f1ff;
+  font-size: 12px;
 }
 .link-icon-light {
   opacity: 0.7;
@@ -2304,7 +2318,7 @@ p {
   opacity: 1;
 }
 .body-padding-top {
-  padding-top: 70px;
+  padding-top: 30px;
 }
 .thumb-project {
   margin-right: 15px;
@@ -2340,7 +2354,7 @@ p {
   background-color: #f1f4f4;
 }
 .hero-guide {
-  background-image: url('../images/hero-guia-green.jpg');
+  background-image: url('../images/hero-guia-new.jpg');
   background-position: 50% 50%;
   background-size: cover;
   background-attachment: scroll;
@@ -2353,7 +2367,7 @@ p {
   color: white;
 }
 .hero-back {
-  background-image: url('../images/hero-back.jpg');
+  background-image: url('../images/hero-back-new.jpg');
   background-position: 50% 50%;
   background-size: cover;
   color: white;
@@ -2590,6 +2604,23 @@ p {
   border-color: #e86666;
   background-color: white;
   color: #e86666;
+}
+.cor {
+  color: #449eb9;
+}
+.hero-blog {
+  background-image: url('../images/hero-blog.jpg');
+  background-size: cover;
+  color: white;
+}
+.text-start-new {
+  display: inline-block;
+  font-size: 31px;
+  font-weight: 300;
+}
+.input-title {
+  display: inline-block;
+  width: 920px;
 }
 html.w-mod-js *[data-ix="fade-in"] {
   opacity: 0;
