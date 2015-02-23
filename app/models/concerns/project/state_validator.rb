@@ -11,6 +11,8 @@ class Project::StateValidator < ActiveModel::Validator
     %w(full_name email cpf address_street address_number address_city address_state address_zip_code phone_number bank agency account account_digit owner_name owner_document account_type).each do |attribute|
       validate_presence_of_nested_attribute(account, attribute)
     end
+
+    validate_same_value_of(account, :owner_document, :cpf)
   end
 
   def approved
@@ -44,12 +46,23 @@ class Project::StateValidator < ActiveModel::Validator
   end
 
   def validate_presence_of_nested_attribute(association, attribute_name)
-    if association.send(attribute_name).blank?
-      association_name = association.class.model_name.i18n_key
-      message = I18n.t("activerecord.errors.models.#{association_name}.attributes.#{attribute_name}.blank")
+    add_errors_on(association, attribute_name, :blank) if association.send(attribute_name).blank?
+  end
 
-      @record.errors["#{association_name}.#{attribute_name}"] << message
-      association.errors[attribute_name.to_sym] << message
-    end
+  def validate_same_value_of(association, attribute_name, other_attribute)
+    add_errors_on(association, attribute_name, :not_same) if association.send(attribute_name) != association.send(other_attribute)
+  end
+
+  def add_errors_on(association, attribute_name, i18n_error_key)
+    @record.errors["#{association_name(association)}.#{attribute_name}"] << error_message_for(association, attribute_name, i18n_error_key)
+    association.errors[attribute_name.to_sym] << error_message_for(association, attribute_name, i18n_error_key)
+  end
+
+  def association_name(association)
+    association.class.model_name.i18n_key
+  end
+
+  def error_message_for(association, attribute_name, i18n_error_key)
+    I18n.t("activerecord.errors.models.#{association_name(association)}.attributes.#{attribute_name}.#{i18n_error_key}")
   end
 end
