@@ -183,6 +183,7 @@ pt:
               blank: "Nome do titular do usuário não pode ficar em branco"
             owner_document:
               blank: "CPF / CNPJ do titular do usuário não pode ficar em branco"
+              not_same: "CPF/CNPJ dos dados cadastrais e bancários preenchidos não estão iguais."
             account_type:
               blank: "Tipo de conta não pode ficar em branco"
         project:
