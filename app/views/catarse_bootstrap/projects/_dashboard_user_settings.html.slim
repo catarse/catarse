@@ -30,7 +30,7 @@
               .w-row
                 .w-col.w-col-6.w-sub-col
                   = form.input :cpf, as: :tel, 
-                  input_html: { class: 'positive', required: true }
+                    input_html: { class: 'positive', required: true, data: { :'validate-cpf-cnpj' => true }}
                 .w-col.w-col-6
                   = form.input :state_inscription, as: :string, 
                   input_html: { class: 'positive', required: true }
@@ -96,7 +96,7 @@
             .w-row
               .w-col.w-col-6.w-sub-col
                 = form.input :owner_document, as: :tel, 
-                input_html: { class: 'positive', required: true }
+                input_html: { class: 'positive', required: true, data: { :'validate-cpf-cnpj' => true } }
               .w-col.w-col-6
                 = form.input :account_type, as: :select, collection: ['Corrente', 'Poupança'], class: 'w-select positive',
                 input_html: { class: 'positive', required: true }
