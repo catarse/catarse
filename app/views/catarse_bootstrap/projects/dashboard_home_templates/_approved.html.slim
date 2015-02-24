@@ -5,7 +5,7 @@
       .w-col.w-col-8
         .fontsize-large.fontweight-semibold.u-marginbottom-10= t('.title', name: @project.user.display_name) 
         p.fontsize-base
-          = t('.subtitle_html', link: link_to( 'Conta' , '#user_settings', class: 'alt-link'))
+          = t('.subtitle_html', link1: link_to( 'Conta' , '#user_settings', class: 'alt-link'), link2: (link_to 'como fazemos o repasse do dinheiro','http://suporte.catarse.me/hc/pt-br/articles/202037493-Como-ser', target: '__blank', class: 'alt-link'))
         .card.u-radius.u-marginbottom-30
           .fontsize-small.fontweight-semibold
             span.fontcolor-secondary>= t('projects.dashboard_home_templates.status')
