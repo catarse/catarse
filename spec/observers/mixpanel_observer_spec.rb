@@ -2,7 +2,8 @@ require 'rails_helper'
 
 RSpec.describe MixpanelObserver do
   let(:contribution){ create(:contribution, key: 'should be updated', payment_method: 'should be updated', state: 'confirmed', confirmed_at: nil) }
-  let(:tracker){ double('mixpanel-ruby tracker', {track: nil}) }
+  let(:people){ double('mixpanel-ruby people', {set: nil}) }
+  let(:tracker){ double('mixpanel-ruby tracker', {track: nil, people: people}) }
   let(:properties) do
     {
       user_id: contribution.user.id.to_s,
