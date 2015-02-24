@@ -36,16 +36,16 @@ RSpec.describe MixpanelObserver do
 
   describe "#from_waiting_confirmation_to_confirmed" do
     it "should send tracker a track call with the user id of the contribution" do
-      expect(tracker).to receive(:track).with(contribution.user.id.to_s, "Engaged with Catarse", properties.merge(action: 'contribution confirmed'))
-      expect(tracker).to receive(:track).with(contribution.user.id.to_s, "Contribution confirmed", properties)
+      expect(tracker).to receive(:track).with(contribution.user.id.to_s, "Engaged with Catarse", properties.merge(action: 'contribution confirmed'), contribution.user.current_sign_in_ip)
+      expect(tracker).to receive(:track).with(contribution.user.id.to_s, "Contribution confirmed", properties, contribution.user.current_sign_in_ip)
       contribution.notify_observers :from_waiting_confirmation_to_confirmed
     end
   end
 
   describe "#from_pending_to_confirmed" do
     it "should send tracker a track call with the user id of the contribution" do
-      expect(tracker).to receive(:track).with(contribution.user.id.to_s, "Engaged with Catarse", properties.merge(action: 'contribution confirmed'))
-      expect(tracker).to receive(:track).with(contribution.user.id.to_s, "Contribution confirmed", properties)
+      expect(tracker).to receive(:track).with(contribution.user.id.to_s, "Engaged with Catarse", properties.merge(action: 'contribution confirmed'), contribution.user.current_sign_in_ip)
+      expect(tracker).to receive(:track).with(contribution.user.id.to_s, "Contribution confirmed", properties, contribution.user.current_sign_in_ip)
       contribution.notify_observers :from_pending_to_confirmed
     end
   end
@@ -53,14 +53,14 @@ RSpec.describe MixpanelObserver do
   describe "#after_save" do
     context "when we create a Reward" do
       it "should send tracker a track call with the change" do
-        expect(tracker).to receive(:track).with(project.user.id.to_s, "Project owner engaged with Catarse", project_owner_properties.merge(action: "Updated reward"))
+        expect(tracker).to receive(:track).with(project.user.id.to_s, "Project owner engaged with Catarse", project_owner_properties.merge(action: "Updated reward"), project.user.current_sign_in_ip)
         create(:reward, project: project)
       end
     end
 
     context "when we create a ProjectBudget" do
       it "should send tracker a track call with the change" do
-        expect(tracker).to receive(:track).with(project.user.id.to_s, "Project owner engaged with Catarse", project_owner_properties.merge(action: "Updated budget"))
+        expect(tracker).to receive(:track).with(project.user.id.to_s, "Project owner engaged with Catarse", project_owner_properties.merge(action: "Updated budget"), project.user.current_sign_in_ip)
         create(:project_budget, project: project)
       end
     end
@@ -69,7 +69,7 @@ RSpec.describe MixpanelObserver do
   describe "#after_create" do
     context "when we create a ProjectPost" do
       it "should send tracker a track call with the change" do
-        expect(tracker).to receive(:track).with(project.user.id.to_s, "Project owner engaged with Catarse", project_owner_properties.merge(action: "Created post"))
+        expect(tracker).to receive(:track).with(project.user.id.to_s, "Project owner engaged with Catarse", project_owner_properties.merge(action: "Created post"), project.user.current_sign_in_ip)
         create(:project_post, project: project)
       end
     end
@@ -79,7 +79,7 @@ RSpec.describe MixpanelObserver do
     [:video_url, :about, :headline, :uploaded_image].each do |attribute|
       context "when we update a project's #{attribute}" do
         it "should send tracker a track call with the change" do
-          expect(tracker).to receive(:track).with(project.user.id.to_s, "Project owner engaged with Catarse", project_owner_properties.merge(action: "Updated #{attribute}"))
+          expect(tracker).to receive(:track).with(project.user.id.to_s, "Project owner engaged with Catarse", project_owner_properties.merge(action: "Updated #{attribute}"), project.user.current_sign_in_ip)
           project.update_attributes attribute => 'http://youtu.be/teste'
         end
       end
@@ -89,7 +89,7 @@ RSpec.describe MixpanelObserver do
     context "when we update a project owner profile" do
       let(:user){ project.user }
       it "should send tracker a track call with the change" do
-        expect(tracker).to receive(:track).with(user.id.to_s, "Project owner engaged with Catarse", project_owner_properties.merge(action: "Updated profile"))
+        expect(tracker).to receive(:track).with(user.id.to_s, "Project owner engaged with Catarse", project_owner_properties.merge(action: "Updated profile"), project.user.current_sign_in_ip)
         user.update_attributes bio: 'test'
       end
     end
