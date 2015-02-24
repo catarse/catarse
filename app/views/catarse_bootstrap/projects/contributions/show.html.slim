@@ -6,15 +6,15 @@
         .u-text-center.u-marginbottom-20
           = image_tag @project.user.decorate.display_image, class: 'u-round thumb big', alt: @project.user.decorate.display_name
         .u-text-center
-          .fontsize-largest.text-success.u-marginbottom-20 Valeu ;)
+          .fontsize-largest.text-success.u-marginbottom-20 Valeu!
           .fontsize-base.u-marginbottom-30
-            | Agora você é parte do grupo de 
+            | Você faz parte do grupo de 
             => @project.total_contributions
             ' pessoas que querem tirar o
             span.fontweight-semibold= link_to @project.name, project_by_slug_url(@project.permalink), class: 'alt-link'
-            | &nbsp;do papel! Assim que o seu pagamento for confirmado, enviaremos um email. Você também pode acompanhar o status do seu apoio&nbsp;
+            | &nbsp;do papel! Você receberá a confirmação do pagamento por email assim que ele for processado. Você também pode acompanhar o status do seu apoio&nbsp;
             = link_to 'através do seu perfil', edit_user_path(resource.user, anchor: 'contributions'), class: 'link-hidden fontweight-semibold'
-            | .&nbsp;Enquanto isso, que tal espalhar a ideia para os seus amigos?
+            | .&nbsp;Compartilhe o seu apoio e aumente as chances do projeto bater a meta!
         .w-row.u-marginbottom-20
           .w-col.w-col-6.w-col-small-6.w-col-tiny-6.w-sub-col-middle
             div
@@ -26,11 +26,11 @@
               img.icon-share-mobile alt="53a3f65105eb6144171d8eda_twitter-256.png" src="http://uploads.webflow.com/54b440b85608e3f4389db387/53a3f65105eb6144171d8eda_twitter-256.png" /
               /a.btn.btn-medium.btn-tweet href="#"  Tweet
               = link_to "http://twitter.com/?status=#{t('i_just_contributed', name: @project.name)} #{project_by_slug_url(@project.permalink, ref: 'twitter')}", target: :_blank, id: "twitter_share_button", data: { title: @project.name }, class: 'btn btn-medium btn-tweet' do
-                | Tweet
+                | Tuíte
 
 .section.u-marginbottom-40
   .w-container
-    .u-marginbottom-20.fontweight-semibold.fontsize-base.u-text-center Você pode curtir esses aqui também
+    .u-marginbottom-20.fontweight-semibold.fontsize-base.u-text-center Recomendações de projetos para você
     .w-row
       == render_projects @contribution.recommended_projects.limit(3), 'thankyou', { wrapper_class: 'w-col w-col-4' }
 
@@ -38,7 +38,7 @@
   .section.section-gray-one
     .w-container
       .fontsize-larger.lineheight-tight.u-text-center.u-marginbottom-40 
-        | E por falar em #{@project.category.name_pt}, que tal saber em primeira mão novos projetos dessa categoria sempre que eles entram aqui no&nbsp;Catarse?&nbsp;Direto do forno para o seu email!
+        | Curte a categoria #{@project.category.name_pt}? Você pode receber em primeira mão e diretamente no seu email quando novos projetos entrarem no ar!
       .w-row
         .w-col.w-col-4.w-col-push-4
           = link_to "Seguir #{@project.category.name_pt}", subscribe_category_path(@project.category), class: 'btn btn-large btn-dark'
