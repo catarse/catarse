@@ -10,7 +10,7 @@ var App = window.App = Skull.View.extend({
   },
 
   openAlert: function(){
-    if($('#global-alert').length === 0){
+    if($('#global-alert').length === 0 || this.$('body').data('mobile')){
       return;
     };
     if(!window.store.get('globalClosed')){
