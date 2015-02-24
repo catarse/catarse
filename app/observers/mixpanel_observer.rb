@@ -56,7 +56,7 @@ class MixpanelObserver < ActiveRecord::Observer
 
   def track_event(user, event, properties={}, ip=nil)
     tracker.track(user.id.to_s, event, properties, user.current_sign_in_ip)
-    tracker.people.set(user.id.to_s, properties)
+    tracker.people.set(user.id.to_s, properties, user.current_sign_in_ip)
   end
 
   def user_properties(user)
