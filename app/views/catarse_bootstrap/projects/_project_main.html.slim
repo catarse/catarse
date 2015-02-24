@@ -5,7 +5,7 @@ section.section
         #project_about.content.w-col.w-col-8 = render 'project_about'
 
         #project_posts.content.w-col.w-col-8.w-hidden[data-path=project_posts_path(project_id: @project.id)]
-          = render 'edit_action', text: 'Editar novidates', anchor: 'notifications'
+          = render 'edit_action', text: 'Editar novidades', anchor: 'posts'
           .posts
             | &nbsp;
           #posts-loading.loader.u-text-center.w-col.w-col-12 = image_tag "catarse_bootstrap/loader.gif"
