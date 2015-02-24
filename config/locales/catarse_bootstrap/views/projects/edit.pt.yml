@@ -24,12 +24,12 @@ pt:
         reward_deliver_time: "<b>Estimativa de Entrega:</b> %{estimate}"
         reward_title: Para %{minimum} ou mais
     dashboard_user_settings:
-       title: "Se prepare para receber apoios!"
-       subtitle_html: "Com os dados abaixo, seu projeto estará pronto para ir ao ar. Após concluir o preenchimento, clique em Salvar. Se tudo estiver correto, o próximo passo é colocar o projeto no ar, na hora que você quiser. Basta apertar o botão <strong>Publicar</strong> e mãos a obra!"
-       user_data_title: "Dados Cadastrais e endereço"
-       user_data_subtitle: "Precisamos desses dados abaixo pois emitimos uma Nota Fiscal ao final do projeto, no caso de ele ser bem-sucedido."
+       title: "Dados cadastrais e bancários"
+       subtitle_html: "Com os dados abaixo completos, seu projeto estará pronto para ir ao ar. Após concluir o preenchimento, clique em Salvar. Revise. Se tudo estiver ok, basta apertar o botão Publicar e começar sua campanha!"
+       user_data_title: "Dados cadastrais e endereço"
+       user_data_subtitle: "Precisamos dos dados abaixo para emissão de Nota Fiscais para projetos bem sucedidos. <b>ATENÇÃO: O CPF/CNPJ listado nos dados cadastrais e dados bancários precisa ser o mesmo.</b>"
        account_title: "Dados bancários"
-       account_subtitle: "Para efetuar o pagamento em sua conta, no caso de seu projeto ser bem-sucedido, precisamos que você nos informe seus dados bancários"
+       account_subtitle: "Precisamos dos dados abaixo para efetuar a transferência financeira para projetos bem sucedidos. <b>ATENÇÃO: O CPF/CNPJ listado nos dados cadastrais e dados bancários precisa ser o mesmo.</b>"
        submit: "Salvar"
     dashboard_home_templates:
       status: "Status:"
@@ -40,23 +40,23 @@ pt:
         left: restantes
       waiting_funds:
         title: "%{name}, estamos processando os últimos pagamentos."
-        subtitle: "Seu projeto foi finalizado em %{expires} e está aguardando confirmação de boletos e pagamentos. Em geral os projetos ficam por até 4 dias úteis nesse status, contados a partir da data de finalização do projeto."
+        subtitle: "Seu projeto foi finalizado em %{expires} e está aguardando confirmação de boletos e pagamentos. Devido à data de vencimento de boletos, projetos que tiveram apoios de última hora ficam por até 4 dias úteis nesse status, contados a partir da data de finalização do projeto. &{link}."
         header: "A partir daqui o seu projeto pode bater a meta ou não. Veja o que acontece em cada um dos casos:"
         success: "Bati a meta:"
         failed: "Não bati a meta:"
         good_luck: "Boa sorte!"
       successful:
         title: "%{name}, comemore que você merece!"
-        subtitle: "Seu projeto foi bem sucedido e agora é a hora de iniciar o trabalho de relacionamento com seus apoiadores! Prometeu? Cumpra!"
+        subtitle: "Seu projeto foi bem sucedido e agora é a hora de iniciar o trabalho de relacionamento com seus apoiadores! Atenção especial à entrega de recompensas. Prometeu? Entregue! Não deixe de olhar a seção de pós-projeto do &{link1} e de informar-se sobre &{link2}. "
         header1: "E não se esqueça: transparência é tudo."
         transparent_html: "Manter um apoiador informado é manter um apoiador feliz. Mesmo que você vá informá-lo de uma falha ou contratempo. Apoiadores felizes são %{link} . Portanto, use e abuse (sempre com moderação) da aba novidades. O que você escrever por lá chega direto na caixa de emails dos seus apoiadores. Já vai começar a entrega de recompensas? Na aba \"relatórios\" você baixa informações para que você possa fazer a gestão de entrega de recompensas do seu projeto."
         header2: "Não deixe de ler:"
       rejected:
         title: "%{name}, infelizmente não foi dessa vez."
-        subtitle_html: "Você enviou seu projeto para análise da equipe do Catarse e entendemos que ele não está de acordo com o perfil da plataforma. Lembrando que ter um projeto recusado não impede que você envie novos projetos para avaliação ou reformule seu projeto atual para que ele se adeque aos %{link1}. Converse com nosso atendimento! Você ainda pode editar seu projeto e solicitar uma reavaliação. Encare como um processo de aprendizado! Levanta, sacode a poeira e dá a volta por cima!"
+        subtitle_html: "Você enviou seu projeto para análise do Catarse e entendemos que ele não está de acordo com o perfil do site. Ter um projeto recusado não impede que você envie novos projetos para avaliação ou reformule seu projeto atual. Converse com nosso atendimento! Recomendamos que você dê uma boa olhada nos nossos %{link1} e no %{link2}. "
       online:
         title: "%{name}, sua campanha está no ar!"
-        subtitle_html: "Seu projeto está no ar e sua campanha se encerrará em %{date}. Você poderá receber apoios até o seu último minuto de campanha. Lembre-se, é tudo-ou-nada e você só levará os recursos captados se bater a meta que foi estipulada. Não esqueça de se informar sobre como o %{link1}. É MUITO IMPORTANTE! Confira também %{link2}."
+        subtitle_html: "Seu projeto está no ar e sua campanha se encerrará às 23hs59min59s do dia %{date}. Até esse dia e horário você poderá receber apoios. Lembre-se, é tudo-ou-nada e você só levará os recursos captados se bater a meta que foi estipulada. Acesse a nossa %{link2} para outras dúvidas!"
         explanation_html: "
 <div class='fontsize-base u-marginbottom-40 card card-terciary'>
                       <p class='fontweight-bold'>
@@ -75,7 +75,7 @@ pt:
 "
       failed:
         title: "%{name}, não desanime!"
-        subtitle_html: "Seu projeto não bateu a meta e sabemos que isso não é a melhor das sensações. Mas não desanime. O recorde mundial de maior arrecadação da atualidade é uma segunda tentativa de um projeto. E não se preocupe, todos os seus apoiadores terão seu dinheiro de volta. %{link}."
+        subtitle_html: "Seu projeto não bateu a meta e sabemos que isso não é a melhor das sensações. Mas não desanime. Encare o processo como um aprendizado e não deixe de cogitar uma segunda tentativa. Não se preocupe, todos os seus apoiadores receberão o dinheiro de volta. %{link}."
         questions: "Enviamos também um email para você com duas perguntinhas. Se você tiver tempo e cabeça, seria ótimo se pudesse dar uma olhada. Seu feedback nos ajuda a construir um Catarse melhor e mais legal pra você."
       draft:
         title: "%{name}, construa seu projeto!"
@@ -83,10 +83,10 @@ pt:
         study_title: "Sentiu que precisa estudar mais para montar seu projeto? Confira os links no box ao lado."
       approved:
         title: "%{name}, seu projeto foi aprovado!"
-        subtitle_html: "Para colocar seu projeto no ar e dar início a sua campanha, preencha os dados requisitados na aba %{link}. "
+        subtitle_html: "Para colocar o seu projeto no ar é preciso apenas que você preencha os dados necessários na aba %{link1}. É importante saber que cobramos a taxa de 13% do valor total arrecadado apenas por projetos bem sucedidos. Entenda %{link2}. "
       in_analysis:
-        title: "%{name}, em breve enviaremos um feedback sobre seu projeto."
-        subtitle_html: "Você enviou seu projeto para análise da equipe do Catarse. Em até <strong>4 dias úteis</strong> nosso atendimento entrará em contato com você para dar o OK para ir ao ar ou para sugerir ajustes. Frio na barriga? Não se deixe tomar pela ansiedade e revise o seu projeto. Essa é a hora de deixar ele bem redondo. Colete feedbacks com os mais próximos e escute as sugestões da equipe do Catarse. Lembre-se, algumas modificações não serão permitidas quando o seu projeto for ao ar."
+        title: "%{name}, você enviou seu projeto para análise e receberá nossa resposta em até 4 dias úteis"
+        subtitle_html: "Muito obrigado! Nossa equipe vai avaliar todo o conteúdo do seu projeto e em até 4 dias úteis você receberá um email informando se ele foi Aprovado, Recusado ou se vai continuar Em Análise por mais algum tempo para que você possa realizar ajustes sugeridos. Aproveite esse período para coletar feedbacks com pessoas próximas!"
     edit:
       leave_link_html: "&nbsp; Sair do painel de controle"
       start_tab: Início
@@ -109,7 +109,7 @@ pt:
       other_link_label: "Presença na internet"
       other_link_hint: "Inclua links que ajudem os apoiadores a entender porque você é a pessoa certa para fazer esse projeto. "
       about_label: "Sobre você"
-      about_hint: "Caso você queira descrever mais você, sua empresa ou sua instituição. Dar crédito a parceiros? Algum vídeo institucional? Use esse espaço abaixo para isso. Ele irá aparecer na Aba Sobre em seu Perfil Público."
+      about_hint: "Fale sobre você e tente fornecer as informações mais relevantes para que visitantes possam te conhecer melhor. "
       facebook_link_label: "Perfil do facebook"
       facebook_link_hint: "Cole o link do seu perfil"
       uploaded_image_label: "Imagem do perfil"
@@ -126,10 +126,10 @@ pt:
       header_text: "Compartilhe o link abaixo com seus amigos e aproveite o momento para fazer ajustes finos que ajudem na sua campanha."
     dashboard_posts:
       title: "Escrever uma novidade"
-      only_to_backers: "Visível apenas para apoiadores"
+      only_to_backers: "Quero que essa novidade seja visível apenas para apoiadores."
       publish: 'Publicar novidade'
       discard: 'Descartar'
-      warning: "Lembre-se que todo post de novidade vai diretamente para o email de seus apoiadores. Por isso, revise bem seu texto antes de publicá-lo."
+      warning: "Toda novidade publicada é enviada diretamente aos seus apoiadores por email. Revise bem o post antes de publicar."
       old_posts: "Novidades antigas"
     dashboard_project:
       budgets_hint_html: "Informe uma lista com os principais itens do orçamento. Não precisa entrar em detalhes minuciosos, basta uma visão geral. Seus apoiadores gostarão de saber onde o dinheiro deles estará indo. Não existe uma regra&nbsp;quanto a quantidade de itens na lista, mas normalmente 5 costuma ser um bom número!"

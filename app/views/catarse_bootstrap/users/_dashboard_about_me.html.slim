@@ -14,16 +14,16 @@
 
               .w-row.u-marginbottom-30.card.card-terciary
                 .w-col.w-col-5.w-sub-col
-                  label.field-label.fontweight-semibold   Header do perfil
-                  label.field-label.fontsize-smallest.fontcolor-secondary   Essa imagem será utilizada como o background do header de seu perfil público (PNG, JPG)
+                  label.field-label.fontweight-semibold   Imagem de capa do perfil
+                  label.field-label.fontsize-smallest.fontcolor-secondary   Essa imagem será utilizada como fundo do cabeçalho do seu perfil público (PNG ou JPG)
                 .w-col.w-col-4.w-sub-col
                   = form.input :cover_image, label: '', as: :file, required: false, hint: (@user.cover_image.present? ? image_tag(@user.cover_image.base.url, size: '220x172#') : '' ) 
 
           - if current_user && current_user.admin?
             .w-row.u-marginbottom-30.card.card-terciary
               .w-col.w-col-5.w-sub-col
-                label.field-label.fontweight-semibold URL do seu perfil
-                label.field-label.fontsize-smallest.fontcolor-secondary Seu perfil público pode ter um endereço personalizado   
+                label.field-label.fontweight-semibold Endereço do seu perfil
+                label.field-label.fontsize-smallest.fontcolor-secondary Seu perfil público pode ter uma URL personalizada. Escolha uma fácil de guardar!    
               .w-col.w-col-7
                 .w-row
                   .w-col.w-col-6.w-col-small-6.w-col-tiny-6
@@ -35,7 +35,7 @@
           .w-row.u-marginbottom-30.card.card-terciary
             .w-col.w-col-5.w-sub-col
               label.field-label.fontweight-semibold   Nome
-              label.field-label.fontsize-smallest.fontcolor-secondary   Esse é o nome que os usuários irão ver no seu perfil
+              label.field-label.fontsize-smallest.fontcolor-secondary   Esse é o nome que os usuários irão ver no seu perfil público
             .w-col.w-col-7
               = form.input_field :name, as: :string, class: 'positive'
           .w-form.card.card-terciary.u-marginbottom-30
@@ -55,8 +55,8 @@
           .w-form.card.card-terciary.u-marginbottom-30
               .w-row.u-marginbottom-10
                 .w-col.w-col-5.w-sub-col
-                  label.field-label.fontweight-semibold for="name-8"  Página na internet
-                  label.field-label.fontsize-smallest.fontcolor-secondary for="name-8"  Inclua links que ajudem os apoiadores a saber mais sobre você e suas qualificações para executar o projeto.&nbsp;
+                  label.field-label.fontweight-semibold for="name-8"  Presença na internet
+                  label.field-label.fontsize-smallest.fontcolor-secondary for="name-8"  Inclua links que ajudem outros usuários a te conhecer melhor.&nbsp;
                 .w-col.w-col-7
                   #links
                     = form.simple_fields_for :links do |link_form|
@@ -67,7 +67,7 @@
             .w-col.w-col-8.w-sub-col
               .card.card-terciary.u-marginbottom-30
                 label.field-label.fontweight-semibold for="name-8"  Sobre
-                label.field-label.fontsize-smallest.fontcolor-secondary.u-marginbottom-20 for="field-6"  Caso você queira descrever mais você, sua empresa ou sua instituição. Dar crédito a parceiros?&nbsp;Algum vídeo institucional?&nbsp;Use esse espaço abaixo para isso. Ele irá aparecer na Aba Sobre em seu Perfil Público.
+                label.field-label.fontsize-smallest.fontcolor-secondary.u-marginbottom-20 for="field-6"  Fale sobre você e tente fornecer as informações mais relevantes para que visitantes possam te conhecer melhor. 
                 .w-form
                   .preview-container.u-marginbottom-40
                     /.text-field.no-hover.top
