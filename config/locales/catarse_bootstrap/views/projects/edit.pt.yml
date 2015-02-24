@@ -47,16 +47,16 @@ pt:
         good_luck: "Boa sorte!"
       successful:
         title: "%{name}, comemore que você merece!"
-        subtitle: "Seu projeto foi bem sucedido e agora é a hora de iniciar o trabalho de relacionamento com seus apoiadores! Atenção especial à entrega de recompensas. Prometeu? Entregue! Não deixe de olhar a seção de pós=projeto do &{link1} e de informar-se sobre &{link2}. "
+        subtitle: "Seu projeto foi bem sucedido e agora é a hora de iniciar o trabalho de relacionamento com seus apoiadores! Atenção especial à entrega de recompensas. Prometeu? Entregue! Não deixe de olhar a seção de pós-projeto do &{link1} e de informar-se sobre &{link2}. "
         header1: "E não se esqueça: transparência é tudo."
         transparent_html: "Manter um apoiador informado é manter um apoiador feliz. Mesmo que você vá informá-lo de uma falha ou contratempo. Apoiadores felizes são %{link} . Portanto, use e abuse (sempre com moderação) da aba novidades. O que você escrever por lá chega direto na caixa de emails dos seus apoiadores. Já vai começar a entrega de recompensas? Na aba \"relatórios\" você baixa informações para que você possa fazer a gestão de entrega de recompensas do seu projeto."
         header2: "Não deixe de ler:"
       rejected:
         title: "%{name}, infelizmente não foi dessa vez."
-        subtitle_html: "Você enviou seu projeto para análise da equipe do Catarse e entendemos que ele não está de acordo com o perfil da plataforma. Lembrando que ter um projeto recusado não impede que você envie novos projetos para avaliação ou reformule seu projeto atual para que ele se adeque aos %{link1}. Converse com nosso atendimento! Você ainda pode editar seu projeto e solicitar uma reavaliação. Encare como um processo de aprendizado! Levanta, sacode a poeira e dá a volta por cima!"
+        subtitle_html: "Você enviou seu projeto para análise do Catarse e entendemos que ele não está de acordo com o perfil do site. Ter um projeto recusado não impede que você envie novos projetos para avaliação ou reformule seu projeto atual. Converse com nosso atendimento! Recomendamos que você dê uma boa olhada nos nossos %{link1} e no %{link2}. "
       online:
         title: "%{name}, sua campanha está no ar!"
-        subtitle_html: "Seu projeto está no ar e sua campanha se encerrará em %{date}. Você poderá receber apoios até o seu último minuto de campanha. Lembre-se, é tudo-ou-nada e você só levará os recursos captados se bater a meta que foi estipulada. Não esqueça de se informar sobre como o %{link1}. É MUITO IMPORTANTE! Confira também %{link2}."
+        subtitle_html: "Seu projeto está no ar e sua campanha se encerrará às 23hs59min59s do dia %{date}. Até esse dia e horário você poderá receber apoios. Lembre-se, é tudo-ou-nada e você só levará os recursos captados se bater a meta que foi estipulada. Acesse a nossa %{link2} para outras dúvidas!"
         explanation_html: "
 <div class='fontsize-base u-marginbottom-40 card card-terciary'>
                       <p class='fontweight-bold'>
