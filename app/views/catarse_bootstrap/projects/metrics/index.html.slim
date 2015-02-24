@@ -63,18 +63,6 @@
                       = link_to 'XLS', reports_contribution_reports_for_project_owners_path(project_id: @project.id, reward_id: reward.id, format: :xls), class: 'alt-link'
                   li.divider.u-marginbottom-10
 
-        .w-hidden-small.w-hidden-tiny.card.u-radius data-ix="new-interaction" 
-          .fontsize-small.fontweight-semibold.u-marginbottom-20 Suporte
-          ul.w-list-unstyled
-            li.alt-link.fontsize-smaller.u-marginbottom-10
-              a.alt-link href="http://suporte.catarse.me/hc/pt-br/sections/200426037-Realizadores-repasse-do-dinheiro" target="_blank"  Como o Catarse funciona?
-            li.fontsize-smaller.alt-link.u-marginbottom-10
-              a.alt-link href="http://suporte.catarse.me/hc/pt-br/articles/202265256-Por-que-o-Tudo-ou-Nada-" target="_blank"  Por quê Tudo-ou-nada?
-            li.alt-link.fontsize-smaller.u-marginbottom-10
-              a.alt-link href="http://suporte.catarse.me/" target="_blank"  Central de Suporte
-            li.fontsize-smaller.alt-link
-              a.alt-link href="https://equipecatarse.zendesk.com/account/dropboxes/20298537" target="_blank"  Entre em contato com a gente
-
 /.project-metrics style='width: 980px;'
   h1= t('projects.metrics.titles.confirmed_by_day')
   = line_chart @metrics[:confirmed]
