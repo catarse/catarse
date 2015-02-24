@@ -31,14 +31,15 @@
               label: t('.name_label'),
               hint: t('.name_hint')
 
+        .w-row
+          .w-col.w-col-8
             = form.input :about, as: :text, 
-              wrapper: 'one_col',
-              wrapper_class: 'w-row u-marginbottom-30 card card-terciary',
-              text_field_wrapper_html: { class: 'w-col w-col-7' },
-              input_html: { class: 'positive jumbo', required: true },
-              label: t('.about_label'),
-              hint: t('.about_hint')
-
+            wrapper: 'one_col',
+            wrapper_class: 'w-row u-marginbottom-30 card card-terciary',
+            text_field_wrapper_html: { class: 'w-col w-col-7' },
+            input_html: { class: 'positive jumbo', required: true },
+            label: t('.about_label'),
+            hint: t('.about_hint')
             .w-form.card.card-terciary.u-marginbottom-30
               = form.input :facebook_link, as: :string, 
                 wrapper_class: 'w-row u-marginbottom-10',
@@ -64,9 +65,12 @@
                       = form.simple_fields_for :links do |link_form|
                         = render partial: 'link_fields', locals: { f: link_form, parent_form: form }
 
-                      = link_to_add_association " . ", form, :links, :'data-association-insertion-method' => :after, class: 'w-hidden user-links'                  
+                      = link_to_add_association " . ", form, :links, :'data-association-insertion-method' => :after, class: 'w-hidden user-links'
           .w-col.w-col-4
             = render 'shared/formatting_tips'
+
+
+          
     div
       .w-container
         .w-row
