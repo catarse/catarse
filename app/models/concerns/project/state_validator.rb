@@ -23,7 +23,7 @@ class Project::StateValidator < ActiveModel::Validator
 
   def in_analysis
     @record.errors.add_on_blank([:about, :headline, :goal, :online_days, :uploaded_image, :budget])
-    %w(name bio).each do |attribute|
+    %w(name about).each do |attribute|
       validate_presence_of_nested_attribute(user, attribute)
     end
     @record.errors['user.uploaded_image'] << "Imagem do usuário não pode ficar em branco" if user.personal_image.blank?
