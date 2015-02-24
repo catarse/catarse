@@ -62,7 +62,8 @@
 .section.section-gray-one
   .w-container
     .u-text-center
-      = image_tag "icon-blog.png", class: "u-marginbottom-10"
+      = link_to CatarseSettings[:blog_url], target: :blank do
+        = image_tag "icon-blog.png", class: "u-marginbottom-10"
       .fontsize-large.u-marginbottom-60.text-success
         = t('.blog')
     .w-row

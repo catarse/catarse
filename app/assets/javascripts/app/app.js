@@ -31,7 +31,7 @@ var App = window.App = Skull.View.extend({
   },
 
   searchProject: function(){
-    this.$('#search-form').submit();
+    this.$('.discover-form:visible').submit();
     return false;
   },
 
