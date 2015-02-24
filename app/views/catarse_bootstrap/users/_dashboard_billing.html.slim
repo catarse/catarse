@@ -4,9 +4,7 @@
     .w-form.card.card-terciary.u-marginbottom-20
       .fontsize-base.fontweight-semibold Cartões de crédito
       .fontsize-small.u-marginbottom-20
-        ' Lembrando: caso algum projeto que você tenha apoiado
-        span.fontweight-semibold> com Cartão de Crédito
-        | não seja bem-sucedido, nós efetuaremos o reembolso no cartão que você usou para apoiar
+        ' Caso algum projeto que você tenha apoiado <b>com Cartão de Crédito</b> não seja bem-sucedido, nós efetuaremos o reembolso <b>automaticamente</b> no cartão utilizado para efetuar o apoio.
       .divider.u-marginbottom-20
       .w-row.w-hidden-tiny.card
         .w-col.w-col-5.w-col-small-5
@@ -31,7 +29,7 @@
         = f.simple_fields_for :bank_account do |bform|
           .fontsize-base.fontweight-semibold Dados bancários
           .fontsize-small.u-marginbottom-20
-            | Caso algum projeto que você tenha apoiado <b>com Boleto Bancário</b> não seja bem-sucedido, nós efetuaremos o reembolso de seu pagamento na conta abaixo.
+            | Caso algum projeto que você tenha apoiado <b>com Boleto Bancário</b> não seja bem-sucedido, nós efetuaremos o reembolso de seu pagamento <b>automaticamente</b> na conta indicada abaixo.
           .divider.u-marginbottom-20
           .w-row
             .w-col.w-col-6.w-sub-col
