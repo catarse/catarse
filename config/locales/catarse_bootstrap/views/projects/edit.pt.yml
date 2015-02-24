@@ -24,12 +24,12 @@ pt:
         reward_deliver_time: "<b>Estimativa de Entrega:</b> %{estimate}"
         reward_title: Para %{minimum} ou mais
     dashboard_user_settings:
-       title: "Se prepare para receber apoios!"
-       subtitle_html: "Com os dados abaixo, seu projeto estará pronto para ir ao ar. Após concluir o preenchimento, clique em Salvar. Se tudo estiver correto, o próximo passo é colocar o projeto no ar, na hora que você quiser. Basta apertar o botão <strong>Publicar</strong> e mãos a obra!"
-       user_data_title: "Dados Cadastrais e endereço"
-       user_data_subtitle: "Precisamos desses dados abaixo pois emitimos uma Nota Fiscal ao final do projeto, no caso de ele ser bem-sucedido."
+       title: "Dados cadastrais e bancários"
+       subtitle_html: "Com os dados abaixo completos, seu projeto estará pronto para ir ao ar. Após concluir o preenchimento, clique em Salvar. Revise. Se tudo estiver ok, basta apertar o botão Publicar e começar sua campanha!"
+       user_data_title: "Dados cadastrais e endereço"
+       user_data_subtitle: "Precisamos dos dados abaixo para emissão de Nota Fiscais para projetos bem sucedidos. <b>ATENÇÃO: O CPF/CNPJ listado nos dados cadastrais e dados bancários precisa ser o mesmo.</b>"
        account_title: "Dados bancários"
-       account_subtitle: "Para efetuar o pagamento em sua conta, no caso de seu projeto ser bem-sucedido, precisamos que você nos informe seus dados bancários"
+       account_subtitle: "Precisamos dos dados abaixo para efetuar a transferência financeira para projetos bem sucedidos. <b>ATENÇÃO: O CPF/CNPJ listado nos dados cadastrais e dados bancários precisa ser o mesmo.</b>"
        submit: "Salvar"
     dashboard_home_templates:
       status: "Status:"
