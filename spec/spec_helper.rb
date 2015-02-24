@@ -76,7 +76,7 @@ RSpec.configure do |config|
     UserNotifier.from_name        = CatarseSettings[:company_name]
 
     allow_any_instance_of(Contribution).to receive(:payment_engine).and_return(PaymentEngines::Interface.new)
-    allow_any_instance_of(MixpanelObserver).to receive_messages(tracker: double('mixpanel tracker', track: nil))
+    allow_any_instance_of(MixpanelObserver).to receive_messages(tracker: double('mixpanel tracker', track: nil, people: double('mixpanel people', {set: nil})))
   end
 end
 
