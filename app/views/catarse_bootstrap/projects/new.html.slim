@@ -7,11 +7,11 @@
     .w-row
       .w-col.w-col-8.w-col-push-2
         = simple_form_for @project, defaults: { wrapper: :input_with_error}, html: { id: 'project_form', class: 'w-form' } do |form|
-          = render 'devise/shared/alert'
 
           fieldset
             legend.fontsize-largest.lineheight-loose.u-text-center = t('.form.blocks.first.title')
             p.fontsize-small.u-marginbottom-60.u-text-center = t('.form.blocks.first.description')
+            = render 'devise/shared/alert'
 
             .u-marginbottom-40
               = form.label :name, class: 'fontsize-large', required: false, as: :string
