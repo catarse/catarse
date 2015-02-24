@@ -9,8 +9,8 @@ class MixpanelObserver < ActiveRecord::Observer
       payment_choice: contribution.payment_choice,
       referral: contribution.referal_link
     })
-    tracker.track(contribution.user.id.to_s, "Engaged with Catarse", properties.merge(action: 'contribution confirmed'))
-    tracker.track(contribution.user.id.to_s, "Contribution confirmed", properties)
+    track_event(contribution.user, "Engaged with Catarse", properties.merge(action: 'contribution confirmed'))
+    track_event(contribution.user, "Contribution confirmed", properties)
   end
   alias :from_pending_to_confirmed :from_waiting_confirmation_to_confirmed
 
@@ -51,7 +51,12 @@ class MixpanelObserver < ActiveRecord::Observer
 
   private
   def track_project_owner_engagement(user, action)
-    tracker.track(user.id.to_s, "Project owner engaged with Catarse", user_properties(user).merge(action: action))
+    track_event(user, "Project owner engaged with Catarse", user_properties(user).merge(action: action))
+  end
+
+  def track_event(user, event, properties={}, ip=nil)
+    tracker.track(user.id.to_s, event, properties, user.current_sign_in_ip)
+    tracker.people.set(user.id.to_s, properties, user.current_sign_in_ip)
   end
 
   def user_properties(user)
@@ -60,7 +65,9 @@ class MixpanelObserver < ActiveRecord::Observer
       created: user.created_at,
       last_login: user.last_sign_in_at,
       contributions: user.total_contributed_projects,
-      has_contributions: (user.total_contributed_projects > 0)
+      has_contributions: (user.total_contributed_projects > 0),
+      created_projects: user.projects.count,
+      has_online_project: user.has_online_project?
     }
   end
 
