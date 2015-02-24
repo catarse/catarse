@@ -32,9 +32,10 @@
               hint: t('.name_hint')
 
             = form.input :about, as: :text, 
+              wrapper: 'one_col',
               wrapper_class: 'w-row u-marginbottom-30 card card-terciary',
               text_field_wrapper_html: { class: 'w-col w-col-7' },
-              input_html: { class: 'positive big', required: true },
+              input_html: { class: 'positive jumbo', required: true },
               label: t('.about_label'),
               hint: t('.about_hint')
 
@@ -65,17 +66,7 @@
 
                       = link_to_add_association " . ", form, :links, :'data-association-insertion-method' => :after, class: 'w-hidden user-links'                  
           .w-col.w-col-4
-            .w-hidden-small.w-hidden-tiny.card.u-radius.u-marginbottom-20 data-ix="new-interaction" 
-              .fontsize-small.fontweight-semibold.u-marginbottom-20 Links úteis
-              ul.w-list-unstyled
-                li.alt-link.fontsize-smaller.u-marginbottom-10
-                  a.alt-link href="http://suporte.catarse.me/hc/pt-br/articles/202387638-Diretrizes-para-a-cria%C3%A7%C3%A3o-de-projetos" target="_blank"  Critérios de seleção
-                li.alt-link.fontsize-smaller.u-marginbottom-10
-                  a.alt-link href="http://suporte.catarse.me/hc/pt-br/articles/202446018-Como-funciona-a-sele%C3%A7%C3%A3o-de-projetos-no-Catarse-" target="_blank"  Como os projetos são selecionados?
-                li.fontsize-smaller.alt-link.u-marginbottom-10
-                  a.alt-link href="http://suporte.catarse.me/hc/pt-br/articles/202037363-O-que-%C3%A9-um-projeto-em-Rascunho-" target="_blank"  O que é um projeto em Rascunho?
-                li.fontsize-smaller.alt-link.u-marginbottom-10
-                  a.alt-link href="http://suporte.catarse.me/hc/pt-br/articles/203073937-O-que-%C3%A9-obrigat%C3%B3rio-para-um-projeto-ir-ao-ar-" target="_blank"  Itens obrigatórios para um projeto ir ao ar
+            = render 'shared/formatting_tips'
     div
       .w-container
         .w-row
