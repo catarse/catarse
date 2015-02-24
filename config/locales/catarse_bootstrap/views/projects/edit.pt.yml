@@ -109,7 +109,7 @@ pt:
       other_link_label: "Presença na internet"
       other_link_hint: "Inclua links que ajudem os apoiadores a entender porque você é a pessoa certa para fazer esse projeto. "
       about_label: "Sobre você"
-      about_hint: "Se você pudesse falar sobre você em um tweet? Máximo 140 caracteres"
+      about_hint: "Fale sobre você e tente fornecer as informações mais relevantes para que visitantes possam te conhecer melhor. "
       facebook_link_label: "Perfil do facebook"
       facebook_link_hint: "Cole o link do seu perfil"
       uploaded_image_label: "Imagem do perfil"
