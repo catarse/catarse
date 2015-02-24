@@ -40,14 +40,14 @@ pt:
         left: restantes
       waiting_funds:
         title: "%{name}, estamos processando os últimos pagamentos."
-        subtitle_html: "Seu projeto foi finalizado em %{expires} e está aguardando confirmação de boletos e pagamentos. Devido à data de vencimento de boletos, projetos que tiveram apoios de última hora ficam por até 4 dias úteis nesse status, contados a partir da data de finalização do projeto. &{link}."
+        subtitle_html: "Seu projeto foi finalizado em %{expires} e está aguardando confirmação de boletos e pagamentos. Devido à data de vencimento de boletos, projetos que tiveram apoios de última hora ficam por até 4 dias úteis nesse status, contados a partir da data de finalização do projeto. %{link}."
         header: "A partir daqui o seu projeto pode bater a meta ou não. Veja o que acontece em cada um dos casos:"
         success: "Bati a meta:"
         failed: "Não bati a meta:"
         good_luck: "Boa sorte!"
       successful:
         title: "%{name}, comemore que você merece!"
-        subtitle: "Seu projeto foi bem sucedido e agora é a hora de iniciar o trabalho de relacionamento com seus apoiadores! Atenção especial à entrega de recompensas. Prometeu? Entregue! Não deixe de olhar a seção de pós-projeto do &{link1} e de informar-se sobre &{link2}. "
+        subtitle_html: "Seu projeto foi bem sucedido e agora é a hora de iniciar o trabalho de relacionamento com seus apoiadores! Atenção especial à entrega de recompensas. Prometeu? Entregue! Não deixe de olhar a seção de pós-projeto do %{link1} e de informar-se sobre %{link2}. "
         header1: "E não se esqueça: transparência é tudo."
         transparent_html: "Manter um apoiador informado é manter um apoiador feliz. Mesmo que você vá informá-lo de uma falha ou contratempo. Apoiadores felizes são %{link} . Portanto, use e abuse (sempre com moderação) da aba novidades. O que você escrever por lá chega direto na caixa de emails dos seus apoiadores. Já vai começar a entrega de recompensas? Na aba \"relatórios\" você baixa informações para que você possa fazer a gestão de entrega de recompensas do seu projeto."
         header2: "Não deixe de ler:"
