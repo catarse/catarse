@@ -27,9 +27,9 @@ pt:
        title: "Dados cadastrais e bancários"
        subtitle_html: "Com os dados abaixo completos, seu projeto estará pronto para ir ao ar. Após concluir o preenchimento, clique em Salvar. Revise. Se tudo estiver ok, basta apertar o botão Publicar e começar sua campanha!"
        user_data_title: "Dados cadastrais e endereço"
-       user_data_subtitle: "Precisamos dos dados abaixo para emissão de Nota Fiscais para projetos bem sucedidos. <b>ATENÇÃO: O CPF/CNPJ listado nos dados cadastrais e dados bancários precisa ser o mesmo.</b>"
+       user_data_subtitle_html: "Precisamos dos dados abaixo para emissão de Nota Fiscais para projetos bem sucedidos. <b>ATENÇÃO: O CPF/CNPJ listado nos dados cadastrais e dados bancários precisa ser o mesmo.</b>"
        account_title: "Dados bancários"
-       account_subtitle: "Precisamos dos dados abaixo para efetuar a transferência financeira para projetos bem sucedidos. <b>ATENÇÃO: O CPF/CNPJ listado nos dados cadastrais e dados bancários precisa ser o mesmo.</b>"
+       account_subtitle_html: "Precisamos dos dados abaixo para efetuar a transferência financeira para projetos bem sucedidos. <b>ATENÇÃO: O CPF/CNPJ listado nos dados cadastrais e dados bancários precisa ser o mesmo.</b>"
        submit: "Salvar"
     dashboard_home_templates:
       status: "Status:"
