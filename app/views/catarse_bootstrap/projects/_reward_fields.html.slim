@@ -57,7 +57,7 @@
                   .w-col.w-col-3.w-col-small-3.w-col-tiny-3.text-field.positive.prefix.no-hover
                     .fontsize-smallest.fontcolor-secondary.u-text-center R$
                   .w-col.w-col-9.w-col-small-9.w-col-tiny-9
-                    = f.input_field :minimum_value, class: 'postfix positive', required: true
+                    = f.input_field :minimum_value, as: :tel, class: 'postfix positive', required: true
                 .fontsize-smaller.text-error.u-marginbottom-20.fa.fa-exclamation-triangle.w-hidden[data-error-for="reward_minimum_value"] = t('simple_form.validation_texts.reward.minimum_value')
             .w-row
               .w-col.w-col-5
@@ -78,7 +78,7 @@
                   .w-checkbox-input= check_box_tag  "limit_reward", '', (reward.maximum_contributions.present?), id: 'limit_reward' 
                   label.w-form-label for="limit_reward"= t('.limit_reward') 
               .w-col.w-col-7 class="reward_maximum_contributions #{reward.maximum_contributions.present? ?  '' : 'w-hidden'}"
-                = f.input_field :maximum_contributions, class: 'u-marginbottom-30 positive', placeholder: t('.available')
+                = f.input_field :maximum_contributions, as: :tel, class: 'u-marginbottom-30 positive', placeholder: t('.available')
             .w-row.u-margintop-30
               /.w-col.w-col-6.w-col-small-6.w-col-tiny-6.w-sub-col-middle
                 = f.button :submit, t('.submit'),  class:'btn btn-small'
