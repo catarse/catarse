@@ -53,7 +53,7 @@ pt:
         header2: "Não deixe de ler:"
       rejected:
         title: "%{name}, infelizmente não foi dessa vez."
-        subtitle_html: "Você enviou seu projeto para análise da equipe do Catarse e entendemos que ele não está de acordo com o perfil da plataforma. Lembrando que ter um projeto recusado não impede que você envie novos projetos para avaliação ou reformule seu projeto atual para que ele se adeque aos %{link}. Converse com nosso atendimento! Você ainda pode editar seu projeto e solicitar uma reavaliação. Encare como um processo de aprendizado! Levanta, sacode a poeira e dá a volta por cima!"
+        subtitle_html: "Você enviou seu projeto para análise do Catarse e entendemos que ele não está de acordo com o perfil do site. Ter um projeto recusado não impede que você envie novos projetos para avaliação ou reformule seu projeto atual. Converse com nosso atendimento! Recomendamos que você dê uma boa olhada nos %{link1}  e no %{link2}."
       online:
         title: "%{name}, sua campanha está no ar!"
         subtitle_html: "Seu projeto está no ar e sua campanha se encerrará às 23hs59min59s do dia %{date}. Até esse dia e horário você poderá receber apoios. Lembre-se, é tudo-ou-nada e você só levará os recursos captados se bater a meta que foi estipulada. Acesse a nossa %{link2} para outras dúvidas!"
@@ -109,7 +109,7 @@ pt:
       other_link_label: "Presença na internet"
       other_link_hint: "Inclua links que ajudem os apoiadores a entender porque você é a pessoa certa para fazer esse projeto. "
       about_label: "Sobre você"
-      about_hint: "Fale sobre você e tente fornecer as informações mais relevantes para que visitantes possam te conhecer melhor. "
+      about_hint: "Utilize esse espaço caso você queira descrever melhor você, sua empresa ou sua instituição. Quer dar crédito a parceiros? Utilizar algum vídeo institucional? Esse espaço é seu e utilize-o da forma que quiser.  Todas essas informações vão aparecer na Aba Sobre em seu Perfil Público."
       facebook_link_label: "Perfil do facebook"
       facebook_link_hint: "Cole o link do seu perfil"
       uploaded_image_label: "Imagem do perfil"
