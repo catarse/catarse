@@ -50,7 +50,7 @@ class User < ActiveRecord::Base
   has_many :unsubscribes
   has_many :project_posts
   has_many :contributed_projects, -> do
-    where(contributions: { state: ['confirmed', 'requested_refund', 'refunded'] } ).order('contributions.id DESC')
+    distinct.where(contributions: { state: ['confirmed', 'requested_refund', 'refunded'] } ).order('projects.created_at DESC')
   end, through: :contributions, source: :project
   has_many :category_followers, dependent: :destroy
   has_many :categories, through: :category_followers
