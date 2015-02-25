@@ -63,7 +63,7 @@ RSpec.describe Reward, type: :model do
     expect(r).to be_valid
   end
 
-  it "should not allow delivery in the past" do
+  it "should not allow delivery before the project expiration date" do
     r = build(:reward)
     r.deliver_at = Time.now - 1.day
     expect(r).not_to be_valid
