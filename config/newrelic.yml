@@ -42,7 +42,7 @@ common: &default_settings
   #       - Ajax Service
   #       - All Services
   #
-  app_name: My Application
+  app_name: Catarse
 
   # When "true", the agent collects performance data about your
   # application and reports this data to the New Relic service at
@@ -109,7 +109,7 @@ common: &default_settings
   # Java: create a config setting called "ignored_params" and set it to
   #     a comma separated list of HTTP parameter names.
   #     ex: ignored_params: credit_card, ssn, password
-  capture_params: false
+  capture_params: true
 
   # Transaction tracer captures deep information about slow
   # transactions and sends this to the New Relic service once a
