@@ -1,4 +1,8 @@
 = render 'shared/header_big', overlayer: true
+- if policy(resource).update?
+  - projects_to_show = resource.contributed_projects
+- else
+  - projects_to_show = resource.contributed_projects.where(contributions: {anonymous: false})
 
 .hero-half
   .w-container.content-hero-profile
@@ -12,7 +16,7 @@
         .w-hidden-small.w-hidden-tiny.u-marginbottom-40.fontsize-base
           | Chegou junto em #{localize(resource.created_at, format: "%B de %Y")}
           br
-          | Apoiou #{resource.total_contributed_projects} projetos e já criou #{resource.created_projects.count} projetos&nbsp;
+          | Apoiou #{projects_to_show.count} projetos e já criou #{resource.created_projects.count} projetos&nbsp;
       .w-col.w-col-3
   .hero-profile style="background-image: url('#{resource.cover_image.try(:base).try(:url) || resource.uploaded_image.url}')"
 
@@ -22,10 +26,9 @@ nav.project-nav.u-text-center.u-marginbottom-30.profile style='z-index: 10; posi
       = link_to edit_user_path(resource), class: 'nav-tab dashboard' do
         span.fa.fa-cog
         | &nbsp; Editar perfil
-    
     = link_to '#contributed', id: 'contributed_link', class: 'nav-tab' , data: {target: '#contributed-tab'} do
       | Apoiados &nbsp;
-      span.badge= resource.total_contributed_projects
+      span.badge= projects_to_show.count
     = link_to '#created', id: 'created_link', class: 'nav-tab' , data: {target: '#created-tab'} do
       | Criados &nbsp;
       span.badge= resource.created_projects.count
@@ -44,7 +47,8 @@ section.section
               .fontsize-base #{resource.name} ainda não apoiou nenhum projeto.
             .w-col.w-col-2
         - else
-          == render_projects resource.contributed_projects.most_recent_first, 'profile_contributed_projects', { wrapper_class: 'w-col w-col-4 u-marginbottom-30' }
+          == render_projects projects_to_show.most_recent_first, 'profile_contributed_projects', { wrapper_class: 'w-col w-col-4 u-marginbottom-30' }
+
       #created-tab.content.w-hidden
         - if resource.created_projects.empty?
           .w-row.u-text-center
