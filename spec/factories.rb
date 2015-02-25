@@ -32,7 +32,7 @@ FactoryGirl.define do
     f.uploaded_image File.open("#{Rails.root}/spec/support/testimg.png")
     f.email { generate(:email) }
     f.permalink { generate(:permalink) }
-    f.bio "This is Foo bar's biography."
+    f.about "This is Foo bar's biography."
     f.address_street 'fooo'
     f.address_number '123'
     f.address_city 'fooo bar'
@@ -51,7 +51,7 @@ FactoryGirl.define do
     f.cpf "123456"
     f.uploaded_image File.open("#{Rails.root}/spec/support/testimg.png")
     f.email { generate(:email) }
-    f.bio "This is Foo bar's biography."
+    f.about "This is Foo bar's biography."
     f.address_street 'fooo'
     f.address_number '123'
     f.address_city 'fooo bar'

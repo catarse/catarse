@@ -232,8 +232,8 @@ pt:
               invalid: 'expirou. Vá para <a href="/password/new">redefinir senha</a> e solicite novamente a redefinição da senha.'
             name:
               blank: "Nome do usuário não pode ficar em branco"
-            bio:
-              blank: "Biografia do usuário não pode ficar em branco"
+            about:
+              blank: "Sobre você não pode ficar em branco"
             uploaded_image:
               blank: "Imagem do usuário não pode ficar em branco"
   project:
