@@ -22,7 +22,7 @@
               text_field_wrapper_html: { class: 'w-col w-col-6 w-sub-col' },
               input_html: { required: true },
               label: t('.uploaded_image_label'),
-              hint: image_tag(form.object.uploaded_image)
+              hint: @user.uploaded_image.present? ? image_tag(form.object.uploaded_image) : t('.uploaded_image_hint') 
 
             = form.input :name, as: :string, 
               wrapper_class: 'w-row u-marginbottom-30 card card-terciary',
