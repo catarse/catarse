@@ -5,7 +5,7 @@
 div class="#{defined?(wrapper_class) ? wrapper_class : ''}"
   .card-project.card.u-radius
     meta[itemprop="dateCreated" content=@project.created_at.to_date]
-    a.card-project-thumb style="background-image: url(#{@project.display_image(:project_thumb_large)});display:block;" href="#{project_by_slug_path(@project.permalink, ref: ref)}"
+    a.card-project-thumb style="background-image: url(#{@project.display_image(:project_thumb_large)});display:block;" href="#{project_by_slug_path(@project.permalink, ref: ref)}" target=target
     .card-project-description
       .fontweight-semibold.fontsize-base.u-marginbottom-10.u-text-center-small-only.lineheight-tight=link_to truncate(@project.name, length: 50, separator: ''), project_by_slug_path(@project.permalink, ref: ref), title: @project.name, target: target, class: 'link-hidden'
       .w-hidden-small.w-hidden-tiny.fontcolor-secondary.fontsize-smaller
