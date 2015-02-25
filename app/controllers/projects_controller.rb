@@ -59,6 +59,7 @@ class ProjectsController < ApplicationController
       flash[:notice] = t('project.update.success')
     else
       flash[:notice] = t('project.update.failed')
+      raise resource.errors.inspect
       build_dependencies
       return render :edit
     end
