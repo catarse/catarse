@@ -46,7 +46,9 @@ class User < ActiveRecord::Base
   has_many :project_accounts
   has_many :contributions
   has_many :authorizations
-  has_many :projects
+  has_many :projects, -> do
+    without_state(:deleted)
+  end
   has_many :unsubscribes
   has_many :project_posts
   has_many :contributed_projects, -> do
