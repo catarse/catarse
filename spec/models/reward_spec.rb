@@ -64,10 +64,10 @@ RSpec.describe Reward, type: :model do
   end
 
   it "should not allow delivery before the project expiration date" do
-    r = build(:reward)
-    r.deliver_at = Time.now - 1.day
+    r = build(:reward, project: create(:project, online_date: Time.now))
+    r.deliver_at = r.project.online_date - 1.day
     expect(r).not_to be_valid
-    r.deliver_at = Time.now + 1.day
+    r.deliver_at = r.project.online_date + 1.day
     expect(r).to be_valid
   end
 
