@@ -30,17 +30,17 @@ App.addChild('Contribution', {
   },
 
   minimumValue: function(){
-    return this.$('label.selected').find('label[data-minimum-value]').data('minimum-value');
+    return this.$('.selected').find('label[data-minimum-value]').data('minimum-value');
   },
 
   resetSelected: function(){
-    this.$('.radio label').removeClass('selected');
+    this.$('.w-radio').removeClass('selected');
   },
 
   selectReward: function(reward){
     this.resetSelected();
     reward.find('input[type=radio]').prop('checked', true);
-    reward.addClass('selected');
+    reward.parent().addClass('selected');
   },
 
   clickReward: function(event){
