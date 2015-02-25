@@ -4,38 +4,5 @@
       .fontsize-base
         - if resource.about.present?
           == resource.about_html
-        - else
-          = resource.bio
-      /.w-embed.w-video.u-marginbottom-40 style=("padding-top: 56.27659574468085%;") 
-      /  iframe.embedly-embed allowfullscreen="" frameborder="0" scrolling="no" src="//cdn.embedly.com/widgets/media.html?src=http%3A%2F%2Fplayer.vimeo.com%2Fvideo%2F94986060&amp;src_secure=1&amp;url=http%3A%2F%2Fvimeo.com%2F94986060&amp;image=http%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F474898023_1280.jpg&amp;key=c4e54deccf4d4ec997a64902e9a30300&amp;type=text%2Fhtml&amp;schema=vimeo" 
-      /p.fontsize-base.u-marginbottom-40 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.
-      /.fontweight-semibold.fontsize-base Parceiros
-      /img.u-marginbottom-20 alt="54920fa5fb5dd18049fb3433_thumb_telefonicavivo-testeton.png" src="http://uploads.webflow.com/54b440b85608e3f4389db387/54920fa5fb5dd18049fb3433_thumb_telefonicavivo-testeton.png" /
-      /img alt="54920fda2acbbf7e495067b6_thumb_asasmnor.png" src="http://uploads.webflow.com/54b440b85608e3f4389db387/54920fda2acbbf7e495067b6_thumb_asasmnor.png" /
     .w-col.w-col-4
-      .card.card-user.u-radius.u-marginbottom-30
-        .w-clearfix
-          = image_tag resource.display_image, class: 'thumb u-left u-marginbottom-30 u-round', width: 100
-          .fontsize-small.fontweight-semibold.lineheight-tighter
-            = link_to resource.display_name, 'javascript:void(0);', class: 'link-hidden'
-          .fontsize-smallest.lineheight-looser
-            = resource.address_city
-        .fontsize-smallest 
-          | #{resource.created_projects.count} projeto criado
-        .fontsize-smallest
-          | #{resource.total_contributed_projects} projetos apoiados
-        .project-author-contacts
-          ul.w-list-unstyled
-            - if resource.facebook_link.present?
-              li.fontsize-smaller.fontweight-semibold
-                = link_to resource.facebook_link, resource.facebook_link, class: 'link-hidden', target: '__blank'
-            - if resource.twitter.present?
-              li.fontsize-smaller.fontweight-semibold
-                = link_to resource.twitter, resource.twitter, class: 'link-hidden', target: '__blank'
-            - resource.links.each do |link|
-              li.fontsize-smaller.fontweight-semibold
-                = link_to link.link, link.link, class: 'link-hidden', target: '__blank'
-            li.project-author-list.fontsize-smaller
-              a.link-hidden href="#" 
-        = mail_to resource.email, 'Enviar mensagem', class: 'btn btn-medium btn-message', target: '__blank'
-
+      = render 'users/card', resource: resource
