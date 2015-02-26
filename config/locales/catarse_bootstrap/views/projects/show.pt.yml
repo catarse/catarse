@@ -56,12 +56,8 @@ pt:
         reports: Relatórios
         posts: Novidades
     project_main:
-      twitter_profile: "Perfil no Twitter"
-      facebook_profile: "Perfil no Facebook"
-      author_website: "Site"
       share: "Compartilhe"
       tweet: "Tweet"
-      contact_author: "Enviar mensagem"
       contribute_project:
         display_status:
           reached_goal: "Este projeto será bem-sucedido e financiado em %{date}"
