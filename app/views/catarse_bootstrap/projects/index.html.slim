@@ -26,7 +26,7 @@
       .w-row
         == render_projects @projects_near, 'home_near', { wrapper_class: 'w-col w-col-4' }
 
-.section.u-marginbottom-40
+.section
   .w-container
     .w-row.u-marginbottom-30
       .w-col.w-col-10.w-col-small-6.w-col-tiny-6
@@ -37,7 +37,7 @@
     .w-row
       == render_projects @recommends, 'home_recommended', { wrapper_class: 'w-col w-col-4' }
 
-.section.u-marginbottom-40
+.section
   .w-container
     .w-row.u-marginbottom-30
       .w-col.w-col-10.w-col-small-6.w-col-tiny-6
@@ -48,7 +48,7 @@
     .w-row
       == render_projects @expiring, 'home_expiring', { wrapper_class: 'w-col w-col-4' }
 
-.section.u-marginbottom-40.recent-projects
+.section.recent-projects
   .w-container
     .w-row.u-marginbottom-30
       .w-col.w-col-10.w-col-small-6.w-col-tiny-6
