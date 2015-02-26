@@ -6,7 +6,7 @@ CatarsePagarme.configure do |config|
   config.credit_card_cents_fee = CatarseSettings.get_without_cache(:pagarme_cents_fee)
   config.host = CatarseSettings.get_without_cache(:host)
   config.subdomain = 'www'
-  config.protocol = 'http'
+  config.protocol = 'https'
   config.max_installments = CatarseSettings.get_without_cache(:pagarme_max_installments)
   config.minimum_value_for_installment = CatarseSettings.get_without_cache(:pagarme_minimum_value_for_installment)
 
