@@ -7,17 +7,15 @@
 .hero-half
   .w-container.content-hero-profile
     .w-row.u-text-center
-      .w-col.w-col-3
-      .w-col.w-col-6
-        .thumb.big.u-marginbottom-20.u-round
-          = resource.decorate.display_image_html({width: 119, height: 121, image_class: 'u-round'})
+      .w-col.w-col-8.w-col-push-2
+        .u-marginbottom-20
+          = resource.decorate.display_image_html
         .fontsize-largest.fontweight-semibold.u-marginbottom-20
           = resource.decorate.display_name
         .w-hidden-small.w-hidden-tiny.u-marginbottom-40.fontsize-base
           | Chegou junto em #{localize(resource.created_at, format: "%B de %Y")}
           br
           | Apoiou #{projects_to_show.count} projetos e já criou #{resource.created_projects.count} projetos&nbsp;
-      .w-col.w-col-3
   .hero-profile style="background-image: url('#{resource.cover_image.try(:base).try(:url) || resource.uploaded_image.url}')"
 
 nav.project-nav.u-text-center.u-marginbottom-30.profile style='z-index: 10; position: relative;'
