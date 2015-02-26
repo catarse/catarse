@@ -65,9 +65,9 @@ RSpec.describe Reward, type: :model do
 
   it "should not allow delivery before the project expiration date" do
     r = build(:reward, project: create(:project, online_date: Time.now))
-    r.deliver_at = r.project.online_date - 1.day
+    r.deliver_at = r.project.online_date - 1.month
     expect(r).not_to be_valid
-    r.deliver_at = r.project.online_date + 1.day
+    r.deliver_at = r.project.online_date
     expect(r).to be_valid
   end
 
@@ -83,12 +83,14 @@ RSpec.describe Reward, type: :model do
   end
 
   describe '.remaining' do
+    let(:project){ create(:project) }
     subject { Reward.remaining }
     before do
-      @remaining = create(:reward, maximum_contributions: 3)
+      project.rewards.first.destroy!
+      @remaining = create(:reward, maximum_contributions: 3, project: project)
       create(:contribution, state: 'confirmed', reward: @remaining, project: @remaining.project)
       create(:contribution, state: 'waiting_confirmation', reward: @remaining, project: @remaining.project)
-      @sold_out = create(:reward, maximum_contributions: 2)
+      @sold_out = create(:reward, maximum_contributions: 2, project: project)
       create(:contribution, state: 'confirmed', reward: @sold_out, project: @sold_out.project)
       create(:contribution, state: 'waiting_confirmation', reward: @sold_out, project: @sold_out.project)
     end
