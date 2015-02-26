@@ -543,8 +543,8 @@ p {
   margin-top: 0px;
   border-bottom-style: none;
   background-color: transparent;
-  background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.20), transparent);
-  background-image: linear-gradient(rgba(0, 0, 0, 0.20), transparent);
+  background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.2), transparent);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.2), transparent);
 }
 .img-logo {
   margin-top: 8px;
@@ -2505,7 +2505,7 @@ p {
   top: 0px;
   right: 0px;
   z-index: 10;
-  margin-top: 110px;
+  margin-top: 115px;
   color: white;
   text-shadow: rgba(0, 0, 0, 0.43) 2px 2px 1px;
 }
@@ -2631,6 +2631,13 @@ p {
   z-index: 50;
   height: 100%;
   background-color: rgba(63, 71, 82, 0.70);
+}
+.whr-description {
+  font-size: 18px;
+  line-height: 150%;
+}
+.whr-date {
+  display: none;
 }
 html.w-mod-js *[data-ix="fade-in"] {
   opacity: 0;
@@ -2986,7 +2993,7 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     height: 190px;
   }
   .content-hero-profile {
-    margin-top: 100px;
+    margin-top: 108px;
   }
   .btn-category {
     padding-top: 19px;
@@ -3785,7 +3792,7 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     margin-top: -10px;
   }
   .content-hero-profile {
-    margin-top: 80px;
+    margin-top: 100px;
     padding-right: 30px;
     padding-left: 30px;
   }
