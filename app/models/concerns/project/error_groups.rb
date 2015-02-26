@@ -6,7 +6,7 @@ module Project::ErrorGroups
       basics: [:name, :permalink, :category_id, :goal, :online_days],
       project: [ :video_url, :about, :budget, :uploaded_image, :headline],
       reward: [:'rewards.size'],
-      user_about: [:'user.uploaded_image', :'user.name', :'user.bio'],
+      user_about: [:'user.uploaded_image', :'user.name', :'user.about'],
       user_settings: ProjectAccount.attribute_names.map{|attr| ('project_account.' + attr).to_sym}
     }
 

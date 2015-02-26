@@ -89,6 +89,7 @@ FactoryGirl.define do
     f.uploaded_image File.open("#{Rails.root}/spec/support/testimg.png")
     after :build do |project|
       project.account = build(:project_account, project: nil)
+      project.rewards.build(deliver_at: Time.now, minimum_value: 10, description: 'test')
     end
   end
 
