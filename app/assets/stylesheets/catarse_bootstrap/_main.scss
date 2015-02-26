@@ -1994,8 +1994,8 @@ p {
   background-size: 125px;
 }
 .thumb.big {
-  width: 140px;
-  height: 140px;
+  width: 130px;
+  height: 130px;
   margin-right: auto;
   margin-left: auto;
 }
@@ -2430,9 +2430,9 @@ p {
 }
 .hero-half {
   position: relative;
-  height: 480px;
+  height: 500px;
   margin: -75px -25px -30px;
-  padding-top: 130px;
+  padding-top: 199px;
   padding-bottom: 60px;
 }
 .hero-profile {
@@ -2919,8 +2919,8 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     margin-bottom: 1px;
   }
   .thumb.big {
-    width: 140px;
-    height: 140px;
+    width: 120px;
+    height: 120px;
   }
   .card-reward {
     -webkit-transition: all 500ms ease;
@@ -3351,6 +3351,10 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     width: 35px;
     height: 35px;
   }
+  .thumb.big {
+    width: 90px;
+    height: 90px;
+  }
   .project-name {
     padding-right: 63px;
     padding-left: 63px;
@@ -3744,8 +3748,8 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     background-color: white;
   }
   .thumb.big {
-    width: 110px;
-    height: 110px;
+    width: 90px;
+    height: 90px;
   }
   .project-name {
     padding-right: 10px;
@@ -3770,7 +3774,8 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     padding-left: 16px;
   }
   .hero-half {
-    height: 300px;
+    height: 320px;
+    max-width: 369px;
     padding: 80px 15px 30px;
   }
   .hero-small {
@@ -3781,6 +3786,8 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
   }
   .content-hero-profile {
     margin-top: 80px;
+    padding-right: 30px;
+    padding-left: 30px;
   }
   .btn-category {
     padding-top: 18px;
