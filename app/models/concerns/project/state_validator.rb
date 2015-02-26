@@ -27,7 +27,7 @@ class Project::StateValidator < ActiveModel::Validator
       validate_presence_of_nested_attribute(user, attribute)
     end
     @record.errors['user.uploaded_image'] << "Imagem do usuário não pode ficar em branco" if user.personal_image.blank?
-    #@record.errors['rewards.size'] << "Deve haver pelo menos uma recompensa" if @record.rewards.count == 0
+    @record.errors['rewards.size'] << "Deve haver pelo menos uma recompensa" if @record.rewards.count == 0
   end
 
   def draft; end
