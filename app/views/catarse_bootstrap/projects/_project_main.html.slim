@@ -51,26 +51,7 @@ section.section
           .fontsize-smaller.u-marginbottom-30[class=@project.display_card_class]
             = t(".contribute_project.display_status.#{@project.display_status}", goal: @project.display_goal, date: @project.display_expires_at)
 
-        .card.card-user.u-radius.u-marginbottom-30
-          .w-clearfix
-            = image_tag @project.user.display_image, width: "100", class: "thumb u-left u-round u-marginbottom-30"
-            .fontsize-small.fontweight-semibold.lineheight-tighter = link_to @project.user.display_name, user_path(@project.user), class: 'link-hidden'
-            .fontsize-smallest.lineheight-looser = @project.user.address_city
-          .fontsize-smallest = t('created_project', count: @project.user.created_projects.size)
-          .fontsize-smallest = t('contributed_project', count: @project.user.total_contributed_projects)
-          .project-author-contacts
-            ul.w-list-unstyled.fontsize-smaller.fontweight-semibold
-              - if @project.user.facebook_link.present?
-                li
-                  = link_to t('.facebook_profile'), @project.user.facebook_link, target: '_blank', class: 'link-hidden'
-              - if @project.user.twitter_link
-                li
-                  = link_to t('.twitter_profile'), @project.user.twitter_link, target: '_blank', class: 'link-hidden'
-              - if @project.user.other_link.present?
-                li
-                  = link_to t('.author_website'), @project.user.other_link, target: '_blank', class: 'link-hidden'
-          = mail_to @project.user.email, t('.contact_author'), target: '_blank', class: 'btn btn-medium btn-message'
-
+        = render 'users/card', resource: @project.user
         .w-hidden-main.w-hidden-medium.project-share
           .div-share-mobile-fb
             = render_facebook_share_mobile(url: project_by_slug_url(permalink: @project.permalink), title: @project.name)
