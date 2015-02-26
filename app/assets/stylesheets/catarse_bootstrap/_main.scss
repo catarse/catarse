@@ -224,7 +224,7 @@ p {
   margin-top: 0px;
   margin-bottom: 0px;
   border-style: solid;
-  border-color: rgba(255, 255, 255, 0.11);
+  border-color: rgba(255, 255, 255, 0.09);
   background-color: transparent;
   color: rgba(255, 255, 255, 0.61);
 }
@@ -543,8 +543,8 @@ p {
   margin-top: 0px;
   border-bottom-style: none;
   background-color: transparent;
-  background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.22), transparent);
-  background-image: linear-gradient(rgba(0, 0, 0, 0.22), transparent);
+  background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.20), transparent);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.20), transparent);
 }
 .img-logo {
   margin-top: 8px;
@@ -2431,7 +2431,7 @@ p {
 .hero-half {
   position: relative;
   height: 480px;
-  margin-top: -65px;
+  margin: -75px -25px -30px;
   padding-top: 130px;
   padding-bottom: 60px;
 }
@@ -2621,6 +2621,16 @@ p {
 .input-title {
   display: inline-block;
   width: 920px;
+}
+.modal-dialog-outer {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  z-index: 50;
+  height: 100%;
+  background-color: rgba(63, 71, 82, 0.70);
 }
 html.w-mod-js *[data-ix="fade-in"] {
   opacity: 0;
