@@ -13,7 +13,7 @@ var App = window.App = Skull.View.extend({
     if($('#global-alert').length === 0 || this.$('body').data('mobile')){
       return;
     };
-    if(!window.store.get('globalClosed')){
+    if(!window.store.get('globalClosedCookies')){
       $('#global-alert').show();
       $('body').css('padding-top', '30px');
       $('#global-alert')
@@ -27,7 +27,7 @@ var App = window.App = Skull.View.extend({
   closeAlert: function(event){
     $('body').css('padding-top', '0');
     $('#global-alert').slideUp('slow');
-    window.store.set('globalClosed', true);
+    window.store.set('globalClosedCookies', true);
   },
 
   searchProject: function(){
