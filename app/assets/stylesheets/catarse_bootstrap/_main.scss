@@ -2243,8 +2243,9 @@ p {
   border: 1px solid transparent;
 }
 .card-project {
+  margin-bottom: 40px;
   padding: 0px;
-  box-shadow: rgba(121, 128, 139, 0.2) 0px 0px 6px 0px;
+  box-shadow: rgba(121, 128, 139, 0.21) 0px 0px 6px 0px;
 }
 .card-project-author {
   height: 65px;
@@ -2430,24 +2431,29 @@ p {
 }
 .hero-half {
   position: relative;
+  overflow-x: hidden;
+  overflow-y: hidden;
   height: 500px;
-  margin: -75px -25px -30px;
+  margin-top: -75px;
+  margin-bottom: -30px;
   padding-top: 199px;
   padding-bottom: 60px;
 }
 .hero-profile {
   position: absolute;
-  left: 0px;
+  left: -20px;
   top: 0px;
   right: 0px;
   bottom: 0px;
-  width: 100%;
+  width: 120%;
   height: 100%;
   background-color: #3f4752;
   color: white;
 }
 .hero-small {
   position: relative;
+  overflow-x: hidden;
+  overflow-y: hidden;
   height: 220px;
   margin-top: -65px;
   padding-top: 110px;
@@ -2514,7 +2520,7 @@ p {
   overflow-y: hidden;
   width: 100%;
   height: 54px;
-  margin-bottom: 8px;
+  margin-bottom: 20px;
   padding: 16px 5px;
   border: 1px solid white;
   border-radius: 4px;
@@ -2963,6 +2969,9 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
   .share-block {
     margin-right: 0px;
   }
+  .card-project {
+    margin-bottom: 20px;
+  }
   .card-project-author {
     height: 55px;
     padding-top: 5px;
@@ -2996,6 +3005,7 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     margin-top: 108px;
   }
   .btn-category {
+    margin-bottom: 10px;
     padding-top: 19px;
     padding-bottom: 19px;
     font-size: 13px;
@@ -3462,6 +3472,7 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     margin-top: 80px;
   }
   .btn-category {
+    margin-bottom: 10px;
     padding-top: 19px;
     padding-bottom: 19px;
     font-size: 15px;
@@ -3782,21 +3793,22 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
   }
   .hero-half {
     height: 320px;
-    max-width: 369px;
     padding: 80px 15px 30px;
   }
   .hero-small {
+    padding-top: 90px;
     padding-bottom: 20px;
   }
   .icon-hero {
     margin-top: -10px;
   }
   .content-hero-profile {
-    margin-top: 100px;
+    margin-top: 80px;
     padding-right: 30px;
     padding-left: 30px;
   }
   .btn-category {
+    margin-bottom: 10px;
     padding-top: 18px;
     padding-bottom: 18px;
     font-size: 14px;
