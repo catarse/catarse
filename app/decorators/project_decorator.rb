@@ -76,17 +76,15 @@ class ProjectDecorator < Draper::Decorator
   end
 
   def status_icon_for group_name
-    if source.can_show_preview_link?
-      if source.errors.present?
-        has_error = source.errors.any? do |error|
-          source.error_included_on_group?(error, group_name)
-        end
+    if source.errors.present?
+      has_error = source.errors.any? do |error|
+        source.error_included_on_group?(error, group_name)
+      end
 
-        if has_error
-          content_tag(:span, '', class: 'fa fa-exclamation-circle text-error')
-        else
-          content_tag(:span, '', class: 'fa fa-check-circle text-success')
-        end
+      if has_error
+        content_tag(:span, '', class: 'fa fa-exclamation-circle text-error')
+      else
+        content_tag(:span, '', class: 'fa fa-check-circle text-success') unless source.already_deployed?
       end
     end
   end

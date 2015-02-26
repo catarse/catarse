@@ -224,7 +224,7 @@ p {
   margin-top: 0px;
   margin-bottom: 0px;
   border-style: solid;
-  border-color: rgba(255, 255, 255, 0.11);
+  border-color: rgba(255, 255, 255, 0.09);
   background-color: transparent;
   color: rgba(255, 255, 255, 0.61);
 }
@@ -543,8 +543,8 @@ p {
   margin-top: 0px;
   border-bottom-style: none;
   background-color: transparent;
-  background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.22), transparent);
-  background-image: linear-gradient(rgba(0, 0, 0, 0.22), transparent);
+  background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.2), transparent);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.2), transparent);
 }
 .img-logo {
   margin-top: 8px;
@@ -1994,8 +1994,8 @@ p {
   background-size: 125px;
 }
 .thumb.big {
-  width: 140px;
-  height: 140px;
+  width: 130px;
+  height: 130px;
   margin-right: auto;
   margin-left: auto;
 }
@@ -2243,8 +2243,9 @@ p {
   border: 1px solid transparent;
 }
 .card-project {
+  margin-bottom: 40px;
   padding: 0px;
-  box-shadow: rgba(121, 128, 139, 0.2) 0px 0px 6px 0px;
+  box-shadow: rgba(121, 128, 139, 0.21) 0px 0px 6px 0px;
 }
 .card-project-author {
   height: 65px;
@@ -2430,24 +2431,29 @@ p {
 }
 .hero-half {
   position: relative;
-  height: 480px;
-  margin-top: -65px;
-  padding-top: 130px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  height: 500px;
+  margin-top: -75px;
+  margin-bottom: -30px;
+  padding-top: 199px;
   padding-bottom: 60px;
 }
 .hero-profile {
   position: absolute;
-  left: 0px;
+  left: -20px;
   top: 0px;
   right: 0px;
   bottom: 0px;
-  width: 100%;
+  width: 120%;
   height: 100%;
   background-color: #3f4752;
   color: white;
 }
 .hero-small {
   position: relative;
+  overflow-x: hidden;
+  overflow-y: hidden;
   height: 220px;
   margin-top: -65px;
   padding-top: 110px;
@@ -2505,7 +2511,7 @@ p {
   top: 0px;
   right: 0px;
   z-index: 10;
-  margin-top: 110px;
+  margin-top: 115px;
   color: white;
   text-shadow: rgba(0, 0, 0, 0.43) 2px 2px 1px;
 }
@@ -2514,7 +2520,7 @@ p {
   overflow-y: hidden;
   width: 100%;
   height: 54px;
-  margin-bottom: 8px;
+  margin-bottom: 20px;
   padding: 16px 5px;
   border: 1px solid white;
   border-radius: 4px;
@@ -2621,6 +2627,23 @@ p {
 .input-title {
   display: inline-block;
   width: 920px;
+}
+.modal-dialog-outer {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  z-index: 50;
+  height: 100%;
+  background-color: rgba(63, 71, 82, 0.70);
+}
+.whr-description {
+  font-size: 18px;
+  line-height: 150%;
+}
+.whr-date {
+  display: none;
 }
 html.w-mod-js *[data-ix="fade-in"] {
   opacity: 0;
@@ -2909,8 +2932,8 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     margin-bottom: 1px;
   }
   .thumb.big {
-    width: 140px;
-    height: 140px;
+    width: 120px;
+    height: 120px;
   }
   .card-reward {
     -webkit-transition: all 500ms ease;
@@ -2946,6 +2969,9 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
   .share-block {
     margin-right: 0px;
   }
+  .card-project {
+    margin-bottom: 20px;
+  }
   .card-project-author {
     height: 55px;
     padding-top: 5px;
@@ -2976,9 +3002,10 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     height: 190px;
   }
   .content-hero-profile {
-    margin-top: 100px;
+    margin-top: 108px;
   }
   .btn-category {
+    margin-bottom: 10px;
     padding-top: 19px;
     padding-bottom: 19px;
     font-size: 13px;
@@ -3341,6 +3368,10 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     width: 35px;
     height: 35px;
   }
+  .thumb.big {
+    width: 90px;
+    height: 90px;
+  }
   .project-name {
     padding-right: 63px;
     padding-left: 63px;
@@ -3441,6 +3472,7 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     margin-top: 80px;
   }
   .btn-category {
+    margin-bottom: 10px;
     padding-top: 19px;
     padding-bottom: 19px;
     font-size: 15px;
@@ -3720,6 +3752,7 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     font-size: 18px;
   }
   .nav-tab {
+    margin-top: 5px;
     margin-right: 8px;
     padding: 10px 7px;
   }
@@ -3734,8 +3767,8 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     background-color: white;
   }
   .thumb.big {
-    width: 110px;
-    height: 110px;
+    width: 90px;
+    height: 90px;
   }
   .project-name {
     padding-right: 10px;
@@ -3760,10 +3793,11 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     padding-left: 16px;
   }
   .hero-half {
-    height: 300px;
+    height: 320px;
     padding: 80px 15px 30px;
   }
   .hero-small {
+    padding-top: 90px;
     padding-bottom: 20px;
   }
   .icon-hero {
@@ -3771,8 +3805,11 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
   }
   .content-hero-profile {
     margin-top: 80px;
+    padding-right: 30px;
+    padding-left: 30px;
   }
   .btn-category {
+    margin-bottom: 10px;
     padding-top: 18px;
     padding-bottom: 18px;
     font-size: 14px;
