@@ -39,7 +39,7 @@ class ApplicationController < ActionController::Base
 
   private
   def referal_it!
-    session[:referal_link] ||= params[:ref] if params[:ref].present?
+    session[:referal_link] = params[:ref] if params[:ref].present?
   end
 
   def detect_old_browsers
