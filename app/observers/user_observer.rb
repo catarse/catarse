@@ -13,6 +13,6 @@ class UserObserver < ActiveRecord::Observer
     user.fix_twitter_user
     user.fix_facebook_link
     user.fix_other_link
-    user.nulify_permalink
+    user.nullify_permalink
   end
 end

@@ -440,7 +440,7 @@ RSpec.describe User, type: :model do
     end
   end
 
-  describe "#nulify_permalink" do
+  describe "#nullify_permalink" do
     subject{ user.permalink }
     context "when user provides blank permalink" do
       let(:user){ create(:user, permalink: '') }
