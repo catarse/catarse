@@ -440,6 +440,18 @@ RSpec.describe User, type: :model do
     end
   end
 
+  describe "#nullify_permalink" do
+    subject{ user.permalink }
+    context "when user provides blank permalink" do
+      let(:user){ create(:user, permalink: '') }
+      it{ is_expected.to eq(nil) }
+    end
+    context "when user provides permalink" do
+      let(:user){ create(:user, permalink: 'foo') }
+      it{ is_expected.to eq('foo') }
+    end
+  end
+
   describe "#made_any_contribution_for_this_project?" do
     let(:project) { create(:project) }
     subject { user.made_any_contribution_for_this_project?(project.id) }
