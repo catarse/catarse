@@ -240,6 +240,10 @@ class User < ActiveRecord::Base
     self.uploaded_image.thumb_avatar.url || self.image_url || self.gravatar_url
   end
 
+  def nulify_permalink
+    self.permalink = nil if self.permalink.blank?
+  end
+
   def fix_facebook_link
     if self.facebook_link.present?
       self.facebook_link = ('http://' + self.facebook_link) unless self.facebook_link[/^https?:\/\//]
