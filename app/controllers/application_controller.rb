@@ -17,6 +17,8 @@ class ApplicationController < ActionController::Base
 
   before_action :referal_it!
 
+  before_action :force_www
+
   def referal_link
     session[:referal_link]
   end
@@ -38,6 +40,13 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
+  def force_www
+    unless request.subdomain.present?
+      return redirect_to url_for(params.merge(subdomain: 'www'))
+    end
+  end
+
   def referal_it!
     session[:referal_link] ||= params[:ref] if params[:ref].present?
   end
