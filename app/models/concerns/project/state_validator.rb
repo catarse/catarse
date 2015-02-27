@@ -22,10 +22,12 @@ class Project::StateValidator < ActiveModel::Validator
   end
 
   def in_analysis
-    @record.errors.add_on_blank([:about, :headline, :goal, :online_days, :uploaded_image, :budget])
+    @record.errors.add_on_blank([:about, :headline, :goal, :online_days, :budget])
     %w(name about).each do |attribute|
       validate_presence_of_nested_attribute(user, attribute)
     end
+    @record.errors.add_on_blank(:uploaded_image) unless @record.video_thumbnail.present?
+
     @record.errors['user.uploaded_image'] << "Imagem do usuário não pode ficar em branco" if user.personal_image.blank?
     @record.errors['rewards.size'] << "Deve haver pelo menos uma recompensa" if @record.rewards.size== 0
   end
@@ -45,8 +47,14 @@ class Project::StateValidator < ActiveModel::Validator
     @record.try(:account) || @record.build_account
   end
 
-  def validate_presence_of_nested_attribute(association, attribute_name)
-    add_errors_on(association, attribute_name, :blank) if association.send(attribute_name).blank?
+  def validate_presence_of_nested_attribute(association, attribute_name, &block)
+    if block_given?
+      if block.call
+        add_errors_on(association, attribute_name, :blank)
+      end
+    elsif association.send(attribute_name).blank?
+      add_errors_on(association, attribute_name, :blank)
+    end
   end
 
   def validate_same_value_of(association, attribute_name, other_attribute)
