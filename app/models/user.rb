@@ -240,7 +240,7 @@ class User < ActiveRecord::Base
     self.uploaded_image.thumb_avatar.url || self.image_url || self.gravatar_url
   end
 
-  def nulify_permalink
+  def nullify_permalink
     self.permalink = nil if self.permalink.blank?
   end
 
