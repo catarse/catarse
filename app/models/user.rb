@@ -44,8 +44,10 @@ class User < ActiveRecord::Base
   has_many :feeds, class_name: 'UserFeed'
   has_many :credit_cards
   has_many :project_accounts
-  has_many :contributions
   has_many :authorizations
+  has_many :contributions, -> do
+    without_state(:deleted)
+  end
   has_many :projects, -> do
     without_state(:deleted)
   end
