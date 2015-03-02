@@ -32,7 +32,7 @@
               .w-row
             .w-col.w-col-2.w-col-small-6.w-col-tiny-6
               a.explore-link.w-inline-block.btn-category [
-                class="#{'double-line' if category.to_s.size > 15}"
+                class="#{'double-line' if category.to_s.size > 13}"
                 href="#by_category_id/#{category.id}" 
                 data-name=(params[:locale] == 'en' ? category.name_en : category.name_pt)
                 data-categoryid=category.id
@@ -76,18 +76,18 @@ div
       #explore_results[data-projects-path=projects_path]
         .w-row
           .follow-category.w-hidden
-            .w-col.w-col-6.w-col-tiny-6
+            .w-col.w-col-6.w-col-small-7.w-col-tiny-7
               .category-info.fontsize-large
                 | Category-name
-            .w-col.w-col-6.w-col-tiny-6
+            .w-col.w-col-6.w-col-small-5.w-col-tiny-5
               .category-follow
                 .w-row
-                  .w-col.w-col-9.w-col-tiny-6.w-clearfix
+                  .w-col.w-col-8.w-hidden-small.w-hidden-tiny.w-clearfix
                     .following.fontsize-small.fontcolor-secondary.u-right
                       span.count
                         | 0
                       '  #{t('.following')}
-                  .w-col.w-col-3.w-col-tiny-6
+                  .w-col.w-col-4.w-col-small-12.w-col-tiny-12
                     a href="javascript:(void);" class='btn btn-medium follow-btn'
                       = t('.follow')
                     a href="javascript:(void);" class='btn btn-medium btn-terciary unfollow-btn'
@@ -101,8 +101,9 @@ div
 
 .section.section-gray-one.u-text-center
   .w-container
-    .fontsize-large.u-marginbottom-20.fontweight-semibold Que tal começar o seu projeto?
-    .fontsize-base.u-marginbottom-10 Inscreva seu projeto no Catarse hoje mesmo!
-    = link_to 'Saiba mais', start_path, class: 'alt-link fontsize-base'
+    = link_to start_path do
+      = image_tag "icon-start.png", class: "u-marginbottom-10"
+    .fontsize-large
+      = link_to 'Inscreva seu projeto no Catarse!', start_path, class: 'alt-link'
 
 = render 'shared/footer_big'
