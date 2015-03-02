@@ -54,10 +54,10 @@ section.section
         = render 'users/card', resource: @project.user
         .w-hidden-main.w-hidden-medium.project-share
           .div-share-mobile-fb
-            = render_facebook_share_mobile(url: project_by_slug_url(permalink: @project.permalink), title: @project.name)
+            = render_facebook_share_mobile(url: project_by_slug_url(permalink: @project.permalink, ref: 'facebook'), title: @project.name)
           .div-share-mobile-fb
             .btn.btn-medium.btn-fb.btn-tweet
-              = render_twitter_mobile(url: project_by_slug_url(permalink: @project.permalink), title: @project.name)
+              = render_twitter_mobile(url: project_by_slug_url(permalink: @project.permalink, ref: 'twitter'), title: @project.name)
               = t('.tweet')
         #rewards.u-marginbottom-30[data-index_path=project_rewards_path(@project)]
           .u-text-center = image_tag 'catarse_bootstrap/loader.gif'
