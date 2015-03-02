@@ -65,7 +65,7 @@
       = link_to CatarseSettings[:blog_url], target: :blank do
         = image_tag "icon-blog.png", class: "u-marginbottom-10"
       .fontsize-large.u-marginbottom-60.text-success
-        = t('.blog')
+        = link_to t('.blog'), CatarseSettings[:blog_url], target: '__blank', class: 'link-hidden-success'
     .w-row
       - (Blog.fetch_last_posts rescue [])[0..2].each do |post|
         .w-col.w-col-4.col-blog-post
