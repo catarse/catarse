@@ -139,6 +139,10 @@ class Project < ActiveRecord::Base
     catarse_auto_html budget, image_width: 600
   end
 
+  def state
+    ProjectState.new super
+  end
+
   def has_blank_service_fee?
     contributions.with_state(:confirmed).where("payment_service_fee IS NULL OR payment_service_fee = 0").present?
   end
@@ -148,15 +152,15 @@ class Project < ActiveRecord::Base
   end
 
   def can_show_funding_period?
-    ['online', 'waiting_funds', 'successful', 'failed'].include? state
+    state >= 'online'
   end
 
   def can_update_account?
-    ['online', 'waiting_funds', 'successful', 'failed'].exclude? state
+    state < 'online'
   end
 
   def can_show_preview_link?
-    ['draft', 'approved', 'rejected', 'in_analysis'].include? state
+    state.between? 'draft', 'approved'
   end
 
   def subscribed_users
