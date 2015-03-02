@@ -88,8 +88,8 @@ pt:
         isso no orçamento. Prometeu?! CUMPRA! :D
       no_rewards_warning_title: Crie aqui suas recompensas
       contribution_states:
-        confirmed: Confirmados
-        pending: Boletos impressos
+        confirmed: "Confirmados"
+        pending: "Pendentes"
       sidebar:
         contributions: apoios
         goal: atingidos de %{total}
