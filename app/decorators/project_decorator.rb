@@ -31,7 +31,7 @@ class ProjectDecorator < Draper::Decorator
       aditional = 'card-success'
     elsif source.failed?
       aditional = 'card-error'
-    elsif source.draft? || source.in_analysis?
+    elsif source.draft? || source.in_analysis? || source.approved?
       aditional = 'card-dark'
     else
       default_card = ""
