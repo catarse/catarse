@@ -6,11 +6,11 @@ class ProjectState
   end
 
   def to_str
-    @state
+    @state.to_s
   end
 
   def to_s
-    @state
+    @state.to_s
   end
 
   def inspect
@@ -18,7 +18,7 @@ class ProjectState
   end
 
   def <=>(state)
-    states_order = [[:draft, 0],
+    states_order = [[:draft, 0], [:deleted, 0],
                     [:in_analysis, 1],
                     [:rejected, 2], [:approved, 2],
                     [:online, 3],

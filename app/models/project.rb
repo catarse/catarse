@@ -105,7 +105,7 @@ class Project < ActiveRecord::Base
     ")
   }
 
-  attr_accessor :accepted_terms, :state
+  attr_accessor :accepted_terms
 
   # Draft state validtions
   PROJECTS_WITH_EXTENDED_DEADLINE = [9431, 9317, 9493, 9845, 9643, 9524, 8552, 9353, 9746, 9619, 8975, 9442, 9799, 8994, 9257, 9544, 9637, 9181, 9545, 8728, 9300, 9972]
