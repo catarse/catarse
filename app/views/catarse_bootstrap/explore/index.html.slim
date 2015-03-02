@@ -101,8 +101,9 @@ div
 
 .section.section-gray-one.u-text-center
   .w-container
-    .fontsize-large.u-marginbottom-20.fontweight-semibold Que tal começar o seu projeto?
-    .fontsize-base.u-marginbottom-10 Inscreva seu projeto no Catarse hoje mesmo!
-    = link_to 'Saiba mais', start_path, class: 'alt-link fontsize-base'
+    = link_to start_path do
+      = image_tag "icon-start.png", class: "u-marginbottom-10"
+    .fontsize-large
+      = link_to 'Inscreva seu projeto no Catarse!', start_path, class: 'alt-link'
 
 = render 'shared/footer_big'
