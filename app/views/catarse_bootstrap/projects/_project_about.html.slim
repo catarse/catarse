@@ -4,9 +4,9 @@
 
 .project-share.u-marginbottom-30.w-row
   .w-col.w-col-3
-    #facebook_share.img-share = render_facebook_share title: @project.name, href: project_by_slug_url(@project.permalink, locale: I18n.locale)
+    #facebook_share.img-share = render_facebook_share title: @project.name, href: project_by_slug_url(@project.permalink, locale: I18n.locale, ref: 'facebook')
   .w-col.w-col-3
-    #twitter_share.img-share = render_twitter(url: project_by_slug_url(permalink: @project.permalink), title: @project.name)
+    #twitter_share.img-share = render_twitter(url: project_by_slug_url(permalink: @project.permalink, ref: 'twitter'), title: @project.name)
   .w-col.w-col-3
     = link_to t('.embed'), '#embed', id: 'embed_link', class: 'link-hidden fontsize-small fontcolor-secondary'
   .w-col.w-col-3
