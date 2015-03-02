@@ -60,6 +60,7 @@ pt:
       tweet: "Tweet"
       contribute_project:
         display_status:
+          approved: "Esse projeto já foi aprovado pelo Catarse. Em breve ele entrará no ar e estará pronto para receber apoios."
           reached_goal: "Este projeto será bem-sucedido e financiado em %{date}"
           not_reached_goal: "Este projeto só será financiado se pelo menos %{goal} forem atingidos até %{date}"
           failed: "Este projeto não atingiu o mínimo de %{goal} até %{date} e não foi financiado"
