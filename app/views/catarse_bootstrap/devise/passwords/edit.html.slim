@@ -10,7 +10,7 @@
       .login-fb
       .w-form.form-login
         = simple_form_for resource, as: resource_name, url: password_path(resource_name), html: {method: :put, novalidate: true} do |form|
-          = render 'devise/shared/alert'
+          = raw render 'devise/shared/alert'
           = form.hidden_field :reset_password_token
           = form.input :password, as: :password, label: t('.form.labels.password'), input_html: { class: 'w-input text-field' }
           = form.input :password_confirmation, as: :password, label: t('.form.labels.password_confirmation'), input_html: { class: 'w-input text-field' }
