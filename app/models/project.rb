@@ -105,7 +105,7 @@ class Project < ActiveRecord::Base
     ")
   }
 
-  attr_accessor :accepted_terms
+  attr_accessor :accepted_terms, :state
 
   # Draft state validtions
   PROJECTS_WITH_EXTENDED_DEADLINE = [9431, 9317, 9493, 9845, 9643, 9524, 8552, 9353, 9746, 9619, 8975, 9442, 9799, 8994, 9257, 9544, 9637, 9181, 9545, 8728, 9300, 9972]
@@ -139,6 +139,10 @@ class Project < ActiveRecord::Base
     catarse_auto_html budget, image_width: 600
   end
 
+  def state
+    ProjectState.new super
+  end
+
   def has_blank_service_fee?
     contributions.with_state(:confirmed).where("payment_service_fee IS NULL OR payment_service_fee = 0").present?
   end
@@ -148,15 +152,15 @@ class Project < ActiveRecord::Base
   end
 
   def can_show_funding_period?
-    ['online', 'waiting_funds', 'successful', 'failed'].include? state
+    state >= 'online'
   end
 
   def can_update_account?
-    ['online', 'waiting_funds', 'successful', 'failed'].exclude? state
+    state < 'online'
   end
 
   def can_show_preview_link?
-    ['draft', 'approved', 'rejected', 'in_analysis'].include? state
+    state.between? 'draft', 'approved'
   end
 
   def subscribed_users
