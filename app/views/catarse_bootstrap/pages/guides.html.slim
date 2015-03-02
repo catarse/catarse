@@ -1,3 +1,4 @@
+- content_for :title, t('.title')
 = render 'shared/header_big', overlayer: true
 #page-guides
   .hero-medium.hero-guide
@@ -5,7 +6,6 @@
       = image_tag "icon-guides.png", class: "icon-hero"
       .u-text-center.u-marginbottom-20.fontsize-largest Guia dos realizadores
 
-  
   .section
     .w-container
       .w-tabs data-duration-in="300" data-duration-out="100" 
