@@ -1,8 +1,8 @@
 rvm:
-  - 2.1.5
+  - 2.2.0
 
 before_install:
-  - "gem install bundler -v '= 1.5.1'"
+  - "gem install bundler"
 
 before_script:
   - "cp config/database.sample.yml config/database.yml"
