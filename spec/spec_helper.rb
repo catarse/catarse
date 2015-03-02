@@ -65,6 +65,7 @@ RSpec.configure do |config|
 
     # Default configurations
     CatarseSettings[:base_domain] = 'localhost'
+    CatarseSettings[:host] = 'localhost'
     CatarseSettings[:email_contact] = 'foo@bar.com'
     CatarseSettings[:email_projects] = 'foo@bar.com'
     CatarseSettings[:email_system] = 'system@catarse.me'
