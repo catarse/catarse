@@ -4,7 +4,7 @@
   meta property="og:description" content=resource.about
   meta property="og:url" content=user_url(resource, locale: I18n.locale)
   meta property="og:type" content='cause'
-  meta property="og:image" content=resource.uploaded_image.try(:url)
+  meta property="og:image" content=resource.cover_image.try(:base).try(:url) || resource.uploaded_image.url
   meta property="og:site_name" content=CatarseSettings[:company_name]
 
   - fb_admins.each do |admin|
