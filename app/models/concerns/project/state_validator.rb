@@ -28,7 +28,7 @@ class Project::StateValidator < ActiveModel::Validator
     end
     @record.errors.add_on_blank(:uploaded_image) unless @record.video_thumbnail.present?
 
-    @record.errors['user.uploaded_image'] << "Imagem do usuário não pode ficar em branco" if user.personal_image.blank?
+    @record.errors['user.uploaded_image'] << "Imagem do usuário não pode ficar em branco" if user.uploaded_image.blank?
     @record.errors['rewards.size'] << "Deve haver pelo menos uma recompensa" if @record.rewards.size== 0
   end
 

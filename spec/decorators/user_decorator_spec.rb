@@ -44,26 +44,15 @@ RSpec.describe UserDecorator do
   describe "#display_image" do
     subject{ user.display_image }
 
-    context "when we have an uploaded image" do
-      let(:user){ build(:user, uploaded_image: 'image.png' )}
-      before do
-        image = double(url: 'image.png')
-        allow(image).to receive(:thumb_avatar).and_return(image)
-        allow(user).to receive(:uploaded_image).and_return(image)
-      end
-      it{ is_expected.to eq('image.png') }
+    let(:user){ build(:user, uploaded_image: 'image.png' )}
+    before do
+      image = double(url: 'image.png')
+      allow(image).to receive(:thumb_avatar).and_return(image)
+      allow(user).to receive(:uploaded_image).and_return(image)
     end
+    it{ is_expected.to eq('image.png') }
 
-    context "when we have an image url" do
-      let(:user){ build(:user, image_url: 'image.png', uploaded_image: nil) }
-      it{ is_expected.to eq('image.png') }
     end
-
-    context "when we have an email" do
-      let(:user){ create(:user, image_url: nil, email: 'diogob@gmail.com', uploaded_image: nil) }
-      it{ is_expected.to eq("https://gravatar.com/avatar/5e2a237dafbc45f79428fdda9c5024b1.jpg?default=#{CatarseSettings[:base_url]}/assets/catarse_bootstrap/user.jpg") }
-    end
-  end
 
   describe "#short_name" do
     subject { user = create(:user, name: 'My Name Is Lorem Ipsum Dolor Sit Amet') }
