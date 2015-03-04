@@ -10,10 +10,11 @@ module User::OmniauthHandler
           name: hash['info']['name'],
           email: hash['info']['email'],
           about: (hash["info"]["description"][0..139] rescue nil),
-          locale: I18n.locale.to_s,
-          remote_uploaded_image_url: "https://graph.facebook.com/#{hash['uid']}/picture?type=large"
+          locale: I18n.locale.to_s
         }
-      )
+      ) do |user|
+        user.remote_uploaded_image_url = "https://graph.facebook.com/#{hash['uid']}/picture?type=large"
+      end
     end
 
     def has_facebook_authentication?
