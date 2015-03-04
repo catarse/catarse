@@ -20,4 +20,9 @@ RSpec.describe UserUploader do
     it{ is_expected.to have_dimensions(119, 121) }
   end
 
+  describe '#thumb_facebook' do
+    subject{ @uploader.thumb_facebook }
+    it{ is_expected.to have_dimensions(512, 400) }
+  end
+
 end
