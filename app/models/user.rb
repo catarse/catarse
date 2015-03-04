@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
 
   delegate  :display_name, :display_image, :short_name, :display_image_html,
     :medium_name, :display_credits, :display_total_of_contributions, :contributions_text,
-    :twitter_link, :gravatar_url, :display_bank_account, :display_bank_account_owner, to: :decorator
+    :twitter_link, :display_bank_account, :display_bank_account_owner, to: :decorator
 
   # FIXME: Please bitch...
   attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :permalink,
@@ -236,10 +236,6 @@ class User < ActiveRecord::Base
 
   def fix_twitter_user
     self.twitter.gsub!(/@/, '') if self.twitter
-  end
-
-  def personal_image
-    self.uploaded_image.thumb_avatar.url || self.image_url || self.gravatar_url
   end
 
   def nullify_permalink
