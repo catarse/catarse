@@ -16,17 +16,12 @@ class UserDecorator < Draper::Decorator
     "http://twitter.com/#{source.twitter}" unless source.twitter.blank?
   end
 
-  def gravatar_url
-    return unless source.email
-    "https://gravatar.com/avatar/#{Digest::MD5.new.update(source.email)}.jpg?default=#{CatarseSettings[:base_url]}/assets/catarse_bootstrap/user.jpg"
-  end
-
   def display_name
     source.name.presence || source.full_name.presence || I18n.t('user.no_name')
   end
 
   def display_image
-    source.personal_image || '/user.png'
+    source.uploaded_image.thumb_avatar.url || '/user.png'
   end
 
   def display_image_html 
