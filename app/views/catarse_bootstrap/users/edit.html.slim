@@ -34,7 +34,7 @@
 
       = link_to user_path(resource), class: 'dashboard-nav-link u-right-big-only' do
         | Ir para o perfil público
-      span style='visibility: hidden;'
+      /span style='visibility: hidden;'
         = link_to '#feeds', id: 'dashboard_feeds_link', class: 'dashboard-nav-link' , data: {target: '#dashboard_feeds' } do
           | Atividades
 
@@ -44,7 +44,7 @@
     .w-container
       .w-row
         article
-          #dashboard_feeds.content.w-hidden
+          /#dashboard_feeds.content.w-hidden
             = render 'dashboard_feeds'
           #dashboard_contributions.content.w-hidden
             = render 'dashboard_contributions'
