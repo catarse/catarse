@@ -9,9 +9,9 @@ module User::OmniauthHandler
         {
           name: hash['info']['name'],
           email: hash['info']['email'],
-          bio: (hash["info"]["description"][0..139] rescue nil),
+          about: (hash["info"]["description"][0..139] rescue nil),
           locale: I18n.locale.to_s,
-          image_url: "https://graph.facebook.com/#{hash['uid']}/picture?type=large"
+          remote_uploaded_image_url: "https://graph.facebook.com/#{hash['uid']}/picture?type=large"
         }
       )
     end
