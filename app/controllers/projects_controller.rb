@@ -53,9 +53,11 @@ class ProjectsController < ApplicationController
 
   def update
     authorize resource
+    valid = resource.valid?
+
     resource.attributes = permitted_params[:project]
 
-    if resource.save(validate: should_use_validate)
+    if resource.save(validate: valid && should_use_validate)
       flash[:notice] = t('project.update.success')
     else
       flash[:notice] = t('project.update.failed')
