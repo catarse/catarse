@@ -120,13 +120,14 @@ App.addChild('MixPanel', {
   },
 
   detectLogin: function(){
-    if(this.user){
-      if(this.user.id != store.get('user_id')){
+    if(this.user){ // User is logged in
+      if(this.user.id != store.get('user_id')){ // First page load after login
         this.onLogin();
         store.set('user_id', this.user.id);
       }
     }
-    else{
+    else if(store.get('user_id')){ // Logout
+      mixpanel.cookie.clear();
       store.set('user_id', null);
     }
   },
