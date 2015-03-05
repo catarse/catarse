@@ -158,6 +158,15 @@ FactoryGirl.define do
     f.payment_id '1.2.3'
   end
 
+  factory :payment do |f|
+    f.gateway 'pagarme'
+    f.value 10.00
+    f.installment_value 10.00
+    after :build do |payment|
+      payment.method = "credit_card" # we need to do this for method is some factory girl reserved word
+    end
+  end
+
   factory :payment_notification do |f|
     f.association :contribution, factory: :contribution
     f.extra_data {}
