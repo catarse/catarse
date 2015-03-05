@@ -110,8 +110,8 @@ App.addChild('MixPanel', {
   },
 
   onLogin: function(){
-    mixpanel.alias(this.user.id);
     if(this.user.created_today){
+      mixpanel.alias(this.user.id);
       this.track("Signed up");
     }
     else{
