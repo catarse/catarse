@@ -47,6 +47,11 @@ class MixpanelObserver < ActiveRecord::Observer
     if record.kind_of?(Reward) && record.project.online? && record.changed?
       track_project_owner_engagement(record.project.user, 'Updated reward')
     end
+
+    # Detect project state changes to update people database
+    if record.kind_of?(Project) && record.state_changed?
+      update_user_profile(record.user, user_properties(record.user))
+    end
   end
 
   private
@@ -56,6 +61,10 @@ class MixpanelObserver < ActiveRecord::Observer
 
   def track_event(user, event, properties={}, ip=nil)
     tracker.track(user.id.to_s, event, properties, user.current_sign_in_ip)
+    update_user_profile(user, properties)
+  end
+
+  def update_user_profile(user, properties)
     tracker.people.set(user.id.to_s, properties, user.current_sign_in_ip)
   end
 
