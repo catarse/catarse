@@ -18,7 +18,7 @@ module Shared::CatarseAutoHtml
     end
 
     AutoHtml.add_filter(:named_link) do |text, options|
-      text.gsub(/"(.+?)":([^\s,;<]+)/) do |match|
+      CGI.unescapeHTML(text.to_str).gsub(/"(.+?)":([^\s,;<]+)/) do |match|
         "<a target=\"_blank\" href=\"#{$2}\">#{$1}</a>"
       end
     end
@@ -34,8 +34,8 @@ module Shared::CatarseAutoHtml
         image
         youtube width: options[:video_width], height: options[:video_height], wmode: "opaque"
         vimeo width: options[:video_width], height: options[:video_height]
-        named_link
         redcarpet target: :_blank
+        named_link
         link target: :_blank
         add_alt_link_class
         add_line_breaks
@@ -51,8 +51,8 @@ module Shared::CatarseAutoHtml
           '"' => '"'
         }
         email_image width: options[:image_width]
-        named_link
         redcarpet target: :_blank
+        named_link
         link target: :_blank
         add_line_breaks
       end
