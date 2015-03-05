@@ -15,6 +15,7 @@ class Contribution < ActiveRecord::Base
   belongs_to :user
   belongs_to :country
   has_many :payment_notifications
+  has_and_belongs_to_many :payments
 
   validates_presence_of :project, :user, :value
   validates_numericality_of :value, greater_than_or_equal_to: 10.00
