@@ -127,7 +127,9 @@ App.addChild('MixPanel', {
       }
     }
     else if(store.get('user_id')){ // Logout
-      mixpanel.cookie.clear();
+      if(mixpanel && mixpanel.cookie){
+        mixpanel.cookie.clear();
+      }
       store.set('user_id', null);
     }
   },
