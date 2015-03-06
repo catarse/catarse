@@ -15,8 +15,6 @@
         = form.input :user_name_contains, as: :string, label: t('.user'), input_html: {value: params[:user_name_contains]}
       .w-col-2.w-col
         = form.input :with_state, collection: Project.state_names, label: t('admin.filter.with_state'), as: :select, selected: params[:with_state], include_blank: true
-      .large-1.columns
-        = form.input :with_payment_engine, collection: ['pagarme', 'moip'], label: 'Meio de pagamento', as: :select, include_blank: true, selected: params[:with_payment_engine]
 
     .w-row
       .w-col-2.w-col
@@ -39,7 +37,6 @@
         thead.card.card-secondary
           tr
             th style="width: 200px"= t('.name')
-            th= t('.pagarme')
             th= t('.user')
             th= t('.goal')
             th= t('.pledged')
@@ -53,7 +50,6 @@
         tbody
           tr id=project.id
             td= link_to project.name, project_by_slug_path(permalink: project.permalink), target: '_blank'
-            td= (project.using_pagarme? ? t('yes') : t('no'))
             td= link_to (project.user.moip_login.blank? ? 'Não preenchido' : project.user.moip_login), user_path(project.user, anchor: :settings), target: '_blank'
             td= project.display_goal
             td= project.display_pledged
