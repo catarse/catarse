@@ -54,7 +54,6 @@ App.addChild('ReviewForm', _.extend({
     if(this.$state.data('old_value')){
       this.$state.val(this.$state.data('old_value'))
     }
-    this.parent.payment.loadPaymentChoices();
     this.makeFieldsRequired();
   },
 
