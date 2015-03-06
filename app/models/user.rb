@@ -93,7 +93,14 @@ class User < ActiveRecord::Base
   }
   scope :by_name, ->(name){ where('users.name ~* ?', name) }
   scope :by_id, ->(id){ where(id: id) }
-  scope :by_key, ->(key){ where('EXISTS(SELECT true FROM contributions WHERE contributions.user_id = users.id AND contributions.key ~* ?)', key) }
+  scope :by_key, ->(key){ where('EXISTS(
+                                SELECT true 
+                                FROM 
+                                  contributions c 
+                                  JOIN contributions_payments cp ON cp.contribution_id = c.id
+                                  JOIN payments p ON cp.payment_id = p.id
+                                WHERE c.user_id = users.id AND p.key = ?)', key
+                               ) }
   scope :has_credits, -> { joins(:user_total).where('user_totals.credits > 0 and not users.zero_credits') }
   scope :already_used_credits, -> {
     has_credits.
