@@ -11,7 +11,6 @@ class Project < ActiveRecord::Base
   include Project::CustomValidators
   include Project::RemindersHandler
   include Project::ErrorGroups
-  include Project::PaymentEngineHandler
 
   has_notifications
 

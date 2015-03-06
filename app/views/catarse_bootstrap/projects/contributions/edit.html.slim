@@ -20,16 +20,11 @@
           .w-hidden-main.w-hidden-medium.w-clearfix
             = render 'selected_reward'
           .w-form.formwrapper
-            - if parent.using_pagarme?
-              .w-row
-                = form.input :payer_name, as: :string, wrapper_html: {class: 'w-col w-col-12'}, input_html: {required: true}, validation_text: true, required: true
-              .w-row
-                = form.input :payer_email, as: :email, wrapper_html: {class: 'w-col w-col-6 w-sub-col'}, input_html: {required: true}, validation_text: true, required: true
-                = form.input :payer_document, as: :tel, wrapper_html: {class: 'w-col w-col-6'}, validation_text: true, input_html: { data: { :'validate-cpf-cnpj' => true } }
-            - else
-              .w-row
-                = form.input :payer_name, as: :string, wrapper_html: {class: 'w-col w-col-6 w-sub-col'}, input_html: {required: true}, validation_text: true, required: true
-                = form.input :payer_email, as: :email, wrapper_html: {class: 'w-col w-col-6'}, input_html: {required: true}, validation_text: true, required: true
+            .w-row
+              = form.input :payer_name, as: :string, wrapper_html: {class: 'w-col w-col-12'}, input_html: {required: true}, validation_text: true, required: true
+            .w-row
+              = form.input :payer_email, as: :email, wrapper_html: {class: 'w-col w-col-6 w-sub-col'}, input_html: {required: true}, validation_text: true, required: true
+              = form.input :payer_document, as: :tel, wrapper_html: {class: 'w-col w-col-6'}, validation_text: true, input_html: { data: { :'validate-cpf-cnpj' => true } }
             .w-row
               .w-col.w-col-12
                 = form.input_field :anonymous, boolean_style: :inline, class: 'checkbox-fix'
@@ -65,15 +60,8 @@
               span.fa.fa-lock
               |&nbsp;&nbsp;&nbsp;  
               = t('.choose_payment_subtitle')
-          #payment-methods.nav-light.u-marginbottom-30[class=(avaiable_payment_engines.size == 1 ? 'w-hidden' : '')]
-            - avaiable_payment_engines.each do |engine|
-              .nav-tab.nav-tab-light[id=engine.name data-target="##{engine.name}_payment"]
-                = t("projects.contributions.review.#{engine.name}")
-          .tab_content_container
-            - avaiable_payment_engines.each do |engine|
-              div[id="#{engine.name}_payment" class="payments_type hide" data-path=engine.review_path(@contribution) ]
-                .results
-                  .tab-loader.loader.u-text-center.w-col.w-col-12.u-marginbottom-30 = image_tag "catarse_bootstrap/loader.gif"
+          #engine[class="payments_type" data-path=engine.review_path(@contribution) ]
+            .tab-loader.loader.u-text-center.w-col.w-col-12.u-marginbottom-30 = image_tag "catarse_bootstrap/loader.gif"
       .w-col.w-col-4
         .w-hidden-small.w-hidden-tiny
           = render 'selected_reward'
