@@ -134,11 +134,12 @@ RSpec.describe User, type: :model do
 
   describe ".by_key" do
     before do
-      @contribution = create(:contribution)
+      @payment = create(:payment)
+      @contribution = create(:contribution, payments: [@payment])
       @user = @contribution.user
       create(:contribution)
     end
-    subject{ User.by_key @contribution.key }
+    subject{ User.by_key @payment.key }
     it{ is_expected.to eq([@user]) }
   end
 
