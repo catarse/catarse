@@ -134,19 +134,12 @@ RSpec.describe User, type: :model do
 
   describe ".by_key" do
     before do
-      b = create(:contribution)
-      @u = b.user
-      b.key = 'abc'
-      b.save!
-      b = create(:contribution, user: @u)
-      b.key = 'abcde'
-      b.save!
-      b = create(:contribution)
-      b.key = 'def'
-      b.save!
+      @contribution = create(:contribution)
+      @user = @contribution.user
+      create(:contribution)
     end
-    subject{ User.by_key 'abc' }
-    it{ is_expected.to eq([@u]) }
+    subject{ User.by_key @contribution.key }
+    it{ is_expected.to eq([@user]) }
   end
 
   describe ".by_id" do
