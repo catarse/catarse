@@ -27,7 +27,7 @@
           | Chegou junto em #{localize(resource.created_at, format: "%B de %Y")}
           br
           | Apoiou #{projects_to_show.count} projetos e já criou #{resource.created_projects.count} projetos&nbsp;
-  .hero-profile style="background-image: url('#{resource.cover_image.try(:base).try(:url) || resource.uploaded_image.url}')"
+  .hero-profile style="background-image: url('#{resource.cover_image.try(:base).try(:url) || resource.display_image}')"
 
 nav.project-nav.u-text-center.u-marginbottom-30.profile style='z-index: 10; position: relative;'
   .w-container#default-tab data-anchor=(resource.created_projects.empty? ? 'contributed' : 'created')
