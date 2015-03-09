@@ -136,12 +136,12 @@ pra você que quer organizar o levante na sua realidade, preencha "este formulá
 
     context "when about has named link syntax fallowed by open tag" do
       subject{ create(:project, about: %{"video":https://www.youtube.com/watch?v=h4aCqpZ2dVU}).about_html }
-      it{ is_expected.to eq(%{<p>&quot;video&quot;:<div class=\"video youtube\"><iframe width=\"600\" height=\"403\" src=\"//www.youtube.com/embed/h4aCqpZ2dVU?wmode=opaque\" frameborder=\"0\" allowfullscreen></iframe></div></p>\n}) }
+      it{ is_expected.to eq(%{<p>\"video\":<div class=\"video youtube\"><iframe width=\"600\" height=\"403\" src=\"//www.youtube.com/embed/h4aCqpZ2dVU?wmode=opaque\" frameborder=\"0\" allowfullscreen></iframe></div></p>\n}) }
     end
 
     context "when about has JS tags and some links" do
       subject{ project.about_html }
-      it{ is_expected.to eq("<p>Foo Bar <a class=\"alt-link\" href=\"http://www.foo.bar\" target=\"_blank\">http://www.foo.bar</a> &lt;javascript&gt;xss()&lt;/javascript&gt;<a class=\"alt-link\" target=\"_blank\" href=\"http://click.here\">Click here</a></p>\n")}
+      it{ is_expected.to eq("<p>Foo Bar <a class=\"alt-link\" href=\"http://www.foo.bar\" target=\"_blank\">http://www.foo.bar</a> <javascript>xss()</javascript><a class=\"alt-link\" target=\"_blank\" href=\"http://click.here\">Click here</a></p>\n")}
     end
   end
 

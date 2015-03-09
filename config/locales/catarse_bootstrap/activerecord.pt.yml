@@ -229,7 +229,7 @@ pt:
             current_password:
               invalid: "Senha atual não é válida"
             reset_password_token:
-              invalid: 'expirou. Vá para <a href="/password/new">redefinir senha</a> e solicite novamente a redefinição da senha.'
+              invalid: 'Token expirou. Vá para <a href="/password/new" class="alt-link">redefinir senha</a> e solicite novamente a redefinição da senha.'
             name:
               blank: "Nome do usuário não pode ficar em branco"
             about:
