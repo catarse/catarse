@@ -16,10 +16,6 @@ App.addChild('Explore', _.extend({
   },
 
   activate: function(){
-    this.$loader = this.$("#loading img");
-    this.$loaderDiv = this.$("#loading");
-    this.$results = this.$(".results");
-    this.path = this.$("#explore_results").data('projects-path');
 
     this.route('recommended');
     this.route('expiring');
@@ -30,7 +26,12 @@ App.addChild('Explore', _.extend({
     this.route('near_of/:state');
 
     this.setInitialFilter();
-    this.setupPagination();
+    this.setupPagination(
+      this.$("#loading img"), 
+      this.$('#load-more'),
+      this.$(".results"), 
+      this.$("#explore_results").data('projects-path')
+    );
 
     if(window.location.hash == ''){
       var search_string = window.location.search.indexOf("pg_search");
