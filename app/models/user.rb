@@ -1,7 +1,6 @@
 # coding: utf-8
 class User < ActiveRecord::Base
   include User::OmniauthHandler
-  include Shared::CatarseAutoHtml
   has_notifications
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
@@ -11,7 +10,6 @@ class User < ActiveRecord::Base
 
   before_save -> {self.about = about.gsub(/^[^\S\n]+/, "") if about.present? }
 
-  catarse_auto_html_for field: :about, video_width: 600, video_height: 350
 
   delegate  :display_name, :display_image, :short_name, :display_image_html,
     :medium_name, :display_credits, :display_total_of_contributions, :contributions_text,
@@ -22,7 +20,7 @@ class User < ActiveRecord::Base
     :image_url, :uploaded_image, :bio, :newsletter, :full_name, :address_street, :address_number,
     :address_complement, :address_neighbourhood, :address_city, :address_state, :address_zip_code, :phone_number,
     :cpf, :state_inscription, :locale, :twitter, :facebook_link, :other_link, :moip_login, :deactivated_at, :reactivate_token,
-    :bank_account_attributes, :country_id, :zero_credits, :links_attributes, :about, :cover_image, :category_followers_attributes, :category_follower_ids
+    :bank_account_attributes, :country_id, :zero_credits, :links_attributes, :about, :about_html, :cover_image, :category_followers_attributes, :category_follower_ids
 
   mount_uploader :uploaded_image, UserUploader
   mount_uploader :cover_image, CoverUploader

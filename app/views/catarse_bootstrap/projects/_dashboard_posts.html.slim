@@ -11,7 +11,7 @@
               = form.input_field :title, as: :string
 
               = form.label :comment, as: :string
-              = form.input_field :comment, class: 'text-field jumbo'
+              = form.input_field :comment_html, class: 'redactor text-field'
 
               .w-checkbox.w-clearfix.u-marginbottom-30
                 = form.check_box :exclusive, class: 'w-checkbox-input'
@@ -43,5 +43,3 @@
           = image_tag "icon-guides-blue-sm.png", class: "u-left"
           .fontweight-semibold.fontsize-smallest.fontcolor-secondary Guia dos Realizadores
           .fontsize-small.fontcolor-dashboard Mobilizando sua rede
-        .u-margintop-20   
-          = render 'shared/formatting_tips'

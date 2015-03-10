@@ -10,7 +10,7 @@ RSpec.describe ProjectPostWorker do
     create(:contribution, state: 'confirmed', project: @project, user: contribution.user)
     @project.reload
     ActionMailer::Base.deliveries = []
-    @post = ProjectPost.create!(user: @project.user, project: @project, title: "title", comment: "this is a comment\nhttp://vimeo.com/6944344\nhttp://catarse.me/assets/catarse/logo164x54.png")
+    @post = ProjectPost.create!(user: @project.user, project: @project, title: "title", comment_html: "this is a comment\nhttp://vimeo.com/6944344\nhttp://catarse.me/assets/catarse/logo164x54.png")
     expect(ProjectPostNotification).to receive(:notify_once).with(
         :posts,
         contribution.user,
