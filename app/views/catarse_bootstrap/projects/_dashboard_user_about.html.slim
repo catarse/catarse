@@ -66,11 +66,6 @@
                         = render partial: 'link_fields', locals: { f: link_form, parent_form: form }
 
                       = link_to_add_association " . ", form, :links, :'data-association-insertion-method' => :after, class: 'w-hidden user-links'
-          .w-col.w-col-4
-            = render 'shared/formatting_tips'
-
-
-          
     div
       .w-container
         .w-row
