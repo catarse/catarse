@@ -30,7 +30,7 @@ RSpec.describe "Projects", type: :feature do
 
   describe "explore" do
     before do
-      12.times{ create(:project, name: 'Foo', state: 'online', online_days: 30, recommended: true) }
+      11.times{ create(:project, name: 'Foo', state: 'online', online_days: 30, recommended: true) }
       create(:project, name: 'Lorem', state: 'online', online_days: 30, recommended: false)
       visit explore_path(locale: :pt)
       sleep FeatureHelpers::TIME_TO_SLEEP
@@ -39,11 +39,12 @@ RSpec.describe "Projects", type: :feature do
       recommended = all(".results .card-project")
       expect(recommended.size).to eq(6)
     end
-    it "should load 6 more projects after clicking load more" do
+    it "should load 6 more projects after clicking load more and then hide it" do
       click_on("load-more")
       sleep FeatureHelpers::TIME_TO_SLEEP
       results = all(".results .card-project")
-      expect(results.size).to eq(12)
+      expect(results.size).to eq(11)
+      expect(page.evaluate_script('$("#load-more:visible").length')).to eq(0)
     end
   end
 
@@ -54,7 +55,7 @@ RSpec.describe "Projects", type: :feature do
       visit explore_path(pg_search: 'Lorem')
       sleep FeatureHelpers::TIME_TO_SLEEP
     end
-    it "should show recommended projects" do
+    it "should show matching projects" do
       recommended = all(".results .card-project")
       expect(recommended.size).to eq(1)
     end
