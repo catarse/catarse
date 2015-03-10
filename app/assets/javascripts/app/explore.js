@@ -3,7 +3,8 @@ App.addChild('Explore', _.extend({
 
   events: {
     'click .explore-toggle':'toggleCategoryList',
-    'click .explore-link' : 'toggleCategoryList'
+    'click .explore-link' : 'toggleCategoryList',
+    'click #load-more' : 'loadMore'
   },
 
   routeFilters: {
@@ -29,7 +30,7 @@ App.addChild('Explore', _.extend({
     this.route('near_of/:state');
 
     this.setInitialFilter();
-    this.setupScroll();
+    this.setupPagination();
 
     if(window.location.hash == ''){
       var search_string = window.location.search.indexOf("pg_search");
@@ -87,7 +88,7 @@ App.addChild('Explore', _.extend({
     }
   },
 
-}, Skull.InfiniteScroll));
+}, Skull.Pagination));
 
 App.views.Explore.addChild('FollowCategory', {
   el: '.follow-category',

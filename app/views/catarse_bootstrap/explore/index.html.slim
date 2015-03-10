@@ -1,3 +1,4 @@
+/89633
 - content_for :title, t('.title')
 = render 'shared/header_big', overlayer: true
 
@@ -99,6 +100,13 @@ div
           .results &nbsp;
           .clearfix
           #loading.loader.u-text-center.w-col.w-col-12 = image_tag "catarse_bootstrap/loader.gif"
+
+.section
+  .w-container
+    .w-row
+      .w-col.w-col-push-5.w-col-2
+        a id="load-more" href="#" class="btn btn-medium btn-terciary"
+          = t('shared.load_more')
 
 .section.section-gray-one.u-text-center
   .w-container
