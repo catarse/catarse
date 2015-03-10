@@ -77,9 +77,11 @@ gem 'mail_form'
 gem "auto_html"
 gem "RedCloth"
 gem 'kaminari'
+gem 'redactor-rails'
 
 # Uploads
 gem 'carrierwave', '~> 0.10.0'
+gem "mini_magick"
 gem 'rmagick', :require => 'RMagick'
 
 # Other Tools

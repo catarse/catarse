@@ -22,10 +22,10 @@
                 input_html: { class: 'positive', required: false },
                 validation_text: false
 
-              = form.input :about, as: :text, 
+              = form.input :about_html, as: :text, 
                 wrapper: :one_col,
                 wrapper_class: 'w-row u-marginbottom-30 card card-terciary',
-                input_html: { class: 'bottom jumbo positive', required: true },
+                input_html: { class: 'redactor positive', required: true },
                 validation_text: false
 
 
@@ -36,7 +36,7 @@
                   wrapper_class: '',
                   label_wrapper_html: { class: 'w-col w-col-12' },
                   text_field_wrapper_html: { class: 'w-col w-col-12' },
-                  input_html: { class: 'positive', required: false, rows: 6 },
+                  input_html: { class: 'redactor positive', required: false, rows: 6 },
                   validation_text: false
 
                 /label.field-label.fontweight-semibold= t('.budgets_label') 
@@ -55,7 +55,6 @@
             .fontweight-semibold.fontsize-smallest.fontcolor-secondary Guia dos Realizadores
             .fontsize-small.fontcolor-dashboard Contando sua história
 
-          = render 'shared/formatting_tips'
   .divider
   .section
     .w-container

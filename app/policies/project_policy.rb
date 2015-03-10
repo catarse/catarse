@@ -57,7 +57,7 @@ class ProjectPolicy < ApplicationPolicy
   end
 
   def posts_attributes
-    { posts_attributes: [:_destroy, :title, :comment, :exclusive, :id]}
+    { posts_attributes: [:_destroy, :title, :comment_html, :exclusive, :id]}
   end
 
   def reward_attributes

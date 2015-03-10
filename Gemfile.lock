@@ -339,6 +339,7 @@ GEM
       json (>= 1.7.7)
     method_source (0.8.2)
     mime-types (2.4.3)
+    mini_magick (4.1.0)
     mini_portile (0.6.2)
     minitest (5.5.1)
     mixpanel-ruby (1.7.0)
@@ -442,6 +443,10 @@ GEM
     rb-fsevent (0.9.4)
     rb-inotify (0.9.5)
       ffi (>= 0.5.0)
+    redactor-rails (0.5.0)
+      devise
+      mime-types
+      orm_adapter
     redcarpet (3.2.2)
     redis (3.2.1)
     redis-namespace (1.5.1)
@@ -629,6 +634,7 @@ DEPENDENCIES
   launchy
   letter_opener
   mail_form
+  mini_magick
   mixpanel-ruby
   moip!
   newrelic_rpm
@@ -646,6 +652,7 @@ DEPENDENCIES
   rails-observers (~> 0.1.2)
   rails_12factor
   ranked-model
+  redactor-rails
   rmagick
   routing-filter (~> 0.4.0.pre)
   rspec-collection_matchers

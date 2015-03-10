@@ -33,11 +33,11 @@
 
         .w-row
           .w-col.w-col-8
-            = form.input :about, as: :text, 
+            = form.input :about_html, as: :text, 
             wrapper: 'one_col',
             wrapper_class: 'w-row u-marginbottom-30 card card-terciary',
             text_field_wrapper_html: { class: 'w-col w-col-7' },
-            input_html: { class: 'positive jumbo', required: true },
+            input_html: { class: 'redactor positive', required: true },
             label: t('.about_label'),
             hint: t('.about_hint')
             .w-form.card.card-terciary.u-marginbottom-30

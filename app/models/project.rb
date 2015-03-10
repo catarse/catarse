@@ -2,7 +2,6 @@
 class Project < ActiveRecord::Base
   include PgSearch
 
-  include Shared::CatarseAutoHtml
   include Shared::StateMachineHelpers
   include Shared::Queued
 
@@ -36,8 +35,6 @@ class Project < ActiveRecord::Base
   accepts_nested_attributes_for :account
   accepts_nested_attributes_for :posts, allow_destroy: true#, reject_if: ->(x) { x[:title].blank? || x[:comment].blank? }
   accepts_nested_attributes_for :budgets, allow_destroy: true, reject_if: ->(x) { x[:name].blank? || x[:value].blank? }
-
-  catarse_auto_html_for field: :about, video_width: 600, video_height: 403
 
   pg_search_scope :pg_search,
     against: "full_text_index",
@@ -135,7 +132,7 @@ class Project < ActiveRecord::Base
   end
 
   def budget_text_html
-    catarse_auto_html budget, image_width: 600
+    budget
   end
 
   def has_blank_service_fee?
