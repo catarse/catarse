@@ -131,10 +131,6 @@ class Project < ActiveRecord::Base
     order(sort_field)
   end
 
-  def budget_text_html
-    budget
-  end
-
   def has_blank_service_fee?
     contributions.with_state(:confirmed).where("payment_service_fee IS NULL OR payment_service_fee = 0").present?
   end
