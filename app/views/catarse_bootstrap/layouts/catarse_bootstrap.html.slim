@@ -35,6 +35,9 @@ html
 
     = yield
   = javascript_include_tag :application
+  - if content_for? :js
+    /page specific JS files
+    = yield :js
   - if Rails.env.production?
     = render 'layouts/crazzy_egg'
     = render 'layouts/hot_jar'

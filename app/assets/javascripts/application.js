@@ -24,5 +24,4 @@
 //= require cocoon
 //= require_tree ./lib
 //= require_tree ./app
-//= require redactor-rails
-//= require redactor-rails/langs/pt_br
+
