@@ -10,6 +10,12 @@ section.section
             | &nbsp;
           #posts-loading.loader.u-text-center.w-col.w-col-12 = image_tag "catarse_bootstrap/loader.gif"
 
+          .w-container
+            .w-row
+              .w-col.w-col-push-5.w-col-2
+                a id="load-more" href="#" class="btn btn-medium btn-terciary"
+                  = t('shared.load_more')
+
         #project_contributions.content.w-col.w-col-8.w-hidden[data-path=project_contributions_path(project_id: @project.id)]
           - if policy(@project).update?
             .w-row
