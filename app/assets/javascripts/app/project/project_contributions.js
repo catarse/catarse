@@ -2,17 +2,20 @@ App.views.Project.addChild('ProjectContributions', _.extend({
   el: '#project_contributions',
 
   activate: function(){
-    this.$loader = this.$("#contributions-loading img");
-    this.$loaderDiv = this.$("#contributions-loading");
-    this.$results = this.$(".results");
-    this.path = this.$el.data('path');
+    
     this.filter = {available_to_count: true};
-    this.setupScroll();
+    this.setupPagination(
+      this.$("#contributions-loading img"),
+      this.$("#load-more"),
+      this.$(".results"),
+      this.$el.data('path')
+    );
     this.parent.on('selectTab', this.fetchPage);
   },
 
   events:{
-    "click input[type='radio'][name=contribution_state]": "showContributions"
+    "click input[type='radio'][name=contribution_state]": "showContributions",
+    "click #load-more" : "loadMore"
   },
 
   showContributions: function(){
@@ -27,5 +30,5 @@ App.views.Project.addChild('ProjectContributions', _.extend({
     this.fetchPage();
   }
 
-}, Skull.InfiniteScroll));
+}, Skull.Pagination));
 
