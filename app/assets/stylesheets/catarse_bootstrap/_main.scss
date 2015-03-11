@@ -127,6 +127,10 @@ p {
 .section.section-gray-one.blue {
   background-color: #9aa9a5;
 }
+.section.section-gray-one.middle {
+  margin-bottom: 0px;
+  padding-bottom: 95px;
+}
 .section.negative {
   background-color: #3f4752;
   color: #f1f4f4;
@@ -2229,7 +2233,7 @@ p {
   border-style: solid;
   border-width: 1px;
   border-color: rgba(121, 128, 139, 0.27);
-  background-color: white;
+  background-color: transparent;
   color: #79808b;
 }
 .btn-terciary:hover {
@@ -2245,7 +2249,7 @@ p {
 .card-project {
   margin-bottom: 40px;
   padding: 0px;
-  box-shadow: rgba(121, 128, 139, 0.21) 0px 0px 6px 0px;
+  box-shadow: rgba(121, 128, 139, 0.2) 0px 0px 6px 0px;
 }
 .card-project-author {
   height: 65px;
@@ -2644,6 +2648,21 @@ p {
 }
 .whr-date {
   display: none;
+}
+.section-picture {
+  height: 495px;
+  padding-top: 219px;
+  padding-bottom: 185px;
+  background-image: url('../images/catarse--.jpg');
+  background-position: 50% 50%;
+  background-size: cover;
+  background-attachment: scroll;
+}
+.hero-assets {
+  background-image: url('../images/hero-assets.jpg');
+  background-position: 50% 50%;
+  background-size: cover;
+  color: white;
 }
 html.w-mod-js *[data-ix="fade-in"] {
   opacity: 0;
@@ -3399,6 +3418,9 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     padding-bottom: 0px;
     text-align: center;
   }
+  .u-margintop-40 {
+    margin-top: 20px;
+  }
   .w-sub-col {
     padding-right: 0px;
   }
@@ -3462,8 +3484,8 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     margin-bottom: 50px;
   }
   .icon-hero {
-    width: 100px;
-    margin-top: -30px;
+    width: 80px;
+    margin-top: -20px;
   }
   .search-pre-result {
     margin-top: -15px;
@@ -3752,7 +3774,6 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     font-size: 18px;
   }
   .nav-tab {
-    margin-top: 5px;
     margin-right: 8px;
     padding: 10px 7px;
   }
@@ -3780,6 +3801,9 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
   .dashboard-nav {
     padding-bottom: 5px;
   }
+  .u-margintop-40 {
+    margin-top: 20px;
+  }
   .card-project-author {
     height: 40px;
   }
@@ -3801,7 +3825,8 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     padding-bottom: 20px;
   }
   .icon-hero {
-    margin-top: -10px;
+    width: 70px;
+    margin-top: 0px;
   }
   .content-hero-profile {
     margin-top: 80px;
