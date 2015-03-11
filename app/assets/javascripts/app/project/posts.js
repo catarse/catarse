@@ -28,12 +28,6 @@ App.views.Project.addChild('Posts', _.extend({
     this.parent.on('selectTab', this.fetchPage);
   },
 
-  parseXFBML: function(){
-    if(this.$el.is(':visible')){
-      FB.XFBML.parse();
-    }
-  },
-
   posts: function(){
     return this.$('.results .project_posts');
   },
@@ -45,5 +39,3 @@ App.views.Project.addChild('Posts', _.extend({
   }
 
 }, Skull.Pagination));
-
-
