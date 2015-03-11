@@ -40,7 +40,7 @@ RSpec.describe ProjectPostPolicy do
       let(:policy){ ProjectPostPolicy.new(nil, build(:project_post)) }
       subject{ policy }
 
-      %i[title comment exclusive].each do |field|
+      %i[title comment_html exclusive].each do |field|
         it{ is_expected.not_to be_permitted(field) }
       end
     end
@@ -56,7 +56,7 @@ RSpec.describe ProjectPostPolicy do
         user.save!
       end
 
-      %i[title comment exclusive].each do |field|
+      %i[title comment_html exclusive].each do |field|
         it{ is_expected.to be_permitted(field) }
       end
     end
