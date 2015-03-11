@@ -3,7 +3,8 @@ App.views.Project.addChild('Posts', _.extend({
 
   events: {
     'ajax:success .results .project_posts' : 'onPostDestroy',
-    'ajax:success form#new_project_post' : 'onPostCreate'
+    'ajax:success form#new_project_post' : 'onPostCreate',
+    'click #load-more' : 'loadMore'
   },
 
   onPostCreate: function(e, data){
@@ -16,14 +17,15 @@ App.views.Project.addChild('Posts', _.extend({
   },
 
   activate: function(){
-    this.$loader = this.$("#posts-loading img");
-    this.$loaderDiv = this.$("#posts-loading");
-    this.$results = this.$(".posts");
-    this.path = this.$el.data('path');
+ 
     this.filter = {};
-    this.setupScroll();
+    this.setupPagination(
+      this.$("#posts-loading img"),
+      this.$('#load-more'),
+      this.$(".posts"),
+      this.$el.data('path')
+    );
     this.parent.on('selectTab', this.fetchPage);
-    this.on('scroll:success', this.parseXFBML);
   },
 
   parseXFBML: function(){
@@ -42,6 +44,6 @@ App.views.Project.addChild('Posts', _.extend({
     this.parent.$('a#posts_link .count').html(' (' + this.posts().length + ')');
   }
 
-}, Skull.InfiniteScroll));
+}, Skull.Pagination));
 
 

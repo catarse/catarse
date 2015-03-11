@@ -48,6 +48,29 @@ RSpec.describe "Projects", type: :feature do
     end
   end
 
+  describe "view" do
+    before do
+      20.times{ create(:contribution, value: 10.00, credits: true, project: project, state: 'confirmed') }
+      visit project_path(project)
+      sleep FeatureHelpers::TIME_TO_SLEEP
+    end
+    it "should show 20 contributions when clicking contributors tab" do
+      click_on("contributions_link")
+      sleep FeatureHelpers::TIME_TO_SLEEP
+      contributors = all(".results .u-marginbottom-20")
+      expect(contributors.size).to eq(20)
+    end
+    it "should load 20 more contributions after click load more and then hide it" do
+      click_on("contributions_link")
+      sleep FeatureHelpers::TIME_TO_SLEEP
+      click_on("load-more")
+      sleep FeatureHelpers::TIME_TO_SLEEP
+      contributors = all(".results .u-marginbottom-20")
+      expect(contributors.size).to eq(40)
+      expect(page.evaluate_script('$("#load-more:visible").length')).to eq(0)
+    end
+  end
+
   describe "search" do
     before do
       create(:project, name: 'Foo', state: 'online', online_days: 30, recommended: true)
