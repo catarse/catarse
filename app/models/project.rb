@@ -144,7 +144,7 @@ class Project < ActiveRecord::Base
   end
 
   def can_update_account?
-    ['online', 'waiting_funds', 'successful', 'failed'].exclude? state
+    account.invalid? || ['online', 'waiting_funds', 'successful', 'failed'].exclude?(state)
   end
 
   def can_show_preview_link?
