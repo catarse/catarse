@@ -77,7 +77,7 @@ pt:
         image_url: "URL da imagem"
         name: "Nome do projeto"
         goal: "Valor a ser arrecadado"
-        about: "Descrição do projeto"
+        about_html: "Descrição do projeto"
         user_id: "Id do usuário"
         video_url: "URL do vídeo"
         permalink: 'Link do seu projeto'
@@ -210,7 +210,7 @@ pt:
               blank: "O prazo de arrecadação não pode ficar em branco"
               greater_than: "O prazo para arrecadação deve ser maior que 0 dias"
               not_a_number: "O prazo para arrecadação deve ser um número de dias"
-            about:
+            about_html:
               blank: "A descrição do projeto não pode ficar em branco"
             headline:
               blank: "A frase de efeito do projeto não pode ficar em branco"

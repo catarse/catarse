@@ -64,24 +64,13 @@
 
                     = link_to_add_association " . ", form, :links, :'data-association-insertion-method' => :after, class: 'w-hidden user-links'
           .w-row
-            .w-col.w-col-8.w-sub-col
+            .w-col
               .card.card-terciary.u-marginbottom-30
-                label.field-label.fontweight-semibold for="name-8"  Sobre
-                label.field-label.fontsize-smallest.fontcolor-secondary.u-marginbottom-20 for="field-6"  Fale sobre você e tente fornecer as informações mais relevantes para que visitantes possam te conhecer melhor. 
+                label.field-label.fontweight-semibold Sobre
+                label.field-label.fontsize-smallest.fontcolor-secondary.u-marginbottom-20 Fale sobre você e tente fornecer as informações mais relevantes para que visitantes possam te conhecer melhor. 
                 .w-form
                   .preview-container.u-marginbottom-40
-                    /.text-field.no-hover.top
-                      a.link-hidden.fa.fa-eye.fa-lg data-ix="display-preview" href="#" style=("transition: all 0.5s ease 0s; -webkit-transition: all 0.5s ease 0s;")  .
-                    /.preview data-ix="display-none-on-load" style=("display: none;") 
-                      .fontsize-large.fontweight-semibold.u-marginbottom-30 This is some text inside of a div block.
-                      p.fontsize-base Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.
-                      img.u-marginbottom-20 alt="542d9f4baf9e5c4227c9dedd_XJsoL5s.jpg" src="http://uploads.webflow.com/54b440b85608e3f4389db387/542d9f4baf9e5c4227c9dedd_XJsoL5s.jpg"
-                      p.fontsize-base Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.
-                      p.fontsize-base Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.
-                      img.u-marginbottom-20 alt="542d9f4baf9e5c4227c9dedd_XJsoL5s.jpg" src="http://uploads.webflow.com/54b440b85608e3f4389db387/542d9f4baf9e5c4227c9dedd_XJsoL5s.jpg"
-                    = form.input_field :about, class: 'w-input text-field bottom jumbo positive'
-            .w-col.w-col-4
-              = render 'shared/formatting_tips'
+                    = form.input_field :about_html, class: 'redactor w-input text-field bottom jumbo positive'
 
   div
     .w-container
