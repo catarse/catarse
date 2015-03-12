@@ -20,7 +20,7 @@ Skull.Pagination = {
     
     this.getPath().success(function(data){
       if($.trim(data) !== ''){
-        that.$loadMore.show();
+       that.$loadMore.show();
       }
     });
 
@@ -41,8 +41,7 @@ Skull.Pagination = {
   },
 
   loadMore: function(event){
-    // the isLoaderDivVisible check if the div is already in the view pane to load more content
-    // the $loader.is(:visible) is here to avoid trigerring two concurrent fetchPage calls
+    
     event.preventDefault();
 
     if(!this.EOF){
