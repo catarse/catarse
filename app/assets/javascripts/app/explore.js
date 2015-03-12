@@ -3,7 +3,8 @@ App.addChild('Explore', _.extend({
 
   events: {
     'click .explore-toggle':'toggleCategoryList',
-    'click .explore-link' : 'toggleCategoryList'
+    'click .explore-link' : 'toggleCategoryList',
+    'click #load-more' : 'loadMore'
   },
 
   routeFilters: {
@@ -15,10 +16,6 @@ App.addChild('Explore', _.extend({
   },
 
   activate: function(){
-    this.$loader = this.$("#loading img");
-    this.$loaderDiv = this.$("#loading");
-    this.$results = this.$(".results");
-    this.path = this.$("#explore_results").data('projects-path');
 
     this.route('recommended');
     this.route('expiring');
@@ -29,7 +26,12 @@ App.addChild('Explore', _.extend({
     this.route('near_of/:state');
 
     this.setInitialFilter();
-    this.setupScroll();
+    this.setupPagination(
+      this.$("#loading img"), 
+      this.$('#load-more'),
+      this.$(".results"), 
+      this.$("#explore_results").data('projects-path')
+    );
 
     if(window.location.hash == ''){
       var search_string = window.location.search.indexOf("pg_search");
@@ -87,7 +89,7 @@ App.addChild('Explore', _.extend({
     }
   },
 
-}, Skull.InfiniteScroll));
+}, Skull.Pagination));
 
 App.views.Explore.addChild('FollowCategory', {
   el: '.follow-category',
