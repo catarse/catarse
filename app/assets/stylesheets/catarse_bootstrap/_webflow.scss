@@ -72,6 +72,9 @@ a:focus {
 .w-hidden {
   display: none;
 }
+html[data-w-dynpage] [data-w-cloak] {
+  color: transparent !important;
+}
 h1,
 h2,
 h3,
@@ -278,9 +281,6 @@ textarea.w-select {
   min-height: 1px;
   padding-left: 10px;
   padding-right: 10px;
-}
-.w-sub-col {
-  padding-right: 20px;
 }
 .w-col .w-col {
   padding-left: 0;
@@ -1456,18 +1456,26 @@ textarea.w-select {
   position: relative;
   float: left;
   text-decoration: none;
-  color: #222;
+  color: #222222;
+}
+.w-nav-brand:hover {
+  text-decoration: none;
+  color: #222222;
 }
 .w-nav-link {
   position: relative;
   display: inline-block;
   vertical-align: top;
   text-decoration: none;
-  color: #222;
+  color: #222222;
   padding: 20px;
   text-align: left;
   margin-left: auto;
   margin-right: auto;
+}
+.w-nav-link:hover {
+  text-decoration: none;
+  color: #222222;
 }
 .w-nav-link.w--current {
   color: #339ce1;
@@ -1634,10 +1642,6 @@ textarea.w-select {
   100% {
     transform: rotate(360deg);
   }
-}
-.w-dyn-loading {
-  display: block;
-  padding: 10px;
 }
 .w-dyn-items {
   display: none;
