@@ -33,6 +33,7 @@ FactoryGirl.define do
     f.email { generate(:email) }
     f.permalink { generate(:permalink) }
     f.about "This is Foo bar's biography."
+    f.about_html "This is Foo bar's biography."
     f.address_street 'fooo'
     f.address_number '123'
     f.address_city 'fooo bar'
@@ -52,6 +53,7 @@ FactoryGirl.define do
     f.uploaded_image File.open("#{Rails.root}/spec/support/testimg.png")
     f.email { generate(:email) }
     f.about "This is Foo bar's biography."
+    f.about_html "This is Foo bar's biography."
     f.address_street 'fooo'
     f.address_number '123'
     f.address_city 'fooo bar'
@@ -77,6 +79,7 @@ FactoryGirl.define do
     f.association :user
     f.association :category
     f.about "Foo bar"
+    f.about_html "Foo bar"
     f.headline "Foo bar"
     f.goal 10000
     f.online_date Time.now
