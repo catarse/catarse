@@ -56,6 +56,16 @@ RSpec.describe MixpanelObserver do
   end
 
   describe "#after_save" do
+    context "when we change a projecte state to online" do
+      let(:project){ create(:project, state: 'approved') }
+      let(:user){ project.user }
+
+      it "should set user has_online_project in mixpanel" do
+        expect(people).to receive(:set).with(user.id.to_s, project_owner_properties.merge(has_online_project: true), user.current_sign_in_ip)
+        project.push_to_online
+      end
+    end
+
     context "when we create a Reward" do
       it "should send tracker a track call with the change" do
         expect(tracker).to receive(:track).with(project.user.id.to_s, "Project owner engaged with Catarse", project_owner_properties.merge(action: "Updated reward"), project.user.current_sign_in_ip)
