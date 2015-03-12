@@ -70,6 +70,7 @@ App.addChild('ReviewForm', _.extend({
 
   updateContribution: function(){
     var contribution_data = {
+      anonymous: this.$('#contribution_anonymous').is(':checked'),
       country_id: this.$('#contribution_country_id').val(),
       payer_name: this.$('#contribution_full_name').val(),
       payer_email: this.$('#contribution_email').val(),
