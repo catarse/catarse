@@ -5,11 +5,10 @@ window.init_redactor = function(){
   if (csrf_param !== undefined && csrf_token !== undefined) {
       params = csrf_param + "=" + encodeURIComponent(csrf_token);
   }
+
   $('.redactor').redactor({
+        formatting: ['p', 'blockquote', 'h1', 'h2', 'h3', 'h4'],
         lang: 'pt_br',
-        buttons: ['formatting', 'bold', 'italic',
-'unorderedlist', 'orderedlist', 'outdent', 'indent',
-'image', 'link', 'alignment', 'horizontalrule'],
         maxHeight: 800,
         minHeight: 300,
         convertVideoLinks: true,
