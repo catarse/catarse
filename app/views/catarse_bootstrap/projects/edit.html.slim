@@ -1,6 +1,7 @@
 - content_for :js do
-  = javascript_include_tag 'redactor.js'
-= javascript_include_tag "//www.google.com/jsapi", "chartkick"
+  = javascript_include_tag 'redactor', '//www.google.com/jsapi', 'chartkick'
+- content_for :stylesheets do
+  = stylesheet_link_tag 'redactor'
 = render 'shared/header'
 
 .project-dashboard-edit
