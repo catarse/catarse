@@ -1,5 +1,7 @@
 - content_for :js do
-  = javascript_include_tag 'redactor.js'
+  = javascript_include_tag 'redactor'
+- content_for :stylesheets do
+  = stylesheet_link_tag 'redactor'
 = render 'shared/header_big', overlayer: true
 
 .user-dashboard-edit
