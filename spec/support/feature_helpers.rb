@@ -1,4 +1,6 @@
 module FeatureHelpers
+  TIME_TO_SLEEP = 4
+  
   def login
     visit new_user_session_path
 
