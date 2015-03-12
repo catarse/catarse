@@ -22,8 +22,8 @@ class Project::StateValidator < ActiveModel::Validator
   end
 
   def in_analysis
-    @record.errors.add_on_blank([:about, :headline, :goal, :online_days, :budget])
-    %w(name about).each do |attribute|
+    @record.errors.add_on_blank([:about_html, :headline, :goal, :online_days, :budget])
+    %w(name about_html).each do |attribute|
       validate_presence_of_nested_attribute(user, attribute)
     end
     @record.errors.add_on_blank(:uploaded_image) unless @record.video_thumbnail.present?
