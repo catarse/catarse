@@ -19,7 +19,7 @@ App.addChild('UserEdit', _.extend({
     this.lookAnchors();
   },
 
-  toggleNotifications: function(){
+  toggleNotifications: function(event){
     event.preventDefault();
     this.$('#notifications-box').toggle();
   },

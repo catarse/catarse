@@ -8,9 +8,6 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :omniauthable
 
-  before_save -> {self.about = about.gsub(/^[^\S\n]+/, "") if about.present? }
-
-
   delegate  :display_name, :display_image, :short_name, :display_image_html,
     :medium_name, :display_credits, :display_total_of_contributions, :contributions_text,
     :twitter_link, :display_bank_account, :display_bank_account_owner, to: :decorator
