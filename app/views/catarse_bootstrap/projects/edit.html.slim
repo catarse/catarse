@@ -1,7 +1,8 @@
 - content_for :js do
-  = javascript_include_tag 'redactor', '//www.google.com/jsapi', 'chartkick'
+  = javascript_include_tag 'medium-editor'
 - content_for :stylesheets do
-  = stylesheet_link_tag 'redactor'
+  = stylesheet_link_tag 'medium-editor'
+  = stylesheet_link_tag 'medium-editor-insert-plugin'
 = render 'shared/header'
 
 .project-dashboard-edit
