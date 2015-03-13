@@ -67,7 +67,14 @@ App.views.DashboardRewards.addChild('RewardForm', _.extend({
 
   showInput: function(event) {
     var $target = this.$(event.currentTarget);
-    $target.parent().parent().parent().next('.reward_maximum_contributions').toggle();
+    var $max_field = $target.parent().parent().parent().next('.reward_maximum_contributions');
+    var $input = $('input', $max_field)
+
+    $max_field.toggle();
+
+    if(!$max_field.is(':visible')) {
+      $input.val('');
+    }
   },
 
   toggleExplanation: function(event) {
