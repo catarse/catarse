@@ -1,0 +1,20 @@
+---
+en:
+  shared:
+    feedback:
+      button: Give feedback
+      inputs:
+        submit: Send feedback
+        close: close
+      placeholders:
+        email: Email
+        text: Type your feedback
+      texts:
+        title: Give us the pleasure of his word !
+        content: In recent months we have been working day and night in a series of
+          changes in the platform, which are detailed in this post <a target='_blank'
+          href='http://blog.catarse.me/os-passos-para-um-novo-catarse/' class='link-underline'>
+          especial</a> .
+        response:
+          title: Wow!
+          content: We value every feedback received.

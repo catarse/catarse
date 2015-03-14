@@ -1,0 +1,58 @@
+---
+en:
+  simple_form:
+    collections:
+      project:
+        traffic_sources:
+          one: I 've had another project in Catharsis
+          two: indication of a person who has had a project in Catharsis
+          three: indication friend / colleague / professional contact
+          four: from a project that was picking up on the platform
+          five: article in a blog
+          six: a story in the press ( news portal on the internet, TV, newspaper,
+            magazine )
+          seven: in a class / course / lecture / event
+          eight: I did an internet search on collective funding / alternative forms
+            of funding
+          nine: other
+    validation_texts:
+      reward:
+        minimum_value: Enter a minimum value greater than or equal to 10
+        description: Enter a description for the reward
+      bank_account:
+        bank_id: Select a bank
+        agency: What is the agency's number?
+        account: What is the account number ?
+        account_digit: What is the check digit ?
+        owner_name: Enter a name with a minimum of 5 and a maximum of 30 letters
+        owner_document: Enter a CPF or CNPJ valid for the account holder
+      contribution:
+        payer_name: Please type the name of supporter
+        payer_email: Please enter a valid email address
+        payer_document: Please enter a valid CPF or CNPJ
+        address_state: Select a state
+        address_street: Enter the street name
+        address_number: Enter the address number
+        address_city: Enter the city name
+        address_zip_code: Enter the zip code
+        address_phone_number: Enter the phone number
+    prompts:
+      project:
+        category: Select a category
+        select: Select an option
+        traffic_sources: How did you meet Catharsis ?
+    hints:
+      project:
+        select: Select an option
+        traffic_sources: How did you meet Catharsis ?
+        name: Give a name that people will remember easily.
+        permalink: Prefer something simple, straightforward and well identify your
+          project.
+        category: Choose the most appropriate to your project.
+        goal: Plan a consistent goal with your project proposes .
+        online_days: You can choose between 1 and 60 days for your campaign .
+        video_url: Link your video on Vimeo or Youtube <br/> .
+        about_html: Contact with passion and clarity about what will be done .
+        headline: Phrase in the project card to call supporters.
+        uploaded_image: This image will be used as the thumbnail of your project (
+          PNG, JPG size 600 x 340 )

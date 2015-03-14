@@ -1,0 +1,97 @@
+---
+en:
+  admin:
+    menu: Channel moderation
+    followers_menu: followers
+    statistics_menu: statistics
+    profile_menu: edit Channel
+    partners_menu: Edit partners
+    statistics:
+      title: Channel statistics
+      total_subscribers: Total number of subscribers
+    confirmations:
+      destroy: Are you sure you want to delete ?
+    filter:
+      between_created_at: created between
+      by_id: by id
+      order_table: Sort table
+      pg_search: project
+      submit: filter
+      title: filter
+      user_name_contains: User
+      with_state: With state
+      by_payment_method: Method of payment
+    followers:
+      index:
+        download: download list
+        title: followers
+    management:
+      no_partners: No registered partner
+      no_posts: No registered novelty
+      title: management
+      total: projects totaling
+    partners:
+      back_to_list: "← Back to manage partners"
+      new:
+        add_partner: Adiconar partner
+      edit:
+        edit_title: Edit partner
+      form:
+        hint_image: Image size 370x320
+        save_submit: save
+      index:
+        new_button: Add Partner
+        table:
+          created_at: Created
+          image: image
+          name: name
+          url: Site
+          actions: actions
+        title: managing partners
+    posts:
+      back_to_list: "← Back to manage news"
+      new:
+        create_news: Create new
+      edit:
+        edit_news: Edit Novelty
+      index:
+        new_post_button: Create new
+        table:
+          actions: actions
+          created_at: Created
+          published_at: published in
+          title: Title novelty
+        title: Manage news
+      form:
+        save_submit: Save and Preview
+      update:
+        published_message: His news was published and mailed to channel followers
+          .
+      warning_html: Recalling that all published news goes directly to the email of
+        his followers.
+    posts_menu: Manage news
+    table:
+      approve: approve
+      category: category
+      confirmation: Are you sure you want to delete this project?
+      contributed_projects: supported projects
+      created_projects: created project
+      destroy_action: delete
+      edit_action: edit
+      expires_at: term
+      goal: where
+      name: title
+      online_date: publication
+      pledged: reached
+      publish_action: publish
+      recommended: recommend
+      reject: Turn Up One'S Nose At
+      send_to_draft: Send to draft
+      put_online: To air
+      send_to_trash: DELETE PROJECT
+      show_action: visualize
+      state: state
+      total_contributions: supports
+      unpublish_action: unpublish
+      user: User
+      user_id: User

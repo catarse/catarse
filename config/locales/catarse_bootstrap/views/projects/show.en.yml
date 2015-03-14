@@ -1,0 +1,100 @@
+---
+en:
+  projects:
+    metrics:
+      titles:
+        confirmed_by_day: Total daily confirmed support
+        confirmed_amount_by_day: Total contributions per day
+        address_state: Total support confirmed by State
+    reminder:
+      ok: Ok!
+      active_btn: Remember me this project
+      deactive_btn: Do not want to be remembered
+    send_to_analysis: Your project has been sent to our team.
+    send_to_analysis_error: Error sending project for analysis.
+    push_to_online: Your project is online!
+    push_to_online_error: Error while placing the online project.
+    twitter:
+      take_a_look: Check out the project %{name} in catarse
+    video_embed:
+      a_project_by_html: A %{link} project in
+    posts:
+      project_post:
+        unavailable: This novelty is only available to supporters.
+        contribute: Support
+        unavailable_contribute: this project to view it .
+        destroy: Remove Novelty
+        destroy_confirmation: Do you want to remove this news?
+      new:
+        notice: Successfully sent New!
+        comment: Text of your Novelty
+        exclusive: Visible only to supporters
+        submit: Send Novelty
+        title: Summary of Your New
+        warning: Recalling that all post new goes directly to the email of his supporters
+          .
+    project_reports:
+      all_contributions_without_reward: Download report of all supporters who did
+        not select a reward
+      link_reports_confirmed: Download report all confirmed supporters
+      link_reports_waiting_confirmation: Download report of all supporters with printed
+        ticket
+      link_reward: Download report of %{value} reward supporters
+    project_about:
+      embed: "< embed >"
+      embed_title: Embed this project on your site
+      active_btn: Remember me
+      deactive_btn: active reminder
+    show:
+      menu:
+        panel_html: ''
+        about: about
+        add_reward: Add reward
+        comments: reviews
+        contributions: supports
+        metrics: metrics
+        edit: edition
+        reports: reports
+        posts: news
+    project_main:
+      share: Share It
+      tweet: Tweet
+      contribute_project:
+        display_status:
+          approved: This project has been approved by Catharsis .
+          reached_goal: This project will be successful and funded %{date}
+          not_reached_goal: This project will only be funded if at least %{goal} are
+            achieved by %{date}
+          failed: This project did not reach the minimum %{goal} %{date} up and was
+            not funded
+          rejected: This project was not accepted.
+          in_analysis: This project is under review and is not yet open to receive
+            support .
+          successful: This project was successful and was funded in %{date}
+          waiting_funds: Awaiting confirmation slips to know if this project will
+            be funded .
+          draft: This design is just a draft and still can not receive support .
+        submit: Support this project
+      project_by: design by
+      funding_period: Campaign period
+      project_header:
+        subtitle_html: A %{link} project
+        without_city: A project
+        with_city: A %{category_name} project by %{author} %{city} in
+      menu:
+        about: about
+        add_reward: Add reward
+        comments: reviews
+        contributions: supports
+        metrics: metrics
+        edit: edition
+        reports: reports
+        posts: news
+      no_rewards_warning: Do not travel !
+      no_rewards_warning_title: Create here your rewards
+      contribution_states:
+        confirmed: confirmed
+        pending: pending
+      sidebar:
+        contributions: support
+        goal: attained %{total}

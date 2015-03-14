@@ -1,0 +1,28 @@
+---
+en:
+  projects:
+    new:
+      page-title: Start your project
+      faq:
+        titles:
+          support: holder
+          know_more: Learn more
+        links:
+          criteria: Selection Criteria
+          suport_central: Support Center
+          support_contact: Contact us
+          how_it_works: As the Catharsis work?
+          money: How will I get the money ?
+          selection: How are projects selected ?
+          all_or_nothing: Why All or Nothing ?
+      form:
+        blocks:
+          first:
+            title: You Welcome!
+            description: Complete the information below to start the draft of your
+              project.
+        info:
+          permalink: http://catarse.me/
+          goal: R$
+          online_days: days
+        submit: Save and Continue

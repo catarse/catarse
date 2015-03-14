@@ -1,13 +1,285 @@
+---
 en:
   activerecord:
+    models:
+      channel: channel
+      project: project
+      reward: reward
+      contribution: Sketchpad
+      category: category
+      bank_account: bank details
+    attributes:
+      project_account:
+        address_city: city
+        address_complement: complement
+        address_neighbourhood: neighborhood
+        address_number: number
+        address_state: state
+        address_street: address
+        address_zip_code: MOBILE
+        cpf: CPF / CNPJ
+        state_inscription: State Registration
+        email: Email
+        full_name: Full Name / Company Name
+        phone_number: phone
+        bank: Bank
+        bank_id: Bank
+        owner_name: Cardholder Name
+        owner_document: CPF / CNPJ of the holder
+        agency: agency
+        agency_digit: digit agency
+        account: Account No.
+        account_digit: digit account
+        account_type: Account type
+      bank_account:
+        bank: Bank
+        bank_id: Bank
+        owner_name: Cardholder Name
+        owner_document: CPF / CNPJ of the holder
+        agency: agency
+        agency_digit: digit agency
+        account: Account No.
+        account_digit: digit account
+      contribution:
+        payer_name: Full Name
+        payer_email: Email
+        payer_document: CPF or CNPJ
+        country: country
+        address_street: street
+        address_number: number
+        address_complement: complement
+        address_neighbourhood: neighborhood
+        address_state: state
+        address_city: city
+        address_zip_code: MOBILE
+        address_phone_number: phone
+        value: support value
+        reward: reward
+        project: project
+      reward:
+        deliver_at: Estimated delivery
+      project:
+        channels: channels
+        category: category
+        expires_at: time Frame
+        online_days: Deadline for collection
+        headline: Catchphrase
+        image_url: Image URL
+        name: Project Name
+        goal: Amount to be raised
+        about_html: Project Description
+        user_id: User ID
+        video_url: Video URL
+        permalink: Link your project
+        more_links: Tell links for people to know more about your project and its
+          history .
+        traffic_sources: How did you meet Catharsis ?
+        first_contributions: Who are the first people you will ask to support your
+          project?
+        budget: Project budget
+        uploaded_image: Design Image
+      user:
+        address_city: city
+        address_complement: complement
+        address_neighbourhood: neighborhood
+        address_number: number
+        address_state: state
+        address_street: address
+        address_zip_code: MOBILE
+        cpf: CPF / CNPJ
+        cpf_hint: "(?)"
+        state_inscription: State Registration
+        current_password: current Password
+        email: Email
+        full_name: Full Name / Company Name
+        bio: Mini Bio
+        name: nickname
+        newsletter: I want to receive news from Catharsis
+        password: password
+        password_confirmation: Password confirmation
+        phone_number: phone
+        cpf_hint_title: Invoice will be issued for this document
+        id: ID
+        moip_login: Login MoIP
+        moip_login_hint: "( How to create an account )"
+        reset_password_token: Link to recreate password
+      channel:
+        ga_code: Code Analytics
+        description: description
+        how_it_works: How it works
+        image: New image
+        name: name
+        video_url: video
+      channel_partner:
+        name: name
+        url: Site
+        image: image
+      project_post:
+        title: title
+        comment: text
+      channel_post:
+        title: title
+        body: content
+        visible: Post (Check if you want to publish this news )
     errors:
       models:
+        contribution: Error saving support
+        bank_account:
+          attributes:
+            bank:
+              blank: Bank can not be blank
+            owner_name:
+              blank: Holder's name can not be blank
+            owner_document:
+              blank: CPF / CNPJ holder can not be blank
+              invalid: CPF / CNPJ invalid
+            agency:
+              blank: Agency can not be blank
+              invalid: invalid Agency
+            account:
+              blank: Account No. can not be blank
+            account_digit:
+              blank: Account digit can not be blank
+              invalid: Digit Invalid agency
+        project_account:
+          attributes:
+            full_name:
+              blank: User company name can not be blank
+            email:
+              blank: User Email can not be blank
+            cpf:
+              blank: User CPF can not be blank
+            address_street:
+              blank: User address can not be blank
+            address_number:
+              blank: Number in the user's address can not be blank
+            address_city:
+              blank: User city can not be blank
+            address_state:
+              blank: User state can not be blank
+            address_zip_code:
+              blank: User CEP can not be blank
+            phone_number:
+              blank: User phone can not be blank
+            bank:
+              blank: User Bank can not be blank
+            agency:
+              blank: User Agency can not be blank
+            agency_digit:
+              blank: Digit user agency can not be blank
+            account:
+              blank: User Account Number can not be blank
+            account_digit:
+              blank: Digit user account can not be blank
+            owner_name:
+              blank: User holder's name can not be blank
+            owner_document:
+              blank: CPF / CNPJ of the user holder can not be blank
+              not_same: CPF / CNPJ of registration and completed bank details are
+                not equal.
+            account_type:
+              blank: Account type can not be blank
         project:
           attributes:
+            video_url:
+              blank: The video of the project can not be blank
+            budget:
+              blank: The project budget can not be blank
+            uploaded_image:
+              blank: This design can not be blank
+            name:
+              blank: The project name can not be blank
             permalink:
-              invalid: Invalid project URL
+              blank: The URL of the project can not be blank
+              invalid: The URL of the design is invalid
+              taken: This project URL already exists
+            category:
+              blank: You must choose a category for your project
+            goal:
+              blank: The value of the goal can not be blank
+              greater_than: The goal must be greater than 9
+              not_a_number: Collection target only accepts numbers
+            online_days:
+              blank: The period of storage can not be blank
+              greater_than: The deadline for collection must be greater than 0 days
+              not_a_number: The deadline for collection should be a number of days
+            about_html:
+              blank: The project description can not be blank
+            headline:
+              blank: The catchphrase of the project can not be blank
+              too_long: The catch phrase is too long.
         user:
           attributes:
             email:
-              not_found: "Email not found, please sign up"
-              taken: "Email has already been taken"
+              not_found: The email is not registered , check the address or register
+                yourself
+              taken: The email is already registered , login
+              invalid: This email address is invalid
+              blank: Email can not be blank
+            password:
+              too_short: The password you chose is too short
+              confirmation: The password and the password confirmation met are not
+                equal
+              blank: The password can not be blank
+            current_password:
+              invalid: Current password is not valid
+            reset_password_token:
+              invalid: Token expired .
+            name:
+              blank: User name can not be blank
+            about:
+              blank: About you can not be blank
+            uploaded_image:
+              blank: User image can not be blank
+  project:
+    update:
+      success: The information has been updated
+      failed: The information was not saved , verify that all fields are filled in
+        correctly
+    delete:
+      posts: Deleted successfully Novelty
+    video_regex_validation: Youtube or Vimeo only URLs are accepted
+  contribution:
+    project_should_be_online: You can not support a project that is not in the air
+    reward_must_be_from_project: must be of the same design
+    should_not_contribute_if_maximum_contributions_been_reached: has reached its maximum
+      number of supporters
+    value_must_be_at_least_rewards_value: "%{minimum_value} should be at least for
+      the selected reward"
+  contribution_report_to_project_owner:
+    reward_description: Reward description
+    deliver_at: Delivery date of the reward
+    confirmed_at: Payment confirmation date
+    contribution_value: Support amount
+    service_fee: Catharsis rate
+    user_full_name: Full name of the supporter
+    user_name: Last name supporter
+    user_email: Email profile Catharsis
+    cpf: Cpf the supporter
+    payer_email: Email the means of payment
+    payment_method: Method of payment
+    street: street
+    address_number: number
+    complement: complement
+    neighbourhood: neighborhood
+    city: city
+    address_state: state
+    zip_code: MOBILE
+    anonymous: anonymous
+  user:
+    no_name: nameless
+    contributions_text:
+      many: Supported this and more other projects %{total}
+      one: Only supported this project so far
+      two: Supported this and 1 other project
+  channels_subscribers:
+    created: Now you follow the %{channel}
+    deleted: You failed to follow the %{channel}
+  channels:
+    edit: Update Channel
+    image_hint: Maximum size ( 600x121px )
+    subscribed: "%{count} following the channel"
+    back_to_news: "← Back to news"
+    follow: Follow the channel
+    following: Following
+    unfollow: Unfollow

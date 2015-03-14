@@ -1,0 +1,27 @@
+---
+en:
+  shared:
+    load_more: load more
+    terms: terms of use
+    accept_terms_html: I have read and I agree with 4,221,973,277,869,775 .
+    header_channel:
+      contact: contact
+      logout: Sign Out
+      my_credits: my credits
+      partners: partners
+      posts: news
+      profile: my profile
+      signin: Login
+      signup: Register
+      submit: Send project
+      how_work: How it works
+    footer_channel:
+      contact: contact
+      how_works: How it works
+      privacy_policy: Privacy Policy
+      terms: Terms of use
+      what_is_channel: What are channels ?
+      how_it_works: How does %{name}
+      how_channels_work: Understand the Channels in Catharsis
+    header_big:
+      projects: my Projects
