@@ -140,6 +140,9 @@ p {
   padding-top: 48px;
   padding-bottom: 176px;
 }
+.section.loadmore {
+  margin-top: -80px;
+}
 .bootstrap-color-swatch {
   position: static;
   width: 70%;
@@ -2232,13 +2235,14 @@ p {
 .btn-terciary {
   border-style: solid;
   border-width: 1px;
-  border-color: rgba(121, 128, 139, 0.27);
+  border-color: rgba(121, 128, 139, 0.78);
   background-color: transparent;
   color: #79808b;
 }
 .btn-terciary:hover {
-  border-color: rgba(121, 128, 139, 0.38);
+  border-color: #79808b;
   background-color: white;
+  color: #3f4752;
 }
 .btn-no-border {
   border: 1px solid transparent;
