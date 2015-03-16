@@ -1,5 +1,12 @@
 pt:
   users:
+    contribution_row:
+      contributed_projects: "Projetos que apoiei"
+      contribution_value: "Valor do apoio"
+      contribution_status: "Status do apoio"
+      reward: Recompensa
+      no_reward: "Não selecionou recompensa"
+      delivery_estimate: "Estimativa de entrega:"
     card:
       twitter_profile: "Perfil no Twitter"
       facebook_profile: "Perfil no Facebook"
