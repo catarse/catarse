@@ -1,4 +1,4 @@
-- disable_edit = !@project.can_update_account?
+- disable_edit = !policy(@project).update_account?
 .u-text-center
   .w-container
     .w-row
