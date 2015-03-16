@@ -18,6 +18,11 @@ class ProjectPolicy < ApplicationPolicy
     create?
   end
 
+  def update_account?
+    record.account.invalid? || 
+      ['online', 'waiting_funds', 'successful', 'failed'].exclude?(record.state) || is_admin?
+  end
+
   def send_to_analysis?
     create?
   end
