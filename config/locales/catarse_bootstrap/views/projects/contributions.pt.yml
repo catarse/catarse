@@ -19,6 +19,10 @@ pt:
         reward: 'Recompensa selecionada'
         edit: 'Editar'
       edit:
+        review_title: 'Preencha e revise os dados para pagamento'
+        review_subtitle: 'Esses dados serão informados ao realizador do projeto'
+        delivery_address: 'Endereço de entrega'
+        next_step: 'Próximo passo'
         payment_slip_disclaimer: "Caso o projeto não seja bem-sucedido, nós faremos o reembolso do seu apoio. Os dados bancários informados aqui serão usados para isso."
         review_errors_title: "Verifique os dados informados"
         review_errors: "Alguma informação está faltando ou não foi informada corretamente, corrija todos os campos marcados em vermelho e tesnte novamente"
@@ -83,6 +87,14 @@ pt:
         Credits: 'Créditos'
         error: Ooops. Ocorreu um erro ao registrar seu apoio. Por favor, tente novamente.
       show:
+        follow: 'Seguir'
+        follow_category: 'Curte a categoria %{category}? Você pode receber em primeira mão e diretamente no seu email quando novos projetos entrarem no ar!'
+        project_recommendations: 'Recomendações de projetos para você'
+        share: Compartilhe
+        tweet: Tuíte
+        thank_you: 'Valeu!'
+        profile_link: 'através do seu perfil'
+        thank_you_text_html: 'Você faz parte do grupo de %{total} pessoas que querem tirar o %{link1} do papel! Você receberá a confirmação do pagamento por email assim que ele for processado. Você também pode acompanhar o status do seu apoio %{link2}. Compartilhe o seu apoio e aumente as chances do projeto bater a meta!'
         header_subtitle: Sem você talvez este projeto não tivesse uma chance. Bem-vindo
           ao time!
         header_title: Muito obrigado! :D
