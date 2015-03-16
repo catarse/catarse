@@ -18,9 +18,7 @@
           - if disable_edit
             .card.u-radius.card-message.u-marginbottom-20
               .fontsize-small
-                ' Os dados abaixo foram informados por você no momento da publicação de seu projeto. Para evitar erros no repasse de recursos, a edição destes dados foi bloqueada assim que seu projeto entrou no ar. Caso você queira alterá-los, é só
-                => link_to 'entrar em contato conosco'," #{CatarseSettings[:zendesk_url]}/account/dropboxes/#{CatarseSettings[:zendesk_dropbox_id]}", class: 'alt-link zendesk_widget'
-                | informando as mudanças que deseja fazer.
+                = t('.account_edit_disabled_html', link: (link_to 'entrar em contato conosco'," #{CatarseSettings[:zendesk_url]}/account/dropboxes/#{CatarseSettings[:zendesk_dropbox_id]}", class: 'alt-link zendesk_widget' ))
           .w-form.card.card-terciary
             #email-form
               .fontsize-base.fontweight-semibold= t('.user_data_title') 

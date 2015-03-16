@@ -1,5 +1,12 @@
 pt:
   projects:
+    about_mobile:
+      by: 'por'
+      back: '< Voltar'
+    project_embed:
+      insert: 'Insira um widget em seu site'
+    mobile_video:
+      read_more: "Leia mais"
     metrics:
       titles:
         confirmed_by_day: 'Total de apoios confirmados por dia'
@@ -56,6 +63,7 @@ pt:
         reports: Relatórios
         posts: Novidades
     project_main:
+      send_post: 'Escrever novidade'
       share: "Compartilhe"
       tweet: "Tweet"
       contribute_project:

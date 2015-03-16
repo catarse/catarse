@@ -30,6 +30,7 @@ pt:
        user_data_subtitle_html: "Precisamos dos dados abaixo para emissão de Nota Fiscais para projetos bem sucedidos. <b>ATENÇÃO: O CPF/CNPJ listado nos dados cadastrais e dados bancários precisa ser o mesmo.</b>"
        account_title: "Dados bancários"
        account_subtitle_html: "Precisamos dos dados abaixo para efetuar a transferência financeira para projetos bem sucedidos. <b>ATENÇÃO: O CPF/CNPJ listado nos dados cadastrais e dados bancários precisa ser o mesmo.</b>"
+       account_edit_disabled_html: "Os dados abaixo foram informados por você no momento da publicação de seu projeto. Para evitar erros no repasse de recursos, a edição destes dados foi bloqueada assim que seu projeto entrou no ar. Caso você queira alterá-los, é só %{link} informando as mudanças que deseja fazer."
        submit: "Salvar"
     dashboard_home_templates:
       status: "Status:"
@@ -117,6 +118,7 @@ pt:
       name_label: "Nome"
       name_hint: "Seu nome público, visível para todos como autor do projeto."
     dashboard_reward:
+      submit: "Salvar"
       title: "Crie e edite aqui suas recompensas"
       add_reward: "Adicionar recompensa"
       subtitle: "Essa é sua demonstração de gratidão com os apoiadores. Lembre-se de incluir os custos das recompensas no seu orçamento. Prometeu, ENTREGUE! "

@@ -12,8 +12,8 @@
           = form.input :id, as: :hidden, label: false
           = form.input :project_id, as: :hidden, label: false
           .u-marginbottom-30.u-text-center-small-only
-            .fontsize-large.fontweight-semibold.lineheight-tight.text-success-small-only Preencha e revise os dados para pagamento
-            .w-hidden-tiny.fontsize-small Esses dados serão informados ao realizador do projeto
+            .fontsize-large.fontweight-semibold.lineheight-tight.text-success-small-only= t('.review_title') 
+            .w-hidden-tiny.fontsize-small= t('.review_subtitle')
           #error-message.card.card-error.u-radius.zindex-10.u-marginbottom-30.w-hidden
             .fontsize-smaller.fontweight-bold.u-marginbottom-10= t('.review_errors_title')
             .fontsize-smaller = t('.review_errors')
@@ -35,7 +35,7 @@
                   .fontweight-bold = t('.anonymous_confirmation_title')
                   = t('.anonymous_confirmation')
           .formwrapper
-            .fontsize-base.fontweight-semibold.fontcolor-secondary.u-marginbottom-20 Endereço de entrega
+            .fontsize-base.fontweight-semibold.fontcolor-secondary.u-marginbottom-20= t('.delivery_address') 
             .w-form
               .w-row
                 = form.association :country, as: :select, wrapper_html: {class: 'w-col w-col-6 w-sub-col'}, input_html: {class: 'w-select', required: true}, required: true
@@ -52,7 +52,7 @@
                 = form.input :address_phone_number, as: :tel, wrapper_html: {class: 'w-col w-col-small-6 w-col-tiny-6 w-col-3'}, input_html: {data: {required_in_brazil: true, fixed_mask: '(99) 9999-99999'}}, validation_text: true
           .w-row.u-marginbottom-40
             .w-col.w-col-push-3.w-col-6
-              a#next-step.btn.btn-large href="#payment-engines" Próximo passo
+              a#next-step.btn.btn-large href="#payment-engines"= t('.next_step') 
         #payment-engines.w-hidden
           .u-marginbottom-30.u-text-center-small-only
             .fontsize-large.fontweight-semibold.text-success-small-only= t('.choose_payment')
