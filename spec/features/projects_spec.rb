@@ -28,9 +28,13 @@ RSpec.describe "Projects", type: :feature do
   end
 
   describe "explore" do
+    let(:category_1) { create(:category) }
+    let(:category_2) { create(:category) }
+
     before do
-      11.times{ create(:project, name: 'Foo', state: 'online', online_days: 30, recommended: true) }
-      create(:project, name: 'Lorem', state: 'online', online_days: 30, recommended: false)
+      5.times{ create(:project, name: 'Foo', category: category_1, state: 'online', online_days: 30, recommended: true) }
+      6.times{ create(:project, name: 'Bar', category: category_2, state: 'online', online_days: 30, recommended: true) }
+      create(:project, category: category_2, name: 'Lorem', state: 'online', online_days: 30, recommended: false)
       visit explore_path(locale: :pt)
       sleep FeatureHelpers::TIME_TO_SLEEP
     end
@@ -46,6 +50,13 @@ RSpec.describe "Projects", type: :feature do
       results = all(".results .card-project")
       expect(results.size).to eq(11)
       expect(page.evaluate_script('$("#load-more:visible").length')).to eq(0)
+    end
+
+    it "should load 5 projects from specific category when clicking on its filter" do
+      find(:css, "a[data-categoryid=\"1\"]").click
+      sleep FeatureHelpers::TIME_TO_SLEEP
+      results = all(".results .card-project")
+      expect(results.size).to eq(5)
     end
   end
 
@@ -74,14 +85,14 @@ RSpec.describe "Projects", type: :feature do
       expect(page.evaluate_script('$("#load-more:visible").length')).to eq(0)
     end
 
-    it "should show 3 posts when clicking on the posts tab" do
+    it "should show 3 project news posts when clicking on the posts tab" do
       click_on("posts_link")
       sleep FeatureHelpers::TIME_TO_SLEEP
       posts = all(".posts .project-news")
       expect(posts.size).to eq(3)
     end
 
-    it "should load 3 more contributions after click load more and then hide it" do
+    it "should load 3 more project news posts after click load more and then hide it" do
       click_on("posts_link")
       sleep FeatureHelpers::TIME_TO_SLEEP
       click_on("load-more")
