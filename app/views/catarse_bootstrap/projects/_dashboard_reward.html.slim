@@ -23,7 +23,7 @@
               = link_to_add_association "+ #{t('.add_reward')}", f, :rewards, :'data-association-insertion-node' => '#rewards', :'data-association-insertion-method' => :append, class: 'btn btn-large btn-message show_reward_form new_reward_button'
 
             .w-col.w-col-4.w-col-push-4.u-margintop-40
-              = f.button :submit, 'Salvar',  class:'btn btn-large'
+              = f.button :submit, t('.submit'),  class:'btn btn-large'
 
         .w-col.w-col-4.w-hidden-small.w-hidden-tiny    
           a.w-inline-block.card.u-radius.card-guide href="https://www.catarse.me/guides#rewards" target="_blank"

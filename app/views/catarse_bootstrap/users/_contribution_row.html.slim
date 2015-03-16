@@ -1,12 +1,12 @@
 .w-row.w-hidden-small.w-hidden-tiny.card.card-secondary
   .w-col.w-col-3
-    .fontsize-small.fontweight-semibold Projetos que apoiei
+    .fontsize-small.fontweight-semibold= t('.contributed_projects') 
   .w-col.w-col-2
-    .fontsize-small.fontweight-semibold Valor do apoio
+    .fontsize-small.fontweight-semibold= t('.contribution_value') 
   .w-col.w-col-3
-    .fontsize-small.fontweight-semibold Status do apoio
+    .fontsize-small.fontweight-semibold= t('.contribution_status') 
   .w-col.w-col-4
-    .fontsize-small.fontweight-semibold Recompensa
+    .fontsize-small.fontweight-semibold= t('.reward') 
 
 - collection.each do |contribution|
   - project = contribution.project
@@ -43,8 +43,8 @@
         - if contribution.reward
           = contribution.reward.display_description
         - else
-          |Não selecionou recompensa
+          = t('.no_reward')
       - if contribution.reward.try(:display_deliver_estimate).present?
         .fontsize-smallest.lineheight-looser
-          span.fontweight-semibold Estimativa de entrega:
+          span.fontweight-semibold= t('.delivery_estimate') 
           =< contribution.reward.try(:display_deliver_estimate)

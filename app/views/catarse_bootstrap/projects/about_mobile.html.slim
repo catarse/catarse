@@ -5,15 +5,15 @@
   .w-container
     .fontsize-larger.fontweight-semibold.project-name = @project.name
     .fontsize-base
-      | por&nbsp;
+      => t('.by')
       a.link-hidden = @project.user.name
 .section-one-column
   .w-container.fontsize-base.fontweight-semibold.u-marginbottom-20
     a.alt-link href=project_path(@project)
-      strong &lt; Voltar
+      strong = t('.back')
   .w-container
     = @project.about_html.html_safe
   .w-container.fontsize-base.fontweight-semibold
     a.alt-link href=project_path(@project)
-      strong &lt; Voltar
+      strong= t('.back')
 = render 'shared/footer_big'

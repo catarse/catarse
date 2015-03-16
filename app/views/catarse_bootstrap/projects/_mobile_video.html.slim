@@ -6,7 +6,7 @@
 .w-hidden-main.w-hidden-medium.project-about-highlight
   .w-container
     p.w-hidden-main.w-hidden-medium.fontsize-small = @project.headline
-    = link_to "Leia mais", about_mobile_project_path(@project), class: "alt-link fontsize-small"
+    = link_to t('.read_more'), about_mobile_project_path(@project), class: "alt-link fontsize-small"
 .w-container.w-hidden-main.w-hidden-medium.project-stats
   .w-row.w-hidden-main.w-hidden-medium
     .w-col.w-col-3.w-col-small-3.w-col-tiny-3.fontweight-semibold
