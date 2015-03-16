@@ -1,0 +1,33 @@
+---
+en:
+  layouts:
+    footer:
+      links:
+        jobs: Work with us
+        blog: Blog
+        contact: contact
+        press: press
+        discover: Explore projects
+        start: How it works
+        expiring: In the final stretch
+        facebook: Facebook
+        faq: help
+        guides: Guide of Directors
+        feedback: Feedback
+        github: Github
+        instagram: Instagram
+        near: Near Me
+        privacy: Privacy Policy
+        recents: recent
+        recommended: recommended
+        submit: Start your project
+        terms: Terms of use
+        twitter: Twitter
+      texts:
+        copyleft: Made with love.
+      titles:
+        about: help
+        contact: You welcome
+        newsletter: Subscribe to our news
+        sitemap: Browse
+        social: social networks

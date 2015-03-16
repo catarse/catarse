@@ -1,0 +1,26 @@
+---
+en:
+  rewards:
+    form:
+      edit: edit reward
+      reward: reward
+      info_box: You can limit the amount available for a reward .
+      minimum_value: 'Bid :'
+      deliver_at: 'Estimated delivery :'
+      description: 'description :'
+      limit_reward: limit reward
+      available: Quantity Available
+      submit: save
+    index:
+      select_reward: Select this reward
+      display_remaining: "%{remaining} of %{maximum} available"
+      dont_want: I do not want reward
+      limited: limited
+      sold_out: exhausted
+      contributions_to_confirm:
+        one: 1 support in term of confirmation.
+        other: "%{count} support in term of confirmation."
+      edit_reward: edit reward
+      new_reward: Sign reward
+      reward_deliver_time: "<b>Estimativa delivery: </b> %{estimate}"
+      reward_title: For %{minimum} or more

@@ -33,6 +33,14 @@ GIT
       httparty (~> 0.6.1)
       nokogiri (>= 1.5.0)
 
+GIT
+  remote: https://github.com/kulakajak/yml_gtranslate.git
+  revision: 5915fb04edc3e2ce63ca51a709e9b3053101bda9
+  specs:
+    yml_gtranslate (0.0.5)
+      json
+      ya2yaml
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -383,22 +391,12 @@ GEM
     pagarme (1.9.9)
       multi_json
       rest-client
-    pg (0.17.1)
-    pg_search (0.7.9)
-      activerecord (>= 3.1)
-      activesupport (>= 3.1)
-      arel
     phantomjs (1.9.8.0)
     poltergeist (1.6.0)
       capybara (~> 2.1)
       cliver (~> 0.3.1)
       multi_json (~> 1.0)
       websocket-driver (>= 0.2.0)
-    postgres-copy (0.9.0)
-      activerecord (>= 4.0)
-      pg (>= 0.17)
-      rails (>= 4.0)
-      responders
     protected_attributes (1.0.8)
       activemodel (>= 4.0.1, < 5.0)
     pry (0.10.1)
@@ -451,7 +449,6 @@ GEM
       mime-types (>= 1.16, < 3.0)
       netrc (~> 0.7)
     rinku (1.5.1)
-    rmagick (2.13.4)
     routing-filter (0.4.0.1)
       actionpack (< 4.2)
     rspec-collection_matchers (1.1.2)
@@ -578,6 +575,7 @@ GEM
     weekdays (1.0.2)
     xpath (2.0.0)
       nokogiri (~> 1.3)
+    ya2yaml (0.31)
 
 PLATFORMS
   ruby
@@ -635,10 +633,7 @@ DEPENDENCIES
   omniauth
   omniauth-facebook (= 1.4.0)
   omniauth-twitter
-  pg (= 0.17.1)
-  pg_search
   poltergeist
-  postgres-copy
   protected_attributes (~> 1.0.5)
   pry
   pundit
@@ -647,7 +642,6 @@ DEPENDENCIES
   rails_12factor
   ranked-model
   redactor-rails
-  rmagick
   routing-filter (~> 0.4.0.pre)
   rspec-collection_matchers
   rspec-its
@@ -670,3 +664,4 @@ DEPENDENCIES
   user_notifier (~> 0.0.5)
   video_info (>= 1.1.1)
   weekdays
+  yml_gtranslate!

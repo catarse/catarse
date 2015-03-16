@@ -1,0 +1,182 @@
+---
+en:
+  projects:
+    reward_fields:
+      edit: edit reward
+      reward: reward
+      info_box: Describe the value of the reward and put a real delivery date forecast
+        for the supporters.
+      minimum_value: 'value:'
+      deliver_at: 'Estimated delivery :'
+      description: 'description :'
+      limit_reward: limit reward
+      available: Quantity Available
+      submit: save
+      index:
+        select_reward: Select this reward
+        display_remaining: "%{remaining} of %{maximum} available"
+        dont_want: I do not want reward
+        limited: limited
+        sold_out: exhausted
+        contributions_to_confirm:
+          one: 1 support in term of confirmation.
+          other: "%{count} support in term of confirmation."
+        edit_reward: edit reward
+        new_reward: Sign reward
+        reward_deliver_time: "<b>Estimativa delivery: </b> %{estimate}"
+        reward_title: For %{minimum} or more
+    dashboard_user_settings:
+      title: Registration and banking data
+      subtitle_html: With the form below complete, your project will be ready to air
+        .
+      user_data_title: Registration data and address
+      user_data_subtitle_html: We need the data below for the issuance of Tax Notes
+        for successful projects .
+      account_title: bank details
+      account_subtitle_html: We need the data below to make a financial transfer for
+        successful projects .
+      submit: save
+    dashboard_home_templates:
+      status: 'Status:'
+      project_numbers:
+        financed: funded
+        backed: raised
+        contributions: support
+        left: remaining
+      waiting_funds:
+        title: "%{name} , we are processing the final payments ."
+        subtitle_html: His project was completed in %{expires} and is awaiting confirmation
+          slips and payments.
+        header: From here your project can hit the target or not.
+        success: 'A meta a :'
+        failed: 'Do not hit the target :'
+        good_luck: Good luck!
+      successful:
+        title: "%{name} , celebrate you deserve!"
+        subtitle_html: His project was successful and now is the time to start working
+          relationship with their supporters !
+        header1: 'And do not forget : Transparency is everything.'
+        transparent_html: Keep informed supporter is to maintain a happy supporter
+          .
+        header2: 'Be sure to read :'
+      rejected:
+        title: "%{name} unfortunately was not this time ."
+        subtitle_html: You sent your project for analysis of Catharsis and we understand
+          that it is not according to the site profile .
+      online:
+        title: "%{name} , your campaign is in the air !"
+        subtitle_html: Your project is in the air and your campaign will end on the
+          day 23hs59min59s %{date}. Until that day and time you may receive support.
+        explanation_html: "<div class='fontsize-base u-marginbottom-40 card card-terciary'>
+          5649055932002297 With the project in the air, some information may no longer
+          be edited 9949297347925863 412185795903123 You can no longer change : 008915272536949903
+          - your target capture ; 8618905924239304 - the deadline ; 28107361363513184
+          - the URL of the project; <br> - the user owner"
+      failed:
+        title: "%{name} , do not be discouraged !"
+        subtitle_html: Your project does not hit the target and we know that this
+          is not the best of feelings .
+        questions: We also send an email to you with two short questions .
+      draft:
+        title: "%{name} , build your project !"
+        subtitle: The more careful and well formatted for a project , the greater
+          the chances of it being successful in your fundraising campaign.
+        study_title: Felt need to study more to build your project?
+      approved:
+        title: "%{name} , your project has been approved!"
+        subtitle_html: To place your project in the air is only requires you to fill
+          in the required data in tab %{link1}. is important to know that we charge
+          the rate of 13% of the total amount collected only for successful projects
+          .
+      in_analysis:
+        title: "%{name} , you sent your project for analysis and receive our response
+          within 4 working days"
+        subtitle_html: Thank you very much!
+    edit:
+      leave_link_html: ''
+      start_tab: Begin
+      basics_tab: basic
+      project_tab: project
+      posts_tab: news
+      rewards_tab: rewards
+      about_you_tab: about you
+      reports_tab: reports
+      account_tab: account
+      preview_tab: Preview
+      send: send
+      publish: publish
+    dashboard_user_about:
+      submit: save
+      title: Tell us more about you!
+      subtitle: Supporters want to learn more about the project directors.
+      twitter_label: Twitter profile
+      twitter_hint: Paste the link to your profile
+      other_link_label: Presence on the Internet
+      other_link_hint: Include links to help supporters to understand why you are
+        the right person to do this project .
+      about_label: about you
+      about_hint: Use this space if you want to better describe you, your company
+        or your institution .
+      facebook_link_label: Facebook profile
+      facebook_link_hint: Paste the link to your profile
+      uploaded_image_label: Profile image
+      uploaded_image_hint: This image will be used as the thumbnail of your profile
+        ( PNG, JPG ideal size 280 x 280 )
+      name_label: name
+      name_hint: Your public name , visible to all as a project of the author .
+    dashboard_reward:
+      title: Create and edit your rewards here
+      add_reward: Add reward
+      subtitle: This is your show of gratitude to the supporters.
+      reward: reward
+    dashboard_preview:
+      header_subtitle: It's time for feedback !
+      header_text: Share the link below with your friends and enjoy the moment to
+        make fine adjustments to help in your campaign.
+    dashboard_posts:
+      title: Write a novelty
+      only_to_backers: I want this novelty is only visible to supporters.
+      publish: post new
+      discard: discard
+      warning: All published news is sent directly to their supporters by email.
+      old_posts: old news
+    dashboard_project:
+      budgets_hint_html: Enter a list of the main items of the budget.
+      budget_hint_html: How your funds are used?
+      budget_label: Project budget
+      budgets_label: Details of the budget
+      start: Tell the story of your project !
+      start_subtitle: Think in the project narrative.
+      video_url: Video URL
+      video_url_hint: Link your video on Vimeo or Youtube .
+      about: Project Description
+      links_title: useful links
+      about_hint_html: Contact with passion and clarity about what will be done .
+      card: Card design
+      card_subtitle: You know that project cardzinho that appears on the home and
+        search ?
+      image: Design Image
+      image_hint: This image will be used as the thumbnail of your project ( PNG,
+        JPG size 600 x 340 )
+      headline: Project call
+      headline_hint: Will be used in the project card , along with the above picture
+        ( thumbnail) .
+      submit: save
+    dashboard_basics:
+      project_start: Fill out the information below
+      project_start_subtitle: The data reported in this section may not be modified
+        when the project goes live .
+      online_date: Data entry no ar
+      user_id: User ID
+      name: Project Name
+      name_label: The more direct the better.
+      url: URL design
+      url_label: It is the address of your project should be easy to remember .
+      category: category
+      category_label: Explore and inspire other projects in the same category as yours.
+      online_days: Deadline for collection
+      online_days_label: You can choose between 1 and 60 days for your campaign .
+      value: Amount to be raised
+      value_secondary: Plan a consistent goal with your project proposes .
+      form:
+        submit: save

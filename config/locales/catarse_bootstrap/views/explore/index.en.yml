@@ -1,0 +1,22 @@
+---
+en:
+  explore:
+    index:
+      success_follow: Now you follow the category and will receive weekly a list of
+        new projects %{name}
+      success_unfollow: You failed to follow this category %{name}
+      follow: follow
+      unfollow: Unfollow
+      following: followers
+      categories: Categories
+      expiring: In the final stretch
+      in_funding: from to
+      near: Near Me
+      quick_explore: qUICK SEARCH
+      recent: recent
+      recommended: recommended
+      subtitle: Explore the projects , find those that touch your heart and make it
+        happen !
+      successful: Successful
+      title: Find amazing projects
+    title: Explore the projects

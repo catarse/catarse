@@ -1,0 +1,51 @@
+---
+en:
+  projects:
+    index_header:
+      subtitle: Finance projects collaboratively and become part of something bigger
+        .
+      title: Make it happen in the projects that you believe
+    index:
+      title: catharsis
+      back_a_project: Support a project
+      banner_title: Take paper designs !
+      see_all: View all
+      near_you: Near you
+      recents: recent
+      blog: Blog Catharsis
+      expiring: In the final stretch
+      recommended: recommended
+      banner_subtitle: Music, comics , cinema, social impact , technology and more.
+      box:
+        by: by
+        when: in
+      banner: Check out the search
+      explore: Explore projects
+      links:
+        channels: Discover the Canal Wings
+        recommended: Discover projects recommended
+        expiring: Discover projects down the stretch
+        recents: Discover recent projects
+        near: Discover projects near you
+      sidebar:
+        titles:
+          blog: blog
+          facebook: already likes our face ?
+          newsletter: Subscribe to our news
+          faq: "'re in doubt ?"
+          schedule: agenda
+        placeholders:
+          email: Enter your email address
+        buttons:
+          newsletter: send
+      sections:
+        near:
+          title: Near Me
+        recommended:
+          title: recommended
+        expiring:
+          title: In the final stretch
+        recents:
+          title: recent
+        channels:
+          title: Basic Canal
