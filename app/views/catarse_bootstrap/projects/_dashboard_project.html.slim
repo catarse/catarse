@@ -24,8 +24,9 @@
 
               = form.input :about_html, as: :text, 
                 wrapper: :one_col,
+                label_wrapper_html: { class: 'u-marginbottom-30' },
                 wrapper_class: 'w-row u-marginbottom-30 card card-terciary',
-                input_html: { class: 'redactor positive', required: true },
+                input_html: { class: 'editable', required: true },
                 validation_text: false
 
 
@@ -36,7 +37,7 @@
                   wrapper_class: '',
                   label_wrapper_html: { class: 'w-col w-col-12' },
                   text_field_wrapper_html: { class: 'w-col w-col-12' },
-                  input_html: { class: 'redactor positive', required: false, rows: 6 },
+                  input_html: { class: 'editable', required: false, rows: 6 },
                   validation_text: false
 
                 /label.field-label.fontweight-semibold= t('.budgets_label') 
