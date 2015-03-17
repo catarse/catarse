@@ -65,6 +65,8 @@ App.addChild('Explore', _.extend({
   },
 
   followRoute: function(route, name, params){
+    this.filter = {page: 1};
+
     if(params.length > 0){
       this.filter[name] = params[0];
     }
@@ -74,8 +76,6 @@ App.addChild('Explore', _.extend({
     
     this.$('.results').empty();
     
-    this.filter.page = 1;
-
     this.fetchPage();
     
     if(this.parent && this.parent.$search.length > 0){
