@@ -22,11 +22,11 @@ RSpec.describe "Users", type: :feature do
 
     def toggle_subscription state
       # Had to use JS here, capybara was triggering some bizarre errors
-      expect(page.evaluate_script('$("#subscribed").is(":checked")')).to eq !state
-      page.execute_script "$('#subscribed').prop('checked', #{state})"
+      expect(page.evaluate_script('$("#user_subscribed_to_project_posts").is(":checked")')).to eq !state
+      page.execute_script "$('#user_subscribed_to_project_posts').prop('checked', #{state})"
       page.execute_script "$('#save').click()"
       sleep FeatureHelpers::TIME_TO_SLEEP
-      expect(page.evaluate_script('$("#subscribed").is(":checked")')).to eq state
+      expect(page.evaluate_script('$("#user_subscribed_to_project_posts").is(":checked")')).to eq state
     end
 
     before do
@@ -37,7 +37,7 @@ RSpec.describe "Users", type: :feature do
     end
 
     context "when user is unsubscribed" do
-      let(:set_initial_unsubscribe_state){ current_user.unsubscribes.create!(project_id: nil) }
+      let(:set_initial_unsubscribe_state){ current_user.update_attributes subscribed_to_project_posts: false }
       it "should check the checkbox and add a record to unsubscribes with project_id null" do
         toggle_subscription true
       end
