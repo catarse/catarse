@@ -5,7 +5,8 @@ javascript:
       appId      : '#{CatarseSettings['facebook_app_id']}', // App ID
       status     : true, // check login status
       cookie     : true, // enable cookies to allow the server to access the session
-      xfbml      : true  // parse XFBML
+      xfbml      : true,  // parse XFBML
+      version    : 'v2.0'
     });
 
   };
@@ -15,6 +16,6 @@ javascript:
      var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
      if (d.getElementById(id)) {return;}
      js = d.createElement('script'); js.id = id; js.async = true;
-     js.src = "//connect.facebook.net/#{t('facebook_locale')}/all.js";
+     js.src = "//connect.facebook.net/#{t('facebook_locale')}/sdk.js";
      ref.parentNode.insertBefore(js, ref);
    }(document));
