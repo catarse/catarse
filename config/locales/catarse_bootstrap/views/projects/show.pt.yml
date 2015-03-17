@@ -64,6 +64,7 @@ pt:
         reports: Relatórios
         posts: Novidades
     project_main:
+      post_call: 'Toda novidade publicada no Catarse é enviada diretamente para o email de quem já apoiou seu projeto e também fica disponível para visualização no site. Você pode optar por deixá-la pública, ou visível somente para seus apoiadores aqui nesta aba.'
       send_post: 'Escrever novidade'
       share: "Compartilhe"
       tweet: "Tweet"
