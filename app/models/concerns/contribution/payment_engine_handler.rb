@@ -52,7 +52,7 @@ module Contribution::PaymentEngineHandler
         address_state: address_state.presence || user.address_state,
         phone_number: address_phone_number.presence || user.phone_number,
         cpf: payer_document.presence || user.cpf,
-        full_name: payer_name.presence || user.full_name
+        full_name: user.full_name || payer_name
       })
     end
 

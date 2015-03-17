@@ -136,7 +136,7 @@ RSpec.describe Contribution::PaymentEngineHandler, type: :model do
         address_state: (contribution.address_state || user.address_state),
         phone_number: (contribution.address_phone_number || user.phone_number),
         cpf: (contribution.payer_document || user.cpf),
-        full_name: (contribution.payer_name || user.full_name)
+        full_name: ( user.full_name || contribution.payer_name)
       }
     }
 
