@@ -5,6 +5,9 @@ section.section
         #project_about.content.w-col.w-col-8 = render 'project_about'
 
         #project_posts.content.w-col.w-col-8.w-hidden[data-path=project_posts_path(project_id: @project.id)]
+          - if policy(@project).update? && @posts_count == 0
+            .w-hidden-small.w-hidden-tiny
+              .fontsize-base.u-marginbottom-30.u-margintop-20= t('.post_call')
           = render 'edit_action', text: t('.send_post'), anchor: 'posts'
           .posts
             | &nbsp;
