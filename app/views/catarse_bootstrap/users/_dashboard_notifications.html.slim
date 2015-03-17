@@ -27,8 +27,9 @@
                           li
                             .w-checkbox.w-clearfix
                               = hidden_field_tag "unsubscribes[#{u.object.project.id}]", '' 
-                              = check_box_tag "user_unsubscribes_#{u.object.project_id}", "1", u.object.created_at.nil?, class: 'w-checkbox-input', name: "unsubscribes[#{u.object.project.id}]"
-                              label.w-form-label.fontsize-small= u.object.project.name
+                              - unsubscribe_id = "user_unsubscribes_#{u.object.project_id}"
+                              = check_box_tag unsubscribe_id, "1", u.object.created_at.nil?, class: 'w-checkbox-input', name: "unsubscribes[#{u.object.project.id}]"
+                              label.w-form-label.fontsize-small[for=unsubscribe_id] = u.object.project.name
               .w-row.u-marginbottom-20
                 .w-col.w-col-4
                   .fontweight-semibold.fontsize-small.u-marginbottom-10 Categorias que você segue:
@@ -50,7 +51,7 @@
         .w-container
           .w-row
             .w-col.w-col-4.w-col-push-4
-              = f.submit 'Salvar',  class:'btn btn-large'
+              = f.submit 'Salvar',  id: 'save', class:'btn btn-large'
  
 
 
