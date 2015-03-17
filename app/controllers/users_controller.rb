@@ -30,7 +30,6 @@ class UsersController < ApplicationController
     show!{
       fb_admins_add(@user.facebook_id) if @user.facebook_id
       @title = "#{@user.display_name}"
-      @subscribed_to_posts = @user.posts_subscription
       @unsubscribes = @user.project_unsubscribes
       @credit_cards = @user.credit_cards
       build_bank_account
@@ -52,7 +51,6 @@ class UsersController < ApplicationController
   def edit
     authorize resource
     @unsubscribes = @user.project_unsubscribes
-    @subscribed_to_posts = @user.posts_subscription
     resource.links.build
     build_bank_account
   end
@@ -105,12 +103,6 @@ class UsersController < ApplicationController
   end
 
   def drop_and_create_subscriptions
-    #unsubscribe to all projects
-    if params[:subscribed].nil?
-      @user.unsubscribes.create!(project_id: nil)
-    else
-      @user.unsubscribes.drop_all_for_project(nil)
-    end
     if params[:unsubscribes]
       params[:unsubscribes].each do |subscription|
         project_id = subscription[0].to_i
