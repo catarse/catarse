@@ -25,8 +25,10 @@ namespace :cron do
   task notify_project_owner_about_new_confirmed_contributions: :environment do
     puts "Notifying project owners about contributions..."
     Project.with_contributions_confirmed_today.each do |project|
-      project.notify_owner(
-        :project_owner_contribution_confirmed
+      # We cannot use notify_owner for it's a notify_once and we need a notify
+      project.notify(
+        :project_owner_contribution_confirmed,
+        project.user
       )
     end
   end
