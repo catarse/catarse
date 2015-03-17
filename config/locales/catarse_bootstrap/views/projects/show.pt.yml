@@ -26,6 +26,7 @@ pt:
       a_project_by_html: Um projeto de %{link} no
     posts:
       project_post:
+        exclusive: 'Post exclusivo para apoiadores.'
         unavailable: Esta novidade só está disponível para apoiadores.
         contribute: Apoie
         unavailable_contribute: este projeto para visualizá-la.
