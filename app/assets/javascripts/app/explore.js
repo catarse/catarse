@@ -16,7 +16,7 @@ App.addChild('Explore', _.extend({
   },
 
   activate: function(){
-
+    
     this.route('recommended');
     this.route('expiring');
     this.route('recent');
@@ -26,6 +26,7 @@ App.addChild('Explore', _.extend({
     this.route('near_of/:state');
 
     this.setInitialFilter();
+    
     this.setupPagination(
       this.$("#loading img"), 
       this.$('#load-more'),
@@ -45,6 +46,9 @@ App.addChild('Explore', _.extend({
 
   toggleCategoryList: function(event) {
     this.$('#categories-wrapper').slideToggle();
+    $.smoothScroll({
+      scrollElement: $('html, body')
+    });
   },
 
   selectLink: function(){
@@ -61,15 +65,19 @@ App.addChild('Explore', _.extend({
   },
 
   followRoute: function(route, name, params){
-    this.filter = {};
     if(params.length > 0){
       this.filter[name] = params[0];
     }
     else{
       this.filter[name] = true;
     }
-    this.firstPage();
+    
+    this.$('.results').empty();
+    
+    this.filter.page = 1;
+
     this.fetchPage();
+    
     if(this.parent && this.parent.$search.length > 0){
       this.parent.$search.val('');
     }
@@ -77,7 +85,7 @@ App.addChild('Explore', _.extend({
   },
 
   setInitialFilter: function(){
-    var search = null;;
+    var search = null;
     if(this.parent && (search = this.parent.$search.val())){
       this.filter = { pg_search: search };
     }
