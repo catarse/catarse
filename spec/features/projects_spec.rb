@@ -32,7 +32,8 @@ RSpec.describe "Projects", type: :feature do
     let(:category_2) { create(:category) }
 
     before do
-      5.times{ create(:project, name: 'Foo', category: category_1, state: 'online', online_days: 30, recommended: true) }
+      1.times{ create(:project, name: 'Foo', category: category_1, state: 'online', online_days: 30, recommended: false) }
+      4.times{ create(:project, name: 'Foo', category: category_1, state: 'online', online_days: 30, recommended: true) }
       6.times{ create(:project, name: 'Bar', category: category_2, state: 'online', online_days: 30, recommended: true) }
       create(:project, category: category_2, name: 'Lorem', state: 'online', online_days: 30, recommended: false)
       visit explore_path(locale: :pt)
@@ -44,11 +45,11 @@ RSpec.describe "Projects", type: :feature do
       expect(recommended.size).to eq(6)
     end
 
-    it "should load 6 more projects after clicking load more and then hide it" do
+    it "should load 4 more projects after clicking load more and then hide it" do
       click_on("load-more")
       sleep FeatureHelpers::TIME_TO_SLEEP
       results = all(".results .card-project")
-      expect(results.size).to eq(11)
+      expect(results.size).to eq(10)
       expect(page.evaluate_script('$("#load-more:visible").length')).to eq(0)
     end
 
