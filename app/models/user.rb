@@ -17,7 +17,8 @@ class User < ActiveRecord::Base
     :image_url, :uploaded_image, :bio, :newsletter, :full_name, :address_street, :address_number,
     :address_complement, :address_neighbourhood, :address_city, :address_state, :address_zip_code, :phone_number,
     :cpf, :state_inscription, :locale, :twitter, :facebook_link, :other_link, :moip_login, :deactivated_at, :reactivate_token,
-    :bank_account_attributes, :country_id, :zero_credits, :links_attributes, :about, :about_html, :cover_image, :category_followers_attributes, :category_follower_ids
+    :bank_account_attributes, :country_id, :zero_credits, :links_attributes, :about, :about_html, :cover_image, :category_followers_attributes, :category_follower_ids,
+    :subscribed_to_project_posts
 
   mount_uploader :uploaded_image, UserUploader
   mount_uploader :cover_image, CoverUploader
@@ -72,10 +73,7 @@ class User < ActiveRecord::Base
   }
 
   scope :subscribed_to_posts, -> {
-     where("id NOT IN (
-       SELECT user_id
-       FROM unsubscribes
-       WHERE project_id IS NULL)")
+     where("subscribed_to_project_posts")
    }
 
   scope :subscribed_to_project, ->(project_id) {
@@ -209,10 +207,6 @@ class User < ActiveRecord::Base
   def to_param
     return "#{self.id}" unless self.display_name
     "#{self.id}-#{self.display_name.parameterize}"
-  end
-
-  def posts_subscription
-    unsubscribes.posts_unsubscribe(nil)
   end
 
   def project_unsubscribes
