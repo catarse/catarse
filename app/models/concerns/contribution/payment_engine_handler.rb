@@ -36,7 +36,7 @@ module Contribution::PaymentEngineHandler
       self.address_state = user.address_state
       self.address_phone_number = user.phone_number
       self.payer_document = user.cpf
-      self.payer_name = user.display_name
+      self.payer_name = user.full_name
       self.payer_email = user.email
     end
 
@@ -52,7 +52,7 @@ module Contribution::PaymentEngineHandler
         address_state: address_state.presence || user.address_state,
         phone_number: address_phone_number.presence || user.phone_number,
         cpf: payer_document.presence || user.cpf,
-        full_name: payer_name.presence || user.full_name
+        full_name: payer_name || user.full_name
       })
     end
 
