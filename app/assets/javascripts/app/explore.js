@@ -46,6 +46,9 @@ App.addChild('Explore', _.extend({
 
   toggleCategoryList: function(event) {
     this.$('#categories-wrapper').slideToggle();
+    $.smoothScroll({
+      scrollElement: $('html, body')
+    });
   },
 
   selectLink: function(){
