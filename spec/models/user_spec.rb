@@ -373,17 +373,6 @@ RSpec.describe User, type: :model do
     it{ is_expected.to eq([unfinished_project])}
   end
 
-  describe "#posts_subscription" do
-    subject{user.posts_subscription}
-    context "when user is subscribed to all projects" do
-      it{ is_expected.to be_new_record }
-    end
-    context "when user is unsubscribed from all projects" do
-      before { @u = create(:unsubscribe, project_id: nil, user_id: user.id )}
-      it{ is_expected.to eq(@u)}
-    end
-  end
-
   describe "#project_unsubscribes" do
     subject{user.project_unsubscribes}
     before do

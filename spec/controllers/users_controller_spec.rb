@@ -168,7 +168,6 @@ RSpec.describe UsersController, type: :controller do
       it("should update the user and nested models") do
         user.reload
         expect(user.twitter).to eq('test')
-        expect(user.unsubscribes.size).to eq(1)
         expect(user.category_followers.size).to eq(1)
       end
       it{ is_expected.to redirect_to edit_user_path(user) }

@@ -16,9 +16,8 @@
                   .fontweight-semibold.fontsize-small.u-marginbottom-10 Projetos que você apoiou:
                 .w-col.w-col-8
                   .w-checkbox.w-clearfix
-                    = f.simple_fields_for :unsubscribes, @subscribed_to_posts do |u|
-                      = check_box_tag :subscribed, "1", @user.subscribed_to_posts?, class: 'w-checkbox-input'
-                      label.w-form-label.fontsize-base.fontweight-semibold  Quero receber atualizações dos projetos
+                    = f.check_box :subscribed_to_project_posts, class: 'w-checkbox-input'
+                    label.w-form-label.fontsize-base.fontweight-semibold  Quero receber atualizações dos projetos
                     .u-marginbottom-20
                       a.alt-link#toggle-notifications href="#"  Gerenciar as notificações de #{@user.contributed_projects.count} projetos
                     - if @unsubscribes
