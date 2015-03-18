@@ -1,7 +1,5 @@
 - content_for :meta_tags do
-  meta name="description" content=resource.about
   meta property="og:title" content=resource.name
-  meta property="og:description" content=resource.about
   meta property="og:url" content=user_url(resource, locale: I18n.locale)
   meta property="og:type" content='cause'
   meta[property="og:image" content=resource.uploaded_image.thumb_facebook.url]
