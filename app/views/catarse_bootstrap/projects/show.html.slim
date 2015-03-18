@@ -8,7 +8,7 @@
   - if !@post.new_record?
     meta name="description" content=@post.title
     meta property="og:title" content=@post.title
-    meta property="og:description" content=@post.comment
+    meta property="og:description" content=@post.comment_html
     meta property="og:url" content=project_by_slug_url(@project.permalink, project_post_id: @post.id, locale: I18n.locale)
   - else
     meta name="description" content=@project.headline

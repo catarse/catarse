@@ -91,7 +91,7 @@ RSpec.describe MixpanelObserver do
   end
 
   describe "#after_update" do
-    [:video_url, :about, :headline, :uploaded_image].each do |attribute|
+    [:video_url, :about_html, :headline, :uploaded_image].each do |attribute|
       context "when we update a project's #{attribute}" do
         it "should send tracker a track call with the change" do
           expect(tracker).to receive(:track).with(project.user.id.to_s, "Project owner engaged with Catarse", project_owner_properties.merge(action: "Updated #{attribute}"), project.user.current_sign_in_ip)
@@ -106,7 +106,7 @@ RSpec.describe MixpanelObserver do
       it "should send tracker a track call with the change" do
         expect(tracker).to receive(:track).with(user.id.to_s, "Project owner engaged with Catarse", project_owner_properties.merge(action: "Updated profile"), project.user.current_sign_in_ip)
         expect(people).to receive(:set).with(user.id.to_s, project_owner_properties.merge(action: "Updated profile"), project.user.current_sign_in_ip)
-        user.update_attributes bio: 'test'
+        user.update_attributes about_html: 'test'
       end
     end
   end

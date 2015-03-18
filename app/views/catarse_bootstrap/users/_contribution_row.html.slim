@@ -24,10 +24,7 @@
     .w-col.w-col-3.u-marginbottom-10
       .w-hidden-main.w-hidden-medium.fontsize-smallest.fontweight-semibold Status do apoio:
       .fontsize-smallest 
-        - if contribution.is_credit_card?
-          | Cartão de credito #{contribution.installments}xR$#{contribution.installment_value}
-        - else
-          | Boleto bancario
+        = "#{contribution.decorate.display_payment_details} #{contribution.decorate.display_installment_details}"
       .fontsize-smallest
         - if contribution.waiting_confirmation?
           | Aguardando confirmação do pagamento

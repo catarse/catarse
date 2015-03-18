@@ -2,6 +2,24 @@ class ContributionDecorator < Draper::Decorator
   decorates :contribution
   include Draper::LazyHelpers
 
+  def display_installment_details
+    if source.installments > 1
+      "#{contribution.installments} x #{number_to_currency contribution.installment_value}"
+    else
+      ""
+    end
+  end
+
+  def display_payment_details
+    if source.credits?
+      I18n.t("contribution.payment_details.creditos")
+    elsif source.payment_choice.present?
+      I18n.t("contribution.payment_details.#{source.payment_choice.underscore}")
+    else
+      ""
+    end
+  end
+
   def display_value
     number_to_currency source.localized.value
   end

@@ -16,9 +16,8 @@
                   .fontweight-semibold.fontsize-small.u-marginbottom-10 Projetos que você apoiou:
                 .w-col.w-col-8
                   .w-checkbox.w-clearfix
-                    = f.simple_fields_for :unsubscribes, @subscribed_to_posts do |u|
-                      = check_box_tag :subscribed, "1", @user.subscribed_to_posts?, class: 'w-checkbox-input'
-                      label.w-form-label.fontsize-base.fontweight-semibold  Quero receber atualizações dos projetos
+                    = f.check_box :subscribed_to_project_posts, class: 'w-checkbox-input'
+                    label.w-form-label.fontsize-base.fontweight-semibold  Quero receber atualizações dos projetos
                     .u-marginbottom-20
                       a.alt-link#toggle-notifications href="#"  Gerenciar as notificações de #{@user.contributed_projects.count} projetos
                     - if @unsubscribes
@@ -27,8 +26,9 @@
                           li
                             .w-checkbox.w-clearfix
                               = hidden_field_tag "unsubscribes[#{u.object.project.id}]", '' 
-                              = check_box_tag "user_unsubscribes_#{u.object.project_id}", "1", u.object.created_at.nil?, class: 'w-checkbox-input', name: "unsubscribes[#{u.object.project.id}]"
-                              label.w-form-label.fontsize-small= u.object.project.name
+                              - unsubscribe_id = "user_unsubscribes_#{u.object.project_id}"
+                              = check_box_tag unsubscribe_id, "1", u.object.created_at.nil?, class: 'w-checkbox-input', name: "unsubscribes[#{u.object.project.id}]"
+                              label.w-form-label.fontsize-small[for=unsubscribe_id] = u.object.project.name
               .w-row.u-marginbottom-20
                 .w-col.w-col-4
                   .fontweight-semibold.fontsize-small.u-marginbottom-10 Categorias que você segue:
@@ -50,7 +50,7 @@
         .w-container
           .w-row
             .w-col.w-col-4.w-col-push-4
-              = f.submit 'Salvar',  class:'btn btn-large'
+              = f.submit 'Salvar',  id: 'save', class:'btn btn-large'
  
 
 
