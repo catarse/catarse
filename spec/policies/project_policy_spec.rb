@@ -69,16 +69,16 @@ RSpec.describe ProjectPolicy do
   end
 
   describe "#permitted_for?" do
-    context "when user is nil and I want to update about" do
+    context "when user is nil and I want to update about_html" do
       let(:policy){ ProjectPolicy.new(nil, Project.new) }
-      subject{ policy.permitted_for?(:about, :update) }
+      subject{ policy.permitted_for?(:about_html, :update) }
       it{ is_expected.to eq(false) }
     end
 
-    context "when user is project owner and I want to update about" do
+    context "when user is project owner and I want to update about_html" do
       let(:project){ create(:project) }
       let(:policy){ ProjectPolicy.new(project.user, project) }
-      subject{ policy.permitted_for?(:about, :update) }
+      subject{ policy.permitted_for?(:about_html, :update) }
       it{ is_expected.to eq(true) }
     end
   end
@@ -86,7 +86,7 @@ RSpec.describe ProjectPolicy do
   describe "#permitted?" do
     context "when user is nil" do
       let(:policy){ ProjectPolicy.new(nil, Project.new) }
-      [:about, :video_url, :uploaded_image, :headline].each do |field|
+      [:about_html, :video_url, :uploaded_image, :headline].each do |field|
         context "when field is #{field}" do
           subject{ policy.permitted?(field) }
           it{ is_expected.to eq(true) }

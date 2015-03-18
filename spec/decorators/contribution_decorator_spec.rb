@@ -1,8 +1,45 @@
 require 'rails_helper'
 
 RSpec.describe ContributionDecorator do
+  include Draper::LazyHelpers
   before do
     I18n.locale = :pt
+  end
+
+  describe "#display_installments_details" do
+    subject { contribution.decorate.display_installment_details }
+    context "when I have 1 installment" do
+      let(:contribution){ create(:contribution, installments: 1) }
+      it{ is_expected.to eq "" }
+    end
+
+    context "when I have >1 installment" do
+      let(:contribution){ create(:contribution, installments: 2, installment_value: '10') }
+      it{ is_expected.to eq "#{contribution.installments} x #{number_to_currency contribution.installment_value}" }
+    end
+
+    context "when I have >1 installment and nil in installment value" do
+      let(:contribution){ create(:contribution, installments: 2, installment_value: nil) }
+      it{ is_expected.to eq "#{contribution.installments} x #{number_to_currency contribution.installment_value}" }
+    end
+  end
+
+  describe "#display_payment_details" do
+    subject { contribution.decorate.display_payment_details }
+    context "when contribution is made with credits" do
+      let(:contribution){ create(:contribution, credits: true) }
+      it{ is_expected.to eq I18n.t("contribution.payment_details.creditos") }
+    end
+
+    context "when contribution is not made with credits and choice is null" do
+      let(:contribution){ create(:contribution, credits: false, payment_choice: nil) }
+      it{ is_expected.to eq "" }
+    end
+
+    context "when contribution is not made with credits" do
+      let(:contribution){ create(:contribution, credits: false, payment_choice: 'CartaoDeCredito') }
+      it{ is_expected.to eq I18n.t("contribution.payment_details.cartao_de_credito") }
+    end
   end
 
   describe "#display_date" do

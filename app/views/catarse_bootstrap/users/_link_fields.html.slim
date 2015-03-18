@@ -1,12 +1,13 @@
-.nested-fields
-  .w-row
+#links.w-row
     - if f.object.persisted?
-      .w-col.w-col-10
-        = f.input_field :link, as: :string, class: 'w-input text-field prefix'
-      .w-col.w-col-2
-        = link_to_remove_association "", f, class: 'btn btn-medium postfix btn-terciary fa fa-close'
+      .link
+        .w-col.w-col-10.w-col-small-10.w-col-tiny-10
+          = f.input_field :link, as: :string, class: 'w-input text-field'
+        .w-col.w-col-2.w-col-small-2.w-col-tiny-2
+          = link_to_remove_association "", f, class: 'btn btn-small btn-terciary fa fa-lg fa-trash btn-no-border', wrapper_class: 'link' 
     - else
-      .w-col.w-col-10
-        = f.input_field :link, as: :string, class: 'w-input text-field positive prefix'
-      .w-col.w-col-2
-        a.add-user-link.btn.btn-dark.btn-medium.postfix.fa.fa-plus href="javascript:void(0);"
+      .link
+        .w-col.w-col-10.w-col-small-10.w-col-tiny-10
+          = f.input_field :link, as: :string, class: 'w-input text-field positive'
+        .w-col.w-col-2.w-col-small-2.w-col-tiny-2
+          = link_to_remove_association "", f, class: 'btn btn-small btn-terciary fa fa-lg fa-trash btn-no-border', wrapper_class: 'link' 

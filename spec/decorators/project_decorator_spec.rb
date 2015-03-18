@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe ProjectDecorator do
-  let(:project){ create(:project, about: 'Foo Bar http://www.foo.bar <javascript>xss()</javascript>"Click here":http://click.here') }
+  let(:project){ create(:project, about_html: 'Foo Bar http://www.foo.bar <javascript>xss()</javascript>"Click here":http://click.here') }
 
   describe "#state_warning_template" do
     subject{ project.state_warning_template }
@@ -122,26 +122,6 @@ RSpec.describe ProjectDecorator do
     context "when we have an uploaded_image" do
       let(:project){ create(:project, state: 'draft', uploaded_image: File.open("#{Rails.root}/spec/fixtures/image.png"), video_thumbnail: nil) }
       it{ is_expected.to eq(project.uploaded_image.project_thumb.url) }
-    end
-  end
-
-  describe "#display_progress" do
-    subject{ project.display_progress }
-    context "when progress is 0" do
-      before{ allow(project).to receive(:progress).and_return(0) }
-      it{ is_expected.to eq(0) }
-    end
-    context "when progress is between 0 and 8" do
-      before{ allow(project).to receive(:progress).and_return(7) }
-      it{ is_expected.to eq(8) }
-    end
-    context "when progress is between 8 and 100" do
-      before{ allow(project).to receive(:progress).and_return(70) }
-      it{ is_expected.to eq(70) }
-    end
-    context "when progress is above 100" do
-      before{ allow(project).to receive(:progress).and_return(101) }
-      it{ is_expected.to eq(100) }
     end
   end
 
