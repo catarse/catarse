@@ -12,6 +12,7 @@ RSpec.describe MixpanelObserver do
       contributions: contribution.user.total_contributed_projects,
       has_contributions: (contribution.user.total_contributed_projects > 0),
       created_projects: contribution.user.projects.count,
+      published_projects: contribution.user.published_projects.count,
       has_online_project: contribution.user.has_online_project?,
       project: contribution.project.name,
       payment_method: contribution.payment_method,
@@ -30,6 +31,7 @@ RSpec.describe MixpanelObserver do
       contributions: user.total_contributed_projects,
       has_contributions: (user.total_contributed_projects > 0),
       created_projects: user.projects.count,
+      published_projects: user.published_projects.count,
       has_online_project: user.has_online_project?
     }
   end
@@ -61,7 +63,7 @@ RSpec.describe MixpanelObserver do
       let(:user){ project.user }
 
       it "should set user has_online_project in mixpanel" do
-        expect(people).to receive(:set).with(user.id.to_s, project_owner_properties.merge(has_online_project: true), user.current_sign_in_ip)
+        expect(people).to receive(:set).with(user.id.to_s, project_owner_properties.merge(has_online_project: true, published_projects: 1), user.current_sign_in_ip)
         project.push_to_online
       end
     end

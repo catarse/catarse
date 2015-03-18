@@ -10,6 +10,7 @@ RSpec.describe User, type: :model do
   describe "associations" do
     it{ is_expected.to have_many :contributions }
     it{ is_expected.to have_many :projects }
+    it{ is_expected.to have_many :published_projects }
     it{ is_expected.to have_many :notifications }
     it{ is_expected.to have_many :project_posts }
     it{ is_expected.to have_many :unsubscribes }
