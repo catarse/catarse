@@ -142,7 +142,7 @@ class Project < ActiveRecord::Base
   end
 
   def can_show_preview_link?
-    ['draft', 'approved', 'rejected', 'in_analysis'].include? state
+    !published?
   end
 
   def subscribed_users
