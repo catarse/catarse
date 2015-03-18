@@ -61,11 +61,12 @@
                     label.field-label.fontweight-semibold= t('.other_link_label')   
                     label.field-label.fontsize-smallest.fontcolor-secondary= t('.other_link_hint')   
                   .w-col.w-col-7
-                    #links
-                      = form.simple_fields_for :links do |link_form|
+                    = form.simple_fields_for :links do |link_form|
                         = render partial: 'link_fields', locals: { f: link_form, parent_form: form }
-
-                      = link_to_add_association " . ", form, :links, :'data-association-insertion-method' => :after, class: 'w-hidden user-links'
+                    .w-row
+                      .w-col.w-col-6
+                      .w-col.w-col-6
+                        = link_to_add_association  t('users.edit.add_link'), form, :links, :'data-association-insertion-method' => :append, :'data-association-insertion-node' => '#links', class: 'btn btn-small btn-terciary'
     div
       .w-container
         .w-row
