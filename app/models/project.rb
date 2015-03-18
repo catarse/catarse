@@ -1,5 +1,7 @@
 # coding: utf-8
 class Project < ActiveRecord::Base
+  PUBLISHED_STATES = ['online', 'waiting_funds', 'successful', 'failed']
+
   include PgSearch
 
   include Shared::StateMachineHelpers
@@ -139,10 +141,6 @@ class Project < ActiveRecord::Base
     ['online', 'waiting_funds', 'successful', 'approved'].include? state
   end
 
-  def can_show_funding_period?
-    ['online', 'waiting_funds', 'successful', 'failed'].include? state
-  end
-
   def can_show_preview_link?
     ['draft', 'approved', 'rejected', 'in_analysis'].include? state
   end
@@ -223,8 +221,8 @@ class Project < ActiveRecord::Base
     end
   end
 
-  def already_deployed?
-    self.online? || self.successful? || self.failed? || self.waiting_funds?
+  def published?
+    PUBLISHED_STATES.include? state
   end
 
   def expires_fragments *fragments

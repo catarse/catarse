@@ -84,7 +84,7 @@ class ProjectDecorator < Draper::Decorator
       if has_error
         content_tag(:span, '', class: 'fa fa-exclamation-circle text-error')
       else
-        content_tag(:span, '', class: 'fa fa-check-circle text-success') unless source.already_deployed?
+        content_tag(:span, '', class: 'fa fa-check-circle text-success') unless source.published?
       end
     end
   end

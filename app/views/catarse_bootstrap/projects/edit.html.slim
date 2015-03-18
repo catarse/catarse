@@ -7,7 +7,7 @@
 .project-dashboard-edit
   = render 'project_header'
 
-  - if @project.can_show_funding_period?
+  - if @project.published?
     .project-nav
       .w-container
         .w-row
@@ -17,10 +17,10 @@
   nav.dashboard-nav
     .w-container
       .w-row
-        div class="w-col #{(@project.already_deployed?) ? 'w-col-12' : 'w-col-9'}"
+        div class="w-col #{(@project.published?) ? 'w-col-12' : 'w-col-9'}"
           = link_to '#home', id: 'dashboard_home_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_home', tab_group: 'edit'} do
             = t('.start_tab')
-          - if (!@project.already_deployed? && !@project.approved?) || (current_user && current_user.admin?)
+          - if (!@project.published? && !@project.approved?) || (current_user && current_user.admin?)
             = link_to '#basics', id: 'basics_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_basics', tab_group: 'edit'} do
               = @project.decorate.status_icon_for('basics')
               | &nbsp;&nbsp;
@@ -29,7 +29,7 @@
             = @project.decorate.status_icon_for('project')
             | &nbsp;&nbsp;
             = t('.project_tab')
-          - if @project.already_deployed?
+          - if @project.published?
             = link_to '#posts', id: 'dashboard_posts_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_posts', tab_group: 'edit'} do
               = t('.posts_tab')
               | &nbsp;
@@ -38,7 +38,7 @@
             = @project.decorate.status_icon_for('reward')
             | &nbsp;&nbsp;
             = t('.rewards_tab')
-          - if @project.already_deployed?
+          - if @project.published?
             = link_to '#reports', id: 'dashboard_reports_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_reports', tab_group: 'edit'} do
               = t('.reports_tab')
               | &nbsp;
@@ -72,17 +72,17 @@
         article
           #dashboard_home.content.w-hidden
             = render 'dashboard_home'
-          - if !@project.already_deployed? || (current_user && current_user.admin?)
+          - if !@project.published? || (current_user && current_user.admin?)
             #dashboard_basics.content.w-hidden
               = render 'dashboard_basics'
           #dashboard_project.content.w-hidden
             = render 'dashboard_project'
-          - if @project.already_deployed?
+          - if @project.published?
             #dashboard_posts.content.w-hidden
               = render 'dashboard_posts'
           #dashboard_reward.content.w-hidden
             = render 'dashboard_reward'
-          - if @project.already_deployed?
+          - if @project.published?
             #dashboard_reports.content.w-hidden data-path=metrics_project_path(@project)
               .results
           #dashboard_user_about.content.w-hidden
