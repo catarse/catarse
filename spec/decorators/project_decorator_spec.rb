@@ -125,26 +125,6 @@ RSpec.describe ProjectDecorator do
     end
   end
 
-  describe "#display_progress" do
-    subject{ project.display_progress }
-    context "when progress is 0" do
-      before{ allow(project).to receive(:progress).and_return(0) }
-      it{ is_expected.to eq(0) }
-    end
-    context "when progress is between 0 and 8" do
-      before{ allow(project).to receive(:progress).and_return(7) }
-      it{ is_expected.to eq(8) }
-    end
-    context "when progress is between 8 and 100" do
-      before{ allow(project).to receive(:progress).and_return(70) }
-      it{ is_expected.to eq(70) }
-    end
-    context "when progress is above 100" do
-      before{ allow(project).to receive(:progress).and_return(101) }
-      it{ is_expected.to eq(100) }
-    end
-  end
-
   describe "#display_card_class" do
     subject{ project.display_card_class }
     let(:default_card){ "card u-radius zindex-10" }
