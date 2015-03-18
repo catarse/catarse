@@ -77,7 +77,7 @@ gem 'mail_form'
 gem "auto_html"
 gem "RedCloth"
 gem 'kaminari'
-gem 'redactor-rails', github: 'adrianob/redactor-rails'
+gem 'redactor-rails', github: 'catarse/redactor-rails'
 
 # Uploads
 gem 'carrierwave', '~> 0.10.0'

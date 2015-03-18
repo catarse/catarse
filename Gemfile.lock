@@ -1,13 +1,4 @@
 GIT
-  remote: git://github.com/adrianob/redactor-rails.git
-  revision: 84aff65d842c44f89da9e195acaef4c0e179271d
-  specs:
-    redactor-rails (0.5.0)
-      devise
-      mime-types
-      orm_adapter
-
-GIT
   remote: git://github.com/bernat/best_in_place
   revision: ee95961e639022e6aa528704b8cb4789596ea61b
   ref: ee95961e639022e6aa528704b8cb4789596ea61b
@@ -41,6 +32,15 @@ GIT
       activesupport (>= 2.3.2)
       httparty (~> 0.6.1)
       nokogiri (>= 1.5.0)
+
+GIT
+  remote: git://github.com/catarse/redactor-rails.git
+  revision: 84aff65d842c44f89da9e195acaef4c0e179271d
+  specs:
+    redactor-rails (0.5.0)
+      devise
+      mime-types
+      orm_adapter
 
 GEM
   remote: https://rubygems.org/
