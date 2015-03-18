@@ -14,16 +14,15 @@ class User < ActiveRecord::Base
 
   # FIXME: Please bitch...
   attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :permalink,
-    :image_url, :uploaded_image, :bio, :newsletter, :full_name, :address_street, :address_number,
+    :image_url, :uploaded_image, :newsletter, :full_name, :address_street, :address_number,
     :address_complement, :address_neighbourhood, :address_city, :address_state, :address_zip_code, :phone_number,
     :cpf, :state_inscription, :locale, :twitter, :facebook_link, :other_link, :moip_login, :deactivated_at, :reactivate_token,
-    :bank_account_attributes, :country_id, :zero_credits, :links_attributes, :about, :about_html, :cover_image, :category_followers_attributes, :category_follower_ids,
+    :bank_account_attributes, :country_id, :zero_credits, :links_attributes, :about_html, :cover_image, :category_followers_attributes, :category_follower_ids,
     :subscribed_to_project_posts
 
   mount_uploader :uploaded_image, UserUploader
   mount_uploader :cover_image, CoverUploader
 
-  validates_length_of :bio, maximum: 140
 
   validates_presence_of :email
   validates_uniqueness_of :email, allow_blank: true, if: :email_changed?, message: I18n.t('activerecord.errors.models.user.attributes.email.taken')

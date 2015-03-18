@@ -35,7 +35,7 @@ RSpec.describe UserDecorator do
   end
 
   describe "#display_image_html" do
-    let(:user){ build(:user, image_url: 'http://image.jpg', uploaded_image: nil )}
+    let(:user){ build(:user, uploaded_image: nil )}
     let(:options){ {width: 300, height: 300} }
     subject{ user.display_image_html }
     it{ is_expected.to eq("<div class=\"avatar_wrapper\"><img alt=\"User\" class=\"thumb big u-round\" src=\"#{user.display_image}\" /></div>") }

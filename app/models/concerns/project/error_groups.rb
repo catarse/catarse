@@ -4,9 +4,9 @@ module Project::ErrorGroups
   included do
     ATTR_GROUPS = {
       basics: [:name, :permalink, :category_id, :goal, :online_days],
-      project: [ :video_url, :about, :budget, :uploaded_image, :headline],
+      project: [ :video_url, :about_html, :budget, :uploaded_image, :headline],
       reward: [:'rewards.size'],
-      user_about: [:'user.uploaded_image', :'user.name', :'user.about'],
+      user_about: [:'user.uploaded_image', :'user.name', :'user.about_html'],
       user_settings: ProjectAccount.attribute_names.map{|attr| ('project_account.' + attr).to_sym}
     }
 

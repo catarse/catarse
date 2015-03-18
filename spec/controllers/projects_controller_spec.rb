@@ -149,19 +149,19 @@ RSpec.describe ProjectsController, type: :controller do
           allow(controller).to receive(:current_user).and_return(project.user)
         end
 
-        context "when I try to update the project name and the about field" do
-          before{ put :update, id: project.id, project: { name: 'new_title', about: 'new_description' }, locale: :pt }
+        context "when I try to update the project name and the about_html field" do
+          before{ put :update, id: project.id, project: { name: 'new_title', about_html: 'new_description' }, locale: :pt }
           it "should not update title" do
             project.reload
             expect(project.name).not_to eq('new_title')
           end
         end
 
-        context "when I try to update only the about field" do
-          before{ put :update, id: project.id, project: { about: 'new_description' }, locale: :pt }
+        context "when I try to update only the about_html field" do
+          before{ put :update, id: project.id, project: { about_html: 'new_description' }, locale: :pt }
           it "should update it" do
             project.reload
-            expect(project.about).to eq('new_description')
+            expect(project.about_html).to eq('new_description')
           end
         end
       end

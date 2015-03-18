@@ -24,9 +24,6 @@ RSpec.describe User, type: :model do
     it{ is_expected.to allow_value('foo@bar.com').for(:email) }
     it{ is_expected.not_to allow_value('foo').for(:email) }
     it{ is_expected.not_to allow_value('foo@bar').for(:email) }
-    it{ is_expected.to allow_value('a'.center(139)).for(:bio) }
-    it{ is_expected.to allow_value('a'.center(140)).for(:bio) }
-    it{ is_expected.not_to allow_value('a'.center(141)).for(:bio) }
     it{ is_expected.to validate_uniqueness_of(:email) }
   end
 
