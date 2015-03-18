@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe ProjectDecorator do
-  let(:project){ create(:project, about: 'Foo Bar http://www.foo.bar <javascript>xss()</javascript>"Click here":http://click.here') }
+  let(:project){ create(:project, about_html: 'Foo Bar http://www.foo.bar <javascript>xss()</javascript>"Click here":http://click.here') }
 
   describe "#state_warning_template" do
     subject{ project.state_warning_template }

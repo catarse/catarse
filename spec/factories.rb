@@ -32,7 +32,6 @@ FactoryGirl.define do
     f.uploaded_image File.open("#{Rails.root}/spec/support/testimg.png")
     f.email { generate(:email) }
     f.permalink { generate(:permalink) }
-    f.about "This is Foo bar's biography."
     f.about_html "This is Foo bar's biography."
     f.address_street 'fooo'
     f.address_number '123'
@@ -52,7 +51,6 @@ FactoryGirl.define do
     f.cpf "123456"
     f.uploaded_image File.open("#{Rails.root}/spec/support/testimg.png")
     f.email { generate(:email) }
-    f.about "This is Foo bar's biography."
     f.about_html "This is Foo bar's biography."
     f.address_street 'fooo'
     f.address_number '123'
@@ -78,7 +76,6 @@ FactoryGirl.define do
     f.permalink { generate(:permalink) }
     f.association :user
     f.association :category
-    f.about "Foo bar"
     f.about_html "Foo bar"
     f.headline "Foo bar"
     f.goal 10000
@@ -198,7 +195,6 @@ FactoryGirl.define do
     f.association :project, factory: :project
     f.association :user, factory: :user
     f.title "My title"
-    f.comment "This is a comment"
     f.comment_html "<p>This is a comment</p>"
   end
 
