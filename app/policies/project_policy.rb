@@ -42,7 +42,7 @@ class ProjectPolicy < ApplicationPolicy
 
       {project: p_attr.flatten}
     else
-      {project: [:about, :video_url, :uploaded_image, :headline, :budget,
+      {project: [:about_html, :video_url, :uploaded_image, :headline, :budget,
                  user_attributes, posts_attributes, budget_attributes, reward_attributes, account_attributes]}
     end
   end
