@@ -76,6 +76,7 @@ class MixpanelObserver < ActiveRecord::Observer
       contributions: user.total_contributed_projects,
       has_contributions: (user.total_contributed_projects > 0),
       created_projects: user.projects.count,
+      published_projects: user.published_projects.count,
       has_online_project: user.has_online_project?
     }
   end
