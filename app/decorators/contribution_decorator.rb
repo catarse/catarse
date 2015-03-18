@@ -13,8 +13,10 @@ class ContributionDecorator < Draper::Decorator
   def display_payment_details
     if source.credits?
       I18n.t("contribution.payment_details.creditos")
-    else
+    elsif source.payment_choice.present?
       I18n.t("contribution.payment_details.#{source.payment_choice.underscore}")
+    else
+      ""
     end
   end
 
