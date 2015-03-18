@@ -47,6 +47,9 @@ class User < ActiveRecord::Base
   has_many :projects, -> do
     without_state(:deleted)
   end
+  has_many :published_projects, -> do
+    with_states(Project::PUBLISHED_STATES)
+  end, class_name: 'Project'
   has_many :unsubscribes
   has_many :project_posts
   has_many :contributed_projects, -> do
