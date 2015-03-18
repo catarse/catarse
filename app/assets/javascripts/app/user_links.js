@@ -1,18 +1,44 @@
 App.addChild('UserLinksForm', {
+  
   el: '#links',
 
-  activate: function() {
-    this.nestedLinksSetup();
-    this.$el.on('cocoon:after-insert', function(e, insertedItem) {
-      that.nestedLinksSetup();
-    });
+  events: {
+    'click #add-link': 'addLink',
+    'click .remove_fields': 'removeLink'
   },
 
-  nestedLinksSetup: function() {
-    var that = this;
-    this.$('a.add-user-link').unbind('click');
-    this.$('a.add-user-link').bind('click', function(event) {
-      that.$('a.user-links.add_fields').trigger('click');
-    });
+  addLink: function(event){
+
+    event.preventDefault();
+
+    this.$('a.user-links.add_fields').trigger('click');
+
+  },
+
+  removeLink: function(event){
+
+    var $target = this.$(event.target),
+        $container = $target.closest('.w-row');
+
+    event.preventDefault();
+
+    $container.slideUp();
+
+    //check if link been removed is already saved by looking for a hidden input value
+    if($target.prev().val() === "false"){
+
+      $target.prev().val('true');
+      
+    }else{
+
+      $container.promise().done(function(){
+
+        $container.remove();
+      
+      });
+
+    }
+
   }
-})
+  
+});

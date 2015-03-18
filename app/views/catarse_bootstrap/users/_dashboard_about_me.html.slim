@@ -61,8 +61,13 @@
                   #links
                     = form.simple_fields_for :links do |link_form|
                       = render partial: 'link_fields', locals: { f: link_form, parent_form: form }
+                    .w-row
+                      = link_to_add_association " . ", form, :links, :'data-association-insertion-method' => :append, class: 'w-hidden user-links'
 
-                    = link_to_add_association " . ", form, :links, :'data-association-insertion-method' => :after, class: 'w-hidden user-links'
+                    .w-row
+                      .w-col.w-col-6
+                      .w-col.w-col-6
+                        a.btn.btn-small.btn-terciary id="add-link" href="#" = t('users.edit.add_link')
           .w-row
             .w-col
               .card.card-terciary.u-marginbottom-30
