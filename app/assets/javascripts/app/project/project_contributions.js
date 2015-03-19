@@ -19,15 +19,29 @@ App.views.Project.addChild('ProjectContributions', _.extend({
   },
 
   showContributions: function(){
+    
     var state = $('input:radio[name=contribution_state]:checked').val();
+
     if(state == 'waiting_confirmation'){
-      this.filter = {with_state: 'waiting_confirmation'};
+
+      this.filter = { 
+        with_state: 'waiting_confirmation',
+        page: 1
+      };
+
+    }else{
+
+      this.filter = {
+        available_to_count: true,
+        page: 1
+      };
+
     }
-    else{
-      this.filter = {available_to_count: true};
-    }
-    this.firstPage();
+
+    this.$('.results').empty();
+    
     this.fetchPage();
+
   }
 
 }, Skull.Pagination));
