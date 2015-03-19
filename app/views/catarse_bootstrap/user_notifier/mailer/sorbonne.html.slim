@@ -1,5 +1,5 @@
 p
-  | Caro #{@notification.contribution.user.display_name},
+  | Caro #{@notification.user.display_name},
 p
   br/
   br/
@@ -17,8 +17,8 @@ p
 ul
   li
     | Caso tenha alguma dúvida, você poderá entrar em contato direto com os pesquisadores através do e-mail:
-    a href="mailto:pesquisa@univ-paris.fr"  pesquisa@univ-paris.fr
-    | (o contato pode ser feito em português).
+    = mail_to 'pesquisa@univ-paris.fr'
+    |  (o contato pode ser feito em português).
   li O tempo previsto para responder a pesquisa é entre 40 minutos e 1 hora.
   li
     ' Recomenda-se a utilização da versão
