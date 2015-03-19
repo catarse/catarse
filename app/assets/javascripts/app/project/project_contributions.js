@@ -22,20 +22,16 @@ App.views.Project.addChild('ProjectContributions', _.extend({
     
     var state = $('input:radio[name=contribution_state]:checked').val();
 
+    this.filter = { page: 1 };
+
     if(state == 'waiting_confirmation'){
-
-      this.filter = { 
-        with_state: 'waiting_confirmation',
-        page: 1
-      };
-
+    
+      this.filter.with_state = 'waiting_confirmation';
+    
     }else{
 
-      this.filter = {
-        available_to_count: true,
-        page: 1
-      };
-
+      this.filter.available_to_count: true;
+    
     }
 
     this.$('.results').empty();
