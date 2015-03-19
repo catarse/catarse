@@ -231,7 +231,7 @@ p {
   margin-top: 0px;
   margin-bottom: 0px;
   border-style: solid;
-  border-color: rgba(255, 255, 255, 0.09);
+  border-color: rgba(255, 255, 255, 0.13);
   background-color: transparent;
   color: rgba(255, 255, 255, 0.61);
 }
@@ -540,7 +540,7 @@ p {
 .main-header {
   padding-top: 15px;
   padding-bottom: 8px;
-  padding-left: 25px;
+  padding-left: 18px;
   border-bottom: 1px solid rgba(37, 49, 57, 0.6);
   background-color: #3f4752;
 }
@@ -550,8 +550,8 @@ p {
   margin-top: 0px;
   border-bottom-style: none;
   background-color: transparent;
-  background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.2), transparent);
-  background-image: linear-gradient(rgba(0, 0, 0, 0.2), transparent);
+  background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.23), transparent);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.23), transparent);
 }
 .img-logo {
   margin-top: 8px;
@@ -575,7 +575,7 @@ p {
   top: 5px;
   right: -73px;
   display: inline-block;
-  margin: 0px 5px 0px 0px;
+  margin: 0px 4px 0px 0px;
   padding: 9px 22px;
   border-radius: 4px;
   -webkit-transition: all 500ms ease;
@@ -1042,7 +1042,7 @@ p {
   color: #f1f4f4;
 }
 .page-header.hero-start {
-  margin-top: -64px;
+  margin-top: -74px;
   margin-bottom: -60px;
   padding-top: 94px;
   background-image: url('../images/hero-start.jpg');
@@ -1752,7 +1752,7 @@ p {
 .header-search {
   position: relative;
   display: inline-block;
-  width: 30%;
+  width: 28%;
   height: 40px;
   margin-bottom: 0px;
   margin-left: 20px;
@@ -1764,7 +1764,7 @@ p {
   position: relative;
   display: inline-block;
   width: 110px;
-  margin-right: 50px;
+  margin-right: 35px;
   float: left;
   -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
@@ -1855,7 +1855,7 @@ p {
 }
 .btn-dark.btn-attached {
   width: auto;
-  border-color: rgba(255, 255, 255, 0.09);
+  border-color: rgba(255, 255, 255, 0.13);
   background-color: transparent;
 }
 .btn-secondary-dark {
@@ -2562,7 +2562,7 @@ p {
   color: #f1f2f3;
 }
 .hero-search {
-  margin-top: -65px;
+  margin-top: -75px;
   margin-bottom: 30px;
   padding-top: 110px;
   background-color: #5b97c6;
@@ -3152,7 +3152,7 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
   .main-header {
     position: relative;
     padding-top: 7px;
-    padding-bottom: 0px;
+    padding-bottom: 4px;
     padding-left: 5px;
   }
   .header-link {
@@ -3226,6 +3226,9 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     margin-bottom: 0px;
     padding-top: 25px;
     padding-bottom: 20px;
+  }
+  .page-header.hero-start {
+    margin-top: -84px;
   }
   .project-about-highlight {
     margin-top: 0px;
@@ -3399,6 +3402,7 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
   .header-logo {
     width: 85px;
     margin-top: 0px;
+    margin-right: 0px;
   }
   .u-marginbottom-60 {
     padding-right: 0px;
@@ -3418,8 +3422,8 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     height: 35px;
   }
   .thumb.big {
-    width: 90px;
-    height: 90px;
+    width: 70px;
+    height: 70px;
   }
   .project-name {
     padding-right: 63px;
@@ -3501,9 +3505,11 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
   }
   .hero-half {
     height: 310px;
+    margin-top: -90px;
   }
   .hero-small {
-    height: 140px;
+    height: 160px;
+    margin-top: -85px;
     padding-top: 90px;
     padding-bottom: 30px;
   }
@@ -3524,7 +3530,7 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     margin-top: -15px;
   }
   .content-hero-profile {
-    margin-top: 80px;
+    margin-top: 110px;
   }
   .btn-category {
     margin-bottom: 10px;
@@ -3542,6 +3548,8 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     padding-bottom: 10px;
   }
   .hero-search {
+    margin-top: -88px;
+    padding-top: 114px;
     background-position: 50% 50%;
   }
   .following {
@@ -3551,20 +3559,15 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     margin-bottom: 20px;
   }
   .hero-medium {
-    height: 250px;
-    padding-top: 100px;
+    height: 263px;
+    margin-top: -89px;
+    padding-top: 131px;
   }
   .header-controls-mobile {
     margin-top: 8px;
-    border-top: 1px solid rgba(241, 242, 243, 0.10);
-    border-bottom: 1px solid rgba(241, 242, 243, 0.10);
+    border-top: 1px solid rgba(241, 242, 243, 0.15);
+    border-bottom: 1px solid rgba(241, 242, 243, 0.15);
     text-align: center;
-  }
-  .project-nav-fixed {
-    left: 0px;
-    top: auto;
-    right: 0px;
-    bottom: 0px;
   }
 }
 @media (max-width: 479px) {
@@ -3617,12 +3620,14 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     top: -64px;
   }
   .main-header {
-    padding-bottom: 0px;
+    padding-bottom: 4px;
   }
   .header-link {
-    margin-right: 4px;
-    margin-left: 4px;
-    font-size: 12px;
+    margin-right: 5px;
+    margin-left: 5px;
+    padding-right: 6px;
+    padding-left: 6px;
+    font-size: 11px;
   }
   .headingcenter {
     font-size: 24px;
@@ -3684,6 +3689,9 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     margin-bottom: 0px;
     padding-top: 15px;
     padding-bottom: 16px;
+  }
+  .page-header.hero-start {
+    margin-top: -94px;
   }
   .project-about-highlight {
     padding-right: 20px;
@@ -3837,8 +3845,8 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     background-color: white;
   }
   .thumb.big {
-    width: 90px;
-    height: 90px;
+    width: 70px;
+    height: 70px;
   }
   .project-name {
     padding-right: 10px;
@@ -3867,10 +3875,11 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
   }
   .hero-half {
     height: 320px;
-    margin-top: -90px;
+    margin-top: -95px;
     padding: 80px 15px 30px;
   }
   .hero-small {
+    margin-top: -95px;
     padding-top: 90px;
     padding-bottom: 20px;
   }
@@ -3879,7 +3888,7 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     margin-top: 0px;
   }
   .content-hero-profile {
-    margin-top: 80px;
+    margin-top: 115px;
     padding-right: 30px;
     padding-left: 30px;
   }
@@ -3891,7 +3900,8 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     line-height: 16px;
   }
   .hero-search {
-    padding-top: 80px;
+    margin-top: -95px;
+    padding-top: 106px;
     background-position: 50% 50%;
     background-size: cover;
   }
@@ -3904,8 +3914,8 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     font-size: 11px;
   }
   .hero-medium {
-    margin-top: -90px;
-    padding-top: 90px;
+    margin-top: -95px;
+    padding-top: 117px;
   }
   .header-controls-mobile {
     padding-top: 4px;

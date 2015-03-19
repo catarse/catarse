@@ -15,3 +15,5 @@ div class="main-header #{((defined?(overlayer) && overlayer) ? 'overlayer' : '')
 
       = link_to t('layouts.header.help'), CatarseSettings[:support_forum], target: :_blank, class: 'w-nav-link w-hidden-small w-hidden-tiny header-link w-nav-link u-right',  id: 'guidelines_header_modal' if CatarseSettings[:support_forum].present?
 
+  = yield :headermobile_controls
+
