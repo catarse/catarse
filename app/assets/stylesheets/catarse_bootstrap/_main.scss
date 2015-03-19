@@ -538,9 +538,9 @@ p {
   font-weight: 600;
 }
 .main-header {
-  padding-top: 10px;
+  padding-top: 15px;
   padding-bottom: 8px;
-  padding-left: 15px;
+  padding-left: 25px;
   border-bottom: 1px solid rgba(37, 49, 57, 0.6);
   background-color: #3f4752;
 }
@@ -1752,7 +1752,7 @@ p {
 .header-search {
   position: relative;
   display: inline-block;
-  width: 40%;
+  width: 30%;
   height: 40px;
   margin-bottom: 0px;
   margin-left: 20px;
@@ -1761,12 +1761,11 @@ p {
   text-align: center;
 }
 .header-logo {
+  position: relative;
   display: inline-block;
-  width: 32px;
-  max-width: 32px;
-  margin-right: 20px;
-  margin-left: 0px;
-  padding: 0px;
+  width: 110px;
+  margin-right: 50px;
+  float: left;
   -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
 }
@@ -2008,6 +2007,11 @@ p {
 }
 .card-reward {
   position: relative;
+}
+.card-reward.sele {
+  border-width: 2px;
+  border-color: #1ca34a;
+  background-color: rgba(124, 193, 66, 0.09);
 }
 .card-gone {
   position: relative;
@@ -2463,7 +2467,7 @@ p {
   overflow-x: hidden;
   overflow-y: hidden;
   height: 220px;
-  margin-top: -65px;
+  margin-top: -75px;
   padding-top: 110px;
   padding-bottom: 50px;
   background-color: #3f4752;
@@ -2603,7 +2607,7 @@ p {
 .hero-medium {
   position: relative;
   height: 370px;
-  margin-top: -65px;
+  margin-top: -75px;
   padding-top: 130px;
 }
 .logo-footer {
@@ -2667,6 +2671,23 @@ p {
   background-position: 50% 50%;
   background-size: cover;
   color: white;
+}
+.header-logo-image {
+  max-width: 110px;
+}
+.project-nav-fixed {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  right: 0px;
+  z-index: 50;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: #f1f4f4;
+  box-shadow: rgba(0, 0, 0, 0.23) 1px 1px 3px 0px;
+}
+.btn-back-fixed {
+  margin-top: -7px;
 }
 html.w-mod-js *[data-ix="fade-in"] {
   opacity: 0;
@@ -2736,9 +2757,7 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     background-color: #f1f4f4;
   }
   .main-header {
-    padding-top: 8px;
-    padding-bottom: 4px;
-    padding-left: 5px;
+    padding: 12px 4px 0px 18px;
   }
   .img-logo {
     width: 29px;
@@ -2747,8 +2766,8 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
   .header-link {
     position: static;
     display: inline-block;
-    margin-right: 1px;
-    padding: 6px 15px;
+    margin-right: 5px;
+    padding: 6px 10px;
     font-size: 13px;
   }
   .header-link:hover {
@@ -2876,6 +2895,7 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     font-size: 13px;
   }
   .user-profile {
+    width: 75px;
     margin-right: -10px;
   }
   .dropdown-list.user-menu.w--open {
@@ -2885,24 +2905,25 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     margin-left: -520px;
   }
   .user-avatar {
-    width: 35px;
-    height: 35px;
+    width: 30px;
+    height: 30px;
   }
   .dropdown-toggle {
     padding-right: 10px;
+    padding-left: 5px;
   }
   .dropdown-toggle.w--open {
     display: block;
   }
   .header-search {
-    width: 42%;
+    width: 27%;
     margin-left: 0px;
     font-size: 12px;
   }
   .header-logo {
-    width: 28px;
-    max-width: 28px;
-    margin-right: 10px;
+    width: 88px;
+    margin-top: -3px;
+    margin-right: 20px;
     margin-left: 0px;
   }
   .postfix {
@@ -3052,6 +3073,9 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     height: 330px;
     padding-top: 120px;
   }
+  .header-logo-image {
+    max-width: 88px;
+  }
 }
 @media (max-width: 767px) {
   h2 {
@@ -3126,9 +3150,14 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     display: none;
   }
   .main-header {
+    position: relative;
     padding-top: 7px;
-    padding-bottom: 2px;
-    padding-left: 3px;
+    padding-bottom: 0px;
+    padding-left: 5px;
+  }
+  .header-link {
+    margin-right: 10px;
+    margin-left: 10px;
   }
   .pre-header {
     padding-top: 19px;
@@ -3347,7 +3376,7 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     text-align: center;
   }
   .user-profile {
-    width: 88px;
+    width: 72px;
     margin-top: -7px;
     margin-right: -12px;
   }
@@ -3368,17 +3397,14 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     width: 100%;
   }
   .header-logo {
-    display: inline-block;
-    width: 24px;
-    max-width: 24px;
-    margin-right: 10px;
-    margin-left: 0px;
-    float: none;
+    width: 85px;
+    margin-top: 0px;
   }
   .u-marginbottom-60 {
     padding-right: 0px;
   }
   .u-text-center-small-only {
+    display: block;
     text-align: center;
   }
   .dropdown-icon {
@@ -3459,6 +3485,9 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     height: 380px;
     padding-top: 100px;
   }
+  .hero-back {
+    margin-top: -90px;
+  }
   .card-project-meter.successful {
     text-align: center;
   }
@@ -3525,6 +3554,18 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     height: 250px;
     padding-top: 100px;
   }
+  .header-controls-mobile {
+    margin-top: 8px;
+    border-top: 1px solid rgba(241, 242, 243, 0.10);
+    border-bottom: 1px solid rgba(241, 242, 243, 0.10);
+    text-align: center;
+  }
+  .project-nav-fixed {
+    left: 0px;
+    top: auto;
+    right: 0px;
+    bottom: 0px;
+  }
 }
 @media (max-width: 479px) {
   h2 {
@@ -3576,7 +3617,12 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     top: -64px;
   }
   .main-header {
-    padding-left: 0px;
+    padding-bottom: 0px;
+  }
+  .header-link {
+    margin-right: 4px;
+    margin-left: 4px;
+    font-size: 12px;
   }
   .headingcenter {
     font-size: 24px;
@@ -3742,7 +3788,7 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     margin-left: 5%;
   }
   .user-profile {
-    width: 85px;
+    width: 69px;
     margin-top: -5px;
     margin-right: -18px;
   }
@@ -3765,8 +3811,7 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     margin-left: 0px;
   }
   .header-logo {
-    width: 24px;
-    padding: 0px;
+    width: 85px;
   }
   .btn-dark.btn-attached {
     width: 100%;
@@ -3822,6 +3867,7 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
   }
   .hero-half {
     height: 320px;
+    margin-top: -90px;
     padding: 80px 15px 30px;
   }
   .hero-small {
@@ -3858,7 +3904,12 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     font-size: 11px;
   }
   .hero-medium {
+    margin-top: -90px;
     padding-top: 90px;
+  }
+  .header-controls-mobile {
+    padding-top: 4px;
+    padding-bottom: 4px;
   }
 }
 
