@@ -12,6 +12,12 @@ class Payment < ActiveRecord::Base
   def contribution
     contributions.first
   end
+
   state_machine :state, initial: :pending do
+    state :pending
+    state :paid
+    state :pending_refund
+    state :refunded
+    state :refused
   end
 end
