@@ -1,7 +1,7 @@
 div class="main-header #{((defined?(overlayer) && overlayer) ? 'overlayer' : '')}"
   .w-row
     .w-col.w-col-8.w-col-small-6.w-col-tiny-6.w-clearfix
-      = link_to (image_tag "catarse_bootstrap/logo_small.png"), root_url(subdomain: 'www'), class: 'header-logo w-nav-brand', :title => CatarseSettings[:company_name]
+      = link_to (image_tag "catarse_bootstrap/logo_big.png"), root_url(subdomain: 'www'), class: 'header-logo w-nav-brand', :title => CatarseSettings[:company_name]
       = yield :header_controls
     .w-col.w-col-4.w-col-small-6.w-col-tiny-6.w-clearfix
       - if current_user
@@ -14,4 +14,6 @@ div class="main-header #{((defined?(overlayer) && overlayer) ? 'overlayer' : '')
         = link_to t('layouts.header.signin'), new_user_session_path, class: 'w-nav-link header-link w-nav-link btn-edit u-right'
 
       = link_to t('layouts.header.help'), CatarseSettings[:support_forum], target: :_blank, class: 'w-nav-link w-hidden-small w-hidden-tiny header-link w-nav-link u-right',  id: 'guidelines_header_modal' if CatarseSettings[:support_forum].present?
+
+  = yield :headermobile_controls
 
