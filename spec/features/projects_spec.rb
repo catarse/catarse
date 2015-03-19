@@ -69,20 +69,20 @@ RSpec.describe "Projects", type: :feature do
       sleep FeatureHelpers::TIME_TO_SLEEP
     end
 
-    it "should show 20 contributions when clicking on the contributors tab" do
+    it "should show 10 contributions when clicking on the contributors tab" do
       click_on("contributions_link")
       sleep FeatureHelpers::TIME_TO_SLEEP
-      contributors = all(".results .u-marginbottom-20")
-      expect(contributors.size).to eq(20)
+      contributors = all(".results .w-clearfix")
+      expect(contributors.size).to eq(10)
     end
 
-    it "should load 20 more contributions after click load more and then hide it" do
+    it "should load 10 more contributions after click load more and then hide it" do
       click_on("contributions_link")
       sleep FeatureHelpers::TIME_TO_SLEEP
       click_on("load-more")
       sleep FeatureHelpers::TIME_TO_SLEEP
-      contributors = all(".results .u-marginbottom-20")
-      expect(contributors.size).to eq(40)
+      contributors = all(".results .w-clearfix")
+      expect(contributors.size).to eq(20)
       expect(page.evaluate_script('$("#load-more:visible").length')).to eq(0)
     end
 
@@ -101,6 +101,24 @@ RSpec.describe "Projects", type: :feature do
       posts = all(".posts .project-news")
       expect(posts.size).to eq(6) 
       expect(page.evaluate_script('$("#load-more:visible").length')).to eq(0)
+    end
+  end
+
+  describe "view_own_project" do
+    before do
+      login
+      @own_project = create(:project, user: current_user)
+      10.times{ create(:contribution, value: 10.00, credits: true, project: @own_project, state: 'confirmed') }
+      5.times{ create(:contribution, value: 10.00, credits: true, project: @own_project, state: 'waiting_confirmation') }
+      visit project_path(@own_project)
+    end
+    
+    it "should view 5 pending contributions" do
+      click_on("contributions_link")
+      choose("contribution_state_waiting_confirmation")
+      sleep FeatureHelpers::TIME_TO_SLEEP
+      contributions = all(".results .w-clearfix")
+      expect(contributions.size).to eq(5)
     end
   end
 
