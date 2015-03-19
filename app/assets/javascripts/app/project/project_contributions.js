@@ -30,7 +30,7 @@ App.views.Project.addChild('ProjectContributions', _.extend({
     
     }else{
 
-      this.filter.available_to_count: true;
+      this.filter.available_to_count = true;
     
     }
 
