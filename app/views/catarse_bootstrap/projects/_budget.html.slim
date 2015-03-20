@@ -1,0 +1,8 @@
+- if @project.budget.present?
+  p.fontsize-large.fontweight-semibold
+    | Orçamento
+  p.fontsize-base
+    = @project.budget.try(:html_safe)
+  /- if @project.budgets.present?
+    = pie_chart @project.budgets.pluck(:name, :value)
+
