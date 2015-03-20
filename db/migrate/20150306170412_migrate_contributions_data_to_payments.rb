@@ -14,7 +14,11 @@ class MigrateContributionsDataToPayments < ActiveRecord::Migration
       installments,
       installment_value,
       created_at,
-      updated_at
+      updated_at,
+      pait_at,
+      refused_at,
+      pending_refund_at,
+      refunded_at
     )
     SELECT
       c.id,
@@ -50,11 +54,16 @@ class MigrateContributionsDataToPayments < ActiveRecord::Migration
       c.installments,
       COALESCE(c.installment_value, c.value),
       c.created_at,
-      c.updated_at
+      c.updated_at,
+      c.confirmed_at,
+      c.canceled_at,
+      c.requested_refund_at,
+      c.refunded_at
     FROM
       contributions c
     WHERE
       c.state <> 'deleted';
+    INSERT INTO contributions_payments (contribution_id, payment_id) SELECT id, id FROM payments;
     UPDATE payment_notifications SET payment_id = contribution_id WHERE EXISTS (SELECT true FROM payments p WHERE p.id = contribution_id);
     SELECT setval('payments_id_seq', (SELECT max(id) FROM payments));
     SQL
