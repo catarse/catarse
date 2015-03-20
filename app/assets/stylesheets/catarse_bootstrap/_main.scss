@@ -231,7 +231,7 @@ p {
   margin-top: 0px;
   margin-bottom: 0px;
   border-style: solid;
-  border-color: rgba(255, 255, 255, 0.13);
+  border-color: rgba(255, 255, 255, 0.12);
   background-color: transparent;
   color: rgba(255, 255, 255, 0.61);
 }
@@ -550,8 +550,8 @@ p {
   margin-top: 0px;
   border-bottom-style: none;
   background-color: transparent;
-  background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.23), transparent);
-  background-image: linear-gradient(rgba(0, 0, 0, 0.23), transparent);
+  background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.22), transparent);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.22), transparent);
 }
 .img-logo {
   margin-top: 8px;
@@ -1855,7 +1855,7 @@ p {
 }
 .btn-dark.btn-attached {
   width: auto;
-  border-color: rgba(255, 255, 255, 0.13);
+  border-color: rgba(255, 255, 255, 0.12);
   background-color: transparent;
 }
 .btn-secondary-dark {
@@ -2684,7 +2684,7 @@ p {
   padding-top: 20px;
   padding-bottom: 20px;
   background-color: #f1f4f4;
-  box-shadow: rgba(0, 0, 0, 0.23) 1px 1px 3px 0px;
+  box-shadow: rgba(0, 0, 0, 0.22) 1px 1px 3px 0px;
 }
 .btn-back-fixed {
   margin-top: -7px;
@@ -2916,7 +2916,7 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     display: block;
   }
   .header-search {
-    width: 27%;
+    width: 28%;
     margin-left: 0px;
     font-size: 12px;
   }
@@ -3565,8 +3565,8 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
   }
   .header-controls-mobile {
     margin-top: 8px;
-    border-top: 1px solid rgba(241, 242, 243, 0.15);
-    border-bottom: 1px solid rgba(241, 242, 243, 0.15);
+    border-top: 1px solid rgba(241, 242, 243, 0.14);
+    border-bottom: 1px solid rgba(241, 242, 243, 0.14);
     text-align: center;
   }
 }
@@ -3873,6 +3873,9 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     padding-right: 16px;
     padding-left: 16px;
   }
+  .hero-back {
+    margin-top: -95px;
+  }
   .hero-half {
     height: 320px;
     margin-top: -95px;
@@ -3918,6 +3921,7 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
     padding-top: 117px;
   }
   .header-controls-mobile {
+    margin-bottom: -5px;
     padding-top: 4px;
     padding-bottom: 4px;
   }
