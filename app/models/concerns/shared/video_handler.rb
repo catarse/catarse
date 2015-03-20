@@ -20,7 +20,7 @@ module Shared::VideoHandler
 
     def update_video_embed_url
       self.video_embed_url = self.video.embed_url if self.video_valid?
-      self.save
+      self.save(validate: false)
     end
   end
 
