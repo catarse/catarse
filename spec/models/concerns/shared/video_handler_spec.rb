@@ -53,6 +53,16 @@ RSpec.describe Shared::VideoHandler, type: :model do
 
 
 
+  describe "#update_video_embed_url" do
+    let(:project) { create(:project, state: 'online') }
+    before do
+      project.video_url = "http://vimeo.com/17298435"
+      project.budget = nil
+    end
+    subject{ project.update_video_embed_url }
+    it{ is_expected.to eq true }
+  end
+
   describe "#video" do
     subject { project }
 
