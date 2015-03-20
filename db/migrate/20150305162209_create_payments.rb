@@ -11,6 +11,10 @@ class CreatePayments < ActiveRecord::Migration
       t.decimal  :value, null: false
       t.integer  :installments, null: false, default: 1
       t.decimal  :installment_value, null: false
+      t.timestamp :paid_at
+      t.timestamp :refused_at
+      t.timestamp :pending_refund_at
+      t.timestamp :refunded_at
       t.timestamps
     end
   end
