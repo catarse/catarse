@@ -35,7 +35,7 @@ pt:
           payment_card_flag: 'Bandeira'
           payment_card_source: 'Cód. Segurança'
           payment_card_source_short: 'CVC'
-          payment_card_date: 'Expiração (mm/yy)'
+          payment_card_date: 'Expiração (mm/aaaa)'
           payment_card_name: 'Nome impresso no cartão de crédito'
           payment_card_installments: 'Parcelas'
         installment_with_tax: 'sem juros'
