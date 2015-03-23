@@ -42,6 +42,14 @@ GIT
       mime-types
       orm_adapter
 
+PATH
+  remote: ~/code/dbhero
+  specs:
+    dbhero (0.0.1)
+      rails (>= 4.1.9)
+      sass-rails
+      slim-rails
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -620,6 +628,7 @@ DEPENDENCIES
   compass-rails (~> 2.0.4)
   coveralls
   database_cleaner
+  dbhero!
   devise
   draper
   ezcrypto
