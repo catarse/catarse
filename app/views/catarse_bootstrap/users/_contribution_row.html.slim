@@ -31,7 +31,7 @@
         - elsif contribution.confirmed?
           | Confirmado em #{contribution.decorate.display_date(:confirmed_at)}
         - elsif contribution.refunded?
-          | Rembolsado em #{contribution.decorate.display_date(:refunded_at)}
+          | Reembolsado em #{contribution.decorate.display_date(:refunded_at)}
         - elsif contribution.requested_refund?
           | Reembolso solicitado em #{contribution.decorate.display_date(:requested_refund_at)}
     .w-col.w-col-4
