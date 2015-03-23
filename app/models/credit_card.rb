@@ -7,12 +7,6 @@ class CreditCard < ActiveRecord::Base
     CreditCardDecorator.new(self)
   end
 
-  def cancel_subscription
-    if defined?(CatarsePagarme)
-      self.pagarme_delegator.cancel_subscription
-    end
-  end
-
   def display_digits
     "XXXX-XXXX-XXXX-#{last_digits}"
   end
