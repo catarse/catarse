@@ -1,12 +1,13 @@
 - disable_edit = !policy(@project).update_account?
-.u-text-center
-  .w-container
-    .w-row
-      .w-col.w-col-2
-      .w-col.w-col-8
-        .fontweight-semibold.fontsize-large= t('.title')
-        p.fontsize-base= t('.subtitle_html')
-      .w-col.w-col-2.fontcolor-terciary
+- unless disable_edit
+  .u-text-center
+    .w-container
+      .w-row
+        .w-col.w-col-2
+        .w-col.w-col-8
+          .fontweight-semibold.fontsize-large= t('.title')
+          p.fontsize-base= t('.subtitle_html')
+        .w-col.w-col-2.fontcolor-terciary
 
 = simple_form_for @project, defaults: {input_html: {disabled: disable_edit }, wrapper: :one_col, validation_text: false, label_wrapper_html: { class: 'w-col w-col-5 w-sub-col' } }, html: { id: 'project_account_form', class: 'w-form project-form' } do |f|
   = hidden_field_tag :anchor, 'user_settings'
