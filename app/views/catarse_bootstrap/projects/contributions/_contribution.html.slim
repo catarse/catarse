@@ -1,4 +1,4 @@
-- unless contribution.anonymous
+-  if !contribution.anonymous || policy(@project).update?
   .w-clearfix.u-marginbottom-20
 
     = link_to user_path(contribution.user) do
