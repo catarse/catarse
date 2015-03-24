@@ -22,9 +22,11 @@ p
     br/
   | ID do apoio: #{contribution.payment_id}
   br/
-  | Nome/Razão Social do realizador: #{contribution.project.account.full_name.presence}
+  / We need the || for some old projects do not have the account info
+  - owner = contribution.project.account || contribution.project.user
+  | Nome/Razão Social do realizador: #{owner.full_name.presence}
   br/
-  | CPF/CNPJ do realizador: #{contribution.project.account.cpf}
+  | CPF/CNPJ do realizador: #{owner.cpf}
 
 p
   ' É importante ressaltar que o Catarse é apenas intermediador desse processo,
