@@ -30,7 +30,8 @@ p
   'Para obter mais informações e responder a pesquisa, acesse: 
   = link_to 'pesquisa.fr', 'pesquisa.fr'
 p
-  | Seu login : [LOGIN]
+  | Seu login : 
+  = ActiveRecord::Base.connection.select_one("SELECT login FROM temp.sorbonne WHERE user_id = #{@notification.user.id}")["login"]
 p
   br/
   | Você pode responder a pesquisa até o dia 01/04/2015.
