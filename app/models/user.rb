@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
 
   # FIXME: Please bitch...
   attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :permalink,
-    :image_url, :uploaded_image, :newsletter, :full_name, :address_street, :address_number,
+    :image_url, :uploaded_image, :newsletter, :address_street, :address_number,
     :address_complement, :address_neighbourhood, :address_city, :address_state, :address_zip_code, :phone_number,
     :cpf, :state_inscription, :locale, :twitter, :facebook_link, :other_link, :moip_login, :deactivated_at, :reactivate_token,
     :bank_account_attributes, :country_id, :zero_credits, :links_attributes, :about_html, :cover_image, :category_followers_attributes, :category_follower_ids,

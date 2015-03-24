@@ -1,7 +1,7 @@
 - if current_user
   javascript:
     window.intercomSettings = {
-      name: "#{current_user.full_name}",
+      name: "#{current_user.name}",
       email: "#{current_user.email}",
       has_credits: "#{current_user.credits > 0}",
       refund_requests_pending: "#{current_user.contributions.where(state: 'requested_refund').count}",
