@@ -108,6 +108,7 @@ p {
 .section {
   padding-top: 30px;
   padding-bottom: 30px;
+  background-color: white;
 }
 .section.section-gray-one {
   margin-top: 60px;
@@ -142,6 +143,17 @@ p {
 }
 .section.loadmore {
   margin-top: -80px;
+}
+.section.gray {
+  background-color: #f1f4f4;
+}
+.section.blue-sea {
+  padding-top: 115px;
+  padding-bottom: 115px;
+  background-color: #4bb1d0;
+}
+.section.footer {
+  margin-bottom: -80px;
 }
 .bootstrap-color-swatch {
   position: static;
@@ -231,7 +243,7 @@ p {
   margin-top: 0px;
   margin-bottom: 0px;
   border-style: solid;
-  border-color: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.09);
   background-color: transparent;
   color: rgba(255, 255, 255, 0.61);
 }
@@ -550,8 +562,8 @@ p {
   margin-top: 0px;
   border-bottom-style: none;
   background-color: transparent;
-  background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.22), transparent);
-  background-image: linear-gradient(rgba(0, 0, 0, 0.22), transparent);
+  background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.2), transparent);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.2), transparent);
 }
 .img-logo {
   margin-top: 8px;
@@ -1855,7 +1867,7 @@ p {
 }
 .btn-dark.btn-attached {
   width: auto;
-  border-color: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.09);
   background-color: transparent;
 }
 .btn-secondary-dark {
@@ -2684,10 +2696,100 @@ p {
   padding-top: 20px;
   padding-bottom: 20px;
   background-color: #f1f4f4;
-  box-shadow: rgba(0, 0, 0, 0.22) 1px 1px 3px 0px;
+  box-shadow: rgba(0, 0, 0, 0.20) 1px 1px 3px 0px;
 }
 .btn-back-fixed {
   margin-top: -7px;
+}
+.hero-hello {
+  position: relative;
+  z-index: -20;
+  height: 840px;
+  margin-top: -70px;
+  margin-bottom: 940px;
+  padding-top: 200px;
+  background-image: url('../images/hero-hello-blue.jpg');
+  background-position: 50% 50%;
+  background-size: cover;
+  color: white;
+}
+.hero-hello.bottom {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  right: 0px;
+  z-index: -30;
+  margin-bottom: 0px;
+  padding-top: 140px;
+  background-color: #f1f4f4;
+  background-image: none;
+  background-position: 0% 0%;
+  background-size: auto;
+  background-repeat: repeat;
+  background-attachment: scroll;
+  color: #3f4752;
+}
+.card-big {
+  margin-bottom: 40px;
+  padding: 70px 80px;
+  border-radius: 3px;
+  background-color: white;
+  text-align: center;
+}
+.section-cta {
+  height: 485px;
+}
+.section-cta.video4anos {
+  padding-top: 120px;
+  padding-bottom: 120px;
+  background-image: url('../images/hello-cta-video.jpg');
+  background-position: 50% 50%;
+  background-size: cover;
+  color: white;
+  text-align: center;
+}
+.section-cta.featured-user {
+  background-color: #4389bf;
+}
+.hello-lamp {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  right: 0px;
+  z-index: -10;
+  width: 88px;
+  margin-top: 390px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.hello-network {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  right: 0px;
+  z-index: -30;
+  width: 853px;
+  margin-top: 320px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.btn-play {
+  -webkit-transition: all 502ms ease;
+  transition: all 502ms ease;
+}
+.btn-play:hover {
+  -webkit-transform: scale(1.14);
+  -ms-transform: scale(1.14);
+  transform: scale(1.14);
+}
+.quote {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  padding-left: 29px;
+  border-left: 1px solid #ddd;
+  color: #79808b;
+  font-style: italic;
+  font-weight: 400;
 }
 html.w-mod-js *[data-ix="fade-in"] {
   opacity: 0;
@@ -3565,9 +3667,20 @@ html.w-mod-js *[data-ix="bt-dashboard-2"] {
   }
   .header-controls-mobile {
     margin-top: 8px;
-    border-top: 1px solid rgba(241, 242, 243, 0.14);
-    border-bottom: 1px solid rgba(241, 242, 243, 0.14);
+    margin-bottom: -5px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    border-top: 1px solid rgba(241, 242, 243, 0.12);
+    border-bottom: 1px solid rgba(241, 242, 243, 0.12);
     text-align: center;
+  }
+  .project-nav-fixed {
+    left: 0px;
+    top: 0px;
+    right: 0px;
+    padding-top: 26px;
+    padding-bottom: 26px;
+    box-shadow: rgba(0, 0, 0, 0.43) 0px 1px 10px 0px;
   }
 }
 @media (max-width: 479px) {
