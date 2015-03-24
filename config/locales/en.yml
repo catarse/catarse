@@ -402,13 +402,7 @@ en:
         edit: Edit
         reports: Reports
         add_reward: 'Add Rewards'
-      share:
-        embed: embed
-        embed_title: "Embed this project on your site"
-        link: Link
-        link_title: "Share the link"
-        take_a_look: "Check out the project"
-        title: "Be part of it and share this project"
+      share: Share
       contribute_project:
         submit: "Back this project"
         display_status:
