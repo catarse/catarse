@@ -4,11 +4,11 @@
       .w-col.w-col-8
         .project-news.u-marginbottom-60
           .fontsize-large.fontweight-semibold.u-marginbottom-30= t('.title')
-          = simple_form_for @project,  html: { class: 'w-form' } do |f|
+          = simple_form_for @project,  html: { class: 'w-form card card-terciary' } do |f|
             =  hidden_field_tag 'anchor', 'posts'
             = f.simple_fields_for :posts, @project.posts.build do |form|
               = form.label :title, as: :string
-              = form.input_field :title, as: :string
+              = form.input_field :title, as: :string, class: 'w-input text-field positive'
 
               = form.label :comment, as: :string
               = form.input_field :comment_html, class: 'redactor text-field'
