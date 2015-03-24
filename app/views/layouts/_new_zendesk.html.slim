@@ -10,7 +10,7 @@ javascript:
       tabImageURL: "https://assets.zendesk.com/external/zenbox/images/tab_pt_support.png",
       tabColor:    "black",
       hide_tab:    "true",
-      requester_name: "#{current_user ? current_user.full_name : ''}",
+      requester_name: "#{current_user ? current_user.name : ''}",
       requester_email: "#{current_user ? current_user.email : ''}",
       tabPosition: "Left"
     });

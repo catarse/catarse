@@ -110,7 +110,7 @@ RSpec.describe Contribution::PaymentEngineHandler, type: :model do
     before do
       contribution.update_current_billing_info
     end
-    its(:payer_name) { should eq(user.full_name) }
+    its(:payer_name) { should eq(user.name) }
     its(:address_street){ should eq(user.address_street) }
     its(:address_number){ should eq(user.address_number) }
     its(:address_neighbourhood){ should eq(user.address_neighbourhood) }
@@ -136,7 +136,7 @@ RSpec.describe Contribution::PaymentEngineHandler, type: :model do
         address_state: (contribution.address_state || user.address_state),
         phone_number: (contribution.address_phone_number || user.phone_number),
         cpf: (contribution.payer_document || user.cpf),
-        full_name: (contribution.payer_name || user.full_name)
+        name: (contribution.payer_name || user.name)
       }
     }
 
