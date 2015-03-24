@@ -8,28 +8,13 @@ RSpec.describe UserDecorator do
   describe "#display_name" do
     subject{ user.display_name }
 
-    context "when we only have a full name" do
-      let(:user){ create(:user, name: nil, full_name: "Full Name") }
-      it{ is_expected.to eq('Full Name') }
-    end
-
     context "when we have only a name" do
       let(:user){ create(:user, name: 'name') }
       it{ is_expected.to eq('name') }
     end
 
-    context "when name is empty string" do
-      let(:user){ create(:user, name: '', full_name: 'foo') }
-      it{ is_expected.to eq('foo') }
-    end
-
-    context "when we have a name and a full name" do
-      let(:user){ create(:user, name: 'name', full_name: 'full name') }
-      it{ is_expected.to eq('name') }
-    end
-
     context "when we have no name" do
-      let(:user){ create(:user, name: nil, full_name: nil) }
+      let(:user){ create(:user, name: nil) }
       it{ is_expected.to eq(I18n.t('user.no_name')) }
     end
   end
