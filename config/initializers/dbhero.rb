@@ -19,9 +19,8 @@ Dbhero.configure do |config|
   # Google drive integration, uncomment to use ;)
   # you can get you google api credentials here:
   # https://developers.google.com/drive/web/auth/web-server
-  #
-  # config.google_api_id = 'GOOGLE_API_ID'
-  # config.google_api_secret = 'GOOGLE_API_SECRET'
+  config.google_api_id = CatarseSettings.get_without_cache(:google_api_id)
+  config.google_api_secret = CatarseSettings.get_without_cache(:google_api_secret)
 end
 
 
