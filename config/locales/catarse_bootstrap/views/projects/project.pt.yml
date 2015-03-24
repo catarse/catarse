@@ -43,7 +43,7 @@ pt:
         successful: "Bem-sucedido"
         approved: aprovado
         reached_goal: financiado
-        waiting_funds: "Aguardando boletos"
+        waiting_funds: "Prazo encerrado"
         not_reached_goal: aguardando
         draft: "rascunho"
         in_analysis: "em análise"

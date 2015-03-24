@@ -77,7 +77,7 @@ pt:
           rejected: "Este projeto não foi aceito. Não é possível realizar um apoio."
           in_analysis: "Este projeto está em análise e ainda não está aberto para receber apoios."
           successful: "Este projeto foi bem-sucedido e foi financiado em %{date}"
-          waiting_funds: "Aguardando a confirmação de boletos para saber se este projeto será financiado."
+          waiting_funds: "O prazo de captação desse projeto está encerrado. Estamos aguardando a confirmação dos últimos pagamentos."
           draft: "Este projeto é apenas um rascunho e ainda não pode receber apoios."
         submit: Apoiar este projeto
       project_by: projeto por
