@@ -33,7 +33,7 @@
         - if resource.created_projects.count == 1
           = t('users.profile.single_project_created')
         - elsif resource.created_projects.count > 1
-          = t('users.profile.multiple_project_created')
+          = t('users.profile.multiple_project_created', n_projects: resource.created_projects.count)
 
   .hero-profile style="background-image: url('#{resource.cover_image.try(:base).try(:url) || resource.display_image}')"
 
