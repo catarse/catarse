@@ -522,7 +522,8 @@ RSpec.describe Project, type: :model do
         permalink: project.permalink,
         total_contributions: project.total_contributions,
         pledged: project.pledged,
-        project_state: project.state
+        project_state: project.state,
+        category: project.category.name_pt
       }.to_json)
     end
   end
