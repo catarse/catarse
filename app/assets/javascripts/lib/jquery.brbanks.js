@@ -23,7 +23,7 @@
 
         loadBanksOnSelector: function(callback) {
           var that = this;
-          $.getJSON("http://brbanks.herokuapp.com", function(data){
+          $.getJSON("https://brbanks.herokuapp.com", function(data){
             that.parseToList(data);
             callback(that);
           });
