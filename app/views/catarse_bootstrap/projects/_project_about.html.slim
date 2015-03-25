@@ -13,10 +13,10 @@
     - if @project.online?
       - if user_signed_in? && @project.user_already_in_reminder?(current_user.id)
         .fontsize-small
-          = link_to t('.deactive_btn'), reminder_project_path(@project), class: 'fa fa-clock-o link-hidden-success u-right', method: :delete
+          = link_to t('.deactive_btn'), reminder_project_path(@project), class: 'fa fa-clock-o link-hidden-success u-right', method: :delete, id: 'reminder'
       - else
         .fontsize-small
-          = link_to t('.active_btn'), reminder_project_path(@project), class: 'fa fa-clock-o link-hidden u-right fontcolor-secondary'
+          = link_to t('.active_btn'), reminder_project_path(@project), class: 'fa fa-clock-o link-hidden u-right fontcolor-secondary', id: 'reminder'
 
 #project_embed.w-hidden data-path=embed_panel_project_path(@project)
 

@@ -2,37 +2,52 @@ App.addChild('MixPanel', {
   el: 'body',
 
   activate: function(){
-    this.VISIT_MIN_TIME = 10000;
+    this.VISIT_MIN_TIME = 4000;
     this.user = null;
     this.controller = this.$el.data('controller') || this.$el.data('controller-name');
     this.action = this.$el.data('action');
     this.user = this.$el.data('user');
+    this.id = this.$el.data('id');
     if(window.mixpanel){
       this.detectLogin();
       this.startTracking();
     }
   },
 
+  projectProperties: function(){
+    this.$('#project-header').data('stats');
+  },
+
   startTracking: function(){
     var self = this;
+
     this.trackOnPage('projects', 'show', function(){
-      self.trackVisit('Visited project page', {project_state: self.$('#project-header').data('project-state')});
+      self.trackVisit('Visited project page', self.projectProperties);
+      self.trackReminderClick();
+      self.trackOnContributionStart();
     });
+
     this.trackOnPage('projects', 'edit', function(){
-      if(self.$('#project-header').data('project-state') == 'online'){
-        $(window).on('hashchange', function() {
-          if(window.location.hash == '#reports'){
-            self.track('Project owner engaged with Catarse', { action: 'Visited reports' });
-          }
-        });
+      $(window).on('hashchange', function() {
+        if(window.location.hash == '#reports'){
+          self.track('Project owner engaged with Catarse', _.extend(self.projectProperties, { action: 'Visited reports' }));
+        }
+      });
+    });
+
+    this.trackOnPage('pages', 'show', function(){ 
+      if(self.id == 'start'){
+        self.track('Visited start page');
       }
     });
+    
+
+    this.trackPageVisit('projects', 'new', 'Visited new project page');
     this.trackPageVisit('projects', 'index', 'Visited home');
     this.trackPageVisit('explore', 'index', 'Explored projects');
     this.trackPageLoad('contributions', 'edit', 'Selected reward');
     this.trackTwitterShare();
     this.trackFacebookShare();
-    this.trackReminderClick();
     this.trackFollowCategory();
     try {
       this.trackOnFacebookLike();
@@ -50,9 +65,25 @@ App.addChild('MixPanel', {
     });
   },
 
+  trackOnContributionStart: function(){
+    var self = this;
+
+    this.$('.card-reward').on('click', function(event){
+      self.trackStartedContribution('Reward click');
+    });
+    
+    this.$('#contribute_project_form').on('click', function(event){
+      self.trackStartedContribution('Contribute button click');
+    });
+  },
+
+  trackStartedContribution: function(action){
+    this.track('Started contribution', _.extend(this.projectProperties, { action: action }));
+  },
+
   trackReminderClick: function(){
     var self = this;
-    this.$('.reminder a:not([data-method])').on('click', function(event){
+    this.$('#reminder:not([data-method])').on('click', function(event){
       self.track('Engaged with Catarse', { ref: $(event.currentTarget).data('title'), action: 'click reminder' });
       return true;
     });
