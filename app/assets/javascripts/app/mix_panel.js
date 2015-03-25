@@ -19,9 +19,12 @@ App.addChild('MixPanel', {
 
   startTracking: function(){
     var self = this;
+
     this.trackOnPage('projects', 'show', function(){
       self.trackVisit('Visited project page', self.projectProperties);
+      self.trackReminderClick();
     });
+
     this.trackOnPage('projects', 'edit', function(){
       $(window).on('hashchange', function() {
         if(window.location.hash == '#reports'){
@@ -29,12 +32,12 @@ App.addChild('MixPanel', {
         }
       });
     });
+
     this.trackPageVisit('projects', 'index', 'Visited home');
     this.trackPageVisit('explore', 'index', 'Explored projects');
     this.trackPageLoad('contributions', 'edit', 'Selected reward');
     this.trackTwitterShare();
     this.trackFacebookShare();
-    this.trackReminderClick();
     this.trackFollowCategory();
     try {
       this.trackOnFacebookLike();
@@ -54,7 +57,7 @@ App.addChild('MixPanel', {
 
   trackReminderClick: function(){
     var self = this;
-    this.$('.reminder a:not([data-method])').on('click', function(event){
+    this.$('#reminder:not([data-method])').on('click', function(event){
       self.track('Engaged with Catarse', { ref: $(event.currentTarget).data('title'), action: 'click reminder' });
       return true;
     });
