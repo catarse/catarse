@@ -132,7 +132,7 @@ RSpec.describe Projects::ContributionsController, type: :controller do
 
     context "when no user is logged" do
       let(:user){ nil }
-      it{ is_expected.to redirect_to new_user_registration_path }
+      it{ is_expected.to render_template("projects/contributions/new") }
     end
 
     context "when user is logged in but project.online? is false" do

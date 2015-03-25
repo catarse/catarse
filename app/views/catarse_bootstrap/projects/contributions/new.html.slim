@@ -11,7 +11,7 @@
         .w-hidden-small.w-hidden-tiny.u-marginbottom-10.fontsize-largest = t('.title')
         .fontsize-base.fontweight-semibold.u-marginbottom-10.u-text-center-small-only.text-success-small-only.fontsize-large-small-only.lineheight-tight = t('.choose_reward')
         .w-form.back-reward-form
-          = simple_form_for [parent, @contribution], html: { id: 'contribution_form' } do |form|
+          = simple_form_for [:fallback_create, parent, @contribution], html: { method: :get, id: 'contribution_form' } do |form|
             = render 'devise/shared/alert'
             = form.input_field :referal_link, as: :hidden, value: referal_link
             = form.input :reward_id, as: :radio_buttons, collection: @rewards, input_html: {class: 'w-radio-input back-reward-radio-button'}, item_wrapper_class: 'w-radio w-clearfix back-reward-radio-reward', label: ''

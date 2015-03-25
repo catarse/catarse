@@ -36,14 +36,12 @@ class Projects::ContributionsController < ApplicationController
   end
 
   def new
-    @contribution = Contribution.new(project: parent, user: current_user)
-    @contribution.value = 10
+    @contribution = Contribution.new(project: parent, value: 10)
     authorize @contribution
 
     @title = t('projects.contributions.new.title', name: @project.name)
     load_rewards
 
-    # Select
     if params[:reward_id] && (@selected_reward = @project.rewards.find params[:reward_id]) && !@selected_reward.sold_out?
       @contribution.reward = @selected_reward
       @contribution.value = "%0.0f" % @selected_reward.minimum_value

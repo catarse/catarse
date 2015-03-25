@@ -40,6 +40,7 @@ Catarse::Application.routes.draw do
       post :sort, on: :member
     end
     resources :contributions, {controller: 'projects/contributions'} do
+      get :fallback_create, to: 'projects/contributions#create', on: :collection
       put :credits_checkout, on: :member
     end
 
