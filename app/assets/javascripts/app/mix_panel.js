@@ -7,6 +7,7 @@ App.addChild('MixPanel', {
     this.controller = this.$el.data('controller') || this.$el.data('controller-name');
     this.action = this.$el.data('action');
     this.user = this.$el.data('user');
+    this.id = this.$el.data('id');
     if(window.mixpanel){
       this.detectLogin();
       this.startTracking();
@@ -34,6 +35,14 @@ App.addChild('MixPanel', {
       });
     });
 
+    this.trackOnPage('pages', 'show', function(){ 
+      if(self.id == 'start'){
+        self.track('Visited start page');
+      }
+    });
+    
+
+    this.trackPageVisit('projects', 'new', 'Visited new project page');
     this.trackPageVisit('projects', 'index', 'Visited home');
     this.trackPageVisit('explore', 'index', 'Explored projects');
     this.trackPageLoad('contributions', 'edit', 'Selected reward');
