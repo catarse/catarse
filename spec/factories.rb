@@ -26,7 +26,6 @@ FactoryGirl.define do
 
   factory :user_without_bank_data, class: User do |f|
     f.name "Foo bar"
-    f.full_name "Foo bar"
     f.password "123456"
     f.cpf "123456"
     f.uploaded_image File.open("#{Rails.root}/spec/support/testimg.png")
@@ -46,7 +45,6 @@ FactoryGirl.define do
     f.association :bank_account
     f.permalink { generate(:permalink) }
     f.name "Foo bar"
-    f.full_name "Foo bar"
     f.password "123456"
     f.cpf "123456"
     f.uploaded_image File.open("#{Rails.root}/spec/support/testimg.png")

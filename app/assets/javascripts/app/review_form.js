@@ -72,8 +72,8 @@ App.addChild('ReviewForm', _.extend({
     var contribution_data = {
       anonymous: this.$('#contribution_anonymous').is(':checked'),
       country_id: this.$('#contribution_country_id').val(),
-      payer_name: this.$('#contribution_full_name').val(),
-      payer_email: this.$('#contribution_email').val(),
+      payer_name: this.$('#contribution_payer_name').val(),
+      payer_email: this.$('#contribution_payer_email').val(),
       payer_document: this.$('#contribution_payer_document').val(),
       address_street: this.$('#contribution_address_street').val(),
       address_number: this.$('#contribution_address_number').val(),
