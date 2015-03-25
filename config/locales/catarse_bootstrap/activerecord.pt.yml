@@ -265,8 +265,7 @@ pt:
     confirmed_at: Data da confirmação do pagamento
     contribution_value: Valor do apoio
     service_fee: Taxa do Catarse
-    user_full_name: Nome completo do apoiador
-    user_name: Apelido do apoiador
+    user_name: Nome do apoiador
     user_email: Email perfil Catarse
     cpf: Cpf do apoiador
     payer_email: Email do meio de pagamento
