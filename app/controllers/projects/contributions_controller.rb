@@ -55,7 +55,6 @@ class Projects::ContributionsController < ApplicationController
     @contribution.value = permitted_params[:contribution][:value]
     @contribution.referal_link = permitted_params[:contribution][:referal_link]
     @contribution.reward_id = (params[:contribution][:reward_id].to_i == 0 ? nil : params[:contribution][:reward_id])
-    session[:fallback_redirect] = fallback_create_project_contributions_path(params) unless current_user.present?
     authorize @contribution
     @contribution.update_current_billing_info
     create! do |success,failure|
