@@ -238,7 +238,8 @@ class Project < ActiveRecord::Base
       permalink: self.permalink,
       total_contributions: self.total_contributions,
       pledged: self.pledged,
-      project_state: self.state
+      project_state: self.state,
+      category: self.category.name_pt
     }.to_json
   end
 
