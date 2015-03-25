@@ -36,18 +36,20 @@ class Projects::ContributionsController < ApplicationController
   end
 
   def new
-    @contribution = Contribution.new(project: parent, user: current_user)
-    @contribution.value = 10
+    @contribution = Contribution.new(project: parent, value: 10)
     authorize @contribution
 
     @title = t('projects.contributions.new.title', name: @project.name)
     load_rewards
 
-    # Select
     if params[:reward_id] && (@selected_reward = @project.rewards.find params[:reward_id]) && !@selected_reward.sold_out?
       @contribution.reward = @selected_reward
       @contribution.value = "%0.0f" % @selected_reward.minimum_value
     end
+  end
+
+  def fallback_create
+    create
   end
 
   def create
@@ -57,6 +59,7 @@ class Projects::ContributionsController < ApplicationController
     @contribution.value = permitted_params[:contribution][:value]
     @contribution.referal_link = permitted_params[:contribution][:referal_link]
     @contribution.reward_id = (params[:contribution][:reward_id].to_i == 0 ? nil : params[:contribution][:reward_id])
+    session[:fallback_redirect] = fallback_create_project_contributions_path(params) unless current_user.present?
     authorize @contribution
     @contribution.update_current_billing_info
     create! do |success,failure|
