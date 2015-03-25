@@ -232,6 +232,16 @@ class Project < ActiveRecord::Base
     end
   end
 
+  def to_analytics_json
+    {
+      id: self.id,
+      permalink: self.permalink,
+      total_contributions: self.total_contributions,
+      pledged: self.pledged,
+      project_state: self.state
+    }.to_json
+  end
+
   private
   def self.between_dates(attribute, starts_at, ends_at)
     return all unless starts_at.present? && ends_at.present?

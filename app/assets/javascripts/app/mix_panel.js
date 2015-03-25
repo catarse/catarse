@@ -2,7 +2,7 @@ App.addChild('MixPanel', {
   el: 'body',
 
   activate: function(){
-    this.VISIT_MIN_TIME = 10000;
+    this.VISIT_MIN_TIME = 4000;
     this.user = null;
     this.controller = this.$el.data('controller') || this.$el.data('controller-name');
     this.action = this.$el.data('action');
@@ -13,19 +13,21 @@ App.addChild('MixPanel', {
     }
   },
 
+  projectProperties: function(){
+    this.$('#project-header').data('stats');
+  },
+
   startTracking: function(){
     var self = this;
     this.trackOnPage('projects', 'show', function(){
-      self.trackVisit('Visited project page', {project_state: self.$('#project-header').data('project-state')});
+      self.trackVisit('Visited project page', self.projectProperties);
     });
     this.trackOnPage('projects', 'edit', function(){
-      if(self.$('#project-header').data('project-state') == 'online'){
-        $(window).on('hashchange', function() {
-          if(window.location.hash == '#reports'){
-            self.track('Project owner engaged with Catarse', { action: 'Visited reports' });
-          }
-        });
-      }
+      $(window).on('hashchange', function() {
+        if(window.location.hash == '#reports'){
+          self.track('Project owner engaged with Catarse', _.extend(self.projectProperties, { action: 'Visited reports' }));
+        }
+      });
     });
     this.trackPageVisit('projects', 'index', 'Visited home');
     this.trackPageVisit('explore', 'index', 'Explored projects');
