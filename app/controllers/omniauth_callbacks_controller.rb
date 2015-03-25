@@ -12,8 +12,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
         flash[:notice] = I18n.t("devise.omniauth_callbacks.success", kind: p.name.capitalize)
         sign_in @auth.user, event: :authentication
-        redirect_to(session[:return_to] || root_path)
-        session[:return_to] = nil
+        redirect_to after_sign_in_path_for(@auth.user)
       end
     end
   end
