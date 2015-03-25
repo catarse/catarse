@@ -514,4 +514,18 @@ RSpec.describe Project, type: :model do
     it{ is_expected.to eq(@user) }
   end
 
+  describe "#to_analytics_json" do
+    subject{ project.to_analytics_json }
+    it do
+      is_expected.to eq({
+        id: project.id,
+        permalink: project.permalink,
+        total_contributions: project.total_contributions,
+        pledged: project.pledged,
+        project_state: project.state,
+        category: project.category.name_pt
+      }.to_json)
+    end
+  end
+
 end

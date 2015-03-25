@@ -158,11 +158,11 @@ class Project < ActiveRecord::Base
   end
 
   def pledged
-    project_total.try(:pledged).to_f
+    @pledged ||= project_total.try(:pledged).to_f
   end
 
   def total_contributions
-    project_total.try(:total_contributions).to_i
+    @total_contributions ||= project_total.try(:total_contributions).to_i
   end
 
   def total_payment_service_fee
@@ -230,6 +230,17 @@ class Project < ActiveRecord::Base
     fragments.each do |fragment|
       base.expire_fragment([fragment, id])
     end
+  end
+
+  def to_analytics_json
+    {
+      id: self.id,
+      permalink: self.permalink,
+      total_contributions: self.total_contributions,
+      pledged: self.pledged,
+      project_state: self.state,
+      category: self.category.name_pt
+    }.to_json
   end
 
   private
