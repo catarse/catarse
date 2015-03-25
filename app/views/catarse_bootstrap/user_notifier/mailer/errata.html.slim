@@ -1,18 +1,13 @@
-p Oi #{@notification.contribution.user.display_name},
+|Olá #{@notification.contribution.user.display_name},
+br
+br
+|Hoje pela manhã, foi enviado erroneamente um post do Blog do Catarse através do perfil do Projeto Mola.
+br
+br
+|Pedimos que desconsidere essa notificação e nos desculpem pelo envio =/
+br
+br
+|Abraços,
+br
+|Equipe Catarse
 
-p Pedimos desculpas pelo envio da notificação "Reembolso: apoio para o projeto não-financiado DVD de Zuzo Moussawer solo e trio com bonus de video-aula", ela foi disparada por engano. O reembolso não será feito.
-p O projeto DVD de Zuzo Moussawer solo e trio com bonus de video-aula alcançou a meta financeira e foi bem sucedido. Os apoios serão repassados para o Zuzo Moussawer realizar o projeto e enviar as recompensas. \o/
-p Estamos reemitindo o Recibo Definitivo do seu apoio para o projeto, devido a uma correção no nome do Realizador.
-p Qualquer dúvida mande um email pra gente! :)
-p
-  ' Abraços,
-  br
-  ' Catarse
-
-- contribution = @notification.contribution
-p Olá, <strong>#{contribution.user.display_name}</strong>!
-p
-  | Parabéns! O projeto #{link_to(contribution.project.name, project_by_slug_url(permalink: contribution.project.permalink))} que, 
-  | incluindo você, teve #{contribution.project.total_contributions} apoiadores, foi financiado com sucesso no #{CatarseSettings[:company_name]}.
-p Esse e-mail serve como um <strong>recibo definitivo da sua contribuição</strong>.
-= render partial: 'contribution_data', locals: {contribution: contribution}
