@@ -158,11 +158,11 @@ class Project < ActiveRecord::Base
   end
 
   def pledged
-    project_total.try(:pledged).to_f
+    @pledged ||= project_total.try(:pledged).to_f
   end
 
   def total_contributions
-    project_total.try(:total_contributions).to_i
+    @total_contributions ||= project_total.try(:total_contributions).to_i
   end
 
   def total_payment_service_fee
