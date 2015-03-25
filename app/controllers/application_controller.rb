@@ -66,8 +66,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource_or_scope)
-    return_to = session.delete(:fallback_redirect) || session.delete(:return_to)
-    (return_to || root_path)
+    (session.delete(:return_to) || root_path)
   end
 
   def redirect_user_back_after_login

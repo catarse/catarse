@@ -79,7 +79,6 @@ RSpec.describe Projects::ContributionsController, type: :controller do
     context "when no user is logged" do
       it{ is_expected.to redirect_to new_user_registration_path }
       it('should set the session[:return_to]'){ expect(session[:return_to]).to eq("/test_path") }
-      it('should set the session[:fallback_redirect]'){ expect(session[:fallback_redirect]).not_to be_nil }
     end
 
     context "when user is logged in" do
