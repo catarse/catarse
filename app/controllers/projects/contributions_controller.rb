@@ -48,10 +48,6 @@ class Projects::ContributionsController < ApplicationController
     end
   end
 
-  def fallback_create
-    create
-  end
-
   def create
     @title = t('projects.contributions.create.title')
     @contribution = parent.contributions.new.localized
