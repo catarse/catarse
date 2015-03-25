@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Project::StateMachineHandler, type: :model do
-  let(:user){ create(:user, full_name: 'Lorem Ipsum', cpf: '99999999999', phone_number: '99999999', moip_login: 'foobar', uploaded_image: File.open("#{Rails.root}/spec/support/testimg.png"), name: 'name' ) }
+  let(:user){ create(:user, cpf: '99999999999', phone_number: '99999999', moip_login: 'foobar', uploaded_image: File.open("#{Rails.root}/spec/support/testimg.png"), name: 'name' ) }
 
   describe "state machine" do
     let(:project) do 
