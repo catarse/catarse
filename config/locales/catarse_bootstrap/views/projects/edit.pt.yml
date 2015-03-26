@@ -24,6 +24,8 @@ pt:
         reward_deliver_time: "<b>Estimativa de Entrega:</b> %{estimate}"
         reward_title: Para %{minimum} ou mais
     dashboard_user_settings:
+       natural: "Nome completo do titular"
+       juridical: "Razão Social do titular"
        title: "Dados cadastrais e bancários"
        subtitle_html: "Com os dados abaixo completos, seu projeto estará pronto para ir ao ar. Após concluir o preenchimento, clique em Salvar. Revise. Se tudo estiver ok, basta apertar o botão Publicar e começar sua campanha!"
        user_data_title: "Dados cadastrais e endereço"
