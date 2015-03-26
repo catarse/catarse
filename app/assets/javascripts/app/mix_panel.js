@@ -22,7 +22,7 @@ App.addChild('MixPanel', {
     var self = this;
 
     this.trackOnPage('projects', 'show', function(){
-      self.trackVisit('Visited project page', self.projectProperties);
+      self.trackVisit('Visited project page', self.projectProperties());
       self.trackReminderClick();
       self.trackOnContributionStart();
     });
@@ -30,7 +30,7 @@ App.addChild('MixPanel', {
     this.trackOnPage('projects', 'edit', function(){
       $(window).on('hashchange', function() {
         if(window.location.hash == '#reports'){
-          self.track('Project owner engaged with Catarse', _.extend(self.projectProperties, { action: 'Visited reports' }));
+          self.track('Project owner engaged with Catarse', _.extend(self.projectProperties(), { action: 'Visited reports' }));
         }
       });
     });
@@ -78,7 +78,7 @@ App.addChild('MixPanel', {
   },
 
   trackStartedContribution: function(action){
-    this.track('Started contribution', _.extend(this.projectProperties, { action: action }));
+    this.track('Started contribution', _.extend(this.projectProperties(), { action: action }));
   },
 
   trackReminderClick: function(){
