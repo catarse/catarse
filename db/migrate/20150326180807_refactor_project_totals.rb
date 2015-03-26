@@ -12,8 +12,7 @@ class RefactorProjectTotals < ActiveRecord::Migration
       FROM 
         contributions c
         JOIN projects ON c.project_id = projects.id
-        JOIN contributions_payments cp ON cp.contribution_id = c.id
-        JOIN payments p ON p.id = cp.payment_id
+        JOIN payments p ON p.contribution_id = c.id
       WHERE p.state::text = ANY (confirmed_states())
       GROUP BY c.project_id, projects.id;
     SQL

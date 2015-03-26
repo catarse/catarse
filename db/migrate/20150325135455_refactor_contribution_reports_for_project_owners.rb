@@ -30,8 +30,7 @@ class RefactorContributionReportsForProjectOwners < ActiveRecord::Migration
        FROM contributions b
          JOIN users u ON u.id = b.user_id
          JOIN projects p ON b.project_id = p.id
-         JOIN contributions_payments cp ON cp.contribution_id = b.id
-         JOIN payments pa ON pa.id = cp.payment_id
+         JOIN payments pa ON pa.contribution_id = b.id
          LEFT JOIN rewards r ON r.id = b.reward_id
       WHERE pa.state::text = ANY (ARRAY['paid'::character varying, 'pending'::character varying]::text[]);
     SQL

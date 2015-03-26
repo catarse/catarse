@@ -22,8 +22,7 @@ class RefactorUserTotals < ActiveRecord::Migration
             END) AS credits
       FROM 
         contributions b
-        JOIN contributions_payments cp ON b.id = cp.contribution_id
-        JOIN payments pa ON cp.payment_id = pa.id
+        JOIN payments pa ON b.id = pa.contribution_id
         JOIN projects p ON b.project_id = p.id
       WHERE pa.state::text = ANY (confirmed_states())
       GROUP BY b.user_id;

@@ -31,8 +31,7 @@ class RefactorContributionReports < ActiveRecord::Migration
         p.state
       FROM contributions b
         JOIN users u ON u.id = b.user_id
-        JOIN contributions_payments cp ON cp.contribution_id = b.id
-        JOIN payments p ON p.id = cp.payment_id
+        JOIN payments p ON p.contribution_id = b.id
         LEFT JOIN rewards r ON r.id = b.reward_id
       WHERE p.state::text = ANY (ARRAY['paid'::character varying::text, 'refunded'::character varying::text, 'pending_refund'::character varying::text]);
     SQL

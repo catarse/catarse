@@ -19,8 +19,7 @@ class RefactorStatistics < ActiveRecord::Migration
             sum(p.value) AS total_contributed
           FROM 
             contributions c
-            JOIN contributions_payments cp ON cp.contribution_id = c.id
-            JOIN payments p ON cp.payment_id = p.id
+            JOIN payments p ON p.contribution_id = c.id
           WHERE p.state::text = ANY (confirmed_states())
         ) contributions_totals,
         (

@@ -1,6 +1,7 @@
 class CreatePayments < ActiveRecord::Migration
   def change
     create_table :payments do |t|
+      t.integer  :contribution_id, null: false
       t.text     :state, null: false
       t.text     :key, null: false
       t.text     :gateway, null: false

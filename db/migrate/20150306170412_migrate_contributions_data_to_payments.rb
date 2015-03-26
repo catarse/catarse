@@ -3,6 +3,7 @@ class MigrateContributionsDataToPayments < ActiveRecord::Migration
     execute <<-SQL
     INSERT INTO payments (
       id,
+      contribution_id,
       state,
       key,
       gateway,
@@ -21,6 +22,7 @@ class MigrateContributionsDataToPayments < ActiveRecord::Migration
       refunded_at
     )
     SELECT
+      c.id,
       c.id,
       CASE c.state
         WHEN 'pending' THEN 'pending'
@@ -63,8 +65,7 @@ class MigrateContributionsDataToPayments < ActiveRecord::Migration
       contributions c
     WHERE
       c.state <> 'deleted';
-    INSERT INTO contributions_payments (contribution_id, payment_id) SELECT id, id FROM payments;
-    UPDATE payment_notifications SET payment_id = contribution_id WHERE EXISTS (SELECT true FROM payments p WHERE p.id = contribution_id);
+    UPDATE payment_notifications SET payment_id = contribution_id WHERE EXISTS (SELECT true FROM payments p WHERE p.id = payment_notifications.contribution_id);
     SELECT setval('payments_id_seq', (SELECT max(id) FROM payments));
     SQL
   end
