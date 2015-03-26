@@ -194,6 +194,7 @@ RSpec.describe Contribution, type: :model do
   end
 
   describe '#recommended_projects' do
+    let(:contribution){ create(:confirmed_contribution) }
     subject{ contribution.recommended_projects }
 
     context "when we have another projects in the same category" do
@@ -207,10 +208,10 @@ RSpec.describe Contribution, type: :model do
 
     context "when another user has contributed the same project" do
       before do
-        @another_contribution = create(:contribution, project: contribution.project)
-        @recommended = create(:contribution, user: @another_contribution.user).project
+        @another_contribution = create(:confirmed_contribution, project: contribution.project)
+        @recommended = create(:confirmed_contribution, user: @another_contribution.user).project
         # add a project successful that should not apear as recommended
-        create(:contribution, user: @another_contribution.user, project: successful_project)
+        create(:confirmed_contribution, user: @another_contribution.user, project: successful_project)
         successful_project.update_attributes state: 'successful'
       end
       it{ is_expected.to eq [@recommended] }

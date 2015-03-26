@@ -15,7 +15,7 @@ class MigrateContributionsDataToPayments < ActiveRecord::Migration
       installment_value,
       created_at,
       updated_at,
-      pait_at,
+      paid_at,
       refused_at,
       pending_refund_at,
       refunded_at
