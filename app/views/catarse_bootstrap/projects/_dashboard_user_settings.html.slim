@@ -1,124 +1,128 @@
-- disable_edit = !policy(@project).update_account?
-- unless disable_edit
-  .u-text-center
-    .w-container
-      .w-row
-        .w-col.w-col-2
-        .w-col.w-col-8
-          .fontweight-semibold.fontsize-large= t('.title')
-          p.fontsize-base= t('.subtitle_html')
-        .w-col.w-col-2.fontcolor-terciary
-
-= simple_form_for @project, defaults: {input_html: {disabled: disable_edit }, wrapper: :one_col, validation_text: false, label_wrapper_html: { class: 'w-col w-col-5 w-sub-col' } }, html: { id: 'project_account_form', class: 'w-form project-form' } do |f|
-  = hidden_field_tag :anchor, 'user_settings'
-  = f.simple_fields_for :account do |form|
-    .section
+#dashboard-user_settings-tab
+  - disable_edit = !policy(@project).update_account?
+  - unless disable_edit
+    .u-text-center
       .w-container
-        .w-col.w-col-8.u-marginbottom-30
-          = @project.display_errors(:user_settings)
-          - if disable_edit
-            .card.u-radius.card-message.u-marginbottom-20
-              .fontsize-small
-                = t('.account_edit_disabled_html', link: (link_to 'entrar em contato conosco'," #{CatarseSettings[:zendesk_url]}/account/dropboxes/#{CatarseSettings[:zendesk_dropbox_id]}", class: 'alt-link zendesk_widget' ))
-          .w-form.card.card-terciary
-            #email-form
-              .fontsize-base.fontweight-semibold= t('.user_data_title') 
-              .fontsize-small.u-marginbottom-20= t('.user_data_subtitle_html') 
+        .w-row
+          .w-col.w-col-2
+          .w-col.w-col-8
+            .fontweight-semibold.fontsize-large= t('.title')
+            p.fontsize-base= t('.subtitle_html')
+          .w-col.w-col-2.fontcolor-terciary
+
+  = simple_form_for @project, defaults: {input_html: {disabled: disable_edit }, wrapper: :one_col, validation_text: false, label_wrapper_html: { class: 'w-col w-col-5 w-sub-col' } }, html: { id: 'project_account_form', class: 'w-form project-form' } do |f|
+    = hidden_field_tag :anchor, 'user_settings'
+    = f.simple_fields_for :account do |form|
+      .section
+        .w-container
+          .w-col.w-col-8.u-marginbottom-30
+            = @project.display_errors(:user_settings)
+            - if disable_edit
+              .card.u-radius.card-message.u-marginbottom-20
+                .fontsize-small
+                  = t('.account_edit_disabled_html', link: (link_to 'entrar em contato conosco'," #{CatarseSettings[:zendesk_url]}/account/dropboxes/#{CatarseSettings[:zendesk_dropbox_id]}", class: 'alt-link zendesk_widget' ))
+            .w-form.card.card-terciary
+              #email-form
+                .fontsize-base.fontweight-semibold= t('.user_data_title') 
+                .fontsize-small.u-marginbottom-20= t('.user_data_subtitle_html') 
+                .w-row
+                  .w-col.w-col-6
+                    = form.input_field :person_type, as: :select, collection: ['Pessoa Física', 'Pessoa Jurídica'], class: 'w-select positive account_type', include_blank: false
+                  .w-col.w-col-6
+                .divider.u-marginbottom-20
+                .w-row
+                  .w-col.w-col-6.w-sub-col
+                    = form.hidden_field :project_id, value: @project.id
+                    = form.input :full_name, as: :string, item_wrapper_class: 'test', input_html: { class: 'positive', required: true, data: {natural: t('.natural'), juridical: t('.juridical') } }
+                  .w-col.w-col-6
+                    = form.input :email, as: :string, 
+                    input_html: { class: 'positive', required: true }
+                .w-row
+                  .w-col.w-col-6.w-sub-col
+                    = form.input :cpf, as: :tel, 
+                      input_html: { class: 'positive user-document', required: true, data: { :'validate-cpf-cnpj' => true }}
+                  .w-col.w-col-6
+                    = form.input :state_inscription, as: :string, 
+                    input_html: { class: 'positive', required: true }
+                .w-row
+                  .w-col.w-col-6.w-sub-col
+                    = form.input :address_street, as: :string, 
+                    input_html: { class: 'positive', required: true }
+                  .w-col.w-col-6
+                    .w-row
+                      .w-col.w-col-6.w-col-small-6.w-col-tiny-6.w-sub-col-middle
+                        = form.input :address_number, as: :string, 
+                        input_html: { class: 'positive', required: true }
+                      .w-col.w-col-6.w-col-small-6.w-col-tiny-6
+                        = form.input :address_complement, as: :string, 
+                        input_html: { class: 'positive', required: false }
+                .w-row
+                  .w-col.w-col-6.w-sub-col
+                    = form.input :address_neighbourhood, as: :string, 
+                    input_html: { class: 'positive', required: true }
+                  .w-col.w-col-6
+                    = form.input :address_city, as: :string, 
+                    input_html: { class: 'positive', required: true }
+                .w-row
+                  .w-col.w-col-6.w-sub-col
+                    = form.input :address_state, as: :select, collection: State.array, class: 'w-select positive', 
+                    input_html: { class: 'positive', required: true }
+                  .w-col.w-col-6
+                    .w-row
+                      .w-col.w-col-6.w-col-small-6.w-col-tiny-6.w-sub-col-middle
+                        = form.input :address_zip_code, as: :string, 
+                        input_html: { class: 'positive', required: true }
+                      .w-col.w-col-6.w-col-small-6.w-col-tiny-6
+                        = form.input :phone_number, as: :string, 
+                        input_html: { class: 'positive', required: true }
+            .w-form.card.card-terciary
+              .fontsize-base.fontweight-semibold= t('.account_title')
+              .fontsize-small.u-marginbottom-20= t('.account_subtitle_html')
               .divider.u-marginbottom-20
               .w-row
                 .w-col.w-col-6.w-sub-col
-                  = form.hidden_field :project_id, value: @project.id
-                  = form.input :full_name, as: :string,
-                  input_html: { class: 'positive', required: true }
-                .w-col.w-col-6
-                  = form.input :email, as: :string, 
-                  input_html: { class: 'positive', required: true }
-              .w-row
-                .w-col.w-col-6.w-sub-col
-                  = form.input :cpf, as: :tel, 
-                    input_html: { class: 'positive', required: true, data: { :'validate-cpf-cnpj' => true }}
-                .w-col.w-col-6
-                  = form.input :state_inscription, as: :string, 
-                  input_html: { class: 'positive', required: true }
-              .w-row
-                .w-col.w-col-6.w-sub-col
-                  = form.input :address_street, as: :string, 
+                  = form.input :bank_id, as: :select, collection: Bank.to_collection, class: 'w-select positive', 
                   input_html: { class: 'positive', required: true }
                 .w-col.w-col-6
                   .w-row
                     .w-col.w-col-6.w-col-small-6.w-col-tiny-6.w-sub-col-middle
-                      = form.input :address_number, as: :string, 
+                      = form.input :agency, as: :string, 
                       input_html: { class: 'positive', required: true }
                     .w-col.w-col-6.w-col-small-6.w-col-tiny-6
-                      = form.input :address_complement, as: :string, 
-                      input_html: { class: 'positive', required: false }
+                      = form.input :agency_digit, as: :string, 
+                      input_html: { class: 'positive', required: true }
               .w-row
                 .w-col.w-col-6.w-sub-col
-                  = form.input :address_neighbourhood, as: :string, 
-                  input_html: { class: 'positive', required: true }
-                .w-col.w-col-6
-                  = form.input :address_city, as: :string, 
-                  input_html: { class: 'positive', required: true }
-              .w-row
-                .w-col.w-col-6.w-sub-col
-                  = form.input :address_state, as: :select, collection: State.array, class: 'w-select positive', 
-                  input_html: { class: 'positive', required: true }
-                .w-col.w-col-6
                   .w-row
                     .w-col.w-col-6.w-col-small-6.w-col-tiny-6.w-sub-col-middle
-                      = form.input :address_zip_code, as: :string, 
+                      = form.input :account, as: :string, 
                       input_html: { class: 'positive', required: true }
                     .w-col.w-col-6.w-col-small-6.w-col-tiny-6
-                      = form.input :phone_number, as: :string, 
+                      = form.input :account_digit, as: :string, 
                       input_html: { class: 'positive', required: true }
-          .w-form.card.card-terciary
-            .fontsize-base.fontweight-semibold= t('.account_title')
-            .fontsize-small.u-marginbottom-20= t('.account_subtitle_html')
-            .divider.u-marginbottom-20
-            .w-row
-              .w-col.w-col-6.w-sub-col
-                = form.input :bank_id, as: :select, collection: Bank.to_collection, class: 'w-select positive', 
-                input_html: { class: 'positive', required: true }
-              .w-col.w-col-6
-                .w-row
-                  .w-col.w-col-6.w-col-small-6.w-col-tiny-6.w-sub-col-middle
-                    = form.input :agency, as: :string, 
-                    input_html: { class: 'positive', required: true }
-                  .w-col.w-col-6.w-col-small-6.w-col-tiny-6
-                    = form.input :agency_digit, as: :string, 
-                    input_html: { class: 'positive', required: true }
-            .w-row
-              .w-col.w-col-6.w-sub-col
-                .w-row
-                  .w-col.w-col-6.w-col-small-6.w-col-tiny-6.w-sub-col-middle
-                    = form.input :account, as: :string, 
-                    input_html: { class: 'positive', required: true }
-                  .w-col.w-col-6.w-col-small-6.w-col-tiny-6
-                    = form.input :account_digit, as: :string, 
-                    input_html: { class: 'positive', required: true }
-              .w-col.w-col-6
-                = form.input :owner_name, as: :string, 
-                input_html: { class: 'positive', required: true }
-            .w-row
-              .w-col.w-col-6.w-sub-col
-                = form.input :owner_document, as: :tel, 
-                input_html: { class: 'positive', required: true, data: { :'validate-cpf-cnpj' => true } }
-              .w-col.w-col-6
-                = form.input :account_type, as: :select, collection: ['Corrente', 'Poupança'], class: 'w-select positive',
-                input_html: { class: 'positive', required: true }
-        .w-col.w-col-4
-          .w-hidden-small.w-hidden-tiny.card.u-radius.u-marginbottom-20 data-ix="new-interaction" 
-            .fontsize-small.fontweight-semibold.u-marginbottom-20 Links úteis
-            ul.w-list-unstyled
-              li.alt-link.fontsize-smaller.u-marginbottom-10
-                a.alt-link href="http://suporte.catarse.me/hc/pt-br/articles/202457548-O-Catarse-emite-Nota-Fiscal-" target="_blank"  O Catarse emite Nota Fiscal?
-              li.alt-link.fontsize-smaller.u-marginbottom-10
-                a.alt-link href="http://suporte.catarse.me/hc/pt-br/articles/202037493-Como-ser%C3%A1-feito-o-repasse-do-dinheiro-" target="_blank"  Como será feito o repasse de recursos?
+                .w-col.w-col-6
+                  = form.input :owner_name, as: :string, 
+                  input_html: { class: 'positive', required: true }
+              .w-row
+                .w-col.w-col-6.w-sub-col
+                  = form.input :owner_document, as: :tel, 
+                  input_html: { class: 'positive', required: true, data: { :'validate-cpf-cnpj' => true } }
+                .w-col.w-col-6
+                  = form.input :account_type, as: :select, collection: ['Corrente', 'Poupança'], class: 'w-select positive',
+                  input_html: { class: 'positive', required: true }
+          .w-col.w-col-4
+            .w-hidden-small.w-hidden-tiny.card.u-radius.u-marginbottom-20 data-ix="new-interaction" 
+              .fontsize-small.fontweight-semibold.u-marginbottom-20 Links úteis
+              ul.w-list-unstyled
+                li.alt-link.fontsize-smaller.u-marginbottom-10
+                  a.alt-link href="http://suporte.catarse.me/hc/pt-br/articles/202457548-O-Catarse-emite-Nota-Fiscal-" target="_blank"  O Catarse emite Nota Fiscal?
+                li.alt-link.fontsize-smaller.u-marginbottom-10
+                  a.alt-link href="http://suporte.catarse.me/hc/pt-br/articles/202037493-Como-ser%C3%A1-feito-o-repasse-do-dinheiro-" target="_blank"  Como será feito o repasse de recursos?
 
-      div
-        .w-container
-          .w-row
-            .w-col.w-col-4
-            .w-col.w-col-4
-              = form.button :submit, t('.submit'),  class:'btn btn-large'
-            .w-col.w-col-4
+        div
+          .w-container
+            .w-row
+              .w-col.w-col-4
+              .w-col.w-col-4
+                = form.button :submit, t('.submit'),  class:'btn btn-large'
+              .w-col.w-col-4
