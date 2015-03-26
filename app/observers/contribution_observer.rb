@@ -2,7 +2,6 @@ class ContributionObserver < ActiveRecord::Observer
   observe :contribution
 
   def after_create(contribution)
-    contribution.define_key
     PendingContributionWorker.perform_at(2.day.from_now, contribution.id)
   end
 
