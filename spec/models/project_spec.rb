@@ -155,10 +155,10 @@ RSpec.describe Project, type: :model do
       @project_02 = create(:project, goal: 100)
       @project_03 = create(:project, goal: 100)
 
-      create(:contribution, value: 10, project: @project_01)
-      create(:contribution, value: 10, project: @project_01)
-      create(:contribution, value: 30, project: @project_02)
-      create(:contribution, value: 10, project: @project_03)
+      create(:confirmed_contribution, value: 10, project: @project_01)
+      create(:confirmed_contribution, value: 10, project: @project_01)
+      create(:confirmed_contribution, value: 30, project: @project_02)
+      create(:confirmed_contribution, value: 10, project: @project_03)
     end
 
     it { is_expected.to have(2).itens }
@@ -355,7 +355,7 @@ RSpec.describe Project, type: :model do
 
     context 'when sum of all contributions hit the goal' do
       before do
-        create(:contribution, value: 4000, project: project)
+        create(:confirmed_contribution, value: 4000, project: project)
       end
       it { is_expected.to eq(true) }
     end
