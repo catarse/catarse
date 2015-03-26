@@ -19,7 +19,6 @@ class CreateContributionDetails < ActiveRecord::Migration
       c.anonymous,
       c.payer_email,
       pa.gateway_id,
-      c.state AS contribution_state,
       pa.state AS payment_state,
       EXISTS(SELECT 1 FROM rewards r WHERE r.id = c.reward_id) AS "has_rewards"
     FROM

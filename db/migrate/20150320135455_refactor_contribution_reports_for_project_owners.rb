@@ -33,7 +33,7 @@ class RefactorContributionReportsForProjectOwners < ActiveRecord::Migration
          JOIN contributions_payments cp ON cp.contribution_id = b.id
          JOIN payments pa ON pa.id = cp.payment_id
          LEFT JOIN rewards r ON r.id = b.reward_id
-      WHERE b.state::text = ANY (ARRAY['confirmed'::character varying, 'waiting_confirmation'::character varying]::text[]);
+      WHERE pa.state::text = ANY (ARRAY['paid'::character varying, 'pending'::character varying]::text[]);
     SQL
   end
 
