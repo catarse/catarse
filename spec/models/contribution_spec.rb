@@ -275,7 +275,8 @@ RSpec.describe Contribution, type: :model do
 
     context "when contributions are confirmed and not done with credits" do
       before do
-        create(:contribution, state: 'confirmed', user: user, project: failed_project)
+        contribution = create(:contribution, user: user, project: failed_project)
+        contribution.payments << create(:payment, state: 'paid', value: 10, gateway: 'AnyButCredits')
         failed_project.update_attributes state: 'failed'
         user.reload
       end

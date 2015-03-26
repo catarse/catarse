@@ -104,10 +104,24 @@ class User < ActiveRecord::Base
   scope :has_credits, -> { joins(:user_total).where('user_totals.credits > 0 and not users.zero_credits') }
   scope :already_used_credits, -> {
     has_credits.
-    where("EXISTS (SELECT true FROM contributions b WHERE b.credits AND b.state = 'confirmed' AND b.user_id = users.id)")
+    where("EXISTS (
+            SELECT true 
+            FROM 
+              contributions b 
+              JOIN contributions_payments cp ON cp.contribution_id = b.id 
+              JOIN payments p ON cp.payment_id = p.id 
+            WHERE p.uses_credits AND p.state = 'paid' AND b.user_id = users.id)")
   }
   scope :has_not_used_credits_last_month, -> { has_credits.
-    where("NOT EXISTS (SELECT true FROM contributions b WHERE current_timestamp - b.created_at < '1 month'::interval AND b.credits AND b.state = 'confirmed' AND b.user_id = users.id)")
+    where("NOT EXISTS (
+                SELECT true 
+                FROM 
+                  contributions b 
+                  JOIN contributions_payments cp ON cp.contribution_id = b.id 
+                  JOIN payments p ON cp.payment_id = p.id 
+                WHERE 
+                  current_timestamp - b.created_at < '1 month'::interval 
+                  AND p.uses_credits AND p.state = 'paid' AND b.user_id = users.id)")
   }
 
   scope :to_send_category_notification, -> (category_id) {

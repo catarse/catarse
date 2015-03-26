@@ -74,12 +74,11 @@ RSpec.describe User, type: :model do
 
     context "when he has credits in the user_total" do
       before do
-        b = create(:contribution, state: 'confirmed', value: 100, project: failed_project)
+        @user_with_credits = create(:confirmed_contribution, project: failed_project).user
         failed_project.update_attributes state: 'failed'
-        @u = b.user
-        b = create(:contribution, state: 'confirmed', value: 100, project: successful_project)
+        create(:confirmed_contribution, project: successful_project)
       end
-      it{ is_expected.to eq([@u]) }
+      it{ is_expected.to eq([@user_with_credits]) }
     end
 
     context "when he has credits in the user_total but is checked with zero credits" do
@@ -99,18 +98,17 @@ RSpec.describe User, type: :model do
 
     context "when he has used credits in the last month" do
       before do
-        b = create(:contribution, state: 'confirmed', value: 100, credits: true)
-        @u = b.user
+        create(:contribution_with_credits)
       end
       it{ is_expected.to eq([]) }
     end
+
     context "when he has not used credits in the last month" do
       before do
-        b = create(:contribution, state: 'confirmed', value: 100, project: failed_project)
+        @user_with_credits = create(:confirmed_contribution, project: failed_project).user
         failed_project.update_attributes state: 'failed'
-        @u = b.user
       end
-      it{ is_expected.to eq([@u]) }
+      it{ is_expected.to eq([@user_with_credits]) }
     end
   end
 
@@ -269,10 +267,10 @@ RSpec.describe User, type: :model do
     subject { user.total_contributed_projects }
 
     before do
-      create(:contribution, state: 'confirmed', user: user, project: project)
-      create(:contribution, state: 'confirmed', user: user, project: project)
-      create(:contribution, state: 'confirmed', user: user, project: project)
-      create(:contribution, state: 'confirmed', user: user)
+      create(:confirmed_contribution, user: user, project: project)
+      create(:confirmed_contribution, user: user, project: project)
+      create(:confirmed_contribution, user: user, project: project)
+      create(:confirmed_contribution, user: user)
       user.reload
     end
 
@@ -327,16 +325,21 @@ RSpec.describe User, type: :model do
   end
 
   describe "#credits" do
+    def create_contribution_with_payment user, project, value, credits, payment_state = 'paid'
+      c = create(:confirmed_contribution, user_id: user.id, project: project)
+      c.payments.first.update_attributes gateway: (credits ? 'Credits' : 'AnyButCredits'), value: value, state: payment_state
+    end
     before do
       @u = create(:user)
-      create(:contribution, state: 'confirmed', credits: false, value: 100, user_id: @u.id, project: successful_project)
-      create(:contribution, state: 'confirmed', credits: false, value: 100, user_id: @u.id, project: unfinished_project)
-      create(:contribution, state: 'confirmed', credits: false, value: 200, user_id: @u.id, project: failed_project)
-      create(:contribution, state: 'confirmed', credits: true, value: 100, user_id: @u.id, project: successful_project)
-      create(:contribution, state: 'confirmed', credits: true, value: 50, user_id: @u.id, project: unfinished_project)
-      create(:contribution, state: 'confirmed', credits: true, value: 100, user_id: @u.id, project: failed_project)
-      create(:contribution, state: 'requested_refund', credits: false, value: 200, user_id: @u.id, project: failed_project)
-      create(:contribution, state: 'refunded', credits: false, value: 200, user_id: @u.id, project: failed_project)
+      create_contribution_with_payment @u, successful_project, 100, false
+      create_contribution_with_payment @u, unfinished_project, 100, false
+      create_contribution_with_payment @u, failed_project, 200, false
+      create_contribution_with_payment @u, successful_project, 100, true
+      create_contribution_with_payment @u, unfinished_project, 50, true
+      create_contribution_with_payment @u, failed_project, 100, true
+      create_contribution_with_payment @u, failed_project, 200, false, 'pending_refund'
+      create_contribution_with_payment @u, failed_project, 200, false, 'refunded'
+
       failed_project.update_attributes state: 'failed'
       successful_project.update_attributes state: 'successful'
     end
