@@ -15,7 +15,7 @@ App.addChild('MixPanel', {
   },
 
   projectProperties: function(){
-    this.$('#project-header').data('stats');
+    return this.$('#project-header').data('stats');
   },
 
   startTracking: function(){
