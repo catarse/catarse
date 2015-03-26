@@ -119,10 +119,4 @@ class Contribution < ActiveRecord::Base
   def price_in_cents
     (self.value * 100).round
   end
-
-  #==== Used on before and after callbacks
-
-  def define_key
-    self.update_attributes({ key: Digest::MD5.new.update("#{self.id}###{self.created_at}###{Kernel.rand}").to_s })
-  end
 end
