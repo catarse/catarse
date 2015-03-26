@@ -24,16 +24,16 @@
         .w-hidden-small.w-hidden-tiny.u-marginbottom-40.fontsize-base
           = t('users.profile.user_since', date: localize(resource.created_at, format: "%B de %Y"))
           br
-        - if projects_to_show.count == 0
-          = t('users.profile.no_project_contribution')
-        - elsif projects_to_show.count == 1
-          = t('users.profile.single_project_contribution')
-        - else
-          = t('users.profile.multiple_project_contribution', n_projects: projects_to_show.count)
-        - if resource.created_projects.count == 1
-          = t('users.profile.single_project_created')
-        - elsif resource.created_projects.count > 1
-          = t('users.profile.multiple_project_created', n_projects: resource.created_projects.count)
+          - if projects_to_show.count == 0
+            = t('users.profile.no_project_contribution')
+          - elsif projects_to_show.count == 1
+            = t('users.profile.single_project_contribution')
+          - else
+            = t('users.profile.multiple_project_contribution', n_projects: projects_to_show.count)
+          - if resource.created_projects.count == 1
+            = t('users.profile.single_project_created')
+          - elsif resource.created_projects.count > 1
+            = t('users.profile.multiple_project_created', n_projects: resource.created_projects.count)
 
   .hero-profile style="background-image: url('#{resource.cover_image.try(:base).try(:url) || resource.display_image}')"
 
