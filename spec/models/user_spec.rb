@@ -358,9 +358,9 @@ RSpec.describe User, type: :model do
   describe "#recommended_project" do
     subject{ user.recommended_projects }
     before do
-      other_contribution = create(:contribution, state: 'confirmed')
-      create(:contribution, state: 'confirmed', user: other_contribution.user, project: unfinished_project)
-      create(:contribution, state: 'confirmed', user: user, project: other_contribution.project)
+      other_contribution = create(:confirmed_contribution)
+      create(:confirmed_contribution, user: other_contribution.user, project: unfinished_project)
+      create(:confirmed_contribution, user: user, project: other_contribution.project)
     end
     it{ is_expected.to eq([unfinished_project])}
   end

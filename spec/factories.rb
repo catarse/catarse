@@ -156,6 +156,11 @@ FactoryGirl.define do
     f.state 'confirmed'
     f.credits false
     f.payment_id '1.2.3'
+    factory :confirmed_contribution do
+      after :create do |contribution|
+        contribution.payments << create(:payment, state: 'paid')
+      end
+    end
   end
 
   factory :payment do |f|
