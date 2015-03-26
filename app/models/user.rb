@@ -52,7 +52,7 @@ class User < ActiveRecord::Base
   has_many :unsubscribes
   has_many :project_posts
   has_many :contributed_projects, -> do
-    distinct.where(contributions: { state: ['confirmed', 'requested_refund', 'refunded'] } ).order('projects.created_at DESC')
+    distinct.where("contributions.confirmed").order('projects.created_at DESC')
   end, through: :contributions, source: :project
   has_many :category_followers, dependent: :destroy
   has_many :categories, through: :category_followers
@@ -97,8 +97,7 @@ class User < ActiveRecord::Base
                                 SELECT true 
                                 FROM 
                                   contributions c 
-                                  JOIN contributions_payments cp ON cp.contribution_id = c.id
-                                  JOIN payments p ON cp.payment_id = p.id
+                                  JOIN payments p ON c.id = p.contribution_id
                                 WHERE c.user_id = users.id AND p.key = ?)', key
                                ) }
   scope :has_credits, -> { joins(:user_total).where('user_totals.credits > 0 and not users.zero_credits') }
@@ -107,21 +106,19 @@ class User < ActiveRecord::Base
     where("EXISTS (
             SELECT true 
             FROM 
-              contributions b 
-              JOIN contributions_payments cp ON cp.contribution_id = b.id 
-              JOIN payments p ON cp.payment_id = p.id 
-            WHERE p.uses_credits AND p.state = 'paid' AND b.user_id = users.id)")
+              contributions c 
+              JOIN payments p ON c.id = p.contribution_id 
+            WHERE p.uses_credits AND p.state = 'paid' AND c.user_id = users.id)")
   }
   scope :has_not_used_credits_last_month, -> { has_credits.
     where("NOT EXISTS (
                 SELECT true 
                 FROM 
-                  contributions b 
-                  JOIN contributions_payments cp ON cp.contribution_id = b.id 
-                  JOIN payments p ON cp.payment_id = p.id 
+                  contributions c 
+                  JOIN payments p ON c.id = p.contribution_id 
                 WHERE 
-                  current_timestamp - b.created_at < '1 month'::interval 
-                  AND p.uses_credits AND p.state = 'paid' AND b.user_id = users.id)")
+                  current_timestamp - c.created_at < '1 month'::interval 
+                  AND p.uses_credits AND p.state = 'paid' AND c.user_id = users.id)")
   }
 
   scope :to_send_category_notification, -> (category_id) {

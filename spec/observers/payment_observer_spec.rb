@@ -1,29 +1,21 @@
 require 'rails_helper'
 
-RSpec.describe ContributionObserver do
-  let(:contribution){ create(:contribution, key: 'should be updated', payment_method: 'should be updated', state: 'confirmed', confirmed_at: nil) }
+RSpec.describe PaymentObserver do
+  let(:payment){ build(:payment, method: 'should be updated', state: 'paid', paid_at: nil) }
   subject{ contribution }
 
   describe "after_create" do
-    before{ allow(Kernel).to receive(:rand).and_return(1) }
-    its(:key){ should == Digest::MD5.new.update("#{contribution.id}###{contribution.created_at}##1").to_s }
+    before do
+      expect(PendingContributionWorker).to receive(:perform_at)
+    end
 
-    context "after create the contribution" do
-      let(:contribution) { build(:contribution) }
-
-      before do
-        expect(PendingContributionWorker).to receive(:perform_at)
-      end
-
-      it "should call perform at in pending contribution worker" do
-        contribution.save
-      end
+    it "should call perform at in pending contribution worker" do
+      payment.save
     end
   end
 
   describe "after_save" do
     context "when payment_choice is updated to BoletoBancario" do
-      let(:contribution){ create(:contribution, key: 'should be updated', payment_method: 'should be updated', state: 'confirmed', confirmed_at: Time.now) }
       before do
         expect(ContributionNotification).to receive(:notify_once).with(:payment_slip, contribution.user, contribution, {})
         contribution.payment_choice = 'BoletoBancario'
@@ -36,7 +28,7 @@ RSpec.describe ContributionObserver do
   describe "before_save" do
     context "when is not yet confirmed" do
       context 'notify the contribution' do
-        subject { build(:contribution, key: 'should be updated', payment_method: 'should be updated', state: 'confirmed', confirmed_at: nil) }
+        subject { payment }
 
         before do
           expect(ContributionNotification).
@@ -54,7 +46,6 @@ RSpec.describe ContributionObserver do
     end
 
     context "when is already confirmed" do
-      let(:contribution){ create(:contribution, key: 'should be updated', payment_method: 'should be updated', state: 'confirmed', confirmed_at: Time.now) }
       before do
         expect(ContributionNotification).to receive(:notify).never
       end

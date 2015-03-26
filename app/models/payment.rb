@@ -1,7 +1,7 @@
 class Payment < ActiveRecord::Base
   include Shared::StateMachineHelpers
 
-  has_and_belongs_to_many :contributions
+  belongs_to :contribution
 
   validates_presence_of :state, :key, :gateway, :method, :value, :installments, :installment_value
   validate :value_should_be_equal_or_greater_than_pledge
@@ -14,15 +14,18 @@ class Payment < ActiveRecord::Base
     errors.add(:value, I18n.t("activerecord.errors.models.payment.attributes.value.invalid")) if self.contribution && self.value < self.contribution.value
   end
 
-  def contribution
-    contributions.first
-  end
-
   state_machine :state, initial: :pending do
     state :pending
     state :paid
     state :pending_refund
     state :refunded
     state :refused
+
+    after_transition do |payment, transition|
+      payment.notify_observers :"from_#{transition.from}_to_#{transition.to}"
+
+      to_column = "#{transition.to}_at".to_sym
+      payment.update_attribute(to_column, DateTime.now) if payment.has_attribute?(to_column)
+    end
   end
 end

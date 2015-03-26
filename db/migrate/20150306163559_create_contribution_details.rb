@@ -24,8 +24,7 @@ class CreateContributionDetails < ActiveRecord::Migration
     FROM
       projects p
       JOIN contributions c ON c.project_id = p.id
-      JOIN contributions_payments cp ON cp.contribution_id = c.id
-      JOIN payments pa ON cp.payment_id = pa.id
+      JOIN payments pa ON c.id = pa.contribution_id
       JOIN users u ON c.user_id = u.id;
     SQL
   end

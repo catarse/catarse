@@ -10,8 +10,7 @@ class AddCompatibilityFunctions < ActiveRecord::Migration
         SELECT true
         FROM 
           payments p 
-          JOIN contributions_payments cp ON cp.payment_id = p.id
-        WHERE cp.contribution_id = $1.id AND p.state = ANY(confirmed_states())
+        WHERE p.contribution_id = $1.id AND p.state = ANY(confirmed_states())
       );
     $$ LANGUAGE SQL;
     SQL

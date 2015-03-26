@@ -372,7 +372,7 @@ RSpec.describe User, type: :model do
     subject{user.project_unsubscribes}
     before do
       @p1 = create(:project)
-      create(:contribution, user: user, project: @p1)
+      create(:confirmed_contribution, user: user, project: @p1)
       @u1 = create(:unsubscribe, project_id: @p1.id, user_id: user.id )
     end
     it{ is_expected.to eq([@u1])}
@@ -382,8 +382,8 @@ RSpec.describe User, type: :model do
     subject{user.contributed_projects}
     before do
       @p1 = create(:project)
-      create(:contribution, user: user, project: @p1)
-      create(:contribution, user: user, project: @p1)
+      create(:confirmed_contribution, user: user, project: @p1)
+      create(:confirmed_contribution, user: user, project: @p1)
     end
     it{is_expected.to eq([@p1])}
   end
@@ -393,8 +393,8 @@ RSpec.describe User, type: :model do
     before do
       @failed_project = create(:project, state: 'online')
       @online_project = create(:project, state: 'online')
-      create(:contribution, user: user, project: @failed_project)
-      create(:contribution, user: user, project: @online_project)
+      create(:confirmed_contribution, user: user, project: @failed_project)
+      create(:confirmed_contribution, user: user, project: @online_project)
       @failed_project.update_columns state: 'failed'
     end
     it{is_expected.to eq([@failed_project])}
