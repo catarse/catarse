@@ -1,5 +1,6 @@
 class Payment < ActiveRecord::Base
   include Shared::StateMachineHelpers
+  include Payment::PaymentEngineHandler
 
   belongs_to :contribution
 
