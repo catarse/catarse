@@ -15,6 +15,10 @@ class Payment < ActiveRecord::Base
     errors.add(:value, I18n.t("activerecord.errors.models.payment.attributes.value.invalid")) if self.contribution && self.value < self.contribution.value
   end
 
+  def credits?
+    self.gateway == 'Credits'
+  end
+
   def slip_payment?
     self.payment_method == 'BoletoBancario'
   end
@@ -25,6 +29,29 @@ class Payment < ActiveRecord::Base
     state :pending_refund
     state :refunded
     state :refused
+    state :deleted
+
+    event :trash do
+      transition all => :deleted
+    end
+
+    event :pay do
+      transition all => :confirmed
+    end
+
+    event :refuse do
+      transition all => :refused
+    end
+
+    event :request_refund do
+      transition confirmed: :pending_refund, if: ->(payment){
+        payment.contribution.user.credits >= payment.value && !payment.credits?
+      }
+    end
+
+    event :refund do
+      transition [:pending_refund, :paid] => :refunded
+    end
 
     after_transition do |payment, transition|
       payment.notify_observers :"from_#{transition.from}_to_#{transition.to}"

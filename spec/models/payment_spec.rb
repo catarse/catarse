@@ -34,6 +34,20 @@ RSpec.describe Payment, type: :model do
     end
   end
 
+  describe "#credits?" do
+    subject{ payment.credits? }
+
+    context "when the gateway is Credits" do
+      let(:payment){ build(:payment, gateway: 'Credits') }
+      it{ is_expected.to eq true }
+    end
+
+    context "when the gateway is anything but Credits" do
+      let(:payment){ build(:payment, gateway: 'AnythingButCredits') }
+      it{ is_expected.to eq false }
+    end
+  end
+
   describe "#slip_payment?" do
     subject{ payment.slip_payment? }
 
