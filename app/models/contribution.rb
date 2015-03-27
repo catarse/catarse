@@ -4,10 +4,7 @@ class Contribution < ActiveRecord::Base
 
   include I18n::Alchemy
   include PgSearch
-  include Shared::StateMachineHelpers
-  include Contribution::StateMachineHandler
   include Contribution::CustomValidators
-  include Contribution::PaymentMethods
 
   belongs_to :project
   belongs_to :reward
@@ -34,8 +31,8 @@ class Contribution < ActiveRecord::Base
   scope :anonymous, -> { where(anonymous: true) }
   scope :credits, -> { where("credits OR lower(payment_method) = 'credits'") }
   scope :not_anonymous, -> { where(anonymous: false) }
-  scope :confirmed_today, -> { with_state('confirmed').where("contributions.confirmed_at::date = to_date(?, 'yyyy-mm-dd')", Time.now.strftime('%Y-%m-%d')) }
-  scope :confirmed_last_day, -> { with_state('confirmed').where("confirmed_at > current_timestamp - interval '1 day'") }
+  scope :confirmed_today, -> { where("EXISTS(SELECT true FROM payments p WHERE p.contribution_id = contributions.id AND p.state = 'paid' AND p.paid_at::date = to_date(?, 'yyyy-mm-dd'))", Time.now.strftime('%Y-%m-%d')) }
+  scope :confirmed_last_day, -> { where("EXISTS(SELECT true FROM payments p WHERE p.contribution_id = contributions.id AND p.state = 'paid' AND (current_timestamp - p.paid_at) < '1 day'::interval)") }
   scope :avaiable_to_automatic_refund, -> {
     with_state('confirmed').where("contributions.payment_method in ('PayPal', 'Pagarme') OR contributions.payment_choice = 'CartaoDeCredito'")
   }
@@ -81,7 +78,7 @@ class Contribution < ActiveRecord::Base
   end
 
   def confirmed?
-    @confirmed ||= Contribution.where(id: self.id).pluck('contributions.confirmed').first
+    @confirmed ||= Contribution.where(id: self.id).pluck('contributions.is_confirmed').first
   end
 
   def invalid_refund
