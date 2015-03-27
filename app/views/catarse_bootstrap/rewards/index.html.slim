@@ -32,5 +32,5 @@
         .fontsize-smallest = "Modificado em: #{I18n.l(reward.updated_at.to_date)} #{parent.online_date.nil? ? '' : ((parent.online_date > reward.updated_at)? '(draft)' : '(online)')}"
 
     - unless sold_out || !parent.online?
-      .project-reward-box-hover
+      = link_to new_project_contribution_path(parent, reward_id: reward.id), class: "project-reward-box-hover"
         .project-reward-box-select-text.u-text-center = t('.select_reward')
