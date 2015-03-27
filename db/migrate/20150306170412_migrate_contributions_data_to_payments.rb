@@ -10,7 +10,7 @@ class MigrateContributionsDataToPayments < ActiveRecord::Migration
       gateway_id,
       gateway_fee,
       gateway_data,
-      method,
+      payment_method,
       value,
       installments,
       installment_value,

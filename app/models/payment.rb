@@ -3,7 +3,7 @@ class Payment < ActiveRecord::Base
 
   belongs_to :contribution
 
-  validates_presence_of :state, :key, :gateway, :method, :value, :installments, :installment_value
+  validates_presence_of :state, :key, :gateway, :payment_method, :value, :installments, :installment_value
   validate :value_should_be_equal_or_greater_than_pledge
 
   before_validation do
@@ -12,6 +12,10 @@ class Payment < ActiveRecord::Base
 
   def value_should_be_equal_or_greater_than_pledge
     errors.add(:value, I18n.t("activerecord.errors.models.payment.attributes.value.invalid")) if self.contribution && self.value < self.contribution.value
+  end
+
+  def slip_payment?
+    self.payment_method == 'BoletoBancario'
   end
 
   state_machine :state, initial: :pending do
