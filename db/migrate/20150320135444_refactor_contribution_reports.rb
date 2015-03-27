@@ -12,7 +12,7 @@ class RefactorContributionReports < ActiveRecord::Migration
         p.gateway,
         p.gateway_data->'acquirer_name' AS acquirer_name,
         p.gateway_data->'tid' AS acquirer_tid,
-        p.method,
+        p.payment_method,
         replace(p.gateway_fee::text, '.'::text, ','::text) AS payment_service_fee,
         p.key,
         b.created_at::date AS created_at,

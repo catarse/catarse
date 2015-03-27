@@ -2,8 +2,9 @@ class PaymentObserver < ActiveRecord::Observer
   observe :payment
 
   def after_create(payment)
-    PendingContributionWorker.perform_at(2.day.from_now, payment.contribution.id)
-    payment.notify_to_contributor(:payment_slip) if payment.method == 'BoletoBancario'
+    contribution = payment.contribution
+    PendingContributionWorker.perform_at(2.day.from_now, contribution.id)
+    contribution.notify_to_contributor(:payment_slip) if payment.slip_payment?
   end
 
   def before_save(payment)
@@ -15,7 +16,7 @@ class PaymentObserver < ActiveRecord::Observer
   end
 
   def from_requested_refund_to_refunded(payment)
-    payment.notify_to_contributor((payment.slip_payment? ? :refund_completed_slip : :refund_completed_credit_card))
+    payment.contribution.notify_to_contributor((payment.slip_payment? ? :refund_completed_slip : :refund_completed_credit_card))
   end
   alias :from_confirmed_to_refunded :from_requested_refund_to_refunded
 

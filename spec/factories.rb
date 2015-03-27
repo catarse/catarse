@@ -169,9 +169,7 @@ FactoryGirl.define do
     f.gateway 'pagarme'
     f.value 10.00
     f.installment_value 10.00
-    after :build do |payment|
-      payment.method = "credit_card" # we need to do this for method is some factory girl reserved word
-    end
+    f.payment_method "CartaoDeCredito"
   end
 
   factory :payment_notification do |f|
