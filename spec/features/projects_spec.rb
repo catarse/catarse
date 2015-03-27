@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe "Projects", type: :feature do
-  let(:project){ build(:project) }
+  let(:project){ build(:project, state: 'online') }
 
   before {
     #NOTE: Weird bug on edit project test
