@@ -102,6 +102,13 @@ RSpec.describe "Projects", type: :feature do
       expect(posts.size).to eq(6) 
       expect(page.evaluate_script('$("#load-more:visible").length')).to eq(0)
     end
+
+    it "should navigate to the project reward selection page after clicking on a reward card" do
+      find(:css, '.card-reward').hover
+      find(:css, '.project-reward-box-select-text').click
+      uri = URI.parse(current_url)
+      expect(new_project_contribution_path(project, reward_id: 1)).to eq("#{uri.path}?#{uri.query}")
+    end
   end
 
   describe "view_own_project" do

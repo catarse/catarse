@@ -49,5 +49,20 @@ RSpec.describe "Users", type: :feature do
       end
     end
   end
-end
 
+  describe "View public profile page" do
+    before do
+      @user = create(:user) 
+      5.times{ create(:project, user: @user) } 
+      5.times{ create(:contribution, user: @user) }
+    end
+
+    it "should describe the date the user signed up, the total number of projects created and the total number of contributions on the profile page" do
+      visit(user_path(@user))      
+      expect(page).to have_content I18n.t('users.profile.user_since', date: I18n.localize(@user.created_at, format: "%B de %Y"))
+      expect(page).to have_content I18n.t('users.profile.multiple_project_created', n_projects: 5)
+      expect(page).to have_content I18n.t('users.profile.multiple_project_contribution', n_projects: 5)
+    end
+  end
+
+end
