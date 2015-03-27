@@ -80,6 +80,10 @@ class Contribution < ActiveRecord::Base
     confirmed? && project.failed?
   end
 
+  def confirmed?
+    @confirmed ||= Contribution.where(id: self.id).pluck('contributions.confirmed').first
+  end
+
   def invalid_refund
     _user = User.find_by(email: CatarseSettings[:email_contact])
     notify(:invalid_refund, _user, self) if _user
