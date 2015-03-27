@@ -194,6 +194,7 @@ body
   background-position: 50% 50%
   background-size: cover
 
+//search form style
 .discover-form
   input[type="text"]
     +input-placeholder
@@ -201,3 +202,9 @@ body
   input[type="text"]:hover
     +input-placeholder
       color: #3F4752
+
+//chartkick generated chart style
+@media (max-width: 600px)
+  #budget-chart
+    img
+      max-width: 100% !important
