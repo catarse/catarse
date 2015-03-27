@@ -64,6 +64,7 @@ Catarse::Application.routes.draw do
       get :unsubscribe_notifications
       get :credits
       get :settings
+      get :billing
       get :reactivate
     end
 
