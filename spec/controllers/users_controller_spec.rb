@@ -14,6 +14,30 @@ RSpec.describe UsersController, type: :controller do
   let(:user){ create(:user, password: 'current_password', password_confirmation: 'current_password', authorizations: [create(:authorization, uid: 666, oauth_provider: create(:oauth_provider, name: 'facebook'))]) }
   let(:current_user){ user }
 
+  describe "GET settings" do
+    context "when user is logged" do
+      let(:current_user) { create(:user) }
+
+      before do
+        allow(controller).to receive(:current_user).and_return(current_user)
+        get :settings, id: current_user.id, locale: :pt
+      end
+
+      it { is_expected.to redirect_to edit_user_path(current_user, anchor: 'billing') }
+    end
+
+    context "when user is not logged" do
+      let(:current_user) { create(:user) }
+
+      before do
+        allow(controller).to receive(:current_user).and_return(nil)
+        get :settings, id: current_user.id, locale: :pt
+      end
+
+      it { is_expected.to redirect_to sign_up_path }
+    end
+  end
+
   describe "GET reactivate" do
     let(:current_user) { nil }
 
