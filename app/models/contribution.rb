@@ -7,7 +7,6 @@ class Contribution < ActiveRecord::Base
   include Shared::StateMachineHelpers
   include Contribution::StateMachineHandler
   include Contribution::CustomValidators
-  include Contribution::PaymentEngineHandler
   include Contribution::PaymentMethods
 
   belongs_to :project
@@ -119,4 +118,36 @@ class Contribution < ActiveRecord::Base
   def price_in_cents
     (self.value * 100).round
   end
+
+  def update_current_billing_info
+    self.country_id = user.country_id
+    self.address_street = user.address_street
+    self.address_number = user.address_number
+    self.address_complement = user.address_complement
+    self.address_neighbourhood = user.address_neighbourhood
+    self.address_zip_code = user.address_zip_code
+    self.address_city = user.address_city
+    self.address_state = user.address_state
+    self.address_phone_number = user.phone_number
+    self.payer_document = user.cpf
+    self.payer_name = user.name
+    self.payer_email = user.email
+  end
+
+  def update_user_billing_info
+    user.update_attributes({
+      country_id: country_id.presence || user.country_id,
+      address_street: address_street.presence || user.address_street,
+      address_number: address_number.presence || user.address_number,
+      address_complement: address_complement.presence || user.address_complement,
+      address_neighbourhood: address_neighbourhood.presence || user.address_neighbourhood,
+      address_zip_code: address_zip_code.presence|| user.address_zip_code,
+      address_city: address_city.presence || user.address_city,
+      address_state: address_state.presence || user.address_state,
+      phone_number: address_phone_number.presence || user.phone_number,
+      cpf: payer_document.presence || user.cpf,
+      name: payer_name || user.name
+    })
+  end
+
 end
