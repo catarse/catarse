@@ -30,6 +30,10 @@ RSpec.describe UserPolicy do
 
   permissions(:update?){ it_should_behave_like "update permissions" }
 
+  permissions(:settings?){ it_should_behave_like "update permissions" }
+
+  permissions(:billing?){ it_should_behave_like "update permissions" }
+
   permissions(:destroy?){ it_should_behave_like "update permissions" }
 
   permissions(:credits?){ it_should_behave_like "update permissions" }
