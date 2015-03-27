@@ -15,27 +15,28 @@ class PaymentObserver < ActiveRecord::Observer
     do_direct_refund(payment)
   end
 
-  def from_requested_refund_to_refunded(payment)
+  def from_pending_refund_to_refunded(payment)
     payment.contribution.notify_to_contributor((payment.slip_payment? ? :refund_completed_slip : :refund_completed_credit_card))
   end
-  alias :from_confirmed_to_refunded :from_requested_refund_to_refunded
+  alias :from_paid_to_refunded :from_pending_refund_to_refunded
 
   def from_pending_to_invalid_payment(payment)
     payment.notify_to_backoffice :invalid_payment
   end
   alias :from_waiting_confirmation_to_invalid_payment :from_pending_to_invalid_payment
 
-  def from_confirmed_to_requested_refund(payment)
-    payment.notify_to_backoffice :refund_request, {from_email: payment.user.email, from_name: payment.user.name}
+  def from_paid_to_pending_refund(payment)
+    contribution = payment.contribution
+    contribution.notify_to_backoffice :refund_request, {from_email: contribution.user.email, from_name: contribution.user.name}
     do_direct_refund(payment)
   end
 
-  def from_confirmed_to_canceled(payment)
-    payment.notify_to_backoffice(:payment_canceled_after_confirmed) if payment.confirmed_at.present?
-    payment.notify_to_contributor((payment.slip_payment? ? :payment_canceled_slip : :payment_canceled))
+  def from_paid_to_refused(payment)
+    contribution = payment.contribution
+    contribution.notify_to_backoffice(:contribution_canceled_after_confirmed)
+    contribution.notify_to_contributor((payment.slip_payment? ? :contribution_canceled_slip : :contribution_canceled))
   end
-  alias :from_waiting_confirmation_to_canceled :from_confirmed_to_canceled
-  alias :from_pending_to_canceled :from_confirmed_to_canceled
+  alias :from_pending_to_refused :from_paid_to_refused
 
   private
   def do_direct_refund(payment)

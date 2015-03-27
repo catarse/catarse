@@ -157,6 +157,11 @@ FactoryGirl.define do
         contribution.payments << create(:payment, state: 'paid', value: contribution.value)
       end
     end
+    factory :pending_contribution do
+      after :create do |contribution|
+        contribution.payments << create(:payment, state: 'pending', value: contribution.value)
+      end
+    end
     factory :contribution_with_credits do
       after :create do |contribution|
         contribution.payments << create(:payment, state: 'paid', gateway: 'Credits', value: contribution.value)
