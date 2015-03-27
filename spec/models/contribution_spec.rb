@@ -356,4 +356,18 @@ RSpec.describe Contribution, type: :model do
 
     it("should update user billing info attributes") { contribution.update_user_billing_info}
   end
+
+  describe "#confirmed?" do
+    subject{ contribution.confirmed? }
+
+    context "when I have one payment with state paid" do
+      let(:contribution){ create(:confirmed_contribution) }
+      it{ is_expected.to eq true }
+    end
+
+    context "when I have one payment with state pending" do
+      let(:contribution){ create(:pending_contribution) }
+      it{ is_expected.to eq false }
+    end
+  end
 end
