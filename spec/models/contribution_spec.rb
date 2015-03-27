@@ -92,12 +92,12 @@ RSpec.describe Contribution, type: :model do
 
   describe ".confirmed_today" do
     before do
-      3.times { create(:contribution, state: 'confirmed', confirmed_at: 2.days.ago) }
-      4.times { create(:contribution, state: 'confirmed', confirmed_at: 6.days.ago) }
+      3.times { create(:payment, state: 'paid', paid_at: 2.days.ago) }
+      4.times { create(:payment, state: 'paid', paid_at: 6.days.ago) }
 
       #TODO: need to investigate this timestamp issue when
       # use DateTime.now or Time.now
-      7.times { create(:contribution, state: 'confirmed', confirmed_at: Time.now) }
+      7.times { create(:payment, state: 'paid', paid_at: Time.now) }
     end
 
     subject { Contribution.confirmed_today }
@@ -172,24 +172,6 @@ RSpec.describe Contribution, type: :model do
 
     context "when contribution is made via MoIP and not is credit_card" do
       it { is_expected.to eq(:contribution_project_unsuccessful) }
-    end
-  end
-
-  describe '#slip_payment?' do
-    subject { contribution.slip_payment? }
-
-    context "when contribution is made with Boleto" do
-      before do
-        contribution.update_attributes payment_choice: 'BoletoBancario'
-      end
-      it { is_expected.to eq(true)}
-    end
-
-    context "when contribution is not made with Boleto" do
-      before do
-        contribution.update_attributes payment_choice: 'CartaoDeCredito'
-      end
-      it { is_expected.to eq(false)}
     end
   end
 

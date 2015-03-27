@@ -5,7 +5,16 @@ class AddCompatibilityFunctions < ActiveRecord::Migration
       SELECT '{"paid", "pending_refund", "refunded"}'::text[];
     $$ LANGUAGE SQL;
 
-    CREATE OR REPLACE FUNCTION confirmed(contributions) RETURNS boolean AS $$
+    CREATE OR REPLACE FUNCTION is_confirmed(contributions) RETURNS boolean AS $$
+      SELECT EXISTS (
+        SELECT true
+        FROM 
+          payments p 
+        WHERE p.contribution_id = $1.id AND p.state = 'paid'
+      );
+    $$ LANGUAGE SQL;
+
+    CREATE OR REPLACE FUNCTION was_confirmed(contributions) RETURNS boolean AS $$
       SELECT EXISTS (
         SELECT true
         FROM 

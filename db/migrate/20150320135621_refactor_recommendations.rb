@@ -18,9 +18,9 @@ class RefactorRecommendations < ActiveRecord::Migration
           JOIN contributions recommenders ON recommenders.user_id = backers_same_projects.user_id
           JOIN projects recommendations_1 ON recommendations_1.id = recommenders.project_id
         WHERE 
-          b.confirmed
-          AND backers_same_projects.confirmed
-          AND recommenders.confirmed
+          b.was_confirmed
+          AND backers_same_projects.was_confirmed
+          AND recommenders.was_confirmed
           AND b.updated_at > (now() - '6 mons'::interval) 
           AND recommenders.updated_at > (now() - '2 mons'::interval) 
           AND recommendations_1.state::text = 'online'::text 
@@ -28,7 +28,7 @@ class RefactorRecommendations < ActiveRecord::Migration
           AND recommendations_1.id <> b.project_id AND NOT (EXISTS (
             SELECT true AS bool
             FROM contributions b2
-            WHERE b2.confirmed AND b2.user_id = b.user_id AND b2.project_id = recommendations_1.id)
+            WHERE b2.was_confirmed AND b2.user_id = b.user_id AND b2.project_id = recommendations_1.id)
           )
           GROUP BY b.user_id, recommendations_1.id
           UNION
@@ -40,12 +40,12 @@ class RefactorRecommendations < ActiveRecord::Migration
             contributions b
             JOIN projects p ON b.project_id = p.id
             JOIN projects recommendations_1 ON recommendations_1.category_id = p.category_id
-          WHERE b.confirmed AND recommendations_1.state::text = 'online'::text
+          WHERE b.was_confirmed AND recommendations_1.state::text = 'online'::text
       ) recommendations
       WHERE NOT (EXISTS (
         SELECT true AS bool
         FROM contributions b2
-        WHERE b2.confirmed AND b2.user_id = recommendations.user_id AND b2.project_id = recommendations.project_id)
+        WHERE b2.was_confirmed AND b2.user_id = recommendations.user_id AND b2.project_id = recommendations.project_id)
       )
       GROUP BY recommendations.user_id, recommendations.project_id
       ORDER BY sum(recommendations.count)::bigint DESC;
