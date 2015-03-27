@@ -1,6 +1,34 @@
 #encoding:utf-8
 require 'rails_helper'
 
+RSpec.shared_examples "redirect to edit_user_path" do
+  let(:action) { nil }
+  let(:anchor) { nil }
+
+  context "when user is logged" do
+    let(:current_user) { create(:user) }
+
+    before do
+      allow(controller).to receive(:current_user).and_return(current_user)
+      get action, id: current_user.id, locale: :pt
+    end
+
+    it { is_expected.to redirect_to edit_user_path(current_user, anchor: (anchor || action.to_s)) }
+  end
+
+  context "when user is not logged" do
+    let(:current_user) { create(:user) }
+
+    before do
+      allow(controller).to receive(:current_user).and_return(nil)
+      get :settings, id: current_user.id, locale: :pt
+    end
+
+    it { is_expected.to redirect_to sign_up_path }
+  end
+
+end
+
 RSpec.describe UsersController, type: :controller do
   render_views
   subject{ response }
@@ -15,26 +43,14 @@ RSpec.describe UsersController, type: :controller do
   let(:current_user){ user }
 
   describe "GET settings" do
-    context "when user is logged" do
-      let(:current_user) { create(:user) }
-
-      before do
-        allow(controller).to receive(:current_user).and_return(current_user)
-        get :settings, id: current_user.id, locale: :pt
-      end
-
-      it { is_expected.to redirect_to edit_user_path(current_user, anchor: 'billing') }
+    it_should_behave_like "redirect to edit_user_path" do
+      let(:action) { :settings }
     end
+  end
 
-    context "when user is not logged" do
-      let(:current_user) { create(:user) }
-
-      before do
-        allow(controller).to receive(:current_user).and_return(nil)
-        get :settings, id: current_user.id, locale: :pt
-      end
-
-      it { is_expected.to redirect_to sign_up_path }
+  describe "GET billing" do
+    it_should_behave_like "redirect to edit_user_path" do
+      let(:action) { :billing }
     end
   end
 
