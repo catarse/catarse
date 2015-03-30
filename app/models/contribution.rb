@@ -18,7 +18,6 @@ class Contribution < ActiveRecord::Base
 
   scope :search_on_acquirer, ->(acquirer_name){ where(acquirer_name: acquirer_name) }
   scope :available_to_count, ->{ where("contributions.was_confirmed") }
-  scope :available_to_display, ->{ with_states(['confirmed', 'requested_refund', 'refunded', 'waiting_confirmation']) }
   scope :by_id, ->(id) { where(id: id) }
   scope :by_payment_id, ->(term) { where("? IN (payment_id, key, acquirer_tid)", term) }
   scope :by_user_id, ->(user_id) { where(user_id: user_id) }
@@ -46,20 +45,20 @@ class Contribution < ActiveRecord::Base
   # Contributions already refunded or with requested_refund should appear so that the user can see their status on the refunds list
   scope :can_refund, ->{ where("contributions.can_refund") }
 
-  scope :not_deleted, -> {
-    where("EXISTS (SELECT true FROM payments p WHERE p.contribution_id = contributions.id AND state <> 'deleted')")
+  scope :available_to_display, -> {
+    where("EXISTS (SELECT true FROM payments p WHERE p.contribution_id = contributions.id AND state NOT IN ('deleted', 'refused'))")
   }
 
   scope :for_successful_projects, -> {
-    joins(:project).merge(Project.with_state('successful')).not_deleted
+    joins(:project).merge(Project.with_state('successful')).available_to_display
   }
 
   scope :for_online_projects, -> {
-    joins(:project).merge(Project.with_state(['online', 'waiting_funds'])).not_deleted
+    joins(:project).merge(Project.with_state(['online', 'waiting_funds'])).available_to_display
   }
 
   scope :for_failed_projects, -> {
-    joins(:project).merge(Project.with_state('failed')).not_deleted
+    joins(:project).merge(Project.with_state('failed')).available_to_display
   }
 
   scope :ordered, -> { order(id: :desc) }
