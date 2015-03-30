@@ -21,6 +21,7 @@ RSpec.describe Reward, type: :model do
   describe "Associations" do
     it{ is_expected.to belong_to :project }
     it{ is_expected.to have_many :contributions }
+    it{ is_expected.to have_many(:payments).through(:contributions) }
   end
 
   it "should have a minimum value" do
@@ -30,7 +31,7 @@ RSpec.describe Reward, type: :model do
 
   describe "check_if_is_destroyable" do
     before do
-      create(:contribution, state: 'confirmed', project: reward.project, reward: reward)
+      create(:confirmed_contribution, project: reward.project, reward: reward)
       reward.reload
       reward.destroy
     end
@@ -109,8 +110,8 @@ RSpec.describe Reward, type: :model do
 
     context 'when reward contributions waiting confirmation and confirmed are greater than limit' do
       before do
-        2.times { create(:contribution, state: 'confirmed', reward: reward, project: reward.project) }
-        create(:contribution, state: 'waiting_confirmation', reward: reward, project: reward.project)
+        2.times { create(:confirmed_contribution, reward: reward, project: reward.project) }
+        create(:pending_contribution, reward: reward, project: reward.project)
       end
 
       it { is_expected.to eq(true) }

@@ -6,6 +6,7 @@ class Reward < ActiveRecord::Base
   before_destroy :check_if_is_destroyable
 
   belongs_to :project
+  has_many :payments, through: :contributions
   has_many :contributions, dependent: :nullify
 
   ranks :row_order, with_same: :project_id
@@ -48,7 +49,7 @@ class Reward < ActiveRecord::Base
   end
 
   def total_compromised
-    contributions.with_states(['confirmed', 'waiting_confirmation']).count
+    payments.with_states(['paid', 'pending']).count("DISTINCT contributions.id")
   end
 
   def remaining
