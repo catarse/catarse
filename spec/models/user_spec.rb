@@ -442,7 +442,7 @@ RSpec.describe User, type: :model do
 
     context "when user have contributions for the project" do
       before do
-        create(:contribution, project: project, state: 'confirmed', user: user)
+        create(:confirmed_contribution, project: project, user: user)
       end
 
       it { is_expected.to eq(true) }
