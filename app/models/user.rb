@@ -40,9 +40,7 @@ class User < ActiveRecord::Base
   has_many :credit_cards
   has_many :project_accounts
   has_many :authorizations
-  has_many :contributions, -> do
-    without_state(:deleted)
-  end
+  has_many :contributions
   has_many :projects, -> do
     without_state(:deleted)
   end
@@ -52,7 +50,7 @@ class User < ActiveRecord::Base
   has_many :unsubscribes
   has_many :project_posts
   has_many :contributed_projects, -> do
-    distinct.where("contributions.confirmed").order('projects.created_at DESC')
+    distinct.where("contributions.was_confirmed").order('projects.created_at DESC')
   end, through: :contributions, source: :project
   has_many :category_followers, dependent: :destroy
   has_many :categories, through: :category_followers
