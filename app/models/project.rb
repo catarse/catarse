@@ -171,7 +171,7 @@ class Project < ActiveRecord::Base
   end
 
   def selected_rewards
-    rewards.sort_asc.where(id: contributions.with_state('confirmed').map(&:reward_id))
+    rewards.sort_asc.where(id: contributions.where('contributions.is_confirmed').map(&:reward_id))
   end
 
   def accept_contributions?
@@ -187,11 +187,7 @@ class Project < ActiveRecord::Base
   end
 
   def in_time_to_wait?
-    contributions.with_state('waiting_confirmation').present?
-  end
-
-  def pledged_and_waiting
-    contributions.with_states(['confirmed', 'waiting_confirmation']).sum(:value)
+    payments.with_state('pending').exists?
   end
 
   def new_draft_recipient
