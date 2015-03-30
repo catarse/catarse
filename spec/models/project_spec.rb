@@ -326,7 +326,7 @@ RSpec.describe Project, type: :model do
   describe ".expiring" do
     before do
       @p = create(:project, online_date: Time.now, online_days: 13)
-      create(:project, online_date: Time.now, online_days: 1)
+      create(:project, online_days: 1, online_date: Time.now - 2.days)
     end
     subject{ Project.expiring }
     it{ is_expected.to eq([@p]) }
