@@ -16,19 +16,9 @@ class Contribution < ActiveRecord::Base
   validates_presence_of :project, :user, :value
   validates_numericality_of :value, greater_than_or_equal_to: 10.00
 
-  scope :search_on_acquirer, ->(acquirer_name){ where(acquirer_name: acquirer_name) }
   scope :available_to_count, ->{ where("contributions.was_confirmed") }
   scope :by_id, ->(id) { where(id: id) }
-  scope :by_payment_id, ->(term) { where("? IN (payment_id, key, acquirer_tid)", term) }
-  scope :by_user_id, ->(user_id) { where(user_id: user_id) }
-  scope :by_payment_method, ->(payment_method) { where(payment_method: payment_method ) }
-  scope :user_name_contains, ->(term) { joins(:user).where("unaccent(upper(users.name)) LIKE ('%'||unaccent(upper(?))||'%')", term) }
-  scope :user_email_contains, ->(term) { joins(:user).where("unaccent(upper(users.email)) LIKE ('%'||unaccent(upper(?))||'%') OR unaccent(upper(payer_email)) LIKE ('%'||unaccent(upper(?))||'%')", term, term) }
-  scope :project_name_contains, ->(term) {
-    joins(:project).merge(Project.pg_search(term))
-  }
   scope :anonymous, -> { where(anonymous: true) }
-  scope :credits, -> { where("credits OR lower(payment_method) = 'credits'") }
   scope :not_anonymous, -> { where(anonymous: false) }
   scope :confirmed_today, -> { where("EXISTS(SELECT true FROM payments p WHERE p.contribution_id = contributions.id AND p.state = 'paid' AND p.paid_at::date = to_date(?, 'yyyy-mm-dd'))", Time.now.strftime('%Y-%m-%d')) }
   scope :confirmed_last_day, -> { where("EXISTS(SELECT true FROM payments p WHERE p.contribution_id = contributions.id AND p.state = 'paid' AND (current_timestamp - p.paid_at) < '1 day'::interval)") }
@@ -64,11 +54,6 @@ class Contribution < ActiveRecord::Base
   scope :ordered, -> { order(id: :desc) }
 
   attr_protected :state, :user_id
-
-  def self.between_values(start_at, ends_at)
-    return all unless start_at.present? && ends_at.present?
-    where("value between ? and ?", start_at, ends_at)
-  end
 
   def recommended_projects
     user.recommended_projects.where("projects.id <> ?", project.id).order("count DESC")

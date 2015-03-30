@@ -45,7 +45,7 @@ class Payment < ActiveRecord::Base
     end
 
     event :pay do
-      transition all => :confirmed
+      transition all => :paid
     end
 
     event :refuse do
