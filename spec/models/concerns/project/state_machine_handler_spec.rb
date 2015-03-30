@@ -59,6 +59,10 @@ RSpec.describe Project::StateMachineHandler, type: :model do
         let(:project_state){ 'rejected' }
         subject{ project.push_to_draft }
         it{ should eq(true) }
+        it "should mark sent_to_draft_at" do
+          subject
+          expect(project.sent_to_draft_at).to_not be_nil
+        end
       end
     end
 
@@ -70,6 +74,10 @@ RSpec.describe Project::StateMachineHandler, type: :model do
         end
         subject{ project.reject }
         it{ should eq(true) }
+        it "should mark rejected_at" do
+          subject
+          expect(project.rejected_at).to_not be_nil
+        end
       end
     end
 
