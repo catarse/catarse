@@ -68,12 +68,12 @@ RSpec.describe Contribution::CustomValidators, type: :model do
     end
 
     context "when pending contributions count is equal than maximum_contributions" do
-      before{ create(:contribution, reward: reward, project: reward.project, state: 'waiting_confirmation') }
+      before{ create(:pending_contribution, reward: reward, project: reward.project) }
       it{ is_expected.not_to be_valid }
     end
 
     context "when contributions count is equal than maximum_contributions" do
-      before{ create(:contribution, reward: reward, project: reward.project, state: 'confirmed') }
+      before{ create(:confirmed_contribution, reward: reward, project: reward.project) }
       it{ is_expected.not_to be_valid }
     end
   end
