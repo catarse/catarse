@@ -69,6 +69,14 @@ module Project::StateMachineHandler
         project.notify_observers :sync_with_mailchimp
       end
 
+      after_transition any => :draft do |project, transition|
+        project.update_attributes({ sent_to_draft_at: DateTime.now })
+      end
+
+      after_transition any => :rejected do |project, transition|
+        project.update_attributes({ rejected_at: DateTime.now })
+      end
+
       after_transition [:draft, :rejected] => :deleted do |project, transition|
         project.update_attributes({ permalink: "deleted_project_#{project.id}"})
       end
