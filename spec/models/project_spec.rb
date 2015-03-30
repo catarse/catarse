@@ -174,7 +174,7 @@ RSpec.describe Project, type: :model do
 
     end
 
-    it { should = [@project_02] }
+    it { is_expected.to eq [@project_02] }
   end
 
   describe '.video_url' do
@@ -222,7 +222,7 @@ RSpec.describe Project, type: :model do
 
     end
 
-    it { should = [@project_01] }
+    it { is_expected.to eq [@project_01] }
   end
 
   describe '.by_expires_at' do
@@ -233,7 +233,7 @@ RSpec.describe Project, type: :model do
       @project_02 = create(:project, online_date: '09/10/2013', online_days: 1)
     end
 
-    it { should = [@project_01] }
+    it { is_expected.to eq [@project_01] }
   end
 
   describe '.order_by' do
@@ -326,7 +326,7 @@ RSpec.describe Project, type: :model do
   describe ".expiring" do
     before do
       @p = create(:project, online_date: Time.now, online_days: 13)
-      create(:project, online_date: Time.now, online_days: 1, online_date: Time.now - 2.days)
+      create(:project, online_date: Time.now, online_days: 1)
     end
     subject{ Project.expiring }
     it{ is_expected.to eq([@p]) }
