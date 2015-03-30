@@ -61,4 +61,19 @@ RSpec.describe Payment, type: :model do
       it{ is_expected.to eq false }
     end
   end
+
+  describe "#notification_template_for_failed_project" do
+    subject { payment.notification_template_for_failed_project }
+
+    context "when the method is credit card" do
+      let(:payment){ build(:payment, payment_method: 'CartaoDeCredito') }
+      it { is_expected.to eq(:contribution_project_unsuccessful_credit_card) }
+    end
+
+    context "when the method is payment slip" do
+      let(:payment){ build(:payment, payment_method: 'BoletoBancario') }
+      it { is_expected.to eq(:contribution_project_unsuccessful_slip) }
+    end
+  end
+
 end
