@@ -17,7 +17,7 @@ class Contribution < ActiveRecord::Base
   validates_numericality_of :value, greater_than_or_equal_to: 10.00
 
   scope :search_on_acquirer, ->(acquirer_name){ where(acquirer_name: acquirer_name) }
-  scope :available_to_count, ->{ with_states(['confirmed', 'requested_refund', 'refunded']) }
+  scope :available_to_count, ->{ where("contributions.was_confirmed") }
   scope :available_to_display, ->{ with_states(['confirmed', 'requested_refund', 'refunded', 'waiting_confirmation']) }
   scope :by_id, ->(id) { where(id: id) }
   scope :by_payment_id, ->(term) { where("? IN (payment_id, key, acquirer_tid)", term) }
@@ -97,18 +97,6 @@ class Contribution < ActiveRecord::Base
   def notify_to_backoffice(template_name, options = {})
     _user = User.find_by(email: CatarseSettings[:email_payments])
     notify_once(template_name, _user, self, options) if _user
-  end
-
-  def notification_template_for_failed_project
-    return :contribution_project_unsuccessful_credit if self.credits?
-
-    if is_credit_card? || is_paypal?
-      :contribution_project_unsuccessful_credit_card
-    elsif is_pagarme?
-      :contribution_project_unsuccessful_slip
-    else
-      :contribution_project_unsuccessful
-    end
   end
 
   def self.payment_method_names
