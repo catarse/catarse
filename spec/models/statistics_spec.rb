@@ -16,12 +16,12 @@ RSpec.describe Statistics, type: :model do
 
   describe "#total_contributions" do
     subject{ Statistics.first.total_contributions }
-    it{ is_expected.to eq(Contribution.where('contributions.confirmed').count) }
+    it{ is_expected.to eq(Contribution.where('contributions.was_confirmed').count) }
   end
 
   describe "#total_contributed" do
     subject{ Statistics.first.total_contributed}
-    it{ is_expected.to eq(Contribution.where('contributions.confirmed').sum(:value)) }
+    it{ is_expected.to eq(Contribution.where('contributions.was_confirmed').sum(:value)) }
   end
 
   describe "#total_projects" do
