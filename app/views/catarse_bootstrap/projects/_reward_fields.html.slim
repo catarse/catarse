@@ -15,11 +15,11 @@
               .w-col.w-col-1.w-col-small-1.w-col-tiny-1
                 = link_to "javascript:void(0);", data: {target: ".edit_reward_content_#{reward.id}", parent: "#reward_#{reward.id}"}, class: 'show_reward_form' do
                   .btn.btn-small.btn-terciary.fa.fa-lg.fa-edit.btn-no-border
-            .fontsize-smaller.u-marginbottom-20.fontweight-semibold= pluralize(reward.contributions.with_state('confirmed').count(:all), t('contribution_singular'), t('contribution_plural'))
+            .fontsize-smaller.u-marginbottom-20.fontweight-semibold= pluralize(reward.payments.with_state('paid').count(:all), t('contribution_singular'), t('contribution_plural'))
             p.fontsize-small
               br= reward.display_description
             - if reward.maximum_contributions
-              - in_time_to_confirm = reward.contributions.with_state('waiting_confirmation').count(:all)
+              - in_time_to_confirm = reward.payments.with_state('pending').count(:all)
               - if in_time_to_confirm > 0
                 .maximum_contributions.in_time_to_confirm.clearfix
                   .pending.fontsize-smallest.fontcolor-secondary= t('rewards.index.contributions_to_confirm', count: in_time_to_confirm)

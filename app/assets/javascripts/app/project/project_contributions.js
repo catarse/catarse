@@ -26,7 +26,7 @@ App.views.Project.addChild('ProjectContributions', _.extend({
 
     if(state == 'waiting_confirmation'){
     
-      this.filter.with_state = 'waiting_confirmation';
+      this.filter.pending = true;
     
     }else{
 
