@@ -1,6 +1,9 @@
 - contribution = @notification.contribution
 
-|Olá, <strong>#{contribution.user.display_name}</strong>!
+-if contribution.user.name
+  |Olá, <strong>#{contribution.user.name}</strong>!
+-else
+  |Olá!
 br
 br
 ' Verificamos que você iniciou um apoio para o projeto #{link_to contribution.project.name, project_by_slug_url(permalink: contribution.project.permalink, ref: 'notificacao_pending')},
