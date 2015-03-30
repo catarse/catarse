@@ -5,10 +5,10 @@ RSpec.describe Contribution, type: :model do
   let(:failed_project){ create(:project, state: 'online') }
   let(:unfinished_project){ create(:project, state: 'online') }
   let(:successful_project){ create(:project, state: 'online') }
-  let(:unfinished_project_contribution){ create(:contribution, state: 'confirmed', user: user, project: unfinished_project) }
-  let(:sucessful_project_contribution){ create(:contribution, state: 'confirmed', user: user, project: successful_project) }
+  let(:unfinished_project_contribution){ create(:confirmed_contribution, user: user, project: unfinished_project) }
+  let(:sucessful_project_contribution){ create(:confirmed_contribution, user: user, project: successful_project) }
   let(:not_confirmed_contribution){ create(:contribution, user: user, project: unfinished_project) }
-  let(:valid_refund){ create(:contribution, state: 'confirmed', user: user, project: failed_project) }
+  let(:valid_refund){ create(:confirmed_contribution, user: user, project: failed_project) }
   let(:contribution) { create(:contribution) }
 
 
@@ -36,10 +36,10 @@ RSpec.describe Contribution, type: :model do
     subject { Contribution.for_successful_projects }
 
     before do
-      create(:contribution, value: 100, state: 'confirmed', project: project)
-      create(:contribution, value: 100, state: 'confirmed', project: project)
-      create(:contribution, value: 10, state: 'confirmed')
-      create(:contribution, value: 100, state: 'pending', project: project)
+      create(:confirmed_contribution, value: 100, project: project)
+      create(:confirmed_contribution, value: 100, project: project)
+      create(:confirmed_contribution, value: 10)
+      create(:contribution, value: 100, project: project)
 
       project.update_attributes(state: 'successful')
     end
@@ -53,17 +53,18 @@ RSpec.describe Contribution, type: :model do
     subject { Contribution.for_failed_projects }
 
     before do
-      create(:contribution, value: 100, state: 'confirmed', project: project)
-      create(:contribution, value: 10, state: 'confirmed', project: project)
-      create(:contribution, value: 10, state: 'requested_refund', project: project)
-      create(:contribution, value: 10, state: 'refunded', project: project)
-      create(:contribution, value: 10, state: 'confirmed')
-      create(:contribution, value: 100, state: 'pending', project: project)
+      create(:confirmed_contribution, project: project)
+      create(:confirmed_contribution, project: project)
+      create(:pending_refund_contribution, project: project)
+      create(:refunded_contribution, project: project)
+      create(:confirmed_contribution)
+      create(:contribution, project: project)
       project.update_attributes(state: 'failed')
     end
 
     it { is_expected.to have(4).itens }
   end
+
   describe '.not_created_today' do
     before do
       create(:contribution, created_at: 1.day.ago)
@@ -78,16 +79,14 @@ RSpec.describe Contribution, type: :model do
 
   describe ".avaiable_to_automatic_refund" do
     before do
-      create(:contribution, state: 'confirmed', payment_choice: 'CartaoDeCredito', payment_method: nil)
-      create(:contribution, state: 'confirmed', payment_choice: 'BoletoBancario', payment_method: 'Pagarme')
-      create(:contribution, state: 'confirmed', payment_choice: nil, payment_method: 'PayPal')
-
-      14.times { create(:contribution, state: 'confirmed', payment_choice: 'BoletoBancario', payment_method: 'MoIP') }
+      @confirmed = create(:confirmed_contribution)
+      create(:pending_contribution)
+      create(:contribution)
     end
 
     subject { Contribution.avaiable_to_automatic_refund }
 
-    it { is_expected.to have(3).itens }
+    it { is_expected.to eq [@confirmed] }
   end
 
   describe ".confirmed_today" do
@@ -174,7 +173,6 @@ RSpec.describe Contribution, type: :model do
   describe ".can_refund" do
     subject{ Contribution.can_refund.load }
     before do
-      create(:contribution, state: 'confirmed', credits: true, project: failed_project)
       valid_refund
       sucessful_project_contribution
       unfinished_project

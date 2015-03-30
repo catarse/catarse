@@ -34,7 +34,7 @@ class Contribution < ActiveRecord::Base
   scope :confirmed_today, -> { where("EXISTS(SELECT true FROM payments p WHERE p.contribution_id = contributions.id AND p.state = 'paid' AND p.paid_at::date = to_date(?, 'yyyy-mm-dd'))", Time.now.strftime('%Y-%m-%d')) }
   scope :confirmed_last_day, -> { where("EXISTS(SELECT true FROM payments p WHERE p.contribution_id = contributions.id AND p.state = 'paid' AND (current_timestamp - p.paid_at) < '1 day'::interval)") }
   scope :avaiable_to_automatic_refund, -> {
-    with_state('confirmed').where("contributions.payment_method in ('PayPal', 'Pagarme') OR contributions.payment_choice = 'CartaoDeCredito'")
+    where('contributions.is_confirmed')
   }
 
   scope :not_created_today, -> { where.not("contributions.created_at::date AT TIME ZONE '#{Time.zone.tzinfo.name}' = current_timestamp::date AT TIME ZONE '#{Time.zone.tzinfo.name}'") }
@@ -43,16 +43,20 @@ class Contribution < ActiveRecord::Base
   # Contributions already refunded or with requested_refund should appear so that the user can see their status on the refunds list
   scope :can_refund, ->{ where("contributions.can_refund") }
 
+  scope :not_deleted, -> {
+    where("EXISTS (SELECT true FROM payments p WHERE p.contribution_id = contributions.id AND state <> 'deleted')")
+  }
+
   scope :for_successful_projects, -> {
-    joins(:project).merge(Project.with_state('successful')).with_state(['waiting_confirmation', 'confirmed', 'refunded', 'requested_refund', 'refunded_and_canceled'])
+    joins(:project).merge(Project.with_state('successful')).not_deleted
   }
 
   scope :for_online_projects, -> {
-    joins(:project).merge(Project.with_state(['online', 'waiting_funds'])).with_state(['waiting_confirmation', 'confirmed', 'refunded', 'requested_refund', 'refunded_and_canceled'])
+    joins(:project).merge(Project.with_state(['online', 'waiting_funds'])).not_deleted
   }
 
   scope :for_failed_projects, -> {
-    joins(:project).merge(Project.with_state('failed')).with_state(['waiting_confirmation', 'confirmed', 'refunded', 'requested_refund', 'refunded_and_canceled'])
+    joins(:project).merge(Project.with_state('failed')).not_deleted
   }
 
   scope :ordered, -> { order(id: :desc) }
