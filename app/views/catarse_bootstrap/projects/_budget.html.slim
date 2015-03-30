@@ -4,5 +4,5 @@
   p.fontsize-base
     = @project.budget.try(:html_safe)
   /- if @project.budgets.present?
-    = pie_chart @project.budgets.pluck(:name, :value)
+    = pie_chart @project.budgets.pluck(:name, :value), id: "budget-chart"
 

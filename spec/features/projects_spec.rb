@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe "Projects", type: :feature do
-  let(:project){ build(:project) }
+  let(:project){ build(:project, state: 'online') }
 
   before {
     #NOTE: Weird bug on edit project test
@@ -101,6 +101,12 @@ RSpec.describe "Projects", type: :feature do
       posts = all(".posts .project-news")
       expect(posts.size).to eq(6) 
       expect(page.evaluate_script('$("#load-more:visible").length')).to eq(0)
+    end
+
+    it "should navigate to the project reward selection page after clicking on a reward card" do
+      find(:css, '.card-reward').click
+      uri = URI.parse(current_url)
+      expect(new_project_contribution_path(project, reward_id: 1)).to eq("#{uri.path}?#{uri.query}")
     end
   end
 
