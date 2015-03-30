@@ -15,6 +15,15 @@ class Payment < ActiveRecord::Base
     errors.add(:value, I18n.t("activerecord.errors.models.payment.attributes.value.invalid")) if self.contribution && self.value < self.contribution.value
   end
 
+  def notification_template_for_failed_project
+    if slip_payment?
+      :contribution_project_unsuccessful_slip
+    else
+      :contribution_project_unsuccessful_credit_card
+    end
+  end
+
+
   def credits?
     self.gateway == 'Credits'
   end
