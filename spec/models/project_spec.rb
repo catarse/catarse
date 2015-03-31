@@ -55,12 +55,12 @@ RSpec.describe Project, type: :model do
     end
   end
 
-  describe ".with_contributions_confirmed_today" do
+  describe ".with_contributions_confirmed_last_day" do
     let(:project_01) { create(:project, state: 'online') }
     let(:project_02) { create(:project, state: 'online') }
     let(:project_03) { create(:project, state: 'online') }
 
-    subject { Project.with_contributions_confirmed_today }
+    subject { Project.with_contributions_confirmed_last_day }
 
     before do
       project_01
@@ -68,7 +68,7 @@ RSpec.describe Project, type: :model do
       project_03
     end
 
-    context "when have confirmed contributions today" do
+    context "when have confirmed contributions last day" do
       before do
 
         #TODO: need to investigate this timestamp issue when
@@ -84,7 +84,7 @@ RSpec.describe Project, type: :model do
 
     context "when does not have any confirmed contribution today" do
       before do
-        create(:contribution, state: 'confirmed', project: project_01, confirmed_at: 1.days.ago )
+        create(:contribution, state: 'confirmed', project: project_01, confirmed_at: 1.days.ago - 1.minute )
         create(:contribution, state: 'confirmed', project: project_02, confirmed_at: 2.days.ago )
         create(:contribution, state: 'confirmed', project: project_03, confirmed_at: 5.days.ago )
       end
