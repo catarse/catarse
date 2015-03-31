@@ -10,6 +10,7 @@ class Payment < ActiveRecord::Base
 
   before_validation do
     self.key ||= SecureRandom.uuid
+    self.value ||= self.contribution.try(:value)
   end
 
   def value_should_be_equal_or_greater_than_pledge
