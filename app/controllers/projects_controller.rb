@@ -134,7 +134,7 @@ class ProjectsController < ApplicationController
     @projects = apply_scopes(Project.visible.order_status)
       .most_recent_first
       .includes(:project_total, :user, :category)
-      .page(params[:page]).per(6)
+      .page(params[:page]).per(18)
 
     render partial: 'projects/card',
       collection: @projects,
