@@ -7,7 +7,7 @@
 | Olá, <strong>#{project.user.decorate.display_name}</strong>!
 br
 br
-| Hoje seu projeto recebeu #{link_to "#{confirmed_contributions_today.length} novos apoios", project_by_slug_url(permalink: project.permalink, anchor: 'contributions')}, parabéns!
+| Nas últimas 24 horas de campanha, seu projeto recebeu #{link_to "#{confirmed_contributions_today.length} novos apoios", project_by_slug_url(permalink: project.permalink, anchor: 'contributions')}, parabéns!
 br/
 br/
 | #{link_to 'Poste uma mensagem para os apoiadores', edit_project_url(project, anchor: 'posts')} e #{link_to 'acompanhe as métricas da sua arrecadação', edit_project_url(project, anchor: 'reports')}!
