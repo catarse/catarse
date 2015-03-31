@@ -17,7 +17,17 @@ RSpec.describe MixpanelObserver do
       project: contribution.project.name,
       payment_method: contribution.payment_method,
       payment_choice: contribution.payment_choice,
-      referral: contribution.referal_link
+      referral: contribution.referal_link,
+      anonymous: contribution.anonymous,
+      value: contribution.value,
+      project_goal: contribution.project.goal,
+      project_online_date: contribution.project.online_date,
+      project_expires_at: contribution.project.expires_at,
+      reward_id: contribution.reward_id,
+      reward_value: contribution.reward.minimum_value,
+      project_address_city: contribution.project.account.address_city,
+      project_address_state: contribution.project.account.address_state,
+      account_entity_type: contribution.project.account.entity_type
     }
   end
 
