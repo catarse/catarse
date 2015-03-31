@@ -72,14 +72,14 @@ RSpec.describe ContributionDecorator do
   end
 
   describe "#display_slip_url" do
+    let(:contribution){ create(:confirmed_contribution) }
     context "when slip_url is filled" do
-      subject { build(:contribution, slip_url: 'http://foo.bar/').decorate.display_slip_url }
-      it{ is_expected.to eq('http://foo.bar/')}
-    end
+      before do
+        contribution.payments.last.update_attributes gateway_data: {boleto_url: 'http://foo.bar/'}
+      end
 
-    context "when slip_url is not filled" do
-      subject { build(:contribution).decorate.display_slip_url }
-      it{ is_expected.to match(/www\.moip\.com\.br/) }
+      subject { contribution.decorate.display_slip_url }
+      it{ is_expected.to eq('http://foo.bar/')}
     end
   end
 end
