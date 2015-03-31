@@ -226,11 +226,11 @@ RSpec.describe Project, type: :model do
     subject { Project.by_expires_at('10/10/2013') }
 
     before do
-      @project_01 = create(:project, online_date: '2013-10-10', online_days: 1)
-      @project_02 = create(:project, online_date: '2013-10-09', online_days: 1)
+      @project_01 = create(:project, online_date: '2013-10-10 19:00:00-04', online_days: 1)
+      @project_02 = create(:project, online_date: '2013-10-09 19:00:00-04', online_days: 1)
     end
 
-    it { is_expected.to eq [@project_01] }
+    it { is_expected.to eq [@project_02] }
   end
 
   describe '.order_by' do
