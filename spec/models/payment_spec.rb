@@ -16,6 +16,17 @@ RSpec.describe Payment, type: :model do
     it{ should validate_presence_of :installment_value }
   end
 
+  describe ".can_delete" do
+    subject { Payment.can_delete }
+
+    before do
+      @payment = create(:payment, state: 'pending', created_at: Time.now - 1.week)
+      create(:payment, state: 'pending')
+      create(:payment, state: 'paid', created_at: Time.now - 1.week)
+    end
+    it{ is_expected.to eq [@payment] }
+  end
+
   describe "#valid?" do
     subject{ payment.valid? }
 

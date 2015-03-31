@@ -13,6 +13,8 @@ class Payment < ActiveRecord::Base
     self.value ||= self.contribution.try(:value)
   end
 
+  scope :can_delete, ->{ with_state('pending').where("current_timestamp - payments.created_at > '1 week'::interval") }
+
   def value_should_be_equal_or_greater_than_pledge
     errors.add(:value, I18n.t("activerecord.errors.models.payment.attributes.value.invalid")) if self.contribution && self.value < self.contribution.value
   end
@@ -43,7 +45,7 @@ class Payment < ActiveRecord::Base
     state :deleted
 
     event :trash do
-      transition all => :deleted
+      transition :pending => :deleted
     end
 
     event :pay do
