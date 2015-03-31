@@ -94,6 +94,10 @@ class Contribution < ActiveRecord::Base
     ['Pagarme', 'PayPal', 'MoIP']
   end
 
+  def pending?
+    Contribution.pending.where(id: self.id).exists?
+  end
+
   # Used in payment engines
   def price_in_cents
     (self.value * 100).round

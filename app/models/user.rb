@@ -203,7 +203,7 @@ class User < ActiveRecord::Base
   end
 
   def has_no_confirmed_contribution_to_project(project_id)
-    contributions.where(project_id: project_id).with_states(['confirmed','waiting_confirmation']).empty?
+    contributions.where(project_id: project_id).where('contributions.was_confirmed').empty?
   end
 
   def created_today?
