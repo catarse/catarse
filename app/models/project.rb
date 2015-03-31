@@ -59,7 +59,7 @@ class Project < ActiveRecord::Base
   scope :by_goal, ->(goal) { where(goal: goal) }
   scope :by_category_id, ->(id) { where(category_id: id) }
   scope :by_online_date, ->(online_date) { where("online_date::date = ?", online_date.to_date) }
-  scope :by_expires_at, ->(expires_at) { where("projects.expires_at::date = ?", expires_at.to_date) }
+  scope :by_expires_at, ->(expires_at) { where("(projects.expires_at AT TIME ZONE coalesce((SELECT value FROM settings WHERE name = 'timezone'), 'America/Sao_Paulo'))::date = ?", expires_at.to_date) }
   scope :by_updated_at, ->(updated_at) { where("updated_at::date = ?", updated_at.to_date) }
   scope :by_permalink, ->(p) { without_state('deleted').where("lower(permalink) = lower(?)", p) }
   scope :recommended, -> { where(recommended: true) }
