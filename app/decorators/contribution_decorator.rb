@@ -29,8 +29,8 @@ class ContributionDecorator < Draper::Decorator
   end
 
   def display_slip_url
-    return source.slip_url if source.slip_url.present?
-    "https://www.moip.com.br/Boleto.do?id=#{source.payment_id.gsub('.', '').to_i}"
+    gateway_data = source.payments.last.try(:gateway_data)
+    return gateway_data["boleto_url"] if gateway_data.present?
   end
 end
 
