@@ -8,6 +8,7 @@ RSpec.describe User, type: :model do
   let(:facebook_provider){ create :oauth_provider, name: 'facebook' }
 
   describe "associations" do
+    it{ is_expected.to have_many(:payments).through(:contributions) }
     it{ is_expected.to have_many :contributions }
     it{ is_expected.to have_many :projects }
     it{ is_expected.to have_many :published_projects }
