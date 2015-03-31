@@ -53,6 +53,6 @@ class RewardDecorator < Draper::Decorator
   end
 
   def display_description
-    auto_html(source.description){ html_escape; simple_format; link(target: '_blank', class: 'alt-link') }
+    auto_html(source.description){ html_escape; simple_format }
   end
 end
