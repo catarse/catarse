@@ -13,6 +13,30 @@
             .w-col.w-col-6
 
           .divider.u-marginbottom-20
+
+          .fontsize-base.fontweight-semibold Endereço
+          .fontsize-small.u-marginbottom-20 Esse é o endereço que foi informado ao realizar seu último apoio. Se você mudou de endereço, altere aqui e, caso você esteja aguardando alguma recompensa, avise por email ao realizador do projeto apoiado.
+          .w-row  
+            = form.association :country, as: :select, label_html:{class: 'field-label fontweight-semibold'}, wrapper_html: {class: 'w-col w-col-6 w-sub-col'}, input_html: {class: 'w-select positive', required: true}, required: true, label: 'País'
+            .w-col.w-col-6
+          .w-row
+            = form.input :address_street, as: :string, label_html:{class: 'field-label fontweight-semibold'}, wrapper_html: {class: 'w-col w-col-6 w-sub-col'}, input_html: {class: 'w-input text-field positive', data: {required_in_brazil: true}}, validation_text: true
+            .w-col.w-col-6
+              .w-row
+                = form.input :address_number, as: :tel, label_html:{class: 'field-label fontweight-semibold'}, wrapper_html:{class: 'w-col w-col-6 w-col-small-6 w-col-tiny-6 w-sub-col-middle'}, input_html: {class: 'w-input text-field positive'}, validation_text: true
+                = form.input :address_complement, as: :string, label_html:{class: 'field-label fontweight-semibold'}, wrapper_html:{class: 'w-col w-col-6 w-col-small-6 w-col-tiny-6'}, input_html: {class: 'w-input text-field positive'}
+          .w-row
+            = form.input :address_neighbourhood, as: :string, label_html:{class: 'field-label fontweight-semibold'}, wrapper_html:{class: 'w-col w-col-6 w-sub-col'},input_html: {class: 'w-input text-field positive'}
+            = form.input :address_city, as: :string, label_html:{class: 'field-label fontweight-semibold'}, wrapper_html:{class: 'w-col w-col-6'},input_html: {class: 'w-input text-field positive', data: {required_in_brazil: true}}, validation_text: true
+          .w-row
+            = form.input :address_state, as: :select, label_html:{class: 'field-label fontweight-semibold'}, collection: State.array, wrapper_html: {class: 'w-col w-col-6 w-sub-col'}, input_html: {class: "w-select text-field positive", data: {required_in_brazil: true}}, validation_text: true
+            .w-col.w-col-6
+              .w-row
+                = form.input :address_zip_code, as: :tel, label_html:{class: 'field-label fontweight-semibold'}, wrapper_html: {class: 'w-col w-col-6 w-col-small-6 w-col-tiny-6 w-sub-col-middle'}, input_html: {class: 'w-input text-field positive', data: {required_in_brazil: true, fixed_mask: '99999-999'}}, validation_text: true  
+                = form.input :phone_number, as: :tel, label_html:{class: 'field-label fontweight-semibold'}, wrapper_html: {class: 'w-col w-col-6 w-col-small-6 w-col-tiny-6'}, input_html: {class: 'w-input text-field positive', data: {required_in_brazil: true, fixed_mask: '(99) 9999-99999'}}, validation_text: true
+
+          .divider.u-maginbottom-20
+
           .fontsize-base.fontweight-semibold Alterar minha senha
           .fontsize-small.u-marginbottom-20 Para que a senha seja alterada você precisa confirmar a sua senha atual.
           .w-row.u-marginbottom-20
