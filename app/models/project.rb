@@ -93,8 +93,8 @@ class Project < ActiveRecord::Base
             END ASC, projects.online_date DESC, projects.created_at DESC")
   }
 
-  scope :with_contributions_confirmed_today, -> {
-    joins(:contributions).merge(Contribution.confirmed_today).uniq
+  scope :with_contributions_confirmed_last_day, -> {
+    joins(:contributions).merge(Contribution.confirmed_last_day).uniq
   }
 
   scope :of_current_week, -> {
