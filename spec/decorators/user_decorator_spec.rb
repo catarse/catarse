@@ -40,12 +40,12 @@ RSpec.describe UserDecorator do
     end
 
   describe "#short_name" do
-    subject { user = create(:user, name: 'My Name Is Lorem Ipsum Dolor Sit Amet') }
+    subject { create(:user, name: 'My Name Is Lorem Ipsum Dolor Sit Amet') }
     its(:short_name) { should == 'My Name Is Lorem ...' }
   end
 
   describe "#medium_name" do
-    subject { user = create(:user, name: 'My Name Is Lorem Ipsum Dolor Sit Amet And This Is a Bit Name I Think') }
+    subject { create(:user, name: 'My Name Is Lorem Ipsum Dolor Sit Amet And This Is a Bit Name I Think') }
     its(:medium_name) { should == 'My Name Is Lorem Ipsum Dolor Sit Amet A...' }
   end
 
@@ -55,10 +55,10 @@ RSpec.describe UserDecorator do
   end
 
   describe "#display_total_of_contributions" do
-    subject { user = create(:user) }
+    subject { create(:user) }
     context "with confirmed contributions" do
       before do
-        create(:contribution, state: 'confirmed', user: subject, value: 500.0)
+        create(:confirmed_contribution, user: subject, value: 500.0)
       end
       its(:display_total_of_contributions) { should == 'R$ 500'}
     end
