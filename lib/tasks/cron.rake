@@ -39,10 +39,10 @@ namespace :cron do
     Contribution.where("state in('pending') and created_at + interval '6 days' < current_timestamp").update_all({state: 'deleted'})
   end
 
-  desc "Cancel all waiting_confirmation contributions that is passed 4 weekdays"
+  desc "Cancel all pending payments older than 1 week"
   task :cancel_expired_waiting_confirmation_contributions => :environment do
-    puts "Cancel waiting_confirmation contributions older than 4 working days..."
-    Contribution.can_cancel.update_all(state: 'canceled')
+    puts "Cancel all pending payments older than 1 week"
+    Payment.can_delete.update_all(state: 'deleted')
   end
 
   desc "Deliver a collection of recents projects of a category"
