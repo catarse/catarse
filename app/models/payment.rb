@@ -1,6 +1,7 @@
 class Payment < ActiveRecord::Base
   include Shared::StateMachineHelpers
   include Payment::PaymentEngineHandler
+  delegate :user, :project, to: :contribution
 
   belongs_to :contribution
 
