@@ -84,7 +84,7 @@ RSpec.describe Project, type: :model do
 
     context "when does not have any confirmed contribution today" do
       before do
-        create(:contribution, state: 'confirmed', project: project_01, confirmed_at: 1.days.ago )
+        create(:contribution, state: 'confirmed', project: project_01, confirmed_at: 1.days.ago - 1.minute )
         create(:contribution, state: 'confirmed', project: project_02, confirmed_at: 2.days.ago )
         create(:contribution, state: 'confirmed', project: project_03, confirmed_at: 5.days.ago )
       end
