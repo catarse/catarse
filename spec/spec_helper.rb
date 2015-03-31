@@ -17,9 +17,11 @@ RSpec.configure do |config|
   end
 
   config.before(:suite) do
-    ActiveRecord::Base.connection.execute "SET client_min_messages TO warning;"
-    ActiveRecord::Base.connection.execute "SET timezone TO 'utc';"
-    ActiveRecord::Base.connection.execute %{SET search_path TO "1", public;}
+    con = ActiveRecord::Base.connection
+    con.execute "SET client_min_messages TO warning;"
+    con.execute "SET timezone TO 'utc';"
+    current_user = con.execute("SELECT current_user;")[0]["current_user"]
+    con.execute %{ALTER USER #{current_user} SET search_path TO "$user", public, "1";}
     DatabaseCleaner.clean_with :truncation
     I18n.locale = :pt
     I18n.default_locale = :pt
