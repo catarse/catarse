@@ -62,9 +62,9 @@ RSpec.describe ContributionPolicy do
       let(:current_user) { create(:user, admin: false) }
       let(:user) { nil }
       before do
-        create(:contribution, state: 'waiting_confirmation', project: project)
-        @contribution = create(:contribution, anonymous: false, state: 'confirmed', project: project)
-        @anon_contribution = create(:contribution, anonymous: true, state: 'confirmed', project: project)
+        create(:pending_contribution, project: project)
+        @contribution = create(:confirmed_contribution, anonymous: false, project: project)
+        @anon_contribution = create(:confirmed_contribution, anonymous: true, project: project)
       end
 
       subject { ContributionPolicy::UserScope.new(current_user, user, project.contributions).resolve.order('created_at desc') }
