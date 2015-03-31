@@ -239,7 +239,13 @@ class Project < ActiveRecord::Base
       total_contributions: self.total_contributions,
       pledged: self.pledged,
       project_state: self.state,
-      category: self.category.name_pt
+      category: self.category.name_pt,
+      project_goal: self.goal,
+      project_online_date: self.online_date,
+      project_expires_at: self.expires_at,
+      project_address_city: self.account.address_city,
+      project_address_state: self.account.address_state,
+      account_entity_type: self.account.entity_type
     }.to_json
   end
 
