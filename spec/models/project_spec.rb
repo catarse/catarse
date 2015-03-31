@@ -527,9 +527,9 @@ RSpec.describe Project, type: :model do
         project_goal: project.goal,
         project_online_date: project.online_date,
         project_expires_at: project.expires_at,
-        project_address_city: project.account.address_city,
-        project_address_state: project.account.address_state,
-        account_entity_type: project.account.entity_type
+        project_address_city: project.account.try(:address_city),
+        project_address_state: project.account.try(:address_state),
+        account_entity_type: project.account.try(:entity_type)
       }.to_json)
     end
   end
