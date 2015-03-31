@@ -70,7 +70,7 @@ class ApplicationController < ActionController::Base
   end
 
   def redirect_user_back_after_login
-    if request.env['REQUEST_URI'].present? && !request.xhr? && session[:return_to].nil?
+    if request.env['REQUEST_URI'].present? && !request.xhr?
       session[:return_to] = request.env['REQUEST_URI']
     end
   end
