@@ -24,7 +24,7 @@ RSpec.describe MixpanelObserver do
       project_online_date: contribution.project.online_date,
       project_expires_at: contribution.project.expires_at,
       reward_id: contribution.reward_id,
-      reward_value: contribution.reward.minimum_value,
+      reward_value: contribution.reward.try(:minimum_value),
       project_address_city: contribution.project.account.address_city,
       project_address_state: contribution.project.account.address_state,
       account_entity_type: contribution.project.account.entity_type
