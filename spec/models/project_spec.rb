@@ -523,7 +523,13 @@ RSpec.describe Project, type: :model do
         total_contributions: project.total_contributions,
         pledged: project.pledged,
         project_state: project.state,
-        category: project.category.name_pt
+        category: project.category.name_pt,
+        project_goal: project.goal,
+        project_online_date: project.online_date,
+        project_expires_at: project.expires_at,
+        project_address_city: project.account.try(:address_city),
+        project_address_state: project.account.try(:address_state),
+        account_entity_type: project.account.try(:entity_type)
       }.to_json)
     end
   end
