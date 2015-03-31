@@ -226,8 +226,8 @@ RSpec.describe Project, type: :model do
     subject { Project.by_expires_at('10/10/2013') }
 
     before do
-      @project_01 = create(:project, online_date: '10/10/2013', online_days: 1)
-      @project_02 = create(:project, online_date: '09/10/2013', online_days: 1)
+      @project_01 = create(:project, online_date: '2013-10-10', online_days: 1)
+      @project_02 = create(:project, online_date: '2013-10-09', online_days: 1)
     end
 
     it { is_expected.to eq [@project_02] }
