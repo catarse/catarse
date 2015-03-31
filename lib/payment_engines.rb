@@ -29,6 +29,6 @@ class PaymentEngines
   end
 
   def self.find_payment filter
-    Contribution.where(filter).first
+    Payment.where(filter).first
   end
 end
