@@ -10,11 +10,15 @@ class Payment < ActiveRecord::Base
   validate :value_should_be_equal_or_greater_than_pledge
 
   before_validation do
-    self.key ||= SecureRandom.uuid
+    generate_key
     self.value ||= self.contribution.try(:value)
   end
 
   scope :can_delete, ->{ with_state('pending').where("current_timestamp - payments.created_at > '1 week'::interval") }
+
+  def generate_key
+    self.key ||= SecureRandom.uuid
+  end
 
   def value_should_be_equal_or_greater_than_pledge
     errors.add(:value, I18n.t("activerecord.errors.models.payment.attributes.value.invalid")) if self.contribution && self.value < self.contribution.value
