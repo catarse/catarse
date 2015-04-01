@@ -1,6 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe ContributionDetail, type: :model do
+  describe "associations" do
+    it{ should belong_to :user }
+    it{ should belong_to :project }
+    it{ should belong_to :reward }
+    it{ should belong_to :contribution }
+    it{ should belong_to :payment }
+  end
+
   describe ".between_values" do
     let(:start_at) { 10 }
     let(:ends_at) { 20 }
