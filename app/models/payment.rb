@@ -4,6 +4,7 @@ class Payment < ActiveRecord::Base
   delegate :user, :project, to: :contribution
 
   belongs_to :contribution
+  has_many :payment_notifications # to keep compatibility with catarse_pagarme
 
   validates_presence_of :state, :key, :gateway, :payment_method, :value, :installments, :installment_value
   validate :value_should_be_equal_or_greater_than_pledge
