@@ -89,7 +89,7 @@ RSpec.describe Contribution, type: :model do
     it { is_expected.to eq [@confirmed] }
   end
 
-  describe ".confirmed_today" do
+  describe ".confirmed_last_day" do
     before do
       3.times { create(:payment, state: 'paid', paid_at: 2.days.ago) }
       4.times { create(:payment, state: 'paid', paid_at: 6.days.ago) }
@@ -99,7 +99,7 @@ RSpec.describe Contribution, type: :model do
       7.times { create(:payment, state: 'paid', paid_at: Time.now) }
     end
 
-    subject { Contribution.confirmed_today }
+    subject { Contribution.confirmed_last_day }
 
     it { is_expected.to have(7).items }
   end
