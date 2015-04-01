@@ -135,7 +135,7 @@ class Project < ActiveRecord::Base
   end
 
   def has_blank_service_fee?
-    contributions.with_state(:confirmed).where("payment_service_fee IS NULL OR payment_service_fee = 0").present?
+    payments.with_state(:paid).where("NULLIF(gateway_fee, 0) IS NULL").present?
   end
 
   def can_show_account_link?
