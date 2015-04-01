@@ -114,7 +114,6 @@ Catarse::Application.routes.draw do
       end
     end
 
-    resources :statistics, only: [ :index ]
     resources :financials, only: [ :index ]
 
     resources :contributions, only: [ :index, :update, :show ] do
