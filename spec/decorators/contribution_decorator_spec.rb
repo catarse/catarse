@@ -72,6 +72,22 @@ RSpec.describe ContributionDecorator do
     end
   end
 
+  describe "#display_status" do
+    subject{ contribution.decorate.display_status }
+
+    context "when payment is paid" do
+      before do
+        payment.update_attributes paid_at: Time.now
+      end
+      it{ is_expected.to eq I18n.t("payment.state.#{payment.state}", date: contribution.decorate.display_date(:paid_at)) }
+    end
+
+    context "when payment is pending" do
+      let(:contribution){ create(:pending_contribution) }
+      it{ is_expected.to eq I18n.t("payment.state.#{payment.state}", date: contribution.decorate.display_date(:paid_at)) }
+    end
+  end
+
   describe "#display_slip_url" do
     let(:contribution){ create(:confirmed_contribution) }
     context "when slip_url is filled" do
