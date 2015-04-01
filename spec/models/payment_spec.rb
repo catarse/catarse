@@ -20,7 +20,7 @@ RSpec.describe Payment, type: :model do
     subject { Payment.can_delete }
 
     before do
-      @payment = create(:payment, state: 'pending', created_at: Time.now - 1.week)
+      @payment = create(:payment, state: 'pending', created_at: Time.now - 8.days)
       create(:payment, state: 'pending')
       create(:payment, state: 'paid', created_at: Time.now - 1.week)
     end
