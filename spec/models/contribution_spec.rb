@@ -104,33 +104,6 @@ RSpec.describe Contribution, type: :model do
     it { is_expected.to have(7).items }
   end
 
-  describe ".can_cancel" do
-    subject { Contribution.can_cancel}
-
-    context "when contribution is in time to wait the confirmation" do
-      before do
-        create(:contribution, state: 'waiting_confirmation', created_at: 3.weekdays_ago)
-      end
-      it { is_expected.to have(0).item }
-    end
-
-    context "when contribution is by bank transfer and is passed the confirmation time" do
-      before do
-        create(:contribution, state: 'waiting_confirmation', payment_choice: 'DebitoBancario', created_at: 2.weekdays_ago)
-        create(:contribution, state: 'waiting_confirmation', payment_choice: 'DebitoBancario', created_at: 0.weekdays_ago)
-      end
-      it { is_expected.to have(1).item }
-    end
-
-    context "when we have contributions that is passed the confirmation time" do
-      before do
-        create(:contribution, state: 'waiting_confirmation', created_at: 3.weekdays_ago)
-        create(:contribution, state: 'waiting_confirmation', created_at: 6.weekdays_ago)
-      end
-      it { is_expected.to have(1).itens }
-    end
-  end
-
   describe '#recommended_projects' do
     let(:contribution){ create(:confirmed_contribution) }
     subject{ contribution.recommended_projects }
@@ -211,43 +184,6 @@ RSpec.describe Contribution, type: :model do
     context "when it's a valid refund" do
       let(:contribution){ valid_refund }
       it{ is_expected.to eq(true) }
-    end
-  end
-
-  describe "#credits" do
-    subject{ user.credits.to_f }
-    context "when contributions are confirmed and not done with credits but project is successful" do
-      before do
-        create(:contribution, state: 'confirmed', user: user, project: successful_project)
-        successful_project.update_attributes state: 'successful'
-      end
-      it{ is_expected.to eq(0) }
-    end
-
-    context "when contributions are confirmed and not done with credits" do
-      before do
-        contribution = create(:contribution, user: user, project: failed_project)
-        contribution.payments << create(:payment, state: 'paid', value: 10, gateway: 'AnyButCredits')
-        failed_project.update_attributes state: 'failed'
-        user.reload
-      end
-      it{ is_expected.to eq(10) }
-    end
-
-    context "when contributions are done with credits" do
-      before do
-        create(:contribution, credits: true, state: 'confirmed', user: user, project: failed_project)
-        failed_project.update_attributes state: 'failed'
-      end
-      it{ is_expected.to eq(0) }
-    end
-
-    context "when contributions are not confirmed" do
-      before do
-        create(:contribution, user: user, project: failed_project, state: 'pending')
-        failed_project.update_attributes state: 'failed'
-      end
-      it{ is_expected.to eq(0) }
     end
   end
 

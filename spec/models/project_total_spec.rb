@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe ProjectTotal, type: :model do
   def create_contribution_with_payment project_id, payment_state
-    c = create(:confirmed_contribution, value: 10.0, payment_service_fee: 1, state: 'confirmed', project_id: project_id)
+    c = create(:confirmed_contribution, value: 10.0, project_id: project_id)
     c.payments.first.update_attributes gateway_fee: 1, state: payment_state
     c
   end
