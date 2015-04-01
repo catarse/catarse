@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe MixpanelObserver do
-  let(:contribution){ create(:contribution, key: 'should be updated', payment_method: 'should be updated', state: 'confirmed', confirmed_at: nil) }
+  let(:contribution){ create(:confirmed_contribution) }
+  let(:payment){ contribution.payments.first }
   let(:people){ double('mixpanel-ruby people', {set: nil}) }
   let(:tracker){ double('mixpanel-ruby tracker', {track: nil, people: people}) }
   let(:properties) do
@@ -15,8 +16,8 @@ RSpec.describe MixpanelObserver do
       published_projects: contribution.user.published_projects.count,
       has_online_project: contribution.user.has_online_project?,
       project: contribution.project.name,
-      payment_method: contribution.payment_method,
-      payment_choice: contribution.payment_choice,
+      payment_method: payment.gateway,
+      payment_choice: payment.payment_method,
       referral: contribution.referal_link,
       anonymous: contribution.anonymous,
       value: contribution.value,

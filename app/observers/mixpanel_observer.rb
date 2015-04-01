@@ -3,10 +3,11 @@ class MixpanelObserver < ActiveRecord::Observer
 
   def from_waiting_confirmation_to_confirmed(contribution)
     user = contribution.user
+    payment = contribution.payments.last
     properties = user_properties(user).merge({
       project: contribution.project.name,
-      payment_method: contribution.payment_method,
-      payment_choice: contribution.payment_choice,
+      payment_method: payment.try(:gateway),
+      payment_choice: payment.payment_method,
       referral: contribution.referal_link,
       anonymous: contribution.anonymous,
       value: contribution.value,
