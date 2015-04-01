@@ -7,7 +7,28 @@ window.init_redactor = function(){
   }
 
   $('.redactor').redactor({
-        formatting: ['p', 'blockquote', 'h1', 'h2', 'h3', 'h4'],
+        source: false,
+        formatting: ['p'],
+        formattingAdd: [
+          {
+              tag: 'blockquote',
+              title: 'Citar',
+              class: 'fontsize-base quote',
+              clear: true
+          },
+
+          {
+              tag: 'p',
+              title: 'Cabeçalho 1',
+              class: 'fontsize-larger fontweight-semibold',
+              clear: true
+          },
+          {
+              tag: 'p',
+              title: 'Cabeçalho 2',
+              class: 'fontsize-large',
+              clear: true
+          }],
         lang: 'pt_br',
         maxHeight: 800,
         minHeight: 300,
