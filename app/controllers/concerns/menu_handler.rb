@@ -17,7 +17,6 @@ module Concerns
       # Only admin can access
       add_to_menu "admin.contributions.index.menu", :admin_contributions_path
       add_to_menu "admin.financials.index.menu",    :admin_financials_path
-      add_to_menu "admin.statistics.index.menu",    :admin_statistics_path
       add_to_menu "admin.users.index.menu",         :admin_users_path
       add_to_menu "admin.projects.index.menu",      :admin_projects_path
       menu "Dataclips" => :dbhero_path
