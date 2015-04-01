@@ -20,7 +20,6 @@ class Contribution < ActiveRecord::Base
   scope :by_id, ->(id) { where(id: id) }
   scope :anonymous, -> { where(anonymous: true) }
   scope :not_anonymous, -> { where(anonymous: false) }
-  scope :confirmed_today, -> { where("EXISTS(SELECT true FROM payments p WHERE p.contribution_id = contributions.id AND p.state = 'paid' AND p.paid_at::date = to_date(?, 'yyyy-mm-dd'))", Time.now.strftime('%Y-%m-%d')) }
   scope :confirmed_last_day, -> { where("EXISTS(SELECT true FROM payments p WHERE p.contribution_id = contributions.id AND p.state = 'paid' AND (current_timestamp - p.paid_at) < '1 day'::interval)") }
   scope :pending, ->{
     where("EXISTS (SELECT true FROM payments p WHERE p.contribution_id = contributions.id AND p.state = 'pending') AND NOT contributions.was_confirmed")

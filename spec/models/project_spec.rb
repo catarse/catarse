@@ -62,12 +62,6 @@ RSpec.describe Project, type: :model do
 
     subject { Project.with_contributions_confirmed_last_day }
 
-    before do
-      project_01
-      project_02
-      project_03
-    end
-
     context "when have confirmed contributions last day" do
       before do
         @confirmed_today = create(:confirmed_contribution, project: project_01)
@@ -76,18 +70,7 @@ RSpec.describe Project, type: :model do
         old.payments.first.update_attributes paid_at: 2.days.ago
       end
 
-      it { is_expected.to have(2).items }
-      it { expect(subject.include?(project_02)).to eq(false) }
-    end
-
-    context "when does not have any confirmed contribution today" do
-      before do
-        create(:contribution, state: 'confirmed', project: project_01, confirmed_at: 1.days.ago - 1.minute )
-        create(:contribution, state: 'confirmed', project: project_02, confirmed_at: 2.days.ago )
-        create(:contribution, state: 'confirmed', project: project_03, confirmed_at: 5.days.ago )
-      end
-
-      it { is_expected.to have(0).items }
+      it { is_expected.to eq [project_01] }
     end
   end
 
