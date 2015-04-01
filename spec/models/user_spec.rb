@@ -84,10 +84,10 @@ RSpec.describe User, type: :model do
 
     context "when he has credits in the user_total but is checked with zero credits" do
       before do
-        b = create(:contribution, state: 'confirmed', value: 100, project: failed_project)
+        b = create(:confirmed_contribution, value: 100, project: failed_project)
         failed_project.update_attributes state: 'failed'
         @u = b.user
-        b = create(:contribution, state: 'confirmed', value: 100, project: successful_project)
+        b = create(:confirmed_contribution, value: 100, project: successful_project)
         @u.update_attributes(zero_credits: true)
       end
       it{ is_expected.to eq([]) }
@@ -172,9 +172,9 @@ RSpec.describe User, type: :model do
   describe ".who_contributed_project" do
     subject{ User.who_contributed_project(successful_project.id) }
     before do
-      @contribution = create(:contribution, state: 'confirmed', project: successful_project)
-      create(:contribution, state: 'confirmed', project: successful_project, user: @contribution.user)
-      create(:contribution, state: 'pending', project: successful_project)
+      @contribution = create(:confirmed_contribution, project: successful_project)
+      create(:confirmed_contribution, project: successful_project, user: @contribution.user)
+      create(:pending_contribution, project: successful_project)
     end
     it{ is_expected.to eq([@contribution.user]) }
   end
