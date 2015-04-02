@@ -24,9 +24,6 @@ class Contribution < ActiveRecord::Base
   scope :pending, ->{
     where("EXISTS (SELECT true FROM payments p WHERE p.contribution_id = contributions.id AND p.state = 'pending') AND NOT contributions.was_confirmed")
   }
-  scope :avaiable_to_automatic_refund, -> {
-    where('contributions.is_confirmed')
-  }
 
   scope :not_created_today, -> { where.not("contributions.created_at::date AT TIME ZONE '#{Time.zone.tzinfo.name}' = current_timestamp::date AT TIME ZONE '#{Time.zone.tzinfo.name}'") }
   scope :can_cancel, -> { where("contributions.can_cancel") }
