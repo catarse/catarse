@@ -43,7 +43,7 @@ App.addChild('DashboardRewards', {
           }
         });
       }
-    })
+    });
   },
 
 });
@@ -68,7 +68,7 @@ App.views.DashboardRewards.addChild('RewardForm', _.extend({
   showInput: function(event) {
     var $target = this.$(event.currentTarget);
     var $max_field = $target.parent().parent().parent().next('.reward_maximum_contributions');
-    var $input = $('input', $max_field)
+    var $input = $('input', $max_field);
 
     $max_field.toggle();
 

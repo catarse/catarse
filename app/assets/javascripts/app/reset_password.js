@@ -6,6 +6,6 @@ App.addChild("ResetPassword", {
   },
 
   showPassword: function(event) {
-    return Skull.ShowPasswordInput.togglePass(['input#user_password', 'input#user_password_confirmation'], this.$(event.target).prop('checked'))
+    return Skull.ShowPasswordInput.togglePass(['input#user_password', 'input#user_password_confirmation'], this.$(event.target).prop('checked'));
   }
 });
