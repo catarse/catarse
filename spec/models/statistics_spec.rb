@@ -5,7 +5,7 @@ RSpec.describe Statistics, type: :model do
     create(:project, state: 'successful')
     create(:project, state: 'draft')
     project = create(:project, state: 'online')
-    create(:contribution, state: 'confirmed', project: project )
+    create(:confirmed_contribution, project: project )
     create(:contribution, project: project)
   end
 
@@ -16,12 +16,12 @@ RSpec.describe Statistics, type: :model do
 
   describe "#total_contributions" do
     subject{ Statistics.first.total_contributions }
-    it{ is_expected.to eq(Contribution.with_state('confirmed').count) }
+    it{ is_expected.to eq(Contribution.where('contributions.was_confirmed').count) }
   end
 
   describe "#total_contributed" do
     subject{ Statistics.first.total_contributed}
-    it{ is_expected.to eq(Contribution.with_state('confirmed').sum(:value)) }
+    it{ is_expected.to eq(Contribution.where('contributions.was_confirmed').sum(:value)) }
   end
 
   describe "#total_projects" do

@@ -28,6 +28,7 @@ class Project < ActiveRecord::Base
   has_one :account, class_name: "ProjectAccount", inverse_of: :project
   has_many :rewards
   has_many :contributions
+  has_many :payments, through: :contributions
   has_many :posts, class_name: "ProjectPost", inverse_of: :project
   has_many :budgets, class_name: "ProjectBudget", inverse_of: :project
   has_many :unsubscribes
@@ -58,7 +59,7 @@ class Project < ActiveRecord::Base
   scope :by_goal, ->(goal) { where(goal: goal) }
   scope :by_category_id, ->(id) { where(category_id: id) }
   scope :by_online_date, ->(online_date) { where("online_date::date = ?", online_date.to_date) }
-  scope :by_expires_at, ->(expires_at) { where("projects.expires_at::date = ?", expires_at.to_date) }
+  scope :by_expires_at, ->(expires_at) { where("(projects.expires_at AT TIME ZONE coalesce((SELECT value FROM settings WHERE name = 'timezone'), 'America/Sao_Paulo'))::date = ?", expires_at.to_date) }
   scope :by_updated_at, ->(updated_at) { where("updated_at::date = ?", updated_at.to_date) }
   scope :by_permalink, ->(p) { without_state('deleted').where("lower(permalink) = lower(?)", p) }
   scope :recommended, -> { where(recommended: true) }
@@ -134,7 +135,7 @@ class Project < ActiveRecord::Base
   end
 
   def has_blank_service_fee?
-    contributions.with_state(:confirmed).where("payment_service_fee IS NULL OR payment_service_fee = 0").present?
+    payments.with_state(:paid).where("NULLIF(gateway_fee, 0) IS NULL").present?
   end
 
   def can_show_account_link?
@@ -170,7 +171,7 @@ class Project < ActiveRecord::Base
   end
 
   def selected_rewards
-    rewards.sort_asc.where(id: contributions.with_state('confirmed').map(&:reward_id))
+    rewards.sort_asc.where(id: contributions.where('contributions.is_confirmed').map(&:reward_id))
   end
 
   def accept_contributions?
@@ -186,11 +187,7 @@ class Project < ActiveRecord::Base
   end
 
   def in_time_to_wait?
-    contributions.with_state('waiting_confirmation').present?
-  end
-
-  def pledged_and_waiting
-    contributions.with_states(['confirmed', 'waiting_confirmation']).sum(:value)
+    payments.with_state('pending').exists?
   end
 
   def new_draft_recipient

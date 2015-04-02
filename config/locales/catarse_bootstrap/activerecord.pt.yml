@@ -243,6 +243,13 @@ pt:
     delete:
       posts: 'Novidade apagada com sucesso'
     video_regex_validation: somente URLs do Youtube ou Vimeo são aceitas
+  payment:
+    state:
+      pending: "Aguardando confirmação do pagamento"
+      paid: "Confirmado em %{date}"
+      refunded: "Reembolsado em %{date}"
+      pending_refund: "Reembolso solicitado em %{date}"
+      refused: "Pagamento recusado em %{date}"
   contribution:
     payment_details:
       creditos: "Créditos"

@@ -40,7 +40,6 @@ class ApplicationController < ActionController::Base
   end
 
   private
-
   def force_www
     if request.subdomain.blank? && Rails.env.production?
       return redirect_to url_for(params.merge(subdomain: 'www'))

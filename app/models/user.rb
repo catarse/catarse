@@ -40,9 +40,8 @@ class User < ActiveRecord::Base
   has_many :credit_cards
   has_many :project_accounts
   has_many :authorizations
-  has_many :contributions, -> do
-    without_state(:deleted)
-  end
+  has_many :contributions
+  has_many :payments, through: :contributions
   has_many :projects, -> do
     without_state(:deleted)
   end
@@ -52,7 +51,7 @@ class User < ActiveRecord::Base
   has_many :unsubscribes
   has_many :project_posts
   has_many :contributed_projects, -> do
-    distinct.where(contributions: { state: ['confirmed', 'requested_refund', 'refunded'] } ).order('projects.created_at DESC')
+    distinct.where("contributions.was_confirmed").order('projects.created_at DESC')
   end, through: :contributions, source: :project
   has_many :category_followers, dependent: :destroy
   has_many :categories, through: :category_followers
@@ -71,7 +70,7 @@ class User < ActiveRecord::Base
   }
 
   scope :who_contributed_project, ->(project_id) {
-    where("id IN (SELECT user_id FROM contributions WHERE contributions.state IN ('confirmed', 'refunded', 'requested_refund') AND project_id = ?)", project_id)
+    where("id IN (SELECT user_id FROM contributions WHERE contributions.was_confirmed AND project_id = ?)", project_id)
   }
 
   scope :subscribed_to_posts, -> {
@@ -93,14 +92,32 @@ class User < ActiveRecord::Base
   }
   scope :by_name, ->(name){ where('users.name ~* ?', name) }
   scope :by_id, ->(id){ where(id: id) }
-  scope :by_key, ->(key){ where('EXISTS(SELECT true FROM contributions WHERE contributions.user_id = users.id AND contributions.key ~* ?)', key) }
+  scope :by_key, ->(key){ where('EXISTS(
+                                SELECT true 
+                                FROM 
+                                  contributions c 
+                                  JOIN payments p ON c.id = p.contribution_id
+                                WHERE c.user_id = users.id AND p.key = ?)', key
+                               ) }
   scope :has_credits, -> { joins(:user_total).where('user_totals.credits > 0 and not users.zero_credits') }
   scope :already_used_credits, -> {
     has_credits.
-    where("EXISTS (SELECT true FROM contributions b WHERE b.credits AND b.state = 'confirmed' AND b.user_id = users.id)")
+    where("EXISTS (
+            SELECT true 
+            FROM 
+              contributions c 
+              JOIN payments p ON c.id = p.contribution_id 
+            WHERE p.uses_credits AND p.state = 'paid' AND c.user_id = users.id)")
   }
   scope :has_not_used_credits_last_month, -> { has_credits.
-    where("NOT EXISTS (SELECT true FROM contributions b WHERE current_timestamp - b.created_at < '1 month'::interval AND b.credits AND b.state = 'confirmed' AND b.user_id = users.id)")
+    where("NOT EXISTS (
+                SELECT true 
+                FROM 
+                  contributions c 
+                  JOIN payments p ON c.id = p.contribution_id 
+                WHERE 
+                  current_timestamp - c.created_at < '1 month'::interval 
+                  AND p.uses_credits AND p.state = 'paid' AND c.user_id = users.id)")
   }
 
   scope :to_send_category_notification, -> (category_id) {
@@ -186,7 +203,7 @@ class User < ActiveRecord::Base
   end
 
   def has_no_confirmed_contribution_to_project(project_id)
-    contributions.where(project_id: project_id).with_states(['confirmed','waiting_confirmation']).empty?
+    contributions.where(project_id: project_id).where('contributions.was_confirmed').empty?
   end
 
   def created_today?

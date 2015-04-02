@@ -63,7 +63,7 @@ RSpec.describe "Projects", type: :feature do
 
   describe "view" do
     before do
-      20.times{ create(:contribution, value: 10.00, credits: true, project: project, state: 'confirmed') }
+      20.times{ create(:confirmed_contribution, value: 10.00, project: project) }
       6.times{ create(:project_post, project: project) }
       visit project_path(project)
       sleep FeatureHelpers::TIME_TO_SLEEP
@@ -114,8 +114,8 @@ RSpec.describe "Projects", type: :feature do
     before do
       login
       @own_project = create(:project, user: current_user)
-      10.times{ create(:contribution, value: 10.00, credits: true, project: @own_project, state: 'confirmed') }
-      5.times{ create(:contribution, value: 10.00, credits: true, project: @own_project, state: 'waiting_confirmation') }
+      10.times{ create(:confirmed_contribution, value: 10.00, project: @own_project) }
+      5.times{ create(:pending_contribution, value: 10.00, project: @own_project) }
       visit project_path(@own_project)
     end
     
