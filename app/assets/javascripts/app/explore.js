@@ -34,7 +34,7 @@ App.addChild('Explore', _.extend({
       this.$("#explore_results").data('projects-path')
     );
 
-    if(window.location.hash == ''){
+    if(window.location.hash === ''){
       var search_string = window.location.search.indexOf("pg_search");
       this.fetchPage();
 
@@ -54,7 +54,7 @@ App.addChild('Explore', _.extend({
   selectLink: function(){
     this.$('.follow-category').hide();
 
-    var link = this.$('a[href="' + window.location.hash + '"]')
+    var link = this.$('a[href="' + window.location.hash + '"]');
     this.$('a.selected').removeClass('selected');
 
     link.addClass('selected');
@@ -118,10 +118,10 @@ App.views.Explore.addChild('FollowCategory', {
       }
 
       if(selectedItem.data('isfollowing')) {
-        unfollow_btn.prop('href', selectedItem.data('unfollowpath'))
+        unfollow_btn.prop('href', selectedItem.data('unfollowpath'));
         unfollow_btn.show();
       } else {
-        follow_btn.prop('href', selectedItem.data('followpath'))
+        follow_btn.prop('href', selectedItem.data('followpath'));
         follow_btn.show();
       }
     }

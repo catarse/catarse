@@ -12,7 +12,7 @@ App.addChild('Sort', {
   },
 
   getSorting: function(){
-    var sortField = this.form.find('[id=_order_by]')
+    var sortField = this.form.find('[id=_order_by]');
 
     if(sortField.val()){
       var sort = sortField.val().split(' ');
