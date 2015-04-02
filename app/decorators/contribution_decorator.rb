@@ -34,15 +34,8 @@ class ContributionDecorator < Draper::Decorator
   end
 
   def display_status
-    if last_payment.pending?
-      "Aguardando confirmação do pagamento"
-    elsif last_payment.paid?
-      "Confirmado em #{contribution.decorate.display_date(:paid_at)}"
-    elsif last_payment.refunded?
-      "Reembolsado em #{contribution.decorate.display_date(:refunded_at)}"
-    elsif last_payment.pending_refund?
-      "Reembolso solicitado em #{contribution.decorate.display_date(:pending_refund_at)}"
-    end
+    state = last_payment.state
+    I18n.t("payment.state.#{state}", date: display_date("#{state}_at"))
   end
 
   private
