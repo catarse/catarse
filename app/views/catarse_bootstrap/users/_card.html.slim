@@ -16,5 +16,9 @@
       - if resource.other_link.present?
         li
           = link_to t('.author_website'), resource.other_link, target: '_blank', class: 'link-hidden'
+      - resource.links.each do |link|
+        li
+          = link_to truncate(link.link_without_protocol, length: 43), link.link, target: '_blank', class: 'link-hidden'
+
   - if current_user
     = mail_to resource.email, t('.contact_author'), target: '_blank', class: 'btn btn-medium btn-message'
