@@ -1,5 +1,5 @@
-  el: 'html',
 var App = window.App = Skull.View.extend({
+  el: 'html',
 
   events: {
     "click #close-global-alert" : "closeAlert",
