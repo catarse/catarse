@@ -54,7 +54,7 @@ RSpec.describe "Users", type: :feature do
     before do
       @user = create(:user) 
       5.times{ create(:project, user: @user) } 
-      5.times{ create(:contribution, user: @user) }
+      5.times{ create(:confirmed_contribution, user: @user) }
     end
 
     it "should describe the date the user signed up, the total number of projects created and the total number of contributions on the profile page" do

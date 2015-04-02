@@ -9,6 +9,6 @@
         = contribution.user.short_name
     - if policy(@project).update?
       .fontsize-smaller = number_to_currency contribution.value
-    .fontsize-smaller = l(contribution.confirmed_at || contribution.created_at, format: :simple)
+    .fontsize-smaller = l(contribution.created_at, format: :simple)
     .fontsize-smaller = contribution.user.contributions_text
   .divider.u-marginbottom-20

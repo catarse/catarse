@@ -10,13 +10,6 @@ class ProjectObserver < ActiveRecord::Observer
       project.remove_scheduled_job('ProjectSchedulerWorker')
       ProjectSchedulerWorker.perform_at(project.online_date, project.id)
     end
-
-    project.expires_fragments(
-      'project-funding_period',
-      'project-stats',
-      'project-about',
-      'project-rewards'
-    )
   end
 
   def after_create(project)
@@ -51,23 +44,6 @@ class ProjectObserver < ActiveRecord::Observer
     project.notify_owner(:project_approved, { from_email: CatarseSettings[:email_projects] })
   end
 
-  def notify_admin_that_project_reached_deadline(project)
-    project.notify_to_backoffice(:adm_project_deadline, { from_email: CatarseSettings[:email_system] })
-  end
-
-  def notify_admin_that_project_is_successful(project)
-    redbooth_user = User.find_by(email: CatarseSettings[:email_redbooth])
-    project.notify_once(:redbooth_task, redbooth_user) if redbooth_user
-  end
-
-  def from_in_analysis_to_rejected(project)
-    project.update_attributes({ rejected_at: DateTime.now })
-  end
-
-  def from_in_analysis_to_draft(project)
-    project.update_attributes({ sent_to_draft_at: DateTime.now })
-  end
-
   def from_approved_to_online(project)
     deliver_default_notification_for(project, :project_visible)
     project.update_attributes({
@@ -82,8 +58,8 @@ class ProjectObserver < ActiveRecord::Observer
   def from_online_to_failed(project)
     notify_users(project)
 
-    project.contributions.with_state('waiting_confirmation').each do |contribution|
-      contribution.notify_to_contributor(:pending_contribution_project_unsuccessful)
+    project.payments.with_state('pending').each do |payment|
+      payment.contribution.notify_to_contributor(:pending_contribution_project_unsuccessful)
     end
 
     request_refund_for_failed_project(project)
@@ -96,26 +72,26 @@ class ProjectObserver < ActiveRecord::Observer
     notify_admin_that_project_reached_deadline(project)
   end
 
+  private
+  def notify_admin_that_project_is_successful(project)
+    redbooth_user = User.find_by(email: CatarseSettings[:email_redbooth])
+    project.notify_once(:redbooth_task, redbooth_user) if redbooth_user
+  end
+
+  def notify_admin_that_project_reached_deadline(project)
+    project.notify_to_backoffice(:adm_project_deadline, { from_email: CatarseSettings[:email_system] })
+  end
+
   def notify_users(project)
-    project.contributions.with_state('confirmed').each do |contribution|
-      unless contribution.notified_finish
-        template_name = project.successful? ? :contribution_project_successful : contribution.notification_template_for_failed_project
-        contribution.notify_to_contributor(template_name)
-
-        if contribution.credits? && project.failed?
-          contribution.notify_to_backoffice(:requested_refund_for_credits)
-        end
-
-        contribution.update_attributes({ notified_finish: true })
-      end
+    project.payments.with_state('paid').each do |payment|
+      template_name = project.successful? ? :contribution_project_successful : payment.notification_template_for_failed_project
+      payment.contribution.notify_to_contributor(template_name)
     end
   end
 
-  private
-
   def request_refund_for_failed_project(project)
-    project.contributions.with_state('confirmed').each do |contribution|
-      contribution.request_refund
+    project.payments.with_state('paid').each do |payment|
+      payment.request_refund
     end
   end
 

@@ -5,4 +5,4 @@ br
 br
 |Criado em: #{contribution.created_at}
 br
-|Confirmado em: #{contribution.confirmed_at}
+|Confirmado em: #{contribution.payments.last.try(:paid_at)}
