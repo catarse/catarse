@@ -6,6 +6,7 @@ class Reward < ActiveRecord::Base
   before_destroy :check_if_is_destroyable
 
   belongs_to :project
+  has_many :payments, through: :contributions
   has_many :contributions, dependent: :nullify
 
   ranks :row_order, with_same: :project_id
@@ -14,7 +15,19 @@ class Reward < ActiveRecord::Base
   validates_numericality_of :minimum_value, greater_than_or_equal_to: 10.00
   validates_numericality_of :maximum_contributions, only_integer: true, greater_than: 0, allow_nil: true
   validate :deliver_at_cannot_be_in_the_past
-  scope :remaining, -> { where("maximum_contributions IS NULL OR (maximum_contributions IS NOT NULL AND (SELECT COUNT(*) FROM contributions WHERE state IN ('confirmed', 'waiting_confirmation') AND reward_id = rewards.id) < maximum_contributions)") }
+  scope :remaining, -> { where("
+                               rewards.maximum_contributions IS NULL 
+                               OR (
+                                rewards.maximum_contributions IS NOT NULL 
+                                AND (
+                                      SELECT 
+                                      COUNT(distinct c.id) 
+                                      FROM 
+                                        contributions c JOIN payments p ON p.contribution_id = c.id
+                                      WHERE 
+                                        p.state IN ('paid', 'pending') 
+                                        AND reward_id = rewards.id
+                                    ) < maximum_contributions)") }
   scope :sort_asc, -> { order('id ASC') }
 
   delegate :display_deliver_estimate, :display_remaining, :name, :display_minimum, :short_description,
@@ -48,7 +61,7 @@ class Reward < ActiveRecord::Base
   end
 
   def total_compromised
-    contributions.with_states(['confirmed', 'waiting_confirmation']).count
+    payments.with_states(['paid', 'pending']).count("DISTINCT contributions.id")
   end
 
   def remaining

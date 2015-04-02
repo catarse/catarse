@@ -12,7 +12,7 @@ var App = window.App = Skull.View.extend({
   openAlert: function(){
     if($('#global-alert').length === 0 || this.$('body').data('mobile')){
       return;
-    };
+    }
     if(!window.store.get('globalClosedCookies')){
       $('#global-alert').show();
       $('body').css('padding-top', '30px');
@@ -37,7 +37,7 @@ var App = window.App = Skull.View.extend({
 
   beforeActivate: function(){
     this.$search = this.$('#pg_search');
-    this.router = new Backbone.Router;
+    this.router = new Backbone.Router();
   },
 
   activate: function(){
@@ -55,16 +55,17 @@ var App = window.App = Skull.View.extend({
     var that = this;
     this.$flash = this.$('.flash');
 
-    setTimeout( function(){ that.$flash.slideDown('slow') }, 100)
-    if( ! this.$('.flash a').length) setTimeout( function(){ that.$flash.fadeOut('slow') }, 5000)
-    $(window).click(function(){ that.$('.flash a').slideUp() })
+    setTimeout( function(){ that.$flash.slideDown('slow'); }, 100);
+    if( ! this.$('.flash a').length) setTimeout( function(){ that.$flash.fadeOut('slow'); }, 5000);
+    $(window).click(function(){ that.$('.flash a').slideUp(); });
   },
 
   notices: function() {
     var that = this;
-    setTimeout( function(){ this.$('.notice-box').fadeIn('slow') }, 100)
-    if(this.$('.notice-box').length) setTimeout( function(){ that.$('.notice-box').fadeOut('slow') }, 16000)
-    $('.icon-close').on('click', function(){ that.$('.card-notification').fadeOut('slow') })
+    setTimeout( function(){ this.$('.notice-box').fadeIn('slow'); }, 100);
+    if(this.$('.notice-box').length) setTimeout( function(){ that.$('.notice-box').fadeOut('slow'); }, 16000);
+    $('.icon-close').on('click', function(){ that.$('.card-notification').fadeOut('slow'); });
+
   },
 
   maskAllElements: function(){
@@ -86,7 +87,7 @@ var App = window.App = Skull.View.extend({
   applyErrors: function() {
     $.each($('[data-applyerror=true]'), function(i, item){
       $(item).addClass('error');
-    })
+    });
   }
 
 });

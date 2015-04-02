@@ -21,6 +21,7 @@ RSpec.describe Reward, type: :model do
   describe "Associations" do
     it{ is_expected.to belong_to :project }
     it{ is_expected.to have_many :contributions }
+    it{ is_expected.to have_many(:payments).through(:contributions) }
   end
 
   it "should have a minimum value" do
@@ -30,7 +31,7 @@ RSpec.describe Reward, type: :model do
 
   describe "check_if_is_destroyable" do
     before do
-      create(:contribution, state: 'confirmed', project: reward.project, reward: reward)
+      create(:confirmed_contribution, project: reward.project, reward: reward)
       reward.reload
       reward.destroy
     end
@@ -88,11 +89,11 @@ RSpec.describe Reward, type: :model do
     before do
       project.rewards.first.destroy!
       @remaining = create(:reward, maximum_contributions: 3, project: project)
-      create(:contribution, state: 'confirmed', reward: @remaining, project: @remaining.project)
-      create(:contribution, state: 'waiting_confirmation', reward: @remaining, project: @remaining.project)
+      create(:confirmed_contribution, reward: @remaining, project: @remaining.project)
+      create(:pending_contribution, reward: @remaining, project: @remaining.project)
       @sold_out = create(:reward, maximum_contributions: 2, project: project)
-      create(:contribution, state: 'confirmed', reward: @sold_out, project: @sold_out.project)
-      create(:contribution, state: 'waiting_confirmation', reward: @sold_out, project: @sold_out.project)
+      create(:confirmed_contribution, reward: @sold_out, project: @sold_out.project)
+      create(:pending_contribution, reward: @sold_out, project: @sold_out.project)
     end
 
     it{ is_expected.to eq([@remaining]) }
@@ -109,8 +110,8 @@ RSpec.describe Reward, type: :model do
 
     context 'when reward contributions waiting confirmation and confirmed are greater than limit' do
       before do
-        2.times { create(:contribution, state: 'confirmed', reward: reward, project: reward.project) }
-        create(:contribution, state: 'waiting_confirmation', reward: reward, project: reward.project)
+        2.times { create(:confirmed_contribution, reward: reward, project: reward.project) }
+        create(:pending_contribution, reward: reward, project: reward.project)
       end
 
       it { is_expected.to eq(true) }
@@ -118,8 +119,8 @@ RSpec.describe Reward, type: :model do
 
     context 'when reward contributions waiting confirmation and confirmed are lower than limit' do
       before do
-        create(:contribution, state: 'confirmed', reward: reward, project: reward.project)
-        create(:contribution, state: 'waiting_confirmation', reward: reward, project: reward.project)
+        create(:confirmed_contribution, reward: reward, project: reward.project)
+        create(:pending_contribution, reward: reward, project: reward.project)
       end
       it { is_expected.to eq(false) }
 

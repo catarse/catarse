@@ -7,7 +7,7 @@ RSpec.describe RewardDecorator do
 
   describe "#display_description" do
     subject{ reward.display_description }
-    it{ is_expected.to eq("<p>envie um email para <a href=\"mailto:foo@bar.com\" target=\"_blank\" class=\"alt-link\">foo@bar.com</a></p>") }
+    it{ is_expected.to eq("<p>envie um email para foo@bar.com</p>") }
   end
 
   describe "#display_minimum" do
