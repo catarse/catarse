@@ -23,7 +23,7 @@ App.addChild('Search', {
   },
 
   clearPreResult: function(event){
-    if($(event.target).val() == "") {
+    if($(event.target).val() === "") {
       this.$('.search-pre-result').hide();
     }
   },
@@ -36,7 +36,7 @@ App.addChild('Search', {
     var that = this;
 
     $.get(this.$('.search-pre-result').data('searchpath'), { pg_search: value, limit: 5 }, function(response){
-      if($.trim(response) == "") {
+      if($.trim(response) === "") {
         that.$('.search-pre-result').hide();
       } else {
         that.$('.search-pre-result').show();
