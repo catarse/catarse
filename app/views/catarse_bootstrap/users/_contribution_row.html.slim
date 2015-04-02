@@ -26,14 +26,7 @@
       .fontsize-smallest 
         = "#{contribution.decorate.display_payment_details} #{contribution.decorate.display_installment_details}"
       .fontsize-smallest
-        - if contribution.waiting_confirmation?
-          | Aguardando confirmação do pagamento
-        - elsif contribution.confirmed?
-          | Confirmado em #{contribution.decorate.display_date(:confirmed_at)}
-        - elsif contribution.refunded?
-          | Reembolsado em #{contribution.decorate.display_date(:refunded_at)}
-        - elsif contribution.requested_refund?
-          | Reembolso solicitado em #{contribution.decorate.display_date(:requested_refund_at)}
+        = contribution.display_status
     .w-col.w-col-4
       .fontsize-smallest
         span.w-hidden-main.w-hidden-medium.fontweight-semibold Recompensa:&nbsp;&nbsp;

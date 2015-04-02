@@ -10,14 +10,14 @@ App.views.Contribution.addChild('ContributionForm', _.extend({
   reward: function(){
     var $reward = this.$('input[type=radio]:checked');
     if($reward.length > 0){
-      return _.find(this.rewards, function(r){ return r.id == $reward.val() });
+      return _.find(this.rewards, function(r){ return r.id == $reward.val(); });
     }
   },
 
   selectReward: function(reward){
     this.choices.removeClass('selected');
     reward.prop('checked', true);
-    reward.parents('.choice:first').addClass('selected')
+    reward.parents('.choice:first').addClass('selected');
   },
 
   resetReward: function(event){

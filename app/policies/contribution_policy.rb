@@ -5,9 +5,9 @@ class ContributionPolicy < ApplicationPolicy
       if current_user.try(:admin?)
         scope.available_to_display
       elsif current_user == user
-        scope.with_state('confirmed')
+        scope.where('contributions.is_confirmed')
       else
-        scope.not_anonymous.with_state('confirmed')
+        scope.not_anonymous.where('contributions.is_confirmed')
       end
     end
   end

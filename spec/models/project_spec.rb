@@ -9,6 +9,7 @@ RSpec.describe Project, type: :model do
     it{ is_expected.to belong_to :user }
     it{ is_expected.to belong_to :category }
     it{ is_expected.to have_many :contributions }
+    it{ is_expected.to have_many(:payments).through(:contributions) }
     it{ is_expected.to have_one  :project_total }
     it{ is_expected.to have_many :rewards }
     it{ is_expected.to have_many :posts }
@@ -58,38 +59,18 @@ RSpec.describe Project, type: :model do
   describe ".with_contributions_confirmed_last_day" do
     let(:project_01) { create(:project, state: 'online') }
     let(:project_02) { create(:project, state: 'online') }
-    let(:project_03) { create(:project, state: 'online') }
 
     subject { Project.with_contributions_confirmed_last_day }
 
-    before do
-      project_01
-      project_02
-      project_03
-    end
-
     context "when have confirmed contributions last day" do
       before do
-
-        #TODO: need to investigate this timestamp issue when
-        # use DateTime.now or Time.now
-        create(:contribution, state: 'confirmed', project: project_01, confirmed_at: Time.now )
-        create(:contribution, state: 'confirmed', project: project_02, confirmed_at: 2.days.ago )
-        create(:contribution, state: 'confirmed', project: project_03, confirmed_at: Time.now )
+        @confirmed_today = create(:confirmed_contribution, project: project_01)
+        @confirmed_today.payments.first.update_attributes paid_at: Time.now
+        old = create(:confirmed_contribution, project: project_02)
+        old.payments.first.update_attributes paid_at: 2.days.ago
       end
 
-      it { is_expected.to have(2).items }
-      it { expect(subject.include?(project_02)).to eq(false) }
-    end
-
-    context "when does not have any confirmed contribution today" do
-      before do
-        create(:contribution, state: 'confirmed', project: project_01, confirmed_at: 1.days.ago - 1.minute )
-        create(:contribution, state: 'confirmed', project: project_02, confirmed_at: 2.days.ago )
-        create(:contribution, state: 'confirmed', project: project_03, confirmed_at: 5.days.ago )
-      end
-
-      it { is_expected.to have(0).items }
+      it { is_expected.to eq [project_01] }
     end
   end
 
@@ -155,10 +136,10 @@ RSpec.describe Project, type: :model do
       @project_02 = create(:project, goal: 100)
       @project_03 = create(:project, goal: 100)
 
-      create(:contribution, value: 10, project: @project_01)
-      create(:contribution, value: 10, project: @project_01)
-      create(:contribution, value: 30, project: @project_02)
-      create(:contribution, value: 10, project: @project_03)
+      create(:confirmed_contribution, value: 10, project: @project_01)
+      create(:confirmed_contribution, value: 10, project: @project_01)
+      create(:confirmed_contribution, value: 30, project: @project_02)
+      create(:confirmed_contribution, value: 10, project: @project_03)
     end
 
     it { is_expected.to have(2).itens }
@@ -173,7 +154,7 @@ RSpec.describe Project, type: :model do
 
     end
 
-    it { should = [@project_02] }
+    it { is_expected.to eq [@project_02] }
   end
 
   describe '.video_url' do
@@ -221,18 +202,18 @@ RSpec.describe Project, type: :model do
 
     end
 
-    it { should = [@project_01] }
+    it { is_expected.to eq [@project_01] }
   end
 
   describe '.by_expires_at' do
     subject { Project.by_expires_at('10/10/2013') }
 
     before do
-      @project_01 = create(:project, online_date: '10/10/2013', online_days: 1)
-      @project_02 = create(:project, online_date: '09/10/2013', online_days: 1)
+      @project_01 = create(:project, online_date: '2013-10-10 19:00:00-04', online_days: 1)
+      @project_02 = create(:project, online_date: '2013-10-09 19:00:00-04', online_days: 1)
     end
 
-    it { should = [@project_01] }
+    it { is_expected.to eq [@project_02] }
   end
 
   describe '.order_by' do
@@ -325,7 +306,7 @@ RSpec.describe Project, type: :model do
   describe ".expiring" do
     before do
       @p = create(:project, online_date: Time.now, online_days: 13)
-      create(:project, online_date: Time.now, online_days: 1, online_date: Time.now - 2.days)
+      create(:project, online_days: 1, online_date: Time.now - 2.days)
     end
     subject{ Project.expiring }
     it{ is_expected.to eq([@p]) }
@@ -355,7 +336,7 @@ RSpec.describe Project, type: :model do
 
     context 'when sum of all contributions hit the goal' do
       before do
-        create(:contribution, value: 4000, project: project)
+        create(:confirmed_contribution, value: 4000, project: project)
       end
       it { is_expected.to eq(true) }
     end
@@ -366,15 +347,15 @@ RSpec.describe Project, type: :model do
   end
 
   describe '#in_time_to_wait?' do
-    let(:contribution) { create(:contribution, state: 'waiting_confirmation') }
+    let(:contribution) { create(:pending_contribution) }
     subject { contribution.project.in_time_to_wait? }
 
-    context 'when project expiration is in time to wait' do
+    context 'when project has pending contributions' do
       it { is_expected.to eq(true) }
     end
 
-    context 'when project expiration time is not more on time to wait' do
-      let(:contribution) { create(:contribution, created_at: 1.week.ago) }
+    context 'when project has no pending contributions' do
+      let(:contribution) { create(:contribution) }
       it {is_expected.to eq(false)}
     end
   end
@@ -389,17 +370,6 @@ RSpec.describe Project, type: :model do
       subject{ Project.pg_search('lorem') }
       it{ is_expected.to eq([]) }
     end
-  end
-
-  describe "#pledged_and_waiting" do
-    subject{ project.pledged_and_waiting }
-    before do
-      @confirmed = create(:contribution, value: 10, state: 'confirmed', project: project)
-      @waiting = create(:contribution, value: 10, state: 'waiting_confirmation', project: project)
-      create(:contribution, value: 100, state: 'refunded', project: project)
-      create(:contribution, value: 1000, state: 'pending', project: project)
-    end
-    it{ is_expected.to eq(@confirmed.value + @waiting.value) }
   end
 
   describe "#pledged" do
@@ -497,8 +467,8 @@ RSpec.describe Project, type: :model do
     let(:reward_03) { create(:reward, project: project) }
 
     before do
-      create(:contribution, state: 'confirmed', project: project, reward: reward_01)
-      create(:contribution, state: 'confirmed', project: project, reward: reward_03)
+      create(:confirmed_contribution, project: project, reward: reward_01)
+      create(:confirmed_contribution, project: project, reward: reward_03)
     end
 
     subject { project.selected_rewards }

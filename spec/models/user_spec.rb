@@ -8,6 +8,7 @@ RSpec.describe User, type: :model do
   let(:facebook_provider){ create :oauth_provider, name: 'facebook' }
 
   describe "associations" do
+    it{ is_expected.to have_many(:payments).through(:contributions) }
     it{ is_expected.to have_many :contributions }
     it{ is_expected.to have_many :projects }
     it{ is_expected.to have_many :published_projects }
@@ -74,20 +75,19 @@ RSpec.describe User, type: :model do
 
     context "when he has credits in the user_total" do
       before do
-        b = create(:contribution, state: 'confirmed', value: 100, project: failed_project)
+        @user_with_credits = create(:confirmed_contribution, project: failed_project).user
         failed_project.update_attributes state: 'failed'
-        @u = b.user
-        b = create(:contribution, state: 'confirmed', value: 100, project: successful_project)
+        create(:confirmed_contribution, project: successful_project)
       end
-      it{ is_expected.to eq([@u]) }
+      it{ is_expected.to eq([@user_with_credits]) }
     end
 
     context "when he has credits in the user_total but is checked with zero credits" do
       before do
-        b = create(:contribution, state: 'confirmed', value: 100, project: failed_project)
+        b = create(:confirmed_contribution, value: 100, project: failed_project)
         failed_project.update_attributes state: 'failed'
         @u = b.user
-        b = create(:contribution, state: 'confirmed', value: 100, project: successful_project)
+        b = create(:confirmed_contribution, value: 100, project: successful_project)
         @u.update_attributes(zero_credits: true)
       end
       it{ is_expected.to eq([]) }
@@ -99,18 +99,17 @@ RSpec.describe User, type: :model do
 
     context "when he has used credits in the last month" do
       before do
-        b = create(:contribution, state: 'confirmed', value: 100, credits: true)
-        @u = b.user
+        create(:contribution_with_credits)
       end
       it{ is_expected.to eq([]) }
     end
+
     context "when he has not used credits in the last month" do
       before do
-        b = create(:contribution, state: 'confirmed', value: 100, project: failed_project)
+        @user_with_credits = create(:confirmed_contribution, project: failed_project).user
         failed_project.update_attributes state: 'failed'
-        @u = b.user
       end
-      it{ is_expected.to eq([@u]) }
+      it{ is_expected.to eq([@user_with_credits]) }
     end
   end
 
@@ -134,19 +133,13 @@ RSpec.describe User, type: :model do
 
   describe ".by_key" do
     before do
-      b = create(:contribution)
-      @u = b.user
-      b.key = 'abc'
-      b.save!
-      b = create(:contribution, user: @u)
-      b.key = 'abcde'
-      b.save!
-      b = create(:contribution)
-      b.key = 'def'
-      b.save!
+      @payment = create(:payment)
+      @contribution = create(:contribution, payments: [@payment])
+      @user = @contribution.user
+      create(:contribution)
     end
-    subject{ User.by_key 'abc' }
-    it{ is_expected.to eq([@u]) }
+    subject{ User.by_key @payment.key }
+    it{ is_expected.to eq([@user]) }
   end
 
   describe ".by_id" do
@@ -179,9 +172,9 @@ RSpec.describe User, type: :model do
   describe ".who_contributed_project" do
     subject{ User.who_contributed_project(successful_project.id) }
     before do
-      @contribution = create(:contribution, state: 'confirmed', project: successful_project)
-      create(:contribution, state: 'confirmed', project: successful_project, user: @contribution.user)
-      create(:contribution, state: 'pending', project: successful_project)
+      @contribution = create(:confirmed_contribution, project: successful_project)
+      create(:confirmed_contribution, project: successful_project, user: @contribution.user)
+      create(:pending_contribution, project: successful_project)
     end
     it{ is_expected.to eq([@contribution.user]) }
   end
@@ -275,10 +268,10 @@ RSpec.describe User, type: :model do
     subject { user.total_contributed_projects }
 
     before do
-      create(:contribution, state: 'confirmed', user: user, project: project)
-      create(:contribution, state: 'confirmed', user: user, project: project)
-      create(:contribution, state: 'confirmed', user: user, project: project)
-      create(:contribution, state: 'confirmed', user: user)
+      create(:confirmed_contribution, user: user, project: project)
+      create(:confirmed_contribution, user: user, project: project)
+      create(:confirmed_contribution, user: user, project: project)
+      create(:confirmed_contribution, user: user)
       user.reload
     end
 
@@ -333,16 +326,21 @@ RSpec.describe User, type: :model do
   end
 
   describe "#credits" do
+    def create_contribution_with_payment user, project, value, credits, payment_state = 'paid'
+      c = create(:confirmed_contribution, user_id: user.id, project: project)
+      c.payments.first.update_attributes gateway: (credits ? 'Credits' : 'AnyButCredits'), value: value, state: payment_state
+    end
     before do
       @u = create(:user)
-      create(:contribution, state: 'confirmed', credits: false, value: 100, user_id: @u.id, project: successful_project)
-      create(:contribution, state: 'confirmed', credits: false, value: 100, user_id: @u.id, project: unfinished_project)
-      create(:contribution, state: 'confirmed', credits: false, value: 200, user_id: @u.id, project: failed_project)
-      create(:contribution, state: 'confirmed', credits: true, value: 100, user_id: @u.id, project: successful_project)
-      create(:contribution, state: 'confirmed', credits: true, value: 50, user_id: @u.id, project: unfinished_project)
-      create(:contribution, state: 'confirmed', credits: true, value: 100, user_id: @u.id, project: failed_project)
-      create(:contribution, state: 'requested_refund', credits: false, value: 200, user_id: @u.id, project: failed_project)
-      create(:contribution, state: 'refunded', credits: false, value: 200, user_id: @u.id, project: failed_project)
+      create_contribution_with_payment @u, successful_project, 100, false
+      create_contribution_with_payment @u, unfinished_project, 100, false
+      create_contribution_with_payment @u, failed_project, 200, false
+      create_contribution_with_payment @u, successful_project, 100, true
+      create_contribution_with_payment @u, unfinished_project, 50, true
+      create_contribution_with_payment @u, failed_project, 100, true
+      create_contribution_with_payment @u, failed_project, 200, false, 'pending_refund'
+      create_contribution_with_payment @u, failed_project, 200, false, 'refunded'
+
       failed_project.update_attributes state: 'failed'
       successful_project.update_attributes state: 'successful'
     end
@@ -364,9 +362,9 @@ RSpec.describe User, type: :model do
   describe "#recommended_project" do
     subject{ user.recommended_projects }
     before do
-      other_contribution = create(:contribution, state: 'confirmed')
-      create(:contribution, state: 'confirmed', user: other_contribution.user, project: unfinished_project)
-      create(:contribution, state: 'confirmed', user: user, project: other_contribution.project)
+      other_contribution = create(:confirmed_contribution)
+      create(:confirmed_contribution, user: other_contribution.user, project: unfinished_project)
+      create(:confirmed_contribution, user: user, project: other_contribution.project)
     end
     it{ is_expected.to eq([unfinished_project])}
   end
@@ -375,7 +373,7 @@ RSpec.describe User, type: :model do
     subject{user.project_unsubscribes}
     before do
       @p1 = create(:project)
-      create(:contribution, user: user, project: @p1)
+      create(:confirmed_contribution, user: user, project: @p1)
       @u1 = create(:unsubscribe, project_id: @p1.id, user_id: user.id )
     end
     it{ is_expected.to eq([@u1])}
@@ -385,8 +383,8 @@ RSpec.describe User, type: :model do
     subject{user.contributed_projects}
     before do
       @p1 = create(:project)
-      create(:contribution, user: user, project: @p1)
-      create(:contribution, user: user, project: @p1)
+      create(:confirmed_contribution, user: user, project: @p1)
+      create(:confirmed_contribution, user: user, project: @p1)
     end
     it{is_expected.to eq([@p1])}
   end
@@ -396,8 +394,8 @@ RSpec.describe User, type: :model do
     before do
       @failed_project = create(:project, state: 'online')
       @online_project = create(:project, state: 'online')
-      create(:contribution, user: user, project: @failed_project)
-      create(:contribution, user: user, project: @online_project)
+      create(:confirmed_contribution, user: user, project: @failed_project)
+      create(:confirmed_contribution, user: user, project: @online_project)
       @failed_project.update_columns state: 'failed'
     end
     it{is_expected.to eq([@failed_project])}
@@ -445,7 +443,7 @@ RSpec.describe User, type: :model do
 
     context "when user have contributions for the project" do
       before do
-        create(:contribution, project: project, state: 'confirmed', user: user)
+        create(:confirmed_contribution, project: project, user: user)
       end
 
       it { is_expected.to eq(true) }

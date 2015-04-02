@@ -3,18 +3,18 @@ class ContributionDecorator < Draper::Decorator
   include Draper::LazyHelpers
 
   def display_installment_details
-    if source.installments > 1
-      "#{contribution.installments} x #{number_to_currency contribution.installment_value}"
+    if last_payment.installments > 1
+      "#{last_payment.installments} x #{number_to_currency last_payment.installment_value}"
     else
       ""
     end
   end
 
   def display_payment_details
-    if source.credits?
+    if last_payment.credits?
       I18n.t("contribution.payment_details.creditos")
-    elsif source.payment_choice.present?
-      I18n.t("contribution.payment_details.#{source.payment_choice.underscore}")
+    elsif last_payment.payment_method.present?
+      I18n.t("contribution.payment_details.#{last_payment.payment_method.underscore}")
     else
       ""
     end
@@ -25,12 +25,22 @@ class ContributionDecorator < Draper::Decorator
   end
 
   def display_date date_field
-    I18n.l(source[date_field.to_sym].to_date) if source[date_field.to_sym]
+    I18n.l(last_payment[date_field.to_sym].to_date) if last_payment[date_field.to_sym]
   end
 
   def display_slip_url
-    return source.slip_url if source.slip_url.present?
-    "https://www.moip.com.br/Boleto.do?id=#{source.payment_id.gsub('.', '').to_i}"
+    gateway_data = last_payment.try(:gateway_data)
+    return gateway_data["boleto_url"] if gateway_data.present?
+  end
+
+  def display_status
+    state = last_payment.state
+    I18n.t("payment.state.#{state}", date: display_date("#{state}_at"))
+  end
+
+  private
+  def last_payment
+    source.payments.last
   end
 end
 
