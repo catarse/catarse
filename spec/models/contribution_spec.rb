@@ -77,18 +77,6 @@ RSpec.describe Contribution, type: :model do
     it { is_expected.to have(2).itens }
   end
 
-  describe ".avaiable_to_automatic_refund" do
-    before do
-      @confirmed = create(:confirmed_contribution)
-      create(:pending_contribution)
-      create(:contribution)
-    end
-
-    subject { Contribution.avaiable_to_automatic_refund }
-
-    it { is_expected.to eq [@confirmed] }
-  end
-
   describe ".confirmed_last_day" do
     before do
       3.times { create(:payment, state: 'paid', paid_at: 2.days.ago) }
