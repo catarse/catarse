@@ -4,6 +4,7 @@ require 'rails_helper'
 
 RSpec.describe PaymentEngines do
   let(:contribution){ FactoryGirl.create(:contribution) }
+  let(:payment){ FactoryGirl.create(:confirmed_contribution).payments.first }
   let(:paypal_engine) { double }
   let(:moip_engine) { double }
 
@@ -63,9 +64,14 @@ RSpec.describe PaymentEngines do
     it{ is_expected.to eq(PaymentNotification.where(contribution_id: contribution.id).first) }
   end
 
-  describe ".find_payment" do
-    subject{ PaymentEngines.find_payment({ id: contribution.id }) }
+  describe ".find_contribution" do
+    subject{ PaymentEngines.find_contribution(contribution.id) }
     it{ is_expected.to eq(contribution) }
+  end
+
+  describe ".find_payment" do
+    subject{ PaymentEngines.find_payment({ id: payment.id }) }
+    it{ is_expected.to eq(payment) }
   end
 
   describe ".engines" do

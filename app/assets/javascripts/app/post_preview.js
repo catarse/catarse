@@ -9,7 +9,7 @@ App.addChild('PostPreview', {
       highlight: true,
       captureLength: 0,
       callback: function(value){
-        that.convertTextToHtml(value)
+        that.convertTextToHtml(value);
       }
     });
   },

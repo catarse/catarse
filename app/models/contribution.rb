@@ -4,40 +4,25 @@ class Contribution < ActiveRecord::Base
 
   include I18n::Alchemy
   include PgSearch
-  include Shared::StateMachineHelpers
-  include Contribution::StateMachineHandler
   include Contribution::CustomValidators
-  include Contribution::PaymentEngineHandler
-  include Contribution::PaymentMethods
 
   belongs_to :project
   belongs_to :reward
   belongs_to :user
   belongs_to :country
   has_many :payment_notifications
+  has_many :payments
 
   validates_presence_of :project, :user, :value
   validates_numericality_of :value, greater_than_or_equal_to: 10.00
 
-  scope :search_on_acquirer, ->(acquirer_name){ where(acquirer_name: acquirer_name) }
-  scope :available_to_count, ->{ with_states(['confirmed', 'requested_refund', 'refunded']) }
-  scope :available_to_display, ->{ with_states(['confirmed', 'requested_refund', 'refunded', 'waiting_confirmation']) }
+  scope :available_to_count, ->{ where("contributions.was_confirmed") }
   scope :by_id, ->(id) { where(id: id) }
-  scope :by_payment_id, ->(term) { where("? IN (payment_id, key, acquirer_tid)", term) }
-  scope :by_user_id, ->(user_id) { where(user_id: user_id) }
-  scope :by_payment_method, ->(payment_method) { where(payment_method: payment_method ) }
-  scope :user_name_contains, ->(term) { joins(:user).where("unaccent(upper(users.name)) LIKE ('%'||unaccent(upper(?))||'%')", term) }
-  scope :user_email_contains, ->(term) { joins(:user).where("unaccent(upper(users.email)) LIKE ('%'||unaccent(upper(?))||'%') OR unaccent(upper(payer_email)) LIKE ('%'||unaccent(upper(?))||'%')", term, term) }
-  scope :project_name_contains, ->(term) {
-    joins(:project).merge(Project.pg_search(term))
-  }
   scope :anonymous, -> { where(anonymous: true) }
-  scope :credits, -> { where("credits OR lower(payment_method) = 'credits'") }
   scope :not_anonymous, -> { where(anonymous: false) }
-  scope :confirmed_today, -> { with_state('confirmed').where("contributions.confirmed_at::date = to_date(?, 'yyyy-mm-dd')", Time.now.strftime('%Y-%m-%d')) }
-  scope :confirmed_last_day, -> { with_state('confirmed').where("confirmed_at > current_timestamp - interval '1 day'") }
-  scope :avaiable_to_automatic_refund, -> {
-    with_state('confirmed').where("contributions.payment_method in ('PayPal', 'Pagarme') OR contributions.payment_choice = 'CartaoDeCredito'")
+  scope :confirmed_last_day, -> { where("EXISTS(SELECT true FROM payments p WHERE p.contribution_id = contributions.id AND p.state = 'paid' AND (current_timestamp - p.paid_at) < '1 day'::interval)") }
+  scope :pending, ->{
+    where("EXISTS (SELECT true FROM payments p WHERE p.contribution_id = contributions.id AND p.state = 'pending') AND NOT contributions.was_confirmed")
   }
 
   scope :not_created_today, -> { where.not("contributions.created_at::date AT TIME ZONE '#{Time.zone.tzinfo.name}' = current_timestamp::date AT TIME ZONE '#{Time.zone.tzinfo.name}'") }
@@ -46,26 +31,25 @@ class Contribution < ActiveRecord::Base
   # Contributions already refunded or with requested_refund should appear so that the user can see their status on the refunds list
   scope :can_refund, ->{ where("contributions.can_refund") }
 
+  scope :available_to_display, -> {
+    where("EXISTS (SELECT true FROM payments p WHERE p.contribution_id = contributions.id AND state NOT IN ('deleted', 'refused'))")
+  }
+
   scope :for_successful_projects, -> {
-    joins(:project).merge(Project.with_state('successful')).with_state(['waiting_confirmation', 'confirmed', 'refunded', 'requested_refund', 'refunded_and_canceled'])
+    joins(:project).merge(Project.with_state('successful')).available_to_display
   }
 
   scope :for_online_projects, -> {
-    joins(:project).merge(Project.with_state(['online', 'waiting_funds'])).with_state(['waiting_confirmation', 'confirmed', 'refunded', 'requested_refund', 'refunded_and_canceled'])
+    joins(:project).merge(Project.with_state(['online', 'waiting_funds'])).available_to_display
   }
 
   scope :for_failed_projects, -> {
-    joins(:project).merge(Project.with_state('failed')).with_state(['waiting_confirmation', 'confirmed', 'refunded', 'requested_refund', 'refunded_and_canceled'])
+    joins(:project).merge(Project.with_state('failed')).available_to_display
   }
 
   scope :ordered, -> { order(id: :desc) }
 
   attr_protected :state, :user_id
-
-  def self.between_values(start_at, ends_at)
-    return all unless start_at.present? && ends_at.present?
-    where("value between ? and ?", start_at, ends_at)
-  end
 
   def recommended_projects
     user.recommended_projects.where("projects.id <> ?", project.id).order("count DESC")
@@ -78,6 +62,10 @@ class Contribution < ActiveRecord::Base
 
   def can_refund?
     confirmed? && project.failed?
+  end
+
+  def confirmed?
+    @confirmed ||= Contribution.where(id: self.id).pluck('contributions.is_confirmed').first
   end
 
   def invalid_refund
@@ -98,20 +86,12 @@ class Contribution < ActiveRecord::Base
     notify_once(template_name, _user, self, options) if _user
   end
 
-  def notification_template_for_failed_project
-    return :contribution_project_unsuccessful_credit if self.credits?
-
-    if is_credit_card? || is_paypal?
-      :contribution_project_unsuccessful_credit_card
-    elsif is_pagarme?
-      :contribution_project_unsuccessful_slip
-    else
-      :contribution_project_unsuccessful
-    end
-  end
-
   def self.payment_method_names
     ['Pagarme', 'PayPal', 'MoIP']
+  end
+
+  def pending?
+    Contribution.pending.where(id: self.id).exists?
   end
 
   # Used in payment engines
@@ -119,9 +99,35 @@ class Contribution < ActiveRecord::Base
     (self.value * 100).round
   end
 
-  #==== Used on before and after callbacks
-
-  def define_key
-    self.update_attributes({ key: Digest::MD5.new.update("#{self.id}###{self.created_at}###{Kernel.rand}").to_s })
+  def update_current_billing_info
+    self.country_id = user.country_id
+    self.address_street = user.address_street
+    self.address_number = user.address_number
+    self.address_complement = user.address_complement
+    self.address_neighbourhood = user.address_neighbourhood
+    self.address_zip_code = user.address_zip_code
+    self.address_city = user.address_city
+    self.address_state = user.address_state
+    self.address_phone_number = user.phone_number
+    self.payer_document = user.cpf
+    self.payer_name = user.name
+    self.payer_email = user.email
   end
+
+  def update_user_billing_info
+    user.update_attributes({
+      country_id: country_id.presence || user.country_id,
+      address_street: address_street.presence || user.address_street,
+      address_number: address_number.presence || user.address_number,
+      address_complement: address_complement.presence || user.address_complement,
+      address_neighbourhood: address_neighbourhood.presence || user.address_neighbourhood,
+      address_zip_code: address_zip_code.presence|| user.address_zip_code,
+      address_city: address_city.presence || user.address_city,
+      address_state: address_state.presence || user.address_state,
+      phone_number: address_phone_number.presence || user.phone_number,
+      cpf: payer_document.presence || user.cpf,
+      name: payer_name || user.name
+    })
+  end
+
 end

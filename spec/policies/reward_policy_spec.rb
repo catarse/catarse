@@ -31,12 +31,12 @@ RSpec.describe RewardPolicy do
     it_should_behave_like "create permissions"
 
     it "should deny access if reward has one contribution waiting for confirmation" do
-      create(:contribution, project: reward.project, reward: reward, state: 'waiting_confirmation')
+      create(:pending_contribution, project: reward.project, reward: reward)
       is_expected.not_to permit(reward.project.user, reward)
     end
 
     it "should deny access if reward has one confirmed contribution" do
-      create(:contribution, project: reward.project, reward: reward, state: 'confirmed')
+      create(:confirmed_contribution, project: reward.project, reward: reward)
       is_expected.not_to permit(reward.project.user, reward)
     end
   end
@@ -70,10 +70,10 @@ RSpec.describe RewardPolicy do
     let(:user){ reward.project.user }
     subject{ policy.permitted_for?(field, :update) }
 
-    ['waiting_confirmation', 'confirmed'].each do |state|
+    [:pending_contribution, :confirmed_contribution].each do |state|
       context "when we have one contribution in state #{state}" do
         before do
-          create(:contribution, project: reward.project, reward: reward, state: 'waiting_confirmation')
+          create(state, project: reward.project, reward: reward)
         end
 
         context "and want to update minimum_value" do

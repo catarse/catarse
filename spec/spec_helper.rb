@@ -17,8 +17,11 @@ RSpec.configure do |config|
   end
 
   config.before(:suite) do
-    ActiveRecord::Base.connection.execute "SET client_min_messages TO warning;"
-    ActiveRecord::Base.connection.execute "SET timezone TO 'utc';"
+    con = ActiveRecord::Base.connection
+    con.execute "SET client_min_messages TO warning;"
+    con.execute "SET timezone TO 'utc';"
+    current_user = con.execute("SELECT current_user;")[0]["current_user"]
+    con.execute %{ALTER USER #{current_user} SET search_path TO "$user", public, "1";}
     DatabaseCleaner.clean_with :truncation
     I18n.locale = :pt
     I18n.default_locale = :pt
@@ -76,7 +79,7 @@ RSpec.configure do |config|
     UserNotifier.from_email       = CatarseSettings[:email_contact]
     UserNotifier.from_name        = CatarseSettings[:company_name]
 
-    allow_any_instance_of(Contribution).to receive(:payment_engine).and_return(PaymentEngines::Interface.new)
+    allow_any_instance_of(Payment).to receive(:payment_engine).and_return(PaymentEngines::Interface.new)
     allow_any_instance_of(MixpanelObserver).to receive_messages(tracker: double('mixpanel tracker', track: nil, people: double('mixpanel people', {set: nil})))
   end
 end

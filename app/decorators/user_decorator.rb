@@ -59,6 +59,6 @@ class UserDecorator < Draper::Decorator
   end
 
   def display_total_of_contributions
-    number_to_currency source.contributions.with_state('confirmed').sum(:value)
+    number_to_currency source.payments.with_state('paid').sum(:value)
   end
 end
