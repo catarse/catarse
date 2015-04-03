@@ -16,7 +16,7 @@ App.addChild('UserShow', _.extend({
   },
 
   followRoute: function(name){
-    var $tab = this.$('nav a[href="' + window.ldb:migrate RAILS_ENV=developmentocation.hash + '"]');
+    var $tab = this.$('nav a[href="' + window.location.hash + '"]');
     if($tab.length > 0){
       this.onTabClick({ currentTarget: $tab });
     }
