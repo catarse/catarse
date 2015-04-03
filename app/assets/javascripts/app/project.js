@@ -19,8 +19,8 @@ App.addChild('Project', _.extend({
     this.route('edit');
     this.route('reports');
     this.route('metrics');
-    
-    this.makeVideosResponsive(this.$container);
+    console.log("setup responsive videos");
+    this.setupResponsiveIframes(this.$container);
   
   },
 
