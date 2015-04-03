@@ -7,8 +7,11 @@ App.addChild('Project', _.extend({
   },
 
   activate: function(){
+  
     this.$warning = this.$('#project_warning_text');
     this.$embed= this.$('#project_embed');
+    this.$container = $(".project-about");
+    
     this.route('about');
     this.route('posts');
     this.route('contributions');
@@ -16,6 +19,9 @@ App.addChild('Project', _.extend({
     this.route('edit');
     this.route('reports');
     this.route('metrics');
+    
+    this.makeVideosResponsive(this.$container);
+  
   },
 
   toggleWarning: function(){
@@ -52,4 +58,4 @@ App.addChild('Project', _.extend({
       });
     }
   }
-}, Skull.Tabs));
+}, Skull.Tabs, Skull.UI_helper));

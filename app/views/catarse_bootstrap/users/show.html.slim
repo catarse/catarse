@@ -1,3 +1,4 @@
+- content_for :title, resource.name + " · " + CatarseSettings[:company_name]
 - content_for :meta_tags do
   meta property="og:title" content=resource.name
   meta property="og:url" content=user_url(resource, locale: I18n.locale)
