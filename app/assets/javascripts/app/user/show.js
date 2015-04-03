@@ -16,7 +16,7 @@ App.addChild('UserShow', _.extend({
   },
 
   followRoute: function(name){
-    var $tab = this.$('nav a[href="' + window.location.hash + '"]');
+    var $tab = this.$('nav a[href="' + window.ldb:migrate RAILS_ENV=developmentocation.hash + '"]');
     if($tab.length > 0){
       this.onTabClick({ currentTarget: $tab });
     }
@@ -32,4 +32,4 @@ App.addChild('UserShow', _.extend({
     }
   },
 
-}, Skull.Tabs, Skull.UI_helper)));
+}, Skull.Tabs, Skull.UI_helper));
