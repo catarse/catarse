@@ -23,7 +23,7 @@ App.addChild('UserDocumentView', _.extend({
     $documentField.prop('maxlength', 18);
     var resultCpf = this.validateCpf(documentNumber);
     var resultCnpj = this.validateCnpj(documentNumber.replace(/[\/.\-\_ ]/g, ''));
-    var numberLength = documentNumber.replace(/[.\-\_ ]/g, '').length
+    var numberLength = documentNumber.replace(/[.\-\_ ]/g, '').length;
     if(numberLength > 10) {
       if($documentField.attr('id') != 'payment_card_cpf'){
         $documentField.fixedMask('off');
@@ -81,7 +81,7 @@ App.addChild('UserDocumentView', _.extend({
       }
       if (!digitos_iguais)
         {
-          tamanho = cnpj.length - 2
+          tamanho = cnpj.length - 2;
           numeros = cnpj.substring(0,tamanho);
           digitos = cnpj.substring(tamanho);
           soma = 0;

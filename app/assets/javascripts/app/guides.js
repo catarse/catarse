@@ -11,11 +11,13 @@ App.addChild('Guides', _.extend({
     this.route('social');
     this.route('after_project');
 
+
     this.setupResponsiveIframes(this.$container);
 
-    if(this.$('.dashboard-nav-link.selected').length < 1 &&  window.location.hash == '') {
-      window.location.hash = 'starting'
+    if(this.$('.dashboard-nav-link.selected').length < 1 &&  window.location.hash === '') {
+      window.location.hash = 'starting';
     }
+    
   },
 
   followRoute: function(name){

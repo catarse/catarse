@@ -1,12 +1,18 @@
 require 'rails_helper'
 
 RSpec.describe ProjectTotal, type: :model do
+  def create_contribution_with_payment project_id, payment_state
+    c = create(:confirmed_contribution, value: 10.0, project_id: project_id)
+    c.payments.first.update_attributes gateway_fee: 1, state: payment_state
+    c
+  end
+
   before do
-    @project_id = create(:contribution, value: 10.0, payment_service_fee: 1, state: 'pending').project_id
-    create(:contribution, value: 10.0, payment_service_fee: 1, state: 'confirmed', project_id: @project_id)
-    create(:contribution, value: 10.0, payment_service_fee: 1, state: 'waiting_confirmation', project_id: @project_id)
-    create(:contribution, value: 10.0, payment_service_fee: 1, state: 'refunded', project_id: @project_id)
-    create(:contribution, value: 10.0, payment_service_fee: 1, state: 'requested_refund', project_id: @project_id)
+    @project_id = create(:project, state: 'online').id
+    create_contribution_with_payment(@project_id, 'pending')
+    create_contribution_with_payment(@project_id, 'paid')
+    create_contribution_with_payment(@project_id, 'refunded')
+    create_contribution_with_payment(@project_id, 'pending_refund')
   end
 
   describe "#pledged" do

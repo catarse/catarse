@@ -36,7 +36,7 @@ App.addChild('ReviewForm', _.extend({
 
   internationalAddress: function(){
     this.$state.data('old_value', this.$state.val());
-    this.$state.val('outro / other')
+    this.$state.val('outro / other');
     this.makeFieldsOptional();
   },
 
@@ -52,7 +52,7 @@ App.addChild('ReviewForm', _.extend({
 
   nationalAddress: function(){
     if(this.$state.data('old_value')){
-      this.$state.val(this.$state.data('old_value'))
+      this.$state.val(this.$state.data('old_value'));
     }
     this.makeFieldsRequired();
   },
@@ -83,7 +83,7 @@ App.addChild('ReviewForm', _.extend({
       address_city: this.$('#contribution_address_city').val(),
       address_state: this.$('#contribution_address_state').val(),
       address_phone_number: this.$('#contribution_address_phone_number').val()
-    }
+    };
     $.post(this.$el.data('update-info-path'), {
       _method: 'put',
       contribution: contribution_data

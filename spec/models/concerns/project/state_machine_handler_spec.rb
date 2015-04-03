@@ -59,6 +59,10 @@ RSpec.describe Project::StateMachineHandler, type: :model do
         let(:project_state){ 'rejected' }
         subject{ project.push_to_draft }
         it{ should eq(true) }
+        it "should mark sent_to_draft_at" do
+          subject
+          expect(project.sent_to_draft_at).to_not be_nil
+        end
       end
     end
 
@@ -70,6 +74,10 @@ RSpec.describe Project::StateMachineHandler, type: :model do
         end
         subject{ project.reject }
         it{ should eq(true) }
+        it "should mark rejected_at" do
+          subject
+          expect(project.rejected_at).to_not be_nil
+        end
       end
     end
 
@@ -157,8 +165,8 @@ RSpec.describe Project::StateMachineHandler, type: :model do
 
       context 'when project is expired and the sum of the pending contributions and confirmed contributions dont reached the goal' do
         before do
-          create(:contribution, value: 100, project: project, created_at: 2.days.ago, payment_choice: 'BoletoBancario')
-          create(:contribution, value: 100, project: project, state: 'waiting_confirmation')
+          create(:confirmed_contribution, value: 100, project: project, created_at: 2.days.ago)
+          create(:pending_contribution, value: 100, project: project)
         end
 
         it{ is_expected.to eq true }
@@ -171,7 +179,7 @@ RSpec.describe Project::StateMachineHandler, type: :model do
 
       context 'when project is expired and have recent contributions without confirmation' do
         before do
-          create(:contribution, value: 30_000, project: project, state: 'waiting_confirmation')
+          create(:pending_contribution, value: 30_000, project: project)
         end
 
         it{ is_expected.to eq true }

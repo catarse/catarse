@@ -72,12 +72,12 @@ RSpec.describe ProjectPostPolicy do
       subject{ policy }
 
       context "when user is a contributor" do
-        let(:user) { create(:contribution, state: 'confirmed', project: project).user }
+        let(:user) { create(:confirmed_contribution, project: project).user }
         it { is_expected.to eq true }
       end
 
       context "when user is not a contributor" do
-        let(:user) { create(:contribution, state: 'pending', project: project).user }
+        let(:user) { create(:pending_contribution, project: project).user }
 
         it { is_expected.to eq false }
       end

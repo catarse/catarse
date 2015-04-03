@@ -15,7 +15,7 @@
       .w-col-2.w-col
         = form.input :by_payment_id, as: :string, label: t('.payment_id')
       .w-col-2.w-col
-        = form.input :with_state, collection: Contribution.state_names, label: t('admin.filter.with_state'), as: :select, selected: params[:with_state], include_blank: true
+        = form.input :with_state, collection: Payment.state_names, label: t('admin.filter.with_state'), as: :select, selected: params[:with_state], include_blank: true
     .w-row
       .w-col-3.w-col
         = form.input :project_name_contains, as: :string, label: t('.project')
@@ -23,8 +23,6 @@
         = form.input :user_name_contains, as: :string, label: t('.user')
       .w-col-2.w-col
         = form.input :search_on_acquirer, as: :string, label: t('.acquirer'), input_html: { placeholder: t('.placeholders.acquirer'), title: t('.placeholders.acquirer'), value: current_scopes[:search_on_acquirer] }
-      .w-col-2.w-col
-        = form.input :by_payment_method, collection: Contribution.payment_method_names, label: t('admin.filter.by_payment_method'), as: :select, selected: params[:with_state], include_blank: true
       .w-col-2.w-col
         = form.input :credits, as: :boolean, label: t('.credits')
       .w-col-2.w-col
@@ -62,9 +60,9 @@
             td.user_info title=contribution.user.display_name
               = link_to edit_user_path(contribution.user) do
                 = image_tag contribution.user.display_image, class: 'user_img'
-              .user_id= best_in_place [:admin, contribution], :user_id, method: :put, type: :input
+              .user_id= best_in_place [:admin, contribution.contribution], :user_id, method: :put, type: :input
             td= contribution.value
-            td= best_in_place [:admin, contribution], :payment_service_fee, method: :put, type: :input
+            td= best_in_place [:admin, contribution.contribution], :payment_service_fee, method: :put, type: :input
             td.w-col-6.w-col.reward.project-events-dropdown title=("#{contribution.reward.display_minimum} - #{contribution.reward.description}" if contribution.reward)
               - if contribution.reward
                 span = contribution.reward.display_minimum
@@ -86,49 +84,47 @@
               strong= t('.details.normal_email')
               br/
               = contribution.user.email
-            td.checkbox= best_in_place [:admin, contribution], :anonymous, method: :put, type: :checkbox, collection: [t('no'), t('yes')]
-            td= (contribution.credits ? t('yes') : t('no'))
+            td.checkbox= best_in_place [:admin, contribution.contribution], :anonymous, method: :put, type: :checkbox, collection: [t('no'), t('yes')]
+            td= (contribution.credits? ? t('yes') : t('no'))
             td= contribution.state
             td.w-col-6.w-col
               .w-dropdown-toggle.dropdown-toggle.project-admin-menu
                 = link_to 'javascript:void(0);', data: {toggle: 'dropdown'}, class: 'w-icon-dropdown-toggle btn btn-dark round positive dropdown-toggle' do
                   span.caret
               nav.w-dropdown-list.dropdown-list
-                - if contribution.confirmed?
-                  = link_to t('admin.contributions.index.unconfirm_contribution'), pendent_admin_contribution_path(contribution, local_params: params), method: :put, class: 'w-dropdown-link dropdown-link fontsize-smaller'
-                - else
-                  = link_to t('admin.contributions.index.confirm_contribution'), confirm_admin_contribution_path(contribution, local_params: params), method: :put, class: 'w-dropdown-link dropdown-link fontsize-smaller'
+                - unless contribution.paid?
+                  = link_to t('admin.contributions.index.confirm_contribution'), pay_admin_contribution_path(contribution, local_params: params), method: :put, class: 'w-dropdown-link dropdown-link fontsize-smaller'
 
-                - if contribution.can_request_refund? && contribution.can_do_refund?
-                  = link_to t('admin.contributions.index.request_refund'), request_refund_admin_contribution_path(contribution, local_params: params), method: :put, class: 'w-dropdown-link dropdown-link fontsize-smaller'
+                = link_to t('admin.contributions.index.request_refund'), request_refund_admin_contribution_path(contribution, local_params: params), method: :put, class: 'w-dropdown-link dropdown-link fontsize-smaller'
 
-                - if contribution.requested_refund? or contribution.confirmed?
+                - if contribution.pending_refund? or contribution.paid?
                   = link_to t('admin.contributions.index.refund_contribution'), refund_admin_contribution_path(contribution, local_params: params), method: :put, class: 'w-dropdown-link dropdown-link fontsize-smaller'
-                = link_to t('admin.contributions.index.refund_and_hide'), hide_admin_contribution_path(contribution, local_params: params), method: :put, class: 'w-dropdown-link dropdown-link fontsize-smaller'
-                = link_to t('admin.contributions.index.cancel'), cancel_admin_contribution_path(contribution, local_params: params), method: :put, class: 'w-dropdown-link dropdown-link fontsize-smaller'
-                = link_to t('admin.contributions.index.push_to_trash'), push_to_trash_admin_contribution_path(contribution, local_params: params), method: :put, class: 'w-dropdown-link dropdown-link fontsize-smaller'
-                - if (contribution.waiting_confirmation? || contribution.pending? || contribution.canceled?) && contribution.slip_payment? && contribution.can_generate_second_slip?
-                  = link_to 'Segunda via de boleto', contribution.second_slip_path, target: '__blank', method: :put, class: 'w-dropdown-link dropdown-link fontsize-smaller'
+                = link_to t('admin.contributions.index.cancel'), refuse_admin_contribution_path(contribution, local_params: params), method: :put, class: 'w-dropdown-link dropdown-link fontsize-smaller'
+                = link_to t('admin.contributions.index.push_to_trash'), trash_admin_contribution_path(contribution, local_params: params), method: :put, class: 'w-dropdown-link dropdown-link fontsize-smaller'
           tr class='detail_tr' id="contribution_details-#{contribution.id}"
             td colspan='11'
               table.table style='border: 1px #ededed solid; margin-bottom: 30px'
                 thead
                   th= t('.key')
                   th= t('.details.payment_id')
-                  th= t('.details.acquirer_tid')
                   th= t('.details.payment_method')
-                  th= t('.details.payment_choice')
+                  th= t('.details.acquirer_tid')
                   th= t('.details.acquirer_name')
+                  th= t('.details.payment_choice')
                   th= t('.details.installments')
                   th= t('.details.created_at')
                 tbody
                   tr
                     td= contribution.key
                     td= contribution.payment_id
-                    td= contribution.acquirer_tid
+                    td= contribution.gateway
+                    - if contribution.gateway_data
+                      td= contribution.gateway_data["acquirer_tid"]
+                      td= contribution.gateway_data["acquirer_name"]
+                    - else
+                      td &nbsp;
+                      td &nbsp;
                     td= contribution.payment_method
-                    td= contribution.payment_choice
-                    td= contribution.acquirer_name
                     td= contribution.installments
                     td= l(contribution.created_at, format: :simple) if contribution.created_at.present?
 = paginate @contributions

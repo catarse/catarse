@@ -28,7 +28,15 @@ class PaymentEngines
     CatarseSettings
   end
 
+  def self.find_contribution id
+    Contribution.find(id)
+  end
+
   def self.find_payment filter
-    Contribution.where(filter).first
+    Payment.where(filter).first
+  end
+
+  def self.new_payment attributes={}
+    Payment.new attributes
   end
 end

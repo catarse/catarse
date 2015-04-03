@@ -114,20 +114,17 @@ Catarse::Application.routes.draw do
       end
     end
 
-    resources :statistics, only: [ :index ]
     resources :financials, only: [ :index ]
 
     resources :contributions, only: [ :index, :update, :show ] do
       member do
         get :second_slip
-        put 'confirm'
-        put 'pendent'
+        put 'pay'
         put 'change_reward'
         put 'refund'
-        put 'hide'
-        put 'cancel'
+        put 'refuse'
         put 'request_refund'
-        put 'push_to_trash'
+        put 'trash'
       end
     end
     resources :users, only: [ :index ]

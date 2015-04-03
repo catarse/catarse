@@ -151,11 +151,40 @@ FactoryGirl.define do
   factory :contribution do |f|
     f.association :project, factory: :project
     f.association :user, factory: :user
-    f.confirmed_at Time.now
     f.value 10.00
-    f.state 'confirmed'
-    f.credits false
-    f.payment_id '1.2.3'
+    factory :confirmed_contribution do
+      after :create do |contribution|
+        create(:payment, state: 'paid', value: contribution.value, contribution: contribution)
+      end
+    end
+    factory :pending_contribution do
+      after :create do |contribution|
+        create(:payment, state: 'pending', value: contribution.value, contribution: contribution)
+      end
+    end
+    factory :pending_refund_contribution do
+      after :create do |contribution|
+        create(:payment, state: 'pending_refund', value: contribution.value, contribution: contribution)
+      end
+    end
+    factory :refunded_contribution do
+      after :create do |contribution|
+        create(:payment, state: 'refunded', value: contribution.value, contribution: contribution)
+      end
+    end
+    factory :contribution_with_credits do
+      after :create do |contribution|
+        create(:payment, state: 'paid', gateway: 'Credits', value: contribution.value, contribution: contribution)
+      end
+    end
+  end
+
+  factory :payment do |f|
+    f.association :contribution
+    f.gateway 'pagarme'
+    f.value 10.00
+    f.installment_value 10.00
+    f.payment_method "CartaoDeCredito"
   end
 
   factory :payment_notification do |f|

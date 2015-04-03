@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Projects::ContributionsController, type: :controller do
   let(:project) { create(:project) }
-  let(:contribution){ create(:contribution, value: 10.00, credits: true, project: project, state: 'pending') }
+  let(:contribution){ create(:pending_contribution, value: 10.00, project: project) }
   let(:user){ nil }
   let(:contribution_info){ { address_city: 'Porto Alegre', address_complement: '24', address_neighbourhood: 'Rio Branco', address_number: '1004', address_phone_number: '(51)2112-8397', address_state: 'RS', address_street: 'Rua Mariante', address_zip_code: '90430-180', payer_email: 'diogo@biazus.me', payer_name: 'Diogo de Oliveira Biazus' } }
 
@@ -57,7 +57,7 @@ RSpec.describe Projects::ContributionsController, type: :controller do
 
     context "when user is logged in" do
       let(:user){ create(:user) }
-      let(:contribution){ create(:contribution, value: 10.00, credits: true, project: project, state: 'pending', user: user) }
+      let(:contribution){ create(:pending_contribution, value: 10.00, project: project, user: user) }
       it{ is_expected.to render_template(:edit) }
     end
 
@@ -146,7 +146,7 @@ RSpec.describe Projects::ContributionsController, type: :controller do
   end
 
   describe "GET show" do
-    let(:contribution){ create(:contribution, value: 10.00, credits: false, state: 'confirmed') }
+    let(:contribution){ create(:confirmed_contribution, value: 10.00) }
     before do
       get :show, { locale: :pt, project_id: contribution.project.id, id: contribution.id }
     end
@@ -169,7 +169,7 @@ RSpec.describe Projects::ContributionsController, type: :controller do
 
   describe "GET index" do
     before do
-      create(:contribution, value: 10.00, state: 'confirmed',
+      create(:confirmed_contribution, value: 10.00,
               reward: create(:reward, project: project, description: 'Test Reward'),
               project: project,
               user: create(:user, name: 'Foo Bar'))
