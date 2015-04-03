@@ -45,7 +45,9 @@ Skull.UI_helper = {
 		  
 			this.$iframes.each(function() {
 			
-		  		$(this)
+				var $el = $(this);
+
+		  		$el
 					.width(newWidth)
 					.height(newWidth * $el.data('aspectRatio'));
 			
