@@ -425,6 +425,29 @@ RSpec.describe User, type: :model do
     end
   end
 
+  describe "#has_valid_contribution_for_project??" do
+    let(:project) { create(:project) }
+    subject { user.has_valid_contribution_for_project?(project.id) }
+
+    context "when user has valid contributions for the project" do
+      before do
+        create(:confirmed_contribution, project: project, user: user)
+      end
+
+      it { is_expected.to eq(true) }
+    end
+
+    context "when user don't have valid contributions for the project" do
+      before do
+        create(:pending_contribution, project: project, user: user)
+      end
+      it { is_expected.to eq(false) }
+    end
+    context "when user don't have contributions for the project" do
+      it { is_expected.to eq(false) }
+    end
+  end
+
   describe "#nullify_permalink" do
     subject{ user.permalink }
     context "when user provides blank permalink" do
