@@ -2,7 +2,7 @@ desc "Migrate payments data using first payment notification"
 task :migrate_payment_data => :environment do
   payments = Payment.order(id: :desc)
 
-  payments.each do |payment|
+  payments.find_each do |payment|
     first_notification = PaymentNotification.where(payment_id: payment.id).order(:id).first
     if first_notification.present?
       data = first_notification.extra_data
