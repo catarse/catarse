@@ -271,7 +271,7 @@ class User < ActiveRecord::Base
   end
 
   def has_valid_contribution_for_project?(project_id)
-    contributions.with_state(['confirmed', 'requested_refund', 'waiting_confirmation']).where(project_id: project_id).present?
+    contributions.where(project_id: project_id).where('contributions.was_confirmed').present?
   end
 
   def generate_reset_password_token
