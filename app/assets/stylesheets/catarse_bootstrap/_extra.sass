@@ -5,6 +5,9 @@ h1, h2, h3, h4, h5, h6, label
 body
   word-wrap: break-word
 
+iframe, img
+  max-width: 100%
+
 .list-answer
   display: none
 
@@ -100,9 +103,6 @@ body
       padding-right: 20px
 
 @media screen and (min-width: 1200px)
-  iframe
-    width: 100% !important
-    height: 403px
   .w-container
     max-width: 1040px
   .w-col
@@ -118,17 +118,10 @@ body
 
 
 @media (max-width: 767px)
-  iframe
-    width: 100% !important
   .w-col
     .w-col.w-sub-col
       padding-right: 0px
 
-
-@media (max-width: 479px)
-  iframe
-    width: 100% !important
-    height: 252px
 
 // Edit contribution page
 
@@ -214,9 +207,3 @@ body
   input[type="text"]:hover
     +input-placeholder
       color: #3F4752
-
-//chartkick generated chart style
-@media (max-width: 600px)
-  #budget-chart
-    img
-      max-width: 100% !important

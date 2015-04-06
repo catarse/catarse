@@ -4,11 +4,15 @@ App.addChild('UserShow', _.extend({
   activate: function(){
     var that = this;
 
+    this.$container = $(".w-col");
+
     this.route('contributed');
     this.route('created');
     this.route('about');
 
     this.lookAnchors();
+
+    this.setupResponsiveIframes(this.$container);
   },
 
   followRoute: function(name){
@@ -28,7 +32,4 @@ App.addChild('UserShow', _.extend({
     }
   },
 
-}, Skull.Tabs));
-
-
-
+}, Skull.Tabs, Skull.UI_helper));
