@@ -45,6 +45,14 @@ cards = [
   }
   # Credit cards
   {
+      type: 'elo'
+      pattern: /^((636368)|(438935)|(504175)|(451416)|(636297))|((5067)|(4576)|(4011)))/
+      format: defaultFormat
+      length: [10..12]
+      cvcLength: [3]
+      luhn: true
+  }
+  {
       type: 'visa'
       pattern: /^4/
       format: defaultFormat
