@@ -1,5 +1,5 @@
 class UserLink < ActiveRecord::Base
-  before_save :fix_link
+  before_save :prepend_protocol
   belongs_to :user
   scope :with_link, ->{ where('link IS NOT NULL') }
 
@@ -7,7 +7,7 @@ class UserLink < ActiveRecord::Base
     self.link.sub(/^https?\:\/\//, '').sub(/^www./,'')
   end
 
-  def fix_link
+  def prepend_protocol
     self.link = ('http://' + self.link) unless self.link[/^https?:\/\//]
   end
 
