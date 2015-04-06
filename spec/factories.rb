@@ -113,6 +113,11 @@ FactoryGirl.define do
     f.account_type "foo"
   end
 
+  factory :user_link do |f|
+    f.association :user
+    f.link "http://www.foo.com"
+  end
+
   factory :project_budget do |f|
     f.association :project
     f.name "Foo Bar"
