@@ -218,6 +218,13 @@ class Project < ActiveRecord::Base
     end
   end
 
+  def users_in_reminder
+    reminder_jobs = Sidekiq::ScheduledSet.new.select do |job|
+      job['class'] == 'ReminderProjectWorker' && job.args[1] == self.id
+    end
+    User.where(id: reminder_jobs.map {|job| job.args[0]})
+  end
+
   def published?
     PUBLISHED_STATES.include? state
   end
