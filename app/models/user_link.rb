@@ -3,7 +3,7 @@ class UserLink < ActiveRecord::Base
   belongs_to :user
   scope :with_link, ->{ where('link IS NOT NULL') }
 
-  def link_without_protocol
+  def without_protocol
     self.link.sub(/^https?\:\/\//, '').sub(/^www./,'')
   end
 
