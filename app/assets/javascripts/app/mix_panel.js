@@ -44,8 +44,7 @@ App.addChild('MixPanel', {
     this.trackPageVisit('projects', 'new', 'Visited new project page');
     this.trackPageVisit('projects', 'index', 'Visited home');
     this.trackPageVisit('explore', 'index', 'Explored projects');
-    this.trackPageLoad('contributions', 'new', 'Started contribution');
-    this.trackPageLoad('contributions', 'edit', 'Selected reward');
+    this.trackPageLoad('contributions');
     this.trackTwitterShare();
     this.trackFacebookShare();
     this.trackFollowCategory();
@@ -73,10 +72,30 @@ App.addChild('MixPanel', {
     });
   },
 
-  trackPageLoad: function(controller, action, text){
-    var self = this;
+  trackPageLoad: function(controller){
+    var action = '',
+        from = '',
+        opts = this.projectProperties(),
+        self = this,
+        text = '',
+        url = window.location.href;
+
+    if(url.indexOf('edit') > -1){
+      action = 'edit';
+      text = 'Selected reward';
+    }
+    if(url.indexOf('new') > -1){
+      action = 'new';
+      text = 'Started contribution';
+      if(url.indexOf('reward_id') > -1){
+        from = 'Reward click';  
+      } else {
+        from = 'Contribute button click';
+      }
+      opts = _.extend(opts, {action: from});
+    }
     this.trackOnPage(controller, action, function(){
-      self.track(text);
+      self.track(text, opts);
     });
   },
 
