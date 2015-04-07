@@ -44,7 +44,7 @@ App.addChild('MixPanel', {
     this.trackPageVisit('projects', 'new', 'Visited new project page');
     this.trackPageVisit('projects', 'index', 'Visited home');
     this.trackPageVisit('explore', 'index', 'Explored projects');
-    this.trackPageLoad('contributions');
+    this.trackContributions();
     this.trackTwitterShare();
     this.trackFacebookShare();
     this.trackFollowCategory();
@@ -72,7 +72,7 @@ App.addChild('MixPanel', {
     });
   },
 
-  trackPageLoad: function(controller){
+  trackContributions: function(){
     var action = '',
         from = '',
         opts = this.projectProperties(),
@@ -94,7 +94,7 @@ App.addChild('MixPanel', {
       }
       opts = _.extend(opts, {action: from});
     }
-    this.trackOnPage(controller, action, function(){
+    this.trackOnPage('contributions', action, function(){
       self.track(text, opts);
     });
   },
