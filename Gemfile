@@ -83,7 +83,6 @@ gem 'redactor-rails', github: 'catarse/redactor-rails'
 # Uploads
 gem 'carrierwave', '~> 0.10.0'
 gem "mini_magick"
-gem 'rmagick', :require => 'RMagick'
 
 # Other Tools
 gem 'to_xls'
