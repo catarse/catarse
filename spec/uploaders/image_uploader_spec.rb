@@ -12,7 +12,6 @@ RSpec.describe ImageUploader do
 
   after do
     ImageUploader.enable_processing = false
-    @uploader.remove!
   end
 
   describe "#extension_white_list" do

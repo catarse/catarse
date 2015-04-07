@@ -500,7 +500,6 @@ GEM
       netrc (~> 0.7)
     retriable (2.0.2)
     rinku (1.5.1)
-    rmagick (2.14.0)
     routing-filter (0.4.0.1)
       actionpack (< 4.2)
     rspec-collection_matchers (1.1.2)
@@ -705,7 +704,6 @@ DEPENDENCIES
   rails_12factor
   ranked-model
   redactor-rails!
-  rmagick
   routing-filter (~> 0.4.0.pre)
   rspec-collection_matchers
   rspec-its

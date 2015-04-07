@@ -12,7 +12,6 @@ RSpec.describe ProjectUploader do
 
   after do
     ProjectUploader.enable_processing = false
-    @uploader.remove!
   end
 
   describe '#project_thumb' do

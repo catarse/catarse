@@ -12,7 +12,6 @@ RSpec.describe UserUploader do
 
   after do
     UserUploader.enable_processing = false
-    @uploader.remove!
   end
 
   describe '#thumb_avatar' do
