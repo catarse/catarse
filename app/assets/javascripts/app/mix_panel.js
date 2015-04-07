@@ -44,6 +44,7 @@ App.addChild('MixPanel', {
     this.trackPageVisit('projects', 'new', 'Visited new project page');
     this.trackPageVisit('projects', 'index', 'Visited home');
     this.trackPageVisit('explore', 'index', 'Explored projects');
+    this.trackPageLoad('contributions', 'edit', 'Selected reward');
     this.trackContributions();
     this.trackTwitterShare();
     this.trackFacebookShare();
@@ -72,30 +73,23 @@ App.addChild('MixPanel', {
     });
   },
 
-  trackContributions: function(){
-    var action = '',
-        from = '',
-        opts = this.projectProperties(),
-        self = this,
-        text = '',
-        url = window.location.href;
+  trackPageLoad: function(controller, action, text){
+    var self = this;
+    this.trackOnPage(controller, action, function(){
+      self.track(text);
+    });
+  },
 
-    if(url.indexOf('edit') > -1){
-      action = 'edit';
-      text = 'Selected reward';
+  trackContributions: function(){
+    var from = '',
+        self = this;
+    if(window.location.href.indexOf('reward_id') > -1){
+      from = 'Reward click';  
+    } else {
+      from = 'Contribute button click';
     }
-    if(url.indexOf('new') > -1){
-      action = 'new';
-      text = 'Started contribution';
-      if(url.indexOf('reward_id') > -1){
-        from = 'Reward click';  
-      } else {
-        from = 'Contribute button click';
-      }
-      opts = _.extend(opts, {action: from});
-    }
-    this.trackOnPage('contributions', action, function(){
-      self.track(text, opts);
+    this.trackOnPage('contributions', 'new', function(){
+      self.track('Started contribution', _.extend(self.projectProperties(), {action: from}));
     });
   },
 
