@@ -64,8 +64,8 @@ class ProjectDecorator < Draper::Decorator
     ((source.pledged / source.goal) * 100).to_i
   end
 
-  def display_pledged
-    number_to_currency source.pledged
+  def display_pledged(options = {})
+    number_to_currency source.pledged, options
   end
 
   def status_icon_for group_name
