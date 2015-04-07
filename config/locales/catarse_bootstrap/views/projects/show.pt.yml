@@ -72,7 +72,7 @@ pt:
         display_status:
           approved: "Esse projeto já foi aprovado pelo Catarse. Em breve ele entrará no ar e estará pronto para receber apoios."
           reached_goal: "Este projeto será bem-sucedido e financiado em %{date}"
-          not_reached_goal: "Este projeto só será financiado se pelo menos %{goal} forem atingidos até %{date}"
+          not_reached_goal: "Você pode apoiar este projeto até o dia %{date} às 23h59h59s"
           failed: "Este projeto não atingiu o mínimo de %{goal} até %{date} e não foi financiado"
           rejected: "Este projeto não foi aceito. Não é possível realizar um apoio."
           in_analysis: "Este projeto está em análise e ainda não está aberto para receber apoios."
