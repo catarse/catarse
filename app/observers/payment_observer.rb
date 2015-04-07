@@ -8,7 +8,7 @@ class PaymentObserver < ActiveRecord::Observer
   end
 
   def after_update(payment)
-    notify_confirmation(payment) if payment.paid?
+    notify_confirmation(payment) if payment.paid? && payment.state_changed?
   end
 
   def from_confirmed_to_refunded_and_canceled(payment)
