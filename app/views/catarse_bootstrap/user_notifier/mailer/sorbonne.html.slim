@@ -1,15 +1,15 @@
 p
   | Caro #{@notification.user.display_name},
-p
-  br/
-  br/
+- if @notification.user.notifications.where(template_name: 'sorbonne').where("user_notifications.id <> ?", @notification.id).exists?
+  p
+    strong Esse é um lembrete do convite feito há alguns dias. Sua resposta é muito importante para o nosso estudo. 
 p
   | O Catarse está colaborando em um estudo da Universidade de Paris (Sorbonne). Eles querem investigar as personalidades e as motivações das pessoas que apoiam projetos de financiamento coletivo.
 p
-  br/
   | Você está em um grupo de apoiadores de projetos na plataforma selecionados por eles para responder a uma pesquisa e ajudar no desenvolvimento de um trabalho científico para compreendermos melhor esse modelo que já ajudou milhares de ideias a saírem do papel no Brasil e no mundo.
 p
-  br/
+  | Você pode responder a pesquisa até o dia 12/04/2015.
+p
   u> Todos os participantes serão remunerados com um valor entre R$15 e R$90
   | dependendo do seu desempenho, e todas as respostas serão anônimas. O estudo e o pagamento são de responsabilidade Université de Paris.
 p
@@ -25,18 +25,13 @@ ul
     u> atualizada
     | dos navegadores Google Chrome, Firefox ou Safari.
   li O número de vagas disponíveis para esta sessão do estudo são limitados, será dada preferência para os primeiros participantes.
-  li Todos pagamentos para os participantes da pesquisa serão efetuados via PayPall no dia 03/04/2015, independente de quando você participar da pesquisa.
+  li Todos pagamentos para os participantes da pesquisa serão efetuados via depósito bancário até o dia 14/04/2015, independente de quando você participar da pesquisa.
 p
   'Para obter mais informações e responder a pesquisa, acesse: 
   = link_to 'pesquisa.fr', 'pesquisa.fr'
 p
   | Seu login : 
   = ActiveRecord::Base.connection.select_one("SELECT login FROM temp.sorbonne WHERE user_id = #{@notification.user.id}")["login"]
-p
-  br/
-  | Você pode responder a pesquisa até o dia 01/04/2015.
-  br/
-  br/
 p
   | Obrigado!
 p
