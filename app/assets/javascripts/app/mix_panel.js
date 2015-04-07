@@ -83,12 +83,12 @@ App.addChild('MixPanel', {
   trackContributions: function(){
     var from = '',
         self = this;
-    if(window.location.href.indexOf('reward_id') > -1){
-      from = 'Reward click';  
-    } else {
-      from = 'Contribute button click';
-    }
     this.trackOnPage('contributions', 'new', function(){
+      if(window.location.href.indexOf('reward_id') > -1){
+        from = 'Reward click';  
+      } else {
+        from = 'Contribute button click';
+      }
       self.track('Started contribution', _.extend(self.projectProperties(), {action: from}));
     });
   },
