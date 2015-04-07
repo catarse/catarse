@@ -23,9 +23,13 @@ RSpec.describe PaymentObserver do
     end
   end
 
-  describe "before_save" do
+  describe "after_update" do
     context "when is confirmed" do
-      let(:payment){ create(:payment, payment_method: 'BoletoBancario', state: 'paid') }
+      let(:payment) do 
+        payment = create(:payment, payment_method: 'BoletoBancario', state: 'pending')
+        payment.pay!
+        payment
+      end
       it("should send confirm_contribution notification") do
         expect(ContributionNotification.where(template_name: 'confirm_contribution', user: contribution.user, contribution: contribution).count).to eq 1
       end
