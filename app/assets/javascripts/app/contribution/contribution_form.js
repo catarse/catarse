@@ -32,6 +32,7 @@ App.views.Contribution.addChild('ContributionForm', _.extend({
 
   activate: function(){
     this.value = this.$('#contribution_value');
+    this.value.mask('000.000.000,00', {reverse: true});
     this.rewards = this.value.data('rewards');
     this.choices = this.$('li.choice');
     this.credits = this.$('#credits');
