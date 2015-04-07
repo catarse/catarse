@@ -46,7 +46,7 @@ cards = [
   # Credit cards
   {
       type: 'elo'
-      pattern: /^(636[2-3]|5090[4-6]|504175|45763[1-2]|451416|5067|4576|4011)/
+      pattern: /^636[2-3]|5090[4-6]|504175|45763[1-2]|451416|5067|4576|4011/
       format: defaultFormat
       length: [16]
       cvcLength: [3]
