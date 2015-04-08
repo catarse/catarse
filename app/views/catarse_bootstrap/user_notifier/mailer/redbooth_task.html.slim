@@ -8,7 +8,7 @@ br/
 = link_to project_link, project_link
 br/
 | Arrecadado:
-= project.display_pledged
+= project.display_pledged_with_cents
 br/
 | Usuario moip:
 = project.user.try(:moip_login)
