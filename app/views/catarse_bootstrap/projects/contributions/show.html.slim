@@ -22,11 +22,12 @@
               = link_to "http://twitter.com/?status=#{t('i_just_contributed', name: @project.name)} #{project_by_slug_url(@project.permalink, ref: 'twitter')}", target: :_blank, id: "twitter_share_button", data: { title: @project.name }, class: 'btn btn-medium btn-tweet' do
                 = t('.tweet')
 
-.section.u-marginbottom-40
-  .w-container
-    .u-marginbottom-20.fontweight-semibold.fontsize-base.u-text-center= t('.project_recommendations') 
-    .w-row
-      == render_projects @contribution.recommended_projects.limit(3), 'thankyou', { wrapper_class: 'w-col w-col-4' }
+- if @contribution.recommended_projects.exists?
+  .section.u-marginbottom-40
+    .w-container
+      .u-marginbottom-20.fontweight-semibold.fontsize-base.u-text-center= t('.project_recommendations') 
+      .w-row
+        == render_projects @contribution.recommended_projects.limit(3), 'thankyou', { wrapper_class: 'w-col w-col-4' }
 
 - unless current_user.following_this_category?(@project.category_id)
   .section.section-gray-one
