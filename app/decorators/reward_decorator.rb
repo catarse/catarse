@@ -20,7 +20,7 @@ class RewardDecorator < Draper::Decorator
         </div>
     }
     %{
-      <label data-minimum-value="#{source.minimum_value > 0 ? source.minimum_value.to_i : '10'}" class="w-form-label fontsize-large fontweight-semibold" for="contribution_reward#{source.id && "_#{source.id}"}">#{source.minimum_value > 0 ? source.display_minimum+'+' : I18n.t('rewards.index.dont_want')}</label>
+      <label data-minimum-value="#{source.minimum_value > 0 ? number_with_precision(source.minimum_value, precison: 2) : '10,00'}" class="w-form-label fontsize-large fontweight-semibold" for="contribution_reward#{source.id && "_#{source.id}"}">#{source.minimum_value > 0 ? source.display_minimum+'+' : I18n.t('rewards.index.dont_want')}</label>
       <div>
         <span class="badge badge-success fontsize-smaller">#{I18n.t('projects.contributions.you_selected')}</span>
       </div>
