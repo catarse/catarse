@@ -28,7 +28,7 @@ class MigrateContributionsDataToPayments < ActiveRecord::Migration
         WHEN 'pending' THEN 'pending'
         WHEN 'waiting_confirmation' THEN 'pending'
         WHEN 'refunded' THEN 'refunded'
-        WHEN 'refunded_and_canceled' THEN 'refunded'
+        WHEN 'refunded_and_canceled' THEN 'deleted'
         WHEN 'requested_refund' THEN 'pending_refund'
         WHEN 'requested_refund' THEN 'pending_refund'
         WHEN 'canceled' THEN 'refused'
