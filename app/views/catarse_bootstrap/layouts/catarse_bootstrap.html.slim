@@ -26,6 +26,7 @@ html
       meta property="og:description"  content=(t('projects.index_header.title') + '. ' +  t('projects.index_header.subtitle'))
     - if Rails.env.production?
       = render 'layouts/hotjar'
+      = render 'layouts/vwo'
 
   body#catarse_bootstrap[data-controller-name=controller_name data-action=action_name data-user="#{current_user.try(:to_analytics_json)}" data-id=params[:id] data-mobile=browser.mobile?.to_s]
     /= render 'layouts/global_alert'
