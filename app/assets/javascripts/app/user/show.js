@@ -4,7 +4,7 @@ App.addChild('UserShow', _.extend({
   activate: function(){
     var that = this;
 
-    this.$container = $(".w-col");
+    this.$container = $(".w-col-8");
 
     this.route('contributed');
     this.route('created');
