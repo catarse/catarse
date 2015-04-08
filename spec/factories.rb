@@ -197,6 +197,12 @@ FactoryGirl.define do
     f.extra_data {}
   end
 
+  factory :credit_card do |f|
+    f.association :user
+    f.last_digits '1234'
+    f.card_brand 'Foo'
+  end
+
   factory :authorization do |f|
     f.association :oauth_provider
     f.association :user
