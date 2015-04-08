@@ -24,6 +24,7 @@ App.addChild('MixPanel', {
     this.trackOnPage('projects', 'show', function(){
       self.trackVisit('Visited project page', self.projectProperties());
       self.trackReminderClick();
+      self.trackOnContributionStart();
     });
 
     this.trackOnPage('projects', 'edit', function(){
@@ -63,6 +64,22 @@ App.addChild('MixPanel', {
       self.track('Engaged with Catarse', { ref: $(event.currentTarget).data('title'), action: 'click follow category' });
       return true;
     });
+  },
+
+  trackOnContributionStart: function(){
+    var self = this;
+
+    this.$('.card-reward').on('click', function(event){
+      self.trackStartedContribution('Reward click');
+    });
+    
+    this.$('#contribute_project_form').on('click', function(event){
+      self.trackStartedContribution('Contribute button click');
+    });
+  },
+
+  trackStartedContribution: function(action){
+    this.track('Started contribution', _.extend(this.projectProperties(), { action: action }));
   },
 
   trackReminderClick: function(){
