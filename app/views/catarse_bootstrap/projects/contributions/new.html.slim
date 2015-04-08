@@ -18,7 +18,7 @@
             .card.card-secondary.u-radius.u-margintop-30
               .fontsize-base.u-marginbottom-20.u-text-center-small-only = t('.choose_value')
               .back-reward-input-reward.placeholder R$
-              = form.input_field :value, value: @contribution.value, as: :tel, class: 'w-input back-reward-input-reward u-marginbottom-20'
+              = form.input_field :value, value: number_with_precision( @contribution.value, precision: 2 ), as: :tel, class: 'w-input back-reward-input-reward u-marginbottom-20'
               .fontsize-smaller.fontweight-semibold.u-text-center-small-only == t('.minimum_disclaimer')
       .w-col.w-col-4
         = render 'faq_box'
