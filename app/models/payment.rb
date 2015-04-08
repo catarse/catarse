@@ -62,7 +62,7 @@ class Payment < ActiveRecord::Base
     end
 
     event :request_refund do
-      transition confirmed: :pending_refund, if: ->(payment){
+      transition paid: :pending_refund, if: ->(payment){
         payment.contribution.user.credits >= payment.value && !payment.credits?
       }
     end
