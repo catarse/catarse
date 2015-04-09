@@ -95,7 +95,7 @@
                       br/
                       = project.account.try(:decorate).try(:display_bank_account_owner)
                     td= project.account.try(:decorate).try(:display_name)
-                    td= project.account.try(:cpf)
+                    td= project.account.try(:owner_document)
                     td= project.account.try(:email)
                     td= project.account.try(:state_inscription)
                     td= project.account.try(:decorate).try(:display_address)
