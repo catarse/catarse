@@ -50,7 +50,7 @@ class Payment < ActiveRecord::Base
     state :deleted
 
     event :trash do
-      transition :pending => :deleted
+      transition all => :deleted
     end
 
     event :pay do
