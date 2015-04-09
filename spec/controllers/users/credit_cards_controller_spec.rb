@@ -15,7 +15,7 @@ RSpec.describe Users::CreditCardsController, type: :controller do
     end
 
     context "when user is card owner" do
-      its(:status) { should == 302 }
+      it{ is_expected.to redirect_to edit_user_path(user, anchor: 'billing') }
     end
   end
 
