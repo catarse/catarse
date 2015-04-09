@@ -9,7 +9,9 @@
         = t('.financed')
     .w-col.w-col-3.w-col-small-3.w-col-tiny-6
       .fontweight-semibold.fontsize-large.lineheight-tight
-        = @project.display_pledged
+        - pledged = @project.display_pledged_with_cents.split(',')
+        = pledged[0]
+        span.fontsize-smaller= ",#{ pledged[1] }"
       .fontcolor-secondary.lineheight-tighter.fontsize-small.u-marginbottom-10
         = t('.backed')
     .w-col.w-col-3.w-col-small-3.w-col-tiny-6

@@ -77,7 +77,7 @@
             td.w-col-2.w-col= link_to project.name, project_by_slug_path(permalink: project.permalink)
             td.w-col-1.w-col= project.category
             td.w-col-1.w-col= best_in_place [:admin, project], :goal, method: :put, type: :input, display_as: :display_goal
-            td.w-col-1.w-col= "#{project.display_pledged} (#{project.progress}%)"
+            td.w-col-1.w-col= "#{project.display_pledged_with_cents} (#{project.progress}%)"
             td.w-col-1.w-col= project.total_contributions
             td.w-col-1.w-col= best_in_place [:admin, project], :recommended, method: :put, type: :checkbox, collection: [t('no'), t('yes')]
             td.w-col-1.w-col= project.online_date.strftime('%d/%m/%Y') if project.online_date
