@@ -64,7 +64,7 @@ gem 'high_voltage'
 # Authentication and Authorization
 gem 'omniauth'
 gem 'omniauth-twitter'
-gem 'omniauth-facebook', '1.4.0'
+gem 'omniauth-facebook'
 gem 'devise'
 gem 'ezcrypto'
 gem 'pundit'
@@ -76,7 +76,6 @@ gem 'catarse_monkeymail', '>= 0.1.6'
 gem 'simple_form'
 gem 'mail_form'
 gem "auto_html"
-gem "RedCloth"
 gem 'kaminari'
 gem 'redactor-rails', github: 'catarse/redactor-rails'
 
