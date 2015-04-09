@@ -15,19 +15,19 @@ App.addChild('DashboardUserSettings', {
     var label_text;
 
     if (type == 'Pessoa Física') {
-      label_text = this.$("#project_account_attributes_full_name").data('natural');
+      label_text = this.$("#project_account_attributes_owner_name").data('natural');
       this.$inscription.hide();
       this.$(".user-document").prop('maxlength', 11);
       this.$(".user-document").fixedMask('999.999.999-99');
     }
     else if (type == 'Pessoa Jurídica') {
-      label_text = this.$("#project_account_attributes_full_name").data('juridical');
+      label_text = this.$("#project_account_attributes_owner_name").data('juridical');
       this.$inscription.show();
       this.$(".user-document").prop('maxlength', 14);
       this.$(".user-document").fixedMask('99.999.999/9999-99');
     }
 
-    this.$(".project_account_full_name > label:first-child").html(label_text);
+    this.$(".project_account_owner_name > label:first-child").html(label_text);
   }
 
 

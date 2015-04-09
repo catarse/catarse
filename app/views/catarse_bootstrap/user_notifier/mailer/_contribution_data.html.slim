@@ -24,9 +24,9 @@ p
   br/
   / We need the || for some old projects do not have the account info
   - owner = contribution.project.account || contribution.project.user
-  | Nome/Razão Social do realizador: #{contribution.project.account.full_name.presence || contribution.project.user.name}
+  | Nome/Razão Social do realizador: #{contribution.project.account.owner_name.presence || contribution.project.user.name}
   br/
-  | CPF/CNPJ do realizador: #{owner.cpf}
+  | CPF/CNPJ do realizador: #{owner.owner_document}
 
 p
   ' É importante ressaltar que o Catarse é apenas intermediador desse processo,
