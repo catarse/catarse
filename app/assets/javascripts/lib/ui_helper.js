@@ -4,8 +4,10 @@ Skull.UI_helper = {
     this.$iframes = $("iframe[src^='//player.vimeo.com'], iframe[src^='//www.youtube.com']");
     this.$iframes.each(function() {
       if (!$(this).data('aspectRatio')) {
+        var height = this.height || $(this).height(),
+            width = this.width || $(this).width();
         $(this)
-          .data('aspectRatio', this.height / this.width)
+          .data('aspectRatio', height / width)
           .removeAttr('height')
           .removeAttr('width');
       }
