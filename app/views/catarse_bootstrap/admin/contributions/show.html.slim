@@ -5,15 +5,15 @@
   p
     strong= t('.payment_method')
     | &nbsp;
-    = resource.payment_method
+    = resource.gateway
   p
     strong= t('.payment_fee')
     | &nbsp;
-    = number_to_currency resource.payment_service_fee, unit: 'R$', precision: 2, delimiter: '.'
+    = number_to_currency resource.gateway_fee, unit: 'R$', precision: 2, delimiter: '.'
   p
     strong= t('.payment_id')
     | &nbsp;
-    = resource.payment_id
+    = resource.gateway_id
   p
     strong= t('.payer_email')
     | &nbsp;
@@ -25,7 +25,7 @@
   p
     strong= t('.payment_choice')
     | &nbsp;
-    = resource.payment_choice
+    = resource.payment_method
   p
     strong= t('.created_at')
     | &nbsp;
