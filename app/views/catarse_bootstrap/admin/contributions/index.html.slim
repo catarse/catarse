@@ -24,6 +24,8 @@
       .w-col-2.w-col
         = form.input :search_on_acquirer, as: :string, label: t('.acquirer'), input_html: { placeholder: t('.placeholders.acquirer'), title: t('.placeholders.acquirer'), value: current_scopes[:search_on_acquirer] }
       .w-col-2.w-col
+        = form.input :by_gateway, collection: Payment.pluck("DISTINCT gateway"), label: t('admin.filter.by_gateway'), as: :select, selected: params[:by_gateway], include_blank: true
+      .w-col-2.w-col
         = form.input :credits, as: :boolean, label: t('.credits')
       .w-col-2.w-col
         = form.button :submit, t('admin.filter.submit'), class: 'button medium negative'
