@@ -94,9 +94,7 @@ FactoryGirl.define do
   factory :project_account do |f|
     f.association :project
     f.association :bank
-    f.full_name "Foo Bar"
     f.email "foo@bar.com"
-    f.cpf "foo"
     f.address_zip_code "foo"
     f.address_neighbourhood "foo"
     f.address_state "foo"
