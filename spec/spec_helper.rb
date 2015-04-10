@@ -62,6 +62,7 @@ RSpec.configure do |config|
     allow_any_instance_of(Project).to receive(:subscribe_to_list).and_return(true)
     allow_any_instance_of(ProjectObserver).to receive(:after_create)
     allow_any_instance_of(UserObserver).to receive(:after_create)
+    allow_any_instance_of(ContributionObserver).to receive(:after_create)
     allow_any_instance_of(Project).to receive(:download_video_thumbnail)
     allow_any_instance_of(Calendar).to receive(:fetch_events_from)
     allow(Blog).to receive(:fetch_last_posts).and_return([])
