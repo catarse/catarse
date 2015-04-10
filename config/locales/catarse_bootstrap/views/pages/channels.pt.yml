@@ -20,6 +20,7 @@ pt:
       user_name_contains: Usuário
       with_state: Com o estado
       by_payment_method: 'Meio de pagamento'
+      by_gateway: 'Gateway'
     followers:
       index:
         download: Baixar lista
