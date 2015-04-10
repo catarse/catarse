@@ -33,13 +33,13 @@
                 .w-row
                   .w-col.w-col-6.w-sub-col
                     = form.hidden_field :project_id, value: @project.id
-                    = form.input :full_name, as: :string, item_wrapper_class: 'test', input_html: { class: 'positive', required: true, data: {natural: t('.natural'), juridical: t('.juridical') } }
+                    = form.input :owner_name, as: :string, input_html: { class: 'positive', required: true, data: {natural: t('.natural'), juridical: t('.juridical') } }
                   .w-col.w-col-6
                     = form.input :email, as: :string, 
                     input_html: { class: 'positive', required: true }
                 .w-row
                   .w-col.w-col-6.w-sub-col
-                    = form.input :cpf, as: :tel, 
+                    = form.input :owner_document, as: :tel, 
                       input_html: { class: 'positive user-document', required: true, data: { :'validate-cpf-cnpj' => true }}
                   .w-col.w-col-6
                     = form.input :state_inscription, as: :string, 
@@ -100,13 +100,7 @@
                     .w-col.w-col-6.w-col-small-6.w-col-tiny-6
                       = form.input :account_digit, as: :string, 
                       input_html: { class: 'positive', required: true }
-                .w-col.w-col-6
-                  = form.input :owner_name, as: :string, 
-                  input_html: { class: 'positive', required: true }
               .w-row
-                .w-col.w-col-6.w-sub-col
-                  = form.input :owner_document, as: :tel, 
-                  input_html: { class: 'positive', required: true, data: { :'validate-cpf-cnpj' => true } }
                 .w-col.w-col-6
                   = form.input :account_type, as: :select, collection: ['Corrente', 'Poupança'], class: 'w-select positive',
                   input_html: { class: 'positive', required: true }

@@ -3,8 +3,8 @@ class ProjectAccount < ActiveRecord::Base
   belongs_to :bank
 
   def entity_type
-    if cpf
-      cpf.length > 14 ? 'Pessoa Jurídica' : 'Pessoa Física'
+    if owner_document
+      owner_document.length > 14 ? 'Pessoa Jurídica' : 'Pessoa Física'
     else
       'Pessoa Física'
     end

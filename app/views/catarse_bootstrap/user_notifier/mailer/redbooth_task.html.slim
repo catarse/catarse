@@ -14,7 +14,7 @@ br/
 = project.user.try(:moip_login)
 br/
 | CPF/CNPJ do realizador:
-= project_account.try(:cpf)
+= project_account.try(:owner_document)
 br/
 | Data de expiração:
 = project.display_expires_at
@@ -30,6 +30,4 @@ br/
 br/
 | Conta: #{project_account.try(:account)} - #{project_account.try(:account_digit)}
 br/
-| Nome do titular: #{project_account.try(:full_name)}
-br/
-| CPF: #{project_account.try(:owner_document)}
+| Nome do titular: #{project_account.try(:owner_name)}
