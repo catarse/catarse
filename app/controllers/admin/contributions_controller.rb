@@ -28,7 +28,7 @@ class Admin::ContributionsController < Admin::BaseController
   end
 
   def change_reward
-    resource.change_reward! params[:reward_id]
+    contribution.change_reward! params[:reward_id]
     flash[:notice] = I18n.t('admin.contributions.messages.successful.change_reward')
     redirect_to admin_contributions_path(params[:local_params])
   end
@@ -38,8 +38,12 @@ class Admin::ContributionsController < Admin::BaseController
     @title = t("admin.contributions.index.title")
   end
 
+  def contribution
+    resource.contribution
+  end
+
   def resource
-    Payment.find params[:id]
+    ContributionDetail.find_by_id params[:id]
   end
 
   def collection
