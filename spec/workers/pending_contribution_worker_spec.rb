@@ -4,6 +4,7 @@ RSpec.describe PendingContributionWorker do
   let(:project) { create(:project) }
   let(:user) { create(:user) }
   let(:contribution) { create(:pending_contribution, project_id: project.id, user_id: user.id) }
+  let(:contribution_no_payments) { create(:contribution, project_id: project.id, user_id: user.id) }
   let(:confirmed_contribution) { create(:confirmed_contribution, project_id: project.id, user_id: user.id) }
 
   before do
@@ -17,6 +18,17 @@ RSpec.describe PendingContributionWorker do
         template_name: 'pending_payment', 
         user: contribution.user, 
         contribution: contribution
+      }).count(:all)).to eq 1
+    end
+  end
+
+  context "when contribution has no payment" do
+    it "should create a pending payment notification" do
+      PendingContributionWorker.perform_async(contribution_no_payments.id)
+      expect(ContributionNotification.where({
+        template_name: 'pending_payment', 
+        user: contribution_no_payments.user, 
+        contribution: contribution_no_payments
       }).count(:all)).to eq 1
     end
   end
@@ -36,15 +48,18 @@ RSpec.describe PendingContributionWorker do
     end
   end
 
-  context "whe contribution is not pending" do
-    let(:contribution) { create(:confirmed_contribution, project_id: project.id, user_id: user.id) }
+  context "when contribution is not pending" do
+    before do
+      allow_any_instance_of(ContributionObserver).to receive(:after_create)
+    end
 
     it "should not create a pending payment notification" do
-      PendingContributionWorker.perform_async(contribution.id)
+      PendingContributionWorker.perform_async(confirmed_contribution.id)
+
       expect(ContributionNotification.where({
         template_name: 'pending_payment', 
-        user: contribution.user, 
-        contribution: contribution
+        user: confirmed_contribution.user, 
+        contribution: confirmed_contribution
       }).count(:all)).to eq 0
     end
   end
