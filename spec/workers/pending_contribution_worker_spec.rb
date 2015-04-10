@@ -52,6 +52,7 @@ RSpec.describe PendingContributionWorker do
 
     it "should not create a pending payment notification" do
       PendingContributionWorker.perform_async(confirmed_contribution.id)
+
       expect(ContributionNotification.where({
         template_name: 'pending_payment', 
         user: confirmed_contribution.user, 
