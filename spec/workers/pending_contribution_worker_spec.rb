@@ -49,6 +49,9 @@ RSpec.describe PendingContributionWorker do
   end
 
   context "when contribution is not pending" do
+    before do
+      allow_any_instance_of(ContributionObserver).to receive(:after_create)
+    end
 
     it "should not create a pending payment notification" do
       PendingContributionWorker.perform_async(confirmed_contribution.id)
