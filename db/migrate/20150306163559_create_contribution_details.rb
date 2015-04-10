@@ -23,6 +23,7 @@ class CreateContributionDetails < ActiveRecord::Migration
       c.payer_email,
       pa.gateway,
       pa.gateway_id,
+      pa.gateway_fee,
       pa.gateway_data,
       pa.payment_method,
       pa.state AS payment_state,
