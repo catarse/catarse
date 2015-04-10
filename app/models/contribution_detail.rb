@@ -6,7 +6,7 @@ class ContributionDetail < ActiveRecord::Base
   belongs_to :payment
 
   delegate :available_rewards, :payer_email, :payer_name, to: :contribution
-  delegate :pay, :refuse, :trash, :request_refund, 
+  delegate :pay, :refuse, :trash, :refund, :request_refund, 
            :credits?, :paid?, :pending?, :deleted?, 
            :slip_payment?, :pending_refund?, to: :payment
 
