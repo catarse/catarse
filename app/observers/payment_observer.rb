@@ -3,7 +3,6 @@ class PaymentObserver < ActiveRecord::Observer
 
   def after_create(payment)
     contribution = payment.contribution
-    PendingContributionWorker.perform_at(2.day.from_now, contribution.id)
     contribution.notify_to_contributor(:payment_slip) if payment.slip_payment?
   end
 
