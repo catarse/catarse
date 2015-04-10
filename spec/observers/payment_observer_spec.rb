@@ -7,14 +7,6 @@ RSpec.describe PaymentObserver do
   subject{ payment }
 
   describe "after_create" do
-    before do
-      expect(PendingContributionWorker).to receive(:perform_at)
-    end
-
-    it "should call perform at in pending contribution worker" do
-      payment.save
-    end
-
     context "when slip_payment is true" do
       let(:payment){ create(:payment, payment_method: 'BoletoBancario', state: 'paid') }
       it("should notify the contribution") do
