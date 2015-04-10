@@ -1,6 +1,6 @@
 class Admin::ContributionsController < Admin::BaseController
   layout 'catarse_bootstrap'
-  has_scope :project_name_contains, :search_on_acquirer, :by_user_id, :by_payment_id, :by_payment_method, :user_name_contains, :user_email_contains
+  has_scope :project_name_contains, :search_on_acquirer, :by_user_id, :by_gateway, :by_payment_id, :by_payment_method, :user_name_contains, :user_email_contains
   has_scope :between_values, using: [ :start_at, :ends_at ], allow_blank: true
   before_filter :set_title
 
@@ -17,6 +17,15 @@ class Admin::ContributionsController < Admin::BaseController
     end
   end
   contribution_actions
+
+  def update
+    if params[:contribution]
+      Contribution.update(params[:id], params[:contribution])
+      head :ok, content_type: "text/html"
+    else
+      update!
+    end
+  end
 
   def change_reward
     resource.change_reward! params[:reward_id]
