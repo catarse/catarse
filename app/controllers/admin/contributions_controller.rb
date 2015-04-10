@@ -18,6 +18,15 @@ class Admin::ContributionsController < Admin::BaseController
   end
   contribution_actions
 
+  def update
+    if params[:contribution]
+      Contribution.update(params[:id], params[:contribution])
+      head :ok, content_type: "text/html"
+    else
+      update!
+    end
+  end
+
   def change_reward
     resource.change_reward! params[:reward_id]
     flash[:notice] = I18n.t('admin.contributions.messages.successful.change_reward')
