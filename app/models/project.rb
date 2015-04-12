@@ -69,12 +69,12 @@ class Project < ActiveRecord::Base
   scope :near_of, ->(address_state) { where("EXISTS(SELECT true FROM users u WHERE u.id = projects.user_id AND lower(u.address_state) = lower(?))", address_state) }
   scope :to_finish, ->{ expired.with_states(['online', 'waiting_funds']) }
   scope :visible, -> { without_states(['draft', 'rejected', 'deleted', 'in_analysis', 'approved']) }
-  scope :financial, -> { with_states(['online', 'successful', 'waiting_funds']).where("projects.expires_at > (current_timestamp - '15 days'::interval)") }
+  scope :financial, -> { with_states(['online', 'successful', 'waiting_funds']).where(expires_at: 15.days.ago.. Time.current) }
   scope :expired, -> { where("projects.expires_at < current_timestamp") }
   scope :not_expired, -> { where("projects.expires_at >= current_timestamp") }
-  scope :expiring, -> { not_expired.where("projects.expires_at <= (current_timestamp + interval '2 weeks')") }
-  scope :not_expiring, -> { not_expired.where("NOT (projects.expires_at <= (current_timestamp + interval '2 weeks'))") }
-  scope :recent, -> { where("(current_timestamp - projects.online_date) <= '5 days'::interval") }
+  scope :expiring, -> { not_expired.where(expires_at: Time.current.. 2.weeks.from_now) }
+  scope :not_expiring, -> { not_expired.where.not(expires_at: Time.current.. 2.weeks.from_now) }
+  scope :recent, -> { where(online_date: 5.days.ago.. Time.current) }
   scope :ordered, -> { order(created_at: :desc)}
   scope :order_status, ->{ order("
                                      CASE projects.state
@@ -98,11 +98,7 @@ class Project < ActiveRecord::Base
     joins(:contributions).merge(Contribution.confirmed_last_day).uniq
   }
 
-  scope :of_current_week, -> {
-    where("
-      projects.online_date AT TIME ZONE '#{Time.zone.tzinfo.name}' >= (current_timestamp AT TIME ZONE '#{Time.zone.tzinfo.name}' - '7 days'::interval)
-    ")
-  }
+  scope :of_current_week, -> { where(online_date: 7.days.ago.. Time.current) }
 
   attr_accessor :accepted_terms
 
