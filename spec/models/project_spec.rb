@@ -43,7 +43,7 @@ RSpec.describe Project, type: :model do
   describe ".of_current_week" do
     subject { Project.of_current_week }
     before do
-      3.times { create(:project, state: 'online', online_date: DateTime.now) }
+      3.times { create(:project, state: 'online', online_date: Time.current) }
       3.times { create(:project, state: 'draft', online_date: 3.days.ago) }
       3.times { create(:project, state: 'successful', online_date: 6.days.ago) }
       5.times { create(:project, state: 'online', online_date: 8.days.ago) }
@@ -52,7 +52,7 @@ RSpec.describe Project, type: :model do
     end
 
     it "should return a collection with projects of current week" do
-      is_expected.to have(10).itens
+      is_expected.to have(9).itens
     end
   end
 
