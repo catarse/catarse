@@ -63,8 +63,8 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :bank_account, allow_destroy: true, reject_if: -> (attr) { attr[:bank_id].blank? }
   accepts_nested_attributes_for :category_followers, allow_destroy: true
 
-  scope :with_permalink, -> { where("users.permalink is not null") }
-  scope :active, ->{ where('deactivated_at IS NULL') }
+  scope :with_permalink, -> { where.not(permalink: nil) }
+  scope :active, ->{ where(deactivated_at: nil) }
   scope :with_user_totals, -> {
     joins("LEFT OUTER JOIN user_totals on user_totals.user_id = users.id")
   }
