@@ -44,7 +44,7 @@ class UserPolicy < ApplicationPolicy
       u_attrs.delete(:permalink)
     end
 
-    { user: u_attrs.flatten }
+    u_attrs.flatten
   end
 
   protected

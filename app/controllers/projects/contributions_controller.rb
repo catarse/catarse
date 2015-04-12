@@ -21,7 +21,7 @@ class Projects::ContributionsController < ApplicationController
 
   def update
     authorize resource
-    resource.update_attributes(permitted_params[:contribution])
+    resource.update_attributes(permitted_params)
     resource.update_user_billing_info
     render json: {message: 'updated'}
   end
@@ -52,8 +52,8 @@ class Projects::ContributionsController < ApplicationController
     @title = t('projects.contributions.create.title')
     @contribution = parent.contributions.new.localized
     @contribution.user = current_user
-    @contribution.value = permitted_params[:contribution][:value]
-    @contribution.referal_link = permitted_params[:contribution][:referal_link]
+    @contribution.value = permitted_params[:value]
+    @contribution.referal_link = permitted_params[:referal_link]
     @contribution.reward_id = (params[:contribution][:reward_id].to_i == 0 ? nil : params[:contribution][:reward_id])
     authorize @contribution
     @contribution.update_current_billing_info
@@ -79,7 +79,7 @@ class Projects::ContributionsController < ApplicationController
   end
 
   def permitted_params
-    params.permit(policy(resource).permitted_attributes)
+    params.require(:contribution).permit(policy(resource).permitted_attributes)
   end
 
   def engine
