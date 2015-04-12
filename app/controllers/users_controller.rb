@@ -80,20 +80,20 @@ class UsersController < ApplicationController
     update_category_followers
 
     if password_params_given?
-      if @user.update_with_password permitted_params[:user]
+      if @user.update_with_password permitted_params
         sign_in(@user, bypass: true)
       end
     else
-      @user.update_without_password permitted_params[:user]
+      @user.update_without_password permitted_params
     end
   end
 
   def category_followers_params_given?
-    permitted_params[:user][:category_followers_attributes].present?
+    permitted_params[:category_followers_attributes].present?
   end
 
   def password_params_given?
-    permitted_params[:user][:current_password].present? || permitted_params[:user][:password].present?
+    permitted_params[:current_password].present? || permitted_params[:password].present?
   end
 
   def update_category_followers
@@ -132,6 +132,6 @@ class UsersController < ApplicationController
   end
 
   def permitted_params
-    params.permit(policy(resource).permitted_attributes)
+    params.require(:user).permit(policy(resource).permitted_attributes)
   end
 end
