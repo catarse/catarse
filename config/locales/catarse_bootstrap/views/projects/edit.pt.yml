@@ -141,8 +141,9 @@ pt:
       budgets_label: "Detalhe do orçamento"
       start: "Conte a história do seu projeto!"
       start_subtitle: "Pense bem na narrativa do projeto. É ela quem encantará as pessoas e trará apoiadores. Um bom video e descrição são diferenciais!"
-      video_url: "URL do vídeo"
-      video_url_hint: "Link do seu vídeo no Vimeo ou Youtube."
+      video_url: "Vídeo do projeto"
+      video_url_hint: "Importante: Qualquer projeto pode ser enviado sem o vídeo para análise do atendimento do Catarse . O vídeo pode ser analisado posteriormente. Lembrando que ele só é obrigatório para projetos com metas acima de 5 mil reais."
+      video_url_subtitle: "Link do Vimeo ou Youtube"
       about: "Descrição do projeto"
       links_title: "Links úteis"
       about_hint_html: 'Fale com paixão e clareza sobre o que será realizado. Esclareça possíveis dúvidas sobre como o dinheiro será utilizado, quem está por trás do projeto, como e quando o projeto será entregue. Transparência atrai mais apoiadores. Lembre-se: seu projeto será acessado por pessoas comuns que decidirão se querem ou não apoiar seu projeto. Capriche! '
