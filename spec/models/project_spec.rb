@@ -40,6 +40,30 @@ RSpec.describe Project, type: :model do
     it{ is_expected.not_to allow_value('agua.sp.01').for(:permalink) }
   end
 
+  describe "online_days" do
+    context "when we have valid data" do
+      before do
+        create(:project, state: 'online', online_days: 60)
+      end
+
+      it{ is_expected.not_to allow_value(61).for(:online_days) }
+    end
+
+    context "when we have data set manually in the db" do
+      let(:project) {create(:project, state: 'online', online_days: 60)}
+      subject { project }
+      before do
+        project.update_attributes online_days: 61
+        project.save(validate: false)
+      end
+
+      it{ is_expected.to allow_value(62).for(:online_days) }
+    end
+
+  end
+
+
+
   describe ".of_current_week" do
     subject { Project.of_current_week }
     before do
