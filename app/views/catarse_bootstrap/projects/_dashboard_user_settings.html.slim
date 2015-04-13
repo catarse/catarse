@@ -23,7 +23,7 @@
                   = t('.account_edit_disabled_html', link: (link_to 'entrar em contato conosco'," #{CatarseSettings[:zendesk_url]}/account/dropboxes/#{CatarseSettings[:zendesk_dropbox_id]}", class: 'alt-link zendesk_widget' ))
             .w-form.card.card-terciary
               #email-form
-                .fontsize-base.fontweight-semibold= t('.user_data_title') 
+                .fontsize-base.fontweight-semibold= t('.account_title') 
                 .fontsize-small.u-marginbottom-20= t('.user_data_subtitle_html') 
                 .w-row
                   .w-col.w-col-6
@@ -31,79 +31,78 @@
                   .w-col.w-col-6
                 .divider.u-marginbottom-20
                 .w-row
-                  .w-col.w-col-6.w-sub-col
+                  .w-col.w-col-6
                     = form.hidden_field :project_id, value: @project.id
                     = form.input :owner_name, as: :string, input_html: { class: 'positive', required: true, data: {natural: t('.natural'), juridical: t('.juridical') } }
                   .w-col.w-col-6
                     = form.input :email, as: :string, 
                     input_html: { class: 'positive', required: true }
                 .w-row
-                  .w-col.w-col-6.w-sub-col
+                  .w-col.w-col-6
                     = form.input :owner_document, as: :tel, 
                       input_html: { class: 'positive user-document', required: true, data: { :'validate-cpf-cnpj' => true }}
                   .w-col.w-col-6
                     = form.input :state_inscription, as: :string, 
                     input_html: { class: 'positive', required: true }
                 .w-row
-                  .w-col.w-col-6.w-sub-col
-                    = form.input :address_street, as: :string, 
+                  .w-col.w-col-6
+                    = form.input :bank_id, as: :select, collection: Bank.to_collection, class: 'w-select positive', 
                     input_html: { class: 'positive', required: true }
                   .w-col.w-col-6
                     .w-row
-                      .w-col.w-col-6.w-col-small-6.w-col-tiny-6.w-sub-col-middle
+                      .w-col.w-col-6.w-col-small-6.w-col-tiny-6
+                        = form.input :agency, as: :string, 
+                        input_html: { class: 'positive', required: true }
+                      .w-col.w-col-6.w-col-small-6.w-col-tiny-6
+                        = form.input :agency_digit, as: :string, 
+                        input_html: { class: 'positive', required: true }
+                .w-row.u-marginbottom-20
+                  .w-col.w-col-6
+                      .w-col.w-col-6.w-col-small-6.w-col-tiny-6
+                        = form.input :account, as: :string, 
+                        input_html: { class: 'positive', required: true }
+                      .w-col.w-col-6.w-col-small-6.w-col-tiny-6
+                        = form.input :account_digit, as: :string, 
+                        input_html: { class: 'positive', required: true }
+                  .w-col.w-col-6
+                    = form.input :account_type, as: :select, collection: ['Corrente', 'Poupança'], class: 'w-select positive',
+                    input_html: { class: 'positive', required: true }
+                .fontsize-base.fontweight-semibold Endereço
+                .divider.u-marginbottom-20
+                .w-row
+                  .w-col.w-col-6
+                    = form.input :address_street, as: :string, label: 'Rua',
+                    input_html: { class: 'positive', required: true }
+                  .w-col.w-col-6
+                    .w-row
+                      .w-col.w-col-6.w-col-small-6.w-col-tiny-6
                         = form.input :address_number, as: :string, 
                         input_html: { class: 'positive', required: true }
                       .w-col.w-col-6.w-col-small-6.w-col-tiny-6
                         = form.input :address_complement, as: :string, 
                         input_html: { class: 'positive', required: false }
                 .w-row
-                  .w-col.w-col-6.w-sub-col
+                  .w-col.w-col-6
                     = form.input :address_neighbourhood, as: :string, 
                     input_html: { class: 'positive', required: true }
                   .w-col.w-col-6
                     = form.input :address_city, as: :string, 
                     input_html: { class: 'positive', required: true }
                 .w-row
-                  .w-col.w-col-6.w-sub-col
+                  .w-col.w-col-6
                     = form.input :address_state, as: :select, collection: State.array, class: 'w-select positive', 
                     input_html: { class: 'positive', required: true }
                   .w-col.w-col-6
                     .w-row
-                      .w-col.w-col-6.w-col-small-6.w-col-tiny-6.w-sub-col-middle
+                      .w-col.w-col-6.w-col-small-6.w-col-tiny-6
                         = form.input :address_zip_code, as: :string, 
                         input_html: { class: 'positive', required: true }
                       .w-col.w-col-6.w-col-small-6.w-col-tiny-6
                         = form.input :phone_number, as: :string, 
                         input_html: { class: 'positive', required: true }
             .w-form.card.card-terciary
-              .fontsize-base.fontweight-semibold= t('.account_title')
-              .fontsize-small.u-marginbottom-20= t('.account_subtitle_html')
               .divider.u-marginbottom-20
-              .w-row
-                .w-col.w-col-6.w-sub-col
-                  = form.input :bank_id, as: :select, collection: Bank.to_collection, class: 'w-select positive', 
-                  input_html: { class: 'positive', required: true }
-                .w-col.w-col-6
-                  .w-row
-                    .w-col.w-col-6.w-col-small-6.w-col-tiny-6.w-sub-col-middle
-                      = form.input :agency, as: :string, 
-                      input_html: { class: 'positive', required: true }
-                    .w-col.w-col-6.w-col-small-6.w-col-tiny-6
-                      = form.input :agency_digit, as: :string, 
-                      input_html: { class: 'positive', required: true }
-              .w-row
-                .w-col.w-col-6.w-sub-col
-                  .w-row
-                    .w-col.w-col-6.w-col-small-6.w-col-tiny-6.w-sub-col-middle
-                      = form.input :account, as: :string, 
-                      input_html: { class: 'positive', required: true }
-                    .w-col.w-col-6.w-col-small-6.w-col-tiny-6
-                      = form.input :account_digit, as: :string, 
-                      input_html: { class: 'positive', required: true }
-              .w-row
-                .w-col.w-col-6
-                  = form.input :account_type, as: :select, collection: ['Corrente', 'Poupança'], class: 'w-select positive',
-                  input_html: { class: 'positive', required: true }
+              
           .w-col.w-col-4
             .w-hidden-small.w-hidden-tiny.card.u-radius.u-marginbottom-20 data-ix="new-interaction" 
               .fontsize-small.fontweight-semibold.u-marginbottom-20 Links úteis
