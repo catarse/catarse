@@ -103,12 +103,10 @@ class Project < ActiveRecord::Base
   attr_accessor :accepted_terms
 
   # Draft state validtions
-  PROJECTS_WITH_EXTENDED_DEADLINE = [9431, 9317, 9493, 9845, 9643, 9524, 8552, 9353, 9746, 9619, 8975, 9442, 9799, 8994, 9257, 9544, 9637, 9181, 9545, 8728, 9300, 9972]
   validates_acceptance_of :accepted_terms, on: :create
   validates_presence_of :name, :user, :category, :permalink
   validates_length_of :headline, maximum: 140
-  validates_numericality_of :online_days, less_than_or_equal_to: 60, greater_than: 0, if: ->(p){ p.online_days.present? && PROJECTS_WITH_EXTENDED_DEADLINE.exclude?(p.id) }
-  validates_numericality_of :online_days, less_than_or_equal_to: 65, greater_than: 0, if: ->(p){ p.online_days.present? && PROJECTS_WITH_EXTENDED_DEADLINE.include?(p.id) }
+  validates_numericality_of :online_days, less_than_or_equal_to: 60, greater_than: 0, if: ->(p){ p.online_days.present? && ( p.online_days_was.nil? || p.online_days_was <= 60 ) }
   validates_numericality_of :goal, greater_than: 9, allow_blank: true
   validates_uniqueness_of :permalink, case_sensitive: false
   validates_format_of :permalink, with: /\A(\w|-)*\Z/
