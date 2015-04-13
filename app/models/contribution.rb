@@ -16,7 +16,7 @@ class Contribution < ActiveRecord::Base
   validates_presence_of :project, :user, :value
   validates_numericality_of :value, greater_than_or_equal_to: 10.00
 
-  scope :available_to_count, ->{ where("contributions.was_confirmed") }
+  scope :available_to_count, ->{ where(was_confirmed: true) }
   scope :by_id, ->(id) { where(id: id) }
   scope :anonymous, -> { where(anonymous: true) }
   scope :not_anonymous, -> { where(anonymous: false) }
@@ -26,10 +26,10 @@ class Contribution < ActiveRecord::Base
   }
 
   scope :not_created_today, -> { where.not("contributions.created_at::date AT TIME ZONE '#{Time.zone.tzinfo.name}' = current_timestamp::date AT TIME ZONE '#{Time.zone.tzinfo.name}'") }
-  scope :can_cancel, -> { where("contributions.can_cancel") }
+  scope :can_cancel, -> { where(can_cancel: true) }
 
   # Contributions already refunded or with requested_refund should appear so that the user can see their status on the refunds list
-  scope :can_refund, ->{ where("contributions.can_refund") }
+  scope :can_refund, ->{ where(can_refund: true) }
 
   scope :available_to_display, -> {
     where("EXISTS (SELECT true FROM payments p WHERE p.contribution_id = contributions.id AND state NOT IN ('deleted', 'refused'))")
