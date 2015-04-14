@@ -147,7 +147,20 @@ RSpec.describe "Projects", type: :feature do
   end
 
   describe "edit" do
-    pending 'NEED TEST ON EDIT PROJECT'
+    before do
+      login
+      @own_project = create(:project, user: current_user)
+      visit edit_project_path(@own_project, anchor: :posts)
+    end
+    
+    it "should post project post" do
+      sleep FeatureHelpers::TIME_TO_SLEEP
+      fill_in "project_posts_attributes_0_title", with: 'Foo title'
+      page.execute_script( "$('.redactor').redactor('code.set', 'Bar')" )
+      
+      click_button(I18n.t('projects.dashboard_posts.publish'))
+      expect(page).to have_content('Foo title')
+    end
   end
 
 end
