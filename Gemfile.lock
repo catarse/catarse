@@ -123,7 +123,7 @@ GEM
       mailchimp-api (~> 2.0.4)
       rails (>= 4.0.3)
       rails-observers
-    catarse_pagarme (2.6.1)
+    catarse_pagarme (2.6.2)
       pagarme (~> 1.9.8)
       rails (~> 4.0)
     catarse_paypal_express (3.0.2)
@@ -403,7 +403,7 @@ GEM
     mime-types (2.4.3)
     mini_magick (4.2.1)
     mini_portile (0.6.2)
-    minitest (5.5.1)
+    minitest (5.6.0)
     mixpanel-ruby (2.1.0)
     money (6.5.1)
       i18n (>= 0.6.4, <= 0.7.0)
@@ -601,7 +601,7 @@ GEM
       activemodel (>= 3.0.0)
     spreadsheet (1.0.3)
       ruby-ole (>= 1.0)
-    sprockets (2.10.2)
+    sprockets (2.10.1)
       hike (~> 1.2)
       multi_json (~> 1.0)
       rack (~> 1.0)
@@ -672,7 +672,7 @@ DEPENDENCIES
   catarse_contribution_validator!
   catarse_moip (~> 3.1.1)
   catarse_monkeymail (>= 0.1.6)
-  catarse_pagarme (= 2.6.1)
+  catarse_pagarme (= 2.6.2)
   catarse_paypal_express (= 3.0.2)
   catarse_settings_db (>= 0.1.0)
   chartkick

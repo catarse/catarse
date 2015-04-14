@@ -101,6 +101,8 @@
                   = link_to t('admin.contributions.index.refund_contribution'), refund_admin_contribution_path(contribution, local_params: params), method: :put, class: 'w-dropdown-link dropdown-link fontsize-smaller'
                 = link_to t('admin.contributions.index.cancel'), refuse_admin_contribution_path(contribution, local_params: params), method: :put, class: 'w-dropdown-link dropdown-link fontsize-smaller'
                 = link_to t('admin.contributions.index.push_to_trash'), trash_admin_contribution_path(contribution, local_params: params), method: :put, class: 'w-dropdown-link dropdown-link fontsize-smaller'
+                - if contribution.second_slip_path
+                  = link_to t('admin.contributions.index.second_slip'), contribution.second_slip_path, method: :put, class: 'w-dropdown-link dropdown-link fontsize-smaller'
           tr class='detail_tr' id="contribution_details-#{contribution.id}"
             td colspan='11'
               table.table style='border: 1px #ededed solid; margin-bottom: 30px'
