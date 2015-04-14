@@ -5,7 +5,7 @@ module Project::ErrorGroups
     ATTR_GROUPS = {
       basics: [:name, :permalink, :category_id, :goal, :online_days],
       project: [ :video_url, :about_html, :budget, :uploaded_image, :headline],
-      reward: [:'rewards.size'],
+      reward: [:'rewards.size', :'rewards.minimum_value'],
       user_about: [:'user.uploaded_image', :'user.name', :'user.about_html'],
       user_settings: ProjectAccount.attribute_names.map{|attr| ('project_account.' + attr).to_sym}
     }
