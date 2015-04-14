@@ -45,6 +45,7 @@ App.addChild('MixPanel', {
     this.trackPageVisit('projects', 'index', 'Visited home');
     this.trackPageVisit('explore', 'index', 'Explored projects');
     this.trackPageLoad('contributions', 'edit', 'Selected reward');
+    this.trackPageLoad('contributions', 'show', 'Finished Contribution')
     this.trackContributions();
     this.trackTwitterShare();
     this.trackFacebookShare();
