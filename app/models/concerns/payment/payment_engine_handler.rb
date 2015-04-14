@@ -18,7 +18,7 @@ module Payment::PaymentEngineHandler
     end
 
     def second_slip_path
-      payment_engine.second_slip_path(self) if payment_engine.can_generate_second_slip?
+      payment_engine.second_slip_path(self) if payment_engine.try(:can_generate_second_slip?)
     end
 
     def can_generate_second_slip?
