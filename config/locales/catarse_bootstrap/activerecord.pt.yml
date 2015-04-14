@@ -138,6 +138,7 @@ pt:
               blank: 'Banco não pode ficar em branco'
             owner_name:
               blank: 'Nome do titular não pode ficar em branco'
+              invalid: 'Informe um nome com no mínimo 5 e no máximo 30 letras'
             owner_document:
               blank: 'CPF / CNPJ do titular não pode ficar em branco'
               invalid: 'CPF / CNPJ inválido'
