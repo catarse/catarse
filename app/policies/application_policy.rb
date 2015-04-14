@@ -43,7 +43,7 @@ class ApplicationPolicy
   end
 
   def permitted?(field)
-    permitted_attributes.values.first.include? field
+    permitted_attributes.include? field
   end
 
   protected

@@ -40,10 +40,10 @@ class ProjectPolicy < ApplicationPolicy
       p_attr << reward_attributes
       p_attr << account_attributes
 
-      {project: p_attr.flatten}
+      p_attr.flatten
     else
-      {project: [:about_html, :video_url, :uploaded_image, :headline, :budget,
-                 user_attributes, posts_attributes, budget_attributes, reward_attributes, account_attributes]}
+      [:about_html, :video_url, :uploaded_image, :headline, :budget,
+                 user_attributes, posts_attributes, budget_attributes, reward_attributes, account_attributes]
     end
   end
 
