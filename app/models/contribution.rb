@@ -12,6 +12,7 @@ class Contribution < ActiveRecord::Base
   belongs_to :country
   has_many :payment_notifications
   has_many :payments
+  has_many :details, class_name: 'ContributionDetail'
 
   validates_presence_of :project, :user, :value
   validates_numericality_of :value, greater_than_or_equal_to: 10.00
@@ -33,18 +34,6 @@ class Contribution < ActiveRecord::Base
 
   scope :available_to_display, -> {
     where("EXISTS (SELECT true FROM payments p WHERE p.contribution_id = contributions.id AND state NOT IN ('deleted', 'refused'))")
-  }
-
-  scope :for_successful_projects, -> {
-    joins(:project).merge(Project.with_state('successful')).available_to_display
-  }
-
-  scope :for_online_projects, -> {
-    joins(:project).merge(Project.with_state(['online', 'waiting_funds'])).available_to_display
-  }
-
-  scope :for_failed_projects, -> {
-    joins(:project).merge(Project.with_state('failed')).available_to_display
   }
 
   scope :ordered, -> { order(id: :desc) }
