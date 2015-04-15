@@ -125,6 +125,7 @@ Catarse::Application.routes.draw do
         put 'refuse'
         put 'request_refund'
         put 'trash'
+        put 'gateway_refund'
       end
     end
     resources :users, only: [ :index ]
