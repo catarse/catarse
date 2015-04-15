@@ -12,18 +12,18 @@
       .w-col.w-col-3
 
 - else
-  - if resource.contributions.for_online_projects.present?
+  - if resource.contribution_details.for_online_projects.present?
     .section-one-column.u-marginbottom-30
       .fontsize-large.fontweight-semibold.u-marginbottom-30.u-text-center Projetos em andamento
-      = render 'contribution_row', collection: resource.contributions.for_online_projects.ordered
+      = render 'contribution_row', collection: resource.contribution_details.for_online_projects.ordered
 
-  - if resource.contributions.for_successful_projects.present?
+  - if resource.contribution_details.for_successful_projects.present?
     .section-one-column.u-marginbottom-30
       .fontsize-large.fontweight-semibold.u-marginbottom-30.u-text-center Projetos bem-sucedidos
-      = render 'contribution_row', collection: resource.contributions.for_successful_projects.ordered
+      = render 'contribution_row', collection: resource.contribution_details.for_successful_projects.ordered
 
 
-  - if resource.contributions.for_failed_projects.present?
+  - if resource.contribution_details.for_failed_projects.present?
     .section-one-column.u-margintop-30
       .fontsize-large.fontweight-semibold.u-marginbottom-30.u-text-center Projetos não-financiados
-      = render 'contribution_row', collection: resource.contributions.for_failed_projects.ordered
+      = render 'contribution_row', collection: resource.contribution_details.for_failed_projects.ordered
