@@ -10,6 +10,7 @@ RSpec.describe User, type: :model do
   describe "associations" do
     it{ is_expected.to have_many(:payments).through(:contributions) }
     it{ is_expected.to have_many :contributions }
+    it{ is_expected.to have_many :contribution_details }
     it{ is_expected.to have_many :projects }
     it{ is_expected.to have_many :published_projects }
     it{ is_expected.to have_many :notifications }
