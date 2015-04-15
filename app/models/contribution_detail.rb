@@ -9,9 +9,10 @@ class ContributionDetail < ActiveRecord::Base
   belongs_to :payment
 
   delegate :available_rewards, :payer_email, :payer_name, to: :contribution
-  delegate :pay, :refuse, :trash, :refund, :request_refund,
+  delegate :pay, :refuse, :trash, :refund, :request_refund, :request_refund!,
            :credits?, :paid?, :pending?, :deleted?,
-           :slip_payment?, :pending_refund?, :second_slip_path, to: :payment
+           :slip_payment?, :pending_refund?, :second_slip_path, 
+           :pagarme_delegator, to: :payment
 
   scope :search_on_acquirer, ->(acquirer_name){ where(acquirer_name: acquirer_name) }
   scope :project_name_contains, ->(term) {
