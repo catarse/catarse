@@ -47,6 +47,7 @@
             th= t('.anonymous')
             th= t('.credits')
             th= t('.state')
+            th= t('.last_state')
             th
         tbody
           tr id=contribution.contribution_id
@@ -87,6 +88,7 @@
             td.checkbox= best_in_place [:admin, contribution.contribution], :anonymous, method: :put, type: :checkbox, collection: [t('no'), t('yes')]
             td= (contribution.credits? ? t('yes') : t('no'))
             td= contribution.state
+            td= contribution.last_state_name
             td.w-col-6.w-col
               .w-dropdown-toggle.dropdown-toggle.project-admin-menu
                 = link_to 'javascript:void(0);', data: {toggle: 'dropdown'}, class: 'w-icon-dropdown-toggle btn btn-dark round positive dropdown-toggle' do

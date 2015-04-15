@@ -1,5 +1,6 @@
 class ContributionDetail < ActiveRecord::Base
   include I18n::Alchemy
+  TRANSITION_DATES = %i(refused_at paid_at pending_refund_at refunded_at)
 
   belongs_to :user
   belongs_to :project
@@ -8,8 +9,8 @@ class ContributionDetail < ActiveRecord::Base
   belongs_to :payment
 
   delegate :available_rewards, :payer_email, :payer_name, to: :contribution
-  delegate :pay, :refuse, :trash, :refund, :request_refund, 
-           :credits?, :paid?, :pending?, :deleted?, 
+  delegate :pay, :refuse, :trash, :refund, :request_refund,
+           :credits?, :paid?, :pending?, :deleted?,
            :slip_payment?, :pending_refund?, :second_slip_path, to: :payment
 
   scope :search_on_acquirer, ->(acquirer_name){ where(acquirer_name: acquirer_name) }
@@ -46,4 +47,21 @@ class ContributionDetail < ActiveRecord::Base
     where("value between ? and ?", start_at, ends_at)
   end
 
+  def last_state_name
+    if possible_states.empty?
+      :pending
+    else
+      possible_states.
+        sort! { |x,y| y[:at] <=> x[:at] }.
+        first[:state_name]
+    end
+  end
+
+  private
+
+  def possible_states
+    @possible_states ||= TRANSITION_DATES.map do |state_at|
+      { state_name: state_at.to_s.gsub(/_at/, ''), at: self.send(state_at) }
+    end.delete_if { |x| x[:at].nil? || x[:state_name] == self.state }
+  end
 end
