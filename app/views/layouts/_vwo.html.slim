@@ -1,42 +1,41 @@
 javascript:
-	var _vis_opt_account_id = 146297;
-	var _vis_opt_protocol = (('https:' == document.location.protocol) ? 'https://' : 'http://');
-	document.write('<s' + 'cript src="' + _vis_opt_protocol +
-	'dev.visualwebsiteoptimizer.com/deploy/js_visitor_settings.php?v=1&a='+_vis_opt_account_id+'&url='
-	+encodeURIComponent(document.URL)+'&random='+Math.random()+'" type="text/javascript">' + '<\/s' + 'cript>');
+  var _vis_opt_account_id = 146297;
+  var _vis_opt_protocol = (('https:' == document.location.protocol) ? 'https://' : 'http://');
+  document.write('<s' + 'cript src="' + _vis_opt_protocol +
+  'dev.visualwebsiteoptimizer.com/deploy/js_visitor_settings.php?v=1&a='+_vis_opt_account_id+'&url='
+  +encodeURIComponent(document.URL)+'&random='+Math.random()+'" type="text/javascript">' + '<\/s' + 'cript>');
 
 javascript:
-	if(typeof(_vis_opt_settings_loaded) == "boolean") { document.write('<s' + 'cript src="' + _vis_opt_protocol +
-	'd5phz18u4wuww.cloudfront.net/vis_opt.js" type="text/javascript">' + '<\/s' + 'cript>'); }
-	// if your site already has jQuery 1.4.2, replace vis_opt.js with vis_opt_no_jquery.js above
+  if(typeof(_vis_opt_settings_loaded) == "boolean") { document.write('<s' + 'cript src="' + _vis_opt_protocol +
+  'd5phz18u4wuww.cloudfront.net/vis_opt.js" type="text/javascript">' + '<\/s' + 'cript>'); }
+  // if your site already has jQuery 1.4.2, replace vis_opt.js with vis_opt_no_jquery.js above
 
 javascript:
-	if(typeof(_vis_opt_settings_loaded) == "boolean" && typeof(_vis_opt_top_initialize) == "function") {
-	        _vis_opt_top_initialize(); vwo_$(document).ready(function() { _vis_opt_bottom_initialize(); });
-	}
+  if(typeof(_vis_opt_settings_loaded) == "boolean" && typeof(_vis_opt_top_initialize) == "function") {
+    _vis_opt_top_initialize(); vwo_$(document).ready(function() { _vis_opt_bottom_initialize(); });
+  }
 
 javascript:
-	var _vis_opt_queue = window._vis_opt_queue || [], _vis_counter = 0, mixpanel = window.mixpanel || [];
-	_vis_opt_queue.push(function() {
-	    try {
-	        if(!_vis_counter) {
-	            var _vis_data = {},_vis_combination,_vis_id,_vis_l=0;
-	            for(;_vis_l<_vwo_exp_ids.length;_vis_l++) {
-	                _vis_id = _vwo_exp_ids[_vis_l];
-	                if(_vwo_exp[_vis_id].ready) {
-	                    _vis_combination = _vis_opt_readCookie('_vis_opt_exp_'+_vis_id+'_combi');
-	                    if(typeof(_vwo_exp[_vis_id].combination_chosen) != "undefined")
-	                        _vis_combination = _vwo_exp[_vis_id].combination_chosen;
-	                    if(typeof(_vwo_exp[_vis_id].comb_n[_vis_combination]) != "undefined") {
-	                        _vis_data['VWO-Test-ID-'+_vis_id] = _vwo_exp[_vis_id].comb_n[_vis_combination];
-	                        _vis_counter++;
-	                    }
-	                }
-	            }
-	            // Use the _vis_data object created above to fetch the data, 
-	            // key of the object is the Test ID and the value is Variation Name
-	            if(_vis_counter) mixpanel.push(['register_once', _vis_data]);
-	        }
-	    }
-	    catch(err) {};
-	});
+  var _vis_opt_queue = window._vis_opt_queue || [], _vis_counter = 0, mixpanel = window.mixpanel || [];
+    _vis_opt_queue.push(function() {
+      try {
+        if(!_vis_counter) {
+          var _vis_data = {},_vis_combination,_vis_id,_vis_l=0;
+          for(;_vis_l<_vwo_exp_ids.length;_vis_l++) {
+            _vis_id = _vwo_exp_ids[_vis_l];
+            if(_vwo_exp[_vis_id].ready) {
+              _vis_combination = _vis_opt_readCookie('_vis_opt_exp_'+_vis_id+'_combi');
+              if(typeof(_vwo_exp[_vis_id].combination_chosen) != "undefined")
+                _vis_combination = _vwo_exp[_vis_id].combination_chosen;
+              if(typeof(_vwo_exp[_vis_id].comb_n[_vis_combination]) != "undefined") {
+                _vis_data['VWO-Test-ID-'+_vis_id] = _vwo_exp[_vis_id].comb_n[_vis_combination];
+                _vis_counter++;
+              }
+            }
+          }
+          // Use the _vis_data object created above to fetch the data, 
+          // key of the object is the Test ID and the value is Variation Name
+          if(_vis_counter) mixpanel.push(['register_once', _vis_data]);
+        }
+      } catch(err) {};
+});
