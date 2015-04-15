@@ -48,10 +48,6 @@ class ContributionDetail < ActiveRecord::Base
   end
 
   def last_state_name
-    possible_states = TRANSITION_DATES.map do |state_at|
-      { state_name: state_at.to_s.gsub(/_at/, ''), at: self.send(state_at) }
-    end.delete_if { |x| x[:at].nil? || x[:state_name] == self.state }
-
     if possible_states.empty?
       :pending
     else
@@ -59,5 +55,13 @@ class ContributionDetail < ActiveRecord::Base
         sort! { |x,y| y[:at] <=> x[:at] }.
         first[:state_name]
     end
+  end
+
+  private
+
+  def possible_states
+    @possible_states ||= TRANSITION_DATES.map do |state_at|
+      { state_name: state_at.to_s.gsub(/_at/, ''), at: self.send(state_at) }
+    end.delete_if { |x| x[:at].nil? || x[:state_name] == self.state }
   end
 end
