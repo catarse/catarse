@@ -134,6 +134,7 @@ pt:
           acquirer: 'Nome da operadora de cartão'
           user: 'ID, Nome, Email ou Email de pagamento'
           payment_id: Chave, ID do meio de pagamento ou TID da operadora'
+        last_state: 'Estado anterior'
         acquirer: 'Operadora'
         payment_tax: 'Taxa meio de pagamento'
         project_state: 'Estado do projeto'
