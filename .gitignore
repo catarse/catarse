@@ -25,3 +25,4 @@ Cookbooks
 .project
 .secret.rvmrc
 .rvmrc
+config/deploy/
