@@ -34,6 +34,7 @@ class MigrateContributionsDataToPayments < ActiveRecord::Migration
         WHEN 'canceled' THEN 'refused'
         WHEN 'invalid_payment' THEN 'refused'
         WHEN 'confirmed' THEN 'paid'
+        WHEN 'chargeback' THEN 'chargeback'
         ELSE c.state
       END,
       coalesce(c.key, md5(id::text || current_timestamp::text)),
