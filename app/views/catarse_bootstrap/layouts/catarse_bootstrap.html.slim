@@ -39,7 +39,7 @@ html
     /page specific JS files
     = yield :js
   - if Rails.env.production?
+    = render 'layouts/vwo'
+    = render 'layouts/hotjar'     
     = render_google_analytics_script
     = render_mixpanel_script
-    = render 'layouts/hotjar'
-    = render 'layouts/vwo'
