@@ -153,7 +153,7 @@ pt:
         refund_contribution: 'Estornar apoio'
         request_refund: 'Solicitar reembolso direto'
         title: "Gerenciamento de apoios"
-        state: 'Estado'
+        state: 'Estado atual'
         menu: "Apoios"
         anonymous: Anônimo?
         contribution: Apoio
