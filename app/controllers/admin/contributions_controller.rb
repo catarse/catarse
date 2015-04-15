@@ -18,6 +18,13 @@ class Admin::ContributionsController < Admin::BaseController
   end
   contribution_actions
 
+  def gateway_refund
+    if resource.request_refund
+      resource.pagarme_delegator.refund
+    end
+    redirect_to admin_contributions_path(params[:local_params])
+  end
+
   def update
     if params[:contribution]
       Contribution.update(params[:id], params[:contribution])
