@@ -48,6 +48,11 @@ class Payment < ActiveRecord::Base
     state :refunded
     state :refused
     state :deleted
+    state :chargeback
+
+    event :chargeback do
+      transition all => :chargeback
+    end
 
     event :trash do
       transition all => :deleted
