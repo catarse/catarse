@@ -9,5 +9,5 @@
       - if @contribution.reward
         == @contribution.reward.display_description
       - else
-        == t('.review_without_reward_html', value: @contribution.decorate.display_value)
+        == t('.review_without_reward_html', value: (number_to_currency @contribution.localized.value))
 
