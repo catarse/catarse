@@ -18,7 +18,7 @@ class ContributionDetail < ActiveRecord::Base
   scope :project_name_contains, ->(term) {
     joins(:project).merge(Project.pg_search(term))
   }
-  scope :by_payment_id, ->(term) { where("? IN (payment_id, key, acquirer_tid)", term) }
+  scope :by_payment_id, ->(term) { where("? IN (payment_id, key, (gateway_data->'acquirer_tid')::text)", term) }
   scope :by_user_id, ->(user_id) { where(user_id: user_id) }
   scope :by_gateway, ->(gateway) { where(gateway: gateway) }
   scope :by_payment_method, ->(payment_method) { where(payment_method: payment_method ) }
