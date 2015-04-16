@@ -1,7 +1,7 @@
 class Payment < ActiveRecord::Base
   include Shared::StateMachineHelpers
   include Payment::PaymentEngineHandler
-  delegate :user, :project, to: :contribution
+  delegate :user, :project, :invalid_refund, to: :contribution
 
   belongs_to :contribution
   has_many :payment_notifications # to keep compatibility with catarse_pagarme
