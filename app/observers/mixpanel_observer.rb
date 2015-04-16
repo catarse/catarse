@@ -1,29 +1,27 @@
 class MixpanelObserver < ActiveRecord::Observer
-  observe :contribution, :project, :project_budget, :project_post, :user, :reward
+  observe :contribution, :project, :project_budget, :project_post, :user, :reward, :payment
 
-  def from_waiting_confirmation_to_confirmed(contribution)
-    user = contribution.user
-    payment = contribution.payments.last
+  def from_pending_to_paid(payment)
+    user = payment.user
     properties = user_properties(user).merge({
-      project: contribution.project.name,
+      project: payment.project.name,
       payment_method: payment.try(:gateway),
       payment_choice: payment.payment_method,
-      referral: contribution.referal_link,
-      anonymous: contribution.anonymous,
-      value: contribution.value,
-      project_goal: contribution.project.goal,
-      project_online_date: contribution.project.online_date,
-      project_expires_at: contribution.project.expires_at,
-      reward_id: contribution.reward_id,
-      reward_value: contribution.reward.try(:minimum_value),
-      project_address_city: contribution.project.account.try(:address_city),
-      project_address_state: contribution.project.account.try(:address_state),
-      account_entity_type: contribution.project.account.try(:entity_type)
+      referral: payment.contribution.referal_link,
+      anonymous: payment.contribution.anonymous,
+      value: payment.contribution.value,
+      project_goal: payment.project.goal,
+      project_online_date: payment.project.online_date,
+      project_expires_at: payment.project.expires_at,
+      reward_id: payment.contribution.reward_id,
+      reward_value: payment.contribution.reward.try(:minimum_value),
+      project_address_city: payment.project.account.try(:address_city),
+      project_address_state: payment.project.account.try(:address_state),
+      account_entity_type: payment.project.account.try(:entity_type)
     })
-    track_event(contribution.user, "Engaged with Catarse", properties.merge(action: 'contribution confirmed'))
-    track_event(contribution.user, "Contribution confirmed", properties)
+    track_event(payment.user, "Engaged with Catarse", properties.merge(action: 'contribution confirmed'))
+    track_event(payment.user, "Contribution confirmed", properties)
   end
-  alias :from_pending_to_confirmed :from_waiting_confirmation_to_confirmed
 
   def after_update(record)
     # Detect project changes
