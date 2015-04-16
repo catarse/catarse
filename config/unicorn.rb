@@ -14,7 +14,6 @@ timeout 30
 # Preload entire app for fast forking.
 preload_app true
 
-
 before_fork do |server, worker|
 
   Signal.trap 'TERM' do
