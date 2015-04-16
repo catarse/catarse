@@ -1,19 +1,20 @@
 -contribution = @notification.contribution
+- detail = contribution.details.ordered.first
 - company_name = CatarseSettings[:company_name]
 - contact_email = CatarseSettings[:email_contact]
 |Olá, <strong>#{contribution.user.display_name}</strong>!
 br
 br
 | Seu apoio para #{link_to contribution.project.name, project_url(contribution.project)} 
-| entrou em processo de <strong>análise pelo #{contribution.payment_method}</strong>
+| entrou em processo de <strong>análise pelo #{detail.payment_method}</strong>
 br
 br
-| Esse é uma medida de segurança realizada pelo #{contribution.payment_method} para evitar fraudes e 
+| Esse é uma medida de segurança realizada pelo #{detail.payment_method} para evitar fraudes e 
 | aumentar a tranquilidade de todos os envolvidos nas transações que ocorrem no #{company_name}. 
-| É possível que o #{contribution.payment_method} entre em contato com você por telefone para confirmar a transação.
+| É possível que o #{detail.payment_method} entre em contato com você por telefone para confirmar a transação.
 br
 br
-| Assim que o #{contribution.payment_method} autorizar seu pagamento, mandaremos um outro email com a confirmação.
+| Assim que o #{detail.payment_method} autorizar seu pagamento, mandaremos um outro email com a confirmação.
 br
 br
 | Se ficou com alguma dúvida, entre em contato conosco respondendo a esta mensagem ou através do e-mail #{mail_to contact_email}
