@@ -6,7 +6,7 @@ p
   | Quando essa confirmação ocorrer, mandaremos outro email com todos os detalhes da transação.
 p 
   | Para imprimir o boleto gerado, basta 
-  = link_to 'clicar aqui', contribution.decorate.display_slip_url
+  = link_to 'clicar aqui', contribution.details.ordered.first.decorate.display_slip_url
   | .
 
 p O prazo de vencimento do boleto é de 2 dias corridos. Para alterar a data de vencimento, entre em contato conosco respondendo a esta mensagem ou através do e-mail #{mail_to CatarseSettings[:email_contact]}
