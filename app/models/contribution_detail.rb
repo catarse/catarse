@@ -25,13 +25,7 @@ class ContributionDetail < ActiveRecord::Base
   scope :user_name_contains, ->(term) { joins(:user).where("unaccent(upper(users.name)) LIKE ('%'||unaccent(upper(?))||'%')", term) }
   scope :user_email_contains, ->(term) { joins(:user).where("unaccent(upper(users.email)) LIKE ('%'||unaccent(upper(?))||'%') OR unaccent(upper(payer_email)) LIKE ('%'||unaccent(upper(?))||'%')", term, term) }
 
-  scope :for_successful_projects, -> {
-    joins(:project).merge(Project.with_state('successful')).available_to_display
-  }
-
-  scope :for_online_projects, -> {
-    joins(:project).merge(Project.with_state(['online', 'waiting_funds'])).available_to_display
-  }
+  scope :with_state, ->(state){ where(state: state) }
 
   # Scopes based on project state
   scope :with_project_state, ->(state){ joins(:project).merge(Project.with_state(state)) }
