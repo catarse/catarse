@@ -37,6 +37,10 @@ class Payment < ActiveRecord::Base
     self.gateway == 'Credits'
   end
 
+  def is_credit_card?
+    self.payment_method == 'CartaoDeCredito'
+  end
+
   def slip_payment?
     self.payment_method == 'BoletoBancario'
   end

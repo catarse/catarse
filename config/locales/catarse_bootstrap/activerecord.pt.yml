@@ -278,7 +278,7 @@ pt:
     user_email: Email perfil Catarse
     cpf: Cpf do apoiador
     payer_email: Email do meio de pagamento
-    payment_method: Meio de pagamento
+    gateway: Meio de pagamento
     street: Rua
     address_number: Número
     complement: Complemento

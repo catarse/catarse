@@ -46,6 +46,20 @@ RSpec.describe Payment, type: :model do
     end
   end
 
+  describe "#is_credit_card?" do
+    subject{ payment.is_credit_card? }
+
+    context "when payment_method is credit_card" do
+      let(:payment){ build(:payment, payment_method: 'CartaoDeCredito') }
+      it{ is_expected.to eq true }
+    end
+
+    context "when payment_method is anything but credit_card" do
+      let(:payment){ build(:payment, payment_method: 'BoletoBancario') }
+      it{ is_expected.to eq false }
+    end
+  end
+
   describe "#credits?" do
     subject{ payment.credits? }
 
