@@ -1,4 +1,4 @@
-- content_for :title, @project.name + " · " + CatarseSettings[:company_name]
+- content_for :title, "#{@project.name} · #{CatarseSettings[:company_name]}"
 - content_for :meta_tags do
   - if ['online', 'waiting_funds', 'successful'].include? @project.state
     meta name="robots" content="index, follow"

@@ -32,7 +32,7 @@
   - if @contributions.empty?
     = t('.no_contributions')
   - else
-    - @contributions.includes(:project, :user, :reward).each do |contribution|
+    - @contributions.each do |contribution|
       table.table.admin-contributions
         thead.card.card-secondary
           tr
