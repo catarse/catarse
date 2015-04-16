@@ -18,6 +18,7 @@ class PaymentObserver < ActiveRecord::Observer
     payment.contribution.notify_to_contributor((payment.slip_payment? ? :refund_completed_slip : :refund_completed_credit_card))
   end
   alias :from_paid_to_refunded :from_pending_refund_to_refunded
+  alias :from_deleted_to_refunded :from_pending_refund_to_refunded
 
   def from_pending_to_invalid_payment(payment)
     payment.notify_to_backoffice :invalid_payment

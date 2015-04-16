@@ -75,7 +75,7 @@ class Payment < ActiveRecord::Base
     end
 
     event :refund do
-      transition [:pending_refund, :paid] => :refunded
+      transition [:pending_refund, :paid, :deleted] => :refunded
     end
 
     after_transition do |payment, transition|
