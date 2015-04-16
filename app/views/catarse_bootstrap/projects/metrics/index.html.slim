@@ -41,9 +41,9 @@
             li.fontsize-smaller.u-marginbottom-10
               div
                 | Apoiadores confirmados com boleto impresso&nbsp;&nbsp;
-                = link_to 'CSV', reports_contribution_reports_for_project_owners_path(project_id: @project.id, state: 'waiting_confirmation', format: :csv), class: 'alt-link'
+                = link_to 'CSV', reports_contribution_reports_for_project_owners_path(project_id: @project.id, state: 'pending', format: :csv), class: 'alt-link'
                 | &nbsp;\&nbsp;
-                = link_to 'XLS', reports_contribution_reports_for_project_owners_path(project_id: @project.id,state: 'waiting_confirmation', format: :xls), class: 'alt-link'
+                = link_to 'XLS', reports_contribution_reports_for_project_owners_path(project_id: @project.id,state: 'pending', format: :xls), class: 'alt-link'
             li.divider.u-marginbottom-10
             li.fontsize-smaller.u-marginbottom-10
               div
