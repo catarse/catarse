@@ -8,7 +8,7 @@ p
   br/
   | Data da confirmação do apoio: #{detail.decorate.display_date(:paid_at)}
   br/
-  | Opção de pagamento: #{detail.payment_method}
+  | Opção de pagamento: #{detail.gateway}
   br/
   | Valor da contribuição: #{number_to_currency contribution.value}
   - if detail.installments > 1
