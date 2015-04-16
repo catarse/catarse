@@ -1,4 +1,5 @@
 -contribution = @notification.contribution
+- detail = contribution.details.ordered.first
 - company_name = CatarseSettings[:company_name]
 - contact_email = CatarseSettings[:email_contact]
 |Olá, <strong>#{contribution.user.display_name}</strong>!
@@ -7,7 +8,7 @@ br
 | O reembolso do seu apoio para o projeto #{link_to contribution.project.name, project_by_slug_url(permalink: contribution.project.permalink)} no #{company_name} acabou de ser realizado! O crédito efetivo deverá acontecer na próxima fatura, caso ela ainda esteja em aberto, ou na próxima, caso a desse mês já tenha sido fechada.
 br
 br
-| A chave de identificação do seu apoio é: #{contribution.payment_id}
+| A chave de identificação do seu apoio é: #{detail.payment_id}
 br/
 br/
 | Se ficou com alguma dúvida ou teve algum problema nesse processo, entre em contato conosco respondendo a
