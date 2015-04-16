@@ -1,26 +1,28 @@
+- detail = contribution.details.ordered.first
+
 p Seguem todos os dados do pagamento:
 p
   | Nome do apoiador: #{(contribution.payer_name || contribution.user.display_name)}
   br/
   | CPF/CNPJ do apoiador: #{(contribution.payer_document || contribution.user.cpf)}
   br/
-  | Data da confirmação do apoio: #{l contribution.details.ordered.first.decorate.display_date(:paid_at)}
+  | Data da confirmação do apoio: #{l detail.decorate.display_date(:paid_at)}
   br/
-  | Opção de pagamento: #{contribution.payment_choice || contribution.payment_method}
+  | Opção de pagamento: #{detail.payment_method}
   br/
   | Valor da contribuição: #{number_to_currency contribution.value}
-  - if contribution.installments > 1
+  - if detail.installments > 1
     br/
-    | Número de parcelas: #{contribution.installments}
+    | Número de parcelas: #{detail.installments}
     br/
-    | Valor da parcela: #{number_to_currency(contribution.installment_value, precision: 2)}
+    | Valor da parcela: #{number_to_currency(detail.installment_value, precision: 2)}
   br/
   -if contribution.reward.present?
     | Recompensa selecionada: #{contribution.reward.description}
     br/
     | Estimativa de entrega: #{contribution.reward.display_deliver_estimate}
     br/
-  | ID do apoio: #{contribution.payment_id}
+  | ID do apoio: #{detail.payment_id}
   br/
   / We need the || for some old projects do not have the account info
   - owner = contribution.project.account || contribution.project.user
