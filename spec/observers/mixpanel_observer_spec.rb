@@ -52,19 +52,11 @@ RSpec.describe MixpanelObserver do
     allow_any_instance_of(MixpanelObserver).to receive_messages(tracker: tracker)
   end
 
-  describe "#from_waiting_confirmation_to_confirmed" do
+  describe "#from_pending_to_paid" do
     it "should send tracker a track call with the user id of the contribution" do
       expect(tracker).to receive(:track).with(contribution.user.id.to_s, "Engaged with Catarse", properties.merge(action: 'contribution confirmed'), contribution.user.current_sign_in_ip)
       expect(tracker).to receive(:track).with(contribution.user.id.to_s, "Contribution confirmed", properties, contribution.user.current_sign_in_ip)
-      contribution.notify_observers :from_waiting_confirmation_to_confirmed
-    end
-  end
-
-  describe "#from_pending_to_confirmed" do
-    it "should send tracker a track call with the user id of the contribution" do
-      expect(tracker).to receive(:track).with(contribution.user.id.to_s, "Engaged with Catarse", properties.merge(action: 'contribution confirmed'), contribution.user.current_sign_in_ip)
-      expect(tracker).to receive(:track).with(contribution.user.id.to_s, "Contribution confirmed", properties, contribution.user.current_sign_in_ip)
-      contribution.notify_observers :from_pending_to_confirmed
+      payment.notify_observers :from_pending_to_paid
     end
   end
 
