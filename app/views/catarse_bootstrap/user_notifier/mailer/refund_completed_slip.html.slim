@@ -1,4 +1,5 @@
 - contribution = @notification.contribution
+- detail = contribution.details.ordered.first
 - company_name = CatarseSettings[:company_name]
 - contact_email = CatarseSettings[:email_contact]
 - user = @notification.contribution.user
@@ -21,7 +22,7 @@ br
 | CPF: #{bank_account.try(:owner_document)}  
 br
 br
-| A chave de identificação do seu apoio é: #{contribution.payment_id}
+| A chave de identificação do seu apoio é: #{detail.payment_id}
 br
 br
 | Se ficou com alguma dúvida ou teve algum problema nesse processo, entre em contato conosco respondendo a esta mensagem ou através do e-mail #{mail_to contact_email}. Para agilizar o atendimento, pedimos que indique o código de identificação.
