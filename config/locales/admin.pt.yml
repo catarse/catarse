@@ -152,8 +152,8 @@ pt:
         confirm_contribution: 'Confirmar apoio'
         unconfirm_contribution: 'Desconfirmar apoio'
         refund_contribution: 'Estornar apoio'
-        request_refund: 'Pedir reembolso'
-        direct_refund: 'Solicitar reembolso direto'
+        request_refund: 'Pedir Reembolso'
+        direct_refund: 'Reembolso Direto'
         title: "Gerenciamento de apoios"
         state: 'Estado atual'
         menu: "Apoios"

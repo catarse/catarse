@@ -99,9 +99,10 @@
 
                 - if contribution.paid?
                   = link_to t('admin.contributions.index.request_refund'), request_refund_admin_contribution_path(contribution, local_params: params), method: :put, class: 'w-dropdown-link dropdown-link fontsize-smaller'
+                - if contribution.paid? || contribution.deleted?
                   = link_to t('admin.contributions.index.direct_refund'), gateway_refund_admin_contribution_path(contribution, local_params: params), method: :put, class: 'w-dropdown-link dropdown-link fontsize-smaller'
 
-                - if contribution.pending_refund? or contribution.paid?
+                - if contribution.pending_refund? || contribution.paid? || contribution.deleted?
                   = link_to t('admin.contributions.index.refund_contribution'), refund_admin_contribution_path(contribution, local_params: params), method: :put, class: 'w-dropdown-link dropdown-link fontsize-smaller'
 
                 - unless %w[pending paid pending_refund refunded].include?(contribution.state)
