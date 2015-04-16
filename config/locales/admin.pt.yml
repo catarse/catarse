@@ -107,6 +107,7 @@ pt:
           hide: 'Apoio escondido com sucesso!'
           cancel: 'Apoio cancelado com sucesso!'
           push_to_trash: 'Apoio deletado com sucesso!'
+          request_refund: 'Reembolso solicitado com sucesso!'
       show:
         contribution_info: 'Informações do contribution %{key}'
         payment_id: 'ID do pagamento'
@@ -151,7 +152,8 @@ pt:
         confirm_contribution: 'Confirmar apoio'
         unconfirm_contribution: 'Desconfirmar apoio'
         refund_contribution: 'Estornar apoio'
-        request_refund: 'Solicitar reembolso direto'
+        request_refund: 'Pedir reembolso'
+        direct_refund: 'Solicitar reembolso direto'
         title: "Gerenciamento de apoios"
         state: 'Estado atual'
         menu: "Apoios"

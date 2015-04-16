@@ -20,7 +20,7 @@ RSpec.describe Admin::ContributionsController, type: :controller do
     end
 
     it "should call direct refund on payment pagarme_delegator" do
-      is_expected.to redirect_to admin_contributions_path 
+      is_expected.to redirect_to admin_contributions_path
       expect(payment.reload.state).to eq 'pending_refund'
     end
   end
@@ -58,6 +58,21 @@ RSpec.describe Admin::ContributionsController, type: :controller do
 
     before do
       put :refund, id: payment.id, locale: :pt
+    end
+
+    it do
+      payment.reload
+      is_expected.to eq(true)
+    end
+  end
+
+  describe 'PUT request_refund' do
+    let(:contribution) { create(:confirmed_contribution) }
+    subject { payment.pending_refund? }
+
+    before do
+      allow(payment).to receive(:direct_refund).and_return(true)
+      put :request_refund, id: payment.id, locale: :pt
     end
 
     it do
