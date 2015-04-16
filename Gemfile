@@ -37,7 +37,7 @@ gem 'mixpanel-ruby'
 # Payment engines
 gem 'catarse_paypal_express', '3.0.2'
 gem 'catarse_moip', '~> 3.1.1'
-gem 'catarse_pagarme', '2.6.2'
+gem 'catarse_pagarme', '2.6.3'
 #gem 'catarse_pagarme', path: '../catarse_pagarme'
 
 gem 'activemerchant', '1.44.1'
