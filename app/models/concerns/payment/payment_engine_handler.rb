@@ -5,6 +5,15 @@ module Payment::PaymentEngineHandler
 
     delegate :can_do_refund?, to: :payment_engine
 
+    def is_paypal?
+      gateway.(:downcase) == 'paypal'
+    end
+
+    def is_pagarme?
+      gateway.(:downcase) == 'pagarme'
+    end
+
+
     def payment_engine
       PaymentEngines.find_engine(self.gateway) || PaymentEngines::Interface.new
     end
