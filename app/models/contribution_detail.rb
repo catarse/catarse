@@ -33,9 +33,11 @@ class ContributionDetail < ActiveRecord::Base
     joins(:project).merge(Project.with_state(['online', 'waiting_funds'])).available_to_display
   }
 
-  scope :for_failed_projects, -> {
-    joins(:project).merge(Project.with_state('failed')).available_to_display
-  }
+  # Scopes based on project state
+  scope :with_project_state, ->(state){ joins(:project).merge(Project.with_state(state)) }
+  scope :for_successful_projects, -> { with_state('successful').available_to_display }
+  scope :for_online_projects, -> { with_project_state(['online', 'waiting_funds']).available_to_display }
+  scope :for_failed_projects, -> { with_project_state('failed').available_to_display }
 
   scope :available_to_display, -> {
     joins(:contribution).merge(Contribution.available_to_display)
