@@ -253,6 +253,7 @@ pt:
       refused: "Pagamento recusado em %{date}"
   contribution:
     payment_details:
+      desconhecido: ""
       creditos: "Créditos"
       boleto_bancario: "Boleto Bancário"
       cartao_de_credito: "Cartão de crédito"
