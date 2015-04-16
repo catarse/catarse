@@ -1,7 +1,7 @@
 class Payment < ActiveRecord::Base
   include Shared::StateMachineHelpers
   include Payment::PaymentEngineHandler
-  delegate :user, :project, to: :contribution
+  delegate :user, :project, :invalid_refund, to: :contribution
 
   belongs_to :contribution
   has_many :payment_notifications # to keep compatibility with catarse_pagarme
@@ -75,7 +75,7 @@ class Payment < ActiveRecord::Base
     end
 
     event :refund do
-      transition [:pending_refund, :paid] => :refunded
+      transition [:pending_refund, :paid, :deleted] => :refunded
     end
 
     after_transition do |payment, transition|
