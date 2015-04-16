@@ -57,6 +57,17 @@ RSpec.describe ContributionDetail, type: :model do
     it { is_expected.to have(4).itens }
   end
 
+  describe ".with_state" do
+    subject{ ContributionDetail.with_state(:paid) }
+
+    before do
+      @contribution = create(:confirmed_contribution)
+      create(:pending_contribution)
+    end
+
+    it{ is_expected.to match_array [@contribution.details.first] }
+  end
+
   describe '#last_state_name' do
     let(:contribution) { create(:contribution) }
     let(:refunded_payment) { create(:payment, state: 'refunded', pending_refund_at: 2.days.ago, refunded_at: 1.day.ago, paid_at: 3.days.ago, value: contribution.value, contribution: contribution) }
