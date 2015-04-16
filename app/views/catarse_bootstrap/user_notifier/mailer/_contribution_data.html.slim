@@ -6,7 +6,7 @@ p
   br/
   | CPF/CNPJ do apoiador: #{(contribution.payer_document || contribution.user.cpf)}
   br/
-  | Data da confirmação do apoio: #{l detail.decorate.display_date(:paid_at)}
+  | Data da confirmação do apoio: #{detail.decorate.display_date(:paid_at)}
   br/
   | Opção de pagamento: #{detail.payment_method}
   br/
