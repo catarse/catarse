@@ -1,4 +1,4 @@
-- content_for :title, @project.name + " · " + CatarseSettings[:company_name]
+- content_for :title, "#{@project.name} · #{CatarseSettings[:company_name]}"
 = render 'shared/header'
 
 .page-header.u-text-center
