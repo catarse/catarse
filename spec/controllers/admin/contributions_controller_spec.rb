@@ -39,59 +39,58 @@ RSpec.describe Admin::ContributionsController, type: :controller do
   end
 
   describe 'PUT trash' do
-    subject { payment.deleted? }
-
     before do
       allow(controller).to receive(:current_user).and_return(admin)
       put :trash, id: payment.id, locale: :pt
+      payment.reload
     end
 
-    it do
-      payment.reload
-      is_expected.to eq(true)
+    it "should delete the contribution and redirect back" do
+      expect(payment.deleted?).to be(true)
+      is_expected.to be_redirect
     end
   end
 
   describe 'PUT refund' do
     let(:contribution) { create(:confirmed_contribution) }
-    subject { payment.refunded? }
 
     before do
       put :refund, id: payment.id, locale: :pt
+      payment.reload
     end
 
-    it do
-      payment.reload
-      is_expected.to eq(true)
+    it "should refund the contribution and redirect back" do
+      expect(payment.refunded?).to eq(true)
+      is_expected.to be_redirect
     end
   end
 
   describe 'PUT request_refund' do
     let(:contribution) { create(:confirmed_contribution) }
-    subject { payment.pending_refund? }
 
     before do
       allow(payment).to receive(:direct_refund).and_return(true)
       put :request_refund, id: payment.id, locale: :pt
+      payment.reload
     end
 
-    it do
-      payment.reload
-      is_expected.to eq(true)
+    it "should request_refund on contribution and redirect back" do
+      expect(payment.pending_refund?).to eq(true)
+      is_expected.to be_redirect
     end
   end
 
   describe 'PUT refuse' do
     let(:contribution) { create(:confirmed_contribution) }
-    subject { payment.refused? }
 
     before do
       put :refuse, id: payment.id, locale: :pt
+      payment.reload
     end
 
-    it do
-      payment.reload
-      is_expected.to eq(true)
+    it "should refuse contribution and redirect back" do
+      expect(payment.refused?).to be(true)
+      is_expected.to be_redirect
     end
   end
 
