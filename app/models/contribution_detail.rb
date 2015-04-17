@@ -16,7 +16,7 @@ class ContributionDetail < ActiveRecord::Base
 
   scope :search_on_acquirer, ->(acquirer_name){ where(acquirer_name: acquirer_name) }
   scope :project_name_contains, ->(term) {
-    select("contribution_details.*").joins(:project).merge(Project.pg_search(term))
+    joins(:project).where(project: Project.pg_search(term).reorder('').pluck(:id)) #we need reorder due to a bug in pg_search
   }
   scope :by_payment_id, ->(term) { where("? IN (gateway_id, key, (gateway_data->'acquirer_tid')::text)", term) }
   scope :by_user_id, ->(user_id) { where(user_id: user_id) }
