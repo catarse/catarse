@@ -3,11 +3,13 @@ task :verify_pagarme_transactions, [:start_date, :end_date]  => :environment do 
   args.with_defaults(start_date: Date.today - 1, end_date: Date.today)
   Rails.logger.info "Verifying transactions in range: #{args.inspect}"
 
-  def find_transactions_by_dates(start_date, end_date)
+  def find_transactions_by_dates(start_date, end_date, from = 0, size = 50)
     request = PagarMe::Request.new('/search', 'GET')
     query = {
       type: 'transaction',
       query: {
+        from: from,
+        size: size,
         query: {
           range: {
             date_created: {
@@ -24,8 +26,12 @@ task :verify_pagarme_transactions, [:start_date, :end_date]  => :environment do 
   end
 
   PagarMe.api_key = CatarsePagarme.configuration.api_key
-  find_transactions_by_dates(args[:start_date], args[:end_date]).each do |t|
-    puts "Encontrei #{t.inspect}"
+  first_collection = find_transactions_by_dates(args[:start_date], args[:end_date])
+  total_pages = first_collection['hits']['total'] / 50
+
+  total_pages.times do |page|
+    result = find_transactions_by_dates(args[:start_date], args[:end_date], page)
+    puts result['hits']['hits'].size
   end
 end
 
