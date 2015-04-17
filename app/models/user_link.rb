@@ -7,6 +7,10 @@ class UserLink < ActiveRecord::Base
     self.link.sub(/^https?\:\/\//, '').sub(/^www./,'')
   end
 
+  def hostname
+    self.without_protocol.split('/')[0]
+  end
+
   def prepend_protocol
     self.link = ('http://' + self.link) unless self.link[/^https?:\/\//]
   end
