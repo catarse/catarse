@@ -29,9 +29,16 @@ task :verify_pagarme_transactions, [:start_date, :end_date]  => :environment do 
   first_collection = find_transactions_by_dates(args[:start_date], args[:end_date])
   total_pages = first_collection['hits']['total'] / 50
 
+  puts "pagarme_id,pagarme_status,pagarme_value,catarse_id,catarse_state"
+
   total_pages.times do |page|
     result = find_transactions_by_dates(args[:start_date], args[:end_date], page)
-    puts result['hits']['hits'].size
+    result['hits']['hits'].each do |hit|
+      _source = hit['_source']
+      payment = Payment.find_by gateway_id: _source['id'].to_s
+      puts [_source['id'], _source['status'], _source['amount'],
+            payment.try(:amount), payment.try(:gateway_id), payment.try(:state)].join(",")
+    end
   end
 end
 
