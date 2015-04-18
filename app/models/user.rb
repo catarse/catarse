@@ -189,14 +189,10 @@ class User < ActiveRecord::Base
   end
 
   def projects_in_reminder
-    p = Array.new
     reminder_jobs = Sidekiq::ScheduledSet.new.select do |job|
       job['class'] == 'ReminderProjectWorker' && job.args[0] == self.id
     end
-    reminder_jobs.each do |job|
-      p << Project.find(job.args[1])
-    end
-    return p
+    Project.where(id: reminder_jobs.map {|job| job.args[1]})
   end
 
   def total_contributed_projects
