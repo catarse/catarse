@@ -247,8 +247,8 @@ FactoryGirl.define do
   factory :bank_account do |f|
     #f.association :user, factory: :user
     f.association :bank, factory: :bank
-    owner_name "Foo"
-    owner_document "000"
+    owner_name "Foo Bar"
+    owner_document "97666238991"
     account_digit "1"
     agency "1"
     agency_digit "1"
