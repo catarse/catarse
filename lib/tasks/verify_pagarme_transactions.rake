@@ -91,7 +91,7 @@ task :verify_pagarme_transactions, [:start_date, :end_date]  => :environment do 
 
   PagarMe.api_key = CatarsePagarme.configuration.api_key
 
-  puts "pagarme_id,pagarme_status,pagarme_value,catarse_id,catarse_state"
+  puts "Verifying all payment from #{args[:start_date]} to #{args[:end_date]}"
   fix_payments(args[:start_date], args[:end_date]) do |payment|
     puts "Updating #{payment.id}..."
     payment.pagarme_delegator.change_status_by_transaction source['status']
