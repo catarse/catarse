@@ -157,10 +157,70 @@ RSpec.describe "Projects", type: :feature do
       sleep FeatureHelpers::TIME_TO_SLEEP
       fill_in "project_posts_attributes_0_title", with: 'Foo title'
       page.execute_script( "$('.redactor').redactor('code.set', 'Bar')" )
-      
       click_button(I18n.t('projects.dashboard_posts.publish'))
       expect(page).to have_content('Foo title')
     end
   end
 
+  describe "contribute" do
+    let(:project){ create(:project, state: 'online') }
+    let(:successful_project){ create(:project, state: 'successful') }
+    let(:failed_project){ create(:project, state: 'failed') }
+
+    before do  
+      login
+    end
+  
+    it "should redirect to contribution/new page after clicking on the contribute button" do
+      visit project_path(project)
+      find("#contribute_project_form").click
+      uri = URI.parse(current_url)
+      expect(uri).to have_content('contributions/new')
+    end
+    it "should redirect to contribution/edit page after selecting reward and clicking forward" do
+      visit project_path(project)
+      find("#contribute_project_form").click
+      find(".back-reward-radio-reward:nth-of-type(2)").first("label").click
+      reward_id = find("input[name='contribution[reward_id]']:checked").value
+      find("#submit").click
+      uri = URI.parse(current_url)
+      expect(uri).to have_content("contributions/#{reward_id}/edit")
+    end
+    it "should not redirect after clicking on reward card on successful or failed project" do
+      visit project_path(successful_project)
+      uri_before_successful = URI.parse(current_url)
+      first(".card-reward").click
+      uri_after_successful = URI.parse(current_url)
+      visit project_path(failed_project)
+      uri_before_failed = URI.parse(current_url)
+      first(".card-reward").click
+      uri_after_failed = URI.parse(current_url)
+      expect(uri_after_successful).to eq(uri_before_successful+"#project-offline")
+      expect(uri_after_failed).to eq(uri_after_failed+"#project-offline")
+    end
+    it "should redirect with selected reward when clicking on card reward" do
+      5.times{ create(:reward, project: project) }
+      visit project_path(project)
+      selected_card = find(".card-reward:nth-of-type(2)")
+      uri_after = selected_card["data-new-contribution-url"]
+      reward_id = selected_card["id"].split("_").last
+      selected_card.click
+      expect(page.has_checked_field?(reward_id)).to be true
+      expect(URI.parse(current_url)).to have_content(uri_after)
+    end
+    it "should redirect to thank you page after paying with a credit card" do
+      visit project_path(project)
+      find("#contribute_project_form").click
+      find(".back-reward-radio-reward:nth-of-type(2)").first("label").click
+      find("#submit").click
+      find("#next-step").click
+      sleep FeatureHelpers::TIME_TO_SLEEP*10
+      fill_in 'payment_card_name', with: 'FULANO DE TAL'
+      fill_in 'payment_card_number', with: '4012888888881881'
+      fill_in 'payment_card_source', with: '606'
+      fill_in 'payment_card_date', with: '06/2020'
+      find("#submit").click
+      expect(page).to have_content(I18n.t('projects.contributions.show.thank_you'))
+    end
+  end
 end

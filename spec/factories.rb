@@ -32,6 +32,7 @@ FactoryGirl.define do
     f.email { generate(:email) }
     f.permalink { generate(:permalink) }
     f.about_html "This is Foo bar's biography."
+    f.country_id 36
     f.address_street 'fooo'
     f.address_number '123'
     f.address_city 'fooo bar'
@@ -46,7 +47,7 @@ FactoryGirl.define do
     f.permalink { generate(:permalink) }
     f.name "Foo bar"
     f.password "123456"
-    f.cpf "123456"
+    f.cpf "97666238991"
     f.uploaded_image File.open("#{Rails.root}/spec/support/testimg.png")
     f.email { generate(:email) }
     f.about_html "This is Foo bar's biography."
