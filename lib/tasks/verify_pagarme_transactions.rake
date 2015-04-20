@@ -33,6 +33,7 @@ task :verify_pagarme_transactions, [:start_date, :end_date]  => :environment do 
 
   def find_contribution source
     puts source.inspect
+    return nil if source['customer'].nil?
     Contribution.where({
       payer_email: source['customer']['email'],
       value: (source['amount']/100.0)
@@ -66,6 +67,7 @@ task :verify_pagarme_transactions, [:start_date, :end_date]  => :environment do 
   end
 
   def status_ok?(payment, source)
+    return true if payment.chargeback?
     case source['status']
     when 'paid', 'authorized' then
       payment.paid?
