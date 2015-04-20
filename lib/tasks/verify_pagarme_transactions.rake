@@ -29,6 +29,11 @@ task :verify_pagarme_transactions, [:start_date, :end_date]  => :environment do 
     Payment.find_by(gateway_id: source['id'].to_s) || Payment.find_by(key: source['metadata'].try(:[], 'key').to_s)
   end
 
+  def find_contribution source
+    puts source.inspect
+    Contribution.where(payer_email: source['customer']['email'], value: (source['amount']/100.0)).where("(created_at::timestamptz AT TIME ZONE 'America/Sao_Paulo')::date = ?", source['date_created'].to_date).order(:id).last
+  end
+
   def all_transactions(start_date, end_date)
     first_collection = find_transactions_by_dates(start_date, end_date)
     total_pages = first_collection['hits']['total'] / 50
@@ -52,6 +57,8 @@ task :verify_pagarme_transactions, [:start_date, :end_date]  => :environment do 
             payment.try(:amount), payment.try(:gateway_id), payment.try(:state)].join(",")
     else
       puts ">>>>>>>> NAO ENCONTREI O PAGAMENTO!!!!! #{source['id']}"
+      contribution = find_contribution source
+      puts "Contribution: #{contribution.inspect}"
     end
   end
 end
