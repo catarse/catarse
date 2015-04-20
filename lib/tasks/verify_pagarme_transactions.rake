@@ -2,8 +2,9 @@ desc "Verify all transactions in pagarme for a given date range and check their 
 task :verify_pagarme_transactions, [:start_date, :end_date]  => :environment do |task, args|
   args.with_defaults(start_date: Date.today - 1, end_date: Date.today)
   Rails.logger.info "Verifying transactions in range: #{args.inspect}"
+  PAGE_SIZE = 50
 
-  def find_transactions_by_dates(start_date, end_date, from = 0, size = 50)
+  def find_transactions_by_dates(start_date, end_date, from = 0, size = PAGE_SIZE)
     request = PagarMe::Request.new('/search', 'GET')
     query = {
       type: 'transaction',
@@ -41,13 +42,14 @@ task :verify_pagarme_transactions, [:start_date, :end_date]  => :environment do 
 
   def all_transactions(start_date, end_date)
     first_collection = find_transactions_by_dates(start_date, end_date)
-    total_pages = first_collection['hits']['total'] / 50
+    total_pages = first_collection['hits']['total'] / PAGE_SIZE
     total_pages.times do |page|
-      result = find_transactions_by_dates(start_date, end_date, page)
+      puts "Loading page #{page} / #{total_pages}..."
+      result = find_transactions_by_dates(start_date, end_date, page * PAGE_SIZE)
       result['hits']['hits'].each do |hit|
         _source = hit['_source']
         payment = find_payment _source
-        yield _source, payment
+        yield _source, payment if _source['status'] != 'processing'
       end
     end
   end
@@ -82,14 +84,14 @@ task :verify_pagarme_transactions, [:start_date, :end_date]  => :environment do 
       puts "Verifying transaction #{source['id']}..."
       if payment
         # Atualiza os dados usando o pagarme_delegator caso o status não esteja batendo
-        yield(payment) unless status_ok?(payment, source)
+        yield(source, payment) unless status_ok?(payment, source)
       else
         contribution = find_contribution source
         if contribution
           # Cria novo pagamento para o apoio e atualiza com dados do pagarme
           puts "Creating new payment for #{contribution.id}..."
           payment = create_new_payment(contribution, source)
-          yield(payment)
+          yield(source, payment)
         else
           puts ">>>>>>>> NAO ENCONTREI O APOIO!!!!! #{source['id']}"
           not_found << [source['id'], source['status'], source['amount'], source['customer'].try(:[], "email")].join(",")
@@ -112,10 +114,10 @@ task :verify_pagarme_transactions, [:start_date, :end_date]  => :environment do 
   PagarMe.api_key = CatarsePagarme.configuration.api_key
 
   puts "Verifying all payment from #{args[:start_date]} to #{args[:end_date]}"
-  fix_payments(args[:start_date], args[:end_date]) do |payment|
+  fix_payments(args[:start_date], args[:end_date]) do |source, payment|
     puts "Updating #{payment.id}..."
     payment.pagarme_delegator.change_status_by_transaction source['status']
-    payment.pagarme_delegator.update_fee
+    payment.pagarme_delegator.update_transaction
   end
 end
 
