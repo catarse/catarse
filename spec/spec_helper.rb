@@ -74,6 +74,13 @@ RSpec.configure do |config|
     CatarseSettings[:email_system] = 'system@catarse.me'
     CatarseSettings[:company_name] = 'Foo Bar Company'
 
+    CatarsePagarme.configure do |config|
+      config.api_key = 'ak_test_XLoo19QDn9kg5JFGU70x12IA4NqbAv'
+      config.slip_tax = 0
+      config.credit_card_tax = 0
+      config.interest_rate = 0
+    end
+
     # Email notification defaults
     UserNotifier.system_email     = CatarseSettings[:email_system]
     UserNotifier.from_email       = CatarseSettings[:email_contact]
