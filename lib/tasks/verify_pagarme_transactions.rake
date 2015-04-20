@@ -57,7 +57,9 @@ task :verify_pagarme_transactions, [:start_date, :end_date]  => :environment do 
       contribution: contribution,
       gateway: 'Pagarme',
       gateway_id: source['id'],
-      gateway_data: source
+      gateway_data: source.merge(created_by_verifier: true),
+      payment_method: (source['payment_method'] == 'boleto' ? 'BoletoBancario' : 'CartaoDeCredito'),
+      installments: source['installments']
     })
   end
 
