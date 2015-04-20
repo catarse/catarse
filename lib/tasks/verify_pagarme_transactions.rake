@@ -26,12 +26,17 @@ task :verify_pagarme_transactions, [:start_date, :end_date]  => :environment do 
   end
 
   def find_payment source
-    Payment.find_by(gateway_id: source['id'].to_s) || Payment.find_by(key: source['metadata'].try(:[], 'key').to_s)
+    Payment.find_by(gateway_id: source['id'].to_s) ||
+      Payment.find_by(key: source['metadata'].try(:[], 'key').to_s)
   end
 
   def find_contribution source
     puts source.inspect
-    Contribution.where(payer_email: source['customer']['email'], value: (source['amount']/100.0)).where("(created_at::timestamptz AT TIME ZONE 'America/Sao_Paulo')::date = ?", source['date_created'].to_date).order(:id).last
+    Contribution.where({
+      payer_email: source['customer']['email'],
+      value: (source['amount']/100.0)
+    }).where("(created_at::timestamptz AT TIME ZONE 'America/Sao_Paulo')::date = ?",
+             source['date_created'].to_date).order(:id).last
   end
 
   def all_transactions(start_date, end_date)
@@ -70,6 +75,7 @@ task :verify_pagarme_transactions, [:start_date, :end_date]  => :environment do 
   end
 
   def fix_payments(start_date, end_date)
+    not_found = []
     all_transactions(start_date, end_date) do |source, payment|
       puts "Verifying transaction #{source['id']}..."
       if payment
@@ -84,8 +90,20 @@ task :verify_pagarme_transactions, [:start_date, :end_date]  => :environment do 
           yield(payment)
         else
           puts ">>>>>>>> NAO ENCONTREI O APOIO!!!!! #{source['id']}"
+          not_found << [source['id'], source['status'], source['amount'], source['customer'].try(:[], "email")].join(",")
         end
       end
+    end
+
+    unless not_found.empty?
+      puts not_found.join("\n")
+      not_found_report_file = File.join(Rails.root, "tmp", "#{Time.now.to_i}_not_found_contributions.csv")
+      File.open(not_found_report_file, 'w') do |f|
+        f.write(not_found.join("\n"))
+        f.close
+      end
+
+      puts "use 'cat #{not_found_report_file}' to see the not found contributions"
     end
   end
 
