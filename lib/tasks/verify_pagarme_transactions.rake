@@ -47,19 +47,55 @@ task :verify_pagarme_transactions, [:start_date, :end_date]  => :environment do 
     end
   end
 
+  def create_new_payment(contribution, source)
+    Payment.create!({
+      contribution: contribution,
+      gateway: 'Pagarme',
+      gateway_id: source['id'],
+      gateway_data: source
+    })
+  end
+
+  def status_ok?(payment, source)
+    case source['status']
+    when 'paid', 'authorized' then
+      payment.paid?
+    when 'refunded' then
+      payment.refunded?
+    when 'refused' then
+      payment.refused?
+    else
+      true
+    end
+  end
+
+  def fix_payments(start_date, end_date)
+    all_transactions(start_date, end_date) do |source, payment|
+      puts "Verifying transaction #{source['id']}..."
+      if payment
+        # Atualiza os dados usando o pagarme_delegator caso o status não esteja batendo
+        yield(payment) unless status_ok?(payment, source)
+      else
+        contribution = find_contribution source
+        if contribution
+          # Cria novo pagamento para o apoio e atualiza com dados do pagarme
+          puts "Creating new payment for #{contribution.id}..."
+          payment = create_new_payment(contribution, source)
+          yield(payment)
+        else
+          puts ">>>>>>>> NAO ENCONTREI O APOIO!!!!! #{source['id']}"
+        end
+      end
+    end
+  end
+
   PagarMe.api_key = CatarsePagarme.configuration.api_key
 
   puts "pagarme_id,pagarme_status,pagarme_value,catarse_id,catarse_state"
-
-  all_transactions(args[:start_date], args[:end_date]) do |source, payment|
-    if payment
-      puts [source['id'], source['status'], source['amount'],
-            payment.try(:amount), payment.try(:gateway_id), payment.try(:state)].join(",")
-    else
-      puts ">>>>>>>> NAO ENCONTREI O PAGAMENTO!!!!! #{source['id']}"
-      contribution = find_contribution source
-      puts "Contribution: #{contribution.inspect}"
-    end
+  fix_payments(args[:start_date], args[:end_date]) do |payment|
+    puts "Updating #{payment.id}..."
+    payment.pagarme_delegator.change_status_by_transaction source['status']
+    payment.pagarme_delegator.update_fee
   end
 end
 
