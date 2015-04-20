@@ -1,14 +1,11 @@
 .u-text-center
   .w-container
     .w-row
-      .w-col.w-col-2
-      .w-col.w-col-8
+      .w-col.w-col-8.w-col-push-2
         .fontsize-large.fontweight-semibold.u-marginbottom-10= t('.title', name: @project.user.display_name)
         p.fontsize-base
           = t('.subtitle')
-        .card.u-radius.u-marginbottom-30
-          .fontsize-small.fontweight-semibold
-            span.fontcolor-secondary>= t('projects.dashboard_home_templates.status')
-            span class="text-color-for-status #{@project.state}"
-              ' #{t("projects.project.display_status.#{@project.state}").upcase}
-      .w-col.w-col-2
+
+.section
+  .w-container
+    = image_tag "info-dashboard.png"
