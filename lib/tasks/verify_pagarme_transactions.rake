@@ -25,19 +25,33 @@ task :verify_pagarme_transactions, [:start_date, :end_date]  => :environment do 
     request.run
   end
 
+  def find_payment source
+    Payment.find_by(gateway_id: source['id'].to_s) || Payment.find_by(key: source['metadata'].try(:[], 'key').to_s)
+  end
+
+  def all_transactions(start_date, end_date)
+    first_collection = find_transactions_by_dates(start_date, end_date)
+    total_pages = first_collection['hits']['total'] / 50
+    total_pages.times do |page|
+      result = find_transactions_by_dates(start_date, end_date, page)
+      result['hits']['hits'].each do |hit|
+        _source = hit['_source']
+        payment = find_payment _source
+        yield _source, payment
+      end
+    end
+  end
+
   PagarMe.api_key = CatarsePagarme.configuration.api_key
-  first_collection = find_transactions_by_dates(args[:start_date], args[:end_date])
-  total_pages = first_collection['hits']['total'] / 50
 
   puts "pagarme_id,pagarme_status,pagarme_value,catarse_id,catarse_state"
 
-  total_pages.times do |page|
-    result = find_transactions_by_dates(args[:start_date], args[:end_date], page)
-    result['hits']['hits'].each do |hit|
-      _source = hit['_source']
-      payment = Payment.find_by gateway_id: _source['id'].to_s
-      puts [_source['id'], _source['status'], _source['amount'],
+  all_transactions(args[:start_date], args[:end_date]) do |source, payment|
+    if payment
+      puts [source['id'], source['status'], source['amount'],
             payment.try(:amount), payment.try(:gateway_id), payment.try(:state)].join(",")
+    else
+      puts ">>>>>>>> NAO ENCONTREI O PAGAMENTO!!!!! #{source['id']}"
     end
   end
 end
