@@ -27,13 +27,23 @@ task :verify_pagarme_transactions, [:start_date, :end_date]  => :environment do 
   end
 
   def find_payment source
-    Payment.find_by(gateway_id: source['id'].to_s) ||
-      Payment.find_by(key: source['metadata'].try(:[], 'key').to_s)
+    p = Payment.find_by(gateway_id: source['id'].to_s)
+    unless p
+      key = source['metadata'].try(:[], 'key').to_s
+      puts "Trying to find by key #{key}"
+      p = Payment.where("gateway_id IS NULL AND key = ?", key).first # Só podemos pegar o mesmo pagamento se o gateway_id for nulo para evitar conflito
+      raise "Gateway_id mismatch #{p.gateway_id} (catarse) != #{source['id']} (pagarme)" if p && p.gateway_id && source['id'] != p.gateway_id
+    end
+    p
   end
 
   def find_contribution source
     puts source.inspect
-    return nil if source['customer'].nil?
+    key = source['metadata'].try(:[], 'key').to_s
+    puts "Trying to find contribution by key #{key}"
+    c = Contribution.find_by key: key
+    return c if c.present? # retorna contribution pela chave se encontrou
+    return nil if source['customer'].nil? # senao encontrou pela chave tenta pelo customer
     Contribution.where({
       payer_email: source['customer']['email'],
       value: (source['amount']/100.0)
@@ -83,7 +93,7 @@ task :verify_pagarme_transactions, [:start_date, :end_date]  => :environment do 
   def fix_payments(start_date, end_date)
     not_found = []
     all_transactions(start_date, end_date) do |source, payment|
-      puts "Verifying transaction #{source['id']}..."
+      puts "Verifying transaction #{source['id']}"
       if payment
         # Atualiza os dados usando o pagarme_delegator caso o status não esteja batendo
         yield(source, payment) unless status_ok?(payment, source)
@@ -117,7 +127,9 @@ task :verify_pagarme_transactions, [:start_date, :end_date]  => :environment do 
 
   puts "Verifying all payment from #{args[:start_date]} to #{args[:end_date]}"
   fix_payments(args[:start_date], args[:end_date]) do |source, payment|
-    puts "Updating #{payment.id}..."
+    raise "Gateway_id mismatch #{payment.gateway_id} (catarse) != #{source['id']} (pagarme)" if payment.gateway_id.to_s != source['id'].to_s
+    puts "Updating #{source['id']}(pagarme) - #{payment.gateway_id}(catarse)..."
+    puts "Changing state to #{source['status']}"
     payment.pagarme_delegator.change_status_by_transaction source['status']
     payment.pagarme_delegator.update_transaction
   end
