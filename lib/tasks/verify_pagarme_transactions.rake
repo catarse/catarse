@@ -77,7 +77,7 @@ task :verify_pagarme_transactions, [:start_date, :end_date]  => :environment do 
   end
 
   def status_ok?(payment, source)
-    return true if payment.chargeback?
+    return true if payment.deleted? || payment.chargeback?
     case source['status']
     when 'paid', 'authorized' then
       payment.paid?
