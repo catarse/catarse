@@ -22,8 +22,9 @@
               div= metric[0] || 'Internacional'
             .w-col.w-col-6.w-col-small-6.w-col-tiny-6
               div= metric[1]
-        .fontsize-base.u-marginbottom-40.u-margintop-40
-          p.fontweight-bold Total de usuários com lembrete
+        .u-marginbottom-40.u-margintop-40
+          .fontsize-base.fontweight-bold Total de usuários que clicaram no botão Lembrar-me
+          .fontsize-smaller Esses usuários receberão um lembrete por email 48 horas antes do término de sua campanha
           = @project.users_in_reminder.count
       .w-col.w-col-4
         .card.u-radius.u-marginbottom-20.card-terciary data-ix="new-interaction" 
