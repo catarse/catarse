@@ -21,7 +21,7 @@
               span.fontweight-bold
                 => t('.limited')
               = " (" + reward.display_remaining + ")"
-    .fontsize-small = reward.display_description
+    .fontsize-smaller = reward.display_description
     - if reward.deliver_at.present?
       .fontsize-smallest = "#{t('.reward_deliver_time', estimate: reward.display_deliver_estimate)}".html_safe
     - if current_user && current_user.admin
