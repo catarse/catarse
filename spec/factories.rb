@@ -54,7 +54,7 @@ FactoryGirl.define do
     f.uploaded_image File.open("#{Rails.root}/spec/support/testimg.png")
     f.email { generate(:email) }
     f.about_html "This is Foo bar's biography."
-    f.country_id 1
+    f.association :country, factory: :country
     f.address_street 'fooo'
     f.address_number '123'
     f.address_city 'fooo bar'
