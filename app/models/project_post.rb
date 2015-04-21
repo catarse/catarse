@@ -4,6 +4,8 @@ class ProjectPost < ActiveRecord::Base
 
   belongs_to :project, inverse_of: :posts
   belongs_to :user
+  delegate :email_comment_html, to: :decorator
+
   before_save do
     reference_user
   end
@@ -20,5 +22,9 @@ class ProjectPost < ActiveRecord::Base
 
   def to_partial_path
     "projects/posts/project_post"
+  end
+
+  def decorator
+    @decorator ||= ProjectPostDecorator.new(self)
   end
 end
