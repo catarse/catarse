@@ -76,9 +76,11 @@ RSpec.configure do |config|
 
     CatarsePagarme.configure do |config|
       config.api_key = 'ak_test_XLoo19QDn9kg5JFGU70x12IA4NqbAv'
+      config.ecr_key = 'ek_test_zwAwnRvqD1c9GUERQ7oAP4FPyN9o2v'
       config.slip_tax = 0
       config.credit_card_tax = 0
       config.interest_rate = 0
+      config.host = 'localhost:3000'
     end
 
     # Email notification defaults
