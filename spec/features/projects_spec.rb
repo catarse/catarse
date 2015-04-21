@@ -245,5 +245,13 @@ RSpec.describe "Projects", type: :feature do
       pay
       expect(page).to have_content(I18n.t('projects.contributions.show.thank_you'))
     end
+    it "should redirect to thank you page after paying with a credit card a no reward contribution" do
+      visit project_path(project)
+      find("#contribute_project_form").click
+      find("#submit").click
+      find("#next-step").click
+      pay
+      expect(page).to have_content(I18n.t('projects.contributions.show.thank_you'))
+    end
   end
 end
