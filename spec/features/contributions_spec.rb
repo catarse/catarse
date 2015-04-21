@@ -31,14 +31,15 @@ RSpec.describe "Contributions", type: :feature do
     sleep FeatureHelpers::TIME_TO_SLEEP*2
   end
 
-  describe "contribution navigation" do
+  describe "navigation" do
     context "when project status is failed" do
       let(:project){ create(:project, state: 'failed') }
       it "should not redirect after clicking on reward card" do
         uri_before = URI.parse(current_url)
         first(".card-reward").click
+        sleep FeatureHelpers::TIME_TO_SLEEP
         uri_after = URI.parse(current_url)
-        expect(uri_before).to eq(uri_after+"#project-offline")
+        expect(uri_after).to eq(uri_before+"#project-offline")
       end
     end
     
@@ -48,7 +49,7 @@ RSpec.describe "Contributions", type: :feature do
         uri_before = URI.parse(current_url)
         first(".card-reward").click
         uri_after = URI.parse(current_url)
-        expect(uri_before).to eq(uri_after+"#project-offline")
+        expect(uri_after).to eq(uri_before+"#project-offline")
       end
     end
     
@@ -74,11 +75,10 @@ RSpec.describe "Contributions", type: :feature do
       selected_card.click
       uri = URI.parse(current_url)
       expect(page.has_checked_field?(reward_id)).to be true
-      expect(uri).to have_content(uri_after)
     end
   end
 
-  describe "contribution payment" do
+  describe "payment" do
     it "should redirect to thank you page after paying with a credit card" do
       find("#contribute_project_form").click
       find(".back-reward-radio-reward:nth-of-type(2)").first("label").click
