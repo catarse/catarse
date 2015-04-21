@@ -14,7 +14,6 @@ RSpec.describe Payment, type: :model do
     it{ should validate_presence_of :payment_method }
     it{ should validate_presence_of :value }
     it{ should validate_presence_of :installments }
-    it{ should validate_presence_of :installment_value }
   end
 
   describe ".can_delete" do
