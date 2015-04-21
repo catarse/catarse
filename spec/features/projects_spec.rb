@@ -168,7 +168,27 @@ RSpec.describe "Projects", type: :feature do
     let(:failed_project){ create(:project, state: 'failed') }
 
     before do  
-      login
+      login 
+    end
+
+    #NOTE: It looks like Capybara has issues with input masks: https://github.com/thoughtbot/capybara-webkit/issues/303
+    def send_keys_inputmask(location, keys)
+      len = keys.length - 1
+      (0..keys.length - 1).each_with_index do |e,i|
+        find(location).click
+        find(location).native.send_keys keys[i]
+      end
+    end
+
+    def pay
+      fill_in 'payment_card_name', with: 'FULANO DE TAL'
+      #fill_in 'payment_card_number', with: '4012888888881881'
+      send_keys_inputmask('#payment_card_number','4012888888881881')
+      fill_in 'payment_card_source', with: '606'
+      #fill_in 'payment_card_date', with: '06/2020'
+      send_keys_inputmask('#payment_card_date','06/2020')
+      find("#credit_card_submit").click
+      sleep FeatureHelpers::TIME_TO_SLEEP*2
     end
   
     it "should redirect to contribution/new page after clicking on the contribute button" do
@@ -214,12 +234,15 @@ RSpec.describe "Projects", type: :feature do
       find(".back-reward-radio-reward:nth-of-type(2)").first("label").click
       find("#submit").click
       find("#next-step").click
-      sleep FeatureHelpers::TIME_TO_SLEEP*10
-      fill_in 'payment_card_name', with: 'FULANO DE TAL'
-      fill_in 'payment_card_number', with: '4012888888881881'
-      fill_in 'payment_card_source', with: '606'
-      fill_in 'payment_card_date', with: '06/2020'
+      pay
+      expect(page).to have_content(I18n.t('projects.contributions.show.thank_you'))
+    end
+    it "should redirect to thank you page after paying a contribution without reward with a credit card" do
+      visit project_path(project)
+      find("#contribute_project_form").click
       find("#submit").click
+      find("#next-step").click
+      pay
       expect(page).to have_content(I18n.t('projects.contributions.show.thank_you'))
     end
   end
