@@ -12,7 +12,6 @@ module FeatureHelpers
   end
 
   def current_user
-    FactoryGirl.create(:country)
     @user ||= FactoryGirl.create(:user, password: 'test123', password_confirmation: 'test123')
   end
 end
