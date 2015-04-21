@@ -6,7 +6,7 @@ class Payment < ActiveRecord::Base
   belongs_to :contribution
   has_many :payment_notifications # to keep compatibility with catarse_pagarme
 
-  validates_presence_of :state, :key, :gateway, :payment_method, :value, :installments, :installment_value
+  validates_presence_of :state, :key, :gateway, :payment_method, :value, :installments
   validate :value_should_be_equal_or_greater_than_pledge
 
   before_validation do
