@@ -94,9 +94,9 @@ class User < ActiveRecord::Base
   scope :by_name, ->(name){ where('users.name ~* ?', name) }
   scope :by_id, ->(id){ where(id: id) }
   scope :by_key, ->(key){ where('EXISTS(
-                                SELECT true 
-                                FROM 
-                                  contributions c 
+                                SELECT true
+                                FROM
+                                  contributions c
                                   JOIN payments p ON c.id = p.contribution_id
                                 WHERE c.user_id = users.id AND p.key = ?)', key
                                ) }
@@ -104,20 +104,20 @@ class User < ActiveRecord::Base
   scope :already_used_credits, -> {
     has_credits.
     where("EXISTS (
-            SELECT true 
-            FROM 
-              contributions c 
-              JOIN payments p ON c.id = p.contribution_id 
+            SELECT true
+            FROM
+              contributions c
+              JOIN payments p ON c.id = p.contribution_id
             WHERE p.uses_credits AND p.state = 'paid' AND c.user_id = users.id)")
   }
   scope :has_not_used_credits_last_month, -> { has_credits.
     where("NOT EXISTS (
-                SELECT true 
-                FROM 
-                  contributions c 
-                  JOIN payments p ON c.id = p.contribution_id 
-                WHERE 
-                  current_timestamp - c.created_at < '1 month'::interval 
+                SELECT true
+                FROM
+                  contributions c
+                  JOIN payments p ON c.id = p.contribution_id
+                WHERE
+                  current_timestamp - c.created_at < '1 month'::interval
                   AND p.uses_credits AND p.state = 'paid' AND c.user_id = users.id)")
   }
 
@@ -250,12 +250,6 @@ class User < ActiveRecord::Base
   def fix_facebook_link
     if self.facebook_link.present?
       self.facebook_link = ('http://' + self.facebook_link) unless self.facebook_link[/^https?:\/\//]
-    end
-  end
-
-  def fix_other_link
-    if self.other_link.present?
-      self.other_link = ('http://' + self.other_link) unless self.other_link[/^https?:\/\//]
     end
   end
 
