@@ -83,6 +83,7 @@ RSpec.describe "Contributions", type: :feature do
       find("#contribute_project_form").click
       find(".back-reward-radio-reward:nth-of-type(2)").first("label").click
       find("#submit").click
+      sleep FeatureHelpers::TIME_TO_SLEEP
       find("#next-step").click
       pay
       expect(page).to have_content(I18n.t('projects.contributions.show.thank_you'))
@@ -91,6 +92,7 @@ RSpec.describe "Contributions", type: :feature do
     it "should redirect to thank you page after paying a contribution without reward with a credit card" do
       find("#contribute_project_form").click
       find("#submit").click
+      sleep FeatureHelpers::TIME_TO_SLEEP
       find("#next-step").click
       pay
       expect(page).to have_content(I18n.t('projects.contributions.show.thank_you'))
@@ -99,6 +101,7 @@ RSpec.describe "Contributions", type: :feature do
     it "should redirect to thank you page after paying with a credit card a no reward contribution" do
       find("#contribute_project_form").click
       find("#submit").click
+      sleep FeatureHelpers::TIME_TO_SLEEP
       find("#next-step").click
       pay
       expect(page).to have_content(I18n.t('projects.contributions.show.thank_you'))
