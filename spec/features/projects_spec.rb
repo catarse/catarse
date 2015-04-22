@@ -157,10 +157,8 @@ RSpec.describe "Projects", type: :feature do
       sleep FeatureHelpers::TIME_TO_SLEEP
       fill_in "project_posts_attributes_0_title", with: 'Foo title'
       page.execute_script( "$('.redactor').redactor('code.set', 'Bar')" )
-      
       click_button(I18n.t('projects.dashboard_posts.publish'))
       expect(page).to have_content('Foo title')
     end
   end
-
 end
