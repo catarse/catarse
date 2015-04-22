@@ -9,7 +9,7 @@ RSpec.describe ProjectPostDecorator do
       it{ is_expected.to eq('<a href="http://www.foo.com">www.foo.com</a> <p>Bar</p>') }
     end
 
-    context "when project there is no video iframe" do
+    context "when there is no video iframe" do
       let(:project_post){ create(:project_post, comment_html: '<p>Bar</p>') }
       it{ is_expected.to eq('<p>Bar</p>') }
     end
