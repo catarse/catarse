@@ -1,10 +1,12 @@
 .card.card-user.u-radius.u-marginbottom-30
-  .w-clearfix
-    = image_tag resource.display_image, width: "100", class: "thumb u-left u-round u-marginbottom-30"
-    .fontsize-small.fontweight-semibold.lineheight-tighter = link_to resource.display_name, user_path(resource), class: 'link-hidden'
-    .fontsize-smallest.lineheight-looser = resource.address_city
-  .fontsize-smallest = t('created_project', count: resource.created_projects.size)
-  .fontsize-smallest = t('contributed_project', count: resource.total_contributed_projects)
+  .w-row
+    .w-col.w-col-4.w.col-small-4.w-col-tiny-4.w-clearfix  
+      = image_tag resource.display_image, width: "100", class: "thumb u-round u-marginbottom-30"
+    .w-col.w-col-8.w-col-small-8.w-col-tiny-8
+      .fontsize-small.fontweight-semibold.lineheight-tighter = link_to resource.display_name, user_path(resource), class: 'link-hidden'
+      .fontsize-smallest.lineheight-looser = resource.address_city
+      .fontsize-smallest = t('created_project', count: resource.created_projects.size)
+      .fontsize-smallest = t('contributed_project', count: resource.total_contributed_projects)
   .project-author-contacts
     ul.w-list-unstyled.fontsize-smaller.fontweight-semibold
       - if resource.facebook_link.present?

@@ -24,6 +24,10 @@ FactoryGirl.define do
     f.association :category
   end
 
+  factory :country do |f|
+    f.name "Brasil"
+  end
+
   factory :user_without_bank_data, class: User do |f|
     f.name "Foo bar"
     f.password "123456"
@@ -46,10 +50,11 @@ FactoryGirl.define do
     f.permalink { generate(:permalink) }
     f.name "Foo bar"
     f.password "123456"
-    f.cpf "123456"
+    f.cpf "97666238991"
     f.uploaded_image File.open("#{Rails.root}/spec/support/testimg.png")
     f.email { generate(:email) }
     f.about_html "This is Foo bar's biography."
+    f.association :country, factory: :country
     f.address_street 'fooo'
     f.address_number '123'
     f.address_city 'fooo bar'
@@ -247,8 +252,8 @@ FactoryGirl.define do
   factory :bank_account do |f|
     #f.association :user, factory: :user
     f.association :bank, factory: :bank
-    owner_name "Foo"
-    owner_document "000"
+    owner_name "Foo Bar"
+    owner_document "97666238991"
     account_digit "1"
     agency "1"
     agency_digit "1"
