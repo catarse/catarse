@@ -27,12 +27,12 @@ task :verify_pagarme_transactions, [:start_date, :end_date]  => :environment do 
   end
 
   def find_payment source
-    p = Payment.find_by(gateway_id: source['id'].to_s)
+    gateway_id = source['id'].to_s
+    p = Payment.find_by(gateway_id: gateway_id)
     unless p
       key = source['metadata'].try(:[], 'key').to_s
       puts "Trying to find by key #{key}"
       p = Payment.where("gateway_id IS NULL AND key = ?", key).first # Só podemos pegar o mesmo pagamento se o gateway_id for nulo para evitar conflito
-      raise "Gateway_id mismatch #{p.gateway_id} (catarse) != #{source['id']} (pagarme)" if p && p.gateway_id && source['id'] != p.gateway_id
     end
     p
   end
@@ -47,8 +47,7 @@ task :verify_pagarme_transactions, [:start_date, :end_date]  => :environment do 
     Contribution.where({
       payer_email: source['customer']['email'],
       value: (source['amount']/100.0)
-    }).where("(created_at::timestamptz AT TIME ZONE 'America/Sao_Paulo')::date = ?",
-             source['date_created'].to_date).order(:id).last
+    }).where("created_at::date = ?", source['date_created'].to_date).order(:id).last
   end
 
   def all_transactions(start_date, end_date)
@@ -95,6 +94,12 @@ task :verify_pagarme_transactions, [:start_date, :end_date]  => :environment do 
     all_transactions(start_date, end_date) do |source, payment|
       puts "Verifying transaction #{source['id']}"
       if payment
+        # Caso tenha encontrado o pagamento pela chave mas ele tenha gateway_id nulo nós atualizamos o gateway_id antes de prosseguir
+        if payment.gateway_id.nil?
+          puts "Updating payment gateway_id to #{source['id']}"
+          payment.update_attributes gateway_id: source['id']
+        end
+
         # Atualiza os dados usando o pagarme_delegator caso o status não esteja batendo
         yield(source, payment) unless status_ok?(payment, source)
       else
