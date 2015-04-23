@@ -33,7 +33,7 @@ class Projects::MetricsController < ApplicationController
   end
 
   def collection
-    @contributions ||= parent.contributions.where('contributions.is_confirmed')
+    @contributions ||= parent.contributions.where('contributions.was_confirmed')
   end
 
   def parent
