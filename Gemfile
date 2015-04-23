@@ -33,6 +33,7 @@ gem 'user_notifier', '~> 0.0.5'
 
 # Mixpanel for backend tracking
 gem 'mixpanel-ruby'
+gem 'mixpanel_client'
 
 # Payment engines
 gem 'catarse_paypal_express', '3.0.2'

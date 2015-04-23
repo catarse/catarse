@@ -33,7 +33,7 @@ class MixpanelObserver < ActiveRecord::Observer
 
     # Detect project owner profile changes
     if record.kind_of?(User) && record.has_online_project? && record.changed?
-      if %w[name about_html uploaded_image twitter facebook_link other_link].any?{|attr| record.send("#{attr}_changed?") }
+      if %w[name about_html uploaded_image twitter facebook_link].any?{|attr| record.send("#{attr}_changed?") }
         track_project_owner_engagement(record, 'Updated profile')
       end
     end
