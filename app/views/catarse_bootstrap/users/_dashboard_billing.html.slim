@@ -58,7 +58,7 @@
           .w-row
             .w-col.w-col-6.w-sub-col
               = bform.label :owner_document, class: 'field-label fontweight-semibold force-text-dark'
-              = bform.input_field :owner_document, as: :tel, class: 'positive'
+              = bform.input_field :owner_document, as: :tel, validation_text: true, class: 'positive', data: { :'validate-cpf-cnpj' => true }
             .w-col.w-col-6
 
       .u-margintop-30
