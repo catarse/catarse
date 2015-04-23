@@ -32,3 +32,17 @@ App.addChild('DashboardUserSettings', {
 
 
 });
+
+App.addChild('DashboardUserSettingsForm', _.extend({
+  el: '#project_account_form',
+
+  events: {
+    'blur input' : 'checkInput',
+    'click input[type="submit"]' : 'validate'
+  },
+
+  activate: function(){
+    this.setupForm();
+  }
+
+}, Skull.Form));
