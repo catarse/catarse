@@ -16,6 +16,7 @@ App.addChild('UserEdit', _.extend({
     this.route('feeds');
 
     this.lookAnchors();
+
   },
 
   toggleNotifications: function(event){
@@ -41,4 +42,16 @@ App.addChild('UserEdit', _.extend({
   }
 }, Skull.Tabs));
 
+App.addChild('UserBillingForm', _.extend({
+  el: '#user_billing_form',
 
+  events: {
+    'blur input' : 'checkInput',
+    'click input[type="submit"]' : 'validate'
+  },
+
+  activate: function(){
+    this.setupForm();
+  }
+
+}, Skull.Form));
