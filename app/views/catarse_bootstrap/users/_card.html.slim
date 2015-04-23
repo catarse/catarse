@@ -15,9 +15,6 @@
       - if resource.twitter_link
         li
           = link_to t('.twitter_profile'), resource.twitter_link, target: '_blank', class: 'link-hidden'
-      - if resource.other_link.present?
-        li
-          = link_to t('.author_website'), resource.other_link, target: '_blank', class: 'link-hidden'
       - resource.links.with_link.each do |link|
         li
           = link_to truncate(link.hostname, length: 30), link.link, target: '_blank', class: 'link-hidden'
