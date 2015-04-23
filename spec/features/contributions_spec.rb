@@ -28,7 +28,7 @@ RSpec.describe "Contributions", type: :feature do
     #fill_in 'payment_card_date', with: '06/2020'
     send_keys_inputmask('#payment_card_date','06/2020')
     find("#credit_card_submit").click
-    sleep FeatureHelpers::TIME_TO_SLEEP*2
+    sleep FeatureHelpers::TIME_TO_SLEEP*4
   end
 
   describe "navigation" do
