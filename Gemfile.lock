@@ -28,7 +28,7 @@ GIT
 
 GIT
   remote: git://github.com/catarse/redactor-rails.git
-  revision: 0fc3027a10ce579b7458e1c3246058451d14d971
+  revision: da639a604be9755ba15619bd6bf1a4c053c4f828
   specs:
     redactor-rails (0.5.0)
       devise
@@ -140,7 +140,7 @@ GEM
     coffee-script (2.4.1)
       coffee-script-source
       execjs
-    coffee-script-source (1.9.1)
+    coffee-script-source (1.9.1.1)
     compass (1.0.3)
       chunky_png (~> 1.2)
       compass-core (~> 1.0.2)
@@ -159,11 +159,11 @@ GEM
       compass (~> 1.0.0)
       sass-rails (<= 5.0.1)
       sprockets (< 2.13)
-    connection_pool (2.1.3)
-    coveralls (0.8.0)
-      multi_json (~> 1.10)
+    connection_pool (2.2.0)
+    coveralls (0.8.1)
+      json (~> 1.8)
       rest-client (>= 1.6.8, < 2)
-      simplecov (~> 0.9.1)
+      simplecov (~> 0.10.0)
       term-ansicolor (~> 1.3)
       thor (~> 0.19.1)
     crack (0.1.8)
@@ -200,7 +200,7 @@ GEM
     ethon (0.7.3)
       ffi (>= 1.3.0)
     eventmachine (1.0.7)
-    excon (0.45.1)
+    excon (0.45.3)
     execjs (2.5.2)
     extlib (0.9.16)
     ezcrypto (0.7.2)
@@ -266,7 +266,7 @@ GEM
     fog-json (1.0.1)
       fog-core (~> 1.0)
       multi_json (~> 1.0)
-    fog-local (0.2.0)
+    fog-local (0.2.1)
       fog-core (~> 1.27)
     fog-powerdns (0.1.1)
       fog-core (~> 1.27)
@@ -290,7 +290,7 @@ GEM
     fog-serverlove (0.1.2)
       fog-core
       fog-json
-    fog-softlayer (0.4.3)
+    fog-softlayer (0.4.5)
       fog-core
       fog-json
     fog-storm_on_demand (0.1.1)
@@ -311,7 +311,7 @@ GEM
     foreman (0.78.0)
       thor (~> 0.19.1)
     formatador (0.2.5)
-    google-api-client (0.8.5)
+    google-api-client (0.8.6)
       activesupport (>= 3.2)
       addressable (~> 2.3)
       autoparse (~> 0.3)
@@ -340,7 +340,7 @@ GEM
     hashie (3.4.1)
     heroku-deflater (0.5.3)
       rack (>= 1.4.5)
-    high_voltage (2.2.1)
+    high_voltage (2.3.0)
     hike (1.2.3)
     hitimes (1.2.2)
     htmlentities (4.3.3)
@@ -360,10 +360,10 @@ GEM
       responders (~> 1.0.0.rc)
     ipaddress (0.8.0)
     jasmine-core (2.2.0)
-    jasmine-rails (0.10.7)
+    jasmine-rails (0.10.8)
       jasmine-core (>= 1.3, < 3.0)
-      phantomjs (< 2.0)
-      railties (>= 3.1.0)
+      phantomjs (>= 1.9)
+      railties (>= 3.2.0)
       sprockets-rails
     jquery-rails (3.1.2)
       railties (>= 3.0, < 5.0)
@@ -387,16 +387,16 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
-    mail_form (1.5.0)
+    mail_form (1.5.1)
       actionmailer (>= 3.2, < 5)
       activemodel (>= 3.2, < 5)
     mailchimp-api (2.0.6)
       excon (>= 0.16.0)
       json (>= 1.7.7)
-    memoist (0.11.0)
+    memoist (0.12.0)
     method_source (0.8.2)
     mime-types (2.4.3)
-    mini_magick (4.2.1)
+    mini_magick (4.2.3)
     mini_portile (0.6.2)
     minitest (5.6.0)
     mixpanel-ruby (2.1.0)
@@ -450,7 +450,7 @@ GEM
       multi_json
       rest-client
     pg (0.17.1)
-    pg_search (0.7.9)
+    pg_search (1.0.0)
       activerecord (>= 3.1)
       activesupport (>= 3.1)
       arel
@@ -460,7 +460,7 @@ GEM
       cliver (~> 0.3.1)
       multi_json (~> 1.0)
       websocket-driver (>= 0.2.0)
-    postgres-copy (0.9.1)
+    postgres-copy (0.9.2)
       activerecord (>= 4.0)
       pg (>= 0.17)
       rails (>= 4.0)
@@ -471,7 +471,7 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
-    pundit (0.3.0)
+    pundit (1.0.0)
       activesupport (>= 3.0.0)
     rack (1.5.2)
     rack-test (0.6.3)
@@ -549,7 +549,7 @@ GEM
       railties (>= 4.0.0, < 5.0)
       sass (>= 3.1.10)
       sprockets-rails (~> 2.0.0)
-    sax-machine (1.3.1)
+    sax-machine (1.3.2)
     schema_plus (1.8.8)
       activerecord (>= 3.2, <= 4.2.0)
       valuable
@@ -579,11 +579,11 @@ GEM
     simple_form (3.1.0)
       actionpack (~> 4.0)
       activemodel (~> 4.0)
-    simplecov (0.9.2)
+    simplecov (0.10.0)
       docile (~> 1.1.0)
-      multi_json (~> 1.0)
-      simplecov-html (~> 0.9.0)
-    simplecov-html (0.9.0)
+      json (~> 1.8)
+      simplecov-html (~> 0.10.0)
+    simplecov-html (0.10.0)
     slim (3.0.3)
       temple (~> 0.7.3)
       tilt (>= 1.3.3, < 2.1)
@@ -598,7 +598,7 @@ GEM
       activemodel (>= 3.0.0)
     spreadsheet (1.0.3)
       ruby-ole (>= 1.0)
-    sprockets (2.10.1)
+    sprockets (2.10.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
       rack (~> 1.0)
@@ -647,7 +647,7 @@ GEM
       multi_json
     warden (1.2.3)
       rack (>= 1.0)
-    websocket (1.2.1)
+    websocket (1.2.2)
     websocket-driver (0.5.4)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.2)

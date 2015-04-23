@@ -34,6 +34,7 @@ window.init_redactor = function(){
         minHeight: 300,
         convertVideoLinks: true,
         convertUrlLinks: true,
+        convertImageLinks: false,
         // You can specify, which ones plugins you need.
         // If you want to use plugins, you have add plugins to your
         // application.js and application.css files and uncomment the line below:
@@ -44,6 +45,6 @@ window.init_redactor = function(){
         "path":"/assets/redactor-rails",
         "css":"style.css"
       });
-}
+    };
 
 $(document).on( 'ready page:load', window.init_redactor );
