@@ -3,7 +3,7 @@ namespace :cron do
   task hourly: [:finish_projects, :cancel_expired_waiting_confirmation_contributions]
 
   desc "Tasks that should run daily"
-  task daily: [:update_payment_service_fee, :notify_project_owner_about_new_confirmed_contributions, :deliver_projects_of_week]
+  task daily: [:update_payment_service_fee, :notify_project_owner_about_new_confirmed_contributions, :deliver_projects_of_week, :verify_pagarme_transactions]
 
   desc "Finish all expired projects"
   task finish_projects: :environment do
