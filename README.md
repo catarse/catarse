@@ -104,7 +104,6 @@ Author: Daniel Weinmann
 
 Contributors: You know who you are ;) The commit history can help, but the list was getting bigger and pointless to keep in the README.
 
-
 ## License
 
 Copyright (c) 2011 Softa
