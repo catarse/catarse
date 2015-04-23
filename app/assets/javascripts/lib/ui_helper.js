@@ -12,8 +12,11 @@ Skull.UI_helper = {
           .removeAttr('width');
       }
     });
-    this.updateIframeSize();
     this.windowResize();
+    //Prevents wrong container width calculation
+    setTimeout(function(){
+      this.updateIframeSize();  
+    },0);
   },
 
   windowResize: function() {
