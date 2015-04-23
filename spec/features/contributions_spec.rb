@@ -62,10 +62,9 @@ RSpec.describe "Contributions", type: :feature do
     it "should redirect to contribution/edit page after selecting reward and clicking forward" do
       find("#contribute_project_form").click
       find(".back-reward-radio-reward:nth-of-type(2)").first("label").click
-      reward_id = find("input[name='contribution[reward_id]']:checked").value
       find("#submit").click
       uri = URI.parse(current_url)
-      expect(uri).to have_content("contributions/#{reward_id}/edit")
+      expect(uri).to have_content(/\/contributions\/(\d+)\/edit/)
     end
     
     it "should redirect with selected reward when clicking on card reward" do
