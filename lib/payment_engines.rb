@@ -3,13 +3,13 @@ class PaymentEngines
 
   def self.find_engine name
     # if name is nil we should return nil
-    name && @@engines.find do |engine|
+    name && engines.find do |engine|
       engine.name.downcase == name.downcase
     end
   end
 
   def self.register options
-    @@engines.push(options)
+    # This method is deprecated. Engines are now dynamicaly found.
   end
 
   def self.clear
@@ -17,7 +17,12 @@ class PaymentEngines
   end
 
   def self.engines
-    @@engines.sort{|a,b| (a.locale == I18n.locale.to_s ? -1 : 1) }
+    ::Rails::Engine.subclasses.map do |e| 
+      engine_namespace = e.instance.railtie_namespace
+      if engine_namespace && engine_namespace.constants.include?(:PaymentEngine)
+        engine_namespace.const_get(:PaymentEngine).new
+      end
+    end.compact 
   end
 
   def self.create_payment_notification attributes
