@@ -111,7 +111,36 @@ RSpec.describe ProjectObserver do
 
   describe "#from_online_to_waiting_funds" do
     before do
+      redbooth_user
       project.notify_observers(:from_online_to_waiting_funds)
+    end
+
+    context "when project has not reached goal" do
+      let(:project) do
+        project = create(:project, state: 'draft', goal: 3000)
+        create(:reward, project: project)
+        project.update_attribute :state, :online
+        allow(project).to receive(:reached_goal?).and_return(false)
+        project
+      end
+
+      it "should not send redbooth_task_project_will_succeed notification" do
+        expect(ProjectNotification.where(template_name: 'redbooth_task_project_will_succeed', user: redbooth_user, project: project).count).to eq 0
+      end
+    end
+
+    context "when project has reached goal" do
+      let(:project) do
+        project = create(:project, state: 'draft', goal: 3000)
+        create(:reward, project: project)
+        project.update_attribute :state, :online
+        allow(project).to receive(:reached_goal?).and_return(true)
+        project
+      end
+
+      it "should send redbooth_task_project_will_succeed notification" do
+        expect(ProjectNotification.where(template_name: 'redbooth_task_project_will_succeed', user: redbooth_user, project: project).count).to eq 1
+      end
     end
 
     it "should send project_visible notification" do
