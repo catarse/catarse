@@ -1,0 +1,26 @@
+- project = @notification.project
+- project_account = project.account
+- project_link = project_by_slug_url(permalink: project.permalink)
+br/
+p O projeto (#{link_to project.name, project_link}) está aguardando boletos e provavelmente será bem sucedido.
+p Arrecadado: #{project.display_pledged_with_cents}
+p Data de expiração: #{project.display_expires_at}
+p 
+  | Dados do realizador:
+  br/
+  | Nome: #{project.user.name}
+  br/
+  | Email: #{project.user.email}
+  br/
+  | Telefone: #{project.user.phone_number}
+p 
+  | Dados Bancarios:
+  br/
+  | Banco: #{project_account.try(:bank).try(:name)}
+  br/
+  | Agência: #{project_account.try(:agency)}- #{project_account.try(:agency_digit)}
+  br/
+  | Conta: #{project_account.try(:account)} - #{project_account.try(:account_digit)}
+  br/
+  | Nome do titular: #{project_account.try(:owner_name)}
+
