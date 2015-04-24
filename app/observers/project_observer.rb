@@ -79,7 +79,7 @@ class ProjectObserver < ActiveRecord::Observer
   end
 
   def notify_redbooth(project, template)
-    project.notify_once(template, redbooth_user, project, { from_email: CatarseSettings[:redbooth_from_email] }) if redbooth_user
+    project.notify_once(template, redbooth_user) if redbooth_user
   end
 
   def notify_admin_that_project_is_successful(project)
