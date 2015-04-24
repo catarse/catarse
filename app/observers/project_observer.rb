@@ -30,6 +30,7 @@ class ProjectObserver < ActiveRecord::Observer
 
   def from_online_to_waiting_funds(project)
     project.notify_owner(:project_in_waiting_funds, { from_email: CatarseSettings[:email_projects] })
+    notify_admin_project_will_succeed(project) if project.reached_goal?
   end
 
   def from_waiting_funds_to_successful(project)
@@ -76,6 +77,11 @@ class ProjectObserver < ActiveRecord::Observer
   def notify_admin_that_project_is_successful(project)
     redbooth_user = User.find_by(email: CatarseSettings[:email_redbooth])
     project.notify_once(:redbooth_task, redbooth_user) if redbooth_user
+  end
+
+  def notify_admin_project_will_succeed(project)
+    redbooth_user = User.find_by(email: CatarseSettings[:email_redbooth_atendimento])
+    project.notify_once(:redbooth_task_project_will_succeed, redbooth_user) if redbooth_user
   end
 
   def notify_admin_that_project_reached_deadline(project)
