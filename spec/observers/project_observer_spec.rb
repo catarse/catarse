@@ -19,6 +19,11 @@ RSpec.describe ProjectObserver do
     create(:user, email: CatarseSettings[:email_redbooth])
   end
 
+  let(:redbooth_user_atendimento) do
+    CatarseSettings[:email_redbooth_atendimento] = 'foo_atendimento@foo.com'
+    create(:user, email: CatarseSettings[:email_redbooth_atendimento])
+  end
+
   subject{ contribution }
 
   before do
@@ -111,7 +116,7 @@ RSpec.describe ProjectObserver do
 
   describe "#from_online_to_waiting_funds" do
     before do
-      redbooth_user
+      redbooth_user_atendimento
       project.notify_observers(:from_online_to_waiting_funds)
     end
 
@@ -125,7 +130,7 @@ RSpec.describe ProjectObserver do
       end
 
       it "should not send redbooth_task_project_will_succeed notification" do
-        expect(ProjectNotification.where(template_name: 'redbooth_task_project_will_succeed', user: redbooth_user, project: project).count).to eq 0
+        expect(ProjectNotification.where(template_name: 'redbooth_task_project_will_succeed', user: redbooth_user_atendimento, project: project).count).to eq 0
       end
     end
 
@@ -139,7 +144,7 @@ RSpec.describe ProjectObserver do
       end
 
       it "should send redbooth_task_project_will_succeed notification" do
-        expect(ProjectNotification.where(template_name: 'redbooth_task_project_will_succeed', user: redbooth_user, project: project).count).to eq 1
+        expect(ProjectNotification.where(template_name: 'redbooth_task_project_will_succeed', user: redbooth_user_atendimento, project: project).count).to eq 1
       end
     end
 

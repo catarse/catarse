@@ -74,20 +74,14 @@ class ProjectObserver < ActiveRecord::Observer
   end
 
   private
-  def redbooth_user
-    User.find_by(email: CatarseSettings[:email_redbooth])
-  end
-
-  def notify_redbooth(project, template)
-    project.notify_once(template, redbooth_user) if redbooth_user
-  end
-
   def notify_admin_that_project_is_successful(project)
-    notify_redbooth project, :redbooth_task
+    redbooth_user = User.find_by(email: CatarseSettings[:email_redbooth])
+    project.notify_once(:redbooth_task, redbooth_user) if redbooth_user
   end
 
   def notify_admin_project_will_succeed(project)
-    notify_redbooth project, :redbooth_task_project_will_succeed
+    redbooth_user = User.find_by(email: CatarseSettings[:email_redbooth_atendimento])
+    project.notify_once(:redbooth_task_project_will_succeed, redbooth_user) if redbooth_user
   end
 
   def notify_admin_that_project_reached_deadline(project)
