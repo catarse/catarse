@@ -28,6 +28,7 @@ class Project < ActiveRecord::Base
   has_one :account, class_name: "ProjectAccount", inverse_of: :project
   has_many :rewards
   has_many :contributions
+  has_many :contribution_details
   has_many :payments, through: :contributions
   has_many :posts, class_name: "ProjectPost", inverse_of: :project
   has_many :budgets, class_name: "ProjectBudget", inverse_of: :project
