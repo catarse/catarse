@@ -1,5 +1,5 @@
 class Projects::ContributionDetailsController < ApplicationController
-  has_scope :available_to_count, type: :boolean
+  has_scope :was_confirmed, type: :boolean
   has_scope :pending, type: :boolean
   has_scope :page, default: 1
 
