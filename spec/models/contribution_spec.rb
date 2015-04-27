@@ -83,21 +83,6 @@ RSpec.describe Contribution, type: :model do
     end
   end
 
-
-  describe ".pending" do
-    subject{ Contribution.pending }
-
-    before do
-      @pending = create(:pending_contribution)
-      create(:confirmed_contribution)
-      create(:contribution)
-      two_payments = create(:pending_contribution)
-      create(:payment, state: 'paid', contribution: two_payments)
-    end
-
-    it{ is_expected.to eq [@pending] }
-  end
-
   describe ".can_refund" do
     subject{ Contribution.can_refund.load }
     before do
