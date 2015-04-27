@@ -2,7 +2,7 @@ App.views.Project.addChild('ProjectContributions', _.extend({
   el: '#project_contributions',
 
   activate: function(){
-    this.filter = {available_to_count: true};
+    this.filter = {was_confirmed: true};
     this.setupPagination(
       this.$("#contributions-loading img"),
       this.$("#load-more"),
@@ -25,7 +25,7 @@ App.views.Project.addChild('ProjectContributions', _.extend({
       this.filter.pending = true;
     }
     else{
-      this.filter.available_to_count = true;
+      this.filter.was_confirmed = true;
     }
 
     this.$('.results').empty();
