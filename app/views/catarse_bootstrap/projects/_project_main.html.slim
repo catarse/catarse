@@ -19,7 +19,7 @@ section.section
                 button id="load-more" class="btn btn-medium btn-terciary hidden"
                   = t('shared.load_more')
 
-        #project_contributions.content.w-col.w-col-8.w-hidden[data-path=project_contributions_path(project_id: @project.id)]
+        #project_contributions.content.w-col.w-col-8.w-hidden[data-path=details_project_contributions_path(project_id: @project.id)]
           - if policy(@project).update?
             .w-row
               .w-col.w-col-1
