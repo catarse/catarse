@@ -58,6 +58,19 @@ RSpec.describe Contribution, type: :model do
     it { is_expected.to have(7).items }
   end
 
+  describe '#pending?' do
+    subject{ contribution.pending? }
+    context "when contribution has no pending payment" do
+      let(:contribution){ create(:confirmed_contribution) }
+      it{ is_expected.to eq false }
+    end
+
+    context "when contribution has pending payment" do
+      let(:contribution){ create(:pending_contribution) }
+      it{ is_expected.to eq true }
+    end
+  end
+
   describe '#recommended_projects' do
     let(:contribution){ create(:confirmed_contribution) }
     subject{ contribution.recommended_projects }
@@ -81,21 +94,6 @@ RSpec.describe Contribution, type: :model do
       end
       it{ is_expected.to eq [@recommended] }
     end
-  end
-
-
-  describe ".pending" do
-    subject{ Contribution.pending }
-
-    before do
-      @pending = create(:pending_contribution)
-      create(:confirmed_contribution)
-      create(:contribution)
-      two_payments = create(:pending_contribution)
-      create(:payment, state: 'paid', contribution: two_payments)
-    end
-
-    it{ is_expected.to eq [@pending] }
   end
 
   describe ".can_refund" do

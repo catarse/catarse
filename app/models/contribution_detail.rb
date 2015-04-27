@@ -26,6 +26,8 @@ class ContributionDetail < ActiveRecord::Base
   scope :user_email_contains, ->(term) { joins(:user).where("unaccent(upper(users.email)) LIKE ('%'||unaccent(upper(?))||'%') OR unaccent(upper(payer_email)) LIKE ('%'||unaccent(upper(?))||'%')", term, term) }
 
   scope :with_state, ->(state){ where(state: state) }
+  scope :pending, ->{ where(state: 'pending') }
+  scope :was_confirmed, ->{ where("contribution_details.state = ANY(confirmed_states())") }
 
   # Scopes based on project state
   scope :with_project_state, ->(state){ joins(:project).merge(Project.with_state(state)) }

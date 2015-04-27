@@ -17,14 +17,10 @@ class Contribution < ActiveRecord::Base
   validates_presence_of :project, :user, :value
   validates_numericality_of :value, greater_than_or_equal_to: 10.00
 
-  scope :available_to_count, ->{ where(was_confirmed: true) }
   scope :by_id, ->(id) { where(id: id) }
   scope :anonymous, -> { where(anonymous: true) }
   scope :not_anonymous, -> { where(anonymous: false) }
   scope :confirmed_last_day, -> { where("EXISTS(SELECT true FROM payments p WHERE p.contribution_id = contributions.id AND p.state = 'paid' AND (current_timestamp - p.paid_at) < '1 day'::interval)") }
-  scope :pending, ->{
-    where("EXISTS (SELECT true FROM payments p WHERE p.contribution_id = contributions.id AND p.state = 'pending') AND NOT contributions.was_confirmed")
-  }
 
   scope :not_created_today, -> { where.not("contributions.created_at::date AT TIME ZONE '#{Time.zone.tzinfo.name}' = current_timestamp::date AT TIME ZONE '#{Time.zone.tzinfo.name}'") }
   scope :can_cancel, -> { where(can_cancel: true) }
@@ -80,7 +76,7 @@ class Contribution < ActiveRecord::Base
   end
 
   def pending?
-    Contribution.pending.where(id: self.id).exists?
+    payments.with_state('pending').exists?
   end
 
   # Used in payment engines
