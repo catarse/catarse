@@ -27,7 +27,7 @@ class ContributionDetail < ActiveRecord::Base
 
   scope :with_state, ->(state){ where(state: state) }
   scope :pending, ->{ where(state: 'pending') }
-  scope :was_confirmed, ->{ where("state = ANY(confirmed_states())") }
+  scope :was_confirmed, ->{ where("contribution_details.state = ANY(confirmed_states())") }
 
   # Scopes based on project state
   scope :with_project_state, ->(state){ joins(:project).merge(Project.with_state(state)) }
