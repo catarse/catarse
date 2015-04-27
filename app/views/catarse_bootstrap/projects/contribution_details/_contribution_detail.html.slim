@@ -1,0 +1,22 @@
+- contribution = contribution_detail
+-  if !contribution.anonymous || policy(@project).update?
+  .w-clearfix.u-marginbottom-20
+
+    .w-row
+      .w-col.w-col-2  
+        = link_to user_path(contribution.user) do
+          .thumb.u-left.u-round[style="background-image: url('#{contribution.user.display_image}'); background-size: contain;"]
+
+      .w-col.w-col-10
+        .fontsize-base.fontweight-semibold
+          = link_to user_path(contribution.user), class: 'link-hidden-dark' do
+            = contribution.user.short_name
+        - if policy(@project).update?
+          .fontsize-smaller 
+            = number_to_currency contribution.value
+            - if contribution.anonymous?
+              |&nbsp;-&nbsp;
+              strong= t('.anonymous_contribution')
+        .fontsize-smaller = l(contribution.created_at, format: :simple)
+        .fontsize-smaller = contribution.user.contributions_text
+  .divider.u-marginbottom-20
