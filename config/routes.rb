@@ -39,8 +39,11 @@ Catarse::Application.routes.draw do
     resources :rewards, only: [ :index ] do
       post :sort, on: :member
     end
-    resources :contributions, {controller: 'projects/contributions'} do
-      get :fallback_create, to: 'projects/contributions#create', on: :collection
+    resources :contributions, {except: [:index], controller: 'projects/contributions'} do
+      collection do
+        get :details, to: 'projects/contribution_details#index'
+        get :fallback_create, to: 'projects/contributions#create'
+      end
       put :credits_checkout, on: :member
     end
 

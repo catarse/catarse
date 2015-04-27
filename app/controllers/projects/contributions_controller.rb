@@ -26,10 +26,6 @@ class Projects::ContributionsController < ApplicationController
     render json: {message: 'updated'}
   end
 
-  def index
-    render collection
-  end
-
   def show
     authorize resource
     @title = t('projects.contributions.show.title')
@@ -84,9 +80,5 @@ class Projects::ContributionsController < ApplicationController
 
   def engine
     PaymentEngines.find_engine('Pagarme')
-  end
-
-  def collection
-    @contributions ||= apply_scopes(end_of_association_chain).available_to_display.order("created_at DESC").per(10)
   end
 end
