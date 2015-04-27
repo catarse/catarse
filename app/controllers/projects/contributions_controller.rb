@@ -2,9 +2,6 @@ class Projects::ContributionsController < ApplicationController
   inherit_resources
   actions :index, :show, :new, :update, :review, :create
   skip_before_filter :verify_authenticity_token, only: [:moip]
-  has_scope :available_to_count, type: :boolean
-  has_scope :pending, type: :boolean
-  has_scope :page, default: 1
   after_filter :verify_authorized, except: [:index]
   belongs_to :project
   before_filter :detect_old_browsers, only: [:new, :create]
