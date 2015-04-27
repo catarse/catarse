@@ -275,7 +275,7 @@ p {
 .text-field.error {
   margin-bottom: 5px;
   border-color: #e86666;
-  background-color: rgba(232, 102, 102, 0.10);
+  background-color: rgba(232, 102, 102, 0.09);
 }
 .text-field.bottom {
   border-top-left-radius: 0px;
@@ -1072,13 +1072,6 @@ p {
   background-color: #3f4752;
   color: #f1f4f4;
 }
-.page-header.hero-start {
-  margin-bottom: -60px;
-  padding-top: 94px;
-  background-image: url('../images/hero-start.jpg');
-  background-size: cover;
-  color: white;
-}
 .project-about-highlight {
   margin-top: 38px;
   margin-bottom: 34px;
@@ -1648,6 +1641,37 @@ p {
 .dashboard-nav-link.mf {
   margin-right: 15px;
 }
+.dashboard-nav-link.dark {
+  border: 0px solid black;
+  border-radius: 3px;
+  background-color: transparent;
+  color: #f1f4f4;
+}
+.dashboard-nav-link.dark:hover {
+  background-color: white;
+  color: #4389bf;
+}
+.dashboard-nav-link.dark.selectedd {
+  border-radius: 3px;
+  background-color: #f1f4f4;
+  color: #4389bf;
+}
+.dashboard-nav-link.fixed {
+  width: 100%;
+  margin-left: -10px;
+  padding-left: 28px;
+  border-left: 5px solid white;
+  border-right-style: none;
+  border-bottom-style: none;
+}
+.dashboard-nav-link.fixed:hover {
+  background-color: #f1f2f3;
+}
+.dashboard-nav-link.fixed.selecteddd {
+  border-left-color: #409ade;
+  color: #409ade;
+  font-weight: 600;
+}
 .project-admin-draft-video-home {
   margin-top: 0px;
   padding-top: 15px;
@@ -2148,14 +2172,30 @@ p {
   border-bottom: 1px solid #e9e9ec;
   background-color: white;
 }
-.dashboard-nav._2 {
+.dashboard-nav.fixed {
+  position: fixed;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  z-index: 30;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  background-color: #4389bf;
+  box-shadow: rgba(0, 0, 0, 0.30) 0px -1px 5px 0px;
+}
+.dashboard-nav.side {
   position: fixed;
   left: 0px;
   top: 0px;
   bottom: 0px;
-  z-index: 10;
-  width: 121px;
-  box-shadow: rgba(0, 0, 0, 0.36) 1px 1px 3px 0px;
+  z-index: 100;
+  width: 205px;
+  padding-top: 98px;
+  padding-left: 10px;
+  border-right: 1px solid #f1f2f3;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.21) 1px 1px 15px 0px;
+  color: #3f4752;
 }
 .card-success {
   border: 1px solid #00b22d;
@@ -2326,7 +2366,7 @@ p {
 .card-project {
   margin-bottom: 40px;
   padding: 0px;
-  box-shadow: rgba(121, 128, 139, 0.20) 0px 0px 6px 0px;
+  box-shadow: rgba(121, 128, 139, 0.2) 0px 0px 6px 0px;
 }
 .card-project.big {
   margin-bottom: 0px;
@@ -2497,7 +2537,6 @@ p {
   overflow-x: hidden;
   overflow-y: hidden;
   height: 500px;
-  margin-top: -75px;
   margin-bottom: -30px;
   padding-top: 199px;
   padding-bottom: 60px;
@@ -2518,7 +2557,6 @@ p {
   overflow-x: hidden;
   overflow-y: hidden;
   height: 220px;
-  margin-top: -75px;
   padding-top: 110px;
   padding-bottom: 50px;
   background-color: #3f4752;
@@ -2704,6 +2742,14 @@ p {
   background-size: cover;
   color: white;
 }
+.hero-hello.video {
+  height: 100%;
+  background-image: none;
+  background-position: 0% 0%;
+  background-size: auto;
+  background-repeat: repeat;
+  background-attachment: scroll;
+}
 .card-big {
   margin-bottom: 40px;
   padding: 70px 80px;
@@ -2840,6 +2886,9 @@ p {
   padding-left: 36px;
   text-align: center;
 }
+.hero-content.video {
+  top: 32%;
+}
 .pop-share {
   position: absolute;
   left: 20%;
@@ -2850,7 +2899,7 @@ p {
   padding: 32px 35px;
   border-radius: 5px;
   background-color: white;
-  box-shadow: rgba(0, 0, 0, 0.31) 1px 1px 3px 0px;
+  box-shadow: rgba(0, 0, 0, 0.29) 1px 1px 3px 0px;
   text-align: center;
 }
 .right-divider {
@@ -2859,6 +2908,9 @@ p {
 .card-project-thumb-big {
   height: 312px;
   background-image: url('../images/project_thumb_large_thumb.jpg');
+}
+.body-project {
+  margin-left: 205px;
 }
 html.w-mod-js *[data-ix="fade-in"] {
   opacity: 0;
@@ -3330,6 +3382,9 @@ html.w-mod-js.w-mod-no-ios *[data-ix="know-more-2"] {
     overflow-y: hidden;
     text-align: left;
   }
+  .body-project {
+    margin-left: 0px;
+  }
 }
 @media (max-width: 767px) {
   h2 {
@@ -3388,6 +3443,10 @@ html.w-mod-js.w-mod-no-ios *[data-ix="know-more-2"] {
     padding-right: 30px;
     padding-left: 30px;
     background-color: #f1f4f4;
+  }
+  .project-nav.mf {
+    height: 58px;
+    text-align: center;
   }
   .project-share {
     margin-bottom: 35px;
@@ -3637,6 +3696,9 @@ html.w-mod-js.w-mod-no-ios *[data-ix="know-more-2"] {
   .dashboard-nav-link {
     padding: 4px 8px;
   }
+  .dashboard-nav-link.mf {
+    padding-bottom: 10px;
+  }
   .footer-full-lastcolumn {
     left: 20px;
   }
@@ -3725,6 +3787,9 @@ html.w-mod-js.w-mod-no-ios *[data-ix="know-more-2"] {
     padding-bottom: 0px;
     text-align: center;
   }
+  .dashboard-nav.side {
+    text-align: left;
+  }
   .u-margintop-40 {
     margin-top: 20px;
   }
@@ -3775,11 +3840,9 @@ html.w-mod-js.w-mod-no-ios *[data-ix="know-more-2"] {
   }
   .hero-half {
     height: 310px;
-    margin-top: -90px;
   }
   .hero-small {
     height: 160px;
-    margin-top: -85px;
     padding-top: 90px;
     padding-bottom: 30px;
   }
@@ -3872,7 +3935,7 @@ html.w-mod-js.w-mod-no-ios *[data-ix="know-more-2"] {
     top: 0px;
     right: 20%;
     bottom: 0px;
-    display: block;
+    display: none;
     width: 100%;
     background-color: rgba(255, 255, 255, 0.93);
     text-align: left;
@@ -3924,7 +3987,9 @@ html.w-mod-js.w-mod-no-ios *[data-ix="know-more-2"] {
     width: 305px;
   }
   .project-nav.mf {
+    height: 53px;
     margin-top: 0px;
+    text-align: center;
   }
   .icon-close {
     position: static;
@@ -3972,6 +4037,7 @@ html.w-mod-js.w-mod-no-ios *[data-ix="know-more-2"] {
   }
   .project-video.mf {
     height: auto;
+    margin-bottom: 31px;
   }
   .column-social-media-footer {
     position: relative;
@@ -4109,6 +4175,14 @@ html.w-mod-js.w-mod-no-ios *[data-ix="know-more-2"] {
     margin-bottom: 3px;
     padding-bottom: 0px;
   }
+  .dashboard-nav-link.mf {
+    margin-right: 5px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    font-size: 11px;
+    font-weight: 600;
+  }
   .footer-full-signature-text {
     margin-bottom: 10px;
   }
@@ -4203,11 +4277,9 @@ html.w-mod-js.w-mod-no-ios *[data-ix="know-more-2"] {
   }
   .hero-half {
     height: 320px;
-    margin-top: -95px;
     padding: 80px 15px 30px;
   }
   .hero-small {
-    margin-top: -95px;
     padding-top: 90px;
     padding-bottom: 20px;
   }
@@ -4267,7 +4339,7 @@ html.w-mod-js.w-mod-no-ios *[data-ix="know-more-2"] {
     width: auto;
   }
   .pop-share {
-    display: block;
+    display: none;
     padding-right: 10px;
     padding-left: 10px;
   }
