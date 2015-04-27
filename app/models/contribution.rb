@@ -76,7 +76,7 @@ class Contribution < ActiveRecord::Base
   end
 
   def pending?
-    Contribution.pending.where(id: self.id).exists?
+    payments.with_state('pending').exists?
   end
 
   # Used in payment engines
