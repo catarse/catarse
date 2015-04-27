@@ -1,4 +1,5 @@
 Dbhero.configure do |config|
+  config.max_row_limit = 20_000
   # Use authentication on private pages
   # if you are using devise you can keep the "authenticate_user!"
   config.authenticate = true
