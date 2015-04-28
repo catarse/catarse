@@ -240,7 +240,10 @@ class User < ActiveRecord::Base
   end
 
   def fix_twitter_user
-    self.twitter.gsub!(/@/, '') if self.twitter
+    if self.twitter
+      splited = self.twitter.split("/").last
+      self.twitter = splited.gsub(/@/, '')
+    end
   end
 
   def nullify_permalink
