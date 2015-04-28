@@ -7,7 +7,7 @@
       .fontsize-base.fontweight-semibold = t('.reward_title', minimum: reward.display_minimum).html_safe
       .fontsize-smaller.fontweight-semibold = pluralize(reward.contributions.where('contributions.is_confirmed').count(:all), t('contribution_singular'), t('contribution_plural'))
       - if reward.maximum_contributions
-        - in_time_to_confirm = reward.total_compromised
+        - in_time_to_confirm = reward.total_contributions(%w(pending))
         - if in_time_to_confirm > 0
           .maximum_contributions.in_time_to_confirm.clearfix
             .pending.fontsize-smallest.fontcolor-secondary= t('.contributions_to_confirm', count: in_time_to_confirm)
