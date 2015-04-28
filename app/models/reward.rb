@@ -16,16 +16,16 @@ class Reward < ActiveRecord::Base
   validates_numericality_of :maximum_contributions, only_integer: true, greater_than: 0, allow_nil: true
   validate :deliver_at_cannot_be_in_the_past
   scope :remaining, -> { where("
-                               rewards.maximum_contributions IS NULL 
+                               rewards.maximum_contributions IS NULL
                                OR (
-                                rewards.maximum_contributions IS NOT NULL 
+                                rewards.maximum_contributions IS NOT NULL
                                 AND (
-                                      SELECT 
-                                      COUNT(distinct c.id) 
-                                      FROM 
+                                      SELECT
+                                      COUNT(distinct c.id)
+                                      FROM
                                         contributions c JOIN payments p ON p.contribution_id = c.id
-                                      WHERE 
-                                        p.state IN ('paid', 'pending') 
+                                      WHERE
+                                        p.state IN ('paid', 'pending')
                                         AND reward_id = rewards.id
                                     ) < maximum_contributions)") }
   scope :sort_asc, -> { order('id ASC') }
@@ -60,8 +60,8 @@ class Reward < ActiveRecord::Base
     total_compromised > 0
   end
 
-  def total_compromised
-    payments.with_states(['paid', 'pending']).count("DISTINCT contributions.id")
+  def total_compromised states = %w(paid pending)
+    payments.with_states(states).count("DISTINCT contributions.id")
   end
 
   def remaining
