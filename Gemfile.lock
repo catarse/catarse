@@ -170,7 +170,7 @@ GEM
     curb (0.8.8)
     daemons (1.2.2)
     database_cleaner (1.4.1)
-    dbhero (1.0.2)
+    dbhero (1.1.0)
       google_drive
       has_scope
       rails (>= 4.1)
@@ -327,11 +327,11 @@ GEM
       nokogiri (>= 1.4.4, != 1.5.2, != 1.5.1)
       oauth (>= 0.3.6)
       oauth2 (>= 0.5.0)
-    googleauth (0.4.0)
+    googleauth (0.4.1)
       faraday (~> 0.9)
       jwt (~> 1.4)
-      logging (~> 1.8)
-      memoist (~> 0.11)
+      logging (~> 2.0)
+      memoist (~> 0.12)
       multi_json (= 1.11)
       signet (~> 0.6)
     has_scope (0.6.0)
@@ -380,9 +380,9 @@ GEM
       launchy (~> 2.2)
     libxml-ruby (2.8.0)
     little-plugger (1.1.3)
-    logging (1.8.2)
-      little-plugger (>= 1.1.3)
-      multi_json (>= 1.8.4)
+    logging (2.0.0)
+      little-plugger (~> 1.1)
+      multi_json (~> 1.10)
     loofah (2.0.1)
       nokogiri (>= 1.5.9)
     mail (2.6.3)
@@ -680,7 +680,7 @@ DEPENDENCIES
   compass-rails (~> 2.0.4)
   coveralls
   database_cleaner
-  dbhero (~> 1.0.2)
+  dbhero (~> 1.1.0)
   devise
   draper
   ezcrypto
