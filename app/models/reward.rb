@@ -60,8 +60,12 @@ class Reward < ActiveRecord::Base
     total_compromised > 0
   end
 
-  def total_compromised states = %w(paid pending)
+  def total_contributions states = %w(paid pending)
     payments.with_states(states).count("DISTINCT contributions.id")
+  end
+
+  def total_compromised
+    total_contributions %w(paid pending)
   end
 
   def remaining
