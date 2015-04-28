@@ -20,7 +20,7 @@
   meta property="og:site_name" content=CatarseSettings[:company_name]
   - fb_admins.each do |admin|
     meta property="fb:admins" content="#{admin}"
-
+  link rel="canonical" href=request.original_url.split('?').first
 
 = render 'shared/header_big'
 
