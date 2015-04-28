@@ -193,6 +193,26 @@ RSpec.describe User, type: :model do
     its(:facebook_link){ should == 'http://facebook.com/test' }
   end
 
+  describe "#fix_twitter_user" do
+    context "when twitter is full link" do
+      let(:user) { build(:user, twitter: "https://twitter.com/username") }
+      before { user.fix_twitter_user }
+      it { expect(user.twitter).to eq("username") }
+    end
+
+    context "when twitter is @username" do
+      let(:user) { build(:user, twitter: "@username") }
+      before { user.fix_twitter_user }
+      it { expect(user.twitter).to eq("username") }
+    end
+
+    context "when twitter is username" do
+      let(:user) { build(:user, twitter: "username") }
+      before { user.fix_twitter_user }
+      it { expect(user.twitter).to eq("username") }
+    end
+  end
+
   describe "#change_locale" do
     let(:user) { create(:user, locale: 'pt') }
 
