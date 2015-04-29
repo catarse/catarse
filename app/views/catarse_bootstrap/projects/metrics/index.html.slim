@@ -49,9 +49,6 @@
             li.fontsize-smaller.u-marginbottom-10
               div
                 | Apoiadores que não selecionaram recompensa&nbsp;&nbsp;
-                a.alt-link href="#"  CSV
-                | \&nbsp;
-                a.alt-link href="#"  XLS
                 = link_to 'CSV', reports_contribution_reports_for_project_owners_path(project_id: @project.id, reward_id: 0, format: :csv), class: 'alt-link'
                 | &nbsp;\&nbsp;
                 = link_to 'XLS', reports_contribution_reports_for_project_owners_path(project_id: @project.id, reward_id: 0, format: :xls), class: 'alt-link'
