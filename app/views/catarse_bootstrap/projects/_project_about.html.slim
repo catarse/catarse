@@ -1,6 +1,6 @@
 - if resource.video_url.present?
   .w-embed.w-video.project-video
-    iframe src="#{@project.display_video_embed_url}" class="embedly-embed" width="100%" height="379" frameborder="0" allowFullScreen
+    iframe itemprop="video" src="#{@project.display_video_embed_url}" class="embedly-embed" width="100%" height="379" frameborder="0" allowFullScreen
 
 .project-share.u-marginbottom-30.w-row
   .w-col.w-col-3
@@ -21,8 +21,8 @@
 #project_embed.w-hidden data-path=embed_panel_project_path(@project)
 
 .project-about
-  .fontsize-large.u-marginbottom-30 = @project.headline.try(:strip)
+  .fontsize-large.u-marginbottom-30[itemprop="name"] = @project.headline.try(:strip)
   .no-mobile
-    .fontsize-base
+    .fontsize-base[itemprop="about"]
       = @project.about_html.try(:html_safe)
       = render 'budget'
