@@ -28,7 +28,6 @@ class Project < ActiveRecord::Base
   has_one :account, class_name: "ProjectAccount", inverse_of: :project
   has_many :rewards
   has_many :contributions
-  has_many :contribution_details
   has_many :payments, through: :contributions
   has_many :posts, class_name: "ProjectPost", inverse_of: :project
   has_many :budgets, class_name: "ProjectBudget", inverse_of: :project
@@ -59,9 +58,10 @@ class Project < ActiveRecord::Base
   scope :by_id, ->(id) { where(id: id) }
   scope :by_goal, ->(goal) { where(goal: goal) }
   scope :by_category_id, ->(id) { where(category_id: id) }
-  scope :by_online_date, ->(online_date) { where("online_date::date = ?", online_date.to_date) }
-  scope :by_expires_at, ->(expires_at) { where("(projects.expires_at AT TIME ZONE coalesce((SELECT value FROM settings WHERE name = 'timezone'), 'America/Sao_Paulo'))::date = ?", expires_at.to_date) }
-  scope :by_updated_at, ->(updated_at) { where("updated_at::date = ?", updated_at.to_date) }
+  scope :by_online_date, ->(online_date) { where(online_date: Time.zone.parse( online_date ).. online_date.to_time.end_of_day) }
+  #scope :by_expires_at, ->(expires_at) { where(expires_at: Time.zone.parse( expires_at ).. Time.zone.parse( expires_at ).end_of_day) }
+  scope :by_expires_at, ->(expires_at) { where(expires_at: Time.zone.parse( expires_at )) }
+  scope :by_updated_at, ->(updated_at) { where(updated_at: Time.zone.parse( updated_at )) }
   scope :by_permalink, ->(p) { without_state('deleted').where("lower(permalink) = lower(?)", p) }
   scope :recommended, -> { where(recommended: true) }
   scope :in_funding, -> { not_expired.with_states(['online']) }
@@ -71,8 +71,8 @@ class Project < ActiveRecord::Base
   scope :to_finish, ->{ expired.with_states(['online', 'waiting_funds']) }
   scope :visible, -> { without_states(['draft', 'rejected', 'deleted', 'in_analysis', 'approved']) }
   scope :financial, -> { with_states(['online', 'successful', 'waiting_funds']).where(expires_at: 15.days.ago.. Time.current) }
-  scope :expired, -> { where("projects.expires_at < current_timestamp") }
-  scope :not_expired, -> { where("projects.expires_at >= current_timestamp") }
+  scope :expired, -> { where("expires_at < ?", Time.current) }
+  scope :not_expired, -> { where("expires_at >= ?", Time.current) }
   scope :expiring, -> { not_expired.where(expires_at: Time.current.. 2.weeks.from_now) }
   scope :not_expiring, -> { not_expired.where.not(expires_at: Time.current.. 2.weeks.from_now) }
   scope :recent, -> { where(online_date: 5.days.ago.. Time.current) }
@@ -151,10 +151,6 @@ class Project < ActiveRecord::Base
     @decorator ||= ProjectDecorator.new(self)
   end
 
-  def expires_at
-    @expires_at ||= Project.where(id: self.id).pluck('projects.expires_at').first
-  end
-
   def pledged
     @pledged ||= project_total.try(:pledged).to_f
   end
@@ -174,13 +170,12 @@ class Project < ActiveRecord::Base
   def accept_contributions?
     online? && !expired?
   end
-
   def reached_goal?
     pledged >= goal
   end
 
   def expired?
-    expires_at && expires_at < Time.zone.now
+    expires_at && expires_at < Time.current
   end
 
   def in_time_to_wait?
