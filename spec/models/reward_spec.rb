@@ -99,6 +99,45 @@ RSpec.describe Reward, type: :model do
     it{ is_expected.to eq([@remaining]) }
   end
 
+  describe "#total_contributions" do
+    before do
+      @remaining = create(:reward, maximum_contributions: 20)
+      create(:confirmed_contribution, reward: @remaining, project: @remaining.project)
+      create(:pending_contribution, reward: @remaining, project: @remaining.project)
+      create(:refunded_contribution, reward: @remaining, project: @remaining.project)
+    end
+
+    context "get total of paid and peding contributions" do
+      subject { @remaining.total_contributions %w(paid pending)}
+
+      it { is_expected.to eq(2) }
+    end
+
+    context "get total of refunded contributions" do
+      subject { @remaining.total_contributions %w(refunded)}
+
+      it { is_expected.to eq(1) }
+    end
+
+    context "get tota of pending contributions" do
+      subject { @remaining.total_contributions %w(pending)}
+
+      it { is_expected.to eq(1) }
+    end
+  end
+
+  describe "#total_compromised" do
+    before do
+      @remaining = create(:reward, maximum_contributions: 20)
+      create(:confirmed_contribution, reward: @remaining, project: @remaining.project)
+      create(:pending_contribution, reward: @remaining, project: @remaining.project)
+    end
+
+    subject { @remaining.total_compromised }
+
+    it { is_expected.to eq(2) }
+  end
+
   describe '#sold_out?' do
     let(:reward) { create(:reward, maximum_contributions: 3) }
     subject { reward.sold_out? }
