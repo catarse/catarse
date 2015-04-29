@@ -94,7 +94,8 @@ pt:
         tweet: Tuíte
         thank_you: 'Valeu!'
         profile_link: 'através do seu perfil'
-        thank_you_text_html: 'Você faz parte do grupo de %{total} pessoas que querem tirar o %{link1} do papel! Você receberá a confirmação do pagamento por email assim que ele for processado. Você também pode acompanhar o status do seu apoio %{link2}. Compartilhe o seu apoio e aumente as chances do projeto bater a meta!'
+        thank_you_text_html: 'Você acaba de dar um passo importante na campanha para tirar o %{link1} do papel! Enviaremos a confirmação do pagamento por email assim que ele for processado. Você também pode acompanhar o status do apoio %{link2}.'
+        share_back: 'Compartilhe o seu apoio e aumente as chances do projeto bater a meta!'
         header_subtitle: Sem você talvez este projeto não tivesse uma chance. Bem-vindo
           ao time!
         header_title: Muito obrigado! :D
