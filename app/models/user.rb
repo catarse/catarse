@@ -240,9 +240,9 @@ class User < ActiveRecord::Base
   end
 
   def fix_twitter_user
-    if self.twitter
+    if self.twitter.present?
       splited = self.twitter.split("/").last
-      self.twitter = splited.gsub(/@/, '')
+      self.twitter = splited.gsub(/@/, '') if splited.present?
     end
   end
 

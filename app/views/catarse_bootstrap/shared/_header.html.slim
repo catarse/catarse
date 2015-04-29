@@ -1,4 +1,4 @@
-div class="main-header #{((defined?(overlayer) && overlayer) ? 'overlayer' : '')}"
+header class="main-header #{((defined?(overlayer) && overlayer) ? 'overlayer' : '')}"
   .w-row
     .w-col.w-col-8.w-col-small-6.w-col-tiny-6.w-clearfix
       = link_to (image_tag "catarse_bootstrap/logo_big.png"), root_url(subdomain: 'www'), class: 'header-logo w-nav-brand', :title => CatarseSettings[:company_name]

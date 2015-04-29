@@ -42,11 +42,10 @@
                 data-followpath=subscribe_category_path(category)
                 data-unfollowpath=unsubscribe_category_path(category)
                 data-totalfollowers=category.users.count
-                ]
-                div
-                  = category
-                  span.badge.explore
-                    = category.total_online_projects
+              ] 
+                = params[:locale] == 'en' ? category.name_en : category.name_pt
+                span.badge.explore
+                  = category.total_online_projects
       .w-row.u-marginbottom-30
         .w-col.w-col-2.w-col-small-6.w-col-tiny-6
           a.w-inline-block.btn-category.filters.explore-link[href='#recommended' data-name="#{t('.recommended')}"]
@@ -72,8 +71,7 @@
             a.w-inline-block.btn-category.filters.explore-link[href="#near_of/#{current_user.address_state}" data-name="#{t('.near')}"]
                 = t('.near')      
 
-div
-  .w-container.u-marginbottom-10
+section.w-container.u-marginbottom-10
     .w-row.u-margintop-10.u-marginbottom-40
       #explore_results[data-projects-path=projects_path]
         .w-row
@@ -101,7 +99,7 @@ div
           .clearfix
           #loading.loader.u-text-center.w-col.w-col-12 = image_tag "catarse_bootstrap/loader.gif"
 
-.section.loadmore
+section.section.loadmore
   .w-container
     .w-row
       .w-col.w-col-push-5.w-col-2
