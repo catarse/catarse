@@ -200,6 +200,12 @@ RSpec.describe User, type: :model do
       it { expect(user.twitter).to eq("username") }
     end
 
+    context "when twitter is null" do
+      let(:user) { build(:user, twitter: nil) }
+      before { user.fix_twitter_user }
+      it { expect(user.twitter).to eq(nil) }
+    end
+
     context "when twitter is @username" do
       let(:user) { build(:user, twitter: "@username") }
       before { user.fix_twitter_user }
