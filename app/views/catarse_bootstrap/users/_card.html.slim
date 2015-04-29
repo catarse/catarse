@@ -1,23 +1,23 @@
-.card.card-user.u-radius.u-marginbottom-30
+.card.card-user.u-radius.u-marginbottom-30[itemprop="author"]
   .w-row
     .w-col.w-col-4.w.col-small-4.w-col-tiny-4.w-clearfix  
-      = image_tag resource.display_image, width: "100", class: "thumb u-round u-marginbottom-30"
+      = image_tag resource.display_image, width: "100", class: "thumb u-round u-marginbottom-30", itemprop: "image"
     .w-col.w-col-8.w-col-small-8.w-col-tiny-8
-      .fontsize-small.fontweight-semibold.lineheight-tighter = link_to resource.display_name, user_path(resource), class: 'link-hidden'
-      .fontsize-smallest.lineheight-looser = resource.address_city
+      .fontsize-small.fontweight-semibold.lineheight-tighter[itemprop="name"] = link_to resource.display_name, user_path(resource), class: 'link-hidden'
+      .fontsize-smallest.lineheight-looser[itemprop="address"] = resource.address_city
       .fontsize-smallest = t('created_project', count: resource.created_projects.size)
       .fontsize-smallest = t('contributed_project', count: resource.total_contributed_projects)
   .project-author-contacts
     ul.w-list-unstyled.fontsize-smaller.fontweight-semibold
       - if resource.facebook_link.present?
         li
-          = link_to t('.facebook_profile'), resource.facebook_link, target: '_blank', class: 'link-hidden'
+          = link_to t('.facebook_profile'), resource.facebook_link, target: '_blank', class: 'link-hidden', itemprop: "url"
       - if resource.twitter_link
         li
-          = link_to t('.twitter_profile'), resource.twitter_link, target: '_blank', class: 'link-hidden'
+          = link_to t('.twitter_profile'), resource.twitter_link, target: '_blank', class: 'link-hidden', itemprop: "url"
       - resource.links.with_link.each do |link|
         li
-          = link_to truncate(link.hostname, length: 30), link.link, target: '_blank', class: 'link-hidden'
+          = link_to truncate(link.hostname, length: 30), link.link, target: '_blank', class: 'link-hidden', itemprop: "url"
 
   - if current_user
-    = mail_to resource.email, t('.contact_author'), target: '_blank', class: 'btn btn-medium btn-message'
+    = mail_to resource.email, t('.contact_author'), target: '_blank', class: 'btn btn-medium btn-message', itemprop: "email"
