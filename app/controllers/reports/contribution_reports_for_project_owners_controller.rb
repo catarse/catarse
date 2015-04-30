@@ -1,29 +1,37 @@
-class Reports::ContributionReportsForProjectOwnersController < Reports::BaseController
+class Reports::ContributionReportsForProjectOwnersController < ApplicationController
+  respond_to :csv, :xls
+
+  has_scope :project_id, :reward_id
+  has_scope :state, default: 'paid'
+
   def index
-    @report = end_of_association_chain.to_xls( columns: I18n.t('contribution_report_to_project_owner').values )
-    super do |format|
-      format.xls { send_data @report, filename: 'apoiadores.xls' }
+    authorize project, :update?
+    respond_to do |format|
+      format.csv do
+        send_data collection.copy_to_string, filename: "#{project.name}.csv"
+      end
+
+      format.xls do
+        send_data collection.to_xls(
+          columns: I18n.t('contribution_report_to_project_owner').values
+        ), filename: "#{project.name}.xls"
+      end
     end
   end
 
-  def end_of_association_chain
-    conditions = { project_id: params[:project_id] }
+  protected
 
-    conditions.merge!(reward_id: params[:reward_id]) if params[:reward_id].present?
-    conditions.merge!(state: (params[:state].present? ? params[:state] : 'paid'))
-    conditions.merge!(project_owner_id: current_user.id) unless current_user.admin
-    report_sql = ""
-    I18n.t('contribution_report_to_project_owner').keys[0..-2].each{
-      |column| report_sql << "#{column} AS \"#{I18n.t("contribution_report_to_project_owner.#{column}")}\","
-    }
+  def collection
+    @collection ||= apply_scopes(ContributionReportsForProjectOwner.report)
+    @collection.project_owner_id(current_user.id) unless current_user.admin?
+    @collection
+  end
 
-    super.
-      select(%Q{
-        #{report_sql}
-        CASE WHEN anonymous='t' THEN '#{I18n.t('yes')}'
-            WHEN anonymous='f' THEN '#{I18n.t('no')}'
-        END as "#{I18n.t('contribution_report_to_project_owner.anonymous')}"
-      }).
-      where(conditions)
+  def project
+    @project ||= Project.find params[:project_id]
+  end
+
+  def self.policy_class
+    ProjectPolicy
   end
 end
