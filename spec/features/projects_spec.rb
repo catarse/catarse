@@ -105,9 +105,10 @@ RSpec.describe "Projects", type: :feature do
 
     it "should navigate to the project reward selection page after clicking on a reward card" do
       sleep FeatureHelpers::TIME_TO_SLEEP
-      find(:css, '.card-reward').click
+      reward = project.rewards.first
+      find(:css, ".card-reward#reward_#{reward.id}").click
       uri = URI.parse(current_url)
-      expect(new_project_contribution_path(project, reward_id: 1)).to eq("#{uri.path}?#{uri.query}")
+      expect(new_project_contribution_path(project, reward_id: reward.id)).to eq("#{uri.path}?#{uri.query}")
     end
   end
 
