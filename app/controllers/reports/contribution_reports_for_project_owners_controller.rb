@@ -1,7 +1,8 @@
 class Reports::ContributionReportsForProjectOwnersController < ApplicationController
   respond_to :csv, :xls
 
-  has_scope :project_id, :reward_id, :state
+  has_scope :project_id, :reward_id
+  has_scope :state, default: 'paid'
 
   def index
     authorize project, :update?
