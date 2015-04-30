@@ -1,11 +1,10 @@
 class Reports::ContributionReportsForProjectOwnersController < ApplicationController
-  #before_filter :verify_authorized
-
   respond_to :csv, :xls
 
   has_scope :project_id, :reward_id, :state
 
   def index
+    authorize project, :update?
     respond_to do |format|
       format.csv do
         send_data collection.copy_to_string, filename: "#{project.name}.csv"
@@ -29,5 +28,9 @@ class Reports::ContributionReportsForProjectOwnersController < ApplicationContro
 
   def project
     @project ||= Project.find params[:project_id]
+  end
+
+  def self.policy_class
+    ProjectPolicy
   end
 end
