@@ -32,8 +32,8 @@ RSpec.describe ContributionReportsForProjectOwner, type: :model do
       expect(subject.project_owner_id(project.user.id).count).to eq(3)
     end
 
-    it ".state" do
-      expect(subject.state.count).to eq(4)
+    it ".state('paid')" do
+      expect(subject.state('paid').count).to eq(4)
     end
 
     it ".state('pending')" do
