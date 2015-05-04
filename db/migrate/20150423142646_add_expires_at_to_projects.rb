@@ -2,7 +2,7 @@ class AddExpiresAtToProjects < ActiveRecord::Migration
   def change
     execute "DROP VIEW user_feeds;DROP VIEW financial_reports;DROP VIEW projects_for_home;DROP FUNCTION expires_at(projects);
              "
-    #add_column :projects, :expires_at, :timestamp
+    add_column :projects, :expires_at, :timestamp
     execute " CREATE or replace VIEW financial_reports AS 
       SELECT p.name,
     u.moip_login,
