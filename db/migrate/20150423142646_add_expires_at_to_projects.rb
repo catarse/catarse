@@ -1,8 +1,8 @@
 class AddExpiresAtToProjects < ActiveRecord::Migration
   def change
-    execute "DROP VIEW financial_reports;DROP VIEW projects_for_home;DROP FUNCTION expires_at(projects);
+    execute "DROP VIEW user_feeds;DROP VIEW financial_reports;DROP VIEW projects_for_home;DROP FUNCTION expires_at(projects);
              "
-    add_column :projects, :expires_at, :timestamp
+    #add_column :projects, :expires_at, :timestamp
     execute " CREATE or replace VIEW financial_reports AS 
       SELECT p.name,
     u.moip_login,
@@ -11,6 +11,79 @@ class AddExpiresAtToProjects < ActiveRecord::Migration
     p.state
    FROM projects p
      JOIN users u ON u.id = p.user_id;"
+
+     execute <<-SQL
+       SELECT events.user_id,
+      events.title,
+      events.event_type,
+      events.event_date,
+      events.from_type,
+      events.from_id,
+      events.to_type,
+      events.to_id,
+      age(events.event_date) AS age
+     FROM ( SELECT u.id AS user_id,
+              p.name AS title,
+              'new_project_on_category'::text AS event_type,
+              p.online_date AS event_date,
+              'CategoryFollower'::text AS from_type,
+              cf.id AS from_id,
+              'Project'::text AS to_type,
+              p.id AS to_id
+             FROM users u
+               JOIN category_followers cf ON cf.user_id = u.id
+               JOIN projects p ON p.category_id = cf.category_id
+            WHERE p.state::text = ANY (ARRAY['online'::character varying::text, 'failed'::character varying::text, 'successful'::character varying::text, 'waiting_funds'::character varying::text])
+          UNION ALL
+           SELECT c.user_id,
+              post.title,
+              'project_posts'::text AS event_type,
+              post.created_at AS event_date,
+              'Project'::text AS from_type,
+              post.project_id AS from_id,
+              'ProjectPost'::text AS to_type,
+              post.id AS to_id
+             FROM ( SELECT DISTINCT contributions.user_id,
+                      contributions.project_id
+                     FROM contributions
+                    WHERE contributions.state::text = ANY (ARRAY['confirmed'::character varying::text, 'refunded'::character varying::text, 'requested_refund'::character varying::text])) c
+               JOIN project_posts post ON post.project_id = c.project_id
+          UNION ALL
+           SELECT c.user_id,
+              p.name AS title,
+              'contributed_project_finished'::text AS event_type,
+              expires_at(p.*) AS event_date,
+              'Contribution'::text AS from_type,
+              ( SELECT contributions.id
+                     FROM contributions
+                    WHERE (contributions.state::text = ANY (ARRAY['confirmed'::character varying::text, 'refunded'::character varying::text, 'requested_refund'::character varying::text])) AND contributions.user_id = c.user_id AND contributions.project_id = c.project_id
+                   LIMIT 1) AS from_id,
+              'Project'::text AS to_type,
+              p.id AS to_id
+             FROM ( SELECT DISTINCT contributions.user_id,
+                      contributions.project_id
+                     FROM contributions
+                    WHERE contributions.state::text = ANY (ARRAY['confirmed'::character varying::text, 'refunded'::character varying::text, 'requested_refund'::character varying::text])) c
+               JOIN projects p ON p.id = c.project_id
+            WHERE p.state::text = ANY (ARRAY['successful'::character varying::text, 'failed'::character varying::text])
+          UNION ALL
+           SELECT DISTINCT c.user_id,
+              p2.name AS title,
+              'new_project_from_common_owner'::text AS event_type,
+              p2.online_date AS event_date,
+              'User'::text AS from_type,
+              p2.user_id AS from_id,
+              'Project'::text AS to_type,
+              p2.id AS to_id
+             FROM ( SELECT DISTINCT contributions.user_id,
+                      contributions.project_id
+                     FROM contributions
+                    WHERE contributions.state::text = ANY (ARRAY['confirmed'::character varying::text, 'refunded'::character varying::text, 'requested_refund'::character varying::text])) c
+               JOIN projects p ON p.id = c.project_id
+               JOIN projects p2 ON p2.user_id = p.user_id
+            WHERE p2.id <> p.id AND (p.state::text = ANY (ARRAY['online'::character varying::text, 'waiting_funds'::character varying::text, 'failed'::character varying::text, 'successful'::character varying::text])) AND (p2.state::text = ANY (ARRAY['online'::character varying::text, 'waiting_funds'::character varying::text, 'failed'::character varying::text, 'successful'::character varying::text]))) events
+    ORDER BY age(events.event_date);
+     SQL
 
      execute <<-SQL
       CREATE VIEW projects_for_home AS
