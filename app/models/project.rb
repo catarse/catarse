@@ -58,10 +58,9 @@ class Project < ActiveRecord::Base
   scope :by_id, ->(id) { where(id: id) }
   scope :by_goal, ->(goal) { where(goal: goal) }
   scope :by_category_id, ->(id) { where(category_id: id) }
-  scope :by_online_date, ->(online_date) { where(online_date: Time.zone.parse( online_date ).. online_date.to_time.end_of_day) }
-  #scope :by_expires_at, ->(expires_at) { where(expires_at: Time.zone.parse( expires_at ).. Time.zone.parse( expires_at ).end_of_day) }
-  scope :by_expires_at, ->(expires_at) { where(expires_at: Time.zone.parse( expires_at )) }
-  scope :by_updated_at, ->(updated_at) { where(updated_at: Time.zone.parse( updated_at )) }
+  scope :by_online_date, ->(online_date) { where(online_date: Time.zone.parse( online_date ).. Time.zone.parse( online_date ).end_of_day) }
+  scope :by_expires_at, ->(expires_at) { where(expires_at: Time.zone.parse( expires_at ).. Time.zone.parse( expires_at ).end_of_day) }
+  scope :by_updated_at, ->(updated_at) { where(updated_at: Time.zone.parse( updated_at ).. Time.zone.parse( updated_at ).end_of_day) }
   scope :by_permalink, ->(p) { without_state('deleted').where("lower(permalink) = lower(?)", p) }
   scope :recommended, -> { where(recommended: true) }
   scope :in_funding, -> { not_expired.with_states(['online']) }
@@ -118,7 +117,7 @@ class Project < ActiveRecord::Base
     define_singleton_method name do |starts_at, ends_at|
       return all unless starts_at.present? && ends_at.present?
       field = name.to_s.gsub('between_','')
-      where(field => starts_at.to_time.. ends_at.to_time.end_of_day)
+      where(field => Time.zone.parse( starts_at ).. Time.zone.parse( ends_at ).end_of_day)
     end
   end
 
