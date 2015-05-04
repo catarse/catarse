@@ -1,8 +1,10 @@
 RSpec.configure do |config|
+  require 'zonebie'
 
   config.disable_monkey_patching!
   config.order = :random
   Kernel.srand config.seed
+  Zonebie.set_random_timezone
   config.filter_run focus: true
   config.run_all_when_everything_filtered = true
   config.expect_with :rspec do |expectations|
