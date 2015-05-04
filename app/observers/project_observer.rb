@@ -3,7 +3,7 @@ class ProjectObserver < ActiveRecord::Observer
 
   def before_save(project)
     if project.try(:online_date_changed?) || (project.online_date && project.try(:online_days_changed?))
-      project.expires_at = (project.online_date + project.online_days).end_of_day
+      project.expires_at = (project.online_date + project.online_days.days).end_of_day
     end
   end
 
