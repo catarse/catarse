@@ -1,5 +1,6 @@
 Skull.UI_helper = {
   setupResponsiveIframes: function($container) {
+    var that = this;
     this.$container = $container;
     this.$iframes = $("iframe[src^='//player.vimeo.com'], iframe[src^='//www.youtube.com']");
     this.$iframes.each(function() {
@@ -15,7 +16,7 @@ Skull.UI_helper = {
     this.windowResize();
     //Prevents wrong container width calculation
     setTimeout(function(){
-      this.updateIframeSize();  
+      that.updateIframeSize();  
     },0);
   },
 

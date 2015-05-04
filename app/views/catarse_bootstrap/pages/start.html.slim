@@ -5,7 +5,7 @@
 .project-start-wrapper
   .page-header
     .w-container.no-responsive
-      .fontsize-largest.u-text-center.u-marginbottom-70.u-margintop-40 = t('.title')
+      h1.fontsize-largest.u-text-center.u-marginbottom-70.u-margintop-40 = t('.title')
       - statistics = Statistics.first
       .w-row.u-text-center.u-marginbottom-80
         .w-col.w-col-4
@@ -24,42 +24,39 @@
         .w-col.w-col-3.w-col-push-3
           = link_to t('.submit'), new_project_path, class: 'btn btn-medium btn-secondary'
 
-  #learn
+  section#learn
     .w-container.no-responsive.section
-      .w-row.u-marginbottom-80.u-margintop-30
+      article.w-row.u-marginbottom-80.u-margintop-30
         .w-col.w-col-6.u-text-center
           = image_tag "catarse_bootstrap/start/inscreva-seu-projeto.png"
         .w-col.w-col-6
-          .headline = t('.start.title')
+          h2.headline = t('.start.title')
           p.fontsize-base = t('.start.content')
           
 
-      .w-row.u-marginbottom-80
+      article.w-row.u-marginbottom-80
         .w-col.w-col-6
-          .headline = t('.people.title')
+          h2.headline = t('.people.title')
           p.fontsize-base = t('.people.content')
-         
-
         .w-col.w-col-6.u-text-center
           = image_tag "catarse_bootstrap/start/trabalhe-muito.png"
 
-      .w-row.u-marginbottom-80
+      article.w-row.u-marginbottom-80
         .w-col.w-col-6.u-text-center
           = image_tag "catarse_bootstrap/start/tudo-ou-nada.png"
         .w-col.w-col-6
-          .headline = t('.work.title')
+          h2.headline = t('.work.title')
           p.fontsize-base = t('.work.content')
           
 
-      .w-row.u-marginbottom-80
+      article.w-row.u-marginbottom-80
         .w-col.w-col-6
-          .headline = t('.time.title')
+          h2.headline = t('.time.title')
           p.fontsize-base = t('.time.content')
-          
         .w-col.w-col-6.u-text-center
           = image_tag "catarse_bootstrap/start/mobilze-interessados.png"
 
-      .w-row.u-margin-top-40
+      footer.w-row.u-margin-top-40
         .w-col.w-col-4.w-col-push-4
           = link_to t('.submit'), new_project_path, class: 'btn btn-large'
 

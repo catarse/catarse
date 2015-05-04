@@ -1,6 +1,8 @@
 // Resetting headers as webflow does not provide this in its normalize
 h1, h2, h3, h4, h5, h6, label
   font-weight: normal
+  margin: 0
+  padding: 0
 
 body
   word-wrap: break-word
@@ -159,6 +161,11 @@ img, iframe
   text-decoration: none
   &:hover
     text-decoration: underline
+
+#project-header h2,
+#hero h2,
+#learn .headline 
+  margin-top: 0
 
 // Hero images
 .hero-jobs
