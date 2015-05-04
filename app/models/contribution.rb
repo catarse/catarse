@@ -21,7 +21,6 @@ class Contribution < ActiveRecord::Base
   scope :anonymous, -> { where(anonymous: true) }
   scope :not_anonymous, -> { where(anonymous: false) }
   scope :confirmed_last_day, -> { where("EXISTS(SELECT true FROM payments p WHERE p.contribution_id = contributions.id AND p.state = 'paid' AND (current_timestamp - p.paid_at) < '1 day'::interval)") }
-  scope :not_created_today, -> { where.not("contributions.created_at::date AT TIME ZONE '#{Time.zone.tzinfo.name}' = current_timestamp::date AT TIME ZONE '#{Time.zone.tzinfo.name}'") }
   scope :pending, ->{
     where("EXISTS (SELECT true FROM payments p WHERE p.contribution_id = contributions.id AND p.state = 'pending') AND NOT contributions.was_confirmed")
   }

@@ -121,6 +121,7 @@ class User < ActiveRecord::Base
                   AND p.uses_credits AND p.state = 'paid' AND c.user_id = users.id)")
   }
 
+  #FIXME: very slow query
   scope :to_send_category_notification, -> (category_id) {
     where("NOT EXISTS (
           select true from category_notifications n
