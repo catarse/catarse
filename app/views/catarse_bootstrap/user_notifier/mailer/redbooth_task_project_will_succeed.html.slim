@@ -2,28 +2,28 @@
 - project_account = project.account
 - project_link = project_by_slug_url(permalink: project.permalink)
 |#lucmasini
-|\n\r
+br/
 | O projeto #{project.name} (#{project_link}) está aguardando boletos e provavelmente será bem sucedido.
-|\n
+br/
 | Arrecadado: #{project.display_pledged_with_cents}
-|\n
+br/
 | Data de expiração: #{project.display_expires_at}
-|\n
+br/
 | Dados do realizador:
-|\n
+br/
 | Nome: #{project.user.name}
-|\n
+br/
 | Email: #{project.user.email}
-|\n
+br/
 | Telefone: #{project.user.phone_number}
-|\n
+br/
 | Dados Bancarios:
-|\n
+br/
 | Banco: #{project_account.try(:bank).try(:name)}
-|\n
+br/
 | Agência: #{project_account.try(:agency)}- #{project_account.try(:agency_digit)}
-|\n
+br/
 | Conta: #{project_account.try(:account)} - #{project_account.try(:account_digit)}
-|\n
+br/
 | Nome do titular: #{project_account.try(:owner_name)}
 
