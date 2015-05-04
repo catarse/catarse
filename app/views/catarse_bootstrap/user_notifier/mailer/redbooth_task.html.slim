@@ -2,32 +2,32 @@
 - project_account = project.account
 - project_link = project_by_slug_url(permalink: project.permalink)
 |#diegoreeberg
-br/
+|\n
 = project.name
-br/
+|\n
 = link_to project_link, project_link
-br/
+|\n
 | Arrecadado:
 = project.display_pledged_with_cents
-br/
+|\n
 | Usuario moip:
 = project.user.try(:moip_login)
-br/
+|\n
 | CPF/CNPJ do realizador:
 = project_account.try(:owner_document)
-br/
+|\n
 | Data de expiração:
 = project.display_expires_at
-br/
+|\n
 | Telefone:
 = project_account.try(:phone_number)
-br/
+|\n
 | Dados Bancarios:
-br/
+|\n
 | Banco: #{project_account.try(:bank).try(:name)}
-br/
+|\n
 | Agência: #{project_account.try(:agency)}- #{project_account.try(:agency_digit)}
-br/
+|\n
 | Conta: #{project_account.try(:account)} - #{project_account.try(:account_digit)}
-br/
+|\n
 | Nome do titular: #{project_account.try(:owner_name)}
