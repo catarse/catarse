@@ -30,7 +30,7 @@ class Contribution < ActiveRecord::Base
   scope :can_refund, ->{ where(can_refund: true) }
 
   scope :available_to_display, -> {
-    where("EXISTS (SELECT true FROM payments p WHERE p.contribution_id = contributions.id AND state NOT IN ('deleted', 'refused'))")
+    where("EXISTS (SELECT true FROM payments p WHERE p.contribution_id = contributions.id AND p.state NOT IN ('deleted', 'refused'))")
   }
 
   scope :ordered, -> { order(id: :desc) }

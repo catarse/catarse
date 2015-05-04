@@ -99,14 +99,16 @@ RSpec.describe "Projects", type: :feature do
       click_on("load-more")
       sleep FeatureHelpers::TIME_TO_SLEEP
       posts = all(".posts .project-news")
-      expect(posts.size).to eq(6) 
+      expect(posts.size).to eq(6)
       expect(page.evaluate_script('$("#load-more:visible").length')).to eq(0)
     end
 
     it "should navigate to the project reward selection page after clicking on a reward card" do
-      find(:css, '.card-reward').click
+      sleep FeatureHelpers::TIME_TO_SLEEP
+      reward = project.rewards.first
+      find(:css, ".card-reward#reward_#{reward.id}").click
       uri = URI.parse(current_url)
-      expect(new_project_contribution_path(project, reward_id: 1)).to eq("#{uri.path}?#{uri.query}")
+      expect(new_project_contribution_path(project, reward_id: reward.id)).to eq("#{uri.path}?#{uri.query}")
     end
   end
 
@@ -118,7 +120,7 @@ RSpec.describe "Projects", type: :feature do
       5.times{ create(:pending_contribution, value: 10.00, project: @own_project) }
       visit project_path(@own_project)
     end
-    
+
     it "should view 5 pending contributions" do
       click_on("contributions_link")
       choose("contribution_state_waiting_confirmation")
@@ -152,7 +154,7 @@ RSpec.describe "Projects", type: :feature do
       @own_project = create(:project, user: current_user)
       visit edit_project_path(@own_project, anchor: :posts)
     end
-    
+
     it "should post project post" do
       sleep FeatureHelpers::TIME_TO_SLEEP
       fill_in "project_posts_attributes_0_title", with: 'Foo title'
