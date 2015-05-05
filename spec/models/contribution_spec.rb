@@ -31,18 +31,6 @@ RSpec.describe Contribution, type: :model do
     it{ is_expected.to allow_value(20).for(:value) }
   end
 
-  describe '.not_created_today' do
-    before do
-      create(:contribution, created_at: 1.day.ago)
-      create(:contribution, created_at: 2.day.ago)
-      create(:contribution, created_at: 10.minutes.ago)
-    end
-
-    subject { Contribution.not_created_today }
-
-    it { is_expected.to have(2).itens }
-  end
-
   describe ".confirmed_last_day" do
     before do
       3.times { create(:payment, state: 'paid', paid_at: 2.days.ago) }

@@ -121,6 +121,7 @@ class User < ActiveRecord::Base
                   AND p.uses_credits AND p.state = 'paid' AND c.user_id = users.id)")
   }
 
+  #FIXME: very slow query
   scope :to_send_category_notification, -> (category_id) {
     where("NOT EXISTS (
           select true from category_notifications n
@@ -171,7 +172,7 @@ class User < ActiveRecord::Base
 
   def deactivate
     self.notify(:user_deactivate)
-    self.update_attributes deactivated_at: Time.now, reactivate_token: Devise.friendly_token
+    self.update_attributes deactivated_at: Time.current, reactivate_token: Devise.friendly_token
     self.contributions.update_all(anonymous: true)
   end
 
@@ -204,7 +205,7 @@ class User < ActiveRecord::Base
   end
 
   def created_today?
-    self.created_at.to_date == Date.today && self.sign_in_count <= 1
+    self.created_at.to_date == Time.zone.today && self.sign_in_count <= 1
   end
 
   def to_analytics_json
