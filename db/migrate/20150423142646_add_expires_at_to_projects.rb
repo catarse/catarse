@@ -18,7 +18,7 @@ class AddExpiresAtToProjects < ActiveRecord::Migration
      JOIN users u ON u.id = p.user_id;"
 
      execute <<-SQL
-    CREATE ORREPLACe VIEW user_feeds AS
+    CREATE OR REPLACE VIEW user_feeds AS
        SELECT events.user_id,
       events.title,
       events.event_type,
