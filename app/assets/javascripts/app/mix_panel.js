@@ -114,7 +114,7 @@ App.addChild('MixPanel', {
 
   trackPaymentChoice: function(){
     var self = this;
-    this.$('#payment-engines').on('click', '.back-payment-radio-button', function(){
+    this.$('#payment_choice-engines').on('click', '.back-payment-radio-button', function(){
       var choice = $('.back-payment-radio-button:checked').val();
       if(choice === 'slip'){
         self.track('Payment chosen', {payment_choice: 'BoletoBancario'});
@@ -235,8 +235,7 @@ App.addChild('MixPanel', {
       default_options.has_projects = (this.user.total_created_projects > 0);
     }
     var opt     = $.fn.extend(default_options, opt);
-    console.log("Will track: "+text);
-    console.log(opt);
+
     mixpanel.track(text, opt);
   },
 
