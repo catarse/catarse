@@ -1,9 +1,14 @@
 class AddExpiresAtToProjects < ActiveRecord::Migration
   def change
-    execute "DROP VIEW user_feeds;DROP VIEW financial_reports;DROP VIEW projects_for_home;DROP FUNCTION expires_at(projects);
+    execute "
+    DROP VIEW IF EXISTS user_feeds;
+    DROP VIEW IF EXISTS financial_reports;
+    DROP VIEW IF EXISTS projects_for_home;
+    DROP VIEW IF EXISTS project_financials;
+    DROP FUNCTION expires_at(projects);
              "
     add_column :projects, :expires_at, :timestamp
-    execute " CREATE or replace VIEW financial_reports AS 
+    execute " CREATE OR REPLACE VIEW financial_reports AS 
       SELECT p.name,
     u.moip_login,
     p.goal,
@@ -13,6 +18,7 @@ class AddExpiresAtToProjects < ActiveRecord::Migration
      JOIN users u ON u.id = p.user_id;"
 
      execute <<-SQL
+    CREATE ORREPLACe VIEW user_feeds AS
        SELECT events.user_id,
       events.title,
       events.event_type,
