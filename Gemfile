@@ -147,6 +147,7 @@ group :test, :development do
 end
 
 group :test do
+  gem 'zonebie'
   gem 'fakeweb'
   gem 'poltergeist'
   gem 'launchy'

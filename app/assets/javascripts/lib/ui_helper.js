@@ -2,7 +2,7 @@ Skull.UI_helper = {
   setupResponsiveIframes: function($container) {
     var that = this;
     this.$container = $container;
-    this.$iframes = $("iframe[src^='//player.vimeo.com'], iframe[src^='//www.youtube.com']");
+    this.$iframes = $("iframe[src^='//player.vimeo.com'], iframe[src^='//www.youtube.com'], iframe[src^='https://www.youtube.com']");
     this.$iframes.each(function() {
       if (!$(this).data('aspectRatio')) {
         var height = this.height || $(this).height(),
@@ -29,6 +29,7 @@ Skull.UI_helper = {
 
   updateIframeSize: function() {
     var newWidth = this.$container.width();
+
     if (newWidth) {
       this.$iframes.each(function() {
         var $el = $(this);

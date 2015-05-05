@@ -219,10 +219,10 @@ RSpec.describe Project, type: :model do
   end
 
   describe '.by_online_date' do
-    subject { Project.by_online_date(Time.now.to_date.to_s) }
+    subject { Project.by_online_date(Time.current.to_date.to_s) }
 
     before do
-      @project_01 = create(:project, online_date: Time.now.to_s)
+      @project_01 = create(:project, online_date: Time.current.to_s)
       @project_02 = create(:project, online_date: 2.weeks.ago)
 
     end
@@ -234,8 +234,8 @@ RSpec.describe Project, type: :model do
     subject { Project.by_expires_at('10/10/2013') }
 
     before do
-      @project_01 = create(:project, online_date: '2013-10-10 19:00:00-04', online_days: 1)
-      @project_02 = create(:project, online_date: '2013-10-09 19:00:00-04', online_days: 1)
+      @project_01 = create(:project, online_date: '2013-10-10'.to_date.in_time_zone, online_days: 1)
+      @project_02 = create(:project, online_date: '2013-10-09'.to_date.in_time_zone, online_days: 1)
     end
 
     it { is_expected.to eq [@project_02] }
@@ -469,19 +469,6 @@ RSpec.describe Project, type: :model do
       let(:project){ build(:project, online_date: 3.days.ago, online_days: 1) }
       before{project.save!}
       it{ is_expected.to eq(true) }
-    end
-  end
-
-  describe "#expires_at" do
-    subject{ project.expires_at }
-    context "when we do not have an online_date" do
-      let(:project){ build(:project, online_date: nil, online_days: 1) }
-      it{ is_expected.to be_nil }
-    end
-    context "when we have an online_date" do
-      let(:project){ create(:project, online_date: Time.zone.now, online_days: 1)}
-      before{project.save!}
-      it{ expect(subject.in_time_zone('Brasilia').to_s(:short)).to eq(Time.zone.tomorrow.end_of_day.to_s(:short)) }
     end
   end
 

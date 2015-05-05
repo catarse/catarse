@@ -1,6 +1,12 @@
 class ProjectObserver < ActiveRecord::Observer
   observe :project
 
+  def before_save(project)
+    if project.try(:online_date_changed?) || (project.online_date && project.try(:online_days_changed?))
+      project.expires_at = (project.online_date + project.online_days.days).end_of_day
+    end
+  end
+
   def after_save(project)
     if project.try(:video_url_changed?)
       ProjectDownloaderWorker.perform_async(project.id)
@@ -25,7 +31,7 @@ class ProjectObserver < ActiveRecord::Observer
 
     deliver_default_notification_for(project, :in_analysis_project)
 
-    project.update_attributes({ sent_to_analysis_at: DateTime.now })
+    project.update_attributes({ sent_to_analysis_at: DateTime.current })
   end
 
   def from_online_to_waiting_funds(project)
@@ -48,7 +54,7 @@ class ProjectObserver < ActiveRecord::Observer
   def from_approved_to_online(project)
     deliver_default_notification_for(project, :project_visible)
     project.update_attributes({
-      online_date: DateTime.now,
+      online_date: DateTime.current,
       audited_user_name: project.user.name,
       audited_user_cpf: project.user.cpf,
       audited_user_moip_login: project.user.moip_login,

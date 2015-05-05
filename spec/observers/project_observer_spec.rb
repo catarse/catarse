@@ -34,6 +34,41 @@ RSpec.describe ProjectObserver do
     CatarseSettings[:company_name] = 'Catarse'
   end
 
+  describe "#before_save" do
+
+    context "when change the online_date" do
+      let(:project) { build(:project, state: 'approved', online_days: 10) }
+      before do
+        project.update_attribute :online_date, Time.current
+        expect(project.expires_at).to eq ( Time.current + 10.days ).end_of_day
+      end
+      it "should update expires_at" do
+        project.save(validate: false)
+      end
+    end
+
+    context "when change the online_days" do
+      let(:project) { build(:project, state: 'approved', online_date: Time.current) }
+      before do
+        project.update_attribute :online_days, 20
+        expect(project.expires_at).to eq ( Time.current + 20.days ).end_of_day
+      end
+      it "should update expires_at" do
+        project.save(validate: false)
+      end
+    end
+
+    context "when project is not online" do
+      let(:project) { build(:project, state: 'approved', online_date: nil) }
+      before do
+        expect(project.expires_at).to eq nil
+      end
+      it "should update expires_at" do
+        project.save(validate: false)
+      end
+    end
+  end
+
   describe "#after_save" do
     let(:project) { build(:project, state: 'approved', online_date: 10.days.from_now) }
 

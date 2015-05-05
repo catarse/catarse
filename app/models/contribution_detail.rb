@@ -11,7 +11,7 @@ class ContributionDetail < ActiveRecord::Base
   delegate :available_rewards, :payer_email, :payer_name, to: :contribution
   delegate :pay, :refuse, :trash, :refund, :request_refund, :request_refund!,
            :credits?, :paid?, :pending?, :deleted?,
-           :slip_payment?, :pending_refund?, :second_slip_path, 
+           :slip_payment?, :pending_refund?, :second_slip_path,
            :pagarme_delegator, to: :payment
 
   scope :search_on_acquirer, ->(acquirer_name){ where(acquirer_name: acquirer_name) }
@@ -36,7 +36,7 @@ class ContributionDetail < ActiveRecord::Base
   scope :for_failed_projects, -> { with_project_state('failed').available_to_display }
 
   scope :available_to_display, -> {
-    joins(:contribution).merge(Contribution.available_to_display)
+    where("contribution_details.state not in('deleted', 'refused')")
   }
 
   scope :ordered, -> { order(id: :desc) }
