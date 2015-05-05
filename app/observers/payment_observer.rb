@@ -50,7 +50,7 @@ class PaymentObserver < ActiveRecord::Observer
     contribution = payment.contribution
     contribution.notify_to_contributor(:confirm_contribution)
 
-    if (Time.now > contribution.project.expires_at  + 7.days) && User.where(email: ::CatarseSettings[:email_payments]).present?
+    if (Time.current > contribution.project.expires_at  + 7.days) && User.where(email: ::CatarseSettings[:email_payments]).present?
       contribution.notify_to_backoffice(:payment_confirmed_after_project_was_closed)
     end
   end

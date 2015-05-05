@@ -30,7 +30,7 @@
             .w-col.w-col-7
               .w-row
                 .w-col.w-col-6.w-sub-col.deliver-at-date
-                  = form.input_field :deliver_at, required: true, as: :date, discard_day: true, start_year: Time.now.year, use_short_month: true, discard_day: true, required: true
+                  = form.input_field :deliver_at, required: true, as: :date, discard_day: true, start_year: Time.current.year, use_short_month: true, discard_day: true, required: true
           .w-row
             .w-col.w-col-5
               label.fontsize-smaller= t('.description') 
