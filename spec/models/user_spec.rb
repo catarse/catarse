@@ -310,7 +310,7 @@ RSpec.describe User, type: :model do
 
     context "when user is created today and not sign in yet" do
       before do
-        allow(user).to receive(:created_at).and_return(Date.today)
+        allow(user).to receive(:created_at).and_return(Time.zone.today)
         allow(user).to receive(:sign_in_count).and_return(0)
       end
 
@@ -319,7 +319,7 @@ RSpec.describe User, type: :model do
 
     context "when user is created today and already signed in more that once time" do
       before do
-        allow(user).to receive(:created_at).and_return(Date.today)
+        allow(user).to receive(:created_at).and_return(Time.zone.today)
         allow(user).to receive(:sign_in_count).and_return(2)
       end
 
@@ -328,7 +328,7 @@ RSpec.describe User, type: :model do
 
     context "when user is created yesterday and not sign in yet" do
       before do
-        allow(user).to receive(:created_at).and_return(Date.yesterday)
+        allow(user).to receive(:created_at).and_return(Time.zone.yesterday)
         allow(user).to receive(:sign_in_count).and_return(1)
       end
 

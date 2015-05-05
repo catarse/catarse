@@ -31,7 +31,7 @@ module Catarse
 
     config.filter_parameters += [:password, :password_confirmation]
     config.time_zone = 'Brasilia'
-    config.active_record.default_timezone = :local
+    config.active_record.default_timezone = :utc
     config.generators do |g|
       g.test_framework :rspec, fixture: false, views: false
     end

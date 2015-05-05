@@ -1,6 +1,6 @@
 footer.footer-simple
   .w-container
-    .footer-signature-text.fontsize-smallest #{CatarseSettings[:company_name]} #{Time.now.strftime("%Y")}
+    .footer-signature-text.fontsize-smallest #{CatarseSettings[:company_name]} #{Time.current.strftime("%Y")}
     ul.w-list-unstyled.footer-simple-links.fontsize-smallest
       li.footer-simple-links-list
         a.zendesk_widget.link-footer href="#{CatarseSettings[:zendesk_url]}/account/dropboxes/#{CatarseSettings[:zendesk_dropbox_id]}"  #{t('layouts.footer.links.contact')}

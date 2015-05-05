@@ -1,7 +1,7 @@
 .card.card-user.u-radius.u-marginbottom-30[itemprop="author"]
   .w-row
     .w-col.w-col-4.w.col-small-4.w-col-tiny-4.w-clearfix  
-      = image_tag resource.display_image, width: "100", class: "thumb u-round u-marginbottom-30", itemprop: "image"
+      = image_tag resource.display_image, width: "100", class: "thumb u-round", itemprop: "image"
     .w-col.w-col-8.w-col-small-8.w-col-tiny-8
       .fontsize-small.fontweight-semibold.lineheight-tighter[itemprop="name"] = link_to resource.display_name, user_path(resource), class: 'link-hidden'
       .fontsize-smallest.lineheight-looser[itemprop="address"] = resource.address_city
