@@ -48,6 +48,7 @@ App.addChild('MixPanel', {
     this.trackPageLoad('contributions', 'edit', 'Selected reward');
     this.trackPageLoad('contributions', 'show', 'Finished Contribution')
     this.trackContributions();
+    this.trackPaymentChoice();
     this.trackTwitterShare();
     this.trackFacebookShare();
     this.trackFollowCategory();
@@ -108,6 +109,19 @@ App.addChild('MixPanel', {
         from = 'Contribute button click';
       }
       self.track('Started contribution', _.extend(self.projectProperties(), {action: from}));
+    });
+  },
+
+  trackPaymentChoice: function(){
+    var self = this;
+    this.$('#payment-engines').on('click', '.back-payment-radio-button', function(){
+      var choice = $('.back-payment-radio-button:checked').val();
+      if(choice === 'slip'){
+        self.track('Payment chosen', {payment_choice: 'BoletoBancario'});
+      }
+      if(choice === 'credit_card'){
+        self.track('Payment chosen', {payment_choice: 'CartaoDeCredito'});
+      } 
     });
   },
 
@@ -221,7 +235,8 @@ App.addChild('MixPanel', {
       default_options.has_projects = (this.user.total_created_projects > 0);
     }
     var opt     = $.fn.extend(default_options, opt);
-
+    console.log("Will track: "+text);
+    console.log(opt);
     mixpanel.track(text, opt);
   },
 
