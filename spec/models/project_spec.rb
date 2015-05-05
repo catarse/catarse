@@ -472,19 +472,6 @@ RSpec.describe Project, type: :model do
     end
   end
 
-  describe "#expires_at" do
-    subject{ project.expires_at }
-    context "when we do not have an online_date" do
-      let(:project){ build(:project, online_date: nil, online_days: 1) }
-      it{ is_expected.to be_nil }
-    end
-    context "when we have an online_date" do
-      let(:project){ create(:project, online_date: Time.zone.now, online_days: 1)}
-      before{project.save!}
-      it{ expect(subject.in_time_zone).to eq(Time.zone.tomorrow.end_of_day) }
-    end
-  end
-
   describe '#selected_rewards' do
     let(:project){ create(:project) }
     let(:reward_01) { create(:reward, project: project) }
