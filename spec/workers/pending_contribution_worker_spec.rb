@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe PendingContributionWorker do
   let(:project) { create(:project) }
   let(:user) { create(:user) }
-  let(:contribution) { create(:pending_contribution, project_id: project.id, user_id: user.id) }
+  let!(:contribution) { create(:pending_contribution, project_id: project.id, user_id: user.id) }
   let(:contribution_no_payments) { create(:contribution, project_id: project.id, user_id: user.id) }
   let(:confirmed_contribution) { create(:confirmed_contribution, project_id: project.id, user_id: user.id) }
 
