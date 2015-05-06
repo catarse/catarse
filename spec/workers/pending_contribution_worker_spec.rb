@@ -12,13 +12,13 @@ RSpec.describe PendingContributionWorker do
   end
 
   context "when contribution is pending" do
-    it "should create a pending payment notification" do
+    it "should not create a pending payment notification" do
       PendingContributionWorker.perform_async(contribution.id)
       expect(ContributionNotification.where({
         template_name: 'pending_payment', 
         user: contribution.user, 
         contribution: contribution
-      }).count(:all)).to eq 1
+      }).count(:all)).to eq 0
     end
   end
 
