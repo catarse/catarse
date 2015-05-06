@@ -8,7 +8,10 @@ br
 | Não recebemos a confirmação de pagamento do boleto gerado para o projeto #{link_to contribution.project.name, project_by_slug_url(permalink: contribution.project.permalink, ref: 'notificacao_cancelado')}.
 br
 br
-| Caso você ainda tenha interesse em apoiar o projeto, podemos alterar a data de vencimento para você. Para isso, basta entrar em contato conosco respondendo a esta mensagem ou através do e-mail #{mail_to contact_email}
+|Você tem até #{contribution.project.display_expires_at} para realizar uma #{link_to 'nova contribuição', project_by_slug_url(permalink: contribution.project.permalink, ref: 'notificacao_cancelado')}. Junte-se a mais #{contribution.project.total_contributions} pessoas que querem tirar o projeto #{link_to contribution.project.name, project_by_slug_url(permalink: contribution.project.permalink, ref: 'notificacao_cancelado')} do papel! 
+br
+br
+|Podemos também alterar a data de vencimento para você. Para isso, basta entrar em contato conosco respondendo a esta mensagem ou através do e-mail #{mail_to contact_email}
 br
 br
 |Um abraço,
