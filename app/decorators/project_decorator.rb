@@ -52,7 +52,7 @@ class ProjectDecorator < Draper::Decorator
   end
 
   def display_expires_at
-    source.expires_at ? I18n.l(source.expires_at.try(:in_time_zone,Rails.application.config.time_zone).to_date) : ''
+    source.expires_at ? I18n.l(source.expires_at.in_time_zone.to_date) : ''
   end
 
   def display_online_date
@@ -148,7 +148,7 @@ class ProjectDecorator < Draper::Decorator
     time = 1.send(unit)
 
     if source.expires_at.to_i >= time.from_now.to_i
-      time = ((source.expires_at - Time.zone.now).abs / time).floor
+      time = ((source.expires_at - Time.current).abs / time).floor
       time_and_unit_attributes time, unit
     end
   end
