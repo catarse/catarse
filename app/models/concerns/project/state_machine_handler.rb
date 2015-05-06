@@ -70,11 +70,11 @@ module Project::StateMachineHandler
       end
 
       after_transition any => :draft do |project, transition|
-        project.update_attributes({ sent_to_draft_at: DateTime.now })
+        project.update_attributes({ sent_to_draft_at: DateTime.current })
       end
 
       after_transition any => :rejected do |project, transition|
-        project.update_attributes({ rejected_at: DateTime.now })
+        project.update_attributes({ rejected_at: DateTime.current })
       end
 
       after_transition [:draft, :rejected] => :deleted do |project, transition|

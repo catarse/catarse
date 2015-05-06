@@ -57,7 +57,7 @@ module Contribution::StateMachineHandler
 
         to_column = "#{transition.to}_at".to_sym
         if contribution.has_attribute?(to_column)
-          contribution.update_attribute to_column, DateTime.now
+          contribution.update_attribute to_column, DateTime.current
         end
       end
 
