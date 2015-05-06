@@ -57,7 +57,7 @@ class ProjectsController < ApplicationController
 
     resource.attributes = permitted_params
 
-    if resource.save(validate: valid && should_use_validate)
+    if resource.save(validate: ( valid && should_use_validate ) || permitted_params[:rewards_attributes].present? )
       flash[:notice] = t('project.update.success')
     else
       flash[:notice] = t('project.update.failed')
