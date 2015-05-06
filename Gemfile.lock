@@ -107,7 +107,7 @@ GEM
       activesupport (>= 3.2.0)
       json (>= 1.7)
       mime-types (>= 1.16)
-    catarse_moip (3.1.1)
+    catarse_moip (3.2.0)
       enumerate_it
       httparty
       libxml-ruby (~> 2.8.0)
@@ -668,7 +668,7 @@ DEPENDENCIES
   capybara (~> 2.2.0)
   carrierwave (~> 0.10.0)
   catarse_api!
-  catarse_moip (~> 3.1.1)
+  catarse_moip (~> 3.2.0)
   catarse_monkeymail (>= 0.1.6)
   catarse_pagarme (= 2.6.6)
   catarse_paypal_express (= 3.0.2)
