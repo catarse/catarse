@@ -40,11 +40,7 @@ class ProjectDecorator < Draper::Decorator
   end
 
   def display_status
-    if source.online?
-      (source.reached_goal? ? 'reached_goal' : 'not_reached_goal')
-    else
-      source.state
-    end
+    source.state
   end
 
   def display_image(version = 'project_thumb' )
