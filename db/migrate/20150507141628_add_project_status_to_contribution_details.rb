@@ -27,7 +27,6 @@ class AddProjectStatusToContributionDetails < ActiveRecord::Migration
       pa.gateway_fee,
       pa.gateway_data,
       pa.payment_method,
-      pa.state AS payment_state,
       p.state AS project_state,
       EXISTS(SELECT 1 FROM rewards r WHERE r.id = c.reward_id) AS "has_rewards",
       pa.created_at,
