@@ -184,19 +184,11 @@ RSpec.describe ProjectDecorator do
 
   describe "#display_status" do
     subject{ project.display_status }
-    context "when online and reached goal" do
+    context "when online" do
       before do
         allow(project).to receive(:state).and_return('online')
-        allow(project).to receive(:reached_goal?).and_return(true)
       end
-      it{ is_expected.to eq('reached_goal') }
-    end
-    context "when online and have not reached goal yet" do
-      before do
-        allow(project).to receive(:state).and_return('online')
-        allow(project).to receive(:reached_goal?).and_return(false)
-      end
-      it{ is_expected.to eq('not_reached_goal') }
+      it{ is_expected.to eq('online') }
     end
     context "when failed" do
       before do
