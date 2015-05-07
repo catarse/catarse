@@ -21,19 +21,19 @@ class Projects::MetricsController < ApplicationController
   end
 
   def total_confirmed_by_day
-    @metrics[:confirmed] = collection.joins(:payments).group("
-      payments.paid_at::date AT TIME ZONE '#{Time.zone.tzinfo.name}'
+    @metrics[:confirmed] = collection.group("
+      paid_at::date AT TIME ZONE '#{Time.zone.tzinfo.name}'
     ").count
   end
 
   def confirmed_amount_by_day
-    @metrics[:confirmed_amount_by_day] = collection.joins(:payments).group("
-      payments.paid_at::date AT TIME ZONE '#{Time.zone.tzinfo.name}'"
+    @metrics[:confirmed_amount_by_day] = collection.group("
+      paid_at::date AT TIME ZONE '#{Time.zone.tzinfo.name}'"
     ).sum(:value)
   end
 
   def collection
-    @contributions ||= parent.contributions.where('contributions.was_confirmed')
+    @contributions ||= parent.contribution_details.was_confirmed
   end
 
   def parent
