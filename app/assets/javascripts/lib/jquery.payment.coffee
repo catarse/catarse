@@ -61,7 +61,7 @@ cards = [
       luhn: true
   }
   {
-      type: 'mastercard'
+      type: 'master'
       pattern: /^5[0-5]/
       format: defaultFormat
       length: [16]
@@ -77,7 +77,7 @@ cards = [
       luhn: true
   }
   {
-      type: 'dinersclub'
+      type: 'diners'
       pattern: /^3[0689]/
       format: defaultFormat
       length: [14]
