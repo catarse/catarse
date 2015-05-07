@@ -11,26 +11,24 @@ RSpec.describe Projects::MetricsController, type: :controller do
   let(:current_user){ nil }
 
   describe "GET index" do
+    before { get :index, project_id: project.id,  locale: :pt }
+
     context "without an authenticated user" do
-      before { get :index, project_id: project.id,  locale: :pt }
       it { is_expected.to redirect_to sign_up_path }
     end
 
     context "with authenticated user" do
       let(:current_user) { create(:user) }
-      before { get :index, project_id: project.id,  locale: :pt }
       it { is_expected.to redirect_to root_path }
     end
 
     context "authenticated with project owner user" do
       let(:current_user) { project.user }
-      before { get :index, project_id: project.id,  locale: :pt }
       it { is_expected.to be_success }
     end
 
     context "with authenticated admin user" do
       let(:current_user) { create(:user, admin: true) }
-      before { get :index, project_id: project.id,  locale: :pt }
       it { is_expected.to be_success }
     end
   end
