@@ -14,9 +14,9 @@ en:
       confirmed_contributions: 'Confirmed contributions'
       created_projects: 'Created projects'
   site:
-    title: "The biggest crowdfunding community in Brazil"
+    title: "Catarse - crowdfunding made in Brazil"
     meta_title:  "%{title} · %{company_name}"
-    description: "O Catarse é uma ferramenta diferente – e colaborativa – para tirar o seu projeto do papel!"
+    description: Catarse is the first and biggest crowdfunding platform in Brazil. Turning ideas into reality.
     keywords: "catarse, crowdfunding, project, community, open source"
   login:
     forgot_password:

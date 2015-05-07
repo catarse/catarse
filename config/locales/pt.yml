@@ -11,10 +11,8 @@ pt:
   sending: Enviando...
   share_my_contributions: 'Confira o projeto '
   site:
-    description: O Catarse é uma ferramenta diferente – e colaborativa – para tirar
-      o seu projeto do papel!
-    keywords: catarse, crowdfunding, financiamento coletivo, projeto, comunidade,
-      open source
+    description:  O Catarse é a primeira e maior plataforma de crowdfunding, ou financiamento coletivo, do Brasil. Venha tirar projetos do papel!
+    keywords: crowdfunding, financiamento coletivo, projeto, catarse, comunidade, open source
     meta_title: "%{title} · %{company_name}"
-    title: A maior comunidade de financiamento coletivo do Brasil!
+    title: Crowdfunding e financiamento coletivo no Brasil é no Catarse
 
