@@ -19,7 +19,7 @@ RSpec.describe Projects::MetricsController, type: :controller do
     context "with authenticated user" do
       let(:current_user) { create(:user) }
       before { get :index, project_id: project.id,  locale: :pt }
-      it { is_expected.to redirect_to sign_up_path }
+      it { is_expected.to redirect_to root_path }
     end
 
     context "authenticated with project owner user" do
