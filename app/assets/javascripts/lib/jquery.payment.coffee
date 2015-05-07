@@ -77,7 +77,7 @@ cards = [
       luhn: true
   }
   {
-      type: 'dinersclub'
+      type: 'diners'
       pattern: /^3[0689]/
       format: defaultFormat
       length: [14]
