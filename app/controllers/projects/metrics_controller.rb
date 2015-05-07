@@ -4,7 +4,7 @@ class Projects::MetricsController < ApplicationController
   layout false
 
   def index
-    authorize parent
+    authorize parent, :update?
 
     @metrics ||= {}
 
@@ -37,7 +37,7 @@ class Projects::MetricsController < ApplicationController
   end
 
   def parent
-    @project ||= Project.find params[:id]
+    @project ||= Project.find params[:project_id]
   end
 
 end
