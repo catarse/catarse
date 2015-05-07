@@ -41,6 +41,18 @@ class ContributionDetail < ActiveRecord::Base
 
   scope :ordered, -> { order(id: :desc) }
 
+  scope :total_confirmed_by_day, -> {
+    was_confirmed.group("contribution_details.paid_at::date AT TIME ZONE '#{Time.zone.tzinfo.name}'").count
+  }
+
+  scope :total_confirmed_amount_by_day, -> {
+    was_confirmed.group("contribution_details.paid_at::date AT TIME ZONE '#{Time.zone.tzinfo.name}'").sum(:value)
+  }
+
+  scope :total_by_address_state, -> {
+    was_confirmed.joins(:user).group("upper(users.address_state)").count
+  }
+
   def self.between_values(start_at, ends_at)
     return all unless start_at.present? && ends_at.present?
     where("value between ? and ?", start_at, ends_at)

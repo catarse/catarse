@@ -83,7 +83,7 @@
           #dashboard_reward.content.w-hidden
             = render 'dashboard_reward'
           - if @project.published?
-            #dashboard_reports.content.w-hidden data-path=metrics_project_path(@project)
+            #dashboard_reports.content.w-hidden data-path=project_metrics_path(@project)
               .results
           #dashboard_user_about.content.w-hidden
             = render 'dashboard_user_about'
