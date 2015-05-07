@@ -13,13 +13,13 @@ RSpec.describe Projects::MetricsController, type: :controller do
   describe "GET index" do
     context "without an authenticated user" do
       before { get :index, project_id: project.id,  locale: :pt }
-      it { is_expected.to be_redirect }
+      it { is_expected.to redirect_to sign_up_path }
     end
 
     context "with authenticated user" do
       let(:current_user) { create(:user) }
       before { get :index, project_id: project.id,  locale: :pt }
-      it { is_expected.to be_redirect }
+      it { is_expected.to redirect_to sign_up_path }
     end
 
     context "authenticated with project owner user" do
