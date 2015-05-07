@@ -34,6 +34,7 @@ Catarse::Application.routes.draw do
   end
   resources :auto_complete_projects, only: [:index]
   resources :projects, only: [:index, :create, :update, :edit, :new, :show] do
+    resources :metrics, only: [:index], controller: "projects/metrics"
     resources :accounts, only: [:create, :update]
     resources :posts, controller: 'projects/posts', only: [ :index, :destroy ]
     resources :rewards, only: [ :index ] do
@@ -51,7 +52,6 @@ Catarse::Application.routes.draw do
     member do
       get :reminder, to: 'projects/reminders#create'
       delete :reminder, to: 'projects/reminders#destroy'
-      get :metrics, to: 'projects/metrics#index'
       put 'pay'
       get 'embed'
       get 'video_embed'
