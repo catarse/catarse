@@ -182,6 +182,42 @@ RSpec.describe ProjectDecorator do
     end
   end
 
+  describe "#display_card_status" do
+    subject{ project.display_card_status }
+    context "when online and reached goal" do
+      before do
+        allow(project).to receive(:state).and_return('online')
+        allow(project).to receive(:reached_goal?).and_return(true)
+      end
+      it{ is_expected.to eq('reached_goal') }
+    end
+    context "when online and have not reached goal yet" do
+      before do
+        allow(project).to receive(:state).and_return('online')
+        allow(project).to receive(:reached_goal?).and_return(false)
+      end
+      it{ is_expected.to eq('not_reached_goal') }
+    end
+    context "when failed" do
+      before do
+        allow(project).to receive(:state).and_return('failed')
+      end
+      it{ is_expected.to eq('failed') }
+    end
+    context "when successful" do
+      before do
+        allow(project).to receive(:state).and_return('successful')
+      end
+      it{ is_expected.to eq('successful') }
+    end
+    context "when waiting funds" do
+      before do
+        allow(project).to receive(:state).and_return('waiting_funds')
+      end
+      it{ is_expected.to eq('waiting_funds') }
+    end
+  end
+
   describe "#display_status" do
     subject{ project.display_status }
     context "when online" do

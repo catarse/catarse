@@ -43,6 +43,14 @@ class ProjectDecorator < Draper::Decorator
     source.state
   end
 
+  def display_card_status
+    if source.online?
+      (source.reached_goal? ? 'reached_goal' : 'not_reached_goal')
+    else
+      source.state
+    end
+  end
+
   def display_image(version = 'project_thumb' )
     use_uploaded_image(version) || use_video_tumbnail(version)
   end
