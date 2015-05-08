@@ -7,7 +7,7 @@ module Project::ErrorGroups
       project: [ :video_url, :about_html, :budget, :uploaded_image, :headline],
       reward: [:'rewards.size', :'rewards.minimum_value'],
       user_about: [:'user.uploaded_image', :'user.name', :'user.about_html'],
-      user_settings: ProjectAccount.attribute_names.map{|attr| ('project_account.' + attr).to_sym}
+      user_settings: ProjectAccount.attribute_names.map{|attr| ('project_account.' + attr).to_sym} << :account
     }
 
     def error_included_on_group? error_attr, group_name

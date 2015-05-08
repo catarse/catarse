@@ -6,13 +6,31 @@ module Project::StateMachineHandler
     state_machine :state, initial: :draft do
       state :draft, value: 'draft'
       state :rejected, value: 'rejected'
-      state :approved, value: 'approved'
-      state :online, value: 'online'
-      state :successful, value: 'successful'
-      state :waiting_funds, value: 'waiting_funds'
-      state :failed, value: 'failed'
+
+      #validations starting in in_analysis
+      state :in_analysis, :approved, :online, :successful, :waiting_funds, :failed do
+        validates_presence_of :about_html, :headline, :goal, :online_days, :budget
+        validates_presence_of :uploaded_image, if: ->(project) { project.video_thumbnail.blank? }
+        validate do
+          self.errors['user.uploaded_image'] << "Imagem do usuário não pode ficar em branco" if self.user.uploaded_image.blank?
+          self.errors['rewards.size'] << "Deve haver pelo menos uma recompensa" if self.rewards.size == 0
+          self.errors['user.name'] << "Nome do usuário não pode ficar em branco" if self.user.name.blank?
+          self.errors['user.about_html'] << "Sobre você do usuário não pode ficar em branco" if self.user.about_html.blank?
+        end
+      end
+
+      #validations starting in approved
+      state :approved, :online, :successful, :waiting_funds, :failed do
+        validates_presence_of :video_url,
+          if: ->(project) { (project.goal || 0) >= CatarseSettings[:minimum_goal_for_video].to_i }
+      end
+
+      #validations starting in online
+      state :online, :successful, :waiting_funds, :failed do
+        validates_presence_of :account, message: 'Dados Bancários não podem ficar em branco'
+        validates_associated :account
+      end
       state :deleted, value: 'deleted'
-      state :in_analysis, value: 'in_analysis'
 
       event :push_to_draft do
         transition all => :draft #NOTE: when use 'all' we can't use new hash style ;(

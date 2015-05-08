@@ -103,16 +103,16 @@ class Project < ActiveRecord::Base
 
   attr_accessor :accepted_terms
 
-  # Draft state validtions
   validates_acceptance_of :accepted_terms, on: :create
+  ##validation for all states
   validates_presence_of :name, :user, :category, :permalink
   validates_length_of :headline, maximum: 140
-  validates_numericality_of :online_days, less_than_or_equal_to: 60, greater_than: 0, if: ->(p){ p.online_days.present? && ( p.online_days_was.nil? || p.online_days_was <= 60 ) }
+  validates_numericality_of :online_days, less_than_or_equal_to: 60, greater_than: 0,
+    if: ->(p){ p.online_days.present? && ( p.online_days_was.nil? || p.online_days_was <= 60 ) }
   validates_numericality_of :goal, greater_than: 9, allow_blank: true
   validates_uniqueness_of :permalink, case_sensitive: false
   validates_format_of :permalink, with: /\A(\w|-)*\Z/
 
-  validates_with StateValidator
 
   [:between_created_at, :between_expires_at, :between_online_date, :between_updated_at].each do |name|
     define_singleton_method name do |starts_at, ends_at|

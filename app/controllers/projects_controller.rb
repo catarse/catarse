@@ -54,9 +54,12 @@ class ProjectsController < ApplicationController
   def update
     authorize resource
 
+    #need to check this before setting new attributes
+    should_validate = should_use_validate
+
     resource.attributes = permitted_params
 
-    if resource.save(validate: should_use_validate)
+    if resource.save(validate: should_validate)
       flash[:notice] = t('project.update.success')
     else
       flash[:notice] = t('project.update.failed')
@@ -150,7 +153,7 @@ class ProjectsController < ApplicationController
 
   def should_use_validate
     ( resource.valid? &&
-     (resource.online? || resource.failed? || resource.successful? || permitted_params[:permalink].present?) ) ||
+     (Project::PUBLISHED_STATES.include?(resource.state) || permitted_params[:permalink].present?) ) ||
       permitted_params[:rewards_attributes].present?
   end
 
