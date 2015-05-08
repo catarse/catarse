@@ -40,5 +40,5 @@ div[itemtype="http://schema.org/CreativeWork" class="#{defined?(wrapper_class) ?
               = t('.remaining', count: @project.time_to_go[:time])
           - else
             .fontsize-smallest.lineheight-tight.fontweight-semibold.w-row 
-              = t("projects.card.display_status.#{@project.display_status}").capitalize
+              = t("projects.card.display_status.#{@project.display_card_status}").capitalize
             = @project.display_expires_at 
