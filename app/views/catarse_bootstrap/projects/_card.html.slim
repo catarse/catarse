@@ -30,7 +30,7 @@ div[itemtype="http://schema.org/CreativeWork" class="#{defined?(wrapper_class) ?
             = "#{@project.progress}%"
         .w-col.w-col-4.w-col-small-4.w-col-tiny-4.u-text-center-small-only
           .fontsize-smaller.fontweight-semibold 
-            = number_to_currency(@project.pledged, precision: 0)
+            = @project.display_pledged
           .fontsize-smallest.lineheight-tightest Levantados
         .w-col.w-col-4.w-col-small-4.w-col-tiny-4.u-text-right
           - unless @project.expired?
