@@ -114,14 +114,15 @@ App.addChild('MixPanel', {
 
   trackPaymentChoice: function(){
     var self = this;
-    this.$('#payment_choice-engines').on('click', '.back-payment-radio-button', function(){
+    this.$('#engine').on('click', '.back-payment-radio-button', function(){
       var choice = $('.back-payment-radio-button:checked').val();
+      console.log("Clicked payment");
       if(choice === 'slip'){
-        self.track('Payment chosen', {payment_choice: 'BoletoBancario'});
+        self.track('Payment selected', _.extend(self.projectProperties(), {payment_choice: 'BoletoBancario'}));
       }
       if(choice === 'credit_card'){
-        self.track('Payment chosen', {payment_choice: 'CartaoDeCredito'});
-      } 
+        self.track('Payment selected', _.extend(self.projectProperties(), {payment_choice: 'CartaoDeCredito'}));
+      }
     });
   },
 
