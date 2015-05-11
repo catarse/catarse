@@ -152,9 +152,7 @@ class ProjectsController < ApplicationController
   end
 
   def should_use_validate
-    ( resource.valid? &&
-     (Project::PUBLISHED_STATES.include?(resource.state) || permitted_params[:permalink].present?) ) ||
-      permitted_params[:rewards_attributes].present?
+    resource.valid?
   end
 
   def permitted_params
