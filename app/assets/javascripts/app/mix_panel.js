@@ -118,10 +118,10 @@ App.addChild('MixPanel', {
       var choice = $('.back-payment-radio-button:checked').val();
       console.log("Clicked payment");
       if(choice === 'slip'){
-        self.track('Payment selected', _.extend(self.projectProperties(), {payment_choice: 'BoletoBancario'}));
+        self.track('Payment chosen', _.extend(self.projectProperties(), {payment_choice: 'BoletoBancario'}));
       }
       if(choice === 'credit_card'){
-        self.track('Payment selected', _.extend(self.projectProperties(), {payment_choice: 'CartaoDeCredito'}));
+        self.track('Payment chosen', _.extend(self.projectProperties(), {payment_choice: 'CartaoDeCredito'}));
       }
     });
   },
