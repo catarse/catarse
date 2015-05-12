@@ -79,7 +79,7 @@ task :verify_pagarme_transactions, [:start_date, :end_date]  => :environment do 
     return true if payment.deleted? || payment.chargeback?
     case source['status']
     when 'paid', 'authorized' then
-      payment.paid?
+      payment.paid? || payment.pending_refund?
     when 'refunded' then
       payment.refunded?
     when 'refused' then
