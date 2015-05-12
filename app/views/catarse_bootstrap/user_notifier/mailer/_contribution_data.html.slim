@@ -22,7 +22,7 @@ p
     br/
     | Estimativa de entrega: #{contribution.reward.display_deliver_estimate}
     br/
-  | ID do apoio: #{detail.payment_id}
+  | ID do apoio: #{detail.gateway_id}
   br/
   / We need the || for some old projects do not have the account info
   - owner = contribution.project.account || contribution.project.user
