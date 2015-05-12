@@ -14,6 +14,7 @@ class Projects::ContributionsController < ApplicationController
       flash[:alert] = t('.reward_sold_out')
       return redirect_to new_project_contribution_path(@project)
     end
+    return render :existing_payment if resource.payments.exists?
   end
 
   def update

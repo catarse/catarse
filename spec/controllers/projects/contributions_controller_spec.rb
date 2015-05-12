@@ -57,8 +57,14 @@ RSpec.describe Projects::ContributionsController, type: :controller do
 
     context "when user is logged in" do
       let(:user){ create(:user) }
-      let(:contribution){ create(:pending_contribution, value: 10.00, project: project, user: user) }
+      let(:contribution){ create(:contribution, value: 10.00, project: project, user: user) }
       it{ is_expected.to render_template(:edit) }
+    end
+
+    context "when contribution already has payment" do
+      let(:user){ create(:user) }
+      let(:contribution){ create(:pending_contribution, value: 10.00, project: project, user: user) }
+      it{ is_expected.to render_template(:existing_payment) }
     end
 
     context "when reward is sold out" do
