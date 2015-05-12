@@ -89,7 +89,7 @@ task :verify_pagarme_transactions, [:start_date, :end_date]  => :environment do 
     return true if payment.deleted? || payment.chargeback?
     case source['status']
     when 'paid', 'authorized' then
-      check_if_payment_is_invalid_refund
+      check_if_payment_is_invalid_refund(payment)
       payment.paid? || payment.pending_refund?
     when 'refunded' then
       payment.refunded?
