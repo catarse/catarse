@@ -18,6 +18,14 @@ pt:
         value: 'Valor do apoio'
         reward: 'Recompensa selecionada'
         edit: 'Editar'
+      existing_payment:
+        page_title: 'O seu apoio para %{name} foi realizado'
+        warning: 'Atenção'
+        warning_subtitle: 'Você está tentando acessar um endereço referente a um apoio já iniciado:'
+        check_email: "Verifique em sua caixa de email se o recibo provisório do apoio foi enviado. Caso não tenha sido, entre em %{mail_to_link} conosco, informando o código identificador do seu apoio (%{gateway_id}), que iremos te ajudar no que for preciso."
+        new_contribution: "Caso você tenha acessado essa página por engano, e queira realizar um novo apoio, %{link}"
+        contact: 'contato'
+        click_here: 'clique aqui'
       edit:
         review_title: 'Preencha e revise os dados para pagamento'
         review_subtitle: 'Esses dados serão informados ao realizador do projeto'
