@@ -39,6 +39,8 @@ pt:
         agency_digit: 'Dígito agência'
         account: 'No. da conta'
         account_digit: 'Dígito conta'
+      payment:
+        state: 'Status'
       contribution:
         payer_name: "Nome Completo"
         payer_email: "Email"
@@ -52,7 +54,7 @@ pt:
         address_city: "Cidade"
         address_zip_code: "CEP"
         address_phone_number: "Telefone"
-        value: valor do apoio
+        value: Valor do apoio
         payer_name: "Nome Completo"
         payer_email: "Email"
         country: "País"
@@ -64,7 +66,7 @@ pt:
         address_city: "Cidade"
         address_zip_code: "CEP"
         address_phone_number: "Telefone"
-        reward: recompensa
+        reward: Recompensa
         project: projeto
       reward:
         deliver_at: Previsão de entrega
