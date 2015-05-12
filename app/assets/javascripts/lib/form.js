@@ -11,6 +11,7 @@ Skull.Form = {
 
   setupForm: function(){
     this.$('input,select,textarea').on('invalid', this.invalid);
+    this.preventInvalidSubmit();
   },
 
   invalid: function(event){
@@ -26,7 +27,21 @@ Skull.Form = {
       var customValidation = $input.data('custom-validation') || function(){ return true; };
       valid = this.checkValidity() && customValidation($input) && valid;
     });
-    this.$('[required].error:visible:first').select();
+    if(!valid){
+      $.smoothScroll({
+        scrollTarget: '[required].error:visible:first',
+        speed: 800
+      });
+      this.$('[required].error:visible:first').select();
+      this.$('.text-error').slideDown('slow');  
+    }
     return valid;
+  },
+
+  preventInvalidSubmit: function(){
+    var that = this;
+    this.$('input[type="submit"]').on('click', function(e){
+      return that.validate();
+    });
   },
 };
