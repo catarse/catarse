@@ -213,6 +213,7 @@ class User < ActiveRecord::Base
       id: self.id,
       email: self.email,
       total_contributed_projects: self.total_contributed_projects,
+      has_online_project: self.has_online_project,
       total_created_projects: self.projects.count,
       created_at: self.created_at,
       last_sign_in_at: self.last_sign_in_at,
