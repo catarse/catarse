@@ -5,7 +5,7 @@ RSpec.describe Bank, type: :model do
   describe ".order_popular" do
     subject { Bank.order_popular }
 
-    let(:user_01) { create(:user_without_bank_data) }
+    let(:user_01) { create(:user, :without_bank_data) }
     let(:bank_01) { create(:bank, name: "Foo") }
     let(:bank_02) { create(:bank, name: "Foo bar", code: "001") }
 
