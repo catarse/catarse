@@ -35,11 +35,11 @@
               - if @contribution.reward
                 span.w-hidden-main.w-hidden-medium.fontweight-semibold>= Contribution.human_attribute_name(:reward)
                 == @contribution.reward.display_description
+                .fontsize-smallest.lineheight-looser
+                  span.fontweight-semibold = Reward.human_attribute_name(:deliver_at) + ': '
+                  == @contribution.reward.display_deliver_estimate
               - else
                 == t('.review_without_reward_html', value: (number_to_currency @contribution.localized.value))
-              .fontsize-smallest.lineheight-looser
-                span.fontweight-semibold = Reward.human_attribute_name(:deliver_at) + ': '
-                == @contribution.reward.display_deliver_estimate
           p.fontsize-base.u-marginbottom-60
             == t('.check_email', mail_to_link: mail_to(CatarseSettings[:email_contact], t('.contact'), class: 'alt-link'), gateway_id: detail.gateway_id)
           .divider.u-marginbottom-10
