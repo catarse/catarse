@@ -14,7 +14,7 @@ RSpec.describe Bank, type: :model do
       let!(:bank_account02) { create(:bank_account, user: user_01, bank: bank_01) }
       let!(:bank_account03) { create(:bank_account, user: user_01, bank: bank_02) }
 
-      it "should return a collection with banks in order of most used" do
+      it "returns a collection with banks in order of most used" do
         is_expected.to eq([bank_01, bank_02])
       end
     end
