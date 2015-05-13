@@ -215,7 +215,7 @@ class User < ActiveRecord::Base
       total_contributed_projects: self.total_contributed_projects,
       total_created_projects: self.projects.count,
       created_at: self.created_at,
-      has_online_project: self.has_online_project,
+      has_online_project: self.has_online_project?,
       last_sign_in_at: self.last_sign_in_at,
       sign_in_count: self.sign_in_count,
       created_today: self.created_today?
