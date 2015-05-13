@@ -75,21 +75,15 @@ task :verify_pagarme_transactions, [:start_date, :end_date]  => :environment do 
     })
   end
 
-  def check_if_payment_is_invalid_refund(payment)
-    if payment.refunded?
-      payment.update_column(:state, 'pending_refund')
-      payment.invalid_refund
-    elsif payment.pending_refund?
-      payment.invalid_refund
-    end
-    payment.reload
+  def fix_payment_if_is_invalid_refund(payment)
+    payment.update_column(:state, 'pending_refund') if payment.refunded?
+    payment.invalid_refund if payment.pending_refund?
   end
 
   def status_ok?(payment, source)
     return true if payment.deleted? || payment.chargeback?
     case source['status']
     when 'paid', 'authorized' then
-      check_if_payment_is_invalid_refund(payment)
       payment.paid? || payment.pending_refund?
     when 'refunded' then
       payment.refunded?
@@ -112,6 +106,7 @@ task :verify_pagarme_transactions, [:start_date, :end_date]  => :environment do 
         end
 
         # Atualiza os dados usando o pagarme_delegator caso o status não esteja batendo
+        fix_payment_if_is_invalid_refund(payment) if %w(paid authorized).include?(source['status'])
         yield(source, payment) unless status_ok?(payment, source)
       else
         contribution = find_contribution source
