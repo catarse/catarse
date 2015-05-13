@@ -62,7 +62,7 @@ class ApplicationController < ActionController::Base
   end
 
   def is_locale_available?
-    params[:locale].blank? || AVAILABLE_LOCALES.include?(params[:locale])
+    params[:locale].blank? || AVAILABLE_LOCALES.include?(params[:locale].to_s)
   end
 
   def after_sign_in_path_for(resource_or_scope)
