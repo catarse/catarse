@@ -17,7 +17,7 @@ class UsersController < ApplicationController
 
   def unsubscribe_notifications
     authorize resource
-    redirect_to user_path(current_user, anchor: 'unsubscribes')
+    redirect_to edit_user_path(current_user, anchor: 'notifications')
   end
 
   # TODO: Go back here and rethink this...
