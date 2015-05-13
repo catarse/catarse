@@ -74,7 +74,7 @@
               wrapper_class: 'w-row u-marginbottom-30 card card-terciary',
               label_wrapper_html: { class: 'w-col w-col-5 w-subcol' },
               text_field_wrapper_html: { class: 'w-col w-col-6' },
-              input_html: { required: true },
+              input_html: { required: (!@project.display_image.present?) },
               validation_text: false                  
 
           = form.input :headline, as: :text, 

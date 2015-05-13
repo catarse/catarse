@@ -28,23 +28,6 @@ FactoryGirl.define do
     f.name "Brasil"
   end
 
-  factory :user_without_bank_data, class: User do |f|
-    f.name "Foo bar"
-    f.password "123456"
-    f.cpf "123456"
-    f.uploaded_image File.open("#{Rails.root}/spec/support/testimg.png")
-    f.email { generate(:email) }
-    f.permalink { generate(:permalink) }
-    f.about_html "This is Foo bar's biography."
-    f.address_street 'fooo'
-    f.address_number '123'
-    f.address_city 'fooo bar'
-    f.address_state 'fooo'
-    f.address_neighbourhood 'bar'
-    f.address_zip_code '123344333'
-    f.phone_number '1233443355'
-  end
-
   factory :user do |f|
     f.association :bank_account
     f.permalink { generate(:permalink) }
@@ -62,6 +45,10 @@ FactoryGirl.define do
     f.address_neighbourhood 'bar'
     f.address_zip_code '123344333'
     f.phone_number '1233443355'
+
+    trait :without_bank_data do
+      bank_account { nil }
+    end
   end
 
   factory :category do |f|
