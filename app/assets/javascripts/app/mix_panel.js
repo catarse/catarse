@@ -234,7 +234,6 @@ App.addChild('MixPanel', {
       default_options.has_contributions = (this.user.total_contributed_projects > 0);
       default_options.projects = this.user.total_created_projects;
       default_options.has_projects = (this.user.total_created_projects > 0);
-      default_options.has_online_project = this.user.has_online_project;
     }
     var opt     = $.fn.extend(default_options, opt);
 
