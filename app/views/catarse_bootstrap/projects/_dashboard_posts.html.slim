@@ -27,7 +27,7 @@
                 .w-col.w-col-5
         .divider.u-marginbottom-30
         .fontsize-large.fontweight-semibold.u-marginbottom-30= t('.old_posts') 
-        - @project.posts.each do |post|
+        - @project.posts.order('created_at DESC').each do |post|
           - if post.persisted?
             .project-news.u-marginbottom-30
               .w-row
