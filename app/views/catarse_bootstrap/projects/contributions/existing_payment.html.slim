@@ -1,0 +1,50 @@
+- content_for :title, t('.page_title', name: @project.name)
+
+= render 'shared/header'
+
+= render 'projects/project_header'
+
+- detail = @contribution.details.ordered.first 
+.w-section.section-one-column
+  .w-container
+    .w-row
+      .w-col.w-col-1
+      .w-col.w-col-10
+        div
+          p.fontsize-base
+            span.fontweight-semibold.text-error>= t('.warning')
+            = t('.warning_subtitle')
+          .w-row.w-hidden-small.w-hidden-tiny.card.card-secondary.fontsize-small.fontweight-semibold
+            .w-col.w-col-4
+              = Contribution.human_attribute_name(:value)   
+            .w-col.w-col-4
+              = Payment.human_attribute_name(:state)   
+            .w-col.w-col-4
+              = Contribution.human_attribute_name(:reward)   
+          .w-row.card.u-marginbottom-30
+            .w-col.w-col-4.u-marginbottom-10
+              .fontsize-base.inline-block
+                span.w-hidden-main.w-hidden-medium.fontweight-semibold>= Contribution.human_attribute_name(:value)
+                = number_to_currency @contribution.localized.value
+            .w-col.w-col-4.u-marginbottom-10.fontsize-smallest
+              .w-hidden-main.w-hidden-medium.fontweight-semibold>= Payment.human_attribute_name(:state)
+              = "#{detail.decorate.display_payment_details} #{detail.decorate.display_installment_details}"
+              br/
+              = detail.decorate.display_status
+            .w-col.w-col-4.u-marginbottom-10.fontsize-smallest
+              - if @contribution.reward
+                span.w-hidden-main.w-hidden-medium.fontweight-semibold>= Contribution.human_attribute_name(:reward)
+                == @contribution.reward.display_description
+              - else
+                == t('.review_without_reward_html', value: (number_to_currency @contribution.localized.value))
+              .fontsize-smallest.lineheight-looser
+                span.fontweight-semibold = Reward.human_attribute_name(:deliver_at) + ': '
+                == @contribution.reward.display_deliver_estimate
+          p.fontsize-base.u-marginbottom-60
+            == t('.check_email', mail_to_link: mail_to(CatarseSettings[:email_contact], t('.contact'), class: 'alt-link'), gateway_id: detail.gateway_id)
+          .divider.u-marginbottom-10
+          p.fontsize-small.fontcolor-secondary.u-text-center
+            == t('.new_contribution', link: link_to(t('.click_here'), new_project_contribution_path(project_id: @contribution.project_id), class: 'alt-link'))
+      .w-col.w-col-1
+
+= render 'shared/footer'
