@@ -164,7 +164,7 @@ RSpec.describe UsersController, type: :controller do
         get :unsubscribe_notifications, id: user.id, locale: 'pt'
       end
 
-      it { is_expected.to redirect_to user_path(user, anchor: 'unsubscribes')  }
+      it { is_expected.to redirect_to edit_user_path(user, anchor: 'notifications')  }
     end
 
     context "when user is not loged" do
@@ -173,7 +173,7 @@ RSpec.describe UsersController, type: :controller do
         get :unsubscribe_notifications, id: user.id, locale: 'pt'
       end
 
-      it { is_expected.not_to redirect_to user_path(user, anchor: 'unsubscribes')  }
+      it { is_expected.to redirect_to new_user_registration_path  }
     end
   end
 
