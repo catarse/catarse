@@ -1,5 +1,7 @@
 # coding: utf-8
 class ApplicationController < ActionController::Base
+  AVAILABLE_LOCALES = ['pt']
+
   include Concerns::ExceptionHandler
   include Concerns::MenuHandler
   include Concerns::SocialHelpersHandler
@@ -55,13 +57,12 @@ class ApplicationController < ActionController::Base
   end
 
   def set_locale
-    if params[:locale]
-      I18n.locale = params[:locale]
-      current_user.try(:change_locale, params[:locale])
-    elsif request.method == "GET"
-      new_locale = current_user.try(:locale) || I18n.default_locale
-      redirect_to url_for(params.merge(locale: new_locale, only_path: true))
-    end
+    return redirect_to url_for(locale: I18n.default_locale, only_path: true) unless is_locale_available?
+    I18n.locale = params[:locale] || I18n.default_locale
+  end
+
+  def is_locale_available?
+    params[:locale].blank? || AVAILABLE_LOCALES.include?(params[:locale].to_s)
   end
 
   def after_sign_in_path_for(resource_or_scope)
