@@ -26,42 +26,42 @@
                 .fontsize-base.fontweight-semibold= t('.title') 
                 .fontsize-small.u-marginbottom-20= t('.user_data_subtitle_html') 
                 .w-row
-                  .w-col.w-col-6
+                  .w-col.w-col-6.w-sub-col
                     = form.input_field :entity_type, as: :select, collection: ['Pessoa Física', 'Pessoa Jurídica'], class: 'w-select positive account_type', include_blank: false
                   .w-col.w-col-6
                 .divider.u-marginbottom-20
                 .w-row
-                  .w-col.w-col-6
+                  .w-col.w-col-6.w-sub-col
                     = form.hidden_field :project_id, value: @project.id
                     = form.input :owner_name, as: :string, input_html: { class: 'positive', data: {natural: t('.natural'), juridical: t('.juridical') } }
                   .w-col.w-col-6
                     = form.input :email, as: :string, 
                     input_html: { class: 'positive' }
                 .w-row
-                  .w-col.w-col-6
+                  .w-col.w-col-6.w-sub-col
                     = form.input :owner_document, as: :tel, 
                       input_html: { class: 'positive user-document', data: { :'validate-cpf-cnpj' => true, natural: t('.owner_document_natural'), juridical: t('.owner_document_juridical')}}
                   .w-col.w-col-6
                     = form.input :state_inscription, as: :string, 
                     input_html: { class: 'positive' }
                 .w-row
-                  .w-col.w-col-6
+                  .w-col.w-col-6.w-sub-col
                     = form.input :bank_id, as: :select, collection: Bank.to_collection, class: 'w-select positive', 
                     input_html: { class: 'positive' }
                   .w-col.w-col-6
                     .w-row
-                      .w-col.w-col-6.w-col-small-6.w-col-tiny-6
+                      .w-col.w-col-6.w-col-small-6.w-col-tiny-6.w-sub-col-middle
                         = form.input :agency, as: :string, 
                         input_html: { class: 'positive' }
-                      .w-col.w-col-6.w-col-small-6.w-col-tiny-6
+                      .w-col.w-col-6.w-col-small-6.w-col-tiny-6.w-sub-col-middle
                         = form.input :agency_digit, as: :string, 
                         input_html: { class: 'positive' }
                 .w-row.u-marginbottom-20
                   .w-col.w-col-6
-                      .w-col.w-col-6.w-col-small-6.w-col-tiny-6
+                      .w-col.w-col-6.w-col-small-6.w-col-tiny-6.w-sub-col-middle
                         = form.input :account, as: :string, 
                         input_html: { class: 'positive' }
-                      .w-col.w-col-6.w-col-small-6.w-col-tiny-6
+                      .w-col.w-col-6.w-col-small-6.w-col-tiny-6.w-sub-col-middle
                         = form.input :account_digit, as: :string, 
                         input_html: { class: 'positive' }
                   .w-col.w-col-6
@@ -70,31 +70,31 @@
                 .fontsize-base.fontweight-semibold Endereço
                 .divider.u-marginbottom-20
                 .w-row
-                  .w-col.w-col-6
+                  .w-col.w-col-6.w-sub-col
                     = form.input :address_street, as: :string, label: 'Rua',
                     input_html: { class: 'positive' }
                   .w-col.w-col-6
                     .w-row
-                      .w-col.w-col-6.w-col-small-6.w-col-tiny-6
+                      .w-col.w-col-6.w-col-small-6.w-col-tiny-6.w-sub-col-middle
                         = form.input :address_number, as: :string, 
                         input_html: { class: 'positive' }
                       .w-col.w-col-6.w-col-small-6.w-col-tiny-6
                         = form.input :address_complement, as: :string, 
                         input_html: { class: 'positive', required: false }
                 .w-row
-                  .w-col.w-col-6
+                  .w-col.w-col-6.w-sub-col
                     = form.input :address_neighbourhood, as: :string, 
                     input_html: { class: 'positive' }
                   .w-col.w-col-6
                     = form.input :address_city, as: :string, 
                     input_html: { class: 'positive' }
                 .w-row
-                  .w-col.w-col-6
+                  .w-col.w-col-6.w-sub-col
                     = form.input :address_state, as: :select, collection: State.array, class: 'w-select positive', 
                     input_html: { class: 'positive' }
                   .w-col.w-col-6
                     .w-row
-                      .w-col.w-col-6.w-col-small-6.w-col-tiny-6
+                      .w-col.w-col-6.w-col-small-6.w-col-tiny-6.w-sub-col-middle
                         = form.input :address_zip_code, as: :string, 
                         input_html: { class: 'positive' }
                       .w-col.w-col-6.w-col-small-6.w-col-tiny-6
