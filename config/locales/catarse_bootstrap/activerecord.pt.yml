@@ -24,7 +24,7 @@ pt:
         bank: 'Banco'
         bank_id: 'Banco'
         owner_name: 'Nome do titular'
-        owner_document: 'CPF / CNPJ do titular'
+        owner_document: 'CPF do titular da conta bancária'
         agency: 'Agência'
         agency_digit: 'Dígito agência'
         account: 'No. da conta'
