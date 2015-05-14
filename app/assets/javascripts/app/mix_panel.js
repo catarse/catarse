@@ -172,7 +172,7 @@ App.addChild('MixPanel', {
 
   onLogin: function(){
     if(this.user.created_today){
-      mixpanel.alias(this.user.id);
+      mixpanel.alias(this.user.user_id);
       this.track("Signed up");
     }
     else{
@@ -182,9 +182,9 @@ App.addChild('MixPanel', {
 
   detectLogin: function(){
     if(this.user){ // User is logged in
-      if(this.user.id != store.get('user_id')){ // First page load after login
+      if(this.user.user_id != store.get('user_id')){ // First page load after login
         this.onLogin();
-        store.set('user_id', this.user.id);
+        store.set('user_id', this.user.user_id);
       }
     }
     else if(store.get('user_id')){ // Logout
@@ -198,12 +198,12 @@ App.addChild('MixPanel', {
   identifyUser: function(){
     if (this.user){
       mixpanel.name_tag(this.user.email);
-      mixpanel.identify(this.user.id);
+      mixpanel.identify(this.user.user_id);
       mixpanel.people.set({
         "$email": this.user.email,
-        "$created": this.user.created_at,
-        "$last_login": this.user.last_sign_in_at,
-        "contributions": this.user.total_contributed_projects
+        "$created": this.user.created,
+        "$last_login": this.user.last_login,
+        "contributions": this.user.contributions
       });
     }
   },
@@ -213,30 +213,14 @@ App.addChild('MixPanel', {
     var opt             = options || {};
     var obj             = $(this);
     var ref             = (obj.attr('href') != undefined) ? obj.attr('href') : (opt.ref ? opt.ref : null);
-    var default_options = {
+    var usr             = this.user || {};
+    var page            = {
       'page name':          document.title,
-      'user_id':            null,
-      'created':            null,
-      'last_login':         null,
-      'contributions':      null,
-      'has_contributions':  null,
-      'projects':           null,
-      'has_projects':       null,
-      'project':            ref,
       'url':                window.location,
       'host':               window.location.host
     };
-    if(this.user){
-      default_options.user_id = this.user.id;
-      default_options.created = this.user.created_at;
-      default_options.last_login = this.user.last_sign_in_at;
-      default_options.contributions = this.user.total_contributed_projects;
-      default_options.has_contributions = (this.user.total_contributed_projects > 0);
-      default_options.projects = this.user.total_created_projects;
-      default_options.has_projects = (this.user.total_created_projects > 0);
-      default_options.has_online_project = this.user.has_online_project;
-    }
-    var opt     = $.fn.extend(default_options, opt);
+   
+    var opt = $.fn.extend(usr, opt, page, {project : ref});
 
     mixpanel.track(text, opt);
   },
