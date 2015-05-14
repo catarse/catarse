@@ -1,9 +1,10 @@
 - contribution = @notification.contribution
+- payment = contribution.payments.last
 |Projeto: #{contribution.project.name}
 br/
-|Chave do apoio: #{contribution.key}
+|Chave do apoio: #{payment.key}
 br/
-|ID meio de pagamento: #{contribution.payment_id}
+|ID meio de pagamento: #{payment.gateway_id}
 br/
 br/
 |Esse apoio recebeu uma notificação de cancelamento após já ter recebido uma notificação de confirmação.
