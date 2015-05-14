@@ -28,6 +28,8 @@ pt:
        juridical: "Razão Social do titular"
        title: "Dados cadastrais e bancários"
        subtitle_html: "Com os dados abaixo completos, seu projeto estará pronto para ir ao ar. Após concluir o preenchimento, clique em Salvar. Revise. Se tudo estiver ok, basta apertar o botão Publicar e começar sua campanha!"
+       owner_document_natural: "CPF do titular da conta bancária"
+       owner_document_juridical: "CNPJ do titular da conta bancária"
        user_data_title: "Dados bancários"
        user_data_subtitle_html: "Esses dados serão usados para a emissão de nossa Nota Fiscal e para o repasse do dinheiro, no caso de seu projeto ser bem-sucedido."
        account_subtitle_html: "Precisamos dos dados abaixo para efetuar a transferência financeira para projetos bem sucedidos. <b>ATENÇÃO: O CPF/CNPJ listado nos dados cadastrais e dados bancários precisa ser o mesmo.</b>"
