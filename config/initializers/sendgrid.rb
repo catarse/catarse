@@ -13,3 +13,7 @@ begin
 rescue
   nil
 end
+
+if Rails.env.sandbox?
+  ActionMailer::Base.register_interceptor(SandboxMailInterceptor)
+end
