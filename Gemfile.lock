@@ -219,12 +219,13 @@ GEM
     ffi (1.9.8)
     fission (0.5.0)
       CFPropertyList (~> 2.2)
-    fog (1.29.0)
+    fog (1.30.0)
       fog-atmos
       fog-aws (~> 0.0)
       fog-brightbox (~> 0.4)
       fog-core (~> 1.27, >= 1.27.4)
       fog-ecloud
+      fog-google (>= 0.0.2)
       fog-json
       fog-local
       fog-powerdns (>= 0.1.1)
@@ -244,7 +245,7 @@ GEM
     fog-atmos (0.1.0)
       fog-core
       fog-xml
-    fog-aws (0.1.2)
+    fog-aws (0.2.2)
       fog-core (~> 1.27)
       fog-json (~> 1.0)
       fog-xml (~> 0.1)
@@ -262,6 +263,10 @@ GEM
       net-ssh (>= 2.1.3)
     fog-ecloud (0.1.1)
       fog-core
+      fog-xml
+    fog-google (0.0.5)
+      fog-core
+      fog-json
       fog-xml
     fog-json (1.0.1)
       fog-core (~> 1.0)
@@ -290,7 +295,7 @@ GEM
     fog-serverlove (0.1.2)
       fog-core
       fog-json
-    fog-softlayer (0.4.5)
+    fog-softlayer (0.4.6)
       fog-core
       fog-json
     fog-storm_on_demand (0.1.1)
@@ -359,7 +364,7 @@ GEM
       has_scope (~> 0.6.0.rc)
       responders (~> 1.0.0.rc)
     ipaddress (0.8.0)
-    jasmine-core (2.3.0)
+    jasmine-core (2.3.4)
     jasmine-rails (0.10.8)
       jasmine-core (>= 1.3, < 3.0)
       phantomjs (>= 1.9)
@@ -376,7 +381,7 @@ GEM
     kgio (2.9.3)
     launchy (2.4.3)
       addressable (~> 2.3)
-    letter_opener (1.3.0)
+    letter_opener (1.4.0)
       launchy (~> 2.2)
     libxml-ruby (2.8.0)
     little-plugger (1.1.3)
@@ -396,7 +401,7 @@ GEM
     memoist (0.12.0)
     method_source (0.8.2)
     mime-types (2.5)
-    mini_magick (4.2.3)
+    mini_magick (4.2.4)
     mini_portile (0.6.2)
     minitest (5.6.1)
     mixpanel-ruby (2.1.0)
@@ -411,7 +416,7 @@ GEM
       net-ssh (>= 2.6.5)
     net-ssh (2.9.2)
     netrc (0.10.3)
-    newrelic_rpm (3.11.2.286)
+    newrelic_rpm (3.12.0.288)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
     oauth (0.4.7)
@@ -448,7 +453,7 @@ GEM
       multi_json
       rest-client
     pg (0.17.1)
-    pg_search (1.0.2)
+    pg_search (1.0.3)
       activerecord (>= 3.1)
       activesupport (>= 3.1)
       arel
