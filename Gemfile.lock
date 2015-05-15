@@ -54,17 +54,6 @@ GEM
       erubis (~> 2.7.0)
     active_model_serializers (0.8.0)
       activemodel (>= 3.0)
-    active_utils (2.2.3)
-      activesupport (>= 2.3.11)
-      i18n
-    activemerchant (1.44.1)
-      active_utils (~> 2.2.0)
-      activesupport (>= 3.2.14, < 5.0.0)
-      builder (>= 2.1.2, < 4.0.0)
-      i18n (>= 0.6.9)
-      json (~> 1.7)
-      nokogiri (~> 1.4)
-      offsite_payments (~> 2.0.0)
     activemodel (4.1.10)
       activesupport (= 4.1.10)
       builder (~> 3.1)
@@ -119,12 +108,8 @@ GEM
     catarse_pagarme (2.6.8)
       pagarme (~> 1.9.8)
       rails (~> 4.0)
-    catarse_paypal_express (3.0.2)
-      activemerchant (>= 1.34.0)
-      rails (~> 4.0)
-      slim-rails
-    catarse_settings_db (0.1.0)
-      rails (~> 4.1.1)
+    catarse_settings_db (0.1.1)
+      rails (>= 4.1.1)
     celluloid (0.16.0)
       timers (~> 4.0.0)
     chartkick (1.3.2)
@@ -134,7 +119,7 @@ GEM
     cliver (0.3.2)
     cocoon (1.2.6)
     coderay (1.1.0)
-    coffee-rails (4.0.1)
+    coffee-rails (4.1.0)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.0)
     coffee-script (2.4.1)
@@ -360,9 +345,11 @@ GEM
       activesupport (>= 3.2.0, < 4.2)
       i18n (~> 0.6)
     inflecto (0.0.2)
-    inherited_resources (1.4.1)
+    inherited_resources (1.6.0)
+      actionpack (>= 3.2, < 5)
       has_scope (~> 0.6.0.rc)
-      responders (~> 1.0.0.rc)
+      railties (>= 3.2, < 5)
+      responders
     ipaddress (0.8.0)
     jasmine-core (2.3.4)
     jasmine-rails (0.10.8)
@@ -407,8 +394,6 @@ GEM
     mixpanel-ruby (2.1.0)
     mixpanel_client (4.1.2)
       typhoeus
-    money (6.5.1)
-      i18n (>= 0.6.4, <= 0.7.0)
     multi_json (1.11.0)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
@@ -426,14 +411,6 @@ GEM
       multi_json (~> 1.3)
       multi_xml (~> 0.5)
       rack (~> 1.2)
-    offsite_payments (2.0.1)
-      active_utils (~> 2.2.0)
-      activesupport (>= 3.2.14, < 5.0.0)
-      builder (>= 2.1.2, < 4.0.0)
-      i18n (~> 0.5)
-      json (~> 1.7)
-      money (< 7.0.0)
-      nokogiri (~> 1.4)
     omniauth (1.2.2)
       hashie (>= 1.2, < 4)
       rack (~> 1.0)
@@ -513,8 +490,8 @@ GEM
     redis-namespace (1.5.2)
       redis (~> 3.0, >= 3.0.4)
     request_store (1.1.0)
-    responders (1.0.0)
-      railties (>= 3.2, < 5)
+    responders (1.1.2)
+      railties (>= 3.2, < 4.2)
     rest-client (1.8.0)
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 3.0)
@@ -548,10 +525,12 @@ GEM
     ruby-ole (1.2.11.8)
     rubyzip (1.1.7)
     sass (3.4.13)
-    sass-rails (4.0.1)
+    sass-rails (5.0.1)
       railties (>= 4.0.0, < 5.0)
-      sass (>= 3.1.10)
-      sprockets-rails (~> 2.0.0)
+      sass (~> 3.1)
+      sprockets (>= 2.8, < 4.0)
+      sprockets-rails (>= 2.0, < 4.0)
+      tilt (~> 1.1)
     sax-machine (1.3.2)
     schema_plus (1.8.9)
       activerecord (>= 3.2, <= 4.2.0)
@@ -601,15 +580,15 @@ GEM
       activemodel (>= 3.0.0)
     spreadsheet (1.0.3)
       ruby-ole (>= 1.0)
-    sprockets (2.10.2)
+    sprockets (2.12.3)
       hike (~> 1.2)
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
-    sprockets-rails (2.0.1)
+    sprockets-rails (2.3.1)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
-      sprockets (~> 2.8)
+      sprockets (>= 2.8, < 4.0)
     state_machine (1.2.0)
     temple (0.7.5)
     term-ansicolor (1.3.0)
@@ -663,7 +642,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activemerchant (= 1.44.1)
   auto_html
   best_in_place!
   better_errors
@@ -675,16 +653,15 @@ DEPENDENCIES
   catarse_moip (~> 3.2.0)
   catarse_monkeymail (>= 0.1.6)
   catarse_pagarme (= 2.6.8)
-  catarse_paypal_express (= 3.0.2)
   catarse_settings_db (>= 0.1.0)
   chartkick
   cocoon
-  coffee-rails (~> 4.0.0)
+  coffee-rails
   compass-960-plugin
-  compass-rails (~> 2.0.4)
+  compass-rails
   coveralls
   database_cleaner
-  dbhero (~> 1.1.6)
+  dbhero (>= 1.1.6)
   devise
   draper
   ezcrypto
@@ -693,14 +670,14 @@ DEPENDENCIES
   feedjira
   fog (>= 1.3.1)
   foreman
-  has_scope (~> 0.6.0.rc)
+  has_scope (>= 0.6.0.rc)
   heroku-deflater (>= 0.4.1)
   high_voltage
   http_accept_language
   httparty (~> 0.6.1)
   httpclient (>= 2.2.5)
   i18n_alchemy
-  inherited_resources (~> 1.4.1)
+  inherited_resources
   jasmine-rails
   jquery-rails
   kaminari
@@ -719,11 +696,11 @@ DEPENDENCIES
   pg_search
   poltergeist
   postgres-copy
-  protected_attributes (~> 1.0.5)
+  protected_attributes
   pry
   pundit
   rails (~> 4.1.6)
-  rails-observers (~> 0.1.2)
+  rails-observers
   rails_12factor
   ranked-model
   redactor-rails!
@@ -732,7 +709,7 @@ DEPENDENCIES
   rspec-its
   rspec-mocks
   rspec-rails (~> 3.1)
-  sass-rails (~> 4.0.0)
+  sass-rails
   schema_plus
   selenium-webdriver
   shoulda
@@ -740,7 +717,7 @@ DEPENDENCIES
   simple_form
   slim-rails
   spectator-validates_email
-  sprockets (~> 2.10.1)
+  sprockets
   state_machine
   thin
   to_xls

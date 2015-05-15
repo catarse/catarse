@@ -6,8 +6,8 @@ gem 'rails', '~> 4.1.6'
 
 #gem 'catarse_api', path: '~/code/catarse_api'
 gem 'catarse_api', github: 'catarse/catarse_api'
-gem 'protected_attributes', '~> 1.0.5' # When upgrade to strong_parameters, remove this gem.
-gem 'rails-observers', '~> 0.1.2'
+gem 'protected_attributes'
+gem 'rails-observers'
 
 gem 'sidekiq',  '~> 3.1.3'
 
@@ -19,8 +19,7 @@ gem 'state_machine', require: 'state_machine/core'
 
 # Database and data related
 gem 'pg', '0.17.1'
-gem 'dbhero', '~> 1.1.6'
-#gem 'dbhero', path: '../dbhero'
+gem 'dbhero', '>= 1.1.6'
 gem 'postgres-copy'
 gem 'pg_search'
 gem 'i18n_alchemy'
@@ -37,19 +36,9 @@ gem 'mixpanel-ruby'
 gem 'mixpanel_client'
 
 # Payment engines
-gem 'catarse_paypal_express', '3.0.2'
 gem 'catarse_moip', '~> 3.2.0'
 gem 'catarse_pagarme', '2.6.8'
 #gem 'catarse_pagarme', path: '../catarse_pagarme'
-
-gem 'activemerchant', '1.44.1'
-#gem 'catarse_paypal_express', path: '../catarse_paypal_express'
-#gem 'catarse_moip', path: '../catarse_moip'
-#gem 'catarse_credits', path: '../catarse_credits'
-#gem 'catarse_pagarme', path: '../catarse_pagarme'
-
-#gem 'catarse_pagarme', path: '~/code/catarse_pagarme'
-# gem 'catarse_wepay', '~> 0.0.1'
 
 # Decorators
 gem 'draper'
@@ -89,8 +78,8 @@ gem "mini_magick"
 gem 'to_xls'
 gem 'ranked-model'
 gem 'feedjira'
-gem 'inherited_resources',        '~> 1.4.1'
-gem 'has_scope', '~> 0.6.0.rc'
+gem 'inherited_resources'
+gem 'has_scope', '>= 0.6.0.rc'
 gem 'spectator-validates_email',  require: 'validates_email'
 gem 'video_info', '>= 1.1.1'
 gem 'httparty', '~> 0.6.1' # this version is required by moip gem, otherwise payment confirmation will break
@@ -160,12 +149,12 @@ group :test do
   gem 'selenium-webdriver'
 end
 
-gem 'sass-rails', '~> 4.0.0'
-gem 'coffee-rails', '~> 4.0.0'
-gem 'compass-rails', '~> 2.0.4'
+gem 'sass-rails'
+gem 'coffee-rails'
+gem 'compass-rails'
 gem 'uglifier'
 gem 'compass-960-plugin'
-gem 'sprockets', '~> 2.10.1'
+gem 'sprockets'
 
 # FIXME: Not-anymore-on-development
 # Gems that are with 1 or more years on the vacuum
