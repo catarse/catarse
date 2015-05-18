@@ -1,7 +1,5 @@
 # coding: utf-8
 class ApplicationController < ActionController::Base
-  AVAILABLE_LOCALES = ['pt']
-
   include Concerns::ExceptionHandler
   include Concerns::MenuHandler
   include Concerns::SocialHelpersHandler
@@ -62,7 +60,7 @@ class ApplicationController < ActionController::Base
   end
 
   def is_locale_available?
-    params[:locale].blank? || AVAILABLE_LOCALES.include?(params[:locale].to_s)
+    params[:locale].blank? || I18n.available_locales.include?(params[:locale].to_sym)
   end
 
   def after_sign_in_path_for(resource_or_scope)
