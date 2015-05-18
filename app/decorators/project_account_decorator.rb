@@ -6,7 +6,8 @@ class ProjectAccountDecorator < Draper::Decorator
     if source.bank.present?
       "#{source.bank.code} - #{source.bank.name} /
       AG. #{source.agency}-#{source.agency_digit} /
-      CC. #{source.account}-#{source.account_digit}"
+      CC. #{source.account}-#{source.account_digit} /
+      #{source.account_type}"
     else
       I18n.t('not_filled')
     end
