@@ -17,7 +17,7 @@ class Project < ActiveRecord::Base
 
   mount_uploader :uploaded_image, ProjectUploader
 
-  delegate  :display_online_date, :display_card_status, :display_status, :progress, 
+  delegate  :display_online_date, :display_card_status, :display_status, :progress,
             :display_image, :display_expires_at, :remaining_text, :time_to_go,
             :display_pledged, :display_pledged_with_cents, :display_goal, :remaining_days, :progress_bar,
             :status_flag, :state_warning_template, :display_card_class, :display_errors, to: :decorator
@@ -37,7 +37,7 @@ class Project < ActiveRecord::Base
   accepts_nested_attributes_for :rewards, allow_destroy: true
   accepts_nested_attributes_for :user
   accepts_nested_attributes_for :account
-  accepts_nested_attributes_for :posts, allow_destroy: true#, reject_if: ->(x) { x[:title].blank? || x[:comment].blank? }
+  accepts_nested_attributes_for :posts, allow_destroy: true, reject_if: ->(x) { x[:title].blank? || x[:comment_html].blank? }
   accepts_nested_attributes_for :budgets, allow_destroy: true, reject_if: ->(x) { x[:name].blank? || x[:value].blank? }
 
   pg_search_scope :pg_search,
