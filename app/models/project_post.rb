@@ -10,7 +10,7 @@ class ProjectPost < ActiveRecord::Base
     reference_user
   end
 
-  validates_presence_of :user_id, :project_id, :comment_html
+  validates_presence_of :user_id, :project_id, :comment_html, :title
 
   before_validation :reference_user
 
