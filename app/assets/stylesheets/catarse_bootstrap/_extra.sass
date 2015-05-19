@@ -94,9 +94,35 @@ img, iframe
     content: "\f105 "
     +transition(all 1s ease)
 
+#player, .w-lightbox-figure
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  object-fit: cover
+
+//Fallback for browser that still do not support object-fit
+@media (min-aspect-ratio: 16/9) 
+  #player, .w-lightbox-figure 
+    height: 300% 
+    top: -100% 
+
+@media (max-aspect-ratio: 16/9) 
+  #player, .w-lightbox-figure 
+    width: 300% 
+    left: -100%
+
+.w-lightbox-frame
+  width: 99%
+  height: 99%
+.w-lightbox-figure
+  position: absolute
+  width: 100%
+  height: 100%
+
+
 // Adjusting the grid
-
-
 .w-col
   .w-col
     &.w-sub-col
@@ -223,6 +249,8 @@ img, iframe
 
 .section-large.hello-catarse 
   background-image: url('/assets/bg-hello-catarse.jpg') !important
+
+  
 
 //search form style
 .discover-form
