@@ -7,68 +7,68 @@
           .w-form
               .w-row.u-marginbottom-30.card.card-terciary
                 .w-col.w-col-5.w-sub-col
-                  label.field-label.fontweight-semibold   Imagem do perfil
-                  label.field-label.fontsize-smallest.fontcolor-secondary   Essa imagem será utilizada como a miniatura de seu perfil (PNG, JPG tamanho 280 x 280)
+                  label.field-label.fontweight-semibold =t('users.edit.image_title')
+                  label.field-label.fontsize-smallest.fontcolor-secondary =t('users.edit.image_description')
                 .w-col.w-col-4.w-sub-col
-                  = form.input :uploaded_image, label: '', as: :file, required: false, hint: (@user.uploaded_image.present? ? image_tag(@user.uploaded_image.thumb_avatar.url, size: '220x172#') : '' ) 
+                  = form.input :uploaded_image, label: '', as: :file, required: false, hint: (@user.uploaded_image.present? ? image_tag(@user.uploaded_image.thumb_avatar.url, size: '220x172#') : '' )
 
               .w-row.u-marginbottom-30.card.card-terciary
                 .w-col.w-col-5.w-sub-col
-                  label.field-label.fontweight-semibold   Imagem de capa do perfil
-                  label.field-label.fontsize-smallest.fontcolor-secondary   Essa imagem será utilizada como fundo do cabeçalho do seu perfil público (PNG ou JPG). Caso você não envie nenhum imagem aqui, utilizaremos sua imagem de perfil como alternativa.
+                  label.field-label.fontweight-semibold =t('users.edit.cover_title')
+                  label.field-label.fontsize-smallest.fontcolor-secondary =t('users.edit.cover_description')
                 .w-col.w-col-4.w-sub-col
-                  = form.input :cover_image, label: '', as: :file, required: false, hint: (@user.cover_image.present? ? image_tag(@user.cover_image.base.url, size: '220x172#') : '' ) 
+                  = form.input :cover_image, label: '', as: :file, required: false, hint: (@user.cover_image.present? ? image_tag(@user.cover_image.base.url, size: '220x172#') : '' )
 
           - if current_user && current_user.admin?
             .w-row.u-marginbottom-30.card.card-terciary
               .w-col.w-col-5.w-sub-col
-                label.field-label.fontweight-semibold Endereço do seu perfil
-                label.field-label.fontsize-smallest.fontcolor-secondary Seu perfil público pode ter uma URL personalizada. Escolha uma fácil de guardar!    
+                label.field-label.fontweight-semibold =t('users.edit.profil_address_title')
+                label.field-label.fontsize-smallest.fontcolor-secondary =t('users.edit.profil_address_description')
               .w-col.w-col-7
                 .w-row
                   .w-col.w-col-6.w-col-small-6.w-col-tiny-6
                     = form.input_field :permalink, as: :string, class: 'text-field positive prefix'
                   .w-col.w-col-6.w-col-small-6.w-col-tiny-6.text-field.postfix.no-hover
                     .fontcolor-secondary.fontsize-smaller &nbsp;&nbsp;.catarse.me
-                
+
 
           .w-row.u-marginbottom-30.card.card-terciary
             .w-col.w-col-5.w-sub-col
-              label.field-label.fontweight-semibold   Nome
-              label.field-label.fontsize-smallest.fontcolor-secondary   Esse é o nome que os usuários irão ver no seu perfil público
+              label.field-label.fontweight-semibold =t('users.edit.name')
+              label.field-label.fontsize-smallest.fontcolor-secondary =t('users.edit.name_description')
             .w-col.w-col-7
               = form.input_field :name, as: :string, class: 'positive'
           .w-form.card.card-terciary.u-marginbottom-30
               .w-row.u-marginbottom-10
                 .w-col.w-col-5.w-sub-col
-                  label.field-label.fontweight-semibold   Perfil do facebook
-                  label.field-label.fontsize-smallest.fontcolor-secondary   Cole o link do seu perfil
+                  label.field-label.fontweight-semibold =t('users.edit.facebook')
+                  label.field-label.fontsize-smallest.fontcolor-secondary =t('users.edit.facebook_description')
                 .w-col.w-col-7
                   = form.input_field :facebook_link, as: :string, class: 'positive'
               .w-row.u-marginbottom-10
                 .w-col.w-col-5.w-sub-col
-                  label.field-label.fontweight-semibold   Perfil do twitter
-                  label.field-label.fontsize-smallest.fontcolor-secondary   Cole o link do seu perfil
+                  label.field-label.fontweight-semibold =t('users.edit.twitter')
+                  label.field-label.fontsize-smallest.fontcolor-secondary =t('users.edit.twitter_description')
                 .w-col.w-col-7
                   = form.input_field :twitter, as: :string, class: 'positive'
 
           .w-form.card.card-terciary.u-marginbottom-30
               .w-row.u-marginbottom-10
                 .w-col.w-col-5.w-sub-col
-                  label.field-label.fontweight-semibold for="name-8"  Presença na internet
-                  label.field-label.fontsize-smallest.fontcolor-secondary for="name-8"  Inclua links que ajudem outros usuários a te conhecer melhor.&nbsp;
+                  label.field-label.fontweight-semibold for="name-8" =t('users.edit.homepage')
+                  label.field-label.fontsize-smallest.fontcolor-secondary for="name-8" =t('users.edit.homepage_description')
                 .w-col.w-col-7
                   = form.simple_fields_for :links do |link_form|
                       = render partial: 'link_fields', locals: { f: link_form, parent_form: form }
                   .w-row
                     .w-col.w-col-6
                     .w-col.w-col-6
-                      = link_to_add_association  t('users.edit.add_link'), form, :links, :'data-association-insertion-method' => :append, :'data-association-insertion-node' => '#links', class: 'btn btn-small btn-terciary'         
+                      = link_to_add_association  t('users.edit.add_link'), form, :links, :'data-association-insertion-method' => :append, :'data-association-insertion-node' => '#links', class: 'btn btn-small btn-terciary'
           .w-row
             .w-col
               .card.card-terciary.u-marginbottom-30
-                label.field-label.fontweight-semibold Sobre
-                label.field-label.fontsize-smallest.fontcolor-secondary.u-marginbottom-20 Fale sobre você e tente fornecer as informações mais relevantes para que visitantes possam te conhecer melhor. 
+                label.field-label.fontweight-semibold =t('users.edit.about')
+                label.field-label.fontsize-smallest.fontcolor-secondary.u-marginbottom-20 =t('users.edit.about_description')
                 .w-form
                   .preview-container.u-marginbottom-40
                     = form.input_field :about_html, class: 'redactor w-input text-field bottom jumbo positive'
