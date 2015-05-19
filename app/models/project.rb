@@ -228,7 +228,7 @@ class Project < ActiveRecord::Base
     end
   end
 
-  def to_analytics_json
+  def to_analytics
     {
       id: self.id,
       permalink: self.permalink,
@@ -242,7 +242,11 @@ class Project < ActiveRecord::Base
       project_address_city: self.account.try(:address_city),
       project_address_state: self.account.try(:address_state),
       account_entity_type: self.account.try(:entity_type)
-    }.to_json
+    }
+  end
+
+  def to_analytics_json
+    to_analytics.to_json
   end
 
 end

@@ -3,22 +3,20 @@ class MixpanelObserver < ActiveRecord::Observer
 
   def from_pending_to_paid(payment)
     user = payment.user
-    properties = user_properties(user).merge({
-      project: payment.project.name,
-      payment_method: payment.try(:gateway),
-      payment_choice: payment.payment_method,
-      referral: payment.contribution.referal_link,
-      anonymous: payment.contribution.anonymous,
-      value: payment.contribution.value,
-      project_goal: payment.project.goal,
-      project_online_date: payment.project.online_date,
-      project_expires_at: payment.project.expires_at,
-      reward_id: payment.contribution.reward_id,
-      reward_value: payment.contribution.reward.try(:minimum_value),
-      project_address_city: payment.project.account.try(:address_city),
-      project_address_state: payment.project.account.try(:address_state),
-      account_entity_type: payment.project.account.try(:entity_type)
-    })
+    contribution = payment.contribution
+    properties = user_properties(user).merge(
+      payment.project.to_analytics.merge(
+        {
+          payment_method: payment.try(:gateway),
+          payment_choice: payment.payment_method,
+          referral: contribution.referal_link,
+          anonymous: contribution.anonymous,
+          value: contribution.value,
+          reward_id: contribution.reward_id,
+          reward_value: contribution.reward.try(:minimum_value)
+        }
+      )
+    )
     track_event(payment.user, "Engaged with Catarse", properties.merge(action: 'contribution confirmed'))
     track_event(payment.user, "Contribution confirmed", properties)
   end
@@ -78,16 +76,7 @@ class MixpanelObserver < ActiveRecord::Observer
   end
 
   def user_properties(user)
-    {
-      user_id: user.id.to_s,
-      created: user.created_at,
-      last_login: user.last_sign_in_at,
-      contributions: user.total_contributed_projects,
-      has_contributions: (user.total_contributed_projects > 0),
-      created_projects: user.projects.count,
-      published_projects: user.published_projects.count,
-      has_online_project: user.has_online_project?
-    }
+    user.to_analytics
   end
 
   def tracker

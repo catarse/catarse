@@ -208,17 +208,22 @@ class User < ActiveRecord::Base
     self.created_at.to_date == Time.zone.today && self.sign_in_count <= 1
   end
 
-  def to_analytics_json
+  def to_analytics
     {
       user_id: self.id,
       email: self.email,
       contributions: self.total_contributed_projects,
       projects: self.projects.count,
+      published_projects: self.published_projects.count,
       created: self.created_at,
       has_online_project: self.has_online_project?,
       last_login: self.last_sign_in_at,
       created_today: self.created_today?
-    }.to_json
+    }
+  end
+
+  def to_analytics_json
+    to_analytics.to_json
   end
 
   def to_param
