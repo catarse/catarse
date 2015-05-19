@@ -8,15 +8,6 @@
   .hero-content
     a.w-lightbox.w-inline-block.btn-play data-ix="fade-in-button" href="#" 
       = image_tag "play-hero-green.png"
-      script.w-json type="application/json" 
-        | { "items": [{
-        | "type": "video",
-        | "html": "<iframe class=\"embedly-embed\" src=\"https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Fwww.youtube.com%2Fembed%2FcvBERv1kTL8%3Fautoplay%3D1%26feature%3Doembed&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DcvBERv1kTL8&image=http%3A%2F%2Fi.ytimg.com%2Fvi%2FcvBERv1kTL8%2Fhqdefault.jpg&key=c4e54deccf4d4ec997a64902e9a30300&autoplay=1&type=text%2Fhtml&schema=youtube\" width=\"854\" height=\"480\" scrolling=\"no\" frameborder=\"0\" allowfullscreen></iframe>",
-        | "thumbnailUrl": "https://i.embed.ly/1/image?url=http%3A%2F%2Fi.ytimg.com%2Fvi%2FcvBERv1kTL8%2Fhqdefault.jpg&key=866738f8f18b4394a18e371517a66ae0",
-        | "width": 854,
-        | "height": 480,
-        | "url": "http://www.youtube.com/watch?v=cvBERv1kTL8"
-        | }] }
     .fontweight-semibold.u-marginbottom-20.fontsize-megajumbo = t('.hero.title')
   .knowmore-hello data-ix="know-more" 
     .fa.fa-chevron-down.fontcolor-dashboard
@@ -122,8 +113,15 @@
   .w-container
     .fontsize-large.u-text-center = t('.staff')
 
+.w-lightbox-backdrop.w-hidden tabindex="0"
+  .w-lightbox-container
+    .w-lightbox-content
+      .w-lightbox-view
+        .w-lightbox-frame
+          figure.w-lightbox-figure
+            #player
+            /iframe class="" width="1280" height="720" src="https://www.youtube.com/embed/cvBERv1kTL8?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen
+      .w-lightbox-control.w-lightbox-close
+    .w-lightbox-strip
 
 = render 'shared/footer_big'
-
-
-
