@@ -344,6 +344,7 @@ RSpec.describe User, type: :model do
         email: user.email,
         contributions: user.total_contributed_projects,
         projects: user.projects.count,
+        published_projects: user.published_projects.count,
         created: user.created_at,
         has_online_project: user.has_online_project?,
         last_login: user.last_sign_in_at,
