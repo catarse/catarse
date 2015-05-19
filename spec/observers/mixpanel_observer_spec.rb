@@ -6,45 +6,24 @@ RSpec.describe MixpanelObserver do
   let(:people){ double('mixpanel-ruby people', {set: nil}) }
   let(:tracker){ double('mixpanel-ruby tracker', {track: nil, people: people}) }
   let(:properties) do
-    {
-      user_id: contribution.user.id.to_s,
-      created: contribution.user.created_at,
-      last_login: contribution.user.last_sign_in_at,
-      contributions: contribution.user.total_contributed_projects,
-      has_contributions: (contribution.user.total_contributed_projects > 0),
-      created_projects: contribution.user.projects.count,
-      published_projects: contribution.user.published_projects.count,
-      has_online_project: contribution.user.has_online_project?,
-      project: contribution.project.name,
-      payment_method: payment.gateway,
-      payment_choice: payment.payment_method,
-      referral: contribution.referal_link,
-      anonymous: contribution.anonymous,
-      value: contribution.value,
-      project_goal: contribution.project.goal,
-      project_online_date: contribution.project.online_date,
-      project_expires_at: contribution.project.expires_at,
-      reward_id: contribution.reward_id,
-      reward_value: contribution.reward.try(:minimum_value),
-      project_address_city: contribution.project.account.try(:address_city),
-      project_address_state: contribution.project.account.try(:address_state),
-      account_entity_type: contribution.project.account.try(:entity_type)
-    }
+    contribution.user.to_analytics.merge(
+      contribution.project.to_analytics.merge(
+        {
+          payment_method: payment.try(:gateway),
+          payment_choice: payment.payment_method,
+          referral: contribution.referal_link,
+          anonymous: contribution.anonymous,
+          value: contribution.value,
+          reward_id: contribution.reward_id,
+          reward_value: contribution.reward.try(:minimum_value)
+        }
+      )
+    )
   end
 
   let(:project){ create(:project, state: 'online') }
   let(:project_owner_properties) do
-    user = project.user
-    {
-      user_id: user.id.to_s,
-      created: user.created_at,
-      last_login: user.last_sign_in_at,
-      contributions: user.total_contributed_projects,
-      has_contributions: (user.total_contributed_projects > 0),
-      created_projects: user.projects.count,
-      published_projects: user.published_projects.count,
-      has_online_project: user.has_online_project?
-    }
+    project.user.to_analytics
   end
 
   before do
