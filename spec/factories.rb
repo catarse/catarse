@@ -147,6 +147,9 @@ FactoryGirl.define do
     f.association :project, factory: :project
     f.association :user, factory: :user
     f.value 10.00
+    f.payer_name 'Foo Bar'
+    f.payer_email 'foo@bar.com'
+    f.anonymous false
     factory :confirmed_contribution do
       after :create do |contribution|
         create(:payment, state: 'paid', value: contribution.value, contribution: contribution)
