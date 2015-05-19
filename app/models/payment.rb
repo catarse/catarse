@@ -14,7 +14,7 @@ class Payment < ActiveRecord::Base
     self.value ||= self.contribution.try(:value)
   end
 
-  scope :can_delete, ->{ with_state('pending').where("current_timestamp - payments.created_at > '1 week'::interval") }
+  scope :can_delete, ->{ where('payments.can_delete') }
 
   def generate_key
     self.key ||= SecureRandom.uuid
