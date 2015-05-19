@@ -1,0 +1,21 @@
+fr:
+  users:
+    edit:
+      add_link: "+ Ajoutez un lien"
+      image_title: "Image de profil"
+      image_description: "Cette image sera utilisée comme la vignette de votre profil (PNG , JPG taille 280 x 280)"
+      cover_title: "Image de fond"
+      cover_description: "Cette image sera utilisée comme arrière-plan de l'en-tête de votre profil public ( PNG ou JPG ). Si vous ne fournissez pas d'image ici, BuzzEtBoost va utiliser la photo de profil à la place."
+      profil_address_title: "Adresse de votre profil"
+      profil_address_description: "Votre profil public peut avoir une URL personnalisée . Choisissez une URL facile à mémoriser !"
+      name: "Nom"
+      name_description: "Le nom que les utilisateurs verront sur ​​votre profil public"
+      faceebook: "Profil facebook"
+      facebook_description: "Mettez ici l'adresse de votre profil facebook"
+      twitter: "Profil twitter"
+      twitter_description: "Mettez ici l'adresse de votre profil twitter"
+      homepage: "Page(s) web"
+      homepage_description: "L'adresse de vos page web personnel (blog,  ...)"
+      about: "A propos de vous"
+      about_description: "Parlez de vous et essayer de fournir les informations les plus pertinentes afin que les visiteurs puissent mieux vous connaître ."
+      submit: "Enregistrer"

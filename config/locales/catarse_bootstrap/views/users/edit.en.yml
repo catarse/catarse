@@ -1,0 +1,21 @@
+en:
+  users:
+    edit:
+      add_link: "+ Ajoutez a link"
+      image_title: "Profil picture"
+      image_description: "That will be your profil thumbnail (PNG , JPG size 280 x 280)"
+      cover_title: "Cover image"
+      cover_description: "That will be the cover image for your public profil (PNG ou JPG). If you don't choose a cover, your profil picture will be use"
+      profil_address_title: "Profil address"
+      profil_address_description: "Easy to memorize address for your profil"
+      name: "Name"
+      name_description: "The name that will be show for other members"
+      faceebook: "faceebook profil"
+      facebook_description: "Your facebook profil address"
+      twitter: "twitter profil"
+      twitter_description: "Your twitter profil address"
+      homepage: "Homepage(s)"
+      homepage_description: "URL to your personals webpages"
+      about: "About"
+      about_description: "Talk about you to help other members to know you"
+      submit: "Submit"
