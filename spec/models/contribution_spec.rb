@@ -25,7 +25,6 @@ RSpec.describe Contribution, type: :model do
   describe "Validations" do
     it{ is_expected.to validate_presence_of(:payer_name) }
     it{ is_expected.to validate_presence_of(:payer_email) }
-    it{ is_expected.to validate_presence_of(:anonymous) }
     it{ is_expected.to validate_presence_of(:project) }
     it{ is_expected.to validate_presence_of(:user) }
     it{ is_expected.to validate_presence_of(:value) }
