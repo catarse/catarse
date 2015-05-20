@@ -9,6 +9,43 @@ RSpec.describe ContributionDetail, type: :model do
     it{ should belong_to :payment }
   end
 
+  describe ".by_payment_id" do
+    subject{ ContributionDetail.by_payment_id(search_text) }
+    let(:gateway_id){ '1234' }
+    let(:acquirer_tid){ '5678' }
+    let(:contribution){ create(:confirmed_contribution, value: 10) }
+    let(:detail){ ContributionDetail.find_by_contribution_id contribution.id }
+
+    before do
+      contribution.payments.first.update_attributes(gateway_id: gateway_id, gateway_data: {acquirer_tid: acquirer_tid})
+    end
+
+    before do
+      # Should not come in the results
+      create(:confirmed_contribution, value: 10)
+    end
+
+    context "when search text is acquirer_tid with dots" do
+      let(:search_text){ '5.6.7.8' }
+      it{ is_expected.to match_array [detail] }
+    end
+
+    context "when search text is acquirer_tid" do
+      let(:search_text){ acquirer_tid }
+      it{ is_expected.to match_array [detail] }
+    end
+
+    context "when search text is key" do
+      let(:search_text){ contribution.payments.first.key }
+      it{ is_expected.to match_array [detail] }
+    end
+
+    context "when search text is gateway_id" do
+      let(:search_text){ gateway_id }
+      it{ is_expected.to match_array [detail] }
+    end
+  end
+
   describe ".between_values" do
     let(:start_at) { 10 }
     let(:ends_at) { 20 }
