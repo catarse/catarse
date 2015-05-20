@@ -3,6 +3,7 @@ class ProjectsController < ApplicationController
   after_filter :verify_authorized, except: %i[index video video_embed embed embed_panel about_mobile]
   after_filter :redirect_user_back_after_login, only: %i[index show]
   before_action :authorize_and_build_resources, only: %i[edit show]
+  before_action :fake_validate, only: :edit
 
   inherit_resources
   has_scope :pg_search, :by_category_id, :near_of
@@ -100,6 +101,10 @@ class ProjectsController < ApplicationController
   end
 
   protected
+  def fake_validate
+    resource.valid?(:fake_validate)
+  end
+
   def authorize_and_build_resources
     authorize resource
     build_dependencies

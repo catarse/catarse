@@ -9,33 +9,19 @@ module Project::StateMachineHandler
 
       #validations starting in in_analysis
       state :in_analysis, :approved, :online, :successful, :waiting_funds, :failed do
-        validates_presence_of :about_html, :headline, :goal, :online_days, :budget
-        validates_presence_of :uploaded_image, if: ->(project) { project.video_thumbnail.blank? }
-        validate do
-          [:uploaded_image, :about_html, :name].each do |attr|
-            self.user.errors.add_on_blank(attr)
-          end
-          self.user.errors.each {|error, error_message| self.errors.add('user.' + error.to_s, error_message)}
-          self.errors['rewards.size'] << "Deve haver pelo menos uma recompensa" if self.rewards.size == 0
-        end
+        validate ->(project){ project.in_analysis_validations }
       end
 
       #validations starting in approved
       state :approved, :online, :successful, :waiting_funds, :failed do
-        validates_presence_of :video_url,
-          if: ->(project) { (project.goal || 0) >= CatarseSettings[:minimum_goal_for_video].to_i }
+        validate :approved_validations
       end
 
       #validations starting in online
       state :online, :successful, :waiting_funds, :failed do
-        validates_presence_of :account, message: 'Dados Bancários não podem ficar em branco'
-        validate do
-          [:email, :address_street, :address_number, :address_city, :address_state, :address_zip_code, :phone_number, :bank, :agency, :account, :account_digit, :owner_name, :owner_document, :account_type].each do |attr|
-            self.account.errors.add_on_blank(attr) if self.account.present?
-          end
-          self.account.errors.each {|error, error_message| self.errors.add('project_account.' + error.to_s, error_message)} if self.account.present?
-        end
+        validate :online_validations
       end
+
       state :deleted, value: 'deleted'
 
       event :push_to_draft do
