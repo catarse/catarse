@@ -1,6 +1,7 @@
 pt:
   explore:
     index:
+      header: "Explore projetos incríveis &nbsp;"
       success_follow: "Agora você segue a categoria e vai receber semanalmente uma lista com os novos projetos de %{name}"
       success_unfollow: "Você deixou de seguir essa categoria %{name}"
       follow: Seguir
