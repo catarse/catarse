@@ -145,7 +145,6 @@ group :test do
   gem 'shoulda'
   gem 'factory_girl_rails'
   gem 'capybara',   '~> 2.2.0'
-  gem 'coveralls', require: false
   gem 'selenium-webdriver'
 end
 
