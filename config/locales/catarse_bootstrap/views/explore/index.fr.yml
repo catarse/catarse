@@ -1,0 +1,21 @@
+fr:
+  explore:
+    index:
+      success_follow: "Vous suivez maintenant cette catégorie et vous recevrez toutes les semaines une lite de nouveaux projets de %{name}"
+      success_unfollow: "Vous ne suivez plus cette catégorie %{name}"
+      follow: follow
+      unfollow: unfollow
+      following: followers
+      categories: Categories
+      expiring: Dernière ligne droite
+      in_funding: En ligne
+      near: Autour de moi
+      quick_explore: Recherche rapide
+      recent: Récent
+      recommended: Recommandé 
+      subtitle: Explore os projetos, encontre aqueles que mexem com seu coração, e
+        faça acontecer!
+      successful: Réussi
+      title: Trouvez des projets étonnants
+    title: Explorez les projets
+

@@ -1,0 +1,17 @@
+fr:
+  found_singular: Trouvé
+  found_plural: Trouvés
+  project_singular: projet
+  project_plural: projets
+  contribution_singular: donateur
+  contribution_plural: donateurs
+  remaining_singular: reste
+  remaining_plural: restes
+  created_project: 
+    zero: "Vous n’avez pas encore créer de projet"
+    one: "%{count} projet créer"
+    other: "%{count} projets créer"
+  contributed_project:
+    zero: "Vous n’avez pas encore soutenue de projet"
+    one: "Vous avez soutenue %{count} projet"
+    other: " Vous avez soutenue %{count} projets"

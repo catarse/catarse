@@ -1,0 +1,32 @@
+fr:
+  projects:
+    new:
+      page-title: "Commencez votre projet"
+
+      faq:
+        titles:
+          support: "Support"
+          know_more: "Savoir plus"
+
+        links:
+          criteria: "Critères de sélection"
+          suport_central: "Centre des support"
+          support_contact: "Nous contacter"
+          how_it_works: "Comment fonctionne Catarse ?"
+          money: "Comment vais-je recevoir l’argent?"
+          selection: "Comment les projets sont-ils séléctionnés?"
+          all_or_nothing: "Porquoi tout ou rien?"
+
+      form:
+        blocks:
+          first:
+            title: "Bienvenue!"
+            description: "Remplissez les informations ci-dessous pour commencer la conception de votre projet."
+
+        info:
+          permalink: http://www.buzzetboost.fr/
+          goal: €
+          online_days: jours
+
+        submit: "Enregistrer et continuer"
+

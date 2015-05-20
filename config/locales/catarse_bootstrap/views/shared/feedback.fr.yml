@@ -1,0 +1,16 @@
+fr:
+  shared:
+    feedback:
+      button: 'Ajouter un feedback'
+      inputs:
+        submit: 'Envoyer un feedback'
+        close: 'Fermer'
+      placeholders:
+        email: 'Email'
+        text: 'Ecrire son feedback'
+      texts:
+        title: "C’est avec plaisir que nous recevons votre feedback!"
+        content: " Ces derniers mois, nous avons travaillés jour et nuit dans une série de changements pour la plateforme qui sont détaillés ici<a target='_blank' href='http://blog.catarse.me/os-passos-para-um-novo-catarse/' class='link-underline'> post especial</a>.Sa serait incroyable si nous pourions écouté ce que vous pensez de cette transformation. <br> Libère le verbe!"
+        response:
+          title: "Uau! <br> Merci ;)"
+          content: " Nous valorisons chaque feedback que nous recevons. Nous ne pouvons répondre à chacun d’entre vous mais écoutons attentivement chaque critique et suggestion. Vos commentaires nous sont d’une grande aide dans notre avancement et nous aide à améliorer continuellement votre expérience ici sur Catarse."

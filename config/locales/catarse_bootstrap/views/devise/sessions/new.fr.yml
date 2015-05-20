@@ -1,0 +1,19 @@
+fr:
+  devise:
+    sessions:
+      new:
+        no_account_html: "Pas encore abonné ?"
+        titles:
+          site: 'Se connecter'
+          header: 'Se connecter'
+        links:
+          register: "Créer un compte"
+          password: "Mot de passe"
+          forgot_password: "Mot de passe oublié"
+        form:
+          labels:
+            remember_me: 'Rester connecté'
+          inputs:
+            submit: 'Se connecter'
+            password: 'Mot de passe'
+

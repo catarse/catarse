@@ -1,0 +1,108 @@
+fr:
+  projects:
+    about_mobile:
+      by: 'par'
+      back: '< Retour'
+    project_embed:
+      insert: 'Insérer un widget sur votre site'
+    mobile_video:
+      read_more: "Lire plus"
+    metrics:
+      titles:
+        confirmed_by_day: 'Total des dons confirmer par jour'
+        confirmed_amount_by_day: 'Total collecter par jour'
+        address_state: 'Total des dons confirmer par l’Etat'
+    reminder:
+      ok: 'Ok! On va vous envoyer un rappel par email 48 heures avant la fin de la campagne'
+      active_btn: 'Me rappeler de ce projet'
+      deactive_btn: 'Je ne veux plus de rappel'
+    send_to_analysis: Votre projet a été envoyé à notre équipe.
+    send_to_analysis_error: Erreur lors de l’envoi de votre projet pour analyse. Remplir tous les champs obligatoires.
+    push_to_online: Votre projet est en ligne!
+    push_to_online_error: Erreur lors de la mise en ligne de votre projet. Remplir tous les champs obligatoires.
+    twitter:
+      take_a_look: Découvrez le projet %{name} no @catarse
+    video_embed:
+      a_project_by_html: Un projet de  %{link} no
+    posts:
+      project_post:
+        exclusive: 'Article exclusif pour les donateurs.'
+        unavailable: Cette nouveauté n’est disponible que pour les donateurs.
+        contribute: Soutiens 
+        unavailable_contribute: Voir ce projet.
+        destroy: Retirer la nouveauté
+        destroy_confirmation: Voulez-vous retirer cette nouveauté?
+      new:
+        notice: Votre nouveauté a été envoyé avec succes!
+        comment: Texte sur votre nouveauté
+        exclusive: Visible uniquement pour les donateurs
+        submit: Envoyer la nouveauté
+        title: Titre de votre nouveauté
+        warning: Nous vous rappelons que tous les articles de nouveauté sont directement envoyé par mail à
+          vos donateurs. Relisez vous bien avant de l’envoyer.
+    project_reports:
+      all_contributions_without_reward: Télécharger le rapport de tous les donateurs
+        qui n’ont pas sélectionner de récompense
+      link_reports_confirmed: Télécharger le rapport de tous les donateurs confirmés
+      link_reports_waiting_confirmation: Télécharger le rapport de tous les donateurs
+        avec boleto imprimé
+      link_reward: Télécharger le rapport des donateurs dont la recompense de %{value}
+    project_about:
+      embed: < embed >
+      embed_title: Incorporer ce projet à votre site
+      active_btn: ' Me rappeler'
+      deactive_btn: ' Rappel activé'
+    show:
+      menu:
+        panel_html: "&nbsp;&nbsp;Pannau de contrôle"
+        about: Sur
+        add_reward: Ajouter récompense
+        comments: Commentaires
+        contributions: Dons
+        metrics: Métriques
+        edit: Editer
+        reports: Rapports
+        posts: Nouveauté
+    project_main:
+      post_call: 'Toutes les nouveauté publié sur Catarse est envoyé directement par mail aux personnes qui ont déjà soutenu votre projet et reste aussi disponible sur le site. Vous pouvez décider de la laisser public, ou visible uniquement pour vos donateurs sur cet onglet.'
+      send_post: 'Ecrire la nouveauté'
+      share: "Partagez"
+      tweet: "Tweetez"
+      contribute_project:
+        display_status:
+          approved: "Ce projet a deja été approuver par Catarse. En gros il sera mis en ligne et sera pour recevoir des dons."
+          reached_goal: "Ce projet sera couronné avec success en financié en %{date}"
+          not_reached_goal: "Ce projet ne sera financé que si au minimum %{goal} seront atteint jusqu’au %{date}"
+          failed: "Ce projet n’a pas atteint son minimum de %{goal} jusqu’au %{date} et n’a pas été financé"
+          rejected: "Ce projet n’a pas été accepté. Il n’est plus possible de réaliser un don."
+          in_analysis: "Ce projet est en cour d’analyse et n’est pas encore ouvert pour recevoir des dons."
+          successful: "Ce projet à été un success et a été finance en %{date}"
+          waiting_funds: "Le délai de financement de ce projet est clôturé. Nous attendons la confirmation des dernier paiement."
+          draft: "Ce projet n’est qu’une conception pour le moment et ne peut recevoir de dons."
+        submit: Soutenir ce projet
+      project_by: Projet par
+      funding_period: Période de campagne
+      project_header:
+        subtitle_html: "Un projet de %{link}"
+        without_city: "Un projet de"
+        with_city: "Un projet de %{category_name} par %{author} à %{city}"
+      menu:
+        about: Sur
+        add_reward: Ajouter une recompense
+        comments: Commentaires
+        contributions: Dons
+        metrics: Métriques
+        edit: Editer
+        reports: Rapports
+        posts: Nouveautés
+      no_rewards_warning: Ne voyager plus! Pensez à comment allez-vous les livrer et mettre tout
+        cela dans le budget. Promis?!
+      no_rewards_warning_title: Creez ici vos récompenses
+      contribution_states:
+        confirmed: "Confirmé"
+        pending: "En attente"
+      sidebar:
+        contributions: Dons
+        goal: atteint avec %{total}
+
+

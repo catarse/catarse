@@ -1,0 +1,33 @@
+fr:
+  layouts:
+    footer:
+      links:
+        jobs: Travaillez avec nous
+        blog: Blog
+        contact: Contact
+        press: Entreprise
+        discover: Explorer les projets
+        start: ‘Comment ça marche ?’
+        expiring: Dans la dernière ligne droite
+        facebook: Facebook
+        faq: Aide
+        guides: Guide des créateurs
+        feedback: Feedback
+        github: Github
+        instagram: Instagram
+        near: Près de chez moi
+        press: Entreprise
+        privacy: Politique de confidentialité
+        recents: Récent
+        recommended: Recommandation
+        submit: Commencez son projet
+        terms: Conditions d’utilisations
+        twitter: Twitter
+      texts:
+        copyleft: Fait avec amour.
+      titles:
+        about: Aide
+        contact: Bienvenue
+        newsletter: Abonnez-vous à notre newsletter
+        sitemap: Naviguer
+        social: Réseaux sociaux
