@@ -37,19 +37,6 @@ task :verify_pagarme_transactions, [:start_date, :end_date]  => :environment do 
     p
   end
 
-  def find_contribution source
-    puts source.inspect
-    key = source['metadata'].try(:[], 'key').to_s
-    puts "Trying to find contribution by key #{key}"
-    c = Contribution.find_by key: key
-    return c if c.present? # retorna contribution pela chave se encontrou
-    return nil if source['customer'].nil? # senao encontrou pela chave tenta pelo customer
-    Contribution.where({
-      payer_email: source['customer']['email'],
-      value: (source['amount']/100.0)
-    }).where("created_at::date = ?", source['date_created'].to_date).order(:id).last
-  end
-
   def all_transactions(start_date, end_date)
     first_collection = find_transactions_by_dates(start_date, end_date)
     total_pages = first_collection['hits']['total'] / PAGE_SIZE
@@ -64,19 +51,7 @@ task :verify_pagarme_transactions, [:start_date, :end_date]  => :environment do 
     end
   end
 
-  def create_new_payment(contribution, source)
-    Payment.create!({
-      contribution: contribution,
-      gateway: 'Pagarme',
-      gateway_id: source['id'],
-      gateway_data: source.merge(created_by_verifier: true),
-      payment_method: (source['payment_method'] == 'boleto' ? 'BoletoBancario' : 'CartaoDeCredito'),
-      installments: source['installments']
-    })
-  end
-
   def fix_payments(start_date, end_date)
-    not_found = []
     all_transactions(start_date, end_date) do |source, payment|
       puts "Verifying transaction #{source['id']}"
       if payment
@@ -89,28 +64,9 @@ task :verify_pagarme_transactions, [:start_date, :end_date]  => :environment do 
         # Atualiza os dados usando o pagarme_delegator caso o status não esteja batendo
         yield(source, payment)
       else
-        contribution = find_contribution source
-        if contribution
-          # Cria novo pagamento para o apoio e atualiza com dados do pagarme
-          puts "Creating new payment for #{contribution.id}..."
-          payment = create_new_payment(contribution, source)
-          yield(source, payment)
-        else
-          puts ">>>>>>>> NAO ENCONTREI O APOIO!!!!! #{source['id']}"
-          not_found << [source['id'], source['status'], source['amount'], source['customer'].try(:[], "email")].join(",")
-        end
+        log = PaymentLog.find_or_create_by(gateway_id: source[:id], data: source.to_json)
+        puts "saving not found payment at PaymentLog -> #{log.id}"
       end
-    end
-
-    unless not_found.empty?
-      puts not_found.join("\n")
-      not_found_report_file = File.join(Rails.root, "tmp", "#{Time.now.to_i}_not_found_contributions.csv")
-      File.open(not_found_report_file, 'w') do |f|
-        f.write(not_found.join("\n"))
-        f.close
-      end
-
-      puts "use 'cat #{not_found_report_file}' to see the not found contributions"
     end
   end
 
