@@ -14,7 +14,7 @@ fr:
     login:
       login_with_facebook: Se connecter avec son compte facebook
     user:
-      my_contributions: Mes contribution
+      my_contributions: Mes contributions
       logout: Sortir
       my_credits: Mon crédit
       refund_link: Demande de remboursement
