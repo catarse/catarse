@@ -14,12 +14,12 @@ module Project::StateMachineHandler
 
       #validations starting in approved
       state :approved, :online, :successful, :waiting_funds, :failed do
-        validate :approved_validations
+        validate ->(project){ project.approved_validations }
       end
 
       #validations starting in online
       state :online, :successful, :waiting_funds, :failed do
-        validate :online_validations
+        validate ->(project){ project.online_validations }
       end
 
       state :deleted, value: 'deleted'
