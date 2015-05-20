@@ -1,0 +1,5 @@
+fr:
+  errors:
+    not_found: 
+      text: Vous avez peut-être mal saisie l’adresse ou la page a était déplacer.
+      title: Nous ne trouvons pas cette adresse :(

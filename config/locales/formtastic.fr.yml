@@ -1,0 +1,44 @@
+fr:
+  formtastic:
+    hints:
+      reward: 
+        description: Décrivez votre récompense de manière à attirer les personnes pour soutenir votre projet. Ne soyez pas timide !
+        maximum_contributions: Si votre récompense est limitée, informer un maximum de personne.
+        minimum_value: Ceci est la valeur minimum de dons pour choisir cette récompense.
+        days_to_delivery: Dire en combien de jours, après le succès du projet, vous prévoyez de données cette récompense.
+      contribution:
+        credits: Vous avez<strong>%{credits}</strong> crédits et vous pouvez réaliser des dons jusqu’a cette valeur sans avoir besoin d’effectuer un paiement.
+      project:
+        about: Dite nous en un peu plus sur voter inspiration pour réaliser ce projet, votre histoire et quelle sera le résultat final. Soyez concis et éviter les formalités légales. Aucun OBJECTIF, CONTEXTE, PUBLIC VISEE... Récompensez vos lecteurs avec quelque chose qui les attires et qui soit transparent par rapport à l’objectif du projet.
+        category: Avant d’envoyer votre projet, parcourez et inspirez vous à l’aide des autres projets qui sont sur le site.
+        first_contributions: Pour que votre campagne sois un succès, il est nécessaire de vous approchez de votre cercle d’amis. Pour cela, inscrivez le nom des personnes que vous pensez qu’ils seront vos 20 premiers donateurs.
+        goal: " C’est important de rappeler qu’une grande partie des dons viennent des personnes proches de vous (1er et 2ème niveaux de relation) : <a href='http://blog.catarse.me/sua-campanha-no-catarse-precisa-de-um-empurrazinho'
+          target='_blank'> Cliquez ici !</a> Ainsi, pour définir la valeur que vous voulez obtenir à travers Catarse il est fondamental de penser a votre capacité de mobiliser au moins 50% au sein de votre cercle d’amis."
+        headline: Résumez en 140 caractères votre projet. Cette phrase sera le premier contact des personnes avec votre projet, avant même de voir la vidéo. Soyez créatif, transparent et direct 
+        more_links: Quelle seront les chaine de mobilisation utilisé ? (Insérer des liens comme Facebook, Twitter, Blogs… tout ce qui pourra  aider à faire connaitre votre projet).
+        name: Plus vous serez direct mieux ce sera. Décrivez votre projet sur la vidéo.
+        online_days: En moyenne les projets restent en ligne 40 jours.
+        uploaded_image: Ici vous uploader une image (.jpg) de taille 512x400.
+        video_url: La vidéo est la principale pièce du projet. Si vous n’en avez pas, pas besoin d’en envoyer… Mais commencez à penser comment faire une vidéo DE FOLIE !
+        video_url_edit: Inserez ici le lien de votre vidéo hébergé sur Vimeo ou YouTube.
+    labels:
+      reward:
+        description: Description
+        minimum_value: Valeur minimum
+        days_to_delivery: Délai de livraison estimé
+        maximum_contributions: Donateurs maximum (optionnel)
+      contribution:
+        credits: Je veux utilisé mes crédits pour ce don.
+        anonymous: Je veux que mon don sois anonyme.
+        value: Combien voulez-vous donné ?
+        reward: Sélectionnez votre récompense.
+      project:
+        about: Histoire de votre projet et comment $ sera-t-il utiliser*
+        expires_at: Quelle est le prix pour atteindre le minimum ? *
+        first_contributions: Liste avec les premiers donateurs.*
+        goal: Combien vous pensez recueillir ? (seulement des chiffres)*
+        headline: Phrase d’accroche *
+        traffic_sources: Comment avez-vous connu Catarse ?*
+        more_links: Liste des liens en relations avec votre projet.*
+        name: Nom du projet*
+        video_url: Vidéo

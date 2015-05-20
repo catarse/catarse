@@ -1,0 +1,296 @@
+fr:
+  activerecord:
+    models:
+      channel: Chaine
+      project: Projet
+      reward: Recompense
+      contribution: Donateur
+      category: Catégorie
+      bank_account: Données bancaires
+    attributes:
+      project_account:
+        address_city: Ville
+        address_complement: Complement
+        address_neighbourhood: Quartier
+        address_number: Numero
+        address_state: Etat
+        address_street: Adresse
+        address_zip_code: CEP
+        cpf: 'CPF / CNPJ '
+        state_inscription: "Enregistrement d'Etat "
+        email: Email
+        full_name: "Nom / Raison social"
+        phone_number: "Téléphone"
+        bank: 'Banque'
+        bank_id: 'Banque'
+        owner_name: 'Nom du titulaire'
+        owner_document: 'CPF / CNPJ du titulaire'
+        agency: 'Agence'
+        agency_digit: 'Numero de l’agence'
+        account: 'No. du compte'
+        account_digit: 'Numero de compte'
+        account_type: 'Type de compte'
+      bank_account:
+        bank: 'Banque'
+        bank_id: 'Banque'
+        owner_name: 'Nom du titulaire'
+        owner_document: 'CPF / CNPJ du titulaire'
+        agency: 'Agence'
+        agency_digit: 'Numero de l’agence'
+        account: 'No. du compte'
+        account_digit: 'numero de compte'
+      contribution:
+        payer_name: "Nom"
+        payer_email: "Email"
+        payer_document: "CPF ou CNPJ"
+        country: "Pays"
+        address_street: "Rue"
+        address_number: "Numero"
+        address_complement: "Complement"
+        address_neighbourhood: "Quartier"
+        address_state: "Etat"
+        address_city: "Ville"
+        address_zip_code: "CEP"
+        address_phone_number: "Téléphone"
+        value: valeur du don
+        payer_name: "Nom"
+        payer_email: "Email"
+        country: "Pays"
+        address_street: "Rue"
+        address_number: "Numero"
+        address_complement: "Complement"
+        address_neighbourhood: "Quartier"
+        address_state: "Etat"
+        address_city: "Ville"
+        address_zip_code: "CEP"
+        address_phone_number: "Téléphone"
+        reward: Récompense
+        project : projet
+      reward:
+        deliver_at: Délai de la livraison
+      project:
+        channels: Chaine
+        category: Categorie
+        expires_at: Validité
+        online_days: "Date limite pour la collecte"
+        headline: "Phrase d’accroche"
+        image_url: "URL de l’image"
+        name: "Nom do projet"
+        goal: "Valeur du montant collecté"
+        about_html: "Description du projet"
+        user_id: "Id de l’utilisateur"
+        video_url: "URL de la video"
+        permalink: 'Link de votre projet'
+        more_links: 'Autres link afin que les personnes en sachent un peu plus sur votre projet et sur sa trajectoire.'
+        traffic_sources: 'Comment avez-vous connu Catarse?'
+        first_contributions: "Qui sont les première personnes à qui vous allez demander de l’aide pour soutenir votre projet ?"
+        budget: 'Budget du projet'
+        uploaded_image: 'Image du projet'
+      user:
+        address_city: Ville
+        address_complement: Complement
+        address_neighbourhood: Quartier
+        address_number: Numero
+        address_state: Etat
+        address_street: Adresse
+        address_zip_code: CEP
+        cpf: 'CPF / CNPJ '
+        cpf_hint: '(?)'
+        state_inscription: "Enregistrement d'Etat "
+        current_password: "mot de passe actuel"
+        email: Email
+        full_name: "Nom / Raison Social"
+        bio: 'Mini Bio'
+        name: "Prenom"
+        newsletter: 'Je souhaite recevoir les nouveauté de Catarse'
+        password: mot de passe
+        password_confirmation: "Confirmer mot de passe"
+        phone_number: "Téléphone"
+        cpf_hint_title: La facture sera transmise par ce document
+        id: ID
+        moip_login: Login du MoIP
+        moip_login_hint: "(Comment créer un compte)"
+        reset_password_token: "Changer de mot de passe"
+      channel:
+        ga_code: Code pour  Analytics
+        description: Description
+        how_it_works: Comment ça marche
+        image: Image de la nouveauté
+        name: Nom
+        video_url: Vídeo
+      channel_partner:
+        name: 'Nom'
+        url: 'Site'
+        image: 'Image'
+      project_post:
+        title: 'Titre'
+        comment: 'Texte'
+      channel_post:
+        title: 'Titre'
+        body: 'Contenu'
+        visible: 'Publier (Vérifiez que vous voulez bien publier ces nouvelles)'
+    errors:
+      models:
+        contribution: "Erreur lors de la sauvegarde du don"
+        bank_account:
+          attributes:
+            bank:
+              blank: 'Banque champs à remplir obligatoirement'
+            owner_name:
+              blank: 'Nom du titulaire champs à remplir obligatoirement '
+            owner_document:
+              blank: 'CPF / CNPJ du titulaire champs à remplir obligatoirement '
+              invalid: 'CPF / CNPJ invalide'
+            agency:
+              blank: 'Agence champs à remplir obligatoirement '
+              invalid: 'Agência inválida'
+            account:
+              blank: 'No. du compte champs à remplir obligatoirement '
+            account_digit:
+              blank: 'Numero de compte champs à remplir obligatoirement '
+              invalid: 'Numero d’agence invalide'
+        project_account:
+          attributes:
+            full_name:
+              blank: "Raison social de l’utilisateur champs à remplir obligatoirement "
+            email:
+              blank: "Email de l’utilisateur champs à remplir obligatoirement "
+            cpf:
+              blank: "CPF de utilisateur champs à remplir obligatoirement "
+            address_street:
+              blank: "Adresse de l’utilisateur champs à remplir obligatoirement "
+            address_number:
+              blank: "Numero d’adresse de l’utilisateur champs à remplir obligatoirement "
+            address_city:
+              blank: "Ville de l’utilisateur champs à remplir obligatoirement "
+            address_state:
+              blank: "Etat de l’utilisateur champs à remplir obligatoirement "
+            address_zip_code:
+              blank: "CEP de l’utilisateur champs à remplir obligatoirement "
+            phone_number:
+              blank: "Téléphone de l’utilisateur champs à remplir obligatoirement "
+            bank:
+              blank: "Banque de l’utilisateur champs à remplir obligatoirement "
+            agency:
+              blank: "Agence de l’utilisateur champs à remplir obligatoirement "
+            agency_digit:
+              blank: "Numero d’agence de l’utilisateur champs à remplir obligatoirement "
+            account:
+              blank: "No. Du compte de l’utilisateur champs à remplir obligatoirement "
+            account_digit:
+              blank: "Numero du compte de l’utilisateur champs à remplir obligatoirement "
+            owner_name:
+              blank: "Nom du titulaire de l’utilisateur champs à remplir obligatoirement "
+            owner_document:
+              blank: "CPF / CNPJ du titulaira de l’utilisateur champs à remplir obligatoirement "
+              not_same: "CPF/CNPJ des données ne sont pas identiques."
+            account_type:
+              blank: "Type de compte champs à remplir obligatoirement o"
+        project:
+          attributes:
+            video_url:
+              blank: 'Video du projet champs à remplir obligatoirement '
+            budget:
+              blank: 'Budget du projet champs à remplir obligatoirement '
+            uploaded_image:
+              blank: 'Image du projet champs à remplir obligatoirement '
+            name:
+              blank: "Nom du projet champs à remplir obligatoirement "
+            permalink:
+              blank: "URL du projet champs à remplir obligatoirement "
+              invalid: "L’URL du projet n’est pas valide"
+              taken: "Cette URL de projet existe déjà"
+            category:
+              blank: "Vous devez choisir une catégorie pour votre projet"
+            goal:
+              blank: "Valeur de l’objectif champs à remplir obligatoirement "
+              greater_than: "L’objectif doit être supérieu à 9"
+              not_a_number: "L’objectif de collecte n’accepte que des chiffres "
+            online_days:
+              blank: "Période de collecte champs à remplir obligatoirement "
+              greater_than: "La période de collecte doit être sup à 0 jour"
+              not_a_number: "La période de collecte doit être un nombres de jours"
+            about_html:
+              blank: "Description du projet champs à remplir obligatoirement "
+            headline:
+              blank: "Phrase d’accroche du projet champs à remplir obligatoirement "
+              too_long: "La phrase d’accroche est trop longue. Le maximum est de 140 caractères."
+        user:
+          attributes:
+            email:
+              not_found: "Email invalide, verifier l’adresse ou créer un compte"
+              taken: "Email est déjà valide, Connectez-vous"
+              invalid: "Adresse mail invalide"
+              blank: "Email champs à remplir obligatoirement "
+            password:
+              too_short: "Le mot de passe est trop court"
+              confirmation: "Les deux mots de passes ne sont pas identiques"
+              blank: "Mot de passe champs à remplir obligatoirement "
+            current_password:
+              invalid: "Mot de passe actuel invalide"
+            reset_password_token:
+              invalid: 'Session expirée. Retournez vers <a href="/password/new" class="alt-link">Definir mot de passe</a> et réinitialiser votre mot de passe.'
+            name:
+              blank: "Nom de l’utilisateur champs à remplir obligatoirement "
+            about_html:
+              blank: "A propos de vous champs à remplir obligatoirement "
+            uploaded_image:
+              blank: "Image de l’utilisateur champs à remplir obligatoirement "
+  project:
+    update:
+      success: Vos informations ont été actualisées
+      failed: ' Vos informations n’ont pas pu être enregistrées. Vérifier que tous les champs ont bien été remplie correctement'
+    delete:
+      posts: 'Nouveauté supprimée avec succes'
+    video_regex_validation: Seul les URLs de Youtube ou Vimeo sont accepté
+  contribution:
+    payment_details:
+      creditos: "Crédits"
+      boleto_bancario: "Boleto Bancaire"
+      cartao_de_credito: "Carte de crédit"
+      debito_bancario: "Débit bancaire"
+      cartao_debito: "Carte de crédit"
+      transferencia_bancaria: "Transfère bancaire" 
+      carteira_mo_ip: "Argent MoIP" 
+      financiamento_bancario: "Financement bancaire"
+    project_should_be_online: Vous ne pouvez pas souvenir un projet qui n’est pas en ligne
+    reward_must_be_from_project: Cela doit être du même projet
+    should_not_contribute_if_maximum_contributions_been_reached: Vous avez atteint le nombre maximum de donateurs
+    value_must_be_at_least_rewards_value: Cela doit être au moins de %{minimum_value} pour la récompense sélectionnée
+  contribution_report_to_project_owner:
+    reward_description: Description de la récompense
+    deliver_at: date de remise de la récompense
+    confirmed_at: date confirmation du paiement
+    contribution_value: valeur du don 
+    service_fee: Taxe de Catarse
+    user_name: Nom du donateur
+    user_email: Email du profil Catarse
+    cpf: Cpf du donateur
+    payer_email: Email du moyen de paiement
+    payment_method: moyen de paiement
+    street: Rue
+    address_number: Numero
+    complement: Complément
+    neighbourhood: Quartier
+    city: Ville
+    address_state: Etat
+    zip_code: CEP
+    anonymous: Anonyme
+  user:
+    no_name: Sans nom
+    contributions_text:
+      many: "je soutiens ce projet et %{total} projets"
+      one: "Je soutiens que ce projet jusqu’à présent"
+      two: "Je soutiens ce projet là plus un autre projet"
+  channels_subscribers:
+    created: 'Maintenant vous suivez %{channel}'
+    deleted: 'Vous ne suivez plus %{channel}'
+  channels:
+    edit: Actualiser la chaine
+    image_hint: Taille maximum (600x121px)
+    subscribed: "+ %{count} abonnés"
+    back_to_news: '← Retour aux nouveautés'
+    follow: "Suivez la chaine"
+    following: "Suivi"
+    unfollow: "Ne suivez plus"
+    subscribed: "%{count} qui suivent"

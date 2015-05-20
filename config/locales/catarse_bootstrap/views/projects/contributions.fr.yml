@@ -1,0 +1,100 @@
+fr:
+  projects:
+    contributions:
+      no_estimate: "Indisponible"
+      you_selected: "Vous avez choisi celle-ci!"
+      contribute_text:
+        credits_tab: Mes crédits
+      checkout:
+        no_credits: "Vous ne possédez pas suffisamment de crédits pour réaliser ce don."
+        success:  "Votre don a été réalisé avec succès. Merci beaucoup !"
+      contribution:
+        anonymous_contribution: Donateur anonyme
+        anonymous_description: "Vous avez choisi de rester anonyme"
+        no_reward: "Ce donateur n’a pas sélectionné de récompense"
+      selected_reward:
+        review_without_reward_html: "Votre don s’élève à <strong>%{value}</strong>"
+        value: 'Montant du don'
+        reward: 'Récompense sélectionnée'
+        edit: 'Editer'
+      edit:
+        review_title: 'Remplir et relire vos données de payement'
+        review_subtitle: 'Ces données seront visible par le créateur du projet'
+        delivery_address: 'Adresse de livraison'
+        next_step: 'Etape suivante'
+        payment_slip_disclaimer: "Si le projet n’aboutit pas, nous rembourserons votre don. Les données bancaires rentrées ici seront utilisées pour ce remboursement."
+        review_errors_title: "Vérifiez les données rentrées"
+        review_errors: " Il manque des informations ou elles ont été mal complétées, corrigez tous les champs en rouge et veuillez réessayez"
+        anonymous_confirmation_title: " Voulez-vous vraiment faire ce don en anonyme ?"
+        anonymous_confirmation: "Le montant de votre don ne sera dévoilée à personne mis à part le propriétaire du projet. Seul le soumissionnaire aura accès à cette information, indépendamment du fait que votre investissement est public ou anonyme."
+        anonymous_contribution: "Je veux que mon don soit anonyme"
+        form_labels:
+          user_another_card: "Utiliser une autre carte bancaire"
+          payment_card_number: 'Numéro de carte'
+          payment_card_flag: 'marque'
+          payment_card_source: 'Code de sécurité'
+          payment_card_source_short: 'CVC'
+          payment_card_date: 'Date d’expiration (mm/aaaa)'
+          payment_card_name: 'Nom indiqué sur la carte de crédit'
+          payment_card_installments: 'versements'
+        installment_with_tax: "Pas d’interêt"
+        transaction_error: "Transaction refusée, vérifiez vos données ou contactez votre banque pour plus d’informations."
+        pagarme_warning_html: "Catarse est en fase de test d’une nouvelle façon de paiement qui facilitera les dons financier ainsi que les éventuels remboursements des donateurs. D’autres informations supplémentaires vous seront sans doute demandées en plus de celles déjà mentionnées dans les Conditions d’utilisations pour soutenir un projet. Pour toutes informations ou difficultés, contactez-nous avec ce mail%{mailto}. Merci."
+        payment_save_card: 'Enregistrer ma carte de crédits pour faciliter les prochains dons'
+        reward_sold_out: 'Cette récompense n’est plus disponible. Entrer un nouveau don.'
+        page-title: Vous soutenez %{name}
+        credits_preview_html: "Vous possedez <strong>%{credits}</strong> en credits pour réaliser ce don <strong>jusqu’au 10/11</strong>, selon <a href='http://blog.catarse.me/simplificacao-dos-reembolsos-e-o-fim-dos-creditos/' target='__blank'>novas regras</a> divulgadas pelo Catarse."
+        credits_submit: 'Effectuer le paiement'
+        credits_title: 'Paiement par crédits'
+        insufficient_credits: "Vous possédez %{credits} en crédits. Cela n’est pas suffisent pour effectuer le paiement, choisissez un autre mode de paiement."
+        choose_payment: "Choisir le mode de paiement"
+        choose_payment_subtitle: "PAIEMENT SECURISE"
+        cpf: 'Pour continuer, compléter :'
+        credits_notice_html: 'Ce don sera effectué avec vos crédits. Après la confirmation, il vous restera <strong>%{credits}</strong> en crédit pour soutenir un autre projet'
+        live_in_brazil: J’habite au brésil. (Décochez si votre support est international)
+        number_card: Données de la carte
+        owner_card: Données du titulaire de la carte
+        payment_account: Paiement avec débit sur votre compte 
+        payment_boleto: Paiement par boleto
+        payment_card: Paiement par carte
+        review_with_reward_html: 'Vous allez donner<strong>%{value}</strong> et vous recevrez la récompense suivante:'
+        select_account: 'Vous allez être redirigez vers le site de votre banque:'
+        select_boleto: 'Pour continuer, veuillez selectionner:'
+        submit:
+          credits: Confirmer
+          moip: Effectuer le paiement par MoIP
+        subtitle: Ces données seront transmis à l’organisateur du projet.
+        title: Remplir et verifier les données pour effectuer le paiement.
+        you_are_about_html: 'Vous êtes sur le point de rejoindre le groupe %{link}.'
+      new:
+        page-title: 'Vous soutenez %{name}'
+        title: Oohh yeah!
+        you_have_credits: "Vous possedez <strong>%{credits}</strong> en crédits pour realizer ce opération."
+        choose_reward: Choisissez la récompense et le montant du opération
+        choose_value: Entrez le montant de votre opération
+        minimum_disclaimer: 'A partir de R$ <span id="minimum-value">10</span> vous êtes bon ;)'
+        next_step: "Relisez-vous et effctuez le pagamento"
+        no_reward: Merci. Je veux seulement aider le projet.
+      review:
+        PayPal: "PayPal"
+        MoIP: "MoIP"
+        Credits: 'Crédits'
+        error: Ooops. Erreur lors de la validation de votre opération. Réessayez. 
+      show:
+        follow: 'Suivant'
+        follow_category: 'Vous aimez la catégorie %{category}? Et vous pourrez recevoir des notifications dans votre boite mail lors de l’arrivé de nouveaux projets sur le site!'
+        project_recommendations: 'Recommandations de projets'
+        share: Partager
+        tweet: Twitter
+        thank_you: 'Merci!'
+        profile_link: 'Grâce à votre profil'
+        thank_you_text_html: 'Vous faites partie du goupe : %{total} pessoas que querem tirar o %{link1} do papel! Vous recevrez la confirmation du paiement par mail lorsqu’il sera effectué. Vous pouvez également suivre le statut de votre porteur de projet %{link2}. Partager votre porteur et augmenter les chances que le projet aboutisse !'
+        header_subtitle: "Sans vous, le projet n’aurait peut-être pas eu de chance. Bienvenue dans l’équipe !"
+        header_title: Merci beaucoup! :D
+        moip_message: La vérification de votre transaction est en cour de traitement et votre code Moip est “%{code}″.<br> Si vous avez des questions concernant la transaction, contactez Moip. Un mail vous sera envoyé lorsque le paiement sera accepté.
+        recommended_projects: 'Ces projets pourront aussi vous intéresser:'
+        text_subtitle: Dîtes à tout votre entourage ce que vous venez de faire
+        text_title_html: Vous faites partie du groupe qui fait tout pour que les projets %{link}
+          aboutissent.
+        title: Merci beaucoup
+

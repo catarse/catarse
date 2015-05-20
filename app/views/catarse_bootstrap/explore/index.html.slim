@@ -23,8 +23,8 @@
 
   .w-container.u-marginbottom-10
     .u-text-center.u-marginbottom-40
-      a.explore-toggle.fontsize-larger.link-hidden-white.fontweight-light href="#" 
-        | Explore projetos incríveis &nbsp;
+      a.explore-toggle.fontsize-larger.link-hidden-white.fontweight-light href="#"
+        | Voir les projets à financer &nbsp;
         span.fa.fa-angle-down
     #categories-wrapper.w-hidden
       .w-row
@@ -35,15 +35,15 @@
             .w-col.w-col-2.w-col-small-6.w-col-tiny-6
               a.explore-link.w-inline-block.btn-category [
                 class="#{'double-line' if category.to_s.size > 13}"
-                href="#by_category_id/#{category.id}" 
-                data-name=(params[:locale] == 'en' ? category.name_en : category.name_pt)
+                href="#by_category_id/#{category.id}"
+                data-name=( (category.name_fr if params[:locale] == 'fr') || (category.name_en if params[:locale] == 'en') || category.name_en )
                 data-categoryid=category.id
-                data-isfollowing=(current_user.try(:following_this_category?, category.id) ? 'true' : 'false') 
+                data-isfollowing=(current_user.try(:following_this_category?, category.id) ? 'true' : 'false')
                 data-followpath=subscribe_category_path(category)
                 data-unfollowpath=unsubscribe_category_path(category)
                 data-totalfollowers=category.users.count
-              ] 
-                = params[:locale] == 'en' ? category.name_en : category.name_pt
+              ]
+                = ( (category.name_fr if params[:locale] == 'fr') || (category.name_en if params[:locale] == 'en') || category.name_en )
                 span.badge.explore
                   = category.total_online_projects
       .w-row.u-marginbottom-30
@@ -69,7 +69,7 @@
         - if current_user
           .w-col.w-col-2.w-col-small-6.w-col-tiny-6
             a.w-inline-block.btn-category.filters.explore-link[href="#near_of/#{current_user.address_state}" data-name="#{t('.near')}"]
-                = t('.near')      
+                = t('.near')
 
 section.w-container.u-marginbottom-10
     .w-row.u-margintop-10.u-marginbottom-40

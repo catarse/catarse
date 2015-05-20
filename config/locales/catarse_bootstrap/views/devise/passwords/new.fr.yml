@@ -1,0 +1,16 @@
+fr:
+  devise:
+    passwords:
+      new:
+        no_account_html: "Vous ne possédez pas de compte?"
+        titles:
+          site: 'Réinitialiser le mot de passe'
+          header: 'Réinitialiser le mot de passe'
+        links:
+          register: "S’enregistrer"
+        form:
+          labels:
+            email: 'Après avoir entré votre mail, nous allos vous envoyer un mail expliquant comment réinitialiser votre mot de passe'
+          inputs:
+            submit: 'Réinitialiser'
+

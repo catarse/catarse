@@ -1,0 +1,29 @@
+fr:
+  shared:
+    load_more: "Charger plus"
+    terms: conditions d’utilisation
+    accept_terms_html: J’ai lu et je suis d’accord avec les %{link}.
+    header_channel:
+      contact: Contact
+      logout: Sortir
+      my_credits: Mes crédits
+      partners: Partenaires
+      posts: Nouveautés
+      profile: Mon profil
+      signin: Login
+      signup: S’enregistrer
+      submit: Envoyer le projet
+      how_work: Comment ça marche ?
+    footer_channel:
+      contact: Contact
+      how_works: Comment ça marche ?
+      privacy_policy: Politique de confidentialité
+      terms: Conditions d’utilisations
+      what_is_channel: Qu’est-ce que les chaines?
+      terms: " Conditions d’utilisations "
+      privacy_policy: " Politique de confidentialité "
+      how_it_works: "Comment marche le %{name}"
+      how_channels_work: " Comprendre les chaines de Catarse"
+      contact: "Contact"
+    header_big:
+      projects: "Mes projets"
