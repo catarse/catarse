@@ -145,12 +145,6 @@ GEM
       sass-rails (<= 5.0.1)
       sprockets (< 2.13)
     connection_pool (2.2.0)
-    coveralls (0.8.1)
-      json (~> 1.8)
-      rest-client (>= 1.6.8, < 2)
-      simplecov (~> 0.10.0)
-      term-ansicolor (~> 1.3)
-      thor (~> 0.19.1)
     crack (0.1.8)
     curb (0.8.8)
     daemons (1.2.2)
@@ -171,7 +165,6 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
-    docile (1.1.5)
     domain_name (0.5.24)
       unf (>= 0.0.5, < 1.0.0)
     draper (2.1.0)
@@ -561,11 +554,6 @@ GEM
     simple_form (3.1.0)
       actionpack (~> 4.0)
       activemodel (~> 4.0)
-    simplecov (0.10.0)
-      docile (~> 1.1.0)
-      json (~> 1.8)
-      simplecov-html (~> 0.10.0)
-    simplecov-html (0.10.0)
     slim (3.0.3)
       temple (~> 0.7.3)
       tilt (>= 1.3.3, < 2.1)
@@ -591,8 +579,6 @@ GEM
       sprockets (>= 2.8, < 4.0)
     state_machine (1.2.0)
     temple (0.7.5)
-    term-ansicolor (1.3.0)
-      tins (~> 1.0)
     thin (1.6.3)
       daemons (~> 1.0, >= 1.0.9)
       eventmachine (~> 1.0)
@@ -602,7 +588,6 @@ GEM
     tilt (1.4.1)
     timers (4.0.1)
       hitimes
-    tins (1.5.1)
     to_xls (1.5.3)
       spreadsheet
     typhoeus (0.7.1)
@@ -659,7 +644,6 @@ DEPENDENCIES
   coffee-rails
   compass-960-plugin
   compass-rails
-  coveralls
   database_cleaner
   dbhero (>= 1.1.6)
   devise
