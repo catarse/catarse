@@ -1,0 +1,27 @@
+fr:
+  pages:
+    start:
+      page-title: " Catarse? Comment ça marche"
+      title: " Financer votre projet collectivement "
+      submit: " Commencez votre projet "
+      learn-more: "En savoir plus"
+      header:
+        people: "Les personnes ont déjà soutenu au moins 1 projet sur Catarse"
+        success: "De nombreux projets ont déjà été financés sur Catarse"
+        money: "La liste des dons pour les projets ici"
+      start:
+        title: "Commencer son projet"
+        content: "Il faut bien commencer quelque part. Une première étape pour transformer votre idée en un projet et le financer collectivement est de s’inscrire sur le site Catarse. Nous serons là pour vous aider à le réaliser."
+        link: "En savoir plus sur le lancement d’un projet, les premier pas"
+      people:
+        title: "Etude et planification"
+        content: " Planification d'une bonne campagne est un facteur décisif pour le succès de leur financement collectif. Nous mettons à votre dispositions des matériaux pour vous aider !"
+        link: 'Savoir combien de donateurs avez-vous besoin'
+      work:
+        title: "Tout ou rien"
+        content: "Celui qui fixe l’objectif de collecte de fonds et le temps de la campagne c’est vous. Choisissez entre 1 à 60 jours pour réaliser votre campagne de recherches de donateurs. Si votre objectif financier est atteint, vous resterez avec ces sommes. Mais si ce n’est pas le cas, les donateurs recevront de nouveau leurs dons. Nous facturons une taxe de 13% sur le total collecté mais seulement sur les projets qui ont atteint ou dépassé leurs objectif."
+        link: 'Recevez des conseil pour votre succès sur Catarse'
+      time:
+        title: "Mobiliser des donateurs"
+        content: "Communiquez pendant votre campagne et prenez soin de vos donateurs! Ils sont la force de votre projet et sont ceux qui vont réellement déterminer le succès ou pas de votre campagne ! Catarse est un moyen de vous rapprocher des gens qui aiment votre travail."
+        link: 'Savoir comment la taxe aide à maintenir Catarse'

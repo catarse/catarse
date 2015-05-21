@@ -1,6 +1,6 @@
 fr:
   not_found:
-    title: "Désolé, nous n'avons pas pu trouvé cette adresse :("
+    title: "Désolé, nous n'avons pas pu trouver cette adresse :("
     text: "L'adresse est peut être incorrecte ou la page a été changée."
   controllers:
     updates:
@@ -26,7 +26,7 @@ fr:
       submit: 'Changer'
     registrations:
       welcome: 'Créer un compte'
-      password_hint: '6 caractéres au minimum'
+      password_hint: '6 caractères au minimum'
       show_password: 'Montrer le mot de passe'
     singin: "Se connecter"
     placeholder:
@@ -63,7 +63,7 @@ fr:
   views:
     pagination:
       next: 'suivant'
-      last: 'précédant'
+      last: 'précédent'
       truncate: "..."
   statistics:
     contributions:
@@ -81,7 +81,7 @@ fr:
       about: "Qui sommes-nous"
       social: "Réseaux sociaux"
       sitemap: "Parcourir"
-      newsletter: "S'abonner à nous nouveautés"
+      newsletter: "S'abonner à nos nouveautés"
       contact: "Restez en contact"
     links:
       about: "Qui sommes-nous"
@@ -121,14 +121,14 @@ fr:
       faq: "avez-vous des questions?"
       schedule: 'calendrier'
     placeholders:
-      email: "Enterez votre email"
+      email: "Entrez votre email"
     buttons:
       newsletter: 'Soumettre'
   sections:
     near:
       title: 'près de moi'
     recommended:
-      title: 'Recommendés'
+      title: 'Recommandés'
     expiring:
       title: 'Arrivant à expiration'
     recents:
@@ -159,7 +159,7 @@ fr:
         video_url: "URL de la vidéo"
         permalink: 'URL du projet'
         traffic_sources: "Comment avez-vous entendu parler de Catarse?"
-        more_links: 'Où est ce que nous pourrons avoir des informations sur vous et sur votre projet?'
+        more_links: 'Où pourrons nous avoir des informations sur vous et sur votre projet?'
       reward:
         description: Description
         maximum_contributions: "Nombre maximal de bailleurs"
@@ -197,7 +197,7 @@ fr:
     reward_must_be_from_project: "doit faire partie du même projet"
     should_not_contribute_if_maximum_contributions_been_reached: "a atteint la limite maximale de bailleurs"
     value_must_be_at_least_rewards_value: "doit être au minimum %{minimum_value} pour la récompense selectionnée"
-    project_should_be_online: "Vous ne pouvez financé un projet hors ligne"
+    project_should_be_online: "Vous ne pouvez pas financer un projet hors ligne"
   contribution_plural: contributions
   project_plural: projects
   project_singular: project
@@ -230,7 +230,7 @@ fr:
       value: Value
     refund:
       cannot_refund: "Ce paiement n'est pas remboursable."
-      error: "Oops. Il y'a eu une erreur pendant l'envoi de la demande de remboursement."
+      error: "Oops. Il y a eu une erreur pendant l'envoi de la demande de remboursement."
       no_credits: "Vous n'avez pas assez de crédit pour demander ce remboursement."
       refunded: "Ce paiement a été remboursé."
       requested_refund: "Vous avez déjà demandé le remboursement de ce paiement."
@@ -245,14 +245,14 @@ fr:
   explore:
     index:
       near: 'Près de moi'
-      categories: Categories
+      categories: Catégories
       expiring: "Arrivant à expiration"
       quick_explore: "Recherche rapide"
-      recent: Recent
-      recommended: Recommended
+      recent: Récent
+      recommended: Recommandé
       subtitle: "Parcourez les projets, trouvez ceux qui vous touchent, et aidez les à voir le jour!"
-      successful: Successful
-      title: "Découvrir les projets impréssionants"
+      successful: Levée réussie !
+      title: "Découvrir les projets impressionants"
     title: "Parcourir les projets"
     project:
       empty: "Écoutez, nous n'avons trouvé aucun projet correspondant à votre recherche. Vous voulez essayer avec d'autres termes ? =D"
@@ -263,17 +263,17 @@ fr:
         value: "Choisissez votre montant ;) mise de départ R$10, tout montant supérieur est encore meilleur"
       project:
         video_url_edit: 'Collez ici le lien de votre vidéo Vimeo/Youtube'
-        about: "Dites-nous ce qui vous a inspiré pour arriver à ce projet. Soyez fin objectif charmant, présenter vos lecteurs avec quelque chose qui les meut, tout en étant très transparent sur les attentes de votre projet!"
-        more_links: "Quels canaux seront utilisés pour passer le mot sur votre projet? Liste ici votre facebook / twitter / blog / site / et ce de plus en plus les liens que vous avez pour vous aider"
+        about: "Dites-nous ce qui vous a inspiré pour arriver à ce projet. Soyez fin, objectif, attractif, présentez à vos lecteurs  un contenu qui les mobilise, tout en étant très transparent sur votre projet!"
+        more_links: "Quels canaux seront utilisés pour passer le mot sur votre projet? Listez ici votre facebook / twitter / blog / site / et tous les liens qui pouront vous aider"
         category: "Avant de formater votre projet explorez d'autres projets (réussis) pour vous en inspirer!"
-        expires_at: "Enfin, choisissez combien de temps vous voulez que votre campagne dure. Encore une fois, il s'agit d'un choix stratégique: si vous mettez beaucoup de temps, les gens vont perdre de l'intérêt le long du chemin, si mettre trop peu, vous ne pouvez pas atteindre le minimum de temps."
-        online_days: "Enfin, choisissez combien de temps vous voulez que votre campagne dure. Encore une fois, il s'agit d'un choix stratégique: si vous mettez beaucoup de temps, les gens vont perdre de l'intérêt le long du chemin, si mettre trop peu, vous ne pouvez pas atteindre le minimum de temps."
+        expires_at: "Enfin, choisissez combien de temps vous voulez que votre campagne dure. Encore une fois, il s'agit d'un choix stratégique: si vous mettez beaucoup de temps, les gens vont perdre de l'intérêt, si vous en mettez trop peu, vous risquez de ne pas atteindre l'objectif."
+        online_days: "Enfin, choisissez combien de temps vous voulez que votre campagne dure. Encore une fois, il s'agit d'un choix stratégique: si vous mettez beaucoup de temps, les gens vont perdre de l'intérêt, si vous en mettez trop peu, vous risquez de ne pas atteindre l'objectif."
         goal: "Montant en reais (R$)"
-        first_contributions: "Pour atteindre votre objectif financier c'est indispensable pour engager les gens qui sont proches de vous et le projet. Donc, si vous pouvez énumérer ici qui seront vos 20 premiers bailleurs de fonds qui serait un grand pas vers l'avant;)"
+        first_contributions: "Pour atteindre votre objectif financier il est indispensable d'impliquer les gens proches de vous et de votre projet. Donc, énumérez ici qui seront vos 20 premiers bailleurs de fonds ;)"
         headline: "Résumez votre projet en 140 caractères. Ce sera le premier contact que les visiteurs auront avec votre projet, avant même de voir la vidéo. Soyez créatif, clair et direct ;)"
-        name: "Soyez aussi objectif que possible. Donnez des explications sur la section 'à propos'."
+        name: "Soyez aussi objectif que possible. Donnez des explications dans la section 'à propos'."
         uploaded_image: "Mettez une image de 512x400(.jpg)."
-        video_url: "Collez l'url de votre vidéo <a href=\"http://vimeo.com\" target=\"_blank\">Vimeo</a>. Nous recommandons Vimeo parce qu'il fait passer mois d'annonce. De cette manière, votre projet apparaîtra mieux.<strong>Une vidéo est le meilleur moyen de présenter votre projet</strong> ;)"
+        video_url: "Collez l'url de votre vidéo <a href=\"http://vimeo.com\" target=\"_blank\">Vimeo</a>. Nous recommandons Vimeo car il diffuse moins d'annonces. De cette manière, votre projet apparaîtra mieux.<strong>Une vidéo est le meilleur moyen de présenter votre projet</strong> ;)"
       reward:
         description: "Décrivez votre récompense d'une manière qui suscite l'intérêt des gens pour soutenir le projet. Ne soyez pas timide!"
         maximum_contributions: "Si votre récompense est limitée, dites-nous combien de bailleurs vous souhaiterez avoir."
@@ -284,7 +284,7 @@ fr:
         anonymous: "Je veux financer dans l'anonymat."
         credits: "Je veux utiliser mon crédit pour ce financement"
         reward: "Choisir une récompense"
-        value: "Vous voulez cotiser à quelle hauteur?"
+        value: "A quelle hauteur souhaitez vous souscrire?"
       comment:
         comment: "Laisser un commentaire à propos de ce projet"
       project:
@@ -293,7 +293,7 @@ fr:
         headline: "Conclusion"
         category: 'Catégorie'
         first_contributions: "Lister vos premiers bailleurs *"
-        about: "A propos de votre projet. Comment allez-vous dépenser cet argent?"
+        about: "A propos de votre projet. Comment allez-vous utiliser cet argent?"
         expires_at: "Quelle est la date limite pour atteindre vos objectifs ?"
         goal: "Combien espérez-vous collecter ? (en chiffres seulement)"
         name: "Nom du projet"
@@ -301,11 +301,11 @@ fr:
         video_url: Video
         uploaded_image: "image du projet"
       reward:
-        maximum_contributions: "Maximum de bailleur (facultatif)"
-        days_to_delivery: "Jour pour livrer"
+        maximum_contributions: "Maximum de bailleurs (facultatif)"
+        days_to_delivery: "Jours pour livrer"
     optional: " (facultatif)"
-  found_plural: 'Trouvé'
-  found_singular: 'Trouvés'
+  found_plural: 'Trouvés'
+  found_singular: 'Trouvé'
   here: here
   i_contributed: "j'ai financé le projet %{name} sur @catarse"
   i_just_contributed: "je viens de financer le projet %{name} sur @catarse"
@@ -318,8 +318,8 @@ fr:
       help: Help
       signup: "Créer un compte"
       signin: Login
-      discover: Discover
-      submit: Send your project
+      discover: "Découvrir"
+      submit: Proposer votre projet
       profile: "Mon profil"
       account: "Mon compte"
     user:
@@ -339,8 +339,8 @@ fr:
       site_title: "Changer de mot de passe"
       subtitle: "Vous avez demandé la réinitialisation de votre mot de passe. Choisissez un nouveau mot de passe et cliquez sur \"Changer mon mot de passe\". Si vous n'avez pas fait cette demande, vous pouvez ignorer ce message et votre mot de passe restera le même."
     email:
-      content_html: "<p> Quelqu'un a demandé un lien pour changer votre mot de passe, et vous pouvez le faire via le lien ci-dessous. </ p>% {link} </ p> Si vous n'avez pas demandé cela, s'il vous plaît ignorer ce message. </ p> Votre mot de passe ne changera pas jusqu'à ce que vous accédez au lien ci-dessus et en créer un nouveau. </ p>"
-      title: "Instructions pour réinitialisez votre mot de passe."
+      content_html: "<p> Vous avez demandé un lien pour changer votre mot de passe, et vous pouvez le faire via le lien ci-dessous. </ p>% {link} </ p> Si vous n'avez pas fait cette demande, veuillez ignorer ce message. </ p> Votre mot de passe ne changera pas jusqu'à ce que vous accédiez au lien ci-dessus et en creez un nouveau. </ p>"
+      title: "Instructions pour réinitialiser votre mot de passe."
     new:
       submit: "M'envoyer les instructions de réinitialisation de mot de passe"
       title: "Mot de passe oublié?"
@@ -353,7 +353,7 @@ fr:
     finish:
       successful:
         email_subject: "Hourra! le projet %{project_name} a été accepté sur Catarse!"
-        email_text: "Le projet %{project_link}, que vous avez soutenu, a été financé!<br><br> Le projet a, vous inclus, %{project_total_contributions} superbes bailleurs, été financé à hateur de %{project_pledged} et a atteint %{project_process}% de l'objectif =D<br><br>Une chose importante à savoir: Catarse met 3 jours avant d'envoyer à l'initiateur du projet la liste des bailleurs. Alors, il vous contactera pour vous remercier et discuter du délais pour votre récompense. ok?<br><br> Alors pourquoi ne pas partager avec vos amis ce succès ?<br><br><div style='text-align:center;'>%{facebook_button}%{twitter_button}</div><br><br>Si vous voulez être tenu au courant des nouveautés de %{project_owner_name}, envoyez un email à %{project_owner_email}.<br><br>Si vous avez des questions à propos de Catarse, allez sur FAQ: <a href='http://www.catarse.me/faq' style='color: #008800';>www.catarse.me/faq</a> ou envoyez un email à <a href='mail_to:contato@catarse.me' style='color: #008800;'>contato@catarse.me</a><br>"
+        email_text: "Le projet %{project_link}, que vous avez soutenu, a été financé!<br><br> Le projet a, vous inclus, %{project_total_contributions}  bailleurs, a été financé à hauteur de %{project_pledged} et a atteint %{project_process}% de l'objectif =D<br><br>Une chose importante à savoir: Catarse met 3 jours avant d'envoyer à l'initiateur du projet la liste des bailleurs. Alors, il vous contactera pour vous remercier et discuter du délais pour votre récompense. ok?<br><br> Alors pourquoi ne pas partager avec vos amis ce succès ?<br><br><div style='text-align:center;'>%{facebook_button}%{twitter_button}</div><br><br>Si vous voulez être tenu au courant des nouveautés de %{project_owner_name}, envoyez un email à %{project_owner_email}.<br><br>Si vous avez des questions à propos de Catarse, allez sur FAQ: <a href='http://www.catarse.me/faq' style='color: #008800';>www.catarse.me/faq</a> ou envoyez un email à <a href='mail_to:contato@catarse.me' style='color: #008800;'>contato@catarse.me</a><br>"
         facebook_text: "Houra! Le projet '%{name}', que j'ai financé sur Catarse a vu le jour!"
         notification_text: "Houra! le projet %{link} que vous avez financé a vu le jour!"
         reward_notification_text: "Bientôt, %{link} vous contactera pour votre récompense!"
@@ -366,7 +366,7 @@ fr:
     video_regex_validation: "Seules les vidéos Vimeo sont autorisées"
     display_status:
       expired: expired
-      failed: "pas financé"
+      failed: "non financé"
       successful: funded
       waiting_confirmation: waiting
       waiting_funds: waiting
@@ -396,11 +396,11 @@ fr:
         anonymous_description: "a préféré rester incognito"
         no_reward: "Ce bailleur n'a pas choisi de récompense"
       review:
-        error: "Ooops. Il y'a eu une erreur pendant la tentative du financement. Réessayez svp."
+        error: "Ooops. Il y a eu une erreur pendant la tentative du financement. Réessayez svp."
       show:
         error: "Ooops. Vous pourrez accéder à cette page seulement après avoir aidé à financer un projet."
         moip_message: "Votre transaction est acceptée et votre code Moip est ¿%{code}¿.<br>Pour tout renseignement concernant cette transaction, contact Moip."
-        header_subtitle: "Sans you ce projet pourrait ne pas avoir la chance de voir le jour. Bienvenu dans l'équipe"
+        header_subtitle: "Sans vous ce projet pourrait ne pas avoir la chance de voir le jour. Bienvenu dans l'équipe"
         header_title: "Merci! :D"
         text_subtitle: "Parlez de ce que vous venez de faire"
         recommended_projects: "Ces projets pourraient vous intéresser:"
@@ -873,7 +873,7 @@ fr:
       updates: "I want to receive project updates"
     current_user_fields:
       bio_limit: 'only 140 characters'
-      updated: "Your information has been updated"
+      updated: "Votre profil a été mis à jour"
       update_social_info: "Update info"
       social_info: "Contact info"
       twitter: "twitter ( username )"

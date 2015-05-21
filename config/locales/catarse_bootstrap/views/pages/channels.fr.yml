@@ -1,0 +1,94 @@
+fr:
+  admin:
+    menu: "Chaînes modérées"
+    followers_menu: "Abonnements"
+    statistics_menu: "Statistiques"
+    profile_menu: "Modifier la chaine "
+    partners_menu: "Modifier partenaire"
+    statistics:
+      title: 'Statistique de la chaîne'
+      total_subscribers: 'Total des abonnés'
+    Confirmations:
+      destroy: Vous êtes sur de vouloir l’effacer ?
+    filter:
+      between_created_at: Créé entre
+      by_id: Par id
+      order_table: Trier la table 
+      pg_search: Projet
+      submit: Filtrer
+      title: Filtrer
+      user_name_contains: Utilisateur
+      with_state: Avec l’Etat
+      by_payment_method: 'Moyen de paiement'
+    followers:
+      index:
+        download: Télécharger la liste
+        title: Abonnements
+    management:
+      no_partners: Aucun partenaire enregistré
+      no_posts: Aucune nouveauté enregistrée
+      title: Gestion
+      total: Projet total
+    partners:
+      back_to_list: "← Retourner à la gestion des partenaires"
+      new:
+        add_partner: Ajouter un partenaire
+      edit:
+        edit_title: Créer un partenaire
+      form:
+        hint_image: Taille de l’image 370x320
+        save_submit: Sauvegarder
+      index:
+        new_button: Ajouter un partenaire
+        table:
+          created_at: Créé en
+          image: Image
+          name: Nom
+          url: Site
+          actions: Actions
+        title: Gérer les partenaires
+    posts:
+      back_to_list: "← Retourner à la gestion des news"
+      new:
+        create_news: Créer un article des news
+      edit:
+        edit_news: Editer des news
+      index:
+        new_post_button: Créé des news
+        table:
+          actions: Actions
+          created_at: Créé en
+          published_at: Publié en
+          title: Titre de la news
+        title: Gérer les news
+      form:
+        save_submit: Sauvegarder et visualiser
+      update:
+        published_message: Votre news a été publiée et envoyées par mail aux abonnés de la chaîne
+      warning_html: Souvenez-vous que toutes les news publiées sont envoyées directement par mail à vos abonnés. Voilà pourquoi il faut bien vérifier vos textes avant de l’envoyer.
+    posts_menu: Gérer les news
+    table:
+      approve: Approuver
+      category: Catégorie
+      confirmation: Êtes vous sur de vouloir supprimer ce projet ?
+      contributed_projects: Projet soutenu
+      created_projects: Projet créé
+      destroy_action: Supprimer
+      edit_action: Editer
+      expires_at: Fin
+      goal: Objectif
+      name: Titre
+      online_date: Publication
+      pledged: Atteint
+      publish_action: Publier
+      recommended: Recommander
+      reject: Rejeter
+      send_to_draft: Envoyer à rédiger
+      put_online: Mettre en ligne
+      send_to_trash: SUPPRIMER LE PROJET
+      show_action: Visualisé
+      state: Etat
+      total_contributions: Dons
+      unpublish_action: Dépublier
+      user: Utilisateur
+      user_id: Utilisateur

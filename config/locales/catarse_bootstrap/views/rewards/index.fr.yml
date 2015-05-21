@@ -1,0 +1,25 @@
+fr:
+  rewards:
+    form:
+      edit: "Créer une récompense"
+      reward: Récompense
+      info_box: "Vous pouvez limiter la quantité disponible d’une récompense. Une fois la limite atteinte,la récompense sera marqué comme EPUISEE. La prévision de livraison est la date que vous prétendez livrer la récompense aux donateurs. Si vous souhaitez changer l’ordre des récompenses, il suffit de les faire glisser ici. Essayez !!!"
+      minimum_value: "Valeur minimum:"
+      deliver_at: "Prévoir une livraison:"
+      description: "Description:"
+      limit_reward: "Limite de récompense"
+      available: "Quantité disponible"
+      submit: "Sauvegarder"
+    index:
+      select_reward: "Sélectionner cette récompense"
+      display_remaining: "%{remaining} de %{maximum} disponible"
+      dont_want: "Je ne veux pas de récompense"
+      limited: Limité
+      sold_out: Epuisé
+      contributions_to_confirm:
+        one: 1 aide pour confirmé.
+        other: "%{count} aides pour confirmé."
+      edit_reward: Créer une récompense
+      new_reward: Enregistré une récompense
+      reward_deliver_time: "<b>Délai de livraison estimé:</b> %{estimate}"
+      reward_title: "Pour %{minimum} ou plus"

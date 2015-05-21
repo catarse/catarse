@@ -1,0 +1,120 @@
+fr:
+  users:
+    profile:
+      user_since: " Inscrit depuis %{date}"
+      no_project_contribution: "Vous n’avez pas encore soutenu de projet "
+      single_project_contribution: "Vous avez soutenu 1 projet "
+      multiple_project_contribution: "Vous avez soutenu %{n_projet} projet"
+      single_project_created: " Vous avez déjà créer 1 objet"
+      multiple_project_created: " Vous avez déjà créer %{n_projet} projets"
+    contribution_row:
+      contributed_projects: "Projet que j’ai soutenu"
+      contribution_value: "Valeur du don "
+      contribution_status: "Statut du don"
+      reward: Récompense
+      no_reward: "Vous avez sélectionner aucune récompense "
+      delivery_estimate: "Estimation de la livraison:"
+    card:
+      twitter_profile: "Profil Twitter"
+      facebook_profile: " Profil Facebook"
+      author_website: "Site"
+      contact_author: "Envoyer un message"
+    failed_reactivation: "Le lien de réactivation est invalide, sil vous plait veuillez contacter notre équipe."
+    reactivated: "Bon retour, votre compte a été réactiver."
+    project:
+      confirmed: "Confirmer"
+      refunded: "Rembourser"
+      requested_refund: "Demande de remboursement"
+      waiting_confirmation: "Attente de confirmation"
+      tell_about_this_contribution: Parlez en de vos dons !
+    credit_cards:
+      index:
+        last_digits: 'Carte'
+        brand: 'Marque'
+        title: 'Carte de crédit'
+        remove: 'Supprimer'
+    credits:
+      modal:
+        title: 'Voulez vous demander le remboursement de votre don?'
+        text: "Vous savez comment fonctionne le système de remboursement sur Catarse :"
+        link: "Règles et Fonctionnement des remboursements/ reprises"
+        reject_btn: "Non, je veux maintenir mes crédits"
+        accept_btn: "Oui, je veux me faire rembourser mon don"
+      index:
+        contribution_date: "Date du don"
+        current_credits_html: "Votre solde actuel est de <span id=\"current_credits\">%{credits}</span> en crédits."
+        important_html: "Pour connaitre toute les règles de remboursement, <a href='http://suporte.catarse.me/hc/pt-br/articles/202365507-Règles de remboursement- reprises' target='_blank'>clique aqui</a>. Une question ? Visitez notre <a href='http://suporte.catarse.me' target='_blank'>soutien</a>."
+        project: Projeto
+        refunded: "Demande confirmer. Nous vous contacterons dans un délai de 4 jours ouvrés."
+        insufficient_credits: "Vous ne disposez pas de crédit suffisant pour réaliser cette reprise. "
+        refunds_title: "Dons qui peuvent être retourner"
+        request_refund: "Demander un retour "
+        requested_refund: "Je demande un retour"
+        status: Status
+        title: "Mes crédits"
+        value: Valeur
+      refund:
+        cannot_refund: "Ce don ne peut être retourner. "
+        error: "Oops. Il y a eu une erreur lors du retour. "
+        no_credits: "Vous ne possédez pas suffisamment de crédit pour réaliser ce retour. "
+        refunded: "Ce don a déjà été retourner. "
+        requested_refund: "Vous avez déjà demander un retour pour ce don. "
+      title: "Mes crédits"
+    current_user_fields:
+      bank_account_title: "Données bancaire"
+      bank_account_hint: "Vos données bancaire seront utiliser pour réaliser le remboursement intégrale de votre don, au cas ou le projet n’atteindrais pas 100% de son objectif. "
+      my_facebook: 'Intégration avec facebook'
+      bio_limit: 'jusqu’à 140 caractères'
+      updated: "Vos informations on été actualiser "
+      update_social_info: "Actualiser vos informations "
+      social_info: "Vos coordonnées"
+      twitter: "twitter (utilisateur)"
+      facebook_link: "profil sur facebook (lien complet)"
+      other_link: "lien de votre page internet "
+      change_password: "Modifier votre mot de pase"
+      current_password_hint: "<i>Pour modifier votre mot de passe vous devez écrire votre mot de passe actuel. </i>"
+      email_hint: "Votre email sera utilisé uniquement pour communiquer avec Catarse et des projets que vous soutenez. Il ne sera pas visible dans mon profile. Quand vous soutiendrez un projet, nous communiquerons votre email au créateur du projet pour qu’il puisse vous donnez vos récompenses."
+      email_tooltip: "Cliquez ici pour ajouter votre email… "
+      gravatar_hint_html: "Vous pouvez aussi changer votre photo de profil à l’aide %{link} de votre email. <br>C’est aussi simple que d’envoyer une image et sa fonctionne déjà avec d’autre site.;)"
+      local_avatar: "Mon avatar "
+      submit_text: "Choisir votre image "
+      submit: "Envoyer"
+      my_data: "Mes données"
+      newsletter: "Je veux recevoir des nouvelles de Catarse par email "
+      password_hint: "<i>Ne pas remplir si vous voulez conservez votre mot de passe actuel. </i>"
+      deactivate: "Désactiver mon compte "
+      deactivate_notice: "Le compte de %{name} à été désactiver."
+      deactivate_confirm: "Souhaitez-vous désactiver ce compte ? "
+      deactivate_hint: "Tous vos dons seront convertit en dons anonyme, vos données ne seront plus visible, vous serez déconnecter automatiquement et votre compte sera supprimer définitivement. "
+    unsubscribes:
+      projects_in_reminder: "Projets avec rappelle actif :"
+      title: "Choisissez les projets dont vous souhaitez recevoir des notifications :"
+      posts: "Je veux recevoir des notification des projets "
+    show:
+      projects:
+        here: 'ici'
+        no_projects: "%{name} n’a pas encore réalisé de projet sur Catarse. Peut être que l’inspiration viendra un jour ou l’autre ? "
+        no_projects_current_user_html: "Vous avez réalisez aucun projet sur Catarse. Laisser votre imagination faire et cliquez ici  %{link} pour commencer !"
+        title: "Projets de  %{name}"
+        title_current_user: "Mes projets"
+      contributions:
+        anonymous: "Dons anonyme."
+        no_contributions: "%{name} Vous n’avez pas encore soutenu de projet. Mais nous savons que ce n’est qu’une question de temps ! :D "
+        no_contributions_current_user_html: "Vous n’avez soutenu aucun projet pour l’instant. Pourquoi pas <a href=\"/\">commencer maintenant </a> ?"
+        no_reward: "Vous n’avez sélectionner aucune récompense. "
+        title: "Projets que %{name} vous soutenez déjà "
+        title_current_user: "Projets que vous soutenez déjà "
+        your_reward: "Votre récompense"
+      attention: "Attention"
+      tabs:
+        credit_cards: 'Carte de crédit'
+        contributed_projects: "Projets soutenu"
+        created_projects: "Projets créés"
+        comments: Commantaire
+        credits: Crédits
+        settings: Paramètres
+        unsubscribes: Notifications
+      user_social:
+        email: "M’envoyez un email"
+        facebook: "Profil sur facebook"
+        twitter: "Profil sur twitter"

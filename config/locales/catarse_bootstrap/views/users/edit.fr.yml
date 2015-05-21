@@ -1,0 +1,43 @@
+fr:
+  users:
+    edit:
+      contributions: "Contributions"
+      projects: "Projets"
+      about_me: "A propos de moi"
+      settings: "Données personnelles"
+      notifications: "Notifications"
+      billing: "Informations bancaires"
+      profil: "Mon profil public"
+      feeds: "Activités"
+      submit: "Enregistrer"
+      contributions_fields:
+        no-project: "Vous n'avez pas encore contribué à un projet"
+        contribute: "Participez !"
+      about_fields:
+        add_link: "+ Ajoutez un lien"
+        image_title: "Image de profil"
+        image_description: "Cette image sera utilisée comme la vignette de votre profil (PNG , JPG taille 280 x 280)"
+        cover_title: "Image de fond"
+        cover_description: "Cette image sera utilisée comme arrière-plan de l'en-tête de votre profil public (PNG ou JPG). Si vous ne fournissez pas d'image ici, Catarse va utiliser la photo de profil à la place."
+        profil_address_title: "Adresse de votre profil"
+        profil_address_description: "Votre profil public peut avoir une URL personnalisée . Choisissez une URL facile à mémoriser !"
+        name: "Nom"
+        name_description: "Le nom que les utilisateurs verront sur ​​votre profil public"
+        faceebook: "Profil facebook"
+        facebook_description: "Mettez ici l'adresse de votre profil facebook"
+        twitter: "Profil twitter"
+        twitter_description: "Mettez ici l'adresse de votre profil twitter"
+        homepage: "Page(s) web"
+        homepage_description: "L'adresse de vos page web personnel (blog, ...)"
+        about: "A propos de vous"
+        about_description: "Parlez de vous et essayer de fournir les informations les plus pertinentes afin que les visiteurs puissent mieux vous connaître ."
+      billing_fields:
+        credit_card: "Carte de crédit"
+        card_message: "Si le projet que vous avez soutenu ne réussit pas, nous vous ferons un remboursement <b>automatique</b> sur la carte utilisée pour effectuer le paiement."
+        card: 'Carte'
+        operator: 'Opérateur'
+        bank_account: "Compte bancaire"
+        bank_account_message: "Si le projet que vous avez soutenu ne réussit pas, nous vous ferons un remboursement <b>automatique</b> sur le compte utilisée pour effectuer le paiement."
+      notifications_fields:
+        newsletters: "Newsletters"
+        newsletter_description: "La newsletter hebdomadaire de Catarse"

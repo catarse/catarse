@@ -1,202 +1,205 @@
 fr:
   date:
     abbr_day_names:
-    - Dim
-    - Lun
-    - Mar
-    - Mer
-    - Jeu
-    - Ven
-    - Sam
+      - Dim
+      - Lun
+      - Mar
+      - Mer
+      - Jeu
+      - Ven
+      - Sam
     abbr_month_names:
-    -
-    - Jan
-    - Fév
-    - Mar
-    - Avr
-    - Mai
-    - Jui
-    - Jui
-    - Aou
-    - Sep
-    - Oct
-    - Nov
-    - Déc
+      - ~
+      - Jan
+      - Fev
+      - Mar
+      - Avr
+      - Mai
+      - Jun
+      - Jul
+      - Aou
+      - Set
+      - Oct
+      - Nov
+      - Dec
     day_names:
-    - Dimanche
-    - Lundi
-    - Mardi
-    - Mercredi
-    - Jedui
-    - Vendredi
-    - Samedi
+      - Dimanche
+      - Lundi
+      - Mardi
+      - Mercredi
+      - Jeudi
+      - Vendredi
+      - Samedi
     formats:
-      default: ! '%d-%m-%Y'
-      with_time: ! "%d/%m/%Y - %H:%M"
-      long: ! '%B %d, %Y'
-      short: ! '%b %d'
+      default: "%d/%m/%Y"
+      with_time: "%d/%m/%Y às %Hh%Mmin"
+      long: "%d de %B de %Y"
+      short: "%d de %B"
     month_names:
-    -
-    - Janvier
-    - Février
-    - Mars
-    - Avril
-    - Mai
-    - Juin
-    - Juillet
-    - Août
-    - Septembre
-    - Octobre
-    - Novembre
-    - Décembre
+      -
+      - Janvier
+      - Février
+      - Mars
+      - Avril
+      - Mai
+      - Juin
+      - Juillet
+      - Aout
+      - Septembre
+      - Octobre
+      - Novembre
+      - Décembre
     order:
-    - :day
-    - :month
-    - :year
+      - :day
+      - :month
+      - :year
   datetime:
     distance_in_words:
       about_x_hours:
-        one: 1 heure environ
-        other: '%{count} heures environ'
+        one: "approximativement 1 heure"
+        other: " approximativement %{count} heures "
       about_x_months:
-        one: 1 mois environ
-        other: '%{count} mois environ'
+        one: " approximativement 1 mois"
+        other: " approximativement %{count} mois "
       about_x_years:
-        one: 1 an environ
-        other: '%{count}'
+        one: " approximativement 1 an"
+        other: " approximativement %{count} ans "
       almost_x_years:
-        one: près d'un an
-        other: près de %{count} an
-      half_a_minute: 30 secondes
+        one: "presque 1 an "
+        other: " presque %{count} ans"
+      half_a_minute: "meio minuto"
       less_than_x_minutes:
-        one: moins d'une minute
-        other: moins de %{count} minutes
+        one: "moins d’une minute"
+        other: "moins de %{count} minutes" 
       less_than_x_seconds:
-        one: moins d'une seconde
-        other: moins de %{count} secondes
+        one: "moins d’une seconde"
+        other: "moins de %{count} secondes"
       over_x_years:
-        one: plus d'un an
-        other: plus de %{count} ans
+        one: "plus d’un an"
+        other: "plus de %{count} ans"
       x_days:
-        one: un jour
-        other: ! '%{count} jours'
+        one: "1 jour"
+        other: "%{count} jours "
       x_minutes:
-        one: 1 minute
-        other: ! '%{count} minutes'
+        one: "1 minute"
+        other: "%{count} minutes "
       x_months:
-        one: 1 month
-        other: ! '%{count} mois'
+        one: "1 mois"
+        other: "%{count} mois "
       x_seconds:
-        one: 1 second
-        other: ! '%{count} secondes'
+        one: "1 seconde"
+        other: "%{count} secondes "
     prompts:
       day: Jour
       hour: Heure
       minute: Minute
       month: Mois
-      second: Secondes
-      year: années
+      second: seconde
+      year: An
   errors: &errors
-    format: ! '%{attribute} %{message}'
+    format: "%{attribute} %{message}"
     messages:
-      accepted: doivent être acceptées
-      blank: doit être rempli
-      confirmation: ne correspond pas à la valeur de confirmation
-      empty: ne peut être laissé vide
-      equal_to: doit être égal à %{count}
-      even: doit être pair
-      exclusion: est réservé
-      greater_than: doit être supérieur à %{count}
-      greater_than_or_equal_to: doit être supérieur ou égal à %{count}
-      inclusion: n'est pas dans la liste
-      invalid: est invalide
-      less_than: doit être inférieur à %{count}
-      less_than_or_equal_to: doit être infiérieur ou égal à %{count}
-      not_a_number: doit être un chiffre
-      not_an_integer: doit être un entier
-      odd: doit être impair
-      record_invalid: ! 'Validation échouée: %{errors}'
-      taken: n'est pas disponible
-      too_long:
-        one: trop long (le maximum c'est 1 caractère)
-        other: trop long (le maximum c'est %{count} caractères)
-      too_short:
-        one: trop court :) (un caractère au minimum)
-        other: trop court (un minimum de %{count} caractères)
-      wrong_length:
-        one: n'a pas la bonne taille (doit être d'un seul caractère)
-        other: n'a pas la bonne taille (doit contenir %{count} caractères)
+      accepted: "obligation d’accepter"
+      blank: "ce champ ne peut pas être blanc"
+      confirmation: "Les mots de passe ne correspondent pas"
+      empty: "ce champ ne peut pas être vide"
+      equal_to: "il doit être égale à%{count}"
+      even: "doit être paire"
+      exclusion: "n’est pas disponible"
+      greater_than: "doit être plus grand que %{count}"
+      greater_than_or_equal_to: "doit être plus grand ou égale à %{count}"
+      inclusion: "n’est pas inclus dans la liste"
+      invalid: "invalide"
+      less_than: "doit être plus petit que %{count}"
+      less_than_or_equal_to: " doit être plus petit ou égale à %{count}"
+      not_a_number: "accepte seulement des chiffres"
+      not_an_integer: "n’est pas un nombre entier"
+      odd: "doit être impaire"
+      record_invalid: "échec lors de la validation: %{errors}"
+      taken: "déjà utilisée"
+      too_long: "trop grand (maximum: %{count} caractères)"
+      too_short: "trop petit (minimum: %{count} caractères)"
+      wrong_length: "n’a pas la taille demander (%{count} caractères)"
     template:
-      body: ! 'Un problème avec les champs suivants:'
+      body: "S’il vous plait, vérifier le(s) champ(s) suivant(s):"
       header:
-        one: 1 erreur a empêché l'enregistrement de %{model}
-        other: ! '%{count} erreurs ont empêché la sauvegarde de %{model}'
+        one: "La sauvegarde n’a pas abouti %{model}: 1 erreur"
+        other: " La sauvegarde n’a pas abouti %{model}: %{count} erreurs."
   helpers:
     select:
-      prompt: Faites un choix
+      prompt: "S’il vous plait, sélectionnez"
     submit:
-      create: Créer %{model}
-      submit: Enregistrer %{model}
-      update: Modifier %{model}
+      create: "Créer %{model}"
+      submit: "Sauvegarder %{model}"
+      update: "Actualiser %{model}"
   number:
     currency:
       format:
-        delimiter: ! ','
-        format: ! '%u%n'
+        delimiter: "."
+        format: "%u %n"
         precision: 0
-        separator: .
+        separator: ","
         significant: false
         strip_insignificant_zeros: false
         unit: R$
     format:
-      delimiter: ! ','
-      precision: 3
-      separator: .
+      delimiter: "."
+      precision: 2
+      separator: ","
       significant: false
       strip_insignificant_zeros: false
     human:
       decimal_units:
-        format: ! '%n %u'
+        format: "%n %u"
         units:
-          billion: Milliard
-          million: Million
-          quadrillion: Quadrillion
-          thousand: millier
-          trillion: Trillion
-          unit: ''
+          billion:
+            one: billion
+            other: billions
+          million:
+            one: million
+            other: millions
+          quadrillion:
+            one: quatrillion
+            other: quatrillions
+          thousand: mil
+          trillion:
+            one: trillion
+            other: trillions
+          unit: ~
       format:
-        delimiter: ''
-        precision: 3
+        delimiter: "."
+        precision: 2
         significant: true
         strip_insignificant_zeros: true
       storage_units:
-        format: ! '%n %u'
+        format: "%n %u"
         units:
           byte:
-            one: Octect
-            other: Octets
-          gb: GO
-          kb: KO
-          mb: MO
-          tb: TO
+            one: Byte
+            other: Bytes
+          gb: GB
+          kb: KB
+          mb: MB
+          tb: TB
     percentage:
       format:
-        delimiter: ''
+        delimiter: "."
     precision:
       format:
-        delimiter: ''
+        delimiter: "."
   support:
     array:
-      last_word_connector: ! ', et '
-      two_words_connector: ! ' et '
-      words_connector: ! ', '
+      last_word_connector: " e "
+      two_words_connector: " e "
+      words_connector: ", "
   time:
     am: am
     formats:
       estimate: "%B/%Y"
-      default: ! '%a, %d %b %Y %H:%M:%S %z'
-      long: ! '%B %d, %Y %H:%M'
-      short: ! '%d %b %H:%M'
+      simple: "%d/%m/%Y, %H:%M h"
+      default: "%A, %d de %B de %Y, %H:%M h"
+      long: "%A, %d de %B de %Y, %H:%M h"
+      short: "%d/%m, %H:%M h"
       posts: "%d %b %Y"
     pm: pm
   # remove these aliases after 'activemodel' and 'activerecord' namespaces are removed from Rails repository
@@ -206,4 +209,3 @@ fr:
   activerecord:
     errors:
       <<: *errors
-
