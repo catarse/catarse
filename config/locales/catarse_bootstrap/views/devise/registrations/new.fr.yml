@@ -4,7 +4,7 @@ fr:
       new:
         have_account_html: "Vous avez déjà un compte ?"
         titles:
-          site: 'BuzzEtBoost'
+          site: 'Catarse'
           header: 'Cadastre-se'
         links:
           login: "identifiez-vous:"
@@ -14,7 +14,7 @@ fr:
             name: 'Nome completo'
             password: 'Mot de passe'
             newsletter: "S'abonner à la newsletter"
-            accept: "J'ai lu et j'accepte <a href='%{terms_url}' class='alt-link' target='_blank'>les conditions générales d'utilisation de BuzzEtBoost</a> et celles de son prestataire de paiement XXX, pour l'ouverture du compte de paiement."
+            accept: "J'ai lu et j'accepte <a href='%{terms_url}' class='alt-link' target='_blank'>les conditions générales d'utilisation de Catarse</a> et celles de son prestataire de paiement XXX, pour l'ouverture du compte de paiement."
           hint:
             password_length: 'Au minimum 6 caractères'
           inputs:

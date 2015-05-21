@@ -18,7 +18,7 @@ fr:
         image_title: "Image de profil"
         image_description: "Cette image sera utilisée comme la vignette de votre profil (PNG , JPG taille 280 x 280)"
         cover_title: "Image de fond"
-        cover_description: "Cette image sera utilisée comme arrière-plan de l'en-tête de votre profil public (PNG ou JPG). Si vous ne fournissez pas d'image ici, BuzzEtBoost va utiliser la photo de profil à la place."
+        cover_description: "Cette image sera utilisée comme arrière-plan de l'en-tête de votre profil public (PNG ou JPG). Si vous ne fournissez pas d'image ici, Catarse va utiliser la photo de profil à la place."
         profil_address_title: "Adresse de votre profil"
         profil_address_description: "Votre profil public peut avoir une URL personnalisée . Choisissez une URL facile à mémoriser !"
         name: "Nom"
@@ -40,4 +40,4 @@ fr:
         bank_account_message: "Si le projet que vous avez soutenu ne réussit pas, nous vous ferons un remboursement <b>automatique</b> sur le compte utilisée pour effectuer le paiement."
       notifications_fields:
         newsletters: "Newsletters"
-        newsletter_description: "La newsletter hebdomadaire de Buzz&Boost"
+        newsletter_description: "La newsletter hebdomadaire de Catarse"

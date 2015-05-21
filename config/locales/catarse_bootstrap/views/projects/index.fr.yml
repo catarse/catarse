@@ -1,18 +1,18 @@
 fr:
   projects:
     index_header:
-      subtitle: Financer des projets en collaborations et devient quelque chose 
-        de plus grand. Promouvoir un Catarse collectof ! Vous êtes la pièce qui manque à cette histoire. 
+      subtitle: Financer des projets en collaborations et devient quelque chose
+        de plus grand. Promouvoir un Catarse collectof ! Vous êtes la pièce qui manque à cette histoire.
       title: Mettez en avant les projets que vous croyez.
     index:
-      title: 'BuzzEtBoost'
+      title: 'Catarse'
       back_a_project: 'Soutenir un projet'
-      banner_title: 'BuzzEtBoost'
+      banner_title: 'Catarse'
       see_all: 'Tout voir'
       near_you: 'Prêt de vous'
       recents: Récents
       blog: Notre blog
-      expiring: Dans la dernière ligne droite 
+      expiring: Dans la dernière ligne droite
       recommended: Recommandé
       banner_subtitle: 'Tous créateurs de valeur.'
       box:
