@@ -1,109 +1,198 @@
 fr:
   admin: &admin
-    confirm_dialog: 'êtes-vous certain ?'
-    projects:
-      index:
-        by_state: 'Par état'
-        between_created_at: 'créé entre'
-        submit: 'Filtrer'
-        send_to_trash: 'Supprimer'
-        send_to_draft: 'Envoyer à la corbeille'
-        reject: 'Rejeter!'
-        approve: 'Approuver!'
-        order_asc: 'Ordre croissant'
-        order_desc: 'Ordre décroissant'
-        order_created_at: 'Date de soumission'
-        last_modification: 'Dernière modification'
+    filter:
+      title: 'Filtre'
+    confirm_dialog: 'Vous êtes sûr ?'
     financials:
       index:
+        id: ID
+        name: 'Titre'
+        user: 'Utilisateur MoIP'
+        user_id: 'User ID'
+        goal: 'Objectif'
+        total_payment_service_fee: 'Taxe du MP'
+        total_catarse_fee: 'Taxe de Catarse'
+        zero_fee: 'Dons sans taxe ?'
+        repass_value: 'Vl. Transfert'
+        expires_at: 'Expiration'
+        online_date: 'Mis en ligne '
+        pledged: 'Atteint'
+        recommended: 'Recommander'
+        state: 'Etat'
+        menu: 'Rel. Financier'
+        title: 'Rapports financiers'
+        contribution_report: "Rapport des donateurs"
+        search_report: "Rapport de recherche"
+        total_projects: 'projets'
         submit: 'Filtrer'
         by_state: 'Par état'
-        by_progress: Avancement %
+        between_expires_at: 'Expire entre'
+        by_progress: Par le progrès %
+        details:
+          name: 'Raison social'
+          bank_data: 'Données bancaire'
+          document: 'CPF / CNPJ'
+          email: 'E-mail'
+          state_inscription: 'Etat de l’inscription'
+          address: 'Adresse'
+          phone_number: 'Téléphone'
+          permalink: 'Permalink du projet'
+    projects:
+      index:
+        with_state: 'Par etat'
+        by_category: 'Par catégorie'
+        project: 'Projet'
+        user: 'Utilisateur'
+        between_created_at: 'Créé entre'
+        goal_between: 'Objectif entre'
+        between_expires_at: 'Expire entre'
+        between_online_date: 'Mis en ligne entre'
+        between_updated_at: 'Actualiser entre'
+        by_user_email: 'Email du réalisateur'
+        id: ID
+        name: 'Titre'
+        send_to_trash: "Effacer"
+        send_to_draft: 'Envoyer en ébauche!'
+        reject: 'Rejeter !'
+        approve: 'Approuver !'
+        user_id: 'User ID'
+        goal: 'Objectif'
+        total_contributions: 'Dons'
+        online_date: 'Mis en ligne'
+        pledged: 'Atteint'
+        recommended: 'Recommander ?'
+        state: 'Etat'
+        no_projects: 'Aucun projet trouver'
+        menu: 'Admin des projets'
+        title: 'Gestion de projets'
+        total_projects: 'projets'
+        submit: 'filtrer'
+        expires_at: 'Expire en'
+        category: 'Catégorie'
+        order_table: 'Trier la table'
+        order_date: 'Date d’envoie'
+        order_asc: 'Objectif inférieur'
+        order_desc: ' Objectif supérieur'
+        order_created_at: 'Date d’envoie'
+        last_modification: 'Dernière modification'
+    actions:
+      confirm: 'Confirmer'
     users:
       index:
-        title: "Gestion des bailleurs"
-        menu: Users
-        credits: Credits
-        credits_view: "Crédits calculés"
-        id: ID
-        key: Key
-        submit: Search
-        has_credits_difference: "Différence entre les crédits"
-        total_contributed: contributed
-        total_contributors: contributors
-        total_contributions: contributions
-        total_users: users
-        total_credits: credits
-        total_credits_view: "Crédits calculés"
-        user: User
-        value: Value
-        provider: Provider
+        title: "Gestion des donateurs"
+        menu: "Donateurs"
+        credits: "Crédits"
+        credits_view: "Crédits calculée"
+        id: Id
+        key: Clés
+        submit: Recherche
+        has_credits_difference: Différence dans les crédits
+        total_contributed: Total des dons
+        total_contributions: Donateurs
+        total_contributions: Dons
+        total_users: Utilisateurs
+        total_credits: Crédits
+        total_credits_view: crédits calculés 
+        user: Utilisateur
+        value: Valeur
+        payer_email: Email du payeur
+        provider: Fournisseur
     contributions:
       messages:
         successful:
-          confirm: 'Bailleur confirmé'
-          pendent: 'Bailleur non confirmé'
-          refund: 'Bailleur remboursé!'
-          change_reward: 'Récompense changée!'
-          hide: 'Bailleur caché'
-          cancel: 'Bailleur retiré'
-          push_to_trash: 'Bailleur supprimé'
-      index:
-        send_refund_request_contribution: 'Envoyer une demande de remboursement'
-        push_to_trash: 'Supprimer ce bailler'
-        cancel: 'Retirer ce bailleur'
-        refund_and_hide: 'Rembourser et cacher'
-        contribution_info: 'Infos sur le bailleur %{key}'
+          confirm: 'Don confirmé avec succès !'
+          pendent: 'Don annulé avec succès !'
+          refund: 'Don remboursé avec succès !'
+          change_reward: 'Récompense modifié avec succès !'
+          hide: 'Don caché avec succès !'
+          cancel: 'Don annulé avec succès !'
+          push_to_trash: 'Don supprimé avec succès !'
+      show:
+        contribution_info: 'Information de contribution %{key}'
         payment_id: 'ID du paiement'
-        payment_method: 'Méthode de paiement'
-        payment_fee: 'Payment method fee'
-        payment_choice: 'Payment choice'
-        payer_email: 'Payer email'
-        user_email: 'Catarse user email'
-        pending_to_refund: 'Pending to refund'
-        created_at: 'Created at'
-        title: "Contributions management"
-        menu: Contributions
-        anonymous: Anonymous?
-        confirmed: Confirmed?
-        credits: "Crédits utilisés"
-        id: ID
-        key: Key
-        no_contributions: "Aucun bailleur trouvé!"
-        project: Project
-        refunded: Refunded?
-        requested_refund: "Remboursement demandé?"
-        reward: Reward
-        no_reward: "Pas de récompense"
-        submit: Search
-        total_contributed: contributed
-        total_contributors: contributors
-        total_contributions: contributions
-        total_users: Users
-        user: User
-        value: Value
+        payment_method: 'Moyen de paiement'
+        payment_fee: 'Taxe du moyen de paiement'
+        successful: 'Réussi'
+        payment_choice: 'Option de paiement'
+        payer_email: 'Email utilisé pour le moyen de paiement'
+        user_email: 'Email utilisé sur Catarse'
+        created_at: 'Créé le'
+      index:
+        details:
+          payer_email: ' Email utilisé pour le moyen de paiement '
+          normal_email: ' Email sur Catarse '
+          payment_id: 'ID Paiement'
+          acquirer_tid: 'TID Opérateur'
+          payment_method: 'Moyen de paiement'
+          payment_choice: 'Option de paiement'
+          acquirer_name: 'Acquéreur de la carte'
+          installments: 'Versement'
+          created_at: 'Créé en'
+
+        placeholders:
+          project: 'Permalink ou le nom du projet'
+          acquirer: 'Nom de l’acquéreur de la carte'
+          user: 'ID, Nom, Email ou Email du paiement'
+          payment_id: clés, ID du moyen de paiement ou TID de l’acquéreur'
+        acquirer: 'Acquéreur'
+        payment_tax: 'Taxe du moyen de paiement'
+        project_state: 'Etat du projet'
+        send_refund_request_contribution: 'Envoyer une demande de remboursement'
+        payer_email: 'Email du moyen de paiement'
+        payment_id: 'Id du paiement'
+        user_email: 'Email utilisé sur catarse'
+        push_to_trash: 'Supprimer don'
+        cancel: 'Annulé don'
+        between_values: 'Valeur entre'
+        by_state: 'Etat'
+        refund_and_hide: 'Effectuer un remboursement et cacher le don'
+        pending_to_refund: 'Remboursement exceptionnel'
+        confirm_contribution: 'Confirmé don'
+        unconfirm_contribution: 'Infirmer don'
+        refund_contribution: 'Rembourser don'
+        request_refund: 'Solliciter un remboursement direct'
+        title: "Gestion des dons"
+        state: 'Etat'
+        menu: "Dons"
+        anonymous: Anonyme ?
+        contribution: Don
+        confirmed: Confirmer ?
+        credits_html: "Crédits d’occasion ? &nbsp;"
+        id: Id
+        key: Clés
+        no_contributions: "Aucun donateur trouvé."
+        project: Projet
+        refunded: "Remboursement réalisé ?"
+        requested_refund: "Vous avez solliciter un remboursement ?"
+        reward: Récompense
+        no_reward: "Sans récompense"
+        submit: Rechercher
+        total_contributed: Contributions
+        total_contributions: Donateurs
+        total_contribution: dons
+        total_users: Utilisateurs
+        user: Utilisateur
+        value: Valeur
     statistics:
       index:
         menu: "Statistiques"
-        title: "Statistiques"
+        title: " Statistiques "
         total_users: "Utilisateurs"
-        total_contributions: "Fonds"
-        total_contributions: "Bailleurs"
-        total_contributed: "Financés"
+        total_contributions: "Dons"
+        total_contributors: "Donateurs"
+        total_contributed: "Contributions"
         total_projects: "Projets"
-        total_projects_success: "avec succès"
+        total_projects_success: "Réussis"
         total_projects_online: "En ligne"
+      projects_in_analysis_by_week:
+        title: "Projetos enviados para curadoria por semana"
       projects_by_week:
-        title: "Projets soumis par semaine"
-        current_period: "8 dernières semaines"
-        previous_period: "les 8 semaines passées"
-        last_year: "L'an dernier"
+        title: "Ebauche créé par semaine"
       contributions_by_week:
-        title: "Financement confirmé par semaine"
-        current_period: "8 dernières semaines"
-        previous_period: "les 8 semaines passées"
-        last_year: "L'an dernier"
-
+        title: "Valeur des dons par semaine"
+      charts:
+        current_period: "Les 8 dernières semaines"
+        last_year: "Année précédente"
   channels:
     admin:
       <<: *admin

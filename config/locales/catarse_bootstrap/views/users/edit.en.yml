@@ -1,0 +1,43 @@
+en:
+  users:
+    edit:
+      contributions: "Contributions"
+      project: "Projects"
+      about_me: "About me"
+      settings: "Personals informations"
+      notifications: "Notifications"
+      billing: "Banco e cartões"
+      profil: "Public profil"
+      feeds: "Ativities"
+      submit: "Submit"
+      contributions_fields:
+        no-project: "Você ainda não apoiou nenhum projeto no&nbsp;Catarse..."
+        contribute: "Participate !"
+      about_fields:
+        add_link: "+ add a link"
+        image_title: "Profil picture"
+        image_description: "That will be your profil thumbnail (PNG , JPG size 280 x 280)"
+        cover_title: "Cover image"
+        cover_description: "That will be the cover image for your public profil (PNG ou JPG). If you don't choose a cover, your profil picture will be use"
+        profil_address_title: "Profil address"
+        profil_address_description: "Easy to memorize address for your profil"
+        name: "Name"
+        name_description: "The name that will be show for other members"
+        faceebook: "faceebook profil"
+        facebook_description: "Your facebook profil address"
+        twitter: "twitter profil"
+        twitter_description: "Your twitter profil address"
+        homepage: "Homepage(s)"
+        homepage_description: "URL to your personals webpages"
+        about: "About"
+        about_description: "Talk about you to help other members to know you"
+      billing_fields:
+        credit_card: "Credit card"
+        card_message: "If the projet that you support didn't succed. You credit card will be automatically refund."
+        card: "Card"
+        operator: "Operadora"
+        bank_account: "Bank account"
+        bank_account_message: "If the projet that you support didn't succed. You bank account will be automatically refund."
+      notifications_fields:
+        newsletters: "Newsletters"
+        newsletter_description: "Catarse weekly newsletter"

@@ -1,0 +1,51 @@
+fr:
+  projects:
+    index_header:
+      subtitle: Financer des projets en collaborations et devient quelque chose
+        de plus grand. Promouvoir un Catarse collectof ! Vous êtes la pièce qui manque à cette histoire.
+      title: Mettez en avant les projets que vous croyez.
+    index:
+      title: 'Catarse'
+      back_a_project: 'Soutenir un projet'
+      banner_title: 'Catarse'
+      see_all: 'Tout voir'
+      near_you: 'Prêt de vous'
+      recents: Récents
+      blog: Notre blog
+      expiring: Dans la dernière ligne droite
+      recommended: Recommandé
+      banner_subtitle: 'Tous créateurs de valeur.'
+      box:
+        by: par
+        when: quand
+      banner: "Connaître la recherche "
+      explore: "Explorez des projets "
+      links:
+        channels: "Découvrez les Ailes de la chaine "
+        recommended: "Découvrez les projets recommandés "
+        expiring: "Découvrez les projets dans la dernière ligne droite "
+        recents: "Découvrez les projets récents "
+        near: "Découvrez les projets autour de vous "
+      sidebar:
+        titles:
+          blog: blog
+          facebook: "Vous aimez déjà notre page facebook ?"
+          newsletter: "Abonnez vous a nos nouvelles"
+          faq: "Vous avez une question ? "
+          schedule: agenda
+        placeholders:
+          email: "Entrez votre email"
+        buttons:
+          newsletter: Envoyer
+      sections:
+        near:
+          title: 'Autour de moi'
+        recommended:
+          title: 'Recommandations'
+        expiring:
+          title: "Dans la dernière ligne droite"
+        recents:
+          title: "Récents"
+        channels:
+          title: 'Ailes de la chaine'
+

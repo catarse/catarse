@@ -1,0 +1,15 @@
+fr:
+  devise:
+    passwords:
+      edit:
+        titles:
+          site: 'Définir votre nouveau mot de passe'
+          header: 'Definir nouveau mot de passe'
+        form:
+          hint:
+            password_length: 'Minimum 6 caractères'
+          labels:
+            password: 'Nouveau mot de passe'
+            password_confirmation: 'Confirmer le mot de passe'
+          inputs:
+            submit: 'Enregistrer et entrer'

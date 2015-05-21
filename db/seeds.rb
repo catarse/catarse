@@ -3,42 +3,47 @@
 puts 'Seeding the database...'
 
 [
-  { pt: 'Arte', en: 'Art' },
-  { pt: 'Artes plásticas', en: 'Visual Arts' },
-  { pt: 'Circo', en: 'Circus' },
-  { pt: 'Comunidade', en: 'Community' },
-  { pt: 'Humor', en: 'Humor' },
-  { pt: 'Quadrinhos', en: 'Comicbooks' },
-  { pt: 'Dança', en: 'Dance' },
-  { pt: 'Design', en: 'Design' },
-  { pt: 'Eventos', en: 'Events' },
-  { pt: 'Moda', en: 'Fashion' },
-  { pt: 'Gastronomia', en: 'Gastronomy' },
-  { pt: 'Cinema e Vídeo', en: 'Film & Video' },
-  { pt: 'Jogos', en: 'Games' },
-  { pt: 'Jornalismo', en: 'Journalism' },
-  { pt: 'Música', en: 'Music' },
-  { pt: 'Fotografia', en: 'Photography' },
-  { pt: 'Ciência e Tecnologia', en: 'Science & Technology' },
-  { pt: 'Teatro', en: 'Theatre' },
-  { pt: 'Esporte', en: 'Sport' },
-  { pt: 'Web', en: 'Web' },
-  { pt: 'Carnaval', en: 'Carnival' },
-  { pt: 'Arquitetura e Urbanismo', en: 'Architecture & Urbanism' },
-  { pt: 'Literatura', en: 'Literature' },
-  { pt: 'Mobilidade e Transporte', en: 'Mobility & Transportation' },
-  { pt: 'Meio Ambiente', en: 'Environment' },
-  { pt: 'Negócios Sociais', en: 'Social Business' },
-  { pt: 'Educação', en: 'Education' },
-  { pt: 'Filmes de Ficção', en: 'Fiction Films' },
-  { pt: 'Filmes Documentários', en: 'Documentary Films' },
-  { pt: 'Filmes Universitários', en: 'Experimental Films' }
+  { pt: 'Arte', en: 'Art', fr: 'Art'},
+  { pt: 'Artes plásticas', en: 'Visual Arts', fr: 'Art plastique' },
+  { pt: 'Circo', en: 'Circus', fr: 'Cirque' },
+  { pt: 'Comunidade', en: 'Community', fr: 'Comunauté' },
+  { pt: 'Humor', en: 'Humor', fr: 'Humour' },
+  { pt: 'Quadrinhos', en: 'Comicbooks', fr: 'bd' },
+  { pt: 'Dança', en: 'Dance', fr: 'Dance' },
+  { pt: 'Design', en: 'Design', fr: 'Design' },
+  { pt: 'Eventos', en: 'Events', fr: 'Événementiel' },
+  { pt: 'Moda', en: 'Fashion', fr: 'Mode' },
+  { pt: 'Gastronomia', en: 'Gastronomy', fr: 'Gastronomie' },
+  { pt: 'Cinema e Vídeo', en: 'Film & Video', fr: 'Cinéma' },
+  { pt: 'Jogos', en: 'Games', fr: 'Jeux' },
+  { pt: 'Jornalismo', en: 'Journalism', fr: 'Journalisme' },
+  { pt: 'Música', en: 'Music', fr: 'Musique' },
+  { pt: 'Fotografia', en: 'Photography', fr: 'Photographie' },
+  { pt: 'Ciência e Tecnologia', en: 'Science & Technology', fr: 'Sciences et technologies' },
+  { pt: 'Teatro', en: 'Theatre', fr: 'Théatre' },
+  { pt: 'Esporte', en: 'Sport', fr: 'Sport' },
+  { pt: 'Web', en: 'Web', fr: 'Web' },
+  { pt: 'Carnaval', en: 'Carnival', fr: 'Carnaval' },
+  { pt: 'Arquitetura e Urbanismo', en: 'Architecture & Urbanism', fr: 'Architecture et Urbanisme' },
+  { pt: 'Literatura', en: 'Literature', fr: 'Literature' },
+  { pt: 'Mobilidade e Transporte', en: 'Mobility & Transportation', fr: 'Transport et Mobilité' },
+  { pt: 'Meio Ambiente', en: 'Environment', fr: 'Environement' },
+  { pt: 'Negócios Sociais', en: 'Social Business', fr: 'Social' },
+  { pt: 'Educação', en: 'Education', fr: 'Éducation' },
+  { pt: 'Filmes de Ficção', en: 'Fiction Films' , fr: 'Films de fiction'},
+  { pt: 'Filmes Documentários', en: 'Documentary Films', fr: 'Films documentaire' },
+  { pt: 'Filmes Universitários', en: 'Experimental Films' },
+  { pt: 'Saúde', en: 'Health', fr: 'Santé' }
 ].each do |name|
    category = Category.find_or_initialize_by(name_pt: name[:pt])
    category.update_attributes({
      name_en: name[:en]
    })
+   category.update_attributes({
+     name_fr: name[:fr]
+   })
  end
+
 
 {
   company_name: 'Catarse',
