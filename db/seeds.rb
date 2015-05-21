@@ -44,35 +44,36 @@ puts 'Seeding the database...'
    })
  end
 
-{
-  company_name: 'BuzzEtBoost',
-  company_logo: 'http://catarse.me/assets/catarse_bootstrap/logo_icon_catarse.png',
-  host: 'buzzetboost.fr',
-  base_url: 'http://buzzetboost.fr',
 
-  email_contact: 'contact@buzzetboost.fr',
-  email_payments: 'finance@buzzetboost.fr',
-  email_projects: 'projetos@buzzetboost.fr',
-  email_system: 'system@buzzetboost.fr',
-  email_no_reply: 'no-reply@buzzetboost.fr',
-  facebook_url: "http://facebook.com/buzzetboost.fr",
+{
+  company_name: 'Catarse',
+  company_logo: 'http://catarse.me/assets/catarse_bootstrap/logo_icon_catarse.png',
+  host: 'catarse.me',
+  base_url: "http://catarse.me",
+
+  email_contact: 'contato@catarse.me',
+  email_payments: 'financeiro@catarse.me',
+  email_projects: 'projetos@catarse.me',
+  email_system: 'system@catarse.me',
+  email_no_reply: 'no-reply@catarse.me',
+  facebook_url: "http://facebook.com/catarse.me",
   facebook_app_id: '173747042661491',
-  twitter_url: 'http://twitter.com/buzzetboost',
-  twitter_username: "buzzetboost",
+  twitter_url: 'http://twitter.com/catarse',
+  twitter_username: "catarse",
   mailchimp_url: "http://catarse.us5.list-manage.com/subscribe/post?u=ebfcd0d16dbb0001a0bea3639&amp;id=149c39709e",
   catarse_fee: '0.13',
-  support_forum: 'http://support.buzzetboost.fr/',
-  base_domain: 'buzzetboost.fr',
+  support_forum: 'http://suporte.catarse.me/',
+  base_domain: 'catarse.me',
   uservoice_secret_gadget: 'change_this',
   uservoice_key: 'uservoice_key',
-  faq_url: 'http://www.buzzetboost.fr/pages/faq/',
+  faq_url: 'http://suporte.catarse.me/',
   feedback_url: 'http://suporte.catarse.me/forums/103171-catarse-ideias-gerais',
-  terms_url: 'http://www.buzzetboost.fr/pages/cgu/',
+  terms_url: 'http://suporte.catarse.me/knowledgebase/articles/161100-termos-de-uso',
   privacy_url: 'http://suporte.catarse.me/knowledgebase/articles/161103-pol%C3%ADtica-de-privacidade',
   about_channel_url: 'http://blog.catarse.me/conheca-os-canais-do-catarse/',
   instagram_url: 'http://instagram.com/catarse_',
-  blog_url: "http://blog.buzzetboost.fr",
-  github_url: 'https://github.com/dalink/buzzetboost',
+  blog_url: "http://blog.catarse.me",
+  github_url: 'http://github.com/catarse',
   contato_url: 'http://suporte.catarse.me/'
 }.each do |name, value|
    conf = CatarseSettings.find_or_initialize_by(name: name)
