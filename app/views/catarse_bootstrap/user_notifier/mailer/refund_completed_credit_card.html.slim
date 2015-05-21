@@ -5,14 +5,19 @@
 |Olá, <strong>#{contribution.user.display_name}</strong>!
 br
 br
-| O reembolso do seu apoio para o projeto #{link_to contribution.project.name, project_by_slug_url(permalink: contribution.project.permalink)} no #{company_name} acabou de ser realizado! O crédito efetivo deverá acontecer na próxima fatura, caso ela ainda esteja em aberto, ou na próxima, caso a desse mês já tenha sido fechada.
+|O reembolso do seu apoio para o projeto #{link_to contribution.project.name, project_by_slug_url(permalink: contribution.project.permalink)} no #{company_name} acabou de ser realizado. O crédito efetivo deverá acontecer na próxima fatura, caso ela ainda esteja em aberto, ou na próxima, caso a desse mês já tenha sido fechada.
 br
 br
-| A chave de identificação do seu apoio é: #{detail.payment_id}
-br/
-br/
-| Se ficou com alguma dúvida ou teve algum problema nesse processo, entre em contato conosco respondendo a
-'  esta mensagem ou através do e-mail #{mail_to contact_email}. Para agilizar o atendimento, pedimos que indique a chave de identificação.
+|Valor do reembolso: #{number_to_currency detail.value}
+br
+br
+|Data do reembolso: #{I18n.l detail.refunded_at}
+br
+br
+|Caso o reembolso não seja efetuado com sucesso, nossa equipe será notificada e entraremos em contato para devolver seu dinheiro.
+br
+br
+|Se ficou com alguma dúvida, entre em contato conosco respondendo a esta mensagem ou através do e-mail #{mail_to contact_email} e nos informe a chave de identificação do seu apoio, que é: #{detail.payment_id} .
 br
 br
 |Um abraço,
