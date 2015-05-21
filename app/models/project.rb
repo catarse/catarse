@@ -106,7 +106,8 @@ class Project < ActiveRecord::Base
   validates_acceptance_of :accepted_terms, on: :create
   #used only to show required fields to user
   validate :online_validations, on: :fake_validate
-  validate :approved_validations, on: :fake_validate
+  validate :approved_validations, on: :fake_validate,
+      if: :requires_video
   validate :in_analysis_validations, on: :fake_validate
   ##validation for all states
   validates_presence_of :name, :user, :category, :permalink
@@ -225,8 +226,7 @@ class Project < ActiveRecord::Base
   end
 
   def approved_validations
-    validates_presence_of :video_url,
-      if: ->(project) { (project.goal || 0) >= CatarseSettings[:minimum_goal_for_video].to_i }
+    validates_presence_of :video_url
   end
 
   def online_validations
@@ -253,6 +253,10 @@ class Project < ActiveRecord::Base
     fragments.each do |fragment|
       base.expire_fragment([fragment, id])
     end
+  end
+
+  def requires_video
+    (goal || 0) >= CatarseSettings[:minimum_goal_for_video].to_i
   end
 
   def to_analytics

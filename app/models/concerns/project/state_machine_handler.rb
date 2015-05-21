@@ -14,7 +14,8 @@ module Project::StateMachineHandler
 
       #validations starting in approved
       state :approved, :online, :successful, :waiting_funds, :failed do
-        validate ->(project){ project.approved_validations }
+        validate ->(project){ project.approved_validations },
+          if: ->(project) { project.requires_video }
       end
 
       #validations starting in online
