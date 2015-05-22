@@ -22,7 +22,9 @@ App.addChild('Hello', {
   },
 
   closeVideo: function(){
-    this.player.pauseVideo();
+    if(!$.isEmptyObject(this.player) && typeof(this.player.pauseVideo) === 'function'){
+      this.player.pauseVideo();
+    }
     $('body').css('overflow','auto');
     this.$('.w-lightbox-backdrop').animate({'opacity': 0}, 600, function(){
       $(this).addClass('w-hidden');
@@ -36,7 +38,7 @@ App.addChild('Hello', {
     that.player = new YT.Player('player', {
       height: '720',
       width: '1280',
-      videoId: 'cvBERv1kTL8',
+      videoId: 'znj9ujQnrw4',
       playerVars:{
         controls: 0,
         showInfo: 0,
@@ -69,7 +71,7 @@ App.addChild('Hello', {
     $('body').css('overflow','hidden');
     this.$('.w-lightbox-view').css('opacity', '1');
     this.$('.w-lightbox-backdrop').removeClass('w-hidden').animate({'opacity': 1}, 600, function(){
-      if(!$.isEmptyObject(that.player)){
+      if(!$.isEmptyObject(that.player) && typeof(that.player.playVideo) === 'function'){
         that.player.playVideo();  
       }
     });
