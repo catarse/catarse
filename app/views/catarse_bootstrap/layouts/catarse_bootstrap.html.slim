@@ -26,7 +26,9 @@ html
       meta property="og:site_name"    content=CatarseSettings[:company_name]
       meta property="fb:app_id"       content=CatarseSettings[:facebook_app_id]
       meta property="og:description"  content=(t('projects.index_header.title') + '. ' +  t('projects.index_header.subtitle'))
-      
+      /Call VWO on header to prevent flash of unmodified content on variation tests
+      - if Rails.env.production?
+        = render 'layouts/vwo'    
 
       
 
@@ -43,7 +45,6 @@ html
     /page specific JS files
     = yield :js
   - if Rails.env.production?
-    = render 'layouts/vwo'
     = render 'layouts/hotjar'     
     = render_google_analytics_script
     = render_mixpanel_script
