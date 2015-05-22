@@ -77,13 +77,13 @@ class Project < ActiveRecord::Base
   scope :not_expiring, -> { not_expired.where.not(expires_at: Time.current.. 2.weeks.from_now) }
   scope :recent, -> { where(online_date: 5.days.ago.. Time.current) }
   scope :ordered, -> { order(created_at: :desc)}
-  scope :order_status, ->{ order("
+  scope :order_status, ->{ reorder("
                                      CASE projects.state
                                      WHEN 'online' THEN 1
                                      WHEN 'waiting_funds' THEN 2
                                      WHEN 'successful' THEN 3
                                      WHEN 'failed' THEN 4
-                                     END ASC")}
+                                     END ASC, random()")}
   scope :most_recent_first, ->{ order("projects.online_date DESC, projects.created_at DESC") }
   scope :order_for_admin, -> {
     reorder("
