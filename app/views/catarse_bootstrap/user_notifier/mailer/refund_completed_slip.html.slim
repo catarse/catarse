@@ -8,8 +8,10 @@
 |Olá, <strong>#{contribution.user.display_name}</strong>!
 br
 br
-| O reembolso do seu apoio para o projeto #{link_to(contribution.project.name, project_by_slug_url(permalink: contribution.project.permalink))} no #{company_name} acabou de ser realizado para a conta bancária:
+|O reembolso do seu apoio para o projeto #{link_to(contribution.project.name, project_by_slug_url(permalink: contribution.project.permalink))} no #{company_name} acabou de ser realizado para a conta bancária:
 br
+br
+|Valor do reembolso: #{number_to_currency detail.value}
 br
 | Banco: #{bank_account.try(:bank).to_s}
 br
@@ -17,7 +19,7 @@ br
 br
 | Conta: #{bank_account.try(:account)} - #{bank_account.try(:account_digit)}
 br
-| Nome do titular: #{bank_account.try(:owner_name)}
+| Nome: #{bank_account.try(:owner_name)}
 br
 | CPF: #{bank_account.try(:owner_document)}  
 br
@@ -25,7 +27,10 @@ br
 | A chave de identificação do seu apoio é: #{detail.payment_id}
 br
 br
-| Se ficou com alguma dúvida ou teve algum problema nesse processo, entre em contato conosco respondendo a esta mensagem ou através do e-mail #{mail_to contact_email}. Para agilizar o atendimento, pedimos que indique o código de identificação.
+|Caso o reembolso não seja efetuado com sucesso, nossa equipe será notificada e entraremos em contato para devolver seu dinheiro.
+br
+br
+|Se ficou com alguma dúvida ou teve algum problema nesse processo, entre em contato conosco respondendo a esta mensagem ou através do e-mail #{mail_to contact_email}. Para agilizar o atendimento, pedimos que indique o código de identificação.
 br
 br
 |Um abraço,
