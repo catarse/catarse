@@ -34,30 +34,6 @@ RSpec.describe Contribution::CustomValidators, type: :model do
     end
   end
 
-  describe "#project_should_be_online" do
-    subject{ contribution }
-    context "when project is draft" do
-      let(:contribution){ build(:contribution, project: create(:project, state: 'draft')) }
-      it{ is_expected.not_to be_valid }
-    end
-    context "when project is waiting_funds" do
-      let(:contribution){ build(:contribution, project: create(:project, state: 'waiting_funds')) }
-      it{ is_expected.not_to be_valid }
-    end
-    context "when project is successful" do
-      let(:contribution){ build(:contribution, project: create(:project, state: 'successful')) }
-      it{ is_expected.not_to be_valid }
-    end
-    context "when project is online" do
-      let(:contribution){ build(:contribution, project: unfinished_project) }
-      it{ is_expected.to be_valid }
-    end
-    context "when project is failed" do
-      let(:contribution){ build(:contribution, project: create(:project, state: 'failed')) }
-      it{ is_expected.not_to be_valid }
-    end
-  end
-
   describe "#should_not_back_if_maximum_contributions_been_reached" do
     let(:reward){ create(:reward, maximum_contributions: 1) }
     let(:contribution){ build(:contribution, reward: reward, project: reward.project) }

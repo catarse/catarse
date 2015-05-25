@@ -9,11 +9,58 @@ RSpec.describe Payment, type: :model do
   end
 
   describe "validations" do
+    subject { build(:payment) }
     it{ should validate_presence_of :state }
     it{ should validate_presence_of :gateway }
     it{ should validate_presence_of :payment_method }
-    it{ should validate_presence_of :value }
+    #NOTE: now that we need to use build, value never wil be nil
+    # it{ should validate_presence_of :value }
     it{ should validate_presence_of :installments }
+  end
+
+  describe "#project_should_be_online" do
+    subject{ payment }
+    context "when project is draft" do
+      let(:project) { create(:project, state: 'online')}
+      let(:payment){ build(:payment,contribution: create(:contribution, project: project)) }
+      before do
+        payment
+        project.update_column(:state, 'draft')
+      end
+      it{ is_expected.not_to be_valid }
+    end
+    context "when project is waiting_funds" do
+      let(:project) { create(:project, state: 'online')}
+      let(:payment){ build(:payment,contribution: create(:contribution, project: project)) }
+      before do
+        payment
+        project.update_column(:state, 'waiting_funds')
+      end
+      it{ is_expected.not_to be_valid }
+    end
+    context "when project is successful" do
+      let(:project) { create(:project, state: 'online')}
+      let(:payment){ build(:payment,contribution: create(:contribution, project: project)) }
+      before do
+        payment
+        project.update_column(:state, 'successful')
+      end
+      it{ is_expected.not_to be_valid }
+    end
+    context "when project is online" do
+      let(:project) { create(:project, state: 'online')}
+      let(:payment){ build(:payment,contribution: create(:contribution, project: project)) }
+      it{ is_expected.to be_valid }
+    end
+    context "when project is failed" do
+      let(:project) { create(:project, state: 'online')}
+      let(:contribution){ build(:contribution, project: unfinished_project) }
+      before do
+        payment
+        project.update_column(:state, 'failed')
+      end
+      it{ is_expected.to be_valid }
+    end
   end
 
   describe ".can_delete" do
