@@ -134,6 +134,7 @@ class ProjectsController < ApplicationController
 
   def render_index_for_xhr_request
     @projects = apply_scopes(Project.visible.order_status)
+      .most_recent_first
       .includes(:project_total, :user, :category)
       .page(params[:page]).per(18)
 
