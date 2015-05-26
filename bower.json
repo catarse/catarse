@@ -1,0 +1,26 @@
+{
+  "name": "catarse",
+  "version": "1.0.0",
+  "homepage": "https://github.com/catarse/catarse",
+  "description": "The first open source crowdfunding platform for creative projects in the world!",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "vendor/assets/components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "backbone": "~1.2.0",
+    "underscore": "~1.8.3",
+    "jquery-sticky": "~1.0.1",
+    "jquery-smooth-scroll": "~1.5.5",
+    "jquery-typewatch": "~2.2.1",
+    "store": "~2.3.0",
+    "jQuery-Mask-Plugin": "~1.11.4",
+    "jquery-ui": "~1.11.4"
+  }
+}
