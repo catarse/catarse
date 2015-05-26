@@ -21,4 +21,4 @@ Skull.ShowPasswordInput = {
 
     return false;
   }
-}
+};

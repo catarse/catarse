@@ -15,4 +15,3 @@ Skull.TimedInput = {
     }, this.timeout);
   },
 };
-
