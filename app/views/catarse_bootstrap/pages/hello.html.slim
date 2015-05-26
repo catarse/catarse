@@ -15,14 +15,15 @@
   .w-container
     .w-hidden-main.w-hidden-medium.u-margintop-30
     .w-row.u-text-center
+      - statistics = Statistics.first
       .w-col.w-col-4.u-marginbottom-20
-        .hello-stats 200.000
+        .hello-stats= number_with_delimiter(statistics.total_contributors)
         .fontsize-small = t('.hero.people_html')
       .w-col.w-col-4.u-marginbottom-20
-        .hello-stats 1.600
+        .hello-stats= number_with_delimiter(statistics.total_projects_success)
         .fontsize-small = t('.hero.projects_html')
       .w-col.w-col-4.u-marginbottom-20
-        .hello-stats 27 milhões
+        .hello-stats= number_to_human(statistics.total_contributed)
         .fontsize-small = t('.hero.money_html')
     .w-hidden-main.w-hidden-medium.u-marginbottom-40
 .section-large.hello-idea
