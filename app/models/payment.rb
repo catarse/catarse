@@ -8,6 +8,12 @@ class Payment < ActiveRecord::Base
 
   validates_presence_of :state, :key, :gateway, :payment_method, :value, :installments
   validate :value_should_be_equal_or_greater_than_pledge
+  validate :project_should_be_online, on: :create
+
+  def project_should_be_online
+    return if project && project.online?
+    errors.add(:project, I18n.t('contribution.project_should_be_online'))
+  end
 
   before_validation do
     generate_key
@@ -21,7 +27,9 @@ class Payment < ActiveRecord::Base
   end
 
   def value_should_be_equal_or_greater_than_pledge
-    errors.add(:value, I18n.t("activerecord.errors.models.payment.attributes.value.invalid")) if self.contribution && self.value < self.contribution.value
+    if self.contribution && self.value < self.contribution.value
+      errors.add(:value, I18n.t("activerecord.errors.models.payment.attributes.value.invalid"))
+    end
   end
 
   def notification_template_for_failed_project
