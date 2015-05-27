@@ -18,6 +18,16 @@ App.addChild('MixPanel', {
     return this.$('#project-header').data('stats');
   },
 
+  getUrlParameter: function(param){
+    var paramValue = "";
+    _.map(location.search.slice(1).split('&'), function(item){ 
+      if (item.includes(param)){
+        paramValue = item.split('=')[1];
+      } 
+    });
+    return paramValue;
+  },
+
   startTracking: function(){
     var self = this;
 
@@ -217,11 +227,12 @@ App.addChild('MixPanel', {
     var page            = {
       'page name':          document.title,
       'url':                window.location,
-      'host':               window.location.host
+      'host':               window.location.host,
+      'from_page':          this.getUrlParameter('ref')
     };
    
     var opt = $.fn.extend(usr, opt, page, {project : ref});
-
+    
     mixpanel.track(text, opt);
   },
 
