@@ -220,7 +220,7 @@ App.addChild('MixPanel', {
       'host':               window.location.host,
       'from_page':          this.$el.data('referal')
     };
-    console.log(page);
+    
     var opt = $.fn.extend(usr, opt, page, {project : ref});
     
     mixpanel.track(text, opt);
