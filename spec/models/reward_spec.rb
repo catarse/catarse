@@ -64,14 +64,6 @@ RSpec.describe Reward, type: :model do
     expect(r).to be_valid
   end
 
-  it "should not allow delivery before the project expiration date" do
-    r = build(:reward, project: create(:project, online_date: Time.now))
-    r.deliver_at = r.project.online_date - 1.month
-    expect(r).not_to be_valid
-    r.deliver_at = r.project.online_date
-    expect(r).to be_valid
-  end
-
   it "should not allow delivery in the past" do
     r = build(:reward, project: create(:project, online_date: nil))
     r.deliver_at = Time.current - 1.month
@@ -104,6 +96,34 @@ RSpec.describe Reward, type: :model do
     end
 
     it{ is_expected.to eq([@remaining]) }
+  end
+
+  describe "#valid?" do
+    subject{ reward.valid? }
+
+    context "when we have online_date in project and deliver_at is after expires_at" do
+      let(:project){ create(:project, online_date: Time.now, online_days: 60) }
+      let(:reward){ build(:reward, project: project, deliver_at: project.expires_at + 1.day) }
+      it{ is_expected.to eq true }
+    end
+
+    context "when we have online_date in project and deliver_at is before expires_at month" do
+      let(:reward){ build(:reward, project: project, deliver_at: project.expires_at - 1.month) }
+      let(:project){ create(:project, online_date: Time.now, online_days: 60) }
+      it{ is_expected.to eq false }
+    end
+
+    context "when online_date in project is nil and deliver_at is after current month" do
+      let(:reward){ build(:reward, project: project, deliver_at: Time.now + 1.month) }
+      let(:project){ create(:project, online_date: nil) }
+      it{ is_expected.to eq true }
+    end
+
+    context "when online_date in project is nil and deliver_at is before current month" do
+      let(:reward){ build(:reward, project: project, deliver_at: Time.now - 1.month) }
+      let(:project){ create(:project, online_date: nil) }
+      it{ is_expected.to eq false }
+    end
   end
 
   describe "#total_contributions" do
