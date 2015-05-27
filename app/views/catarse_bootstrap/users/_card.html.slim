@@ -19,5 +19,5 @@
         li
           = link_to truncate(link.hostname, length: 30), link.link, target: '_blank', class: 'link-hidden', itemprop: "url"
 
-  - if current_user
+  - if resource.published_projects.present? && user_signed_in?
     = mail_to resource.email, t('.contact_author'), target: '_blank', class: 'btn btn-medium btn-message', itemprop: "email"
