@@ -29,6 +29,8 @@ html
       /Call VWO on header to prevent flash of unmodified content on variation tests
       - if Rails.env.production?
         = render 'layouts/vwo'    
+    - if request.subdomain.include? "beta"
+      meta name="robots" content="noindex, nofollow"
 
       
 
