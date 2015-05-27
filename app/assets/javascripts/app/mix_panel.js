@@ -217,11 +217,12 @@ App.addChild('MixPanel', {
     var page            = {
       'page name':          document.title,
       'url':                window.location,
-      'host':               window.location.host
+      'host':               window.location.host,
+      'from_page':          this.$el.data('referal')
     };
-   
+    
     var opt = $.fn.extend(usr, opt, page, {project : ref});
-
+    
     mixpanel.track(text, opt);
   },
 
