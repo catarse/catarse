@@ -26,7 +26,7 @@ App.addChild('Hello', {
       this.player.pauseVideo();
     }
     $('body').css('overflow','auto');
-    this.$('.w-lightbox-backdrop').animate({'opacity': 0}, 600, function(){
+    this.$('.w-lightbox-backdrop').animate({'opacity': 0}, 200, function(){
       $(this).addClass('w-hidden');
     });
     this.isLightboxOpened = false;
