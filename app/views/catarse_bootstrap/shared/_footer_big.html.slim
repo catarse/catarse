@@ -21,6 +21,4 @@ footer.main-footer.main-footer-neg
   .w-container
     .footer-full-copyleft 
       = image_tag "logo-footer.png", class: "u-marginbottom-20"
-      .lineheight-loose Feito com amor | 2015 | Open source
-      
-      
+      .lineheight-loose: a.link-footer-inline[href="#{CatarseSettings[:github_url]}"] Feito com amor | #{Date.today.year} | Open source

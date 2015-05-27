@@ -29,8 +29,8 @@ html
       /Call VWO on header to prevent flash of unmodified content on variation tests
       - if Rails.env.production?
         = render 'layouts/vwo'    
-
-      
+    - if request.subdomain.include? "beta"
+      meta name="robots" content="noindex, nofollow"
 
   body#catarse_bootstrap[data-controller-name=controller_name data-action=action_name data-user="#{current_user.try(:to_analytics_json)}" data-id=params[:id] data-mobile=browser.mobile?.to_s itemscope itemtype="http://schema.org/WebPage"]
     /= render 'layouts/global_alert'
