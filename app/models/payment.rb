@@ -71,11 +71,11 @@ class Payment < ActiveRecord::Base
     end
 
     event :pay do
-      transition all => :paid
+      transition [:pending, :pending_refund] => :paid
     end
 
     event :refuse do
-      transition all => :refused
+      transition pending: :refused
     end
 
     event :request_refund do
