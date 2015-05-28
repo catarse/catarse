@@ -1,6 +1,6 @@
 desc "Verify all transactions in pagarme for a given date range and check their consistency in our database"
 task :verify_pagarme_transactions, [:start_date, :end_date]  => :environment do |task, args|
-  args.with_defaults(start_date: Date.today - 1, end_date: Date.today)
+  args.with_defaults(start_date: Date.today - 15, end_date: Date.today)
   Rails.logger.info "Verifying transactions in range: #{args.inspect}"
   PAGE_SIZE = 50
 
