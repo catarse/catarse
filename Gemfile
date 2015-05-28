@@ -117,6 +117,7 @@ group :production do
   #gem 'dalli'
 end
 group :development do
+  gem "rails-erd"
   gem "letter_opener"
   gem 'foreman'
   gem 'better_errors'
