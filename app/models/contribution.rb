@@ -32,7 +32,11 @@ class Contribution < ActiveRecord::Base
 
   scope :ordered, -> { order(id: :desc) }
 
-  attr_protected :state, :user_id
+  begin
+    attr_protected :state, :user_id
+  rescue Exception => e
+    puts "problem while using attr_protected in Contribution model:\n '#{e.message}'"
+  end
 
   def recommended_projects
     user.recommended_projects.where("projects.id <> ?", project.id).order("count DESC")
