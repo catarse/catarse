@@ -81,7 +81,7 @@ RSpec.describe Admin::ContributionsController, type: :controller do
   end
 
   describe 'PUT refuse' do
-    let(:contribution) { create(:confirmed_contribution) }
+    let(:contribution) { create(:pending_contribution) }
 
     before do
       put :refuse, id: payment.id, locale: :pt
