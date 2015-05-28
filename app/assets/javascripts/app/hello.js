@@ -35,18 +35,12 @@ App.addChild('Hello', {
 
   createPlayer: function(){   
     var that = this;
-    var ua = navigator.userAgent.toLowerCase();
-    var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent); 
-    var video_crls = 0;
-    if(isMobile){
-      video_crls = 1;
-    }
     that.player = new YT.Player('player', {
       height: '720',
       width: '1280',
       videoId: 'znj9ujQnrw4',
       playerVars:{
-        controls: video_crls,
+        controls: app.isMobile() ? 1 : 0,
         showInfo: 0,
         modestBranding: 0
       },
