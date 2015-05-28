@@ -9,10 +9,10 @@
       - statistics = Statistics.first
       .w-row.u-text-center.u-marginbottom-80
         .w-col.w-col-4
-          .fontsize-jumbo.text-success.lineheight-loose = number_to_human(statistics.total_contributors)
+          .fontsize-jumbo.text-success.lineheight-loose = number_with_delimiter(statistics.total_contributors)
           p.start-stats.fontsize-base = t('.header.people')
         .w-col.w-col-4
-          .fontsize-jumbo.text-success.lineheight-loose = number_to_human(statistics.total_projects_success)
+          .fontsize-jumbo.text-success.lineheight-loose = number_with_delimiter(statistics.total_projects_success)
           p.start-stats.fontsize-base = t('.header.success')
         .w-col.w-col-4
           .fontsize-jumbo.text-success.lineheight-loose = number_to_human(statistics.total_contributed)
