@@ -36,9 +36,9 @@ App.addChild('Hello', {
   createPlayer: function(){   
     var that = this;
     var ua = navigator.userAgent.toLowerCase();
-    var isAndroid = ua.indexOf("android") > -1; 
+    var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent); 
     var video_crls = 0;
-    if(isAndroid){
+    if(isMobile){
       video_crls = 1;
     }
     that.player = new YT.Player('player', {
