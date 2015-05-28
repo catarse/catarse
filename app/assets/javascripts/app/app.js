@@ -91,7 +91,6 @@ var App = window.App = Skull.View.extend({
   },
 
   isMobile: function(){
-    var ua = navigator.userAgent.toLowerCase();
     var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent); 
     return isMobile;
   }
