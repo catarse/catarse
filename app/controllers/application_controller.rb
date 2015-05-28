@@ -1,14 +1,15 @@
 # coding: utf-8
-require "new_relic/agent/instrumentation/rails3/action_controller"
-
 class ApplicationController < ActionController::Base
   include Concerns::ExceptionHandler
   include Concerns::MenuHandler
   include Concerns::SocialHelpersHandler
   include Concerns::AnalyticsHelpersHandler
   include Pundit
-  include NewRelic::Agent::Instrumentation::ControllerInstrumentation
-  include NewRelic::Agent::Instrumentation::Rails3::ActionController
+  if Rails.env.production?
+    require "new_relic/agent/instrumentation/rails3/action_controller"
+    include NewRelic::Agent::Instrumentation::ControllerInstrumentation
+    include NewRelic::Agent::Instrumentation::Rails3::ActionController
+  end
 
   layout 'catarse_bootstrap'
   protect_from_forgery
