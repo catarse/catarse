@@ -75,7 +75,7 @@ class Payment < ActiveRecord::Base
     end
 
     event :refuse do
-      transition pending: :refused
+      transition [:pending, :paid] => :refused
     end
 
     event :request_refund do
