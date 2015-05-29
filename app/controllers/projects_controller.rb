@@ -166,8 +166,8 @@ class ProjectsController < ApplicationController
   end
 
   def project_comments_canonical_url
-    count_url = project_by_slug_url(resource.permalink).split('/')
-    count_url.delete_at(3) #remove language from url
-    return count_url.join('/')
+    url = project_by_slug_url(resource.permalink).split('/')
+    url.delete_at(3) #remove language from url
+    url.join('/')
   end
 end
