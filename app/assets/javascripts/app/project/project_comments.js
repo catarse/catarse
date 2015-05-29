@@ -7,7 +7,7 @@ App.views.Project.addChild('ProjectComments', {
 
   render: function(){
     if(this.$el.is(':visible')){
-      this.$el.html('<div class="fb-comments" data-href=' + this.$(".project-fb-comment").attr("href") + ' data-num-posts=50 data-width="610"></div>');
+      this.$el.html('<div class="fb-comments" data-href=' + this.$el.data("href") + ' data-num-posts=50 data-width="610"></div>');
       FB.XFBML.parse();
     }
   }
