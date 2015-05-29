@@ -8,6 +8,8 @@ class ProjectsController < ApplicationController
   has_scope :pg_search, :by_category_id, :near_of
   has_scope :recent, :expiring, :successful, :in_funding, :recommended, :not_expired, type: :boolean
 
+  helper_method :project_comments_canonical_url
+
   respond_to :html
   respond_to :json, only: [:index, :show, :update]
 
@@ -161,5 +163,11 @@ class ProjectsController < ApplicationController
 
   def resource
     @project ||= (params[:permalink].present? ? Project.by_permalink(params[:permalink]).first! : Project.find(params[:id]))
+  end
+
+  def project_comments_canonical_url
+    url = project_by_slug_url(resource.permalink).split('/')
+    url.delete_at(3) #remove language from url
+    url.join('/')
   end
 end
