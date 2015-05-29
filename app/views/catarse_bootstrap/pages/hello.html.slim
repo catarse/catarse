@@ -3,13 +3,13 @@
 
 .hero-hello
   .w-embed.w-hidden-medium.w-hidden-small.w-hidden-tiny
-    video autoplay="" loop="" style=("width:100%; height: auto; position:absolute; z-index: -1;") 
+    video poster="/assets/hero-hello.jpg" autoplay="" loop="" style=("width:100%; height: auto; position:absolute; z-index: -1;") 
       source src="https://s3.amazonaws.com/cdn.catarse/assets/background-video.mp4" type="video/mp4" 
   .hero-content
-    a.w-lightbox.w-inline-block.btn-play data-ix="fade-in-button" href="#" 
+    a.w-lightbox.w-inline-block.btn-play href="#" 
       = image_tag "play-hero-green.png"
     .fontweight-semibold.u-marginbottom-20.fontsize-megajumbo = t('.hero.title')
-  .knowmore-hello data-ix="know-more" 
+  .knowmore-hello 
     .fa.fa-chevron-down.fontcolor-dashboard
 .section
   .w-container
@@ -34,25 +34,25 @@
           = image_tag "lampada-white.png", class: "icon-hello-sm"
         .u-marginbottom-20
           = image_tag "marcio-avatar.jpg", class: "thumb.big u-round"
-        .fontweight-semibold.fontsize-jumbo.u-marginbottom-20 data-ix="fade-in-step"  = t('.idea.title')
-        .fontsize-large.fontcolor-negative.u-marginbottom-40 data-ix="fade-in-step-2"  = t('.idea.subtitle')
+        .fontweight-semibold.fontsize-jumbo.u-marginbottom-20 = t('.idea.title')
+        .fontsize-large.fontcolor-negative.u-marginbottom-40 = t('.idea.subtitle')
 .section-large.hello-catarse
   .w-container
     .w-row.section-large
       .w-col.w-col-10.w-col-push-1
         = image_tag "icon-fincol.png", class: "icon-hello-lg"
-        .fontweight-semibold.fontsize-jumbo.u-marginbottom-20 data-ix="fade-in-step" = t('.fund.title')
-        .fontsize-large.u-marginbottom-40 data-ix="fade-in-step-2" = t('.fund.subtitle')
+        .fontweight-semibold.fontsize-jumbo.u-marginbottom-20 = t('.fund.title')
+        .fontsize-large.u-marginbottom-40 = t('.fund.subtitle')
     .w-row.section-large
       .w-col.w-col-10.w-col-push-1
         = image_tag "icon-campanha.png", class: "icon-hello-lg"        
-        .fontweight-semibold.fontsize-jumbo.u-marginbottom-20 data-ix="fade-in-step" = t('.campaign.title')
-        .fontsize-large.u-marginbottom-40 data-ix="fade-in-step-2" = t('.campaign.subtitle') 
+        .fontweight-semibold.fontsize-jumbo.u-marginbottom-20 = t('.campaign.title')
+        .fontsize-large.u-marginbottom-40 = t('.campaign.subtitle') 
     .w-row.section-large
       .w-col.w-col-10.w-col-push-1
         = image_tag "icon-tudonada.png", class: "icon-hello-md"        
-        .fontweight-semibold.fontsize-jumbo.u-marginbottom-20 data-ix="fade-in-step" = t('.allornothing.title')
-        .fontsize-large.u-marginbottom-40 data-ix="fade-in-step-2" = t('.allornothing.subtitle')
+        .fontweight-semibold.fontsize-jumbo.u-marginbottom-20 = t('.allornothing.title')
+        .fontsize-large.u-marginbottom-40 = t('.allornothing.subtitle')
 .u-text-center.section-large
   .w-container
     .w-row
@@ -122,6 +122,7 @@
           figure.w-lightbox-figure
             #player
             /iframe class="" width="1280" height="720" src="https://www.youtube.com/embed/cvBERv1kTL8?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen
+        .w-lightbox-spinner
       .w-lightbox-control.w-lightbox-close
     .w-lightbox-strip
 
