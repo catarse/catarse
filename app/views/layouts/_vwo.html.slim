@@ -1,10 +1,6 @@
 - if Rails.env.production? && CatarseSettings['vwo_id'].present?
 javascript:
-  var project = $('#project-header').data('stats'),
-      is_on_online_page = false; 
-  if(project && project.project_state === 'online'){
-    is_on_online_page = true;
-  }
+  is_on_online_page = #{defined?(@project) && @project.online? ? 'true' : 'false'}
   var _vis_opt_account_id = #{CatarseSettings['vwo_id']};
   var _vis_opt_protocol = (('https:' == document.location.protocol) ? 'https://' : 'http://');
   document.write('<s' + 'cript src="' + _vis_opt_protocol +
