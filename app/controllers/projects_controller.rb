@@ -165,8 +165,8 @@ class ProjectsController < ApplicationController
     @project ||= (params[:permalink].present? ? Project.by_permalink(params[:permalink]).first! : Project.find(params[:id]))
   end
 
-  def project_comments_canonical_url project
-    count_url = project_by_slug_url(project.permalink).split('/')
+  def project_comments_canonical_url
+    count_url = project_by_slug_url(resource.permalink).split('/')
     count_url.delete_at(3) #remove language from url
     return count_url.join('/')
   end
