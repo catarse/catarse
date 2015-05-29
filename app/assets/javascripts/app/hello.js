@@ -40,7 +40,7 @@ App.addChild('Hello', {
       width: '1280',
       videoId: 'znj9ujQnrw4',
       playerVars:{
-        controls: 0,
+        controls: app.isMobile() ? 1 : 0,
         showInfo: 0,
         modestBranding: 0
       },
