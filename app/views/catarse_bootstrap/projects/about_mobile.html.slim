@@ -12,8 +12,13 @@
     a.alt-link href=project_path(@project)
       strong = t('.back')
   .w-container
-    = @project.about_html.html_safe
-    = render 'budget'
+    .w-row
+      .w-col.w-col-12
+        p.fontsize-base[itemprop="about"]
+          = @project.about_html.try(:html_safe)
+      .w-col.w-col-12
+        p.fontsize-base[itemprop="budget"]
+          = render 'budget'
   .w-container.fontsize-base.fontweight-semibold
     a.alt-link href=project_path(@project)
       strong= t('.back')
