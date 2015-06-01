@@ -23,10 +23,9 @@
 .project-about
   .fontsize-large.u-marginbottom-30[itemprop="name"] = @project.headline.try(:strip)
   .no-mobile
-    .w-row
-      .w-col.w-col-12
-        p.fontsize-base[itemprop="about"]
-          = @project.about_html.try(:html_safe)
-      .w-col.w-col-12
-        p.fontsize-base[itemprop="budget"]
-          = render 'budget'
+    .fontsize-base[itemprop="about"]
+      = @project.about_html.try(:html_safe)
+.project-about
+  .no-mobile
+    .fontsize-base[itemprop="budget"]
+      = render 'budget'
