@@ -1,19 +1,25 @@
 - content_for :title, t('site.title')
 = render 'shared/header_big', overlayer: true
 
-section#hero.hero-back.hero-full
-  .w-container
-    .w-row.u-text-center
-      .w-col.w-col-2
-      .w-col.w-col-8
-        h1.fontweight-semibold.u-marginbottom-20.fontsize-jumbo= t('.banner_title') 
-        h2.fontsize-large.lineheight-tight.u-marginbottom-30= t('.banner_subtitle')
-        .w-row
-          .w-col.w-col-3
-          .w-col.w-col-6
-            = link_to t('.back_a_project'), explore_path(ref: 'home_banner_explore'), class: 'btn btn-large'
-          .w-col.w-col-3
-      .w-col.w-col-2
+section#hero-home.hero-full.hero-knowmore
+  .w-container.u-text-center
+    .hero-home-words-content
+      .fontsize-megajumbo.u-marginbottom-60.fontweight-semibold
+        .w-embed.w-hidden-tiny
+          .cd-headline.letters.type
+            span = t('.banner_before')     
+            span.cd-words-wrapper
+              - t('.banner_words').each do |index, word|
+                - if index == 0 
+                  b.is-visible = word
+                - else
+                  b = word
+            span = t('.banner_after')
+    w-row
+      .w-col.w-col-4
+      .w-col.w-col-4
+        a.btn.btn-large.u-marginbottom-10 href="#{hello_path(ref: 'home_banner')}" Saiba mais
+      .w-col.w-col-4
 
 section#projects
   - if current_user && @projects_near.present?
