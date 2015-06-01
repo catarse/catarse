@@ -46,9 +46,7 @@ nav.project-nav.w-hidden-small.w-hidden-tiny
 
         = link_to '#comments', id: 'comments_link', class: 'nav-tab' , data: {target: '#project_comments'} do
           => t('.menu.comments')
-          - count_url = project_by_slug_url(@project.permalink).split('/')
-          - count_url.delete_at(3) #remove language from url          
-          fb:comments-count href="#{count_url.join('/')}" class="badge project-fb-comment" style="display: inline"
+          fb:comments-count href="#{project_comments_canonical_url}" class="badge project-fb-comment" style="display: inline"
             |&nbsp;
 
       .w-col.w-col-3.w-hidden-small.w-hidden-tiny.w-clearfix.project-nav-category

@@ -84,10 +84,15 @@ var App = window.App = Skull.View.extend({
     return false;
   },
 
-  applyErrors: function() {
+  applyErrors: function(){
     $.each($('[data-applyerror=true]'), function(i, item){
       $(item).addClass('error');
     });
+  },
+
+  isMobile: function(){
+    var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent); 
+    return isMobile;
   }
 
 });
