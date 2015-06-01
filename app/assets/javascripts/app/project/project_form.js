@@ -6,7 +6,6 @@ App.addChild('ProjectForm', _.extend({
   },
 
   activate: function(){
-    console.log("Activating shit!");
     this.setupForm();
   }
 
