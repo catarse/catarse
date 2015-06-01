@@ -166,7 +166,7 @@ class ProjectsController < ApplicationController
   end
 
   def project_comments_canonical_url
-    url = project_by_slug_url(resource.permalink).split('/')
+    url = project_by_slug_url(resource.permalink, protocol: 'http', subdomain: 'www').split('/')
     url.delete_at(3) #remove language from url
     url.join('/')
   end
