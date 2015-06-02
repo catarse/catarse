@@ -40,4 +40,4 @@ Skull.Modal = {
       $('.skull-modal-blackbg').fadeOut('fast').remove();
     }
   }
-}
+};
