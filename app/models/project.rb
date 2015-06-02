@@ -105,6 +105,11 @@ class Project < ActiveRecord::Base
   attr_accessor :accepted_terms
 
   validates_acceptance_of :accepted_terms, on: :create
+  #used only to show required fields to user
+  validate :online_validations, on: :fake_validate
+  validate :approved_validations, on: :fake_validate,
+      if: :requires_video
+  validate :in_analysis_validations, on: :fake_validate
   ##validation for all states
   validates_presence_of :name, :user, :category, :permalink
   validates_length_of :headline, maximum: HEADLINE_MAXLENGTH
@@ -211,6 +216,28 @@ class Project < ActiveRecord::Base
     end
   end
 
+  def in_analysis_validations
+    validates_presence_of :about_html, :headline, :goal, :online_days, :budget
+    validates_presence_of :uploaded_image, if: ->(project) { project.video_thumbnail.blank? }
+    [:uploaded_image, :about_html, :name].each do |attr|
+      self.user.errors.add_on_blank(attr)
+    end
+    self.user.errors.each {|error, error_message| self.errors.add('user.' + error.to_s, error_message)}
+    self.errors['rewards.size'] << "Deve haver pelo menos uma recompensa" if self.rewards.size == 0
+  end
+
+  def approved_validations
+    validates_presence_of :video_url
+  end
+
+  def online_validations
+    validates_presence_of :account, message: 'Dados Bancários não podem ficar em branco'
+    [:email, :address_street, :address_number, :address_city, :address_state, :address_zip_code, :phone_number, :bank, :agency, :account, :account_digit, :owner_name, :owner_document, :account_type].each do |attr|
+      self.account.errors.add_on_blank(attr) if self.account.present?
+    end
+    self.account.errors.each {|error, error_message| self.errors.add('project_account.' + error.to_s, error_message)} if self.account.present?
+  end
+
   def users_in_reminder
     reminder_jobs = Sidekiq::ScheduledSet.new.select do |job|
       job['class'] == 'ReminderProjectWorker' && job.args[1] == self.id
@@ -227,6 +254,10 @@ class Project < ActiveRecord::Base
     fragments.each do |fragment|
       base.expire_fragment([fragment, id])
     end
+  end
+
+  def requires_video
+    (goal || 0) >= CatarseSettings[:minimum_goal_for_video].to_i
   end
 
   def to_analytics
