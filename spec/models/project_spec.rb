@@ -386,38 +386,43 @@ RSpec.describe Project, type: :model do
   end
 
   describe "#search_tsearch" do
-    before { @p = create(:project, name: 'foo') }
-    context "when project exists" do
-      subject{ [Project.search_tsearch('foo'), Project.search_tsearch('fóõ')] }
-      it{ is_expected.to match_array([[@p],[@p]]) }
+    subject{ Project.search_tsearch 'críptõrave' }
+
+    before do
+      @p = create(:project, name: 'criptorave')
+      create(:project, name: 'nyan cat')
     end
-    context "when project is not found" do
-      subject{ Project.search_tsearch('lorem') }
-      it{ is_expected.to eq([]) }
-    end
+
+    it{ is_expected.to match_array([@p]) }
   end
 
   describe "#search_trm" do
-    before { @p = create(:project, name: 'criptorave') }
-    context "when project exists" do
-      subject{ [Project.search_trm('cripto'), Project.search_trm('críptõ')] }
-      it{ is_expected.to match_array([[@p],[@p]]) }
+    subject{ Project.search_trm('críptõ') }
+
+    before do
+      @p = create(:project, name: 'criptorave')
+      create(:project, name: 'nyan cat')
     end
-    context "when project is not found" do
-      subject{ Project.search_trm('lorem') }
-      it{ is_expected.to eq([]) }
-    end
+
+    it{ is_expected.to match_array([@p]) }
   end
 
   describe "#pg_search" do
-    before { @p = create(:project, name: 'criptorave') }
+    subject{ Project.pg_search('críptõ') }
+    let(:tsearch_return) { [] }
 
-    context "when search_tsearch is empty" do
-      before do
-        allow(Project).to receive(:search_tsearch).and_return([])
-        expect(Project).to receive(:search_trm).and_call_original
-      end
-      it { expect(Project.search_trm('cripto')).to match_array([@p]) }
+    before do
+      allow(Project).to receive(:search_tsearch).and_return(tsearch_return)
+      allow(Project).to receive(:search_trm).and_return(['trm'])
+    end
+
+    context "when tsearch is not empty" do
+      let(:tsearch_return) { ["tsearch"] }
+      it { is_expected.to match_array(tsearch_return) }
+    end
+
+    context "when tsearch is empty" do
+      it { is_expected.to match_array(['trm']) }
     end
   end
 
