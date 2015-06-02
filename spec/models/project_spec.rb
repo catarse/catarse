@@ -389,7 +389,7 @@ RSpec.describe Project, type: :model do
     before { @p = create(:project, name: 'foo') }
     context "when project exists" do
       subject{ [Project.search_tsearch('foo'), Project.search_tsearch('fóõ')] }
-      it{ is_expected.to eq([[@p],[@p]]) }
+      it{ is_expected.to match_array([[@p],[@p]]) }
     end
     context "when project is not found" do
       subject{ Project.search_tsearch('lorem') }
@@ -401,7 +401,7 @@ RSpec.describe Project, type: :model do
     before { @p = create(:project, name: 'criptorave') }
     context "when project exists" do
       subject{ [Project.search_trm('cripto'), Project.search_trm('críptõ')] }
-      it{ is_expected.to eq([[@p],[@p]]) }
+      it{ is_expected.to match_array([[@p],[@p]]) }
     end
     context "when project is not found" do
       subject{ Project.search_trm('lorem') }
