@@ -40,7 +40,7 @@ class ApplicationController < ActionController::Base
   end
 
   def referral_it!
-    session[:referral_link] = params[:ref] if params[:ref].present?
+    session[:referral_link] ||= params[:ref] if params[:ref].present?
   end
 
   private
