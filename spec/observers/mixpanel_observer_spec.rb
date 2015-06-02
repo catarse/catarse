@@ -11,7 +11,7 @@ RSpec.describe MixpanelObserver do
         {
           payment_method: payment.try(:gateway),
           payment_choice: payment.payment_method,
-          referral: contribution.referal_link,
+          referral: contribution.referral_link,
           anonymous: contribution.anonymous,
           value: contribution.value,
           reward_id: contribution.reward_id,
