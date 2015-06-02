@@ -409,6 +409,18 @@ RSpec.describe Project, type: :model do
     end
   end
 
+  describe "#pg_search" do
+    before { @p = create(:project, name: 'criptorave') }
+
+    context "when search_tsearch is empty" do
+      before do
+        allow(Project).to receive(:search_tsearch).and_return([])
+        expect(Project).to receive(:search_trm).and_call_original
+      end
+      it { expect(Project.search_trm('cripto')).to match_array([@p]) }
+    end
+  end
+
   describe "#pledged" do
     subject{ project.pledged }
     context "when project_total is nil" do
