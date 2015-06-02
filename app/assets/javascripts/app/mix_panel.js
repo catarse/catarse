@@ -218,7 +218,7 @@ App.addChild('MixPanel', {
       'page name':          document.title,
       'url':                window.location,
       'host':               window.location.host,
-      'from_page':          this.$el.data('referal')
+      'from_page':          this.$el.data('referral')
     };
     
     var opt = $.fn.extend(usr, opt, page, {project : ref});
