@@ -29,7 +29,7 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    @project = Project.new params[:project].merge(user: current_user)
+    @project = Project.new params[:project].merge(user: current_user, referral_link: referral_link)
     authorize @project
     if @project.save
       redirect_to edit_project_path(@project, anchor: 'home')
@@ -121,8 +121,8 @@ class ProjectsController < ApplicationController
 
   def resource_action action_name
     if resource.send(action_name)
-      if referal_link.present?
-        resource.update_attribute :referal_link, referal_link
+      if referral_link.present?
+        resource.update_attribute :referral_link, referral_link
       end
 
       flash[:notice] = t("projects.#{action_name.to_s}")

@@ -52,7 +52,7 @@ RSpec.describe ProjectsController, type: :controller do
   describe "GET send_to_analysis" do
     let(:current_user){ project.user }
 
-    context "without referal link" do
+    context "without referral link" do
       before do
         create(:reward, project: project)
         get :send_to_analysis, id: project.id, locale: :pt
@@ -62,15 +62,15 @@ RSpec.describe ProjectsController, type: :controller do
       it { expect(project.in_analysis?).to eq(true) }
     end
 
-    context "with referal link" do
-      subject { project.referal_link }
+    context "with referral link" do
+      subject { project.referral_link }
       before do
         create(:reward, project: project)
-        get :send_to_analysis, id: project.id, locale: :pt, ref: 'referal'
+        get :send_to_analysis, id: project.id, locale: :pt, ref: 'referral'
         project.reload
       end
 
-      it { is_expected.to eq('referal') }
+      it { is_expected.to eq('referral') }
     end
   end
 
@@ -80,14 +80,14 @@ RSpec.describe ProjectsController, type: :controller do
     end
     it { is_expected.to be_success }
 
-    context "with referal link" do
-      subject { controller.session[:referal_link] }
+    context "with referral link" do
+      subject { controller.session[:referral_link] }
 
       before do
-        get :index, locale: :pt, ref: 'referal'
+        get :index, locale: :pt, ref: 'referral'
       end
 
-      it { is_expected.to eq('referal') }
+      it { is_expected.to eq('referral') }
     end
   end
 
