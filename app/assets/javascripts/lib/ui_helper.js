@@ -46,4 +46,4 @@ Skull.UI_helper = {
     }
   }
   
-}
+};

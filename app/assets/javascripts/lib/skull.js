@@ -26,7 +26,7 @@ Skull.View = Backbone.View.extend({
   },
 
   initialize: function(options){
-    _.bindAll(this);
+    _.bindAll.apply(_, [this].concat(_.functions(this)));
     if(options){
       this.name = options.name;
       this.parent = options.parent;

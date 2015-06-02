@@ -1,5 +1,5 @@
 App.addChild('ProjectForm', _.extend({
-  el: 'form#project_form',
+  el: '.project-form',
 
   events: {
     'blur input' : 'checkInput',
@@ -13,12 +13,8 @@ App.addChild('ProjectForm', _.extend({
 
 // Put subview here to avoid dependency issues
 
-App.views.ProjectForm.addChild('VideoUrl', _.extend({
+App.views.ProjectForm.addChild('VideoUrl', {
   el: 'input#project_video_url',
-
-  events: {
-    'timedKeyup' : 'checkVideoUrl'
-  },
 
   checkVideoUrl: function(){
     var that = this;
@@ -30,16 +26,15 @@ App.views.ProjectForm.addChild('VideoUrl', _.extend({
   },
 
   activate: function(){
-    this.setupTimedInput();
+    this.$el.typeWatch({
+      wait: 750,
+      callback: this.checkVideoUrl
+    });
   }
-}, Skull.TimedInput));
+});
 
-App.views.ProjectForm.addChild('Permalink', _.extend({
+App.views.ProjectForm.addChild('Permalink', {
   el: 'input#project_permalink',
-
-  events: {
-    'timedKeyup' : 'checkPermalink'
-  },
 
   checkPermalink: function(){
     var that = this;
@@ -54,7 +49,10 @@ App.views.ProjectForm.addChild('Permalink', _.extend({
 
   activate: function(){
     this.re = new RegExp(this.$el.prop('pattern'));
-    this.setupTimedInput();
+    this.$el.typeWatch({
+      wait: 750,
+      callback: this.checkPermalink
+    });
   }
-}, Skull.TimedInput));
+});
 

@@ -48,6 +48,10 @@ To run this project you need to have:
 
         $ bundle install
 
+*Install your front-end dependencies
+        
+        $ bower install
+
 * Create the database
 
         $ rake db:create db:migrate db:seed

@@ -26,3 +26,4 @@ Cookbooks
 .secret.rvmrc
 .rvmrc
 config/deploy/
+vendor/assets/components
