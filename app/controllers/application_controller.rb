@@ -16,16 +16,16 @@ class ApplicationController < ActionController::Base
 
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
-  helper_method :referal_link, :render_projects, :should_show_beta_banner?, :render_feeds
+  helper_method :referral_link, :render_projects, :should_show_beta_banner?, :render_feeds
 
   before_filter :set_locale
 
-  before_action :referal_it!
+  before_action :referral_it!
 
   before_action :force_www
 
-  def referal_link
-    session[:referal_link]
+  def referral_link
+    session[:referral_link]
   end
 
   def render_projects collection, ref, locals = {}
@@ -44,15 +44,15 @@ class ApplicationController < ActionController::Base
     current_user.nil? || current_user.projects.empty?
   end
 
+  def referral_it!
+    session[:referral_link] ||= params[:ref] if params[:ref].present?
+  end
+
   private
   def force_www
     if request.subdomain.blank? && Rails.env.production?
       return redirect_to url_for(params.merge(subdomain: 'www'))
     end
-  end
-
-  def referal_it!
-    session[:referal_link] = params[:ref] if params[:ref].present?
   end
 
   def detect_old_browsers
