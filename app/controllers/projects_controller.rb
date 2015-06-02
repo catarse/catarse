@@ -121,8 +121,8 @@ class ProjectsController < ApplicationController
 
   def resource_action action_name
     if resource.send(action_name)
-      if referal_link.present?
-        resource.update_attribute :referal_link, referal_link
+      if referral_link.present?
+        resource.update_attribute :referral_link, referral_link
       end
 
       flash[:notice] = t("projects.#{action_name.to_s}")
