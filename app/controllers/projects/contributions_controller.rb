@@ -47,7 +47,7 @@ class Projects::ContributionsController < ApplicationController
     @contribution = parent.contributions.new.localized
     @contribution.user = current_user
     @contribution.value = permitted_params[:value]
-    @contribution.referal_link = permitted_params[:referal_link]
+    @contribution.referral_link = permitted_params[:referral_link]
     @contribution.reward_id = (params[:contribution][:reward_id].to_i == 0 ? nil : params[:contribution][:reward_id])
     authorize @contribution
     @contribution.update_current_billing_info
