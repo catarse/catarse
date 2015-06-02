@@ -29,7 +29,7 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    @project = Project.new params[:project].merge(user: current_user)
+    @project = Project.new params[:project].merge(user: current_user, referral_link: referral_link)
     authorize @project
     if @project.save
       redirect_to edit_project_path(@project, anchor: 'home')
