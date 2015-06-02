@@ -385,14 +385,26 @@ RSpec.describe Project, type: :model do
     end
   end
 
-  describe "#pg_search" do
+  describe "#search_tsearch" do
     before { @p = create(:project, name: 'foo') }
     context "when project exists" do
-      subject{ [Project.pg_search('foo'), Project.pg_search('fóõ')] }
+      subject{ [Project.search_tsearch('foo'), Project.search_tsearch('fóõ')] }
       it{ is_expected.to eq([[@p],[@p]]) }
     end
     context "when project is not found" do
-      subject{ Project.pg_search('lorem') }
+      subject{ Project.search_tsearch('lorem') }
+      it{ is_expected.to eq([]) }
+    end
+  end
+
+  describe "#search_trm" do
+    before { @p = create(:project, name: 'criptorave') }
+    context "when project exists" do
+      subject{ [Project.search_trm('cripto'), Project.search_trm('críptõ')] }
+      it{ is_expected.to eq([[@p],[@p]]) }
+    end
+    context "when project is not found" do
+      subject{ Project.search_trm('lorem') }
       it{ is_expected.to eq([]) }
     end
   end
