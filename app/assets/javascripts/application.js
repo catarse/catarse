@@ -24,6 +24,7 @@
 //= require jquery-smooth-scroll
 //= require jquery-typewatch
 //= require store
+//= require mithril
 // *********************************
 //  Rails GEMs front-end dependencies
 // *********************************
