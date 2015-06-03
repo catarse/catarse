@@ -385,15 +385,44 @@ RSpec.describe Project, type: :model do
     end
   end
 
-  describe "#pg_search" do
-    before { @p = create(:project, name: 'foo') }
-    context "when project exists" do
-      subject{ [Project.pg_search('foo'), Project.pg_search('fóõ')] }
-      it{ is_expected.to eq([[@p],[@p]]) }
+  describe "#search_tsearch" do
+    subject{ Project.search_tsearch 'críptõrave' }
+
+    before do
+      @p = create(:project, name: 'criptorave')
+      create(:project, name: 'nyan cat')
     end
-    context "when project is not found" do
-      subject{ Project.pg_search('lorem') }
-      it{ is_expected.to eq([]) }
+
+    it{ is_expected.to match_array([@p]) }
+  end
+
+  describe "#search_trm" do
+    subject{ Project.search_trm('críptõ') }
+
+    before do
+      @p = create(:project, name: 'criptorave')
+      create(:project, name: 'nyan cat')
+    end
+
+    it{ is_expected.to match_array([@p]) }
+  end
+
+  describe "#pg_search" do
+    subject{ Project.pg_search('críptõ') }
+    let(:tsearch_return) { [] }
+
+    before do
+      allow(Project).to receive(:search_tsearch).and_return(tsearch_return)
+      allow(Project).to receive(:search_trm).and_return(['trm'])
+    end
+
+    context "when tsearch is not empty" do
+      let(:tsearch_return) { ["tsearch"] }
+      it { is_expected.to match_array(tsearch_return) }
+    end
+
+    context "when tsearch is empty" do
+      it { is_expected.to match_array(['trm']) }
     end
   end
 
