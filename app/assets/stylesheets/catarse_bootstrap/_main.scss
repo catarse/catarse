@@ -1,5 +1,5 @@
 body {
-  font-family: Proximanova, sans-serif;
+  font-family: proxima-nova, sans-serif;
   color: #3f4752;
   font-size: 14px;
   line-height: 20px;
@@ -193,7 +193,7 @@ p {
   margin-top: 0px;
   margin-bottom: 0px;
   border-style: solid;
-  border-color: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.11);
   background-color: transparent;
   color: rgba(255, 255, 255, 0.61);
 }
@@ -221,7 +221,7 @@ p {
 .text-field.error {
   margin-bottom: 5px;
   border-color: #e86666;
-  background-color: rgba(232, 102, 102, 0.12);
+  background-color: rgba(232, 102, 102, 0.11);
 }
 .text-field.bottom {
   border-top-left-radius: 0px;
@@ -523,8 +523,8 @@ p {
   margin-top: 0px;
   border-bottom-style: none;
   background-color: transparent;
-  background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.22), transparent);
-  background-image: linear-gradient(rgba(0, 0, 0, 0.22), transparent);
+  background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.21), transparent);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.21), transparent);
 }
 .main-header.overlayer.alert {
   margin-top: 40px;
