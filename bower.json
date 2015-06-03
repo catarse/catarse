@@ -21,6 +21,7 @@
     "jquery-typewatch": "~2.2.1",
     "store": "~2.3.0",
     "jQuery-Mask-Plugin": "~1.11.4",
-    "jquery-ui": "~1.11.4"
+    "jquery-ui": "~1.11.4",
+    "jquery-ujs": "~1.0.3"
   }
 }

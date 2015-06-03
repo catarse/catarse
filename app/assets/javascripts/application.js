@@ -11,11 +11,12 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 // *********************************
-// Bower front-end dependencies
+//  Bower front-end dependencies
 // *********************************
 //= require jquery
 //= require underscore
 //= require backbone
+//= require jquery-ujs
 //= require jquery-ui
 //= require jQuery-Mask-Plugin
 //= require jquery-sticky
@@ -23,12 +24,12 @@
 //= require jquery-typewatch
 //= require store
 // *********************************
-// Rails GEMs front-end dependencies
+//  Rails GEMs front-end dependencies
 // *********************************
 //= require best_in_place
 //= require cocoon
 // *********************************
-// Call dependencies first
+//  Call dependencies first
 // *********************************
 //= require ./lib/skull
 //= require_tree ./lib

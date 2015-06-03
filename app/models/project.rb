@@ -41,7 +41,7 @@ class Project < ActiveRecord::Base
   accepts_nested_attributes_for :posts, allow_destroy: true, reject_if: ->(x) { x[:title].blank? || x[:comment_html].blank? }
   accepts_nested_attributes_for :budgets, allow_destroy: true, reject_if: ->(x) { x[:name].blank? || x[:value].blank? }
 
-  pg_search_scope :pg_search,
+  pg_search_scope :search_tsearch,
     against: "full_text_index",
     using: {
       tsearch: {
@@ -50,6 +50,15 @@ class Project < ActiveRecord::Base
       }
     },
     ignoring: :accents
+
+  pg_search_scope :search_trm,
+    against: "name",
+    using: :trigram,
+    ignoring: :accents
+
+  def self.pg_search term
+    search_tsearch(term).presence || search_trm(term)
+  end
 
   # Used to simplify a has_scope
   scope :successful, ->{ with_state('successful') }
