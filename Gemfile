@@ -45,7 +45,6 @@ gem 'draper'
 
 # Frontend stuff
 gem 'slim-rails'
-gem 'jquery-rails'
 gem 'browser'
 gem "cocoon"
 
