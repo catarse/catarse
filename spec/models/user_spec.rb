@@ -79,6 +79,7 @@ RSpec.describe User, type: :model do
         @user_with_credits = create(:confirmed_contribution, project: failed_project).user
         failed_project.update_attributes state: 'failed'
         create(:confirmed_contribution, project: successful_project)
+        UserTotal.refresh_view
       end
       it{ is_expected.to eq([@user_with_credits]) }
     end
@@ -90,6 +91,7 @@ RSpec.describe User, type: :model do
         @u = b.user
         b = create(:confirmed_contribution, value: 100, project: successful_project)
         @u.update_attributes(zero_credits: true)
+        UserTotal.refresh_view
       end
       it{ is_expected.to eq([]) }
     end
@@ -109,6 +111,7 @@ RSpec.describe User, type: :model do
       before do
         @user_with_credits = create(:confirmed_contribution, project: failed_project).user
         failed_project.update_attributes state: 'failed'
+        UserTotal.refresh_view
       end
       it{ is_expected.to eq([@user_with_credits]) }
     end
@@ -300,6 +303,7 @@ RSpec.describe User, type: :model do
       create(:confirmed_contribution, user: user, project: project)
       create(:confirmed_contribution, user: user)
       user.reload
+      UserTotal.refresh_view
     end
 
     it { is_expected.to eq(2)}
@@ -371,6 +375,7 @@ RSpec.describe User, type: :model do
 
       failed_project.update_attributes state: 'failed'
       successful_project.update_attributes state: 'successful'
+      UserTotal.refresh_view
     end
 
     subject{ @u.credits }
