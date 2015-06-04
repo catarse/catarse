@@ -16,6 +16,7 @@
 //= require jquery
 //= require underscore
 //= require backbone
+//= require jquery.fixedmask
 //= require jquery-ujs
 //= require jquery-ui
 //= require jQuery-Mask-Plugin
