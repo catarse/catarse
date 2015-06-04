@@ -8,7 +8,7 @@ namespace :cron do
   desc "Refresh all materialized views"
   task refresh_materialized_views: :environment do
     puts "refreshing views"
-    ActiveRecord::Base.connection.execute('REFRESH MATERIALIZED VIEW "1".statistics')
+    Statistics.refresh_view
   end
 
 
