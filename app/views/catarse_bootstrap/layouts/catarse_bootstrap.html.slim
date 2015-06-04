@@ -3,6 +3,7 @@ html
   head
     title= content_for(:title)
 
+    = stylesheet_link_tag 'catarse_bootstrap/fonts'
     = stylesheet_link_tag 'catarse_bootstrap/catarse'
     = stylesheet_link_tag '//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css'
     = content_for(:stylesheets)
@@ -38,8 +39,6 @@ html
     = render 'layouts/new_zendesk'
     = render_facebook_sdk
     = render 'layouts/flash' if notice.present?
-    = render 'layouts/webfont'
-
     = yield
   = javascript_include_tag :application
   - if content_for? :js
