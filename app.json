@@ -1,0 +1,35 @@
+{
+ "name": "catarse",
+ "scripts": {},
+ "env": {
+   "DATABASE_URL": {
+     "required": true
+   },
+   "LANG": {
+     "required": true
+   },
+   "MAINTENANCE_PAGE_URL": {
+     "required": true
+   },
+   "OLD_NEWRELIC": {
+     "required": true
+   },
+   "PX_DYNO": "false",
+   "RACK_ENV": {
+     "required": true
+   },
+   "RAILS_ENV": {
+     "required": true
+   },
+   "REDIS_URL": {
+     "required": true
+   },
+   "SECRET_KEY_BASE": {
+     "required": true
+   }
+ },
+ "addons": [
+   "scheduler",
+   "ssl"
+ ]
+}

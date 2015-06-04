@@ -235,10 +235,16 @@ img, iframe
   width: 100%
 
 //backgrounds hello saiba mais
-.hero-hello
+.hero-hello, 
   background-image: url('/assets/hero-hello.jpg') !important  
   background-size: cover
   overflow: hidden
+
+.hero-knowmore
+  background-color: white
+  background-image: url('/assets/hero-new-home.jpg') !important
+  background-size: cover
+  color: white
 
 .hero-hello .w-embed
   position: absolute
@@ -284,3 +290,98 @@ img, iframe
 .link-footer-inline
   @extend .link-footer
   display: inline
+
+
+
+.cd-title 
+  position: relative
+  height: 160px
+  line-height: 230px
+  text-align: center
+
+
+.cd-words-wrapper 
+  display: inline-block
+  position: relative
+  text-align: left
+
+.cd-words-wrapper b 
+  display: inline-block
+  position: absolute
+  white-space: nowrap
+  left: 0
+  top: 0
+
+.cd-words-wrapper b.is-visible 
+  position: relative
+
+.no-js .cd-words-wrapper b 
+  opacity: 0
+
+.no-js .cd-words-wrapper b.is-visible 
+  opacity: 1
+
+
+
+.cd-headline.type .cd-words-wrapper 
+  vertical-align: top
+  overflow: hidden
+
+.cd-headline.type .cd-words-wrapper::after 
+  /* vertical pulsating cursor bar */
+  content: ''
+  position: absolute
+  right: 0
+  top: 50%
+  bottom: auto
+  height: 90%
+  width: 1px
+  background-color: #7cc142
+  +transform(translateY(-50%))
+
+.cd-headline.type .cd-words-wrapper.waiting::after 
+  +animation(cd-pulse 1s infinite)
+
+.cd-headline.type .cd-words-wrapper.selected 
+  background-color: #aebcb9
+
+.cd-headline.type .cd-words-wrapper.selected::after 
+  visibility: hidden
+
+.cd-headline.type .cd-words-wrapper.selected b 
+  color: #0d0d0d
+
+.cd-headline.type b 
+  visibility: hidden
+  font-weight: 600
+
+.cd-headline.type b.is-visible
+  visibility: visible
+
+.cd-headline.type i
+  position: absolute
+  visibility: hidden
+  font-style: normal
+
+.cd-headline.type i.in 
+  position: relative
+  visibility: visible
+
+@media screen and (max-width: 479px)
+  .cd-headline span
+    display: block
+  .cd-headline .cd-words-wrapper
+    display: inline-block
+
++keyframes(cd-pulse) 
+  0% 
+    +transform(translateY(-50%) scale(1))
+    opacity: 1
+  
+  40% 
+    +transform(translateY(-50%) scale(0.9))
+    opacity: 0
+
+  100% 
+    +transform(translateY(-50%) scale(0))
+    opacity: 0
