@@ -7,6 +7,7 @@ RSpec.describe Statistics, type: :model do
     project = create(:project, state: 'online')
     create(:confirmed_contribution, project: project )
     create(:contribution, project: project)
+    Statistics.refresh_view
   end
 
   describe "#total_users" do
