@@ -2,7 +2,6 @@ class AddPostgrestAuthTable < ActiveRecord::Migration
   def up
     execute <<-SQL
       CREATE SCHEMA postgrest;
-      SET search_path = postgrest, pg_catalog, public;
 
       CREATE TABLE postgrest.auth (
         id character varying NOT NULL,
@@ -11,7 +10,7 @@ class AddPostgrestAuthTable < ActiveRecord::Migration
         CONSTRAINT auth_pkey PRIMARY KEY (id)
       ) WITH ( OIDS=FALSE );
 
-      CREATE FUNCTION check_role_exists() RETURNS trigger
+      CREATE FUNCTION postgrest.check_role_exists() RETURNS trigger
           LANGUAGE plpgsql
           AS $$
       begin 
