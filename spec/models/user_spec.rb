@@ -383,6 +383,26 @@ RSpec.describe User, type: :model do
     it{ is_expected.to eq(50.0) }
   end
 
+  describe "#contributor_number" do
+    let(:user){ create(:confirmed_contribution).user }
+    subject{ user.contributor_number }
+
+    before do
+      create(:pending_contribution) # this user should not count as contributor
+    end
+
+    context "when I'm the first contributor" do
+      it{ is_expected.to eq 1 }
+    end
+
+    context "when I'm the second contributor" do
+      before do
+        create(:confirmed_contribution)
+      end
+      it{ is_expected.to eq 2 }
+    end
+  end
+
   describe "#update_attributes" do
     context "when I try to update moip_login" do
       before do
