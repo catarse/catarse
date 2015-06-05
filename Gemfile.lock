@@ -482,6 +482,7 @@ GEM
     rb-fsevent (0.9.4)
     rb-inotify (0.9.5)
       ffi (>= 0.5.0)
+    rb-readline (0.5.2)
     redcarpet (3.2.3)
     redis (3.2.1)
     redis-namespace (1.5.2)
@@ -692,6 +693,7 @@ DEPENDENCIES
   rails-observers
   rails_12factor
   ranked-model
+  rb-readline
   redactor-rails!
   routing-filter (~> 0.4.0.pre)
   rspec-collection_matchers
