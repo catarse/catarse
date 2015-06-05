@@ -8,3 +8,4 @@ deployment:
 dependencies:
   post:
     - bower install
+    - createuser postgrest
