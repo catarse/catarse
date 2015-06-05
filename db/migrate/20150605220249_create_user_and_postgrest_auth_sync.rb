@@ -14,7 +14,7 @@ class CreateUserAndPostgrestAuthSync < ActiveRecord::Migration
       UPDATE postgrest.auth SET 
         id = new.email,
         rolname = CASE WHEN new.admin THEN 'admin' ELSE 'web_user' END, 
-        pass = crypt(new.authentication_token, gen_salt('bf'))
+        pass = CASE WHEN new.authentication_token <> old.authentication_token THEN crypt(new.authentication_token, gen_salt('bf')) ELSE pass END
       WHERE id = old.email;
       return new;
     END;
