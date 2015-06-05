@@ -576,4 +576,32 @@ RSpec.describe User, type: :model do
       it { is_expected.to eq(false) }
     end
   end
+
+  describe "PostgREST users synchronization" do
+    it "should delete api user on user destroy" do
+      user = create(:user)
+      user.bank_account.destroy!
+      User.connection.select_all("DELETE FROM public.users WHERE email = '#{user.email}'")
+      expect(User.connection.select_all("SELECT * FROM postgrest.auth WHERE id = '#{user.email}'").count).to eq 0
+    end
+
+    it "should update api user on user update" do
+      user = create(:user)
+      user.email = 'foo@bar.com'
+      user.admin = true
+      user.save!
+      api_user = User.connection.select_all("SELECT * FROM postgrest.auth WHERE id = '#{user.email}'")[0]
+      expect(api_user["id"]).to eq user.email
+      expect(api_user["rolname"]).to eq 'admin'
+      expect(api_user["pass"].size).to eq 60
+    end
+
+    it "should create api user on user creation" do
+      user = create(:user)
+      api_user = User.connection.select_all("SELECT * FROM postgrest.auth WHERE id = '#{user.email}'")[0]
+      expect(api_user["id"]).to eq user.email
+      expect(api_user["rolname"]).to eq 'web_user'
+      expect(api_user["pass"].size).to eq 60
+    end
+  end
 end
