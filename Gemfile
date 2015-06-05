@@ -8,6 +8,7 @@ gem 'rails', '~> 4.1.6'
 gem 'catarse_api', github: 'catarse/catarse_api'
 gem 'protected_attributes'
 gem 'rails-observers'
+gem 'rb-readline'
 
 gem 'sidekiq',  '~> 3.1.3'
 
