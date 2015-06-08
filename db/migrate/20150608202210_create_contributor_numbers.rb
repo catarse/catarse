@@ -6,7 +6,7 @@ class CreateContributorNumbers < ActiveRecord::Migration
           SELECT
             user_id, min(c.id) AS id
           FROM
-            contribution_details c
+            "1".contribution_details c
           WHERE
             c.state = ANY(confirmed_states())
           GROUP BY
