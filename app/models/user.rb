@@ -141,7 +141,7 @@ class User < ActiveRecord::Base
 
   def contributor_number
     #TODO: if you want to use this method contributor_numbers should be in a model class and have a job for refreshing it
-    self.class.connection.select_one("SELECT number FROM contributor_numbers WHERE user_id = #{self.id}")["number"].to_i
+    self.class.connection.select_one("SELECT number FROM public.contributor_numbers WHERE user_id = #{self.id}")["number"].to_i
   end
 
   def has_online_project?

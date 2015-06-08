@@ -1,7 +1,7 @@
 class CreateContributorNumbers < ActiveRecord::Migration
   def up
     execute <<-SQL
-      CREATE MATERIALIZED VIEW contributor_numbers AS
+      CREATE MATERIALIZED VIEW public.contributor_numbers AS
       WITH confirmed AS (
           SELECT
             user_id, min(c.id) AS id

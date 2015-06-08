@@ -393,7 +393,7 @@ RSpec.describe User, type: :model do
       before do
         create(:pending_contribution) # this user should not count as contributor
         create_user
-        connection.execute "REFRESH MATERIALIZED VIEW contributor_numbers"
+        connection.execute "REFRESH MATERIALIZED VIEW public.contributor_numbers"
       end
 
       it{ is_expected.to eq 1 }
@@ -403,7 +403,7 @@ RSpec.describe User, type: :model do
       before do
         create(:confirmed_contribution)
         create_user
-        connection.execute "REFRESH MATERIALIZED VIEW contributor_numbers"
+        connection.execute "REFRESH MATERIALIZED VIEW public.contributor_numbers"
       end
 
       it{ is_expected.to eq 2 }
