@@ -140,20 +140,8 @@ class User < ActiveRecord::Base
   end
 
   def contributor_number
-    self.class.connection.select_one("
-    WITH confirmed AS (
-    SELECT
-      user_id, min(c.id) AS id
-    FROM
-      contribution_details c
-    WHERE
-      c.state = ANY(confirmed_states())
-    GROUP BY
-      user_id
-    ORDER BY
-      id
-    )
-    SELECT count(*)+1 AS number FROM confirmed c1 WHERE c1.id < (SELECT id FROM confirmed c2 WHERE c2.user_id = #{self.id})")["number"].to_i
+    #TODO: if you want to use this method contributor_numbers should be in a model class and have a job for refreshing it
+    self.class.connection.select_one("SELECT number FROM contributor_numbers WHERE user_id = #{self.id}")["number"].to_i
   end
 
   def has_online_project?
