@@ -122,6 +122,8 @@ class User < ActiveRecord::Base
   }
 
   #FIXME: very slow query
+  # This query is executed once a day in worst case and taks 1/2 second to excute
+  # LGTM
   scope :to_send_category_notification, -> (category_id) {
     where("NOT EXISTS (
           select true from category_notifications n
@@ -130,10 +132,16 @@ class User < ActiveRecord::Base
           (n.created_at AT TIME ZONE '#{Time.zone.tzinfo.name}' + '7 days'::interval) >= current_timestamp AT TIME ZONE '#{Time.zone.tzinfo.name}' AND
           n.user_id = users.id)", category_id)
   }
+
   scope :order_by, ->(sort_field){ order(sort_field) }
 
   def self.find_active!(id)
     self.active.where(id: id).first!
+  end
+
+  def contributor_number
+    #TODO: if you want to use this method contributor_numbers should be in a model class and have a job for refreshing it
+    self.class.connection.select_one("SELECT number FROM public.contributor_numbers WHERE user_id = #{self.id}")["number"].to_i
   end
 
   def has_online_project?
