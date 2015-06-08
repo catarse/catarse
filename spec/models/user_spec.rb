@@ -383,6 +383,33 @@ RSpec.describe User, type: :model do
     it{ is_expected.to eq(50.0) }
   end
 
+  describe "#contributor_number" do
+    let(:create_user){ create(:confirmed_contribution).user }
+    let(:connection){ ActiveRecord::Base.connection }
+
+    subject{ create_user.contributor_number }
+
+    context "when I'm the first contributor" do
+      before do
+        create(:pending_contribution) # this user should not count as contributor
+        create_user
+        connection.execute "REFRESH MATERIALIZED VIEW public.contributor_numbers"
+      end
+
+      it{ is_expected.to eq 1 }
+    end
+
+    context "when I'm the second contributor" do
+      before do
+        create(:confirmed_contribution)
+        create_user
+        connection.execute "REFRESH MATERIALIZED VIEW public.contributor_numbers"
+      end
+
+      it{ is_expected.to eq 2 }
+    end
+  end
+
   describe "#update_attributes" do
     context "when I try to update moip_login" do
       before do
