@@ -387,7 +387,7 @@ RSpec.describe User, type: :model do
     let(:create_user){ create(:confirmed_contribution).user }
     let(:connection){ ActiveRecord::Base.connection }
 
-    subject{ user.contributor_number }
+    subject{ create_user.contributor_number }
 
     context "when I'm the first contributor" do
       before do
