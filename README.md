@@ -1,12 +1,12 @@
-# Catarse 
+# Catarse
 [![Circle CI](https://circleci.com/gh/catarse/catarse/tree/master.svg?style=svg)](https://circleci.com/gh/catarse/catarse/tree/master)
-[![Coverage Status](https://img.shields.io/coveralls/catarse/catarse/channels.svg)](https://coveralls.io/r/catarse/catarse) 
-[![Dependency Status](https://img.shields.io/gemnasium/catarse/catarse.svg)](https://gemnasium.com/catarse/catarse) 
+[![Coverage Status](https://img.shields.io/coveralls/catarse/catarse/channels.svg)](https://coveralls.io/r/catarse/catarse)
+[![Dependency Status](https://img.shields.io/gemnasium/catarse/catarse.svg)](https://gemnasium.com/catarse/catarse)
 [![Code Climate](https://img.shields.io/codeclimate/github/catarse/catarse.svg)](https://codeclimate.com/github/catarse/catarse)
 
 The first crowdfunding platform from Brazil
 
-## An open source crowdfunding platform for creative projects
+## An open-source crowdfunding platform for creative projects
 
 Welcome to Catarse's source code repository.
 Our goal with opening the source code is to stimulate the creation of a community of developers around a high-quality crowdfunding platform.
@@ -22,7 +22,7 @@ To run this project you need to have:
 
 * Ruby 2.1.2
 * [PostgreSQL](http://www.postgresql.org/)
-  * OSX - [Postgress.app](http://postgresapp.com/)
+  * OSX - [Postgres.app](http://postgresapp.com/)
   * Linux - `$ sudo apt-get install postgresql`
   * Windows - [PostgreSQL for Windows](http://www.postgresql.org/download/windows/)
 
@@ -42,17 +42,20 @@ To run this project you need to have:
 
         $ cp config/database.sample.yml config/database.yml
 
-    Add your datbase credentials
+    You must do this to configure your local database!
+    Add your database username and password (unless you don't have any).
 
 * Install the gems
 
         $ bundle install
 
-*Install your front-end dependencies
-        
+* Install the front-end dependencies
+
         $ bower install
 
-* Create the database
+    Requires [bower](http://bower.io/#install-bower), which requires [Node.js](https://nodejs.org/download/) and its package manager, *npm*. Follow the instructions on the bower.io website.
+
+* Create and seed the database
 
         $ rake db:create db:migrate db:seed
 
@@ -68,10 +71,9 @@ Open [http://localhost:3000](http://localhost:3000)
 
 ### Translations
 
-We hope to support a lot of languages in the future.
-So we are willing to accept pull requests with translations to other languages.
+We hope to support a lot of languages in the future, so we are willing to accept pull requests with translations to other languages.
 
-Thanks a lot to Daniel Walmsley, from http://purpose.com, for starting the internationalization and beginning the english translation.
+Thanks a lot to Daniel Walmsley, from http://purpose.com, for starting the internationalization and beginning the English translation.
 
 ## Payment gateways
 
@@ -81,16 +83,16 @@ The current working engines are:
 * PayPal
 * WePay
 
-If you have created a different payment engine to Catarse please contact us so we can link your engine here.
-If you want to create a payment engine please join our mailing list at http://groups.google.com/group/catarse-dev
+If you have created a different payment engine to Catarse, please contact us so we can link your engine here.
+If you want to create a payment engine, please join our mailing list at http://groups.google.com/group/catarse-dev
 
 ## How to contribute with code
 
 Before contributing, take a look at our Roadmap (https://www.pivotaltracker.com/projects/427075) and discuss your plans in our mailing list (http://groups.google.com/group/catarse-dev).
 
-Our pivotal is concerned with user visible features using user stories. But we do have some features not visible to users that are planned such as:
+Our Pivotal is concerned with user visible features using user stories. But we do have some features not visible to users that are planned such as:
 * Turn Catarse into a Rails Engine with customizable views.
-* Make a installer script to guide users through initial Catarse configuration.
+* Make an installer script to guide users through initial Catarse configuration.
 
 After that, just fork the project, change what you want, and send us a pull request.
 
@@ -98,9 +100,9 @@ After that, just fork the project, change what you want, and send us a pull requ
 
 * Follow this style guide: https://github.com/bbatsov/ruby-style-guide
 * Create one acceptance tests for each scenario of the feature you are trying to implement.
-* Create model and controller tests to keep 100% of code coverage at least in the new parts that you are writing.
-* Feel free to add specs to the code that is already in the repository without the proper coverage ;)
-* Regard the existing tests for a style guide, we try to use implicit spec subjects and lazy evaluation as often as we can.
+* Create model and controller tests to keep 100% of code coverage in the new parts you are writing.
+* Feel free to add specs to committed code that lacks coverage ;)
+* Let our tests serve as a style guide: we try to use implicit spec subjects and lazy evaluation wherever we can.
 
 ## Credits
 
