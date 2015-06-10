@@ -65,8 +65,9 @@
                         = form.input :account_digit, as: :string, 
                         input_html: { class: 'positive' }
                   .w-col.w-col-6
-                    = form.input :account_type, as: :select, collection: ['Corrente', 'Poupança'], class: 'w-select positive',
-                    input_html: { class: 'positive' }
+                    = form.input :account_type, as: :string, class: 'positive',
+                      input_html: { class: 'positive', readonly: true, value: 'Só aceitamos conta corrente' },
+                      include_blank: true
                 .fontsize-base.fontweight-semibold Endereço
                 .divider.u-marginbottom-20
                 .w-row
