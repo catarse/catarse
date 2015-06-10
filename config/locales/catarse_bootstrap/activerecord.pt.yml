@@ -29,7 +29,7 @@ pt:
         agency_digit: 'Dígito agência'
         account: 'No. da conta'
         account_digit: 'Dígito conta'
-        account_type: 'Tipo de conta (só aceitamos conta corrente)'
+        account_type: 'Tipo de conta'
       bank_account:
         bank: 'Banco'
         bank_id: 'Banco'
