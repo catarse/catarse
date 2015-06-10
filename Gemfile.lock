@@ -105,8 +105,8 @@ GEM
       mailchimp-api (~> 2.0.4)
       rails (>= 4.0.3)
       rails-observers
-    catarse_pagarme (2.6.9)
-      pagarme (~> 1.9.8)
+    catarse_pagarme (2.6.10)
+      pagarme (= 1.10.0)
       rails (~> 4.0)
       weekdays (>= 1.0.2)
     catarse_settings_db (0.1.1)
@@ -352,7 +352,7 @@ GEM
       phantomjs (>= 1.9)
       railties (>= 3.2.0)
       sprockets-rails
-    json (1.8.2)
+    json (1.8.3)
     jwt (1.5.0)
     kaminari (0.16.3)
       actionpack (>= 3.0.0)
@@ -418,7 +418,7 @@ GEM
       json (~> 1.3)
       omniauth-oauth (~> 1.1)
     orm_adapter (0.5.0)
-    pagarme (1.9.9)
+    pagarme (1.10.0)
       multi_json
       rest-client
     pg (0.17.1)
@@ -642,7 +642,7 @@ DEPENDENCIES
   catarse_api!
   catarse_moip (~> 3.2.0)
   catarse_monkeymail (>= 0.1.6)
-  catarse_pagarme (= 2.6.9)
+  catarse_pagarme (= 2.6.10)
   catarse_settings_db (>= 0.1.0)
   chartkick
   cocoon
