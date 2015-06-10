@@ -76,6 +76,9 @@ Catarse::Application.configure do
   # Send deprecation notices to registered listeners.
   config.active_support.deprecation = :notify
 
+  # Prevents schema dump from throwing error in production.
+  config.active_record.schema_format = :ruby
+
   # Disable automatic flushing of the log to improve performance.
   # config.autoflush_log = false
 
