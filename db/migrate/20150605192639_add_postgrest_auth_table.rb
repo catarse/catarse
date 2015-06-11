@@ -4,7 +4,7 @@ class AddPostgrestAuthTable < ActiveRecord::Migration
       CREATE SCHEMA postgrest;
 
       CREATE TABLE postgrest.auth (
-        id character varying NOT NULL,
+        id text NOT NULL,
         rolname name NOT NULL,
         pass character(60) NOT NULL,
         CONSTRAINT auth_pkey PRIMARY KEY (id)

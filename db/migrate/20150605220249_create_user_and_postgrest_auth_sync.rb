@@ -4,7 +4,7 @@ class CreateUserAndPostgrestAuthSync < ActiveRecord::Migration
     CREATE EXTENSION pgcrypto;
     CREATE OR REPLACE FUNCTION postgrest.create_api_user() RETURNS TRIGGER AS $$
     BEGIN
-      INSERT INTO postgrest.auth (id, rolname, pass) VALUES (coalesce(new.email, new.id::text), CASE WHEN new.admin THEN 'admin' ELSE 'web_user' END, public.crypt(new.authentication_token, public.gen_salt('bf')));
+      INSERT INTO postgrest.auth (id, rolname, pass) VALUES (new.id::text, CASE WHEN new.admin THEN 'admin' ELSE 'web_user' END, public.crypt(new.authentication_token, public.gen_salt('bf')));
       return new;
     END;
     $$ LANGUAGE plpgsql;
@@ -12,17 +12,17 @@ class CreateUserAndPostgrestAuthSync < ActiveRecord::Migration
     CREATE OR REPLACE FUNCTION postgrest.update_api_user() RETURNS TRIGGER AS $$
     BEGIN
       UPDATE postgrest.auth SET 
-        id = coalesce(new.email, new.id::text),
+        id = new.id::text,
         rolname = CASE WHEN new.admin THEN 'admin' ELSE 'web_user' END, 
         pass = CASE WHEN new.authentication_token <> old.authentication_token THEN public.crypt(new.authentication_token, public.gen_salt('bf')) ELSE pass END
-      WHERE id = old.email;
+      WHERE id = old.id::text;
       return new;
     END;
     $$ LANGUAGE plpgsql;
 
     CREATE OR REPLACE FUNCTION postgrest.delete_api_user() RETURNS TRIGGER AS $$
     BEGIN
-      DELETE FROM postgrest.auth WHERE id = coalesce(old.email, old.id::text);
+      DELETE FROM postgrest.auth WHERE id = old.id::text;
       return old;
     END;
     $$ LANGUAGE plpgsql;
@@ -32,7 +32,7 @@ class CreateUserAndPostgrestAuthSync < ActiveRecord::Migration
     FOR EACH ROW
     EXECUTE PROCEDURE postgrest.create_api_user();
 
-    CREATE TRIGGER update_api_user AFTER UPDATE OF email, admin, authentication_token 
+    CREATE TRIGGER update_api_user AFTER UPDATE OF id, admin, authentication_token 
     ON public.users
     FOR EACH ROW
     EXECUTE PROCEDURE postgrest.update_api_user();
