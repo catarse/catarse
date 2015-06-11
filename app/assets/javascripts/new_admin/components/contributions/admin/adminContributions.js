@@ -1,13 +1,19 @@
 //contributions.admin_contributions.js
 app.AdminContributions = {
     controller: function() {
-      this.contributions = Contributions.get();
+      this.getContributions = function(filter){
+        var contributions = {};
+        contributions = (filter) ? Contributions.get(filter) : Contributions.get();
+        return contributions;
+      };
+      this.filter = app.submodule(app.AdminContributions_filter,{onFilter: this.getContributions});
+      this.list = app.submodule(app.AdminContributions_list, {contributions: this.getContributions});
     },
     view: function(ctrl) {
-      return  [ //Check why m.components errors on first redraw
-                m.component(app.AdminContributions_filter),
+      return  [ 
+                ctrl.filter(),
                 m(".w-section.section",[
-                  m.component(app.AdminContributions_list, {contributions: ctrl.contributions})
+                  ctrl.list(),
                 ]),
                 m(".w-section.section",[
                   m(".w-container",[
