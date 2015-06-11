@@ -1,6 +1,6 @@
 app.AdminContributions_list = {
   controller: function(args) {
-    this.contributions = m.prop(args.contributions || new app.Contribution())
+    this.contributions = m.prop(args.contributions || new app.Contributions())
   },
   view: function(ctrl) {
     return m(".w-container",[
