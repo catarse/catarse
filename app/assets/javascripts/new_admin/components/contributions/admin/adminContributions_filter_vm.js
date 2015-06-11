@@ -3,8 +3,10 @@ app.AdminContributions_filter.vm = (function(){
 
 
   function filter(){
-    alert("I will filter this!");
-    return false;
+    var filter = {
+      permalink: permalink()
+    };
+    return filter;
   }
 
   return {
