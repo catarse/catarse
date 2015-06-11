@@ -6,7 +6,7 @@ var Contributions = function(data){
   this.email = m.prop(data.email)
 }
 
-Contributions.list = function(data) {
+Contributions.get = function(filter) {
 
   var data = [];
   //quick manual factory

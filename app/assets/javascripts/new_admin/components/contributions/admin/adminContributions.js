@@ -1,10 +1,10 @@
 //contributions.admin_contributions.js
 app.AdminContributions = {
     controller: function() {
-      this.contributions = Contributions.list();
+      this.contributions = Contributions.get();
     },
     view: function(ctrl) {
-      return  [
+      return  [ //Check why m.components errors on first redraw
                 m.component(app.AdminContributions_filter),
                 m(".w-section.section",[
                   m.component(app.AdminContributions_list, {contributions: ctrl.contributions})
@@ -20,6 +20,6 @@ app.AdminContributions = {
                     ])
                   ])
                 ])
-              ]   
+              ];   
     }
 }

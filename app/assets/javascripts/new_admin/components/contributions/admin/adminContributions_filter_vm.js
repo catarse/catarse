@@ -1,5 +1,14 @@
 app.AdminContributions_filter.vm = (function(){
-  function Contributions(){
-    
+  var permalink = m.prop("");
+
+
+  function filter(){
+    alert("I will filter this!");
+    return false;
+  }
+
+  return {
+    permalink: permalink,
+    filter: filter
   }
 })();

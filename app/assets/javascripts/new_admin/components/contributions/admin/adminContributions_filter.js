@@ -1,6 +1,6 @@
 app.AdminContributions_filter = {
   controller: function(args){
-
+    this.vm = app.AdminContributions_filter.vm;
   },
   view: function(ctrl, args) {
     return m(".w-section.page-header",[
@@ -10,16 +10,16 @@ app.AdminContributions_filter = {
                 m("form[data-name='Email Form'][id='email-form'][name='email-form']", [
                   m(".w-row.u-marginbottom-20", [
                     m(".w-col.w-col-2", [
-                      m("label.fontsize-small[for='field']", "Permalink"),
-                      m("input.w-input.text-field.positive[id='field'][name='field'][placeholder='Example Text'][required='required'][type='text']")
+                      m("label.fontsize-small[for='permalink']", "Permalink"),
+                      m("input.w-input.text-field.positive[id='permalink'][name='permalink'][placeholder='permalink do projeto'][required='required'][type='text']",{onchange: m.withAttr("value", ctrl.vm.permalink), value: ctrl.vm.permalink()})
                     ]),
                     m(".w-col.w-col-4", [
-                      m("label.fontsize-small[for='field-2']", "Expiram entre"),
-                      m("input.w-input.text-field.positive[data-name='Field 2'][id='field-2'][name='field-2'][placeholder='Example Text'][required='required'][type='text']")
+                      m("label.fontsize-small[for='expiration']", "Expiram entre"),
+                      m("input.w-input.text-field.positive[data-name='Field 2'][id='expiration'][name='expiration'][placeholder='Expiram entre'][required='required'][type='text']")
                     ]),
                     m(".w-col.w-col-2", [
-                      m("label.fontsize-small[for='field-2']", "Por progresso %"),
-                      m("input.w-input.text-field.positive[data-name='Field 2'][id='field-2'][name='field-2'][placeholder='Example Text'][required='required'][type='text']")
+                      m("label.fontsize-small[for='progress']", "Por progresso %"),
+                      m("input.w-input.text-field.positive[data-name='Field 2'][id='progress'][name='progress'][placeholder='Progresso em %'][required='required'][type='text']")
                     ]),
                     m(".w-col.w-col-2", [
                       m("label.fontsize-small[for='field-3']", "Com o estado"),
@@ -57,7 +57,7 @@ app.AdminContributions_filter = {
               m(".w-row", [
                 m(".w-col.w-col-4"),
                 m(".w-col.w-col-4", [
-                  m("a.btn.btn-small[href='#']", "Filtrar")
+                  m("button.btn.btn-small", {onclick: ctrl.vm.filter},"Filtrar")
                 ]),
                 m(".w-col.w-col-4")
               ])
