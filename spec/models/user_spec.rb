@@ -590,16 +590,16 @@ RSpec.describe User, type: :model do
       user.email = 'foo@bar.com'
       user.admin = true
       user.save!
-      api_user = User.connection.select_all("SELECT * FROM postgrest.auth WHERE id = '#{user.email}'")[0]
-      expect(api_user["id"]).to eq user.email
+      api_user = User.connection.select_all("SELECT * FROM postgrest.auth WHERE id = '#{user.id}'")[0]
+      expect(api_user["id"]).to eq user.id.to_s
       expect(api_user["rolname"]).to eq 'admin'
       expect(api_user["pass"].size).to eq 60
     end
 
     it "should create api user on user creation" do
       user = create(:user)
-      api_user = User.connection.select_all("SELECT * FROM postgrest.auth WHERE id = '#{user.email}'")[0]
-      expect(api_user["id"]).to eq user.email
+      api_user = User.connection.select_all("SELECT * FROM postgrest.auth WHERE id = '#{user.id}'")[0]
+      expect(api_user["id"]).to eq user.id.to_s
       expect(api_user["rolname"]).to eq 'web_user'
       expect(api_user["pass"].size).to eq 60
     end
