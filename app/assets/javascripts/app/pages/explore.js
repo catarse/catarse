@@ -67,7 +67,7 @@ App.addChild('Explore', _.extend({
   followRoute: function(route, name, params){
     this.filter = {page: 1};
 
-    if(params.length > 0){
+    if(params.length > 0 && _.isString(params[0])){
       this.filter[name] = params[0];
     }
     else{
