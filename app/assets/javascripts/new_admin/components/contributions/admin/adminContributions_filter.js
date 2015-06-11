@@ -1,4 +1,7 @@
 app.AdminContributions_filter = {
+  controller: function(args){
+
+  },
   view: function(ctrl, args) {
     return m(".w-section.page-header",[
             m(".w-container",[

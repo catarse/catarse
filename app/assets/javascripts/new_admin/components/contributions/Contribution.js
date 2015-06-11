@@ -5,10 +5,10 @@ var Contributions = function(data){
   this.name = m.prop(data.name)
   this.email = m.prop(data.email)
 }
+
 Contributions.list = function(data) {
 
   var data = [];
-  
   //quick manual factory
   for(var i = 0; i < 5; i++){
     data[i] = {
@@ -17,7 +17,6 @@ Contributions.list = function(data) {
       email: 'teste'+i+'@teste.com'
     };
   }
-
   return data;
   //return m.request({method: "GET", url: "http://api.catarse.me/contributions", data: data});
 }
