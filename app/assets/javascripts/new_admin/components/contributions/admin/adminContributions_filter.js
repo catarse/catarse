@@ -1,6 +1,9 @@
 app.AdminContributions_filter = {
   controller: function(args){
-    this.vm = app.AdminContributions_filter.vm;
+    var vm = this.vm = app.AdminContributions_filter.vm;
+    this.filter = function(){
+      args.onFilter(vm.filter());
+    };
   },
   view: function(ctrl, args) {
     return m(".w-section.page-header",[
@@ -57,11 +60,11 @@ app.AdminContributions_filter = {
               m(".w-row", [
                 m(".w-col.w-col-4"),
                 m(".w-col.w-col-4", [
-                  m("button.btn.btn-small", {onclick: ctrl.vm.filter},"Filtrar")
+                  m("button.btn.btn-small", {onclick: ctrl.filter},"Filtrar")
                 ]),
                 m(".w-col.w-col-4")
               ])
             ])
           ]);
   }
-}
+};
