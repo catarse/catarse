@@ -23,7 +23,7 @@ RSpec.configure do |config|
     con.execute "SET client_min_messages TO warning;"
     con.execute "SET timezone TO 'utc';"
     current_user = con.execute("SELECT current_user;")[0]["current_user"]
-    con.execute %{ALTER USER #{current_user} SET search_path TO "$user", public, "1";}
+    con.execute %{ALTER USER #{current_user} SET search_path TO "$user", public, "1", "postgrest";}
     DatabaseCleaner.clean_with :truncation
     I18n.locale = :pt
     I18n.default_locale = :pt
