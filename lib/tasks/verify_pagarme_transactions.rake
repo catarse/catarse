@@ -64,7 +64,10 @@ task :verify_pagarme_transactions, [:start_date, :end_date]  => :environment do 
         # Atualiza os dados usando o pagarme_delegator caso o status não esteja batendo
         yield(source, payment)
       else
-        log = PaymentLog.find_or_create_by(gateway_id: source[:id], data: source.to_json)
+        log = PaymentLog.find_or_initialize_by(gateway_id: source[:id]) do |l|
+          l.data = source.to_json
+        end
+        log.save
         puts "saving not found payment at PaymentLog -> #{log.id}"
       end
     end
