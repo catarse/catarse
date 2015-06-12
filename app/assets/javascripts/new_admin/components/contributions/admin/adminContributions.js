@@ -1,19 +1,19 @@
 //contributions.admin_contributions.js
-app.AdminContributions = {
+admin_app.AdminContribution = {
     controller: function() {
-      this.getContributions = function(filter){
-        var contributions = {};
-        contributions = (filter) ? Contributions.get(filter) : Contributions.get();
-        return contributions;
+      var contributions = this.contributions = admin_app.Contribution.get();
+      this.filterContributions = function(filter){
+        console.log("Filtering contributions with: ");
+        console.log(filter);
+        contributions = admin_app.Contribution.get(filter);
+        return;
       };
-      this.filter = app.submodule(app.AdminContributions_filter,{onFilter: this.getContributions});
-      this.list = app.submodule(app.AdminContributions_list, {contributions: this.getContributions});
     },
     view: function(ctrl) {
       return  [ 
-                ctrl.filter(),
+                m.component(admin_app.AdminContributions_filter,{onFilter: ctrl.filterContributions}),
                 m(".w-section.section",[
-                  ctrl.list(),
+                  m.component(admin_app.AdminContributions_list, {contributions: ctrl.contributions}),
                 ]),
                 m(".w-section.section",[
                   m(".w-container",[
