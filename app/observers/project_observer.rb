@@ -41,7 +41,6 @@ class ProjectObserver < ActiveRecord::Observer
   def from_waiting_funds_to_successful(project)
     project.notify_owner(:project_success, from_email: CatarseSettings[:email_projects])
 
-    notify_admin_that_project_reached_deadline(project)
     notify_admin_that_project_is_successful(project)
     notify_users(project)
   end
@@ -75,7 +74,6 @@ class ProjectObserver < ActiveRecord::Observer
 
   def from_waiting_funds_to_failed(project)
     from_online_to_failed(project)
-    notify_admin_that_project_reached_deadline(project)
   end
 
   private
@@ -87,10 +85,6 @@ class ProjectObserver < ActiveRecord::Observer
   def notify_admin_project_will_succeed(project)
     redbooth_user = User.find_by(email: CatarseSettings[:email_redbooth_atendimento])
     project.notify_once(:redbooth_task_project_will_succeed, redbooth_user) if redbooth_user
-  end
-
-  def notify_admin_that_project_reached_deadline(project)
-    project.notify_to_backoffice(:adm_project_deadline, { from_email: CatarseSettings[:email_system] })
   end
 
   def notify_users(project)
