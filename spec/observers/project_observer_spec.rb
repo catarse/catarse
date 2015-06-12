@@ -102,18 +102,6 @@ RSpec.describe ProjectObserver do
     it "should create notification for project owner" do
       expect(ProjectNotification.where(user_id: project.user.id, template_name: 'project_received', project_id: project.id).count).to eq 1
     end
-
-    context "after creating the project" do
-      let(:project) { build(:project) }
-
-      before do
-        expect(InactiveDraftWorker).to receive(:perform_at)
-      end
-
-      it "should call perform at in inactive draft worker" do
-        project.save
-      end
-    end
   end
 
   describe "#from_draft_to_in_analysis" do

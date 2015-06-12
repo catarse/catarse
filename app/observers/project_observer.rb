@@ -20,7 +20,6 @@ class ProjectObserver < ActiveRecord::Observer
 
   def after_create(project)
     deliver_default_notification_for(project, :project_received)
-    InactiveDraftWorker.perform_at(1.day.from_now, project.id)
   end
 
   def from_draft_to_in_analysis(project)
