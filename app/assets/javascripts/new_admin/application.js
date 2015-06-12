@@ -1,11 +1,12 @@
 //= require mithril/mithril
 //= require_self
+//= require_tree ./lib
 //= require_tree ./components
 //= require ./router
 //= require ./init
 
-var app = window.app = {};
+var admin_app = window.admin_app = {};
 
-app.submodule = function(module, args) {
+admin_app.submodule = function(module, args) {
     return module.view.bind(this, new module.controller(args))
 }
