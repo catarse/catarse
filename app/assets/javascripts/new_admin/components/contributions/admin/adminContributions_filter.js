@@ -1,6 +1,6 @@
-app.AdminContributions_filter = {
+admin_app.AdminContributions_filter = {
   controller: function(args){
-    var vm = this.vm = app.AdminContributions_filter.vm;
+    var vm = this.vm = admin_app.AdminContributions_filter.vm;
     this.filter = function(){
       args.onFilter(vm.filter());
     };
