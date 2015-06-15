@@ -187,22 +187,8 @@ RSpec.describe ProjectObserver do
       expect(ProjectNotification.where(template_name: 'project_success', user: project.user, project: project).count).to eq 1
     end
 
-    it "should send adm_project_deadline notification" do
-      expect(ProjectNotification.where(template_name: 'adm_project_deadline', user: admin_user, project: project).count).to eq 1
-    end
     it "should create notification for admin" do
       expect(ProjectNotification.where(template_name: 'redbooth_task', user: redbooth_user, project_id: project.id).count).not_to be_nil
-    end
-  end
-
-  describe '#from_waiting_funds_to_failed' do
-    before do
-      admin_user
-      project.notify_observers(:from_waiting_funds_to_failed)
-    end
-
-    it "should send adm_project_deadline notification" do
-      expect(ProjectNotification.where(template_name: 'adm_project_deadline', user: admin_user, project: project).count).to eq 1
     end
   end
 end

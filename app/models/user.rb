@@ -160,10 +160,6 @@ class User < ActiveRecord::Base
     contributed_projects.where(state: 'failed')
   end
 
-  def send_credits_notification
-    self.notify(:credits_warning)
-  end
-
   def change_locale(language)
     if locale != language
       self.update_attributes locale: language
