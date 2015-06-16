@@ -2,7 +2,7 @@ desc 'Sync payment_transfers with pagar.me transfers'
 task verify_pagarme_transfers: [:environment] do
   PagarMe.api_key = CatarsePagarme.configuration.api_key
 
-  PaymentTransfer.pendings.each do |payment_transfer|
+  PaymentTransfer.pending.each do |payment_transfer|
     transfer = PagarMe::Transfer.find_by_id payment_transfer.transfer_id
 
     if transfer.status == 'transferred' && !payment_transfer.payment.refunded?
