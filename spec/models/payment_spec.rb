@@ -120,6 +120,30 @@ RSpec.describe Payment, type: :model do
     end
   end
 
+  describe "#move_to_trash" do
+    let(:payment) { create(:payment, state: 'pending') }
+
+    context "when transaction is not pending on gateway" do
+      before do
+        allow(payment).to receive(:current_transaction_state).and_return('paid')
+        expect(payment).to_not receive(:trash)
+        expect(payment).to receive(:change_status_from_transaction)
+      end
+
+      it { payment.move_to_trash }
+    end
+
+    context "when transaction is pending on gateway" do
+      before do
+        allow(payment).to receive(:current_transaction_state).and_return('pending')
+        expect(payment).to receive(:trash)
+        expect(payment).to_not receive(:change_status_from_transaction)
+      end
+
+      it { payment.move_to_trash }
+    end
+  end
+
   describe "#slip_payment?" do
     subject{ payment.slip_payment? }
 

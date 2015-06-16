@@ -27,11 +27,15 @@ class Payment < ActiveRecord::Base
   # move pending payments to deleted state
   def self.move_to_trash
     can_delete.each do |payment|
-      if ['pending'].include?(payment.current_transaction_state)
-        payment.trash
-      else
-        payment.change_status_from_transaction
-      end
+      payment.move_to_trash
+    end
+  end
+
+  def move_to_trash
+    if ['pending'].include?(self.current_transaction_state)
+      self.trash
+    else
+      self.change_status_from_transaction
     end
   end
 
