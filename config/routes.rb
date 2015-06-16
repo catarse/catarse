@@ -24,6 +24,8 @@ Catarse::Application.routes.draw do
  #mount CatarseWepay::Engine => "/", as: :catarse_wepay
   mount Dbhero::Engine => "/dbhero", as: :dbhero
 
+  resource :pending_refund, only: [:show, :edit]
+
   resources :categories, only: [] do
     member do
       get :subscribe, to: 'categories/subscriptions#create'
