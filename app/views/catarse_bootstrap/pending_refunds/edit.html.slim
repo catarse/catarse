@@ -11,60 +11,40 @@
         .fontsize-base Você possui R$100 em reembolsos pendentes dos projetos não financiados XYZ e XYZ e XYZ. Informe seus dados e resgate seu dinheiro!
       .w-col.w-col-2
     .w-row.u-marginbottom-60
-      .w-col.w-col-2
-      .w-col.w-col-8
-        .w-form
-          form#email-form data-name=("Email Form") name="email-form" 
-            .w-row
-              .w-col.w-col-6.w-sub-col
-                label.field-label.fontweight-semibold for="field"  Banco
-                select#field.w-select.text-field name="field" 
-                  option value=""  Select one...
-                  option value="First"  First Choice
-                  option value="Second"  Second Choice
-                  option value="Third"  Third Choice
-                .w-row.u-marginbottom-20
-                  .w-col.w-col-6
-                    label.field-label.fontweight-semibold for="field" 
-                      | Número do banco
-                      br>/
-                      | (3 números)
-                    a.alt-link.fontsize-smaller href="#"  Buscar por nome
-                  .w-col.w-col-6
-                    input#email-38.w-input.text-field data-name=("Email 38") name="email-38" required="required" type="email" /
-              .w-col.w-col-6
-                .w-row
-                  .w-col.w-col-6.w-col-small-6.w-col-tiny-6.w-sub-col-middle
-                    label.field-label.fontweight-semibold for="email-38"  Agência
-                    input#email-38.w-input.text-field data-name=("Email 38") name="email-38" required="required" type="email" /
-                  .w-col.w-col-6.w-col-small-6.w-col-tiny-6
-                    label.field-label.fontweight-semibold for="email-39"  Dígito agência
-                    input#email-39.w-input.text-field data-name=("Email 39") name="email-39" required="required" type="email" /
-            .w-row
-              .w-col.w-col-6
-                .w-row
-                  .w-col.w-col-6.w-col-small-6.w-col-tiny-6.w-sub-col-middle
-                    label.field-label.fontweight-semibold for="email-38"  No. da conta
-                    input#email-38.w-input.text-field data-name=("Email 38") name="email-38" required="required" type="email" /
-                  .w-col.w-col-6.w-col-small-6.w-col-tiny-6
-                    label.field-label.fontweight-semibold for="email-40"  Dígito conta
-                    input#email-40.w-input.text-field data-name=("Email 40") name="email-40" required="required" type="email" /
-              .w-col.w-col-6
-                label.field-label.fontweight-semibold for="email-37"  Nome do titular
-                input#email-37.w-input.text-field data-name=("Email 37") name="email-37" required="required" type="email" /
-            .w-row
-              .w-col.w-col-6.w-sub-col
-                label.field-label.fontweight-semibold for="email-41"  CPF/CNPJ do titular
-                input#email-41.w-input.text-field data-name=("Email 41") name="email-41" required="required" type="email" /
-              .w-col.w-col-6
-          .w-form-done
-            p Thank you! Your submission has been received!
-          .w-form-fail
-            p Oops! Something went wrong while submitting the form :(
-      .w-col.w-col-2
-    .w-row
-      .w-col.w-col-4
-      .w-col.w-col-4
-        a.btn.btn-large href="#"  Solicitar reembolso
-      .w-col.w-col-4
+      .w-col.w-col-8.w-col-offset-2
+        = simple_form_for resource, url: pending_refund_path, method: :put, html: { class: 'w-form' } do |bform|
+          .w-row
+            .w-col.w-col-6.w-sub-col
+              = bform.label :bank_id, class: 'field-label fontweight-semibold force-text-dark'
+              = bform.input_field :bank_id, as: :select, collection: Bank.to_collection, class: 'w-select'
+            .w-col.w-col-6
+              .w-row
+                .w-col.w-col-6.w-col-small-6.w-col-tiny-6.w-sub-col-middle
+                  = bform.label :agency, class: 'field-label fontweight-semibold force-text-dark'
+                  = bform.input_field :agency, as: :string
+                .w-col.w-col-6.w-col-small-6.w-col-tiny-6
+                  = bform.label :agency_digit, class: 'field-label fontweight-semibold force-text-dark'
+                  = bform.input_field :agency_digit, as: :string
+          .w-row
+            .w-col.w-col-6.w-sub-col
+              .w-row
+                .w-col.w-col-6.w-col-small-6.w-col-tiny-6.w-sub-col-middle
+                  = bform.label :account, class: 'field-label fontweight-semibold force-text-dark'
+                  = bform.input_field :account, as: :string
+                .w-col.w-col-6.w-col-small-6.w-col-tiny-6
+                  = bform.label :account_digit, class: 'field-label fontweight-semibold force-text-dark'
+                  = bform.input_field :account_digit, as: :string
+            .w-col.w-col-6
+              = bform.label :owner_name, class: 'field-label fontweight-semibold force-text-dark'
+              = bform.input_field :owner_name, as: :string
+          .w-row
+            .w-col.w-col-6.w-sub-col
+              = bform.label :owner_document, class: 'field-label fontweight-semibold force-text-dark'
+              = bform.input_field :owner_document, as: :tel, validation_text: true, data: { :'validate-cpf-cnpj' => true }
+            .w-col.w-col-6
+          .w-row
+            .w-col.w-col-4
+            .w-col.w-col-4
+              = bform.submit 'Solicitar reembolso',  class:'btn btn-large'
+            .w-col.w-col-4
 
