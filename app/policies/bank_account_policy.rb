@@ -13,7 +13,7 @@ class BankAccountPolicy < ApplicationPolicy
 
   protected
   def done_by_owner_or_admin?
-    record == user || user.try(:admin?)
+    record.user == user || user.try(:admin?)
   end
 end
 
