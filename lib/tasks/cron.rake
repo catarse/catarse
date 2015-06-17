@@ -3,7 +3,10 @@ namespace :cron do
   task hourly: [:finish_projects, :cancel_expired_waiting_confirmation_contributions, :refresh_materialized_views]
 
   desc "Tasks that should run daily"
-  task daily: [:refresh_materialized_views, :update_payment_service_fee, :notify_project_owner_about_new_confirmed_contributions, :deliver_projects_of_week, :verify_pagarme_transactions]
+  task daily: [:refresh_materialized_views, :update_payment_service_fee,
+               :notify_project_owner_about_new_confirmed_contributions,
+               :deliver_projects_of_week, :verify_pagarme_transactions,
+               :verify_pagarme_transfers]
 
   desc "Refresh all materialized views"
   task refresh_materialized_views: :environment do
@@ -51,7 +54,7 @@ namespace :cron do
   desc "Cancel all pending payments older than 1 week"
   task :cancel_expired_waiting_confirmation_contributions => :environment do
     puts "Cancel all pending payments older than 1 week"
-    Payment.can_delete.update_all(state: 'deleted')
+    Payment.move_to_trash
   end
 
   desc "Deliver a collection of recents projects of a category"

@@ -23,6 +23,23 @@ class Payment < ActiveRecord::Base
 
   scope :can_delete, ->{ where('payments.can_delete') }
 
+  # Starting move can_delete payments to trash
+  def self.move_to_trash
+    can_delete.each do |payment|
+      payment.move_to_trash
+    end
+  end
+
+  # Check current status on pagarme and
+  # move pending payment to deleted state
+  def move_to_trash
+    if ['pending'].include?(self.current_transaction_state)
+      self.trash
+    else
+      self.change_status_from_transaction
+    end
+  end
+
   def generate_key
     self.key ||= SecureRandom.uuid
   end

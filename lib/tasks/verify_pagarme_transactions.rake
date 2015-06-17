@@ -1,3 +1,19 @@
+desc 'Sync payment_transfers with pagar.me transfers'
+task verify_pagarme_transfers: [:environment] do
+  PagarMe.api_key = CatarsePagarme.configuration.api_key
+
+  PaymentTransfer.pending.each do |payment_transfer|
+    transfer = PagarMe::Transfer.find_by_id payment_transfer.transfer_id
+
+    if transfer.status == 'transferred' && !payment_transfer.payment.refunded?
+      payment_transfer.payment.update_column(:state, 'refunded')
+      payment_transfer.payment.update_column(:refunded_at, transfer.try(:funding_estimated_date).try(:to_datetime))
+    end
+
+    payment_transfer.update_attribute(:transfer_data, transfer.to_hash)
+  end
+end
+
 desc "Verify all transactions in pagarme for a given date range and check their consistency in our database"
 task :verify_pagarme_transactions, [:start_date, :end_date]  => :environment do |task, args|
   args.with_defaults(start_date: Date.today - 1, end_date: Date.today)
@@ -64,7 +80,10 @@ task :verify_pagarme_transactions, [:start_date, :end_date]  => :environment do 
         # Atualiza os dados usando o pagarme_delegator caso o status não esteja batendo
         yield(source, payment)
       else
-        log = PaymentLog.find_or_create_by(gateway_id: source[:id], data: source.to_json)
+        log = PaymentLog.find_or_initialize_by(gateway_id: source[:id]) do |l|
+          l.data = source.to_json
+        end
+        log.save
         puts "saving not found payment at PaymentLog -> #{log.id}"
       end
     end

@@ -13,7 +13,7 @@ RSpec.describe User::OmniauthHandler, type: :model do
   describe ".create_from_hash" do
     let(:auth)  do {
       'provider' => "facebook",
-      'uid' => "foobar",
+      'uid' => "547955110",
       'info' => {
         'name' => "Foo bar",
         'email' => 'another_email@anotherdomain.com',
