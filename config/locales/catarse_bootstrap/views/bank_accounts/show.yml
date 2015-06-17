@@ -1,0 +1,5 @@
+pt:
+  bank_accounts:
+    show:
+      page-title:
+      agency_label: "Agência: %{content}"
