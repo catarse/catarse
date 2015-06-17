@@ -1,4 +1,4 @@
-/- content_for :title, t('.page-title', name: @project.name)
+- content_for :title, t('.page-title')
 
 = render 'shared/header'
 
@@ -12,7 +12,7 @@
       .w-col.w-col-2
     .w-row.u-marginbottom-60
       .w-col.w-col-8.w-col-offset-2
-        = simple_form_for resource, url: pending_refund_path, method: :put, html: { class: 'w-form' } do |bform|
+        = simple_form_for resource, html: { class: 'w-form' } do |bform|
           .w-row
             .w-col.w-col-6.w-sub-col
               = bform.label :bank_id, class: 'field-label fontweight-semibold force-text-dark'
