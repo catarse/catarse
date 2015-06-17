@@ -3,7 +3,7 @@ App.addChild('Contribution', {
 
   events: {
     'click .radio label' : 'clickReward',
-    'click #submit' : 'submitForm',
+    'click .submit-form' : 'submitForm',
     'input #contribution_value' : 'restrictChars'
   },
 
@@ -13,11 +13,15 @@ App.addChild('Contribution', {
   },
 
   submitForm: function(){
+    var user_value = this.$('.selected').find('.user-reward-value').val();
+    var default_value = this.$('.selected').find('label[data-minimum-value]').data('minimum-value');
+    this.$value.val(user_value || default_value);
     this.$('form').submit();
     return false;
   },
 
   activate: function(){
+    this.$('.user-reward-value').mask('000.000.000,00', {reverse: true});
     this.$value = this.$('#contribution_value');
     this.$minimum = this.$('#minimum-value');
     this.clickReward({currentTarget: this.$('input[type=radio]:checked').parent()[0]});
@@ -40,7 +44,10 @@ App.addChild('Contribution', {
   selectReward: function(reward){
     this.resetSelected();
     reward.find('input[type=radio]').prop('checked', true);
+    this.$('.back-reward-money').hide();
+    reward.find('.back-reward-money').show();
     reward.parent().addClass('selected');
+
   },
 
   clickReward: function(event){
