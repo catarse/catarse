@@ -1,4 +1,16 @@
 class BankAccountPolicy < ApplicationPolicy
+  def show?
+    done_by_owner_or_admin?
+  end
+
+  def new?
+    done_by_owner_or_admin?
+  end
+
+  def create?
+    done_by_owner_or_admin?
+  end
+
   def edit?
     done_by_owner_or_admin?
   end
