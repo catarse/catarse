@@ -25,6 +25,19 @@ App.addChild('Contribution', {
     this.$value = this.$('#contribution_value');
     this.$minimum = this.$('#minimum-value');
     this.clickReward({currentTarget: this.$('input[type=radio]:checked').parent()[0]});
+    this.activateFloattingHeader();
+  },
+
+  activateFloattingHeader: function(){
+    var top;
+    var top_title = $('#new-contribution'),
+    faq_top = $("#faq-box").offset().top;
+    $(window).scroll(function() {
+        top = $(top_title).offset().top, 
+        $(window).scrollTop() > top ? $(".reward-floating").addClass("reward-floating-display") : $(".reward-floating").removeClass("reward-floating-display");
+        var t = $("#faq-box");
+        $(window).scrollTop() > faq_top ? $(t).hasClass("faq-card-fixed") || $(t).addClass("faq-card-fixed") : $(t).hasClass("faq-card-fixed") && $(t).removeClass("faq-card-fixed")
+    });
   },
 
   resetReward: function(event){

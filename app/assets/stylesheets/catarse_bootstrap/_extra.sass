@@ -100,7 +100,13 @@ img, iframe
     display: inline-block
     content: "\f105 "
     +transition(all 1s ease)
-
+.reward-floating
+  +transform(translateX(0px) translateY(-100px))
+  +transition(transform 500ms)
+.reward-floating-display
+  display: block 
+  +transform(translateX(0px) translateY(0px))
+  +transition(transform 500ms)
 
 //Fallback for browser that still do not support object-fit
 @supports (object-fit: cover) 
