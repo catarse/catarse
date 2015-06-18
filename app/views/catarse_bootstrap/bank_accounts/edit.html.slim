@@ -7,8 +7,8 @@
     .w-row.u-text-center.u-marginbottom-40
       .w-col.w-col-2
       .w-col.w-col-8
-        .fontsize-larger.u-marginbottom-20 Preencha&nbsp;os dados bancários
-        .fontsize-base Você possui R$100 em reembolsos pendentes dos projetos não financiados XYZ e XYZ e XYZ. Informe seus dados e resgate seu dinheiro!
+        .fontsize-larger.u-marginbottom-20= t('.fill_form')
+        .fontsize-base= t('.fill_form_text')
       .w-col.w-col-2
     .w-row.u-marginbottom-60
       .w-col.w-col-8.w-col-offset-2
@@ -45,6 +45,6 @@
           .w-row
             .w-col.w-col-4
             .w-col.w-col-4
-              = bform.submit 'Solicitar reembolso',  class:'btn btn-large'
+              = bform.submit t('.request_refunds'),  class:'btn btn-large'
             .w-col.w-col-4
 
