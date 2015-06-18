@@ -10,13 +10,13 @@
     .w-row
       .w-col.w-col-6.w-col-offset-3
         .card.card-terciary.u-radius.u-marginbottom-30
-          .fontsize-small.lineheight-looser Banco:&nbsp;Itaú 237
+          .fontsize-small.lineheight-looser= t('.bank_label', content: resource.bank)
           .fontsize-small.lineheight-looser= t('.agency_label', content: resource.agency)
-          .fontsize-small.lineheight-looser Conta:&nbsp;17543-4
-          .fontsize-small.lineheight-looser Nome:&nbsp;Thiago Machado Maia
-          .fontsize-small.lineheight-looser CPF:&nbsp;105281907-92
+          .fontsize-small.lineheight-looser= t('.account_label', content: resource.account)
+          .fontsize-small.lineheight-looser= t('.owner_name_label', content: resource.owner_name)
+          .fontsize-small.lineheight-looser= t('.owner_document_label', content: resource.owner_document)
         .w-row
           .w-col.w-col-6.w-col-small-6.w-col-tiny-6.w-sub-col-middle
-            a.btn.btn-terciary.btn-medium href="#"  NÃO
+            a.btn.btn-terciary.btn-medium href="#"= t('.answer_no')
           .w-col.w-col-6.w-col-small-6.w-col-tiny-6.w-sub-col-middle
-            a.btn.btn-medium href="#"  SIM
+            a.btn.btn-medium href="#"= t('.answer_yes')
