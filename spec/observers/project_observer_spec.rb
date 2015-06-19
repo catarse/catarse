@@ -176,6 +176,55 @@ RSpec.describe ProjectObserver do
     end
   end
 
+  describe "#from_online_to_failed" do
+    let(:project) do
+      create(:project, {
+        goal: 100,
+        online_date: 3.days.ago,
+        online_days: 2,
+        state: 'online'
+      })
+    end
+
+    let(:contribution_invalid) do
+      create(:confirmed_contribution, value: 10, project: project)
+    end
+
+    let(:contribution_valid) do
+      create(:confirmed_contribution, value: 10, project: project)
+    end
+
+    context "not request refund to invalid bank_account slip payment" do
+      let(:payment_valid) do
+        contribution_valid.payments.first
+      end
+
+      let(:payment_invalid) do
+        p = contribution_invalid.payments.first
+        p.update_column(:payment_method, 'BoletoBancario')
+        p
+      end
+
+      before do
+        payment_valid
+        payment_invalid
+        contribution_invalid.user.bank_account.destroy
+
+        project.finish
+        payment_valid.reload
+        payment_invalid.reload
+      end
+
+      it "should request refund for card payment" do
+        expect(payment_valid.state).to eq('pending_refund')
+      end
+
+      it "should not request_refund for invalid slip payment" do
+        expect(payment_invalid.state).to eq('paid')
+      end
+    end
+  end
+
   describe '#from_waiting_funds_to_successful' do
     before do
       admin_user
