@@ -3,6 +3,10 @@ class BankAccountPolicy < ApplicationPolicy
     done_by_owner_or_admin?
   end
 
+  def confirm?
+    done_by_owner_or_admin?
+  end
+
   def new?
     done_by_owner_or_admin?
   end
