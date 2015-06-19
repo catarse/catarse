@@ -49,6 +49,31 @@ RSpec.describe User, type: :model do
 
   end
 
+  describe "#pending_refund_payments" do
+    let(:user) { create(:user) }
+    let(:failed_project) { create(:project, state: 'online') }
+    let(:invalid_payment) do
+      c = create(:confirmed_contribution, project: failed_project, user: user)
+      c.payments.update_all(gateway: 'Pagarme')
+      c.payments.first
+    end
+    let(:valid_payment) do
+      c = create(:pending_refund_contribution, project: failed_project, user: user)
+      c.payments.update_all(gateway: 'Pagarme')
+      c.payments.first
+    end
+
+    subject { user.pending_refund_payments }
+
+    before do
+      invalid_payment
+      valid_payment
+      failed_project.update_column(:state, 'failed')
+    end
+
+    it { is_expected.to eq([invalid_payment]) }
+  end
+
   describe ".find_active!" do
     it "should raise error when user is inactive" do
       @inactive_user = create(:user, deactivated_at: Time.now)
