@@ -14,6 +14,7 @@ pt:
       select_reward: "Selecione essa recompensa"
       display_remaining: "%{remaining} de %{maximum} disponíveis"
       dont_want: "Não quero recompensa"
+      or_more: "ou mais"
       limited: Limitada
       sold_out: Esgotada
       contributions_to_confirm:

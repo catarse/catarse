@@ -73,7 +73,9 @@ img, iframe
 
 // New contribution page
 .text-field.back-reward-input-reward // fix text-field height conflict
-  height: 70px
+  height: 60px
+.w-radio-input.back-reward-radio-button
+  margin-top: -5px
 
 .back-reward-radio-reward
   .badge-success
@@ -98,7 +100,13 @@ img, iframe
     display: inline-block
     content: "\f105 "
     +transition(all 1s ease)
-
+.reward-floating
+  +transform(translateX(0px) translateY(-100px))
+  +transition(transform 500ms)
+.reward-floating-display
+  display: block 
+  +transform(translateX(0px) translateY(0px))
+  +transition(transform 500ms)
 
 //Fallback for browser that still do not support object-fit
 @supports (object-fit: cover) 

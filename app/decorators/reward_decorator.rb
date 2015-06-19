@@ -15,19 +15,24 @@ class RewardDecorator < Draper::Decorator
 
   def name
     deliver = %{
-        <div class="fontsize-smallest fontcolor-secondary">
-          Estimativa de entrega:&nbsp;#{source.display_deliver_estimate || I18n.t('projects.contributions.no_estimate')}
-        </div>
+      <div class="fontsize-smallest fontcolor-secondary">
+        Estimativa de entrega:&nbsp;#{source.display_deliver_estimate || I18n.t('projects.contributions.no_estimate')}
+      </div>
     }
     %{
-      <label data-minimum-value="#{source.minimum_value > 0 ? number_with_precision(source.minimum_value, precison: 2) : '10,00'}" class="w-form-label fontsize-large fontweight-semibold" for="contribution_reward#{source.id && "_#{source.id}"}">#{source.minimum_value > 0 ? source.display_minimum+'+' : I18n.t('rewards.index.dont_want')}</label>
-      <div>
-        <span class="badge badge-success fontsize-smaller">#{I18n.t('projects.contributions.you_selected')}</span>
+      <label data-minimum-value="#{source.minimum_value > 0 ? number_with_precision(source.minimum_value, precison: 2) : '10,00'}" class="w-form-label fontsize-base fontweight-semibold u-marginbottom-10" for="contribution_reward#{source.id && "_#{source.id}"}">#{source.minimum_value > 0 ? "#{source.display_minimum}  #{I18n.t('rewards.index.or_more')}" : I18n.t('rewards.index.dont_want')}</label>
+      <div class="w-row back-reward-money w-hidden">
+        <div class="w-col w-col-8 w-col-small-8 w-col-tiny-8 w-clearfix">
+          <div class="back-reward-input-reward placeholder _3">
+            <div>R$</div>
+          </div>
+          <input class="user-reward-value w-input back-reward-input-reward _2" type="text" placeholder="#{source.minimum_value > 0 ? number_with_precision(source.minimum_value, precison: 2) : '10,00'}">
+        </div>
+        <div class="submit-form w-col w-col-4 w-col-small-4 w-col-tiny-4"><a class="btn btn-large" href="#">Continuar&nbsp;&nbsp;<span class="fa fa-chevron-right"></span></a>
+        </div>
       </div>
-      <p class="fontsize-small u-margintop-20">
-      #{html_escape(source.description)}
-      </p>
-      <div class="fontsize-smallest fontcolor-secondary">
+      <div class="back-reward-reward-description">
+        <div class="fontsize-smaller u-marginbottom-10">#{html_escape(source.description)}</div>
         #{source.id ? deliver : ''}
       </div>
     }.html_safe
