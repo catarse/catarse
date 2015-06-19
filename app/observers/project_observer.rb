@@ -96,7 +96,13 @@ class ProjectObserver < ActiveRecord::Observer
 
   def request_refund_for_failed_project(project)
     project.payments.with_state('paid').each do |payment|
-      payment.request_refund
+      if payment.slip_payment?
+        if payment.user.try(:bank_account).try(:valid?)
+          payment.request_refund
+        end
+      else
+        payment.request_refund
+      end
     end
   end
 
