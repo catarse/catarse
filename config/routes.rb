@@ -27,6 +27,7 @@ Catarse::Application.routes.draw do
   resources :bank_accounts, except: [:destroy, :index] do
     member do
       get 'confirm'
+      put 'request_refund'
     end
   end
 

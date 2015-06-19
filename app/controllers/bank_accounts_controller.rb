@@ -2,7 +2,7 @@ class BankAccountsController < ApplicationController
   after_action :verify_authorized
   helper_method :resource, :user_decorator
   respond_to :html
-  before_filter :need_pending_refunds
+  before_filter :need_pending_refunds, except: [:show]
 
   def new
     authorize resource
@@ -42,15 +42,32 @@ class BankAccountsController < ApplicationController
     respond_with(resource, location: confirm_bank_account_path(resource))
   end
 
+  def request_refund
+    authorize resource
+    session[:pending_refund_payments_amount] = user_decorator.display_pending_refund_payments_amount
+
+    #TODO: find a way to put this logic into worker
+    # without duplicate pending refund requests
+    user.pending_refund_payments.each do |payment|
+      payment.request_refund
+    end
+
+    redirect_to bank_account_path(resource)
+  end
+
   def resource
     @bank_account ||= find_bank_account
   end
 
   def user_decorator
-    resource.user.decorator
+    user.decorator
   end
 
   protected
+
+  def user
+    @user ||= resource.user
+  end
 
   def need_pending_refunds
     if !current_user.pending_refund_payments.present?

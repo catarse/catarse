@@ -181,6 +181,49 @@ RSpec.describe BankAccountsController, type: :controller do
     end
   end
 
+  describe "PUT request_refund" do
+    context "when user does not have pending refund payments" do
+      let(:user) { create(:user) }
+      before do
+        put :request_refund, locale: :pt, id: user.bank_account.id
+      end
+      it{ is_expected.to redirect_to root_path }
+    end
+
+    context "when user have pending refund payments" do
+      let(:bank) { create(:bank) }
+      let(:payment) do
+        payment = create(:confirmed_contribution, {
+          project: project,
+          value: 10,
+          user: user
+        }).payments.first
+        payment.update_column(:gateway, 'Pagarme')
+        payment
+      end
+
+      before do
+        payment
+        project.update_column(:state, 'failed')
+
+        put :request_refund, {
+          locale: :pt,
+          id: user.bank_account.id
+        }
+
+        payment.reload
+      end
+
+      it "should request refund from pending_payments" do
+        expect(payment.pending_refund?).to eq(true)
+      end
+
+      it "should redirect to success" do
+        is_expected.to redirect_to bank_account_path(user.bank_account)
+      end
+    end
+  end
+
 
 end
 
