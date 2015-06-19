@@ -179,7 +179,7 @@ FactoryGirl.define do
 
   factory :payment do |f|
     f.association :contribution
-    f.gateway 'pagarme'
+    f.gateway 'Pagarme'
     f.value 10.00
     f.installment_value 10.00
     f.payment_method "CartaoDeCredito"

@@ -8,7 +8,7 @@
       .w-col.w-col-2
       .w-col.w-col-8
         .fontsize-larger.u-marginbottom-20= t('.fill_form')
-        .fontsize-base= t('.fill_form_text')
+        .fontsize-base= t('.fill_form_text', amount: user_decorator.display_pending_refund_payments_amount, project_names: user_decorator.display_pending_refund_payments_projects_name.to_sentence)
       .w-col.w-col-2
     .w-row.u-marginbottom-60
       .w-col.w-col-8.w-col-offset-2
