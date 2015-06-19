@@ -1,6 +1,6 @@
 class BankAccountsController < ApplicationController
   after_action :verify_authorized
-  helper_method :resource
+  helper_method :resource, :user_decorator
   respond_to :html
   before_filter :need_pending_refunds
 
@@ -46,11 +46,11 @@ class BankAccountsController < ApplicationController
     @bank_account ||= find_bank_account
   end
 
-  protected
-
-  def authorize_and_update_resource
-
+  def user_decorator
+    resource.user.decorator
   end
+
+  protected
 
   def need_pending_refunds
     if !current_user.pending_refund_payments.present?
