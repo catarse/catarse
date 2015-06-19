@@ -20,7 +20,7 @@
       .w-col.w-col-6
         .card.card-terciary.u-radius
           .fontsize-base.u-marginbottom-20.fontweight-semibold.u-text-center= t('.review') 
-          .fontsize-small.lineheight-looser= t('.value_label')
+          .fontsize-small.lineheight-looser= t('.value_label', value: session[:pending_refund_payments_amount])
           .fontsize-small.lineheight-looser= t('.bank_label', content: resource.bank)
           .fontsize-small.lineheight-looser= t('.agency_label', content: resource.agency)
           .fontsize-small.lineheight-looser= t('.account_label', content: resource.account)
