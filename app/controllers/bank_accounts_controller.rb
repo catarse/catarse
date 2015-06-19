@@ -2,10 +2,15 @@ class BankAccountsController < ApplicationController
   after_action :verify_authorized
   helper_method :resource
   respond_to :html
+  before_filter :need_pending_refunds
 
   def new
     authorize resource
-    redirect_to edit_bank_account_path(resource) unless resource.new_record?
+    if !resource.new_record?
+      redirect_to edit_bank_account_path(resource)
+    else
+      render :edit
+    end
   end
 
   def edit
@@ -27,6 +32,12 @@ class BankAccountsController < ApplicationController
   end
 
   protected
+
+  def need_pending_refunds
+    if !current_user.pending_refund_payments.present?
+      redirect_to root_path unless current_user.admin?
+    end
+  end
 
   def permitted_params
     params.require(:bank_account).permit(policy(resource).permitted_attributes)
