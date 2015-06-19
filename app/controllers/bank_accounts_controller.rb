@@ -28,7 +28,7 @@ class BankAccountsController < ApplicationController
   def update
     authorize resource
     resource.update_attributes(permitted_params)
-    respond_with resource
+    respond_with(resource, location: confirm_bank_account_path(resource))
   end
 
   def resource
