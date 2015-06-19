@@ -17,6 +17,6 @@
           .fontsize-small.lineheight-looser= t('.owner_document_label', content: resource.owner_document)
         .w-row
           .w-col.w-col-6.w-col-small-6.w-col-tiny-6.w-sub-col-middle
-            a.btn.btn-terciary.btn-medium href="#"= t('.answer_no')
+            = link_to t('.answer_no'), edit_bank_account_path(resource), class: 'btn btn-terciary btn-medium'
           .w-col.w-col-6.w-col-small-6.w-col-tiny-6.w-sub-col-middle
             a.btn.btn-medium href="#"= t('.answer_yes')
