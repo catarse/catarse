@@ -21,6 +21,10 @@ class BankAccountsController < ApplicationController
     authorize resource
   end
 
+  def confirm
+    authorize resource
+  end
+
   def update
     authorize resource
     resource.update_attributes(permitted_params)

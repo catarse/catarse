@@ -1,11 +1,13 @@
 pt:
   bank_accounts:
     show:
+      success: 'Sua solicitação foi efetuada com sucesso!'
+      success_detail: 'Te enviamos um email com detalhes da transação e com instruções sobre como proceder caso haja algum problema nesse processo. Confere lá!'
+      review: 'Resumo da transação'
       page-title:
+      value_label: 'Valor total do reembolso: R$100'
       agency_label: "Agência: %{content}"
       bank_label: "Banco: %{content}"
       account_label: "Conta: %{content}"
       owner_name_label: "Nome: %{content}"
       owner_document_label: "CPF: %{content}"
-      answer_yes: "SIM"
-      answer_no: "NÃO"
