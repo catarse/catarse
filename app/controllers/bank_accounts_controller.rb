@@ -25,6 +25,17 @@ class BankAccountsController < ApplicationController
     authorize resource
   end
 
+  def create
+    authorize resource
+    resource.update_attributes(permitted_params)
+
+    if resource.save
+      redirect_to confirm_bank_account_path(resource)
+    else
+      render :edit
+    end
+  end
+
   def update
     authorize resource
     resource.update_attributes(permitted_params)
@@ -36,6 +47,10 @@ class BankAccountsController < ApplicationController
   end
 
   protected
+
+  def authorize_and_update_resource
+
+  end
 
   def need_pending_refunds
     if !current_user.pending_refund_payments.present?
