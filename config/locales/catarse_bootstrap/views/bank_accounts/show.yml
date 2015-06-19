@@ -4,8 +4,8 @@ pt:
       success: 'Sua solicitação foi efetuada com sucesso!'
       success_detail: 'Te enviamos um email com detalhes da transação e com instruções sobre como proceder caso haja algum problema nesse processo. Confere lá!'
       review: 'Resumo da transação'
-      page-title:
-      value_label: 'Valor total do reembolso: R$100'
+      page-title: 'Reembolso solicitado com sucesso'
+      value_label: 'Valor total do reembolso: %{value}'
       agency_label: "Agência: %{content}"
       bank_label: "Banco: %{content}"
       account_label: "Conta: %{content}"
