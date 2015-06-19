@@ -1,7 +1,7 @@
 pt:
   bank_accounts:
     confirm:
-      page-title:
+      page-title: "Confirme seus dados bancarios"
       agency_label: "Agência: %{content}"
       bank_label: "Banco: %{content}"
       account_label: "Conta: %{content}"
