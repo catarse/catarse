@@ -87,5 +87,53 @@ RSpec.describe BankAccountsController, type: :controller do
       end
     end
   end
+
+  describe "POST create" do
+    context "when user does not have pending refund payments" do
+      before do
+        post :create, locale: :pt
+      end
+      it{ is_expected.to redirect_to root_path }
+    end
+
+    context "when user have pending refund payments" do
+      let(:bank) { create(:bank) }
+      let(:contribution) do
+        create(:confirmed_contribution, {
+          project: project,
+          value: 10,
+          user: user
+        })
+      end
+
+      before do
+        payment = contribution.payments.first
+        payment.update_column(:gateway, 'Pagarme')
+        project.update_column(:state, 'failed')
+      end
+
+      let(:user) { create(:user, bank_account: nil) }
+
+      before do
+        post :create, {
+          locale: :pt,
+          bank_account: {
+            bank_id: bank.id,
+            owner_name: "Foo Bar",
+            owner_document: "97666238991",
+            account_digit: "1",
+            agency: "1",
+            agency_digit: "1",
+            account: "1"
+          }
+        }
+      end
+
+      it "should redirect to confirm" do
+        is_expected.to redirect_to confirm_bank_account_path(user.bank_account)
+      end
+    end
+  end
+
 end
 
