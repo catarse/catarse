@@ -2,7 +2,7 @@ desc 'Check pending refund contributions'
 task verify_pagarme_pending_refunds: [:environment] do
   PagarMe.api_key = CatarsePagarme.configuration.api_key
 
-  Payment.with_state('pending_refund').find_each do |payment|
+  Payment.with_state('pending_refund').where(gateway: 'Pagarme').find_each do |payment|
     transaction = payment.pagarme_delegator.transaction
 
     unless %w(pending_refund refunded).include?(transaction.status)
