@@ -19,9 +19,7 @@ class Admin::ContributionsController < Admin::BaseController
   contribution_actions
 
   def gateway_refund
-    if resource.request_refund
-      resource.pagarme_delegator.refund
-    end
+    resource.request_refund
     redirect_to admin_contributions_path(params[:local_params])
   end
 

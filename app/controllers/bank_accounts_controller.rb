@@ -46,8 +46,6 @@ class BankAccountsController < ApplicationController
     authorize resource
     session[:pending_refund_payments_amount] = user_decorator.display_pending_refund_payments_amount
 
-    #TODO: find a way to put this logic into worker
-    # without duplicate pending refund requests
     user.pending_refund_payments.each do |payment|
       payment.request_refund
     end

@@ -10,10 +10,6 @@ class PaymentObserver < ActiveRecord::Observer
     notify_confirmation(payment) if payment.paid? && payment.state_changed?
   end
 
-  def from_confirmed_to_refunded_and_canceled(payment)
-    do_direct_refund(payment)
-  end
-
   def from_pending_refund_to_refunded(payment)
     payment.contribution.notify_to_contributor((payment.slip_payment? ? :refund_completed_slip : :refund_completed_credit_card))
   end
@@ -28,7 +24,6 @@ class PaymentObserver < ActiveRecord::Observer
   def from_paid_to_pending_refund(payment)
     contribution = payment.contribution
     contribution.notify_to_backoffice :refund_request, {from_email: contribution.user.email, from_name: contribution.user.name}
-    do_direct_refund(payment)
   end
 
   def from_paid_to_refused(payment)
@@ -39,13 +34,6 @@ class PaymentObserver < ActiveRecord::Observer
   alias :from_pending_to_refused :from_paid_to_refused
 
   private
-  def do_direct_refund(payment)
-    payment.direct_refund if payment.can_do_refund?
-  rescue Exception => e
-    Rails.logger.info "[REFUND ERROR] - #{e.inspect}"
-    payment.invalid_refund if payment.is_pagarme?
-  end
-
   def notify_confirmation(payment)
     contribution = payment.contribution
     contribution.notify_to_contributor(:confirm_contribution)
