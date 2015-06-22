@@ -28,7 +28,7 @@ RSpec.describe UserDecorator do
       p
     }
 
-    subject { user.decorator.display_pending_refund_payments_projects_name }
+    subject { user.decorator.display_pending_refund_payments_projects_name.sort }
 
     before do
       payment
