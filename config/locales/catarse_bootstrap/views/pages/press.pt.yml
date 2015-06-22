@@ -22,7 +22,8 @@ pt:
         subtitle: "Realizadores têm até 60 dias para captar a meta financeira que determinaram para o projeto acontecer. Em troca dos apoios, oferecem recompensas criativas."
         news: "Assine nossa news"
       assets:
-        title: "Precisa de arquivos em alta resolução da nossa marca e selos?"  
+        title: "Precisa de arquivos em alta resolução da nossa marca e selos?" 
+        cta_html: "Baixe nossas marcas &gt;" 
       email:
         title: "Quer falar com a gente?"
         cta: "comunicacao@catarse.me"
