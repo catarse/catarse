@@ -23,24 +23,17 @@
       .w-col.w-col-8.w-col-push-2
         .fontsize-large.fontweight-semibold.u-marginbottom-10 = t('.stats.title')
         .fontsize-large.u-marginbottom-40 = t('.stats.subtitle')
-        .w-row.w-hidden-small.u-text-center.u-marginbottom-40
-          .w-col.w-col-4
-            .w-hidden-small.text-success.lineheight-loose.fontsize-larger 190.000
-            p.w-hidden-small.fontsize-small Pessoas já apoiaram pelo menos&nbsp;1 projeto no Catarse
-          .w-col.w-col-4
-            .w-hidden-small.text-success.lineheight-loose.fontsize-larger 1,6 mil
-            p.w-hidden-small.fontsize-small
-              | Projetos já foram&nbsp;
-              = succeed "financiados" do
-                br/
-              | no Catarse
-          .w-col.w-col-4
-            .w-hidden-small.text-success.lineheight-loose.fontsize-larger 27 milhões
-            p.w-hidden-small.fontsize-small
-              | Doados para projetos&nbsp;
-              = succeed "publicados" do
-                br/
-              | por aqui
+        .w-row.w.hidden-small.u-text-center.u-marginbottom-40
+          - statistics = Statistics.first
+          .w-col.w-col-4.u-marginbottom-20
+            .text-success.lineheight-loose.fontsize-larger= number_with_delimiter(statistics.total_contributors)
+            .fontsize-small = t('.stats.people_html')
+          .w-col.w-col-4.u-marginbottom-20
+            .text-success.lineheight-loose.fontsize-larger= number_with_delimiter(statistics.total_projects_success)
+            .fontsize-small = t('.stats.projects_html')
+          .w-col.w-col-4.u-marginbottom-20
+            .text-success.lineheight-loose.fontsize-larger= number_to_human(statistics.total_contributed)
+            .fontsize-small = t('.stats.money_html')        
         a.alt-link.fontsize-large href="https://www.catarse.me/dbhero/dataclips/fa0d3570-9fa7-4af3-b070-2b2e386ef060" target="_blank"  = t('.stats.cta_html')
 .section-large
   .w-container
@@ -57,19 +50,19 @@
     .fontsize-large.u-text-center.fontweight-semibold.u-marginbottom-30 Acompanhe nossas histórias
     .w-row
       .w-col.w-col-3
-        a.btn.btn-dark.btn-large.u-marginbottom-10 href="https://drive.google.com/folderview?id=0B4k-uPp02LYJMGRweDRKVjZmMXM&amp;usp=sharing" target="_blank" 
+        a.btn.btn-dark.btn-large.u-marginbottom-10 href="https://www.facebook.com/Catarse.me" target="_blank" 
           span.fa.fa-facebook .
           | \&nbsp;Facebook
       .w-col.w-col-3
-        a.btn.btn-dark.btn-large.u-marginbottom-10 href="https://drive.google.com/folderview?id=0B4k-uPp02LYJMGRweDRKVjZmMXM&amp;usp=sharing" target="_blank" 
+        a.btn.btn-dark.btn-large.u-marginbottom-10 href="https://twitter.com/catarse" target="_blank" 
           span.fa.fa-twitter .
           | \&nbsp;Twitter
       .w-col.w-col-3
-        a.btn.btn-dark.btn-large.u-marginbottom-10 href="https://drive.google.com/folderview?id=0B4k-uPp02LYJMGRweDRKVjZmMXM&amp;usp=sharing" target="_blank" 
+        a.btn.btn-dark.btn-large.u-marginbottom-10 href="https://instagram.com/catarse/" target="_blank" 
           span.fa.fa-instagram .
           | \&nbsp;Instagram
       .w-col.w-col-3
-        a.btn.btn-dark.btn-large.u-marginbottom-10 href="https://drive.google.com/folderview?id=0B4k-uPp02LYJMGRweDRKVjZmMXM&amp;usp=sharing" target="_blank" 
+        a.btn.btn-dark.btn-large.u-marginbottom-10 href="http://blog.catarse.me/" target="_blank" 
           span.fa.fa-rss .
           | \&nbsp;Blog do Catarse
 .section-large.bg-blue-one
@@ -88,8 +81,6 @@
         .fontsize-larger.fontweight-semibold.u-marginbottom-10 = t('.email.title')
         div
           a.alt-link.fontsize-large href="mailto:comunicacao@catarse.me"  = t('.email.cta')
-
-
 
 
 
