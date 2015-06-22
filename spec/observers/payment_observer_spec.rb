@@ -65,21 +65,20 @@ RSpec.describe PaymentObserver do
       allow(payment).to receive(:can_do_refund?).and_return(true)
       payment.update_attributes(payment_method: payment_method)
       expect(payment).to receive(:direct_refund)
-      contribution.user.update_attributes name: nil
       payment.notify_observers :from_paid_to_pending_refund
     end
 
     context "when contribution is made with credit card" do
       let(:payment_method){ 'CartaoDeCredito' }
       it "should notify admin upon refund request" do
-        expect(ContributionNotification.where(template_name: 'refund_request', user_id: admin.id, from_email: contribution.user.email).count).to eq 1
+        expect(ContributionNotification.where(template_name: 'refund_request', user_id: admin.id, from_email: contribution.user.email, from_name: contribution.user.name).count).to eq 1
       end
     end
 
     context "when contribution is made with boleto" do
       let(:payment_method){ 'BoletoBancario' }
       it "should notify admin and contributor upon refund request" do
-        expect(ContributionNotification.where(template_name: 'refund_request', user_id: admin.id, from_email: contribution.user.email).count).to eq 1
+        expect(ContributionNotification.where(template_name: 'refund_request', user_id: admin.id, from_email: contribution.user.email, from_name: contribution.user.name).count).to eq 1
         expect(ContributionNotification.where(template_name: 'requested_refund_slip', user_id: contribution.user.id).count).to eq 0
       end
     end
