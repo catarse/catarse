@@ -1,6 +1,9 @@
 namespace :cron do
   desc "Tasks that should run hourly"
-  task hourly: [:finish_projects, :cancel_expired_waiting_confirmation_contributions, :refresh_materialized_views]
+  task hourly: [:finish_projects,
+                :cancel_expired_waiting_confirmation_contributions,
+                :refresh_materialized_views,
+                :verify_pagarme_pending_refunds]
 
   desc "Tasks that should run daily"
   task daily: [:refresh_materialized_views,
