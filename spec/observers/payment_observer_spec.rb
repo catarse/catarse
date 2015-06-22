@@ -17,7 +17,7 @@ RSpec.describe PaymentObserver do
 
   describe "after_update" do
     context "when is confirmed" do
-      let(:payment) do 
+      let(:payment) do
         payment = create(:payment, payment_method: 'BoletoBancario', state: 'pending')
         payment.pay!
         payment
@@ -64,7 +64,7 @@ RSpec.describe PaymentObserver do
       CatarseSettings[:email_payments] = admin.email
       allow(payment).to receive(:can_do_refund?).and_return(true)
       payment.update_attributes(payment_method: payment_method)
-      expect(payment).to receive(:direct_refund)
+      expect(payment).to_not receive(:direct_refund)
       payment.notify_observers :from_paid_to_pending_refund
     end
 
