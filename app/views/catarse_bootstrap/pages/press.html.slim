@@ -1,0 +1,100 @@
+- content_for :title, t('.page-title')
+= render 'shared/header_big', overlayer: true
+
+.hero-jobs.hero-medium
+  .w-container.u-text-center
+    img.icon-hero src="images/icon-jobs.png" /
+    .u-text-center.u-marginbottom-20.fontsize-largest Sala de Imprensa
+.section-large.bg-gray
+  .w-container
+    .w-row
+      .w-col.w-col-8.w-col-push-2
+        .u-marginbottom-20.fontsize-large O Catarse é o primeiro e maior site de crowdfunding, ou financiamento coletivo, do Brasil. Somos o ponto de encontro de uma crescente comunidade de pessoas interessadas em, juntas, contribuirem financeiramente para tirar do papel projetos de diversas categorias.
+.section-large
+  .w-container
+    .w-row
+      .w-col.w-col-8.w-col-push-2
+        .fontsize-large.fontweight-semibold.u-marginbottom-10 História da fundação do Catarse
+        .fontsize-large.u-marginbottom-20 Primeira plataforma de financiamento coletivo para projetos criativos no Brasil, o Catarse entrou no ar em 17 de janeiro de 2011. O manifesto de fundação dizia que o site nasceu por causa de uma dor: ver gente brilhante com projetos engavetados...&nbsp;
+        a.alt-link.fontsize-large href="https://docs.google.com/document/d/1g29ITtXrqBnThAWDHdPz1KqCrmIAb07urVF8Ru6735Q/edit?usp=sharing" target="_blank"  Leia a história completa &gt;
+.section-large.bg-gray
+  .w-container
+    .w-row
+      .w-col.w-col-8.w-col-push-2
+        .fontsize-large.fontweight-semibold.u-marginbottom-10 Nossos números
+        .fontsize-large.u-marginbottom-40 Muitos artistas, designers, pesquisadores, gamers, cientistas, empreendedores e ativistas encontraram na plataforma uma poderosa ferramenta para viabilizar financeiramente suas ações e projetos. Essa história pode ser contada em números.
+        .w-row.w-hidden-small.u-text-center.u-marginbottom-40
+          .w-col.w-col-4
+            .w-hidden-small.text-success.lineheight-loose.fontsize-larger 190.000
+            p.w-hidden-small.fontsize-small Pessoas já apoiaram pelo menos&nbsp;1 projeto no Catarse
+          .w-col.w-col-4
+            .w-hidden-small.text-success.lineheight-loose.fontsize-larger 1,6 mil
+            p.w-hidden-small.fontsize-small
+              | Projetos já foram&nbsp;
+              = succeed "financiados" do
+                br/
+              | no Catarse
+          .w-col.w-col-4
+            .w-hidden-small.text-success.lineheight-loose.fontsize-larger 27 milhões
+            p.w-hidden-small.fontsize-small
+              | Doados para projetos&nbsp;
+              = succeed "publicados" do
+                br/
+              | por aqui
+        a.alt-link.fontsize-large href="https://www.catarse.me/dbhero/dataclips/fa0d3570-9fa7-4af3-b070-2b2e386ef060" target="_blank"  Veja dados completos filtrados por categoria &gt;
+.section-large
+  .w-container
+    .w-row.u-marginbottom-30.u-text-center
+      .w-col.w-col-8.w-col-push-2
+        div
+          img src=("images/Screen Shot 2015-03-03 at 12.29.37 PM.png") width="219.984" /
+        .fontsize-base Precisa de&nbsp;arquivos em alta resolução da nossa marca e selos?
+    .w-row
+      .w-col.w-col-4..w-col-push-4.u-text-center
+        a.alt-link.fontsize-large href="https://www.catarse.me/dbhero/dataclips/fa0d3570-9fa7-4af3-b070-2b2e386ef060" target="_blank"  Baixe nossas marcas &gt;
+.section-large.bg-projectgrid
+  .w-container
+    .fontsize-large.u-text-center.fontweight-semibold.u-marginbottom-30 Acompanhe nossas histórias
+    .w-row
+      .w-col.w-col-3
+        a.btn.btn-dark.btn-large.u-marginbottom-10 href="https://drive.google.com/folderview?id=0B4k-uPp02LYJMGRweDRKVjZmMXM&amp;usp=sharing" target="_blank" 
+          span.fa.fa-facebook .
+          | \&nbsp;Facebook
+      .w-col.w-col-3
+        a.btn.btn-dark.btn-large.u-marginbottom-10 href="https://drive.google.com/folderview?id=0B4k-uPp02LYJMGRweDRKVjZmMXM&amp;usp=sharing" target="_blank" 
+          span.fa.fa-twitter .
+          | \&nbsp;Twitter
+      .w-col.w-col-3
+        a.btn.btn-dark.btn-large.u-marginbottom-10 href="https://drive.google.com/folderview?id=0B4k-uPp02LYJMGRweDRKVjZmMXM&amp;usp=sharing" target="_blank" 
+          span.fa.fa-instagram .
+          | \&nbsp;Instagram
+      .w-col.w-col-3
+        a.btn.btn-dark.btn-large.u-marginbottom-10 href="https://drive.google.com/folderview?id=0B4k-uPp02LYJMGRweDRKVjZmMXM&amp;usp=sharing" target="_blank" 
+          span.fa.fa-rss .
+          | \&nbsp;Blog do Catarse
+.section-large.bg-blue-one
+  .w-container
+    .w-row
+      .w-col.w-col-6.w-col-push-3
+        .fontsize-large.fontweight-semibold.u-text-center.u-marginbottom-30 Assine nossa news
+        div
+          .w-form.footer-newsletter
+            form#email-form-2 data-name=("Email Form 2") name="email-form-2" 
+              input#email.w-input.text-field.prefix data-name="Email" name="email" placeholder=("Digite seu email") type="text" /
+            .w-form-done
+              p Thank you! Your submission has been received!
+            .w-form-fail
+              p Oops! Something went wrong while submitting the form :(
+          a.w-inline-block.btn.btn-edit.postfix.btn-attached href="#" 
+            img.footer-news-icon src="images/icon-newsletter.png" /
+.section-large.bg-gray.before-footer
+  .w-container
+    .w-row.u-text-center
+      .w-col.w-col-2
+      .w-col.w-col-8.w-col-push-2
+        .fontsize-larger.fontweight-semibold.u-marginbottom-10 Quer falar com a gente?
+        div
+          a.alt-link.fontsize-large href="#"  comunicacao@catarse.me
+
+
+= render 'shared/footer_big'
