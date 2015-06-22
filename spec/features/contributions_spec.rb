@@ -62,7 +62,7 @@ RSpec.describe "Contributions", type: :feature do
     it "should redirect to contribution/edit page after selecting reward and clicking forward" do
       find("#contribute_project_form").click
       find(".back-reward-radio-reward:nth-of-type(2)").first("label").click
-      find("#submit").click
+      find(".back-reward-radio-reward:nth-of-type(2)").first(".submit-form").click
       uri = URI.parse(current_url)
       expect(uri).to have_content(/\/contributions\/(\d+)\/edit/)
     end
@@ -72,7 +72,7 @@ RSpec.describe "Contributions", type: :feature do
       uri_after = selected_card["data-new-contribution-url"]
       reward_id = selected_card["id"].split("_").last
       selected_card.click
-      sleep FeatureHelpers::TIME_TO_SLEEP
+      sleep FeatureHelpers::TIME_TO_SLEEP*2
       expect(page.has_checked_field?(reward_id)).to be true
     end
   end
@@ -81,7 +81,7 @@ RSpec.describe "Contributions", type: :feature do
     it "should redirect to thank you page after paying with a credit card" do
       find("#contribute_project_form").click
       find(".back-reward-radio-reward:nth-of-type(2)").first("label").click
-      find("#submit").click
+      find(".back-reward-radio-reward:nth-of-type(2)").first(".submit-form").click
       sleep FeatureHelpers::TIME_TO_SLEEP
       find("#next-step").click
       pay
@@ -90,7 +90,7 @@ RSpec.describe "Contributions", type: :feature do
 
     it "should redirect to thank you page after paying a contribution without reward with a credit card" do
       find("#contribute_project_form").click
-      find("#submit").click
+      find(".back-reward-radio-reward:nth-of-type(1)").first(".submit-form").click
       sleep FeatureHelpers::TIME_TO_SLEEP
       find("#next-step").click
       pay
@@ -99,7 +99,7 @@ RSpec.describe "Contributions", type: :feature do
 
     it "should redirect to thank you page after paying with a credit card a no reward contribution" do
       find("#contribute_project_form").click
-      find("#submit").click
+      find(".back-reward-radio-reward:nth-of-type(1)").first(".submit-form").click
       sleep FeatureHelpers::TIME_TO_SLEEP
       find("#next-step").click
       pay

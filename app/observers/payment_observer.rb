@@ -23,7 +23,7 @@ class PaymentObserver < ActiveRecord::Observer
 
   def from_paid_to_pending_refund(payment)
     contribution = payment.contribution
-    contribution.notify_to_backoffice :refund_request, {from_email: contribution.user.email, from_name: contribution.user.name}
+    contribution.notify_to_backoffice :refund_request, {from_email: contribution.user.email, from_name: contribution.user.name || UserNotifier.from_name}
   end
 
   def from_paid_to_refused(payment)

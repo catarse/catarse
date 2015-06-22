@@ -1,0 +1,87 @@
+- content_for :title, t('.page-title')
+= render 'shared/header_big', overlayer: true
+
+.hero-jobs.hero-medium
+  .w-container.u-text-center
+    = image_tag "icon-assets.png", class: "icon-hero"
+    .u-text-center.u-marginbottom-20.fontsize-largest = t('.hero.title')
+.section-large.bg-gray
+  .w-container
+    .w-row
+      .w-col.w-col-8.w-col-push-2
+        .u-marginbottom-20.fontsize-large = t('.abstract.title')
+.section-large
+  .w-container
+    .w-row
+      .w-col.w-col-8.w-col-push-2
+        .fontsize-large.fontweight-semibold.u-marginbottom-10 = t('.history.title')
+        .fontsize-large.u-marginbottom-20 = t('.history.subtitle')
+        a.alt-link.fontsize-large href="https://docs.google.com/document/d/1g29ITtXrqBnThAWDHdPz1KqCrmIAb07urVF8Ru6735Q/edit?usp=sharing" target="_blank"  = t('.history.cta_html')
+.section-large.bg-gray
+  .w-container
+    .w-row
+      .w-col.w-col-8.w-col-push-2
+        .fontsize-large.fontweight-semibold.u-marginbottom-10 = t('.stats.title')
+        .fontsize-large.u-marginbottom-40 = t('.stats.subtitle')
+        .w-row.w.hidden-small.u-text-center.u-marginbottom-40
+          - statistics = Statistics.first
+          .w-col.w-col-4.u-marginbottom-20
+            .text-success.lineheight-loose.fontsize-larger= number_with_delimiter(statistics.total_contributors)
+            .fontsize-small = t('.stats.people_html')
+          .w-col.w-col-4.u-marginbottom-20
+            .text-success.lineheight-loose.fontsize-larger= number_with_delimiter(statistics.total_projects_success)
+            .fontsize-small = t('.stats.projects_html')
+          .w-col.w-col-4.u-marginbottom-20
+            .text-success.lineheight-loose.fontsize-larger= number_to_human(statistics.total_contributed)
+            .fontsize-small = t('.stats.money_html')        
+        a.alt-link.fontsize-large href="https://www.catarse.me/dbhero/dataclips/fa0d3570-9fa7-4af3-b070-2b2e386ef060" target="_blank"  = t('.stats.cta_html')
+.section-large
+  .w-container
+    .w-row.u-marginbottom-30.u-text-center
+      .w-col.w-col-8.w-col-push-2
+        div
+          = image_tag "logo-catarse-press.png"
+        .fontsize-base = t('.assets.title')
+    .w-row
+      .w-col.w-col-4.w-col-push-4.u-text-center
+        a.alt-link.fontsize-large href="https://www.catarse.me/assets" target="_blank"  = t('.assets.cta_html')
+.section-large.bg-projectgrid
+  .w-container
+    .fontsize-large.u-text-center.fontweight-semibold.u-marginbottom-30 = t('.social.title')
+    .w-row
+      .w-col.w-col-3
+        a.btn.btn-dark.btn-large.u-marginbottom-10 href="https://www.facebook.com/Catarse.me" target="_blank" 
+          span.fa.fa-facebook 
+          |  Facebook
+      .w-col.w-col-3
+        a.btn.btn-dark.btn-large.u-marginbottom-10 href="https://twitter.com/catarse" target="_blank" 
+          span.fa.fa-twitter 
+          |  Twitter
+      .w-col.w-col-3
+        a.btn.btn-dark.btn-large.u-marginbottom-10 href="https://instagram.com/catarse/" target="_blank" 
+          span.fa.fa-instagram 
+          |  Instagram
+      .w-col.w-col-3
+        a.btn.btn-dark.btn-large.u-marginbottom-10 href="http://blog.catarse.me/" target="_blank" 
+          span.fa.fa-rss 
+          |  Blog do Catarse
+.section-large.bg-blue-one
+  .w-container
+    .w-row
+      .w-col.w-col-6.w-col-push-3
+        .fontsize-large.fontweight-semibold.u-text-center.u-marginbottom-30 = t('.social.news')
+        .w-form
+          = render 'shared/newsletter'
+
+.section-large.bg-gray.before-footer
+  .w-container
+    .w-row.u-text-center
+      .w-col.w-col-2
+      .w-col.w-col-8.w-col-push-2
+        .fontsize-larger.fontweight-semibold.u-marginbottom-10 = t('.email.title')
+        div
+          a.alt-link.fontsize-large href="mailto:comunicacao@catarse.me"  = t('.email.cta')
+
+
+
+= render 'shared/footer_big'
