@@ -18,11 +18,6 @@ class Admin::ContributionsController < Admin::BaseController
   end
   contribution_actions
 
-  def gateway_refund
-    resource.request_refund
-    redirect_to admin_contributions_path(params[:local_params])
-  end
-
   def update
     if params[:contribution]
       Contribution.update(params[:id], params[:contribution])
