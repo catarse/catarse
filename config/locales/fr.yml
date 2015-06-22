@@ -14,10 +14,10 @@ fr:
       confirmed_contributions: 'Bailleurs confirmés'
       created_projects: 'Projets créés'
   site:
-    title: "La plus grande communauté de crowdfunding au Brésil"
+    title: "La plus grande communauté de crowdfunding en France "
     meta_title:  "%{title} · %{company_name}"
-    description: "Catarse é uma ferramenta diferente ¿ e colaborativa ¿ para tirar o seu projeto do papel!"
-    keywords: "catarse, crowdfunding, projet, communauté, open source"
+    description: "Buzz&Boost est une plateforme collaborative differente pour faire éclore vos projetsl!"
+    keywords: "Buzz&Boost, crowdfunding, projet, communauté, open source"
 
   login:
     forgot_password:
@@ -37,9 +37,9 @@ fr:
     reward_description: 'Description de la récompense'
     confirmed_at: 'Paiement confirmé à'
     value: 'hauteur du financement'
-    service_fee: 'Honoraires Catarse'
+    service_fee: 'Honoraires Buzz&Boost'
     user_name: 'Nom du bailleur'
-    user_email: "Email de l'utilisateur Catarse"
+    user_email: "Email de l'utilisateur Buzz&Boost"
     payer_email: 'Email utilisateur pour passerelle de paiement'
     payment_method: 'Méthode de paiement'
     address_street: 'Rue'
@@ -48,7 +48,7 @@ fr:
     address_neighbourhood: 'Voisin'
     address_city: 'Ville'
     address_state: 'Etat'
-    address_zip_code: 'Zip code'
+    address_zip_code: 'code postal'
     anonymous: 'Anonyme'
   edit_project: 'Modifier ce projet'
   facebook_locale: 'fr_FR'
@@ -72,9 +72,9 @@ fr:
       subtitle: "total de %{total}"
   project_by: "projet soumis par"
   tell_about_this_contribution: "En parler à tout le monde!"
-  share_my_contributions: "Voir les projets que je soutiens sur Catarse!"
+  share_my_contributions: "Voir les projets que je soutiens sur Buzz&Boost!"
   tell_about_this_project: "Parler à tout le monde de ce projet!"
-  share_my_projects: "Voir mes projets sur Catarse!"
+  share_my_projects: "Voir mes projets sur Buzz&Boost!"
   count_contributed_projects: "financés %{total} projets"
   footer:
     titles:
@@ -155,11 +155,11 @@ fr:
         headline: 'entête'
         image_url: "URL de l'image"
         name: 'nom'
-        user_id: "ID de l'utilisateur"
+        user_id: "identité de l'utilisateur"
         video_url: "URL de la vidéo"
         permalink: 'URL du projet'
-        traffic_sources: "Comment avez-vous entendu parler de Catarse?"
-        more_links: 'Où pourrons nous avoir des informations sur vous et sur votre projet?'
+        traffic_sources: "Comment avez-vous entendu parler de Buzz&Boost?"
+        more_links: 'liens complémentaires vers des informations sur vous et votre projet?'
       reward:
         description: Description
         maximum_contributions: "Nombre maximal de bailleurs"
@@ -171,9 +171,9 @@ fr:
         address_number: 'Numéro'
         address_state: State
         address_street: Street
-        address_zip_code: "Zip code"
+        address_zip_code: "code postal"
         cpf: 'CPF / CNPJ '
-        cpf_hint_title: 'Nota Fiscal será emitida para esse documento'
+        cpf_hint_title: 'une facture sera émise pour ce document'
         cpf_hint: '(?)'
         state_inscription: "Inscription depuis l'état"
         moip_login: 'Connexion MoIP'
@@ -186,14 +186,14 @@ fr:
         password: Password
         password_confirmation: "Confirmation du mot de passe"
         phone_number: "Numéro du téléphone mobile"
-        newsletter: 'Je veux être informé des nouveautés de Catarse'
+        newsletter: 'Je veux être informé des nouveautés Buzz&Boost'
     models:
       contribution: Contribution
       category: Category
       project: Project
       reward: Reward
   contribution:
-    display_confirmed_at: "il y'a %{time_ago} "
+    display_confirmed_at: "il y a %{time_ago} "
     reward_must_be_from_project: "doit faire partie du même projet"
     should_not_contribute_if_maximum_contributions_been_reached: "a atteint la limite maximale de bailleurs"
     value_must_be_at_least_rewards_value: "doit être au minimum %{minimum_value} pour la récompense selectionnée"
@@ -255,12 +255,12 @@ fr:
       title: "Découvrir les projets impressionants"
     title: "Parcourir les projets"
     project:
-      empty: "Écoutez, nous n'avons trouvé aucun projet correspondant à votre recherche. Vous voulez essayer avec d'autres termes ? =D"
+      empty: "Nous n'avons trouvé aucun projet correspondant à votre recherche. Vous voulez essayer avec d'autres critères ? =D"
   formtastic:
     hints:
       contribution:
-        credits: "Vous avez <strong>%{credits}</strong> en crédits et vous pouvez les utiliser sans faire un nouveau paiement."
-        value: "Choisissez votre montant ;) mise de départ R$10, tout montant supérieur est encore meilleur"
+        credits: "Vous avez <strong>%{credits}</strong> en crédits et vous pouvez les utiliser sans faire de nouveau paiement."
+        value: "Choisissez votre montant ;) mise de départ R$10, tout montant supérieur est encore valide"
       project:
         video_url_edit: 'Collez ici le lien de votre vidéo Vimeo/Youtube'
         about: "Dites-nous ce qui vous a inspiré pour arriver à ce projet. Soyez fin, objectif, attractif, présentez à vos lecteurs  un contenu qui les mobilise, tout en étant très transparent sur votre projet!"
@@ -269,7 +269,7 @@ fr:
         expires_at: "Enfin, choisissez combien de temps vous voulez que votre campagne dure. Encore une fois, il s'agit d'un choix stratégique: si vous mettez beaucoup de temps, les gens vont perdre de l'intérêt, si vous en mettez trop peu, vous risquez de ne pas atteindre l'objectif."
         online_days: "Enfin, choisissez combien de temps vous voulez que votre campagne dure. Encore une fois, il s'agit d'un choix stratégique: si vous mettez beaucoup de temps, les gens vont perdre de l'intérêt, si vous en mettez trop peu, vous risquez de ne pas atteindre l'objectif."
         goal: "Montant en reais (R$)"
-        first_contributions: "Pour atteindre votre objectif financier il est indispensable d'impliquer les gens proches de vous et de votre projet. Donc, énumérez ici qui seront vos 20 premiers bailleurs de fonds ;)"
+        first_contributions: "Pour atteindre votre objectif financier il est indispensable d'impliquer les gens proches de vous et de votre projet. Donc, énumérez ici qui pourraient être vos 20 premiers bailleurs de fonds ;)"
         headline: "Résumez votre projet en 140 caractères. Ce sera le premier contact que les visiteurs auront avec votre projet, avant même de voir la vidéo. Soyez créatif, clair et direct ;)"
         name: "Soyez aussi objectif que possible. Donnez des explications dans la section 'à propos'."
         uploaded_image: "Mettez une image de 512x400(.jpg)."
@@ -289,26 +289,26 @@ fr:
         comment: "Laisser un commentaire à propos de ce projet"
       project:
         more_links: "Lister les liens des projets similaires *"
-        traffic_sources: "Comment avez-vous entendu parler de Catarse?"
+        traffic_sources: "Comment avez-vous entendu parler de Buzz&Boost?"
         headline: "Conclusion"
         category: 'Catégorie'
         first_contributions: "Lister vos premiers bailleurs *"
-        about: "A propos de votre projet. Comment allez-vous utiliser cet argent?"
+        about: "A propos de votre projet. Comment allez-vous utiliser les fonds collectés?"
         expires_at: "Quelle est la date limite pour atteindre vos objectifs ?"
         goal: "Combien espérez-vous collecter ? (en chiffres seulement)"
         name: "Nom du projet"
-        online_days: 'Combien de jour de campagne ?'
+        online_days: 'Nombre de jour de campagne ?'
         video_url: Video
         uploaded_image: "image du projet"
       reward:
-        maximum_contributions: "Maximum de bailleurs (facultatif)"
+        maximum_contributions: "collecte maximale (facultatif)"
         days_to_delivery: "Jours pour livrer"
     optional: " (facultatif)"
   found_plural: 'Trouvés'
   found_singular: 'Trouvé'
   here: here
-  i_contributed: "j'ai financé le projet %{name} sur @catarse"
-  i_just_contributed: "je viens de financer le projet %{name} sur @catarse"
+  i_contributed: "j'ai financé le projet %{name} sur Buzz&Boost"
+  i_just_contributed: "je viens de financer le projet %{name} sur Buzz&Boost"
   layouts:
     login:
       login_with_facebook: "connexion avec votre compte facebook"
@@ -318,7 +318,7 @@ fr:
       help: Help
       signup: "Créer un compte"
       signin: Login
-      discover: "Découvrir"
+      discover: Discover
       submit: Proposer votre projet
       profile: "Mon profil"
       account: "Mon compte"
@@ -347,20 +347,20 @@ fr:
       site_title: "Retrouver mon mot de passe"
   project:
     start:
-      email_subject: "Votre projet a été reçu par l'équipe de Catarse"
-      email_text: "Merci d'avoir confié votre projet à Catarse :) <br> Nous savons que vous attendez une réponse rapide, mais, pour être franc, nous prennons jusqu'à 4 jours pour répondre, ok? C'est parce que nous avons une petite équipe qui travaille sur plusieurs projets. Notez que la réponse peut venir plus tôt. En attendant, ça vaut la peine de voir les projets qui sont déjà en ligne (<a href='%{explore_link}'>%{explore_link}</ a>) et - si vous aimez l'un d'eux, soutenez-le! C'est la façon de montrer le soutien de la culture de crowdfunding au Brésil et à nourrir l'écosystème qui ne cesse de croître autour Catarse. <br> En outre, vous aurez un peu d'inspiration pour votre propre projet...<br > Restez à l'écoute pour les mises à jour sur <a href='%{facebook}' style='color: #E75297 !important;'> Facebook </ a> et obtenez une connaissance plus approfondie sur Catarse lire les messages dans notre <a href = '% {blog} 'style =' color:. # E75297 !important; '> blog </ a> <br> Si vous avez des questions, envoyez nous un email à:% {email}"
-      notification_text: "Votre projet a été reçu par l'équipe Catarse"
+      email_subject: "Votre projet a été reçu par l'équipe de Buzz&Boost"
+      email_text: "Merci d'avoir confié votre projet à Buzz&Boost :) <br> Nous vous répondrons sous 4 jours. En attendant, explorez les autres projets en ligne (<a href='%{explore_link}'>%{explore_link}</ a>) et - si vous aimez l'un d'eux, soutenez-le!"
+      notification_text: "Votre projet a été reçu par l'équipe Buzz&Boost"
     finish:
       successful:
-        email_subject: "Hourra! le projet %{project_name} a été accepté sur Catarse!"
-        email_text: "Le projet %{project_link}, que vous avez soutenu, a été financé!<br><br> Le projet a, vous inclus, %{project_total_contributions}  bailleurs, a été financé à hauteur de %{project_pledged} et a atteint %{project_process}% de l'objectif =D<br><br>Une chose importante à savoir: Catarse met 3 jours avant d'envoyer à l'initiateur du projet la liste des bailleurs. Alors, il vous contactera pour vous remercier et discuter du délais pour votre récompense. ok?<br><br> Alors pourquoi ne pas partager avec vos amis ce succès ?<br><br><div style='text-align:center;'>%{facebook_button}%{twitter_button}</div><br><br>Si vous voulez être tenu au courant des nouveautés de %{project_owner_name}, envoyez un email à %{project_owner_email}.<br><br>Si vous avez des questions à propos de Catarse, allez sur FAQ: <a href='http://www.catarse.me/faq' style='color: #008800';>www.catarse.me/faq</a> ou envoyez un email à <a href='mail_to:contato@catarse.me' style='color: #008800;'>contato@catarse.me</a><br>"
-        facebook_text: "Houra! Le projet '%{name}', que j'ai financé sur Catarse a vu le jour!"
+        email_subject: "Hourra! le projet %{project_name} a été accepté sur Buzz&Boost!"
+        email_text: "Le projet %{project_link}, que vous avez soutenu, a été financé!<br><br> Le projet a, vous inclus, %{project_total_contributions}  bailleurs, a été financé à hauteur de %{project_pledged} et a atteint %{project_process}% de l'objectif =D<br><br>Une chose importante à savoir: Buzz&Boost envoie sous 3 jours la liste des bailleurs au porteur du projet. Nous vous contacterons pour vous remercier et vous informer du délai pour recevoir votre récompense. <br><br> Partagez ce succès avec vos amis! <br><br><div style='text-align:center;'>%{facebook_button}%{twitter_button}</div><br><br>Si vous voulez être informé de l'actualité de %{project_owner_name}, envoyez un email à %{project_owner_email}.<br><br>Si vous avez des questions à propos de Buzz&Boost, allez sur FAQ: <a href='http://www.Buzz&Boost.fr/faq' style='color: #008800';>www.catarse.me/faq</a> ou envoyez un email à <a href='mail_to:contact@Buzz&Boost.fr' style='color: #008800;'>contact@Buzz&Boost.fr</a><br>"
+        facebook_text: "Houra! Le projet '%{name}', que j'ai financé sur Buzz&Boost a vu le jour!"
         notification_text: "Houra! le projet %{link} que vous avez financé a vu le jour!"
         reward_notification_text: "Bientôt, %{link} vous contactera pour votre récompense!"
-        twitter_text: "Houra! Le projet '%{name}', que j'ai financé sur @catarse! a réussi %{short_url}"
+        twitter_text: "Houra! Le projet '%{name}', que j'ai financé sur Buzz&Boost! a réussi %{short_url}"
       unsuccessful:
-        email_subject: "The project %{project_name} wasn't funded on Catarse."
-        email_text: "Malheureusement ce projet %{project_link} n'a pas atteint ses objectifs sur Catarse.<br><br>Vous avez reçu <strong>%{value}</strong> de crédits que vous pouvez utiliser sur d'autres projets. Vous pouvez accéder à d'autres projets %{project_category} ici %{explore_category_link}.<br><br>Vous pouvez demander à être remboursé en cliquant ici %{credits_link}. Si vous n'y arrivez pas facilement, faites nous un email à financeiro@catarse.me avec comme sujet 'Refund - login issue'.<br><br>Et si, pour une raison quelconque vous souhaitez contacter %{project_owner_name}, envoyez un email à %{project_owner_email}.<br>"
+        email_subject: "le projet %{project_name} n'a pas atteint la somme demandée sur Buzz&Boost."
+        email_text: "Malheureusement ce projet %{project_link} n'a pas atteint ses objectifs sur Buzz&Boost.<br><br>Vous avez reçu <strong>%{value}</strong> de crédits que vous pouvez utiliser sur d'autres projets. Vous pouvez accéder à d'autres projets %{project_category} ici %{explore_category_link}.<br><br>Vous pouvez demander à être remboursé en cliquant ici %{credits_link}. Si vous rencontrez un problème, envoyez nous un email à contact@Buzz&Boost.fr avec comme sujet 'Remboursement '.<br><br>Et si, pour une raison quelconque vous souhaitez contacter %{project_owner_name}, envoyez un email à %{project_owner_email}.<br>"
         notification_text: "Vous avez reçu %{value} en credits que vous pouvez utiliser pour soutenir d'autres projects. Vous pouvez aussi demander un remboursement %{link}."
         unsuccessful_text: "Le projet %{link} que vous avez soutenu n'as pas été financé."
     video_regex_validation: "Seules les vidéos Vimeo sont autorisées"
@@ -400,83 +400,83 @@ fr:
       show:
         error: "Ooops. Vous pourrez accéder à cette page seulement après avoir aidé à financer un projet."
         moip_message: "Votre transaction est acceptée et votre code Moip est ¿%{code}¿.<br>Pour tout renseignement concernant cette transaction, contact Moip."
-        header_subtitle: "Sans vous ce projet pourrait ne pas avoir la chance de voir le jour. Bienvenu dans l'équipe"
+        header_subtitle: "Sans vous ce projet pourrait ne pas avoir la chance de voir le jour. Bienvenue dans l'équipe"
         header_title: "Merci! :D"
         text_subtitle: "Parlez de ce que vous venez de faire"
         recommended_projects: "Ces projets pourraient vous intéresser:"
         text_title_html: "Vous faites désormais partie d'un groupe qui fait tout son possible pour réaliser %{link}."
         title: "Merci"
       checkout:
-        no_credits: "You don't have enough credits to contribute this project."
-        success: "Your contribution was successfully made. Thanks a lot!"
+        no_credits: "vous n'avez pas assez de crédits pour crontribuer à ce projet."
+        success: "Votre contribution a bien été enregistrée. Merci beaucoup!"
       new:
-        cannot_contribute: "It's not possible to contribute this project right now. Please, contribute other projects."
+        cannot_contribute: "Il n'est pas possible de contribuer à ce projet. Découvrez et soutenez d'autres projets."
         header:
-          subtitle: "You're just a few steps away from making a difference and becoming a part of this project."
+          subtitle: "Vous êtes sur le point de prendre part à ce projet."
           title: "Oohh yeah!"
-        no_reward: "Thanks. I just want to help the project."
-        submit: "Review and proceed to checkout"
-        title: "Contribute %{name}"
+        no_reward: "Merci. Je veux juste soutenir ce projet."
+        submit: "vérifiez et procéder au règlement"
+        title: "Contribution %{name}"
       edit:
-        brazil_address_title: 'Fill when you contribution is in Brazil'
-        live_in_brazil: "If you live in Brazil, please check this box"
-        credits_notice_html: "This contribution will be payed with your credits. After the confirmation, you will have <strong>%{credits}</strong> in credits to contribute other projects."
-        error: "Ooops. There was an error while registering your contribution. Please try again."
+        brazil_address_title: 'Remplissez si vous êtes en France'
+        live_in_brazil: "Si vous vivez en France, merci de cocher cette case"
+        credits_notice_html: "Cette contribution ser réglée avec vos crédits. Après confimation, vous aurez un solde de %{credits}</strong> credits pour contribuer à d'autres projets."
+        error: "Ooops. Une erreur est survenue à l'enregistrement de votre contribution. Merci de réessayer ultérieurement."
         international:
-          description: "You can use PayPal to make international payments"
-          important_html: "<p>The use of PayPal is destinated mostly for international payments. That's because you'll have only 60 days to receive an eventual refund without paying any fee.</p><p>In case you can make the regular payment through MoIP, we recommend you to do it.</p><p>But if that's not possible, don't worry: you'll always be able to receive your money back. Only, in case your refund is made more than 60 days after your payment, you'll have to pay PayPal's fee, which is 5,4% + R$0,60 per transaction.</p>"
-          submit: "Proceed to PayPal's checkout"
-          title: "Want to make an international payment?"
-        review_with_reward_html: "You will contribute with <strong>%{value}</strong> and receive the following reward:"
-        review_without_reward_html: "You will contrubute with <strong>%{value}</strong> but you don't want any reward for that."
+          description: "VOus pouvez utiliser pour des paiements internationaux"
+          important_html: "<p>L'utilisation de Paypal est réservée aux paiements internationaux. VOus aurez alors seulement 60 jours pour recevoir un éventuel remboursement sans frais.</p><p>Nous vous recommandons donc d'effectuer votre paiement par MoIP si cela est possible.</p><p>En cas de demande de remboursement d'un paiement effectué via Paypal au delà du délai de 60 jours, vous pourrez être remboursé, mais serez redevable des frais Paypal qui s'élèvent à 5,4% + R$0,60 par transaction.</p>"
+          submit: "Procédez au règlement par Paypal"
+          title: "Vous voulez faire un paiement international?"
+        review_with_reward_html: "VOtre contribution s'élève à <strong>%{value}</strong> et vous recevrez la récompense suivante:"
+        review_without_reward_html: "VOtre contribution s'élève à <strong>%{value}</strong> mais vous ne souhaitez pas recevoir de récompense."
         submit:
-          credits: "Confirm"
-          moip: "Proceed to MoIP's checkout"
-        subtitle: "This is the last step to make the difference and become part of this project."
-        title: "Fill in and review your data"
-        choose_payment: "How do you want to pay?"
-        choose_payment_subtitle: "Select below a payment method"
+          credits: "Confirmer"
+          moip: "Procédez au règlement par MoIP's"
+        subtitle: "Dernière étape pour faire partie du projet!."
+        title: "Remplir et vérifier vos données"
+        choose_payment: "Comment souhaitez vous payer?"
+        choose_payment_subtitle: "Sélectionner ci-dessous un moyen de paiement"
         choose_credit_card: "PayPal"
-        choose_boleto: "Payments from Brazil"
-        you_are_about_html: "You are about to become part of the group that does everything to make %{link} happen."
-        pay_with: "Pay With"
+        choose_boleto: "Paiement en provenance de France"
+        you_are_about_html: "Vous faites presque partie du groupe qui permettra au projet %{link} de voir le jour."
+        pay_with: "Payer avec"
     create:
-      success: "Your project was successfully created! We'll soon contact you. Thanks a lot!"
+      success: "Votre projet a été créé avec succès! Nous prendrons rapidement contact avec vous. Merci beaucoup!"
     update:
-      success: "Updated"
+      success: "Mis à jour"
     form:
-      permalink_hint: 'Simplify the URL of your project. Think that your sponsor need to remember the address to share your project.'
-      add_reward: "Add reward"
-      important_html: "Please notice that Catarse will charge 13% if your project is successful. Add this values to your budget in order to execute your project with no surprises."
+      permalink_hint: "Simplifiez l'URL de votre projet. Vos sponsors doivent retenir l'adresse facilement pour partager avec d'autres votre projet."
+      add_reward: "Ajouter une récompense"
+      important_html: "Veuillez noter que Buzz&Boost facturera 13% de la somme collectée en cas de succès. Ajoutez cette somme à votre  budget afin de pouvoir réaliser votre porjet sans surprise !."
       project_warning:
-        content_html: "Want to have your project selected? Don't forget to read %{link}."
-        help_link: "our guide"
-      rewards_description: "We believe that the best way to inspire people to contribute a project is offering excellent ¿ and creative! ¿ rewards. Everybody loves limited editions, unique things and joyful experiences (parties, candies, balloon travelling!). Spend some time devising creative rewards and people will be interested."
-      rewards_title: Rewards
-      submit: "Save draft"
+        content_html: "Vous voulez que votre projet soit sélectionné? N'oubliez pas de lire %{link}."
+        help_link: "notre guide"
+      rewards_description: "Nous pensons qu'une bonne façon de mobiliser des contributeurs est d'offrir des récompenses intéressantes et créatives ! Tout le monde aine les éditions limitées, les choses uniques et amusantes :Travaillez bien le sujet pour interesser un maximum de contributeurs."
+      rewards_title: Récompenses
+      submit: "Sauvegarder le brouillon"
     index_header:
-      subtitle: "Fund projects collaboratively and become part of something bigger. Promote a collective catharsis! You're the missing part in this story."
-      subtitle_html: "Fund projects collaboratively and become part of something bigger.<br/>Promote a collective catharsis! You're the missing part in this story."
-      title: "Make the projects you believe in happen"
+      subtitle: "Contribuez au financement de ces projets et devenez créateur de valeur."
+      subtitle_html: "Contribuez au financement de ces projets et devenez créateur de valeur."
+      title: "Donnez vie au projets auxquels vous croyez !"
     recommended_header:
-      suggest_for_you: "suggested for you"
-      highlight_project: "featured project"
-      guidelines: "How it Works"
-      guidelines_subtitle: "Getting to know Catarse"
+      suggest_for_you: "sélectionnés pour vous"
+      highlight_project: "Projet sélectionné"
+      guidelines: "Comment ça marche"
+      guidelines_subtitle: "En savoir plus sur Buzz&Boost"
     pending:
-      can_finish: "Can finish?"
-      finished: Finished?
-      home_page: "Home page?"
+      can_finish: "Terminé?"
+      finished: Termniné?
+      home_page: "Page d'acceuil?"
       id: Id
       name: Name
-      no_projects: "No projects found."
+      no_projects: "Aucun projet trouvé."
       order: Order
       project: Project
       slug: Slug
       recommended: Recommended?
       rejected: Rejected?
       submit: Search
-      title: "Project management"
+      title: "Gestion d'un projet"
       user: User
       visible: Visible?
     pending_contributions:
@@ -485,13 +485,13 @@ fr:
       credits: "Used credits?"
       id: Id
       key: Key
-      no_contributions: "No contributions found."
+      no_contributions: "Aucune contribution trouvée."
       project: Project
       refunded: Refunded?
-      requested_refund: "Requested refund?"
+      requested_refund: "remboursement demandé?"
       reward: Reward
       submit: Search
-      title: "Contributions management"
+      title: "Gestion des récompenses"
       total_contributed: contributed
       total_contributors: contributors
       total_contributions: contributions
@@ -502,44 +502,44 @@ fr:
       contributed: contributed
       reached: reached
     project_contributions:
-      empty: "Nobody contributed this project so far. How about being the first one?"
-      confirmed: "Confirmed"
-      pending: "Pending"
+      empty: "Personne n'a contribué à ce projet pour l'instant. Que diriez vous d'être le premier?"
+      confirmed: "Confirmé"
+      pending: "en attente"
     project_header:
-      subtitle_html: "A project by %{link}"
-      without_city: "A project in"
-      with_city: "A project in %{category_name}, in %{city}, by %{author}"
+      subtitle_html: "un projet par %{link}"
+      without_city: "une projet dans"
+      with_city: "un projet dans %{category_name}, à %{city}, par %{author}"
     project_updates:
-      empty: "This project didn't have updates yet. But wait and see =D"
-      submit: "Send update"
-      comment: "Update text"
-      exclusive: "Visible for contributions only"
-      title: "Title of the update"
-      destroy: "Remove update"
-      destroy_confirmation: "Do you want to remove the update?"
-      warning: 'Remembering that every new post goes directly to the email of his supporters. Therefore, review your text well before sending it.'
+      empty: "Ce projet n'a pas encore été mis à jour. Attendons! =D"
+      submit: "envoyer la mise à jour"
+      comment: "Mettre à jour le texte"
+      exclusive: "Visible pour les contributeurs seulement"
+      title: "Titre de la mise à jour"
+      destroy: "Supprimer la mise à jour"
+      destroy_confirmation: "VOulez vous supprimer la mise à jour?"
+      warning: "Attention, votre post sera envoyé directement à vos supporters. Donc relisez bien avant d'envoyer."
     rewards:
-      reward_title: "For %{minimum} or more"
-      reward_deliver_time: "Estimated delivery: %{estimate}"
+      reward_title: "pour %{minimum} ou plus"
+      reward_deliver_time: "Livraison estimée: %{estimate}"
       contributions_to_confirm:
-        one:  "1 contribution in time to confirm."
-        other: "%{count} contributions in time to confirm."
-      title: "Contribute and receive..."
+        one:  "1 contribution à confirmer."
+        other: "%{count} contributions à confirmer."
+      title: "Contribuez et recevez..."
     send_mail:
-      success: "Your project was successfully sent! We'll soon contact you. Thanks a lot!"
+      success: "Votre projet a été envoyé avec succès! Nous prendrons contact avec vous sous peu. Merci beaucoup!"
     show:
-      rejected: "This project does not fit our <a href='https://docs.google.com/document/d/1Heh9LlvoSoD0lUfbmV5WlISJ3nqmGpEQiw15TBuCn-0/edit' target='_blank'>selection criteria.</a>"
-      waiting: "This project is waiting for approval and soon we'll know if it will go online on Catarse ;)"
-      waiting_owner: "To edit the project info, click on 'Edit project' tab. The rewards you can edit on reward column."
-      about_title: "About this project"
-      no_rewards_warning_title: 'Create here your rewards'
-      no_rewards_warning: "Don't go nuts! Think about how you're going to deliver them and include those costs in your budget. People are putting their trust in you, don't kid around with that!"
+      rejected: "Désolé, nous ne sélectionnons pas votre projet. Vous pouvez consulter nos critères <a href='https://docs.google.com/document/d/1Heh9LlvoSoD0lUfbmV5WlISJ3nqmGpEQiw15TBuCn-0/edit' target='_blank'>.</a>"
+      waiting: "Ce projet est cours de validation. Nous vous informerons sous peu s'il peut être mis en ligne sur Buzz&Boost ;)"
+      waiting_owner: "Pour modifier le projet, cliquer sur 'Modifier le projet'. Vous pouvez modifier les récompenses dans la colonne récompenses."
+      about_title: "A propos du projet"
+      no_rewards_warning_title: 'Créer vos récompenses ici'
+      no_rewards_warning: "Pensez a inclure les frais de livraison des récompenses dans votre budget. Vos contributeurs vous font confiance, ne les décevez pas !"
       reports:
-        no_contributions: "This project don't have any contribution yet."
+        no_contributions: "Ce projet n'a pas encore reçu de contribution."
         link_reports: 'Download report of '
-        all_contributions: 'all contributions'
-        all_contributions_without_reward: "all contributions that don't select any reward"
-        link_reward: 'Download the report of contributions that selected the reward'
+        all_contributions: 'Toutes les contributions'
+        all_contributions_without_reward: "Toutes les contibutions sans récompense"
+        link_reward: 'Télécharger le rapport des contributions avec récompense'
       menu:
         about: About
         contributions: Contributions
@@ -547,191 +547,191 @@ fr:
         updates: Updates
         edit: Edit
         reports: Reports
-        add_reward: 'Add Rewards'
+        add_reward: 'ajouter des récompenses'
       share:
         embed: embed
-        embed_title: "Embed this project on your site"
+        embed_title: "Incluez ce projet sur votre site"
         link: Link
-        link_title: "Share the link"
-        take_a_look: "Check out the project"
-        title: "Be part of it and share this project"
-    new:
-      legend_html: "After filling in the form below, you will receive a project page in Draft mode. In this draft you will add the rewards for your contributions. You may also share the page with your friends to collect feedback and sharpen your project even more.<br><br>The information filled in below is not definitive, but remember that the more consistent you are in your project submission, the faster it will go on air.<br><br><b>Very Important:</b> <i>Catharsis is cured platform, which means that our board will evaluate the focus, the feasibility and consistency of your project during the Draft. If we understand that your project does not comply with our <a href='https://docs.google.com/a/catarse.me/document/d/1wLDS2lphQ6monovg9rEaTIDcxBD3FRZV9dfGKmajyj8/edit' target='_blank' >selection criteria</a>, it may be refused by the team of curators.</i>"
-      permalink_important: 'Try not to use underline, hyphen etc.'
-      permalink_hint: 'Go simple. Your contributions should be able to remember the URL to your project ;)'
-      name_important: "Do not exceed  50 characters"
-      online_days_important: "60 days is the maximum"
-      about_important: "Don't make it too long! Indicate links so people can know more about your work"
-      important_html: 'Keep in mind the 13% fee charged by Catarse in case you reach your financial goal. Just divide your final budget by 0.87 to find the discounted amount.'
-      send_project: "I want to submit my project."
-      video_important: "The video must be hosted by Vimeo or Youtube. Paste here the URL!"
-      more_links_important: "It's very important to use social medias to spread the word about your project and engage your network into making it a success"
-      first_contributions_important: "These people are fundamental to the success of your project."
-      traffic_sources_important: "Yay! We reached  the final question."
-      headline_important: "It's a summary of  your project . 140 characters tops!:D"
-      tags_important: "Check other projects in your category  <a href='%{href}' target='_blank'>here!</a>!."
-      subtitle: "The time to make it happen is now! We really want to know what you're up to..."
-      title: "Send your project"
-      about: "Describe your project and how much do you need"
-      category: "Project category"
-      how_much_you_need: "How much do you want to raise?"
-      about_hint: "Tell us a little about what you want to do, how much you need and what for. Be brief and punctual, but don't forget to give the readers something that moves them. After all, it's your creation and they need to see your passion taking place!"
-      contact: "Leave us your email address so we can contact you"
-      links: "Where can we find more about you and your project?"
-      links_hint: "Leave us as many links as you have, so we can get to know your work and your project better. Doesn't have to be something formal or fancy, just a few useful links."
-      video: "Your project already have a video?"
-      video_hint: "A Vimeo / Youtube link"
-      twitter: "Have twitter account?"
-      facebook: "Have facebook account?"
-      blog: "Have a blog about the project?"
-      know_us_via: "How did you meet Catarse?"
-      how_works: "How to mobilize contributions to raise $ needed for enforcement?"
+        link_title: "Partager ce lien"
+        take_a_look: "Découvrez ce projet"
+        title: "Participez à ce projet et partager le"
+    new: 
+      legend_html: "Après avoir complétér le formulaire ci dessous, vous recevrez une page projet en mode brouillon. Vous ajouterez les récompenses aux contributions. Vous pouvez partager cette page avec vos amis afin de récolter leurs avis et améliorer encore votre projet.<br><br>Ces informations ne sont pas définitives, vous pouvez les modifier.<br><br><b>Very Important:</b> <i>Buzz&Boosts se réserve le droit de refuser un projet non conforme a ses critères de sélection sur la base de ce brouillon.</i>"
+      permalink_important: "essayez de pas utiliser de soulignage, trait d'union etc."
+      permalink_hint: "Soyez simple. Vos contributeurs doivents pouvoir mémoriser l'URL de votre projet ;)"
+      name_important: "  50 caractères maximum"
+      online_days_important: "60 jours maximum"
+      about_important: "Faites court! Indiquez des liens qui peuvent renseigner les contributeurs sur votre projet"
+      important_html: "N'oubliez pas que Buzz&boost prélève 13% de commission en cas d'atteinte de l'objectif, et pensez à l'inclure dans votre budget."
+      send_project: "Soumettre mon projet."
+      video_important: "La video doit être hébergée par Vimeo ou Youtube. Collez ici l'URL!"
+      more_links_important: "Il est très important d'utiliser les réseaux sociax pour diffuser les informations a propos de votre projet et impliquer votre réseau pour atteindre le succès."
+      first_contributions_important: "Ces personnes sont indipensables à la réussite de votre projet."
+      traffic_sources_important: "C'est la dernière question !"
+      headline_important: "Résumé de votre projet en 140 caractères!:D"
+      tags_important: "Regarder les autres projets dans votre catégorie  <a href='%{href}' target='_blank'>here!</a>!."
+      subtitle: "C'est le moment de passer à l'action !"
+      title: "Envoyez votre projet"
+      about: "Décrivez votre projet et la somme dont vous avez besoin"
+      category: "Catégorie de projet"
+      how_much_you_need: "Quelle somme voulez vous réunir?"
+      about_hint: "Décrivez ce que voulez faire, quelle somme est nécessaire et comment les fonds seront employés. Soyez bref,précis, mais également motivant pour vos futurs supporters. Montrez leur combien vous êtes passionné par votre projet!"
+      contact: "Inscrivez votre email afin que nous puissions vous contacter"
+      links: "Où pouvons nous trouver encore plus d'informations sur vous et votre projet?"
+      links_hint: "Inscrivez tous vos lien, afin nous vous connaissions encore mieux ainsi que votre projet."
+      video: "VOus avez déja une video?"
+      video_hint: "un lien Vimeo / Youtube "
+      twitter: "VOus avez un compte Twitter?"
+      facebook: "VOus avez un compte Facebook?"
+      blog: "Vous avez un blog sur le projet?"
+      know_us_via: "Comment avez vous connu Buzz&boost?"
+      how_works: "COmment mobiliser des contributeurs?"
       project_warning:
-        content_html: "Want to have your project selected? Don't forget to read %{link}."
-        help_link: "our guide"
-      rewards: "What rewards do you want to offer?"
-      rewards_hint: "We believe that the best way to inspire people to contribute a project is offering excellent ¿ and creative! ¿ rewards. Everybody loves limited editions, unique things and joyful experiences (parties, candies, balloon travelling!). Spend some time devising creative rewards and people will be interested."
-      submit: "Save draft"
-      subtitle: "The time to make it happen is now! We really want to know what you're up to..."
-      title: "Submit your project"
+        content_html: "Vous voulez que votre projet soit sélectionné? N'oubliez pas de lire %{link}."
+        help_link: "notre guide"
+      rewards: "Quelles récompenses vouelz vous offrir?"
+      rewards_hint: "Nous pensons que la meilleure façon de mobiliser des contributeurs est d'offrir une récompense créative et intéressante. Tout le monde aime les choses uniques et les éditions limitées."
+      submit: "sauvegarder le brouillon"
+      subtitle: "C'est le moment de passer à l'action !."
+      title: "Soumettez votre projet"
     twitter:
-      take_a_look: "Check out the project %{name} on @catarse"
+      take_a_look: "Vérifiez le projet %{name} sur Buzz&boost"
     video_embed:
-      a_project_by_html: "A project by %{link} on"
+      a_project_by_html: "un projet par %{link} sur"
   projects_mailer:
     start_project_email:
-      subject: "Project sent by %{name}"
-      subject_html: "Project sent by %{link}"
+      subject: "Projet envoyé par %{name}"
+      subject_html: "Projet envoyé par %{link}"
 
   channels:
     subscribed: "+ %{count} followers"
     header:
-      submit: "Send project"
-      how_works: "How works"
-      what_is_channel: "What is a channel?"
+      submit: "Envoyer le projet"
+      how_works: "Comment ça marche"
+      what_is_channel: "Qu'est-ce qu'un canal?"
       contact: "Contact"
-      profile: "My profile"
-      my_credits: "My credits"
-      logout: "Logout"
-      signup: "Sign up"
-      signin: "Sign in"
+      profile: "Mon profil"
+      my_credits: "Mes credits"
+      logout: "se déconnecter"
+      signup: "se connecter"
+      signin: "s'inscrire"
     footer:
-      terms: "Terms"
-      privacy_policy: "Privacy"
-      how_works: "How works"
+      terms: "Termes"
+      privacy_policy: "vie privée"
+      how_works: "Comment ça marche"
       contact: "Contact"
-      what_is_channel: "What is a channel?"
+      what_is_channel: "Qu'est ce qu'un canal?"
     admin:
       statistics:
         title: "Followers"
-        download: "Download list"
+        download: "Télécharger la liste"
       management:
         title: "Management"
-        total: "projects"
+        total: "projecs"
       filter:
-        title: "Filter"
-        by_id: "By ID"
-        between_created_at: "Created Between"
-        pg_search: "Project"
-        with_state: "With state"
-        user_name_contains: "User"
-        order_table: "Order table"
-        submit: "Filter"
+        title: "Filtre"
+        by_id: "par ID"
+        between_created_at: "créé entre"
+        pg_search: "Projet"
+        with_state: "avec état"
+        user_name_contains: "Utilisateur"
+        order_table: "tableau de commande"
+        submit: "Filtre"
       table:
-        name: "Title"
-        category: "Category"
-        user_id: "User"
-        goal: "Goal"
+        name: "Titre"
+        category: "Categorie"
+        user_id: "Utilisateur"
+        goal: "but"
         pledged: "Pledged"
         total_contributions: "Contributions"
-        recommended: "Recommend"
-        online_date: "Published"
-        expires_at: "Finished"
-        state: "State"
-        approve: "Approve"
-        reject: "Reject"
-        send_to_draft: "Sendo to draft"
-    edit: "Update channel"
+        recommended: "Recommandé"
+        online_date: "Publié"
+        expires_at: "Terminé"
+        state: "Etat"
+        approve: "Approuvé"
+        reject: "Rejeté"
+        send_to_draft: "Envoyer en tant que brouillon"
+    edit: "Mettre à jour le canal"
 
   registrations:
     new:
-      site_title: "Sign up"
-      submit: "Sign Up"
-      title: "Sign up using you email"
+      site_title: "se connecter"
+      submit: "se connecter"
+      title: "se connecter avec son adresse email"
   remaining_plural: left
   remaining_singular: left
   remove: remove
-  require_admin: "You must be admin to perform this action."
-  require_login: "You must be logged in to perform this action."
-  require_permission: "You don't have permission to perform this action."
+  require_admin: "Vous devez avoir un code administrateur pour effectuer cette action"
+  require_login: "Vous devez être connecté pour effectuer cette action."
+  require_permission: "VOus n'êtes pas autorisé à effectuez cette action."
   reward:
-    display_remaining: "%{remaining} of %{maximum} available"
-    dont_want: "I don't want a reward"
+    display_remaining: "%{remaining} de %{maximum} disponible"
+    dont_want: "je ne souhaite pas obtenir de récompense"
     limited: Limited
-    sold_out: "Sold out"
+    sold_out: "Epuisé"
   sessions:
     auth:
-      success: "Successfully logged in. Welcome, %{name}!"
+      success: "Vous vous êtes connecté avec succès,bienvenue %{name}!"
     destroy:
-      success: "Successfully logged out. See you!"
+      success: "VOus êtes déconnecté. A bientôt!"
     failure:
-      error: "There was an error while loggin in. Please try again."
+      error: "Une erreur est survenue pendant votre tentative de connexion. Merci de réessayer ultérieurement"
 
 
   static:
     guidelines_contributions:
-      title: "I want to contribute a project!"
-      subtitle: "Understand step by step how to contribute a project on Catarse."
-      introduction: "Catarse is an excellent way to engage in a cause you believe in"
-      legend_html: "We believe that being part of a project is the kind of thing that sometimes we do not really know why, but it does a darn good."
-      title_one: "Explore the Project"
-      step_one: "The first step is to understand the project. Watch the video, read the description, browse the links. If you are certain that this project can not remain only on paper, go one step forward!"
+      title: "Je veux contribuer à un projet!"
+      subtitle: "Comment contibuer à un projet sur Buzz&Boost?"
+      introduction: "Buzz&Boost est un excellent moyen de vous engager sur un projet qui vous tient à coeur"
+      legend_html: "Prendre part à un projet est très motivant."
+      title_one: "Explorer le projet"
+      step_one: "Tout d'abord, imprégnez vous du projet et saisissez les enjeux. Regardez les videos, lisez bien les the descriptions, allez sur les liens. Si vous êtes convaincu du bien fondé de projet et si voulez qu'il voie le jour, alors poursuivez!"
       title_two: "Decide with how much you¿ll contribute it"
-      step_two: "A good way to decide how much to contribute with it¿s  to look  through which rewards  are offered in exchange for your contributing. And also your bank statement."
-      title_three: "Finalize your contributing"
-      step_three: "Fill in your information and review it! Then, decide what form of payment best meets your needs."
-      title_four: "Spread the word!"
-      step_four: "Now you're in the same boat as the project creator. Spread the word on your networks and stay tuned on the updates."
-      title_requirements: "Remember: in Catarse it¿s ¿all or nothing¿"
-      successful_title: "If the project meet or exceed its financial target ..."
-      successful: "The project is considered successful! The creator gets the money and contacts all supporters."
-      not_success_title: "If the project does not meet the target ..."
-      not_success: "You get the full amount of support in the form of loans (to support another project). If that does not please you, you can request your money back, according to the rules of the <a href='%{terms}' target='_blank'>terms of use</a>."
-      title_not_funded: "If the project does not achieve the goal, how do I use my credits?"
-      not_funded: "You will receive credits  on Catarse. The moment you choose to contribute another project, on the screen to select the reward, there will have a field to use your credits."
-      more_questions: "I'm dying to support a project, is there anything else I need to know?"
-      title_contribution: "How do I know that my support was successful?"
-      contribution: "You will receive a confirmation email. And stay tuned on the contributionS tab at the page of the project you contributed."
-      title_rewards: "If the project is funded, how do I get my rewards?"
-      rewards: "It is the duty of the project creator to contact you and arrange how to deliver  the chosen reward. If not, you need to send an email to him/her to claim it! If you get no answer ¿ contact us so we can give them an earful = D"
-      title_credits: "If the project does not achieve the goal, how do I use my credits?"
-      credits: "You will receive credits  on Catarse. The moment you choose to contribution another project, on the screen to select the reward, there will have a field to use your credits."
-      title_money: "What if I don't want to use the credits?"
-      money: "No problem! You just need to enter in your profile (My credits) and request a chargeback. If you paid with debit or billet, you¿ll need to open an account at MOIP. If you used a credit card the value will be back on your next bill."
-      other_contributions: "I WANT MORE! CAN I HELP  IN OTHER WAYS?"
-      intro: "Get to know different ways to help projects you believe in"
-      other_one: "Bring two other friends to contribute with the same amount you did"
-      other_two: "Spread the word to every one. Tell them how great is the project you contributed on Catarse."
-      other_three: "Do you have a friend who¿s a Journalist? Try to have him/her to post something about it on his/her blog."
-      other_four: "Make a contributing video to broadcast your believe in the project .Like these guys did:https://vimeo.com/46233018"
-      other_five: "Send an e-mail to the project creator asking how can  you help even more."
-      submit: "VERY COOL!"
-      send_project: "I want to submit my project "
-      explore_curious: "I¿M ON BOARD!"
-      explore_projects: "I want to contribute a project"
+      step_two: "Une bonne façon de déterminer la somme à hauteur de laquelle vous souhaitez contribuer est vous reporter aux récompenses offertes en echange. Et aussi à votre compte en banque!"
+      title_three: "Finalisez votre contribution"
+      step_three: "Remplissez et vérifiez les informations suivantes! Puis choississez votre mode de paiment."
+      title_four: "Passez le mot!"
+      step_four: "Maintenant vous faites partie du projet. Passez le mot sur vos réseaux et restez à informé des mises à jours."
+      title_requirements: "Souvenez vous: sur Buzz&Boost c'est tout ou rien !"
+      successful_title: "Si le projet à réuni ou dépassé les fonds demandés ..."
+      successful: "Le projet est un succès! Le créateur obtient les fonds et contacte tous ses supporters."
+      not_success_title: "Si le projet n'atteint pas la cile ..."
+      not_success: "VOus récupérez la totalité du montant alloué sous forme d'un crédit, que vous pourrez utiliser pour supporter d'autres projets. VOus pouvez également demander le remboursement, conformément à  <a href='%{terms}' target='_blank'>nos CGU</a>."
+      title_not_funded: "Si le projet n'a pas atteint son objectif, comment puis-je utiliser mes crédits?"
+      not_funded: "Vous recevrez des crédits Buzz&Boost. Quand contriburez à un autre projet, vous pourrez utiliser vos crédits."
+      more_questions: "Autre chose à savoir?"
+      title_contribution: "Comment savoir si j'ai bien contribué?"
+      contribution: "VOus recevrez un email de confirmation."
+      title_rewards: "Si le projet est réussi, comment vais je recevoir ma récompense?"
+      rewards: "Il est de la responsabilité du créateur du projet de vous contacter et de vous livrer la récompense choisie. En ca de problème, merci de nous contacter"
+      title_credits: "Si le projet n'atteint pas son but, comment puis uitliser mes crédits?"
+      credits: "Vous recevrez des crédits Buzz&Boost. Quand contriburez à un autre projet, vous pourrez utiliser vos crédits."
+      title_money: "Et si je ne veux pas utiliser mes crédits?"
+      money: "Pas de probleme! VOus devez vous connecter sous votre profil et demander le remboursement."
+      other_contributions: "Je veux en faire plus ! Comment puis je aider?"
+      intro: "Comment aider encore plus les projets auxquels vous croyer"
+      other_one: "Demander à vos contribuer également"
+      other_two: "Passez le mot ! Devenez l'ambassadeur du projet auprès de votre entourage"
+      other_three: "SI vous avez des amis journalistes, bloggers...demandez leur de publier sur le projet."
+      other_four: "Faites une vidéo pour montrer votre soutien au projet"
+      other_five: "Prenez contact avec le porteur du projet et demandez lui comment vous pouvez vous impliquer à ses cotés"
+      submit: "TRES COOL!"
+      send_project: "Je veux soumettre mon projet"
+      explore_curious: "J'en suis!"
+      explore_projects: "Je veux contribuer au projet"
     guidelines:
-      title: "How it works"
-      subtitle: "Get to know Catarse better."
-      introduction_html: "Catarse is a space of exchange among individuals who together <br >enable the realization of creative projects."
-      legend_html: "We believe that connecting people that share value with respect to a cause; an idea; a project,  is one of the best ways to make them come true. <br><br> Be very welcome! This is your space as much as it is ours, after all, catharsis happens daily from the meeting of people in search of new ways to give life to more initiatives from society itself. We understand this to be an alternative to government resources, the sponsoring companies and bank loans = D"
-      submit: "SUBMITTING A PROJECT"
-      send_project: "Understand how to submit your project"
-      explore_curious: "CONTRIBUTING A PROJECT"
-      explore_projects: "Understand how to contribute a project"
+      title: "Commment ça marche"
+      subtitle: "Mieux connaitre Buzz&Boost."
+      introduction_html: "Buzz&Boost est un espace d'échange entre individus pour réaliser des projets créatifs et innovants ensemble."
+      legend_html: "Connecter les personnes qui pensent qu'ensemble on est plus forts pour réaliser des projets. <br><br> Si vous partagez cette idée, Bienvenue sur Buzz&Boost! This is your space as much as it is ours, after all, catharsis happens daily from the meeting of people in search of new ways to give life to more initiatives from society itself. We understand this to be an alternative to government resources, the sponsoring companies and bank loans = D"
+      submit: "SOUMETTRE UN PROJET"
+      send_project: "Comment soumettre un projet?"
+      explore_curious: "CONTRIBUER A UN PROJET"
+      explore_projects: "COmment contribuer à un projet?"
     about:
-      title: "Who We Are?"
-      subtitle: "Meet the lovely gang that makes this whole thing happen <3"
-      introduction: "Who are they? What do they feed of? How are they networked? You¿ll see all of it now on ¿Who are we?¿."
+      title: "Qui sommes nous?"
+      subtitle: "Rencontrer l'équipe Buzz&Boost <3"
+      introduction: "Qui sont ils, qu'est ce qui les animent? Vous saurez tout sur eux."
       name_one: "Luis Otávio Ribeiro"
       title_one: "Fisher of Killer Projects"
       text_one: "Uberabense. Laziness enthusiast , is addicted to maintaining creative structures running and promoting encounters between people."
@@ -760,164 +760,164 @@ fr:
       title_nine: "Fireman"
       text_nine: "A fellow crazy about development who lives in Tonland"
     faq:
-      title: "Frequently asked questions"
+      title: "Questions fréquentes"
     guidelines_start:
-      accept: "I have read and understand how catarse works."
-      explore_curious: "Just looking around!"
-      explore_projects: "I want to explore the projects."
-      submit: "Next step!"
-      send_project: "I want to submit my project."
-      subtitle: "Understand, step-by-step, how to finance your project through Catarse."
-      title: "How Catarse works?"
-      introduction: "Catarse is a different - and collaborative - way to make your projects become reality."
-      legend_html: "Use this guide to decide if Catarse is the right tool for the job."
-      title_one: "Submit your project"
-      step_one: "Projects are actions! And we receive them with open arms whether they are small, big, funny, serious, traditional, innovative... We love projects that require little money and have a big impact in their communities."
-      title_two: "Review"
-      step_two: "After we receive your project, it will be screened by our team of reviewers. The objective here is to give you tips in order to maximize the chances of your project becoming successful, as well as filtering NON-SENSE projects. Remember, we want your project to be successful as much as you do ;)"
-      title_three: "Let's go live!?"
-      step_three: "When your project is ready, it's time to go live and plan your campaign. During this period, you will need to engage as many people as possible to reach your goal."
-      title_four: "It's all-or-nothing"
-      step_four: "If your project doesn't reach its goal before time runs out, all contributions will receive their pledged amount in credits and later, if they want, can ask for a refund."
-      title_requirements: "Requirements to submit your project to Catarse"
-      creative: "Creative and Finite"
-      collective: "Collective Benefits"
-      nonprofit: "Non-financial rewards"
-      donation: "No philanthropic or ¿fund my life¿ projects"
-      video: "Make a video"
-      more_questions: "Ok, but tell me more about this Catarse..."
-      title_magic: "Our magic formula"
-      magic: "We believe that providing a meeting place for people that share common values is the best way to turn projects into reality. Use Catarse as a channel to direct your network towards a COMMON objective."
-      title_money: "Where does the money to finance projects come from?"
-      money: "At least 50% will come from your own network of contacts. In this manner, Catarse is a way for you to get closer to the people that enjoy your work and expand this network through sharing in social networks, newspapers, blogs and, of course, your favorite bar."
-      title_work: "Does it take a lot of work?"
-      work: "A loooot! There is no 'easy money on the INTERNET'. You will have to work a lot during your project, but the experience will be worth it - we assure you :D And you will have a much stronger network behind your project after Catarse."
-      title_costs: "How much does it cost to use Catarse?"
-      costs: "Submitting your project is free. Now, when your project is approved and has reached its goal, Catarse will apply a 13% fee, this value includes both the Catarse fee and the payment gateway fee."
-      why: "Why Catarse?"
-      intro: "First of all, it's good that you know why we believe that this new way to finance projects is phenomenal:"
-      why_one: "By creating a very strong bond with your network, this kind of campaign open doors to new projects, partnerships and other unexpected connections."
-      why_two: "If the projects are well connected, they can spread, quickly, to a lot of people, expanding your network and strengthening the base of people around your project."
-      why_three: "Minimum red tape and low financial risk. No interest rate, no entry fees... and lots of fun and emotion."
+      accept: "J'ai lu et compris le fonctionnement de Buzz&Boost."
+      explore_curious: "Je jette juste un oeil !"
+      explore_projects: "Je veux découvrir les projets."
+      submit: "Prochaine étape!"
+      send_project: "Je veux soumettre mon projet."
+      subtitle: "Découvrez pas à pas comment soumettre votre projet."
+      title: "Comment Buzz&Boost fonctionne?"
+      introduction: "Buzz&Boost est un moyen collaboratif de donner vie à vos projets."
+      legend_html: "Utilisez ce guide pour savoir si Buzz&Boost répond à vos attentes."
+      title_one: "Soumettez votre projet"
+      step_one: "Nous étudions tous les projets."
+      title_two: "Revue"
+      step_two: "Après réception, notre équipe l'étudie et vous répond rapidement. Si votre projet passe notre filtre,nous vous aiderons à maximiser vos chances et atteindre vos objectifs"
+      title_three: "C'est partit!?"
+      step_three: "Quand votre projet est prêt, il faut planifier et réaliser votre campagne. Pendant cette période, à vous d'impliquer votre réseau pour optimiser vos chances de succès."
+      title_four: "C'est tout ou rien"
+      step_four: "Si votre projet n'a pas atteint l'objectif dans le temps imparti, les contributeurs recevront la somme investie sous forme de crédits, et pourront s'ils le souhaitent en demander le remboursement."
+      title_requirements: "Conditions à remplir pour soumettre votre projet"
+      creative: "Créatif et terminé"
+      collective: "Benefices collectifs"
+      nonprofit: "Des récompenses non financières"
+      donation: "Pas de projet philanthropiques ou encore 'finances mes vacances'"
+      video: "Faire une vidéo"
+      more_questions: "En savoir plus à propos de Buzz&Boost"
+      title_magic: "Notre formule magique"
+      magic: "Nous pensons que mettre à disposition un espace de rencontres à des personnes qui partagent des valeurs communes est la meilleure façon de transformer des rpojets en réalité. Utilisez Buzz&Boost comme un canal pour diriger votre réseau vers un objectif commun."
+      title_money: "D'où viens l'argent?"
+      money: "Au moins 50% viendra de votre réseau propre. Buzz&Boost vous aidera à vous rapprocher des gens qui apprécient votre travail, et surtout à étendre ce réseau par le partage."
+      title_work: "Est ce que cela représente beaucoup de travail?"
+      work: "Beaucoup ! Il n'y a pas d'argent facile, ni dans la vie, ni sur Internet!'. VOus devrez travailler beaucoup pour mener à bien votre projet. Mais ce sera une excellente experience! Et vous aurez un réseau bien plus étendu pour soutenir votre projet après son lancement sur Buzz&Boost."
+      title_costs: "Combien ça coute?"
+      costs: "Soumettre votre pojet est gratuit. Quand le projet atteint sont objectif, Buzz&Boost prélève 13% de commission, frais de moyen de paiement inclus."
+      why: "Pourquoi Buzz&Boost?"
+      intro: "Tout d'abord, nous pensons que cette nouvelle façon de financer l'économie est une révolution phénoménale"
+      why_one: "En structurant et augmentant votre réseau, ce type de campagne va vous ouvrir des portes insoupçonnées."
+      why_two: "Plus les projets sont connectés, plus ils s'étendent rapidement, vers un maximum de contributeurs potentiels. Votre réseau grossit et fédère de plus en plus d'acteurs autour de votre projet."
+      why_three: "Peu de risque financier. Pas de taux d'intérêt, pas de droits d'entrée, mais beaucoup d'émotions et d'intérêt."
     guidelines_tips:
-      title: "Almost there!"
-      subtitle: "Before submitting your project, it's good to think over a few important points."
-      introduction_html: "We know you can't wait to have your project online, but first answer <br> (in a piece of paper) the following questions."
-      legend_html: "Having clear answers to these questions will help tremendously in structuring your project, <br>increasing the chances that it will be successful."
-      title_one: "What inspired you to make this project?"
-      tip_one: "People only engage when they realize the importance of a cause for society or for the person who leads a campaign. So be very clear about what is your inspiration and let it overflow into your project."
-      title_two: "What is the focus?"
-      tip_two: "Catarse is an excellent way to take the first steps. Therefore, define very well the purpose of your project, as well as who will benefit from it. Clearly defining your objectives is one of the best ways to engage people."
-      title_three: "What is your goal?"
-      tip_three: "Calculate all costs for the project execution and rewards delivery. Also take into account your ability to engage people in order to define your financial goal."
-      title_four: "What is your deadline for the fundraising?"
-      tip_four: "Don't underestimate the work of a campaign. You will have to work hard during the entire period the project is live, so, it's recommended that you don't tire yourself too much in this process. Our recommendation: 40 days of campaign."
+      title: "presque terminé!"
+      subtitle: "Avant de soumettre votre projet, il est bon de penser à quelques points importants ."
+      introduction_html: "Nous savons que vous êtes impatient de voir votre projet en ligne, mais d'abord répondez à ces quelques questions."
+      legend_html: "Avoir des réponses claires va vous aider à structurer votre projet, et augmenter ses chances de connaitre le succès."
+      title_one: "Comment est née l'idée de ce projet?"
+      tip_one: "Les contributeurs ne s'engageront que s'ils ont réalisé l'importance du projet aux yeux de celui qui qui va le développer. Ainsi, soyez très clair sur vos motivations."
+      title_two: "Quel est le focus?"
+      tip_two: "Buzz&Boost est un excellent moyen de faire ses premiers pas. Ainsi, définissez précisément le propos de votre projet, et décrivez clairment quels en sont les bénéfices. Définir précisément vos objectifs est l'une des meilleures façon de remporter l'adhésion."
+      title_three: "Quel est votre but?"
+      tip_three: "Calculez tous les coûts du projets en prenant en compte le coût des récompenses et de leur livraison."
+      title_four: Quelle est votre deadline pour la levée de fonds?"
+      tip_four: "Ne sous estimez pas le travail que représente une campagne. Vous devrez travailler dur pendant tout la vie du projet. Attention à l'épuisement !Notre recommandation: 40 jours de campagne."
       title_five: "Have you thought about the project rewards?"
-      tip_five: "Remember that rewards are public promises. So, think very well when elaborating them, as well as the logistics in delivering them to your contributions. Our suggestion: think about immaterial rewards: downloads, experiences, courses e kisses."
+      tip_five: "Souvenez vous que les récompenses sont des promesses publiques. Donc pensez y en les élaborant, et n'oubliez pas la logistique pour les livrer à vos contributeurs. Notre suggestion: Pensez à des récompenses immatérielles: téléchargement, experiences, cours...."
       title_six: "Is your video ready?"
-      tip_six: "The video is the business card of your project. It's through it that the contributions will get in touch with your cause. So, take special care in the script, audio and image quality. HD is recommended."
-      title_seven: "How will you mobilize your network?"
-      tip_seven: "You need to have a clear idea on how you will stir your network and convince it to contribute your project. Distribute your work weekly and change your approach with the network according to how close you are to it."
-      title_eight: "How will the money be used?"
-      tip_eight: "Create a GOOGLE DOCS spreadsheet and open your budget to show everyone how the money will be used. TRANSPARENCY is everything."
-      explore_curious: "Just looking around!"
-      explore_projects: "I want to explore the projects."
-      submit: "Next step!"
-      send_project: "I want to submit my project."
-      guide: "Download here a complete guide with all the tips to elaborate your project in Catarse."
+      tip_six: "La vidéo est la carte de visite de votre projet. C'est à travers elle que vous rallierez des contributeurs à votre cause. Prenez un soin particulier au script ainsi qu'à la qualité de l'image et du son. La HD est recommandée."
+      title_seven: "Comment allez vous mobiliser votre réseau?"
+      tip_seven: "Vous devez avoir une idée claire de la façon dont vous aller mobiliser votre réseau et le convaincre de contribuer à votre projet. Distribuer votre travail toute les semaines et personalisez votre approche en fonction de votre niveau de proximité."
+      title_eight: "Comment l'argent sera-t-il utilisé?"
+      tip_eight: "Créez une feuille  GOOGLE DOCS, ouvrez votre budget à tous et montrez comment sera utilisé cet argent. Tous est dans la TRANSPARENCE."
+      explore_curious: "Je jette juste un oeil!"
+      explore_projects: "Je veux parcourir les projets."
+      submit: "étape suivante!"
+      send_project: "Je veux soumettre mon projet."
+      guide: "Télécharger ici un guide complet avec toutes les astuces pour élaborer votre projet sur Buzz&Boost."
     privacy:
-      title: "Privacy Policy"
+      title: "Protection de la vie privée"
     terms:
-      title: "Terms of use"
-  terms: "terms of use"
+      title: "Conditions générales d'utilisation"
+  terms: "Conditions générales d'utilisation"
   user:
     contributions_text:
-      many: "Contributed this and other %{total} projects"
-      one: "Contributed only this project until now"
-      two: "Contributed this and 1 other project"
-    no_name: Unnamed
-    google_account: "Google Account"
+      many: "A contribué à ce projet et à %{total} autres projets"
+      one: "A contibué à ce projet seulement"
+      two: "A contribué à ce projet et à un autre projet"
+    no_name: anonyme
+    google_account: "Compte Google"
   users:
     project:
-      confirmed: "Confirmed"
-      refunded: "Refunded"
-      requested_refund: "Refund requested"
-      waiting_confirmation: "Waiting confirmation"
+      confirmed: "Confirmé"
+      refunded: "Remboursé"
+      requested_refund: "Remboursement demandé"
+      waiting_confirmation: "En attente de confirmation"
     set_email:
-      site_title: 'Define your email address'
-      title: 'Define your email address'
-      submit: 'Save my email and proceed'
+      site_title: 'Inscrivez votre adresse mail'
+      title: 'Inscrivez votre adresse mail'
+      submit: 'Sauvegarder mon adresse mail et continuer'
     show:
       attention: Attention
       tabs:
-        contributed_projects: "Contributed projects"
-        created_projects: "Created projects"
+        contributed_projects: "Les projets auxquels j'ai contribué"
+        created_projects: "Les projets que j'ai créé"
         comments: Comments
         credits: Credits
         settings: Settings
         unsubscribes: Notifications
       user_social:
-        email: "Send me an email"
-        facebook: "Profile on facebook"
-        twitter: "Profile on twitter"
+        email: "Envoyer moi un mail"
+        facebook: "Profil sur facebook"
+        twitter: "Profile sur twitter"
     contributions:
-      anonymous: "Anonymous contribution."
-      no_contributions: "%{name} haven't contributed any project yet. But we know it's just a matter of time! :D"
-      no_contributions_current_user_html: "You haven't contributed any project yet. What about <a href=\"/\">starting now</a>?"
-      no_reward: "You didn't pick a reward"
-      title: "Projects %{name} has contributed"
-      title_current_user: "Projects I've contributed"
-      your_reward: "Your reward"
+      anonymous: "contribution anonyme."
+      no_contributions: "%{name} n'a pas contribué pour l'instant. Nous savons que ce n'est qu'une question de temps :D"
+      no_contributions_current_user_html: "Vous n'avez pas encore contribué. Que diriez vous de commencer <a href=\"/\">starting now</a>?"
+      no_reward: "VOus n'avez pas choisi de récompense"
+      title: "Projets %{name} a contribué"
+      title_current_user: "les projets auxquels j'ai contibué"
+      your_reward: "votre récompense"
     unsubscribes:
-      title: "Choose from which projects you want to receive update notifications:"
-      updates: "I want to receive project updates"
+      title: "Choisissez les projets desquels vous souhaitez recevoir les mises à jours:"
+      updates: "Je veux recevoir les mises à jours des projets"
     current_user_fields:
-      bio_limit: 'only 140 characters'
-      updated: "Votre profil a été mis à jour"
-      update_social_info: "Update info"
+      bio_limit: ' 140 caractères maximum'
+      updated: "Vos informations ont bien été mises à jour"
+      update_social_info: "Mettre à jour mes informations"
       social_info: "Contact info"
       twitter: "twitter ( username )"
-      facebook_link: "facebook profile (full link)"
-      other_link: "another internet page"
-      change_password: "Change my password"
-      current_password_hint: "<i>We need your current password to confirm your changes.</i>"
-      email_hint: "Your email will only be used for communications from Catarse and from the projects you contributed to. It won't be visible in your profile. When you contribute a project, we will give your email to the project owner so he can provide your rewards."
-      email_tooltip: "Click here to fill your email..."
-      gravatar_hint_html: "Want to change your picture? Use %{link} with your email. It's as simple as uploading an image and works for other sites as well ;)"
-      local_avatar: "My avatar"
-      submit_text: "Choose your picture"
-      submit: "Submit"
-      my_data: "My profile"
-      newsletter: "I want to receive news from Catarse via email"
-      password_hint: "<i>Leave blank if you don't want to change it.</i>"
+      facebook_link: "facebook profil (lien complet)"
+      other_link: "autre page internet "
+      change_password: "Changer mon mot de passe"
+      current_password_hint: "<i>Nous avons besoin de votre mot de passe pour confirmer les modifications.</i>"
+      email_hint: "Votre email ne sera utilisé que pour les communications venant de Buzz&Boost et des projets auxquels vous avez contribué. Il ne sera pas visible dans votre profil. Quand vous contribuez à un projet, nous communiquons votre email au porteur du projet afin qu'il puisse vous livrer votre récompense."
+      email_tooltip: "Cliquer icipour remplir votre email..."
+      gravatar_hint_html: "Vous voulez changer votre photo? Utilisez %{link} avec votre email.  "
+      local_avatar: "Mon avatar"
+      submit_text: "Choisissez votre photo"
+      submit: "Soumettre"
+      my_data: "Mon profil"
+      newsletter: "Je veux recevoir des nouvelles de Buzz&Boost par email"
+      password_hint: "<i>Ne pas remplir si vous ne voulez pas le changer.</i>"
     header:
-      bio_tooltip: "Click here to write about you..."
-      name_tooltip: "Click here to fill your name..."
+      bio_tooltip: "Cliquer ici pour parler de vous..."
+      name_tooltip: "Cliquer ici compléter votre nom..."
     projects:
-      no_projects: "%{name} haven't started any project on Catarse yet. We wonder if inspiration will hit one of these days!"
-      no_projects_current_user_html: "You haven't submitted any project to Catarse yet. Let the inspiration flow and %{link} to start!"
-      title: "%{name}'s projects"
-      title_current_user: "My projects"
+      no_projects: "%{name} n'a pas encore démarré un projet. L'inspiration viendra surement bientôt!"
+      no_projects_current_user_html: "Vous n'avez soumis aucun projet à Buzz&Boost. "
+      title: "les projets de %{name}'"
+      title_current_user: "Mes projets"
   users_mailer:
     notification_email:
-      alt: "You must enable images in order to correctly view this message."
-      forward: "Forward to your friends"
-      hello: Hi
-      intro: "You are receiving this message because you signed up on Catarse"
-      mailee: "Message delivered by Mailee.me"
-      salutation: "Big hugs,"
-      signature: "Catarse's Team"
-      unsubscribe: Unsubscribe
-      unsubscribe_long: "If you don't want to receive these emails"
-      weblink: "View on the web"
+      alt: "Vous devez désactiver les images pour visualiser correctement ce message."
+      forward: "Forwardez à vos amis"
+      hello: Salut
+      intro: "Vous recevez ce message car vous vous êtes enregistrés sur Buzz&Boost"
+      mailee: "Message delivré par Mailee.me"
+      salutation: "Bisous,"
+      signature: "L'équipe Buzz&Boost"
+      unsubscribe: Se désabonner
+      unsubscribe_long: "Si vous ne voulez plus recevoir ces mails"
+      weblink: "Vu sur le web"
       whitelist: "Add contact"
-      whitelist_long: "Add our email to your contacts"
+      whitelist_long: "Ajouter notre email à vos contacts"
   notifications:
     contributions:
       to_contribution:
-        subject: "Thank you! Your contribution for %{project} has been confirmed!"
-        text: "Success! <br />Your contribution has just been confirmed.<br /><br />Check: %{contribution_name}<br />%{contribution_value}<br />%{reward}<br /><br />%{project_name}"
+        subject: "Merci! Votre contribution à %{project} a été confirmée!"
+        text: "Succes! <br />Votre contribution vient d'être confirmée.<br /><br />Check: %{contribution_name}<br />%{contribution_value}<br />%{reward}<br /><br />%{project_name}"
     updates:
       subject: "If the league! Update of %{project_name} by %{project_owner}: %{update_title}"
-      text: "%{update_title}<br />%{update_text}<br />Comments? Send it on in the project page: <a href='%{project_link}'>%{project_name}</a>."
+      text: "%{update_title}<br />%{update_text}<br />Un commentaire? Envoyez le sur la page du projet: <a href='%{project_link}'>%{project_name}</a>."
 
