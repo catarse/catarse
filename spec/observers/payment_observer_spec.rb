@@ -73,6 +73,7 @@ RSpec.describe PaymentObserver do
       let(:payment_method){ 'CartaoDeCredito' }
       it "should notify admin upon refund request" do
         expect(ContributionNotification.where(template_name: 'refund_request', user_id: admin.id, from_email: contribution.user.email).count).to eq 1
+        expect(ContributionNotification.where(template_name: 'contribution_requested_refund', user_id: admin.id, from_email: contribution.user.email).count).to eq 0
       end
     end
 
@@ -80,6 +81,7 @@ RSpec.describe PaymentObserver do
       let(:payment_method){ 'BoletoBancario' }
       it "should notify admin and contributor upon refund request" do
         expect(ContributionNotification.where(template_name: 'refund_request', user_id: admin.id, from_email: contribution.user.email).count).to eq 1
+        expect(ContributionNotification.where(template_name: 'contribution_requested_refund').count).to eq 1
         expect(ContributionNotification.where(template_name: 'requested_refund_slip', user_id: contribution.user.id).count).to eq 0
       end
     end

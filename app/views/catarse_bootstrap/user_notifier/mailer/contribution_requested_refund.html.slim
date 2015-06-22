@@ -1,0 +1,38 @@
+- contribution = @notification.contribution
+- detail = contribution.details.ordered.first
+- company_name = CatarseSettings[:company_name]
+|Olá, <strong>#{contribution.user.display_name}</strong>!
+br
+br
+|O projeto #{link_to contribution.project.name, project_by_slug_url(permalink: contribution.project.permalink)} não atingiu a meta de arrecadação estabelecida no tempo limite de campanha e, segundo as regras do Catarse, o seu apoio no valor de #{number_to_currency detail.value} ao projeto #{ contribution.project.name} será devolvido a você.
+br
+br
+|Você preencheu todos os dados em nossa plataforma e possui a conta bancária cadastrada conosco. Por isso iremos realizar a devolução do dinheiro diretamente em sua conta em até 10 dias úteis:
+br
+br
+|Valor total do reembolso: #{number_to_currency detail.value}
+br
+br
+|Banco: #{contribution.user.bank_account.try(:bank).try(:name)}
+br
+br
+|Agência: #{contribution.user.bank_account.try(:agency)}
+br
+br
+|Conta: #{contribution.user.bank_account.try(:account)}
+br
+br
+|Nome: #{( contribution.user.bank_account.owner_name || contribution.payer_name )}
+br
+br
+|CPF: #{contribution.user.bank_account.try(:owner_document)}
+br
+br
+|Assim que o reembolso for feito, você receberá um e-mail de confirmando a operação.
+br
+|Se ficou com alguma dúvida, entre em contato conosco respondendo a esta mensagem ou através do e-mail #{mail_to CatarseSettings[:email_contact]}. Não esqueça de nos informar a chave de identificação do seu apoio, que é: #{detail.payment_id}.
+br
+br
+|Um abraço,
+br
+| #{company_name}
