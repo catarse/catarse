@@ -1,0 +1,28 @@
+pt:
+  pages:
+    press:
+      page-title: "Sala de imprensa"
+      hero:
+        title: "Sala de imprensa"
+      stats:
+        title: "Nossos números"
+        subtitle: "Muitos artistas, designers, pesquisadores, gamers, cientistas, empreendedores e ativistas encontraram na plataforma uma poderosa ferramenta para viabilizar financeiramente suas ações e projetos. Essa história pode ser contada em números."
+        people_html: "Pessoas já apoiaram pelo menos <br>1 projeto no Catarse"
+        projects_html: "Projetos já foram <br>financiados no Catarse"
+        money_html: "Doados para projetos <br>publicados por aqui"
+        success: "Projetos já foram financiados no Catarse"
+        money: "Doados para projetos publicados por aqui"
+        cta_html: "Veja dados completos filtrados por categoria &gt;"
+      abstract:
+        title: "O Catarse é o primeiro e maior site de crowdfunding, ou financiamento coletivo, do Brasil. Somos o ponto de encontro de uma crescente comunidade de pessoas interessadas em, juntas, contribuirem financeiramente para tirar do papel projetos de diversas categorias."
+      history:
+        title: "História da fundação do Catarse"
+        subtitle: "Primeira plataforma de financiamento coletivo para projetos criativos no Brasil, o Catarse entrou no ar em 17 de janeiro de 2011. O manifesto de fundação dizia que o site nasceu por causa de uma dor: ver gente brilhante com projetos engavetados..."
+        cta_html: "Leia a história completa &gt;"      
+      socialmedia:
+        title: "Campanhas de arrecadação"
+        subtitle: "Realizadores têm até 60 dias para captar a meta financeira que determinaram para o projeto acontecer. Em troca dos apoios, oferecem recompensas criativas."
+      email:
+        title: "Tudo ou nada!"
+        subtitle: "O objetivo é bater a meta no prazo para receber o valor arrecadado ou todos apoiadores recebem o dinheiro de volta. Planejar a campanha é o segredo!"
+      
