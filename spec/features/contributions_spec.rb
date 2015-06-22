@@ -72,7 +72,7 @@ RSpec.describe "Contributions", type: :feature do
       uri_after = selected_card["data-new-contribution-url"]
       reward_id = selected_card["id"].split("_").last
       selected_card.click
-      sleep FeatureHelpers::TIME_TO_SLEEP
+      sleep FeatureHelpers::TIME_TO_SLEEP*2
       expect(page.has_checked_field?(reward_id)).to be true
     end
   end
