@@ -23,6 +23,5 @@ pt:
         title: "Campanhas de arrecadação"
         subtitle: "Realizadores têm até 60 dias para captar a meta financeira que determinaram para o projeto acontecer. Em troca dos apoios, oferecem recompensas criativas."
       email:
-        title: "Tudo ou nada!"
-        subtitle: "O objetivo é bater a meta no prazo para receber o valor arrecadado ou todos apoiadores recebem o dinheiro de volta. Planejar a campanha é o segredo!"
-      
+        title: "Quer falar com a gente?"
+        cta: "comunicacao@catarse.me"

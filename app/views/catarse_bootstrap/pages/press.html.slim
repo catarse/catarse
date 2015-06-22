@@ -76,7 +76,7 @@
   .w-container
     .w-row
       .w-col.w-col-6.w-col-push-3
-        .fontsize-large.fontweight-semibold.u-text-center.u-marginbottom-30 Assine nossa news
+        .fontsize-large.fontweight-semibold.u-text-center.u-marginbottom-30 = t('.social.news')
         .w-form
           = render 'shared/newsletter'
 
@@ -85,9 +85,12 @@
     .w-row.u-text-center
       .w-col.w-col-2
       .w-col.w-col-8.w-col-push-2
-        .fontsize-larger.fontweight-semibold.u-marginbottom-10 Quer falar com a gente?
+        .fontsize-larger.fontweight-semibold.u-marginbottom-10 = t('.email.title')
         div
-          a.alt-link.fontsize-large href="#"  comunicacao@catarse.me
+          a.alt-link.fontsize-large href="mailto:comunicacao@catarse.me"  = t('.email.cta')
+
+
+
 
 
 = render 'shared/footer_big'
