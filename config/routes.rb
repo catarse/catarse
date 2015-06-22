@@ -83,6 +83,7 @@ Catarse::Application.routes.draw do
   get "/start" => 'high_voltage/pages#show', id: 'start'
   get "/jobs" => 'high_voltage/pages#show', id: 'jobs'
   get "/hello" => 'high_voltage/pages#show', id: 'hello'
+  get "/press" => 'high_voltage/pages#show', id: 'press'
   get "/assets" => 'high_voltage/pages#show', id: 'assets'
   get "/guides" => 'high_voltage/pages#show', id: 'guides', as: :guides
 
