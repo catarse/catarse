@@ -37,7 +37,9 @@ module Payment::PaymentEngineHandler
     end
 
     def direct_refund
-      payment_engine.direct_refund(self)
+      if self.can_request_refund?
+        DirectRefundWorker.perform_async(self.id)
+      end
     end
 
     def second_slip_path
