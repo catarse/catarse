@@ -25,6 +25,7 @@
     "jquery-ujs": "~1.0.3",
     "jquery.fixedmask": "~1.0.0",
     "mithril": "~0.2.0",
-    "mithril.postgrest": "~1.0.1"
+    "mithril.postgrest": "~1.0.1",
+    "catarse_admin": "~0.0.3"
   }
 }
