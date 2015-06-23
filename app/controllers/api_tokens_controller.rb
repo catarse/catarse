@@ -8,8 +8,8 @@ class ApiTokensController < ApplicationController
     unless current_user.present?
       return render json: {error: "only authenticated users can request the API token"}, status: 401
     end
-
-    render json: httparty.post("#{CatarseSettings[:api_host]}/postgrest/tokens", body: {id: current_user.id, pass: current_user.authentication_token}.to_json, options: {headers: { 'Content-Type' => 'application/json' }}).body
+    
+    render json: httparty.post("#{CatarseSettings[:api_host]}/postgrest/tokens", body: {id: current_user.id.to_s, pass: current_user.authentication_token}.to_json, options: {headers: { 'Content-Type' => 'application/json' }}).body
   end
 
   def httparty
