@@ -11,6 +11,20 @@ RSpec.describe Admin::ContributionsController, type: :controller do
     allow(controller).to receive(:current_user).and_return(current_user)
   end
 
+  describe 'PUT gateway_refund' do
+    let(:payment) { create(:payment, state: 'paid') }
+
+    before do
+      expect_any_instance_of(CatarsePagarme::PaymentDelegator).to receive(:refund)
+      put :gateway_refund, id: payment.id, locale: :pt
+    end
+
+    it "should call direct refund on payment pagarme_delegator" do
+      is_expected.to redirect_to admin_contributions_path
+      expect(payment.reload.state).to eq 'pending_refund'
+    end
+  end
+
   describe 'PUT pay' do
     subject { payment.paid? }
 
