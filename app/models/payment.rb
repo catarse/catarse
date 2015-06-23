@@ -97,9 +97,7 @@ class Payment < ActiveRecord::Base
     end
 
     event :request_refund do
-      transition paid: :pending_refund, if: ->(payment) {
-        payment.can_request_refund?
-      }
+      transition paid: :pending_refund
     end
 
     event :refund do
