@@ -10,7 +10,7 @@ pt:
         people_html: "Pessoas já apoiaram pelo menos <br>1 projeto no Catarse"
         projects_html: "Projetos já foram <br>financiados no Catarse"
         money_html: "Doados para projetos <br>publicados por aqui"
-        cta_html: "Veja dados completos filtrados por categoria &gt;"
+        cta_html: "Veja dados completos separados por categoria &gt;"
       abstract:
         title: "O Catarse é o primeiro e maior site de crowdfunding, ou financiamento coletivo, do Brasil. Somos o ponto de encontro de uma crescente comunidade de pessoas interessadas em, juntas, contribuirem financeiramente para tirar do papel projetos de diversas categorias."
       history:
@@ -19,7 +19,7 @@ pt:
         cta_html: "Leia a história completa &gt;"      
       social:
         title: "Acompanhe nossas histórias"
-        news: "Assine nossa news"
+        news: "Assine nossa newsletter semanal"
       assets:
         title: "Precisa de arquivos em alta resolução da nossa marca e selos?" 
         cta_html: "Baixe nossas marcas &gt;" 

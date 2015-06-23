@@ -27,13 +27,13 @@
           - statistics = Statistics.first
           .w-col.w-col-4.u-marginbottom-20
             .text-success.lineheight-loose.fontsize-larger= number_with_delimiter(statistics.total_contributors)
-            .fontsize-small = t('.stats.people_html')
+            .fontsize-smaller = t('.stats.people_html')
           .w-col.w-col-4.u-marginbottom-20
             .text-success.lineheight-loose.fontsize-larger= number_with_delimiter(statistics.total_projects_success)
-            .fontsize-small = t('.stats.projects_html')
+            .fontsize-smaller = t('.stats.projects_html')
           .w-col.w-col-4.u-marginbottom-20
             .text-success.lineheight-loose.fontsize-larger= number_to_human(statistics.total_contributed)
-            .fontsize-small = t('.stats.money_html')        
+            .fontsize-smaller = t('.stats.money_html')        
         a.alt-link.fontsize-large href="https://www.catarse.me/dbhero/dataclips/fa0d3570-9fa7-4af3-b070-2b2e386ef060" target="_blank"  = t('.stats.cta_html')
 .section-large
   .w-container
@@ -76,7 +76,6 @@
 .section-large.bg-gray.before-footer
   .w-container
     .w-row.u-text-center
-      .w-col.w-col-2
       .w-col.w-col-8.w-col-push-2
         .fontsize-larger.fontweight-semibold.u-marginbottom-10 = t('.email.title')
         div
