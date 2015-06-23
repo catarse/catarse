@@ -96,7 +96,7 @@ class ProjectObserver < ActiveRecord::Observer
 
   def request_refund_for_failed_project(project)
     project.payments.with_state('paid').each do |payment|
-      payment.request_refund
+      payment.direct_refund
     end
   end
 

@@ -47,7 +47,7 @@ class BankAccountsController < ApplicationController
     session[:pending_refund_payments_amount] = user_decorator.display_pending_refund_payments_amount
 
     user.pending_refund_payments.each do |payment|
-      payment.request_refund
+      payment.direct_refund
     end
 
     redirect_to bank_account_path(resource)

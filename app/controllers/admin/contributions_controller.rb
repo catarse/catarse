@@ -19,7 +19,7 @@ class Admin::ContributionsController < Admin::BaseController
   contribution_actions
 
   def gateway_refund
-    resource.request_refund
+    resource.direct_refund
     redirect_to admin_contributions_path(params[:local_params])
   end
 
