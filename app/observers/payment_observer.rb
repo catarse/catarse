@@ -16,6 +16,11 @@ class PaymentObserver < ActiveRecord::Observer
   alias :from_paid_to_refunded :from_pending_refund_to_refunded
   alias :from_deleted_to_refunded :from_pending_refund_to_refunded
 
+  def from_pending_refund_to_paid(payment)
+    payment.invalid_refund
+  end
+  alias :from_refunded_to_paid :from_pending_refund_to_paid
+
   def from_pending_to_invalid_payment(payment)
     payment.notify_to_backoffice :invalid_payment
   end
