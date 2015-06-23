@@ -78,6 +78,6 @@ class BankAccountsController < ApplicationController
   end
 
   def find_bank_account
-    params[:id].present? ? BankAccount.find(params[:id]) : current_user.build_bank_account
+    params[:id].present? ? BankAccount.find(params[:id]) : (current_user.bank_account || current_user.build_bank_account)
   end
 end
