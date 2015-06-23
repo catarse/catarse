@@ -132,8 +132,6 @@ Catarse::Application.routes.draw do
         put 'pay'
         put 'change_reward'
         put 'refund'
-        put 'refuse'
-        put 'request_refund'
         put 'trash'
         put 'gateway_refund'
       end
