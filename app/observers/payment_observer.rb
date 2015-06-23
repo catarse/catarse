@@ -6,7 +6,7 @@ class PaymentObserver < ActiveRecord::Observer
     contribution.notify_to_contributor(:payment_slip) if payment.slip_payment?
   end
 
-  def from_pending_to_paid
+  def from_pending_to_paid(payment)
     notify_confirmation(payment)
   end
 
