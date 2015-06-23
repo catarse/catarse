@@ -916,6 +916,7 @@ p {
   line-height: 100%;
 }
 .fontsize-larger {
+  font-family: proxima-nova, sans-serif;
   font-size: 34px;
   line-height: 100%;
 }
@@ -1203,7 +1204,7 @@ p {
 .back-reward-radio-reward {
   display: block;
   margin-bottom: 0px;
-  padding: 15px 40px 20px 35px;
+  padding: 15px 40px 20px 30px;
   border-style: solid;
   border-width: 2px;
   border-color: transparent transparent #f1f4f4;
@@ -1214,7 +1215,6 @@ p {
   background-color: #f1f4f4;
 }
 .back-reward-radio-reward.selected {
-  padding-left: 35px;
   border: 2px solid #7cc142;
   background-color: #f1f4f4;
 }
@@ -1231,7 +1231,7 @@ p {
   width: auto;
   margin-top: 10px;
   margin-right: 15px;
-  margin-left: -20px;
+  margin-left: -10px;
   float: left;
 }
 .back-reward-reward-description {
@@ -1939,7 +1939,7 @@ p {
 }
 .btn-dark.btn-attached {
   width: auto;
-  border-color: rgba(255, 255, 255, 0.13);
+  border-color: rgba(255, 255, 255, 0.11);
   background-color: transparent;
 }
 .btn-secondary-dark {
@@ -3377,12 +3377,8 @@ html.w-mod-js *[data-ix="know-more-2"] {
     height: 54px;
   }
   .back-reward-radio-reward {
-    padding-left: 22px;
     border-width: 2px;
     border-color: transparent transparent #f1f2f3;
-  }
-  .back-reward-radio-reward.selected {
-    padding-left: 22px;
   }
   .back-reward-radio-reward.selected.selected-2 {
     padding-left: 22px;
@@ -4428,10 +4424,6 @@ html.w-mod-js *[data-ix="know-more-2"] {
   .back-reward-radio-reward {
     width: auto;
     padding-right: 20px;
-    padding-left: 13px;
-  }
-  .back-reward-radio-reward.selected {
-    padding-left: 13px;
   }
   .back-reward-radio-reward.selected.selected-2 {
     padding-left: 13px;
