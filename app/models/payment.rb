@@ -33,7 +33,7 @@ class Payment < ActiveRecord::Base
   # Check current status on pagarme and
   # move pending payment to deleted state
   def move_to_trash
-    if ['pending'].include?(self.current_transaction_state)
+    if ['pending', 'waiting_payment'].include?(self.current_transaction_state)
       self.trash
     else
       self.change_status_from_transaction

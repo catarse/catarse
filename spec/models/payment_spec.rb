@@ -135,7 +135,7 @@ RSpec.describe Payment, type: :model do
 
     context "when transaction is pending on gateway" do
       before do
-        allow(payment).to receive(:current_transaction_state).and_return('pending')
+        allow(payment).to receive(:current_transaction_state).and_return('waiting_payment')
         expect(payment).to receive(:trash)
         expect(payment).to_not receive(:change_status_from_transaction)
       end
