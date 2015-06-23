@@ -40,7 +40,12 @@ html
     = render_facebook_sdk
     = render 'layouts/flash' if notice.present?
     = yield
-  = javascript_include_tag :application
+
+  - if content_for? :application_js
+    = yield :application_js
+  - else
+    = javascript_include_tag :application
+
   - if content_for? :js
     /page specific JS files
     = yield :js
