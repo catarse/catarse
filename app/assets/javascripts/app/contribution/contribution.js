@@ -65,6 +65,12 @@ App.addChild('Contribution', {
 
   clickReward: function(event){
     this.selectReward($(event.currentTarget));
+    var $this = $(event.currentTarget);
+    var posY = $this.offset().top;
+    var $thisHeight = $this.outerHeight();
+    var windowHeight = $(window).height();
+    var scrollPos = posY - windowHeight/2 + $thisHeight/2;
+    $('html, body').animate({scrollTop: scrollPos}, 200);
     var minimum = this.minimumValue();
     this.$value.val(minimum);
     this.$minimum.html(minimum);
