@@ -6,8 +6,8 @@ class PaymentObserver < ActiveRecord::Observer
     contribution.notify_to_contributor(:payment_slip) if payment.slip_payment?
   end
 
-  def after_update(payment)
-    notify_confirmation(payment) if payment.paid? && payment.state_changed?
+  def from_pending_to_paid
+    notify_confirmation(payment)
   end
 
   def from_pending_refund_to_refunded(payment)
