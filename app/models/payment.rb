@@ -97,7 +97,9 @@ class Payment < ActiveRecord::Base
     end
 
     event :request_refund do
-      transition paid: :pending_refund
+      transition paid: :pending_refund, if: ->(payment) {
+        payment.can_request_refund?
+      }
     end
 
     event :refund do
@@ -110,5 +112,9 @@ class Payment < ActiveRecord::Base
       to_column = "#{transition.to}_at".to_sym
       payment.update_attribute(to_column, DateTime.current) if payment.has_attribute?(to_column)
     end
+  end
+
+  def can_request_refund?
+    !self.slip_payment? || self.user.try(:bank_account).try(:valid?)
   end
 end
