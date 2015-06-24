@@ -12,7 +12,7 @@ class Payment < ActiveRecord::Base
   validates_presence_of :state, :key, :gateway, :payment_method, :value, :installments
   validate :value_should_be_equal_or_greater_than_pledge
   validate :project_should_be_online, on: :create
-  validate :is_unique_within_period
+  validate :is_unique_within_period, on: :create
 
   def is_unique_within_period
     errors.add(:payment, I18n.t('activerecord.errors.models.payment.duplicate')) if exists_duplicate?
