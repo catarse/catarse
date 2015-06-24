@@ -1,4 +1,6 @@
 class Payment < ActiveRecord::Base
+  DUPLICATION_PERIOD = '30 minutes'
+
   include Shared::StateMachineHelpers
   include Payment::PaymentEngineHandler
   delegate :user, :project, :invalid_refund, to: :contribution
@@ -10,6 +12,11 @@ class Payment < ActiveRecord::Base
   validates_presence_of :state, :key, :gateway, :payment_method, :value, :installments
   validate :value_should_be_equal_or_greater_than_pledge
   validate :project_should_be_online, on: :create
+  validate :is_unique_within_period, on: :create
+
+  def is_unique_within_period
+    errors.add(:payment, I18n.t('activerecord.errors.models.payment.duplicate')) if exists_duplicate?
+  end
 
   def project_should_be_online
     return if project && project.online?
@@ -114,5 +121,13 @@ class Payment < ActiveRecord::Base
 
   def can_request_refund?
     !self.slip_payment? || self.user.try(:bank_account).try(:valid?)
+  end
+
+  private
+  def exists_duplicate?
+    self.contribution.payments.
+      where(payment_method: self.payment_method, value: self.value).
+      where("current_timestamp - payments.created_at < '#{DUPLICATION_PERIOD}'::interval").
+      exists?
   end
 end
