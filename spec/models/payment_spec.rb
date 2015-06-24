@@ -18,6 +18,21 @@ RSpec.describe Payment, type: :model do
     it{ should validate_presence_of :installments }
   end
 
+  describe "#is_unique_within_period" do
+    subject{ payment }
+    let(:contribution){ create(:contribution) }
+    let(:payment){ build(:payment,contribution: contribution) }
+
+    context "when is the first payment of the contribution" do
+      it{ is_expected.to be_valid }
+    end
+
+    context "when we have a payment with same value and method within DUPLICATION_PERIOD" do
+      let!(:first_payment){ create(:payment,contribution: contribution, payment_method: payment.payment_method, value: payment.value) }
+      it{ is_expected.not_to be_valid }
+    end
+  end
+
   describe "#project_should_be_online" do
     subject{ payment }
     context "when project is draft" do
