@@ -42,7 +42,6 @@
     = link_to '#reward', id: 'dashboard_reward_link', class: 'dashboard-nav-link fixed' , data: {target: '#dashboard_reward', tab_group: 'edit'} do
       = @project.decorate.status_icon_for('reward')
       = t('.rewards_tab')
-    
     = link_to '#user_about', id: 'dashboard_user_about_link', class: 'dashboard-nav-link fixed' , data: {target: '#dashboard_user_about', tab_group: 'edit'} do
       = @project.decorate.status_icon_for('user_about')
       = t('.about_you_tab')
