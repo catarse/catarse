@@ -2,6 +2,7 @@ class BankAccountsController < ApplicationController
   after_action :verify_authorized
   helper_method :resource, :user_decorator
   respond_to :html
+  before_filter :authenticate_user!
   before_filter :need_pending_refunds, except: [:show]
 
   def new
