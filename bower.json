@@ -26,6 +26,6 @@
     "jquery.fixedmask": "~1.0.0",
     "mithril": "~0.2.0",
     "mithril.postgrest": "~1.0.1",
-    "catarse_admin": "git@github.com:catarse/catarse_admin.git#master"
+    "catarse_admin": "https://github.com/catarse/catarse_admin.git#master"
   }
 }
