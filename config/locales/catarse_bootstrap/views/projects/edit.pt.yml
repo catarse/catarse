@@ -93,9 +93,9 @@ pt:
         subtitle_html: "Muito obrigado! Nossa equipe vai avaliar todo o conteúdo do seu projeto e em até 4 dias úteis você receberá um email informando se ele foi Aprovado, Recusado ou se vai continuar Em Análise por mais algum tempo para que você possa realizar ajustes sugeridos. Aproveite esse período para coletar feedbacks com pessoas próximas!"
     edit:
       leave_link_html: "&nbsp; Sair do painel de controle"
-      start_tab: Início
+      start_tab: Infos úteis
       basics_tab: Básico
-      project_tab: Projeto
+      project_tab: Editar projeto
       posts_tab: Novidades
       rewards_tab: Recompensas
       about_you_tab: Sobre você
