@@ -7,6 +7,7 @@ RSpec.describe BankAccountsController, type: :controller do
   let(:user){ create(:user) }
 
   before do
+    allow(controller).to receive(:authenticate_user!).and_return(true)
     allow(controller).to receive(:current_user).and_return(user)
   end
 
@@ -203,19 +204,14 @@ RSpec.describe BankAccountsController, type: :controller do
       end
 
       before do
-        payment
+        Sidekiq::Testing.inline!
+        expect(DirectRefundWorker).to receive(:perform_async).with(payment.id)
         project.update_column(:state, 'failed')
 
         put :request_refund, {
           locale: :pt,
           id: user.bank_account.id
         }
-
-        payment.reload
-      end
-
-      it "should request refund from pending_payments" do
-        expect(payment.pending_refund?).to eq(true)
       end
 
       it "should redirect to success" do
