@@ -6,18 +6,13 @@
     .u-text-center.u-marginbottom-10
       span.fa.fa-check-circle.text-success.fa-3x
     .w-row.u-text-center
-      .w-col.w-col-1
-      .w-col.w-col-10
+      .w-col.w-col-10.w-col-offset-1
         .fontsize-larger.u-marginbottom-20= t('.success')
-      .w-col.w-col-1
     .w-row.u-text-center.u-marginbottom-40
-      .w-col.w-col-2
-      .w-col.w-col-8
+      .w-col.w-col-8.w-col-offset-2
         .fontsize-base= t('.success_detail')
-      .w-col.w-col-2
     .w-row
-      .w-col.w-col-3
-      .w-col.w-col-6
+      .w-col.w-col-6.w-col-offset-3
         .card.card-terciary.u-radius
           .fontsize-base.u-marginbottom-20.fontweight-semibold.u-text-center= t('.review') 
           .fontsize-small.lineheight-looser= t('.value_label', value: session[:pending_refund_payments_amount])
