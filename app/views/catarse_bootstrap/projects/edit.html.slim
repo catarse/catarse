@@ -15,7 +15,7 @@
           .w-col.w-col-9.u-text-center-small-only
             = link_to t('.leave_link_html'), project_by_slug_path(@project.permalink), class: 'nav-tab dashboard fa fa-chevron-left'
   nav.w-section.dashboard-nav.side
-    = link_to (@project.published? ? project_by_slug_path(@project.permalink) : '#preview'),class: 'w-inline-block dashboard-project-name' do
+    = link_to (@project.published? ? project_by_slug_path(@project.permalink) : '#preview'), id: 'dashboard_preview_link', class: 'w-inline-block dashboard-project-name' , data: {target: '#dashboard_preview', tab_group: 'edit'} do
       - if @project.uploaded_image.present?
         img.thumb-project-dashboard src="#{@project.display_image(:project_thumb_large)}" width="114" /
       .fontcolor-negative.lineheight-tight.fontsize-small= @project.name
