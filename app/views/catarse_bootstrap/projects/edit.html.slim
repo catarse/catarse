@@ -30,11 +30,11 @@
         | &nbsp
         span.badge= @project.posts.count
     - if @project.published?
-      = link_to '#reports', id: 'dashboard_reports_link', class: 'dashboard-nav-link fixed u-marginbottom-20' , data: {target: '#dashboard_reports', tab_group: 'edit'} do
+      = link_to '#reports', id: 'dashboard_reports_link', class: 'dashboard-nav-link fixed' , data: {target: '#dashboard_reports', tab_group: 'edit'} do
         span.fa.fa-bar-chart.fa-fw.fa-lg>
         = t('.reports_tab')
     - if (!@project.published? && !@project.approved?) || (current_user && current_user.admin?)
-      = link_to '#basics', id: 'basics_link', class: 'dashboard-nav-link fixed' , data: {target: '#dashboard_basics', tab_group: 'edit'} do
+      = link_to '#basics', id: 'basics_link', class: 'dashboard-nav-link fixed u-margintop-20' , data: {target: '#dashboard_basics', tab_group: 'edit'} do
         = @project.decorate.status_icon_for('basics')
         = t('.basics_tab')
     = link_to '#project', id: 'dashboard_project_link', class: 'dashboard-nav-link fixed' , data: {target: '#dashboard_project', tab_group: 'edit'} do
