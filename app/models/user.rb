@@ -156,7 +156,8 @@ class User < ActiveRecord::Base
         state: 'failed'
       },
       state: 'paid',
-      gateway: 'Pagarme'
+      gateway: 'Pagarme',
+      payment_method: 'BoletoBancario'
     })
   end
 

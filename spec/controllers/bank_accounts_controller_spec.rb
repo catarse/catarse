@@ -45,7 +45,10 @@ RSpec.describe BankAccountsController, type: :controller do
 
       before do
         payment = contribution.payments.first
-        payment.update_column(:gateway, 'Pagarme')
+        payment.update_attributes({
+          gateway: 'Pagarme',
+          payment_method: 'BoletoBancario'
+        })
         project.update_column(:state, 'failed')
         get :edit, locale: :pt, id: bank_account_id
       end
@@ -84,7 +87,10 @@ RSpec.describe BankAccountsController, type: :controller do
 
       before do
         payment = contribution.payments.first
-        payment.update_column(:gateway, 'Pagarme')
+        payment.update_attributes({
+          gateway: 'Pagarme',
+          payment_method: 'BoletoBancario'
+        })
         project.update_column(:state, 'failed')
       end
 
@@ -137,7 +143,10 @@ RSpec.describe BankAccountsController, type: :controller do
 
       before do
         payment = contribution.payments.first
-        payment.update_column(:gateway, 'Pagarme')
+        payment.update_attributes({
+          gateway: 'Pagarme',
+          payment_method: 'BoletoBancario'
+        })
         project.update_column(:state, 'failed')
       end
 
@@ -196,7 +205,10 @@ RSpec.describe BankAccountsController, type: :controller do
 
       before do
         payment = contribution.payments.first
-        payment.update_column(:gateway, 'Pagarme')
+        payment.update_attributes({
+          gateway: 'Pagarme',
+          payment_method: 'BoletoBancario'
+        })
         project.update_column(:state, 'failed')
       end
 
@@ -249,7 +261,10 @@ RSpec.describe BankAccountsController, type: :controller do
           value: 10,
           user: user
         }).payments.first
-        payment.update_column(:gateway, 'Pagarme')
+        payment.update_attributes({
+          gateway: 'Pagarme',
+          payment_method: 'BoletoBancario'
+        })
         payment
       end
 

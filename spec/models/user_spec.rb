@@ -54,7 +54,9 @@ RSpec.describe User, type: :model do
     let(:failed_project) { create(:project, state: 'online') }
     let(:invalid_payment) do
       c = create(:confirmed_contribution, project: failed_project, user: user)
-      c.payments.update_all(gateway: 'Pagarme')
+      c.payments.update_all({
+        gateway: 'Pagarme',
+        payment_method: 'BoletoBancario'})
       c.payments.first
     end
     let(:valid_payment) do
@@ -79,7 +81,9 @@ RSpec.describe User, type: :model do
     let(:failed_project) { create(:project, state: 'online') }
     let(:invalid_payment) do
       c = create(:confirmed_contribution, project: failed_project, user: user)
-      c.payments.update_all(gateway: 'Pagarme')
+      c.payments.update_all({
+        gateway: 'Pagarme',
+        payment_method: 'BoletoBancario'})
       c.payments.first
     end
     let(:valid_payment) do
