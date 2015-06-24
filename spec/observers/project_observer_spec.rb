@@ -206,22 +206,15 @@ RSpec.describe ProjectObserver do
       end
 
       before do
+        Sidekiq::Testing.inline!
         payment_valid
         payment_invalid
         contribution_invalid.user.bank_account.destroy
-
-        project.finish
-        payment_valid.reload
-        payment_invalid.reload
+        expect(DirectRefundWorker).to receive(:perform_async).with(payment_valid.id)
+        expect(DirectRefundWorker).to_not receive(:perform_async).with(payment_invalid.id)
       end
 
-      it "should request refund for card payment" do
-        expect(payment_valid.state).to eq('pending_refund')
-      end
-
-      it "should not request_refund for invalid slip payment" do
-        expect(payment_invalid.state).to eq('paid')
-      end
+      it { project.finish }
     end
   end
 
