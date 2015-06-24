@@ -24,6 +24,13 @@ Catarse::Application.routes.draw do
  #mount CatarseWepay::Engine => "/", as: :catarse_wepay
   mount Dbhero::Engine => "/dbhero", as: :dbhero
 
+  resources :bank_accounts, except: [:destroy, :index] do
+    member do
+      get 'confirm'
+      put 'request_refund'
+    end
+  end
+
   resources :categories, only: [] do
     member do
       get :subscribe, to: 'categories/subscriptions#create'
@@ -125,9 +132,9 @@ Catarse::Application.routes.draw do
         put 'pay'
         put 'change_reward'
         put 'refund'
-        put 'refuse'
-        put 'request_refund'
         put 'trash'
+        put 'request_refund'
+        put 'chargeback'
         put 'gateway_refund'
       end
     end

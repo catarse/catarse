@@ -15,13 +15,12 @@ RSpec.describe Admin::ContributionsController, type: :controller do
     let(:payment) { create(:payment, state: 'paid') }
 
     before do
-      expect_any_instance_of(CatarsePagarme::PaymentDelegator).to receive(:refund)
+      expect(DirectRefundWorker).to receive(:perform_async).with(payment.id)
       put :gateway_refund, id: payment.id, locale: :pt
     end
 
     it "should call direct refund on payment pagarme_delegator" do
       is_expected.to redirect_to admin_contributions_path
-      expect(payment.reload.state).to eq 'pending_refund'
     end
   end
 
@@ -76,20 +75,6 @@ RSpec.describe Admin::ContributionsController, type: :controller do
 
     it "should request_refund on contribution and redirect back" do
       expect(payment.pending_refund?).to eq(true)
-      is_expected.to be_redirect
-    end
-  end
-
-  describe 'PUT refuse' do
-    let(:contribution) { create(:pending_contribution) }
-
-    before do
-      put :refuse, id: payment.id, locale: :pt
-      payment.reload
-    end
-
-    it "should refuse contribution and redirect back" do
-      expect(payment.refused?).to be(true)
       is_expected.to be_redirect
     end
   end

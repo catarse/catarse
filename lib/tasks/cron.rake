@@ -1,9 +1,11 @@
 namespace :cron do
   desc "Tasks that should run hourly"
-  task hourly: [:finish_projects, :cancel_expired_waiting_confirmation_contributions, :refresh_materialized_views]
+  task hourly: [:finish_projects,
+                :cancel_expired_waiting_confirmation_contributions,
+                :refresh_materialized_views]
 
   desc "Tasks that should run daily"
-  task daily: [:refresh_materialized_views, :update_payment_service_fee,
+  task daily: [:refresh_materialized_views,
                :notify_project_owner_about_new_confirmed_contributions,
                :deliver_projects_of_week, :verify_pagarme_transactions,
                :verify_pagarme_transfers]
@@ -29,14 +31,6 @@ namespace :cron do
     Project.to_finish.each do |project|
       CampaignFinisherWorker.perform_async(project.id)
     end
-  end
-
-  desc "update paypal contributions without a payment_service_fee"
-  task update_payment_service_fee: :environment do
-    puts "Updating payment service fee..."
-    ActiveRecord::Base.connection.execute(<<-EOQ)
-    UPDATE contributions SET payment_service_fee = ((regexp_matches(pn.extra_data, 'fee_amount":"(\d*\.\d*)"'))[1])::numeric from payment_notifications pn where contributions.id = pn.contribution_id AND contributions.payment_service_fee is null and contributions.payment_method = 'PayPal' and contributions.state = 'confirmed' and pn.extra_data ~* 'fee_amount';
-    EOQ
   end
 
   desc "Send a notification to all project owners with contributions done..."

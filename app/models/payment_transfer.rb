@@ -5,6 +5,6 @@ class PaymentTransfer < ActiveRecord::Base
 
   # retun the transfers that are pending to transfer by pagar.me
   scope :pending, -> do
-    where("payment_transfers.transfer_data->>'status' = 'pending_transfer'")
+   where("payment_transfers.transfer_data->>'status' IN ('pending_transfer', 'processing')")
   end
 end

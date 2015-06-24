@@ -5,6 +5,65 @@ RSpec.describe UserDecorator do
     I18n.locale = :pt
   end
 
+  describe "#display_pending_refund_payments_projects_name" do
+    let(:user){ create(:user, bank_account: nil) }
+    let(:failed_project) { create(:project, goal: 1000, state: 'online', name: 'Foo')}
+    let(:failed_project_2) { create(:project, goal: 1000, state: 'online', name: 'Bar')}
+    let(:payment) {
+      p = create(:confirmed_contribution, {
+        value: 25.45,
+        project: failed_project,
+        user: user
+      }).payments.first
+      p.update_attribute(:payment_method, 'BoletoBancario')
+      p
+    }
+    let(:payment_2) {
+      p = create(:confirmed_contribution, {
+        value: 25.45,
+        project: failed_project_2,
+        user: user
+      }).payments.first
+      p.update_attribute(:payment_method, 'BoletoBancario')
+      p
+    }
+
+    subject { user.decorator.display_pending_refund_payments_projects_name.sort }
+
+    before do
+      payment
+      payment_2
+      failed_project.update_column(:state, 'failed')
+      failed_project_2.update_column(:state, 'failed')
+    end
+
+    it { is_expected.to eq([failed_project_2.name, failed_project.name]) }
+
+  end
+
+  describe "#display_pending_refund_payments_amount" do
+    let(:user){ create(:user, bank_account: nil) }
+    let(:failed_project) { create(:project, goal: 1000, state: 'online')}
+    let(:payment) {
+      p = create(:confirmed_contribution, {
+        value: 25.45,
+        project: failed_project,
+        user: user
+      }).payments.first
+      p.update_attribute(:payment_method, 'BoletoBancario')
+      p
+    }
+
+    subject { user.decorator.display_pending_refund_payments_amount }
+
+    before do
+      payment
+      failed_project.update_column(:state, 'failed')
+    end
+
+    it { is_expected.to eq("R$ 25,45") }
+  end
+
   describe "#display_name" do
     subject{ user.display_name }
 

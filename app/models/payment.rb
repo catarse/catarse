@@ -52,7 +52,7 @@ class Payment < ActiveRecord::Base
 
   def notification_template_for_failed_project
     if slip_payment?
-      :contribution_project_unsuccessful_slip
+      self.user.bank_account.present? ? :contribution_project_unsuccessful_slip : :contribution_project_unsuccessful_slip_no_account
     else
       :contribution_project_unsuccessful_credit_card
     end
@@ -81,11 +81,11 @@ class Payment < ActiveRecord::Base
     state :chargeback
 
     event :chargeback do
-      transition all => :chargeback
+      transition [:paid] => :chargeback
     end
 
     event :trash do
-      transition all => :deleted
+      transition [:pending, :paid, :refunded, :refused] => :deleted
     end
 
     event :pay do
@@ -110,5 +110,9 @@ class Payment < ActiveRecord::Base
       to_column = "#{transition.to}_at".to_sym
       payment.update_attribute(to_column, DateTime.current) if payment.has_attribute?(to_column)
     end
+  end
+
+  def can_request_refund?
+    !self.slip_payment? || self.user.try(:bank_account).try(:valid?)
   end
 end

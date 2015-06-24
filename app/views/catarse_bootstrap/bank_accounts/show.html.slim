@@ -1,0 +1,23 @@
+- content_for :title, t('.page-title')
+
+= render 'shared/header'
+.w-section.section-one-column.u-margintop-30
+  .w-container
+    .u-text-center.u-marginbottom-10
+      span.fa.fa-check-circle.text-success.fa-3x
+    .w-row.u-text-center
+      .w-col.w-col-10.w-col-offset-1
+        .fontsize-larger.u-marginbottom-20= t('.success')
+    .w-row.u-text-center.u-marginbottom-40
+      .w-col.w-col-8.w-col-offset-2
+        .fontsize-base= t('.success_detail')
+    .w-row
+      .w-col.w-col-6.w-col-offset-3
+        .card.card-terciary.u-radius
+          .fontsize-base.u-marginbottom-20.fontweight-semibold.u-text-center= t('.review') 
+          .fontsize-small.lineheight-looser= t('.value_label', value: session[:pending_refund_payments_amount])
+          .fontsize-small.lineheight-looser= t('.bank_label', content: resource.bank)
+          .fontsize-small.lineheight-looser= t('.agency_label', content: resource.agency)
+          .fontsize-small.lineheight-looser= t('.account_label', content: resource.account)
+          .fontsize-small.lineheight-looser= t('.owner_name_label', content: resource.owner_name)
+          .fontsize-small.lineheight-looser= t('.owner_document_label', content: resource.owner_document)

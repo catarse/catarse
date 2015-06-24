@@ -44,20 +44,13 @@ RSpec.describe Payment::PaymentEngineHandler, type: :model do
 
     context "when payment has a payment engine with direct refund enabled" do
       before do
+        allow(DirectRefundWorker).to receive(:perform_async).and_return(true)
         allow(moip_engine).to receive(:can_do_refund?).and_return(true)
         allow(moip_engine).to receive(:direct_refund).and_return(true)
         PaymentEngines.register(engine)
       end
 
       it { is_expected.to eq(true) }
-    end
-
-    context "when payment has a payment engine without direct refund enabled" do
-      before do
-        PaymentEngines.register(engine)
-      end
-
-      it { is_expected.to eq(false) }
     end
   end
 

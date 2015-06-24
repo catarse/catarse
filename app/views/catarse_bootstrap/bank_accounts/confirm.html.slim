@@ -1,0 +1,22 @@
+- content_for :title, t('.page-title')
+
+= render 'shared/header'
+
+.w-section.section-one-column.u-margintop-40
+  .w-container
+    .w-row.u-text-center.u-marginbottom-30
+      .w-col.w-col-8.w-col-offset-2
+        .fontsize-larger Confirma os dados abaixo?
+    .w-row
+      .w-col.w-col-6.w-col-offset-3
+        .card.card-terciary.u-radius.u-marginbottom-30
+          .fontsize-small.lineheight-looser= t('.bank_label', content: resource.bank)
+          .fontsize-small.lineheight-looser= t('.agency_label', content: resource.agency)
+          .fontsize-small.lineheight-looser= t('.account_label', content: resource.account)
+          .fontsize-small.lineheight-looser= t('.owner_name_label', content: resource.owner_name)
+          .fontsize-small.lineheight-looser= t('.owner_document_label', content: resource.owner_document)
+        .w-row
+          .w-col.w-col-6.w-col-small-6.w-col-tiny-6.w-sub-col-middle
+            = link_to t('.answer_no'), edit_bank_account_path(resource), class: 'btn btn-terciary btn-medium'
+          .w-col.w-col-6.w-col-small-6.w-col-tiny-6.w-sub-col-middle
+            = link_to t('.answer_yes'), request_refund_bank_account_path(resource), class: 'btn btn-medium', method: :put

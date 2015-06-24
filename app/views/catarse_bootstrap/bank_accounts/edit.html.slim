@@ -1,0 +1,47 @@
+- content_for :title, t('.page-title')
+
+= render 'shared/header'
+
+.w-section.section-one-column.u-margintop-40
+  .w-container
+    .w-row.u-text-center.u-marginbottom-40
+      .w-col.w-col-8.w-col-offset-2
+        .fontsize-larger.u-marginbottom-20= t('.fill_form')
+        .fontsize-base= t('.fill_form_text', amount: user_decorator.display_pending_refund_payments_amount, project_names: user_decorator.display_pending_refund_payments_projects_name.to_sentence)
+      .w-col.w-col-2
+    .w-row.u-marginbottom-60
+      .w-col.w-col-8.w-col-offset-2
+        = simple_form_for resource, html: { class: 'w-form' } do |bform|
+          .w-row
+            .w-col.w-col-6.w-sub-col
+              = bform.label :bank_id, class: 'field-label fontweight-semibold force-text-dark'
+              = bform.input_field :bank_id, as: :select, collection: Bank.to_collection, class: 'w-select'
+            .w-col.w-col-6
+              .w-row
+                .w-col.w-col-6.w-col-small-6.w-col-tiny-6.w-sub-col-middle
+                  = bform.label :agency, class: 'field-label fontweight-semibold force-text-dark'
+                  = bform.input_field :agency, as: :string
+                .w-col.w-col-6.w-col-small-6.w-col-tiny-6
+                  = bform.label :agency_digit, class: 'field-label fontweight-semibold force-text-dark'
+                  = bform.input_field :agency_digit, as: :string
+          .w-row
+            .w-col.w-col-6.w-sub-col
+              .w-row
+                .w-col.w-col-6.w-col-small-6.w-col-tiny-6.w-sub-col-middle
+                  = bform.label :account, class: 'field-label fontweight-semibold force-text-dark'
+                  = bform.input_field :account, as: :string
+                .w-col.w-col-6.w-col-small-6.w-col-tiny-6
+                  = bform.label :account_digit, class: 'field-label fontweight-semibold force-text-dark'
+                  = bform.input_field :account_digit, as: :string
+            .w-col.w-col-6
+              = bform.label :owner_name, class: 'field-label fontweight-semibold force-text-dark'
+              = bform.input_field :owner_name, as: :string
+          .w-row
+            .w-col.w-col-6.w-sub-col
+              = bform.label :owner_document, class: 'field-label fontweight-semibold force-text-dark'
+              = bform.input_field :owner_document, as: :tel, validation_text: true, data: { :'validate-cpf-cnpj' => true }
+            .w-col.w-col-6
+          .w-row
+            .w-col.w-col-4.w-col-offset-4
+              = bform.submit t('.request_refunds'),  class:'btn btn-large'
+

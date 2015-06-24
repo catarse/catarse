@@ -144,6 +144,22 @@ class User < ActiveRecord::Base
     self.class.connection.select_one("SELECT number FROM public.contributor_numbers WHERE user_id = #{self.id}")["number"].to_i
   end
 
+  # Return the projects that user has pending refund payments
+  def pending_refund_payments_projects
+    pending_refund_payments.map(&:project)
+  end
+
+  # Return the pending payments to refund for failed projects
+  def pending_refund_payments
+    payments.joins(contribution: :project).where({
+      projects: {
+        state: 'failed'
+      },
+      state: 'paid',
+      gateway: 'Pagarme'
+    })
+  end
+
   def has_online_project?
     projects.with_state('online').exists?
   end

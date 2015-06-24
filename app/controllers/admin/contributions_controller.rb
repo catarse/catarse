@@ -5,7 +5,7 @@ class Admin::ContributionsController < Admin::BaseController
   before_filter :set_title
 
   def self.contribution_actions
-    %w[pay refuse refund trash request_refund].each do |action|
+    %w[pay refund trash chargeback request_refund].each do |action|
       define_method action do
         if resource.send(action)
           flash[:notice] = I18n.t("admin.contributions.messages.successful.#{action}")
@@ -19,9 +19,7 @@ class Admin::ContributionsController < Admin::BaseController
   contribution_actions
 
   def gateway_refund
-    if resource.request_refund
-      resource.pagarme_delegator.refund
-    end
+    resource.direct_refund
     redirect_to admin_contributions_path(params[:local_params])
   end
 

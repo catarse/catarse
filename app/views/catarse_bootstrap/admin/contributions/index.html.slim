@@ -105,8 +105,8 @@
                 - if contribution.pending_refund? || contribution.paid? || contribution.deleted?
                   = link_to t('admin.contributions.index.refund_contribution'), refund_admin_contribution_path(contribution, local_params: params), method: :put, class: 'w-dropdown-link dropdown-link fontsize-smaller'
 
-                - unless %w[pending paid pending_refund refunded].include?(contribution.state)
-                  = link_to t('admin.contributions.index.cancel'), refuse_admin_contribution_path(contribution, local_params: params), method: :put, class: 'w-dropdown-link dropdown-link fontsize-smaller'
+                - if contribution.paid?
+                  = link_to t('admin.contributions.index.chargeback'), chargeback_admin_contribution_path(contribution, local_params: params), method: :put, class: 'w-dropdown-link dropdown-link fontsize-smaller'
 
                 - unless contribution.paid?
                   = link_to t('admin.contributions.index.push_to_trash'), trash_admin_contribution_path(contribution, local_params: params), method: :put, class: 'w-dropdown-link dropdown-link fontsize-smaller'

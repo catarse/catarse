@@ -24,7 +24,7 @@ class UserDecorator < Draper::Decorator
     source.uploaded_image.thumb_avatar.url || '/assets/catarse_bootstrap/user.jpg'
   end
 
-  def display_image_html 
+  def display_image_html
     (%{<div class="avatar_wrapper">} +
       h.image_tag(display_image, alt: "User", class: "thumb big u-round") +
       %{</div>}).html_safe
@@ -40,6 +40,19 @@ class UserDecorator < Draper::Decorator
 
   def display_credits
     number_to_currency source.credits
+  end
+
+  # Return the total amount from pending refund payments
+  def display_pending_refund_payments_amount
+    number_to_currency(
+      source.pending_refund_payments.sum(:value),
+      precision: 2)
+  end
+
+  # Return array with name of projects that user
+  # have pending refund payments
+  def display_pending_refund_payments_projects_name
+    source.pending_refund_payments_projects.map(&:name).uniq
   end
 
   def display_bank_account
