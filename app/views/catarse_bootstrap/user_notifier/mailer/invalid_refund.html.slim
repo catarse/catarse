@@ -1,31 +1,41 @@
 - contribution = @notification.contribution
 - bank_account = contribution.user.bank_account
 - project = contribution.project
-
-| Olá Comunidade!
-br/
-br/
-| O reembolso do apoio ao projeto #{link_to(project.name, project_by_slug_url(permalink: project.permalink))} não foi efetuado devido a erros nos dados bancários preenchidos:
-br/
-br/
-- if bank_account
-  | Banco: #{bank_account.bank.to_s}
-  br
-  | Agência: #{bank_account.try(:agency)} - #{bank_account.try(:agency_digit)}
-  br
-  | Conta: #{bank_account.try(:account)} - #{bank_account.try(:account_digit)}
-  br
-  | Nome do titular: #{bank_account.try(:owner_name)}
-  br
-  | CPF: #{bank_account.try(:owner_document)}  
-  br/
-  br/
-| Chave de identificação do apoio: #{contribution.payment_id}
-br/
-br/
-| Favor entrar em contato com o usuário através do email cadastrado para realizar o reembolso: #{mail_to contribution.user.email}
-br/
-br/
-| Beijos
-br/
-| Catarse
+- detail = contribution.details.ordered.first
+- company_name = CatarseSettings[:company_name]
+|Olá, #{contribution.user.name}!
+br
+br
+|O seu reembolso não foi efetuado devido a algum erro em seus dados bancários preenchidos:
+br
+br
+|Banco: #{bank_account.try(:bank).to_s}
+br
+br
+|Agência: #{bank_account.try(:agency)} - #{bank_account.try(:agency_digit)}
+br
+br
+|Conta: #{bank_account.try(:account)} - #{bank_account.try(:account_digit)}
+br
+br
+|Nome do titular: #{bank_account.try(:owner_name)}
+br
+br
+|CPF: #{bank_account.try(:owner_document)}  
+br
+br
+|Se você preencheu algum dado incorreto,corrija-os e solicite novamente seu reembolso, clicando no botão abaixo:
+br
+br
+center
+  = link_to new_bank_account_url, alt: 'Solicitar Reembolso', target: '__blank' do
+    = image_tag "#{CatarseSettings[:base_url]}/assets/catarse_bootstrap/request_refund.png"
+br
+br
+|Porém, se os dados informados estão corretos e mesmo assim seu reembolso não foi efetuado,  entre em contato conosco respondendo a esta mensagem ou através do e-mail #{mail_to CatarseSettings[:email_contact]}. Não esqueça de nos informar a chave de identificação do seu apoio, que é: #{detail.payment_id}.
+br
+br
+|Beijos
+br
+br
+| #{company_name}

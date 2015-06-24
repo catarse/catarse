@@ -58,6 +58,21 @@ RSpec.describe PaymentObserver do
     end
   end
 
+  describe '#from_pending_refund_to_paid' do
+    let(:admin){ create(:user) }
+    before do
+      allow(payment).to receive(:can_do_refund?).and_return(true)
+      expect(payment).to_not receive(:direct_refund)
+      payment.notify_observers :from_pending_refund_to_paid
+    end
+
+    context "when refund is invalid" do
+      it "should send invalid refund notification" do
+        expect(ContributionNotification.where(template_name: 'invalid_refund', user_id: payment.user.id).count).to eq 1
+      end
+    end
+  end
+
   describe '#from_paid_to_pending_refund' do
     let(:admin){ create(:user) }
     before do
