@@ -56,6 +56,7 @@ class Contribution < ActiveRecord::Base
   end
 
   def invalid_refund
+    return if CatarseSettings[:email_contact].nil?
     _user = User.find_by(email: CatarseSettings[:email_contact])
     notify(:invalid_refund, _user, self) if _user
   end
@@ -69,6 +70,7 @@ class Contribution < ActiveRecord::Base
   end
 
   def notify_to_backoffice(template_name, options = {})
+    return if CatarseSettings[:email_payments].nil?
     _user = User.find_by(email: CatarseSettings[:email_payments])
     notify_once(template_name, _user, self, options) if _user
   end
