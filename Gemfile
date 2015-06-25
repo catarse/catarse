@@ -20,7 +20,7 @@ gem 'state_machine', require: 'state_machine/core'
 
 # Database and data related
 gem 'pg', '0.17.1'
-gem 'dbhero', '>= 1.1.6'
+gem 'dbhero', '>= 1.1.7'
 gem 'postgres-copy'
 gem 'pg_search'
 gem 'i18n_alchemy'
