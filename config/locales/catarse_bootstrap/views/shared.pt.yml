@@ -1,5 +1,8 @@
 pt:
   shared:
+    alerts:
+      pending_payment_text: "Você possui reembolsos pendentes de %{value}."
+      pending_payment_link_text: "Pegue seu dinheiro de volta!"
     load_more: "Carregar mais"
     terms: termos de uso
     accept_terms_html: Eu li e estou de acordo com os %{link}.
