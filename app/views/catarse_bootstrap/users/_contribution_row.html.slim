@@ -25,8 +25,11 @@
       .w-hidden-main.w-hidden-medium.fontsize-smallest.fontweight-semibold>= Payment.human_attribute_name(:state)
       .fontsize-smallest 
         = "#{contribution.decorate.display_payment_details} #{contribution.decorate.display_installment_details}"
-      .fontsize-smallest
-        = contribution.decorate.display_status
+      - if project.failed? && contribution.paid?
+        = link_to t('.request_refund'), new_bank_account_path, class: "btn btn-inline btn-small u-margintop-10"
+      - else
+        .fontsize-smallest
+          = contribution.decorate.display_status
     .w-col.w-col-4
       .fontsize-smallest
         span.w-hidden-main.w-hidden-medium.fontweight-semibold>= Contribution.human_attribute_name(:reward)

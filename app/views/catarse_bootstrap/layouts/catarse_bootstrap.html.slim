@@ -34,8 +34,9 @@ html
     - if Rails.env.production?    
       = render 'layouts/vwo'
 
-  body#catarse_bootstrap[data-controller-name=controller_name data-action=action_name data-user="#{current_user.try(:to_analytics_json)}" data-referral="#{session[:referral_link]}" data-id=params[:id] data-mobile=browser.mobile?.to_s itemscope itemtype="http://schema.org/WebPage" class="#{content_for :body_class}"] 
+  body#catarse_bootstrap[data-controller-name=controller_name data-action=action_name data-user="#{current_user.try(:to_analytics_json)}" data-referral="#{session[:referral_link]}" data-id=params[:id] data-mobile=browser.mobile?.to_s itemscope itemtype="http://schema.org/WebPage" class="#{'body-alert' if can_display_pending_refund_alert?} #{content_for :body_class}"] 
     /= render 'layouts/global_alert'
+    = render 'layouts/pending_refund_top_alert' if can_display_pending_refund_alert?
     = render 'layouts/new_zendesk'
     = render_facebook_sdk
     = render 'layouts/flash' if notice.present?
