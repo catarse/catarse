@@ -27,6 +27,9 @@ pt:
         contact: 'contato'
         click_here: 'clique aqui'
       edit:
+        review_slip_email: "Você também receberá um email com esse boleto."
+        slip_expiration: "Esse boleto bancário vence no dia %{date}."
+        slip_message: 'Ao gerar o boleto, o realizador já está contando com o seu apoio. Pague até a data de vencimento pela internet, casas lotéricas, caixas eletrônicos ou agência bancária.'
         review_title: 'Preencha e revise os dados para pagamento'
         review_subtitle: 'Esses dados serão informados ao realizador do projeto'
         delivery_address: 'Endereço de entrega'
