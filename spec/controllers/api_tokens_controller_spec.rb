@@ -37,7 +37,7 @@ RSpec.describe ApiTokensController, type: :controller do
       let(:current_user) { create(:user) }
       it{ is_expected.to be_successful }
       it "should relay request to api server" do
-        expect(httparty_spy).to have_received(:post).with("#{CatarseSettings[:api_host]}/postgrest/tokens", body: {id: current_user.id, pass: current_user.authentication_token}.to_json, options: {headers: { 'Content-Type' => 'application/json' }})
+        expect(httparty_spy).to have_received(:post).with("#{CatarseSettings[:api_host]}/postgrest/tokens", body: {id: current_user.id.to_s, pass: current_user.authentication_token}.to_json, options: {headers: { 'Content-Type' => 'application/json' }})
       end
     end
 

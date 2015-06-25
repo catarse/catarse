@@ -68,6 +68,7 @@ class Contribution < ActiveRecord::Base
   end
 
   def notify_to_backoffice(template_name, options = {})
+    return if CatarseSettings[:email_payments].nil?
     _user = User.find_by(email: CatarseSettings[:email_payments])
     notify_once(template_name, _user, self, options) if _user
   end

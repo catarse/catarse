@@ -16,11 +16,21 @@ RSpec.describe BankAccountsController, type: :controller do
       user.try(:bank_account).try(:id)
     end
 
+    context "when user does not logged in" do
+      before do
+        allow(controller).to receive(:current_user).and_return(nil)
+        allow(controller).to receive(:authenticate_user!).and_call_original
+        get :edit, locale: :pt, id: bank_account_id
+      end
+
+      it{ is_expected.to redirect_to new_user_session_path }
+    end
+
     context "when user does not have pending refund payments" do
       before do
         get :edit, locale: :pt, id: bank_account_id
       end
-      it{ is_expected.to redirect_to root_path }
+      it{ is_expected.to redirect_to root_path}
     end
 
 
@@ -35,7 +45,10 @@ RSpec.describe BankAccountsController, type: :controller do
 
       before do
         payment = contribution.payments.first
-        payment.update_column(:gateway, 'Pagarme')
+        payment.update_attributes({
+          gateway: 'Pagarme',
+          payment_method: 'BoletoBancario'
+        })
         project.update_column(:state, 'failed')
         get :edit, locale: :pt, id: bank_account_id
       end
@@ -47,6 +60,15 @@ RSpec.describe BankAccountsController, type: :controller do
   end
 
   describe "GET new" do
+    context "when user does not logged in" do
+      before do
+        allow(controller).to receive(:authenticate_user!).and_call_original
+        get :new, locale: :pt
+      end
+
+      it{ is_expected.to redirect_to new_user_session_path }
+    end
+
     context "when user does not have pending refund payments" do
       before do
         get :new, locale: :pt
@@ -65,7 +87,10 @@ RSpec.describe BankAccountsController, type: :controller do
 
       before do
         payment = contribution.payments.first
-        payment.update_column(:gateway, 'Pagarme')
+        payment.update_attributes({
+          gateway: 'Pagarme',
+          payment_method: 'BoletoBancario'
+        })
         project.update_column(:state, 'failed')
       end
 
@@ -90,6 +115,15 @@ RSpec.describe BankAccountsController, type: :controller do
   end
 
   describe "POST create" do
+    context "when user does not logged in" do
+      before do
+        allow(controller).to receive(:authenticate_user!).and_call_original
+        post :create, locale: :pt
+      end
+
+      it{ is_expected.to redirect_to new_user_session_path }
+    end
+
     context "when user does not have pending refund payments" do
       before do
         post :create, locale: :pt
@@ -109,7 +143,10 @@ RSpec.describe BankAccountsController, type: :controller do
 
       before do
         payment = contribution.payments.first
-        payment.update_column(:gateway, 'Pagarme')
+        payment.update_attributes({
+          gateway: 'Pagarme',
+          payment_method: 'BoletoBancario'
+        })
         project.update_column(:state, 'failed')
       end
 
@@ -137,6 +174,17 @@ RSpec.describe BankAccountsController, type: :controller do
   end
 
   describe "PUT update" do
+    context "when user does not logged in" do
+      let(:user) { create(:user) }
+      before do
+        allow(controller).to receive(:current_user).and_return(nil)
+        allow(controller).to receive(:authenticate_user!).and_call_original
+        put :update, locale: :pt, id: user.bank_account.id
+      end
+
+      it{ is_expected.to redirect_to new_user_session_path }
+    end
+
     context "when user does not have pending refund payments" do
       let(:user) { create(:user) }
       before do
@@ -157,7 +205,10 @@ RSpec.describe BankAccountsController, type: :controller do
 
       before do
         payment = contribution.payments.first
-        payment.update_column(:gateway, 'Pagarme')
+        payment.update_attributes({
+          gateway: 'Pagarme',
+          payment_method: 'BoletoBancario'
+        })
         project.update_column(:state, 'failed')
       end
 
@@ -183,6 +234,17 @@ RSpec.describe BankAccountsController, type: :controller do
   end
 
   describe "PUT request_refund" do
+    context "when user does not logged in" do
+      let(:user) { create(:user) }
+      before do
+        allow(controller).to receive(:current_user).and_return(nil)
+        allow(controller).to receive(:authenticate_user!).and_call_original
+        put :request_refund, locale: :pt, id: user.bank_account.id
+      end
+
+      it{ is_expected.to redirect_to new_user_session_path }
+    end
+
     context "when user does not have pending refund payments" do
       let(:user) { create(:user) }
       before do
@@ -199,7 +261,10 @@ RSpec.describe BankAccountsController, type: :controller do
           value: 10,
           user: user
         }).payments.first
-        payment.update_column(:gateway, 'Pagarme')
+        payment.update_attributes({
+          gateway: 'Pagarme',
+          payment_method: 'BoletoBancario'
+        })
         payment
       end
 

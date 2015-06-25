@@ -14,52 +14,7 @@
         .w-row
           .w-col.w-col-9.u-text-center-small-only
             = link_to t('.leave_link_html'), project_by_slug_path(@project.permalink), class: 'nav-tab dashboard fa fa-chevron-left'
-  nav.w-section.dashboard-nav.side
-    a.w-inline-block.dashboard-project-name href="#" 
-      - if @project.uploaded_image.present?
-        img.thumb-project-dashboard src="#{@project.display_image(:project_thumb_large)}" width="114" /
-      .fontcolor-negative.lineheight-tight.fontsize-small= @project.name
-    = link_to '#home', id: 'dashboard_home_link', class: 'dashboard-nav-link fixed' , data: {target: '#dashboard_home', tab_group: 'edit'} do
-      = t('.start_tab')
-    - if (!@project.published? && !@project.approved?) || (current_user && current_user.admin?)
-      = link_to '#basics', id: 'basics_link', class: 'dashboard-nav-link fixed' , data: {target: '#dashboard_basics', tab_group: 'edit'} do
-        = @project.decorate.status_icon_for('basics')
-        = t('.basics_tab')
-    = link_to '#project', id: 'dashboard_project_link', class: 'dashboard-nav-link fixed' , data: {target: '#dashboard_project', tab_group: 'edit'} do
-      = @project.decorate.status_icon_for('project')
-      = t('.project_tab')
-    - if @project.published?
-      = link_to '#posts', id: 'dashboard_posts_link', class: 'dashboard-nav-link fixed' , data: {target: '#dashboard_posts', tab_group: 'edit'} do
-        = t('.posts_tab')
-        | &nbsp;&nbsp;
-        span.badge= @project.posts.count
-    = link_to '#reward', id: 'dashboard_reward_link', class: 'dashboard-nav-link fixed' , data: {target: '#dashboard_reward', tab_group: 'edit'} do
-      = @project.decorate.status_icon_for('reward')
-      = t('.rewards_tab')
-    - if @project.published?
-      = link_to '#reports', id: 'dashboard_reports_link', class: 'dashboard-nav-link fixed' , data: {target: '#dashboard_reports', tab_group: 'edit'} do
-        = t('.reports_tab')
-    = link_to '#user_about', id: 'dashboard_user_about_link', class: 'dashboard-nav-link fixed' , data: {target: '#dashboard_user_about', tab_group: 'edit'} do
-      = @project.decorate.status_icon_for('user_about')
-      = t('.about_you_tab')
-    - if @project.can_show_account_link? || (current_user && current_user.admin?)
-      = link_to '#user_settings', id: 'dashboard_user_settings_link', class: 'dashboard-nav-link fixed u-marginbottom-20' , data: {target: '#dashboard_user_settings', tab_group: 'edit'} do
-        = @project.decorate.status_icon_for('user_settings')
-        = t('.account_tab')
-    - if @project.draft? || @project.approved? || @project.rejected? || @project.in_analysis?
-      - if @project.can_show_preview_link?
-        = link_to '#preview', id: 'dashboard_preview_link', class: 'dashboard-nav-link fixed' , data: {target: '#dashboard_preview', tab_group: 'edit'} do
-          = t('.preview_tab')
-      - if @project.draft?
-        .btn-send-draft-fixed
-           = link_to t('.send'), send_to_analysis_project_path(@project), class: 'btn btn-medium'
-      - if @project.approved?
-        .btn-send-draft-fixed
-           = link_to publish_project_path(@project), class: 'btn btn-medium' do
-            = t('.publish')
-            | &nbsp;&nbsp;
-            span.fa.fa-chevron-right
-
+  = render 'dashboard_nav'
   section.section
     #current_anchor data-anchor="#{params[:anchor]}"
     .w-container

@@ -133,6 +133,8 @@ pt:
         visible: 'Publicar (Marque caso queira publicar essa nóvidade)'
     errors:
       models:
+        payment: 
+          duplicate: "O seu pagamento já está sendo processado"
         contribution: "Erro ao salvar apoio"
         bank_account:
           attributes:
