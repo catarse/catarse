@@ -11,6 +11,7 @@ pt:
       contributed_projects: "Projetos que apoiei"
       contribution_value: "Valor do apoio"
       contribution_status: "Status do apoio"
+      request_refund: 'Solicitar reembolso'
       reward: Recompensa
       no_reward: "Não selecionou recompensa"
       delivery_estimate: "Estimativa de entrega:"

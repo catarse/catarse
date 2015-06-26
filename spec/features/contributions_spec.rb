@@ -67,14 +67,6 @@ RSpec.describe "Contributions", type: :feature do
       expect(uri).to have_content(/\/contributions\/(\d+)\/edit/)
     end
 
-    it "should redirect with selected reward when clicking on card reward" do
-      selected_card = find(".card-reward:nth-of-type(2)")
-      uri_after = selected_card["data-new-contribution-url"]
-      reward_id = selected_card["id"].split("_").last
-      selected_card.click
-      sleep FeatureHelpers::TIME_TO_SLEEP*2
-      expect(page.has_checked_field?(reward_id)).to be true
-    end
   end
 
   describe "payment" do
