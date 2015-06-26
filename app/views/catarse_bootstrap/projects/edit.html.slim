@@ -6,13 +6,6 @@
 
 .project-dashboard-edit
   = render 'project_header'
-
-  - if @project.published?
-    .project-nav
-      .w-container
-        .w-row
-          .w-col.w-col-9.u-text-center-small-only
-            = link_to t('.leave_link_html'), project_by_slug_path(@project.permalink), class: 'nav-tab dashboard fa fa-chevron-left'
   = render partial: 'dashboard_nav', locals: {edit_page: true}
   section.section
     #current_anchor data-anchor="#{params[:anchor]}"

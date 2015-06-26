@@ -32,9 +32,6 @@ nav.project-nav.w-hidden-small.w-hidden-tiny
   .w-container
     .w-row
       .w-col.w-col-9.w-hidden-small.w-hidden-tiny
-        - if policy(@project).update?
-          = link_to edit_project_path(@project, anchor: 'home'), id: 'about_link', class: 'nav-tab dashboard fa fa-cog', data: {target: '#project_about.content'} do
-            = t('.menu.panel_html')
         = link_to '#about', id: 'about_link', class: 'nav-tab selected', data: {target: '#project_about.content'} do
           = t('.menu.about')
         = link_to '#posts', id: 'posts_link', class: 'nav-tab' , data: {target: '#project_posts'} do
