@@ -16,12 +16,12 @@
           .w-row
             .w-col.w-col-6.w-sub-col
               = bform.label :bank_id, class: 'field-label fontweight-semibold force-text-dark'
-              = bform.input_field :bank_id, as: :select, collection: Bank.to_collection, class: 'w-select'
+              = bform.input_field :bank_id, as: :select, collection: Bank.to_collection, class: 'w-select', required: true
             .w-col.w-col-6
               .w-row
                 .w-col.w-col-6.w-col-small-6.w-col-tiny-6.w-sub-col-middle
                   = bform.label :agency, class: 'field-label fontweight-semibold force-text-dark'
-                  = bform.input_field :agency, as: :string
+                  = bform.input_field :agency, as: :string, required: true, validation_text: true
                 .w-col.w-col-6.w-col-small-6.w-col-tiny-6
                   = bform.label :agency_digit, class: 'field-label fontweight-semibold force-text-dark'
                   = bform.input_field :agency_digit, as: :string
@@ -30,17 +30,17 @@
               .w-row
                 .w-col.w-col-6.w-col-small-6.w-col-tiny-6.w-sub-col-middle
                   = bform.label :account, class: 'field-label fontweight-semibold force-text-dark'
-                  = bform.input_field :account, as: :string
+                  = bform.input_field :account, as: :string, required: true
                 .w-col.w-col-6.w-col-small-6.w-col-tiny-6
                   = bform.label :account_digit, class: 'field-label fontweight-semibold force-text-dark'
-                  = bform.input_field :account_digit, as: :string
+                  = bform.input_field :account_digit, as: :string, required: true
             .w-col.w-col-6
               = bform.label :owner_name, class: 'field-label fontweight-semibold force-text-dark'
-              = bform.input_field :owner_name, as: :string
+              = bform.input_field :owner_name, as: :string, required: true
           .w-row
             .w-col.w-col-6.w-sub-col
               = bform.label :owner_document, class: 'field-label fontweight-semibold force-text-dark'
-              = bform.input_field :owner_document, as: :tel, validation_text: true, data: { :'validate-cpf-cnpj' => true }
+              = bform.input_field :owner_document, as: :tel, validation_text: true, required: true, data: { :'validate-cpf-cnpj' => true }
             .w-col.w-col-6
           .w-row
             .w-col.w-col-4
