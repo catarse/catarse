@@ -21,6 +21,7 @@ pt:
         agency: "Qual o número da agência?"
         account: "Qual o número da conta?"
         account_digit: "Qual o dígito verificador?"
+        agency_digit: "Qual o dígito da agência?"
         owner_name: "Informe um nome com no mínimo 5 e no máximo 30 letras"
         owner_document: "Informe um CPF ou CNPJ válido para o correntista"
       contribution:

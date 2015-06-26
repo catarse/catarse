@@ -9,38 +9,30 @@
         .fontsize-larger.u-marginbottom-20= t('.fill_form')
         .fontsize-base= t('.fill_form_text', amount: user_decorator.display_pending_refund_payments_amount, project_names: user_decorator.display_pending_refund_payments_projects_name.to_sentence)
 
-    - if resource.errors.present?
-      .w-row.u-marginbottom-20
-        .w-col.w-col-8.w-col-offset-2
-          .card.card-error.u-radius.zindex-10.u-marginbottom-30
-            .fontsize-smaller.fontweight-bold.u-marginbottom-10= I18n.t('failure_title')
-            - resource.errors.each do |error|
-              .fontsize-smaller= resource.errors[error][0]
-
     .w-row.u-marginbottom-60
       .w-col.w-col-8.w-col-offset-2
-        = simple_form_for resource, html: { class: 'w-form' } do |bform|
+        = simple_form_for resource, html: { class: 'w-form refund_bank_account_form' } do |bform|
           .w-row
             .w-col.w-col-6.w-sub-col
-              = bform.input :bank_id, as: :select, collection: Bank.to_collection, class: 'w-select', required: true
+              = bform.input :bank_id, as: :select, collection: Bank.to_collection, class: 'w-select', input_html: { required: true }
             .w-col.w-col-6
               .w-row
                 .w-col.w-col-6.w-col-small-6.w-col-tiny-6.w-sub-col-middle
-                  = bform.input :agency, as: :string, required: true, validation_text: true
+                  = bform.input :agency, as: :string, validation_text: true, input_html: { required: true }
                 .w-col.w-col-6.w-col-small-6.w-col-tiny-6
-                  = bform.input :agency_digit, as: :string, validation_text: true
+                  = bform.input :agency_digit, as: :string, validation_text: true, input_html: { required: true }
           .w-row
             .w-col.w-col-6.w-sub-col
               .w-row
                 .w-col.w-col-6.w-col-small-6.w-col-tiny-6.w-sub-col-middle
-                  = bform.input :account, as: :string, required: true, validation_text: true
+                  = bform.input :account, as: :string, validation_text: true, input_html: { required: true }
                 .w-col.w-col-6.w-col-small-6.w-col-tiny-6
-                  = bform.input :account_digit, as: :string, required: true, validation_text: true
+                  = bform.input :account_digit, as: :string, required: true, validation_text: true, input_html: { required: true }
             .w-col.w-col-6
-              = bform.input :owner_name, as: :string, required: true, validation_text: true
+              = bform.input :owner_name, as: :string, validation_text: true, input_html: {required: true}
           .w-row
             .w-col.w-col-6.w-sub-col
-              = bform.input :owner_document, as: :tel, validation_text: true, required: true, input_html: { data: { :'validate-cpf-cnpj' => true } }
+              = bform.input :owner_document, as: :tel, validation_text: true, input_html: { data: { :'validate-cpf-cnpj' => true }, required: true }
             .w-col.w-col-6
           .w-row
             .w-col.w-col-4
