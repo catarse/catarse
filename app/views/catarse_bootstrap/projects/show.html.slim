@@ -54,4 +54,6 @@ nav.project-nav.w-hidden-small.w-hidden-tiny
         = image_tag 'catarse_bootstrap/tag-icon.png', class: 'project-nav-category-icon', width: "22" 
 
 = render 'project_main'
+- if policy(@project).update?
+  = render 'dashboard_nav'
 = render 'shared/footer_big'

@@ -1,42 +1,44 @@
+- edit = defined?(edit_page) || false
+= content_for :body_class, 'body-project open'
 nav.w-section.dashboard-nav.side
   = link_to (@project.published? ? project_by_slug_path(@project.permalink) : '#preview'), id: 'dashboard_preview_link', class: 'w-inline-block dashboard-project-name' , data: {target: '#dashboard_preview', tab_group: 'edit'} do
     - if @project.uploaded_image.present?
       img.thumb-project-dashboard src="#{@project.display_image(:project_thumb_large)}" width="114" /
     .fontcolor-negative.lineheight-tight.fontsize-small= @project.name
 
-  = link_to '#home', id: 'dashboard_home_link', class: 'dashboard-nav-link-left' , data: {target: '#dashboard_home', tab_group: 'edit'} do
+  = link_to (edit ? '#home' : edit_project_path(@project, anchor: 'home')), id: 'dashboard_home_link', class: 'dashboard-nav-link-left' , data: {target: '#dashboard_home', tab_group: 'edit'} do
     span.fa.fa-fw.fa-info.fa-lg>
     = t('.start_tab')
   - if @project.published?
-    = link_to '#posts', id: 'dashboard_posts_link', class: 'dashboard-nav-link-left' , data: {target: '#dashboard_posts', tab_group: 'edit'} do
+    = link_to (edit ? '#posts' : edit_project_path(@project, anchor: 'posts')), id: 'dashboard_posts_link', class: 'dashboard-nav-link-left' , data: {target: '#dashboard_posts', tab_group: 'edit'} do
       span.fa.fa-bullhorn.fa-fw.fa-lg>
       = t('.posts_tab')
       | &nbsp
       span.badge= @project.posts.count
   - if @project.published?
-    = link_to '#reports', id: 'dashboard_reports_link', class: 'dashboard-nav-link-left' , data: {target: '#dashboard_reports', tab_group: 'edit'} do
+    = link_to (edit ? '#reports' : edit_project_path(@project, anchor: 'reports')), id: 'dashboard_reports_link', class: 'dashboard-nav-link-left' , data: {target: '#dashboard_reports', tab_group: 'edit'} do
       span.fa.fa-bar-chart.fa-fw.fa-lg>
       = t('.reports_tab')
   - if (!@project.published? && !@project.approved?) || (current_user && current_user.admin?)
-    = link_to '#basics', id: 'basics_link', class: 'dashboard-nav-link-left u-margintop-20' , data: {target: '#dashboard_basics', tab_group: 'edit'} do
+    = link_to (edit ? '#basics' : edit_project_path(@project, anchor: 'basics')), id: 'basics_link', class: 'dashboard-nav-link-left u-margintop-20' , data: {target: '#dashboard_basics', tab_group: 'edit'} do
       = @project.decorate.status_icon_for('basics')
       = t('.basics_tab')
-  = link_to '#project', id: 'dashboard_project_link', class: 'dashboard-nav-link-left' , data: {target: '#dashboard_project', tab_group: 'edit'} do
+  = link_to (edit ? '#project' : edit_project_path(@project, anchor: 'project')), id: 'dashboard_project_link', class: 'dashboard-nav-link-left' , data: {target: '#dashboard_project', tab_group: 'edit'} do
     = @project.decorate.status_icon_for('project')
     = t('.project_tab')
-  = link_to '#reward', id: 'dashboard_reward_link', class: 'dashboard-nav-link-left' , data: {target: '#dashboard_reward', tab_group: 'edit'} do
+  = link_to (edit ? '#reward' : edit_project_path(@project, anchor: 'reward')), id: 'dashboard_reward_link', class: 'dashboard-nav-link-left' , data: {target: '#dashboard_reward', tab_group: 'edit'} do
     = @project.decorate.status_icon_for('reward')
     = t('.rewards_tab')
-  = link_to '#user_about', id: 'dashboard_user_about_link', class: 'dashboard-nav-link-left' , data: {target: '#dashboard_user_about', tab_group: 'edit'} do
+  = link_to (edit ? '#user_about' : edit_project_path(@project, anchor: 'user_about')), id: 'dashboard_user_about_link', class: 'dashboard-nav-link-left' , data: {target: '#dashboard_user_about', tab_group: 'edit'} do
     = @project.decorate.status_icon_for('user_about')
     = t('.about_you_tab')
   - if @project.can_show_account_link? || (current_user && current_user.admin?)
-    = link_to '#user_settings', id: 'dashboard_user_settings_link', class: 'dashboard-nav-link-left u-marginbottom-20' , data: {target: '#dashboard_user_settings', tab_group: 'edit'} do
+    = link_to (edit ? '#user_settings' : edit_project_path(@project, anchor: 'user_settings')), id: 'dashboard_user_settings_link', class: 'dashboard-nav-link-left u-marginbottom-20' , data: {target: '#dashboard_user_settings', tab_group: 'edit'} do
       = @project.decorate.status_icon_for('user_settings')
       = t('.account_tab')
   - if !@project.published?
     - if @project.can_show_preview_link?
-      = link_to '#preview', id: 'dashboard_preview_link', class: 'dashboard-nav-link-left' , data: {target: '#dashboard_preview', tab_group: 'edit'} do
+      = link_to (edit ? '#preview' : edit_project_path(@project, anchor: 'preview')), id: 'dashboard_preview_link', class: 'dashboard-nav-link-left' , data: {target: '#dashboard_preview', tab_group: 'edit'} do
         span.fa.fa-fw.fa-eye.fa-lg>
         = t('.preview_tab')
     - if @project.draft?
@@ -48,5 +50,8 @@ nav.w-section.dashboard-nav.side
           = t('.publish')
           | &nbsp;&nbsp;
           span.fa.fa-chevron-right
+- if policy(@project).update? && @project.published?
+  div
+    a.btn-dashboard.open.fa.fa-lg.fa-chevron-left 
 
 

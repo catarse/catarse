@@ -2,7 +2,6 @@
   = javascript_include_tag 'redactor', '//www.google.com/jsapi', 'chartkick'
 - content_for :stylesheets do
   = stylesheet_link_tag 'redactor'
-= content_for :body_class, 'body-project'
 = render 'shared/header'
 
 .project-dashboard-edit
@@ -14,7 +13,7 @@
         .w-row
           .w-col.w-col-9.u-text-center-small-only
             = link_to t('.leave_link_html'), project_by_slug_path(@project.permalink), class: 'nav-tab dashboard fa fa-chevron-left'
-  = render 'dashboard_nav'
+  = render partial: 'dashboard_nav', locals: {edit_page: true}
   section.section
     #current_anchor data-anchor="#{params[:anchor]}"
     .w-container

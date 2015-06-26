@@ -13,6 +13,18 @@ App.addChild('ProjectEditForm', _.extend({
 App.addChild('ProjectEdit', _.extend({
   el: '.project-dashboard-edit',
 
+  events: {
+    'click .btn-dashboard' : 'toggleNav'
+  },
+
+  toggleNav: function(){
+    $(".body-project").toggleClass("open closed");
+    $(".dashboard-nav.side").animate({width: 'toggle'});
+    $(".btn-dashboard").toggleClass("open fa fa-lg fa-chevron-left");
+    $(".btn-dashboard").toggleClass("closed fa fa-lg fa-cog");
+    return false;
+  },
+
   activate: function(){
     this.route('basics');
     this.route('home');
