@@ -8,7 +8,7 @@ namespace :cron do
   task daily: [:refresh_materialized_views,
                :notify_project_owner_about_new_confirmed_contributions,
                :deliver_projects_of_week, :verify_pagarme_transactions,
-               :verify_pagarme_transfers]
+               :verify_pagarme_transfers, :notify_pending_refunds]
 
   desc "Refresh all materialized views"
   task refresh_materialized_views: :environment do
@@ -42,6 +42,14 @@ namespace :cron do
         :project_owner_contribution_confirmed,
         project.user
       )
+    end
+  end
+
+  desc 'Send a notification about pending refunds'
+  task notify_pending_refunds: [:environment] do
+    Contribution.need_notify_about_pending_refund.each do |contribution|
+     contribution.notify(:contribution_project_unsuccessful_slip_no_account,
+                         contribution.user)
     end
   end
 
