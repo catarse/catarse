@@ -198,4 +198,47 @@ RSpec.describe Contribution, type: :model do
       it{ is_expected.to eq false }
     end
   end
+
+  describe "#need_notify_about_pending_refund" do
+    let(:project) { create(:project) }
+    let(:refunded_contribution) { create(:refunded_contribution, project: project) }
+    let(:paid_contribution) { create(:confirmed_contribution, project: project) }
+
+    subject { Contribution.need_notify_about_pending_refund }
+    before do
+      paid_contribution.payments.first.update_attributes({payment_method: 'BoletoBancario'})
+      refunded_contribution
+      project.update_column(:state, 'failed')
+    end
+
+    context "when not receive a pending notification" do
+      it "should find the contributions that need to be notified" do
+        is_expected.to eq([paid_contribution])
+      end
+    end
+
+    context "when notifications already passed 7 days" do
+      before do
+        paid_contribution.notify(
+          :contribution_project_unsuccessful_slip_no_account,
+          paid_contribution.user)
+        paid_contribution.notifications.last.update_column(:created_at, 8.days.ago)
+      end
+      it "should not find the contributions that need to be notified" do
+        is_expected.to eq([paid_contribution])
+      end
+    end
+
+    context "when already notified" do
+      before do
+        paid_contribution.notify(
+          :contribution_project_unsuccessful_slip_no_account,
+          paid_contribution.user)
+      end
+      it "should not find the contributions that need to be notified" do
+        is_expected.to eq([])
+      end
+    end
+
+  end
 end
