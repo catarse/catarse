@@ -55,7 +55,7 @@ class AddUserProfileImgToContributionDetails < ActiveRecord::Migration
      WITH confirmed AS (
          SELECT c.user_id,
             min(c.id) AS id
-           FROM contribution_details c
+           FROM "1".contribution_details c
           WHERE c.state = ANY (confirmed_states())
           GROUP BY c.user_id
           ORDER BY min(c.id)
@@ -112,7 +112,7 @@ class AddUserProfileImgToContributionDetails < ActiveRecord::Migration
      WITH confirmed AS (
          SELECT c.user_id,
             min(c.id) AS id
-           FROM contribution_details c
+           FROM "1".contribution_details c
           WHERE c.state = ANY (confirmed_states())
           GROUP BY c.user_id
           ORDER BY min(c.id)
