@@ -3,11 +3,11 @@ App.addChild('Project', _.extend({
 
   events: {
     'click #toggle_warning a' : 'toggleWarning',
+    'click .btn-dashboard' : 'toggleNav',
     'click a#embed_link' : 'toggleEmbed'
   },
 
   activate: function(){
-  
     this.$warning = this.$('#project_warning_text');
     this.$embed= this.$('#project_embed');
     this.$container = $(".project-about");
@@ -22,6 +22,14 @@ App.addChild('Project', _.extend({
     
     this.setupResponsiveIframes(this.$container);
   
+  },
+
+  toggleNav: function(){
+    $(".body-project").toggleClass("closed");
+    $(".dashboard-nav.side").animate({width: 'toggle'});
+    $(".btn-dashboard").toggleClass("closed fa-cog");
+    $(".btn-dashboard").toggleClass("open fa-chevron-left");
+    return false;
   },
 
   toggleWarning: function(){
