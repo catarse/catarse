@@ -184,6 +184,18 @@ RSpec.describe ContributionDetail, type: :model do
     })}
   end
 
+  describe "user_profile_img" do
+    let!(:contribution){ create(:confirmed_contribution, value: 10) }
+    subject{ ContributionDetail.first.user_profile_img }
+
+    before do
+      CatarseSettings[:aws_host] = 's3.aws.com'
+      CatarseSettings[:aws_bucket] = 'bucket'
+    end
+
+    it{ is_expected.to eq "https://#{CatarseSettings[:aws_host]}/#{CatarseSettings[:aws_bucket]}/uploads/user/uploaded_image/#{contribution.user.id}/thumb_avatar_testimg.png" }
+  end
+
   describe ".total_by_address_state" do
     subject { ContributionDetail.total_by_address_state }
     before do
