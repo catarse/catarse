@@ -69,6 +69,7 @@ RSpec.configure do |config|
     allow_any_instance_of(UserObserver).to receive(:after_create)
     allow_any_instance_of(Project).to receive(:download_video_thumbnail)
     allow_any_instance_of(Calendar).to receive(:fetch_events_from)
+    allow_any_instance_of(Payment).to receive(:refund_queue_set).and_return(DirectRefundWorker.jobs)
     allow(Blog).to receive(:fetch_last_posts).and_return([])
 
     # Default configurations

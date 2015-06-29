@@ -59,6 +59,7 @@ RSpec.describe User, type: :model do
         payment_method: 'BoletoBancario'})
       c.payments.first
     end
+
     let(:valid_payment) do
       c = create(:pending_refund_contribution, project: failed_project, user: user)
       c.payments.update_all(gateway: 'Pagarme')
@@ -86,6 +87,13 @@ RSpec.describe User, type: :model do
         payment_method: 'BoletoBancario'})
       c.payments.first
     end
+    let(:in_queue_payment) do
+      c = create(:confirmed_contribution, project: failed_project, user: user)
+      c.payments.update_all({
+        gateway: 'Pagarme',
+        payment_method: 'BoletoBancario'})
+      c.payments.first
+    end
     let(:valid_payment) do
       c = create(:pending_refund_contribution, project: failed_project, user: user)
       c.payments.update_all(gateway: 'Pagarme')
@@ -97,10 +105,12 @@ RSpec.describe User, type: :model do
     before do
       invalid_payment
       valid_payment
+      in_queue_payment.direct_refund
       failed_project.update_column(:state, 'failed')
     end
 
     it { is_expected.to eq([invalid_payment]) }
+    it { expect(in_queue_payment.already_in_refund_queue?).to eq(true) }
   end
 
   describe ".find_active!" do
