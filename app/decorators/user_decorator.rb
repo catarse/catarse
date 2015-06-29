@@ -45,7 +45,7 @@ class UserDecorator < Draper::Decorator
   # Return the total amount from pending refund payments
   def display_pending_refund_payments_amount
     number_to_currency(
-      source.pending_refund_payments.sum(:value),
+      source.pending_refund_payments.sum(&:value),
       precision: 2)
   end
 
