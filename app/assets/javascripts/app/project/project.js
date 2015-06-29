@@ -25,10 +25,10 @@ App.addChild('Project', _.extend({
   },
 
   toggleNav: function(){
-    $(".body-project").toggleClass("open closed");
+    $(".body-project").toggleClass("closed");
     $(".dashboard-nav.side").animate({width: 'toggle'});
-    $(".btn-dashboard").toggleClass("open fa fa-lg fa-chevron-left");
-    $(".btn-dashboard").toggleClass("closed fa fa-lg fa-cog");
+    $(".btn-dashboard").toggleClass("closed fa-cog");
+    $(".btn-dashboard").toggleClass("open fa-chevron-left");
     return false;
   },
 
