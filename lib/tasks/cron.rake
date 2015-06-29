@@ -54,10 +54,8 @@ namespace :cron do
   desc "Deliver a collection of recents projects of a category"
   task deliver_projects_of_week: :environment do
     puts "Delivering projects of the week..."
-    if Time.current.monday?
-      Category.with_projects_on_this_week.each do |category|
-        category.deliver_projects_of_week_notification
-      end
+    Category.with_projects_on_this_week.each do |category|
+      category.deliver_projects_of_week_notification
     end
   end
 end
