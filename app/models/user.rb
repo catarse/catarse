@@ -129,7 +129,7 @@ class User < ActiveRecord::Base
           select true from category_notifications n
           where n.template_name = 'categorized_projects_of_the_week' AND
           n.category_id = ? AND
-          (n.created_at AT TIME ZONE '#{Time.zone.tzinfo.name}' + '7 days'::interval) >= current_timestamp AT TIME ZONE '#{Time.zone.tzinfo.name}' AND
+          (current_timestamp - n.created_at) <= '1 week'::interval AND
           n.user_id = users.id)", category_id)
   }
 
