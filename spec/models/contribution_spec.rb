@@ -199,7 +199,7 @@ RSpec.describe Contribution, type: :model do
     end
   end
 
-  describe "#need_notify_about_pending_refund" do
+  describe ".need_notify_about_pending_refund" do
     let(:project) { create(:project) }
     let(:refunded_contribution) { create(:refunded_contribution, project: project) }
     let(:paid_contribution) { create(:confirmed_contribution, project: project) }
