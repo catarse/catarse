@@ -10,6 +10,7 @@
 
 - collection.each do |contribution|
   - project = contribution.project
+  - payment = contribution.payment
   .w-row.card
     .w-col.w-col-3
       .w-row
@@ -25,7 +26,7 @@
       .w-hidden-main.w-hidden-medium.fontsize-smallest.fontweight-semibold>= Payment.human_attribute_name(:state)
       .fontsize-smallest 
         = "#{contribution.decorate.display_payment_details} #{contribution.decorate.display_installment_details}"
-      - if project.failed? && contribution.paid? && contribution.slip_payment? && contribution.gateway == 'Pagarme'
+      - if project.failed? && contribution.paid? && contribution.slip_payment? && payment.is_pagarme? && !payment.already_in_refund_queue?
         = link_to t('.request_refund'), new_bank_account_path, class: "btn btn-inline btn-small u-margintop-10"
       - else
         .fontsize-smallest
