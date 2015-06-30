@@ -3,5 +3,5 @@ pt:
     edit:
       page-title: "Reembolso pendente preencha os dados bancarios"
       fill_form: "Preencha os dados bancários"
-      fill_form_text: "Você possui %{amount} em reembolsos pendentes dpara um total de %{total_projects} projetos: %{project_names}. Informe seus dados e resgate seu dinheiro!"
+      fill_form_text: "Você possui %{amount} em reembolsos pendentes para um total de %{total_projects} projetos: %{project_names}. Informe seus dados e resgate seu dinheiro!"
       request_refunds: "Solicitar reembolso"
