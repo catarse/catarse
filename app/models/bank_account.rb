@@ -9,4 +9,13 @@ class BankAccount < ActiveRecord::Base
   def bank_code
     self.bank.code
   end
+
+  def complete_agency_string
+    return agency unless agency_digit.present?
+    "#{agency} - #{agency_digit}"
+  end
+
+  def complete_account_string
+    "#{account} - #{account_digit}"
+  end
 end
