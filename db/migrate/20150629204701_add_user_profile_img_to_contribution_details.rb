@@ -8,7 +8,7 @@ class AddUserProfileImgToContributionDetails < ActiveRecord::Migration
       '/uploads/user/uploaded_image/' || $1.id::text ||
       '/thumb_avatar_' || $1.uploaded_image
     
-    $$ LANGUAGE SQL;
+    $$ LANGUAGE SQL STABLE;
 
     DROP MATERIALIZED VIEW public.contributor_numbers;
     DROP VIEW "1".contribution_details;
@@ -51,7 +51,7 @@ class AddUserProfileImgToContributionDetails < ActiveRecord::Migration
      JOIN contributions c ON c.project_id = p.id
      JOIN payments pa ON c.id = pa.contribution_id
      JOIN users u ON c.user_id = u.id;
-    CREATE MATERIALIZED VIEW contributor_numbers AS
+    CREATE MATERIALIZED VIEW public.contributor_numbers AS
      WITH confirmed AS (
          SELECT c.user_id,
             min(c.id) AS id
@@ -110,7 +110,7 @@ class AddUserProfileImgToContributionDetails < ActiveRecord::Migration
      JOIN contributions c ON c.project_id = p.id
      JOIN payments pa ON c.id = pa.contribution_id
      JOIN users u ON c.user_id = u.id;
-    CREATE MATERIALIZED VIEW contributor_numbers AS
+    CREATE MATERIALIZED VIEW public.contributor_numbers AS
      WITH confirmed AS (
          SELECT c.user_id,
             min(c.id) AS id
@@ -122,6 +122,7 @@ class AddUserProfileImgToContributionDetails < ActiveRecord::Migration
  SELECT confirmed.user_id,
     row_number() OVER (ORDER BY confirmed.id) AS number
    FROM confirmed;
+   GRANT select ON ALL TABLES IN SCHEMA "1" TO admin;
     SQL
   end
 end
