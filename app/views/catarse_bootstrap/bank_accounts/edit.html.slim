@@ -5,12 +5,14 @@
 .w-section.section-one-column.u-margintop-40
   .w-container
     .w-row.u-text-center.u-marginbottom-40
-      .w-col.w-col-8.w-col-offset-2
+      .w-col.w-col-2
+      .w-col.w-col-8
         .fontsize-larger.u-marginbottom-20= t('.fill_form')
-        .fontsize-base= t('.fill_form_text', amount: user_decorator.display_pending_refund_payments_amount, project_names: user_decorator.display_pending_refund_payments_projects_name.to_sentence)
+        .fontsize-base= t('.fill_form_text', amount: user_decorator.display_pending_refund_payments_amount, total_projects: resource.user.pending_refund_payments_projects.size, project_names: user_decorator.display_pending_refund_payments_projects_name.to_sentence)
 
     .w-row.u-marginbottom-60
-      .w-col.w-col-8.w-col-offset-2
+      .w-col.w-col-2
+      .w-col.w-col-8
         = simple_form_for resource, html: { class: 'w-form refund_bank_account_form' } do |bform|
           .w-row
             .w-col.w-col-6.w-sub-col
