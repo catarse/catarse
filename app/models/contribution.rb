@@ -38,6 +38,20 @@ class Contribution < ActiveRecord::Base
     puts "problem while using attr_protected in Contribution model:\n '#{e.message}'"
   end
 
+  # Return contributions that need notify pending refunds without bank accounts registered
+  def self.need_notify_about_pending_refund
+    self.joins("
+      join contribution_details cd on cd.contribution_id = contributions.id
+      ").where("
+      cd.project_state = 'failed'
+      and cd.state = 'paid'
+      and lower(cd.gateway) = 'pagarme'
+      and lower(cd.payment_method) = 'boletobancario'
+      and (exists(select true from contribution_notifications un where un.contribution_id = contributions.id
+      and un.template_name = 'contribution_project_unsuccessful_slip_no_account'
+      and (current_timestamp - un.created_at) > '7 days'::interval) or not exists(select true from contribution_notifications un where un.contribution_id = contributions.id and un.template_name = 'contribution_project_unsuccessful_slip_no_account'))").uniq
+  end
+
   def recommended_projects
     user.recommended_projects.where("projects.id <> ?", project.id).order("count DESC")
   end
