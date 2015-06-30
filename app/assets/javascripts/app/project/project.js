@@ -26,7 +26,7 @@ App.addChild('Project', _.extend({
 
   toggleNav: function(){
     $(".body-project").toggleClass("closed");
-    $(".dashboard-nav.side").animate({width: 'toggle'});
+    $(".dashboard-nav.side").toggle("slide", { direction: "left" }, 1000);
     $(".btn-dashboard").toggleClass("closed fa-cog");
     $(".btn-dashboard").toggleClass("open fa-chevron-left");
     return false;
