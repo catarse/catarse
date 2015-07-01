@@ -8,7 +8,10 @@
       .w-col.w-col-2
       .w-col.w-col-8
         .fontsize-larger.u-marginbottom-20= t('.fill_form')
-        .fontsize-base= t('.fill_form_text', amount: user_decorator.display_pending_refund_payments_amount, total_projects: resource.user.pending_refund_payments_projects.size, project_names: user_decorator.display_pending_refund_payments_projects_name.to_sentence)
+        .fontsize-base= t('.fill_form_text', \
+          amount: user_decorator.display_pending_refund_payments_amount, \
+          total_projects: pluralize(resource.user.pending_refund_payments_projects.size, t('.project')), \
+          project_names: user_decorator.display_pending_refund_payments_projects_name.to_sentence)
 
     .w-row.u-marginbottom-60
       .w-col.w-col-2
