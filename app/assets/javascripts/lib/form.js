@@ -3,9 +3,11 @@ Skull.Form = {
     var $target = this.$(event.currentTarget);
     var customValidation = $target.data('custom-validation') || function(){ return true; };
     if(event.currentTarget.checkValidity() && customValidation($target)){
-      $target.removeClass("error");
-      $target.parents('.field_with_errors').removeClass('field_with_errors');
-      this.$('[data-error-for=' + $target.prop('id') + ']').hide();
+      if($target.prop('id') != "" && $target.prop('id') != undefined) {
+        $target.removeClass("error");
+        $target.parents('.field_with_errors').removeClass('field_with_errors');
+        this.$('[data-error-for=' + $target.prop('id') + ']').hide();
+      }
     }
   },
 
@@ -22,6 +24,7 @@ Skull.Form = {
 
   validate: function(){
     var valid = true;
+    var that = this;
     this.$('input:visible,select:visible,textarea:visible').each(function(){
       var $input = $(this);
       var customValidation = $input.data('custom-validation') || function(){ return true; };
@@ -33,7 +36,12 @@ Skull.Form = {
         speed: 800
       });
       this.$('[required].error:visible:first').select();
-      this.$('.text-error').slideDown('slow');  
+      //this.$('.text-error').slideDown('slow');
+      $.each(this.$('.text-error'), function(i, item){
+        if(that.$(item.parent).hasClass('error')) {
+          that.$(item).slideDown('slow');
+        }
+      })
     }
     return valid;
   },
