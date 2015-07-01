@@ -1,6 +1,6 @@
 class BankAccountsController < ApplicationController
   after_action :verify_authorized
-  helper_method :resource, :user_decorator, :refund_amount_session
+  helper_method :resource, :user_decorator
   respond_to :html
   before_filter :authenticate_user!
   before_filter :need_pending_refunds, except: [:show]
@@ -45,13 +45,12 @@ class BankAccountsController < ApplicationController
 
   def request_refund
     authorize resource
-    session[:pending_refund_payments_amount] = user_decorator.display_pending_refund_payments_amount
 
     user.pending_refund_payments.each do |payment|
       payment.direct_refund
     end
 
-    redirect_to bank_account_path(resource)
+    redirect_to bank_account_path(resource, refunded_amount: user_decorator.display_pending_refund_payments_amount)
   end
 
   def resource
@@ -66,10 +65,6 @@ class BankAccountsController < ApplicationController
 
   def user
     @user ||= resource.user
-  end
-
-  def refund_amount_session
-    session[:pending_refund_payments_amount]
   end
 
   def need_pending_refunds

@@ -280,7 +280,7 @@ RSpec.describe BankAccountsController, type: :controller do
       end
 
       it "should redirect to success" do
-        is_expected.to redirect_to bank_account_path(user.bank_account)
+        is_expected.to redirect_to bank_account_path(user.bank_account, refunded_amount: user.decorator.display_pending_refund_payments_amount)
       end
     end
   end
