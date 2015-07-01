@@ -1,14 +1,14 @@
 #faq-box.w-hidden-small.w-hidden-tiny.back-faq-box data-ix="new-interaction"
-  .u-marginbottom-20.fontsize-small.fontweight-semibold Perguntas Frequentes
+  .u-marginbottom-20.fontsize-small.fontweight-semibold=t('projects.contributions.faq.common_questions')
   ul.w-list-unstyled
-    li.list-question.fontsize-smaller.alt-link  Como eu apoio este projeto?
-    li.list-answer.u-marginbottom-20.fontsize-smaller Primeiro, escolha o valor e a recompensa desejados. Depois é só clicar em 'Revisar e realizar pagamento' que redirecionaremos você para a próxima página para concluir o seu pagamento.
+    li.list-question.fontsize-smaller.alt-link=t('projects.contributions.faq.how_contribute')
+    li.list-answer.u-marginbottom-20.fontsize-smaller=t('projects.contributions.faq.how_contribute_answer')
 
-    li.list-question.fontsize-smaller.alt-link  Quando o pagamento é efetivado?
-    li.list-answer.u-marginbottom-20.fontsize-smaller Se você pagou com cartão de crédito, a confirmação deverá ser no mesmo dia. Se foi com boleto, em até 4 dias úteis.
+    li.list-question.fontsize-smaller.alt-link=t('projects.contributions.faq.when_made_payment')
+    li.list-answer.u-marginbottom-20.fontsize-smaller=t('projects.contributions.faq.when_made_payment_answer')
 
-    li.list-question.fontsize-smaller.alt-link  E se o projeto não atingir a meta?
-    li.list-answer.u-marginbottom-20.fontsize-smaller Nesse caso, você recebe de volta 100% do que pagou através de um reembolso.
+    li.list-question.fontsize-smaller.alt-link=t('projects.contributions.faq.when_project_fails')
+    li.list-answer.u-marginbottom-20.fontsize-smaller=t('projects.contributions.faq.when_project_fails_answer')
 
-    li.list-question.fontsize-smaller.alt-link  Se o projeto for financiado, como eu recebo minha recompensa?
-    li.list-answer.u-marginbottom-20.fontsize-smaller Quando sua recompensa estiver pronta, #{link_to @project.user.display_name, user_path(@project.user)} vai entrar em contato com você para combinar a entrega.
+    li.list-question.fontsize-smaller.alt-link=t('projects.contributions.faq.when_project_funded')
+    li.list-answer.u-marginbottom-20.fontsize-smaller=raw t('projects.contributions.faq.when_project_funded_answer', name: link_to(@project.user.display_name, user_path(@project.user)))
