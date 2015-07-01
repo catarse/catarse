@@ -1,5 +1,5 @@
 begin
-  if Rails.env.production? || Rails.env.sandbox?
+  if Rails.env.production?
     ActionMailer::Base.smtp_settings = {
       address: 'smtp.sendgrid.net',
       port: '587',
@@ -14,6 +14,6 @@ rescue
   nil
 end
 
-#if Rails.env.sandbox?
-#  ActionMailer::Base.register_interceptor(SandboxMailInterceptor)
-#end
+if Rails.env.sandbox?
+  ActionMailer::Base.register_interceptor(SandboxMailInterceptor)
+end
