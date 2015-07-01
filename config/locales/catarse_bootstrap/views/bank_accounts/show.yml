@@ -2,7 +2,7 @@ pt:
   bank_accounts:
     show:
       success: 'Sua solicitação foi efetuada com sucesso!'
-      success_detail: 'Te enviamos um email com detalhes da transação e com instruções sobre como proceder caso haja algum problema nesse processo. Confere lá!'
+      success_detail: 'Enviaremos um email com detalhes da transação e com instruções sobre como proceder caso haja algum problema nesse processo.'
       review: 'Resumo da transação'
       page-title: 'Reembolso solicitado com sucesso'
       value_label: 'Valor total do reembolso: %{value}'

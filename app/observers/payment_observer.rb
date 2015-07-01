@@ -26,6 +26,14 @@ class PaymentObserver < ActiveRecord::Observer
   end
   alias :from_waiting_confirmation_to_invalid_payment :from_pending_to_invalid_payment
 
+  def from_paid_to_pending_refund(payment)
+    if payment.slip_payment?
+      payment.contribution.notify(
+        :contributions_project_unsucessful_slip,
+        payment.user, payment.contribution)
+    end
+  end
+
   def from_paid_to_refused(payment)
     contribution = payment.contribution
     contribution.notify_to_backoffice(:contribution_canceled_after_confirmed)
