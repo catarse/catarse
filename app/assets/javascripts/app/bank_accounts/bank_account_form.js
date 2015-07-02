@@ -5,14 +5,14 @@ App.addChild('BankAccountForm', _.extend({
     'blur input' : 'checkInput',
     'blur select' : 'checkInput',
     'change select#bank_account_bank_id': 'showBankNumberForm',
-    'click a#show_bank_list': 'toggleBankList'
+    'click a#show_bank_list': 'toggleBankList',
+    'click a.bank-resource-link': 'fillWithSelectedBank'
   },
 
   activate: function(){
     this.setupForm();
     this.$('.field_with_errors .text-error').slideDown('slow');
     this.$('#bank_account_owner_name').data('custom-validation', this.validateName);
-    //this.$('#bank_account_owner_name').data('custom-validation', this.validateName);
   },
 
   showBankNumberForm: function(event) {
@@ -29,6 +29,14 @@ App.addChild('BankAccountForm', _.extend({
   toggleBankList: function(event) {
     $bank_list = this.$('#bank_search_list');
     $bank_list.slideToggle('slow');
+  },
+
+  fillWithSelectedBank: function(event) {
+    $target = this.$(event.currentTarget);
+
+    this.$('input#bank_number_input').val($target.data('code'));
+    this.$('select#bank_account_bank_id').val($target.data('id'));
+    this.toggleBankList();
   },
 
   validateName: function(field) {

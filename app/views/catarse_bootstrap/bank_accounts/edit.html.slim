@@ -29,7 +29,7 @@
                     | (3 números)
                   = link_to "Busca por nome  &nbsp;&gt;".html_safe, 'javascript:void(0);', class: 'w-hidden-small w-hidden-tiny alt-link fontsize-smaller', id: 'show_bank_list'
                 .w-col.w-col-6
-                  input#email-42.w-input.text-field data-name=("Email 42") name="email-42" required="required" type="email" /
+                  input#bank_number_input.w-input.text-field required="required" type="text" /
                   = link_to "Busca por nome  &nbsp;&gt;".html_safe, 'javascript:void(0);', class: 'w-hidden-main w-hidden-medium alt-link fontsize-smaller', id: 'show_bank_list'
             .w-col.w-col-6.w-sub-col
               .w-row
@@ -51,9 +51,9 @@
                       - Bank.order_popular.each do |bank|
                         .w-row.card.fontsize-smallest
                           .w-col.w-col-3.w-col-small-3.w-col-tiny-3
-                            a.link-hidden href="#"= bank.code
+                            = link_to bank.code, 'javascript:void(0)', class: 'link-hidden bank-resource-link', data: { id: bank.id, code: bank.code }
                           .w-col.w-col-9.w-col-small-9.w-col-tiny-9
-                            a.link-hidden href="#"= bank.to_s
+                            = link_to bank.to_s, 'javascript:void(0)', class: 'link-hidden bank-resource-link', data: { id: bank.id, code: bank.code }
                   
           .w-row
             .w-col.w-col-6.w-sub-col
