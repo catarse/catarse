@@ -18,14 +18,27 @@
       .w-col.w-col-8
         = simple_form_for resource, html: { class: 'w-form refund_bank_account_form' } do |bform|
           .w-row
-            .w-col.w-col-6.w-sub-col
-              = bform.input :bank_id, as: :select, collection: Bank.to_collection, validation_text: true, class: 'w-select', input_html: { required: true }
+            .w-col.w-col-6.w-sub-col#bank_select
+              = bform.input :bank_id, as: :select, collection: Bank.most_popular_collection(resource.try(:bank)), validation_text: true, class: 'w-select', input_html: { required: true }
+            .w-col.w-col-6.w-sub-col.w-hidden.u-margintop-25#bank_search
+              .w-row.u-marginbottom-20
+                .w-col.w-col-6
+                  label.field-label.fontweight-semibold for="field" 
+                    | Número do banco
+                    br>/
+                    | (3 números)
+                  a.w-hidden-small.w-hidden-tiny.alt-link.fontsize-smaller data-ix="select-bank" href="#"  Busca por nome &nbsp;&gt;
+                .w-col.w-col-6
+                  input#email-42.w-input.text-field data-name=("Email 42") name="email-42" required="required" type="email" /
+                  a.w-hidden-main.w-hidden-medium.alt-link.fontsize-smaller data-ix="select-bank" href="#"  Busca por nome &nbsp;&gt;
+            .w-col.w-col-6              
             .w-col.w-col-6
               .w-row
                 .w-col.w-col-6.w-col-small-6.w-col-tiny-6.w-sub-col-middle
                   = bform.input :agency, as: :string, validation_text: true, input_html: { required: true }
                 .w-col.w-col-6.w-col-small-6.w-col-tiny-6
                   = bform.input :agency_digit, as: :string
+                  
           .w-row
             .w-col.w-col-6.w-sub-col
               .w-row
