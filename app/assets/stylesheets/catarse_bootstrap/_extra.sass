@@ -21,7 +21,7 @@ img, iframe
     color: #409ade
     text-decoration: underline
 
-.project-about:after 
+.project-about:after
   content: ""
   display: table
   clear: both
@@ -104,12 +104,12 @@ img, iframe
   +transform(translateX(0px) translateY(-100px))
   +transition(transform 500ms)
 .reward-floating-display
-  display: block 
+  display: block
   +transform(translateX(0px) translateY(0px))
   +transition(transform 500ms)
 
 //Fallback for browser that still do not support object-fit
-@supports (object-fit: cover) 
+@supports (object-fit: cover)
   #player, .w-lightbox-figure
     position: absolute
     bottom: 0
@@ -200,7 +200,7 @@ img, iframe
 
 #project-header h2,
 #hero h2,
-#learn .headline 
+#learn .headline
   margin-top: 0
 
 // Hero images
@@ -243,8 +243,8 @@ img, iframe
   width: 100%
 
 //backgrounds hello saiba mais
-.hero-hello, 
-  background-image: url('/assets/hero-hello.jpg') !important  
+.hero-hello,
+  background-image: url('/assets/hero-hello.jpg') !important
   background-size: cover
   overflow: hidden
 
@@ -268,22 +268,22 @@ img, iframe
   min-width: 100%
   object-fit: cover
 
-.section-large.hello-idea 
+.section-large.hello-idea
   background-image: url('/assets/bg-hello-idea.jpg') !important
 
-.bg-humberto 
+.bg-humberto
   background-image: url('/assets/bg-hello-user.jpg') !important
 
-.bg-people 
+.bg-people
   background-image: url('/assets/bg-hello-people.jpg') !important
 
-.section-large.hello-catarse 
+.section-large.hello-catarse
   background-image: url('/assets/bg-hello-catarse.jpg') !important
 
 
 //background imprensa
 
-.bg-projectgrid 
+.bg-projectgrid
   background-image: url('/assets/bg-hello-people.jpg') !important
 
 
@@ -308,41 +308,41 @@ img, iframe
 
 
 
-.cd-title 
+.cd-title
   position: relative
   height: 160px
   line-height: 230px
   text-align: center
 
 
-.cd-words-wrapper 
+.cd-words-wrapper
   display: inline-block
   position: relative
   text-align: left
 
-.cd-words-wrapper b 
+.cd-words-wrapper b
   display: inline-block
   position: absolute
   white-space: nowrap
   left: 0
   top: 0
 
-.cd-words-wrapper b.is-visible 
+.cd-words-wrapper b.is-visible
   position: relative
 
-.no-js .cd-words-wrapper b 
+.no-js .cd-words-wrapper b
   opacity: 0
 
-.no-js .cd-words-wrapper b.is-visible 
+.no-js .cd-words-wrapper b.is-visible
   opacity: 1
 
 
 
-.cd-headline.type .cd-words-wrapper 
+.cd-headline.type .cd-words-wrapper
   vertical-align: top
   overflow: hidden
 
-.cd-headline.type .cd-words-wrapper::after 
+.cd-headline.type .cd-words-wrapper::after
   /* vertical pulsating cursor bar */
   content: ''
   position: absolute
@@ -354,19 +354,19 @@ img, iframe
   background-color: #7cc142
   +transform(translateY(-50%))
 
-.cd-headline.type .cd-words-wrapper.waiting::after 
+.cd-headline.type .cd-words-wrapper.waiting::after
   +animation(cd-pulse 1s infinite)
 
-.cd-headline.type .cd-words-wrapper.selected 
+.cd-headline.type .cd-words-wrapper.selected
   background-color: #aebcb9
 
-.cd-headline.type .cd-words-wrapper.selected::after 
+.cd-headline.type .cd-words-wrapper.selected::after
   visibility: hidden
 
-.cd-headline.type .cd-words-wrapper.selected b 
+.cd-headline.type .cd-words-wrapper.selected b
   color: #0d0d0d
 
-.cd-headline.type b 
+.cd-headline.type b
   visibility: hidden
   font-weight: 600
 
@@ -378,7 +378,7 @@ img, iframe
   visibility: hidden
   font-style: normal
 
-.cd-headline.type i.in 
+.cd-headline.type i.in
   position: relative
   visibility: visible
 
@@ -388,15 +388,18 @@ img, iframe
   .cd-headline .cd-words-wrapper
     display: inline-block
 
-+keyframes(cd-pulse) 
-  0% 
++keyframes(cd-pulse)
+  0%
     +transform(translateY(-50%) scale(1))
     opacity: 1
-  
-  40% 
+
+  40%
     +transform(translateY(-50%) scale(0.9))
     opacity: 0
 
-  100% 
+  100%
     +transform(translateY(-50%) scale(0))
     opacity: 0
+
+.u-margintop-25
+  margin-top: 25px
