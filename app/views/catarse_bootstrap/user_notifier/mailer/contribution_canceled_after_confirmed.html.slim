@@ -1,6 +1,8 @@
 - contribution = @notification.contribution
 - project = contribution.project
 - payment = contribution.payments.last
+|Remetente: #{contribution.user.email}
+br/
 |Projeto: #{project.name}
 br/
 |Chave do apoio: #{payment.key}
