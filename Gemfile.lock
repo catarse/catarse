@@ -151,7 +151,7 @@ GEM
     curb (0.8.8)
     daemons (1.2.2)
     database_cleaner (1.4.1)
-    dbhero (1.1.7)
+    dbhero (1.1.8)
       google_drive
       has_scope
       rails (>= 4.1)
@@ -651,7 +651,7 @@ DEPENDENCIES
   compass-960-plugin
   compass-rails
   database_cleaner
-  dbhero (>= 1.1.7)
+  dbhero (>= 1.1.8)
   devise
   draper
   ezcrypto
