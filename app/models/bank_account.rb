@@ -10,6 +10,10 @@ class BankAccount < ActiveRecord::Base
   attr_accessor :input_bank_number
   validate :input_bank_number_validation
 
+  # before validate bank account we inject the founded
+  # bank account via input_bank_number
+  before_validation :load_bank_from_input_bank_number
+
   # if input_bank_number as present, we
   # should validate if the number matchs with any
   # bank.code on database
@@ -21,6 +25,14 @@ class BankAccount < ActiveRecord::Base
 
   def bank_code
     self.bank.code
+  end
+
+  # set bank attribute with founded bank via
+  # input_bank_number virtual attribute
+  def load_bank_from_input_bank_number
+    if self.bank_from_input_number.present?
+      self.bank = self.bank_from_input_number
+    end
   end
 
   # Returns a bank object that bank number

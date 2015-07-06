@@ -57,4 +57,25 @@ RSpec.describe BankAccount, type: :model do
       it { is_expected.to be_truthy }
     end
   end
+
+  describe "#load_bank_from_input_bank_number" do
+    before do
+      custom_bank
+    end
+
+    context "should be called when use .valid?" do
+      before do
+        expect(bank_account).to receive(:load_bank_from_input_bank_number)
+      end
+
+      it { bank_account.valid?}
+    end
+
+    it do
+      bank_account.input_bank_number = "00M"
+      bank_account.load_bank_from_input_bank_number
+
+      expect(bank_account.bank).to eq(custom_bank)
+    end
+  end
 end
