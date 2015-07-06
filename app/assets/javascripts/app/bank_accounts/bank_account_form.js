@@ -43,24 +43,13 @@ App.addChild('BankAccountForm', _.extend({
 
   validateBankNumber: function(field) {
     var that = this
-    if(field.val().length > 3){
+
+    if(field.val().length != 3){
       $(field).trigger('invalid');
       return false;
     }
 
-    $.get("/banks/"+field.val(), function(response){
-      if(response == null) {
-        $(field).trigger('invalid');
-        that.$('select#bank_account_bank_id').val('');
-        return false
-      } else {
-        $(field).val(response.code);
-        $(field).removeClass("error");
-        $(field).parents('.field_with_errors').removeClass('field_with_errors');
-        that.$('[data-error-for=' + $(field).prop('id') + ']').hide();
-        return true
-      }
-    })
+    return true;
   },
 
   validateName: function(field) {
