@@ -1,5 +1,5 @@
 class Bank < ActiveRecord::Base
-  MOST_POPULAR_LIMIT = 10
+  MOST_POPULAR_LIMIT = 6
 
   has_many :bank_accounts
 
@@ -16,7 +16,7 @@ class Bank < ActiveRecord::Base
     end
   end
 
-  # Returns a array with then 10 more used banks by users
+  # Returns a array with then MOST_PULAR_LIMIT value more used banks by users
   # +current_bank+ is Bank object, that you can inject another bank to the list
   # this is need when user as a bank that is not listed on most popular
   def self.most_popular_collection(current_bank = nil)
