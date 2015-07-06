@@ -2900,6 +2900,11 @@ p {
   -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
 }
+.body-project.closed {
+  margin-left: 0px;
+  -webkit-transition: all 500ms ease;
+  transition: all 500ms ease;
+}
 .body-project.big {
   margin-left: 205px;
 }
@@ -3061,7 +3066,7 @@ p {
 .btn-desactivated:hover {
   box-shadow: transparent 1px 1px 3px 0px;
 }
-.w-lightbox-backdrop {
+.project-lightbox-backdrop {
   position: fixed;
   left: 0px;
   top: 0px;
