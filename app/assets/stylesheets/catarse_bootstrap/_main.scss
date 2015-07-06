@@ -2900,6 +2900,11 @@ p {
   -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
 }
+.body-project.closed {
+  margin-left: 0px;
+  -webkit-transition: all 500ms ease;
+  transition: all 500ms ease;
+}
 .body-project.big {
   margin-left: 205px;
 }
