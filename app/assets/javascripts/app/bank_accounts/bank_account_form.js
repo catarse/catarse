@@ -13,6 +13,7 @@ App.addChild('BankAccountForm', _.extend({
     this.setupForm();
     this.$('.field_with_errors .text-error').slideDown('slow');
     this.$('#bank_account_owner_name').data('custom-validation', this.validateName);
+    this.$('#bank_account_input_bank_number').data('custom-validation', this.validateBankNumber);
   },
 
   showBankNumberForm: function(event) {
@@ -34,9 +35,32 @@ App.addChild('BankAccountForm', _.extend({
   fillWithSelectedBank: function(event) {
     $target = this.$(event.currentTarget);
 
-    this.$('input#bank_number_input').val($target.data('code'));
+    this.$('input#bank_account_input_bank_number').val($target.data('code'));
     this.$('select#bank_account_bank_id').val($target.data('id'));
+    this.$('input#bank_account_input_bank_number').trigger('blur');
     this.toggleBankList();
+  },
+
+  validateBankNumber: function(field) {
+    var that = this
+    if(field.val().length > 3){
+      $(field).trigger('invalid');
+      return false;
+    }
+
+    $.get("/banks/"+field.val(), function(response){
+      if(response == null) {
+        $(field).trigger('invalid');
+        that.$('select#bank_account_bank_id').val('');
+        return false
+      } else {
+        $(field).val(response.code);
+        $(field).removeClass("error");
+        $(field).parents('.field_with_errors').removeClass('field_with_errors');
+        that.$('[data-error-for=' + $(field).prop('id') + ']').hide();
+        return true
+      }
+    })
   },
 
   validateName: function(field) {
