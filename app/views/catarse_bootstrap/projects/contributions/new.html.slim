@@ -16,11 +16,11 @@
 #new-contribution.section
   .w-container
     .w-row
-      .w-col.w-col-8 
+      .w-col.w-col-8
         .w-form.back-reward-form
           = simple_form_for [:fallback_create, parent, @contribution], html: { method: :get, id: 'contribution_form' } do |form|
             = render 'devise/shared/alert'
-            = form.input :reward_id, as: :radio_buttons, collection: @rewards, input_html: {class: 'w-radio-input back-reward-radio-button'}, item_wrapper_class: 'w-radio w-clearfix back-reward-radio-reward', label: ''
+            = form.input :reward_id, as: :radio_buttons, collection: @rewards, input_html: {class: 'w-radio-input back-reward-radio-button '+((:reward_id == params[:reward_id]) ? "selected" : "not_selected #{form.object.reward_id} #{params[:reward_id]} ")}, item_wrapper_class: 'w-radio w-clearfix back-reward-radio-reward', label: ''
             = form.input_field :value, value: number_with_precision( @contribution.value, precision: 2 ), as: :hidden
       .w-col.w-col-4
         = render 'faq_box'

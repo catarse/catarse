@@ -24,7 +24,7 @@ App.addChild('Contribution', {
     this.$('.user-reward-value').mask('000.000.000,00', {reverse: true});
     this.$value = this.$('#contribution_value');
     this.$minimum = this.$('#minimum-value');
-    this.clickReward({currentTarget: this.$('input[type=radio]:checked').parent()[0]});
+    //this.clickReward({currentTarget: this.$('input[type=radio]:checked').parent()});
     this.activateFloattingHeader();
   },
 
@@ -33,7 +33,7 @@ App.addChild('Contribution', {
     var top_title = $('#new-contribution'),
     faq_top = $("#faq-box").offset().top;
     $(window).scroll(function() {
-        top = $(top_title).offset().top, 
+        top = $(top_title).offset().top,
         $(window).scrollTop() > top ? $(".reward-floating").addClass("reward-floating-display") : $(".reward-floating").removeClass("reward-floating-display");
         var t = $("#faq-box");
         $(window).scrollTop() > faq_top-130 ? $(t).hasClass("faq-card-fixed") || $(t).addClass("faq-card-fixed") : $(t).hasClass("faq-card-fixed") && $(t).removeClass("faq-card-fixed")
@@ -64,16 +64,16 @@ App.addChild('Contribution', {
   },
 
   clickReward: function(event){
-    this.selectReward($(event.currentTarget));
-    var $this = $(event.currentTarget);
-    var posY = $this.offset().top;
-    var $thisHeight = $this.outerHeight();
-    var windowHeight = $(window).height();
-    var scrollPos = posY - windowHeight/2 + $thisHeight/2;
-    $('html, body').animate({scrollTop: scrollPos}, 200);
+    var $el = $(event.currentTarget);
+    $.smoothScroll({
+      scrollTarget: $el,
+      speed: 600,
+      offset: -250
+    });
+    this.selectReward($el);
     var minimum = this.minimumValue();
-    this.$value.val(minimum);
-    this.$minimum.html(minimum);
+    $el.val(minimum);
+
   }
 });
 
