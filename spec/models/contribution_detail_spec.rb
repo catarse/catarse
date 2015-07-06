@@ -184,7 +184,27 @@ RSpec.describe ContributionDetail, type: :model do
     })}
   end
 
-  describe "user_profile_img" do
+  describe "#search_text" do
+    let!(:contribution){ create(:confirmed_contribution, value: 10) }
+    let(:detail){ ContributionDetail.first }
+    subject{ detail.search_text }
+
+    it{ is_expected.to eq "#{detail.permalink} #{detail.project_name} #{detail.user_name} #{detail.email} #{detail.key} #{detail.payer_email}" }
+  end
+
+  describe "#project_img" do
+    let!(:contribution){ create(:confirmed_contribution, value: 10) }
+    subject{ ContributionDetail.first.project_img }
+
+    before do
+      CatarseSettings[:aws_host] = 's3.aws.com'
+      CatarseSettings[:aws_bucket] = 'bucket'
+    end
+
+    it{ is_expected.to eq "https://#{CatarseSettings[:aws_host]}/#{CatarseSettings[:aws_bucket]}/uploads/project/uploaded_image/#{contribution.project.id}/project_thumb_small_testimg.png" }
+  end
+
+  describe "#user_profile_img" do
     let!(:contribution){ create(:confirmed_contribution, value: 10) }
     subject{ ContributionDetail.first.user_profile_img }
 
