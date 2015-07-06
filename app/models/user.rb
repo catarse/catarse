@@ -235,6 +235,7 @@ class User < ActiveRecord::Base
     {
       user_id: self.id,
       email: self.email,
+      name: self.name,
       contributions: self.total_contributed_projects,
       projects: self.projects.count,
       published_projects: self.published_projects.count,

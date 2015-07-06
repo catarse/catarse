@@ -410,6 +410,7 @@ RSpec.describe User, type: :model do
       is_expected.to eq({
         user_id: user.id,
         email: user.email,
+        name: user.name,
         contributions: user.total_contributed_projects,
         projects: user.projects.count,
         published_projects: user.published_projects.count,
