@@ -28,7 +28,7 @@ class BankAccountPolicy < ApplicationPolicy
   end
 
   def permitted_attributes
-    [:bank_id, :name, :agency, :account, :owner_name, :owner_document, :account_digit, :agency_digit]
+    [:bank_id, :name, :agency, :account, :owner_name, :owner_document, :account_digit, :agency_digit, :input_bank_number]
   end
 
   protected
