@@ -6,7 +6,8 @@ var App = window.App = Skull.View.extend({
     "click a#user-menu" : "toggleMenu",
     "click a.mobile-menu-link" : "mobileMenu",
     "click .zendesk_widget" : "showWidget",
-    "click #pg_search_submit" : "searchProject"
+    "click #pg_search_submit" : "searchProject",
+    'click .btn-dashboard' : 'toggleNav'
   },
 
   openAlert: function(){
@@ -22,6 +23,14 @@ var App = window.App = Skull.View.extend({
     else{
       this.closeAlert();
     }
+  },
+
+  toggleNav: function(){
+    $(".body-project").toggleClass("closed");
+    $(".dashboard-nav.side").toggle("slide", { direction: "left" }, 250);
+    $(".btn-dashboard").toggleClass("closed fa-cog");
+    $(".btn-dashboard").toggleClass("open fa-chevron-left");
+    return false;
   },
 
   closeAlert: function(event){
