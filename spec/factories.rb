@@ -242,6 +242,7 @@ FactoryGirl.define do
   factory :bank_account do |f|
     #f.association :user, factory: :user
     f.association :bank, factory: :bank
+    input_bank_number nil
     owner_name "Foo Bar"
     owner_document "97666238991"
     account_digit "1"
