@@ -4,6 +4,10 @@ RSpec.describe BankAccount, type: :model do
   let(:custom_bank) { create(:bank, code: "00M")}
   let(:bank_account) { create(:bank_account) }
 
+  before do
+    custom_bank
+  end
+
   describe "associations" do
     it{ is_expected.to belong_to :user }
   end
@@ -38,10 +42,6 @@ RSpec.describe BankAccount, type: :model do
   end
 
   describe "#input_bank_number_validation" do
-    before do
-      custom_bank
-    end
-
     context "when input_bank_number has a invalid bank number" do
       before do
         bank_account.input_bank_number = "009123"
@@ -58,20 +58,15 @@ RSpec.describe BankAccount, type: :model do
     end
   end
 
-  describe "#load_bank_from_input_bank_number" do
+  describe "#valid?" do
     before do
-      custom_bank
+      expect(bank_account).to receive(:load_bank_from_input_bank_number)
     end
+    it { bank_account.valid?}
+  end
 
-    context "should be called when use .valid?" do
-      before do
-        expect(bank_account).to receive(:load_bank_from_input_bank_number)
-      end
-
-      it { bank_account.valid?}
-    end
-
-    it do
+  describe "#load_bank_from_input_bank_number" do
+    it "should assign bank according to bank number" do
       bank_account.input_bank_number = "00M"
       bank_account.load_bank_from_input_bank_number
 
