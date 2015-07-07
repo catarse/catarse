@@ -30,7 +30,7 @@ class Payment < ActiveRecord::Base
     self.value ||= self.contribution.try(:value)
   end
 
-  scope :can_delete, ->{ where('payments.can_delete') }
+  scope :waiting_payment, -> { where('payments.waiting_payment') }
 
 
   # Check current status on pagarme and
