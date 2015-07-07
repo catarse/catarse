@@ -26,7 +26,6 @@ class ContributionDetail < ActiveRecord::Base
   scope :user_email_contains, ->(term) { joins(:user).where("unaccent(upper(users.email)) LIKE ('%'||unaccent(upper(?))||'%') OR unaccent(upper(payer_email)) LIKE ('%'||unaccent(upper(?))||'%')", term, term) }
 
   scope :with_state, ->(state){ where(state: state) }
-  scope :pending, ->{ where(state: 'pending') }
   scope :was_confirmed, ->{ where("contribution_details.state = ANY(confirmed_states())") }
 
   # Scopes based on project state
@@ -38,6 +37,8 @@ class ContributionDetail < ActiveRecord::Base
   scope :available_to_display, -> {
     where("contribution_details.state not in('deleted', 'refused')")
   }
+
+  scope :pending, -> { joins(:payment).merge(Payment.waiting_payment) }
 
   scope :ordered, -> { order(id: :desc) }
 

@@ -1,7 +1,6 @@
 namespace :cron do
   desc "Tasks that should run hourly"
   task hourly: [:finish_projects,
-                :cancel_expired_waiting_confirmation_contributions,
                 :refresh_materialized_views]
 
   desc "Tasks that should run daily"
@@ -51,12 +50,6 @@ namespace :cron do
      contribution.notify(:contribution_project_unsuccessful_slip_no_account,
                          contribution.user)
     end
-  end
-
-  desc "Cancel all pending payments older than 1 week"
-  task :cancel_expired_waiting_confirmation_contributions => :environment do
-    puts "Cancel all pending payments older than 1 week"
-    Payment.move_to_trash
   end
 
   desc "Deliver a collection of recents projects of a category"

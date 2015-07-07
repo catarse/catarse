@@ -30,14 +30,8 @@ class Payment < ActiveRecord::Base
     self.value ||= self.contribution.try(:value)
   end
 
-  scope :can_delete, ->{ where('payments.can_delete') }
+  scope :waiting_payment, -> { where('payments.waiting_payment') }
 
-  # Starting move can_delete payments to trash
-  def self.move_to_trash
-    can_delete.each do |payment|
-      payment.move_to_trash
-    end
-  end
 
   # Check current status on pagarme and
   # move pending payment to deleted state
