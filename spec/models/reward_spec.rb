@@ -90,6 +90,9 @@ RSpec.describe Reward, type: :model do
       @remaining = create(:reward, maximum_contributions: 3, project: project)
       create(:confirmed_contribution, reward: @remaining, project: @remaining.project)
       create(:pending_contribution, reward: @remaining, project: @remaining.project)
+      payment = create(:pending_contribution, reward: @remaining, project: @remaining.project).payments.first
+      payment.update_column(:created_at, 9.days.ago)
+
       @sold_out = create(:reward, maximum_contributions: 2, project: project)
       create(:confirmed_contribution, reward: @sold_out, project: @sold_out.project)
       create(:pending_contribution, reward: @sold_out, project: @sold_out.project)
