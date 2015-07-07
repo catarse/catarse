@@ -4,6 +4,7 @@ App.addChild('Contribution', {
   events: {
     'click .radio label' : 'clickReward',
     'click .submit-form' : 'submitForm',
+    'click .user-reward-value' : 'clearOnFocus',
     'input #contribution_value' : 'restrictChars'
   },
 
@@ -12,11 +13,16 @@ App.addChild('Contribution', {
     $target.val($target.val().replace(/[^\d,]/, ''));
   },
 
-  submitForm: function(){
-    var user_value = this.$('.selected').find('.user-reward-value').val();
-    var default_value = this.$('.selected').find('label[data-minimum-value]').data('minimum-value');
-    this.$value.val(user_value || default_value);
-    this.$('form').submit();
+  submitForm: function(event){
+    var $target_row = $(event.target).parents('.back-reward-money'),
+        user_value = this.$('.selected').find('.user-reward-value').val().replace(/\./g,'');
+    if(parseInt(user_value) < parseInt(this.minimumValue())){
+      $target_row.find('.user-reward-value').addClass('error');
+      $target_row.find('.text-error').slideDown();
+    }else{
+      this.$('form').submit();  
+    }
+
     return false;
   },
 
@@ -35,7 +41,7 @@ App.addChild('Contribution', {
         top_title = $('#new-contribution'),
         faq_top = $("#faq-box").offset().top;
     $(window).scroll(function() {
-        if(!that.isOnAutoScroll){
+        if(!that.isOnAutoScroll && !app.isMobile()){
             top = $(top_title).offset().top,
             $(window).scrollTop() > top ? $(".reward-floating").addClass("reward-floating-display") : $(".reward-floating").removeClass("reward-floating-display");
             var t = $("#faq-box");
@@ -44,8 +50,15 @@ App.addChild('Contribution', {
     });
   },
 
-  resetReward: function(event){
-    if(parseInt('0' + this.$value.val()) < this.minimumValue()){
+  clearOnFocus: function(event){ 
+    this.$(event.target).val("");
+    this.$('.error').removeClass('error');
+    this.$('.text-error').slideUp();
+    return false;
+  },
+  
+  customValidation: function(event){
+    if(parseInt(this.$value.val()) < this.minimumValue()){
       this.selectReward(this.$('.radio label'));
     }
   },
@@ -64,7 +77,6 @@ App.addChild('Contribution', {
     this.$('.back-reward-money').hide();
     reward.find('.back-reward-money').show();
     reward.parent().addClass('selected');
-
   },
 
   clickReward: function(event){
@@ -80,8 +92,7 @@ App.addChild('Contribution', {
     });
     this.selectReward($el);
     var minimum = this.minimumValue();
-    $el.val(minimum);
-
+    $el.find('.user-reward-value').val(minimum);
   }
 });
 
