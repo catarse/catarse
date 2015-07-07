@@ -17,6 +17,7 @@ pt:
         minimum_value: "Informe um valor mínimo maior ou igual a 10"
         description: "Informe uma descrição para a recompensa"
       bank_account:
+        input_bank_number: "Número do banco inválido"
         bank_id: "Selecione um banco"
         agency: "Qual o número da agência?"
         account: "Qual o número da conta?"

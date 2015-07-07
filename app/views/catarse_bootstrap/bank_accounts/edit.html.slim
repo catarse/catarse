@@ -18,14 +18,40 @@
       .w-col.w-col-8
         = simple_form_for resource, html: { class: 'w-form refund_bank_account_form' } do |bform|
           .w-row
+            - has_input_bank_number_error = resource.errors.include?(:input_bank_number)
+            .w-col.w-col-6.w-sub-col#bank_select class="#{(has_input_bank_number_error ? 'w-hidden' : '')}"
+              = bform.input :bank_id, as: :select, collection: Bank.most_popular_collection(resource.try(:bank)), validation_text: true, class: 'w-select', input_html: { required: true }
             .w-col.w-col-6.w-sub-col
-              = bform.input :bank_id, as: :select, collection: Bank.to_collection, validation_text: true, class: 'w-select', input_html: { required: true }
-            .w-col.w-col-6
+              .w-row.u-marginbottom-20#bank_search class="#{(!has_input_bank_number_error ? 'w-hidden' : '')}"
+                .w-col.w-col-12
+                  = bform.input :input_bank_number, label: t('.input_bank_number_label'), label_class: 'font-weight-semibold', as: :string, validation_text: true, input_html: { maxlength: 3 }
+                  = link_to t('.search_bank_btn_html'), 'javascript:void(0);', class: 'w-hidden-small w-hidden-tiny alt-link fontsize-smaller', id: 'show_bank_list'
+                  /input#bank_number_input.w-input.text-field required="required" type="text"
+                  = link_to t('.search_bank_btn_html'), 'javascript:void(0);', class: 'w-hidden-main w-hidden-medium alt-link fontsize-smaller', id: 'show_bank_list'
+            .w-col.w-col-6.w-sub-col
               .w-row
                 .w-col.w-col-6.w-col-small-6.w-col-tiny-6.w-sub-col-middle
                   = bform.input :agency, as: :string, validation_text: true, input_html: { required: true }
                 .w-col.w-col-6.w-col-small-6.w-col-tiny-6
                   = bform.input :agency_digit, as: :string
+            .w-row.w-hidden#bank_search_list
+              .w-col.w-col-12
+                .select-bank-list data-ix="height-0-on-load" style=("height: 395px;") 
+                  .card.card-terciary
+                    .fontsize-small.fontweight-semibold.u-marginbottom-10.u-text-center Selecione o seu banco abaixo
+                    .fontsize-smaller
+                      .w-row.card.card-secondary.fontweight-semibold
+                        .w-col.w-col-3.w-col-small-3.w-col-tiny-3
+                          div Número
+                        .w-col.w-col-9.w-col-small-9.w-col-tiny-9
+                          div Nome
+                      - Bank.order_popular.each do |bank|
+                        .w-row.card.fontsize-smallest
+                          .w-col.w-col-3.w-col-small-3.w-col-tiny-3
+                            = link_to bank.code, 'javascript:void(0)', class: 'link-hidden bank-resource-link', data: { id: bank.id, code: bank.code }
+                          .w-col.w-col-9.w-col-small-9.w-col-tiny-9
+                            = link_to bank.to_s, 'javascript:void(0)', class: 'link-hidden bank-resource-link', data: { id: bank.id, code: bank.code }
+                  
           .w-row
             .w-col.w-col-6.w-sub-col
               .w-row

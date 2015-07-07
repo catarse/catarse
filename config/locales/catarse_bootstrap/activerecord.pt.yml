@@ -31,6 +31,7 @@ pt:
         account_digit: 'Dígito conta'
         account_type: 'Tipo de conta'
       bank_account:
+        input_bank_number: "Número do banco"
         bank: 'Banco'
         bank_id: 'Banco'
         owner_name: 'Nome do titular'
@@ -133,7 +134,7 @@ pt:
         visible: 'Publicar (Marque caso queira publicar essa nóvidade)'
     errors:
       models:
-        payment: 
+        payment:
           duplicate: "O seu pagamento já está sendo processado"
         contribution: "Erro ao salvar apoio"
         bank_account:
@@ -263,8 +264,8 @@ pt:
       cartao_de_credito: "Cartão de crédito"
       debito_bancario: "Débito bancário"
       cartao_debito: "Cartão de débito"
-      transferencia_bancaria: "Transferência bancária" 
-      carteira_mo_ip: "Carteira MoIP" 
+      transferencia_bancaria: "Transferência bancária"
+      carteira_mo_ip: "Carteira MoIP"
       financiamento_bancario: "Financiamento Bancário"
     project_should_be_online: Você não pode apoiar um projeto que não está no ar
     reward_must_be_from_project: deve ser do mesmo projeto
