@@ -24,19 +24,23 @@ App.addChild('Contribution', {
     this.$('.user-reward-value').mask('000.000.000,00', {reverse: true});
     this.$value = this.$('#contribution_value');
     this.$minimum = this.$('#minimum-value');
-    //this.clickReward({currentTarget: this.$('input[type=radio]:checked').parent()});
+    this.clickReward({currentTarget: this.$('input[type=radio]:checked').parent()}); 
+    this.isOnAutoScroll = false;
     this.activateFloattingHeader();
   },
 
   activateFloattingHeader: function(){
-    var top;
-    var top_title = $('#new-contribution'),
-    faq_top = $("#faq-box").offset().top;
+    var that = this,
+        top,
+        top_title = $('#new-contribution'),
+        faq_top = $("#faq-box").offset().top;
     $(window).scroll(function() {
-        top = $(top_title).offset().top,
-        $(window).scrollTop() > top ? $(".reward-floating").addClass("reward-floating-display") : $(".reward-floating").removeClass("reward-floating-display");
-        var t = $("#faq-box");
-        $(window).scrollTop() > faq_top-130 ? $(t).hasClass("faq-card-fixed") || $(t).addClass("faq-card-fixed") : $(t).hasClass("faq-card-fixed") && $(t).removeClass("faq-card-fixed")
+        if(!that.isOnAutoScroll){
+            top = $(top_title).offset().top,
+            $(window).scrollTop() > top ? $(".reward-floating").addClass("reward-floating-display") : $(".reward-floating").removeClass("reward-floating-display");
+            var t = $("#faq-box");
+            $(window).scrollTop() > faq_top-130 ? $(t).hasClass("faq-card-fixed") || $(t).addClass("faq-card-fixed") : $(t).hasClass("faq-card-fixed") && $(t).removeClass("faq-card-fixed");
+        }       
     });
   },
 
@@ -65,10 +69,14 @@ App.addChild('Contribution', {
 
   clickReward: function(event){
     var $el = $(event.currentTarget);
+    var isOnAutoScroll = this.isOnAutoScroll;
     $.smoothScroll({
       scrollTarget: $el,
       speed: 600,
-      offset: -250
+      offset: -250,
+      callback: function(){
+        isOnAutoScroll = false;
+      }
     });
     this.selectReward($el);
     var minimum = this.minimumValue();
