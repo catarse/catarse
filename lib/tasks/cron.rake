@@ -53,12 +53,6 @@ namespace :cron do
     end
   end
 
-  desc "Cancel all pending payments older than 1 week"
-  task :cancel_expired_waiting_confirmation_contributions => :environment do
-    puts "Cancel all pending payments older than 1 week"
-    Payment.move_to_trash
-  end
-
   desc "Deliver a collection of recents projects of a category"
   task deliver_projects_of_week: :environment do
     puts "Delivering projects of the week..."
