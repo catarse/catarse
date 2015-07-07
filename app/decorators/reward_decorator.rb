@@ -26,7 +26,8 @@ class RewardDecorator < Draper::Decorator
           <div class="back-reward-input-reward placeholder _3">
             <div>R$</div>
           </div>
-          <input class="user-reward-value w-input back-reward-input-reward _2" type="text" placeholder="#{source.minimum_value > 0 ? number_with_precision(source.minimum_value, precison: 2) : '10,00'}">
+          <input class="user-reward-value w-input back-reward-input-reward _2" type="tel" min="#{number_with_precision(source.minimum_value, precison: 2)}" placeholder="#{source.minimum_value > 0 ? number_with_precision(source.minimum_value, precison: 2) : '10,00'}">
+          <div class="fontsize-smaller text-error u-marginbottom-20 w-hidden"><span class="fa fa-exclamation-triangle"></span> O valor do apoio está incorreto</div>
         </div>
         <div class="submit-form w-col w-col-4 w-col-small-4 w-col-tiny-4"><a class="btn btn-large" href="#">Continuar&nbsp;&nbsp;<span class="fa fa-chevron-right"></span></a>
         </div>
