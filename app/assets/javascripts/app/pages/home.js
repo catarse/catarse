@@ -6,3 +6,17 @@ App.addChild('Home', {
   },
 
 });
+
+App.addChild('HomeNewsletter', {
+  el: '#mailee-form',
+
+  events: {
+	'click a.btn-attached':'submitForm',
+  },
+
+  submitForm: function(event){
+	  event.preventDefault();
+	  this.$el.submit();
+  },
+
+});
