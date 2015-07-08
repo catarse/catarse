@@ -15,6 +15,7 @@ module Concerns
       end
 
       # Only admin can access
+      add_to_menu "admin.contributions.index.new_menu", :new_admin_path
       add_to_menu "admin.contributions.index.menu", :admin_contributions_path
       add_to_menu "admin.financials.index.menu",    :admin_financials_path
       add_to_menu "admin.users.index.menu",         :admin_users_path

@@ -157,6 +157,7 @@ pt:
         title: "Gerenciamento de apoios"
         state: 'Estado atual'
         menu: "Apoios"
+        new_menu: "Apoios - Beta"
         anonymous: Anônimo?
         contribution: Apoio
         confirmed: Confirmado?
