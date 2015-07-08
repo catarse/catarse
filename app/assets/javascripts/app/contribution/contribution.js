@@ -16,6 +16,7 @@ App.addChild('Contribution', {
   submitForm: function(event){
     var $target_row = $(event.target).parents('.back-reward-money'),
         user_value = this.$('.selected').find('.user-reward-value').val().replace(/\./g,'');
+    this.$value.val(user_value);
     if(parseInt(user_value) < parseInt(this.minimumValue())){
       $target_row.find('.user-reward-value').addClass('error');
       $target_row.find('.text-error').slideDown();
