@@ -6,7 +6,7 @@ header class="main-header #{'alert' if can_display_pending_refund_alert?} #{((de
     .w-col.w-col-3.w-col-small-6.w-col-tiny-6.w-clearfix
       - if current_user
         .w-dropdown.user-profile
-          = link_to '#', id: 'user-menu', class: 'w-dropdown-toggle dropdown-toggle' do
+          = link_to 'javascript:toggleMenu()', id: 'user-menu', class: 'w-dropdown-toggle dropdown-toggle' do
             = image_tag(current_user.display_image, :size => "40x40", class: 'user-avatar')
             .w-icon-dropdown-toggle.dropdown-icon.positive
           = render 'shared/user_menu'
