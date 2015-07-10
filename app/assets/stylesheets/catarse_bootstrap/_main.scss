@@ -506,7 +506,7 @@ p {
 .main-header {
   padding-top: 15px;
   padding-bottom: 8px;
-  padding-left: 10px;
+  padding-left: 15px;
   border-bottom: 1px solid rgba(37, 49, 57, 0.6);
   background-color: #3f4752;
 }
@@ -548,12 +548,12 @@ p {
   right: -73px;
   display: inline-block;
   margin: 0px;
-  padding: 9px 15px;
+  padding: 9px 17px;
   border-radius: 4px;
   -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
   color: #f1f2f3;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 300;
   text-decoration: none;
 }
@@ -1818,7 +1818,7 @@ p {
 .header-search {
   position: relative;
   display: inline-block;
-  width: 28%;
+  width: 16%;
   height: 40px;
   margin-bottom: 0px;
   margin-left: 20px;
@@ -1832,7 +1832,7 @@ p {
 .header-logo {
   position: relative;
   display: inline-block;
-  width: 105px;
+  width: 100px;
   margin-right: 20px;
   float: left;
   -webkit-transition: all 500ms ease;
@@ -2900,13 +2900,11 @@ p {
   -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
 }
-.body-project.closed {
-  margin-left: 0px;
-  -webkit-transition: all 500ms ease;
-  transition: all 500ms ease;
-}
 .body-project.big {
   margin-left: 205px;
+}
+.body-project.closed {
+  margin-left: 0px;
 }
 .bg-people {
   height: 768px;
@@ -3153,6 +3151,18 @@ p {
   height: 395px;
   margin-bottom: 30px;
   background-color: #f1f2f3;
+}
+.admin-filters {
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+.bg-boleto {
+  height: 200px;
+  padding-top: 70px;
+  padding-bottom: 70px;
+  background-image: url('../images/boleto.jpg');
+  background-size: cover;
+  text-align: center;
 }
 html.w-mod-js *[data-ix="fade-in"] {
   opacity: 0;
@@ -3464,7 +3474,7 @@ html.w-mod-js *[data-ix="know-more-2"] {
     display: block;
   }
   .header-search {
-    width: 21%;
+    width: 17%;
     margin-left: 0px;
     font-size: 12px;
   }
@@ -3764,7 +3774,7 @@ html.w-mod-js *[data-ix="know-more-2"] {
     position: relative;
     padding-top: 7px;
     padding-bottom: 4px;
-    padding-left: 5px;
+    padding-left: 15px;
   }
   .main-header.overlayer.alert {
     margin-top: 38px;
