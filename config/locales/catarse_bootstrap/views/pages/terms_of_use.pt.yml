@@ -4,10 +4,7 @@ pt:
       title: Termos de uso
       content:
         start: "Começando"
-        start_text: 'Leia com atenção os termos de uso que passam a valer para projetos que entraram no ar a partir de 10/11/2014.<br>
-
-
-          Bem-vindo ao Catarse! Vale lembrá-lo que o acesso ao conteúdo deste website dependerá  de sua prévia e expressa concordância com os Termos de Uso e Políticas de Privacidade.<br>
+        start_text: 'Bem-vindo ao Catarse! Vale lembrá-lo que o acesso ao conteúdo deste website dependerá  de sua prévia e expressa concordância com os Termos de Uso e Políticas de Privacidade.<br>
 <br>
 
           Os Termos de Uso apresentam as "Condições Gerais" aplicáveis ao uso da plataforma online disponibilizada pelo GRUPO COMUM CONSULTORIA E INTERMEDIAÇÃO DE NEGÓCIOS LTDA - ME, sociedade limitada, inscrita no CNPJ sob n.º 14.512.425/0001-94, com endereço a Rua Itapeva, 220, conjunto 42, doravante denominada "CATARSE"'
@@ -22,13 +19,15 @@ pt:
         PROJETO: é um projeto criativo divulgado na plataforma CATARSE pelo CRIADOR DE PROJETOS com o objetivo de angariar fundos para a sua concretização. Para cada PROJETO, serão definidas recompensas ou incentivos aos APOIADORES, de acordo com as regras definidas em cada PROJETO. Os PROJETOS devem seguir as Diretrizes para criação de projetos, sendo que qualquer PROJETO que estiver em desacordo com tais diretrizes, poderá ser removido da plataforma pelo CATARSE.<br>
 
         PROJETO BEM-SUCEDIDO: é o PROJETO que alcança ou supera o valor pleiteado no prazo determinado pelo CRIADOR DO PROJETO.<br>
+
+        REEMBOLSO. Devolução dos valores desembolsados pelos APOIADORES, a título de APOIO, caso o PROJETO não seja bem-sucedido. O REEMBOLSO será realizado pelo CATARSE, por meio de cartão de crédito ou transferência bancária, de acordo com a forma como foi realizado o APOIO. O comprovante de depósito ou a fatura do cartão de crédito, conforme o caso, equivalerão a um recibo pelo qual o APOIADOR dá plena geral e irrevogável quitação ao CATARSE, para nada mais reclamar a título de reembolso.<br>
 '
 
         how_works: "O que é e como funciona o Catarse"
         how_works_text: 'O CATARSE é uma plataforma online que se destina a aproximar CRIADORES DE PROJETOS e APOIADORES, com o objetivo de ANGARIAÇÃO COLETIVA DE FUNDOS (“crowd funding”), para viabilizar PROJETOS. O CATARSE permite que um CRIADOR DE PROJETOS apresente uma ideia de PROJETO e angarie fundos de APOIADORES interessados em contribuir com esse PROJETO. Os CRIADORES DE PROJETOS também oferecerão aos APOIADORES recompensas, que serão definidas em cada um desses PROJETOS. O CATARSE reúne os valores desembolsados pelos APOIADORES destinados a cada um desses PROJETOS até o prazo final determinado pelos respectivos CRIADORES DE PROJETOS.<br>
 
 
-          Quando um desses PROJETOS é bem-sucedido, alcançando ou superando o montante estipulado para sua viabilização, no prazo estipulado no PROJETO, o valor total angariado dos APOIADORES é repassado ao CRIADOR DE PROJETO, descontados o percentual devido ao CATARSE e as tarifas cobradas pelo serviço de pagamentos online utilizado. Em contrapartida, se um PROJETO não é bem-sucedido, deixando de alcançar o montante solicitado, o CATARSE providenciará o estorno das quantias pagas. Para as quantias pagas por meio de cartão de crédito, o estorno será realizado na próxima fatura do cartão. Se porém o pagamento tiver sido feito através de boleto bancário, o estorno será realizado na conta bancária indicada pelo APOIADOR, no CATARSE, conforme detalhado no item “Taxas e pagamentos” adiante. <br>
+          Quando um desses PROJETOS é bem-sucedido, alcançando ou superando o montante estipulado para sua viabilização, no prazo estipulado no PROJETO, o valor total angariado dos APOIADORES é repassado ao CRIADOR DE PROJETO, descontados o percentual devido ao CATARSE. Em contrapartida, se um PROJETO não é bem-sucedido, deixando de alcançar o montante solicitado, o CATARSE providenciará o REEMBOLSO das quantias pagas. Para as quantias pagas por meio de cartão de crédito, o REEMBOLSO será realizado na próxima fatura ou na fatura subsequente do cartão de crédito. Se porém, o pagamento tiver sido feito através de boleto bancário, o REEMBOLSO será realizado através de depósito na conta bancária indicada pelo APOIADOR, assim que solicitado pelo CATARSE. Caso não seja fornecida a conta bancária para REEMBOLSO, o CATARSE manterá os valores disponíveis para REEMBOLSO pelo prazo máximo de 12 meses, conforme detalhado no item “Taxas e Pagamentos” adiante.<br>
 
           O CATARSE tem por objetivo apenas aproximar CRIADORES DE PROJETOS e APOIADORES, através de sua plataforma online. A utilização do CATARSE não gera relação de trabalho, vínculo empregatício, associação nem sociedade entre quaisquer USUÁRIOS (APOIADORES e CRIADORES) e o CATARSE, nem tampouco representa transação comercial ou venda de produtos ou serviços.<br>
 
@@ -50,6 +49,8 @@ pt:
 4. Estabelece incentivos e/ou recompensas aos APOIADORES que contribuírem com seu PROJETO, determinando as condições de sua obtenção, prazo e forma de recebimento, bem como o número de APOIADORES que poderão se beneficiar desses incentivos e/ou recompensas. <br>
 
 4.1. Ao estabelecer incentivos e/ou recompensas, assume as obrigações previstas no artigo 854 e seguintes do Código Civil Brasileiro, tornando-se diretamente responsável pelo cumprimento de sua promessa perante os APOIADORES que preencherem as condições estipuladas, sem qualquer responsabilidade, direta ou indireta, por parte do CATARSE. <br>
+
+4.2. Ao decidir apoiar determinado projeto, destinando recursos para o mesmo, o APOIADOR assume a responsabilidade de manter cadastro atualizado e indicar conta bancária para eventual REEMBOLSO, caso decida realizar apoios por boleto bancário. <br>
 
 5. Concorda que o PROJETO apresentado pode não ser divulgado pelo CATARSE, a exclusivo critério deste. <br>
 
@@ -95,12 +96,19 @@ O USUÁRIO concorda em: <br>
 3. Ser responsabilizado por qualquer informação falsa, incorreta, desatualizada ou incompleta fornecida. Caso o CATARSE tenha razões suficientes para suspeitar da veracidade e/ou da exatidão de tais informações, terá o direito de suspender ou cancelar, imediatamente e independente de qualquer aviso ou notificação, a conta do USUÁRIO. <br>
 4. Permitir que o CATARSE entregue os dados cadastrais dos CRIADORES DE PROJETO, disponíveis nos servidores do CATARSE ou dos meios de pagamento, aos APOIADORES, em caso de violação aos Termos de Uso, falha no cumprimento do PROJETO ou atraso na entrega das recompensas. Os dados cadastrais que poderão ser fornecidos são: nome completo, endereço, CPF ou CNPJ, caso pessoa jurídica, telefone e e-mail, nos limites do inciso  VIII, do art. 7º da Lei 12.965 (“ Marco Civil da Internet”).<br>"
         tax: "Taxas e pagamentos"
-        tax_text: "O APOIADOR e o CRIADOR DO PROJETO estão plenamente cientes e concordam que todos os valores destinados ao apoio de projetos só poderão ser arrecadados com a utilização do serviço de pagamentos online ao qual o CATARSE estiver associado, por meio de cartão de crédito ou boleto bancário, (conforme opção do APOIADOR), sendo depositados em conta de titularidade do CATARSE ou do próprio meio de pagamento, mas sempre devidamente vinculada ao CATARSE. <br>
-Surgem, a partir daí, duas possibilidades: <br>
-Se o PROJETO FOR BEM-SUCEDIDO, o valor total arrecadado para esse PROJETO (ainda que superior ao valor originalmente solicitado pelo CRIADOR DO PROJETO) será transferido pelo CATARSE para uma conta de titularidade CRIADOR DO PROJETO, descontando-se deste valor o montante de 13% (treze por cento), que contempla a taxa de intermediação do CATARSE, bem como as tarifas cobradas pelo serviços de pagamento online; <br>
-Se o PROJETO NÃO FOR BEM-SUCEDIDO, os APOIADORES, no prazo de 10 dias úteis, receberão o estorno do valor originalmente oferecido ao PROJETO.<br>
-Salvo disposição em contrário, todas as taxas são cotadas em Reais (R$). O USUÁRIO é o responsável pelo pagamento de todas as taxas e impostos associados com o uso do CATARSE, incluindo, mas não se limitando à taxa de intermediação do CATARSE e taxas ou tarifas praticadas pelo serviço de pagamento online, assim como quaisquer impostos ou tributos que incidam ou venham a incidir sobre o PROJETO ou sobre a aproximação entre o APOIADOR e CRIADOR DE PROJETOS.Caso um PROJETO seja retirado do CATARSE por violação dos Termos de Uso, violação de normas legais ou por ordem judicial, os valores pagos pelos APOIADORES poderão não ser reembolsados, caso o APOIADOR, tendo conhecimento de tal violação, não a tenha denunciado ao CATARSE através do <a href='mailto:contato@catarse.me' class='alt-link'>contato@catarse.me</a>. <br>
-Tendo em vista que os serviços de meios de pagamento online e de cartões de crédito são independentes do CATARSE, estes possuem exclusiva responsabilidade pelos pagamentos processados e respondem, inclusive pelas falhas de cartões de crédito."
+        tax_text: "O APOIADOR e o CRIADOR DO PROJETO estão plenamente cientes e concordam que todos os valores destinados ao apoio de projetos só poderão ser arrecadados por meio de cartão de crédito ou boleto bancário, (conforme opção do APOIADOR), sendo depositados em conta de titularidade do CATARSE.
+Surgem, a partir daí, duas possibilidades:<br/>
+
+Se o PROJETO FOR BEM-SUCEDIDO, o valor total arrecadado para esse PROJETO (ainda que superior ao valor originalmente solicitado pelo CRIADOR DO PROJETO) será transferido pelo CATARSE para uma conta de titularidade CRIADOR DO PROJETO, descontando-se deste valor o montante de 13% (treze por cento), que contempla a taxa de intermediação do CATARSE, bem como as tarifas cobradas pelos meios de pagamento.<br/>
+
+Se o PROJETO NÃO FOR BEM-SUCEDIDO, os APOIADORES que tiverem realizado o APOIO por meio de cartão de crédito, receberão  automaticamente o REEMBOLSO do valor originalmente oferecido ao PROJETO, na próxima fatura ou na fatura subsequente ao do encerramento do PROJETO. Já os APOIADORES que tiverem realizado o APOIO mediante boleto bancário, serão informados pelo CATARSE que o PROJETO não foi bem-sucedido e deverão fornecer os dados de sua conta bancária para que o REEMBOLSO possa ser realizado. O CATARSE destaca que nesse caso o REEMBOLSO não pode ser feito automaticamente, considerando que no momento da realização do APOIO não são solicitados dados bancários dos APOIADORES que pagam via boleto bancário. <br/>
+
+O APOIADOR está ciente que, caso não forneça seus dados bancários quando informado pelo CATARSE que o PROJETO apoiado não foi bem-sucedido, não será possível ao CATARSE realizar o REEMBOLSO. Nesse caso, por mera liberalidade, o CATARSE manterá os valores disponíveis para resgate por 12 meses a contar da data de encerramento do PROJETO. Passado esse período, os valores em questão serão considerados renunciados e poderão ser utilizados pelo CATARSE para apoiar outros projetos em captação na plataforma.<br/>
+ 
+
+Salvo disposição em contrário, todas as taxas são cotadas em Reais (R$). O USUÁRIO é o responsável pelo pagamento de todas as taxas e impostos associados com o uso do CATARSE, incluindo, mas não se limitando à taxa de intermediação do CATARSE e taxas ou tarifas praticadas pelos meios de pagamento, assim como quaisquer impostos ou tributos que incidam ou venham a incidir sobre o PROJETO ou sobre a aproximação entre o APOIADOR e CRIADOR DE PROJETOS. Caso um PROJETO seja retirado do CATARSE por violação dos Termos de Uso, violação de normas legais ou por ordem judicial, os valores pagos pelos APOIADORES poderão não ser reembolsados, caso o APOIADOR, tendo conhecimento de tal violação, não a tenha denunciado ao CATARSE através do contato@catarse.me.<br/>
+Tendo em vista que os serviços bancários e de cartões de crédito são independentes do CATARSE, estes possuem exclusiva responsabilidade pelos pagamentos processados e respondem pelas falhas na utilização de seus meios de pagamento.<br/>
+"
 
         rights: "Direitos de propriedade intelectual"
         rights_text: "O CATARSE é titular dos direitos de propriedade intelectual referentes a seu próprio serviço, que são protegidos pelas leis brasileiras e por tratados internacionais. Os direitos do CATARSE não incluem quaisquer direitos relacionados ao conteúdo criado pelos USUÁRIOS e exibidos no CATARSE. <br/>
@@ -117,4 +125,4 @@ O CRIADOR DE PROJETOS autoriza o CATARSE a utilizar vídeos, textos e conteúdo 
         law_text: "Estes termos de serviço são regidos única e exclusivamente pelas leis brasileiras, sendo que qualquer ação judicial relativa à sua interpretação ou aplicação deverá ser processada e julgada pelo Poder Judiciário Brasileiro. <br>
 Em caso de conflito de leis estaduais ou municipais, para a interpretação de qualquer dúvida ou litígio, deverá sempre prevalecer a legislação do Estado de São Paulo. <br>
 O foro eleito para resolução de eventuais conflitos é Foro Central da cidade de São Paulo, com exclusão de qualquer outro, por mais privilegiado que seja.</p><br>"
-        last_update: "Última atualização: 10/11/2014"
+        last_update: "Última atualização: 11/07/2015"
