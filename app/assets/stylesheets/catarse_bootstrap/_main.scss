@@ -17,7 +17,6 @@ p {
   border: 1px solid #7cc142;
   border-radius: 5px;
   background-color: #7cc142;
-  -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
   color: white;
   text-align: center;
@@ -35,7 +34,6 @@ p {
   padding-top: 12px;
   padding-bottom: 12px;
   border-radius: 5px;
-  -webkit-transition: all 500ms ease, all 500ms ease;
   transition: all 500ms ease, all 500ms ease;
   font-size: 16px;
 }
@@ -141,7 +139,6 @@ p {
   border: 1px solid #ddd;
   border-radius: 5px;
   background-color: #f1f4f4;
-  -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
   color: #3f4752;
   font-size: 15px;
@@ -303,7 +300,6 @@ p {
   background-color: white;
 }
 .link {
-  -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
   color: #f69219;
   font-size: 16px;
@@ -392,7 +388,6 @@ p {
   background-color: white;
 }
 .link-hidden {
-  -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
   color: #3f4752;
   text-decoration: none;
@@ -430,7 +425,6 @@ p {
   padding: 12px 0px;
   border-top: 1px solid rgba(255, 255, 255, 0.61);
   border-radius: 0px 0px 5px 5px;
-  -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
   text-align: center;
 }
@@ -450,7 +444,6 @@ p {
   margin-top: 4px;
   padding: 20px;
   background-color: #f1f4f4;
-  -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
 }
 .project-reward-box.project-reward-box--gone {
@@ -464,7 +457,6 @@ p {
   padding: 0px;
   float: right;
   opacity: 0.5;
-  -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
 }
 .icon-close:hover {
@@ -480,7 +472,6 @@ p {
 }
 .alt-link.alt-link-2 {
   display: block;
-  -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
   color: #79808b;
 }
@@ -519,7 +510,6 @@ p {
   margin-top: 0px;
   border-bottom-style: none;
   background-color: transparent;
-  background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.2), transparent);
   background-image: linear-gradient(rgba(0, 0, 0, 0.2), transparent);
 }
 .main-header.overlayer.alert {
@@ -550,7 +540,6 @@ p {
   margin: 0px;
   padding: 9px 17px;
   border-radius: 4px;
-  -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
   color: #f1f2f3;
   font-size: 15px;
@@ -753,7 +742,6 @@ p {
 .project-nav-tab.project-nav-tab--off {
   margin-bottom: 11px;
   background-color: transparent;
-  -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
   color: #79808b;
   font-weight: 400;
@@ -799,7 +787,6 @@ p {
   border-bottom-left-radius: 0px;
   border-bottom-right-radius: 0px;
   background-color: transparent;
-  -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
   font-weight: 400;
 }
@@ -1035,7 +1022,6 @@ p {
   border-width: 1px;
   border-color: rgba(64, 155, 255, 0);
   background-color: rgba(64, 155, 255, 0.09);
-  -webkit-transition-delay: initial;
   transition-delay: initial;
   color: #409bff;
   text-decoration: none;
@@ -1143,7 +1129,6 @@ p {
   border-color: #00b22d;
   border-radius: 0px 5px 5px 0px;
   background-color: white;
-  -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
   color: #00b22d;
   font-size: 44px;
@@ -1204,7 +1189,6 @@ p {
   border-style: solid;
   border-width: 2px;
   border-color: transparent transparent #f1f4f4;
-  -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
 }
 .back-reward-radio-reward:hover {
@@ -1571,7 +1555,6 @@ p {
 }
 .dashboard-nav-link.off {
   border-bottom-color: white;
-  -webkit-transition-delay: initial;
   transition-delay: initial;
   font-weight: 400;
 }
@@ -1700,7 +1683,6 @@ p {
 .project-nav-tab-group {
   display: inline-block;
   opacity: 1;
-  -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
 }
 .project-nav-tab-group:hover {
@@ -1721,7 +1703,6 @@ p {
   margin-top: -1px;
   padding: 11px 14px;
   border: 1px solid #ddd;
-  -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
 }
 .creditcard-records:hover {
@@ -1750,13 +1731,11 @@ p {
   z-index: 15;
   width: 95px;
   margin-top: -10px;
-  margin-right: -15px;
+  margin-right: -10px;
   float: right;
-  -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
 }
 .dropdown-link {
-  -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
 }
 .dropdown-link:hover {
@@ -1778,7 +1757,7 @@ p {
   z-index: 30;
   width: 735px;
   margin-top: 8px;
-  margin-left: -650px;
+  margin-left: -670px;
   padding: 21px;
   background-color: #f1f4f4;
 }
@@ -1790,7 +1769,6 @@ p {
   height: 35px;
   float: none;
   border-radius: 50%;
-  -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
 }
 .user-avatar:hover {
@@ -1835,7 +1813,6 @@ p {
   width: 100px;
   margin-right: 20px;
   float: left;
-  -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
 }
 .header-logo:hover {
@@ -1977,7 +1954,6 @@ p {
   border-bottom: 1px solid transparent;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
-  -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
   color: #79808b;
   font-size: 15px;
@@ -2143,7 +2119,6 @@ p {
 .out-of-focus {
   display: inline-block;
   opacity: 0.25;
-  -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
 }
 .out-of-focus:hover {
@@ -2182,7 +2157,7 @@ p {
   border-width: 0px;
   border-color: black;
   background-color: #2c2f33;
-  box-shadow: rgba(0, 0, 0, 0.34) -6px 2px 10px 0px inset;
+  box-shadow: none;
   color: #3f4752;
 }
 .dashboard-nav.side.side2 {
@@ -2278,7 +2253,6 @@ p {
   width: 75%;
 }
 .link-hidden-success {
-  -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
   color: #7cc142;
   text-decoration: none;
@@ -2563,7 +2537,6 @@ p {
   margin-right: 2px;
   padding: 1px 8px;
   border-radius: 4px;
-  -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
   text-align: center;
 }
@@ -2611,7 +2584,6 @@ p {
   padding: 16px 5px;
   border: 1px solid white;
   border-radius: 4px;
-  -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
   color: white;
   font-size: 16px;
@@ -2664,7 +2636,6 @@ p {
 }
 .card-guide {
   width: 100%;
-  -webkit-transition: background-color 500ms ease;
   transition: background-color 500ms ease;
   text-decoration: none;
 }
@@ -2754,7 +2725,6 @@ p {
 .btn-play {
   width: 100px;
   margin-bottom: 20px;
-  -webkit-transition: all 502ms ease;
   transition: all 502ms ease;
 }
 .btn-play:hover {
@@ -2776,7 +2746,6 @@ p {
   height: 225px;
   padding: 61px 33px 73px;
   border-radius: 5px;
-  -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
   color: white;
   text-align: center;
@@ -2897,7 +2866,6 @@ p {
   margin-left: 205px;
 }
 .body-project.open {
-  -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
 }
 .body-project.big {
@@ -2967,7 +2935,7 @@ p {
 .btn-dashboard {
   position: fixed;
   left: 20px;
-  bottom: 35px;
+  bottom: 20px;
   z-index: 1000;
   width: 55px;
   height: 55px;
@@ -2994,7 +2962,6 @@ p {
   overflow-x: hidden;
   overflow-y: hidden;
   height: 40px;
-  -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
 }
 .edit-project-div:hover {
@@ -3163,6 +3130,14 @@ p {
   background-image: url('../images/boleto.jpg');
   background-size: cover;
   text-align: center;
+}
+.btn-dashboard-backdrop {
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  height: 94px;
+  background-color: #2c2f33;
 }
 html.w-mod-js *[data-ix="fade-in"] {
   opacity: 0;
@@ -3460,7 +3435,7 @@ html.w-mod-js *[data-ix="know-more-2"] {
     position: absolute;
     width: 595px;
     margin-top: 3px;
-    margin-left: -520px;
+    margin-left: -540px;
   }
   .user-avatar {
     width: 30px;
@@ -3537,7 +3512,6 @@ html.w-mod-js *[data-ix="know-more-2"] {
     height: 120px;
   }
   .card-reward {
-    -webkit-transition: all 500ms ease;
     transition: all 500ms ease;
   }
   .card-reward:hover {
@@ -3680,6 +3654,9 @@ html.w-mod-js *[data-ix="know-more-2"] {
   }
   .body-alert {
     margin-top: 38px;
+  }
+  .project-lightbox-backdrop {
+    z-index: 200;
   }
   .dashboard-nav-link-left {
     padding-top: 8px;
@@ -4015,7 +3992,7 @@ html.w-mod-js *[data-ix="know-more-2"] {
   }
   .dropdown-list.user-menu.w--open {
     width: 231px;
-    margin-left: -160px;
+    margin-left: -180px;
   }
   .user-avatar {
     width: 28px;
@@ -4550,7 +4527,7 @@ html.w-mod-js *[data-ix="know-more-2"] {
   .dropdown-list.user-menu.w--open {
     width: 201px;
     margin-top: 5px;
-    margin-left: -138px;
+    margin-left: -158px;
   }
   .user-avatar {
     width: 26px;
