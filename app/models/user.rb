@@ -167,6 +167,10 @@ class User < ActiveRecord::Base
     projects.with_state('online').exists?
   end
 
+  def has_sent_notification?
+    projects.any? {|p| p.posts.exists?}
+  end
+
   def created_projects
     projects.with_state(['online', 'waiting_funds', 'successful', 'failed'])
   end
@@ -241,6 +245,7 @@ class User < ActiveRecord::Base
       published_projects: self.published_projects.count,
       created: self.created_at,
       has_online_project: self.has_online_project?,
+      has_sent_notification: self.has_sent_notification?,
       last_login: self.last_sign_in_at,
       created_today: self.created_today?
     }
