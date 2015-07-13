@@ -2,6 +2,7 @@ class CreateAdminRole < ActiveRecord::Migration
   def up
     execute <<-SQL
     CREATE ROLE admin NOLOGIN;
+    CREATE ROLE postgrest NOLOGIN;
     -- This script assumes a role postgrest and a role anonymous already created
     GRANT usage ON SCHEMA postgrest TO admin;
     GRANT usage ON SCHEMA "1" TO admin;
