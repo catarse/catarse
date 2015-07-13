@@ -416,6 +416,7 @@ RSpec.describe User, type: :model do
         published_projects: user.published_projects.count,
         created: user.created_at,
         has_online_project: user.has_online_project?,
+        has_sent_notification: user.has_sent_notification?,
         last_login: user.last_sign_in_at,
         created_today: user.created_today?
       }.to_json)
@@ -587,6 +588,32 @@ RSpec.describe User, type: :model do
 
     context "when user don't have contributions for the project" do
       it { is_expected.to eq(false) }
+    end
+  end
+
+  describe "#has_sent_notification?" do
+    subject{ user.has_sent_notification? }
+    let(:user) { create(:user) }
+
+    context "when user has sent notifications" do
+      let(:project) { create(:project, user: user, state: 'online') }
+      before do
+        create(:project_post, user: user, project: project )
+      end
+
+      it{ is_expected.to eq(true) }
+    end
+
+    context "when user has not sent notifications" do
+      before do
+        create(:project, user: user, state: 'online')
+      end
+
+      it{ is_expected.to eq(false) }
+    end
+
+    context "when user has no project" do
+      it{ is_expected.to eq(false) }
     end
   end
 
