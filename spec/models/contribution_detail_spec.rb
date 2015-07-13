@@ -184,12 +184,12 @@ RSpec.describe ContributionDetail, type: :model do
     })}
   end
 
-  describe "#search_text" do
+  describe "#full_text_index" do
     let!(:contribution){ create(:confirmed_contribution, value: 10) }
     let(:detail){ ContributionDetail.first }
-    subject{ detail.search_text }
+    subject{ detail.full_text_index }
 
-    it{ is_expected.to eq "#{detail.permalink} #{detail.project_name} #{detail.user_name} #{detail.email} #{detail.key} #{detail.payer_email}" }
+    it{ is_expected.to_not be_nil }
   end
 
   describe "#project_img" do
