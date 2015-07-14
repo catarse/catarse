@@ -5,7 +5,6 @@
 = render 'shared/header'
 
 .project-dashboard-edit
-  = render 'project_header'
   = render partial: 'dashboard_nav', locals: {edit_page: true}
   section.section
     #current_anchor data-anchor="#{params[:anchor]}"
