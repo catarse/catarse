@@ -67,7 +67,8 @@ class Reward < ActiveRecord::Base
   end
 
   def total_compromised
-    total_contributions %w(paid pending)
+    payments.where("payments.waiting_payment OR payments.state = 'paid'").count
+  end
   end
 
   def remaining
