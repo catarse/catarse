@@ -610,7 +610,7 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
-    user_notifier (0.0.5)
+    user_notifier (0.2.0)
       rails (>= 4.0.0)
       sidekiq
     valuable (0.9.9)
@@ -714,7 +714,7 @@ DEPENDENCIES
   to_xls
   uglifier
   unicorn
-  user_notifier (~> 0.0.5)
+  user_notifier (~> 0.2.0)
   video_info (>= 1.1.1)
   weekdays
   zonebie
