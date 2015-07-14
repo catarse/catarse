@@ -1,13 +1,8 @@
 - update = @notification.project_post
 - user = @notification.user
-br/
-strong= update.title
-br
-== update.email_comment_html.html_safe
-br
-br
-|Veja o projeto: #{link_to update.project.name, project_by_slug_url(permalink: update.project.permalink)}
-br/
-br/
-| #{link_to 'Descadastrar', unsubscribe_notifications_user_url(user)} o recebimento de novidades desse projeto
+p 
+  strong= update.title
+p == update.email_comment_html.html_safe
+p Veja o projeto: #{link_to update.project.name, project_by_slug_url(permalink: update.project.permalink, ref: 'project_post')}
+p #{link_to 'Descadastrar', unsubscribe_notifications_user_url(user)} o recebimento de novidades desse projeto
 

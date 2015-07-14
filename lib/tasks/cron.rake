@@ -4,17 +4,9 @@ namespace :cron do
                 :refresh_materialized_views]
 
   desc "Tasks that should run daily"
-  task daily: [:refresh_materialized_views,
-               :notify_project_owner_about_new_confirmed_contributions,
+  task daily: [ :notify_project_owner_about_new_confirmed_contributions,
                :deliver_projects_of_week, :verify_pagarme_transactions,
                :verify_pagarme_transfers, :notify_pending_refunds]
-
-  desc "Refresh all materialized views"
-  task refresh_materialized_views: :environment do
-    puts "refreshing views"
-    Statistics.refresh_view
-  end
-
 
   desc "Refresh all materialized views"
   task refresh_materialized_views: :environment do

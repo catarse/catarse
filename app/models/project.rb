@@ -11,7 +11,6 @@ class Project < ActiveRecord::Base
   include Project::StateMachineHandler
   include Project::VideoHandler
   include Project::CustomValidators
-  include Project::RemindersHandler
   include Project::ErrorGroups
 
   has_notifications
@@ -141,6 +140,10 @@ class Project < ActiveRecord::Base
     order(sort_field)
   end
 
+  def user_already_in_reminder?(user_id)
+    notifications.where(template_name: 'reminder', user_id: user_id).present?
+  end
+
   def has_blank_service_fee?
     payments.with_state(:paid).where("NULLIF(gateway_fee, 0) IS NULL").present?
   end
@@ -189,7 +192,7 @@ class Project < ActiveRecord::Base
   end
 
   def in_time_to_wait?
-    payments.with_state('pending').exists?
+    payments.waiting_payment.exists?
   end
 
   def new_draft_recipient
