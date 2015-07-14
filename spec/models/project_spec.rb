@@ -387,6 +387,14 @@ RSpec.describe Project, type: :model do
       it { is_expected.to eq(true) }
     end
 
+    context 'when project has pending contributions older than 1 week' do
+      let(:contribution) { create(:pending_contribution) }
+      before do
+        contribution.payments.update_all created_at: Time.now - 1.week
+      end
+      it { is_expected.to eq(false) }
+    end
+
     context 'when project has no pending contributions' do
       let(:contribution) { create(:contribution) }
       it {is_expected.to eq(false)}
