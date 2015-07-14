@@ -1,7 +1,14 @@
 class CreateUserRole < ActiveRecord::Migration
   def up
     execute <<-SQL
-    CREATE ROLE web_user NOLOGIN;
+    DO
+      $body$
+    BEGIN
+      IF NOT EXISTS (SELECT * FROM pg_catalog.pg_roles WHERE rolname = 'web_user') THEN
+        CREATE ROLE web_user NOLOGIN;
+      END IF;
+    END
+    $body$;
     -- This script assumes a role postgrest and a role anonymous already created
     GRANT usage ON SCHEMA "1" TO web_user;
     GRANT select ON ALL TABLES IN SCHEMA "1" TO web_user;
