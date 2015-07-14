@@ -189,7 +189,7 @@ class Project < ActiveRecord::Base
   end
 
   def in_time_to_wait?
-    payments.with_state('pending').exists?
+    payments.waiting_payment.exists?
   end
 
   def new_draft_recipient
