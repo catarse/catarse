@@ -34,9 +34,11 @@ App.addChild('ProjectEdit', _.extend({
 
   followRoute: function(name){
     var $tab = this.$('nav a[href="' + window.location.hash + '"]');
+    var $tab_title = $('#dashboard_' + window.location.hash.split('#')[1]).data('page_title');
     if($tab.length > 0){
       this.onTabClick({ currentTarget: $tab });
     }
+    $('#dashboard-page-title').text($tab_title);
   },
 
   loadEmbed: function() {

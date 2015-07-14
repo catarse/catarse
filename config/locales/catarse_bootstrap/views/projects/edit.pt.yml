@@ -1,8 +1,7 @@
 pt:
   projects:
-    metrics:
-      index:
-        reports: 'Relatórios'
+    edit:
+      reports: 'Relatórios'
     reward_fields:
       edit: "Editar recompensa"
       reward: Recompensa
