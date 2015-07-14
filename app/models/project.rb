@@ -11,7 +11,6 @@ class Project < ActiveRecord::Base
   include Project::StateMachineHandler
   include Project::VideoHandler
   include Project::CustomValidators
-  include Project::RemindersHandler
   include Project::ErrorGroups
 
   has_notifications
@@ -139,6 +138,10 @@ class Project < ActiveRecord::Base
   def self.order_by(sort_field)
     return self.all unless sort_field =~ /^\w+(\.\w+)?\s(desc|asc)$/i
     order(sort_field)
+  end
+
+  def user_already_in_reminder?(user_id)
+    notifications.where(template_name: 'reminder', user_id: user_id).present?
   end
 
   def has_blank_service_fee?
