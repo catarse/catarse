@@ -69,6 +69,9 @@ class Reward < ActiveRecord::Base
   def total_compromised
     payments.where("payments.waiting_payment OR payments.state = 'paid'").count
   end
+
+  def in_time_to_confirm
+    payments.waiting_payment.count
   end
 
   def remaining

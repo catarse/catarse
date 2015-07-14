@@ -170,6 +170,20 @@ RSpec.describe Reward, type: :model do
     it { is_expected.to eq(2) }
   end
 
+  describe "#in_time_to_confirm" do
+    before do
+      @remaining = create(:reward, maximum_contributions: 20)
+      create(:confirmed_contribution, reward: @remaining, project: @remaining.project)
+      create(:pending_contribution, reward: @remaining, project: @remaining.project)
+      payment = create(:pending_contribution, reward: @remaining, project: @remaining.project).payments.first
+      payment.update_column(:created_at, 8.days.ago)
+    end
+
+    subject { @remaining.in_time_to_confirm }
+
+    it { is_expected.to eq(1) }
+  end
+
   describe '#sold_out?' do
     let(:reward) { create(:reward, maximum_contributions: 3) }
     subject { reward.sold_out? }
