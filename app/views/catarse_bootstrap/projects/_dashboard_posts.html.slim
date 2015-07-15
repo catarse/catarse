@@ -29,11 +29,12 @@
                 .w-col.w-col-2
         .fontsize-large.fontweight-semibold.u-marginbottom-40= t('.old_posts')
         - @project.posts.order('created_at DESC').each do |post|
-          .project-news.u-marginbottom-30
-            .w-row
-              .w-col.w-col-11.w-col-small-11.w-col-tiny-11
-                .fontsize-large.fontweight-semibold= post.title
-              .w-col.w-col-1.w-col-small-1.w-col-tiny-1
-                = link_to '', project_post_path(@project, post), class: 'btn btn-small btn-terciary fa fa-lg fa-trash btn-no-border', method: :delete
-            .fontsize-small.fontcolor-secondary.u-marginbottom-20= l(post.created_at, format: :posts)
-          .divider.u-marginbottom-30
+          - if post.persisted?
+            .project-news.u-marginbottom-30
+              .w-row
+                .w-col.w-col-11.w-col-small-11.w-col-tiny-11
+                  .fontsize-large.fontweight-semibold= post.title
+                .w-col.w-col-1.w-col-small-1.w-col-tiny-1
+                  = link_to '', project_post_path(@project, post), class: 'btn btn-small btn-terciary fa fa-lg fa-trash btn-no-border', method: :delete
+              .fontsize-small.fontcolor-secondary.u-marginbottom-20= l(post.created_at, format: :posts)
+            .divider.u-marginbottom-30
