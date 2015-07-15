@@ -1,8 +1,7 @@
 .w-section.section
   .w-container
     .w-row
-      .w-col.w-col-1
-      .w-col.w-col-10.w-hidden-small.w-hidden-tiny
+      .w-col.w-col-10.w-hidden-small.w-hidden-tiny.w-col-push-1 
         .w-form.card.card-terciary.medium.u-marginbottom-80
           = simple_form_for @project do |f|
             =  hidden_field_tag 'anchor', 'posts'
@@ -21,12 +20,10 @@
                 .fontsize-small= t('.warning')
 
               .w-row.u-marginbottom-20
-                .w-col.w-col-2
-                .w-col.w-col-5.w-sub-col
+                .w-col.w-col-5.w-sub-col.w-col-push-2
                   = form.submit t('.publish'), class: 'btn btn-medium'
-                .w-col.w-col-3
+                .w-col.w-col-3.w-col-push-2
                   = link_to t('.discard'), 'javascript:location.reload();', class: 'btn btn-medium btn-terciary'
-                .w-col.w-col-2
         .fontsize-large.fontweight-semibold.u-marginbottom-40= t('.old_posts')
         - @project.posts.order('created_at DESC').each do |post|
           - if post.persisted?
