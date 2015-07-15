@@ -1,21 +1,27 @@
-.u-text-center
-  .w-container
-    .w-row
-      .w-col.w-col-2
-      .w-col.w-col-8
-        .fontweight-semibold.fontsize-large= t('.title') 
-        p.fontsize-base= t('.subtitle') 
-      .w-col.w-col-2.fontcolor-terciary
-
 = simple_form_for @project, defaults: { wrapper: :two_columns, validation_text: false, label_wrapper_html: { class: 'w-col w-col-5 w-sub-col' } } , html: { class: 'project-form w-form' } do |f|
   =  hidden_field_tag 'project_id', @project.id
   =  hidden_field_tag 'anchor', 'user_about'
   = f.simple_fields_for :user do |form|
-    .section
+    .w-section.section
       .w-container
         .w-row
-          .w-col.w-col-8
+          .w-col.w-col-1
+          .w-col.w-col-10
             = @project.display_errors(:user_about)
+
+            = form.input :name, as: :string, 
+              wrapper_class: 'w-row u-marginbottom-30 card card-terciary medium',
+              text_field_wrapper_html: { class: 'w-col w-col-7' },
+              input_html: { class: 'w-input text-field positive medium', required: true },
+              label: t('.name_label'),
+              hint: t('.name_hint')
+
+            = form.input :email, as: :string, 
+              wrapper_class: 'w-row u-marginbottom-30 card card-terciary medium',
+              text_field_wrapper_html: { class: 'w-col w-col-7' },
+              input_html: { class: 'w-input text-field positive medium', required: true },
+              label: t('.email_label'),
+              hint: t('.email_hint')
 
             = form.input :uploaded_image, as: :file, 
               wrapper_class: 'w-row u-marginbottom-30 card card-terciary',
@@ -24,15 +30,6 @@
               label: t('.uploaded_image_label'),
               hint: @user.uploaded_image.present? ? image_tag(form.object.uploaded_image) : t('.uploaded_image_hint') 
 
-            = form.input :name, as: :string, 
-              wrapper_class: 'w-row u-marginbottom-30 card card-terciary',
-              text_field_wrapper_html: { class: 'w-col w-col-7' },
-              input_html: { class: 'positive', required: true },
-              label: t('.name_label'),
-              hint: t('.name_hint')
-
-        .w-row
-          .w-col.w-col-8
             = form.input :about_html, as: :text, 
             wrapper: 'one_col',
             wrapper_class: 'w-row u-marginbottom-30 card card-terciary',
