@@ -25,7 +25,7 @@
         .u-marginbottom-40.u-margintop-40
           .fontsize-base.fontweight-bold Total de usuários que clicaram no botão Lembrar-me
           .fontsize-smaller Esses usuários receberão um lembrete por email 48 horas antes do término de sua campanha
-          = @project.users_in_reminder.count
+          = @project.total_reminders
       .w-col.w-col-4
         .card.u-radius.u-marginbottom-20.card-terciary data-ix="new-interaction" 
           .fontsize-small.fontweight-semibold.u-marginbottom-20

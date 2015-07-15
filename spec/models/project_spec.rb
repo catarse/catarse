@@ -73,6 +73,18 @@ RSpec.describe Project, type: :model do
     it { is_expected.to eq(true)}
   end
 
+  describe "#total_reminders" do
+    let(:user) { create(:user) }
+    before do
+      project.notify_once(:reminder, user, project)
+      project.notify_once(:reminder, project.user, project)
+    end
+
+    subject { project.total_reminders }
+
+    it { is_expected.to eq(2) }
+  end
+
   describe ".of_current_week" do
     subject { Project.of_current_week }
     before do
