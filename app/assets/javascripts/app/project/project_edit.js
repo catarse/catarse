@@ -13,6 +13,10 @@ App.addChild('ProjectEditForm', _.extend({
 App.addChild('ProjectEdit', _.extend({
   el: '.project-dashboard-edit',
 
+  events: {
+    'click .dashboard-nav-link-left' : 'toggleNav'
+  },
+
   activate: function(){
     this.route('basics');
     this.route('home');
@@ -29,6 +33,12 @@ App.addChild('ProjectEdit', _.extend({
       window.location.hash = $('.fa-exclamation-circle:eq(0)').parent().attr('href');
     } else {
       this.lookAnchors();
+    }
+  },
+
+  toggleNav: function(){
+    if(app.isMobile()){
+      app.toggleNav();
     }
   },
 
