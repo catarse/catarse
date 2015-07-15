@@ -3,9 +3,13 @@
 - content_for :stylesheets do
   = stylesheet_link_tag 'redactor'
 = render 'shared/header'
-
+.w-section.dashboard-header.u-text-center.big
+  .w-container
+    .w-row
+      .w-col.w-col-2
+      .w-col.w-col-8
+        #dashboard-page-title.fontweight-semibold.fontsize-larger.lineheight-looser
 .project-dashboard-edit
-  = render 'project_header'
   = render partial: 'dashboard_nav', locals: {edit_page: true}
   section.section
     #current_anchor data-anchor="#{params[:anchor]}"
@@ -25,7 +29,7 @@
           #dashboard_reward.content.w-hidden
             = render 'dashboard_reward'
           - if @project.published?
-            #dashboard_reports.content.w-hidden data-path=project_metrics_path(@project)
+            #dashboard_reports.content.w-hidden data-path=project_metrics_path(@project) data-page_title="#{t('.reports')}"
               .results
           #dashboard_user_about.content.w-hidden
             = render 'dashboard_user_about'

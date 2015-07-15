@@ -1,5 +1,7 @@
 pt:
   projects:
+    edit:
+      reports: 'Relatórios'
     reward_fields:
       edit: "Editar recompensa"
       reward: Recompensa
