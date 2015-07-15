@@ -1,16 +1,16 @@
-.section
+.w-section.section
   .w-container
     .w-row
-      .w-col.w-col-8
-        .project-news.u-marginbottom-60
-          .fontsize-large.fontweight-semibold.u-marginbottom-30= t('.title')
-          = simple_form_for @project,  html: { class: 'w-form card card-terciary' } do |f|
+      .w-col.w-col-1
+      .w-col.w-col-10.w-hidden-small.w-hidden-tiny
+        .w-form.card.card-terciary.medium.u-marginbottom-80
+          = simple_form_for @project do |f|
             =  hidden_field_tag 'anchor', 'posts'
             = f.simple_fields_for :posts, @project.posts.build do |form|
-              = form.label :title, as: :string
+              = form.label :title, as: :string, class: 'field-label fontweight-semibold'
               = form.input_field :title, as: :string, class: 'w-input text-field positive'
 
-              = form.label :comment, as: :string
+              = form.label :comment, as: :string, class: 'field-label fontweight-semibold'
               = form.input_field :comment_html, class: 'redactor text-field'
 
               .w-checkbox.w-clearfix.u-marginbottom-30
@@ -19,27 +19,21 @@
 
               .card.card-message.u-radius.u-marginbottom-40
                 .fontsize-small= t('.warning')
-              .w-row
-                .w-col.w-col-4.w-sub-col.u-marginbottom-20
+
+              .w-row.u-marginbottom-20
+                .w-col.w-col-2
+                .w-col.w-col-5.w-sub-col
                   = form.submit t('.publish'), class: 'btn btn-medium'
                 .w-col.w-col-3
                   = link_to t('.discard'), 'javascript:location.reload();', class: 'btn btn-medium btn-terciary'
-                .w-col.w-col-5
-        .divider.u-marginbottom-30
-        .fontsize-large.fontweight-semibold.u-marginbottom-30= t('.old_posts') 
+                .w-col.w-col-2
+        .fontsize-large.fontweight-semibold.u-marginbottom-40= t('.old_posts')
         - @project.posts.order('created_at DESC').each do |post|
-          - if post.persisted?
-            .project-news.u-marginbottom-30
-              .w-row
-                .w-col.w-col-11.w-col-small-11.w-col-tiny-11
-                  .fontsize-large.fontweight-semibold= post.title
-                .w-col.w-col-1.w-col-small-1.w-col-tiny-1
-                  = link_to '', project_post_path(@project, post), class: 'btn btn-small btn-terciary fa fa-lg fa-trash btn-no-border', method: :delete
-              .fontsize-small.fontcolor-secondary.u-marginbottom-20= l(post.created_at, format: :posts)
-            .divider.u-marginbottom-30
-
-      .w-col.w-col-4.w-hidden-small.w-hidden-tiny.u-marginbottom-20   
-        a.w-inline-block.card.u-radius.card-guide href="https://www.catarse.me/guides#social" target="_blank"
-          = image_tag "icon-guides-blue-sm.png", class: "u-left"
-          .fontweight-semibold.fontsize-smallest.fontcolor-secondary Guia dos Realizadores
-          .fontsize-small.fontcolor-dashboard Mobilizando sua rede
+          .project-news.u-marginbottom-30
+            .w-row
+              .w-col.w-col-11.w-col-small-11.w-col-tiny-11
+                .fontsize-large.fontweight-semibold= post.title
+              .w-col.w-col-1.w-col-small-1.w-col-tiny-1
+                = link_to '', project_post_path(@project, post), class: 'btn btn-small btn-terciary fa fa-lg fa-trash btn-no-border', method: :delete
+            .fontsize-small.fontcolor-secondary.u-marginbottom-20= l(post.created_at, format: :posts)
+          .divider.u-marginbottom-30
