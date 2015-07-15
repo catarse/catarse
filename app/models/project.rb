@@ -164,6 +164,10 @@ class Project < ActiveRecord::Base
     @decorator ||= ProjectDecorator.new(self)
   end
 
+  def total_reminders
+    notifications.where(template_name: 'reminder').count
+  end
+
   def pledged
     @pledged ||= project_total.try(:pledged).to_f
   end
@@ -221,13 +225,6 @@ class Project < ActiveRecord::Base
         options
       )
     end
-  end
-
-  def users_in_reminder
-    reminder_jobs = Sidekiq::ScheduledSet.new.select do |job|
-      job['class'] == 'ReminderProjectWorker' && job.args[1] == self.id
-    end
-    User.where(id: reminder_jobs.map {|job| job.args[0]})
   end
 
   def published?
