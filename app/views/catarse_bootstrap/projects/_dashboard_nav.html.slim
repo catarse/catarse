@@ -25,6 +25,10 @@ nav.w-section.dashboard-nav.side
     = link_to (edit ? '#basics' : edit_project_path(@project, anchor: 'basics')), id: 'basics_link', class: 'dashboard-nav-link-left u-margintop-20' , data: {target: '#dashboard_basics', tab_group: 'edit'} do
       = @project.decorate.status_icon_for('basics')
       = t('.basics_tab')
+  - if (!@project.published? && !@project.approved?) || (current_user && current_user.admin?)
+    = link_to (edit ? '#description' : edit_project_path(@project, anchor: 'description')), id: 'description_link', class: 'dashboard-nav-link-left' , data: {target: '#dashboard_description', tab_group: 'edit'} do
+      = @project.decorate.status_icon_for('description')
+      = t('.description_tab')
   = link_to (edit ? '#project' : edit_project_path(@project, anchor: 'project')), id: 'dashboard_project_link', class: 'dashboard-nav-link-left' , data: {target: '#dashboard_project', tab_group: 'edit'} do
     = @project.decorate.status_icon_for('project')
     = t('.project_tab')
