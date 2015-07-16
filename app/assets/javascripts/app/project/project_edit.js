@@ -19,6 +19,7 @@ App.addChild('ProjectEdit', _.extend({
 
   activate: function(){
     this.route('basics');
+    this.route('description');
     this.route('home');
     this.route('project');
     this.route('posts');
