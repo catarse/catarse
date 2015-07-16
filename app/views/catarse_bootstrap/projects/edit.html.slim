@@ -27,7 +27,7 @@
           - if @project.published?
             #dashboard_posts.content.w-hidden
               = render 'dashboard_posts'
-          #dashboard_reward.content.w-hidden
+          #dashboard_reward.content.w-hidden data-page_title="#{t('.reward')}" data-page_subtitle="#{t('.reward_subtitle')}"
             = render 'dashboard_reward'
           - if @project.published?
             #dashboard_reports.content.w-hidden data-path=project_metrics_path(@project) data-page_title="#{t('.reports')}"

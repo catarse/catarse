@@ -1,17 +1,8 @@
 #dashboard-rewards-tab
-  .u-text-center
+  .w-section.section
     .w-container
       .w-row
-        .w-col.w-col-2
-        .w-col.w-col-8
-          .fontsize-large.fontweight-semibold= t('.title') 
-          p.fontsize-base= t('.subtitle') 
-        .w-col.w-col-2
-
-  .section
-    .w-container
-      .w-row
-        .w-col.w-col-8
+        .w-col.w-col-10.w-col-push-1
           = @project.display_errors(:reward)
           = simple_form_for @project, html: { class: 'project-form w-form' } do |f|
             =  hidden_field_tag 'project_id', @project.id
@@ -24,9 +15,3 @@
 
             .w-col.w-col-4.w-col-push-4.u-margintop-40
               = f.button :submit, t('.submit'),  class:'btn btn-large'
-
-        .w-col.w-col-4.w-hidden-small.w-hidden-tiny    
-          a.w-inline-block.card.u-radius.card-guide href="https://www.catarse.me/guides#rewards" target="_blank"
-            = image_tag "icon-guides-blue-sm.png", class: "u-left"
-            .fontweight-semibold.fontsize-smallest.fontcolor-secondary Guia dos Realizadores
-            .fontsize-small.fontcolor-dashboard Definindo as recompensas

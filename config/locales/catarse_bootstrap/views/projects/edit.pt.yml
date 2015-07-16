@@ -3,6 +3,8 @@ pt:
     edit:
       reports: 'Relatórios'
       user_about: "Fale mais sobre você!"
+      reward: "Crie e edite aqui suas recompensas"
+      reward_subtitle: "Essa é sua demonstração de gratidão com os apoiadores. Lembre-se de incluir os custos das recompensas no seu orçamento. Prometeu, ENTREGUE! "
       user_about_subtitle: "Apoiadores querem conhecer melhor os realizadores de projetos. Links que ajudam a contar sua história são sempre bem vindos. "
     reward_fields:
       edit: "Editar recompensa"
@@ -126,9 +128,7 @@ pt:
       email_hint: Email para você se comunicar com a equipe do Catarse e com os seus apoiadores
     dashboard_reward:
       submit: "Salvar"
-      title: "Crie e edite aqui suas recompensas"
       add_reward: "Adicionar recompensa"
-      subtitle: "Essa é sua demonstração de gratidão com os apoiadores. Lembre-se de incluir os custos das recompensas no seu orçamento. Prometeu, ENTREGUE! "
       reward: "Recompensa"
     dashboard_preview:
       header_subtitle: "É hora dos feedbacks!"
