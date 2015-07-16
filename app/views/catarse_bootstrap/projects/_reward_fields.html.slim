@@ -3,11 +3,11 @@
 .nested-fields
   .reward-card
     - if reward.persisted?
-      .w-row.card-persisted.card.card-terciary.u-marginbottom-20[id="reward_#{reward.id}" data-update_url=sort_project_reward_path(@project, reward) class="sortable"]
-        .w-col.w-col-4.w-sub-col
+      .w-row.card-persisted.card.card-terciary.u-marginbottom-20.medium[id="reward_#{reward.id}" data-update_url=sort_project_reward_path(@project, reward) class="sortable"]
+        .w-col.w-col-5.w-sub-col
           .fontweight-semibold.fontsize-smallest.u-marginbottom-10
             = t('projects.dashboard_reward.reward')
-        .w-col.w-col-8
+        .w-col.w-col-7
           .card
             .w-row
               .w-col.w-col-11.w-col-small-11.w-col-tiny-11
@@ -36,8 +36,8 @@
             .fontsize-smallest
               =t('rewards.index.reward_deliver_time', estimate: reward.display_deliver_estimate).html_safe
   
-    .w-row.card.card-terciary.u-marginbottom-20.card-edition class=(reward.new_record? ? '' : "w-hidden edit_reward_content_#{reward.id}")
-      .w-col.w-col-4.w-sub-col
+    .w-row.card.card-terciary.u-marginbottom-20.card-edition.medium class=(reward.new_record? ? '' : "w-hidden edit_reward_content_#{reward.id}")
+      .w-col.w-col-5.w-sub-col
         .fontweight-semibold.fontsize-smallest.u-marginbottom-10
           - if reward.new_record?
             | #{t('.reward')} #
@@ -46,7 +46,7 @@
           |&nbsp;
           a.link-edit.fa.fa-question-circle href="javascript:void(0);"
         .fontsize-smallest.fontcolor-secondary.reward-explanation.w-hidden.u-marginbottom-20= t('.info_box')
-      .w-col.w-col-8
+      .w-col.w-col-7
         .card
           .w-form
             .w-row.u-marginbottom-20
