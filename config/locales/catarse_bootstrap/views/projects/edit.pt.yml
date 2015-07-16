@@ -10,6 +10,8 @@ pt:
       reward: "Crie e edite aqui suas recompensas"
       reward_subtitle: "Essa é sua demonstração de gratidão com os apoiadores. Lembre-se de incluir os custos das recompensas no seu orçamento. Prometeu, ENTREGUE! "
       user_about_subtitle: "Apoiadores querem conhecer melhor os realizadores de projetos. Links que ajudam a contar sua história são sempre bem vindos. "
+      description: 'Conte a história do seu projeto!'
+      description_subtitle: 'Pense bem na narrativa do projeto. É ela quem encantará as pessoas e trará apoiadores. Um bom video e descrição são diferenciais!'
     reward_fields:
       edit: "Editar recompensa"
       reward: Recompensa
@@ -105,6 +107,7 @@ pt:
       leave_link_html: "&nbsp; Sair do painel de controle"
       start_tab: Infos úteis
       basics_tab: Básico
+      description_tab: Descrição
       project_tab: Editar projeto
       posts_tab: Novidades
       rewards_tab: Recompensas

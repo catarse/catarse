@@ -1,0 +1,24 @@
+= simple_form_for @project, html: { class: 'project-form w-form' } do |form|
+  .w-section.section
+    .w-container
+      .w-row
+        .w-col.w-col-10.w-col-push-1
+          .w-form
+              = @project.display_errors(:description)
+              =  hidden_field_tag 'project_id', @project.id
+              =  hidden_field_tag 'anchor', 'description'
+
+              = form.input :about_html, as: :text, 
+                wrapper: :one_col,
+                wrapper_class: 'w-row u-marginbottom-30 card card-terciary',
+                input_html: { class: 'redactor positive', required: true },
+                validation_text: false
+
+    .section
+      .w-container
+        .w-row
+          .w-col.w-col-4
+          .w-col.w-col-4
+            = hidden_field_tag 'anchor', 'description'
+            = form.button :submit, t('.form.submit'), class:'btn btn-large', id: 'description-save'
+          .w-col.w-col-4
