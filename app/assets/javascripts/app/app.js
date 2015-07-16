@@ -27,7 +27,6 @@ var App = window.App = Skull.View.extend({
 
   toggleNav: function(){
     $(".body-project").toggleClass("closed");
-    $(".dashboard-nav.side").toggle("slide", { direction: "left" }, 250);
     $(".btn-dashboard").toggleClass("closed fa-cog");
     $(".btn-dashboard").toggleClass("open fa-chevron-left");
     return false;
@@ -100,7 +99,7 @@ var App = window.App = Skull.View.extend({
   },
 
   isMobile: function(){
-    var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent); 
+    var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     return isMobile;
   }
 
