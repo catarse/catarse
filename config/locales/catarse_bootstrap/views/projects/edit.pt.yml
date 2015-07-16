@@ -2,6 +2,8 @@ pt:
   projects:
     edit:
       reports: 'Relatórios'
+      user_settings: 'Dados cadastrais e bancários'
+      user_settings_subtitle: 'Com os dados abaixo completos, seu projeto estará pronto para ir ao ar. Após concluir o preenchimento, clique em Salvar. Revise. Se tudo estiver ok, basta apertar o botão Publicar e começar sua campanha!'
       user_about: "Fale mais sobre você!"
       user_about_subtitle: "Apoiadores querem conhecer melhor os realizadores de projetos. Links que ajudam a contar sua história são sempre bem vindos. "
     reward_fields:

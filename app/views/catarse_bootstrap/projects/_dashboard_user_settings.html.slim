@@ -1,21 +1,11 @@
 #dashboard-user_settings-tab
   - disable_edit = !policy(@project).update_account?
-  - unless disable_edit
-    .u-text-center
-      .w-container
-        .w-row
-          .w-col.w-col-2
-          .w-col.w-col-8
-            .fontweight-semibold.fontsize-large= t('.title')
-            p.fontsize-base= t('.subtitle_html')
-          .w-col.w-col-2.fontcolor-terciary
-
   = simple_form_for @project, defaults: {input_html: {disabled: disable_edit }, wrapper: :one_col, validation_text: false, label_wrapper_html: { class: 'w-col w-col-5 w-sub-col' } }, html: { id: 'project_account_form', class: 'w-form project-form' } do |f|
     = hidden_field_tag :anchor, 'user_settings'
     = f.simple_fields_for :account do |form|
-      .section
+      .w-section.section
         .w-container
-          .w-col.w-col-8.u-marginbottom-30
+          .w-col.w-col-10.w-col-push-1
             = @project.display_errors(:user_settings)
             - if disable_edit
               .card.u-radius.card-message.u-marginbottom-20
@@ -104,15 +94,6 @@
             .w-form.card.card-terciary
               .divider.u-marginbottom-20
               
-          .w-col.w-col-4
-            .w-hidden-small.w-hidden-tiny.card.u-radius.u-marginbottom-20 data-ix="new-interaction" 
-              .fontsize-small.fontweight-semibold.u-marginbottom-20 Links úteis
-              ul.w-list-unstyled
-                li.alt-link.fontsize-smaller.u-marginbottom-10
-                  a.alt-link href="http://suporte.catarse.me/hc/pt-br/articles/202457548-O-Catarse-emite-Nota-Fiscal-" target="_blank"  O Catarse emite Nota Fiscal?
-                li.alt-link.fontsize-smaller.u-marginbottom-10
-                  a.alt-link href="http://suporte.catarse.me/hc/pt-br/articles/202037493-Como-ser%C3%A1-feito-o-repasse-do-dinheiro-" target="_blank"  Como será feito o repasse de recursos?
-
         div
           .w-container
             .w-row
