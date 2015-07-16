@@ -423,3 +423,20 @@ img, iframe
 .body-project.closed
   .dashboard-nav
     transform: translate3d(-205px, 0, 0)
+@media screen and (max-width: 991px)
+  .body-project::after
+    content: " "
+    position: fixed
+    left: 0px
+    top: 0px
+    right: 0px
+    bottom: 0px
+    display: block
+    height: 100%
+    background-color: rgba(241, 244, 244, 0.87)
+    opacity: 0
+    pointer-events: none
+    transition: all 500ms ease
+
+  .body-project:not(.closed)::after
+    opacity: 1
