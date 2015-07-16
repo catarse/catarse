@@ -27,13 +27,6 @@
                     input_html: { class: 'positive', required: false },
                     validation_text: false
 
-              = form.input :about_html, as: :text, 
-                wrapper: :one_col,
-                wrapper_class: 'w-row u-marginbottom-30 card card-terciary',
-                input_html: { class: 'redactor positive', required: true },
-                validation_text: false
-
-
               .card.card-terciary
                 = form.input :budget, as: :text, 
                   wrapper: :one_col,
