@@ -20,7 +20,7 @@
           #dashboard_home.content.w-hidden
             = render 'dashboard_home'
           - if !@project.published? || (current_user && current_user.admin?)
-            #dashboard_basics.content.w-hidden
+            #dashboard_basics.content.w-hidden data-page_title="#{t('.basics')}" data-page_subtitle="#{t('.basics_subtitle')}"
               = render 'dashboard_basics'
           #dashboard_project.content.w-hidden
             = render 'dashboard_project'

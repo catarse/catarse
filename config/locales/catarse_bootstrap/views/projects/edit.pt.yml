@@ -1,6 +1,8 @@
 pt:
   projects:
     edit:
+      basics: 'Preencha as informações abaixo'
+      basics_subtitle: 'Os dados informados nessa seção não poderão ser modificados quando o projeto for ao ar. Preencha com atenção e revise antes de lançar o projeto. '
       reports: 'Relatórios'
       user_settings: 'Dados cadastrais e bancários'
       user_settings_subtitle: 'Com os dados abaixo completos, seu projeto estará pronto para ir ao ar. Após concluir o preenchimento, clique em Salvar. Revise. Se tudo estiver ok, basta apertar o botão Publicar e começar sua campanha!'
@@ -163,8 +165,6 @@ pt:
       headline_hint: 'Será utilizada no card do projeto, junto com a imagem acima (miniatura). No máximo 100 caracteres.'
       submit: 'Salvar'
     dashboard_basics:
-      project_start: 'Preencha as informações abaixo'
-      project_start_subtitle: 'Os dados informados nessa seção não poderão ser modificados quando o projeto for ao ar. Preencha com atenção e revise antes de lançar o projeto. '
       online_date: 'Data de entrada no ar'
       user_id: 'Id do usuário'
       name: 'Nome do projeto'

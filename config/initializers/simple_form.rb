@@ -46,7 +46,7 @@ SimpleForm.setup do |config|
     b.optional :readonly
 
     b.wrapper :label_wrapper, tag: 'div' do |ba|
-      ba.use :label_text, wrap_with: { tag: :label, class: "field-label fontweight-semibold" }
+      ba.use :label_text, wrap_with: { tag: :label, class: "field-label fontweight-semibold fontsize-base" }
       ba.use :hint,  wrap_with: { tag: :label, class: 'hint fontsize-smallest fontcolor-secondary'}
     end
 
