@@ -29,6 +29,9 @@ nav.w-section.dashboard-nav.side
     = link_to (edit ? '#description' : edit_project_path(@project, anchor: 'description')), id: 'description_link', class: 'dashboard-nav-link-left' , data: {target: '#dashboard_description', tab_group: 'edit'} do
       = @project.decorate.status_icon_for('description')
       = t('.description_tab')
+  = link_to (edit ? '#budget' : edit_project_path(@project, anchor: 'budget')), id: 'budget_link', class: 'dashboard-nav-link-left' , data: {target: '#dashboard_budget', tab_group: 'edit'} do
+    = @project.decorate.status_icon_for('budget')
+    = t('.budget_tab')
   = link_to (edit ? '#project' : edit_project_path(@project, anchor: 'project')), id: 'dashboard_project_link', class: 'dashboard-nav-link-left' , data: {target: '#dashboard_project', tab_group: 'edit'} do
     = @project.decorate.status_icon_for('project')
     = t('.project_tab')

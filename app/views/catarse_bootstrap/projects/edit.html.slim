@@ -19,6 +19,8 @@
         article
           #dashboard_home.content.w-hidden
             = render 'dashboard_home'
+          #dashboard_budget.content.w-hidden data-page_title="#{t('.budget')}" data-page_subtitle="#{t('.budget_subtitle')}"
+            = render 'dashboard_budget'
           - if !@project.published? || (current_user && current_user.admin?)
             #dashboard_basics.content.w-hidden data-page_title="#{t('.basics')}" data-page_subtitle="#{t('.basics_subtitle')}"
               = render 'dashboard_basics'

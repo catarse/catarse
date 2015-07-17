@@ -1,0 +1,20 @@
+= simple_form_for @project, html: { class: 'project-form w-form' } do |form|
+  .w-section.section
+    .w-container
+      .w-row
+        .w-col.w-col-10.w-hidden-small.w-hidden-tiny.w-col-push-1
+          = @project.display_errors(:budget)
+          .card.card-terciary.medium
+            = form.input :budget, as: :text, 
+              wrapper: :two_columns,
+              wrapper_class: '',
+              label_wrapper_html: { class: 'w-col w-col-12 u-marginbottom-20' },
+              text_field_wrapper_html: { class: 'w-col w-col-12' },
+              input_html: { class: 'redactor positive', required: false, rows: 6 },
+              validation_text: false
+  .w-section.section
+    .w-container
+      .w-row
+        .w-col.w-col-4.w-col-push-4
+          = hidden_field_tag 'anchor', 'basics'
+          = form.button :submit, t('.submit'), class:'btn btn-large', id: 'budget-save'

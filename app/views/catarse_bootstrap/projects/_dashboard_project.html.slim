@@ -27,26 +27,6 @@
                     input_html: { class: 'positive', required: false },
                     validation_text: false
 
-              .card.card-terciary
-                = form.input :budget, as: :text, 
-                  wrapper: :one_col,
-                  hint: t('.budget_hint_html'),
-                  wrapper_class: '',
-                  label_wrapper_html: { class: 'w-col w-col-12' },
-                  text_field_wrapper_html: { class: 'w-col w-col-12' },
-                  input_html: { class: 'redactor positive', required: false, rows: 6 },
-                  validation_text: false
-
-                /label.field-label.fontweight-semibold= t('.budgets_label') 
-                /label.field-label.fontsize-smallest.fontcolor-secondary.u-marginbottom-20== t('.budgets_hint_html') 
-                /.w-form
-                  #budgets
-                    = form.simple_fields_for :budgets do |budget_form|
-                      = render partial: 'budget_fields', locals: { f: budget_form }
-                  .w-row
-                    .w-col.w-col-4.w-col-offset-8
-                      = link_to_add_association "Adicionar item", form, :budgets,  class: 'btn btn-medium btn-terciary'
-
         .w-col.w-col-4.w-hidden-small.w-hidden-tiny    
           a.w-inline-block.card.u-radius.card-guide.u-marginbottom-20 href="https://www.catarse.me/guides#you_history" target="_blank"
             = image_tag "icon-guides-blue-sm.png", class: "u-left"
