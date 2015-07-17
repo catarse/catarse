@@ -3,9 +3,14 @@
 - content_for :stylesheets do
   = stylesheet_link_tag 'redactor'
 = render 'shared/header'
-
+.w-section.dashboard-header.u-text-center.big
+  .w-container
+    .w-row
+      .w-col.w-col-2
+      .w-col.w-col-8
+        #dashboard-page-title.fontweight-semibold.fontsize-larger.lineheight-looser
+        #dashboard-page-subtitle.fontsize-base
 .project-dashboard-edit
-  = render 'project_header'
   = render partial: 'dashboard_nav', locals: {edit_page: true}
   section.section
     #current_anchor data-anchor="#{params[:anchor]}"
@@ -22,16 +27,16 @@
           - if @project.published?
             #dashboard_posts.content.w-hidden
               = render 'dashboard_posts'
-          #dashboard_reward.content.w-hidden
+          #dashboard_reward.content.w-hidden data-page_title="#{t('.reward')}" data-page_subtitle="#{t('.reward_subtitle')}"
             = render 'dashboard_reward'
           - if @project.published?
-            #dashboard_reports.content.w-hidden data-path=project_metrics_path(@project)
+            #dashboard_reports.content.w-hidden data-path=project_metrics_path(@project) data-page_title="#{t('.reports')}"
               .results
-          #dashboard_user_about.content.w-hidden
+          #dashboard_user_about.content.w-hidden data-page_title="#{t('.user_about')}" data-page_subtitle="#{t('.user_about_subtitle')}"
             = render 'dashboard_user_about'
           #dashboard_preview.content.w-hidden
             = render 'dashboard_preview'
-          #dashboard_user_settings.content.w-hidden
+          #dashboard_user_settings.content.w-hidden data-page_title="#{t('.user_settings')}" data-page_subtitle="#{t('.user_settings_subtitle')}"
             = render 'dashboard_user_settings'
-  
+
 = render 'shared/footer'

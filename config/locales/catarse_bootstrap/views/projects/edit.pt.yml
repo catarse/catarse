@@ -1,5 +1,13 @@
 pt:
   projects:
+    edit:
+      reports: 'Relatórios'
+      user_settings: 'Dados cadastrais e bancários'
+      user_settings_subtitle: 'Com os dados abaixo completos, seu projeto estará pronto para ir ao ar. Após concluir o preenchimento, clique em Salvar. Revise. Se tudo estiver ok, basta apertar o botão Publicar e começar sua campanha!'
+      user_about: "Fale mais sobre você!"
+      reward: "Crie e edite aqui suas recompensas"
+      reward_subtitle: "Essa é sua demonstração de gratidão com os apoiadores. Lembre-se de incluir os custos das recompensas no seu orçamento. Prometeu, ENTREGUE! "
+      user_about_subtitle: "Apoiadores querem conhecer melhor os realizadores de projetos. Links que ajudam a contar sua história são sempre bem vindos. "
     reward_fields:
       edit: "Editar recompensa"
       reward: Recompensa
@@ -106,8 +114,6 @@ pt:
       publish: Publicar
     dashboard_user_about:
       submit: "Salvar"
-      title: "Fale mais sobre você!"
-      subtitle: "Apoiadores querem conhecer melhor os realizadores de projetos. Links que ajudam a contar sua história são sempre bem vindos. "
       twitter_label: "Perfil do twitter"
       twitter_hint: "Cole o link do seu perfil"
       other_link_label: "Presença na internet"
@@ -119,12 +125,12 @@ pt:
       uploaded_image_label: "Imagem do perfil"
       uploaded_image_hint: "Essa imagem será utilizada como a miniatura de seu perfil (PNG, JPG tamanho ideal 280 x 280)"
       name_label: "Nome"
-      name_hint: "Seu nome público, visível para todos como autor do projeto."
+      name_hint: "Esse é o nome que os usuários irão ver no seu perfil."
+      email_label: Email
+      email_hint: Email para você se comunicar com a equipe do Catarse e com os seus apoiadores
     dashboard_reward:
       submit: "Salvar"
-      title: "Crie e edite aqui suas recompensas"
       add_reward: "Adicionar recompensa"
-      subtitle: "Essa é sua demonstração de gratidão com os apoiadores. Lembre-se de incluir os custos das recompensas no seu orçamento. Prometeu, ENTREGUE! "
       reward: "Recompensa"
     dashboard_preview:
       header_subtitle: "É hora dos feedbacks!"
