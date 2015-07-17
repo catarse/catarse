@@ -21,6 +21,7 @@ App.addChild('ProjectEdit', _.extend({
     this.route('basics');
     this.route('description');
     this.route('budget');
+    this.route('card');
     this.route('home');
     this.route('project');
     this.route('posts');

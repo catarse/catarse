@@ -3,6 +3,8 @@ pt:
     edit:
       budget: Orçamento
       budget_subtitle: "Como o seu dinheiro será utilizado? Quanto mais transparência melhor. Mostre que etapas e processos estarão envolvidos no uso desses recursos. Uma lista com os principais itens do orçamento ou até mesmo um gráfico de pizza vão super bem aqui."
+      card: 'Card do projeto'
+      card_subtitle: 'Sabe aquele cardzinho de projeto que aparece na home e na busca? Pois então, faz bonito pois dizem que a primeira impressão é a que fica ;)'
       basics: 'Preencha as informações abaixo'
       basics_subtitle: 'Os dados informados nessa seção não poderão ser modificados quando o projeto for ao ar. Preencha com atenção e revise antes de lançar o projeto. '
       reports: 'Relatórios'
@@ -110,6 +112,7 @@ pt:
       start_tab: Infos úteis
       basics_tab: Básico
       budget_tab: Orçamento
+      card_tab: Card do projeto
       description_tab: Descrição
       project_tab: Editar projeto
       posts_tab: Novidades
@@ -155,6 +158,9 @@ pt:
     dashboard_budget:
       submit: Salvar e visualizar
       budget_label: "Orçamento do projeto"
+    dashboard_card:
+      submit: Salvar e visualizar
+      card_label: "Card do projeto"
     dashboard_project:
       budgets_hint_html: "Informe uma lista com os principais itens do orçamento. Não precisa entrar em detalhes minuciosos, basta uma visão geral. Seus apoiadores gostarão de saber onde o dinheiro deles estará indo. Não existe uma regra&nbsp;quanto a quantidade de itens na lista, mas normalmente 5 costuma ser um bom número!"
       budgets_label: "Detalhe do orçamento"

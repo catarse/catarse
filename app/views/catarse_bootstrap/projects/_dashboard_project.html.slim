@@ -33,30 +33,6 @@
 
   .divider
   .section
-    .w-container
-      .w-row
-        .w-col.w-col-8
-          .fontsize-large.fontweight-semibold= t('.card')
-          p.fontsize-small.u-marginbottom-40= t('.card_subtitle') 
-          .w-form
-            /= form.input :uploaded_image, label: '', as: :file, required: false, hint: (@project.uploaded_image.present? ? image_tag(@project.uploaded_image.project_thumb.url, size: '220x172') : t('formtastic.hints.project.uploaded_image') ) 
-            = form.input :uploaded_image, as: :file, 
-              wrapper: :two_columns,
-              wrapper_class: 'w-row u-marginbottom-30 card card-terciary',
-              label_wrapper_html: { class: 'w-col w-col-5 w-subcol' },
-              text_field_wrapper_html: { class: 'w-col w-col-6' },
-              input_html: { required: (!@project.display_image.present?) },
-              validation_text: false                  
-
-          = form.input :headline, as: :text, 
-            wrapper: :two_columns,
-            wrapper_class: 'w-row u-marginbottom-30 card card-terciary',
-            label_wrapper_html: { class: 'w-col w-col-5 w-subcol' },
-            text_field_wrapper_html: { class: 'w-col w-col-7' },
-            input_html: { class: 'positive', required: true, maxlength: Project::HEADLINE_MAXLENGTH },
-            validation_text: false               
-        .w-col.w-col-4
-          = render 'card'
     .section
       .w-container
         .w-row

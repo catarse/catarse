@@ -32,6 +32,9 @@ nav.w-section.dashboard-nav.side
   = link_to (edit ? '#budget' : edit_project_path(@project, anchor: 'budget')), id: 'budget_link', class: 'dashboard-nav-link-left' , data: {target: '#dashboard_budget', tab_group: 'edit'} do
     = @project.decorate.status_icon_for('budget')
     = t('.budget_tab')
+  = link_to (edit ? '#card' : edit_project_path(@project, anchor: 'card')), id: 'card_link', class: 'dashboard-nav-link-left' , data: {target: '#dashboard_card', tab_group: 'edit'} do
+    = @project.decorate.status_icon_for('card')
+    = t('.card_tab')
   = link_to (edit ? '#project' : edit_project_path(@project, anchor: 'project')), id: 'dashboard_project_link', class: 'dashboard-nav-link-left' , data: {target: '#dashboard_project', tab_group: 'edit'} do
     = @project.decorate.status_icon_for('project')
     = t('.project_tab')

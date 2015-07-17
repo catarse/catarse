@@ -20,6 +20,8 @@
             = render 'dashboard_home'
           #dashboard_budget.content.w-hidden data-page_title="#{t('.budget')}" data-page_subtitle="#{t('.budget_subtitle')}"
             = render 'dashboard_budget'
+          #dashboard_card.content.w-hidden data-page_title="#{t('.card')}" data-page_subtitle="#{t('.card_subtitle')}"
+            = render 'dashboard_card'
           - if !@project.published? || (current_user && current_user.admin?)
             #dashboard_basics.content.w-hidden data-page_title="#{t('.basics')}" data-page_subtitle="#{t('.basics_subtitle')}"
               = render 'dashboard_basics'
