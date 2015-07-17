@@ -1,11 +1,9 @@
 .u-text-center
   .w-container
     .w-row
-      .w-col.w-col-2
-      .w-col.w-col-8
+      .w-col.w-col-8.w-col-push-2
         .fontweight-semibold.fontsize-large=t('.start')
         p.fontsize-base= t('.start_subtitle')
-      .w-col.w-col-2
 = simple_form_for @project, html: { class: 'project-form w-form' } do |form|
   .section
     .w-container
@@ -62,8 +60,6 @@
     .section
       .w-container
         .w-row
-          .w-col.w-col-4
-          .w-col.w-col-4
+          .w-col.w-col-4.w-col-push-4
             = hidden_field_tag 'anchor', 'project'
             = form.button :submit, t('.submit'),  class:'btn btn-large', id: 'project-save'
-          .w-col.w-col-4
