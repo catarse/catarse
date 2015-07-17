@@ -1,7 +1,6 @@
 class AddedSecondSlipFunctionToContributions < ActiveRecord::Migration
   def up
     execute <<-SQL
-      DROP FUNCTION public.is_second_slip(contributions);
       CREATE OR REPLACE FUNCTION public.is_second_slip(contributions) RETURNS boolean
         LANGUAGE sql AS $_$
             select true where (
