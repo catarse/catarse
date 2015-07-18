@@ -5,6 +5,8 @@ pt:
       budget_subtitle: "Como o seu dinheiro será utilizado? Quanto mais transparência melhor. Mostre que etapas e processos estarão envolvidos no uso desses recursos. Uma lista com os principais itens do orçamento ou até mesmo um gráfico de pizza vão super bem aqui."
       card: 'Card do projeto'
       card_subtitle: 'Sabe aquele cardzinho de projeto que aparece na home e na busca? Pois então, faz bonito pois dizem que a primeira impressão é a que fica ;)'
+      video: 'Vídeo'
+      video_subtitle: 'Capricha! Um bom vídeo faz a diferença e pode ser o grande responsável pelo sucesso do seu projeto.'
       basics: 'Preencha as informações abaixo'
       basics_subtitle: 'Os dados informados nessa seção não poderão ser modificados quando o projeto for ao ar. Preencha com atenção e revise antes de lançar o projeto. '
       reports: 'Relatórios'
@@ -114,7 +116,7 @@ pt:
       budget_tab: Orçamento
       card_tab: Card do projeto
       description_tab: Descrição
-      project_tab: Editar projeto
+      video_tab: Vídeo
       posts_tab: Novidades
       rewards_tab: Recompensas
       about_you_tab: Sobre você
@@ -161,24 +163,12 @@ pt:
     dashboard_card:
       submit: Salvar e visualizar
       card_label: "Card do projeto"
-    dashboard_project:
-      budgets_hint_html: "Informe uma lista com os principais itens do orçamento. Não precisa entrar em detalhes minuciosos, basta uma visão geral. Seus apoiadores gostarão de saber onde o dinheiro deles estará indo. Não existe uma regra&nbsp;quanto a quantidade de itens na lista, mas normalmente 5 costuma ser um bom número!"
-      budgets_label: "Detalhe do orçamento"
-      start: "Conte a história do seu projeto!"
-      start_subtitle: "Pense bem na narrativa do projeto. É ela quem encantará as pessoas e trará apoiadores. Um bom video e descrição são diferenciais!"
+    dashboard_video:
+      submit: Salvar
+      card_label: "Vídeo"
       video_url: "Vídeo do projeto"
       video_url_hint: "Importante: Qualquer projeto pode ser enviado sem o vídeo para análise do atendimento do Catarse . O vídeo pode ser analisado posteriormente. Lembrando que ele só é obrigatório para projetos com metas acima de 5 mil reais."
       video_url_subtitle: "Link do Vimeo ou Youtube"
-      about: "Descrição do projeto"
-      links_title: "Links úteis"
-      about_hint_html: 'Fale com paixão e clareza sobre o que será realizado. Esclareça possíveis dúvidas sobre como o dinheiro será utilizado, quem está por trás do projeto, como e quando o projeto será entregue. Transparência atrai mais apoiadores. Lembre-se: seu projeto será acessado por pessoas comuns que decidirão se querem ou não apoiar seu projeto. Capriche! '
-      card: 'Card do projeto'
-      card_subtitle: 'Sabe aquele cardzinho de projeto que aparece na home e na busca? Então, faz bonito aqui nessa parte pois dizem que a primeira impressão é a que fica!'
-      image: 'Imagem do projeto'
-      image_hint: 'Essa imagem será utilizada como a miniatura de seu projeto (PNG, JPG tamanho 600 x 340)'
-      headline: 'Chamada do Projeto'
-      headline_hint: 'Será utilizada no card do projeto, junto com a imagem acima (miniatura). No máximo 100 caracteres.'
-      submit: 'Salvar'
     dashboard_basics:
       online_date: 'Data de entrada no ar'
       user_id: 'Id do usuário'
