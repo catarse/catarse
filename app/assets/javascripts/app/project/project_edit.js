@@ -19,6 +19,7 @@ App.addChild('ProjectEdit', _.extend({
 
   activate: function(){
     this.route('basics');
+    this.route('goal');
     this.route('description');
     this.route('budget');
     this.route('card');

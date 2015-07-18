@@ -9,6 +9,8 @@ pt:
       video_subtitle: 'Capricha! Um bom vídeo faz a diferença e pode ser o grande responsável pelo sucesso do seu projeto.'
       basics: 'Preencha as informações abaixo'
       basics_subtitle: 'Os dados informados nessa seção não poderão ser modificados quando o projeto for ao ar. Preencha com atenção e revise antes de lançar o projeto. '
+      goal: 'Meta e prazo'
+      goal_subtitle: 'Preencha com carinho a seção abaixo, pois essas informações não poderão mais ser alteradas se o projeto for ao ar.'
       reports: 'Relatórios'
       user_settings: 'Dados cadastrais e bancários'
       user_settings_subtitle: 'Com os dados abaixo completos, seu projeto estará pronto para ir ao ar. Após concluir o preenchimento, clique em Salvar. Revise. Se tudo estiver ok, basta apertar o botão Publicar e começar sua campanha!'
@@ -113,6 +115,7 @@ pt:
       leave_link_html: "&nbsp; Sair do painel de controle"
       start_tab: Infos úteis
       basics_tab: Básico
+      goal_tab: Meta e prazo
       budget_tab: Orçamento
       card_tab: Card do projeto
       description_tab: Descrição
@@ -141,6 +144,8 @@ pt:
       name_hint: "Esse é o nome que os usuários irão ver no seu perfil."
       email_label: Email
       email_hint: Email para você se comunicar com a equipe do Catarse e com os seus apoiadores
+    dashboard_goal:
+      submit: "Salvar"
     dashboard_description:
       submit: "Salvar"
     dashboard_reward:
@@ -163,6 +168,8 @@ pt:
     dashboard_card:
       submit: Salvar e visualizar
       card_label: "Card do projeto"
+    dashboard_goal:
+      submit: 'Salvar'
     dashboard_video:
       submit: Salvar
       card_label: "Vídeo"
