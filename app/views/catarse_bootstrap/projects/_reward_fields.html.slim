@@ -19,7 +19,7 @@
             p.fontsize-small
               br= reward.display_description
             - if reward.maximum_contributions
-              - in_time_to_confirm = reward.payments.with_state('pending').count(:all)
+              - in_time_to_confirm = reward.in_time_to_confirm
               - if in_time_to_confirm > 0
                 .maximum_contributions.in_time_to_confirm.clearfix
                   .pending.fontsize-smallest.fontcolor-secondary= t('rewards.index.contributions_to_confirm', count: in_time_to_confirm)
