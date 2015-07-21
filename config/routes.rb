@@ -94,6 +94,7 @@ Catarse::Application.routes.draw do
   get "/assets" => 'high_voltage/pages#show', id: 'assets'
   get "/guides" => 'high_voltage/pages#show', id: 'guides', as: :guides
   get "/new-admin" => 'high_voltage/pages#show', id: 'new_admin'
+  get "/explore" => 'high_voltage/pages#show', id: 'explore'
 
 
   # User permalink profile
@@ -103,8 +104,6 @@ Catarse::Application.routes.draw do
 
   # Root path should be after channel constraints
   root to: 'projects#index'
-
-  get "/explore" => "explore#index", as: :explore
 
   namespace :reports do
     resources :contribution_reports_for_project_owners, only: [:index]
