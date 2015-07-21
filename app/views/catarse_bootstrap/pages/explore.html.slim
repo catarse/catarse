@@ -1,5 +1,5 @@
-/89633
 - content_for :title, t('.title')
+- categories = Category.with_projects.order(:name_pt).all
 = render 'shared/header_big', overlayer: true
 
 - if current_user
@@ -28,8 +28,8 @@
         span.fa.fa-angle-down
     #categories-wrapper.w-hidden
       .w-row
-        - unless @categories.empty?
-          - @categories.each_with_index do |category, index|
+        - unless categories.empty?
+          - categories.each_with_index do |category, index|
             - if index % 6 == 0
               .w-row
             .w-col.w-col-2.w-col-small-6.w-col-tiny-6
