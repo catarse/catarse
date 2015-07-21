@@ -174,7 +174,7 @@ p {
 .text-field.error {
   margin-bottom: 5px;
   border-color: #e86666;
-  background-color: rgba(232, 102, 102, 0.13);
+  background-color: rgba(232, 102, 102, 0.09);
 }
 .text-field.bottom {
   border-top-left-radius: 0px;
@@ -393,8 +393,8 @@ p {
   margin-top: 0px;
   border-bottom-style: none;
   background-color: transparent;
-  background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.22), transparent);
-  background-image: linear-gradient(rgba(0, 0, 0, 0.22), transparent);
+  background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.2), transparent);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.2), transparent);
 }
 .main-header.overlayer.alert {
   margin-top: 40px;
@@ -734,11 +734,9 @@ p {
   text-decoration: underline;
 }
 .back-reward-input-reward {
-  display: inline-block;
-  width: 55%;
-  height: 70px;
+  height: 60px;
   margin-bottom: 0px;
-  padding-top: 4px;
+  padding-top: 0px;
   border-style: solid solid solid none;
   border-width: 1px;
   border-color: #00b22d;
@@ -762,18 +760,19 @@ p {
 }
 .back-reward-input-reward.placeholder {
   display: inline-block;
-  width: 87px;
+  width: 100%;
   height: 60px;
   margin-right: 0px;
   margin-bottom: 0px;
   padding-top: 24px;
-  padding-left: 17px;
-  float: left;
   border-style: solid none solid solid;
   border-color: #00b22d;
   border-radius: 5px 0px 0px 5px;
-  background-color: rgba(255, 255, 255, 0.74);
-  color: #00b22d;
+  background-color: transparent;
+  color: #7cc142;
+  font-size: 34px;
+  line-height: 12px;
+  text-align: center;
 }
 .back-reward-input-reward.placeholder._3 {
   height: 60px;
@@ -804,6 +803,12 @@ p {
   height: 60px;
   padding-top: 0px;
 }
+.back-reward-input-reward.error {
+  margin-bottom: 10px;
+  border-style: solid;
+  border-color: #e86666;
+  background-color: #fce7e7;
+}
 .back-reward-radio-reward {
   display: block;
   margin-bottom: 0px;
@@ -830,7 +835,6 @@ p {
 }
 .back-reward-reward-description {
   margin-top: 15px;
-  margin-left: 25px;
 }
 .back-faq-box {
   margin-bottom: 20px;
@@ -2270,7 +2274,6 @@ p {
 }
 .back-reward-money {
   margin-bottom: 8px;
-  padding-left: 26px;
 }
 .knowmore-hello {
   position: absolute;
@@ -2645,6 +2648,14 @@ p {
 .text-refunded {
   color: #917ac8;
 }
+.card-greenlight {
+  border: 1px solid #d7f2bf;
+  background-color: #f4fced;
+}
+.bg-stats {
+  background-image: url('../images/bg-hello-idea.jpg');
+  background-size: cover;
+}
 html.w-mod-js *[data-ix="fade-in"] {
   opacity: 0;
 }
@@ -2846,12 +2857,14 @@ html.w-mod-js *[data-ix="know-more-2"] {
     padding-bottom: 34px;
   }
   .back-reward-input-reward {
-    width: 45%;
+    height: 54px;
     font-size: 36px;
+    line-height: 55px;
   }
   .back-reward-input-reward.placeholder {
-    width: 71px;
-    padding-left: 12px;
+    height: 54px;
+    font-size: 29px;
+    line-height: 7px;
   }
   .back-reward-input-reward.placeholder._3 {
     height: 54px;
@@ -3317,14 +3330,8 @@ html.w-mod-js *[data-ix="know-more-2"] {
     text-align: center;
   }
   .back-reward-input-reward {
-    width: 82%;
-    margin-right: auto;
-    margin-left: auto;
     float: none;
     font-size: 36px;
-  }
-  .back-reward-input-reward.placeholder {
-    float: left;
   }
   .back-reward-input-reward._2 {
     padding-top: 6px;
@@ -3848,10 +3855,10 @@ html.w-mod-js *[data-ix="know-more-2"] {
     padding-left: 20px;
   }
   .back-reward-input-reward {
-    width: 72%;
+    font-size: 25px;
   }
   .back-reward-input-reward.placeholder {
-    width: 71px;
+    font-size: 20px;
   }
   .back-reward-input-reward.placeholder._3 {
     width: 47px;
