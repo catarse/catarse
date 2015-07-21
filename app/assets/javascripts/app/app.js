@@ -7,7 +7,8 @@ var App = window.App = Skull.View.extend({
     "click a.mobile-menu-link" : "mobileMenu",
     "click .zendesk_widget" : "showWidget",
     "click #pg_search_submit" : "searchProject",
-    'click .btn-dashboard' : 'toggleNav'
+    "click .edit-project-div" : "toggleEdit",
+    'click .btn-dashboard' : 'toggleEdit'
   },
 
   openAlert: function(){
@@ -23,6 +24,14 @@ var App = window.App = Skull.View.extend({
     else{
       this.closeAlert();
     }
+  },
+
+  toggleEdit: function(){
+   if($(".edit-project-div").hasClass('hide')) {
+     $(".edit-project-div").animate({height:350},200).removeClass('hide');
+     } else { 
+       $(".edit-project-div").animate({height:45},200).addClass('hide');
+     }
   },
 
   toggleNav: function(){
