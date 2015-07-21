@@ -27,7 +27,7 @@ nav.w-section.dashboard-nav.side
       span.fa.fa-pencil.fa-fw.fa-lg
       = t('.edit_project')
     - if (!@project.published? && !@project.approved?) || (current_user && current_user.admin?)
-      = link_to (edit ? '#basics' : edit_project_path(@project, anchor: 'basics')), id: 'basics_link', class: 'dashboard-nav-link-left indent  u-margintop-20' , data: {target: '#dashboard_basics', tab_group: 'edit'} do
+      = link_to (edit ? '#basics' : edit_project_path(@project, anchor: 'basics')), id: 'basics_link', class: 'dashboard-nav-link-left indent' , data: {target: '#dashboard_basics', tab_group: 'edit'} do
         = @project.decorate.status_icon_for('basics')
         = t('.basics_tab')
     - if (!@project.published? && !@project.approved?) || (current_user && current_user.admin?)
