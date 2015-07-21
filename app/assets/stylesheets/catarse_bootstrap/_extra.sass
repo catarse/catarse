@@ -413,12 +413,16 @@ img, iframe
 
 .dashboard-nav.side::after
   content: " "
-  position: absolute
+  position: fixed
   left: 0px
   right: 0px
   bottom: 0px
   height: 94px
+  width: inherit
   background-color: #2c2f33
+  
+.dashboard-nav-link-left:last-of-type
+  margin-bottom: 124px
 
 .body-project.closed
   .dashboard-nav
