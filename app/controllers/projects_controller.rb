@@ -4,21 +4,24 @@ class ProjectsController < ApplicationController
   after_filter :redirect_user_back_after_login, only: %i[index show]
   before_action :authorize_and_build_resources, only: %i[edit show]
 
-  inherit_resources
   has_scope :pg_search, :by_category_id, :near_of
   has_scope :recent, :expiring, :successful, :in_funding, :recommended, :not_expired, type: :boolean
 
-  helper_method :project_comments_canonical_url
+  helper_method :project_comments_canonical_url, :resource, :collection
 
   respond_to :html
   respond_to :json, only: [:index, :show, :update]
 
   def index
-    index! do |format|
+    respond_to do |format|
       format.html do
         return render_index_for_xhr_request if request.xhr?
         projects_for_home
       end
+      format.atom do 
+        return render layout: false, locals: {projects: projects}
+      end
+      format.rss { redirect_to projects_path(format: :atom), :status => :moved_permanently }
     end
   end
 
@@ -136,15 +139,18 @@ class ProjectsController < ApplicationController
   end
 
   def render_index_for_xhr_request
-    @projects = apply_scopes(Project.visible.order_status)
-      .most_recent_first
-      .includes(:project_total, :user, :category)
-      .page(params[:page]).per(18)
-
     render partial: 'projects/card',
-      collection: @projects,
+      collection: projects,
       layout: false,
       locals: {ref: "explore", wrapper_class: 'w-col w-col-4 u-marginbottom-20'}
+  end
+
+  def projects
+    page = params[:page] || 1
+    @projects ||= apply_scopes(Project.visible.order_status).
+      most_recent_first.
+      includes(:project_total, :user, :category).
+      page(page).per(18)
   end
 
   def projects_for_home
