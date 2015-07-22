@@ -4,13 +4,12 @@
       .w-row
         .w-col.w-col-10.w-hidden-small.w-hidden-tiny.w-col-push-1
           = @project.display_errors(:budget)
-          .card.card-terciary.medium
+          .card.card-terciary
             = form.input :budget, as: :text, 
               wrapper: :two_columns,
-              wrapper_class: '',
               label_wrapper_html: { class: 'w-col w-col-12 u-marginbottom-20' },
               text_field_wrapper_html: { class: 'w-col w-col-12' },
-              input_html: { class: 'redactor positive', required: false, rows: 6 },
+              input_html: { class: 'redactor positive', required: false },
               validation_text: false
   .w-section.section
     .w-container
