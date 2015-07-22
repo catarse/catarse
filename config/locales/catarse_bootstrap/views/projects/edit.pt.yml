@@ -1,6 +1,7 @@
 pt:
   projects:
     edit:
+      posts: "Escrever uma novidade"
       budget: Orçamento
       budget_subtitle: "Como o seu dinheiro será utilizado? Quanto mais transparência melhor. Mostre que etapas e processos estarão envolvidos no uso desses recursos. Uma lista com os principais itens do orçamento ou até mesmo um gráfico de pizza vão super bem aqui."
       card: 'Card do projeto'
@@ -157,7 +158,6 @@ pt:
       header_subtitle: "É hora dos feedbacks!"
       header_text: "Compartilhe o link abaixo com seus amigos e aproveite o momento para fazer ajustes finos que ajudem na sua campanha."
     dashboard_posts:
-      title: "Escrever uma novidade"
       only_to_backers: "Quero que essa novidade seja visível apenas para apoiadores."
       publish: 'Publicar novidade'
       discard: 'Descartar'

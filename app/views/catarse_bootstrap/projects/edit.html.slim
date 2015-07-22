@@ -16,7 +16,7 @@
     .w-container
       .w-row
         article
-          #dashboard_home.content.w-hidden
+          #dashboard_home.content.w-hidden data-page_title=""
             = render 'dashboard_home'
           #dashboard_goal.content.w-hidden  data-page_title="#{t('.goal')}" data-page_subtitle="#{t('.goal_subtitle')}"
             = render 'dashboard_goal'
@@ -33,7 +33,7 @@
             #dashboard_description.content.w-hidden data-page_title="#{t('.description')}" data-page_subtitle="#{t('.description_subtitle')}"
               = render 'dashboard_description'
           - if @project.published?
-            #dashboard_posts.content.w-hidden
+            #dashboard_posts.content.w-hidden data-page_title="#{t('.posts')}"
               = render 'dashboard_posts'
           #dashboard_reward.content.w-hidden data-page_title="#{t('.reward')}" data-page_subtitle="#{t('.reward_subtitle')}"
             = render 'dashboard_reward'
