@@ -4,7 +4,7 @@
       .w-row
         .w-col.w-col-8
           .w-form
-              = @project.display_errors(:project)
+              = @project.display_errors(:card)
               = form.input :uploaded_image, as: :file,
                 wrapper: :two_columns,
                 wrapper_class: 'w-row u-marginbottom-30 card card-terciary',
