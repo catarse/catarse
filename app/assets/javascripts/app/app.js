@@ -8,7 +8,7 @@ var App = window.App = Skull.View.extend({
     "click .zendesk_widget" : "showWidget",
     "click #pg_search_submit" : "searchProject",
     "click .edit-project-div" : "toggleEdit",
-    'click .btn-dashboard' : 'toggleEdit'
+    'click .btn-dashboard' : 'toggleNav'
   },
 
   openAlert: function(){
@@ -26,12 +26,8 @@ var App = window.App = Skull.View.extend({
     }
   },
 
-  toggleEdit: function(){
-   if($(".edit-project-div").hasClass('hide')) {
-     $(".edit-project-div").animate({height:350},200).removeClass('hide');
-     } else { 
-       $(".edit-project-div").animate({height:45},200).addClass('hide');
-     }
+  toggleEdit: function(event){
+    $("#edit-menu-items").slideToggle( "slow" );
   },
 
   toggleNav: function(){
