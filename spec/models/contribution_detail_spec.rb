@@ -184,6 +184,20 @@ RSpec.describe ContributionDetail, type: :model do
     })}
   end
 
+  describe ".available_to_display" do
+    before do
+      create(:confirmed_contribution)
+      create(:deleted_contribution)
+      create(:refused_contribution)
+      create(:pending_contribution)
+      create(:pending_contribution, created_at: Time.now - 1.week)
+    end
+
+    subject{ ContributionDetail.available_to_display }
+
+    its(:count){ is_expected.to eq 2 }
+  end
+
   describe "#full_text_index" do
     let!(:contribution){ create(:confirmed_contribution, value: 10) }
     let(:detail){ ContributionDetail.first }

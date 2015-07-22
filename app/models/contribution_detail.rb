@@ -35,7 +35,8 @@ class ContributionDetail < ActiveRecord::Base
   scope :for_failed_projects, -> { with_project_state('failed').available_to_display }
 
   scope :available_to_display, -> {
-    where("contribution_details.state not in('deleted', 'refused')")
+    joins(:payment).
+    where("contribution_details.state not in('deleted', 'refused', 'pending') OR payments.waiting_payment")
   }
 
   scope :pending, -> { joins(:payment).merge(Payment.waiting_payment) }
