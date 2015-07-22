@@ -113,23 +113,24 @@ pt:
         title: "%{name}, você enviou seu projeto para análise e receberá nossa resposta em até 4 dias úteis"
         subtitle_html: "Muito obrigado! Nossa equipe vai avaliar todo o conteúdo do seu projeto e em até 4 dias úteis você receberá um email informando se ele foi Aprovado, Recusado ou se vai continuar Em Análise por mais algum tempo para que você possa realizar ajustes sugeridos. Aproveite esse período para coletar feedbacks com pessoas próximas!"
     dashboard_nav:
-      edit_project: Editar projeto
       leave_link_html: "&nbsp; Sair do painel de controle"
       start_tab: Infos úteis
+      reports_tab: Relatórios
+      preview_tab: Preview
+      posts_tab: Novidades
+      edit_project: Editar projeto
+      send: Enviar
+      publish: Publicar
+    dashboard_nav_links:
+      account_tab: Conta
       basics_tab: Básico
       goal_tab: Meta e prazo
       budget_tab: Orçamento
       card_tab: Card do projeto
       description_tab: Descrição
       video_tab: Vídeo
-      posts_tab: Novidades
       rewards_tab: Recompensas
       about_you_tab: Sobre você
-      reports_tab: Relatórios
-      account_tab: Conta
-      preview_tab: Preview
-      send: Enviar
-      publish: Publicar
     dashboard_user_about:
       submit: "Salvar"
       twitter_label: "Perfil do twitter"
