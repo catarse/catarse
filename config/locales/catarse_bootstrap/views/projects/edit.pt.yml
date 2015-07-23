@@ -122,6 +122,7 @@ pt:
       send: Enviar
       publish: Publicar
     dashboard_nav_links:
+      preview_tab: Preview
       account_tab: Conta
       basics_tab: Básico
       goal_tab: Meta e prazo
