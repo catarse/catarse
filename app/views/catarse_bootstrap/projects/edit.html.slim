@@ -16,7 +16,7 @@
     .w-container
       .w-row
         article
-          #dashboard_home.content.w-hidden data-page_title=""
+          #dashboard_home.content.w-hidden data-page_title="" data-page_subtitle=""
             = render 'dashboard_home'
           #dashboard_goal.content.w-hidden  data-page_title="#{t('.goal')}" data-page_subtitle="#{t('.goal_subtitle')}"
             = render 'dashboard_goal'
@@ -33,16 +33,16 @@
             #dashboard_description.content.w-hidden data-page_title="#{t('.description')}" data-page_subtitle="#{t('.description_subtitle')}"
               = render 'dashboard_description'
           - if @project.published?
-            #dashboard_posts.content.w-hidden data-page_title="#{t('.posts')}"
+            #dashboard_posts.content.w-hidden data-page_title="#{t('.posts')}" data-page_subtitle=""
               = render 'dashboard_posts'
           #dashboard_reward.content.w-hidden data-page_title="#{t('.reward')}" data-page_subtitle="#{t('.reward_subtitle')}"
             = render 'dashboard_reward'
           - if @project.published?
-            #dashboard_reports.content.w-hidden data-path=project_metrics_path(@project) data-page_title="#{t('.reports')}"
+            #dashboard_reports.content.w-hidden data-path=project_metrics_path(@project) data-page_title="#{t('.reports')}" data-page_subtitle=""
               .results
           #dashboard_user_about.content.w-hidden data-page_title="#{t('.user_about')}" data-page_subtitle="#{t('.user_about_subtitle')}"
             = render 'dashboard_user_about'
-          #dashboard_preview.content.w-hidden
+          #dashboard_preview.content.w-hidden data-page_subtitle="" data-page_title=""
             = render 'dashboard_preview'
           #dashboard_user_settings.content.w-hidden data-page_title="#{t('.user_settings')}" data-page_subtitle="#{t('.user_settings_subtitle')}"
             = render 'dashboard_user_settings'
