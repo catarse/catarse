@@ -123,6 +123,7 @@ RSpec.describe "Projects", type: :feature do
 
     it "should view 5 pending contributions" do
       click_on("contributions_link")
+      sleep FeatureHelpers::TIME_TO_SLEEP
       choose("contribution_state_waiting_confirmation")
       sleep FeatureHelpers::TIME_TO_SLEEP
       contributions = all(".results .w-clearfix")
