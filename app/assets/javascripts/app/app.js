@@ -7,7 +7,7 @@ var App = window.App = Skull.View.extend({
     "click a.mobile-menu-link" : "mobileMenu",
     "click .zendesk_widget" : "showWidget",
     "click #pg_search_submit" : "searchProject",
-    "click .edit-project-div" : "toggleEdit",
+    "click #toggle-edit-menu" : "toggleEdit",
     'click .btn-dashboard' : 'toggleNav'
   },
 
