@@ -36,6 +36,10 @@ RSpec.describe ContributionReportsForProjectOwner, type: :model do
       expect(subject.state('paid').count).to eq(4)
     end
 
+    it ".waiting_payment" do
+      expect(subject.waiting_payment.count).to eq(2)
+    end
+
     it ".state('pending')" do
       expect(subject.state("pending").count).to eq(2)
     end
