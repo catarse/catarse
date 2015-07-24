@@ -2,7 +2,7 @@
   .w-section.section
     .w-container
       .w-row
-        .w-col.w-col-10.w-hidden-small.w-hidden-tiny.w-col-push-1
+        .w-col.w-col-10.w-col-push-1
           = @project.display_errors(:budget)
           .card.card-terciary
             = form.input :budget, as: :text, 
