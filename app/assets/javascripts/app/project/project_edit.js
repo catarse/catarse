@@ -14,8 +14,7 @@ App.addChild('ProjectEdit', _.extend({
   el: '.project-dashboard-edit',
 
   events: {
-    'click .dashboard-nav-link-left' : 'toggleNav',
-    'click a.dashboard-nav-link-left' : 'goToTop'
+    'click a.dashboard-nav-link-left' : 'toggleNav'
   },
 
   activate: function(){
@@ -41,11 +40,8 @@ App.addChild('ProjectEdit', _.extend({
     }
   },
 
-  goToTop: function(){
-    window.scrollTo(0, 0);
-  },
-
   toggleNav: function(){
+    window.scrollTo(0, 0);
     if(app.isMobile()){
       app.toggleNav();
     }
