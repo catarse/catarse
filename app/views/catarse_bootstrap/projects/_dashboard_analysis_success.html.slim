@@ -1,0 +1,14 @@
+.w-section.section
+  .w-container.u-text-center.dashboard-header.big
+    .w-row
+      .w-col.w-col-8.w-col-push-2
+        .fontsize-large.fontweight-semibold.u-marginbottom-10
+          span.fa.fa-check-circle.text-success.fa-3x
+        .fontsize-large.fontweight-semibold.u-marginbottom-20
+          = t('.title', name: @project.user.name)
+          br
+          = t('.subtitle')
+        .card.u-radius.u-marginbottom-40
+          .fontweight-semibold.fontsize-base= @project.user.email
+        p.fontsize-base Enquanto espera a sua resposta, você pode continuar editando o seu projeto! Recomendamos também que você vá coletando feedback com as pessoas próximas e planejando como será a sua campanha.
+      .w-col.w-col-2

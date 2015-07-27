@@ -29,6 +29,7 @@
   = link_to (edit ? '#user_about' : edit_project_path(@project, anchor: 'user_about')), id: 'dashboard_user_about_link', class: link_class , data: {target: '#dashboard_user_about', tab_group: 'edit'} do
     = @project.decorate.status_icon_for('user_about')
     = t('.about_you_tab')
+  = link_to '', '#analysis_success', data: {target: '#dashboard_analysis_success', tab_group: 'edit'}, class: 'w-hidden'
 
   - if @project.can_show_account_link? || (current_user && current_user.admin?)
     = link_to (edit ? '#user_settings' : edit_project_path(@project, anchor: 'user_settings')), id: 'dashboard_user_settings_link', class: ( link_class + ' u-marginbottom-20' ) , data: {target: '#dashboard_user_settings', tab_group: 'edit'} do

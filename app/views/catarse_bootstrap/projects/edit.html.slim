@@ -27,9 +27,10 @@
           #dashboard_card.content.w-hidden data-page_title="#{t('.card')}" data-page_subtitle="#{t('.card_subtitle')}"
             = render 'dashboard_card'
           - if !@project.published? || (current_user && current_user.admin?)
+            #dashboard_analysis_success.content.w-hidden data-page_title="" data-page_subtitle=""
+              = render 'dashboard_analysis_success'
             #dashboard_basics.content.w-hidden data-page_title="#{t('.basics')}" data-page_subtitle="#{t('.basics_subtitle')}"
               = render 'dashboard_basics'
-          - if !@project.published? || (current_user && current_user.admin?)
             #dashboard_description.content.w-hidden data-page_title="#{t('.description')}" data-page_subtitle="#{t('.description_subtitle')}"
               = render 'dashboard_description'
           - if @project.published?
