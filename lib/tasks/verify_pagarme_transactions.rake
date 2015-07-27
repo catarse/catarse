@@ -46,11 +46,30 @@ task :verify_pagarme_transactions, [:start_date, :end_date]  => :environment do 
     gateway_id = source['id'].to_s
     p = Payment.find_by(gateway_id: gateway_id)
     unless p
-      key = source['metadata'].try(:[], 'key').to_s
+      key = find_key source
       puts "Trying to find by key #{key}"
       p = Payment.where("gateway_id IS NULL AND key = ?", key).first # Só podemos pegar o mesmo pagamento se o gateway_id for nulo para evitar conflito
     end
     p
+  end
+
+  def find_key source
+    source['metadata'].try(:[], 'key').to_s
+  end
+
+  def find_contribution source
+    id = source['metadata'].try(:[], 'contribution_id').to_s
+    if id.present?
+      Contribution.find(id)
+    else
+      project_id = source['metadata'].try(:[], 'project_id').to_s
+      attributes = {project_id: project_id, payer_email: source['customer']['email'], value: (source['amount'] / 100)}
+      Contribution.find_by(attributes)
+    end
+  end
+
+  def find_payment_method source
+    source['payment_method'] == 'boleto' ? 'BoletoBancario' : 'CartaoDeCredito'
   end
 
   def all_transactions(start_date, end_date)
@@ -80,11 +99,21 @@ task :verify_pagarme_transactions, [:start_date, :end_date]  => :environment do 
         # Atualiza os dados usando o pagarme_delegator caso o status não esteja batendo
         yield(source, payment)
       else
-        log = PaymentLog.find_or_initialize_by(gateway_id: source[:id]) do |l|
-          l.data = source.to_json
+        puts "\n\n>>>>>>>>>   Inserting payment not found in Catarse: #{source.inspect}"
+        c = find_contribution source
+        if c
+          puts "\n\n>>>>>>>>>   FOUND"
+          payment = c.payments.new({
+            gateway: 'Pagarme', 
+            gateway_id: source['id'],
+            payment_method: find_payment_method(source),
+            value: c.value,
+            key: find_key(source)
+          })
+          payment.generate_key
+          payment.save!(validate: false)
+          yield(source, payment)
         end
-        log.save
-        puts "saving not found payment at PaymentLog -> #{log.id}"
       end
     end
   end
@@ -94,10 +123,12 @@ task :verify_pagarme_transactions, [:start_date, :end_date]  => :environment do 
   puts "Verifying all payment from #{args[:start_date]} to #{args[:end_date]}"
   fix_payments(args[:start_date], args[:end_date]) do |source, payment|
     raise "Gateway_id mismatch #{payment.gateway_id} (catarse) != #{source['id']} (pagarme)" if payment.gateway_id.to_s != source['id'].to_s
-    puts "Updating #{source['id']}(pagarme) - #{payment.gateway_id}(catarse)..."
-    puts "Changing state to #{source['status']}"
-    payment.pagarme_delegator.change_status_by_transaction source['status']
-    payment.pagarme_delegator.update_transaction
+    if payment.state != source['status'] && source['status'] != 'waiting_payment'
+      puts "Updating #{source['id']}(pagarme) - #{payment.gateway_id}(catarse)..."
+      puts "Changing state to #{source['status']}"
+      payment.pagarme_delegator.change_status_by_transaction source['status']
+      payment.pagarme_delegator.update_transaction
+    end
   end
 end
 
