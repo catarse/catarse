@@ -115,6 +115,7 @@ pt:
     dashboard_analysis_success:
       title: "%{name}, seu projeto foi enviado para análise!"
       subtitle: "Você receberá nossa resposta em até 4 dias úteis no email:"
+      next_steps: "Enquanto espera a sua resposta, você pode continuar editando o seu projeto! Recomendamos também que você vá coletando feedback com as pessoas próximas e planejando como será a sua campanha."
     dashboard_nav:
       leave_link_html: "&nbsp; Sair do painel de controle"
       start_tab: Infos úteis
