@@ -170,10 +170,10 @@ pt:
       warning: "Toda novidade publicada é enviada diretamente aos seus apoiadores por email. Revise bem o post antes de publicar."
       old_posts: "Novidades antigas"
     dashboard_budget:
-      submit: Salvar e visualizar
+      submit: Salvar
       budget_label: "Orçamento do projeto"
     dashboard_card:
-      submit: Salvar e visualizar
+      submit: Salvar
       card_label: "Card do projeto"
     dashboard_goal:
       submit: 'Salvar'
