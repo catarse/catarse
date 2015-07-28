@@ -151,7 +151,7 @@ pt:
       name_label: "Nome"
       name_hint: "Esse é o nome que os usuários irão ver no seu perfil."
       email_label: Email de Cadastro
-      email_hint: Email para você se logar no Catarse, se comunicar com a nossa equipe e com os seus apoiadores
+      email_hint: Email para você se logar no Catarse e se comunicar com a nossa equipe e com os seus apoiadores
     dashboard_goal:
       submit: "Salvar"
     dashboard_description:
