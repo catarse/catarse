@@ -150,8 +150,8 @@ pt:
       uploaded_image_hint: "Essa imagem será utilizada como a miniatura de seu perfil (PNG, JPG tamanho ideal 280 x 280)"
       name_label: "Nome"
       name_hint: "Esse é o nome que os usuários irão ver no seu perfil."
-      email_label: Email
-      email_hint: Email para você se comunicar com a equipe do Catarse e com os seus apoiadores
+      email_label: Email de Cadastro
+      email_hint: Email para você se logar no Catarse, se comunicar com a nossa equipe e com os seus apoiadores
     dashboard_goal:
       submit: "Salvar"
     dashboard_description:
