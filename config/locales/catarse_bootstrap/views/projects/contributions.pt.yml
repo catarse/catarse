@@ -26,7 +26,20 @@ pt:
         new_contribution: "Caso você tenha acessado essa página por engano, e queira realizar um novo apoio, %{link}"
         contact: 'contato'
         click_here: 'clique aqui'
+      faq:
+        common_questions: 'Perguntas Frequentes'
+        how_contribute: 'Como eu apoio este projeto?'
+        how_contribute_answer: 'Escolha o valor e a recompensa desejados. Em seguida, preencha os dados e detalhes do seu pagamento para finalizar o apoio.'
+        when_made_payment: 'Quando o pagamento é efetivado?'
+        when_made_payment_answer: 'Se você pagou com cartão de crédito, a confirmação deverá ser no mesmo dia. Se foi com boleto, em até 4 dias úteis.'
+        when_project_fails: 'E se o projeto não atingir a meta?'
+        when_project_fails_answer: 'Nesse caso, você recebe de volta 100% do que pagou através de um reembolso.'
+        when_project_funded: 'Se o projeto for financiado, como eu recebo minha recompensa?'
+        when_project_funded_answer: 'Quando sua recompensa estiver pronta, %{name} vai entrar em contato com você para combinar a entrega.'
       edit:
+        review_slip_email: "Você também receberá um email com esse boleto."
+        slip_expiration: "Esse boleto bancário vence no dia %{date}."
+        slip_message: 'Ao gerar o boleto, o realizador já está contando com o seu apoio. Pague até a data de vencimento pela internet, casas lotéricas, caixas eletrônicos ou agência bancária.'
         review_title: 'Preencha e revise os dados para pagamento'
         review_subtitle: 'Esses dados serão informados ao realizador do projeto'
         delivery_address: 'Endereço de entrega'

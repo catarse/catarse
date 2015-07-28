@@ -78,14 +78,15 @@ RSpec.describe Payment, type: :model do
     end
   end
 
-  describe ".can_delete" do
-    subject { Payment.can_delete }
+  describe ".waiting_payment" do
+    subject { Payment.waiting_payment }
 
     before do
-      @payment = create(:payment, state: 'pending', created_at: Time.now - 8.days)
-      create(:payment, state: 'pending')
+      @payment = create(:payment, state: 'pending')
+      create(:payment, state: 'pending', created_at: Time.now - 8.days)
       create(:payment, state: 'paid', created_at: Time.now - 1.week)
     end
+
     it{ is_expected.to eq [@payment] }
   end
 

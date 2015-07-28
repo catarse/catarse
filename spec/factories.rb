@@ -150,24 +150,34 @@ FactoryGirl.define do
     f.payer_name 'Foo Bar'
     f.payer_email 'foo@bar.com'
     f.anonymous false
+    factory :deleted_contribution do
+      after :create do |contribution|
+        create(:payment, state: 'deleted', value: contribution.value, contribution: contribution, created_at: contribution.created_at)
+      end
+    end
+    factory :refused_contribution do
+      after :create do |contribution|
+        create(:payment, state: 'refused', value: contribution.value, contribution: contribution, created_at: contribution.created_at)
+      end
+    end
     factory :confirmed_contribution do
       after :create do |contribution|
-        create(:payment, state: 'paid', value: contribution.value, contribution: contribution)
+        create(:payment, state: 'paid', value: contribution.value, contribution: contribution, created_at: contribution.created_at)
       end
     end
     factory :pending_contribution do
       after :create do |contribution|
-        create(:payment, state: 'pending', value: contribution.value, contribution: contribution)
+        create(:payment, state: 'pending', value: contribution.value, contribution: contribution, created_at: contribution.created_at)
       end
     end
     factory :pending_refund_contribution do
       after :create do |contribution|
-        create(:payment, state: 'pending_refund', value: contribution.value, contribution: contribution)
+        create(:payment, state: 'pending_refund', value: contribution.value, contribution: contribution, created_at: contribution.created_at)
       end
     end
     factory :refunded_contribution do
       after :create do |contribution|
-        create(:payment, state: 'refunded', value: contribution.value, contribution: contribution)
+        create(:payment, state: 'refunded', value: contribution.value, contribution: contribution, created_at: contribution.created_at)
       end
     end
     factory :contribution_with_credits do
@@ -242,6 +252,7 @@ FactoryGirl.define do
   factory :bank_account do |f|
     #f.association :user, factory: :user
     f.association :bank, factory: :bank
+    input_bank_number nil
     owner_name "Foo Bar"
     owner_document "97666238991"
     account_digit "1"

@@ -6,7 +6,8 @@ var App = window.App = Skull.View.extend({
     "click a#user-menu" : "toggleMenu",
     "click a.mobile-menu-link" : "mobileMenu",
     "click .zendesk_widget" : "showWidget",
-    "click #pg_search_submit" : "searchProject"
+    "click #pg_search_submit" : "searchProject",
+    'click .btn-dashboard' : 'toggleNav'
   },
 
   openAlert: function(){
@@ -22,6 +23,13 @@ var App = window.App = Skull.View.extend({
     else{
       this.closeAlert();
     }
+  },
+
+  toggleNav: function(){
+    $(".body-project").toggleClass("closed");
+    $(".btn-dashboard").toggleClass("closed fa-cog");
+    $(".btn-dashboard").toggleClass("open fa-chevron-left");
+    return false;
   },
 
   closeAlert: function(event){
@@ -91,7 +99,7 @@ var App = window.App = Skull.View.extend({
   },
 
   isMobile: function(){
-    var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent); 
+    var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     return isMobile;
   }
 
@@ -99,4 +107,5 @@ var App = window.App = Skull.View.extend({
 
 $(function(){
   var app = window.app = new App();
+  window.toggleMenu = app.toggleMenu;
 });

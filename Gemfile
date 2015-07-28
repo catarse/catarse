@@ -30,7 +30,7 @@ gem 'chartkick'
 gem 'catarse_settings_db', '>= 0.1.0'
 
 # Notifications
-gem 'user_notifier', '~> 0.0.5'
+gem 'user_notifier', '~> 0.2.0'
 
 # Mixpanel for backend tracking
 gem 'mixpanel-ruby'
@@ -38,7 +38,7 @@ gem 'mixpanel_client'
 
 # Payment engines
 gem 'catarse_moip', '~> 3.2.0'
-gem 'catarse_pagarme', '2.6.10'
+gem 'catarse_pagarme', '2.7.2'
 #gem 'catarse_pagarme', path: '../catarse_pagarme'
 
 # Decorators

@@ -5,22 +5,17 @@
 
   = link_to t('layouts.header.submit'), start_path, class: 'w-hidden-small w-hidden-tiny header-link w-nav-link'
 
-  .w-hidden-small.w-hidden-tiny.header-search
-    .w-row
-      .w-col.w-col-10
-        #discover-form-wrapper
-          .w-form
-            = form_tag explore_path, method: 'GET', class: 'discover-form', id: 'search-form' do
-              = text_field_tag :pg_search, nil, autocomplete: "off", value: params[:pg_search], class: "w-input text-field negative prefix search-input", placeholder: t('layouts.header.search')
+  .w-form.w-hidden-small.w-hidden-tiny.header-search
+    = form_tag explore_path, method: 'GET', class: 'discover-form', id: 'search-form' do
+      = text_field_tag :pg_search, nil, autocomplete: "off", value: params[:pg_search], class: "w-input text-field negative prefix search-input", placeholder: t('layouts.header.search')
 
-          .search-pre-result.w-hidden data-searchpath=auto_complete_projects_path
-            .result
-              .u-text-center= image_tag "catarse_bootstrap/loader.gif"
-            a.btn.btn-small.btn-terciary.see-more-projects href="javascript:void(0);"  ver todos
-            
-      .w-col.w-col-2
-        = link_to '#', id: 'pg_search_submit', class: "w-inline-block btn btn-dark btn-attached postfix" do
-          = image_tag "catarse_bootstrap/lupa.png", class: "header-lupa"
+    .search-pre-result.w-hidden data-searchpath=auto_complete_projects_path
+      .result
+        .u-text-center= image_tag "catarse_bootstrap/loader.gif"
+      a.btn.btn-small.btn-terciary.see-more-projects href="javascript:void(0);"  ver todos
+
+  = link_to '#', id: 'pg_search_submit', class: "w-inline-block w-hidden-small w-hidden-tiny btn btn-dark btn-attached postfix" do
+    = image_tag "catarse_bootstrap/lupa.png", class: "header-lupa"
 
 - content_for :headermobile_controls do
   .w-hidden-main.w-hidden-medium.header-controls-mobile

@@ -3,7 +3,9 @@
 nav.w-section.dashboard-nav.side
   = link_to (@project.published? ? project_by_slug_path(@project.permalink) : '#preview'), id: 'dashboard_preview_link', class: 'w-inline-block dashboard-project-name' , data: {target: '#dashboard_preview', tab_group: 'edit'} do
     - if @project.uploaded_image.present?
-      img.thumb-project-dashboard src="#{@project.display_image(:project_thumb_large)}" width="114" /
+      img.thumb-project-dashboard src="#{@project.display_image(:project_thumb_large)}" width="114" 
+    - else 
+      img.thumb-project-dashboard src="#{image_path('thumb-project.png')}" width="114" 
     .fontcolor-negative.lineheight-tight.fontsize-small= @project.name
 
   = link_to (edit ? '#home' : edit_project_path(@project, anchor: 'home')), id: 'dashboard_home_link', class: 'dashboard-nav-link-left' , data: {target: '#dashboard_home', tab_group: 'edit'} do

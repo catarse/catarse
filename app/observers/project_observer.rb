@@ -83,8 +83,8 @@ class ProjectObserver < ActiveRecord::Observer
   end
 
   def notify_admin_project_will_succeed(project)
-    redbooth_user = User.find_by(email: CatarseSettings[:email_redbooth_atendimento])
-    project.notify_once(:redbooth_task_project_will_succeed, redbooth_user) if redbooth_user
+    zendesk_user = User.find_by(email: CatarseSettings[:email_contact])
+    project.notify_once(:project_will_succeed, zendesk_user) if zendesk_user
   end
 
   def notify_users(project)

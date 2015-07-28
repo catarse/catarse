@@ -410,11 +410,13 @@ RSpec.describe User, type: :model do
       is_expected.to eq({
         user_id: user.id,
         email: user.email,
+        name: user.name,
         contributions: user.total_contributed_projects,
         projects: user.projects.count,
         published_projects: user.published_projects.count,
         created: user.created_at,
         has_online_project: user.has_online_project?,
+        has_sent_notification: user.has_sent_notification?,
         last_login: user.last_sign_in_at,
         created_today: user.created_today?
       }.to_json)
@@ -445,33 +447,6 @@ RSpec.describe User, type: :model do
     subject{ @u.credits }
 
     it{ is_expected.to eq(50.0) }
-  end
-
-  describe "#contributor_number" do
-    let(:create_user){ create(:confirmed_contribution).user }
-    let(:connection){ ActiveRecord::Base.connection }
-
-    subject{ create_user.contributor_number }
-
-    context "when I'm the first contributor" do
-      before do
-        create(:pending_contribution) # this user should not count as contributor
-        create_user
-        connection.execute "REFRESH MATERIALIZED VIEW public.contributor_numbers"
-      end
-
-      it{ is_expected.to eq 1 }
-    end
-
-    context "when I'm the second contributor" do
-      before do
-        create(:confirmed_contribution)
-        create_user
-        connection.execute "REFRESH MATERIALIZED VIEW public.contributor_numbers"
-      end
-
-      it{ is_expected.to eq 2 }
-    end
   end
 
   describe "#update_attributes" do
@@ -586,6 +561,32 @@ RSpec.describe User, type: :model do
 
     context "when user don't have contributions for the project" do
       it { is_expected.to eq(false) }
+    end
+  end
+
+  describe "#has_sent_notification?" do
+    subject{ user.has_sent_notification? }
+    let(:user) { create(:user) }
+
+    context "when user has sent notifications" do
+      let(:project) { create(:project, user: user, state: 'online') }
+      before do
+        create(:project_post, user: user, project: project )
+      end
+
+      it{ is_expected.to eq(true) }
+    end
+
+    context "when user has not sent notifications" do
+      before do
+        create(:project, user: user, state: 'online')
+      end
+
+      it{ is_expected.to eq(false) }
+    end
+
+    context "when user has no project" do
+      it{ is_expected.to eq(false) }
     end
   end
 

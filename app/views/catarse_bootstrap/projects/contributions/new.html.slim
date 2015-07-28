@@ -16,7 +16,7 @@
 #new-contribution.section
   .w-container
     .w-row
-      .w-col.w-col-8 
+      .w-col.w-col-8
         .w-form.back-reward-form
           = simple_form_for [:fallback_create, parent, @contribution], html: { method: :get, id: 'contribution_form' } do |form|
             = render 'devise/shared/alert'

@@ -1,7 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe BankAccount, type: :model do
+  let(:custom_bank) { create(:bank, code: "00M")}
   let(:bank_account) { create(:bank_account) }
+
+  before do
+    custom_bank
+  end
+
   describe "associations" do
     it{ is_expected.to belong_to :user }
   end
@@ -33,5 +39,38 @@ RSpec.describe BankAccount, type: :model do
   describe "#complete_account_string" do
     subject { bank_account.complete_account_string }
     it { is_expected.to eq("#{bank_account.account} - #{bank_account.account_digit}") }
+  end
+
+  describe "#input_bank_number_validation" do
+    context "when input_bank_number has a invalid bank number" do
+      before do
+        bank_account.input_bank_number = "009123"
+      end
+
+      it { expect(bank_account.valid?).to be_falsey }
+    end
+
+    context "when input_bank_number has a valid bank" do
+      before do
+        bank_account.input_bank_number = "00M"
+      end
+      it { is_expected.to be_truthy }
+    end
+  end
+
+  describe "#valid?" do
+    before do
+      expect(bank_account).to receive(:load_bank_from_input_bank_number)
+    end
+    it { bank_account.valid?}
+  end
+
+  describe "#load_bank_from_input_bank_number" do
+    it "should assign bank according to bank number" do
+      bank_account.input_bank_number = "00M"
+      bank_account.load_bank_from_input_bank_number
+
+      expect(bank_account.bank).to eq(custom_bank)
+    end
   end
 end

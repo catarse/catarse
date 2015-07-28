@@ -184,7 +184,41 @@ RSpec.describe ContributionDetail, type: :model do
     })}
   end
 
-  describe "user_profile_img" do
+  describe ".available_to_display" do
+    before do
+      create(:confirmed_contribution)
+      create(:deleted_contribution)
+      create(:refused_contribution)
+      create(:pending_contribution)
+      create(:pending_contribution, created_at: Time.now - 1.week)
+    end
+
+    subject{ ContributionDetail.available_to_display }
+
+    its(:count){ is_expected.to eq 2 }
+  end
+
+  describe "#full_text_index" do
+    let!(:contribution){ create(:confirmed_contribution, value: 10) }
+    let(:detail){ ContributionDetail.first }
+    subject{ detail.full_text_index }
+
+    it{ is_expected.to_not be_nil }
+  end
+
+  describe "#project_img" do
+    let!(:contribution){ create(:confirmed_contribution, value: 10) }
+    subject{ ContributionDetail.first.project_img }
+
+    before do
+      CatarseSettings[:aws_host] = 's3.aws.com'
+      CatarseSettings[:aws_bucket] = 'bucket'
+    end
+
+    it{ is_expected.to eq "https://#{CatarseSettings[:aws_host]}/#{CatarseSettings[:aws_bucket]}/uploads/project/uploaded_image/#{contribution.project.id}/project_thumb_small_testimg.png" }
+  end
+
+  describe "#user_profile_img" do
     let!(:contribution){ create(:confirmed_contribution, value: 10) }
     subject{ ContributionDetail.first.user_profile_img }
 

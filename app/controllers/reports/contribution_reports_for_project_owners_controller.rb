@@ -3,6 +3,7 @@ class Reports::ContributionReportsForProjectOwnersController < ApplicationContro
 
   has_scope :project_id, :reward_id
   has_scope :state, default: 'paid'
+  has_scope :waiting_payment, type: :boolean
 
   def index
     authorize project, :update?

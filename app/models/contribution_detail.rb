@@ -10,7 +10,7 @@ class ContributionDetail < ActiveRecord::Base
 
   delegate :available_rewards, :payer_email, :payer_name, to: :contribution
   delegate :pay, :refuse, :trash, :refund, :request_refund, :request_refund!,
-           :credits?, :paid?, :pending?, :deleted?, :direct_refund,
+           :credits?, :paid?, :pending?, :deleted?, :refunded?, :direct_refund,
            :slip_payment?, :pending_refund?, :second_slip_path,
            :pagarme_delegator, to: :payment
 
@@ -26,7 +26,6 @@ class ContributionDetail < ActiveRecord::Base
   scope :user_email_contains, ->(term) { joins(:user).where("unaccent(upper(users.email)) LIKE ('%'||unaccent(upper(?))||'%') OR unaccent(upper(payer_email)) LIKE ('%'||unaccent(upper(?))||'%')", term, term) }
 
   scope :with_state, ->(state){ where(state: state) }
-  scope :pending, ->{ where(state: 'pending') }
   scope :was_confirmed, ->{ where("contribution_details.state = ANY(confirmed_states())") }
 
   # Scopes based on project state
@@ -36,8 +35,11 @@ class ContributionDetail < ActiveRecord::Base
   scope :for_failed_projects, -> { with_project_state('failed').available_to_display }
 
   scope :available_to_display, -> {
-    where("contribution_details.state not in('deleted', 'refused')")
+    joins(:payment).
+    where("contribution_details.state not in('deleted', 'refused', 'pending') OR payments.waiting_payment")
   }
+
+  scope :pending, -> { joins(:payment).merge(Payment.waiting_payment) }
 
   scope :ordered, -> { order(id: :desc) }
 

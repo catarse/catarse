@@ -14,15 +14,7 @@ App.addChild('ProjectEdit', _.extend({
   el: '.project-dashboard-edit',
 
   events: {
-    'click .btn-dashboard' : 'toggleNav'
-  },
-
-  toggleNav: function(){
-    $(".body-project").toggleClass("closed");
-    $(".dashboard-nav.side").toggle("slide", { direction: "left" }, 1000);
-    $(".btn-dashboard").toggleClass("closed fa-cog");
-    $(".btn-dashboard").toggleClass("open fa-chevron-left");
-    return false;
+    'click .dashboard-nav-link-left' : 'toggleNav'
   },
 
   activate: function(){
@@ -41,6 +33,12 @@ App.addChild('ProjectEdit', _.extend({
       window.location.hash = $('.fa-exclamation-circle:eq(0)').parent().attr('href');
     } else {
       this.lookAnchors();
+    }
+  },
+
+  toggleNav: function(){
+    if(app.isMobile()){
+      app.toggleNav();
     }
   },
 

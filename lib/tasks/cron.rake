@@ -1,21 +1,12 @@
 namespace :cron do
   desc "Tasks that should run hourly"
   task hourly: [:finish_projects,
-                :cancel_expired_waiting_confirmation_contributions,
                 :refresh_materialized_views]
 
   desc "Tasks that should run daily"
-  task daily: [:refresh_materialized_views,
-               :notify_project_owner_about_new_confirmed_contributions,
+  task daily: [ :notify_project_owner_about_new_confirmed_contributions,
                :deliver_projects_of_week, :verify_pagarme_transactions,
                :verify_pagarme_transfers, :notify_pending_refunds]
-
-  desc "Refresh all materialized views"
-  task refresh_materialized_views: :environment do
-    puts "refreshing views"
-    Statistics.refresh_view
-  end
-
 
   desc "Refresh all materialized views"
   task refresh_materialized_views: :environment do
@@ -51,12 +42,6 @@ namespace :cron do
      contribution.notify(:contribution_project_unsuccessful_slip_no_account,
                          contribution.user) unless contribution.user.bank_account.present?
     end
-  end
-
-  desc "Cancel all pending payments older than 1 week"
-  task :cancel_expired_waiting_confirmation_contributions => :environment do
-    puts "Cancel all pending payments older than 1 week"
-    Payment.move_to_trash
   end
 
   desc "Deliver a collection of recents projects of a category"

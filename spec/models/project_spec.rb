@@ -63,7 +63,27 @@ RSpec.describe Project, type: :model do
 
   end
 
+  describe "#user_already_in_reminder?" do
+    let(:user) { create(:user) }
+    subject { project.user_already_in_reminder?(user.id) }
+    before do
+      project.notify_once(:reminder, user, project)
+    end
 
+    it { is_expected.to eq(true)}
+  end
+
+  describe "#total_reminders" do
+    let(:user) { create(:user) }
+    before do
+      project.notify_once(:reminder, user, project)
+      project.notify_once(:reminder, project.user, project)
+    end
+
+    subject { project.total_reminders }
+
+    it { is_expected.to eq(2) }
+  end
 
   describe ".of_current_week" do
     subject { Project.of_current_week }
@@ -377,6 +397,14 @@ RSpec.describe Project, type: :model do
 
     context 'when project has pending contributions' do
       it { is_expected.to eq(true) }
+    end
+
+    context 'when project has pending contributions older than 1 week' do
+      let(:contribution) { create(:pending_contribution) }
+      before do
+        contribution.payments.update_all created_at: Time.now - 1.week
+      end
+      it { is_expected.to eq(false) }
     end
 
     context 'when project has no pending contributions' do

@@ -139,11 +139,6 @@ class User < ActiveRecord::Base
     self.active.where(id: id).first!
   end
 
-  def contributor_number
-    #TODO: if you want to use this method contributor_numbers should be in a model class and have a job for refreshing it
-    self.class.connection.select_one("SELECT number FROM public.contributor_numbers WHERE user_id = #{self.id}")["number"].to_i
-  end
-
   # Return the projects that user has pending refund payments
   def pending_refund_payments_projects
     pending_refund_payments.map(&:project)
@@ -165,6 +160,10 @@ class User < ActiveRecord::Base
 
   def has_online_project?
     projects.with_state('online').exists?
+  end
+
+  def has_sent_notification?
+    projects.any? {|p| p.posts.exists?}
   end
 
   def created_projects
@@ -235,11 +234,13 @@ class User < ActiveRecord::Base
     {
       user_id: self.id,
       email: self.email,
+      name: self.name,
       contributions: self.total_contributed_projects,
       projects: self.projects.count,
       published_projects: self.published_projects.count,
       created: self.created_at,
       has_online_project: self.has_online_project?,
+      has_sent_notification: self.has_sent_notification?,
       last_login: self.last_sign_in_at,
       created_today: self.created_today?
     }

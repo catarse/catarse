@@ -1,19 +1,17 @@
-header class="main-header #{'alert' if can_display_pending_refund_alert?} #{((defined?(overlayer) && overlayer) ? 'overlayer' : '')}"
-  .w-row
-    .w-col.w-col-9.w-col-small-6.w-col-tiny-6.w-clearfix
-      = link_to (image_tag "catarse_bootstrap/logo_big.png"), root_url(subdomain: 'www'), class: 'header-logo w-nav-brand', :title => CatarseSettings[:company_name]
-      = yield :header_controls
-    .w-col.w-col-3.w-col-small-6.w-col-tiny-6.w-clearfix
-      - if current_user
-        .w-dropdown.user-profile
-          = link_to '#', id: 'user-menu', class: 'w-dropdown-toggle dropdown-toggle' do
-            = image_tag(current_user.display_image, :size => "40x40", class: 'user-avatar')
-            .w-icon-dropdown-toggle.dropdown-icon.positive
-          = render 'shared/user_menu'
-      - else
-        = link_to t('layouts.header.signin'), new_user_session_path, class: 'w-nav-link header-link w-nav-link btn-edit u-right'
+header class="main-header w-section #{'alert' if can_display_pending_refund_alert?} #{((defined?(overlayer) && overlayer) ? 'overlayer' : '')}"
+  .w-clearfix
+    = link_to (image_tag "catarse_bootstrap/logo_big.png"), root_url(subdomain: 'www'), class: 'header-logo w-nav-brand', :title => CatarseSettings[:company_name]
+    = yield :header_controls
+    - if current_user
+      .w-dropdown.user-profile
+        = link_to 'javascript:toggleMenu()', id: 'user-menu', class: 'w-dropdown-toggle dropdown-toggle' do
+          = image_tag(current_user.display_image, :size => "40x40", class: 'user-avatar')
+          .w-icon-dropdown-toggle.dropdown-icon.positive
+        = render 'shared/user_menu'
+    - else
+      = link_to t('layouts.header.signin'), new_user_session_path, class: 'w-nav-link header-link w-nav-link btn-edit u-right'
 
-      = link_to t('layouts.header.help'), CatarseSettings[:support_forum], target: :_blank, class: 'w-nav-link w-hidden-small w-hidden-tiny header-link w-nav-link u-right',  id: 'guidelines_header_modal' if CatarseSettings[:support_forum].present?
+    = link_to t('layouts.header.help'), CatarseSettings[:support_forum], target: :_blank, class: 'w-nav-link w-hidden-small w-hidden-tiny header-link w-nav-link u-right',  id: 'guidelines_header_modal' if CatarseSettings[:support_forum].present?
 
   = yield :headermobile_controls
 

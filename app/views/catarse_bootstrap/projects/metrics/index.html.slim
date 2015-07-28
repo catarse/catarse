@@ -25,7 +25,7 @@
         .u-marginbottom-40.u-margintop-40
           .fontsize-base.fontweight-bold Total de usuários que clicaram no botão Lembrar-me
           .fontsize-smaller Esses usuários receberão um lembrete por email 48 horas antes do término de sua campanha
-          = @project.users_in_reminder.count
+          = @project.total_reminders
       .w-col.w-col-4
         .card.u-radius.u-marginbottom-20.card-terciary data-ix="new-interaction" 
           .fontsize-small.fontweight-semibold.u-marginbottom-20
@@ -41,10 +41,10 @@
             li.divider.u-marginbottom-10
             li.fontsize-smaller.u-marginbottom-10
               div
-                | Apoiadores confirmados com boleto impresso&nbsp;&nbsp;
-                = link_to 'CSV', reports_contribution_reports_for_project_owners_path(project_id: @project.id, state: 'pending', format: :csv), class: 'alt-link'
+                | Apoiadores pendentes&nbsp;&nbsp;
+                = link_to 'CSV', reports_contribution_reports_for_project_owners_path(project_id: @project.id, state: 'pending', waiting_payment: 'true', format: :csv), class: 'alt-link'
                 | &nbsp;\&nbsp;
-                = link_to 'XLS', reports_contribution_reports_for_project_owners_path(project_id: @project.id,state: 'pending', format: :xls), class: 'alt-link'
+                = link_to 'XLS', reports_contribution_reports_for_project_owners_path(project_id: @project.id, state: 'pending', waiting_payment: 'true', format: :xls), class: 'alt-link'
             li.divider.u-marginbottom-10
             li.fontsize-smaller.u-marginbottom-10
               div

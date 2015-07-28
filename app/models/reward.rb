@@ -25,7 +25,8 @@ class Reward < ActiveRecord::Base
                                       FROM
                                         contributions c JOIN payments p ON p.contribution_id = c.id
                                       WHERE
-                                        p.state IN ('paid', 'pending')
+                                        (p.state = 'paid' OR
+                                        p.waiting_payment)
                                         AND reward_id = rewards.id
                                     ) < maximum_contributions)") }
   scope :sort_asc, -> { order('id ASC') }
@@ -66,7 +67,11 @@ class Reward < ActiveRecord::Base
   end
 
   def total_compromised
-    total_contributions %w(paid pending)
+    payments.where("payments.waiting_payment OR payments.state = 'paid'").count
+  end
+
+  def in_time_to_confirm
+    payments.waiting_payment.count
   end
 
   def remaining
