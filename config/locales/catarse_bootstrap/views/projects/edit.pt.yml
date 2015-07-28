@@ -1,6 +1,17 @@
 pt:
   projects:
     edit:
+      posts: "Escrever uma novidade"
+      budget: Orçamento
+      budget_subtitle: "Como o seu dinheiro será utilizado? Quanto mais transparência melhor. Mostre que etapas e processos estarão envolvidos no uso desses recursos. Uma lista com os principais itens do orçamento ou até mesmo um gráfico de pizza vão super bem aqui."
+      card: 'Card do projeto'
+      card_subtitle: 'Sabe aquele cardzinho de projeto que aparece na home e na busca? Pois então, faz bonito pois dizem que a primeira impressão é a que fica ;)'
+      video: 'Vídeo'
+      video_subtitle: 'Capricha! Um bom vídeo faz a diferença e pode ser o grande responsável pelo sucesso do seu projeto.'
+      basics: 'Preencha as informações abaixo'
+      basics_subtitle: 'Os dados informados nessa seção não poderão ser modificados quando o projeto for ao ar. Preencha com atenção e revise antes de lançar o projeto. '
+      goal: 'Meta e prazo'
+      goal_subtitle: 'Preencha com carinho a seção abaixo, pois essas informações não poderão mais ser alteradas se o projeto for ao ar.'
       reports: 'Relatórios'
       user_settings: 'Dados cadastrais e bancários'
       user_settings_subtitle: 'Com os dados abaixo completos, seu projeto estará pronto para ir ao ar. Após concluir o preenchimento, clique em Salvar. Revise. Se tudo estiver ok, basta apertar o botão Publicar e começar sua campanha!'
@@ -8,6 +19,8 @@ pt:
       reward: "Crie e edite aqui suas recompensas"
       reward_subtitle: "Essa é sua demonstração de gratidão com os apoiadores. Lembre-se de incluir os custos das recompensas no seu orçamento. Prometeu, ENTREGUE! "
       user_about_subtitle: "Apoiadores querem conhecer melhor os realizadores de projetos. Links que ajudam a contar sua história são sempre bem vindos. "
+      description: 'Conte a história do seu projeto!'
+      description_subtitle: 'Pense bem na narrativa do projeto. É ela quem encantará as pessoas e trará apoiadores. Um bom video e descrição são diferenciais!'
     reward_fields:
       edit: "Editar recompensa"
       reward: Recompensa
@@ -99,19 +112,30 @@ pt:
       in_analysis:
         title: "%{name}, você enviou seu projeto para análise e receberá nossa resposta em até 4 dias úteis"
         subtitle_html: "Muito obrigado! Nossa equipe vai avaliar todo o conteúdo do seu projeto e em até 4 dias úteis você receberá um email informando se ele foi Aprovado, Recusado ou se vai continuar Em Análise por mais algum tempo para que você possa realizar ajustes sugeridos. Aproveite esse período para coletar feedbacks com pessoas próximas!"
+    dashboard_analysis_success:
+      title: "%{name}, seu projeto foi enviado para análise!"
+      subtitle: "Você receberá nossa resposta em até 4 dias úteis no email:"
+      next_steps: "Enquanto espera a sua resposta, você pode continuar editando o seu projeto! Recomendamos também que você vá coletando feedback com as pessoas próximas e planejando como será a sua campanha."
     dashboard_nav:
       leave_link_html: "&nbsp; Sair do painel de controle"
       start_tab: Infos úteis
-      basics_tab: Básico
-      project_tab: Editar projeto
-      posts_tab: Novidades
-      rewards_tab: Recompensas
-      about_you_tab: Sobre você
       reports_tab: Relatórios
-      account_tab: Conta
       preview_tab: Preview
+      posts_tab: Novidades
+      edit_project: Editar projeto
       send: Enviar
       publish: Publicar
+    dashboard_nav_links:
+      preview_tab: Preview
+      account_tab: Conta
+      basics_tab: Básico
+      goal_tab: Meta e prazo
+      budget_tab: Orçamento
+      card_tab: Card do projeto
+      description_tab: Descrição
+      video_tab: Vídeo
+      rewards_tab: Recompensas
+      about_you_tab: Sobre você
     dashboard_user_about:
       submit: "Salvar"
       twitter_label: "Perfil do twitter"
@@ -128,6 +152,10 @@ pt:
       name_hint: "Esse é o nome que os usuários irão ver no seu perfil."
       email_label: Email
       email_hint: Email para você se comunicar com a equipe do Catarse e com os seus apoiadores
+    dashboard_goal:
+      submit: "Salvar"
+    dashboard_description:
+      submit: "Salvar"
     dashboard_reward:
       submit: "Salvar"
       add_reward: "Adicionar recompensa"
@@ -136,35 +164,26 @@ pt:
       header_subtitle: "É hora dos feedbacks!"
       header_text: "Compartilhe o link abaixo com seus amigos e aproveite o momento para fazer ajustes finos que ajudem na sua campanha."
     dashboard_posts:
-      title: "Escrever uma novidade"
       only_to_backers: "Quero que essa novidade seja visível apenas para apoiadores."
       publish: 'Publicar novidade'
       discard: 'Descartar'
       warning: "Toda novidade publicada é enviada diretamente aos seus apoiadores por email. Revise bem o post antes de publicar."
       old_posts: "Novidades antigas"
-    dashboard_project:
-      budgets_hint_html: "Informe uma lista com os principais itens do orçamento. Não precisa entrar em detalhes minuciosos, basta uma visão geral. Seus apoiadores gostarão de saber onde o dinheiro deles estará indo. Não existe uma regra&nbsp;quanto a quantidade de itens na lista, mas normalmente 5 costuma ser um bom número!"
-      budget_hint_html: "Como o seu dinheiro será utilizado? Quanto mais transparência melhor. Mostre que etapas e processos estarão envolvidos no uso desses recursos. Uma lista com os principais itens do orçamento ou até mesmo um gráfico de pizza vão super bem aqui."
+    dashboard_budget:
+      submit: Salvar e visualizar
       budget_label: "Orçamento do projeto"
-      budgets_label: "Detalhe do orçamento"
-      start: "Conte a história do seu projeto!"
-      start_subtitle: "Pense bem na narrativa do projeto. É ela quem encantará as pessoas e trará apoiadores. Um bom video e descrição são diferenciais!"
+    dashboard_card:
+      submit: Salvar e visualizar
+      card_label: "Card do projeto"
+    dashboard_goal:
+      submit: 'Salvar'
+    dashboard_video:
+      submit: Salvar
+      card_label: "Vídeo"
       video_url: "Vídeo do projeto"
       video_url_hint: "Importante: Qualquer projeto pode ser enviado sem o vídeo para análise do atendimento do Catarse . O vídeo pode ser analisado posteriormente. Lembrando que ele só é obrigatório para projetos com metas acima de 5 mil reais."
       video_url_subtitle: "Link do Vimeo ou Youtube"
-      about: "Descrição do projeto"
-      links_title: "Links úteis"
-      about_hint_html: 'Fale com paixão e clareza sobre o que será realizado. Esclareça possíveis dúvidas sobre como o dinheiro será utilizado, quem está por trás do projeto, como e quando o projeto será entregue. Transparência atrai mais apoiadores. Lembre-se: seu projeto será acessado por pessoas comuns que decidirão se querem ou não apoiar seu projeto. Capriche! '
-      card: 'Card do projeto'
-      card_subtitle: 'Sabe aquele cardzinho de projeto que aparece na home e na busca? Então, faz bonito aqui nessa parte pois dizem que a primeira impressão é a que fica!'
-      image: 'Imagem do projeto'
-      image_hint: 'Essa imagem será utilizada como a miniatura de seu projeto (PNG, JPG tamanho 600 x 340)'
-      headline: 'Chamada do Projeto'
-      headline_hint: 'Será utilizada no card do projeto, junto com a imagem acima (miniatura). No máximo 100 caracteres.'
-      submit: 'Salvar'
     dashboard_basics:
-      project_start: 'Preencha as informações abaixo'
-      project_start_subtitle: 'Os dados informados nessa seção não poderão ser modificados quando o projeto for ao ar. Preencha com atenção e revise antes de lançar o projeto. '
       online_date: 'Data de entrada no ar'
       user_id: 'Id do usuário'
       name: 'Nome do projeto'

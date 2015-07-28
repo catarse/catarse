@@ -14,17 +14,22 @@ App.addChild('ProjectEdit', _.extend({
   el: '.project-dashboard-edit',
 
   events: {
-    'click .dashboard-nav-link-left' : 'toggleNav'
+    'click a.dashboard-nav-link-left' : 'toggleNav'
   },
 
   activate: function(){
     this.route('basics');
+    this.route('goal');
+    this.route('description');
+    this.route('budget');
+    this.route('card');
     this.route('home');
-    this.route('project');
+    this.route('video');
     this.route('posts');
     this.route('reward');
     this.route('user_about');
     this.route('preview');
+    this.route('analysis_success');
     this.route('edit');
     this.route('user_settings');
     this.route('reports');
@@ -37,6 +42,7 @@ App.addChild('ProjectEdit', _.extend({
   },
 
   toggleNav: function(){
+    window.scrollTo(0, 0);
     if(app.isMobile()){
       app.toggleNav();
     }

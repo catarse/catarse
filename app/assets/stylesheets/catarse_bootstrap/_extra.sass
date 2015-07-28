@@ -21,6 +21,9 @@ img, iframe
     color: #409ade
     text-decoration: underline
 
+.edit-project-div
+  height: 520px
+
 .project-about:after
   content: ""
   display: table
@@ -423,10 +426,15 @@ img, iframe
   height: 94px
   width: inherit
   background-color: #2c2f33
-  
-.dashboard-nav-link-left:last-of-type
-  margin-bottom: 124px
 
+#dashboard-links.dashboard-nav-link-left:last-of-type
+  margin-bottom: 124px
+.dashboard-nav-link-left
+  text-align: left
+  background: inherit
+  border-top: 0
+  border-bottom: 0
+  outline: none
 .body-project.closed
   .dashboard-nav
     transform: translate3d(-205px, 0, 0)

@@ -49,7 +49,7 @@ class ProjectsController < ApplicationController
 
   def send_to_analysis
     authorize resource
-    resource_action :send_to_analysis
+    resource_action :send_to_analysis, :analysis_success
   end
 
   def publish
@@ -123,14 +123,18 @@ class ProjectsController < ApplicationController
     resource.build_account unless resource.account
   end
 
-  def resource_action action_name
+  def resource_action action_name, success_redirect=nil
     if resource.send(action_name)
       if referral_link.present?
         resource.update_attribute :referral_link, referral_link
       end
 
       flash[:notice] = t("projects.#{action_name.to_s}")
-      redirect_to edit_project_path(@project, anchor: 'home')
+      if success_redirect
+        redirect_to edit_project_path(@project, anchor: success_redirect)
+      else
+        redirect_to edit_project_path(@project, anchor: 'home')
+      end
     else
       flash.now[:notice] = t("projects.#{action_name.to_s}_error")
       build_dependencies

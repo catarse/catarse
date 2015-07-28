@@ -6,8 +6,7 @@
 .w-section.dashboard-header.u-text-center.big
   .w-container
     .w-row
-      .w-col.w-col-2
-      .w-col.w-col-8
+      .w-col.w-col-8.w-col-push-2
         #dashboard-page-title.fontweight-semibold.fontsize-larger.lineheight-looser
         #dashboard-page-subtitle.fontsize-base
 .project-dashboard-edit
@@ -17,24 +16,34 @@
     .w-container
       .w-row
         article
-          #dashboard_home.content.w-hidden
+          #dashboard_home.content.w-hidden data-page_title="" data-page_subtitle=""
             = render 'dashboard_home'
+          #dashboard_goal.content.w-hidden  data-page_title="#{t('.goal')}" data-page_subtitle="#{t('.goal_subtitle')}"
+            = render 'dashboard_goal'
+          #dashboard_video.content.w-hidden  data-page_title="#{t('.video')}" data-page_subtitle="#{t('.video_subtitle')}"
+            = render 'dashboard_video'
+          #dashboard_budget.content.w-hidden data-page_title="#{t('.budget')}" data-page_subtitle="#{t('.budget_subtitle')}"
+            = render 'dashboard_budget'
+          #dashboard_card.content.w-hidden data-page_title="#{t('.card')}" data-page_subtitle="#{t('.card_subtitle')}"
+            = render 'dashboard_card'
           - if !@project.published? || (current_user && current_user.admin?)
-            #dashboard_basics.content.w-hidden
+            #dashboard_analysis_success.content.w-hidden data-page_title="" data-page_subtitle=""
+              = render 'dashboard_analysis_success'
+            #dashboard_basics.content.w-hidden data-page_title="#{t('.basics')}" data-page_subtitle="#{t('.basics_subtitle')}"
               = render 'dashboard_basics'
-          #dashboard_project.content.w-hidden
-            = render 'dashboard_project'
+            #dashboard_description.content.w-hidden data-page_title="#{t('.description')}" data-page_subtitle="#{t('.description_subtitle')}"
+              = render 'dashboard_description'
           - if @project.published?
-            #dashboard_posts.content.w-hidden
+            #dashboard_posts.content.w-hidden data-page_title="#{t('.posts')}" data-page_subtitle=""
               = render 'dashboard_posts'
           #dashboard_reward.content.w-hidden data-page_title="#{t('.reward')}" data-page_subtitle="#{t('.reward_subtitle')}"
             = render 'dashboard_reward'
           - if @project.published?
-            #dashboard_reports.content.w-hidden data-path=project_metrics_path(@project) data-page_title="#{t('.reports')}"
+            #dashboard_reports.content.w-hidden data-path=project_metrics_path(@project) data-page_title="#{t('.reports')}" data-page_subtitle=""
               .results
           #dashboard_user_about.content.w-hidden data-page_title="#{t('.user_about')}" data-page_subtitle="#{t('.user_about_subtitle')}"
             = render 'dashboard_user_about'
-          #dashboard_preview.content.w-hidden
+          #dashboard_preview.content.w-hidden data-page_subtitle="" data-page_title=""
             = render 'dashboard_preview'
           #dashboard_user_settings.content.w-hidden data-page_title="#{t('.user_settings')}" data-page_subtitle="#{t('.user_settings_subtitle')}"
             = render 'dashboard_user_settings'
