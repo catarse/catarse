@@ -67,11 +67,15 @@ class Reward < ActiveRecord::Base
   end
 
   def total_compromised
-    payments.where("payments.waiting_payment OR payments.state = 'paid'").count
+    paid_count + in_time_to_confirm
+  end
+
+  def paid_count
+    pluck_from_database('paid_count')
   end
 
   def in_time_to_confirm
-    payments.waiting_payment.count
+    pluck_from_database('waiting_payment_count')
   end
 
   def remaining
@@ -88,5 +92,10 @@ class Reward < ActiveRecord::Base
 
   def expires_project_cache
     project.expires_fragments 'project-rewards'
+  end
+
+  private
+  def pluck_from_database attribute
+    Reward.where(id: self.id).pluck("rewards.#{attribute}").first
   end
 end
