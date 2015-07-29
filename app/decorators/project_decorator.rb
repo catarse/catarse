@@ -160,11 +160,5 @@ class ProjectDecorator < Draper::Decorator
     { time: time, unit: pluralize_without_number(time, I18n.t("datetime.prompts.#{unit}").downcase) }
   end
 
-  private
-
-  def can_show_errors?
-    raise source.state.inspect
-    ['in_analysis', 'approved'].include? source.state
-  end
 end
 
