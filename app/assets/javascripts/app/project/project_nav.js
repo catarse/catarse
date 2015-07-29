@@ -29,7 +29,7 @@ App.addChild('ProjectNav', {
 
   setEditState: function(){
     var anchor = window.location.hash.substring(1);
-    if($.inArray(anchor, ['home', 'posts', 'reports']) == -1){
+    if(anchor !== '' && $.inArray(anchor, ['home', 'posts', 'reports']) == -1){
       this.toggleEdit();
     }
   },
