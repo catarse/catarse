@@ -76,8 +76,8 @@ class ProjectDecorator < Draper::Decorator
     number_to_currency source.pledged, precision: 2
   end
 
-  def status_icon_for group_name
-    if source.errors.present?
+  def status_icon_for group_name, action_name = nil
+    if source.errors.present? && ( ['send_to_analysis', 'publish'].include? action_name )
       has_error = source.errors.any? do |error|
         source.error_included_on_group?(error, group_name)
       end
@@ -91,7 +91,6 @@ class ProjectDecorator < Draper::Decorator
   end
 
   def display_errors group_name
-    #source.valid?
     if source.errors.present?
       error_messages = ''
       source.errors.each do |error|
@@ -160,5 +159,6 @@ class ProjectDecorator < Draper::Decorator
   def time_and_unit_attributes(time, unit)
     { time: time, unit: pluralize_without_number(time, I18n.t("datetime.prompts.#{unit}").downcase) }
   end
+
 end
 
