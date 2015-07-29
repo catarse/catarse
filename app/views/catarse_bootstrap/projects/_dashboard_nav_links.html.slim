@@ -10,10 +10,10 @@
     = link_to (edit ? '#goal' : edit_project_path(@project, anchor: 'goal')), id: 'goal_link', class: link_class , data: {target: '#dashboard_goal', tab_group: 'edit'} do
       = @project.decorate.status_icon_for('goal', params[:action])
       = t('.goal_tab')
+
   = link_to (edit ? '#description' : edit_project_path(@project, anchor: 'description')), id: 'description_link', class: link_class , data: {target: '#dashboard_description', tab_group: 'edit'} do
     = @project.decorate.status_icon_for('description', params[:action])
     = t('.description_tab')
-
   = link_to (edit ? '#video' : edit_project_path(@project, anchor: 'video')), id: 'dashboard_video_link', class: link_class , data: {target: '#dashboard_video', tab_group: 'edit'} do
     = @project.decorate.status_icon_for('video', params[:action])
     = t('.video_tab')
