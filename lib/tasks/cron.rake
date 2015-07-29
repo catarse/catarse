@@ -40,7 +40,7 @@ namespace :cron do
   task notify_pending_refunds: [:environment] do
     Contribution.need_notify_about_pending_refund.each do |contribution|
      contribution.notify(:contribution_project_unsuccessful_slip_no_account,
-                         contribution.user)
+                         contribution.user) unless contribution.user.bank_account.present?
     end
   end
 
