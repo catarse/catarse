@@ -2498,7 +2498,6 @@ p {
   width: 205px;
   padding: 24px 16px;
   background-color: #23262b;
-  box-shadow: rgba(0, 0, 0, 0.61) 0px 10px 50px 19px;
 }
 .teste {
   height: 105px;
@@ -2553,7 +2552,7 @@ p {
 }
 .dashboard-nav-link-left.selected {
   border-left-color: #409ade;
-  background-color: rgba(241, 244, 244, 0.2);
+  background-color: #3f4752;
 }
 .dashboard-nav-link-left.selected.w--current {
   border-left-color: #409ade;
@@ -2682,6 +2681,12 @@ p {
   top: 4px;
   right: 4px;
   bottom: 0px;
+}
+.hero-who {
+  background-color: #67a4d2;
+  background-image: url('../images/bg-quemsomos.jpg');
+  background-position: 50% 100%;
+  background-size: cover;
 }
 html.w-mod-js *[data-ix="fade-in"] {
   opacity: 0;
@@ -3732,6 +3737,9 @@ html.w-mod-js *[data-ix="know-more-2"] {
   .body-alert {
     margin-top: 38px;
   }
+  .hero-who {
+    padding-top: 190px;
+  }
 }
 @media (max-width: 479px) {
   h2 {
@@ -4153,6 +4161,10 @@ html.w-mod-js *[data-ix="know-more-2"] {
   }
   .table-inner {
     max-height: 226px;
+  }
+  .hero-who {
+    padding-top: 215px;
+    background-position: 61% 100%;
   }
 }
 
