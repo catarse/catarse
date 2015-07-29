@@ -21,15 +21,14 @@ nav.w-section.dashboard-nav.side
       span.fa.fa-bar-chart.fa-fw.fa-lg>
       = t('.reports_tab')
 
-  - if @project.published?
-    .edit-project-div
+  .edit-project-div
+    - if @project.published?
       button#toggle-edit-menu.dashboard-nav-link-left
         span.fa.fa-pencil.fa-fw.fa-lg
         = t('.edit_project')
       #edit-menu-items.w-hidden
         = render partial: 'dashboard_nav_links', locals: {edit: edit}
-  - else
-    .edit-project-div
+    - else
       = render partial: 'dashboard_nav_links', locals: {edit: edit}
 
       - if @project.draft?
