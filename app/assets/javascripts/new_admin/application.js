@@ -2,6 +2,7 @@
 //= require underscore
 //= require mithril.postgrest
 //= require moment
+//= require replace-diacritics
 //= require new_admin/init
 //= require catarse_admin
 //= require_self
