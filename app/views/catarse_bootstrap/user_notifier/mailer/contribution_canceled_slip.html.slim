@@ -7,7 +7,7 @@ p
   | Não recebemos a confirmação de pagamento do boleto gerado para o projeto #{link_to contribution.project.name, project_by_slug_url(permalink: contribution.project.permalink, ref: 'notificacao_cancelado')}.
 p Se você precisar de um prazo de vencimento maior, pode gerar sua segunda via aqui:
 center
-  = link_to catarse_pagarme.second_slip_pagarme_url(contribution.payments.last), target: '__blank' do
+  = link_to catarse_pagarme.second_slip_pagarme_url(contribution.payments.last, host: CatarseSettings[:host]), target: '__blank' do
     = image_tag "#{CatarseSettings[:base_url]}/assets/catarse_bootstrap/2nd_slip.png"
 
 p Qualquer dúvida, basta entrar em contato conosco respondendo a esta mensagem ou através do e-mail #{mail_to contact_email}
