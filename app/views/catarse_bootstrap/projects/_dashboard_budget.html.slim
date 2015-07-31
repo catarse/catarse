@@ -3,12 +3,11 @@
     .w-container
       .w-row
         .w-col.w-col-10.w-col-push-1
-          = @project.display_errors(:budget)
-          .card.card-terciary
-            = form.input :budget, as: :text, 
+          .w-form
+            = @project.display_errors(:budget)
+            = form.input :budget, as: :text,
               wrapper: :two_columns,
-              label_wrapper_html: { class: 'w-col w-col-12 u-marginbottom-20' },
-              text_field_wrapper_html: { class: 'w-col w-col-12' },
+              wrapper_class: 'w-row u-marginbottom-30 card card-terciary',
               input_html: { class: 'redactor positive', required: false },
               validation_text: false
   .w-section.section

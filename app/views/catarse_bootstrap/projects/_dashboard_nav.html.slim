@@ -1,45 +1,46 @@
 - edit = defined?(edit_page) || false
 = content_for :body_class, 'body-project open'
-nav.w-section.dashboard-nav.side
-  = link_to (@project.published? ? project_by_slug_path(@project.permalink) : '#preview'), id: 'dashboard_preview_link', class: 'w-inline-block dashboard-project-name' , data: {target: '#dashboard_preview', tab_group: 'edit'} do
-    - if @project.uploaded_image.present?
-      img.thumb-project-dashboard src="#{@project.display_image(:project_thumb_large)}" width="114"
-    - else
-      img.thumb-project-dashboard src="#{image_path('thumb-project.png')}" width="114"
-    .fontcolor-negative.lineheight-tight.fontsize-small= @project.name
+#project-nav
+  nav.w-section.dashboard-nav.side
+    = link_to (@project.published? ? project_by_slug_path(@project.permalink) : '#preview'), id: 'dashboard_preview_link', class: 'w-inline-block dashboard-project-name' , data: {target: '#dashboard_preview', tab_group: 'edit'} do
+      - if @project.uploaded_image.present?
+        img.thumb-project-dashboard src="#{@project.display_image(:project_thumb_large)}" width="114"
+      - else
+        img.thumb-project-dashboard src="#{image_path('thumb-project.png')}" width="114"
+      .fontcolor-negative.lineheight-tight.fontsize-small= @project.name
 
-  = link_to (edit ? '#home' : edit_project_path(@project, anchor: 'home')), id: 'dashboard_home_link', class: 'dashboard-nav-link-left ' , data: {target: '#dashboard_home', tab_group: 'edit'} do
-    span.fa.fa-fw.fa-info.fa-lg>
-    = t('.start_tab')
-  - if @project.published?
-    = link_to (edit ? '#posts' : edit_project_path(@project, anchor: 'posts')), id: 'dashboard_posts_link', class: 'dashboard-nav-link-left ' , data: {target: '#dashboard_posts', tab_group: 'edit'} do
-      span.fa.fa-bullhorn.fa-fw.fa-lg>
-      = t('.posts_tab')
-      | &nbsp
-      span.badge= @project.posts.count
-    = link_to (edit ? '#reports' : edit_project_path(@project, anchor: 'reports')), id: 'dashboard_reports_link', class: 'dashboard-nav-link-left u-marginbottom-30' , data: {target: '#dashboard_reports', tab_group: 'edit'} do
-      span.fa.fa-bar-chart.fa-fw.fa-lg>
-      = t('.reports_tab')
+    #info-links
+      = link_to (edit ? '#home' : edit_project_path(@project, anchor: 'home')), id: 'dashboard_home_link', class: 'dashboard-nav-link-left ' , data: {target: '#dashboard_home', tab_group: 'edit'} do
+        span.fa.fa-fw.fa-info.fa-lg>
+        = t('.start_tab')
+      - if @project.published?
+        = link_to (edit ? '#posts' : edit_project_path(@project, anchor: 'posts')), id: 'dashboard_posts_link', class: 'dashboard-nav-link-left ' , data: {target: '#dashboard_posts', tab_group: 'edit'} do
+          span.fa.fa-bullhorn.fa-fw.fa-lg>
+          = t('.posts_tab')
+          | &nbsp
+          span.badge= @project.posts.count
+        = link_to (edit ? '#reports' : edit_project_path(@project, anchor: 'reports')), id: 'dashboard_reports_link', class: 'dashboard-nav-link-left u-marginbottom-30' , data: {target: '#dashboard_reports', tab_group: 'edit'} do
+          span.fa.fa-bar-chart.fa-fw.fa-lg>
+          = t('.reports_tab')
 
-  - if @project.published?
     .edit-project-div
-      button#toggle-edit-menu.dashboard-nav-link-left
-        span.fa.fa-pencil.fa-fw.fa-lg
-        = t('.edit_project')
-      #edit-menu-items.w-hidden
+      - if @project.published?
+        button#toggle-edit-menu.dashboard-nav-link-left
+          span.fa.fa-pencil.fa-fw.fa-lg
+          = t('.edit_project')
+        #edit-menu-items.w-hidden
+          = render partial: 'dashboard_nav_links', locals: {edit: edit}
+      - else
         = render partial: 'dashboard_nav_links', locals: {edit: edit}
-  - else
-    = render partial: 'dashboard_nav_links', locals: {edit: edit}
 
-    - if @project.draft?
-      .btn-send-draft-fixed
-         = link_to t('.send'), send_to_analysis_project_path(@project), class: 'btn btn-medium'
-    - if @project.approved?
-      .btn-send-draft-fixed
-         = link_to publish_project_path(@project), class: 'btn btn-medium' do
-          = t('.publish')
-          | &nbsp;&nbsp;
-          span.fa.fa-chevron-right
-- if policy(@project).update? && @project.published?
-  div
-    a.btn-dashboard.open.fa.fa-lg.fa-chevron-left href="#"
+        .btn-send-draft-fixed
+          - if @project.draft?
+             = link_to t('.send'), send_to_analysis_project_path(@project), class: 'btn btn-medium'
+          - if @project.approved?
+             = link_to publish_project_path(@project), class: 'btn btn-medium' do
+              = t('.publish')
+              | &nbsp;&nbsp;
+              span.fa.fa-chevron-right
+  - if policy(@project).update? && @project.published?
+    div
+      a.btn-dashboard.open.fa.fa-lg.fa-chevron-left href="#"
