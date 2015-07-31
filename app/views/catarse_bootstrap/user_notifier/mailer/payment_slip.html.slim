@@ -1,17 +1,21 @@
 - contribution = @notification.contribution
+- expire_date = contribution.details.ordered.first.gateway_data["boleto_expiration_date"].to_datetime.strftime('%d/%m')
+
 p Olá, <strong>#{contribution.user.display_name}</strong> !
-p Você acabou de gerar um boleto para apoiar o projeto #{link_to(contribution.project.name, project_by_slug_url(permalink: contribution.project.permalink))}.
-p 
-  | Após o pagamento, levamos até 3 dias úteis para receber a confirmação. 
-  | Quando essa confirmação ocorrer, mandaremos outro email com todos os detalhes da transação.
-p 
-  | Para imprimir o boleto gerado, basta 
-  = link_to 'clicar aqui', contribution.details.ordered.first.decorate.display_slip_url
-  | .
+p #{expire_date} é o dia do vencimento do boleto gerado para apoiar o #{contribution.project.name}.
 
-p O prazo de vencimento do boleto é de 2 dias corridos. Para alterar a data de vencimento, entre em contato conosco respondendo a esta mensagem ou através do e-mail #{mail_to CatarseSettings[:email_contact]}
+p O realizador #{contribution.project.user.display_name} está contando com o seu apoio para que o projeto seja bem-sucedido.
 
-p 
+p Se você não imprimiu seu boleto ainda, faça isso agora mesmo:
+
+p
+  center
+    = link_to contribution.details.ordered.first.decorate.display_slip_url, target: '__blank' do
+      = image_tag "#{CatarseSettings[:base_url]}/assets/catarse_bootstrap/display_slip.png"
+
+p Caso já tenha pago o boleto bancário, favor desconsiderar esse email.
+
+p
   | Um abraço,
-  br/
+p
   | #{CatarseSettings[:company_name]}
