@@ -1,1 +1,2 @@
-|Boleto gerado: apoio para #{@notification.contribution.project.name}
+- expire_date = @notification.contribution.details.ordered.first.gateway_data["boleto_expiration_date"].to_datetime.strftime('%d/%m')
+|Estamos contando com o seu apoio! #{expire_date} vence o boleto gerado para #{@notification.contribution.project.name}
