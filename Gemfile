@@ -54,10 +54,8 @@ gem 'high_voltage'
 
 # Authentication and Authorization
 gem 'omniauth'
-gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'devise'
-gem 'ezcrypto'
 gem 'pundit'
 
 # Email marketing
@@ -153,7 +151,6 @@ gem 'sass-rails'
 gem 'coffee-rails'
 gem 'compass-rails'
 gem 'uglifier'
-gem 'compass-960-plugin'
 gem 'sprockets'
 
 # FIXME: Not-anymore-on-development
