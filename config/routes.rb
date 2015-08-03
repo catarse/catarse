@@ -50,6 +50,9 @@ Catarse::Application.routes.draw do
         get :details, to: 'projects/contribution_details#index'
         get :fallback_create, to: 'projects/contributions#create'
       end
+      member do
+        get :second_slip
+      end
       put :credits_checkout, on: :member
     end
 

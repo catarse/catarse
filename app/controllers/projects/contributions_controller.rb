@@ -66,6 +66,11 @@ class Projects::ContributionsController < ApplicationController
     @thank_you_id = @project.id
   end
 
+  def second_slip
+    authorize resource
+    redirect_to resource.details.ordered.first.second_slip_path
+  end
+
   protected
   def load_rewards
     empty_reward = Reward.new(minimum_value: 0, description: t('projects.contributions.new.no_reward'))
