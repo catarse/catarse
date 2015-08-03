@@ -28,7 +28,7 @@ class AddTeamMembersView < ActiveRecord::Migration
           COALESCE(ut.total_contributed_projects, 0) as total_contributed_projects,
           COALESCE(ut.sum, 0) as total_amount_contributed
         from users u
-        left join user_totals ut on ut.user_id = u.id
+        left join "1".user_totals ut on ut.user_id = u.id
         where u.admin
         order by u.name asc
       );
@@ -39,7 +39,7 @@ class AddTeamMembersView < ActiveRecord::Migration
 
       drop index if exists user_totals_user_id_ix;
       drop index if exists user_admin_id_ix;
-      create index user_totals_user_id_ix on user_totals(user_id);
+      create index user_totals_user_id_ix on "1".user_totals(user_id);
       create index user_admin_id_ix on users(id) where admin;
 
       CREATE OR REPLACE VIEW "1".team_totals as (
