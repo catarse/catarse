@@ -2,7 +2,7 @@ class AddTeamMembersView < ActiveRecord::Migration
   def up
     execute <<-SQL
       CREATE ROLE anonymous NOLOGIN;
-      CREATE OR REPLACE FUNCTION was_confirmed(contributions) RETURNS boolean
+      CREATE OR REPLACE FUNCTION public.was_confirmed(contributions) RETURNS boolean
           LANGUAGE sql STABLE SECURITY DEFINER
           AS $_$
             SELECT EXISTS (
@@ -74,7 +74,7 @@ class AddTeamMembersView < ActiveRecord::Migration
       drop index if exists user_totals_user_id_ix;
       drop index if exists user_admin_id_ix;
 
-      CREATE OR REPLACE FUNCTION was_confirmed(contributions) RETURNS boolean
+      CREATE OR REPLACE FUNCTION public.was_confirmed(contributions) RETURNS boolean
           LANGUAGE sql
           AS $_$
             SELECT EXISTS (
