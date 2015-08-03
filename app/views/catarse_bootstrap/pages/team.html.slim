@@ -2,7 +2,7 @@
 - content_for :application_js do
   = javascript_include_tag 'api/application' 
 
-= render 'shared/header_big'
+= render 'shared/header_big', overlayer: true
 
 .w-section.hero-who.hero-full
   .w-container.u-text-center
@@ -11,7 +11,7 @@
 
 #team-root
 
-= render 'shared/footer'
+= render 'shared/footer_big'
 
 
 
