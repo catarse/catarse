@@ -26,6 +26,10 @@ class Admin::ProjectsController < Admin::BaseController
   end
 
   protected
+  def permitted_params
+    params.require(:project).permit(resource.attribute_names.map(&:to_sym))
+  end
+
   def collection
     @scoped_projects = apply_scopes(Project).without_state('deleted')
     @projects = @scoped_projects.page(params[:page])
