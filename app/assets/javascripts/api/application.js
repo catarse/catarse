@@ -3,10 +3,10 @@
 //= require mithril.postgrest
 //= require moment
 //= require replace-diacritics
-//= require catarse-helpers
+//= require catarse_helpers
 //= require api/init
 //= require catarse_admin
-//= require catarse-static
+//= require catarse_static
 //= require_self
 
 var adminRoot = document.getElementById("new-admin");
