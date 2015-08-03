@@ -5,8 +5,8 @@
 //= require replace-diacritics
 //= require catarse_helpers
 //= require api/init
-//= require catarse_admin
-//= require catarse_static
+//= require catarse-admin
+//= require catarse-static
 //= require_self
 
 var adminRoot = document.getElementById("new-admin");
