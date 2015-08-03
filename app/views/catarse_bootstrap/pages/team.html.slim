@@ -1,0 +1,17 @@
+- content_for :title, "Nosso time <3"
+- content_for :application_js do
+  = javascript_include_tag 'api/application' 
+
+= render 'shared/header_big'
+
+.w-section.hero-who.hero-full
+  .w-container.u-text-center
+    img.icon-hero src="/assets/logo-yellow.png" /
+    .u-text-center.u-marginbottom-20.fontsize-largest Conheça nosso time
+
+#team-root
+
+= render 'shared/footer'
+
+
+

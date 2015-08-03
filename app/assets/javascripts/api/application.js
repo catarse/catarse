@@ -3,15 +3,21 @@
 //= require mithril.postgrest
 //= require moment
 //= require replace-diacritics
-//= require new_admin/init
+//= require catarse-helpers
+//= require api/init
 //= require catarse_admin
+//= require catarse-static
 //= require_self
 
 var adminRoot = document.getElementById("new-admin");
-m.module(adminRoot, adminApp.AdminContributions);
+if(adminRoot)
+  m.module(adminRoot, adminApp.AdminContributions);
+
+var teamRoot = document.getElementById("team-root");
+if(teamRoot)
+  m.module(teamRoot, staticApp.Team);
 
 window.toggleMenu = function(){
   var userMenu = document.getElementById("user-menu-dropdown");
   userMenu.classList.toggle('w--open');
 };
-
