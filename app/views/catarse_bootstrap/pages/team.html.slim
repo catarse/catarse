@@ -1,6 +1,6 @@
 - content_for :title, "Nosso time <3"
 - content_for :application_js do
-  = javascript_include_tag 'static/application' 
+  = javascript_include_tag 'api/application' 
 
 = render 'shared/header_big'
 
@@ -9,7 +9,7 @@
     img.icon-hero src="/assets/logo-yellow.png" /
     .u-text-center.u-marginbottom-20.fontsize-largest Conheça nosso time
 
-#team-root[data-api=CatarseSettings[:api_host]]
+#team-root
 
 = render 'shared/footer'
 
