@@ -9,13 +9,16 @@
 //= require catarse-static
 //= require_self
 
-var adminRoot = document.getElementById("new-admin");
-if(adminRoot)
-  m.module(adminRoot, adminApp.AdminContributions);
+var adminRoot = document.getElementById('new-admin'),
+    teamRoot = document.getElementById("team-root");
 
-var teamRoot = document.getElementById("team-root");
-if(teamRoot)
+if(adminRoot){
+  m.module(adminRoot, adminApp.AdminContributions);
+}
+
+if(teamRoot){
   m.module(teamRoot, staticApp.Team);
+}
 
 window.toggleMenu = function(){
   var userMenu = document.getElementById("user-menu-dropdown");
