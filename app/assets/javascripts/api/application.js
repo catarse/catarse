@@ -3,7 +3,7 @@
 //= require mithril.postgrest
 //= require moment
 //= require replace-diacritics
-//= require catarse_helpers
+//= require catarse-helpers
 //= require api/init
 //= require catarse-admin
 //= require catarse-static
