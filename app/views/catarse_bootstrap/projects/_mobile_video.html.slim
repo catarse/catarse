@@ -1,8 +1,9 @@
-.w-hidden-main.w-hidden-medium.project-video-div-mobile
-  .w-container
-    .w-embed.w-video.project-video style=("padding-top: 56.20608899297424%;") 
-      iframe.embedly-embed allowfullscreen="" frameborder="0" scrolling="no" src="https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Fwww.youtube.com%2Fembed%2F9V8W7IWv4vU%3Ffeature%3Doembed&amp;url=http%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D9V8W7IWv4vU&amp;image=http%3A%2F%2Fi1.ytimg.com%2Fvi%2F9V8W7IWv4vU%2Fhqdefault.jpg&amp;key=c4e54deccf4d4ec997a64902e9a30300&amp;type=text%2Fhtml&amp;schema=youtube" 
-      iframe.embedly-embed src="#{@project.display_video_embed_url}"  width="100%" height="379" frameborder="0" allowFullScreen
+- if @project.video_url.present?
+  .w-hidden-main.w-hidden-medium.project-video-div-mobile
+    .w-container
+      .w-embed.w-video.project-video style=("padding-top: 56.20608899297424%;") 
+        iframe.embedly-embed allowfullscreen="" frameborder="0" scrolling="no" src="https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Fwww.youtube.com%2Fembed%2F9V8W7IWv4vU%3Ffeature%3Doembed&amp;url=http%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D9V8W7IWv4vU&amp;image=http%3A%2F%2Fi1.ytimg.com%2Fvi%2F9V8W7IWv4vU%2Fhqdefault.jpg&amp;key=c4e54deccf4d4ec997a64902e9a30300&amp;type=text%2Fhtml&amp;schema=youtube" 
+        iframe.embedly-embed src="#{@project.display_video_embed_url}"  width="100%" height="379" frameborder="0" allowFullScreen
 .w-hidden-main.w-hidden-medium.project-about-highlight
   .w-container
     p.w-hidden-main.w-hidden-medium.fontsize-small = @project.headline
