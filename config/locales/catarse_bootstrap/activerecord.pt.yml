@@ -260,6 +260,7 @@ pt:
       refunded: "Reembolsado em %{date}"
       pending_refund: "Reembolso solicitado em %{date}"
       refused: "Pagamento recusado em %{date}"
+      chargeback: "Contestado"
   contribution:
     payment_details:
       desconhecido: ""
