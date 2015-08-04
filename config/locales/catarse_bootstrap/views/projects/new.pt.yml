@@ -20,7 +20,7 @@ pt:
       form:
         blocks:
           first:
-            title: "Bem Vindo!"
+            title: "Bem-Vindo!"
             description: "Preencha as informações abaixo para iniciar o rascunho do seu projeto."
 
         info:
