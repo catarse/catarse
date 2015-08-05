@@ -415,10 +415,23 @@ img, iframe
   margin-top: 25px
 
 //project sidebar
+#project-nav
+  display: block
+  height: 100%
+  left: 0
+  overflow: hidden
+  position: fixed
+  top: 0
+  width: 205px
+  z-index: 999
+
+
 .dashboard-nav.side
+  height: 100%
   overflow: auto
-  min-height: 100%
+  position: relative
   transition: all 500ms ease
+  width: 225px
 
 .dashboard-nav.side::after
   content: " "
@@ -427,8 +440,9 @@ img, iframe
   right: 0px
   bottom: 0px
   height: 94px
-  width: inherit
+  width: 205px
   background-color: #1d2024
+  z-index: 999
 
 #dashboard-links.dashboard-nav-link-left:last-of-type
   margin-bottom: 124px
