@@ -3,21 +3,19 @@
 //= require mithril.postgrest
 //= require moment
 //= require replace-diacritics
-//= require catarse-helpers
 //= require api/init
-//= require catarse-admin
-//= require catarse-static
+//= require catarse.js/dist/catarse.js
 //= require_self
 
 var adminRoot = document.getElementById('new-admin'),
     teamRoot = document.getElementById("team-root");
 
 if(adminRoot){
-  m.module(adminRoot, adminApp.AdminContributions);
+  m.module(adminRoot, c.admin.Contributions);
 }
 
 if(teamRoot){
-  m.module(teamRoot, staticApp.Team);
+  m.module(teamRoot, c.pages.Team);
 }
 
 window.toggleMenu = function(){
