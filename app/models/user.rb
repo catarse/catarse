@@ -213,7 +213,7 @@ class User < ActiveRecord::Base
 
   def projects_in_reminder
     reminder_notifications = ProjectNotification.where(template_name: 'reminder', user_id: self.id).where("deliver_at > ?", Time.current)
-    Project.where(id: reminder_notifications.map {|job| job.project})
+    Project.where(id: reminder_notifications.map {|notification| notification.project})
   end
 
   def total_contributed_projects
