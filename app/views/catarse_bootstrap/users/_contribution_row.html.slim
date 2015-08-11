@@ -31,6 +31,11 @@
       - else
         .fontsize-smallest
           = contribution.decorate.display_status
+      .w-checkbox.fontsize-smallest.fontcolor-secondary.u-margintop-10
+        = check_box_tag :anonymous, "1", contribution.anonymous, class: 'w-checkbox-input', 
+          data: { remote: true,
+          url: toggle_anonymous_project_contribution_url(contribution.project, contribution.contribution) }
+        label.w-form-label= t('.anonymous') 
     .w-col.w-col-4
       .fontsize-smallest
         span.w-hidden-main.w-hidden-medium.fontweight-semibold>= Contribution.human_attribute_name(:reward)
