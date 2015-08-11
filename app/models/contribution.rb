@@ -69,6 +69,14 @@ class Contribution < ActiveRecord::Base
     @confirmed ||= Contribution.where(id: self.id).pluck('contributions.is_confirmed').first
   end
 
+  def was_confirmed?
+    @was_confirmed ||= Contribution.where(id: self.id).pluck('contributions.was_confirmed').first
+  end
+
+  def slip_payment?
+    payments.last.slip_payment?
+  end
+
   def invalid_refund
     notify_to_contributor(:invalid_refund)
   end

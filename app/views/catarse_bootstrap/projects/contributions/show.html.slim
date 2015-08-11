@@ -1,42 +1,8 @@
 = render 'shared/header'
-.u-marginbottom-30.page-header
-  .w-container
-    .w-row
-      .w-col.w-col-9.w-col-push-1
-        .u-text-center.u-marginbottom-20
-          = image_tag @project.user.decorate.display_image, class: 'u-round thumb big', alt: @project.user.decorate.display_name
-        .u-text-center
-          .fontsize-largest.text-success.u-marginbottom-20 = t('.thank_you') 
-          .fontsize-base.u-marginbottom-40
-            = t('.thank_you_text_html', total: @project.total_contributions, link1: (link_to @project.name, project_by_slug_url(@project.permalink), class: 'alt-link'), link2: (link_to t('.profile_link'), edit_user_path(resource.user, anchor: 'contributions'), class: 'link-hidden fontweight-semibold'))
-          .fontsize-base.fontweight-semibold.u-marginbottom-20 = t('.share_back')
-        .w-row.u-marginbottom-20
-          .w-col.w-col-6.w-col-small-6.w-col-tiny-6.w-sub-col-middle
-            div
-              img.icon-share-mobile alt="53a3f66e05eb6144171d8edb_facebook-xxl.png" src="http://uploads.webflow.com/54b440b85608e3f4389db387/53a3f66e05eb6144171d8edb_facebook-xxl.png" /
-              = link_to "http://www.facebook.com/share.php?u=#{project_by_slug_url(@project.permalink, {ref: 'facebook'})}", target: :_blank, id: 'facebook_share', data: { title: @project.name }, class: 'btn btn-medium btn-fb' do
-                = t('.share')
-          .w-col.w-col-6.w-col-small-6.w-col-tiny-6
-            div
-              img.icon-share-mobile alt="53a3f65105eb6144171d8eda_twitter-256.png" src="http://uploads.webflow.com/54b440b85608e3f4389db387/53a3f65105eb6144171d8eda_twitter-256.png" /
-              /a.btn.btn-medium.btn-tweet href="#"  Tweet
-              = link_to "http://twitter.com/?status=#{t('i_just_contributed', name: @project.name)} #{project_by_slug_url(@project.permalink, ref: 'twitter')}", target: :_blank, id: "twitter_share_button", data: { title: @project.name }, class: 'btn btn-medium btn-tweet' do
-                = t('.tweet')
+- if @contribution.was_confirmed? || !@contribution.slip_payment?
+  = render 'thank_you'
+- else
+  = render 'thank_you_slip'
 
-- if @contribution.recommended_projects.exists?
-  .section.u-marginbottom-40
-    .w-container
-      .u-marginbottom-20.fontweight-semibold.fontsize-base.u-text-center= t('.project_recommendations') 
-      .w-row
-        == render_projects @contribution.recommended_projects.limit(3), 'thankyou', { wrapper_class: 'w-col w-col-4' }
-
-- unless current_user.following_this_category?(@project.category_id)
-  .section.section-gray-one
-    .w-container
-      .fontsize-larger.lineheight-tight.u-text-center.u-marginbottom-40 
-        = t('.follow_category', category: @project.category.name_pt)
-      .w-row
-        .w-col.w-col-4.w-col-push-4
-          = link_to "#{t('.follow')} #{@project.category.name_pt}", subscribe_category_path(@project.category), class: 'btn btn-large btn-dark'
 
 = render 'shared/footer'
