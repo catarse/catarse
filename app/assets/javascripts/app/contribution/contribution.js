@@ -81,7 +81,7 @@ App.addChild('Contribution', {
     reward.find('input[type=radio]').prop('checked', true);
     this.$('.back-reward-money').hide();
     reward.find('.back-reward-money').show();
-    reward.parent().addClass('selected');
+    reward.parents('.back-reward-radio-reward').addClass('selected');
   },
 
   clickReward: function(event){
