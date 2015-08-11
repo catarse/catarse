@@ -107,6 +107,9 @@ pt:
         MoIP: "MoIP"
         Credits: 'Créditos'
         error: Ooops. Ocorreu um erro ao registrar seu apoio. Por favor, tente novamente.
+      thank_you_slip:
+        thank_you: 'Estou contando com seu apoio...'
+        thank_you_text_html: 'Você também recebeu esse boleto no email: %{email}'
       show:
         follow: 'Seguir'
         follow_category: 'Curte a categoria %{category}? Você pode receber em primeira mão e diretamente no seu email quando novos projetos entrarem no ar!'
