@@ -12,7 +12,7 @@ class ContributionDetail < ActiveRecord::Base
   delegate :pay, :refuse, :trash, :refund, :request_refund, :request_refund!,
            :credits?, :paid?, :refused?, :pending?, :deleted?, :refunded?, :direct_refund,
            :slip_payment?, :pending_refund?, :second_slip_path,
-           :pagarme_delegator, to: :payment
+           :pagarme_delegator, :waiting_payment?, to: :payment
 
   scope :search_on_acquirer, ->(acquirer_name){ where(acquirer_name: acquirer_name) }
   scope :project_name_contains, ->(term) {
@@ -61,11 +61,11 @@ class ContributionDetail < ActiveRecord::Base
   end
 
   def can_show_slip?
-    self.slip_payment? && !self.refused? && !self.contribution.was_confirmed?
+    self.slip_payment? && self.waiting_payment?
   end
 
-  def can_create_slip_copy?
-    self.slip_payment? && self.refused? && self.project.online?
+  def can_generate_slip?
+    self.slip_payment? && self.project.online?
   end
 
   def last_state_name
@@ -79,7 +79,6 @@ class ContributionDetail < ActiveRecord::Base
   end
 
   private
-
   def possible_states
     @possible_states ||= TRANSITION_DATES.map do |state_at|
       { state_name: state_at.to_s.gsub(/_at/, ''), at: self.send(state_at) }
