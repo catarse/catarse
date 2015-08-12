@@ -73,8 +73,7 @@ class Projects::ContributionsController < ApplicationController
 
   def toggle_anonymous
     authorize resource
-    contribution = Contribution.find params[:id]
-    contribution.toggle!(:anonymous)
+    resource.toggle!(:anonymous)
   end
 
   protected
