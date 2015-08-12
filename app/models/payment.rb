@@ -33,6 +33,9 @@ class Payment < ActiveRecord::Base
   scope :waiting_payment, -> { where('payments.waiting_payment') }
 
 
+  def waiting_payment?
+    Payment.where(id: self.id).pluck("payments.waiting_payment").first
+  end
   # Check current status on pagarme and
   # move pending payment to deleted state
   def move_to_trash
