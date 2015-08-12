@@ -51,6 +51,7 @@ Catarse::Application.routes.draw do
         get :fallback_create, to: 'projects/contributions#create'
       end
       member do
+        get 'toggle_anonymous'
         get :second_slip
       end
       put :credits_checkout, on: :member
