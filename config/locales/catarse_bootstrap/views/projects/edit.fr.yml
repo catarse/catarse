@@ -1,5 +1,13 @@
 fr:
   projects:
+    edit:
+      reports: 'Rapports'
+      user_settings: "Données d'enregistrement bancaires"
+      user_settings_subtitle: "Une fois le formulaire ci-dessous complété, votre projet sera prêt. Après avoir terminé le remplissage, cliquez sur Enregistrer. Review. Si tout est ok, appuyez simplement sur le bouton Publier et lancer votre campagne !"
+      user_about: "Parlez-nous de vous !"
+      reward: "Créer et modifier vos récompenses ici"
+      reward_subtitle: "Ici, vous définissez les contrepartis pour vos contributeurs. N'oublier pas d'inclure le coût des contreparties dans votre budget. Prométhée, LIVRÉ !"
+      user_about_subtitle: "Les contributeurs veulent en savoir plus sur les membres du projet. Les liens qui aident à raconter leur histoire sont toujours les bienvenus."
     reward_fields:
       edit: "Créer récompense "
       reward: Récompense
