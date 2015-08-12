@@ -10,7 +10,7 @@ class ContributionDetail < ActiveRecord::Base
 
   delegate :available_rewards, :payer_email, :payer_name, to: :contribution
   delegate :pay, :refuse, :trash, :refund, :request_refund, :request_refund!,
-           :credits?, :paid?, :pending?, :deleted?, :refunded?, :direct_refund,
+           :credits?, :paid?, :refused?, :pending?, :deleted?, :refunded?, :direct_refund,
            :slip_payment?, :pending_refund?, :second_slip_path,
            :pagarme_delegator, to: :payment
 
@@ -58,6 +58,14 @@ class ContributionDetail < ActiveRecord::Base
   def self.between_values(start_at, ends_at)
     return all unless start_at.present? && ends_at.present?
     where("value between ? and ?", start_at, ends_at)
+  end
+
+  def can_show_slip?
+    self.slip_payment? && !self.refused? && !self.contribution.was_confirmed?
+  end
+
+  def can_create_slip_copy?
+    self.slip_payment? && self.refused? && self.project.online?
   end
 
   def last_state_name
