@@ -78,6 +78,20 @@ RSpec.describe Payment, type: :model do
     end
   end
 
+  describe "#waiting_payment?" do
+    subject { payment.waiting_payment? }
+
+    context "when payment is expired" do
+      let(:payment){ create(:payment, state: 'pending', created_at: Time.now - 8.days) }
+      it{ is_expected.to eq false }
+    end
+
+    context "when payment is not expired" do
+      let(:payment){ create(:payment, state: 'pending') }
+      it{ is_expected.to eq true }
+    end
+  end
+
   describe ".waiting_payment" do
     subject { Payment.waiting_payment }
 
