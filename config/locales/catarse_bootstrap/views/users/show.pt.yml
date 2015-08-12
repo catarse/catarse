@@ -8,6 +8,7 @@ pt:
       single_project_created: " e já criou 1 projeto"
       multiple_project_created: " e já criou %{n_projects} projetos"
     contribution_row:
+      anonymous: Marcar apoio como anônimo
       contributed_projects: "Projetos que apoiei"
       contribution_value: "Valor do apoio"
       contribution_status: "Status do apoio"
