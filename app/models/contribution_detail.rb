@@ -61,7 +61,7 @@ class ContributionDetail < ActiveRecord::Base
   end
 
   def can_show_slip?
-    self.slip_payment? && !self.contribution.was_confirmed?
+    self.slip_payment? && !self.refused? && !self.contribution.was_confirmed?
   end
 
   def can_create_slip_copy?
