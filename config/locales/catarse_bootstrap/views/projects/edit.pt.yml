@@ -82,8 +82,8 @@ pt:
       online:
         title: "%{name}, sua campanha está no ar!"
         subtitle_html: "Seu projeto está no ar e sua campanha se encerrará às 23hs59min59s do dia %{date}. Até esse dia e horário você poderá receber apoios. Lembre-se, é tudo-ou-nada e você só levará os recursos captados se bater a meta que foi estipulada. Acesse a nossa %{link2} para outras dúvidas!"
-        explanation_html: "
-<div class='fontsize-base u-marginbottom-40 card card-terciary'>
+        explanation_html: |
+                    <div class='fontsize-base u-marginbottom-40 card card-terciary'>
                       <p class='fontweight-bold'>
                         Com o projeto no ar, algumas informações não podem mais ser editadas
                       </p>
@@ -97,7 +97,7 @@ pt:
                         A pequisa&nbsp;%{link1} também é ótima fonte de dados sobre o cenário brasileiro. Uma boa lida no&nbsp; %{link2} pode ser inspiradora. Lá você encontra histórias de projetos bem sucedidos e dicas de campanha.
                       </p>
                     </div>
-"
+
       failed:
         title: "%{name}, não desanime!"
         subtitle_html: "Seu projeto não bateu a meta e sabemos que isso não é a melhor das sensações. Mas não desanime. Encare o processo como um aprendizado e não deixe de cogitar uma segunda tentativa. Não se preocupe, todos os seus apoiadores receberão o dinheiro de volta. %{link}."
@@ -175,8 +175,6 @@ pt:
     dashboard_card:
       submit: Salvar
       card_label: "Card do projeto"
-    dashboard_goal:
-      submit: 'Salvar'
     dashboard_video:
       submit: Salvar
       card_label: "Vídeo"

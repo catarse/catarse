@@ -48,23 +48,43 @@
                   = category.total_online_projects
       .w-row.u-marginbottom-30
         .w-col.w-col-2.w-col-small-6.w-col-tiny-6
-          a.w-inline-block.btn-category.filters.explore-link[href='#recommended' data-name="#{t('.recommended')}"]
+          a.w-inline-block.btn-category.filters.explore-link[
+            class="#{'double-line' if t('.recommended').size > 13}"
+            href='#recommended'            
+            data-name="#{t('.recommended')}"
+          ]
             = t('.recommended')
             /span.badge.explore 35
         .w-col.w-col-2.w-col-small-6.w-col-tiny-6
-          a.w-inline-block.btn-category.filters.explore-link[href='#in_funding' data-name="#{t('.in_funding')}"]
+          a.w-inline-block.btn-category.filters.explore-link[
+            class="#{'double-line' if t('.in_funding').size > 13}"
+            href='#in_funding'
+            data-name="#{t('.in_funding')}"
+          ]
             = t('.in_funding')
 
         .w-col.w-col-2.w-col-small-6.w-col-tiny-6
-          a.w-inline-block.btn-category.filters.explore-link[href='#expiring' data-name="#{t('.expiring')}"]
+          a.w-inline-block.btn-category.filters.explore-link[
+            class="#{'double-line' if t('.expiring').size > 13}"
+            href='#expiring'
+            data-name="#{t('.expiring')}"            
+          ]
             = t('.expiring')
 
         .w-col.w-col-2.w-col-small-6.w-col-tiny-6
-          a.w-inline-block.btn-category.filters.explore-link[href='#recent' data-name="#{t('.recent')}"]
+          a.w-inline-block.btn-category.filters.explore-link[
+            class="#{'double-line' if t('.recent').size > 13}"
+            href='#recent'
+            data-name="#{t('.recent')}"
+          ]
             = t('.recent')
 
         .w-col.w-col-2.w-col-small-6.w-col-tiny-6
-          a.w-inline-block.btn-category.filters.explore-link[href='#successful' data-name="#{t('.successful')}"]
+          a.w-inline-block.btn-category.filters.explore-link[
+            class="#{'double-line' if t('.successful').size > 13}"
+            href='#successful'
+            data-name="#{t('.successful')}"
+          ]
             = t('.successful')
         - if current_user
           .w-col.w-col-2.w-col-small-6.w-col-tiny-6
