@@ -74,6 +74,7 @@ class Projects::ContributionsController < ApplicationController
   def toggle_anonymous
     authorize resource
     resource.toggle!(:anonymous)
+    return render nothing: true
   end
 
   protected
