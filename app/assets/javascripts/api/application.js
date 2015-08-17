@@ -3,11 +3,14 @@
 //= require mithril.postgrest
 //= require moment
 //= require replace-diacritics
+//= require Chartjs
 //= require api/init
 //= require catarse.js/dist/catarse.js
 //= require_self
 
-(function(m, c){
+(function(m, c, Chart){
+  Chart.defaults.global.responsive = true;
+
   var adminRoot = document.getElementById('new-admin'),
       teamRoot = document.getElementById('team-root'),
       projectInsightsRoot = document.getElementById('project-insights-root');
@@ -23,7 +26,7 @@
   if(projectInsightsRoot){
     m.mount(projectInsightsRoot, m.component(c.admin.ProjectInsights, {root: projectInsightsRoot}));
   }
-}(window.m, window.c));
+}(window.m, window.c, window.Chart));
 
 window.toggleMenu = function(){
   var userMenu = document.getElementById("user-menu-dropdown");
