@@ -18,10 +18,7 @@ namespace :cron do
   desc "Send second slip notification"
   task second_slip_notification: :environment do
     puts "sending second slip notification"
-    ContributionDetail.where(payment_method: 'BoletoBancario',
-                             state: 'pending',
-                             waiting_payment: false,
-                             project_state: 'online').each do |contribution_detail|
+    ContributionDetail.slips_past_waiting.each do |contribution_detail|
       contribution_detail.contribution.notify_to_contributor(:contribution_canceled_slip)
     end
   end
