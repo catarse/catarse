@@ -25,7 +25,7 @@ class AddProjectDetails < ActiveRecord::Migration
           public.waiting_payment_count(r.*) AS waiting_payment_count
          FROM public.rewards r;
 
-      CREATE VIEW contribution_details AS
+      CREATE VIEW "1".contribution_details AS
        SELECT pa.id,
           c.id AS contribution_id,
           pa.id AS payment_id,
@@ -89,6 +89,7 @@ class AddProjectDetails < ActiveRecord::Migration
           p.expires_at,
           pt.total_payment_service_fee;
 
+      grant select on "1".contribution_details to admin;
       grant select on "1".project_details to admin;
       grant select on "1".project_details to web_user;
       grant select on "1".project_details to anonymous;
