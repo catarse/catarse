@@ -106,17 +106,5 @@ RSpec.describe PaymentObserver do
         expect(ContributionNotification.where(template_name: 'contribution_canceled_after_confirmed', user: @admin, contribution: contribution).count).to eq 1
       end
     end
-
-    context "when contribution is made with Boleto and canceled" do
-      before do
-        payment.update_attributes payment_method: 'BoletoBancario'
-        payment.refuse!
-      end
-
-      it "should notify admin and contributor" do
-        expect(ContributionNotification.where(template_name: 'contribution_canceled_slip', user: contribution.user, contribution: contribution).count).to eq 1
-        expect(ContributionNotification.where(template_name: 'contribution_canceled_after_confirmed', user: @admin, contribution: contribution).count).to eq 1
-      end
-    end
   end
 end
