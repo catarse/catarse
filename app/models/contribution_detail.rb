@@ -39,6 +39,13 @@ class ContributionDetail < ActiveRecord::Base
     where("contribution_details.state not in('deleted', 'refused', 'pending') OR payments.waiting_payment")
   }
 
+  scope :slips_past_waiting, -> {
+    where(payment_method: 'BoletoBancario',
+          state: 'pending',
+          waiting_payment: false,
+          project_state: 'online')
+  }
+
   scope :pending, -> { joins(:payment).merge(Payment.waiting_payment) }
 
   scope :ordered, -> { order(id: :desc) }
