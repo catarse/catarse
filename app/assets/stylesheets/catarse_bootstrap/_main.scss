@@ -729,7 +729,7 @@ p {
   width: 100%;
   height: 60px;
   margin-bottom: 0px;
-  padding: 0px 12px 8px;
+  padding: 6px 12px 8px;
   border-style: solid solid solid none;
   border-width: 1px;
   border-color: #7cc142 #7cc142 #7cc142 transparent;
@@ -742,8 +742,8 @@ p {
   font-weight: 400;
 }
 .back-reward-input-reward:hover {
-  padding: 0px 12px 8px;
-  border-style: solid;
+  padding: 6px 12px 8px;
+  border-style: solid solid solid none;
   border-width: 1px;
   border-color: #7cc142 #7cc142 #7cc142 transparent;
   color: #7cc142;
@@ -755,9 +755,7 @@ p {
 }
 .back-reward-input-reward:focus {
   border-width: 1px;
-  border-top-color: #7cc142;
-  border-right-color: #7cc142;
-  border-left-color: transparent;
+  border-color: #7cc142 #7cc142 #7cc142 transparent;
   color: #7cc142;
 }
 .back-reward-input-reward.placeholder {
@@ -768,7 +766,7 @@ p {
   margin-bottom: 0px;
   padding-top: 24px;
   border-style: solid none solid solid;
-  border-color: #00b22d;
+  border-color: #7cc142;
   border-radius: 5px 0px 0px 5px;
   background-color: transparent;
   color: #7cc142;
@@ -1273,13 +1271,6 @@ p {
 }
 .divider {
   border-top: 1px solid #e9e9ec;
-}
-.divider.status-project {
-  position: absolute;
-  left: 80%;
-  top: 50%;
-  right: 0px;
-  width: 40%;
 }
 .text-success {
   color: #7cc142;
@@ -1833,7 +1824,7 @@ p {
   background-color: rgba(241, 244, 244, 0.49);
 }
 .dashboard-header {
-  padding-top: 40px;
+  margin-top: 40px;
 }
 .btn-send-draft {
   display: inline-block;
@@ -2641,29 +2632,6 @@ p {
 .table-row.header {
   background-color: rgba(241, 244, 244, 0.49);
 }
-.table-row.altern {
-  background-color: rgba(241, 244, 244, 0.49);
-}
-.table-row.main {
-  margin-right: auto;
-  margin-left: auto;
-  border-bottom: 1px solid #c9ccdb;
-}
-.table-col.last {
-  border-right-style: none;
-}
-.table-col.header {
-  background-color: rgba(241, 244, 244, 0.49);
-}
-.sort-arrows {
-  width: 8px;
-  height: 10px;
-  margin-top: 3px;
-  margin-right: 9px;
-  float: right;
-  background-image: url('../images/sort_arrows.png');
-  background-repeat: no-repeat;
-}
 .toggle {
   position: relative;
   width: 110px;
@@ -2703,36 +2671,24 @@ p {
   background-size: cover;
   color: white;
 }
-.icon-status-project {
-  width: 50px;
-  height: 50px;
-  margin: 14px auto 9px;
-  padding: 9px;
-  border: 1px solid #ddd;
-  border-radius: 50%;
-}
-.icon-status-project.selected {
-  border-color: #7cc142;
-  background-color: rgba(124, 193, 66, 0.09);
-}
-.icon-status-project.done {
-  border-color: transparent;
-  opacity: 0.25;
-}
 .absolute-right {
   position: absolute;
   top: 0px;
   right: 0px;
 }
-.results-list {
-  overflow-x: hidden;
-  overflow-y: hidden;
-}
 .bg-greenlight {
   background-color: #f1fce8;
 }
-.text-greenlight {
-  color: #f1fce8;
+.table-legend-item {
+  display: inline-block;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  width: 15px;
+  height: 15px;
+  border: 1px solid #e9e9ec;
+}
+.bg-white {
+  background-color: white;
 }
 html.w-mod-js *[data-ix="fade-in"] {
   opacity: 0;
@@ -3088,7 +3044,7 @@ html.w-mod-js *[data-ix="icon-funded-with"] {
     padding-top: 7px;
   }
   .dashboard-header {
-    padding-top: 30px;
+    margin-top: 30px;
   }
   .btn-send-draft {
     width: 90px;
@@ -3575,7 +3531,7 @@ html.w-mod-js *[data-ix="icon-funded-with"] {
     padding-bottom: 0px;
   }
   .dashboard-header {
-    padding-top: 20px;
+    margin-top: 20px;
   }
   .dashboard-header.big {
     margin-top: 0px;
@@ -4018,11 +3974,6 @@ html.w-mod-js *[data-ix="icon-funded-with"] {
   .dropdown-toggle {
     padding-right: 5px;
   }
-  .divider.status-project {
-    left: 88%;
-    display: none;
-    width: 21%;
-  }
   .header-search {
     position: static;
     width: 100%;
@@ -4082,6 +4033,9 @@ html.w-mod-js *[data-ix="icon-funded-with"] {
   }
   .card-project-author {
     height: 40px;
+  }
+  .dashboard-header {
+    margin-top: 15px;
   }
   .dashboard-header.big {
     padding-top: 10px;
@@ -4202,16 +4156,9 @@ html.w-mod-js *[data-ix="icon-funded-with"] {
     height: 110px;
     padding: 10px;
   }
-  .results-admin-contributions.reports-dash.xxx {
-    height: 104px;
-    padding: 10px;
-  }
   .table-outer {
     overflow-x: hidden;
     overflow-y: hidden;
-  }
-  .table-inner {
-    max-height: 226px;
   }
   .hero-who {
     padding-top: 215px;
