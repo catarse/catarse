@@ -44,8 +44,9 @@
                 .w-col.w-col-8
                   - @user.projects_in_reminder.each do |project|
                     .w-checkbox.w-clearfix
-                      = check_box_tag "user[reminders][][project_id]", project.id, true, class: 'w-checkbox-input'
-                      label.w-form-label.fontsize-small for="checkbox-14"= project.name
+                      = hidden_field_tag "user[reminders][#{project.id}]", false
+                      = check_box_tag "user[reminders][#{project.id}]", "1", true, class: 'w-checkbox-input'
+                      label.w-form-label.fontsize-small= project.name
       .u-margintop-30
         .w-container
           .w-row
