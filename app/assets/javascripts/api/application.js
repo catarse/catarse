@@ -9,7 +9,9 @@
 //= require_self
 
 (function(m, c, Chart){
-  Chart.defaults.global.responsive = true;
+  //Chart.defaults.global.responsive = true;
+  Chart.defaults.global.responsive = false;
+  //Chart.defaults.global.animation = false;
 
   var adminRoot = document.getElementById('new-admin'),
       teamRoot = document.getElementById('team-root'),
