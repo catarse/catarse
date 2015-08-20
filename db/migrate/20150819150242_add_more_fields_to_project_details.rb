@@ -15,6 +15,50 @@ class AddMoreFieldsToProjectDetails < ActiveRecord::Migration
           select true where $1.state = ANY(public.published_states());
         $$;
 
+      drop function if exists public.is_expired(projects);
+      CREATE FUNCTION public.is_expired(projects) RETURNS boolean
+        LANGUAGE sql STABLE SECURITY DEFINER
+          AS $$
+            SELECT (current_timestamp > $1.expires_at);
+          $$;
+
+      drop function if exists public.open_for_contributions(projects);
+      CREATE FUNCTION public.open_for_contributions(projects) RETURNS boolean
+        LANGUAGE sql STABLE SECURITY DEFINER
+          AS $$
+            SELECT (not $1.is_expired AND $1.state = 'online')
+          $$;
+
+      drop function if exists public.remaining_time_interval(projects);
+      CREATE FUNCTION public.remaining_time_interval(projects) RETURNS interval
+        LANGUAGE sql STABLE SECURITY DEFINER
+          AS $$
+            select ($1.expires_at - current_timestamp)::interval
+          $$;
+
+      drop function if exists public.remaining_time_json(projects);
+      CREATE FUNCTION public.remaining_time_json(projects) RETURNS json
+        LANGUAGE sql STABLE SECURITY DEFINER
+          AS $$
+            select (
+              case
+              when $1.is_expired then
+                json_build_object('total', 0, 'unit', 'seconds')
+              else
+                case
+                when $1.remaining_time_interval >= '1 day'::interval then
+                  json_build_object('total', extract(day from $1.remaining_time_interval), 'unit', 'days')
+                when $1.remaining_time_interval >= '1 hour'::interval and $1.remaining_time_interval < '24 hours'::interval then
+                  json_build_object('total', extract(hour from $1.remaining_time_interval), 'unit', 'hours')
+                when $1.remaining_time_interval >= '1 minute'::interval and $1.remaining_time_interval < '60 minutes'::interval then
+                  json_build_object('total', extract(minutes from $1.remaining_time_interval), 'unit', 'minutes')
+                when $1.remaining_time_interval < '60 seconds'::interval then
+                  json_build_object('total', extract(seconds from $1.remaining_time_interval), 'unit', 'seconds')
+                 else json_build_object('total', 0, 'unit', 'seconds') end
+              end
+            )
+        $$;
+
       drop view "1".project_details;
       create view "1".project_details as
         select
@@ -23,9 +67,13 @@ class AddMoreFieldsToProjectDetails < ActiveRecord::Migration
           coalesce(pt.pledged, 0) as pledged,
           coalesce(pt.total_contributions, 0) as total_contributions,
           p.state,
-          p.is_published,
           p.expires_at,
+          p.online_date,
           p.sent_to_analysis_at,
+          p.is_published,
+          p.is_expired,
+          p.open_for_contributions,
+          p.remaining_time_json as remaining_time,
           (
             select
               json_build_object('id', u.id, 'name', u.name)
