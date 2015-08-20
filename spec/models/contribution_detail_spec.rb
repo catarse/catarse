@@ -29,7 +29,7 @@ RSpec.describe ContributionDetail, type: :model do
     end
     let!(:contribution_4) do
       p = create(:confirmed_contribution, value: 20, project: project).payments.first
-      p.update_attributes(payment_method: 'CartaoDeCredito', state: 'pending')
+      p.update_attributes(payment_method: 'CartaoDeCredito', state: 'deleted')
       p.contribution.details.first
     end
 
