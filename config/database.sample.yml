@@ -11,11 +11,12 @@
 development:
   adapter: postgresql
   encoding: unicode
-  host: localhost
+  host: <%= ENV['POSTGRES_PORT_5432_TCP_ADDR'] %>
+  port: 5432
   database: catarse_development
   pool: 5
   username: postgres # <== Change me!!
-  password: password # <== Change me too!
+  password: mysecretpassword # <== Change me too!
 
 
   # Connect on a TCP socket. Omitted by default since the client uses a
@@ -40,7 +41,7 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  host: localhost
+  host: <%= ENV['POSTGRES_PORT_5432_TCP_ADDR'] %>
   port: 5432
   database: catarse_test
   pool: 5
