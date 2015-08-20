@@ -9,6 +9,41 @@ RSpec.describe ContributionDetail, type: :model do
     it{ should belong_to :payment }
   end
 
+  describe ".for_online_projects" do
+    let(:project) {create(:project, state:'online')}
+
+    let!(:contribution_1) do
+      p = create(:confirmed_contribution, value: 20, project: project).payments.first
+      p.update_attributes(payment_method: 'BoletoBancario', state: 'pending')
+      p.contribution.details.first
+    end
+    let!(:contribution_2) do
+      p = create(:confirmed_contribution, value: 20, project: project).payments.first
+      p.update_attributes(payment_method: 'BoletoBancario')
+      p.contribution.details.first
+    end
+    let!(:contribution_3) do
+      p = create(:confirmed_contribution, value: 20, project: project).payments.first
+      p.update_attributes(payment_method: 'CartaoDeCredito')
+      p.contribution.details.first
+    end
+    let!(:contribution_4) do
+      p = create(:confirmed_contribution, value: 20, project: project).payments.first
+      p.update_attributes(payment_method: 'CartaoDeCredito', state: 'pending')
+      p.contribution.details.first
+    end
+
+    subject { ContributionDetail.for_online_projects }
+
+    it "should return valid contributions" do
+      expect(subject.include?(contribution_1)).to eq(true)
+      expect(subject.include?(contribution_2)).to eq(true)
+      expect(subject.include?(contribution_3)).to eq(true)
+      expect(subject.include?(contribution_4)).to eq(false)
+    end
+
+  end
+
   describe ".by_payment_id" do
     subject{ ContributionDetail.by_payment_id(search_text) }
     let(:gateway_id){ '1234' }
