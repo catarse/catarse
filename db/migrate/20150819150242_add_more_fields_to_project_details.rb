@@ -25,6 +25,7 @@ class AddMoreFieldsToProjectDetails < ActiveRecord::Migration
           p.state,
           p.is_published,
           p.expires_at,
+          p.sent_to_analysis_at,
           (
             select
               json_build_object('id', u.id, 'name', u.name)
@@ -43,6 +44,7 @@ class AddMoreFieldsToProjectDetails < ActiveRecord::Migration
           pt.total_contributions,
           p.state,
           p.expires_at,
+          p.sent_to_analysis_at,
           pt.total_payment_service_fee;
 
       grant select on "1".project_details to admin;
