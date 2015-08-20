@@ -58,6 +58,19 @@ RSpec.describe ContributionDetail, type: :model do
     it{is_expected.to match_array [@contribution.details.first] }
   end
 
+  describe ".no_confirmed_contributions_on_project" do
+    subject{ ContributionDetail.no_confirmed_contributions_on_project }
+
+    before do
+      @contribution = create(:pending_contribution)
+      # Same user has a confirmed contribution for another project
+      create(:confirmed_contribution, user: @contribution.user)
+      @confirmed_contribution = create(:confirmed_contribution)
+      create(:pending_contribution, user: @confirmed_contribution.user, project: @confirmed_contribution.project)
+    end
+    it{is_expected.to match_array [@contribution.details.first] }
+  end
+
   describe ".between_values" do
     let(:start_at) { 10 }
     let(:ends_at) { 20 }

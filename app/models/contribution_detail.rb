@@ -46,6 +46,17 @@ class ContributionDetail < ActiveRecord::Base
           project_state: 'online')
   }
 
+  scope :no_confirmed_contributions_on_project, -> {
+    where("NOT EXISTS (
+          SELECT true 
+          FROM contributions c 
+          WHERE 
+            c.user_id = contribution_details.user_id 
+            AND c.project_id = contribution_details.project_id 
+            AND c.was_confirmed)"
+         )
+  }
+
   scope :pending, -> { joins(:payment).merge(Payment.waiting_payment) }
 
   scope :ordered, -> { order(id: :desc) }
