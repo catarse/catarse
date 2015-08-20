@@ -25,6 +25,11 @@ class AddMoreFieldsToProjectDetails < ActiveRecord::Migration
           p.state,
           p.is_published,
           p.expires_at,
+          (
+            select
+              json_build_object('id', u.id, 'name', u.name)
+            from users u where u.id = p.user_id
+          ) as user,
           json_agg(row_to_json(rd.*)) as rewards,
           count(pn.*) filter (where pn.template_name = 'reminder') as reminder_count
         from projects p
@@ -48,10 +53,10 @@ class AddMoreFieldsToProjectDetails < ActiveRecord::Migration
 
   def down
     execute <<-SQL
-      drop function if exists public.is_published(projects);
+      drop function if exists public.is_published(projects) cascade;
       drop function if exists public.published_states();
 
-      drop view "1".project_details;
+      drop view if exists "1".project_details;
       create view "1".project_details as
         select
           pt.*,
