@@ -1,0 +1,98 @@
+zh:
+  devise:
+    feedback_tab:
+      title: 'Feedback e Ajuda'
+      header_html: 'Bem-vindo ao <br/> novo login do Catarse'
+      blog_button: 'Leia mais no blog'
+      form_feedback_link: 'Enviar feedback'
+      contact_link: 'Entrar em contato'
+    links:
+      forgot_password: Esqueci minha senha
+    confirmations:
+      confirmed: A sua conta foi confirmada com sucesso. Você está autenticado.
+      send_instructions: Dentro de minutos, você receberá um email com as instruções de confirmação da sua conta.
+      send_paranoid_instructions: Se o seu email existir em nosso banco de dados, você receberá um email com instruções sobre como confirmar sua conta em alguns minutos.
+    failure:
+      password_token: 'O link para recuperar senha expirou. Insira novamente seu email'
+      already_authenticated: ''
+      #already_authenticated: Você já está autenticado.
+      inactive: Esse email pertence a uma conta desativada
+      invalid: Email ou senha inválidos
+      invalid_token: O token de autenticação não é válido.
+      locked: A sua conta está bloqueada.
+      not_found_in_database: Email ou senha inválidos
+      timeout: A sua sessão expirou, por favor, faça login novamente para continuar.
+      unauthenticated: ''
+      unconfirmed: Antes de continuar, confirme a sua conta.
+    mailer:
+      confirmation_instructions:
+        subject: Instruções de confirmação
+      reset_password_instructions:
+        subject: Redefina sua senha
+      unlock_instructions:
+        subject: Instruções de desbloqueio
+    omniauth_callbacks:
+      failure: Não foi possível autorizar de uma conta de %{kind} porque "%{reason}".
+      success: ''
+      #success: Autorizado com sucesso de uma conta de %{kind}.
+    passwords:
+      no_token: ''
+      #no_token: Você não pode acessar esta página sem estar logado. Se você veio de um email de lembre de senha, por favor certifique-se de ter  digitado a URL corretamente.
+      send_instructions: Acabamos de enviar um email com instruções para redefinir uma nova senha
+      send_paranoid_instructions: Se o seu email existir em nosso banco de dados, você receberá um email com um link para recuperação da senha.
+      updated: ''
+      #updated: Sua senha foi alterada com sucesso
+      updated_not_active: Sua senha foi alterada com sucesso.
+      new:
+        site_title: 'Esqueci minha senha'
+        title: 'Confirme seu email e solicite a mudança de senha'
+        submit: 'Enviar instruções para alterar minha senha'
+      edit:
+        site_title: 'Defina uma nova senha'
+        label_new_password: 'Nova senha'
+        title: 'Defina uma nova senha'
+        subtitle: 'Defina uma nova senha para usar seu email e senha quando quiser entrar no Catarse.'
+        submit: 'Definir nova senha'
+    registrations:
+      destroyed: Adeus! A sua conta foi cancelada com sucesso. Esperamos vê-lo novamente em breve.
+      signed_up: ''
+      #signed_up: Bem vindo! Você realizou seu registro com sucesso.
+      signed_up_but_inactive: Você se inscreveu com sucesso, porém nós não podemos autenticá-lo porque sua conta ainda não foi ativada.
+      signed_up_but_locked: Você se inscreveu com sucesso. Porém nós não podemos autenticá-lo porque sua conta está bloqueada.
+      signed_up_but_unconfirmed: Uma mensagem com um link de confirmação foi enviada para o seu e-mail. Por favor, acesse o link para ativar sua conta.
+      update_needs_confirmation: Sua conta foi atualizada com sucesso, mas nós precisamos verificar o novo endereço de email. Por favor, verifique seu email e clique no link de confirmação para finalizar confirmando o seu novo email.
+      updated: A sua conta foi atualizada com sucesso.
+    sessions:
+      new:
+        site_title: "Efetuar login"
+        submit: "Efetuar login"
+        title: "Entre utilizando o seu endereço de email"
+        login_title: Login
+        login_subtitle: "Caso já possua uma conta"
+        register_title: Cadastre-se
+        register_subtitle: "Utilize seu endereço de e-mail"
+        with_facebook: "Entre utilizando o facebook"
+        with_facebook_subtitle: "Uma maneira muito rápida de acessar"
+        with_another_social: "O Twitter será removido em uma semana"
+        google_warning_html: "Se você usava uma conta do <strong>Google</strong>:"
+        google_step_1: "1 - Clique em %{link}"
+        google_step_2: "2 - Sigas os próximos passos para criar uma senha nova."
+        with_another_social_subtitle: "<a target=\"_blank\" href=\"http://blog.catarse.me/mudanca-no-sistema-de-login/\">Leia esse post</a> para mais informações"
+      signed_in: ''
+      #signed_in: Login efetuado com sucesso.
+      signed_out: ''
+      #signed_out: Logout efetuado com sucesso.
+    unlocks:
+      send_instructions: Dentro de minutos, você receberá um email com instruções de desbloqueio da sua conta.
+      send_paranoid_instructions: Se sua conta existir em nosso banco de dados, você receberá em breve um email com instruções para desbloquear ela.
+      unlocked: A sua conta foi desbloqueada com sucesso. Você está autenticado.
+  errors:
+    messages:
+      already_confirmed: já foi confirmado
+      confirmation_period_expired: É necessário ser confirmado detro do periodo %{period}, por favor requisite um novo usuário.
+      expired: expirou, por favor solicite uma nova
+      not_found: não encontrado
+      not_locked: não foi bloqueado
+      not_saved:
+        one: ! ' '
+        other: ! ' '

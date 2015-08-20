@@ -1,0 +1,33 @@
+zh:
+  shared:
+    no_bank_label: 'Outro'
+    alerts:
+      pending_payment_text: "Você possui reembolsos pendentes de %{value}."
+      pending_payment_link_text: "Pegue seu dinheiro de volta!"
+    load_more: "Carregar mais"
+    terms: termos de uso
+    accept_terms_html: Eu li e estou de acordo com os %{link}.
+    header_channel:
+      contact: Contato
+      logout: Sair
+      my_credits: Meus créditos
+      partners: Parceiros
+      posts: Novidades
+      profile: Meu perfil
+      signin: Login
+      signup: Cadastre-se
+      submit: Enviar projeto
+      how_work: Como funciona
+    footer_channel:
+      contact: Contato
+      how_works: Como funciona
+      privacy_policy: Política de privacidade
+      terms: Termos de uso
+      what_is_channel: O que são canais?
+      terms: "Termos de uso"
+      privacy_policy: "Política de Privacidade"
+      how_it_works: "Como funciona o %{name}"
+      how_channels_work: "Entenda os Canais no Catarse"
+      contact: "Contato"
+    header_big:
+      projects: "Meus Projetos"

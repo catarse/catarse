@@ -1,0 +1,71 @@
+zh:
+  projects:
+    index_header:
+      subtitle: Financie projetos de maneira colaborativa e torne-se parte de algo
+        maior. Promova uma catarse coletiva! Você é a peça que falta nesta história.
+      title: Faça acontecer os projetos em que você acredita
+    index:
+      title: 'Catarse'
+      back_a_project: 'Apoie um projeto'
+      banner_before: 'Tire '
+      banner_words:
+        0: 'sonhos'
+        1: 'discos'
+        2: 'exposições'
+        3: 'pesquisas'
+        4: 'carnavais'
+        5: 'fotografias'
+        6: 'peças de teatro'
+        7: 'documentários'
+        8: 'livros'
+        9: 'espetáculos'
+        10: 'paixões'
+        11: 'encontros'
+        12: 'músicas'
+        13: 'produtos'
+        14: 'atitudes'
+        15: 'filmes'
+        16: 'quadrinhos'
+        17: 'ideias'
+      banner_after: ' do papel'
+      see_all: 'Ver todos'
+      near_you: 'Próximos a você'
+      recents: Recentes
+      blog: Blog do Catarse
+      expiring: Na reta final
+      recommended: Recomendados
+      banner_subtitle: 'Música, quadrinhos, cinema, impacto social, tecnologia e muito mais. Conheça, inspire-se e apoie projetos.'
+      box:
+        by: por
+        when: em
+      banner: "Conheça a pesquisa"
+      explore: "Explore projetos"
+      links:
+        channels: "Descubra o Canal Asas"
+        recommended: "Descubra projetos recomendados"
+        expiring: "Descubra projetos na reta final"
+        recents: "Descubra projetos recentes"
+        near: "Descubra projetos perto de você"
+      sidebar:
+        titles:
+          blog: blog
+          facebook: "já curtiu nosso face?"
+          newsletter: "Assine nossa news"
+          faq: "tá com dúvida?"
+          schedule: agenda
+        placeholders:
+          email: "Digite seu email"
+        buttons:
+          newsletter: Enviar
+      sections:
+        near:
+          title: 'Próximos a mim'
+        recommended:
+          title: 'Recomendados'
+        expiring:
+          title: "Na reta final"
+        recents:
+          title: "Recentes"
+        channels:
+          title: 'Canal Asas'
+

@@ -1,0 +1,202 @@
+zh:
+  admin: &admin
+    filter:
+      title: 'Filtros'
+    confirm_dialog: 'Você tem certeza?'
+    financials:
+      index:
+        id: ID
+        name: 'Titulo'
+        user: 'Usuário MoIP'
+        user_id: 'User ID'
+        goal: 'Meta'
+        total_payment_service_fee: 'Taxa do MP'
+        total_catarse_fee: 'Taxa do Catarse'
+        zero_fee: 'Apoio sem taxa?'
+        repass_value: 'Vl. Repasse'
+        expires_at: 'Finaliza'
+        online_date: 'Entrou no ar'
+        pledged: 'Alcançado'
+        recommended: 'Recomendado?'
+        state: 'Estado'
+        menu: 'Rel. Financeiros'
+        title: 'Relatórios financeiros'
+        contribution_report: "Relatório de apoiadores"
+        search_report: "Relatório da busca"
+        total_projects: 'projetos'
+        submit: 'filtrar'
+        by_state: 'Por estado'
+        between_expires_at: 'Expiram entre'
+        by_progress: Por progresso %
+        details:
+          name: 'Razão social'
+          bank_data: 'Dados bancarios'
+          document: 'CPF / CNPJ'
+          email: 'E-mail'
+          state_inscription: 'Incrição estadual'
+          address: 'Endereço'
+          phone_number: 'Telefone'
+          permalink: 'Permalink do projeto'
+    projects:
+      index:
+        with_state: 'Por estado'
+        by_category: 'Por categoria'
+        project: 'Projeto'
+        user: 'Usuário'
+        between_created_at: 'Criados entre'
+        goal_between: 'Meta entre'
+        between_expires_at: 'Expiram entre'
+        between_online_date: 'Entraram no ar entre'
+        between_updated_at: 'Atualizados entre'
+        by_user_email: 'Email do realizador'
+        id: ID
+        name: 'Titulo'
+        send_to_trash: "Deletar"
+        send_to_draft: 'Mandar para DRAFT!'
+        reject: 'Rejeitar!'
+        approve: 'Aprovar!'
+        user_id: 'User ID'
+        goal: 'Meta'
+        total_contributions: 'Apoios'
+        online_date: 'Entrou no ar'
+        pledged: 'Alcançado'
+        recommended: 'Recomendado?'
+        state: 'Estado'
+        no_projects: 'Nenhum projeto encontrado'
+        menu: 'Admin projetos'
+        title: 'Gerenciamento de projetos'
+        total_projects: 'projetos'
+        submit: 'filtrar'
+        expires_at: 'Finaliza em'
+        category: 'Categoria'
+        order_table: 'Ordenar tabela'
+        order_date: 'Data de envio'
+        order_asc: 'Menor meta'
+        order_desc: 'Maior meta'
+        order_created_at: 'Data de envio'
+        last_modification: 'Ultima atualização'
+    actions:
+      confirm: 'Confirmar'
+    users:
+      index:
+        title: "Gerenciamento de apoiadores"
+        menu: "Apoiadores"
+        credits: "Créditos"
+        credits_view: "Créditos calculados"
+        id: Id
+        key: Chave
+        submit: Pesquisar
+        has_credits_difference: Discrepância nos créditos
+        total_contributed: Total de apoios
+        total_contributions: apoiadores
+        total_contributions: apoios
+        total_users: usuários
+        total_credits: créditos
+        total_credits_view: créditos calculados
+        user: Usuário
+        value: Valor
+        payer_email: Email do pagamento
+        provider: Provedor
+    contributions:
+      messages:
+        successful:
+          confirm: 'Apoio confirmado com sucesso!'
+          pendent: 'Apoio desconfirmado com sucesso!'
+          refund: 'Apoio estornado com sucesso!'
+          change_reward: 'Recompensa modificada com sucesso!'
+          hide: 'Apoio escondido com sucesso!'
+          cancel: 'Apoio cancelado com sucesso!'
+          push_to_trash: 'Apoio deletado com sucesso!'
+          request_refund: 'Reembolso solicitado com sucesso!'
+      show:
+        contribution_info: 'Informações do contribution %{key}'
+        payment_id: 'ID do pagamento'
+        payment_method: 'Meio de pagamento'
+        payment_fee: 'Taxa do meio de pagamento'
+        successful: 'bem-sucedido'
+        payment_choice: 'Opção de pagamento'
+        payer_email: 'Email utilizado no meio de pagamento'
+        user_email: 'Email utilizado no catarse'
+        created_at: 'Iniciado em'
+      index:
+        details:
+          payer_email: 'E-mail do meio de pagamento'
+          normal_email: 'E-mail no Catarse'
+          payment_id: 'ID Pagamento'
+          acquirer_tid: 'TID Operadora'
+          payment_method: 'Meio de pagamento'
+          payment_choice: 'Opção de pagamento'
+          acquirer_name: 'Operadora de cartão'
+          installments: 'Parcelas'
+          created_at: 'Iniciado em'
+
+        placeholders:
+          project: 'Permalink ou nome do projeto'
+          acquirer: 'Nome da operadora de cartão'
+          user: 'ID, Nome, Email ou Email de pagamento'
+          payment_id: Chave, ID do meio de pagamento ou TID da operadora'
+        last_state: 'Estado anterior'
+        acquirer: 'Operadora'
+        payment_tax: 'Taxa meio de pagamento'
+        project_state: 'Estado do projeto'
+        send_refund_request_contribution: 'Enviar solicitação de reembolso'
+        payer_email: 'Email do meio de pagamento'
+        payment_id: 'Id de pagamento'
+        user_email: 'Email utilizado no catarse'
+        push_to_trash: 'Deletar apoio'
+        cancel: 'Cancelar apoio'
+        between_values: 'Valores entre'
+        by_state: 'Estado'
+        refund_and_hide: 'Fazer estorno e não exibir apoio.'
+        pending_to_refund: 'Estornos pendentes'
+        confirm_contribution: 'Confirmar apoio'
+        unconfirm_contribution: 'Desconfirmar apoio'
+        refund_contribution: 'Estornar apoio'
+        request_refund: 'Pedir Reembolso'
+        direct_refund: 'Reembolso Direto'
+        title: "Gerenciamento de apoios"
+        state: 'Estado atual'
+        menu: "Apoios"
+        new_menu: "Apoios - Beta"
+        anonymous: Anônimo?
+        contribution: Apoio
+        confirmed: Confirmado?
+        credits_html: "Usou créditos? &nbsp;"
+        id: Id
+        key: Chave
+        no_contributions: "Nenhum apoiador encontrado."
+        project: Projeto
+        refunded: "Estorno realizado?"
+        requested_refund: "Solicitou estorno?"
+        reward: Recompensa
+        no_reward: "Sem recompensa"
+        submit: Pesquisar
+        total_contributed: arrecadados
+        total_contributions: apoiadores
+        total_contribution: apoios
+        total_users: usuários
+        user: Usuário
+        value: Valor
+    statistics:
+      index:
+        menu: "Estatísticas"
+        title: "Estatísticas"
+        total_users: "Usuários"
+        total_contributions: "Apoios"
+        total_contributors: "Apoiadores"
+        total_contributed: "Arrecadação"
+        total_projects: "Projetos"
+        total_projects_success: "Bem sucedidos"
+        total_projects_online: "Online"
+      projects_in_analysis_by_week:
+        title: "Projetos enviados para curadoria por semana"
+      projects_by_week:
+        title: "Rascunhos criados por semana"
+      contributions_by_week:
+        title: "Valor de apoios confirmados por semana"
+      charts:
+        current_period: "Últimas 8 sem."
+        last_year: "Ano anterior"
+  channels:
+    admin:
+      <<: *admin

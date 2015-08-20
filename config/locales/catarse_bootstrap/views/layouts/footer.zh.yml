@@ -1,0 +1,36 @@
+zh:
+  layouts:
+    footer:
+      links:
+        jobs: Trabalhe conosco
+        blog: Blog
+        contact: Contato
+        press: Imprensa
+        discover: Explore projetos
+        start: 'Como funciona'
+        expiring: Na reta final
+        facebook: Facebook
+        team: Nosso time <3
+        crowdfunding_stats: "Retrato FC Brasil 2013/2014"
+        faq: Ajuda
+        guides: Guia dos Realizadores
+        feedback: Feedback
+        github: Github
+        instagram: Instagram
+        near: Próximos a mim
+        press: Imprensa
+        privacy: Política de privacidade
+        recents: Recentes
+        recommended: Recomendados
+        submit: Comece seu projeto
+        terms: Termos de uso
+        twitter: Twitter
+      texts:
+        copyleft: Feito com amor.
+      titles:
+        about: Ajuda
+        contact: Bem-vindo
+        newsletter: Assine nossa news
+        sitemap: Navegue
+        social: Redes sociais
+

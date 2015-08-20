@@ -1,0 +1,16 @@
+zh:
+  devise:
+    passwords:
+      new:
+        no_account_html: "Não tem conta?"
+        titles:
+          site: 'Redefinir senha'
+          header: 'Redefinir senha'
+        links:
+          register: "Cadastre-se"
+        form:
+          labels:
+            email: 'Após inserir seu email, iremos enviar uma notificação com instruções de como redefinir sua senha'
+          inputs:
+            submit: 'Redefinir'
+

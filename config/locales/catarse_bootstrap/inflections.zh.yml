@@ -1,0 +1,18 @@
+zh:
+  found_singular: Encontrado
+  found_plural: Encontrados
+  project_singular: projeto
+  project_plural: projetos
+  contribution_singular: apoiador
+  contribution_plural: apoiadores
+  remaining_singular: restante
+  remaining_plural: restantes
+  created_project: 
+    zero: "ainda não criou projetos"
+    one: "%{count} projeto criado"
+    other: "%{count} projetos criados"
+  contributed_project:
+    zero: "ainda não apoiou projetos"
+    one: "apoiou %{count} projeto"
+    other: "apoiou %{count} projetos"
+

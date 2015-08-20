@@ -1,0 +1,6 @@
+zh:
+  errors:
+    not_found:
+      text: Você pode ter digitado errado o endereço ou a página pode ter sido movida.
+      title: Não encontramos esse endereço :(
+
