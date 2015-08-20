@@ -33,6 +33,18 @@ RSpec.describe PaymentObserver do
         expect(ContributionNotification.where(template_name: 'confirm_contribution', user: contribution.user, contribution: contribution).count).to eq 0
       end
     end
+
+    context "when paid_at already filled" do
+      let(:payment) do
+        payment = create(:payment, payment_method: 'BoletoBancario', state: 'pending', paid_at: 4.days.ago)
+        payment.pay!
+        payment
+      end
+      it("should not send confirm_contribution notification") do
+        expect(ContributionNotification.where(template_name: 'confirm_contribution', user: contribution.user, contribution: contribution).count).to eq 0
+      end
+
+    end
   end
 
   describe "#from_paid_to_pending_refund" do

@@ -31,7 +31,10 @@ class ContributionDetail < ActiveRecord::Base
   # Scopes based on project state
   scope :with_project_state, ->(state){ where(project_state: state) }
   scope :for_successful_projects, -> { with_project_state('successful').available_to_display }
-  scope :for_online_projects, -> { with_project_state(['online', 'waiting_funds']).available_to_display }
+  scope :for_online_projects, -> {
+    with_project_state(['online', 'waiting_funds']).
+    where("contribution_details.state not in('deleted')")
+  }
   scope :for_failed_projects, -> { with_project_state('failed').available_to_display }
 
   scope :available_to_display, -> {
