@@ -60,6 +60,36 @@ To run this project you need to have:
 
 If everything goes OK, you can now run the project!
 
+### Setup the project w/ Docker
+
+After building the image, you will need to install the front-end dependencies.
+
+A most likely out of date image is available on the public docker hub, leprechaun/ruby-catarse
+
+The `docker-compose.yml` file is currently does *NOT* work, for lack of ENV var support for redis/sidekiq.
+
+From within the ruby container, you wil need to set `REDIS_URL` to `export REDIS_URL="redis://${REDIS_PORT_6379_TCP_ADDR}:${REDIS_PORT_6379_TCP_PORT}"`
+
+#### PostgreSQL
+
+`docker run -d --name postgres -p 5432:5432 leprechaun/postgres-contrib`
+
+#### Redis
+
+`docker run -d --name redis -p 6379:6379 redis`
+
+`export REDIS_URL="redis://${REDIS_PORT_6379_TCP_ADDR}:${REDIS_PORT_6379_TCP_PORT}"`
+
+`rails db:create`
+`rails db:migrate`
+
+
+#### Rails app
+
+`docker run -ti -v `pwd`:/app/ --link redis:redis --link postgres:postgres leprechaun/ruby-catarse`
+
+From within the container
+
 ### Running the project
 
 ```bash
