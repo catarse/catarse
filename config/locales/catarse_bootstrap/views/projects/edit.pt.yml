@@ -118,7 +118,7 @@ pt:
       next_steps: "Enquanto espera a sua resposta, você pode continuar editando o seu projeto! Recomendamos também que você vá coletando feedback com as pessoas próximas e planejando como será a sua campanha."
     dashboard_nav:
       leave_link_html: "&nbsp; Sair do painel de controle"
-      start_tab: Infos úteis
+      start_tab: Minha Campanha
       reports_tab: Relatórios
       preview_tab: Preview
       posts_tab: Novidades
