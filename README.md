@@ -66,9 +66,8 @@ After building the image, you will need to install the front-end dependencies.
 
 A most likely out of date image is available on the public docker hub, leprechaun/ruby-catarse
 
-The `docker-compose.yml` file is currently does *NOT* work, for lack of ENV var support for redis/sidekiq.
+`docker-compose up` should provide what you need to be up and running. If not, look that the sections below.
 
-From within the ruby container, you wil need to set `REDIS_URL` to `export REDIS_URL="redis://${REDIS_PORT_6379_TCP_ADDR}:${REDIS_PORT_6379_TCP_PORT}"`
 
 #### PostgreSQL
 
