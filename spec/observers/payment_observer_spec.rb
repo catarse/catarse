@@ -33,6 +33,18 @@ RSpec.describe PaymentObserver do
         expect(ContributionNotification.where(template_name: 'confirm_contribution', user: contribution.user, contribution: contribution).count).to eq 0
       end
     end
+
+    context "when paid_at already filled" do
+      let(:payment) do
+        payment = create(:payment, payment_method: 'BoletoBancario', state: 'pending', paid_at: 4.days.ago)
+        payment.pay!
+        payment
+      end
+      it("should not send confirm_contribution notification") do
+        expect(ContributionNotification.where(template_name: 'confirm_contribution', user: contribution.user, contribution: contribution).count).to eq 0
+      end
+
+    end
   end
 
   describe "#from_paid_to_pending_refund" do
@@ -103,18 +115,6 @@ RSpec.describe PaymentObserver do
 
       it "should notify admin and contributor" do
         expect(ContributionNotification.where(template_name: 'contribution_canceled', user: contribution.user, contribution: contribution).count).to eq 1
-        expect(ContributionNotification.where(template_name: 'contribution_canceled_after_confirmed', user: @admin, contribution: contribution).count).to eq 1
-      end
-    end
-
-    context "when contribution is made with Boleto and canceled" do
-      before do
-        payment.update_attributes payment_method: 'BoletoBancario'
-        payment.refuse!
-      end
-
-      it "should notify admin and contributor" do
-        expect(ContributionNotification.where(template_name: 'contribution_canceled_slip', user: contribution.user, contribution: contribution).count).to eq 1
         expect(ContributionNotification.where(template_name: 'contribution_canceled_after_confirmed', user: @admin, contribution: contribution).count).to eq 1
       end
     end

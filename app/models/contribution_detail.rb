@@ -31,12 +31,33 @@ class ContributionDetail < ActiveRecord::Base
   # Scopes based on project state
   scope :with_project_state, ->(state){ where(project_state: state) }
   scope :for_successful_projects, -> { with_project_state('successful').available_to_display }
-  scope :for_online_projects, -> { with_project_state(['online', 'waiting_funds']).available_to_display }
+  scope :for_online_projects, -> {
+    with_project_state(['online', 'waiting_funds']).
+    where("contribution_details.state not in('deleted')")
+  }
   scope :for_failed_projects, -> { with_project_state('failed').available_to_display }
 
   scope :available_to_display, -> {
     joins(:payment).
     where("contribution_details.state not in('deleted', 'refused', 'pending') OR payments.waiting_payment")
+  }
+
+  scope :slips_past_waiting, -> {
+    where(payment_method: 'BoletoBancario',
+          state: 'pending',
+          waiting_payment: false,
+          project_state: 'online')
+  }
+
+  scope :no_confirmed_contributions_on_project, -> {
+    where("NOT EXISTS (
+          SELECT true 
+          FROM contributions c 
+          WHERE 
+            c.user_id = contribution_details.user_id 
+            AND c.project_id = contribution_details.project_id 
+            AND c.was_confirmed)"
+         )
   }
 
   scope :pending, -> { joins(:payment).merge(Payment.waiting_payment) }

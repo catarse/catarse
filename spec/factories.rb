@@ -94,7 +94,7 @@ FactoryGirl.define do
     f.address_number "foo"
     f.address_street "foo"
     f.phone_number "1234"
-    f.agency "foo"
+    f.agency "fooo"
     f.agency_digit "foo"
     f.owner_document "foo"
     f.owner_name "foo"
@@ -256,7 +256,7 @@ FactoryGirl.define do
     owner_name "Foo Bar"
     owner_document "97666238991"
     account_digit "1"
-    agency "1"
+    agency "1234"
     agency_digit "1"
     account "1"
   end
@@ -266,7 +266,7 @@ FactoryGirl.define do
     owner_name "Foo"
     owner_document "000"
     account_digit "1"
-    agency "1"
+    agency "1234"
     account '1'
   end
 

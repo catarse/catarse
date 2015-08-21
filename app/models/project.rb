@@ -227,6 +227,10 @@ class Project < ActiveRecord::Base
     end
   end
 
+  def delete_from_reminder_queue(user_id)
+    self.notifications.where(template_name: 'reminder', user_id: user_id).destroy_all
+  end
+
   def published?
     PUBLISHED_STATES.include? state
   end
