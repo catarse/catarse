@@ -1,0 +1,23 @@
+zh:
+  devise:
+    registrations:
+      new:
+        have_account_html: "Já tem cadastro?"
+        titles:
+          site: 'Cadastre-se'
+          header: 'Cadastre-se'
+        links:
+          login: "Faça seu login"
+        form:
+          labels:
+            show_password: 'Exibir senha'
+            name: 'Nome completo'
+            password: 'Senha'
+            newsletter: 'Quero receber novidades do Catarse no meu email'
+            accept: 'Ao efetuar cadastro, você está aceitando nossos <a href="%{terms_url}" class="alt-link" target="_blank">termos de uso</a> e <a class="alt-link" href="%{privacy_url}" target="_blank">política de privacidade</a>'
+          hint:
+            password_length: 'Mínimo de 6 caracteres'
+          inputs:
+            submit: 'Efetuar cadastro'
+            facebook: 'Entrar com Facebook'
+

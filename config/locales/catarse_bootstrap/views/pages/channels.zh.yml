@@ -1,0 +1,97 @@
+zh:
+  admin:
+    menu: "Moderação de Canais"
+    followers_menu: "Seguidores"
+    statistics_menu: "Estatísticas"
+    profile_menu: "Editar canal"
+    partners_menu: "Editar parceiros"
+    statistics:
+      title: 'Estatísticas do canal'
+      total_subscribers: 'Total de assinantes'
+    confirmations:
+      destroy: Você tem certeza que deseja deletar?
+    filter:
+      between_created_at: Criados entre
+      by_id: Por id
+      order_table: Ordenar tabela
+      pg_search: Projeto
+      submit: Filtrar
+      title: Filtrar
+      user_name_contains: Usuário
+      with_state: Com o estado
+      by_payment_method: 'Meio de pagamento'
+      by_gateway: 'Gateway'
+    followers:
+      index:
+        download: Baixar lista
+        title: Seguidores
+    management:
+      no_partners: Nenhum parceiro cadastrado
+      no_posts: Nenhuma novidade cadastrada
+      title: Gerenciamento
+      total: projetos no total
+    partners:
+      back_to_list: "← Voltar para gerenciar parceiros"
+      new:
+        add_partner: Adiconar parceiro
+      edit:
+        edit_title: Editar parceiro
+      form:
+        hint_image: Tamanho da imagem 370x320
+        save_submit: Salvar
+      index:
+        new_button: Adicionar parceiro
+        table:
+          created_at: Criado em
+          image: Imagem
+          name: Nome
+          url: Site
+          actions: Ações
+        title: Gerenciar parceiros
+    posts:
+      back_to_list: "← Voltar para gerenciar novidades"
+      new:
+        create_news: Criar novidade
+      edit:
+        edit_news: Editar Novidade
+      index:
+        new_post_button: Criar novidade
+        table:
+          actions: Ações
+          created_at: Criado em
+          published_at: Publicado em
+          title: Título da novidade
+        title: Gerenciar novidades
+      form:
+        save_submit: Salvar e visualizar
+      update:
+        published_message: Sua novidade foi publicada e enviada por email aos seguidores
+          do canal.
+      warning_html: Lembrando que toda novidade publicada vai diretamente para o
+        email de seus seguidores. Por isso, revise bem seu texto antes de enviá-lo.
+    posts_menu: Gerenciar novidades
+    table:
+      approve: Aprovar
+      category: Categoria
+      confirmation: Tem certeza que deseja deletar esse projeto?
+      contributed_projects: Projetos apoiados
+      created_projects: Projeto criados
+      destroy_action: Deletar
+      edit_action: Editar
+      expires_at: Término
+      goal: Meta
+      name: Título
+      online_date: Publicação
+      pledged: Alcançado
+      publish_action: Publicar
+      recommended: Recomendar
+      reject: Rejeitar
+      send_to_draft: Enviar para rascunho
+      put_online: Colocar no ar
+      send_to_trash: DELETAR PROJETO
+      show_action: Visualizar
+      state: Estado
+      total_contributions: Apoios
+      unpublish_action: Despublicar
+      user: Usuário
+      user_id: Usuário

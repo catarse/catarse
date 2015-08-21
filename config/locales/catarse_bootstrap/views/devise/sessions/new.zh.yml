@@ -1,0 +1,20 @@
+zh:
+  devise:
+    sessions:
+      new:
+        no_account_html: "Não tem conta?"
+        titles:
+          site: 'Login'
+          header: 'Login'
+        links:
+          register: "Cadastre-se"
+          password: "Senha"
+          forgot_password: "Esqueci minha senha"
+        form:
+          labels:
+            remember_me: 'Permanecer conectado'
+          inputs:
+            submit: 'Fazer login'
+            password: 'Senha'
+            facebook: 'Entrar com Facebook'
+

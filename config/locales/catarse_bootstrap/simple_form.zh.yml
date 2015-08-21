@@ -1,0 +1,56 @@
+zh:
+  simple_form:
+    collections:
+      project:
+        traffic_sources:
+          one: "eu já tive outro projeto no Catarse"
+          two: "indicação de uma pessoa que já teve um projeto no Catarse"
+          three: "indicação de amigo/colega/contato profissional"
+          four: "a partir de um projeto que estava captando na plataforma"
+          five: "artigo em um blog"
+          six: "uma matéria na imprensa (portal de notícias na internet, TV, jornal, revista)"
+          seven: "em uma aula/curso/palestra/evento"
+          eight: "fiz uma busca na internet sobre financiamento coletivo / formas alternativas de captação"
+          nine: "Outro"
+    validation_texts:
+      reward:
+        minimum_value: "Informe um valor mínimo maior ou igual a 10"
+        description: "Informe uma descrição para a recompensa"
+      bank_account:
+        input_bank_number: "Número do banco inválido"
+        bank_id: "Selecione um banco"
+        agency: "Qual o número da agência?"
+        account: "Qual o número da conta?"
+        account_digit: "Qual o dígito verificador?"
+        agency_digit: "Qual o dígito da agência?"
+        owner_name: "Informe um nome com no mínimo 5 e no máximo 30 letras"
+        owner_document: "Informe um CPF ou CNPJ válido para o correntista"
+      contribution:
+        payer_name: "Por favor digite o nome do apoiador"
+        payer_email: "Por favor digite um email válido"
+        payer_document: "Por favor digite um CPF ou CNPJ válido"
+        address_state: "Selecione um estado"
+        address_street: "Digite o nome da rua"
+        address_number: "Digite o número do endereço"
+        address_city: "Digite o nome da cidade"
+        address_zip_code: "Digite o CEP"
+        address_phone_number: "Digite o número de telefone"
+    prompts:
+      project:
+        category: "Selecione uma categoria"
+        select: "Selecione uma opção"
+        traffic_sources: "Como você conheceu o Catarse?"
+    hints:
+      project:
+        select: "Selecione uma opção"
+        traffic_sources: "Como você conheceu o Catarse?"
+        name: "Dê um nome que as pessoas se lembrem facilmente. Não ultrapasse 50 caracteres."
+        permalink: "Prefira algo simples, direto e que identifique bem seu projeto. Tente não usar hífen, underline etc."
+        category: "Escolha a mais adequada ao seu projeto."
+        goal: "Planeje uma meta coerente com o que seu projeto propõe. Revise seu orçamento e não esqueça de incluir a taxa de 13% cobrada pelo Catarse caso seu projeto seja bem-sucedido."
+        online_days: "Você pode escolher entre 1 e 60 dias para a sua campanha. Confira o guia dos realizadores para dicas sobre prazos."
+        video_url: "Link do seu vídeo no Vimeo ou <br/> Youtube."
+        about_html: "Fale com paixão e clareza sobre o que será realizado. Esclareça possíveis dúvidas sobre como o dinheiro será utilizado, quem está por trás do projeto, como e quando o projeto será entregue. Transparência atrai mais apoiadores. Lembre-se: seu projeto será acessado por pessoas comuns que decidirão se querem ou não apoiar seu projeto. Capriche! "
+        headline: "Frase no card do projeto para chamar apoiadores. Deve ter no máximo 100 caracteres e resumir bem o projeto."
+        uploaded_image: "Essa imagem será utilizada como a miniatura de seu projeto (PNG, JPG tamanho 600 x 340)"
+

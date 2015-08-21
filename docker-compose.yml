@@ -1,0 +1,19 @@
+---
+catarse:
+    image: leprechaun/ruby-catarse
+    ports:
+        - 3000:3000
+    volumes:
+        - .:/app/
+    links:
+        - postgres
+        - redis
+    command: bash /app/script/initialize-and-start.sh
+postgres:
+    image: leprechaun/postgres-contrib
+    ports:
+        - 5432
+redis:
+    image: redis
+    ports:
+        - 6379

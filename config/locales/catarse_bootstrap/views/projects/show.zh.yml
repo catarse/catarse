@@ -1,0 +1,105 @@
+zh:
+  projects:
+    about_mobile:
+      by: 'por'
+      back: '< Voltar'
+    project_embed:
+      insert: 'Insira um widget em seu site'
+    mobile_video:
+      read_more: "Leia mais"
+    metrics:
+      titles:
+        confirmed_by_day: 'Total de apoios confirmados por dia'
+        confirmed_amount_by_day: 'Total arrecadado por dia'
+        address_state: 'Total de apoios confirmados por Estado'
+    reminder:
+      ok: 'Ok! Vamos te mandar um lembrete por e-mail 48 horas antes do fim da campanha'
+      active_btn: 'Lembre-me deste projeto'
+      deactive_btn: 'Não quero mais ser lembrado'
+    send_to_analysis: Seu projeto foi enviado para nossa equipe.
+    send_to_analysis_error: Erro ao enviar projeto para análise. Preencha todos os campos obrigatórios.
+    push_to_online: Seu projeto está online!
+    push_to_online_error: Erro ao colocar o projeto online. Preencha todos os campos obrigatórios.
+    twitter:
+      take_a_look: Confira o projeto %{name} no @catarse
+    video_embed:
+      a_project_by_html: Um projeto de %{link} no
+    posts:
+      project_post:
+        exclusive: 'Post exclusivo para apoiadores.'
+        unavailable: Esta novidade só está disponível para apoiadores.
+        contribute: Apoie
+        unavailable_contribute: este projeto para visualizá-la.
+        destroy: Remover Novidade
+        destroy_confirmation: Deseja remover esta novidade?
+      new:
+        notice: Novidade enviada com sucesso!
+        comment: Texto da sua Novidade
+        exclusive: Visível apenas para apoiadores
+        submit: Enviar Novidade
+        title: Título da sua Novidade
+        warning: Lembrando que todo post de novidade vai diretamente para o email de
+          seus apoiadores. Por isso, revise bem seu texto antes de enviá-lo.
+    project_reports:
+      all_contributions_without_reward: Baixar relatório de todos os apoiadores
+        que não selecionaram uma recompensa
+      link_reports_confirmed: Baixar relatório de todos os apoiadores confirmados
+      link_reports_waiting_confirmation: Baixar relatório de todos os apoiadores
+        com boleto impresso
+      link_reward: Baixar relatório dos apoiadores da recompensa de %{value}
+    project_about:
+      embed: < embed >
+      embed_title: Incorpore este projeto no seu site
+      active_btn: ' Lembrar-me'
+      deactive_btn: ' Lembrete ativo'
+    show:
+      menu:
+        panel_html: "&nbsp;&nbsp;Painel de controle"
+        about: Sobre
+        add_reward: Adicionar recompensa
+        comments: Comentários
+        contributions: Apoios
+        metrics: Métricas
+        edit: Edição
+        reports: Relatórios
+        posts: Novidades
+    project_main:
+      post_call: 'Toda novidade publicada no Catarse é enviada diretamente para o email de quem já apoiou seu projeto e também fica disponível para visualização no site. Você pode optar por deixá-la pública, ou visível somente para seus apoiadores aqui nesta aba.'
+      send_post: 'Escrever novidade'
+      share: "Compartilhe"
+      tweet: "Tweet"
+      contribute_project:
+        display_status:
+          approved: "Esse projeto já foi aprovado pelo Catarse. Em breve ele entrará no ar e estará pronto para receber apoios."
+          online: "Você pode apoiar este projeto até o dia %{date} às 23h59m59s"
+          failed: "Este projeto não atingiu o mínimo de %{goal} até %{date} e não foi financiado"
+          rejected: "Este projeto não foi aceito. Não é possível realizar um apoio."
+          in_analysis: "Este projeto está em análise e ainda não está aberto para receber apoios."
+          successful: "Este projeto foi bem-sucedido e foi financiado em %{date}"
+          waiting_funds: "O prazo de captação desse projeto está encerrado. Estamos aguardando a confirmação dos últimos pagamentos."
+          draft: "Este projeto é apenas um rascunho e ainda não pode receber apoios."
+        submit: Apoiar este projeto
+      project_by: projeto por
+      funding_period: Período de campanha
+      project_header:
+        subtitle_html: "Um projeto de %{link}"
+        without_city: "Um projeto de"
+        with_city: "Um projeto de %{category_name} por %{author} em %{city}"
+      menu:
+        about: Sobre
+        add_reward: Adicionar recompensa
+        comments: Comentários
+        contributions: Apoios
+        metrics: Métricas
+        edit: Edição
+        reports: Relatórios
+        posts: Novidades
+      no_rewards_warning: Não viaje! Pense em como irá entregá-las e coloque tudo
+        isso no orçamento. Prometeu?! CUMPRA! :D
+      no_rewards_warning_title: Crie aqui suas recompensas
+      contribution_states:
+        confirmed: "Confirmados"
+        pending: "Pendentes"
+      sidebar:
+        contributions: apoios
+        goal: atingidos de %{total}

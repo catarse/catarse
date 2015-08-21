@@ -1,0 +1,28 @@
+zh:
+  pages:
+    start:
+      page-title: "Como funciona o Catarse?"
+      title: "Financie seu projeto coletivamente"
+      submit: "Comece seu projeto"
+      learn-more: "Saiba mais"
+      header:
+        people: "Pessoas já apoiaram pelo menos 01 projeto no Catarse"
+        success: "Projetos já foram financiados no Catarse"
+        money: "Doados para projetos publicados por aqui"
+      start:
+        title: "Comece seu projeto"
+        content: "É importante começar de algum lugar. Um ótimo primeiro passo para transformar sua ideia em um projeto de financiamento coletivo é inscrever um rascunho no Catarse. Estaremos aqui pra ajudar."
+        link: "Saiba mais sobre os primeiros passos de um projeto"
+      people:
+        title: "Estude e planeje"
+        content: "Produza o seu projeto com carinho e no tempo certo. Planejar uma boa campanha é fator decisivo para o sucesso do seu financiamento coletivo. Disponibilizamos uma série de materiais para te auxiliar!"
+        link: 'Saiba quantos apoiadores você precisará mobilizar'
+      work:
+        title: "É Tudo ou Nada"
+        content: "Quem define a meta de arrecadação e tempo de campanha é você. Escolha entre 1 e 60 dias para realizar sua campanha em busca de apoiadores. Se atingir sua meta financeira, fica com o valor arrecadado. Caso contrário todos que apoiaram recebem o dinheiro de volta. Cobramos uma taxa de 13% do total arrecadado apenas de projetos que atingiram ou ultrapassaram a meta. "
+        link: 'Receba dicas de campanhas de sucesso no Catarse'
+      time:
+        title: "Mobilize apoiadores"
+        content: "Comunique-se bem durante sua campanha e trate bem seus apoiadores! Eles são a força do seu projeto e são quem realmente vai determinar o sucesso ou não da campanha! O Catarse é uma forma de você se aproximar das pessoas que gostam do seu trabalho, expandir essa rede e formar público."
+        link: 'Saiba como nossa taxa ajuda a manter o Catarse'
+        

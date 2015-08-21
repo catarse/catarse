@@ -1,0 +1,135 @@
+zh:
+  projects:
+    contributions:
+      no_estimate: "Não disponível"
+      you_selected: "Você escolheu essa!"
+      contribute_text:
+        credits_tab: Meus créditos
+      checkout:
+        no_credits: Você não possui créditos suficientes para realizar este apoio.
+        success: Seu apoio foi realizado com sucesso. Muito obrigado!
+      contribution:
+        anonymous_contribution: Apoiador anônimo
+        anonymous_description: Optou por permanecer incógnito
+        no_reward: Este apoiador não selecionou nenhuma recompensa
+      selected_reward:
+        review_without_reward_html: Você irá apoiar com <strong>%{value}</strong>
+          e não quer nenhuma recompensa por seu apoio.
+        value: 'Valor do apoio'
+        reward: 'Recompensa selecionada'
+        edit: 'Editar'
+      existing_payment:
+        page_title: 'O seu apoio para %{name} foi realizado'
+        warning: 'Atenção'
+        warning_subtitle: 'Você está tentando acessar um endereço referente a um apoio já iniciado:'
+        check_email: "Verifique em sua caixa de email se o recibo provisório do apoio foi enviado. Caso não tenha sido, entre em %{mail_to_link} conosco, informando o código identificador do seu apoio (%{gateway_id}), que iremos te ajudar no que for preciso."
+        new_contribution: "Caso você tenha acessado essa página por engano, e queira realizar um novo apoio, %{link}"
+        contact: 'contato'
+        click_here: 'clique aqui'
+      faq:
+        common_questions: 'Perguntas Frequentes'
+        how_contribute: 'Como eu apoio este projeto?'
+        how_contribute_answer: 'Escolha o valor e a recompensa desejados. Em seguida, preencha os dados e detalhes do seu pagamento para finalizar o apoio.'
+        when_made_payment: 'Quando o pagamento é efetivado?'
+        when_made_payment_answer: 'Se você pagou com cartão de crédito, a confirmação deverá ser no mesmo dia. Se foi com boleto, em até 4 dias úteis.'
+        when_project_fails: 'E se o projeto não atingir a meta?'
+        when_project_fails_answer: 'Nesse caso, você recebe de volta 100% do que pagou através de um reembolso.'
+        when_project_funded: 'Se o projeto for financiado, como eu recebo minha recompensa?'
+        when_project_funded_answer: 'Quando sua recompensa estiver pronta, %{name} vai entrar em contato com você para combinar a entrega.'
+      edit:
+        review_slip_email: "Você também receberá um email com esse boleto."
+        slip_expiration: "Esse boleto bancário vence no dia %{date}."
+        slip_message: 'Ao gerar o boleto, o realizador já está contando com o seu apoio. Pague até a data de vencimento pela internet, casas lotéricas, caixas eletrônicos ou agência bancária.'
+        review_title: 'Preencha e revise os dados para pagamento'
+        review_subtitle: 'Esses dados serão informados ao realizador do projeto'
+        delivery_address: 'Endereço de entrega'
+        next_step: 'Próximo passo'
+        payment_slip_disclaimer: "Caso o projeto não seja bem-sucedido, nós faremos o reembolso do seu apoio. Os dados bancários informados aqui serão usados para isso."
+        review_errors_title: "Verifique os dados informados"
+        review_errors: "Alguma informação está faltando ou não foi informada corretamente, corrija todos os campos marcados em vermelho e tesnte novamente"
+        anonymous_confirmation_title: "Você tem certeza que quer que seu apoio seja anônimo?"
+        anonymous_confirmation: "O valor do seu apoio não será divulgado para ninguém além do dono do projeto. Somente o proponente terá acesso a essa informação, independente se o seu investimento seja público ou anônimo."
+        anonymous_contribution: "Quero que meu apoio seja anônimo"
+        form_labels:
+          user_another_card: "Usar outro cartão de crédito"
+          payment_card_number: 'Número do cartão'
+          payment_card_flag: 'Bandeira'
+          payment_card_source: 'Cód. Segurança'
+          payment_card_source_short: 'CVC'
+          payment_card_date: 'Expiração (mm/aaaa)'
+          payment_card_name: 'Nome impresso no cartão de crédito'
+          payment_card_installments: 'Parcelas'
+        installment_with_tax: 'sem juros'
+        transaction_error: 'Transação recusada, por favor verifique novamente seus dados ou entre em contato com o banco/emissor do cartão para maiores informações.'
+        pagarme_warning_html: "O Catarse está em fase de teste de um novo meio de pagamento que facilitará o apoio financeiro e o eventual reembolso dos valores aos apoiadores. Dessa forma, alertamos que poderão ser exigidos dados extras, além daqueles mencionados nos Termos de Uso para apoiar este projeto. Qualquer dúvida ou dificuldade, entre em contato conosco pelo e-mail %{mailto} . Obrigado."
+        payment_save_card: 'Quero salvar meu cartão de crédito para facilitar apoios futuros.'
+        reward_sold_out: Essa recompensa está esgotada. Inicie um novo apoio.
+        page-title: Apoie o %{name}
+        credits_preview_html: "Você possui <strong>%{credits}</strong> em créditos para realizar esse apoio <strong>até o dia 10/11</strong>, conforme <a href='http://blog.catarse.me/simplificacao-dos-reembolsos-e-o-fim-dos-creditos/' target='__blank'>novas regras</a> divulgadas pelo Catarse."
+        credits_submit: 'Efetuar pagamento'
+        credits_title: 'Pagamento com créditos'
+        insufficient_credits: "Você possui %{credits} em créditos. Esse valor não é suficiente para realizar o apoio, por favor escolha outro meio de pagamento."
+        choose_payment: "Escolha o meio de pagamento"
+        choose_payment_subtitle: "PAGAMENTO SEGURO"
+        cpf: 'Para prosseguir, por favor informe:'
+        credits_notice_html: Este apoio será pago com seus créditos. Após a confirmação,
+          você ficará com um saldo de <strong>%{credits}</strong> em créditos para
+          apoiar outros projetos.
+        live_in_brazil: Moro no Brasil. ( Desmarque caso o seu apoio seja internacional
+          )
+        number_card: Dados do cartão
+        owner_card: Dados do titular do cartão
+        payment_account: Pagamento com Débito em Conta
+        payment_boleto: Pagamento com Boleto
+        payment_card: Pagamento com Cartão
+        review_with_reward_html: 'Você irá apoiar com <strong>%{value}</strong> e
+          ganhará a seguinte recompensa:'
+        select_account: 'Você será redirecionado para o site do seu banco:'
+        select_boleto: 'Para prosseguir, por favor selecione:'
+        submit:
+          credits: Confirmar
+          moip: Efetuar pagamento pelo MoIP
+        subtitle: Estes dados serão informados ao organizador do projeto.
+        title: Preencha e revise os dados para pagamento
+        you_are_about_html: Você está prestes a fazer parte do grupo que faz de tudo
+          para o %{link} acontecer.
+      new:
+        page-title: Apoie o %{name}
+        title: Oohh yeah!
+        you_have_credits: "Você tem <strong>%{credits}</strong> em créditos para realizar este apoio."
+        choose_reward: Escolha a recompensa e em seguida o valor do apoio
+        choose_value: Digite o valor do seu apoio.
+        minimum_disclaimer: 'A partir de R$ <span id="minimum-value">10</span> está ótimo ;)'
+        next_step: "Revisar e realizar pagamento"
+        no_reward: Obrigado. Eu só quero ajudar o projeto.
+      review:
+        PayPal: "PayPal"
+        MoIP: "MoIP"
+        Credits: 'Créditos'
+        error: Ooops. Ocorreu um erro ao registrar seu apoio. Por favor, tente novamente.
+      thank_you_slip:
+        thank_you: 'Estou contando com seu apoio...'
+        thank_you_text_html: 'Você também recebeu esse boleto no email: %{email}'
+      thank_you:
+        thank_you: 'Valeu!'
+        thank_you_text_html: 'Você acaba de dar um passo importante na campanha para tirar o %{link1} do papel! Enviaremos a confirmação do pagamento por email assim que ele for processado. Você também pode acompanhar o status do apoio %{link2}.'
+        share: Compartilhe
+        tweet: Tuíte
+        share_back: 'Compartilhe o seu apoio e aumente as chances do projeto bater a meta!'
+        follow: 'Seguir'
+        follow_category: 'Curte a categoria %{category}? Você pode receber em primeira mão e diretamente no seu email quando novos projetos entrarem no ar!'
+        project_recommendations: 'Recomendações de projetos para você'
+        profile_link: 'através do seu perfil'
+      show:
+        header_subtitle: Sem você talvez este projeto não tivesse uma chance. Bem-vindo
+          ao time!
+        header_title: Muito obrigado! :D
+        moip_message: A verificação da sua transação está em andamento e o código
+          Moip é “%{code}″.<br>Caso tenha alguma dúvida referente a transação, entre
+          em contato com o Moip. Um email será enviado quando o pagamento for confirmado.
+        recommended_projects: 'Você também poderá curtir esses projetos:'
+        text_subtitle: Conte para todo mundo o que você acabou de fazer
+        text_title_html: Você agora é parte do grupo que faz de tudo para o projeto %{link}
+          acontecer.
+        title: Muito obrigado
+
