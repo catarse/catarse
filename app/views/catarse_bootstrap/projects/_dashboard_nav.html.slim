@@ -10,19 +10,19 @@
           img.thumb-project-dashboard src="#{image_path('thumb-project.png')}" width="114"
         .fontcolor-negative.lineheight-tight.fontsize-small= @project.name
 
-    #info-links
-      = link_to (edit ? '#home' : edit_project_path(@project, anchor: 'home')), id: 'dashboard_home_link', class: 'dashboard-nav-link-left ' , data: {target: '#dashboard_home', tab_group: 'edit'} do
-        span.fa.fa-bar-chart.fa-lg.fa-fw
-        = t('.start_tab')
-      - if @project.published?
-        = link_to (edit ? '#reports' : edit_project_path(@project, anchor: 'reports')), id: 'dashboard_reports_link', class: 'dashboard-nav-link-left ' , data: {target: '#dashboard_reports', tab_group: 'edit'} do
-          span.fa.fa.fa-table.fa-lg.fa-fw
-          = t('.reports_tab')
-        = link_to (edit ? '#posts' : edit_project_path(@project, anchor: 'posts')), id: 'dashboard_posts_link', class: 'dashboard-nav-link-left u-marginbottom-30' , data: {target: '#dashboard_posts', tab_group: 'edit'} do
-          span.fa.fa-bullhorn.fa-fw.fa-lg
-          = t('.posts_tab')
-          | &nbsp
-          span.badge= @project.posts.count
+      #info-links
+        = link_to (edit ? '#home' : edit_project_path(@project, anchor: 'home')), id: 'dashboard_home_link', class: 'dashboard-nav-link-left ' , data: {target: '#dashboard_home', tab_group: 'edit'} do
+          span.fa.fa-bar-chart.fa-lg.fa-fw
+          = t('.start_tab')
+        - if @project.published?
+          = link_to (edit ? '#reports' : edit_project_path(@project, anchor: 'reports')), id: 'dashboard_reports_link', class: 'dashboard-nav-link-left ' , data: {target: '#dashboard_reports', tab_group: 'edit'} do
+            span.fa.fa.fa-table.fa-lg.fa-fw
+            = t('.reports_tab')
+          = link_to (edit ? '#posts' : edit_project_path(@project, anchor: 'posts')), id: 'dashboard_posts_link', class: 'dashboard-nav-link-left u-marginbottom-30' , data: {target: '#dashboard_posts', tab_group: 'edit'} do
+            span.fa.fa-bullhorn.fa-fw.fa-lg
+            = t('.posts_tab')
+            | &nbsp
+            span.badge= @project.posts.count
 
       .edit-project-div
         - if @project.published?
