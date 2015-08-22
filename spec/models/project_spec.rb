@@ -63,6 +63,30 @@ RSpec.describe Project, type: :model do
 
   end
 
+  describe "#published?" do
+    subject { project.published? }
+
+    context "when project is failed" do
+      let!(:project) { create(:project, state: 'failed') }
+      it { is_expected.to eq(true) }
+    end
+
+    context "when project is online" do
+      let!(:project) { create(:project, state: 'online') }
+      it { is_expected.to eq(true) }
+    end
+
+    context "when project in approved" do
+      let!(:project) { create(:project, state: 'approved') }
+      it { is_expected.to eq(false) }
+    end
+
+    context "when project in draft" do
+      let!(:project) { create(:project, state: 'draft') }
+      it { is_expected.to eq(false) }
+    end
+  end
+
   describe "#user_already_in_reminder?" do
     let(:user) { create(:user) }
     subject { project.user_already_in_reminder?(user.id) }

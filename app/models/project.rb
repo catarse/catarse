@@ -232,7 +232,7 @@ class Project < ActiveRecord::Base
   end
 
   def published?
-    PUBLISHED_STATES.include? state
+    pluck_from_database("is_published")
   end
 
   def expires_fragments *fragments
@@ -263,4 +263,8 @@ class Project < ActiveRecord::Base
     to_analytics.to_json
   end
 
+  private
+  def pluck_from_database attribute
+    Project.where(id: self.id).pluck("projects.#{attribute}").first
+  end
 end
