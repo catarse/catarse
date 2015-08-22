@@ -26,7 +26,7 @@
   }
 
   if(projectInsightsRoot){
-    m.mount(projectInsightsRoot, m.component(c.admin.ProjectInsights, {root: projectInsightsRoot}));
+    m.mount(projectInsightsRoot, m.component(c.project.Insights, {root: projectInsightsRoot}));
   }
 }(window.m, window.c, window.Chart));
 
