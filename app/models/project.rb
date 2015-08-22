@@ -80,8 +80,8 @@ class Project < ActiveRecord::Base
   scope :to_finish, ->{ expired.with_states(['online', 'waiting_funds']) }
   scope :visible, -> { without_states(['draft', 'rejected', 'deleted', 'in_analysis', 'approved']) }
   scope :financial, -> { with_states(['online', 'successful', 'waiting_funds']).where(expires_at: 15.days.ago.. Time.current) }
-  scope :expired, -> { where("expires_at < ?", Time.current) }
-  scope :not_expired, -> { where("expires_at >= ?", Time.current) }
+  scope :expired, -> { where("projects.is_expired") }
+  scope :not_expired, -> { where("not projects.is_expired") }
   scope :expiring, -> { not_expired.where(expires_at: Time.current.. 2.weeks.from_now) }
   scope :not_expiring, -> { not_expired.where.not(expires_at: Time.current.. 2.weeks.from_now) }
   scope :recent, -> { where(online_date: 5.days.ago.. Time.current) }
@@ -192,7 +192,7 @@ class Project < ActiveRecord::Base
   end
 
   def expired?
-    expires_at && expires_at < Time.current
+    expires_at && pluck_from_database("is_expired")
   end
 
   def in_time_to_wait?
