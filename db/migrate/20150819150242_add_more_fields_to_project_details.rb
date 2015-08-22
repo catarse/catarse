@@ -12,7 +12,7 @@ class AddMoreFieldsToProjectDetails < ActiveRecord::Migration
       create function public.is_published(projects) returns boolean
         language sql stable SECURITY DEFINER
         as $$
-          select true where $1.state = ANY(public.published_states());
+          select $1.state = ANY(public.published_states());
         $$;
 
       drop function if exists public.is_expired(projects);
