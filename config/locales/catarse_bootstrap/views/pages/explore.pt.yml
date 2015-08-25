@@ -2,8 +2,8 @@ pt:
   pages:
     explore:
       header_html: "Explore projetos incríveis &nbsp;"
-      success_follow: "Agora você segue a categoria e vai receber semanalmente uma lista com os novos projetos de %{name}"
-      success_unfollow: "Você deixou de seguir essa categoria %{name}"
+      success_follow: "Obrigado! Vamos te mandar um email semanal com os projetos recentes da categoria %{name}."
+      success_unfollow: "Você deixou de seguir a categoria %{name}."
       follow: Seguir
       unfollow: Deixar de seguir
       following: seguidores
@@ -18,4 +18,3 @@ pt:
         faça acontecer!
       successful: Bem-sucedidos
       title: Encontre projetos incríveis
-
