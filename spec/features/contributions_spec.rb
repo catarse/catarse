@@ -77,7 +77,7 @@ RSpec.describe "Contributions", type: :feature do
       sleep FeatureHelpers::TIME_TO_SLEEP
       find("#next-step").click
       pay
-      expect(page).to have_content(I18n.t('projects.contributions.show.thank_you'))
+      expect(page).to have_content(I18n.t('projects.contributions.thank_you.thank_you'))
     end
 
     it "should redirect to thank you page after paying a contribution without reward with a credit card" do
@@ -86,7 +86,7 @@ RSpec.describe "Contributions", type: :feature do
       sleep FeatureHelpers::TIME_TO_SLEEP
       find("#next-step").click
       pay
-      expect(page).to have_content(I18n.t('projects.contributions.show.thank_you'))
+      expect(page).to have_content(I18n.t('projects.contributions.thank_you.thank_you'))
     end
 
     it "should redirect to thank you page after paying with a credit card a no reward contribution" do
@@ -95,7 +95,7 @@ RSpec.describe "Contributions", type: :feature do
       sleep FeatureHelpers::TIME_TO_SLEEP
       find("#next-step").click
       pay
-      expect(page).to have_content(I18n.t('projects.contributions.show.thank_you'))
+      expect(page).to have_content(I18n.t('projects.contributions.thank_you.thank_you'))
     end
   end
 end

@@ -1,6 +1,6 @@
 namespace :cron do
   desc "Tasks that should run hourly"
-  task hourly: [:finish_projects,
+  task hourly: [:finish_projects, :second_slip_notification,
                 :refresh_materialized_views]
 
   desc "Tasks that should run daily"
@@ -15,6 +15,13 @@ namespace :cron do
     UserTotal.refresh_view
   end
 
+  desc "Send second slip notification"
+  task second_slip_notification: :environment do
+    puts "sending second slip notification"
+    ContributionDetail.slips_past_waiting.no_confirmed_contributions_on_project.each do |contribution_detail|
+      contribution_detail.contribution.notify_to_contributor(:contribution_canceled_slip)
+    end
+  end
 
   desc "Finish all expired projects"
   task finish_projects: :environment do

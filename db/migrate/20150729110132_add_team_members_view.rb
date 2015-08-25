@@ -1,7 +1,14 @@
 class AddTeamMembersView < ActiveRecord::Migration
   def up
     execute <<-SQL
-      CREATE ROLE anonymous NOLOGIN;
+      DO
+      $body$
+        BEGIN
+          IF NOT EXISTS (SELECT * FROM pg_catalog.pg_roles WHERE rolname = 'anonymous') THEN
+            CREATE ROLE anonymous NOLOGIN;
+          END IF;
+        END
+      $body$;
       CREATE OR REPLACE FUNCTION public.was_confirmed(contributions) RETURNS boolean
           LANGUAGE sql STABLE SECURITY DEFINER
           AS $_$
@@ -68,7 +75,6 @@ class AddTeamMembersView < ActiveRecord::Migration
 
   def down
     execute <<-SQL
-      DROP ROLE anonymous NOLOGIN;
       drop view "1".team_members;
       drop view if exists "1".team_totals;
       drop index if exists user_totals_user_id_ix;

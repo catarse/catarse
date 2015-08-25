@@ -33,6 +33,9 @@ class Payment < ActiveRecord::Base
   scope :waiting_payment, -> { where('payments.waiting_payment') }
 
 
+  def waiting_payment?
+    Payment.where(id: self.id).pluck("payments.waiting_payment").first
+  end
   # Check current status on pagarme and
   # move pending payment to deleted state
   def move_to_trash
@@ -92,7 +95,7 @@ class Payment < ActiveRecord::Base
     end
 
     event :pay do
-      transition [:pending, :pending_refund] => :paid
+      transition [:pending, :pending_refund, :chargeback, :refunded] => :paid
     end
 
     event :refuse do

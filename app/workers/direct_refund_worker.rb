@@ -1,6 +1,6 @@
 class DirectRefundWorker
   include Sidekiq::Worker
-  sidekiq_options retry: false
+  sidekiq_options retry: 5
 
   def perform(payment_id)
     payment = Payment.find payment_id
