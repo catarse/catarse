@@ -1,16 +1,11 @@
 - content_for :title, t('.titles.site')
 
-.w-container
-  = render 'devise/shared/header'
-  .w-row
-    .w-col.w-col-12.u-text-center
-      .fontweight-semibold.fontsize-large.u-marginbottom-10= t '.titles.header'
+.w-section
   .w-container
+    = render 'devise/shared/header'     
     .w-row
       .w-col.w-col-6.box-login.w-col-push-3
-        .fontsize-small.u-text-center.u-marginbottom-10
-          span.fontcolor-secondary=>t ('.no_account_html')
-          = link_to t('.links.register'), new_user_registration_path, class: 'alt-link fontweight-semibold'
+        .fontweight-semibold.u-text-center.fontsize-large.u-marginbottom-30= t '.titles.header'
         .login-fb
           = link_to t('.form.inputs.facebook'), user_omniauth_authorize_path(provider: :facebook, locale: nil), class: 'btn btn-medium btn-fb'
         .separator
@@ -21,7 +16,15 @@
             = form.input :email, as: :email, label: t('.email'), input_html: { class: 'w-input text-field' }, required: false
             = link_to t('.links.forgot_password'), new_password_path(resource_name), class: 'fontsize-smallest link-hidden fontcolor-secondary u-right'
             = form.input :password, as: :password, label: t('.form.inputs.password'), input_html: { class: 'w-input text-field' }
-            .u-marginbottom-10
+            .u-marginbottom-20
               = form.input_field :remember_me, as: :boolean, boolean_style: :inline, class: 'checkbox-fix', checked: true
               label.w-form-label.fontsize-smallest= t('.form.labels.remember_me')
-            = form.button :submit, t('.form.inputs.submit'), class:'btn btn-medium'
+            .w-row
+              .w-col.w-col-6.w-col-small-6.w-col-tiny-6
+                = form.button :submit, t('.form.inputs.submit'), class:'btn btn-medium'
+              .w-col.w-col-6.w-col-small-6.w-col-tiny-6
+                .devise-opt
+                  .lineheight-tight.fontsize-small
+                    span.fontcolor-secondary=>t ('.no_account_html')
+                    = link_to t('.links.register'), new_user_registration_path, class: 'alt-link fontweight-semibold'
+
