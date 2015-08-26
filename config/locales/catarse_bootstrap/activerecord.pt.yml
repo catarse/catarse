@@ -84,6 +84,7 @@ pt:
         user_id: "Id do usuário"
         video_url: "URL do vídeo"
         permalink: 'Link do seu projeto'
+        city: 'Local do projeto'
         more_links: 'Indique links para as pessoas conhecerem mais sobre o seu projeto e sua trajetória.'
         traffic_sources: 'Como você conheceu o Catarse?'
         first_contributions: "Quem são as primeiras pessoas que você vai pedir para apoiar o seu projeto?"

@@ -182,6 +182,7 @@ pt:
       video_url_hint: "Importante: Qualquer projeto pode ser enviado sem o vídeo para análise do atendimento do Catarse . O vídeo pode ser analisado posteriormente. Lembrando que ele só é obrigatório para projetos com metas acima de 5 mil reais."
       video_url_subtitle: "Link do Vimeo ou Youtube"
     dashboard_basics:
+      city: 'Local do projeto'
       online_date: 'Data de entrada no ar'
       user_id: 'Id do usuário'
       name: 'Nome do projeto'
