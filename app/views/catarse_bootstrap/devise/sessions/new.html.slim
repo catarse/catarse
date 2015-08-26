@@ -21,10 +21,10 @@
               label.w-form-label.fontsize-smallest= t('.form.labels.remember_me')
             .w-row
               .w-col.w-col-6.w-col-small-6.w-col-tiny-6
-                = form.button :submit, t('.form.inputs.submit'), class:'btn btn-medium'
+                = form.button :submit, t('.form.inputs.submit'), class:'btn btn-large'
               .w-col.w-col-6.w-col-small-6.w-col-tiny-6
                 .devise-opt
                   .lineheight-tight.fontsize-small
-                    span.fontcolor-secondary=>t ('.no_account_html')
+                    .fontcolor-secondary=>t ('.no_account_html')
                     = link_to t('.links.register'), new_user_registration_path, class: 'alt-link fontweight-semibold'
 

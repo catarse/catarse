@@ -23,11 +23,11 @@
               label.w-form-label.fontsize-smallest= t('.form.labels.newsletter')
             .w-row.u-marginbottom-20
               .w-col.w-col-6.w-col-small-6.w-col-tiny-6
-                = form.button :submit, t('.form.inputs.submit'), class:'btn btn-medium'
+                = form.button :submit, t('.form.inputs.submit'), class:'btn btn-large'
               .w-col.w-col-6.w-col-small-6.w-col-tiny-6
                 .devise-opt
                   .lineheight-tight.fontsize-small
-                    span.fontcolor-secondary=> t '.have_account_html'
+                    .fontcolor-secondary=> t '.have_account_html'
                     = link_to t('.links.login'), new_user_session_path, class: 'link alt-link fontweight-semibold'            
         .fontsize-smallest.u-text-center.u-marginbottom-30
           = t(".form.labels.accept", terms_url: CatarseSettings[:terms_url], privacy_url: CatarseSettings[:privacy_url]).html_safe
