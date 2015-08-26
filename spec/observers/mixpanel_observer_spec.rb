@@ -67,11 +67,13 @@ RSpec.describe MixpanelObserver do
 
   describe "#after_create" do
     context "when we create a ProjectPost" do
-      before do
-        project_owner_properties[:has_sent_notification] = true
-      end
       it "should send tracker a track call with the change" do
-        expect(tracker).to receive(:track).with(project.user.id.to_s, "Project owner engaged with Catarse", project_owner_properties.merge(action: "Created post"), project.user.current_sign_in_ip)
+        expect(tracker).to receive(:track).with(
+          project.user.id.to_s,
+          "Project owner engaged with Catarse",
+          project_owner_properties.merge({has_created_post: true, action: "Created post"}),
+          project.user.current_sign_in_ip
+        )
         create(:project_post, project: project)
       end
     end
