@@ -10,6 +10,16 @@ class ProjectDecorator < Draper::Decorator
     "#{source.state}_warning"
   end
 
+  def show_city
+    if source.city.present?
+      source.city.show_name
+    elsif source.account && source.account.address_city.present? && source.account.address_state.present?
+      "#{source.account.address_city.capitalize}, #{source.account.address_state} "
+    elsif source.user.address_city.present? && source.user.address_state.present?
+      "#{source.user.address_city.capitalize}, #{source.user.address_state} "
+    end
+  end
+
   def time_to_go
     time_and_unit = nil
     %w(day hour minute second).detect do |unit|

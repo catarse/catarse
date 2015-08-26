@@ -6,17 +6,17 @@ div[itemtype="http://schema.org/CreativeWork" class="#{defined?(wrapper_class) ?
   .card-project.card.u-radius
     meta[itemprop="dateCreated" content=@project.created_at.to_date]
     a.card-project-thumb style="background-image: url(#{@project.display_image(:project_thumb_large)});display:block;" href="#{project_by_slug_path(@project.permalink, ref: ref)}" target=target
-    .card-project-description
+    .card-project-description.u-marginbottom-30
       .fontweight-semibold.fontsize-base.u-marginbottom-10.u-text-center-small-only.lineheight-tight=link_to truncate(@project.name, length: 50, separator: ''), project_by_slug_path(@project.permalink, ref: ref), title: @project.name, target: target, class: 'link-hidden', itemprop: "name"
       .w-hidden-small.w-hidden-tiny.fontsize-smallest.fontcolor-secondary.u-marginbottom-20[itemprop="name" content="#{@project.user.display_name}"]= t('.by') + ' ' + @project.user.display_name
       .w-hidden-small.w-hidden-tiny.fontcolor-secondary.fontsize-smaller
         = link_to project_by_slug_path(@project.permalink, ref: ref), title: @project.headline, target: target, class: 'link-hidden' do
           = truncate(@project.headline, length: 140)
-    - if @project.city.present?
+    - if @project.decorate.show_city
       .w-hidden-small.w-hidden-tiny.card-project-author.altt
         .fontsize-smallest.fontcolor-secondary
           span.fa.fa-map-marker.fa-1
-          |  #{@project.city.show_name}
+          |  #{@project.decorate.show_city}
     .card-project-meter class=@project.state
       -if ['successful', 'failed', 'waiting_funds'].include? @project.state
         div= t("projects.card.display_status.#{@project.display_status}")
