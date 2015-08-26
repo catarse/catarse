@@ -4,12 +4,12 @@ class Categories::SubscriptionsController < ApplicationController
 
   def create
     parent.users << current_user
-    redirect_with_flash 'explore.index.success_follow'
+    redirect_with_flash 'pages.explore.success_follow'
   end
 
   def destroy
     parent.users.delete(current_user)
-    redirect_with_flash 'explore.index.success_unfollow'
+    redirect_with_flash 'pages.explore.success_unfollow'
   end
 
   protected

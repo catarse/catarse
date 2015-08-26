@@ -426,7 +426,7 @@ RSpec.describe User, type: :model do
         published_projects: user.published_projects.count,
         created: user.created_at,
         has_online_project: user.has_online_project?,
-        has_sent_notification: user.has_sent_notification?,
+        has_created_post: user.has_sent_notification?,
         last_login: user.last_sign_in_at,
         created_today: user.created_today?
       }.to_json)
