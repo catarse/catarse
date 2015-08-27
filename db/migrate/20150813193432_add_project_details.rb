@@ -1,9 +1,8 @@
 class AddProjectDetails < ActiveRecord::Migration
   def up
-    current_database = execute("SELECT current_database();")[0]["current_database"]
+    #current_database = execute("SELECT current_database();")[0]["current_database"]
+      #-- alter database #{current_database} set user_vars.user_id = '';
     execute <<-SQL
-      alter database #{current_database} set user_vars.user_id = '';
-
       create function public.is_owner_or_admin(integer) returns boolean
       language sql STABLE SECURITY DEFINER
       AS $_$
