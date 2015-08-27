@@ -21,11 +21,11 @@ class ProjectDecorator < Draper::Decorator
   end
 
   def time_to_go
-    time_and_unit = nil
-    %w(day hour minute second).detect do |unit|
-      time_and_unit = time_to_go_for unit
-    end
-    time_and_unit || time_and_unit_attributes(0, 'second')
+    time_json = source.pluck_from_database("remaining_time_json")
+    {
+      time: time_json.try(:[], 'total'),
+      unit: pluralize_without_number(time_json.try(:[], 'total'), I18n.t("datetime.prompts.#{time_json.try(:[], 'unit')}").downcase)
+    }
   end
 
   def remaining_days
@@ -156,19 +156,5 @@ class ProjectDecorator < Draper::Decorator
   rescue
     nil
   end
-
-  def time_to_go_for(unit)
-    time = 1.send(unit)
-
-    if source.expires_at.to_i >= time.from_now.to_i
-      time = ((source.expires_at - Time.current).abs / time).floor
-      time_and_unit_attributes time, unit
-    end
-  end
-
-  def time_and_unit_attributes(time, unit)
-    { time: time, unit: pluralize_without_number(time, I18n.t("datetime.prompts.#{unit}").downcase) }
-  end
-
 end
 

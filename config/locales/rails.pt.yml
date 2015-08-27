@@ -90,6 +90,10 @@ pt:
         one: "1 segundo"
         other: "%{count} segundos"
     prompts:
+      days: Dia
+      hours: Hora
+      minutes: Minuto
+      seconds: Segundo
       day: Dia
       hour: Hora
       minute: Minuto

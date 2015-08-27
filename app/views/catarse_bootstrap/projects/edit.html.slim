@@ -16,7 +16,7 @@
     .w-container
       .w-row
         article
-          #dashboard_home.content.w-hidden data-page_title="" data-page_subtitle=""
+          #dashboard_home.content.w-hidden data-page_title="Minha campanha" data-page_subtitle=""
             = render 'dashboard_home'
           #dashboard_goal.content.w-hidden  data-page_title="#{t('.goal')}" data-page_subtitle="#{t('.goal_subtitle')}"
             = render 'dashboard_goal'
@@ -39,8 +39,8 @@
           #dashboard_reward.content.w-hidden data-page_title="#{t('.reward')}" data-page_subtitle="#{t('.reward_subtitle')}"
             = render 'dashboard_reward'
           - if @project.published?
-            #dashboard_reports.content.w-hidden data-path=project_metrics_path(@project) data-page_title="#{t('.reports')}" data-page_subtitle=""
-              .results
+            #dashboard_reports.content.w-hidden data-page_title="#{t('.reports')}" data-page_subtitle=""
+              = render 'dashboard_reports'
           #dashboard_user_about.content.w-hidden data-page_title="#{t('.user_about')}" data-page_subtitle="#{t('.user_about_subtitle')}"
             = render 'dashboard_user_about'
           #dashboard_preview.content.w-hidden data-page_subtitle="" data-page_title=""
