@@ -17,7 +17,6 @@ p {
   border: 1px solid #7cc142;
   border-radius: 5px;
   background-color: #7cc142;
-  -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
   color: white;
   text-align: center;
@@ -35,7 +34,6 @@ p {
   padding-top: 12px;
   padding-bottom: 12px;
   border-radius: 5px;
-  -webkit-transition: all 500ms ease, all 500ms ease;
   transition: all 500ms ease, all 500ms ease;
   font-size: 16px;
 }
@@ -112,7 +110,6 @@ p {
   border: 1px solid #ddd;
   border-radius: 5px;
   background-color: #f1f4f4;
-  -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
   color: #3f4752;
   font-size: 15px;
@@ -234,7 +231,6 @@ p {
   background-color: white;
 }
 .link {
-  -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
   color: #f69219;
   font-size: 16px;
@@ -305,7 +301,6 @@ p {
   background-color: white;
 }
 .link-hidden {
-  -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
   color: #3f4752;
   text-decoration: none;
@@ -345,7 +340,6 @@ p {
   padding: 0px;
   float: right;
   opacity: 0.5;
-  -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
 }
 .icon-close:hover {
@@ -384,7 +378,6 @@ p {
   margin-top: 0px;
   border-bottom-style: none;
   background-color: transparent;
-  background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.2), transparent);
   background-image: linear-gradient(rgba(0, 0, 0, 0.2), transparent);
 }
 .main-header.overlayer.alert {
@@ -407,7 +400,6 @@ p {
   margin: 0px;
   padding: 9px 17px;
   border-radius: 4px;
-  -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
   color: #f1f2f3;
   font-size: 15px;
@@ -697,7 +689,6 @@ p {
   border-width: 1px;
   border-color: rgba(64, 155, 255, 0);
   background-color: rgba(64, 155, 255, 0.09);
-  -webkit-transition-delay: initial;
   transition-delay: initial;
   color: #409bff;
   text-decoration: none;
@@ -729,20 +720,19 @@ p {
   width: 100%;
   height: 60px;
   margin-bottom: 0px;
-  padding: 6px 12px 8px;
+  padding-left: 12px;
   border-style: solid solid solid none;
   border-width: 1px;
   border-color: #7cc142 #7cc142 #7cc142 transparent;
   border-radius: 0px 5px 5px 0px;
   background-color: white;
-  -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
   color: #7cc142;
   font-size: 44px;
+  line-height: 60px;
   font-weight: 400;
 }
 .back-reward-input-reward:hover {
-  padding: 6px 12px 8px;
   border-style: solid solid solid none;
   border-width: 1px;
   border-color: #7cc142 #7cc142 #7cc142 transparent;
@@ -762,16 +752,14 @@ p {
   display: inline-block;
   width: 100%;
   height: 60px;
-  margin-right: 0px;
-  margin-bottom: 0px;
-  padding-top: 24px;
+  padding-left: 0px;
   border-style: solid none solid solid;
   border-color: #7cc142;
   border-radius: 5px 0px 0px 5px;
   background-color: transparent;
   color: #7cc142;
   font-size: 34px;
-  line-height: 12px;
+  line-height: 60px;
   text-align: center;
 }
 .back-reward-input-reward.error {
@@ -787,7 +775,6 @@ p {
   border-style: solid;
   border-width: 2px;
   border-color: transparent transparent #f1f4f4;
-  -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
 }
 .back-reward-radio-reward:hover {
@@ -1180,7 +1167,6 @@ p {
   margin-top: -1px;
   padding: 11px 14px;
   border: 1px solid #ddd;
-  -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
 }
 .creditcard-records:hover {
@@ -1211,11 +1197,9 @@ p {
   margin-top: -10px;
   margin-right: -10px;
   float: right;
-  -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
 }
 .dropdown-link {
-  -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
 }
 .dropdown-link:hover {
@@ -1250,7 +1234,6 @@ p {
   margin-right: 10px;
   float: none;
   border-radius: 50%;
-  -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
 }
 .user-avatar:hover {
@@ -1295,7 +1278,6 @@ p {
   width: 100px;
   margin-right: 20px;
   float: left;
-  -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
 }
 .header-logo:hover {
@@ -1439,7 +1421,6 @@ p {
   border-bottom: 1px solid transparent;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
-  -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
   color: #79808b;
   font-size: 15px;
@@ -1605,7 +1586,6 @@ p {
 .out-of-focus {
   display: inline-block;
   opacity: 0.25;
-  -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
 }
 .out-of-focus:hover {
@@ -1740,7 +1720,6 @@ p {
   width: 75%;
 }
 .link-hidden-success {
-  -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
   color: #7cc142;
   text-decoration: none;
@@ -2025,7 +2004,6 @@ p {
   margin-right: 2px;
   padding: 1px 8px;
   border-radius: 4px;
-  -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
   text-align: center;
 }
@@ -2073,7 +2051,6 @@ p {
   padding: 16px 5px;
   border: 1px solid white;
   border-radius: 4px;
-  -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
   color: white;
   font-size: 16px;
@@ -2204,7 +2181,6 @@ p {
 .btn-play {
   width: 100px;
   margin-bottom: 20px;
-  -webkit-transition: all 502ms ease;
   transition: all 502ms ease;
 }
 .btn-play:hover {
@@ -2226,7 +2202,6 @@ p {
   height: 225px;
   padding: 61px 33px 73px;
   border-radius: 5px;
-  -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
   color: white;
   text-align: center;
@@ -2346,7 +2321,6 @@ p {
   margin-left: 205px;
 }
 .body-project.open {
-  -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
 }
 .body-project.big {
@@ -2442,7 +2416,6 @@ p {
   overflow-x: hidden;
   overflow-y: hidden;
   height: 45px;
-  -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
 }
 .card-alert {
@@ -2863,12 +2836,12 @@ html.w-mod-js *[data-ix="icon-funded-with"] {
   .back-reward-input-reward {
     height: 54px;
     font-size: 36px;
-    line-height: 55px;
+    line-height: 50px;
   }
   .back-reward-input-reward.placeholder {
     height: 54px;
     font-size: 29px;
-    line-height: 7px;
+    line-height: 50px;
   }
   .back-reward-radio-reward {
     border-width: 2px;
@@ -2990,7 +2963,6 @@ html.w-mod-js *[data-ix="icon-funded-with"] {
     height: 120px;
   }
   .card-reward {
-    -webkit-transition: all 500ms ease;
     transition: all 500ms ease;
   }
   .card-reward:hover {
@@ -3315,7 +3287,6 @@ html.w-mod-js *[data-ix="icon-funded-with"] {
     text-align: center;
   }
   .back-reward-input-reward {
-    float: none;
     font-size: 36px;
   }
   .back-reward-radio-reward {

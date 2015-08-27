@@ -1,29 +1,36 @@
 - content_for :title, t('.titles.site')
 
-.w-container
-  .u-marginbottom-10
-    = render 'devise/shared/header'
-  .w-row
-    .w-col.w-col-6.box-login.w-col-push-3
-      .fontweight-semibold.u-text-center.fontsize-large.u-marginbottom-10= t '.titles.header'
-      .fontsize-small.u-text-center.u-marginbottom-10
-        span.fontcolor-secondary=> t '.have_account_html'
-        = link_to t('.links.login'), new_user_session_path, class: 'link alt-link fontweight-semibold'
-      .login-fb
-        = link_to t('.form.inputs.facebook'), user_omniauth_authorize_path(provider: :facebook, locale: nil), class: 'btn btn-medium btn-fb'
-      .separator
-        .text.or = t('or')
-      .w-form
-        = simple_form_for resource, as: resource_name, html: {novalidate: true}, url: sign_up_path  do |form|
-          = render 'devise/shared/alert'
-          = form.input :email, as: :email, wrapper_html: { class: 'no-asterisk' }, input_html: { class: 'w-input text-field' }, required: false
-          .u-right
-            = form.input_field :show_password, as: :boolean, boolean_style: :inline, class: 'checkbox-fix', checked: false
-            label.w-form-label.fontsize-smallest= t('.form.labels.show_password')
-          = form.input :password, as: :password, label: t('.form.labels.password'), input_html: { class: 'w-input text-field' }
-          .u-marginbottom-10
-            = form.input_field :newsletter, as: :boolean, boolean_style: :inline, class: 'checkbox-fix', checked: true
-            label.w-form-label.fontsize-smallest= t('.form.labels.newsletter')
-          = form.button :submit, t('.form.inputs.submit'), class:'btn btn-medium'
-      .fontsize-smallest.u-text-center.u-marginbottom-30
-        = t(".form.labels.accept", terms_url: CatarseSettings[:terms_url], privacy_url: CatarseSettings[:privacy_url]).html_safe
+.w-section
+  .w-container
+    = render 'devise/shared/header'     
+    .w-row
+      .w-col.w-col-6.box-login.w-col-push-3
+        .fontweight-semibold.u-text-center.fontsize-large.u-marginbottom-30= t '.titles.header'
+        .login-fb
+          = link_to t('.form.inputs.facebook'), user_omniauth_authorize_path(provider: :facebook, locale: nil), class: 'btn btn-medium btn-fb'
+        .separator
+          .text.or = t('or')
+        .w-form
+          = simple_form_for resource, as: resource_name, html: {novalidate: true}, url: sign_up_path  do |form|
+            = render 'devise/shared/alert'
+            = form.input :email, as: :email, wrapper_html: { class: 'no-asterisk' }, input_html: { class: 'w-input text-field' }, required: false
+            .u-right
+              = form.input_field :show_password, as: :boolean, boolean_style: :inline, class: 'checkbox-fix', checked: false
+              label.w-form-label.fontsize-smallest= t('.form.labels.show_password')
+            = form.input :password, as: :password, label: t('.form.labels.password'), input_html: { class: 'w-input text-field' }
+            .u-marginbottom-20
+              = form.input_field :newsletter, as: :boolean, boolean_style: :inline, class: 'checkbox-fix', checked: true
+              label.w-form-label.fontsize-smallest= t('.form.labels.newsletter')
+            .w-row.u-marginbottom-20
+              .w-col.w-col-6.w-col-small-6.w-col-tiny-6
+                = form.button :submit, t('.form.inputs.submit'), class:'btn btn-large'
+              .w-col.w-col-6.w-col-small-6.w-col-tiny-6
+                .devise-opt
+                  .lineheight-tight.fontsize-small
+                    .fontcolor-secondary=> t '.have_account_html'
+                    = link_to t('.links.login'), new_user_session_path, class: 'link alt-link fontweight-semibold'            
+        .fontsize-smallest.u-text-center.u-marginbottom-30
+          = t(".form.labels.accept", terms_url: CatarseSettings[:terms_url], privacy_url: CatarseSettings[:privacy_url]).html_safe
+
+
+
