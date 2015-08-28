@@ -241,13 +241,13 @@ FactoryGirl.define do
   end
 
   factory :state do
-    name "RJ"
-    acronym "RJ"
+    name { generate(:name) }
+    acronym { generate(:name) }
   end
 
   factory :city do |f|
-    f.association :state, factory: :state
-    name "foo"
+    f.association :state
+    f.name "foo"
   end
 
   factory :bank do
