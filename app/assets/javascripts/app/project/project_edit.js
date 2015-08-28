@@ -44,8 +44,15 @@ App.addChild('ProjectEdit', _.extend({
     if($tab.length > 0){
       this.onTabClick({ currentTarget: $tab });
     }
+
     $('#dashboard-page-title').text($tab_title);
     $('#dashboard-page-subtitle').text($tab_subtitle);
+
+    if(($tab_title == "" || $tab_title == undefined) && ($tab_subtitle == "" || $tab_subtitle == undefined)) {
+      $('#dashboard-titles-root').hide();
+    } else {
+      $('#dashboard-titles-root').show();
+    }
   },
 
   loadEmbed: function() {
