@@ -245,7 +245,7 @@ FactoryGirl.define do
     acronym "RJ"
   end
 
-  factory :city do
+  factory :city do |f|
     f.association :state, factory: :state
     name "foo"
   end
