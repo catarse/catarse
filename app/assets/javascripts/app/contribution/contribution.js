@@ -25,7 +25,7 @@ App.addChild('Contribution', {
       $target_row.find('.user-reward-value').addClass('error');
       $target_row.find('.text-error').slideDown();
     }else{
-      this.$('form').submit();  
+      this.$('form').submit();
     }
 
     return false;
@@ -35,7 +35,7 @@ App.addChild('Contribution', {
     this.$('.user-reward-value').mask('000.000.000,00', {reverse: true});
     this.$value = this.$('#contribution_value');
     this.$minimum = this.$('#minimum-value');
-    this.clickReward({currentTarget: this.$('input[type=radio]:checked').parent()}); 
+    this.clickReward({currentTarget: this.$('input[type=radio]:checked').parent()});
     this.isOnAutoScroll = false;
     this.activateFloattingHeader();
   },
@@ -51,17 +51,17 @@ App.addChild('Contribution', {
             $(window).scrollTop() > top ? $(".reward-floating").addClass("reward-floating-display") : $(".reward-floating").removeClass("reward-floating-display");
             var t = $("#faq-box");
             $(window).scrollTop() > faq_top-130 ? $(t).hasClass("faq-card-fixed") || $(t).addClass("faq-card-fixed") : $(t).hasClass("faq-card-fixed") && $(t).removeClass("faq-card-fixed");
-        }       
+        }
     });
   },
 
-  clearOnFocus: function(event){ 
+  clearOnFocus: function(event){
     this.$(event.target).val("");
     this.$('.error').removeClass('error');
     this.$('.text-error').slideUp();
     return false;
   },
-  
+
   customValidation: function(event){
     if(parseInt(this.$value.val()) < this.minimumValue()){
       this.selectReward(this.$('.radio label'));
@@ -81,20 +81,28 @@ App.addChild('Contribution', {
     reward.find('input[type=radio]').prop('checked', true);
     this.$('.back-reward-money').hide();
     reward.find('.back-reward-money').show();
-    reward.parent().addClass('selected');
+    reward.parents('.back-reward-radio-reward').addClass('selected');
   },
 
   clickReward: function(event){
     var $el = $(event.currentTarget);
+    var elOffset = $el.offset().top;
+    var elHeight = $el.height();
+    var windowHeight = $(window).height();
     var isOnAutoScroll = this.isOnAutoScroll;
+    var offset;
+    if (elHeight < windowHeight) {
+      offset = elOffset - ((windowHeight / 2) - ((elHeight * 2) / 3));
+    } else {
+      offset = elOffset;
+    }
     $.smoothScroll({
-      scrollTarget: $el,
       speed: 600,
-      offset: -250,
+      offset: -60,
       callback: function(){
         isOnAutoScroll = false;
       }
-    });
+    }, offset);
     this.selectReward($el);
     var minimum = this.minimumValue();
     var reward_value = $el.find('.user-reward-value');

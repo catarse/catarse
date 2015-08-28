@@ -1,0 +1,17 @@
+- payment = @contribution.payments.last
+.u-marginbottom-30.page-header
+  .w-container
+    .w-row
+      .w-col.w-col-10.w-col-push-1
+        .u-text-center.u-marginbottom-20
+          = image_tag @project.user.decorate.display_image, class: 'u-round thumb big', alt: @project.user.decorate.display_name
+        .u-text-center
+          .fontsize-largest.text-success.u-marginbottom-20 = t('.thank_you') 
+          .fontsize-base.u-marginbottom-40
+            = t('.thank_you_text_html', email: @contribution.user.email)
+
+.section.u-marginbottom-40
+  .w-container
+    .w-row
+      .w-col.w-col-8.w-col-offset-2
+        iframe src="#{payment.gateway_data["boleto_url"]}" width="100%" height="905px" frameborder="0" style="overflow: hidden;"

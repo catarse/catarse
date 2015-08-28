@@ -1,13 +1,26 @@
 fr:
   projects:
     edit:
+      posts: "Rédiger une nouvelles"
+      budget: Budget
+      budget_subtitle: "Comment l'argent des contributeurs sera utilisé ? La plus grande transparence sera le mieux. Expliquer les étapes et les processus qui bénéficirons de ces contributions. Une liste des principaux postes du budget ou même un graphique sera très bien ici."
+      card: 'Vignette du projet'
+      card_subtitle: 'La vignette sera la première chose que les contributeurs verront de votre projet. Comme vous le saver, la première impressio'
+      video: 'Vidéo'
+      video_subtitle: 'Une bonne vidéo peut être en grande partie responsable de la réussite de votre projet.'
+      basics: 'Compléter les informations ci-dessous'
+      basics_subtitle: 'Les données présentées dans cette section ne peuvent pas être modifiés une fois le projet démarré. Remplissez les informations soigneusement avant de lancer le projet.'
+      goal: 'Objectif et délai'
+      goal_subtitle: 'Remplissez soigneusement cette section, ces informations ne pourront pas être changées une fois le projet commencé.'
       reports: 'Rapports'
-      user_settings: "Données d'enregistrement bancaires"
-      user_settings_subtitle: "Une fois le formulaire ci-dessous complété, votre projet sera prêt. Après avoir terminé le remplissage, cliquez sur Enregistrer. Review. Si tout est ok, appuyez simplement sur le bouton Publier et lancer votre campagne !"
+      user_settings: 'Informations bancaire'
+      user_settings_subtitle: "Votre projet sera prêt à être lancé une fois ce formulaire rempli. Après avoir terminé la saisie , cliquez sur sauvegarder . Voir. Si tout est ok, appuyez simplement sur le bouton Publier et lancer votre campagne !"
       user_about: "Parlez-nous de vous !"
-      reward: "Créer et modifier vos récompenses ici"
-      reward_subtitle: "Ici, vous définissez les contrepartis pour vos contributeurs. N'oublier pas d'inclure le coût des contreparties dans votre budget. Prométhée, LIVRÉ !"
-      user_about_subtitle: "Les contributeurs veulent en savoir plus sur les membres du projet. Les liens qui aident à raconter leur histoire sont toujours les bienvenus."
+      reward: "Créer et modifier vos contreparties ici"
+      reward_subtitle: "Définissez vos contreparties ici."
+      user_about_subtitle: "Les contributeurs veulent en savoir plus sur les membres de votre équipe."
+      description: "Racontez l'histoire de votre projet !"
+      description_subtitle: "C'est la description de votre projet qui va convaincre les contributeurs. Une bonne vidéo et la description font la différence !"
     reward_fields:
       edit: "Créer récompense "
       reward: Récompense
@@ -30,15 +43,16 @@ fr:
         edit_reward: Créer une récompense
         new_reward: Enregistrer une récompense
         reward_deliver_time: "<b>Date de livraison:</b> %{estimate}"
-        reward_title: Pour %{minimum} ou plus
+        reward_title: "Pour %{minimum} ou plus"
     dashboard_user_settings:
        natural: "Nom complet du titulaire "
        juridical: "Raison social du titulaire "
        title: "Données d’enregistrements et bancaires "
        subtitle_html: "Avec le formulaire ci-dessous complet, votre projet est prêt pour être mis en ligne. Après avoir tout remplit, cliquez sur Sauvegarder. Vérifiez. Si tout est ok, il suffit d’appuyer sur le bouton Publié et commencer votre campagne ! "
+       owner_document_natural: "CPF do titular da conta bancária"
+       owner_document_juridical: "CNPJ do titular da conta bancária"       
        user_data_title: "Données d’enregistrement et adresse "
        user_data_subtitle_html: "Nous avons besoin des données ci-dessous pour la délivrance de la facture pour les projets réussis. <b>ATTENTION : LE CPF/CNPJ énumérés dans les données d’enregistrement et les données bancaires doivent être identique. </b>"
-       account_title: "Données bancaires "
        account_subtitle_html: "Nous avons besoin des données ci-dessous pour effectuer des transfert financier pour les projets réussis. <b> ATTENTION : LE CPF/CNPJ énumérés dans les données d’enregistrement et les données bancaires doivent être identique. </b>"
        account_edit_disabled_html: "Les données ci-dessous on était informer par vous-même au moment de la publication de votre projet. Pour éviter des erreurs dans les transferts de fonds, l’édition de ces données ont été bloqué afin que votre projet soit en ligne. Au cas où vous désirez les modifier, il suffit %{link} d’informer les changements que vous voulez faire. "
        submit: "Sauvegarder"
@@ -68,8 +82,8 @@ fr:
       online:
         title: "%{name}, votre campagne et en ligne ! "
         subtitle_html: "Votre projet est en ligne et votre campagne et elle prendra fin à 23h59min59s le %{date}. Jusqu’à cette date vous pouvez recevoir des dons. Souvenez-vous, c’est tout ou rien et vous prendrez les ressources seulement si l’objectif défini a été atteint. Accéder a notre %{link2} pour d’autres questions ! "
-        explanation_html: "
-<div class='fontsize-base u-marginbottom-40 card card-terciary'>
+        explanation_html: |
+                    <div class='fontsize-base u-marginbottom-40 card card-terciary'>
                       <p class='fontweight-bold'>
                         Avec le projet en ligne, quelques informations ne pourront plus être modifiées.
                       </p>
@@ -83,7 +97,6 @@ fr:
                         La recherche &nbsp;%{link1} est aussi une grande source de données sur la scène brésilienne. Une bonne lecture sur &nbsp; %{link2} peut être une source d’inspiration. La bas vous rencontrerait des histoires de projets réussi et des conseil sur la campagne.
                       </p>
                     </div>
-"
       failed:
         title: "%{name}, ne vous découragez pas !"
         subtitle_html: "Votre projet n’a pas atteint sa cible et nous savons que ce n’est pas la meilleur des sensations. Mais ne vous découragez pas. Voyez le processus comme un apprentissage et réaliser une deuxième tentative. Ne vous inquiétez pas, tout vos donateur vont recevoir leur argent. %{link}."
@@ -98,19 +111,30 @@ fr:
       in_analysis:
         title: "%{name}, vous avez envoyer votre projet pour analyse et vous recevrez une réponse dans un délais de 4 jours de travail. "
         subtitle_html: "Merci beaucoup ! Notre équipe va évaluer tout le contenu de votre projet dans un délai de 4 jours de travail vous recevrez un email pour savoir s’il a été Approuvé, Refusé ou s’il sera toujours En Analyse pour encore quelque temps pour que vous puissiez faire des ajustements suggérer. Profité de cette période pour avoir des retours avec des personnes proches ! "
-    edit:
-      leave_link_html: "&nbsp; Sortir du panneau de control "
-      start_tab: Início
-      basics_tab: Básico
-      project_tab: Projeto
-      posts_tab: Novidades
-      rewards_tab: Recompensas
-      about_you_tab: Sobre você
-      reports_tab: Relatórios
-      account_tab: Conta
-      preview_tab: Preview
-      send: Enviar
+    dashboard_analysis_success:
+      title: "%{name}, Votre projet a été envoyé pour l'analyse !"
+      subtitle: "Vous recevrez notre réponse dans les 4 jours ouvrables par email:"
+      next_steps: "En attendant votre réponse, vous pouvez continuer à modifier votre projet ! Nous vous recommandons également d'allez recueillir les commentaires des gens autours de vous."
+    dashboard_nav:
+      leave_link_html: "&nbsp; Sair do painel de controle"
+      start_tab: Informations
+      reports_tab: Rapports
+      preview_tab: Visualiser
+      posts_tab: News
+      edit_project: Editer le projet
+      send: Envoyer
       publish: Publier
+    dashboard_nav_links:
+      preview_tab: Visualiser
+      account_tab: Compte
+      basics_tab: Basique
+      goal_tab: Objectif et délai
+      budget_tab: Budget
+      card_tab: Vignette du projet
+      description_tab: Description
+      video_tab: Vídeo
+      rewards_tab: Contrepartie
+      about_you_tab: A propos de vous
     dashboard_user_about:
       submit: "Sauvegarde"
       title: "Parlez plus de vous ! "
@@ -127,55 +151,47 @@ fr:
       uploaded_image_hint: "Cette image sera utilisé comme aperçu de votre profil (PNG, JPG taille idéal 280 x 280)"
       name_label: "Nom"
       name_hint: "Votre nom public, visible par tous comme auteur du projet. "
+    dashboard_goal:
+      submit: "Sauvegarder"
+    dashboard_description:
+      submit: "Sauvegarder"      
     dashboard_reward:
       submit: "Sauvegarder"
-      title: "Créer ici vos récompenses "
       add_reward: "Ajouter récompense"
-      subtitle: "C’est votre reconnaissance auprès des donateurs. Souvenez-vous d’inclure le prix des récompenses dans votre budget. Vous avez promis. DONNEZ-LE ! "
       reward: "Récompenses"
     dashboard_preview:
       header_subtitle: "C’est l’heure des retours ! "
       header_text: "Partagez le lien ci-dessous avec vos amis et profitez du moment pour faire des petits ajustement pour vous aider dans votre campagne. "
     dashboard_posts:
-      title: "Ecrire une nouveauté "
       only_to_backers: "Je veux que cette nouveauté sois visible seulement pour les donateurs. "
       publish: 'Publier une nouveauté'
       discard: 'Se débarrasser'
       warning: "Toute nouveauté publié est envoyer directement à vos donateurs par email. Vérifiez bien l’article avant de le publier. "
       old_posts: "Anciennes nouveautés "
-    dashboard_project:
-      budgets_hint_html: " Entrez une liste avec les principaux point du budget. Pas besoin d’entré dans des détails précis, une vision générale suffit. Vos donateurs aimeront savoir ou leur argent ira. Il n’existe pas de règle &nbsp; le nombre de points dans la liste, mais normalement 5 est un bon nombre ! "
-      budget_hint_html: "Comment votre argent sera utilisé ? Plus transparent sa sera mieux sa sera. Montrez quelles étapes et processus sont nécessaires dans l’utilisation de ces ressources. Une liste avec les principaux points du budget ou même un graphique en camembert va super bien ici. "
+    dashboard_budget:
+      submit: Sauvegarder
       budget_label: "Budget du projet"
-      budgets_label: "Détails du budget"
-      start: "Racontez l’histoire de votre projet ! "
-      start_subtitle: "Pensez bien à la narration de votre projet. C’est lui qui attirera les personne et qui ramènera des donateurs. Une bonne vidéo et la description sont différentes ! "
-      video_url: "URL de la vidéo "
-      video_url_hint: "Lien de votre vidéo sur Vimeo ou Youtube. "
-      about: "Description du projet "
-      links_title: "Liens utiles "
-      about_hint_html: ' Parlez avec passion et clairette sur ce qui sera réalisé. Répondez aux possibles questions tels que comment l’argent sera utilisé, qui est derrière le projet, comment et quand le projet sera remis. La transparence attire plus de donateurs. Souvenez vous : votre projet sera accessible pas des gens ordinaires qui décideront de soutenir ou non votre projet. Capriche ! '
-      card: 'Carte du projet'
-      card_subtitle: ' Vous savez cette petite carte qui apparait l’écran principale et dans la recherche ? Sa fait jolie et comme on dit la première impression est la plus importante ! '
-      image: 'Image du projet'
-      image_hint: 'Cette image sera utilisé comme aperçus de votre projet (PNG, JPG taille 600 x 340)'
-      headline: 'Nom du projet'
-      headline_hint: 'Il sera utilisé sur la carte du projet, joint avec l’image au dessus (miniature). Maximum 100 caractères. '
-      submit: 'Sauvegarder'
+    dashboard_card:
+      submit: Sauvegarder
+      card_label: "Vignette du projet"
+    dashboard_video:
+      submit: Sauvegarder
+      card_label: "Video"
+      video_url: "Video du projet"
+      video_url_hint: "Important: Tout projet peut être envoyé sans la vidéo pour l'analyser par Catarse. La vidéo peut être analysé plus tard. Elle n'est nécessaire que pour les projets de plus 5000 Réal."
+      video_url_subtitle: "Liens vers Vimeo ou Youtube"
     dashboard_basics:
-      project_start: 'Remplir les informations ci-dessous'
-      project_start_subtitle: 'Les données inscrites dans cette section ne pourront pas être modifier quand le projet sera mis en ligne. Remplir avec attention et vérifiez avant de lancer le projet. '
       online_date: 'Date de mise en ligne'
-      user_id: 'Id de l’utilisateur'
+      user_id: 'Identifiant'
       name: 'Nom du projet'
-      name_label: 'Plus vous serrez direct lieux sa sera. Ne pas dépasser 50 caractères'
+      name_label: 'Rester concis. Ne pas dépasser 50 caractères'
       url: 'URL du projet'
-      url_label: 'C’est l’adresse de votre projet, il doit être facile à retenir. Evité les tirets du bas et les caractères spéciaux. '
+      url_label: "L'adresse de votre projet doit être facile à retenir. Évitez dles '_', '-' et autres symboles"
       category: 'Catégorie'
-      category_label: 'Explorer et inspirez vous des autres projets dans la même catégorie que le votre.'
-      online_days: 'Délai pour la collecte'
-      online_days_label: 'Vous pouvez choisir entre 1 et 60 jours pour votre campagne. Consultez le guide des réalisateurs pour en savoir plus sur les délais. '
-      value: 'Valeur recueillie '
-      value_secondary: 'Planifiez un objectif compatible avec ce que propose votre projet. Vérifiez votre budget et n’oubliez pas d’ajouter la taxe de 13% imposer par Catarse si votre projet est une réussite. '
+      category_label: "Explorer et inspirer vous d'autres projets dans la même catégorie que le vôtre."
+      online_days: 'Date limite pour la collecte'
+      online_days_label: "Vous pouvez choisir entre 1 et 60 jours pour la campagne. Consultez le guide d'administration pour obtenir des conseils sur les durée."
+      value: 'Montant à collecter'
+      value_secondary: "Planifiez un objectif conforme à ce que votre projet propose. Passez en revue votre budget et ne pas oublier d'inclure le taux de 13% prélevé par Catarse si votre projet est un succès"
       form:
         submit: 'Sauvegarder'

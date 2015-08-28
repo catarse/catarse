@@ -38,14 +38,14 @@ class PaymentObserver < ActiveRecord::Observer
     contribution = payment.contribution
     contribution.notify_to_backoffice(:contribution_canceled_after_confirmed,
                                       { from_email: contribution.user.email, from_name: contribution.user.name })
-    contribution.notify_to_contributor((payment.slip_payment? ? :contribution_canceled_slip : :contribution_canceled))
+    contribution.notify_to_contributor( :contribution_canceled ) if !payment.slip_payment?
   end
   alias :from_pending_to_refused :from_paid_to_refused
 
   private
   def notify_confirmation(payment)
     contribution = payment.contribution
-    contribution.notify_to_contributor(:confirm_contribution)
+    contribution.notify_to_contributor(:confirm_contribution) unless payment.paid_at.present?
 
     if (Time.current > contribution.project.expires_at  + 7.days) && User.where(email: ::CatarseSettings[:email_payments]).present?
       contribution.notify_to_backoffice(:payment_confirmed_after_project_was_closed)

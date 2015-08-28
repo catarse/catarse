@@ -25,7 +25,6 @@
     "jquery-ujs": "~1.0.3",
     "jquery.fixedmask": "~1.0.0",
     "mithril": "~0.2.0",
-    "catarse-admin": "https://github.com/catarse/catarse-admin.git#master",
-    "catarse-static": "https://github.com/catarse/catarse-static.git#master"
+    "catarse.js": "0.0.6"
   }
 }

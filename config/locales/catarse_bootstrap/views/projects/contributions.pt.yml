@@ -107,16 +107,20 @@ pt:
         MoIP: "MoIP"
         Credits: 'Créditos'
         error: Ooops. Ocorreu um erro ao registrar seu apoio. Por favor, tente novamente.
-      show:
+      thank_you_slip:
+        thank_you: 'Estou contando com seu apoio...'
+        thank_you_text_html: 'Você também recebeu esse boleto no email: %{email}'
+      thank_you:
+        thank_you: 'Valeu!'
+        thank_you_text_html: 'Você acaba de dar um passo importante na campanha para tirar o %{link1} do papel! Enviaremos a confirmação do pagamento por email assim que ele for processado. Você também pode acompanhar o status do apoio %{link2}.'
+        share: Compartilhe
+        tweet: Tuíte
+        share_back: 'Compartilhe o seu apoio e aumente as chances do projeto bater a meta!'
         follow: 'Seguir'
         follow_category: 'Curte a categoria %{category}? Você pode receber em primeira mão e diretamente no seu email quando novos projetos entrarem no ar!'
         project_recommendations: 'Recomendações de projetos para você'
-        share: Compartilhe
-        tweet: Tuíte
-        thank_you: 'Valeu!'
         profile_link: 'através do seu perfil'
-        thank_you_text_html: 'Você acaba de dar um passo importante na campanha para tirar o %{link1} do papel! Enviaremos a confirmação do pagamento por email assim que ele for processado. Você também pode acompanhar o status do apoio %{link2}.'
-        share_back: 'Compartilhe o seu apoio e aumente as chances do projeto bater a meta!'
+      show:
         header_subtitle: Sem você talvez este projeto não tivesse uma chance. Bem-vindo
           ao time!
         header_title: Muito obrigado! :D

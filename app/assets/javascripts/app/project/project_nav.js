@@ -22,8 +22,6 @@ App.addChild('ProjectNav', {
 
   toggleNav: function(){
     $(".body-project").toggleClass("closed");
-    $(".btn-dashboard").toggleClass("closed fa-cog");
-    $(".btn-dashboard").toggleClass("open fa-chevron-left");
     return false;
   },
 
@@ -42,4 +40,3 @@ App.addChild('ProjectNav', {
   },
 
 });
-
