@@ -9,7 +9,7 @@ module Project::StateMachineHandler
 
       #validations starting in in_analysis
       state :in_analysis, :approved, :online, :successful, :waiting_funds, :failed do
-        validates_presence_of :about_html, :headline, :goal, :online_days, :budget
+        validates_presence_of :about_html, :headline, :goal, :online_days, :budget, :city
         validates_presence_of :uploaded_image, if: ->(project) { project.video_thumbnail.blank? }
         validate do
           [:uploaded_image, :about_html, :name].each do |attr|

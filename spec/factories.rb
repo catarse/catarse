@@ -68,6 +68,7 @@ FactoryGirl.define do
     f.association :category
     f.about_html "Foo bar"
     f.headline "Foo bar"
+    f.city "Foo bar"
     f.goal 10000
     f.online_date Time.now
     f.online_days 5
@@ -242,6 +243,11 @@ FactoryGirl.define do
   factory :state do
     name "RJ"
     acronym "RJ"
+  end
+
+  factory :city do
+    f.association :state, factory: :state
+    name "foo"
   end
 
   factory :bank do
