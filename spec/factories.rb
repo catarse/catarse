@@ -66,9 +66,9 @@ FactoryGirl.define do
     f.permalink { generate(:permalink) }
     f.association :user
     f.association :category
+    f.association :city
     f.about_html "Foo bar"
     f.headline "Foo bar"
-    f.city "Foo bar"
     f.goal 10000
     f.online_date Time.now
     f.online_days 5
