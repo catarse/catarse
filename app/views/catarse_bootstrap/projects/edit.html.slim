@@ -13,39 +13,39 @@
   = render partial: 'dashboard_nav', locals: {edit_page: true}
   section.section
     #current_anchor data-anchor="#{params[:anchor]}"
-    .w-container
-      .w-row
-        article
-          #dashboard_home.content.w-hidden data-page_title="Minha campanha" data-page_subtitle=""
-            = render 'dashboard_home'
-          #dashboard_goal.content.w-hidden  data-page_title="#{t('.goal')}" data-page_subtitle="#{t('.goal_subtitle')}"
-            = render 'dashboard_goal'
-          #dashboard_video.content.w-hidden  data-page_title="#{t('.video')}" data-page_subtitle="#{t('.video_subtitle')}"
-            = render 'dashboard_video'
-          #dashboard_budget.content.w-hidden data-page_title="#{t('.budget')}" data-page_subtitle="#{t('.budget_subtitle')}"
-            = render 'dashboard_budget'
-          #dashboard_card.content.w-hidden data-page_title="#{t('.card')}" data-page_subtitle="#{t('.card_subtitle')}"
-            = render 'dashboard_card'
-          #dashboard_description.content.w-hidden data-page_title="#{t('.description')}" data-page_subtitle="#{t('.description_subtitle')}"
-            = render 'dashboard_description'
-          - if !@project.published? || (current_user && current_user.admin?)
-            #dashboard_analysis_success.content.w-hidden data-page_title="" data-page_subtitle=""
-              = render 'dashboard_analysis_success'
-            #dashboard_basics.content.w-hidden data-page_title="#{t('.basics')}" data-page_subtitle="#{t('.basics_subtitle')}"
-              = render 'dashboard_basics'
-          - if @project.published?
-            #dashboard_posts.content.w-hidden data-page_title="#{t('.posts')}" data-page_subtitle=""
-              = render 'dashboard_posts'
-          #dashboard_reward.content.w-hidden data-page_title="#{t('.reward')}" data-page_subtitle="#{t('.reward_subtitle')}"
-            = render 'dashboard_reward'
-          - if @project.published?
-            #dashboard_reports.content.w-hidden data-page_title="#{t('.reports')}" data-page_subtitle=""
-              = render 'dashboard_reports'
-          #dashboard_user_about.content.w-hidden data-page_title="#{t('.user_about')}" data-page_subtitle="#{t('.user_about_subtitle')}"
-            = render 'dashboard_user_about'
-          #dashboard_preview.content.w-hidden data-page_subtitle="" data-page_title=""
-            = render 'dashboard_preview'
-          #dashboard_user_settings.content.w-hidden data-page_title="#{t('.user_settings')}" data-page_subtitle="#{t('.user_settings_subtitle')}"
-            = render 'dashboard_user_settings'
+    .w-section
+      article
+        #dashboard_home.content.w-hidden data-page_title="Minha campanha" data-page_subtitle=""
+          = render 'dashboard_home'
+        #dashboard_goal.content.w-hidden  data-page_title="#{t('.goal')}" data-page_subtitle="#{t('.goal_subtitle')}"
+          = render 'dashboard_goal'
+        #dashboard_video.content.w-hidden  data-page_title="#{t('.video')}" data-page_subtitle="#{t('.video_subtitle')}"
+          = render 'dashboard_video'
+        #dashboard_budget.content.w-hidden data-page_title="#{t('.budget')}" data-page_subtitle="#{t('.budget_subtitle')}"
+          = render 'dashboard_budget'
+        #dashboard_card.content.w-hidden data-page_title="#{t('.card')}" data-page_subtitle="#{t('.card_subtitle')}"
+          = render 'dashboard_card'
+        #dashboard_description.content.w-hidden data-page_title="#{t('.description')}" data-page_subtitle="#{t('.description_subtitle')}"
+          = render 'dashboard_description'
+        - if !@project.published? || (current_user && current_user.admin?)
+          #dashboard_analysis_success.content.w-hidden data-page_title="" data-page_subtitle=""
+            = render 'dashboard_analysis_success'
+          #dashboard_basics.content.w-hidden data-page_title="#{t('.basics')}" data-page_subtitle="#{t('.basics_subtitle')}"
+            = render 'dashboard_basics'
+        - if @project.published?
+          #dashboard_posts.content.w-hidden data-page_title="#{t('.posts')}" data-page_subtitle=""
+            = render 'dashboard_posts'
+        #dashboard_reward.content.w-hidden data-page_title="#{t('.reward')}" data-page_subtitle="#{t('.reward_subtitle')}"
+          = render 'dashboard_reward'
+        - if @project.published?
+          #dashboard_reports.content.w-hidden data-page_title="#{t('.reports')}" data-page_subtitle=""
+            = render 'dashboard_reports'
+        #dashboard_user_about.content.w-hidden data-page_title="#{t('.user_about')}" data-page_subtitle="#{t('.user_about_subtitle')}"
+          = render 'dashboard_user_about'
+        #dashboard_preview.content.w-hidden data-page_subtitle="" data-page_title=""
+          = render 'dashboard_preview'
+        #dashboard_user_settings.content.w-hidden data-page_title="#{t('.user_settings')}" data-page_subtitle="#{t('.user_settings_subtitle')}"
+          = render 'dashboard_user_settings'
 
+= javascript_include_tag 'api/application' 
 = render 'shared/footer'
