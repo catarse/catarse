@@ -3,7 +3,7 @@
 - content_for :stylesheets do
   = stylesheet_link_tag 'redactor'
 = render 'shared/header'
-#dashboard-titles-root.w-section.dashboard-header.u-text-center
+#dashboard-titles-root.w-section.dashboard-header.u-text-center data-stats="#{@project.try(:to_analytics_json)}"
   .w-container
     .w-row
       .w-col.w-col-8.w-col-push-2.u-marginbottom-30
