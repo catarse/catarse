@@ -31,6 +31,9 @@ App.addChild('MixPanel', {
       if(window.location.hash == '#reports'){
         self.track('Project owner engaged with Catarse', _.extend(self.projectProperties(), {action: 'Visited reports'}));
       }
+      if(window.location.hash == '#home'){
+        self.track('Project owner engaged with Catarse', _.extend(self.projectProperties(), {action: 'Visited insights'}));
+      }
     };
 
     this.trackOnPage('projects', 'edit', function(){
