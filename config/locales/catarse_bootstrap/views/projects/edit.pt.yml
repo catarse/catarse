@@ -119,7 +119,7 @@ pt:
     dashboard_nav:
       leave_link_html: "&nbsp; Sair do painel de controle"
       start_tab: Minha Campanha
-      reports_tab: Relatórios
+      reports_tab: Relatórios de apoios
       preview_tab: Preview
       posts_tab: Novidades
       edit_project: Editar projeto
