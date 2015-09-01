@@ -66,6 +66,7 @@ FactoryGirl.define do
     f.permalink { generate(:permalink) }
     f.association :user
     f.association :category
+    f.association :city
     f.about_html "Foo bar"
     f.headline "Foo bar"
     f.goal 10000
@@ -240,8 +241,13 @@ FactoryGirl.define do
   end
 
   factory :state do
-    name "RJ"
-    acronym "RJ"
+    name { generate(:name) }
+    acronym { generate(:name) }
+  end
+
+  factory :city do |f|
+    f.association :state
+    f.name "foo"
   end
 
   factory :bank do

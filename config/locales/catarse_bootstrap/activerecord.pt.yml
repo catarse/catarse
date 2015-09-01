@@ -198,6 +198,8 @@ pt:
               blank: "Tipo de conta não pode ficar em branco"
         project:
           attributes:
+            city:
+              blank: Local do projeto não pode ficar em branco
             video_url:
               blank: 'O vídeo do projeto não pode ficar em branco'
             budget:
