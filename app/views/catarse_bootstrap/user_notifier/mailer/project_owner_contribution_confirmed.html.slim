@@ -10,7 +10,7 @@ br
 | Nas últimas 24 horas de campanha, seu projeto recebeu #{link_to "#{confirmed_contributions_today.length} novos apoios", project_by_slug_url(permalink: project.permalink, anchor: 'contributions')}, parabéns!
 br/
 br/
-| #{link_to 'Poste uma mensagem para os apoiadores', edit_project_url(project, anchor: 'posts')} e #{link_to 'acompanhe as métricas da sua arrecadação', edit_project_url(project, anchor: 'reports')}!
+| #{link_to 'Poste uma mensagem para os apoiadores', edit_project_url(project, anchor: 'posts')} e #{link_to 'acompanhe as métricas da sua arrecadação', edit_project_url(project, anchor: 'home')}!
 br
 br
 | Mais informações sobre os apoios do dia:
@@ -32,7 +32,7 @@ table width="500" border="1" cellpadding="10" cellspacing="0" style='font-size: 
         td= contribution.reward.try(:decorate).try(:display_description)
 br/
 br/
-| Lembrando que você pode tirar dúvidas conosco respondendo diretamente a esta mensagem ou através do e-mail #{mail_to CatarseSettings[:email_projects] }
+|Lembrando que você pode baixar os #{link_to 'relatórios de apoios', edit_project_url(project, anchor: 'reports')} a qualquer momento. Para tirar dúvidas conosco respondendo diretamente a esta mensagem ou através do #{mail_to CatarseSettings[:email_projects] }
 br/
 br/
 | Um abraço,
