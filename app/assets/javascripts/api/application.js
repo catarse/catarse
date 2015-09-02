@@ -12,6 +12,7 @@
   //Chart.defaults.global.responsive = true;
   Chart.defaults.global.responsive = false;
   Chart.defaults.Line.pointHitDetectionRadius = 0;
+  Chart.defaults.global.scaleFontFamily = "proxima-nova";
 
   var adminRoot = document.getElementById('new-admin'),
       teamRoot = document.getElementById('team-root'),
