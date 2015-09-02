@@ -15,7 +15,7 @@ App.addChild('MixPanel', {
   },
 
   projectProperties: function(){
-    return this.$('#project-header').data('stats');
+    return this.$("*[data-stats]").data("stats");
   },
 
   startTracking: function(){
@@ -30,6 +30,9 @@ App.addChild('MixPanel', {
     this.trackProjectDashboard = function(){
       if(window.location.hash == '#reports'){
         self.track('Project owner engaged with Catarse', _.extend(self.projectProperties(), {action: 'Visited reports'}));
+      }
+      if(window.location.hash == '#home'){
+        self.track('Project owner engaged with Catarse', _.extend(self.projectProperties(), {action: 'Visited insights'}));
       }
     };
 
