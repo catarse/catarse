@@ -3,13 +3,7 @@
 - content_for :stylesheets do
   = stylesheet_link_tag 'redactor'
 = render 'shared/header'
-#dashboard-titles-root.w-section.dashboard-header.u-text-center data-stats="#{@project.try(:to_analytics_json)}"
-  .w-container
-    .w-row
-      .w-col.w-col-8.w-col-push-2.u-marginbottom-30
-        #dashboard-page-title.fontweight-semibold.fontsize-larger.lineheight-looser
-        #dashboard-page-subtitle.fontsize-base
-.project-dashboard-edit
+.project-dashboard-edit[data-stats="#{@project.try(:to_analytics_json)}"]
   = render partial: 'dashboard_nav', locals: {edit_page: true}
   section.min-height-70
     #current_anchor data-anchor="#{params[:anchor]}"
