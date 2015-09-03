@@ -91,8 +91,8 @@ RSpec.describe ProjectDecorator do
     end
 
     context "when we have an online_date" do
-      let(:project){ create(:project, online_date: Time.current) }
-      it{ is_expected.to eq('09/09/2015') }
+      let(:project){ create(:project, online_date: Time.current, online_days: 1) }
+      it{ is_expected.to eq(I18n.l((Time.current + 1.day).to_date)) }
     end
   end
 
