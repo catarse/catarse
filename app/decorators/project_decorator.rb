@@ -66,7 +66,7 @@ class ProjectDecorator < Draper::Decorator
   end
 
   def display_expires_at
-    source.expires_at ? I18n.l(source.expires_at.in_time_zone.to_date) : ''
+    source.expires_at ? I18n.l(source.pluck_from_database('zone_expires_at').to_date) : ''
   end
 
   def display_online_date
