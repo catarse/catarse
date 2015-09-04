@@ -1,0 +1,28 @@
+- payment = @notification.payment
+- contribution = payment.contribution
+- user = contribution.user
+p 
+  | Olá, Financeiro!
+p
+  | Chargeback do apoio #{payment.gateway_id} foi cancelado. 
+p
+  | Informamos que, caso o projeto ainda esteja on-line, será considerado na listagem de apoios do projeto. Caso o projeto já tenha sido finalizado, informe ao realizador do projeto para repasse adicional.)
+p
+  | Aqui temos mais detalhes desse apoio:
+  br/
+  | Nome do apoiador: #{contribution.payer_name}
+  br/
+  | ID Pagarme: #{payment.gateway_id}
+  br/
+  | TID Stone: #{payment.gateway_data['acquirer_tid']}
+  br/
+  | Valor do apoio: #{number_to_currency contribution.localized.value}
+  br/
+  | Email do apoiador: #{contribution.payer_email}
+  br/
+  | Data da mudança para status PAID: #{l(contribution.paid_at.to_date)}
+
+p
+  | Abraços,
+  br/
+  | Catarse
