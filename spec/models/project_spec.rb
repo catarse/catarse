@@ -63,6 +63,28 @@ RSpec.describe Project, type: :model do
 
   end
 
+  describe "#trending" do
+    let(:project_01) { create(:project, state: 'online')}
+    let(:project_02) { create(:project, state: 'online')}
+    let(:project_03) { create(:project, state: 'online')}
+
+    subject { Project.trending }
+
+    before do
+      5.times do |i|
+        i = i+2
+        create(:confirmed_contribution, created_at: (i*4).hours.ago, project: project_01).payments.first
+        create(:confirmed_contribution, created_at: (i*8).hours.ago, project: project_02).payments.first
+        create(:confirmed_contribution, created_at: 1.hour.ago, project: project_03)
+        create(:confirmed_contribution, created_at: 1.hour.ago, project: project_03)
+      end
+    end
+
+    it "should order by trending" do
+      expect(subject).to eq([project_03, project_01, project_02])
+    end
+  end
+
   describe "#published?" do
     subject { project.published? }
 

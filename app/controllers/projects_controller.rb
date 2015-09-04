@@ -5,7 +5,7 @@ class ProjectsController < ApplicationController
   before_action :authorize_and_build_resources, only: %i[edit show]
 
   has_scope :pg_search, :by_category_id, :near_of
-  has_scope :recent, :expiring, :successful, :in_funding, :recommended, :not_expired, type: :boolean
+  has_scope :recent, :expiring, :successful, :in_funding, :recommended, :not_expired, :trending, type: :boolean
 
   helper_method :project_comments_canonical_url, :resource, :collection
 
@@ -18,7 +18,7 @@ class ProjectsController < ApplicationController
         return render_index_for_xhr_request if request.xhr?
         projects_for_home
       end
-      format.atom do 
+      format.atom do
         return render layout: false, locals: {projects: projects}
       end
       format.rss { redirect_to projects_path(format: :atom), :status => :moved_permanently }
