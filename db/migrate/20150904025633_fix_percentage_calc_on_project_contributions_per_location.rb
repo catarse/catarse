@@ -28,7 +28,7 @@ class FixPercentageCalcOnProjectContributionsPerLocation < ActiveRecord::Migrati
         		projects p
           join public.contributions c on p.id = c.project_id
           left join public.states s on upper(s.acronym) = upper(c.address_state)
-          left join project_totals pt on pt.project_id = c.project_id
+          left join "1".project_totals pt on pt.project_id = c.project_id
         	where p.is_published and c.was_confirmed
         	group by
         		p.id,
@@ -48,6 +48,7 @@ class FixPercentageCalcOnProjectContributionsPerLocation < ActiveRecord::Migrati
 
   def down
     execute <<-SQL
+      drop view "1".project_contributions_per_location;
       create view "1".project_contributions_per_location as
         select
         	addr_agg.project_id,
