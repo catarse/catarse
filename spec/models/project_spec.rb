@@ -41,6 +41,20 @@ RSpec.describe Project, type: :model do
     it{ is_expected.not_to allow_value('agua.sp.01').for(:permalink) }
   end
 
+  describe "name validation" do
+    context "when project is not published" do
+      let(:project) { create(:project, state: 'draft') }
+
+      it "should be validate size of name" do
+        project.name = 'l'*100
+        expect(project.valid?).to eq(false)
+
+        project.name = 'l'*50
+        expect(project.valid?).to eq(true)
+      end
+    end
+  end
+
   describe "online_days" do
     context "when we have valid data" do
       before do
