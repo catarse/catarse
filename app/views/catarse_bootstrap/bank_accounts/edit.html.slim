@@ -59,9 +59,13 @@
                   = bform.input :account, as: :string, validation_text: true, input_html: { required: true }
                 .w-col.w-col-6.w-col-small-6.w-col-tiny-6
                   = bform.input :account_digit, as: :string, required: true, validation_text: true, input_html: { required: true }
-            .w-col.w-col-6
-              = bform.input :owner_name, as: :string, validation_text: true, input_html: {required: true}
+            .w-col.w-col-6.w-sub-col
+              = bform.input :account_type, as: :string, class: 'positive',
+                input_html: { class: 'positive', readonly: true, value: 'Só aceitamos conta corrente' },
+                include_blank: true
           .w-row
+            .w-col.w-col-6.w-sub-col
+              = bform.input :owner_name, as: :string, validation_text: true, input_html: {required: true}
             .w-col.w-col-6.w-sub-col
               = bform.input :owner_document, as: :tel, validation_text: true, input_html: { data: { :'validate-cpf-cnpj' => true }, required: true }
             .w-col.w-col-6
