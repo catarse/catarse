@@ -61,7 +61,7 @@
                   = bform.input :account_digit, as: :string, required: true, validation_text: true, input_html: { required: true }
             .w-col.w-col-6.w-sub-col
               = bform.input :account_type, as: :string, class: 'positive',
-                input_html: { class: 'positive', readonly: true, value: 'Só aceitamos conta corrente' },
+                input_html: { class: 'positive', readonly: true, value: t('shared.account_type_value')},
                 include_blank: true
           .w-row
             .w-col.w-col-6.w-sub-col
