@@ -53,13 +53,16 @@
                   = bform.label :account_digit, class: 'field-label fontweight-semibold force-text-dark'
                   = bform.input_field :account_digit, as: :string, class: 'positive'
             .w-col.w-col-6
-              = bform.label :owner_name, class: 'field-label fontweight-semibold force-text-dark'
-              = bform.input_field :owner_name, as: :string, class: 'positive'
+              = bform.input :account_type, as: :string, class: 'positive',
+                input_html: { class: 'positive', readonly: true, value: 'Só aceitamos conta corrente' },
+                include_blank: true
           .w-row
             .w-col.w-col-6.w-sub-col
               = bform.label :owner_document, class: 'field-label fontweight-semibold force-text-dark'
               = bform.input_field :owner_document, as: :tel, validation_text: true, class: 'positive', data: { :'validate-cpf-cnpj' => true }
             .w-col.w-col-6
+              = bform.label :owner_name, class: 'field-label fontweight-semibold force-text-dark'
+              = bform.input_field :owner_name, as: :string, class: 'positive'
 
       .u-margintop-30
         .w-container
