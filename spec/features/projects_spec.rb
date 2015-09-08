@@ -11,6 +11,7 @@ RSpec.describe "Projects", type: :feature do
   }
   before {
     CatarseSettings[:base_url] = 'http://catarse.me'
+    CatarseSettings[:api_host] = 'https://api.catarse.me'
     CatarseSettings[:company_name] = 'Catarse'
   }
 

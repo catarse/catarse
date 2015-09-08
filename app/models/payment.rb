@@ -5,7 +5,7 @@ class Payment < ActiveRecord::Base
   include Payment::PaymentEngineHandler
   include Payment::RequestRefundHandler
 
-  delegate :user, :project, :invalid_refund, to: :contribution
+  delegate :user, :project, :invalid_refund, :notify_to_backoffice,  to: :contribution
 
   belongs_to :contribution
   has_many :payment_notifications # to keep compatibility with catarse_pagarme

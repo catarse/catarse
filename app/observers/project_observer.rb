@@ -62,13 +62,7 @@ class ProjectObserver < ActiveRecord::Observer
 
   def from_online_to_failed(project)
     notify_users(project)
-
-    project.payments.with_state('pending').each do |payment|
-      payment.contribution.notify_to_contributor(:pending_contribution_project_unsuccessful)
-    end
-
     request_refund_for_failed_project(project)
-
     project.notify_owner(:project_unsuccessful, { from_email: CatarseSettings[:email_projects] })
   end
 

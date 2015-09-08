@@ -10,6 +10,13 @@ class PaymentObserver < ActiveRecord::Observer
     notify_confirmation(payment)
   end
 
+  def from_chargeback_to_paid(payment)
+    payment.notify_to_backoffice(:chargeback_reverse, {
+      from_email: payment.user.email,
+      from_name: payment.user.display_name
+    })
+  end
+
   def from_pending_refund_to_refunded(payment)
     payment.contribution.notify_to_contributor((payment.slip_payment? ? :refund_completed_slip : :refund_completed_credit_card))
   end
