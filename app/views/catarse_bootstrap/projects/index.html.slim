@@ -1,27 +1,26 @@
 - content_for :title, t('site.title')
 = render 'shared/header_big', overlayer: true
 
+section#hero-home.hero-full.hero-knowmore
+  .w-container.u-text-center
+    .hero-home-words-content
+      .fontsize-megajumbo.u-marginbottom-60.fontweight-semibold
+        .w-embed
+          .cd-headline.letters.type
+            span = t('.banner_before')     
+            span.cd-words-wrapper
+              - t('.banner_words').each do |index, word|
+                - if index == 0 
+                  b.is-visible = word
+                - else
+                  b = word
+            span = t('.banner_after')
+    .w-row
+      .w-col.w-col-4.w-col-push-4
+        a.btn.btn-large.u-marginbottom-10 href="#{hello_path(ref: 'home_banner')}" Saiba mais
+
 #project-index-root
-
 = javascript_include_tag 'api/application' 
-/section#hero-home.hero-full.hero-knowmore
-  /.w-container.u-text-center
-    /.hero-home-words-content
-      /.fontsize-megajumbo.u-marginbottom-60.fontweight-semibold
-        /.w-embed
-          /.cd-headline.letters.type
-            /span = t('.banner_before')     
-            /span.cd-words-wrapper
-              /- t('.banner_words').each do |index, word|
-                /- if index == 0 
-                  /b.is-visible = word
-                /- else
-                  /b = word
-            /span = t('.banner_after')
-    /.w-row
-      /.w-col.w-col-4.w-col-push-4
-        /a.btn.btn-large.u-marginbottom-10 href="#{hello_path(ref: 'home_banner')}" Saiba mais
-
 /section#projects
   /- if current_user && @projects_near.present?
     /article.section.u-marginbottom-40
@@ -65,23 +64,23 @@
     /.w-row
       /== render_projects @recent, 'home_recent', { wrapper_class: 'w-col w-col-4' }
 
-/section#blog.section-large.bg-gray.before-footer
-  /.w-container
-    /.u-text-center
-      /= link_to CatarseSettings[:blog_url], target: :blank do
-        /= image_tag "icon-blog.png", class: "u-marginbottom-10"
-      /.fontsize-large.u-marginbottom-60.text-success
-        /= link_to t('.blog'), CatarseSettings[:blog_url], target: '__blank', class: 'link-hidden-success'
-    /.w-row
-      /- (Blog.fetch_last_posts rescue [])[0..2].each do |post|
-        /.w-col.w-col-4.col-blog-post
-          /= link_to post.url, target: '__blank', class: 'link-hidden fontweight-semibold fontsize-base u-marginbottom-10' do
-            //span.fontweight-semibold.fontsize-base.u-marginbottom-10
-            /= truncate(post.title, length: 80)
-          /.fontsize-smaller.fontcolor-secondary.u-margintop-10
-            //= link_to post.url, target: '__blank', class: 'fontsize-smaller fontcolor-secondary ' do
-            //span.fontsize-smaller.fontcolor-secondary
-          /= truncate(post.summary, length: 130).html_safe    
+section#blog.section-large.bg-gray.before-footer
+  .w-container
+    .u-text-center
+      = link_to CatarseSettings[:blog_url], target: :blank do
+        = image_tag "icon-blog.png", class: "u-marginbottom-10"
+      .fontsize-large.u-marginbottom-60.text-success
+        = link_to t('.blog'), CatarseSettings[:blog_url], target: '__blank', class: 'link-hidden-success'
+    .w-row
+      - (Blog.fetch_last_posts rescue [])[0..2].each do |post|
+        .w-col.w-col-4.col-blog-post
+          = link_to post.url, target: '__blank', class: 'link-hidden fontweight-semibold fontsize-base u-marginbottom-10' do
+            /span.fontweight-semibold.fontsize-base.u-marginbottom-10
+            = truncate(post.title, length: 80)
+          .fontsize-smaller.fontcolor-secondary.u-margintop-10
+            /= link_to post.url, target: '__blank', class: 'fontsize-smaller fontcolor-secondary ' do
+            /span.fontsize-smaller.fontcolor-secondary
+          = truncate(post.summary, length: 130).html_safe    
 
 
 = render 'shared/footer_big'
