@@ -1,84 +1,87 @@
 - content_for :title, t('site.title')
 = render 'shared/header_big', overlayer: true
 
-section#hero-home.hero-full.hero-knowmore
-  .w-container.u-text-center
-    .hero-home-words-content
-      .fontsize-megajumbo.u-marginbottom-60.fontweight-semibold
-        .w-embed
-          .cd-headline.letters.type
-            span = t('.banner_before')     
-            span.cd-words-wrapper
-              - t('.banner_words').each do |index, word|
-                - if index == 0 
-                  b.is-visible = word
-                - else
-                  b = word
-            span = t('.banner_after')
-    .w-row
-      .w-col.w-col-4.w-col-push-4
-        a.btn.btn-large.u-marginbottom-10 href="#{hello_path(ref: 'home_banner')}" Saiba mais
+#project-index-root
 
-section#projects
-  - if current_user && @projects_near.present?
-    article.section.u-marginbottom-40
-      .w-container
-        .w-row.u-marginbottom-30
-          .w-col.w-col-10.w-col-small-6.w-col-tiny-6
-            .fontsize-large.lineheight-looser
-              = t('.near_you')
-          .w-col.w-col-2.w-col-small-6.w-col-tiny-6
-            = link_to t('.see_all'), explore_path(ref: 'home_near', anchor: "near_of/" ) + current_user.address_state, class: 'btn btn-small btn-terciary'
-        .w-row
-          == render_projects @projects_near, 'home_near', { wrapper_class: 'w-col w-col-4' }
+= javascript_include_tag 'api/application' 
+/section#hero-home.hero-full.hero-knowmore
+  /.w-container.u-text-center
+    /.hero-home-words-content
+      /.fontsize-megajumbo.u-marginbottom-60.fontweight-semibold
+        /.w-embed
+          /.cd-headline.letters.type
+            /span = t('.banner_before')     
+            /span.cd-words-wrapper
+              /- t('.banner_words').each do |index, word|
+                /- if index == 0 
+                  /b.is-visible = word
+                /- else
+                  /b = word
+            /span = t('.banner_after')
+    /.w-row
+      /.w-col.w-col-4.w-col-push-4
+        /a.btn.btn-large.u-marginbottom-10 href="#{hello_path(ref: 'home_banner')}" Saiba mais
 
-  article.section.w-container
-    .w-row.u-marginbottom-30
-      .w-col.w-col-10.w-col-small-6.w-col-tiny-6
-        .fontsize-large.lineheight-looser
-          = t('.recommended')
-      .w-col.w-col-2.w-col-small-6.w-col-tiny-6
-        = link_to t('.see_all'), explore_path(ref: :home_recommended, anchor: :recommended), class: 'btn btn-small btn-terciary'
-    .w-row
-      == render_projects @recommends, 'home_recommended', { wrapper_class: 'w-col w-col-4' }
+/section#projects
+  /- if current_user && @projects_near.present?
+    /article.section.u-marginbottom-40
+      /.w-container
+        /.w-row.u-marginbottom-30
+          /.w-col.w-col-10.w-col-small-6.w-col-tiny-6
+            /.fontsize-large.lineheight-looser
+              /= t('.near_you')
+          /.w-col.w-col-2.w-col-small-6.w-col-tiny-6
+            /= link_to t('.see_all'), explore_path(ref: 'home_near', anchor: "near_of/" ) + current_user.address_state, class: 'btn btn-small btn-terciary'
+        /.w-row
+          /== render_projects @projects_near, 'home_near', { wrapper_class: 'w-col w-col-4' }
 
-  article.section.w-container
-    .w-row.u-marginbottom-30
-      .w-col.w-col-10.w-col-small-6.w-col-tiny-6
-        .fontsize-large.lineheight-looser
-          = t('.expiring')
-      .w-col.w-col-2.w-col-small-6.w-col-tiny-6
-        = link_to t('.see_all'), explore_path(ref: :home_expiring, anchor: :expiring), class: 'btn btn-small btn-terciary'
-    .w-row
-      == render_projects @expiring, 'home_expiring', { wrapper_class: 'w-col w-col-4' }
+  /article.section.w-container
+    /.w-row.u-marginbottom-30
+      /.w-col.w-col-10.w-col-small-6.w-col-tiny-6
+        /.fontsize-large.lineheight-looser
+          /= t('.recommended')
+      /.w-col.w-col-2.w-col-small-6.w-col-tiny-6
+        /= link_to t('.see_all'), explore_path(ref: :home_recommended, anchor: :recommended), class: 'btn btn-small btn-terciary'
+    /.w-row
+      /== render_projects @recommends, 'home_recommended', { wrapper_class: 'w-col w-col-4' }
 
-  article.section.recent-projects.w-container
-    .w-row.u-marginbottom-30
-      .w-col.w-col-10.w-col-small-6.w-col-tiny-6
-        .fontsize-large.lineheight-looser
-          = t('.recents')
-      .w-col.w-col-2.w-col-small-6.w-col-tiny-6
-        = link_to t('.see_all'), explore_path(ref: :home_recent, anchor: :recent), class: 'btn btn-small btn-terciary'
-    .w-row
-      == render_projects @recent, 'home_recent', { wrapper_class: 'w-col w-col-4' }
+  /article.section.w-container
+    /.w-row.u-marginbottom-30
+      /.w-col.w-col-10.w-col-small-6.w-col-tiny-6
+        /.fontsize-large.lineheight-looser
+          /= t('.expiring')
+      /.w-col.w-col-2.w-col-small-6.w-col-tiny-6
+        /= link_to t('.see_all'), explore_path(ref: :home_expiring, anchor: :expiring), class: 'btn btn-small btn-terciary'
+    /.w-row
+      /== render_projects @expiring, 'home_expiring', { wrapper_class: 'w-col w-col-4' }
 
-section#blog.section-large.bg-gray.before-footer
-  .w-container
-    .u-text-center
-      = link_to CatarseSettings[:blog_url], target: :blank do
-        = image_tag "icon-blog.png", class: "u-marginbottom-10"
-      .fontsize-large.u-marginbottom-60.text-success
-        = link_to t('.blog'), CatarseSettings[:blog_url], target: '__blank', class: 'link-hidden-success'
-    .w-row
-      - (Blog.fetch_last_posts rescue [])[0..2].each do |post|
-        .w-col.w-col-4.col-blog-post
-          = link_to post.url, target: '__blank', class: 'link-hidden fontweight-semibold fontsize-base u-marginbottom-10' do
-            /span.fontweight-semibold.fontsize-base.u-marginbottom-10
-            = truncate(post.title, length: 80)
-          .fontsize-smaller.fontcolor-secondary.u-margintop-10
-            /= link_to post.url, target: '__blank', class: 'fontsize-smaller fontcolor-secondary ' do
-            /span.fontsize-smaller.fontcolor-secondary
-          = truncate(post.summary, length: 130).html_safe    
+  /article.section.recent-projects.w-container
+    /.w-row.u-marginbottom-30
+      /.w-col.w-col-10.w-col-small-6.w-col-tiny-6
+        /.fontsize-large.lineheight-looser
+          /= t('.recents')
+      /.w-col.w-col-2.w-col-small-6.w-col-tiny-6
+        /= link_to t('.see_all'), explore_path(ref: :home_recent, anchor: :recent), class: 'btn btn-small btn-terciary'
+    /.w-row
+      /== render_projects @recent, 'home_recent', { wrapper_class: 'w-col w-col-4' }
+
+/section#blog.section-large.bg-gray.before-footer
+  /.w-container
+    /.u-text-center
+      /= link_to CatarseSettings[:blog_url], target: :blank do
+        /= image_tag "icon-blog.png", class: "u-marginbottom-10"
+      /.fontsize-large.u-marginbottom-60.text-success
+        /= link_to t('.blog'), CatarseSettings[:blog_url], target: '__blank', class: 'link-hidden-success'
+    /.w-row
+      /- (Blog.fetch_last_posts rescue [])[0..2].each do |post|
+        /.w-col.w-col-4.col-blog-post
+          /= link_to post.url, target: '__blank', class: 'link-hidden fontweight-semibold fontsize-base u-marginbottom-10' do
+            //span.fontweight-semibold.fontsize-base.u-marginbottom-10
+            /= truncate(post.title, length: 80)
+          /.fontsize-smaller.fontcolor-secondary.u-margintop-10
+            //= link_to post.url, target: '__blank', class: 'fontsize-smaller fontcolor-secondary ' do
+            //span.fontsize-smaller.fontcolor-secondary
+          /= truncate(post.summary, length: 130).html_safe    
 
 
 = render 'shared/footer_big'

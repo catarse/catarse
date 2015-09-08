@@ -1,0 +1,185 @@
+class CreateProjectsView < ActiveRecord::Migration
+  def up
+     execute <<-SQL
+
+       CREATE OR REPLACE FUNCTION public.img_thumbnail(projects, size text)
+       RETURNS text
+       LANGUAGE sql
+       STABLE
+        AS $function$
+          SELECT
+            'https://' || settings('aws_host')  ||
+            '/' || settings('aws_bucket') ||
+            '/uploads/project/uploaded_image/' || $1.id::text ||
+            '/project_thumb_' || size || '_' || $1.uploaded_image
+      $function$;
+
+      DROP VIEW "1".projects_for_home;
+
+      CREATE OR REPLACE VIEW "1".projects_for_home AS 
+       WITH recommended_projects AS (
+           SELECT 'recommended'::text AS origin,
+              recommends.id AS project_id,
+              recommends.name AS project_name,
+              recommends.headline,
+              recommends.permalink,
+              recommends.state,
+              recommends.created_at,
+              recommends.remaining_time_json as remaining_time,
+              recommends.expires_at,
+              img_thumbnail(recommends.*,'large') AS project_img,
+
+              pt.pledged,
+              pt.progress,
+              u.name AS owner_name,
+              c.name AS city_name
+
+             FROM (projects recommends
+              JOIN users u ON (recommends.user_id = u.id)
+              LEFT JOIN "1".project_totals pt ON (pt.project_id = recommends.id)
+              LEFT JOIN cities c ON (c.id = recommends.city_id))
+            WHERE recommends.recommended AND recommends.state::text = 'online'::text
+            ORDER BY random()
+           LIMIT 3
+          ), recents_projects AS (
+           SELECT 'recents'::text AS origin,
+              recents.id AS project_id,
+              recents.name AS project_name,
+              recents.headline,
+              recents.permalink,
+              recents.state,
+              recents.created_at,
+              recents.remaining_time_json as remaining_time,
+              recents.expires_at,
+              img_thumbnail(recents.*,'large') AS project_img,
+              pt.pledged,
+              pt.progress,
+              u.name AS owner_name,
+              c.name AS city_name
+
+             FROM( projects recents
+              JOIN users u ON (recents.user_id = u.id)
+              LEFT JOIN "1".project_totals pt ON (pt.project_id = recents.id)
+              LEFT JOIN cities c ON (c.id = recents.city_id))
+            WHERE recents.state::text = 'online'::text AND (now() - recents.online_date) <= '5 days'::interval AND NOT (recents.id IN ( SELECT recommends.project_id
+                     FROM recommended_projects recommends))
+            ORDER BY random()
+           LIMIT 3
+          ), expiring_projects AS (
+           SELECT 'expiring'::text AS origin,
+              expiring.id AS project_id,
+              expiring.name AS project_name,
+              expiring.headline,
+              expiring.permalink,
+              expiring.state,
+              expiring.created_at,
+              expiring.remaining_time_json as remaining_time,
+              expiring.expires_at,
+              img_thumbnail(expiring.*,'large') AS project_img,
+              pt.pledged,
+              pt.progress,
+              u.name AS owner_name,
+              c.name AS city_name
+             FROM(projects expiring
+              JOIN users u ON (expiring.user_id = u.id)
+              LEFT JOIN "1".project_totals pt ON (pt.project_id = expiring.id)
+              LEFT JOIN cities c ON (c.id = expiring.city_id))
+            WHERE expiring.state::text = 'online'::text AND expiring.expires_at <= (now() + '14 days'::interval) AND NOT (expiring.id IN ( SELECT recommends.project_id
+                     FROM recommended_projects recommends
+                  UNION
+                   SELECT recents.project_id
+                     FROM recents_projects recents))
+            ORDER BY random()
+           LIMIT 3
+          )
+       SELECT recommended_projects.origin,
+
+          recommended_projects.project_id,
+          recommended_projects.project_name,
+          recommended_projects.headline,
+          recommended_projects.permalink,
+          recommended_projects.state,
+          recommended_projects.created_at,
+          recommended_projects.remaining_time::text,
+          recommended_projects.expires_at,
+          recommended_projects.project_img,
+          recommended_projects.pledged,
+          recommended_projects.progress,
+          recommended_projects.owner_name ,
+          recommended_projects.city_name 
+         FROM recommended_projects
+      UNION
+       SELECT recents_projects.origin,
+
+          recents_projects.project_id,
+          recents_projects.project_name,
+          recents_projects.headline,
+          recents_projects.permalink,
+          recents_projects.state,
+          recents_projects.created_at,
+          recents_projects.remaining_time::text,
+          recents_projects.expires_at,
+          recents_projects.project_img,
+          recents_projects.pledged,
+          recents_projects.progress,
+          recents_projects.owner_name ,
+          recents_projects.city_name 
+
+         FROM recents_projects
+      UNION
+       SELECT expiring_projects.origin,
+          expiring_projects.project_id,
+          expiring_projects.project_name,
+          expiring_projects.headline,
+          expiring_projects.permalink,
+          expiring_projects.state,
+          expiring_projects.created_at,
+          expiring_projects.remaining_time::text,
+          expiring_projects.expires_at,
+          expiring_projects.project_img,
+          expiring_projects.pledged,
+          expiring_projects.progress,
+          expiring_projects.owner_name ,
+          expiring_projects.city_name 
+         FROM expiring_projects;
+
+      grant select on "1".projects_for_home to anonymous;
+      grant select on "1".projects_for_home to web_user;
+      grant select on "1".projects_for_home to admin;
+
+
+      CREATE OR REPLACE VIEW "1".projects as
+        select
+        p.id AS project_id,
+        p.name AS project_name,
+        p.headline,
+        p.permalink,
+        p.state,
+        p.created_at,
+        img_thumbnail(p.*,'large') AS project_img,
+        p.remaining_time_json as remaining_time,
+        p.expires_at,
+        pt.pledged,
+        pt.progress,
+        u.name AS owner_name,
+        c.name AS city_name
+        FROM(
+          projects p
+          JOIN users u ON (p.user_id = u.id)
+          LEFT JOIN "1".project_totals pt ON (pt.project_id = p.id)
+          LEFT JOIN cities c ON (c.id = p.city_id)
+
+        )
+         ;
+      grant select on "1".projects to anonymous;
+      grant select on "1".projects to web_user;
+      grant select on "1".projects to admin;
+    SQL
+  end
+
+  def down
+    execute <<-SQL
+      drop view "1".projects
+    SQL
+  end
+end
