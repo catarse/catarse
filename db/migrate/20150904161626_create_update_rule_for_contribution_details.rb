@@ -25,12 +25,12 @@ class CreateUpdateRuleForContributionDetails < ActiveRecord::Migration
         (contribution_id, user_id, reward_id, transaction_id, updated_at)
        VALUES
         (OLD.id, OLD.user_id, OLD.reward_id, txid_current(), now());
-       UPDATE contributions
+       UPDATE public.contributions
        SET 
         user_id = new.user_id,
         reward_id = new.reward_id 
        WHERE id = old.contribution_id;
-       SELECT * FROM contribution_details cd WHERE cd.id = old.id INTO new;
+       SELECT * FROM "1".contribution_details cd WHERE cd.id = old.id INTO new;
        RETURN new;
       END;
     $$;
