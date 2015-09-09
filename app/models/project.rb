@@ -123,7 +123,6 @@ class Project < ActiveRecord::Base
   validates_numericality_of :goal, greater_than: 9, allow_blank: true
   validates_uniqueness_of :permalink, case_sensitive: false
   validates_format_of :permalink, with: /\A(\w|-)*\Z/
-  validates_length_of :name, maximum: NAME_MAXLENGTH, unless: :published?
 
 
   [:between_created_at, :between_expires_at, :between_online_date, :between_updated_at].each do |name|

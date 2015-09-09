@@ -9,6 +9,7 @@ module Project::StateMachineHandler
 
       state :in_analysis do
         validates_presence_of :city
+        validates_length_of :name, maximum: Project::NAME_MAXLENGTH
       end
 
       #validations starting in in_analysis

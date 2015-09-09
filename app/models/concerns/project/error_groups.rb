@@ -15,7 +15,7 @@ module Project::ErrorGroups
         user_settings: ProjectAccount.attribute_names.map{|attr| ('project_account.' + attr).to_sym} << :account << :'account.agency_size'
       }
     rescue Exception => e
-      puts "problem while using ErrorGroups concenr:\n '#{e.message}'"
+      puts "problem while using ErrorGroups concern:\n '#{e.message}'"
     end
 
     def error_included_on_group? error_attr, group_name
