@@ -22,11 +22,11 @@ class UpdateProjectsForHome < ActiveRecord::Migration
               u.name AS owner_name,
               c.name AS city_name
 
-             FROM (projects recommends
-              JOIN users u ON (recommends.user_id = u.id)
+             FROM (public.projects recommends
+              JOIN public.users u ON (recommends.user_id = u.id)
               LEFT JOIN "1".project_totals pt ON (pt.project_id = recommends.id)
-              LEFT JOIN cities c ON (c.id = recommends.city_id)
-              LEFT JOIN states s ON (s.id = c.state_id)
+              LEFT JOIN public.cities c ON (c.id = recommends.city_id)
+              LEFT JOIN public.states s ON (s.id = c.state_id)
               )
             WHERE recommends.recommended AND recommends.state::text = 'online'::text
             ORDER BY random()
@@ -48,11 +48,11 @@ class UpdateProjectsForHome < ActiveRecord::Migration
               u.name AS owner_name,
               c.name AS city_name
 
-             FROM( projects recents
-              JOIN users u ON (recents.user_id = u.id)
+             FROM( public.projects recents
+              JOIN public.users u ON (recents.user_id = u.id)
               LEFT JOIN "1".project_totals pt ON (pt.project_id = recents.id)
-              LEFT JOIN cities c ON (c.id = recents.city_id)
-              LEFT JOIN states s ON (s.id = c.state_id)
+              LEFT JOIN public.cities c ON (c.id = recents.city_id)
+              LEFT JOIN public.states s ON (s.id = c.state_id)
             )
             WHERE recents.state::text = 'online'::text AND (now() - recents.online_date) <= '5 days'::interval AND NOT (recents.id IN ( SELECT recommends.project_id
                      FROM recommended_projects recommends))
@@ -74,11 +74,11 @@ class UpdateProjectsForHome < ActiveRecord::Migration
               pt.progress,
               u.name AS owner_name,
               c.name AS city_name
-             FROM(projects expiring
-              JOIN users u ON (expiring.user_id = u.id)
+             FROM(public.projects expiring
+              JOIN public.users u ON (expiring.user_id = u.id)
               LEFT JOIN "1".project_totals pt ON (pt.project_id = expiring.id)
-              LEFT JOIN cities c ON (c.id = expiring.city_id)
-              LEFT JOIN states s ON (s.id = c.state_id)
+              LEFT JOIN public.cities c ON (c.id = expiring.city_id)
+              LEFT JOIN public.states s ON (s.id = c.state_id)
             )
             WHERE expiring.state::text = 'online'::text AND expiring.expires_at <= (now() + '14 days'::interval) AND NOT (expiring.id IN ( SELECT recommends.project_id
                      FROM recommended_projects recommends
