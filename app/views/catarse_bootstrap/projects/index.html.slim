@@ -21,48 +21,6 @@ section#hero-home.hero-full.hero-knowmore
 
 #project-index-root
 = javascript_include_tag 'api/application' 
-/section#projects
-  /- if current_user && @projects_near.present?
-    /article.section.u-marginbottom-40
-      /.w-container
-        /.w-row.u-marginbottom-30
-          /.w-col.w-col-10.w-col-small-6.w-col-tiny-6
-            /.fontsize-large.lineheight-looser
-              /= t('.near_you')
-          /.w-col.w-col-2.w-col-small-6.w-col-tiny-6
-            /= link_to t('.see_all'), explore_path(ref: 'home_near', anchor: "near_of/" ) + current_user.address_state, class: 'btn btn-small btn-terciary'
-        /.w-row
-          /== render_projects @projects_near, 'home_near', { wrapper_class: 'w-col w-col-4' }
-
-  /article.section.w-container
-    /.w-row.u-marginbottom-30
-      /.w-col.w-col-10.w-col-small-6.w-col-tiny-6
-        /.fontsize-large.lineheight-looser
-          /= t('.recommended')
-      /.w-col.w-col-2.w-col-small-6.w-col-tiny-6
-        /= link_to t('.see_all'), explore_path(ref: :home_recommended, anchor: :recommended), class: 'btn btn-small btn-terciary'
-    /.w-row
-      /== render_projects @recommends, 'home_recommended', { wrapper_class: 'w-col w-col-4' }
-
-  /article.section.w-container
-    /.w-row.u-marginbottom-30
-      /.w-col.w-col-10.w-col-small-6.w-col-tiny-6
-        /.fontsize-large.lineheight-looser
-          /= t('.expiring')
-      /.w-col.w-col-2.w-col-small-6.w-col-tiny-6
-        /= link_to t('.see_all'), explore_path(ref: :home_expiring, anchor: :expiring), class: 'btn btn-small btn-terciary'
-    /.w-row
-      /== render_projects @expiring, 'home_expiring', { wrapper_class: 'w-col w-col-4' }
-
-  /article.section.recent-projects.w-container
-    /.w-row.u-marginbottom-30
-      /.w-col.w-col-10.w-col-small-6.w-col-tiny-6
-        /.fontsize-large.lineheight-looser
-          /= t('.recents')
-      /.w-col.w-col-2.w-col-small-6.w-col-tiny-6
-        /= link_to t('.see_all'), explore_path(ref: :home_recent, anchor: :recent), class: 'btn btn-small btn-terciary'
-    /.w-row
-      /== render_projects @recent, 'home_recent', { wrapper_class: 'w-col w-col-4' }
 
 section#blog.section-large.bg-gray.before-footer
   .w-container
