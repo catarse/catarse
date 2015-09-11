@@ -22,20 +22,23 @@ class CreateProjectsView < ActiveRecord::Migration
         p.permalink,
         p.state,
         p.created_at,
+        p.recommended,
         img_thumbnail(p.*,'large') AS project_img,
         p.remaining_time_json as remaining_time,
         p.expires_at,
-        pt.pledged,
-        pt.progress,
+        (select pt.pledged from "1".project_totals pt where pt.project_id = p.id) as pledged,
+        (select pt.progress from "1".project_totals pt where pt.project_id = p.id) as progress,
+        s.acronym as state_acronym,
         u.name AS owner_name,
         c.name AS city_name
         FROM(
-          projects p
-          JOIN users u ON (p.user_id = u.id)
-          LEFT JOIN "1".project_totals pt ON (pt.project_id = p.id)
-          LEFT JOIN cities c ON (c.id = p.city_id)
+          public.projects p
+          JOIN public.users u ON (p.user_id = u.id)
+          LEFT JOIN public.cities c ON (c.id = p.city_id)
+          LEFT JOIN public.states s ON (s.id = c.state_id)
 
         )
+        ORDER BY random()
          ;
       grant select on "1".projects to anonymous;
       grant select on "1".projects to web_user;
