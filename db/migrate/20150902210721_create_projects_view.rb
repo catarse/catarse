@@ -21,7 +21,7 @@ class CreateProjectsView < ActiveRecord::Migration
         p.headline,
         p.permalink,
         p.state,
-        p.created_at,
+        p.online_date,
         p.recommended,
         img_thumbnail(p.*,'large') AS project_img,
         p.remaining_time_json as remaining_time,
