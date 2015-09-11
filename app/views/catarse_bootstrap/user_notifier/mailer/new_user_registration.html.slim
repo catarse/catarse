@@ -1,5 +1,5 @@
 - user = @notification.user
-- expiring = ProjectsForHome.expiring
+- expiring = Project.where("state::text = 'online'::text AND expires_at <= (now() + '14 days'::interval)").last(3)
 
 | Olá
 - if user.name
