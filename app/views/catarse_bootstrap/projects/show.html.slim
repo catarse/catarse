@@ -24,33 +24,38 @@
 
 = render 'shared/header_big'
 
-= render 'project_header'
+#project-show-root data-id=@project.id
 
-= render 'mobile_video'
-
-nav.project-nav.w-hidden-small.w-hidden-tiny
-  .w-container
-    .w-row
-      .w-col.w-col-9.w-hidden-small.w-hidden-tiny
-        = link_to '#about', id: 'about_link', class: 'nav-tab selected', data: {target: '#project_about.content'} do
-          = t('.menu.about')
-        = link_to '#posts', id: 'posts_link', class: 'nav-tab' , data: {target: '#project_posts'} do
-          => t('.menu.posts')
-          span.badge = @posts_count
-        = link_to '#contributions', id: 'contributions_link', class: 'nav-tab' , data: {target: '#project_contributions'} do
-          => t('.menu.contributions')
-          span.badge = @project.total_contributions
-
-        = link_to '#comments', id: 'comments_link', class: 'nav-tab' , data: {target: '#project_comments'} do
-          => t('.menu.comments')
-          fb:comments-count href="#{project_comments_canonical_url}" class="badge project-fb-comment" style="display: inline"
-            |&nbsp;
-
-      .w-col.w-col-3.w-hidden-small.w-hidden-tiny.w-clearfix.project-nav-category
-        = link_to @project.category, explore_path(anchor: "by_category_id/#{@project.category_id}"), class: 'link-hidden-light u-right', itemprop: 'genre'
-        = image_tag 'catarse_bootstrap/tag-icon.png', class: 'project-nav-category-icon', width: "22" 
-
-= render 'project_main'
+/= render 'project_header'
+/
+/= render 'mobile_video'
+/
+/nav.project-nav.w-hidden-small.w-hidden-tiny
+/  .w-container
+/    .w-row
+/      .w-col.w-col-9.w-hidden-small.w-hidden-tiny
+/        = link_to '#about', id: 'about_link', class: 'nav-tab selected', data: {target: '#project_about.content'} do
+/          = t('.menu.about')
+/        = link_to '#posts', id: 'posts_link', class: 'nav-tab' , data: {target: '#project_posts'} do
+/          => t('.menu.posts')
+/          span.badge = @posts_count
+/        = link_to '#contributions', id: 'contributions_link', class: 'nav-tab' , data: {target: '#project_contributions'} do
+/          => t('.menu.contributions')
+/          span.badge = @project.total_contributions
+/
+/        = link_to '#comments', id: 'comments_link', class: 'nav-tab' , data: {target: '#project_comments'} do
+/          => t('.menu.comments')
+/          fb:comments-count href="#{project_comments_canonical_url}" class="badge project-fb-comment" style="display: inline"
+/            |&nbsp;
+/
+/      .w-col.w-col-3.w-hidden-small.w-hidden-tiny.w-clearfix.project-nav-category
+/        = link_to @project.category, explore_path(anchor: "by_category_id/#{@project.category_id}"), class: 'link-hidden-light u-right', itemprop: 'genre'
+/        = image_tag 'catarse_bootstrap/tag-icon.png', class: 'project-nav-category-icon', width: "22" 
+/
+/= render 'project_main'
 - if policy(@project).update?
   = render 'dashboard_nav'
 = render 'shared/footer_big'
+
+- content_for :js do
+  = javascript_include_tag "api/application"
