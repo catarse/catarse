@@ -55,7 +55,11 @@
 /= render 'project_main'
 - if policy(@project).update?
   = render 'dashboard_nav'
+  - content_for :js do
+    = javascript_include_tag "api/application"
+- else
+  - content_for :application_js do
+    = javascript_include_tag "api/application"
+
 = render 'shared/footer_big'
 
-- content_for :js do
-  = javascript_include_tag "api/application"
