@@ -208,6 +208,7 @@ pt:
             uploaded_image:
               blank: 'A imagem do projeto não pode ficar em branco'
             name:
+              too_long: "Nome do projeto é muito longo (máximo: 50 caracteres)"
               blank: "O nome do projeto não pode ficar em branco"
             permalink:
               blank: "A URL do projeto não pode ficar em branco"
