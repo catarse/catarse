@@ -32,21 +32,30 @@ class UpdateProjectDetails < ActiveRecord::Migration
           p.remaining_time_json as remaining_time,
           (select count(pp.*) from project_posts pp where pp.project_id = p.id) as posts_count,
           (
-            select
-              json_build_object('id', u.id, 'name', u.name)
-            from users u where u.id = p.user_id
+            json_build_object('city', coalesce(ct.name, u.address_city), 'state_acronym', coalesce(st.acronym, u.address_state), 'state', coalesce(st.name, u.address_state))
+          ) as address,
+          (
+            json_build_object('id', u.id, 'name', u.name)
           ) as user,
-          -- json_agg(DISTINCT rd.*) as rewards,
-          count(DISTINCT pn.*) filter (where pn.template_name = 'reminder') as reminder_count
+          count(DISTINCT pn.*) filter (where pn.template_name = 'reminder') as reminder_count,
+          public.is_owner_or_admin(p.user_id) as is_owner_or_admin
         from projects p
         join categories c on c.id = p.category_id
+        join users u on u.id = p.user_id
         left join "1".project_totals pt on pt.project_id = p.id
-        -- left join "1".reward_details rd on rd.project_id = p.id
+        left join public.cities ct on ct.id = p.city_id
+        left join public.states st on st.id = ct.state_id
         left join public.project_notifications pn on pn.project_id = p.id
         group by
           p.id,
           c.id,
+          u.id,
           c.name_pt,
+          ct.name,
+          u.address_city,
+          st.acronym,
+          u.address_state,
+          st.name,
           pt.progress,
           pt.pledged,
           pt.total_contributions,
@@ -91,6 +100,23 @@ class UpdateProjectDetails < ActiveRecord::Migration
       grant select on "1".user_details to admin;
       grant select on "1".user_details to web_user;
       grant select on "1".user_details to anonymous;
+
+      CREATE OR REPLACE VIEW "1".reward_details AS
+       SELECT r.id,
+          r.project_id,
+          r.description,
+          r.minimum_value,
+          r.maximum_contributions,
+          r.deliver_at,
+          r.updated_at,
+          public.paid_count(r.*) AS paid_count,
+          public.waiting_payment_count(r.*) AS waiting_payment_count
+         FROM public.rewards r
+         order by r.row_order ASC;
+
+      grant select on "1".reward_details to admin;
+      grant select on "1".reward_details to web_user;
+      grant select on "1".reward_details to anonymous;
     SQL
   end
 
@@ -138,6 +164,22 @@ class UpdateProjectDetails < ActiveRecord::Migration
       grant select on "1".project_details to admin;
       grant select on "1".project_details to web_user;
       grant select on "1".project_details to anonymous;
+
+      CREATE OR REPLACE VIEW "1".reward_details AS
+       SELECT r.id,
+          r.project_id,
+          r.description,
+          r.minimum_value,
+          r.maximum_contributions,
+          r.deliver_at,
+          r.updated_at,
+          public.paid_count(r.*) AS paid_count,
+          public.waiting_payment_count(r.*) AS waiting_payment_count
+         FROM public.rewards r;
+
+      grant select on "1".reward_details to admin;
+      grant select on "1".reward_details to web_user;
+      grant select on "1".reward_details to anonymous;
     SQL
   end
 end
