@@ -17,6 +17,7 @@ p {
   border: 1px solid #7cc142;
   border-radius: 5px;
   background-color: #7cc142;
+  -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
   color: white;
   text-align: center;
@@ -34,6 +35,7 @@ p {
   padding-top: 12px;
   padding-bottom: 12px;
   border-radius: 5px;
+  -webkit-transition: all 500ms ease, all 500ms ease;
   transition: all 500ms ease, all 500ms ease;
   font-size: 16px;
 }
@@ -110,6 +112,7 @@ p {
   border: 1px solid #ddd;
   border-radius: 5px;
   background-color: #f1f4f4;
+  -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
   color: #3f4752;
   font-size: 15px;
@@ -231,6 +234,7 @@ p {
   background-color: white;
 }
 .link {
+  -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
   color: #f69219;
   font-size: 16px;
@@ -301,6 +305,7 @@ p {
   background-color: white;
 }
 .link-hidden {
+  -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
   color: #3f4752;
   text-decoration: none;
@@ -340,6 +345,7 @@ p {
   padding: 0px;
   float: right;
   opacity: 0.5;
+  -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
 }
 .icon-close:hover {
@@ -378,6 +384,7 @@ p {
   margin-top: 0px;
   border-bottom-style: none;
   background-color: transparent;
+  background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.2), transparent);
   background-image: linear-gradient(rgba(0, 0, 0, 0.2), transparent);
 }
 .main-header.overlayer.alert {
@@ -400,6 +407,7 @@ p {
   margin: 0px;
   padding: 9px 17px;
   border-radius: 4px;
+  -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
   color: #f1f2f3;
   font-size: 15px;
@@ -639,6 +647,9 @@ p {
   font-size: 23px;
   line-height: 150%;
 }
+.fontsize-large.u-marginbottom-20 {
+  margin-bottom: 20px;
+}
 .fontsize-largest {
   font-size: 44px;
   line-height: 100%;
@@ -685,10 +696,9 @@ p {
   margin-bottom: 0px;
   padding-top: 12px;
   padding-bottom: 12px;
-  border-style: solid;
-  border-width: 1px;
-  border-color: rgba(64, 155, 255, 0);
+  border: 1px solid rgba(64, 155, 255, 0);
   background-color: rgba(64, 155, 255, 0.09);
+  -webkit-transition-delay: initial;
   transition-delay: initial;
   color: #409bff;
   text-decoration: none;
@@ -726,6 +736,7 @@ p {
   border-color: #7cc142 #7cc142 #7cc142 transparent;
   border-radius: 0px 5px 5px 0px;
   background-color: white;
+  -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
   color: #7cc142;
   font-size: 44px;
@@ -775,6 +786,7 @@ p {
   border-style: solid;
   border-width: 2px;
   border-color: transparent transparent #f1f4f4;
+  -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
 }
 .back-reward-radio-reward:hover {
@@ -1167,6 +1179,7 @@ p {
   margin-top: -1px;
   padding: 11px 14px;
   border: 1px solid #ddd;
+  -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
 }
 .creditcard-records:hover {
@@ -1197,9 +1210,11 @@ p {
   margin-top: -10px;
   margin-right: -10px;
   float: right;
+  -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
 }
 .dropdown-link {
+  -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
 }
 .dropdown-link:hover {
@@ -1234,6 +1249,7 @@ p {
   margin-right: 10px;
   float: none;
   border-radius: 50%;
+  -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
 }
 .user-avatar:hover {
@@ -1278,6 +1294,7 @@ p {
   width: 100px;
   margin-right: 20px;
   float: left;
+  -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
 }
 .header-logo:hover {
@@ -1421,6 +1438,7 @@ p {
   border-bottom: 1px solid transparent;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
+  -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
   color: #79808b;
   font-size: 15px;
@@ -1586,6 +1604,7 @@ p {
 .out-of-focus {
   display: inline-block;
   opacity: 0.25;
+  -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
 }
 .out-of-focus:hover {
@@ -1668,9 +1687,7 @@ p {
   margin-top: 30px;
 }
 .card-message {
-  border-style: solid;
-  border-width: 1px;
-  border-color: rgba(64, 155, 255, 0.09);
+  border: 1px solid rgba(64, 155, 255, 0.09);
   background-color: rgba(64, 155, 255, 0.09);
 }
 .u-margintop-20 {
@@ -1720,6 +1737,7 @@ p {
   width: 75%;
 }
 .link-hidden-success {
+  -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
   color: #7cc142;
   text-decoration: none;
@@ -1762,9 +1780,7 @@ p {
   position: relative;
 }
 .btn-terciary {
-  border-style: solid;
-  border-width: 2px;
-  border-color: rgba(121, 128, 139, 0.78);
+  border: 2px solid rgba(121, 128, 139, 0.78);
   background-color: transparent;
   color: #79808b;
 }
@@ -1797,9 +1813,7 @@ p {
   padding-left: 20px;
 }
 .card-terciary {
-  border-style: solid;
-  border-width: 1px;
-  border-color: rgba(241, 244, 244, 0.49);
+  border: 1px solid rgba(241, 244, 244, 0.49);
   background-color: rgba(241, 244, 244, 0.49);
 }
 .dashboard-header {
@@ -2004,6 +2018,7 @@ p {
   margin-right: 2px;
   padding: 1px 8px;
   border-radius: 4px;
+  -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
   text-align: center;
 }
@@ -2025,7 +2040,6 @@ p {
   position: absolute;
   z-index: 40;
   width: 100%;
-  margin-top: -16px;
   padding: 10px;
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
@@ -2051,6 +2065,8 @@ p {
   padding: 16px 5px;
   border: 1px solid white;
   border-radius: 4px;
+  background-color: transparent;
+  -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
   color: white;
   font-size: 16px;
@@ -2074,6 +2090,12 @@ p {
 .btn-category.filters:hover {
   background-color: rgba(0, 0, 0, 0.47);
   color: #f1f2f3;
+}
+.btn-category.small {
+  height: 40px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  font-size: 14px;
 }
 .hero-search {
   margin-bottom: 30px;
@@ -2181,6 +2203,7 @@ p {
 .btn-play {
   width: 100px;
   margin-bottom: 20px;
+  -webkit-transition: all 502ms ease;
   transition: all 502ms ease;
 }
 .btn-play:hover {
@@ -2202,6 +2225,7 @@ p {
   height: 225px;
   padding: 61px 33px 73px;
   border-radius: 5px;
+  -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
   color: white;
   text-align: center;
@@ -2272,9 +2296,13 @@ p {
   display: inline-block;
   width: auto;
   margin-right: 5px;
-  margin-left: 0px;
+  margin-left: 5px;
   padding-right: 15px;
   padding-left: 15px;
+}
+.btn-inline.w--current {
+  background-color: white;
+  color: #2c2f33;
 }
 .btn-transparent {
   border: 1px solid transparent;
@@ -2321,6 +2349,7 @@ p {
   margin-left: 205px;
 }
 .body-project.open {
+  -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
 }
 .body-project.big {
@@ -2416,6 +2445,7 @@ p {
   overflow-x: hidden;
   overflow-y: hidden;
   height: 45px;
+  -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
 }
 .card-alert {
@@ -2590,8 +2620,6 @@ p {
   background-size: cover;
 }
 .table-outer {
-  padding-right: 10px;
-  padding-left: 10px;
   border: 1px solid #ddd;
   border-radius: 3px;
   background-color: white;
@@ -2662,6 +2690,67 @@ p {
 }
 .bg-white {
   background-color: white;
+}
+.hero-start {
+  padding-top: 170px;
+  background-image: url('../images/hero-start.jpg');
+  background-size: cover;
+  color: white;
+}
+.img-start-laptop {
+  display: block;
+  width: 75%;
+  margin: -170px auto 50px;
+}
+.section-categories {
+  margin-bottom: 60px;
+  padding-top: 80px;
+  padding-bottom: 80px;
+  background-color: #94cc68;
+}
+.img-start-features {
+  position: absolute;
+  left: 55%;
+  top: -20px;
+  right: 0px;
+  bottom: 0px;
+  height: 490px;
+  float: right;
+}
+.section-features {
+  position: relative;
+  height: 469px;
+  margin-top: 90px;
+  margin-bottom: 134px;
+  padding-top: 82px;
+}
+.btn-steps {
+  padding-right: 15px;
+  padding-left: 15px;
+  border-radius: 5px;
+  background-color: white;
+  color: #3f4752;
+  font-size: 16px;
+  text-align: center;
+}
+.btn-steps:hover {
+  background-color: #7cc142;
+  color: white;
+}
+.btn-steps.w--current {
+  background-color: #7cc142;
+  color: white;
+}
+.bar-top {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  right: 0px;
+  z-index: 1000;
+}
+.overflow-auto {
+  overflow-x: auto;
+  overflow-y: auto;
 }
 html.w-mod-js *[data-ix="fade-in"] {
   opacity: 0;
@@ -2963,6 +3052,7 @@ html.w-mod-js *[data-ix="icon-funded-with"] {
     height: 120px;
   }
   .card-reward {
+    -webkit-transition: all 500ms ease;
     transition: all 500ms ease;
   }
   .card-reward:hover {
