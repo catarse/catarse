@@ -1,7 +1,6 @@
 # coding: utf-8
 class ApplicationController < ActionController::Base
   include Concerns::ExceptionHandler
-  include Concerns::MenuHandler
   include Concerns::SocialHelpersHandler
   include Concerns::AnalyticsHelpersHandler
   include Pundit
