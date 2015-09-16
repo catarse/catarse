@@ -11,6 +11,12 @@ br
 | subsequente fatura do seu cartão</strong>. Assim que o reembolso for feito, você receberá um e-mail de confirmação da operação.
 br
 br
+p Valor do reembolso: #{number_to_currency details.value}
+
+p Data do pedido reembolso: #{details.pending_refund_at.try(:to_date)}
+
+p Identificação na fatura do cartão de crédito: “Estorno do Catarse”
+
 | Se ficou com alguma dúvida, entre em contato conosco respondendo a esta mensagem ou através do e-mail #{mail_to CatarseSettings[:email_contact]} 
 | e nos informe a chave de identificação do seu apoio, que é: #{details.gateway_id}
 br
