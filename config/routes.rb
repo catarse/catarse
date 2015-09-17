@@ -59,8 +59,6 @@ Catarse::Application.routes.draw do
 
     get 'video', on: :collection
     member do
-      get :reminder, to: 'projects/reminders#create'
-      delete :reminder, to: 'projects/reminders#destroy'
       put 'pay'
       get 'embed'
       get 'video_embed'
