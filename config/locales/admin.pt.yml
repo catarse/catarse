@@ -81,6 +81,7 @@ pt:
       index:
         title: "Gerenciamento de apoiadores"
         menu: "Apoiadores"
+        new_menu: "Usuários - Beta"
         credits: "Créditos"
         credits_view: "Créditos calculados"
         id: Id
