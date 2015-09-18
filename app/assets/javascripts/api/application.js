@@ -20,7 +20,11 @@
       projectInsightsRoot = document.getElementById('project-insights-root');
 
   if(adminRoot){
-    m.mount(adminRoot, c.admin.Contributions);
+    m.route.mode = 'hash';
+    m.route(adminRoot, '/', {
+      '/': m.component(c.admin.Contributions, {root: adminRoot}),
+      '/users': m.component(c.admin.Users),
+    });
   }
 
   if(teamRoot){
