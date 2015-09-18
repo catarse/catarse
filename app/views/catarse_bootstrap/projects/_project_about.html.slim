@@ -10,13 +10,6 @@
   .w-col.w-col-3
     = link_to t('.embed'), '#embed', id: 'embed_link', class: 'link-hidden fontsize-small fontcolor-secondary'
   .w-col.w-col-3
-    - if @project.online?
-      - if user_signed_in? && @project.user_already_in_reminder?(current_user.id)
-        .fontsize-small
-          = link_to t('.deactive_btn'), reminder_project_path(@project), class: 'fa fa-clock-o link-hidden-success u-right', method: :delete, id: 'reminder'
-      - else
-        .fontsize-small
-          = link_to t('.active_btn'), reminder_project_path(@project), class: 'fa fa-clock-o link-hidden u-right fontcolor-secondary', id: 'reminder'
 
 #project_embed.w-hidden data-path=embed_panel_project_path(@project)
 
