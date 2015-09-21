@@ -1,7 +1,7 @@
 .w-row.u-marginbottom-10
   .w-col.w-col-3.w-hidden-small.w-hidden-tiny
     = link_to project_by_slug_path(project.permalink), title: project.name do
-      = image_tag(project.display_image, size: '50x50', class: 'thumb small u-radius')
+      = image_tag(project.display_image, size: '50x50', class: 'thumb small u-radius project-search-image')
   .w-col.w-col-9
     = link_to project_by_slug_path(project.permalink), title: project.name, class: 'fontsize-smallest fontweight-semibold lineheight-tighter u-marginbottom-10 link-hidden' do
       = truncate(project.name, lenght: 34)
