@@ -68,9 +68,13 @@ class UpdateProjectDetails < ActiveRecord::Migration
       grant select on "1".project_details to web_user;
       grant select on "1".project_details to anonymous;
 
-      create function public.has_published_projects(users) returns boolean
-      language sql security definer as $$
-      	select true from projects p where p.is_published and p.user_id = $1.id
+      create or replace function public.has_published_projects(users) 
+      returns boolean
+      language sql 
+      security definer 
+      stable
+      as $$
+        select true from public.projects p where p.is_published and p.user_id = $1.id
       $$;
 
       create or replace view "1".user_details as
