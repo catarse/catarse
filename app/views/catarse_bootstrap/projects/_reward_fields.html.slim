@@ -76,8 +76,8 @@
             .w-row
               .w-col.w-col-5
                 .w-checkbox
-                  .w-checkbox-input= check_box_tag  "limit_reward", '', (reward.maximum_contributions.present?), id: 'limit_reward' 
-                  label.w-form-label for="limit_reward"= t('.limit_reward') 
+                  .w-checkbox-input= check_box_tag  "limit_reward", '', (reward.maximum_contributions.present?), class: 'limit_reward' 
+                  label.w-form-label= t('.limit_reward') 
               .w-col.w-col-7 class="reward_maximum_contributions #{reward.maximum_contributions.present? ?  '' : 'w-hidden'}"
                 = f.input_field :maximum_contributions, as: :tel, class: 'u-marginbottom-30 positive', placeholder: t('.available')
             .w-row.u-margintop-30
