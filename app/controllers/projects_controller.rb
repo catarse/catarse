@@ -12,6 +12,8 @@ class ProjectsController < ApplicationController
   respond_to :html
   respond_to :json, only: [:index, :show, :update]
 
+  before_action :referral_it!
+
   def index
     respond_to do |format|
       format.html do
