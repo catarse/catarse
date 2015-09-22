@@ -68,43 +68,6 @@ class UpdateProjectDetails < ActiveRecord::Migration
       grant select on "1".project_details to web_user;
       grant select on "1".project_details to anonymous;
 
-      create or replace function public.has_published_projects(users) 
-      returns boolean
-      language sql 
-      security definer 
-      stable
-      as $$
-        select true from public.projects p where p.is_published and p.user_id = $1.id
-      $$;
-
-      create or replace view "1".user_details as
-        select
-        	u.id,
-        	u.name,
-        	u.address_city,
-          u.profile_img_thumbnail,
-          u.facebook_link,
-          u.twitter as twitter_username,
-        	(
-        		case
-            when current_user = 'anonymous' then null
-        		when public.is_owner_or_admin(u.id) or u.has_published_projects then u.email
-        		else null
-        		end
-        	) as email,
-        	count(distinct c.project_id) filter (where c.state = any(public.confirmed_states())) as total_contributed_projects,
-        	count(p.id) filter (where p.is_published) as total_published_projects,
-        	json_agg(distinct ul.link) as links
-        from users u
-        left join user_links ul on ul.user_id = u.id
-        left join contribution_details c on c.user_id = u.id
-        left join projects p on p.user_id = u.id
-        group by u.id;
-
-      grant select on "1".user_details to admin;
-      grant select on "1".user_details to web_user;
-      grant select on "1".user_details to anonymous;
-
       CREATE OR REPLACE VIEW "1".reward_details AS
        SELECT r.id,
           r.project_id,
@@ -126,8 +89,6 @@ class UpdateProjectDetails < ActiveRecord::Migration
 
   def down
     execute <<-SQL
-      drop view if exists "1".user_details;
-      drop function if exists public.has_published_projects(users);
       drop view "1".project_details;
       create view "1".project_details as
         select
