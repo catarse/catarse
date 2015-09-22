@@ -27,7 +27,7 @@ class CreateUserDetails < ActiveRecord::Migration
           ) AS total_published_projects
          FROM contributions b
            JOIN payments pa ON b.id = pa.contribution_id
-           JOIN projects p ON b.project_id = p.id
+           JOIN public.projects p ON b.project_id = p.id
            JOIN users u ON u.id = b.user_id
         WHERE pa.state = ANY (confirmed_states())
         GROUP BY b.user_id, u.zero_credits;
@@ -40,7 +40,7 @@ class CreateUserDetails < ActiveRecord::Migration
           COALESCE(ut.total_contributed_projects, 0::bigint) AS total_contributed_projects,
           COALESCE(ut.sum, 0::numeric) AS total_amount_contributed
          FROM users u
-           LEFT JOIN user_totals ut ON ut.user_id = u.id
+           LEFT JOIN "1".user_totals ut ON ut.user_id = u.id
         WHERE u.admin
         ORDER BY u.name;
       grant select on "1".team_members to admin;
@@ -52,7 +52,7 @@ class CreateUserDetails < ActiveRecord::Migration
       language sql 
       security definer 
       stable as $$
-      	select true from projects p where p.is_published and p.user_id = $1.id
+        select true from public.projects p where p.is_published and p.user_id = $1.id
       $$;
 
       create or replace view "1".user_details as
@@ -78,7 +78,7 @@ class CreateUserDetails < ActiveRecord::Migration
             WHERE ul.user_id = u.id
           ) as links
         from users u
-        left join user_totals ut on ut.user_id = u.id;
+        left join "1".user_totals ut on ut.user_id = u.id;
       grant select on "1".user_details to admin;
       grant select on "1".user_details to web_user;
       grant select on "1".user_details to anonymous;
