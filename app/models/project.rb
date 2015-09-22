@@ -96,6 +96,12 @@ class Project < ActiveRecord::Base
                                      WHEN 'failed' THEN 4
                                      END ASC")}
   scope :most_recent_first, ->{ order("projects.online_date DESC, projects.created_at DESC") }
+  scope :trending, -> {
+    not_expired.joins(:contributions).
+      where("contributions.created_at >= (current_timestamp - '24 hours'::interval)").
+      order("(count(contributions.is_confirmed)) desc").
+      group("projects.id")
+  }
   scope :order_for_admin, -> {
     reorder("
             CASE projects.state
