@@ -21,8 +21,8 @@ module Shared::Queued
       end
     end
 
-    def job_match?(job, class_name, first_arg_c)
-      job['class'] == class_name && job['args'][0] == first_arg_c
+    def job_match?(job, class_name, args)
+      job['class'] == class_name && (args.kind_of?(Array) ? job_args == args : job_args[0] == args)
     end
 
     def scheduled_queue
