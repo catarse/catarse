@@ -1,18 +1,35 @@
 namespace :cron do
   desc "Tasks that should run hourly"
   task hourly: [:finish_projects, :second_slip_notification,
-                :refresh_materialized_views]
+                :refresh_materialized_views, :schedule_reminders]
 
   desc "Tasks that should run daily"
   task daily: [ :notify_project_owner_about_new_confirmed_contributions,
                :deliver_projects_of_week, :verify_pagarme_transactions,
-               :verify_pagarme_transfers, :notify_pending_refunds]
+               :verify_pagarme_transfers, :notify_pending_refunds, :request_direct_refund_for_failed_refund]
 
   desc "Refresh all materialized views"
   task refresh_materialized_views: :environment do
     puts "refreshing views"
     Statistics.refresh_view
     UserTotal.refresh_view
+  end
+
+  desc 'Request refund for failed credit card refunds'
+  task request_direct_refund_for_failed_refund: :environment do
+    ContributionDetail.where("state in ('pending', 'paid') and project_state = 'failed' and lower(gateway) = 'pagarme' and lower(payment_method) = 'cartaodecredito'").each do |c|
+      c.direct_refund
+      puts "request refund for gateway_id -> #{c.gateway_id}"
+    end
+  end
+
+  desc 'Add missing reminder jobs'
+  task schedule_reminders: :environment do
+    ProjectNotification.where("template_name = 'reminder' and sent_at is null and deliver_at >= now()").find_each do |notification|
+      has_on_queue = notification.project.exists_on_scheduled_jobs('UserNotifier::EmailWorker', ['ProjectNotification', notification.id])
+      puts "#{notification.user.name} ==> #{has_on_queue} => #{notification.to_json}"
+      notification.deliver unless has_on_queue
+    end
   end
 
   desc "Send second slip notification"

@@ -9,6 +9,10 @@ module Shared::Queued
       end
     end
 
+    def exists_on_scheduled_jobs(class_name, args)
+      scheduled_queue.any? {|j| job_match?(j, class_name, args) }
+    end
+
     private
 
     def on_scheduled_jobs(class_name, first_arg_c)
@@ -17,8 +21,8 @@ module Shared::Queued
       end
     end
 
-    def job_match?(job, class_name, first_arg_c)
-      job['class'] == class_name && job['args'][0] == first_arg_c
+    def job_match?(job, class_name, args)
+      job['class'] == class_name && (args.kind_of?(Array) ? job_args == args : job_args[0] == args)
     end
 
     def scheduled_queue
