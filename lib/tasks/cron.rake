@@ -1,7 +1,7 @@
 namespace :cron do
   desc "Tasks that should run hourly"
   task hourly: [:finish_projects, :second_slip_notification,
-                :refresh_materialized_views]
+                :refresh_materialized_views, :schedule_reminders]
 
   desc "Tasks that should run daily"
   task daily: [ :notify_project_owner_about_new_confirmed_contributions,
@@ -13,6 +13,15 @@ namespace :cron do
     puts "refreshing views"
     Statistics.refresh_view
     UserTotal.refresh_view
+  end
+
+  desc 'Add missing reminder jobs'
+  task schedule_reminders: :environment do
+    ProjectNotification.where("template_name = 'reminder' and sent_at is null and deliver_at >= now()").find_each do |notification|
+      has_on_queue = notification.project.exists_on_scheduled_jobs('UserNotifier::EmailWorker', ['ProjectNotification', notification.id])
+      puts "#{notification.user.name} ==> #{has_on_queue} => #{notification.to_json}"
+      notification.deliver unless has_on_queue
+    end
   end
 
   desc "Send second slip notification"
