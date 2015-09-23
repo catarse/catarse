@@ -10,13 +10,6 @@ RSpec.describe RewardsController, type: :controller do
     allow(controller).to receive(:current_user).and_return(user)
   end
 
-  describe "GET index" do
-    before do
-      get :index, project_id: project.id, locale: :pt
-    end
-    it{ is_expected.to be_successful }
-  end
-
   describe "POST sort" do
     before do
       post :sort, project_id: project.id, id: reward.id, reward: {row_order_position: 1}, locale: :pt
