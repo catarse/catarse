@@ -41,7 +41,7 @@ Catarse::Application.routes.draw do
   resources :auto_complete_cities, only: [:index]
   resources :projects, only: [ :index, :create, :update, :edit, :new, :show] do
     resources :accounts, only: [:create, :update]
-    resources :posts, controller: 'projects/posts', only: [ :index, :destroy ]
+    resources :posts, controller: 'projects/posts', only: [ :destroy ]
     resources :rewards, only: [ :index ] do
       post :sort, on: :member
     end
