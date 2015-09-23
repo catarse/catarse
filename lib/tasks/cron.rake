@@ -6,13 +6,21 @@ namespace :cron do
   desc "Tasks that should run daily"
   task daily: [ :notify_project_owner_about_new_confirmed_contributions,
                :deliver_projects_of_week, :verify_pagarme_transactions,
-               :verify_pagarme_transfers, :notify_pending_refunds]
+               :verify_pagarme_transfers, :notify_pending_refunds, :request_direct_refund_for_failed_refund]
 
   desc "Refresh all materialized views"
   task refresh_materialized_views: :environment do
     puts "refreshing views"
     Statistics.refresh_view
     UserTotal.refresh_view
+  end
+
+  desc 'Request refund for failed credit card refunds'
+  task request_direct_refund_for_failed_refund: :environment do
+    ContributionDetail.where("state in ('pending', 'paid') and project_state = 'failed' and lower(gateway) = 'pagarme' and lower(payment_method) = 'cartaodecredito'").each do |c|
+      c.direct_refund
+      puts "request refund for gateway_id -> #{c.gateway_id}"
+    end
   end
 
   desc 'Add missing reminder jobs'
