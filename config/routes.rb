@@ -47,7 +47,6 @@ Catarse::Application.routes.draw do
     end
     resources :contributions, {except: [:index], controller: 'projects/contributions'} do
       collection do
-        get :details, to: 'projects/contribution_details#index'
         get :fallback_create, to: 'projects/contributions#create'
       end
       member do
