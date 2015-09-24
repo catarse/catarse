@@ -6,7 +6,7 @@ App.addChild('UserEdit', _.extend({
   },
 
   activate: function(){
-    
+
     this.route('contributions');
     this.route('projects');
     this.route('about_me');
@@ -41,6 +41,20 @@ App.addChild('UserEdit', _.extend({
     }
   }
 }, Skull.Tabs));
+
+App.addChild('UserSettingForm', _.extend({
+  el: '#user_form.user-settings-form',
+
+  events: {
+    'blur input' : 'checkInput',
+    'click input[type="submit"]' : 'validate'
+  },
+
+  activate: function(){
+    this.setupForm();
+  }
+
+}, Skull.Form));
 
 App.addChild('UserBillingForm', _.extend({
   el: '#user_billing_form',
