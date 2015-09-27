@@ -33,7 +33,9 @@
   }
 
   if(projectShowRoot) {
-    m.mount(projectShowRoot, m.component(c.project.Show, {root: projectShowRoot}));
+    m.mount(projectShowRoot, m.component(c.project.Show, {
+      project_id: projectShowRoot.getAttribute('data-id')
+    }));
   }
 
   if(projectInsightsRoot){
