@@ -23,7 +23,7 @@
         .hello-stats= number_with_delimiter(statistics.total_projects_success)
         .fontsize-small = t('.hero.projects_html')
       .w-col.w-col-4.u-marginbottom-20
-        .hello-stats=(statistics.total_contributed/1_000_000).to_i
+        .hello-stats= "#{(statistics.total_contributed/1_000_000).to_i} #{number_to_human(statistics.total_contributed, format: '%u')}"
         .fontsize-small = t('.hero.money_html')
     .w-hidden-main.w-hidden-medium.u-marginbottom-40
 .section-large.hello-idea
