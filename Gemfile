@@ -81,6 +81,7 @@ gem 'has_scope', '>= 0.6.0.rc'
 gem 'spectator-validates_email',  require: 'validates_email'
 gem 'video_info', '>= 1.1.1'
 gem 'httparty', '~> 0.6.1' # this version is required by moip gem, otherwise payment confirmation will break
+gem 'typhoeus'
 
 # Translations
 gem 'http_accept_language'
@@ -115,6 +116,7 @@ group :production do
   #gem 'dalli'
 end
 group :development do
+  gem 'rack-mini-profiler'
   gem "rails-erd"
   gem "letter_opener"
   gem 'foreman'
