@@ -102,10 +102,6 @@ class ProjectsController < ApplicationController
     render partial: 'project_embed'
   end
 
-  def about_mobile
-    resource
-  end
-
   protected
   def authorize_and_build_resources
     authorize resource

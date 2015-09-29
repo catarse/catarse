@@ -61,7 +61,6 @@ Catarse::Application.routes.draw do
       put 'pay'
       get 'embed'
       get 'video_embed'
-      get 'about_mobile'
       get 'embed_panel'
       get 'send_to_analysis'
       get 'publish'
