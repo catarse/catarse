@@ -1,29 +1,29 @@
-nav#user-menu-dropdown.w-dropdown-list.dropdown-list.user-menu
-  .w-row
-    .w-col.w-col-4
-      .fontweight-semibold.fontsize-smaller.u-marginbottom-10 = t('shared.menus.user.contributions_history')
-      ul.w-list-unstyled.u-marginbottom-20
-        li.lineheight-looser
-          = link_to t('shared.menus.user.contributions_history_nav'), edit_user_path(current_user, anchor: :contributions), class: 'alt-link fontsize-smaller'
-        li.w-hidden-main.w-hidden-medium.lineheight-looser
-          = link_to  t('shared.menus.user.projects_created'), edit_user_path(current_user, anchor: :projects), class: 'alt-link fontsize-smaller'
-        /li.lineheight-looser
-          = link_to  t('shared.menus.user.activity'), edit_user_path(current_user, anchor: :feeds), class: 'alt-link fontsize-smaller'
-      .fontweight-semibold.fontsize-smaller.u-marginbottom-10 Configurações
-      ul.w-list-unstyled.u-marginbottom-20
-        li.lineheight-looser
-          = link_to t('shared.menus.user.about'), edit_user_path(current_user, anchor: :about_me), class: 'alt-link fontsize-smaller'
-        li.lineheight-looser
-          = link_to t('shared.menus.user.notifications'), edit_user_path(current_user, anchor: :notifications), class: 'alt-link fontsize-smaller'
-        li.lineheight-looser
-          = link_to t('shared.menus.user.access_address'), edit_user_path(current_user, anchor: :settings), class: 'alt-link fontsize-smaller'
-        li.lineheight-looser
-          = link_to t('shared.menus.user.banking'), edit_user_path(current_user, anchor: :billing), class: 'alt-link fontsize-smaller'
-    .w-col.w-col-4.w-hidden-small.w-hidden-tiny
-      .fontweight-semibold.fontsize-smaller.u-marginbottom-10 = t('shared.menus.user.project_contributions')
-      - if current_user.contributions.was_confirmed.present?
+- cache "user_menu_#{current_user.id}", expires_in: 2.minutes.from_now do
+  nav#user-menu-dropdown.w-dropdown-list.dropdown-list.user-menu
+    .w-row
+      .w-col.w-col-4
+        .fontweight-semibold.fontsize-smaller.u-marginbottom-10 = t('shared.menus.user.contributions_history')
         ul.w-list-unstyled.u-marginbottom-20
-          - current_user.contributions.was_confirmed.ordered.limit(3).each do |contribution|
+          li.lineheight-looser
+            = link_to t('shared.menus.user.contributions_history_nav'), edit_user_path(current_user, anchor: :contributions), class: 'alt-link fontsize-smaller'
+          li.w-hidden-main.w-hidden-medium.lineheight-looser
+            = link_to  t('shared.menus.user.projects_created'), edit_user_path(current_user, anchor: :projects), class: 'alt-link fontsize-smaller'
+          /li.lineheight-looser
+            = link_to  t('shared.menus.user.activity'), edit_user_path(current_user, anchor: :feeds), class: 'alt-link fontsize-smaller'
+        .fontweight-semibold.fontsize-smaller.u-marginbottom-10 Configurações
+        ul.w-list-unstyled.u-marginbottom-20
+          li.lineheight-looser
+            = link_to t('shared.menus.user.about'), edit_user_path(current_user, anchor: :about_me), class: 'alt-link fontsize-smaller'
+          li.lineheight-looser
+            = link_to t('shared.menus.user.notifications'), edit_user_path(current_user, anchor: :notifications), class: 'alt-link fontsize-smaller'
+          li.lineheight-looser
+            = link_to t('shared.menus.user.access_address'), edit_user_path(current_user, anchor: :settings), class: 'alt-link fontsize-smaller'
+          li.lineheight-looser
+            = link_to t('shared.menus.user.banking'), edit_user_path(current_user, anchor: :billing), class: 'alt-link fontsize-smaller'
+      .w-col.w-col-4.w-hidden-small.w-hidden-tiny
+        .fontweight-semibold.fontsize-smaller.u-marginbottom-10 = t('shared.menus.user.project_contributions')
+        ul.w-list-unstyled.u-marginbottom-20
+          - current_user.contributions.was_confirmed.includes(:project).ordered.limit(3).each do |contribution|
             - project = contribution.project
             li.u-marginbottom-10
               .w-row
@@ -36,9 +36,8 @@ nav#user-menu-dropdown.w-dropdown-list.dropdown-list.user-menu
               .w-col.w-col-6
                 = link_to t('projects.index.see_all'), edit_user_path(current_user, anchor: :contributions), class: 'btn btn-terciary'
               .w-col.w-col-6
-    .w-col.w-col-4.w-hidden-small.w-hidden-tiny
-      .fontweight-semibold.fontsize-smaller.u-marginbottom-10 = t('shared.menus.user.projects_created')
-      - if current_user.projects.present?
+      .w-col.w-col-4.w-hidden-small.w-hidden-tiny
+        .fontweight-semibold.fontsize-smaller.u-marginbottom-10 = t('shared.menus.user.projects_created')
         ul.w-list-unstyled.u-marginbottom-20
           - current_user.projects.without_state('rejected').ordered.limit(3).each do |project|
             li.u-marginbottom-10
@@ -52,29 +51,29 @@ nav#user-menu-dropdown.w-dropdown-list.dropdown-list.user-menu
               .w-col.w-col-6
                 = link_to t('projects.index.see_all'), edit_user_path(current_user, anchor: :projects), class: 'btn btn-terciary'
               .w-col.w-col-6
-  - if current_user.admin?
+    - if current_user.admin?
+      .divider.u-marginbottom-20
+      .fontweight-semibold.fontsize-smaller.u-marginbottom-10 Admin
+      ul.w-list-unstyled.u-marginbottom-20
+        li.lineheight-looser
+          = link_to t('admin.contributions.index.new_menu'), new_admin_path, class: 'alt-link fontsize-smaller'
+        li.lineheight-looser
+          = link_to t('admin.contributions.index.menu'), admin_contributions_path, class: 'alt-link fontsize-smaller'
+        li.lineheight-looser
+          = link_to t('admin.financials.index.menu'), admin_financials_path, class: 'alt-link fontsize-smaller'
+        li.lineheight-looser
+          = link_to t('admin.users.index.menu'), admin_users_path, class: 'alt-link fontsize-smaller'
+        li.lineheight-looser
+          = link_to t('admin.projects.index.menu'), admin_projects_path, class: 'alt-link fontsize-smaller'
+        li.lineheight-looser
+          = link_to 'Dataclips', dbhero_path, class: 'alt-link fontsize-smaller'
+  
     .divider.u-marginbottom-20
-    .fontweight-semibold.fontsize-smaller.u-marginbottom-10 Admin
-    ul.w-list-unstyled.u-marginbottom-20
-      li.lineheight-looser
-        = link_to t('admin.contributions.index.new_menu'), new_admin_path, class: 'alt-link fontsize-smaller'
-      li.lineheight-looser
-        = link_to t('admin.contributions.index.menu'), admin_contributions_path, class: 'alt-link fontsize-smaller'
-      li.lineheight-looser
-        = link_to t('admin.financials.index.menu'), admin_financials_path, class: 'alt-link fontsize-smaller'
-      li.lineheight-looser
-        = link_to t('admin.users.index.menu'), admin_users_path, class: 'alt-link fontsize-smaller'
-      li.lineheight-looser
-        = link_to t('admin.projects.index.menu'), admin_projects_path, class: 'alt-link fontsize-smaller'
-      li.lineheight-looser
-        = link_to 'Dataclips', dbhero_path, class: 'alt-link fontsize-smaller'
-
-  .divider.u-marginbottom-20
-  .fontsize-smallest
-    = t('shared.menus.user.logged_as')
-    span
-      | &nbsp;
-      span.fontweight-semibold= current_user.decorate.display_name
-      | &nbsp;
-      = link_to t('layouts.user.logout'), destroy_user_session_path, method: :delete, class: 'alt-link'
-
+    .fontsize-smallest
+      = t('shared.menus.user.logged_as')
+      span
+        | &nbsp;
+        span.fontweight-semibold= current_user.decorate.display_name
+        | &nbsp;
+        = link_to t('layouts.user.logout'), destroy_user_session_path, method: :delete, class: 'alt-link'
+  
