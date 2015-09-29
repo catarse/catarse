@@ -102,16 +102,6 @@ RSpec.describe Project, type: :model do
     end
   end
 
-  describe "#user_already_in_reminder?" do
-    let(:user) { create(:user) }
-    subject { project.user_already_in_reminder?(user.id) }
-    before do
-      project.notify_once(:reminder, user, project)
-    end
-
-    it { is_expected.to eq(true)}
-  end
-
   describe ".of_current_week" do
     subject { Project.of_current_week }
     before do
