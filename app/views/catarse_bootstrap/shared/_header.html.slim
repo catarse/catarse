@@ -6,7 +6,6 @@ header class="main-header w-section #{'alert' if can_display_pending_refund_aler
       .w-dropdown.user-profile
         = link_to 'javascript:toggleMenu()', id: 'user-menu', class: 'w-dropdown-toggle dropdown-toggle' do
           = image_tag(current_user.display_image, :size => "40x40", class: 'user-avatar')
-          .w-icon-dropdown-toggle.dropdown-icon.positive
         = render 'shared/user_menu'
     - else
       = link_to t('layouts.header.signin'), new_user_session_path, class: 'w-nav-link header-link w-nav-link btn-edit u-right'
