@@ -11,9 +11,7 @@ class CreateCategoriesView < ActiveRecord::Migration
 
          FROM categories c
          WHERE
-          exists(select true from projects p where p.category_id = c.id and p.state not in('draft', 'rejected'))
-          GROUP BY c.id
-          ORDER BY name_pt;
+          exists(select true from projects p where p.category_id = c.id and p.state not in('draft', 'rejected'));
 
       grant select on \"1\".categories to admin;
       grant select on \"1\".categories to web_user;
