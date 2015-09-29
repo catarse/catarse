@@ -27,8 +27,8 @@ class ProjectUploader < ImageUploader
     process convert: :jpg
   end
 
-  version :project_thumb_large do
-    process resize_to_fill: [600,340]
+  version :project_thumb_facebook do
+    process resize_to_fill: [484,252]
     process convert: :jpg
   end
 
