@@ -165,10 +165,6 @@ class Project < ActiveRecord::Base
     @decorator ||= ProjectDecorator.new(self)
   end
 
-  def total_reminders
-    notifications.where(template_name: 'reminder').count
-  end
-
   def pledged
     @pledged ||= project_total.try(:pledged).to_f
   end
