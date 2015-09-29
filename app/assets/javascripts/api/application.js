@@ -29,7 +29,7 @@
   }
 
   if(projectIndexRoot){
-    m.mount(projectIndexRoot, c.contribution.projectsHome);
+    m.mount(projectIndexRoot, c.contribution.ProjectsHome);
   }
 
   if(projectShowRoot) {

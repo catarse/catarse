@@ -1,4 +1,4 @@
-= simple_form_for resource, html: { id: 'user_form', class: 'w-form' } do |form|
+= simple_form_for resource, html: { id: 'user_form', class: 'user-settings-form w-form' } do |form|
   = hidden_field_tag :anchor, 'settings'
   div
     .w-container
@@ -9,7 +9,13 @@
           .fontsize-small.u-marginbottom-20 Mantenha esse email atualizado pois ele é o canal de comunicação entre você, a equipe do Catarse e a equipe dos projetos que você apoiou. 
           .w-row.u-marginbottom-20
             .w-col.w-col-6.w-sub-col
-              = form.input_field :email, as: :string, class: 'w-input text-field positive'
+              = form.input_field :email, as: :string, class: 'w-input text-field positive', required: true
+            .w-col.w-col-6
+
+          .fontsize-base.fontweight-semibold CPF / CNPJ
+          .w-row.u-marginbottom-20
+            .w-col.w-col-6.w-sub-col
+              = form.input_field :cpf, as: :tel, class: 'w-input text-field positive', data: { :'validate-cpf-cnpj' => true }
             .w-col.w-col-6
 
           .divider.u-marginbottom-20
@@ -17,7 +23,7 @@
           .fontsize-base.fontweight-semibold Endereço
           .fontsize-small.u-marginbottom-20 Esse é o endereço que foi informado ao realizar seu último apoio. Se você mudou de endereço, altere aqui e, caso você esteja aguardando alguma recompensa, avise por email ao realizador do projeto apoiado.
           .w-row  
-            = form.association :country, as: :select, label_html:{class: 'field-label fontweight-semibold'}, wrapper_html: {class: 'w-col w-col-6 w-sub-col'}, input_html: {class: 'w-select positive', required: true}, required: true, label: 'País'
+            = form.association :country, as: :select, label_html:{class: 'field-label fontweight-semibold'}, wrapper_html: {class: 'w-col w-col-6 w-sub-col'}, input_html: {class: 'w-select positive'}, label: 'País'
             .w-col.w-col-6
           .w-row
             = form.input :address_street, as: :string, label_html:{class: 'field-label fontweight-semibold'}, wrapper_html: {class: 'w-col w-col-6 w-sub-col'}, input_html: {class: 'w-input text-field positive', data: {required_in_brazil: true}}, validation_text: true

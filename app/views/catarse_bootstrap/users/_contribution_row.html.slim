@@ -17,7 +17,8 @@
         .w-col.w-col-4.u-marginbottom-10
           = link_to (image_tag project.display_image, class: 'thumb-project u-radius', alt: project.name, width: 50), project_by_slug_path(project.permalink)
         .w-col.w-col-8
-          .fontsize-small.fontweight-semibold= project.name
+          .fontsize-small.fontweight-semibold
+            = link_to project.name, project_by_slug_path(project.permalink), class: 'alt-link'
     .w-col.w-col-2.u-marginbottom-10
       .fontsize-base.inline-block
         span.w-hidden-main.w-hidden-medium.fontweight-semibold>= Contribution.human_attribute_name(:value)

@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
   after_filter :redirect_user_back_after_login, only: %i[index show]
   before_action :authorize_and_build_resources, only: %i[edit show]
 
-  has_scope :pg_search, :by_category_id, :near_of
+  has_scope :pg_search, :by_category_id
   has_scope :recent, :expiring, :successful, :in_funding, :recommended, :not_expired, type: :boolean
 
   helper_method :project_comments_canonical_url, :resource, :collection

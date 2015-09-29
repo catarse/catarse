@@ -8,7 +8,7 @@ pt:
       single_project_created: " e já criou 1 projeto"
       multiple_project_created: " e já criou %{n_projects} projetos"
     contribution_row:
-      anonymous: Marcar apoio como anônimo
+      anonymous: Quero que meu apoio não seja público
       print_slip: Imprimir boleto
       slip_copy: Gerar 2a via
       contributed_projects: "Projetos que apoiei"
