@@ -5,7 +5,7 @@
   - else
     meta name="robots" content="noindex, nofollow"
 
-  - if !@post.new_record?
+  - if @post.present?
     meta name="description" content=@post.title
     meta property="og:title" content=@post.title
     meta property="og:description" content=@post.comment_html
