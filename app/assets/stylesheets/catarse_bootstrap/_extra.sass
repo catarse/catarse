@@ -26,6 +26,17 @@ img, iframe
 .edit-project-div
   height: 520px
 
+.category-slider
+  overflow-y: hidden
+  max-height: 515px
+
+  transition-property: all
+  transition-duration: .5s
+  transition-timing-function: cubic-bezier(0, 1, 0.5, 1)
+
+.category-slider.closed
+  max-height: 0
+
 .project-about:after
   content: ""
   display: table
