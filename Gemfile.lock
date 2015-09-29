@@ -748,6 +748,7 @@ DEPENDENCIES
   state_machine
   thin
   to_xls
+  typhoeus
   uglifier
   unicorn
   user_notifier (~> 0.2.0)
