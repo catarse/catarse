@@ -89,7 +89,7 @@ class UsersController < ApplicationController
   end
 
   def category_followers_params_given?
-    permitted_params[:category_followers_attributes].present?
+    permitted_params.include?(:category_followers_attributes)
   end
 
   def password_params_given?
