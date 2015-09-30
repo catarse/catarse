@@ -8,7 +8,7 @@ class Projects::ContributionDetailsController < ApplicationController
   end
 
   def collection
-    @contributions ||= apply_scopes(parent.contribution_details).available_to_display.order("created_at DESC").per(10)
+    @contributions ||= apply_scopes(parent.contribution_details).available_to_display.order("id DESC").per(10)
   end
 
   def parent
