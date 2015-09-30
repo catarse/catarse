@@ -1,7 +1,11 @@
 # Due to catarse's heavy page load, we are setting it to 4 workers
 # 1024/4 = 240MB for each web worker
 # 512/4  = 128MB for each web worker (in this case, make it 3 worker processes)
-worker_processes ENV['WORKER_PROCESSES'] || 3
+if ENV['PX_DYNO']
+  worker_processes 18
+else
+  worker_processes 3
+end
 
 # Requests with more than 30 sec will be killed
 timeout 30
