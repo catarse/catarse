@@ -85,4 +85,6 @@ Catarse::Application.configure do
   config.action_dispatch.default_headers = {
     'X-Frame-Options' => 'ALLOWALL'
   }
+
+  ActiveRecord::Base.connection.execute('set statement_timeout to 5500')
 end
