@@ -1,5 +1,5 @@
 Catarse::Application.configure do
-  Slim::Engine.set_default_options pretty: true
+  Slim::Engine.set_options pretty: true
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
