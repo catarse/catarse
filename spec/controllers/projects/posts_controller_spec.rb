@@ -6,11 +6,6 @@ RSpec.describe Projects::PostsController, type: :controller do
   before{ allow(controller).to receive(:current_user).and_return(current_user) }
   subject{ response }
 
-  describe "GET index" do
-    before{ get :index, project_id: project_post.project.id, locale: 'pt', format: 'html' }
-    its(:status){ should == 200 }
-  end
-
   describe "DELETE destroy" do
     before { delete :destroy, project_id: project_post.project.id, id: project_post.id, locale: 'pt' }
     context 'When user is a guest' do
