@@ -8,7 +8,7 @@ class UpdateUsersFullTextIndex < ActiveRecord::Migration
       AS $function$
         BEGIN
           NEW.full_text_index := to_tsvector(NEW.id::text) ||
-            to_tsvector(unaccent(NEW.name)) ||
+            to_tsvector(unaccent(coalesce(NEW.name, ''))) ||
             to_tsvector(unaccent(NEW.email));
           RETURN NEW;
         END;
