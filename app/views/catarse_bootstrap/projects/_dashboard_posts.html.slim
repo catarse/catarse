@@ -27,7 +27,7 @@
         .fontsize-large.fontweight-semibold.u-marginbottom-40= t('.old_posts')
         - @project.posts.order('created_at DESC').each do |post|
           - if post.persisted?
-            .project-news.u-marginbottom-30
+            .project-news.u-marginbottom-30.w-clearfix
               .w-row
                 .w-col.w-col-11.w-col-small-11.w-col-tiny-11
                   .fontsize-large.fontweight-semibold= post.title

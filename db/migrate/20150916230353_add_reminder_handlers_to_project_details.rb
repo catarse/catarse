@@ -145,10 +145,10 @@ class AddReminderHandlersToProjectDetails < ActiveRecord::Migration
       create or replace function public.delete_project_reminder() returns trigger
       language plpgsql as $$
         begin
-          delete from public.project_notifications 
+          delete from public.project_notifications
           where
             template_name = 'reminder'
-            and user_id = current_setting('user_vars.user_id')::integer 
+            and user_id = current_setting('user_vars.user_id')::integer
             and project_id = OLD.project_id;
           return old;
         end;

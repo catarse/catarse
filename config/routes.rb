@@ -41,13 +41,12 @@ Catarse::Application.routes.draw do
   resources :auto_complete_cities, only: [:index]
   resources :projects, only: [ :index, :create, :update, :edit, :new, :show] do
     resources :accounts, only: [:create, :update]
-    resources :posts, controller: 'projects/posts', only: [ :index, :destroy ]
-    resources :rewards, only: [ :index ] do
+    resources :posts, controller: 'projects/posts', only: [ :destroy ]
+    resources :rewards do
       post :sort, on: :member
     end
     resources :contributions, {except: [:index], controller: 'projects/contributions'} do
       collection do
-        get :details, to: 'projects/contribution_details#index'
         get :fallback_create, to: 'projects/contributions#create'
       end
       member do
@@ -59,12 +58,9 @@ Catarse::Application.routes.draw do
 
     get 'video', on: :collection
     member do
-      get :reminder, to: 'projects/reminders#create'
-      delete :reminder, to: 'projects/reminders#destroy'
       put 'pay'
       get 'embed'
       get 'video_embed'
-      get 'about_mobile'
       get 'embed_panel'
       get 'send_to_analysis'
       get 'publish'

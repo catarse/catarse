@@ -3,13 +3,13 @@ require 'rails_helper'
 
 RSpec.describe ApiTokensController, type: :controller do
   let(:api_host){ "https://api.foo.com" }
-  let(:httparty_spy){ class_spy("HTTParty") }
+  let(:http_spy){ class_spy("Typhoeus") }
   let(:response_spy){ spy("response") }
   subject{ response }
 
   before do
-    allow(controller).to receive(:httparty).and_return(httparty_spy)
-    allow(httparty_spy).to receive(:post).and_return(response_spy)
+    allow(controller).to receive(:http_requester).and_return(http_spy)
+    allow(http_spy).to receive(:post).and_return(response_spy)
     allow(response_spy).to receive(:body).and_return({token: 'test'}.to_json)
     CatarseSettings[:api_host] = api_host
     allow(controller).to receive(:current_user).and_return(current_user)
@@ -37,7 +37,13 @@ RSpec.describe ApiTokensController, type: :controller do
       let(:current_user) { create(:user) }
       it{ is_expected.to be_successful }
       it "should relay request to api server" do
-        expect(httparty_spy).to have_received(:post).with("#{CatarseSettings[:api_host]}/postgrest/tokens", body: {id: current_user.id.to_s, pass: current_user.authentication_token}.to_json, options: {headers: { 'Content-Type' => 'application/json' }})
+        expect(http_spy).to have_received(:post).with("#{CatarseSettings[:api_host]}/postgrest/tokens", body: {
+          id: current_user.id.to_s,
+          pass: current_user.authentication_token}.to_json,
+          headers: {
+            'Content-Type' => 'application/json',
+            'Accept' => 'application/json'
+          })
       end
     end
 

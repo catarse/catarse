@@ -17,7 +17,8 @@
   var adminRoot = document.getElementById('new-admin'),
       teamRoot = document.getElementById('team-root'),
       projectIndexRoot = document.getElementById('project-index-root'),
-      projectInsightsRoot = document.getElementById('project-insights-root');
+      projectInsightsRoot = document.getElementById('project-insights-root'),
+      projectShowRoot = document.getElementById('project-show-root');
 
   if(adminRoot){
     m.route.mode = 'hash';
@@ -33,6 +34,12 @@
 
   if(projectIndexRoot){
     m.mount(projectIndexRoot, c.contribution.ProjectsHome);
+  }
+
+  if(projectShowRoot) {
+    m.mount(projectShowRoot, m.component(c.project.Show, {
+      project_id: projectShowRoot.getAttribute('data-id')
+    }));
   }
 
   if(projectInsightsRoot){

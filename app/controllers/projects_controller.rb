@@ -1,10 +1,10 @@
 # coding: utf-8
 class ProjectsController < ApplicationController
-  after_filter :verify_authorized, except: %i[index video video_embed embed embed_panel about_mobile]
+  after_filter :verify_authorized, except: %i[show index video video_embed embed embed_panel about_mobile]
   after_filter :redirect_user_back_after_login, only: %i[index show]
-  before_action :authorize_and_build_resources, only: %i[edit show]
+  before_action :authorize_and_build_resources, only: %i[edit]
 
-  has_scope :pg_search, :by_category_id, :near_of
+  has_scope :pg_search, :by_category_id
   has_scope :recent, :expiring, :successful, :in_funding, :recommended, :not_expired, type: :boolean
 
   helper_method :project_comments_canonical_url, :resource, :collection
@@ -19,7 +19,7 @@ class ProjectsController < ApplicationController
       format.html do
         return render_index_for_xhr_request if request.xhr?
       end
-      format.atom do 
+      format.atom do
         return render layout: false, locals: {projects: projects}
       end
       format.rss { redirect_to projects_path(format: :atom), :status => :moved_permanently }
@@ -83,6 +83,7 @@ class ProjectsController < ApplicationController
 
   def show
     fb_admins_add(resource.user.facebook_id) if resource.user.facebook_id
+    @post ||= resource.posts.where(id: params[:project_post_id].to_i).first if params[:project_post_id].present?
   end
 
   def video
@@ -100,10 +101,6 @@ class ProjectsController < ApplicationController
   def embed_panel
     resource
     render partial: 'project_embed'
-  end
-
-  def about_mobile
-    resource
   end
 
   protected

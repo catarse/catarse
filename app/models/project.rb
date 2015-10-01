@@ -78,7 +78,6 @@ class Project < ActiveRecord::Base
   scope :in_funding, -> { not_expired.with_states(['online']) }
   scope :name_contains, ->(term) { where("unaccent(upper(name)) LIKE ('%'||unaccent(upper(?))||'%')", term) }
   scope :user_name_contains, ->(term) { joins(:user).where("unaccent(upper(users.name)) LIKE ('%'||unaccent(upper(?))||'%')", term) }
-  scope :near_of, ->(address_state) { where("EXISTS(SELECT true FROM users u WHERE u.id = projects.user_id AND lower(u.address_state) = lower(?))", address_state) }
   scope :to_finish, ->{ expired.with_states(['online', 'waiting_funds']) }
   scope :visible, -> { without_states(['draft', 'rejected', 'deleted', 'in_analysis', 'approved']) }
   scope :financial, -> { with_states(['online', 'successful', 'waiting_funds']).where(expires_at: 15.days.ago.. Time.current) }
@@ -142,10 +141,6 @@ class Project < ActiveRecord::Base
     order(sort_field)
   end
 
-  def user_already_in_reminder?(user_id)
-    notifications.where(template_name: 'reminder', user_id: user_id).present?
-  end
-
   def has_blank_service_fee?
     payments.with_state(:paid).where("NULLIF(gateway_fee, 0) IS NULL").present?
   end
@@ -164,10 +159,6 @@ class Project < ActiveRecord::Base
 
   def decorator
     @decorator ||= ProjectDecorator.new(self)
-  end
-
-  def total_reminders
-    notifications.where(template_name: 'reminder').count
   end
 
   def pledged

@@ -24,7 +24,7 @@ RSpec.describe Project, type: :model do
     it{ is_expected.to validate_numericality_of(:goal) }
     it{ is_expected.to allow_value(10).for(:goal) }
     it{ is_expected.not_to allow_value(8).for(:goal) }
-    it{ is_expected.to ensure_length_of(:headline).is_at_most(Project::HEADLINE_MAXLENGTH) }
+    it{ is_expected.to validate_length_of(:headline).is_at_most(Project::HEADLINE_MAXLENGTH) }
     it{ is_expected.to allow_value('http://vimeo.com/12111').for(:video_url) }
     it{ is_expected.to allow_value('vimeo.com/12111').for(:video_url) }
     it{ is_expected.to allow_value('https://vimeo.com/12111').for(:video_url) }
@@ -102,28 +102,6 @@ RSpec.describe Project, type: :model do
     end
   end
 
-  describe "#user_already_in_reminder?" do
-    let(:user) { create(:user) }
-    subject { project.user_already_in_reminder?(user.id) }
-    before do
-      project.notify_once(:reminder, user, project)
-    end
-
-    it { is_expected.to eq(true)}
-  end
-
-  describe "#total_reminders" do
-    let(:user) { create(:user) }
-    before do
-      project.notify_once(:reminder, user, project)
-      project.notify_once(:reminder, project.user, project)
-    end
-
-    subject { project.total_reminders }
-
-    it { is_expected.to eq(2) }
-  end
-
   describe ".of_current_week" do
     subject { Project.of_current_week }
     before do
@@ -176,21 +154,6 @@ RSpec.describe Project, type: :model do
     subject { Project.state_names }
 
     it { is_expected.to match_array(states) }
-  end
-
-  describe '.near_of' do
-    before do
-      mg_user = create(:user, address_state: 'MG')
-      sp_user = create(:user, address_state: 'SP')
-      3.times { create(:project, user: mg_user) }
-      6.times { create(:project, user: sp_user) }
-    end
-
-    let(:state) { 'MG' }
-
-    subject { Project.near_of(state) }
-
-    it { is_expected.to have(3).itens }
   end
 
   describe ".by_permalink" do

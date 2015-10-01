@@ -18,6 +18,11 @@
       .w-col.w-col-8
         = simple_form_for resource, html: { class: 'w-form refund_bank_account_form' } do |bform|
           .w-row
+            .w-col.w-col-6.w-sub-col
+              = bform.input :owner_name, as: :string, validation_text: true, input_html: {required: true}
+            .w-col.w-col-6.w-sub-col
+              = bform.input :owner_document, as: :tel, validation_text: true, input_html: { data: { :'validate-cpf-cnpj' => true }, required: true }
+          .w-row
             - has_input_bank_number_error = resource.errors.include?(:input_bank_number)
             .w-col.w-col-6.w-sub-col#bank_select class="#{(has_input_bank_number_error ? 'w-hidden' : '')}"
               = bform.input :bank_id, as: :select, collection: Bank.most_popular_collection(resource.try(:bank)), validation_text: true, class: 'w-select', input_html: { required: true }
@@ -50,25 +55,19 @@
                           .w-col.w-col-3.w-col-small-3.w-col-tiny-3
                             = link_to bank.code, 'javascript:void(0)', class: 'link-hidden bank-resource-link', data: { id: bank.id, code: bank.code }
                           .w-col.w-col-9.w-col-small-9.w-col-tiny-9
-                            = link_to bank.to_s, 'javascript:void(0)', class: 'link-hidden bank-resource-link', data: { id: bank.id, code: bank.code }
-                  
+                            = link_to bank.to_s, 'javascript:void(0)', class: 'link-hidden bank-resource-link', data: { id: bank.id, code: bank.code }  
           .w-row
+            .w-col.w-col-6.w-sub-col
+              label.field-label.fontweight-semibold = t('activerecord.attributes.bank_account.account_type')
+              p.fontsize-smaller.u-marginbottom-20 = t('shared.account_type_value')
             .w-col.w-col-6.w-sub-col
               .w-row
                 .w-col.w-col-6.w-col-small-6.w-col-tiny-6.w-sub-col-middle
                   = bform.input :account, as: :string, validation_text: true, input_html: { required: true }
                 .w-col.w-col-6.w-col-small-6.w-col-tiny-6
                   = bform.input :account_digit, as: :string, required: true, validation_text: true, input_html: { required: true }
-            .w-col.w-col-6.w-sub-col
-              = bform.input :account_type, as: :string, class: 'positive',
-                input_html: { class: 'positive', readonly: true, value: t('shared.account_type_value')},
-                include_blank: true
-          .w-row
-            .w-col.w-col-6.w-sub-col
-              = bform.input :owner_name, as: :string, validation_text: true, input_html: {required: true}
-            .w-col.w-col-6.w-sub-col
-              = bform.input :owner_document, as: :tel, validation_text: true, input_html: { data: { :'validate-cpf-cnpj' => true }, required: true }
-            .w-col.w-col-6
+            
+          
           .w-row
             .w-col.w-col-4
             .w-col.w-col-4
