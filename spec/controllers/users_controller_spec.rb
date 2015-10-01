@@ -212,6 +212,19 @@ RSpec.describe UsersController, type: :controller do
       end
       it{ is_expected.to redirect_to edit_user_path(user) }
     end
+
+    context "removing category followers" do
+      let(:project){ create(:project, state: 'successful') }
+      before do
+        create(:category_follower, user: user)
+        put :update, id: user.id, locale: 'pt', user: { twitter: 'test', unsubscribes: {project.id.to_s=>"1"}, category_followers_attributes: []}
+      end
+      it("should clear category followers") do
+        user.reload
+        expect(user.category_followers.size).to eq(0)
+      end
+      it{ is_expected.to redirect_to edit_user_path(user) }
+    end
   end
 
   describe "GET show" do
