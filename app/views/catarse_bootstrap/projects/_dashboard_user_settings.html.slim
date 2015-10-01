@@ -11,7 +11,7 @@
               .card.u-radius.card-message.u-marginbottom-20
                 .fontsize-small
                   = t('.account_edit_disabled_html', link: (link_to 'entrar em contato conosco'," #{CatarseSettings[:zendesk_url]}/account/dropboxes/#{CatarseSettings[:zendesk_dropbox_id]}", class: 'alt-link zendesk_widget' ))
-            .w-form.card.card-terciary
+            .w-form.card.card-terciary.w-row
               #email-form
                 .fontsize-base.fontweight-semibold= t('.title') 
                 .fontsize-small.u-marginbottom-20= t('.user_data_subtitle_html') 
@@ -47,6 +47,9 @@
                         = form.input :agency_digit, as: :string, 
                         input_html: { class: 'positive' }
                 .w-row.u-marginbottom-20
+                  .w-col.w-col-6.w-sub-col
+                    label.field-label.fontweight-semibold = t('activerecord.attributes.bank_account.account_type')
+                    p.fontsize-smaller.u-marginbottom-20 = t('shared.account_type_value')
                   .w-col.w-col-6
                       .w-col.w-col-6.w-col-small-6.w-col-tiny-6.w-sub-col-middle
                         = form.input :account, as: :string, 
@@ -54,10 +57,6 @@
                       .w-col.w-col-6.w-col-small-6.w-col-tiny-6.w-sub-col-middle
                         = form.input :account_digit, as: :string, 
                         input_html: { class: 'positive' }
-                  .w-col.w-col-6
-                    = form.input :account_type, as: :string, class: 'positive',
-                      input_html: { class: 'positive', readonly: true, value: t('shared.account_type_value') },
-                      include_blank: true
                 .fontsize-base.fontweight-semibold Endereço
                 .divider.u-marginbottom-20
                 .w-row
@@ -91,10 +90,8 @@
                       .w-col.w-col-6.w-col-small-6.w-col-tiny-6
                         = form.input :phone_number, as: :string, 
                         input_html: { class: 'positive' }
-            .w-form.card.card-terciary
-              .divider.u-marginbottom-20
               
-        div
+        div.u-margintop-30
           .w-container
             .w-row
               .w-col.w-col-4.w-col-push-4
