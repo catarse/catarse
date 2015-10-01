@@ -17,6 +17,7 @@
   var adminRoot = document.getElementById('new-admin'),
       teamRoot = document.getElementById('team-root'),
       projectIndexRoot = document.getElementById('project-index-root'),
+      projectExploreRoot = document.getElementById('project-explore-root'),
       projectInsightsRoot = document.getElementById('project-insights-root');
 
   if(adminRoot){
@@ -29,6 +30,10 @@
 
   if(projectIndexRoot){
     m.mount(projectIndexRoot, c.contribution.ProjectsHome);
+  }
+
+  if(projectExploreRoot){
+    m.mount(projectExploreRoot, c.contribution.ProjectsExplore);
   }
 
   if(projectInsightsRoot){
