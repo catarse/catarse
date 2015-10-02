@@ -30,6 +30,10 @@ Skull.UI_helper = {
   updateIframeSize: function() {
     var newWidth = this.$container.width();
 
+    if(!this.$iframes){
+      return;
+    }
+
     if (newWidth) {
       this.$iframes.each(function() {
         var $el = $(this);
