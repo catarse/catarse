@@ -203,7 +203,8 @@ RSpec.describe UsersController, type: :controller do
       let(:project){ create(:project, state: 'successful') }
       let(:category){ create(:category) }
       before do
-        put :update, id: user.id, locale: 'pt', user: { twitter: 'test', unsubscribes: {project.id.to_s=>"1"}, category_followers_attributes: [{category_id: category.id}]}
+        create(:category_follower, user: user)
+        put :update, id: user.id, locale: 'pt', user: { twitter: 'test', unsubscribes: {project.id.to_s=>"1"}}
       end
       it("should update the user and nested models") do
         user.reload
@@ -217,7 +218,7 @@ RSpec.describe UsersController, type: :controller do
       let(:project){ create(:project, state: 'successful') }
       before do
         create(:category_follower, user: user)
-        put :update, id: user.id, locale: 'pt', user: { twitter: 'test', unsubscribes: {project.id.to_s=>"1"}, category_followers_attributes: []}
+        put :update, id: user.id, category_followers_form: true, locale: 'pt', user: { twitter: 'test', unsubscribes: {project.id.to_s=>"1"}, category_followers_attributes: []}
       end
       it("should clear category followers") do
         user.reload
