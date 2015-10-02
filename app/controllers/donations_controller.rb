@@ -1,19 +1,27 @@
 class DonationsController < ApplicationController
-  inherit_resources
-  actions :create
+
+  helper_method :resource
 
   def create
     @donation = Donation.create
-    resource.notify(:contribution_donated, current_user)
+    raise Pundit::NotAuthorizedError if !current_user
+    @donation.notify(:contribution_donated, current_user)
+    update_pending_refunds
+  end
+
+  def resource
+    @donation
+  end
+
+  private
+  def update_pending_refunds
     current_user.pending_refund_payments.each do |payment|
-      contribution = payment.contribution
-      contribution.donation = @donation
-      contribution.save!
+      payment.contribution.update_attribute :donation, @donation
 
       payment.state = 'refunded'
       payment.save!
-
     end
   end
+
 
 end

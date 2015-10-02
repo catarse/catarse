@@ -163,7 +163,7 @@ FactoryGirl.define do
     end
     factory :confirmed_contribution do
       after :create do |contribution|
-        create(:payment, state: 'paid', value: contribution.value, contribution: contribution, created_at: contribution.created_at)
+        create(:payment, state: 'paid', gateway: 'Pagarme', value: contribution.value, contribution: contribution, created_at: contribution.created_at, payment_method: 'BoletoBancario')
       end
     end
     factory :pending_contribution do
