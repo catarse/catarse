@@ -70,9 +70,6 @@ class Projects::ContributionsController < ApplicationController
     authorize resource
   end
 
-
-  def
-
   def second_slip
     authorize resource
     redirect_to resource.details.ordered.first.second_slip_path
