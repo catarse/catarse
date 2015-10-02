@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
     include NewRelic::Agent::Instrumentation::Rails3::ActionController
   end
 
-  acts_as_token_authentication_handler_for User
+  acts_as_token_authentication_handler_for User, fallback: :none
   layout 'catarse_bootstrap'
   protect_from_forgery
 
