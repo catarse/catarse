@@ -70,15 +70,6 @@ class Projects::ContributionsController < ApplicationController
     authorize resource
   end
 
-  def donate
-    authorize resource
-    resource.user.pending_refund_payments.each do |payment|
-      contribution = payment.contribution
-      DonatedContribution.create(contribution: contribution)
-      payment.state = 'refunded'
-      payment.save!
-    end
-  end
 
   def
 

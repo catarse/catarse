@@ -32,10 +32,6 @@ class ContributionPolicy < ApplicationPolicy
     done_by_owner_or_admin?
   end
 
-  def donate?
-    done_by_owner_or_admin?
-  end
-
   def toggle_anonymous?
     done_by_owner_or_admin?
   end
