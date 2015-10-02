@@ -3,8 +3,8 @@ pt:
     account_type_value: 'Só aceitamos conta corrente'
     no_bank_label: 'Outro'
     alerts:
-      pending_payment_text: "Você possui reembolsos pendentes de %{value}."
-      pending_payment_link_text: "Pegue seu dinheiro de volta!"
+      pending_payment_text: "Você tem reembolsos pendentes no Catarse."
+      pending_payment_link_text: "Decida o que fazer com seu dinheiro aqui!"
     load_more: "Carregar mais"
     terms: termos de uso
     accept_terms_html: Eu li e estou de acordo com os %{link}.

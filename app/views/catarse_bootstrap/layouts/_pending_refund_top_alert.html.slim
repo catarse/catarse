@@ -1,8 +1,9 @@
+- contribution = current_user.pending_refund_payments.last.contribution
 .w-section.alert-top
   .fontsize-small
     span.fa.fa-exclamation-triangle.text-waiting
     | &nbsp;
-    = t("shared.alerts.pending_payment_text", value: current_user.decorator.display_pending_refund_payments_amount)
+    = t("shared.alerts.pending_payment_text")
     | &nbsp;
-    = link_to t("shared.alerts.pending_payment_link_text"), new_bank_account_path, class: 'alt-link fontweight-semibold'
+    = link_to t("shared.alerts.pending_payment_link_text"), no_account_refund_project_contribution_path(contribution.project, contribution), class: 'alt-link fontweight-semibold'
 

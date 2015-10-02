@@ -75,8 +75,8 @@ class Projects::ContributionsController < ApplicationController
     resource.user.pending_refund_payments.each do |payment|
       contribution = payment.contribution
       DonatedContribution.create(contribution: contribution)
-      contribution.state = 'refunded'
-      contribution.save!
+      payment.state = 'refunded'
+      payment.save!
     end
   end
 
