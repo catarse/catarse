@@ -12,7 +12,15 @@ App.addChild('UserShow', _.extend({
 
     this.lookAnchors();
 
-    this.setupResponsiveIframes(this.$container);
+    this.updateIframeSize();
+  
+  },
+
+  updateIframeSize: function(){
+    var that = this;
+    $(window).on('hashchange', function() {
+      that.setupResponsiveIframes(this.$container);
+    });
   },
 
   followRoute: function(name){
