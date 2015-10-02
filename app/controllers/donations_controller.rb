@@ -4,7 +4,6 @@ class DonationsController < ApplicationController
 
   def create
     @donation = Donation.create
-    raise Pundit::NotAuthorizedError if !current_user
     @donation.notify(:contribution_donated, current_user)
     update_pending_refunds
   end
