@@ -79,6 +79,10 @@ class Contribution < ActiveRecord::Base
     payments.last.slip_payment?
   end
 
+  def is_donation?
+    donation.present?
+  end
+
   def invalid_refund
     notify_to_contributor(:invalid_refund)
   end
