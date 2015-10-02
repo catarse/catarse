@@ -33,6 +33,7 @@
                 .w-col.w-col-4
                   .fontweight-semibold.fontsize-small.u-marginbottom-10 Categorias que você segue:
                 .w-col.w-col-8
+                  = hidden_field_tag "category_followers_form", 'true'
                   - @user.category_followers.all.each do |category_follower|
                     .w-checkbox.w-clearfix
                       = check_box_tag "user[category_followers_attributes][][category_id]", category_follower.category.id, true, class: 'w-checkbox-input'
