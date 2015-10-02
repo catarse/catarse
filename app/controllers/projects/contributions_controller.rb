@@ -66,6 +66,22 @@ class Projects::ContributionsController < ApplicationController
     @thank_you_id = @project.id
   end
 
+  def no_account_refund
+    authorize resource
+  end
+
+  def donate
+    authorize resource
+    resource.user.pending_refund_payments.each do |payment|
+      contribution = payment.contribution
+      DonatedContribution.create(contribution: contribution)
+      contribution.state = 'refunded'
+      contribution.save!
+    end
+  end
+
+  def
+
   def second_slip
     authorize resource
     redirect_to resource.details.ordered.first.second_slip_path

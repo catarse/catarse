@@ -1,0 +1,25 @@
+= render 'shared/header'
+
+.w-section.page-header
+  .w-container
+    .w-row
+      .w-col.w-col-2
+      .w-col.w-col-8
+        .u-text-center.u-marginbottom-20
+          = image_tag 'catarse_bootstrap/icon-catarse.jpg', class: 'u-round thumb big'
+        div
+          .fontsize-largest.text-success.u-marginbottom-20.u-text-center Muuuuito obrigado!
+          .fontsize-base.u-text-center.u-marginbottom-40
+            span.fontweight-semibold
+            | Você é parte da história desse lindo espaço de viabilização de projetos que é o Catarse. O seu apoio irá nos permitir ir mais longe na missão de transformar o financiamento coletivo um hábito no Brasil. Obrigado por nos ajudar a trilhar mais um passo no caminho de tornar essa ferramenta ainda mais acessível
+            span.fontweight-semibold
+      .w-col.w-col-2
+- if @contribution.recommended_projects.exists?
+  .w-section.divider
+  .section.u-marginbottom-40
+    .w-container
+      .u-marginbottom-20.fontweight-semibold.fontsize-base.u-text-center= t('projects.contributions.thank_you.project_recommendations')
+      .w-row
+        == render_projects @contribution.recommended_projects.limit(3), 'thankyou', { wrapper_class: 'w-col w-col-4' }
+
+= render 'shared/footer'

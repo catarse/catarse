@@ -1,4 +1,5 @@
 - contribution = @notification.contribution
+- project = contribution.project
 - detail = contribution.details.ordered.first
 - company_name = CatarseSettings[:company_name]
 p
@@ -9,7 +10,7 @@ p
   |Como o seu apoio foi efetuado através de boleto, para efetuar a devolução do dinheiro precisamos que você preencha seus dados bancários:
 p
   center
-    = link_to new_bank_account_url, alt: 'Solicitar Reembolso', target: '__blank' do
+    = link_to no_account_refund_project_contribution_url(project, contribution), alt: 'Solicitar Reembolso', target: '__blank' do
       = image_tag "#{CatarseSettings[:base_url]}/assets/catarse_bootstrap/request_refund.png"
 p
   |Se ficou com alguma dúvida, entre em contato conosco respondendo a esta mensagem ou através do e-mail #{mail_to CatarseSettings[:email_contact]}. Não esqueça de nos informar a chave de identificação do seu apoio, que é: #{detail.gateway_id}.
