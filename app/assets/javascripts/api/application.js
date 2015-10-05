@@ -34,7 +34,8 @@
 
   if(projectShowRoot) {
     m.mount(projectShowRoot, m.component(c.project.Show, {
-      project_id: projectShowRoot.getAttribute('data-id')
+      project_id: projectShowRoot.getAttribute('data-id'),
+      project_user_id: projectShowRoot.getAttribute('data-project-user-id')
     }));
   }
 
