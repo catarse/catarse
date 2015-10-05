@@ -1,0 +1,25 @@
+- contribution = @notification.donation.contributions.last
+- amount = number_to_currency @notification.donation.contributions.sum(:value)
+- company_name = CatarseSettings[:company_name]
+- contact_email = CatarseSettings[:email_contact]
+
+p Olá, <strong>#{contribution.user.display_name}</strong>!
+
+p Muito obrigado! A sua doação é essencial para mantermos independente e livre esse vibrante ecossistema de viabilizacão de projetos que é o Catarse. Dessa forma você ajuda a gente a investir em inovação, a seguir firme na missão de democratizar o financiamento coletivo no Brasil e a tornar a prática um hábito no país.
+p Seguem todos os dados da doação:
+|Nome do apoiador: #{contribution.user.display_name}
+br
+|CPF/CNPJ do apoiador: #{contribution.user.cpf}
+br
+|Valor da doação: #{amount}
+br
+|Nome/Razão Social do Catarse: GRUPO COMUM CONSULTORIA E INTERMEDIAÇÃO DE NEGÓCIOS LTDA
+br
+|CPF/CNPJ do Catarse: 14.512.425/0001-94
+br
+br
+
+p Qualquer dúvida, basta entrar em contato conosco respondendo a este email ou através do e-mail #{mail_to contact_email}
+p Um abraço,
+br
+| #{company_name}

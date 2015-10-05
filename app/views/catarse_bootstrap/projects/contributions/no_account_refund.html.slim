@@ -1,0 +1,24 @@
+= render 'shared/header'
+
+.w-section.section-one-column.u-margintop-40
+  .w-container
+    .w-row.u-text-center.u-marginbottom-60
+      .w-col.w-col-2
+      .w-col.w-col-8
+        .fontsize-larger.u-marginbottom-20 Decida o que fazer com seus créditos no #{CatarseSettings[:company_name]}!
+        .fontsize-base
+          | Você possui
+          span.fontweight-semibold<>= resource.user.decorator.display_pending_refund_payments_amount
+          | em reembolsos pendentes
+      .w-col.w-col-2
+    .w-row
+      .w-col.w-col-6
+        .card.medium.card-terciary.u-radius.u-marginbottom-20
+          = link_to 'Quero meu dinheiro de volta', new_bank_account_path, class: 'w-button btn btn-large u-marginbottom-30'
+          .fontsize-small Seu dinheiro será depositado integralmente em sua conta bancária em até 5 dias úteis. Para que possamos efetuar essa transferência, basta nos informar seus dados bancários. Nenhuma taxa é cobrada nesta operação, fique tranquilo!
+      .w-col.w-col-6
+        .card.medium.card-terciary.u-radius
+          = link_to 'Quero doar meu dinheiro ao Catarse', donations_path, class: 'w-button btn btn-large u-marginbottom-30', method: 'post'
+          .fontsize-small Ihaaa! Seu dinheiro será utilizado para financiar operações do Catarse e um monte de inovações que vem por aí em 2016. São novidades que certamente ajudarão muita gente. Sinta-se parte do time e ajude a espalhar o financiamento coletivo no Brasil!
+
+= render 'shared/footer'

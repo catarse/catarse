@@ -10,6 +10,7 @@ class Contribution < ActiveRecord::Base
   belongs_to :reward
   belongs_to :user
   belongs_to :country
+  belongs_to :donation
   has_many :payment_notifications
   has_many :payments
   has_many :details, class_name: 'ContributionDetail'
@@ -76,6 +77,10 @@ class Contribution < ActiveRecord::Base
 
   def slip_payment?
     payments.last.slip_payment?
+  end
+
+  def is_donation?
+    donation.present?
   end
 
   def invalid_refund

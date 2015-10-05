@@ -38,6 +38,7 @@ Catarse::Application.routes.draw do
     end
   end
   resources :auto_complete_projects, only: [:index]
+  resources :donations, only: [:create]
   resources :auto_complete_cities, only: [:index]
   resources :projects, only: [ :index, :create, :update, :edit, :new, :show] do
     resources :accounts, only: [:create, :update]
@@ -52,6 +53,7 @@ Catarse::Application.routes.draw do
       member do
         get 'toggle_anonymous'
         get :second_slip
+        get :no_account_refund
       end
       put :credits_checkout, on: :member
     end
