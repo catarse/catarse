@@ -99,8 +99,12 @@ Catarse::Application.routes.draw do
 
 
   # User permalink profile
-  constraints SubdomainConstraint do
+  constraints SubdomainConstraint::Users do
     get "/", to: 'users#show'
+  end
+
+  constraints SubdomainConstraint::Zelo do
+    get "/" => 'high_voltage/pages#show', id: 'zelo'
   end
 
   # Root path should be after channel constraints
