@@ -1,7 +1,7 @@
 class UpdateUsersFullTextIndex < ActiveRecord::Migration
   def up
+    execute "SET STATEMENT_TIMEOUT to 0;"
     execute <<-SQL
-      SET LOCAL STATEMENT_TIMEOUT to 0;
       CREATE OR REPLACE FUNCTION public.update_users_full_text_index()
         RETURNS trigger
         LANGUAGE plpgsql
