@@ -125,18 +125,6 @@ RSpec.describe Project::StateMachineHandler, type: :model do
 
       subject{ project.push_to_online }
 
-      context "when project user has no email" do
-        before do
-          project.user.update_attribute :email, nil
-        end
-
-        it "should raise an error" do
-          subject
-          expect(project.errors).to_not be_nil
-        end
-
-      end
-
       context "when project is approved" do
         before do
           expect(project).to receive(:notify_observers).with(:from_approved_to_online).and_call_original
