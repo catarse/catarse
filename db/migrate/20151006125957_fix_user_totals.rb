@@ -1,5 +1,6 @@
 class FixUserTotals < ActiveRecord::Migration
   def up
+    execute "SET statement_timeout TO 0;"
     execute <<-SQL
       CREATE UNIQUE INDEX users_id_idx ON users USING btree (id DESC);
       DROP VIEW "1".team_members;
