@@ -48,7 +48,7 @@ class FixUserTotals < ActiveRecord::Migration
           COALESCE(ut.total_contributed_projects, (0)::bigint) AS total_contributed_projects,
           COALESCE(ut.sum, (0)::numeric) AS total_amount_contributed
          FROM (public.users u
-           LEFT JOIN user_totals ut ON ((ut.user_id = u.id)))
+           LEFT JOIN "1".user_totals ut ON ((ut.user_id = u.id)))
         WHERE u.admin
         ORDER BY u.name;
 
@@ -74,7 +74,7 @@ class FixUserTotals < ActiveRecord::Migration
                  FROM public.user_links ul
                 WHERE (ul.user_id = u.id)) AS links
          FROM (public.users u
-           LEFT JOIN user_totals ut ON ((ut.user_id = u.id)));
+           LEFT JOIN "1".user_totals ut ON ((ut.user_id = u.id)));
 
       grant select on "1".user_details to admin;
       grant select on "1".user_details to web_user;
@@ -99,7 +99,7 @@ class FixUserTotals < ActiveRecord::Migration
            JOIN public.users u ON ((c.user_id = u.id)))
            JOIN public.projects p ON ((p.id = c.project_id)))
            JOIN public.payments pa ON ((pa.contribution_id = c.id)))
-           LEFT JOIN user_totals ut ON ((ut.user_id = u.id)))
+           LEFT JOIN "1".user_totals ut ON ((ut.user_id = u.id)))
         WHERE ((public.was_confirmed(c.*) OR public.waiting_payment(pa.*)) AND ((NOT c.anonymous) OR public.is_owner_or_admin(p.user_id)));
 
       grant select on "1".project_contributions to admin;
@@ -154,7 +154,7 @@ class FixUserTotals < ActiveRecord::Migration
           COALESCE(ut.total_contributed_projects, (0)::bigint) AS total_contributed_projects,
           COALESCE(ut.sum, (0)::numeric) AS total_amount_contributed
          FROM (public.users u
-           LEFT JOIN user_totals ut ON ((ut.user_id = u.id)))
+           LEFT JOIN "1".user_totals ut ON ((ut.user_id = u.id)))
         WHERE u.admin
         ORDER BY u.name;
 
@@ -180,7 +180,7 @@ class FixUserTotals < ActiveRecord::Migration
                  FROM public.user_links ul
                 WHERE (ul.user_id = u.id)) AS links
          FROM (public.users u
-           LEFT JOIN user_totals ut ON ((ut.user_id = u.id)));
+           LEFT JOIN "1".user_totals ut ON ((ut.user_id = u.id)));
 
       grant select on "1".user_details to admin;
       grant select on "1".user_details to web_user;
@@ -205,7 +205,7 @@ class FixUserTotals < ActiveRecord::Migration
            JOIN public.users u ON ((c.user_id = u.id)))
            JOIN public.projects p ON ((p.id = c.project_id)))
            JOIN public.payments pa ON ((pa.contribution_id = c.id)))
-           LEFT JOIN user_totals ut ON ((ut.user_id = u.id)))
+           LEFT JOIN "1".user_totals ut ON ((ut.user_id = u.id)))
         WHERE ((public.was_confirmed(c.*) OR public.waiting_payment(pa.*)) AND ((NOT c.anonymous) OR public.is_owner_or_admin(p.user_id)));
 
       grant select on "1".project_contributions to admin;
