@@ -12,4 +12,7 @@
       .w-col.w-col-2
 
 .divider
-=  render 'project_main'
+#project-show-root data-id=@project.id data-project-user-id=@project.user_id
+
+//- content_for :application_js do
+= javascript_include_tag "api/application"
