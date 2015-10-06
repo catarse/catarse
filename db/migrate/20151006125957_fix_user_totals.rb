@@ -8,38 +8,40 @@ class FixUserTotals < ActiveRecord::Migration
 
       DROP MATERIALIZED VIEW "1".user_totals;
 
-      CREATE MATERIALIZED VIEW "1".user_totals AS
-       SELECT u.id AS id,
+      CREATE MATERIALIZED VIEW "1".user_totals AS 
+      SELECT u.id,
           u.id as user_id,
-          count(DISTINCT b.project_id) AS total_contributed_projects,
+          coalesce(ct.total_contributed_projects, 0) as total_contributed_projects,
+          coalesce(ct.sum, 0) as sum,
+          coalesce(ct.count, 0) as count,
+          case when u.zero_credits THEN 0 ELSE coalesce(ct.credits, 0) END as credits,
+          coalesce(( SELECT count(*) AS count
+              FROM projects p2
+              WHERE is_published(p2.*) AND p2.user_id = u.id), 0) AS total_published_projects
+      FROM users u
+          LEFT JOIN (
+      SELECT
+          c.user_id,
+          count(DISTINCT c.project_id) AS total_contributed_projects,
           sum(pa.value) AS sum,
-          count(DISTINCT b.id) AS count,
+          count(DISTINCT c.id) AS count,
+          sum(
               CASE
-                  WHEN u.zero_credits THEN (0)::numeric
-                  ELSE sum(
-                  CASE
-                      WHEN (lower(pa.gateway) = 'pagarme'::text) THEN (0)::numeric
-                      WHEN (((p.state)::text <> 'failed'::text) AND (NOT public.uses_credits(pa.*))) THEN (0)::numeric
-                      WHEN (((p.state)::text = 'failed'::text) AND public.uses_credits(pa.*)) THEN (0)::numeric
-                      WHEN ((pa.state = ANY (ARRAY['pending_refund', 'refunded']))
-                      	AND (NOT public.uses_credits(pa.*)))
-                      	OR (public.uses_credits(pa.*)
-                      	AND (NOT (pa.state = ANY (ARRAY['pending_refund', 'refunded']))))
-                      	THEN
-                      		(0)::numeric
-                      WHEN ((((p.state)::text = 'failed'::text) AND (NOT public.uses_credits(pa.*))) AND (pa.state = 'paid'::text)) THEN pa.value
-                      else (pa.value * ((-1))::numeric)
-                  END) filter (where pa.state = ANY (public.confirmed_states()))
-              END AS credits,
-          ( SELECT count(*) AS count
-                 FROM public.projects p2
-                WHERE (public.is_published(p2.*) AND (p2.user_id = u.id))) AS total_published_projects
-         FROM public.users u
-           LEFT JOIN public.contributions b ON b.user_id = u.id
-           LEFT JOIN public.payments pa ON b.id = pa.contribution_id --AND pa.state = ANY (public.confirmed_states())
-           LEFT JOIN public.projects p ON b.project_id = p.id
-        GROUP BY u.id, b.user_id, u.zero_credits
-        WITH NO DATA;
+          WHEN lower(pa.gateway) = 'pagarme'::text THEN 0::numeric
+          WHEN p.state::text <> 'failed'::text AND NOT uses_credits(pa.*) THEN 0::numeric
+          WHEN p.state::text = 'failed'::text AND uses_credits(pa.*) THEN 0::numeric
+          WHEN p.state::text = 'failed'::text AND ((pa.state = ANY (ARRAY['pending_refund'::character varying::text, 'refunded'::character varying::text])) AND NOT uses_credits(pa.*) OR uses_credits(pa.*) AND NOT (pa.state = ANY (ARRAY['pending_refund'::character varying::text, 'refunded'::character varying::text]))) THEN 0::numeric
+          WHEN p.state::text = 'failed'::text AND NOT uses_credits(pa.*) AND pa.state = 'paid'::text THEN pa.value
+          ELSE pa.value * (-1)::numeric
+              END
+          ) AS credits
+              FROM 
+          contributions c
+          JOIN payments pa ON c.id = pa.contribution_id
+          JOIN projects p ON c.project_id = p.id
+      WHERE pa.state = ANY (confirmed_states())
+      GROUP BY c.user_id
+          ) ct ON u.id = ct.user_id;
 
       CREATE VIEW "1".team_members AS
        SELECT u.id,

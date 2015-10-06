@@ -1,5 +1,6 @@
 class CreateUserDetails < ActiveRecord::Migration
   def up
+    execute " set statement_timeout to 0;"
     execute <<-SQL
       drop materialized view "1".user_totals CASCADE;
       create materialized view "1".user_totals AS
