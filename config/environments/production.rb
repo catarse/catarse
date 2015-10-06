@@ -86,5 +86,5 @@ Catarse::Application.configure do
     'X-Frame-Options' => 'ALLOWALL'
   }
 
-  ActiveRecord::Base.connection.execute('set statement_timeout to 5500')
 end
+ActiveRecord::Base.connection.execute('set statement_timeout to 5500')
