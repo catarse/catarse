@@ -105,53 +105,29 @@ GEM
       mailchimp-api (~> 2.0.4)
       rails (>= 4.0.3)
       rails-observers
-    catarse_pagarme (2.7.12)
+    catarse_pagarme (2.7.13)
       pagarme (= 1.10.0)
       rails (~> 4.0)
       sidekiq
       weekdays (>= 1.0.2)
     catarse_settings_db (0.1.1)
       rails (>= 4.1.1)
-    celluloid (0.17.1.2)
-      bundler
+    celluloid (0.17.2)
       celluloid-essentials
       celluloid-extras
       celluloid-fsm
       celluloid-pool
       celluloid-supervision
-      dotenv
-      nenv
-      rspec-logsplit (>= 0.1.2)
       timers (>= 4.1.1)
-    celluloid-essentials (0.20.2.1)
-      bundler
-      dotenv
-      nenv
-      rspec-logsplit (>= 0.1.2)
+    celluloid-essentials (0.20.5)
       timers (>= 4.1.1)
-    celluloid-extras (0.20.1)
-      bundler
-      dotenv
-      nenv
-      rspec-logsplit (>= 0.1.2)
+    celluloid-extras (0.20.5)
       timers (>= 4.1.1)
-    celluloid-fsm (0.20.1)
-      bundler
-      dotenv
-      nenv
-      rspec-logsplit (>= 0.1.2)
+    celluloid-fsm (0.20.5)
       timers (>= 4.1.1)
-    celluloid-pool (0.20.1)
-      bundler
-      dotenv
-      nenv
-      rspec-logsplit (>= 0.1.2)
+    celluloid-pool (0.20.5)
       timers (>= 4.1.1)
-    celluloid-supervision (0.20.1.1)
-      bundler
-      dotenv
-      nenv
-      rspec-logsplit (>= 0.1.2)
+    celluloid-supervision (0.20.5)
       timers (>= 4.1.1)
     chartkick (1.3.2)
     childprocess (0.5.6)
@@ -204,9 +180,8 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
-    domain_name (0.5.24)
+    domain_name (0.5.25)
       unf (>= 0.0.5, < 1.0.0)
-    dotenv (2.0.2)
     draper (2.1.0)
       actionpack (>= 3.0)
       activemodel (>= 3.0)
@@ -429,7 +404,6 @@ GEM
     multi_json (1.11.0)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
-    nenv (0.2.0)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (2.9.2)
@@ -545,7 +519,6 @@ GEM
     rspec-its (1.2.0)
       rspec-core (>= 3.0.0)
       rspec-expectations (>= 3.0.0)
-    rspec-logsplit (0.1.3)
     rspec-mocks (3.3.2)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.3.0)
@@ -598,6 +571,10 @@ GEM
     simple_form (3.1.0)
       actionpack (~> 4.0)
       activemodel (~> 4.0)
+    simple_token_authentication (1.10.0)
+      actionmailer (>= 3.2.6, < 5)
+      actionpack (>= 3.2.6, < 5)
+      devise (~> 3.2)
     slim (3.0.6)
       temple (~> 0.7.3)
       tilt (>= 1.3.3, < 2.1)
@@ -681,7 +658,7 @@ DEPENDENCIES
   catarse_api!
   catarse_moip (~> 3.2.0)
   catarse_monkeymail (>= 0.1.6)
-  catarse_pagarme (~> 2.7.12)
+  catarse_pagarme (~> 2.7.13)
   catarse_settings_db (>= 0.1.0)
   chartkick
   cocoon
@@ -742,6 +719,7 @@ DEPENDENCIES
   shoulda
   sidekiq (~> 3.1.3)
   simple_form
+  simple_token_authentication (~> 1.0)
   slim-rails
   spectator-validates_email
   sprockets

@@ -38,7 +38,7 @@ gem 'mixpanel_client'
 
 # Payment engines
 gem 'catarse_moip', '~> 3.2.0'
-gem 'catarse_pagarme', '~> 2.7.12'
+gem 'catarse_pagarme', '~> 2.7.13'
 #gem 'catarse_pagarme', path: '../catarse_pagarme'
 
 # Decorators
@@ -53,6 +53,7 @@ gem "cocoon"
 gem 'high_voltage'
 
 # Authentication and Authorization
+gem 'simple_token_authentication', '~> 1.0' # see semver.org
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'devise'
