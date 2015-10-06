@@ -24,7 +24,7 @@ class AddFullTextIndexToUserDetails < ActiveRecord::Migration
                  FROM user_links ul
                 WHERE ul.user_id = u.id) AS links
          FROM users u
-           LEFT JOIN user_totals ut ON ut.user_id = u.id;
+           LEFT JOIN "1".user_totals ut ON ut.user_id = u.id;
 
       GRANT SELECT ON "1".user_details TO public;
     SQL
@@ -52,7 +52,7 @@ class AddFullTextIndexToUserDetails < ActiveRecord::Migration
                  FROM user_links ul
                 WHERE ul.user_id = u.id) AS links
          FROM users u
-           LEFT JOIN user_totals ut ON ut.user_id = u.id;
+           LEFT JOIN "1".user_totals ut ON ut.user_id = u.id;
 
       GRANT SELECT ON "1".user_details TO public;
     SQL
