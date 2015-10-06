@@ -87,4 +87,3 @@ Catarse::Application.configure do
   }
 
 end
-ActiveRecord::Base.connection.execute('set statement_timeout to 5500')
