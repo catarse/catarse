@@ -58,6 +58,10 @@ class ProjectsController < ApplicationController
     resource_action :push_to_online
   end
 
+  def insights
+    authorize resource, :update?
+  end
+
   def update
     authorize resource
 

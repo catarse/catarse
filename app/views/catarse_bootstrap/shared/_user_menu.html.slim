@@ -45,7 +45,7 @@
                 .w-col.w-col-3
                   = image_tag project.decorate.display_image, class: 'thumb small u-radius'
                 .w-col.w-col-9
-                  = link_to truncate(project.name), edit_project_path(project, ref: 'user_menu_my_projects', anchor: 'home'), class: 'alt-link fontsize-smaller'
+                  = link_to truncate(project.name), insights_project_path(project, ref: 'user_menu_my_projects'), class: 'alt-link fontsize-smaller'
           li.u-margintop-20
             .w-row
               .w-col.w-col-6
