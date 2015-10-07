@@ -11,7 +11,7 @@
         .fontcolor-negative.lineheight-tight.fontsize-small= @project.name
 
       #info-links
-        = link_to (edit ? '#home' : edit_project_path(@project, anchor: 'home')), id: 'dashboard_home_link', class: 'dashboard-nav-link-left ' , data: {target: '#dashboard_home', tab_group: 'edit'} do
+        = link_to insights_project_path(@project), class: 'dashboard-nav-link-left ' , data: {tab_group: 'edit'} do
           span.fa.fa-bar-chart.fa-lg.fa-fw
           = t('.start_tab')
         - if @project.published?
