@@ -60,6 +60,7 @@ Catarse::Application.routes.draw do
 
     get 'video', on: :collection
     member do
+      get 'insights'
       put 'pay'
       get 'embed'
       get 'video_embed'
