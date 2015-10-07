@@ -97,7 +97,7 @@ group :production do
   gem 'fog', '>= 1.3.1'
 
   # Workers, forks and all that jazz
-  gem 'unicorn'
+  gem 'passenger'
 
   # Enabling Gzip on Heroku
   # If you don't use Heroku, please comment the line below.
