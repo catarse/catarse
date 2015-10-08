@@ -28,7 +28,8 @@ class ApplicationController < ActionController::Base
   end
 
   def can_display_pending_refund_alert?
-    @can_display_alert ||= (current_user && current_user.pending_refund_payments.present? &&
+    @can_display_alert ||= (current_user && 
+                             (current_user.pending_refund_payments.present? || current_user.credits > 0) &&
                             controller_name.to_sym != :bank_accounts &&
                             action_name.to_sym != :no_account_refund )
   end

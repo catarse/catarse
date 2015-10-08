@@ -2,10 +2,7 @@ pt:
   projects:
     contributions:
       no_account_refund:
-        fill_form_text:
-          one: "Você possui %{amount} em reembolsos pendentes do projeto não financiado %{project_names}. Informe seus dados e resgate seu dinheiro!"
-          other: "Você possui %{amount} em reembolsos pendentes dos projetos não financiados %{project_names}. Informe seus dados e resgate seu dinheiro!"
-        project: 'projeto'
+        fill_form_text: "Você possui %{amount} em reembolsos pendentes de projetos não financiados. Informe seus dados e resgate seu dinheiro!"
       no_estimate: "Não disponível"
       you_selected: "Você escolheu essa!"
       contribute_text:

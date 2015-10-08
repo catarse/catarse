@@ -53,6 +53,7 @@ class User < ActiveRecord::Base
     with_states(Project::PUBLISHED_STATES)
   end, class_name: 'Project'
   has_many :unsubscribes
+  has_many :user_transfers
   has_many :project_posts
   has_many :contributed_projects, -> do
     distinct.where("contributions.was_confirmed").order('projects.created_at DESC')
@@ -154,10 +155,19 @@ class User < ActiveRecord::Base
         state: 'failed'
       },
       state: 'paid',
-      payment_method: ['CartaoDeCredito','BoletoBancario']
+      gateway: 'Pagarme',
+      payment_method: 'BoletoBancario'
     }).select do |payment|
       !payment.already_in_refund_queue?
     end
+  end
+
+  def has_pending_legacy_refund?
+    user_transfers.where(status: ['pending_transfer', 'processing']).exists?
+  end
+
+  def credits_amount
+    (credits * 100).to_i
   end
 
   def has_online_project?

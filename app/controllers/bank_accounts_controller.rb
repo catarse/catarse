@@ -46,12 +46,14 @@ class BankAccountsController < ApplicationController
   def request_refund
     authorize resource
 
+    #pagarme payments
     user.pending_refund_payments.each do |payment|
-      if payment.gateway == 'Pagarme'
-        payment.direct_refund
-      elsif ['MoIP', 'PayPal'].include? payment.gateway
-        payment.transfer_to_account
-      end
+      payment.direct_refund
+    end
+
+    #legacy payments
+    if user.credits > 0
+      TransferWorker.perform_async(user.id)
     end
 
     redirect_to bank_account_path(resource, refunded_amount: user_decorator.display_pending_refund_payments_amount)
@@ -72,7 +74,7 @@ class BankAccountsController < ApplicationController
   end
 
   def need_pending_refunds
-    if !current_user.pending_refund_payments.present?
+    if !current_user.pending_refund_payments.present? && current_user.credits == 0
       redirect_to root_path unless current_user.admin?
     end
   end

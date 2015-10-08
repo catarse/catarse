@@ -9,8 +9,7 @@
           .fontsize-larger.u-marginbottom-20 Decida o que fazer com o seu dinheiro no #{CatarseSettings[:company_name]}!
 
           .fontsize-base= t('.fill_form_text', \
-            amount: resource.user.decorator.display_pending_refund_payments_amount, \
-            project_names: resource.user.decorator.display_pending_refund_payments_projects_name.to_sentence, count: resource.user.pending_refund_payments_projects.size)
+            amount: resource.user.decorator.display_pending_refund_payments_amount)
         .w-col.w-col-2
       .w-row
         .w-col.w-col-6

@@ -42,10 +42,6 @@ module Payment::PaymentEngineHandler
       end
     end
 
-    def transfer_to_account
-      TransferWorker.perform_async(self.id)
-    end
-
     def second_slip_path
       payment_engine.second_slip_path(self) if payment_engine.try(:can_generate_second_slip?)
     end
