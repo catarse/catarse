@@ -11,8 +11,6 @@ class PaymentEngines
 
     def direct_refund(contribution); end
 
-    def configure_pagarme; end
-
     def transfer(contribution); end
 
     def can_generate_second_slip?; end
