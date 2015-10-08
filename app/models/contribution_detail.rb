@@ -11,7 +11,7 @@ class ContributionDetail < ActiveRecord::Base
   delegate :available_rewards, :payer_email, :payer_name, to: :contribution
   delegate :pay, :refuse, :trash, :refund, :request_refund, :request_refund!,
            :credits?, :paid?, :refused?, :pending?, :deleted?, :refunded?, :direct_refund,
-           :slip_payment?, :pending_refund?, :second_slip_path, :transfer_to_account,
+           :slip_payment?, :pending_refund?, :second_slip_path,
            :pagarme_delegator, :waiting_payment?, to: :payment
 
   scope :search_on_acquirer, ->(acquirer_name){ where(acquirer_name: acquirer_name) }
