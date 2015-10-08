@@ -22,7 +22,7 @@ CREATE OR REPLACE VIEW "1".user_details AS
            FROM user_links ul
           WHERE ul.user_id = u.id) AS links
    FROM users u
-     LEFT JOIN user_totals ut ON ut.user_id = u.id;
+     LEFT JOIN "1".user_totals ut ON ut.user_id = u.id;
     SQL
   end
 
@@ -49,7 +49,7 @@ CREATE OR REPLACE VIEW "1".user_details AS
            FROM user_links ul
           WHERE ul.user_id = u.id) AS links
    FROM users u
-     LEFT JOIN user_totals ut ON ut.user_id = u.id;
+     LEFT JOIN "1".user_totals ut ON ut.user_id = u.id;
     SQL
   end
 end
