@@ -1,4 +1,4 @@
-//= require mithril
+//= require mithril/mithril.js
 //= require underscore
 //= require mithril.postgrest
 //= require moment
@@ -21,7 +21,11 @@
       projectShowRoot = document.getElementById('project-show-root');
 
   if(adminRoot){
-    m.mount(adminRoot, c.admin.Contributions);
+    m.route.mode = 'hash';
+    m.route(adminRoot, '/', {
+      '/': m.component(c.admin.Contributions, {root: adminRoot}),
+      '/users': m.component(c.admin.Users)
+    });
   }
 
   if(teamRoot){

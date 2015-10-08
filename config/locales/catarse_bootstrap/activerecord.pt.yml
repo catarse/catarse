@@ -73,6 +73,7 @@ pt:
       reward:
         deliver_at: Previsão de entrega
       project:
+        name: 'Nome do projeto'
         channels: Canais
         category: Categoria
         expires_at: Prazo
