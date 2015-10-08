@@ -1,4 +1,4 @@
-//= require mithril
+//= require mithril/mithril.js
 //= require underscore
 //= require mithril.postgrest
 //= require moment
