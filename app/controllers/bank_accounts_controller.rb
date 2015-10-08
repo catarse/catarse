@@ -47,7 +47,11 @@ class BankAccountsController < ApplicationController
     authorize resource
 
     user.pending_refund_payments.each do |payment|
-      payment.direct_refund
+      if payment.gateway == 'Pagarme'
+        payment.direct_refund
+      elsif ['MoIP', 'PayPal'].include? payment.gateway
+        payment.transfer_to_account
+      end
     end
 
     redirect_to bank_account_path(resource, refunded_amount: user_decorator.display_pending_refund_payments_amount)

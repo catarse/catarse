@@ -283,6 +283,37 @@ RSpec.describe BankAccountsController, type: :controller do
         is_expected.to redirect_to bank_account_path(user.bank_account, refunded_amount: user.decorator.display_pending_refund_payments_amount)
       end
     end
+
+    context "when user have legacy pending refund payments" do
+      let(:bank) { create(:bank) }
+      let(:payment) do
+        payment = create(:confirmed_contribution, {
+          project: project,
+          value: 10,
+          user: user
+        }).payments.first
+        payment.update_attributes({
+          gateway: 'MoIP',
+          payment_method: 'BoletoBancario'
+        })
+        payment
+      end
+
+      before do
+        Sidekiq::Testing.inline!
+        expect(TransferWorker).to receive(:perform_async).with(payment.id)
+        project.update_column(:state, 'failed')
+
+        put :request_refund, {
+          locale: :pt,
+          id: user.bank_account.id
+        }
+      end
+
+      it "should redirect to success" do
+        is_expected.to redirect_to bank_account_path(user.bank_account, refunded_amount: user.decorator.display_pending_refund_payments_amount)
+      end
+    end
   end
 
 

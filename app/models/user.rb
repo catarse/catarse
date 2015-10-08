@@ -153,7 +153,8 @@ class User < ActiveRecord::Base
       projects: {
         state: 'failed'
       },
-      state: 'paid'
+      state: 'paid',
+      payment_method: ['CartaoDeCredito','BoletoBancario']
     }).select do |payment|
       !payment.already_in_refund_queue?
     end
