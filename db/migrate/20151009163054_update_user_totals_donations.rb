@@ -1,4 +1,4 @@
-class UpdateUserTotals < ActiveRecord::Migration
+class UpdateUserTotalsDonations < ActiveRecord::Migration
   def change
     execute "SET statement_timeout TO 0;"
     execute <<-SQL
@@ -35,7 +35,8 @@ class UpdateUserTotals < ActiveRecord::Migration
           WHEN p.state::text = 'failed'::text AND NOT uses_credits(pa.*) AND pa.state = 'paid'::text THEN pa.value
           ELSE pa.value * (-1)::numeric
               END
-          ) - COALESCE((SELECT sum(amount)/100 from user_transfers ut WHERE ut.status = 'transferred' AND ut.user_id = c.user_id), 0::numeric) AS credits
+          ) - COALESCE((SELECT sum(amount)/100 FROM user_transfers ut WHERE ut.status = 'transferred' AND ut.user_id = c.user_id), 0::numeric)
+            - COALESCE((SELECT sum(amount) FROM donations d WHERE d.user_id = c.user_id AND NOT EXISTS(SELECT 1 FROM contributions c WHERE c.donation_id = d.id)), 0::numeric) AS credits
               FROM 
           contributions c
           JOIN payments pa ON c.id = pa.contribution_id
@@ -109,6 +110,7 @@ class UpdateUserTotals < ActiveRecord::Migration
       grant select on "1".project_contributions to admin;
       grant select on "1".project_contributions to web_user;
       grant select on "1".project_contributions to anonymous;
+
      SQL
   end
 end

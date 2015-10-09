@@ -234,7 +234,7 @@ RSpec.describe BankAccountsController, type: :controller do
   end
 
   describe "PUT request_refund" do
-    context "when user does not logged in" do
+    context "when user is not logged in" do
       let(:user) { create(:user) }
       before do
         allow(controller).to receive(:current_user).and_return(nil)
@@ -286,23 +286,10 @@ RSpec.describe BankAccountsController, type: :controller do
 
     context "when user have legacy pending refund payments" do
       let(:bank) { create(:bank) }
-      let(:payment) do
-        payment = create(:confirmed_contribution, {
-          project: project,
-          value: 10,
-          user: user
-        }).payments.first
-        payment.update_attributes({
-          gateway: 'MoIP',
-          payment_method: 'BoletoBancario'
-        })
-        payment
-      end
-
       before do
+        allow_any_instance_of(User).to receive(:credits).and_return(10)
         Sidekiq::Testing.inline!
-        expect(TransferWorker).to receive(:perform_async).with(payment.id)
-        project.update_column(:state, 'failed')
+        expect(TransferWorker).to receive(:perform_async).with(user.id)
 
         put :request_refund, {
           locale: :pt,

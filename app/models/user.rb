@@ -55,6 +55,7 @@ class User < ActiveRecord::Base
   has_many :unsubscribes
   has_many :user_transfers
   has_many :project_posts
+  has_many :donations
   has_many :contributed_projects, -> do
     distinct.where("contributions.was_confirmed").order('projects.created_at DESC')
   end, through: :contributions, source: :project
@@ -166,6 +167,7 @@ class User < ActiveRecord::Base
     user_transfers.where(status: ['pending_transfer', 'processing']).exists?
   end
 
+  #in cents
   def credits_amount
     (credits * 100).to_i
   end
