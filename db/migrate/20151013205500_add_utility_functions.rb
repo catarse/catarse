@@ -62,7 +62,7 @@ class AddUtilityFunctions < ActiveRecord::Migration
         where n.nspname = v_curr.obj_schema and c.relname = v_curr.obj_name and d.description is not null;
 
         insert into deps_saved_ddl(deps_view_schema, deps_view_name, deps_ddl_to_run)
-        select p_view_schema, p_view_name, 'COMMENT ON COLUMN ' || n.nspname || '.' || c.relname || '.' || a.attname || ' IS ''' || replace(d.description, '''', '''''') || ''';'
+        select p_view_schema, p_view_name, 'COMMENT ON COLUMN ' || quote_ident(n.nspname) || '.' || quote_ident(c.relname) || '.' || quote_ident(a.attname) || ' IS ''' || replace(d.description, '''', '''''') || ''';'
         from pg_class c
         join pg_attribute a on c.oid = a.attrelid
         join pg_namespace n on n.oid = c.relnamespace
