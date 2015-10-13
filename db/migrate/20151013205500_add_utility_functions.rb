@@ -4,8 +4,8 @@ class AddUtilityFunctions < ActiveRecord::Migration
       create table if not exists deps_saved_ddl
       (
         deps_id serial primary key, 
-        deps_view_schema varchar(255), 
-        deps_view_name varchar(255), 
+        deps_view_schema text, 
+        deps_view_name text, 
         deps_ddl_to_run text
       );
 
@@ -70,18 +70,18 @@ class AddUtilityFunctions < ActiveRecord::Migration
         where n.nspname = v_curr.obj_schema and c.relname = v_curr.obj_name and d.description is not null;
         
         insert into deps_saved_ddl(deps_view_schema, deps_view_name, deps_ddl_to_run)
-        select p_view_schema, p_view_name, 'GRANT ' || privilege_type || ' ON "' || table_schema || '"."' || table_name || '" TO ' || grantee
+        select p_view_schema, p_view_name, 'GRANT ' || privilege_type || ' ON ' || quote_ident(table_schema) || '.' || quote_ident(table_name) || ' TO ' || grantee
         from information_schema.role_table_grants
         where table_schema = v_curr.obj_schema and table_name = v_curr.obj_name;
         
         if v_curr.obj_type = 'v' then
           insert into deps_saved_ddl(deps_view_schema, deps_view_name, deps_ddl_to_run)
-          select p_view_schema, p_view_name, 'CREATE VIEW "' || v_curr.obj_schema || '"."' || v_curr.obj_name || '" AS ' || view_definition
+          select p_view_schema, p_view_name, 'CREATE VIEW ' || quote_ident(v_curr.obj_schema) || '.' || quote_ident(v_curr.obj_name) || ' AS ' || view_definition
           from information_schema.views
           where table_schema = v_curr.obj_schema and table_name = v_curr.obj_name;
         elsif v_curr.obj_type = 'm' then
           insert into deps_saved_ddl(deps_view_schema, deps_view_name, deps_ddl_to_run)
-          select p_view_schema, p_view_name, 'CREATE MATERIALIZED VIEW "' || v_curr.obj_schema || '"."' || v_curr.obj_name || '" AS ' || definition
+          select p_view_schema, p_view_name, 'CREATE MATERIALIZED VIEW ' || quote_ident(v_curr.obj_schema) || '.' || quote_ident(v_curr.obj_name) || ' AS ' || definition
           from pg_matviews
           where schemaname = v_curr.obj_schema and matviewname = v_curr.obj_name;
         end if;
@@ -91,7 +91,7 @@ class AddUtilityFunctions < ActiveRecord::Migration
           when v_curr.obj_type = 'v' then 'VIEW'
           when v_curr.obj_type = 'm' then 'MATERIALIZED VIEW'
         end
-        || ' "' || v_curr.obj_schema || '"."' || v_curr.obj_name || '"';
+        || ' ' || quote_ident(v_curr.obj_schema) || '.' || quote_ident(v_curr.obj_name);
         
       end loop;
       end;
