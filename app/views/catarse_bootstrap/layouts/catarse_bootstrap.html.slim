@@ -41,6 +41,7 @@ html
     /= render 'layouts/global_alert'
     = render 'layouts/pending_refund_top_alert' if can_display_pending_refund_alert?
     = render 'layouts/new_zendesk'
+    = render 'layouts/zendesk_widget'
     = render_facebook_sdk
     = render 'layouts/flash' if notice.present?
     = yield
