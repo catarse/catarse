@@ -30,7 +30,6 @@ class DonationsController < ApplicationController
       else
         Donation.create(user: current_user, amount: current_user.credits)
       end
-      UserTotal.refresh_view
     end
   end
 
