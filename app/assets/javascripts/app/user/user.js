@@ -12,6 +12,8 @@ App.addChild('UserShow', _.extend({
 
     this.lookAnchors();
 
+    UIHelper.setupResponsiveIframes(this.$container);
+    
     this.updateIframeSize();
   
   },
@@ -19,7 +21,7 @@ App.addChild('UserShow', _.extend({
   updateIframeSize: function(){
     var that = this;
     $(window).on('hashchange', function() {
-      that.setupResponsiveIframes(this.$container);
+      UIHelper.setupResponsiveIframes(this.$container);
     });
   },
 
@@ -40,4 +42,4 @@ App.addChild('UserShow', _.extend({
     }
   },
 
-}, Skull.Tabs, Skull.UI_helper));
+}, Skull.Tabs));
