@@ -1,8 +1,8 @@
 # Due to catarse's heavy page load, we are setting it to 4 workers
 # 1024/4 = 240MB for each web worker
 # 512/4  = 128MB for each web worker (in this case, make it 3 worker processes)
-if ENV['PX_DYNO']
-  worker_processes 18
+if ENV['WORKER_PROCESSES']
+  worker_processes ENV['WORKER_PROCESSES'].to_i
 else
   worker_processes 3
 end
