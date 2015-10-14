@@ -1,6 +1,7 @@
 class RemoveRewardFromContributionDetails < ActiveRecord::Migration
   def up
     execute <<-SQL
+SET statement_timeout TO 0;
 DROP VIEW "1".contribution_details;
 CREATE VIEW "1".contribution_details AS
  SELECT pa.id,
