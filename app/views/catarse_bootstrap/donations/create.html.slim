@@ -1,5 +1,5 @@
 = render 'shared/header'
-- contribution = resource.contributions.last
+- contribution = resource.user.contributions.last
 
 .w-section.page-header
   .w-container
@@ -13,6 +13,11 @@
           .fontsize-base.u-text-center.u-marginbottom-40
             span.fontweight-semibold
             | Você é parte da história desse lindo espaço de viabilização de projetos que é o Catarse. O seu apoio irá nos permitir ir mais longe na missão de transformar o financiamento coletivo um hábito no Brasil. Obrigado por nos ajudar a trilhar mais um passo no caminho de tornar essa ferramenta ainda mais acessível
+            span.fontweight-semibold
+          .fontsize-base.u-text-center.u-marginbottom-40
+            span.fontweight-semibold
+            | Você recebeu um email de confirmação da doação no seu email: 
+            span.fontweight-semibold=resource.user.email
             span.fontweight-semibold
       .w-col.w-col-2
 - if contribution.recommended_projects.exists?

@@ -14,6 +14,21 @@ task verify_pagarme_transfers: [:environment] do
   end
 end
 
+desc 'Sync user_transfers with pagar.me transfers'
+task verify_pagarme_user_transfers: [:environment] do
+  PagarMe.api_key = CatarsePagarme.configuration.api_key
+
+  UserTransfer.pending.each do |payment_transfer|
+    transfer = PagarMe::Transfer.find_by_id payment_transfer.gateway_id
+
+    if transfer.status == 'transferred'
+      payment_transfer.update_column(:status, 'transferred')
+    end
+
+    payment_transfer.update_attribute(:transfer_data, transfer.to_hash)
+  end
+end
+
 desc "Verify all transactions in pagarme for a given date range and check their consistency in our database"
 task :verify_pagarme_transactions, [:start_date, :end_date]  => :environment do |task, args|
   args.with_defaults(start_date: Date.today - 1, end_date: Date.today)
