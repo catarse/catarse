@@ -37,23 +37,34 @@ App.addChild('ProjectEdit', _.extend({
     }
   },
 
-  followRoute: function(name){
-    var $tab = this.$('nav a[href="' + window.location.hash + '"]');
-    var $tab_title = $('#dashboard_' + window.location.hash.split('#')[1]).data('page_title');
-    var $tab_subtitle = $('#dashboard_' + window.location.hash.split('#')[1]).data('page_subtitle');
-    if($tab.length > 0){
-      this.onTabClick({ currentTarget: $tab });
-    }
+    followRoute: function(name){
+        if(window.location.hash === '#home') {
+            this.redirectWhenHome();
+        }
+        var $tab = this.$('nav a[href="' + window.location.hash + '"]');
+        var $tab_title = $('#dashboard_' + window.location.hash.split('#')[1]).data('page_title');
+        var $tab_subtitle = $('#dashboard_' + window.location.hash.split('#')[1]).data('page_subtitle');
+        if($tab.length > 0){
+            this.onTabClick({ currentTarget: $tab });
+        }
 
-    $('#dashboard-page-title').text($tab_title);
-    $('#dashboard-page-subtitle').text($tab_subtitle);
+        $('#dashboard-page-title').text($tab_title);
+        $('#dashboard-page-subtitle').text($tab_subtitle);
 
-    if(($tab_title == "" || $tab_title == undefined) && ($tab_subtitle == "" || $tab_subtitle == undefined)) {
-      $('#dashboard-titles-root').hide();
-    } else {
-      $('#dashboard-titles-root').show();
-    }
-  },
+        if(($tab_title == "" || $tab_title == undefined) && ($tab_subtitle == "" || $tab_subtitle == undefined)) {
+            $('#dashboard-titles-root').hide();
+        } else {
+            $('#dashboard-titles-root').show();
+        }
+    },
+
+    redirectWhenHome: function() {
+        newLocation = $('#dashboard_home_link').prop('href');
+
+        if(!_.isNull(newLocation) && newLocation != window.location.href) {
+            window.location.href = newLocation;
+        }
+    },
 
   loadEmbed: function() {
     var that = this;
