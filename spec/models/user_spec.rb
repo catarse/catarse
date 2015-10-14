@@ -434,8 +434,8 @@ RSpec.describe User, type: :model do
   end
 
   describe "#credits" do
-    def create_contribution_with_payment user, project, value, credits, payment_state = 'paid'
-      c = create(:confirmed_contribution, user_id: user.id, project: project)
+    def create_contribution_with_payment user, project, value, credits, payment_state = 'paid', donation = nil
+      c = create(:confirmed_contribution, user_id: user.id, project: project, donation: donation)
       c.payments.first.update_attributes gateway: (credits ? 'Credits' : 'AnyButCredits'), value: value, state: payment_state
     end
     before do
@@ -448,15 +448,17 @@ RSpec.describe User, type: :model do
       create_contribution_with_payment @u, failed_project, 100, true
       create_contribution_with_payment @u, failed_project, 200, false, 'pending_refund'
       create_contribution_with_payment @u, failed_project, 200, false, 'refunded'
+      @payment_donation = Donation.create(user: @u, amount: 10)
+      create_contribution_with_payment @u, failed_project, 10, false, 'refunded', @payment_donation
+      Donation.create(user: @u, amount: 30)
 
       failed_project.update_attributes state: 'failed'
       successful_project.update_attributes state: 'successful'
-      UserTotal.refresh_view
     end
 
     subject{ @u.credits }
 
-    it{ is_expected.to eq(50.0) }
+    it{ is_expected.to eq(20.0) }
   end
 
   describe "#update_attributes" do
