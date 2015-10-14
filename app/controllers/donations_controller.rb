@@ -4,7 +4,7 @@ class DonationsController < ApplicationController
 
   def create
     raise Pundit::NotAuthorizedError if !current_user
-    return if current_user.pending_refund_payments.empty? && current_user.credits == 0
+    return redirect_to explore_path if current_user.pending_refund_payments.empty? && current_user.credits == 0
     @donation = Donation.create(user: current_user)
     @donation.notify(:contribution_donated, current_user)
     update_pending_refunds
