@@ -1,4 +1,4 @@
-Skull.UI_helper = {
+var UIHelper = window.UIHelper = {
   setupResponsiveIframes: function($container) {
     var that = this;
     this.$container = $container;
