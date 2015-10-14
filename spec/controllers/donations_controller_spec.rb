@@ -11,6 +11,7 @@ RSpec.describe DonationsController, type: :controller do
   describe "POST create" do
     let!(:project) {create(:project, state: 'failed')}
     before do
+      allow_any_instance_of(User).to receive(:credits).and_return(10)
       project.contributions = contributions
       project.save(validate: false)
       post :create
@@ -23,15 +24,14 @@ RSpec.describe DonationsController, type: :controller do
 
     end
 
-    context "when user is logged in" do
+    context "when user is logged in with pagarme and legacy refunds" do
       let(:user){ create(:user) }
       let(:contributions) { (1..2).map{ create(:confirmed_contribution, user: user) }}
 
       it{ is_expected.to be_success }
 
-      it 'should create donation' do
-
-        expect(Donation.count).to eq 1
+      it 'should create donation for legacy and pagarme' do
+        expect(Donation.count).to eq 2
       end
 
       it 'should create notification' do

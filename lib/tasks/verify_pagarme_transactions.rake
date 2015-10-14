@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 desc 'Sync payment_transfers with pagar.me transfers'
 task verify_pagarme_transfers: [:environment] do
   PagarMe.api_key = CatarsePagarme.configuration.api_key
@@ -12,6 +13,22 @@ task verify_pagarme_transfers: [:environment] do
 
     payment_transfer.update_attribute(:transfer_data, transfer.to_hash)
   end
+end
+
+desc 'Sync user_transfers with pagar.me transfers'
+task verify_pagarme_user_transfers: [:environment] do
+  PagarMe.api_key = CatarsePagarme.configuration.api_key
+
+  UserTransfer.pending.each do |payment_transfer|
+    transfer = PagarMe::Transfer.find_by_id payment_transfer.gateway_id
+
+    if transfer.status == 'transferred'
+      payment_transfer.update_column(:status, 'transferred')
+    end
+
+    payment_transfer.update_attribute(:transfer_data, transfer.to_hash)
+  end
+  UserTotal.refresh_view
 end
 
 desc "Verify all transactions in pagarme for a given date range and check their consistency in our database"
