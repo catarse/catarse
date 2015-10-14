@@ -10,5 +10,7 @@ header class="main-header w-section #{'alert' if can_display_pending_refund_aler
     - else
       = link_to t('layouts.header.signin'), new_user_session_path, class: 'w-nav-link header-link w-nav-link btn-edit u-right'
 
+    = link_to t('layouts.header.help_support'), CatarseSettings[:support_forum], target: :_blank, class: 'w-nav-link w-hidden-small w-hidden-tiny header-link w-nav-link u-right',  id: 'guidelines_header_modal' if CatarseSettings[:support_forum].present?
+
   = yield :headermobile_controls
 
