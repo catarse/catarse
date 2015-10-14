@@ -1,5 +1,5 @@
 - user = @notification.donation.user
-- amount = @notification.donation.user.decorator.display_pending_refund_payments_amount
+- amount = number_to_currency user.donations.where("created_at > current_timestamp - interval '1 day'").sum(:amount)
 - company_name = CatarseSettings[:company_name]
 - contact_email = CatarseSettings[:email_contact]
 
@@ -20,7 +20,7 @@ br
 br
 p Como singela forma de lhe agradecer, fizemos essa foto montagem da nossa equipe lhe agradecendo de coração!
 center
-  = image_tag "https://i.imgur.com/LUeb5gM.jpg"
+  = image_tag "https://i.imgur.com/LUeb5gM.jpg", width: 550
 
 p Qualquer dúvida, basta entrar em contato conosco respondendo a este email ou através do e-mail #{mail_to contact_email}
 p Um abraço,
