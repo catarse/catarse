@@ -2,6 +2,8 @@ class RemoveCreditsFromUserTotals < ActiveRecord::Migration
   def change
     execute <<-SQL
     SET statement_timeout TO 0;
+    SQL
+    execute <<-SQL
       select deps_save_and_drop_dependencies('1', 'user_totals');
       DROP MATERIALIZED VIEW "1".user_totals;
 
