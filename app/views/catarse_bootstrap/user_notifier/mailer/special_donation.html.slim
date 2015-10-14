@@ -1,0 +1,42 @@
+- user = @notification.user
+- contribution = user.contributions.last
+
+p Olá #{user.name}!
+
+b Você tem #{user.decorator.display_pending_refund_payments_amount} em créditos parados no Catarse! 
+br
+b Você pode pedir o seu reembolso ou você pode doar pra gente!
+br
+
+p Recentemente, em 11 de julho de 2015, modificamos nossos termos de uso e as regras para a devolução e estorno de apoios efetuados a projetos que não bateram a meta no Catarse. Por isso, precisamos que você decida o que fazer com seus créditos no Catarse e que destino quer dar ao seu dinheiro. 
+
+p
+  center
+    = link_to no_account_refund_project_contribution_url(contribution.project, contribution, user_email: user.email, user_token: user.authentication_token), alt: 'Solicitar Reembolso', target: '__blank' do
+      = image_tag "#{CatarseSettings[:base_url]}/assets/catarse_bootstrap/request_refund.png"
+
+|Adoraríamos se você topasse apoiar o Catarse! 
+br
+|Dessa forma você ajuda a gente a investir em inovação, a seguir firme na missão de democratizar o financiamento coletivo no Brasil e a tornar a prática um hábito no país. 
+br
+|Você é LIVRE para recusar ou aceitar o convite para doar seu apoio para o Catarse!
+br
+p #{link_to 'Acesse o Catarse e saiba quanto dinheiro você tem conosco!', no_account_refund_project_contribution_url(contribution.project, contribution, user_email: user.email, user_token: user.authentication_token),target: '__blank'}
+
+b Quer mais explicações? 
+br
+b Porque tenho dinheiro no Catarse? 
+br
+p Em algum momento nos últimos 5 anos você apoiou projetos de crowdfunding / financiamento coletivo no Catarse que, infelizmente, não atingiram a meta. Utilizamos o sistema tudo-ou-nada e se o projeto não bate a meta, todos têm direito a receber o dinheiro apoiado de volta. Algumas poucas pessoas não recebeu essas devoluções, seja por que o cartão utilizado estava invalidado no momento da devolução, seja porque não solicitou um estorno em uma época quando o Catarse ainda utilizava um sistema de créditos e lhe dava a opção de pedir o dinheiro de volta ou redirecionar para outro projeto. Hoje temos um fluxo diferente, que devolve o dinheiro de forma automatizada e não utilizamos mais o sistema de créditos.
+
+b O que acontece se eu não tomar essa decisão?
+br
+p No dia 11/07/2015 realizamos uma alteração em nossos termos de uso que prevê que caso não consigamos entrar em contato com você por meio dos dados de cadastro registrados na plataforma e nos falte a informação bancária para realizar o reembolso, dentro do período de 12 meses a contar da data de encerramento do projeto, os valores em questão serão considerados renunciados e poderão ser utilizados pelo CATARSE desde que para reinvestir na plataforma e beneficiar a comunidade. Se você recebeu essa notificação, é porque tem dinheiro conosco parado há mais de 12 meses.
+
+b Porque em até 30 dias?
+br
+p Estamos estabelecendo um prazo de 1 mês para que você possa tomar essa decisão e porque precisamos estabelecer algum prazo para seguir agindo com transparência e poder pensar sobre próximos passos. 
+
+b Tem mais alguma dúvida?
+br
+p Se ficou com alguma dúvida entre em contato conosco respondendo a este email ou através do #{mail_to CatarseSettings[:email_contact]}

@@ -38,6 +38,7 @@ class User < ActiveRecord::Base
 
   belongs_to :country
   has_one :user_total
+  has_one :user_credit
   has_one :bank_account, dependent: :destroy
   has_many :feeds, class_name: 'UserFeed'
   has_many :credit_cards
@@ -53,7 +54,9 @@ class User < ActiveRecord::Base
     with_states(Project::PUBLISHED_STATES)
   end, class_name: 'Project'
   has_many :unsubscribes
+  has_many :user_transfers
   has_many :project_posts
+  has_many :donations
   has_many :contributed_projects, -> do
     distinct.where("contributions.was_confirmed").order('projects.created_at DESC')
   end, through: :contributions, source: :project
@@ -103,7 +106,7 @@ class User < ActiveRecord::Base
                                   JOIN payments p ON c.id = p.contribution_id
                                 WHERE c.user_id = users.id AND p.key = ?)', key
                                ) }
-  scope :has_credits, -> { joins(:user_total).where('user_totals.credits > 0 and not users.zero_credits') }
+  scope :has_credits, -> { joins(:user_credit).where('user_credits.credits > 0 and not users.zero_credits') }
   scope :already_used_credits, -> {
     has_credits.
     where("EXISTS (
@@ -161,6 +164,15 @@ class User < ActiveRecord::Base
     end
   end
 
+  def has_pending_legacy_refund?
+    user_transfers.where(status: ['pending_transfer', 'processing']).exists?
+  end
+
+  #in cents
+  def credits_amount
+    (credits * 100).to_i
+  end
+
   def has_online_project?
     projects.with_state('online').exists?
   end
@@ -211,7 +223,7 @@ class User < ActiveRecord::Base
 
   def credits
     return 0 if zero_credits
-    user_total.try(:credits).to_f
+    user_credit.try(:credits).to_f
   end
 
   def projects_in_reminder

@@ -13,6 +13,16 @@ img, iframe
 .list-answer
   display: none
 
+.box-slider
+  overflow-y: hidden
+  max-height: 400px
+  transition-property: all
+  transition-duration: .5s
+  transition-timing-function: cubic-bezier(0, 1, 0.5, 1)
+
+.box-slider.closed
+  max-height: 0
+
 .project-search-image
   max-width: 50px
 .project-about, div.redactor-editor
