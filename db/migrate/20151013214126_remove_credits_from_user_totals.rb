@@ -4,7 +4,7 @@ class RemoveCreditsFromUserTotals < ActiveRecord::Migration
       select deps_save_and_drop_dependencies('1', 'user_totals');
       DROP MATERIALIZED VIEW "1".user_totals;
 
-      CREATE VIEW "1".user_totals AS
+      CREATE MATERIALIZED VIEW "1".user_totals AS
       SELECT u.id,
           u.id as user_id,
           coalesce(ct.total_contributed_projects, 0) as total_contributed_projects,
@@ -33,6 +33,7 @@ class RemoveCreditsFromUserTotals < ActiveRecord::Migration
       grant select on "1".user_totals to anonymous;
       grant select on "1".user_totals to admin;
       grant select on "1".user_totals to web_user;
+      create index on "1".user_totals (id);
     SQL
   end
 end

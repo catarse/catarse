@@ -147,6 +147,7 @@ RSpec.describe User, type: :model do
         failed_project.update_attributes state: 'failed'
         payment = create(:confirmed_contribution, project: successful_project).payments.first
         payment.update_attributes({gateway: 'MoIP'})
+        UserTotal.refresh_view
 
       end
       it{ is_expected.to eq([@user_with_credits]) }
@@ -162,6 +163,7 @@ RSpec.describe User, type: :model do
         b = create(:confirmed_contribution, value: 100, project: successful_project)
         b.payments.first.update_attributes({gateway: 'MoIP'})
         @u.update_attributes(zero_credits: true)
+        UserTotal.refresh_view
       end
       it{ is_expected.to eq([]) }
     end
@@ -183,6 +185,7 @@ RSpec.describe User, type: :model do
         with_credits.payments.first.update_attributes({gateway: 'MoIP'})
         @user_with_credits = with_credits.user
         failed_project.update_attributes state: 'failed'
+        UserTotal.refresh_view
       end
       it{ is_expected.to eq([@user_with_credits]) }
     end
@@ -374,6 +377,7 @@ RSpec.describe User, type: :model do
       create(:confirmed_contribution, user: user, project: project)
       create(:confirmed_contribution, user: user)
       user.reload
+      UserTotal.refresh_view
     end
 
     it { is_expected.to eq(2)}
@@ -447,6 +451,7 @@ RSpec.describe User, type: :model do
 
       failed_project.update_attributes state: 'failed'
       successful_project.update_attributes state: 'successful'
+      UserTotal.refresh_view
     end
 
     subject{ @u.credits }

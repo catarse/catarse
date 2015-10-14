@@ -12,6 +12,7 @@ namespace :cron do
   task refresh_materialized_views: :environment do
     puts "refreshing views"
     Statistics.refresh_view
+    UserTotal.refresh_view
   end
 
   desc 'Request refund for failed credit card refunds'
