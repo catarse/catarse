@@ -46,6 +46,7 @@ class BankAccountsController < ApplicationController
   def request_refund
     authorize resource
 
+    refunded_amount = user_decorator.display_pending_refund_payments_amount
     #pagarme payments
     user.pending_refund_payments.each do |payment|
       payment.direct_refund
@@ -56,7 +57,7 @@ class BankAccountsController < ApplicationController
       TransferWorker.perform_async(user.id)
     end
 
-    redirect_to bank_account_path(resource, refunded_amount: user_decorator.display_pending_refund_payments_amount)
+    redirect_to bank_account_path(resource, refunded_amount: refunded_amount)
   end
 
   def resource
