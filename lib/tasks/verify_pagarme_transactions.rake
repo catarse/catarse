@@ -25,6 +25,9 @@ task verify_pagarme_user_transfers: [:environment] do
     payment_transfer.update_column(:status, transfer.status)
 
     payment_transfer.update_attribute(:transfer_data, transfer.to_hash)
+    if transfer.status == 'failed'
+      transfer.user.contributions.last.invalid_refund
+    end
   end
 end
 
