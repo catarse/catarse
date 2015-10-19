@@ -27,12 +27,6 @@ module Project::StateMachineHandler
         end
       end
 
-      #validations starting in approved
-      state :approved, :online, :successful, :waiting_funds, :failed do
-        validates_presence_of :video_url,
-          if: ->(project) { (project.goal || 0) >= CatarseSettings[:minimum_goal_for_video].to_i }
-      end
-
       #validations starting in online
       state :online, :successful, :waiting_funds, :failed do
         validates_presence_of :account, message: 'Dados Bancários não podem ficar em branco'

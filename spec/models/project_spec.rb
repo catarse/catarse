@@ -270,42 +270,6 @@ RSpec.describe Project, type: :model do
     it { is_expected.to eq [@project_02] }
   end
 
-  describe '.video_url' do
-    before do
-      CatarseSettings[:minimum_goal_for_video] = 5000
-    end
-    context 'when goal is above minimum' do
-      subject { @project_01 }
-
-      before do
-        @project_01 = create(:project, goal: 6000, state: 'approved')
-      end
-
-      it{ is_expected.not_to allow_value(nil).for(:video_url) }
-    end
-
-    context 'when goal is below minimum' do
-      subject { @project_02 }
-
-      before do
-        CatarseSettings[:minumum_goal_for_video] = 5000
-        @project_02 = create(:project, goal: 4000)
-      end
-
-      it{ is_expected.to allow_value(nil).for(:video_url) }
-    end
-
-    context 'when goal is minimum' do
-      subject { @project_03 }
-
-      before do
-        @project_03 = build(:project, goal: 5000, state: 'approved', video_url: nil)
-      end
-
-      it{ is_expected.not_to allow_value(nil).for(:video_url) }
-    end
-  end
-
   describe '.by_online_date' do
     subject { Project.by_online_date(Time.current.to_date.to_s) }
 
