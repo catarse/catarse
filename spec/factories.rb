@@ -84,6 +84,10 @@ FactoryGirl.define do
     end
   end
 
+  factory :flexible_project do |f|
+    f.association :project
+  end
+
   factory :project_account do |f|
     f.association :project
     f.association :bank
