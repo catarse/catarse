@@ -10,7 +10,7 @@ module Project::FlexibleHandler
 
     #
     # check if project is flexible.
-    # project should be draft and have a flexible project
+    # project should be have a flexible project
     # relation created.
     #
     # usage:
