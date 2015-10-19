@@ -18,6 +18,19 @@ RSpec.describe Payment, type: :model do
     it{ should validate_presence_of :installments }
   end
 
+  describe "#save" do
+    let(:reward){ create(:reward, maximum_contributions: 1) }
+    let(:contribution){ create(:contribution, reward: reward, project: reward.project) }
+    let(:payment){ build(:payment, contribution: contribution) }
+
+    # This validation is implemented in the database schema
+    it "should not create when reward is sold_out" do
+      # creates payment to let reward in sold_out state
+      create(:payment, contribution: contribution, value: payment.value + 1)
+      expect{ payment.save }.to raise_error(/Reward for contribution/)
+    end
+  end
+
   describe "#is_unique_within_period" do
     subject{ payment }
     let(:contribution){ create(:contribution) }
