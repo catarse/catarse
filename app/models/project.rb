@@ -13,6 +13,7 @@ class Project < ActiveRecord::Base
   include Project::VideoHandler
   include Project::CustomValidators
   include Project::ErrorGroups
+  include Project::FlexibleHandler
 
   has_notifications
 
@@ -198,7 +199,7 @@ class Project < ActiveRecord::Base
   end
 
   def should_fail?
-    expired? && !reached_goal?
+    expired? && !reached_goal? && !is_flexible?
   end
 
   def notify_owner(template_name, params = {})

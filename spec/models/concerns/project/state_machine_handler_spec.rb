@@ -166,17 +166,26 @@ RSpec.describe Project::StateMachineHandler, type: :model do
         end
       end
 
-      context 'when project is expired and have recent contributions without confirmation' do
+      context "with pending contributions" do
         before do
           create(:pending_contribution, value: 30_000, project: project)
           project.update_attribute :online_days, 1
+          subject
         end
 
-        it{ is_expected.to eq true }
+        context "and is not flexible project" do
+          before do
+            create(:flexible_project, project: project)
+          end
 
-        it "should go to waiting_funds" do
-          subject
-          expect(project).to be_waiting_funds
+          it "should go to waiting_funds" do
+            expect(project).to be_waiting_funds
+          end
+        end
+        context "and is flexible project" do
+          it "should go to waiting_funds" do
+            expect(project).to be_waiting_funds
+          end
         end
       end
 
@@ -209,6 +218,7 @@ RSpec.describe Project::StateMachineHandler, type: :model do
         end
       end
 
+<<<<<<< HEAD
       context 'when project not hit the goal' do
         before do
           project.update_attribute :online_days, 1
@@ -218,6 +228,27 @@ RSpec.describe Project::StateMachineHandler, type: :model do
         it "should go to failed" do
           subject
           expect(project).to be_failed
+=======
+      context "when project not hit the goal" do
+        let(:project_state){ 'waiting_funds' }
+
+        context "and the project is flexible" do
+          before do
+            create(:flexible_project, project: project)
+          end
+          it{ is_expected.to eq true }
+          it "should go to success" do
+            subject
+            expect(project).to be_successful
+          end
+        end
+        context 'and the project is not flexible' do
+          it{ is_expected.to eq true }
+          it "should go to failed" do
+            subject
+            expect(project).to be_failed
+          end
+>>>>>>> 248c542... flexible project should be aways successful
         end
       end
     end

@@ -83,7 +83,7 @@ module Project::StateMachineHandler
         }
 
         transition waiting_funds: :successful,  if: ->(project) {
-          project.reached_goal?
+          project.reached_goal? || project.is_flexible?
         }
 
         transition waiting_funds: :failed,      if: ->(project) {
