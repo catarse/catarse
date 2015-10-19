@@ -41,6 +41,28 @@ RSpec.describe Project, type: :model do
     it{ is_expected.not_to allow_value('agua.sp.01').for(:permalink) }
   end
 
+  describe "reward size validation" do
+    let(:project) { create(:project, state: 'in_analysis') }
+
+    before do
+      project.rewards.destroy_all
+    end
+
+    subject { project.valid? }
+
+    context "flexible project" do
+      before { create(:flexible_project, project: project) }
+      it "with no rewards" do
+        is_expected.to eq(true)
+      end
+    end
+    context "non flexible project" do
+      it "with no rewards" do
+        is_expected.to eq(false)
+      end
+    end
+  end
+
   describe "name validation" do
     context "when project is not published" do
       let(:project) { create(:project, state: 'draft') }
