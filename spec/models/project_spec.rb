@@ -78,6 +78,72 @@ RSpec.describe Project, type: :model do
 
   end
 
+  describe "#should_fail?" do
+    let(:project) { create(:project, state: 'online') }
+
+    subject { project.should_fail? }
+
+    before do
+       allow(project).to receive(:expired?).and_return(true)
+    end
+
+    context "when project is flexible" do
+      before do
+        create(:flexible_project, project: project)
+      end
+
+      context "and expired and not reached the goal" do
+        before do
+          allow(project).to receive(:reached_goal?).and_return(false)
+        end
+
+        it { is_expected.to eq(false) }
+      end
+
+      context "and expired and reached the goal" do
+        before do
+          allow(project).to receive(:reached_goal?).and_return(true)
+        end
+
+        it { is_expected.to eq(false) }
+      end
+
+      context "and is not expired" do
+        before do
+          allow(project).to receive(:expired?).and_return(false)
+        end
+
+        it { is_expected.to eq(false) }
+      end
+    end
+
+    context "when project is not flexible" do
+      context "and expired and not reached the goal" do
+        before do
+          allow(project).to receive(:reached_goal?).and_return(false)
+        end
+
+        it { is_expected.to eq(true) }
+      end
+
+      context "and expired and reached the goal" do
+        before do
+          allow(project).to receive(:reached_goal?).and_return(true)
+        end
+
+        it { is_expected.to eq(false) }
+      end
+
+      context "and is not expired" do
+        before do
+          allow(project).to receive(:expired?).and_return(false)
+        end
+
+        it { is_expected.to eq(false) }
+      end
+    end
+  end
+
   describe "#published?" do
     subject { project.published? }
 
