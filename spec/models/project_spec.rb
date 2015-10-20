@@ -15,6 +15,7 @@ RSpec.describe Project, type: :model do
     it{ is_expected.to have_many :rewards }
     it{ is_expected.to have_many :posts }
     it{ is_expected.to have_many :notifications }
+    it{ is_expected.to have_many :project_transitions }
   end
 
   describe "validations" do

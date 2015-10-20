@@ -17,6 +17,7 @@ gem "best_in_place", :git => "git://github.com/bernat/best_in_place", ref: "ee95
 
 # State machine for attributes on models
 gem 'state_machine', require: 'state_machine/core'
+gem 'statesman'
 
 # Database and data related
 gem 'pg', '0.17.1'
