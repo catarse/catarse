@@ -78,6 +78,9 @@ FactoryGirl.define do
     f.state 'online'
     f.budget '1000'
     f.uploaded_image File.open("#{Rails.root}/spec/support/testimg.png")
+    after :create do |project| 
+      FactoryGirl.create(:project_transition, to_state: project.state, project: project)
+    end
     after :build do |project|
       project.account = build(:project_account, project: nil)
       project.rewards.build(deliver_at: Time.now, minimum_value: 10, description: 'test')
@@ -86,6 +89,12 @@ FactoryGirl.define do
 
   factory :flexible_project do |f|
     f.association :project
+  end
+
+  factory :project_transition do |f|
+    f.association :project
+    f.most_recent true
+    f.sort_key 1
   end
 
   factory :project_account do |f|
