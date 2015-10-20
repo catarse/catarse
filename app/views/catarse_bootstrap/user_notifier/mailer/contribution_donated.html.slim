@@ -1,15 +1,15 @@
-- contribution = @notification.donation.contributions.last
-- amount = number_to_currency @notification.donation.contributions.sum(:value)
+- user = @notification.donation.user
+- amount = number_to_currency user.donations.where("created_at > current_timestamp - interval '1 day'").sum(:amount)
 - company_name = CatarseSettings[:company_name]
 - contact_email = CatarseSettings[:email_contact]
 
-p Olá, <strong>#{contribution.user.display_name}</strong>!
+p Olá, <strong>#{user.display_name}</strong>!
 
 p Muito obrigado! A sua doação é essencial para mantermos independente e livre esse vibrante ecossistema de viabilizacão de projetos que é o Catarse. Dessa forma você ajuda a gente a investir em inovação, a seguir firme na missão de democratizar o financiamento coletivo no Brasil e a tornar a prática um hábito no país.
 p Seguem todos os dados da doação:
-|Nome do apoiador: #{contribution.user.display_name}
+|Nome do apoiador: #{user.display_name}
 br
-|CPF/CNPJ do apoiador: #{contribution.user.cpf}
+|CPF/CNPJ do apoiador: #{user.cpf}
 br
 |Valor da doação: #{amount}
 br
@@ -18,6 +18,9 @@ br
 |CPF/CNPJ do Catarse: 14.512.425/0001-94
 br
 br
+p Como singela forma de lhe agradecer, fizemos essa foto montagem da nossa equipe lhe agradecendo de coração!
+center
+  = image_tag "https://i.imgur.com/LUeb5gM.jpg", width: 550
 
 p Qualquer dúvida, basta entrar em contato conosco respondendo a este email ou através do e-mail #{mail_to contact_email}
 p Um abraço,

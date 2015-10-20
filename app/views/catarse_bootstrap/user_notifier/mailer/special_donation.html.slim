@@ -1,0 +1,43 @@
+- user = @notification.user
+- contribution = user.contributions.last
+
+p Olá #{user.name}!
+
+b Você tem #{user.decorator.display_pending_refund_payments_amount} em créditos no Catarse! 
+br
+b Você pode pedir o seu reembolso ou você pode doar a quantia para o Catarse!
+br
+br
+'Em 11 de julho de 2015 modificamos nos nossos Termos de Uso as regras para a devolução e estorno de apoios efetuados a projetos que não bateram a meta no Catarse. 
+b Por isso, é importante que você decida o que fazer com seus créditos no Catarse em até 30 dias, após o recebimento dessa notificação.
+
+p
+  center
+    = link_to no_account_refund_project_contribution_url(contribution.project, contribution, user_email: user.email, user_token: user.authentication_token), alt: 'Solicitar Reembolso', target: '__blank' do
+      = image_tag "#{CatarseSettings[:base_url]}/assets/catarse_bootstrap/btn-querodecidir.png", height: 81
+
+|Adoraríamos se você topasse apoiar o Catarse! 
+br
+|Dessa forma você ajuda a gente a investir em inovação, a seguir firme na missão de democratizar o financiamento coletivo no Brasil e a tornar a prática um hábito no país. 
+br
+|Você é LIVRE para recusar ou aceitar o convite para doar seu apoio para o Catarse!
+br
+p #{link_to 'Acesse o Catarse e saiba quanto dinheiro você tem conosco!', no_account_refund_project_contribution_url(contribution.project, contribution, user_email: user.email, user_token: user.authentication_token),target: '__blank'}
+
+b Quer mais explicações? 
+br
+b Porque tenho dinheiro no Catarse? 
+br
+p Em algum momento nos últimos 5 anos você apoiou projetos de crowdfunding / financiamento coletivo no Catarse que, infelizmente, não atingiram a meta. Como utilizamos o sistema tudo-ou-nada, se o projeto não bate a meta todos têm direito a receber o dinheiro apoiado de volta. Algumas pessoas não receberam essas devoluções, seja porque o cartão utilizado estava bloqueado no momento da devolução, ou porque não preencheram os dados bancários para realizarmos a devolução.
+
+b O que acontece se eu não tomar essa decisão?
+br
+p No dia 11 de julho de 2015 realizamos uma alteração em nossos Termos de Uso que prevê que caso não consigamos entrar em contato com você por meio dos dados de cadastro registrados na nossa plataforma e nos falte alguma informação bancária para realizar o reembolso, dentro do período de 12 meses a contar da data de encerramento do projeto os valores serão considerados renunciados e poderão ser utilizados pelo CATARSE para reinvestir na plataforma e beneficiar a comunidade. Se você não decidir após 30 dias do envio da primeira notificação, os valores em crédito serão considerados renunciados.
+
+b Porque tenho que tomar essa decisão em até 30 dias?
+br
+p Definimos o prazo de 30 dias a partir da primeira notificação para termos a certeza de que você vai ver essa mensagem e tomar essa decisão. Pense com bastante amor e carinho! Precisamos da sua resposta para que possamos fazer um planejamento financeiro mais preciso e transparente.
+
+b Tem mais alguma dúvida?
+br
+p Se ficou com alguma dúvida entre em contato conosco respondendo a este email ou através do #{mail_to CatarseSettings[:email_contact]}

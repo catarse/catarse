@@ -13,6 +13,16 @@ img, iframe
 .list-answer
   display: none
 
+.box-slider
+  overflow-y: hidden
+  max-height: 400px
+  transition-property: all
+  transition-duration: .5s
+  transition-timing-function: cubic-bezier(0, 1, 0.5, 1)
+
+.box-slider.closed
+  max-height: 0
+
 .project-search-image
   max-width: 50px
 .project-about, div.redactor-editor
@@ -462,7 +472,8 @@ img, iframe
   border-top: 0
   border-bottom: 0
   outline: none
-#project-nav
+#project-nav,
+.body-project
   +transition(all 500ms ease)
 .body-project.closed
   #project-nav
@@ -472,6 +483,10 @@ img, iframe
   margin-left: 205px
   bottom: 0
   left: inherit
+
+.btn-link
+  background: none
+  border: none
 
 .project_budget
   width: 100%

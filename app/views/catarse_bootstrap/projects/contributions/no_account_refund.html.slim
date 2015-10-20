@@ -1,24 +1,41 @@
 = render 'shared/header'
 
-.w-section.section-one-column.u-margintop-40
-  .w-container
-    .w-row.u-text-center.u-marginbottom-60
-      .w-col.w-col-2
-      .w-col.w-col-8
-        .fontsize-larger.u-marginbottom-20 Decida o que fazer com seus créditos no #{CatarseSettings[:company_name]}!
-        .fontsize-base
-          | Você possui
-          span.fontweight-semibold<>= resource.user.decorator.display_pending_refund_payments_amount
-          | em reembolsos pendentes
-      .w-col.w-col-2
-    .w-row
-      .w-col.w-col-6
-        .card.medium.card-terciary.u-radius.u-marginbottom-20
-          = link_to 'Quero meu dinheiro de volta', new_bank_account_path, class: 'w-button btn btn-large u-marginbottom-30'
-          .fontsize-small Seu dinheiro será depositado integralmente em sua conta bancária em até 5 dias úteis. Para que possamos efetuar essa transferência, basta nos informar seus dados bancários. Nenhuma taxa é cobrada nesta operação, fique tranquilo!
-      .w-col.w-col-6
-        .card.medium.card-terciary.u-radius
-          = link_to 'Quero doar meu dinheiro ao Catarse', donations_path, class: 'w-button btn btn-large u-marginbottom-30', method: 'post'
-          .fontsize-small Ihaaa! Seu dinheiro será utilizado para financiar operações do Catarse e um monte de inovações que vem por aí em 2016. São novidades que certamente ajudarão muita gente. Sinta-se parte do time e ajude a espalhar o financiamento coletivo no Brasil!
+#contribution-donation
+  .w-section.section-one-column.u-margintop-40
+    .w-container
+      .w-row.u-text-center.u-marginbottom-60
+        .w-col.w-col-2
+        .w-col.w-col-8
+          .fontsize-larger.u-marginbottom-20 Decida o que fazer com o seu dinheiro no #{CatarseSettings[:company_name]}!
 
-= render 'shared/footer'
+          .fontsize-base= t('.fill_form_text', \
+            amount: resource.user.decorator.display_pending_refund_payments_amount)
+        .w-col.w-col-2
+      .w-row
+        .w-col.w-col-6
+          .card.medium.card-terciary.u-radius
+            = link_to 'Quero doar para o Catarse!', donations_path, class: 'w-button btn btn-large u-marginbottom-30', method: 'post'
+            .fontsize-small ihaaa! Seu dinheiro será utilizado para financiar operações do Catarse e um monte de inovações que vem por aí em 2016. São novidades que certamente ajudarão muita gente. Sinta-se parte do time e ajude a espalhar o financiamento coletivo no Brasil!
+        .w-col.w-col-6
+          .card.medium.card-terciary.u-radius.u-marginbottom-20
+            = link_to 'Quero meu dinheiro de volta!', new_bank_account_path, class: 'w-button btn btn-large u-marginbottom-30'
+            .fontsize-small Seu dinheiro será depositado integralmente em sua conta bancária em até 5 dias úteis. Para que possamos efetuar essa transferência, basta nos informar seus dados bancários. Nenhuma taxa é cobrada nesta operação, fique tranquilo!
+  .w-section.section.divider.bg-gray.before-footer
+    .w-container
+      .fontsize-large.u-text-center.fontweight-semibold.u-marginbottom-30 Dúvidas frequentes
+      .w-row.u-marginbottom-60
+        .w-col.w-col-6
+          .card.u-marginbottom-20.u-radius.btn-terciary.show-answer-faq
+            .fontsize-base Porque tenho dinheiro no Catarse?
+            p.fontsize-small.box-slider.closed   Em algum momento nos últimos 5 anos você apoiou projetos de crowdfunding / financiamento coletivo no Catarse que, infelizmente, não atingiram a meta. Como utilizamos o sistema tudo-ou-nada, se o projeto não bate a meta todos têm direito a receber o dinheiro apoiado de volta. Algumas pessoas não receberam essas devoluções, seja porque o cartão utilizado estava bloqueado no momento da devolução, ou porque não preencheram os dados bancários para realizarmos a devolução.
+          .card.u-marginbottom-20.u-radius.btn-terciary.show-answer-faq
+            .fontsize-base O que acontece se eu não tomar essa decisão?
+            p.fontsize-small.box-slider.closed   No dia 11 de julho de 2015 realizamos uma alteração em nossos Termos de Uso que prevê que caso não consigamos entrar em contato com você por meio dos dados de cadastro registrados na nossa plataforma e nos falte alguma informação bancária para realizar o reembolso, dentro do período de 12 meses a contar da data de encerramento do projeto os valores serão considerados renunciados e poderão ser utilizados pelo CATARSE para reinvestir na plataforma e beneficiar a comunidade. Se você não decidir após 30 dias do envio da primeira notificação, os valores em crédito serão considerados renunciados.
+        .w-col.w-col-6
+          .card.u-marginbottom-20.u-radius.btn-terciary.show-answer-faq
+            .fontsize-base Porque tenho que tomar essa decisão em até 30 dias?
+            p.fontsize-small.box-slider.closed   Definimos o prazo de 30 dias a partir da primeira notificação para termos a certeza de que você vai ver essa mensagem e tomar essa decisão. Pense com bastante amor e carinho! Precisamos da sua resposta para que possamos fazer um planejamento financeiro mais preciso e transparente.
+          .card.u-marginbottom-20.u-radius.btn-terciary.show-answer-faq
+            .fontsize-base Tem mais alguma dúvida?
+            p.fontsize-small.box-slider.closed   Se ficou com alguma dúvida entre em contato conosco através do #{mail_to CatarseSettings[:email_contact]}
+  = render 'shared/footer'

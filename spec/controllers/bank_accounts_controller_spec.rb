@@ -234,7 +234,7 @@ RSpec.describe BankAccountsController, type: :controller do
   end
 
   describe "PUT request_refund" do
-    context "when user does not logged in" do
+    context "when user is not logged in" do
       let(:user) { create(:user) }
       before do
         allow(controller).to receive(:current_user).and_return(nil)
@@ -272,6 +272,24 @@ RSpec.describe BankAccountsController, type: :controller do
         Sidekiq::Testing.inline!
         expect(DirectRefundWorker).to receive(:perform_async).with(payment.id)
         project.update_column(:state, 'failed')
+
+        put :request_refund, {
+          locale: :pt,
+          id: user.bank_account.id
+        }
+      end
+
+      it "should redirect to success" do
+        is_expected.to redirect_to bank_account_path(user.bank_account, refunded_amount: user.decorator.display_pending_refund_payments_amount)
+      end
+    end
+
+    context "when user have legacy pending refund payments" do
+      let(:bank) { create(:bank) }
+      before do
+        allow_any_instance_of(User).to receive(:credits).and_return(10)
+        Sidekiq::Testing.inline!
+        expect(TransferWorker).to receive(:perform_async).with(user.id)
 
         put :request_refund, {
           locale: :pt,

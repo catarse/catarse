@@ -105,7 +105,7 @@ GEM
       mailchimp-api (~> 2.0.4)
       rails (>= 4.0.3)
       rails-observers
-    catarse_pagarme (2.7.13)
+    catarse_pagarme (2.7.15)
       pagarme (= 1.10.0)
       rails (~> 4.0)
       sidekiq
@@ -368,6 +368,8 @@ GEM
       railties (>= 3.2.0)
       sprockets-rails
     json (1.8.3)
+    json_web_token (0.3.1)
+      json (~> 1.8, >= 1.8.3)
     jwt (1.5.1)
     kaminari (0.16.3)
       actionpack (>= 3.0.0)
@@ -658,7 +660,7 @@ DEPENDENCIES
   catarse_api!
   catarse_moip (~> 3.2.0)
   catarse_monkeymail (>= 0.1.6)
-  catarse_pagarme (~> 2.7.13)
+  catarse_pagarme (~> 2.7.15)
   catarse_settings_db (>= 0.1.0)
   chartkick
   cocoon
@@ -682,6 +684,7 @@ DEPENDENCIES
   i18n_alchemy
   inherited_resources
   jasmine-rails
+  json_web_token
   kaminari
   launchy
   letter_opener

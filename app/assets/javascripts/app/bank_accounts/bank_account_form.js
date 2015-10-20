@@ -13,6 +13,7 @@ App.addChild('BankAccountForm', _.extend({
     this.setupForm();
     this.$('.field_with_errors .text-error').slideDown('slow');
     this.$('#bank_account_owner_name').data('custom-validation', this.validateName);
+    this.$('#bank_account_agency').data('custom-validation', this.padZeros);
     this.$('#bank_account_input_bank_number').data('custom-validation', this.validateBankNumber);
   },
 
@@ -48,6 +49,12 @@ App.addChild('BankAccountForm', _.extend({
       $(field).trigger('invalid');
       return false;
     }
+
+    return true;
+  },
+
+  padZeros: function(field) {
+    field.val(("0000" + field.val()).substr(-4,4));
 
     return true;
   },
