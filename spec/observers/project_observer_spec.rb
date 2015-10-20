@@ -181,7 +181,7 @@ RSpec.describe ProjectObserver do
       create(:project, {
         goal: 100,
         online_date: 3.days.ago,
-        online_days: 2,
+        online_days: 30,
         state: 'online'
       })
     end
@@ -212,6 +212,7 @@ RSpec.describe ProjectObserver do
         contribution_invalid.user.bank_account.destroy
         expect(DirectRefundWorker).to receive(:perform_async).with(payment_valid.id)
         expect(DirectRefundWorker).to_not receive(:perform_async).with(payment_invalid.id)
+        project.update_attribute :online_days, 1
       end
 
       it { project.finish }
