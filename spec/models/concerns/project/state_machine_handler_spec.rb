@@ -142,7 +142,7 @@ RSpec.describe Project::StateMachineHandler, type: :model do
     end
 
     describe '#finish' do
-      let(:project) { create(:project, goal: 30_000, online_days: 1, online_date: Time.now - 2.days, state: project_state) }
+      let(:project) { create(:project, goal: 30_000, online_days: 60, online_date: Time.now - 2.days, state: project_state) }
       subject { project.finish }
       let(:project_state){ 'online' }
 
@@ -155,6 +155,7 @@ RSpec.describe Project::StateMachineHandler, type: :model do
         before do
           create(:confirmed_contribution, value: 100, project: project, created_at: 2.days.ago)
           create(:pending_contribution, value: 100, project: project)
+          project.update_attribute :online_days, 1
         end
 
         it{ is_expected.to eq true }
@@ -168,6 +169,7 @@ RSpec.describe Project::StateMachineHandler, type: :model do
       context 'when project is expired and have recent contributions without confirmation' do
         before do
           create(:pending_contribution, value: 30_000, project: project)
+          project.update_attribute :online_days, 1
         end
 
         it{ is_expected.to eq true }
@@ -208,6 +210,10 @@ RSpec.describe Project::StateMachineHandler, type: :model do
       end
 
       context 'when project not hit the goal' do
+        before do
+          project.update_attribute :online_days, 1
+        end
+
         it{ is_expected.to eq true }
         it "should go to failed" do
           subject
