@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Project::StateValidator, type: :model do
-  let(:project_status) { 'draft' }
+  let(:project_state) { 'draft' }
   let(:project) { create(:project, state: project_state) }
   let!(:project_account) { create(:project_account, project: project) }
 
