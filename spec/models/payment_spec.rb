@@ -19,15 +19,28 @@ RSpec.describe Payment, type: :model do
   end
 
   describe "#save" do
-    let(:reward){ create(:reward, maximum_contributions: 1) }
+    let(:reward){ create(:reward, maximum_contributions: 1, project: project) }
     let(:contribution){ create(:contribution, reward: reward, project: reward.project) }
     let(:payment){ build(:payment, contribution: contribution) }
 
-    # This validation is implemented in the database schema
-    it "should not create when reward is sold_out" do
-      # creates payment to let reward in sold_out state
-      create(:payment, contribution: contribution, value: payment.value + 1)
-      expect{ payment.save }.to raise_error(/Reward for contribution/)
+    context "when project is still open for payments" do
+      let(:project){ create(:project) }
+
+      # This validation is implemented in the database schema
+      it "should not create when reward is sold_out" do
+        # creates payment to let reward in sold_out state
+        create(:payment, contribution: contribution, value: payment.value + 1)
+        expect{ payment.save }.to raise_error(/Reward for contribution/)
+      end
+    end
+
+    context "when project is expired" do
+      let(:project){ create(:project, online_date: Time.current - 30.day, online_days: 1) }
+
+      # This validation is implemented in the database schema
+      it "should not create when project is past expires_at" do
+        expect{ payment.save }.to raise_error(/Project for contribution/)
+      end
     end
   end
 
