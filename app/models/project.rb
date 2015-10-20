@@ -10,6 +10,7 @@ class Project < ActiveRecord::Base
   include Shared::Queued
 
   include Project::StateMachineHandler
+  include Project::StateValidator
   include Project::VideoHandler
   include Project::CustomValidators
   include Project::ErrorGroups
