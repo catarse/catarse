@@ -76,4 +76,8 @@ class FlexibleProjectMachine
     transition_to :online
   end
 
+  # put project in successful or waiting_funds state
+  def finish
+    transition_to(:successful) unless transition_to(:waiting_funds)
+  end
 end

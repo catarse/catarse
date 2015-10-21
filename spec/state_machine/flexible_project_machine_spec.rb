@@ -281,6 +281,34 @@ RSpec.describe FlexibleProjectMachine, type: :model do
         it { subject.push_to_online }
       end
 
+      context "#finish" do
+        let(:project_state) { 'online' }
+
+        before do
+          allow(project).to receive(:expired?).and_return(true)
+        end
+
+        context "when can't go to successful" do
+          before do
+            allow(project).to receive(:in_time_to_wait?).and_return(true)
+
+            expect(subject).to receive(:transition_to).with(:waiting_funds).and_return(true)
+            expect(subject).not_to receive(:transition_to).with(:successful)
+          end
+
+          it { subject.finish }
+        end
+
+        context "when can go to successful" do
+          before do
+            allow(project).to receive(:in_time_to_wait?).and_return(false)
+
+            expect(subject).to receive(:transition_to).with(:waiting_funds).and_return(false)
+            expect(subject).to receive(:transition_to).with(:successful).and_return(true)
+          end
+
+          it { subject.finish }
+        end
       end
     end
 
