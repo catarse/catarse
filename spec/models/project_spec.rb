@@ -42,6 +42,21 @@ RSpec.describe Project, type: :model do
     it{ is_expected.not_to allow_value('agua.sp.01').for(:permalink) }
   end
 
+  describe "is_flexible?" do
+    let(:project) { create(:project, project_type: 'all_or_nothing') }
+
+    subject { project.is_flexible? }
+
+    it "should be false when project is not flexible" do
+      is_expected.to eq(false)
+    end
+
+    it "should be true when project is flexible" do
+      project.project_type = 'flexible'
+      is_expected.to eq(true)
+    end
+  end
+
   describe "reward size validation" do
     let(:project) { create(:project, state: 'in_analysis') }
 

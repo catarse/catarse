@@ -15,7 +15,6 @@ class Project < ActiveRecord::Base
   include Project::VideoHandler
   include Project::CustomValidators
   include Project::ErrorGroups
-  include Project::FlexibleHandler
 
   has_notifications
 
@@ -196,6 +195,11 @@ class Project < ActiveRecord::Base
 
   def in_time_to_wait?
     payments.waiting_payment.exists?
+  end
+
+  # check if project is flexible.
+  def is_flexible?
+    project_type == 'flexible'
   end
 
   def new_draft_recipient
