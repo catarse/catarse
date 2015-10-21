@@ -25,6 +25,9 @@ RSpec.describe FlexibleProjectMachine, type: :model do
           expect(subject.current_state).to eq(transition_to.to_s)
         end
 
+        it "should persist the current_status into project.state" do
+          expect(project.state).to eq(transition_to.to_s)
+        end
 
         it "should create an most recent transition to_locale" do
           expect(project.project_transitions.where(to_state: transition_to.to_s).count).to eq(1)
@@ -42,16 +45,23 @@ RSpec.describe FlexibleProjectMachine, type: :model do
       end
 
       shared_examples "invalid project transaction flow" do |transition_to|
+        it "should have errors on project" do
+          expect(project.errors).not_to be_empty
+        end
 
         it "should not turn current_state to #{transition_to.to_s}" do
           expect(subject.current_state).not_to eq(transition_to.to_s)
         end
 
+        it "should not turn project.state to #{transition_to.to_s}" do
+          expect(project.reload.state).not_to eq(transition_to.to_s)
+        end
 
         it "should not create an most recent transition to_locale" do
           expect(project.project_transitions.where(to_state: transition_to.to_s).count).to eq(0)
         end
       end
+
       context "draft can go to in_analysis, rejected and deleted only" do
         %i(draft online approved successful waiting_funds).each do |state|
           it "can't transition from draft to #{state}" do
@@ -66,6 +76,17 @@ RSpec.describe FlexibleProjectMachine, type: :model do
             it_should_behave_like "valid in_analysis project transaction"
           end
 
+          context "when is a invalid project" do
+            before do
+              project.name = nil
+              subject.transition_to :in_analysis
+            end
+
+            it_should_behave_like "invalid in_analysis project transaction"
+          end
+        end
+
+      end
         end
 
       end
