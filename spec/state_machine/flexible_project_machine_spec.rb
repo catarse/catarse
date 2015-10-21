@@ -49,10 +49,6 @@ RSpec.describe FlexibleProjectMachine, type: :model do
           subject.transition_to transition_to
         end
 
-        it "should have errors on project" do
-          expect(project.errors).not_to be_empty
-        end
-
         it "should not turn current_state to #{transition_to.to_s}" do
           expect(subject.current_state).not_to eq(transition_to.to_s)
         end
@@ -158,9 +154,72 @@ RSpec.describe FlexibleProjectMachine, type: :model do
       end
 
       context "online project can go to waiting_funds or successful" do
-        
-      end
+        let(:project_state) { 'online' }
 
+        context "waiting_funds transition" do 
+          context "when can go to waiting_funds" do
+            context "project expired and have waiting payments" do
+              before do
+                allow(project).to receive(:expired?).and_return(true)
+                allow(project).to receive(:in_time_to_wait?).and_return(true)
+              end
+
+              it_should_behave_like "valid waiting_funds project transaction"
+            end
+          end
+
+          context "when can't go to waiting_funds" do
+            context "project expired but not have pending payments" do
+              before do
+                allow(project).to receive(:expired?).and_return(true)
+                allow(project).to receive(:in_time_to_wait?).and_return(false)
+              end
+
+              it_should_behave_like "invalid waiting_funds project transaction"
+            end
+
+            context "project not expired" do
+              before do
+                allow(project).to receive(:expired?).and_return(false)
+              end
+
+              it_should_behave_like "invalid waiting_funds project transaction"
+            end
+          end
+        end
+
+        context "successful transition" do
+          context "when can go to successful" do
+            context "project expired and not have waiting payments" do
+              before do
+                allow(project).to receive(:expired?).and_return(true)
+                allow(project).to receive(:in_time_to_wait?).and_return(false)
+              end
+
+              it_should_behave_like "valid successful project transaction"
+            end
+          end
+
+          context "when can't go to successful" do
+            context "project expired but have pending payments" do
+              before do
+                allow(project).to receive(:expired?).and_return(true)
+                allow(project).to receive(:in_time_to_wait?).and_return(true)
+              end
+
+              it_should_behave_like "invalid successful project transaction"
+            end
+
+            context "project not expired" do
+              before do
+                allow(project).to receive(:expired?).and_return(false)
+              end
+
+              it_should_behave_like "invalid successful project transaction"
+            end
+          end
+        end
+      end
     end
   end
 end
