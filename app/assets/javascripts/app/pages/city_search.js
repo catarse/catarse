@@ -37,7 +37,7 @@ App.addChild('CitySearch', {
   ontypewatch: function(value) {
     var that = this;
 
-    $.get($('#city-input-wrapper').data('searchpath'), { pg_search: value, limit: 5 }, function(response){
+    $.get($('#city-input-wrapper').data('searchpath'), { pg_search: value }, function(response){
       if($.trim(response) === "") {
         that.$('.search-pre-result').hide();
       } else {
