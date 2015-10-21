@@ -270,7 +270,10 @@ class Project < ActiveRecord::Base
     Project.where(id: self.id).pluck("projects.#{attribute}").first
   end
 
+  # Init flexible machine or
+  # all or nothing machine
   def state_machine
-    @state_machine ||= FlexibleProjectMachine.new(self, transition_class: ProjectTransition)
+    machine_class = Object.const_get "#{self.project_type.classify}ProjectMachine"
+    @state_machine ||= machine_class.new(self, transition_class: ProjectTransition)
   end
 end

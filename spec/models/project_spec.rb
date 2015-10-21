@@ -42,6 +42,22 @@ RSpec.describe Project, type: :model do
     it{ is_expected.not_to allow_value('agua.sp.01').for(:permalink) }
   end
 
+  describe ".state_machine" do
+    let(:project_type) { 'all_or_nothing' }
+    let!(:project) { create(:project, project_type: project_type) }
+
+    subject { project.state_machine }
+
+    context "when project type is all_or_nothing" do
+      it { is_expected.to be_an_instance_of(AllOrNothingProjectMachine) }
+    end
+
+    context "when project type is flexible" do
+      let(:project_type) { 'flexible' }
+      it { is_expected.to be_an_instance_of(FlexibleProjectMachine) }
+    end
+  end
+
   describe "is_flexible?" do
     let(:project) { create(:project, project_type: 'all_or_nothing') }
 
