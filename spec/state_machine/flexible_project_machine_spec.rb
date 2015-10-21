@@ -45,6 +45,10 @@ RSpec.describe FlexibleProjectMachine, type: :model do
       end
 
       shared_examples "invalid project transaction flow" do |transition_to|
+        before do
+          subject.transition_to transition_to
+        end
+
         it "should have errors on project" do
           expect(project.errors).not_to be_empty
         end
@@ -105,7 +109,7 @@ RSpec.describe FlexibleProjectMachine, type: :model do
         let(:project_state) { 'in_analysis' }
 
         %i(successful waiting_funds in_analysis).each do |state|
-          it "can't transition from draft to #{state}" do
+          it "can't transition from in_analysis to #{state}" do
             expect(subject.transition_to(state)).to eq(false)
           end
         end
@@ -118,16 +122,45 @@ RSpec.describe FlexibleProjectMachine, type: :model do
         end
 
         context "when is invalid project" do
-          context "approved transition" do
-            before do
-              project.name = nil
-              subject.transition_to :approved
-            end
+          before do
+            project.name = nil
+          end
 
+          context "approved transition" do
             it_should_behave_like "invalid approved project transaction"
           end
         end
       end
+
+      context "approved project can go to online, in_analysis" do
+        let(:project_state) { 'approved' }
+
+        %i(draft deleted successful waiting_funds).each do |state|
+          it "can't transition from approved to #{state}" do
+            expect(subject.transition_to(state)).to eq(false)
+          end
+        end
+
+        context "when is valid project" do 
+          it_should_behave_like "valid online project transaction"
+          it_should_behave_like "valid in_analysis project transaction"
+        end
+
+        context "when is invalid project" do
+          before do
+            project.name = nil
+          end
+
+          context "online transition" do
+            it_should_behave_like "invalid online project transaction"
+          end
+        end
+      end
+
+      context "online project can go to waiting_funds or successful" do
+        
+      end
+
     end
   end
 end
