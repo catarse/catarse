@@ -1,5 +1,6 @@
 class FlexibleProjectMachine
   include Statesman::Machine
+  BASIC_VALIDATION_STATES = %i(in_analysis approved online waiting_funds successful).freeze
 
   state :draft, initial: true
   state :in_analysis
