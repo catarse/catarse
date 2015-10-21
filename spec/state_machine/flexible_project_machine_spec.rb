@@ -101,8 +101,33 @@ RSpec.describe FlexibleProjectMachine, type: :model do
         end
       end
 
+      context "in_analysis project can go to approved, draft, rejected, deleted" do
+        let(:project_state) { 'in_analysis' }
+
+        %i(successful waiting_funds in_analysis).each do |state|
+          it "can't transition from draft to #{state}" do
+            expect(subject.transition_to(state)).to eq(false)
+          end
         end
 
+        context "when is valid project" do 
+          it_should_behave_like "valid approved project transaction"
+          it_should_behave_like "valid draft project transaction"
+          it_should_behave_like "valid rejected project transaction"
+          it_should_behave_like "valid deleted project transaction"
+        end
+
+        context "when is invalid project" do
+          context "approved transition" do
+            before do
+              project.name = nil
+              subject.transition_to :approved
+            end
+
+            it_should_behave_like "invalid approved project transaction"
+          end
+        end
       end
+    end
   end
 end
