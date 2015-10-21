@@ -16,6 +16,8 @@ class FlexibleProjectMachine
   transition from: :rejected, to: [:draft, :deleted]
   transition from: :approved, to: [:online, :in_analysis]
   transition from: :online, to: [:waiting_funds, :successful]
+  transition from: :waiting_funds, to: [:successful]
+
   # Ensure that project is valid when try change
   # the project state
   guard_transition(to: BASIC_VALIDATION_STATES) do |project|

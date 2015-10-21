@@ -220,6 +220,37 @@ RSpec.describe FlexibleProjectMachine, type: :model do
           end
         end
       end
+
+      context "waiting_funds project can go to successful" do
+        let(:project_state) { 'waiting_funds' }
+
+        before do
+          allow(project).to receive(:expired?).and_return(true)
+        end
+
+        context "successful transition" do
+          context "when can go to successful" do
+            context "project not have waiting payments" do
+              before do
+                allow(project).to receive(:in_time_to_wait?).and_return(false)
+              end
+
+              it_should_behave_like "valid successful project transaction"
+            end
+          end
+
+          context "when can't go to successful" do
+            context "project have pending payments" do
+              before do
+                allow(project).to receive(:in_time_to_wait?).and_return(true)
+              end
+
+              it_should_behave_like "invalid successful project transaction"
+            end
+          end
+        end
+      end
+
     end
   end
 end
