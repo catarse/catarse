@@ -14,5 +14,60 @@ RSpec.describe FlexibleProjectMachine, type: :model do
       end
     end
 
+    context "transitions" do
+
+      shared_examples "valid project transaction flow" do |transition_to|
+        before do
+          subject.transition_to(transition_to)
+        end
+
+        it "should turn current_state to in_analysis" do
+          expect(subject.current_state).to eq(transition_to.to_s)
+        end
+
+
+        it "should create an most recent transition to_locale" do
+          expect(project.project_transitions.where(to_state: transition_to.to_s).count).to eq(1)
+        end
+      end
+
+      FlexibleProjectMachine.states.each do |state| 
+        shared_examples "valid #{state} project transaction" do
+          it_should_behave_like "valid project transaction flow", state.to_sym
+        end
+
+        shared_examples "invalid #{state} project transaction" do
+          it_should_behave_like "invalid project transaction flow", state.to_sym
+        end
+      end
+
+      shared_examples "invalid project transaction flow" do |transition_to|
+
+        it "should not turn current_state to #{transition_to.to_s}" do
+          expect(subject.current_state).not_to eq(transition_to.to_s)
+        end
+
+
+        it "should not create an most recent transition to_locale" do
+          expect(project.project_transitions.where(to_state: transition_to.to_s).count).to eq(0)
+        end
+      end
+      context "draft can go to in_analysis, rejected and deleted only" do
+        %i(draft online approved successful waiting_funds).each do |state|
+          it "can't transition from draft to #{state}" do
+            expect(subject.transition_to(state)).to eq(false)
+          end
+        end
+
+        context "in_analysis transaction" do 
+          context "when is a valid project" do
+            it_should_behave_like "valid rejected project transaction"
+            it_should_behave_like "valid deleted project transaction"
+            it_should_behave_like "valid in_analysis project transaction"
+          end
+
+        end
+
+      end
   end
 end

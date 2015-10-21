@@ -10,4 +10,5 @@ class FlexibleProjectMachine
   state :waiting_funds
   state :deleted
 
+  transition from: :draft, to: [:in_analysis, :rejected, :deleted]
 end
