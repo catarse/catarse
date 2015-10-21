@@ -276,6 +276,11 @@ RSpec.describe FlexibleProjectMachine, type: :model do
         it { subject.approve }
       end
 
+      context "#push_to_online" do
+        before {  expect(subject).to receive(:transition_to).with(:online) }
+        it { subject.push_to_online }
+      end
+
       end
     end
 

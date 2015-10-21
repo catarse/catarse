@@ -71,4 +71,9 @@ class FlexibleProjectMachine
     transition_to :approved
   end
 
+  # put project in online state
+  def push_to_online
+    transition_to :online
+  end
+
 end
