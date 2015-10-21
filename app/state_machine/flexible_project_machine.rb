@@ -61,4 +61,9 @@ class FlexibleProjectMachine
     transition_to :in_analysis
   end
 
+  # put project in rejected state
+  def reject
+    transition_to :rejected
+  end
+
 end

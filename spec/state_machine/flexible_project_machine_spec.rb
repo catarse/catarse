@@ -266,6 +266,11 @@ RSpec.describe FlexibleProjectMachine, type: :model do
         it { subject.send_to_analysis }
       end
 
+      context "#reject" do
+        before {  expect(subject).to receive(:transition_to).with(:rejected) }
+        it { subject.reject }
+      end
+
       end
     end
 
