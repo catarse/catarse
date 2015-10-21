@@ -15,7 +15,6 @@ RSpec.describe FlexibleProjectMachine, type: :model do
     end
 
     context "transitions" do
-
       shared_examples "valid project transaction flow" do |transition_to|
         before do
           subject.transition_to(transition_to)
@@ -250,7 +249,19 @@ RSpec.describe FlexibleProjectMachine, type: :model do
           end
         end
       end
-
     end
+
+    context "instance methods" do
+      before do
+        allow(subject).to receive(:push_to_draft).and_call_original
+      end
+
+      context "#push_to_draft" do
+        before { expect(subject).to receive(:transition_to).with(:draft) }
+        it { subject.push_to_draft } 
+      end
+      end
+    end
+
   end
 end

@@ -51,4 +51,9 @@ class FlexibleProjectMachine
     model.save
   end
 
+  # put project into draft state
+  def push_to_draft
+    transition_to :draft
+  end
+
 end
