@@ -56,4 +56,9 @@ class FlexibleProjectMachine
     transition_to :draft
   end
 
+  # put project into in_analysis state
+  def send_to_analysis
+    transition_to :in_analysis
+  end
+
 end

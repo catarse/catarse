@@ -260,6 +260,12 @@ RSpec.describe FlexibleProjectMachine, type: :model do
         before { expect(subject).to receive(:transition_to).with(:draft) }
         it { subject.push_to_draft } 
       end
+
+      context "#send_to_analysis" do
+        before {  expect(subject).to receive(:transition_to).with(:in_analysis) }
+        it { subject.send_to_analysis }
+      end
+
       end
     end
 
