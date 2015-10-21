@@ -1,20 +1,16 @@
 class FlexibleProjectMachine
   include Statesman::Machine
-  BASIC_VALIDATION_STATES = %i(in_analysis approved online waiting_funds successful).freeze
+  BASIC_VALIDATION_STATES = %i(online waiting_funds successful).freeze
 
   state :draft, initial: true
-  state :in_analysis
   state :rejected
-  state :approved
   state :online
   state :successful
   state :waiting_funds
   state :deleted
 
-  transition from: :draft, to: [:in_analysis, :rejected, :deleted]
-  transition from: :in_analysis, to: [:approved, :rejected, :deleted, :draft]
+  transition from: :draft, to: [:rejected, :deleted, :online]
   transition from: :rejected, to: [:draft, :deleted]
-  transition from: :approved, to: [:online, :in_analysis]
   transition from: :online, to: [:waiting_funds, :successful]
   transition from: :waiting_funds, to: [:successful]
 
@@ -41,14 +37,23 @@ class FlexibleProjectMachine
   end
 
   # Before transition, change the state to trigger validations
-  before_transition do |model, transition|
-    model.state = transition.to_state
+  before_transition do |project, transition|
+    transition.metadata[:from_state] = project.state
+    project.state = transition.to_state
+  end
+
+  # After transition to successful should notify_observers
+  after_transition to: :successful do |project| 
+    project.notify_observers :sync_with_mailchimp
   end
 
   # After transition run, persist the current state
   # into model.state field.
-  after_transition do |model, transition|
-    model.save
+  after_transition do |project, transition|
+    project.save
+    from_state = transition.metadata["from_state"]
+
+    project.notify_observers :"from_#{from_state}_to_#{transition.to_state}"
   end
 
   # put project into draft state
@@ -56,20 +61,11 @@ class FlexibleProjectMachine
     transition_to :draft
   end
 
-  # put project into in_analysis state
-  def send_to_analysis
-    transition_to :in_analysis
-  end
-
   # put project in rejected state
   def reject
     transition_to :rejected
   end
 
-  # put project in approved state
-  def approve
-    transition_to :approved
-  end
 
   # put project in online state
   def push_to_online
