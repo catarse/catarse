@@ -282,12 +282,13 @@ p {
   text-align: left;
 }
 .project-stats.mf {
-  margin-bottom: 70px;
-  padding-top: 54px;
+  height: 488px;
+  margin-bottom: 30px;
+  padding-top: 0px;
   padding-left: 0px;
 }
 .project-stats.mf.project-stats-zelo {
-  margin-bottom: 260px;
+  margin-bottom: 230px;
 }
 .project-nav {
   height: 42px;
@@ -301,7 +302,7 @@ p {
   padding-bottom: 42px;
 }
 .project-nav.mf {
-  height: 64px;
+  height: 74px;
   margin-top: 0px;
   padding-top: 20px;
   border-bottom: 1px solid #f1f2f3;
@@ -326,6 +327,7 @@ p {
 }
 .project-share {
   margin-top: 0px;
+  margin-bottom: 70px;
   padding-top: 18px;
 }
 .project-share.div-share2 {
@@ -394,7 +396,11 @@ p {
   margin-top: 40px;
 }
 .main-header.zelo {
-  background-color: #644a72;
+  border-bottom: 1px solid #e9e9ec;
+  background-color: #723a69;
+}
+.main-header.header--multidao {
+  background-color: #573a5a;
 }
 .img-logo {
   margin-top: 8px;
@@ -613,7 +619,7 @@ p {
 }
 .project-video.mf {
   height: 488px;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 }
 .fontsize-smaller {
   font-size: 14px;
@@ -1078,7 +1084,7 @@ p {
 .dashboard-nav-link {
   display: inline-block;
   margin-right: 15px;
-  padding: 10px 12px;
+  padding: 10px 12px 20px;
   border-right: 1px none #f1f2f3;
   border-bottom: 3px solid white;
   background-color: white;
@@ -1316,6 +1322,10 @@ p {
 }
 .header-logo:hover {
   opacity: 0.5;
+}
+.header-logo.logo--multidao {
+  width: 120px;
+  padding-top: 5px;
 }
 .fontweight-thin {
   font-weight: 100;
@@ -1602,10 +1612,6 @@ p {
   background-color: #e86666;
   color: white;
 }
-.section-one-column {
-  padding-top: 30px;
-  padding-bottom: 30px;
-}
 .btn-tweet {
   border-color: #3cf;
   background-color: #3cf;
@@ -1651,7 +1657,7 @@ p {
   left: 0px;
   top: 0px;
   bottom: 0px;
-  z-index: 3000;
+  z-index: 8000;
   overflow-x: auto;
   overflow-y: auto;
   width: 205px;
@@ -1906,25 +1912,34 @@ p {
 }
 .hero-full.hero-knowmore {
   background-color: #24494e;
-  background-image: url('../images/hero-home-hello-1.jpg');
+  background-image: url('/assets/hero-new-home.jpg');
   background-size: cover;
   color: white;
 }
+.hero-full.hero-zelo {
+  background-size: cover, auto;
+  background-repeat: no-repeat, repeat;
+}
+.hero-full.hero-full--new {
+  margin-bottom: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
 .hero-guide {
-  background-image: url('../images/hero-guia-new.jpg');
+  background-image: url('/assets/hero-guide.jpg');
   background-position: 50% 50%;
   background-size: cover;
   background-attachment: scroll;
   color: white;
 }
 .hero-jobs {
-  background-image: url('../images/hero-jobs-gray.jpg');
+  background-image: url('/assets/hero-jobs.jpg');
   background-position: 50% 50%;
   background-size: cover;
   color: white;
 }
 .hero-back {
-  background-image: url('../images/hero-home-hello-1.jpg');
+  background-image: url('/assets/hero-home-hello-1.jpg');
   background-position: 50% 50%;
   background-size: cover;
   color: white;
@@ -2120,7 +2135,7 @@ p {
   margin-bottom: 30px;
   padding-top: 110px;
   background-color: #5b97c6;
-  background-image: url('../images/hero-explore.jpg');
+  background-image: url('/assets/hero-explore.jpg');
   background-position: 50% 50%;
   background-size: cover;
   background-attachment: fixed;
@@ -2148,7 +2163,7 @@ p {
   padding-top: 130px;
 }
 .hero-blog {
-  background-image: url('../images/hero-blog.jpg');
+  background-image: url('/assets/hero-blog.jpg');
   background-size: cover;
   color: white;
 }
@@ -2162,14 +2177,14 @@ p {
 .bg-projectgrid {
   padding-top: 219px;
   padding-bottom: 185px;
-  background-image: url('../images/bg-staf.jpg');
+  background-image: url('/assets/bg-hello-people.jpg');
   background-position: 50% 38%;
   background-size: cover;
   background-attachment: scroll;
   color: white;
 }
 .hero-assets {
-  background-image: url('../images/hero-assets.jpg');
+  background-image: url('/assets/hero-assets.jpg');
   background-position: 50% 50%;
   background-size: cover;
   color: white;
@@ -2190,6 +2205,8 @@ p {
 }
 .hero-hello {
   position: relative;
+  overflow-x: hidden;
+  overflow-y: hidden;
   height: 80vh;
   background-image: none;
   background-size: auto;
@@ -2215,7 +2232,7 @@ p {
 .section-cta.video4anos {
   padding-top: 92px;
   padding-bottom: 92px;
-  background-image: url('../images/hello-user-bg.jpg');
+  background-image: url('/assets/hello-user-bg.jpg');
   background-position: 50% 50%;
   background-size: cover;
 }
@@ -2257,12 +2274,12 @@ p {
   transform: scale(1.01);
 }
 .cta-backer {
-  background-image: url('../images/hello-cta-backer.jpg');
+  background-image: url('/assets/hello-cta-backer.jpg');
   background-position: 50% 50%;
   background-size: cover;
 }
 .cta-maker {
-  background-image: url('../images/hello-cta-apoiador.jpg');
+  background-image: url('/assets/hello-cta-apoiador.jpg');
 }
 .back-reward-money {
   margin-bottom: 8px;
@@ -2307,7 +2324,8 @@ p {
   width: 300px;
 }
 .project-blurb {
-  margin-bottom: 30px;
+  margin-top: 10px;
+  margin-bottom: 10px;
   font-size: 23px;
   line-height: 150%;
 }
@@ -2360,7 +2378,7 @@ p {
 }
 .card-project-thumb-big {
   height: 312px;
-  background-image: url('../images/project_thumb_large_thumb.jpg');
+  background-image: url('/assets/project_thumb_large_thumb.jpg');
 }
 .body-project {
   margin-left: 205px;
@@ -2379,7 +2397,7 @@ p {
   height: 768px;
   padding-top: 375px;
   padding-bottom: 375px;
-  background-image: url('../images/bg-people.jpg');
+  background-image: url('/assets/bg-hello-people.jpg');
   background-size: cover;
   color: white;
 }
@@ -2389,12 +2407,12 @@ p {
 }
 .section-large.hello-idea {
   padding-bottom: 145px;
-  background-image: url('../images/bg-icone-hello-6.jpg');
-  background-size: cover;
+  background-image: url('/assets/bg-hello-idea.jpg');
+  background-size: 1383px;
   text-align: center;
 }
 .section-large.hello-catarse {
-  background-image: url('../images/bg-catarse-5.jpg');
+  background-image: url('/assets/bg-hello-catarse.jpg');
   background-size: contain;
   background-repeat: repeat-y;
   text-align: center;
@@ -2429,7 +2447,7 @@ p {
   margin-bottom: -80px;
 }
 .bg-humberto {
-  background-image: url('../images/hello-user-bg.jpg');
+  background-image: url('/assets/bg-hello-user.jpg');
   background-position: 50% 50%;
   background-size: cover;
 }
@@ -2467,7 +2485,7 @@ p {
 }
 .card-alert {
   border-color: rgba(158, 156, 32, 0.2);
-  background-color: #f4f4c0;
+  background-color: #ffffc0;
 }
 .body-alert {
   margin-top: 40px;
@@ -2632,7 +2650,7 @@ p {
   background-color: #f4fced;
 }
 .bg-stats {
-  background-image: url('../images/bg-hello-idea.jpg');
+  background-image: url('/assets/bg-hello-idea.jpg');
   background-size: cover;
 }
 .table-outer {
@@ -2683,7 +2701,7 @@ p {
 }
 .hero-who {
   background-color: #67a4d2;
-  background-image: url('../images/bg-quemsomos.jpg');
+  background-image: url('/assets/bg-quemsomos.jpg');
   background-position: 50% 100%;
   background-size: cover;
   color: white;
@@ -2709,7 +2727,7 @@ p {
 }
 .hero-start {
   padding-top: 170px;
-  background-image: url('../images/hero-start.jpg');
+  background-image: url('/assets/hero-start.jpg');
   background-size: cover;
   color: white;
 }
@@ -2784,8 +2802,13 @@ p {
   background-color: rgba(255, 255, 255, 0.12);
 }
 .hero-zelo {
-  background-image: -webkit-linear-gradient(#8a1ee6, #21afbc);
-  background-image: linear-gradient(#8a1ee6, #21afbc);
+  margin-bottom: 0px;
+  padding-top: 103px;
+  background-image: url('/assets/bg-hero-flex.png'), -webkit-linear-gradient(#9d50da 41%, #716bd8);
+  background-image: url('/assets/bg-hero-flex.png'), linear-gradient(#9d50da 41%, #716bd8);
+  background-position: 50% 50%, 0px 0px;
+  background-size: 1383px, auto;
+  background-repeat: no-repeat, repeat;
   color: white;
 }
 .bg-purple {
@@ -2814,7 +2837,7 @@ p {
   text-decoration: none;
 }
 .bg-catarse-zelo {
-  background-image: url('../images/bg-catarse-zelo.jpg');
+  background-image: url('/assets/bg-catarse-zelo.jpg');
   background-position: 50% 50%;
   background-size: cover;
 }
@@ -2854,10 +2877,105 @@ p {
 .project-image {
   height: 488px;
   margin-bottom: 50px;
-  background-image: url('../images/thumb-projeto_1.png');
+  background-image: url('/assets/thumb-projeto_1.png');
   background-position: 0px 50%;
   background-size: cover;
   background-repeat: no-repeat;
+}
+.tic-tac {
+  display: inline-block;
+  width: 47px;
+  margin-right: 10px;
+  padding: 5px;
+  background-color: rgba(255, 255, 255, 0.71);
+  text-align: center;
+}
+.modal-backdrop {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  z-index: 9000;
+  height: 100%;
+  background-color: rgba(241, 244, 244, 0.87);
+}
+.modal-dialog-outer {
+  position: relative;
+  height: 100%;
+}
+.modal-dialog-inner {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  overflow-x: auto;
+  overflow-y: auto;
+  margin: auto;
+  border-radius: 5px;
+  background-color: white;
+  box-shadow: rgba(63, 71, 82, 0.29) 1px 1px 49px 0px;
+}
+.modal-dialog-inner.modal-dialog-medium {
+  width: 550px;
+  height: 500px;
+}
+.modal-dialog-content {
+  height: 70%;
+}
+.modal-dialog-nav-bottom {
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  margin-left: 20px;
+}
+.hero-full-content {
+  padding-top: 230px;
+  padding-right: 86px;
+  padding-left: 86px;
+}
+.bg-hero {
+  background-image: url('/assets/bg-podcycle.jpg');
+  background-position: 50% 50%;
+  background-size: cover;
+}
+.bg-knowmore {
+  background-image: url('/assets/HERO-HELLO-DEGRADE.jpg');
+  background-position: 50% 50%;
+  background-size: cover;
+}
+.bg-pedroca {
+  background-image: url('/assets/bg-pedroca.jpg');
+  background-position: 50% 50%;
+  background-size: cover;
+}
+.bg-greenlime {
+  background-color: #40b2de;
+}
+.section-product {
+  height: 3px;
+  color: white;
+  font-size: 12px;
+}
+.section-product.flex {
+  background-color: #9e1a89;
+}
+.bg-allornothing {
+  background-color: #7cc142;
+}
+.project-stats-inner {
+  margin-bottom: 20px;
+  padding: 20px;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+.logo-flex-home {
+  width: 359px;
+  margin-bottom: 30px;
 }
 html.w-mod-js *[data-ix="fade-in"] {
   opacity: 0;
@@ -2867,9 +2985,9 @@ html.w-mod-js *[data-ix="display-none-on-load"] {
 }
 html.w-mod-js *[data-ix="zoom-in"] {
   opacity: 0;
-  -webkit-transform: scale(1.15);
-  -ms-transform: scale(1.15);
-  transform: scale(1.15);
+  -webkit-transform: scale(1.1500000000000001);
+  -ms-transform: scale(1.1500000000000001);
+  transform: scale(1.1500000000000001);
 }
 html.w-mod-js *[data-ix="display-none-on-load-2"] {
   display: none;
@@ -2941,6 +3059,7 @@ html.w-mod-js *[data-ix="icon-funded-with"] {
     padding-left: 5px;
   }
   .project-stats.mf {
+    height: 408px;
     margin-bottom: 30px;
     padding-top: 0px;
   }
@@ -3085,8 +3204,8 @@ html.w-mod-js *[data-ix="icon-funded-with"] {
     padding-bottom: 8px;
   }
   .user-profile {
-    width: 75px;
-    margin-right: -29px;
+    width: 55px;
+    margin-right: -20px;
   }
   .dropdown-list.user-menu.w--open {
     position: absolute;
@@ -3115,6 +3234,10 @@ html.w-mod-js *[data-ix="icon-funded-with"] {
     margin-top: -3px;
     margin-right: 20px;
     margin-left: 0px;
+  }
+  .header-logo.logo--multidao {
+    width: 100px;
+    margin-top: -1px;
   }
   .btn-large {
     padding-top: 16px;
@@ -3179,10 +3302,6 @@ html.w-mod-js *[data-ix="icon-funded-with"] {
   .card-notification {
     width: 50%;
   }
-  .section-one-column {
-    padding-top: 20px;
-    padding-bottom: 20px;
-  }
   .btn-tweet {
     border-color: #3cf;
     background-color: #3cf;
@@ -3231,6 +3350,9 @@ html.w-mod-js *[data-ix="icon-funded-with"] {
     padding-top: 200px;
     padding-bottom: 170px;
   }
+  .hero-full.hero-zelo {
+    padding-top: 90px;
+  }
   .card-project-meter.successful {
     font-size: 13px;
   }
@@ -3273,8 +3395,7 @@ html.w-mod-js *[data-ix="icon-funded-with"] {
   .hero-hello {
     height: 490px;
     background-color: #3f4752;
-    background-image: url('../images/hero-gray-elaine_1.jpg');
-    background-position: 16% 0%;
+    background-image: url('/assets/hero-hello.jpg');
     background-size: cover;
   }
   .btn-play {
@@ -3335,6 +3456,18 @@ html.w-mod-js *[data-ix="icon-funded-with"] {
   .project-image {
     height: 358px;
   }
+  .modal-dialog-inner {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.62);
+  }
+  .modal-dialog-inner.modal-dialog-medium {
+    width: auto;
+    height: auto;
+  }
+  .logo-flex-home {
+    width: 309px;
+  }
 }
 @media (max-width: 767px) {
   h2 {
@@ -3387,6 +3520,7 @@ html.w-mod-js *[data-ix="icon-funded-with"] {
     text-align: center;
   }
   .project-stats.mf {
+    height: auto;
     margin-right: 0px;
     margin-bottom: 50px;
     margin-left: 0px;
@@ -3687,7 +3821,6 @@ html.w-mod-js *[data-ix="icon-funded-with"] {
     margin-left: 20px;
   }
   .section-one-column {
-    padding-top: 25px;
     padding-right: 15px;
     padding-left: 15px;
   }
@@ -3753,6 +3886,9 @@ html.w-mod-js *[data-ix="icon-funded-with"] {
   }
   .hero-full.hero-knowmore {
     padding-top: 140px;
+  }
+  .hero-full.hero-zelo {
+    padding-top: 20px;
   }
   .card-project-meter.successful {
     text-align: center;
@@ -3955,6 +4091,9 @@ html.w-mod-js *[data-ix="icon-funded-with"] {
   .project-image {
     height: 318px;
     margin-bottom: 40px;
+  }
+  .logo-flex-home {
+    width: 189px;
   }
 }
 @media (max-width: 479px) {
@@ -4212,6 +4351,9 @@ html.w-mod-js *[data-ix="icon-funded-with"] {
   .header-logo {
     width: 85px;
   }
+  .header-logo.logo--multidao {
+    margin-top: 0px;
+  }
   .btn-dark.btn-attached {
     width: 100%;
   }
@@ -4248,7 +4390,8 @@ html.w-mod-js *[data-ix="icon-funded-with"] {
     padding-left: 10px;
   }
   .section-one-column {
-    padding: 20px 10px 0px;
+    padding-right: 10px;
+    padding-left: 10px;
   }
   .dashboard-nav {
     padding-bottom: 5px;
@@ -4277,6 +4420,9 @@ html.w-mod-js *[data-ix="icon-funded-with"] {
   }
   .hero-full.hero-knowmore {
     padding-top: 175px;
+  }
+  .hero-full.hero-zelo {
+    padding-top: 20px;
   }
   .hero-half {
     height: 320px;
@@ -4325,8 +4471,6 @@ html.w-mod-js *[data-ix="icon-funded-with"] {
   }
   .hero-hello {
     height: 490px;
-    background-image: url('../images/hero-gray-elaine.jpg');
-    background-position: 34% 0%;
   }
   .card-big {
     padding-right: 15px;
@@ -4405,4 +4549,8 @@ html.w-mod-js *[data-ix="icon-funded-with"] {
     height: 178px;
     margin-bottom: 20px;
   }
+  .logo-flex-home {
+    width: 179px;
+  }
 }
+
