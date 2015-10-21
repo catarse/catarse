@@ -11,6 +11,7 @@ class FlexibleProjectMachine
   state :deleted
 
   transition from: :draft, to: [:in_analysis, :rejected, :deleted]
+  transition from: :rejected, to: [:draft, :deleted]
   # Ensure that project is valid when try change
   # the project state
   guard_transition(to: BASIC_VALIDATION_STATES) do |project|

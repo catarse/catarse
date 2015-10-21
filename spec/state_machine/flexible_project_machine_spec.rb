@@ -87,6 +87,20 @@ RSpec.describe FlexibleProjectMachine, type: :model do
         end
 
       end
+
+      context "rejected can go to draft, deleted only" do
+        let(:project_state) { 'rejected' }
+
+        it_should_behave_like "valid draft project transaction"
+        it_should_behave_like "valid deleted project transaction"
+
+        %i(online approved in_analysis successful waiting_funds).each do |state|
+          it "can't transition from draft to #{state}" do
+            expect(subject.transition_to(state)).to eq(false)
+          end
+        end
+      end
+
         end
 
       end
