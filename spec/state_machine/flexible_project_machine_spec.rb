@@ -271,6 +271,11 @@ RSpec.describe FlexibleProjectMachine, type: :model do
         it { subject.reject }
       end
 
+      context "#approve" do
+        before {  expect(subject).to receive(:transition_to).with(:approved) }
+        it { subject.approve }
+      end
+
       end
     end
 

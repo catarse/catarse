@@ -66,4 +66,9 @@ class FlexibleProjectMachine
     transition_to :rejected
   end
 
+  # put project in approved state
+  def approve
+    transition_to :approved
+  end
+
 end
