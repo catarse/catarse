@@ -210,10 +210,6 @@ class Project < ActiveRecord::Base
     User.find_by_email CatarseSettings[:email_projects]
   end
 
-  def should_fail?
-    expired? && !reached_goal? && !is_flexible?
-  end
-
   def notify_owner(template_name, params = {})
     notify_once(
       template_name,
