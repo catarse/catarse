@@ -12,11 +12,12 @@ div[itemtype="http://schema.org/CreativeWork" class="#{defined?(wrapper_class) ?
       .w-hidden-small.w-hidden-tiny.fontcolor-secondary.fontsize-smaller
         = link_to project_by_slug_path(@project.permalink, ref: ref), title: @project.headline, target: target, class: 'link-hidden' do
           = truncate(@project.headline, length: 140)
-    - if @project.decorate.show_city
-      .w-hidden-small.w-hidden-tiny.card-project-author.altt
-        .fontsize-smallest.fontcolor-secondary
-          span.fa.fa-map-marker.fa-1
-          |  #{@project.decorate.show_city}
+    
+    .w-hidden-small.w-hidden-tiny.card-project-author.altt
+      .fontsize-smallest.fontcolor-secondary
+      - if @project.decorate.show_city
+        span.fa.fa-map-marker.fa-1
+        |  #{@project.decorate.show_city}
     .card-project-meter class=@project.state
       -if ['successful', 'failed', 'waiting_funds'].include? @project.state
         div= t("projects.card.display_status.#{@project.display_status}")
