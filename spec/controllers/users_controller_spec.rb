@@ -230,7 +230,7 @@ RSpec.describe UsersController, type: :controller do
 
   describe "GET show" do
     before do
-      get :show, id: user.id, locale: 'pt'
+      get :show, id: user.id, locale: 'pt', ref: 'test'
     end
 
     context "when user is no longer active" do
@@ -241,6 +241,10 @@ RSpec.describe UsersController, type: :controller do
     context "when user is active" do
       it{ is_expected.to be_successful }
       it{ expect(assigns(:fb_admins)).to include(user.facebook_id.to_i) }
+    end
+
+    it "should set referral session" do
+      expect(session[:referral_link]).to eq 'test'
     end
   end
 end

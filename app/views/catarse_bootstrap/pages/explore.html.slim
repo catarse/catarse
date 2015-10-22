@@ -1,5 +1,6 @@
 - content_for :title, t('.title')
 - categories = Category.with_projects.order(:name_pt).all
+- controller.referral_it!
 = render 'shared/header_big', overlayer: true
 
 - if current_user

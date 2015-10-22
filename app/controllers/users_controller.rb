@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   defaults finder: :find_active!
   actions :show, :update, :unsubscribe_notifications, :destroy, :edit
   respond_to :json, only: [:contributions, :projects]
+  before_action :referral_it!, only: [:show]
 
   def destroy
     authorize resource
