@@ -143,23 +143,34 @@ RSpec.describe Project, type: :model do
   end
 
   describe "reward size validation" do
-    let(:project) { create(:project, state: 'in_analysis') }
+    let(:project) { create(:project, state: 'draft') }
 
-    before do
-      project.rewards.destroy_all
-    end
+    subject { project.errors['rewards.size'].present? }
 
-    subject { project.valid? }
+    context "flexible project without rewards" do
+      before do
+        project.project_type = 'flexible'
+        project.rewards.destroy_all
 
-    context "flexible project" do
-      before { create(:flexible_project, project: project) }
-      it "with no rewards" do
-        is_expected.to eq(true)
+        # need to us transition to trigger state validations
+        project.state_machine.transition_to :online
+       end
+
+      it "should not have rewards.size error" do
+        is_expected.to eq(false) 
       end
     end
-    context "non flexible project" do
-      it "with no rewards" do
-        is_expected.to eq(false)
+
+    context "all or nothing project without rewads" do
+      before do
+        project.rewards.destroy_all
+
+        # need to us transition to trigger state validations
+        project.state_machine.transition_to :in_analysis
+      end
+
+      it "should have rewards.size error" do
+        is_expected.to eq(true) 
       end
     end
   end
