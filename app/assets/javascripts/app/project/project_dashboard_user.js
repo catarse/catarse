@@ -2,12 +2,20 @@ App.addChild('DashboardUserSettings', {
   el: '#dashboard-user_settings-tab',
 
   events:{
-    "change .account_type": "changeType"
+    "change .account_type": "changeType",
+    "change #project_account_attributes_agency": "padZeros"
   },
 
   activate: function() {
     this.$inscription = this.$(".project_account_state_inscription");
     this.changeType();
+  },
+
+  padZeros: function(field) {
+    field = this.$('#project_account_attributes_agency');
+    field.val(("0000" + field.val()).substr(-4,4));
+
+    return true;
   },
 
   changeType: function () {

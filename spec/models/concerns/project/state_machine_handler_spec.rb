@@ -4,8 +4,8 @@ RSpec.describe Project::StateMachineHandler, type: :model do
   let(:user){ create(:user, cpf: '99999999999', phone_number: '99999999', moip_login: 'foobar', uploaded_image: File.open("#{Rails.root}/spec/support/testimg.png"), name: 'name' ) }
 
   describe "state machine" do
-    let(:project) do 
-     project = create(:project, state: 'draft', online_date: nil, user: user) 
+    let(:project) do
+     project = create(:project, state: 'draft', online_date: nil, user: user)
      create(:reward, project: project)
      project.update_attribute :state, project_state
      project
@@ -142,7 +142,7 @@ RSpec.describe Project::StateMachineHandler, type: :model do
     end
 
     describe '#finish' do
-      let(:project) { create(:project, goal: 30_000, online_days: 1, online_date: Time.now - 2.days, state: project_state) }
+      let(:project) { create(:project, goal: 30_000, online_days: 60, online_date: Time.now - 2.days, state: project_state) }
       subject { project.finish }
       let(:project_state){ 'online' }
 
@@ -155,6 +155,7 @@ RSpec.describe Project::StateMachineHandler, type: :model do
         before do
           create(:confirmed_contribution, value: 100, project: project, created_at: 2.days.ago)
           create(:pending_contribution, value: 100, project: project)
+          project.update_attribute :online_days, 1
         end
 
         it{ is_expected.to eq true }
@@ -168,7 +169,7 @@ RSpec.describe Project::StateMachineHandler, type: :model do
       context "with pending contributions" do
         before do
           create(:pending_contribution, value: 30_000, project: project)
-          subject
+          project.update_attribute :online_days, 1
         end
 
         context "and is not flexible project" do
@@ -216,25 +217,15 @@ RSpec.describe Project::StateMachineHandler, type: :model do
         end
       end
 
-      context "when project not hit the goal" do
-        let(:project_state){ 'waiting_funds' }
-
-        context "and the project is flexible" do
-          before do
-            create(:flexible_project, project: project)
-          end
-          it{ is_expected.to eq true }
-          it "should go to success" do
-            subject
-            expect(project).to be_successful
-          end
+      context 'when project not hit the goal' do
+        before do
+          project.update_attribute :online_days, 1
         end
-        context 'and the project is not flexible' do
-          it{ is_expected.to eq true }
-          it "should go to failed" do
-            subject
-            expect(project).to be_failed
-          end
+
+        it{ is_expected.to eq true }
+        it "should go to failed" do
+          subject
+          expect(project).to be_failed
         end
       end
     end

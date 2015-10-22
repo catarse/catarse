@@ -55,7 +55,8 @@ class Reward < ActiveRecord::Base
   end
 
   def sold_out?
-    maximum_contributions && total_compromised >= maximum_contributions
+    #maximum_contributions && total_compromised >= maximum_contributions
+    pluck_from_database('sold_out')
   end
 
   def any_sold?

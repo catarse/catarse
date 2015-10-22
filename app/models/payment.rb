@@ -11,7 +11,7 @@ class Payment < ActiveRecord::Base
   has_many :payment_notifications # to keep compatibility with catarse_pagarme
   has_many :payment_transfers
 
-  validates_presence_of :state, :key, :gateway, :payment_method, :value, :installments
+  validates_presence_of :state, :key, :gateway, :payment_method, :value, :installments, :contribution_id
   validate :value_should_be_equal_or_greater_than_pledge
   validate :project_should_be_online, on: :create
   validate :is_unique_within_period, on: :create
