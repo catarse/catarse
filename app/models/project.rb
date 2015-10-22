@@ -281,4 +281,13 @@ class Project < ActiveRecord::Base
     machine_class = Object.const_get "#{self.project_type.classify}ProjectMachine"
     @state_machine ||= machine_class.new(self, transition_class: ProjectTransition)
   end
+
+  %w(
+    draft rejected online successful waiting_funds
+    deleted in_analysis approved failed
+  ).each do |st|
+    define_method "#{st}?" do
+      state == st
+    end
+  end
 end

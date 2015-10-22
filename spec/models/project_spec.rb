@@ -1,6 +1,13 @@
 # coding: utf-8
 require 'rails_helper'
 
+def all_machine_states
+  %w(
+    draft rejected online successful waiting_funds
+    deleted in_analysis approved failed
+  )
+end
+
 RSpec.describe Project, type: :model do
   let(:project){ build(:project, goal: 3000) }
   let(:user){ create(:user) }
@@ -40,6 +47,22 @@ RSpec.describe Project, type: :model do
     it{ is_expected.not_to allow_value(61).for(:online_days) }
     it{ is_expected.not_to allow_value('users').for(:permalink) }
     it{ is_expected.not_to allow_value('agua.sp.01').for(:permalink) }
+  end
+
+  context "state check methods" do
+    all_machine_states.each do |st|
+      describe "##{st}? when project state is #{st}" do
+        before { project.state = st }
+        subject { project.send("#{st}?") }
+        it { is_expected.to eq true }
+      end
+
+      describe "##{st}? when project state is not #{st}" do
+        before { project.state = all_machine_states.reject { |x| x == st }.sample }
+        subject { project.send("#{st}?") }
+        it { is_expected.to eq false }
+      end
+    end
   end
 
   describe ".with_state" do
