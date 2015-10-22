@@ -289,10 +289,8 @@ class Project < ActiveRecord::Base
     })
   end
 
-  %w(
-    draft rejected online successful waiting_funds
-    deleted in_analysis approved failed
-  ).each do |st|
+  # Define all project.state? check methods
+  AllOrNothingProjectMachine.states.each do |st|
     define_method "#{st}?" do
       state == st
     end
