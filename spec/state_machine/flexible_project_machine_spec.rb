@@ -2,11 +2,15 @@ require 'rails_helper'
 
 RSpec.describe FlexibleProjectMachine, type: :model do
   let(:project_state) { 'draft' }
-  let(:project) { create(:project, state: project_state) }
+  let(:project) { create(:project, state: project_state, project_type: 'flexible') }
   let!(:project_account) { create(:project_account, project: project) }
 
   describe "state_machine" do
     subject { project.state_machine }
+
+    before do
+      allow(project).to receive(:notify_observers).and_call_original
+    end
 
     context "should starts in draft" do
       it do
@@ -17,6 +21,10 @@ RSpec.describe FlexibleProjectMachine, type: :model do
     context "transitions" do
       shared_examples "valid project transaction flow" do |transition_to|
         before do
+          expect(project).to receive(:notify_observers).
+            with(:"from_#{project_state}_to_#{transition_to.to_s}").
+            and_call_original
+
           subject.transition_to(transition_to)
         end
 
@@ -102,11 +110,6 @@ RSpec.describe FlexibleProjectMachine, type: :model do
 
         context "waiting_funds transition" do 
           context "when can go to waiting_funds" do
-            before do
-              expect(project).to receive(:notify_observers).
-                with(:from_online_to_waiting_funds)
-            end
-
             context "project expired and have waiting payments" do
               before do
                 allow(project).to receive(:expired?).and_return(true)
@@ -118,10 +121,6 @@ RSpec.describe FlexibleProjectMachine, type: :model do
           end
 
           context "when can't go to waiting_funds" do
-            before do
-              expect(project).not_to receive(:notify_observers).
-                with(:from_online_to_waiting_funds)
-            end
             context "project expired but not have pending payments" do
               before do
                 allow(project).to receive(:expired?).and_return(true)
@@ -142,17 +141,12 @@ RSpec.describe FlexibleProjectMachine, type: :model do
         end
 
         context "successful transition" do
-          before do
-            allow(project).to receive(:notify_observers).and_call_original
-          end
           context "when can go to successful" do
             before do
               expect(project).to receive(:notify_observers).
-                with(:sync_with_mailchimp)
-
-              expect(project).to receive(:notify_observers).
-                with(:from_online_to_successful)
+                with(:sync_with_mailchimp).and_call_original
             end
+
             context "project expired and not have waiting payments" do
               before do
                 allow(project).to receive(:expired?).and_return(true)
@@ -166,9 +160,7 @@ RSpec.describe FlexibleProjectMachine, type: :model do
           context "when can't go to successful" do
             before do
               expect(project).not_to receive(:notify_observers).
-                with(:sync_with_mailchimp)
-              expect(project).not_to receive(:notify_observers).
-                with(:from_online_to_successful)
+                with(:sync_with_mailchimp).and_call_original
             end
 
             context "project expired but have pending payments" do
@@ -203,9 +195,7 @@ RSpec.describe FlexibleProjectMachine, type: :model do
             context "project not have waiting payments" do
               before do
                 expect(project).to receive(:notify_observers).
-                  with(:sync_with_mailchimp)
-                expect(project).to receive(:notify_observers).
-                  with(:from_waiting_funds_to_successful)
+                  with(:sync_with_mailchimp).and_call_original
 
                 allow(project).to receive(:in_time_to_wait?).
                   and_return(false)
@@ -219,9 +209,7 @@ RSpec.describe FlexibleProjectMachine, type: :model do
             context "project have pending payments" do
               before do
                 expect(project).not_to receive(:notify_observers).
-                  with(:sync_with_mailchimp)
-                expect(project).not_to receive(:notify_observers).
-                  with(:from_waiting_funds_to_successful)
+                  with(:sync_with_mailchimp).and_call_original
 
                 allow(project).to receive(:in_time_to_wait?).
                   and_return(true)
