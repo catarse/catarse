@@ -2,7 +2,7 @@
 
 = render 'shared/header'
 
-#project-insights-root data-id=@project.id
+#project-insights-root.min-height-70 data-id=@project.id
 
 - content_for :application_js do
   = javascript_include_tag "api/application"
