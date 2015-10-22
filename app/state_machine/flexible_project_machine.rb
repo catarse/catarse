@@ -76,6 +76,10 @@ class FlexibleProjectMachine
     transition from: :waiting_funds, to: %i(successful)
   end
 
+  # put project into deleted state
+  def push_to_trash
+    transition_to :deleted
+  end
 
   # put project into draft state
   def push_to_draft
@@ -86,7 +90,6 @@ class FlexibleProjectMachine
   def reject
     transition_to :rejected
   end
-
 
   # put project in online state
   def push_to_online

@@ -232,6 +232,15 @@ RSpec.describe FlexibleProjectMachine, type: :model do
         it { subject.push_to_draft } 
       end
 
+      context "#push_to_trash" do
+        before do
+          expect(subject).to receive(:transition_to).
+            with(:deleted).and_call_original
+        end
+
+        it { subject.push_to_trash }
+      end
+
       context "#reject" do
         before do
           expect(subject).to receive(:transition_to).
