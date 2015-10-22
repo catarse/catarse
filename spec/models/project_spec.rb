@@ -42,7 +42,53 @@ RSpec.describe Project, type: :model do
     it{ is_expected.not_to allow_value('agua.sp.01').for(:permalink) }
   end
 
-  describe ".state_machine" do
+  describe ".with_state" do
+    let(:project_state) { 'online' }
+    subject { Project.with_state(project_state).count }
+
+    context "when has online projects" do
+      before do
+        4.times { create(:project, state: 'online') }
+      end
+
+      it {is_expected.to eq(4) }
+    end
+
+    context "when not have online projects" do
+      it { is_expected.to eq(0) }
+    end
+
+    context "when state is a list" do
+      let(:project_state) { ['online', 'failed'] }
+      before do
+        4.times { create(:project, state: 'online') }
+        2.times { create(:project, state: 'failed') }
+      end
+
+      it {is_expected.to eq(6) }
+    end
+  end
+
+  describe ".without_state" do
+    let(:project_state) { 'online' }
+    subject { Project.without_state(project_state).count }
+
+    context "when has online and failed projects" do
+      before do
+        4.times { create(:project, state: 'online') }
+        2.times { create(:project, state: 'failed') }
+      end
+
+      it { is_expected.to eq(2) }
+    end
+
+    context "when not have any projects" do
+      it { is_expected.to eq(0) }
+    end
+  end
+
+
+  describe "#state_machine" do
     let(:project_type) { 'all_or_nothing' }
     let!(:project) { create(:project, project_type: project_type) }
 

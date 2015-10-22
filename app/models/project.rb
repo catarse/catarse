@@ -66,6 +66,11 @@ class Project < ActiveRecord::Base
     search_tsearch(term).presence || search_trm(term)
   end
 
+  # With state scopes
+  scope :with_state, -> (state) { where(state: state) }
+  scope :with_states, -> (state) { with_state(state) }
+  scope :without_state, -> (state) { where("projects.state not in (?)", state) }
+
   # Used to simplify a has_scope
   scope :successful, ->{ with_state('successful') }
   scope :with_project_totals, -> { joins('LEFT OUTER JOIN project_totals ON project_totals.project_id = projects.id') }
