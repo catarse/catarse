@@ -9,7 +9,6 @@ class Project < ActiveRecord::Base
 
   include Shared::Queued
 
-  include Project::StateMachineHandler
   include Project::StateValidator
   include Project::VideoHandler
   include Project::CustomValidators
@@ -69,6 +68,7 @@ class Project < ActiveRecord::Base
   scope :with_state, -> (state) { where(state: state) }
   scope :with_states, -> (state) { with_state(state) }
   scope :without_state, -> (state) { where("projects.state not in (?)", state) }
+  scope :without_states, -> (state) { without_state(state) }
 
   # Used to simplify a has_scope
   scope :successful, ->{ with_state('successful') }
@@ -189,6 +189,7 @@ class Project < ActiveRecord::Base
   def accept_contributions?
     online? && !expired?
   end
+
   def reached_goal?
     pledged >= goal
   end
@@ -270,6 +271,10 @@ class Project < ActiveRecord::Base
     Project.where(id: self.id).pluck("projects.#{attribute}").first
   end
 
+  # State machine delegation methods
+  delegate :push_to_draft, :reject, :push_to_online, :finish,
+    :send_to_analysis, :approve, :push_to_trash, :can_transition_to?,
+    :transition_to, to: :state_machine
 
   # Get all states names from AllOrNothingProjectMachine
   def self.state_names
