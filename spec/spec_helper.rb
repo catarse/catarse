@@ -4,7 +4,7 @@ RSpec.configure do |config|
   config.disable_monkey_patching!
   config.order = :random
   Kernel.srand config.seed
-  Zonebie.set_random_timezone
+  timezone = Zonebie.set_random_timezone
   config.filter_run focus: true
   config.run_all_when_everything_filtered = true
   config.expect_with :rspec do |expectations|
@@ -80,7 +80,7 @@ RSpec.configure do |config|
     CatarseSettings[:email_projects] = 'foo@bar.com'
     CatarseSettings[:email_system] = 'system@catarse.me'
     CatarseSettings[:company_name] = 'Foo Bar Company'
-    CatarseSettings[:timezone] = 'America/Sao_Paulo'
+    CatarseSettings[:timezone] = ActiveSupport::TimeZone.find_tzinfo(timezone).name
 
     CatarsePagarme.configure do |config|
       config.api_key = 'ak_test_XLoo19QDn9kg5JFGU70x12IA4NqbAv'
