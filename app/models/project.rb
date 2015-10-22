@@ -7,7 +7,6 @@ class Project < ActiveRecord::Base
   include Statesman::Adapters::ActiveRecordQueries
   include PgSearch
 
-  include Shared::StateMachineHelpers
   include Shared::Queued
 
   include Project::StateMachineHandler
@@ -275,11 +274,19 @@ class Project < ActiveRecord::Base
     Project.where(id: self.id).pluck("projects.#{attribute}").first
   end
 
+
+  # Get all states names from AllOrNothingProjectMachine
+  def self.state_names
+    AllOrNothingProjectMachine.states.map(&:to_sym)
+  end
+
   # Init flexible machine or
   # all or nothing machine
   def state_machine
     machine_class = Object.const_get "#{self.project_type.classify}ProjectMachine"
-    @state_machine ||= machine_class.new(self, transition_class: ProjectTransition)
+    @state_machine ||= machine_class.new(self, {
+      transition_class: ProjectTransition
+    })
   end
 
   %w(
