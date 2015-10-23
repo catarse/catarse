@@ -35,7 +35,6 @@ App.addChild('ProjectEdit', _.extend({
     } else {
       this.lookAnchors();
     }
-    this.$('#project-goal-input').mask('000.000.000,00', {reverse: true});
   },
 
     followRoute: function(name){
