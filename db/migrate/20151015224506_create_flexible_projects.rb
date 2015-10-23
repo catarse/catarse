@@ -12,6 +12,5 @@ class CreateFlexibleProjects < ActiveRecord::Migration
 
   def down
     drop_table :flexible_projects
-    remove_index :flexible_projects, :project_id
   end
 end
