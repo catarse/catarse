@@ -290,6 +290,12 @@ class Project < ActiveRecord::Base
     })
   end
 
+  # gets the project_type computed column
+  # returs 'all_or_nothing' or 'flexible' 
+  def project_type
+    pluck_from_database("project_type")
+  end
+
   # Define all project.state? check methods
   AllOrNothingProjectMachine.states.each do |st|
     define_method "#{st}?" do

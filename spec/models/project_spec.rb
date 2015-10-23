@@ -49,6 +49,35 @@ RSpec.describe Project, type: :model do
     it{ is_expected.not_to allow_value('agua.sp.01').for(:permalink) }
   end
 
+  context "#project_type" do
+    let(:project) { create(:project) }
+
+    before do
+      allow(project).to receive(:pluck_from_database).and_call_original
+    end
+
+    subject { project.project_type }
+
+    context "when project has no flexible relation" do
+      before do
+        expect(project).to receive(:pluck_from_database).
+          with("project_type").and_return("all_or_nothing")
+      end
+
+      it { is_expected.to eq('all_or_nothing') }
+    end
+
+    context "when project has flexible relation" do
+      before do
+        create(:flexible_project, project: project)
+        expect(project).to receive(:pluck_from_database).
+          with("project_type").and_return("flexible")
+      end
+
+      it { is_expected.to eq('flexible') }
+    end
+  end
+
   context "state check methods" do
     all_machine_states.each do |st|
       describe "##{st}? when project state is #{st}" do
