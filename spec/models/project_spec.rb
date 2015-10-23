@@ -112,8 +112,7 @@ RSpec.describe Project, type: :model do
 
 
   describe "#state_machine" do
-    let(:project_type) { 'all_or_nothing' }
-    let!(:project) { create(:project, project_type: project_type) }
+    let!(:project) { create(:project) }
 
     subject { project.state_machine }
 
@@ -122,43 +121,8 @@ RSpec.describe Project, type: :model do
     end
 
     context "when project type is flexible" do
-      let(:project_type) { 'flexible' }
+      let!(:project) { create(:flexible_project, project: project) }
       it { is_expected.to be_an_instance_of(FlexibleProjectMachine) }
-    end
-  end
-
-  describe "is_flexible?" do
-    let(:project) { create(:project, project_type: 'all_or_nothing') }
-
-    subject { project.is_flexible? }
-
-    subject { project.errors['rewards.size'].present? }
-
-    context "flexible project without rewards" do
-      before do
-        create(:flexible_project, project: project)
-        project.rewards.destroy_all
-
-        # need to us transition to trigger state validations
-        project.state_machine.transition_to :online
-       end
-
-      it "should not have rewards.size error" do
-        is_expected.to eq(false) 
-      end
-    end
-
-    context "all or nothing project without rewads" do
-      before do
-        project.rewards.destroy_all
-
-        # need to us transition to trigger state validations
-        project.state_machine.transition_to :in_analysis
-      end
-
-      it "should not have rewards.size error" do
-        is_expected.to eq(false) 
-      end
     end
   end
 
