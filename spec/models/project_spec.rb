@@ -138,22 +138,6 @@ RSpec.describe Project, type: :model do
 
     subject { project.state_machine }
 
-
-  describe "is_flexible?" do
-    let(:project) { create(:project, project_type: 'all_or_nothing') }
-
-    subject { project.is_flexible? }
-
-    it "should be false when project is not flexible" do
-      is_expected.to eq(false)
-    end
-
-    it "should be true when project is flexible" do
-      project.project_type = 'flexible'
-      is_expected.to eq(true)
-    end
-  end
-
     it { is_expected.to be_an_instance_of(AllOrNothingProjectMachine) }
   end
 

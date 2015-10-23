@@ -202,11 +202,6 @@ class Project < ActiveRecord::Base
     payments.waiting_payment.exists?
   end
 
-  # check if project is flexible.
-  def is_flexible?
-    project_type == 'flexible'
-  end
-
   def new_draft_recipient
     User.find_by_email CatarseSettings[:email_projects]
   end
