@@ -43,4 +43,24 @@ class AllOrNothingProjectMachine < FlexibleProjectMachine
   def finish
     transition_to(:waiting_funds) || transition_to(:failed) || transition_to(:successful)
   end
+
+  def can_approve?
+    can_transition_to? :approved
+  end
+
+  def can_reject?
+    can_transition_to? :rejected
+  end
+
+  def can_push_to_draft?
+    can_transition_to? :draft
+  end
+
+  def can_push_to_trash?
+    can_transition_to? :deleted
+  end
+
+  def can_push_to_online?
+    can_transition_to? :online
+  end
 end
