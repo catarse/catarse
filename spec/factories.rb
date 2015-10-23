@@ -89,6 +89,19 @@ FactoryGirl.define do
 
   factory :flexible_project do |f|
     f.association :project
+
+    after :create do |flex_project| 
+      FactoryGirl.create(:flexible_project_transition, {
+        to_state: flex_project.state,
+        flexible_project: flex_project
+      })
+    end
+  end
+
+  factory :flexible_project_transition do |f|
+    f.association :flexible_project
+    f.most_recent true
+    f.sort_key 1
   end
 
   factory :project_transition do |f|
