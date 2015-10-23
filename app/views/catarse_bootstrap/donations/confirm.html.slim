@@ -1,0 +1,22 @@
+= render 'shared/header'
+
+#contribution-donation
+  .w-section.section-one-column.u-margintop-40
+    .w-container
+      .w-row.u-text-center.u-marginbottom-60
+        .w-col.w-col-2
+        .w-col.w-col-8
+          .fontsize-larger.u-marginbottom-20 Confirma sua doação para o #{CatarseSettings[:company_name]}?
+        .w-col.w-col-2
+      .w-row
+        .w-col.w-col-6.w-col-push-3.u-marginbottom-30
+          .card.medium.card-terciary.u-radius
+            .fontsize-small.u-marginbottom-10 Você está realizando uma doação de #{current_user.decorator.display_pending_refund_payments_amount}
+            .fontsize-small.u-marginbottom-10 Seu dinheiro será utilizado para financiar operações do Catarse e um monte de inovações que vem por aí em 2016. São novidades que certamente ajudarão muita gente.
+            .fontsize-small E claro, você terá destaque em uma página especial, que lançaremos em breve, com a lista de apoiadores que fazem de tudo para espalhar o financiamento coletivo no Brasil!
+      .w-row
+        .w-col.w-col-3.w-col-push-3
+          = link_to 'Não', explore_path, class: 'w-button btn btn-large u-marginbottom-30', method: 'get'
+        .w-col.w-col-3.w-col-push-3
+          = link_to 'Sim', donations_path, class: 'w-button btn btn-large u-marginbottom-30', method: 'post'
+  = render 'shared/footer'

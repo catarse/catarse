@@ -38,7 +38,11 @@ Catarse::Application.routes.draw do
     end
   end
   resources :auto_complete_projects, only: [:index]
-  resources :donations, only: [:create]
+  resources :donations, only: [:create] do
+    collection do
+      get :confirm
+    end
+  end
   resources :auto_complete_cities, only: [:index]
   resources :projects, only: [ :index, :create, :update, :edit, :new, :show] do
     resources :accounts, only: [:create, :update]
