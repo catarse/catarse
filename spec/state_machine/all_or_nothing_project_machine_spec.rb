@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe AllOrNothingProjectMachine, type: :model do
   let(:project_state) { 'draft' }
-  let(:project) { create(:project, state: project_state, project_type: 'all_or_nothing') }
+  let(:project) { create(:project, state: project_state) }
   let!(:project_account) { create(:project_account, project: project) }
 
   describe "state_machine" do
@@ -402,6 +402,51 @@ RSpec.describe AllOrNothingProjectMachine, type: :model do
     context "instance methods" do
       before do
         allow(subject).to receive(:push_to_draft).and_call_original
+      end
+
+      context "#can_approve?" do
+        before do
+          expect(subject).to receive(:can_transition_to?).
+            with(:approved)
+        end
+
+        it { subject.can_approve? }
+      end
+
+      context "#can_reject?" do
+        before do
+          expect(subject).to receive(:can_transition_to?).
+            with(:rejected)
+        end
+
+        it { subject.can_reject? }
+      end
+
+      context "#can_push_to_online?" do
+        before do
+          expect(subject).to receive(:can_transition_to?).
+            with(:online)
+        end
+
+        it { subject.can_push_to_online? }
+      end
+
+      context "#can_push_to_trash?" do
+        before do
+          expect(subject).to receive(:can_transition_to?).
+            with(:deleted)
+        end
+
+        it { subject.can_push_to_trash? }
+      end
+
+      context "#can_push_to_draft?" do
+        before do
+          expect(subject).to receive(:can_transition_to?).
+            with(:draft)
+        end
+
+        it { subject.can_push_to_draft? }
       end
 
       context "#send_to_analysis" do
