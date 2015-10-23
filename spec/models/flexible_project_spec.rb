@@ -8,6 +8,7 @@ RSpec.describe FlexibleProject, type: :model do
     subject { flexible_project }
 
     it{ is_expected.to belong_to :project }
+    it{ is_expected.to have_many :transitions }
   end
 
   describe "validations" do
@@ -17,4 +18,9 @@ RSpec.describe FlexibleProject, type: :model do
     it{ is_expected.to validate_uniqueness_of :project_id }
   end
 
+  describe "#state_machine" do
+    subject { flexible_project.state_machine }
+
+    it { is_expected.to be_an_instance_of(FlexibleProjectMachine) }
+  end
 end

@@ -2,6 +2,9 @@ class FlexibleProject < ActiveRecord::Base
   include Project::BaseValidator
 
   belongs_to :project
+  has_many :transitions,
+    class_name: 'FlexibleProjectTransition',
+    autosave: false
 
   # ensure that we have only one flexible project per project
   validates :project_id, presence: true, uniqueness: true
