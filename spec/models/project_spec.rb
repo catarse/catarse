@@ -1,13 +1,6 @@
 # coding: utf-8
 require 'rails_helper'
 
-def all_machine_states
-  %w(
-    draft rejected online successful waiting_funds
-    deleted in_analysis approved failed
-  )
-end
-
 RSpec.describe Project, type: :model do
   let(:project){ build(:project, goal: 3000) }
   let(:user){ create(:user) }
@@ -79,7 +72,7 @@ RSpec.describe Project, type: :model do
   end
 
   context "state check methods" do
-    all_machine_states.each do |st|
+    Project.state_names.each do |st|
       describe "##{st}? when project state is #{st}" do
         before { project.state = st }
         subject { project.send("#{st}?") }
@@ -87,7 +80,7 @@ RSpec.describe Project, type: :model do
       end
 
       describe "##{st}? when project state is not #{st}" do
-        before { project.state = all_machine_states.reject { |x| x == st }.sample }
+        before { project.state = Project.state_names.reject { |x| x == st }.sample }
         subject { project.send("#{st}?") }
         it { is_expected.to eq false }
       end
@@ -141,20 +134,10 @@ RSpec.describe Project, type: :model do
 
 
   describe "#state_machine" do
-    let(:project_type) { 'all_or_nothing' }
-    let!(:project) { create(:project, project_type: project_type) }
+    let!(:project) { create(:project) }
 
     subject { project.state_machine }
 
-    context "when project type is all_or_nothing" do
-      it { is_expected.to be_an_instance_of(AllOrNothingProjectMachine) }
-    end
-
-    context "when project type is flexible" do
-      let(:project_type) { 'flexible' }
-      it { is_expected.to be_an_instance_of(FlexibleProjectMachine) }
-    end
-  end
 
   describe "is_flexible?" do
     let(:project) { create(:project, project_type: 'all_or_nothing') }
@@ -171,19 +154,7 @@ RSpec.describe Project, type: :model do
     end
   end
 
-
-    context "all or nothing project without rewads" do
-      before do
-        project.rewards.destroy_all
-
-        # need to us transition to trigger state validations
-        project.state_machine.transition_to :in_analysis
-      end
-
-      it "should have rewards.size error" do
-        is_expected.to eq(true) 
-      end
-    end
+    it { is_expected.to be_an_instance_of(AllOrNothingProjectMachine) }
   end
 
   describe "name validation" do

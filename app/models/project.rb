@@ -281,11 +281,9 @@ class Project < ActiveRecord::Base
     AllOrNothingProjectMachine.states.map(&:to_sym)
   end
 
-  # Init flexible machine or
-  # all or nothing machine
+  # All or nothing state machine
   def state_machine
-    machine_class = Object.const_get "#{self.project_type.classify}ProjectMachine"
-    @state_machine ||= machine_class.new(self, {
+    @state_machine ||= AllOrNothingProjectMachine.new(self, {
       transition_class: ProjectTransition
     })
   end
@@ -297,9 +295,9 @@ class Project < ActiveRecord::Base
   end
 
   # Define all project.state? check methods
-  AllOrNothingProjectMachine.states.each do |st|
+  state_names.each do |st|
     define_method "#{st}?" do
-      state == st
+      self.state == st
     end
   end
 end
