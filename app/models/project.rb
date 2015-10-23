@@ -274,7 +274,7 @@ class Project < ActiveRecord::Base
 
   # Get all states names from AllOrNothingProjectMachine
   def self.state_names
-    AllOrNothingProjectMachine.states.map(&:to_sym)
+    AllOrNothingProjectMachine.states
   end
 
   # All or nothing state machine
@@ -293,7 +293,7 @@ class Project < ActiveRecord::Base
   # Define all project.state? check methods
   state_names.each do |st|
     define_method "#{st}?" do
-      self.state == st.to_s
+      self.state == st
     end
   end
 end

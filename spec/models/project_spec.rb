@@ -249,11 +249,9 @@ RSpec.describe Project, type: :model do
   end
 
   describe '.state_names' do
-    let(:states) { [:draft, :rejected, :approved, :online, :successful, :waiting_funds, :failed, :deleted, :in_analysis] }
-
     subject { Project.state_names }
 
-    it { is_expected.to match_array(states) }
+    it { is_expected.to match_array(AllOrNothingProjectMachine.states) }
   end
 
   describe ".by_permalink" do
