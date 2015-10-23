@@ -1,4 +1,6 @@
 class FlexibleProject < ActiveRecord::Base
+  include Project::FlexibleStateValidator
+
   belongs_to :project
   has_many :transitions,
     class_name: 'FlexibleProjectTransition',
