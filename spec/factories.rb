@@ -89,6 +89,7 @@ FactoryGirl.define do
 
   factory :flexible_project do |f|
     f.association :project
+    f.state 'draft'
 
     after :create do |flex_project| 
       FactoryGirl.create(:flexible_project_transition, {
