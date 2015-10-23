@@ -9,7 +9,7 @@ class Project < ActiveRecord::Base
 
   include Shared::Queued
 
-  include Project::StateValidator
+  include Project::AllOrNothingStateValidator
   include Project::VideoHandler
   include Project::CustomValidators
   include Project::ErrorGroups
@@ -298,7 +298,7 @@ class Project < ActiveRecord::Base
   # Define all project.state? check methods
   state_names.each do |st|
     define_method "#{st}?" do
-      self.state == st
+      self.state == st.to_s
     end
   end
 end

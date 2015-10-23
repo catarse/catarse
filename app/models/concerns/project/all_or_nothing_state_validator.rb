@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # This module handles with default state validation
-module Project::StateValidator
+module Project::AllOrNothingStateValidator
   extend ActiveSupport::Concern
 
   included do
