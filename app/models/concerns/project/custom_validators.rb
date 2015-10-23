@@ -4,7 +4,6 @@ module Project::CustomValidators
   included do
     @@routes = Rails.application.routes.routes
     validate :permalink_cant_be_route, allow_nil: true
-    validate :ensure_at_least_one_reward_validation, unless: :is_flexible?
 
 
     def self.get_routes
