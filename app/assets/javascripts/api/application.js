@@ -18,7 +18,8 @@
       teamRoot = document.getElementById('team-root'),
       projectIndexRoot = document.getElementById('project-index-root'),
       projectInsightsRoot = document.getElementById('project-insights-root'),
-      projectShowRoot = document.getElementById('project-show-root');
+      projectShowRoot = document.getElementById('project-show-root'),
+      flex = document.getElementById('flex');
 
   if(adminRoot){
     m.route.mode = 'hash';
@@ -30,6 +31,10 @@
 
   if(teamRoot){
     m.mount(teamRoot, c.pages.Team);
+  }
+
+  if(flex){
+    m.mount(flex, c.pages.Flex);
   }
 
   if(projectIndexRoot){
