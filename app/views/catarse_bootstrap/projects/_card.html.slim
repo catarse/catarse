@@ -15,8 +15,8 @@ div[itemtype="http://schema.org/CreativeWork" class="#{defined?(wrapper_class) ?
     
     .w-hidden-small.w-hidden-tiny.card-project-author.altt
       .fontsize-smallest.fontcolor-secondary
-      - if @project.decorate.show_city
-        span.fa.fa-map-marker.fa-1
+        - if @project.decorate.show_city
+          span.fa.fa-map-marker.fa-1
           |  #{@project.decorate.show_city}
     .card-project-meter class=@project.state
       -if ['successful', 'failed', 'waiting_funds'].include? @project.state
