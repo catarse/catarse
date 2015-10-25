@@ -1,0 +1,22 @@
+= render 'shared/header'
+
+#contribution-donation
+  .w-section.section-one-column.u-margintop-40
+    .w-container
+      .w-row.u-text-center.u-marginbottom-60
+        .w-col.w-col-2
+        .w-col.w-col-8
+          .fontsize-larger.u-marginbottom-20= t('.title')
+        .w-col.w-col-2
+      .w-row
+        .w-col.w-col-6.w-col-push-3.u-marginbottom-30
+          .card.medium.card-terciary.u-radius
+            .fontsize-small.u-marginbottom-10= t('.amount', amount: current_user.decorator.display_pending_refund_payments_amount)
+            .fontsize-small.u-marginbottom-10= t('.info1')
+            .fontsize-small= t('.info2')
+      .w-row
+        .w-col.w-col-3.w-col-push-3
+          = link_to t('.no'), explore_path, class: 'w-button btn btn-large btn-terciary u-marginbottom-30', method: 'get'
+        .w-col.w-col-3.w-col-push-3
+          = link_to t('.yes'), donations_path, class: 'w-button btn btn-large u-marginbottom-30', method: 'post'
+  = render 'shared/footer'

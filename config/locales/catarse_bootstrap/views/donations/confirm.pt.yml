@@ -1,0 +1,9 @@
+pt:
+  donations:
+    confirm:
+      'yes': Sim
+      'no': Não
+      title: Confirma sua doação para o Catarse?
+      amount: Você está realizando uma doação de %{amount}.
+      info1: Seu dinheiro será utilizado para financiar operações do Catarse e um monte de inovações que vem por aí em 2016.
+      info2: E claro, você terá destaque em uma página especial, que lançaremos em breve, com a lista de apoiadores que fazem de tudo para espalhar o financiamento coletivo no Brasil!

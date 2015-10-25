@@ -2,6 +2,8 @@ class DonationsController < ApplicationController
 
   helper_method :resource
 
+  def confirm;end
+
   def create
     raise Pundit::NotAuthorizedError if !current_user
     return redirect_to explore_path if current_user.pending_refund_payments.empty? && current_user.credits == 0
