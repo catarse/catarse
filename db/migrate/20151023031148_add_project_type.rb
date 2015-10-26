@@ -2,14 +2,13 @@ class AddProjectType < ActiveRecord::Migration
   def up
     execute <<-SQL
       CREATE FUNCTION public.project_type(project projects) RETURNS text
-      LANGUAGE plpgsql AS $$
-        BEGIN
-          IF NOT EXISTS ( SELECT 1 FROM flexible_projects WHERE project_id = project.id ) THEN
-            RETURN 'all_or_nothing';
+      LANGUAGE sql AS $$
+        SELECT
+          CASE WHEN EXISTS ( SELECT 1 FROM flexible_projects WHERE project_id = project.id ) THEN
+            'flexible';
           ELSE
-            RETURN 'flexible';
-          END IF;
-        END;
+            'all_or_nothing';
+          END;
       $$;
     SQL
   end
