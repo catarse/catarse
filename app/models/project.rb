@@ -4,12 +4,12 @@ class Project < ActiveRecord::Base
   HEADLINE_MAXLENGTH = 100
   NAME_MAXLENGTH = 50
 
+  include Statesman::Adapters::ActiveRecordQueries
   include PgSearch
 
-  include Shared::StateMachineHelpers
   include Shared::Queued
 
-  include Project::StateMachineHandler
+  include Project::StateValidator
   include Project::VideoHandler
   include Project::CustomValidators
   include Project::ErrorGroups
@@ -19,13 +19,14 @@ class Project < ActiveRecord::Base
   mount_uploader :uploaded_image, ProjectUploader
 
   delegate  :display_online_date, :display_card_status, :display_status, :progress,
-            :display_image, :display_expires_at, :remaining_text, :time_to_go,
-            :display_pledged, :display_pledged_with_cents, :display_goal, :remaining_days, :progress_bar,
-            :status_flag, :state_warning_template, :display_card_class, :display_errors, to: :decorator
+    :display_image, :display_expires_at, :remaining_text, :time_to_go,
+    :display_pledged, :display_pledged_with_cents, :display_goal, :remaining_days, :progress_bar,
+    :status_flag, :state_warning_template, :display_card_class, :display_errors, to: :decorator
 
   belongs_to :user
   belongs_to :category
   belongs_to :city
+  has_one :flexible_project
   has_one :project_total
   has_one :account, class_name: "ProjectAccount", inverse_of: :project
   has_many :rewards
@@ -35,6 +36,8 @@ class Project < ActiveRecord::Base
   has_many :posts, class_name: "ProjectPost", inverse_of: :project
   has_many :budgets, class_name: "ProjectBudget", inverse_of: :project
   has_many :unsubscribes
+
+  has_many :project_transitions, autosave: false
 
   accepts_nested_attributes_for :rewards, allow_destroy: true
   accepts_nested_attributes_for :user
@@ -60,6 +63,12 @@ class Project < ActiveRecord::Base
   def self.pg_search term
     search_tsearch(term).presence || search_trm(term)
   end
+
+  # With state scopes
+  scope :with_state, -> (state) { where(state: state) }
+  scope :with_states, -> (state) { with_state(state) }
+  scope :without_state, -> (state) { where("projects.state not in (?)", state) }
+  scope :without_states, -> (state) { without_state(state) }
 
   # Used to simplify a has_scope
   scope :successful, ->{ with_state('successful') }
@@ -180,6 +189,7 @@ class Project < ActiveRecord::Base
   def accept_contributions?
     online? && !expired?
   end
+
   def reached_goal?
     pledged >= goal
   end
@@ -192,12 +202,13 @@ class Project < ActiveRecord::Base
     payments.waiting_payment.exists?
   end
 
-  def new_draft_recipient
-    User.find_by_email CatarseSettings[:email_projects]
+  # check if project is flexible.
+  def is_flexible?
+    project_type == 'flexible'
   end
 
-  def should_fail?
-    expired? && !reached_goal?
+  def new_draft_recipient
+    User.find_by_email CatarseSettings[:email_projects]
   end
 
   def notify_owner(template_name, params = {})
@@ -258,5 +269,36 @@ class Project < ActiveRecord::Base
 
   def pluck_from_database attribute
     Project.where(id: self.id).pluck("projects.#{attribute}").first
+  end
+
+  # State machine delegation methods
+  delegate :push_to_draft, :reject, :push_to_online, :finish,
+    :send_to_analysis, :approve, :push_to_trash, :can_transition_to?,
+    :transition_to, :can_reject?, :can_push_to_trash?,
+    :can_push_to_online?, :can_push_to_draft?, :can_approve?, to: :state_machine
+
+  # Get all states names from AllOrNothingProjectMachine
+  def self.state_names
+    AllOrNothingProjectMachine.states.map(&:to_sym)
+  end
+
+  # All or nothing state machine
+  def state_machine
+    @state_machine ||= AllOrNothingProjectMachine.new(self, {
+      transition_class: ProjectTransition
+    })
+  end
+
+  # gets the project_type computed column
+  # returs 'all_or_nothing' or 'flexible' 
+  def project_type
+    pluck_from_database("project_type")
+  end
+
+  # Define all project.state? check methods
+  state_names.each do |st|
+    define_method "#{st}?" do
+      self.state == st
+    end
   end
 end
