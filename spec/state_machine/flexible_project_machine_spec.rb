@@ -2,14 +2,15 @@ require 'rails_helper'
 
 RSpec.describe FlexibleProjectMachine, type: :model do
   let(:project_state) { 'draft' }
-  let(:project) { create(:project, state: project_state, project_type: 'flexible') }
+  let(:project) { create(:project, state: 'draft') }
+  let(:flexible_project) { create(:flexible_project, project: project, state: project_state) }
   let!(:project_account) { create(:project_account, project: project) }
 
   describe "state_machine" do
-    subject { project.state_machine }
+    subject { flexible_project.state_machine }
 
     before do
-      allow(project).to receive(:notify_observers).and_call_original
+      allow(flexible_project).to receive(:notify_observers).and_call_original
     end
 
     context "should starts in draft" do
@@ -21,23 +22,23 @@ RSpec.describe FlexibleProjectMachine, type: :model do
     context "transitions" do
       shared_examples "valid project transaction flow" do |transition_to|
         before do
-          expect(project).to receive(:notify_observers).
+          expect(flexible_project).to receive(:notify_observers).
             with(:"from_#{project_state}_to_#{transition_to.to_s}").
             and_call_original
 
-          subject.transition_to(transition_to)
+          subject.transition_to(transition_to, { to_state: transition_to })
         end
 
-        it "should turn current_state to in_analysis" do
+        it "should turn current_state to #{transition_to}" do
           expect(subject.current_state).to eq(transition_to.to_s)
         end
 
         it "should persist the current_status into project.state" do
-          expect(project.state).to eq(transition_to.to_s)
+          expect(flexible_project.state).to eq(transition_to.to_s)
         end
 
         it "should create an most recent transition to_locale" do
-          expect(project.project_transitions.
+          expect(flexible_project.transitions.
             where(to_state: transition_to.to_s).count).to eq(1)
         end
       end
@@ -54,7 +55,7 @@ RSpec.describe FlexibleProjectMachine, type: :model do
 
       shared_examples "invalid project transaction flow" do |transition_to|
         before do
-          subject.transition_to transition_to
+          subject.transition_to transition_to, {to_state: transition_to}
         end
 
         it "should not turn current_state to #{transition_to.to_s}" do
@@ -62,11 +63,11 @@ RSpec.describe FlexibleProjectMachine, type: :model do
         end
 
         it "should not turn project.state to #{transition_to.to_s}" do
-          expect(project.reload.state).not_to eq(transition_to.to_s)
+          expect(flexible_project.reload.state).not_to eq(transition_to.to_s)
         end
 
         it "should not create an most recent transition to_locale" do
-          expect(project.project_transitions.where(to_state: transition_to.to_s).count).to eq(0)
+          expect(flexible_project.transitions.where(to_state: transition_to.to_s).count).to eq(0)
         end
       end
 
@@ -76,8 +77,8 @@ RSpec.describe FlexibleProjectMachine, type: :model do
         it_should_behave_like "valid draft project transaction"
         it_should_behave_like "valid deleted project transaction"
 
-        %i(online approved in_analysis successful waiting_funds).each do |state|
-          it "can't transition from draft to #{state}" do
+        %i(online successful waiting_funds).each do |state|
+          it "can't transition from rejected to #{state}" do
             expect(subject.transition_to(state)).to eq(false)
           end
         end
@@ -97,6 +98,7 @@ RSpec.describe FlexibleProjectMachine, type: :model do
         context "when is invalid project" do
           before do
             project.name = nil
+            project.about_html = nil
           end
 
           context "online transition" do
@@ -112,8 +114,8 @@ RSpec.describe FlexibleProjectMachine, type: :model do
           context "when can go to waiting_funds" do
             context "project expired and have waiting payments" do
               before do
-                allow(project).to receive(:expired?).and_return(true)
-                allow(project).to receive(:in_time_to_wait?).and_return(true)
+                allow(flexible_project).to receive(:expired?).and_return(true)
+                allow(flexible_project).to receive(:in_time_to_wait?).and_return(true)
               end
 
               it_should_behave_like "valid waiting_funds project transaction"
@@ -123,8 +125,8 @@ RSpec.describe FlexibleProjectMachine, type: :model do
           context "when can't go to waiting_funds" do
             context "project expired but not have pending payments" do
               before do
-                allow(project).to receive(:expired?).and_return(true)
-                allow(project).to receive(:in_time_to_wait?).and_return(false)
+                allow(flexible_project).to receive(:expired?).and_return(true)
+                allow(flexible_project).to receive(:in_time_to_wait?).and_return(false)
               end
 
               it_should_behave_like "invalid waiting_funds project transaction"
@@ -132,7 +134,7 @@ RSpec.describe FlexibleProjectMachine, type: :model do
 
             context "project not expired" do
               before do
-                allow(project).to receive(:expired?).and_return(false)
+                allow(flexible_project).to receive(:expired?).and_return(false)
               end
 
               it_should_behave_like "invalid waiting_funds project transaction"
@@ -143,14 +145,14 @@ RSpec.describe FlexibleProjectMachine, type: :model do
         context "successful transition" do
           context "when can go to successful" do
             before do
-              expect(project).to receive(:notify_observers).
+              expect(flexible_project).to receive(:notify_observers).
                 with(:sync_with_mailchimp).and_call_original
             end
 
             context "project expired and not have waiting payments" do
               before do
-                allow(project).to receive(:expired?).and_return(true)
-                allow(project).to receive(:in_time_to_wait?).and_return(false)
+                allow(flexible_project).to receive(:expired?).and_return(true)
+                allow(flexible_project).to receive(:in_time_to_wait?).and_return(false)
               end
 
               it_should_behave_like "valid successful project transaction"
@@ -159,14 +161,14 @@ RSpec.describe FlexibleProjectMachine, type: :model do
 
           context "when can't go to successful" do
             before do
-              expect(project).not_to receive(:notify_observers).
+              expect(flexible_project).not_to receive(:notify_observers).
                 with(:sync_with_mailchimp).and_call_original
             end
 
             context "project expired but have pending payments" do
               before do
-                allow(project).to receive(:expired?).and_return(true)
-                allow(project).to receive(:in_time_to_wait?).and_return(true)
+                allow(flexible_project).to receive(:expired?).and_return(true)
+                allow(flexible_project).to receive(:in_time_to_wait?).and_return(true)
               end
 
               it_should_behave_like "invalid successful project transaction"
@@ -174,7 +176,7 @@ RSpec.describe FlexibleProjectMachine, type: :model do
 
             context "project not expired" do
               before do
-                allow(project).to receive(:expired?).and_return(false)
+                allow(flexible_project).to receive(:expired?).and_return(false)
               end
 
               it_should_behave_like "invalid successful project transaction"
@@ -187,17 +189,17 @@ RSpec.describe FlexibleProjectMachine, type: :model do
         let(:project_state) { 'waiting_funds' }
 
         before do
-          allow(project).to receive(:expired?).and_return(true)
+          allow(flexible_project).to receive(:expired?).and_return(true)
         end
 
         context "successful transition" do
           context "when can go to successful" do
             context "project not have waiting payments" do
               before do
-                expect(project).to receive(:notify_observers).
+                expect(flexible_project).to receive(:notify_observers).
                   with(:sync_with_mailchimp).and_call_original
 
-                allow(project).to receive(:in_time_to_wait?).
+                allow(flexible_project).to receive(:in_time_to_wait?).
                   and_return(false)
               end
 
@@ -208,10 +210,10 @@ RSpec.describe FlexibleProjectMachine, type: :model do
           context "when can't go to successful" do
             context "project have pending payments" do
               before do
-                expect(project).not_to receive(:notify_observers).
+                expect(flexible_project).not_to receive(:notify_observers).
                   with(:sync_with_mailchimp).and_call_original
 
-                allow(project).to receive(:in_time_to_wait?).
+                allow(flexible_project).to receive(:in_time_to_wait?).
                   and_return(true)
               end
 
@@ -226,7 +228,7 @@ RSpec.describe FlexibleProjectMachine, type: :model do
       context "#push_to_draft" do
         before do
           expect(subject).to receive(:transition_to).
-            with(:draft).and_call_original
+            with(:draft, {to_state: "draft"}).and_call_original
         end
 
         it { subject.push_to_draft } 
@@ -235,7 +237,7 @@ RSpec.describe FlexibleProjectMachine, type: :model do
       context "#push_to_trash" do
         before do
           expect(subject).to receive(:transition_to).
-            with(:deleted).and_call_original
+            with(:deleted, {to_state: "deleted"}).and_call_original
         end
 
         it { subject.push_to_trash }
@@ -244,7 +246,7 @@ RSpec.describe FlexibleProjectMachine, type: :model do
       context "#reject" do
         before do
           expect(subject).to receive(:transition_to).
-            with(:rejected).and_call_original
+            with(:rejected, {to_state: "rejected"}).and_call_original
         end
 
         it { subject.reject }
@@ -253,7 +255,7 @@ RSpec.describe FlexibleProjectMachine, type: :model do
       context "#push_to_online" do
         before do 
           expect(subject).to receive(:transition_to).
-            with(:online).and_call_original
+            with(:online, {to_state: 'online'}).and_call_original
         end 
 
         it { subject.push_to_online }
@@ -263,20 +265,20 @@ RSpec.describe FlexibleProjectMachine, type: :model do
         let(:project_state) { 'online' }
 
         before do
-          allow(project).to receive(:expired?).
+          allow(flexible_project).to receive(:expired?).
             and_return(true)
         end
 
         context "when can't go to successful" do
           before do
-            allow(project).to receive(:in_time_to_wait?).
+            allow(flexible_project).to receive(:in_time_to_wait?).
               and_return(true)
 
             expect(subject).to receive(:transition_to).
-              with(:waiting_funds).and_return(true)
+              with(:waiting_funds, {to_state: 'waiting_funds'}).and_return(true)
 
             expect(subject).not_to receive(:transition_to).
-              with(:successful)
+              with(:successful, {to_state: 'successful'})
           end
 
           it { subject.finish }
@@ -284,14 +286,14 @@ RSpec.describe FlexibleProjectMachine, type: :model do
 
         context "when can go to successful" do
           before do
-            allow(project).to receive(:in_time_to_wait?).
+            allow(flexible_project).to receive(:in_time_to_wait?).
               and_return(false)
 
             expect(subject).to receive(:transition_to).
-              with(:waiting_funds).and_return(false)
+              with(:waiting_funds, {to_state: 'waiting_funds'}).and_return(false)
 
             expect(subject).to receive(:transition_to).
-              with(:successful).and_return(true)
+              with(:successful, {to_state: 'successful'}).and_return(true)
           end
 
           it { subject.finish }

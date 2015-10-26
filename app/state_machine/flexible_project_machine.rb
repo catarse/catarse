@@ -28,8 +28,12 @@ class FlexibleProjectMachine
     
     # Ensure that project is valid when try change
     # the project state
-    guard_transition(to: basic_validation_states) do |project|
-      project.valid?
+    guard_transition(to: basic_validation_states) do |project, t, m|
+      # TODO: rething this
+      project.state = m[:to_state].to_s
+      valid = project.valid?
+      project.state = project.state_was
+      valid
     end
 
     # Ensure that project already expired to enter on waiting_funds or successful
@@ -78,26 +82,28 @@ class FlexibleProjectMachine
 
   # put project into deleted state
   def push_to_trash
-    transition_to :deleted
+    transition_to :deleted, to_state: 'deleted'
   end
 
   # put project into draft state
   def push_to_draft
-    transition_to :draft
+    transition_to :draft, to_state: 'draft'
   end
 
   # put project in rejected state
   def reject
-    transition_to :rejected
+    transition_to :rejected, to_state: 'rejected'
   end
 
   # put project in online state
   def push_to_online
-    transition_to :online
+    transition_to :online, to_state: 'online'
   end
 
   # put project in successful or waiting_funds state
   def finish
-    transition_to(:successful) unless transition_to(:waiting_funds)
+    unless transition_to(:waiting_funds, to_state: 'waiting_funds')
+      transition_to(:successful, to_state: 'successful')
+    end
   end
 end
