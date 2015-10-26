@@ -103,6 +103,7 @@ Catarse::Application.routes.draw do
   get "/new-admin" => 'high_voltage/pages#show', id: 'new_admin'
   get "/explore" => 'high_voltage/pages#show', id: 'explore'
   get "/team" => 'high_voltage/pages#show', id: 'team'
+  get "/flex" => 'high_voltage/pages#show', id: 'flex'
 
 
   # User permalink profile
