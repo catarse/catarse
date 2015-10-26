@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-# This module handles with default state validation
-module Project::AllOrNothingStateValidator
+# This module handles with default project state validation
+module Project::BaseValidator
   extend ActiveSupport::Concern
 
   included do
@@ -11,17 +11,10 @@ module Project::AllOrNothingStateValidator
     # All valid states for projects approved to end of publication
     ON_ONLINE_TO_END_STATES = %w(online successful waiting_funds failed).freeze
 
-    # Validation for in_analysis? only state
-    with_options if: :in_analysis? do |wo|
-      wo.validates_presence_of :city
-      wo.validates_length_of :name, maximum: Project::NAME_MAXLENGTH
-    end
-
     # Start validations when project state
     # is included on ON_ANALYSIS_TO_END_STATE
     with_options if: -> (x) { ON_ANALYSIS_TO_END_STATES.include? x.state } do |wo| 
-      wo.validates_presence_of :about_html,
-        :headline, :goal, :online_days, :budget
+      wo.validates_presence_of :about_html, :headline, :budget
 
       wo.validates_presence_of :uploaded_image,
         if: ->(project) { project.video_thumbnail.blank? }
