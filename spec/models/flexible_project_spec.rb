@@ -5,6 +5,8 @@ RSpec.describe FlexibleProject, type: :model do
   let(:flexible_project) { create(:flexible_project, project: project) }
 
   describe "associations" do
+    subject { flexible_project }
+
     it{ is_expected.to belong_to :project }
   end
 
