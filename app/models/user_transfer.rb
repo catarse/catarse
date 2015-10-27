@@ -1,4 +1,5 @@
 class UserTransfer < ActiveRecord::Base
+  has_notifications
   belongs_to :user
 
   scope :pending, -> do

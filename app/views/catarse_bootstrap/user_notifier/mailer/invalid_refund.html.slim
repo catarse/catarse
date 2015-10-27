@@ -1,6 +1,5 @@
-- contribution = @notification.contribution
+- contribution = @notification.try(:contribution) || @notification.user.contributions.last
 - bank_account = contribution.user.bank_account
-- project = contribution.project
 - detail = contribution.details.ordered.first
 - company_name = CatarseSettings[:company_name]
 |Olá, #{contribution.user.name}!
