@@ -38,7 +38,7 @@ class ProjectsController < ApplicationController
     @project.attributes = permitted_params.merge(user: current_user, referral_link: referral_link)
     authorize @project
     if @project.save
-      redirect_to edit_project_path(@project, anchor: 'home')
+      redirect_to insights_project_path(@project)
     else
       render :new
     end
