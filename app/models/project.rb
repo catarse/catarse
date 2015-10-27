@@ -293,7 +293,11 @@ class Project < ActiveRecord::Base
     deleted in_analysis approved failed
   ).each do |st|
     define_method "#{st}?" do
-      state == st
+      if self.state.nil?
+        self.state_machine.current_state == st
+      else
+        self.state == st
+      end
     end
   end
 end
