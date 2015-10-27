@@ -295,7 +295,11 @@ class Project < ActiveRecord::Base
   # Define all project.state? check methods
   state_names.each do |st|
     define_method "#{st}?" do
-      self.state == st
+      if self.state.nil?
+        self.state_machine.current_state == st
+      else
+        self.state == st
+      end
     end
   end
 end
