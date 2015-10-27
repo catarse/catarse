@@ -2,9 +2,11 @@ require 'rails_helper'
 
 RSpec.describe FlexibleProject, type: :model do
   let!(:project) { create(:project, permalink: 'foo', state: 'draft', expires_at: nil) }
-  let!(:flexible_project) { create(:flexible_project, project: project) }
+  let(:flexible_project) { create(:flexible_project, project: project) }
 
   describe "associations" do
+    subject { flexible_project }
+
     it{ is_expected.to belong_to :project }
     it{ is_expected.to have_many :transitions }
   end

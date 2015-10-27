@@ -16,8 +16,10 @@ module Project::BaseValidator
     with_options if: -> (x) { ON_ANALYSIS_TO_END_STATES.include? x.state } do |wo| 
       wo.validates_presence_of :about_html, :headline, :budget
 
+      wo.validates_length_of :name, maximum: Project::NAME_MAXLENGTH
+
       wo.validates_presence_of :uploaded_image,
-        if: ->(project) { project.video_thumbnail.blank? }
+       unless: ->(project) { project.video_thumbnail.present? }
 
       wo.validate do
         [:uploaded_image, :about_html, :name].each do |attr|
