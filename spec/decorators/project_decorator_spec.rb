@@ -117,17 +117,17 @@ RSpec.describe ProjectDecorator do
     subject{ project.display_image }
 
     context "when we have a video_url without thumbnail" do
-      let(:project){ create(:project, state: 'draft', uploaded_image: nil, video_thumbnail: nil) }
+      let(:project){ build(:project, state: 'draft', uploaded_image: nil, video_thumbnail: nil) }
       it{ is_expected.to eq(project.video.thumbnail_large) }
     end
 
     context "when we have a video_thumbnail" do
-      let(:project){ create(:project, state: 'draft', uploaded_image: nil, video_thumbnail: File.open("#{Rails.root}/spec/fixtures/image.png")) }
+      let(:project){ build(:project, state: 'draft', uploaded_image: nil, video_thumbnail: File.open("#{Rails.root}/spec/fixtures/image.png")) }
       it{ is_expected.to eq(project.video_thumbnail.project_thumb.url) }
     end
 
     context "when we have an uploaded_image" do
-      let(:project){ create(:project, state: 'draft', uploaded_image: File.open("#{Rails.root}/spec/fixtures/image.png"), video_thumbnail: nil) }
+      let(:project){ build(:project, state: 'draft', uploaded_image: File.open("#{Rails.root}/spec/fixtures/image.png"), video_thumbnail: nil) }
       it{ is_expected.to eq(project.uploaded_image.project_thumb.url) }
     end
   end
