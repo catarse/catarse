@@ -5,9 +5,9 @@ class AddProjectType < ActiveRecord::Migration
       LANGUAGE sql AS $$
         SELECT
           CASE WHEN EXISTS ( SELECT 1 FROM flexible_projects WHERE project_id = project.id ) THEN
-            'flexible';
+            'flexible'
           ELSE
-            'all_or_nothing';
+            'all_or_nothing'
           END;
       $$;
     SQL
