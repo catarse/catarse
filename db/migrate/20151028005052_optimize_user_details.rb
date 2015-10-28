@@ -3,7 +3,7 @@ class OptimizeUserDetails < ActiveRecord::Migration
     execute <<-SQL
       DROP VIEW "1".user_details;
 
-      CREATE VIEW "1".user_details AS
+      CREATE VIEW "1".user_full_details AS
         SELECT u.id,
           u.name,
           u.address_city,
@@ -24,9 +24,23 @@ class OptimizeUserDetails < ActiveRecord::Migration
          FROM users u
            LEFT JOIN "1".user_totals ut ON ut.user_id = u.id;
 
-      CREATE INDEX users_full_text_index_ix ON users USING gin (full_text_index);
+      CREATE VIEW "1".user_details AS
+        SELECT id,
+          name,
+          address_city,
+          deactivated_at,
+          profile_img_thumbnail,
+          facebook_link,
+          twitter_username,
+          email,
+          total_contributed_projects,
+          total_published_projects,
+          links
+        FROM "1".user_full_details;
 
-      GRANT SELECT ON "1".user_details TO admin;
+      CREATE INDEX users_full_text_index_ix ON users USING gin (full_text_index);
+      GRANT SELECT ON "1".user_details TO public;
+      GRANT SELECT ON "1".user_full_details TO admin;
     SQL
   end
 
@@ -59,6 +73,9 @@ class OptimizeUserDetails < ActiveRecord::Migration
            LEFT JOIN "1".user_totals ut ON ut.user_id = u.id;
 
       GRANT SELECT ON "1".user_details TO public;
+
+      DROP VIEW "1".user_full_details;
+      DROP INDEX users_full_text_index_ix;
     SQL
   end
 end
