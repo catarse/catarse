@@ -20,9 +20,11 @@ RSpec.configure do |config|
 
   config.before(:suite) do
     con = ActiveRecord::Base.connection
-    con.execute "SET client_min_messages TO warning;"
-    con.execute "SET timezone TO 'utc';"
-    con.execute %{SET search_path TO "$user", public, "1", "postgrest";}
+    con.execute %{
+    SET client_min_messages TO warning;
+    SET timezone TO 'utc';
+    SET search_path TO "$user", public, "1", "postgrest";
+    }
     current_user = con.execute("SELECT current_user;")[0]["current_user"]
     con.execute %{ALTER USER #{current_user} SET search_path TO "$user", public, "1", "postgrest";}
     DatabaseCleaner.clean_with :truncation
@@ -34,6 +36,18 @@ RSpec.configure do |config|
     FakeWeb.register_uri(:get, "http://www.youtube.com/watch?v=Brw7bzU_t4c", response: fixture_path("youtube_request.txt"))
     Statistics.refresh_view
     UserTotal.refresh_view
+    con.execute %{
+    INSERT INTO public.project_states (state, state_order) VALUES
+    ('deleted', 'archived'),
+    ('rejected', 'created'),
+    ('draft', 'created'),
+    ('in_analysis', 'created'),
+    ('approved', 'publishable'),
+    ('online', 'published'),
+    ('waiting_funds', 'published'),
+    ('failed', 'finished'),
+    ('successful', 'finished');
+    }
   end
 
   config.before(:each) do
