@@ -482,3 +482,59 @@ img, iframe
 
 .qa-card
   cursor: pointer
+
+//Flex banner temporary styles
+.main-header
+  +transition(all 500ms ease)
+
+.main-header.header-with-alert
+  top: 82px
+
+.alert-top.alert-flex.float 
+  position: static
+  padding-top: 25px
+  padding-bottom: 25px
+  font-size: 18px
+  overflow: hidden
+
+.alert-top.alert-flex
+  background-color: #9566e8
+  color: white
+
+.alert-top
+  position: absolute
+  left: 0px
+  top: -82px
+  right: 0px
+  z-index: 99999
+  padding: 8px 15px
+  background-color: #f4f4c0
+  text-align: center
+
+.logo-flex-alert 
+  display: inline-block
+  height: 17px
+  width: 105px
+  background-image: url("https://daks2k3a4ib2z.cloudfront.net/54b440b85608e3f4389db387/562ef3f334e60e961a6b5884_logo-flex-alert.png")
+  background-position: 0px 2px
+  background-size: contain
+  background-repeat: no-repeat
+
+.alert-content
+  margin: 0 20px
+
+#close-global-alert
+  margin-top: 5px
+
+@media (max-width: 991px)
+  .alert-top.alert-flex.float 
+    padding-top: 11px
+    padding-bottom: 11px
+    font-size: 14px
+  .main-header.header-with-alert
+    top: 51px
+
+@media (max-width: 597px)
+  .main-header.header-with-alert
+    top: 72px
+
