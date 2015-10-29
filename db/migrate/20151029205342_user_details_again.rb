@@ -18,8 +18,8 @@ class UserDetailsAgain < ActiveRecord::Migration
         ( SELECT json_agg(DISTINCT ul.link) AS json_agg
             FROM user_links ul
             WHERE ul.user_id = u.id) AS links
-    FROM users u
-        LEFT JOIN user_totals ut ON ut.user_id = u.id;
+    FROM public.users u
+        LEFT JOIN "1".user_totals ut ON ut.user_id = u.id;
     SQL
   end
 
@@ -37,7 +37,7 @@ class UserDetailsAgain < ActiveRecord::Migration
         user_full_details.total_contributed_projects,
         user_full_details.total_published_projects,
         user_full_details.links
-    FROM user_full_details;
+    FROM "1".user_full_details;
    SQL
   end
 end
