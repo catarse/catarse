@@ -1,6 +1,10 @@
-#global-alert.w-clearfix.global-alert.u-text-center.w-hidden
-  = link_to ' ', '#', class: 'link-icon-light fa fa-close fa-lg u-right', id: 'close-global-alert'
-  .w-container
-    | Se estiver com dificuldades para acessar o Catarse, pode ser necessário limpar os cookies do seu navegador. #{link_to 'Saiba mais', 'http://suporte.catarse.me/hc/pt-br/articles/204421185', target: :blank, class: 'link-hidden-white'} 
-  /.w-container
-    | Bem-vindo ao novo Catarse! A versão anterior ficará no ar até o dia 11/03/2015. #{link_to 'Saiba mais', 'http://blog.catarse.me/esta-no-ar-o-novo-catarse-botas-calcadas-para-trilhar-o-futuro/', target: :blank, class: 'link-hidden-white'}
+- if !@project 
+	#global-alert.w-clearfix.global-alert.u-text-center.w-hidden
+	  .w-section.w-clearfix.alert-top.alert-flex.float
+		  a#close-global-alert.w-inline-block.u-right.fa.fa-times.link-hidden href="#" 
+		  .w-container
+		    div
+		      span.w-hidden-small.w-hidden-tiny.logo-flex-alert 
+		      span.alert-content Estamos construindo uma nova modalidade de financiamento coletivo
+		      a.btn.btn-inline.btn-small href="http://catarse.me/flex" target="_blank"  Conheça
+

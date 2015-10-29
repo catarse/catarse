@@ -14,19 +14,14 @@ var App = window.App = Skull.View.extend({
       return;
     }
     if(!window.store.get('globalClosedCookies')){
-      $('#global-alert').show();
-      $('body').css('padding-top', '30px');
-      $('#global-alert')
-        .css('z-index', '100');
-    }
-    else{
-      this.closeAlert();
+      $('#global-alert').slideDown(400);
+      $('.main-header').addClass('header-with-alert');
     }
   },
 
   closeAlert: function(event){
-    $('body').css('padding-top', '0');
-    $('#global-alert').slideUp('slow');
+    $('#global-alert').slideUp(400);
+    $('.main-header').removeClass('header-with-alert')
     window.store.set('globalClosedCookies', true);
   },
 
