@@ -1,6 +1,7 @@
 class MigrateDeleteProjectReminder < ActiveRecord::Migration
   def up
     execute <<-SQL
+    CREATE EXTENSION IF NOT EXISTS plv8;
     CREATE OR REPLACE FUNCTION public.delete_project_reminder()
     RETURNS trigger
     LANGUAGE plv8
