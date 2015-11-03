@@ -1,7 +1,7 @@
 class CreateProjectStates < ActiveRecord::Migration
   def up
     execute <<-SQL
-    CREATE TYPE public.project_state_order AS ENUM ('archived', 'created', 'publishable', 'published', 'finished');
+    CREATE TYPE public.project_state_order AS ENUM ('archived', 'created', 'sent', 'publishable', 'published', 'finished');
     CREATE TABLE public.project_states (
       state text primary key,
       state_order project_state_order not null
@@ -10,7 +10,7 @@ class CreateProjectStates < ActiveRecord::Migration
     ('deleted', 'archived'),
     ('rejected', 'created'),
     ('draft', 'created'),
-    ('in_analysis', 'created'),
+    ('in_analysis', 'sent'),
     ('approved', 'publishable'),
     ('online', 'published'),
     ('waiting_funds', 'published'),
