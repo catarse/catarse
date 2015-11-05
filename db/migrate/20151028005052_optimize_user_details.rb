@@ -1,6 +1,9 @@
 class OptimizeUserDetails < ActiveRecord::Migration
   def up
     execute <<-SQL
+    SET statement_timeout TO 0;
+    SQL
+    execute <<-SQL
       DROP VIEW "1".user_details;
 
       CREATE VIEW "1".user_full_details AS
