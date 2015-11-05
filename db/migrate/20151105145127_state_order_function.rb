@@ -7,7 +7,8 @@ STABLE
 LANGUAGE SQL
 AS $$
 SELECT
-    CASE WHEN EXISTS ( SELECT 1 FROM flexible_projects WHERE project_id = project.id ) THEN
+    CASE project.mode
+    WHEN 'flexible' THEN
         (
         SELECT state_order
         FROM
