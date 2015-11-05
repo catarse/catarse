@@ -55,6 +55,21 @@ class UsersController < ApplicationController
     redirect_to root_path
   end
 
+  def new_password
+    authorize resource
+
+    if params[:password]
+      @user.password = params[:password]
+      if @user.save
+        render :json => { :success => 'OK' }
+      else
+        render status: 400, :json => { :errors => @user.errors.full_messages  }
+      end
+    else
+      render status: 400, :json => { :errors => ['Missing parameter password'] }
+    end
+  end
+
   def edit
     authorize resource
     @unsubscribes = @user.project_unsubscribes

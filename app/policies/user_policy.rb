@@ -31,6 +31,10 @@ class UserPolicy < ApplicationPolicy
     done_by_owner_or_admin?
   end
 
+  def new_password?
+    done_by_owner_or_admin?
+  end
+
   def permitted_attributes
     u_attrs = [:current_password, :password, :subscribed_to_project_post, bank_account_attributes: [:bank_id, :name, :agency, :account, :owner_name, :owner_document, :account_digit, :agency_digit] ]
     u_attrs << { category_follower_ids: [] }

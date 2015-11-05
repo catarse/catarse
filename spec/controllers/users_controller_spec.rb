@@ -177,6 +177,38 @@ RSpec.describe UsersController, type: :controller do
     end
   end
 
+  describe "POST new_password" do
+    context "without password parameter" do
+      before do
+        post :new_password, id: user.id, locale: 'pt'
+      end
+
+      it { expect(response.status).to eq 400 }
+      it { expect(response.content_type).to eq "application/json" }
+      it { expect(JSON.parse(response.body)).to eq JSON.parse('{"errors": ["Missing parameter password"]}') }
+    end
+
+    context "with an invalid password parameter" do
+      before do
+        post :new_password, id: user.id, locale: 'pt', password: '12'
+      end
+
+      it { expect(response.status).to eq 400 }
+      it { expect(response.content_type).to eq "application/json" }
+      it { expect(JSON.parse(response.body)).to eq JSON.parse('{"errors":["Senha A senha que você escolheu é muito curta"]}') }
+    end
+
+    context "with a valid password parameter" do
+      before do
+        post :new_password, id: user.id, locale: 'pt', password: 'newpassword123'
+      end
+
+      it { expect(response.status).to eq 200 }
+      it { expect(response.content_type).to eq "application/json" }
+      it { expect(JSON.parse(response.body)).to eq JSON.parse('{"success": "OK"}') }
+    end
+  end
+
   describe "PUT update" do
     context "with password parameters" do
       let(:current_password){ 'current_password' }
