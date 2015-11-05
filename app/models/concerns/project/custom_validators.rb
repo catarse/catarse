@@ -20,5 +20,12 @@ module Project::CustomValidators
     def permalink_cant_be_route
       errors.add(:permalink, I18n.t("activerecord.errors.models.project.attributes.permalink.invalid")) if Project.permalink_on_routes?(permalink)
     end
+    
+    def ensure_at_least_one_reward_validation
+      errors.add(
+        'rewards.size',
+        I18n.t("activerecord.errors.models.project.attributes.rewards.at_least_one")
+      ) if rewards.empty?
+    end
   end
 end

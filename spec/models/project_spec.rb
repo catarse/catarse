@@ -15,6 +15,7 @@ RSpec.describe Project, type: :model do
     it{ is_expected.to have_many :rewards }
     it{ is_expected.to have_many :posts }
     it{ is_expected.to have_many :notifications }
+    it{ is_expected.to have_many :project_transitions }
   end
 
   describe "validations" do
@@ -39,6 +40,105 @@ RSpec.describe Project, type: :model do
     it{ is_expected.not_to allow_value(61).for(:online_days) }
     it{ is_expected.not_to allow_value('users').for(:permalink) }
     it{ is_expected.not_to allow_value('agua.sp.01').for(:permalink) }
+  end
+
+  context "#project_type" do
+    let(:project) { create(:project) }
+
+    before do
+      allow(project).to receive(:pluck_from_database).and_call_original
+    end
+
+    subject { project.project_type }
+
+    context "when project has no flexible relation" do
+      before do
+        expect(project).to receive(:pluck_from_database).
+          with("project_type").and_return("all_or_nothing")
+      end
+
+      it { is_expected.to eq('all_or_nothing') }
+    end
+
+    context "when project has flexible relation" do
+      before do
+        create(:flexible_project, project: project)
+        expect(project).to receive(:pluck_from_database).
+          with("project_type").and_return("flexible")
+      end
+
+      it { is_expected.to eq('flexible') }
+    end
+  end
+
+  context "state check methods" do
+    Project.state_names.each do |st|
+      describe "##{st}? when project state is #{st}" do
+        before { project.state = st }
+        subject { project.send("#{st}?") }
+        it { is_expected.to eq true }
+      end
+
+      describe "##{st}? when project state is not #{st}" do
+        before { project.state = Project.state_names.reject { |x| x == st }.sample }
+        subject { project.send("#{st}?") }
+        it { is_expected.to eq false }
+      end
+    end
+  end
+
+  describe ".with_state" do
+    let(:project_state) { 'online' }
+    subject { Project.with_state(project_state).count }
+
+    context "when has online projects" do
+      before do
+        4.times { create(:project, state: 'online') }
+      end
+
+      it {is_expected.to eq(4) }
+    end
+
+    context "when not have online projects" do
+      it { is_expected.to eq(0) }
+    end
+
+    context "when state is a list" do
+      let(:project_state) { ['online', 'failed'] }
+      before do
+        4.times { create(:project, state: 'online') }
+        2.times { create(:project, state: 'failed') }
+      end
+
+      it {is_expected.to eq(6) }
+    end
+  end
+
+  describe ".without_state" do
+    let(:project_state) { 'online' }
+    subject { Project.without_state(project_state).count }
+
+    context "when has online and failed projects" do
+      before do
+        4.times { create(:project, state: 'online') }
+        2.times { create(:project, state: 'failed') }
+      end
+
+      it { is_expected.to eq(2) }
+    end
+
+    context "when not have any projects" do
+      it { is_expected.to eq(0) }
+    end
+  end
+
+
+  describe "#state_machine" do
+    let!(:project) { create(:project) }
+
+    subject { project.state_machine }
+
+    it { is_expected.to be_an_instance_of(AllOrNothingProjectMachine) }
   end
 
   describe "name validation" do
@@ -149,11 +249,9 @@ RSpec.describe Project, type: :model do
   end
 
   describe '.state_names' do
-    let(:states) { [:draft, :rejected, :approved, :online, :successful, :waiting_funds, :failed, :deleted, :in_analysis] }
-
     subject { Project.state_names }
 
-    it { is_expected.to match_array(states) }
+    it { is_expected.to match_array(AllOrNothingProjectMachine.states) }
   end
 
   describe ".by_permalink" do
@@ -202,42 +300,6 @@ RSpec.describe Project, type: :model do
     end
 
     it { is_expected.to eq [@project_02] }
-  end
-
-  describe '.video_url' do
-    before do
-      CatarseSettings[:minimum_goal_for_video] = 5000
-    end
-    context 'when goal is above minimum' do
-      subject { @project_01 }
-
-      before do
-        @project_01 = create(:project, goal: 6000, state: 'approved')
-      end
-
-      it{ is_expected.not_to allow_value(nil).for(:video_url) }
-    end
-
-    context 'when goal is below minimum' do
-      subject { @project_02 }
-
-      before do
-        CatarseSettings[:minumum_goal_for_video] = 5000
-        @project_02 = create(:project, goal: 4000)
-      end
-
-      it{ is_expected.to allow_value(nil).for(:video_url) }
-    end
-
-    context 'when goal is minimum' do
-      subject { @project_03 }
-
-      before do
-        @project_03 = build(:project, goal: 5000, state: 'approved', video_url: nil)
-      end
-
-      it{ is_expected.not_to allow_value(nil).for(:video_url) }
-    end
   end
 
   describe '.by_online_date' do

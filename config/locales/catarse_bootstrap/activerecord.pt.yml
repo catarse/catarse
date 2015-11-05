@@ -200,6 +200,8 @@ pt:
               blank: "Tipo de conta não pode ficar em branco"
         project:
           attributes:
+            rewards:
+              at_least_one: 'Deve haver pelo menos uma recompensa'
             city:
               blank: Local do projeto não pode ficar em branco
             video_url:
