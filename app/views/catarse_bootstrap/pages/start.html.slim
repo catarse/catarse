@@ -15,7 +15,7 @@
           .fontsize-jumbo.text-success.lineheight-loose = number_with_delimiter(statistics.total_projects_success)
           p.start-stats.fontsize-base = t('.header.success')
         .w-col.w-col-4
-          .fontsize-jumbo.text-success.lineheight-loose = number_to_human(statistics.total_contributed)
+          .fontsize-jumbo.text-success.lineheight-loose = number_to_human(statistics.total_contributed.truncate(-6))
           p.start-stats.fontsize-base = t('.header.money')
 
       .w-row.u-margintop-20.u-marginbottom-60
