@@ -56,6 +56,8 @@
       .fontweight-semibold.fontsize-smaller.u-marginbottom-10 Admin
       ul.w-list-unstyled.u-marginbottom-20
         li.lineheight-looser
+          = link_to t('admin.users.index.new_menu'), new_admin_path(anchor: '/users'), class: 'alt-link fontsize-smaller'
+        li.lineheight-looser
           = link_to t('admin.contributions.index.new_menu'), new_admin_path, class: 'alt-link fontsize-smaller'
         li.lineheight-looser
           = link_to t('admin.contributions.index.menu'), admin_contributions_path, class: 'alt-link fontsize-smaller'
