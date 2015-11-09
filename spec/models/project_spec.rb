@@ -49,7 +49,7 @@ RSpec.describe Project, type: :model do
 
     context "flexible project without rewards" do
       before do
-        project.project_type = 'flexible'
+        create(:flexible_project, project: project)
         project.rewards.destroy_all
 
         # need to us transition to trigger state validations
@@ -69,8 +69,8 @@ RSpec.describe Project, type: :model do
         project.state_machine.transition_to :in_analysis
       end
 
-      it "should have rewards.size error" do
-        is_expected.to eq(true) 
+      it "should not have rewards.size error" do
+        is_expected.to eq(false) 
       end
     end
   end
