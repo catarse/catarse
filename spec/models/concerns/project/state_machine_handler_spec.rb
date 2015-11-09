@@ -218,18 +218,11 @@ RSpec.describe Project::StateMachineHandler, type: :model do
         end
       end
 
-<<<<<<< HEAD
-      context 'when project not hit the goal' do
+      context "when project not hit the goal" do
         before do
           project.update_attribute :online_days, 1
         end
 
-        it{ is_expected.to eq true }
-        it "should go to failed" do
-          subject
-          expect(project).to be_failed
-=======
-      context "when project not hit the goal" do
         let(:project_state){ 'waiting_funds' }
 
         context "and the project is flexible" do
@@ -248,7 +241,6 @@ RSpec.describe Project::StateMachineHandler, type: :model do
             subject
             expect(project).to be_failed
           end
->>>>>>> 248c542... flexible project should be aways successful
         end
       end
     end
