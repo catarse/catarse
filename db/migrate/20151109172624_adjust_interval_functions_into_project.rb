@@ -36,7 +36,7 @@ CREATE OR REPLACE FUNCTION public.remaining_time_json(projects) RETURNS json
 CREATE OR REPLACE FUNCTION public.elapsed_time_json(projects) RETURNS json
     LANGUAGE sql STABLE SECURITY DEFINER
     AS $_$
-            select public.interval_to_json(now() - $1.online_date)
+            select public.interval_to_json(least(now(), $1.expires_at) - $1.online_date)
         $_$;
     SQL
   end
