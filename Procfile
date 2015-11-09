@@ -1,2 +1,2 @@
-web: bundle exec unicorn_rails -p $PORT -c config/unicorn.rb
+web: bundle exec passenger start -p $PORT --max-pool-size 3
 worker: bundle exec sidekiq -C config/sidekiq.yml
