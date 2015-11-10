@@ -5,7 +5,6 @@ SET statement_timeout TO 0;
     SQL
 
     execute <<-SQL
-SELECT deps_save_and_drop_dependencies('1', 'project_details');
 DROP VIEW "1".project_details;
 CREATE VIEW "1".project_details AS 
  SELECT p.id AS project_id,
@@ -63,8 +62,6 @@ CREATE VIEW "1".project_details AS
      LEFT JOIN project_notifications pn ON pn.project_id = p.id
   GROUP BY p.id, c.id, u.id, c.name_pt, ct.name, u.address_city, st.acronym, u.address_state, st.name, pt.progress, pt.pledged, pt.total_contributions, p.state, p.expires_at, p.sent_to_analysis_at, pt.total_payment_service_fee, fp.state;
 
-select deps_restore_dependencies('1', 'project_details');
-
 grant select on "1".project_details to admin;
 grant select on "1".project_details to web_user;
 grant select on "1".project_details to anonymous;
@@ -81,8 +78,8 @@ grant select on public.project_states to admin;
 grant select on public.project_states to web_user;
 grant select on public.project_states to anonymous;
 
-SELECT deps_save_and_drop_dependencies('1', 'projects');
-DROP VIEW "1".projects CASCADE;
+DROP FUNCTION public.near_me("1".projects);
+DROP VIEW "1".projects;
 CREATE VIEW "1".projects AS
  SELECT p.id AS project_id,
     p.name AS project_name,
@@ -112,10 +109,18 @@ CREATE VIEW "1".projects AS
      LEFT JOIN public.cities c ON ((c.id = p.city_id)))
      LEFT JOIN public.states s ON ((s.id = c.state_id)));
 
-select deps_restore_dependencies('1', 'projects');
 grant select on "1".projects to admin;
 grant select on "1".projects to web_user;
 grant select on "1".projects to anonymous;
+
+CREATE OR REPLACE FUNCTION public.near_me("1".projects)
+ RETURNS boolean
+ LANGUAGE sql
+ STABLE SECURITY DEFINER
+AS $function$
+          SELECT
+      COALESCE($1.state_acronym, (SELECT pa.address_state FROM project_accounts pa WHERE pa.project_id = $1.project_id)) = (SELECT u.address_state FROM users u WHERE u.id = nullif(current_setting('user_vars.user_id'), '')::int)
+        $function$;
 
     SQL
   end
@@ -126,7 +131,6 @@ SET statement_timeout TO 0;
     SQL
 
     execute <<-SQL
-SELECT deps_save_and_drop_dependencies('1', 'project_details');
 DROP VIEW "1".project_details;
 CREATE VIEW "1".project_details AS 
  SELECT p.id AS project_id,
@@ -181,7 +185,6 @@ CREATE VIEW "1".project_details AS
      LEFT JOIN project_notifications pn ON pn.project_id = p.id
   GROUP BY p.id, c.id, u.id, c.name_pt, ct.name, u.address_city, st.acronym, u.address_state, st.name, pt.progress, pt.pledged, pt.total_contributions, p.state, p.expires_at, p.sent_to_analysis_at, pt.total_payment_service_fee;
 
-select deps_restore_dependencies('1', 'project_details');
 
 grant select on "1".project_details to admin;
 grant select on "1".project_details to web_user;
@@ -199,8 +202,8 @@ revoke select on public.project_states from admin;
 revoke select on public.project_states from web_user;
 revoke select on public.project_states from anonymous;
 
-SELECT deps_save_and_drop_dependencies('1', 'projects');
-DROP VIEW "1".projects CASCADE;
+DROP FUNCTION public.near_me("1".projects);
+DROP VIEW "1".projects;
 CREATE VIEW "1".projects AS
  SELECT p.id AS project_id,
     p.name AS project_name,
@@ -230,7 +233,15 @@ CREATE VIEW "1".projects AS
 grant select on "1".projects to admin;
 grant select on "1".projects to web_user;
 grant select on "1".projects to anonymous;
-select deps_restore_dependencies('1', 'projects');
+
+CREATE OR REPLACE FUNCTION public.near_me("1".projects)
+ RETURNS boolean
+ LANGUAGE sql
+ STABLE SECURITY DEFINER
+AS $function$
+          SELECT
+      COALESCE($1.state_acronym, (SELECT pa.address_state FROM project_accounts pa WHERE pa.project_id = $1.project_id)) = (SELECT u.address_state FROM users u WHERE u.id = nullif(current_setting('user_vars.user_id'), '')::int)
+        $function$;
 
     SQL
   end
