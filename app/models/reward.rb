@@ -1,5 +1,6 @@
 # coding: utf-8
 class Reward < ActiveRecord::Base
+  include I18n::Alchemy
   include RankedModel
   include ERB::Util
 
