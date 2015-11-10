@@ -68,7 +68,7 @@ class ProjectsController < ApplicationController
     #need to check this before setting new attributes
     should_validate = should_use_validate
 
-    resource.attributes = permitted_params
+    resource.localized.attributes = permitted_params
 
     if resource.save(validate: should_validate)
       flash[:notice] = t('project.update.success')
