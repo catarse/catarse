@@ -12,8 +12,10 @@ CatarsePagarme.configure do |config|
   config.max_installments = CatarseSettings.get_without_cache(:pagarme_max_installments)
   config.minimum_value_for_installment = CatarseSettings.get_without_cache(:pagarme_minimum_value_for_installment)
 
+  config.pagarme_tax = CatarseSettings.get_without_cache(:pagarme_tax)
   config.cielo_tax = CatarseSettings.get_without_cache(:cielo_tax)
   config.stone_tax = CatarseSettings.get_without_cache(:stone_tax)
+  config.stone_installment_tax = CatarseSettings.get_without_cache(:stone_installment_tax)
   config.cielo_installment_diners_tax = CatarseSettings.get_without_cache(:cielo_installment_diners_tax)
   config.cielo_installment_not_diners_tax = CatarseSettings.get_without_cache(:cielo_installment_not_diners_tax)
   config.cielo_installment_amex_tax = CatarseSettings.get_without_cache(:cielo_installment_amex_tax)
