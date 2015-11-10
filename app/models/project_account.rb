@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 class ProjectAccount < ActiveRecord::Base
+  include I18n::Alchemy
   belongs_to :project
   belongs_to :bank
 
