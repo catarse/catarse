@@ -11,7 +11,7 @@
                 wrapper_class: 'w-row u-marginbottom-30 card card-terciary medium',
                 label_wrapper_html: { class: 'w-col w-col-5 w-subcol' },
                 text_field_wrapper_html: { class: 'w-col w-col-7' },
-                input_html: { id: 'project-goal-input', class: 'postfix positive medium', required: false, value: number_with_precision(form.object.goal, precision: 2)},
+                input_html: { id: 'project-goal-input', class: 'postfix positive medium', required: false, value: @project.decorate.display_goal_value},
                 field_wrapper_html: { class: 'w-col w-col-8 w-col-small-6 w-col-tiny-6' },
                 validation_text: false,
                 preppend_text_wrapper_html: { class: 'w-col w-col-4 w-col-small-6 w-col-tiny-6 text-field prefix no-hover medium prefix-permalink' },
