@@ -15,6 +15,7 @@ RSpec.describe Project, type: :model do
     it{ is_expected.to have_many :rewards }
     it{ is_expected.to have_many :posts }
     it{ is_expected.to have_many :notifications }
+    it{ is_expected.to have_many :project_transitions }
   end
 
   describe "validations" do
@@ -39,6 +40,39 @@ RSpec.describe Project, type: :model do
     it{ is_expected.not_to allow_value(61).for(:online_days) }
     it{ is_expected.not_to allow_value('users').for(:permalink) }
     it{ is_expected.not_to allow_value('agua.sp.01').for(:permalink) }
+  end
+
+  describe "reward size validation" do
+    let(:project) { create(:project, state: 'draft') }
+
+    subject { project.errors['rewards.size'].present? }
+
+    context "flexible project without rewards" do
+      before do
+        create(:flexible_project, project: project)
+        project.rewards.destroy_all
+
+        # need to us transition to trigger state validations
+        project.state_machine.transition_to :online
+       end
+
+      it "should not have rewards.size error" do
+        is_expected.to eq(false) 
+      end
+    end
+
+    context "all or nothing project without rewads" do
+      before do
+        project.rewards.destroy_all
+
+        # need to us transition to trigger state validations
+        project.state_machine.transition_to :in_analysis
+      end
+
+      it "should not have rewards.size error" do
+        is_expected.to eq(false) 
+      end
+    end
   end
 
   describe "name validation" do
@@ -76,6 +110,72 @@ RSpec.describe Project, type: :model do
       it{ is_expected.to allow_value(62).for(:online_days) }
     end
 
+  end
+
+  describe "#should_fail?" do
+    let(:project) { create(:project, state: 'online') }
+
+    subject { project.should_fail? }
+
+    before do
+       allow(project).to receive(:expired?).and_return(true)
+    end
+
+    context "when project is flexible" do
+      before do
+        create(:flexible_project, project: project)
+      end
+
+      context "and expired and not reached the goal" do
+        before do
+          allow(project).to receive(:reached_goal?).and_return(false)
+        end
+
+        it { is_expected.to eq(false) }
+      end
+
+      context "and expired and reached the goal" do
+        before do
+          allow(project).to receive(:reached_goal?).and_return(true)
+        end
+
+        it { is_expected.to eq(false) }
+      end
+
+      context "and is not expired" do
+        before do
+          allow(project).to receive(:expired?).and_return(false)
+        end
+
+        it { is_expected.to eq(false) }
+      end
+    end
+
+    context "when project is not flexible" do
+      context "and expired and not reached the goal" do
+        before do
+          allow(project).to receive(:reached_goal?).and_return(false)
+        end
+
+        it { is_expected.to eq(true) }
+      end
+
+      context "and expired and reached the goal" do
+        before do
+          allow(project).to receive(:reached_goal?).and_return(true)
+        end
+
+        it { is_expected.to eq(false) }
+      end
+
+      context "and is not expired" do
+        before do
+          allow(project).to receive(:expired?).and_return(false)
+        end
+
+        it { is_expected.to eq(false) }
+      end
+    end
   end
 
   describe "#published?" do
@@ -202,42 +302,6 @@ RSpec.describe Project, type: :model do
     end
 
     it { is_expected.to eq [@project_02] }
-  end
-
-  describe '.video_url' do
-    before do
-      CatarseSettings[:minimum_goal_for_video] = 5000
-    end
-    context 'when goal is above minimum' do
-      subject { @project_01 }
-
-      before do
-        @project_01 = create(:project, goal: 6000, state: 'approved')
-      end
-
-      it{ is_expected.not_to allow_value(nil).for(:video_url) }
-    end
-
-    context 'when goal is below minimum' do
-      subject { @project_02 }
-
-      before do
-        CatarseSettings[:minumum_goal_for_video] = 5000
-        @project_02 = create(:project, goal: 4000)
-      end
-
-      it{ is_expected.to allow_value(nil).for(:video_url) }
-    end
-
-    context 'when goal is minimum' do
-      subject { @project_03 }
-
-      before do
-        @project_03 = build(:project, goal: 5000, state: 'approved', video_url: nil)
-      end
-
-      it{ is_expected.not_to allow_value(nil).for(:video_url) }
-    end
   end
 
   describe '.by_online_date' do

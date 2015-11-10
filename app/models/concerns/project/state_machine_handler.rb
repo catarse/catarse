@@ -6,43 +6,14 @@ module Project::StateMachineHandler
     #NOTE: state machine things
     state_machine :state, initial: :draft do
       state :draft, value: 'draft'
+      state :in_analysis, value: 'in_analysis'
       state :rejected, value: 'rejected'
+      state :approved, value: 'approved'
+      state :online, value: 'online'
+      state :successful, value: 'successful'
+      state :waiting_funds, value: 'waiting_funds'
+      state :failed, value: 'failed'
 
-      state :in_analysis do
-        validates_presence_of :city
-        validates_length_of :name, maximum: Project::NAME_MAXLENGTH
-      end
-
-      #validations starting in in_analysis
-      state :in_analysis, :approved, :online, :successful, :waiting_funds, :failed do
-        validates_presence_of :about_html, :headline, :goal, :online_days, :budget
-        validates_presence_of :uploaded_image, if: ->(project) { project.video_thumbnail.blank? }
-        validate do
-          [:uploaded_image, :about_html, :name].each do |attr|
-            self.user.errors.add_on_blank(attr)
-          end
-          self.user.errors.each {|error, error_message| self.errors.add('user.' + error.to_s, error_message)}
-          self.errors['rewards.size'] << "Deve haver pelo menos uma recompensa" if self.rewards.size == 0
-          self.errors['account.agency_size'] << "Agência deve ter pelo menos 4 dígitos" if self.account && self.account.agency.size < 4
-        end
-      end
-
-      #validations starting in approved
-      state :approved, :online, :successful, :waiting_funds, :failed do
-        validates_presence_of :video_url,
-          if: ->(project) { (project.goal || 0) >= CatarseSettings[:minimum_goal_for_video].to_i }
-      end
-
-      #validations starting in online
-      state :online, :successful, :waiting_funds, :failed do
-        validates_presence_of :account, message: 'Dados Bancários não podem ficar em branco'
-        validate do
-          [:email, :address_street, :address_number, :address_city, :address_state, :address_zip_code, :phone_number, :bank, :agency, :account, :account_digit, :owner_name, :owner_document].each do |attr|
-            self.account.errors.add_on_blank(attr) if self.account.present?
-          end
-          self.account.errors.each {|error, error_message| self.errors.add('project_account.' + error.to_s, error_message)} if self.account.present?
-        end
-      end
       state :deleted, value: 'deleted'
 
       event :push_to_draft do
@@ -83,7 +54,7 @@ module Project::StateMachineHandler
         }
 
         transition waiting_funds: :successful,  if: ->(project) {
-          project.reached_goal?
+          project.reached_goal? || project.is_flexible?
         }
 
         transition waiting_funds: :failed,      if: ->(project) {

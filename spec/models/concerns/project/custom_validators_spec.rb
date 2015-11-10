@@ -10,4 +10,32 @@ RSpec.describe Project::CustomValidators, type: :model do
       expect(Project.permalink_on_routes?('projects')).to eq(true)
     end
   end
+
+  describe "ensure_at_least_one_reward_validation" do
+    let(:project) { create(:project) }
+
+    subject { project.errors['rewards.size'].present? }
+
+    context "when project has no rewards" do
+      before do
+        project.rewards.destroy_all
+        project.ensure_at_least_one_reward_validation
+      end
+
+      it do
+        is_expected.to eq true
+      end
+    end
+
+    context "when project has rewads" do
+      before do
+        create(:reward, project: project)
+        project.ensure_at_least_one_reward_validation
+      end
+
+      it do
+        is_expected.to eq false
+      end
+    end
+  end
 end

@@ -4,15 +4,18 @@ class Project < ActiveRecord::Base
   HEADLINE_MAXLENGTH = 100
   NAME_MAXLENGTH = 50
 
+  include Statesman::Adapters::ActiveRecordQueries
   include PgSearch
 
   include Shared::StateMachineHelpers
   include Shared::Queued
 
   include Project::StateMachineHandler
+  include Project::StateValidator
   include Project::VideoHandler
   include Project::CustomValidators
   include Project::ErrorGroups
+  include Project::FlexibleHandler
 
   has_notifications
 
@@ -36,6 +39,8 @@ class Project < ActiveRecord::Base
   has_many :posts, class_name: "ProjectPost", inverse_of: :project
   has_many :budgets, class_name: "ProjectBudget", inverse_of: :project
   has_many :unsubscribes
+
+  has_many :project_transitions, autosave: false
 
   accepts_nested_attributes_for :rewards, allow_destroy: true
   accepts_nested_attributes_for :user
@@ -198,7 +203,7 @@ class Project < ActiveRecord::Base
   end
 
   def should_fail?
-    expired? && !reached_goal?
+    expired? && !reached_goal? && !is_flexible?
   end
 
   def notify_owner(template_name, params = {})
@@ -259,5 +264,9 @@ class Project < ActiveRecord::Base
 
   def pluck_from_database attribute
     Project.where(id: self.id).pluck("projects.#{attribute}").first
+  end
+
+  def state_machine
+    @state_machine ||= FlexibleProjectMachine.new(self, transition_class: ProjectTransition)
   end
 end

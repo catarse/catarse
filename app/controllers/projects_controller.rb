@@ -1,5 +1,6 @@
 # coding: utf-8
 class ProjectsController < ApplicationController
+
   after_filter :verify_authorized, except: %i[show index video video_embed embed embed_panel about_mobile]
   after_filter :redirect_user_back_after_login, only: %i[index show]
   before_action :authorize_and_build_resources, only: %i[edit]
@@ -37,7 +38,7 @@ class ProjectsController < ApplicationController
     @project.attributes = permitted_params.merge(user: current_user, referral_link: referral_link)
     authorize @project
     if @project.save
-      redirect_to edit_project_path(@project, anchor: 'home')
+      redirect_to insights_project_path(@project)
     else
       render :new
     end
@@ -135,7 +136,7 @@ class ProjectsController < ApplicationController
       if success_redirect
         redirect_to edit_project_path(@project, anchor: success_redirect)
       else
-        redirect_to edit_project_path(@project, anchor: 'home')
+        redirect_to insights_project_path(@project)
       end
     else
       flash.now[:notice] = t("projects.#{action_name.to_s}_error")
