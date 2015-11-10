@@ -1,5 +1,5 @@
 class ProjectPost < ActiveRecord::Base
-
+  include I18n::Alchemy
   has_notifications
 
   belongs_to :project, inverse_of: :posts
