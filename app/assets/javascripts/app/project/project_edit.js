@@ -13,10 +13,6 @@ App.addChild('ProjectEditForm', _.extend({
 App.addChild('ProjectEdit', _.extend({
   el: '.project-dashboard-edit',
 
-  events: {
-    'click input[type="submit"]': 'removeMask'
-  },
-
   activate: function(){
     this.route('basics');
     this.route('goal');
@@ -70,12 +66,6 @@ App.addChild('ProjectEdit', _.extend({
       if(!_.isNull(newLocation) && newLocation != window.location.href) {
           window.location.href = newLocation;
       }
-  },
-
-  removeMask: function(){    
-    var unmaskedValue = this.$('#project-goal-input').val().slice(0, -3).replace('.', '');
-    this.$('#project-goal-input').val(unmaskedValue);
-    return;
   },
 
   loadEmbed: function() {
