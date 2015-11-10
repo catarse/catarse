@@ -13,16 +13,26 @@ var App = window.App = Skull.View.extend({
     if($('#global-alert').length === 0 || this.$('body').data('mobile')){
       return;
     }
+    if($('#fixed-alert').length > 0 && !this.$('body').data('mobile')){
+      $('#fixed-alert').addClass('fixed-alert-visible');
+      $('.main-header, .hero-search').addClass('with-fixed-alert');
+      this.fixedAlert = true;
+    }
     if(!window.store.get('globalClosedCookies')){
       $('#global-alert').slideDown(400);
-      $('.main-header').addClass('header-with-alert');
+      $('.main-header').addClass('with-global-alert');
+      if(this.fixedAlert){
+        $('.main-header, #global-alert').addClass('with-two-alerts');
+      }
     }
+
   },
 
   closeAlert: function(event){
     $('#global-alert').slideUp(400);
-    $('.main-header').removeClass('header-with-alert')
+    $('.main-header').removeClass('with-global-alert').removeClass('with-two-alerts');
     window.store.set('globalClosedCookies', true);
+    this.globalAlert = false;
   },
 
   searchProject: function(){
