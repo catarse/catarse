@@ -1,5 +1,6 @@
 # coding: utf-8
 class Project < ActiveRecord::Base
+  include I18n::Alchemy
   PUBLISHED_STATES = ['online', 'waiting_funds', 'successful', 'failed']
   HEADLINE_MAXLENGTH = 100
   NAME_MAXLENGTH = 50

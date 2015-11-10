@@ -122,6 +122,10 @@ class ProjectDecorator < Draper::Decorator
     number_to_currency source.goal
   end
 
+  def display_goal_value
+    number_to_currency source.localized.goal
+  end
+
   def progress_bar
     width = source.progress > 100 ? 100 : source.progress
     content_tag(:div, nil, id: :progress, class: 'meter-fill', style: "width: #{width}%;")
