@@ -487,9 +487,6 @@ img, iframe
 .main-header
   +transition(all 500ms ease)
 
-.main-header.header-with-alert
-  top: 82px
-
 .alert-top.alert-flex.float 
   position: static
   padding-top: 25px
@@ -526,18 +523,49 @@ img, iframe
 #close-global-alert
   margin-top: 5px
 
+.main-header.with-two-alerts,
+.global-alert.with-two-alerts
+  +transform(translateY(38px))  
+
+.main-header.with-global-alert
+  top: 82px
+
+.main-header.with-fixed-alert
+  +transform(translateY(38px))
+
 @media (max-width: 991px)
   .alert-top.alert-flex.float 
     padding-top: 11px
     padding-bottom: 11px
     font-size: 14px
-  .main-header.header-with-alert
-    top: 51px
+  .main-header.with-global-alert
+    +transform(translateY(-30px))
+  .main-header.with-two-alerts
+    +transform(translateY(7px))
 
 @media (max-width: 597px)
-  .main-header.header-with-alert
-    top: 72px
+  .main-header.with-global-alert
+    +transform(translateY(72px))
 
 @media (max-width: 767px)
   .section 
     padding: 20px 0px
+  .hero-search.with-fixed-alert
+    +transform(translateY(38px))
+
+@media (max-width: 631px)
+  .main-header.with-fixed-alert,
+  .hero-search.with-fixed-alert,
+  .global-alert.with-two-alerts
+    +transform(translateY(60px))
+  .main-header.with-two-alerts
+    +transform(translateY(30px))
+
+@media (max-width: 615px)
+  .main-header.with-global-alert
+    +transform(translateY(-10px))
+  .main-header.with-two-alerts
+    +transform(translateY(50px))  
+
+.fixed-alert-visible
+  top: 0px
