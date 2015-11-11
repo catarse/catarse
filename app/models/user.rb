@@ -1,5 +1,6 @@
 # coding: utf-8
 class User < ActiveRecord::Base
+  include I18n::Alchemy
   acts_as_token_authenticatable
   include User::OmniauthHandler
   has_notifications

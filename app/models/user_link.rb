@@ -1,4 +1,5 @@
 class UserLink < ActiveRecord::Base
+  include I18n::Alchemy
   before_save :prepend_protocol
   belongs_to :user
   scope :with_link, ->{ where('link IS NOT NULL') }
