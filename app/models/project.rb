@@ -263,6 +263,10 @@ class Project < ActiveRecord::Base
     to_analytics.to_json
   end
 
+  def mode
+    pluck_from_database("mode")
+  end
+
   def pluck_from_database attribute
     Project.where(id: self.id).pluck("projects.#{attribute}").first
   end
