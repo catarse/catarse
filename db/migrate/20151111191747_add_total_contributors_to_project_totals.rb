@@ -42,10 +42,10 @@ CREATE VIEW "1".projects AS
     public.remaining_time_json(p.*) AS remaining_time,
     p.expires_at,
     COALESCE(( SELECT pt.pledged
-           FROM project_totals pt
+           FROM "1".project_totals pt
           WHERE (pt.project_id = p.id)), (0)::numeric) AS pledged,
     COALESCE(( SELECT pt.progress
-           FROM project_totals pt
+           FROM "1".project_totals pt
           WHERE (pt.project_id = p.id)), (0)::numeric) AS progress,
     COALESCE(s.acronym, (pa.address_state)::character varying(255)) AS state_acronym,
     u.name AS owner_name,
@@ -148,10 +148,10 @@ CREATE VIEW "1".projects AS
     public.remaining_time_json(p.*) AS remaining_time,
     p.expires_at,
     COALESCE(( SELECT pt.pledged
-           FROM project_totals pt
+           FROM "1".project_totals pt
           WHERE (pt.project_id = p.id)), (0)::numeric) AS pledged,
     COALESCE(( SELECT pt.progress
-           FROM project_totals pt
+           FROM "1".project_totals pt
           WHERE (pt.project_id = p.id)), (0)::numeric) AS progress,
     COALESCE(s.acronym, (pa.address_state)::character varying(255)) AS state_acronym,
     u.name AS owner_name,
