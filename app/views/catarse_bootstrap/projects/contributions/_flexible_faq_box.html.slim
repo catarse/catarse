@@ -1,0 +1,20 @@
+#faq-box.w-hidden-small.w-hidden-tiny.back-faq-box data-ix="new-interaction"
+  .w-row.u-marginbottom-30
+    .w-col.w-col-2.w-col-small-2.w-col-tiny-2
+      img src="https://daks2k3a4ib2z.cloudfront.net/54b440b85608e3f4389db387/5632ebacd092957f34eaea9c_badge-flex.png" width="30" /
+    .w-col.w-col-10.w-col-small-10.w-col-tiny-10
+      .w-inline-block.fontsize-smallest._w-inline-block.fontcolor-secondary=t('projects.contributions.faq.flexible.explanation')
+
+  .u-marginbottom-20.fontsize-small.fontweight-semibold=t('projects.contributions.faq.flexible.common_questions')
+  ul.w-list-unstyled
+    li.list-question.fontsize-smaller.alt-link  #{t('projects.contributions.faq.flexible.how_contribute')}
+    li.list-answer.u-marginbottom-20.fontsize-smaller=t('projects.contributions.faq.flexible.how_contribute_answer')
+
+    li.list-question.fontsize-smaller.alt-link  #{t('projects.contributions.faq.flexible.when_made_payment')}
+    li.list-answer.u-marginbottom-20.fontsize-smaller=t('projects.contributions.faq.flexible.when_made_payment_answer')
+
+    li.list-question.fontsize-smaller.alt-link  #{t('projects.contributions.faq.flexible.when_project_fails')}
+    li.list-answer.u-marginbottom-20.fontsize-smaller=t('projects.contributions.faq.flexible.when_project_fails_answer')
+
+    li.list-question.fontsize-smaller.alt-link  #{t('projects.contributions.faq.flexible.when_project_funded')}
+    li.list-answer.u-marginbottom-20.fontsize-smaller=raw t('projects.contributions.faq.flexible.when_project_funded_answer', name: link_to(@project.user.display_name, user_path(@project.user)))
