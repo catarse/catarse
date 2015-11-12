@@ -8,7 +8,6 @@ class FlexibleProject < ActiveRecord::Base
 
   # ensure that we have only one flexible project per project
   validates :project_id, presence: true, uniqueness: true
-  validates_length_of :name, maximum: Project::NAME_MAXLENGTH
 
   # delegate reusable methods from project
   delegate :expired?, :reached_goal?, :in_time_to_wait?,

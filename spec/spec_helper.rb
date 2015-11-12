@@ -52,11 +52,8 @@ RSpec.configure do |config|
     ('deleted', 'archived'),
     ('rejected', 'created'),
     ('draft', 'created'),
-    ('in_analysis', 'created'),
-    ('approved', 'publishable'),
     ('online', 'published'),
     ('waiting_funds', 'published'),
-    ('failed', 'finished'),
     ('successful', 'finished');
     }
   end
