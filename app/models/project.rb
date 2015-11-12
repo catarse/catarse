@@ -266,7 +266,10 @@ class Project < ActiveRecord::Base
   end
 
   def mode
-    pluck_from_database("mode")
+    # aon is the default value because now we always need a mode for a project
+    # After the next refactoring (when we extract aon to another table) this will
+    # no longer be necessary
+    pluck_from_database("mode") || 'aon'
   end
 
   def pluck_from_database attribute
@@ -280,8 +283,10 @@ class Project < ActiveRecord::Base
     :can_push_to_online?, :can_push_to_draft?, :can_approve?, to: :state_machine
 
   # Get all states names from AonProjectMachine
+  # Used in some legacy parts of the admin
+  # @TODO: Remove this method
   def self.state_names
-    state_machine.class.states.map(&:to_sym)
+    AonProjectMachine.states.map(&:to_sym)
   end
 
   # Init flexible machine or

@@ -9,7 +9,7 @@ def all_machine_states
 end
 
 RSpec.describe Project, type: :model do
-  let(:project){ build(:project, goal: 3000) }
+  let(:project){ create(:project, goal: 3000) }
   let(:user){ create(:user) }
 
   describe "associations" do
@@ -121,7 +121,7 @@ RSpec.describe Project, type: :model do
     end
 
     context "when project type is flexible" do
-      let!(:project) { create(:flexible_project, project: project) }
+      let!(:flex_project) { create(:flexible_project, project: project) }
       it { is_expected.to be_an_instance_of(FlexProjectMachine) }
     end
   end
@@ -235,9 +235,9 @@ RSpec.describe Project, type: :model do
 
   describe '.state_names' do
     let(:states) { [:draft, :rejected, :approved, :online, :successful, :waiting_funds, :failed, :deleted, :in_analysis] }
-
+  
     subject { Project.state_names }
-
+  
     it { is_expected.to match_array(states) }
   end
 
