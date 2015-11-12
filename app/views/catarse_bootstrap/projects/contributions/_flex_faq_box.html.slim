@@ -13,8 +13,11 @@
     li.list-question.fontsize-smaller.alt-link  #{t('projects.contributions.faq.flexible.when_made_payment')}
     li.list-answer.u-marginbottom-20.fontsize-smaller=t('projects.contributions.faq.flexible.when_made_payment_answer')
 
-    li.list-question.fontsize-smaller.alt-link  #{t('projects.contributions.faq.flexible.when_project_fails')}
-    li.list-answer.u-marginbottom-20.fontsize-smaller=t('projects.contributions.faq.flexible.when_project_fails_answer')
+    li.list-question.fontsize-smaller.alt-link  #{t('projects.contributions.faq.flexible.when_about_my_payment_data')}
+    li.list-answer.u-marginbottom-20.fontsize-smaller=t('projects.contributions.faq.flexible.when_about_my_payment_data_answer')
+
+    li.list-question.fontsize-smaller.alt-link  #{t('projects.contributions.faq.flexible.when_project_owner')}
+    li.list-answer.u-marginbottom-20.fontsize-smaller=raw t('projects.contributions.faq.flexible.when_project_owner_answer', name: link_to(@project.user.display_name, user_path(@project.user), target: '_blank'))
 
     li.list-question.fontsize-smaller.alt-link  #{t('projects.contributions.faq.flexible.when_project_funded')}
-    li.list-answer.u-marginbottom-20.fontsize-smaller=raw t('projects.contributions.faq.flexible.when_project_funded_answer', name: link_to(@project.user.display_name, user_path(@project.user)))
+    li.list-answer.u-marginbottom-20.fontsize-smaller=raw t('projects.contributions.faq.flexible.when_project_funded_answer', name: link_to(@project.user.display_name, user_path(@project.user), target: '_blank'))

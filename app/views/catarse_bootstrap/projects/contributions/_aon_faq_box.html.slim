@@ -20,4 +20,4 @@
     li.list-answer.u-marginbottom-20.fontsize-smaller=t('projects.contributions.faq.all_or_nothing.when_project_fails_answer')
 
     li.list-question.fontsize-smaller.alt-link  #{t('projects.contributions.faq.all_or_nothing.when_project_funded')}
-    li.list-answer.u-marginbottom-20.fontsize-smaller=raw t('projects.contributions.faq.all_or_nothing.when_project_funded_answer', name: link_to(@project.user.display_name, user_path(@project.user)))
+    li.list-answer.u-marginbottom-20.fontsize-smaller=raw t('projects.contributions.faq.all_or_nothing.when_project_funded_answer', name: link_to(@project.user.display_name, user_path(@project.user), target: '_blank'))
