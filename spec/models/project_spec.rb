@@ -1,8 +1,15 @@
 # coding: utf-8
 require 'rails_helper'
 
+def all_machine_states
+  %w(
+    draft rejected online successful waiting_funds
+    deleted in_analysis approved failed
+  )
+end
+
 RSpec.describe Project, type: :model do
-  let(:project){ build(:project, goal: 3000) }
+  let(:project){ create(:project, goal: 3000) }
   let(:user){ create(:user) }
 
   describe "associations" do
@@ -42,36 +49,80 @@ RSpec.describe Project, type: :model do
     it{ is_expected.not_to allow_value('agua.sp.01').for(:permalink) }
   end
 
-  describe "reward size validation" do
-    let(:project) { create(:project, state: 'draft') }
+  context "state check methods" do
+    all_machine_states.each do |st|
+      describe "##{st}? when project state is #{st}" do
+        before { project.state = st }
+        subject { project.send("#{st}?") }
+        it { is_expected.to eq true }
+      end
 
-    subject { project.errors['rewards.size'].present? }
-
-    context "flexible project without rewards" do
-      before do
-        create(:flexible_project, project: project)
-        project.rewards.destroy_all
-
-        # need to us transition to trigger state validations
-        project.state_machine.transition_to :online
-       end
-
-      it "should not have rewards.size error" do
-        is_expected.to eq(false) 
+      describe "##{st}? when project state is not #{st}" do
+        before { project.state = all_machine_states.reject { |x| x == st }.sample }
+        subject { project.send("#{st}?") }
+        it { is_expected.to eq false }
       end
     end
+  end
 
-    context "all or nothing project without rewads" do
+  describe ".with_state" do
+    let(:project_state) { 'online' }
+    subject { Project.with_state(project_state).count }
+
+    context "when has online projects" do
       before do
-        project.rewards.destroy_all
-
-        # need to us transition to trigger state validations
-        project.state_machine.transition_to :in_analysis
+        4.times { create(:project, state: 'online') }
       end
 
-      it "should not have rewards.size error" do
-        is_expected.to eq(false) 
+      it {is_expected.to eq(4) }
+    end
+
+    context "when not have online projects" do
+      it { is_expected.to eq(0) }
+    end
+
+    context "when state is a list" do
+      let(:project_state) { ['online', 'failed'] }
+      before do
+        4.times { create(:project, state: 'online') }
+        2.times { create(:project, state: 'failed') }
       end
+
+      it {is_expected.to eq(6) }
+    end
+  end
+
+  describe ".without_state" do
+    let(:project_state) { 'online' }
+    subject { Project.without_state(project_state).count }
+
+    context "when has online and failed projects" do
+      before do
+        4.times { create(:project, state: 'online') }
+        2.times { create(:project, state: 'failed') }
+      end
+
+      it { is_expected.to eq(2) }
+    end
+
+    context "when not have any projects" do
+      it { is_expected.to eq(0) }
+    end
+  end
+
+
+  describe "#state_machine" do
+    let!(:project) { create(:project) }
+
+    subject { project.state_machine }
+
+    context "when project type is all_or_nothing" do
+      it { is_expected.to be_an_instance_of(AonProjectMachine) }
+    end
+
+    context "when project type is flexible" do
+      let!(:flex_project) { create(:flexible_project, project: project) }
+      it { is_expected.to be_an_instance_of(FlexProjectMachine) }
     end
   end
 
@@ -110,72 +161,6 @@ RSpec.describe Project, type: :model do
       it{ is_expected.to allow_value(62).for(:online_days) }
     end
 
-  end
-
-  describe "#should_fail?" do
-    let(:project) { create(:project, state: 'online') }
-
-    subject { project.should_fail? }
-
-    before do
-       allow(project).to receive(:expired?).and_return(true)
-    end
-
-    context "when project is flexible" do
-      before do
-        create(:flexible_project, project: project)
-      end
-
-      context "and expired and not reached the goal" do
-        before do
-          allow(project).to receive(:reached_goal?).and_return(false)
-        end
-
-        it { is_expected.to eq(false) }
-      end
-
-      context "and expired and reached the goal" do
-        before do
-          allow(project).to receive(:reached_goal?).and_return(true)
-        end
-
-        it { is_expected.to eq(false) }
-      end
-
-      context "and is not expired" do
-        before do
-          allow(project).to receive(:expired?).and_return(false)
-        end
-
-        it { is_expected.to eq(false) }
-      end
-    end
-
-    context "when project is not flexible" do
-      context "and expired and not reached the goal" do
-        before do
-          allow(project).to receive(:reached_goal?).and_return(false)
-        end
-
-        it { is_expected.to eq(true) }
-      end
-
-      context "and expired and reached the goal" do
-        before do
-          allow(project).to receive(:reached_goal?).and_return(true)
-        end
-
-        it { is_expected.to eq(false) }
-      end
-
-      context "and is not expired" do
-        before do
-          allow(project).to receive(:expired?).and_return(false)
-        end
-
-        it { is_expected.to eq(false) }
-      end
-    end
   end
 
   describe "#published?" do
@@ -250,9 +235,9 @@ RSpec.describe Project, type: :model do
 
   describe '.state_names' do
     let(:states) { [:draft, :rejected, :approved, :online, :successful, :waiting_funds, :failed, :deleted, :in_analysis] }
-
+  
     subject { Project.state_names }
-
+  
     it { is_expected.to match_array(states) }
   end
 

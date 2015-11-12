@@ -11,7 +11,7 @@ class Admin::ProjectsController < Admin::BaseController
   [:approve, :reject, :push_to_draft, :push_to_trash, :push_to_online].each do |name|
     define_method name do
       @project = Project.find params[:id]
-      @project.send("#{name.to_s}!")
+      @project.send("#{name.to_s}")
       redirect_to :back
     end
   end
@@ -19,7 +19,7 @@ class Admin::ProjectsController < Admin::BaseController
   def destroy
     @project = Project.find params[:id]
     if @project.can_push_to_trash?
-      @project.push_to_trash!
+      @project.push_to_trash
     end
 
     redirect_to admin_projects_path

@@ -8,11 +8,10 @@ class Project < ActiveRecord::Base
   include Statesman::Adapters::ActiveRecordQueries
   include PgSearch
 
-  include Shared::StateMachineHelpers
   include Shared::Queued
 
-  include Project::StateMachineHandler
-  include Project::StateValidator
+  include Project::BaseValidator
+  include Project::AllOrNothingStateValidator
   include Project::VideoHandler
   include Project::CustomValidators
   include Project::ErrorGroups
@@ -67,6 +66,12 @@ class Project < ActiveRecord::Base
   def self.pg_search term
     search_tsearch(term).presence || search_trm(term)
   end
+
+  # With state scopes
+  scope :with_state, -> (state) { where(state: state) }
+  scope :with_states, -> (state) { with_state(state) }
+  scope :without_state, -> (state) { where("projects.state not in (?)", state) }
+  scope :without_states, -> (state) { without_state(state) }
 
   # Used to simplify a has_scope
   scope :successful, ->{ with_state('successful') }
@@ -187,6 +192,7 @@ class Project < ActiveRecord::Base
   def accept_contributions?
     online? && !expired?
   end
+
   def reached_goal?
     pledged >= goal
   end
@@ -201,10 +207,6 @@ class Project < ActiveRecord::Base
 
   def new_draft_recipient
     User.find_by_email CatarseSettings[:email_projects]
-  end
-
-  def should_fail?
-    expired? && !reached_goal? && !is_flexible?
   end
 
   def notify_owner(template_name, params = {})
@@ -263,11 +265,49 @@ class Project < ActiveRecord::Base
     to_analytics.to_json
   end
 
+  def mode
+    # aon is the default value because now we always need a mode for a project
+    # After the next refactoring (when we extract aon to another table) this will
+    # no longer be necessary
+    pluck_from_database("mode") || 'aon'
+  end
+
   def pluck_from_database attribute
     Project.where(id: self.id).pluck("projects.#{attribute}").first
   end
 
+  # State machine delegation methods
+  delegate :push_to_draft, :reject, :push_to_online, :finish,
+    :send_to_analysis, :approve, :push_to_trash, :can_transition_to?,
+    :transition_to, :can_reject?, :can_push_to_trash?,
+    :can_push_to_online?, :can_push_to_draft?, :can_approve?, to: :state_machine
+
+  # Get all states names from AonProjectMachine
+  # Used in some legacy parts of the admin
+  # @TODO: Remove this method
+  def self.state_names
+    AonProjectMachine.states.map(&:to_sym)
+  end
+
+  # Init flexible machine or
+  # all or nothing machine
   def state_machine
-    @state_machine ||= FlexibleProjectMachine.new(self, transition_class: ProjectTransition)
+    machine_class = Object.const_get "#{self.mode.classify}ProjectMachine"
+    @state_machine ||= machine_class.new(self, {
+      transition_class: ProjectTransition
+    })
+  end
+
+  %w(
+    draft rejected online successful waiting_funds
+    deleted in_analysis approved failed
+  ).each do |st|
+    define_method "#{st}?" do
+      if self.state.nil?
+        self.state_machine.current_state == st
+      else
+        self.state == st
+      end
+    end
   end
 end

@@ -55,10 +55,11 @@ class ProjectObserver < ActiveRecord::Observer
       online_date: DateTime.current,
       audited_user_name: project.user.name,
       audited_user_cpf: project.user.cpf,
-      audited_user_moip_login: project.user.moip_login,
       audited_user_phone_number: project.user.phone_number
     })
   end
+  # Flexible pojects can go direct to online from draft
+  alias :from_draft_to_online :from_approved_to_online
 
   def from_online_to_failed(project)
     notify_users(project)
