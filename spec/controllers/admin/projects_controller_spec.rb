@@ -11,32 +11,19 @@ RSpec.describe Admin::ProjectsController, type: :controller do
   end
 
   describe 'PUT approve' do
-    let(:project) do
-      project = create(:project, state: 'draft')
-      create(:reward, project: project)
-      project.update_attribute :state, 'in_analysis'
-      project
-    end
+    let(:project) { create(:project, state: 'in_analysis') }
     subject { project.approved? }
 
     before do
       put :approve, id: project, locale: :pt
+      project.reload
     end
 
-    it do
-      project.reload
-      is_expected.to eq(true)
-    end
+    it { is_expected.to eq(true) }
   end
 
   describe 'PUT reject' do
-    let(:project) do
-      project = create(:project, state: 'draft')
-      create(:reward, project: project)
-      project.update_attribute :state, 'in_analysis'
-      project
-    end
-
+    let(:project) { create(:project, state: 'in_analysis') }
     subject { project.rejected? }
 
     before do
@@ -48,7 +35,7 @@ RSpec.describe Admin::ProjectsController, type: :controller do
   end
 
   describe 'PUT push_to_draft' do
-    let(:project) { create(:project, state: 'online') }
+    let(:project) { create(:project, state: 'rejected') }
     subject { project.draft? }
 
     before do
