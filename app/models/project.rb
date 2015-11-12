@@ -265,6 +265,10 @@ class Project < ActiveRecord::Base
     to_analytics.to_json
   end
 
+  def mode
+    pluck_from_database("mode")
+  end
+
   def pluck_from_database attribute
     Project.where(id: self.id).pluck("projects.#{attribute}").first
   end
@@ -275,7 +279,7 @@ class Project < ActiveRecord::Base
     :transition_to, :can_reject?, :can_push_to_trash?,
     :can_push_to_online?, :can_push_to_draft?, :can_approve?, to: :state_machine
 
-  # Get all states names from AllOrNothingProjectMachine
+  # Get all states names from AonProjectMachine
   def self.state_names
     state_machine.class.states.map(&:to_sym)
   end

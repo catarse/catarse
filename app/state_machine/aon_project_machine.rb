@@ -1,4 +1,4 @@
-class AllOrNothingProjectMachine < FlexibleProjectMachine
+class AonProjectMachine < FlexProjectMachine
   def self.basic_validation_states
     %i(in_analysis approved online waiting_funds successful failed).freeze
   end

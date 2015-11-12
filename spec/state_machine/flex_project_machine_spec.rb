@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe FlexibleProjectMachine, type: :model do
+RSpec.describe FlexProjectMachine, type: :model do
   let(:project_state) { 'draft' }
   let(:project) { create(:project, state: 'draft') }
   let(:flexible_project) { create(:flexible_project, project: project, state: project_state) }
@@ -43,7 +43,7 @@ RSpec.describe FlexibleProjectMachine, type: :model do
         end
       end
 
-      FlexibleProjectMachine.states.each do |state| 
+      FlexProjectMachine.states.each do |state| 
         shared_examples "valid #{state} project transaction" do
           it_should_behave_like "valid project transaction flow", state.to_sym
         end

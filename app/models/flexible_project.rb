@@ -21,7 +21,7 @@ class FlexibleProject < ActiveRecord::Base
 
   # instace of a flexible project state machine
   def state_machine
-    @state_machine ||= FlexibleProjectMachine.new(self, {
+    @state_machine ||= FlexProjectMachine.new(self, {
       transition_class: FlexibleProjectTransition,
       association_name: :transitions
     })

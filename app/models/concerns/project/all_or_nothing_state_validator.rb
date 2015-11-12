@@ -4,7 +4,7 @@ module Project::AllOrNothingStateValidator
   extend ActiveSupport::Concern
 
   included do
-    with_options if: ->(x) { x.project_type == 'all_or_nothing' } do |wg| 
+    with_options if: ->(x) { x.mode == 'aon' } do |wg| 
       # Validation for in_analysis? only state
       wg.with_options if: :in_analysis? do |wo|
         wo.validates_presence_of :city

@@ -1,4 +1,4 @@
-class FlexibleProjectMachine
+class FlexProjectMachine
   include Statesman::Machine
 
   def self.basic_validation_states
