@@ -16,7 +16,7 @@ module Project::BaseValidator
       wo.validates_presence_of :about_html, :headline, :budget
 
       wo.validates_presence_of :uploaded_image,
-        if: ->(project) { project.video_thumbnail.blank? }
+        unless: ->(project) { project.video_thumbnail.present? }
 
       wo.validate do
         [:uploaded_image, :about_html, :name].each do |attr|

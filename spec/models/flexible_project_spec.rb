@@ -21,6 +21,6 @@ RSpec.describe FlexibleProject, type: :model do
   describe "#state_machine" do
     subject { flexible_project.state_machine }
 
-    it { is_expected.to be_an_instance_of(FlexibleProjectMachine) }
+    it { is_expected.to be_an_instance_of(FlexProjectMachine) }
   end
 end
