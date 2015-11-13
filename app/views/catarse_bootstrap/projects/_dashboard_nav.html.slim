@@ -40,12 +40,6 @@
           = render partial: 'dashboard_nav_links', locals: {edit: edit}
 
           .btn-send-draft-fixed
-            - if @project.draft?
-               = link_to t('.send'), send_to_analysis_project_path(@project), class: 'btn btn-medium'
-            - if @project.approved?
-               = link_to publish_project_path(@project), class: 'btn btn-medium' do
-                = t('.publish')
-                | &nbsp;&nbsp;
-                span.fa.fa-chevron-right
+            = render "#{@project.mode}_nav_actions"
   a.btn-dashboard href="#"
     span.fa.fa-bars.fa-lg
