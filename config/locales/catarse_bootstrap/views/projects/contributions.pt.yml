@@ -113,6 +113,11 @@ pt:
         you_are_about_html: Você está prestes a fazer parte do grupo que faz de tudo
           para o %{link} acontecer.
       new:
+        no_rewards:
+          label_title: 'Valor do seu apoio'
+          label_description: 'Você pode apoiar este projeto a partir de R$10'
+          label_btn: 'Continuar'
+          label_error: 'O valor do apoio está incorreto'
         page-title: Apoie o %{name}
         title: Oohh yeah!
         you_have_credits: "Você tem <strong>%{credits}</strong> em créditos para realizar este apoio."
