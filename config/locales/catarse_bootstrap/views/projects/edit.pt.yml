@@ -185,8 +185,13 @@ pt:
       add_reward: "Adicionar recompensa"
       reward: "Recompensa"
     dashboard_preview:
-      header_subtitle: "É hora dos feedbacks!"
-      header_text: "Compartilhe o link abaixo com seus amigos e aproveite o momento para fazer ajustes finos que ajudem na sua campanha."
+      aon:
+        header_subtitle: "É hora dos feedbacks!"
+        header_text: "Compartilhe o link abaixo com seus amigos e aproveite o momento para fazer ajustes finos que ajudem na sua campanha."
+      flex:
+        header_subtitle: "É hora de ouvir sugestões!"
+        header_text: "Compartilhe o link %{link} com seus amigos e aproveite o momento para fazer ajustes finos que ajudem na sua campanha."
+        publish_btn_html: "Estou satisfeito! <br>Quero publicar meu projeto agora"
     dashboard_posts:
       only_to_backers: "Quero que essa novidade seja visível apenas para apoiadores."
       publish: 'Publicar novidade'

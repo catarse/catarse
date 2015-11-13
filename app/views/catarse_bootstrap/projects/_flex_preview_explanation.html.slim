@@ -1,0 +1,13 @@
+- link_to_project = link_to(project_by_slug_url(@project.permalink), project_by_slug_url(@project.permalink))
+.u-text-center
+  .w-container
+    .w-row
+      .w-col.w-col-8.w-col-push-2
+        .fontweight-semibold.fontsize-large.u-margintop-40= t('projects.dashboard_preview.flex.header_subtitle') 
+        p.fontsize-base= t('projects.dashboard_preview.flex.header_text', link: link_to_project).html_safe 
+        .w-row.u-marginbottom-30
+          .w-col.w-col-3
+          .w-col.w-col-6
+            = link_to t('projects.dashboard_preview.flex.publish_btn_html'), '#', class: 'w-button btn btn-large'
+          .w-col.w-col-3
+          .w-col.w-col-2
