@@ -4,9 +4,7 @@ class AdjustIsPublishedOnProjectToSupportFlexible < ActiveRecord::Migration
 CREATE OR REPLACE FUNCTION is_expired(projects) RETURNS boolean
     LANGUAGE sql STABLE SECURITY DEFINER
     AS $_$
-            SELECT (
-CASE WHEN $1.expires_at is null THEN false
-ELSE current_timestamp > $1.expires_at END);
+SELECT COALESCE(current_timestamp > $1.expires_at, false);
           $_$;
 
 CREATE OR REPLACE FUNCTION open_for_contributions(projects) RETURNS boolean
