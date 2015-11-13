@@ -28,4 +28,18 @@ class FlexibleProject < ActiveRecord::Base
       association_name: :transitions
     })
   end
+
+  # gen state method helpers ex(online?, draft?)
+  %w(
+    draft rejected online successful waiting_funds deleted
+  ).each do |st|
+    define_method "#{st}?" do
+      if self.state.nil?
+        self.state_machine.current_state == st
+      else
+        self.state == st
+      end
+    end
+  end
+
 end
