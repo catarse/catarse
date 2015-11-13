@@ -3,11 +3,12 @@
   .w-clearfix.u-marginbottom-20
     .fontsize-larger.text-success.u-left = number_to_currency @contribution.localized.value
     = link_to t('.edit'), new_project_contribution_path(@contribution.project), class: 'fontsize-small link-hidden u-right fontweight-semibold'
-  .back-payment-info-reward
-    .fontsize-smaller.fontweight-semibold.u-marginbottom-10 = t('.reward')
-    .fontsize-smallest
-      - if @contribution.reward
-        == @contribution.reward.display_description
-      - else
-        == t('.review_without_reward_html', value: (number_to_currency @contribution.localized.value))
+  - if @project.rewards.present?
+    .back-payment-info-reward
+      .fontsize-smaller.fontweight-semibold.u-marginbottom-10 = t('.reward')
+      .fontsize-smallest
+        - if @contribution.reward
+          == @contribution.reward.display_description
+        - else
+          == t('.review_without_reward_html', value: (number_to_currency @contribution.localized.value))
 
