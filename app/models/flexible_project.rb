@@ -15,11 +15,9 @@ class FlexibleProject < ActiveRecord::Base
     :headline, :about_html, :budget, :uploaded_image,
     :account, :video_thumbnail, :name, to: :project
 
-  # delegate reusable methods from project
-  delegate :expired?, :reached_goal?, :in_time_to_wait?,
-    :notify_owner, :notify, :user, :payments,
-    :headline, :about_html, :budget, :uploaded_image,
-    :account, :video_thumbnail, :name, to: :project
+  # delegate reusable methods from state_machine
+  delegate :push_to_online, :finish, :push_to_draft,
+    :push_to_trash, :reject, to: :state_machine
 
   # instace of a flexible project state machine
   def state_machine
