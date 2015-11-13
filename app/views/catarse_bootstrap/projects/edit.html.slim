@@ -20,7 +20,7 @@
           = render 'dashboard_home'
         #dashboard_goal.content.w-hidden  data-page_title="#{t('.goal')}" data-page_subtitle="#{t('.goal_subtitle')}"
           = render 'dashboard_goal'
-        #dashboard_video.content.w-hidden  data-page_title="#{t('.video')}" data-page_subtitle="#{t('.video_subtitle')}"
+        #dashboard_video.content.w-hidden  data-page_title=t(".#{@project.mode}.video_html") data-page_subtitle=t(".#{@project.mode}.video_subtitle")
           = render 'dashboard_video'
         #dashboard_budget.content.w-hidden data-page_title="#{t('.budget')}" data-page_subtitle="#{t('.budget_subtitle')}"
           = render 'dashboard_budget'

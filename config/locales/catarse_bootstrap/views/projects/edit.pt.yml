@@ -1,13 +1,17 @@
 pt:
   projects:
     edit:
+      flex:
+        video_html: "Vídeo <span class='fontcolor-terciary'>(opcional)</span>"
+        video_subtitle: 'O vídeo é opcional, mas recomendamos muito que você faça um vídeo!'
+      aon:
+        video_html: 'Vídeo'
+        video_subtitle: 'Capricha! Um bom vídeo faz a diferença e pode ser o grande responsável pelo sucesso do seu projeto.'
       posts: "Escrever uma novidade"
       budget: Orçamento
       budget_subtitle: "Como o seu dinheiro será utilizado? Quanto mais transparência melhor. Mostre que etapas e processos estarão envolvidos no uso desses recursos. Uma lista com os principais itens do orçamento ou até mesmo um gráfico de pizza vão super bem aqui."
       card: 'Card do projeto'
       card_subtitle: 'Sabe aquele cardzinho de projeto que aparece na home e na busca? Pois então, faz bonito pois dizem que a primeira impressão é a que fica ;)'
-      video: 'Vídeo'
-      video_subtitle: 'Capricha! Um bom vídeo faz a diferença e pode ser o grande responsável pelo sucesso do seu projeto.'
       basics: 'Preencha as informações abaixo'
       basics_subtitle: 'Os dados informados nessa seção não poderão ser modificados quando o projeto for ao ar. Preencha com atenção e revise antes de lançar o projeto. '
       goal: 'Meta e prazo'
@@ -195,10 +199,16 @@ pt:
       card_label: "Card do projeto"
     dashboard_video:
       submit: Salvar
-      card_label: "Vídeo"
-      video_url: "Vídeo do projeto"
-      video_url_hint: "Importante: Qualquer projeto pode ser enviado sem o vídeo para análise do atendimento do Catarse . O vídeo pode ser analisado posteriormente. Lembrando que ele só é obrigatório para projetos com metas acima de 5 mil reais."
-      video_url_subtitle: "Link do Vimeo ou Youtube"
+      aon:
+        card_label: "Vídeo"
+        video_url: "Vídeo do projeto"
+        video_url_hint: "Importante: Qualquer projeto pode ser enviado sem o vídeo para análise do atendimento do Catarse . O vídeo pode ser analisado posteriormente. Lembrando que ele só é obrigatório para projetos com metas acima de 5 mil reais."
+        video_url_subtitle: "Link do Vimeo ou Youtube"
+      flex:
+        card_label: "Vídeo"
+        video_url: "Vídeo do projeto"
+        video_url_hint: ""
+        video_url_subtitle: "Link do Vimeo ou Youtube. Esse é o vídeo principal da sua campanha. "
     dashboard_basics:
       city: 'Local do projeto'
       online_date: 'Data de entrada no ar'

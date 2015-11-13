@@ -50,7 +50,7 @@ App.addChild('ProjectEdit', _.extend({
         this.onTabClick({ currentTarget: $tab });
     }
 
-    $('#dashboard-page-title').text($tab_title);
+    $('#dashboard-page-title').html($tab_title);
     $('#dashboard-page-subtitle').text($tab_subtitle);
 
     if(($tab_title == "" || $tab_title == undefined) && ($tab_subtitle == "" || $tab_subtitle == undefined)) {

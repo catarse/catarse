@@ -7,10 +7,10 @@
               = @project.display_errors(:video)
               .w-row.u-marginbottom-30.card.card-terciary.medium
                 .w-col.w-col-6
-                  label.field-label.fontweight-semibold = t('.video_url')
-                  label.field-label.fontsize-smallest.fontcolor-secondary = t('.video_url_subtitle')
+                  label.field-label.fontweight-semibold = t(".#{@project.mode}.video_url").html_safe
+                  label.field-label.fontsize-smallest.fontcolor-secondary = t(".#{@project.mode}.video_url_subtitle").html_safe
                   - if @project.draft? || @project.in_analysis?
-                    label.field-label.fontsize-smallest.fontcolor-secondary.fontweight-bold = t('.video_url_hint')
+                    label.field-label.fontsize-smallest.fontcolor-secondary.fontweight-bold = t(".#{@project.mode}.video_url_hint")
                 .w-col.w-col-6
                   = form.input :video_url, as: :string,
                     label: '',
