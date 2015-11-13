@@ -63,6 +63,7 @@ gem 'json_web_token'
 
 # Email marketing
 gem 'catarse_monkeymail', '>= 0.1.6'
+gem 'gridhook'
 
 # HTML manipulation and formatting
 gem 'simple_form'
