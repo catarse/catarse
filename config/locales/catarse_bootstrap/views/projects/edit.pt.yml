@@ -4,9 +4,13 @@ pt:
       flex:
         video_html: "Vídeo <span class='fontcolor-terciary'>(opcional)</span>"
         video_subtitle: 'O vídeo é opcional, mas recomendamos muito que você faça um vídeo!'
+        reward_html: "Recompensas <span class='fontcolor-terciary'>(opcional)</span>"
+        reward_subtitle: "As recompensas não são opcionais. Se você quiser iniciar o projeto sem recompensa e adicionar depois também, fique a vontade!"
       aon:
         video_html: 'Vídeo'
         video_subtitle: 'Capricha! Um bom vídeo faz a diferença e pode ser o grande responsável pelo sucesso do seu projeto.'
+        reward_html: "Crie e edite aqui suas recompensas"
+        reward_subtitle: "Essa é sua demonstração de gratidão com os apoiadores. Lembre-se de incluir os custos das recompensas no seu orçamento. Prometeu, ENTREGUE! "
       posts: "Escrever uma novidade"
       budget: Orçamento
       budget_subtitle: "Como o seu dinheiro será utilizado? Quanto mais transparência melhor. Mostre que etapas e processos estarão envolvidos no uso desses recursos. Uma lista com os principais itens do orçamento ou até mesmo um gráfico de pizza vão super bem aqui."
@@ -20,8 +24,6 @@ pt:
       user_settings: 'Dados cadastrais e bancários'
       user_settings_subtitle: 'Com os dados abaixo completos, seu projeto estará pronto para ir ao ar. Após concluir o preenchimento, clique em Salvar. Revise. Se tudo estiver ok, basta apertar o botão Publicar e começar sua campanha!'
       user_about: "Fale mais sobre você!"
-      reward: "Crie e edite aqui suas recompensas"
-      reward_subtitle: "Essa é sua demonstração de gratidão com os apoiadores. Lembre-se de incluir os custos das recompensas no seu orçamento. Prometeu, ENTREGUE! "
       user_about_subtitle: "Apoiadores querem conhecer melhor os realizadores de projetos. Links que ajudam a contar sua história são sempre bem vindos. "
       description: 'Conte a história do seu projeto!'
       description_subtitle: 'Pense bem na narrativa do projeto. É ela quem encantará as pessoas e trará apoiadores. Um bom video e descrição são diferenciais!'
