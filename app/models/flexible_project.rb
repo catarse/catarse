@@ -11,7 +11,7 @@ class FlexibleProject < ActiveRecord::Base
 
   # delegate reusable methods from project
   delegate :expired?, :reached_goal?, :in_time_to_wait?,
-    :notify_owner, :notify, :user, :payments,
+    :notify_owner, :notify, :user, :payments, :expires_at,
     :headline, :about_html, :budget, :uploaded_image,
     :account, :video_thumbnail, :name, to: :project
 
@@ -25,6 +25,12 @@ class FlexibleProject < ActiveRecord::Base
       transition_class: FlexibleProjectTransition,
       association_name: :transitions
     })
+  end
+
+  def announce_expiration
+    if self.expires_at.nil?
+      self.project.update_attribute :expires_at, 7.days.from_now.end_of_day
+    end
   end
 
   # gen state method helpers ex(online?, draft?)
