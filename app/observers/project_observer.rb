@@ -1,12 +1,6 @@
 class ProjectObserver < ActiveRecord::Observer
   observe :project
 
-  def before_save(project)
-    if project.try(:online_date_changed?) || (project.online_date && project.try(:online_days_changed?))
-      project.expires_at = (project.online_date + project.online_days.days).end_of_day
-    end
-  end
-
   def after_save(project)
     if project.try(:video_url_changed?)
       ProjectDownloaderWorker.perform_async(project.id)
@@ -57,6 +51,9 @@ class ProjectObserver < ActiveRecord::Observer
       audited_user_cpf: project.user.cpf,
       audited_user_phone_number: project.user.phone_number
     })
+    if project.online_days.present?
+      project.expires_at = (project.online_date + project.online_days.days).end_of_day
+    end
   end
   # Flexible pojects can go direct to online from draft
   alias :from_draft_to_online :from_approved_to_online

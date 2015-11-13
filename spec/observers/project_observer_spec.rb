@@ -35,29 +35,6 @@ RSpec.describe ProjectObserver do
   end
 
   describe "#before_save" do
-
-    context "when change the online_date" do
-      let(:project) { build(:project, state: 'approved', online_days: 10) }
-      before do
-        project.update_attribute :online_date, Time.current
-        expect(project.expires_at).to eq ( Time.current + 10.days ).end_of_day
-      end
-      it "should update expires_at" do
-        project.save(validate: false)
-      end
-    end
-
-    context "when change the online_days" do
-      let(:project) { build(:project, state: 'approved', online_date: Time.current) }
-      before do
-        project.update_attribute :online_days, 20
-        expect(project.expires_at).to eq ( Time.current + 20.days ).end_of_day
-      end
-      it "should update expires_at" do
-        project.save(validate: false)
-      end
-    end
-
     context "when project is not online" do
       let(:project) { build(:project, state: 'approved', online_date: nil) }
       before do
@@ -120,6 +97,10 @@ RSpec.describe ProjectObserver do
   describe "#from_approved_to_online" do
     before do
       project.notify_observers(:from_approved_to_online)
+    end
+
+    context "should fill expires_at" do
+      it { expect(project.expires_at).to be_present }
     end
 
     it "should send project_visible notification" do
@@ -210,9 +191,9 @@ RSpec.describe ProjectObserver do
         payment_valid
         payment_invalid
         contribution_invalid.user.bank_account.destroy
+        project.update_attribute :expires_at, 2.days.ago
         expect(DirectRefundWorker).to receive(:perform_async).with(payment_valid.id)
         expect(DirectRefundWorker).to_not receive(:perform_async).with(payment_invalid.id)
-        project.update_attribute :online_days, 1
       end
 
       it { project.finish }
