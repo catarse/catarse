@@ -115,12 +115,12 @@ RSpec.describe Projects::ContributionsController, type: :controller do
   describe "GET new" do
     let(:secure_review_host){ nil }
     let(:user){ create(:user) }
-    let(:online){ true }
+    let(:open_for_contributions){ true }
     let(:browser){ double("browser", ie9?: false, modern?: true, mobile?: false) }
 
     before do
       CatarseSettings[:secure_review_host] = secure_review_host
-      allow_any_instance_of(Project).to receive(:online?).and_return(online)
+      allow_any_instance_of(Project).to receive(:open_for_contributions?).and_return(open_for_contributions)
       allow(controller).to receive(:browser).and_return(browser)
       allow_any_instance_of(ApplicationController).to receive(:detect_old_browsers).and_call_original
       get :new, {locale: :pt, project_id: project.id}
@@ -141,12 +141,12 @@ RSpec.describe Projects::ContributionsController, type: :controller do
       it{ is_expected.to render_template("projects/contributions/new") }
     end
 
-    context "when user is logged in but project.online? is false" do
-      let(:online){ false }
+    context "when user is logged in but project.open_for_contributions?? is false" do
+      let(:open_for_contributions){ false }
       it{ is_expected.to redirect_to root_path }
     end
 
-    context "when project.online? is true" do
+    context "when project.open_for_contributions? is true" do
       it{ is_expected.to render_template("projects/contributions/new") }
     end
   end
