@@ -166,6 +166,12 @@ pt:
       email_hint: Email para você se logar no Catarse e se comunicar com a nossa equipe e com os seus apoiadores
     dashboard_goal:
       submit: "Salvar"
+      kind_label: "Tipo de financiamento"
+      kind_link: "Se você quiser saber mais, clique aqui"
+      flex:
+        kind_text: "Você está participando do período de testes do modelo flexível. Sua participação é essencial para entendermos como podemos expandir esse modelo para todos os usuários. %{link}"
+        expiration_text: "Na Campanha Flexível, não há limite de tempo para sua campanha. Com o seu projeto no ar, você terá a opção de começar uma contagem regressiva de 7 dias quando quiser. Ao final desse período, você recebe tudo que tiver arrecadado!"
+        expiration_title: "Prazo de arrecadação"
     dashboard_description:
       submit: "Salvar"
     dashboard_reward:
