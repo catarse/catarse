@@ -19,5 +19,6 @@
     li.list-question.fontsize-smaller.alt-link  #{t('projects.contributions.faq.flexible.when_project_owner')}
     li.list-answer.u-marginbottom-20.fontsize-smaller=raw t('projects.contributions.faq.flexible.when_project_owner_answer', name: link_to(@project.user.display_name, user_path(@project.user), target: '_blank'))
 
-    li.list-question.fontsize-smaller.alt-link  #{t('projects.contributions.faq.flexible.when_project_funded')}
-    li.list-answer.u-marginbottom-20.fontsize-smaller=raw t('projects.contributions.faq.flexible.when_project_funded_answer', name: link_to(@project.user.display_name, user_path(@project.user), target: '_blank'))
+    - if @project.rewards.present?
+      li.list-question.fontsize-smaller.alt-link  #{t('projects.contributions.faq.flexible.when_project_funded')}
+      li.list-answer.u-marginbottom-20.fontsize-smaller=raw t('projects.contributions.faq.flexible.when_project_funded_answer', name: link_to(@project.user.display_name, user_path(@project.user), target: '_blank'))

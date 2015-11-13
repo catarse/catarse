@@ -39,7 +39,7 @@ pt:
           when_about_my_payment_data: 'O que os outros podem ver do meu apoio?'
           when_about_my_payment_data_answer: 'O projeto será adicionado a seu histórico de apoios em seu perfil , mas a quantidade que você apoiou e a recompensa que escolher, não ficarão públicos.'
           when_project_owner: 'Quem é o responsável pelo projeto?'
-          when_project_owner_answer: 'O catarse é apenas um intermediário, caso queira entender mais sobre o projeto, entre em contato com através do link %{name}'
+          when_project_owner_answer: 'O catarse é apenas um intermediário, caso queira entender mais sobre o projeto, entre em contato o %{name}'
           when_project_funded: 'Como eu recebo minha recompensa?'
           when_project_funded_answer: 'Quando sua recompensa estiver pronta, %{name} vai entrar em contato com você para combinar a entrega.'
         all_or_nothing:
