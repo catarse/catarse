@@ -2,6 +2,7 @@ pt:
   projects:
     flex_nav_actions:
       publish: 'Publicar'
+      announce_expiration: 'Iniciar reta final'
     aon_nav_actions:
       publish: 'Publicar'
     edit:
@@ -16,6 +17,7 @@ pt:
         reward_html: "Crie e edite aqui suas recompensas"
         reward_subtitle: "Essa é sua demonstração de gratidão com os apoiadores. Lembre-se de incluir os custos das recompensas no seu orçamento. Prometeu, ENTREGUE! "
       posts: "Escrever uma novidade"
+      announce_expiration: 'Iniciar reta final?'
       budget: Orçamento
       budget_subtitle: "Como o seu dinheiro será utilizado? Quanto mais transparência melhor. Mostre que etapas e processos estarão envolvidos no uso desses recursos. Uma lista com os principais itens do orçamento ou até mesmo um gráfico de pizza vão super bem aqui."
       card: 'Card do projeto'
@@ -134,6 +136,7 @@ pt:
       posts_tab: Novidades
       edit_project: Editar projeto
       send: Enviar
+      announce_expiration: Iniciar reta final
       publish: Publicar
     dashboard_nav_links:
       flex:
@@ -189,6 +192,9 @@ pt:
       add_reward: "Adicionar recompensa"
       reward: "Recompensa"
     dashboard_preview:
+    dashboard_announce_expiration:
+      explanation_01: 'Ao iniciar a reta final, iremos abrir uma contagem regressiva de 7 dias. Você poderá receber apoios até:'
+      explanation_02: 'Essa é uma ação irreversível. Depois que a reta final é definida, o projeto não poderá mais alterar o seu prazo final de captação. Ao final do prazo, você recebe todo o valor arrecadado.'
       aon:
         header_subtitle: "É hora dos feedbacks!"
         header_text: "Compartilhe o link abaixo com seus amigos e aproveite o momento para fazer ajustes finos que ajudem na sua campanha."

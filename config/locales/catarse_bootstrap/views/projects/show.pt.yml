@@ -16,6 +16,8 @@ pt:
       ok: 'Ok! Vamos te mandar um lembrete por e-mail 48 horas antes do fim da campanha'
       active_btn: 'Lembre-me deste projeto'
       deactive_btn: 'Não quero mais ser lembrado'
+    announce_expiration: 'Seu projeto foi para reta final.'
+    announce_expiration_error: 'Reta final ja foi definida!'
     send_to_analysis: Seu projeto foi enviado para nossa equipe.
     send_to_analysis_error: Erro ao enviar projeto para análise. Preencha todos os campos obrigatórios.
     push_to_online: Seu projeto está online!

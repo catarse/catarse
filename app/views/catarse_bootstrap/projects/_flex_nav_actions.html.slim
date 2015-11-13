@@ -1,8 +1,10 @@
 - flexible_project = @project.flexible_project
+
 - if flexible_project.draft?
    = link_to '#preview', class: 'btn btn-medium' do
     = t('.publish')
     | &nbsp;&nbsp;
     span.fa.fa-chevron-right
-- if flexible_project.online?
-   = link_to t('.send'), send_to_analysis_project_path(@project), class: 'btn btn-medium'
+
+- if flexible_project.open_for_contributions? && flexible_project.expires_at.nil?
+   = link_to t('.announce_expiration'), edit_project_path(@project, anchor: 'announce_expiration'), class: 'w-button btn btn-small btn-secondary-dark'
