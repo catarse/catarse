@@ -13,11 +13,11 @@ class ContributionPolicy < ApplicationPolicy
   end
 
   def new?
-    record.project.online?
+    record.project.open_for_contributions?
   end
 
   def create?
-    done_by_owner_or_admin? && record.project.online?
+    done_by_owner_or_admin? && record.project.open_for_contributions?
   end
 
   def update?

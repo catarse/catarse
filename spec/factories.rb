@@ -80,6 +80,12 @@ FactoryGirl.define do
     f.uploaded_image File.open("#{Rails.root}/spec/support/testimg.png")
     after :create do |project| 
       FactoryGirl.create(:project_transition, to_state: project.state, project: project)
+
+      # should set expires_at when create a project in these states
+      if %w(online waiting_funds failed successful).include?(project.state) && project.online_days.present? && project.online_date.present?
+        project.expires_at = (project.online_date + project.online_days.days).end_of_day
+        project.save
+      end
     end
     after :build do |project|
       project.account = build(:project_account, project: nil)

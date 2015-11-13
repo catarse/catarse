@@ -276,6 +276,10 @@ class Project < ActiveRecord::Base
     Project.where(id: self.id).pluck("projects.#{attribute}").first
   end
 
+  def open_for_contributions?
+    pluck_from_database(:open_for_contributions)
+  end
+
   # State machine delegation methods
   delegate :push_to_draft, :reject, :push_to_online, :finish,
     :send_to_analysis, :approve, :push_to_trash, :can_transition_to?,

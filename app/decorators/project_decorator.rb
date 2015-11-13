@@ -131,7 +131,6 @@ class ProjectDecorator < Draper::Decorator
     content_tag(:div, nil, id: :progress, class: 'meter-fill', style: "width: #{width}%;")
   end
 
-
   def status_flag
     content_tag(:div, class: [:status_flag]) do
       if source.successful?
