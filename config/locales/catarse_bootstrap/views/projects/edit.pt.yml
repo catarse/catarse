@@ -126,16 +126,28 @@ pt:
       send: Enviar
       publish: Publicar
     dashboard_nav_links:
-      preview_tab: Preview
-      account_tab: Conta
-      basics_tab: Básico
-      goal_tab: Meta e prazo
-      budget_tab: Orçamento
-      card_tab: Card do projeto
-      description_tab: Descrição
-      video_tab: Vídeo
-      rewards_tab: Recompensas
-      about_you_tab: Sobre você
+      flex:
+        preview_tab: Preview
+        account_tab: Conta
+        basics_tab: Básico
+        goal_tab: Financiamento
+        budget_tab: "Orçamento <span class='fontsize-smallest fontcolor-secondary'>(opcional)</span>"
+        card_tab: Card do projeto
+        description_tab: Descrição
+        video_tab: "Vídeo <span class='fontsize-smallest fontcolor-secondary'>(opcional)</span>"
+        rewards_tab: "Recompensas <span class='fontsize-smallest fontcolor-secondary'>(opcional)</span>"
+        about_you_tab: Sobre você
+      aon:
+        preview_tab: Preview
+        account_tab: Conta
+        basics_tab: Básico
+        goal_tab: Meta e prazo
+        budget_tab: Orçamento
+        card_tab: Card do projeto
+        description_tab: Descrição
+        video_tab: Vídeo
+        rewards_tab: Recompensas
+        about_you_tab: Sobre você
     dashboard_user_about:
       submit: "Salvar"
       twitter_label: "Perfil do twitter"
