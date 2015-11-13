@@ -358,15 +358,9 @@ RSpec.describe Project, type: :model do
     let(:ends_at) { '22/01/2013' }
     subject { Project.between_expires_at(start_at, ends_at).order("id desc") }
 
-    let(:project_01) { create(:project) }
-    let(:project_02) { create(:project) }
-    let(:project_03) { create(:project) }
-
-    before do
-      project_01.update_attributes({ online_date: '17/01/2013'.to_time, online_days: 1 })
-      project_02.update_attributes({ online_date: '21/01/2013'.to_time, online_days: 1 })
-      project_03.update_attributes({ online_date: '23/01/2013'.to_time, online_days: 1 })
-    end
+    let!(:project_01) { create(:project, { online_date: '17/01/2013'.to_time, online_days: 1 }) }
+    let!(:project_02) { create(:project, { online_date: '21/01/2013'.to_time, online_days: 1 }) }
+    let!(:project_03) { create(:project, { online_date: '23/01/2013'.to_time, online_days: 1 }) }
 
     it { is_expected.to eq([project_02, project_01]) }
   end
@@ -574,8 +568,7 @@ RSpec.describe Project, type: :model do
     end
 
     context "when expires_at is in the past" do
-      let(:project){ build(:project, online_date: 3.days.ago, online_days: 1) }
-      before{project.save!}
+      let(:project){ create(:project, online_date: 3.days.ago, online_days: 1, state: 'online') }
       it{ is_expected.to eq(true) }
     end
   end
