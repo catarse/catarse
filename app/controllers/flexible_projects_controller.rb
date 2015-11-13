@@ -4,8 +4,8 @@ class FlexibleProjectsController < ApplicationController
   after_filter :verify_authorized
   respond_to :html
 
-  def self.controller_path
-    ProjectsController.controller_path
+  def self.parent_prefixes
+    %w(application projects)
   end
 
   def publish
@@ -22,14 +22,13 @@ class FlexibleProjectsController < ApplicationController
 
   def finish
     authorize flexible_project
-    if resource.announce_expiration
+    if flexible_project.announce_expiration
       flash[:notice] = t("projects.announce_expiration")
       redirect_to insights_project_path(resource)
     else
       flash.now[:notice] = t("projects.announce_expiration_error")
       redirect_to insights_project_path(resource)
     end
-
   end
 
   protected

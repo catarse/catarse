@@ -30,8 +30,8 @@ RSpec.describe FlexibleProjectsController, type: :controller do
       flexible_project.reload
     end
 
-    it { expect(project.open_for_contributions?).to eq(true) }
-    it { expect(project.expires_at).to_not be_present }
+    it { expect(flexible_project.open_for_contributions?).to eq(true) }
+    it { expect(flexible_project.expires_at).to_not be_present }
   end
 
   describe "GET finish" do
@@ -44,7 +44,7 @@ RSpec.describe FlexibleProjectsController, type: :controller do
     end
 
     it { expect(project.open_for_contributions?).to eq(true) }
-    it { expect(project.expires_at).to be_present }
+    it { expect(project.expires_at).to be_nil }
   end
 
 end

@@ -1,5 +1,9 @@
 pt:
   projects:
+    flex_nav_actions:
+      publish: 'Publicar'
+    aon_nav_actions:
+      publish: 'Publicar'
     edit:
       flex:
         video_html: "Vídeo <span class='fontcolor-terciary'>(opcional)</span>"
