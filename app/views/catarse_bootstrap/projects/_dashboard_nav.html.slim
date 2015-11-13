@@ -9,6 +9,11 @@
         - else
           img.thumb-project-dashboard src="#{image_path('thumb-project.png')}" width="114"
         .fontcolor-negative.lineheight-tight.fontsize-small= @project.name
+        - if @project.is_flexible?
+          img.u-margintop-10 src="https://daks2k3a4ib2z.cloudfront.net/54b440b85608e3f4389db387/564054b5b8cd7d9454236a9b_badge-flex-h.png" width="80" /
+        - else
+          img.u-margintop-10 src="https://daks2k3a4ib2z.cloudfront.net/54b440b85608e3f4389db387/564052a9f886216b031b607a_badge-aon-h.png" width="80" /
+
 
       #info-links
         = link_to insights_project_path(@project), class: 'dashboard-nav-link-left ' , id: 'dashboard_home_link', data: {tab_group: 'edit'} do
