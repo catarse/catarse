@@ -25,5 +25,10 @@ module Project::ErrorGroups
     def has_errors_for?(field)
       errors.include?(field)
     end
+
+    # @TODO use this to handle with flexible project errors on project
+    def errors
+      flexible_project.try(:errors) || super
+    end
   end
 end
