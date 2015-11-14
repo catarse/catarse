@@ -8,6 +8,11 @@ class CampaignFinisherWorker < ProjectBaseWorker
       payment.change_status_from_transaction
     end
 
-    resource(id).finish
+    flexible_project = resource(id).flexible_project
+    if flexible_project
+      flexible_project.finish
+    else
+      resource(id).finish
+    end
   end
 end
