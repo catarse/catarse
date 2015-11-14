@@ -293,11 +293,9 @@ class Project < ActiveRecord::Base
     AonProjectMachine.states.map(&:to_sym)
   end
 
-  # Init flexible machine or
-  # all or nothing machine
+  # Init all or nothing machine
   def state_machine
-    machine_class = Object.const_get "#{self.mode.classify}ProjectMachine"
-    @state_machine ||= machine_class.new(self, {
+    @state_machine ||= AonProjectMachine.new(self, {
       transition_class: ProjectTransition
     })
   end
