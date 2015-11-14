@@ -181,6 +181,10 @@ class Project < ActiveRecord::Base
     @total_contributions ||= project_total.try(:total_contributions).to_i
   end
 
+  def total_contributors
+    @total_contributors ||= project_total.try(:total_contributors).to_i
+  end
+
   def total_payment_service_fee
     project_total.try(:total_payment_service_fee).to_f
   end
