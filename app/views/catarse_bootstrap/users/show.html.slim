@@ -41,16 +41,16 @@
 nav.project-nav.u-text-center.u-marginbottom-30.profile style='z-index: 10; position: relative;'
   .w-container#default-tab data-anchor=(resource.created_projects.empty? ? 'contributed' : 'created')
     - if policy(resource).update?
-      = link_to edit_user_path(resource), class: 'nav-tab dashboard' do
+      = link_to edit_user_path(resource), class: 'dashboard-nav-link dashboard' do
         span.fa.fa-cog
         | &nbsp; Editar perfil
-    = link_to '#contributed', id: 'contributed_link', class: 'nav-tab' , data: {target: '#contributed-tab'} do
+    = link_to '#contributed', id: 'contributed_link', class: 'dashboard-nav-link' , data: {target: '#contributed-tab'} do
       | Apoiados &nbsp;
       span.badge= projects_to_show.count
-    = link_to '#created', id: 'created_link', class: 'nav-tab' , data: {target: '#created-tab'} do
+    = link_to '#created', id: 'created_link', class: 'dashboard-nav-link' , data: {target: '#created-tab'} do
       | Criados &nbsp;
       span.badge= resource.created_projects.count
-    = link_to '#about', id: 'about_link', class: 'nav-tab' , data: {target: '#about-tab'} do
+    = link_to '#about', id: 'about_link', class: 'dashboard-nav-link' , data: {target: '#about-tab'} do
       | Sobre
 
 
