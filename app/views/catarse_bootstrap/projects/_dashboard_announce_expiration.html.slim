@@ -5,7 +5,7 @@
       .fontsize-base= t('.explanation_01')
       .u-text-center.fontsize-large.u-marginbottom-40.u-margintop-40
         span.card.u-radius
-          = l(7.days.from_now.to_date)
+          = l(FlexibleProject::FINAL_LAP_INTERVAL.days.from_now.to_date)
           | &nbsp; às 23h59m59s
       .fontsize-base= t('.explanation_02')
 

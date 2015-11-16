@@ -1,4 +1,5 @@
 class FlexibleProject < ActiveRecord::Base
+  FINAL_LAP_INTERVAL = 7
   include Project::BaseValidator
 
   belongs_to :project
@@ -29,7 +30,7 @@ class FlexibleProject < ActiveRecord::Base
 
   def announce_expiration
     if self.expires_at.nil?
-      self.project.update_attribute :expires_at, 7.days.from_now.end_of_day
+      self.project.update_attribute :expires_at, FINAL_LAP_INTERVAL.days.from_now.end_of_day
     end
   end
 
