@@ -85,6 +85,9 @@ a:hover {
 .section.bg-greenlime.fontcolor-negative.test.testt {
   background-color: #6f73ae;
 }
+.section.bg-greenlime.fontcolor-negative.test.test2 {
+  background-color: #50ced9;
+}
 .bootstrap-color-swatch {
   position: static;
   width: 70%;
@@ -304,6 +307,8 @@ a:hover {
   margin-bottom: 230px;
 }
 .project-nav {
+  overflow-x: hidden;
+  overflow-y: hidden;
   height: 74px;
   padding-top: 20px;
   padding-bottom: 0px;
@@ -1234,7 +1239,7 @@ a:hover {
   z-index: 15;
   width: 75px;
   margin-top: -10px;
-  margin-right: -20px;
+  margin-right: -10px;
   float: right;
   -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
@@ -1571,6 +1576,13 @@ a:hover {
 }
 .card-reward {
   position: relative;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+.card-reward:hover {
+  border: 1px solid #7cc142;
+  background-color: #f1f4f4;
+  box-shadow: rgba(0, 0, 0, 0.27) 1px 1px 3px 0px;
 }
 .card-reward.sele {
   border-width: 2px;
@@ -1683,6 +1695,14 @@ a:hover {
 .dashboard-nav.side.side2 {
   padding-top: 78px;
 }
+.dashboard-nav.side.hidden {
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+.dashboard-nav.side.hidden:hover {
+  overflow-x: auto;
+  overflow-y: auto;
+}
 .card-success {
   border: 1px solid #00b22d;
   background-color: #00b22d;
@@ -1743,10 +1763,10 @@ a:hover {
   z-index: 30;
   box-shadow: rgba(0, 0, 0, 0.61) 0px 1px 4px 0px;
 }
-.w-sub-col {
+._w-sub-col {
   padding-right: 20px;
 }
-.w-sub-col-middle {
+._w-sub-col-middle {
   padding-right: 20px;
 }
 .card-brand {
@@ -1935,13 +1955,21 @@ a:hover {
 .hero-full.hero-start.bg-iconstart {
   padding-top: 146px;
   background-color: #4886d8;
-  background-image: url('/assets/bg-hero-start.png'), -webkit-linear-gradient(#4886d8, #519dd8 98%);
-  background-image: url('/assets/bg-hero-start.png'), linear-gradient(#4886d8, #519dd8 98%);
+  background-image: url('/assets/bg-hero-start.png'), -webkit-linear-gradient(#4886d8, #50ced9 98%);
+  background-image: url('/assets/bg-hero-start.png'), linear-gradient(#4886d8, #50ced9 98%);
   background-size: 1383px, auto;
   background-repeat: no-repeat, repeat;
 }
 .hero-full.hero-start.bg-iconstart.testt {
   background-color: #6f73ae;
+  background-image: url('/assets/bg-hero-start.png');
+  background-size: 1383px;
+  background-repeat: no-repeat;
+}
+.hero-full.hero-start.bg-iconstart.testttt {
+  height: 100vh;
+  padding-top: 190px;
+  background-color: #8d48d9;
   background-image: url('/assets/bg-hero-start.png');
   background-size: 1383px;
   background-repeat: no-repeat;
@@ -2216,9 +2244,7 @@ a:hover {
   top: 0px;
   right: 0px;
   z-index: 50;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  background-color: #f1f4f4;
+  background-color: white;
   box-shadow: rgba(0, 0, 0, 0.2) 1px 1px 3px 0px;
 }
 .btn-back-fixed {
@@ -2242,6 +2268,7 @@ a:hover {
   background-attachment: scroll;
 }
 .card-big {
+  display: block;
   padding: 70px 80px;
   border-radius: 3px;
   text-align: center;
@@ -2981,6 +3008,7 @@ a:hover {
 }
 .section-product {
   height: 3px;
+  padding-left: 25px;
   color: white;
   font-size: 12px;
 }
@@ -3006,6 +3034,9 @@ a:hover {
 .icon-flex-medium {
   width: 150px;
   margin-bottom: 20px;
+}
+.icon-flex-medium.test {
+  width: 120px;
 }
 .tab-list-item {
   display: block;
@@ -3055,14 +3086,17 @@ a:hover {
   background-color: #3f4752;
   color: white;
 }
-.w-inline-block.fa.fa-question-circle.fontcolor-secondary {
+._w-inline-block.fa.fa-question-circle.fontcolor-secondary {
   position: relative;
 }
-.w-inline-block.fa.fa-play-circle.fontcolor-negative.fa-5x {
+._w-inline-block.fa.fa-play-circle.fontcolor-negative.fa-5x {
   text-decoration: none;
 }
-.w-inline-block.fa.fa-play-circle.fontcolor-negative.fa-5x:hover {
+._w-inline-block.fa.fa-play-circle.fontcolor-negative.fa-5x:hover {
   text-decoration: none;
+}
+._w-inline-block.card-reward.card-big {
+  display: inline-block;
 }
 .section-large-fixed {
   height: 810px;
@@ -3118,6 +3152,7 @@ a:hover {
   position: relative;
 }
 .select-start {
+  margin-top: 10px;
   font-size: 50px;
 }
 .select-start-toggle {
@@ -3134,7 +3169,7 @@ a:hover {
 }
 .select-start-list {
   right: -50%;
-  width: 200%;
+  min-width: 500px;
   font-size: 14px;
 }
 .project-stats-info {
@@ -3194,6 +3229,22 @@ a:hover {
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.34) 1px 1px 3px 0px;
   text-align: center;
+}
+.badge-product-2 {
+  position: absolute;
+}
+.badge-product-2.flex {
+  padding: 2px 6px;
+  background-color: #9e1a89;
+}
+.start-text-field {
+  height: 71px;
+  border-style: none none solid;
+  border-bottom-width: 2px;
+  border-bottom-color: white;
+  background-color: transparent;
+  color: white;
+  font-size: 50px;
 }
 html.w-mod-js *[data-ix="fade-in"] {
   opacity: 0;
@@ -3416,7 +3467,7 @@ html.w-mod-js *[data-ix="icon-funded-with"] {
   }
   .user-profile {
     width: 55px;
-    margin-right: -20px;
+    margin-right: -10px;
   }
   .dropdown-list.user-menu.w--open {
     position: absolute;
@@ -3521,6 +3572,10 @@ html.w-mod-js *[data-ix="icon-funded-with"] {
   .dashboard-nav.side {
     box-shadow: none;
   }
+  .dashboard-nav.side.hidden {
+    overflow-x: auto;
+    overflow-y: auto;
+  }
   .start-stats {
     padding-right: 9px;
     padding-left: 9px;
@@ -3616,7 +3671,7 @@ html.w-mod-js *[data-ix="icon-funded-with"] {
   .project-blurb {
     font-size: 20px;
   }
-  .w-col {
+  ._w-col {
     padding-right: 9px;
     padding-left: 9px;
   }
@@ -3974,7 +4029,7 @@ html.w-mod-js *[data-ix="icon-funded-with"] {
   .user-profile {
     width: 52px;
     margin-top: -7px;
-    margin-right: -12px;
+    margin-right: -10px;
   }
   .dropdown-list.user-menu.w--open {
     width: 231px;
@@ -4058,7 +4113,7 @@ html.w-mod-js *[data-ix="icon-funded-with"] {
   .u-margintop-40 {
     margin-top: 20px;
   }
-  .w-sub-col {
+  ._w-sub-col {
     padding-right: 0px;
   }
   .card-project {
@@ -4318,6 +4373,10 @@ html.w-mod-js *[data-ix="icon-funded-with"] {
   }
   .project-stats-info {
     margin-bottom: 40px;
+  }
+  .project-nav-fixed {
+    padding-top: 20px;
+    padding-bottom: 0px;
   }
 }
 @media (max-width: 479px) {
