@@ -8,12 +8,10 @@ br
 | Não recebemos a confirmação de pagamento do apoio para o projeto #{link_to contribution.project.name, project_by_slug_url(permalink: contribution.project.permalink, ref: 'notificacao_cancelado')}. 
 br
 br
-| Para se tornar realidade, esse projeto precisa muito do seu apoio, portanto, você tem até #{l(contribution.project.expires_at)} 
-| para realizar uma #{link_to 'nova contribuição', project_by_slug_url(permalink: contribution.project.permalink, ref: 'notificacao_cancelado')}. 
-| Junte-se a mais <strong>#{contribution.project.total_contributions}</strong> pessoas que querem tirar o projeto #{link_to contribution.project.name, project_by_slug_url(permalink: contribution.project.permalink, ref: 'notificacao_cancelado')} do papel.
+|Recomendamos que você #{link_to 'tente novamente com um outro cartão de crédito.', new_project_contribution_path(contribution.project, ref: 'notificacao_cancelado')}. 
 br
 br
-| Se ficou com alguma dúvida, entre em contato conosco respondendo a esta mensagem ou através do e-mail #{mail_to contact_email}
+| Caso ainda não consiga finalizar sua contribuição entre em contato respondendo a esta mensagem ou através do e-mail #{mail_to contact_email}
 br
 br
 |Um abraço,
