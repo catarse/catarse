@@ -116,14 +116,7 @@ RSpec.describe Project, type: :model do
 
     subject { project.state_machine }
 
-    context "when project type is all_or_nothing" do
-      it { is_expected.to be_an_instance_of(AonProjectMachine) }
-    end
-
-    context "when project type is flexible" do
-      let!(:flex_project) { create(:flexible_project, project: project) }
-      it { is_expected.to be_an_instance_of(FlexProjectMachine) }
-    end
+    it { is_expected.to be_an_instance_of(AonProjectMachine) }
   end
 
   describe "name validation" do
