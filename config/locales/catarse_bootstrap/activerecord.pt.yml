@@ -3,6 +3,7 @@ pt:
     models:
       channel: Canal
       project: Projeto
+      flexible_project: Projeto
       reward: Recompensa
       contribution: Apoiador
       category: Categoria
@@ -72,6 +73,26 @@ pt:
         project: projeto
       reward:
         deliver_at: Previsão de entrega
+      flexible_project:
+        name: 'Nome do projeto'
+        channels: Canais
+        category: Categoria
+        expires_at: Prazo
+        online_days: "Prazo para arrecadação"
+        headline: "Frase de efeito"
+        image_url: "URL da imagem"
+        name: "Nome do projeto"
+        goal: "Valor a ser arrecadado"
+        about_html: "Descrição do projeto"
+        user_id: "Id do usuário"
+        video_url: "URL do vídeo"
+        permalink: 'Link do seu projeto'
+        city: 'Local do projeto'
+        more_links: 'Indique links para as pessoas conhecerem mais sobre o seu projeto e sua trajetória.'
+        traffic_sources: 'Como você conheceu o Catarse?'
+        first_contributions: "Quem são as primeiras pessoas que você vai pedir para apoiar o seu projeto?"
+        budget: 'Orçamento do projeto'
+        uploaded_image: 'Imagem do projeto'
       project:
         name: 'Nome do projeto'
         channels: Canais
@@ -198,6 +219,41 @@ pt:
               not_same: "CPF/CNPJ dos dados cadastrais e bancários preenchidos não estão iguais."
             account_type:
               blank: "Tipo de conta não pode ficar em branco"
+        flexible_project:
+          attributes:
+            rewards:
+              at_least_one: 'Deve haver pelo menos uma recompensa'
+            city:
+              blank: Local do projeto não pode ficar em branco
+            video_url:
+              blank: 'O vídeo do projeto não pode ficar em branco'
+            budget:
+              blank: 'O orçamento do projeto não pode ficar em branco'
+            uploaded_image:
+              blank: 'A imagem do projeto não pode ficar em branco'
+            name:
+              too_long: "Nome do projeto é muito longo (máximo: 50 caracteres)"
+              blank: "O nome do projeto não pode ficar em branco"
+            permalink:
+              blank: "A URL do projeto não pode ficar em branco"
+              invalid: "A URL do projeto é inválida"
+              taken: "Essa URL de projeto já existe"
+            category:
+              blank: "Você deve escolher uma categoria para seu projeto"
+            goal:
+              blank: "O valor da meta não pode ficar em branco"
+              greater_than: "A meta deve ser maior que 9"
+              not_a_number: "Meta de arrecadação aceita somente números"
+            online_days:
+              blank: "O prazo de arrecadação não pode ficar em branco"
+              greater_than: "O prazo para arrecadação deve ser maior que 0 dias"
+              less_than_or_equal_to: "O prazo para arrecadação deve ser menor ou igual a 60 dias"
+              not_a_number: "O prazo para arrecadação deve ser um número de dias"
+            about_html:
+              blank: "A descrição do projeto não pode ficar em branco"
+            headline:
+              blank: "A frase de efeito do projeto não pode ficar em branco"
+              too_long: "A frase de efeito é muito longa. Você pode usar um máximo de 140 caracteres."
         project:
           attributes:
             rewards:

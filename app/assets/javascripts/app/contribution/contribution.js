@@ -4,6 +4,7 @@ App.addChild('Contribution', {
   events: {
     'click .radio label' : 'clickReward',
     'click .submit-form' : 'submitForm',
+    'submit #contribution_form' : 'submitForm',
     'click .user-reward-value' : 'clearOnFocus',
     'input #contribution_value' : 'restrictChars'
   },

@@ -1,16 +1,4 @@
-.u-text-center
-  .w-container
-    .w-row
-      .w-col.w-col-8.w-col-push-2
-        .fontweight-semibold.fontsize-large.u-margintop-40= t('.header_subtitle') 
-        p.fontsize-base= t('.header_text') 
-        .w-row.u-marginbottom-30
-          .w-col.w-col-3
-          .w-col.w-col-6
-            input.w-input.text-field value="#{project_by_slug_url(@project.permalink)}" type="text"
-          .w-col.w-col-3
-      .w-col.w-col-2
-
+= render "#{@project.mode}_preview_explanation"
 .divider
 #project-show-root data-id=@project.id data-project-user-id=@project.user_id
 

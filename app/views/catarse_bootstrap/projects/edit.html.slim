@@ -3,6 +3,7 @@
 - content_for :stylesheets do
   = stylesheet_link_tag 'redactor'
 = render 'shared/header'
+.w-section.section-product[class=@project.mode]
 #dashboard-titles-root.w-section.dashboard-header.u-text-center data-stats="#{@project.try(:to_analytics_json)}"
   .w-container
     .w-row
@@ -20,7 +21,7 @@
           = render 'dashboard_home'
         #dashboard_goal.content.w-hidden  data-page_title="#{t('.goal')}" data-page_subtitle="#{t('.goal_subtitle')}"
           = render 'dashboard_goal'
-        #dashboard_video.content.w-hidden  data-page_title="#{t('.video')}" data-page_subtitle="#{t('.video_subtitle')}"
+        #dashboard_video.content.w-hidden  data-page_title=t(".#{@project.mode}.video_html") data-page_subtitle=t(".#{@project.mode}.video_subtitle")
           = render 'dashboard_video'
         #dashboard_budget.content.w-hidden data-page_title="#{t('.budget')}" data-page_subtitle="#{t('.budget_subtitle')}"
           = render 'dashboard_budget'
@@ -36,13 +37,16 @@
         - if @project.published?
           #dashboard_posts.content.w-hidden data-page_title="#{t('.posts')}" data-page_subtitle=""
             = render 'dashboard_posts'
-        #dashboard_reward.content.w-hidden data-page_title="#{t('.reward')}" data-page_subtitle="#{t('.reward_subtitle')}"
+        #dashboard_reward.content.w-hidden data-page_title=t(".#{@project.mode}.reward_html") data-page_subtitle=t(".#{@project.mode}.reward_subtitle")
           = render 'dashboard_reward'
         - if @project.published?
           #dashboard_reports.content.w-hidden data-page_title="#{t('.reports')}" data-page_subtitle=""
             = render 'dashboard_reports'
         #dashboard_user_about.content.w-hidden data-page_title="#{t('.user_about')}" data-page_subtitle="#{t('.user_about_subtitle')}"
           = render 'dashboard_user_about'
+        - if @project.expires_at.nil? && @project.open_for_contributions?
+          #dashboard_announce_expiration.content.w-hidden data-page_title=t('.announce_expiration') data-page_subtitle=""
+            = render 'dashboard_announce_expiration'
         #dashboard_preview.content.w-hidden data-page_subtitle="" data-page_title=""
           = render 'dashboard_preview'
         #dashboard_user_settings.content.w-hidden data-page_title="#{t('.user_settings')}" data-page_subtitle="#{t('.user_settings_subtitle')}"

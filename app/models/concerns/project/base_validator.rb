@@ -13,7 +13,7 @@ module Project::BaseValidator
     # Start validations when project state
     # is included on ON_ANALYSIS_TO_END_STATE
     with_options if: -> (x) { ON_ANALYSIS_TO_END_STATES.include? x.state } do |wo| 
-      wo.validates_presence_of :about_html, :headline, :budget
+      wo.validates_presence_of :about_html, :headline, :budget, :goal
 
       wo.validates_presence_of :uploaded_image,
         unless: ->(project) { project.video_thumbnail.present? }
