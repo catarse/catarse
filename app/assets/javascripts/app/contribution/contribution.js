@@ -4,7 +4,7 @@ App.addChild('Contribution', {
   events: {
     'click .radio label' : 'clickReward',
     'click .submit-form' : 'submitForm',
-    'submit #contribution_form' : 'submitForm',
+    'keyup .user-reward-value' : 'submitOnReturnKey',
     'click .user-reward-value' : 'clearOnFocus',
     'input #contribution_value' : 'restrictChars'
   },
@@ -12,6 +12,13 @@ App.addChild('Contribution', {
   restrictChars: function(event){
     var $target = $(event.target);
     $target.val($target.val().replace(/[^\d,]/, ''));
+  },
+
+  submitOnReturnKey: function(event) {
+    event.preventDefault();
+    if(event.keyCode === 13) {
+      this.$('.submit-form').trigger('click');
+    }
   },
 
   submitForm: function(event){
