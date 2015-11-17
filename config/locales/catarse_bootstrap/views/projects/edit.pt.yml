@@ -7,18 +7,19 @@ pt:
       publish: 'Publicar'
     edit:
       flex:
+        budget_html: "Orçamento <span class='fontcolor-terciary'>(opcional)</span>"
         video_html: "Vídeo <span class='fontcolor-terciary'>(opcional)</span>"
         video_subtitle: 'O vídeo é opcional, mas recomendamos muito que você faça um vídeo!'
         reward_html: "Recompensas <span class='fontcolor-terciary'>(opcional)</span>"
-        reward_subtitle: "As recompensas não são opcionais. Se você quiser iniciar o projeto sem recompensa e adicionar depois também, fique a vontade!"
+        reward_subtitle: "Se você quiser iniciar o projeto sem recompensa e adicionar depois também, fique a vontade!"
       aon:
+        budget_html: Orçamento
         video_html: 'Vídeo'
         video_subtitle: 'Capricha! Um bom vídeo faz a diferença e pode ser o grande responsável pelo sucesso do seu projeto.'
         reward_html: "Crie e edite aqui suas recompensas"
         reward_subtitle: "Essa é sua demonstração de gratidão com os apoiadores. Lembre-se de incluir os custos das recompensas no seu orçamento. Prometeu, ENTREGUE! "
       posts: "Escrever uma novidade"
       announce_expiration: 'Iniciar reta final?'
-      budget: Orçamento
       budget_subtitle: "Como o seu dinheiro será utilizado? Quanto mais transparência melhor. Mostre que etapas e processos estarão envolvidos no uso desses recursos. Uma lista com os principais itens do orçamento ou até mesmo um gráfico de pizza vão super bem aqui."
       card: 'Card do projeto'
       card_subtitle: 'Sabe aquele cardzinho de projeto que aparece na home e na busca? Pois então, faz bonito pois dizem que a primeira impressão é a que fica ;)'
@@ -161,6 +162,11 @@ pt:
         video_tab: Vídeo
         rewards_tab: Recompensas
         about_you_tab: Sobre você
+    flex_dashboard_explanation:
+      flex:
+        kind_text: "Você está participando do período de testes do modelo flexível. Sua participação é essencial para entendermos como podemos expandir esse modelo para todos os usuários. %{link}"
+        expiration_text: "Na Campanha Flexível, não há limite de tempo para sua campanha. Com o seu projeto no ar, você terá a opção de começar uma contagem regressiva de 7 dias quando quiser. Ao final desse período, você recebe tudo que tiver arrecadado!"
+        expiration_title: "Prazo de arrecadação"
     dashboard_user_about:
       submit: "Salvar"
       twitter_label: "Perfil do twitter"
@@ -183,8 +189,6 @@ pt:
       kind_link: "Se você quiser saber mais, clique aqui"
       flex:
         kind_text: "Você está participando do período de testes do modelo flexível. Sua participação é essencial para entendermos como podemos expandir esse modelo para todos os usuários. %{link}"
-        expiration_text: "Na Campanha Flexível, não há limite de tempo para sua campanha. Com o seu projeto no ar, você terá a opção de começar uma contagem regressiva de 7 dias quando quiser. Ao final desse período, você recebe tudo que tiver arrecadado!"
-        expiration_title: "Prazo de arrecadação"
     dashboard_description:
       submit: "Salvar"
     dashboard_reward:

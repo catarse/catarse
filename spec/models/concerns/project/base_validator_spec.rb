@@ -14,7 +14,6 @@ RSpec.describe Project::BaseValidator, type: :model do
 
         it { is_expected.to validate_presence_of :about_html }
         it { is_expected.to validate_presence_of :headline }
-        it { is_expected.to validate_presence_of :budget }
       end
 
       context "#{state} project relation validations" do

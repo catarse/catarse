@@ -23,7 +23,7 @@
           = render 'dashboard_goal'
         #dashboard_video.content.w-hidden  data-page_title=t(".#{@project.mode}.video_html") data-page_subtitle=t(".#{@project.mode}.video_subtitle")
           = render 'dashboard_video'
-        #dashboard_budget.content.w-hidden data-page_title="#{t('.budget')}" data-page_subtitle="#{t('.budget_subtitle')}"
+        #dashboard_budget.content.w-hidden data-page_title=t(".#{@project.mode}.budget_html") data-page_subtitle="#{t('.budget_subtitle')}"
           = render 'dashboard_budget'
         #dashboard_card.content.w-hidden data-page_title="#{t('.card')}" data-page_subtitle="#{t('.card_subtitle')}"
           = render 'dashboard_card'
