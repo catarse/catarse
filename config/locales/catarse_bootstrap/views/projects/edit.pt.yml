@@ -161,6 +161,11 @@ pt:
         video_tab: Vídeo
         rewards_tab: Recompensas
         about_you_tab: Sobre você
+    flex_dashboard_explanation:
+      flex:
+        kind_text: "Você está participando do período de testes do modelo flexível. Sua participação é essencial para entendermos como podemos expandir esse modelo para todos os usuários. %{link}"
+        expiration_text: "Na Campanha Flexível, não há limite de tempo para sua campanha. Com o seu projeto no ar, você terá a opção de começar uma contagem regressiva de 7 dias quando quiser. Ao final desse período, você recebe tudo que tiver arrecadado!"
+        expiration_title: "Prazo de arrecadação"
     dashboard_user_about:
       submit: "Salvar"
       twitter_label: "Perfil do twitter"
@@ -183,8 +188,6 @@ pt:
       kind_link: "Se você quiser saber mais, clique aqui"
       flex:
         kind_text: "Você está participando do período de testes do modelo flexível. Sua participação é essencial para entendermos como podemos expandir esse modelo para todos os usuários. %{link}"
-        expiration_text: "Na Campanha Flexível, não há limite de tempo para sua campanha. Com o seu projeto no ar, você terá a opção de começar uma contagem regressiva de 7 dias quando quiser. Ao final desse período, você recebe tudo que tiver arrecadado!"
-        expiration_title: "Prazo de arrecadação"
     dashboard_description:
       submit: "Salvar"
     dashboard_reward:
