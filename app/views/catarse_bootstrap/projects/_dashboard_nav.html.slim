@@ -9,7 +9,7 @@
         - else
           img.thumb-project-dashboard src="#{image_path('thumb-project.png')}" width="114"
         .fontcolor-negative.lineheight-tight.fontsize-small= @project.name
-        = image_tag("catarse_bootstrap/badge-#{@project.mode}-h.png", width: 80)
+        = image_tag("catarse_bootstrap/badge-#{@project.mode}-h.png", class: 'u-margintop-10', width: 80)
 
       #info-links
         = link_to insights_project_path(@project), class: 'dashboard-nav-link-left ' , id: 'dashboard_home_link', data: {tab_group: 'edit'} do
