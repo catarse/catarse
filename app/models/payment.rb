@@ -21,7 +21,7 @@ class Payment < ActiveRecord::Base
   end
 
   def project_should_be_online
-    return if project && project.online?
+    return if project && project.open_for_contributions?
     errors.add(:project, I18n.t('contribution.project_should_be_online'))
   end
 
