@@ -16,7 +16,7 @@
     .hero-profile style="background-image: url('#{resource.cover_image.try(:base).try(:url) || resource.uploaded_image.url}')"
 
   
-  nav.dashboard-nav.u-text-center style='z-index: 10; position: relative;'
+  nav.dashboard-nav.u-text-center.u-marginbottom-30 style='z-index: 10; position: relative;'
     .w-container
       = link_to '#contributions', id: 'dashboard_contributions_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_contributions' } do
         | Apoiados

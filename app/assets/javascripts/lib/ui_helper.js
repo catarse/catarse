@@ -2,7 +2,7 @@ var UIHelper = window.UIHelper = {
   setupResponsiveIframes: function($container) {
     var that = this;
     this.$container = $container;
-    this.$iframes = $("iframe[src^='//player.vimeo.com'], iframe[src^='//www.youtube.com'], iframe[src^='https://www.youtube.com']");
+    this.$iframes = this.$container.find("iframe[src^='//player.vimeo.com'], iframe[src^='//www.youtube.com'], iframe[src^='https://www.youtube.com']");
     this.$iframes.each(function() {
       if (!$(this).data('aspectRatio')) {
         var height = this.height || $(this).height(),
