@@ -24,7 +24,7 @@
 
 = render 'shared/header_big'
 
-#project-show-root data-id=@project.id data-project-user-id=@project.user_id data-stats=@project.to_analytics_json
+#project-show-root[data-mithril="Show" data-parameters={project_id: @project.id, project_user_id: @project.user_id}.to_json data-stats=@project.to_analytics_json]
 
 - content_for :application_js do
   = javascript_include_tag "api/application"
