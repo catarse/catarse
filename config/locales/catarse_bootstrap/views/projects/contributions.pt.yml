@@ -61,7 +61,7 @@ pt:
         slip_message: 'Ao gerar o boleto, o realizador já está contando com o seu apoio. Pague até a data de vencimento pela internet, casas lotéricas, caixas eletrônicos ou agência bancária.'
         review_title: 'Preencha e revise os dados para pagamento'
         review_subtitle: 'Esses dados serão informados ao realizador do projeto'
-        delivery_address: 'Endereço de entrega'
+        delivery_address: 'Endereço'
         next_step: 'Próximo passo'
         payment_slip_disclaimer: "Caso o projeto não seja bem-sucedido, nós faremos o reembolso do seu apoio. Os dados bancários informados aqui serão usados para isso."
         review_errors_title: "Verifique os dados informados"
