@@ -12,14 +12,13 @@ module Concerns
 
     def auth_error(exception)
       session[:return_to] = request.env['REQUEST_URI']
-      message = exception.message
 
       if current_user.nil?
         redirect_to new_user_registration_path, alert: I18n.t('devise.failure.unauthenticated')
       elsif request.env["HTTP_REFERER"]
-        redirect_to :back, alert: message
+        redirect_to :back
       else
-        redirect_to root_path, alert: message
+        redirect_to root_path
       end
     end
 
