@@ -15,11 +15,7 @@
   Chart.defaults.global.scaleFontFamily = "proxima-nova";
 
   var adminRoot = document.getElementById('new-admin'),
-      teamRoot = document.getElementById('team-root'),
-      projectIndexRoot = document.getElementById('project-index-root'),
-      projectInsightsRoot = document.getElementById('project-insights-root'),
-      projectShowRoot = document.getElementById('project-show-root'),
-      flex = document.getElementById('flex');
+      rootComponents = _.extend({}, c.pages, c.contribution, c.project);
 
   if(adminRoot){
     m.route.mode = 'hash';
@@ -29,28 +25,12 @@
     });
   }
 
-  if(teamRoot){
-    m.mount(teamRoot, c.pages.Team);
-  }
-
-  if(flex){
-    m.mount(flex, c.pages.Flex);
-  }
-
-  if(projectIndexRoot){
-    m.mount(projectIndexRoot, c.contribution.ProjectsHome);
-  }
-
-  if(projectShowRoot) {
-    m.mount(projectShowRoot, m.component(c.project.Show, {
-      project_id: projectShowRoot.getAttribute('data-id'),
-      project_user_id: projectShowRoot.getAttribute('data-project-user-id')
-    }));
-  }
-
-  if(projectInsightsRoot){
-    m.mount(projectInsightsRoot, m.component(c.project.Insights, {root: projectInsightsRoot}));
-  }
+  _.each(document.querySelectorAll('div[data-mithril]'), function(el){
+    var component = rootComponents[el.attributes['data-mithril'].value],
+        paramAttr = el.attributes['data-parameters'],
+        params = paramAttr && JSON.parse(paramAttr.value);
+    m.mount(el, m.component(component, _.extend({root: el}, params)));
+  });
 }(window.m, window.c, window.Chart));
 
 window.toggleMenu = function(){
