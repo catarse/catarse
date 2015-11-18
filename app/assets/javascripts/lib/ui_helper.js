@@ -1,7 +1,6 @@
 var UIHelper = window.UIHelper = {
   setupResponsiveIframes: function($container) {
     var that = this;
-    console.log('Will implement shit on ', $container);
     this.$container = $container;
     this.$iframes = this.$container.find("iframe[src^='//player.vimeo.com'], iframe[src^='//www.youtube.com'], iframe[src^='https://www.youtube.com']");
     this.$iframes.each(function() {
