@@ -35,11 +35,15 @@ RSpec.describe Payment, type: :model do
     end
 
     context "when project is expired" do
-      let(:project){ create(:project, online_date: Time.current - 30.day, online_days: 1) }
+      let(:project){ create(:project, online_date: Time.current - 30.day, online_days: 1, expires_at: 2.days.ago, state: 'online') }
+
+      before do
+        payment.valid?
+      end
 
       # This validation is implemented in the database schema
       it "should not create when project is past expires_at" do
-        expect{ payment.save }.to raise_error(/Project for contribution/)
+        expect(payment.errors[:project]).to_not be_nil
       end
     end
   end
