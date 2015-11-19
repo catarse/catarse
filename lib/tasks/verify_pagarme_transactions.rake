@@ -27,6 +27,10 @@ task verify_pagarme_user_transfers: [:environment] do
     payment_transfer.update_attribute(:transfer_data, transfer.to_hash)
     if transfer.status == 'failed'
       payment_transfer.notify(:invalid_refund, payment_transfer.user)
+      if payment_transfer.over_refund_limit?
+        backoffice_user = User.find_by(email: CatarseSettings[:email_contact])
+        payment_transfer.notify(:over_refund_limit, backoffice_user) if backoffice_user
+      end
     end
   end
 end
