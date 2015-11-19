@@ -25,7 +25,7 @@ pt:
       card_subtitle: 'Sabe aquele cardzinho de projeto que aparece na home e na busca? Pois então, faz bonito pois dizem que a primeira impressão é a que fica ;)'
       basics: 'Preencha as informações abaixo'
       basics_subtitle: 'Os dados informados nessa seção não poderão ser modificados quando o projeto for ao ar. Preencha com atenção e revise antes de lançar o projeto. '
-      goal: 'Meta e prazo'
+      goal: 'Financiamento'
       goal_subtitle: 'Preencha com carinho a seção abaixo, pois essas informações não poderão mais ser alteradas se o projeto for ao ar.'
       reports: 'Relatórios de apoios'
       user_settings: 'Dados cadastrais e bancários'
