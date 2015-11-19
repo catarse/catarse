@@ -26,11 +26,16 @@ module Project::BaseValidator
         self.user.errors.each do |error, error_message|
           self.errors.add('user.' + error.to_s, error_message)
         end
+      end
+    end
 
+    with_options if: -> (x) { ON_ONLINE_TO_END_STATES.include? x.state } do |wo| 
+      wo.validate do
         if self.account && (self.account.agency.try(:size) || 0) < 4
           self.errors['account.agency_size'] << "Agência deve ter pelo menos 4 dígitos"
         end
       end
     end
+
   end
 end
