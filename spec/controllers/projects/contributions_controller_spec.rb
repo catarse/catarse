@@ -28,7 +28,6 @@ RSpec.describe Projects::ContributionsController, type: :controller do
     context "when contribution don't exist in current_user" do
       let(:user){ create(:user) }
       it{ is_expected.to redirect_to(root_path) }
-      it('should set flash failure'){ expect(request.flash[:alert]).not_to be_empty }
     end
 
     context "when we have the right user" do
@@ -164,7 +163,6 @@ RSpec.describe Projects::ContributionsController, type: :controller do
     context "when user logged in is different from contribution" do
       let(:user){ create(:user) }
       it{ is_expected.to redirect_to root_path }
-      it('should set flash failure'){ expect(request.flash[:alert]).not_to be_empty }
     end
 
     context "when contribution is logged in" do
