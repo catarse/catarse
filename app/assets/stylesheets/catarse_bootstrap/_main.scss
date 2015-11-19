@@ -2625,7 +2625,6 @@ a:hover {
 }
 .bg-blue-one {
   background-color: #3f4752;
-  color: white;
 }
 .min-height-70 {
   display: block;
@@ -3101,7 +3100,6 @@ a:hover {
 .section-large-fixed {
   height: 810px;
   padding-top: 75px;
-  background-color: #f1f4f4;
 }
 .text-field-cool {
   height: 110px;
@@ -3245,6 +3243,11 @@ a:hover {
   background-color: transparent;
   color: white;
   font-size: 50px;
+}
+.thumb-testimonial {
+  width: 150px;
+  height: 150px;
+  margin-top: -140px;
 }
 html.w-mod-js *[data-ix="fade-in"] {
   opacity: 0;
