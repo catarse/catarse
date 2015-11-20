@@ -7,7 +7,7 @@ RSpec.describe FlexibleProjectsController, type: :controller do
   before{ CatarseSettings[:email_projects] = 'foo@bar.com' }
   render_views
   subject{ response }
-  let(:project){ create(:project, state: 'draft') }
+  let(:project){ create(:project, state: 'draft', online_days: nil) }
   let!(:flexible_project) { create(:flexible_project, project: project, state: 'draft') }
   let(:current_user){ nil }
 

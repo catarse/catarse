@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe FlexibleProject, type: :model do
-  let!(:project) { create(:project, permalink: 'foo', state: 'draft', expires_at: nil) }
+  let!(:project) { create(:project, permalink: 'foo', state: 'draft', online_days: nil, expires_at: nil) }
   let!(:flexible_project) { create(:flexible_project, project: project) }
 
   describe "associations" do

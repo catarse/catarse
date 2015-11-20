@@ -18,7 +18,7 @@ RSpec.describe ProjectDecorator do
 
 
   describe "#time_to_go" do
-    let(:project){ create(:project, state: 'online') }
+    let(:project){ create(:project, state: 'draft', online_days: nil) }
     subject{ project.time_to_go }
     before do
       I18n.locale = :pt
