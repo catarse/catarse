@@ -103,6 +103,8 @@ RSpec.describe PaymentObserver do
   describe '#from_pending_refund_to_paid' do
     let(:admin){ create(:user) }
     before do
+      CatarseSettings[:email_contact] = 'contact@c.me'
+      @admin = create(:user, email: CatarseSettings[:email_contact])
       allow(payment).to receive(:can_do_refund?).and_return(true)
       expect(payment).to_not receive(:direct_refund)
       payment.notify_observers :from_pending_refund_to_paid
@@ -111,6 +113,15 @@ RSpec.describe PaymentObserver do
     context "when refund is invalid" do
       it "should send invalid refund notification" do
         expect(ContributionNotification.where(template_name: 'invalid_refund', user_id: payment.user.id).count).to eq 1
+      end
+    end
+    context "when refund fails more than twice" do
+      before do
+        payment.notify_observers :from_pending_refund_to_paid
+        payment.notify_observers :from_pending_refund_to_paid
+      end
+      it "should send over_limit notification" do
+        expect(ContributionNotification.where(template_name: 'over_refund_limit').count).to eq 1
       end
     end
   end
