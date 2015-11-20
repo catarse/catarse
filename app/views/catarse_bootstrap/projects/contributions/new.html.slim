@@ -33,7 +33,7 @@
                       .w-col.w-col-3.w-col-small-3.w-col-tiny-3
                         .back-reward-input-reward.placeholder R$
                       .w-col.w-col-9.w-col-small-9.w-col-tiny-9
-                        input.user-reward-value.back-reward-input-reward autocomplete="off" min="0,00" placeholder="10,00" type="tel" /
+                        input.user-reward-value.back-reward-input-reward autocomplete="off" min="0,00" value=@contribution.localized.value placeholder="10,00" type="tel" /
                         = form.input_field :value, value: number_with_precision( @contribution.value, precision: 2 ), as: :hidden
                     .fontsize-smaller.text-error.u-marginbottom-20.w-hidden
                       span.fa.fa-exclamation-triangle= t('.no_rewards.label_error')
