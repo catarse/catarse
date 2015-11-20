@@ -285,7 +285,7 @@ class Project < ActiveRecord::Base
   end
 
   def update_expires_at
-    if self.online_days.present?
+    if self.online_days.present? && self.online_date.present?
       self.expires_at = (self.online_date + self.online_days.days).end_of_day
     end
   end
