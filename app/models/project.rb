@@ -284,6 +284,12 @@ class Project < ActiveRecord::Base
     pluck_from_database(:open_for_contributions)
   end
 
+  def update_expires_at
+    if self.online_days.present?
+      self.expires_at = (self.online_date + self.online_days.days).end_of_day
+    end
+  end
+
   # State machine delegation methods
   delegate :push_to_draft, :reject, :push_to_online, :finish,
     :send_to_analysis, :approve, :push_to_trash, :can_transition_to?,
