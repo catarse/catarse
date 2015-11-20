@@ -71,6 +71,10 @@ class Contribution < ActiveRecord::Base
     @confirmed ||= Contribution.where(id: self.id).pluck('contributions.is_confirmed').first
   end
 
+  def over_refund_limit?
+    notifications.where(template_name: 'invalid_refund').count > 2
+  end
+
   def was_confirmed?
     @was_confirmed ||= Contribution.where(id: self.id).pluck('contributions.was_confirmed').first
   end
@@ -84,7 +88,11 @@ class Contribution < ActiveRecord::Base
   end
 
   def invalid_refund
-    notify_to_contributor(:invalid_refund)
+    notify(:invalid_refund, self.user)
+    if over_refund_limit?
+      backoffice_user = User.find_by(email: CatarseSettings[:email_contact])
+      notify_to_backoffice(:over_refund_limit, {from_email: self.user.email}, backoffice_user )
+    end
   end
 
   def available_rewards
@@ -95,10 +103,8 @@ class Contribution < ActiveRecord::Base
     notify_once(template_name, self.user, self, options)
   end
 
-  def notify_to_backoffice(template_name, options = {})
-    return if CatarseSettings[:email_payments].nil?
-    _user = User.find_by(email: CatarseSettings[:email_payments])
-    notify_once(template_name, _user, self, options) if _user
+  def notify_to_backoffice(template_name, options = {}, backoffice_user = User.find_by(email: CatarseSettings[:email_payments]))
+    notify_once(template_name, backoffice_user, self, options) if backoffice_user
   end
 
   def self.payment_method_names
