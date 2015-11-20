@@ -5,6 +5,7 @@ pt:
       announce_expiration: 'Iniciar reta final'
     aon_nav_actions:
       publish: 'Publicar'
+      send: 'Enviar'
     edit:
       flex:
         budget_html: "Orçamento <span class='fontcolor-terciary'>(opcional)</span>"
