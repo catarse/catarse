@@ -191,7 +191,7 @@ RSpec.describe ProjectObserver do
         payment_valid
         payment_invalid
         contribution_invalid.user.bank_account.destroy
-        project.update_attribute :expires_at, 2.days.ago
+        project.update_attribute :online_days, 1
         expect(DirectRefundWorker).to receive(:perform_async).with(payment_valid.id)
         expect(DirectRefundWorker).to_not receive(:perform_async).with(payment_invalid.id)
       end
