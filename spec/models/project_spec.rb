@@ -90,6 +90,15 @@ RSpec.describe Project, type: :model do
 
       it {is_expected.to eq(6) }
     end
+
+    context "when is flexible project online" do
+      let(:project_state) { 'online' }
+      before do
+        create(:flexible_project, state: 'online', project: create(:project, state: 'draft'))
+      end
+
+      it {is_expected.to eq(1)}
+    end
   end
 
   describe ".without_state" do
@@ -108,6 +117,16 @@ RSpec.describe Project, type: :model do
     context "when not have any projects" do
       it { is_expected.to eq(0) }
     end
+
+    context "when is flexible project online" do
+      let(:project_state) { 'draft' }
+      before do
+        create(:flexible_project, state: 'online', project: create(:project, state: 'draft'))
+      end
+
+      it {is_expected.to eq(1)}
+    end
+
   end
 
 
