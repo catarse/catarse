@@ -68,9 +68,17 @@ class Project < ActiveRecord::Base
   end
 
   # With state scopes
-  scope :with_state, -> (state) { where(state: state) }
+  scope :maybe_flex, -> {
+    joins("LEFT JOIN flexible_projects fp on fp.project_id = projects.id")
+  }
+  scope :with_state, -> (state) {
+      maybe_flex.where("coalesce(fp.state, projects.state) in (?)", state)
+  }
+  scope :without_state, -> (state) {
+      maybe_flex.where("coalesce(fp.state, projects.state) not in (?)", state)
+  }
+
   scope :with_states, -> (state) { with_state(state) }
-  scope :without_state, -> (state) { where("projects.state not in (?)", state) }
   scope :without_states, -> (state) { without_state(state) }
 
   # Used to simplify a has_scope
@@ -99,8 +107,8 @@ class Project < ActiveRecord::Base
   scope :not_expiring, -> { not_expired.where.not(expires_at: Time.current.. 2.weeks.from_now) }
   scope :recent, -> { where(online_date: 5.days.ago.. Time.current) }
   scope :ordered, -> { order(created_at: :desc)}
-  scope :order_status, ->{ order("
-                                     CASE projects.state
+  scope :order_status, ->{ maybe_flex.order("
+                                     CASE coalesce(fp.state, projects.state)
                                      WHEN 'online' THEN 1
                                      WHEN 'waiting_funds' THEN 2
                                      WHEN 'successful' THEN 3
@@ -108,8 +116,8 @@ class Project < ActiveRecord::Base
                                      END ASC")}
   scope :most_recent_first, ->{ order("projects.online_date DESC, projects.created_at DESC") }
   scope :order_for_admin, -> {
-    reorder("
-            CASE projects.state
+    maybe_flex.reorder("
+            CASE coalesce(fp.state, projects.state)
             WHEN 'in_analysis' THEN 1
             WHEN 'waiting_funds' THEN 2
             WHEN 'successful' THEN 3
