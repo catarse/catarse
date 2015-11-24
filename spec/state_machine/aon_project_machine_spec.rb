@@ -25,7 +25,7 @@ RSpec.describe AonProjectMachine, type: :model do
             with(:"from_#{project_state}_to_#{transition_to.to_s}").
             and_call_original
 
-          subject.transition_to(transition_to)
+          subject.transition_to(transition_to, { to_state: transition_to})
         end
 
         it "should turn current_state to #{transition_to.to_s}" do
@@ -53,7 +53,7 @@ RSpec.describe AonProjectMachine, type: :model do
 
       shared_examples "invalid project transaction flow" do |transition_to|
         before do
-          subject.transition_to transition_to
+          subject.transition_to(transition_to, {to_state: transition_to})
         end
 
         it "should not turn current_state to #{transition_to.to_s}" do
@@ -72,7 +72,7 @@ RSpec.describe AonProjectMachine, type: :model do
       context "draft can go to in_analysis, rejected and deleted only" do
         %i(draft online approved successful waiting_funds).each do |state|
           it "can't transition from draft to #{state}" do
-            expect(subject.transition_to(state)).to eq(false)
+            expect(subject.transition_to(state, {to_state: state})).to eq(false)
           end
         end
 
@@ -105,7 +105,7 @@ RSpec.describe AonProjectMachine, type: :model do
 
         %i(online approved in_analysis successful waiting_funds).each do |state|
           it "can't transition from draft to #{state}" do
-            expect(subject.transition_to(state)).to eq(false)
+            expect(subject.transition_to(state, {to_state: state})).to eq(false)
           end
         end
       end
@@ -115,7 +115,7 @@ RSpec.describe AonProjectMachine, type: :model do
 
         %i(successful waiting_funds in_analysis).each do |state|
           it "can't transition from in_analysis to #{state}" do
-            expect(subject.transition_to(state)).to eq(false)
+            expect(subject.transition_to(state, {to_state: state})).to eq(false)
           end
         end
 
@@ -142,7 +142,7 @@ RSpec.describe AonProjectMachine, type: :model do
 
         %i(draft deleted successful waiting_funds).each do |state|
           it "can't transition from approved to #{state}" do
-            expect(subject.transition_to(state)).to eq(false)
+            expect(subject.transition_to(state, {to_state: state})).to eq(false)
           end
         end
 
@@ -450,12 +450,14 @@ RSpec.describe AonProjectMachine, type: :model do
       end
 
       context "#send_to_analysis" do
-        before {  expect(subject).to receive(:transition_to).with(:in_analysis) }
+        before {  expect(subject).to receive(:transition_to).
+            with(:in_analysis, {to_state: 'in_analysis'}) }
         it { subject.send_to_analysis }
       end
 
       context "#approve" do
-        before {  expect(subject).to receive(:transition_to).with(:approved) }
+        before {  expect(subject).to receive(:transition_to).
+            with(:approved, {to_state: 'approved'}) }
         it { subject.approve }
       end
 
@@ -474,13 +476,13 @@ RSpec.describe AonProjectMachine, type: :model do
                   and_return(true)
 
                 expect(subject).to receive(:transition_to).
-                  with(:waiting_funds).and_return(false)
+                  with(:waiting_funds, {to_state: 'waiting_funds'}).and_return(false)
 
                 expect(subject).to receive(:transition_to).
-                  with(:failed).and_return(false)
+                  with(:failed, {to_state: 'failed'}).and_return(false)
 
                 expect(subject).to receive(:transition_to).
-                  with(:successful).and_return(false)
+                  with(:successful, {to_state: 'successful'}).and_return(false)
               end
 
               it { subject.finish }
@@ -494,13 +496,13 @@ RSpec.describe AonProjectMachine, type: :model do
                   and_return(true)
 
                 expect(subject).to receive(:transition_to).
-                  with(:waiting_funds).and_return(false)
+                  with(:waiting_funds, {to_state: 'waiting_funds'}).and_return(false)
 
                 expect(subject).to receive(:transition_to).
-                  with(:failed).and_return(false)
+                  with(:failed, {to_state: 'failed'}).and_return(false)
 
                 expect(subject).to receive(:transition_to).
-                  with(:successful).and_return(true)
+                  with(:successful, {to_state: 'successful'}).and_return(true)
               end
 
               it { subject.finish }
@@ -512,13 +514,13 @@ RSpec.describe AonProjectMachine, type: :model do
                   and_return(false)
 
                 expect(subject).to receive(:transition_to).
-                  with(:waiting_funds).and_return(false)
+                  with(:waiting_funds, {to_state: 'waiting_funds'}).and_return(false)
 
                 expect(subject).to receive(:transition_to).
-                  with(:failed).and_return(false)
+                  with(:failed, {to_state: 'failed'}).and_return(false)
 
                 expect(subject).to receive(:transition_to).
-                  with(:successful).and_return(false)
+                  with(:successful, {to_state: 'successful'}).and_return(false)
               end
 
               it { subject.finish }
@@ -534,10 +536,10 @@ RSpec.describe AonProjectMachine, type: :model do
                   and_return(false)
 
                 expect(subject).to receive(:transition_to).
-                  with(:waiting_funds).and_return(false)
+                  with(:waiting_funds, {to_state: 'waiting_funds'}).and_return(false)
 
                 expect(subject).to receive(:transition_to).
-                  with(:failed).and_return(true)
+                  with(:failed, {to_state: 'failed'}).and_return(true)
               end
 
               it { subject.finish }
@@ -554,13 +556,13 @@ RSpec.describe AonProjectMachine, type: :model do
                   and_return(true)
 
                 expect(subject).to receive(:transition_to).
-                  with(:waiting_funds).and_return(false)
+                  with(:waiting_funds, {to_state: 'waiting_funds'}).and_return(false)
 
                 expect(subject).to receive(:transition_to).
-                  with(:failed).and_return(false)
+                  with(:failed, {to_state: 'failed'}).and_return(false)
 
                 expect(subject).to receive(:transition_to).
-                  with(:successful).and_return(true)
+                  with(:successful, {to_state: 'successful'}).and_return(true)
               end
 
               it { subject.finish }
@@ -572,13 +574,13 @@ RSpec.describe AonProjectMachine, type: :model do
                   and_return(true)
 
                 expect(subject).to receive(:transition_to).
-                  with(:waiting_funds).and_return(false)
+                  with(:waiting_funds, {to_state: 'waiting_funds'}).and_return(false)
 
                 expect(subject).to receive(:transition_to).
-                  with(:failed).and_return(false)
+                  with(:failed, {to_state: 'failed'}).and_return(false)
 
                 expect(subject).to receive(:transition_to).
-                  with(:successful).and_return(false)
+                  with(:successful, {to_state: 'successful'}).and_return(false)
               end
 
               it "should be false but remains on waiting_funds" do
@@ -597,13 +599,13 @@ RSpec.describe AonProjectMachine, type: :model do
                   and_return(true)
 
                 expect(subject).to receive(:transition_to).
-                  with(:waiting_funds).and_return(false)
+                  with(:waiting_funds, {to_state: 'waiting_funds'}).and_return(false)
 
                 expect(subject).to receive(:transition_to).
-                  with(:failed).and_return(false)
+                  with(:failed, {to_state: 'failed'}).and_return(false)
 
                 expect(subject).to receive(:transition_to).
-                  with(:successful).and_return(true)
+                  with(:successful, {to_state: 'successful'}).and_return(true)
               end
 
               it { subject.finish }
@@ -617,13 +619,13 @@ RSpec.describe AonProjectMachine, type: :model do
                   and_return(true)
 
                 expect(subject).to receive(:transition_to).
-                  with(:waiting_funds).and_return(false)
+                  with(:waiting_funds, {to_state: 'waiting_funds'}).and_return(false)
 
                 expect(subject).to receive(:transition_to).
-                  with(:failed).and_return(false)
+                  with(:failed, {to_state: 'failed'}).and_return(false)
 
                 expect(subject).to receive(:transition_to).
-                  with(:successful).and_return(false)
+                  with(:successful, {to_state: 'successful'}).and_return(false)
               end
 
               it { subject.finish }
@@ -637,13 +639,13 @@ RSpec.describe AonProjectMachine, type: :model do
                   and_return(false)
 
                 expect(subject).to receive(:transition_to).
-                  with(:waiting_funds).and_return(false)
+                  with(:waiting_funds, {to_state: 'waiting_funds'}).and_return(false)
 
                 expect(subject).to receive(:transition_to).
-                  with(:failed).and_return(true)
+                  with(:failed, {to_state: 'failed'}).and_return(true)
 
                 expect(subject).not_to receive(:transition_to).
-                  with(:successful)
+                  with(:successful, {to_state: 'successful'})
               end
 
               it { subject.finish }
@@ -665,13 +667,13 @@ RSpec.describe AonProjectMachine, type: :model do
                   and_return(false)
 
                 expect(subject).to receive(:transition_to).
-                  with(:waiting_funds).and_return(false)
+                  with(:waiting_funds, {to_state: 'waiting_funds'}).and_return(false)
 
                 expect(subject).to receive(:transition_to).
-                  with(:failed).and_return(true)
+                  with(:failed, {to_state: 'failed'}).and_return(true)
 
                 expect(subject).not_to receive(:transition_to).
-                  with(:successful)
+                  with(:successful, {to_state: 'successful'})
               end
 
               it { subject.finish }
@@ -685,9 +687,9 @@ RSpec.describe AonProjectMachine, type: :model do
                   and_return(true)
 
                 expect(subject).to receive(:transition_to).
-                  with(:waiting_funds).and_return(true)
+                  with(:waiting_funds, {to_state: 'waiting_funds'}).and_return(true)
                 expect(subject).not_to receive(:transition_to).
-                  with(:failed)
+                  with(:failed, {to_state: 'failed'})
               end
 
               it { subject.finish }
@@ -702,13 +704,13 @@ RSpec.describe AonProjectMachine, type: :model do
                   and_return(true)
 
                 expect(subject).to receive(:transition_to).
-                  with(:waiting_funds).and_return(false)
+                  with(:waiting_funds, {to_state: 'waiting_funds'}).and_return(false)
 
                 expect(subject).to receive(:transition_to).
-                  with(:failed).and_return(false)
+                  with(:failed, {to_state: 'failed'}).and_return(false)
 
                 expect(subject).to receive(:transition_to).
-                  with(:successful).and_return(true)
+                  with(:successful, {to_state: 'successful'}).and_return(true)
               end
 
               it { subject.finish }
@@ -720,13 +722,13 @@ RSpec.describe AonProjectMachine, type: :model do
                   and_return(false)
 
                 expect(subject).to receive(:transition_to).
-                  with(:waiting_funds).and_return(false)
+                  with(:waiting_funds, {to_state: 'waiting_funds'}).and_return(false)
 
                 expect(subject).to receive(:transition_to).
-                  with(:failed).and_return(false)
+                  with(:failed, {to_state: 'failed'}).and_return(false)
 
                 expect(subject).to receive(:transition_to).
-                  with(:successful).and_return(false)
+                  with(:successful, {to_state: 'successful'}).and_return(false)
               end
 
               it { subject.finish }
@@ -743,13 +745,13 @@ RSpec.describe AonProjectMachine, type: :model do
                   and_return(true)
 
                 expect(subject).to receive(:transition_to).
-                  with(:waiting_funds).and_return(false)
+                  with(:waiting_funds, {to_state: 'waiting_funds'}).and_return(false)
 
                 expect(subject).to receive(:transition_to).
-                  with(:failed).and_return(false)
+                  with(:failed, {to_state: 'failed'}).and_return(false)
 
                 expect(subject).to receive(:transition_to).
-                  with(:successful).and_return(true)
+                  with(:successful, {to_state: 'successful'}).and_return(true)
               end
 
               it { subject.finish }
@@ -763,11 +765,11 @@ RSpec.describe AonProjectMachine, type: :model do
                   and_return(true)
 
                 expect(subject).to receive(:transition_to).
-                  with(:waiting_funds).and_return(true)
+                  with(:waiting_funds, {to_state: 'waiting_funds'}).and_return(true)
                 expect(subject).not_to receive(:transition_to).
-                  with(:failed)
+                  with(:failed, {to_state: 'failed'})
                 expect(subject).not_to receive(:transition_to).
-                  with(:successful)
+                  with(:successful, {to_state: 'successful'})
               end
 
               it { subject.finish }
@@ -781,11 +783,11 @@ RSpec.describe AonProjectMachine, type: :model do
                   and_return(true)
 
                 expect(subject).to receive(:transition_to).
-                  with(:waiting_funds).and_return(true)
+                  with(:waiting_funds, {to_state: 'waiting_funds'}).and_return(true)
                 expect(subject).not_to receive(:transition_to).
-                  with(:failed)
+                  with(:failed, {to_state: 'failed'})
                 expect(subject).not_to receive(:transition_to).
-                  with(:successful)
+                  with(:successful, {to_state: 'successful'})
               end
 
               it { subject.finish }
@@ -799,11 +801,11 @@ RSpec.describe AonProjectMachine, type: :model do
                   and_return(false)
 
                 expect(subject).to receive(:transition_to).
-                  with(:waiting_funds).and_return(false)
+                  with(:waiting_funds, {to_state: 'waiting_funds'}).and_return(false)
                 expect(subject).to receive(:transition_to).
-                  with(:failed).and_return(true)
+                  with(:failed, {to_state: 'failed'}).and_return(true)
                 expect(subject).not_to receive(:transition_to).
-                  with(:successful)
+                  with(:successful, {to_state: 'successful'})
               end
 
               it { subject.finish }
@@ -819,13 +821,13 @@ RSpec.describe AonProjectMachine, type: :model do
                   and_return(true)
 
                 expect(subject).to receive(:transition_to).
-                  with(:waiting_funds).and_return(false)
+                  with(:waiting_funds, {to_state: 'waiting_funds'}).and_return(false)
 
                 expect(subject).to receive(:transition_to).
-                  with(:failed).and_return(false)
+                  with(:failed, {to_state: 'failed'}).and_return(false)
 
                 expect(subject).to receive(:transition_to).
-                  with(:successful).and_return(true)
+                  with(:successful, {to_state: 'successful'}).and_return(true)
               end
 
               it { subject.finish }
