@@ -9,6 +9,15 @@ AS $function$
         SELECT $1::timestamptz AT TIME ZONE settings('timezone');
       $function$;
 
+CREATE OR REPLACE FUNCTION public.zone_expires_at(projects)
+ RETURNS timestamp without time zone
+ LANGUAGE sql
+ STABLE SECURITY DEFINER
+AS $function$
+        SELECT public.zone_timestamp($1.expires_at);
+      $function$;
+
+
 DROP VIEW "1".project_details;
 
 CREATE VIEW "1".project_details AS
@@ -75,8 +84,6 @@ REVOKE ALL ON TABLE "1".project_details FROM PUBLIC;
 GRANT SELECT ON TABLE "1".project_details TO admin;
 GRANT SELECT ON TABLE "1".project_details TO web_user;
 GRANT SELECT ON TABLE "1".project_details TO anonymous;
-
-DROP FUNCTION public.zone_expires_at(projects);
     SQL
   end
 
