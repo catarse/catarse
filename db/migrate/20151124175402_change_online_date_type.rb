@@ -11,6 +11,7 @@ DROP MATERIALIZED VIEW IF EXISTS temp.projects_and_contributors_per_day;
 -- this view is not used since the new home works with the projects endpoint
 -- also will not be restored
 DROP VIEW IF EXISTS "1".projects_for_home;
+DROP VIEW IF EXISTS public.projects_for_home;
 
 DROP VIEW "1".project_details;
 DROP VIEW "1".contribution_details;
@@ -70,14 +71,13 @@ CREATE VIEW "1".project_details AS
      JOIN public.users u ON ((u.id = p.user_id)))
      LEFT JOIN public.flexible_projects fp ON ((fp.project_id = p.id)))
      LEFT JOIN public.project_posts pp ON ((pp.project_id = p.id)))
-     LEFT JOIN project_totals pt ON ((pt.project_id = p.id)))
+     LEFT JOIN "1".project_totals pt ON ((pt.project_id = p.id)))
      LEFT JOIN public.cities ct ON ((ct.id = p.city_id)))
      LEFT JOIN public.states st ON ((st.id = ct.state_id)))
      LEFT JOIN public.project_notifications pn ON ((pn.project_id = p.id)))
   GROUP BY p.id, c.id, u.id, c.name_pt, ct.name, u.address_city, st.acronym, u.address_state, st.name, pt.progress, pt.pledged, pt.total_contributions, p.state, p.expires_at, p.sent_to_analysis_at, pt.total_payment_service_fee, fp.state, pt.total_contributors;
 
 REVOKE ALL ON TABLE "1".project_details FROM PUBLIC;
-GRANT ALL ON TABLE "1".project_details TO catarse;
 GRANT SELECT ON TABLE "1".project_details TO admin;
 GRANT SELECT ON TABLE "1".project_details TO web_user;
 GRANT SELECT ON TABLE "1".project_details TO anonymous;
@@ -130,7 +130,6 @@ CREATE VIEW "1".contribution_details AS
 CREATE TRIGGER update_from_details_to_contributions INSTEAD OF UPDATE ON "1".contribution_details FOR EACH ROW EXECUTE PROCEDURE public.update_from_details_to_contributions();
 
 REVOKE ALL ON TABLE "1".contribution_details FROM PUBLIC;
-GRANT ALL ON TABLE "1".contribution_details TO catarse;
 GRANT SELECT,UPDATE ON TABLE "1".contribution_details TO admin;
 
 CREATE VIEW "1".projects AS
@@ -147,10 +146,10 @@ CREATE VIEW "1".projects AS
     public.remaining_time_json(p.*) AS remaining_time,
     p.expires_at,
     COALESCE(( SELECT pt.pledged
-           FROM project_totals pt
+           FROM "1".project_totals pt
           WHERE (pt.project_id = p.id)), (0)::numeric) AS pledged,
     COALESCE(( SELECT pt.progress
-           FROM project_totals pt
+           FROM "1".project_totals pt
           WHERE (pt.project_id = p.id)), (0)::numeric) AS progress,
     COALESCE(s.acronym, (pa.address_state)::character varying(255)) AS state_acronym,
     u.name AS owner_name,
@@ -164,7 +163,6 @@ CREATE VIEW "1".projects AS
 
 
 REVOKE ALL ON TABLE "1".projects FROM PUBLIC;
-GRANT ALL ON TABLE "1".projects TO catarse;
 GRANT SELECT ON TABLE "1".projects TO admin;
 GRANT SELECT ON TABLE "1".projects TO web_user;
 GRANT SELECT ON TABLE "1".projects TO anonymous;
@@ -275,14 +273,13 @@ CREATE VIEW "1".project_details AS
      JOIN public.users u ON ((u.id = p.user_id)))
      LEFT JOIN public.flexible_projects fp ON ((fp.project_id = p.id)))
      LEFT JOIN public.project_posts pp ON ((pp.project_id = p.id)))
-     LEFT JOIN project_totals pt ON ((pt.project_id = p.id)))
+     LEFT JOIN "1".project_totals pt ON ((pt.project_id = p.id)))
      LEFT JOIN public.cities ct ON ((ct.id = p.city_id)))
      LEFT JOIN public.states st ON ((st.id = ct.state_id)))
      LEFT JOIN public.project_notifications pn ON ((pn.project_id = p.id)))
   GROUP BY p.id, c.id, u.id, c.name_pt, ct.name, u.address_city, st.acronym, u.address_state, st.name, pt.progress, pt.pledged, pt.total_contributions, p.state, p.expires_at, p.sent_to_analysis_at, pt.total_payment_service_fee, fp.state, pt.total_contributors;
 
 REVOKE ALL ON TABLE "1".project_details FROM PUBLIC;
-GRANT ALL ON TABLE "1".project_details TO catarse;
 GRANT SELECT ON TABLE "1".project_details TO admin;
 GRANT SELECT ON TABLE "1".project_details TO web_user;
 GRANT SELECT ON TABLE "1".project_details TO anonymous;
@@ -335,7 +332,6 @@ CREATE VIEW "1".contribution_details AS
 CREATE TRIGGER update_from_details_to_contributions INSTEAD OF UPDATE ON "1".contribution_details FOR EACH ROW EXECUTE PROCEDURE public.update_from_details_to_contributions();
 
 REVOKE ALL ON TABLE "1".contribution_details FROM PUBLIC;
-GRANT ALL ON TABLE "1".contribution_details TO catarse;
 GRANT SELECT,UPDATE ON TABLE "1".contribution_details TO admin;
 
 CREATE VIEW "1".projects AS
@@ -352,10 +348,10 @@ CREATE VIEW "1".projects AS
     public.remaining_time_json(p.*) AS remaining_time,
     p.expires_at,
     COALESCE(( SELECT pt.pledged
-           FROM project_totals pt
+           FROM "1".project_totals pt
           WHERE (pt.project_id = p.id)), (0)::numeric) AS pledged,
     COALESCE(( SELECT pt.progress
-           FROM project_totals pt
+           FROM "1".project_totals pt
           WHERE (pt.project_id = p.id)), (0)::numeric) AS progress,
     COALESCE(s.acronym, (pa.address_state)::character varying(255)) AS state_acronym,
     u.name AS owner_name,
@@ -369,7 +365,6 @@ CREATE VIEW "1".projects AS
 
 
 REVOKE ALL ON TABLE "1".projects FROM PUBLIC;
-GRANT ALL ON TABLE "1".projects TO catarse;
 GRANT SELECT ON TABLE "1".projects TO admin;
 GRANT SELECT ON TABLE "1".projects TO web_user;
 GRANT SELECT ON TABLE "1".projects TO anonymous;
