@@ -33,15 +33,15 @@ class AonProjectMachine < FlexProjectMachine
   end
 
   def send_to_analysis
-    transition_to :in_analysis
+    transition_to :in_analysis, to_state: 'in_analysis'
   end
 
   def approve
-    transition_to :approved
+    transition_to :approved, to_state: 'approved'
   end
 
   def finish
-    transition_to(:waiting_funds) || transition_to(:failed) || transition_to(:successful)
+    transition_to(:waiting_funds, to_state: 'waiting_funds') || transition_to(:failed, to_state: 'failed') || transition_to(:successful, to_state: 'successful')
   end
 
   def can_approve?
