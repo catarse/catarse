@@ -1,5 +1,6 @@
 class Payment < ActiveRecord::Base
   DUPLICATION_PERIOD = '30 minutes'
+  SLIP_EXPIRATION_WEEKDAYS = 2
 
   include Shared::StateMachineHelpers
   include Payment::PaymentEngineHandler
@@ -15,6 +16,14 @@ class Payment < ActiveRecord::Base
   validate :value_should_be_equal_or_greater_than_pledge
   validate :project_should_be_online, on: :create
   validate :is_unique_within_period, on: :create
+
+  def slip_expiration_date
+    SLIP_EXPIRATION_WEEKDAYS.weekdays_from self.created_at
+  end
+
+  def slip_expired?
+    slip_expiration_date < Time.zone.now
+  end
 
   def is_unique_within_period
     errors.add(:payment, I18n.t('activerecord.errors.models.payment.duplicate')) if exists_duplicate?
