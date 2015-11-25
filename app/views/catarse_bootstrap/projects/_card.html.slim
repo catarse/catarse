@@ -35,10 +35,17 @@ div[itemtype="http://schema.org/CreativeWork" class="#{defined?(wrapper_class) ?
           .fontsize-smallest.lineheight-tightest Levantados
         .w-col.w-col-4.w-col-small-4.w-col-tiny-4.u-text-right
           - unless @project.expired?
-            .fontsize-smaller.fontweight-semibold 
-              = "#{@project.time_to_go[:time]}  #{@project.time_to_go[:unit]}"
-            .fontsize-smallest.lineheight-tightest 
-              = t('.remaining', count: @project.time_to_go[:time])
+            - if @project.time_to_go[:time] > 0
+              .fontsize-smaller.fontweight-semibold
+                = "#{@project.time_to_go[:time]}  #{@project.time_to_go[:unit]}"
+              .fontsize-smallest.lineheight-tightest
+                = t('.remaining', count: @project.time_to_go[:time])
+            - else
+              .fontsize-smallest.lineheight-tight
+                | Prazo em
+                br
+                | aberto
+
           - else
             .fontsize-smallest.lineheight-tight.fontweight-semibold.w-row 
               = t("projects.card.display_status.#{@project.display_card_status}").capitalize
