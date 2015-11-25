@@ -12,7 +12,7 @@ class ContributionDetail < ActiveRecord::Base
   delegate :pay, :refuse, :trash, :refund, :request_refund, :request_refund!,
            :credits?, :paid?, :refused?, :pending?, :deleted?, :refunded?, :direct_refund,
            :slip_payment?, :pending_refund?, :second_slip_path,
-           :pagarme_delegator, :waiting_payment?, to: :payment
+           :pagarme_delegator, :waiting_payment?, :slip_expired?, to: :payment
 
   scope :search_on_acquirer, ->(acquirer_name){ where(acquirer_name: acquirer_name) }
   scope :project_name_contains, ->(term) {
@@ -82,11 +82,11 @@ class ContributionDetail < ActiveRecord::Base
   end
 
   def can_show_slip?
-    self.slip_payment? && self.waiting_payment?
+    self.slip_payment? && !self.slip_expired?
   end
 
   def can_generate_slip?
-    self.slip_payment? && self.project.online? && self.pending? &&  !self.waiting_payment?
+    self.slip_payment? && self.project.online? && self.pending? && self.slip_expired?
   end
 
   def last_state_name

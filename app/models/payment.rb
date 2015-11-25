@@ -16,6 +16,14 @@ class Payment < ActiveRecord::Base
   validate :project_should_be_online, on: :create
   validate :is_unique_within_period, on: :create
 
+  def slip_expiration_date
+    pluck_from_database("slip_expires_at")
+  end
+
+  def slip_expired?
+    pluck_from_database("slip_expired")
+  end
+
   def is_unique_within_period
     errors.add(:payment, I18n.t('activerecord.errors.models.payment.duplicate')) if exists_duplicate?
   end
@@ -32,10 +40,10 @@ class Payment < ActiveRecord::Base
 
   scope :waiting_payment, -> { where('payments.waiting_payment') }
 
-
   def waiting_payment?
-    Payment.where(id: self.id).pluck("payments.waiting_payment").first
+    pluck_from_database("waiting_payment")
   end
+
   # Check current status on pagarme and
   # move pending payment to deleted state
   def move_to_trash
@@ -128,5 +136,9 @@ class Payment < ActiveRecord::Base
       where(payment_method: self.payment_method, value: self.value).
       where("current_timestamp - payments.created_at < '#{DUPLICATION_PERIOD}'::interval").
       exists?
+  end
+
+  def pluck_from_database field
+    Payment.where(id: self.id).pluck("payments.#{field}").first
   end
 end
