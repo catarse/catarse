@@ -86,7 +86,11 @@ class ContributionDetail < ActiveRecord::Base
   end
 
   def can_generate_slip?
-    self.slip_payment? && self.project.online? && self.pending? && self.slip_expired?
+    self.slip_payment? &&
+      self.project.online? &&
+      self.pending? &&
+      self.slip_expired? &&
+      (self.reward.nil? || !self.reward.sold_out?)
   end
 
   def last_state_name
