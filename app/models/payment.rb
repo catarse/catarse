@@ -1,6 +1,5 @@
 class Payment < ActiveRecord::Base
   DUPLICATION_PERIOD = '30 minutes'
-  SLIP_EXPIRATION_WEEKDAYS = 2
 
   include Shared::StateMachineHelpers
   include Payment::PaymentEngineHandler
