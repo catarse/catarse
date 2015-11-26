@@ -383,6 +383,18 @@ img, iframe
   width: 205px
   z-index: 999
 
+#project-nav::-webkit-scrollbar
+  width: 10px
+
+#project-nav::-webkit-scrollbar-track
+  background: #474b4e
+  border-radius: 5px
+
+#project-nav::-webkit-scrollbar-thumb
+  background: #79808b
+  border-radius: 5px
+  height: 30px
+
 .project-nav-wrapper
   display: block
   height: 100%
@@ -395,7 +407,7 @@ img, iframe
   overflow: auto
   position: relative
   transition: all 500ms ease
-  width: 225px
+  width: 100%
 
 .dashboard-nav.side::after
   content: " "
