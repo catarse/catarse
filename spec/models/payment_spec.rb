@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Payment, type: :model do
-  SLIP_EXPIRATION_WEEKDAYS = 2
   let(:payment){ create(:payment) }
 
   describe "associations" do
@@ -110,10 +109,19 @@ RSpec.describe Payment, type: :model do
   end
 
   describe "#slip_expired?" do
+    subject{ payment.slip_expiration_date }
+
+    context "when is a new record" do
+      let(:payment){ Payment.new }
+      it{ is_expected.to_not be_nil }
+    end
+  end
+
+  describe "#slip_expired?" do
     subject { payment.slip_expired? }
 
     context "when slipt is past expiration date" do
-      let(:payment){ create(:payment, state: 'pending', created_at: (SLIP_EXPIRATION_WEEKDAYS.weekdays_ago - 1.hour)) }
+      let(:payment){ create(:payment, state: 'pending', created_at: (Payment.slip_expiration_weekdays.weekdays_ago - 1.hour)) }
       it{ is_expected.to eq true }
     end
 

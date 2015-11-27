@@ -16,8 +16,17 @@ class Payment < ActiveRecord::Base
   validate :project_should_be_online, on: :create
   validate :is_unique_within_period, on: :create
 
+  def self.slip_expiration_weekdays
+    connection.select_one("SELECT public.slip_expiration_weekdays()")['slip_expiration_weekdays'].to_i;
+  end
+
   def slip_expiration_date
-    pluck_from_database("slip_expires_at")
+    # If payment does not exist gives expiration date based on current_timestamp
+    if self.id.nil?
+      self.class.connection.select_one("SELECT public.weekdays_from(public.slip_expiration_weekdays(), current_timestamp::timestamp)")['weekdays_from'].to_time;
+    else
+      pluck_from_database("slip_expires_at")
+    end
   end
 
   def slip_expired?
