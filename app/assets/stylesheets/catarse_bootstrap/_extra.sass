@@ -383,18 +383,6 @@ img, iframe
   width: 205px
   z-index: 999
 
-#project-nav::-webkit-scrollbar
-  width: 10px
-
-#project-nav::-webkit-scrollbar-track
-  background: #474b4e
-  border-radius: 5px
-
-#project-nav::-webkit-scrollbar-thumb
-  background: #79808b
-  border-radius: 5px
-  height: 30px
-
 .project-nav-wrapper
   display: block
   height: 100%
@@ -404,7 +392,7 @@ img, iframe
 
 .dashboard-nav.side
   height: 100%
-  overflow: auto
+  overflow: hidden
   position: relative
   transition: all 500ms ease
   width: 100%
@@ -419,6 +407,21 @@ img, iframe
   width: 205px
   background-color: #1d2024
   z-index: 999
+
+.dashboard-nav.side:hover
+  overflow-y: scroll
+
+.dashboard-nav.side::-webkit-scrollbar
+  width: 10px
+
+.dashboard-nav.side::-webkit-scrollbar-track
+  background: #474b4e
+  border-radius: 5px
+
+.dashboard-nav.side::-webkit-scrollbar-thumb
+  background: #79808b
+  border-radius: 5px
+  height: 30px
 
 #dashboard-links.dashboard-nav-link-left:last-of-type
   margin-bottom: 124px
