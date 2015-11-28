@@ -1,10 +1,9 @@
-- if Rails.env.production? && CatarseSettings['hotjar_id'].present?
 javascript:
-	(function(f,b){
-        var c;
-        f.hj=f.hj||function(){(f.hj.q=f.hj.q||[]).push(arguments)};
-        f._hjSettings={hjid:#{CatarseSettings['hotjar_id']}, hjsv:3};
-        c=b.createElement("script");c.async=1;
-        c.src="//static.hotjar.com/c/hotjar-#{CatarseSettings['hotjar_id']}.js?sv=3";
-        b.getElementsByTagName("head")[0].appendChild(c); 
-    })(window,document);
+  (function(h,o,t,j,a,r){
+       h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+       h._hjSettings={hjid:1526,hjsv:5};
+       a=o.getElementsByTagName('head')[0];
+       r=o.createElement('script');r.async=1;
+       r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+       a.appendChild(r);
+   })(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');
