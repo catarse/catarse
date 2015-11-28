@@ -588,3 +588,12 @@ img, iframe
 .submit-form
   .fa
     margin-left: 10px
+
+.project-nav
+  .project-nav-back-button
+    +transition(all 650ms)
+    +transform(translate3d(0, 60px, 0))
+
+.project-nav.project-nav-fixed
+  .project-nav-back-button
+    +transform(translate3d(0, 0, 0))
