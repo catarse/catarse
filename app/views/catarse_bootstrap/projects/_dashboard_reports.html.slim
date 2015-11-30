@@ -1,4 +1,5 @@
 - selected_r = @project.selected_rewards
+- default_states = @project.failed? ? %w(pending_refund refunded paid) : 'paid'
 .section.project-metrics
   .w-container
     .w-row
@@ -12,9 +13,9 @@
             li.fontsize-smaller.u-marginbottom-10
               div
                 | Apoiadores confirmados &nbsp;
-                = link_to 'CSV', reports_contribution_reports_for_project_owners_path(project_id: @project.id, format: :csv), class: 'alt-link'
+                = link_to 'CSV', reports_contribution_reports_for_project_owners_path(project_id: @project.id, state: default_states, format: :csv), class: 'alt-link'
                 | &nbsp;\&nbsp;
-                = link_to 'XLS', reports_contribution_reports_for_project_owners_path(project_id: @project.id, format: :xls), class: 'alt-link'
+                = link_to 'XLS', reports_contribution_reports_for_project_owners_path(project_id: @project.id, state: default_states, format: :xls), class: 'alt-link'
             li.divider.u-marginbottom-10
             li.fontsize-smaller.u-marginbottom-10
               div
@@ -26,17 +27,17 @@
             li.fontsize-smaller.u-marginbottom-10
               div
                 | Apoiadores que não selecionaram recompensa&nbsp;&nbsp;
-                = link_to 'CSV', reports_contribution_reports_for_project_owners_path(project_id: @project.id, reward_id: 0, format: :csv), class: 'alt-link'
+                = link_to 'CSV', reports_contribution_reports_for_project_owners_path(project_id: @project.id, state: default_states, reward_id: 0, format: :csv), class: 'alt-link'
                 | &nbsp;\&nbsp;
-                = link_to 'XLS', reports_contribution_reports_for_project_owners_path(project_id: @project.id, reward_id: 0, format: :xls), class: 'alt-link'
+                = link_to 'XLS', reports_contribution_reports_for_project_owners_path(project_id: @project.id, state: default_states, reward_id: 0, format: :xls), class: 'alt-link'
             li.divider.u-marginbottom-10
             - if selected_r.length > 0
                 - selected_r.each do |reward|
                   li.fontsize-smaller.u-marginbottom-10
                     div
                       | Apoiadores da recompensa #{reward.display_minimum} &nbsp;
-                      = link_to 'CSV', reports_contribution_reports_for_project_owners_path(project_id: @project.id, reward_id: reward.id, format: :csv), class: 'alt-link'
+                      = link_to 'CSV', reports_contribution_reports_for_project_owners_path(project_id: @project.id, state: default_states, reward_id: reward.id, format: :csv), class: 'alt-link'
                       | &nbsp;\&nbsp;
-                      = link_to 'XLS', reports_contribution_reports_for_project_owners_path(project_id: @project.id, reward_id: reward.id, format: :xls), class: 'alt-link'
+                      = link_to 'XLS', reports_contribution_reports_for_project_owners_path(project_id: @project.id, state: default_states, reward_id: reward.id, format: :xls), class: 'alt-link'
                   li.divider.u-marginbottom-10
       .w-col.w-col-2

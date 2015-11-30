@@ -19,8 +19,7 @@ class ProjectPolicy < ApplicationPolicy
   end
 
   def update_account?
-    record.account.invalid? || 
-      ['online', 'waiting_funds', 'successful', 'failed'].exclude?(record.state) || is_admin?
+    record.account.new_record? || !record.published? || is_admin?
   end
 
   def send_to_analysis?
