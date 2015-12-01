@@ -28,6 +28,11 @@ FactoryGirl.define do
     f.name "Brasil"
   end
 
+  factory :project_reminder do |f|
+    f.association :user
+    f.association :project
+  end
+
   factory :user do |f|
     f.association :bank_account
     f.permalink { generate(:permalink) }

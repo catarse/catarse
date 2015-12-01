@@ -39,6 +39,7 @@ class Project < ActiveRecord::Base
   has_many :posts, class_name: "ProjectPost", inverse_of: :project
   has_many :budgets, class_name: "ProjectBudget", inverse_of: :project
   has_many :unsubscribes
+  has_many :reminders, class_name: 'ProjectReminder', inverse_of: :project
 
   has_many :project_transitions, autosave: false
 
