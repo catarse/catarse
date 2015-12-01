@@ -16,8 +16,7 @@ CREATE VIEW "1".project_contributions AS
     public.waiting_payment(pa.*) AS waiting_payment,
     public.is_owner_or_admin(p.user_id) AS is_owner_or_admin,
     ut.total_contributed_projects,
-    c.created_at,
-    public.zone_timestamp(c.created_at) AS zone_created_at
+    public.zone_timestamp(c.created_at) AS created_at
    FROM ((((public.contributions c
      JOIN public.users u ON ((c.user_id = u.id)))
      JOIN public.projects p ON ((p.id = c.project_id)))
