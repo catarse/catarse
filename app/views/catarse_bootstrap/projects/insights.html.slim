@@ -1,7 +1,7 @@
 - content_for :title, "#{@project.name} · #{CatarseSettings[:company_name]}"
 
 = render 'shared/header'
-
+.w-section.section-product[class=@project.mode]
 #project-insights-root.min-height-70[data-mithril="Insights" data-id=@project.id]
 
 - content_for :application_js do
