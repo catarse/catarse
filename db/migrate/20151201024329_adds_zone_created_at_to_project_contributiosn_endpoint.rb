@@ -22,10 +22,6 @@ CREATE OR REPLACE VIEW "1".project_contributions AS
      JOIN public.payments pa ON ((pa.contribution_id = c.id)))
      LEFT JOIN "1".user_totals ut ON ((ut.user_id = u.id)))
   WHERE ((public.was_confirmed(c.*) OR public.waiting_payment(pa.*)) AND ((NOT c.anonymous) OR public.is_owner_or_admin(p.user_id)));
-
-grant select on "1".project_contributions to admin;
-grant select on "1".project_contributions to web_user;
-grant select on "1".project_contributions to anonymous;
     SQL
   end
 
