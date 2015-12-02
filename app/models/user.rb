@@ -47,6 +47,7 @@ class User < ActiveRecord::Base
   has_many :authorizations
   has_many :contributions
   has_many :contribution_details
+  has_many :reminders, class_name: 'ProjectReminder', inverse_of: :user
   has_many :payments, through: :contributions
   has_many :projects, -> do
     without_state(:deleted)
