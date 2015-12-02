@@ -26,14 +26,16 @@ p
   br/
   / We need the || for some old projects do not have the account info
   - owner = contribution.project.account || contribution.project.user
-  | Nome/Razão Social do realizador: #{contribution.project.account.owner_name.presence || contribution.project.user.name}
+  - owner_name = owner.try(:owner_name) || owner.try(:name)
+  - owner_document = owner.try(:owner_document) || owner.try(:cpf)
+  | Nome/Razão Social do realizador: #{owner_name}
   br/
-  | CPF/CNPJ do realizador: #{owner.owner_document}
+  | CPF/CNPJ do realizador: #{owner_document}
 
 p
   ' É importante ressaltar que o Catarse é apenas intermediador desse processo,
   ' portanto, se tiver alguma dúvida em relação ao projeto entre
-  ' em contato diretamente com o realizador através do e-mail #{mail_to owner.email}.
+  ' em contato diretamente com o realizador através do e-mail #{mail_to owner.try(:email)}.
   ' Ah! Lembre-se de guardar este email, pois ele contém informações importantes
   ' a respeito da sua contribuição ao projeto.
 p Se ficou com alguma dúvida, entre em contato conosco respondendo a esta mensagem ou através do e-mail #{mail_to CatarseSettings[:email_contact]}
