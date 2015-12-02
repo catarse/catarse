@@ -43,7 +43,8 @@
                 .w-col.w-col-4
                   .fontweight-semibold.fontsize-small.u-marginbottom-10 Lembretes de projetos:
                 .w-col.w-col-8
-                  - @user.projects_in_reminder.each do |project|
+                  - @user.reminders.without_notification.each do |reminder|
+                    - project = reminder.project
                     .w-checkbox.w-clearfix
                       = hidden_field_tag "user[reminders][#{project.id}]", false
                       = check_box_tag "user[reminders][#{project.id}]", "1", true, class: 'w-checkbox-input'

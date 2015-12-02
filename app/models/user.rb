@@ -228,11 +228,6 @@ class User < ActiveRecord::Base
     user_credit.try(:credits).to_f
   end
 
-  def projects_in_reminder
-    reminder_notifications = ProjectNotification.where(template_name: 'reminder', user_id: self.id).where("deliver_at > ?", Time.current)
-    Project.where(id: reminder_notifications.map {|notification| notification.project})
-  end
-
   def total_contributed_projects
     user_total.try(:total_contributed_projects).to_i
   end
