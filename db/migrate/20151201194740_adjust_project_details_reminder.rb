@@ -43,7 +43,7 @@ CREATE OR REPLACE VIEW "1".project_details AS
           WHERE pp_1.project_id = p.id) AS posts_count,
     json_build_object('city', COALESCE(ct.name, u.address_city), 'state_acronym', COALESCE(st.acronym, u.address_state::character varying), 'state', COALESCE(st.name, u.address_state::character varying)) AS address,
     json_build_object('id', u.id, 'name', u.name) AS "user",
-    count(pr.*) as reminder_count,
+    count(DISTINCT pr.user_id) as reminder_count,
     is_owner_or_admin(p.user_id) AS is_owner_or_admin,
     user_signed_in() AS user_signed_in,
     current_user_already_in_reminder(p.*) AS in_reminder,
