@@ -5,9 +5,8 @@ DROP VIEW "1".projects CASCADE;
 
 CREATE VIEW "1".projects AS
  SELECT
-    p.id,
-    p.category_id,
     p.id AS project_id,
+    p.category_id,
     p.name AS project_name,
     p.headline,
     p.permalink,
