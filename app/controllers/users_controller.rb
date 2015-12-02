@@ -121,6 +121,7 @@ class UsersController < ApplicationController
       params[:user][:reminders].keys.each do |project_id|
         if params[:user][:reminders][:"#{project_id}"] == "false"
           Project.find(project_id).delete_from_reminder_queue(@user.id)
+          @user.reminders.where(project_id: project_id).destroy_all
         end
       end
     end

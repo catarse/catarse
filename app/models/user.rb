@@ -47,6 +47,7 @@ class User < ActiveRecord::Base
   has_many :authorizations
   has_many :contributions
   has_many :contribution_details
+  has_many :reminders, class_name: 'ProjectReminder', inverse_of: :user
   has_many :payments, through: :contributions
   has_many :projects, -> do
     without_state(:deleted)
@@ -225,11 +226,6 @@ class User < ActiveRecord::Base
   def credits
     return 0 if zero_credits
     user_credit.try(:credits).to_f
-  end
-
-  def projects_in_reminder
-    reminder_notifications = ProjectNotification.where(template_name: 'reminder', user_id: self.id).where("deliver_at > ?", Time.current)
-    Project.where(id: reminder_notifications.map {|notification| notification.project})
   end
 
   def total_contributed_projects
