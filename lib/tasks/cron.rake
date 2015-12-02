@@ -23,12 +23,15 @@ namespace :cron do
     end
   end
 
-  desc 'Add missing reminder jobs'
+  desc 'Add reminder to scheduler'
   task schedule_reminders: :environment do
-    ProjectNotification.where("template_name = 'reminder' and sent_at is null and deliver_at >= now()").find_each do |notification|
-      has_on_queue = notification.project.exists_on_scheduled_jobs('UserNotifier::EmailWorker', ['ProjectNotification', notification.id])
-      puts "#{notification.user.name} ==> #{has_on_queue} => #{notification.to_json}"
-      notification.deliver unless has_on_queue
+    ProjectReminder.can_deliver.find_each do |reminder|
+      puts "found reminder for user -> #{reminder.user_id} project -> #{reminder.project}"
+      project = reminder.project
+      project.notify_once(
+        'reminder',
+        reminder.user,
+        project)
     end
   end
 
