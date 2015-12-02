@@ -27,7 +27,8 @@ CREATE VIEW "1".projects AS
     COALESCE(s.acronym, (pa.address_state)::character varying(255)) AS state_acronym,
     u.name AS owner_name,
     COALESCE(c.name, pa.address_city) AS city_name,
-    p.full_text_index
+    p.full_text_index,
+    public.is_current_and_online(p.expires_at, COALESCE(fp.state, (p.state)::text)) AS open_for_contributions
    FROM (((((public.projects p
      JOIN public.users u ON ((p.user_id = u.id)))
      LEFT JOIN public.flexible_projects fp ON ((fp.project_id = p.id)))
@@ -71,7 +72,7 @@ WHERE
     )
     AND p.state_order >= 'published'
 ORDER BY
-    public.is_current_and_online(p.expires_at, p.state) DESC,
+    p.open_for_contributions DESC,
     p.state_order,
     ts_rank(p.full_text_index, to_tsquery('portuguese', unaccent(query))) DESC,
     p.project_id DESC;
@@ -121,7 +122,7 @@ CREATE OR REPLACE FUNCTION public.near_me("1".projects)
  STABLE SECURITY DEFINER
 AS $function$
     SELECT
-      COALESCE($1.state_acronym, (SELECT pa.address_state FROM project_accounts pa WHERE pa.project_id = $1.project_id)) = (SELECT u.address_state FROM users u WHERE u.id = current_user
+      COALESCE($1.state_acronym, (SELECT pa.address_state FROM project_accounts pa WHERE pa.project_id = $1.project_id)) = (SELECT u.address_state FROM users u WHERE u.id = current_user_id());
 $function$;
 
 CREATE OR REPLACE FUNCTION public.is_expired(project "1".projects)

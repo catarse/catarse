@@ -1,6 +1,7 @@
 class AddsFollowingToCategories < ActiveRecord::Migration
   def up
     execute <<-SQL
+DROP VIEW "1".categories;
 CREATE OR REPLACE VIEW "1".categories AS
  SELECT c.id,
     c.name_pt AS name,
@@ -15,11 +16,14 @@ CREATE OR REPLACE VIEW "1".categories AS
      LEFT JOIN public.projects p ON ((p.category_id = c.id)))
      LEFT JOIN public.flexible_projects fp ON ((fp.project_id = p.id)))
   GROUP BY c.id;
+
+GRANT SELECT on "1".categories TO admin, web_user, anonymous;
     SQL
   end
 
   def down
     execute <<-SQL
+DROP VIEW "1".categories;
 CREATE OR REPLACE VIEW "1".categories AS
  SELECT c.id,
     c.name_pt AS name,
@@ -31,6 +35,8 @@ CREATE OR REPLACE VIEW "1".categories AS
      LEFT JOIN public.projects p ON ((p.category_id = c.id)))
      LEFT JOIN public.flexible_projects fp ON ((fp.project_id = p.id)))
   GROUP BY c.id;
+
+GRANT SELECT on "1".categories TO admin, web_user, anonymous;
     SQL
   end
 end
