@@ -17,14 +17,14 @@ RSpec.describe ProjectReminder, type: :model do
   end
 
   describe ".can_deliver" do
+    subject { ProjectReminder.can_deliver.count }
+
     context "when project is expiring" do
       let(:project) { create(:project, state: 'online', online_days: 1, expires_at: 1.hour.from_now) }
 
       before do
         4.times { create(:project_reminder, project: project) }
       end
-
-      subject { ProjectReminder.can_deliver.count }
 
       it { is_expected.to eq(4) }
     end
@@ -36,9 +36,30 @@ RSpec.describe ProjectReminder, type: :model do
         4.times { create(:project_reminder, project: project) }
       end
 
-      subject { ProjectReminder.can_deliver.count }
+      it { is_expected.to eq(0) }
+    end
+  end
+
+  describe ".without_notification" do
+    let(:project) { create(:project) }
+    let!(:reminder) { create(:project_reminder, project: project)}
+
+    subject { ProjectReminder.without_notification.count }
+
+    context "when notification already created" do
+      before do
+        project.notify_once(
+          'reminder',
+          reminder.user,
+          project
+        )
+      end
 
       it { is_expected.to eq(0) }
+    end
+
+    context "when notification is not created" do
+      it { is_expected.to eq(1) }
     end
   end
 end
