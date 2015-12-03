@@ -16,6 +16,7 @@ RSpec.describe Contribution, type: :model do
     it { is_expected.to have_many(:payment_notifications) }
     it { is_expected.to have_many(:payments) }
     it { is_expected.to have_many(:details) }
+    it { is_expected.to belong_to(:origin) }
     it { is_expected.to belong_to(:project) }
     it { is_expected.to belong_to(:user) }
     it { is_expected.to belong_to(:reward) }

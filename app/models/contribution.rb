@@ -11,6 +11,7 @@ class Contribution < ActiveRecord::Base
   belongs_to :user
   belongs_to :country
   belongs_to :donation
+  belongs_to :origin
   has_many :payment_notifications
   has_many :payments
   has_many :details, class_name: 'ContributionDetail'

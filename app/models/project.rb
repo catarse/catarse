@@ -29,6 +29,7 @@ class Project < ActiveRecord::Base
   belongs_to :user
   belongs_to :category
   belongs_to :city
+  belongs_to :origin
   has_one :flexible_project
   has_one :project_total
   has_one :account, class_name: "ProjectAccount", inverse_of: :project

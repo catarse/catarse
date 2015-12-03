@@ -13,6 +13,7 @@ RSpec.describe Project, type: :model do
   let(:user){ create(:user) }
 
   describe "associations" do
+    it{ is_expected.to belong_to :origin }
     it{ is_expected.to belong_to :user }
     it{ is_expected.to belong_to :category }
     it{ is_expected.to have_many :contributions }
