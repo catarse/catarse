@@ -121,7 +121,7 @@ RSpec.describe Payment, type: :model do
     subject { payment.slip_expired? }
 
     context "when slipt is past expiration date" do
-      let(:payment){ create(:payment, state: 'pending', created_at: (Payment.slip_expiration_weekdays.weekdays_ago - 1.hour)) }
+      let(:payment){ create(:payment, state: 'pending', created_at: (Payment.slip_expiration_weekdays.weekdays_ago - 3.day)) }
       it{ is_expected.to eq true }
     end
 
