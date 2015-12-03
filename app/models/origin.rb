@@ -14,6 +14,10 @@ class Origin < ActiveRecord::Base
     ) if http_referrer.present?
   end
 
+  def self.process_hash hash = {}
+    process hash[:ref], hash[:domain]
+  end
+
   protected
 
   def self.get_domain_from_url(url)

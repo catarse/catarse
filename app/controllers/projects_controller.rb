@@ -35,7 +35,9 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new
-    @project.attributes = permitted_params.merge(user: current_user, referral_link: referral_link)
+    @project.attributes = permitted_params.merge(
+      user: current_user,
+      origin: Origin.process_hash(referral))
     authorize @project
     if @project.save
       redirect_to insights_project_path(@project)
@@ -127,8 +129,9 @@ class ProjectsController < ApplicationController
 
   def resource_action action_name, success_redirect=nil
     if resource.send(action_name)
-      if referral_link.present?
-        resource.update_attribute :referral_link, referral_link
+      if resource.origin.nil? && referral.present?
+        resource.update_attribute(
+          :origin_id, Origin.process_hash(referral).try(:id))
       end
 
       flash[:notice] = t("projects.#{action_name.to_s}")

@@ -13,45 +13,49 @@ RSpec.describe ApplicationController, type: :controller do
   describe "#referral_it!" do
     before do
       session[:referral_link] = initial_session_value
+      session[:origin_referral] = initial_origin_value
       controller.referral_it!
     end
 
     context "when we already have a referral link in session but referrer is external" do
       let(:referrer){ 'http://www.foo.bar' }
       let(:initial_session_value){ 'test' }
-      it "should store ref in session" do
-        expect(session[:referral_link]).to eq params[:ref]
+      let(:initial_origin_value) { nil }
+
+      it "should clear and store ref in session" do
+        expect(session[:referral_link]).to eq 'foo'
+      end
+
+      it "should store origin referral in session" do
+        expect(session[:origin_referral]).to eq referrer
       end
     end
 
     context "when we already have a referral link in session" do
       let(:initial_session_value){ 'test' }
-      it "should keep initial value" do
+      let(:initial_origin_value) { 'origin' }
+
+      it "should keep initial value on referral" do
         expect(session[:referral_link]).to eq initial_session_value
+      end
+
+      it "should keep initial value on origin" do
+        expect(session[:origin_referral]).to eq initial_origin_value
       end
     end
 
     context "when we still do not have a referral link in session and the ref params is nil and referrer is external" do
       let(:referrer){ 'http://www.foo.bar' }
       let(:initial_session_value){ nil }
+      let(:initial_origin_value) { nil }
       let(:params){ {ref: nil} }
-      it "should store HTTP_REFERRER in session" do
-        expect(session[:referral_link]).to eq referrer
-      end
-    end
 
-    context "when we still do not have a referral link in session and the ref params is nil but referrer is catarse" do
-      let(:initial_session_value){ nil }
-      let(:params){ {ref: nil} }
-      it "should not store HTTP_REFERRER in session" do
+      it "should keep referal link nil" do
         expect(session[:referral_link]).to eq nil
       end
-    end
 
-    context "when we still do not have a referral link in session" do
-      let(:initial_session_value){ nil }
-      it "should store ref in session" do
-        expect(session[:referral_link]).to eq params[:ref]
+      it "should store HTTP_REFERRER in origin" do
+        expect(session[:origin_referral]).to eq referrer
       end
     end
   end
