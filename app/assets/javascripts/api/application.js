@@ -4,6 +4,7 @@
 //= require moment
 //= require replace-diacritics
 //= require chartjs
+//= require i18n/translations
 //= require api/init
 //= require catarse.js/dist/catarse.js
 //= require_self
@@ -13,6 +14,8 @@
   Chart.defaults.global.responsive = false;
   Chart.defaults.Line.pointHitDetectionRadius = 0;
   Chart.defaults.global.scaleFontFamily = "proxima-nova";
+
+  I18n.locale = "pt";
 
   var adminRoot = document.getElementById('new-admin'),
       rootComponents = _.extend({}, c.pages, c.contribution, c.project);
