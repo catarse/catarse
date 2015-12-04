@@ -87,7 +87,7 @@ class ContributionDetail < ActiveRecord::Base
 
   def can_generate_slip?
     self.slip_payment? &&
-      self.project.online? &&
+      self.project.open_for_contributions? &&
       self.pending? &&
       self.slip_expired? &&
       (self.reward.nil? || !self.reward.sold_out?)
