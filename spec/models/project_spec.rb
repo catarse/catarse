@@ -27,7 +27,7 @@ RSpec.describe Project, type: :model do
   end
 
   describe "validations" do
-    %w[name user category permalink].each do |field|
+    %w[name user category].each do |field|
       it{ is_expected.to validate_presence_of field }
     end
     it{ is_expected.to validate_numericality_of(:goal) }
