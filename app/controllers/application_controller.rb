@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
 
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
-  helper_method :referral, :render_projects, :should_show_beta_banner?,
+  helper_method :referral, :render_projects,
     :render_feeds, :can_display_pending_refund_alert?
 
   before_filter :set_locale
@@ -44,14 +44,6 @@ class ApplicationController < ActionController::Base
 
   def render_feeds collection, locals = {}
     render_to_string partial: 'users/feeds/feed', collection: collection, locals: locals
-  end
-
-  def should_show_beta_banner?
-    current_user.nil? || current_user.projects.empty?
-  end
-
-  def should_show_beta_banner?
-    current_user.nil? || current_user.projects.empty?
   end
 
   def referral_it!
