@@ -32,6 +32,8 @@ class Project < ActiveRecord::Base
   has_one :flexible_project
   has_one :project_total
   has_one :account, class_name: "ProjectAccount", inverse_of: :project
+  has_many :taggings
+  has_many :tags, through: :taggings
   has_many :rewards
   has_many :contributions
   has_many :contribution_details
@@ -291,6 +293,18 @@ class Project < ActiveRecord::Base
 
   def open_for_contributions?
     pluck_from_database(:open_for_contributions)
+  end
+
+  def all_tags=(names)
+    self.tags = names.split(',').map do |name|
+      Tag.find_or_create_by(slug: name.parameterize) do |tag|
+        tag.name = name.strip
+      end
+    end
+  end
+
+  def all_tags
+    tags.map(&:name).join(", ")
   end
 
   def update_expires_at

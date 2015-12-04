@@ -16,6 +16,7 @@ RSpec.describe Project, type: :model do
     it{ is_expected.to belong_to :user }
     it{ is_expected.to belong_to :category }
     it{ is_expected.to have_many :contributions }
+    it{ is_expected.to have_many :tags }
     it{ is_expected.to have_many :contribution_details }
     it{ is_expected.to have_many(:payments).through(:contributions) }
     it{ is_expected.to have_one  :project_total }
