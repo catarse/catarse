@@ -297,8 +297,8 @@ class Project < ActiveRecord::Base
 
   def all_tags=(names)
     self.tags = names.split(',').map do |name|
-      Tag.find_or_create_by(name: name.strip) do |tag|
-        tag.slug = name.parameterize
+      Tag.find_or_create_by(slug: name.parameterize) do |tag|
+        tag.name = name.strip
       end
     end
   end
