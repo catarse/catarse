@@ -19,6 +19,10 @@ FactoryGirl.define do
     "foo_page_#{n}"
   end
 
+  sequence :domain do |n| 
+    "foo#{n}lorem.com"
+  end
+
   factory :category_follower do |f|
     f.association :user
     f.association :category
@@ -26,6 +30,11 @@ FactoryGirl.define do
 
   factory :country do |f|
     f.name "Brasil"
+  end
+
+  factory :origin do |f|
+    f.referral { generate(:permalink) }
+    f.domain { generate(:domain) }
   end
 
   factory :project_reminder do |f|

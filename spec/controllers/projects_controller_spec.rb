@@ -2,9 +2,13 @@
 require 'rails_helper'
 
 RSpec.describe ProjectsController, type: :controller do
-  before{ allow(controller).to receive(:current_user).and_return(current_user) }
-  before{ CatarseSettings[:base_url] = 'http://catarse.me' }
-  before{ CatarseSettings[:email_projects] = 'foo@bar.com' }
+  before do
+    allow(controller).to receive(:current_user).and_return(current_user)
+    request.env['HTTP_REFERER'] = 'https://catarse.me'
+    CatarseSettings[:base_url] = 'http://catarse.me' 
+    CatarseSettings[:email_projects] = 'foo@bar.com'
+  end
+  
   render_views
   subject{ response }
   let(:project){ create(:project, state: 'draft') }
@@ -63,14 +67,14 @@ RSpec.describe ProjectsController, type: :controller do
     end
 
     context "with referral link" do
-      subject { project.referral_link }
+      subject { project.origin }
       before do
         create(:reward, project: project)
         get :send_to_analysis, id: project.id, locale: :pt, ref: 'referral'
         project.reload
       end
 
-      it { is_expected.to eq('referral') }
+      it { expect(subject.referral).to eq('referral') }
     end
   end
 

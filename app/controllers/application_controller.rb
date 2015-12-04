@@ -16,15 +16,18 @@ class ApplicationController < ActionController::Base
 
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
-  helper_method :referral_link, :render_projects, :should_show_beta_banner?,
+  helper_method :referral, :render_projects, :should_show_beta_banner?,
     :render_feeds, :can_display_pending_refund_alert?
 
   before_filter :set_locale
 
   before_action :force_www
 
-  def referral_link
-    session[:referral_link]
+  def referral
+    {
+      ref: session[:referral_link],
+      domain: session[:origin_referral]
+    }
   end
 
   def can_display_pending_refund_alert?
@@ -55,10 +58,13 @@ class ApplicationController < ActionController::Base
     if request.env["HTTP_REFERER"] =~ /catarse\.me/
       # For local referrers we only want to store the first ref parameter
       session[:referral_link] ||= params[:ref]
+      session[:origin_referral] ||= request.env["HTTP_REFERER"]
     else
       # For external referrers should always overwrite referral_link
-      session[:referral_link] = params[:ref] || request.env["HTTP_REFERER"]
+      session[:referral_link] = params[:ref]
+      session[:origin_referral] = request.env["HTTP_REFERER"]
     end
+
   end
 
   private
