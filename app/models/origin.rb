@@ -5,17 +5,15 @@ class Origin < ActiveRecord::Base
   validates :domain, presence: true
   validates :domain, uniqueness: { scope: :referral }
 
+
   # Process a given ref and http referrer
   # until found or create a new Origin
-  def self.process referral, http_referrer
-    find_or_create_by(
-      referral: referral,
-      domain: get_domain_from_url(http_referrer)
-    ) if http_referrer.present?
-  end
-
+  # { ref: referral, domain: 'domain' }
   def self.process_hash hash = {}
-    process hash[:ref], hash[:domain]
+    find_or_create_by(
+      referral: hash[:ref],
+      domain: get_domain_from_url(hash[:domain])
+    ) if hash[:domain].present?
   end
 
   protected

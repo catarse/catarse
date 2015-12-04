@@ -11,11 +11,11 @@ RSpec.describe Origin, type: :model do
     it { is_expected.to validate_uniqueness_of(:domain).scoped_to(:referral) }
   end
 
-  describe "#process" do
+  describe "#process_hash" do
     let(:domain) { nil }
     let(:referral) { nil }
 
-    subject { Origin.process(referral, domain) }
+    subject { Origin.process_hash({ref: referral, domain: domain}) }
 
     context "with ref" do
       context "when referral already exists into database with the same origin domain" do
