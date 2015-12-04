@@ -21,14 +21,6 @@
               = form.label :category, class: 'fontsize-large', required: false
               .fontsize-small.fontcolor-secondary.u-marginbottom-10= form.hint :category
               = form.association :category, as: :select, collection: Category.order(:name_pt), prompt: t('simple_form.prompts.project.category'), class: 'medium', label: '', required: false, hint: ''
-            .u-marginbottom-40
-              = form.label :permalink, class: 'fontsize-large', required: false, as: :string
-              .fontsize-small.fontcolor-secondary.u-marginbottom-10= form.hint :permalink
-              .w-row
-                .w-col.w-col-4.w-col.w-col-small-6.w-col-tiny-6.text-field.prefix.medium.prefix-permalink.no-hover
-                  .fontcolor-secondary.fontsize-base.u-text-center = t('.form.info.permalink')
-                .w-col.w-col-8.w-col-small-6.w-col-tiny-6
-                  = form.input :permalink, as: :string, required: false, input_html: {class: 'medium postfix'}
             .u-marginbottom-80
               label.fontsize-large.field-label for="field"= t('simple_form.prompts.project.traffic_sources')
               = form.input :traffic_sources, as: :select, collection: t('simple_form.collections.project.traffic_sources').values, prompt: t('simple_form.prompts.project.select'), class: 'medium', label: '', required: false, hint: ''
