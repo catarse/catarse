@@ -72,16 +72,10 @@ class Project < ActiveRecord::Base
   end
 
   # With state scopes
-  scope :maybe_flex, -> {
-    joins("LEFT JOIN flexible_projects fp on fp.project_id = projects.id")
-  }
   scope :with_state, -> (state) {
-      maybe_flex.where("coalesce(fp.state, projects.state) in (?)", state)
-  }
+      where("projects.state in (?)", state)}
   scope :without_state, -> (state) {
-      maybe_flex.where("coalesce(fp.state, projects.state) not in (?)", state)
-  }
-
+      where("projects.state not in (?)", state)}
   scope :with_states, -> (state) { with_state(state) }
   scope :without_states, -> (state) { without_state(state) }
 
@@ -111,8 +105,8 @@ class Project < ActiveRecord::Base
   scope :not_expiring, -> { not_expired.where.not(expires_at: Time.current.. 2.weeks.from_now) }
   scope :recent, -> { where(online_date: 5.days.ago.. Time.current) }
   scope :ordered, -> { order(created_at: :desc)}
-  scope :order_status, ->{ maybe_flex.order("
-                                     CASE coalesce(fp.state, projects.state)
+  scope :order_status, ->{ order("
+                                     CASE projects.state
                                      WHEN 'online' THEN 1
                                      WHEN 'waiting_funds' THEN 2
                                      WHEN 'successful' THEN 3
@@ -120,8 +114,8 @@ class Project < ActiveRecord::Base
                                      END ASC")}
   scope :most_recent_first, ->{ order("projects.online_date DESC, projects.created_at DESC") }
   scope :order_for_admin, -> {
-    maybe_flex.reorder("
-            CASE coalesce(fp.state, projects.state)
+    reorder("
+            CASE projects.state
             WHEN 'in_analysis' THEN 1
             WHEN 'waiting_funds' THEN 2
             WHEN 'successful' THEN 3
@@ -164,6 +158,10 @@ class Project < ActiveRecord::Base
   def self.order_by(sort_field)
     return self.all unless sort_field =~ /^\w+(\.\w+)?\s(desc|asc)$/i
     order(sort_field)
+  end
+
+  def state
+    pluck_from_database("state")
   end
 
   def has_blank_service_fee?
@@ -340,11 +338,7 @@ class Project < ActiveRecord::Base
     deleted in_analysis approved failed
   ).each do |st|
     define_method "#{st}?" do
-      if self.state.nil?
-        self.state_machine.current_state == st
-      else
-        self.state == st
-      end
+      self.state = st
     end
   end
 end
