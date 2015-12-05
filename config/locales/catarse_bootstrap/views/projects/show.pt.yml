@@ -65,22 +65,40 @@ pt:
         edit: Edição
         reports: Relatórios
         posts: Novidades
+    project_sidebar:
+      contributors_call: 'apoiados por '
+      contributors_count:
+        one: '1 pessoa'
+        other: '{{count}} pessoas'
+      remaining_time:
+        days:
+          one: ' dia restante'
+          other: ' dias restantes'
+        hours:
+          one: ' hora restante'
+          other: ' horas restantes'
+        minutes:
+          one: ' minuto restante'
+          other: ' minutos restantes'
+        seconds:
+          one: ' segundo restante'
+          other: ' segundos restantes'
+      submit: Apoiar este projeto
+      display_status:
+        approved: "Esse projeto já foi aprovado pelo Catarse. Em breve ele entrará no ar e estará pronto para receber apoios."
+        online: "Você pode apoiar este projeto até o dia %{date} às 23h59m59s"
+        failed: "Este projeto não atingiu o mínimo de %{goal} até %{date} e não foi financiado"
+        rejected: "Este projeto não foi aceito. Não é possível realizar um apoio."
+        in_analysis: "Este projeto está em análise e ainda não está aberto para receber apoios."
+        successful: "Este projeto foi bem-sucedido e foi financiado em %{date}"
+        waiting_funds: "O prazo de captação desse projeto está encerrado. Estamos aguardando a confirmação dos últimos pagamentos."
+        draft: "Este projeto é apenas um rascunho e ainda não pode receber apoios."
+      submit: Apoiar este projeto
     project_main:
       post_call: 'Toda novidade publicada no Catarse é enviada diretamente para o email de quem já apoiou seu projeto e também fica disponível para visualização no site. Você pode optar por deixá-la pública, ou visível somente para seus apoiadores aqui nesta aba.'
       send_post: 'Escrever novidade'
       share: "Compartilhe"
       tweet: "Tweet"
-      contribute_project:
-        display_status:
-          approved: "Esse projeto já foi aprovado pelo Catarse. Em breve ele entrará no ar e estará pronto para receber apoios."
-          online: "Você pode apoiar este projeto até o dia %{date} às 23h59m59s"
-          failed: "Este projeto não atingiu o mínimo de %{goal} até %{date} e não foi financiado"
-          rejected: "Este projeto não foi aceito. Não é possível realizar um apoio."
-          in_analysis: "Este projeto está em análise e ainda não está aberto para receber apoios."
-          successful: "Este projeto foi bem-sucedido e foi financiado em %{date}"
-          waiting_funds: "O prazo de captação desse projeto está encerrado. Estamos aguardando a confirmação dos últimos pagamentos."
-          draft: "Este projeto é apenas um rascunho e ainda não pode receber apoios."
-        submit: Apoiar este projeto
       project_by: projeto por
       funding_period: Período de campanha
       project_header:
