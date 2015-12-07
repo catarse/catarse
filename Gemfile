@@ -25,6 +25,7 @@ gem 'dbhero', '>= 1.1.8'
 gem 'postgres-copy'
 gem 'pg_search'
 gem 'i18n_alchemy'
+gem "i18n-js", ">= 3.0.0.rc11"
 
 gem 'schema_plus'
 gem 'chartkick'

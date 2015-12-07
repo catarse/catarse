@@ -1,5 +1,48 @@
 pt:
   projects:
+    insights:
+      referral:
+        ctrse_explore: 'Busca do Catarse'
+        home_recommended: 'Projetos recomendados na página inicial'
+        user_menu_my_projects: 'Menu de usuário'
+        profile_created_projects: 'Perfil público de usuário (projetos criados)'
+        home_banner: 'Banner de destaque na página inicial'
+        notificacao_pending: 'Notificação de apoio pendente'
+        notificacao_cancelado: 'Notificação de apoio cancelado'
+        home_recent: 'Projetos recentes na página inicial'
+        home_banner_explore: 'Banner de destaque na página inicial'
+        user_projects: 'Perfil de usuário (projetos criados)'
+        home_near: 'Projetos próximos a mim na página inicial'
+        user_menu_my_contributions: 'Menu de usuário'
+        home_expiring: 'Projetos em reta final na página inicial'
+        notification_pending: 'Notificação de apoio pendente'
+        notificacao_subscription_category: 'Notificação de Seguir Categoria'
+        banner_home: 'Banner de destaque na página inicial'
+        ctrse_thankyou: 'Página de agradecimento de apoio'
+        project_post: 'Post de novidades do projeto'
+        profile_contributed_projects: 'Perfil público de usuário (projetos apoiados)'
+        user_contributions: 'Perfil de usuário (projetos apoiados)'
+        notificacao_projeto_nao_financiado: 'Notificação de projeto não financiado'
+        notificacao_reminder: 'Notificação de Lembrete 48 horas'
+        profile_dashboard_created_projects: 'Perfil privado de usuário (projetos criados)'
+        ctrse_hello: 'Página Saiba Mais do Catarse'
+        credits_warning_more_group: 'Notificação de créditos'
+        hotsitepesquisa3anos: 'Pesquisa do Catarse RFCBR'
+        ctrse_embed: 'Card de projeto (embed)'
+        home_near_of: 'Projetos próximos a mim na página inicial'
+        credits_warning_less_group: 'Notificação de créditos'
+        notificação_resgate_botao: 'Notificação resgate de créditos'
+        notificação_resgate_rascunho: 'Notificação de rascunho criado'
+        ctrse_newsletter: 'Newsletter do Catarse'
+        ctrse_facebook: 'Facebook do Catarse'
+        ctrse_patrocinado_facebook: 'Facebook patrocinado do Catarse'
+        ctrse_twitter: 'Twitter do Catarse'
+        ctrse_instagram: 'Instagram do Catarse'
+        ctrse_blog: 'Blog do Catarse'
+        ctrse_youtube: 'Youtube do Catarse'
+        ctrse_universohq: 'Universo HQ (parceria Catarse)'
+        ctrse_catraca: 'Catraca Livre (parceria Catarse)'
+        ctrse_hypeness: 'Hypeness (parceria Catarse)'
     project:
       contributed: levantados
       reached: atingido
@@ -37,13 +80,13 @@ pt:
         other: "<span>%{count} %{unit}</span> restantes"
       pledged_html: "<span>%{value}</span> levantados"
       display_status:
-        expired: "finalizado"
-        rejected: "rejeitado"
+        expired: "Finalizado"
+        rejected: "Rejeitado"
         failed: "Não-financiado"
-        successful: "Bem-sucedido"
-        approved: aprovado
-        reached_goal: financiado
+        successful: "Financiado"
+        approved: Aprovado
+        reached_goal: Financiado
         waiting_funds: "Prazo encerrado"
-        not_reached_goal: aguardando
-        draft: "rascunho"
-        in_analysis: "em análise"
+        not_reached_goal: Aguardando
+        draft: "Rascunho"
+        in_analysis: "Em análise"
