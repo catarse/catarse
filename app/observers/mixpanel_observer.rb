@@ -42,6 +42,11 @@ class MixpanelObserver < ActiveRecord::Observer
     if record.kind_of?(ProjectPost) && record.project.online? && record.changed?
       track_project_owner_engagement(record.project.user, 'Created post')
     end
+
+    # Detect project state changes to update people database
+    if record.kind_of?(ProjectTransition) || record.kind_of?(FlexibleProjectTransition)
+      update_user_profile(record.user, user_properties(record.user))
+    end
   end
 
   def after_save(record)
@@ -53,11 +58,6 @@ class MixpanelObserver < ActiveRecord::Observer
     # Detect reward changes
     if record.kind_of?(Reward) && record.project.online? && record.changed?
       track_project_owner_engagement(record.project.user, 'Updated reward')
-    end
-
-    # Detect project state changes to update people database
-    if record.kind_of?(Project) && record.state_changed?
-      update_user_profile(record.user, user_properties(record.user))
     end
   end
 

@@ -32,4 +32,3 @@ class FixProjectFinancialsForSearch < ActiveRecord::Migration
     SQL
   end
 end
-

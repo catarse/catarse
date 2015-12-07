@@ -54,13 +54,13 @@ RSpec.describe Project, type: :model do
   context "state check methods" do
     all_machine_states.each do |st|
       describe "##{st}? when project state is #{st}" do
-        before { project.state = st }
+        before { create(:project_transition, to_state: st, most_recent: true, project: project) }
         subject { project.send("#{st}?") }
         it { is_expected.to eq true }
       end
 
       describe "##{st}? when project state is not #{st}" do
-        before { project.state = all_machine_states.reject { |x| x == st }.sample }
+        before { create(:project_transition, to_state: all_machine_states.reject { |x| x == st }.sample , most_recent: true, project: project) }
         subject { project.send("#{st}?") }
         it { is_expected.to eq false }
       end
@@ -73,7 +73,10 @@ RSpec.describe Project, type: :model do
 
     context "when has online projects" do
       before do
-        4.times { create(:project, state: 'online') }
+        4.times do
+          create(:project_transition, to_state: 'online')
+          create(:project_transition, to_state: 'online', most_recent: false)
+        end
       end
 
       it {is_expected.to eq(4) }
@@ -86,8 +89,8 @@ RSpec.describe Project, type: :model do
     context "when state is a list" do
       let(:project_state) { ['online', 'failed'] }
       before do
-        4.times { create(:project, state: 'online') }
-        2.times { create(:project, state: 'failed') }
+        4.times { create(:project_transition, to_state: 'online') }
+        2.times { create(:project_transition, to_state: 'failed') }
       end
 
       it {is_expected.to eq(6) }
@@ -96,7 +99,8 @@ RSpec.describe Project, type: :model do
     context "when is flexible project online" do
       let(:project_state) { 'online' }
       before do
-        create(:flexible_project, state: 'online', project: create(:project, state: 'draft'))
+        fp = create(:flexible_project)
+        create(:flexible_project_transition, flexible_project: fp, to_state: 'online')
       end
 
       it {is_expected.to eq(1)}
@@ -109,8 +113,8 @@ RSpec.describe Project, type: :model do
 
     context "when has online and failed projects" do
       before do
-        4.times { create(:project, state: 'online') }
-        2.times { create(:project, state: 'failed') }
+        4.times { create(:project_transition, to_state: 'online') }
+        2.times { create(:project_transition, to_state: 'failed') }
       end
 
       it { is_expected.to eq(2) }
@@ -121,12 +125,11 @@ RSpec.describe Project, type: :model do
     end
 
     context "when is flexible project online" do
-      let(:project_state) { 'draft' }
       before do
-        create(:flexible_project, state: 'online', project: create(:project, state: 'draft'))
+        create(:flexible_project, state: 'online')
       end
 
-      it {is_expected.to eq(1)}
+      it {is_expected.to eq(0)}
     end
 
   end
@@ -145,7 +148,7 @@ RSpec.describe Project, type: :model do
       let(:project) { create(:project, state: 'draft') }
 
       it "should be validate size of name when project is in analysis" do
-        project.state = 'in_analysis'
+        project.state_mask = 'in_analysis'
         project.name = 'l'*100
         expect(project.valid?).to eq(false)
 

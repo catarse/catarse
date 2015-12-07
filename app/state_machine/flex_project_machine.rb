@@ -25,14 +25,14 @@ class FlexProjectMachine
     # this block receive all transition
     # definitions
     yield self if block_given?
-    
+
     # Ensure that project is valid when try change
     # the project state
     guard_transition(to: basic_validation_states) do |project, t, m|
-      # TODO: rething this
-      project.state = m[:to_state].to_s
+      # TODO: Legacy code
+      project.state_mask = m[:to_state].to_s
       valid = project.valid?
-      project.state = project.state_was
+      project.state_mask = nil
       valid
     end
 
@@ -55,7 +55,7 @@ class FlexProjectMachine
     # Before transition, change the state to trigger validations
     before_transition do |project, transition|
       transition.metadata[:from_state] = project.state
-      project.state = transition.to_state
+      project.state_mask = transition.to_state
     end
 
     # After transition to successful should notify_observers
@@ -66,7 +66,7 @@ class FlexProjectMachine
     # After transition run, persist the current state
     # into model.state field.
     after_transition do |project, transition|
-      project.save
+      project.state_mask = nil
       from_state = transition.metadata["from_state"]
 
       project.notify_observers :"from_#{from_state}_to_#{transition.to_state}"

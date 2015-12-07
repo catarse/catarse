@@ -89,12 +89,9 @@ FactoryGirl.define do
     f.more_links 'Ipsum dolor'
     f.first_contributions 'Foo bar'
     f.video_url 'http://vimeo.com/17298435'
-    f.state 'online'
     f.budget '1000'
     f.uploaded_image File.open("#{Rails.root}/spec/support/testimg.png")
     after :create do |project| 
-      FactoryGirl.create(:project_transition, to_state: project.state, project: project)
-
       # should set expires_at when create a project in these states
       if %w(online waiting_funds failed successful).include?(project.state) && project.online_days.present? && project.online_date.present?
         project.expires_at = (project.online_date + project.online_days.days).end_of_day
@@ -109,14 +106,6 @@ FactoryGirl.define do
 
   factory :flexible_project do |f|
     f.association :project
-    f.state 'draft'
-
-    after :create do |flex_project| 
-      FactoryGirl.create(:flexible_project_transition, {
-        to_state: flex_project.state,
-        flexible_project: flex_project
-      })
-    end
   end
 
   factory :flexible_project_transition do |f|

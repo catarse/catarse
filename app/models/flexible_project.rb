@@ -11,10 +11,11 @@ class FlexibleProject < ActiveRecord::Base
   validates :project_id, presence: true, uniqueness: true
 
   # delegate reusable methods from project
-  delegate :expired?, :reached_goal?, :in_time_to_wait?,
+  delegate :expired?, :reached_goal?, :in_time_to_wait?, :state,
     :notify_owner, :notify, :notify_once, :user, :payments, :expires_at,
     :headline, :about_html, :budget, :uploaded_image, :goal,
-    :account, :video_thumbnail, :name, :open_for_contributions?,  to: :project
+    :account, :video_thumbnail, :name, :open_for_contributions?,
+    :draft?, :rejected?, :successful?, :waiting_funds?, :deleted?, to: :project
 
   # delegate reusable methods from state_machine
   delegate :push_to_online, :finish, :push_to_draft,
@@ -33,18 +34,4 @@ class FlexibleProject < ActiveRecord::Base
       self.project.update_attribute :expires_at, FINAL_LAP_INTERVAL.days.from_now.end_of_day
     end
   end
-
-  # gen state method helpers ex(online?, draft?)
-  %w(
-    draft rejected online successful waiting_funds deleted
-  ).each do |st|
-    define_method "#{st}?" do
-      if self.state.nil?
-        self.state_machine.current_state == st
-      else
-        self.state == st
-      end
-    end
-  end
-
 end
