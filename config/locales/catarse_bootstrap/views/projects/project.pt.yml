@@ -43,6 +43,17 @@ pt:
         ctrse_universohq: 'Universo HQ (parceria Catarse)'
         ctrse_catraca: 'Catraca Livre (parceria Catarse)'
         ctrse_hypeness: 'Hypeness (parceria Catarse)'
+        others: 'outros'
+      ref_table:
+        header:
+          origin: 'Fonte'
+          contributions: 'Apoios'
+          amount: 'R$ apoiados (% do total)'
+      campaign_title: 'Minha Campanha'
+      amount_per_day_label: 'R$ arrecadados por dia'
+      contributions_per_day_label: 'Apoios confirmados por dia'
+      location_origin_title: 'Localização geográfica dos apoios'
+      ref_origin_title: 'Origem dos apoios'
     project:
       contributed: levantados
       reached: atingido
