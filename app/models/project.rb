@@ -133,6 +133,9 @@ class Project < ActiveRecord::Base
     with_states(['online', 'successful', 'waiting_funds']).
       between_dates('expires_at', 15.days.ago, Time.current) }
 
+  scope :of_current_week, -> {
+      between_dates('online_at', 7.days.ago, Time.current) }
+
   scope :by_permalink, ->(p) { without_state('deleted').where("lower(permalink) = lower(?)", p) }
   scope :recommended, -> { where(recommended: true) }
   scope :in_funding, -> { not_expired.with_states(['online']) }
@@ -150,7 +153,7 @@ class Project < ActiveRecord::Base
                                      WHEN 'successful' THEN 3
                                      WHEN 'failed' THEN 4
                                      END ASC")}
-  scope :most_recent_first, ->{ order("projects.online_date DESC, projects.created_at DESC") }
+  scope :most_recent_first, ->{ order("projects.online_at DESC, projects.created_at DESC") }
   scope :order_for_admin, -> {
     maybe_flex.reorder("
             CASE coalesce(fp.state, projects.state)
@@ -158,14 +161,12 @@ class Project < ActiveRecord::Base
             WHEN 'waiting_funds' THEN 2
             WHEN 'successful' THEN 3
             WHEN 'failed' THEN 4
-            END ASC, projects.online_date DESC, projects.created_at DESC")
+            END ASC, projects.online_at DESC, projects.created_at DESC")
   }
 
   scope :with_contributions_confirmed_last_day, -> {
     joins(:contributions).merge(Contribution.confirmed_last_day).uniq
   }
-
-  scope :of_current_week, -> { where(online_date: 7.days.ago.. Time.current) }
 
   attr_accessor :accepted_terms
 
@@ -302,7 +303,7 @@ class Project < ActiveRecord::Base
       project_state: self.state,
       category: self.category.name_pt,
       project_goal: self.goal,
-      project_online_date: self.online_date,
+      project_online_date: self.online_at,
       project_expires_at: self.expires_at,
       project_address_city: self.account.try(:address_city),
       project_address_state: self.account.try(:address_state),
@@ -342,8 +343,8 @@ class Project < ActiveRecord::Base
   end
 
   def update_expires_at
-    if self.online_days.present? && self.online_date.present?
-      self.expires_at = (self.online_date + self.online_days.days).end_of_day
+    if self.online_days.present? && self.online_at.present?
+      self.expires_at = (self.online_at + self.online_days.days).end_of_day
     end
   end
 
