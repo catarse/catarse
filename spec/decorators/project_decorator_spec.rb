@@ -115,63 +115,6 @@ RSpec.describe ProjectDecorator do
     end
   end
 
-  describe "#display_card_class" do
-    subject{ project.display_card_class }
-    let(:default_card){ "card u-radius zindex-10" }
-    let(:aditional){ "" }
-    let(:card_class){ "#{default_card} #{aditional}" }
-    context "when online and reached goal" do
-      before do
-        allow(project).to receive(:state).and_return('online')
-        allow(project).to receive(:reached_goal?).and_return(true)
-      end
-      let(:aditional){ "card-success" }
-      it{ is_expected.to eq(" ") }
-    end
-    context "when online and have not reached goal yet" do
-      before do
-        allow(project).to receive(:state).and_return('online')
-        allow(project).to receive(:reached_goal?).and_return(false)
-      end
-      it{ should == " " }
-    end
-    context "when failed" do
-      before do
-        allow(project).to receive(:state).and_return('failed')
-      end
-      let(:aditional){ "card-error" }
-      it{ should == card_class }
-    end
-    context "when in_analysis" do
-      before do
-        allow(project).to receive(:state).and_return('in_analysis')
-      end
-      let(:aditional){ "card-dark" }
-      it{ should == card_class }
-    end
-    context "when draft" do
-      before do
-        allow(project).to receive(:state).and_return('draft')
-      end
-      let(:aditional){ "card-dark" }
-      it{ should == card_class }
-    end
-    context "when waiting funds" do
-      before do
-        allow(project).to receive(:state).and_return('waiting_funds')
-      end
-      let(:aditional){ "card-waiting" }
-      it{ should == card_class }
-    end
-    context "when successful" do
-      before do
-        allow(project).to receive(:state).and_return('successful')
-      end
-      let(:aditional){ "card-success" }
-      it{ should == card_class }
-    end
-  end
-
   describe "#display_card_status" do
     subject{ project.display_card_status }
     context "when online and reached goal" do

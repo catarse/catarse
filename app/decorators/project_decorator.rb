@@ -32,23 +32,6 @@ class ProjectDecorator < Draper::Decorator
     source.time_to_go[:time]
   end
 
-  def display_card_class
-    default_card = "card u-radius zindex-10"
-    aditional = ""
-    if source.waiting_funds?
-      aditional = 'card-waiting'
-    elsif source.successful?
-      aditional = 'card-success'
-    elsif source.failed?
-      aditional = 'card-error'
-    elsif source.draft? || source.in_analysis? || source.approved?
-      aditional = 'card-dark'
-    else
-      default_card = ""
-    end
-    "#{default_card} #{aditional}"
-  end
-
   def display_status
     source.state
   end
