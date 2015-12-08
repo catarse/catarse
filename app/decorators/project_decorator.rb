@@ -69,10 +69,6 @@ class ProjectDecorator < Draper::Decorator
     source.expires_at ? I18n.l(source.pluck_from_database('zone_expires_at').to_date) : ''
   end
 
-  def display_online_date
-    source.online_date ? I18n.l(source.online_date.to_date) : ''
-  end
-
   def progress
     return 0 if source.goal == 0.0 || source.goal.nil?
     ((source.pledged / source.goal) * 100).to_i

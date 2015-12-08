@@ -96,23 +96,6 @@ RSpec.describe ProjectDecorator do
     end
   end
 
-  describe "#display_online_date" do
-    subject{ project.display_online_date }
-
-    context "when online_date is nil" do
-      let(:project){ create(:project, online_date: nil) }
-      it{ is_expected.to eq('') }
-    end
-
-    context "when we have an online_date" do
-      let(:project){ create(:project, online_date: Time.now) }
-      before do
-        expect(I18n).to receive(:l).with(project.online_date.to_date)
-      end
-      it("should call I18n with date"){ subject }
-    end
-  end
-
   describe "#display_image" do
     subject{ project.display_image }
 
