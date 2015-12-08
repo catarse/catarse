@@ -9,11 +9,6 @@ class ProjectObserver < ActiveRecord::Observer
     if project.try(:video_url_changed?)
       ProjectDownloaderWorker.perform_async(project.id)
     end
-
-    if project.try(:online_date_changed?) && project.online_date.present? && project.approved?
-      project.remove_scheduled_job('ProjectSchedulerWorker')
-      ProjectSchedulerWorker.perform_at(project.online_date, project.id)
-    end
   end
 
   def after_create(project)

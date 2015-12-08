@@ -47,18 +47,7 @@ RSpec.describe ProjectObserver do
   end
 
   describe "#after_save" do
-    let(:project) { build(:project, state: 'approved', online_date: 10.days.from_now) }
-
-    context "when change the online_date" do
-      before do
-        expect(project).to receive(:remove_scheduled_job).with('ProjectSchedulerWorker')
-        expect(ProjectSchedulerWorker).to receive(:perform_at)
-      end
-      it "should call project scheduler" do
-        project.save(validate: false)
-      end
-    end
-
+    let(:project) { build(:project, state: 'approved') }
     context "when we change the video_url" do
       let(:project){ create(:project, video_url: 'http://vimeo.com/11198435', state: 'draft')}
       before do
