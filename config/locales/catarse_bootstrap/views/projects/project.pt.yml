@@ -1,5 +1,6 @@
 pt:
   projects:
+    new_feature_badge: 'Novidade'
     insights:
       referral:
         ctrse_explore: 'Busca do Catarse'
@@ -49,6 +50,7 @@ pt:
           origin: 'Fonte'
           contributions: 'Apoios'
           amount: 'R$ apoiados (% do total)'
+        help_url: 'http://suporte.catarse.me/hc/pt-br/articles/206452286-Como-entender-o-gr%C3%A1fico-Origem-de-Apoios-e-adicionar-refs-%C3%A0-sua-comunica%C3%A7%C3%A3o-'
       campaign_title: 'Minha Campanha'
       amount_per_day_label: 'R$ arrecadados por dia'
       contributions_per_day_label: 'Apoios confirmados por dia'
