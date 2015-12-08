@@ -22,7 +22,7 @@ class Project < ActiveRecord::Base
   mount_uploader :uploaded_image, ProjectUploader
 
   delegate  :display_card_status, :display_status, :progress,
-            :display_image, :display_expires_at, :remaining_text, :time_to_go,
+            :display_image, :display_expires_at, :time_to_go,
             :display_pledged, :display_pledged_with_cents, :display_goal, :remaining_days, :progress_bar,
             :status_flag, :state_warning_template, :display_errors, to: :decorator
 

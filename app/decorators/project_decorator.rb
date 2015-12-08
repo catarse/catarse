@@ -2,10 +2,6 @@ class ProjectDecorator < Draper::Decorator
   decorates :project
   include Draper::LazyHelpers
 
-  def remaining_text
-    pluralize_without_number(source.time_to_go[:time], I18n.t('remaining_singular'), I18n.t('remaining_plural'))
-  end
-
   def state_warning_template
     "#{source.state}_warning"
   end
