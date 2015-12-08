@@ -2,10 +2,6 @@ class ProjectDecorator < Draper::Decorator
   decorates :project
   include Draper::LazyHelpers
 
-  def state_warning_template
-    "#{source.state}_warning"
-  end
-
   def show_city
     if source.city.present?
       source.city.show_name

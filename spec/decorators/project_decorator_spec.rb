@@ -3,20 +3,6 @@ require 'rails_helper'
 RSpec.describe ProjectDecorator do
   let(:project){ create(:project, about_html: 'Foo Bar http://www.foo.bar <javascript>xss()</javascript>"Click here":http://click.here') }
 
-  describe "#state_warning_template" do
-    subject{ project.state_warning_template }
-    context "when project is in analysis" do
-      let(:project){ Project.new state: 'in_analysis' }
-      it{ is_expected.to eq('in_analysis_warning') }
-    end
-
-    context "when project is a draft" do
-      let(:project){ Project.new state: 'draft' }
-      it{ is_expected.to eq('draft_warning') }
-    end
-  end
-
-
   describe "#time_to_go" do
     let(:project){ create(:project, state: 'draft', online_days: nil) }
     subject{ project.time_to_go }
