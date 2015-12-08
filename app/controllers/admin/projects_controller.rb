@@ -2,7 +2,7 @@ class Admin::ProjectsController < Admin::BaseController
   layout 'catarse_bootstrap'
 
   has_scope :by_user_email, :by_id, :pg_search, :user_name_contains, :with_state, :by_category_id, :order_by
-  has_scope :between_created_at, :between_expires_at, :between_online_date, :between_updated_at, :goal_between, using: [ :start_at, :ends_at ]
+  has_scope :between_created_at, :between_expires_at, :between_online_at, :between_updated_at, :goal_between, using: [ :start_at, :ends_at ]
 
   before_filter do
     @total_projects = Project.count(:all)

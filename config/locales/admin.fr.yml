@@ -46,7 +46,7 @@ fr:
         between_created_at: 'Créé entre'
         goal_between: 'Objectif entre'
         between_expires_at: 'Expire entre'
-        between_online_date: 'Mis en ligne entre'
+        between_online_at: 'Mis en ligne entre'
         between_updated_at: 'Actualiser entre'
         by_user_email: 'Email du réalisateur'
         id: ID
