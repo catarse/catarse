@@ -84,7 +84,6 @@ FactoryGirl.define do
     f.about_html "Foo bar"
     f.headline "Foo bar"
     f.goal 10000
-    f.online_date Time.now
     f.online_days 5
     f.more_links 'Ipsum dolor'
     f.first_contributions 'Foo bar'
@@ -96,8 +95,8 @@ FactoryGirl.define do
       FactoryGirl.create(:project_transition, to_state: project.state, project: project)
 
       # should set expires_at when create a project in these states
-      if %w(online waiting_funds failed successful).include?(project.state) && project.online_days.present? && project.online_date.present?
-        project.expires_at = (project.online_date + project.online_days.days).end_of_day
+      if %w(online waiting_funds failed successful).include?(project.state) && project.online_days.present? && project.online_at.present?
+        project.expires_at = (project.online_at + project.online_days.days).end_of_day
         project.save
       end
     end
