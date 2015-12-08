@@ -104,9 +104,35 @@ class Project < ActiveRecord::Base
   scope :by_id, ->(id) { where(id: id) }
   scope :by_goal, ->(goal) { where(goal: goal) }
   scope :by_category_id, ->(id) { where(category_id: id) }
-  scope :by_online_date, ->(online_date) { where(online_date: Time.zone.parse( online_date ).. Time.zone.parse( online_date ).end_of_day) }
-  scope :by_expires_at, ->(expires_at) { where(expires_at: Time.zone.parse( expires_at ).. Time.zone.parse( expires_at ).end_of_day) }
-  scope :by_updated_at, ->(updated_at) { where(updated_at: Time.zone.parse( updated_at ).. Time.zone.parse( updated_at ).end_of_day) }
+
+  scope :by_online_date, ->(online_date) {
+    between_dates('online_at',
+      Time.zone.parse(online_date),
+      Time.zone.parse(online_date).end_of_day )}
+
+  scope :by_expires_at, ->(expires_at) {
+    between_dates('expires_at',
+      Time.zone.parse(expires_at),
+      Time.zone.parse(expires_at).end_of_day)}
+
+  scope :by_updated_at, ->(updated_at) {
+    between_dates('updated_at',
+      Time.zone.parse(updated_at),
+      Time.zone.parse(updated_at).end_of_day)}
+
+  scope :recent, -> {
+    between_dates('online_at', 5.days.ago, Time.current) }
+
+  scope :expiring, -> {
+    not_expired.between_dates('expires_at', Time.current, 2.weeks.from_now) }
+
+  scope :not_expiring, -> {
+    not_expired.where.not(expires_at: Time.current.. 2.weeks.from_now) }
+
+  scope :financial, -> {
+    with_states(['online', 'successful', 'waiting_funds']).
+      between_dates('expires_at', 15.days.ago, Time.current) }
+
   scope :by_permalink, ->(p) { without_state('deleted').where("lower(permalink) = lower(?)", p) }
   scope :recommended, -> { where(recommended: true) }
   scope :in_funding, -> { not_expired.with_states(['online']) }
@@ -114,12 +140,8 @@ class Project < ActiveRecord::Base
   scope :user_name_contains, ->(term) { joins(:user).where("unaccent(upper(users.name)) LIKE ('%'||unaccent(upper(?))||'%')", term) }
   scope :to_finish, ->{ expired.with_states(['online', 'waiting_funds']) }
   scope :visible, -> { without_states(['draft', 'rejected', 'deleted', 'in_analysis', 'approved']) }
-  scope :financial, -> { with_states(['online', 'successful', 'waiting_funds']).where(expires_at: 15.days.ago.. Time.current) }
   scope :expired, -> { where("projects.is_expired") }
   scope :not_expired, -> { where("not projects.is_expired") }
-  scope :expiring, -> { not_expired.where(expires_at: Time.current.. 2.weeks.from_now) }
-  scope :not_expiring, -> { not_expired.where.not(expires_at: Time.current.. 2.weeks.from_now) }
-  scope :recent, -> { where(online_date: 5.days.ago.. Time.current) }
   scope :ordered, -> { order(created_at: :desc)}
   scope :order_status, ->{ maybe_flex.order("
                                      CASE coalesce(fp.state, projects.state)
