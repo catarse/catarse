@@ -27,8 +27,6 @@ class ProjectObserver < ActiveRecord::Observer
     }, project.new_draft_recipient)
 
     deliver_default_notification_for(project, :in_analysis_project)
-
-    project.update_attributes({ sent_to_analysis_at: DateTime.current })
   end
 
   def from_online_to_waiting_funds(project)
@@ -50,7 +48,6 @@ class ProjectObserver < ActiveRecord::Observer
   def from_approved_to_online(project)
     deliver_default_notification_for(project, :project_visible)
     project.update_attributes({
-      online_date: DateTime.current,
       audited_user_name: project.user.name,
       audited_user_cpf: project.user.cpf,
       audited_user_phone_number: project.user.phone_number
