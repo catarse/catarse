@@ -17,7 +17,7 @@ class ApiTokensController < ApplicationController
   end
 
   def claims
-    { role: current_user.admin ? 'admin' : 'web_user', id: current_user.id.to_s }
+    { role: current_user.admin ? 'admin' : 'web_user', user_id: current_user.id.to_s }
   end
 
 end
