@@ -82,6 +82,16 @@ class Project < ActiveRecord::Base
       maybe_flex.where("coalesce(fp.state, projects.state) not in (?)", state)
   }
 
+  # This scope is used only on this model
+  scope :between_dates, -> (column, start_at, end_at) {
+    where(
+      "projects.#{column} between :start and :end",
+      {
+        start: start_at,
+        end: end_at
+      })
+  }
+
   scope :with_states, -> (state) { with_state(state) }
   scope :without_states, -> (state) { without_state(state) }
 
