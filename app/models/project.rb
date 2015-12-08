@@ -23,7 +23,7 @@ class Project < ActiveRecord::Base
 
   delegate  :display_card_status, :display_status, :progress,
             :display_image, :display_expires_at, :time_to_go,
-            :display_pledged, :display_pledged_with_cents, :display_goal, :remaining_days, :progress_bar,
+            :display_pledged, :display_pledged_with_cents, :display_goal, :progress_bar,
             :status_flag, :display_errors, to: :decorator
 
   belongs_to :user
