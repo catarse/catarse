@@ -371,6 +371,10 @@ class Project < ActiveRecord::Base
     draft rejected online successful waiting_funds
     deleted in_analysis approved failed
   ).each do |st|
+    define_method "#{st}_at" do
+      pluck_from_database("#{st}_at")
+    end
+
     define_method "#{st}?" do
       if self.state.nil?
         self.state_machine.current_state == st

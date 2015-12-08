@@ -38,6 +38,9 @@ class FlexibleProject < ActiveRecord::Base
   %w(
     draft rejected online successful waiting_funds deleted
   ).each do |st|
+    define_method "#{st}_at" do
+      pluck_from_database("#{st}_at")
+    end
     define_method "#{st}?" do
       if self.state.nil?
         self.state_machine.current_state == st
