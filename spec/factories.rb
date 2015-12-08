@@ -15,6 +15,10 @@ FactoryGirl.define do
     "#{n}"
   end
 
+  sequence :serial do |n|
+    n
+  end
+
   sequence :permalink do |n|
     "foo_page_#{n}"
   end
@@ -92,7 +96,9 @@ FactoryGirl.define do
     f.budget '1000'
     f.uploaded_image File.open("#{Rails.root}/spec/support/testimg.png")
     after :create do |project| 
-      FactoryGirl.create(:project_transition, to_state: project.state, project: project)
+      unless project.project_transitions.where(to_state: project.state).present?
+        FactoryGirl.create(:project_transition, to_state: project.state, project: project)
+      end
 
       # should set expires_at when create a project in these states
       if %w(online waiting_funds failed successful).include?(project.state) && project.online_days.present? && project.online_at.present?
@@ -121,13 +127,15 @@ FactoryGirl.define do
   factory :flexible_project_transition do |f|
     f.association :flexible_project
     f.most_recent true
-    f.sort_key 1
+    f.to_state 'online'
+    f.sort_key { generate(:serial) }
   end
 
   factory :project_transition do |f|
     f.association :project
     f.most_recent true
-    f.sort_key 1
+    f.to_state 'online'
+    f.sort_key { generate(:serial) }
   end
 
   factory :project_account do |f|
