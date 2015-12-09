@@ -45,16 +45,6 @@ RSpec.describe Category, type: :model do
     end
   end
 
-  describe ".total_online_projects" do
-    before do
-      2.times { create(:project, category: category, state: 'online') }
-      create(:project, category: category, state: 'successful')
-    end
-
-    subject { category.total_online_projects }
-    it { expect(subject).to eq(2) }
-  end
-
   describe ".deliver_projects_of_week_notification" do
     let(:category) { create(:category) }
     let(:user) { create(:user) }
