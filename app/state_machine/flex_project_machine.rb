@@ -30,9 +30,20 @@ class FlexProjectMachine
     # the project state
     guard_transition(to: basic_validation_states) do |project, t, m|
       # TODO: rething this
-      project.state = m[:to_state].to_s
+      to_state = m[:to_state].to_s
+      project.state = to_state
       valid = project.valid?
       project.state = project.state_was
+
+      if project.errors.present?
+        #save errors on database
+        project.errors.messages.each do |error|
+          messages = error[1]
+          messages.each do |message|
+            project.project_errors.create(error: message, to_state: to_state)
+          end
+        end
+      end
       valid
     end
 
@@ -100,10 +111,15 @@ class FlexProjectMachine
     transition_to :online, to_state: 'online'
   end
 
+  #send notification to admin if there is a problem finishing the project
+  def send_errors_to_admin
+    self.object.notify_to_backoffice :project_finish_error
+  end
+
   # put project in successful or waiting_funds state
   def finish
     unless transition_to(:waiting_funds, to_state: 'waiting_funds')
-      transition_to(:successful, to_state: 'successful')
+      transition_to(:successful, to_state: 'successful') || send_errors_to_admin
     end
   end
 end

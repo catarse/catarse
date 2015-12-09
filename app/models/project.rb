@@ -37,6 +37,7 @@ class Project < ActiveRecord::Base
   has_many :tags, through: :taggings
   has_many :rewards
   has_many :contributions
+  has_many :project_errors
   has_many :contribution_details
   has_many :payments, through: :contributions
   has_many :posts, class_name: "ProjectPost", inverse_of: :project

@@ -41,7 +41,7 @@ class AonProjectMachine < FlexProjectMachine
   end
 
   def finish
-    transition_to(:waiting_funds, to_state: 'waiting_funds') || transition_to(:failed, to_state: 'failed') || transition_to(:successful, to_state: 'successful')
+    transition_to(:waiting_funds, to_state: 'waiting_funds') || transition_to(:failed, to_state: 'failed') || transition_to(:successful, to_state: 'successful') || send_errors_to_admin
   end
 
   def can_approve?
