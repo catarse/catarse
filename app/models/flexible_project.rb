@@ -14,7 +14,8 @@ class FlexibleProject < ActiveRecord::Base
   delegate :expired?, :reached_goal?, :in_time_to_wait?,
     :notify_owner, :notify, :notify_once, :user, :payments, :expires_at,
     :headline, :about_html, :budget, :uploaded_image, :goal,
-    :account, :video_thumbnail, :name, :open_for_contributions?,  to: :project
+    :account, :video_thumbnail, :name, :open_for_contributions?,
+    :online_at, :waiting_funds_at, :rejected_at, :successful_at, :deleted_at, to: :project
 
   # delegate reusable methods from state_machine
   delegate :push_to_online, :finish, :push_to_draft,
@@ -38,9 +39,6 @@ class FlexibleProject < ActiveRecord::Base
   %w(
     draft rejected online successful waiting_funds deleted
   ).each do |st|
-    define_method "#{st}_at" do
-      pluck_from_database("#{st}_at")
-    end
     define_method "#{st}?" do
       if self.state.nil?
         self.state_machine.current_state == st
