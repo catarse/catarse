@@ -165,7 +165,7 @@ RSpec.describe Project, type: :model do
     end
 
     context "when we have data set manually in the db" do
-      let(:project) {create(:project, state: 'online', online_days: 60)}
+      let(:project) {create_project({state: 'online', online_days: 60}, {to_state: 'online'})}
       subject { project }
       before do
         project.update_attributes online_days: 61
@@ -175,7 +175,7 @@ RSpec.describe Project, type: :model do
       it{ is_expected.to allow_value(62).for(:online_days) }
 
       it "should update expires_at" do
-        expect(project.expires_at).to eq (project.online_date + project.online_days.days).end_of_day
+        expect(project.expires_at).to eq (project.online_at + project.online_days.days).end_of_day
       end
     end
 
@@ -208,16 +208,15 @@ RSpec.describe Project, type: :model do
   describe ".of_current_week" do
     subject { Project.of_current_week }
     before do
-      3.times { create(:project, state: 'online', online_date: Time.current) }
-      3.times { create(:project, state: 'draft', online_date: 3.days.ago) }
-      3.times { create(:project, state: 'successful', online_date: 6.days.ago) }
-      5.times { create(:project, state: 'online', online_date: 8.days.ago) }
-      5.times { create(:project, state: 'online', online_date: 2.weeks.ago) }
-      build(:project, state: 'in_analysis', online_date: 3.days.from_now).save(validate: false)
+      3.times { create_project({state: 'online'}, {to_state: 'online'}) }
+      3.times { create_project({state: 'draft'}, {}) }
+      3.times { create_project({state: 'successful'}, [{to_state: 'online', created_at: 5.days.ago, most_recent: false}, {to_state: 'successful', created_at: 1.days.ago}]) }
+      5.times { create_project({state: 'online'}, {to_state: 'online', created_at: 8.days.ago})}
+      5.times { create_project({state: 'online'}, {to_state: 'online', created_at: 2.weeks.ago}) }
     end
 
     it "should return a collection with projects of current week" do
-      is_expected.to have(9).itens
+      is_expected.to have(6).itens
     end
   end
 
@@ -311,8 +310,8 @@ RSpec.describe Project, type: :model do
     subject { Project.by_online_date(Time.current.to_date.to_s) }
 
     before do
-      @project_01 = create(:project, online_date: Time.current.to_s)
-      @project_02 = create(:project, online_date: 2.weeks.ago)
+      @project_01 = create_project({state: 'online'}, {to_state: 'online'})
+      @project_02 = create_project({state: 'online'}, {created_at: 2.weeks.ago, to_state: 'online'})
 
     end
 
@@ -323,8 +322,8 @@ RSpec.describe Project, type: :model do
     subject { Project.by_expires_at('10/10/2013') }
 
     before do
-      @project_01 = create(:project, online_date: '2013-10-10'.to_date.in_time_zone, online_days: 1)
-      @project_02 = create(:project, online_date: '2013-10-09'.to_date.in_time_zone, online_days: 1)
+      @project_01 = create_project({state: 'online', online_days: 1}, {to_state: 'online', created_at: '2013-10-10'.to_date.in_time_zone})
+      @project_02 = create_project({state: 'online', online_days: 1}, {created_at: '2013-10-09'.to_date.in_time_zone, to_state: 'online'})
     end
 
     it { is_expected.to eq [@project_02] }
@@ -372,13 +371,13 @@ RSpec.describe Project, type: :model do
 
 
   describe '.between_expires_at' do
-    let(:start_at) { '17/01/2013' }
-    let(:ends_at) { '22/01/2013' }
+    let(:start_at) { 1.day.ago.strftime('%d/%m/%Y') }
+    let(:ends_at) { 3.days.from_now.strftime('%d/%m/%Y') }
     subject { Project.between_expires_at(start_at, ends_at).order("id desc") }
 
-    let!(:project_01) { create(:project, { online_date: '17/01/2013'.to_time, online_days: 1 }) }
-    let!(:project_02) { create(:project, { online_date: '21/01/2013'.to_time, online_days: 1 }) }
-    let!(:project_03) { create(:project, { online_date: '23/01/2013'.to_time, online_days: 1 }) }
+    let!(:project_01) { create_project({state: 'online', online_days: 1}, {to_state: 'online', created_at: Time.current}) }
+    let!(:project_02) { create_project({state: 'online', online_days: 1}, {to_state: 'online', created_at: 1.day.from_now}) }
+    let!(:project_03) { create_project({state: 'online', online_days: 1}, {to_state: 'online', created_at: 3.days.from_now}) }
 
     it { is_expected.to eq([project_02, project_01]) }
   end
@@ -395,8 +394,8 @@ RSpec.describe Project, type: :model do
 
   describe ".expired" do
     before do
-      @p = create(:project, online_days: 1, online_date: Time.now - 2.days)
-      create(:project, online_days: 1)
+      @p = create_project({online_days: 1, state: 'online'}, {to_state: 'online', created_at: 2.days.ago})
+      create_project({online_days: 1, state: 'online'}, {to_state: 'online'})
     end
     subject{ Project.expired}
     it{ is_expected.to eq([@p]) }
@@ -404,8 +403,8 @@ RSpec.describe Project, type: :model do
 
   describe ".not_expired" do
     before do
-      @p = create(:project, online_days: 1)
-      create(:project, online_days: 1, online_date: Time.now - 2.days)
+      @p = create_project({online_days: 1, state: 'online'}, {to_state: 'online'})
+      create_project({online_days: 1, state: 'online'}, {to_state: 'online', created_at: 2.days.ago})
     end
     subject{ Project.not_expired }
     it{ is_expected.to eq([@p]) }
@@ -413,8 +412,8 @@ RSpec.describe Project, type: :model do
 
   describe ".expiring" do
     before do
-      @p = create(:project, online_date: Time.now, online_days: 13)
-      create(:project, online_days: 1, online_date: Time.now - 2.days)
+      @p = create_project({online_days: 13, state: 'online'}, {to_state: 'online'})
+      create_project({online_days: 1, state: 'online'}, {to_state: 'online', created_at: 2.days.ago})
     end
     subject{ Project.expiring }
     it{ is_expected.to eq([@p]) }
@@ -422,8 +421,8 @@ RSpec.describe Project, type: :model do
 
   describe ".not_expiring" do
     before do
-      @p = create(:project, online_days: 15)
-      create(:project, online_days: 1, online_date: Time.now - 2.days)
+      @p = create_project({online_days: 15, state: 'online'}, {to_state: 'online'})
+      create_project({online_days: 1, state: 'online'}, {to_state: 'online', created_at: 2.days.ago})
     end
     subject{ Project.not_expiring }
     it{ is_expected.to eq([@p]) }
@@ -431,8 +430,8 @@ RSpec.describe Project, type: :model do
 
   describe ".recent" do
     before do
-      @p = create(:project, online_date: (Time.now - 4.days))
-      create(:project, online_date: (Time.now - 15.days))
+      @p = create_project({state: 'online'}, {to_state: 'online', created_at: 4.days.ago})
+      create_project({state: 'online'}, {to_state: 'online', created_at: 15.days.ago})
     end
     subject{ Project.recent }
     it{ is_expected.to eq([@p]) }
@@ -575,18 +574,18 @@ RSpec.describe Project, type: :model do
   describe "#expired?" do
     subject{ project.expired? }
 
-    context "when online_date is nil" do
-      let(:project){ Project.new online_date: nil, online_days: 0 }
+    context "when is a builded project" do
+      let(:project){ Project.new online_days: 0 }
       it{ is_expected.to eq(nil) }
     end
 
     context "when expires_at is in the future" do
-      let(:project){ Project.new online_date: 2.days.from_now, online_days: 0 }
-      it{ is_expected.to eq(nil) }
+      let(:project){ create_project({online_days: 3}, {to_state: 'online'}) }
+      it{ is_expected.to eq(false) }
     end
 
     context "when expires_at is in the past" do
-      let(:project){ create(:project, online_date: 3.days.ago, online_days: 1, state: 'online') }
+      let(:project){ create_project({online_days: 3}, {to_state: 'online', created_at: 5.days.ago}) }
       it{ is_expected.to eq(true) }
     end
   end
@@ -626,7 +625,7 @@ RSpec.describe Project, type: :model do
         project_state: project.state,
         category: project.category.name_pt,
         project_goal: project.goal,
-        project_online_date: project.online_date,
+        project_online_date: project.online_at,
         project_expires_at: project.expires_at,
         project_address_city: project.account.try(:address_city),
         project_address_state: project.account.try(:address_state),

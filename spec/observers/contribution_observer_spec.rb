@@ -7,7 +7,7 @@ RSpec.describe ContributionObserver do
 
   describe "after_create" do
     context "when project expires_at less than 2 days in the future" do
-      let(:project){ create(:project, online_date: Time.now, online_days: 1) }
+      let(:project){ create_project({online_days: 1}, {to_state: 'online', created_at: Time.now}) }
 
       before do
         expect(PendingContributionWorker).to_not receive(:perform_at)
@@ -19,7 +19,7 @@ RSpec.describe ContributionObserver do
     end
 
     context "when project expires_at is 2 days in the future" do
-      let(:project){ create(:project, online_date: Time.now, online_days: 3) }
+      let(:project){ create_project({online_days: 3}, {to_state: 'online', created_at: Time.now}) }
 
       before do
         expect(PendingContributionWorker).to receive(:perform_at)

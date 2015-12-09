@@ -35,14 +35,12 @@ RSpec.describe ProjectObserver do
   end
 
   describe "#before_save" do
-    context "when project is not online" do
-      let(:project) { build(:project, state: 'approved', online_date: nil) }
-      before do
-        expect(project.expires_at).to eq nil
-      end
-      it "should update expires_at" do
-        project.save(validate: false)
-      end
+    let(:project) { build(:project, state: 'approved') }
+    before do
+      expect(project).to receive(:update_expires_at)
+    end
+    it "should call update_expires_at" do
+      project.save(validate: false)
     end
   end
 
@@ -86,10 +84,6 @@ RSpec.describe ProjectObserver do
   describe "#from_approved_to_online" do
     before do
       project.notify_observers(:from_approved_to_online)
-    end
-
-    context "should fill expires_at" do
-      it { expect(project.expires_at).to be_present }
     end
 
     it "should send project_visible notification" do
@@ -148,11 +142,13 @@ RSpec.describe ProjectObserver do
 
   describe "#from_online_to_failed" do
     let(:project) do
-      create(:project, {
+      create_project({
         goal: 100,
-        online_date: 3.days.ago,
         online_days: 30,
         state: 'online'
+      }, {
+        to_state: 'online',
+        created_at: 3.days.ago,
       })
     end
 

@@ -25,7 +25,6 @@ class FlexibleProjectObserver < ActiveRecord::Observer
     deliver_default_notification_for(flexible_project, :project_visible)
 
     project.update_attributes({
-      online_date: DateTime.current,
       audited_user_name: project.user.name,
       audited_user_cpf: project.user.cpf,
       audited_user_phone_number: project.user.phone_number

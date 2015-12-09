@@ -35,7 +35,7 @@ RSpec.describe Payment, type: :model do
     end
 
     context "when project is expired" do
-      let(:project){ create(:project, online_date: Time.current - 30.day, online_days: 1, expires_at: 2.days.ago, state: 'online') }
+      let(:project){ create_project({state: 'online', online_days: 1, expires_at: 2.days.ago}, {created_at: Time.current, to_state: 'online'}) }
 
       before do
         payment.valid?

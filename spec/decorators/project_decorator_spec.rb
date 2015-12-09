@@ -71,13 +71,13 @@ RSpec.describe ProjectDecorator do
   describe "#display_expires_at" do
     subject{ project.display_expires_at }
 
-    context "when online_date is nil" do
-      let(:project){ create(:project, online_date: nil) }
+    context "when online_at is nil" do
+      let(:project){ create(:project, state: 'draft') }
       it{ is_expected.to eq('') }
     end
 
     context "when we have an online_date" do
-      let(:project){ create(:project, online_date: Time.current, online_days: 1) }
+      let(:project){ create_project({state: 'online', online_days: 1}, {to_state: 'online', created_at: Time.current.to_date}) }
       it{ is_expected.to eq(I18n.l((Time.current + 1.day).end_of_day.to_date)) }
     end
   end

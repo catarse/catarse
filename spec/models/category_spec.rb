@@ -22,9 +22,9 @@ RSpec.describe Category, type: :model do
     subject { Category.with_projects_on_this_week.order(id: :asc) }
 
     before do
-      3.times { create(:project, category: category_1) }
-      4.times { create(:project, category: category_2) }
-      5.times { create(:project, category: category_3, online_date: 2.weeks.ago) }
+      3.times { create_project({category: category_1}, {to_state: 'online'}) }
+      4.times { create_project({category: category_2}, {to_state: 'online'}) }
+      5.times { create_project({category: category_3}, {to_state: 'online', created_at: 2.weeks.ago}) }
     end
 
     it { is_expected.to eq([category_1, category_2]) }
