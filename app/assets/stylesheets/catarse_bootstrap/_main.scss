@@ -68,8 +68,8 @@ a:hover {
 }
 
 .section {
-  padding-top: 30px;
-  padding-bottom: 30px;
+  padding-top: 50px;
+  padding-bottom: 50px;
   background-color: white;
 }
 
@@ -1752,27 +1752,35 @@ a:hover {
 .nav-tab {
   display: inline-block;
   height: 42px;
-  margin-right: 5px;
+  margin-right: 11px;
   padding: 13px 13px 8px;
-  border-bottom: 1px solid transparent;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #f1f2f3 #f1f2f3 #f8fafa;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
+  background-color: white;
   -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
-  color: #79808b;
+  color: rgba(122, 129, 140, 0.68);
   font-size: 15px;
   text-decoration: none;
 }
 
 .nav-tab:hover {
-  background-color: white;
+  background-color: #f8fafa;
+  color: #3f4752;
+}
+
+.nav-tab.w--current {
+  background-color: #f8fafa;
   color: #3f4752;
 }
 
 .nav-tab.selected {
   height: 42px;
   border-bottom-color: white;
-  background-color: white;
+  background-color: #f8fafa;
   color: #3f4752;
   font-weight: 600;
 }
@@ -2025,6 +2033,13 @@ a:hover {
 .dashboard-nav.side.hidden:hover {
   overflow-x: auto;
   overflow-y: auto;
+}
+
+.dashboard-nav.side.right-side {
+  left: auto;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
 }
 
 .card-success {
@@ -2906,6 +2921,11 @@ a:hover {
   margin-left: 0px;
 }
 
+.body-project.right-side {
+  margin-right: 218px;
+  margin-left: 0px;
+}
+
 .bg-people {
   height: 768px;
   padding-top: 375px;
@@ -3319,7 +3339,7 @@ a:hover {
   background-image: url('/assets/bg-hero-start.png'), -webkit-linear-gradient(#7658b0, #915dc2 72%);
   background-image: url('/assets/bg-hero-start.png'), linear-gradient(#7658b0, #915dc2 72%);
   background-position: 50% 50%, 0px 0px;
-  background-size: 1383px, auto;
+  background-size: cover, auto;
   background-repeat: repeat-y, repeat;
   color: white;
 }
@@ -3528,6 +3548,7 @@ a:hover {
   overflow-x: auto;
   overflow-y: auto;
   margin: auto;
+  padding: 25px;
   border-radius: 5px;
   background-color: white;
   box-shadow: rgba(63, 71, 82, 0.29) 1px 1px 49px 0px;
@@ -3539,7 +3560,7 @@ a:hover {
 }
 
 .modal-dialog-content {
-  height: 70%;
+  height: 80%;
 }
 
 .modal-dialog-nav-bottom {
@@ -3547,9 +3568,7 @@ a:hover {
   left: 0px;
   right: 0px;
   bottom: 0px;
-  margin-right: 20px;
-  margin-bottom: 20px;
-  margin-left: 20px;
+  height: 15%;
 }
 
 .hero-full-content {
@@ -3964,9 +3983,8 @@ a:hover {
 
 .info-howworks-backers {
   position: relative;
-  width: 271px;
-  margin-top: -45px;
-  text-align: left;
+  width: 240px;
+  margin-bottom: 30px;
 }
 
 .info-howworks-backers._2 {
@@ -3989,8 +4007,13 @@ a:hover {
 .how-col-02 {
   display: inline-block;
   width: 53%;
+  height: 240px;
   margin-right: 10px;
   float: left;
+  background-image: url('/assets/comofunciona-setas.png'), url('/assets/como-funciona-base.png');
+  background-position: 50% 50%, 50% 50%;
+  background-size: 100%, 100%;
+  background-repeat: no-repeat, no-repeat;
 }
 
 .how-col-03 {
@@ -4002,6 +4025,19 @@ a:hover {
 .how-row {
   margin-top: 120px;
   margin-bottom: 100px;
+}
+
+.btn-inactive {
+  border: 1px solid #ddd;
+  background-color: #ddd;
+  color: #79808b;
+  cursor: default;
+}
+
+.btn-inactive:hover {
+  border: 1px solid #ddd;
+  background-color: #ddd;
+  box-shadow: transparent 1px 1px 3px 0px;
 }
 
 html.w-mod-js *[data-ix="fade-in"] {
@@ -4075,8 +4111,8 @@ html.w-mod-js *[data-ix="icon-funded-with"] {
     font-size: 14px;
   }
   .section {
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: 30px;
+    padding-bottom: 30px;
   }
   .text-field {
     font-size: 14px;
@@ -4514,6 +4550,12 @@ html.w-mod-js *[data-ix="icon-funded-with"] {
     width: auto;
     height: auto;
   }
+  .modal-dialog-nav-bottom {
+    position: fixed;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+  }
   .logo-flex-home {
     width: 309px;
   }
@@ -4533,8 +4575,14 @@ html.w-mod-js *[data-ix="icon-funded-with"] {
   .slide-testimonials-content {
     padding-top: 111px;
   }
+  .info-howworks-backers {
+    width: 190px;
+  }
   .info-howworks-backers._2 {
     width: 201px;
+  }
+  .how-col-02 {
+    height: 175px;
   }
 }
 
@@ -5200,14 +5248,32 @@ html.w-mod-js *[data-ix="icon-funded-with"] {
     width: 100%;
     padding-left: 0px;
   }
+  .info-howworks-backers {
+    width: 100%;
+  }
+  .info-howworks-backers._2 {
+    width: 100px;
+  }
   .how-col-01 {
     width: 100%;
   }
   .how-col-02 {
     width: 100%;
+    height: 272px;
+    margin-bottom: 40px;
+    background-image: url('/assets/como-funciona-base.png');
+    background-position: 50% 50%;
+    background-size: 100%;
+    background-repeat: no-repeat;
   }
   .how-col-03 {
     width: 100%;
+    margin-bottom: 30px;
+  }
+  .how-row {
+    margin-top: 40px;
+    margin-bottom: 10px;
+    text-align: center;
   }
 }
 
@@ -5661,6 +5727,12 @@ html.w-mod-js *[data-ix="icon-funded-with"] {
     padding-top: 135px;
     padding-right: 15px;
     padding-left: 15px;
+  }
+  .how-col-02 {
+    height: 162px;
+  }
+  .how-row {
+    margin-top: 30px;
   }
 }
 
