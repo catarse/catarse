@@ -114,6 +114,7 @@ class FlexProjectMachine
   #send notification to admin if there is a problem finishing the project
   def send_errors_to_admin
     self.object.notify_to_backoffice :project_finish_error
+    false #so finish returns false
   end
 
   # put project in successful or waiting_funds state
