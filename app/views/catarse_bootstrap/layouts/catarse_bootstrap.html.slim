@@ -29,12 +29,10 @@ html
       meta property="og:site_name"    content=CatarseSettings[:company_name]
       meta property="fb:app_id"       content=CatarseSettings[:facebook_app_id]
       meta property="og:description"  content=(t('projects.index_header.title') + '. ' +  t('projects.index_header.subtitle'))
-      /Call VWO on header to prevent flash of unmodified content on variation tests 
     - if request.subdomain.include? "beta"
       meta name="robots" content="noindex, nofollow"
       
     - if Rails.env.production?
-      = render 'layouts/vwo'
       = render_mixpanel_script
 
   body#catarse_bootstrap[data-controller-name=controller_name data-action=action_name data-user="#{current_user.try(:to_analytics_json)}" data-referral="#{session[:referral_link]}" data-id=params[:id] data-mobile=browser.mobile?.to_s itemscope itemtype="http://schema.org/WebPage" class="#{'body-alert' if can_display_pending_refund_alert?} #{content_for :body_class}"] 
