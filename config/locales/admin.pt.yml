@@ -80,8 +80,7 @@ pt:
     users:
       index:
         title: "Gerenciamento de apoiadores"
-        menu: "Apoiadores"
-        new_menu: "Usuários - Beta"
+        menu: "Usuários"
         credits: "Créditos"
         credits_view: "Créditos calculados"
         id: Id
@@ -158,7 +157,6 @@ pt:
         title: "Gerenciamento de apoios"
         state: 'Estado atual'
         menu: "Apoios"
-        new_menu: "Apoios - Beta"
         anonymous: Anônimo?
         contribution: Apoio
         confirmed: Confirmado?
