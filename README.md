@@ -96,11 +96,7 @@ Thanks a lot to Daniel Walmsley, from http://purpose.com, for starting the inter
 
 ## Payment gateways
 
-Currently, we support MoIP, PayPal and WePay through our payment engines. Payment engines are extensions to Catarse that implement a specific payment gateway logic.
-The current working engines are:
-* MoIP
-* PayPal
-* WePay
+Currently, we support pagarme through our payment engines. Payment engines are extensions to Catarse that implement a specific payment gateway logic.
 
 If you have created a different payment engine to Catarse, please contact us so we can link your engine here.
 If you want to create a payment engine, please join our mailing list at http://groups.google.com/group/catarse-dev
