@@ -67,7 +67,10 @@ RSpec.describe FlexProjectMachine, type: :model do
         project.about_html = nil
       end
 
-      it{ should_not_be_valid_transition 'online' }
+      it "should save errors do db" do
+        should_not_be_valid_transition 'online'
+        expect(project.project_errors.count).to eq(1)
+      end
     end
   end
 

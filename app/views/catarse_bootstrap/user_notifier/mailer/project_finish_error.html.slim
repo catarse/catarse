@@ -1,0 +1,6 @@
+- project = @notification.project
+
+p Ocorreram os seguintes erros na finalização do projeto #{link_to(project.name, project_by_slug_url(permalink: project.permalink))}:
+
+- project.project_errors.each do |error|
+  p #{error.error}
