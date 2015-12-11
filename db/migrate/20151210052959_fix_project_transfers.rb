@@ -16,7 +16,7 @@ CREATE OR REPLACE VIEW "1".project_transfers AS
     pcc_tax(p.*) AS pcc_tax,
     pt.pledged - total_catarse_fee(p.*) + irrf_tax(p.*) + pcc_tax(p.*) AS total_amount
    FROM public.projects p
-     LEFT JOIN "1".project_totals pt ON pt.project_id = p.id
+     LEFT JOIN "1".project_totals pt ON pt.project_id = p.id;
     SQL
   end
 end
