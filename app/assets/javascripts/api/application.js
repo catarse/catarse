@@ -18,7 +18,7 @@
   I18n.locale = "pt";
 
   var adminRoot = document.getElementById('new-admin'),
-      rootComponents = _.extend({}, c.pages, c.contribution, c.project);
+      rootComponents = _.extend({}, c.pages, c.contribution, c.project, c.user);
 
   if(adminRoot){
     m.route.mode = 'hash';
