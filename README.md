@@ -20,6 +20,9 @@ The official repo is https://github.com/catarse/catarse
 To run this project you need to have:
 
 * Ruby 2.2.3
+
+* [postgREST 0.2](https://github.com/begriffs/postgrest/releases/tag/v0.2.12.1)
+
 * [PostgreSQL 9.4](http://www.postgresql.org/)
   * OSX - [Postgres.app](http://postgresapp.com/)
   * Linux - `$ sudo apt-get install postgresql`
@@ -58,10 +61,27 @@ To run this project you need to have:
 
         $ rake db:create db:migrate db:seed
 
+* Configure the API server
+
+	We provide authentication through JWT ([JSON Web Tokens](http://jwt.io/)) and it can be configured by `CatarseSettings` into rails console.
+
+		$ bundle exec rails console
+		> CatarseSettings[:api_host] = "http://localhost:3004" # postgREST server url
+		> CatarseSettings[:jwt_secret] = "gZH75aKtMN3Yj0iPS4hcgUuTwjAzZr9C" # this token is just a valid example
+
 If everything goes OK, you can now run the project!
 
 ### Running the project
 
+* Run API server
+
+	After download postgREST 0.2.x you can unpack and run the executable as bellow.
+
+		$ ./postgrest-0.2.12.1 -d catarse_development -U myuser --db-pass mypassword -a anonymous -p 3004 \
+				--db-pool 10 \
+				--jwt-secret gZH75aKtMN3Yj0iPS4hcgUuTwjAzZr9C
+
+* Run Rails server
 ```bash
 $ rails server
 ```
