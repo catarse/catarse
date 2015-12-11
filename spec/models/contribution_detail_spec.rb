@@ -204,46 +204,6 @@ RSpec.describe ContributionDetail, type: :model do
     end
   end
 
-  describe ".total_confirmed_amount_by_day" do
-    subject { ContributionDetail.total_confirmed_by_day }
-    before do
-      @contribution_01 = create(:confirmed_contribution)
-      @contribution_01.payments.update_all(paid_at: 2.day.ago.to_date)
-      @payment_01 = @contribution_01.payments.first
-
-      @contribution_02 = create(:confirmed_contribution)
-      @contribution_02.payments.update_all(paid_at: Date.today)
-      @payment_02 = @contribution_02.payments.first
-
-      create(:pending_contribution)
-    end
-
-    it { is_expected.to eq({
-      @payment_01.paid_at.strftime("%Y-%m-%d %H:%M:%S UTC").to_time => 1,
-      @payment_02.paid_at.strftime("%Y-%m-%d %H:%M:%S UTC").to_time => 1,
-    })}
-  end
-
-  describe ".total_confirmed_amount_by_day" do
-    subject { ContributionDetail.total_confirmed_amount_by_day }
-    before do
-      @contribution_01 = create(:confirmed_contribution, value: 10)
-      @contribution_01.payments.update_all(paid_at: 2.day.ago.to_date)
-      @payment_01 = @contribution_01.payments.first
-
-      @contribution_02 = create(:confirmed_contribution, value: 30)
-      @contribution_02.payments.update_all(paid_at: Date.today)
-      @payment_02 = @contribution_02.payments.first
-
-      create(:pending_contribution)
-    end
-
-    it { is_expected.to eq({
-      @payment_01.paid_at.strftime("%Y-%m-%d %H:%M:%S UTC").to_time => 10,
-      @payment_02.paid_at.strftime("%Y-%m-%d %H:%M:%S UTC").to_time => 30,
-    })}
-  end
-
   describe ".available_to_display" do
     before do
       create(:confirmed_contribution)
@@ -288,27 +248,5 @@ RSpec.describe ContributionDetail, type: :model do
     end
 
     it{ is_expected.to eq "https://#{CatarseSettings[:aws_host]}/#{CatarseSettings[:aws_bucket]}/uploads/user/uploaded_image/#{contribution.user.id}/thumb_avatar_testimg.png" }
-  end
-
-  describe ".total_by_address_state" do
-    subject { ContributionDetail.total_by_address_state }
-    before do
-      @user_01 = create(:user, address_state: 'MG')
-      @contribution_01 = create(:confirmed_contribution, user: @user_01)
-      @contribution_01.payments.update_all(paid_at: 2.day.ago.to_date)
-      @payment_01 = @contribution_01.payments.first
-
-      @user_02 = create(:user, address_state: 'RJ')
-      @contribution_02 = create(:confirmed_contribution, user: @user_02)
-      @contribution_02.payments.update_all(paid_at: Date.today)
-      @payment_02 = @contribution_02.payments.first
-
-      create(:pending_contribution)
-    end
-
-    it { is_expected.to eq({
-      @contribution_01.user.address_state => 1,
-      @contribution_02.user.address_state => 1,
-    })}
   end
 end

@@ -21,10 +21,10 @@ class Project < ActiveRecord::Base
 
   mount_uploader :uploaded_image, ProjectUploader
 
-  delegate  :display_online_date, :display_card_status, :display_status, :progress,
-            :display_image, :display_expires_at, :remaining_text, :time_to_go,
-            :display_pledged, :display_pledged_with_cents, :display_goal, :remaining_days, :progress_bar,
-            :status_flag, :state_warning_template, :display_card_class, :display_errors, to: :decorator
+  delegate  :display_card_status, :display_status, :progress,
+            :display_image, :display_expires_at, :time_to_go,
+            :display_pledged, :display_pledged_with_cents, :display_goal, :progress_bar,
+            :status_flag, :display_errors, to: :decorator
 
   belongs_to :user
   belongs_to :category
@@ -82,6 +82,16 @@ class Project < ActiveRecord::Base
       maybe_flex.where("coalesce(fp.state, projects.state) not in (?)", state)
   }
 
+  # This scope is used only on this model
+  scope :between_dates, -> (column, start_at, end_at) {
+    where(
+      "projects.#{column} between :start and :end",
+      {
+        start: start_at,
+        end: end_at
+      })
+  }
+
   scope :with_states, -> (state) { with_state(state) }
   scope :without_states, -> (state) { without_state(state) }
 
@@ -94,9 +104,38 @@ class Project < ActiveRecord::Base
   scope :by_id, ->(id) { where(id: id) }
   scope :by_goal, ->(goal) { where(goal: goal) }
   scope :by_category_id, ->(id) { where(category_id: id) }
-  scope :by_online_date, ->(online_date) { where(online_date: Time.zone.parse( online_date ).. Time.zone.parse( online_date ).end_of_day) }
-  scope :by_expires_at, ->(expires_at) { where(expires_at: Time.zone.parse( expires_at ).. Time.zone.parse( expires_at ).end_of_day) }
-  scope :by_updated_at, ->(updated_at) { where(updated_at: Time.zone.parse( updated_at ).. Time.zone.parse( updated_at ).end_of_day) }
+
+  scope :by_online_date, ->(online_date) {
+    between_dates('online_at',
+      Time.zone.parse(online_date),
+      Time.zone.parse(online_date).end_of_day )}
+
+  scope :by_expires_at, ->(expires_at) {
+    between_dates('expires_at',
+      Time.zone.parse(expires_at),
+      Time.zone.parse(expires_at).end_of_day)}
+
+  scope :by_updated_at, ->(updated_at) {
+    between_dates('updated_at',
+      Time.zone.parse(updated_at),
+      Time.zone.parse(updated_at).end_of_day)}
+
+  scope :recent, -> {
+    between_dates('online_at', 5.days.ago, Time.current) }
+
+  scope :expiring, -> {
+    not_expired.between_dates('expires_at', Time.current, 2.weeks.from_now) }
+
+  scope :not_expiring, -> {
+    not_expired.where.not(expires_at: Time.current.. 2.weeks.from_now) }
+
+  scope :financial, -> {
+    with_states(['online', 'successful', 'waiting_funds']).
+      between_dates('expires_at', 15.days.ago, Time.current) }
+
+  scope :of_current_week, -> {
+      between_dates('online_at', 7.days.ago, Time.current) }
+
   scope :by_permalink, ->(p) { without_state('deleted').where("lower(permalink) = lower(?)", p) }
   scope :recommended, -> { where(recommended: true) }
   scope :in_funding, -> { not_expired.with_states(['online']) }
@@ -104,12 +143,8 @@ class Project < ActiveRecord::Base
   scope :user_name_contains, ->(term) { joins(:user).where("unaccent(upper(users.name)) LIKE ('%'||unaccent(upper(?))||'%')", term) }
   scope :to_finish, ->{ expired.with_states(['online', 'waiting_funds']) }
   scope :visible, -> { without_states(['draft', 'rejected', 'deleted', 'in_analysis', 'approved']) }
-  scope :financial, -> { with_states(['online', 'successful', 'waiting_funds']).where(expires_at: 15.days.ago.. Time.current) }
   scope :expired, -> { where("projects.is_expired") }
   scope :not_expired, -> { where("not projects.is_expired") }
-  scope :expiring, -> { not_expired.where(expires_at: Time.current.. 2.weeks.from_now) }
-  scope :not_expiring, -> { not_expired.where.not(expires_at: Time.current.. 2.weeks.from_now) }
-  scope :recent, -> { where(online_date: 5.days.ago.. Time.current) }
   scope :ordered, -> { order(created_at: :desc)}
   scope :order_status, ->{ maybe_flex.order("
                                      CASE coalesce(fp.state, projects.state)
@@ -118,7 +153,7 @@ class Project < ActiveRecord::Base
                                      WHEN 'successful' THEN 3
                                      WHEN 'failed' THEN 4
                                      END ASC")}
-  scope :most_recent_first, ->{ order("projects.online_date DESC, projects.created_at DESC") }
+  scope :most_recent_first, ->{ order("projects.online_at DESC, projects.created_at DESC") }
   scope :order_for_admin, -> {
     maybe_flex.reorder("
             CASE coalesce(fp.state, projects.state)
@@ -126,14 +161,12 @@ class Project < ActiveRecord::Base
             WHEN 'waiting_funds' THEN 2
             WHEN 'successful' THEN 3
             WHEN 'failed' THEN 4
-            END ASC, projects.online_date DESC, projects.created_at DESC")
+            END ASC, projects.online_at DESC, projects.created_at DESC")
   }
 
   scope :with_contributions_confirmed_last_day, -> {
     joins(:contributions).merge(Contribution.confirmed_last_day).uniq
   }
-
-  scope :of_current_week, -> { where(online_date: 7.days.ago.. Time.current) }
 
   attr_accessor :accepted_terms
 
@@ -149,7 +182,7 @@ class Project < ActiveRecord::Base
   validates_presence_of :permalink, allow_nil: true
 
 
-  [:between_created_at, :between_expires_at, :between_online_date, :between_updated_at].each do |name|
+  [:between_created_at, :between_expires_at, :between_online_at, :between_updated_at].each do |name|
     define_singleton_method name do |starts_at, ends_at|
       return all unless starts_at.present? && ends_at.present?
       field = name.to_s.gsub('between_','')
@@ -270,7 +303,7 @@ class Project < ActiveRecord::Base
       project_state: self.state,
       category: self.category.name_pt,
       project_goal: self.goal,
-      project_online_date: self.online_date,
+      project_online_date: self.online_at,
       project_expires_at: self.expires_at,
       project_address_city: self.account.try(:address_city),
       project_address_state: self.account.try(:address_state),
@@ -310,8 +343,8 @@ class Project < ActiveRecord::Base
   end
 
   def update_expires_at
-    if self.online_days.present? && self.online_date.present?
-      self.expires_at = (self.online_date + self.online_days.days).end_of_day
+    if self.online_days.present? && self.online_at.present?
+      self.expires_at = (self.online_at + self.online_days.days).end_of_day
     end
   end
 
@@ -339,6 +372,10 @@ class Project < ActiveRecord::Base
     draft rejected online successful waiting_funds
     deleted in_analysis approved failed
   ).each do |st|
+    define_method "#{st}_at" do
+      pluck_from_database("#{st}_at")
+    end
+
     define_method "#{st}?" do
       if self.state.nil?
         self.state_machine.current_state == st

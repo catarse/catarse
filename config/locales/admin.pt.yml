@@ -46,7 +46,7 @@ pt:
         between_created_at: 'Criados entre'
         goal_between: 'Meta entre'
         between_expires_at: 'Expiram entre'
-        between_online_date: 'Entraram no ar entre'
+        between_online_at: 'Entraram no ar entre'
         between_updated_at: 'Atualizados entre'
         by_user_email: 'Email do realizador'
         id: ID

@@ -35,30 +35,17 @@ RSpec.describe ProjectObserver do
   end
 
   describe "#before_save" do
-    context "when project is not online" do
-      let(:project) { build(:project, state: 'approved', online_date: nil) }
-      before do
-        expect(project.expires_at).to eq nil
-      end
-      it "should update expires_at" do
-        project.save(validate: false)
-      end
+    let(:project) { build(:project, state: 'approved') }
+    before do
+      expect(project).to receive(:update_expires_at)
+    end
+    it "should call update_expires_at" do
+      project.save(validate: false)
     end
   end
 
   describe "#after_save" do
-    let(:project) { build(:project, state: 'approved', online_date: 10.days.from_now) }
-
-    context "when change the online_date" do
-      before do
-        expect(project).to receive(:remove_scheduled_job).with('ProjectSchedulerWorker')
-        expect(ProjectSchedulerWorker).to receive(:perform_at)
-      end
-      it "should call project scheduler" do
-        project.save(validate: false)
-      end
-    end
-
+    let(:project) { build(:project, state: 'approved') }
     context "when we change the video_url" do
       let(:project){ create(:project, video_url: 'http://vimeo.com/11198435', state: 'draft')}
       before do
@@ -97,10 +84,6 @@ RSpec.describe ProjectObserver do
   describe "#from_approved_to_online" do
     before do
       project.notify_observers(:from_approved_to_online)
-    end
-
-    context "should fill expires_at" do
-      it { expect(project.expires_at).to be_present }
     end
 
     it "should send project_visible notification" do
@@ -159,11 +142,13 @@ RSpec.describe ProjectObserver do
 
   describe "#from_online_to_failed" do
     let(:project) do
-      create(:project, {
+      create_project({
         goal: 100,
-        online_date: 3.days.ago,
         online_days: 30,
         state: 'online'
+      }, {
+        to_state: 'online',
+        created_at: 3.days.ago,
       })
     end
 

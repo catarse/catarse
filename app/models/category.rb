@@ -26,10 +26,6 @@ class Category < ActiveRecord::Base
     self.send('name_' + I18n.locale.to_s)
   end
 
-  def total_online_projects
-    @total_online_projects ||= self.projects.with_state('online').count
-  end
-
   def deliver_projects_of_week_notification
     self.users.to_send_category_notification(self.id).each do |user|
       self.notify(:categorized_projects_of_the_week, user, self)
