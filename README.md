@@ -107,11 +107,7 @@ If you want to create a payment engine, please join our mailing list at http://g
 
 ## How to contribute with code
 
-Before contributing, take a look at our Roadmap (https://www.pivotaltracker.com/projects/427075) and discuss your plans in our mailing list (http://groups.google.com/group/catarse-dev).
-
-Our Pivotal is concerned with user visible features using user stories. But we do have some features not visible to users that are planned such as:
-* Turn Catarse into a Rails Engine with customizable views.
-* Make an installer script to guide users through initial Catarse configuration.
+Discuss your plans in our mailing list (http://groups.google.com/group/catarse-dev).
 
 After that, just fork the project, change what you want, and send us a pull request.
 
