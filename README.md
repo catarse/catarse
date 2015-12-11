@@ -21,6 +21,8 @@ To run this project you need to have:
 
 * Ruby 2.2.3
 
+* Rails 4.1
+
 * [postgREST 0.2](https://github.com/begriffs/postgrest/releases/tag/v0.2.12.1)
 
 * [PostgreSQL 9.4](http://www.postgresql.org/)
