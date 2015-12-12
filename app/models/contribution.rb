@@ -90,10 +90,6 @@ class Contribution < ActiveRecord::Base
     end
   end
 
-  def available_rewards
-    project.rewards.where('minimum_value <= ?', self.value).order(:minimum_value)
-  end
-
   def notify_to_contributor(template_name, options = {})
     notify_once(template_name, self.user, self, options)
   end

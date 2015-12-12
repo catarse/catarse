@@ -136,24 +136,6 @@ RSpec.describe ContributionDetail, type: :model do
     it{ is_expected.to match_array [@contribution.details.first] }
   end
 
-  describe '#last_state_name' do
-    let(:contribution) { create(:contribution) }
-    let(:refunded_payment) { create(:payment, state: 'refunded', pending_refund_at: 2.days.ago, refunded_at: 1.day.ago, paid_at: 3.days.ago, value: contribution.value, contribution: contribution) }
-
-    before do
-      refunded_payment
-    end
-
-    subject do
-      detail = contribution.details.first
-      detail.last_state_name
-    end
-
-    it do
-      is_expected.to eq('pending_refund')
-    end
-  end
-
   describe ".available_to_display" do
     before do
       create(:confirmed_contribution)

@@ -8,7 +8,7 @@ class ContributionDetail < ActiveRecord::Base
   belongs_to :contribution
   belongs_to :payment
 
-  delegate :available_rewards, :payer_email, :payer_name, to: :contribution
+  delegate :payer_email, :payer_name, to: :contribution
   delegate :pay, :refuse, :trash, :chargeback, :refund, :request_refund, :request_refund!,
            :credits?, :paid?, :refused?, :pending?, :deleted?, :refunded?, :direct_refund,
            :slip_payment?, :pending_refund?, :second_slip_path,
@@ -63,22 +63,5 @@ class ContributionDetail < ActiveRecord::Base
       self.pending? &&
       self.slip_expired? &&
       (self.reward.nil? || !self.reward.sold_out?)
-  end
-
-  def last_state_name
-    if possible_states.empty?
-      :pending
-    else
-      possible_states.
-        sort! { |x,y| y[:at] <=> x[:at] }.
-        first[:state_name]
-    end
-  end
-
-  private
-  def possible_states
-    @possible_states ||= TRANSITION_DATES.map do |state_at|
-      { state_name: state_at.to_s.gsub(/_at/, ''), at: self.send(state_at) }
-    end.delete_if { |x| x[:at].nil? || x[:state_name] == self.state }
   end
 end
