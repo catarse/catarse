@@ -14,17 +14,6 @@ class ContributionDetail < ActiveRecord::Base
            :slip_payment?, :pending_refund?, :second_slip_path,
            :pagarme_delegator, :waiting_payment?, :slip_expired?, to: :payment
 
-  scope :search_on_acquirer, ->(acquirer_name){ where(acquirer_name: acquirer_name) }
-  scope :project_name_contains, ->(term) {
-    joins(:project).where(project: Project.pg_search(term).reorder('').pluck(:id)) #we need reorder due to a bug in pg_search
-  }
-  scope :by_payment_id, ->(term) { where(%{translate(?, '".', '') IN (gateway_id, key, translate((gateway_data->'acquirer_tid')::text, '".', ''))}, term) }
-  scope :by_user_id, ->(user_id) { where(user_id: user_id) }
-  scope :by_gateway, ->(gateway) { where(gateway: gateway) }
-  scope :by_payment_method, ->(payment_method) { where(payment_method: payment_method ) }
-  scope :user_name_contains, ->(term) { joins(:user).where("unaccent(upper(users.name)) LIKE ('%'||unaccent(upper(?))||'%')", term) }
-  scope :user_email_contains, ->(term) { joins(:user).where("unaccent(upper(users.email)) LIKE ('%'||unaccent(upper(?))||'%') OR unaccent(upper(payer_email)) LIKE ('%'||unaccent(upper(?))||'%')", term, term) }
-
   scope :with_state, ->(state){ where(state: state) }
   scope :was_confirmed, ->{ where("contribution_details.state = ANY(confirmed_states())") }
 
@@ -63,11 +52,6 @@ class ContributionDetail < ActiveRecord::Base
   scope :pending, -> { joins(:payment).merge(Payment.waiting_payment) }
 
   scope :ordered, -> { order(id: :desc) }
-
-  def self.between_values(start_at, ends_at)
-    return all unless start_at.present? && ends_at.present?
-    where("value between ? and ?", start_at, ends_at)
-  end
 
   def can_show_slip?
     self.slip_payment? && !self.slip_expired?
