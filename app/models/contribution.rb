@@ -98,10 +98,6 @@ class Contribution < ActiveRecord::Base
     notify_once(template_name, backoffice_user, self, options) if backoffice_user
   end
 
-  def self.payment_method_names
-    ['Pagarme', 'PayPal', 'MoIP']
-  end
-
   def pending?
     payments.with_state('pending').exists?
   end
