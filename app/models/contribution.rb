@@ -19,15 +19,9 @@ class Contribution < ActiveRecord::Base
   validates_presence_of :project, :user, :value, :payer_email
   validates_numericality_of :value, greater_than_or_equal_to: 10.00
 
-  scope :by_id, ->(id) { where(id: id) }
-  scope :anonymous, -> { where(anonymous: true) }
   scope :not_anonymous, -> { where(anonymous: false) }
   scope :confirmed_last_day, -> { where("EXISTS(SELECT true FROM payments p WHERE p.contribution_id = contributions.id AND p.state = 'paid' AND (current_timestamp - p.paid_at) < '1 day'::interval)") }
-  scope :can_cancel, -> { where(can_cancel: true) }
   scope :was_confirmed, -> { where("contributions.was_confirmed") }
-
-  # Contributions already refunded or with requested_refund should appear so that the user can see their status on the refunds list
-  scope :can_refund, ->{ where(can_refund: true) }
 
   scope :available_to_display, -> {
     where("EXISTS (SELECT true FROM payments p WHERE p.contribution_id = contributions.id AND p.state NOT IN ('deleted', 'refused'))")

@@ -86,19 +86,6 @@ RSpec.describe Contribution, type: :model do
     end
   end
 
-  describe ".can_refund" do
-    subject{ Contribution.can_refund.load }
-    before do
-      valid_refund
-      sucessful_project_contribution
-      unfinished_project
-      not_confirmed_contribution
-      successful_project.update_attributes state: 'successful'
-      failed_project.update_attributes state: 'failed'
-    end
-    it{ is_expected.to eq([valid_refund]) }
-  end
-
   describe "#can_refund?" do
     subject{ contribution.can_refund? }
     before do
