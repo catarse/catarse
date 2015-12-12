@@ -58,10 +58,6 @@ class Contribution < ActiveRecord::Base
     self.save
   end
 
-  def can_refund?
-    confirmed? && project.failed?
-  end
-
   def confirmed?
     @confirmed ||= Contribution.where(id: self.id).pluck('contributions.is_confirmed').first
   end
