@@ -4,8 +4,6 @@ ruby '2.2.3'
 
 gem 'rails', '~> 4.1.6'
 
-#gem 'catarse_api', path: '~/code/catarse_api'
-gem 'catarse_api', github: 'catarse/catarse_api'
 gem 'protected_attributes'
 gem 'rails-observers'
 gem 'rb-readline'
@@ -72,7 +70,7 @@ gem 'kaminari'
 gem 'redactor-rails', github: 'catarse/redactor-rails'
 
 # Uploads
-gem 'carrierwave'
+gem 'carrierwave', github: 'carrierwaveuploader/carrierwave', ref: '1578777fe3f30140347ebf27d1943471bbe4d425'
 gem "mini_magick"
 
 # Other Tools
