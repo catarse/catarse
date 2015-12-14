@@ -80,7 +80,7 @@ gem 'feedjira'
 gem 'inherited_resources'
 gem 'has_scope', '>= 0.6.0.rc'
 gem 'spectator-validates_email',  require: 'validates_email'
-gem 'video_info', '>= 1.1.1'
+gem 'video_info', '~> 2.4.2'
 gem 'typhoeus'
 
 # Translations
