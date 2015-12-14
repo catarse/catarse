@@ -86,49 +86,6 @@ RSpec.describe Contribution, type: :model do
     end
   end
 
-  describe ".can_refund" do
-    subject{ Contribution.can_refund.load }
-    before do
-      valid_refund
-      sucessful_project_contribution
-      unfinished_project
-      not_confirmed_contribution
-      successful_project.update_attributes state: 'successful'
-      failed_project.update_attributes state: 'failed'
-    end
-    it{ is_expected.to eq([valid_refund]) }
-  end
-
-  describe "#can_refund?" do
-    subject{ contribution.can_refund? }
-    before do
-      valid_refund
-      sucessful_project_contribution
-      successful_project.update_attributes state: 'successful'
-      failed_project.update_attributes state: 'failed'
-    end
-
-    context "when project is successful" do
-      let(:contribution){ sucessful_project_contribution }
-      it{ is_expected.to eq(false) }
-    end
-
-    context "when project is not finished" do
-      let(:contribution){ unfinished_project_contribution }
-      it{ is_expected.to eq(false) }
-    end
-
-    context "when contribution is not confirmed" do
-      let(:contribution){ not_confirmed_contribution }
-      it{ is_expected.to eq(false) }
-    end
-
-    context "when it's a valid refund" do
-      let(:contribution){ valid_refund }
-      it{ is_expected.to eq(true) }
-    end
-  end
-
   describe "#update_current_billing_info" do
     let(:contribution) { build(:contribution, user: user) }
     let(:user) {
