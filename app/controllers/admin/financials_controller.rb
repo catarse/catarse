@@ -27,7 +27,7 @@ class Admin::FinancialsController < Admin::BaseController
 
   protected
   def projects
-    apply_scopes(Project).includes(:user).order("CASE state WHEN 'successful' THEN 1 WHEN 'waiting_funds' THEN 2 ELSE 3 END, expires_at::date DESC")
+    apply_scopes(Project).includes(:user).order("expires_at::date DESC")
   end
 
   def collection
