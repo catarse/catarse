@@ -40,6 +40,8 @@ CREATE MATERIALIZED VIEW "1".statistics AS
         LEFT JOIN public.flexible_projects fp on fp.project_id = p.id
         WHERE coalesce(fp.state, p.state)::text <> ALL (ARRAY['draft', 'rejected'])
     ) projects_totals;
+
+GRANT SELECT ON "1".statistics TO admin, web_user, anonymous;
     SQL
   end
 
@@ -47,7 +49,7 @@ CREATE MATERIALIZED VIEW "1".statistics AS
     execute <<-SQL
 set statement_timeout to 0;
 DROP MATERIALIZED VIEW "1".statistics;
-CREATE OR REPLACE MATERIALIZED VIEW "1".statistics AS
+CREATE MATERIALIZED VIEW "1".statistics AS
  SELECT ( SELECT count(*) AS count
            FROM users) AS total_users,
     contributions_totals.total_contributions,
@@ -75,6 +77,8 @@ CREATE OR REPLACE MATERIALIZED VIEW "1".statistics AS
                 END) AS total_projects_online
            FROM projects
           WHERE projects.state::text <> ALL (ARRAY['draft'::character varying::text, 'rejected'::character varying::text])) projects_totals;
+
+GRANT SELECT ON "1".statistics TO admin, web_user, anonymous;
     SQL
   end
 end
