@@ -36,7 +36,8 @@ html
       = render_mixpanel_script
 
   body#catarse_bootstrap[data-controller-name=controller_name data-action=action_name data-user="#{current_user.try(:to_analytics_json)}" data-referral="#{session[:referral_link]}" data-id=params[:id] data-mobile=browser.mobile?.to_s itemscope itemtype="http://schema.org/WebPage" class="#{'body-alert' if can_display_pending_refund_alert?} #{content_for :body_class}"] 
-    script(async src="https://d335luupugsy2.cloudfront.net/js/loader-scripts/09f3866f-4c20-40a4-bfb8-68c2310d3964-loader.js" type="text/javascript")
+    - if CatarseSettings[:rd_token]
+      script(async src="https://d335luupugsy2.cloudfront.net/js/loader-scripts/09f3866f-4c20-40a4-bfb8-68c2310d3964-loader.js" type="text/javascript")
     /= render 'layouts/global_alert'
     = render 'layouts/pending_refund_top_alert' if can_display_pending_refund_alert?
     = render 'layouts/new_zendesk'
