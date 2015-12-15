@@ -30,8 +30,8 @@ RSpec.describe DonationsController, type: :controller do
 
       it{ is_expected.to be_success }
 
-      it 'should create donation for legacy and pagarme' do
-        expect(Donation.count).to eq 2
+      it 'should create donation for pagarme' do
+        expect(Donation.count).to eq 1
       end
 
       it 'should create notification' do
