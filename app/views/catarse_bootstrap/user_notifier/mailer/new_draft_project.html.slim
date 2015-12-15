@@ -2,7 +2,7 @@
 p
   | Categoria: #{link_to project.category, explore_url(anchor: "by_category/#{project.category_id}", ref: 'notificacao_draft_project')}
 p
-  | Tempo de preparo: #{distance_of_time_in_words(project.created_at, project.sent_to_analysis_at)}
+  | Tempo de preparo: #{distance_of_time_in_words(project.created_at, project.in_analysis_at)}
 p
   | Frase de efeito: #{project.headline}
 p

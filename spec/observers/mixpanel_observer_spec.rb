@@ -80,11 +80,17 @@ RSpec.describe MixpanelObserver do
   end
 
   describe "#after_update" do
-    [:video_url, :about_html, :headline, :uploaded_image].each do |attribute|
+    context "when we update a project's uploaded_image" do
+      it "should send tracker a track call with the change" do
+        expect(tracker).to receive(:track).with(project.user.id.to_s, "Project owner engaged with Catarse", project_owner_properties.merge(action: "Updated uploaded_image"), project.user.current_sign_in_ip)
+        project.update_attributes uploaded_image: File.open("#{Rails.root}/spec/fixtures/image.png")
+      end
+    end
+    [:video_url, :about_html, :headline].each do |attribute|
       context "when we update a project's #{attribute}" do
         it "should send tracker a track call with the change" do
           expect(tracker).to receive(:track).with(project.user.id.to_s, "Project owner engaged with Catarse", project_owner_properties.merge(action: "Updated #{attribute}"), project.user.current_sign_in_ip)
-          project.update_attributes attribute => 'http://youtu.be/teste'
+          project.update_attributes attribute => 'https://www.youtube.com/watch?v=t2GsgdXfC5Q'
         end
       end
     end

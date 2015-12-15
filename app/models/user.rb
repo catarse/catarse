@@ -91,44 +91,6 @@ class User < ActiveRecord::Base
     where("id NOT IN (SELECT user_id FROM unsubscribes WHERE project_id = ?)", project_id)
   }
 
-  scope :by_email, ->(email){ where('email ~* ?', email) }
-  scope :by_payer_email, ->(email) {
-    where('EXISTS(
-      SELECT true
-      FROM contributions
-      JOIN payment_notifications ON contributions.id = payment_notifications.contribution_id
-      WHERE contributions.user_id = users.id AND payment_notifications.extra_data ~* ?)', email)
-  }
-  scope :by_name, ->(name){ where('users.name ~* ?', name) }
-  scope :by_id, ->(id){ where(id: id) }
-  scope :by_key, ->(key){ where('EXISTS(
-                                SELECT true
-                                FROM
-                                  contributions c
-                                  JOIN payments p ON c.id = p.contribution_id
-                                WHERE c.user_id = users.id AND p.key = ?)', key
-                               ) }
-  scope :has_credits, -> { joins(:user_credit).where('user_credits.credits > 0 and not users.zero_credits') }
-  scope :already_used_credits, -> {
-    has_credits.
-    where("EXISTS (
-            SELECT true
-            FROM
-              contributions c
-              JOIN payments p ON c.id = p.contribution_id
-            WHERE p.uses_credits AND p.state = 'paid' AND c.user_id = users.id)")
-  }
-  scope :has_not_used_credits_last_month, -> { has_credits.
-    where("NOT EXISTS (
-                SELECT true
-                FROM
-                  contributions c
-                  JOIN payments p ON c.id = p.contribution_id
-                WHERE
-                  current_timestamp - c.created_at < '1 month'::interval
-                  AND p.uses_credits AND p.state = 'paid' AND c.user_id = users.id)")
-  }
-
   #FIXME: very slow query
   # This query is executed once a day in worst case and taks 1/2 second to excute
   # LGTM

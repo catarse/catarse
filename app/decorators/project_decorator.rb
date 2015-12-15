@@ -2,14 +2,6 @@ class ProjectDecorator < Draper::Decorator
   decorates :project
   include Draper::LazyHelpers
 
-  def remaining_text
-    pluralize_without_number(source.time_to_go[:time], I18n.t('remaining_singular'), I18n.t('remaining_plural'))
-  end
-
-  def state_warning_template
-    "#{source.state}_warning"
-  end
-
   def show_city
     if source.city.present?
       source.city.show_name
@@ -26,27 +18,6 @@ class ProjectDecorator < Draper::Decorator
       time: time_json.try(:[], 'total'),
       unit: pluralize_without_number(time_json.try(:[], 'total'), I18n.t("datetime.prompts.#{time_json.try(:[], 'unit')}").downcase)
     }
-  end
-
-  def remaining_days
-    source.time_to_go[:time]
-  end
-
-  def display_card_class
-    default_card = "card u-radius zindex-10"
-    aditional = ""
-    if source.waiting_funds?
-      aditional = 'card-waiting'
-    elsif source.successful?
-      aditional = 'card-success'
-    elsif source.failed?
-      aditional = 'card-error'
-    elsif source.draft? || source.in_analysis? || source.approved?
-      aditional = 'card-dark'
-    else
-      default_card = ""
-    end
-    "#{default_card} #{aditional}"
   end
 
   def display_status
@@ -67,10 +38,6 @@ class ProjectDecorator < Draper::Decorator
 
   def display_expires_at
     source.expires_at ? I18n.l(source.pluck_from_database('zone_expires_at').to_date) : ''
-  end
-
-  def display_online_date
-    source.online_date ? I18n.l(source.online_date.to_date) : ''
   end
 
   def progress

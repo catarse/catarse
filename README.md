@@ -20,6 +20,11 @@ The official repo is https://github.com/catarse/catarse
 To run this project you need to have:
 
 * Ruby 2.2.3
+
+* Rails 4.1
+
+* [postgREST 0.2](https://github.com/begriffs/postgrest/releases/tag/v0.2.12.1)
+
 * [PostgreSQL 9.4](http://www.postgresql.org/)
   * OSX - [Postgres.app](http://postgresapp.com/)
   * Linux - `$ sudo apt-get install postgresql`
@@ -58,10 +63,27 @@ To run this project you need to have:
 
         $ rake db:create db:migrate db:seed
 
+* Configure the API server
+
+	We provide authentication through JWT ([JSON Web Tokens](http://jwt.io/)) and it can be configured by `CatarseSettings` into rails console.
+
+		$ bundle exec rails console
+		> CatarseSettings[:api_host] = "http://localhost:3004" # postgREST server url
+		> CatarseSettings[:jwt_secret] = "gZH75aKtMN3Yj0iPS4hcgUuTwjAzZr9C" # this token is just a valid example
+
 If everything goes OK, you can now run the project!
 
 ### Running the project
 
+* Run API server
+
+	After download postgREST 0.2.x you can unpack and run the executable as bellow.
+
+		$ ./postgrest-0.2.12.1 -d catarse_development -U myuser --db-pass mypassword -a anonymous -p 3004 \
+				--db-pool 10 \
+				--jwt-secret gZH75aKtMN3Yj0iPS4hcgUuTwjAzZr9C
+
+* Run Rails server
 ```bash
 $ rails server
 ```
@@ -76,22 +98,14 @@ Thanks a lot to Daniel Walmsley, from http://purpose.com, for starting the inter
 
 ## Payment gateways
 
-Currently, we support MoIP, PayPal and WePay through our payment engines. Payment engines are extensions to Catarse that implement a specific payment gateway logic.
-The current working engines are:
-* MoIP
-* PayPal
-* WePay
+Currently, we support pagarme through our payment engines. Payment engines are extensions to Catarse that implement a specific payment gateway logic.
 
 If you have created a different payment engine to Catarse, please contact us so we can link your engine here.
 If you want to create a payment engine, please join our mailing list at http://groups.google.com/group/catarse-dev
 
 ## How to contribute with code
 
-Before contributing, take a look at our Roadmap (https://www.pivotaltracker.com/projects/427075) and discuss your plans in our mailing list (http://groups.google.com/group/catarse-dev).
-
-Our Pivotal is concerned with user visible features using user stories. But we do have some features not visible to users that are planned such as:
-* Turn Catarse into a Rails Engine with customizable views.
-* Make an installer script to guide users through initial Catarse configuration.
+Discuss your plans in our mailing list (http://groups.google.com/group/catarse-dev).
 
 After that, just fork the project, change what you want, and send us a pull request.
 

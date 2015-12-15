@@ -68,8 +68,8 @@ a:hover {
 }
 
 .section {
-  padding-top: 50px;
-  padding-bottom: 50px;
+  padding-top: 45px;
+  padding-bottom: 45px;
   background-color: white;
 }
 
@@ -3548,19 +3548,22 @@ a:hover {
   overflow-x: auto;
   overflow-y: auto;
   margin: auto;
-  padding: 25px;
+  padding-right: 40px;
+  padding-bottom: 25px;
+  padding-left: 40px;
   border-radius: 5px;
   background-color: white;
   box-shadow: rgba(63, 71, 82, 0.29) 1px 1px 49px 0px;
 }
 
-.modal-dialog-inner.modal-dialog-medium {
-  width: 550px;
-  height: 500px;
+.modal-dialog-inner.modal-dialog-small {
+  width: 590px;
+  height: 530px;
 }
 
 .modal-dialog-content {
-  height: 80%;
+  height: 70%;
+  padding-top: 40px;
 }
 
 .modal-dialog-nav-bottom {
@@ -4038,6 +4041,25 @@ a:hover {
   border: 1px solid #ddd;
   background-color: #ddd;
   box-shadow: transparent 1px 1px 3px 0px;
+}
+
+.modal-close {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  margin-top: 15px;
+  margin-right: 20px;
+  color: #c2c2c2;
+  text-decoration: none;
+}
+
+.modal-dialog-header {
+  height: 10%;
+  margin-right: -40px;
+  margin-left: -40px;
+  padding-top: 10px;
+  border-bottom: 1px solid #e9e9ec;
+  background-color: #f1f4f4;
 }
 
 html.w-mod-js *[data-ix="fade-in"] {
@@ -4544,17 +4566,13 @@ html.w-mod-js *[data-ix="icon-funded-with"] {
   .modal-dialog-inner {
     width: 100%;
     height: 100%;
-    background-color: rgba(255, 255, 255, 0.62);
   }
-  .modal-dialog-inner.modal-dialog-medium {
+  .modal-dialog-inner.modal-dialog-small {
     width: auto;
     height: auto;
   }
   .modal-dialog-nav-bottom {
-    position: fixed;
-    left: 0px;
-    right: 0px;
-    bottom: 0px;
+    position: static;
   }
   .logo-flex-home {
     width: 309px;
@@ -4583,6 +4601,9 @@ html.w-mod-js *[data-ix="icon-funded-with"] {
   }
   .how-col-02 {
     height: 175px;
+  }
+  .modal-dialog-header {
+    height: 50px;
   }
 }
 
@@ -5710,6 +5731,13 @@ html.w-mod-js *[data-ix="icon-funded-with"] {
   .project-image {
     height: 178px;
     margin-bottom: 20px;
+  }
+  .modal-dialog-inner {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+  .modal-dialog-content {
+    padding-top: 29px;
   }
   .logo-flex-home {
     width: 179px;

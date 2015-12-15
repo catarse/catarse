@@ -35,7 +35,7 @@ RSpec.describe Payment, type: :model do
     end
 
     context "when project is expired" do
-      let(:project){ create(:project, online_date: Time.current - 30.day, online_days: 1, expires_at: 2.days.ago, state: 'online') }
+      let(:project){ create_project({state: 'online', online_days: 1, expires_at: 2.days.ago}, {created_at: Time.current, to_state: 'online'}) }
 
       before do
         payment.valid?
@@ -121,7 +121,7 @@ RSpec.describe Payment, type: :model do
     subject { payment.slip_expired? }
 
     context "when slipt is past expiration date" do
-      let(:payment){ create(:payment, state: 'pending', created_at: (Payment.slip_expiration_weekdays.weekdays_ago - 3.day)) }
+      let(:payment){ create(:payment, state: 'pending', created_at: (Time.now - (Payment.slip_expiration_weekdays.day + 3.day))) }
       it{ is_expected.to eq true }
     end
 

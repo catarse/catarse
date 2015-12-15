@@ -46,7 +46,7 @@ pt:
         between_created_at: 'Criados entre'
         goal_between: 'Meta entre'
         between_expires_at: 'Expiram entre'
-        between_online_date: 'Entraram no ar entre'
+        between_online_at: 'Entraram no ar entre'
         between_updated_at: 'Atualizados entre'
         by_user_email: 'Email do realizador'
         id: ID
@@ -80,8 +80,7 @@ pt:
     users:
       index:
         title: "Gerenciamento de apoiadores"
-        menu: "Apoiadores"
-        new_menu: "Usuários - Beta"
+        menu: "Usuários"
         credits: "Créditos"
         credits_view: "Créditos calculados"
         id: Id
@@ -158,7 +157,6 @@ pt:
         title: "Gerenciamento de apoios"
         state: 'Estado atual'
         menu: "Apoios"
-        new_menu: "Apoios - Beta"
         anonymous: Anônimo?
         contribution: Apoio
         confirmed: Confirmado?

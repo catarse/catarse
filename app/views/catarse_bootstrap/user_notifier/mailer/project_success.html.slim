@@ -11,7 +11,7 @@ p O projeto #{link_to project.name, project_link} foi financiado!
 '  Reunimos aqui algumas <strong>informações importantíssimas para essa nova etapa!</strong>
 br/
 br/
-| <strong>1</strong> - O valor arrecadado estará disponível na sua conta bancária  até o <strong>dia #{10.weekdays_from(project.expires_at).strftime('%d/%m/%Y')}</strong>
+| <strong>1</strong> - O valor arrecadado estará disponível na sua conta bancária  até o <strong>dia #{(project.expires_at + 15.days).strftime('%d/%m/%Y')}</strong>
 br/
 | <strong>ATENÇÃO</strong>: Para fazer o repasse utilizaremos as informações cadastrais e bancárias preenchidas na #{link_to 'aba Conta', edit_project_url(project, anchor: 'user_settings') }. <strong>Certifique-se de que os dados estão corretos</strong>.
 br/
