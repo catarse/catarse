@@ -19,15 +19,9 @@ class Contribution < ActiveRecord::Base
   validates_presence_of :project, :user, :value, :payer_email
   validates_numericality_of :value, greater_than_or_equal_to: 10.00
 
-  scope :by_id, ->(id) { where(id: id) }
-  scope :anonymous, -> { where(anonymous: true) }
   scope :not_anonymous, -> { where(anonymous: false) }
   scope :confirmed_last_day, -> { where("EXISTS(SELECT true FROM payments p WHERE p.contribution_id = contributions.id AND p.state = 'paid' AND (current_timestamp - p.paid_at) < '1 day'::interval)") }
-  scope :can_cancel, -> { where(can_cancel: true) }
   scope :was_confirmed, -> { where("contributions.was_confirmed") }
-
-  # Contributions already refunded or with requested_refund should appear so that the user can see their status on the refunds list
-  scope :can_refund, ->{ where(can_refund: true) }
 
   scope :available_to_display, -> {
     where("EXISTS (SELECT true FROM payments p WHERE p.contribution_id = contributions.id AND p.state NOT IN ('deleted', 'refused'))")
@@ -64,10 +58,6 @@ class Contribution < ActiveRecord::Base
     self.save
   end
 
-  def can_refund?
-    confirmed? && project.failed?
-  end
-
   def confirmed?
     @confirmed ||= Contribution.where(id: self.id).pluck('contributions.is_confirmed').first
   end
@@ -96,20 +86,12 @@ class Contribution < ActiveRecord::Base
     end
   end
 
-  def available_rewards
-    project.rewards.where('minimum_value <= ?', self.value).order(:minimum_value)
-  end
-
   def notify_to_contributor(template_name, options = {})
     notify_once(template_name, self.user, self, options)
   end
 
   def notify_to_backoffice(template_name, options = {}, backoffice_user = User.find_by(email: CatarseSettings[:email_payments]))
     notify_once(template_name, backoffice_user, self, options) if backoffice_user
-  end
-
-  def self.payment_method_names
-    ['Pagarme', 'PayPal', 'MoIP']
   end
 
   def pending?

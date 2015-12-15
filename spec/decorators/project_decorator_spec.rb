@@ -3,20 +3,6 @@ require 'rails_helper'
 RSpec.describe ProjectDecorator do
   let(:project){ create(:project, about_html: 'Foo Bar http://www.foo.bar <javascript>xss()</javascript>"Click here":http://click.here') }
 
-  describe "#state_warning_template" do
-    subject{ project.state_warning_template }
-    context "when project is in analysis" do
-      let(:project){ Project.new state: 'in_analysis' }
-      it{ is_expected.to eq('in_analysis_warning') }
-    end
-
-    context "when project is a draft" do
-      let(:project){ Project.new state: 'draft' }
-      it{ is_expected.to eq('draft_warning') }
-    end
-  end
-
-
   describe "#time_to_go" do
     let(:project){ create(:project, state: 'draft', online_days: nil) }
     subject{ project.time_to_go }
@@ -85,31 +71,14 @@ RSpec.describe ProjectDecorator do
   describe "#display_expires_at" do
     subject{ project.display_expires_at }
 
-    context "when online_date is nil" do
-      let(:project){ create(:project, online_date: nil) }
+    context "when online_at is nil" do
+      let(:project){ create(:project, state: 'draft') }
       it{ is_expected.to eq('') }
     end
 
     context "when we have an online_date" do
-      let(:project){ create(:project, online_date: Time.current, online_days: 1) }
+      let(:project){ create_project({state: 'online', online_days: 1}, {to_state: 'online', created_at: Time.current.to_date}) }
       it{ is_expected.to eq(I18n.l((Time.current + 1.day).end_of_day.to_date)) }
-    end
-  end
-
-  describe "#display_online_date" do
-    subject{ project.display_online_date }
-
-    context "when online_date is nil" do
-      let(:project){ create(:project, online_date: nil) }
-      it{ is_expected.to eq('') }
-    end
-
-    context "when we have an online_date" do
-      let(:project){ create(:project, online_date: Time.now) }
-      before do
-        expect(I18n).to receive(:l).with(project.online_date.to_date)
-      end
-      it("should call I18n with date"){ subject }
     end
   end
 
@@ -129,63 +98,6 @@ RSpec.describe ProjectDecorator do
     context "when we have an uploaded_image" do
       let(:project){ build(:project, state: 'draft', uploaded_image: File.open("#{Rails.root}/spec/fixtures/image.png"), video_thumbnail: nil) }
       it{ is_expected.to eq(project.uploaded_image.project_thumb.url) }
-    end
-  end
-
-  describe "#display_card_class" do
-    subject{ project.display_card_class }
-    let(:default_card){ "card u-radius zindex-10" }
-    let(:aditional){ "" }
-    let(:card_class){ "#{default_card} #{aditional}" }
-    context "when online and reached goal" do
-      before do
-        allow(project).to receive(:state).and_return('online')
-        allow(project).to receive(:reached_goal?).and_return(true)
-      end
-      let(:aditional){ "card-success" }
-      it{ is_expected.to eq(" ") }
-    end
-    context "when online and have not reached goal yet" do
-      before do
-        allow(project).to receive(:state).and_return('online')
-        allow(project).to receive(:reached_goal?).and_return(false)
-      end
-      it{ should == " " }
-    end
-    context "when failed" do
-      before do
-        allow(project).to receive(:state).and_return('failed')
-      end
-      let(:aditional){ "card-error" }
-      it{ should == card_class }
-    end
-    context "when in_analysis" do
-      before do
-        allow(project).to receive(:state).and_return('in_analysis')
-      end
-      let(:aditional){ "card-dark" }
-      it{ should == card_class }
-    end
-    context "when draft" do
-      before do
-        allow(project).to receive(:state).and_return('draft')
-      end
-      let(:aditional){ "card-dark" }
-      it{ should == card_class }
-    end
-    context "when waiting funds" do
-      before do
-        allow(project).to receive(:state).and_return('waiting_funds')
-      end
-      let(:aditional){ "card-waiting" }
-      it{ should == card_class }
-    end
-    context "when successful" do
-      before do
-        allow(project).to receive(:state).and_return('successful')
-      end
-      let(:aditional){ "card-success" }
-      it{ should == card_class }
     end
   end
 

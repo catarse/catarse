@@ -20,7 +20,7 @@
       .w-col-2.w-col
         = form.input :with_state, collection: Project.state_names, label: t('admin.filter.with_state'), as: :select, selected: params[:with_state], include_blank: true, input_html: { class: 'w-input text-field' }
     .w-row
-      - [:between_created_at, :between_expires_at, :between_online_date, :between_updated_at, :goal_between].each_with_index do |between_field, index|
+      - [:between_created_at, :between_expires_at, :between_online_at, :between_updated_at, :goal_between].each_with_index do |between_field, index|
         - mask = (between_field == :goal_between ? nil : '99/99/9999')
         - if index % 3 == 0
           .w-row
