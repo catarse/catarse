@@ -37,7 +37,7 @@ pt:
         src: 'https://www.youtube.com/watch?v=FlFTcDSKnLM'
       categories:
         title: 'O Catarse tem espaço para vários tipos de projetos! Conheça nossas categorias!'
-        pledged: 'Arrecadou R$ {{pledged}} com {{contributors}} apoios para o projeto'
+        pledged: 'Arrecadou R$ {{pledged}} com {{contributors}} apoios para o projeto '
         loading_featured: 'carregando projeto destaque...'
         no_featured: 'Nenhum projeto em destaque.'
       categoryProjects:
