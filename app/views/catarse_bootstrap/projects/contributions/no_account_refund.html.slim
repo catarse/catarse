@@ -1,4 +1,5 @@
 = render 'shared/header'
+- can_donate = resource.user.pending_refund_payments.present?
 
 #contribution-donation
   .w-section.section-one-column.u-margintop-40
@@ -12,11 +13,12 @@
             amount: resource.user.decorator.display_pending_refund_payments_amount)
         .w-col.w-col-2
       .w-row
-        .w-col.w-col-6
-          .card.medium.card-terciary.u-radius
-            = link_to 'Quero doar para o Catarse!', confirm_donations_path, class: 'w-button btn btn-large u-marginbottom-30', method: 'get'
-            .fontsize-small ihaaa! Seu dinheiro será utilizado para financiar operações do Catarse e um monte de inovações que vem por aí em 2016. São novidades que certamente ajudarão muita gente. Sinta-se parte do time e ajude a espalhar o financiamento coletivo no Brasil!
-        .w-col.w-col-6
+        - if can_donate
+          .w-col.w-col-6
+            .card.medium.card-terciary.u-radius
+              = link_to 'Quero doar para o Catarse!', confirm_donations_path, class: 'w-button btn btn-large u-marginbottom-30', method: 'get'
+              .fontsize-small ihaaa! Seu dinheiro será utilizado para financiar operações do Catarse e um monte de inovações que vem por aí em 2016. São novidades que certamente ajudarão muita gente. Sinta-se parte do time e ajude a espalhar o financiamento coletivo no Brasil!
+        .w-col.w-col-6 class="#{can_donate ? '' : 'w-col-push-3'}"
           .card.medium.card-terciary.u-radius.u-marginbottom-20
             = link_to 'Quero meu dinheiro de volta!', new_bank_account_path, class: 'w-button btn btn-large u-marginbottom-30'
             .fontsize-small Seu dinheiro será depositado integralmente em sua conta bancária em até 5 dias úteis. Para que possamos efetuar essa transferência, basta nos informar seus dados bancários. Nenhuma taxa é cobrada nesta operação, fique tranquilo!
