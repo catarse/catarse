@@ -21,7 +21,6 @@
 //= require jquery-ui
 //= require jQuery-Mask-Plugin
 //= require jquery-sticky
-//= require jquery-smooth-scroll
 //= require jquery-typewatch
 //= require store
 //= require mithril
