@@ -1,4 +1,5 @@
 class Projects::ContributionsController < ApplicationController
+  DEFAULT_AMOUNT = 30
   inherit_resources
   actions :index, :show, :new, :update, :review, :create
   skip_before_filter :verify_authenticity_token, only: [:moip]
@@ -30,7 +31,7 @@ class Projects::ContributionsController < ApplicationController
   end
 
   def new
-    @contribution = Contribution.new(project: parent, value: (params[:amount].presence || 10).to_i)
+    @contribution = Contribution.new(project: parent, value: (params[:amount].presence || DEFAULT_AMOUNT).to_i)
     authorize @contribution
 
     @title = t('projects.contributions.new.title', name: @project.name)
