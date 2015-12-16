@@ -59,9 +59,6 @@ class User < ActiveRecord::Base
   has_many :user_transfers
   has_many :project_posts
   has_many :donations
-  has_many :contributed_projects, -> do
-    distinct.where("contributions.was_confirmed").order('projects.created_at DESC')
-  end, through: :contributions, source: :project
   has_many :category_followers, dependent: :destroy
   has_many :categories, through: :category_followers
   has_many :links, class_name: 'UserLink', inverse_of: :user
@@ -107,6 +104,11 @@ class User < ActiveRecord::Base
 
   def self.find_active!(id)
     self.active.where(id: id).first!
+  end
+
+  def contributed_projects
+    project_ids =  contributions.where("contributions.was_confirmed").pluck(:project_id).uniq
+    Project.where(id: project_ids)
   end
 
   # Return the projects that user has pending refund payments
