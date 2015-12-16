@@ -80,7 +80,7 @@
             td.w-col-1.w-col= "#{project.display_pledged_with_cents} (#{project.progress}%)"
             td.w-col-1.w-col= project.total_contributions
             td.w-col-1.w-col= best_in_place [:admin, project], :recommended, method: :put, type: :checkbox, collection: [t('no'), t('yes')]
-            td.w-col-1.w-col= project.online_date.strftime('%d/%m/%Y') if project.online_date
+            td.w-col-1.w-col= project.online_at.strftime('%d/%m/%Y') if project.online_at
             td.w-col-1.w-col= project.display_expires_at
             td.w-col-1.w-col= project.updated_at.strftime('%d/%m/%Y')
             td.w-col-1.w-col
