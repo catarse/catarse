@@ -13,7 +13,8 @@ br/
 br/
 | <strong>1</strong> - O valor arrecadado estará disponível na sua conta bancária  até o <strong>dia #{(project.expires_at + 15.days).strftime('%d/%m/%Y')}</strong>
 br/
-| <strong>ATENÇÃO</strong>: Para fazer o repasse utilizaremos as informações cadastrais e bancárias preenchidas na #{link_to 'aba Conta', edit_project_url(project, anchor: 'user_settings') }. <strong>Certifique-se de que os dados estão corretos</strong>.
+| <strong>ATENÇÃO</strong>: Para que tudo corra bem e não haja nenhum atraso no envio do dinheiro é importante atualizar seus os dados bancários na #{link_to 'aba Conta', edit_project_url(project, anchor: 'user_settings') }. <strong>Caso precise fazer alterações no cadastro atual, por favor, envie os dados corretos em resposta a esta mensagem. 
+</strong>.
 br/
 strong> Confira:
 = link_to 'Como será feito o repasse?', 'http://suporte.catarse.me/hc/pt-br/articles/202037493-Como-ser%C3%A1-feito-o-repasse-do-dinheiro-', target: '__blank'
@@ -31,7 +32,7 @@ br/
 = image_tag 'https://s3.amazonaws.com/cdn.catarse/notifications_assets/post.gif', width: 600
 br/
 br/
-p Se ficou com alguma dúvida, responda a esta mensagem diretamente ou fale conosco através do e-mail #{mail_to CatarseSettings[:email_projects]}. Caso precise falar via telefone estaremos a disposição de segunda à sexta das 14h às 18h no telefone  (11) 98414-0173.
+p Se ficou com alguma dúvida, responda a esta mensagem diretamente ou fale conosco através do e-mail #{mail_to CatarseSettings[:email_projects]}. Caso precise falar via telefone estaremos a disposição de segunda à sexta das 14h às 18h no telefone  (11) 98414-0090.
 p Um abraço apertado de parabéns!
 br/
 | A equipe do #{company_name} está vibrando com você!!!!
