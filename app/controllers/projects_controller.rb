@@ -102,7 +102,7 @@ class ProjectsController < ApplicationController
 
   def embed
     resource
-    render partial: 'card', layout: 'embed', locals: {embed_link: true, ref: (params[:ref] || 'embed')}
+    render partial: 'card', layout: 'embed', locals: {embed_link: true, ref: (params[:ref] || 'ctrse_embed')}
   end
 
   def embed_panel
