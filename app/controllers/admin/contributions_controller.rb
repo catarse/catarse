@@ -1,6 +1,7 @@
 class Admin::ContributionsController < Admin::BaseController
   layout 'catarse_bootstrap'
 
+  # gateway_refund is used as external action in catarse.js
   def gateway_refund
     resource.direct_refund
     respond_to do |format|
