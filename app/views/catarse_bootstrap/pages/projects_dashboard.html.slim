@@ -1,0 +1,8 @@
+- content_for :title, t('.title')
+- content_for :application_js do
+  = javascript_include_tag 'api/application' 
+= render 'shared/header_big'
+
+#projects_dashboard[data-mithril="ProjectsDashboard" data-parameters={project_id: @project.id, project_user_id: @project.user_id}.to_json data-stats=@project.to_analytics_json]
+
+= render 'shared/footer_big'

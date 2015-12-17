@@ -137,7 +137,6 @@ GEM
       compass (~> 1.0.0)
       sass-rails (< 5.1)
       sprockets (< 2.13)
-    concurrent-ruby (1.0.0)
     connection_pool (2.2.0)
     daemons (1.2.3)
     database_cleaner (1.5.1)
