@@ -46,6 +46,13 @@ FactoryGirl.define do
     f.association :project
   end
 
+  factory :balance_transaction do |f| 
+    f.association :user
+    f.association :project
+    f.amount 100
+    f.event_name 'foo'
+  end
+
   factory :user do |f|
     f.association :bank_account
     f.permalink { generate(:permalink) }
