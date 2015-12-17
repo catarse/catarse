@@ -44,7 +44,7 @@ pt:
         ctrse_universohq: 'Universo HQ (parceria Catarse)'
         ctrse_catraca: 'Catraca Livre (parceria Catarse)'
         ctrse_hypeness: 'Hypeness (parceria Catarse)'
-        others: 'outros'
+        others: 'Direto'
       ref_table:
         header:
           origin: 'Fonte'
