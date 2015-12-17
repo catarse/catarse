@@ -139,19 +139,11 @@ Catarse::Application.routes.draw do
 
     resources :financials, only: [ :index ]
 
-    resources :contributions, only: [ :index, :update, :show ] do
+    resources :contributions, only: [] do
       member do
-        get :second_slip
-        put 'pay'
-        put 'change_reward'
-        put 'refund'
-        put 'trash'
-        put 'request_refund'
-        put 'chargeback'
         put 'gateway_refund'
       end
     end
-    resources :users, only: [ :index ]
 
     namespace :reports do
       resources :contribution_reports, only: [ :index ]
