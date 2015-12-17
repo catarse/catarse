@@ -18,6 +18,7 @@
   meta property="og:type" content='cause'
   meta property="og:image" content=@project.display_image('project_thumb_facebook')
   meta property="og:site_name" content=CatarseSettings[:company_name]
+  meta property="og:updated_time" content=@project.updated_at.iso8601
   meta property="fb:app_id" content=CatarseSettings[:fb_app_id]
   - fb_admins.each do |admin|
     meta property="fb:admins" content="#{admin}"
