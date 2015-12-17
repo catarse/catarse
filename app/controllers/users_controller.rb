@@ -8,6 +8,10 @@ class UsersController < ApplicationController
   respond_to :json, only: [:contributions, :projects]
   before_action :referral_it!, only: [:show]
 
+  def balance
+    authorize resource, :update?
+  end
+
   def destroy
     authorize resource
     resource.deactivate
