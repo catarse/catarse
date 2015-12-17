@@ -593,11 +593,14 @@ img, iframe
 .project-nav
   .project-nav-back-button
     +transition(all 650ms)
-    +transform(translate3d(0, 60px, 0))
+    +transform(translate3d(0, -70px, 0))
 
 .project-nav.project-nav-fixed
   .project-nav-back-button
     +transform(translate3d(0, 0, 0))
+
+.project-nav-fixed
+  overflow: visible
 
 .link-hidden-success
   color: #7cc142
@@ -609,3 +612,10 @@ img, iframe
 
 .margin-side-5
   margin: 0 5px
+
+.flash
+  width: 350px
+
+.btn,
+.btn-link
+  outline: none
