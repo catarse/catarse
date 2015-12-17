@@ -619,3 +619,16 @@ img, iframe
 .btn,
 .btn-link
   outline: none
+
+.category-slider
+  max-height: 0
+  overflow: hidden
+  +transition(all 650ms)
+.category-slider.opened
+  max-height: 1000px
+
+#explore-btn
+  +transition(all 650ms)
+#explore-btn.opened
+  +transform(rotate(180deg))
+
