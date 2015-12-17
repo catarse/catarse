@@ -60,7 +60,7 @@ class User < ActiveRecord::Base
   has_many :project_posts
   has_many :donations
   has_many :contributed_projects, -> do
-    distinct.where("contributions.was_confirmed").order('projects.created_at DESC')
+    distinct.where("contributions.was_confirmed")
   end, through: :contributions, source: :project
   has_many :category_followers, dependent: :destroy
   has_many :categories, through: :category_followers

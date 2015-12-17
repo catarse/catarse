@@ -154,7 +154,7 @@ class Project < ActiveRecord::Base
                                      WHEN 'successful' THEN 3
                                      WHEN 'failed' THEN 4
                                      END ASC")}
-  scope :most_recent_first, ->{ order("projects.online_at DESC, projects.created_at DESC") }
+  scope :most_recent_first, ->{ order("projects.id DESC") }
   scope :order_for_admin, -> {
     maybe_flex.reorder("
             CASE coalesce(fp.state, projects.state)

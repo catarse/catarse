@@ -48,6 +48,8 @@ App.addChild('Contribution', {
       this.isOnAutoScroll = false;
       this.activateFloattingHeader();
     }
+    // copy default value from rendered contribution
+    $('.user-reward-value:first').val($('#contribution_value').val());
   },
 
   activateFloattingHeader: function(){
