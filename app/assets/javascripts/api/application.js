@@ -17,8 +17,7 @@
 
   I18n.locale = "pt";
 
-  var adminRoot = document.getElementById('new-admin'),
-      rootComponents = _.extend({}, c.pages, c.contribution, c.project);
+  var adminRoot = document.getElementById('new-admin');
 
   if(adminRoot){
     m.route.mode = 'hash';
@@ -29,7 +28,7 @@
   }
 
   _.each(document.querySelectorAll('div[data-mithril]'), function(el){
-    var component = rootComponents[el.attributes['data-mithril'].value],
+    var component = c.root[el.attributes['data-mithril'].value],
         paramAttr = el.attributes['data-parameters'],
         params = paramAttr && JSON.parse(paramAttr.value);
     m.mount(el, m.component(component, _.extend({root: el}, params)));
