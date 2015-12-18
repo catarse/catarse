@@ -15,7 +15,7 @@ class MaterializeCategoryTotals < ActiveRecord::Migration
             sum(pt.pledged) AS total_value
            FROM projects p_1
              JOIN categories ca ON ca.id = p_1.category_id
-             LEFT JOIN project_totals pt ON pt.project_id = p_1.id
+             LEFT JOIN "1".project_totals pt ON pt.project_id = p_1.id
           WHERE p_1.state::text <> ALL (ARRAY['draft'::character varying::text, 'in_analysis'::character varying::text, 'rejected'::character varying::text])
           GROUP BY ca.id
         ), contribution_stats AS (
@@ -72,7 +72,7 @@ class MaterializeCategoryTotals < ActiveRecord::Migration
             sum(pt.pledged) AS total_value
            FROM projects p_1
              JOIN categories ca ON ca.id = p_1.category_id
-             LEFT JOIN project_totals pt ON pt.project_id = p_1.id
+             LEFT JOIN "1".project_totals pt ON pt.project_id = p_1.id
           WHERE p_1.state::text <> ALL (ARRAY['draft'::character varying::text, 'in_analysis'::character varying::text, 'rejected'::character varying::text])
           GROUP BY ca.id
         ), contribution_stats AS (
