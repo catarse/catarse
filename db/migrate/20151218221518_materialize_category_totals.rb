@@ -1,7 +1,7 @@
 class MaterializeCategoryTotals < ActiveRecord::Migration
   def up
     execute <<-SQL
-    DROP VIEW "1".category_totals;
+    DROP VIEW IF EXISTS "1".category_totals;
     CREATE MATERIALIZED VIEW "1".category_totals AS
      WITH project_stats AS (
          SELECT ca.id AS category_id,
