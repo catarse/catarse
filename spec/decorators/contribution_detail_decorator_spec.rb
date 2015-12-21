@@ -52,7 +52,7 @@ RSpec.describe ContributionDetailDecorator do
         subject { detail.decorate.display_date(field)}
         before do
           attributes = {}
-          attributes[field] = Time.now
+          attributes[field] = Time.zone.now
           payment.update_attributes attributes
         end
 
