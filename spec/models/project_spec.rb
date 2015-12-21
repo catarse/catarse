@@ -175,7 +175,7 @@ RSpec.describe Project, type: :model do
       it{ is_expected.to allow_value(62).for(:online_days) }
 
       it "should update expires_at" do
-        expect(project.expires_at).to eq (project.online_at + project.online_days.days).end_of_day
+        expect(project.expires_at).to eq (project.online_at.in_time_zone + project.online_days.days).end_of_day
       end
     end
 
