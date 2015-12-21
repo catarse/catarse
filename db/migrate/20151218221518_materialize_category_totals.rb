@@ -108,6 +108,8 @@ class MaterializeCategoryTotals < ActiveRecord::Migration
    FROM project_stats p
      JOIN contribution_stats c USING (category_id)
      LEFT JOIN followers cf USING (category_id);
+
+     GRANT SELECT ON "1".category_totals TO admin, anonymous, web_user;
     SQL
   end
 end
