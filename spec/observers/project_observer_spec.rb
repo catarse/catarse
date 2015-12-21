@@ -35,12 +35,28 @@ RSpec.describe ProjectObserver do
   end
 
   describe "#before_save" do
-    let(:project) { build(:project, state: 'approved') }
-    before do
-      expect(project).to receive(:update_expires_at)
+    context "when project is new" do
+      before do
+        expect(project).to receive(:update_expires_at)
+      end
+
+      let(:project) { build(:project, state: 'approved') }
+
+      it "should call update_expires_at" do
+        project.save(validate: false)
+      end
     end
-    it "should call update_expires_at" do
-      project.save(validate: false)
+
+    context "when project is being updated and online_days does not change" do
+      before do
+        expect(project).to_not receive(:update_expires_at)
+      end
+
+      let!(:project) { create(:project, state: 'approved') }
+
+      it "should not call update_expires_at" do
+        project.save(validate: false)
+      end
     end
   end
 
