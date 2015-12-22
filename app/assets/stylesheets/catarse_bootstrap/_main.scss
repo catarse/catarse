@@ -2012,7 +2012,7 @@ a:hover {
   overflow-y: auto;
   width: 218px;
   padding-top: 35px;
-  padding-right: 13px;
+  padding-right: 15px;
   padding-left: 0px;
   border-width: 0px;
   border-color: black;
@@ -2374,6 +2374,15 @@ a:hover {
   background-image: url('/assets/bg-hero-start_1.png');
   background-size: 1383px;
   background-repeat: no-repeat;
+}
+
+.hero-full.hero-2016 {
+  padding-top: 136px;
+  background-image: url('/assets/hero-2015.png'), -webkit-linear-gradient(#392a75, #281c5d);
+  background-image: url('/assets/hero-2015.png'), linear-gradient(#392a75, #281c5d);
+  background-position: 50% 100%, 0px 0px;
+  background-size: 931px, auto;
+  background-repeat: no-repeat, repeat;
 }
 
 .hero-guide {
@@ -4072,9 +4081,9 @@ html.w-mod-js *[data-ix="display-none-on-load"] {
 
 html.w-mod-js *[data-ix="zoom-in"] {
   opacity: 0;
-  -webkit-transform: scale(1.1500000000000001);
-  -ms-transform: scale(1.1500000000000001);
-  transform: scale(1.1500000000000001);
+  -webkit-transform: scale(1.1500000000000001, 1.1500000000000001);
+  -ms-transform: scale(1.1500000000000001, 1.1500000000000001);
+  transform: scale(1.1500000000000001, 1.1500000000000001);
 }
 
 html.w-mod-js *[data-ix="display-none-on-load-2"] {
@@ -4084,30 +4093,18 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
 
 html.w-mod-js *[data-ix="know-more"] {
   opacity: 0;
-  -webkit-transform: translate(0px, 40px);
-  -ms-transform: translate(0px, 40px);
-  transform: translate(0px, 40px);
 }
 
 html.w-mod-js *[data-ix="fade-in-button"] {
   opacity: 0;
-  -webkit-transform: translate(0px, -30px);
-  -ms-transform: translate(0px, -30px);
-  transform: translate(0px, -30px);
 }
 
 html.w-mod-js *[data-ix="fade-in-subtitle"] {
   opacity: 0;
-  -webkit-transform: translate(0px, -30px);
-  -ms-transform: translate(0px, -30px);
-  transform: translate(0px, -30px);
 }
 
 html.w-mod-js *[data-ix="fade-in-icon"] {
   opacity: 0;
-  -webkit-transform: translate(0px, -30px);
-  -ms-transform: translate(0px, -30px);
-  transform: translate(0px, -30px);
 }
 
 html.w-mod-js *[data-ix="fade-in-step"] {
@@ -4123,9 +4120,9 @@ html.w-mod-js *[data-ix="fade-in-line"] {
 }
 
 html.w-mod-js *[data-ix="icon-funded-with"] {
-  -webkit-transform: scale(0.1);
-  -ms-transform: scale(0.1);
-  transform: scale(0.1);
+  -webkit-transform: scale(0.1, 0.1);
+  -ms-transform: scale(0.1, 0.1);
+  transform: scale(0.1, 0.1);
 }
 
 @media (max-width: 991px) {
@@ -4442,6 +4439,9 @@ html.w-mod-js *[data-ix="icon-funded-with"] {
   }
   .hero-full.hero-zelo {
     padding-top: 90px;
+  }
+  .hero-full.hero-2016 {
+    background-size: 100%, auto;
   }
   .card-project-meter.successful {
     font-size: 13px;
@@ -5609,6 +5609,10 @@ html.w-mod-js *[data-ix="icon-funded-with"] {
   }
   .hero-full.hero-zelo {
     padding-top: 20px;
+  }
+  .hero-full.hero-2016 {
+    background-position: 50% 100%, 0px 0px;
+    background-size: 116%, auto;
   }
   .hero-half {
     height: 320px;
