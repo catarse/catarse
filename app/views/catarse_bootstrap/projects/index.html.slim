@@ -1,24 +1,6 @@
 - content_for :title, t('site.title')
 = render 'shared/header_big', overlayer: true
 
-section#hero-home.hero-full.hero-knowmore
-  .w-container.u-text-center
-    .hero-home-words-content
-      .fontsize-megajumbo.u-marginbottom-60.fontweight-semibold
-        .w-embed
-          .cd-headline.letters.type
-            span = t('.banner_before')     
-            span.cd-words-wrapper
-              - t('.banner_words').each do |index, word|
-                - if index == 0 
-                  b.is-visible = word
-                - else
-                  b = word
-            span = t('.banner_after')
-    .w-row
-      .w-col.w-col-4.w-col-push-4
-        a.btn.btn-large.u-marginbottom-10 href="#{hello_path(ref: 'home_banner')}" Saiba mais
-
 #project-index-root[data-mithril="ProjectsHome"]
 = javascript_include_tag 'api/application' 
 

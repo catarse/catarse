@@ -1,61 +1,16 @@
-- content_for :title, t('.page-title')
+- content_for :title, "Catarse - Tire o seu projeto do papel"
+- content_for :meta_tags do
+  meta name="description" content=t('.description')
+  meta property="og:title"    content=t('.title')
+  meta property="og:description"  content=t('.tagline')
+  meta property="og:url"      content=start_url
+  meta property="og:image"    content=image_url('start-fb.jpg')
+  meta property="og:site_name"  content=t('.title')
+- content_for :application_js do
+  = javascript_include_tag 'api/application'
+= render 'shared/header_big', overlayer: true
 
-= render 'shared/header_big'
+body
+ #start[data-mithril="Start"]
 
-.project-start-wrapper
-  .page-header
-    .w-container.no-responsive
-      h1.fontsize-largest.u-text-center.u-marginbottom-70.u-margintop-40 = t('.title')
-      - statistics = Statistics.first
-      .w-row.u-text-center.u-marginbottom-80
-        .w-col.w-col-4
-          .fontsize-jumbo.text-success.lineheight-loose = number_with_delimiter(statistics.total_contributors)
-          p.start-stats.fontsize-base = t('.header.people')
-        .w-col.w-col-4
-          .fontsize-jumbo.text-success.lineheight-loose = number_with_delimiter(statistics.total_projects_success)
-          p.start-stats.fontsize-base = t('.header.success')
-        .w-col.w-col-4
-          .fontsize-jumbo.text-success.lineheight-loose = number_to_human(statistics.total_contributed.truncate(-6))
-          p.start-stats.fontsize-base = t('.header.money')
-
-      .w-row.u-margintop-20.u-marginbottom-60
-        .w-col.w-col-4.w-col-push-4
-          = link_to t('.submit'), new_project_path, class: 'btn btn-large'
-
-  section#learn
-    .w-container.no-responsive.section
-      article.w-row.u-marginbottom-80.u-margintop-30
-        .w-col.w-col-6.u-text-center
-          = image_tag "catarse_bootstrap/start/inscreva-seu-projeto.png"
-        .w-col.w-col-6
-          h2.headline = t('.start.title')
-          p.fontsize-base = t('.start.content')
-          
-
-      article.w-row.u-marginbottom-80
-        .w-col.w-col-6
-          h2.headline = t('.people.title')
-          p.fontsize-base = t('.people.content')
-        .w-col.w-col-6.u-text-center
-          = image_tag "catarse_bootstrap/start/trabalhe-muito.png"
-
-      article.w-row.u-marginbottom-80
-        .w-col.w-col-6.u-text-center
-          = image_tag "catarse_bootstrap/start/tudo-ou-nada.png"
-        .w-col.w-col-6
-          h2.headline = t('.work.title')
-          p.fontsize-base = t('.work.content')
-          
-
-      article.w-row.u-marginbottom-80
-        .w-col.w-col-6
-          h2.headline = t('.time.title')
-          p.fontsize-base = t('.time.content')
-        .w-col.w-col-6.u-text-center
-          = image_tag "catarse_bootstrap/start/mobilze-interessados.png"
-
-      footer.w-row.u-margin-top-40
-        .w-col.w-col-4.w-col-push-4
-          = link_to t('.submit'), new_project_path, class: 'btn btn-large'
-
-  = render 'shared/footer_big'
+= render 'shared/footer'
