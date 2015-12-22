@@ -52,7 +52,19 @@ RSpec.describe ProjectObserver do
         expect(project).to_not receive(:update_expires_at)
       end
 
-      let!(:project) { create(:project, state: 'approved') }
+      let!(:project) { create(:project, state: 'approved', expires_at: Date.tomorrow) }
+
+      it "should not call update_expires_at" do
+        project.save(validate: false)
+      end
+    end
+
+    context "when expires_at is nil and we have both online_at and online_days" do
+      before do
+        expect(project).to receive(:update_expires_at)
+      end
+
+      let!(:project) { create(:project, state: 'approved', online_days: 60) }
 
       it "should not call update_expires_at" do
         project.save(validate: false)
