@@ -632,3 +632,20 @@ img, iframe
 #explore-btn.opened
   +transform(rotate(180deg))
 
+.w-tab-pane
+  display: block
+
+.w-lightbox-view,
+.w-lightbox-backdrop
+  opacity: 1
+
+.pane-image
+  display: none
+.pane-image.selected
+  display: block
+
+.w-slide
+  position: absolute
+  top: 0
+  left: 0
+  +transition(all 650ms)
