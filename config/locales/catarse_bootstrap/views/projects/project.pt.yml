@@ -1,5 +1,8 @@
 pt:
   projects:
+    home:
+      title: 'Valeu 2015!'
+      cta: 'Veja como foi o ano no Catarse'
     new_feature_badge: 'Novidade'
     insights:
       referral:
