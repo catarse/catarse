@@ -34,7 +34,7 @@ pt:
       video:
         title: 'Uma campanha de financiamento coletivo é emoção garantida. '
         subtitle: 'Sente o gostinho...'
-        src: 'https://www.youtube.com/watch?v=FlFTcDSKnLM'
+        src: 'FlFTcDSKnLM'
       categories:
         title: 'O Catarse tem espaço para vários tipos de projetos! Conheça nossas categorias!'
         pledged: 'Arrecadou R$ {{pledged}} com {{contributors}} apoios para o projeto '
