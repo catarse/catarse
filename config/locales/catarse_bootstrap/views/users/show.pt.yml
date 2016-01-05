@@ -1,5 +1,18 @@
 pt:
   users:
+    balance:
+      debit: 'Saída'
+      credit: 'Entrada'
+      totals: 'Saldo '
+      withdraw: "Sacar dinheiro"
+      withdraw_cta: '$ Realizar Saque'
+      success_message: 'Seu saque foi solicitado com sucesso. Em até 10 dias úteis o seu dinheiro estará em sua conta bancária!'
+      bank:
+        account: "Conta:"
+        name: 'Nome / Razão Social:'
+        cpf_cnpj: 'CPF / CNPJ:'
+        bank_name: 'Banco:'
+        agency: 'Agência'
     profile:
       user_since: "Chegou junto em %{date}"
       no_project_contribution: "Ainda não apoiou projetos"

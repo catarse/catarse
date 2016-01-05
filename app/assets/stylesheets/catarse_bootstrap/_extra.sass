@@ -629,3 +629,23 @@ img, iframe
   top: 0
   left: 0
   +transition(all 650ms)
+
+.balance-card
+  position: relative
+  margin-top: 0
+  margin-bottom: 0
+  box-shadow: rgba(63, 71, 82, 0.38) 0 0 0 0
+  +transition(all 650ms)
+
+.balance-card.card-detailed-open 
+  margin-top: 30px
+  margin-bottom: 30px
+  box-shadow: rgba(63, 71, 82, 0.38) 4px 4px 16px 0px
+
+.arrow-admin
+  +transition(all 300ms)
+
+.arrow-admin.arrow-admin-opened
+  +rotate(180deg)
+
+
