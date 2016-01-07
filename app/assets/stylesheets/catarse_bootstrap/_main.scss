@@ -2012,7 +2012,7 @@ a:hover {
   overflow-y: auto;
   width: 218px;
   padding-top: 35px;
-  padding-right: 15px;
+  padding-right: 20px;
   padding-left: 0px;
   border-width: 0px;
   border-color: black;
@@ -2354,15 +2354,15 @@ a:hover {
 .hero-full.hero-start.bg-iconstart {
   padding-top: 146px;
   background-color: #4886d8;
-  background-image: url('/assets/bg-hero-start_1.png'), -webkit-linear-gradient(#4886d8, #50ced9 98%);
-  background-image: url('/assets/bg-hero-start_1.png'), linear-gradient(#4886d8, #50ced9 98%);
+  background-image: url('/assets/bg-hero-start.png'), -webkit-linear-gradient(#4886d8, #50ced9 98%);
+  background-image: url('/assets/bg-hero-start.png'), linear-gradient(#4886d8, #50ced9 98%);
   background-size: 1383px, auto;
   background-repeat: no-repeat, repeat;
 }
 
 .hero-full.hero-start.bg-iconstart.testt {
   background-color: #6f73ae;
-  background-image: url('/assets/bg-hero-start_1.png');
+  background-image: url('/assets/bg-hero-start.png');
   background-size: 1383px;
   background-repeat: no-repeat;
 }
@@ -2371,7 +2371,7 @@ a:hover {
   height: 100vh;
   padding-top: 190px;
   background-color: #8d48d9;
-  background-image: url('/assets/bg-hero-start_1.png');
+  background-image: url('/assets/bg-hero-start.png');
   background-size: 1383px;
   background-repeat: no-repeat;
 }
@@ -3345,8 +3345,8 @@ a:hover {
 .hero-start {
   padding-top: 160px;
   background-color: #7658b0;
-  background-image: url('/assets/bg-hero-start.png'), -webkit-linear-gradient(#7658b0, #915dc2 72%);
-  background-image: url('/assets/bg-hero-start.png'), linear-gradient(#7658b0, #915dc2 72%);
+  background-image: url('/assets/bg-hero-start.jpg'), -webkit-linear-gradient(#7658b0, #915dc2 72%);
+  background-image: url('/assets/bg-hero-start.jpg'), linear-gradient(#7658b0, #915dc2 72%);
   background-position: 50% 50%, 0px 0px;
   background-size: cover, auto;
   background-repeat: repeat-y, repeat;
@@ -4093,18 +4093,30 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
 
 html.w-mod-js *[data-ix="know-more"] {
   opacity: 0;
+  -webkit-transform: translate(0px, 40px);
+  -ms-transform: translate(0px, 40px);
+  transform: translate(0px, 40px);
 }
 
 html.w-mod-js *[data-ix="fade-in-button"] {
   opacity: 0;
+  -webkit-transform: translate(0px, -30px);
+  -ms-transform: translate(0px, -30px);
+  transform: translate(0px, -30px);
 }
 
 html.w-mod-js *[data-ix="fade-in-subtitle"] {
   opacity: 0;
+  -webkit-transform: translate(0px, -30px);
+  -ms-transform: translate(0px, -30px);
+  transform: translate(0px, -30px);
 }
 
 html.w-mod-js *[data-ix="fade-in-icon"] {
   opacity: 0;
+  -webkit-transform: translate(0px, -30px);
+  -ms-transform: translate(0px, -30px);
+  transform: translate(0px, -30px);
 }
 
 html.w-mod-js *[data-ix="fade-in-step"] {
