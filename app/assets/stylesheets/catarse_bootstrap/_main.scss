@@ -2012,7 +2012,7 @@ a:hover {
   overflow-y: auto;
   width: 218px;
   padding-top: 35px;
-  padding-right: 15px;
+  padding-right: 20px;
   padding-left: 0px;
   border-width: 0px;
   border-color: black;
@@ -4093,18 +4093,30 @@ html.w-mod-js *[data-ix="display-none-on-load-2"] {
 
 html.w-mod-js *[data-ix="know-more"] {
   opacity: 0;
+  -webkit-transform: translate(0px, 40px);
+  -ms-transform: translate(0px, 40px);
+  transform: translate(0px, 40px);
 }
 
 html.w-mod-js *[data-ix="fade-in-button"] {
   opacity: 0;
+  -webkit-transform: translate(0px, -30px);
+  -ms-transform: translate(0px, -30px);
+  transform: translate(0px, -30px);
 }
 
 html.w-mod-js *[data-ix="fade-in-subtitle"] {
   opacity: 0;
+  -webkit-transform: translate(0px, -30px);
+  -ms-transform: translate(0px, -30px);
+  transform: translate(0px, -30px);
 }
 
 html.w-mod-js *[data-ix="fade-in-icon"] {
   opacity: 0;
+  -webkit-transform: translate(0px, -30px);
+  -ms-transform: translate(0px, -30px);
+  transform: translate(0px, -30px);
 }
 
 html.w-mod-js *[data-ix="fade-in-step"] {
