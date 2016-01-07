@@ -86,7 +86,7 @@ pt:
         about_html: "Descrição do projeto"
         user_id: "Id do usuário"
         video_url: "URL do vídeo"
-        permalink: 'Link do seu projeto'
+        permalink: 'Link para o seu projeto no Catarse'
         all_tags: 'Tags'
         city: 'Local do projeto'
         more_links: 'Indique links para as pessoas conhecerem mais sobre o seu projeto e sua trajetória.'
