@@ -30,6 +30,8 @@ module Project::BaseValidator
     end
 
     with_options if: -> (x) { ON_ONLINE_TO_END_STATES.include? x.state } do |wo| 
+      wo.validates_presence_of :account, message: 'Dados Bancários não podem ficar em branco'		
+
       wo.validate do
         if self.account && (self.account.agency.try(:size) || 0) < 4
           self.errors['account.agency_size'] << "Agência deve ter pelo menos 4 dígitos"
