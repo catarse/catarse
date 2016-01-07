@@ -100,6 +100,17 @@ class ProjectsController < ApplicationController
     render json: nil
   end
 
+  def push_to_flex
+    authorize resource
+    resource.build_flexible_project
+    resource.state = 'draft'
+    resource.online_days = nil
+    resource.expires_at = nil
+    resource.save!
+    resource.project_transitions.destroy_all
+    redirect_to :back 
+  end
+
   def embed
     resource
     render partial: 'card', layout: 'embed', locals: {embed_link: true, ref: (params[:ref] || 'ctrse_embed')}

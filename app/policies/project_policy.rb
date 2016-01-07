@@ -18,6 +18,10 @@ class ProjectPolicy < ApplicationPolicy
     create?
   end
 
+  def push_to_flex?
+    is_admin?
+  end
+
   def update_account?
     record.account.new_record? || !record.published? || is_admin?
   end

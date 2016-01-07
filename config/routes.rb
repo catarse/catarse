@@ -70,6 +70,7 @@ Catarse::Application.routes.draw do
     member do
       get 'insights'
       put 'pay'
+      put 'push_to_flex'
       get 'embed'
       get 'video_embed'
       get 'embed_panel'
