@@ -100,6 +100,7 @@ class ProjectsController < ApplicationController
     render json: nil
   end
 
+  # TODO: remove when flex goes public
   def push_to_flex
     authorize resource
     resource.build_flexible_project
