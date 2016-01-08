@@ -125,7 +125,6 @@ Contributors: You know who you are ;) The commit history can help, but the list 
 
 ## License
 
-Copyright (c) 2015 Softa
+Copyright (c) 2016 Softa
 
 Licensed under the MIT license (see MIT-LICENSE file)
-
