@@ -14,7 +14,6 @@ namespace :cron do
     Statistics.refresh_view
     UserTotal.refresh_view
     CategoryTotal.refresh_view
-    ActiveRecord::Base.connection.execute("REFRESH MATERIALIZED VIEW financial.project_metrics_with_generated_series")
   end
 
   desc 'Request refund for failed credit card refunds'
