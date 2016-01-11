@@ -26,6 +26,5 @@ class ApiTokensController < ApplicationController
       exp: (Time.now + TOKEN_TTL).to_i
     }
   end
-
 end
 
