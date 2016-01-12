@@ -1,6 +1,6 @@
 #dashboard-user_settings-tab
   - disable_edit = !policy(@project).update_account?
-  = simple_form_for @project, defaults: {input_html: {disabled: disable_edit }, wrapper: :one_col, validation_text: false, label_wrapper_html: { class: 'w-col w-col-5 w-sub-col' } }, html: { id: 'project_account_form', class: 'w-form project-form' } do |f|
+  = simple_form_for @project, defaults: {input_html: {disabled: disable_edit }, wrapper: :one_col, validation_text: false, label_wrapper_html: { class: 'w-col w-col-5 w-sub-col' } }, html: { id: 'project_account_form', class: 'w-form project-form refund_bank_account_form' } do |f|
     = hidden_field_tag :anchor, 'user_settings'
     = f.simple_fields_for :account do |form|
       .w-section.section
@@ -36,8 +36,7 @@
                     input_html: { class: 'positive' }
                 .w-row
                   .w-col.w-col-6.w-sub-col
-                    = form.input :bank_id, as: :select, collection: Bank.to_collection, class: 'w-select positive', 
-                    input_html: { class: 'positive' }
+                    = render 'shared/bank_select', bform: form
                   .w-col.w-col-6
                     .w-row
                       .w-col.w-col-6.w-col-small-6.w-col-tiny-6.w-sub-col-middle

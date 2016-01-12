@@ -23,7 +23,7 @@
           .w-col.w-col-2.w-col-small-2
             = link_to 'Remover', user_credit_card_path(resource, credit_card), class: 'btn btn-terciary btn-small', method: :delete, data: { confirm: 'você tem certeza?' }
 
-    = simple_form_for resource, html: { class: 'w-form', id: 'user_billing_form' } do |f|
+    = simple_form_for resource, html: { class: 'w-form', id: 'user_billing_form', class: 'refund_bank_account_form' } do |f|
       = hidden_field_tag :anchor, 'billing'
       .w-form.card.card-terciary
         = f.simple_fields_for :bank_account do |bform|
@@ -39,9 +39,7 @@
               = bform.label :owner_document, class: 'field-label fontweight-semibold force-text-dark'
               = bform.input_field :owner_document, as: :tel, validation_text: true, class: 'positive', data: { :'validate-cpf-cnpj' => true }
           .w-row
-            .w-col.w-col-6.w-sub-col
-              = bform.label :bank_id, class: 'field-label fontweight-semibold force-text-dark'
-              = bform.input_field :bank_id, as: :select, collection: Bank.to_collection, class: 'w-select positive'
+            = render 'shared/bank_select', bform: bform
             .w-col.w-col-6
               .w-row
                 .w-col.w-col-6.w-col-small-6.w-col-tiny-6.w-sub-col-middle
@@ -62,7 +60,6 @@
                 .w-col.w-col-6.w-col-small-6.w-col-tiny-6
                   = bform.label :account_digit, class: 'field-label fontweight-semibold force-text-dark'
                   = bform.input_field :account_digit, as: :string, class: 'positive'
-                  
       .u-margintop-30
         .w-container
           .w-row

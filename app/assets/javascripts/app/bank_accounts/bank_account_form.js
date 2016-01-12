@@ -4,7 +4,7 @@ App.addChild('BankAccountForm', _.extend({
   events: {
     'blur input' : 'checkInput',
     'blur select' : 'checkInput',
-    'change select#bank_account_bank_id': 'showBankNumberForm',
+    'change select.bank-select': 'showBankNumberForm',
     'click a#show_bank_list': 'toggleBankList',
     'click a.bank-resource-link': 'fillWithSelectedBank'
   },
@@ -36,9 +36,9 @@ App.addChild('BankAccountForm', _.extend({
   fillWithSelectedBank: function(event) {
     $target = this.$(event.currentTarget);
 
-    this.$('input#bank_account_input_bank_number').val($target.data('code'));
-    this.$('select#bank_account_bank_id').val($target.data('id'));
-    this.$('input#bank_account_input_bank_number').trigger('blur');
+    this.$('input.bank_account_input_bank_number').val($target.data('code'));
+    this.$('select.bank_account_bank_id').val($target.data('id'));
+    this.$('input.bank_account_input_bank_number').trigger('blur');
     this.toggleBankList();
   },
 
