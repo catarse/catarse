@@ -17,7 +17,7 @@
                 .fontsize-small.u-marginbottom-20= t('.user_data_subtitle_html') 
                 .w-row
                   .w-col.w-col-6.w-sub-col
-                    = form.input_field :entity_type, as: :select, collection: ['Pessoa Física', 'Pessoa Jurídica'], class: 'w-select positive account_type', include_blank: false, value: nil
+                    = form.input_field :entity_type, as: :select, collection: ['Pessoa Física', 'Pessoa Jurídica'], class: 'w-select positive account_type', include_blank: false
                   .w-col.w-col-6
                 .divider.u-marginbottom-20
                 .w-row
@@ -37,7 +37,6 @@
                 .w-row
                   .w-col.w-col-6.w-sub-col
                     = render 'shared/bank_select', bform: form
-                    /= form.input :bank_id, as: :select, collection: Bank.to_collection, class: 'w-select positive', input_html: { class: 'positive' }
                   .w-col.w-col-6
                     .w-row
                       .w-col.w-col-6.w-col-small-6.w-col-tiny-6.w-sub-col-middle
