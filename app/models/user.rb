@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
   delegate  :display_name, :display_image, :short_name, :display_image_html,
     :medium_name, :display_credits, :display_total_of_contributions, :contributions_text,
     :twitter_link, :display_bank_account, :display_bank_account_owner, to: :decorator
+  delegate :bank, to: :bank_account
 
   # FIXME: Please bitch...
   attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :permalink,

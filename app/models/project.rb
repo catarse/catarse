@@ -25,6 +25,7 @@ class Project < ActiveRecord::Base
             :display_image, :display_expires_at, :time_to_go,
             :display_pledged, :display_pledged_with_cents, :display_goal, :progress_bar,
             :status_flag, :display_errors, to: :decorator
+  delegate :bank, to: :account
 
   belongs_to :user
   belongs_to :category
