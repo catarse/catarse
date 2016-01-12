@@ -1,24 +1,10 @@
 - content_for :title, t('.title')
+- content_for :application_js do
+  = javascript_include_tag 'api/application'
 = render 'shared/header_big', overlayer: true
 
-.hero-jobs.hero-medium
-  .w-container.u-text-center
-    = image_tag "icon-jobs.png", class: "icon-hero"
-    .u-text-center.u-marginbottom-20.fontsize-largest Trabalhe conosco
-
-.section
-  .w-container.u-margintop-40
-    .w-row
-      .w-col.w-col-2
-      .w-col.w-col-8
-        .w-embed.w-script
-          script src="https://www.workable.com/assets/embed.js" type="text/javascript" 
-          script charset="utf-8" type="text/javascript" 
-            | whr(document).ready(function(){whr_embed(12575, {detail: 'title', base: 'jobs', zoom: 'country', grouping: 'none'});});
-          #whr_embed_hook
-      .w-col.w-col-2
+body
+ #start[data-mithril="Jobs"]
+  .w-section.hero-jobs.hero-medium
 
 = render 'shared/footer_big'
-
-
-
