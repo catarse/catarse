@@ -15,6 +15,7 @@ RSpec.describe ApiTokensController, type: :controller do
   end
 
   describe "GET show" do
+    let(:claims){ JsonWebToken.verify(JSON.parse(subject.body)["token"], key: jwt_secret) }
 
     before do
       get :show, locale: :pt
@@ -35,13 +36,19 @@ RSpec.describe ApiTokensController, type: :controller do
     context "when I'm logged in as admin" do
       let(:current_user) { create(:user, admin: true) }
       it{ is_expected.to be_successful }
-      its(:body){ is_expected.to eq({token: admin_token}.to_json) }
+      it "should produce appropriate token" do
+        expect(claims[:ok][:role]).to eq 'admin'
+        expect(claims[:ok][:user_id]).to eq current_user.id.to_s
+      end 
     end
 
     context "when I'm logged in as user" do
       let(:current_user) { create(:user, admin: false) }
       it{ is_expected.to be_successful }
-      its(:body){ is_expected.to eq({token: user_token}.to_json) }
+      it "should produce appropriate token" do
+        expect(claims[:ok][:role]).to eq 'web_user'
+        expect(claims[:ok][:user_id]).to eq current_user.id.to_s
+      end 
     end
 
   end

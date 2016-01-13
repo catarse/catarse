@@ -23,7 +23,7 @@ To run this project you need to have:
 
 * Rails 4.1
 
-* [postgREST 0.2](https://github.com/begriffs/postgrest/releases/tag/v0.2.12.1)
+* [postgREST 0.3](https://github.com/begriffs/postgrest/releases/tag/v0.3.0.3)
 
 * [PostgreSQL 9.4](http://www.postgresql.org/)
   * OSX - [Postgres.app](http://postgresapp.com/)
@@ -77,11 +77,9 @@ If everything goes OK, you can now run the project!
 
 * Run API server
 
-	After download postgREST 0.2.x you can unpack and run the executable as bellow.
+	After downloading PostgREST 0.3.x you can unpack and run the executable as bellow.
 
-		$ ./postgrest-0.2.12.1 -d catarse_development -U myuser --db-pass mypassword -a anonymous -p 3004 \
-				--db-pool 10 \
-				--jwt-secret gZH75aKtMN3Yj0iPS4hcgUuTwjAzZr9C
+		$ ./postgrest postgres://postgrest@localhost/catarse_development -a anonymous --jwt-secret gZH75aKtMN3Yj0iPS4hcgUuTwjAzZr9C -p 8080 -s 1 -p 3004
 
 * Run Rails server
 ```bash
