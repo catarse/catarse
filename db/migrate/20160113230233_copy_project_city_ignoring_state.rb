@@ -14,7 +14,7 @@ SET city_id = (
 )
 WHERE
     city_id IS NULL
-    AND projects.state_order >= 'published';
+    AND projects.state_order >= 'sent';
 
 ALTER TABLE projects ENABLE TRIGGER sent_validation;
     SQL

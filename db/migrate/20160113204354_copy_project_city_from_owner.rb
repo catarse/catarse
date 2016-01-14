@@ -1,6 +1,12 @@
+# -*- coding: utf-8 -*-
 class CopyProjectCityFromOwner < ActiveRecord::Migration
   def up
     execute <<-SQL
+UPDATE users SET address_city = 'Curitiba' WHERE lower(address_city) = 'ctba';
+UPDATE users SET address_city = 'Belo Horizonte' WHERE lower(address_city) = 'bh';
+UPDATE users SET address_city = 'São Paulo' WHERE lower(address_city) = 'sp';
+UPDATE users SET address_city = 'Rio de Janeiro' WHERE lower(address_city) = 'rj';
+
 -- Old data won't be validated here
 ALTER TABLE projects DISABLE TRIGGER sent_validation;
 
@@ -15,7 +21,7 @@ SET city_id = (
 )
 WHERE
     city_id IS NULL
-    AND projects.state_order >= 'published';
+    AND projects.state_order >= 'sent';
 
 ALTER TABLE projects ENABLE TRIGGER sent_validation;
     SQL

@@ -20,7 +20,7 @@ WHERE
         FROM project_accounts pa
         WHERE pa.project_id = projects.id
     )
-    AND projects.state_order >= 'published';
+    AND projects.state_order >= 'sent';
 
 ALTER TABLE projects ENABLE TRIGGER sent_validation;
     SQL
