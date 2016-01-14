@@ -59,6 +59,16 @@ class ApplicationController < ActionController::Base
 
   end
 
+  # Used on external services and generic email
+  # templates, just need to redirect to last
+  # updated or created project dashboard
+  def redirect_to_last_edit
+    authorize Project.new, :create?
+    lp = current_user.projects.update_ordered.first
+    redirect_to edit_project_path lp
+  end
+
+
   private
   def force_www
     if request.subdomain.blank? && Rails.env.production?

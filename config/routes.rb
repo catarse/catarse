@@ -14,6 +14,7 @@ Catarse::Application.routes.draw do
     post '/sign_up', {to: 'devise/registrations#create', as: :sign_up}
   end
 
+  get '/project_edit' => 'application#redirect_to_last_edit'
   get '/thank_you' => "static#thank_you"
 
   filter :locale, exclude: /\/auth\//
