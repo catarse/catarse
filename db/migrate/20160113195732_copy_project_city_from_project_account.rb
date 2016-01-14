@@ -1,4 +1,3 @@
-# -*- coding: undecided -*-
 class CopyProjectCityFromProjectAccount < ActiveRecord::Migration
   def up
     execute <<-SQL

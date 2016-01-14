@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 class CopyProjectCityFromOwner < ActiveRecord::Migration
   def up
     execute <<-SQL
