@@ -1,6 +1,12 @@
+# -*- coding: undecided -*-
 class CopyProjectCityFromProjectAccount < ActiveRecord::Migration
   def up
     execute <<-SQL
+UPDATE project_accounts SET address_city = 'Curitiba' WHERE lower(address_city) = 'ctba';
+UPDATE project_accounts SET address_city = 'Belo Horizonte' WHERE lower(address_city) = 'bh';
+UPDATE project_accounts SET address_city = 'São Paulo' WHERE lower(address_city) = 'sp';
+UPDATE project_accounts SET address_city = 'Rio de Janeiro' WHERE lower(address_city) = 'rj';
+
 -- Old data won't be validated here
 ALTER TABLE projects DISABLE TRIGGER sent_validation;
 
