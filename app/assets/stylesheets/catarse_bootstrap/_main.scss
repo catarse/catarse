@@ -68,8 +68,8 @@ a:hover {
 }
 
 .section {
-  padding-top: 45px;
-  padding-bottom: 45px;
+  padding-top: 60px;
+  padding-bottom: 60px;
   background-color: white;
 }
 
@@ -2381,7 +2381,7 @@ a:hover {
   background-image: url('/assets/hero-2015.png'), -webkit-linear-gradient(#392a75, #281c5d);
   background-image: url('/assets/hero-2015.png'), linear-gradient(#392a75, #281c5d);
   background-position: 50% 100%, 0px 0px;
-  background-size: 931px, auto;
+  background-size: 670px, auto;
   background-repeat: no-repeat, repeat;
 }
 
@@ -4453,7 +4453,7 @@ html.w-mod-js *[data-ix="icon-funded-with"] {
     padding-top: 90px;
   }
   .hero-full.hero-2016 {
-    background-size: 100%, auto;
+    background-size: 70%, auto;
   }
   .card-project-meter.successful {
     font-size: 13px;
@@ -5030,6 +5030,9 @@ html.w-mod-js *[data-ix="icon-funded-with"] {
   }
   .hero-full.hero-zelo {
     padding-top: 20px;
+  }
+  .hero-full.hero-2016 {
+    background-size: 52%, auto;
   }
   .card-project-meter.successful {
     text-align: center;
@@ -5624,7 +5627,7 @@ html.w-mod-js *[data-ix="icon-funded-with"] {
   }
   .hero-full.hero-2016 {
     background-position: 50% 100%, 0px 0px;
-    background-size: 116%, auto;
+    background-size: 100%, auto;
   }
   .hero-half {
     height: 320px;
