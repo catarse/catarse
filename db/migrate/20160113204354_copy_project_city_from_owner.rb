@@ -1,6 +1,9 @@
 class CopyProjectCityFromOwner < ActiveRecord::Migration
   def up
     execute <<-SQL
+    SET statement_timeout TO 0;
+    SQL
+    execute <<-SQL
 UPDATE users SET address_city = 'Curitiba' WHERE lower(address_city) = 'ctba';
 UPDATE users SET address_city = 'Belo Horizonte' WHERE lower(address_city) = 'bh';
 UPDATE users SET address_city = 'São Paulo' WHERE lower(address_city) = 'sp';

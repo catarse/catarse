@@ -1,6 +1,9 @@
 class MigrationFixMissingCityId < ActiveRecord::Migration
   def up
     execute <<-SQL
+    SET statement_timeout TO 0;
+    SQL
+    execute <<-SQL
 -- Old data won't be validated here
 ALTER TABLE projects DISABLE TRIGGER sent_validation;
 
