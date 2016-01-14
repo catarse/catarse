@@ -11,10 +11,11 @@ p O projeto #{link_to project.name, project_link} foi financiado!
 '  Reunimos aqui algumas <strong>informações importantíssimas para essa nova etapa!</strong>
 br/
 br/
-| <strong>1</strong> - O valor arrecadado estará disponível na sua conta bancária  até o <strong>dia #{(project.expires_at + 15.days).strftime('%d/%m/%Y')}</strong>
-br/
-| <strong>ATENÇÃO</strong>: Para que tudo corra bem e não haja nenhum atraso no envio do dinheiro é importante atualizar seus os dados bancários na #{link_to 'aba Conta', edit_project_url(project, anchor: 'user_settings') }. <strong>Caso precise fazer alterações no cadastro atual, por favor, envie os dados corretos em resposta a esta mensagem. 
+| <strong>1</strong>: Para que tudo corra bem e não haja nenhum atraso no envio do dinheiro é importante atualizar seus os dados bancários na #{link_to 'aba Conta', edit_project_url(project, anchor: 'user_settings') }. <strong>Caso precise fazer alterações no cadastro atual, por favor, envie os dados corretos em resposta a esta mensagem. 
 </strong>.
+br/
+br/
+| O valor arrecadado estará disponível na sua conta bancária  até o <strong>dia #{(project.expires_at + 15.days).strftime('%d/%m/%Y')}</strong>
 br/
 strong> Confira:
 = link_to 'Como será feito o repasse?', 'http://suporte.catarse.me/hc/pt-br/articles/202037493-Como-ser%C3%A1-feito-o-repasse-do-dinheiro-', target: '__blank'
