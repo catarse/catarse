@@ -175,11 +175,12 @@ class Project < ActiveRecord::Base
 
   validates_acceptance_of :accepted_terms, on: :create
   ##validation for all states
-  validates_presence_of :name, :user, :category
+  validates_presence_of :name, :user, :category, :catarse_fee
   validates_length_of :headline, maximum: HEADLINE_MAXLENGTH
   validates_numericality_of :online_days, less_than_or_equal_to: 60, greater_than: 0,
     if: ->(p){ p.online_days.present? && ( p.online_days_was.nil? || p.online_days_was <= 60 ) }
   validates_numericality_of :goal, greater_than: 9, allow_blank: true
+  validates_numericality_of :catarse_fee, greater_than: 0, less_than_or_equal_to: 1
   validates_uniqueness_of :permalink, case_sensitive: false
   validates_format_of :permalink, with: /\A(\w|-)*\Z/
   validates_presence_of :permalink, allow_nil: true

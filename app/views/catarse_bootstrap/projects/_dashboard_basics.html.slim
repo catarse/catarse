@@ -22,6 +22,14 @@
                   input_html: { class: 'positive medium', required: false },
                   validation_text: false
 
+                = form.input :catarse_fee, as: :numeric,
+                  wrapper: :two_columns,
+                  wrapper_class: 'w-row u-marginbottom-30 card card-terciary medium',
+                  label_wrapper_html: { class: 'w-col w-col-5 w-subcol' },
+                  text_field_wrapper_html: { class: 'w-col w-col-7 w-sub-col' },
+                  input_html: { class: 'positive medium', required: false },
+                  validation_text: false
+
               = form.input :name, as: :string, 
                 wrapper: :two_columns,
                 wrapper_class: 'w-row u-marginbottom-30 card card-terciary medium',

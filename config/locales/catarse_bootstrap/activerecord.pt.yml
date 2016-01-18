@@ -85,6 +85,7 @@ pt:
         goal: "Valor a ser arrecadado"
         about_html: "Descrição do projeto"
         user_id: "Id do usuário"
+        catarse_fee: 'Taxa do Catarse'
         video_url: "URL do vídeo"
         permalink: 'Link para o seu projeto no Catarse'
         all_tags: 'Tags'
@@ -103,6 +104,7 @@ pt:
         headline: "Frase de efeito"
         image_url: "URL da imagem"
         name: "Nome do projeto"
+        catarse_fee: 'Taxa do Catarse'
         goal: "Valor a ser arrecadado"
         about_html: "Descrição do projeto"
         user_id: "Id do usuário"
