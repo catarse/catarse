@@ -35,8 +35,7 @@
                     = form.input :state_inscription, as: :string, 
                     input_html: { class: 'positive' }
                 .w-row
-                  .w-col.w-col-6.w-sub-col
-                    = render 'shared/bank_select', bform: form
+                  = render 'shared/bank_select', bform: form
                   .w-col.w-col-6
                     .w-row
                       .w-col.w-col-6.w-col-small-6.w-col-tiny-6.w-sub-col-middle
