@@ -72,6 +72,10 @@ class ProjectsController < ApplicationController
     should_validate = should_use_validate
 
     resource.localized.attributes = permitted_params
+    #can't use localized for fee
+    if permitted_params[:service_fee]
+      resource.service_fee = permitted_params[:service_fee]
+    end
 
     if resource.save(validate: should_validate)
       flash[:notice] = t('project.update.success')

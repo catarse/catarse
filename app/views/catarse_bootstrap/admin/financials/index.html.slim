@@ -54,11 +54,11 @@
             td= project.display_goal
             td= project.display_pledged_with_cents
             td= number_to_currency project.total_payment_service_fee, precision: 2
-            - catarse_fee = CatarseSettings[:catarse_fee].to_f * project.pledged
+            - catarse_fee = project.service_fee * project.pledged
             td
               = number_to_currency catarse_fee, precision: 2
             td
-              = number_to_currency ((project.pledged*0.87)), precision: 2
+              = number_to_currency ((project.pledged*(1-project.service_fee))), precision: 2
             td
               = project.display_expires_at
             td
