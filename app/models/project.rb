@@ -148,6 +148,7 @@ class Project < ActiveRecord::Base
   scope :expired, -> { where("projects.is_expired") }
   scope :not_expired, -> { where("not projects.is_expired") }
   scope :ordered, -> { order(created_at: :desc)}
+  scope :update_ordered, -> { order("updated_at DESC, created_at DESC") }
   scope :order_status, ->{ maybe_flex.order("
                                      CASE coalesce(fp.state, projects.state)
                                      WHEN 'online' THEN 1
