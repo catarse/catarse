@@ -235,7 +235,7 @@ pt:
       city: 'Local do projeto'
       online_date: 'Data de entrada no ar'
       user_id: 'Id do usuário'
-      catarse_fee: 'Taxa do catarse'
+      service_fee: 'Taxa do catarse'
       name: 'Nome do projeto'
       name_label: 'Quanto mais direto melhor. Não ultrapasse 50 caracteres'
       url: 'URL do projeto'

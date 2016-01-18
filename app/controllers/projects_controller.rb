@@ -73,8 +73,8 @@ class ProjectsController < ApplicationController
 
     resource.localized.attributes = permitted_params
     #can't use localized for fee
-    if permitted_params[:catarse_fee]
-      resource.catarse_fee = permitted_params[:catarse_fee]
+    if permitted_params[:service_fee]
+      resource.service_fee = permitted_params[:service_fee]
     end
 
     if resource.save(validate: should_validate)
