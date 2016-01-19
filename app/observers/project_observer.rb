@@ -5,6 +5,10 @@ class ProjectObserver < ActiveRecord::Observer
     if project.try(:online_days_changed?) || project.try(:expires_at).nil?
       project.update_expires_at
     end
+
+    unless project.permalink.present?
+      project.permalink = "#{project.name.parameterize.gsub(/\-/, '_')}_#{project.id}"
+    end
   end
 
   def after_save(project)
