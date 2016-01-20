@@ -7,7 +7,7 @@ class ProjectObserver < ActiveRecord::Observer
     end
 
     unless project.permalink.present?
-      project.permalink = "#{project.name.parameterize.gsub(/\-/, '_')}_#{project.id}"
+      project.permalink = "#{project.name.parameterize.gsub(/\-/, '_')}_#{SecureRandom.hex(2)}"
     end
   end
 
