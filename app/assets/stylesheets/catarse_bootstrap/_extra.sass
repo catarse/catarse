@@ -386,10 +386,16 @@ img, iframe
   height: 94px
   width: 205px
   background-color: #1d2024
-  z-index: 999  
+  z-index: 999
+
+.dashboard-project-name
+  padding: 0 20px
 
 .dashboard-nav.side:hover
   overflow-y: scroll
+
+  .dashboard-project-name
+    padding-right: 0
 
 .dashboard-nav.side::-webkit-scrollbar
   width: 10px
@@ -483,7 +489,7 @@ img, iframe
 .main-header
   +transition(all 500ms ease)
 
-.alert-top.alert-flex.float 
+.alert-top.alert-flex.float
   position: static
   padding-top: 25px
   padding-bottom: 25px
@@ -504,7 +510,7 @@ img, iframe
   background-color: #f4f4c0
   text-align: center
 
-.logo-flex-alert 
+.logo-flex-alert
   display: inline-block
   height: 17px
   width: 105px
@@ -521,7 +527,7 @@ img, iframe
 
 .main-header.with-two-alerts,
 .global-alert.with-two-alerts
-  +transform(translateY(38px))  
+  +transform(translateY(38px))
 
 .main-header.with-global-alert
   top: 82px
@@ -530,7 +536,7 @@ img, iframe
   +transform(translateY(38px))
 
 @media (max-width: 991px)
-  .alert-top.alert-flex.float 
+  .alert-top.alert-flex.float
     padding-top: 11px
     padding-bottom: 11px
     font-size: 14px
@@ -544,7 +550,7 @@ img, iframe
     +transform(translateY(72px))
 
 @media (max-width: 767px)
-  .section 
+  .section
     padding: 20px 0px
   .hero-search.with-fixed-alert
     +transform(translateY(38px))
@@ -561,7 +567,7 @@ img, iframe
   .main-header.with-global-alert
     +transform(translateY(-10px))
   .main-header.with-two-alerts
-    +transform(translateY(50px))  
+    +transform(translateY(50px))
 
 .fixed-alert-visible
   top: 0px
@@ -637,7 +643,7 @@ img, iframe
   box-shadow: rgba(63, 71, 82, 0.38) 0 0 0 0
   +transition(all 650ms)
 
-.balance-card.card-detailed-open 
+.balance-card.card-detailed-open
   margin-top: 30px
   margin-bottom: 30px
   box-shadow: rgba(63, 71, 82, 0.38) 4px 4px 16px 0px
