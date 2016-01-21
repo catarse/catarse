@@ -21,7 +21,7 @@ html
       meta name="description"         content=t('site.description')
       meta name="keywords"            content=t('site.keywords')
       meta name="google-site-verification"  content=CatarseSettings[:google_verification_code]
-      
+
       meta property="og:title"        content=t('site.title')
       meta property="og:type"         content=:cause
       meta property="og:url"          content=root_url
@@ -31,11 +31,8 @@ html
       meta property="og:description"  content=(t('projects.index_header.title') + '. ' +  t('projects.index_header.subtitle'))
     - if request.subdomain.include? "beta"
       meta name="robots" content="noindex, nofollow"
-      
-    - if Rails.env.production?
-      = render_mixpanel_script
 
-  body#catarse_bootstrap[data-controller-name=controller_name data-action=action_name data-user="#{current_user.try(:to_analytics_json)}" data-referral="#{session[:referral_link]}" data-id=params[:id] data-mobile=browser.mobile?.to_s itemscope itemtype="http://schema.org/WebPage" class="#{'body-alert' if can_display_pending_refund_alert?} #{content_for :body_class}"] 
+  body#catarse_bootstrap[data-controller-name=controller_name data-action=action_name data-user="#{current_user.try(:to_analytics_json)}" data-referral="#{session[:referral_link]}" data-id=params[:id] data-mobile=browser.mobile?.to_s itemscope itemtype="http://schema.org/WebPage" class="#{'body-alert' if can_display_pending_refund_alert?} #{content_for :body_class}"]
     - if CatarseSettings[:rd_token]
       script(async src="https://d335luupugsy2.cloudfront.net/js/loader-scripts/09f3866f-4c20-40a4-bfb8-68c2310d3964-loader.js" type="text/javascript")
     /= render 'layouts/global_alert'
