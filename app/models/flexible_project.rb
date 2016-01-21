@@ -12,7 +12,7 @@ class FlexibleProject < ActiveRecord::Base
 
   # delegate reusable methods from project
   delegate :expired?, :reached_goal?, :in_time_to_wait?, :online_days,
-    :notify_owner, :notify, :notify_once, :user, :payments, :expires_at,
+    :notify_owner, :notify_to_backoffice, :notify, :notify_once, :user, :payments, :expires_at,
     :headline, :about_html, :budget, :uploaded_image, :goal,
     :account, :video_thumbnail, :name, :open_for_contributions?,
     :online_at, :waiting_funds_at, :rejected_at, :successful_at, :deleted_at, :project_errors, to: :project
