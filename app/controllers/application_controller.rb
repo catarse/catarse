@@ -63,7 +63,7 @@ class ApplicationController < ActionController::Base
   # templates, just need to redirect to last
   # updated or created project dashboard
   def redirect_to_last_edit
-    authorize Project.new, :create?
+    authorize Project.new(user_id: current_user.try(:id)), :create?
     lp = current_user.projects.update_ordered.first
     redirect_to edit_project_path lp
   end
