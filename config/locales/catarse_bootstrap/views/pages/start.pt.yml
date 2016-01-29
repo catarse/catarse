@@ -79,12 +79,13 @@ pt:
         8:
           category_id: 10
           sample_project_ids:
-            primary: 20703
-            secondary: 9744
+            primary: 16912
+            secondary: 7695
         9:
           category_id: 14
           sample_project_ids:
             primary: 5710
+            secondary: 15915
         10:
           category_id: 15
           sample_project_ids:
@@ -104,7 +105,7 @@ pt:
           category_id: 19
           sample_project_ids:
             primary: 11113
-            secondary: 9531
+            secondary: 12138
         14:
           category_id: 16
           sample_project_ids:
@@ -113,13 +114,53 @@ pt:
         15:
           category_id: 9
           sample_project_ids:
-            primary: 5142
-            secondary: 4725
+            primary: 22454
+            secondary: 20105
         16:
           category_id: 29
           sample_project_ids:
-            primary: 4229
+            primary: 11470
+            secondary: 6997
+        17:
+          category_id: 27
+          sample_project_ids:
+            primary: 18964
+            secondary: 8583
+        18:
+          category_id: 3
+          sample_project_ids:
+            primary: 11847
+            secondary: 10800
+        19:
+          category_id: 4
+          sample_project_ids:
+            primary: 6519
+            secondary: 14762
+        20:
+          category_id: 8
+          sample_project_ids:
+            primary: 9531
+            secondary: 13592
+        21:
+          category_id: 12
+          sample_project_ids:
+            primary: 2073
+            secondary: 9744
+        22:
+          category_id: 28
+          sample_project_ids:
+            primary: 14594
             secondary: 16322
+        23:
+          category_id: 11
+          sample_project_ids:
+            primary: 13425
+            secondary: 7391
+        30:
+          category_id: 30
+          sample_project_ids: 
+            primary: 2895
+            secondary: 8389
       panes:
         1:
           label: 'Atendimento rápido e ágil'
