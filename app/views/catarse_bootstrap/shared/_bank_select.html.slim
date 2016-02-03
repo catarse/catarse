@@ -1,6 +1,6 @@
 - has_input_bank_number_error = resource.errors.include?(:input_bank_number)
 .w-col.w-col-6.w-sub-col#bank_select class="#{(has_input_bank_number_error ? 'w-hidden' : '')}"
-  = bform.input :bank_id, as: :select, collection: Bank.most_popular_collection(resource.try(:bank)), validation_text: true, class: 'w-select', input_html: { required: true, class: 'bank-select' }
+  = bform.input :bank_id, as: :select, collection: Bank.most_popular_collection(resource.try(:bank)), validation_text: true, class: 'w-select', input_html: { required: true, class: 'bank-select positive' }
 .w-col.w-col-6.w-sub-col
   .w-row.u-marginbottom-20#bank_search class="#{(!has_input_bank_number_error ? 'w-hidden' : '')}"
     .w-col.w-col-12
