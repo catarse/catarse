@@ -85,17 +85,6 @@ RSpec.describe ProjectObserver do
     end
   end
 
-  describe "#after_create" do
-    before do
-      expect_any_instance_of(ProjectObserver).to receive(:after_create).and_call_original
-      project
-    end
-
-    it "should create notification for project owner" do
-      expect(ProjectNotification.where(user_id: project.user.id, template_name: 'project_received', project_id: project.id).count).to eq 1
-    end
-  end
-
   describe "#from_draft_to_in_analysis" do
     before do
       @user = create(:user, email: ::CatarseSettings[:email_projects])
@@ -106,26 +95,6 @@ RSpec.describe ProjectObserver do
 
     it "should create notification for catarse admin" do
       expect(ProjectNotification.where(user_id: @user.id, template_name: :new_draft_project, project_id: @project.id).count).to eq 1
-    end
-  end
-
-  describe "#from_approved_to_online" do
-    before do
-      project.notify_observers(:from_approved_to_online)
-    end
-
-    it "should send project_visible notification" do
-      expect(ProjectNotification.where(template_name: 'project_visible', user: project.user, project: project).count).to eq 1
-    end
-  end
-
-  describe "#from_in_analysis_to_approved" do
-    before do
-      project.notify_observers(:from_in_analysis_to_approved)
-    end
-
-    it "should send project_visible notification" do
-      expect(ProjectNotification.where(template_name: 'project_approved', user: project.user, project: project).count).to eq 1
     end
   end
 
@@ -163,9 +132,6 @@ RSpec.describe ProjectObserver do
       end
     end
 
-    it "should send project_visible notification" do
-      expect(ProjectNotification.where(template_name: 'project_in_waiting_funds', user: project.user, project: project).count).to eq 1
-    end
   end
 
   describe "#from_online_to_failed" do
@@ -218,10 +184,6 @@ RSpec.describe ProjectObserver do
       admin_user
       redbooth_user
       project.notify_observers(:from_waiting_funds_to_successful)
-    end
-
-    it "should send project_visible notification" do
-      expect(ProjectNotification.where(template_name: 'project_success', user: project.user, project: project).count).to eq 1
     end
 
     it "should create notification for admin" do
