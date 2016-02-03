@@ -17,37 +17,24 @@ class ProjectObserver < ActiveRecord::Observer
     end
   end
 
-  def after_create(project)
-    deliver_default_notification_for(project, :project_received)
-  end
-
   def from_draft_to_in_analysis(project)
     project.notify_to_backoffice(:new_draft_project, {
       from_email: project.user.email,
       from_name: project.user.display_name
     }, project.new_draft_recipient)
 
-    deliver_default_notification_for(project, :in_analysis_project)
   end
 
   def from_online_to_waiting_funds(project)
-    project.notify_owner(:project_in_waiting_funds, { from_email: CatarseSettings[:email_projects] })
     notify_admin_project_will_succeed(project) if project.reached_goal?
   end
 
   def from_waiting_funds_to_successful(project)
-    project.notify_owner(:project_success, from_email: CatarseSettings[:email_projects])
-
     notify_admin_that_project_is_successful(project)
     notify_users(project)
   end
 
-  def from_in_analysis_to_approved(project)
-    project.notify_owner(:project_approved, { from_email: CatarseSettings[:email_projects] })
-  end
-
   def from_approved_to_online(project)
-    deliver_default_notification_for(project, :project_visible)
     project.update_attributes({
       audited_user_name: project.user.name,
       audited_user_cpf: project.user.cpf,
@@ -60,7 +47,6 @@ class ProjectObserver < ActiveRecord::Observer
   def from_online_to_failed(project)
     notify_users(project)
     request_refund_for_failed_project(project)
-    project.notify_owner(:project_unsuccessful, { from_email: CatarseSettings[:email_projects] })
   end
 
   def from_waiting_funds_to_failed(project)
@@ -91,13 +77,4 @@ class ProjectObserver < ActiveRecord::Observer
     end
   end
 
-  def deliver_default_notification_for(project, notification_type)
-    project.notify_owner(
-      notification_type,
-      {
-        from_email: CatarseSettings[:email_projects],
-        from_name: CatarseSettings[:company_name]
-      }
-    )
-  end
 end
