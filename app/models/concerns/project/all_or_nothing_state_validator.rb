@@ -17,7 +17,7 @@ module Project::AllOrNothingStateValidator
         wo.validates_presence_of :goal, :online_days
 
         wo.validate do
-          if self.rewards.count == 0
+          if self.rewards.size == 0
             self.errors['rewards.size'] << "Deve haver pelo menos uma recompensa"
           end
         end

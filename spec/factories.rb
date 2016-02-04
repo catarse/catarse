@@ -81,12 +81,12 @@ FactoryGirl.define do
   end
 
   factory :project do |f|
-    after(:create) do |project|
-      create(:reward, project: project)
-      if project.state == 'change_to_online_after_create'
-        project.update_attributes(state: 'online')
-      end
-    end
+    #after(:create) do |project|
+    #  create(:reward, project: project)
+    #  if project.state == 'change_to_online_after_create'
+    #    project.update_attributes(state: 'online')
+    #  end
+    #end
     f.name "Foo bar"
     f.permalink { generate(:permalink) }
     f.association :user
