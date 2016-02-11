@@ -5,7 +5,7 @@ namespace :cron do
 
   desc "Tasks that should run daily"
   task daily: [ :notify_project_owner_about_new_confirmed_contributions,
-               :deliver_projects_of_week, :verify_pagarme_transactions,
+               :verify_pagarme_transactions,
                :verify_pagarme_transfers, :verify_pagarme_user_transfers, :notify_pending_refunds, :request_direct_refund_for_failed_refund]
 
   desc "Refresh all materialized views"
@@ -72,11 +72,4 @@ namespace :cron do
     end
   end
 
-  desc "Deliver a collection of recents projects of a category"
-  task deliver_projects_of_week: :environment do
-    puts "Delivering projects of the week..."
-    Category.with_projects_on_this_week.each do |category|
-      category.deliver_projects_of_week_notification
-    end
-  end
 end
