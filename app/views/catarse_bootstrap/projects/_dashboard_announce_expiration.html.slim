@@ -1,20 +1,68 @@
-.w-row.u-marginbottom-60
-  .w-col.w-col-1
-  .w-col.w-col-10
-    .card.card-big.card-terciary.u-radius
-      .fontsize-base= t('.explanation_01')
-      .u-text-center.fontsize-large.u-marginbottom-40.u-margintop-40
-        span.card.u-radius
-          = l(FlexibleProject::FINAL_LAP_INTERVAL.days.from_now.to_date)
-          | &nbsp; às 23h59m59s
-      .fontsize-base= t('.explanation_02')
+#dashboard-announce_expiration-tab
+  = simple_form_for @project, html: { class: 'project-form w-form' } do |form|
+    .w-section.page-header.bg-white
+      .w-container
+        .w-row
+          .w-col.w-col-2
+          .w-col.w-col-8
+            .u-text-center
+              .fontsize-base
+                ' Escolha bem a data, pois você não poderá alterá-la depois. Após esse prazo, você receberá seu dinheiro em até 10 dias úteis.
+                a.alt-link target="_blank" href="http://suporte.catarse.me/hc/pt-br/articles/206507863-Catarse-flex-Principais-perguntas-e-respostas-" Saiba mais.
+                span.fontweight-semibold
+          .w-col.w-col-2
+    .w-section
+      .w-container
+        .w-row.u-marginbottom-60
+          .w-col.w-col-1
+          .w-col.w-col-10
+            = @project.display_errors(:announce_expiration)
+            .card-big.card.card-terciary.u-radius
+              .w-row.u-marginbottom-30
+                .w-col.w-col-6._w-sub-col
+                  .fontsize-small.u-marginbottom-10
+                    | Em quantos dias, contados a partir de agora, você quer encerrar a sua arrecadação?
+                    br
+                    span.fontsize-smaller.fontweight-semibold
+                      |(mínimo de 2 dias)
+                .w-col.w-col-6
+                  .w-row
+                    .w-col.w-col-8.w-col-small-6.w-col-tiny-6
+                      = form.input :online_days, as: :numeric, default: 2,
+                        wrapper: :two_columns,
+                        input_html: { class: 'positive medium', required: false, value: '2' },
+                        validation_text: false, label: '', hint: ''
+                    .w-col.w-col-4.w-col-small-6.w-col-tiny-6.text-field.postfix.no-hover.medium.prefix-permalink
+                      .fontcolor-secondary.u-text-center.fontsize-base.lineheight-tightest Dias
+              .fontcolor-secondary.u-text-center
+                .fontsize-smaller Você poderá receber apoios até:
+                .fontsize-base
+                  span.expire-date=> l(2.days.from_now.to_date)
+                  | as 23h59m
+          .w-col.w-col-1
+    .w-section
+      .w-container
+        .w-row
+          .w-col.w-col-4
+          .w-col.w-col-4
+            a#show-modal.btn.btn-large.u-marginbottom-20   Confirmar
 
-.w-row
-  .w-col.w-col-2
-  .w-col.w-col-8
-    .w-row
-      .w-col.w-col-6.w-col-small-6.w-col-tiny-6._w-col-small-6.w-sub-col
-        = link_to t('no'), insights_project_path(@project), class: 'btn btn-large btn-terciary'
-      .w-col.w-col-6.w-col-small-6.w-col-tiny-6.w-sub-col
-        = link_to t('yes'), finish_flexible_project_path(@project.flexible_project), class: 'btn btn-large'
-  .w-col.w-col-2
+    .modal-backdrop.w-hidden
+      .modal-dialog-outer
+        .modal-dialog-inner.modal-dialog-small
+          a.w-inline-block.modal-close.fa.fa-close.fa-lg  href="#announce_expiration"
+          .modal-dialog-content
+            .fontsize-large.u-text-center.u-marginbottom-30.fontweight-semibold Você confirma?
+            .fontsize-large.u-text-center.u-marginbottom-30
+              'Sua arrecadação irá terminar no dia 
+              span.expire-date= l(2.days.from_now.to_date)
+              |, as 23h59. Até lá, você pode captar recursos e seguir firme na sua campanha! Após esse prazo, o dinheiro estará na sua conta bancária em até 10 dias úteis.
+          .modal-dialog-nav-bottom
+            .w-row
+              .w-col.w-col-2
+              .w-col.w-col-4
+                = hidden_field_tag 'anchor', 'announce_expiration'
+                = form.button :submit, 'Sim', class:'btn btn-large', id: 'budget-save'
+              .w-col.w-col-4
+                a#cancel.btn.btn-large.btn-terciary data-ix="modal-dialog-close" href="#announce_expiration"  Não
+              .w-col.w-col-2
