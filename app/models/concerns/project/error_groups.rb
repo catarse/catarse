@@ -8,6 +8,7 @@ module Project::ErrorGroups
         goal: [:goal, :online_days],
         description: [:about_html],
         budget: [:budget],
+        announce_expiration: [:online_days],
         card: [:uploaded_image, :headline],
         video: [:video_url],
         reward: [:'rewards.size', :'rewards.minimum_value', :'rewards.deliver_at'],

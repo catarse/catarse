@@ -2,7 +2,7 @@ pt:
   projects:
     flex_nav_actions:
       publish: 'Publicar'
-      announce_expiration: 'Iniciar reta final'
+      announce_expiration: 'Definir prazo'
     aon_nav_actions:
       publish: 'Publicar'
       send: 'Enviar'
@@ -20,7 +20,7 @@ pt:
         reward_html: "Crie e edite aqui suas recompensas"
         reward_subtitle: "Essa é sua demonstração de gratidão com os apoiadores. Lembre-se de incluir os custos das recompensas no seu orçamento. Prometeu, ENTREGUE! "
       posts: "Escrever uma novidade"
-      announce_expiration: 'Iniciar reta final?'
+      announce_expiration: 'Prazo de arrecadação'
       budget_subtitle: "Como o seu dinheiro será utilizado? Quanto mais transparência melhor. Mostre que etapas e processos estarão envolvidos no uso desses recursos. Uma lista com os principais itens do orçamento ou até mesmo um gráfico de pizza vão super bem aqui."
       card: 'Card do projeto'
       card_subtitle: 'Sabe aquele cardzinho de projeto que aparece na home e na busca? Pois então, faz bonito pois dizem que a primeira impressão é a que fica ;)'
@@ -58,6 +58,9 @@ pt:
         new_reward: Cadastrar recompensa
         reward_deliver_time: "<b>Estimativa de Entrega:</b> %{estimate}"
         reward_title: Para %{minimum} ou mais
+    dashboard_insights:
+      finish_explanation: 'Sua campanha ainda está com o prazo em aberto. Para receber os recursos em sua conta bancária, é preciso definir uma data final de arrecadação.'
+      know_more: ' Saiba mais.'
     dashboard_user_settings:
        natural: "Nome completo do titular"
        juridical: "Razão Social do titular"
@@ -133,13 +136,13 @@ pt:
       next_steps: "Enquanto espera a sua resposta, você pode continuar editando o seu projeto! Recomendamos também que você vá coletando feedback com as pessoas próximas e planejando como será a sua campanha."
     dashboard_nav:
       leave_link_html: "&nbsp; Sair do painel de controle"
-      start_tab: Minha Campanha
-      reports_tab: Relatórios de apoios
+      start_tab: ' Minha Campanha'
+      reports_tab: ' Relatórios de apoios'
       preview_tab: Preview
-      posts_tab: Novidades
-      edit_project: Editar projeto
+      posts_tab: ' Novidades '
+      edit_project: ' Editar projeto '
       send: Enviar
-      announce_expiration: Iniciar reta final
+      announce_expiration: Definir prazo
       publish: Publicar
     dashboard_nav_links:
       flex:
