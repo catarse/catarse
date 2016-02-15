@@ -20,7 +20,7 @@ RSpec.describe ProjectReminder, type: :model do
     subject { ProjectReminder.can_deliver.count }
 
     context "when project is expiring" do
-      let(:project) { create(:project, state: 'online', online_days: 1, expires_at: 1.hour.from_now) }
+      let(:project) { create(:project, state: 'online', online_days: 2, expires_at: 1.hour.from_now) }
 
       before do
         4.times { create(:project_reminder, project: project) }
