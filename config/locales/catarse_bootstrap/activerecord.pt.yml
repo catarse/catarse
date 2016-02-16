@@ -250,7 +250,7 @@ pt:
               not_a_number: "Meta de arrecadação aceita somente números"
             online_days:
               blank: "O prazo de arrecadação não pode ficar em branco"
-              greater_than: "O prazo para arrecadação deve ser maior que 0 dias"
+              greater_than: "O prazo para arrecadação deve ser maior que 2 dias"
               less_than_or_equal_to: "O prazo para arrecadação deve ser menor ou igual a 60 dias"
               not_a_number: "O prazo para arrecadação deve ser um número de dias"
             about_html:
@@ -285,7 +285,7 @@ pt:
               not_a_number: "Meta de arrecadação aceita somente números"
             online_days:
               blank: "O prazo de arrecadação não pode ficar em branco"
-              greater_than: "O prazo para arrecadação deve ser maior que 0 dias"
+              greater_than: "O prazo para arrecadação deve ser maior que 2 dias"
               less_than_or_equal_to: "O prazo para arrecadação deve ser menor ou igual a 60 dias"
               not_a_number: "O prazo para arrecadação deve ser um número de dias"
             about_html:

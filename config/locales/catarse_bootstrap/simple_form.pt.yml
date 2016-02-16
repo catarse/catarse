@@ -46,7 +46,7 @@ pt:
         traffic_sources: "Como você conheceu o Catarse?"
         name: "Dê um nome que as pessoas se lembrem facilmente. Não ultrapasse 50 caracteres."
         all_tags: "Informe tags separadas por vírgula"
-        permalink: "Prefira algo simples, direto e que identifique bem seu projeto. Tente não usar hífen, underline etc."
+        permalink: "Você pode editá-lo até o projeto ir ao ar. Prefira algo simples, direto e que identifique bem seu projeto. Tente não usar hífen, underline etc."
         category: "Escolha a mais adequada ao seu projeto."
         city: "Onde o seu projeto será realizado? Caso ele aconteça em mais de um lugar, uma dica é colocar a cidade onde sua rede de potenciais apoiadores é maior."
         goal: "Planeje uma meta coerente com o que seu projeto propõe. Revise seu orçamento e não esqueça de incluir a taxa de 13% cobrada pelo Catarse."
