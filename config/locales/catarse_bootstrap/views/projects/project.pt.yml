@@ -5,6 +5,8 @@ pt:
       cta: 'Veja como foi o ano no Catarse'
     new_feature_badge: 'Novidade'
     insights:
+      finish_explanation: 'Sua campanha ainda está com o prazo em aberto. Para receber os recursos em sua conta bancária, é preciso definir uma data final de arrecadação.'
+      know_more: ' Saiba mais.'
       referral:
         ctrse_explore: 'Busca do Catarse'
         home_recommended: 'Projetos recomendados na página inicial'

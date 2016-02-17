@@ -1,16 +1,5 @@
 #dashboard-announce_expiration-tab
-  = simple_form_for @project, html: { class: 'project-form w-form' } do |form|
-    .w-section.page-header.bg-white
-      .w-container
-        .w-row
-          .w-col.w-col-2
-          .w-col.w-col-8
-            .u-text-center
-              .fontsize-base
-                ' Escolha bem a data, pois você não poderá alterá-la depois. Após esse prazo, você receberá seu dinheiro em até 10 dias úteis.
-                a.alt-link target="_blank" href="http://suporte.catarse.me/hc/pt-br/articles/206507863-Catarse-flex-Principais-perguntas-e-respostas-" Saiba mais.
-                span.fontweight-semibold
-          .w-col.w-col-2
+  = simple_form_for @project, html: { class: 'project-form w-form', id: 'expiration-form' } do |form|
     .w-section
       .w-container
         .w-row.u-marginbottom-60
@@ -30,7 +19,7 @@
                     .w-col.w-col-8.w-col-small-6.w-col-tiny-6
                       = form.input :online_days, as: :numeric, default: 2,
                         wrapper: :two_columns,
-                        input_html: { class: 'positive medium', required: false, value: '2' },
+                        input_html: { class: 'positive medium', required: false, value: '2', min: 2 },
                         validation_text: false, label: '', hint: ''
                     .w-col.w-col-4.w-col-small-6.w-col-tiny-6.text-field.postfix.no-hover.medium.prefix-permalink
                       .fontcolor-secondary.u-text-center.fontsize-base.lineheight-tightest Dias
@@ -61,8 +50,15 @@
             .w-row
               .w-col.w-col-2
               .w-col.w-col-4
-                = hidden_field_tag 'anchor', 'announce_expiration'
                 = form.button :submit, 'Sim', class:'btn btn-large', id: 'budget-save'
               .w-col.w-col-4
                 a#cancel.btn.btn-large.btn-terciary data-ix="modal-dialog-close" href="#announce_expiration"  Não
               .w-col.w-col-2
+
+    /.modal-backdrop.w-hidden
+      /.modal-dialog-outer
+        /.modal-dialog-inner.modal-dialog-small
+          /a.w-inline-block.modal-close.fa.fa-close.fa-lg data-ix="modal-dialog-close" 
+          /.modal-dialog-content.u-text-center
+            /.fa.fa-check-circle.fa-5x.text-success.u-marginbottom-40
+            /p.fontsize-large Seu prazo foi definido com sucesso. Você tem até o dia 21/12/2015, `as 23h59, para captar recursos para a sua campanha. Após esse prazo, o dinheiro estará em sua conta bancária em até 10 dias úteis. Boa sorte!
