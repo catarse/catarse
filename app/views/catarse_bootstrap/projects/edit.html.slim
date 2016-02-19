@@ -45,7 +45,7 @@
         #dashboard_user_about.content.w-hidden data-page_title="#{t('.user_about')}" data-page_subtitle="#{t('.user_about_subtitle')}"
           = render 'dashboard_user_about'
         - if @project.expires_at.nil? && @project.open_for_contributions?
-          #dashboard_announce_expiration.content.w-hidden data-page_title=t('.announce_expiration') data-page_subtitle=""
+          #dashboard_announce_expiration.content.w-hidden data-page_title=t('.announce_expiration') data-page_subtitle=t('.announce_expiration_subtitle')
             = render 'dashboard_announce_expiration'
         #dashboard_preview.content.w-hidden data-page_subtitle="" data-page_title=""
           = render 'dashboard_preview'

@@ -21,6 +21,7 @@ pt:
         reward_subtitle: "Essa é sua demonstração de gratidão com os apoiadores. Lembre-se de incluir os custos das recompensas no seu orçamento. Prometeu, ENTREGUE! "
       posts: "Escrever uma novidade"
       announce_expiration: 'Prazo de arrecadação'
+      announce_expiration_subtitle: 'Escolha bem a data, pois você não poderá alterá-la depois. Após esse prazo, você receberá seu dinheiro em até 10 dias úteis.'
       budget_subtitle: "Como o seu dinheiro será utilizado? Quanto mais transparência melhor. Mostre que etapas e processos estarão envolvidos no uso desses recursos. Uma lista com os principais itens do orçamento ou até mesmo um gráfico de pizza vão super bem aqui."
       card: 'Card do projeto'
       card_subtitle: 'Sabe aquele cardzinho de projeto que aparece na home e na busca? Pois então, faz bonito pois dizem que a primeira impressão é a que fica ;)'
@@ -170,7 +171,7 @@ pt:
     flex_dashboard_explanation:
       flex:
         kind_text: "Você está participando do período de testes do modelo flexível. Sua participação é essencial para entendermos como podemos expandir esse modelo para todos os usuários. %{link}"
-        expiration_text: "Na Campanha Flexível, não há limite de tempo para sua campanha. Com o seu projeto no ar, você terá a opção de começar uma contagem regressiva de 7 dias quando quiser. Ao final desse período, sua campanha será encerrada e você receberá em 10 dias úteis tudo que tiver arrecadado!"
+        expiration_text: "Na Campanha Flexível, você pode ficar com sua campanha em captação por até 1 ano! Com ela no ar, você terá a opção de definir uma data de término do projeto (mínimo de 2 dias). Após o final da campanha, você recebe tudo o que tiver arrecadado (taxas descontadas) em até 10 dias úteis."
         expiration_title: "Prazo de arrecadação"
     dashboard_user_about:
       submit: "Salvar"
