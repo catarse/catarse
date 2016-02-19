@@ -1131,7 +1131,9 @@ a:hover {
 .card-project-thumb {
   height: 170px;
   border-radius: 5px 5px 0px 0px;
-  background-image: none;
+  background-image: url('/assets/example-bg.png');
+  background-position: 50% 50%;
+  background-size: cover;
 }
 
 .card-project-thumb.big {
@@ -3282,11 +3284,14 @@ a:hover {
 
 .checkbox-big {
   display: inline-block;
-  width: 25px;
-  height: 25px;
+  width: 38px;
+  height: 38px;
   margin-right: 5px;
+  padding-top: 10px;
   border: 1px solid #79808b;
-  border-radius: 5px;
+  border-radius: 50%;
+  line-height: 30px;
+  text-align: center;
   text-decoration: none;
   cursor: pointer;
 }
@@ -3296,7 +3301,6 @@ a:hover {
 }
 
 .checkbox-big.checkbox--selected {
-  padding-top: 5px;
   border-color: #7cc142;
   background-color: #7cc142;
   color: #fff;
@@ -3739,10 +3743,6 @@ html.w-mod-js *[data-ix="icon-funded-with"] {
   -webkit-transform: scale(0.1, 0.1);
   -ms-transform: scale(0.1, 0.1);
   transform: scale(0.1, 0.1);
-}
-
-html.w-mod-js *[data-ix="show-rule-3"] {
-  display: none;
 }
 
 html.w-mod-js *[data-ix="show-rule-4"] {
@@ -4471,7 +4471,6 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
     height: 9px;
   }
   .card-project-thumb {
-    display: inline-block;
     height: 240px;
     border-radius: 5px 0px 0px 5px;
   }
