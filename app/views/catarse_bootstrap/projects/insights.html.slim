@@ -1,6 +1,17 @@
 - content_for :title, "#{@project.name} · #{CatarseSettings[:company_name]}"
 
 = render 'shared/header'
+
+- if session[:expire_success]
+  - session[:expire_success] = false
+  .modal-backdrop
+    .modal-dialog-outer
+      .modal-dialog-inner.modal-dialog-small
+        a.w-inline-block.modal-close.fa.fa-close.fa-lg  href="#"
+        .modal-dialog-content.u-text-center
+          .fa.fa-check-circle.fa-5x.text-success.u-marginbottom-40
+          p.fontsize-large Seu prazo foi definido com sucesso. Você tem até o dia 21/12/2015, `as 23h59, para captar recursos para a sua campanha. Após esse prazo, o dinheiro estará em sua conta bancária em até 10 dias úteis. Boa sorte!
+
 .w-section.section-product[class=@project.mode]
 #project-insights-root.min-height-70[data-mithril="Insights" data-id=@project.id]
 
