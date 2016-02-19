@@ -4,7 +4,6 @@ App.addChild('DashboardAnnounceExpiration', {
   events:{
     "click a#show-modal": "showModal",
     "change #project_online_days": "updateExpirationDate",
-    "click .modal-close": "hideModal",
     "click #cancel": "hideModal"
   },
 

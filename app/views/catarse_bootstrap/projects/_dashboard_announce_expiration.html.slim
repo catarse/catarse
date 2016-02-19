@@ -19,7 +19,7 @@
                     .w-col.w-col-8.w-col-small-6.w-col-tiny-6
                       = form.input :online_days, as: :numeric, default: 2,
                         wrapper: :two_columns,
-                        input_html: { class: 'positive medium', required: false, value: '2', min: 2 },
+                        input_html: { class: 'positive medium', required: false, value: '2', min: 2, max: 60 },
                         validation_text: false, label: '', hint: ''
                     .w-col.w-col-4.w-col-small-6.w-col-tiny-6.text-field.postfix.no-hover.medium.prefix-permalink
                       .fontcolor-secondary.u-text-center.fontsize-base.lineheight-tightest Dias
@@ -54,11 +54,3 @@
               .w-col.w-col-4
                 a#cancel.btn.btn-large.btn-terciary data-ix="modal-dialog-close" href="#announce_expiration"  Não
               .w-col.w-col-2
-
-    /.modal-backdrop.w-hidden
-      /.modal-dialog-outer
-        /.modal-dialog-inner.modal-dialog-small
-          /a.w-inline-block.modal-close.fa.fa-close.fa-lg data-ix="modal-dialog-close" 
-          /.modal-dialog-content.u-text-center
-            /.fa.fa-check-circle.fa-5x.text-success.u-marginbottom-40
-            /p.fontsize-large Seu prazo foi definido com sucesso. Você tem até o dia 21/12/2015, `as 23h59, para captar recursos para a sua campanha. Após esse prazo, o dinheiro estará em sua conta bancária em até 10 dias úteis. Boa sorte!
