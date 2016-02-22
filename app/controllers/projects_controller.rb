@@ -77,9 +77,8 @@ class ProjectsController < ApplicationController
       resource.service_fee = permitted_params[:service_fee]
     end
 
-    if resource.mode == 'flex' && resource.online_days_changed?
-      session[:success_modal] = true
-    end
+    should_show_modal = resource.mode == 'flex' && resource.online_days_changed?
+
 
     if resource.save(validate: should_validate)
       flash[:notice] = t('project.update.success')
@@ -89,8 +88,8 @@ class ProjectsController < ApplicationController
       return render :edit
     end
 
-    if session[:success_modal]
-      redirect_to insights_project_path(@project)
+    if should_show_modal
+      redirect_to insights_project_path(@project, show_modal: true)
     elsif params[:anchor]
       redirect_to edit_project_path(@project, anchor: params[:anchor])
     else

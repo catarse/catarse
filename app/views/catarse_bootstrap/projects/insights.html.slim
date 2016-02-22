@@ -2,8 +2,7 @@
 
 = render 'shared/header'
 
-- if session[:success_modal]
-  - session[:success_modal] = false
+- if params[:show_modal].present?
   .modal-backdrop
     .modal-dialog-outer
       .modal-dialog-inner.modal-dialog-small
