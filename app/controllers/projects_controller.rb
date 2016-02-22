@@ -78,7 +78,7 @@ class ProjectsController < ApplicationController
     end
 
     if resource.mode == 'flex' && resource.online_days_changed?
-      session[:expire_success] = true
+      session[:success_modal] = true
     end
 
     if resource.save(validate: should_validate)
@@ -89,7 +89,9 @@ class ProjectsController < ApplicationController
       return render :edit
     end
 
-    if params[:anchor]
+    if session[:success_modal]
+      redirect_to insights_project_path(@project)
+    elsif params[:anchor]
       redirect_to edit_project_path(@project, anchor: params[:anchor])
     else
       redirect_to edit_project_path(@project, anchor: 'home')

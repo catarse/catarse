@@ -2,8 +2,8 @@
 
 = render 'shared/header'
 
-- if session[:expire_success]
-  - session[:expire_success] = false
+- if session[:success_modal]
+  - session[:success_modal] = false
   .modal-backdrop
     .modal-dialog-outer
       .modal-dialog-inner.modal-dialog-small
