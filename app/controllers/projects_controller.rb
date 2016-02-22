@@ -77,6 +77,10 @@ class ProjectsController < ApplicationController
       resource.service_fee = permitted_params[:service_fee]
     end
 
+    if resource.mode == 'flex' && resource.online_days_changed?
+      session[:expire_success] = true
+    end
+
     if resource.save(validate: should_validate)
       flash[:notice] = t('project.update.success')
     else
