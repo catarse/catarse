@@ -13,13 +13,13 @@
                     | Em quantos dias, contados a partir de agora, você quer encerrar a sua arrecadação?
                     br
                     span.fontsize-smaller.fontweight-semibold
-                      |(mínimo de 2 dias)
+                      |(mínimo de 2 dias e máximo 60 dias)
                 .w-col.w-col-6
                   .w-row
                     .w-col.w-col-8.w-col-small-6.w-col-tiny-6
                       = form.input :online_days, as: :numeric, default: 2,
                         wrapper: :two_columns,
-                        input_html: { class: 'positive medium', required: false, value: '2', min: 2, max: 60 },
+                        input_html: { class: 'positive medium', required: false, value: '2' },
                         validation_text: false, label: '', hint: ''
                     .w-col.w-col-4.w-col-small-6.w-col-tiny-6.text-field.postfix.no-hover.medium.prefix-permalink
                       .fontcolor-secondary.u-text-center.fontsize-base.lineheight-tightest Dias
@@ -50,6 +50,7 @@
             .w-row
               .w-col.w-col-2
               .w-col.w-col-4
+                = hidden_field_tag 'anchor', 'announce_expiration'
                 = form.button :submit, 'Sim', class:'btn btn-large', id: 'budget-save'
               .w-col.w-col-4
                 a#cancel.btn.btn-large.btn-terciary data-ix="modal-dialog-close" href="#announce_expiration"  Não
