@@ -28,12 +28,3 @@
       .u-marginbottom-20.fontweight-semibold.fontsize-base.u-text-center= t('.project_recommendations') 
       .w-row
         == render_projects @contribution.recommended_projects.limit(3), 'ctrse_thankyou', { wrapper_class: 'w-col w-col-4' }
-
-- unless current_user.following_this_category?(@project.category_id)
-  .section.section-gray-one
-    .w-container
-      .fontsize-larger.lineheight-tight.u-text-center.u-marginbottom-40 
-        = t('.follow_category', category: @project.category.name_pt)
-      .w-row
-        .w-col.w-col-4.w-col-push-4
-          = link_to "#{t('.follow')} #{@project.category.name_pt}", subscribe_category_path(@project.category), class: 'btn btn-large btn-dark'
