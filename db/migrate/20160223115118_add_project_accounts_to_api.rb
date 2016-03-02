@@ -3,8 +3,10 @@ class AddProjectAccountsToApi < ActiveRecord::Migration
     execute <<-SQL
 CREATE OR REPLACE VIEW "1".project_accounts AS
     SELECT
+        pa.id as id,
         pa.project_id,
         p.user_id,
+        u.email as user_email,
         b.name as bank_name,
         b.code as bank_code,
         pa.agency,
@@ -27,13 +29,13 @@ CREATE OR REPLACE VIEW "1".project_accounts AS
             SELECT pae.reason FROM public.project_account_errors pae
             WHERE NOT pae.solved AND pae.project_account_id = pa.id ORDER BY pae.id DESC LIMIT 1
         ) as error_reason,
-        (
-            SELECT bt.state FROM "1".balance_transfers bt
-            WHERE bt.project_id = p.id ORDER BY bt.id DESC LIMIT 1
-        ) as transfer_state
+        bt.state as transfer_state,
+        bt.transfer_limit_date
     FROM public.project_accounts pa
         JOIN public.banks b ON b.id = pa.bank_id
         JOIN public.projects p ON p.id = pa.project_id
+        JOIN public.users u ON u.id = p.user_id
+        LEFT JOIN "1".balance_transfers bt ON bt.project_id = p.id
     WHERE public.is_owner_or_admin(p.user_id);
 
 GRANT SELECT ON "1".project_accounts TO admin, web_user;
