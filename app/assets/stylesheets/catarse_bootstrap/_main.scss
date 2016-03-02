@@ -412,7 +412,7 @@ a:hover {
 
 .thumb-author {
   display: inline-block;
-  width: 80px;
+  height: 80px;
   margin-top: -5px;
   margin-right: 16px;
   float: left;
@@ -3493,6 +3493,10 @@ a:hover {
   color: #fff;
 }
 
+._w-inline-block {
+  display: inline-block;
+}
+
 ._w-inline-block.fa.fa-question-circle.fontcolor-secondary {
   position: relative;
 }
@@ -3671,12 +3675,43 @@ a:hover {
 }
 
 .hero-slide.teatromagico {
-  background-image: url('/assets/hero-teatro.jpg');
+  background-image: url('/assets/banner-home-crioulas.jpg');
 }
 
 .hero-slide.anavitoria {
-  background-image: url('/assets/hero-anavitoria.jpg');
+  background-image: url('/assets/banner-home-dreamdogs.jpg');
   background-size: 1430px;
+}
+
+.hero-slide.livros {
+  background-image: url('/assets/banner-home-livros-herois.jpg');
+  background-position: 0px 0px;
+  background-size: 1430px;
+}
+
+.hero-slide.centrdaterra {
+  background-image: url('/assets/banner-home-centrodaterra.jpg');
+}
+
+.hero-slide.pernas {
+  background-image: url('/assets/banner-home-pernas.jpg');
+  background-size: 1430px;
+}
+
+.hero-slide.crypto {
+  background-image: url('/assets/banner-home-crypto-rave.jpg');
+  background-size: 1430px;
+}
+
+.bg-backs-carrosel {
+  background-image: url('/assets/carrosel-apoios-bg.jpg');
+  background-position: 50% 50%;
+  background-size: cover;
+  background-repeat: repeat;
+}
+
+.inline-margins-auto {
+  display: inline-block;
 }
 
 html.w-mod-js *[data-ix="fade-in"] {
@@ -3761,6 +3796,14 @@ html.w-mod-js *[data-ix="show-rule-7"] {
   display: none;
 }
 
+html.w-mod-js *[data-ix="show-rule-8"] {
+  display: none;
+}
+
+html.w-mod-js *[data-ix="show-rule-9"] {
+  display: none;
+}
+
 html.w-mod-js *[data-ix="show-publish-button"] {
   display: none;
 }
@@ -3806,6 +3849,9 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
   }
   .project-nav.profile {
     padding-bottom: 39px;
+  }
+  .thumb-author {
+    height: 70px;
   }
   .main-header {
     padding: 12px 4px 0px 18px;
