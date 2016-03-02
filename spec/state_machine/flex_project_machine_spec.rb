@@ -9,6 +9,7 @@ RSpec.describe FlexProjectMachine, type: :model do
   subject { flexible_project.state_machine }
 
   before do
+    allow(flexible_project).to receive(:pledged).and_return(10)
     allow(flexible_project).to receive(:notify_observers).and_call_original
   end
 
@@ -236,9 +237,23 @@ RSpec.describe FlexProjectMachine, type: :model do
           with(:waiting_funds, {to_state: 'waiting_funds'}).and_return(false)
 
         expect(subject).to receive(:transition_to).
+          with(:failed, {to_state: 'failed'}).and_return(false)
+
+        expect(subject).to receive(:transition_to).
           with(:successful, {to_state: 'successful'}).and_return(true)
       end
+      it { subject.finish }
+    end
 
+    context "when can go to failed" do
+      before do
+        expect(subject).to receive(:transition_to).
+          with(:waiting_funds, {to_state: 'waiting_funds'}).and_return(false)
+
+        expect(subject).to receive(:transition_to).
+          with(:failed, {to_state: 'failed'}).and_return(true)
+
+      end
       it { subject.finish }
     end
   end

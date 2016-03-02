@@ -14,7 +14,6 @@ class AonProjectMachine < FlexProjectMachine
   setup_machine do
     state :in_analysis
     state :approved
-    state :failed
 
     transition from: :rejected, to: %i(draft deleted)
     transition from: :draft, to: %i(rejected deleted in_analysis)

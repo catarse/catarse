@@ -11,7 +11,7 @@ class FlexibleProject < ActiveRecord::Base
   validates :project_id, presence: true, uniqueness: true
 
   # delegate reusable methods from project
-  delegate :expired?, :reached_goal?, :in_time_to_wait?, :online_days,
+  delegate :pledged, :expired?, :reached_goal?, :in_time_to_wait?, :online_days,
     :notify_owner, :notify_to_backoffice, :notify, :notify_once, :user, :payments, :expires_at,
     :headline, :about_html, :budget, :uploaded_image, :goal,
     :account, :video_thumbnail, :name, :open_for_contributions?,
