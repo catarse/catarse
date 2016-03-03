@@ -64,11 +64,11 @@ class FlexProjectMachine
 
     # Ensure that project has not more pending contributions
     guard_transition(to: :failed) do |project|
-      project.mode == 'flex' ? project.pledged == 0 : true
+      project.is_a?(FlexibleProject) ? project.pledged == 0 : true
     end
 
     guard_transition(to: :successful) do |project|
-      project.mode == 'flex' ? project.pledged > 0 : true
+      project.is_a?(FlexibleProject) ? project.pledged > 0 : true
     end
 
     # Before transition, change the state to trigger validations
