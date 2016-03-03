@@ -3,6 +3,43 @@ pt:
     home:
       title: 'Valeu 2015!'
       cta: 'Veja como foi o ano no Catarse'
+      banners: 
+        1:
+          title: 'Financie seu projeto'
+          subtitle: 'Inicie sua campanha de arrecadação e junte-se a maior comunidade de financiamento coletivo do Brasil'
+          link: '/hello'
+          cta: 'Comece agora'
+          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-start.jpg'
+        2:
+          title: 'Casa das Crioulas'
+          subtitle: 'Apoie as #maesautonomas na construção de um espaço de criação e empoderamento feminino.'
+          link: 'https://www.catarse.me/pt/casadascrioulas'
+          cta: 'Conheça o projeto'
+          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-crioulas.jpg'
+        3:
+          title: 'Ruling Pens'
+          subtitle: 'Conheça a matilha Dreaming Dogs e suas versáteis ferramentas caligráficas!'
+          link: 'https://www.catarse.me/dreamingdogs'
+          cta: 'Conheça o projeto'
+          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-dreamdogs.jpg'
+        4:
+          title: 'Heróis leitores'
+          subtitle: 'Ajude uma experiência de aprendizado coletivo em uma escola pública da zona rural de Goiânia.'
+          link: 'https://www.catarse.me/heroisleitores'
+          cta: 'Conheça o projeto'
+          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-livros-herois.jpg'
+        5:
+          title: 'Centro da Terra'
+          subtitle: 'Ajude o primeiro álbum e vinil de estúdio da banda a sair do papel É muita música e amor envolvidos!'
+          link: 'https://www.catarse.me/centrodaterra'
+          cta: 'Conheça o projeto'
+          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-centrodaterra.jpg'
+        6:
+          title: 'CryptoRave'
+          subtitle: 'Mais de vinte e quatro horas de conversas e aprendizados sobre privacidade e liberdade na Internet.'
+          link: 'https://www.catarse.me/cryptorave2016'
+          cta: 'Conheça o projeto'
+          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-crypto-rave.jpg'
     new_feature_badge: 'Novidade'
     insights:
       finish_explanation: 'Sua campanha ainda está com o prazo em aberto. Para receber os recursos em sua conta bancária, é preciso definir uma data final de arrecadação.'
