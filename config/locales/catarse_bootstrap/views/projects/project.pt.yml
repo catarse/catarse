@@ -7,7 +7,7 @@ pt:
         1:
           title: 'Financie seu projeto'
           subtitle: 'Inicie sua campanha de arrecadação e junte-se a maior comunidade de financiamento coletivo do Brasil'
-          link: '/hello?ref=home_banner'
+          link: '/start?ref=home_banner'
           cta: 'Comece agora'
           image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-start.jpg'
         2:
