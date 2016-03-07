@@ -3,18 +3,9 @@ class AonProjectMachine < FlexProjectMachine
     %i(in_analysis approved online waiting_funds successful failed).freeze
   end
 
-  def self.need_expiration_states
-    %i(waiting_funds successful failed).freeze
-  end
-
-  def self.finished_states
-    %i(successful failed).freeze
-  end
-
   setup_machine do
     state :in_analysis
     state :approved
-    state :failed
 
     transition from: :rejected, to: %i(draft deleted)
     transition from: :draft, to: %i(rejected deleted in_analysis)
@@ -38,10 +29,6 @@ class AonProjectMachine < FlexProjectMachine
 
   def approve
     transition_to :approved, to_state: 'approved'
-  end
-
-  def finish
-    transition_to(:waiting_funds, to_state: 'waiting_funds') || transition_to(:failed, to_state: 'failed') || transition_to(:successful, to_state: 'successful') || send_errors_to_admin
   end
 
   def can_approve?

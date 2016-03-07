@@ -2,15 +2,15 @@ class FlexProjectMachine
   include Statesman::Machine
 
   def self.basic_validation_states
-    %i(online waiting_funds successful).freeze
+    %i(online waiting_funds successful failed).freeze
   end
 
   def self.need_expiration_states
-    %i(waiting_funds successful).freeze
+    %i(waiting_funds successful failed).freeze
   end
 
   def self.finished_states
-    %i(successful).freeze
+    %i(successful failed).freeze
   end
 
   def self.setup_machine
@@ -18,6 +18,7 @@ class FlexProjectMachine
     state :rejected
     state :online
     state :successful
+    state :failed
     state :waiting_funds
     state :deleted
 
@@ -57,10 +58,17 @@ class FlexProjectMachine
       project.in_time_to_wait?
     end
 
-    # Ensure that project has not more pending contributions
-    # before enter on sucessful
     guard_transition(to: finished_states) do |project|
       !project.in_time_to_wait?
+    end
+
+    # Ensure that project has not more pending contributions
+    guard_transition(to: :failed) do |project|
+      project.is_a?(FlexibleProject) ? project.pledged == 0 : true
+    end
+
+    guard_transition(to: :successful) do |project|
+      project.is_a?(FlexibleProject) ? project.pledged > 0 : true
     end
 
     # Before transition, change the state to trigger validations
@@ -87,8 +95,8 @@ class FlexProjectMachine
   setup_machine do
     transition from: :rejected, to: %i(draft deleted)
     transition from: :draft, to: %i(rejected deleted online)
-    transition from: :online, to: %i(waiting_funds successful)
-    transition from: :waiting_funds, to: %i(successful)
+    transition from: :online, to: %i(waiting_funds successful failed)
+    transition from: :waiting_funds, to: %i(successful failed)
   end
 
   # put project into deleted state
@@ -119,8 +127,6 @@ class FlexProjectMachine
 
   # put project in successful or waiting_funds state
   def finish
-    unless transition_to(:waiting_funds, to_state: 'waiting_funds')
-      transition_to(:successful, to_state: 'successful') || send_errors_to_admin
-    end
+    transition_to(:waiting_funds, to_state: 'waiting_funds') || transition_to(:failed, to_state: 'failed') || transition_to(:successful, to_state: 'successful') || send_errors_to_admin
   end
 end
