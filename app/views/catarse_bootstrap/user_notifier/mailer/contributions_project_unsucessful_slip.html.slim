@@ -1,4 +1,5 @@
 - contribution = @notification.contribution
+- payment = contribution.payments.last
 - user = @notification.contribution.user
 - bank_account = user.bank_account
 
@@ -26,7 +27,7 @@ br
 br
 br
 | Se ficou com alguma dúvida, entre em contato conosco respondendo a esta mensagem ou através do e-mail #{mail_to CatarseSettings[:email_contact]} 
-| e nos informe a chave de identificação do seu apoio, que é: #{contribution.payment_id}
+| e nos informe a chave de identificação do seu apoio, que é: #{payment.gateway_id}
 br
 br
 |Um abraço,
