@@ -67,6 +67,9 @@ Catarse::Application.routes.draw do
       put :credits_checkout, on: :member
     end
 
+    collection do
+      get :fallback_create, to: 'projects#create'
+    end
     get 'video', on: :collection
     member do
       get 'insights'
