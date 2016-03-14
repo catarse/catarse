@@ -252,6 +252,10 @@ GEM
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
     kgio (2.10.0)
+    koala (2.2.0)
+      addressable
+      faraday
+      multi_json
     launchy (2.4.3)
       addressable (~> 2.3)
     letter_opener (1.4.1)
@@ -550,6 +554,7 @@ DEPENDENCIES
   jasmine-rails
   json_web_token
   kaminari
+  koala
   launchy
   letter_opener
   mail_form

@@ -54,6 +54,7 @@ gem 'high_voltage'
 gem 'simple_token_authentication', '~> 1.0' # see semver.org
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'koala'
 gem 'devise'
 gem 'pundit'
 gem 'json_web_token'
