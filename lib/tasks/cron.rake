@@ -1,7 +1,7 @@
 namespace :cron do
   desc "Tasks that should run hourly"
   task hourly: [:finish_projects, :second_slip_notification,
-                :refresh_materialized_views, :schedule_reminders]
+                :refresh_materialized_views, :schedule_reminders, :sync_fb_friends]
 
   desc "Tasks that should run daily"
   task daily: [ :notify_project_owner_about_new_confirmed_contributions,
@@ -71,6 +71,29 @@ namespace :cron do
     Contribution.need_notify_about_pending_refund.each do |contribution|
      contribution.notify(:contribution_project_unsuccessful_slip_no_account,
                          contribution.user) unless contribution.user.bank_account.present?
+    end
+  end
+
+  desc 'sync FB friends'
+  task sync_fb_friends: [:environment] do
+    Authorization.where("last_token is not null and updated_at >= current_timestamp - '24 hours'::interval").each do |authorization|
+      last_f = UserFriend.where(user_id: authorization.user_id).last
+      next if last_f.present? && last_f.created_at > 24.hours.ago
+
+      koala = Koala::Facebook::API.new(authorization.last_token)
+      friends = koala.get_connections("me", "friends")
+
+      friends.each do |f|
+        friend_auth = Authorization.find_by_uid(f['id'])
+
+        if friend_auth.present?
+          puts "creating friend #{friend_auth.user_id} to user #{authorization.user_id}"
+          UserFriend.create({
+            user_id: authorization.user_id,
+            friend_id: friend_auth.user_id
+          })
+        end
+      end
     end
   end
 
