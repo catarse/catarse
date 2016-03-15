@@ -80,19 +80,23 @@ namespace :cron do
       last_f = UserFriend.where(user_id: authorization.user_id).last
       next if last_f.present? && last_f.created_at > 24.hours.ago
 
-      koala = Koala::Facebook::API.new(authorization.last_token)
-      friends = koala.get_connections("me", "friends")
+      begin
+        koala = Koala::Facebook::API.new(authorization.last_token)
+        friends = koala.get_connections("me", "friends")
 
-      friends.each do |f|
-        friend_auth = Authorization.find_by_uid(f['id'])
+        friends.each do |f|
+          friend_auth = Authorization.find_by_uid(f['id'])
 
-        if friend_auth.present?
-          puts "creating friend #{friend_auth.user_id} to user #{authorization.user_id}"
-          UserFriend.create({
-            user_id: authorization.user_id,
-            friend_id: friend_auth.user_id
-          })
+          if friend_auth.present?
+            puts "creating friend #{friend_auth.user_id} to user #{authorization.user_id}"
+            UserFriend.create({
+              user_id: authorization.user_id,
+              friend_id: friend_auth.user_id
+            })
+          end
         end
+      rescue Exception => e
+        puts "error #{e}"
       end
     end
   end
