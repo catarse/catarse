@@ -1130,18 +1130,17 @@ a:hover {
 
 .card-project-thumb {
   height: 170px;
-  border-radius: 5px 5px 0px 0px;
   background-image: url('/assets/example-bg.png');
   background-position: 50% 50%;
   background-size: cover;
 }
 
 .card-project-thumb.big {
-  height: 360px;
+  height: 395px;
 }
 
 .card-project-thumb.medium {
-  height: 255px;
+  height: 275px;
 }
 
 .card-highlight {
@@ -3703,6 +3702,10 @@ a:hover {
   background-size: 1430px;
 }
 
+.hero-slide.start {
+  background-image: url('/assets/bg-hero-start.jpg');
+}
+
 .bg-backs-carrosel {
   background-image: url('/assets/carrosel-apoios-bg.jpg');
   background-position: 50% 50%;
@@ -3712,6 +3715,11 @@ a:hover {
 
 .inline-margins-auto {
   display: inline-block;
+}
+
+.padding-redactor-description {
+  margin-bottom: 30px;
+  padding: 36px 60px;
 }
 
 html.w-mod-js *[data-ix="fade-in"] {

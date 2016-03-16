@@ -2,7 +2,7 @@
   .w-section.section
     .w-container
       .w-row
-        .w-col.w-col-8.w-col-push-2
+        .w-col.w-col-10.w-col-push-1
           .w-form
               = @project.display_errors(:description)
               =  hidden_field_tag 'project_id', @project.id
@@ -10,7 +10,7 @@
 
               = form.input :about_html, as: :text, 
                 wrapper: :two_columns,
-                wrapper_class: 'w-row u-marginbottom-30 card card-terciary',
+                wrapper_class: 'w-row u-marginbottom-30 card card-terciary padding-redactor-description',
                 input_html: { class: 'redactor positive', required: true },
                 validation_text: false
 
