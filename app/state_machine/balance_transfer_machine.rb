@@ -4,11 +4,11 @@ class BalanceTransferMachine
   state :pending, initial: tue
   state :authorized
   state :processing
-  state :transfered
+  state :transferred
   state :error
   state :rejected
 
-  after_transition(from: :pending, to: :authorized) do |bt| 
+  after_transition(from: :pending, to: :authorized) do |bt|
     bt.pagarme_delegator.transfer_funds
   end
 end
