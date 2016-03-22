@@ -54,7 +54,7 @@ class ProjectDecorator < Draper::Decorator
   end
 
   def status_icon_for group_name, action_name = nil
-    if source.errors.present? && ( ['send_to_analysis', 'publish'].include? action_name )
+    if source.errors.present? && ( ['send_to_analysis', 'publish', 'validate_publish'].include? action_name )
       has_error = source.errors.any? do |error|
         source.error_included_on_group?(error, group_name)
       end

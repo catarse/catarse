@@ -14,6 +14,10 @@ class ProjectPolicy < ApplicationPolicy
     done_by_owner_or_admin?
   end
 
+  def push_to_online?
+    done_by_owner_or_admin?
+  end
+
   def update?
     create?
   end
@@ -31,6 +35,10 @@ class ProjectPolicy < ApplicationPolicy
   end
 
   def publish?
+    create? && record.approved?
+  end
+
+  def validate_publish?
     create? && record.approved?
   end
 

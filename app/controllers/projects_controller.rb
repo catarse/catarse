@@ -1,4 +1,6 @@
 # coding: utf-8
+class InvalidProject < StandardError; end
+class SuccessfulProject < StandardError; end
 class ProjectsController < ApplicationController
 
   after_filter :verify_authorized, except: %i[show index video video_embed embed embed_panel about_mobile]
@@ -57,6 +59,24 @@ class ProjectsController < ApplicationController
   end
 
   def publish
+    authorize resource
+  end
+
+  def validate_publish
+    authorize resource
+    Project.transaction do
+      raise InvalidProject unless resource.push_to_online
+      raise SuccessfulProject
+    end
+  rescue InvalidProject
+    flash.now[:notice] = t("projects.push_to_online_error")
+    build_dependencies
+    render template: 'projects/edit'
+  rescue SuccessfulProject
+    redirect_to publish_project_path(resource)
+  end
+
+  def push_to_online
     authorize resource
     resource_action :push_to_online
   end

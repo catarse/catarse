@@ -41,6 +41,9 @@ pt:
           cta: 'Conheça o projeto'
           image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-crypto-rave.jpg'
     new_feature_badge: 'Novidade'
+    publish:
+      aon: 'Tudo ou nada'
+      flex: 'Flexível'
     insights:
       finish_explanation: 'Sua campanha ainda está com o prazo em aberto. Para receber os recursos em sua conta bancária, é preciso definir uma data final de arrecadação.'
       know_more: ' Saiba mais.'

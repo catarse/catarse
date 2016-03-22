@@ -46,6 +46,8 @@ Catarse::Application.routes.draw do
   resources :flexible_projects do
     member do
       get :publish
+      get :push_to_online
+      get :validate_publish
       get :finish
     end
   end
@@ -80,6 +82,8 @@ Catarse::Application.routes.draw do
       get 'embed_panel'
       get 'send_to_analysis'
       get 'publish'
+      get 'validate_publish'
+      get 'push_to_online'
     end
   end
   resources :users do
