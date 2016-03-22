@@ -11,7 +11,7 @@ RSpec.describe FlexibleProjectsController, type: :controller do
   let!(:flexible_project) { create(:flexible_project, project: project, state: 'draft') }
   let(:current_user){ nil }
 
-  describe "GET publish" do
+  describe "GET push_to_online" do
     let(:current_user) { project.user }
 
     before do
@@ -26,7 +26,7 @@ RSpec.describe FlexibleProjectsController, type: :controller do
       })
       create(:reward, project: project)
       create(:bank_account, user: current_user)
-      get :publish, id: flexible_project.id, locale: :pt
+      get :push_to_online, id: flexible_project.id, locale: :pt
       flexible_project.reload
     end
 
