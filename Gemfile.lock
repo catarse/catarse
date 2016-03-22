@@ -498,7 +498,7 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
-    user_notifier (0.2.0)
+    user_notifier (0.3.0)
       rails (>= 4.0.0)
       sidekiq
     valuable (0.9.9)
@@ -601,7 +601,7 @@ DEPENDENCIES
   typhoeus
   uglifier
   unicorn
-  user_notifier (~> 0.2.0)
+  user_notifier (~> 0.3.0)
   video_info (~> 2.4.2)
   zonebie
 
