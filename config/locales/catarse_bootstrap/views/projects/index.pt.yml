@@ -33,7 +33,7 @@ pt:
       recents: Recentes
       blog: Blog do Catarse
       expiring: Na reta final
-      recommended: Recomendados
+      recommended: Populares
       banner_subtitle: 'Música, quadrinhos, cinema, impacto social, tecnologia e muito mais. Conheça, inspire-se e apoie projetos.'
       box:
         by: por
@@ -61,7 +61,7 @@ pt:
         near:
           title: 'Próximos a mim'
         recommended:
-          title: 'Recomendados'
+          title: 'Populares'
         expiring:
           title: "Na reta final"
         recents:
