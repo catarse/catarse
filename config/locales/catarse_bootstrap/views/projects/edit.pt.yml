@@ -253,3 +253,47 @@ pt:
       value_secondary: 'Planeje uma meta coerente com o que seu projeto propõe. Revise seu orçamento e não esqueça de incluir a taxa de 13% cobrada pelo Catarse caso seu projeto seja bem-sucedido'
       form:
         submit: 'Salvar'
+    successful_onboard:
+      start:
+        href: '#confirm_account'
+        icon: 'https://daks2k3a4ib2z.cloudfront.net/54b440b85608e3f4389db387/56c3508dbfc50aef5095c66a_finish-icon.png'
+        title: 'Parabéns!'
+        text: 'Seu projeto foi finalizado com sucesso e você tem <span class="fontweight-semibold">R$ %{total_amount}</span> para receber (taxas já descontadas)! Para efetuarmos a transferência, precisamos que você nos confirme seus dados bancários.'
+        cta: 'Confirmar dados bancários'
+      pending_transfer:
+        icon: 'https://daks2k3a4ib2z.cloudfront.net/54b440b85608e3f4389db387/56c350c5e7d136a016bc34a4_transfer-ok-icon.png'
+        title: 'Transferência bancária em andamento'
+        text: 'Até o dia %{transfer_limit_date}, R$%{total_amount} (taxas já descontadas) estarão em sua conta Banco %{bank_name}, Agência: %{agency}, Conta: %{account}. Fique atento no email %{user_email}, pois nossa equipe pode entrar em contato com você se ocorrer algum problema com o banco!'
+      error_account:
+        icon: 'https://daks2k3a4ib2z.cloudfront.net/54b440b85608e3f4389db387/56c350fabfc50aef5095c67d_transfer-pending-icon.png'
+        title: 'Transferência bancária pendente'
+        text: 'Seus dados bancários estavam com alguma informação errada e já fomos notificados sobre esse problema! Fique de olho no <span class="fontweight-semibold">%{user_email}</span>, pois vamos resolver esse problema via email!'
+      finished:
+        icon: 'https://daks2k3a4ib2z.cloudfront.net/54b440b85608e3f4389db387/56c3511ee7d136a016bc34fa_succesful-icon.png'
+        title: 'Boa sorte no seu projeto!'
+        text: 'Trabalhe sempre o relacionamento com seus apoiadores! Mantenha eles informados do andamento do seu projeto. Não deixe de olhar a seção de pós-projeto do Guia dos Realizadores!'
+      confirm_account:
+        title: 'Os seus dados estão corretos?'
+        person:
+          label: 'Pessoa: '
+          juridical: 'Jurídica'
+          natural: 'Física'
+          name: 'Nome completo do titular: '
+          document: 'CPF do titular da conta bancária: '
+          bank:
+            name: 'Banco: '
+            agency: 'Agência: '
+            account: 'Conta Corrente: '
+          address: 'Endereço: '
+          neighbourhood: 'Bairro: '
+          city: 'Cidade: '
+          state: 'Estado: '
+          zip_code: 'CEP: '
+        accept:
+          title: 'Tem certeza?'
+          info: 'Qualquer informação errada nesse momento pode atrasar o repasse dos recursos!'
+          cta: 'Confirmar'
+        refuse:
+          title: 'O que está errado com seus dados?'
+          placeholder: 'Nos ajude dizendo o que precisa ser ajustado! Isso vai facilitar o nosso trabalho e poupar seu tempo.'
+          cta: 'Enviar'
