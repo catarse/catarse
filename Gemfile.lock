@@ -83,7 +83,7 @@ GEM
       mailchimp-api (~> 2.0.4)
       rails (>= 4.0.3)
       rails-observers
-    catarse_pagarme (2.8.5)
+    catarse_pagarme (2.8.6)
       pagarme (= 1.10.0)
       rails (~> 4.0)
       sidekiq
@@ -140,7 +140,7 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
-    domain_name (0.5.25)
+    domain_name (0.5.20160310)
       unf (>= 0.0.5, < 1.0.0)
     draper (2.1.0)
       actionpack (>= 3.0)
@@ -493,7 +493,7 @@ GEM
       json (>= 1.8.0)
     unf (0.1.4)
       unf_ext
-    unf_ext (0.0.7.1)
+    unf_ext (0.0.7.2)
     unicorn (5.0.1)
       kgio (~> 2.6)
       rack
@@ -529,7 +529,7 @@ DEPENDENCIES
   capybara (~> 2.2.0)
   carrierwave!
   catarse_monkeymail (>= 0.1.6)
-  catarse_pagarme (~> 2.8.5)
+  catarse_pagarme (~> 2.8.6)
   catarse_settings_db (>= 0.1.0)
   cocoon
   coffee-rails
