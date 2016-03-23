@@ -8,6 +8,8 @@ class BalanceTransferMachine
   state :error
   state :rejected
 
+  transition from: :pending, to: %i(authorized rejected)
+
   after_transition(from: :pending, to: :authorized) do |bt|
     bt.pagarme_delegator.transfer_funds
   end
