@@ -1,3 +1,4 @@
+- content_for :title, "#{@project.name} · #{CatarseSettings[:company_name]}"
 - content_for :js do
   = javascript_include_tag 'redactor', '//www.google.com/jsapi'
 - content_for :stylesheets do
@@ -52,5 +53,5 @@
         #dashboard_user_settings.content.w-hidden data-page_title="#{t('.user_settings')}" data-page_subtitle="#{t('.user_settings_subtitle')}"
           = render 'dashboard_user_settings'
 
-= javascript_include_tag 'api/application' 
+= javascript_include_tag 'api/application'
 = render 'shared/footer'

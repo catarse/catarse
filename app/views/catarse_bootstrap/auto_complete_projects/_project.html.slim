@@ -12,5 +12,8 @@
         .fontsize-small.fontweight-semibold.lineheight-tightest
           | #{project.progress}%
       .w-col.w-col-6.u-text-center-small-only
-        = t('projects.project.time_remaining_small_html', count: project.time_to_go[:time], unit: project.time_to_go[:unit])
-.divider.u-marginbottom-10        
+        - unless !project.expires_at
+            = t('projects.project.time_remaining_small_html', count: project.time_to_go[:time], unit: project.time_to_go[:unit])
+        - else
+            | Prazo em aberto
+.divider.u-marginbottom-10

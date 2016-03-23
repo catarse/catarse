@@ -35,7 +35,7 @@
                     = " (" + reward.display_remaining + ")"
             .fontsize-smallest
               =t('rewards.index.reward_deliver_time', estimate: reward.display_deliver_estimate).html_safe
-  
+
     .w-row.card.card-terciary.u-marginbottom-20.card-edition.medium class=(reward.new_record? ? '' : "w-hidden edit_reward_content_#{reward.id}")
       .w-col.w-col-5.w-sub-col
         .fontweight-semibold.fontsize-smallest.u-marginbottom-10
@@ -51,17 +51,17 @@
           .w-form
             .w-row.u-marginbottom-20
               .w-col.w-col-5
-                label.fontsize-smaller= t('.minimum_value') 
+                label.fontsize-smaller= t('.minimum_value')
               .w-col.w-col-7
                 .w-row
                   .w-col.w-col-3.w-col-small-3.w-col-tiny-3.text-field.positive.prefix.no-hover
                     .fontsize-smallest.fontcolor-secondary.u-text-center R$
                   .w-col.w-col-9.w-col-small-9.w-col-tiny-9
-                    = f.input_field :minimum_value, as: :tel, class: 'project-edit-reward', required: true, value: reward.localized.minimum_value
+                    = f.input_field :minimum_value, as: :tel, class: 'project-edit-reward positive postfix', required: true, value: reward.localized.minimum_value
                 .fontsize-smaller.text-error.u-marginbottom-20.fa.fa-exclamation-triangle.w-hidden[data-error-for="reward_minimum_value"] = t('simple_form.validation_texts.reward.minimum_value')
             .w-row
               .w-col.w-col-5
-                label.fontsize-smaller= t('.deliver_at') 
+                label.fontsize-smaller= t('.deliver_at')
               .w-col.w-col-7
                 .w-row
                   .w-col.w-col-12
@@ -69,15 +69,15 @@
                       = f.input_field :deliver_at, required: true, as: :date, discard_day: true, start_year: Time.current.year, use_short_month: true, discard_day: true, required: true, class: 'w-col-6 positive'
             .w-row
               .w-col.w-col-5
-                label.fontsize-smaller= t('.description') 
+                label.fontsize-smaller= t('.description')
               .w-col.w-col-7
-                = f.input_field :description, as: :text,  class: 'positive', placeholder: "Descreva sua recompensa", required: true
+                = f.input_field :description, as: :text,  class: 'positive height-medium', placeholder: "Descreva sua recompensa", required: true
                 .fontsize-smaller.text-error.u-marginbottom-20.fa.fa-exclamation-triangle.w-hidden[data-error-for="reward_description"] = t('simple_form.validation_texts.reward.description')
             .w-row
               .w-col.w-col-5
                 .w-checkbox
-                  .w-checkbox-input= check_box_tag  "limit_reward", '', (reward.maximum_contributions.present?), class: 'limit_reward' 
-                  label.w-form-label= t('.limit_reward') 
+                  .w-checkbox-input= check_box_tag  "limit_reward", '', (reward.maximum_contributions.present?), class: 'limit_reward'
+                  label.w-form-label= t('.limit_reward')
               .w-col.w-col-7 class="reward_maximum_contributions #{reward.maximum_contributions.present? ?  '' : 'w-hidden'}"
                 = f.input_field :maximum_contributions, as: :tel, class: 'u-marginbottom-30 positive', placeholder: t('.available')
             .w-row.u-margintop-30
@@ -85,7 +85,7 @@
                 = f.button :submit, t('.submit'),  class:'btn btn-small'
               - if reward.persisted?
                 .w-col.w-col-5.w-col-small-5.w-col-tiny-5.w-sub-col-middle
-                  input.w-button.btn-terciary.btn.btn-small.reward-close-button type="submit" value="Fechar" 
+                  input.w-button.btn-terciary.btn.btn-small.reward-close-button type="submit" value="Fechar"
               - if reward.new_record? || (reward.persisted? && policy(reward).destroy?)
                 .w-col.w-col-1.w-col-small-1.w-col-tiny-1
                   = link_to_remove_association f, data: { confirm: 'Tem certeza?' } do
