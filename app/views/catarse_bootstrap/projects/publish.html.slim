@@ -1,0 +1,12 @@
+- project = @project || @flexible_project
+- content_for :title, "#{project.name} · #{CatarseSettings[:company_name]}"
+
+= render 'shared/header'
+
+.w-section.section-product
+#project-publish-root.min-height-70[data-mithril="Publish" data-id=project.id]
+
+- content_for :application_js do
+  = javascript_include_tag "api/application"
+
+= render 'shared/footer'

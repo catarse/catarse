@@ -30,7 +30,7 @@ RSpec.describe ProjectsController, type: :controller do
     end
   end
 
-  describe "GET publish" do
+  describe "GET push_to_online" do
     let(:project){ create(:project, state: 'approved') }
     let(:current_user) { project.user }
 
@@ -46,7 +46,7 @@ RSpec.describe ProjectsController, type: :controller do
       })
       create(:reward, project: project)
       create(:bank_account, user: current_user)
-      get :publish, id: project.id, locale: :pt
+      get :push_to_online, id: project.id, locale: :pt
       project.reload
     end
 

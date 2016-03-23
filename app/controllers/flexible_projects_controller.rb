@@ -1,5 +1,7 @@
 #@TODO: this controller is total for legacy dashboard support
 # we will drop this soon when dashboard goes to API :)
+class InvalidProject < StandardError; end
+class SuccessfulProject < StandardError; end
 class FlexibleProjectsController < ApplicationController
   after_filter :verify_authorized
   respond_to :html
@@ -9,6 +11,25 @@ class FlexibleProjectsController < ApplicationController
   end
 
   def publish
+    authorize flexible_project
+    render 'publish', project: resource
+  end
+
+  def validate_publish
+    authorize flexible_project
+    Project.transaction do
+      raise InvalidProject unless flexible_project.push_to_online
+      raise SuccessfulProject
+    end
+  rescue InvalidProject
+    flash.now[:notice] = t("projects.push_to_online_error")
+    build_dependencies
+    render template: 'projects/edit'
+  rescue SuccessfulProject
+    redirect_to publish_flexible_project_path(flexible_project)
+  end
+
+  def push_to_online
     authorize flexible_project
     if flexible_project.push_to_online
       flash[:notice] = t("projects.push_to_online")
