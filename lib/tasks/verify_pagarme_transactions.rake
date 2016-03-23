@@ -15,6 +15,22 @@ task verify_pagarme_transfers: [:environment] do
   end
 end
 
+desc 'Sync balance_transfers with pagar.me transfers'
+task verify_balance_transfers: [:environment] do
+  PagarMe.api_key = CatarsePagarme.configuration.api_key
+
+  BalanceTransfer.processing.each do |bt|
+    transfer = PagarMe::Transfer.find_by_id bt.transfer_id
+
+    case transfer.status
+    when 'transferred' then
+      bt.transition_to(:transferred, transfer_data: transfer.to_hash)
+    when 'failed' then
+      bt.transition_to(:error, transfer_data: transfer.to_hash)
+    end
+  end
+end
+
 desc 'Sync user_transfers with pagar.me transfers'
 task verify_pagarme_user_transfers: [:environment] do
   PagarMe.api_key = CatarsePagarme.configuration.api_key
