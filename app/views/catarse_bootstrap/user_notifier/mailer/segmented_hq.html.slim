@@ -1,0 +1,21 @@
+- user = @notification.user
+
+| Olá #{user.name},
+br/
+br/
+| Estamos super felizes de anunciar nossa parceria com o primeiro serviço de streaming de quadrinhos do Brasil!
+br/
+br/
+= link_to image_tag('https://s3.amazonaws.com/cdn.catarse/notifications_assets/header-email-apoiadores.jpg'), 'https://www.socialcomics.com.br/', target: '__blank'
+br/
+br/
+| Nessa primeira ação da parceria, estamos oferecendo a você, que já apoiou ao menos um projeto de quadrinhos no Catarse, um cupom de 3 meses grátis na plataforma da Social Comics. Com isso você vai poder experimentar uma nova forma de ler e explorar o universo comics brasileiro.
+br/
+br/
+| Pra ter acesso, você só precisa acessar &nbsp;
+= link_to 'www.socialcomics.com.br', 'https://www.socialcomics.com.br', target: '__blank'
+| &nbsp; , se cadastrar e usar o Código Promocional <strong>CATARSE</strong> na tela de pagamento (Ao final do período de 3 meses gratuitos, você poderá seguir no plano pago ou cancelá-lo). Mais lembre-se: <strong>esse Código Promocional é válido até 01/05/2016</strong> e só pode ser usado caso você ainda não tenha conta na Social Comics.
+br/
+br/
+p style="text-align:center"
+  = link_to image_tag('https://s3.amazonaws.com/cdn.catarse/notifications_assets/btn-apoiadores-email.jpg'), 'https://www.socialcomics.com.br/', target: '__blank'
