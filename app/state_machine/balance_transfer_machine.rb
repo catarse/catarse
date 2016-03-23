@@ -1,7 +1,7 @@
 class BalanceTransferMachine
   include Statesman::Machine
 
-  state :pending, initial: tue
+  state :pending, initial: true
   state :authorized
   state :processing
   state :transferred
