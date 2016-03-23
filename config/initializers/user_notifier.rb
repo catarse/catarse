@@ -21,5 +21,8 @@ UserNotifier.configure do |config|
 
   #Use sendgrid xsmptp API
   config.use_xsmtp_api = true
+
+  #Don't deliver automatic notifications
+  config.auto_deliver = false
 end
 
