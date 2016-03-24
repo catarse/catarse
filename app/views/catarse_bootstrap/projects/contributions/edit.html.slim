@@ -40,12 +40,12 @@
               .w-row
                 = form.association :country, as: :select, wrapper_html: {class: 'w-col w-col-6 w-sub-col'}, input_html: {class: 'w-select', required: true}, required: true
               .w-row
-                = form.input :address_street, as: :string, wrapper_html: {class: 'w-col w-col-6 w-sub-col'}, input_html: {data: {required_in_brazil: true}}, validation_text: true
-                = form.input :address_number, as: :tel, wrapper_html: {class: 'w-col w-col-small-6 w-col-tiny-6 w-col-3 w-sub-col-middle'}, input_html: {data: {required_in_brazil: true}}, validation_text: true
+                = form.input :address_street, as: :string, wrapper_html: {class: 'w-col w-col-6 w-sub-col'}, validation_text: true, input_html: { required: true }
+                = form.input :address_number, as: :tel, wrapper_html: {class: 'w-col w-col-small-6 w-col-tiny-6 w-col-3 w-sub-col-middle'}, input_html: { required: true }
                 = form.input :address_complement, as: :string, wrapper_html: {class: 'w-col w-col-small-6 w-col-tiny-6 w-col-3'}
               .w-row
-                = form.input :address_neighbourhood, as: :string, wrapper_html: {class: 'w-col w-col-6 w-sub-col'}
-                = form.input :address_city, as: :string, wrapper_html: {class: 'w-col w-col-6'}, input_html: {data: {required_in_brazil: true}}, validation_text: true
+                = form.input :address_neighbourhood, as: :string, wrapper_html: {class: 'w-col w-col-6 w-sub-col'}, validation_text: true, input_html: { required: true }
+                = form.input :address_city, as: :string, wrapper_html: {class: 'w-col w-col-6'}, validation_text: true, input_html: { required: true }
               .w-row
                 = form.input :address_state, as: :select, collection: State.array, wrapper_html: {class: 'w-col w-col-6 w-sub-col'}, input_html: {data: {required_in_brazil: true}}, validation_text: true
                 = form.input :address_zip_code, as: :tel, wrapper_html: {class: 'w-col w-col-small-6 w-col-tiny-6 w-col-3 w-sub-col-middle'}, input_html: {data: {required_in_brazil: true, fixed_mask: '99999-999'}}, validation_text: true
