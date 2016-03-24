@@ -24,7 +24,8 @@
     m.route.mode = 'hash';
     m.route(adminRoot, '/', {
       '/': m.component(c.admin.Contributions, {root: adminRoot}),
-      '/users': m.component(c.admin.Users)
+      '/users': m.component(c.admin.Users),
+      '/financials': m.component(c.admin.Financials)
     });
   }
 
