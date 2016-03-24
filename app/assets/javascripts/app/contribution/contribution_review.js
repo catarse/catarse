@@ -14,6 +14,8 @@ App.addChild('ReviewForm', _.extend({
       this.updateContribution();
       this.$errorMessage.hide();
       this.$('#next-step').hide();
+      this.$('input.error').removeClass('error');
+      this.$('.text-error').hide();
       this.parent.payment.show();
     }
     else{
@@ -66,6 +68,8 @@ App.addChild('ReviewForm', _.extend({
     this.$errorMessage = this.$('#error-message');
     this.setupForm();
     this.onCountryChange();
+
+    this.$('input.required').prop('required', 'required');
   },
 
   updateContribution: function(){

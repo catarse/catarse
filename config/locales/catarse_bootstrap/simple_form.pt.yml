@@ -32,6 +32,7 @@ pt:
         address_state: "Selecione um estado"
         address_street: "Digite o nome da rua"
         address_number: "Digite o número do endereço"
+        address_neighbourhood: "Digite o nome do bairro"
         address_city: "Digite o nome da cidade"
         address_zip_code: "Digite o CEP"
         address_phone_number: "Digite o número de telefone"

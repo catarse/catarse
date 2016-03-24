@@ -24,7 +24,7 @@
               = form.input :payer_name, as: :string, wrapper_html: {class: 'w-col w-col-12'}, input_html: {required: true}, validation_text: true, required: true
             .w-row
               = form.input :payer_email, as: :email, wrapper_html: {class: 'w-col w-col-6 w-sub-col'}, input_html: {required: true}, validation_text: true, required: true
-              = form.input :payer_document, as: :tel, wrapper_html: {class: 'w-col w-col-6'}, validation_text: true, input_html: { data: { :'validate-cpf-cnpj' => true } }
+              = form.input :payer_document, as: :tel, wrapper_html: {class: 'w-col w-col-6'}, validation_text: true, input_html: { data: { :'validate-cpf-cnpj' => true, required_in_brazil: true } }
             .w-row
               .w-col.w-col-12
                 = form.input_field :anonymous, boolean_style: :inline, class: 'checkbox-fix'
@@ -40,12 +40,12 @@
               .w-row
                 = form.association :country, as: :select, wrapper_html: {class: 'w-col w-col-6 w-sub-col'}, input_html: {class: 'w-select', required: true}, required: true
               .w-row
-                = form.input :address_street, as: :string, wrapper_html: {class: 'w-col w-col-6 w-sub-col'}, input_html: {data: {required_in_brazil: true}}, validation_text: true
-                = form.input :address_number, as: :tel, wrapper_html: {class: 'w-col w-col-small-6 w-col-tiny-6 w-col-3 w-sub-col-middle'}, input_html: {data: {required_in_brazil: true}}, validation_text: true
+                = form.input :address_street, as: :string, wrapper_html: {class: 'w-col w-col-6 w-sub-col'}, required: true, validation_text: true
+                = form.input :address_number, as: :tel, wrapper_html: {class: 'w-col w-col-small-6 w-col-tiny-6 w-col-3 w-sub-col-middle'}, required: true, validation_text: true
                 = form.input :address_complement, as: :string, wrapper_html: {class: 'w-col w-col-small-6 w-col-tiny-6 w-col-3'}
               .w-row
-                = form.input :address_neighbourhood, as: :string, wrapper_html: {class: 'w-col w-col-6 w-sub-col'}
-                = form.input :address_city, as: :string, wrapper_html: {class: 'w-col w-col-6'}, input_html: {data: {required_in_brazil: true}}, validation_text: true
+                = form.input :address_neighbourhood, as: :string, wrapper_html: {class: 'w-col w-col-6 w-sub-col'}, required: true, validation_text: true
+                = form.input :address_city, as: :string, wrapper_html: {class: 'w-col w-col-6'}, required: true, validation_text: true
               .w-row
                 = form.input :address_state, as: :select, collection: State.array, wrapper_html: {class: 'w-col w-col-6 w-sub-col'}, input_html: {data: {required_in_brazil: true}}, validation_text: true
                 = form.input :address_zip_code, as: :tel, wrapper_html: {class: 'w-col w-col-small-6 w-col-tiny-6 w-col-3 w-sub-col-middle'}, input_html: {data: {required_in_brazil: true, fixed_mask: '99999-999'}}, validation_text: true
