@@ -68,9 +68,8 @@
                     .w-row
                       = f.input_field :deliver_at, required: true, as: :date, discard_day: true, start_year: Time.current.year, use_short_month: true, discard_day: true, required: true, class: 'w-col-6 positive'
             .w-row
-              .w-col.w-col-5
-                label.fontsize-smaller= t('.description')
-              .w-col.w-col-7
+              label.fontsize-smaller= t('.description')
+            .w-row
                 = f.input_field :description, as: :text,  class: 'positive height-medium', placeholder: "Descreva sua recompensa", required: true
                 .fontsize-smaller.text-error.u-marginbottom-20.fa.fa-exclamation-triangle.w-hidden[data-error-for="reward_description"] = t('simple_form.validation_texts.reward.description')
             .w-row
