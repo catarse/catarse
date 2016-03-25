@@ -78,7 +78,7 @@ class ProjectsController < ApplicationController
 
   def push_to_online
     authorize resource
-    resource_action :push_to_online
+    resource_action :push_to_online, nil, true
   end
 
   def insights
@@ -168,7 +168,7 @@ class ProjectsController < ApplicationController
     resource.build_account unless resource.account
   end
 
-  def resource_action action_name, success_redirect=nil
+  def resource_action action_name, success_redirect=nil, show_modal=nil
     if resource.send(action_name)
       if resource.origin.nil? && referral.present?
         resource.update_attribute(
@@ -179,7 +179,11 @@ class ProjectsController < ApplicationController
       if success_redirect
         redirect_to edit_project_path(@project, anchor: success_redirect)
       else
-        redirect_to insights_project_path(@project)
+        if show_modal
+          redirect_to insights_project_path(@project, online_succcess: true)
+        else
+          redirect_to insights_project_path(@project)
+        end
       end
     else
       flash.now[:notice] = t("projects.#{action_name.to_s}_error")

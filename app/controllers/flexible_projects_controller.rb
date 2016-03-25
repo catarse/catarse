@@ -33,7 +33,7 @@ class FlexibleProjectsController < ApplicationController
     authorize flexible_project
     if flexible_project.push_to_online
       flash[:notice] = t("projects.push_to_online")
-      redirect_to insights_project_path(resource)
+      redirect_to insights_project_path(resource, online_success: true)
     else
       flash.now[:notice] = t("projects.push_to_online_error")
       build_dependencies
