@@ -3,7 +3,7 @@
 -else
   - link_class = 'dashboard-nav-link-left'
 #dashboard-links
-  - if (!@project.published? && !@project.approved?) || (current_user && current_user.admin?)
+  - if !@project.published? || (current_user && current_user.admin?)
     = link_to (edit ? '#basics' : edit_project_path(@project, anchor: 'basics')), id: 'basics_link', class: link_class , data: {target: '#dashboard_basics', tab_group: 'edit'} do
       = @project.decorate.status_icon_for('basics', params[:action])
       = t(".#{@project.mode}.basics_tab")

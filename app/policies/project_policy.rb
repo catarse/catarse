@@ -43,7 +43,7 @@ class ProjectPolicy < ApplicationPolicy
   end
 
   def permitted_attributes
-    if user.present? && (user.admin? || (record.draft? || record.rejected? || record.in_analysis?))
+    if user.present? && (user.admin? || (record.draft? || record.rejected? || record.in_analysis? || record.approved?))
       p_attr = record.attribute_names.map(&:to_sym)
       p_attr << :all_tags
       p_attr << user_attributes
