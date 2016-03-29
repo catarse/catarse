@@ -151,7 +151,7 @@ pt:
         account_tab: Conta
         basics_tab: Básico
         goal_tab: Financiamento
-        budget_tab: "Orçamento <span class='fontsize-smallest fontcolor-secondary'>(opcional)</span>"
+        budget_tab: Orçamento
         card_tab: Card do projeto
         description_tab: Descrição
         video_tab: "Vídeo <span class='fontsize-smallest fontcolor-secondary'>(opcional)</span>"

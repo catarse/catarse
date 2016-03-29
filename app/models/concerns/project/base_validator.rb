@@ -30,6 +30,7 @@ module Project::BaseValidator
     end
 
     with_options if: -> (x) { ON_ONLINE_TO_END_STATES.include? x.state } do |wo| 
+      wo.validates_presence_of :budget
       wo.validates_presence_of :account, message: 'Dados Bancários não podem ficar em branco'		
 
       wo.validate do
