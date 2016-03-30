@@ -115,7 +115,7 @@ FactoryGirl.define do
     end
     after :build do |project|
       project.account = build(:project_account, project: nil)
-      project.rewards.build(deliver_at: Time.now, minimum_value: 10, description: 'test')
+      project.rewards.build(deliver_at: 1.year.from_now, minimum_value: 10, description: 'test')
     end
   end
 
@@ -195,13 +195,13 @@ FactoryGirl.define do
     f.association :project, factory: :project
     f.minimum_value 10.00
     f.description "Foo bar"
-    f.deliver_at 10.days.from_now
+    f.deliver_at 1.year.from_now
   end
 
   factory :rewards, class: Reward do |f|
     f.minimum_value 10.00
     f.description "Foo bar"
-    f.deliver_at 10.days.from_now
+    f.deliver_at 1.year.from_now
   end
 
 
