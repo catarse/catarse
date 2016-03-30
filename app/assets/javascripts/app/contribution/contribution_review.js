@@ -43,7 +43,6 @@ App.addChild('ReviewForm', _.extend({
   },
 
   makeFieldsRequired: function(){
-      console.log('foo');
     this.$('[data-required-in-brazil]').prop('required', 'required');
     this.$('[data-required-in-brazil]').parent().removeClass('optional').addClass('required');
     this.$('[data-required-in-brazil]').each(function() {
