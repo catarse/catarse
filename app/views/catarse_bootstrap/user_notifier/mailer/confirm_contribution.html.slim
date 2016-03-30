@@ -1,7 +1,13 @@
 - contribution = @notification.contribution
+- total_contributors = contribution.project.total_contributors
+- first_contribution = (total_contributors == 1)
+
 p Olá, <strong>#{contribution.user.display_name}</strong>!
 p
   | Seu apoio para o projeto #{link_to(contribution.project.name, project_by_slug_url(permalink: contribution.project.permalink))} foi confirmado com sucesso. 
-  | Até o momento você e outras #{contribution.project.total_contributions} pessoas estão tornando esse projeto uma realidade.
+  - if first_contribution
+    | Parabéns! Você é o primeiro a contribuir para tornar esse projeto uma realidade!
+  - else
+    | Até o momento você e outras #{(total_contributors- 1)} pessoas estão tornando esse projeto uma realidade.
 p Esse e-mail serve como um <strong>recibo provisório da sua contribuição</strong>.
 = render partial: 'contribution_data', locals: {contribution: contribution}
