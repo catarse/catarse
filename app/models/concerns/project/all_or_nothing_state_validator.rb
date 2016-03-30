@@ -15,6 +15,12 @@ module Project::AllOrNothingStateValidator
       # is included on ON_ANALYSIS_TO_END_STATE
       wg.with_options if: -> (x) { Project::ON_ANALYSIS_TO_END_STATES.include? x.state } do |wo| 
         wo.validates_presence_of :goal, :online_days
+
+        wo.validate do
+          if self.rewards.size == 0
+            self.errors['rewards.size'] << "Deve haver pelo menos uma recompensa"
+          end
+        end
       end
     end
   end
