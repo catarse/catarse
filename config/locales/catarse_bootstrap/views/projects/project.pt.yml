@@ -3,7 +3,7 @@ pt:
     home:
       title: 'Valeu 2015!'
       cta: 'Veja como foi o ano no Catarse'
-      banners: 
+      banners:
         1:
           title: 'Financie seu projeto'
           subtitle: 'Inicie sua campanha de arrecadação e junte-se à maior comunidade de financiamento coletivo do Brasil'
@@ -45,6 +45,7 @@ pt:
       aon: 'Tudo ou nada'
       flex: 'Flexível'
     insights:
+      tooltip: 'Informa de onde vieram os apoios de seu projeto. Saiba como usar essa tabela e planejar melhor suas ações de comunicação '
       finish_explanation: 'Sua campanha ainda está com o prazo em aberto. Para receber os recursos em sua conta bancária, é preciso definir uma data final de arrecadação.'
       know_more: ' Saiba mais.'
       referral:

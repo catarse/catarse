@@ -2,8 +2,8 @@
 = render 'shared/header_big', overlayer: true
 
 #project-index-root[data-mithril="ProjectsHome"]
-  .w-section.hero-full.hero-2016
-= javascript_include_tag 'api/application' 
+  .w-section.hero-full.hero-full-slide
+= javascript_include_tag 'api/application'
 
 section#blog.section-large.bg-gray.before-footer
   .w-container
@@ -21,7 +21,7 @@ section#blog.section-large.bg-gray.before-footer
           .fontsize-smaller.fontcolor-secondary.u-margintop-10
             /= link_to post.url, target: '__blank', class: 'fontsize-smaller fontcolor-secondary ' do
             /span.fontsize-smaller.fontcolor-secondary
-          = truncate(post.summary, length: 130).html_safe    
+          = truncate(post.summary, length: 130).html_safe
 
 
 = render 'shared/footer_big'

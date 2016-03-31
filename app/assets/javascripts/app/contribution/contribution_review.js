@@ -45,11 +45,25 @@ App.addChild('ReviewForm', _.extend({
   makeFieldsRequired: function(){
     this.$('[data-required-in-brazil]').prop('required', 'required');
     this.$('[data-required-in-brazil]').parent().removeClass('optional').addClass('required');
+    this.$('[data-required-in-brazil]').each(function() {
+      if($(this).data('old-fixed-mask')) {
+          $(this).data('fixed-mask', $(this).data('fixed-mask'));
+          $(this).removeData('old-fixed-mask');
+          $(this).fixedMask();
+      }
+    });
   },
 
   makeFieldsOptional: function(){
     this.$('[data-required-in-brazil]').prop('required', false);
     this.$('[data-required-in-brazil]').parent().removeClass('required').addClass('optional');
+    this.$('[data-required-in-brazil]').each(function() {
+      if($(this).data('fixed-mask')) {
+          $(this).data('old-fixed-mask', $(this).data('fixed-mask'));
+          $(this).removeData('fixed-mask');
+          $(this).fixedMask('off');
+      }
+    });
   },
 
   nationalAddress: function(){
