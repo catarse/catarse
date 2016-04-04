@@ -79,7 +79,7 @@ If everything goes OK, you can now run the project!
 
 	After downloading PostgREST 0.3.x you can unpack and run the executable as bellow.
 
-		$ ./postgrest postgres://postgrest@localhost/catarse_development -a anonymous --jwt-secret gZH75aKtMN3Yj0iPS4hcgUuTwjAzZr9C -p 8080 -s 1 -p 3004
+		$ ./postgrest postgres://postgrest@localhost/catarse_development -a anonymous --jwt-secret gZH75aKtMN3Yj0iPS4hcgUuTwjAzZr9C -s 1 -p 3004
 
 * Run Rails server
 ```bash
