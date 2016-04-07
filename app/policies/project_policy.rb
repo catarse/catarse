@@ -53,6 +53,19 @@ class ProjectPolicy < ApplicationPolicy
       p_attr << account_attributes
 
       p_attr.flatten
+
+      # TODO: This code is to prevent not allowed
+      # fields without admin for legacy dashboard
+      unless user.admin?
+        not_allowed = [
+          :audited_user_name, :audited_user_cpf, :audited_user_phone_number,
+          :state, :origin_id, :service_fee, :total_installments,
+          :recommended, :created_at, :updated_at
+        ]
+        p_attr.delete_if { |key| not_allowed.include?(key) }
+      end
+
+      p_attr
     else
       [:about_html, :video_url, :uploaded_image, :headline, :budget,
                  user_attributes, posts_attributes, budget_attributes, reward_attributes, account_attributes]
