@@ -164,8 +164,8 @@ task :verify_pagarme_transactions, [:start_date, :end_date]  => :environment do 
       puts "Updating #{source['id']}(pagarme) - #{payment.gateway_id}(catarse)..."
       puts "Changing state to #{source['status']}"
       payment.pagarme_delegator.change_status_by_transaction source['status']
-      payment.pagarme_delegator.update_transaction
     end
+    payment.pagarme_delegator.update_transaction
   end
 end
 
