@@ -125,32 +125,36 @@ task :verify_pagarme_transactions, [:start_date, :end_date]  => :environment do 
 
   def fix_payments(start_date, end_date)
     all_transactions(start_date, end_date) do |source, payment|
-      puts "Verifying transaction #{source['id']}"
-      if payment
-        # Caso tenha encontrado o pagamento pela chave mas ele tenha gateway_id nulo nós atualizamos o gateway_id antes de prosseguir
-        if payment.gateway_id.nil?
-          puts "Updating payment gateway_id to #{source['id']}"
-          payment.update_attributes gateway_id: source['id']
-        end
+      begin
+        puts "Verifying transaction #{source['id']}"
+        if payment
+          # Caso tenha encontrado o pagamento pela chave mas ele tenha gateway_id nulo nós atualizamos o gateway_id antes de prosseguir
+          if payment.gateway_id.nil?
+            puts "Updating payment gateway_id to #{source['id']}"
+            payment.update_attributes gateway_id: source['id']
+          end
 
-        # Atualiza os dados usando o pagarme_delegator caso o status não esteja batendo
-        yield(source, payment)
-      else
-        puts "\n\n>>>>>>>>>   Inserting payment not found in Catarse: #{source.inspect}"
-        c = find_contribution source
-        if c
-          puts "\n\n>>>>>>>>>   FOUND"
-          payment = c.payments.new({
-            gateway: 'Pagarme', 
-            gateway_id: source['id'],
-            payment_method: find_payment_method(source),
-            value: c.value,
-            key: find_key(source)
-          })
-          payment.generate_key
-          payment.save!(validate: false)
+          # Atualiza os dados usando o pagarme_delegator caso o status não esteja batendo
           yield(source, payment)
+        else
+          puts "\n\n>>>>>>>>>   Inserting payment not found in Catarse: #{source.inspect}"
+          c = find_contribution source
+          if c
+            puts "\n\n>>>>>>>>>   FOUND"
+            payment = c.payments.new({
+              gateway: 'Pagarme', 
+              gateway_id: source['id'],
+              payment_method: find_payment_method(source),
+              value: c.value,
+              key: find_key(source)
+            })
+            payment.generate_key
+            payment.save!(validate: false)
+            yield(source, payment)
+          end
         end
+      rescue Exception => e
+        puts e.inspect
       end
     end
   end
