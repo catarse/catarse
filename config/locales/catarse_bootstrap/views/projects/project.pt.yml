@@ -1,8 +1,7 @@
 pt:
   projects:
     home:
-      title: 'Valeu 2015!'
-      cta: 'Veja como foi o ano no Catarse'
+      row_title: 'Populares'
       banners:
         1:
           title: 'Financie seu projeto'
