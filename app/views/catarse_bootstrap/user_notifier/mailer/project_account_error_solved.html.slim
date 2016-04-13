@@ -1,0 +1,21 @@
+- user = @notification.user
+- project = @notification.project
+- company_name = CatarseSettings[:company_name]
+
+| Olá #{user.name},
+br/
+br/
+| Seus dados bancários foram atualizados pela equipe do #{company_name}. Entre agora no seu projeto e veja se está tudo correto para realizarmos a transferência diretamente para sua conta.
+br/
+br/
+center
+  = link_to insights_project_url(project, ref: 'notificacao_account_solved_error') do
+    = image_tag('https://s3.amazonaws.com/cdn.catarse/notifications_assets/btn-confirme-dados-bancarios.png', width: 300)
+br/
+br/
+| Lembrando que você pode tirar dúvidas conosco respondendo diretamente a esta mensagem ou através do e-mail #{mail_to 'administrativo@catarse.me'}. Caso precise falar via telefone estaremos a disposição de segunda à sexta das 14h às 18h no telefone (11) 98414-0090.
+br/
+br/
+Um abraço,
+br/
+= company_name
