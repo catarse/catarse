@@ -452,6 +452,15 @@ RSpec.describe Project, type: :model do
     context "when sum of all contributions don't hit the goal" do
       it { is_expected.to eq(false) }
     end
+
+    context 'when sum of was_confirmed contribution hit the goal but paid sum only dont get it' do
+      before do
+        create(:confirmed_contribution, value: 2000, project: project)
+        create(:refunded_contribution, value: 3000, project: project)
+      end
+
+      it { is_expected.to eq(false) }
+    end
   end
 
   describe '#in_time_to_wait?' do

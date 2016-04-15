@@ -252,7 +252,7 @@ class Project < ActiveRecord::Base
   end
 
   def reached_goal?
-    pledged >= goal
+    paid_pledged >= goal
   end
 
   def expired?
