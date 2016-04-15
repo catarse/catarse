@@ -227,6 +227,10 @@ class Project < ActiveRecord::Base
     @pledged ||= project_total.try(:pledged).to_f
   end
 
+  def paid_pledged
+    @paid_pledged ||= project_total.try(:paid_pledged).to_f
+  end
+
   def total_contributions
     @total_contributions ||= project_total.try(:total_contributions).to_i
   end
