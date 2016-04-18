@@ -16,7 +16,7 @@ CREATE OR REPLACE VIEW "1".project_transfers AS
     public.pcc_tax(p.*) AS pcc_tax,
     (((pt.paid_pledged - public.total_catarse_fee(p.*)) + public.irrf_tax(p.*)) + public.pcc_tax(p.*)) AS total_amount
    FROM (public.projects p
-     LEFT JOIN project_totals pt ON ((pt.project_id = p.id)))
+     LEFT JOIN "1".project_totals pt ON ((pt.project_id = p.id)))
   WHERE public.is_owner_or_admin(p.user_id) OR current_user = 'catarse';
 
     }
@@ -39,7 +39,7 @@ CREATE OR REPLACE VIEW "1".project_transfers AS
     public.pcc_tax(p.*) AS pcc_tax,
     (((pt.paid_pledged - public.total_catarse_fee(p.*)) + public.irrf_tax(p.*)) + public.pcc_tax(p.*)) AS total_amount
    FROM (public.projects p
-     LEFT JOIN project_totals pt ON ((pt.project_id = p.id)))
+     LEFT JOIN "1".project_totals pt ON ((pt.project_id = p.id)))
   WHERE public.is_owner_or_admin(p.user_id);
 
     }
