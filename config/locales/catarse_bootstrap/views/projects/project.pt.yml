@@ -1,8 +1,7 @@
 pt:
   projects:
     home:
-      title: 'Valeu 2015!'
-      cta: 'Veja como foi o ano no Catarse'
+      row_title: 'Populares'
       banners:
         1:
           title: 'Financie seu projeto'
@@ -11,35 +10,35 @@ pt:
           cta: 'Comece agora'
           image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-start.jpg'
         2:
-          title: '333 páginas'
-          subtitle: 'Um livro que te diz o que fazer para você fazer o que quiser.'
-          link: 'https://www.catarse.me/333paginas?ref=home_banner'
+          title: 'Chaguim Ledor Vador'
+          subtitle: 'As principais histórias judaicas contadas por crianças e para crianças.'
+          link: 'https://www.catarse.me/chaguim?ref=home_banner'
           cta: 'Conheça o projeto'
-          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-333.jpg'
+          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-chaguim.jpg'
         3:
-          title: 'Ruling Pens'
-          subtitle: 'Conheça a matilha Dreaming Dogs e suas versáteis ferramentas caligráficas!'
-          link: 'https://www.catarse.me/dreamingdogs?ref=home_banner'
+          title: 'Centro de Oncologia Ocular do Amazonas'
+          subtitle: 'Ajude o único centro gratuito de tratamento de câncer ocular no Amazonas.'
+          link: 'https://www.catarse.me/pt/amazonas?ref=home_banner'
           cta: 'Conheça o projeto'
-          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-dreamdogs.jpg'
+          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-oncologia.jpg'
         4:
-          title: 'Cerulean'
-          subtitle: 'Conheça a história desta sereia que se vê cada vez mais atraída pela tecnologia humana.'
-          link: 'https://www.catarse.me/Cerulean?ref=home_banner'
+          title: 'Os Poucos e Amaldiçoados'
+          subtitle: 'O novo episódio da saga da Ruiva continua no Catarse.'
+          link: 'https://www.catarse.me/ARuiva2?ref=home_banner'
           cta: 'Conheça o projeto'
-          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-cerulean.jpg'
+          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-pouco.jpg'
         5:
-          title: 'Leia quando chegar em casa'
-          subtitle: 'Livro de relatos de uma ativista em campanha pela paz nas escolas brasileiras.'
-          link: 'https://www.catarse.me/pt/leiaquandochegaremcasa?ref=home_banner'
+          title: 'Viajo Logo Existo na África'
+          subtitle: 'O casal de viajantes quer documentar mais uma aventura, agora pela África.'
+          link: 'https://www.catarse.me/vleafrica?ref=home_banner'
           cta: 'Conheça o projeto'
-          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-leia.jpg'
+          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-viajo.jpg'
         6:
-          title: 'Nascer'
-          subtitle: 'A força e a poesia da fotografia de parto humanizado no Carrossel Du Louvre.'
-          link: 'https://www.catarse.me/nascerhumanizado?ref=home_banner'
+          title: 'Isabella Taviani'
+          subtitle: 'Cantora revisita os clássicos do Carpenters em novo CD.'
+          link: 'https://www.catarse.me/isabellataviani?ref=home_banner'
           cta: 'Conheça o projeto'
-          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-nascer.jpg'
+          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-isabela.jpg'
     new_feature_badge: 'Novidade'
     publish:
       aon: 'Tudo ou nada'

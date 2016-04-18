@@ -452,6 +452,15 @@ RSpec.describe Project, type: :model do
     context "when sum of all contributions don't hit the goal" do
       it { is_expected.to eq(false) }
     end
+
+    context 'when sum of was_confirmed contribution hit the goal but paid sum only dont get it' do
+      before do
+        create(:confirmed_contribution, value: 2000, project: project)
+        create(:refunded_contribution, value: 3000, project: project)
+      end
+
+      it { is_expected.to eq(false) }
+    end
   end
 
   describe '#in_time_to_wait?' do
@@ -517,21 +526,36 @@ RSpec.describe Project, type: :model do
     end
   end
 
-  describe "#pledged" do
-    subject{ project.pledged }
-    context "when project_total is nil" do
-      before do
-        allow(project).to receive(:project_total).and_return(nil)
+  describe "pledged methods" do
+    let(:project) { create(:project, state: 'online', goal: 100) }
+    let!(:confirmed_contribution) { create(:confirmed_contribution, project: project, value: 10) }
+    let!(:pending_contribution) { create(:pending_contribution, project: project, value: 10) }
+    let!(:refunded_contribution) { create(:refunded_contribution, project: project, value: 10) }
+    let!(:pending_refund_contribution) { create(:pending_refund_contribution, project: project, value: 10) }
+
+    describe "#pledged" do
+      subject{ project.pledged }
+
+      context "when project_total is nil" do
+        before do
+          allow(project).to receive(:project_total).and_return(nil)
+        end
+        it{ is_expected.to eq(0) }
       end
-      it{ is_expected.to eq(0) }
+
+      context "when project_total exists" do
+        it "should return the sum of all payments that was_confirmed" do
+          is_expected.to eq(30.0)
+        end
+      end
     end
-    context "when project_total exists" do
-      before do
-        project_total = double()
-        allow(project_total).to receive(:pledged).and_return(10.0)
-        allow(project).to receive(:project_total).and_return(project_total)
+
+    describe "#paid_pledged" do
+      subject { project.paid_pledged }
+
+      it "should return the sum of all payments that is_confirmed" do
+        is_expected.to eq(10)
       end
-      it{ is_expected.to eq(10.0) }
     end
   end
 
