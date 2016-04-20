@@ -49,6 +49,8 @@ pt:
       know_more: ' Saiba mais.'
       referral:
         ctrse_explore: 'Busca do Catarse'
+        ctrse_explore_featured_big: 'Projeto em destaque grande no explore'
+        ctrse_explore_featured_medium: 'Projeto em destaque médio no explore'
         home_recommended: 'Projetos recomendados na página inicial'
         user_menu_my_projects: 'Menu de usuário'
         profile_created_projects: 'Perfil público de usuário (projetos criados)'
