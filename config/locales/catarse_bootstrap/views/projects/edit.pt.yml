@@ -8,7 +8,7 @@ pt:
       send: 'Enviar'
     edit:
       flex:
-        budget_html: "Orçamento <span class='fontcolor-terciary'>(opcional)</span>"
+        budget_html: "Orçamento"
         video_html: "Vídeo <span class='fontcolor-terciary'>(opcional)</span>"
         video_subtitle: 'O vídeo é opcional, mas recomendamos muito que você faça um vídeo!'
         reward_html: "Recompensas <span class='fontcolor-terciary'>(opcional)</span>"
