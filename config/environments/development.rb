@@ -9,7 +9,7 @@ Catarse::Application.configure do
   config.reload_classes_only_on_change = true
 
   # Do not eager load code on boot.
-  config.eager_load = false
+  config.eager_load = true
 
   # Show full error reports and disable caching.
   config.consider_all_requests_local       = true
