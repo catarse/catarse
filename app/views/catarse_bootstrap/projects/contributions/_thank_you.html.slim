@@ -5,7 +5,7 @@
         .u-text-center.u-marginbottom-20
           = image_tag @project.user.decorate.display_image, class: 'u-round thumb big', alt: @project.user.decorate.display_name
         .u-text-center
-          .fontsize-largest.text-success.u-marginbottom-20 = t('.thank_you') 
+          .fontsize-larger.text-success.u-marginbottom-20 = t('.thank_you') 
           .fontsize-base.u-marginbottom-40
             = t('.thank_you_text_html', total: @project.total_contributions, email: @contribution.user.email,  link2: (link_to t('.profile_link'), edit_user_path(resource.user, anchor: 'contributions'), class: 'alt-link'))
           .fontsize-base.fontweight-semibold.u-marginbottom-20 = t('.share_back')
