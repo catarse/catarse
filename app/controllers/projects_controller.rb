@@ -85,6 +85,10 @@ class ProjectsController < ApplicationController
     authorize resource, :update?
   end
 
+  def contributions_report
+    authorize resource, :update?
+  end
+
   def update
     authorize resource
 
