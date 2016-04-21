@@ -141,7 +141,7 @@ pt:
         thank_you_text_html: 'Enviaremos a confirmação do seu apoio para o email cadastrado %{email}, assim que o pagamento for concluído. Você também pode acompanhar o status do apoio %{link2}.'
         share: Compartilhe
         tweet: Tuíte
-        share_back: 'Compartilhe com seus amigos e ajude esse a projeto bater a meta!'
+        share_back: 'Compartilhe com seus amigos e ajude esse projeto bater a meta!'
         follow: 'Seguir'
         follow_category: 'Curte a categoria %{category}? Você pode receber em primeira mão e diretamente no seu email quando novos projetos entrarem no ar!'
         project_recommendations: 'Recomendações de projetos para você'
