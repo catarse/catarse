@@ -138,7 +138,7 @@ pt:
         thank_you_text_html: 'Você também recebeu esse boleto no email: %{email}'
       thank_you:
         thank_you: 'Valeu! Seu apoio está sendo processado.'
-        thank_you_text_html: 'Enviaremos a confirmação do seu apoio para o email cadastrado %{email}, assim que o pagamento for concluído. Isso não deve demorar mais que alguns minutos! Você também pode acompanhar o status do apoio %{link2}.'
+        thank_you_text_html: 'Enviaremos a confirmação do seu apoio para o email cadastrado %{email}, assim que o pagamento for concluído. Você também pode acompanhar o status do apoio %{link2}.'
         share: Compartilhe
         tweet: Tuíte
         share_back: 'Compartilhe com seus amigos e ajude esse a projeto bater a meta!'
