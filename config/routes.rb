@@ -75,6 +75,7 @@ Catarse::Application.routes.draw do
     get 'video', on: :collection
     member do
       get 'insights'
+      get 'contributions_report'
       put 'pay'
       put 'push_to_flex'
       get 'embed'
