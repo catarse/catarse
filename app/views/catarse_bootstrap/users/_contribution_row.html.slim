@@ -36,6 +36,8 @@
           = link_to t('.print_slip'), contribution.decorate.display_slip_url, class: 'btn btn-inline btn-small u-margintop-10', target: '__blank'
         - elsif contribution.can_generate_slip?
           = link_to t('.slip_copy'), second_slip_project_contribution_url(contribution.project, contribution.contribution), class: 'btn btn-inline btn-small u-margintop-10', target: '__blank'
+        - elsif contribution.can_show_receipt?
+          = link_to t('.show_receipt'), receipt_project_contribution_url(contribution.project, contribution.contribution), class: 'btn btn-inline btn-small u-margintop-10 btn-terciary', target: '__blank'
       .w-checkbox.fontsize-smallest.fontcolor-secondary.u-margintop-10
         = check_box_tag :anonymous, "1", contribution.anonymous, class: 'w-checkbox-input', 
           data: { remote: true,

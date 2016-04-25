@@ -57,6 +57,10 @@ class ContributionDetail < ActiveRecord::Base
     self.slip_payment? && !self.slip_expired?
   end
 
+  def can_show_receipt?
+    self.paid? && (self.project.successful? || self.project.online?)
+  end
+
   def can_generate_slip?
     self.slip_payment? &&
       self.project.open_for_contributions? &&

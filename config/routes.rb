@@ -64,6 +64,7 @@ Catarse::Application.routes.draw do
       member do
         get 'toggle_anonymous'
         get :second_slip
+        get :receipt
         get :no_account_refund
       end
       put :credits_checkout, on: :member
