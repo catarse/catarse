@@ -12,7 +12,7 @@ html
     = csrf_meta_tag
     meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"
     meta#api-host name="api-host" content=CatarseSettings[:api_host]
-
+    meta#rd-token name="rd-token" content=CatarseSettings[:rd_token]
     - if content_for? :meta_tags
       /project specific meta tags
       = yield :meta_tags
