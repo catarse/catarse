@@ -24,6 +24,7 @@ pt:
       anonymous: Quero que meu apoio não seja público
       print_slip: Imprimir boleto
       slip_copy: Gerar 2a via
+      show_receipt: 'Ver recibo'
       contributed_projects: "Projetos que apoiei"
       contribution_value: "Valor do apoio"
       contribution_status: "Status do apoio"

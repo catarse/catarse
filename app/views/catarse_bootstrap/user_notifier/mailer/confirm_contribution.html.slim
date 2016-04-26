@@ -1,4 +1,4 @@
-- contribution = @notification.contribution
+- contribution ||= @notification.contribution
 - total_contributors = contribution.project.total_contributors
 - first_contribution = (total_contributors == 1)
 
@@ -10,4 +10,4 @@ p
   - else
     | Até o momento você e outras #{(total_contributors- 1)} pessoas estão tornando esse projeto uma realidade.
 p Esse e-mail serve como um <strong>recibo provisório da sua contribuição</strong>.
-= render partial: 'contribution_data', locals: {contribution: contribution}
+= render partial: 'user_notifier/mailer/contribution_data', locals: {contribution: contribution}

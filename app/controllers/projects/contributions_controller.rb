@@ -76,6 +76,12 @@ class Projects::ContributionsController < ApplicationController
     redirect_to resource.details.ordered.first.second_slip_path
   end
 
+  def receipt
+    authorize resource
+    template = resource.project.successful? ? 'contribution_project_successful' : 'confirm_contribution'
+    render "user_notifier/mailer/#{template}", locals: { contribution: resource }
+  end
+
   def toggle_anonymous
     authorize resource
     resource.toggle!(:anonymous)
