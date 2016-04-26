@@ -27,4 +27,4 @@
     .w-container
       .u-marginbottom-20.fontweight-semibold.fontsize-base.u-text-center= t('.project_recommendations') 
       .w-row
-        == render_projects @contribution.recommended_projects.limit(3), 'ctrse_thankyou', { wrapper_class: 'w-col w-col-4' }
+        == render_projects @contribution.recommended_projects.limit(3), 'ctrse_thankyou_r', { wrapper_class: 'w-col w-col-4' }

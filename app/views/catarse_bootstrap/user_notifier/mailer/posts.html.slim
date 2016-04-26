@@ -1,8 +1,16 @@
 - update = @notification.project_post
+- project = update.project
 - user = @notification.user
 p 
   strong= update.title
 p == update.email_comment_html.html_safe
-p Veja o projeto: #{link_to update.project.name, project_by_slug_url(permalink: update.project.permalink, ref: 'project_post')}
+p Veja o projeto: #{link_to update.project.name, project_by_slug_url(permalink: project.permalink, ref: 'project_post')}
 p #{link_to 'Descadastrar', unsubscribe_notifications_user_url(user)} o recebimento de novidades desse projeto
-
+br/
+br/
+center
+  p style="text-align:center"
+    h3 Compartilhe esse projeto com seus amigos!
+    = link_to "http://www.facebook.com/share.php?u=#{project_by_slug_url(project.permalink, {ref: 'project_post_facebook'})}", target: :_blank, data: { title: project.name } do
+      = image_tag 'https://s3.amazonaws.com/cdn.catarse/notifications_assets/fb01.png'
+  
