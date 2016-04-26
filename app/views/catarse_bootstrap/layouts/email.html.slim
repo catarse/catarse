@@ -2,8 +2,9 @@ doctype html
 html
   head
     meta content="text/html; charset=UTF-8" http-equiv="Content-Type"
-    meta content="#{message.subject}" property="og:title"
-    title= message.subject
+    - if defined? message
+      meta content="#{message.subject}" property="og:title"
+      title= message.subject
 
     = render 'layouts/mailer_styles'
 
