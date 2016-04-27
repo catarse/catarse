@@ -165,7 +165,7 @@ pt:
         budget_tab: Orçamento
         card_tab: Card do projeto
         description_tab: Descrição
-        video_tab: Vídeo
+        video_tab: "Vídeo <span class='fontsize-smallest fontcolor-secondary'>(opcional)</span>"
         rewards_tab: Recompensas
         about_you_tab: Sobre você
     flex_dashboard_explanation:
@@ -229,8 +229,8 @@ pt:
       aon:
         card_label: "Vídeo"
         video_url: "Vídeo do projeto"
-        video_url_hint: "Importante: Qualquer projeto pode ser enviado sem o vídeo para análise do atendimento do Catarse . O vídeo pode ser analisado posteriormente. Lembrando que ele só é obrigatório para projetos com metas acima de 5 mil reais."
-        video_url_subtitle: "Link do Vimeo ou Youtube"
+        video_url_hint: ""
+        video_url_subtitle: "Link do Vimeo ou Youtube. Esse é o vídeo principal da sua campanha."
       flex:
         card_label: "Vídeo"
         video_url: "Vídeo do projeto"
