@@ -68,8 +68,8 @@ a:hover {
 }
 
 .section {
-  padding-top: 60px;
-  padding-bottom: 60px;
+  padding-top: 40px;
+  padding-bottom: 40px;
   background-color: #fff;
 }
 
@@ -249,6 +249,10 @@ a:hover {
 
 .text-field.height-medium {
   height: 252px;
+}
+
+.text-field.height-small {
+  height: 170px;
 }
 
 .field-label {
@@ -682,10 +686,6 @@ a:hover {
 .badge.explore {
   background-color: transparent;
   color: #a3b8cc;
-}
-
-.badge.explore.dark {
-  color: hsla(0, 0%, 100%, .43);
 }
 
 .text-error {
@@ -1847,12 +1847,6 @@ a:hover {
   box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, .28);
 }
 
-.card-reward.sele {
-  border-width: 2px;
-  border-color: #1ca34a;
-  background-color: rgba(124, 193, 66, .09);
-}
-
 .card-gone {
   position: relative;
   color: hsla(217, 7%, 51%, .36);
@@ -2359,27 +2353,18 @@ a:hover {
 
 .card-project-meter {
   height: 28px;
-  padding-top: 10px;
+  padding-top: 4px;
   padding-right: 13px;
   padding-left: 13px;
 }
 
 .card-project-meter.successful {
-  padding-top: 4px;
   background-color: #7cc142;
   color: #fff;
-  font-size: 14px;
 }
 
-.card-project-meter.failed {
-  padding-top: 4px;
-  background-color: #79808b;
-  color: #fff;
-}
-
-.card-project-meter.waiting_funds {
-  padding-top: 4px;
-  background-color: #bdbb46;
+.card-project-meter.successful-flex {
+  background-color: #b1c2a3;
   color: #fff;
 }
 
@@ -2478,6 +2463,10 @@ a:hover {
 }
 
 .btn-category {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   overflow: hidden;
   width: 100%;
   height: 54px;
@@ -2485,6 +2474,14 @@ a:hover {
   margin-bottom: 20px;
   margin-left: 5px;
   padding: 16px 5px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   border: 1px solid #fff;
   border-radius: 4px;
   background-color: transparent;
@@ -2503,21 +2500,6 @@ a:hover {
   color: #3f4752;
 }
 
-.btn-category.double-line {
-  padding-top: 6px;
-}
-
-.btn-category.filters {
-  border-color: #3f4752;
-  color: #282f38;
-  font-size: 14px;
-}
-
-.btn-category.filters:hover {
-  background-color: rgba(0, 0, 0, .47);
-  color: #f1f2f3;
-}
-
 .btn-category.small {
   height: 40px;
   padding-top: 8px;
@@ -2526,8 +2508,8 @@ a:hover {
 }
 
 .hero-search {
-  margin-bottom: 30px;
-  padding-top: 110px;
+  margin-bottom: 40px;
+  padding-top: 95px;
   background-color: #5b97c6;
   background-image: url('/assets/hero-explore.jpg');
   background-position: 50% 50%;
@@ -2604,10 +2586,6 @@ a:hover {
   box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, .24);
 }
 
-.btn-back-fixed {
-  margin-top: -7px;
-}
-
 .hero-hello {
   position: relative;
   overflow: hidden;
@@ -2650,16 +2628,6 @@ a:hover {
   -webkit-transform: scale(1.14);
   -ms-transform: scale(1.14);
   transform: scale(1.14);
-}
-
-.quote {
-  margin-top: 40px;
-  margin-bottom: 40px;
-  padding-left: 29px;
-  border-left: 1px solid #ddd;
-  color: #79808b;
-  font-style: italic;
-  font-weight: 400;
 }
 
 .card-cta {
@@ -2815,10 +2783,6 @@ a:hover {
 
 .body-project.big {
   margin-left: 205px;
-}
-
-.body-project.closed {
-  margin-left: 0px;
 }
 
 .bg-people {
@@ -3541,11 +3505,6 @@ a:hover {
   opacity: 1;
 }
 
-.border-success {
-  border-width: 2px;
-  border-color: #7cc142;
-}
-
 .radio-btn {
   height: auto;
   padding: 20px;
@@ -3717,13 +3676,74 @@ a:hover {
   background-repeat: repeat;
 }
 
-.inline-margins-auto {
-  display: inline-block;
-}
-
 .padding-redactor-description {
   margin-bottom: 30px;
   padding: 36px 60px;
+}
+
+.u-margintop-80 {
+  margin-top: 80px;
+}
+
+.btn-select {
+  display: block;
+  padding: 20px;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f1f4f4;
+  color: #79808b;
+}
+
+.btn-select:hover {
+  border-color: #7cc142;
+  background-color: #fff;
+  color: #3f4752;
+}
+
+.btn-select.selected {
+  border-color: #7cc142;
+  background-color: #fff;
+  color: #3f4752;
+}
+
+.flex-row {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-right: -20px;
+  margin-left: -20px;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-justify-content: space-around;
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-align: stretch;
+  -webkit-align-items: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: space-around;
+  -ms-flex-line-pack: distribute;
+  align-content: space-around;
+}
+
+.flex-column {
+  margin-right: 20px;
+  margin-left: 20px;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
 }
 
 html.w-mod-js *[data-ix="fade-in"] {
@@ -4153,7 +4173,7 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
   .hero-full.hero-2016 {
     background-size: 70%, auto;
   }
-  .card-project-meter.successful {
+  .card-project-meter {
     font-size: 13px;
   }
   .hero-half {
@@ -4174,16 +4194,8 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
     font-size: 13px;
     line-height: 16px;
   }
-  .btn-category.double-line {
-    padding-top: 12px;
-    padding-bottom: 12px;
-  }
-  .btn-category.filters {
-    font-size: 13px;
-    line-height: 14px;
-  }
   .hero-search {
-    padding-top: 99px;
+    padding-top: 79px;
   }
   .creditcard-brand {
     font-size: 15px;
@@ -4302,6 +4314,14 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
   }
   .modal-dialog-header {
     height: 50px;
+  }
+  .flex-row {
+    margin-right: -10px;
+    margin-left: -10px;
+  }
+  .flex-column {
+    margin-right: 10px;
+    margin-left: 10px;
   }
 }
 
@@ -4730,15 +4750,7 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
   .hero-full.hero-full-slide {
     padding-bottom: 0px;
   }
-  .card-project-meter.successful {
-    text-align: center;
-  }
-  .card-project-meter.failed {
-    font-size: 13px;
-    text-align: center;
-  }
-  .card-project-meter.waiting_funds {
-    font-size: 13px;
+  .card-project-meter {
     text-align: center;
   }
   .hero-half {
@@ -4778,10 +4790,6 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
   .btn-category:hover {
     background-color: transparent;
     color: #fff;
-  }
-  .btn-category.double-line {
-    padding-top: 10px;
-    padding-bottom: 10px;
   }
   .hero-search {
     padding-top: 114px;
