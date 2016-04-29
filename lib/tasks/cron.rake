@@ -16,6 +16,8 @@ namespace :cron do
     CategoryTotal.refresh_view
     ActiveRecord::Base.connection.
       execute('REFRESH MATERIALIZED VIEW CONCURRENTLY "1".successful_projects')
+    ActiveRecord::Base.connection.
+      execute('REFRESH MATERIALIZED VIEW CONCURRENTLY "1".finished_projects')
   end
 
   desc 'Request refund for failed credit card refunds'

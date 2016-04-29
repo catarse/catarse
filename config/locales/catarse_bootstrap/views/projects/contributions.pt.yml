@@ -137,11 +137,11 @@ pt:
         thank_you: 'Estou contando com seu apoio...'
         thank_you_text_html: 'Você também recebeu esse boleto no email: %{email}'
       thank_you:
-        thank_you: 'Valeu!'
-        thank_you_text_html: 'Você acaba de dar um passo importante na campanha para tirar o %{link1} do papel! Enviaremos a confirmação do pagamento por email assim que ele for processado. Você também pode acompanhar o status do apoio %{link2}.'
+        thank_you: 'Valeu! Seu apoio está sendo processado.'
+        thank_you_text_html: ' Assim que o pagamento for concluído, enviaremos a confirmação do seu apoio para o email cadastrado %{email}. Você também pode acompanhar o status do apoio %{link2}.'
         share: Compartilhe
         tweet: Tuíte
-        share_back: 'Compartilhe o seu apoio e aumente as chances do projeto bater a meta!'
+        share_back: 'Compartilhe com seus amigos e ajude esse projeto a bater a meta!'
         follow: 'Seguir'
         follow_category: 'Curte a categoria %{category}? Você pode receber em primeira mão e diretamente no seu email quando novos projetos entrarem no ar!'
         project_recommendations: 'Recomendações de projetos para você'

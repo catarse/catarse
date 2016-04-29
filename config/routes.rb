@@ -64,6 +64,7 @@ Catarse::Application.routes.draw do
       member do
         get 'toggle_anonymous'
         get :second_slip
+        get :receipt
         get :no_account_refund
       end
       put :credits_checkout, on: :member
@@ -75,6 +76,7 @@ Catarse::Application.routes.draw do
     get 'video', on: :collection
     member do
       get 'insights'
+      get 'contributions_report'
       put 'pay'
       put 'push_to_flex'
       get 'embed'

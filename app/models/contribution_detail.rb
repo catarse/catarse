@@ -1,4 +1,5 @@
 class ContributionDetail < ActiveRecord::Base
+  self.table_name = '"1".contribution_details'
   include I18n::Alchemy
   TRANSITION_DATES = %i(refused_at paid_at pending_refund_at refunded_at)
 
@@ -55,6 +56,11 @@ class ContributionDetail < ActiveRecord::Base
 
   def can_show_slip?
     self.slip_payment? && !self.slip_expired?
+  end
+
+  def can_show_receipt?
+    project = self.project.flexible_project || self.project
+    self.paid? && (project.successful? || project.online? || project.waiting_funds?)
   end
 
   def can_generate_slip?

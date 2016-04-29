@@ -1,13 +1,26 @@
-- contribution = @notification.contribution
-- total_contributors = contribution.project.total_contributors
+- contribution ||= @notification.contribution
+- project = contribution.project
+- total_contributors = project.total_contributors
 - first_contribution = (total_contributors == 1)
 
-p Olá, <strong>#{contribution.user.display_name}</strong>!
-p
-  | Seu apoio para o projeto #{link_to(contribution.project.name, project_by_slug_url(permalink: contribution.project.permalink))} foi confirmado com sucesso. 
+h2 style="text-align:center; line-height: 45px;"
+  | Apoio confirmado!
+  br/
+  br/
+  | Seu apoio para o projeto #{link_to(contribution.project.name, project_by_slug_url(project.permalink, {ref: 'confirm_contribution_notification'}))} foi confirmado com sucesso. 
   - if first_contribution
     | Parabéns! Você é o primeiro a contribuir para tornar esse projeto uma realidade!
   - else
     | Até o momento você e outras #{(total_contributors- 1)} pessoas estão tornando esse projeto uma realidade.
+
+br/
+center
+  p style="text-align:center"
+    h3 Compartilhe esse projeto com seus amigos
+    = link_to "http://www.facebook.com/share.php?u=#{project_by_slug_url(project.permalink, {ref: 'confirm_contribution_facebook'})}", target: :_blank, data: { title: project.name } do
+      = image_tag 'https://s3.amazonaws.com/cdn.catarse/notifications_assets/fb01.png'
+  
+br/
+br/
 p Esse e-mail serve como um <strong>recibo provisório da sua contribuição</strong>.
-= render partial: 'contribution_data', locals: {contribution: contribution}
+= render partial: 'user_notifier/mailer/contribution_data', locals: {contribution: contribution}

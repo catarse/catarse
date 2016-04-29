@@ -26,6 +26,9 @@ pt:
         terms: Termos de uso
         twitter: Twitter
         help_support: Central de Suporte
+        score: Populares
+        finished: Finalizados
+        online: No ar
       texts:
         copyleft: Feito com amor.
       titles:
@@ -34,4 +37,3 @@ pt:
         newsletter: Assine nossa news
         sitemap: Navegue
         social: Redes sociais
-

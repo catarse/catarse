@@ -1,0 +1,13 @@
+- content_for :title, "#{@project.name} · #{CatarseSettings[:company_name]}"
+
+= render 'shared/header'
+
+
+.w-section.section-product[class=@project.mode]
+#project-contributions-report-root.min-height-70[data-mithril="ProjectsContributionReport" data-id=@project.id]
+
+- content_for :application_js do
+  = javascript_include_tag "api/application"
+
+= render 'shared/footer'
+

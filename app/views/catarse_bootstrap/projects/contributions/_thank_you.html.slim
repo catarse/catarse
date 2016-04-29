@@ -1,13 +1,13 @@
 .u-marginbottom-30.page-header
   .w-container
     .w-row
-      .w-col.w-col-9.w-col-push-1
+      .w-col.w-col-8.w-col-push-2
         .u-text-center.u-marginbottom-20
           = image_tag @project.user.decorate.display_image, class: 'u-round thumb big', alt: @project.user.decorate.display_name
         .u-text-center
-          .fontsize-largest.text-success.u-marginbottom-20 = t('.thank_you') 
+          .fontsize-larger.text-success.u-marginbottom-20 = t('.thank_you') 
           .fontsize-base.u-marginbottom-40
-            = t('.thank_you_text_html', total: @project.total_contributions, link1: (link_to @project.name, project_by_slug_url(@project.permalink), class: 'alt-link'), link2: (link_to t('.profile_link'), edit_user_path(resource.user, anchor: 'contributions'), class: 'link-hidden fontweight-semibold'))
+            = t('.thank_you_text_html', total: @project.total_contributions, email: @contribution.user.email,  link2: (link_to t('.profile_link'), edit_user_path(resource.user, anchor: 'contributions'), class: 'alt-link'))
           .fontsize-base.fontweight-semibold.u-marginbottom-20 = t('.share_back')
         .w-row.u-marginbottom-20
           .w-col.w-col-6.w-col-small-6.w-col-tiny-6.w-sub-col-middle
@@ -27,4 +27,4 @@
     .w-container
       .u-marginbottom-20.fontweight-semibold.fontsize-base.u-text-center= t('.project_recommendations') 
       .w-row
-        == render_projects @contribution.recommended_projects.limit(3), 'ctrse_thankyou', { wrapper_class: 'w-col w-col-4' }
+        == render_projects @contribution.recommended_projects.limit(3), 'ctrse_thankyou_r', { wrapper_class: 'w-col w-col-4' }

@@ -5,13 +5,21 @@
 |Olá, <strong>#{contribution.user.display_name}</strong>!
 br
 br
-| Não recebemos a confirmação de pagamento do apoio para o projeto #{link_to contribution.project.name, project_by_slug_url(permalink: contribution.project.permalink, ref: 'notificacao_cancelado')}. 
+| Vimos que você tentou apoiar o projeto #{link_to contribution.project.name, project_by_slug_url(permalink: contribution.project.permalink, ref: 'notificacao_cancelado')},mas não conseguimos processar o pagamento do seu apoio. 
 br
 br
-|Recomendamos que você #{link_to 'tente novamente com um outro cartão de crédito.', new_project_contribution_path(contribution.project, ref: 'notificacao_cancelado')}. 
+p Você poderia tentar apoiar novamente? Para isso temos algumas sugestões:
 br
 br
-| Caso ainda não consiga finalizar sua contribuição entre em contato respondendo a esta mensagem ou através do e-mail #{mail_to contact_email}
+p - Entre em contato com o seu banco autorizando o pagamento do seu apoio, depois de autorizado refazer seu apoio; ou
+p - Se possível, utilize outro cartão de crédito; ou
+p - Apoie através do boleto bancário
+br
+br
+p #{link_to 'Não deixe isso te desanimar. Começe novamente seu apoio!', new_project_contribution_url(contribution.project, ref: 'notificacao_cancelado')} 
+br
+br
+| Caso não consiga finalizar sua contribuição entre em contato respondendo a esta mensagem ou através do e-mail #{mail_to contact_email}
 br
 br
 |Um abraço,
