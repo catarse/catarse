@@ -40,6 +40,8 @@ class ProjectObserver < ActiveRecord::Observer
       audited_user_cpf: project.user.cpf,
       audited_user_phone_number: project.user.phone_number
     })
+
+    FacebookScrapeReloadWorker.perform_async(project.direct_url)
   end
   # Flexible pojects can go direct to online from draft
   alias :from_draft_to_online :from_approved_to_online

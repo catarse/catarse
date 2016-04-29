@@ -340,6 +340,10 @@ class Project < ActiveRecord::Base
     pluck_from_database(:open_for_contributions)
   end
 
+  def direct_url
+    @direct_url ||= Rails.application.routes.url_helpers.project_by_slug_url(self.permalink, locale: '')
+  end
+
   def all_tags=(names)
     self.tags = names.split(',').map do |name|
       Tag.find_or_create_by(slug: name.parameterize) do |tag|
