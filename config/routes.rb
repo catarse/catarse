@@ -116,7 +116,7 @@ Catarse::Application.routes.draw do
   get "/hello" => redirect("/start")
   get "/press" => 'high_voltage/pages#show', id: 'press'
   get "/assets" => 'high_voltage/pages#show', id: 'assets'
-  get "/guides" => 'high_voltage/pages#show', id: 'guides', as: :guides
+  get "/guides" => redirect("http://fazum.catarse.me/guia-financiamento-coletivo")
   get "/new-admin" => 'high_voltage/pages#show', id: 'new_admin'
   get "/explore" => 'high_voltage/pages#show', id: 'explore'
   get "/team" => 'high_voltage/pages#show', id: 'team'
