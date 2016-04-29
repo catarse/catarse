@@ -7,6 +7,10 @@ class UserPolicy < ApplicationPolicy
     done_by_owner_or_admin?
   end
 
+  def redirect_to_user_billing?
+    done_by_owner_or_admin?
+  end
+
   def settings?
     done_by_owner_or_admin?
   end
