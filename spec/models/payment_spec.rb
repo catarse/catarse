@@ -63,6 +63,32 @@ RSpec.describe Payment, type: :model do
     end
   end
 
+  describe "#pay" do
+    let(:payment) {
+      contribution.payments.first
+    }
+
+    subject { payment.paid? }
+
+    context "when payment is donation" do
+      let(:contribution) { create(:refunded_contribution, donation: create(:donation)) }
+      before { payment.pay }
+
+      it "should not turn payment to paid" do
+        is_expected.to eq(false)
+      end
+    end
+
+    context "when payment is not donated" do
+      let(:contribution) { create(:refunded_contribution) }
+      before { payment.pay }
+
+      it "should turn payment to paid" do
+        is_expected.to eq(true)
+      end
+    end
+  end
+
   describe "#project_should_be_online" do
     subject{ payment }
     context "when project is draft" do

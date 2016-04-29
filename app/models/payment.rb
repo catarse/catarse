@@ -112,7 +112,8 @@ class Payment < ActiveRecord::Base
     end
 
     event :pay do
-      transition [:pending, :pending_refund, :chargeback, :refunded] => :paid
+      transition [:pending, :pending_refund, :chargeback, :refunded] => :paid,
+        unless: ->(payment) { payment.is_donation? }
     end
 
     event :refuse do
@@ -126,6 +127,7 @@ class Payment < ActiveRecord::Base
     event :refund do
       transition [:pending_refund, :paid, :deleted] => :refunded
     end
+
 
     after_transition do |payment, transition|
       payment.notify_observers :"from_#{transition.from}_to_#{transition.to}"

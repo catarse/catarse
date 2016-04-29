@@ -41,6 +41,7 @@ class Contribution < ActiveRecord::Base
       join contribution_details cd on cd.contribution_id = contributions.id
       ").where("
       cd.project_state = 'failed'
+      and contributions.donation_id is null
       and cd.state = 'paid'
       and lower(cd.gateway) = 'pagarme'
       and lower(cd.payment_method) = 'boletobancario'

@@ -180,10 +180,12 @@ RSpec.describe Contribution, type: :model do
     let(:project) { create(:project) }
     let(:refunded_contribution) { create(:refunded_contribution, project: project) }
     let(:paid_contribution) { create(:confirmed_contribution, project: project) }
+    let(:paid_with_donation_contribution) { create(:confirmed_contribution, project: project, donation: create(:donation)) }
 
     subject { Contribution.need_notify_about_pending_refund }
     before do
       paid_contribution.payments.first.update_attributes({payment_method: 'BoletoBancario'})
+      paid_with_donation_contribution.payments.first.update_attributes({payment_method: 'BoletoBancario'})
       refunded_contribution
       project.update_column(:state, 'failed')
     end
