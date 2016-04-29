@@ -204,6 +204,11 @@ FactoryGirl.define do
     f.deliver_at 1.year.from_now
   end
 
+  factory :donation do |f|
+    f.amount 10
+    f.association :user
+  end
+
 
   factory :contribution do |f|
     f.association :project, factory: :project
