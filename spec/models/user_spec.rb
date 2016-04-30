@@ -13,6 +13,7 @@ RSpec.describe User, type: :model do
     it{ is_expected.to have_many :contribution_details }
     it{ is_expected.to have_many :projects }
     it{ is_expected.to have_many :published_projects }
+    it{ is_expected.to have_many :follows }
     it{ is_expected.to have_many :notifications }
     it{ is_expected.to have_many :project_posts }
     it{ is_expected.to have_many :unsubscribes }
