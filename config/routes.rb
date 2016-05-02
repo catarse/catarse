@@ -18,6 +18,7 @@ Catarse::Application.routes.draw do
   get '/billing_edit' => 'application#redirect_to_user_billing'
   get '/user_contributions' => 'application#redirect_to_user_contributions'
   get '/thank_you' => "static#thank_you"
+  get '/follow-fb-friends' => "users#follow_fb_friends"
 
   filter :locale, exclude: /\/auth\//
 
