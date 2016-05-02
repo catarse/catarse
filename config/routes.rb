@@ -15,6 +15,8 @@ Catarse::Application.routes.draw do
   end
 
   get '/project_edit' => 'application#redirect_to_last_edit'
+  get '/billing_edit' => 'application#redirect_to_user_billing'
+  get '/user_contributions' => 'application#redirect_to_user_contributions'
   get '/thank_you' => "static#thank_you"
 
   filter :locale, exclude: /\/auth\//

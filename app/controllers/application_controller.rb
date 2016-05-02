@@ -67,6 +67,15 @@ class ApplicationController < ActionController::Base
     redirect_to edit_project_path lp
   end
 
+  def redirect_to_user_billing
+    authorize current_user || User.new(), :create?
+    redirect_to edit_user_path(current_user, anchor: 'billing')
+  end
+
+  def redirect_to_user_contributions
+    authorize current_user || User.new(), :create?
+    redirect_to edit_user_path(current_user, anchor: 'contributions')
+  end
 
   private
   def force_www
