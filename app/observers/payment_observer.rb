@@ -10,6 +10,13 @@ class PaymentObserver < ActiveRecord::Observer
     notify_confirmation(payment)
   end
 
+  def from_paid_to_chargeback(payment)
+    payment.notify_to_backoffice(:admin_chargeback, {
+      from_email: payment.user.email,
+      from_name: payment.user.display_name
+    })
+  end
+
   def from_chargeback_to_paid(payment)
     payment.notify_to_backoffice(:chargeback_reverse, {
       from_email: payment.user.email,
