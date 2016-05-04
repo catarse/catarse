@@ -68,12 +68,12 @@ class ApplicationController < ActionController::Base
   end
 
   def redirect_to_user_billing
-    authorize current_user || User.new(), :create?
+    authorize current_user || User.new(), :edit?
     redirect_to edit_user_path(current_user, anchor: 'billing')
   end
 
   def redirect_to_user_contributions
-    authorize current_user || User.new(), :create?
+    authorize current_user || User.new(), :edit?
     redirect_to edit_user_path(current_user, anchor: 'contributions')
   end
 
