@@ -258,7 +258,7 @@ pt:
         href: '#confirm_account'
         icon: 'https://daks2k3a4ib2z.cloudfront.net/54b440b85608e3f4389db387/56c3508dbfc50aef5095c66a_finish-icon.png'
         title: 'Parabéns!'
-        text: 'Seu projeto foi finalizado com sucesso e você tem <span class="fontweight-semibold">R$ %{total_amount}</span> para receber (%{tax_link})! Para efetuarmos a transferência, precisamos que você nos confirme seus dados bancários.'
+        text: 'Seu projeto foi finalizado com sucesso e você tem <span class="fontweight-semibold">R$ %{total_amount}</span> para receber (<a id="tax_link" class="alt-link">veja extrato</a>)! Para efetuarmos a transferência, precisamos que você nos confirme seus dados bancários.'
         cta: 'Confirmar dados bancários'
       pending_transfer:
         icon: 'https://daks2k3a4ib2z.cloudfront.net/54b440b85608e3f4389db387/56c350c5e7d136a016bc34a4_transfer-ok-icon.png'
