@@ -259,53 +259,6 @@ class RefactorViews < ActiveRecord::Migration
 
     GRANT SELECT ON "1".statistics TO admin, web_user, anonymous;
 
-    DROP MATERIALIZED VIEW "financial".related_games_contributions_per_user;
-    CREATE MATERIALIZED VIEW "financial".related_games_contributions_per_user AS
-     SELECT c.user_id,
-        count(DISTINCT c.project_id) AS total_contributions,
-        count(DISTINCT c.project_id) FILTER (WHERE (p.category_id <> 14)) AS total_contributions_for_non_game,
-        count(DISTINCT c.project_id) FILTER (WHERE (p.category_id = 14)) AS total_contributions_for_game,
-        sum(c.value) FILTER (WHERE ((p.state)::text = 'successful'::text)) AS total_cash,
-        sum(c.value) FILTER (WHERE ((p.category_id = 14) AND ((p.state)::text = 'successful'::text))) AS total_cash_for_game
-       FROM ((public.contributions c
-         JOIN public.projects p ON ((p.id = c.project_id))))
-      WHERE (public.was_confirmed(c.*) AND public.is_published(p.*))
-      GROUP BY c.user_id
-      WITH NO DATA;
-
-    DROP MATERIALIZED VIEW "financial".repasses;
-    CREATE MATERIALIZED VIEW "financial".repasses AS
-     SELECT p.id AS project_id,
-        p.service_fee,
-        p.goal,
-        pt.pledged,
-        public.zone_timestamp(p.expires_at) AS expires_at,
-        public.zone_timestamp(COALESCE(public.successful_at(p.*), public.failed_at(p.*))) AS finished_at,
-        pt.total_payment_service_fee AS gateway_fee,
-        public.total_catarse_fee(p.*) AS catarse_fee,
-        public.total_catarse_fee_without_gateway_fee(p.*) AS catarse_fee_without_gateway,
-        (pt.pledged - public.total_catarse_fee(p.*)) AS amount_without_catarse_fee,
-        public.irrf_tax(p.*) AS irrf_tax,
-        public.pcc_tax(p.*) AS pcc_tax,
-        (((pt.pledged - public.total_catarse_fee(p.*)) + public.irrf_tax(p.*)) + public.pcc_tax(p.*)) AS total_amount
-       FROM ((public.projects p
-         LEFT JOIN "1".project_totals pt ON ((pt.project_id = p.id))))
-      WHERE ( (p.state)::text = 'successful'::text)
-      ORDER BY p.expires_at DESC
-      WITH NO DATA;
-
-    DROP MATERIALIZED VIEW "financial".top_projects_24_hours;
-    CREATE MATERIALIZED VIEW "financial".top_projects_24_hours AS
-     SELECT 'project_reached_nice_goal'::text AS moment,
-        (json_build_object('project_id', p.id, 'goal', p.goal, 'pledged', lt1.total_amount, 'percent', ((lt1.total_amount / p.goal) * (100)::numeric)))::text AS metadata,
-        (public.online_at(p.*) + '24:00:00'::interval) AS event_time
-       FROM (public.projects p
-         JOIN LATERAL ( SELECT sum(lc.value) AS total_amount
-               FROM public.contributions lc
-              WHERE ((lc.project_id = p.id) AND public.was_confirmed(lc.*) AND ((lc.created_at >= public.online_at(p.*)) AND (lc.created_at <= (public.online_at(p.*) + '24:00:00'::interval))))) lt1 ON (true))
-      WHERE (public.is_published(p.*) AND (((lt1.total_amount / p.goal) * (100)::numeric) > (5)::numeric))
-      WITH NO DATA;
-
 
     DROP MATERIALIZED VIEW "1".category_totals;
     CREATE MATERIALIZED VIEW "1".category_totals AS
