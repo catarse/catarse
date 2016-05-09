@@ -13,8 +13,7 @@ class FlexibleProject < Project
   # instace of a flexible project state machine
   def state_machine
     @state_machine ||= FlexProjectMachine.new(self, {
-      transition_class: ProjectTransition,
-      association_name: :transitions
+      transition_class: ProjectTransition
     })
   end
 

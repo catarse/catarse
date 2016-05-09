@@ -214,7 +214,8 @@ class ProjectsController < ApplicationController
   end
 
   def permitted_params
-    params.require(:project).permit(policy(resource).permitted_attributes)
+    require_model = resource.is_flexible? ? :flexible_project : :project
+    params.require(require_model).permit(ProjectPolicy.new(current_user,resource).permitted_attributes)
   end
 
   def resource
