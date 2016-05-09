@@ -45,14 +45,14 @@ Catarse::Application.routes.draw do
     end
   end
   resources :auto_complete_cities, only: [:index]
-  resources :flexible_projects do
-    member do
-      get :publish
-      get :push_to_online
-      get :validate_publish
-      get :finish
-    end
-  end
+  #resources :flexible_projects do
+    #member do
+      #get :publish
+      #get :push_to_online
+      #get :validate_publish
+      #get :finish
+    #end
+  #end
   resources :projects, only: [ :index, :create, :update, :edit, :new, :show] do
     resources :accounts, only: [:create, :update]
     resources :posts, controller: 'projects/posts', only: [ :destroy ]

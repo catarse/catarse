@@ -26,7 +26,7 @@ class FlexibleProjectsController < ApplicationController
     build_dependencies
     render template: 'projects/edit'
   rescue SuccessfulProject
-    redirect_to publish_flexible_project_path(flexible_project)
+    redirect_to publish_project_path(flexible_project)
   end
 
   def push_to_online

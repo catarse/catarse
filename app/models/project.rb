@@ -15,7 +15,6 @@ class Project < ActiveRecord::Base
   include Project::VideoHandler
   include Project::CustomValidators
   include Project::ErrorGroups
-  include Project::FlexibleHandler
 
   has_notifications
 
@@ -27,11 +26,11 @@ class Project < ActiveRecord::Base
             :status_flag, :display_errors, to: :decorator
   delegate :bank, to: :account
 
+  self.inheritance_column = 'mode'
   belongs_to :user
   belongs_to :category
   belongs_to :city
   belongs_to :origin
-  has_one :flexible_project
   has_one :project_total
   has_one :account, class_name: "ProjectAccount", inverse_of: :project
   has_many :taggings
@@ -74,14 +73,11 @@ class Project < ActiveRecord::Base
   end
 
   # With state scopes
-  scope :maybe_flex, -> {
-    joins("LEFT JOIN flexible_projects fp on fp.project_id = projects.id")
-  }
   scope :with_state, -> (state) {
-      maybe_flex.where("coalesce(fp.state, projects.state) in (?)", state)
+      where("projects.state in (?)", state)
   }
   scope :without_state, -> (state) {
-      maybe_flex.where("coalesce(fp.state, projects.state) not in (?)", state)
+      where("projects.state not in (?)", state)
   }
 
   # This scope is used only on this model
@@ -149,8 +145,8 @@ class Project < ActiveRecord::Base
   scope :not_expired, -> { where("not projects.is_expired") }
   scope :ordered, -> { order(created_at: :desc)}
   scope :update_ordered, -> { order("updated_at DESC, created_at DESC") }
-  scope :order_status, ->{ maybe_flex.order("
-                                     CASE coalesce(fp.state, projects.state)
+  scope :order_status, ->{ order("
+                                     CASE projects.state
                                      WHEN 'online' THEN 1
                                      WHEN 'waiting_funds' THEN 2
                                      WHEN 'successful' THEN 3
@@ -158,8 +154,8 @@ class Project < ActiveRecord::Base
                                      END ASC")}
   scope :most_recent_first, ->{ order("projects.id DESC") }
   scope :order_for_admin, -> {
-    maybe_flex.reorder("
-            CASE coalesce(fp.state, projects.state)
+    reorder("
+            CASE projects.state
             WHEN 'in_analysis' THEN 1
             WHEN 'waiting_funds' THEN 2
             WHEN 'successful' THEN 3
@@ -194,6 +190,14 @@ class Project < ActiveRecord::Base
     end
   end
 
+  def self.find_sti_class(type_name)
+    if type_name == 'flex'
+      FlexibleProject
+    else
+      Project
+    end
+  end
+
   def self.goal_between(starts_at, ends_at)
     where("goal BETWEEN ? AND ?", starts_at, ends_at)
   end
@@ -208,7 +212,7 @@ class Project < ActiveRecord::Base
   end
 
   def can_show_account_link?
-    (self.mode == 'flex') || (['online', 'waiting_funds', 'successful', 'approved'].include? state)
+    is_flexible? || (['online', 'waiting_funds', 'successful', 'approved'].include? state)
   end
 
   def can_show_preview_link?
@@ -323,13 +327,6 @@ class Project < ActiveRecord::Base
     to_analytics.to_json
   end
 
-  def mode
-    # aon is the default value because now we always need a mode for a project
-    # After the next refactoring (when we extract aon to another table) this will
-    # no longer be necessary
-    pluck_from_database("mode") || 'aon'
-  end
-
   def pluck_from_database attribute
     Project.where(id: self.id).pluck("projects.#{attribute}").first
   end
@@ -354,9 +351,13 @@ class Project < ActiveRecord::Base
     tags.map(&:name).join(", ")
   end
 
+  def is_flexible?
+    mode == 'flex'
+  end
+
   def update_expires_at
     if self.online_days.present? && self.online_at.present?
-      self.expires_at = ((self.mode == 'flex' ? Time.current : self.online_at.in_time_zone) + self.online_days.days).end_of_day
+      self.expires_at = ((is_flexible? ? Time.current : self.online_at.in_time_zone) + self.online_days.days).end_of_day
     end
   end
 

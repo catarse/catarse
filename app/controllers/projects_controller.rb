@@ -136,12 +136,10 @@ class ProjectsController < ApplicationController
   # TODO: remove when flex goes public
   def push_to_flex
     authorize resource
-    resource.build_flexible_project
-    resource.state = 'draft'
     resource.online_days = nil
     resource.expires_at = nil
+    resource.mode = 'flex'
     resource.save!
-    resource.project_transitions.destroy_all
     redirect_to :back 
   end
 
