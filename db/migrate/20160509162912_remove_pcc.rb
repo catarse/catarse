@@ -249,6 +249,7 @@ CREATE OR REPLACE FUNCTION public.approve_project_account() RETURNS trigger
         END;
     $$;
 
+GRANT select ON "1".project_transfers TO admin, web_user;
     }
   end
 end
