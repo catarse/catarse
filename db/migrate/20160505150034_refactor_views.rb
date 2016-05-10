@@ -1,6 +1,32 @@
 class RefactorViews < ActiveRecord::Migration
   def change
     execute <<-SQL
+    CREATE OR REPLACE FUNCTION state_order(project_id integer) RETURNS project_state_order
+        LANGUAGE sql STABLE
+        AS $_$
+    SELECT
+        CASE p.mode
+        WHEN 'flex' THEN
+            (
+            SELECT state_order
+            FROM
+            public.flexible_project_states ps
+            WHERE
+            ps.state = p.state
+            )
+        ELSE
+            (
+            SELECT state_order
+            FROM
+            public.project_states ps
+            WHERE
+            ps.state = p.state
+            )
+        END
+    FROM public.projects p
+    WHERE p.id = $1;
+    $_$;
+
     CREATE OR REPLACE VIEW "1".projects AS
     SELECT p.id AS project_id,
     p.category_id,
@@ -127,7 +153,7 @@ class RefactorViews < ActiveRecord::Migration
         p.name AS project_name,
         p.headline,
         p.permalink,
-        public.mode(p.*) AS mode,
+        p.mode AS mode,
         p.state::text AS state,
         so.so AS state_order,
         od.od AS online_date,
@@ -313,6 +339,8 @@ class RefactorViews < ActiveRecord::Migration
       WITH NO DATA;
 
       GRANT SELECT ON "1".category_totals TO admin, anonymous, web_user;
+
+      DROP FUNCTION mode(projects);
 
     SQL
   end
