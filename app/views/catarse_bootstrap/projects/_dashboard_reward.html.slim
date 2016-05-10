@@ -13,5 +13,8 @@
                   = render 'reward_fields', f: form
               = link_to_add_association "+ #{t('.add_reward')}", f, :rewards, :'data-association-insertion-node' => '#rewards', :'data-association-insertion-method' => :append, class: 'btn btn-large btn-message show_reward_form new_reward_button'
 
-            .w-col.w-col-4.w-col-push-4.u-margintop-40
-              = f.button :submit, t('.submit'),  class:'btn btn-large'
+              .w-section.save-draft-btn-section
+                .w-container
+                  .w-row
+                    .w-col.w-col-4.w-col-push-4
+                      = f.button :submit, t('.submit'),  class:'btn btn-medium'

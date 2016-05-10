@@ -20,9 +20,9 @@
 
               = render "#{@project.mode}_dashboard_explanation", form: form
 
-    .section
+    .w-section.save-draft-btn-section
       .w-container
         .w-row
           .w-col.w-col-4.w-col-push-4
             = hidden_field_tag 'anchor', 'goal'
-            = form.button :submit, t('.submit'), class:'btn btn-large', id: 'goal-save'
+            = form.button :submit, t('.submit'), class:'btn btn-medium', id: 'goal-save'

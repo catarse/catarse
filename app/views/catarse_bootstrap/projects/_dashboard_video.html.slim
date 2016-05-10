@@ -17,10 +17,10 @@
                     hint: false,
                     input_html: { class: 'positive medium', required: false },
                     validation_text: false
-  .w-section.section
+  .w-section.save-draft-btn-section
     .w-container
       .w-row
         .w-col.w-col-4.w-col-push-4
           = hidden_field_tag 'anchor', 'video'
           = form.hidden_field :project_id, value: @project.id
-          = form.button :submit, t('.submit'),  class:'btn btn-large', id: 'project-save'
+          = form.button :submit, t('.submit'),  class:'btn btn-medium', id: 'project-save'
