@@ -119,6 +119,12 @@ FactoryGirl.define do
     end
   end
 
+  factory :balance_transfer do |f|
+    f.amount 50
+    f.association :project
+    f.association :user
+  end
+
   factory :flexible_project do |f|
     f.association :project
     f.state 'draft'
