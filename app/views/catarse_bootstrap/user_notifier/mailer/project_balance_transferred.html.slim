@@ -17,7 +17,7 @@ br/
 br/
 | (-) Taxa do Catarse: #{number_to_currency project_transfer.catarse_fee.to_f, precision: 2}
 br/
-| (+) Impostos gerados a partir da nota fiscal do Catarse para PJ: #{number_to_currency (project_transfer.irrf_tax + project_transfer.pcc_tax), precision: 2 }
+| (+) Impostos gerados a partir da nota fiscal do Catarse para PJ: #{number_to_currency (project_transfer.irrf_tax), precision: 2 }
 br/
 | (=) Valor total do repasse: #{number_to_currency project_transfer.total_amount, precision: 2}
 br/
