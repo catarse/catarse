@@ -344,6 +344,12 @@ class Project < ActiveRecord::Base
     @direct_url ||= Rails.application.routes.url_helpers.project_by_slug_url(self.permalink, locale: '')
   end
 
+  def has_account_error?
+    return false unless account.persisted?
+
+    return account.project_account_errors.where(solved: false).exists?
+  end
+
   def all_tags=(names)
     self.tags = names.split(',').map do |name|
       Tag.find_or_create_by(slug: name.parameterize) do |tag|
