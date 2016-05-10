@@ -19,7 +19,7 @@ class FlexibleProject < Project
 
   def announce_expiration
     if self.expires_at.nil?
-      self.project.update_attribute :expires_at, FINAL_LAP_INTERVAL.days.from_now.end_of_day
+      self.update_attribute :expires_at, FINAL_LAP_INTERVAL.days.from_now.end_of_day
     end
   end
 
