@@ -11,20 +11,9 @@ class ApiTokensController < ApplicationController
       return render json: {error: "only authenticated users can request the API token"}, status: 401
     end
 
+    api_wrapper = ApiWrapper.new(current_user)
+
     expires_in TOKEN_TTL, public: false
-    render json: {token: jwt}, status: 200
-  end
-
-  def jwt
-    @jwt ||= JsonWebToken.sign(claims, key: CatarseSettings[:jwt_secret])
-  end
-
-  def claims
-    {
-      role: current_user.admin ? 'admin' : 'web_user',
-      user_id: current_user.id.to_s,
-      exp: (Time.now + TOKEN_TTL).to_i
-    }
+    render json: {token: api_wrapper.jwt}, status: 200
   end
 end
-
