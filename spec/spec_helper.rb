@@ -105,6 +105,7 @@ RSpec.configure do |config|
     CatarseSettings[:email_system] = 'system@catarse.me'
     CatarseSettings[:company_name] = 'Foo Bar Company'
     CatarseSettings[:timezone] = ActiveSupport::TimeZone.find_tzinfo(timezone).name
+    CatarseSettings[:jwt_secret] = 'gZH75aKtMN3Yj0iPS4hcgUuTwjAzZr9C'
 
     CatarsePagarme.configure do |config|
       config.api_key = 'ak_test_XLoo19QDn9kg5JFGU70x12IA4NqbAv'
