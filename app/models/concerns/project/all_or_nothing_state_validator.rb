@@ -13,7 +13,7 @@ module Project::AllOrNothingStateValidator
 
       # Start validations when project state
       # is included on ON_ANALYSIS_TO_END_STATE
-      wg.with_options if: -> (x) { Project::ON_ANALYSIS_TO_END_STATES.include? x.state && x.mode == 'aon' } do |wo| 
+      wg.with_options if: -> (x) { ( Project::ON_ANALYSIS_TO_END_STATES.include? x.state ) && ( x.mode == 'aon' ) } do |wo| 
         wo.validates_presence_of :goal, :online_days, :budget
       end
     end
