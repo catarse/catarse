@@ -4,6 +4,7 @@ class ProjectAccount < ActiveRecord::Base
   include Shared::BankAccountHelper
   belongs_to :project
   belongs_to :bank
+  has_many :project_account_errors
 
   attr_accessor :input_bank_number
   validate :input_bank_number_validation
