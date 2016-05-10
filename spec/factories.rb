@@ -145,6 +145,12 @@ FactoryGirl.define do
     f.sort_key { generate(:serial) }
   end
 
+  factory :project_account_error do |f|
+    f.association :project_account
+    f.solved false
+    f.reason 'foo bar reason'
+  end
+
   factory :project_account do |f|
     f.association :project
     f.association :bank
