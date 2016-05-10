@@ -22,19 +22,23 @@ class ApiWrapper
 
   def base_headers
     {
-      "Authorization" => "Bearer #{jwt}",
-      "Accept" => 'application/json',
-      "Content-Type" => 'application/json'
-    }
+      'Accept' => 'application/json',
+      'Content-Type' => 'application/json'
+    }.merge!((has_user? ? { 'Authorization' => "Bearer #{jwt}" } : {}))
   end
 
-  private
-
   def claims
+    raise 'no privileges' unless has_user?
     {
       role: @current_user.admin ? 'admin' : 'web_user',
       user_id: @current_user.id.to_s,
       exp: (Time.now + TOKEN_TTL).to_i
     }
+  end
+
+  private
+
+  def has_user?
+    @current_user.present?
   end
 end
