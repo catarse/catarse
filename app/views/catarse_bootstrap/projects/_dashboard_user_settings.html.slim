@@ -94,3 +94,10 @@
             .w-row
               .w-col.w-col-4.w-col-push-4
                 = form.button :submit, t('.submit'),  class:'btn btn-large'
+
+        - if current_user.admin && @project.has_account_error?
+          div.u-margintop-30
+            .w-container
+              .w-row
+                .w-col.w-col-4.w-col-push-4
+                  = form.button :submit, 'Salvar e remover erro',  class:'btn btn-large', name: 'solve_account_error'
