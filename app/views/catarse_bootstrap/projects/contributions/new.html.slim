@@ -19,7 +19,7 @@
     .w-row
       .w-col.w-col-8
         .w-form.back-reward-form
-          = simple_form_for [:fallback_create, parent, @contribution], html: { method: :get, id: 'contribution_form' } do |form|
+          = simple_form_for [:fallback_create, parent, @contribution], html: { method: :get, id: 'contribution_form' }, url: fallback_create_project_contributions_path(parent) do |form|
             = render 'devise/shared/alert'
             - if @rewards.present?
               = form.input :reward_id, as: :radio_buttons, collection: @rewards, input_html: {class: 'w-radio-input back-reward-radio-button'}, item_wrapper_class: 'w-radio w-clearfix back-reward-radio-reward', label: ''
