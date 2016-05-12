@@ -52,8 +52,8 @@ class ApplicationController < ActionController::Base
       session[:origin_referral] ||= request.env["HTTP_REFERER"]
     else
       # For external referrers should always overwrite referral_link
-      session[:referral_link] = params[:ref]
-      session[:origin_referral] = request.env["HTTP_REFERER"]
+      session[:referral_link] = params[:ref] || session[:referral_link]
+      session[:origin_referral] = request.env["HTTP_REFERER"] || session[:origin_referral]
     end
 
   end
