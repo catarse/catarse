@@ -94,6 +94,14 @@ a:hover {
   margin-bottom: -80px;
 }
 
+.section.section-fixed-bottom {
+  position: fixed;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  z-index: 3000;
+}
+
 .bootstrap-color-swatch {
   position: static;
   width: 70%;
@@ -2785,6 +2793,10 @@ a:hover {
   margin-left: 205px;
 }
 
+.body-project.closed {
+  margin-left: 0px;
+}
+
 .bg-people {
   height: 768px;
   padding-top: 375px;
@@ -3746,6 +3758,32 @@ a:hover {
   flex: 1;
 }
 
+.u-marginright-20 {
+  margin-right: 20px;
+}
+
+.friend-backed-card {
+  margin-top: -30px;
+  margin-bottom: 40px;
+}
+
+.save-draft-btn-section {
+  position: fixed;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  z-index: 3000;
+  margin-left: 218px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: #fff;
+  box-shadow: 0 -3px 21px 0 rgba(63, 71, 82, .21);
+}
+
+.save-draft-btn-section.closed {
+  margin-left: 0px;
+}
+
 html.w-mod-js *[data-ix="fade-in"] {
   opacity: 0;
 }
@@ -4322,6 +4360,12 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
   .flex-column {
     margin-right: 10px;
     margin-left: 10px;
+  }
+  .friend-backed-card {
+    margin-top: -8px;
+  }
+  .save-draft-btn-section {
+    margin-left: 0px;
   }
 }
 
@@ -4990,6 +5034,9 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
   .hero-slide {
     padding-top: 138px;
   }
+  .friend-backed-card {
+    margin-top: -18px;
+  }
 }
 
 @media (max-width: 479px) {
@@ -5282,7 +5329,6 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
     padding-bottom: 5px;
   }
   .dashboard-nav.side {
-    z-index: 3000;
     padding-top: 25px;
   }
   .u-margintop-40 {

@@ -88,15 +88,14 @@
                       .w-col.w-col-6.w-col-small-6.w-col-tiny-6
                         = form.input :phone_number, as: :string, 
                         input_html: { class: 'positive' }
-              
-        div.u-margintop-30
+
+        .w-section.save-draft-btn-section
           .w-container
             .w-row
               .w-col.w-col-4.w-col-push-4
-                = form.button :submit, t('.submit'),  class:'btn btn-large'
-
+                = form.button :submit, t('.submit'),  class:'btn btn-medium'
         - if current_user.admin && @project.has_account_error?
-          div.u-margintop-30
+          .u-margintop-30
             .w-container
               .w-row
                 .w-col.w-col-4.w-col-push-4

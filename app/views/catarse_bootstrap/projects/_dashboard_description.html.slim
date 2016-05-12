@@ -13,10 +13,10 @@
                 wrapper_class: 'w-row u-marginbottom-30 card card-terciary padding-redactor-description',
                 input_html: { class: 'redactor positive', required: true },
                 validation_text: false
-
-    .section
+    .w-section.save-draft-btn-section
       .w-container
         .w-row
           .w-col.w-col-4.w-col-push-4
             = hidden_field_tag 'anchor', 'description'
-            = form.button :submit, t('.submit'), class:'btn btn-large', id: 'description-save'
+            = form.button :submit, t('.submit'), class:'btn btn-medium', id: 'description-save'
+    
