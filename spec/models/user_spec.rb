@@ -50,6 +50,26 @@ RSpec.describe User, type: :model do
 
   end
 
+  describe '#has_fb_auth?' do
+    let(:user) { create(:user) }
+    subject { user.has_fb_auth? }
+
+    context 'when user as facebook auth' do
+      let!(:authorization) { create(:authorization, user: user) }
+      it { is_expected.to eq(true) }
+    end
+
+    context 'when user dont have an facebook auth' do
+      let(:oap) { create(:oauth_provider, name: 'twitter') }
+      let!(:authorization) { create(:authorization, user: user, oauth_provider: oap) }
+      it { is_expected.to eq(false) }
+    end
+
+    context 'when user dont have any authorizations' do
+      it { is_expected.to eq(false) }
+    end
+  end
+
   describe "#pending_refund_payments_projects" do
     let(:user) { create(:user) }
     let(:failed_project) { create(:project, state: 'online') }

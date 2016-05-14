@@ -111,6 +111,10 @@ class User < ActiveRecord::Base
     self.active.where(id: id).first!
   end
 
+  def has_fb_auth?
+    @has_fb_auth ||= authorizations.facebook.exists?
+  end
+
   # Return the projects that user has pending refund payments
   def pending_refund_payments_projects
     pending_refund_payments.map(&:project)
