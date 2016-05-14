@@ -63,8 +63,8 @@
                       .w-col.w-col-6
                       .w-col.w-col-6
                         = link_to_add_association  t('users.edit.add_link'), form, :links, :'data-association-insertion-method' => :append, :'data-association-insertion-node' => '#links', class: 'btn btn-small btn-terciary'
-    div
+    .w-section.save-draft-btn-section
       .w-container
         .w-row
           .w-col.w-col-4.w-col-push-4
-            = form.button :submit, t('.submit'),  class:'btn btn-large'
+            = form.button :submit, t('.submit'),  class:'btn btn-medium'

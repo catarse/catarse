@@ -52,8 +52,8 @@ class ApplicationController < ActionController::Base
       session[:origin_referral] ||= request.env["HTTP_REFERER"]
     else
       # For external referrers should always overwrite referral_link
-      session[:referral_link] = params[:ref]
-      session[:origin_referral] = request.env["HTTP_REFERER"]
+      session[:referral_link] = params[:ref] || session[:referral_link]
+      session[:origin_referral] = request.env["HTTP_REFERER"] || session[:origin_referral]
     end
 
   end
@@ -68,12 +68,12 @@ class ApplicationController < ActionController::Base
   end
 
   def redirect_to_user_billing
-    authorize current_user || User.new(), :create?
+    authorize current_user || User.new(), :edit?
     redirect_to edit_user_path(current_user, anchor: 'billing')
   end
 
   def redirect_to_user_contributions
-    authorize current_user || User.new(), :create?
+    authorize current_user || User.new(), :edit?
     redirect_to edit_user_path(current_user, anchor: 'contributions')
   end
 

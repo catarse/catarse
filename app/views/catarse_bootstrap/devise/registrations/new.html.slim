@@ -18,9 +18,7 @@
               = form.input_field :show_password, as: :boolean, boolean_style: :inline, class: 'checkbox-fix', checked: false
               label.w-form-label.fontsize-smallest= t('.form.labels.show_password')
             = form.input :password, as: :password, label: t('.form.labels.password'), input_html: { class: 'w-input text-field' }
-            .u-marginbottom-20
-              = form.input_field :newsletter, as: :boolean, boolean_style: :inline, class: 'checkbox-fix', checked: true
-              label.w-form-label.fontsize-smallest= t('.form.labels.newsletter')
+            = form.input_field :newsletter, as: :hidden, boolean_style: :inline, value: true
             .w-row.u-marginbottom-20
               .w-col.w-col-6.w-col-small-6.w-col-tiny-6
                 = form.button :submit, t('.form.inputs.submit'), class:'btn btn-large'
@@ -31,6 +29,3 @@
                     = link_to t('.links.login'), new_user_session_path, class: 'link alt-link fontweight-semibold'            
         .fontsize-smallest.u-text-center.u-marginbottom-30
           = t(".form.labels.accept", terms_url: CatarseSettings[:terms_url], privacy_url: CatarseSettings[:privacy_url]).html_safe
-
-
-

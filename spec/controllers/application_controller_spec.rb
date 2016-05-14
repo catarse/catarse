@@ -58,6 +58,20 @@ RSpec.describe ApplicationController, type: :controller do
         expect(session[:origin_referral]).to eq referrer
       end
     end
+
+    context "when we still have a referral link in session and the ref params is defined and referrer is nil" do
+      let(:referrer){ nil }
+      let(:initial_session_value){ 'test' }
+      let(:initial_origin_value) { 'http://www.foo.bar' }
+      let(:params){ {ref: nil} }
+
+      it "should keep referal link as initial" do
+        expect(session[:referral_link]).to eq initial_session_value
+      end
+
+      it "should keep HTTP_REFERRER as initial" do
+        expect(session[:origin_referral]).to eq initial_origin_value
+      end
+    end
   end
 end
-

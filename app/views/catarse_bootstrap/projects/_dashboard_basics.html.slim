@@ -70,9 +70,9 @@
                     input#project_city_id.w-hidden name="project[city_id]" type="text" value="#{@project.city.try(:id)}"/
                     .table-outer.search-pre-result.w-hidden
 
-    .section
+    .w-section.save-draft-btn-section
       .w-container
         .w-row
           .w-col.w-col-4.w-col-push-4
             = hidden_field_tag 'anchor', 'basics'
-            = form.button :submit, t('.form.submit'), class:'btn btn-large', id: 'basics-save'
+            = form.button :submit, t('.form.submit'), class:'btn btn-medium', id: 'basics-save'

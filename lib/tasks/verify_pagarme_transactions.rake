@@ -154,6 +154,13 @@ task :verify_pagarme_transactions, [:start_date, :end_date]  => :environment do 
           end
         end
       rescue Exception => e
+        if source.present? && source['id'].present?
+          puts "\n\n>>>>>>>>>> Creating PaymentLog can't create payment"
+          PaymentLog.create(
+            gateway_id: source['id'],
+            data: source
+          )
+        end
         puts e.inspect
       end
     end
