@@ -1,13 +1,9 @@
-class FlexibleProjectPolicy < ApplicationPolicy
+class FlexibleProjectPolicy < ProjectPolicy
   def publish?
     done_by_owner_or_admin?
   end
 
   def validate_publish?
-    done_by_owner_or_admin?
-  end
-
-  def push_to_online?
     done_by_owner_or_admin?
   end
 

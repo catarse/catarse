@@ -3,7 +3,7 @@ App.addChild('DashboardAnnounceExpiration', {
 
   events:{
     "click a#show-modal": "showModal",
-    "change #project_online_days": "updateExpirationDate",
+    "change #flexible_project_online_days": "updateExpirationDate",
     "click #cancel": "hideModal"
   },
 
@@ -16,7 +16,7 @@ App.addChild('DashboardAnnounceExpiration', {
   },
 
   updateExpirationDate: function() {
-    var days = parseInt($('#project_online_days').val());
+    var days = parseInt($('#flexible_project_online_days').val());
     var expiration_date = new Date();
     expiration_date.setDate(expiration_date.getDate() + days);
 

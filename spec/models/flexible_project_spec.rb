@@ -1,21 +1,18 @@
 require 'rails_helper'
 
 RSpec.describe FlexibleProject, type: :model do
-  let!(:project) { create(:project, permalink: 'foo', state: 'draft', online_days: nil, expires_at: nil) }
-  let!(:flexible_project) { create(:flexible_project, project: project) }
+  let!(:flexible_project) { create(:flexible_project, permalink: 'foo', state: 'draft', online_days: nil, expires_at: nil) }
 
   describe "associations" do
     subject { flexible_project }
 
-    it{ is_expected.to belong_to :project }
-    it{ is_expected.to have_many :transitions }
+    it{ is_expected.to have_many :project_transitions }
   end
 
   describe "validations" do
     subject { flexible_project }
 
-    it{ is_expected.to validate_presence_of :project_id }
-    it{ is_expected.to validate_uniqueness_of :project_id }
+    it{ is_expected.to validate_presence_of :name }
   end
 
   describe "#state_machine" do
