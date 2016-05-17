@@ -340,7 +340,7 @@ class RefactorViews < ActiveRecord::Migration
 
       GRANT SELECT ON "1".category_totals TO admin, anonymous, web_user;
 
-      DROP MATERIALIZED VIEW "1".successful_projects;
+      DROP MATERIALIZED VIEW IF EXISTS "1".successful_projects;
       CREATE MATERIALIZED VIEW "1".successful_projects AS
         SELECT p.id AS project_id,
       p.category_id,
