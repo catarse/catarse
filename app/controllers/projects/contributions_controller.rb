@@ -78,7 +78,7 @@ class Projects::ContributionsController < ApplicationController
 
   def receipt
     authorize resource
-    project = resource.project.flexible_project || resource.project
+    project = resource.project
     template = project.successful? ? 'contribution_project_successful' : 'confirm_contribution'
     render "user_notifier/mailer/#{template}", locals: { contribution: resource }, layout: 'layouts/email'
   end

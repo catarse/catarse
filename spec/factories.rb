@@ -94,6 +94,7 @@ FactoryGirl.define do
     f.association :city
     f.about_html "Foo bar"
     f.headline "Foo bar"
+    f.mode 'aon'
     f.goal 10000
     f.online_days 5
     f.more_links 'Ipsum dolor'
@@ -120,22 +121,32 @@ FactoryGirl.define do
   end
 
   factory :flexible_project do |f|
-    f.association :project
     f.state 'draft'
+    f.mode 'flex'
+    f.name "Foo bar"
+    f.permalink { generate(:permalink) }
+    f.association :user
+    f.association :category
+    f.association :city
+    f.about_html "Foo bar"
+    f.headline "Foo bar"
+    f.goal 10000
+    f.online_days 5
+    f.more_links 'Ipsum dolor'
+    f.first_contributions 'Foo bar'
+    f.video_url 'http://vimeo.com/17298435'
+    f.budget '1000'
+    f.uploaded_image File.open("#{Rails.root}/spec/support/testimg.png")
 
     after :create do |flex_project| 
-      FactoryGirl.create(:flexible_project_transition, {
+      FactoryGirl.create(:project_transition, {
         to_state: flex_project.state,
-        flexible_project: flex_project
+        project: flex_project
       })
     end
-  end
-
-  factory :flexible_project_transition do |f|
-    f.association :flexible_project
-    f.most_recent true
-    f.to_state 'online'
-    f.sort_key { generate(:serial) }
+    after :build do |project|
+      project.account = build(:project_account, project: nil)
+    end
   end
 
   factory :project_transition do |f|

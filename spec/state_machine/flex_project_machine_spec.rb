@@ -2,9 +2,8 @@ require 'rails_helper'
 
 RSpec.describe FlexProjectMachine, type: :model do
   let(:project_state) { 'draft' }
-  let(:project) { create(:project, state: 'draft') }
-  let(:flexible_project) { create(:flexible_project, project: project, state: project_state) }
-  let!(:project_account) { create(:project_account, project: project) }
+  let(:flexible_project) { create(:flexible_project, state: project_state) }
+  let!(:project_account) { create(:project_account, project: flexible_project) }
 
   subject { flexible_project.state_machine }
 
@@ -25,7 +24,7 @@ RSpec.describe FlexProjectMachine, type: :model do
     subject.transition_to(transition_to, { to_state: transition_to })
     expect(subject.current_state).to eq(transition_to.to_s)
     expect(flexible_project.state).to eq(transition_to.to_s)
-    expect(flexible_project.transitions.
+    expect(flexible_project.project_transitions.
       where(to_state: transition_to.to_s).count).to eq(1)
   end
 
@@ -33,7 +32,7 @@ RSpec.describe FlexProjectMachine, type: :model do
     subject.transition_to transition_to, {to_state: transition_to}
     expect(subject.current_state).not_to eq(transition_to.to_s)
     expect(flexible_project.reload.state).not_to eq(transition_to.to_s)
-    expect(flexible_project.transitions.where(to_state: transition_to.to_s).count).to eq(0)
+    expect(flexible_project.project_transitions.where(to_state: transition_to.to_s).count).to eq(0)
   end
 
   context "rejected -> draft/deleted" do
@@ -64,13 +63,13 @@ RSpec.describe FlexProjectMachine, type: :model do
 
     context "when is invalid project" do
       before do
-        project.name = nil
-        project.about_html = nil
+        flexible_project.name = nil
+        flexible_project.about_html = nil
       end
 
       it "should save errors do db" do
         should_not_be_valid_transition 'online'
-        expect(project.project_errors.count).to eq(1)
+        expect(flexible_project.project_errors.count).to eq(2)
       end
     end
   end
