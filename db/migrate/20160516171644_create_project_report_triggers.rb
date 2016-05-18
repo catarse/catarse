@@ -13,10 +13,9 @@ class CreateProjectReportTriggers < ActiveRecord::Migration
     CREATE TRIGGER send_project_report AFTER INSERT ON project_reports FOR EACH ROW EXECUTE PROCEDURE send_project_report();
     CREATE TRIGGER system_notification_dispatcher AFTER INSERT ON public.project_report_notifications FOR EACH ROW EXECUTE PROCEDURE public.system_notification_dispatcher();
 
-    CREATE VIEW "1".project_reports AS 
+    CREATE OR REPLACE VIEW "1".project_reports AS 
     SELECT user_id, reason, project_id, email, details
-    from project_reports;
-
+    from project_reports WHERE is_owner_or_admin(user_id);
 
       CREATE OR REPLACE FUNCTION insert_project_report() RETURNS trigger
           LANGUAGE plpgsql
@@ -35,11 +34,11 @@ class CreateProjectReportTriggers < ActiveRecord::Migration
 
       GRANT SELECT ON public.settings TO web_user, anonymous, admin;
       GRANT SELECT ON public.users TO web_user, anonymous, admin;
-      grant insert on "1".project_reports to anonymous;
-      grant insert on "1".project_reports to web_user;
+      grant insert, select on "1".project_reports to anonymous;
+      grant insert, select on "1".project_reports to web_user;
       grant insert, select on "1".project_reports to admin;
-      grant insert on public.project_reports to anonymous;
-      grant insert on public.project_reports to web_user;
+      grant insert, select on public.project_reports to anonymous;
+      grant insert, select on public.project_reports to web_user;
       grant insert, select on public.project_reports to admin;
       grant insert on public.project_report_notifications to anonymous;
       grant insert on public.project_report_notifications to web_user;
