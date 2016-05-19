@@ -59,7 +59,7 @@ class ContributionDetail < ActiveRecord::Base
   end
 
   def can_show_receipt?
-    project = self.project.flexible_project || self.project
+    project = self.project
     self.paid? && (project.successful? || project.online? || project.waiting_funds?)
   end
 

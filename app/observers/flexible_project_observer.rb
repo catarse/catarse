@@ -12,7 +12,7 @@ class FlexibleProjectObserver < ActiveRecord::Observer
   alias :from_online_to_successful :from_waiting_funds_to_successful
 
   def from_draft_to_online(flexible_project)
-    project = flexible_project.project
+    project = flexible_project
 
     project.update_attributes({
       audited_user_name: project.user.name,

@@ -144,12 +144,10 @@ class ProjectsController < ApplicationController
   # TODO: remove when flex goes public
   def push_to_flex
     authorize resource
-    resource.build_flexible_project
-    resource.state = 'draft'
     resource.online_days = nil
     resource.expires_at = nil
+    resource.mode = 'flex'
     resource.save!
-    resource.project_transitions.destroy_all
     redirect_to :back 
   end
 
@@ -224,7 +222,8 @@ class ProjectsController < ApplicationController
   end
 
   def permitted_params
-    params.require(:project).permit(policy(resource).permitted_attributes)
+    require_model = resource.is_flexible? ? :flexible_project : :project
+    params.require(require_model).permit(policy(resource).permitted_attributes)
   end
 
   def resource

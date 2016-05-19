@@ -1,6 +1,6 @@
 //= require mithril/mithril.js
 //= require underscore
-//= require mithril.postgrest
+//= require mithril-postgrest
 //= require moment
 //= require replace-diacritics
 //= require chartjs
@@ -22,9 +22,10 @@
 
   if(adminRoot){
     m.route.mode = 'hash';
+
     m.route(adminRoot, '/', {
-      '/': m.component(c.admin.Contributions, {root: adminRoot}),
-      '/users': m.component(c.admin.Users)
+      '/': m.component(c.root.AdminContributions, {root: adminRoot}),
+      '/users': m.component(c.root.AdminUsers)
     });
   }
 
@@ -40,4 +41,3 @@ window.toggleMenu = function(){
   var userMenu = document.getElementById("user-menu-dropdown");
   userMenu.classList.toggle('w--open');
 };
-

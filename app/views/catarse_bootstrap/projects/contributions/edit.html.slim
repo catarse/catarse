@@ -8,7 +8,7 @@
   .w-container
     .w-row
       .w-col.w-col-8
-        = simple_form_for [@project, @contribution], html: { data: { update_info_path: project_contribution_path(project_id: @contribution.project.id, id: @contribution.id, format: :json) }, id: 'review_form', method: 'put' } do |form|
+        = simple_form_for [@project, @contribution], html: { data: { update_info_path: project_contribution_path(project_id: @contribution.project.id, id: @contribution.id, format: :json) }, id: 'review_form', method: 'put' }, url: project_contribution_path(@project, @contribution) do |form|
           = form.input :id, as: :hidden, label: false
           = form.input :project_id, as: :hidden, label: false
           .u-marginbottom-30.u-text-center-small-only
