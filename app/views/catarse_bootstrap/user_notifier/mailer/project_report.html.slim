@@ -1,0 +1,29 @@
+- message = @notification.project_report
+
+|Nome projeto denunciado:
+= message.project.name
+br
+|Link projeto denunciado:
+= "catarse.me/#{message.project.permalink}"
+br
+|Status projeto:
+= message.project.state
+br
+|$ arrecadado:
+= message.project.pledged
+br
+|Contato realizador: email
+= message.project.user.email
+br
+|Telefone:
+= message.project.user.phone_number
+br
+|Motivo da denúncia:
+= message.reason
+br
+|Detalhes:
+= message.details
+br
+|Email do denunciador:
+= message.email
+br
