@@ -85,7 +85,7 @@ RSpec.describe ProjectsController, type: :controller do
     it { is_expected.to be_success }
 
     context "with referral link" do
-      subject { controller.session[:referral_link] }
+      subject { cookies[:referral_link] }
 
       before do
         get :index, locale: :pt, ref: 'referral'

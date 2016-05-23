@@ -12,8 +12,8 @@ RSpec.describe ApplicationController, type: :controller do
 
   describe "#referral_it!" do
     before do
-      session[:referral_link] = initial_session_value
-      session[:origin_referral] = initial_origin_value
+      cookies[:referral_link] = initial_session_value
+      cookies[:origin_referral] = initial_origin_value
       controller.referral_it!
     end
 
@@ -23,11 +23,11 @@ RSpec.describe ApplicationController, type: :controller do
       let(:initial_origin_value) { nil }
 
       it "should clear and store ref in session" do
-        expect(session[:referral_link]).to eq 'foo'
+        expect(cookies[:referral_link]).to eq 'foo'
       end
 
       it "should store origin referral in session" do
-        expect(session[:origin_referral]).to eq referrer
+        expect(cookies[:origin_referral]).to eq referrer
       end
     end
 
@@ -36,11 +36,11 @@ RSpec.describe ApplicationController, type: :controller do
       let(:initial_origin_value) { 'origin' }
 
       it "should keep initial value on referral" do
-        expect(session[:referral_link]).to eq initial_session_value
+        expect(cookies[:referral_link]).to eq initial_session_value
       end
 
       it "should keep initial value on origin" do
-        expect(session[:origin_referral]).to eq initial_origin_value
+        expect(cookies[:origin_referral]).to eq initial_origin_value
       end
     end
 
@@ -51,11 +51,11 @@ RSpec.describe ApplicationController, type: :controller do
       let(:params){ {ref: nil} }
 
       it "should keep referal link nil" do
-        expect(session[:referral_link]).to eq nil
+        expect(cookies[:referral_link]).to eq nil
       end
 
       it "should store HTTP_REFERRER in origin" do
-        expect(session[:origin_referral]).to eq referrer
+        expect(cookies[:origin_referral]).to eq referrer
       end
     end
 
@@ -66,11 +66,11 @@ RSpec.describe ApplicationController, type: :controller do
       let(:params){ {ref: nil} }
 
       it "should keep referal link as initial" do
-        expect(session[:referral_link]).to eq initial_session_value
+        expect(cookies[:referral_link]).to eq initial_session_value
       end
 
       it "should keep HTTP_REFERRER as initial" do
-        expect(session[:origin_referral]).to eq initial_origin_value
+        expect(cookies[:origin_referral]).to eq initial_origin_value
       end
     end
   end
