@@ -370,7 +370,7 @@ img, iframe
   position: fixed
   top: 0
   width: 218px
-  z-index: 999
+  z-index: 9999
 
 .project-nav-wrapper
   display: block
@@ -428,11 +428,14 @@ img, iframe
   border-right: 0
   outline: none
 #project-nav,
-.body-project
+.body-project,
+.save-draft-btn-section
   +transition(all 500ms ease)
 .body-project.closed
   #project-nav
     +transform(translate3d(-218px, 0, 0))
+  .save-draft-btn-section
+    margin-left: 0
 .btn-dashboard
   position: absolute
   margin-left: 205px
@@ -676,4 +679,3 @@ img, iframe
   border: none
   text-align: left
   padding-left: 0
-
