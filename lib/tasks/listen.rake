@@ -4,6 +4,7 @@ namespace :listen do
   desc 'listen from database and deliver notifications'
   task sync_notifications: [:environment] do
     DirectMessage
+    ProjectReport
     $stdout.sync = true
     ActiveRecord::Base.connection_pool.with_connection do |connection|
       conn = connection.instance_variable_get(:@connection)
