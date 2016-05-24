@@ -16,7 +16,7 @@ App.addChild('DashboardAnnounceExpiration', {
   },
 
   updateExpirationDate: function() {
-    var days = parseInt($('#flexible_project_online_days').val());
+    var days = parseInt(this.$('#flexible_project_online_days').val());
     var expiration_date = new Date();
     expiration_date.setDate(expiration_date.getDate() + days);
 

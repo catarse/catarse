@@ -10,8 +10,6 @@
           img.thumb-project-dashboard src="#{image_path('thumb-project.png')}" width="114"
         .fontcolor-negative.lineheight-tight.fontsize-small= @project.name
         = image_tag("catarse_bootstrap/badge-#{@project.mode}-h.png", class: 'u-margintop-10', width: 80)
-        - if current_user && current_user.admin?
-          .u-marginbottom-10= link_to 'Passar para flex', push_to_flex_project_path(@project), method: 'put'
 
       #info-links
         = link_to insights_project_path(@project), class: 'dashboard-nav-link-left ' , id: 'dashboard_home_link', data: {tab_group: 'edit'} do
