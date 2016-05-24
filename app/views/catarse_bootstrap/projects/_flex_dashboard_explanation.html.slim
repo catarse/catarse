@@ -1,18 +1,22 @@
-.card.medium.card-terciary.u-marginbottom-30
-  .u-marginbottom-40
-    label.w-editable.fontweight-semibold.fontsize-base= t('projects.dashboard_goal.kind_label')
-    .w-editable.fontsize-small
-      = t('projects.dashboard_goal.flex.kind_text', link: link_to(t('projects.dashboard_goal.kind_link'), flex_path, class: 'alt-link', target: '_blank')).html_safe
-  .w-row
-    .w-col.w-col-6
-      .card.card-secondary.u-radius.u-text-center
-        img src="https://daks2k3a4ib2z.cloudfront.net/54b440b85608e3f4389db387/56398867c44b4ac86e5f9e82_badge-aon-off.png" /
-    .w-col.w-col-6
-      .card.u-radius.border-success.u-text-center
-        img src="https://daks2k3a4ib2z.cloudfront.net/54b440b85608e3f4389db387/5632ebacd092957f34eaea9c_badge-flex.png" /
-
-.w-row.u-marginbottom-30.card.card-terciary.medium
-  .w-col.w-col-5.w-sub-col._w-sub-col
-    label.w-editable.fontweight-semibold.fontsize-base= t(".#{@project.mode}.expiration_title")
-  .w-col.w-col-7
-    .w-editable.fontsize-small= t(".#{@project.mode}.expiration_text")
+.flex-days.card.medium.card-terciary.u-marginbottom-30[class="#{@project.is_flexible? ? '' : 'w-hidden'}"]
+  label.fontweight-semibold.fontsize-base Tempo de arrecadação
+  .fontsize-small.u-marginbottom-60
+    ' É o período em que o seu projeto estará no ar, aberto a captação de recursos. No Flex, você escolhe se publica seu projeto com prazo já definido ou com prazo em aberto.
+    a.alt-link href=" http://suporte.catarse.me/hc/pt-br/articles/202457318" target="_blank" Saiba mais.
+  .flex-row
+    a.choose-time.choose-unlimited.w-inline-block.btn-select.flex-column.u-text-center[class="#{@project.online_days ? '' : 'selected'}" href="#"]
+      .fontsize-base.fontweight-semibold.u-marginbottom-20 Prazo em aberto
+      .w-hidden-tiny Seu projeto entra no ar sem um prazo definido. Você terá a opção de definir uma data de término do projeto (mínimo de 1 dia) a qualquer momento ​dentro de um período de 12 meses​ após a publicação.
+    a.choose-time.choose-limited.w-inline-block.btn-select.flex-column.u-text-center[class="#{@project.online_days ? 'selected' : ''}" href="#"]
+      .fontsize-base.fontweight-semibold.u-marginbottom-20 Prazo definido
+      .w-hidden-tiny.u-marginbottom-30 Seu projeto já entra no ar com o tempo de captação já definido. Você poderá escolher um prazo de 1 a 365 dias. Após publicar o projeto, você não poderá alterar esse prazo.
+      .w-row
+        .w-col.w-col-6
+          = form.input :online_days,
+            type: 'number',
+            disabled: !@project.is_flexible?,
+            input_html: { class: 'field w-input text-field medium prefix', required: false},
+            validation_text: false, hint:  false, label: ''
+        .w-col.w-col-6
+          .text-field.medium.prefix-permalink
+            div dias

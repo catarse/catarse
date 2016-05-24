@@ -1,28 +1,119 @@
-= simple_form_for @project, html: { class: 'project-form w-form' } do |form|
-  .w-section.section
-    .w-container
-      .w-row
-        .w-col.w-col-10.w-col-push-1
-          .w-form
-              = @project.display_errors(:goal)
-              = form.input :goal,
-                as: :tel,
-                wrapper: :two_columns_with_postfix,
-                wrapper_class: 'w-row u-marginbottom-30 card card-terciary medium',
-                label_wrapper_html: { class: 'w-col w-col-5 w-subcol' },
-                text_field_wrapper_html: { class: 'w-col w-col-7' },
-                input_html: { id: 'project-goal-input', class: 'postfix positive medium', required: false, value: @project.localized.goal},
-                field_wrapper_html: { class: 'w-col w-col-8 w-col-small-6 w-col-tiny-6' },
-                validation_text: false,
-                preppend_text_wrapper_html: { class: 'w-col w-col-4 w-col-small-6 w-col-tiny-6 text-field prefix no-hover medium prefix-permalink' },
-                preppend_input_text: 'R$',
-                preppend_input_text_wrapper_html: { class: 'fontsize-base lineheight-tightest' }
-
-              = render "#{@project.mode}_dashboard_explanation", form: form
-
-    .w-section.save-draft-btn-section
+#dashboard-goal-tab
+  = simple_form_for @project, html: { class: 'project-form w-form' } do |form|
+    .w-section.section
       .w-container
         .w-row
-          .w-col.w-col-4.w-col-push-4
-            = hidden_field_tag 'anchor', 'goal'
-            = form.button :submit, t('.submit'), class:'btn btn-medium', id: 'goal-save'
+          .w-col.w-col-1
+          .w-col.w-col-10
+            .w-form
+              = @project.display_errors(:goal)
+              .card.medium.card-terciary.u-marginbottom-30
+                .w-hidden
+                  = form.collection_radio_buttons :mode, [['aon', 'aon'] ,['flex', 'flex']], :first, :last
+                .u-marginbottom-30
+                  label.fontweight-semibold.fontsize-base  Tipo de financiamento
+                  .fontsize-small Escolha o modelo de sua campanha de financiamento coletivo. Após iniciar a sua campanha, não será permitido trocar.&nbsp;
+                .flex-row.u-marginbottom-30
+                  a.choose-mode.choose-aon.w-inline-block.btn-select.flex-column.u-text-center[data-mode="aon" class="#{@project.is_flexible? ? '' : 'selected'}" href="#"]
+                    = image_tag "catarse_bootstrap/badge-aon.png"
+                  a.choose-mode.choose-flex.w-inline-block.btn-select.flex-column.u-text-center[data-mode="flex" class="#{@project.is_flexible? ? 'selected' : ''}" href="#"]
+                    = image_tag "catarse_bootstrap/badge-flex.png"
+                .u-text-center.fontsize-smaller
+                  a.mode-diff-toggle.link-hidden-light.fontweight-semibold href="#"
+                    ' Veja a diferença entre os modelos
+                    span.fa.fa-chevron-down
+                .mode-diff.u-margintop-30.div-display-none.w-hidden
+                  .flex-row
+                    .w-hidden-small.w-hidden-tiny.fontsize-smaller.flex-column
+                      span.fontweight-semibold Compromisso&nbsp;
+                      br
+                      ' Você se compromete a executar o projeto e entregar as recompensas apenas
+                      span.fontweight-semibold se a arrecadação atingir ou superar a meta.
+                      br/
+                      br/
+                      span.fontweight-semibold Como funciona?
+                      br
+                      | Você só recebe o valor arrecadado se, ao final do prazo,&nbsp;tiver alcançado a meta de arrecadação . Caso contrário, todos seus apoiadores recebem seus pagamentos de volta.
+                      br/
+                      br/
+                      span.fontweight-semibold
+                        'Prazo máximo do projeto no ar:
+                      | 60 dias&nbsp;&nbsp;
+                      br/
+                      br/
+                      span.fontweight-semibold
+                        'Taxas:
+                      | 13% sobre o total arrecadado
+                    .w-hidden-small.w-hidden-tiny.fontsize-smaller.flex-column
+                      span.fontweight-semibold
+                        | Compromisso&nbsp;
+                        br
+                      ' Você se compromete a executar o projeto e entregar as recompensas (caso tenha optado por ofertá-las),
+                      span.fontweight-semibold independente do valor arrecadado
+                      br/
+                      br/
+                      span.fontweight-semibold Como funciona?
+                      br
+                      | Você recebe, ao final do prazo, tudo o que tiver arrecadado, independente de alcançar a meta de arrecadação.
+                      br/
+                      br/
+                      span.fontweight-semibold
+                        'Prazo máximo do projeto no ar:
+                      | 12 meses
+                      br/
+                      br/
+                      span.fontweight-semibold
+                        'Taxas:
+                      br
+                      |13% sobre o total arrecadado (caso você alcance a meta)
+                      br
+                      | ou
+                      br/
+                      |  15%
+                      br/
+                      | sobre o total arrecadado (caso você não alcance a meta)
+                  .u-text-center.u-margintop-30
+                    .divider.u-marginbottom-20
+                    .fontsize-base Quer entender mais?
+                    a.fontsize-small href="http://fazum.catarse.me/tudoounada-ou-flex" target="_blank"
+                      ' Baixe nosso
+                      span.fontweight-bold ebook Flex vs Tudo ou Nada
+              #arrecadacao.card.medium.card-terciary.u-marginbottom-30
+                .u-marginbottom-30
+                  label.fontweight-semibold.fontsize-base  Meta de arrecadação
+                  .fontsize-small Quanto você precisa arrecadar? Defina uma meta coerente com o que seu projeto propõe. Não esqueça de incluir as taxas administrativas em seu cálculo.
+                .w-row.u-marginbottom-30
+                  .w-col.w-col-2
+                  .w-col.w-col-8
+                    .w-row
+                      .w-col.w-col-4.w-col-small-6.w-col-tiny-6.text-field.prefix.no-hover.medium.prefix-permalink
+                        .fontcolor-secondary.u-text-center.fontsize-base.lineheight-tightest R$
+                      .w-col.w-col-8.w-col-small-6.w-col-tiny-6
+                        = form.input :goal,
+                          as: :tel,
+                          input_html: { id: 'project-goal-input', class: 'postfix positive medium', required: false, value: @project.localized.goal},
+                          validation_text: false, hint: false, label: ''
+                  .w-col.w-col-2
+                .u-text-center.fontsize-smaller.fontweight-semibold
+                  a.fee-toggle.link-hidden-light href="#" 
+                    ' Entenda as taxas do Catarse
+                    span.fa.fa-chevron-down
+                .fee-explanation.u-margintop-30.div-display-none.w-hidden
+                  .u-marginbottom-30
+                    .fontsize-small.fontweight-semibold Taxas do Catarse
+                    .fontsize-smaller É o valor que será descontado da sua arrecadação ao final da campanha, referente aos serviços do Catarse e do meio de pagamento. Se o seu projeto atingir ou ultrapassar a meta, serão cobrados 13% do total arrecadado ao final da campanha. Caso o seu projeto não atinja a meta, todo o dinheiro apoiado será devolvido aos seus apoiadores após o término da campanha, sem custo nenhum a você. É Tudo ou Nada!
+                  .u-text-center.u-margintop-30
+                    .divider.u-marginbottom-20
+                    .fontsize-base Quer entender mais?
+                    a.fontsize-small href="http://fazum.catarse.me/video-orcamento-basico" target="_blank"
+                      ' Assista nossa
+                      span.fontweight-bold vídeo-aula Orçamento Básico
+              = render "aon_dashboard_explanation", form: form
+              = render "flex_dashboard_explanation", form: form
+
+      .w-section.save-draft-btn-section
+        .w-container
+          .w-row
+            .w-col.w-col-4.w-col-push-4
+              = hidden_field_tag 'anchor', 'goal'
+              = form.button :submit, t('.submit'), class:'btn btn-medium', id: 'goal-save'

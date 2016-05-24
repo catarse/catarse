@@ -173,8 +173,8 @@ class Project < ActiveRecord::Base
   ##validation for all states
   validates_presence_of :name, :user, :category, :service_fee
   validates_length_of :headline, maximum: HEADLINE_MAXLENGTH
-  validates_numericality_of :online_days, less_than_or_equal_to: 60, greater_than: 1,
-    if: ->(p){ p.online_days.present? && ( p.online_days_was.nil? || p.online_days_was <= 60 ) }
+  validates_numericality_of :online_days, less_than_or_equal_to: 60, greater_than_or_equal_to: 1,
+    if: ->(p){ !p.is_flexible? && p.online_days.present? && ( p.online_days_was.nil? || p.online_days_was <= 60 ) }
   validates_numericality_of :goal, greater_than: 9, allow_blank: true
   validates_numericality_of :service_fee, greater_than: 0, less_than_or_equal_to: 1
   validates_uniqueness_of :permalink, case_sensitive: false
