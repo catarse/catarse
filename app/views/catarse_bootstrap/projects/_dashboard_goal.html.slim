@@ -94,7 +94,8 @@
                 .fee-explanation.u-margintop-30.div-display-none.w-hidden
                   .u-marginbottom-30
                     .fontsize-small.fontweight-semibold Taxas do Catarse
-                    .fontsize-smaller É o valor que será descontado da sua arrecadação ao final da campanha, referente aos serviços do Catarse e do meio de pagamento. Se o seu projeto atingir ou ultrapassar a meta, serão cobrados 13% do total arrecadado ao final da campanha. Caso o seu projeto não atinja a meta, todo o dinheiro apoiado será devolvido aos seus apoiadores após o término da campanha, sem custo nenhum a você. É Tudo ou Nada!
+                    .aon-fee.fontsize-smaller[class="#{@project.is_flexible? ? 'w-hidden' : ''}"] É o valor que será descontado da sua arrecadação ao final da campanha, referente aos serviços do Catarse e do meio de pagamento. Se o seu projeto atingir ou ultrapassar a meta, serão cobrados 13% do total arrecadado ao final da campanha. Caso o seu projeto não atinja a meta, todo o dinheiro apoiado será devolvido aos seus apoiadores após o término da campanha, sem custo nenhum a você. É Tudo ou Nada!
+                    .flex-fee.fontsize-smaller[class="#{@project.is_flexible? ? '' : 'w-hidden'}"] É o valor que será descontado da sua arrecadação ao final da campanha, referente aos serviços do Catarse e do meio de pagamento. Serão cobrados 13% do total arrecadado ao final da campanha, independente se a meta for atingida ou não.
                   .u-text-center.u-margintop-30
                     .divider.u-marginbottom-20
                     .fontsize-base Quer entender mais?

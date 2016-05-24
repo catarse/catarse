@@ -20,6 +20,8 @@ App.addChild('DashboardGoal', {
       this.$('.aon-days input').prop('disabled', false);
       this.$('.flex-days').hide();
       this.$('.aon-days').show();
+      this.$('.flex-fee').hide();
+      this.$('.aon-fee').show();
       this.$('.choose-aon').addClass('selected');
       this.$('.choose-flex').removeClass('selected');
     }
@@ -28,6 +30,8 @@ App.addChild('DashboardGoal', {
       this.$('.aon-days input').prop('disabled', true);
       this.$('.flex-days').show();
       this.$('.aon-days').hide();
+      this.$('.flex-fee').show();
+      this.$('.aon-fee').hide();
       this.$('.choose-flex').addClass('selected');
       this.$('.choose-aon').removeClass('selected');
     }
