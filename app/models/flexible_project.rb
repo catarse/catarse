@@ -26,4 +26,13 @@ class FlexibleProject < Project
     end
   end
 
+  def update_expires_at
+    return if !(self.online_days.present? && self.online_at.present?)
+    self.expires_at = (((self.state_was == 'online') ? Time.current : self.online_at.in_time_zone) + self.online_days.days).end_of_day
+  end
+
+  def can_show_account_link?
+    true
+  end
+
 end

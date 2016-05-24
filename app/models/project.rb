@@ -212,7 +212,7 @@ class Project < ActiveRecord::Base
   end
 
   def can_show_account_link?
-    is_flexible? || (['online', 'waiting_funds', 'successful', 'approved'].include? state)
+    ['online', 'waiting_funds', 'successful', 'approved'].include? state
   end
 
   def can_show_preview_link?
@@ -357,7 +357,7 @@ class Project < ActiveRecord::Base
 
   def update_expires_at
     if self.online_days.present? && self.online_at.present?
-      self.expires_at = ((is_flexible? ? Time.current : self.online_at.in_time_zone) + self.online_days.days).end_of_day
+      self.expires_at = (self.online_at.in_time_zone + self.online_days.days).end_of_day
     end
   end
 
