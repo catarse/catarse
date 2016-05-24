@@ -276,7 +276,7 @@ RSpec.describe UsersController, type: :controller do
     end
 
     it "should set referral session" do
-      expect(session[:referral_link]).to eq 'test'
+      expect(cookies[:referral_link]).to eq 'test'
     end
   end
 end
