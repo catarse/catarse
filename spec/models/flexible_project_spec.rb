@@ -12,6 +12,10 @@ RSpec.describe FlexibleProject, type: :model do
   describe "validations" do
     subject { flexible_project }
 
+    it{ is_expected.to allow_value(1).for(:online_days) }
+    it{ is_expected.not_to allow_value(0).for(:online_days) }
+    it{ is_expected.not_to allow_value(400).for(:online_days) }
+    it{ is_expected.to allow_value(61).for(:online_days) }
     it{ is_expected.to validate_presence_of :name }
   end
 
