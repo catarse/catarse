@@ -1,6 +1,4 @@
 - if @project.draft?
-   = link_to t('.send'), send_to_analysis_project_path(@project), class: 'btn btn-medium'
-- if @project.approved?
    = link_to validate_publish_project_path(@project), class: 'btn btn-medium' do
     = t('.publish')
     | &nbsp;&nbsp;

@@ -70,17 +70,18 @@ RSpec.describe AonProjectMachine, type: :model do
       end
 
       context "draft can go to in_analysis, rejected and deleted only" do
-        %i(draft online approved successful waiting_funds).each do |state|
+        %i(draft approved successful waiting_funds).each do |state|
           it "can't transition from draft to #{state}" do
             expect(subject.transition_to(state, {to_state: state})).to eq(false)
           end
         end
 
-        context "in_analysis transaction" do 
+        context "valid transaction" do 
           context "when is a valid project" do
             it_should_behave_like "valid rejected project transaction"
             it_should_behave_like "valid deleted project transaction"
             it_should_behave_like "valid in_analysis project transaction"
+            it_should_behave_like "valid online project transaction"
           end
 
           context "when is a invalid project" do
