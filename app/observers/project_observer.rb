@@ -2,6 +2,11 @@ class ProjectObserver < ActiveRecord::Observer
   observe :project
 
   def before_save(project)
+    if project.is_flexible? && project.mode_was == 'aon' && (project.state.in? ['in_analysis', 'approved'])
+      project.state = 'draft'
+      project.project_transitions.destroy_all
+    end
+
     if project.try(:online_days_changed?) || project.try(:expires_at).nil?
       project.update_expires_at
     end
