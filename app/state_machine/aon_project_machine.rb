@@ -8,7 +8,7 @@ class AonProjectMachine < FlexProjectMachine
     state :approved
 
     transition from: :rejected, to: %i(draft deleted)
-    transition from: :draft, to: %i(rejected deleted in_analysis)
+    transition from: :draft, to: %i(rejected deleted in_analysis online)
     transition from: :in_analysis, to: %i(approved rejected draft deleted)
     transition from: :approved, to: %i(online in_analysis)
     transition from: :online, to: %i(waiting_funds successful failed)

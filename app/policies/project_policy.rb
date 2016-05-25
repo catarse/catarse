@@ -35,11 +35,11 @@ class ProjectPolicy < ApplicationPolicy
   end
 
   def publish?
-    create? && record.approved?
+    done_by_owner_or_admin?
   end
 
   def validate_publish?
-    create? && record.approved?
+    done_by_owner_or_admin?
   end
 
   def permitted_attributes
