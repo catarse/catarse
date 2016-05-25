@@ -6,7 +6,12 @@ App.addChild('Contribution', {
     'click .submit-form' : 'submitForm',
     'keyup .user-reward-value' : 'submitOnReturnKey',
     'click .user-reward-value' : 'clearOnFocus',
-    'input #contribution_value' : 'restrictChars'
+    'input #contribution_value' : 'restrictChars',
+    'change input.back-reward-radio-button': 'rewardChange'
+  },
+
+  rewardChange: function(event) {
+    CatarseAnalytics.event({cat:"contribution_create",act:"contribution_reward_change",lbl:this.minimumValue()});
   },
 
   restrictChars: function(event){
@@ -23,16 +28,18 @@ App.addChild('Contribution', {
 
   submitForm: function(event){
     var $target_row = $(event.target).parents('.back-reward-money'),
-        user_value = this.$('.selected').find('.user-reward-value').val().replace(/\./g,'');
+        user_value = this.$('.selected').find('.user-reward-value').val().replace(/\./g,''),
+        minimumValue=this.minimumValue();
     if(user_value === ''){
-      this.$value.val(this.minimumValue());
+      this.$value.val(minimumValue);
     }else{
       this.$value.val(user_value);
     }
-    if(parseInt(user_value) < parseInt(this.minimumValue())){
+    if(parseInt(user_value) < parseInt(minimumValue)){
       $target_row.find('.user-reward-value').addClass('error');
       $target_row.find('.text-error').slideDown();
     }else{
+      CatarseAnalytics.event({cat:'contribution_create',act:'contribution_continue_click',lbl:minimumValue,val:minimumValue});
       this.$('form').submit();
     }
 
@@ -50,6 +57,7 @@ App.addChild('Contribution', {
     }
     // copy default value from rendered contribution
     $('.user-reward-value:first').val($('#contribution_value').val());
+    CatarseAnalytics.event({cat:'contribution_create',act:'contribution_started'});
   },
 
   activateFloattingHeader: function(){
@@ -136,6 +144,10 @@ App.addChild('FaqBox', {
     var $answer = $question.next();
     $question.toggleClass('open').toggleClass('alt-link');
     $answer.slideToggle('slow');
+
+    if($question.hasClass('open')) {//só vamos lançar o evento se abriu.
+      CatarseAnalytics.event({cat:"contribution_create",act:"contribution_info_click",lbl:$.trim($question.text())});
+    }
   },
 
   activate: function(){
