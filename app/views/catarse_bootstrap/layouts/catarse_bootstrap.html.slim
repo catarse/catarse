@@ -58,3 +58,6 @@ html
     = render 'layouts/hotjar'
     = render 'layouts/optinmonster'
   = render 'layouts/google_translate'
+  - if content_for? :js_after
+    /page specific JS files
+    = yield :js_after
