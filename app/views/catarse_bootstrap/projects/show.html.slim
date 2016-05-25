@@ -26,6 +26,9 @@
     meta property="fb:admins" content="#{admin}"
   link rel="canonical" href=request.original_url.split('?').first
 
+- content_for :tracker_snippet_html do
+  == @project.tracker_snippet_html
+
 = render 'shared/header_big'
 
 #project-show-root[data-mithril="ProjectsShow" data-parameters={project_id: @project.id, project_user_id: @project.user_id}.to_json data-stats=@project.to_analytics_json]

@@ -6,6 +6,14 @@
           .w-form
               = @project.display_errors(:basics)
               - if (current_user && current_user.admin?)
+                = form.input :tracker_snippet_html, as: :text, 
+                  wrapper: :two_columns,
+                  wrapper_class: 'w-row u-marginbottom-20 card card-terciary medium',
+                  label_wrapper_html: { class: 'w-col w-col-5' },
+                  text_field_wrapper_html: { class: 'w-col w-col-7' },
+                  input_html: { class: 'positive medium', required: true },
+                  validation_text: false
+
                 = form.input :user_id, as: :string, 
                   wrapper: :two_columns,
                   wrapper_class: 'w-row u-marginbottom-20 card card-terciary medium',
