@@ -101,7 +101,7 @@ class ProjectsController < ApplicationController
       resource.service_fee = permitted_params[:service_fee]
     end
 
-    should_show_modal = resource.mode == 'flex' && resource.online_days_changed?
+    should_show_modal = resource.online? && resource.mode == 'flex' && resource.online_days_changed?
 
 
     if resource.save(validate: should_validate)
@@ -214,7 +214,7 @@ class ProjectsController < ApplicationController
   end
 
   def permitted_params
-    require_model = resource.is_flexible? ? :flexible_project : :project
+    require_model = params.key?(:flexible_project) ? :flexible_project : :project
     params.require(require_model).permit(policy(resource).permitted_attributes)
   end
 

@@ -15,3 +15,9 @@
     .w-row
       .w-col.w-col-8.w-col-offset-2
         iframe src="#{payment.gateway_data["boleto_url"]}" width="100%" height="905px" frameborder="0" style="overflow: hidden;"
+- content_for :js_after do
+  javascript:
+    $(window).ready(function(){
+      //,project: # {@project.to_json.html_safe}
+      CatarseAnalytics.event({cat:'contribution_finish',act:'contribution_finished',lbl:'slip',val:#{@contribution.value}});
+    });

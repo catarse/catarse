@@ -11,6 +11,8 @@ class ProjectAccount < ActiveRecord::Base
 
   validates_presence_of :email, :address_street, :address_number, :address_city, :address_state, :address_zip_code, :phone_number, :bank, :agency, :account, :account_digit, :owner_name, :owner_document
 
+  validates_length_of :agency, minimum: 4
+
   def entity_type
     if owner_document
       owner_document.length > 14 ? 'Pessoa Jurídica' : 'Pessoa Física'

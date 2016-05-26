@@ -1,12 +1,18 @@
-= form.input :online_days,
-  type: 'number',
-  wrapper: :two_columns_with_postfix,
-  wrapper_class: 'w-row u-marginbottom-30 card card-terciary medium',
-  label_wrapper_html: { class: 'w-col w-col-5 w-subcol' },
-  text_field_wrapper_html: { class: 'w-col w-col-7' },
-  input_html: { class: 'prefix positive medium', required: false },
-  field_wrapper_html: { class: 'w-col w-col-8 w-col-small-6 w-col-tiny-6' },
-  validation_text: false,
-  append_text_wrapper_html: { class: 'w-col w-col-4 w-col-small-6 w-col-tiny-6 text-field postfix no-hover medium prefix-permalink' },
-  append_input_text: 'Dias',
-  append_input_text_wrapper_html: { class: 'fontsize-base lineheight-tightest' }
+.aon-days.card.medium.card-terciary.u-marginbottom-30[class="#{@project.is_flexible? ? 'w-hidden' : ''}"]
+  label.fontweight-semibold.fontsize-base  Tempo de arrecadação
+  .fontsize-small.u-marginbottom-60
+    | É o período em que o seu projeto estará no ar, aberto a captação de recursos. No Tudo ou Nada, você pode escolher entre 1 e 60 dias.&nbsp;
+    a.alt-link href=" http://suporte.catarse.me/hc/pt-br/articles/202457318" target="_blank" Saiba mais.
+  .w-row
+    .w-col.w-col-2
+    .w-col.w-col-8
+      .w-row
+        .w-col.w-col-8
+          = form.input :online_days,
+            type: 'number',
+            disabled: @project.is_flexible?,
+            input_html: { class: 'postfix positive medium', required: false},
+            validation_text: false, hint:  false, label: ''
+        .w-col.w-col-4
+          .text-field.medium.prefix-permalink.u-text-center
+            div dias

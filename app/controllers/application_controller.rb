@@ -25,8 +25,8 @@ class ApplicationController < ActionController::Base
 
   def referral
     {
-      ref: session[:referral_link],
-      domain: session[:origin_referral]
+      ref: cookies[:referral_link],
+      domain: cookies[:origin_referral]
     }
   end
 
@@ -48,14 +48,20 @@ class ApplicationController < ActionController::Base
   def referral_it!
     if request.env["HTTP_REFERER"] =~ /catarse\.me/
       # For local referrers we only want to store the first ref parameter
-      session[:referral_link] ||= params[:ref]
-      session[:origin_referral] ||= request.env["HTTP_REFERER"]
+      cookies[:referral_link] ||= build_cookie_structure(params[:ref])
+      cookies[:origin_referral] ||= build_cookie_structure(request.env["HTTP_REFERER"])
     else
       # For external referrers should always overwrite referral_link
-      session[:referral_link] = params[:ref] || session[:referral_link]
-      session[:origin_referral] = request.env["HTTP_REFERER"] || session[:origin_referral]
+      cookies[:referral_link] = build_cookie_structure((params[:ref] || cookies[:referral_link]))
+      cookies[:origin_referral] = build_cookie_structure((request.env["HTTP_REFERER"] || cookies[:origin_referral]))
     end
+  end
 
+  def build_cookie_structure(value)
+    {
+      value: value,
+      expires: 1.week.from_now
+    }
   end
 
   # Used on external services and generic email

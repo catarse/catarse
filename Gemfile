@@ -60,7 +60,7 @@ gem 'pundit'
 gem 'json_web_token'
 
 # Email marketing
-gem 'catarse_monkeymail', '>= 0.1.6'
+gem 'catarse_monkeymail', '>= 0.1.7'
 gem 'gridhook'
 
 # HTML manipulation and formatting

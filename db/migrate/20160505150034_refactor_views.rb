@@ -1,6 +1,7 @@
 class RefactorViews < ActiveRecord::Migration
   def change
     execute <<-SQL
+SET STATEMENT_TIMEOUT TO 0;
     CREATE OR REPLACE FUNCTION state_order(project_id integer) RETURNS project_state_order
         LANGUAGE sql STABLE
         AS $_$
@@ -340,7 +341,7 @@ class RefactorViews < ActiveRecord::Migration
 
       GRANT SELECT ON "1".category_totals TO admin, anonymous, web_user;
 
-      DROP MATERIALIZED VIEW "1".successful_projects;
+      DROP MATERIALIZED VIEW IF EXISTS "1".successful_projects;
       CREATE MATERIALIZED VIEW "1".successful_projects AS
         SELECT p.id AS project_id,
       p.category_id,

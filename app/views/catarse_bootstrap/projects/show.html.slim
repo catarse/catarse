@@ -26,6 +26,9 @@
     meta property="fb:admins" content="#{admin}"
   link rel="canonical" href=request.original_url.split('?').first
 
+- content_for :tracker_snippet_html do
+  == @project.tracker_snippet_html
+
 = render 'shared/header_big'
 
 #project-show-root[data-mithril="ProjectsShow" data-parameters={project_id: @project.id, project_user_id: @project.user_id}.to_json data-stats=@project.to_analytics_json]
@@ -35,7 +38,7 @@
   = javascript_include_tag "store"
   = javascript_include_tag "jquery"
   = javascript_include_tag "app/utils/mix_panel"
+  = javascript_include_tag "app/utils/analytics"
   = javascript_include_tag "lib/ui_helper"
 
 = render 'shared/footer_big'
-
