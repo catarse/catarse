@@ -39,8 +39,8 @@ App.addChild('DashboardUserSettings', {
       this.$(".user-document").fixedMask('99.999.999/9999-99');
     }
 
-    this.$(".project_account_owner_name > label:first-child").html(label_text);
-    this.$(".project_account_owner_document > label:first-child").html(document_label_text);
+    this.$("."+mode+"project_account_owner_name > label:first-child").html(label_text);
+    this.$("."+mode+"project_account_owner_document > label:first-child").html(document_label_text);
   }
 
 
