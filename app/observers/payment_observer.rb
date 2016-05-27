@@ -8,6 +8,10 @@ class PaymentObserver < ActiveRecord::Observer
 
   def from_pending_to_paid(payment)
     notify_confirmation(payment)
+    UserBroadcastWorker.perform_async(
+      follow_id: payment.user.id,
+      template_name: 'follow_contributed_project',
+      project_id: payment.project.id)
   end
 
   def from_paid_to_chargeback(payment)
@@ -60,6 +64,7 @@ class PaymentObserver < ActiveRecord::Observer
     contribution = payment.contribution
     contribution.notify_to_contributor(:confirm_contribution) unless payment.paid_at.present?
     project = contribution.project
+
 
     if project.expires_at.present? && (Time.current > project.expires_at  + 7.days) && User.where(email: ::CatarseSettings[:email_payments]).present?
       contribution.notify_to_backoffice(:payment_confirmed_after_project_was_closed)
