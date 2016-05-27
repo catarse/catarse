@@ -277,6 +277,10 @@ class User < ActiveRecord::Base
     contributions.where(project_id: project_id).where('contributions.was_confirmed').present?
   end
 
+  def followers
+    @followers ||= UserFollow.where(follow_id: id).where.not(user_id: id)
+  end
+
   def generate_reset_password_token
     raw, enc = Devise.token_generator.generate(self.class, :reset_password_token)
     self.reset_password_token   = enc
