@@ -123,7 +123,7 @@ Catarse::Application.routes.draw do
   get "/new-admin" => 'high_voltage/pages#show', id: 'new_admin'
   get "/explore" => 'high_voltage/pages#show', id: 'explore'
   get "/team" => 'high_voltage/pages#show', id: 'team'
-  get "/flex" => 'high_voltage/pages#show', id: 'flex'
+  get '/flex' => redirect('http://crowdfunding.catarse.me')
   get "/projects_dashboard" => 'high_voltage/pages#show', id: 'projects_dashboard'
 
 
