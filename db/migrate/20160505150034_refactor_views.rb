@@ -1,6 +1,7 @@
 class RefactorViews < ActiveRecord::Migration
   def change
     execute <<-SQL
+SET STATEMENT_TIMEOUT TO 0;
     CREATE OR REPLACE FUNCTION state_order(project_id integer) RETURNS project_state_order
         LANGUAGE sql STABLE
         AS $_$

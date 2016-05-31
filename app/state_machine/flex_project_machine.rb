@@ -99,6 +99,26 @@ class FlexProjectMachine
     transition from: :waiting_funds, to: %i(successful failed)
   end
 
+  def can_approve?
+    can_transition_to? :approved
+  end
+
+  def can_reject?
+    can_transition_to? :rejected
+  end
+
+  def can_push_to_draft?
+    can_transition_to? :draft
+  end
+
+  def can_push_to_trash?
+    can_transition_to? :deleted
+  end
+
+  def can_push_to_online?
+    can_transition_to? :online
+  end
+
   # put project into deleted state
   def push_to_trash
     transition_to :deleted, to_state: 'deleted'

@@ -38,7 +38,7 @@
         - if @project.published?
           #dashboard_posts.content.w-hidden data-page_title="#{t('.posts')}" data-page_subtitle=""
             = render 'dashboard_posts'
-        #dashboard_reward.content.w-hidden data-page_title=t(".#{@project.mode}.reward_html") data-page_subtitle=t(".#{@project.mode}.reward_subtitle")
+        #dashboard_reward.content.w-hidden data-page_title=t(".reward_html") data-page_subtitle=t(".reward_subtitle")
           = render 'dashboard_reward'
         - if @project.published?
           #dashboard_reports.content.w-hidden data-page_title="#{t('.reports')}" data-page_subtitle=""

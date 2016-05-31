@@ -79,7 +79,7 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
-    catarse_monkeymail (0.1.6)
+    catarse_monkeymail (0.1.7)
       mailchimp-api (~> 2.0.4)
       rails (>= 4.0.3)
       rails-observers
@@ -528,7 +528,7 @@ DEPENDENCIES
   browser
   capybara (~> 2.2.0)
   carrierwave!
-  catarse_monkeymail (>= 0.1.6)
+  catarse_monkeymail (>= 0.1.7)
   catarse_pagarme (~> 2.9.0)
   catarse_settings_db (>= 0.1.0)
   cocoon

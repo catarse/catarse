@@ -1,4 +1,4 @@
-#dashboard-user_settings-tab
+#dashboard-user_settings-tab data-mode="#{@project.mode}"
   - disable_edit = !policy(@project).update_account?
   = simple_form_for @project, defaults: {input_html: {disabled: disable_edit }, wrapper: :one_col, validation_text: false, label_wrapper_html: { class: 'w-col w-col-5 w-sub-col' } }, html: { id: 'project_account_form', class: 'w-form project-form refund_bank_account_form' } do |f|
     = hidden_field_tag :anchor, 'user_settings'
@@ -40,7 +40,7 @@
                     .w-row
                       .w-col.w-col-6.w-col-small-6.w-col-tiny-6.w-sub-col-middle
                         = form.input :agency, as: :string, 
-                        input_html: { class: 'positive' }
+                        input_html: { class: 'positive project_account_attributes_agency' }
                       .w-col.w-col-6.w-col-small-6.w-col-tiny-6.w-sub-col-middle
                         = form.input :agency_digit, as: :string, 
                         input_html: { class: 'positive' }

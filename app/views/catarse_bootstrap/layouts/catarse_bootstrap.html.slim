@@ -32,6 +32,8 @@ html
     - if request.subdomain.include? "beta"
       meta name="robots" content="noindex, nofollow"
     = render_google_analytics_script
+    - if content_for? :tracker_snippet_html
+      = yield :tracker_snippet_html
   
   body#catarse_bootstrap[data-controller-name=controller_name data-action=action_name data-user="#{current_user.try(:to_analytics_json)}" data-referral="#{session[:referral_link]}" data-id=params[:id] data-mobile=browser.mobile?.to_s itemscope itemtype="http://schema.org/WebPage" class="#{'body-alert' if can_display_pending_refund_alert?} #{content_for :body_class}"]
     - if CatarseSettings[:rd_token]
@@ -56,3 +58,6 @@ html
     = render 'layouts/hotjar'
     = render 'layouts/optinmonster'
   = render 'layouts/google_translate'
+  - if content_for? :js_after
+    /page specific JS files
+    = yield :js_after

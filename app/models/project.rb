@@ -214,7 +214,7 @@ class Project < ActiveRecord::Base
   end
 
   def can_show_account_link?
-    ['online', 'waiting_funds', 'successful', 'approved'].include? state
+    ['online', 'waiting_funds', 'successful', 'approved', 'draft'].include? state
   end
 
   def can_show_preview_link?

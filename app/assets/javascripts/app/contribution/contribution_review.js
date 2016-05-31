@@ -7,6 +7,15 @@ App.addChild('ReviewForm', _.extend({
     'change #contribution_country_id' : 'onCountryChange',
     'change #contribution_anonymous' : 'toggleAnonymousConfirmation',
     'click #next-step' : 'onNextStepClick',
+    'change input': 'inputChange',
+  },
+  address_br: true,
+
+
+  inputChange: function(event) {
+    if(event.target.id!=='contribution_country_id' && event.target.id!=='contribution_anonymous') {
+      CatarseAnalytics.oneTimeEvent({cat:'contribution_finish',act:this.address_br?'contribution_address_br':'contribution_address_int'});
+    }
   },
 
   onNextStepClick: function(){
@@ -17,6 +26,7 @@ App.addChild('ReviewForm', _.extend({
       this.$('input.error').removeClass('error');
       this.$('.text-error').hide();
       this.parent.payment.show();
+      CatarseAnalytics.event({cat:'contribution_finish',act:'contribution_next_click'});
     }
     else{
       this.$errorMessage.slideDown('slow');
@@ -25,10 +35,12 @@ App.addChild('ReviewForm', _.extend({
 
   toggleAnonymousConfirmation: function(){
     this.$('#anonymous-confirmation').slideToggle('slow');
+    CatarseAnalytics.event({cat:'contribution_finish',act:'contribution_anonymous_change'});
   },
 
   onCountryChange: function(){
-    if(this.$country.val() == '36'){
+    this.address_br = (this.$country.val() == '36');
+    if(this.address_br){
       this.nationalAddress();
     }
     else{
@@ -84,6 +96,7 @@ App.addChild('ReviewForm', _.extend({
     this.onCountryChange();
 
     this.$('input.required').prop('required', 'required');
+    //CatarseAnalytics.event({cat:'contribution_finish',act:'contribution_started'});
   },
 
   updateContribution: function(){
@@ -109,4 +122,3 @@ App.addChild('ReviewForm', _.extend({
   }
 
 }, Skull.Form));
-

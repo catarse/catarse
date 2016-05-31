@@ -35,11 +35,11 @@ class ProjectPolicy < ApplicationPolicy
   end
 
   def publish?
-    create? && record.approved?
+    done_by_owner_or_admin?
   end
 
   def validate_publish?
-    create? && record.approved?
+    done_by_owner_or_admin?
   end
 
   def permitted_attributes
@@ -68,7 +68,7 @@ class ProjectPolicy < ApplicationPolicy
       p_attr
     else
       [:about_html, :video_url, :uploaded_image, :headline, :budget,
-                 user_attributes, posts_attributes, budget_attributes, reward_attributes, account_attributes]
+                 user_attributes, posts_attributes, budget_attributes, reward_attributes]
     end
   end
 
