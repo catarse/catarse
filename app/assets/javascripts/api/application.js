@@ -29,6 +29,30 @@
     });
   }
 
+  var projectsHome = document.getElementById('project-index-root');
+
+  var wrap = function(component) {
+      return {
+        view: function(){
+            return m('#app', [
+                m.component(c.root.Menu),
+                component,
+                m.component(c.root.Footer)
+            ]);
+        }
+      };
+  };
+
+  if(projectsHome){
+      m.route.mode = 'pathname';
+
+      m.route(projectsHome, '/', {
+          '/': wrap(m.component(c.root.ProjectsHome)),
+          '/explore': wrap(m.component(c.root.ProjectsExplore)),
+          '/start': wrap(m.component(c.root.Start)),
+          '/:project': wrap(m.component(c.root.ProjectsHome))
+      });
+  }
   _.each(document.querySelectorAll('div[data-mithril]'), function(el){
     var component = c.root[el.attributes['data-mithril'].value],
         paramAttr = el.attributes['data-parameters'],
