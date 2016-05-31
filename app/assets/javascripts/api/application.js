@@ -33,11 +33,38 @@
 
   var wrap = function(component) {
       return {
-        view: function(){
+        controller: function() {
+            var attr = {},
+                projectParam = m.route.param('project_id'),
+                projectUserIdParam = m.route.param('project_user_id')
+                addToAttr = (newAttr) => {
+                    attr = _.extend({}, newAttr, attr);
+                };
+
+            m.redraw.strategy("diff");
+
+            if(projectParam) {
+                addToAttr({project_id: projectParam});
+            }
+
+            if(projectUserIdParam) {
+                addToAttr({project_user_id: projectUserIdParam});
+            }
+
+            if(_.contains(['/start', '/explore', '/'], m.route())) {
+                addToAttr({menuTransparency: true});
+                addToAttr({footerBig: true});
+            }
+
+            return {
+                attr: attr
+            };
+        },
+        view: function(ctrl){
             return m('#app', [
-                m.component(c.root.Menu),
-                component,
-                m.component(c.root.Footer)
+                m.component(c.root.Menu, ctrl.attr),
+                m.component(component, ctrl.attr),
+                m.component(c.root.Footer, ctrl.attr)
             ]);
         }
       };
@@ -47,10 +74,10 @@
       m.route.mode = 'pathname';
 
       m.route(projectsHome, '/', {
-          '/': wrap(m.component(c.root.ProjectsHome)),
-          '/explore': wrap(m.component(c.root.ProjectsExplore)),
-          '/start': wrap(m.component(c.root.Start)),
-          '/:project': wrap(m.component(c.root.ProjectsHome))
+          '/': wrap(c.root.ProjectsHome),
+          '/explore': wrap(c.root.ProjectsExplore),
+          '/start': wrap(c.root.Start),
+          '/:project': wrap(c.root.ProjectsShow)
       });
   }
   _.each(document.querySelectorAll('div[data-mithril]'), function(el){
