@@ -1,3 +1,6 @@
+- content_for :tracker_snippet_html do
+  == @project.tracker_snippet_html
+
 = render 'shared/header'
 - if @contribution.was_confirmed? || !@contribution.slip_payment?
   = render 'thank_you'
