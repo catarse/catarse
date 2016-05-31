@@ -23,6 +23,10 @@ RSpec.describe UserActionBroadcast, type: :model do
         c = create(:pending_contribution, project: project, user: user)
         c.payments.first
       end
+      let(:anon_payment) do
+        c = create(:pending_contribution, user: user, anonymous: true)
+        c.payments.first
+      end
 
       before { payment.pay }
 
@@ -34,6 +38,13 @@ RSpec.describe UserActionBroadcast, type: :model do
       end
 
       it "when made another paid contribution for same project" do
+        expect(UserFollowNotification.where(template_name: 'follow_contributed_project').count).to eq(2)
+        anon_payment.pay
+        expect(UserFollowNotification.where(template_name: 'follow_contributed_project').count).to eq(2)
+      end
+
+      it "when made anonymous contribution to another project" do
+
         expect(UserFollowNotification.where(template_name: 'follow_contributed_project').count).to eq(2)
         another_payment.pay
         expect(UserFollowNotification.where(template_name: 'follow_contributed_project').count).to eq(2)

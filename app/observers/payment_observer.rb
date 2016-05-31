@@ -11,7 +11,7 @@ class PaymentObserver < ActiveRecord::Observer
     UserBroadcastWorker.perform_async(
       follow_id: payment.user.id,
       template_name: 'follow_contributed_project',
-      project_id: payment.project.id)
+      project_id: payment.project.id) unless payment.anonymous
   end
 
   def from_paid_to_chargeback(payment)
