@@ -40,11 +40,15 @@ class ProjectObserver < ActiveRecord::Observer
   end
 
   def from_approved_to_online(project)
-    project.update_attributes({
+    project.update_attributes(
       audited_user_name: project.user.name,
       audited_user_cpf: project.user.cpf,
-      audited_user_phone_number: project.user.phone_number
-    })
+      audited_user_phone_number: project.user.phone_number)
+
+    UserBroadcastWorker.perform_async(
+      follow_id: project.user_id,
+      template_name: 'follow_project_online',
+      project_id: project.id)
 
     FacebookScrapeReloadWorker.perform_async(project.direct_url)
   end
