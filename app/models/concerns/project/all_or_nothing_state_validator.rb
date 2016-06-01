@@ -6,7 +6,7 @@ module Project::AllOrNothingStateValidator
   included do
     with_options if: ->(x) { x.mode == 'aon' } do |wg| 
       # Validation for in_analysis? only state
-      wg.with_options if: :in_analysis? do |wo|
+      wg.with_options if: :online? do |wo|
         wo.validates_presence_of :city
         wo.validates_length_of :name, maximum: Project::NAME_MAXLENGTH
       end
