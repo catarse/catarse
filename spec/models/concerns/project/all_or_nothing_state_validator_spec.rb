@@ -5,11 +5,11 @@ RSpec.describe Project::AllOrNothingStateValidator, type: :model do
   let(:project) { create(:project, state: project_state) }
   let!(:project_account) { create(:project_account, project: project) }
 
-  context "when project is going to in_analysis to end state" do
+  context "when project is going to online to end state" do
     subject { project }
 
-    context "in analysis validation" do
-      let(:project_state) { 'in_analysis' }
+    context "online validation" do
+      let(:project_state) { 'online' }
 
       it { is_expected.to validate_presence_of :city }
       it { is_expected.to validate_length_of(:name).is_at_most(Project::NAME_MAXLENGTH) }

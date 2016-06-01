@@ -144,8 +144,8 @@ RSpec.describe Project, type: :model do
     context "when project is not published" do
       let(:project) { create(:project, state: 'draft') }
 
-      it "should be validate size of name when project is in analysis" do
-        project.state = 'in_analysis'
+      it "should be validate size of name when project is online" do
+        project.state = 'online'
         project.name = 'l'*100
         expect(project.valid?).to eq(false)
 
