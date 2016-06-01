@@ -42,9 +42,9 @@ div[itemtype="http://schema.org/CreativeWork" class="#{defined?(wrapper_class) ?
                 = t('.remaining', count: @project.time_to_go[:time])
             - else
               .fontsize-smallest.lineheight-tight
-                | Prazo em
+                ' Iniciado há
                 br
-                | aberto
+                = "#{@project.elapsed_time[:time]}  #{@project.elapsed_time[:unit]}"
 
           - else
             .fontsize-smallest.lineheight-tight.fontweight-semibold.w-row 
