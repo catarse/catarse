@@ -7,6 +7,11 @@ var App = window.App = Skull.View.extend({
     "click a.mobile-menu-link" : "mobileMenu",
     "click .zendesk_widget" : "showWidget",
     "click #pg_search_submit" : "searchProject",
+    "click #header_login_btn": "header_login_btnClick"
+  },
+
+  header_login_btnClick: function() {
+    CatarseAnalytics.oneTimeEvent({cat:'account_login',act:'login_headerbtn_click'});
   },
 
   openAlert: function(){

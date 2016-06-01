@@ -3,7 +3,7 @@
 .w-section
   .w-container
     = render 'devise/shared/header'     
-    .w-row
+    #login.w-row
       .w-col.w-col-6.box-login.w-col-push-3
         .fontweight-semibold.u-text-center.fontsize-large.u-marginbottom-30= t '.titles.header'
         .login-fb
@@ -14,7 +14,7 @@
           = simple_form_for resource, as: resource_name, url: session_path(resource_name), html: {novalidate: true}, class: 'email-form' do |form|
             = render 'devise/shared/alert'
             = form.input :email, as: :email, label: t('.email'), input_html: { class: 'w-input text-field' }, required: false
-            = link_to t('.links.forgot_password'), new_password_path(resource_name), class: 'fontsize-smallest link-hidden fontcolor-secondary u-right'
+            = link_to t('.links.forgot_password'), new_password_path(resource_name), class: 'fontsize-smallest link-hidden fontcolor-secondary u-right', id: 'forgot_password'
             = form.input :password, as: :password, label: t('.form.inputs.password'), input_html: { class: 'w-input text-field' }
             .u-marginbottom-20
               = form.input_field :remember_me, as: :boolean, boolean_style: :inline, class: 'checkbox-fix', checked: true
@@ -26,5 +26,4 @@
                 .devise-opt
                   .lineheight-tight.fontsize-small
                     .fontcolor-secondary=>t ('.no_account_html')
-                    = link_to t('.links.register'), new_user_registration_path, class: 'alt-link fontweight-semibold'
-
+                    = link_to t('.links.register'), new_user_registration_path, class: 'alt-link fontweight-semibold', id:'signup'
