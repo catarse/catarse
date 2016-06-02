@@ -285,6 +285,11 @@ FactoryGirl.define do
     f.payment_method "CartaoDeCredito"
   end
 
+  factory :user_follow do |f|
+    f.association :user
+    f.association :follow, factory: :user
+  end
+
   factory :payment_notification do |f|
     f.association :contribution, factory: :contribution
     f.extra_data {}

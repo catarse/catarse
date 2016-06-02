@@ -12,12 +12,12 @@ class ProjectDecorator < Draper::Decorator
     end
   end
 
+  def elapsed_time
+    get_interval_from_db "elapsed_time_json"
+  end
+
   def time_to_go
-    time_json = source.pluck_from_database("remaining_time_json")
-    {
-      time: time_json.try(:[], 'total'),
-      unit: pluralize_without_number(time_json.try(:[], 'total'), I18n.t("datetime.prompts.#{time_json.try(:[], 'unit')}").downcase)
-    }
+    get_interval_from_db "remaining_time_json"
   end
 
   def display_status
@@ -108,6 +108,14 @@ class ProjectDecorator < Draper::Decorator
   end
 
   private
+
+  def get_interval_from_db(column)
+    time_json = source.pluck_from_database(column)
+    {
+      time: time_json.try(:[], 'total'),
+      unit: pluralize_without_number(time_json.try(:[], 'total'), I18n.t("datetime.prompts.#{time_json.try(:[], 'unit')}").downcase)
+    }
+  end
 
   def use_uploaded_image(version)
     source.uploaded_image.send(version).url if source.uploaded_image.present?

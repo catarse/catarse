@@ -42,7 +42,9 @@ class User < ActiveRecord::Base
   has_one :user_total
   has_one :user_credit
   has_one :bank_account, dependent: :destroy
+  has_many :user_friends
   has_many :feeds, class_name: 'UserFeed'
+  has_many :follows, class_name: 'UserFollow'
   has_many :credit_cards
   has_many :project_accounts
   has_many :authorizations
@@ -108,6 +110,10 @@ class User < ActiveRecord::Base
 
   def self.find_active!(id)
     self.active.where(id: id).first!
+  end
+
+  def has_fb_auth?
+    @has_fb_auth ||= authorizations.facebook.exists?
   end
 
   # Return the projects that user has pending refund payments
@@ -269,6 +275,10 @@ class User < ActiveRecord::Base
 
   def has_valid_contribution_for_project?(project_id)
     contributions.where(project_id: project_id).where('contributions.was_confirmed').present?
+  end
+
+  def followers
+    @followers ||= UserFollow.where(follow_id: id).where.not(user_id: id)
   end
 
   def generate_reset_password_token

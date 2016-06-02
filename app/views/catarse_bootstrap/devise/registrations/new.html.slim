@@ -3,7 +3,7 @@
 .w-section
   .w-container
     = render 'devise/shared/header'     
-    .w-row
+    #signup.w-row
       .w-col.w-col-6.box-login.w-col-push-3
         .fontweight-semibold.u-text-center.fontsize-large.u-marginbottom-30= t '.titles.header'
         .login-fb
@@ -26,6 +26,6 @@
                 .devise-opt
                   .lineheight-tight.fontsize-small
                     .fontcolor-secondary=> t '.have_account_html'
-                    = link_to t('.links.login'), new_user_session_path, class: 'link alt-link fontweight-semibold'            
+                    = link_to t('.links.login'), new_user_session_path, class: 'link alt-link fontweight-semibold', id:'login'
         .fontsize-smallest.u-text-center.u-marginbottom-30
           = t(".form.labels.accept", terms_url: CatarseSettings[:terms_url], privacy_url: CatarseSettings[:privacy_url]).html_safe

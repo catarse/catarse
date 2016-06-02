@@ -1,0 +1,37 @@
+- user_follow = @notification.user_follow
+- follow = user_follow.follow
+- metadata = ActiveSupport::JSON.decode(@notification.metadata)
+- project = Project.find metadata['project_id']
+
+center
+  = image_tag follow.display_image, width: '50px', style: 'border-radius: 50px;'
+  h2 style="line-height: 5px"= follow.name
+  h3 style="font-weight: 500;"= "acabou de apoiar um projeto de #{project.category}"
+
+br/
+
+center
+  table style="border-spacing: 10px; width: 405px;"
+    tbody
+      tr
+        td width="150px"
+          = link_to(image_tag(project.display_image, width: '140px'), project_by_slug_url(project.permalink, ref: 'notificacao_follow_contributed_project'))
+        td
+          h2 style="line-height: 110%"= project.name
+          p= project.headline
+
+
+br/
+br/
+
+center
+  = link_to('Conheça o projeto', project_by_slug_url(project.permalink, ref: 'notificacao_follow_contributed_project'), style:'border: 1px solid #7cc142; border-radius: 5px; color: #fff; text-decoration: none; font-weight: bolder; text-align: center; padding: 19px 60px; background: #65bf1b; font-size: 15px;')
+
+br/
+br/
+br/
+br/
+
+center
+  = link_to('Não quero receber', follow_fb_friends_url(ref: 'notificacao_follow_published_project'))
+  | &nbsp; essa notificação

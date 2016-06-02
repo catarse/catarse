@@ -19,18 +19,18 @@ var CatarseAnalytics = window.CatarseAnalytics = {
         if (!eventObj) {
             return fn;
         }
-
-        var eventKey = _.compact([eventObj.cat,eventObj.act]).join('_');
-        if (!eventKey) {
-            throw new Error('Should inform cat or act');
+        try {
+          var eventKey = _.compact([eventObj.cat,eventObj.act]).join('_');
+          if (!eventKey) {
+              throw new Error('Should inform cat or act');
+          }
+          if (!this._analyticsOneTimeEventFired[eventKey]) {
+              //console.log('oneTimeEvent',eventKey);
+              this._analyticsOneTimeEventFired[eventKey] = true;
+              this.event(eventObj, fn);
+          }
+        } catch(e) {
+          console.error('[CatarseAnalytics.oneTimeEvent] error:',e);
         }
-        var _this=this;
-        return function() {
-            if (!_analyticsOneTimeEventFired[eventKey]) {
-                //console.log('oneTimeEvent',eventKey);
-                _analyticsOneTimeEventFired[eventKey] = true;
-                _this.event(eventObj, fn);
-            }
-        };
     },
 };
