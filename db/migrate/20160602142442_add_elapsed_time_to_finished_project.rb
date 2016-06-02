@@ -17,10 +17,10 @@ CREATE MATERIALIZED VIEW "1".finished_projects AS
     public.remaining_time_json(p.*) AS remaining_time,
     p.expires_at,
     COALESCE(( SELECT pt.pledged
-           FROM project_totals pt
+           FROM "1".project_totals pt
           WHERE (pt.project_id = p.id)), (0)::numeric) AS pledged,
     COALESCE(( SELECT pt.progress
-           FROM project_totals pt
+           FROM "1".project_totals pt
           WHERE (pt.project_id = p.id)), (0)::numeric) AS progress,
     s.acronym AS state_acronym,
     u.name AS owner_name,
@@ -62,10 +62,10 @@ CREATE MATERIALIZED VIEW "1".finished_projects AS
     public.remaining_time_json(p.*) AS remaining_time,
     p.expires_at,
     COALESCE(( SELECT pt.pledged
-           FROM project_totals pt
+           FROM "1".project_totals pt
           WHERE (pt.project_id = p.id)), (0)::numeric) AS pledged,
     COALESCE(( SELECT pt.progress
-           FROM project_totals pt
+           FROM "1".project_totals pt
           WHERE (pt.project_id = p.id)), (0)::numeric) AS progress,
     s.acronym AS state_acronym,
     u.name AS owner_name,
