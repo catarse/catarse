@@ -36,7 +36,8 @@
         controller: function() {
             var attr = {},
                 projectParam = m.route.param('project_id'),
-                projectUserIdParam = m.route.param('project_user_id')
+                projectUserIdParam = m.route.param('project_user_id'),
+                rewardIdParam = m.route.param('reward_id'),
                 addToAttr = (newAttr) => {
                     attr = _.extend({}, newAttr, attr);
                 };
@@ -51,7 +52,11 @@
                 addToAttr({project_user_id: projectUserIdParam});
             }
 
-            if(_.contains(['/start', '/explore', '/'], m.route())) {
+            if(rewardIdParam) {
+                addToAttr({reward_id: rewardIdParam});
+            }
+
+            if(_.contains(['/start', '/explore',  '/', '/pt', '/pt/start', '/pt/explore'], m.route())) {
                 addToAttr({menuTransparency: true});
                 addToAttr({footerBig: true});
             }
@@ -77,6 +82,11 @@
           '/': wrap(c.root.ProjectsHome),
           '/explore': wrap(c.root.ProjectsExplore),
           '/start': wrap(c.root.Start),
+          '/contribution': wrap(c.root.ProjectsPayment),
+          '/pt': wrap(c.root.ProjectsHome),
+          '/pt/explore': wrap(c.root.ProjectsExplore),
+          '/pt/start': wrap(c.root.Start),
+          '/pt/:project': wrap(c.root.ProjectsShow),
           '/:project': wrap(c.root.ProjectsShow)
       });
   }

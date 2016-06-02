@@ -31,6 +31,7 @@ SET STATEMENT_TIMEOUT TO 0;
     c.name AS city_name,
     p.full_text_index,
     is_current_and_online(p.expires_at, p.state::text) AS open_for_contributions,
+    elapsed_time_json(p.*) AS elapsed_time,
     p.user_id AS project_user_id
    FROM projects p
      JOIN users u ON p.user_id = u.id
