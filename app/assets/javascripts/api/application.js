@@ -84,6 +84,7 @@
           '/start': wrap(c.root.Start),
           '/projects/:project_id/contribution': wrap(c.root.ProjectsReward),
           '/projects/:project_id/payment': wrap(c.root.ProjectsPayment),
+          '/contribution': wrap(c.root.ProjectsPayment),
           '/pt': wrap(c.root.ProjectsHome),
           '/pt/explore': wrap(c.root.ProjectsExplore),
           '/pt/start': wrap(c.root.Start),
