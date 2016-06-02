@@ -572,7 +572,7 @@ DEPENDENCIES
   pry
   pundit
   rack-mini-profiler
-  rails (~> 4.1.14.1)
+  rails (~> 4.1.14.2)
   rails-erd
   rails-observers
   rails_12factor
