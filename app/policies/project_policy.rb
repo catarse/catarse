@@ -67,7 +67,7 @@ class ProjectPolicy < ApplicationPolicy
 
       p_attr
     else
-      [:about_html, :video_url, :uploaded_image, :headline, :budget,
+      [:about_html, :video_url, :uploaded_image, :headline, :budget, :city_id, :city,
                  user_attributes, posts_attributes, budget_attributes, reward_attributes]
     end
   end
