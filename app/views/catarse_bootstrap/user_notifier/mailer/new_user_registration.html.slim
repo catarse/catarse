@@ -2,10 +2,10 @@
 
 h2 style="text-align:center; line-height: 45px;"
   | Olá
-- if user.name
+  - if user.name
     | , #{user.name}!
-   br/
-   br/
+    br/
+    br/
     | Bem-vindo ao Catarse! Lembrando que seu email de acesso é: #{user.email} .
 br/
 br/
@@ -14,14 +14,8 @@ br/
 center
   = link_to explore_url, target: '__blank' do
     = image_tag "#{CatarseSettings[:base_url]}/assets/catarse_bootstrap/botao_bemvindo_PT_big.png"
-
-
 br
 br
 | Abraços,
 br
 = CatarseSettings[:company_name]
-
-  
-
-
