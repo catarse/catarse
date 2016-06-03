@@ -42,6 +42,20 @@ pt:
         select: "Selecione uma opção"
         traffic_sources: "Como você conheceu o Catarse?"
     hints:
+      flexible_project:
+        select: "Selecione uma opção"
+        traffic_sources: "Como você conheceu o Catarse?"
+        name: "Dê um nome que as pessoas se lembrem facilmente. Não ultrapasse 50 caracteres."
+        all_tags: "Informe tags separadas por vírgula"
+        permalink: "Você pode editá-lo até o projeto ir ao ar. Prefira algo simples, direto e que identifique bem seu projeto. Tente não usar hífen, underline etc."
+        category: "Escolha a mais adequada ao seu projeto."
+        city: "Onde o seu projeto será realizado? Caso ele aconteça em mais de um lugar, uma dica é colocar a cidade onde sua rede de potenciais apoiadores é maior."
+        goal: "Planeje uma meta coerente com o que seu projeto propõe. Revise seu orçamento e não esqueça de incluir a taxa de 13% cobrada pelo Catarse."
+        online_days: "Você pode escolher entre 1 e 60 dias para a sua campanha. Confira o guia dos realizadores para dicas sobre prazos."
+        video_url: "Link do seu vídeo no Vimeo ou <br/> Youtube."
+        about_html: "Fale com paixão e clareza sobre o que será realizado. Esclareça possíveis dúvidas sobre como o dinheiro será utilizado, quem está por trás do projeto, como e quando o projeto será entregue. Transparência atrai mais apoiadores. Lembre-se: seu projeto será acessado por pessoas comuns que decidirão se querem ou não apoiar seu projeto. Capriche! "
+        headline: "Frase no card do projeto para chamar apoiadores. Deve ter no máximo 100 caracteres e resumir bem o projeto."
+        uploaded_image: "Essa imagem será utilizada como a miniatura de seu projeto (PNG, JPG tamanho 600 x 340)"
       project:
         select: "Selecione uma opção"
         traffic_sources: "Como você conheceu o Catarse?"
@@ -56,4 +70,3 @@ pt:
         about_html: "Fale com paixão e clareza sobre o que será realizado. Esclareça possíveis dúvidas sobre como o dinheiro será utilizado, quem está por trás do projeto, como e quando o projeto será entregue. Transparência atrai mais apoiadores. Lembre-se: seu projeto será acessado por pessoas comuns que decidirão se querem ou não apoiar seu projeto. Capriche! "
         headline: "Frase no card do projeto para chamar apoiadores. Deve ter no máximo 100 caracteres e resumir bem o projeto."
         uploaded_image: "Essa imagem será utilizada como a miniatura de seu projeto (PNG, JPG tamanho 600 x 340)"
-
