@@ -98,7 +98,6 @@ FactoryGirl.define do
     f.goal 10000
     f.online_days 5
     f.more_links 'Ipsum dolor'
-    f.first_contributions 'Foo bar'
     f.video_url 'http://vimeo.com/17298435'
     f.state 'online'
     f.budget '1000'
