@@ -1,6 +1,7 @@
 var CatarseAnalytics = window.CatarseAnalytics = (function(){
-  var _apiHost;
+  var _apiHost,_user,_project;
   var _analyticsOneTimeEventFired={};
+  //Metodos semelhantes ao modulo "h"
   function _getApiHost() {
     if(_apiHost)
       return _apiHost;
@@ -8,15 +9,31 @@ var CatarseAnalytics = window.CatarseAnalytics = (function(){
     var el=document.getElementById('api-host');
     return _apiHost = el && el.getAttribute('content');
   }
+  function _getUser() {
+    if(_user)
+      return _user;
+
+    var body = document.getElementsByTagName('body'),
+        data = _.first(body).getAttribute('data-user');
+    return _user=data;
+  }
+  function _getProject() {
+    if(_project)
+      return _project;
+    var el = document.getElementById('project-show-root'),//pode não existir
+        data = el && _.first(el).getAttribute('data-parameters');
+    return _project=data;
+  }
 
   function _event(eventObj, fn) {
     if (eventObj) {
       try {
-        var project = eventObj.project,
-            user = eventObj.user;
-        var dataProject = project&&project.id ? {
+        var project = eventObj.project||_getProject(),
+            user = _getUser();
+        var dataProject = project&&(project.id||project.project_id) ? {
           project: {
-            id: project.id,
+            id: project.id||project.project_id,
+            user_id: project.user_id||project.project_user_id,
             category_id: project.category_id,
             state: project.address && project.address.state_acronym,
             city: project.address && project.address.city
@@ -36,21 +53,40 @@ var CatarseAnalytics = window.CatarseAnalytics = (function(){
         var gaTracker = ga && ga.getAll && !_.isEmpty(ga.getAll()) ? _.first(ga.getAll()) : null;
 
         try {
-          var sendData = {event: _.extend({},data, {
-            category: eventObj.cat,
-            action: eventObj.act,
-            label: eventObj.lbl,
-            value: eventObj.val,
-            request: {
-              referrer: document.referrer||undefined,
-              protocol: location.protocol.substr(0,location.protocol.length-1),
-              domain: domain,
-              url: location.href.substr(domain.length)
+          var sendData = {
+            event: _.extend({},data, {
+              category: eventObj.cat,
+              action: eventObj.act,
+              label: eventObj.lbl,
+              value: eventObj.val,
+              request: {
+                referrer: document.referrer||undefined,
+                url: location.href,
+                protocol: location.protocol.substr(0,location.protocol.length-1),
+                hostname: location.hostname,
+                domain: domain,
+                pathname: location.pathname || location.href.substr(domain.length).replace(/[\?\#].*$/,''),
+                hash: location.hash.replace(/^\#/,''),
+                query: (function parseParams() {
+                    if(location.search) {
+                      try {
+                        return location.search.replace(/^\?/,'').split('&').reduce(function (params, param) {
+                            var paramSplit = param.split('=').map(function (value) {
+                                return decodeURIComponent(value.replace('+', ' '));
+                            });
+                            params[paramSplit[0]] = paramSplit[1];
+                            return params;
+                        }, {});
+                      } catch(e) {
+                        return location.search;
+                      }
+                    }
+                })()
+              }
             },
-            ga: gaTracker ? {
-              clientId: gaTracker.get('clientId')
-            } : null
-          })};
+            (gaTracker?{ga:{clientId: gaTracker.get('clientId')}}:null)
+            )
+          };
 
           $.ajax({
               type: "POST",
