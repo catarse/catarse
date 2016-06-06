@@ -5,6 +5,10 @@ class Authorization < ActiveRecord::Base
 
   validates_presence_of :oauth_provider, :user, :uid
 
+  scope :facebook, -> {
+    joins(:oauth_provider).where(oauth_providers: { name: 'facebook' })
+  }
+
   scope :from_hash, ->(hash){
     joins(:oauth_provider).
     where("oauth_providers.name = :name AND uid = :uid", {name: hash['provider'], uid: hash['uid']})

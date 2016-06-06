@@ -12,6 +12,10 @@ class UsersController < ApplicationController
     authorize resource, :update?
   end
 
+  def follow_fb_friends
+    authorize current_user, :update?
+  end
+
   def destroy
     authorize resource
     resource.deactivate

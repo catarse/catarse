@@ -1,0 +1,12 @@
+- content_for :title, "Siga seus amigos do facebook"
+- content_for :application_js do
+  = javascript_include_tag 'api/application'
+
+= render 'shared/header_big', overlayer: false
+
+#team-root[data-mithril="FollowFoundFriends" data-currentuserid=current_user.try(:id)]
+
+= render 'shared/footer_big'
+
+
+

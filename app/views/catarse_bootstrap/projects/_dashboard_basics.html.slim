@@ -75,7 +75,7 @@
                     label.field-label.fontsize-smallest.fontcolor-secondary=t('simple_form.hints.project.city')
                   .w-col.w-col-7
                     = text_field_tag :city_name, ( @project.city.show_name if @project.city ), class: 'string optional w-input text-field w-input text-field positive city-search-input', autocomplete: "off"
-                    input#project_city_id.w-hidden name="project[city_id]" type="text" value="#{@project.city.try(:id)}"/
+                    input#project_city_id.w-hidden name="#{@project.is_flexible? ? 'flexible_' : ''}project[city_id]" type="text" value="#{@project.city.try(:id)}"/
                     .table-outer.search-pre-result.w-hidden
 
     .w-section.save-draft-btn-section
