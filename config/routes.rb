@@ -6,7 +6,7 @@ Catarse::Application.routes.draw do
     {
       path: '',
       path_names:   { sign_in: :login, sign_out: :logout, sign_up: :sign_up },
-      controllers:  { omniauth_callbacks: :omniauth_callbacks, passwords: :passwords }
+      controllers:  { omniauth_callbacks: :omniauth_callbacks, passwords: :passwords, sessions: :sessions }
     }
   )
 
