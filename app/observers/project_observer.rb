@@ -40,6 +40,7 @@ class ProjectObserver < ActiveRecord::Observer
   end
 
   def from_approved_to_online(project)
+    project.update_expires_at
     project.update_attributes(
       audited_user_name: project.user.name,
       audited_user_cpf: project.user.cpf,
