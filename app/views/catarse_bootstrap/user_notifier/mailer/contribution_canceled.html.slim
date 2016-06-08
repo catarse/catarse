@@ -5,7 +5,7 @@
 |Olá, <strong>#{contribution.user.display_name}</strong>!
 br
 br
-| Vimos que você tentou apoiar o projeto #{link_to contribution.project.name, project_by_slug_url(permalink: contribution.project.permalink, ref: 'notificacao_cancelado')},mas não conseguimos processar o pagamento do seu apoio. 
+| Vimos que você tentou apoiar o projeto #{link_to contribution.project.name, project_by_slug_url(contribution.project.permalink, {ref: 'notificacao_cancelado',utm_source:'notification',utm_medium:'email',utm_campaign:'contribution_canceled_link',utm_content:contribution.project.name})}, mas não conseguimos processar o pagamento do seu apoio. 
 br
 br
 p Você poderia tentar apoiar novamente? Para isso temos algumas sugestões:
