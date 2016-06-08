@@ -39,7 +39,9 @@ class ProjectObserver < ActiveRecord::Observer
   def from_waiting_funds_to_successful(project)
     notify_admin_that_project_is_successful(project)
     notify_users(project)
+    project.notify_owner(:project_success)
   end
+  alias :from_online_to_successful :from_waiting_funds_to_successful
 
   def from_approved_to_online(project)
     project.update_expires_at
