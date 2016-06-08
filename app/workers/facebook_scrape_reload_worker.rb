@@ -1,6 +1,6 @@
 class FacebookScrapeReloadWorker
   include Sidekiq::Worker
-  sidekiq_options retry: false
+  sidekiq_options retry: false, queue: 'actions'
 
   def perform(url)
     Typhoeus.post(url, params: {
