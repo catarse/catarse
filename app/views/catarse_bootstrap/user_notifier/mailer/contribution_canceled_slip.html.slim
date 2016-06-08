@@ -4,7 +4,7 @@
 
 p Olá, <strong>#{contribution.user.display_name}</strong>!
 p
-  | Não recebemos a confirmação de pagamento do boleto gerado para o projeto #{link_to contribution.project.name, project_by_slug_url(permalink: contribution.project.permalink, ref: 'notificacao_cancelado')}.
+  | Não recebemos a confirmação de pagamento do boleto gerado para o projeto #{link_to contribution.project.name, project_by_slug_url(contribution.project.permalink, {ref: 'notificacao_cancelado',utm_source:'notification',utm_medium:'email',utm_campaign:'contribution_canceled_slip_link',utm_content:contribution.project.name})}.
 p Se você precisar de um prazo de vencimento maior, pode gerar sua segunda via aqui:
 center
   = link_to second_slip_project_contribution_url(contribution.project, contribution, host: CatarseSettings[:host]), target: '__blank' do

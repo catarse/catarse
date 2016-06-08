@@ -5,7 +5,7 @@
 |Olá, <strong>#{user.display_name}</strong>!
 br
 br
-| Este é o lembrete de que o projeto #{link_to project.name, project_by_slug_url(project.permalink, ref: 'notificacao-reminder')} termina em 48 horas
+| Este é o lembrete de que o projeto #{link_to project.name, project_by_slug_url(project.permalink, {ref: 'notificacao-reminder', utm_source:'notification',utm_medium:'email',utm_campaign:'reminder_link',utm_content:project.name})} termina em 48 horas
 br
 | Agora é a hora de você fazer parte dessa campanha ;)
 br
