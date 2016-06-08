@@ -1,6 +1,6 @@
 class UserBroadcastWorker
   include Sidekiq::Worker
-  sidekiq_options retry: false
+  sidekiq_options retry: false, queue: 'actions'
 
   def perform(action_data = {})
     user = User.find action_data['follow_id']

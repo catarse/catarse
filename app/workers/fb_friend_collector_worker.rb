@@ -1,6 +1,6 @@
 class FbFriendCollectorWorker
   include Sidekiq::Worker
-  sidekiq_options retry: false
+  sidekiq_options retry: false, queue: 'actions'
 
   def perform(authorization_id)
     if auth = Authorization.find(authorization_id) #yep is assign ;)
