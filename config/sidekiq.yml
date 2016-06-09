@@ -1,1 +1,5 @@
-:concurrency: 6
+:concurrency: 8
+:queues:
+  - [actions, 3]
+  - default
+  - finisher

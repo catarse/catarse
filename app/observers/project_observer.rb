@@ -14,6 +14,8 @@ class ProjectObserver < ActiveRecord::Observer
     unless project.permalink.present?
       project.permalink = "#{project.name.parameterize.gsub(/\-/, '_')}_#{SecureRandom.hex(2)}"
     end
+
+   project.video_embed_url = nil unless project.video_url.present?
   end
 
   def after_save(project)
@@ -37,7 +39,9 @@ class ProjectObserver < ActiveRecord::Observer
   def from_waiting_funds_to_successful(project)
     notify_admin_that_project_is_successful(project)
     notify_users(project)
+    project.notify_owner(:project_success)
   end
+  alias :from_online_to_successful :from_waiting_funds_to_successful
 
   def from_approved_to_online(project)
     project.update_expires_at

@@ -6,14 +6,14 @@
   |Olá!
 br
 br
-' Verificamos que você iniciou um apoio para o projeto #{link_to contribution.project.name, project_by_slug_url(permalink: contribution.project.permalink, ref: 'notificacao_pending')},
+' Verificamos que você iniciou um apoio para o projeto #{link_to contribution.project.name, project_by_slug_url(contribution.project.permalink, {ref: 'notificacao_pending',utm_source:'notification',utm_medium:'email',utm_campaign:'pending_payment_link',utm_content:contribution.project.name})},
 |porém não chegou a concluí-lo.
 br
 br
 | O seu apoio é essencial e você pode juntar-se a outras #{contribution.project.total_contributors} pessoas para tornar esse projeto uma realidade.
 br
 br
-| #{ link_to "Faça agora sua contribuição de onde parou.", edit_project_contribution_url(project_id: contribution.project.id, id: contribution.id, ref: 'notification_pending') }
+| #{ link_to "Faça agora sua contribuição de onde parou.", edit_project_contribution_url(project_id: contribution.project.id, id: contribution.id, ref: 'notification_pending', utm_source:'notification',utm_medium:'email',utm_campaign:'Faça agora sua contribuição de onde parou') }
 br
 br
 | Caso o motivo para não ter concluído seu apoio foi algum problema técnico, recomendamos tentar novamente utilizando outro navegador.

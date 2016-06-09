@@ -13,13 +13,13 @@
           .w-col.w-col-6.w-col-small-6.w-col-tiny-6.w-sub-col-middle
             div
               img.icon-share-mobile alt="53a3f66e05eb6144171d8edb_facebook-xxl.png" src="http://uploads.webflow.com/54b440b85608e3f4389db387/53a3f66e05eb6144171d8edb_facebook-xxl.png" /
-              = link_to "http://www.facebook.com/share.php?u=#{project_by_slug_url(@project.permalink, {ref: 'ctrse_thankyou'})}", target: :_blank, id: 'facebook_share', data: { title: @project.name }, class: 'btn btn-medium btn-fb' do
+              = link_to "http://www.facebook.com/share.php?u=#{project_by_slug_url(@project.permalink, {ref: 'ctrse_thankyou',utm_source:'facebook.com',utm_medium:'social',utm_campaign:'thanks_share'})}", target: :_blank, id: 'facebook_share', data: { title: @project.name }, class: 'btn btn-medium btn-fb' do
                 = t('.share')
           .w-col.w-col-6.w-col-small-6.w-col-tiny-6
             div
               img.icon-share-mobile alt="53a3f65105eb6144171d8eda_twitter-256.png" src="http://uploads.webflow.com/54b440b85608e3f4389db387/53a3f65105eb6144171d8eda_twitter-256.png" /
               /a.btn.btn-medium.btn-tweet href="#"  Tweet
-              = link_to "http://twitter.com/?status=#{t('i_just_contributed', name: @project.name)} #{project_by_slug_url(@project.permalink, ref: 'ctrse_thankyou')}", target: :_blank, id: "twitter_share_button", data: { title: @project.name }, class: 'btn btn-medium btn-tweet' do
+              = link_to "http://twitter.com/?status=#{t('i_just_contributed', name: @project.name)} #{project_by_slug_url(@project.permalink, ref: 'ctrse_thankyou',utm_source:'twitter.com',utm_medium:'social',utm_campaign:'thanks_share')}", target: :_blank, id: "twitter_share_button", data: { title: @project.name }, class: 'btn btn-medium btn-tweet' do
                 = t('.tweet')
 
 - if @contribution.recommended_projects.exists?

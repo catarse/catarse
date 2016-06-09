@@ -35,6 +35,16 @@ RSpec.describe ProjectObserver do
   end
 
   describe "#before_save" do
+    context "when video_url changed" do
+      let(:project) { create(:project, video_url: 'https://www.youtube.com/watch?v=9QveBbn7t_c', video_embed_url: 'embed_url') }
+
+      it "should clean embed_url when video_is null" do
+        expect(project.video_embed_url.present?).to eq(true)
+        project.video_url = nil
+        project.save
+        expect(project.video_embed_url.present?).to eq(false)
+      end
+    end
     context "when project is new" do
       before do
         expect(project).to receive(:update_expires_at)
@@ -187,7 +197,11 @@ RSpec.describe ProjectObserver do
     end
 
     it "should create notification for admin" do
-      expect(ProjectNotification.where(template_name: 'redbooth_task', user: redbooth_user, project_id: project.id).count).not_to be_nil
+      expect(ProjectNotification.where(template_name: 'redbooth_task', user: redbooth_user, project_id: project.id).count).to eq(1)
+    end
+
+    it "should create notification for project owner" do
+      expect(ProjectNotification.where(template_name: 'project_success', user: project.user, project_id: project.id).count).to eq(1)
     end
   end
 end
