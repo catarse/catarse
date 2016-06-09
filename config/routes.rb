@@ -20,6 +20,8 @@ Catarse::Application.routes.draw do
   get '/thank_you' => "static#thank_you"
   get '/follow-fb-friends' => "users#follow_fb_friends"
 
+  get '/notifications/:notification_type/:notification_id' => 'notifications#show'
+
   filter :locale, exclude: /\/auth\//
 
   mount CatarsePagarme::Engine => "/", as: :catarse_pagarme
