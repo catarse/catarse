@@ -1,4 +1,5 @@
-var CatarseAnalytics = window.CatarseAnalytics = (function(){
+//evitamos criar duas vezes...
+window.CatarseAnalytics = window.CatarseAnalytics || (function(){
   var _apiHost,_user,_project;
   var _analyticsOneTimeEventFired={};
   //Metodos semelhantes ao modulo "h"
@@ -20,16 +21,18 @@ var CatarseAnalytics = window.CatarseAnalytics = (function(){
   function _getProject() {
     if(_project)
       return _project;
-    var el = document.getElementById('project-show-root'),//pode não existir
-        data = el && _.first(el).getAttribute('data-parameters');
-    return _project=data;
+    var el = document.getElementById('project-show-root')||document.getElementById('project-header'),//pode não existir
+        data = el && (el.getAttribute('data-parameters')||el.getAttribute('data-stats'));
+    if(data) {
+      return _project=data;
+    }//else return undefined
   }
 
   function _event(eventObj, fn) {
     if (eventObj) {
       try {
         var project = eventObj.project||_getProject(),
-            user = _getUser();
+            user = eventObj.user||_getUser();
         var dataProject = project&&(project.id||project.project_id) ? {
           project: {
             id: project.id||project.project_id,
@@ -90,7 +93,7 @@ var CatarseAnalytics = window.CatarseAnalytics = (function(){
 
           $.ajax({
               type: "POST",
-              url: getApiHost()+'/rpc/track',
+              url: _getApiHost()+'/rpc/track',
               // The key needs to match your method's input parameter (case-sensitive).
               data: JSON.stringify(sendData),
               contentType: "application/json; charset=utf-8",
