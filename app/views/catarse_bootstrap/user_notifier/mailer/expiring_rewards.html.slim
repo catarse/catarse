@@ -1,0 +1,23 @@
+- project = @notification.project
+
+- project_link = edit_project_url(project)
+- company_name = CatarseSettings[:company_name]
+
+| Oi #{project.user.name},
+br/
+br/
+p Você criou recompensas com estimativa de entrega daqui a 1 mês, porém ainda não definiu uma data de encerramento do seu projeto. Após o encerramento do projeto, em 10 dias úteis faremos o repasse do valor financiado (descontando as taxas do Catarse). Se esse repasse impacta a produção e entrega das recompensas é preciso que você finalize sua campanha.
+p Para garantir que receba os recursos captados, antes da data estimada para a entrega das recompensas, defina agora o prazo final.
+
+p
+  center
+    = link_to edit_project_url(project, anchor: 'announce_expiration'), target: '__blank' do
+      = image_tag "#{CatarseSettings[:base_url]}/assets/catarse_bootstrap/btn-definir-prazo.png"
+br/
+br/
+| Se ficou com alguma dúvida, responda a esta mensagem diretamente ou fale conosco através do e-mail #{mail_to CatarseSettings[:email_projects]}. Caso precise falar via telefone estaremos a disposição de segunda à sexta das 14h às 18h no telefone (11) 98414-0090.
+br/
+br/
+| Um abraço,
+br/
+= company_name

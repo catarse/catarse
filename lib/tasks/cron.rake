@@ -6,7 +6,7 @@ namespace :cron do
   desc "Tasks that should run daily"
   task daily: [ :notify_project_owner_about_new_confirmed_contributions,
                :verify_pagarme_transactions,
-               :verify_pagarme_transfers, :verify_pagarme_user_transfers, :notify_pending_refunds, :request_direct_refund_for_failed_refund]
+               :verify_pagarme_transfers, :verify_pagarme_user_transfers, :notify_pending_refunds, :request_direct_refund_for_failed_refund, :notify_expiring_rewards]
 
   desc "Refresh all materialized views"
   task refresh_materialized_views: :environment do
@@ -25,6 +25,17 @@ namespace :cron do
     ContributionDetail.where("state in ('pending', 'paid') and project_state = 'failed' and lower(gateway) = 'pagarme' and lower(payment_method) = 'cartaodecredito'").each do |c|
       c.direct_refund
       puts "request refund for gateway_id -> #{c.gateway_id}"
+    end
+  end
+
+  desc 'Notify about rewards about to expire'
+  task notify_expiring_rewards: :environment do
+    FlexibleProject.with_expiring_rewards.find_each do |project|
+      puts "notifying about expiring rewards -> #{project.id}"
+      project.notify(
+        :expiring_rewards,
+        project.user
+      )
     end
   end
 
