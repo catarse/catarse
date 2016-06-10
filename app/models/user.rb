@@ -113,7 +113,11 @@ class User < ActiveRecord::Base
   end
 
   def has_fb_auth?
-    @has_fb_auth ||= authorizations.facebook.exists?
+    @has_fb_auth ||= fb_auth.present?
+  end
+
+  def fb_auth
+    @fb_auth ||= authorizations.facebook.first
   end
 
   # Return the projects that user has pending refund payments
