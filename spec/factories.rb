@@ -202,6 +202,16 @@ FactoryGirl.define do
     f.locale 'pt'
   end
 
+  factory :project_notification do |f|
+    f.association :user, factory: :user
+    f.association :project, factory: :project
+    f.template_name 'project_success'
+    f.from_email 'from@email.com'
+    f.from_name 'from_name'
+    f.locale 'pt'
+  end
+
+
   factory :reward do |f|
     f.association :project, factory: :project
     f.minimum_value 10.00
