@@ -21,6 +21,8 @@ Catarse::Application.routes.draw do
   get '/follow-fb-friends' => "users#follow_fb_friends", as: :follow_fb_friends
   get '/connect-facebook' => "application#connect_facebook", as: :connect_fb
 
+  get '/notifications/:notification_type/:notification_id' => 'notifications#show'
+
   filter :locale, exclude: /\/auth\//
 
   mount CatarsePagarme::Engine => "/", as: :catarse_pagarme
