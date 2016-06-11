@@ -33,4 +33,5 @@
     $(window).ready(function(){
       //,project: # {@project.to_json.html_safe}
       CatarseAnalytics.event({cat:'contribution_finish',act:'contribution_finished',lbl:'creditcard',val:#{@contribution.value}});
+      CatarseAnalytics.checkout(#{@contribution.id},'#{@project.permalink}-#{@contribution.reward_id}-creditcard',#{@contribution.reward_id},'#{@project.category}',#{@contribution.value});
     });
