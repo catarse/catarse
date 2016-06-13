@@ -206,15 +206,16 @@ window.CatarseAnalytics = window.CatarseAnalytics || (function(){
   }
   _pageView();
 
-  function _checkout(transactionId, prodName, sku, category, price) {
+  function _checkout(transactionId, prodName, sku, category, price, fee) {
     try {
       if(typeof ga==='function') {
         ga('ecommerce:addTransaction', {
           'id': transactionId,                     // Transaction ID. Required.
           //'affiliation': 'Acme Clothing',   // Affiliation or store name.
           'revenue': price,               // Grand Total.
-          'shipping': price*0.13,                  // Shipping.  Nossa porcentagem
-          //'tax': '1.29'                     // Tax.
+          //'shipping': ,                  // Shipping.
+          'tax': fee,                     // Tax.  Nossa porcentagem
+          'current': 'BRL'
         });
         ga('ecommerce:addItem', {
           'id': transactionId,                     // Transaction ID. Required.
