@@ -84,8 +84,13 @@ class ApplicationController < ActionController::Base
   end
 
   def connect_facebook
-    session[:return_to] = follow_fb_friends_path
-    redirect_to((user_signed_in? ? follow_fb_friends_path :  '/auth/facebook'))
+    if user_signed_in? && current_user.has_fb_auth?
+      FbFriendCollectorWorker.perform_async(current_user.fb_auth.id)
+      redirect_to follow_fb_friends_path
+    else
+      session[:return_to] = follow_fb_friends_path
+      redirect_to('/auth/facebook')
+    end
   end
 
   private
