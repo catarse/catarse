@@ -63,7 +63,7 @@ window.CatarseAnalytics = window.CatarseAnalytics || (function(){
       var UUID=function(){for(var dec2hex=[],i=0;15>=i;i++)dec2hex[i]=i.toString(16);return function(){for(var uuid="",i=1;36>=i;i++)uuid+=9===i||14===i||19===i||24===i?"-":15===i?4:20===i?dec2hex[4*Math.random()|8]:dec2hex[15*Math.random()|0];return uuid}}();
       sid=UUID();
     }
-    cookie.set('ctrse_sid',sid,10,'/',false,'.catarse.me');
+    cookie.set('ctrse_sid',sid,180,'/',false,'.catarse.me');
     return sid;
   })(monster);
 
@@ -97,7 +97,47 @@ window.CatarseAnalytics = window.CatarseAnalytics || (function(){
           }
       })()
     };
-    var _actualOrigin=_.pick(_actualRequest.query, 'ref','utm_source','utm_medium','utm_campaign','utm_content','utm_term');
+
+    var origin = (function(request,cookie) {
+      try {
+        var o = JSON.parse(cookie.get('ctrse_origin')||null) || {};
+      } catch(e) {
+        o = {};
+      }
+      var fromCatarse=request.referrer && /^https?:\/\/([^\\/]+\.)?catarse\.me/.test(request.referrer);
+      if(fromCatarse) {
+        //Só pega o ultimo ref. Não atualiza utms...
+        o.ref = (request.query&&request.query.ref) || o.ref; //preferencia para a query.
+      } else if(/*!fromCatarse && */ request.referrer || (!o._time || new Date().getTime()-o._time>10*60*1000/*10min*/)) {
+        var m=request.referrer && request.referrer.match(/https?:\/\/([^\/\?#]+)/);
+        var refDomain=(m && m[1]) || undefined;
+        var query=request.query;
+        //se, e somente se, tem algum utm na query...
+        if(query && ['utm_campaign','utm_source','utm_medium','utm_content','utm_term'].some(function(p){
+          return !!query[p];
+        })) {//então, substitui todos, mesmo os q nao tem, pois são um conjunto de informações...
+          o.domain  = refDomain;
+          o.campaign=query.utm_campaign;
+          o.source=  query.utm_source;
+          o.medium=  query.utm_medium;
+          o.content= query.utm_content;
+          o.term=    query.utm_term;
+        } else if (refDomain && !['domain','utm_campaign','utm_source','utm_medium','utm_content','utm_term'].some(function(p){
+          return !!o[p];
+        })) {//se tem refDomain e não tem no origin algum utm ou domain anterior...
+          o.domain  = refDomain;
+        }
+
+        if(!o.campaign && query && query.ref) {
+          //nesse caso, como veio de outro dominio, sem utm params, mas com ref, assumimos q esse ref é um campaign.
+          o.campaign = query.ref;
+        }
+      }
+      //fazemos o _time aqui por causa da verificação acima !o._time, indicando q foi criado agora.
+      o._time=new Date().getTime();
+      cookie.set('ctrse_origin',JSON.stringify(o),180,'/',false,'.catarse.me');
+      return o;
+    })(_actualRequest,monster);
   } catch(e) {
     console.error('[CatarseAnalytics] error',e);
   }
@@ -107,7 +147,7 @@ window.CatarseAnalytics = window.CatarseAnalytics || (function(){
       return _apiHost;
 
     var el=document.getElementById('api-host');
-    return _apiHost = el && el.getAttribute('content');
+    return _apiHost = (el && el.getAttribute('content')||'api.catarse.me');
   }
   function _getUser() {
     if(_user)
@@ -156,6 +196,7 @@ window.CatarseAnalytics = window.CatarseAnalytics || (function(){
           var sendData = {
             event: _.extend({},data, {
               ctrse_sid: ctrse_sid,
+              origin: origin,
               category: eventObj.cat,
               action: eventObj.act,
               label: eventObj.lbl,
