@@ -206,6 +206,32 @@ window.CatarseAnalytics = window.CatarseAnalytics || (function(){
   }
   _pageView();
 
+  function _checkout(transactionId, prodName, sku, category, price, fee) {
+    try {
+      if(typeof ga==='function') {
+        ga('ecommerce:addTransaction', {
+          'id': transactionId,                     // Transaction ID. Required.
+          //'affiliation': 'Acme Clothing',   // Affiliation or store name.
+          'revenue': price,               // Grand Total.
+          //'shipping': ,                  // Shipping.
+          'tax': fee,                     // Tax.  Nossa porcentagem
+          'current': 'BRL'
+        });
+        ga('ecommerce:addItem', {
+          'id': transactionId,                     // Transaction ID. Required.
+          'name': prodName,    // Product name. Required.
+          'sku': sku,                 // SKU/code.
+          'category': category,         // Category or variation.
+          'price': price,                 // Unit price.
+          'quantity': '1'                   // Quantity.
+        });
+        ga('ecommerce:send');
+      }
+    } catch(e) {
+      console.error('[CatarseAnalytics.checkout]',e);
+    }
+  }
+
   return {
     event: _event,
     oneTimeEvent: function(eventObj, fn) {
@@ -226,5 +252,6 @@ window.CatarseAnalytics = window.CatarseAnalytics || (function(){
           console.error('[CatarseAnalytics.oneTimeEvent] error:',e);
         }
     },
+    checkout: _checkout
   };
 })();
