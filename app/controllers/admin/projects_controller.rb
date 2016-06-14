@@ -32,7 +32,8 @@ class Admin::ProjectsController < Admin::BaseController
 
   protected
   def permitted_params
-    params.require(:project).permit(resource.attribute_names.map(&:to_sym))
+    require_model = params.key?(:flexible_project) ? :flexible_project : :project
+    params.require(require_model).permit(resource.attribute_names.map(&:to_sym))
   end
 
   def collection

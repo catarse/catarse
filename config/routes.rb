@@ -147,7 +147,7 @@ Catarse::Application.routes.draw do
   resources :feedbacks, only: [:create]
 
   namespace :admin do
-    resources :projects, :flexible_projects, only: [ :index, :update, :destroy ] do
+    resources :projects, :flexible_projects, controller: 'projects', only: [ :index, :update, :destroy ] do
       member do
         put 'approve'
         put 'push_to_online'
