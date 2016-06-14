@@ -138,6 +138,7 @@ window.CatarseAnalytics = window.CatarseAnalytics || (function(){
       cookie.set('ctrse_origin',JSON.stringify(o),180,'/',false,'.catarse.me');
       return o;
     })(_actualRequest,monster);
+    console.log('origin',origin);
   } catch(e) {
     console.error('[CatarseAnalytics] error',e);
   }
@@ -147,7 +148,7 @@ window.CatarseAnalytics = window.CatarseAnalytics || (function(){
       return _apiHost;
 
     var el=document.getElementById('api-host');
-    return _apiHost = (el && el.getAttribute('content')||'api.catarse.me');
+    return _apiHost = (el && el.getAttribute('content')||'https://api.catarse.me');
   }
   function _getUser() {
     if(_user)
@@ -274,6 +275,7 @@ window.CatarseAnalytics = window.CatarseAnalytics || (function(){
   }
 
   return {
+    origin: origin,
     event: _event,
     oneTimeEvent: function(eventObj, fn) {
         if (!eventObj) {
