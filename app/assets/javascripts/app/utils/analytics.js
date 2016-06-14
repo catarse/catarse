@@ -100,9 +100,9 @@ window.CatarseAnalytics = window.CatarseAnalytics || (function(){
 
     var origin = (function(request,cookie) {
       try {
-        var o = JSON.parse(cookie.get('ctrse_origin')||null) || {};
+        var o = JSON.parse(cookie.get('ctrse_origin')||null) || {createdAt: new Date()};
       } catch(e) {
-        o = {};
+        o = {createdAt: new Date()};
       }
       var fromCatarse=request.referrer && /^https?:\/\/([^\\/]+\.)?catarse\.me/.test(request.referrer);
       if(fromCatarse) {
@@ -138,7 +138,6 @@ window.CatarseAnalytics = window.CatarseAnalytics || (function(){
       cookie.set('ctrse_origin',JSON.stringify(o),180,'/',false,'.catarse.me');
       return o;
     })(_actualRequest,monster);
-    console.log('origin',origin);
   } catch(e) {
     console.error('[CatarseAnalytics] error',e);
   }
