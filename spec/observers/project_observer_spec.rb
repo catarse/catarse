@@ -200,8 +200,8 @@ RSpec.describe ProjectObserver do
       expect(ProjectNotification.where(template_name: 'redbooth_task', user: redbooth_user, project_id: project.id).count).to eq(1)
     end
 
-    #it "should create notification for project owner" do
-    #  expect(ProjectNotification.where(template_name: 'project_success', user: project.user, project_id: project.id).count).to eq(1)
-    #end
+    it "should create notification for project owner" do
+      expect(ProjectNotification.where(template_name: 'project_success', user: project.user, project_id: project.id).count).to eq(1)
+    end
   end
 end
