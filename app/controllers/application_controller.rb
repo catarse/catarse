@@ -83,6 +83,16 @@ class ApplicationController < ActionController::Base
     redirect_to edit_user_path(current_user, anchor: 'contributions')
   end
 
+  def connect_facebook
+    if user_signed_in? && current_user.has_fb_auth?
+      FbFriendCollectorWorker.perform_async(current_user.fb_auth.id)
+      redirect_to follow_fb_friends_path
+    else
+      session[:return_to] = follow_fb_friends_path
+      redirect_to('/auth/facebook')
+    end
+  end
+
   private
   def force_www
     if request.subdomain.blank? && Rails.env.production?

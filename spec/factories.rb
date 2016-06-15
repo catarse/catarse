@@ -98,7 +98,6 @@ FactoryGirl.define do
     f.goal 10000
     f.online_days 5
     f.more_links 'Ipsum dolor'
-    f.first_contributions 'Foo bar'
     f.video_url 'http://vimeo.com/17298435'
     f.state 'online'
     f.budget '1000'
@@ -139,7 +138,6 @@ FactoryGirl.define do
     f.goal 10000
     f.online_days 5
     f.more_links 'Ipsum dolor'
-    f.first_contributions 'Foo bar'
     f.video_url 'http://vimeo.com/17298435'
     f.budget '1000'
     f.uploaded_image File.open("#{Rails.root}/spec/support/testimg.png")
@@ -213,6 +211,16 @@ FactoryGirl.define do
     f.origin_email 'foo@bar.com'
     f.locale 'pt'
   end
+
+  factory :project_notification do |f|
+    f.association :user, factory: :user
+    f.association :project, factory: :project
+    f.template_name 'project_success'
+    f.from_email 'from@email.com'
+    f.from_name 'from_name'
+    f.locale 'pt'
+  end
+
 
   factory :reward do |f|
     f.association :project, factory: :project

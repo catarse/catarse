@@ -6,12 +6,7 @@ App.addChild('Contribution', {
     'click .submit-form' : 'submitForm',
     'keyup .user-reward-value' : 'submitOnReturnKey',
     'click .user-reward-value' : 'clearOnFocus',
-    'input #contribution_value' : 'restrictChars',
-    'change input.back-reward-radio-button': 'rewardChange'
-  },
-
-  rewardChange: function(event) {
-    CatarseAnalytics.event({cat:"contribution_create",act:"contribution_reward_change",lbl:this.minimumValue()});
+    'input #contribution_value' : 'restrictChars'
   },
 
   restrictChars: function(event){
@@ -106,28 +101,31 @@ App.addChild('Contribution', {
 
   clickReward: function(event){
     var $el = $(event.currentTarget);
-    var elOffset = $el.offset().top;
-    var elHeight = $el.height();
-    var windowHeight = $(window).height();
-    var isOnAutoScroll = this.isOnAutoScroll;
-    var offset;
-    if (elHeight < windowHeight) {
-      offset = elOffset - ((windowHeight / 2) - ((elHeight * 2) / 3));
-    } else {
-      offset = elOffset;
-    }
-    $.smoothScroll({
-      speed: 600,
-      offset: -60,
-      callback: function(){
-        isOnAutoScroll = false;
+    if(!$el.parents('.back-reward-radio-reward').hasClass('selected')) {
+      var elOffset = $el.offset().top;
+      var elHeight = $el.height();
+      var windowHeight = $(window).height();
+      var isOnAutoScroll = this.isOnAutoScroll;
+      var offset;
+      if (elHeight < windowHeight) {
+        offset = elOffset - ((windowHeight / 2) - ((elHeight * 2) / 3));
+      } else {
+        offset = elOffset;
       }
-    }, offset);
-    this.selectReward($el);
-    var minimum = this.minimumValue();
-    var reward_value = $el.find('.user-reward-value');
-    if(reward_value.val() === ''){
-      reward_value.val(minimum);
+      $.smoothScroll({
+        speed: 600,
+        offset: -60,
+        callback: function(){
+          isOnAutoScroll = false;
+        }
+      }, offset);
+      this.selectReward($el);
+      var minimum = this.minimumValue();
+      var reward_value = $el.find('.user-reward-value');
+      if(reward_value.val() === ''){
+        reward_value.val(minimum);
+      }
+      CatarseAnalytics.event({cat:"contribution_create",act:"contribution_reward_change",lbl:this.minimumValue()});
     }
   }
 });

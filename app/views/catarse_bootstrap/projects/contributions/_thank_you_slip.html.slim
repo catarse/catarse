@@ -20,4 +20,5 @@
     $(window).ready(function(){
       //,project: # {@project.to_json.html_safe}
       CatarseAnalytics.event({cat:'contribution_finish',act:'contribution_finished',lbl:'slip',val:#{@contribution.value}});
+      CatarseAnalytics.checkout('#{@contribution.id}','[#{@project.permalink}] #{(@contribution.reward.try(:minimum_value) || 0)} [slip]','#{@contribution.reward_id}','#{@project.category}','#{@contribution.value}','#{@contribution.value*@contribution.project.service_fee}');
     });

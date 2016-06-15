@@ -15,7 +15,7 @@ center
     tbody
       tr
         td width="150px"
-          = link_to(image_tag(project.display_image, width: '140px'), project_by_slug_url(project.permalink, ref: 'notificacao_follow_contributed_project'))
+          = link_to(image_tag(project.display_image, width: '140px'), project_by_slug_url(project.permalink, {ref:'notificacao_follow_contributed_project',utm_source:'notification',utm_medium:'email',utm_campaign:"follow_contrib_#{follow.id}",utm_content:project.permalink}))
         td
           h2 style="line-height: 110%"= project.name
           p= project.headline
@@ -25,7 +25,7 @@ br/
 br/
 
 center
-  = link_to('Conheça o projeto', project_by_slug_url(project.permalink, ref: 'notificacao_follow_contributed_project'), style:'border: 1px solid #7cc142; border-radius: 5px; color: #fff; text-decoration: none; font-weight: bolder; text-align: center; padding: 19px 60px; background: #65bf1b; font-size: 15px;')
+  = link_to('Conheça o projeto', project_by_slug_url(project.permalink, {ref:'notificacao_follow_contributed_project',utm_source:'notification',utm_medium:'email',utm_campaign:"follow_contrib_#{follow.id}",utm_content:project.permalink}), style:'border: 1px solid #7cc142; border-radius: 5px; color: #fff; text-decoration: none; font-weight: bolder; text-align: center; padding: 19px 60px; background: #65bf1b; font-size: 15px;')
 
 br/
 br/
@@ -33,5 +33,5 @@ br/
 br/
 
 center
-  = link_to('Não quero receber', follow_fb_friends_url(ref: 'notificacao_follow_published_project'))
+  = link_to('Não quero receber', follow_fb_friends_url(ref: 'notificacao_follow_published_project',utm_source:'notification',utm_medium:'email',utm_campaign:"follow_contrib_#{follow.id}",utm_content:project.permalink))
   | &nbsp; essa notificação

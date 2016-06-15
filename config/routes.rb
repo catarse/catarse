@@ -18,7 +18,10 @@ Catarse::Application.routes.draw do
   get '/billing_edit' => 'application#redirect_to_user_billing'
   get '/user_contributions' => 'application#redirect_to_user_contributions'
   get '/thank_you' => "static#thank_you"
-  get '/follow-fb-friends' => "users#follow_fb_friends"
+  get '/follow-fb-friends' => "users#follow_fb_friends", as: :follow_fb_friends
+  get '/connect-facebook' => "application#connect_facebook", as: :connect_fb
+
+  get '/notifications/:notification_type/:notification_id' => 'notifications#show'
 
   filter :locale, exclude: /\/auth\//
 
@@ -144,7 +147,7 @@ Catarse::Application.routes.draw do
   resources :feedbacks, only: [:create]
 
   namespace :admin do
-    resources :projects, :flexible_projects, only: [ :index, :update, :destroy ] do
+    resources :projects, :flexible_projects, controller: 'projects', only: [ :index, :update, :destroy ] do
       member do
         put 'approve'
         put 'push_to_online'
