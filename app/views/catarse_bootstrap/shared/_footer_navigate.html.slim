@@ -1,10 +1,10 @@
 .footer-full-signature-text.fontsize-small #{t('layouts.footer.titles.sitemap')}
-a.w-hidden-small.w-hidden-tiny.link-footer href="#{start_path}"  #{t('layouts.footer.links.submit')}
-a.link-footer href="#{explore_path}"  #{t('layouts.footer.links.discover')}
+a.w-hidden-small.w-hidden-tiny.link-footer href="#{start_path(ref:'ctrse_footer')}"  #{t('layouts.footer.links.submit')}
+a.link-footer href="#{explore_path(ref:'ctrse_footer')}"  #{t('layouts.footer.links.discover')}
 a.w-hidden-main.w-hidden-medium.w-hidden-small.link-footer href="#{CatarseSettings[:blog_url]}"  #{t('layouts.footer.links.blog')}
 a.w-hidden-main.w-hidden-medium.w-hidden-small.link-footer href="#{CatarseSettings[:zendesk_url]}/account/dropboxes/#{CatarseSettings[:zendesk_dropbox_id]}"  #{t('layouts.footer.links.contact')}
 - if current_user.try(:adress_state)
-  a.w-hidden-tiny.link-footer href="#{explore_path(anchor: ('near_of/' + current_user.address_state))}" #{t('layouts.footer.links.near')}
-a.w-hidden-tiny.link-footer href="#{explore_path(:filter => "score")}"  #{t('layouts.footer.links.score')}
-a.w-hidden-tiny.link-footer href="#{explore_path(:filter => "online")}"  #{t('layouts.footer.links.online')}
-a.w-hidden-tiny.link-footer href="#{explore_path(:filter => "finished")}"  #{t('layouts.footer.links.finished')}
+  a.w-hidden-tiny.link-footer href="#{explore_path(anchor: ('near_of/' + current_user.address_state),ref:'ctrse_footer')}" #{t('layouts.footer.links.near')}
+a.w-hidden-tiny.link-footer href="#{explore_path(:filter => "score",ref:'ctrse_footer')}"  #{t('layouts.footer.links.score')}
+a.w-hidden-tiny.link-footer href="#{explore_path(:filter => "online",ref:'ctrse_footer')}"  #{t('layouts.footer.links.online')}
+a.w-hidden-tiny.link-footer href="#{explore_path(:filter => "finished",ref:'ctrse_footer')}"  #{t('layouts.footer.links.finished')}

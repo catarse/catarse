@@ -100,9 +100,9 @@ window.CatarseAnalytics = window.CatarseAnalytics || (function(){
 
     var origin = (function(request,cookie) {
       try {
-        var o = JSON.parse(cookie.get('ctrse_origin')||null) || {};
+        var o = JSON.parse(cookie.get('ctrse_origin')||null) || {createdAt: new Date()};
       } catch(e) {
-        o = {};
+        o = {createdAt: new Date()};
       }
       var fromCatarse=request.referrer && /^https?:\/\/([^\\/]+\.)?catarse\.me/.test(request.referrer);
       if(fromCatarse) {
@@ -143,11 +143,16 @@ window.CatarseAnalytics = window.CatarseAnalytics || (function(){
   }
   //Metodos semelhantes ao modulo "h"
   function _getApiHost() {
+    if(window.CatarseAnalyticsURL)
+      return window.CatarseAnalyticsURL;
     if(_apiHost)
       return _apiHost;
 
     var el=document.getElementById('api-host');
-    return _apiHost = (el && el.getAttribute('content')||'api.catarse.me');
+    _apiHost = (el && el.getAttribute('content'));
+    if(_apiHost)
+      _apiHost=_apiHost+'/rpc/track';
+    return _apiHost;
   }
   function _getUser() {
     if(_user)
@@ -207,17 +212,20 @@ window.CatarseAnalytics = window.CatarseAnalytics || (function(){
             )
           };
 
-          ajax({
-              url: _getApiHost()+'/rpc/track',
-              // The key needs to match your method's input parameter (case-sensitive).
-              body: JSON.stringify(sendData),
-              headers: {
-                'content-type': "application/json; charset=utf-8"
-              }
-          }, function(status, responseText, req){
-            if(status!==200)
-              console.error(status,responseText,req);
-          });
+          var apiUrl=_getApiHost();
+          if(apiUrl) {
+            ajax({
+                url: apiUrl,
+                // The key needs to match your method's input parameter (case-sensitive).
+                body: JSON.stringify(sendData),
+                headers: {
+                  'content-type': "application/json; charset=utf-8"
+                }
+            }, function(status, responseText, req){
+              if(status!==200)
+                console.error(status,responseText,req);
+            });
+          }
         } catch(e) {
           console.error('[CatarseAnalytics.event] error:', e);
         }
@@ -274,6 +282,7 @@ window.CatarseAnalytics = window.CatarseAnalytics || (function(){
   }
 
   return {
+    origin: origin,
     event: _event,
     oneTimeEvent: function(eventObj, fn) {
         if (!eventObj) {

@@ -1,16 +1,22 @@
 - target = defined?(embed_link) ? '__blank' : ''
 - @project = card if defined?(card)
 - ref = defined?(ref) ? ref : nil
+- utm_campaign = defined?(utm_campaign) ? utm_campaign : nil
+- utm_medium = defined?(utm_medium) ? utm_medium : nil
+- utm_source = defined?(utm_source) ? utm_source : nil
+- utm_content_thumb = defined?(utm_campaign)||defined?(utm_medium)||defined?(utm_source) ? 'thumb': nil
+- utm_content_name = defined?(utm_campaign)||defined?(utm_medium)||defined?(utm_source) ? 'name': nil
+- utm_content_headline = defined?(utm_campaign)||defined?(utm_medium)||defined?(utm_source) ? 'headline': nil
 
 div[itemtype="http://schema.org/CreativeWork" class="#{defined?(wrapper_class) ? wrapper_class : ''}"] 
   .card-project.card.u-radius
     meta[itemprop="dateCreated" content=@project.created_at.to_date]
-    a.card-project-thumb style="background-image: url(#{@project.display_image(:project_thumb_large)});display:block;" href="#{project_by_slug_path(@project.permalink, ref: ref)}" target=target
+    a.card-project-thumb style="background-image: url(#{@project.display_image(:project_thumb_large)});display:block;" href="#{project_by_slug_path(@project.permalink, {ref: ref, utm_campaign:utm_campaign,utm_medium:utm_medium,utm_source:utm_source,utm_content:utm_content_thumb})}" target=target
     .card-project-description.u-marginbottom-30
-      .fontweight-semibold.fontsize-base.u-marginbottom-10.u-text-center-small-only.lineheight-tight=link_to truncate(@project.name, length: 50, separator: ''), project_by_slug_path(@project.permalink, ref: ref), title: @project.name, target: target, class: 'link-hidden', itemprop: "name"
+      .fontweight-semibold.fontsize-base.u-marginbottom-10.u-text-center-small-only.lineheight-tight=link_to truncate(@project.name, length: 50, separator: ''), project_by_slug_path(@project.permalink, ref: ref,utm_campaign:utm_campaign,utm_medium:utm_medium,utm_source:utm_source,utm_content:utm_content_name), title: @project.name, target: target, class: 'link-hidden', itemprop: "name"
       .w-hidden-small.w-hidden-tiny.fontsize-smallest.fontcolor-secondary.u-marginbottom-20[itemprop="name" content="#{@project.user.display_name}"]= t('.by') + ' ' + @project.user.display_name
       .w-hidden-small.w-hidden-tiny.fontcolor-secondary.fontsize-smaller
-        = link_to project_by_slug_path(@project.permalink, ref: ref), title: @project.headline, target: target, class: 'link-hidden' do
+        = link_to project_by_slug_path(@project.permalink, ref: ref, utm_campaign:utm_campaign,utm_medium:utm_medium,utm_source:utm_source,utm_content:utm_content_headline), title: @project.headline, target: target, class: 'link-hidden' do
           = truncate(@project.headline, length: 140)
     
     .w-hidden-small.w-hidden-tiny.card-project-author.altt
