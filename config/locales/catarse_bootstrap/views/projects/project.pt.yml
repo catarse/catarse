@@ -158,6 +158,7 @@ http://suporte.catarse.me/hc/pt-br/articles/206507863-Catarse-flex-Principais-pe
         other: "<span>%{count} %{unit}</span> restantes"
       pledged_html: "<span>%{value}</span> levantados"
       display_status:
+        flex_successful: "Financiado Flex"
         expired: "Finalizado"
         rejected: "Rejeitado"
         failed: "Não-financiado"
