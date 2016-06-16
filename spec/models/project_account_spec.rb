@@ -21,6 +21,9 @@ RSpec.describe ProjectAccount, type: :model do
     it { is_expected.to validate_presence_of(:account_digit) }
     it { is_expected.to validate_presence_of(:owner_name) }
     it { is_expected.to validate_presence_of(:owner_document) }
+
+    it{ is_expected.to allow_value('12345').for(:account) }
+    it{ is_expected.not_to allow_value('1A2345').for(:account) }
   end
 
   describe '#entity_type' do

@@ -2,6 +2,8 @@ module Shared::BankAccountHelper
   extend ActiveSupport::Concern
 
   included do
+    validates :account, format: { with: /\A\d+\z/ }
+
     # if input_bank_number as present, we
     # should validate if the number matchs with any
     # bank.code on database

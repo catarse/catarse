@@ -214,6 +214,7 @@ pt:
               blank: "Dígito agência do usuário não pode ficar em branco"
             account:
               blank: "No. da conta do usuário não pode ficar em branco"
+              format: "No. da conta do usuário invalido"
             account_digit:
               blank: "Dígito conta do usuário não pode ficar em branco"
             owner_name:
