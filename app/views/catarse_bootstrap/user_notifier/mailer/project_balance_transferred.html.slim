@@ -7,11 +7,13 @@
 | Olá #{user.name},
 br/
 br/
-| O repasse do dinheiro arrecadado (descontando todas as taxas) já foi autorizado e será creditado na conta bancária cadastrada em até 2 dias úteis.
+| O repasse do dinheiro arrecadado já foi autorizado e será creditado na conta bancária cadastrada em até 2 dias úteis.
 br/
 br/
-| Aqui temos um resumo da transação:
+| Resumo da transação:
 br/
+br/
+| Titulo do projeto: #{project.name}
 br/
 | Valor alcançado: #{number_to_currency project_transfer.pledged, precision: 2}
 br/
@@ -22,7 +24,7 @@ br/
 | (=) Valor total do repasse: #{number_to_currency project_transfer.total_amount, precision: 2}
 br/
 br/
-| Dados bancários:
+| Dados bancários cadastrados:
 br/
 | Banco: #{project_account.bank_code} - #{project_account.bank}
 br/
@@ -38,7 +40,7 @@ br/
 | Se ficou com alguma dúvida, responda a esta mensagem diretamente ou fale conosco através do e-mail #{mail_to CatarseSettings[:email_adm]}. Caso precise falar via telefone estaremos a disposição de segunda à sexta das 14h às 18h no telefone (11) 984140090.
 br/
 br/
-| Abraços,
+| Abraços e VOLTE SEMPRE! ;D,
 br/
 = CatarseSettings[:company_name]
 
