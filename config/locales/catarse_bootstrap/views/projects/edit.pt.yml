@@ -274,10 +274,15 @@ pt:
         title: 'Os seus dados estão corretos?'
         person:
           label: 'Pessoa: '
-          juridical: 'Jurídica'
-          natural: 'Física'
-          name: 'Nome completo do titular: '
-          document: 'CPF do titular da conta bancária: '
+          juridical:
+            label: 'Jurídica'
+            name: 'Razão social: '
+            document: 'CNPJ do titular da conta bancária: '
+          state_inscription: 'Inscrição estadual: '
+          natural:
+            label: 'Física'
+            name: 'Nome completo do titular: '
+            document: 'CPF do titular da conta bancária: '
           bank:
             name: 'Banco: '
             agency: 'Agência: '
