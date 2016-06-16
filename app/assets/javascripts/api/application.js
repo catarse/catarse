@@ -7,7 +7,6 @@
 //= require i18n/translations
 //= require api/init
 //= require catarse.js/dist/catarse.js
-//= require app/utils/analytics
 //= require_self
 
 (function(m, c, Chart){
