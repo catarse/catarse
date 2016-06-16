@@ -6,8 +6,14 @@
 | Olá #{user.name},
 br/
 br/
-| Seus dados bancários foram confirmados! Aqui temos um resumo da operação de transferência:
+| Seus dados bancários foram confirmados!
 br/
+br/
+strong
+  | Resumo da operação de repasse:
+br/
+br/
+| Titulo do projeto: #{project.name}
 br/
 | Data máxima para o repasse: #{metadata['transfer_limit_date']}
 br/
@@ -24,10 +30,10 @@ br/
 | CPF: #{project_account.owner_document}
 br/
 br/
-| Nossa equipe pode entrar em contato com você caso ocorra algum problema com o banco.
+| Nossa equipe pode entrar em contato com você caso ocorra algum problema com seu banco.
 br/
 br/
-| Lembrando que você pode tirar dúvidas conosco respondendo diretamente a esta mensagem ou através do e-mail #{mail_to CatarseSettings['email_adm']} .Caso precise falar via telefone estaremos a disposição de segunda à sexta das 14h às 18h no telefone (11) 98414-0090.
+| Lembrando que você pode tirar dúvidas conosco respondendo diretamente a esta mensagem ou através do e-mail #{mail_to CatarseSettings['email_adm']} .Caso precise falar via telefone estaremos à disposição de segunda à sexta das 14h às 18h no telefone (11) 98414-0090.
 br/
 br/
 | Um abraço,
