@@ -96,7 +96,7 @@ RSpec.describe ApplicationController, type: :controller do
       let(:params){ {ref: 'testado'} }
 
       it "should keep referal link equals" do
-        expect(cookies[:referral_link]).to eq 'testado'
+        expect(cookies[:referral_link]).to eq 'test'
       end
 
       it "should store HTTP_REFERRER in origin" do
