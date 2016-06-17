@@ -63,6 +63,7 @@ class ApplicationController < ActionController::Base
         value: value,
         expires: 1.week.from_now
       }
+    end
   end
 
   # Used on external services and generic email
