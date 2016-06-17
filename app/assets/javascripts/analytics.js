@@ -159,7 +159,7 @@ window.CatarseAnalytics = window.CatarseAnalytics || (function(){
       return _user;
 
     var body = document.getElementsByTagName('body'),
-        data = _.first(body).getAttribute('data-user');
+        data = body && body[0] && body[0].getAttribute('data-user');
     return _user=data;
   }
   function _getProject() {
@@ -177,43 +177,45 @@ window.CatarseAnalytics = window.CatarseAnalytics || (function(){
       try {
         var project = eventObj.project||_getProject(),
             user = eventObj.user||_getUser();
-        var dataProject = project&&(project.id||project.project_id) ? {
-          project: {
+        var ga = window.ga;//o ga tem q ser verificado aqui pq pode não existir na criaçaõ do DOM
+        var gaTracker = (typeof ga==='function' && ga.getAll && ga.getAll() && ga.getAll()[0]) || null;
+        ignoreGA = ignoreGA || typeof ga!=='function';
+
+        var data = eventObj.extraData&&typeof eventObj.extraData==='object' ? JSON.parse(JSON.stringify(eventObj.extraData)) : {};
+        data.ctrse_sid=ctrse_sid;
+        data.origin=origin;
+        data.category=eventObj.cat;
+        data.action=eventObj.act;
+        data.label=eventObj.lbl;
+        data.value=eventObj.val;
+        data.request=_actualRequest;
+        if(user&&user.user_id) {
+          data.user={
+            id: user.user_id,
+            contributions: user.contributions,
+            published_projects: user.published_projects
+          };
+        }
+        if(project&&(project.id||project.project_id)) {
+          data.project={
             id: project.id||project.project_id,
             user_id: project.user_id||project.project_user_id,
             category_id: project.category_id,
             state: project.address && project.address.state_acronym,
             city: project.address && project.address.city
-          }
-        } : null;
-        var dataUser = user&&user.user_id ? {
-          user: {
-            id: user.user_id,
-            contributions: user.contributions,
-            published_projects: user.published_projects
-          }
-        } : null;//TODO
-        var data = _.extend({},eventObj.extraData,dataProject,dataUser);
-        var ga = window.ga;//o ga tem q ser verificado aqui pq pode não existir na criaçaõ do DOM
-        var gaTracker = ga && ga.getAll && !_.isEmpty(ga.getAll()) ? _.first(ga.getAll()) : null;
+          };
+        }
+        if(gaTracker) {
+          data.ga={clientId: gaTracker.get('clientId')};
+        }
 
         try {
-          var sendData = {
-            event: _.extend({},data, {
-              ctrse_sid: ctrse_sid,
-              origin: origin,
-              category: eventObj.cat,
-              action: eventObj.act,
-              label: eventObj.lbl,
-              value: eventObj.val,
-              request: _actualRequest
-            },
-            (gaTracker?{ga:{clientId: gaTracker.get('clientId')}}:null)
-            )
-          };
-
           var apiUrl=_getApiHost();
           if(apiUrl) {
+            var sendData = {
+              event: data
+            };
+
             ajax({
                 url: apiUrl,
                 // The key needs to match your method's input parameter (case-sensitive).
@@ -230,7 +232,7 @@ window.CatarseAnalytics = window.CatarseAnalytics || (function(){
           console.error('[CatarseAnalytics.event] error:', e);
         }
 
-        if(!ignoreGA && typeof ga==='function') {
+        if(!ignoreGA) {
           //https://developers.google.com/analytics/devguides/collection/analyticsjs/sending-hits#the_send_method
           ga('send', 'event', eventObj.cat, eventObj.act, eventObj.lbl, eventObj.val, {
             nonInteraction: eventObj.nonInteraction!==false,//default é true,e só será false se, e somente se, esse parametro for definido como false
@@ -289,10 +291,10 @@ window.CatarseAnalytics = window.CatarseAnalytics || (function(){
             return fn;
         }
         try {
-          var eventKey = _.compact([eventObj.cat,eventObj.act]).join('_');
-          if (!eventKey) {
-              throw new Error('Should inform cat or act');
+          if (!eventObj.cat && !eventObj.act) {
+            throw new Error('Should inform cat or act');
           }
+          var eventKey = eventObj.cat && eventObj.act ? eventObj.cat+'_'+eventObj.act : (eventObj.cat || eventObj.act);
           if (!_analyticsOneTimeEventFired[eventKey]) {
               //console.log('oneTimeEvent',eventKey);
               _analyticsOneTimeEventFired[eventKey] = true;
