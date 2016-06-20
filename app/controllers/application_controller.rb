@@ -58,7 +58,7 @@ class ApplicationController < ActionController::Base
   end
 
   def build_cookie_structure(value)
-    if value
+    if value.present?
       {
         value: value,
         expires: 1.week.from_now
