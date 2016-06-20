@@ -14,7 +14,7 @@ class BalanceTransfer < ActiveRecord::Base
 
   def state_machine
     @stat_machine ||= BalanceTransferMachine.new(self, {
-      transition_class: 'BalanceTransferTransition',
+      transition_class: BalanceTransferTransition,
       association_name: :transitions
     })
   end

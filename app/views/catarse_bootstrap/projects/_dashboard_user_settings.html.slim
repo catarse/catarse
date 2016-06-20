@@ -88,9 +88,15 @@
                       .w-col.w-col-6.w-col-small-6.w-col-tiny-6
                         = form.input :phone_number, as: :string, 
                         input_html: { class: 'positive' }
-              
+
         .w-section.save-draft-btn-section
           .w-container
             .w-row
               .w-col.w-col-4.w-col-push-4
                 = form.button :submit, t('.submit'),  class:'btn btn-medium'
+        - if current_user.admin && @project.has_account_error?
+          .u-margintop-30
+            .w-container
+              .w-row
+                .w-col.w-col-4.w-col-push-4
+                  = form.button :submit, 'Salvar e remover erro',  class:'btn btn-large', name: 'solve_account_error'

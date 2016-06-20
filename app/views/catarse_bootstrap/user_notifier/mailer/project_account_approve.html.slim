@@ -1,0 +1,41 @@
+- project = @notification.project
+- user = @notification.user
+- project_account = project.account
+- metadata = ActiveSupport::JSON.decode(@notification.metadata)
+
+| Olá #{user.name},
+br/
+br/
+| Seus dados bancários foram confirmados!
+br/
+br/
+strong
+  | Resumo da operação de repasse:
+br/
+br/
+| Titulo do projeto: #{project.name}
+br/
+| Data máxima para o repasse: #{metadata['transfer_limit_date']}
+br/
+| Valor total do repasse: #{number_to_currency(metadata['transfer_amount'].to_f, precision: 2)} (taxas já descontadas)
+br/
+| Banco: #{project_account.bank.name}
+br/
+| Agência: #{project_account.agency}-#{project_account.agency_digit}
+br/
+| Conta: #{project_account.account}-#{project_account.account}
+br/
+| Nome: #{project_account.owner_name}
+br/
+| CPF: #{project_account.owner_document}
+br/
+br/
+| Nossa equipe pode entrar em contato com você caso ocorra algum problema com seu banco.
+br/
+br/
+| Lembrando que você pode tirar dúvidas conosco respondendo diretamente a esta mensagem ou através do e-mail #{mail_to CatarseSettings['email_adm']} .Caso precise falar via telefone estaremos à disposição de segunda à sexta das 14h às 18h no telefone (11) 98414-0090.
+br/
+br/
+| Um abraço,
+br/
+= CatarseSettings[:company_name]

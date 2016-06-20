@@ -1,0 +1,46 @@
+- project = @notification.project
+- user = @notification.user
+- project_account = project.account
+- balance_transfer = project.balance_transfer
+- project_transfer = project.project_transfer
+
+| Olá #{user.name},
+br/
+br/
+| O repasse do dinheiro arrecadado já foi autorizado e será creditado na conta bancária cadastrada em até 2 dias úteis.
+br/
+br/
+| Resumo da transação:
+br/
+br/
+| Titulo do projeto: #{project.name}
+br/
+| Valor alcançado: #{number_to_currency project_transfer.pledged, precision: 2}
+br/
+| (-) Taxa do Catarse: #{number_to_currency project_transfer.catarse_fee.to_f, precision: 2}
+br/
+| (+) Impostos gerados a partir da nota fiscal do Catarse para PJ: #{number_to_currency (project_transfer.irrf_tax), precision: 2 }
+br/
+| (=) Valor total do repasse: #{number_to_currency project_transfer.total_amount, precision: 2}
+br/
+br/
+| Dados bancários cadastrados:
+br/
+| Banco: #{project_account.bank_code} - #{project_account.bank}
+br/
+| Agencia: #{project_account.agency}-#{project_account.agency_digit}
+br/
+| Conta: #{project_account.account}-#{project_account.account_digit}
+br/
+| Nome: #{project_account.owner_name}
+br/
+| CPF/CNPJ: #{project_account.owner_document}
+br/
+br/
+| Se ficou com alguma dúvida, responda a esta mensagem diretamente ou fale conosco através do e-mail #{mail_to CatarseSettings[:email_adm]}. Caso precise falar via telefone estaremos a disposição de segunda à sexta das 14h às 18h no telefone (11) 984140090.
+br/
+br/
+| Abraços e VOLTE SEMPRE! ;D,
+br/
+= CatarseSettings[:company_name]
+

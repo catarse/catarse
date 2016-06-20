@@ -119,6 +119,12 @@ FactoryGirl.define do
     end
   end
 
+  factory :balance_transfer do |f|
+    f.amount 50
+    f.association :project
+    f.association :user
+  end
+
   factory :flexible_project do |f|
     f.state 'draft'
     f.mode 'flex'
@@ -152,6 +158,12 @@ FactoryGirl.define do
     f.most_recent true
     f.to_state 'online'
     f.sort_key { generate(:serial) }
+  end
+
+  factory :project_account_error do |f|
+    f.association :project_account
+    f.solved false
+    f.reason 'foo bar reason'
   end
 
   factory :project_account do |f|

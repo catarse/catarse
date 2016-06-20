@@ -67,6 +67,31 @@ RSpec.describe Project, type: :model do
     end
   end
 
+  describe '#has_account_error?' do
+    let(:project_account) { project.account }
+
+    subject { project.has_account_error? }
+
+    context 'when project account does not created' do
+      let(:project_account) { build(:project_account) }
+      it { is_expected.to eq(false) }
+    end
+
+    context 'when project account is fine' do
+      before do
+        create(:project_account_error, project_account: project_account, solved: true)
+      end
+      it { is_expected.to eq(false) }
+    end
+
+    context 'when have unsolved error on project account' do
+      before do
+        create(:project_account_error, project_account: project_account)
+      end
+      it { is_expected.to eq(true) }
+    end
+  end
+
   describe ".with_state" do
     let(:project_state) { 'online' }
     subject { Project.with_state(project_state).count }

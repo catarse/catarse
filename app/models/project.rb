@@ -31,6 +31,8 @@ class Project < ActiveRecord::Base
   belongs_to :category
   belongs_to :city
   belongs_to :origin
+  has_one :balance_transfer, inverse_of: :project
+  has_one :project_transfer, inverse_of: :project
   has_one :project_total
   has_one :account, class_name: "ProjectAccount", inverse_of: :project
   has_many :taggings
@@ -337,6 +339,12 @@ class Project < ActiveRecord::Base
 
   def direct_url
     @direct_url ||= Rails.application.routes.url_helpers.project_by_slug_url(self.permalink, locale: '')
+  end
+
+  def has_account_error?
+    return false unless account.persisted?
+
+    return account.project_account_errors.where(solved: false).exists?
   end
 
   def all_tags=(names)
