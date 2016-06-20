@@ -148,12 +148,13 @@ class ProjectsController < ApplicationController
     resource.expires_at = nil
     resource.mode = 'flex'
     resource.save!
-    redirect_to :back 
+    redirect_to :back
   end
 
   def embed
     resource
-    render partial: 'card', layout: 'embed', locals: {embed_link: true, ref: (params[:ref] || 'ctrse_embed')}
+    ref_domain = request.env["HTTP_REFERER"] && URI(request.env["HTTP_REFERER"]).host
+    render partial: 'card', layout: 'embed', locals: {embed_link: true, ref: (params[:ref] || 'ctrse_embed'), utm_campaign:'embed_permalink',utm_medium:'embed',utm_source:ref_domain||'embed_no_referer'}
   end
 
   def embed_panel
