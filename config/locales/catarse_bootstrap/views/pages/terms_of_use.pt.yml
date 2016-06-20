@@ -12,8 +12,8 @@ pt:
 
         guidelines: "Definições"
         guidelines_text: 'USUÁRIO: é toda e qualquer pessoa física ou jurídica que navegue ou faça uso do site do CATARSE, incluindo o CRIADOR DE PROJETOS e o APOIADOR DE PROJETOS.<br>
-          CATARSE TUDO OU NADA: é a forma de aproximação de CRIADORES DE PROJETOS e APOIADORES com objetivo de arrecadar, dentro de um prazo máximo de 60 dias, determinado valor para a realização de PROJETO específico dentro de um prazo máximo de 60 dias, com a possibilidade de ter ou não recompensas vinculadas a cada PROJETO.<br>
-          CATARSE FLEX: é a forma de aproximação de CRIADORES DE PROJETOS e APOIADORES com objetivo de arrecadar, dentro de um prazo máximo de 365 dias, determinado valor para a realização de PROJETO específico, dentro de um prazo máximo de 365 dias, com a possibilidade de levantar a quantia arrecadada, mesmo que não alcançado o valor total desejado, e com a possibilidade de ter ou não recompensas vinculadas a cada PROJETO;<br>
+          CATARSE TUDO OU NADA: é a forma de aproximação de CRIADORES DE PROJETOS e APOIADORES com objetivo de arrecadar, dentro de um prazo máximo de 60 dias, determinado valor para a realização de PROJETO específico, com a possibilidade de ter ou não recompensas vinculadas a cada PROJETO.<br>
+          CATARSE FLEX: é a forma de aproximação de CRIADORES DE PROJETOS e APOIADORES com objetivo de arrecadar, dentro de um prazo máximo de 365 dias, determinado valor para a realização de PROJETO específico, com a possibilidade de levantar a quantia arrecadada, mesmo que não alcançado o valor total desejado, e com a possibilidade de ter ou não recompensas vinculadas a cada PROJETO;<br>
 
           CRIADOR DE PROJETOS: é o USUÁRIO do CATARSE interessado em angariar fundos para realização de um PROJETO<br>
 
@@ -54,7 +54,7 @@ pt:
 
 4. Estipula o prazo em que deseja obter o valor total para iniciar o PROJETO, obrigatoriamente para a modalidade TUDO OU NADA e caso queira na modalidade FLEX; <br>
 
-5. Estabelece, caso queira,, recompensas aos APOIADORES que contribuírem com seu PROJETO, determinando as condições de sua obtenção, prazo e forma de recebimento, bem como o número de APOIADORES que poderão se beneficiar dessas recompensas. <br>
+5. Estabelece, caso queira, recompensas aos APOIADORES que contribuírem com seu PROJETO, determinando as condições de sua obtenção, prazo e forma de recebimento, bem como o número de APOIADORES que poderão se beneficiar dessas recompensas. <br>
 
 5.1. Ao estabelecer incentivos e/ou recompensas no PROJETO, assume as obrigações previstas no artigo 854 e seguintes do Código Civil Brasileiro, tornando-se diretamente responsável pelo cumprimento de sua promessa perante os APOIADORES que preencherem as condições estipuladas, sem qualquer responsabilidade, direta ou indireta, por parte do CATARSE; <br>
 
@@ -153,4 +153,4 @@ O CATARSE reserva-se, ainda, o direito de, a seu exclusivo critério e uma vez n
         law_text: "Estes termos de serviço são regidos única e exclusivamente pelas leis brasileiras, sendo que qualquer ação judicial relativa à sua interpretação ou aplicação deverá ser processada e julgada pelo Poder Judiciário Brasileiro. <br>
 Em caso de conflito de leis estaduais ou municipais, para a interpretação de qualquer dúvida ou litígio, deverá sempre prevalecer a legislação do Estado de São Paulo. <br>
 O foro eleito para resolução de eventuais conflitos é Foro Central da cidade de São Paulo, com exclusão de qualquer outro, por mais privilegiado que seja.</p><br>"
-        last_update: "Última atualização: 01/06/2016"
+        last_update: "Última atualização: 20/06/2016"
