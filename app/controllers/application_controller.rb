@@ -58,10 +58,12 @@ class ApplicationController < ActionController::Base
   end
 
   def build_cookie_structure(value)
-    {
-      value: value,
-      expires: 1.week.from_now
-    }
+    if value
+      {
+        value: value,
+        expires: 1.week.from_now
+      }
+    end
   end
 
   # Used on external services and generic email

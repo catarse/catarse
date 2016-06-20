@@ -73,5 +73,36 @@ RSpec.describe ApplicationController, type: :controller do
         expect(cookies[:origin_referral]).to eq initial_origin_value
       end
     end
+
+    context "when we still have a referral link in session and the ref params is nil and referrer is internal" do
+      let(:referrer){ 'http://www.catarse.me' }
+      let(:initial_session_value){ 'test' }
+      let(:initial_origin_value) { 'http://www.foo.bar' }
+      let(:params){ {ref: nil} }
+
+      it "should keep referal link equals" do
+        expect(cookies[:referral_link]).to eq 'test'
+      end
+
+      it "should store HTTP_REFERRER in origin" do
+        expect(cookies[:origin_referral]).to eq 'http://www.foo.bar'
+      end
+    end
+
+    context "when we still have a referral link in session and ref params and referrer is internal" do
+      let(:referrer){ 'http://www.catarse.me' }
+      let(:initial_session_value){ 'test' }
+      let(:initial_origin_value) { 'http://www.foo.bar' }
+      let(:params){ {ref: 'testado'} }
+
+      it "should keep referal link equals" do
+        expect(cookies[:referral_link]).to eq 'test'
+      end
+
+      it "should store HTTP_REFERRER in origin" do
+        expect(cookies[:origin_referral]).to eq 'http://www.foo.bar'
+      end
+    end
+
   end
 end
