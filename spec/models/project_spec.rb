@@ -68,8 +68,7 @@ RSpec.describe Project, type: :model do
   end
 
   describe '#has_account_error?' do
-    let(:project_account) { create(:project_account) }
-    let(:project) { project_account.project }
+    let(:project_account) { project.account }
 
     subject { project.has_account_error? }
 
