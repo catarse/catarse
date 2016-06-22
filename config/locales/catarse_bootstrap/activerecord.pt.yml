@@ -166,6 +166,7 @@ pt:
           duplicate: "O seu pagamento já está sendo processado"
         contribution: "Erro ao salvar apoio"
         bank_account:
+          invalid: "Conta inválida"
           attributes:
             bank:
               blank: 'Banco não pode ficar em branco'
