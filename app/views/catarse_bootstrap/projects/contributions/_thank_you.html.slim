@@ -1,4 +1,4 @@
-.u-marginbottom-30.page-header
+#project-header.u-marginbottom-30.page-header[data-stats=@project.to_analytics_json]
   .w-container
     .w-row
       .w-col.w-col-8.w-col-push-2
@@ -31,7 +31,6 @@
 - content_for :js_after do
   javascript:
     $(window).ready(function(){
-      //,project: # {@project.to_json.html_safe}
       CatarseAnalytics.event({cat:'contribution_finish',act:'contribution_finished',lbl:'creditcard',val:#{@contribution.value}});
       CatarseAnalytics.checkout('#{@contribution.id}','[#{@project.permalink}] #{(@contribution.reward.try(:minimum_value) || 0)} [creditcard]','#{@contribution.reward_id}','#{@project.category}','#{@contribution.value}','#{@contribution.value*@contribution.project.service_fee}');
     });
