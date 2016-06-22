@@ -211,3 +211,11 @@ http://suporte.catarse.me/hc/pt-br/articles/206507863-Catarse-flex-Principais-pe
             5:
               question: Como eu recebo minha recompensa?
               answer: Quando sua recompensa estiver pronta, <a href="%{userLink}" target="_blank">%{userName}</a> vai entrar em contato com você para combinar a entrega.
+    payment:
+      paid: Confirmado
+      refused: Recusado
+      pending: Pendente
+      pending_refund: Reembolso pendente
+      refunded: Reembolsado
+      chargeback: Contestado
+      deleted: Apagado
