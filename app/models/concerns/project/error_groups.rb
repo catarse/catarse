@@ -13,7 +13,7 @@ module Project::ErrorGroups
         video: [:video_url],
         reward: [:'rewards.size', :'rewards.minimum_value', :'rewards.deliver_at'],
         user_about: [:'user.uploaded_image', :'user.name', :'user.about_html'],
-        user_settings: ProjectAccount.attribute_names.map{|attr| ('project_account.' + attr).to_sym} << :account << :'account.agency_size'
+        user_settings: ProjectAccount.attribute_names.map{|attr| ('account.' + attr).to_sym} << :'account.agency_size'
       }
     rescue Exception => e
       puts "problem while using ErrorGroups concern:\n '#{e.message}'"
