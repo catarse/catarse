@@ -160,7 +160,13 @@ window.CatarseAnalytics = window.CatarseAnalytics || (function(){
 
     var body = document.getElementsByTagName('body'),
         data = body && body[0] && body[0].getAttribute('data-user');
-    return _user=data;
+    if(data) {
+      try {
+        return _user=JSON.parse(data);
+      } catch(e) {
+        console.error('[CatarseAnalytics._getUser] error parsing data '+JSON.stringify(data), e);
+      }
+    }
   }
   function _getProject() {
     if(_project)
@@ -168,7 +174,11 @@ window.CatarseAnalytics = window.CatarseAnalytics || (function(){
     var el = document.getElementById('project-show-root')||document.getElementById('project-header'),//pode não existir
         data = el && (el.getAttribute('data-parameters')||el.getAttribute('data-stats'));
     if(data) {
-      return _project=data;
+      try {
+        return  _project=JSON.parse(data);
+      } catch(e) {
+        console.error('[CatarseAnalytics._getProject] error parsing data '+JSON.stringify(data), e);
+      }
     }//else return undefined
   }
 
