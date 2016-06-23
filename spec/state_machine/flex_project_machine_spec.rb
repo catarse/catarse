@@ -8,7 +8,7 @@ RSpec.describe FlexProjectMachine, type: :model do
   subject { flexible_project.state_machine }
 
   before do
-    allow(flexible_project).to receive(:pledged).and_return(10)
+    allow(flexible_project).to receive(:paid_pledged).and_return(10)
     allow(flexible_project).to receive(:notify_observers).and_call_original
   end
 
