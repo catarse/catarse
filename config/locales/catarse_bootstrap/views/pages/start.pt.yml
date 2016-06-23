@@ -158,7 +158,7 @@ pt:
             secondary: 7391
         30:
           category_id: 30
-          sample_project_ids: 
+          sample_project_ids:
             primary: 2895
             secondary: 8389
       panes:
@@ -236,3 +236,15 @@ pt:
         title: 'Quero iniciar uma campanha chamada'
         select_default: 'Selecione uma categoria'
         submit: 'Comece seu rascunho'
+      mode:
+        title: 'Dois modelos. Uma só taxa.'
+        subtitle: 'No Catarse você escolhe a modalidade de financiamento coletivo ideal para sua campanha, sem pagar nada a mais por isso!'
+        aon:
+          info: 'Ao final da campanha, você só recebe o dinheiro se tiver atingido a meta de arrecadação.'
+          info_2: 'Prazo máximo no ar: 60 dias'
+        flex:
+          info: 'Ao final da campanha, você recebe todo o dinheiro, mesmo sem ter atingido a meta de arrecadação.'
+          info_2: 'Prazo máximo no ar: 12 meses'
+        tax_info: 'Taxa: 13% sobre o total arrecadado'
+        failed_info: 'Campanhas Tudo ou Nada que não atingem a meta não pagam nada. '
+        more_link: '<a href="http://fazum.catarse.me/tudoounada-ou-flex?utm_source=start&utm_medium=link&utm_content=Saiba%20mais%20sobre%20as%20taxas%20e%20modalidades&utm_campaign=ebook-tudoounada-flex" class="alt-link" target-"_blank">Saiba mais sobre as taxas e modalidades</a>'
