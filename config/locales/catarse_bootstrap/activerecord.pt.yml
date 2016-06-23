@@ -188,13 +188,16 @@ pt:
               blank: 'Dígito da agência não pode ficar em branco'
               invalid: 'Digito da agência inválido'
         project_account:
+          invalid: 'Conta não é válida'
           attributes:
             full_name:
               blank: "Razão social do usuário não pode ficar em branco"
             email:
               blank: "Email do usuário não pode ficar em branco"
+              invalid: "Email do usuário inválido"
             cpf:
               blank: "CPF do usuário não pode ficar em branco"
+              invalid: "CPF inválido"
             address_street:
               blank: "Endereço do usuário não pode ficar em branco"
             address_number:
@@ -211,6 +214,7 @@ pt:
               blank: "Banco do usuário não pode ficar em branco"
             agency:
               blank: "Agência do usuário não pode ficar em branco"
+              invalid: "Agência inválida"
             agency_digit:
               blank: "Dígito agência do usuário não pode ficar em branco"
             account:

@@ -11,6 +11,7 @@ class ProjectAccount < ActiveRecord::Base
   before_validation :load_bank_from_input_bank_number
 
   validates_presence_of :email, :address_street, :address_number, :address_city, :address_state, :address_zip_code, :phone_number, :bank, :agency, :account, :account_digit, :owner_name, :owner_document
+  validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
 
   validates_length_of :agency, minimum: 4
 
