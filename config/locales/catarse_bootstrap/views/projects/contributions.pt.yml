@@ -12,7 +12,7 @@ pt:
         success: Seu apoio foi realizado com sucesso. Muito obrigado!
       contribution:
         anonymous_contribution: Apoiador anônimo
-        anonymous_description: Optou por permanecer incógnito
+        anonymous_description: Optou por manter seu apoio não público.
         no_reward: Este apoiador não selecionou nenhuma recompensa
       selected_reward:
         review_without_reward_html: Você irá apoiar com <strong>%{value}</strong>
@@ -68,7 +68,7 @@ pt:
         payment_slip_disclaimer: "Caso o projeto não seja bem-sucedido, nós faremos o reembolso do seu apoio. Os dados bancários informados aqui serão usados para isso."
         review_errors_title: "Verifique os dados informados"
         review_errors: "Alguma informação está faltando ou não foi informada corretamente, corrija todos os campos marcados em vermelho e tesnte novamente"
-        anonymous_confirmation_title: "Você tem certeza que quer que seu apoio seja anônimo?"
+        anonymous_confirmation_title: "Você tem certeza que quer que seu apoio não seja público?"
         anonymous_confirmation: "Escolhendo essa opção o seu apoio não será público para outros usuários do Catarse. Apenas você e o Realizador do projeto terão acesso às informações do seu apoio."
         anonymous_contribution: "Quero que meu apoio não seja público"
         form_labels:
