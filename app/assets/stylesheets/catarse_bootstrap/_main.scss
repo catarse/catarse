@@ -2509,10 +2509,10 @@ a:hover {
 }
 
 .btn-category.small {
-  height: 40px;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  font-size: 14px;
+  height: 42px;
+  padding: 13px;
+  font-size: 18px;
+  line-height: 15px;
 }
 
 .hero-search {
@@ -3707,18 +3707,21 @@ a:hover {
   border: 1px solid #ddd;
   border-radius: 5px;
   background-color: #f1f4f4;
-  color: #79808b;
+  opacity: 0.6;
+  color: #3f4752;
 }
 
 .btn-select:hover {
   border-color: #7cc142;
   background-color: #fff;
+  opacity: 1;
   color: #3f4752;
 }
 
 .btn-select.selected {
   border-color: #7cc142;
   background-color: #fff;
+  opacity: 1;
   color: #3f4752;
 }
 
@@ -3782,6 +3785,16 @@ a:hover {
 
 .save-draft-btn-section.closed {
   margin-left: 0px;
+}
+
+.field-label-tip {
+  margin-top: -7px;
+}
+
+.header-topo {
+  padding: 134px;
+  background-color: #bdbb46;
+  text-align: center;
 }
 
 html.w-mod-js *[data-ix="fade-in"] {
@@ -5034,6 +5047,13 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
   .hero-slide {
     padding-top: 138px;
   }
+  .flex-row {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
   .friend-backed-card {
     margin-top: -18px;
   }
@@ -5510,3 +5530,21 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
   }
 }
 
+@font-face {
+  font-family: 'proxima-nova';
+  src: url('../fonts/ProximaNova-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'proxima-nova';
+  src: url('../fonts/ProximaNova-Semibold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'proxima-nova';
+  src: url('../fonts/ProximaNova-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
