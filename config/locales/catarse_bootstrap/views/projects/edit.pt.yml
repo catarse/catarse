@@ -1,10 +1,10 @@
 pt:
   projects:
     flex_nav_actions:
-      publish: 'Publicar'
+      publish: 'Continuar'
       announce_expiration: 'Definir prazo'
     aon_nav_actions:
-      publish: 'Publicar'
+      publish: 'Continuar'
       send: 'Enviar'
     edit:
       flex:
@@ -142,7 +142,7 @@ pt:
       edit_project: ' Editar projeto '
       send: Enviar
       announce_expiration: Definir prazo
-      publish: Continuar 
+      publish: Continuar
     dashboard_nav_links:
       flex:
         preview_tab: Preview
