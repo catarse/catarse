@@ -31,6 +31,6 @@
 - content_for :js_after do
   javascript:
     $(window).ready(function(){
-      CatarseAnalytics.event({cat:'contribution_finish',act:'contribution_finished',lbl:'creditcard',val:#{@contribution.value}});
+      CatarseAnalytics.event({cat:'contribution_finish',act:'contribution_finished',lbl:'creditcard',val:#{@contribution.value},extraData:{contribution_id:#{@contribution.id}}});
       CatarseAnalytics.checkout('#{@contribution.id}','[#{@project.permalink}] #{(@contribution.reward.try(:minimum_value) || 0)} [creditcard]','#{@contribution.reward_id}','#{@project.category}','#{@contribution.value}','#{@contribution.value*@contribution.project.service_fee}');
     });
