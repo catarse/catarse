@@ -57,7 +57,7 @@
                   .w-col.w-col-3.w-col-small-3.w-col-tiny-3.text-field.positive.prefix.no-hover
                     .fontsize-smallest.fontcolor-secondary.u-text-center R$
                   .w-col.w-col-9.w-col-small-9.w-col-tiny-9
-                    = f.input_field :minimum_value, as: :tel, class: 'project-edit-reward positive postfix', required: true, value: reward.localized.minimum_value
+                    = f.input_field :minimum_value, as: :tel, class: 'project-edit-reward positive postfix', required: true, value: reward.minimum_value.to_i
                 .fontsize-smaller.text-error.u-marginbottom-20.fa.fa-exclamation-triangle.w-hidden[data-error-for="reward_minimum_value"] = t('simple_form.validation_texts.reward.minimum_value')
             .w-row
               .w-col.w-col-5
