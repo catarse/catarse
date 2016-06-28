@@ -121,6 +121,10 @@ http://suporte.catarse.me/hc/pt-br/articles/206507863-Catarse-flex-Principais-pe
       contributions_per_day_label: 'Apoios confirmados por dia'
       location_origin_title: 'Localização geográfica dos apoios'
       ref_origin_title: 'Origem dos apoios'
+      amount_per_day_empty: Assim que os apoios começarem a aparecer você terá acesso a um gráfico aqui com o total de R$ arrecadados dia a dia. Com isso, você terá um controle diário de quanto falta para você atingir a sua meta de arrecadação.
+      contributions_per_day_empty: Você ainda não tem nenhum apoio ao seu projeto. Assim que os apoios começarem a aparecer você terá acesso a um gráfico aqui com o total de apoios confirmados dia a dia. Boa sorte!
+      contributions_per_ref_empty: Assim que os apoios começarem a aparecer você terá acesso a uma tabela aqui com a origem dos seus apoios. Com isso você poderá medir suas ações de comunicação e marketing da campanha!
+      contributions_per_location_empty: Assim que os apoios começarem a aparecer você terá acesso a uma tabela aqui com a localização geográfica dos seus apoiadores. Com isso você pode saber de que parte do país estão vindo os seus principais colaboradores!
     project:
       contributed: levantados
       reached: atingido
