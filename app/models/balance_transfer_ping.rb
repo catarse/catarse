@@ -1,5 +1,6 @@
 class BalanceTransferPing < ActiveRecord::Base
   belongs_to :balance_transfer
+  serialize :metadata, JSON
 
   def ping
     pagarme_delegator.transfer_funds
