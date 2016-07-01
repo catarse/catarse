@@ -19,7 +19,7 @@ gem 'statesman'
 
 # Database and data related
 gem 'pg', '0.17.1'
-gem 'dbhero', '>= 1.1.10'
+gem 'dbhero', '>= 1.1.11'
 gem 'postgres-copy'
 gem 'pg_search'
 gem 'i18n_alchemy'
