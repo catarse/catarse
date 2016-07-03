@@ -222,21 +222,21 @@ window.CatarseAnalytics = window.CatarseAnalytics || (function(){
         try {
           var apiUrl=_getApiHost();
           if(apiUrl) {
-            //var sendData = {
-            //  event: data
-            //};
+            var sendData = {
+              event: data
+            };
 
-            //ajax({
-            //    url: apiUrl,
-            //    // The key needs to match your method's input parameter (case-sensitive).
-            //    body: JSON.stringify(sendData),
-            //    headers: {
-            //      'content-type': "application/json; charset=utf-8"
-            //    }
-            //}, function(status, responseText, req){
-            //  if(status!==200)
-            //    console.error(status,responseText,req);
-            //});
+            ajax({
+                url: apiUrl,
+                // The key needs to match your method's input parameter (case-sensitive).
+                body: JSON.stringify(sendData),
+                headers: {
+                  'content-type': "application/json; charset=utf-8"
+                }
+            }, function(status, responseText, req){
+              if(status!==200)
+                console.error(status,responseText,req);
+            });
           }
         } catch(e) {
           console.error('[CatarseAnalytics.event] error:', e);
