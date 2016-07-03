@@ -568,8 +568,8 @@ RSpec.describe Project, type: :model do
       end
 
       context "when project_total exists" do
-        it "should return the sum of all payments that was_confirmed" do
-          is_expected.to eq(30.0)
+        it "should return the sum of all payments that is_confirmed when project.state is not failed" do
+          is_expected.to eq(10.0)
         end
       end
     end
