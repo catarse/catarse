@@ -8,7 +8,7 @@ class UpdateInsertProjectReport < ActiveRecord::Migration
                 project_report "1".project_reports;
               begin
                 insert into public.project_reports (user_id, project_id, email, reason, details, created_at, updated_at) values
-                                                  (NEW.user_id, NEW.project_id, NEW.email, NEW.reason, NEW.details, current_timestamp, current_timestamp);
+                                                  (current_user_id(), NEW.project_id, NEW.email, NEW.reason, NEW.details, current_timestamp, current_timestamp);
                 return new;
               end;
             $$;
