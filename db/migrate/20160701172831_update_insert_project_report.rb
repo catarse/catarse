@@ -22,6 +22,9 @@ class UpdateInsertProjectReport < ActiveRecord::Migration
             RETURN NEW;
         END;
         $$;
+
+        REVOKE ALL ON TABLE project_reports FROM anonymous;
+
     SQL
   end
 end
