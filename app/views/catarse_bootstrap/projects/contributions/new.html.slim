@@ -25,18 +25,18 @@
             = render 'devise/shared/alert'
             - if @rewards.present?
               = form.input :reward_id, as: :radio_buttons, collection: @rewards, input_html: {class: 'w-radio-input back-reward-radio-button'}, item_wrapper_class: 'w-radio w-clearfix back-reward-radio-reward', label: ''
-              = form.input_field :value, value: number_with_precision( @contribution.value, precision: 2 ), as: :hidden
+              = form.input_field :value, value: 100, as: :hidden
             - else
               span.radio.w-radio.w-clearfix.back-reward-radio-reward.selected
-                label.w-form-label.fontsize-base.fontweight-semibold.u-marginbottom-10 data-minimum-value="10,00" for="contribution_reward"= t('.no_rewards.label_title')
+                label.w-form-label.fontsize-base.fontweight-semibold.u-marginbottom-10 data-minimum-value="10" for="contribution_reward"= t('.no_rewards.label_title')
                 .w-row.back-reward-money.w-hidden style=("display: block;") 
                   .w-col.w-col-8.w-col-small-8.w-col-tiny-8.w-sub-col-middle.w-clearfix
                     .w-row
                       .w-col.w-col-3.w-col-small-3.w-col-tiny-3
                         .back-reward-input-reward.placeholder R$
                       .w-col.w-col-9.w-col-small-9.w-col-tiny-9
-                        input.user-reward-value.back-reward-input-reward autocomplete="off" min="0,00" value=@contribution.localized.value placeholder="10,00" type="tel" /
-                        = form.input_field :value, value: number_with_precision( @contribution.value, precision: 2 ), as: :hidden
+                        input.user-reward-value.back-reward-input-reward autocomplete="off" min="10" value=@contribution.value.to_i placeholder="10" type="tel" /
+                        = form.input_field :value, value: @contribution.value.to_i, as: :hidden
                     .fontsize-smaller.text-error.u-marginbottom-20.w-hidden
                       span.fa.fa-exclamation-triangle= t('.no_rewards.label_error')
                   .submit-form.w-col.w-col-4.w-col-small-4.w-col-tiny-4
