@@ -12,7 +12,7 @@ class AonProjectMachine < FlexProjectMachine
     transition from: :draft, to: %i(rejected deleted in_analysis online)
     transition from: :in_analysis, to: %i(approved rejected draft deleted)
     transition from: :approved, to: %i(online in_analysis)
-    transition from: :online, to: %i(waiting_funds successful failed)
+    transition from: :online, to: %i(draft rejected deleted waiting_funds successful failed)
     transition from: :waiting_funds, to: %i(successful failed)
 
     guard_transition(to: :failed) do |project|
