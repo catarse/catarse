@@ -124,7 +124,7 @@ GEM
     connection_pool (2.2.0)
     daemons (1.2.3)
     database_cleaner (1.5.1)
-    dbhero (1.1.11)
+    dbhero (1.1.12)
       google_drive (~> 1.0.4)
       has_scope
       rails (>= 4.1)
@@ -537,7 +537,7 @@ DEPENDENCIES
   coffee-rails
   compass-rails
   database_cleaner
-  dbhero (>= 1.1.11)
+  dbhero (>= 1.1.12)
   devise
   draper
   factory_girl_rails
@@ -607,5 +607,8 @@ DEPENDENCIES
   video_info (~> 2.4.2)
   zonebie
 
+RUBY VERSION
+   ruby 2.2.3p173
+
 BUNDLED WITH
-   1.10.6
+   1.12.5

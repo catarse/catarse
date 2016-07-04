@@ -22,6 +22,8 @@ Dbhero.configure do |config|
   # https://developers.google.com/drive/web/auth/web-server
   config.google_api_id = CatarseSettings.get_without_cache(:google_api_id)
   config.google_api_secret = CatarseSettings.get_without_cache(:google_api_secret)
+
+  config.cached_query_exp = 5.minutes
 end
 
 
