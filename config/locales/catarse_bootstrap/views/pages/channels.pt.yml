@@ -73,7 +73,9 @@ pt:
     table:
       approve: Aprovar
       category: Categoria
-      confirmation: Tem certeza que deseja deletar esse projeto?
+      confirmation: Tem certeza que deseja deletar esse projeto? Todos apoios serão reembolsados
+      confirmation_reject: Tem certeza que deseja rejeitar esse projeto? Todos apoios serão reembolsados
+      confirmation_draft: Tem certeza que deseja passar para draft esse projeto? Todos apoios serão reembolsados
       contributed_projects: Projetos apoiados
       created_projects: Projeto criados
       destroy_action: Deletar

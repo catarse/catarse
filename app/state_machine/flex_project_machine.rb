@@ -96,7 +96,7 @@ class FlexProjectMachine
     transition from: :deleted, to: %i(draft)
     transition from: :rejected, to: %i(draft deleted)
     transition from: :draft, to: %i(rejected deleted online)
-    transition from: :online, to: %i(waiting_funds successful failed)
+    transition from: :online, to: %i(draft rejected deleted waiting_funds successful failed)
     transition from: :waiting_funds, to: %i(successful failed)
   end
 

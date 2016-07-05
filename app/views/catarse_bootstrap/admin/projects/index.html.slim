@@ -107,12 +107,12 @@
 
                 - if project.can_reject?
                   li
-                    = link_to reject_admin_project_path(project), class: 'w-dropdown-link dropdown-link fontsize-smaller', method: :put  do
+                    = link_to reject_admin_project_path(project), class: 'w-dropdown-link dropdown-link fontsize-smaller', data:{ confirm: t('admin.table.confirmation_reject')}, method: :put  do
                       = t('admin.table.reject')
 
                 - if project.can_push_to_draft?
                   li
-                    = link_to  push_to_draft_admin_project_path(project), class: 'w-dropdown-link dropdown-link fontsize-smaller', method: :put  do
+                    = link_to  push_to_draft_admin_project_path(project), class: 'w-dropdown-link dropdown-link fontsize-smaller', data:{ confirm: t('admin.table.confirmation_draft')}, method: :put  do
                       = t('admin.table.send_to_draft')
                 - if project.can_push_to_trash?
                   li

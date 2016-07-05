@@ -60,9 +60,21 @@ class ProjectObserver < ActiveRecord::Observer
   # Flexible pojects can go direct to online from draft
   alias :from_draft_to_online :from_approved_to_online
 
+  def from_online_to_draft(project)
+    refund_all_payments(project)
+  end
+
+  def from_online_to_rejected(project)
+    refund_all_payments(project)
+  end
+
+  def from_online_to_deleted(project)
+    refund_all_payments(project)
+  end
+
   def from_online_to_failed(project)
     notify_users(project)
-    request_refund_for_failed_project(project)
+    refund_all_payments(project)
   end
 
   def from_waiting_funds_to_failed(project)
@@ -87,7 +99,7 @@ class ProjectObserver < ActiveRecord::Observer
     end
   end
 
-  def request_refund_for_failed_project(project)
+  def refund_all_payments(project)
     project.payments.with_state('paid').each do |payment|
       payment.direct_refund
     end
