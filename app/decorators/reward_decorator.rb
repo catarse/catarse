@@ -20,7 +20,7 @@ class RewardDecorator < Draper::Decorator
       </div>
     }
     %{
-      <label data-minimum-value="#{source.minimum_value > 0 ? number_with_precision(source.minimum_value, precison: 2) : '10,00'}" class="w-form-label fontsize-base fontweight-semibold u-marginbottom-10" for="contribution_reward#{source.id && "_#{source.id}"}">#{source.minimum_value > 0 ? "#{source.display_minimum}  #{I18n.t('rewards.index.or_more')}" : I18n.t('rewards.index.dont_want')}</label>
+      <label data-minimum-value="#{source.minimum_value > 0 ? source.minimum_value.to_i : '10'}" class="w-form-label fontsize-base fontweight-semibold u-marginbottom-10" for="contribution_reward#{source.id && "_#{source.id}"}">#{source.minimum_value > 0 ? "#{source.display_minimum}  #{I18n.t('rewards.index.or_more')}" : I18n.t('rewards.index.dont_want')}</label>
       <div class="w-row back-reward-money w-hidden">
         <div class="w-col w-col-8 w-col-small-8 w-col-tiny-8 w-sub-col-middle w-clearfix">
           <div class="w-row">
@@ -28,7 +28,7 @@ class RewardDecorator < Draper::Decorator
               <div class="back-reward-input-reward placeholder">R$</div>
             </div>
             <div class="w-col w-col-9 w-col-small-9 w-col-tiny-9">
-              <input class="user-reward-value back-reward-input-reward" type="tel" min="#{number_with_precision(source.minimum_value, precison: 2)}" placeholder="#{source.minimum_value > 0 ? number_with_precision(source.minimum_value, precison: 2) : '10,00'}">
+              <input class="user-reward-value back-reward-input-reward" type="tel" min="#{source.minimum_value.to_i}" placeholder="#{source.minimum_value > 0 ? source.minimum_value.to_i : '10'}">
             </div>
           </div>
           <div class="fontsize-smaller text-error u-marginbottom-20 w-hidden"><span class="fa fa-exclamation-triangle"></span> O valor do apoio está incorreto</div>

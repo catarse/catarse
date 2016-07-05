@@ -2,7 +2,7 @@ App.addChild('Contribution', {
   el: '#new-contribution',
 
   events: {
-    'click .radio label' : 'clickReward',
+    'click .radio' : 'clickReward',
     'click .submit-form' : 'submitForm',
     'keyup .user-reward-value' : 'submitOnReturnKey',
     'click .user-reward-value' : 'clearOnFocus',
@@ -42,11 +42,11 @@ App.addChild('Contribution', {
   },
 
   activate: function(){
-    this.$('.user-reward-value').mask('000.000.000,00', {reverse: true});
+    this.$('.user-reward-value').mask('000.000.000', {reverse: true});
     this.$value = this.$('#contribution_value');
     this.$minimum = this.$('#minimum-value');
     if(this.$('input[type=radio]').length > 0) {
-      this.clickReward({currentTarget: this.$('input[type=radio]:checked').parent()});
+      this.clickReward({currentTarget: this.$('input[type=radio]:checked').parents('.radio')});
       this.isOnAutoScroll = false;
       this.activateFloattingHeader();
     }
@@ -100,7 +100,7 @@ App.addChild('Contribution', {
   },
 
   clickReward: function(event){
-    var $el = $(event.currentTarget);
+    var $el = $(event.currentTarget).find('label');
     if(!$el.parents('.back-reward-radio-reward').hasClass('selected')) {
       var elOffset = $el.offset().top;
       var elHeight = $el.height();
