@@ -4,11 +4,11 @@ pt:
       row_title: 'Populares'
       banners:
         1:
-          title: 'Financie seu projeto'
-          subtitle: 'Inicie sua campanha de arrecadação e junte-se à maior comunidade de financiamento coletivo do Brasil'
+          title: 'Financiamento coletivo para todos'
+          subtitle: ''
           link: '/start?ref=home_banner'
-          cta: 'Comece agora'
-          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-start.jpg'
+          cta: 'Comece sua campanha'
+          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-fctodos.jpg'
         2:
           title: 'Liniker e os Caramelows'
           subtitle: 'Participe do REMONTA, primeiro álbum de Liniker e os Caramelows.'
