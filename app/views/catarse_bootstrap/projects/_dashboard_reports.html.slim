@@ -35,7 +35,7 @@
                 - selected_r.each do |reward|
                   li.fontsize-smaller.u-marginbottom-10
                     div
-                      | Apoiadores da recompensa #{reward.display_minimum} &nbsp;
+                      | #{reward.display_minimum} #{truncate(reward.description, length: 30)};
                       = link_to 'CSV', reports_contribution_reports_for_project_owners_path(project_id: @project.id, state: default_states, reward_id: reward.id, format: :csv), class: 'alt-link'
                       | &nbsp;\&nbsp;
                       = link_to 'XLS', reports_contribution_reports_for_project_owners_path(project_id: @project.id, state: default_states, reward_id: reward.id, format: :xls), class: 'alt-link'
