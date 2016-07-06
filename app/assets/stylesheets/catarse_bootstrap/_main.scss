@@ -94,14 +94,6 @@ a:hover {
   margin-bottom: -80px;
 }
 
-.section.section-fixed-bottom {
-  position: fixed;
-  left: 0px;
-  right: 0px;
-  bottom: 0px;
-  z-index: 3000;
-}
-
 .bootstrap-color-swatch {
   position: static;
   width: 70%;
@@ -1820,10 +1812,9 @@ a:hover {
 }
 
 .thumb {
-  width: 70px;
-  height: 70px;
-  background-position: 50% 50%;
-  background-size: cover;
+  width: 60px;
+  height: 60px;
+  background-image: none;
 }
 
 .thumb.small {
@@ -2113,7 +2104,7 @@ a:hover {
 
 .share-block {
   display: inline;
-  margin-right: 4px;
+  margin-right: 25px;
 }
 
 .preview {
@@ -2760,7 +2751,7 @@ a:hover {
   z-index: 20;
   display: block;
   width: 70%;
-  margin-top: -6px;
+  margin-top: 10px;
   padding: 32px 35px;
   border-radius: 5px;
   background-color: #fff;
@@ -3791,10 +3782,8 @@ a:hover {
   margin-top: -7px;
 }
 
-.header-topo {
-  padding: 134px;
-  background-color: #bdbb46;
-  text-align: center;
+.fontsize-mini {
+  font-size: 10px;
 }
 
 html.w-mod-js *[data-ix="fade-in"] {
@@ -4424,10 +4413,10 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
   .project-stats {
     height: auto;
     margin-right: -10px;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
     margin-left: -10px;
     padding: 30px 30px 20px;
-    border-top: 1px solid #e9e9ec;
+    border-top: 1px none #e9e9ec;
     border-bottom: 1px solid #e9e9ec;
     text-align: center;
   }
@@ -4456,6 +4445,8 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
   .project-share {
     margin-bottom: 35px;
     padding-top: 0px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e9e9ec;
     text-align: center;
   }
   .icon-close {
@@ -4709,8 +4700,8 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
     width: 30%;
   }
   .thumb {
-    width: 70px;
-    height: 70px;
+    width: 60px;
+    height: 60px;
   }
   .thumb.small {
     width: 35px;
@@ -4923,6 +4914,8 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
     bottom: 0px;
     display: none;
     width: 100%;
+    margin-top: 0px;
+    border-radius: 0px;
     background-color: hsla(0, 0%, 100%, .93);
     text-align: left;
   }
