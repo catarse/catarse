@@ -25,7 +25,7 @@
             = render 'devise/shared/alert'
             - if @rewards.present?
               = form.input :reward_id, as: :radio_buttons, collection: @rewards, input_html: {class: 'w-radio-input back-reward-radio-button'}, item_wrapper_class: 'w-radio w-clearfix back-reward-radio-reward', label: ''
-              = form.input_field :value, value: 100, as: :hidden
+              = form.input_field :value, value: 10, as: :hidden
             - else
               span.radio.w-radio.w-clearfix.back-reward-radio-reward.selected
                 label.w-form-label.fontsize-base.fontweight-semibold.u-marginbottom-10 data-minimum-value="10" for="contribution_reward"= t('.no_rewards.label_title')
