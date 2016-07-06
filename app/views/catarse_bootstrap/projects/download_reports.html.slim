@@ -1,0 +1,61 @@
+- content_for :title, "#{@project.name} · #{CatarseSettings[:company_name]}"
+- content_for :js do
+  = javascript_include_tag 'redactor', '//www.google.com/jsapi'
+- content_for :stylesheets do
+  = stylesheet_link_tag 'redactor'
+= render 'shared/header'
+.w-section.section-product[class=@project.mode]
+#dashboard-titles-root.w-section.dashboard-header.u-text-center data-stats="#{@project.try(:to_analytics_json)}"
+  .w-container
+    .w-row
+      .w-col.w-col-8.w-col-push-2.u-marginbottom-30
+        #dashboard-page-title.fontweight-semibold.fontsize-larger.lineheight-looser
+        #dashboard-page-subtitle.fontsize-base
+.project-dashboard-edit
+  = render partial: 'dashboard_nav', locals: {edit_page: true}
+  section.min-height-70
+    .w-section
+      article
+        - selected_r = @project.selected_rewards
+        - default_states = @project.failed? ? %w(pending_refund refunded paid) : 'paid'
+        .section.project-metrics
+          .w-container
+            .w-row
+              .w-col.w-col-2
+              .w-col.w-col-8
+                .card.u-radius.u-marginbottom-20.card-terciary data-ix="new-interaction" 
+                  .fontsize-small.fontweight-semibold.u-marginbottom-20
+                    span.fa.fa-download &nbsp;
+                    | Baixar relatórios
+                  ul.w-list-unstyled
+                    li.fontsize-smaller.u-marginbottom-10
+                      div
+                        | Apoiadores confirmados &nbsp;
+                        = link_to 'CSV', reports_contribution_reports_for_project_owners_path(project_id: @project.id, state: default_states, format: :csv), class: 'alt-link'
+                        | &nbsp;\&nbsp;
+                        = link_to 'XLS', reports_contribution_reports_for_project_owners_path(project_id: @project.id, state: default_states, format: :xls), class: 'alt-link'
+                    li.divider.u-marginbottom-10
+                    li.fontsize-smaller.u-marginbottom-10
+                      div
+                        | Apoiadores pendentes&nbsp;&nbsp;
+                        = link_to 'CSV', reports_contribution_reports_for_project_owners_path(project_id: @project.id, state: 'pending', waiting_payment: 'true', format: :csv), class: 'alt-link'
+                        | &nbsp;\&nbsp;
+                        = link_to 'XLS', reports_contribution_reports_for_project_owners_path(project_id: @project.id, state: 'pending', waiting_payment: 'true', format: :xls), class: 'alt-link'
+                    li.divider.u-marginbottom-10
+                    li.fontsize-smaller.u-marginbottom-10
+                      div
+                        | Apoiadores que não selecionaram recompensa&nbsp;&nbsp;
+                        = link_to 'CSV', reports_contribution_reports_for_project_owners_path(project_id: @project.id, state: default_states, reward_id: 0, format: :csv), class: 'alt-link'
+                        | &nbsp;\&nbsp;
+                        = link_to 'XLS', reports_contribution_reports_for_project_owners_path(project_id: @project.id, state: default_states, reward_id: 0, format: :xls), class: 'alt-link'
+                    li.divider.u-marginbottom-10
+                    - if selected_r.length > 0
+                        - selected_r.each do |reward|
+                          li.fontsize-smaller.u-marginbottom-10
+                            div
+                              | #{reward.display_minimum} #{truncate(reward.description, length: 30)};
+                              = link_to 'CSV', reports_contribution_reports_for_project_owners_path(project_id: @project.id, state: default_states, reward_id: reward.id, format: :csv), class: 'alt-link'
+                              | &nbsp;\&nbsp;
+                              = link_to 'XLS', reports_contribution_reports_for_project_owners_path(project_id: @project.id, state: default_states, reward_id: reward.id, format: :xls), class: 'alt-link'
+                          li.divider.u-marginbottom-10
+              .w-col.w-col-2

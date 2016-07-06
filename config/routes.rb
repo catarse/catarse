@@ -84,6 +84,7 @@ Catarse::Application.routes.draw do
     member do
       get 'insights'
       get 'contributions_report'
+      get 'download_reports'
       put 'pay'
       put 'push_to_flex'
       get 'embed'

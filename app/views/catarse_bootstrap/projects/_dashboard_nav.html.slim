@@ -16,7 +16,7 @@
           span.fa.fa-bar-chart.fa-lg.fa-fw
           = t('.start_tab')
         - if @project.published?
-          = link_to (edit ? '#reports' : edit_project_path(@project, anchor: 'reports')), id: 'dashboard_reports_link', class: 'dashboard-nav-link-left ' , data: {target: '#dashboard_reports', tab_group: 'edit'} do
+          = link_to contributions_report_project_path(@project), class: 'dashboard-nav-link-left ' do
             span.fa.fa.fa-table.fa-lg.fa-fw
             = t('.reports_tab')
           = link_to (edit ? '#posts' : edit_project_path(@project, anchor: 'posts')), id: 'dashboard_posts_link', class: 'dashboard-nav-link-left u-marginbottom-30' , data: {target: '#dashboard_posts', tab_group: 'edit'} do
