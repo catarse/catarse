@@ -12,7 +12,7 @@
 - if policy(resource).update?
   - projects_to_show = resource.contributed_projects
 - else
-  - projects_to_show = resource.contributed_projects.where(contributions: {anonymous: false})
+  - projects_to_show = resource.public_contributed_projects
 
 .hero-half
   .w-container.content-hero-profile

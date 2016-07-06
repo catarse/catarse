@@ -1,3 +1,7 @@
+- if policy(resource).update?
+  - total_contributed_projects = resource.contributed_projects.count
+- else
+  - total_contributed_projects = resource.public_contributed_projects.count
 .card.card-user.u-radius.u-marginbottom-30[itemprop="author"]
   .w-row
     .w-col.w-col-4.w.col-small-4.w-col-tiny-4.w-clearfix  
@@ -6,7 +10,7 @@
       .fontsize-small.fontweight-semibold.lineheight-tighter[itemprop="name"] = link_to resource.display_name, user_path(resource), class: 'link-hidden'
       .fontsize-smallest.lineheight-looser[itemprop="address"] = resource.address_city
       .fontsize-smallest = t('created_project', count: resource.created_projects.size)
-      .fontsize-smallest = t('contributed_project', count: resource.total_contributed_projects)
+      .fontsize-smallest = t('contributed_project', count: total_contributed_projects)
   .project-author-contacts
     ul.w-list-unstyled.fontsize-smaller.fontweight-semibold
       - if resource.facebook_link.present?
