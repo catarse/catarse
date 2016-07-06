@@ -23,5 +23,8 @@ class ProjectAccount < ActiveRecord::Base
     end
   end
 
+  def email=(value)
+    self[:email] = value.to_s.strip
+  end
 
 end
