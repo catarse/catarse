@@ -62,6 +62,9 @@ class User < ActiveRecord::Base
   has_many :user_transfers
   has_many :project_posts
   has_many :donations
+  has_many :public_contributed_projects, -> do
+    distinct.where("contributions.was_confirmed and anonymous='f'")
+  end, through: :contributions, source: :project
   has_many :contributed_projects, -> do
     distinct.where("contributions.was_confirmed")
   end, through: :contributions, source: :project
