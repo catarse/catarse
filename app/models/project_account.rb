@@ -27,4 +27,11 @@ class ProjectAccount < ActiveRecord::Base
     self[:email] = value.to_s.strip
   end
 
+  def agency=(value)
+    self[:agency] = value.to_s.strip
+  end
+
+  def account=(value)
+    self[:account] = value.to_s.strip
+  end
 end
