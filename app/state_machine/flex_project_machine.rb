@@ -142,7 +142,7 @@ class FlexProjectMachine
 
   #send notification to admin if there is a problem finishing the project
   def send_errors_to_admin
-    self.object.notify_to_backoffice :project_finish_error if self.object.project_errors.present?
+    self.object.notify_to_backoffice :project_finish_error if self.object.project_errors.where(to_state: FlexProjectMachine.need_expiration_states).present?
     false #so finish returns false
   end
 
