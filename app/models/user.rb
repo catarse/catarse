@@ -92,6 +92,19 @@ class User < ActiveRecord::Base
      where("subscribed_to_project_posts")
    }
 
+  scope :with_contributing_friends_since_last_day, -> {
+    joins("join user_follows on user_follows.user_id = users.id").
+      where("(EXISTS (
+        SELECT true 
+        from contributions
+        join payments on payments.contribution_id = contributions.id 
+        WHERE user_follows.follow_id = contributions.user_id 
+            and contributions.is_confirmed 
+            and not contributions.anonymous
+            and payments.paid_at > CURRENT_TIMESTAMP - '1 day'::interval
+            ))")
+  }
+
   scope :subscribed_to_project, ->(project_id) {
     who_contributed_project(project_id).
     where("id NOT IN (SELECT user_id FROM unsubscribes WHERE project_id = ?)", project_id)
@@ -214,6 +227,24 @@ class User < ActiveRecord::Base
 
   def total_contributed_projects
     user_total.try(:total_contributed_projects).to_i
+  end
+
+  def contributing_friends_since_last_day(project)
+    follows.joins('join contributions on contributions.user_id = user_follows.follow_id 
+                    join payments on payments.contribution_id = contributions.id
+                    join projects on projects.id = contributions.project_id').
+                  where("contributions.is_confirmed 
+                        and not contributions.anonymous 
+                        and payments.paid_at > CURRENT_TIMESTAMP - '1 day'::interval and projects.id = ?", project.id).uniq
+  end
+
+  def projects_backed_by_friends_in_last_day
+    Project.joins(:contributions).
+      joins('join user_follows on user_follows.follow_id = contributions.user_id
+            join payments on payments.contribution_id = contributions.id').
+            where('contributions.is_confirmed and not contributions.anonymous').
+            where("payments.paid_at > CURRENT_TIMESTAMP - '1 day'::interval
+                  and user_follows.user_id = ?", self.id).uniq
   end
 
   def has_no_confirmed_contribution_to_project(project_id)
