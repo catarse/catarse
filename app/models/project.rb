@@ -347,6 +347,19 @@ class Project < ActiveRecord::Base
     return account.project_account_errors.where(solved: false).exists?
   end
 
+  def all_public_tags=(names)
+    self.tags = names.split(',').map do |name|
+      Tag.find_or_create_by(slug: name.parameterize) do |tag|
+        tag.name = name.strip
+      end
+    end
+  end
+
+  def all_public_tags
+    tags.map(&:name).join(", ")
+  end
+
+
   def all_tags=(names)
     self.tags = names.split(',').map do |name|
       Tag.find_or_create_by(slug: name.parameterize) do |tag|
