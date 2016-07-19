@@ -37,6 +37,7 @@ class Project < ActiveRecord::Base
   has_one :account, class_name: "ProjectAccount", inverse_of: :project
   has_many :taggings
   has_many :tags, through: :taggings
+  has_many :public_tags, through: :taggings
   has_many :rewards
   has_many :contributions
   has_many :project_errors
@@ -348,15 +349,15 @@ class Project < ActiveRecord::Base
   end
 
   def all_public_tags=(names)
-    self.tags = names.split(',').map do |name|
-      Tag.find_or_create_by(slug: name.parameterize) do |tag|
+    self.public_tags = names.split(',').map do |name|
+      PublicTag.find_or_create_by(slug: name.parameterize) do |tag|
         tag.name = name.strip
       end
     end
   end
 
   def all_public_tags
-    tags.map(&:name).join(", ")
+    public_tags.map(&:name).join(", ")
   end
 
 
