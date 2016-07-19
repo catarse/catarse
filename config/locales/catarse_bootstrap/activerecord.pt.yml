@@ -88,7 +88,7 @@ pt:
         service_fee: 'Taxa do Catarse'
         video_url: "URL do vídeo"
         permalink: 'Link para o seu projeto no Catarse'
-        all_tags: 'Tags'
+        all_tags: 'Admin Tags'
         all_public_tags: 'Tags'
         city: 'Local do projeto'
         more_links: 'Indique links para as pessoas conhecerem mais sobre o seu projeto e sua trajetória.'
@@ -111,7 +111,7 @@ pt:
         user_id: "Id do usuário"
         video_url: "URL do vídeo"
         permalink: 'Link do seu projeto'
-        all_tags: 'Tags'
+        all_tags: 'Admin Tags'
         all_public_tags: 'Tags'
         city: 'Local do projeto'
         more_links: 'Indique links para as pessoas conhecerem mais sobre o seu projeto e sua trajetória.'
