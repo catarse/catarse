@@ -111,8 +111,16 @@ class User < ActiveRecord::Base
 
   scope :order_by, ->(sort_field){ order(sort_field) }
 
+  def self.followed_since_last_day
+    where(id: UserFollow.since_last_day.pluck(:follow_id))
+  end
+
   def self.find_active!(id)
     self.active.where(id: id).first!
+  end
+
+  def followers_since_last_day
+    followers.where(created_at: Time.current - 1.day .. Time.current)
   end
 
   def has_fb_auth?
