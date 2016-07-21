@@ -228,7 +228,9 @@ class User < ActiveRecord::Base
       has_online_project: self.has_online_project?,
       has_created_post: self.has_sent_notification?,
       last_login: self.last_sign_in_at,
-      created_today: self.created_today?
+      created_today: self.created_today?,
+      follows_count: follows.count,
+      followers_count: followers.count
     }
   end
 
