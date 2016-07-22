@@ -33,7 +33,10 @@ tr
                       span style="font-size:12px"  #{follower.user.created_projects.size} projetos criados | #{follower.user.total_contributed_projects} projetos apoiados
                       br/
                       br/
-                      = link_to 'Seguir', follow_fb_friends_url(user_email: user.email, user_token: user.authentication_token, follow_user_id: follower.user.id), style: "font-weight:500;letter-spacing:normal;line-height:100%;text-align:center;text-decoration:none;color:#79808b;display:inline-block;width:100px;background-color:#ffffff;border-radius:3px;border:2px solid;border-color:#79808b;padding:10px 25px", target: '_blank'
+                      -if user.follows.pluck(:follow_id).include?(follower.user_id)
+                        = link_to 'Seguindo', follow_fb_friends_url(user_email: user.email, user_token: user.authentication_token, anchor: 'follows'), style: "font-weight:500;letter-spacing:normal;line-height:100%;text-align:center;text-decoration:none;color:#ffffff;display:inline-block;width:100px;background-color:#7cc142;border-radius:3px;padding:10px 25px", target: '_blank'
+                      -else
+                        = link_to 'Seguir', follow_fb_friends_url(user_email: user.email, user_token: user.authentication_token, follow_user_id: follower.user.id, anchor: 'follows'), style: "font-weight:500;letter-spacing:normal;line-height:100%;text-align:center;text-decoration:none;color:#79808b;display:inline-block;width:100px;background-color:#ffffff;border-radius:3px;border:2px solid;border-color:#79808b;padding:10px 25px", target: '_blank'
 
 /tr
   /td style="background-color:#fafafa;border-top:0;border-bottom:0;padding-top:9px;padding-bottom:9px" valign="top" 
