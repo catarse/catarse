@@ -337,7 +337,9 @@ RSpec.describe User, type: :model do
         has_online_project: user.has_online_project?,
         has_created_post: user.has_sent_notification?,
         last_login: user.last_sign_in_at,
-        created_today: user.created_today?
+        created_today: user.created_today?,
+        follows_count: user.follows.count,
+        followers_count: user.followers.count
       }.to_json)
     end
   end
