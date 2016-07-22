@@ -1468,7 +1468,7 @@ a:hover {
 .user-avatar {
   width: 35px;
   height: 35px;
-  margin-right: 10px;
+  margin-right: 8px;
   float: none;
   border-radius: 50%;
   -webkit-transition: all 500ms ease;
@@ -2749,7 +2749,6 @@ a:hover {
   position: absolute;
   left: 20%;
   z-index: 20;
-  display: block;
   width: 70%;
   margin-top: 10px;
   padding: 32px 35px;
@@ -3757,8 +3756,15 @@ a:hover {
 }
 
 .friend-backed-card {
-  margin-top: -30px;
-  margin-bottom: 40px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 20px;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .save-draft-btn-section {
@@ -3784,6 +3790,78 @@ a:hover {
 
 .fontsize-mini {
   font-size: 10px;
+}
+
+.btn-messenger {
+  border: 1px solid #0082f3;
+  background-color: #0084ff;
+}
+
+.btn-messenger:hover {
+  border: 1px solid #0a7bdd;
+  background-color: #0a7bdd;
+}
+
+.btn-bottom-card {
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  display: block;
+  margin-bottom: 20px;
+  -webkit-box-align: end;
+  -webkit-align-items: flex-end;
+  -ms-flex-align: end;
+  align-items: flex-end;
+}
+
+.position-relative {
+  position: relative;
+}
+
+.card-backer {
+  position: relative;
+  height: 275px;
+}
+
+.friend-facepile {
+  display: inline-block;
+  height: 55px;
+}
+
+.friend-namepile {
+  display: inline-block;
+  max-width: 60%;
+}
+
+.back-project-btn-div {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 20px;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.back-project--btn-row {
+  -webkit-box-flex: 70%;
+  -webkit-flex: 70%;
+  -ms-flex: 70%;
+  flex: 70%;
+}
+
+.back-project-btn-row-right {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  text-align: center;
 }
 
 html.w-mod-js *[data-ix="fade-in"] {
@@ -4363,9 +4441,6 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
     margin-right: 10px;
     margin-left: 10px;
   }
-  .friend-backed-card {
-    margin-top: -8px;
-  }
   .save-draft-btn-section {
     margin-left: 0px;
   }
@@ -4912,7 +4987,6 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
     top: 0px;
     right: 20%;
     bottom: 0px;
-    display: none;
     width: 100%;
     margin-top: 0px;
     border-radius: 0px;
@@ -5047,8 +5121,25 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
     -ms-flex-direction: column;
     flex-direction: column;
   }
-  .friend-backed-card {
-    margin-top: -18px;
+  .card-backer {
+    height: 265px;
+  }
+  .back-project-btn-div {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: stretch;
+    -webkit-align-items: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+  }
+  .back-project--btn-row {
+    margin-bottom: 15px;
+    -webkit-flex-basis: 100%;
+    -ms-flex-preferred-size: 100%;
+    flex-basis: 100%;
   }
 }
 
@@ -5443,7 +5534,6 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
     width: auto;
   }
   .pop-share {
-    display: none;
     padding-right: 10px;
     padding-left: 10px;
   }
@@ -5520,5 +5610,8 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
   }
   .how-row {
     margin-top: 30px;
+  }
+  .card-backer {
+    height: 255px;
   }
 }
