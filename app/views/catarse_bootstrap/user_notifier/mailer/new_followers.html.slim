@@ -38,44 +38,39 @@ tr
                       -else
                         = link_to 'Seguir', follow_fb_friends_url(user_email: user.email, user_token: user.authentication_token, follow_user_id: follower.user.id, anchor: 'follows'), style: "font-weight:500;letter-spacing:normal;line-height:100%;text-align:center;text-decoration:none;color:#79808b;display:inline-block;width:100px;background-color:#ffffff;border-radius:3px;border:2px solid;border-color:#79808b;padding:10px 25px", target: '_blank'
 
-/tr
-  /td style="background-color:#fafafa;border-top:0;border-bottom:0;padding-top:9px;padding-bottom:9px" valign="top" 
-    /table border="0" cellpadding="0" cellspacing="0" style="min-width:100%;border-collapse:collapse;table-layout:fixed!important" width="100%" 
-      /tbody
-        /tr
-          /td style="min-width:100%;padding:18px" 
-            /table border="0" cellpadding="0" cellspacing="0" style=("min-width:100%;border-top:2px none #eaeaea;border-collapse:collapse") width="100%" 
-              /tbody
-                /tr
-                  /td
-                    /span
-    /span.HOEnZb
-      /font color="#888888" 
-    /span.HOEnZb
-      /font color="#888888" 
-    /span.HOEnZb
-      /font color="#888888" 
-    /table border="0" cellpadding="0" cellspacing="0" style="min-width:100%;border-collapse:collapse" width="100%" 
-      /tbody
-        /tr
-          /td style="padding-top:9px" valign="top" 
-            /span.HOEnZb
-              /font color="#888888" 
-            /span.HOEnZb
-              /font color="#888888" 
-            /table align="left" border="0" cellpadding="0" cellspacing="0" style="max-width:100%;min-width:100%;border-collapse:collapse" width="100%" 
-              /tbody
-                /tr
-                  /td style="padding-top:0;padding-right:18px;padding-bottom:9px;padding-left:18px;word-break:break-word;color:#656565;font-family:Helvetica;font-size:12px;line-height:150%;text-align:center" valign="top" 
-                    /| Quer mudar a forma como você recebe esses emails?
-                    /br/
-                    /a style="color:#656565;font-weight:normal;text-decoration:underline"  Gerencie
-                    /| notificações de seguir amigos
-                    /span.HOEnZb
-                      /font color="#888888" 
-                        /br/
-                        /| \&nbsp;
-            /span.HOEnZb
-              /font color="#888888" 
-/span.HOEnZb
-/font color="#888888" 
+tr
+  td style="background-color:#fafafa;border-top:0;border-bottom:0;padding-top:9px;padding-bottom:9px" valign="top" 
+    table border="0" cellpadding="0" cellspacing="0" style="min-width:100%;border-collapse:collapse;table-layout:fixed!important" width="100%" 
+      tbody
+        tr
+          td style="min-width:100%;padding:18px" 
+            table border="0" cellpadding="0" cellspacing="0" style=("min-width:100%;border-top:2px none #eaeaea;border-collapse:collapse") width="100%" 
+              tbody
+                tr
+                  td
+                    span
+    span.HOEnZb
+      font color="#888888" 
+    span.HOEnZb
+      font color="#888888" 
+    span.HOEnZb
+      font color="#888888" 
+    table border="0" cellpadding="0" cellspacing="0" style="min-width:100%;border-collapse:collapse" width="100%" 
+      tbody
+        tr
+          td style="padding-top:9px" valign="top" 
+            span.HOEnZb
+              font color="#888888" 
+            span.HOEnZb
+              font color="#888888" 
+            table align="left" border="0" cellpadding="0" cellspacing="0" style="max-width:100%;min-width:100%;border-collapse:collapse" width="100%" 
+              tbody
+                tr
+                  td style="padding-top:0;padding-right:18px;padding-bottom:9px;padding-left:18px;word-break:break-word;color:#656565;font-family:Helvetica;font-size:12px;line-height:150%;text-align:center" valign="top" 
+                    | Quer mudar a forma como você recebe esses emails?
+                    br/
+                    = link_to 'Gerencie notificações de seguir amigos', edit_user_url(user,user_email: user.email, user_token: user.authentication_token, anchor: 'notifications'), style: "color:#656565;font-weight:normal;text-decoration:underline"
+            span.HOEnZb
+              font color="#888888" 
+span.HOEnZb
+font color="#888888" 

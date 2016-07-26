@@ -82,7 +82,7 @@ namespace :cron do
   desc 'Send a notification about new follows'
   task notify_new_follows: [:environment] do
     User.followed_since_last_day.each do |user|
-      user.notify(:new_followers)
+      user.notify(:new_followers) if user.subscribed_to_new_followers
     end
   end
 
