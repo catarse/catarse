@@ -14,6 +14,13 @@ class UsersController < ApplicationController
 
   def follow_fb_friends
     authorize current_user, :update?
+    if params[:follow_user_id] && current_user.followers.pluck(:user_id).include?(params[:follow_user_id].to_i)
+      api = ApiWrapper.new current_user
+      api.request("user_follows", {
+        body: { follow_id: params[:follow_user_id] }.to_json,
+        action: :post
+      }).run()
+    end
   end
 
   def destroy
