@@ -1,11 +1,12 @@
 -user = @notification.user
 -followers = user.followers_since_last_day
+- abridge_results = followers.count > 10
 
 tr
   td style="border-top:0;border-bottom:0;padding-bottom:0" valign="top" 
     h1 style="text-align:center;display:block;margin:0;padding:0;color:#3f4752;font-family:Helvetica;font-size:20px;font-style:normal;font-weight:bold;line-height:125%;letter-spacing:normal"= followers.count == 1 ? "Você tem um novo seguidor!" : "Você tem #{followers.count} novos seguidores!"
 
-- followers.each do |follower|
+- followers.first(10).each do |follower|
   tr
     td style="background-color:#ffffff;border-top:0;border-bottom:0;padding-top:20px;padding-bottom:20px" valign="top" 
       table border="0" cellpadding="0" cellspacing="0" style="min-width:100%;border-collapse:collapse;table-layout:fixed!important" width="100%" 
@@ -37,6 +38,27 @@ tr
                         = link_to 'Seguindo', follow_fb_friends_url(user_email: user.email, user_token: user.authentication_token, anchor: 'follows'), style: "font-weight:500;letter-spacing:normal;line-height:100%;text-align:center;text-decoration:none;color:#ffffff;display:inline-block;width:100px;background-color:#7cc142;border-radius:3px;padding:10px 25px", target: '_blank'
                       -else
                         = link_to 'Seguir', follow_fb_friends_url(user_email: user.email, user_token: user.authentication_token, follow_user_id: follower.user.id, anchor: 'follows'), style: "font-weight:500;letter-spacing:normal;line-height:100%;text-align:center;text-decoration:none;color:#79808b;display:inline-block;width:100px;background-color:#ffffff;border-radius:3px;border:2px solid;border-color:#79808b;padding:10px 25px", target: '_blank'
+
+- if abridge_results
+  table border="0" cellpadding="0" cellspacing="0" style="min-width:100%;border-collapse:collapse;table-layout:fixed!important" width="100%" 
+    tbody
+      tr
+        td style="min-width:100%;padding:18px" 
+          table border="0" cellpadding="0" cellspacing="0" style=("min-width:100%;border-top:1px solid #eaeaea;border-collapse:collapse") width="100%" 
+            tbody
+              tr
+                td
+                  span
+  table border="0" cellpadding="0" cellspacing="0" style="min-width:100%;border-collapse:collapse" width="100%" 
+    tbody
+      tr
+        td style="padding-top:9px" valign="top" 
+          table align="left" border="0" cellpadding="0" cellspacing="0" style="max-width:100%;min-width:100%;border-collapse:collapse" width="100%" 
+            tbody
+              tr
+                td style="padding-top:0;padding-right:18px;padding-bottom:9px;padding-left:18px;word-break:break-word;color:#3f4752;font-family:Helvetica;font-size:16px;line-height:150%;text-align:center" valign="top" 
+                  = link_to follow_fb_friends_url(user_email: user.email, user_token: user.authentication_token, anchor: 'followers'), style: "color:#2baadf;font-weight:normal;text-decoration:underline", target: '_blank' do
+                    strong="E mais #{followers.count - 10} novos seguidores nessa lista."
 
 tr
   td style="background-color:#fafafa;border-top:0;border-bottom:0;padding-top:9px;padding-bottom:9px" valign="top" 
