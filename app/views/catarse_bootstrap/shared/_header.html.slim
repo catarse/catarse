@@ -11,6 +11,6 @@ header class="main-header w-section #{'alert' if can_display_pending_refund_aler
     - else
       = link_to t('layouts.header.signin'), new_user_session_path, class: 'w-nav-link header-link w-nav-link btn-edit u-right',id:'header_login_btn'
 
-    = link_to t('layouts.header.blog'), CatarseSettings[:blog_url], target: :_blank, class: 'w-nav-link w-hidden-small w-hidden-tiny header-link w-nav-link u-right' if CatarseSettings[:blog_url].present?
+    = link_to t('layouts.header.blog'), CatarseSettings[:blog_url] + '?ref=ctrse_header', target: :_blank, class: 'w-nav-link w-hidden-small w-hidden-tiny header-link w-nav-link u-right' if CatarseSettings[:blog_url].present?
 
   = yield :headermobile_controls

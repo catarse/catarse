@@ -15,7 +15,7 @@ section#blog.section-large.bg-gray.before-footer
     .w-row
       - (Blog.fetch_last_posts rescue [])[0..2].each do |post|
         .w-col.w-col-4.col-blog-post
-          = link_to post.url, target: '__blank', class: 'link-hidden fontweight-semibold fontsize-base u-marginbottom-10' do
+          = link_to post.url+'?ref=ctrse_home', target: '__blank', class: 'link-hidden fontweight-semibold fontsize-base u-marginbottom-10' do
             /span.fontweight-semibold.fontsize-base.u-marginbottom-10
             = truncate(post.title, length: 80)
           .fontsize-smaller.fontcolor-secondary.u-margintop-10
