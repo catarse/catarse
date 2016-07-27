@@ -5,7 +5,7 @@ namespace :cron do
 
   desc "Tasks that should run daily"
   task daily: [ :notify_project_owner_about_new_confirmed_contributions,
-               :verify_pagarme_transactions,
+               :verify_pagarme_transactions, :notify_new_follows,
                :verify_pagarme_transfers, :verify_pagarme_user_transfers, :notify_pending_refunds, :request_direct_refund_for_failed_refund, :notify_expiring_rewards]
 
   desc "Refresh all materialized views"
@@ -76,6 +76,13 @@ namespace :cron do
         :project_owner_contribution_confirmed,
         project.user
       )
+    end
+  end
+
+  desc 'Send a notification about new follows'
+  task notify_new_follows: [:environment] do
+    User.followed_since_last_day.each do |user|
+      user.notify(:new_followers) if user.subscribed_to_new_followers
     end
   end
 
