@@ -287,6 +287,8 @@ pt:
               taken: "Essa URL de projeto já existe"
             category:
               blank: "Você deve escolher uma categoria para seu projeto"
+            public_tags:
+              less_than_or_equal_to: 'O total de tags deve ser menor ou igual a 5'
             goal:
               blank: "O valor da meta não pode ficar em branco"
               greater_than: "A meta deve ser maior que 9"
