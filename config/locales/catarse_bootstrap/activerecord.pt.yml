@@ -88,7 +88,8 @@ pt:
         service_fee: 'Taxa do Catarse'
         video_url: "URL do vídeo"
         permalink: 'Link para o seu projeto no Catarse'
-        all_tags: 'Tags'
+        all_tags: 'Admin Tags'
+        all_public_tags: 'Tags'
         city: 'Local do projeto'
         more_links: 'Indique links para as pessoas conhecerem mais sobre o seu projeto e sua trajetória.'
         traffic_sources: 'Como você conheceu o Catarse?'
@@ -110,7 +111,8 @@ pt:
         user_id: "Id do usuário"
         video_url: "URL do vídeo"
         permalink: 'Link do seu projeto'
-        all_tags: 'Tags'
+        all_tags: 'Admin Tags'
+        all_public_tags: 'Tags'
         city: 'Local do projeto'
         more_links: 'Indique links para as pessoas conhecerem mais sobre o seu projeto e sua trajetória.'
         traffic_sources: 'Como você conheceu o Catarse?'
@@ -285,6 +287,8 @@ pt:
               taken: "Essa URL de projeto já existe"
             category:
               blank: "Você deve escolher uma categoria para seu projeto"
+            public_tags:
+              less_than_or_equal_to: 'O total de tags deve ser menor ou igual a 5'
             goal:
               blank: "O valor da meta não pode ficar em branco"
               greater_than: "A meta deve ser maior que 9"

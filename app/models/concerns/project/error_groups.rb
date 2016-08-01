@@ -4,7 +4,7 @@ module Project::ErrorGroups
   included do
     begin
       ATTR_GROUPS = {
-        basics: [:name, :permalink, :category_id, :city],
+        basics: [:name, :permalink, :category_id, :city, :public_tags],
         goal: [:goal, :online_days],
         description: [:about_html],
         budget: [:budget],

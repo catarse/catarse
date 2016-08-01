@@ -46,6 +46,7 @@ class ProjectPolicy < ApplicationPolicy
     if user.present? && (user.admin? || (record.draft? || record.rejected? || record.in_analysis? || record.approved?))
       p_attr = record.attribute_names.map(&:to_sym)
       p_attr << :all_tags
+      p_attr << :all_public_tags
       p_attr << user_attributes
       p_attr << budget_attributes
       p_attr << posts_attributes
@@ -60,7 +61,7 @@ class ProjectPolicy < ApplicationPolicy
         not_allowed = [
           :audited_user_name, :audited_user_cpf, :audited_user_phone_number,
           :state, :origin_id, :service_fee, :total_installments,
-          :recommended, :created_at, :updated_at, :expires_at
+          :recommended, :created_at, :updated_at, :expires_at, :all_tags
         ]
         p_attr.delete_if { |key| not_allowed.include?(key) }
       end
