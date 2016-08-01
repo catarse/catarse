@@ -350,10 +350,12 @@ class Project < ActiveRecord::Base
 
   def all_public_tags=(names)
     self.public_tags = names.split(',').map do |name|
-      PublicTag.find_or_create_by(slug: name.parameterize) do |tag|
-        tag.name = name.strip
+      name.split(' ').map do |n|
+        PublicTag.find_or_create_by(slug: n.parameterize) do |tag|
+          tag.name = n.strip
+        end
       end
-    end
+    end.flatten
   end
 
   def all_public_tags
