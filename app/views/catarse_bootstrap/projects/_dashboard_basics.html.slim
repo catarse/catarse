@@ -46,6 +46,14 @@
                 input_html: { class: 'positive medium', required: true, maxlength: Project::NAME_MAXLENGTH },
                 validation_text: false
 
+              = form.input :all_public_tags, as: :string, 
+                wrapper: :two_columns,
+                wrapper_class: 'w-row u-marginbottom-30 card card-terciary medium',
+                label_wrapper_html: { class: 'w-col w-col-5 w-subcol' },
+                text_field_wrapper_html: { class: 'w-col w-col-7 w-sub-col' },
+                input_html: { class: 'positive medium', required: false },
+                validation_text: false
+
               = form.input :permalink, as: :string, 
                 wrapper: :two_columns_with_postfix,
                 wrapper_class: 'w-row u-marginbottom-30 card card-terciary medium',
@@ -57,14 +65,6 @@
                 preppend_text_wrapper_html: { class: 'w-col w-col-4 w-col-small-6 w-col-tiny-6 text-field prefix no-hover medium prefix-permalink' },
                 preppend_input_text: 'www.catarse.me/',
                 preppend_input_text_wrapper_html: { class: 'fontcolor-secondary u-text-center fontsize-smallest' }
-
-              = form.input :all_public_tags, as: :string, 
-                wrapper: :two_columns,
-                wrapper_class: 'w-row u-marginbottom-30 card card-terciary medium',
-                label_wrapper_html: { class: 'w-col w-col-5 w-subcol' },
-                text_field_wrapper_html: { class: 'w-col w-col-7 w-sub-col' },
-                input_html: { class: 'positive medium', required: false },
-                validation_text: false
 
               = form.association :category, as: :select, 
                 collection: Category.order(:name_pt),
