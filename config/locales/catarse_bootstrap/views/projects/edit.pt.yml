@@ -251,6 +251,35 @@ pt:
       value_secondary: 'Planeje uma meta coerente com o que seu projeto propõe. Revise seu orçamento e não esqueça de incluir a taxa de 13% cobrada pelo Catarse caso seu projeto seja bem-sucedido'
       form:
         submit: 'Salvar'
+    contributions_report:
+      legend_labels:
+        failed:
+          pending_refund:
+            label: 'Reembolso em andamento'
+            text: 'Apoiador já forneceu os dados bancários e reembolso está em andamento.'
+          refunded:
+            label: 'Reembolsado'
+            text: 'O valor foi reembolsado para o apoiador.'
+          paid:
+            label: 'Reembolso não iniciado'
+            text: 'Apoiador ainda não forneceu dados bancários para o Catarse efetuar o reembolso ou os dados fornecidos estão incorretos.'
+        successful:
+          paid:
+            label: 'Confirmado'
+            text: 'Apoios de cartão de crédito ou de boleto, que foram pagos e confirmados pelo sistema.'
+          refunded:
+            label: 'Contestado'
+            text: 'Apoios que foram cancelados pelo apoiador após o pagamento.'
+        online:
+          paid:
+            label: 'Confirmado'
+            text: 'Apoios de cartão de crédito ou de boleto, que foram pagos e confirmados pelo sistema.'
+          pending:
+            label: 'Iniciado'
+            text: 'Apoios de boleto que ainda não foram pagos ou que ainda não foram contabilizados no sistema.<br/> Obs. Depois de pago, o boleto pode demorar até 2 dias úteis para ser confirmado no sistema.'
+          refunded:
+            label: 'Contestado'
+            text: 'Apoios que foram cancelados pelo apoiador após o pagamento.'
     successful_onboard:
       start:
         href: '#confirm_account'
