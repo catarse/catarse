@@ -10,10 +10,10 @@ pt:
           cta: 'Comece sua campanha'
           image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-fctodos.jpg'
         2:
-          title: 'Encontre projetos incríveis com seus amigos'
+          title: 'Catarse com Facebook!'
           subtitle: ''
           link: 'http://crowdfunding.catarse.me/amigos?ref=home_banner'
-          cta: 'Saiba mais'
+          cta: 'Encontre projetos com seus amigos'
           image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-amigos.jpg'
         3:
           title: 'Campo Dr. Sócrates Brasileiro'
