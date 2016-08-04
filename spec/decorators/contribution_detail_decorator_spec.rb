@@ -56,7 +56,8 @@ RSpec.describe ContributionDetailDecorator do
           payment.update_attributes attributes
         end
 
-        it{ is_expected.to eq(I18n.l(payment.send(field).to_date)) }
+        #use the same hardcoded timezone as the db
+        it{ is_expected.to eq(I18n.l(payment.send(field).in_time_zone('Brasilia').to_date)) }
       end
     end
   end
