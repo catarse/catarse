@@ -31,6 +31,7 @@ pt:
         feature_3: 'Blog da campanha'
         feature_4: 'Apoio parcelado'
         feature_5: 'Repasse facilitado'
+        feature_6: 'No ar sem burocracia'
       video:
         title: 'Uma campanha de financiamento coletivo é emoção garantida. '
         subtitle: 'Sente o gostinho...'
@@ -177,6 +178,9 @@ pt:
         5:
           label: 'Repasse facilitado'
           src: '/assets/start-repasse.gif'
+        6:
+          label: 'No ar sem burocracia'
+          src: '/assets/start-publicar.gif'
       testimonials_title: 'O que estão dizendo por aí...'
       testimonials:
         1:
