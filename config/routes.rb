@@ -61,7 +61,7 @@ Catarse::Application.routes.draw do
   end
   resources :projects, only: [ :index, :create, :update, :edit, :new, :show] do
     resources :accounts, only: [:create, :update]
-    resources :posts, controller: 'projects/posts', only: [ :destroy ]
+    resources :posts, controller: 'projects/posts', only: [ :destroy, :show ]
     resources :rewards do
       post :sort, on: :member
     end
