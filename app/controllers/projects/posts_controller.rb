@@ -3,6 +3,11 @@ class Projects::PostsController < ApplicationController
     @project ||= Project.find params[:project_id]
   end
 
+  def show
+    @post = parent.posts.find params[:id]
+
+  end
+
   def destroy
     authorize resource
     resource.destroy
