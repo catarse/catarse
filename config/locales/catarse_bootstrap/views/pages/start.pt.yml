@@ -26,12 +26,12 @@ pt:
       features:
         title: 'A plataforma ideal para sua campanha'
         subtitle: 'Conheça as soluções que desenvolvemos para você financiar sua ideia!'
-        feature_1: 'Atendimento rápido e ágil'
-        feature_2: 'Painel de controle completo'
-        feature_3: 'Blog da campanha'
-        feature_4: 'Apoio parcelado'
-        feature_5: 'Repasse facilitado'
-        feature_6: 'No ar sem burocracia'
+        feature_1: 'No ar sem burocracia'
+        feature_2: 'Atendimento rápido e ágil'
+        feature_3: 'Painel de controle completo'
+        feature_4: 'Blog da campanha'
+        feature_5: 'Apoio parcelado'
+        feature_6: 'Repasse facilitado'
       video:
         title: 'Uma campanha de financiamento coletivo é emoção garantida. '
         subtitle: 'Sente o gostinho...'
@@ -164,23 +164,23 @@ pt:
             secondary: 8389
       panes:
         1:
-          label: 'Atendimento rápido e ágil'
-          src: '/assets/start-atendimento-ui.gif'
-        2:
-          label: 'Painel de controle completo'
-          src: '/assets/start-painel-ui.gif'
-        3:
-          label: 'Blog da campanha'
-          src: '/assets/start-blog-ui.gif'
-        4:
-          label: 'Apoio parcelado'
-          src: '/assets/start-apoio.gif'
-        5:
-          label: 'Repasse facilitado'
-          src: '/assets/start-repasse.gif'
-        6:
           label: 'No ar sem burocracia'
           src: '/assets/start-publicar.gif'
+        2:
+          label: 'Atendimento rápido e ágil'
+          src: '/assets/start-atendimento-ui.gif'
+        3:
+          label: 'Painel de controle completo'
+          src: '/assets/start-painel-ui.gif'
+        4:
+          label: 'Blog da campanha'
+          src: '/assets/start-blog-ui.gif'
+        5:
+          label: 'Apoio parcelado'
+          src: '/assets/start-apoio.gif'
+        6:
+          label: 'Repasse facilitado'
+          src: '/assets/start-repasse.gif'
       testimonials_title: 'O que estão dizendo por aí...'
       testimonials:
         1:
