@@ -83,8 +83,8 @@ GEM
       mailchimp-api (~> 2.0.4)
       rails (>= 4.0.3)
       rails-observers
-    catarse_pagarme (2.9.5)
-      pagarme (= 1.10.0)
+    catarse_pagarme (2.9.6)
+      pagarme (= 2.1.3)
       rails (~> 4.0)
       sidekiq
       weekdays (>= 1.0.2)
@@ -309,7 +309,7 @@ GEM
       omniauth (~> 1.2)
     orm_adapter (0.5.0)
     os (0.9.6)
-    pagarme (1.10.0)
+    pagarme (2.1.3)
       multi_json
       rest-client
     pg (0.17.1)
@@ -531,7 +531,7 @@ DEPENDENCIES
   capybara (~> 2.2.0)
   carrierwave!
   catarse_monkeymail (>= 0.1.7)
-  catarse_pagarme (~> 2.9.5)
+  catarse_pagarme (~> 2.9.6)
   catarse_settings_db (>= 0.1.0)
   cocoon
   coffee-rails
