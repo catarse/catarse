@@ -51,6 +51,26 @@ task verify_pagarme_user_transfers: [:environment] do
   end
 end
 
+desc 'Verify all paid credit card payments for failed project'
+task verify_pagarme_not_refunded_cards: [:environment] do
+  PagarMe.api_key = CatarsePagarme.configuration.api_key
+  Payment.joins(contribution: [:project]).where(projects: {state: 'failed'}, state: 'paid').where("lower(gateway) = 'pagarme' and lower(payment_method) = 'cartaodecredito'").uniq.each do |p| 
+    Rails.logger.info "Refunding credit card on failed projects #{p.gateway_id}"
+    p.direct_refund
+  end
+end
+
+desc 'Verify all pending_refund transactions in pagarme and adjusts'
+task verify_pagarme_refunds: [:environment] do
+  PagarMe.api_key = CatarsePagarme.configuration.api_key
+  Payment.where(state: 'pending_refund').where("lower(gateway) = 'pagarme'").each do |p| 
+    t = p.pagarme_delegator.transaction
+    Rails.logger.info "updating #{p.gateway_id} #{p.state} -> to -> #{t.status}"
+    p.pagarme_delegator.update_transaction
+    p.pagarme_delegator.change_status_by_transaction t.status
+  end
+end
+
 desc "Verify all transactions in pagarme for a given date range and check their consistency in our database"
 task :verify_pagarme_transactions, [:start_date, :end_date]  => :environment do |task, args|
   args.with_defaults(start_date: Date.today - 1, end_date: Date.today)
