@@ -16,11 +16,13 @@ RSpec.describe BalanceTransfer, type: :model do
     it { is_expected.to have_many :transitions }
   end
 
-  describe 'from pending to authorized' do
+  describe 'from processing to transferred' do
     it do
+      balance_transfer.transition_to(:authorized)
+      balance_transfer.transition_to(:processing)
       #expect(balance_transfer.pagarme_delegator).to receive(:transfer_funds)
       expect(balance_transfer.project).to receive(:notify).with(:project_balance_transferred, balance_transfer.project.user, balance_transfer.project)
-      balance_transfer.transition_to(:authorized)
+      balance_transfer.transition_to(:transferred)
     end
   end
 end
