@@ -65,9 +65,11 @@ task verify_pagarme_refunds: [:environment] do
   PagarMe.api_key = CatarsePagarme.configuration.api_key
   Payment.where(state: 'pending_refund').where("lower(gateway) = 'pagarme'").each do |p| 
     t = p.pagarme_delegator.transaction
-    Rails.logger.info "updating #{p.gateway_id} #{p.state} -> to -> #{t.status}"
-    p.pagarme_delegator.update_transaction
-    p.pagarme_delegator.change_status_by_transaction t.status
+    if t.status != p.state
+      Rails.logger.info "updating #{p.gateway_id} #{p.state} -> to -> #{t.status}"
+      p.pagarme_delegator.update_transaction
+      p.pagarme_delegator.change_status_by_transaction t.status
+    end
   end
 end
 
