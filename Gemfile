@@ -83,6 +83,7 @@ gem 'has_scope', '>= 0.6.0.rc'
 gem 'spectator-validates_email',  require: 'validates_email'
 gem 'video_info', '~> 2.4.2'
 gem 'typhoeus'
+gem 'therubyracer', platform: :ruby
 
 # Translations
 gem 'http_accept_language'

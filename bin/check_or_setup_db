@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+
+# This script is used in the development environment with Docker to check if the
+# app database exists, and runs the database setup if it doesn't, as it is the
+# case when the project runs for the first time on the development machine.
+#
+puts `rake db:create db:migrate` #commands, as that currently leaves a

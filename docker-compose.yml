@@ -1,0 +1,110 @@
+version: '2'
+
+volumes:
+  postgres-data:
+    driver: local
+  redis-data:       # The redis data store volume
+    driver: local
+  gems:
+    driver: local
+
+services:
+  redis:
+    image: redis:3.0.7
+    ports:
+      # We'll bind our host's port 6379 to redis's port 6379, so we can use
+      # any explorer to read the database:
+      - 6379:6379
+    volumes:
+      # We'll store the redis data in the 'redis-data' volume we defined:
+      - redis-data:/var/lib/redis
+    command: redis-server --appendonly yes
+  db:
+    image: postgres:9.5.1
+    ports:
+      # We'll bind our host's port 5432 to postgres's port 5432, so we can use
+      # our database IDEs with it:
+      - 5432:5432
+    volumes:
+      # We'll store the postgres data in the 'postgres-data' volume we defined:
+      - postgres-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: P4Ssw0rD!
+
+  # The job processor container - we'll use this as a base for the rest of the
+  # containers:
+  jobs: &app
+    # Specify the directory from where all commands sent to the container will be
+    # issued to where the code is mounted:
+    image: kurenn/nodejsruby:0.0.1
+    command: bundle exec sidekiq -c 1 -q default
+    working_dir: /usr/src/app
+
+    entrypoint: /usr/src/app/dev-entrypoint
+
+    volumes:
+      # Mount our app code directory (".") into our app containers at the
+      # "/usr/src/app" folder:
+      - .:/usr/src/app
+
+      # Mount the 'gems' volume on the folder that stores bundled gems:
+      - gems:/usr/local/bundle
+
+    # Keep the stdin open, so we can attach to our app container's process
+    # and do things such as byebug, etc:
+    stdin_open: true
+
+    # Enable sending signals (CTRL+C, CTRL+P + CTRL+Q) into the container:
+    tty: true
+
+    # Link to our postgres and redis containers, so they can be visible from our
+    # app containers:
+    depends_on:
+      # We'll include a link to the 'db' (postgres) container, making it
+      # visible from the container using the 'db' hostname:
+      - db
+      - redis
+
+    # Specify environment variables available for our app containers. We'll leave
+    # a YML anchor in case we need to override or add more variables if needed on
+    # each app container:
+    environment: &app_environment
+
+      # We'll overwrite the PATH environment variable to include the 'bin/'
+      # directory, for the entrypoint script to find the app's executables:
+      PATH: /usr/src/app/bin:/usr/local/bundle/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+      # We'll set the DATABASE_URL environment variable for the app to connect
+      # to our postgres container - no need to use a 'config/database.yml' file.
+      DATABASE_URL: postgres://postgres:P4Ssw0rD!@db:5432/docker_rails_dev?pool=25&encoding=unicode&schema_search_path=public,partitioning
+      REDIS_URL: redis://redis:6379
+
+      # We'll set the RAILS_ENV and RACK_ENV environment variables to
+      # 'development', so our app containers will start in 'development' mode
+      # on this compose project:
+      RAILS_ENV: development
+      RACK_ENV: development
+
+    # We'll specify a dotenv file for docker-compose to load more environment
+    # variables into our app containers. This dotenv file would normally contain
+    # sensitive data (API keys & secrets, etc) which SHOULD NOT be committed into
+    # Git.
+    # Keep in mind that any changes in this file will require a container restart
+    # in order to be available on the app containers:
+    env_file:
+      - dev.env
+  web:
+    <<: *app
+    command: rails server -b 0.0.0.0 -p 3000 -P /tmp/rails.pid
+    ports:
+      - 3000:3000
+       # App Guard: Keeps running tests on a separate process:
+  #test:
+    #<<: *app # We copy from &app, and override:
+    #command: bundle exec guard start --no-bundler-warning --no-interactions
+    #environment:
+      #<<: *app_env
+      ## Override the app environment for this container:
+      #DATABASE_URL: postgres://postgres:4rt3335@db:5432/rts_testing
+      #RACK_ENV: test
+      #RAILS_ENV: test
