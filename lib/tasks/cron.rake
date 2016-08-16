@@ -87,6 +87,13 @@ namespace :cron do
     end
   end
 
+  desc 'Send a notification about new contributions from friends'
+  task notify_new_friends_contributions: [:environment] do
+    User.with_contributing_friends_since_last_day.each do |user|
+      user.notify(:new_friends_contributions) if user.subscribed_to_friends_contributions
+    end
+  end
+
   desc 'Send a notification about new follows'
   task notify_new_follows: [:environment] do
     User.followed_since_last_day.each do |user|

@@ -44,6 +44,10 @@
                   .fontweight-semibold.fontsize-small.u-marginbottom-10 Social:
                 .w-col.w-col-8
                   .w-checkbox.w-clearfix
+                    = f.check_box :subscribed_to_friends_contributions, class: 'w-checkbox-input'
+                    label.w-form-label.fontsize-small Um amigo apoiou ou lançou um projeto
+                .w-col.w-col-8
+                  .w-checkbox.w-clearfix
                     = f.check_box :subscribed_to_new_followers, class: 'w-checkbox-input'
                     label.w-form-label.fontsize-small Um amigo começou a me seguir
               .w-row.u-marginbottom-20
