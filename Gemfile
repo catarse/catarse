@@ -21,6 +21,7 @@ gem 'statesman'
 gem 'pg', '0.17.1'
 gem 'dbhero', '>= 1.1.12'
 gem 'postgres-copy'
+gem 'postgres_ext'
 gem 'pg_search'
 gem 'i18n_alchemy'
 gem "i18n-js", ">= 3.0.0.rc11"
@@ -44,7 +45,7 @@ gem 'draper'
 
 # Frontend stuff
 gem 'slim-rails'
-gem 'browser'
+gem 'browser', "1.0.1"
 gem "cocoon"
 
 # Static pages
@@ -106,6 +107,8 @@ group :production do
 
   # Monitoring with the new new relic
   gem 'newrelic_rpm'
+
+  gem "activerecord-nulldb-adapter"
 
   # Using dalli and memcachier have not presented significative performance gains
   # Probably this is due to our pattern of cache usage
