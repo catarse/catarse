@@ -1,10 +1,10 @@
 ## Customize deployment commands
-deployment:
-  staging:
-    branch: master
-    commands: 
-      - "git remote add dokku dokku@services-server.catarse.me:catarse-sandbox"
-      - "git push dokku"
+#deployment:
+#  staging:
+#    branch: master
+#    commands: 
+#      - "git remote add dokku dokku@services-server.catarse.me:catarse-sandbox"
+#      - "git push dokku"
 dependencies:
   post:
     - bower install
