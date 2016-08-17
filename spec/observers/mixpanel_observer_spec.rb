@@ -57,12 +57,6 @@ RSpec.describe MixpanelObserver do
       end
     end
 
-    context "when we create a ProjectBudget" do
-      it "should send tracker a track call with the change" do
-        expect(tracker).to receive(:track).with(project.user.id.to_s, "Project owner engaged with Catarse", project_owner_properties.merge(action: "Updated budget"), project.user.current_sign_in_ip)
-        create(:project_budget, project: project)
-      end
-    end
   end
 
   describe "#after_create" do

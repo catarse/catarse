@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.2.3'
+ruby '2.3.1'
 
 gem 'rails', '~> 4.1.14.2'
 
@@ -36,7 +36,7 @@ gem 'mixpanel-ruby'
 gem 'mixpanel_client'
 
 # Payment engines
-gem 'catarse_pagarme', '~> 2.9.4'
+gem 'catarse_pagarme', '~> 2.9.6'
 #gem 'catarse_pagarme', path: '../catarse_pagarme'
 
 # Decorators

@@ -14,6 +14,7 @@ Catarse::Application.routes.draw do
     post '/sign_up', {to: 'devise/registrations#create', as: :sign_up}
   end
 
+  get '/amigos' => redirect('http://crowdfunding.catarse.me/amigos')
   get '/project_edit' => 'application#redirect_to_last_edit'
   get '/billing_edit' => 'application#redirect_to_user_billing'
   get '/user_contributions' => 'application#redirect_to_user_contributions'
@@ -60,7 +61,7 @@ Catarse::Application.routes.draw do
   end
   resources :projects, only: [ :index, :create, :update, :edit, :new, :show] do
     resources :accounts, only: [:create, :update]
-    resources :posts, controller: 'projects/posts', only: [ :destroy ]
+    resources :posts, controller: 'projects/posts', only: [ :destroy, :show ]
     resources :rewards do
       post :sort, on: :member
     end
@@ -176,3 +177,4 @@ Catarse::Application.routes.draw do
   get "/:permalink" => "projects#show", as: :project_by_slug
 
 end
+

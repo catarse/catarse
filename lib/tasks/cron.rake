@@ -39,6 +39,14 @@ namespace :cron do
     end
   end
 
+  desc 'Send pending balance transfer confirmation notifications'
+  task sent_balance_transfer_reminders: [:environment] do
+    Project.pending_balance_confirmation.order("projects.id desc").find_each do |project| 
+      Rails.logger.info "Notifying #{project.permalink} -> pending_balance_transfer_confirmation"
+      project.notify(:pending_balance_transfer_confirmation, project.user)
+    end
+  end
+
   desc 'Add reminder to scheduler'
   task schedule_reminders: :environment do
     ProjectReminder.can_deliver.find_each do |reminder|
@@ -76,6 +84,13 @@ namespace :cron do
         :project_owner_contribution_confirmed,
         project.user
       )
+    end
+  end
+
+  desc 'Send a notification about new contributions from friends'
+  task notify_new_friends_contributions: [:environment] do
+    User.with_contributing_friends_since_last_day.each do |user|
+      user.notify(:new_friends_contributions) if user.subscribed_to_friends_contributions
     end
   end
 

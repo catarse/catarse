@@ -6,7 +6,11 @@ module Project::CustomValidators
     validate :permalink_cant_be_route, allow_nil: true
     # This code might come back in a near future
     #validate :ensure_at_least_one_reward_validation, unless: :is_flexible?
+    validate :validate_tags
 
+    def validate_tags
+      errors.add(:public_tags, :less_than_or_equal_to, count: 5) if public_tags.size > 5
+    end
 
     def self.get_routes
       @@mapped_routes ||= @@routes.inject(Set.new) do |memo, item|

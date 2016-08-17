@@ -37,6 +37,7 @@ class Project < ActiveRecord::Base
   has_one :account, class_name: "ProjectAccount", inverse_of: :project
   has_many :taggings
   has_many :tags, through: :taggings
+  has_many :public_tags, through: :taggings
   has_many :rewards
   has_many :contributions
   has_many :project_errors
@@ -169,6 +170,17 @@ class Project < ActiveRecord::Base
     joins(:contributions).merge(Contribution.confirmed_last_day).uniq
   }
 
+  scope :pending_balance_confirmation, -> {
+    joins(:account).where(%Q{
+        projects.state = 'successful'
+        and projects.expires_at + '7 days'::interval < now()
+        and not exists(select true from balance_transfers bt where bt.project_id = projects.id)
+        and not exists(select true from project_notifications pn
+            where pn.template_name = 'pending_balance_transfer_confirmation' and pn.project_id = projects.id and pn.created_at + '7 days'::interval < current_timestamp)
+        and not exists(select true from project_account_errors pae where pae.project_account_id = project_accounts.id and not pae.solved)
+      })
+  }
+
   attr_accessor :accepted_terms
 
   validates_acceptance_of :accepted_terms, on: :create
@@ -182,7 +194,6 @@ class Project < ActiveRecord::Base
   validates_uniqueness_of :permalink, case_sensitive: false
   validates_format_of :permalink, with: /\A(\w|-)*\Z/
   validates_presence_of :permalink, allow_nil: true
-
 
   [:between_created_at, :between_expires_at, :between_online_at, :between_updated_at].each do |name|
     define_singleton_method name do |starts_at, ends_at|
@@ -346,6 +357,21 @@ class Project < ActiveRecord::Base
 
     return account.project_account_errors.where(solved: false).exists?
   end
+
+  def all_public_tags=(names)
+    self.public_tags = names.split(',').map do |name|
+      name.split(' ').map do |n|
+        PublicTag.find_or_create_by(slug: n.parameterize) do |tag|
+          tag.name = n.strip
+        end
+      end
+    end.flatten
+  end
+
+  def all_public_tags
+    public_tags.map(&:name).join(", ")
+  end
+
 
   def all_tags=(names)
     self.tags = names.split(',').map do |name|

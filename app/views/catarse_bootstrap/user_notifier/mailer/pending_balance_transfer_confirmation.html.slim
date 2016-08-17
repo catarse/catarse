@@ -1,0 +1,28 @@
+- project = @notification.project
+
+- project_link = edit_project_url(project)
+- company_name = CatarseSettings[:company_name]
+
+| Olá #{project.user.name},
+br/
+p Você ainda não confirmou os dados bancários da campanha #{project.name}. Após a confirmação dos dados você receberá o dinheiro arrecadado (descontada a nossa taxa) em até 10 dias úteis
+br/
+br/
+center
+  p
+    = link_to('Confirme os dados bancários', insights_project_url(project.id, ref: 'ctrse_notification_pending_balance_transfer_confirmation'), style:'border: 1px solid #7cc142; border-radius: 5px; color: #fff; text-decoration: none; font-weight: bolder; text-align: center; padding: 19px 60px; background: #65bf1b; font-size: 15px;')
+    br/
+  p
+    br/
+    = link_to 'Confira mais detalhes de como será feito o repasse', 'http://suporte.catarse.me/hc/pt-br/articles/202037493-Como-ser%C3%A1-feito-o-repasse-do-dinheiro-', target: '__blank'
+
+br/
+br/
+p
+  | Se ficou com alguma dúvida, responda a esta mensagem diretamente ou fale conosco através do e-mail #{mail_to CatarseSettings[:email_projects]}.
+
+br/
+br/
+| Abraços
+br/
+| Equipe #{company_name}

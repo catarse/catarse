@@ -38,4 +38,32 @@ RSpec.describe Project::CustomValidators, type: :model do
       end
     end
   end
+
+  describe "#validate_tags" do
+    let(:project) { create(:project) }
+
+    subject { project.errors['public_tags'].present? }
+
+    before do
+      project.all_public_tags = '1,2,3,4,5'
+      project.save
+    end
+
+    context "when does not have reach maximum of tags" do
+      it do
+        is_expected.to eq false
+      end
+    end
+
+    context "when have reach maximum of tags" do
+      before do
+        project.all_public_tags = '1,2,3,4,5,6'
+        project.save
+      end
+
+      it do
+        is_expected.to eq true
+      end
+    end
+  end
 end

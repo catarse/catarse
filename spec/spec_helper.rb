@@ -50,14 +50,6 @@ RSpec.configure do |config|
     ('waiting_funds', 'published'),
     ('failed', 'finished'),
     ('successful', 'finished');
-
-    INSERT INTO public.flexible_project_states (state, state_order) VALUES
-    ('deleted', 'archived'),
-    ('rejected', 'created'),
-    ('draft', 'created'),
-    ('online', 'published'),
-    ('waiting_funds', 'published'),
-    ('successful', 'finished');
     }
   end
 
