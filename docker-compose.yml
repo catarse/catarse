@@ -69,6 +69,7 @@ services:
     # a YML anchor in case we need to override or add more variables if needed on
     # each app container:
     environment: &app_environment
+      LANG: 'C.UTF-8'
 
       # We'll overwrite the PATH environment variable to include the 'bin/'
       # directory, for the entrypoint script to find the app's executables:
