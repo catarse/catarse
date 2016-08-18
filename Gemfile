@@ -56,7 +56,7 @@ gem 'simple_token_authentication', '~> 1.0' # see semver.org
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'koala'
-gem 'devise'
+gem 'devise', '3.5.10'
 gem 'pundit'
 gem 'json_web_token'
 
