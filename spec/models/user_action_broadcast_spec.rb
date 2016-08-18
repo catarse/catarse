@@ -14,42 +14,42 @@ RSpec.describe UserActionBroadcast, type: :model do
   end
 
   describe ".broadcast_action" do
-    context "when user as made a paid contribution" do
-      let(:payment) do
-        c = create(:pending_contribution, project: project, user: user)
-        c.payments.first
-      end
-      let(:another_payment) do
-        c = create(:pending_contribution, project: project, user: user)
-        c.payments.first
-      end
-      let(:anon_payment) do
-        c = create(:pending_contribution, user: user, anonymous: true)
-        c.payments.first
-      end
+    #context "when user as made a paid contribution" do
+    #  let(:payment) do
+    #    c = create(:pending_contribution, project: project, user: user)
+    #    c.payments.first
+    #  end
+    #  let(:another_payment) do
+    #    c = create(:pending_contribution, project: project, user: user)
+    #    c.payments.first
+    #  end
+    #  let(:anon_payment) do
+    #    c = create(:pending_contribution, user: user, anonymous: true)
+    #    c.payments.first
+    #  end
 
-      before { payment.pay }
+    #  before { payment.pay }
 
-      it "should create user_follow_notifications for user followers" do
-        expect(UserFollowNotification.where(template_name: 'follow_contributed_project').count).to eq(2)
-        expect(uf1.notifications.count).to eq(1)
-        expect(uf2.notifications.count).to eq(1)
-        expect(uf3.notifications.count).to eq(0)
-      end
+    #  it "should create user_follow_notifications for user followers" do
+    #    expect(UserFollowNotification.where(template_name: 'follow_contributed_project').count).to eq(2)
+    #    expect(uf1.notifications.count).to eq(1)
+    #    expect(uf2.notifications.count).to eq(1)
+    #    expect(uf3.notifications.count).to eq(0)
+    #  end
 
-      it "when made another paid contribution for same project" do
-        expect(UserFollowNotification.where(template_name: 'follow_contributed_project').count).to eq(2)
-        anon_payment.pay
-        expect(UserFollowNotification.where(template_name: 'follow_contributed_project').count).to eq(2)
-      end
+    #  it "when made another paid contribution for same project" do
+    #    expect(UserFollowNotification.where(template_name: 'follow_contributed_project').count).to eq(2)
+    #    anon_payment.pay
+    #    expect(UserFollowNotification.where(template_name: 'follow_contributed_project').count).to eq(2)
+    #  end
 
-      it "when made anonymous contribution to another project" do
+    #  it "when made anonymous contribution to another project" do
 
-        expect(UserFollowNotification.where(template_name: 'follow_contributed_project').count).to eq(2)
-        another_payment.pay
-        expect(UserFollowNotification.where(template_name: 'follow_contributed_project').count).to eq(2)
-      end
-    end
+    #    expect(UserFollowNotification.where(template_name: 'follow_contributed_project').count).to eq(2)
+    #    another_payment.pay
+    #    expect(UserFollowNotification.where(template_name: 'follow_contributed_project').count).to eq(2)
+    #  end
+    #end
 
     context "when user as published a new project" do
       let(:project) { create(:project, user: user, state: 'draft') }
