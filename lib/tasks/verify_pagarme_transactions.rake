@@ -54,7 +54,10 @@ end
 desc 'Verify all paid credit card payments for failed project'
 task verify_pagarme_not_refunded_cards: [:environment] do
   PagarMe.api_key = CatarsePagarme.configuration.api_key
-  Payment.joins(contribution: [:project]).where(projects: {state: 'failed'}, state: 'paid').where("lower(gateway) = 'pagarme' and lower(payment_method) = 'cartaodecredito'").uniq.each do |p| 
+  Payment.joins(contribution: [:project]).where(%Q{
+    projects.state = 'failed' and payments.state = 'paid'
+    and lower(payments.gateway) = 'pagarme' and lower(payments.payment_method) = 'cartaodecredito'
+    }).each do |p| 
     Rails.logger.info "Refunding credit card on failed projects #{p.gateway_id}"
     p.direct_refund
   end
