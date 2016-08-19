@@ -30,6 +30,7 @@
   }
 
   var projectsHome = document.getElementById('project-index-root');
+  var projectsShow = document.getElementById('project-show-root');
 
   var wrap = function(component) {
       return {
@@ -75,16 +76,18 @@
       };
   };
 
-  if(projectsHome){
+  if(projectsHome || projectsShow){
+      var rootEl = projectsHome || projectsShow;
+    
       m.route.mode = 'pathname';
-
-      m.route(projectsHome, '/', {
+      
+      m.route(rootEl, '/', {
           '/': wrap(c.root.ProjectsHome),
           '/explore': wrap(c.root.ProjectsExplore),
           '/start': wrap(c.root.Start),
-          '/projects/:project_id/contribution': wrap(c.root.ProjectsReward),
-          '/projects/:project_id/payment': wrap(c.root.ProjectsPayment),
-          '/contribution': wrap(c.root.ProjectsPayment),
+          // '/projects/:project_id/contribution': wrap(c.root.ProjectsReward),
+          // '/projects/:project_id/payment': wrap(c.root.ProjectsPayment),
+          // '/contribution': wrap(c.root.ProjectsPayment),
           '/pt': wrap(c.root.ProjectsHome),
           '/pt/explore': wrap(c.root.ProjectsExplore),
           '/pt/start': wrap(c.root.Start),
