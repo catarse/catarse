@@ -312,6 +312,7 @@ GEM
     pagarme (2.1.3)
       multi_json
       rest-client
+    parallel (1.9.0)
     pg (0.17.1)
     pg_search (1.0.5)
       activerecord (>= 3.1)
@@ -566,6 +567,7 @@ DEPENDENCIES
   newrelic_rpm
   omniauth
   omniauth-facebook
+  parallel
   pg (= 0.17.1)
   pg_search
   poltergeist

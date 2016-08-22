@@ -76,6 +76,38 @@ task verify_pagarme_refunds: [:environment] do
   end
 end
 
+desc 'Sync all gateway payments using all transactions'
+task gateway_payments_sync: [:environment] do
+  PagarMe.api_key = CatarsePagarme.configuration.api_key
+  page = 1
+  per_page = 2000
+
+
+  while true do
+    Rails.logger.info "[GatewayPayment SYNC] -> running on page #{page}"
+
+    transactions = PagarMe::Transaction.all(page, per_page)
+
+    if transactions.empty?
+      Rails.logger.info "[GatewayPayment SYNC] -> exiting no transactions returned"
+      break
+    end
+
+    Parallel.each(transactions, in_processes: 5) do |transaction| 
+      gpayment = GatewayPayment.find_or_create_by transaction_id: transaction.id.to_s
+      gpayment.update_attributes(
+        gateway_data: transaction.to_json,
+        postbacks: transaction.postbacks.to_json,
+        last_sync_at: DateTime.now()
+      )
+      Rails.logger.info "[GatewayPayment SYNC] - sync transaction #{transaction.id}"
+    end
+
+    page = page+1
+  end
+end
+
+
 desc "Verify all transactions in pagarme for a given date range and check their consistency in our database"
 task :verify_pagarme_transactions, [:start_date, :end_date]  => :environment do |task, args|
   args.with_defaults(start_date: Date.today - 1, end_date: Date.today)
