@@ -12,8 +12,8 @@ class CreateGatewayPayments < ActiveRecord::Migration
 
     execute %Q{
     ALTER TABLE gateway_payments
-        ALTER COLUMN gateway_data SET DATA TYPE jsonb,
-        ALTER COLUMN postbacks SET DATA TYPE jsonb;
+        ALTER COLUMN gateway_data SET DATA TYPE jsonb USING gateway_data::jsonb,
+        ALTER COLUMN postbacks SET DATA TYPE jsonb USING postbacks::jsonb;
     }
   end
 
