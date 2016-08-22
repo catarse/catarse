@@ -1,4 +1,4 @@
-class Add < ActiveRecord::Migration
+class AddContributedByFriendsToProjects < ActiveRecord::Migration
   def change
     execute <<-SQL
 CREATE OR REPLACE VIEW "1".projects as
