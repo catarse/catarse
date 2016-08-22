@@ -80,10 +80,10 @@ desc 'Sync all gateway payments using all transactions'
 task gateway_payments_sync: [:environment] do
   PagarMe.api_key = CatarsePagarme.configuration.api_key
   page = 1
-  per_page = 2000
+  per_page = 1000
 
 
-  while true do
+  loop do
     Rails.logger.info "[GatewayPayment SYNC] -> running on page #{page}"
 
     transactions = PagarMe::Transaction.all(page, per_page)
@@ -93,15 +93,22 @@ task gateway_payments_sync: [:environment] do
       break
     end
 
-    Parallel.each(transactions, in_processes: 5) do |transaction| 
+    Rails.logger.info "[GatewayPayment SYNC] - sync transactions"
+    Parallel.map(transactions, in_process: 5) do |transaction| 
+      begin
+        postbacks = transaction.postbacks.to_json
+      rescue Exception => e
+        postbacks = nil
+      end
+
       gpayment = GatewayPayment.find_or_create_by transaction_id: transaction.id.to_s
       gpayment.update_attributes(
         gateway_data: transaction.to_json,
-        postbacks: transaction.postbacks.to_json,
+        postbacks: postbacks,
         last_sync_at: DateTime.now()
       )
-      Rails.logger.info "[GatewayPayment SYNC] - sync transaction #{transaction.id}"
     end
+    Rails.logger.info "[GatewayPayment SYNC] - transactions synced on page #{page}"
 
     page = page+1
   end
