@@ -1134,7 +1134,7 @@ a:hover {
 
 .card-project-thumb {
   height: 170px;
-  background-image: url('../images/example-bg.png');
+  background-image: url('/assets/example-bg.png');
   background-position: 50% 50%;
   background-size: cover;
 }
@@ -2254,7 +2254,7 @@ a:hover {
 
 .hero-full.hero-knowmore {
   background-color: #24494e;
-  background-image: url('../images/hero-new-home.jpg');
+  background-image: url('/assets/hero-new-home.jpg');
   background-size: cover;
   color: #fff;
 }
@@ -2272,8 +2272,8 @@ a:hover {
 
 .hero-full.hero-2016 {
   padding-top: 136px;
-  background-image: url('../images/hero-2015.png'), -webkit-linear-gradient(270deg, #392a75, #281c5d);
-  background-image: url('../images/hero-2015.png'), linear-gradient(180deg, #392a75, #281c5d);
+  background-image: url('/assets/hero-2015.png'), -webkit-linear-gradient(270deg, #392a75, #281c5d);
+  background-image: url('/assets/hero-2015.png'), linear-gradient(180deg, #392a75, #281c5d);
   background-position: 50% 100%, 0px 0px;
   background-size: 670px, auto;
   background-repeat: no-repeat, repeat;
@@ -2284,7 +2284,7 @@ a:hover {
 }
 
 .hero-guide {
-  background-image: url('../images/hero-guide.jpg');
+  background-image: url('/assets/hero-guide.jpg');
   background-position: 50% 50%;
   background-size: cover;
   background-attachment: scroll;
@@ -2292,14 +2292,14 @@ a:hover {
 }
 
 .hero-jobs {
-  background-image: url('../images/hero-jobs.jpg');
+  background-image: url('/assets/hero-jobs.jpg');
   background-position: 50% 50%;
   background-size: cover;
   color: #fff;
 }
 
 .hero-back {
-  background-image: url('../images/hero-home-hello-1.jpg');
+  background-image: url('/assets/hero-home-hello-1.jpg');
   background-position: 50% 50%;
   background-size: cover;
   color: #fff;
@@ -2510,7 +2510,7 @@ a:hover {
   margin-bottom: 40px;
   padding-top: 95px;
   background-color: #5b97c6;
-  background-image: url('../images/hero-explore.jpg');
+  background-image: url('/assets/hero-explore.jpg');
   background-position: 50% 50%;
   background-size: cover;
   background-attachment: fixed;
@@ -2544,7 +2544,7 @@ a:hover {
 }
 
 .hero-blog {
-  background-image: url('../images/hero-blog.jpg');
+  background-image: url('/assets/hero-blog.jpg');
   background-size: cover;
   color: #fff;
 }
@@ -2561,7 +2561,7 @@ a:hover {
 .bg-projectgrid {
   padding-top: 219px;
   padding-bottom: 185px;
-  background-image: url('../images/bg-hello-people.jpg');
+  background-image: url('/assets/bg-hello-people.jpg');
   background-position: 50% 38%;
   background-size: cover;
   background-attachment: scroll;
@@ -2569,7 +2569,7 @@ a:hover {
 }
 
 .hero-assets {
-  background-image: url('../images/hero-assets.jpg');
+  background-image: url('/assets/hero-assets.jpg');
   background-position: 50% 50%;
   background-size: cover;
   color: #fff;
@@ -2611,7 +2611,7 @@ a:hover {
 .section-cta.video4anos {
   padding-top: 92px;
   padding-bottom: 92px;
-  background-image: url('../images/hello-user-bg.jpg');
+  background-image: url('/assets/hello-user-bg.jpg');
   background-position: 50% 50%;
   background-size: cover;
 }
@@ -2649,13 +2649,13 @@ a:hover {
 }
 
 .cta-backer {
-  background-image: url('../images/hello-cta-backer.jpg');
+  background-image: url('/assets/hello-cta-backer.jpg');
   background-position: 50% 50%;
   background-size: cover;
 }
 
 .cta-maker {
-  background-image: url('../images/hello-cta-apoiador.jpg');
+  background-image: url('/assets/hello-cta-apoiador.jpg');
 }
 
 .back-reward-money {
@@ -2764,7 +2764,7 @@ a:hover {
 
 .card-project-thumb-big {
   height: 360px;
-  background-image: url('../images/project_thumb_large_thumb.jpg');
+  background-image: url('/assets/project_thumb_large_thumb.jpg');
   background-position: 50% 50%;
   background-size: cover;
   background-repeat: no-repeat;
@@ -2791,7 +2791,7 @@ a:hover {
   height: 768px;
   padding-top: 375px;
   padding-bottom: 375px;
-  background-image: url('../images/bg-hello-people.jpg');
+  background-image: url('/assets/bg-hello-people.jpg');
   background-size: cover;
   color: #fff;
 }
@@ -2803,13 +2803,13 @@ a:hover {
 
 .section-large.hello-idea {
   padding-bottom: 145px;
-  background-image: url('../images/bg-hello-idea_1.jpg');
+  background-image: url('/assets/bg-hello-idea_1.jpg');
   background-size: 1383px;
   text-align: center;
 }
 
 .section-large.hello-catarse {
-  background-image: url('../images/bg-hello-catarse.jpg');
+  background-image: url('/assets/bg-hello-catarse.jpg');
   background-size: contain;
   background-repeat: repeat-y;
   text-align: center;
@@ -2853,7 +2853,7 @@ a:hover {
 }
 
 .bg-humberto {
-  background-image: url('../images/bg-hello-user.jpg');
+  background-image: url('/assets/bg-hello-user.jpg');
   background-position: 50% 50%;
   background-size: cover;
 }
@@ -3088,7 +3088,7 @@ a:hover {
 }
 
 .bg-stats {
-  background-image: url('../images/bg-hello-idea.jpg');
+  background-image: url('/assets/bg-hello-idea.jpg');
   background-size: cover;
 }
 
@@ -3151,7 +3151,7 @@ a:hover {
   padding-top: 225px;
   padding-bottom: 235px;
   background-color: #67a4d2;
-  background-image: url('../images/bg-quemsomos.jpg');
+  background-image: url('/assets/bg-quemsomos.jpg');
   background-position: 50% 100%;
   background-size: cover;
   color: #fff;
@@ -3182,8 +3182,8 @@ a:hover {
 .hero-start {
   padding-top: 160px;
   background-color: #7658b0;
-  background-image: url('../images/bg-hero-start.jpg'), -webkit-linear-gradient(270deg, #7658b0, #915dc2 72%);
-  background-image: url('../images/bg-hero-start.jpg'), linear-gradient(180deg, #7658b0, #915dc2 72%);
+  background-image: url('/assets/bg-hero-start.jpg'), -webkit-linear-gradient(270deg, #7658b0, #915dc2 72%);
+  background-image: url('/assets/bg-hero-start.jpg'), linear-gradient(180deg, #7658b0, #915dc2 72%);
   background-position: 50% 50%, 0px 0px;
   background-size: cover, auto;
   background-repeat: repeat-y, repeat;
@@ -3209,8 +3209,8 @@ a:hover {
 .hero-zelo {
   margin-bottom: 0px;
   padding-top: 103px;
-  background-image: url('../images/bg-hero-flex.png'), -webkit-linear-gradient(270deg, #9d50da 41%, #716bd8);
-  background-image: url('../images/bg-hero-flex.png'), linear-gradient(180deg, #9d50da 41%, #716bd8);
+  background-image: url('/assets/bg-hero-flex.png'), -webkit-linear-gradient(270deg, #9d50da 41%, #716bd8);
+  background-image: url('/assets/bg-hero-flex.png'), linear-gradient(180deg, #9d50da 41%, #716bd8);
   background-position: 50% 50%, 0px 0px;
   background-size: 1383px, auto;
   background-repeat: no-repeat, repeat;
@@ -3246,7 +3246,7 @@ a:hover {
 }
 
 .bg-catarse-zelo {
-  background-image: url('../images/bg-catarse-zelo.jpg');
+  background-image: url('/assets/bg-catarse-zelo.jpg');
   background-position: 50% 50%;
   background-size: cover;
 }
@@ -3297,7 +3297,7 @@ a:hover {
 .project-image {
   height: 358px;
   margin-bottom: 50px;
-  background-image: url('../images/thumb-projeto_1.png');
+  background-image: url('/assets/thumb-projeto_1.png');
   background-position: 0px 50%;
   background-size: cover;
   background-repeat: no-repeat;
@@ -3369,19 +3369,19 @@ a:hover {
 }
 
 .bg-hero {
-  background-image: url('../images/bg-podcycle.jpg');
+  background-image: url('/assets/bg-podcycle.jpg');
   background-position: 50% 50%;
   background-size: cover;
 }
 
 .bg-knowmore {
-  background-image: url('../images/HERO-HELLO-DEGRADE.jpg');
+  background-image: url('/assets/HERO-HELLO-DEGRADE.jpg');
   background-position: 50% 50%;
   background-size: cover;
 }
 
 .bg-pedroca {
-  background-image: url('../images/bg-pedroca.jpg');
+  background-image: url('/assets/bg-pedroca.jpg');
   background-position: 50% 50%;
   background-size: cover;
 }
@@ -3479,7 +3479,7 @@ a:hover {
 .logo-flex-alert {
   display: inline-block;
   width: 105px;
-  background-image: url('../images/logo-flex-alert.png');
+  background-image: url('/assets/logo-flex-alert.png');
   background-position: 0px 2px;
   background-size: contain;
   background-repeat: no-repeat;
@@ -3581,7 +3581,7 @@ a:hover {
   height: 240px;
   margin-right: 10px;
   float: left;
-  background-image: url('../images/comofunciona-setas.png'), url('../images/como-funciona-base.png');
+  background-image: url('/assets/comofunciona-setas.png'), url('/assets/como-funciona-base.png');
   background-position: 50% 50%, 50% 50%;
   background-size: 100%, 100%;
   background-repeat: no-repeat, no-repeat;
@@ -3633,46 +3633,46 @@ a:hover {
 .hero-slide {
   padding-top: 187px;
   background-color: #3f4752;
-  background-image: url('../images/example-bg.png');
+  background-image: url('/assets/example-bg.png');
   background-position: 50% 50%;
   background-size: cover;
 }
 
 .hero-slide.teatromagico {
-  background-image: url('../images/banner-home-crioulas.jpg');
+  background-image: url('/assets/banner-home-crioulas.jpg');
 }
 
 .hero-slide.anavitoria {
-  background-image: url('../images/banner-home-dreamdogs.jpg');
+  background-image: url('/assets/banner-home-dreamdogs.jpg');
   background-size: 1430px;
 }
 
 .hero-slide.livros {
-  background-image: url('../images/banner-home-livros-herois.jpg');
+  background-image: url('/assets/banner-home-livros-herois.jpg');
   background-position: 0px 0px;
   background-size: 1430px;
 }
 
 .hero-slide.centrdaterra {
-  background-image: url('../images/banner-home-centrodaterra.jpg');
+  background-image: url('/assets/banner-home-centrodaterra.jpg');
 }
 
 .hero-slide.pernas {
-  background-image: url('../images/banner-home-pernas.jpg');
+  background-image: url('/assets/banner-home-pernas.jpg');
   background-size: 1430px;
 }
 
 .hero-slide.crypto {
-  background-image: url('../images/banner-home-crypto-rave.jpg');
+  background-image: url('/assets/banner-home-crypto-rave.jpg');
   background-size: 1430px;
 }
 
 .hero-slide.start {
-  background-image: url('../images/bg-hero-start.jpg');
+  background-image: url('/assets/bg-hero-start.jpg');
 }
 
 .bg-backs-carrosel {
-  background-image: url('../images/carrosel-apoios-bg.jpg');
+  background-image: url('/assets/carrosel-apoios-bg.jpg');
   background-position: 50% 50%;
   background-size: cover;
   background-repeat: repeat;
@@ -4343,7 +4343,7 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
   .hero-hello {
     height: 490px;
     background-color: #3f4752;
-    background-image: url('../images/hero-hello.jpg');
+    background-image: url('/assets/hero-hello.jpg');
     background-size: cover;
   }
   .btn-play {
@@ -5118,7 +5118,7 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
     width: 100%;
     height: 272px;
     margin-bottom: 40px;
-    background-image: url('../images/como-funciona-base.png');
+    background-image: url('/assets/como-funciona-base.png');
     background-position: 50% 50%;
     background-size: 100%;
     background-repeat: no-repeat;
