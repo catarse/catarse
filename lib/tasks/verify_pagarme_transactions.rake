@@ -97,14 +97,17 @@ task gateway_payments_sync: [:environment] do
     Parallel.map(transactions, in_process: 5) do |transaction| 
       begin
         postbacks = transaction.postbacks.to_json
+        payables = transaction.payables.to_json
       rescue Exception => e
         postbacks = nil
+        payables = nil
       end
 
       gpayment = GatewayPayment.find_or_create_by transaction_id: transaction.id.to_s
       gpayment.update_attributes(
         gateway_data: transaction.to_json,
         postbacks: postbacks,
+        payables: payables,
         last_sync_at: DateTime.now()
       )
     end
