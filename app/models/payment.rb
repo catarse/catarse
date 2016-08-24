@@ -75,7 +75,7 @@ class Payment < ActiveRecord::Base
 
   def notification_template_for_failed_project
     if slip_payment?
-      self.user.bank_account.present? ? :contribution_project_unsuccessful_slip : :contribution_project_unsuccessful_slip_no_account
+      self.user.bank_account.present? ? :contributions_project_unsuccessful_slip : :contribution_project_unsuccessful_slip_no_account
     else
       :contribution_project_unsuccessful_credit_card
     end
