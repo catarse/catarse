@@ -15,6 +15,7 @@ Catarse::Application.routes.draw do
   end
 
   get '/amigos' => redirect('http://crowdfunding.catarse.me/amigos')
+  get '/paratodos' => redirect('http://crowdfunding.catarse.me/paratodos')
   get '/project_edit' => 'application#redirect_to_last_edit'
   get '/billing_edit' => 'application#redirect_to_user_billing'
   get '/user_contributions' => 'application#redirect_to_user_contributions'
