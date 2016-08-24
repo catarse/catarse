@@ -336,8 +336,49 @@ class Project < ActiveRecord::Base
     }
   end
 
+  def to_js
+    {
+      about_html: self.about_html,
+      address: {
+        city: self.account.try(:address_city),
+        state_acronym: self.account.try(:address_state_acronym),
+        state: self.account.try(:address_state)
+      },
+      category_id: self.category.id,
+      category_name: self.category.name_pt,
+      elapsed_time: self.elapsed_time,
+      expires_at: self.expires_at,
+      goal: self.goal,
+      headline: self.headline,
+      project_id: self.id,
+      project_user_id: self.user_id,
+      user: {
+        id: self.user.id,
+        name: self.user.name
+      },
+      permalink: self.permalink,
+      total_contributions: self.total_contributions,
+      pledged: self.pledged,
+      project_state: self.state,
+      category: self.category.name_pt,
+      online_date: self.online_at,
+      name: self.name,
+      original_image: self.display_image,
+      profress: self.progress,
+      thumb_image: self.display_image,
+      video_cover_image: self.video_thumbnail,
+      video_url: self.video_url,
+      zone_expires_at: self.expires_at,
+      zone_online_date: self.online_at
+    }
+  end
+
   def to_analytics_json
     to_analytics.to_json
+  end
+
+  def to_js_json
+    to_js.to_json
   end
 
   def pluck_from_database attribute
