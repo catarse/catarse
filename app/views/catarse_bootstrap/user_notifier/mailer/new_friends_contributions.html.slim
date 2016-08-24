@@ -47,7 +47,7 @@ h1 style="text-align:center;display:block;margin:0;padding:0;color:#3f4752;font-
                         = project.headline
                         br/
                       div style="text-align:center" 
-                        a href="#{project_by_slug_url(project.permalink)}" style=("font-weight:500;letter-spacing:normal;line-height:100%;text-align:center;text-decoration:none;color:#ffffff;display:inline-block;background-color:#7cc142;border-radius:3px;padding:15px 25px") title="Seguindo" target="_blank"  Conheça a campanha
+                        a href="#{project_by_slug_url(project.permalink, {ref:'notificacao_follow_contributed_project',utm_source:'notification',utm_medium:'email',utm_campaign:"follow_contrib",utm_content:project.permalink})}" style=("font-weight:500;letter-spacing:normal;line-height:100%;text-align:center;text-decoration:none;color:#ffffff;display:inline-block;background-color:#7cc142;border-radius:3px;padding:15px 25px") title="Seguindo" target="_blank"  Conheça a campanha
       table border="0" cellpadding="0" cellspacing="0" style="min-width:100%;border-collapse:collapse;table-layout:fixed!important" width="100%" 
         tbody
           tr
