@@ -19,7 +19,7 @@ pt:
       reward_subtitle: "Se você quiser iniciar o projeto sem recompensa e adicionar depois também, fique a vontade!"
       posts: "Escrever uma novidade"
       announce_expiration: 'Prazo de arrecadação'
-      announce_expiration_subtitle: 'Escolha bem a data, pois você não poderá alterá-la depois. Após esse prazo, você receberá seu dinheiro em até 10 dias úteis.'
+      announce_expiration_subtitle: 'Escolha bem a data, pois você não poderá alterá-la depois. Assim que o seu prazo chegar ao fim, você deverá confirmar os seus dados bancários. A partir de então, depositaremos o dinheiro na sua conta em até 10 dias úteis.'
       budget_subtitle: "Como o seu dinheiro será utilizado? Quanto mais transparência melhor. Mostre que etapas e processos estarão envolvidos no uso desses recursos. Uma lista com os principais itens do orçamento ou até mesmo um gráfico de pizza vão super bem aqui."
       card: 'Card do projeto'
       card_subtitle: 'Sabe aquele cardzinho de projeto que aparece na home e na busca? Pois então, faz bonito pois dizem que a primeira impressão é a que fica ;)'
