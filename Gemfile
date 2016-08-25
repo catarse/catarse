@@ -67,7 +67,7 @@ gem 'gridhook'
 # HTML manipulation and formatting
 gem 'simple_form'
 gem 'mail_form'
-gem "auto_html"
+gem "auto_html", "~> 1.6"
 gem 'kaminari'
 gem 'redactor-rails', github: 'catarse/redactor-rails'
 
