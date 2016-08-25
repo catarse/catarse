@@ -80,6 +80,9 @@ pt:
       x_days:
         one: "1 dia"
         other: "%{count} dias"
+      x_dias:
+        one: "1 dia"
+        other: "%{count} dias"
       x_hours:
         one: "1 hora"
         other: "%{count} horas"
