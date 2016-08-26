@@ -54,7 +54,10 @@ end
 desc 'Verify all paid credit card payments for failed project'
 task verify_pagarme_not_refunded_cards: [:environment] do
   PagarMe.api_key = CatarsePagarme.configuration.api_key
-  Payment.joins(contribution: [:project]).where(projects: {state: 'failed'}, state: 'paid').where("lower(gateway) = 'pagarme' and lower(payment_method) = 'cartaodecredito'").uniq.each do |p| 
+  Payment.joins(contribution: [:project]).where(%Q{
+    projects.state = 'failed' and payments.state = 'paid'
+    and lower(payments.gateway) = 'pagarme' and lower(payments.payment_method) = 'cartaodecredito'
+    }).each do |p| 
     Rails.logger.info "Refunding credit card on failed projects #{p.gateway_id}"
     p.direct_refund
   end
@@ -72,6 +75,48 @@ task verify_pagarme_refunds: [:environment] do
     end
   end
 end
+
+desc 'Sync all gateway payments using all transactions'
+task gateway_payments_sync: [:environment] do
+  PagarMe.api_key = CatarsePagarme.configuration.api_key
+  page = 1
+  per_page = 1000
+
+
+  loop do
+    Rails.logger.info "[GatewayPayment SYNC] -> running on page #{page}"
+
+    transactions = PagarMe::Transaction.all(page, per_page)
+
+    if transactions.empty?
+      Rails.logger.info "[GatewayPayment SYNC] -> exiting no transactions returned"
+      break
+    end
+
+    Rails.logger.info "[GatewayPayment SYNC] - sync transactions"
+    Parallel.map(transactions, in_process: 5) do |transaction| 
+      begin
+        postbacks = transaction.postbacks.to_json
+        payables = transaction.payables.to_json
+      rescue Exception => e
+        postbacks = nil
+        payables = nil
+      end
+
+      gpayment = GatewayPayment.find_or_create_by transaction_id: transaction.id.to_s
+      gpayment.update_attributes(
+        gateway_data: transaction.to_json,
+        postbacks: postbacks,
+        payables: payables,
+        last_sync_at: DateTime.now()
+      )
+    end
+    Rails.logger.info "[GatewayPayment SYNC] - transactions synced on page #{page}"
+
+    page = page+1
+  end
+end
+
 
 desc "Verify all transactions in pagarme for a given date range and check their consistency in our database"
 task :verify_pagarme_transactions, [:start_date, :end_date]  => :environment do |task, args|

@@ -277,7 +277,7 @@ RSpec.describe Payment, type: :model do
 
     context "when the method is payment slip user has bank account" do
       let(:payment){ build(:payment, payment_method: 'BoletoBancario') }
-      it { is_expected.to eq(:contribution_project_unsuccessful_slip) }
+      it { is_expected.to eq(:contributions_project_unsuccessful_slip) }
     end
 
     context "when the method is payment slip user has no bank account" do

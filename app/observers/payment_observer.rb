@@ -8,10 +8,12 @@ class PaymentObserver < ActiveRecord::Observer
 
   def from_pending_to_paid(payment)
     notify_confirmation(payment)
-    UserBroadcastWorker.perform_async(
-      follow_id: payment.user.id,
-      template_name: 'follow_contributed_project',
-      project_id: payment.project.id) unless payment.anonymous
+
+    # disabled due digest, remove soon
+    #UserBroadcastWorker.perform_async(
+    #  follow_id: payment.user.id,
+    #  template_name: 'follow_contributed_project',
+    #  project_id: payment.project.id) unless payment.anonymous
   end
 
   def from_paid_to_chargeback(payment)

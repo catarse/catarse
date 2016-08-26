@@ -3345,13 +3345,13 @@ a:hover {
 }
 
 .modal-dialog-inner.modal-dialog-small {
-  width: 590px;
-  height: 530px;
+  width: 600px;
+  height: 565px;
 }
 
 .modal-dialog-content {
   height: 70%;
-  padding-top: 40px;
+  padding-top: 35px;
 }
 
 .modal-dialog-nav-bottom {
@@ -3760,6 +3760,7 @@ a:hover {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  margin-top: -25px;
   margin-bottom: 20px;
   -webkit-box-align: center;
   -webkit-align-items: center;
@@ -3862,6 +3863,23 @@ a:hover {
   -ms-flex: 1;
   flex: 1;
   text-align: center;
+}
+
+.btn-error {
+  border-color: #e86666;
+  background-color: #e86666;
+}
+
+.btn-error:hover {
+  border-color: #f34b4b;
+  background-color: #f34b4b;
+}
+
+.bottom-card-details {
+  margin-top: -30px;
+  margin-bottom: 80px;
+  padding-right: 15px;
+  padding-left: 15px;
 }
 
 html.w-mod-js *[data-ix="fade-in"] {
@@ -4443,6 +4461,9 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
   }
   .save-draft-btn-section {
     margin-left: 0px;
+  }
+  .bottom-card-details {
+    margin-top: -17px;
   }
 }
 
@@ -5141,6 +5162,10 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
     -ms-flex-preferred-size: 100%;
     flex-basis: 100%;
   }
+  .bottom-card-details {
+    margin-top: -25px;
+    margin-bottom: 70px;
+  }
 }
 
 @media (max-width: 479px) {
@@ -5614,4 +5639,23 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
   .card-backer {
     height: 255px;
   }
+}
+
+@font-face {
+  font-family: 'proxima-nova';
+  src: url('../fonts/ProximaNova-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'proxima-nova';
+  src: url('../fonts/ProximaNova-Semibold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'proxima-nova';
+  src: url('../fonts/ProximaNova-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
 }
