@@ -339,7 +339,7 @@ class Project < ActiveRecord::Base
     }
   end
 
-  def to_js
+  def to_js(current_user)
     {
       about_html: self.about_html,
       address: {
@@ -380,7 +380,9 @@ class Project < ActiveRecord::Base
       mode: self.mode,
       open_for_contributions: self.open_for_contributions?,
       zone_expires_at: self.expires_at,
-      zone_online_date: self.online_at
+      zone_online_date: self.online_at,
+      is_admin_role: current_user.try(:admin?) || false,
+      is_owner_or_admin: (current_user && (current_user == self.user || current_user.admin?) ? true : false)
     }
   end
 
@@ -388,8 +390,8 @@ class Project < ActiveRecord::Base
     to_analytics.to_json
   end
 
-  def to_js_json
-    to_js.to_json
+  def to_js_json(current_user)
+    to_js(current_user).to_json
   end
 
   def pluck_from_database attribute
