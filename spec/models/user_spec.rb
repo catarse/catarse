@@ -334,6 +334,7 @@ RSpec.describe User, type: :model do
         projects: user.projects.count,
         published_projects: user.published_projects.count,
         created: user.created_at,
+        has_fb_auth: user.has_fb_auth?,
         has_online_project: user.has_online_project?,
         has_created_post: user.has_sent_notification?,
         last_login: user.last_sign_in_at,
