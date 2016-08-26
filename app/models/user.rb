@@ -264,6 +264,7 @@ class User < ActiveRecord::Base
       projects: self.projects.count,
       published_projects: self.published_projects.count,
       created: self.created_at,
+      has_fb_auth: self.has_fb_auth?,
       has_online_project: self.has_online_project?,
       has_created_post: self.has_sent_notification?,
       last_login: self.last_sign_in_at,

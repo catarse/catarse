@@ -114,7 +114,6 @@ group :production do
   #gem 'dalli'
 end
 group :development do
-  gem 'rack-mini-profiler'
   gem "rails-erd"
   gem "letter_opener"
   gem 'foreman'

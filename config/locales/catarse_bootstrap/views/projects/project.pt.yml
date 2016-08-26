@@ -173,3 +173,49 @@ http://suporte.catarse.me/hc/pt-br/articles/206507863-Catarse-flex-Principais-pe
         not_reached_goal: Aguardando
         draft: "Rascunho"
         in_analysis: "Em análise"
+    faq:
+      aon:
+        description: Caso esse projeto não atinja a meta, você recebe de volta 100% do que pagou através de um reembolso.
+        questions:
+          1:
+            question: Como eu apoio este projeto?
+            answer: Preencha o detalhes do seu apoio, bem como todas as suas informações de pagamento para finalizar o apoio
+          2:
+            question: Quando o pagamento é efetivado?
+            answer: Se você pagou com cartão de crédito, a confirmação deverá ser no mesmo dia. Se foi com boleto, em até 4 dias úteis.
+          3:
+            question: O que os outros podem ver do meu apoio?
+            answer: O projeto será adicionado a seu histórico de apoios em seu perfil , mas a quantidade que você apoiou e a recompensa que escolher, não ficarão públicos.
+          4:
+            question: E se o projeto não atingir a meta?
+            answer: Nesse caso, você recebe de volta 100% do que pagou através de um reembolso.
+          5:
+            question: Se o projeto for financiado, como eu recebo minha recompensa?
+            answer: Quando sua recompensa estiver pronta, <a href="%{userLink}" target="_blank">%{userName}</a> vai entrar em contato com você para combinar a entrega.
+      flex:
+        description: Esse projeto irá ficar com todos os recursos quando finalizar
+        questions:
+          questions:
+            1:
+              question: Como eu apoio este projeto?
+              answer: Preencha o detalhes do seu apoio, bem como todas as suas informações de pagamento para finalizar o apoio
+            2:
+              question: Quando o pagamento é efetivado?
+              answer: Se você pagou com cartão de crédito, a confirmação deverá ser no mesmo dia. Se foi com boleto, em até 4 dias úteis.
+            3:
+              question: O que os outros podem ver do meu apoio?
+              answer: O projeto será adicionado a seu histórico de apoios em seu perfil , mas a quantidade que você apoiou e a recompensa que escolher, não ficarão públicos.
+            4:
+              question: Quem é o responsável pelo projeto?
+              answer: O catarse é apenas um intermediário, caso queira entender mais sobre o projeto, entre em contato com <a href="%{userLink}" target="_blank">%{userName}</a>
+            5:
+              question: Como eu recebo minha recompensa?
+              answer: Quando sua recompensa estiver pronta, <a href="%{userLink}" target="_blank">%{userName}</a> vai entrar em contato com você para combinar a entrega.
+    payment:
+      paid: Confirmado
+      refused: Recusado
+      pending: Pendente
+      pending_refund: Reembolso pendente
+      refunded: Reembolsado
+      chargeback: Contestado
+      deleted: Apagado

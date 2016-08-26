@@ -29,9 +29,10 @@
 - content_for :tracker_snippet_html do
   == @project.tracker_snippet_html
 
-= render 'shared/header_big'
+/ = render 'shared/header_big'
 
-#project-show-root[data-mithril="ProjectsShow" data-parameters={project_id: @project.id, project_user_id: @project.user_id}.to_json data-stats=@project.to_analytics_json]
+#project-show-root[data-parameters=@project.to_js_json data-stats=@project.to_analytics_json]
+
 
 - content_for :application_js do
   = javascript_include_tag "api/application"
