@@ -39,7 +39,7 @@
                 projectParam = m.route.param('project_id'),
                 projectUserIdParam = m.route.param('project_user_id'),
                 rewardIdParam = m.route.param('reward_id'),
-                addToAttr = (newAttr) => {
+                addToAttr = function(newAttr) {
                     attr = _.extend({}, newAttr, attr);
                 };
 
