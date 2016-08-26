@@ -60,7 +60,7 @@ class ContributionDetail < ActiveRecord::Base
 
   def can_show_receipt?
     project = self.project
-    self.paid? && (project.successful? || project.online? || project.waiting_funds?)
+    self.contribution.was_confirmed? #&& (project.successful? || project.online? || project.waiting_funds?)
   end
 
   def can_generate_slip?
