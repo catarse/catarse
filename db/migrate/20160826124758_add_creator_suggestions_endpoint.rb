@@ -17,7 +17,7 @@ from public.contributions c
 join public.projects p on p.id = c.project_id
 join public.users u on u.id = p.user_id
 join "1".user_totals ut on ut.user_id = u.id
-where c.was_confirmed and c.user_id = public.current_user_id()
+where c.was_confirmed and u.id <> public.current_user_id() and c.user_id = public.current_user_id() and u.deactivated_at is null
 group by u.id, ut.total_contributed_projects, ut.total_published_projects;
 
 grant select on "1".creator_suggestions to admin, web_user;
