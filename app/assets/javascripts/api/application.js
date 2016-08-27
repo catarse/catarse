@@ -44,9 +44,7 @@
 
             var isPage = function(pages) {
               return _.reduce(pages, function(memo, page){
-                  if (memo) return;
-
-                  return m.route().indexOf(page) >= 0;
+                  return memo ? memo : m.route().indexOf(page) >= 0;
               }, false);
             };
 
