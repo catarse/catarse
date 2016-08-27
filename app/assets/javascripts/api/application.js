@@ -95,6 +95,7 @@
           '/pt/explore': wrap(c.root.ProjectsExplore, {menuTransparency: true, footerBig: true}),
           '/pt/start': wrap(c.root.Start, {menuTransparency: true, footerBig: true}),
           '/pt/:project': wrap(c.root.ProjectsShow, {menuTransparency: false, footerBig: false}),
+          '/projects/:project_id': wrap(c.root.ProjectsShow, {menuTransparency: false, footerBig: false}),
           '/:project': wrap(c.root.ProjectsShow, {menuTransparency: false, footerBig: false})
       });
   }
