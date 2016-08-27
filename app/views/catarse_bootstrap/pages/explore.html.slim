@@ -7,7 +7,7 @@
 - if current_user
   #nearOfData data-state="#{current_user.address_state}"
 
-#explore[data-mithril="ProjectsExplore" data-currentuserid=current_user.try(:id) data-hasfb="#{current_user.try(:has_fb_auth?)}"]
+#application[data-currentuserid=current_user.try(:id) data-hasfb="#{current_user.try(:has_fb_auth?)}"]
   .w-section.hero-search
 
 = render 'shared/footer_big'

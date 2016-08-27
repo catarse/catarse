@@ -1,7 +1,7 @@
 - content_for :title, t('site.title')
 / = render 'shared/header_big', overlayer: true
 
-#project-index-root[data-currentuserid=current_user.try(:id) data-hasfb="#{current_user.try(:has_fb_auth?)}"]
+#application[data-currentuserid=current_user.try(:id) data-hasfb="#{current_user.try(:has_fb_auth?)}"]
   .w-section.hero-full.hero-full-slide
 = javascript_include_tag 'api/application'
 / section#blog.section-large.bg-gray.before-footer

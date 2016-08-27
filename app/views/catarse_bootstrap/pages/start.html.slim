@@ -8,10 +8,9 @@
   meta property="og:site_name"  content=t('.title')
 - content_for :application_js do
   = javascript_include_tag 'api/application'
-= render 'shared/header_big', overlayer: true
+/ = render 'shared/header_big', overlayer: true
 
 body
- #start[data-mithril="Start"]
- 	.w-section.hero-full.hero-start
+ #application
 
-= render 'shared/footer'
+/ = render 'shared/footer'

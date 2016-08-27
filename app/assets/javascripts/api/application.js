@@ -29,8 +29,7 @@
     });
   }
 
-  var projectsHome = document.getElementById('project-index-root');
-  var projectsShow = document.getElementById('project-show-root');
+  var app = document.getElementById('application');
 
   var wrap = function(component) {
       return {
@@ -43,7 +42,6 @@
                     attr = _.extend({}, newAttr, attr);
                 };
 
-            m.redraw.strategy("diff");
 
             if(projectParam) {
                 addToAttr({project_id: projectParam});
@@ -76,8 +74,8 @@
       };
   };
 
-  if(projectsHome || projectsShow){
-      var rootEl = projectsHome || projectsShow;
+  if(app){
+      var rootEl = app;
     
       m.route.mode = 'pathname';
       
