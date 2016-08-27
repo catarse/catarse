@@ -2,12 +2,9 @@
 - content_for :application_js do
   = javascript_include_tag 'api/application' 
 - controller.referral_it!
-= render 'shared/header_big', overlayer: true
 
 - if current_user
   #nearOfData data-state="#{current_user.address_state}"
 
 #application[data-currentuserid=current_user.try(:id) data-hasfb="#{current_user.try(:has_fb_auth?)}"]
   .w-section.hero-search
-
-= render 'shared/footer_big'
