@@ -37,11 +37,18 @@
             var attr = {},
                 projectParam = m.route.param('project_id'),
                 projectUserIdParam = m.route.param('project_user_id'),
-                rewardIdParam = m.route.param('reward_id'),
-                addToAttr = function(newAttr) {
-                    attr = _.extend({}, newAttr, attr);
-                };
+                rewardIdParam = m.route.param('reward_id');
+            var addToAttr = function(newAttr) {
+                attr = _.extend({}, newAttr, attr);
+            };
 
+            var isPage = function(pages) {
+              return _.reduce(pages, function(memo, page){
+                  if (memo) return;
+
+                  return m.route().indexOf(page) >= 0;
+              }, false);
+            };
 
             if(projectParam) {
                 addToAttr({project_id: projectParam});
@@ -54,8 +61,8 @@
             if(rewardIdParam) {
                 addToAttr({reward_id: rewardIdParam});
             }
-
-            if(_.contains(['/start', '/explore',  '/', '/pt', '/pt/start', '/pt/explore'], m.route())) {
+            
+            if(isPage(['/start', '/explore',  '/', '/pt', '/pt/start', '/pt/explore'])) {
                 addToAttr({menuTransparency: true});
                 addToAttr({footerBig: true});
             }
