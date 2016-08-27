@@ -63,6 +63,9 @@
             if(isPage(['/start', '/explore',  '/', '/pt', '/pt/start', '/pt/explore'])) {
                 addToAttr({menuTransparency: true});
                 addToAttr({footerBig: true});
+            } else {
+                addToAttr({menuTransparency: false});
+                addToAttr({footerBig: false});
             }
 
             return {
