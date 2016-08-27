@@ -31,21 +31,17 @@
 
   var app = document.getElementById('application');
 
-  var wrap = function(component) {
+  var wrap = function(component, customAttr) {
       return {
         controller: function() {
-            var attr = {},
+            var attr = customAttr,
                 projectParam = m.route.param('project_id'),
                 projectUserIdParam = m.route.param('project_user_id'),
-                rewardIdParam = m.route.param('reward_id');
+                rewardIdParam = m.route.param('reward_id'),
+                filterParam = m.route.param('filter');
+            
             var addToAttr = function(newAttr) {
                 attr = _.extend({}, newAttr, attr);
-            };
-
-            var isPage = function(pages) {
-              return _.reduce(pages, function(memo, page){
-                  return memo ? memo : m.route().indexOf(page) >= 0;
-              }, false);
             };
 
             if(projectParam) {
@@ -59,14 +55,15 @@
             if(rewardIdParam) {
                 addToAttr({reward_id: rewardIdParam});
             }
-            
-            if(isPage(['/start', '/explore',  '/', '/pt', '/pt/start', '/pt/explore'])) {
-                addToAttr({menuTransparency: true});
-                addToAttr({footerBig: true});
-            } else {
-                addToAttr({menuTransparency: false});
-                addToAttr({footerBig: false});
+
+            if(filterParam) {
+                addToAttr({filter: filterParam});
             }
+
+            var body = document.getElementsByTagName('body')[0];
+            
+            body.className = 'body-project closed';
+            
 
             return {
                 attr: attr
@@ -88,15 +85,15 @@
       m.route.mode = 'pathname';
       
       m.route(rootEl, '/', {
-          '/': wrap(c.root.ProjectsHome),
-          '/explore': wrap(c.root.ProjectsExplore),
-          '/start': wrap(c.root.Start),
+          '/': wrap(c.root.ProjectsHome, {menuTransparency: true, footerBig: true}),
+          '/explore': wrap(c.root.ProjectsExplore, {menuTransparency: true, footerBig: true}),
+          '/start': wrap(c.root.Start, {menuTransparency: true, footerBig: true}),
           // '/projects/:project_id/contribution': wrap(c.root.ProjectsReward),
           // '/projects/:project_id/payment': wrap(c.root.ProjectsPayment),
           // '/contribution': wrap(c.root.ProjectsPayment),
-          '/pt': wrap(c.root.ProjectsHome),
-          '/pt/explore': wrap(c.root.ProjectsExplore),
-          '/pt/start': wrap(c.root.Start),
+          '/pt': wrap(c.root.ProjectsHome, {menuTransparency: true, footerBig: true}),
+          '/pt/explore': wrap(c.root.ProjectsExplore, {menuTransparency: true, footerBig: true}),
+          '/pt/start': wrap(c.root.Start, {menuTransparency: true, footerBig: true}),
           '/pt/:project': wrap(c.root.ProjectsShow),
           '/:project': wrap(c.root.ProjectsShow)
       });
