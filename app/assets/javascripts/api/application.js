@@ -94,8 +94,8 @@
           '/pt': wrap(c.root.ProjectsHome, {menuTransparency: true, footerBig: true}),
           '/pt/explore': wrap(c.root.ProjectsExplore, {menuTransparency: true, footerBig: true}),
           '/pt/start': wrap(c.root.Start, {menuTransparency: true, footerBig: true}),
-          '/pt/:project': wrap(c.root.ProjectsShow),
-          '/:project': wrap(c.root.ProjectsShow)
+          '/pt/:project': wrap(c.root.ProjectsShow, {menuTransparency: false, footerBig: false}),
+          '/:project': wrap(c.root.ProjectsShow, {menuTransparency: false, footerBig: false})
       });
   }
   _.each(document.querySelectorAll('div[data-mithril]'), function(el){
