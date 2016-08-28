@@ -1,0 +1,10 @@
+- project = @notification.project
+- project_owner = @notification.project.try(:user)
+- user = @notification.user
+
+- if @notification.user.present?
+  | Ola #{user.name}
+- else
+  | Ola
+
+| #{project_owner.try(:name)} te convida a conhecer #{project.try(:name)}
