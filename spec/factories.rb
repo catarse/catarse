@@ -202,14 +202,24 @@ FactoryGirl.define do
     f.association :project, factory: :project
   end
 
+  factory :project_invite do |f| 
+    f.associations :project
+    f.user_email { generate(:user_email) }
+  end
+
   factory :notification do |f|
-    f.association :user, factory: :user
-    f.association :contribution, factory: :contribution
-    f.association :project, factory: :project
-    f.template_name 'project_success'
-    f.origin_name 'Foo Bar'
-    f.origin_email 'foo@bar.com'
-    f.locale 'pt'
+    f.template_name 'project_invite'
+    f.user_email 'person@email.com'
+    f.metadata do
+      {
+        associations: {
+          project_id: 10
+        },
+        origin_name: 'Foo Bar',
+        origin_email: 'foo@bar.com',
+        locale: 'pt'
+      }
+    end
   end
 
   factory :project_notification do |f|
