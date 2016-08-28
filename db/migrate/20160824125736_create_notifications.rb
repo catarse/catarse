@@ -4,7 +4,7 @@ class CreateNotifications < ActiveRecord::Migration
       t.integer :user_id
       t.string :user_email
       t.string :template_name
-      t.json :metadata, default: '{}'
+      t.json :metadata
       t.datetime :sent_at
       t.datetime :deliver_at
 
