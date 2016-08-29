@@ -2898,13 +2898,10 @@ a:hover {
 }
 
 .alert-top {
-  position: fixed;
-  left: 0px;
-  top: 0px;
-  right: 0px;
-  z-index: 2000;
-  padding: 8px 15px;
-  background-color: #f4f4c0;
+  position: static;
+  z-index: 9999;
+  padding: 25px 15px;
+  background-color: #f1f2f3;
   text-align: center;
 }
 
@@ -5639,23 +5636,4 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
   .card-backer {
     height: 255px;
   }
-}
-
-@font-face {
-  font-family: 'proxima-nova';
-  src: url('../fonts/ProximaNova-Regular.otf') format('opentype');
-  font-weight: 400;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'proxima-nova';
-  src: url('../fonts/ProximaNova-Semibold.otf') format('opentype');
-  font-weight: 600;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'proxima-nova';
-  src: url('../fonts/ProximaNova-Bold.otf') format('opentype');
-  font-weight: 700;
-  font-style: normal;
 }
