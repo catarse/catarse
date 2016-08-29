@@ -257,8 +257,9 @@ class Project < ActiveRecord::Base
   end
 
   def total_posts
-    @total_posts ||= project_total.try(:total_posts).to_i
+    @total_posts ||= posts.count
   end
+
   def total_payment_service_fee
     project_total.try(:total_payment_service_fee).to_f
   end
