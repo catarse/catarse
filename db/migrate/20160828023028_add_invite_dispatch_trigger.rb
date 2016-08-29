@@ -22,12 +22,13 @@ create or replace function public.project_invite_dispatch() returns trigger
                     ), now());
             end if;
 
-grant insert on public.notifications to admin, web_user;
-grant usage on sequence notifications_id_seq to admin, web_user
-
             return null;
         end;
     $$;
+
+grant insert on public.notifications to admin, web_user;
+grant usage on sequence notifications_id_seq to admin, web_user;
+
 
 CREATE TRIGGER project_invite_dispatch AFTER INSERT ON public.project_invites FOR EACH ROW EXECUTE PROCEDURE public.project_invite_dispatch();
     }
