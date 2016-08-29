@@ -1,0 +1,29 @@
+- project = @notification.project
+- project_owner = @notification.project.try(:user)
+
+center
+  = image_tag project_owner.display_image, width: '50px', style: 'border-radius: 50px;'
+  h2 style="line-height: 5px"= project_owner.name
+  h3 style="font-weight: 500;"= "gostaria que você apoiasse o projeto"
+
+br/
+
+center
+  table style="border-spacing: 10px; width: 405px;"
+    tbody
+      tr
+        td width="150px"
+          = link_to(image_tag(project.display_image, width: '140px'), project_by_slug_url(project.permalink, {ref: 'notificacao_project_invite',utm_source:'notification',utm_medium:'email',utm_campaign:"project_share_insights",utm_content:project.permalink}))
+        td
+          h2 style="line-height: 110%"= project.name
+          p= project.headline
+
+
+br/
+br/
+
+center
+  = link_to('Conheça o projeto', project_by_slug_url(project.permalink, {ref: 'notificacao_project_invite',utm_source:'notification',utm_medium:'email',utm_campaign:"project_share_insights",utm_content:project.permalink}), style:'border: 1px solid #7cc142; border-radius: 5px; color: #fff; text-decoration: none; font-weight: bolder; text-align: center; padding: 19px 60px; background: #65bf1b; font-size: 15px;')
+
+br/
+br/

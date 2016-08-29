@@ -2,6 +2,8 @@
 
 = render 'shared/header'
 
+#google_oauth_client data-token=CatarseSettings[:google_oauth_client]
+
 - if params[:show_modal].present?
   .modal-backdrop
     .modal-dialog-outer
@@ -15,7 +17,7 @@
 #project-insights-root.min-height-70[data-mithril="Insights" data-id=@project.id]
 
 - content_for :application_js do
-  = javascript_include_tag "api/application"
+  = javascript_include_tag "//apis.google.com/js/client.js", "api/application"
 
 = render 'shared/footer'
 
