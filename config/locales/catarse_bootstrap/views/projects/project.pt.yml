@@ -1,6 +1,7 @@
 pt:
   projects:
     home:
+      header_html: 'Crowdfunding e financiamento coletivo no Brasil é no Catarse'
       row_title: 'Populares'
       banners:
         1:
