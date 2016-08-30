@@ -3879,6 +3879,22 @@ a:hover {
   padding-left: 15px;
 }
 
+.invite-friends-back-col-1 {
+  display: inline-block;
+  width: 50%;
+  padding-right: 36px;
+  padding-left: 18px;
+  float: left;
+  border-right: 1px solid #ddd;
+}
+
+.invite-friends-back-col-2 {
+  display: inline-block;
+  width: 50%;
+  padding-right: 18px;
+  padding-left: 36px;
+}
+
 html.w-mod-js *[data-ix="fade-in"] {
   opacity: 0;
 }
@@ -4461,6 +4477,14 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
   }
   .bottom-card-details {
     margin-top: -17px;
+  }
+  .invite-friends-back-col-1 {
+    padding-right: 18px;
+    padding-left: 6px;
+  }
+  .invite-friends-back-col-2 {
+    padding-right: 6px;
+    padding-left: 18px;
   }
 }
 
@@ -5162,6 +5186,20 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
   .bottom-card-details {
     margin-top: -25px;
     margin-bottom: 70px;
+  }
+  .invite-friends-back-col-1 {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 20px;
+    padding-right: 0px;
+    padding-left: 0px;
+    border-right-style: none;
+  }
+  .invite-friends-back-col-2 {
+    display: inline-block;
+    width: 100%;
+    padding-right: 0px;
+    padding-left: 0px;
   }
 }
 
