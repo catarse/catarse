@@ -271,7 +271,7 @@ class User < ActiveRecord::Base
       created_today: self.created_today?,
       follows_count: follows.count,
       followers_count: followers.count,
-      is_admin_role: self.try(:admin?) || false
+      is_admin_role: self.admin? || false
     }
   end
 
