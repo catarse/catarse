@@ -343,6 +343,7 @@ class Project < ActiveRecord::Base
   def to_js(current_user)
     {
       about_html: self.about_html,
+      budget: self.budget,
       address: {
         city: self.account.try(:address_city),
         state_acronym: self.account.try(:address_state),
@@ -383,6 +384,9 @@ class Project < ActiveRecord::Base
       open_for_contributions: self.open_for_contributions?,
       zone_expires_at: self.expires_at,
       zone_online_date: self.online_at,
+      state: self.state,
+      is_published: published?,
+      in_reminder: is_in_reminder?(current_user),
       is_admin_role: current_user.try(:admin?) || false,
       is_owner_or_admin: (current_user && (current_user == self.user || current_user.admin?) ? true : false)
     }
@@ -443,6 +447,10 @@ class Project < ActiveRecord::Base
 
   def is_flexible?
     mode == 'flex'
+  end
+
+  def is_in_reminder?(current_user)
+    (current_user ? reminders.where(user_id: current_user.try(:id), project_id: self.id).exists? : false)
   end
 
   def update_expires_at
