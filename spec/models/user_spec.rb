@@ -340,7 +340,8 @@ RSpec.describe User, type: :model do
         last_login: user.last_sign_in_at,
         created_today: user.created_today?,
         follows_count: user.follows.count,
-        followers_count: user.followers.count
+        followers_count: user.followers.count,
+        is_admin_role: user.admin?
       }.to_json)
     end
   end
