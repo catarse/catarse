@@ -60,6 +60,10 @@
                 addToAttr({filter: filterParam});
             }
 
+            if(window.localStorage.getItem('globalVideoLanding') !== 'true') {
+                addToAttr({withAlert: true});
+            }
+
             var body = document.getElementsByTagName('body')[0];
             
             body.className = 'body-project closed';
