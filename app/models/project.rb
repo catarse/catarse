@@ -378,7 +378,7 @@ class Project < ActiveRecord::Base
       thumb_image: self.display_image,
       video_cover_image: self.video_thumbnail,
       video_url: self.video_url,
-      video_emebed_url: self.video_embed_url,
+      video_embed_url: self.video_embed_url,
       mode: self.mode,
       open_for_contributions: self.open_for_contributions?,
       zone_expires_at: self.expires_at,
