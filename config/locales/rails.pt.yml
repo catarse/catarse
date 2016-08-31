@@ -86,13 +86,22 @@ pt:
       x_hours:
         one: "1 hora"
         other: "%{count} horas"
+      x_horas:
+        one: "1 hora"
+        other: "%{count} horas"
       x_minutes:
+        one: "1 minuto"
+        other: "%{count} minutos"
+      x_minutos:
         one: "1 minuto"
         other: "%{count} minutos"
       x_months:
         one: "1 mês"
         other: "%{count} meses"
       x_seconds:
+        one: "1 segundo"
+        other: "%{count} segundos"
+      x_segundos:
         one: "1 segundo"
         other: "%{count} segundos"
     prompts:
