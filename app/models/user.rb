@@ -270,7 +270,8 @@ class User < ActiveRecord::Base
       last_login: self.last_sign_in_at,
       created_today: self.created_today?,
       follows_count: follows.count,
-      followers_count: followers.count
+      followers_count: followers.count,
+      is_admin_role: self.try(:admin?) || false
     }
   end
 
