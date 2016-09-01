@@ -86,6 +86,7 @@ class FlexProjectMachine
     # into model.state field.
     after_transition do |project, transition|
       project.save
+      next if transition.metadata['skip_callbacks']
       from_state = transition.metadata["from_state"]
 
       project.notify_observers :"from_#{from_state}_to_#{transition.to_state}"
@@ -138,6 +139,10 @@ class FlexProjectMachine
   # put project in online state
   def push_to_online
     transition_to :online, to_state: 'online'
+  end
+
+  def fake_push_to_online
+    transition_to!(:online, to_state: 'online', skip_callbacks: true)
   end
 
   #send notification to admin if there is a problem finishing the project
