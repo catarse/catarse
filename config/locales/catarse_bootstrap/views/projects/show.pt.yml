@@ -83,6 +83,18 @@ pt:
         seconds:
           one: ' segundo restante'
           other: ' segundos restantes'
+        dias:
+          one: ' dia restante'
+          other: ' dias restantes'
+        horas:
+          one: ' hora restante'
+          other: ' horas restantes'
+        minutos:
+          one: ' minuto restante'
+          other: ' minutos restantes'
+        segundos:
+          one: ' segundo restante'
+          other: ' segundos restantes'
       submit: Apoiar este projeto
       display_status:
         approved: "Esse projeto já foi aprovado pelo Catarse. Em breve ele entrará no ar e estará pronto para receber apoios."

@@ -355,6 +355,10 @@ class Project < ActiveRecord::Base
         total: self.elapsed_time[:time],
         unit: self.elapsed_time[:unit]
       },
+      remaining_time: {
+        total: self.time_to_go[:time],
+        unit: self.time_to_go[:unit]
+      },
       expires_at: self.expires_at,
       goal: self.goal.to_i,
       headline: self.headline,
