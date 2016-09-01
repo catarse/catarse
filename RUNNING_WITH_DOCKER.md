@@ -8,6 +8,7 @@ This guide will help you get started to setup the project using Docker, and keep
 - [Running Catarse](#running-catarse)
 - [Stop Catarse](#stop-catarse)
 - [Seeding DB](#seeding-db)
+- [Running tests](#running-tests)
 - [Debugging](#debugging)
 
 ## Installing Docker
@@ -96,6 +97,26 @@ You probably won't be working with a blank database, so once you are able to run
 
 ```
 % docker-compose run --rm web rake db:seed
+```
+
+## Running tests
+
+In order to run the tests you have to first setup the test database, and then execute the rspec command:
+
+```
+% docker-compose run --rm test bash
+```
+
+Create and migrate the database:
+
+```
+% rake db:create rake db:migrate
+```
+
+Run the tests:
+
+```
+% bundle exec rspec --colour --format d spec
 ```
 
 ## Debugging
