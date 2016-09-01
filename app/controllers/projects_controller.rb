@@ -65,7 +65,7 @@ class ProjectsController < ApplicationController
   def validate_publish
     authorize resource
     Project.transaction do
-      raise InvalidProject unless resource.push_to_online
+      raise InvalidProject unless resource.fake_push_to_online
       raise SuccessfulProject
     end
   rescue InvalidProject
