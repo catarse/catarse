@@ -142,7 +142,7 @@ class FlexProjectMachine
   end
 
   def fake_push_to_online
-    transition_to!(:online, to_state: 'online', skip_callbacks: true)
+    transition_to(:online, to_state: 'online', skip_callbacks: true)
   end
 
   #send notification to admin if there is a problem finishing the project
