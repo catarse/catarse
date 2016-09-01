@@ -97,12 +97,12 @@ services:
     ports:
       - 3000:3000
        # App Guard: Keeps running tests on a separate process:
-  #test:
-    #<<: *app # We copy from &app, and override:
-    #command: bundle exec guard start --no-bundler-warning --no-interactions
-    #environment:
-      #<<: *app_env
-      ## Override the app environment for this container:
-      #DATABASE_URL: postgres://postgres:4rt3335@db:5432/rts_testing
-      #RACK_ENV: test
-      #RAILS_ENV: test
+  test:
+    <<: *app # We copy from &app, and override:
+    environment:
+      <<: *app_environment
+      # Override the app environment for this container:
+      DATABASE_URL: postgres://postgres:P4Ssw0rD!@db:5432/docker_rails_test?pool=25&encoding=unicode&schema_search_path=public,partitioning
+      RACK_ENV: test
+      RAILS_ENV: test
+      SECRET_KEY_BASE_TEST: "600bac98dabba98b903ce4c4d25e48f34920e09f43d3ff61a1005e0f500d5a0e38e25f70ef78e0a8b5475d4ff21cc553e7c07f6565f1c8773165350345fbbc56"
