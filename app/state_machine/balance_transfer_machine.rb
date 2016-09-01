@@ -11,6 +11,7 @@ class BalanceTransferMachine
   transition from: :pending, to: %i(authorized rejected)
   transition from: :authorized, to: %i(error rejected processing)
   transition from: :processing, to: %i(error transferred)
+  transition from: :error, to: %i(authorized)
 
   after_transition(from: :pending, to: :authorized) do |bt|
     #bt.pagarme_delegator.transfer_funds
