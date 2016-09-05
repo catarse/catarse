@@ -60,7 +60,7 @@
                 addToAttr({filter: filterParam});
             }
 
-            if(window.localStorage.getItem('globalVideoLanding') !== 'true') {
+            if(window.localStorage && (window.localStorage.getItem('globalVideoLanding') !== 'true')) {
                 addToAttr({withAlert: true});
             }
 
