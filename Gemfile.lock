@@ -227,6 +227,8 @@ GEM
     http-cookie (1.0.2)
       domain_name (~> 0.5)
     http_accept_language (2.0.5)
+    httparty (0.14.0)
+      multi_xml (>= 0.5.2)
     i18n (0.7.0)
     i18n-js (3.0.0.rc11)
       i18n (~> 0.6)
@@ -376,6 +378,8 @@ GEM
     rb-inotify (0.9.5)
       ffi (>= 0.5.0)
     rb-readline (0.5.3)
+    rdstation-ruby-client (0.0.4)
+      httparty (~> 0.12)
     redcarpet (3.3.3)
     redis (3.2.2)
     request_store (1.2.1)
@@ -579,6 +583,7 @@ DEPENDENCIES
   rails_12factor
   ranked-model
   rb-readline
+  rdstation-ruby-client
   redactor-rails!
   routing-filter (~> 0.4.0.pre)
   rspec-collection_matchers
