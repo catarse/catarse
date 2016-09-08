@@ -85,6 +85,7 @@ gem 'spectator-validates_email',  require: 'validates_email'
 gem 'video_info', '~> 2.4.2'
 gem 'typhoeus'
 gem 'parallel'
+gem 'rdstation-ruby-client'
 gem 'therubyracer', platform: :ruby
 
 # Translations
