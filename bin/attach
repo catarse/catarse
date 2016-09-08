@@ -1,0 +1,16 @@
+#! /bin/bash
+set -e
+
+SERVICE_NAME=$1
+
+read -a ARR <<<$(docker-compose ps | grep "${SERVICE_NAME}_")
+
+CONTAINER_NAME=${ARR[0]}
+CONTAINER_STATUS=${ARR[$((${#ARR[@]}-2))]}
+
+if [ -n "${CONTAINER_NAME}" ] && [ "${CONTAINER_STATUS}" = "Up" ]; then
+  echo "Attaching to running container ${CONTAINER_NAME}..."
+  docker attach ${CONTAINER_NAME}
+else
+  echo "No running container for service '${SERVICE_NAME}'"
+fi
