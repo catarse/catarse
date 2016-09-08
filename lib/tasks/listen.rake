@@ -73,6 +73,12 @@ namespace :listen do
                 else
                   rdstation_client.create_lead(rd_params)
                 end
+
+                if decoded['rdevent_id'].present?
+                  rdevent = Rdevent.find(decoded['rdevent_id'].to_i)
+                  rdevent.update_attribute(:sync_at, DateTime.now)
+                end
+
                 Rails.logger.info("[RD-SYNC] => sync #{payload}")
               rescue Exception => e
                 Rails.logger.info("[RD-SYNC] => #{e.inspect} - payload #{payload.inspect}")
