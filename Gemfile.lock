@@ -26,6 +26,15 @@ GIT
       mime-types
       orm_adapter
 
+PATH
+  remote: ../catarse_pagarme
+  specs:
+    catarse_pagarme (2.9.7)
+      pagarme (= 2.1.3)
+      rails (~> 4.0)
+      sidekiq
+      weekdays (>= 1.0.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -551,7 +560,15 @@ DEPENDENCIES
   capybara (~> 2.2.0)
   carrierwave!
   catarse_monkeymail (>= 0.1.7)
+<<<<<<< 221f2f5806b7e6b8991f8826388f1a010af3b29c
   catarse_pagarme (~> 2.9.8)
+=======
+<<<<<<< Updated upstream
+  catarse_pagarme (~> 2.9.7)
+=======
+  catarse_pagarme!
+>>>>>>> Stashed changes
+>>>>>>> [WIP] Implements mithril-payment
   catarse_settings_db (>= 0.1.0)
   cocoon
   coffee-rails

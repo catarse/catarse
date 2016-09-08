@@ -2,72 +2,76 @@
 - content_for :tracker_snippet_html do
   == @project.tracker_snippet_html
 
-= render 'shared/header'
+/ = render 'shared/header'
 
-= render 'projects/project_header'
+#application[data-parameters=@project.to_js_json(current_user) data-contribution=@contribution.to_json data-stats=@project.to_analytics_json]
+/ = render 'projects/project_header'
 
-#project_review.section[data-thank-you-path=project_contribution_path(project_id: @project.id, id: @contribution.id)]
-  .w-container
-    .w-row
-      .w-col.w-col-8
-        = simple_form_for [@project, @contribution], html: { data: { update_info_path: project_contribution_path(project_id: @contribution.project.id, id: @contribution.id, format: :json) }, id: 'review_form', method: 'put' }, url: project_contribution_path(@project, @contribution) do |form|
-          = form.input :id, as: :hidden, label: false
-          = form.input :project_id, as: :hidden, label: false
-          .u-marginbottom-30.u-text-center-small-only
-            .fontsize-large.fontweight-semibold.lineheight-tight.text-success-small-only= t('.review_title') 
-            .w-hidden-tiny.fontsize-small= t('.review_subtitle')
-          #error-message.card.card-error.u-radius.zindex-10.u-marginbottom-30.w-hidden
-            .fontsize-smaller.fontweight-bold.u-marginbottom-10= t('.review_errors_title')
-            .fontsize-smaller = t('.review_errors')
-          .w-hidden-main.w-hidden-medium.w-clearfix
-            = render 'selected_reward'
-          .w-form.formwrapper
-            .w-row
-              = form.input :payer_name, as: :string, wrapper_html: {class: 'w-col w-col-12'}, input_html: {required: true}, validation_text: true, required: true
-            .w-row
-              = form.input :payer_email, as: :email, wrapper_html: {class: 'w-col w-col-6 w-sub-col'}, input_html: {required: true}, validation_text: true, required: true
-              = form.input :payer_document, as: :tel, wrapper_html: {class: 'w-col w-col-6'}, validation_text: true, input_html: { data: { :'validate-cpf-cnpj' => true, required_in_brazil: true } }
-            .w-row
-              .w-col.w-col-12
-                = form.input_field :anonymous, boolean_style: :inline, class: 'checkbox-fix'
-                label.w-form-label.fontsize-smallest[for="contribution_anonymous"] = t('.anonymous_contribution')
-            .w-row
-              .w-col.w-col-12
-                #anonymous-confirmation.card.card-message.u-radius.zindex-10.fontsize-smallest.w-hidden
-                  .fontweight-bold = t('.anonymous_confirmation_title')
-                  = t('.anonymous_confirmation')
-          .formwrapper
-            .fontsize-base.fontweight-semibold.fontcolor-secondary.u-marginbottom-20= t('.delivery_address') 
-            .w-form
-              .w-row
-                = form.association :country, as: :select, wrapper_html: {class: 'w-col w-col-6 w-sub-col'}, input_html: {class: 'w-select', required: true}, required: true
-              .w-row
-                = form.input :address_street, as: :string, wrapper_html: {class: 'w-col w-col-6 w-sub-col'}, required: true, validation_text: true
-                = form.input :address_number, as: :tel, wrapper_html: {class: 'w-col w-col-small-6 w-col-tiny-6 w-col-3 w-sub-col-middle'}, required: true, validation_text: true
-                = form.input :address_complement, as: :string, wrapper_html: {class: 'w-col w-col-small-6 w-col-tiny-6 w-col-3'}
-              .w-row
-                = form.input :address_neighbourhood, as: :string, wrapper_html: {class: 'w-col w-col-6 w-sub-col'}, required: true, validation_text: true
-                = form.input :address_city, as: :string, wrapper_html: {class: 'w-col w-col-6'}, required: true, validation_text: true
-              .w-row
-                = form.input :address_state, as: :select, collection: State.array, wrapper_html: {class: 'w-col w-col-6 w-sub-col'}, input_html: {data: {required_in_brazil: true}}, validation_text: true
-                = form.input :address_zip_code, as: :tel, wrapper_html: {class: 'w-col w-col-small-6 w-col-tiny-6 w-col-3 w-sub-col-middle'}, input_html: {data: {required_in_brazil: true, fixed_mask: '99999-999'}}, validation_text: true
-                = form.input :address_phone_number, as: :tel, wrapper_html: {class: 'w-col w-col-small-6 w-col-tiny-6 w-col-3'}, input_html: {data: {required_in_brazil: true, fixed_mask: '(99) 9999-99999'}}, validation_text: true
-          .w-row.u-marginbottom-40
-            .w-col.w-col-push-3.w-col-6
-              a#next-step.btn.btn-large href="#payment-engines"= t('.next_step') 
-        #payment-engines.w-hidden
-          .u-marginbottom-30.u-text-center-small-only
-            .fontsize-large.fontweight-semibold.text-success-small-only= t('.choose_payment')
-            .fontcolor-secondary.fontweight-semibold.fontsize-smallest.fontcolor-secondary
-              span.fa.fa-lock
-              |&nbsp;&nbsp;&nbsp;  
-              = t('.choose_payment_subtitle')
-          #engine[class="payments_type" data-path=engine.review_path(@contribution) ]
-            .tab-loader.loader.u-text-center.w-col.w-col-12.u-marginbottom-30 = image_tag "catarse_bootstrap/loader.gif"
-      .w-col.w-col-4
-        .w-hidden-small.w-hidden-tiny
-          = render 'selected_reward'
-        .w-hidden-small.w-hidden-tiny
-          = render "#{@project.mode}_faq_box"
+/ #project_review.section[data-thank-you-path=project_contribution_path(project_id: @project.id, id: @contribution.id)]
+/   .w-container
+/     .w-row
+/       .w-col.w-col-8
+/         #project-review-form[data-mithril="ProjectsPayment"]
+        / = simple_form_for [@project, @contribution], html: { data: { update_info_path: project_contribution_path(project_id: @contribution.project.id, id: @contribution.id, format: :json) }, id: 'review_form', method: 'put' }, url: project_contribution_path(@project, @contribution) do |form|
+        /   = form.input :id, as: :hidden, label: false
+        /   = form.input :project_id, as: :hidden, label: false
+        /   .u-marginbottom-30.u-text-center-small-only
+        /     .fontsize-large.fontweight-semibold.lineheight-tight.text-success-small-only= t('.review_title') 
+        /     .w-hidden-tiny.fontsize-small= t('.review_subtitle')
+        /   #error-message.card.card-error.u-radius.zindex-10.u-marginbottom-30.w-hidden
+        /     .fontsize-smaller.fontweight-bold.u-marginbottom-10= t('.review_errors_title')
+        /     .fontsize-smaller = t('.review_errors')
+        /   .w-hidden-main.w-hidden-medium.w-clearfix
+        /     = render 'selected_reward'
+        /   .w-form.formwrapper
+        /     .w-row
+        /       = form.input :payer_name, as: :string, wrapper_html: {class: 'w-col w-col-12'}, input_html: {required: true}, validation_text: true, required: true
+        /     .w-row
+        /       = form.input :payer_email, as: :email, wrapper_html: {class: 'w-col w-col-6 w-sub-col'}, input_html: {required: true}, validation_text: true, required: true
+        /       = form.input :payer_document, as: :tel, wrapper_html: {class: 'w-col w-col-6'}, validation_text: true, input_html: { data: { :'validate-cpf-cnpj' => true, required_in_brazil: true } }
+        /     .w-row
+        /       .w-col.w-col-12
+        /         = form.input_field :anonymous, boolean_style: :inline, class: 'checkbox-fix'
+        /         label.w-form-label.fontsize-smallest[for="contribution_anonymous"] = t('.anonymous_contribution')
+        /     .w-row
+        /       .w-col.w-col-12
+        /         #anonymous-confirmation.card.card-message.u-radius.zindex-10.fontsize-smallest.w-hidden
+        /           .fontweight-bold = t('.anonymous_confirmation_title')
+        /           = t('.anonymous_confirmation')
+        /   .formwrapper
+        /     .fontsize-base.fontweight-semibold.fontcolor-secondary.u-marginbottom-20= t('.delivery_address') 
+        /     .w-form
+        /       .w-row
+        /         = form.association :country, as: :select, wrapper_html: {class: 'w-col w-col-6 w-sub-col'}, input_html: {class: 'w-select', required: true}, required: true
+        /       .w-row
+        /         = form.input :address_street, as: :string, wrapper_html: {class: 'w-col w-col-6 w-sub-col'}, required: true, validation_text: true
+        /         = form.input :address_number, as: :tel, wrapper_html: {class: 'w-col w-col-small-6 w-col-tiny-6 w-col-3 w-sub-col-middle'}, required: true, validation_text: true
+        /         = form.input :address_complement, as: :string, wrapper_html: {class: 'w-col w-col-small-6 w-col-tiny-6 w-col-3'}
+        /       .w-row
+        /         = form.input :address_neighbourhood, as: :string, wrapper_html: {class: 'w-col w-col-6 w-sub-col'}, required: true, validation_text: true
+        /         = form.input :address_city, as: :string, wrapper_html: {class: 'w-col w-col-6'}, required: true, validation_text: true
+        /       .w-row
+        /         = form.input :address_state, as: :select, collection: State.array, wrapper_html: {class: 'w-col w-col-6 w-sub-col'}, input_html: {data: {required_in_brazil: true}}, validation_text: true
+        /         = form.input :address_zip_code, as: :tel, wrapper_html: {class: 'w-col w-col-small-6 w-col-tiny-6 w-col-3 w-sub-col-middle'}, input_html: {data: {required_in_brazil: true, fixed_mask: '99999-999'}}, validation_text: true
+        /         = form.input :address_phone_number, as: :tel, wrapper_html: {class: 'w-col w-col-small-6 w-col-tiny-6 w-col-3'}, input_html: {data: {required_in_brazil: true, fixed_mask: '(99) 9999-99999'}}, validation_text: true
+        /   .w-row.u-marginbottom-40
+        /     .w-col.w-col-push-3.w-col-6
+        /       a#next-step.btn.btn-large href="#payment-engines"= t('.next_step') 
+        / #payment-engines.w-hidden
+        /   .u-marginbottom-30.u-text-center-small-only
+        /     .fontsize-large.fontweight-semibold.text-success-small-only= t('.choose_payment')
+        /     .fontcolor-secondary.fontweight-semibold.fontsize-smallest.fontcolor-secondary
+        /       span.fa.fa-lock
+        /       |&nbsp;&nbsp;&nbsp;  
+        /       = t('.choose_payment_subtitle')
+        /   #engine[class="payments_type" data-path=engine.review_path(@contribution) ]
+        /     .tab-loader.loader.u-text-center.w-col.w-col-12.u-marginbottom-30 = image_tag "catarse_bootstrap/loader.gif"
+      / .w-col.w-col-4
+      /   .w-hidden-small.w-hidden-tiny
+      /     = render 'selected_reward'
+      /   .w-hidden-small.w-hidden-tiny
+      /     = render "#{@project.mode}_faq_box"
 
-= render 'shared/footer'
+- content_for :application_js do
+  = javascript_include_tag "api/application"
+/ = render 'shared/footer'

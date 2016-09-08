@@ -139,4 +139,19 @@ class Contribution < ActiveRecord::Base
     })
   end
 
+  def to_js
+    {
+      id: self.id,
+      value: self.value,
+      reward: {
+        id: self.reward ? self.reward.id : nil,
+        description: self.reward ? self.reward.description : nil
+      }
+    }
+  end
+
+  def to_json
+    to_js.to_json
+  end
+
 end
