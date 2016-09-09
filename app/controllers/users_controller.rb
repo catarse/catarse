@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   actions :show, :update, :unsubscribe_notifications, :destroy, :edit
   respond_to :json, only: [:contributions, :projects]
   before_action :referral_it!, only: [:show]
+  before_action :authenticate_user!, only: [:follow_fb_friends]
 
   def balance
     authorize resource, :update?

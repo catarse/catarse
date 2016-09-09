@@ -6,3 +6,6 @@ require 'rake'
 
 Catarse::Application.load_tasks
 
+if Rails.env == 'production'
+    Rake::Task["db:structure:dump"].clear
+end
