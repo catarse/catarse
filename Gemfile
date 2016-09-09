@@ -21,6 +21,7 @@ gem 'statesman'
 gem 'pg', '0.17.1'
 gem 'dbhero', '>= 1.1.12'
 gem 'postgres-copy'
+gem 'postgres_ext'
 gem 'pg_search'
 gem 'i18n_alchemy'
 gem "i18n-js", ">= 3.0.0.rc11"
@@ -36,7 +37,7 @@ gem 'mixpanel-ruby'
 gem 'mixpanel_client'
 
 # Payment engines
-gem 'catarse_pagarme', '~> 2.9.6'
+gem 'catarse_pagarme', '~> 2.9.7'
 #gem 'catarse_pagarme', path: '../catarse_pagarme'
 
 # Decorators
@@ -44,7 +45,7 @@ gem 'draper'
 
 # Frontend stuff
 gem 'slim-rails'
-gem 'browser'
+gem 'browser', "1.0.1"
 gem "cocoon"
 
 # Static pages
@@ -55,7 +56,7 @@ gem 'simple_token_authentication', '~> 1.0' # see semver.org
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'koala'
-gem 'devise'
+gem 'devise', '3.5.10'
 gem 'pundit'
 gem 'json_web_token'
 
@@ -66,7 +67,7 @@ gem 'gridhook'
 # HTML manipulation and formatting
 gem 'simple_form'
 gem 'mail_form'
-gem "auto_html"
+gem "auto_html", "~> 1.6"
 gem 'kaminari'
 gem 'redactor-rails', github: 'catarse/redactor-rails'
 
@@ -85,6 +86,8 @@ gem 'video_info', '~> 2.4.2'
 gem 'typhoeus'
 gem 'parallel'
 gem 'sitemap_generator'
+gem 'rdstation-ruby-client'
+gem 'therubyracer', platform: :ruby
 
 # Translations
 gem 'http_accept_language'
@@ -107,6 +110,8 @@ group :production do
 
   # Monitoring with the new new relic
   gem 'newrelic_rpm'
+
+  gem "activerecord-nulldb-adapter"
 
   # Using dalli and memcachier have not presented significative performance gains
   # Probably this is due to our pattern of cache usage

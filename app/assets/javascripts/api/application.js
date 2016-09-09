@@ -61,7 +61,7 @@
             }
 
             if(window.localStorage && (window.localStorage.getItem('globalVideoLanding') !== 'true')) {
-                addToAttr({withAlert: true});
+                addToAttr({withAlert: false});
             }
 
             var body = document.getElementsByTagName('body')[0];
