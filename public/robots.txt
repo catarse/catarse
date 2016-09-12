@@ -7,4 +7,4 @@
 User-agent: *
 Disallow: /dbhero/
 
-Sitemap: http://static.catarse.me/sitemaps/sitemap.xml.gz
+Sitemap: https://catarse.me/sitemap.xml
