@@ -64,6 +64,6 @@ SitemapGenerator::Sitemap.create do
   Project.where("permalink in ('mola','alendadoheroi') or state in ('online','waiting_funds') or expires_at+'7 days'::interval > now() or (state='successful' and (mode='aon' or goal*0.50<(select sum(p.value) from payments p join contributions c on c.id=p.contribution_id and p.state='paid' and c.project_id=projects.id)))").update_ordered.each do |project|
     add project.permalink, :lastmod => project.updated_at,\
       :priority => (project.state!='successful' ? 0.6 : 0.4),\
-      :changefreq => (project.state!='successful' ? 'daily' : 'yearly')
+      :changefreq => (project.state!='successful' ? 'daily' : 'monthly')
   end
 end
