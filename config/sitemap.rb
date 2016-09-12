@@ -1,20 +1,23 @@
+# -*- coding: utf-8 -*-
+
 # Set the host name for URL creation
-SitemapGenerator::Sitemap.default_host = CatarseSettings[:base_url] #"https://www.catarse.me"
+SitemapGenerator::Sitemap.default_host = CatarseSettings[:base_url]
 
 # The remote host where your sitemaps will be hosted
-#SitemapGenerator::Sitemap.sitemaps_host = "http://sitemap.catarse.me"
+SitemapGenerator::Sitemap.sitemaps_host = CatarseSettings[:sitemap_host]
 
 # The directory to write sitemaps to locally
-#SitemapGenerator::Sitemap.public_path = 'tmp/'
+SitemapGenerator::Sitemap.public_path = 'tmp/'
 
 # Set this to a directory/path if you don't want to upload to the root of your `sitemaps_host`
-#SitemapGenerator::Sitemap.sitemaps_path = 'sitemaps/'
+SitemapGenerator::Sitemap.sitemaps_path = 'sitemaps/'
  
-# SitemapGenerator::Sitemap.adapter = SitemapGenerator::S3Adapter.new(fog_provider: 'AWS',
-#                                         aws_access_key_id: CatarseSettings[:aws_access_key],
-#                                         aws_secret_access_key: CatarseSettings[:aws_secret_key],
-#                                         fog_directory: 'catarsesitemap',
-#                                         fog_region: CatarseSettings[:aws_region])
+SitemapGenerator::Sitemap.adapter = SitemapGenerator::S3Adapter.new(
+  fog_provider: 'AWS',
+  aws_access_key_id: CatarseSettings[:aws_access_key],
+  aws_secret_access_key: CatarseSettings[:aws_secret_key],
+  fog_directory: CatarseSettings[:sitemap_bucket]
+)
 
 SitemapGenerator::Sitemap.create do
   # Put links creation logic here.

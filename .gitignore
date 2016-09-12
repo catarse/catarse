@@ -31,3 +31,4 @@ node_modules/
 .rbenv-gemsets
 .tern-port
 *.env
+public/sitemap.xml.gz
