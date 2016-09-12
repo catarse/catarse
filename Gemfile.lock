@@ -465,6 +465,8 @@ GEM
       actionmailer (>= 3.2.6, < 5)
       actionpack (>= 3.2.6, < 5)
       devise (~> 3.2)
+    sitemap_generator (5.1.0)
+      builder
     slim (3.0.7)
       temple (~> 0.7.6)
       tilt (>= 1.3.3, < 2.1)
@@ -611,6 +613,7 @@ DEPENDENCIES
   sidekiq (~> 4.0.1)
   simple_form
   simple_token_authentication (~> 1.0)
+  sitemap_generator
   slim-rails
   spectator-validates_email
   sprockets
