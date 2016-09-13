@@ -6,5 +6,10 @@
 
 User-agent: *
 Disallow: /dbhero/
+Disallow: /api_token
+Disallow: */admin
+Disallow: */new-admin
+Disallow: */projects/
+Disallow: */users/*/edit
 
-Sitemap: https://catarse.me/sitemap.xml
+Sitemap: https://www.catarse.me/sitemap.xml
