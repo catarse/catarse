@@ -1,6 +1,18 @@
 class AddDeleteProjectsEndpoint < ActiveRecord::Migration
   def change
     execute <<-SQL
+    CREATE OR REPLACE FUNCTION update_full_text_index() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+      if NEW.state NOT IN ('draft', 'deleted') then
+        new.full_text_index :=  public.generate_project_full_text_index(NEW);
+      end if;
+      RETURN NEW;
+    END;
+    $$;
+
+
       CREATE OR REPLACE FUNCTION "1".delete_project(_project_id integer) RETURNS void
           LANGUAGE plpgsql
           AS $$
@@ -16,7 +28,7 @@ class AddDeleteProjectsEndpoint < ActiveRecord::Migration
                 update project_transitions pt set most_recent = false where pt.project_id = _project_id;
                 insert into public.project_transitions (to_state, metadata, sort_key, project_id, most_recent, created_at, updated_at) 
                 values ('deleted', '{"to_state":"deleted", "from_state":' || v_project.state || '}', 0, _project_id, true, current_timestamp, current_timestamp);
-                update projects set state = 'deleted' where id = _project_id;
+                update projects set state = 'deleted', permalink = ('_deleted_' || _project_id) where id = _project_id;
               end;
             $$;
 
