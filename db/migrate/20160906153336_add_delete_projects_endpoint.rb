@@ -15,7 +15,7 @@ class AddDeleteProjectsEndpoint < ActiveRecord::Migration
 
                 update project_transitions pt set most_recent = false where pt.project_id = _project_id;
                 insert into public.project_transitions (to_state, metadata, sort_key, project_id, most_recent, created_at, updated_at) 
-                values ('deleted', '{"to_state":"deleted", "from_state":' || (select p.state from projects p where id = _project_id) || '}', 0, _project_id, true, current_timestamp, current_timestamp);
+                values ('deleted', '{"to_state":"deleted", "from_state":' || v_project.state || '}', 0, _project_id, true, current_timestamp, current_timestamp);
                 update projects set state = 'deleted' where id = _project_id;
               end;
             $$;
