@@ -19,7 +19,7 @@ class ProjectPolicy < ApplicationPolicy
   end
 
   def update?
-    create?
+    create? && record.state != 'deleted'
   end
 
   def push_to_flex?
