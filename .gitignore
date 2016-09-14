@@ -32,3 +32,4 @@ node_modules/
 .tern-port
 *.env
 public/sitemap.xml.gz
+config/secrets.yml
