@@ -43,6 +43,7 @@ class User < ActiveRecord::Base
   has_one :user_credit
   has_one :bank_account, dependent: :destroy
   has_many :user_friends
+  has_many :login_activities
   has_many :feeds, class_name: 'UserFeed'
   has_many :follows, class_name: 'UserFollow'
   has_many :credit_cards
@@ -115,7 +116,7 @@ class User < ActiveRecord::Base
   # LGTM
   scope :to_send_category_notification, -> (category_id) {
     where("NOT EXISTS (
-          select true from category_notifications n
+          select true from category_notification n
           where n.template_name = 'categorized_projects_of_the_week' AND
           n.category_id = ? AND
           (current_timestamp - n.created_at) <= '1 week'::interval AND
@@ -339,4 +340,8 @@ class User < ActiveRecord::Base
     raw
   end
 
+  def update_tracked_fields(request)
+    super
+    login_activities.build(ip_address: self.current_sign_in_ip)
+  end
 end
