@@ -116,7 +116,7 @@ class User < ActiveRecord::Base
   # LGTM
   scope :to_send_category_notification, -> (category_id) {
     where("NOT EXISTS (
-          select true from category_notification n
+          select true from category_notifications n
           where n.template_name = 'categorized_projects_of_the_week' AND
           n.category_id = ? AND
           (current_timestamp - n.created_at) <= '1 week'::interval AND
