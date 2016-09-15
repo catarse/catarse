@@ -25,8 +25,11 @@ RSpec.describe ProjectsController, type: :controller do
     end
 
     context "when user is logged in" do
-      let(:current_user){ create(:user) }
+      let(:current_user){ create(:user, current_sign_in_ip: '127.0.0.1') }
       it{ is_expected.to redirect_to insights_project_path(Project.last) }
+      it "should fill with the current_sign_in_ip of user" do
+        expect(Project.last.ip_address).to eq(current_user.current_sign_in_ip)
+      end
     end
   end
 

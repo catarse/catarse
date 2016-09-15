@@ -39,7 +39,9 @@ class ProjectsController < ApplicationController
     @project = Project.new
     @project.attributes = permitted_params.merge(
       user: current_user,
-      origin: Origin.process_hash(referral))
+      origin: Origin.process_hash(referral),
+      ip_address: current_user.try(:current_sign_in_ip)
+    )
     authorize @project
     if @project.save
       redirect_to insights_project_path(@project)
