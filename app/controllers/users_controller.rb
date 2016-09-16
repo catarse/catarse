@@ -59,6 +59,12 @@ class UsersController < ApplicationController
     }
   end
 
+  def credit_cards
+    authorize resource
+    
+    render json: current_user.credit_cards.to_json
+  end
+
   def reactivate
     user = params[:token].present? && User.find_by(reactivate_token: params[:token])
     if user
