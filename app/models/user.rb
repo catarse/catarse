@@ -90,8 +90,8 @@ class User < ActiveRecord::Base
   }
 
   scope :subscribed_to_posts, -> {
-     where("subscribed_to_project_posts")
-   }
+    where("subscribed_to_project_posts")
+  }
 
   scope :with_contributing_friends_since_last_day, -> {
     joins("join user_follows on user_follows.user_id = users.id").
@@ -108,7 +108,7 @@ class User < ActiveRecord::Base
 
   scope :subscribed_to_project, ->(project_id) {
     who_contributed_project(project_id).
-    where("id NOT IN (SELECT user_id FROM unsubscribes WHERE project_id = ?)", project_id)
+      where("id NOT IN (SELECT user_id FROM unsubscribes WHERE project_id = ?)", project_id)
   }
 
   #FIXME: very slow query
@@ -234,7 +234,7 @@ class User < ActiveRecord::Base
     follows.joins('join contributions on contributions.user_id = user_follows.follow_id 
                     join payments on payments.contribution_id = contributions.id
                     join projects on projects.id = contributions.project_id').
-                  where("contributions.is_confirmed 
+      where("contributions.is_confirmed 
                         and not contributions.anonymous 
                         and payments.paid_at > CURRENT_TIMESTAMP - '1 day'::interval and projects.id = ?", project.id).uniq
   end
@@ -243,8 +243,8 @@ class User < ActiveRecord::Base
     Project.joins(:contributions).
       joins('join user_follows on user_follows.follow_id = contributions.user_id
             join payments on payments.contribution_id = contributions.id').
-            where('contributions.is_confirmed and not contributions.anonymous').
-            where("payments.paid_at > CURRENT_TIMESTAMP - '1 day'::interval
+      where('contributions.is_confirmed and not contributions.anonymous').
+      where("payments.paid_at > CURRENT_TIMESTAMP - '1 day'::interval
                   and user_follows.user_id = ?", self.id).uniq
   end
 
@@ -343,5 +343,17 @@ class User < ActiveRecord::Base
   def update_tracked_fields(request)
     super
     login_activities.build(ip_address: self.current_sign_in_ip)
+  end
+
+  def account_active?
+    banned_at.nil?
+  end
+
+  def active_for_authentication?
+    super && account_active?
+  end
+
+  def inactive_message
+    account_active? ? super : :locked
   end
 end

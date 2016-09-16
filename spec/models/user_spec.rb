@@ -567,4 +567,49 @@ RSpec.describe User, type: :model do
       it { is_expected.to eq(false) }
     end
   end
+
+  describe '#account_active?' do
+    let(:user) { create(:user) }
+
+    subject { user.account_active? }
+
+    context 'when user is banned' do
+      before { user.update_attribute(:banned_at, DateTime.now) }
+      it { is_expected.to eq(false) }
+    end
+
+    context 'when user is not banned' do
+      it { is_expected.to eq(true) }
+    end
+  end
+
+  describe '#active_for_authentication?' do
+    let(:user) { create(:user) }
+
+    subject { user.active_for_authentication? }
+
+    context 'when user is banned' do
+      before { user.update_attribute(:banned_at, DateTime.now) }
+      it { is_expected.to eq(false) }
+    end
+
+    context 'when user is not banned' do
+      it { is_expected.to eq(true) }
+    end
+  end
+
+  describe '#inactive_message' do
+    let(:user) { create(:user) }
+
+    subject { user.inactive_message }
+
+    context 'when user is banned' do
+      before { user.update_attribute(:banned_at, DateTime.now) }
+      it { is_expected.to eq(:locked) }
+    end
+
+    context 'when user is not banned' do
+      it { is_expected.to eq(:inactive) }
+    end
+  end
 end
