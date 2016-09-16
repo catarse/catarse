@@ -95,6 +95,10 @@ pt:
         segundos:
           one: ' segundo restante'
           other: ' segundos restantes'
+        dia: ' dia restante'
+        hora: ' hora restante'
+        minuto: ' minuto restante'
+        segundo: ' segundo restantes'
       submit: Apoiar este projeto
       display_status:
         approved: "Esse projeto já foi aprovado pelo Catarse. Em breve ele entrará no ar e estará pronto para receber apoios."
