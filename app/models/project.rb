@@ -176,7 +176,7 @@ class Project < ActiveRecord::Base
         and projects.expires_at + '7 days'::interval < now()
         and not exists(select true from balance_transfers bt where bt.project_id = projects.id)
         and not exists(select true from project_notifications pn
-            where pn.template_name = 'pending_balance_transfer_confirmation' and pn.project_id = projects.id and pn.created_at + '7 days'::interval < current_timestamp)
+            where pn.template_name = 'pending_balance_transfer_confirmation' and pn.project_id = projects.id and pn.created_at + '7 days'::interval > current_timestamp)
         and not exists(select true from project_account_errors pae where pae.project_account_id = project_accounts.id and not pae.solved)
       })
   }
