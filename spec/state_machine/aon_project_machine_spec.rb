@@ -405,15 +405,6 @@ RSpec.describe AonProjectMachine, type: :model do
         allow(subject).to receive(:push_to_draft).and_call_original
       end
 
-      context "#can_approve?" do
-        before do
-          expect(subject).to receive(:can_transition_to?).
-            with(:approved)
-        end
-
-        it { subject.can_approve? }
-      end
-
       context "#can_reject?" do
         before do
           expect(subject).to receive(:can_transition_to?).

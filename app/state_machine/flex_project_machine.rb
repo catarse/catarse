@@ -101,10 +101,6 @@ class FlexProjectMachine
     transition from: :waiting_funds, to: %i(successful failed)
   end
 
-  def can_approve?
-    can_transition_to? :approved
-  end
-
   def can_reject?
     can_transition_to? :rejected
   end
