@@ -2,11 +2,6 @@ class ProjectObserver < ActiveRecord::Observer
   observe :project
 
   def before_save(project)
-    if project.is_flexible? && project.mode_was == 'aon' && (project.state.in? ['in_analysis', 'approved'])
-      project.state = 'draft'
-      project.project_transitions.destroy_all
-    end
-
     if project.try(:online_days_changed?) || project.try(:expires_at).nil?
       project.update_expires_at
     end
@@ -24,14 +19,6 @@ class ProjectObserver < ActiveRecord::Observer
     end
   end
 
-  def from_draft_to_in_analysis(project)
-    project.notify_to_backoffice(:new_draft_project, {
-      from_email: project.user.email,
-      from_name: project.user.display_name
-    }, project.new_draft_recipient)
-
-  end
-
   def from_online_to_waiting_funds(project)
     notify_admin_project_will_succeed(project) if project.reached_goal?
   end
@@ -43,7 +30,7 @@ class ProjectObserver < ActiveRecord::Observer
   end
   alias :from_online_to_successful :from_waiting_funds_to_successful
 
-  def from_approved_to_online(project)
+  def from_draft_to_online(project)
     project.update_expires_at
     project.update_attributes(
       published_ip: project.user.current_sign_in_ip,
@@ -58,8 +45,6 @@ class ProjectObserver < ActiveRecord::Observer
 
     FacebookScrapeReloadWorker.perform_async(project.direct_url)
   end
-  # Flexible pojects can go direct to online from draft
-  alias :from_draft_to_online :from_approved_to_online
 
   def from_online_to_draft(project)
     refund_all_payments(project)

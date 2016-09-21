@@ -55,11 +55,6 @@ class ProjectsController < ApplicationController
     destroy!
   end
 
-  def send_to_analysis
-    authorize resource
-    resource_action :send_to_analysis, :analysis_success
-  end
-
   def publish
     authorize resource
   end

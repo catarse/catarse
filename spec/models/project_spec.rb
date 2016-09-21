@@ -2,10 +2,7 @@
 require 'rails_helper'
 
 def all_machine_states
-  %w(
-    draft rejected online successful waiting_funds
-    deleted in_analysis approved failed
-  )
+  %w(draft rejected online successful waiting_funds deleted failed)
 end
 
 RSpec.describe Project, type: :model do
@@ -219,11 +216,6 @@ RSpec.describe Project, type: :model do
       it { is_expected.to eq(true) }
     end
 
-    context "when project in approved" do
-      let!(:project) { create(:project, state: 'approved') }
-      it { is_expected.to eq(false) }
-    end
-
     context "when project in draft" do
       let!(:project) { create(:project, state: 'draft') }
       it { is_expected.to eq(false) }
@@ -268,7 +260,6 @@ RSpec.describe Project, type: :model do
       [:draft, :rejected, :deleted].each do |state|
         create(:project, state: state)
       end
-      build(:project, state: :in_analysis).save(validate: false)
       @project = create(:project, state: :online)
     end
     subject{ Project.visible }
@@ -276,7 +267,7 @@ RSpec.describe Project, type: :model do
   end
 
   describe '.state_names' do
-    let(:states) { [:draft, :rejected, :approved, :online, :successful, :waiting_funds, :failed, :deleted, :in_analysis] }
+    let(:states) { [:draft, :rejected, :online, :successful, :waiting_funds, :failed, :deleted] }
   
     subject { Project.state_names }
   

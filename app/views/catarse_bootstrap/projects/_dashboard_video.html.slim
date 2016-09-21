@@ -9,7 +9,7 @@
                 .w-col.w-col-6
                   label.field-label.fontweight-semibold = t(".#{@project.mode}.video_url").html_safe
                   label.field-label.fontsize-smallest.fontcolor-secondary = t(".#{@project.mode}.video_url_subtitle").html_safe
-                  - if @project.draft? || @project.in_analysis?
+                  - if @project.draft?
                     label.field-label.fontsize-smallest.fontcolor-secondary.fontweight-bold = t(".#{@project.mode}.video_url_hint")
                 .w-col.w-col-6
                   = form.input :video_url, as: :string,

@@ -10,20 +10,8 @@ RSpec.describe Admin::ProjectsController, type: :controller do
     request.env['HTTP_REFERER'] = admin_projects_path
   end
 
-  describe 'PUT approve' do
-    let(:project) { create(:project, state: 'in_analysis') }
-    subject { project.approved? }
-
-    before do
-      put :approve, id: project, locale: :pt
-      project.reload
-    end
-
-    it { is_expected.to eq(true) }
-  end
-
   describe 'PUT reject' do
-    let(:project) { create(:project, state: 'in_analysis') }
+    let(:project) { create(:project, state: 'draft') }
     subject { project.rejected? }
 
     before do

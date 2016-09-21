@@ -143,7 +143,7 @@ class Project < ActiveRecord::Base
   scope :name_contains, ->(term) { where("unaccent(upper(name)) LIKE ('%'||unaccent(upper(?))||'%')", term) }
   scope :user_name_contains, ->(term) { joins(:user).where("unaccent(upper(users.name)) LIKE ('%'||unaccent(upper(?))||'%')", term) }
   scope :to_finish, ->{ expired.with_states(['online', 'waiting_funds']) }
-  scope :visible, -> { without_states(['draft', 'rejected', 'deleted', 'in_analysis', 'approved']) }
+  scope :visible, -> { without_states(['draft', 'rejected', 'deleted']) }
   scope :expired, -> { where("projects.is_expired") }
   scope :not_expired, -> { where("not projects.is_expired") }
   scope :ordered, -> { order(created_at: :desc)}
@@ -159,7 +159,6 @@ class Project < ActiveRecord::Base
   scope :order_for_admin, -> {
     reorder("
             CASE projects.state
-            WHEN 'in_analysis' THEN 1
             WHEN 'waiting_funds' THEN 2
             WHEN 'successful' THEN 3
             WHEN 'failed' THEN 4
@@ -225,7 +224,7 @@ class Project < ActiveRecord::Base
   end
 
   def can_show_account_link?
-    ['online', 'waiting_funds', 'successful', 'approved', 'draft'].include? state
+    ['online', 'waiting_funds', 'successful', 'draft'].include? state
   end
 
   def can_show_preview_link?
@@ -464,10 +463,9 @@ class Project < ActiveRecord::Base
   end
 
   # State machine delegation methods
-  delegate :push_to_draft, :reject, :push_to_online, :fake_push_to_online, :finish,
-    :send_to_analysis, :approve, :push_to_trash, :can_transition_to?,
-    :transition_to, :can_reject?, :can_push_to_trash?,
-    :can_push_to_online?, :can_push_to_draft?, :can_approve?, to: :state_machine
+  delegate :push_to_draft, :reject, :push_to_online, :fake_push_to_online, :finish, :push_to_trash,
+    :can_transition_to?, :transition_to, :can_reject?, :can_push_to_trash?,
+    :can_push_to_online?, :can_push_to_draft?, to: :state_machine
 
   # Get all states names from AonProjectMachine
   # Used in some legacy parts of the admin
@@ -485,7 +483,7 @@ class Project < ActiveRecord::Base
 
   %w(
     draft rejected online successful waiting_funds
-    deleted in_analysis approved failed
+    deleted failed
   ).each do |st|
     define_method "#{st}_at" do
       pluck_from_database("#{st}_at")

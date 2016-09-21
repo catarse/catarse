@@ -5,10 +5,10 @@ RSpec.describe Project::BaseValidator, type: :model do
   let(:project) { create(:project, state: project_state) }
   let!(:project_account) { create(:project_account, project: project) }
 
-  context "when project is going to in_analysis to end state" do
+  context "when project is going to online to end state" do
     subject { project }
 
-    Project::ON_ANALYSIS_TO_END_STATES.each do |state| 
+    Project::ON_ONLINE_TO_END_STATES.each do |state| 
       context "#{state} project validations" do
         let(:project_state) { state }
 
@@ -45,13 +45,7 @@ RSpec.describe Project::BaseValidator, type: :model do
           end
         end
       end
-    end
-  end
 
-  context "when project is going to online to end state" do
-    subject { project }
-
-    Project::ON_ONLINE_TO_END_STATES.each do |state| 
       context "#{state} project relation validations" do
         let(:project_state) { state }
 

@@ -32,8 +32,6 @@ RSpec.describe ProjectPolicy do
       before do
         @draft = create(:project, state: 'draft', user: user)
         @online = create(:project, state: 'online', user: user)
-        @in_analysis = build(:project, state: 'in_analysis', user: user)
-        @in_analysis.save(validate: false)
       end
 
       subject { ProjectPolicy::UserScope.new(current_user, user, user.projects).resolve.order('created_at desc') }
@@ -41,12 +39,12 @@ RSpec.describe ProjectPolicy do
       context "when user is admin" do
         let(:current_user) { create(:user, admin: true) }
 
-        it { is_expected.to have(3).itens }
+        it { is_expected.to have(2).itens }
       end
 
       context "when user is a project owner" do
         let(:current_user) { user }
-        it { is_expected.to eq [@in_analysis, @online, @draft] }
+        it { is_expected.to eq [@online, @draft] }
       end
 
       context "when user is not an admin and project owner" do
@@ -61,10 +59,6 @@ RSpec.describe ProjectPolicy do
 
 
   permissions :update? do
-    it_should_behave_like "create permissions"
-  end
-
-  permissions :send_to_analysis? do
     it_should_behave_like "create permissions"
   end
 
