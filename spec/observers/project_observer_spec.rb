@@ -62,7 +62,7 @@ RSpec.describe ProjectObserver do
         expect(project).to_not receive(:update_expires_at)
       end
 
-      let!(:project) { create(:project, state: 'approved', expires_at: Date.tomorrow) }
+      let!(:project) { create(:project, state: 'draft', expires_at: Date.tomorrow) }
 
       it "should not call update_expires_at" do
         project.save(validate: false)
@@ -74,7 +74,7 @@ RSpec.describe ProjectObserver do
         expect(project).to receive(:update_expires_at)
       end
 
-      let!(:project) { create(:project, state: 'approved', online_days: 60) }
+      let!(:project) { create(:project, state: 'draft', online_days: 60) }
 
       it "should not call update_expires_at" do
         project.save(validate: false)
@@ -83,7 +83,7 @@ RSpec.describe ProjectObserver do
   end
 
   describe "#after_save" do
-    let(:project) { build(:project, state: 'approved') }
+    let(:project) { build(:project, state: 'draft') }
     context "when we change the video_url" do
       let(:project){ create(:project, video_url: 'http://vimeo.com/11198435', state: 'draft')}
       before do

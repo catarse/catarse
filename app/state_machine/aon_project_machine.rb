@@ -1,8 +1,4 @@
 class AonProjectMachine < FlexProjectMachine
-  def self.basic_validation_states
-    %i(in_analysis approved online waiting_funds successful failed).freeze
-  end
-
   setup_machine do
     transition from: :deleted, to: %i(draft)
     transition from: :rejected, to: %i(draft deleted)

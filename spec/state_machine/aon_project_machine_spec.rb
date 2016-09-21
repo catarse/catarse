@@ -69,33 +69,6 @@ RSpec.describe AonProjectMachine, type: :model do
         end
       end
 
-      context "draft can go to in_analysis, rejected and deleted only" do
-        %i(draft approved successful waiting_funds).each do |state|
-          it "can't transition from draft to #{state}" do
-            expect(subject.transition_to(state, {to_state: state})).to eq(false)
-          end
-        end
-
-        context "valid transaction" do 
-          context "when is a valid project" do
-            it_should_behave_like "valid rejected project transaction"
-            it_should_behave_like "valid deleted project transaction"
-            it_should_behave_like "valid in_analysis project transaction"
-            it_should_behave_like "valid online project transaction"
-          end
-
-          context "when is a invalid project" do
-            before do
-              project.name = nil
-              subject.transition_to :in_analysis
-            end
-
-            it_should_behave_like "invalid in_analysis project transaction"
-          end
-        end
-
-      end
-
       context "rejected can go to draft, deleted only" do
         let(:project_state) { 'rejected' }
 
@@ -104,61 +77,10 @@ RSpec.describe AonProjectMachine, type: :model do
           it_should_behave_like "valid deleted project transaction"
         end
 
-        %i(online approved in_analysis successful waiting_funds).each do |state|
+        %i(online successful waiting_funds).each do |state|
           it "can't transition from draft to #{state}" do
             expect(subject.transition_to(state, {to_state: state})).to eq(false)
           end
-        end
-      end
-
-      context "in_analysis project can go to approved, draft, rejected, deleted" do
-        let(:project_state) { 'in_analysis' }
-
-        %i(successful waiting_funds in_analysis).each do |state|
-          it "can't transition from in_analysis to #{state}" do
-            expect(subject.transition_to(state, {to_state: state})).to eq(false)
-          end
-        end
-
-        context "when is valid project" do 
-          it_should_behave_like "valid approved project transaction"
-          it_should_behave_like "valid draft project transaction"
-          it_should_behave_like "valid rejected project transaction"
-          it_should_behave_like "valid deleted project transaction"
-        end
-
-        context "when is invalid project" do
-          before do
-            project.name = nil
-          end
-
-          context "approved transition" do
-            it_should_behave_like "invalid approved project transaction"
-          end
-        end
-      end
-
-      context "approved project can go to online, in_analysis" do
-        let(:project_state) { 'approved' }
-
-        %i(draft deleted successful waiting_funds).each do |state|
-          it "can't transition from approved to #{state}" do
-            expect(subject.transition_to(state, {to_state: state})).to eq(false)
-          end
-        end
-
-        context "when is valid project" do 
-          it_should_behave_like "valid online project transaction"
-          it_should_behave_like "valid in_analysis project transaction"
-        end
-
-        context "when is invalid project" do
-          before do
-            project.name = nil
-          end
-
-          it_should_behave_like "invalid online project transaction"
-          it_should_behave_like "invalid in_analysis project transaction"
         end
       end
 
@@ -439,18 +361,6 @@ RSpec.describe AonProjectMachine, type: :model do
         end
 
         it { subject.can_push_to_draft? }
-      end
-
-      context "#send_to_analysis" do
-        before {  expect(subject).to receive(:transition_to).
-            with(:in_analysis, {to_state: 'in_analysis'}) }
-        it { subject.send_to_analysis }
-      end
-
-      context "#approve" do
-        before {  expect(subject).to receive(:transition_to).
-            with(:approved, {to_state: 'approved'}) }
-        it { subject.approve }
       end
 
       context "#finish" do

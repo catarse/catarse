@@ -4,10 +4,6 @@ module Project::BaseValidator
   extend ActiveSupport::Concern
 
   included do
-    # All valid states for projects in_analysis to end of publication
-    ON_ANALYSIS_TO_END_STATES = %w(in_analysis approved online successful waiting_funds failed).freeze
-
-    # All valid states for projects approved to end of publication
     ON_ONLINE_TO_END_STATES = %w(online successful waiting_funds failed).freeze
 
     # Validation for online? only state
@@ -17,8 +13,8 @@ module Project::BaseValidator
     end
 
     # Start validations when project state
-    # is included on ON_ANALYSIS_TO_END_STATE
-    with_options if: -> (x) { ON_ANALYSIS_TO_END_STATES.include? x.state } do |wo| 
+    # is included on ON_ONLINE_TO_END_STATE
+    with_options if: -> (x) { ON_ONLINE_TO_END_STATES.include? x.state } do |wo| 
       wo.validates_presence_of :about_html, :headline, :goal
 
       wo.validates_presence_of :uploaded_image,
@@ -33,9 +29,7 @@ module Project::BaseValidator
           self.errors.add('user.' + error.to_s, error_message)
         end
       end
-    end
 
-    with_options if: -> (x) { ON_ONLINE_TO_END_STATES.include? x.state } do |wo| 
       wo.validates_presence_of :budget
       wo.validates_presence_of :account, message: 'Dados Bancários não podem ficar em branco'		
 
@@ -45,6 +39,5 @@ module Project::BaseValidator
         end
       end
     end
-
   end
 end

@@ -5,7 +5,7 @@ class ProjectPolicy < ApplicationPolicy
       if current_user.try(:admin?) || current_user == user
         scope.without_state('deleted')
       else
-        scope.without_state(['deleted', 'draft', 'in_analysis', 'rejected'])
+        scope.without_state(['deleted', 'draft', 'rejected'])
       end
     end
   end
