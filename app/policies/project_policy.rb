@@ -30,10 +30,6 @@ class ProjectPolicy < ApplicationPolicy
     record.account.new_record? || !record.published? || is_admin?
   end
 
-  def send_to_analysis?
-    create?
-  end
-
   def publish?
     done_by_owner_or_admin?
   end
@@ -43,7 +39,7 @@ class ProjectPolicy < ApplicationPolicy
   end
 
   def permitted_attributes
-    if user.present? && (user.admin? || (record.draft? || record.rejected? || record.in_analysis? || record.approved?))
+    if user.present? && (user.admin? || (record.draft? || record.rejected?))
       p_attr = record.attribute_names.map(&:to_sym)
       p_attr << :all_tags
       p_attr << :all_public_tags

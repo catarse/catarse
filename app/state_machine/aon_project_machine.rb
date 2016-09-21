@@ -4,12 +4,9 @@ class AonProjectMachine < FlexProjectMachine
   end
 
   setup_machine do
-    state :in_analysis
-
     transition from: :deleted, to: %i(draft)
     transition from: :rejected, to: %i(draft deleted)
-    transition from: :draft, to: %i(rejected deleted in_analysis online)
-    transition from: :in_analysis, to: %i(approved rejected draft deleted)
+    transition from: :draft, to: %i(rejected deleted online)
     transition from: :online, to: %i(draft rejected deleted waiting_funds successful failed)
     transition from: :waiting_funds, to: %i(successful failed)
 
@@ -21,9 +18,4 @@ class AonProjectMachine < FlexProjectMachine
       project.reached_goal?
     end
   end
-
-  def send_to_analysis
-    transition_to :in_analysis, to_state: 'in_analysis'
-  end
-
 end

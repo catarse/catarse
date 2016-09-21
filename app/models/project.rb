@@ -464,9 +464,8 @@ class Project < ActiveRecord::Base
   end
 
   # State machine delegation methods
-  delegate :push_to_draft, :reject, :push_to_online, :fake_push_to_online, :finish,
-    :send_to_analysis, :approve, :push_to_trash, :can_transition_to?,
-    :transition_to, :can_reject?, :can_push_to_trash?,
+  delegate :push_to_draft, :reject, :push_to_online, :fake_push_to_online, :finish, :push_to_trash,
+    :can_transition_to?, :transition_to, :can_reject?, :can_push_to_trash?,
     :can_push_to_online?, :can_push_to_draft?, to: :state_machine
 
   # Get all states names from AonProjectMachine

@@ -34,7 +34,7 @@ RSpec.describe ProjectsController, type: :controller do
   end
 
   describe "GET push_to_online" do
-    let(:project){ create(:project, state: 'approved') }
+    let(:project){ create(:project, state: 'draft') }
     let(:current_user) { project.user }
 
     before do
@@ -54,31 +54,6 @@ RSpec.describe ProjectsController, type: :controller do
     end
 
     it { expect(project.online?).to eq(true) }
-  end
-
-  describe "GET send_to_analysis" do
-    let(:current_user){ project.user }
-
-    context "without referral link" do
-      before do
-        create(:reward, project: project)
-        get :send_to_analysis, id: project.id, locale: :pt
-        project.reload
-      end
-
-      it { expect(project.in_analysis?).to eq(true) }
-    end
-
-    context "with referral link" do
-      subject { project.origin }
-      before do
-        create(:reward, project: project)
-        get :send_to_analysis, id: project.id, locale: :pt, ref: 'referral'
-        project.reload
-      end
-
-      it { expect(subject.referral).to eq('referral') }
-    end
   end
 
   describe "GET index" do
