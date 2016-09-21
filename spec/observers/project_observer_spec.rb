@@ -50,7 +50,7 @@ RSpec.describe ProjectObserver do
         expect(project).to receive(:update_expires_at)
       end
 
-      let(:project) { build(:project, state: 'approved') }
+      let(:project) { build(:project, state: 'draft') }
 
       it "should call update_expires_at" do
         project.save(validate: false)
@@ -95,18 +95,6 @@ RSpec.describe ProjectObserver do
     end
   end
 
-  describe "#from_draft_to_in_analysis" do
-    before do
-      @user = create(:user, email: ::CatarseSettings[:email_projects])
-      @project = project = create(:project, state: 'draft')
-      create(:reward, project: project)
-      project.notify_observers(:from_draft_to_in_analysis)
-    end
-
-    it "should create notification for catarse admin" do
-      expect(ProjectNotification.where(user_id: @user.id, template_name: :new_draft_project, project_id: @project.id).count).to eq 1
-    end
-  end
 
   describe "#from_online_to_waiting_funds" do
     before do
