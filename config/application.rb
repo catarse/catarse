@@ -38,7 +38,7 @@ module Catarse
     end
     config.active_record.observers = [
       :contribution_observer, :payment_observer, :user_observer, :project_post_observer, :project_observer,
-      :flexible_project_observer, :mixpanel_observer, '::CatarseMonkeymail::MonkeyProjectObserver',
+      :flexible_project_observer, :mixpanel_observer, '::CatarseMonkeymail::MonkeyProjectObserver'
     ]
 
     # Enable the asset pipeline
@@ -54,6 +54,9 @@ module Catarse
 
     # TODO: remove
     config.active_record.whitelist_attributes = false
+
+    # Do not swallow errors in after_commit/after_rollback callbacks.
+    config.active_record.raise_in_transactional_callbacks = true
 
   end
 end
