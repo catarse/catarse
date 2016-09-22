@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.3.1'
 
-gem 'rails', '~> 4.1.16'
+gem 'rails', '~> 4.2.7.1'
 
 gem 'protected_attributes'
 gem 'rails-observers'
@@ -88,10 +88,11 @@ gem 'parallel'
 gem 'sitemap_generator'
 gem 'rdstation-ruby-client'
 gem 'therubyracer', platform: :ruby
+gem 'responders', '~> 2.0'
 
 # Translations
 gem 'http_accept_language'
-gem 'routing-filter', '~> 0.4.0.pre'
+gem 'routing-filter', '~> 0.6.0'
 
 group :production do
   # Gem used to handle image uploading
@@ -120,6 +121,7 @@ group :production do
   #gem 'dalli'
 end
 group :development do
+  gem 'web-console', '~> 2.0'
   gem "rails-erd"
   gem "letter_opener"
   gem 'foreman'
