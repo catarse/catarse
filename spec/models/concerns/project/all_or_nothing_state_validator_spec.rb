@@ -15,7 +15,7 @@ RSpec.describe Project::AllOrNothingStateValidator, type: :model do
       it { is_expected.to validate_length_of(:name).is_at_most(Project::NAME_MAXLENGTH) }
     end
 
-    Project::ON_ANALYSIS_TO_END_STATES.each do |state| 
+    Project::ON_ONLINE_TO_END_STATES.each do |state| 
       context "#{state} project validations" do
         let(:project_state) { state }
 

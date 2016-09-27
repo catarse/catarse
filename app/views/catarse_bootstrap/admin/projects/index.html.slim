@@ -100,10 +100,6 @@
                   li
                     = link_to push_to_online_admin_project_path(project), class: 'w-dropdown-link dropdown-link fontsize-smaller', method: :put do
                       = t('admin.table.put_online')
-                - if project.can_approve?
-                  li
-                    = link_to approve_admin_project_path(project), class: 'w-dropdown-link dropdown-link fontsize-smaller', method: :put do
-                      = t('admin.table.approve')
 
                 - if project.can_reject?
                   li

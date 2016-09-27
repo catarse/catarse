@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.3.1'
 
-gem 'rails', '~> 4.1.14.2'
+gem 'rails', '~> 4.1.16'
 
 gem 'protected_attributes'
 gem 'rails-observers'

@@ -7,7 +7,7 @@ class ApiTokensController < ApplicationController
       return render json: {error: "you need to have api_host and jwt_secret configured to get an API token"}, status: 500
     end
 
-    unless current_user.present?
+    unless user_signed_in?
       return render json: {error: "only authenticated users can request the API token"}, status: 401
     end
 

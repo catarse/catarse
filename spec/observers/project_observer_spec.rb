@@ -50,7 +50,7 @@ RSpec.describe ProjectObserver do
         expect(project).to receive(:update_expires_at)
       end
 
-      let(:project) { build(:project, state: 'approved') }
+      let(:project) { build(:project, state: 'draft') }
 
       it "should call update_expires_at" do
         project.save(validate: false)
@@ -62,7 +62,7 @@ RSpec.describe ProjectObserver do
         expect(project).to_not receive(:update_expires_at)
       end
 
-      let!(:project) { create(:project, state: 'approved', expires_at: Date.tomorrow) }
+      let!(:project) { create(:project, state: 'draft', expires_at: Date.tomorrow) }
 
       it "should not call update_expires_at" do
         project.save(validate: false)
@@ -74,7 +74,7 @@ RSpec.describe ProjectObserver do
         expect(project).to receive(:update_expires_at)
       end
 
-      let!(:project) { create(:project, state: 'approved', online_days: 60) }
+      let!(:project) { create(:project, state: 'draft', online_days: 60) }
 
       it "should not call update_expires_at" do
         project.save(validate: false)
@@ -83,7 +83,7 @@ RSpec.describe ProjectObserver do
   end
 
   describe "#after_save" do
-    let(:project) { build(:project, state: 'approved') }
+    let(:project) { build(:project, state: 'draft') }
     context "when we change the video_url" do
       let(:project){ create(:project, video_url: 'http://vimeo.com/11198435', state: 'draft')}
       before do
@@ -95,18 +95,6 @@ RSpec.describe ProjectObserver do
     end
   end
 
-  describe "#from_draft_to_in_analysis" do
-    before do
-      @user = create(:user, email: ::CatarseSettings[:email_projects])
-      @project = project = create(:project, state: 'draft')
-      create(:reward, project: project)
-      project.notify_observers(:from_draft_to_in_analysis)
-    end
-
-    it "should create notification for catarse admin" do
-      expect(ProjectNotification.where(user_id: @user.id, template_name: :new_draft_project, project_id: @project.id).count).to eq 1
-    end
-  end
 
   describe "#from_online_to_waiting_funds" do
     before do

@@ -29,7 +29,7 @@ RSpec.describe ContributionPolicy do
   shared_examples_for "create permissions" do
     it_should_behave_like "update permissions"
 
-    ['draft', 'deleted', 'rejected', 'successful', 'failed', 'waiting_funds', 'in_analysis'].each do |state|
+    ['draft', 'deleted', 'rejected', 'successful', 'failed', 'waiting_funds'].each do |state|
       it "should deny access if project is #{state}" do
         contribution.project.update_attributes state: state
         is_expected.not_to permit(user, contribution)
@@ -38,7 +38,7 @@ RSpec.describe ContributionPolicy do
   end
 
   permissions(:new?){
-    ['draft', 'deleted', 'rejected', 'successful', 'failed', 'waiting_funds', 'in_analysis'].each do |state|
+    ['draft', 'deleted', 'rejected', 'successful', 'failed', 'waiting_funds'].each do |state|
       it "should deny access if project is #{state}" do
         contribution.project.update_attributes state: state
       end

@@ -41,7 +41,7 @@ RSpec.describe MixpanelObserver do
 
   describe "#after_save" do
     context "when we change a projecte state to online" do
-      let(:project){ create(:project, state: 'approved') }
+      let(:project){ create(:project, state: 'draft') }
       let(:user){ project.user }
 
       it "should set user has_online_project in mixpanel" do
