@@ -18,6 +18,10 @@ namespace :cron do
       execute('REFRESH MATERIALIZED VIEW CONCURRENTLY "1".successful_projects')
     ActiveRecord::Base.connection.
       execute('REFRESH MATERIALIZED VIEW CONCURRENTLY "1".finished_projects')
+    ActiveRecord::Base.connection.
+      execute('REFRESH MATERIALIZED VIEW CONCURRENTLY public.moments_project_start')
+    ActiveRecord::Base.connection.
+      execute('REFRESH MATERIALIZED VIEW CONCURRENTLY public.moments_project_start_inferuser')
   end
 
   desc 'Request refund for failed credit card refunds'
