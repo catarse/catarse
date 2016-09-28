@@ -13,11 +13,12 @@ class FbFriendCollectorWorker
 
       userlink = koala.get_object("me") {|data| data['link']}
       friends = koala.get_connections("me", "friends")
+      friendsCount = friends.raw_response["summary"]["total_count"]
 
       lastFriendCount = SocialFollower.where({user_id: auth.user.id, profile_type: 'fb_profile'}).order('created_at').last.try(:followers)
 
-      unless lastFriendCount == friends.length then
-        SocialFollower.create({user_id: auth.user.id, username: userlink, profile_type: 'fb_profile', followers: friends.length})
+      unless lastFriendCount == friendsCount then
+        SocialFollower.create({user_id: auth.user.id, username: userlink, profile_type: 'fb_profile', followers: friendsCount})
       end
 
       friends.each do |f|
