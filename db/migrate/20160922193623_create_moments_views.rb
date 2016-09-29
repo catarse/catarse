@@ -10,7 +10,7 @@ CREATE MATERIALIZED VIEW public.moments_project_start AS
    FROM public.moments
   WHERE (moments.data ->> 'category'::text) = 'project_start'::text AND (moments.data ->> 'ctrse_sid'::text) IS NOT NULL
   ORDER BY moments.data ->> 'ctrse_sid'::text, moments.created_at
-WITH DATA;
+WITH NO DATA;
 
 CREATE UNIQUE INDEX moments_project_start_idx
   ON public.moments_project_start
@@ -37,7 +37,7 @@ CREATE MATERIALIZED VIEW public.moments_project_start_inferuser AS
             m.created_at
            FROM public.moments_project_start m) t
   WHERE t.inferred_user_id IS NOT NULL
-WITH DATA;
+WITH NO DATA;
 
 CREATE UNIQUE INDEX moments_project_start_inferuser_idx
   ON public.moments_project_start_inferuser
