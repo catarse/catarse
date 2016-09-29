@@ -99,6 +99,7 @@ class FlexProjectMachine
     transition from: :draft, to: %i(rejected deleted online)
     transition from: :online, to: %i(draft rejected deleted waiting_funds successful failed)
     transition from: :waiting_funds, to: %i(successful failed)
+    transition from: :failed, to: %i(deleted)
   end
 
   def can_reject?
