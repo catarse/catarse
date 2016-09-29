@@ -6,15 +6,17 @@
     meta name="robots" content="noindex, nofollow"
 
   - if @post.present?
+    link rel="canonical" href=project_by_slug_url(@project.permalink, project_post_id: @post.id)
     meta name="description" content=@post.title
     meta property="og:title" content=@post.title
     meta property="og:description" content=@post.comment_html
-    meta property="og:url" content=project_by_slug_url(@project.permalink, project_post_id: @post.id, locale: I18n.locale)
+    meta property="og:url" content=project_by_slug_url(@project.permalink, project_post_id: @post.id)
   - else
+    link rel="canonical" href=project_by_slug_url(@project.permalink)
     meta name="description" content=@project.headline
     meta property="og:title" content=@project.name
     meta property="og:description" content=@project.headline
-    meta property="og:url" content=project_by_slug_url(@project.permalink, locale: I18n.locale)
+    meta property="og:url" content=project_by_slug_url(@project.permalink)
   meta property="og:type" content='cause'
   meta property="og:image" content=@project.display_image('project_thumb_video_cover')
   meta property="og:site_name" content=CatarseSettings[:company_name]
@@ -24,7 +26,6 @@
   meta property="fb:app_id" content=CatarseSettings[:fb_app_id]
   - fb_admins.each do |admin|
     meta property="fb:admins" content="#{admin}"
-  link rel="canonical" href=request.original_url.split('?').first
 
 - content_for :tracker_snippet_html do
   == @project.tracker_snippet_html
