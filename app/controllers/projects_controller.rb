@@ -123,6 +123,13 @@ class ProjectsController < ApplicationController
       }).run()
 
       redirect_to edit_project_path(@project, anchor: params[:anchor] || 'home')
+    elsif params[:cancel_project] == 'true'
+      api = ApiWrapper.new current_user
+      api.request("rpc/cancel_project", {
+        body: { _project_id: @project.id }.to_json,
+        action: :post
+      }).run()
+      redirect_to edit_project_path(@project, anchor: params[:anchor] || 'home')
     elsif should_show_modal
       redirect_to insights_project_path(@project, show_modal: true)
     else
@@ -140,16 +147,6 @@ class ProjectsController < ApplicationController
     render json: project.video.to_json
   rescue VideoInfo::UrlError
     render json: nil
-  end
-
-  # TODO: remove when flex goes public
-  def push_to_flex
-    authorize resource
-    resource.online_days = nil
-    resource.expires_at = nil
-    resource.mode = 'flex'
-    resource.save!
-    redirect_to :back
   end
 
   def embed
