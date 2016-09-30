@@ -19,7 +19,7 @@
             div
               img.icon-share-mobile alt="53a3f65105eb6144171d8eda_twitter-256.png" src="http://uploads.webflow.com/54b440b85608e3f4389db387/53a3f65105eb6144171d8eda_twitter-256.png" /
               /a.btn.btn-medium.btn-tweet href="#"  Tweet
-              = link_to "http://twitter.com/?status=#{t('i_just_contributed', name: @project.name)} #{url_encode(project_by_slug_url(@project.permalink, {ref: 'ctrse_thankyou',utm_source:'twitter.com',utm_medium:'social',utm_campaign:'thanks_share'}))}", target: :_blank, id: "twitter_share_button", data: { title: @project.name }, class: 'btn btn-medium btn-tweet' do
+              = link_to "http://twitter.com/?status=#{url_encode(t('i_just_contributed', name: @project.name)+' '+project_by_slug_url(@project.permalink, {ref: 'ctrse_thankyou',utm_source:'twitter.com',utm_medium:'social',utm_campaign:'thanks_share'}))}", target: :_blank, id: "twitter_share_button", data: { title: @project.name }, class: 'btn btn-medium btn-tweet' do
                 = t('.tweet')
 
 - if @contribution.recommended_projects.exists?
