@@ -1,0 +1,11 @@
+- contribution = @notification.contribution
+- metadata = ActiveSupport::JSON.decode(@notification.metadata)
+- payment = contribution.payments.find metadata['payment_id']
+- error = metadata['error_message']
+
+| Olá admin
+br/
+br/
+| Não conseguimos processar o pedido de reembolso do pagamento #{payment.gateway_id}  ocorreu o seguinte erro #{error}.
+br/
+br/
