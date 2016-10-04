@@ -4,7 +4,7 @@ FactoryGirl.define do
   end
 
   sequence :bank_number do |n|
-    "0000#{n}"
+    n.to_s.rjust(3, '0')
   end
 
   sequence :email do |n|
