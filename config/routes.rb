@@ -53,7 +53,7 @@ Catarse::Application.routes.draw do
   end
   resources :auto_complete_cities, only: [:index]
   #@TODO update links, we don't need this anymore
-  resources :flexible_projects, controller: 'projects', only: [] do
+  resources :flexible_projects, controller: 'projects' do
     member do
       get :publish
       get :push_to_online
