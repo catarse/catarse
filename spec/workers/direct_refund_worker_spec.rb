@@ -8,12 +8,29 @@ RSpec.describe DirectRefundWorker do
 
   before do
     Sidekiq::Testing.inline!
-    allow(Payment).to receive(:find).with(payment.id).and_return(payment)
-    expect(payment.payment_engine).to receive(:direct_refund)
   end
 
-  it "should call direct refund at payment engine" do
-    DirectRefundWorker.perform_async(payment.id)
+  context "when job runs" do
+    before do
+      allow(Payment).to receive(:find).with(payment.id).and_return(payment)
+      expect(payment.payment_engine).to receive(:direct_refund).and_return(true)
+    end
+
+    it "should call direct refund at payment engine" do
+      DirectRefundWorker.perform_async(payment.id)
+    end
+  end
+
+  context "when PagarMe error raises" do
+    before do
+      allow(payment.payment_engine).to receive(:direct_refund).and_raise(PagarMe::NotFound, "Not found")
+      expect(payment.contribution).to receive(:notify_to_backoffice)
+    end
+
+    it "should create notification for backoffice" do
+      DirectRefundWorker.perform_async(payment.id)
+      expect(ContributionNotification.where(template_name: 'direct_refund_worker_error').count).to eq(1)
+    end
   end
 end
 
