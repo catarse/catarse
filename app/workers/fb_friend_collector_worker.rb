@@ -10,7 +10,16 @@ class FbFriendCollectorWorker
       return if last_friend && last_friend.created_at > 24.hours.ago
 
       koala = Koala::Facebook::API.new(auth.last_token)
+
+      userlink = koala.get_object("me") {|data| data['link']}
       friends = koala.get_connections("me", "friends")
+      friendsCount = friends.raw_response["summary"]["total_count"]
+
+      lastFriendCount = SocialFollower.where({user_id: auth.user.id, profile_type: 'fb_profile'}).order('created_at').last.try(:followers)
+
+      unless lastFriendCount == friendsCount then
+        SocialFollower.create({user_id: auth.user.id, username: userlink, profile_type: 'fb_profile', followers: friendsCount})
+      end
 
       friends.each do |f|
         if friend = Authorization.find_by_uid(f['id']).try(:user)
