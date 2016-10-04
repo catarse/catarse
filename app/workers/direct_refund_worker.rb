@@ -7,7 +7,7 @@ class DirectRefundWorker
 
     begin
       payment.payment_engine.direct_refund(payment)
-    rescue PagarMe::PagarMeError => e
+    rescue Exception => e
       payment.contribution.notify_to_backoffice(
         :direct_refund_worker_error,
         {

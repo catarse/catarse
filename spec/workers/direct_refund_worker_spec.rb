@@ -5,14 +5,15 @@ RSpec.describe DirectRefundWorker do
   let(:user) { create(:user) }
   let(:confirmed_contribution) { create(:confirmed_contribution, project_id: project.id, user_id: user.id) }
   let(:payment) { confirmed_contribution.payments.first }
+  let!(:contact_user) { create(:user, email: CatarseSettings[:email_contact])}
 
   before do
     Sidekiq::Testing.inline!
+    allow(Payment).to receive(:find).with(payment.id).and_return(payment)
   end
 
   context "when job runs" do
     before do
-      allow(Payment).to receive(:find).with(payment.id).and_return(payment)
       expect(payment.payment_engine).to receive(:direct_refund).and_return(true)
     end
 
@@ -23,8 +24,7 @@ RSpec.describe DirectRefundWorker do
 
   context "when PagarMe error raises" do
     before do
-      allow(payment.payment_engine).to receive(:direct_refund).and_raise(PagarMe::NotFound, "Not found")
-      expect(payment.contribution).to receive(:notify_to_backoffice)
+      allow(payment.payment_engine).to receive(:direct_refund).and_raise(Exception, "Not found")
     end
 
     it "should create notification for backoffice" do
