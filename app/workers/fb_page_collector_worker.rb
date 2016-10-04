@@ -4,7 +4,8 @@ class FbPageCollectorWorker
   include Sidekiq::Worker
   sidekiq_options retry: false
 
-  def perform user
+  def perform user_id
+    user = User.find user_id
     path = URI(user.facebook_link).path.split('/').last
 
     koala = Koala::Facebook::API.new("#{CatarseSettings[:fb_app_id]}|#{CatarseSettings[:fb_app_secret]}")

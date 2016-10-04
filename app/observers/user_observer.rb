@@ -17,7 +17,7 @@ class UserObserver < ActiveRecord::Observer
 
   def after_save(user)
     if user.try(:facebook_link_changed?) && user.facebook_link.to_s != ''
-      FbPageCollectorWorker.perform_async(user)
+      FbPageCollectorWorker.perform_async(user.id)
     end
   end
 end
