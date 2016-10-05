@@ -21,7 +21,7 @@ class UserDecorator < Draper::Decorator
   end
 
   def display_image
-    source.uploaded_image.thumb_avatar.url || '/assets/catarse_bootstrap/user.jpg'
+    source.uploaded_image.thumb_avatar.url || 'https://www.catarse.me/assets/catarse_bootstrap/user.jpg'
   end
 
   def display_image_html
