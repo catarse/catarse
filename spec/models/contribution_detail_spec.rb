@@ -147,7 +147,7 @@ RSpec.describe ContributionDetail, type: :model do
 
     subject{ ContributionDetail.available_to_display }
 
-    its(:count){ is_expected.to eq 2 }
+    its(:count){ is_expected.to eq 3 }
   end
 
   describe "#full_text_index" do
