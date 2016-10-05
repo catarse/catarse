@@ -1,11 +1,15 @@
 - content_for :tracker_snippet_html do
   == @project.tracker_snippet_html
 
-= render 'shared/header'
-- if @contribution.was_confirmed? || !@contribution.slip_payment?
-  = render 'thank_you'
-- else
-  = render 'thank_you_slip'
+/ = render 'shared/header'
+/ - if @contribution.was_confirmed? || !@contribution.slip_payment?
+  / = render 'thank_you'
+/ - else
+  / = render 'thank_you_slip'
 
 
-= render 'shared/footer'
+/ = render 'shared/footer'
+#application[data-contribution=@contribution.to_js_json data-stats=@project.to_analytics_json]
+
+- content_for :application_js do
+  = javascript_include_tag "api/application"

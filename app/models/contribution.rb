@@ -154,4 +154,23 @@ class Contribution < ActiveRecord::Base
     to_js.to_json
   end
 
+  def contribution_attributes
+    payment = payments.last
+    {
+      project: {
+        user_thumb: project.user.decorate.display_image,
+        permalink: project.permalink,
+        total_contributions: project.total_contributions,
+        name: project.name
+      },
+      recommended_projects: self.recommended_projects,
+      contribution_email: self.user.email,
+      slip_url: payment && payment.slip_payment? ? payment.gateway_data["boleto_url"] : nil
+    }
+  end
+
+  def contribution_json
+    contribution_attributes.to_json
+  end
+
 end
