@@ -95,6 +95,8 @@
           // '/projects/:project_id/contribution': wrap(c.root.ProjectsReward),
           // '/projects/:project_id/payment': wrap(c.root.ProjectsPayment),
           // '/contribution': wrap(c.root.ProjectsPayment),
+          '/projects/:project_id/contributions/:contribution_id/edit': wrap(c.root.ProjectsPayment),
+          '/pt/projects/:project_id/contributions/:contribution_id/edit': wrap(c.root.ProjectsPayment),
           '/pt': wrap(c.root.ProjectsHome, {menuTransparency: true, footerBig: true}),
           '/pt/flexible_projects': wrap(c.root.ProjectsHome, {menuTransparency: true, footerBig: true}),
           '/pt/projects': wrap(c.root.ProjectsHome, {menuTransparency: true, footerBig: true}),

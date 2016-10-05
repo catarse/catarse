@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
 
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
-  helper_method :referral, :render_projects,
+  helper_method :referral, :render_projects, :is_projects_home?,
     :render_feeds, :can_display_pending_refund_alert?
 
   before_filter :set_locale
@@ -35,6 +35,10 @@ class ApplicationController < ActionController::Base
                             controller_name.to_sym != :bank_accounts &&
                             controller_name.to_sym != :donations &&
                             action_name.to_sym != :no_account_refund
+  end
+
+  def is_projects_home?
+    controller_name == 'projects' && action_name == 'index'
   end
 
   def render_projects collection, ref, locals = {}
