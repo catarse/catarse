@@ -667,8 +667,8 @@ RSpec.describe Project, type: :model do
         project_goal: project.goal,
         project_online_date: project.online_at,
         project_expires_at: project.expires_at,
-        project_address_city: project.account.try(:address_city),
-        project_address_state: project.account.try(:address_state),
+        project_address_city: project.city.try(:name) || project.account.try(:address_city),
+        project_address_state: project.city.try(:state).try(:acronym) || project.account.try(:address_state),
         account_entity_type: project.account.try(:entity_type)
       }.to_json)
     end
