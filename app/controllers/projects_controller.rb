@@ -129,6 +129,7 @@ class ProjectsController < ApplicationController
         body: { _project_id: @project.id }.to_json,
         action: :post
       }).run()
+      @project.notify_observers :from_online_to_failed
       redirect_to edit_project_path(@project, anchor: params[:anchor] || 'home')
     elsif should_show_modal
       redirect_to insights_project_path(@project, show_modal: true)
