@@ -1,4 +1,16 @@
 - content_for :title, t('.title')
+- content_for :meta_tags do
+  meta name="description"         content=t('.subtitle')
+  meta name="keywords"            content=t('site.keywords')
+  meta property="og:title"        content=t('.title')
+  meta property="og:type"         content=:cause
+  meta property="og:image"        content=CatarseSettings[:company_logo]
+  meta property="og:site_name"    content=CatarseSettings[:company_name]
+  meta property="fb:app_id"       content=CatarseSettings[:facebook_app_id]
+  meta property="og:description"  content=t('.subtitle')
+  meta property="og:url"          content=explore_url(locale:'')
+  link rel="canonical"            href=explore_url(locale:'')
+
 - content_for :application_js do
   = javascript_include_tag 'api/application' 
 - controller.referral_it!

@@ -1,12 +1,12 @@
 - content_for :title, "Catarse - Tire o seu projeto do papel"
 - content_for :meta_tags do
-  link rel="canonical" href=start_url
   meta name="description" content=t('.description')
   meta property="og:title"    content=t('.title')
   meta property="og:description"  content=t('.tagline')
-  meta property="og:url"      content=start_url
   meta property="og:image"    content=image_url('start-fb.jpg')
   meta property="og:site_name"  content=t('.title')
+  meta property="og:url"      content=start_url(locale:'')
+  link rel="canonical" href=start_url(locale:'')
 - content_for :application_js do
   = javascript_include_tag 'api/application'
 / = render 'shared/header_big', overlayer: true
