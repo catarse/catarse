@@ -25,11 +25,11 @@ html
 
       meta property="og:title"        content=t('site.title')
       meta property="og:type"         content=:cause
-      meta property="og:url"          content=root_url
       meta property="og:image"        content=CatarseSettings[:company_logo]
       meta property="og:site_name"    content=CatarseSettings[:company_name]
       meta property="fb:app_id"       content=CatarseSettings[:facebook_app_id]
       meta property="og:description"  content=(t('projects.index_header.title') + '. ' +  t('projects.index_header.subtitle'))
+      meta property="og:url"          content=root_url(locale:'')
     - if request.subdomain.include? "beta"
       meta name="robots" content="noindex, nofollow"
     = render_google_analytics_script

@@ -3,13 +3,14 @@
     meta name="robots" content="index, follow"
 
     - if @post.present?
-      link rel="canonical" href=project_post_url(@project, @post)
       meta name="description" content=@post.title
       meta property="og:title" content=@post.title
       meta property="og:description" content=@post.title
-      meta property="og:url" content=project_post_url(@project, @post)
+      meta property="og:url" content=project_post_url(@project, @post, locale:'')
+      link rel="canonical" href=project_post_url(@project, @post, locale:'')
     - else
-      link rel="canonical" href=request.original_url.split('?').first
+      meta property="og:url" content=project_post_url(@project, locale:'')
+      link rel="canonical" href=project_post_url(@project, locale:'')
 
 = render 'shared/header_big'
 

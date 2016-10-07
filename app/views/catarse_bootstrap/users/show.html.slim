@@ -1,8 +1,8 @@
 - content_for :title, "#{resource.name} · #{CatarseSettings[:company_name]}"
 - content_for :meta_tags do
-  link rel="canonical" href=user_url(resource)
+  link rel="canonical" href=user_url(resource,locale:'')
   meta property="og:title" content=resource.name
-  meta property="og:url" content=user_url(resource)
+  meta property="og:url" content=user_url(resource,locale:'')
   meta property="og:type" content='cause'
   meta[property="og:image" content=resource.uploaded_image.thumb_facebook.url]
   meta property="og:site_name" content=CatarseSettings[:company_name]
