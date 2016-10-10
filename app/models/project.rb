@@ -333,8 +333,8 @@ class Project < ActiveRecord::Base
       project_goal: self.goal,
       project_online_date: self.online_at,
       project_expires_at: self.expires_at,
-      project_address_city: self.account.try(:address_city),
-      project_address_state: self.account.try(:address_state),
+      project_address_city: self.city.try(:name) || self.account.try(:address_city),
+      project_address_state: self.city.try(:state).try(:acronym) || self.account.try(:address_state),
       account_entity_type: self.account.try(:entity_type)
     }
   end
@@ -344,9 +344,9 @@ class Project < ActiveRecord::Base
       about_html: self.about_html,
       budget: self.budget,
       address: {
-        city: self.account.try(:address_city),
-        state_acronym: self.account.try(:address_state),
-        state: self.account.try(:address_state)
+        city: self.city.try(:name) || self.account.try(:address_city),
+        state_acronym: self.city.try(:state).try(:acronym) || self.account.try(:address_state),
+        state: self.city.try(:state).try(:acronym) || self.account.try(:address_state)
       },
       category_id: self.category.id,
       category_name: self.category.name_pt,

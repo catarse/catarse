@@ -1,4 +1,28 @@
 # -*- coding: utf-8 -*-
+desc 'Sync all balance operations'
+task sync_balance_operations: [:environment] do
+  PagarMe.api_key = CatarsePagarme.configuration.api_key
+
+  page = 1
+  loop do
+    params = { page: page, count: 100 }
+    begin
+      operations = PagarMe::Request.get('/balance/operations', params: params).call
+      puts page
+      break if operations.empty?
+      operations.map do |op|
+        opjson = op.to_json
+        gateway_operation = GatewayBalanceOperation.find_or_create_by operation_id: ActiveSupport::JSON.decode(opjson)['id']
+        gateway_operation.update_attribute(:operation_data, ActiveSupport::JSON.decode(opjson))
+      end
+      sleep 0.2
+    rescue Exception => e
+      puts e.inspect
+    end
+    page = page+1
+  end
+end
+
 desc 'Sync payment_transfers with pagar.me transfers'
 task verify_pagarme_transfers: [:environment] do
   PagarMe.api_key = CatarsePagarme.configuration.api_key

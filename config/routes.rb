@@ -15,6 +15,7 @@ Catarse::Application.routes.draw do
   end
 
   get '/amigos' => redirect('http://crowdfunding.catarse.me/amigos')
+  get '/criadores' => redirect('http://crowdfunding.catarse.me/criadores')
   get '/paratodos' => redirect('http://crowdfunding.catarse.me/paratodos')
   get '/project_edit' => 'application#redirect_to_last_edit'
   get '/billing_edit' => 'application#redirect_to_user_billing'
@@ -51,8 +52,11 @@ Catarse::Application.routes.draw do
     end
   end
   resources :auto_complete_cities, only: [:index]
+
+  resources :projects, path: '/', only: [:index]
+  resources :flexible_projects, path: '/', controller: 'projects', only: [:index]
   #@TODO update links, we don't need this anymore
-  resources :flexible_projects, controller: 'projects' do
+  resources :flexible_projects, controller: 'projects', except: [:index]  do
     member do
       get :publish
       get :push_to_online
@@ -60,7 +64,7 @@ Catarse::Application.routes.draw do
       get :finish
     end
   end
-  resources :projects, only: [ :index, :create, :update, :edit, :new, :show] do
+  resources :projects, only: [ :create, :update, :edit, :new, :show] do
     resources :accounts, only: [:create, :update]
     resources :posts, controller: 'projects/posts', only: [ :destroy, :show ]
     resources :rewards do
@@ -102,6 +106,7 @@ Catarse::Application.routes.draw do
     resources :credit_cards, controller: 'users/credit_cards', only: [ :destroy ]
     member do
       #get :balance
+      get :credit_cards
       get :unsubscribe_notifications
       get :credits
       get :settings

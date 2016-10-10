@@ -29,7 +29,7 @@ class ContributionDetail < ActiveRecord::Base
 
   scope :available_to_display, -> {
     joins(:payment).
-    where("contribution_details.state not in('deleted', 'refused', 'pending') OR payments.waiting_payment")
+    where("contribution_details.state not in('deleted', 'pending') OR payments.waiting_payment")
   }
 
   scope :slips_past_waiting, -> {

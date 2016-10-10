@@ -79,6 +79,9 @@ RSpec.describe UserDecorator do
   end
 
   describe "#display_image_html" do
+    before do
+      CatarseSettings[:base_url] = 'http://localhost'
+    end
     let(:user){ build(:user, uploaded_image: nil )}
     let(:options){ {width: 300, height: 300} }
     subject{ user.display_image_html }

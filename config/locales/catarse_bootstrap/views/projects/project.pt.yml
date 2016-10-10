@@ -11,35 +11,35 @@ pt:
           cta: 'Comece sua campanha'
           image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-fctodos.jpg'
         2:
-          title: 'Catarse com Facebook!'
-          subtitle: ''
-          link: 'http://crowdfunding.catarse.me/amigos?ref=home_banner'
-          cta: 'Encontre projetos com seus amigos'
-          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-amigos.jpg'
+          title: 'Criadores em Catarse!'
+          subtitle: 'Um movimento para fortalecer a cultura maker no Brasil'
+          link: 'http://crowdfunding.catarse.me/criadores?ref=home_banner'
+          cta: 'Saiba como participar'
+          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-criadores.jpg'
         3:
-          title: 'Refugiados de Belo Monte'
-          subtitle: 'Escuta, tratamento e documentação do sofrimento dos refugiados produzidos por Belo Monte.'
-          link: 'https://www.catarse.me/refugiadosdebelomonte?ref=home_banner'
+          title: 'Operação Serenata de Amor'
+          subtitle: 'Robôs lutando contra a corrupção no Brasil.'
+          link: 'https://www.catarse.me/serenata?ref=home_banner'
           cta: 'Conheça o projeto'
-          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-refugiadosdebelomonte.jpg'
+          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-serenata.jpg'
         4:
-          title: 'OCardume'
-          subtitle: 'Primeiro APLICATIVO especializado em mergulho para profissionais, mergulhadores e interessados!'
-          link: 'https://www.catarse.me/ocardume?ref=home_banner'
+          title: 'Livro: América do Sul Sobre Rodas'
+          subtitle: 'A incrível aventura de Max e Amanda vivendo em um MOTORHOME pelas estradas da América do Sul!'
+          link: 'https://www.catarse.me/sobrerodas?ref=home_banner'
           cta: 'Conheça o projeto'
-          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-ocardume.jpg'
+          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-sobrerodas.jpg'
         5:
-          title: 'Mutirão Agroflorestal - 20 anos'
-          subtitle: 'Celebre essa data especial partilhando histórias e aprendizados em eventos em Brasília e Rio de Janeiro. '
-          link: 'https://www.catarse.me/mutirao_agroflorestal_20_anos?ref=home_banner'
+          title: 'Contos Reunidos do Mestre do Horror Cósmico'
+          subtitle: 'Apoie o mais completo livro de contos de H.P. Lovecraft já editado no país! '
+          link: 'https://www.catarse.me/lovecraft?ref=home_banner'
           cta: 'Conheça o projeto'
-          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-mutirao_agroflorestal_20_anos.jpg'
+          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-lovecraft.jpg'
         6:
-          title: 'Vencendo a Mielo'
-          subtitle: 'Um a cada mil bebês nascem com Mielomeningocele. Doe para que essas crianças tenham uma vida melhor.'
-          link: 'https://www.catarse.me/vencendoamielo?ref=home_banner'
+          title: 'ROCHEDO PRESS Vol. 1'
+          subtitle: 'Duas HQs silenciosas, um livro fantástico: conheça a Rochedo Press!'
+          link: 'https://www.catarse.me/rochedopress?ref=home_banner'
           cta: 'Conheça o projeto'
-          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-vencendoamielo.jpg'
+          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-rochedopress.jpg'
     new_feature_badge: 'Novidade'
     publish:
       aon: 'Tudo ou nada'
@@ -196,22 +196,21 @@ http://suporte.catarse.me/hc/pt-br/articles/206507863-Catarse-flex-Principais-pe
       flex:
         description: Esse projeto irá ficar com todos os recursos quando finalizar
         questions:
-          questions:
-            1:
-              question: Como eu apoio este projeto?
-              answer: Preencha o detalhes do seu apoio, bem como todas as suas informações de pagamento para finalizar o apoio
-            2:
-              question: Quando o pagamento é efetivado?
-              answer: Se você pagou com cartão de crédito, a confirmação deverá ser no mesmo dia. Se foi com boleto, em até 4 dias úteis.
-            3:
-              question: O que os outros podem ver do meu apoio?
-              answer: O projeto será adicionado a seu histórico de apoios em seu perfil , mas a quantidade que você apoiou e a recompensa que escolher, não ficarão públicos.
-            4:
-              question: Quem é o responsável pelo projeto?
-              answer: O catarse é apenas um intermediário, caso queira entender mais sobre o projeto, entre em contato com <a href="%{userLink}" target="_blank">%{userName}</a>
-            5:
-              question: Como eu recebo minha recompensa?
-              answer: Quando sua recompensa estiver pronta, <a href="%{userLink}" target="_blank">%{userName}</a> vai entrar em contato com você para combinar a entrega.
+          1:
+            question: Como eu apoio este projeto?
+            answer: Preencha o detalhes do seu apoio, bem como todas as suas informações de pagamento para finalizar o apoio
+          2:
+            question: Quando o pagamento é efetivado?
+            answer: Se você pagou com cartão de crédito, a confirmação deverá ser no mesmo dia. Se foi com boleto, em até 4 dias úteis.
+          3:
+            question: O que os outros podem ver do meu apoio?
+            answer: O projeto será adicionado a seu histórico de apoios em seu perfil , mas a quantidade que você apoiou e a recompensa que escolher, não ficarão públicos.
+          4:
+            question: Quem é o responsável pelo projeto?
+            answer: O catarse é apenas um intermediário, caso queira entender mais sobre o projeto, entre em contato com <a href="%{userLink}" target="_blank">%{userName}</a>
+          5:
+            question: Como eu recebo minha recompensa?
+            answer: Quando sua recompensa estiver pronta, <a href="%{userLink}" target="_blank">%{userName}</a> vai entrar em contato com você para combinar a entrega.
     payment:
       paid: Confirmado
       refused: Recusado

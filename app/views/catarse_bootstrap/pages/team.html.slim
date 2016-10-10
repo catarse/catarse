@@ -1,4 +1,16 @@
 - content_for :title, "Nosso time <3"
+- content_for :meta_tags do
+  meta name="description"         content=t('site.description')
+  meta name="keywords"            content=t('site.keywords')
+  meta property="og:title"        content=('Nosso time <3')
+  meta property="og:type"         content=:cause
+  meta property="og:image"        content=CatarseSettings[:company_logo]
+  meta property="og:site_name"    content=CatarseSettings[:company_name]
+  meta property="fb:app_id"       content=CatarseSettings[:facebook_app_id]
+  meta property="og:description"  content=('Conheça nosso time')
+  meta property="og:url"          content=team_url(locale:'')
+  link rel="canonical"            href=team_url(locale:'')
+
 - content_for :application_js do
   = javascript_include_tag 'api/application' 
 
