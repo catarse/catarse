@@ -128,7 +128,7 @@ class ProjectsController < ApplicationController
       api.request("rpc/cancel_project", {
         body: { _project_id: @project.id }.to_json,
         action: :post
-      }).run()
+      }).try(:run)
 
       if @project.reload && @project.failed?
         @project.notify_observers :from_online_to_failed
