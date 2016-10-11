@@ -11,11 +11,11 @@ pt:
           cta: 'Comece sua campanha'
           image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-fctodos.jpg'
         2:
-          title: 'Criadores em Catarse!'
-          subtitle: 'Um movimento para fortalecer a cultura maker no Brasil'
-          link: 'http://crowdfunding.catarse.me/criadores?ref=home_banner'
-          cta: 'Saiba como participar'
-          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-criadores.jpg'
+          title: 'Catarse com Facebook!'
+          subtitle: ''
+          link: 'http://crowdfunding.catarse.me/amigos?ref=home_banner'
+          cta: 'Encontre projetos com seus amigos'
+          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-amigos.jpg'
         3:
           title: 'Operação Serenata de Amor'
           subtitle: 'Robôs lutando contra a corrupção no Brasil.'
