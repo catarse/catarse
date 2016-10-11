@@ -63,8 +63,8 @@ pt:
             creditcard_number: 'Número de cartão de crédito inválido.'
             creditcard_name: 'Nome inválido.'
           submission:
-            encryption_error: 'Erro ao criar hash. Por favor, tente novamente em alguns instantes.'
-            payment_failed: 'Erro de gateway. Por favor, revise os dados de seu cartão de crédito e tente novamente em alguns instantes.'
+            encryption_error: 'Por favor, tente novamente em alguns instantes.'
+            payment_failed: 'Por favor, revise os dados de seu cartão de crédito e tente novamente em alguns instantes.'
             card_invalid: 'Dados de cartão de crédito inválidos. Por favor, revise os dados de seu cartão de crédito e tente novamente.'
             error: '<span>Ocorreu um problema ao processar o seu pagamento.</span><br><br>Erro: <i>%{message}</i>'
         review_slip_email: "Você também receberá um email com esse boleto."
