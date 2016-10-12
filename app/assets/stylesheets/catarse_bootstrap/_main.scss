@@ -3899,6 +3899,19 @@ a:hover {
   padding-left: 36px;
 }
 
+.tag-circle-installment {
+  width: 45px;
+  height: 45px;
+  margin-top: -4px;
+  margin-right: -4px;
+  padding-top: 9px;
+  float: right;
+  border-radius: 50%;
+  background-color: #fff;
+  box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, .2);
+  text-align: center;
+}
+
 html.w-mod-js *[data-ix="fade-in"] {
   opacity: 0;
 }
