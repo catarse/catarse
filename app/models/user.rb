@@ -134,6 +134,10 @@ class User < ActiveRecord::Base
     self.active.where(id: id).first!
   end
 
+  def fb_parsed_link
+    pluck_from_database('fb_parsed_link')
+  end
+
   def followers_since_last_day
     followers.where(created_at: Time.current - 1.day .. Time.current)
   end
