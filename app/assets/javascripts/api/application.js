@@ -37,6 +37,7 @@
             var attr = customAttr,
                 projectParam = m.route.param('project_id'),
                 projectUserIdParam = m.route.param('project_user_id'),
+                userParam = m.route.param('user_id'),
                 rewardIdParam = m.route.param('reward_id'),
                 filterParam = m.route.param('filter');
             
@@ -46,6 +47,10 @@
 
             if(projectParam) {
                 addToAttr({project_id: projectParam});
+            }
+
+            if(userParam) {
+                addToAttr({user_id: userParam});
             }
 
             if(projectUserIdParam) {
@@ -105,6 +110,7 @@
           '/pt/start': wrap(c.root.Start, {menuTransparency: true, footerBig: true}),
           '/pt/:project': wrap(c.root.ProjectsShow, {menuTransparency: false, footerBig: false}),
           '/projects/:project_id': wrap(c.root.ProjectsShow, {menuTransparency: false, footerBig: false}),
+          '/users/:user_id': wrap(c.root.UsersShow, {menuTransparency: true, footerBig: false}),
           '/:project': wrap(c.root.ProjectsShow, {menuTransparency: false, footerBig: false})
       });
   }
