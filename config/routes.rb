@@ -14,6 +14,12 @@ Catarse::Application.routes.draw do
     post '/sign_up', {to: 'devise/registrations#create', as: :sign_up}
   end
 
+  # User permalink profile
+  constraints SubdomainConstraint do
+    get "/", to: 'users#show'
+  end
+
+
   get '/amigos' => redirect('http://crowdfunding.catarse.me/amigos')
   get '/criadores' => redirect('http://crowdfunding.catarse.me/criadores')
   get '/paratodos' => redirect('http://crowdfunding.catarse.me/paratodos')
@@ -138,11 +144,6 @@ Catarse::Application.routes.draw do
   get '/flex' => redirect('http://crowdfunding.catarse.me')
   get "/projects_dashboard" => 'high_voltage/pages#show', id: 'projects_dashboard'
 
-
-  # User permalink profile
-  constraints SubdomainConstraint do
-    get "/", to: 'users#show'
-  end
 
   # Root path should be after channel constraints
   root to: 'projects#index'

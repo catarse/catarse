@@ -39,7 +39,7 @@
                 projectUserIdParam = m.route.param('project_user_id'),
                 rewardIdParam = m.route.param('reward_id'),
                 filterParam = m.route.param('filter');
-            
+
             var addToAttr = function(newAttr) {
                 attr = _.extend({}, newAttr, attr);
             };
@@ -65,9 +65,9 @@
             }
 
             var body = document.getElementsByTagName('body')[0];
-            
+
             body.className = 'body-project closed';
-            
+
 
             return {
                 attr: attr
@@ -85,9 +85,9 @@
 
   if(app){
       var rootEl = app;
-    
+
       m.route.mode = 'pathname';
-      
+
       m.route(rootEl, '/', {
           '/': wrap(c.root.ProjectsHome, {menuTransparency: true, footerBig: true}),
           '/explore': wrap(c.root.ProjectsExplore, {menuTransparency: true, footerBig: true}),
@@ -104,6 +104,7 @@
           '/pt/explore': wrap(c.root.ProjectsExplore, {menuTransparency: true, footerBig: true}),
           '/pt/start': wrap(c.root.Start, {menuTransparency: true, footerBig: true}),
           '/pt/:project': wrap(c.root.ProjectsShow, {menuTransparency: false, footerBig: false}),
+          '/projects/:project_id/insights': wrap(c.root.Insights, {menuTransparency: false, footerBig: false}),
           '/projects/:project_id': wrap(c.root.ProjectsShow, {menuTransparency: false, footerBig: false}),
           '/:project': wrap(c.root.ProjectsShow, {menuTransparency: false, footerBig: false})
       });
