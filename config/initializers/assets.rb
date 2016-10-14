@@ -1,1 +1,1 @@
-Rails.application.config.assets.precompile += %w( catarse_bootstrap/fonts.css catarse_bootstrap/catarse.css analytics.js redactor.css redactor.js catarse_pagarme.js )
+Rails.application.config.assets.precompile += %w( catarse_bootstrap/fonts.css catarse_bootstrap/catarse.css analytics.js redactor.css redactor.js catarse_pagarme.js store/dist/store2.js jquery/dist/jquery.js lib/ui_helper.js)
