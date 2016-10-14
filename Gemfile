@@ -18,7 +18,7 @@ gem 'state_machine', require: 'state_machine/core'
 gem 'statesman'
 
 # Database and data related
-gem 'pg', '0.17.1'
+gem 'pg', '0.19.0'
 gem 'dbhero', '>= 1.1.12'
 gem 'postgres-copy'
 gem 'postgres_ext'
@@ -81,9 +81,9 @@ gem 'to_xls'
 gem 'ranked-model'
 gem 'feedjira'
 gem 'inherited_resources'
-gem 'has_scope', '>= 0.6.0.rc'
+gem 'has_scope'
 gem 'spectator-validates_email',  require: 'validates_email'
-gem 'video_info', '~> 2.4.2'
+gem 'video_info'
 gem 'typhoeus'
 gem 'parallel'
 gem 'sitemap_generator'
@@ -122,7 +122,7 @@ group :production do
   #gem 'dalli'
 end
 group :development do
-  gem 'web-console', '~> 2.0'
+  gem 'web-console'
   gem "rails-erd"
   gem "letter_opener"
   gem 'foreman'
@@ -135,7 +135,7 @@ group :development do
 end
 
 group :test, :development do
-  gem 'rspec-rails', '~> 3.1'
+  gem 'rspec-rails'
   gem 'rspec-mocks'
   gem 'rspec-its'
   gem 'rspec-collection_matchers'
@@ -151,7 +151,7 @@ group :test do
   gem 'database_cleaner'
   gem 'shoulda'
   gem 'factory_girl_rails'
-  gem 'capybara',   '~> 2.2.0'
+  gem 'capybara'
   gem 'selenium-webdriver'
 end
 
