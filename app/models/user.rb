@@ -135,7 +135,7 @@ class User < ActiveRecord::Base
   end
 
   def fb_parsed_link
-    pluck_from_database('fb_parsed_link')
+    User.where(id: self.id).pluck("users.fb_parsed_link").first
   end
 
   def followers_since_last_day
