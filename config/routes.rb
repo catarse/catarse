@@ -30,6 +30,9 @@ Catarse::Application.routes.draw do
   get '/follow-fb-friends' => "users#follow_fb_friends", as: :follow_fb_friends
   get '/connect-facebook' => "application#connect_facebook", as: :connect_fb
 
+  #Redirect temporário para o mola2. Retirar quando ele for pro ar.
+  get '/mola2' => redirect('http://molamodel.com/mola2?utm_source=paginamola2catarse&utm_medium=redirecionamento&utm_campaign=landingpagemola2')
+
   get '/notifications/:notification_type/:notification_id' => 'notifications#show'
 
   filter :locale, exclude: /\/auth\//
