@@ -1,17 +1,14 @@
 class ProjectObserver < ActiveRecord::Observer
   observe :project
 
-  def before_validation(project)
-    unless project.permalink.present?
-      project.permalink = "#{project.name.parameterize.gsub(/\-/, '_')}_#{SecureRandom.hex(2)}"
-    end
-  end
-
   def before_save(project)
     if project.try(:online_days_changed?) || project.try(:expires_at).nil?
       project.update_expires_at
     end
 
+    unless project.permalink.present?
+      project.permalink = "#{project.name.parameterize.gsub(/\-/, '_')}_#{SecureRandom.hex(2)}"
+    end
    project.video_embed_url = nil unless project.video_url.present?
   end
 
