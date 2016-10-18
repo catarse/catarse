@@ -2,6 +2,13 @@
   .w-container
     .w-row
       .w-col.w-col-10.w-col-push-1 
+        .u-marginbottom-60.u-text-center
+          .w-inline-block.card.fontsize-small.u-radius
+            span.fa.fa-fw.fa-lightbulb-o
+            | Veja ótimos motivos para
+            a.alt-link href="https://catarse.attach.io/B1AHAGm1x" target="_blank"  falar com seus apoiadores agora mesmo!
+
+
         .w-form.card.card-terciary.medium.u-marginbottom-80
           = simple_form_for @project do |f|
             =  hidden_field_tag 'anchor', 'posts'
