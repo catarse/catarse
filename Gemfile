@@ -14,7 +14,8 @@ gem 'sidekiq',  '~> 4.0.1'
 gem "best_in_place", :git => "git://github.com/bernat/best_in_place", ref: "ee95961e639022e6aa528704b8cb4789596ea61b"
 
 # State machine for attributes on models
-gem 'state_machine', require: 'state_machine/core'
+# @TODO move payment to statesman
+gem 'state_machines-activerecord'
 gem 'statesman'
 
 # Database and data related

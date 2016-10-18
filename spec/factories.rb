@@ -300,7 +300,6 @@ FactoryGirl.define do
     f.gateway 'Pagarme'
     f.value 10.00
     f.installment_value 10.00
-    f.state 'paid'
     f.payment_method "CartaoDeCredito"
   end
 
