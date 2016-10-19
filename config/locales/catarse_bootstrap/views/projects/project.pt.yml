@@ -11,11 +11,11 @@ pt:
           cta: 'Comece sua campanha'
           image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-fctodos.jpg'
         2:
-          title: 'Catarse com Facebook!'
-          subtitle: ''
-          link: 'http://crowdfunding.catarse.me/amigos?ref=home_banner'
-          cta: 'Encontre projetos com seus amigos'
-          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-amigos.jpg'
+          title: 'Catarse com Trello!'
+          subtitle: 'Faça o planejamento de sua campanha com a ajuda desse quadro do Trello! '
+          link: 'http://fazum.catarse.me/trello-financiamento-coletivo?ref=home_banner'
+          cta: 'Saiba mais'
+          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-trello.jpg'
         3:
           title: 'Cafeteira Aram'
           subtitle: 'Café espresso com menos resíduos e mais significado.'
