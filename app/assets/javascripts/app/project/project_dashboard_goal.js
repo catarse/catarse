@@ -54,6 +54,7 @@ App.addChild('DashboardGoal', {
     event.preventDefault();
     this.$('.choose-unlimited').removeClass('selected');
     this.$('.choose-limited').addClass('selected');
+    this.$('input[name="project[online_days]"]').focus();
   },
 
   showFeeExplanation: function(event) {
