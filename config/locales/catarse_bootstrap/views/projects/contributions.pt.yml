@@ -63,6 +63,8 @@ pt:
             creditcard_number: 'Número de cartão de crédito inválido.'
             creditcard_name: 'Nome inválido.'
           submission:
+            slip_submission: 'Ocorreu um erro ao tentar gerar o boleto. Por favor, tente novamente em alguns instantes.'
+            slip_validation: 'Erro ao validar dados do formulário. Por favor, revise-os e tente novamente.'
             encryption_error: 'Por favor, tente novamente em alguns instantes.'
             payment_failed: 'Por favor, revise os dados de seu cartão de crédito e tente novamente em alguns instantes.'
             card_invalid: 'Dados de cartão de crédito inválidos. Por favor, revise os dados de seu cartão de crédito e tente novamente.'
