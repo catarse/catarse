@@ -53,9 +53,9 @@ class UsersController < ApplicationController
     show!{
       fb_admins_add(@user.facebook_id) if @user.facebook_id
       @title = "#{@user.display_name}"
-      @unsubscribes = @user.project_unsubscribes
-      @credit_cards = @user.credit_cards
-      build_bank_account
+      #@unsubscribes = @user.project_unsubscribes
+      #@credit_cards = @user.credit_cards
+      #build_bank_account
     }
   end
 

@@ -131,6 +131,15 @@ RSpec.describe ProjectsController, type: :controller do
           allow(controller).to receive(:current_user).and_return(project.user)
         end
 
+        context "when I cancel the project" do
+          before do 
+            expect_any_instance_of(ApiWrapper).to receive(:request)
+          end
+          it "should call cancel API endpoint" do
+            put :update, id: project.id, project: { name: 'new_title', about_html: 'new_description' }, locale: :pt, cancel_project: 'true' 
+          end
+        end
+
         context "when I try to update the project name and the about_html field" do
           before{ put :update, id: project.id, project: { name: 'new_title', about_html: 'new_description' }, locale: :pt }
           it "should not update title" do

@@ -37,8 +37,10 @@
             var attr = customAttr,
                 projectParam = m.route.param('project_id'),
                 projectUserIdParam = m.route.param('project_user_id'),
+                userParam = m.route.param('user_id'),
                 rewardIdParam = m.route.param('reward_id'),
-                filterParam = m.route.param('filter');
+                filterParam = m.route.param('filter'),
+                thankYouParam = app && JSON.parse(app.getAttribute('data-contribution'));
 
             var addToAttr = function(newAttr) {
                 attr = _.extend({}, newAttr, attr);
@@ -46,6 +48,10 @@
 
             if(projectParam) {
                 addToAttr({project_id: projectParam});
+            }
+
+            if(userParam) {
+                addToAttr({user_id: userParam});
             }
 
             if(projectUserIdParam) {
@@ -58,6 +64,10 @@
 
             if(filterParam) {
                 addToAttr({filter: filterParam});
+            }
+
+            if(thankYouParam) {
+                addToAttr({contribution: thankYouParam});
             }
 
             if(window.localStorage && (window.localStorage.getItem('globalVideoLanding') !== 'true')) {
@@ -103,9 +113,12 @@
           '/projects': wrap(c.root.ProjectsHome, {menuTransparency: true, footerBig: true}),
           '/pt/explore': wrap(c.root.ProjectsExplore, {menuTransparency: true, footerBig: true}),
           '/pt/start': wrap(c.root.Start, {menuTransparency: true, footerBig: true}),
+          '/pt/projects/:project_id/contributions/:contribution_id': wrap(c.root.ThankYou, {menuTransparency: false, footerBig: false}),
+          '/projects/:project_id/contributions/:contribution_id': wrap(c.root.ThankYou, {menuTransparency: false, footerBig: false}),
           '/pt/:project': wrap(c.root.ProjectsShow, {menuTransparency: false, footerBig: false}),
           '/projects/:project_id/insights': wrap(c.root.Insights, {menuTransparency: false, footerBig: false}),
           '/projects/:project_id': wrap(c.root.ProjectsShow, {menuTransparency: false, footerBig: false}),
+          '/users/:user_id': wrap(c.root.UsersShow, {menuTransparency: true, footerBig: false}),
           '/:project': wrap(c.root.ProjectsShow, {menuTransparency: false, footerBig: false})
       });
   }
