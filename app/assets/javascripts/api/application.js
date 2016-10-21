@@ -99,7 +99,7 @@
       m.route.mode = 'pathname';
 
       m.route(rootEl, '/', {
-          '/': wrap(( isUserProfile ? c.root.UsersShow : c.root.ProjectsHome), {menuTransparency: true, footerBig: true}),
+          '/': wrap(( isUserProfile ? c.root.UsersShow : c.root.ProjectsHome), {menuTransparency: true, footerBig: true, absoluteHome: isUserProfile}),
           '/explore': wrap(c.root.ProjectsExplore, {menuTransparency: true, footerBig: true}),
           '/start': wrap(c.root.Start, {menuTransparency: true, footerBig: true}),
           // '/projects/:project_id/contribution': wrap(c.root.ProjectsReward),
