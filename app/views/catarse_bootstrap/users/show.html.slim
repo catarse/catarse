@@ -9,7 +9,7 @@
   - fb_admins.each do |admin|
     meta property="fb:admins" content="#{admin}"
 
-#application
+#application data-userid=resource.id data-hassubdomain=(resource.permalink == request.subdomain).to_s
 
 - content_for :application_js do
   = javascript_include_tag "api/application"
