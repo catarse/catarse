@@ -29,7 +29,8 @@
     });
   }
 
-  var app = document.getElementById('application');
+    var app = document.getElementById('application'),
+        body = document.getElementsByTagName('body')[0];
 
   var wrap = function(component, customAttr) {
       return {
@@ -37,7 +38,7 @@
             var attr = customAttr,
                 projectParam = m.route.param('project_id'),
                 projectUserIdParam = m.route.param('project_user_id'),
-                userParam = m.route.param('user_id'),
+                userParam = m.route.param('user_id') || app.getAttribute('data-userid'),
                 rewardIdParam = m.route.param('reward_id'),
                 filterParam = m.route.param('filter'),
                 thankYouParam = app && JSON.parse(app.getAttribute('data-contribution'));
@@ -74,8 +75,6 @@
                 addToAttr({withAlert: false});
             }
 
-            var body = document.getElementsByTagName('body')[0];
-
             body.className = 'body-project closed';
 
 
@@ -94,12 +93,13 @@
   };
 
   if(app){
-      var rootEl = app;
+      var rootEl = app,
+          isUserProfile = body.getAttribute('data-controller-name') == 'users' && body.getAttribute('data-action') == 'show' && app.getAttribute('data-hassubdomain') == 'true';
 
       m.route.mode = 'pathname';
 
       m.route(rootEl, '/', {
-          '/': wrap(c.root.ProjectsHome, {menuTransparency: true, footerBig: true}),
+          '/': wrap(( isUserProfile ? c.root.UsersShow : c.root.ProjectsHome), {menuTransparency: true, footerBig: true}),
           '/explore': wrap(c.root.ProjectsExplore, {menuTransparency: true, footerBig: true}),
           '/start': wrap(c.root.Start, {menuTransparency: true, footerBig: true}),
           // '/projects/:project_id/contribution': wrap(c.root.ProjectsReward),
