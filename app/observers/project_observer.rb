@@ -9,7 +9,6 @@ class ProjectObserver < ActiveRecord::Observer
     unless project.permalink.present?
       project.permalink = "#{project.name.parameterize.gsub(/\-/, '_')}_#{SecureRandom.hex(2)}"
     end
-
    project.video_embed_url = nil unless project.video_url.present?
   end
 
@@ -92,3 +91,4 @@ class ProjectObserver < ActiveRecord::Observer
   end
 
 end
+

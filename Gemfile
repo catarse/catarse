@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.3.1'
 
-gem 'rails', '~> 4.1.16'
+gem 'rails', '~> 4.2.7.1'
 
 gem 'protected_attributes'
 gem 'rails-observers'
@@ -14,11 +14,12 @@ gem 'sidekiq',  '~> 4.0.1'
 gem "best_in_place", :git => "git://github.com/bernat/best_in_place", ref: "ee95961e639022e6aa528704b8cb4789596ea61b"
 
 # State machine for attributes on models
-gem 'state_machine', require: 'state_machine/core'
+# @TODO move payment to statesman
+gem 'state_machines-activerecord'
 gem 'statesman'
 
 # Database and data related
-gem 'pg', '0.17.1'
+gem 'pg', '0.19.0'
 gem 'dbhero', '>= 1.1.12'
 gem 'postgres-copy'
 gem 'postgres_ext'
@@ -81,18 +82,19 @@ gem 'to_xls'
 gem 'ranked-model'
 gem 'feedjira'
 gem 'inherited_resources'
-gem 'has_scope', '>= 0.6.0.rc'
+gem 'has_scope'
 gem 'spectator-validates_email',  require: 'validates_email'
-gem 'video_info', '~> 2.4.2'
+gem 'video_info'
 gem 'typhoeus'
 gem 'parallel'
 gem 'sitemap_generator'
 gem 'rdstation-ruby-client'
 gem 'therubyracer', platform: :ruby
+gem 'responders', '~> 2.0'
 
 # Translations
 gem 'http_accept_language'
-gem 'routing-filter', '~> 0.4.0.pre'
+gem 'routing-filter', '~> 0.6.0'
 
 group :production do
   # Gem used to handle image uploading
@@ -121,6 +123,7 @@ group :production do
   #gem 'dalli'
 end
 group :development do
+  gem 'web-console'
   gem "rails-erd"
   gem "letter_opener"
   gem 'foreman'
@@ -133,7 +136,7 @@ group :development do
 end
 
 group :test, :development do
-  gem 'rspec-rails', '~> 3.1'
+  gem 'rspec-rails'
   gem 'rspec-mocks'
   gem 'rspec-its'
   gem 'rspec-collection_matchers'
@@ -149,7 +152,7 @@ group :test do
   gem 'database_cleaner'
   gem 'shoulda'
   gem 'factory_girl_rails'
-  gem 'capybara',   '~> 2.2.0'
+  gem 'capybara'
   gem 'selenium-webdriver'
 end
 

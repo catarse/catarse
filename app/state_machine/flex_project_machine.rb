@@ -87,7 +87,7 @@ class FlexProjectMachine
     after_transition do |project, transition|
       project.save
       next if transition.metadata['skip_callbacks']
-      from_state = transition.metadata["from_state"]
+      from_state = transition.metadata[:from_state]
 
       project.notify_observers :"from_#{from_state}_to_#{transition.to_state}"
     end
