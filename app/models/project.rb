@@ -425,7 +425,7 @@ class Project < ActiveRecord::Base
     self.public_tags = names.split(',').map do |name|
       name.split(' ').map do |n|
         PublicTag.find_or_create_by(slug: n.parameterize) do |tag|
-          tag.name = n.strip
+          tag.name = n.strip.capitalize
         end
       end
     end.flatten
