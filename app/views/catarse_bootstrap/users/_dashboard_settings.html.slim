@@ -13,7 +13,7 @@
           #email_update_form.w-hidden.u-marginbottom-20.w-row
             .w-col.w-col-6.w-sub-col
               label.field-label.fontweight-semibold Novo email
-              = form.input_field :email, as: :string, class: 'w-input text-field positive', value: '', id: 'new_email'
+              input name="new_email" id="new_email" value="" type="email" class="w-input text-field positive"
             .w-col.w-col-6
               label.field-label.fontweight-semibold Confirmar novo email
               = form.input_field :email, as: :string, class: 'w-input text-field positive', value: '', id: 'new_email_confirmation'
