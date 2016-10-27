@@ -61,7 +61,7 @@ class UsersController < ApplicationController
 
   def credit_cards
     authorize resource
-    
+
     render json: current_user.credit_cards.to_json
   end
 
@@ -113,6 +113,7 @@ class UsersController < ApplicationController
   private
 
   def update_user
+    email_update?
     drop_and_create_subscriptions
     update_reminders
     update_category_followers
@@ -123,6 +124,12 @@ class UsersController < ApplicationController
       end
     else
       @user.update_without_password permitted_params
+    end
+  end
+
+  def email_update?
+    if params[:user][:email].empty?
+      params[:user][:email] = @user.email
     end
   end
 

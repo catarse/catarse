@@ -6,12 +6,17 @@
         = render 'devise/shared/alert'
         .w-form.card.card-terciary.u-marginbottom-20
           .fontsize-base.fontweight-semibold Email
-          .fontsize-small.u-marginbottom-20 Mantenha esse email atualizado pois ele é o canal de comunicação entre você, a equipe do Catarse e a equipe dos projetos que você apoiou. 
-          .w-row.u-marginbottom-20
+          .fontsize-small.u-marginbottom-30 Mantenha esse email atualizado pois ele é o canal de comunicação entre você, a equipe do Catarse e a equipe dos projetos que você apoiou. 
+          .fontsize-base.u-marginbottom-40
+            span.fontweight-semibold.card.u-radius= @user.email
+            a#update_email.alt-link.fontsize-small.u-marginleft-10 href="javascript:void(0);" Alterar email
+          #email_update_form.w-hidden.u-marginbottom-20.w-row
             .w-col.w-col-6.w-sub-col
-              = form.input_field :email, as: :string, class: 'w-input text-field positive', required: true
+              label.field-label.fontweight-semibold Novo email
+              input name="new_email" id="new_email" value="" type="email" class="w-input text-field positive"
             .w-col.w-col-6
-
+              label.field-label.fontweight-semibold Confirmar novo email
+              = form.input_field :email, as: :string, class: 'w-input text-field positive', value: '', id: 'new_email_confirmation'
           .fontsize-base.fontweight-semibold CPF / CNPJ
           .w-row.u-marginbottom-20
             .w-col.w-col-6.w-sub-col
