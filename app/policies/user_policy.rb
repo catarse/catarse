@@ -54,6 +54,7 @@ class UserPolicy < ApplicationPolicy
     unless user.try(:admin?)
       u_attrs.delete(:zero_credits)
       u_attrs.delete(:permalink)
+      u_attrs.delete(:whitelisted_at)
     end
 
     u_attrs.flatten
