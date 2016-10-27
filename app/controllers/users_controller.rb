@@ -128,7 +128,7 @@ class UsersController < ApplicationController
   end
 
   def email_update?
-    if params[:user][:email].empty?
+    unless params[:user].try(:email).present?
       params[:user][:email] = @user.email
     end
   end
