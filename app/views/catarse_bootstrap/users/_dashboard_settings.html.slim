@@ -17,6 +17,11 @@
             .w-col.w-col-6
               label.field-label.fontweight-semibold Confirmar novo email
               = form.input_field :email, as: :string, class: 'w-input text-field positive', value: '', id: 'new_email_confirmation'
+          .fontsize-base.fontweight-semibold Nome
+          .w-row.u-marginbottom-20
+            .w-col.w-col-6.w-sub-col
+              = form.input_field :name, as: :string, class: 'w-input text-field positive'
+            .w-col.w-col-6
           .fontsize-base.fontweight-semibold CPF / CNPJ
           .w-row.u-marginbottom-20
             .w-col.w-col-6.w-sub-col
