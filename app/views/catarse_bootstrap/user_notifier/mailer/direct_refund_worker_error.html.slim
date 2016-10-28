@@ -1,5 +1,5 @@
 - contribution = @notification.contribution
-- metadata = ActiveSupport::JSON.decode(@notification.metadata)
+- metadata = @notification.metadata
 - payment = contribution.payments.find metadata['payment_id']
 - error = metadata['error_message']
 

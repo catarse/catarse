@@ -1,6 +1,6 @@
 - user_follow = @notification.user_follow
 - follow = user_follow.follow
-- metadata = ActiveSupport::JSON.decode(@notification.metadata)
+- metadata = @notification.metadata
 - project = Project.find metadata['project_id']
 
 center
