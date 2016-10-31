@@ -6,7 +6,11 @@ App.addChild('DashboardGoal', {
     "click .choose-limited": "chooseLimited",
     "click .choose-mode": "chooseMode",
     "click .mode-diff-toggle": "showDiff",
-    "click .fee-toggle": "showFeeExplanation"
+    "click .fee-toggle": "showFeeExplanation",
+    "change input[name='project[online_days]']": "validateDays",
+    "change input[name='flexible_project[online_days]']": "validateDays",
+    "blur input[name='project[online_days]']": "validateDays",
+    "blur input[name='flexible_project[online_days]']": "validateDays"
   },
 
   chooseMode: function(event) {
@@ -61,5 +65,24 @@ App.addChild('DashboardGoal', {
     event.preventDefault();
     var $target = this.$('.fee-explanation');
     $target.slideToggle();
+  },
+
+  validateDays: function (event) {
+    var isFlex = this.$('.choose-flex').hasClass('selected');
+    var $input = $(event.target);
+    var value = Number($input.val());
+    if (isFlex) {
+      if (value < 1 || value > 365) {
+        $input.addClass('error');
+        return;
+      }
+    } else {
+      if (value < 1 || value > 60) {
+        $input.addClass('error');
+        return;
+      }
+    }
+
+    $input.removeClass('error');
   }
 });
