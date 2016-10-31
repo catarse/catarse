@@ -152,13 +152,13 @@ App.addChild('FaqBox', {
     var $answer = $question.next();
     $question.toggleClass('open').toggleClass('alt-link');
     $answer.slideToggle('slow');
-
-    if($question.hasClass('open')) {//só vamos lançar o evento se abriu.
+    if($question.hasClass('open')) {
       CatarseAnalytics.event({cat:"contribution_create",act:"contribution_info_click",lbl:$.trim($question.text())});
     }
   },
 
   activate: function(){
-    this.$('li.list-answer').hide();
+    // Add class is necessary due to mithril - jquery compatibility
+    this.$('li.list-answer').addClass('list-answer-opened').hide();
   }
 });
