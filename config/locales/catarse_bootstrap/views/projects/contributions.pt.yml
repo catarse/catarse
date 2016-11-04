@@ -15,8 +15,7 @@ pt:
         anonymous_description: Optou por manter seu apoio não público.
         no_reward: Este apoiador não selecionou nenhuma recompensa
       selected_reward:
-        review_without_reward_html: Você irá apoiar com <strong>%{value}</strong>
-          e não quer nenhuma recompensa por seu apoio.
+        review_without_reward_html: Você irá apoiar com <strong>%{value}</strong> e não quer nenhuma recompensa por seu apoio.
         value: 'Valor do apoio'
         reward: 'Recompensa selecionada'
         edit: 'Editar'
@@ -56,7 +55,43 @@ pt:
           when_project_funded: 'Se o projeto for financiado, como eu recebo minha recompensa?'
           when_project_funded_answer: 'Quando sua recompensa estiver pronta, %{name} vai entrar em contato com você para combinar a entrega.'
       edit:
+        title: 'Dados de contato e endereço'
+        required: '* Preenchimento obrigatório'
+        payment_info: 'Escolha o meio de pagamento'
+        safe_payment: ' PAGAMENTO SEGURO'
+        credit_card_select: 'Cartão de crédito'
+        debit_card_info: '(não aceitamos cartão de débito)'
+        fields:
+          complete_name: 'Nome completo *'
+          email: 'Email *'
+          anonymous: 'Quero que meu apoio não fique público'
+          street: 'Rua *'
+          street_number: 'Número *'
+          street_complement: 'Complemento'
+          neighbourhood: 'Bairro *'
+          zipcode: 'CEP *'
+          city: 'Cidade *'
+          state: 'Estado *'
+          owner_document: 'CPF/CNPJ *'
+          phone: 'Telefone *'
+        credit_card:
+          loading: 'Carregando informações de cartão...'
+          use_another: 'Usar outro cartão de crédito.'
+          name: 'Nome no cartão de crédito *'
+          name_tip: 'Nome impresso na frente do seu cartão de crédito'
+          number: 'Número do cartão de crédito *'
+          number_tip: 'O número normalmente com 16 dígitos na frente do seu cartão de crédito'
+          expiry: 'Expiração (mm/aaaa)* '
+          expiry_tip: 'A data de validade, geralmente na frente do cartão'
+          cvv: 'Código de Segurança (CVV / CVV2)* '
+          cvv_tip: 'Os 3 dígitos (quando na frente) ou 4 dígitos (quando atrás) do seu cartão'
+          cvv_tooltip: 'Os 3 ou 4 dígitos que estão nas costas dos cartões VISA, MASTER, DINERS, ELO e na frente do cartão AMEX.'
+          installments: 'Parcelas'
+          save_card: 'Quero salvar meu cartão de crédito para facilitar apoios futuros.'
+          finish_payment: 'Finalizar pagamento'
+          terms_of_use_agreement: 'Ao apoiar, você concorda com os <a class="alt-link" href="/pt/terms-of-use">Termos de Uso</a> e <a class="alt-link" href="/pt/privacy-policy">Política de Privacidade</a>.'
         errors:
+          global: 'Por favor, reveja os campos abaixo antes de prosseguir'
           inline:
             creditcard_cvv: 'Código de Segurança inválido.'
             creditcard_expiry: 'Data de vencimento inválida.'

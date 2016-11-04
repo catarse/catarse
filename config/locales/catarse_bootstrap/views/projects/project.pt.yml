@@ -177,6 +177,7 @@ http://suporte.catarse.me/hc/pt-br/articles/206507863-Catarse-flex-Principais-pe
         draft: "Rascunho"
         in_analysis: "Em análise"
     faq:
+      title: Dúvidas frequentes
       aon:
         description: Caso esse projeto não atinja a meta, você recebe de volta 100% do que pagou através de um reembolso.
         questions:
