@@ -2,20 +2,13 @@
   = javascript_include_tag 'redactor'
 - content_for :stylesheets do
   = stylesheet_link_tag 'redactor'
-= render 'shared/header_big', overlayer: true
+
+#users-edit-root[data-mithril="UsersEdit" data-parameters={user_id: resource.id}.to_json]
+
+- content_for :application_js do
+  = javascript_include_tag "api/application", 'application.js'
 
 .user-dashboard-edit
-  .hero-small
-    .w-container
-      .w-row.u-text-center.content-hero-profile
-        .w-col.w-col-3
-        .w-col.w-col-6
-          .fontsize-larger.fontweight-semibold.u-marginbottom-10
-            = resource.decorate.display_name
-        .w-col.w-col-3
-    .hero-profile style="background-image: url('#{resource.cover_image.try(:base).try(:url) || resource.uploaded_image.url}')"
-
-  
   nav.dashboard-nav.u-text-center.u-marginbottom-30 style='z-index: 10; position: relative;'
     .w-container
       = link_to '#contributions', id: 'dashboard_contributions_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_contributions' } do
@@ -29,7 +22,7 @@
 
       = link_to '#settings', id: 'dashboard_settings_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_settings' } do
         | Dados e endereço
-      
+
       = link_to '#notifications', id: 'dashboard_notifications_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_notifications' } do
         | Notificações
 
@@ -38,9 +31,6 @@
 
       = link_to user_path(resource), class: 'dashboard-nav-link u-right-big-only' do
         | Ir para o perfil público
-      /span style='visibility: hidden;'
-        = link_to '#feeds', id: 'dashboard_feeds_link', class: 'dashboard-nav-link' , data: {target: '#dashboard_feeds' } do
-          | Atividades
 
 
   section.section-one-column
@@ -52,21 +42,8 @@
             = render 'dashboard_feeds'
           #dashboard_contributions.content.w-hidden
             = render 'dashboard_contributions'
+          /erved from API
           #dashboard_projects.content.w-hidden
-            - if !@user.project_owner?
-              .w-row.u-margintop-30.u-text-center
-                .w-col.w-col-3
-                .w-col.w-col-6
-                  .fontsize-large.u-marginbottom-30 Você ainda não criou nenhum projeto no Catarse. Acredite nos seus sonhos!  
-                  .w-row
-                    .w-col.w-col-3
-                    .w-col.w-col-6
-                      = link_to 'Inscreva um projeto!', start_path, class: 'btn btn-large'
-                    .w-col.w-col-3
-                .w-col.w-col-3
-            - else
-              .w-row
-                == render_projects resource.projects, 'profile_dashboard_created_projects', { wrapper_class: 'w-col w-col-4 u-marginbottom-40' }
           #dashboard_about_me.content.w-hidden
             = render 'dashboard_about_me'
           #dashboard_settings.content.w-hidden
