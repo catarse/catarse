@@ -54,13 +54,73 @@ pt:
           when_project_fails_answer: 'Nesse caso, você recebe de volta 100% do que pagou através de um reembolso.'
           when_project_funded: 'Se o projeto for financiado, como eu recebo minha recompensa?'
           when_project_funded_answer: 'Quando sua recompensa estiver pronta, %{name} vai entrar em contato com você para combinar a entrega.'
+      edit_international:
+        selected_reward:
+          review_without_reward_html: You are going to back with <strong>%{value}</strong> and you don't want any reward.
+          value: 'Contribution details'
+          reward: 'Selected reward'
+          edit: 'Edit'
+        title: 'Contact details and address'
+        required: '* Required fields'
+        payment_info: 'Payment information'
+        safe_payment: ' SECURE PAYMENT'
+        credit_card_select: 'Credit card'
+        debit_card_info: '(Debit card not accepted)'
+        fields:
+          complete_name: 'Full name *'
+          email: 'Email *'
+          anonymous: 'Do not show my name on the public backers section'
+          street: 'Address *'
+          street_number: 'Number *'
+          street_complement: 'Compliment'
+          neighbourhood: 'Neighbourhood *'
+          zipcode: 'Zip Code *'
+          city: 'City *'
+          state: 'State *'
+          owner_document: 'CPF/CNPJ *'
+          phone: 'Phone *'
+        next_step: 'Next step'
+        credit_card:
+          loading: 'Loading credit card info...'
+          use_another: 'Use another card.'
+          name: 'Name on the credit card *'
+          name_tip: 'Name printed on the front of your card'
+          number: 'Credit card number *'
+          number_tip: 'Usually a 16 digit number printed on the front of your card'
+          expiry: 'Expiration (mm/aaaa) * '
+          expiry_tip: 'The validity date, usually on the front of your card'
+          cvv: 'Security code (CVV / CVV2) * '
+          cvv_tip: 'The 3 digit (when on the front) or 4 digit (when on the back) of your card'
+          cvv_tooltip: 'The 3 or 4 digits that are on the back of the VISA, MASTER, DINERS and ELO cards or on the front of the AMEX card.'
+          installments: 'Instalments'
+          save_card: 'I want to save my credit card for future payments.'
+          finish_payment: 'Finish payment'
+          terms_of_use_agreement: "By paying, you agree to Catarse's <a class='alt-link' href=''/pt/terms-of-use'>Terms of Use</a> and <a class='alt-link' href='/pt/privacy-policy'>Privacy Policy</a>."
+        errors:
+          global: 'Please, take a look at the following errors: '
+          inline:
+            creditcard_cvv: 'Security code is not valid.'
+            creditcard_expiry: 'Expiration date is not valid.'
+            creditcard_number: 'Credit card number is not valid.'
+            creditcard_name: 'Name is not valid.'
+          submission:
+            encryption_error: 'Please try again in a few moments.'
+            payment_failed: 'Please review your credit card info and try again in a few moments.'
+            card_invalid: 'Credit card information is not valid. Please review your credit card info and try again.'
+            error: '<span>An error ocurred while trying to process your payment.</span><br><br>Error: <i>%{message}</i>'
       edit:
+        selected_reward:
+          review_without_reward_html: Você irá apoiar com <strong>%{value}</strong> e não quer nenhuma recompensa por seu apoio.
+          value: 'Valor do apoio'
+          reward: 'Recompensa selecionada'
+          edit: 'Editar'
         title: 'Dados de contato e endereço'
         required: '* Preenchimento obrigatório'
         payment_info: 'Escolha o meio de pagamento'
         safe_payment: ' PAGAMENTO SEGURO'
         credit_card_select: 'Cartão de crédito'
         debit_card_info: '(não aceitamos cartão de débito)'
+        next_step: 'Próximo passo'
         fields:
           complete_name: 'Nome completo *'
           email: 'Email *'
@@ -112,7 +172,7 @@ pt:
         review_title: 'Preencha e revise os dados para pagamento'
         review_subtitle: 'Esses dados serão informados ao realizador do projeto'
         delivery_address: 'Endereço'
-        next_step: 'Próximo passo'
+        # next_step: 'Próximo passo'
         payment_slip_disclaimer: "Caso o projeto não seja bem-sucedido, nós faremos o reembolso do seu apoio. Os dados bancários informados aqui serão usados para isso."
         review_errors_title: "Verifique os dados informados"
         review_errors: "Alguma informação está faltando ou não foi informada corretamente, corrija todos os campos marcados em vermelho e tesnte novamente"
