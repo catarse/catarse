@@ -172,7 +172,7 @@ RSpec.describe ProjectDecorator do
       it "should return a successful image flag when the project is successful" do
         allow(project).to receive(:successful?).and_return(true)
 
-        expect(project.status_flag).to eq("<div class=\"status_flag\"><img alt=\"Successful.#{I18n.locale}\" src=\"/assets/successful.#{I18n.locale}.png\" /></div>")
+        expect(project.status_flag).to include("Successful.#{I18n.locale}")
       end
     end
 
@@ -180,7 +180,7 @@ RSpec.describe ProjectDecorator do
       it "should return a not successful image flag when the project is not successful" do
         allow(project).to receive(:failed?).and_return(true)
 
-        expect(project.status_flag).to eq("<div class=\"status_flag\"><img alt=\"Not successful.#{I18n.locale}\" src=\"/assets/not_successful.#{I18n.locale}.png\" /></div>")
+        expect(project.status_flag).to include("Not successful.#{I18n.locale}")
       end
     end
 
@@ -188,7 +188,7 @@ RSpec.describe ProjectDecorator do
       it "should return a waiting funds image flag when the project is waiting funds" do
         allow(project).to receive(:waiting_funds?).and_return(true)
 
-        expect(project.status_flag).to eq("<div class=\"status_flag\"><img alt=\"Waiting confirmation.#{I18n.locale}\" src=\"/assets/waiting_confirmation.#{I18n.locale}.png\" /></div>")
+        expect(project.status_flag).to include("Waiting confirmation.#{I18n.locale}")
       end
     end
 

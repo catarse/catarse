@@ -188,6 +188,8 @@ class Project < ActiveRecord::Base
   validates_length_of :headline, maximum: HEADLINE_MAXLENGTH
   validates_numericality_of :online_days, less_than_or_equal_to: 60, greater_than_or_equal_to: 1,
     if: ->(p){ !p.is_flexible? && p.online_days.present? && ( p.online_days_was.nil? || p.online_days_was <= 60 ) }
+  validates_numericality_of :online_days, less_than_or_equal_to: 365, greater_than_or_equal_to: 1,
+    if: ->(p){ p.is_flexible? && p.online_days.present? && ( p.online_days_was.nil? || p.online_days_was <= 365 ) }
   validates_numericality_of :goal, greater_than: 9, allow_blank: true
   validates_numericality_of :service_fee, greater_than: 0, less_than_or_equal_to: 1
   validates_uniqueness_of :permalink, case_sensitive: false
@@ -425,7 +427,7 @@ class Project < ActiveRecord::Base
     self.public_tags = names.split(',').map do |name|
       name.split(' ').map do |n|
         PublicTag.find_or_create_by(slug: n.parameterize) do |tag|
-          tag.name = n.strip
+          tag.name = n.strip.capitalize
         end
       end
     end.flatten

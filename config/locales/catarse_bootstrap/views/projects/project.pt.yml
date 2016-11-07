@@ -11,35 +11,35 @@ pt:
           cta: 'Comece sua campanha'
           image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-fctodos.jpg'
         2:
-          title: 'Catarse com Trello!'
-          subtitle: 'Faça o planejamento de sua campanha com a ajuda desse quadro do Trello! '
-          link: 'http://fazum.catarse.me/trello-financiamento-coletivo?ref=home_banner'
-          cta: 'Saiba mais'
-          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-trello.jpg'
+          title: 'Catarse com Facebook!'
+          subtitle: ''
+          link: 'http://crowdfunding.catarse.me/amigos?ref=home_banner'
+          cta: 'Encontre projetos com seus amigos'
+          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-amigos.jpg'
         3:
-          title: 'Cafeteira Aram'
-          subtitle: 'Café espresso com menos resíduos e mais significado.'
-          link: 'https://www.catarse.me/cafeteiraaram?ref=home_banner'
+          title: 'Grudi'
+          subtitle: 'Diga adeus aos suportes desengonçados para smartphone.'
+          link: 'https://www.catarse.me/grudi?ref=home_banner'
           cta: 'Conheça o projeto'
-          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-cafeteiraaram.jpg'
+          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-grudi.jpg'
         4:
-          title: 'Livro Prédios de São Paulo Vol. 2'
-          subtitle: 'A beleza da arquitetura no cotidiano da cidade.'
-          link: 'https://www.catarse.me/prediosdesaopaulo?ref=home_banner'
+          title: 'SP Invisível'
+          subtitle: 'Um olhar atento às pessoas em situação de rua.'
+          link: 'https://www.catarse.me/spinvisivel?ref=home_banner'
           cta: 'Conheça o projeto'
-          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-prediosdesaopaulo.jpg'
+          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-spinvisivel.jpg'
         5:
-          title: 'Darwin e as rochas'
-          subtitle: 'Darwin além da teoria da evolução.'
-          link: 'https://www.catarse.me/darwin?ref=home_banner'
+          title: 'QUAD - Svalbard'
+          subtitle: 'A quarta edição do Quad vem com histórias mais longas dos personagens já conhecidos.'
+          link: 'https://www.catarse.me/svalbard?ref=home_banner'
           cta: 'Conheça o projeto'
-          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-darwin.jpg'
+          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-svalbard.jpg'
         6:
-          title: 'São Paulo dos Mortos vol. 03'
-          subtitle: 'Os zumbis invadiram a Avenida Paulista!'
-          link: 'https://www.catarse.me/spm3?ref=home_banner'
+          title: 'Diário da mãe da Alice'
+          subtitle: 'Mãe e filha abraçando novos jeitos de viver a vida com paralisia cerebral.'
+          link: 'https://www.catarse.me/diariodamaedaalice?ref=home_banner'
           cta: 'Conheça o projeto'
-          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-spm3.jpg'
+          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-diariodamaedaalice.jpg'
     new_feature_badge: 'Novidade'
     posts:
       empty: '<span class="fontweight-semibold">%{project_user_name}</span> ainda não publicou nenhuma novidade. <a href="/projects/%{project_id}/contributions/new" class="alt-link">Faça um apoio</a> e receba em seu email todas as notícias do projeto assim que elas forem publicadas!'
@@ -177,6 +177,45 @@ http://suporte.catarse.me/hc/pt-br/articles/206507863-Catarse-flex-Principais-pe
         draft: "Rascunho"
         in_analysis: "Em análise"
     faq:
+      title: Dúvidas frequentes
+      international_title: FAQ
+      international:
+        aon:
+          description: If this project can't reach its goal by its deadline, you will get 100% of your payment refunded to your credit card.
+          questions:
+            1:
+              question: How do I back this project?
+              answer: Fill the contact details, address and your credit card details and click on Finish payment. If everything is right, you will be redirected to a 'Thank you' page (in Portuguese).
+            2:
+              question: When is my card charged?
+              answer: The confirmation of your payment should be sent to your email on the same day.
+            3:
+              question: What can others see about my contribution?
+              answer: This project will be added to you Backed projects history on your public profile. The selected reward and the contribution amount won't be public.
+            4:
+              question: What if the project can't reach its goal?
+              answer: You will have your payment 100% refunded to your credit card.
+            5:
+              question: If this project is funded, how do I get my reward?
+              answer: When your reward is ready, <a href="%{userLink}" target="_blank">%{userName}</a> will get in touch with you to arrange the delivery.
+        flex:
+          description: The project will get all the money when it finishes.
+          questions:
+            1:
+              question: How do I back this project?
+              answer: Fill the contact details, address and your credit card details and click on Finish payment. If everything is right, you will be redirected to a 'Thank you' page (in Portuguese).
+            2:
+              question: When is my card charged?
+              answer: The confirmation of your payment should be sent to your email on the same day.
+            3:
+              question: What can others see about my contribution?
+              answer: This project will be added to you Backed projects history on your public profile. The selected reward and the contribution amount won't be public.
+            4:
+              question: Who is the responsible for this project?
+              answer: Catarse is just a link between you and the creator. If you want to know more about the project, please get in touch with <a href="%{userLink}" target="_blank">%{userName}</a>
+            5:
+              question: If this project is funded, how do I get my reward?
+              answer: When your reward is ready, <a href="%{userLink}" target="_blank">%{userName}</a> will get in touch with you to arrange the delivery.
       aon:
         description: Caso esse projeto não atinja a meta, você recebe de volta 100% do que pagou através de um reembolso.
         questions:

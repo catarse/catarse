@@ -294,7 +294,7 @@ pt:
       error_account:
         icon: 'https://daks2k3a4ib2z.cloudfront.net/54b440b85608e3f4389db387/56c350fabfc50aef5095c67d_transfer-pending-icon.png'
         title: 'Transferência bancária pendente'
-        text: 'Seus dados bancários estavam com alguma informação errada e já fomos notificados sobre esse problema! Fique de olho no <span class="fontweight-semibold">%{user_email}</span>, pois vamos resolver esse problema via email em até 2 dias úteis.'
+        text: 'Seus dados bancários estavam com alguma informação errada e já fomos notificados sobre esse problema! Fique de olho no <span class="fontweight-semibold">%{user_email}</span>, pois vamos resolver esse problema via email em até 5 dias úteis.'
       finished:
         icon: 'https://daks2k3a4ib2z.cloudfront.net/54b440b85608e3f4389db387/56c3511ee7d136a016bc34fa_succesful-icon.png'
         title: 'Boa sorte no seu projeto!'

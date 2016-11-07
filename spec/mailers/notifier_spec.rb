@@ -12,7 +12,7 @@ RSpec.describe Notifier, type: :mailer do
       from_name: 'from_name',
       from_email: 'from@email.com',
       locale: 'pt'
-    })
+      }.to_json)
   end
 
   let(:notification) do
@@ -26,7 +26,7 @@ RSpec.describe Notifier, type: :mailer do
       from_name: 'from_name',
       from_email: 'from@email.com',
       locale: 'pt'
-    })
+      }.to_json)
   end
 
   describe '.notify' do

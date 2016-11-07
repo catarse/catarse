@@ -1,9 +1,9 @@
 pt:
   shared:
-    menus: 
-      user: 
+    menus:
+      user:
         about: 'Sobre você'
-        access_address: 'Dados e endereço'        
+        access_address: 'Dados e endereço'
         activity: 'Atividade'
         banking: 'Banco e cartões'
         contributions_history: 'Meu histórico'
@@ -12,3 +12,5 @@ pt:
         notifications: 'Notificações'
         project_contributions: 'Projetos apoiados'
         projects_created: 'Projetos criados'
+        update_email: ' alterar e-mail'
+        your_email: 'Seu e-mail de cadastro é: '

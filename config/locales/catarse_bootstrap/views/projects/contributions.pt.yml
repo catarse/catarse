@@ -15,8 +15,7 @@ pt:
         anonymous_description: Optou por manter seu apoio não público.
         no_reward: Este apoiador não selecionou nenhuma recompensa
       selected_reward:
-        review_without_reward_html: Você irá apoiar com <strong>%{value}</strong>
-          e não quer nenhuma recompensa por seu apoio.
+        review_without_reward_html: Você irá apoiar com <strong>%{value}</strong> e não quer nenhuma recompensa por seu apoio.
         value: 'Valor do apoio'
         reward: 'Recompensa selecionada'
         edit: 'Editar'
@@ -55,8 +54,109 @@ pt:
           when_project_fails_answer: 'Nesse caso, você recebe de volta 100% do que pagou através de um reembolso.'
           when_project_funded: 'Se o projeto for financiado, como eu recebo minha recompensa?'
           when_project_funded_answer: 'Quando sua recompensa estiver pronta, %{name} vai entrar em contato com você para combinar a entrega.'
-      edit:
+      edit_international:
+        selected_reward:
+          review_without_reward_html: You are going to back with <strong>%{value}</strong> and you don't want any reward.
+          value: 'Contribution details'
+          reward: 'Selected reward'
+          edit: 'Edit'
+        title: 'Contact details and address'
+        required: '* Required fields'
+        payment_info: 'Payment information'
+        safe_payment: ' SECURE PAYMENT'
+        credit_card_select: 'Credit card'
+        debit_card_info: '(Debit card not accepted)'
+        anonymous_confirmation_title: "Are you sure you want to make you contribution non-public?"
+        anonymous_confirmation: "Choosing this option your name won't be shown on the public backers section area. Only you and this project's creator will have access to your name and contribution details."
+        fields:
+          complete_name: 'Full name *'
+          email: 'Email *'
+          anonymous: 'Do not show my name on the public backers section'
+          street: 'Address *'
+          street_number: 'Number *'
+          street_complement: 'Compliment'
+          neighbourhood: 'Neighbourhood *'
+          zipcode: 'Zip Code *'
+          city: 'City *'
+          state: 'State *'
+          owner_document: 'CPF/CNPJ *'
+          phone: 'Phone *'
+        next_step: 'Next step'
+        credit_card:
+          loading: 'Loading credit card info...'
+          use_another: 'Use another card.'
+          name: 'Name on the credit card *'
+          name_tip: 'Name printed on the front of your card'
+          number: 'Credit card number *'
+          number_tip: 'Usually a 16 digit number printed on the front of your card'
+          expiry: 'Expiration (mm/aaaa) * '
+          expiry_tip: 'The validity date, usually on the front of your card'
+          cvv: 'Security code (CVV / CVV2) * '
+          cvv_tip: 'The 3 digit (when on the front) or 4 digit (when on the back) of your card'
+          cvv_tooltip: 'The 3 or 4 digits that are on the back of the VISA, MASTER, DINERS and ELO cards or on the front of the AMEX card.'
+          installments: 'Instalments'
+          save_card: 'I want to save my credit card for future payments.'
+          finish_payment: 'Finish payment'
+          terms_of_use_agreement: "By paying, you agree to Catarse's <a class='alt-link' href='/pt/terms-of-use'>Terms of Use</a> and <a class='alt-link' href='/pt/privacy-policy'>Privacy Policy</a>."
         errors:
+          global: 'Please, take a look at the following errors: '
+          inline:
+            creditcard_cvv: 'Security code is not valid.'
+            creditcard_expiry: 'Expiration date is not valid.'
+            creditcard_number: 'Credit card number is not valid.'
+            creditcard_name: 'Name is not valid.'
+          submission:
+            encryption_error: 'Please try again in a few moments.'
+            payment_failed: 'Please review your credit card info and try again in a few moments.'
+            card_invalid: 'Credit card information is not valid. Please review your credit card info and try again.'
+            error: '<span>An error ocurred while trying to process your payment.</span><br><br>Error: <i>%{message}</i>'
+          validation:
+            empty_field: 'The field cannot be empty.'
+            email: 'Email is not valid.'
+      edit:
+        selected_reward:
+          review_without_reward_html: Você irá apoiar com <strong>%{value}</strong> e não quer nenhuma recompensa por seu apoio.
+          value: 'Valor do apoio'
+          reward: 'Recompensa selecionada'
+          edit: 'Editar'
+        title: 'Dados de contato e endereço'
+        required: '* Preenchimento obrigatório'
+        payment_info: 'Escolha o meio de pagamento'
+        safe_payment: ' PAGAMENTO SEGURO'
+        credit_card_select: 'Cartão de crédito'
+        debit_card_info: '(não aceitamos cartão de débito)'
+        next_step: 'Próximo passo'
+        fields:
+          complete_name: 'Nome completo *'
+          email: 'Email *'
+          anonymous: 'Quero que meu apoio não fique público'
+          street: 'Rua *'
+          street_number: 'Número *'
+          street_complement: 'Complemento'
+          neighbourhood: 'Bairro *'
+          zipcode: 'CEP *'
+          city: 'Cidade *'
+          state: 'Estado *'
+          owner_document: 'CPF/CNPJ *'
+          phone: 'Telefone *'
+        credit_card:
+          loading: 'Carregando informações de cartão...'
+          use_another: 'Usar outro cartão de crédito.'
+          name: 'Nome no cartão de crédito *'
+          name_tip: 'Nome impresso na frente do seu cartão de crédito'
+          number: 'Número do cartão de crédito *'
+          number_tip: 'O número normalmente com 16 dígitos na frente do seu cartão de crédito'
+          expiry: 'Expiração (mm/aaaa)* '
+          expiry_tip: 'A data de validade, geralmente na frente do cartão'
+          cvv: 'Código de Segurança (CVV / CVV2)* '
+          cvv_tip: 'Os 3 dígitos (quando na frente) ou 4 dígitos (quando atrás) do seu cartão'
+          cvv_tooltip: 'Os 3 ou 4 dígitos que estão nas costas dos cartões VISA, MASTER, DINERS, ELO e na frente do cartão AMEX.'
+          installments: 'Parcelas'
+          save_card: 'Quero salvar meu cartão de crédito para facilitar apoios futuros.'
+          finish_payment: 'Finalizar pagamento'
+          terms_of_use_agreement: 'Ao apoiar, você concorda com os <a class="alt-link" href="/pt/terms-of-use">Termos de Uso</a> e <a class="alt-link" href="/pt/privacy-policy">Política de Privacidade</a>.'
+        errors:
+          global: 'Por favor, reveja os campos abaixo antes de prosseguir'
           inline:
             creditcard_cvv: 'Código de Segurança inválido.'
             creditcard_expiry: 'Data de vencimento inválida.'
@@ -69,6 +169,10 @@ pt:
             payment_failed: 'Por favor, revise os dados de seu cartão de crédito e tente novamente em alguns instantes.'
             card_invalid: 'Dados de cartão de crédito inválidos. Por favor, revise os dados de seu cartão de crédito e tente novamente.'
             error: '<span>Ocorreu um problema ao processar o seu pagamento.</span><br><br>Erro: <i>%{message}</i>'
+          validation:
+            empty_field: 'O campo não pode ser vazio.'
+            email: 'E-mail inválido.'
+            state: 'Estado é obrigatório.'
         review_slip_email: "Você também receberá um email com esse boleto."
         slip_expiration: "Esse boleto bancário vence no dia %{date}."
         print_slip: 'Imprimir boleto'
@@ -77,7 +181,7 @@ pt:
         review_title: 'Preencha e revise os dados para pagamento'
         review_subtitle: 'Esses dados serão informados ao realizador do projeto'
         delivery_address: 'Endereço'
-        next_step: 'Próximo passo'
+        # next_step: 'Próximo passo'
         payment_slip_disclaimer: "Caso o projeto não seja bem-sucedido, nós faremos o reembolso do seu apoio. Os dados bancários informados aqui serão usados para isso."
         review_errors_title: "Verifique os dados informados"
         review_errors: "Alguma informação está faltando ou não foi informada corretamente, corrija todos os campos marcados em vermelho e tesnte novamente"

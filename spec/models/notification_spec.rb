@@ -10,7 +10,7 @@ RSpec.describe Notification, type: :model do
       from_name: 'from_name',
       from_email: 'from@email.com',
       locale: 'pt'
-    })
+    }.to_json)
   end
 
   before do

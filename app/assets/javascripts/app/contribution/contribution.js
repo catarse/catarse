@@ -52,7 +52,17 @@ App.addChild('Contribution', {
     }
     // copy default value from rendered contribution
     $('.user-reward-value:first').val($('#contribution_value').val());
-    CatarseAnalytics.event({cat:'contribution_create',act:'contribution_started'});
+    var stats=$('[data-stats]').data('stats');
+    CatarseAnalytics.event({cat:'contribution_create',act:'contribution_started',lbl:stats && stats.id});
+    if(stats && stats.id && _.contains([41679,40191,40271,38768,42815,43002,42129,41867,39655,29706], stats.id)) {
+          (window.$zopim && window.$zopim.livechat)||(function(d,s){var z=window.$zopim=function(c){z._.push(c)},$=z.s=d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set._.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute('charset','utf-8');$.src='//v2.zopim.com/?2qPtIfZX0Exh5Szx5JUoUxWKqrTQI5Tm';z.t=+new Date;$.type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
+          setTimeout(function t(){
+            if(window.$zopim && window.$zopim.livechat)
+              window.zE.hide();
+            else
+              setTimeout(t, 500);
+          },500);
+    }
   },
 
   activateFloattingHeader: function(){
@@ -142,13 +152,13 @@ App.addChild('FaqBox', {
     var $answer = $question.next();
     $question.toggleClass('open').toggleClass('alt-link');
     $answer.slideToggle('slow');
-
-    if($question.hasClass('open')) {//só vamos lançar o evento se abriu.
+    if($question.hasClass('open')) {
       CatarseAnalytics.event({cat:"contribution_create",act:"contribution_info_click",lbl:$.trim($question.text())});
     }
   },
 
   activate: function(){
-    this.$('li.list-answer').hide();
+    // Add class is necessary due to mithril - jquery compatibility
+    this.$('li.list-answer').addClass('list-answer-opened').hide();
   }
 });

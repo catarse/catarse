@@ -1,4 +1,4 @@
-require 'state_machine'
+require 'state_machines'
 module Shared
   module StateMachineHelpers
     extend ActiveSupport::Concern
