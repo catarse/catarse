@@ -66,8 +66,8 @@ pt:
         safe_payment: ' SECURE PAYMENT'
         credit_card_select: 'Credit card'
         debit_card_info: '(Debit card not accepted)'
-        anonymous_confirmation_title: "Você tem certeza que quer que seu apoio não seja público?"
-        anonymous_confirmation: "Escolhendo essa opção o seu apoio não será público para outros usuários do Catarse. Apenas você e o Realizador do projeto terão acesso às informações do seu apoio."
+        anonymous_confirmation_title: "Are you sure you want to make you contribution non-public?"
+        anonymous_confirmation: "Choosing this option your name won't be shown on the public backers section area. Only you and this project's creator will have access to your name and contribution details."
         fields:
           complete_name: 'Full name *'
           email: 'Email *'
