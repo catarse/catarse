@@ -49,7 +49,7 @@ class PaymentObserver < ActiveRecord::Observer
 
   def from_paid_to_pending_refund(payment)
     if payment.slip_payment?
-      payment.contribution.notify_to_contributor(:contributions_project_unsucessful_slip)
+      payment.contribution.notify_to_contributor(:contributions_project_unsuccessful_slip)
     end
   end
 

@@ -68,12 +68,12 @@ RSpec.describe PaymentObserver do
 
     context "when contribution is made with credit card" do
       let(:payment_method) { 'CartaoDeCredito' }
-      it { expect(ContributionNotification.where(template_name: 'contributions_project_unsucessful_slip', user_id: contribution.user_id).count).to eq(0) }
+      it { expect(ContributionNotification.where(template_name: 'contributions_project_unsuccessful_slip', user_id: contribution.user_id).count).to eq(0) }
     end
 
     context "when contribution is made with slip" do
       let(:payment_method) { 'BoletoBancario' }
-      it { expect(ContributionNotification.where(template_name: 'contributions_project_unsucessful_slip', user_id: contribution.user_id).count).to eq(1) }
+      it { expect(ContributionNotification.where(template_name: 'contributions_project_unsuccessful_slip', user_id: contribution.user_id).count).to eq(1) }
     end
   end
 
