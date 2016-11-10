@@ -9,6 +9,6 @@ class NotificationsController < ApplicationController
 
   private
   def kclass
-    @kclass ||= params[:notification_type].camelize.constantize
+    @kclass ||= params[:notification_type].camelize.singularize.constantize
   end
 end
