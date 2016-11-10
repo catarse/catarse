@@ -79,7 +79,7 @@ window.CatarseAnalytics = window.CatarseAnalytics || (function(){
       hostname: location.hostname,
       domain: domain,
       pathname: location.pathname || location.href.substr(domain.length).replace(/[\?\#].*$/,''),
-      userAgent: typeof navigator!=='undefined' ? navigator.userAget : undefined,
+      userAgent: typeof navigator!=='undefined' ? navigator.userAgent : undefined,
       hash: location.hash.replace(/^\#/,''),
       query: (function parseParams() {
           if(location.search) {
