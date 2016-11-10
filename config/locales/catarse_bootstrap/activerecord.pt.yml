@@ -259,7 +259,7 @@ pt:
             online_days:
               blank: "O prazo de arrecadação não pode ficar em branco"
               greater_than: "O prazo para arrecadação deve ser maior que 2 dias"
-              less_than_or_equal_to: "O prazo para arrecadação deve ser menor ou igual a 365 dias"
+              less_than_or_equal_to: "O prazo para arrecadação deve ser menor ou igual a 365 dias para projetos flex e menor ou igual a 60 dias para projetos tudo-ou-nada"
               not_a_number: "O prazo para arrecadação deve ser um número de dias"
             about_html:
               blank: "A descrição do projeto não pode ficar em branco"
@@ -296,7 +296,7 @@ pt:
             online_days:
               blank: "O prazo de arrecadação não pode ficar em branco"
               greater_than: "O prazo para arrecadação deve ser maior que 2 dias"
-              less_than_or_equal_to: "O prazo para arrecadação deve ser menor ou igual a 60 dias"
+              less_than_or_equal_to: "O prazo para arrecadação deve ser menor ou igual a 60 dias para projetos tudo-ou-nada e menor ou igual a 365 dias para projetos flex"
               not_a_number: "O prazo para arrecadação deve ser um número de dias"
             about_html:
               blank: "A descrição do projeto não pode ficar em branco"
