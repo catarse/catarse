@@ -101,10 +101,11 @@ task verify_pagarme_refunds: [:environment] do
 end
 
 desc 'Sync all gateway payments using all transactions'
-task gateway_payments_sync: [:environment] do
+task :gateway_payments_sync, [:nthreads] => [:environment] do |t, args| 
+  args.with_defaults nthreads: 3
   PagarMe.api_key = CatarsePagarme.configuration.api_key
   page = 1
-  per_page = 1000
+  per_page = 500
 
 
   loop do
@@ -118,7 +119,7 @@ task gateway_payments_sync: [:environment] do
     end
 
     Rails.logger.info "[GatewayPayment SYNC] - sync transactions"
-    Parallel.map(transactions, in_process: 5) do |transaction| 
+    Parallel.map(transactions, in_threads: args.nthreads.to_i) do |transaction| 
       begin
         postbacks = transaction.postbacks.to_json
         payables = transaction.payables.to_json
@@ -134,6 +135,7 @@ task gateway_payments_sync: [:environment] do
         payables: payables,
         last_sync_at: DateTime.now()
       )
+      print '.'
     end
     Rails.logger.info "[GatewayPayment SYNC] - transactions synced on page #{page}"
 
