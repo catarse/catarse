@@ -11,7 +11,7 @@
 //= require catarse.js/dist/catarse.js
 //= require_self
 
-(function(m, c, Chart){
+(function(m, c, Chart, analytics){
   //Chart.defaults.global.responsive = true;
   Chart.defaults.global.responsive = false;
   Chart.defaults.Line.pointHitDetectionRadius = 0;
@@ -33,10 +33,18 @@
 
     var app = document.getElementById('application'),
         body = document.getElementsByTagName('body')[0];
+    var firstRun = true;//Indica se é a primeira vez q executa um controller.
 
   var wrap = function(component, customAttr) {
       return {
         controller: function() {
+            if(firstRun) {
+                firstRun=false;
+            } else {//só roda se nao for firstRun
+                try {
+                    analytics.pageView(false);
+                } catch(e) {console.error(e);}
+            }
             var attr = customAttr,
                 projectParam = m.route.param('project_id'),
                 projectUserIdParam = m.route.param('project_user_id'),
@@ -131,7 +139,7 @@
         params = paramAttr && JSON.parse(paramAttr.value);
     m.mount(el, m.component(component, _.extend({root: el}, params)));
   });
-}(window.m, window.c, window.Chart));
+}(window.m, window.c, window.Chart, window.CatarseAnalytics));
 
 window.toggleMenu = function(){
   var userMenu = document.getElementById("user-menu-dropdown");
