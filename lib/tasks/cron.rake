@@ -116,7 +116,7 @@ namespace :cron do
 
   desc 'Update all fb users'
   task update_fb_users: [:environment] do
-    User.joins(:project).uniq.where("users.fb_parsed_link~'^pages/\d+$'").each do |u|
+    User.joins(:project).uniq.where("users.fb_parsed_link~'^pages/\\d+$'").each do |u|
       FbPageCollectorWorker.perform_async(u.id)
     end
   end
