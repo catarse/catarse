@@ -44,7 +44,7 @@ window.CatarseAnalytics = window.CatarseAnalytics || (function(){
 
       if (body) {
         setDefault(headers, 'X-Requested-With', 'XMLHttpRequest')
-        setDefault(headers, 'Content-Type', 'application/x-www-form-urlencoded')
+        setDefault(headers, 'Content-Type', "application/json; charset=utf-8")//'application/x-www-form-urlencoded')
       }
 
       req.open(method, params.url, true)
@@ -79,7 +79,7 @@ window.CatarseAnalytics = window.CatarseAnalytics || (function(){
       hostname: location.hostname,
       domain: domain,
       pathname: location.pathname || location.href.substr(domain.length).replace(/[\?\#].*$/,''),
-      userAgent: typeof navigator!=='undefined' ? navigator.userAget : undefined,
+      userAgent: typeof navigator!=='undefined' ? navigator.userAgent : undefined,
       hash: location.hash.replace(/^\#/,''),
       query: (function parseParams() {
           if(location.search) {
@@ -231,7 +231,7 @@ window.CatarseAnalytics = window.CatarseAnalytics || (function(){
                 // The key needs to match your method's input parameter (case-sensitive).
                 body: JSON.stringify(sendData),
                 headers: {
-                  'content-type': "application/json; charset=utf-8"
+                  'Content-Type': "application/json; charset=utf-8"
                 }
             }, function(status, responseText, req){
               if(status!==200)
