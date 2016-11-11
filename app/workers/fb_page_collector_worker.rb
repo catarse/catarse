@@ -11,7 +11,7 @@ class FbPageCollectorWorker
       koala = Koala::Facebook::API.new("#{CatarseSettings[:fb_app_id]}|#{CatarseSettings[:fb_app_secret]}")
       likes = koala.get_object(path, {}, api_version: "v2.3") {|data| data['likes']} rescue nil
 
-      unless likes.nil? || likes == 0
+      if likes.present? && likes >= 0
         SocialFollower.create({user_id: user.id, username: path, profile_type: 'fb_page', followers: likes})
       end
     end
