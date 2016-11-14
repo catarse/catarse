@@ -13,7 +13,7 @@ task sync_balance_operations: [:environment] do
       operations.map do |op|
         opjson = op.to_json
         gateway_operation = GatewayBalanceOperation.find_or_create_by operation_id: ActiveSupport::JSON.decode(opjson)['id']
-        gateway_operation.update_attribute(:operation_data, ActiveSupport::JSON.decode(opjson))
+        gateway_operation.update_attribute(:operation_data, opjson)
       end
       sleep 0.2
     rescue Exception => e
