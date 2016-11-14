@@ -101,45 +101,46 @@ task verify_pagarme_refunds: [:environment] do
 end
 
 desc 'Sync all gateway payments using all transactions'
-task :gateway_payments_sync, [:nthreads] => [:environment] do |t, args| 
-  args.with_defaults nthreads: 3
-  PagarMe.api_key = CatarsePagarme.configuration.api_key
-  page = 1
-  per_page = 500
+task :gateway_payments_sync, [:nthreads, :page_size] => [:environment] do |t, args| 
+  args.with_defaults nthreads: 3, page_size: 500
+  ActiveRecord::Base.connection_pool.with_connection do
+    PagarMe.api_key = CatarsePagarme.configuration.api_key
+    page = 1
+    per_page = args.page_size.to_i
 
+    loop do
+      Rails.logger.info "[GatewayPayment SYNC] -> running on page #{page}"
 
-  loop do
-    Rails.logger.info "[GatewayPayment SYNC] -> running on page #{page}"
+      transactions = PagarMe::Transaction.all(page, per_page)
 
-    transactions = PagarMe::Transaction.all(page, per_page)
-
-    if transactions.empty?
-      Rails.logger.info "[GatewayPayment SYNC] -> exiting no transactions returned"
-      break
-    end
-
-    Rails.logger.info "[GatewayPayment SYNC] - sync transactions"
-    Parallel.map(transactions, in_threads: args.nthreads.to_i) do |transaction| 
-      begin
-        postbacks = transaction.postbacks.to_json
-        payables = transaction.payables.to_json
-      rescue Exception => e
-        postbacks = nil
-        payables = nil
+      if transactions.empty?
+        Rails.logger.info "[GatewayPayment SYNC] -> exiting no transactions returned"
+        break
       end
 
-      gpayment = GatewayPayment.find_or_create_by transaction_id: transaction.id.to_s
-      gpayment.update_attributes(
-        gateway_data: transaction.to_json,
-        postbacks: postbacks,
-        payables: payables,
-        last_sync_at: DateTime.now()
-      )
-      print '.'
-    end
-    Rails.logger.info "[GatewayPayment SYNC] - transactions synced on page #{page}"
+      Rails.logger.info "[GatewayPayment SYNC] - sync transactions"
+      Parallel.map(transactions, in_threads: args.nthreads.to_i) do |transaction| 
+        begin
+          postbacks = transaction.postbacks.to_json
+          payables = transaction.payables.to_json
+        rescue Exception => e
+          postbacks = nil
+          payables = nil
+        end
 
-    page = page+1
+        gpayment = GatewayPayment.find_or_create_by transaction_id: transaction.id.to_s
+        gpayment.update_attributes(
+          gateway_data: transaction.to_json,
+          postbacks: postbacks,
+          payables: payables,
+          last_sync_at: DateTime.now()
+        )
+        print '.'
+      end
+      Rails.logger.info "[GatewayPayment SYNC] - transactions synced on page #{page}"
+
+      page = page+1
+    end
   end
 end
 
