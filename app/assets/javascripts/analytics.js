@@ -70,32 +70,34 @@ window.CatarseAnalytics = window.CatarseAnalytics || (function(){
   var _apiHost,_user,_project;
   var _analyticsOneTimeEventFired={};
   try {
-    var location = window.location;
-    var domain = location.origin || (location.protocol + '//' + location.hostname);
-    var _actualRequest={
-      referrer: document.referrer||undefined,
-      url: location.href,
-      protocol: location.protocol.substr(0,location.protocol.length-1),
-      hostname: location.hostname,
-      domain: domain,
-      pathname: location.pathname || location.href.substr(domain.length).replace(/[\?\#].*$/,''),
-      userAgent: typeof navigator!=='undefined' ? navigator.userAgent : undefined,
-      hash: location.hash.replace(/^\#/,''),
-      query: (function parseParams() {
-          if(location.search) {
-            try {
-              return location.search.replace(/^\?/,'').split('&').reduce(function (params, param) {
-                  var paramSplit = param.split('=').map(function (value) {
-                      return decodeURIComponent(value.replace('+', ' '));
-                  });
-                  params[paramSplit[0]] = paramSplit[1];
-                  return params;
-              }, {});
-            } catch(e) {
-              return location.search;
+    function _actualRequest() {
+      var location = window.location;
+      var domain = location.origin || (location.protocol + '//' + location.hostname);
+      return {
+        referrer: document.referrer||undefined,
+        url: location.href,
+        protocol: location.protocol.substr(0,location.protocol.length-1),
+        hostname: location.hostname,
+        domain: domain,
+        pathname: location.pathname || location.href.substr(domain.length).replace(/[\?\#].*$/,''),
+        userAgent: typeof navigator!=='undefined' ? navigator.userAgent : undefined,
+        hash: location.hash.replace(/^\#/,''),
+        query: (function parseParams() {
+            if(location.search) {
+              try {
+                return location.search.replace(/^\?/,'').split('&').reduce(function (params, param) {
+                    var paramSplit = param.split('=').map(function (value) {
+                        return decodeURIComponent(value.replace('+', ' '));
+                    });
+                    params[paramSplit[0]] = paramSplit[1];
+                    return params;
+                }, {});
+              } catch(e) {
+                return location.search;
+              }
             }
-          }
-      })()
+        })()
+      };
     };
 
     var origin = (function(request,cookie) {
@@ -137,7 +139,7 @@ window.CatarseAnalytics = window.CatarseAnalytics || (function(){
       o._time=new Date().getTime();
       cookie.set('ctrse_origin',JSON.stringify(o),180,'/',false,'.catarse.me');
       return o;
-    })(_actualRequest,monster);
+    })(_actualRequest(),monster);
   } catch(e) {
     console.error('[CatarseAnalytics] error',e);
   }
@@ -198,7 +200,7 @@ window.CatarseAnalytics = window.CatarseAnalytics || (function(){
         data.action=eventObj.act;
         data.label=eventObj.lbl;
         data.value=eventObj.val;
-        data.request=_actualRequest;
+        data.request=_actualRequest();
         if(user&&user.user_id) {
           data.user={
             id: user.user_id,
@@ -242,7 +244,7 @@ window.CatarseAnalytics = window.CatarseAnalytics || (function(){
           console.error('[CatarseAnalytics.event] error:', e);
         }
 
-        if(!ignoreGA) {
+        if(!ignoreGA && typeof ga!='undefined') {
           //https://developers.google.com/analytics/devguides/collection/analyticsjs/sending-hits#the_send_method
           ga('send', 'event', eventObj.cat, eventObj.act, eventObj.lbl, eventObj.val, {
             nonInteraction: eventObj.nonInteraction!==false,//default é true,e só será false se, e somente se, esse parametro for definido como false
@@ -262,10 +264,18 @@ window.CatarseAnalytics = window.CatarseAnalytics || (function(){
 
     }
   }*/
-  function _pageView() {
-    _event({cat:'navigation',act:'pageview',lbl:location.pathname}, null, true)
+  var pvto;
+  function _pageView(ignoreGA) {
+    pvto&&clearTimeout(pvto);
+    pvto=setTimeout(function() {
+      _event({cat:'navigation',act:'pageview',lbl:location.pathname}, null, true);
+      if(!ignoreGA && typeof ga!='undefined') {
+        ga('set','page',location.pathname);
+        ga('send', 'pageview', location.pathname);
+      }
+    });
   }
-  _pageView();
+  _pageView(true);//Na primeira vez q carrega a página, o pageview do GA será enviado na pagina mesmo.
 
   function _checkout(transactionId, prodName, sku, category, price, fee) {
     try {
@@ -296,6 +306,7 @@ window.CatarseAnalytics = window.CatarseAnalytics || (function(){
   return {
     origin: origin,
     event: _event,
+    pageView: _pageView,
     oneTimeEvent: function(eventObj, fn) {
         if (!eventObj) {
             return fn;
