@@ -13,6 +13,7 @@ module Catarse
   class Application < Rails::Application
     config.to_prepare do
       Devise::Mailer.layout "email" # email.haml or email.erb
+      VideoInfo.provider_api_keys = { youtube: CatarseSettings[:youtube_key], vimeo: CatarseSettings[:vimeo_key] }
     end
 
     config.paths['app/views'].unshift("#{Rails.root}/app/views/catarse_bootstrap")
