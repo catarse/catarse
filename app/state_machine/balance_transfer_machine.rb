@@ -15,9 +15,12 @@ class BalanceTransferMachine
 
   after_transition(from: :pending, to: :authorized) do |bt|
     #bt.pagarme_delegator.transfer_funds
+    bt.refresh_project_amount if bt.project_amount_changed?
   end
 
   after_transition(from: :processing, to: :transferred) do |bt| 
-    bt.project.notify(:project_balance_transferred, bt.project.user,bt.project) if bt.project.present?
+    if bt.project.present?
+      bt.project.notify(:project_balance_transferred, bt.project.user, bt.project)
+    end
   end
 end
