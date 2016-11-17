@@ -39,6 +39,7 @@ RSpec.describe ProjectObserver do
       let(:project) { create(:project, video_url: 'https://www.youtube.com/watch?v=9QveBbn7t_c', video_embed_url: 'embed_url') }
 
       it "should clean embed_url when video_is null" do
+        expect(project).to receive(:update_video_embed_url)
         expect(project.video_embed_url.present?).to eq(true)
         project.video_url = nil
         project.save

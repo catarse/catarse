@@ -14,6 +14,7 @@ class ProjectObserver < ActiveRecord::Observer
 
   def after_save(project)
     if project.try(:video_url_changed?)
+      project.update_video_embed_url
       ProjectDownloaderWorker.perform_async(project.id)
     end
   end
