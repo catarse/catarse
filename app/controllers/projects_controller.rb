@@ -145,6 +145,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    resource
     @post ||= resource.posts.where(id: params[:project_post_id].to_i).first if params[:project_post_id].present?
   end
 
