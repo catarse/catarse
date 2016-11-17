@@ -145,7 +145,6 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    fb_admins_add(resource.user.facebook_id) if resource.user.facebook_id
     @post ||= resource.posts.where(id: params[:project_post_id].to_i).first if params[:project_post_id].present?
   end
 

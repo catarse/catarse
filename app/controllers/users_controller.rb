@@ -51,7 +51,6 @@ class UsersController < ApplicationController
   def show
     authorize resource
     show!{
-      fb_admins_add(@user.facebook_id) if @user.facebook_id
       @title = "#{@user.display_name}"
       #@unsubscribes = @user.project_unsubscribes
       #@credit_cards = @user.credit_cards
