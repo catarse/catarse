@@ -1,10 +1,6 @@
 class FlexibleProjectObserver < ActiveRecord::Observer
   observe :flexible_project
 
-  def from_online_to_waiting_funds(flexible_project)
-    notify_admin_project_will_succeed(flexible_project)
-  end
-
   def from_waiting_funds_to_successful(flexible_project)
     notify_admin_that_project_is_successful(flexible_project)
     notify_users(flexible_project)
@@ -25,11 +21,6 @@ class FlexibleProjectObserver < ActiveRecord::Observer
   def notify_admin_that_project_is_successful(flexible_project)
     redbooth_user = User.find_by(email: CatarseSettings[:email_redbooth])
     flexible_project.notify_once(:redbooth_task, redbooth_user) if redbooth_user
-  end
-
-  def notify_admin_project_will_succeed(flexible_project)
-    zendesk_user = User.find_by(email: CatarseSettings[:email_contact])
-    flexible_project.notify_once(:project_will_succeed, zendesk_user) if zendesk_user
   end
 
   def notify_users(flexible_project)
