@@ -9,18 +9,6 @@ RSpec.describe Concerns::SocialHelpersHandler, type: :controller do
     @controller = ApplicationController.new
   end
 
-  describe '#fb_admins_add' do
-    before { @controller.instance_variable_set(:@fb_admins, []) }
-
-    context 'when is not an array' do
-      it { expect(@controller.fb_admins_add(1)).to eq [1] }
-    end
-
-    context 'when is an array' do
-      it { expect(@controller.fb_admins_add([1, 2])).to eq [1, 2] }
-    end
-  end
-
   describe '#render_facebook_sdk' do
     it { expect(@controller.render_facebook_sdk).to render_template(partial: 'layouts/_facebook_sdk') }
   end

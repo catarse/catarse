@@ -272,7 +272,6 @@ RSpec.describe UsersController, type: :controller do
 
     context "when user is active" do
       it{ is_expected.to be_successful }
-      it{ expect(assigns(:fb_admins)).to include(user.facebook_id.to_i) }
     end
 
     it "should set referral session" do
