@@ -9,12 +9,12 @@ class ProjectObserver < ActiveRecord::Observer
     unless project.permalink.present?
       project.permalink = "#{project.name.parameterize.gsub(/\-/, '_')}_#{SecureRandom.hex(2)}"
     end
-   project.video_embed_url = nil unless project.video_url.present?
+
+    project.video_embed_url = project.video_valid? ? project.video.embed_url : nil
   end
 
   def after_save(project)
     if project.try(:video_url_changed?)
-      project.update_video_embed_url
       ProjectDownloaderWorker.perform_async(project.id)
     end
   end

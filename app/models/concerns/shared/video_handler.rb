@@ -17,11 +17,6 @@ module Shared::VideoHandler
         "#{self.video_embed_url}?title=0&byline=0&portrait=0&autoplay=0"
       end
     end
-
-    def update_video_embed_url
-      self.video_embed_url = self.video.embed_url if self.video_valid?
-      self.save(validate: false)
-    end
   end
 
 end
