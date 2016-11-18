@@ -72,13 +72,6 @@ RSpec.describe Shared::VideoHandler, type: :model do
 
         its(:video){ should be_an_instance_of(VideoInfo) }
       end
-
-      it 'caches the response object' do
-        video_obj = VideoInfo.get(project.video_url)
-        binding.pry
-        expect(VideoInfo).to receive(:get).once.and_return(video_obj)
-        5.times { project.video }
-      end
     end
   end
 end
