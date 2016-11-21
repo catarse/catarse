@@ -30,7 +30,7 @@ To run this project you need to have:
   * Linux - `$ sudo apt-get install postgresql`
   * Windows - [PostgreSQL for Windows](http://www.postgresql.org/download/windows/)
 
-  **IMPORTANT**: Make sure you have postgresql-contrib ([Aditional Modules](http://www.postgresql.org/docs/9.3/static/contrib.html)) installed on your system.
+  **IMPORTANT**: Make sure you have postgresql-contrib ([Additional Modules](http://www.postgresql.org/docs/9.3/static/contrib.html)) installed on your system.
 
 ### Setup the project
 
@@ -77,7 +77,7 @@ If everything goes OK, you can now run the project!
 
 * Run API server
 
-	After downloading PostgREST 0.3.x you can unpack and run the executable as bellow.
+	After downloading PostgREST 0.3.x you can unpack and run the executable as below.
 
 		$ ./postgrest postgres://postgrest@localhost/catarse_development -a anonymous --jwt-secret gZH75aKtMN3Yj0iPS4hcgUuTwjAzZr9C -s 1 -p 3004
 
