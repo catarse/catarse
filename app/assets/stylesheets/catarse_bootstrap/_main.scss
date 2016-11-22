@@ -33,6 +33,7 @@ a:hover {
   color: #fff;
   text-align: center;
   text-decoration: none;
+  cursor: pointer;
 }
 
 .btn:hover {
@@ -3337,6 +3338,7 @@ a:hover {
 .modal-dialog-inner.modal-dialog-small {
   width: 600px;
   height: 565px;
+  box-shadow: 1px 1px 49px 0 rgba(63, 71, 82, .29);
 }
 
 .modal-dialog-content {
