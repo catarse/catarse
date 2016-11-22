@@ -104,7 +104,10 @@ class UsersController < ApplicationController
 
     if update_user
       flash[:notice] = t('users.current_user_fields.updated')
-      redirect_to edit_user_path(@user, anchor: params[:anchor])
+      respond_to do |format|
+        format.json { render :json => { :success => 'OK' } }
+        format.html { redirect_to edit_user_path(@user, anchor: params[:anchor])}
+      end
     else
       render :edit
     end
