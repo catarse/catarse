@@ -5,8 +5,8 @@ class FixesPaidCountFunction < ActiveRecord::Migration
       SELECT count(*)
       FROM payments p
       JOIN contributions c ON c.id = p.contribution_id
-      JOIN projects pr ON c.project_id = pr.id
-      WHERE p.state = (CASE WHEN pr.state = 'failed' THEN 'refunded' ELSE 'paid' END)
+      JOIN projects prj ON c.project_id = prj.id
+      WHERE (CASE WHEN prj.state = 'failed' THEN p.state IN ('refunded', 'pending_refund', 'paid') ELSE p.state = 'paid' END)
         AND c.reward_id = $1.id
     $$ LANGUAGE SQL STABLE SECURITY DEFINER;
     SQL
