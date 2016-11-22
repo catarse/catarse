@@ -99,6 +99,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def get_blog_posts
+      render json: (Blog.fetch_last_posts rescue [])[0..2].to_json
+  end
+
   private
   def force_www
     if request.subdomain.blank? && Rails.env.production?
@@ -134,4 +138,5 @@ class ApplicationController < ActionController::Base
       u.permit(:name, :email, :password, :newsletter)
     end
   end
+
 end
