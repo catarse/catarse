@@ -19,9 +19,9 @@ The official repo is https://github.com/catarse/catarse
 
 To run this project you need to have:
 
-* Ruby 2.2.3
+* Ruby 2.3.1
 
-* Rails 4.1
+* Rails 4.2
 
 * [postgREST 0.3](https://github.com/begriffs/postgrest/releases/tag/v0.3.0.3)
 
