@@ -52,10 +52,10 @@ class BankAccountsController < ApplicationController
       payment.direct_refund
     end
 
-    #legacy payments
-    if user.credits > 0
-      TransferWorker.perform_async(user.id)
-    end
+    # for legacy payments uncomment:
+    # if user.credits > 0
+    #   TransferWorker.perform_async(user.id)
+    # end
 
     redirect_to bank_account_path(resource, refunded_amount: refunded_amount)
   end
