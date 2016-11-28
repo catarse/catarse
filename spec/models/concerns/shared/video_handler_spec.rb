@@ -51,18 +51,6 @@ RSpec.describe Shared::VideoHandler, type: :model do
     end
   end
 
-
-
-  describe "#update_video_embed_url" do
-    let(:project) { create(:project, state: 'online') }
-    before do
-      project.video_url = "http://vimeo.com/17298435"
-      project.budget = nil
-    end
-    subject{ project.update_video_embed_url }
-    it{ is_expected.to eq true }
-  end
-
   describe "#video" do
     subject { project }
 
@@ -83,12 +71,6 @@ RSpec.describe Shared::VideoHandler, type: :model do
         before { project.video_url = "http://www.youtube.com/watch?v=Brw7bzU_t4c" }
 
         its(:video){ should be_an_instance_of(VideoInfo) }
-      end
-
-      it 'caches the response object' do
-        video_obj = VideoInfo.get(project.video_url)
-        expect(VideoInfo).to receive(:get).once.and_return(video_obj)
-        5.times { project.video }
       end
     end
   end

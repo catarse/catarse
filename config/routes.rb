@@ -23,6 +23,7 @@ Catarse::Application.routes.draw do
   get '/amigos' => redirect('http://crowdfunding.catarse.me/amigos')
   get '/criadores' => redirect('http://crowdfunding.catarse.me/criadores')
   get '/paratodos' => redirect('http://crowdfunding.catarse.me/paratodos')
+  get '/posts' => 'application#get_blog_posts'
   get '/project_edit' => 'application#redirect_to_last_edit'
   get '/billing_edit' => 'application#redirect_to_user_billing'
   get '/user_contributions' => 'application#redirect_to_user_contributions'
@@ -183,4 +184,3 @@ Catarse::Application.routes.draw do
   get "/:permalink" => "projects#show", as: :project_by_slug
 
 end
-

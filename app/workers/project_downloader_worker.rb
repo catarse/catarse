@@ -4,8 +4,6 @@ class ProjectDownloaderWorker
 
   def perform project_id
     project = Project.find project_id
-
-    project.update_video_embed_url
     project.download_video_thumbnail
   end
 end

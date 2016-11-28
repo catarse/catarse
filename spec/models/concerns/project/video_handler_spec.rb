@@ -15,16 +15,4 @@ RSpec.describe Project::VideoHandler, type: :model do
       expect(project.video_thumbnail.url).to eq("/uploads/project/video_thumbnail/#{project.id}/image.png")
     end
   end
-
-  describe "#update_video_embed_url" do
-    before do
-      project.video_url = 'http://vimeo.com/49584778'
-      expect(project.video).to receive(:embed_url).and_call_original
-      project.update_video_embed_url
-    end
-
-    it "should store the new embed url" do
-      expect(project.video_embed_url).to eq('//player.vimeo.com/video/49584778')
-    end
-  end
 end

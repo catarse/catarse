@@ -95,43 +95,6 @@ RSpec.describe ProjectObserver do
     end
   end
 
-
-  describe "#from_online_to_waiting_funds" do
-    before do
-      zendesk_user_atendimento
-      project.notify_observers(:from_online_to_waiting_funds)
-    end
-
-    context "when project has not reached goal" do
-      let(:project) do
-        project = create(:project, state: 'draft', goal: 3000)
-        create(:reward, project: project)
-        project.update_attribute :state, :online
-        allow(project).to receive(:reached_goal?).and_return(false)
-        project
-      end
-
-      it "should not send project_will_succeed notification" do
-        expect(ProjectNotification.where(template_name: 'project_will_succeed', user: zendesk_user_atendimento, project: project).count).to eq 0
-      end
-    end
-
-    context "when project has reached goal" do
-      let(:project) do
-        project = create(:project, state: 'draft', goal: 3000)
-        create(:reward, project: project)
-        project.update_attribute :state, :online
-        allow(project).to receive(:reached_goal?).and_return(true)
-        project
-      end
-
-      it "should send project_will_succeed notification" do
-        expect(ProjectNotification.where(template_name: 'project_will_succeed', user: zendesk_user_atendimento, project: project).count).to eq 1
-      end
-    end
-
-  end
-
   describe "#from_online_to_failed" do
     let(:project) do
       create_project({
