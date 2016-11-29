@@ -77,11 +77,6 @@ class FlexProjectMachine
       project.state = transition.to_state
     end
 
-    # After transition to successful should notify_observers
-    after_transition to: finished_states do |project| 
-      project.notify_observers :sync_with_mailchimp
-    end
-
     # After transition run, persist the current state
     # into model.state field.
     after_transition do |project, transition|
