@@ -39,7 +39,7 @@ module Catarse
     end
     config.active_record.observers = [
       :contribution_observer, :payment_observer, :user_observer, :project_post_observer, :project_observer,
-      :flexible_project_observer, :mixpanel_observer, '::CatarseMonkeymail::MonkeyProjectObserver'
+      :flexible_project_observer, :mixpanel_observer
     ]
 
     # Enable the asset pipeline
