@@ -5,12 +5,10 @@ class SendgridSyncWorker
 
   def perform user_id
     @user = User.find user_id
+    has_sendgrid_recipient = user.sendgrid_recipient_id.present?
 
-    if user.sendgrid_recipient_id.present?
-      update_recipient
-    else
-      find_or_create_recipient
-    end
+    update_user_recipient_id(
+      (has_sendgrid_recipient ? update_recipient : find_or_create_recipient))
 
     # TODO: add support to remove and put recipient on newsletter list
     # remove_from_newsletter if recipient_on_newsletter? && !user.newsletter
@@ -20,32 +18,33 @@ class SendgridSyncWorker
   private
 
   def find_or_create_recipient
-    if search_recipient.present?
-      user.update_column(:sendgrid_recipient_id, search_recipient[:id])
-    else
-      persisted_recipient = create_recipient
-      user.update_column(:sendgrid_recipient_id, persisted_recipient)
-    end
+    search_recipient.present? ? search_recipient : create_recipient
   end
 
   def update_recipient
     params = { request_body: [prepare_user_to_sendgrid] }
-    parse_recipients_from_response sendgrid_recipients.patch(params)
+    parse_from_response sendgrid_recipients.patch(params)
   end
 
   def create_recipient
     params = { request_body: [prepare_user_to_sendgrid] }
-    parse_recipients_from_response sendgrid_recipients.post(params)
+    parse_from_response sendgrid_recipients.post(params)
   end
 
   def search_recipient
     params = { email: user.email }
-    response = sendgrid_recipients.search.get(query_params: params)
-    JSON.parse(response.body).try(:[], 'recipients').try(:first).try(:deep_symbolize_keys)
+    parse_from_response(
+      sendgrid_recipients.search.get(query_params: params),
+      'recipients'
+    ).try(:[], 'id')
   end
 
-  def parse_recipients_from_response response
-    JSON.parse(response.body).try(:[], 'persisted_recipients').first
+  def parse_from_response response, opt_path = 'persisted_recipients'
+    JSON.parse(response.body).try(:[], opt_path).try(:first)
+  end
+
+  def update_user_recipient_id recipient
+    user.update_column(:sendgrid_recipient_id, recipient)
   end
 
   def prepare_user_to_sendgrid
