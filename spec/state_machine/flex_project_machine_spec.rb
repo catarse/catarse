@@ -109,8 +109,6 @@ RSpec.describe FlexProjectMachine, type: :model do
 
     context "project expired and not have waiting payments" do
       before do
-        expect(flexible_project).to receive(:notify_observers).
-          with(:sync_with_mailchimp).and_call_original
         allow(flexible_project).to receive(:expired?).and_return(true)
         allow(flexible_project).to receive(:in_time_to_wait?).and_return(false)
       end
@@ -119,11 +117,6 @@ RSpec.describe FlexProjectMachine, type: :model do
     end
 
     context "when can't go to successful" do
-      before do
-        expect(flexible_project).not_to receive(:notify_observers).
-          with(:sync_with_mailchimp).and_call_original
-      end
-
       it "should not transition when project has pending payments" do
         allow(flexible_project).to receive(:expired?).and_return(true)
         allow(flexible_project).to receive(:in_time_to_wait?).and_return(true)
@@ -146,9 +139,6 @@ RSpec.describe FlexProjectMachine, type: :model do
 
     context "project not have waiting payments" do
       before do
-        expect(flexible_project).to receive(:notify_observers).
-          with(:sync_with_mailchimp).and_call_original
-
         allow(flexible_project).to receive(:in_time_to_wait?).
           and_return(false)
       end
@@ -158,9 +148,6 @@ RSpec.describe FlexProjectMachine, type: :model do
 
     context "project have pending payments" do
       before do
-        expect(flexible_project).not_to receive(:notify_observers).
-          with(:sync_with_mailchimp).and_call_original
-
         allow(flexible_project).to receive(:in_time_to_wait?).
           and_return(true)
       end
