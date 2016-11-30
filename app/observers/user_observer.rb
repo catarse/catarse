@@ -20,5 +20,9 @@ class UserObserver < ActiveRecord::Observer
     if user.try(:facebook_link_changed?) && user.facebook_link.to_s != ''
       FbPageCollectorWorker.perform_async(user.id)
     end
+
+    if user.newsletter_changed?
+      SendgridSyncWorker.perform_async(user.id)
+    end
   end
 end

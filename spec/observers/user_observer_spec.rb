@@ -26,4 +26,17 @@ RSpec.describe UserObserver do
 
     its(:twitter) { should == 'should_be_change' }
   end
+
+  context 'after_save' do
+    subject { create(:user, newsletter: false, facebook_link: '') }
+
+    context 'when user change the newsletter option' do
+      before do
+        expect(SendgridSyncWorker).to receive(:perform_async).with(subject.id)
+      end
+
+      it { subject.update_attribute(:newsletter, true) }
+    end
+  end
+
 end
