@@ -7,6 +7,7 @@ class UserObserver < ActiveRecord::Observer
 
   def after_create(user)
     user.notify(:new_user_registration)
+    SendgridSyncWorker.perform_async(user.id) if user.newsletter
   end
 
   def before_save(user)
