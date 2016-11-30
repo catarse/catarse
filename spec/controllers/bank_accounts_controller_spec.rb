@@ -289,7 +289,6 @@ RSpec.describe BankAccountsController, type: :controller do
       before do
         allow_any_instance_of(User).to receive(:credits).and_return(10)
         Sidekiq::Testing.inline!
-        expect(TransferWorker).to receive(:perform_async).with(user.id)
 
         put :request_refund, {
           locale: :pt,
