@@ -7,15 +7,27 @@ class SendgridSyncWorker
     @user = User.find user_id
     has_sendgrid_recipient = user.sendgrid_recipient_id.present?
 
+    # update user data on sendgrid contactdb
     update_user_recipient_id(
       (has_sendgrid_recipient ? update_recipient : find_or_create_recipient))
 
-    # TODO: add support to remove and put recipient on newsletter list
-    # remove_from_newsletter if recipient_on_newsletter? && !user.newsletter
-    # put_on_newsletter if !recipient_on_newsletter? && user.newsletter
+    # insert or remove user from newsletter list
+    user.newsletter ? put_on_newsletter : remove_from_newsletter
   end
 
   private
+
+  def put_on_newsletter
+    list_id = CatarseSettings[:sendgrid_newsletter_list_id]
+    recipient_id = user.sendgrid_recipient_id
+    sendgrid_lists._(list_id).recipients._(recipient_id).post()
+  end
+
+  def remove_from_newsletter
+    list_id = CatarseSettings[:sendgrid_newsletter_list_id]
+    recipient_id = user.sendgrid_recipient_id
+    sendgrid_lists._(list_id).recipients._(recipient_id).delete()
+  end
 
   def find_or_create_recipient
     search_recipient.present? ? search_recipient : create_recipient
@@ -62,7 +74,15 @@ class SendgridSyncWorker
     @sendgrid ||= SendGrid::API.new(api_key: CatarseSettings[:sendgrid_mkt_api_key])
   end
 
+  def sendgrid_lists
+    contactdb.lists
+  end
+
   def sendgrid_recipients
-    sendgrid.client.contactdb.recipients
+    contactdb.recipients
+  end
+
+  def contactdb
+    sendgrid.client.contactdb
   end
 end

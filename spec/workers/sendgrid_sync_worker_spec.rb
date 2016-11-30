@@ -27,9 +27,9 @@ RSpec.describe SendgridSyncWorker do
   subject { SendgridSyncWorker.new }
 
   describe 'when user sendgrid recipient id is null' do
-    describe 'when user exists on sendgrid recipients' do
+    context 'when user exists on sendgrid recipients' do
       before do
-        allow(subject).to receive(:search_recipient).and_return({id: 'xxx'})
+        allow(subject).to receive(:search_recipient).and_return('xxx')
         expect(subject).to_not receive(:create_recipient).and_call_original
         expect(user).to receive(:update_column).with(:sendgrid_recipient_id, 'xxx')
       end
@@ -37,7 +37,7 @@ RSpec.describe SendgridSyncWorker do
       it { subject.perform(user.id) }
     end
 
-    describe 'when user does not exists on sendgrid recipients' do
+    context 'when user does not exists on sendgrid recipients' do
       before do
         expect(subject).to receive(:find_or_create_recipient).and_call_original
         expect(subject).to receive(:create_recipient).and_call_original
@@ -48,8 +48,8 @@ RSpec.describe SendgridSyncWorker do
     end
   end
 
-  describe 'when user sengrid recipient id aleady filled' do
-    describe 'just refreshing' do
+  describe 'when user sendgrid recipient id aleady filled' do
+    context 'just refreshing' do
       before do
         allow(user).to receive(:sendgrid_recipient_id).and_return('xxx')
         expect(subject).to receive(:update_recipient)
@@ -58,4 +58,25 @@ RSpec.describe SendgridSyncWorker do
       it { subject.perform(user.id) }
     end
   end
+
+  describe 'manipulating lists' do
+    context 'when user want receive newsletter' do
+      before do
+        user.update_column(:newsletter, true)
+        expect(subject).to receive(:put_on_newsletter)
+      end
+
+      it { subject.perform(user.id) }
+    end
+
+    context 'when user dont want receive newsltter' do
+      before do
+        user.update_column(:newsletter, false)
+        expect(subject).to receive(:remove_from_newsletter)
+      end
+
+      it { subject.perform(user.id) }
+    end
+  end
+
 end
