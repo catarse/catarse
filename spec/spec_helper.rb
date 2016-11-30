@@ -78,8 +78,6 @@ RSpec.configure do |config|
   # Stubs and configuration
   config.before(:each) do
     allow(Sidekiq::ScheduledSet).to receive(:new).and_return({})
-    allow_any_instance_of(User).to receive(:subscribe_to_newsletter_list).and_return(true)
-    allow_any_instance_of(Project).to receive(:subscribe_to_list).and_return(true)
     allow_any_instance_of(BankAccount).to receive(:must_be_valid_on_pagarme).and_return(true)
     allow_any_instance_of(UserObserver).to receive(:after_create)
     allow_any_instance_of(Project).to receive(:download_video_thumbnail)
