@@ -1,9 +1,11 @@
 # coding: utf-8
 class ApplicationController < ActionController::Base
+  EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
   include Concerns::ExceptionHandler
   include Concerns::SocialHelpersHandler
   include Concerns::AnalyticsHelpersHandler
   include Pundit
+
   if Rails.env.production?
     require "new_relic/agent/instrumentation/rails3/action_controller"
     include NewRelic::Agent::Instrumentation::ControllerInstrumentation
@@ -17,7 +19,7 @@ class ApplicationController < ActionController::Base
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
   helper_method :referral, :render_projects, :is_projects_home?,
-    :render_feeds, :can_display_pending_refund_alert?
+                :render_feeds, :can_display_pending_refund_alert?
 
   before_filter :set_locale
 
@@ -32,9 +34,9 @@ class ApplicationController < ActionController::Base
 
   def can_display_pending_refund_alert?
     @can_display_alert ||= current_user && current_user.pending_refund_payments.present? &&
-                            controller_name.to_sym != :bank_accounts &&
-                            controller_name.to_sym != :donations &&
-                            action_name.to_sym != :no_account_refund
+                           controller_name.to_sym != :bank_accounts &&
+                           controller_name.to_sym != :donations &&
+                           action_name.to_sym != :no_account_refund
   end
 
   def is_projects_home?
@@ -99,11 +101,31 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def subscribe_newsletter
+    email = params['EMAIL']
+
+    if email =~ EMAIL_REGEX
+      list_id = CatarseSettings[:sendgrid_newsletter_list_id]
+      contactdb = sendgrid_api.client.contactdb
+
+      contactdb.recipients.post(request_body: [{email: email}])
+      recipient = JSON.parse(rr.body).try(:[], 'persisted_recipients').try(:first)
+      contactdb.lists._(list_id.to_i).recipients.post(request_body: [recipient])
+    end
+
+    redirect_to :back
+  end
+
   def get_blog_posts
-      render json: (Blog.fetch_last_posts rescue [])[0..2].to_json
+    render json: (Blog.fetch_last_posts rescue [])[0..2].to_json
   end
 
   private
+
+  def sendgrid_api
+    @sendgrid ||= SendGrid::API.new(api_key: CatarseSettings[:sendgrid_mkt_api_key])
+  end
+
   def force_www
     if request.subdomain.blank? && Rails.env.production?
       return redirect_to url_for(params.merge(subdomain: 'www', locale: ''))
@@ -138,5 +160,4 @@ class ApplicationController < ActionController::Base
       u.permit(:name, :email, :password, :newsletter)
     end
   end
-
 end
