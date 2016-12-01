@@ -123,9 +123,6 @@ RSpec.describe AonProjectMachine, type: :model do
           context "when can go to failed" do
             context "when project expired, not have waiting paymnts and not reached the goal" do
               before do
-                expect(project).to receive(:notify_observers).
-                  with(:sync_with_mailchimp)
-
                 allow(project).to receive(:expired?).
                   and_return(true)
 
@@ -177,9 +174,6 @@ RSpec.describe AonProjectMachine, type: :model do
           context "when can go to successful" do
             context "project expired, not have waiting payments and reached the goal" do
               before do
-                expect(project).to receive(:notify_observers).
-                  with(:sync_with_mailchimp)
-
                 allow(project).to receive(:expired?).
                   and_return(true)
 

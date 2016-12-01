@@ -7,6 +7,7 @@ class UserObserver < ActiveRecord::Observer
 
   def after_create(user)
     user.notify(:new_user_registration)
+    SendgridSyncWorker.perform_async(user.id) if user.newsletter
   end
 
   def before_save(user)
@@ -18,6 +19,10 @@ class UserObserver < ActiveRecord::Observer
   def after_save(user)
     if user.try(:facebook_link_changed?) && user.facebook_link.to_s != ''
       FbPageCollectorWorker.perform_async(user.id)
+    end
+
+    if user.newsletter_changed?
+      SendgridSyncWorker.perform_async(user.id)
     end
   end
 end
