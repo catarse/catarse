@@ -120,19 +120,18 @@ task :gateway_payments_sync, [:nthreads, :page_size] => [:environment] do |t, ar
 
       Rails.logger.info "[GatewayPayment SYNC] - sync transactions"
       Parallel.map(transactions, in_threads: args.nthreads.to_i) do |transaction| 
-        begin
-          postbacks = transaction.postbacks.to_json
-          payables = transaction.payables.to_json
-        rescue Exception => e
-          postbacks = nil
-          payables = nil
-        end
+        postbacks = transaction.postbacks.to_json rescue nil
+        payables = transaction.payables.to_json rescue nil
+        operations = transaction.operations.to_json rescue nil
+        events = transaction.events.to_json rescue nil
 
         gpayment = GatewayPayment.find_or_create_by transaction_id: transaction.id.to_s
         gpayment.update_attributes(
           gateway_data: transaction.to_json,
           postbacks: postbacks,
           payables: payables,
+          events: events,
+          operations: operations,
           last_sync_at: DateTime.now()
         )
         print '.'
