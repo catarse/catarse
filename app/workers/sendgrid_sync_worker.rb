@@ -13,6 +13,7 @@ class SendgridSyncWorker
 
     # insert or remove user from newsletter list
     user.newsletter ? put_on_newsletter : remove_from_newsletter
+
   end
 
   private
@@ -75,14 +76,10 @@ class SendgridSyncWorker
   end
 
   def sendgrid_lists
-    contactdb.lists
+    sendgrid.client.contactdb.lists
   end
 
   def sendgrid_recipients
-    contactdb.recipients
-  end
-
-  def contactdb
-    sendgrid.client.contactdb
+    sendgrid.client.contactdb.recipients
   end
 end

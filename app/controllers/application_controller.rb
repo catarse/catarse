@@ -106,11 +106,12 @@ class ApplicationController < ActionController::Base
 
     if email =~ EMAIL_REGEX
       list_id = CatarseSettings[:sendgrid_newsletter_list_id]
-      contactdb = sendgrid_api.client.contactdb
+      client = sendgrid_api.client
 
-      rr = contactdb.recipients.post(request_body: [{email: email}])
+      rr = client.contactdb.recipients.post(request_body: [{email: email}])
       recipient = JSON.parse(rr.body).try(:[], 'persisted_recipients').try(:first)
-      contactdb.lists._(list_id).recipients.post(request_body: [recipient])
+      client.contactdb.lists._(list_id).recipients.post(request_body: [recipient])
+      binding.pry
     end
 
     redirect_to :back
