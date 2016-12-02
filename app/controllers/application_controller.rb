@@ -111,7 +111,6 @@ class ApplicationController < ActionController::Base
       rr = client.contactdb.recipients.post(request_body: [{email: email}])
       recipient = JSON.parse(rr.body).try(:[], 'persisted_recipients').try(:first)
       client.contactdb.lists._(list_id).recipients.post(request_body: [recipient])
-      binding.pry
     end
 
     redirect_to :back
