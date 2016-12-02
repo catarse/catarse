@@ -108,9 +108,9 @@ class ApplicationController < ActionController::Base
       list_id = CatarseSettings[:sendgrid_newsletter_list_id]
       contactdb = sendgrid_api.client.contactdb
 
-      contactdb.recipients.post(request_body: [{email: email}])
+      rr = contactdb.recipients.post(request_body: [{email: email}])
       recipient = JSON.parse(rr.body).try(:[], 'persisted_recipients').try(:first)
-      contactdb.lists._(list_id.to_i).recipients.post(request_body: [recipient])
+      contactdb.lists._(list_id).recipients.post(request_body: [recipient])
     end
 
     redirect_to :back
