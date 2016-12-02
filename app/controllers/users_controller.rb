@@ -103,7 +103,7 @@ class UsersController < ApplicationController
     authorize resource
 
     if update_user
-      flash[:notice] = t('users.current_user_fields.updated')
+      #flash[:notice] = t('users.current_user_fields.updated')
       respond_to do |format|
         format.json { render :json => { :success => 'OK' } }
         format.html { redirect_to edit_user_path(@user, anchor: params[:anchor])}

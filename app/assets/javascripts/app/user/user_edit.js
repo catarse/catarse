@@ -42,42 +42,6 @@ App.addChild('UserEdit', _.extend({
   }
 }, Skull.Tabs));
 
-App.addChild('UserSettingForm', _.extend({
-  el: '#user_form.user-settings-form',
-
-  events: {
-    'click #update_email': 'showEmailForm',
-    'blur input' : 'checkInput',
-    'click input[type="submit"]' : 'customValidate'
-  },
-
-  activate: function(){
-    this.setupForm();
-  },
-
-  showEmailForm: function(){
-    this.$('#email_update_form').slideDown();
-  },
-
-  customValidate: function(e){
-    var $emailIpt = this.$('#new_email'),
-        $emailConfirmationIpt = this.$('#new_email_confirmation'),
-        email = $emailIpt.val(),
-        emailConfirmation = $emailConfirmationIpt.val();
-
-    if (email.trim().length >= 5) {
-        if (email !== emailConfirmation) {
-            $emailIpt.addClass('error');
-            $emailConfirmationIpt.addClass('error');
-            return false;
-        }
-    }
-
-    return this.validate(e);
-  }
-
-}, Skull.Form));
-
 App.addChild('UserBillingForm', _.extend({
   el: '#user_billing_form',
 
