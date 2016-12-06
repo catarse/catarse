@@ -61,7 +61,7 @@ class SendgridSyncWorker
   end
 
   def prepare_user_to_sendgrid
-    name_mask = user.name.split ' '
+    name_mask = user.name.split(' ') rescue ['', '']
     {
       email: user.email,
       last_name: name_mask.pop,
