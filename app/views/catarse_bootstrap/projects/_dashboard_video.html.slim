@@ -3,6 +3,11 @@
     .w-container
       .w-row
         .w-col.w-col-10.w-col-push-1
+          .u-marginbottom-60.u-text-center
+            .w-inline-block.card.fontsize-small.u-radius
+              span.fa.fa-fw.fa-lightbulb-o
+              | Veja exemplos de 
+              a.alt-link href="http://crowdfunding.catarse.me/videomakers?ref=ctrse_dashboard_video" target="_blank"  vídeos de sucesso no Catarse!        
           .w-form
               = @project.display_errors(:video)
               .w-row.u-marginbottom-30.card.card-terciary.medium
