@@ -26,7 +26,7 @@ RSpec.describe ProjectUploader do
 
   describe '#project_thumb' do
     subject{ @uploader.project_thumb_facebook }
-    it{ is_expected.to have_dimensions(484, 252) }
+    it{ is_expected.to have_dimensions(1200, 630) }
   end
 
   describe "#store_dir" do
