@@ -12,8 +12,7 @@ class SendgridSyncWorker
       (has_sendgrid_recipient ? update_recipient : find_or_create_recipient))
 
     # insert or remove user from newsletter list
-    user.newsletter ? put_on_newsletter : remove_from_newsletter
-
+    user.reload && user.newsletter? ? put_on_newsletter : remove_from_newsletter
   end
 
   private
