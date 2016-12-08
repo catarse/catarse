@@ -94,7 +94,6 @@ class UsersController < ApplicationController
 
   def edit
     authorize resource
-    @unsubscribes = @user.project_unsubscribes
     resource.links.build
     build_bank_account
   end
