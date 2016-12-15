@@ -84,8 +84,12 @@ class ProjectPolicy < ApplicationPolicy
   end
 
   def reward_attributes
-    { rewards_attributes: [:_destroy, :id, :maximum_contributions,
+    attrs = { rewards_attributes: [:_destroy, :id, :maximum_contributions,
                           :description, :deliver_at, :minimum_value] }
+
+    attrs[:rewards_attributes].delete(:deliver_at) if (record.waiting_funds? || record.failed? || record.successful?)
+
+    attrs
   end
 
   def account_attributes
