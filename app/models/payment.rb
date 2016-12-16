@@ -102,6 +102,7 @@ class Payment < ActiveRecord::Base
     state :refused
     state :deleted
     state :chargeback
+    state :manual_refund
 
     event :chargeback do
       transition [:paid] => :chargeback
@@ -128,6 +129,9 @@ class Payment < ActiveRecord::Base
       transition [:pending_refund, :paid, :deleted] => :refunded
     end
 
+    event :manual_refund do
+      transition [:pending_refund, :paid, :deleted] => :manual_refund
+    end
 
     after_transition do |payment, transition|
       payment.notify_observers :"from_#{transition.from}_to_#{transition.to}"
