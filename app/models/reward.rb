@@ -39,8 +39,12 @@ class Reward < ActiveRecord::Base
   after_save :expires_project_cache
 
   def deliver_at_cannot_be_in_the_past
-    self.errors.add(:deliver_at, "Previsão de entrega deve ser superior a data em que o projeto termina") if
-      self.project.expires_at.present? ? self.deliver_at < self.project.expires_at.beginning_of_month : self.deliver_at < Time.current.beginning_of_month
+    self.errors.add(:deliver_at, "Previsão de entrega deve ser superior a data em que o projeto termina") if invalid_deliver_at?
+  end
+
+  def invalid_deliver_at?
+    expires_at = project.expires_at.presence || Time.now.utc + project.online_days.to_i.days
+    self.deliver_at.end_of_month < expires_at.beginning_of_month
   end
 
   def log_changes
