@@ -44,7 +44,7 @@ class Reward < ActiveRecord::Base
 
   def invalid_deliver_at?
     expires_at = project.expires_at.presence || Time.now.utc + project.online_days.to_i.days
-    self.deliver_at < (expires_at || Time.now.utc).beginning_of_month
+    self.deliver_at.end_of_month < expires_at.beginning_of_month
   end
 
   def log_changes

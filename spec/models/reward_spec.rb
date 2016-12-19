@@ -124,7 +124,7 @@ RSpec.describe Reward, type: :model do
     end
 
     context "when online_date in project is nil and deliver_at is before current month" do
-      let(:reward){ build(:reward, project: project, deliver_at: Time.now - 1.month) }
+      let(:reward){ build(:reward, project: project, deliver_at: Time.now - 2.month) }
       let(:project){ create(:project, state: 'draft') }
       it{ is_expected.to eq false }
     end
