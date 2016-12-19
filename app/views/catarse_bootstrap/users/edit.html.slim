@@ -3,54 +3,7 @@
 - content_for :stylesheets do
   = stylesheet_link_tag 'redactor'
 
-#users-edit-root[data-mithril="UsersEdit" data-parameters={user_id: resource.id}.to_json]
+#application data-userid=resource.id
 
 - content_for :application_js do
-  = javascript_include_tag "api/application", 'application.js'
-
-.user-dashboard-edit
-  nav.dashboard-nav.u-text-center.u-marginbottom-30 style='z-index: 10; position: relative;'
-    .w-container
-      = link_to '#contributions', id: 'dashboard_contributions_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_contributions' } do
-        | Apoiados
-
-      = link_to '#projects', id: 'dashboard_projects_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_projects' } do
-        | Criados
-
-      = link_to '#about_me', id: 'dashboard_about_me_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_about_me' } do
-        | Sobre você
-
-      = link_to '#settings', id: 'dashboard_settings_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_settings' } do
-        | Dados e endereço
-
-      = link_to '#notifications', id: 'dashboard_notifications_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_notifications' } do
-        | Notificações
-
-      = link_to '#billing', id: 'dashboard_billing_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_billing' } do
-        | Banco e cartões
-
-      = link_to user_path(resource), class: 'dashboard-nav-link u-right-big-only' do
-        | Ir para o perfil público
-
-
-  section.section-one-column
-    #current_anchor data-anchor="#{params[:anchor]}"
-    .w-container
-      .w-row
-        article
-          /#dashboard_feeds.content.w-hidden
-            = render 'dashboard_feeds'
-          /served from API
-          #dashboard_contributions.content.w-hidden
-          /served from API
-          #dashboard_projects.content.w-hidden
-          #dashboard_about_me.content.w-hidden
-            = render 'dashboard_about_me'
-          /served from API
-          #dashboard_settings.content.w-hidden
-          /served from API
-          #dashboard_notifications.content.w-hidden
-          /served from API
-          #dashboard_billing.content.w-hidden
-
-= render 'shared/footer_big'
+  = javascript_include_tag "api/application"
