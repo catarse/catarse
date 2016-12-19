@@ -34,7 +34,7 @@ module Project::BaseValidator
       wo.validates_presence_of :account, message: 'Dados Bancários não podem ficar em branco'		
 
       wo.validate do
-        if self.online_days.present? && self.rewards.where("date_trunc('month',deliver_at) < ?", self.expires_at.present? ? expires_at.beginning_of_month : (Time.now.utc + self.online_days.days).beginning_of_month).present?
+        if self.online_days.present? && self.rewards.any?(&:invalid_deliver_at?)
           self.errors['rewards.deliver_at'] << "Existe uma ou mais recompensas com o prazo de entrega menor que a data do fim do projeto"
         end
       end
