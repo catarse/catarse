@@ -12,13 +12,13 @@ Catarse::Application.routes.draw do
 
   devise_scope :user do
     post '/sign_up', {to: 'devise/registrations#create', as: :sign_up}
+    get '/not-my-account', to: 'sessions#destroy_and_redirect', as: :not_my_account
   end
 
   # User permalink profile
   constraints SubdomainConstraint do
     get "/", to: 'users#show'
   end
-
 
   get '/amigos' => redirect('http://crowdfunding.catarse.me/amigos')
   get '/criadores' => redirect('http://crowdfunding.catarse.me/criadores')
