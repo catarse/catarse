@@ -191,7 +191,7 @@ RSpec.describe Reward, type: :model do
 
     context 'when reward not have limits' do
       let(:reward) { create(:reward, maximum_contributions: nil) }
-      it { is_expected.to eq(nil) }
+      it { is_expected.to eq(false) }
     end
 
     context 'when reward contributions waiting confirmation and confirmed are greater than limit' do

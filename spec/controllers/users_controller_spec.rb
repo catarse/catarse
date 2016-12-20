@@ -226,7 +226,6 @@ RSpec.describe UsersController, type: :controller do
       end
 
       context "with right current password and right confirmation" do
-        it{ expect(flash[:notice]).not_to be_empty }
         it{ is_expected.to redirect_to edit_user_path(user) }
       end
     end
