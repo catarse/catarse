@@ -45,7 +45,7 @@ pt:
       payment:
         state: 'Status'
       contribution:
-        payer_name: "Nome Completo"
+        payer_name: "Nome completo / Razão Social *"
         payer_email: "Email"
         payer_document: "CPF ou CNPJ"
         country: "País"
@@ -58,7 +58,7 @@ pt:
         address_zip_code: "CEP"
         address_phone_number: "Telefone"
         value: Valor do apoio
-        payer_name: "Nome Completo"
+        payer_name: "Nome completo / Razão Social *"
         payer_email: "Email"
         country: "País"
         address_street: "Rua"
