@@ -195,7 +195,7 @@ RSpec.describe UsersController, type: :controller do
 
       it { expect(response.status).to eq 400 }
       it { expect(response.content_type).to eq "application/json" }
-      it { expect(JSON.parse(response.body)).to eq JSON.parse('{"errors":["Senha A senha que você escolheu é muito curta"]}') }
+      it { expect(JSON.parse(response.body)).to eq JSON.parse('{"errors":["Senha A senha é muito curta. Mínimo 6 caracteres."]}') }
     end
 
     context "with a valid password parameter" do
