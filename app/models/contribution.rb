@@ -134,7 +134,7 @@ class Contribution < ActiveRecord::Base
       address_city: address_city.presence || user.address_city,
       address_state: address_state.presence || user.address_state,
       phone_number: address_phone_number.presence || user.phone_number,
-      cpf: user.cpf.presence || payer_document.presence
+      cpf: user.cpf.presence || payer_document.presence,
       name: user.name.presence || payer_name
     })
   end
