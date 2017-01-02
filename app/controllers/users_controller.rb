@@ -107,7 +107,10 @@ class UsersController < ApplicationController
         format.html { redirect_to edit_user_path(@user, anchor: params[:anchor])}
       end
     else
-      render :edit
+      respond_to do |format|
+        format.json { render status: 400, :json => { :errors => @user.errors.full_messages } }
+        format.html { redirect_to edit_user_path(@user, anchor: params[:anchor])}
+      end
     end
   end
 
