@@ -37,4 +37,8 @@ class FlexibleProject < Project
     true
   end
 
+  def max_deadline
+    self.online_at + 365.days
+  end
+
 end
