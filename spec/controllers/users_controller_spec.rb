@@ -222,7 +222,6 @@ RSpec.describe UsersController, type: :controller do
       context "with wrong current password" do
         let(:current_password){ 'wrong_password' }
         it{ expect(user.errors).not_to be_nil }
-        it{ is_expected.not_to redirect_to edit_user_path(user) }
       end
 
       context "with right current password and right confirmation" do
