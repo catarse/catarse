@@ -9,13 +9,13 @@ class Reports::ContributionReportsForProjectOwnersController < ApplicationContro
     authorize project, :update?
     respond_to do |format|
       format.csv do
-        send_data collection.copy_to_string, filename: "#{project.name}.csv"
+        send_data collection.copy_to_string, filename: "#{project.permalink}.csv"
       end
 
       format.xls do
         send_data collection.to_xls(
           columns: I18n.t('contribution_report_to_project_owner').values
-        ), filename: "#{project.name}.xls"
+        ), filename: "#{project.permalink}.xls"
       end
     end
   end
