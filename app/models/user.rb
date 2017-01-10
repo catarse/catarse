@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
   delegate  :display_name, :display_image, :short_name, :display_image_html,
     :medium_name, :display_credits, :display_total_of_contributions, :contributions_text,
     :twitter_link, :display_bank_account, :display_bank_account_owner, to: :decorator
+    :fb_parsed_link
   delegate :bank, to: :bank_account
 
   # FIXME: Please bitch...
@@ -132,6 +133,10 @@ class User < ActiveRecord::Base
 
   def self.find_active!(id)
     self.active.where(id: id).first!
+  end
+
+  def fb_parsed_link
+    User.where(id: self.id).pluck("users.fb_parsed_link").first
   end
 
   def followers_since_last_day
