@@ -26,15 +26,6 @@ GIT
       mime-types
       orm_adapter
 
-PATH
-  remote: ../catarse_pagarme
-  specs:
-    catarse_pagarme (2.10.0)
-      pagarme (= 2.1.4)
-      rails (~> 4.0)
-      sidekiq
-      weekdays (>= 1.0.2)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -102,6 +93,11 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    catarse_pagarme (2.10.0)
+      pagarme (= 2.1.4)
+      rails (~> 4.0)
+      sidekiq
+      weekdays (>= 1.0.2)
     catarse_settings_db (0.1.1)
       rails (>= 4.1.1)
     childprocess (0.5.9)
@@ -648,7 +644,7 @@ DEPENDENCIES
   browser (= 1.0.1)
   capybara
   carrierwave!
-  catarse_pagarme!
+  catarse_pagarme (~> 2.10.0)
   catarse_settings_db (>= 0.1.0)
   cocoon
   coffee-rails
