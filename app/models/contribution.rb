@@ -16,7 +16,7 @@ class Contribution < ActiveRecord::Base
   has_many :payments
   has_many :details, class_name: 'ContributionDetail'
 
-  validates_presence_of :project, :user, :value, :payer_email
+  validates_presence_of :project, :user, :value
   validates_numericality_of :value, greater_than_or_equal_to: 10.00
 
   scope :not_anonymous, -> { where(anonymous: false) }

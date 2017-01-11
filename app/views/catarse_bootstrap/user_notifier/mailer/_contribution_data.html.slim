@@ -2,9 +2,9 @@
 
 p Seguem todos os dados do pagamento:
 p
-  | Nome do apoiador: #{(contribution.payer_name || contribution.user.display_name)}
+  | Nome do apoiador: #{contribution.user.display_name}
   br/
-  | CPF/CNPJ do apoiador: #{(contribution.payer_document || contribution.user.cpf)}
+  | CPF/CNPJ do apoiador: #{contribution.user.cpf}
   br/
   | Data da confirmação do apoio: #{detail.decorate.display_date(:paid_at)}
   br/
