@@ -10,7 +10,7 @@ p
 p
   | Aqui temos mais detalhes desse apoio:
   br/
-  | Nome do apoiador: #{contribution.payer_name}
+  | Nome do apoiador: #{contribution.user.name}
   br/
   | ID Pagarme: #{payment.gateway_id}
   br/
@@ -18,7 +18,7 @@ p
   br/
   | Valor do apoio: #{number_to_currency contribution.localized.value}
   br/
-  | Email do apoiador: #{contribution.payer_email}
+  | Email do apoiador: #{contribution.user.email}
   br/
   | Data da mudança para status PAID: #{l(contribution.paid_at.to_date)}
 
