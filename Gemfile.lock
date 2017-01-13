@@ -77,6 +77,7 @@ GEM
       addressable (>= 2.3.1)
       extlib (>= 0.9.15)
       multi_json (>= 1.0.0)
+    awesome_print (1.7.0)
     bcrypt (3.1.11)
     better_errors (2.1.1)
       coderay (>= 1.0.0)
@@ -93,7 +94,7 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
-    catarse_pagarme (2.9.13)
+    catarse_pagarme (2.10.0)
       pagarme (= 2.1.4)
       rails (~> 4.0)
       sidekiq
@@ -638,13 +639,14 @@ PLATFORMS
 DEPENDENCIES
   activerecord-nulldb-adapter
   auto_html (~> 1.6)
+  awesome_print
   best_in_place!
   better_errors
   binding_of_caller
   browser (= 1.0.1)
   capybara
   carrierwave!
-  catarse_pagarme (~> 2.9.13)
+  catarse_pagarme (~> 2.10.0)
   catarse_settings_db (>= 0.1.0)
   cocoon
   coffee-rails
@@ -731,4 +733,4 @@ RUBY VERSION
    ruby 2.3.1p112
 
 BUNDLED WITH
-   1.13.6
+   1.13.7

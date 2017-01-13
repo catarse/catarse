@@ -24,7 +24,6 @@ RSpec.describe Contribution, type: :model do
   end
 
   describe "Validations" do
-    it{ is_expected.to validate_presence_of(:payer_email) }
     it{ is_expected.to validate_presence_of(:project) }
     it{ is_expected.to validate_presence_of(:user) }
     it{ is_expected.to validate_presence_of(:value) }
@@ -129,8 +128,8 @@ RSpec.describe Contribution, type: :model do
         address_city: (contribution.address_city || user.address_city),
         address_state: (contribution.address_state || user.address_state),
         phone_number: (contribution.address_phone_number || user.phone_number),
-        cpf: (contribution.payer_document || user.cpf),
-        name: (contribution.payer_name || user.name)
+        cpf: (user.cpf || contribution.payer_document),
+        name: (user.name || contribution.payer_name)
       }
     }
 

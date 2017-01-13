@@ -87,6 +87,8 @@ pt:
           use_another: 'Use another card.'
           name: 'Name on the credit card *'
           name_tip: 'Name printed on the front of your card'
+          document: ''
+          document_tip: ''
           number: 'Credit card number *'
           number_tip: 'Usually a 16 digit number printed on the front of your card'
           expiry: 'Expiration (mm/aaaa) * '
@@ -144,6 +146,8 @@ pt:
           use_another: 'Usar outro cartão de crédito.'
           name: 'Nome no cartão de crédito *'
           name_tip: 'Nome impresso na frente do seu cartão de crédito'
+          document: 'CPF/CPNJ do titular *'
+          document_tip: 'CPF/CNPJ do titular do cartão de crédito utilizado'
           number: 'Número do cartão de crédito *'
           number_tip: 'O número normalmente com 16 dígitos na frente do seu cartão de crédito'
           expiry: 'Expiração (mm/aaaa)* '
@@ -253,10 +257,10 @@ pt:
         error: Ooops. Ocorreu um erro ao registrar seu apoio. Por favor, tente novamente.
       thank_you_slip:
         thank_you: 'Estou contando com seu apoio...'
-        thank_you_text_html: 'Você também recebeu esse boleto no email: %{email}'
+        thank_you_text_html:  "<div class='fontsize-base'>Você também recebeu esse boleto no email:</div><div class='fontsize-large u-marginbottom-10'>%{email}</div><a class='alt-link fontsize-small' href='%{link_email}'>Se esse não é seu email de contato, altere aqui</a>"
       thank_you:
         thank_you: 'Valeu! Seu apoio está sendo processado.'
-        thank_you_text_html: ' Assim que o pagamento for concluído, enviaremos a confirmação do seu apoio para o email cadastrado %{email}. Você também pode acompanhar o status do apoio <a href="%{link2}" class="alt-link">através do seu perfil</a>.'
+        thank_you_text_html:  "<div class='fontsize-base'>Assim que o pagamento for concluído, enviaremos a confirmação do seu apoio para o email cadastrado:</div><div class='fontsize-large u-marginbottom-10'>%{email}</div><a class='alt-link fontsize-small' href='%{link_email}'>Se esse não é seu email de contato, altere aqui</a>"
         share: Compartilhe
         tweet: Tuíte
         share_back: 'Compartilhe com seus amigos e ajude esse projeto a bater a meta!'

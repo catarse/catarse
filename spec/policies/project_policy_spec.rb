@@ -77,6 +77,29 @@ RSpec.describe ProjectPolicy do
     end
   end
 
+  describe "#reward_attributes" do
+    let(:project) { create(:project, state: 'online') }
+    let(:policy) { ProjectPolicy.new(project.user, project) }
+
+    subject { policy.reward_attributes }
+
+    context "when project is open for contributions" do
+      it "should can edit deliver_at" do
+        expect(subject[:rewards_attributes]).to include(:deliver_at)
+      end
+    end
+
+    context "when project is finished" do
+      before do
+        allow(project).to receive(:waiting_funds?).and_return(true)
+      end
+      it "should can't edit deliver_at" do
+        expect(subject[:rewards_attributes]).to_not include(:deliver_at)
+      end
+    end
+  end
+
+
   describe "#permitted?" do
     context "when user is nil" do
       let(:policy){ ProjectPolicy.new(nil, Project.new) }

@@ -5,7 +5,7 @@ module Shared::VideoHandler
     validates_format_of :video_url, with: /(https?\:\/\/|)(youtu(\.be|be\.com)|vimeo).*+/, message: I18n.t('project.video_regex_validation'), allow_blank: true
 
     def video
-      @video ||= VideoInfo.get(self.video_url) if self.video_url.present?
+      @video ||= VideoInfo.get(self.video_url) rescue nil if self.video_url.present?
     end
 
     def video_valid?

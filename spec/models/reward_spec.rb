@@ -66,6 +66,7 @@ RSpec.describe Reward, type: :model do
 
   it "should not allow delivery in the past" do
     r = build(:reward, project: create(:project, state: 'draft'))
+    expect(r).to receive(:invalid_deliver_at?).at_least(:once).and_call_original()
     r.deliver_at = Time.current - 1.month
     expect(r).not_to be_valid
     r.deliver_at = Time.current + 1.month
@@ -123,7 +124,7 @@ RSpec.describe Reward, type: :model do
     end
 
     context "when online_date in project is nil and deliver_at is before current month" do
-      let(:reward){ build(:reward, project: project, deliver_at: Time.now - 1.month) }
+      let(:reward){ build(:reward, project: project, deliver_at: Time.now - 2.month) }
       let(:project){ create(:project, state: 'draft') }
       it{ is_expected.to eq false }
     end
@@ -190,7 +191,7 @@ RSpec.describe Reward, type: :model do
 
     context 'when reward not have limits' do
       let(:reward) { create(:reward, maximum_contributions: nil) }
-      it { is_expected.to eq(nil) }
+      it { is_expected.to eq(false) }
     end
 
     context 'when reward contributions waiting confirmation and confirmed are greater than limit' do

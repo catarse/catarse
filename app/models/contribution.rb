@@ -16,7 +16,7 @@ class Contribution < ActiveRecord::Base
   has_many :payments
   has_many :details, class_name: 'ContributionDetail'
 
-  validates_presence_of :project, :user, :value, :payer_email
+  validates_presence_of :project, :user, :value
   validates_numericality_of :value, greater_than_or_equal_to: 10.00
 
   scope :not_anonymous, -> { where(anonymous: false) }
@@ -134,8 +134,8 @@ class Contribution < ActiveRecord::Base
       address_city: address_city.presence || user.address_city,
       address_state: address_state.presence || user.address_state,
       phone_number: address_phone_number.presence || user.phone_number,
-      cpf: payer_document.presence || user.cpf,
-      name: payer_name || user.name
+      cpf: user.cpf.presence || payer_document.presence,
+      name: user.name.presence || payer_name
     })
   end
 

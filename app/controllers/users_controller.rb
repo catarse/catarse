@@ -93,7 +93,6 @@ class UsersController < ApplicationController
 
   def edit
     authorize resource
-    @unsubscribes = @user.project_unsubscribes
     resource.links.build
     build_bank_account
   end
@@ -102,10 +101,16 @@ class UsersController < ApplicationController
     authorize resource
 
     if update_user
-      flash[:notice] = t('users.current_user_fields.updated')
-      redirect_to edit_user_path(@user, anchor: params[:anchor])
+      #flash[:notice] = t('users.current_user_fields.updated')
+      respond_to do |format|
+        format.json { render :json => { :success => 'OK' } }
+        format.html { redirect_to edit_user_path(@user, anchor: params[:anchor])}
+      end
     else
-      render :edit
+      respond_to do |format|
+        format.json { render status: 400, :json => { :errors => @user.errors.full_messages } }
+        format.html { redirect_to edit_user_path(@user, anchor: params[:anchor])}
+      end
     end
   end
 

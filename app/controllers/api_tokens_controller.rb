@@ -1,6 +1,7 @@
 # coding: utf-8
 class ApiTokensController < ApplicationController
   TOKEN_TTL = 1.hour
+  before_filter :set_cache_headers
 
   def show
     unless CatarseSettings[:api_host].present? && CatarseSettings[:jwt_secret].present?
@@ -15,5 +16,13 @@ class ApiTokensController < ApplicationController
 
     expires_in TOKEN_TTL, public: false
     render json: {token: api_wrapper.jwt}, status: 200
+  end
+
+  private
+
+  def set_cache_headers
+    response.headers["Cache-Control"] = "no-cache, no-store"
+    response.headers["Pragma"] = "no-cache"
+    response.headers["Expires"] = "Fri, 01 Jan 1990 00:00:00 GMT"
   end
 end

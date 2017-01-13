@@ -45,7 +45,7 @@ pt:
       payment:
         state: 'Status'
       contribution:
-        payer_name: "Nome Completo"
+        payer_name: "Nome completo / Razão Social *"
         payer_email: "Email"
         payer_document: "CPF ou CNPJ"
         country: "País"
@@ -58,7 +58,7 @@ pt:
         address_zip_code: "CEP"
         address_phone_number: "Telefone"
         value: Valor do apoio
-        payer_name: "Nome Completo"
+        payer_name: "Nome completo / Razão Social *"
         payer_email: "Email"
         country: "País"
         address_street: "Rua"
@@ -311,7 +311,7 @@ pt:
               invalid: "Esse endereço de email é inválido"
               blank: "O email não pode ficar em branco"
             password:
-              too_short: "A senha que você escolheu é muito curta"
+              too_short: "A senha é muito curta. Mínimo 6 caracteres."
               confirmation: "A senha e a confirmação de senha preenchidas não estão iguais"
               blank: "A senha não pode ficar em branco"
             current_password:
