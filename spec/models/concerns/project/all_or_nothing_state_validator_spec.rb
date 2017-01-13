@@ -13,6 +13,7 @@ RSpec.describe Project::AllOrNothingStateValidator, type: :model do
 
       it { is_expected.to validate_presence_of :city }
       it { is_expected.to validate_length_of(:name).is_at_most(Project::NAME_MAXLENGTH) }
+      it { is_expected.to validate_numericality_of(:online_days).is_less_than_or_equal_to(60).is_greater_than_or_equal_to(1) }
     end
 
     Project::ON_ONLINE_TO_END_STATES.each do |state| 

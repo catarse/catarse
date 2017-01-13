@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Project::BaseValidator, type: :model do
   let(:project_state) { 'draft' }
-  let(:project) { create(:project, state: project_state) }
+  let(:project) { create(:project, state: project_state, mode: 'flex') }
   let!(:project_account) { create(:project_account, project: project) }
 
   context "when project is going to online to end state" do
@@ -14,6 +14,7 @@ RSpec.describe Project::BaseValidator, type: :model do
 
         it { is_expected.to validate_presence_of :about_html }
         it { is_expected.to validate_presence_of :headline }
+        it { is_expected.to validate_numericality_of(:online_days).is_less_than_or_equal_to(365).is_greater_than_or_equal_to(1).allow_nil }
       end
 
       context "#{state} project relation validations" do
