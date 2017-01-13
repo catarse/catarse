@@ -1,8 +1,0 @@
-#about-content.w-container
-  .w-row
-    .w-col.w-col-8
-      .fontsize-base
-        - if resource.about_html.present?
-          == resource.about_html
-    .w-col.w-col-4
-      = render 'users/card', resource: resource
