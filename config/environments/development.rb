@@ -37,5 +37,6 @@ Catarse::Application.configure do
   config.log_level = :debug
 
   config.assets.digest = false
+  config.assets.quiet = true
 end
 
