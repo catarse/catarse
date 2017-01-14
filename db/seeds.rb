@@ -46,24 +46,24 @@ puts 'Seeding the database...'
 
 
 {
-  company_name: 'Catarse',
+  company_name: 'JVN',
   company_logo: 'http://catarse.me/assets/catarse_bootstrap/logo_icon_catarse.png',
-  host: 'catarse.me',
-  base_url: "http://catarse.me",
+  host: 'myjvn.com',
+  base_url: "http://myjvn.com",
 
   email_contact: 'contato@catarse.me',
   email_payments: 'financeiro@catarse.me',
   email_projects: 'projetos@catarse.me',
   email_system: 'system@catarse.me',
   email_no_reply: 'no-reply@catarse.me',
-  facebook_url: "http://facebook.com/catarse.me",
-  facebook_app_id: '173747042661491',
-  twitter_url: 'http://twitter.com/catarse',
-  twitter_username: "catarse",
+  facebook_url: "http://facebook.com/JVNepal/",
+  facebook_app_id: '351589295233969',
+  twitter_url: 'http://twitter.com',
+  twitter_username: "twitter",
   mailchimp_url: "http://catarse.us5.list-manage.com/subscribe/post?u=ebfcd0d16dbb0001a0bea3639&amp;id=149c39709e",
-  catarse_fee: '0.13',
+  catarse_fee: '0.5',
   support_forum: 'http://suporte.catarse.me/',
-  base_domain: 'catarse.me',
+  base_domain: 'myjvn.com',
   uservoice_secret_gadget: 'change_this',
   uservoice_key: 'uservoice_key',
   faq_url: 'http://suporte.catarse.me/',
@@ -71,9 +71,9 @@ puts 'Seeding the database...'
   terms_url: 'http://suporte.catarse.me/knowledgebase/articles/161100-termos-de-uso',
   privacy_url: 'http://suporte.catarse.me/knowledgebase/articles/161103-pol%C3%ADtica-de-privacidade',
   about_channel_url: 'http://blog.catarse.me/conheca-os-canais-do-catarse/',
-  instagram_url: 'http://instagram.com/catarse_',
-  blog_url: "http://blog.catarse.me",
-  github_url: 'http://github.com/catarse',
+  instagram_url: 'http://instagram.com/',
+  blog_url: "http://medium.com/feed/@myjvnepal",
+  github_url: 'https://github.com/sushant12/catarse',
   contato_url: 'http://suporte.catarse.me/'
 }.each do |name, value|
    conf = CatarseSettings.find_or_initialize_by(name: name)
