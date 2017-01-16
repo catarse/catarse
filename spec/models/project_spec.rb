@@ -176,28 +176,18 @@ RSpec.describe Project, type: :model do
 
   describe "online_days" do
     context "when we have valid data" do
-      before do
-        create(:project, state: 'online', online_days: 60)
+      context "aon project" do
+        subject { create(:project, state: 'online', online_days: 60, mode: 'aon') }
+
+        it{ is_expected.not_to allow_value(61).for(:online_days) }
       end
 
-      it{ is_expected.not_to allow_value(61).for(:online_days) }
-    end
+      context "flex project" do
+          subject { create(:project, state: 'online', online_days: 365, mode: 'flex') }
 
-    context "when we have data set manually in the db" do
-      let(:project) {create_project({state: 'online', online_days: 60}, {to_state: 'online'})}
-      subject { project }
-      before do
-        project.update_attributes online_days: 61
-        project.save(validate: false)
-      end
-
-      it{ is_expected.to allow_value(62).for(:online_days) }
-
-      it "should update expires_at" do
-        expect(project.expires_at).to eq (project.online_at.in_time_zone + project.online_days.days).end_of_day
+        it{ is_expected.not_to allow_value(366).for(:online_days) }
       end
     end
-
   end
 
   describe "#published?" do
