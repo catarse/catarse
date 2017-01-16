@@ -142,7 +142,7 @@ class Project < ActiveRecord::Base
   scope :in_funding, -> { not_expired.with_states(['online']) }
   scope :name_contains, ->(term) { where("unaccent(upper(name)) LIKE ('%'||unaccent(upper(?))||'%')", term) }
   scope :user_name_contains, ->(term) { joins(:user).where("unaccent(upper(users.name)) LIKE ('%'||unaccent(upper(?))||'%')", term) }
-  scope :to_finish, ->{ expired.with_states(['online', 'waiting_funds']) }
+  scope :to_finish, ->{ expired.where(skip_finish: false).with_states(['online', 'waiting_funds']) }
   scope :visible, -> { without_states(['draft', 'rejected', 'deleted']) }
   scope :expired, -> { where("projects.is_expired") }
   scope :not_expired, -> { where("not projects.is_expired") }
