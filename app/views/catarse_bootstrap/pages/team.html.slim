@@ -1,8 +1,8 @@
-- content_for :title, "Nosso time <3"
+- content_for :title, t('.title')
 - content_for :meta_tags do
   meta name="description"         content=t('site.description')
   meta name="keywords"            content=t('site.keywords')
-  meta property="og:title"        content=('Nosso time <3')
+  meta property="og:title"        content=(t('.title'))
   meta property="og:type"         content=:cause
   meta property="og:image"        content=CatarseSettings[:company_logo]
   meta property="og:site_name"    content=CatarseSettings[:company_name]
@@ -19,7 +19,7 @@
 .w-section.hero-who.hero-full
   .w-container.u-text-center
     img.icon-hero src="/assets/logo-yellow.png" /
-    .u-text-center.u-marginbottom-20.fontsize-largest Conheça nosso time
+    .u-text-center.u-marginbottom-20.fontsize-largest = t('.content.sub')
 
 #team-root[data-mithril="Team"]
 

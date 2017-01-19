@@ -1,0 +1,104 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+
+
+ */
+/* line 17, /home/sushant/.rvm/gems/ruby-2.3.1/gems/dbhero-1.1.12/app/assets/stylesheets/dbhero/application.css.scss */
+.editor-style {
+  height: 300px;
+  border-radius: 1px;
+}
+
+/* line 22, /home/sushant/.rvm/gems/ruby-2.3.1/gems/dbhero-1.1.12/app/assets/stylesheets/dbhero/application.css.scss */
+header {
+  border-bottom: 1px solid #cfd8dc;
+}
+/* line 24, /home/sushant/.rvm/gems/ruby-2.3.1/gems/dbhero-1.1.12/app/assets/stylesheets/dbhero/application.css.scss */
+header .row {
+  margin-bottom: 0;
+}
+
+/* line 28, /home/sushant/.rvm/gems/ruby-2.3.1/gems/dbhero-1.1.12/app/assets/stylesheets/dbhero/application.css.scss */
+.dataTables_scrollBody {
+  overflow-y: hidden !important;
+}
+
+/* line 32, /home/sushant/.rvm/gems/ruby-2.3.1/gems/dbhero-1.1.12/app/assets/stylesheets/dbhero/application.css.scss */
+.bottom-bord {
+  border-bottom: 1px solid #cfd8dc;
+}
+
+/* line 36, /home/sushant/.rvm/gems/ruby-2.3.1/gems/dbhero-1.1.12/app/assets/stylesheets/dbhero/application.css.scss */
+.clip-title p {
+  margin-bottom: 5px;
+}
+
+/* line 41, /home/sushant/.rvm/gems/ruby-2.3.1/gems/dbhero-1.1.12/app/assets/stylesheets/dbhero/application.css.scss */
+.end {
+  margin-bottom: 0 !important;
+}
+
+/* line 44, /home/sushant/.rvm/gems/ruby-2.3.1/gems/dbhero-1.1.12/app/assets/stylesheets/dbhero/application.css.scss */
+header .btn-group {
+  margin-top: 15px;
+}
+
+/* line 48, /home/sushant/.rvm/gems/ruby-2.3.1/gems/dbhero-1.1.12/app/assets/stylesheets/dbhero/application.css.scss */
+header h1 {
+  font-size: 22px;
+  margin: 0;
+  color: #455a64;
+}
+
+/* line 54, /home/sushant/.rvm/gems/ruby-2.3.1/gems/dbhero-1.1.12/app/assets/stylesheets/dbhero/application.css.scss */
+.style-text-field {
+  /* label color */
+  /* label focus color */
+  /* label underline focus color */
+  /* valid color */
+  /* invalid color */
+  /* icon prefix focus color */
+}
+/* line 56, /home/sushant/.rvm/gems/ruby-2.3.1/gems/dbhero-1.1.12/app/assets/stylesheets/dbhero/application.css.scss */
+.style-text-field .input-field label {
+  color: #455a64;
+  font-size: 22px;
+}
+/* line 61, /home/sushant/.rvm/gems/ruby-2.3.1/gems/dbhero-1.1.12/app/assets/stylesheets/dbhero/application.css.scss */
+.style-text-field .input-field input[type=text]:focus + label,
+.style-text-field .input-field textarea:focus + label {
+  color: #90a4ae;
+  font-size: 18px;
+}
+/* line 68, /home/sushant/.rvm/gems/ruby-2.3.1/gems/dbhero-1.1.12/app/assets/stylesheets/dbhero/application.css.scss */
+.style-text-field .input-field input[type=text]:focus,
+.style-text-field .input-field textarea:focus {
+  border-bottom: 1px solid #455a64;
+  box-shadow: 0 1px 0 0 #455a64;
+}
+/* line 74, /home/sushant/.rvm/gems/ruby-2.3.1/gems/dbhero-1.1.12/app/assets/stylesheets/dbhero/application.css.scss */
+.style-text-field .input-field input[type=text].valid,
+.style-text-field .input-field textarea.valid {
+  border-bottom: 1px solid #455a64;
+  box-shadow: 0 1px 0 0 #455a64;
+}
+/* line 80, /home/sushant/.rvm/gems/ruby-2.3.1/gems/dbhero-1.1.12/app/assets/stylesheets/dbhero/application.css.scss */
+.style-text-field .input-field input[type=text].invalid,
+.style-text-field .input-field textarea.invalid {
+  border-bottom: 1px solid #455a64;
+  box-shadow: 0 1px 0 0 #455a64;
+}
+/* line 86, /home/sushant/.rvm/gems/ruby-2.3.1/gems/dbhero-1.1.12/app/assets/stylesheets/dbhero/application.css.scss */
+.style-text-field .input-field .prefix.active {
+  color: #455a64;
+}
