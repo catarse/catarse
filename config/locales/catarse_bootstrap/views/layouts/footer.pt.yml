@@ -2,6 +2,9 @@ pt:
   layouts:
     footer:
       links:
+        how_it_works: Como funcion
+        novelty: Novidade
+        rate: Nossa Taxa
         jobs: Trabalhe conosco
         blog: Blog
         contact: Contato
@@ -10,7 +13,7 @@ pt:
         start: 'Como funciona'
         expiring: Na reta final
         facebook: Facebook
-        team: Nosso time <3
+        team: Nosso time
         flex: Catarse flex
         crowdfunding_stats: "Retrato FC Brasil 2013/2014"
         faq: Ajuda
@@ -19,7 +22,6 @@ pt:
         github: Github
         instagram: Instagram
         near: Próximos a mim
-        press: Imprensa
         privacy: Política de privacidade
         recents: Recentes
         recommended: Recomendados
@@ -32,6 +34,7 @@ pt:
         online: No ar
       texts:
         copyleft: Feito com amor.
+        email: Digite seu email
       titles:
         about: Ajuda
         contact: Bem-vindo
