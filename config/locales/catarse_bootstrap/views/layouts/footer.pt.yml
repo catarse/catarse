@@ -2,7 +2,7 @@ pt:
   layouts:
     footer:
       links:
-        how_it_works: Como funcion
+        how_it_works: Como funciona
         novelty: Novidade
         rate: Nossa Taxa
         jobs: Trabalhe conosco
@@ -33,7 +33,7 @@ pt:
         finished: Finalizados
         online: No ar
       texts:
-        copyleft: Feito com amor.
+        copyleft: Feito com amor
         email: Digite seu email
       titles:
         about: Ajuda

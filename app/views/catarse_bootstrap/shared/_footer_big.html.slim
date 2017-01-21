@@ -10,18 +10,18 @@ footer.main-footer.main-footer-neg
           .w-col.w-col-4.w-col-small-4.w-col-tiny-4.footer-full-lastcolumn
             = render 'shared/footer_navigate'
       .w-col.w-col-3.column-social-media-footer
-        .footer-full-signature-text.fontsize-small Assine nossa news
+        .footer-full-signature-text.fontsize-small #{t('layouts.footer.titles.newsletter')}
         .w-form
           = render 'shared/newsletter'
-        .footer-full-signature-text.fontsize-small Redes sociais
+        .footer-full-signature-text.fontsize-small #{t('layouts.footer.titles.social')}
         .w-widget.w-widget-facebook.u-marginbottom-20
           = render_facebook_like colorscheme: "dark"
-        .w-widget.w-widget-twitter
-          = link_to "Follow @#{CatarseSettings[:twitter_username]}", "http://twitter.com/#{CatarseSettings[:twitter_username]}", :class => 'twitter-follow-button', :"data-button"=>"blue", :"data-text-color" => "#ffffff", :"data-link-color"=>"#fffffff", :"data-width" => "224px"
+        /.w-widget.w-widget-twitter
+        /  = link_to "Follow @#{CatarseSettings[:twitter_username]}", "http://twitter.com/#{CatarseSettings[:twitter_username]}", :class => 'twitter-follow-button', :"data-button"=>"blue", :"data-text-color" => "#ffffff", :"data-link-color"=>"#fffffff", :"data-width" => "224px"
         .u-margintop-30
           .footer-full-signature-text.fontsize-small Change language
           #google_translate_element
   .w-container
     .footer-full-copyleft 
       = image_tag "logo-footer.png", class: "u-marginbottom-20"
-      .lineheight-loose: a.link-footer-inline[href="#{CatarseSettings[:github_url]}"] Feito com amor | #{Date.today.year} | Open source
+      .lineheight-loose: a.link-footer-inline[href="#{CatarseSettings[:github_url]}"] #{t('layouts.footer.texts.copyleft')} | #{Date.today.year} | Open source

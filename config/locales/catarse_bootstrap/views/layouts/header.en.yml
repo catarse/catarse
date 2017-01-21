@@ -1,0 +1,38 @@
+en:
+  layouts:
+    header:
+      blog: Blog
+      discover: Explore
+      hello: Know more
+      faq: FAQ
+      help: Contact
+      help_support: Support Center
+      profile: My Profile
+      projects: My projects
+      signin: Login
+      signup: Signup
+      submit: Start your project
+      search: Search for projects
+    login:
+      login_with_facebook: Sign in using facebook
+    user:
+      my_contributions: My supports
+      logout: Logout
+      my_credits: Credit balance
+      refund_link: Request refund
+      my_history: My History
+      email_text: Your email
+      support_history: Support History
+      projects_created: Projects Created
+      settings: Settings
+      about_you: About you
+      notifications: Notifications
+      data_address: Data & Address
+      bank_cards: Bank & Cards
+      users: Users
+      support: Support
+      financial_rel: Financial Relation
+      admin_projects: Admin projects
+      change_email: Change e-mail
+
+
