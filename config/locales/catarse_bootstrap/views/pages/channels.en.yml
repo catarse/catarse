@@ -1,99 +1,97 @@
 en:
   admin:
-    menu: "Moderação de Canais"
-    followers_menu: "Seguidores"
-    statistics_menu: "Estatísticas"
-    profile_menu: "Editar canal"
-    partners_menu: "Editar parceiros"
+    menu: "Moderation of Channels"
+    followers_menu: "Followers"
+    statistics_menu: "Statistics"
+    profile_menu: "Edit channel"
+    partners_menu: "Edit partners"
     statistics:
-      title: 'Estatísticas do canal'
-      total_subscribers: 'Total de assinantes'
+      title: 'Channel Stats'
+      total_subscribers: 'Total subscribers'
     confirmations:
-      destroy: Você tem certeza que deseja deletar?
+      destroy: Are you sure you want to delete?
     filter:
-      between_created_at: Criados entre
-      by_id: Por id
-      order_table: Ordenar tabela
-      pg_search: Projeto
-      submit: Filtrar
-      title: Filtrar
-      user_name_contains: Usuário
-      with_state: Com o estado
-      by_payment_method: 'Meio de pagamento'
+      between_created_at: Created between
+      by_id: By id
+      order_table: Sort table
+      pg_search: Project
+      submit: Filter
+      title: Filter
+      user_name_contains: User
+      with_state: With the state
+      by_payment_method: 'Means of Payment'
       by_gateway: 'Gateway'
     followers:
       index:
-        download: Baixar lista
-        title: Seguidores
+        download: Download list
+        title: Followers
     management:
-      no_partners: Nenhum parceiro cadastrado
-      no_posts: Nenhuma novidade cadastrada
-      title: Gerenciamento
-      total: projetos no total
+      no_partners: No partner registered
+      no_posts: No news registered
+      title: Business Management
+      total: Projects in total
     partners:
-      back_to_list: "← Voltar para gerenciar parceiros"
+      back_to_list: "← Back to manage partners"
       new:
-        add_partner: Adiconar parceiro
+        add_partner: Add partner
       edit:
-        edit_title: Editar parceiro
+        edit_title: Edit Partner
       form:
-        hint_image: Tamanho da imagem 370x320
-        save_submit: Salvar
+        hint_image: Image Size 370x320
+        save_submit: To save
       index:
-        new_button: Adicionar parceiro
+        new_button: Add partner
         table:
-          created_at: Criado em
-          image: Imagem
-          name: Nome
+          created_at: Created on
+          image: Image
+          name: Name
           url: Site
-          actions: Ações
-        title: Gerenciar parceiros
+          actions: Shares
+        title: Manage partners
     posts:
-      back_to_list: "← Voltar para gerenciar novidades"
+      back_to_list: "← Back to manage news"
       new:
-        create_news: Criar novidade
+        create_news: Create novelty
       edit:
-        edit_news: Editar Novidade
+        edit_news: Edit New
       index:
-        new_post_button: Criar novidade
+        new_post_button: Create novelty
         table:
-          actions: Ações
-          created_at: Criado em
-          published_at: Publicado em
-          title: Título da novidade
-        title: Gerenciar novidades
+          actions: Shares
+          created_at: Created on
+          published_at: Posted in
+          title: Novelty Title
+        title: Manage news
       form:
-        save_submit: Salvar e visualizar
+        save_submit: Save and view
       update:
-        published_message: Sua novidade foi publicada e enviada por email aos seguidores
-          do canal.
-      warning_html: Lembrando que toda novidade publicada vai diretamente para o
-        email de seus seguidores. Por isso, revise bem seu texto antes de enviá-lo.
-    posts_menu: Gerenciar novidades
+        published_message: SA new feature has been published and e-mailed to followers of the channel.
+      warning_html: Remembering that every published novel goes directly to the email your followers. So please review your text before submitting it.
+    posts_menu: Manage news
     table:
-      approve: Aprovar
-      category: Categoria
-      confirmation: Tem certeza que deseja deletar esse projeto? Todos apoios serão reembolsados
-      confirmation_reject: Tem certeza que deseja rejeitar esse projeto? Todos apoios serão reembolsados
-      confirmation_draft: Tem certeza que deseja passar para draft esse projeto? Todos apoios serão reembolsados
-      contributed_projects: Projetos apoiados
-      created_projects: Projeto criados
-      destroy_action: Deletar
-      edit_action: Editar
-      expires_at: Término
-      goal: Meta
-      name: Título
-      online_date: Publicação
-      pledged: Alcançado
-      publish_action: Publicar
-      recommended: Recomendar
-      reject: Rejeitar
-      send_to_draft: Enviar para rascunho
-      put_online: Colocar no ar
-      send_to_trash: DELETAR PROJETO
-      show_action: Visualizar
-      state: Estado
-      total_contributions: Apoios
-      unpublish_action: Despublicar
-      user: Usuário
-      user_id: Usuário
+      approve: To approve
+      category: Category
+      confirmation: Are you sure you want to delete this project? All support will be reimbursed
+      confirmation_reject: Are you sure you want to reject this project? All support will be reimbursed
+      confirmation_draft: Are you sure you want to draft this project? All support will be reimbursed
+      contributed_projects: Support projects
+      created_projects: Design created
+      destroy_action: Delete
+      edit_action: To edit
+      expires_at: Term
+      goal: Goal
+      name: Title
+      online_date: Publication
+      pledged: Reached
+      publish_action: Publish
+      recommended: To recommend
+      reject: Reject
+      send_to_draft: Send to draft
+      put_online: Put on the air
+      send_to_trash: DELETE PROJECT
+      show_action: To view
+      state: state
+      total_contributions: Support
+      unpublish_action: Unpublish
+      user: User
+      user_id: User

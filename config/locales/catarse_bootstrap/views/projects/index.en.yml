@@ -1,71 +1,70 @@
 en:
   projects:
     index_header:
-      subtitle: Financie projetos de maneira colaborativa e torne-se parte de algo
-        maior. Promova uma catarse coletiva! Você é a peça que falta nesta história.
-      title: Faça acontecer os projetos em que você acredita
+      subtitle: Fund projects collaboratively and become part of something larger. Promote a collective catharsis! You are the missing piece in this story.
+      title: Make projects happen that you believe in
     index:
-      title: 'Catarse'
-      back_a_project: 'Apoie um projeto'
-      banner_before: 'Tire '
+      title: 'JVN'
+      back_a_project: 'Support a project'
+      banner_before: 'Remove '
       banner_words:
-        0: 'sonhos'
-        1: 'discos'
-        2: 'exposições'
-        3: 'pesquisas'
-        4: 'carnavais'
-        5: 'fotografias'
-        6: 'peças de teatro'
-        7: 'documentários'
-        8: 'livros'
-        9: 'espetáculos'
-        10: 'paixões'
-        11: 'encontros'
-        12: 'músicas'
-        13: 'produtos'
-        14: 'atitudes'
-        15: 'filmes'
-        16: 'quadrinhos'
-        17: 'ideias'
-      banner_after: ' do papel'
+        0: 'Dreams'
+        1: 'Disks'
+        2: 'Exhibitions'
+        3: 'researches'
+        4: 'Carnivals'
+        5: 'Photos'
+        6: 'theater performances'
+        7: 'Documentaries'
+        8: 'Books'
+        9: 'Shows'
+        10: 'Passions'
+        11: 'Encounters'
+        12: 'Music'
+        13: 'products'
+        14: 'Attitudes'
+        15: 'movies'
+        16: 'Comic books'
+        17: 'Gift ideas'
+      banner_after: ' Of paper'
       see_all: 'See all'
-      near_you: 'Próximos a você'
-      recents: Recentes
-      blog: Blog do Catarse
-      expiring: Na reta final
+      near_you: 'Next to you'
+      recents: Recent Updates
+      blog: Blog Archive
+      expiring: In the final stretch
       recommended: Popular
-      banner_subtitle: 'Música, quadrinhos, cinema, impacto social, tecnologia e muito mais. Conheça, inspire-se e apoie projetos.'
+      banner_subtitle: 'Music, comics, cinema, social impact, technology and more. Get to know, inspire and support projects.'
       box:
-        by: por
-        when: em
-      banner: "Conheça a pesquisa"
-      explore: "Explore projetos"
+        by: by
+        when: in
+      banner: "Know the research"
+      explore: "Explore projects"
       links:
-        channels: "Descubra o Canal Asas"
-        recommended: "Descubra projetos recomendados"
-        expiring: "Descubra projetos na reta final"
-        recents: "Descubra projetos recentes"
-        near: "Descubra projetos perto de você"
+        channels: "Discover the Channel Wings"
+        recommended: "Discover Recommended Projects"
+        expiring: "Discover projects in the final stretch"
+        recents: "Discover recent projects"
+        near: "Discover projects near you"
       sidebar:
         titles:
           blog: blog
-          facebook: "já curtiu nosso face?"
-          newsletter: "Assine nossa news"
-          faq: "tá com dúvida?"
-          schedule: agenda
+          facebook: "Did you like our face?"
+          newsletter: "Subscribe to our news"
+          faq: "Are you sure?"
+          schedule: appointment book
         placeholders:
-          email: "Digite seu email"
+          email: "Type your e-mail"
         buttons:
-          newsletter: Enviar
+          newsletter: To send
       sections:
         near:
-          title: 'Próximos a mim'
+          title: 'Next to me'
         recommended:
           title: 'Popular'
         expiring:
-          title: "Na reta final"
+          title: "In the final stretch"
         recents:
-          title: "Recentes"
+          title: "Recent Updates"
         channels:
           title: 'Canal Asas'
 

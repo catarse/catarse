@@ -17,8 +17,8 @@
   Chart.defaults.Line.pointHitDetectionRadius = 0;
   Chart.defaults.global.scaleFontFamily = "proxima-nova";
 
-  I18n.defaultLocale = "pt";
-  I18n.locale = "pt";
+  I18n.defaultLocale = "en";
+  I18n.locale = "en";
 
   var adminRoot = document.getElementById('new-admin');
 

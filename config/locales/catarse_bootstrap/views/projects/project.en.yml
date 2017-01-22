@@ -6,14 +6,14 @@ en:
       see_all: see all
       banners:
         1:
-          title: 'Financiamento coletivo para todos'
+          title: 'Collective financing for all'
           subtitle: ''
           link: '/start?ref=home_banner'
-          cta: 'Comece sua campanha'
+          cta: 'Start your campaign'
           image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-fctodos.jpg'
         2:
           title: '2016'
-          subtitle: 'Conheça nossa perspectiva sobre como foi o ano no Catarse.'
+          subtitle: 'Conheça nossa perspectiva sobre como foi o ano no JVN.'
           link: 'http://ano.catarse.me/2016?ref=home_banner'
           cta: 'Saiba mais'
           image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-2016.jpg'
@@ -41,117 +41,117 @@ en:
           link: 'https://www.catarse.me/Xandao?ref=home_banner'
           cta: 'Conheça o projeto'
           image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-Xandao.jpg'
-    new_feature_badge: 'Novidade'
+    new_feature_badge: 'Novelty'
     posts:
-      empty: '<span class="fontweight-semibold">%{project_user_name}</span> ainda não publicou nenhuma novidade. <a href="/projects/%{project_id}/contributions/new" class="alt-link">Faça um apoio</a> e receba em seu email todas as notícias do projeto assim que elas forem publicadas!'
+      empty: '<span class="fontweight-semibold">%{project_user_name}</span> You have not posted any news yet. <a href="/projects/%{project_id}/contributions/new" class="alt-link">Make a support</a> And receive in your email all project news as soon as they are published!'
     publish:
-      aon: 'Tudo ou nada'
-      flex: 'Flexível'
+      aon: 'Everything or nothing'
+      flex: 'Flexible'
     insights:
-      tooltip: 'Informa de onde vieram os apoios de seu projeto. Saiba como usar essa tabela e planejar melhor suas ações de comunicação '
-      finish_explanation: 'Sua campanha ainda está com o prazo em aberto. Para receber os recursos em sua conta bancária, é preciso definir uma data final de arrecadação.'
-      know_more: ' Saiba mais.'
+      tooltip: 'Tell us where the support came from your project. Learn how to use this table and better plan your communication actions'
+      finish_explanation: 'Your campaign is still open. In order to receive the funds in your bank account, you must set an end date for collection.'
+      know_more: ' know more.'
       referral:
-        ctrse_explore: 'Busca do Catarse'
-        ctrse_explore_featured_big: 'Projeto em destaque grande no explore'
-        ctrse_explore_featured_medium: 'Projeto em destaque médio no explore'
-        home_recommended: 'Projetos recomendados na página inicial'
-        user_menu_my_projects: 'Menu de usuário'
-        profile_created_projects: 'Perfil público de usuário (projetos criados)'
-        home_banner: 'Banner de destaque na página inicial'
-        notificacao_pending: 'Notificação de apoio pendente'
-        notificacao_cancelado: 'Notificação de apoio cancelado'
-        home_recent: 'Projetos recentes na página inicial'
-        home_banner_explore: 'Banner de destaque na página inicial'
-        user_projects: 'Perfil de usuário (projetos criados)'
-        home_near: 'Projetos próximos a mim na página inicial'
-        user_menu_my_contributions: 'Menu de usuário'
-        home_expiring: 'Projetos em reta final na página inicial'
-        notification_pending: 'Notificação de apoio pendente'
-        notificacao_subscription_category: 'Notificação de Seguir Categoria'
-        banner_home: 'Banner de destaque na página inicial'
-        ctrse_thankyou: 'Página de agradecimento de apoio'
-        project_post: 'Post de novidades do projeto'
-        profile_contributed_projects: 'Perfil público de usuário (projetos apoiados)'
-        user_contributions: 'Perfil de usuário (projetos apoiados)'
-        notificacao_projeto_nao_financiado: 'Notificação de projeto não financiado'
-        notificacao_reminder: 'Notificação de Lembrete 48 horas'
-        profile_dashboard_created_projects: 'Perfil privado de usuário (projetos criados)'
-        ctrse_hello: 'Página Saiba Mais do Catarse'
-        credits_warning_more_group: 'Notificação de créditos'
-        hotsitepesquisa3anos: 'Pesquisa do Catarse RFCBR'
-        ctrse_embed: 'Card de projeto (embed)'
-        home_near_of: 'Projetos próximos a mim na página inicial'
-        credits_warning_less_group: 'Notificação de créditos'
-        notificação_resgate_botao: 'Notificação resgate de créditos'
-        notificação_resgate_rascunho: 'Notificação de rascunho criado'
-        ctrse_newsletter: 'Newsletter do Catarse'
-        ctrse_facebook: 'Facebook do Catarse'
-        ctrse_patrocinado_facebook: 'Facebook patrocinado do Catarse'
-        ctrse_twitter: 'Twitter do Catarse'
-        ctrse_instagram: 'Instagram do Catarse'
-        ctrse_blog: 'Blog do Catarse'
-        ctrse_youtube: 'Youtube do Catarse'
-        ctrse_universohq: 'Universo HQ (parceria Catarse)'
-        ctrse_catraca: 'Catraca Livre (parceria Catarse)'
-        ctrse_hypeness: 'Hypeness (parceria Catarse)'
-        others: 'Direto'
+        ctrse_explore: 'JVN search'
+        ctrse_explore_featured_big: 'Big featured design on the explore'
+        ctrse_explore_featured_medium: 'Medium featured project do not explore'
+        home_recommended: 'Recommended projects on the homepage'
+        user_menu_my_projects: 'User menu'
+        profile_created_projects: 'Public User Profile (projects created)'
+        home_banner: 'Featured banner on the homepage'
+        notificacao_pending: 'Notification of pending support'
+        notificacao_cancelado: 'Canceled support notification'
+        home_recent: 'Recent projects on the home page'
+        home_banner_explore: 'Featured banner on the homepage'
+        user_projects: 'User profile (projects created)'
+        home_near: 'Projects next to me on the homepage'
+        user_menu_my_contributions: 'User menu'
+        home_expiring: 'Projects in the final stretch on the home page'
+        notification_pending: 'Notification of pending support'
+        notificacao_subscription_category: 'Notification of Following Category'
+        banner_home: 'Featured banner on the homepage'
+        ctrse_thankyou: 'Support thank you page'
+        project_post: 'Project News Post'
+        profile_contributed_projects: 'Public User Profile (projects supported)'
+        user_contributions: 'User profile (projects supported)'
+        notificacao_projeto_nao_financiado: 'Non-funded project notification'
+        notificacao_reminder: 'Reminder Notification 48 hours'
+        profile_dashboard_created_projects: 'Private Profile of user (created projects)'
+        ctrse_hello: 'JVN Learn More Page'
+        credits_warning_more_group: 'Credit notification'
+        hotsitepesquisa3anos: 'RFCBR JVN Search'
+        ctrse_embed: 'Card project (embed)'
+        home_near_of: 'Projects next to me on the homepage'
+        credits_warning_less_group: 'Credit notification'
+        notificação_resgate_botao: 'Credit redemption notification'
+        notificação_resgate_rascunho: 'Creation notification created'
+        ctrse_newsletter: 'JVN Newsletter'
+        ctrse_facebook: 'Facebook from JVN'
+        ctrse_patrocinado_facebook: 'Facebook sponsored by the JVN'
+        ctrse_twitter: 'JVN Twitter'
+        ctrse_instagram: 'Instagram of the JVN'
+        ctrse_blog: 'JVN Blog'
+        ctrse_youtube: 'JVN Youtube'
+        ctrse_universohq: 'HQ Universe (JVN partnership)'
+        ctrse_catraca: 'Free Catraca (JVN partnership)'
+        ctrse_hypeness: 'Hypeness (JVN partnership)'
+        others: 'Direct'
       ref_table:
         header:
-          origin: 'Fonte'
-          contributions: 'Apoios'
-          amount: 'R$ apoiados (% do total)'
+          origin: 'Source'
+          contributions: 'Support'
+          amount: 'Rs Supported (% Of total)'
         help_url: 'http://suporte.catarse.me/hc/pt-br/articles/214764343-tudo-sobre-MONITORAMENTO-DIVULGA%C3%87%C3%83O#origem-apoio'
-      campaign_title: 'Minha Campanha'
+      campaign_title: 'My Campaign'
       campaign:
         aon:
-          online: 'Você pode receber apoios até 23hs59min59s do dia %{expires_at}. Lembre-se, é tudo-ou-nada e você só levará os recursos captados se bater a meta dentro desse prazo.'
-          successful: '<span class="fontweight-semibold">%{username} comemore que você merece!</span> Seu projeto foi bem sucedido e agora é a hora de iniciar o trabalho de relacionamento com seus apoiadores! Atenção especial à entrega de recompensas. Prometeu? Entregue! Não deixe de olhar a seção de pós-projeto do <a class="alt-link" href="/guides">Guia dos Realizadores</a> e de informar-se sobre <a class="alt-link" href="http://suporte.catarse.me/hc/pt-br/articles/217916143" target="_blank">como o repasse do dinheiro será feito</a>.'
-          waiting_funds: '<span class="fontweight-semibold"> %{username} estamos processando os últimos pagamentos! Seu projeto foi finalizado em %{expires_at} e está aguardando confirmação de boletos e pagamentos. Devido à data de vencimento de boletos, projetos que tiveram apoios de última hora ficam por até 4 dias úteis nesse status, contados a partir da data de finalização do projeto. <a class="alt-link" href="http://suporte.catarse.me/hc/pt-br/articles/217916143" target="_blank">Entenda como o repasse de dinheiro é feito para projetos bem sucedidos</a>.'
-          failed: '<span class="fontweight-semibold">%{username} não desanime!</span> Seu projeto não bateu a meta e sabemos que isso não é a melhor das sensações. Mas não desanime. Encare o processo como um aprendizado e não deixe de cogitar uma segunda tentativa. Não se preocupe, todos os seus apoiadores receberão o dinheiro de volta. <a class="alt-link" href="http://suporte.catarse.me/hc/pt-br/articles/202365507-Regras-e-funcionamento-dos-reembolsos-estornos" target="_blank">Entenda como fazemos estornos e reembolsos</a>.'
-          rejected: '<span class="fontweight-semibold">%{username} infelizmente não foi desta vez.</span> Você enviou seu projeto para análise do Catarse e entendemos que ele não está de acordo com o perfil do site. Ter um projeto recusado não impede que você envie novos projetos para avaliação ou reformule seu projeto atual. Converse com nosso atendimento! Recomendamos que você dê uma boa olhada nos <a class="alt-link" href="http://suporte.catarse.me/hc/pt-br/articles/202387638-Diretrizes-para-cria%C3%A7%C3%A3o-de-projetos" target="_blank">critérios da plataforma</a> e no <a class="alt-link" href="/guides">guia dos realizadores</a>.'
-          draft: '<span class="fontweight-semibold">%{username} construa o seu projeto!</span> Quanto mais cuidadoso e bem formatado for um projeto, maiores as chances de ele ser bem sucedido na sua campanha de captação. Antes de publicar seu projeto, preencha todas as abas ao lado com carinho. Você pode salvar as alterações e voltar ao rascunho de projeto quantas vezes quiser. Quando tudo estiver pronto, clique no botão CONTINUAR.<br><br><br><span class="card u-radius"><span class="fa fa-lightbulb-o"></span> Aprenda a planejar <a class="alt-link" target="_blank" href="https://catarse.attach.io/HySxkQXkg">sua campanha de financiamento coletivo!</a></span>'
-          in_analysis: '<span class="fontweight-semibold">%{username} você enviou seu projeto para análise em %{sent_to_analysis_at} e receberá nossa avaliação em até 4 dias úteis após o envio!</span> Enquanto espera a sua resposta, você pode continuar editando o seu projeto. Recomendamos também que você vá coletando feedback com as pessoas próximas e planejando como será a sua campanha.'
-          approved: '<span class="fontweight-semibold">%{username} seu projeto foi aprovado!</span> Para colocar o seu projeto no ar é preciso apenas que você preencha os dados necessários na aba <a class="alt-link" href="#user_settings">Conta</a>. É importante saber que cobramos a taxa de 13% do valor total arrecadado apenas por projetos bem sucedidos. Entenda <a class="alt-link" href="http://suporte.catarse.me/hc/pt-br/articles/202037493-FINANCIADO-Como-ser%C3%A1-feito-o-repasse-do-dinheiro-" target="_blank">como fazemos o repasse do dinheiro</a>.'
+          online: 'You can receive support until 23:55:59 on the day %{expires_at}. Remember, it`s all-or-nothing and you`ll only take the funds raised if you hit the target within that time frame.'
+          successful: '<span class="fontweight-semibold">%{username} Celebrate that you deserve!</span> Your project was successful and now is the time to start working with your supporters! Special attention to the delivery of rewards. Prometheus? Delivered! Be sure to look at the post-project section of <a class="alt-link" href="/guides">Guide to Filmmakers</a> And to inquire about <a class="alt-link" href="http://suporte.catarse.me/hc/pt-br/articles/217916143" target="_blank">How the money transfer will be done</a>.'
+          waiting_funds: '<span class="fontweight-semibold"> %{username} We`re processing the last payments! Your project has been finalized at %{expires_at} and is awaiting confirmation of tickets and payments. Due to the expiration date of tickets, projects that had last-minute endorsements stay for up to 4 business days in that status, counted from the project end date. <a class="alt-link" href="http://suporte.catarse.me/hc/pt-br/articles/217916143" target="_blank">Understand how the money transfer is done for successful projects</a>.'
+          failed: '<span class="fontweight-semibold">%{username} Do not be discouraged!</span> Your project has not hit the target and we know that this is not the best of sensations. But do not be discouraged. Take the process as an apprenticeship and be sure to consider a second try. Do not worry, all your supporters will get the money back.<a class="alt-link" href="http://suporte.catarse.me/hc/pt-br/articles/202365507-Regras-e-funcionamento-dos-reembolsos-estornos" target="_blank">Understand how we make chargebacks and refunds</a>.'
+          rejected: '<span class="fontweight-semibold">%{username} Unfortunately it was not this time.</span> You submitted your project for JVN review and we understand that it does not match the site profile. Having a rejected project does not prevent you from submitting new projects for evaluation or reformulating your current project. Chat with our customer service! We recommend that you take a good look at the<a class="alt-link" href="http://suporte.catarse.me/hc/pt-br/articles/202387638-Diretrizes-para-cria%C3%A7%C3%A3o-de-projetos" target="_blank">Platform criteria</a> And in the <a class="alt-link" href="/guides">Director`s guide</a>.'
+          draft: '<span class="fontweight-semibold">%{username} Build your project!</span> The more careful and well-formatted a project, the greater the chances of it being successful in its catchment campaign. Before publishing your project, fill all the adjacent flaps with care. You can save the changes and go back to the draft project as many times as you want. When everything is ready, click the CONTINUE button.<br><br><br><span class="card u-radius"><span class="fa fa-lightbulb-o"></span> Learn to plan <a class="alt-link" target="_blank" href="https://catarse.attach.io/HySxkQXkg">Your collective financing campaign!</a></span>'
+          in_analysis: '<span class="fontweight-semibold">%{username} You submitted your project for review at {sent_to_analysis_at} and will receive our feedback within 4 business days after submission! </span> While waiting for your response, you can continue editing your project. We also recommend that you go collecting feedback with people close to you and planning how your campaign will be. '
+          approved: '<span class="fontweight-semibold">%{username} Your project has been approved!</span> To put your project in the air it is only necessary that you fill in the necessary data in the<a class="alt-link" href="#user_settings">Account</a>. It is important to know that we charge the rate of 13% of the total amount collected only for successful projects. Understand <a class="alt-link" href="http://suporte.catarse.me/hc/pt-br/articles/202037493-FINANCIADO-Como-ser%C3%A1-feito-o-repasse-do-dinheiro-" target="_blank">How do we pass the money?</a>.'
         flex:
-          online: 'Você pode receber apoios até 23hs59min59s do dia %{expires_at}. Entenda como funciona o <a class="alt-link" href="http://suporte.catarse.me/hc/pt-br/articles/217916143" target="_blank">repasse de recursos</a> após o encerramento de sua campanha.'
-          successful: '<span class="fontweight-semibold">%{username} comemore que você merece!</span> Seu projeto foi bem sucedido e agora é a hora de iniciar o trabalho de relacionamento com seus apoiadores! Atenção especial à entrega de recompensas. Prometeu? Entregue! Não deixe de olhar a seção de pós-projeto do <a class="alt-link" href="/guides">Guia dos Realizadores</a> e de informar-se sobre <a class="alt-link" href="http://suporte.catarse.me/hc/pt-br/articles/217916143" target="_blank">como o repasse do dinheiro será feito</a>.'
-          failed: 'Seu projeto não arrecadou nenhum recurso. Mas não desanime! Encare o processo como um aprendizado e não deixe de cogitar uma segunda tentativa.'
-          waiting_funds: '<span class="fontweight-semibold">%{username} estamos processando os últimos pagamentos!</span> Seu projeto foi finalizado em %{expires_at} e está aguardando confirmação de boletos e pagamentos. Devido à data de vencimento de boletos, projetos que tiveram apoios de última hora ficam por até 4 dias úteis nesse status, contados a partir da data de finalização do projeto. <a class="alt-link" href="http://suporte.catarse.me/hc/pt-br/articles/217916143" target="_blank">Entenda como o repasse de dinheiro é feito</a> para projetos bem sucedidos.'
-          rejected: '<span class="fontweight-semibold">%{username} infelizmente não foi desta vez.</span> Você enviou seu projeto para análise do Catarse e entendemos que ele não está de acordo com o perfil do site. Ter um projeto recusado não impede que você envie novos projetos para avaliação ou reformule seu projeto atual. Converse com nosso atendimento! Recomendamos que você dê uma boa olhada nos <a class="alt-link" href="http://suporte.catarse.me/hc/pt-br/articles/202387638-Diretrizes-para-cria%C3%A7%C3%A3o-de-projetos" target="_blank">critérios da plataforma</a> e no <a class="alt-link" href="/guides">guia dos realizadores</a>.'
-          draft: '<span class="fontweight-semibold">%{username} construa o seu projeto!</span> Quanto mais cuidadoso e bem formatado for um projeto, maiores as chances de ele ser bem sucedido na sua campanha de captação. Antes de publicar seu projeto, preencha todas as abas ao lado com carinho. Você pode salvar as alterações e voltar ao rascunho de projeto quantas vezes quiser. Quando tudo estiver pronto, clique no botão CONTINUAR.<br><br><br><span class="card u-radius"><span class="fa fa-lightbulb-o"></span> Aprenda a planejar <a class="alt-link" target="_blank" href="https://catarse.attach.io/HySxkQXkg">sua campanha de financiamento coletivo!</a></span>'
-      amount_per_day_label: 'R$ arrecadados por dia'
-      contributions_per_day_label: 'Apoios confirmados por dia'
-      location_origin_title: 'Localização geográfica dos apoios'
-      ref_origin_title: 'Origem dos apoios'
-      amount_per_day_empty: Assim que os apoios começarem a aparecer você terá acesso a um gráfico aqui com o total de R$ arrecadados dia a dia. Com isso, você terá um controle diário de quanto falta para você atingir a sua meta de arrecadação.
-      contributions_per_day_empty: Você ainda não tem nenhum apoio ao seu projeto. Assim que os apoios começarem a aparecer você terá acesso a um gráfico aqui com o total de apoios confirmados dia a dia. Boa sorte!
-      contributions_per_ref_empty: Assim que os apoios começarem a aparecer você terá acesso a uma tabela aqui com a origem dos seus apoios. Com isso você poderá medir suas ações de comunicação e marketing da campanha!
-      contributions_per_location_empty: Assim que os apoios começarem a aparecer você terá acesso a uma tabela aqui com a localização geográfica dos seus apoiadores. Com isso você pode saber de que parte do país estão vindo os seus principais colaboradores!
+          online: 'You can receive support until 23:55:59 on the day %{expires_at}. Understand how the <a class="alt-link" href="http://suporte.catarse.me/hc/en/articles/217916143" target="_blank"> resource pass-through </a> works The closure of your campaign.'
+          successful: '<span class = "fontweight-semibold">% {username} Celebrate what you deserve! </ span> Your project was successful and now is the time to start working with your supporters! Special attention to the delivery of rewards. Prometheus? Delivered! Be sure to look at the post-project section of the <a class="alt-link" href="/guides"> Directors Guide </a> and find out about <a class = "alt-link" href = "http://suporte.catarse.me/hc/en/articles/217916143" target = "_ blank"> how the money transfer will be done </a>. '
+          failed: 'Your project did not raise any appeal. But do not be discouraged! Take the process as an apprenticeship and be sure to consider a second try.'
+          waiting_funds: '<span class="fontweight-semibold">%{username} We`re processing the last payments!</span> Your project has been finalized at %{expires_at} and is awaiting confirmation of tickets and payments. Due to the expiration date of tickets, projects that had last-minute endorsements stay for up to 4 business days in that status, counted from the project end date. <a class="alt-link" href="http://suporte.catarse.me/hc/pt-br/articles/217916143" target="_blank">Understand how the money transfer is done</a> For successful projects.'
+          rejected: '<span class="fontweight-semibold">%{username} Unfortunately it was not this time.</span> You submitted your project for JVN review and we understand that it does not match the site profile. Having a rejected project does not prevent you from submitting new projects for evaluation or reformulating your current project. Chat with our customer service! We recommend that you take a good look at the<a class="alt-link" href="http://suporte.catarse.me/hc/pt-br/articles/202387638-Diretrizes-para-cria%C3%A7%C3%A3o-de-projetos" target="_blank">Platform criteria</a> And in the <a class="alt-link" href="/guides">Director`s guide</a>.'
+          draft: '<span class="fontweight-semibold">%{username} Build your project!</span> The more careful and well-formatted a project, the greater the chances of it being successful in its catchment campaign. Before publishing your project, fill all the adjacent flaps with care. You can save the changes and go back to the draft project as many times as you want. When everything is ready, click the CONTINUE button.<br><br><br><span class="card u-radius"><span class="fa fa-lightbulb-o"></span> Learn to plan <a class="alt-link" target="_blank" href="https://catarse.attach.io/HySxkQXkg">Your collective financing campaign!</a></span>'
+      amount_per_day_label: 'Rs Collected per day'
+      contributions_per_day_label: 'Support confirmed per day'
+      location_origin_title: 'Geographical location of the supports'
+      ref_origin_title: 'Origin of the supports'
+      amount_per_day_empty: As soon as the supports begin to appear you will have access to a chart here with the total of Rs collected day by day. With this you will have a daily control of how much you need to reach your collection goal.
+      contributions_per_day_empty: You still have no support for your project. As soon as the backups begin to appear you will have access to a chart here with the total of confirmed backups day by day. Good luck!
+      contributions_per_ref_empty: As soon as the supports start appearing you will have access to a table here with the origin of your supports. With this you can measure your campaign communication and marketing actions!
+      contributions_per_location_empty: As soon as the supports start appearing you will have access to a table here with the geographical location of your supporters. With this you can know from which part of the country are coming its main collaborators!
     project:
-      contributed: levantados
-      reached: atingido
-      progress_html: "<span>%{percent}%</span> financiado"
+      contributed: Raised
+      reached: Hit
+      progress_html: "<span>%{percent}%</span> Financed"
       time_remaining_small_html:
-        one: "<div class='fontsize-smallest lineheight-tightest'>%{count} %{unit}</div> <div class='fontsize-smallest lineheight-tightest'>restante</div>"
-        other: "<div class='fontsize-smallest lineheight-tightest'>%{count} %{unit}</div> <div class='fontsize-smallest lineheight-tightest'>restantes</div>"
+        one: "<div class='fontsize-smallest lineheight-tightest'>%{count} %{unit}</div> <div class='fontsize-smallest lineheight-tightest'>remaining</div>"
+        other: "<div class='fontsize-smallest lineheight-tightest'>%{count} %{unit}</div> <div class='fontsize-smallest lineheight-tightest'>remaining</div>"
       time_remaining_html:
-        one: "<span>%{count} %{unit}</span> restante"
-        other: "<span>%{count} %{unit}</span> restantes"
-      pledged_html: "<span>%{value}</span> levantados"
+        one: "<span>%{count} %{unit}</span> remaining"
+        other: "<span>%{count} %{unit}</span> remaining"
+      pledged_html: "<span>%{value}</span> Raised"
       display_status:
         online: 'online'
-        expired: "finalizado"
-        rejected: "recusado"
-        failed: "não financiado"
-        successful: financiado
-        approved: aprovado
-        reached_goal: financiado
-        waiting_confirmation: aguardando
-        waiting_funds: aguardando
-        not_reached_goal: aguardando
-        draft: "rascunho"
-        in_analysis: "em análise"
+        expired: "Finalized"
+        rejected: "Refused"
+        failed: "Not funded"
+        successful: Financed
+        approved: approved
+        reached_goal: Financed
+        waiting_confirmation: Waiting
+        waiting_funds: Waiting
+        not_reached_goal: Waiting
+        draft: "draft"
+        in_analysis: "Under analysis"
     card:
       by: by
       remaining:
@@ -177,7 +177,7 @@ en:
         draft: "Draft"
         in_analysis: "In analysis"
     faq:
-      title: Dúvidas frequentes
+      title: Frequently Asked Questions
       international_title: FAQ
       international:
         aon:
@@ -212,51 +212,51 @@ en:
               answer: This project will be added to you Backed projects history on your public profile. The selected reward and the contribution amount won't be public.
             4:
               question: Who is the responsible for this project?
-              answer: Catarse is just a link between you and the creator. If you want to know more about the project, please get in touch with <a href="%{userLink}" target="_blank">%{userName}</a>
+              answer: JVN is just a link between you and the creator. If you want to know more about the project, please get in touch with <a href="%{userLink}" target="_blank">%{userName}</a>
             5:
               question: If this project is funded, how do I get my reward?
               answer: When your reward is ready, <a href="%{userLink}" target="_blank">%{userName}</a> will get in touch with you to arrange the delivery.
       aon:
-        description: Caso esse projeto não atinja a meta, você recebe de volta 100% do que pagou através de um reembolso.
+        description: If this project does not reach the goal, you get back 100% of what you paid through a refund.
         questions:
           1:
-            question: Como eu apoio este projeto?
-            answer: Preencha o detalhes do seu apoio, bem como todas as suas informações de pagamento para finalizar o apoio
+            question: How do I support this project?
+            answer: Fill in the details of your support, as well as all your payment information to finalize support
           2:
-            question: Quando o pagamento é efetivado?
-            answer: Se você pagou com cartão de crédito, a confirmação deverá ser no mesmo dia. Se foi com boleto, em até 4 dias úteis.
+            question: When is payment made?
+            answer: If you paid with a credit card, confirmation should be the same day. If it was with ticket, within 4 business days.
           3:
-            question: O que os outros podem ver do meu apoio?
-            answer: O projeto será adicionado a seu histórico de apoios em seu perfil , mas a quantidade que você apoiou e a recompensa que escolher, não ficarão públicos.
+            question: What can others see of my support?
+            answer: The project will be added to your support history on your profile, but the amount you've backed and the reward you choose will not go public.
           4:
-            question: E se o projeto não atingir a meta?
-            answer: Nesse caso, você recebe de volta 100% do que pagou através de um reembolso.
+            question: What if the project does not reach the goal?
+            answer: In that case, you get back 100% of what you paid through a refund.
           5:
-            question: Se o projeto for financiado, como eu recebo minha recompensa?
-            answer: Quando sua recompensa estiver pronta, <a href="%{userLink}" target="_blank">%{userName}</a> vai entrar em contato com você para combinar a entrega.
+            question: If the project is funded, how do I get my reward?
+            answer: When your reward is ready, <a href="%{userLink}" target="_blank">% {userName} </a> will contact you to combine delivery.
       flex:
-        description: Esse projeto irá ficar com todos os recursos quando finalizar
+        description: This project will get all the features when finalizing
         questions:
           1:
-            question: Como eu apoio este projeto?
-            answer: Preencha o detalhes do seu apoio, bem como todas as suas informações de pagamento para finalizar o apoio
+            question: How do I support this project?
+            answer: Fill in the details of your support, as well as all your payment information to finalize support
           2:
-            question: Quando o pagamento é efetivado?
-            answer: Se você pagou com cartão de crédito, a confirmação deverá ser no mesmo dia. Se foi com boleto, em até 4 dias úteis.
+            question: When is payment made?
+            answer: If you paid with a credit card, confirmation should be the same day. If it was with ticket, within 4 business days.
           3:
-            question: O que os outros podem ver do meu apoio?
-            answer: O projeto será adicionado a seu histórico de apoios em seu perfil , mas a quantidade que você apoiou e a recompensa que escolher, não ficarão públicos.
+            question: What can others see of my support?
+            answer: The project will be added to your support history on your profile, but the amount you've backed and the reward you choose will not go public.
           4:
-            question: Quem é o responsável pelo projeto?
-            answer: O catarse é apenas um intermediário, caso queira entender mais sobre o projeto, entre em contato com <a href="%{userLink}" target="_blank">%{userName}</a>
+            question: Who is responsible for the project?
+            answer: Catharsis is only a partner if you want to understand more about the project, please contact <a href="%{userLink}" target="_blank">% {userName} </a>
           5:
-            question: Como eu recebo minha recompensa?
-            answer: Quando sua recompensa estiver pronta, <a href="%{userLink}" target="_blank">%{userName}</a> vai entrar em contato com você para combinar a entrega.
+            question: How do I receive my reward?
+            answer: When your reward is ready, <a href="%{userLink}" target="_blank"> %{userName} </a> will contact you to combine delivery.
     payment:
-      paid: Confirmado
-      refused: Recusado
-      pending: Pendente
-      pending_refund: Reembolso pendente
-      refunded: Reembolsado
-      chargeback: Contestado
-      deleted: Apagado
+      paid: Confirmed
+      refused: Refused
+      pending: Pending
+      pending_refund: Refund pending
+      refunded: Refunded
+      chargeback: Contested
+      deleted: Wiped out
