@@ -8,6 +8,7 @@ en:
           header: 'Log in'
         links:
           register: "Sign up"
+          password: "password"
           forgot_password: "I forgot my password"
         form:
           labels:

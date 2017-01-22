@@ -1,0 +1,16 @@
+en:
+  shared:
+    menus:
+      user:
+        about: 'About you'
+        access_address: 'Data and address'
+        activity: 'Activity'
+        banking: 'Bank and cards'
+        contributions_history: 'My history'
+        contributions_history_nav: 'Support history'
+        logged_as: 'You are logged in as'
+        notifications: 'Notifications'
+        project_contributions: 'Support projects'
+        projects_created: 'Projects Created'
+        update_email: ' Change e-mail'
+        your_email: 'Your registration email is: '

@@ -1,0 +1,34 @@
+en:
+  shared:
+    account_type_value: 'We only accept checking account'
+    no_bank_label: 'Other'
+    alerts:
+      pending_payment_text: "You have outstanding repayments on JVN."
+      pending_payment_link_text: "Decide what to do with your money here!"
+    load_more: "Load more"
+    terms: terms of use
+    accept_terms_html: "I have read and accept the %{link}."
+    header_channel:
+      contact: Contact
+      logout: Logout
+      my_credits: My credits
+      partners: Privacy Policy
+      posts: News
+      profile: My Profile
+      signin: Login
+      signup: Signup
+      submit: Submit project
+      how_work: How it works
+    footer_channel:
+      contact: Contact
+      how_works: How it works
+      privacy_policy: Privacy policy
+      terms: Terms of use
+      what_is_channel: What are channels?
+      terms: "Terms of use"
+      privacy_policy: "privacy policy"
+      how_it_works: "How %{name} works"
+      how_channels_work: "Understand the JVN Channels"
+      contact: "Contact"
+    header_big:
+      projects: "My Projects"

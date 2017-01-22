@@ -1,0 +1,255 @@
+en:
+  pages:
+    start:
+      header_html: Catarse - Tire o seu projeto do papel
+      description: 'O Catarse é a primeira e maior plataforma de crowdfunding, ou financiamento coletivo, do Brasil. Venha tirar projetos do papel!'
+      title: 'Crowdfunding e financiamento coletivo no Brasil é no Catarse'
+      tagline: 'Crowdfunding e financiamento coletivo no Brasil é no Catarse'
+      page-title: "Como funciona o Catarse?"
+      page-subtitle: 'Conheça os pilares básicos de uma campanha de financiamento coletivo'
+      title: "Financie seu projeto coletivamente"
+      submit: "Comece gratuitamente"
+      learn-more: "Saiba mais"
+      slogan: 'Tire o seu projeto do papel'
+      header:
+        people: "Pessoas já apoiaram pelo menos 01 projeto no Catarse"
+        success: 'Projetos ja foram financiados por aqui'
+        money: 'Foram investidos em ideias publicadas no Catarse'
+      banner:
+        1: 'Apoiadores'
+        2: 'Seus amigos, familiares e interessados no projeto.'
+        3: 'Recompensas'
+        4: 'É o que você oferece em troca dos apoios.'
+        5: 'Meta'
+        6: 'O quanto você quer arrecadar no Catarse.'
+        7: 'Tempo'
+        8: 'É o período que sua campanha estará aberta a receber apoios.'
+      features:
+        title: 'A plataforma ideal para sua campanha'
+        subtitle: 'Conheça as soluções que desenvolvemos para você financiar sua ideia!'
+        feature_1: 'No ar sem burocracia'
+        feature_2: 'Atendimento rápido e ágil'
+        feature_3: 'Painel de controle completo'
+        feature_4: 'Blog da campanha'
+        feature_5: 'Apoio parcelado'
+        feature_6: 'Repasse facilitado'
+      video:
+        title: 'Uma campanha de financiamento coletivo é emoção garantida. '
+        subtitle: 'Sente o gostinho...'
+        src: 'z7FBAjkcLG8'
+      categories:
+        title: 'O Catarse tem espaço para vários tipos de projetos! Conheça nossas categorias!'
+        pledged: 'Arrecadou R$ {{pledged}} com {{contributors}} apoios para o projeto '
+        loading_featured: 'carregando projeto destaque...'
+        no_featured: 'Nenhum projeto em destaque.'
+      categoryProjects:
+        1:
+          category_id: 23
+          sample_project_ids:
+            primary: 4142
+            secondary: 1550
+        2:
+          category_id: 1
+          sample_project_ids:
+            primary: 6914
+            secondary: 9438
+        3:
+          category_id: 18
+          sample_project_ids:
+            primary: 17453
+            secondary: 1705
+        4:
+          category_id: 13
+          sample_project_ids:
+            primary: 10519
+            secondary: 17219
+        5:
+          category_id: 31
+          sample_project_ids:
+            primary: 9670
+            secondary: 16012
+        6:
+          category_id: 21
+          sample_project_ids:
+            primary: 14610
+            secondary: 10786
+        7:
+          category_id: 17
+          sample_project_ids:
+            primary: 7917
+            secondary: 12993
+        8:
+          category_id: 10
+          sample_project_ids:
+            primary: 16912
+            secondary: 7695
+        9:
+          category_id: 14
+          sample_project_ids:
+            primary: 5710
+            secondary: 15915
+        10:
+          category_id: 15
+          sample_project_ids:
+            primary: 9521
+            secondary: 15004
+        11:
+          category_id: 20
+          sample_project_ids:
+            primary: 11366
+            secondary: 8024
+        12:
+          category_id: 7
+          sample_project_ids:
+            primary: 14391
+            secondary: 11694
+        13:
+          category_id: 19
+          sample_project_ids:
+            primary: 11113
+            secondary: 12138
+        14:
+          category_id: 16
+          sample_project_ids:
+            primary: 11812
+            secondary: 15251
+        15:
+          category_id: 9
+          sample_project_ids:
+            primary: 22454
+            secondary: 20105
+        16:
+          category_id: 29
+          sample_project_ids:
+            primary: 11470
+            secondary: 6997
+        17:
+          category_id: 27
+          sample_project_ids:
+            primary: 18964
+            secondary: 8583
+        18:
+          category_id: 3
+          sample_project_ids:
+            primary: 11847
+            secondary: 10800
+        19:
+          category_id: 4
+          sample_project_ids:
+            primary: 6519
+            secondary: 14762
+        20:
+          category_id: 8
+          sample_project_ids:
+            primary: 9531
+            secondary: 13592
+        21:
+          category_id: 12
+          sample_project_ids:
+            primary: 2073
+            secondary: 9744
+        22:
+          category_id: 28
+          sample_project_ids:
+            primary: 14594
+            secondary: 16322
+        23:
+          category_id: 11
+          sample_project_ids:
+            primary: 13425
+            secondary: 7391
+        30:
+          category_id: 30
+          sample_project_ids:
+            primary: 2895
+            secondary: 8389
+      panes:
+        1:
+          label: 'No ar sem burocracia'
+          src: '/assets/start-publicar.gif'
+        2:
+          label: 'Atendimento rápido e ágil'
+          src: '/assets/start-atendimento-ui.gif'
+        3:
+          label: 'Painel de controle completo'
+          src: '/assets/start-painel-ui.gif'
+        4:
+          label: 'Blog da campanha'
+          src: '/assets/start-blog-ui.gif'
+        5:
+          label: 'Apoio parcelado'
+          src: '/assets/start-apoio.gif'
+        6:
+          label: 'Repasse facilitado'
+          src: '/assets/start-repasse.gif'
+      testimonials_title: 'O que estão dizendo por aí...'
+      testimonials:
+        1:
+          thumb: '/assets/start/thumb-marcela.jpg'
+          content: 'Estou sequenciando o genoma do mexilhão dourado. Financiei coletivamente minha pesquisa de doutorado. Esse modelo poderia mudar o mundo.'
+          name: 'Marcela Uliano'
+          totals: 'Arrecadou R$40.736 com a ajuda de 344 pessoas para viabilizar o projeto Genoma do Mexilhão Dourado.'
+        2:
+          thumb: '/assets/start/thumb-tiago.jpg'
+          content: 'Tá afim de fazer? Mete a cara. Sim, a lei de incentivo só beneficia quem tem nome. E aí, você vai ficar parado? Pare de reclamar e vá buscar uma alternativa.'
+          name: 'Tiago Vieira'
+          totals: 'Arrecadou R$34.260 com a ajuda de 203 pessoas para viabilizar o projeto "Quando parei de me preocupar com Canalhas". O filme foi parar em Cannes. ;)'
+        3:
+          thumb: '/assets/start/thumb-natalia.png'
+          content: 'Um bom repórter sabe como é difícil conseguir dinheiro para financiar a reportagem dos seus sonhos e ainda ter independência editorial para de fato escrever o que descobriu.'
+          name: 'Natalia Viana'
+          totals: 'Arrecadou R$129.159 ao receber 1771 apoios para realizar 2 projetos da Agência Pública de Jornalismo Investigativo'
+        4:
+          thumb: '/assets/start/thumb-apanhador.jpg'
+          content: 'A gente tem outras possibilidades para financiar, mas escolhe o crowdfunding por acreditar nesse caminho mesmo. Quanto mais o público estiver com as decisões na mão, melhor.'
+          name: 'Alexandre Kumpinski (Apanhador Só)'
+          totals: 'Arrecadou R$163.600 ao receber 2181 apoios para realizar 2 projetos'
+        5:
+          thumb: '/assets/start/thumb-larissa.png'
+          content: 'Sei que têm mais 200 pessoas ali comigo, enviando energia positiva, torcendo, fazendo parte disso tudo e caminhando até as Olimpíadas comigo.'
+          name: 'Larissa Juk'
+          totals: 'Arrecadou R$28.532 ao receber 218 apoios para o projeto Larissa Juk rumo a Olimpíada Rio 2016'
+      qa_title: 'Ainda com dúvidas?'
+      qa:
+        col_1:
+          1:
+            question: 'Por que fazer uma campanha no Catarse?'
+            answer: 'Primeiro porque somos extremamente comprometidos e apaixonados pelo que fazemos e queremos ver seu projeto financiado. Mas também porque somos a primeira e maior plataforma em atuação no Brasil. Estamos trabalhando de forma independente para desenvolver o cenário de financiamento de projetos no Brasil e possibilitar que mais pessoas viabilizem suas ideias, sonhos e visões.'
+          2:
+            question: 'Dá muito trabalho ter uma campanha no Catarse?'
+            answer: 'Cada projeto no Catarse tem sua própria particularidade e a quantidade de trabalho varia. Inscrever um projeto no Catarse é muito fácil, mas uma campanha tem seus desafios. O segredo é ter um bom planejamento de campanha! Podemos te ajudar! <a href="#start-form">Só começar o seu rascunho.</a>'
+          3:
+            question: 'O Catarse seleciona os projetos que entram no ar?'
+            answer: 'Não. Você cria o seu rascunho e publica sua campanha direto pelo site, quando quiser. No entanto, existem algumas <a href="http://suporte.catarse.me/hc/pt-br/articles/202387638-Diretrizes-para-cria%C3%A7%C3%A3o-de-projetos">regras para criação de projetos</a> que você deve seguir para que seu projeto não tenha riscos de ser denunciado pela comunidade após a publicação.'
+          4:
+            question: 'Quem pode usar o Catarse?'
+            answer: 'O Catarse fornece suporte aos usuários do site e torna possível que projetos captem recursos de forma ágil e direta utilizando a internet. Qualquer pessoa acima de 18 anos (ou menor, mas com um representante legal) pode utilizar nossos serviços e fazer uma campanha de crowdfunding.'
+        col_2:
+          1:
+            question: 'Preciso atingir a meta para receber meu dinheiro?'
+            answer: 'Depende da modalidade de financiamento que você optar. No modelo “Tudo ou Nada”, você só fica com o dinheiro caso atinja a meta de arrecadação no tempo de campanha estipulado por você. Caso o projeto não atinja a meta de arrecadação, devolvemos integralmente o dinheiro para seus apoiadores, sem custo nenhum para você ou para quem te apoiou. <br><br>Já na modalidade flexível de financiamento, carinhosamente chamada de "Flex", você fica com todo o dinheiro que conseguir independente de bater a meta ou não. Você pode entender melhor a diferença entre os modelos e qual o ideal para o seu projeto nesse <a href="http://fazum.catarse.me/tudoounada-ou-flex?ref=ctrse_start">eBook que preparamos.</a>'
+          2:
+            question: 'Quais são nossas taxas?'
+            answer: 'No modelo Tudo ou Nada, o Catarse só cobra a taxa de 13% sobre o valor total arrecadado se você atingir 100% ou mais da sua meta. Caso contrário, devolvemos o dinheiro para os apoiadores e não cobraremos nada de ninguém.<br><br>Já no modelo Flex, o Catarse cobra 13% do total arrecadado pela campanha. Caso o projeto não arrecade nada, não haverá cobrança.<br><br>Se você quiser saber porque cobramos essa comissão e onde investimos nosso dinheiro, confere nossa <a href="http://crowdfunding.catarse.me/nossa-taxa?ref=ctrse_start">página especial (e transparente!) falando sobre a nossa taxa.</a>'
+          3:
+            question: 'De onde vem o dinheiro do meu projeto?'
+            answer: 'Família, amigos, fãs e membros de comunidades que você faz parte são seus maiores colaboradores. Você agita essa rede, conquista apoios e promove o projeto. Apoiadores divulgam e recomendam sua campanha para outras pessoas que conhecem, e assim o círculo de apoiadores vai crescendo e a campanha recebendo apoios. O segredo é construir um bom projeto, planejar bem sua campanha e saber direcionar seus esforços de divulgação para quem realmente pode se interessar no que você está propondo em sua campanha de crowdfunding.'
+          4:
+            question: 'Tenho mais dúvidas. Como faço?'
+            answer: '<a href="http://suporte.catarse.me/hc/pt-br">Acesse nossa Central de Suporte</a> ou entre em contato conosco através do email: contato@catarse.me'
+      form:
+        title: 'Quero iniciar uma campanha chamada'
+        select_default: 'Selecione uma categoria'
+        submit: 'Comece seu rascunho'
+      mode:
+        title: 'Dois modelos. Uma só taxa.'
+        subtitle: 'No Catarse você escolhe a modalidade de financiamento coletivo ideal para sua campanha, sem pagar nada a mais por isso!'
+        aon:
+          info: 'Ao final da campanha, você só recebe o dinheiro se tiver atingido a meta de arrecadação.'
+          info_2: 'Prazo máximo no ar: 60 dias'
+        flex:
+          info: 'Ao final da campanha, você recebe todo o dinheiro, mesmo sem ter atingido a meta de arrecadação.'
+          info_2: 'Prazo máximo no ar: 12 meses'
+        tax_info: 'Taxa: 13% sobre o total arrecadado'
+        failed_info: 'Campanhas Tudo ou Nada que não atingem a meta não pagam nada. '
+        more_link: '<a href="http://fazum.catarse.me/tudoounada-ou-flex?utm_source=start&utm_medium=link&utm_content=Saiba%20mais%20sobre%20as%20taxas%20e%20modalidades&utm_campaign=ebook-tudoounada-flex" class="alt-link" target-"_blank">Saiba mais sobre as taxas e modalidades</a>'
