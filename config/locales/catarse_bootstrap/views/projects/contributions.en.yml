@@ -1,0 +1,275 @@
+en:
+  projects:
+    contributions:
+      no_account_refund:
+        fill_form_text: "You have %{amount} on outstanding repayments for unfunded projects."
+      no_estimate: "Not available"
+      you_selected: "You chose that one!"
+      contribute_text:
+        credits_tab: My credits
+      checkout:
+        no_credits: You do not have enough credits to make this support.
+        success: Your support has been successful. Thank you very much!
+      contribution:
+        anonymous_contribution: Anonymous supporter
+        anonymous_description: He chose to keep his support not public.
+        no_reward: This supporter did not select any reward
+      selected_reward:
+        review_without_reward_html: You will support with <strong> %{value} </strong> and do not want any reward for your support.
+        value: 'Value of support'
+        reward: 'Reward selected'
+        edit: 'To edit'
+      existing_payment:
+        page_title: 'Your support for %{name} was performed'
+        warning: 'Attention'
+        warning_subtitle: 'You are trying to access an address for support you have already started:'
+        check_email: "Check in your email box if the temporary receipt of support has been sent. If it has not been, please enter  %{mail_to_link} with us, informing the code identifier of your support ( %{gateway_id}), that we will assist you in what is needed."
+        new_contribution: "If you have accessed this page in error and want to make a new support, %{link}"
+        contact: 'contact'
+        click_here: 'click here'
+      faq:
+        flexible:
+          explanation: 'This project will get all the features when finalizing '
+          common_questions: 'Frequently Asked Questions'
+          how_contribute: 'How do I support this project?'
+          how_contribute_answer: 'Fill in the details of your support, as well as all your payment information to finalize support'
+          when_made_payment: 'When is payment made?'
+          when_made_payment_answer: 'If you paid with a credit card, confirmation should be the same day. If it was with ticket, within 4 business days.  '
+          when_about_my_payment_data: 'What can others see of my support?'
+          when_about_my_payment_data_answer: 'The project will be added to your support history on your profile, but the amount you`ve backed and the reward you choose will not go public.'
+          when_project_owner: 'Who is responsible for the project?'
+          when_project_owner_answer: 'Catharsis is only a middleman, if you`d like to understand more about the project, contact %{name}'
+          when_project_funded: 'How do I receive my reward?'
+          when_project_funded_answer: 'When your reward is ready, %{name} will contact you to arrange delivery.'
+        all_or_nothing:
+          explanation: 'If this project does not reach the goal, you get back 100% of what you paid through a refund.'
+          common_questions: 'Frequently Asked Questions'
+          how_contribute: 'How do I support this project?'
+          how_contribute_answer: 'Fill in the details of your support, as well as all your payment information to finalize support'
+          when_made_payment: 'When is payment made? '
+          when_made_payment_answer: 'If you paid with a credit card, confirmation should be the same day. If it was with ticket, within 4 business days.'
+          when_about_my_payment_data: 'What can others see of my support?'
+          when_about_my_payment_data_answer: 'The project will be added to your support history on your profile, but the amount you`ve backed and the reward you choose will not go public.'
+          when_project_fails: 'What if the project does not reach the goal?'
+          when_project_fails_answer: 'In that case, you get back 100% of what you paid through a refund.'
+          when_project_funded: 'If the project is funded, how do I get my reward?'
+          when_project_funded_answer: 'When your reward is ready, %{name} will contact you to arrange delivery.'
+      edit_international:
+        selected_reward:
+          review_without_reward_html: You are going to back with <strong>%{value}</strong> and you don't want any reward.
+          value: 'Contribution details'
+          reward: 'Selected reward'
+          edit: 'Edit'
+        title: 'Contact details and address'
+        required: '* Required fields'
+        payment_info: 'Payment information'
+        safe_payment: ' SECURE PAYMENT'
+        credit_card_select: 'Credit card'
+        debit_card_info: '(Debit card not accepted)'
+        anonymous_confirmation_title: "Are you sure you want to make you contribution non-public?"
+        anonymous_confirmation: "Choosing this option your name won't be shown on the public backers section area. Only you and this project's creator will have access to your name and contribution details."
+        fields:
+          complete_name: 'Full name *'
+          email: 'Email *'
+          anonymous: 'Do not show my name on the public backers section'
+          street: 'Address *'
+          street_number: 'Number *'
+          street_complement: 'Compliment'
+          neighbourhood: 'Neighbourhood *'
+          zipcode: 'Zip Code *'
+          city: 'City *'
+          state: 'State *'
+          owner_document: 'CPF/CNPJ *'
+          phone: 'Phone *'
+        next_step: 'Next step'
+        credit_card:
+          loading: 'Loading credit card info...'
+          use_another: 'Use another card.'
+          name: 'Name on the credit card *'
+          name_tip: 'Name printed on the front of your card'
+          document: ''
+          document_tip: ''
+          number: 'Credit card number *'
+          number_tip: 'Usually a 16 digit number printed on the front of your card'
+          expiry: 'Expiration (mm/aaaa) * '
+          expiry_tip: 'The validity date, usually on the front of your card'
+          cvv: 'Security code (CVV / CVV2) * '
+          cvv_tip: 'The 3 digit (when on the front) or 4 digit (when on the back) of your card'
+          cvv_tooltip: 'The 3 or 4 digits that are on the back of the VISA, MASTER, DINERS and ELO cards or on the front of the AMEX card.'
+          installments: 'Instalments'
+          save_card: 'I want to save my credit card for future payments.'
+          finish_payment: 'Finish payment'
+          terms_of_use_agreement: "By paying, you agree to JVN's <a class='alt-link' href='/pt/terms-of-use'>Terms of Use</a> and <a class='alt-link' href='/pt/privacy-policy'>Privacy Policy</a>."
+        errors:
+          global: 'Please, take a look at the following errors: '
+          inline:
+            creditcard_cvv: 'Security code is not valid.'
+            creditcard_expiry: 'Expiration date is not valid.'
+            creditcard_number: 'Credit card number is not valid.'
+            creditcard_name: 'Name is not valid.'
+          submission:
+            encryption_error: 'Please try again in a few moments.'
+            payment_failed: 'Please review your credit card info and try again in a few moments.'
+            card_invalid: 'Credit card information is not valid. Please review your credit card info and try again.'
+            error: '<span>An error ocurred while trying to process your payment.</span><br><br>Error: <i>%{message}</i>'
+          validation:
+            empty_field: 'The field cannot be empty.'
+            email: 'Email is not valid.'
+            state: 'State is required.'
+            phone: 'Invalid phone number.'
+      edit:
+        selected_reward:
+          review_without_reward_html: You are going to back with <strong>%{value}</strong> and you don't want any reward.
+          value: 'Contribution details'
+          reward: 'Selected reward'
+          edit: 'Edit'
+        title: 'Contact details and address'
+        required: '* Required fields'
+        payment_info: 'Payment information'
+        safe_payment: ' SECURE PAYMENT'
+        credit_card_select: 'Credit card'
+        debit_card_info: '(Debit card not accepted)'
+        anonymous_confirmation_title: "Are you sure you want to make you contribution non-public?"
+        anonymous_confirmation: "Choosing this option your name won't be shown on the public backers section area. Only you and this project's creator will have access to your name and contribution details."
+        fields:
+          complete_name: 'Full name *'
+          email: 'Email *'
+          anonymous: 'Do not show my name on the public backers section'
+          street: 'Address *'
+          street_number: 'Number *'
+          street_complement: 'Compliment'
+          neighbourhood: 'Neighbourhood *'
+          zipcode: 'Zip Code *'
+          city: 'City *'
+          state: 'State *'
+          owner_document: 'CPF/CNPJ *'
+          phone: 'Phone *'
+        next_step: 'Next step'
+        credit_card:
+          loading: 'Loading credit card info...'
+          use_another: 'Use another card.'
+          name: 'Name on the credit card *'
+          name_tip: 'Name printed on the front of your card'
+          document: ''
+          document_tip: ''
+          number: 'Credit card number *'
+          number_tip: 'Usually a 16 digit number printed on the front of your card'
+          expiry: 'Expiration (mm/aaaa) * '
+          expiry_tip: 'The validity date, usually on the front of your card'
+          cvv: 'Security code (CVV / CVV2) * '
+          cvv_tip: 'The 3 digit (when on the front) or 4 digit (when on the back) of your card'
+          cvv_tooltip: 'The 3 or 4 digits that are on the back of the VISA, MASTER, DINERS and ELO cards or on the front of the AMEX card.'
+          installments: 'Instalments'
+          save_card: 'I want to save my credit card for future payments.'
+          finish_payment: 'Finish payment'
+          terms_of_use_agreement: "By paying, you agree to JVN's <a class='alt-link' href='/pt/terms-of-use'>Terms of Use</a> and <a class='alt-link' href='/pt/privacy-policy'>Privacy Policy</a>."
+        errors:
+          global: 'Please, take a look at the following errors: '
+          inline:
+            creditcard_cvv: 'Security code is not valid.'
+            creditcard_expiry: 'Expiration date is not valid.'
+            creditcard_number: 'Credit card number is not valid.'
+            creditcard_name: 'Name is not valid.'
+          submission:
+            encryption_error: 'Please try again in a few moments.'
+            payment_failed: 'Please review your credit card info and try again in a few moments.'
+            card_invalid: 'Credit card information is not valid. Please review your credit card info and try again.'
+            error: '<span>An error ocurred while trying to process your payment.</span><br><br>Error: <i>%{message}</i>'
+          validation:
+            empty_field: 'The field cannot be empty.'
+            email: 'Email is not valid.'
+            state: 'State is required.'
+            phone: 'Invalid phone number.'
+        review_slip_email: "You will also receive an email with this ticket."
+        slip_expiration: "This bank slip expires on day %{date}."
+        print_slip: 'Print Ticket'
+        pay: 'Finish payment'
+        slip_message: 'In generating the ticket, the director is already counting on his support. Pay through the internet due date, lottery houses, ATMs or bank branch.'
+        review_title: 'Fill in and review the payment data'
+        review_subtitle: 'These data will be informed to the project director'
+        delivery_address: 'Address'
+        # next_step: 'Próximo passo'
+        payment_slip_disclaimer: "If the project is not successful, we will repay your support. The bank details entered here will be used for this."
+        review_errors_title: "Check the reported data"
+        review_errors: "Some information is missing or has not been entered correctly, correct all fields marked in red and tesnte again"
+        anonymous_confirmation_title: "Are you sure you want your support not to be public?"
+        anonymous_confirmation: "Choosing this option your support will not be public to other JVN users. Only you and the Project Director will have access to your support information."
+        anonymous_contribution: "I want my support not to be public"
+        form_labels:
+          user_another_card: "Use another credit card"
+          payment_card_number: 'card number'
+          payment_card_flag: 'Flag'
+          payment_card_source: 'Security Code'
+          payment_card_source_short: 'CVC'
+          payment_card_date: 'Expiration (mm / yyyy)'
+          payment_card_name: 'Name printed on credit card'
+          payment_card_installments: 'Plots'
+        installment_with_tax: 'interest-free'
+        transaction_error: 'Transaction declined, please double check your data or contact the bank / card issuer for more information.'
+        pagarme_warning_html: "The JVN is in the process of testing a new means of payment that will facilitate financial support and possible reimbursement of amounts to supporters. Therefore, we caution that extra data, in addition to those mentioned in the Terms of Use, may be required to support this project. If you have any questions or concerns, please contact us at %{mailto}. Thank you."
+        payment_save_card: 'I want to save my credit card to facilitate future support.'
+        reward_sold_out: That reward is exhausted. Start new support.
+        page-title: Support %{name}
+        credits_preview_html: "You have <strong> %{credits} </strong> credits for this support <strong> by 10/11 </strong>, as <a href='http://blog.catarse.me/simplification-refunds-and-end-of-credits/' target='__blank'> new rules </a> released by JVN."
+        credits_submit: 'Make the payment'
+        credits_title: 'Payment with credits'
+        insufficient_credits: "You have %{credits} in credits. This amount is not enough to support, please choose another payment method."
+        choose_payment: "Choose the payment method"
+        choose_payment_subtitle: "PAYMENT SAFE"
+        cpf: 'To proceed, please inform:'
+        credits_notice_html: This support will be paid with your credits. After confirmation, you'll have a balance of <strong> %{credits} </strong> on credits for support other projects.
+        live_in_brazil: I live in Brazil. (Uncheck if your support is international)
+        number_card: Card data
+        owner_card: Cardholder Data
+        payment_account: Debit Account Payment
+        payment_boleto: Payment with Ticket
+        payment_card: Payment with Card
+        review_with_reward_html: 'You will support with <strong> %{value} </strong> and will receive the following reward:'
+        select_account: 'You will be redirected to your bank`s website:'
+        select_boleto: 'To proceed, please select:'
+        submit:
+          credits: Confirm
+          moip: Make payment by MoIP
+        subtitle: These data will be informed to the project organizer.
+        title: Fill in and review the payment data
+        you_are_about_html: You are about to join the group that does everything for %{link} to happen.
+      new:
+        no_rewards:
+          label_title: 'Value of your support'
+          label_description: 'You can support this project from Rs 10'
+          label_btn: 'Continue'
+          label_error: 'Support amount is incorrect'
+        page-title: Support %{name}
+        title: Oohh yeah!
+        you_have_credits: "You have <strong> %{credits} </strong> in credits to make this support."
+        choose_reward: Choose the reward and then the value of the support
+        choose_value: Enter the amount of your support.
+        minimum_disclaimer: 'From Rs <span> 10 </span> looks great ;)'
+        next_step: "Review and make payment"
+        no_reward: Thank you. I just want to help the project.
+      review:
+        PayPal: "PayPal"
+        MoIP: "MoIP"
+        Credits: 'Credits'
+        error: Ooops. There was an error registering your support. Please try again.
+      thank_you_slip:
+        thank_you: 'I`m counting on your support....'
+        thank_you_text_html:  "<div class='fontsize-base'>You also received this ticket in the email:</div><div class='fontsize-large u-marginbottom-10'>%{email}</div><a class='alt-link fontsize-small' href='%{link_email}'>If this is not your contact email, change here</a>"
+      thank_you:
+        thank_you: 'Thanks! Your support is being processed.'
+        thank_you_text_html:  "<div class='fontsize-base'>Once the payment is completed, we will send the confirmation of your support to the registered email:</div><div class='fontsize-large u-marginbottom-10'>%{email}</div><a class='alt-link fontsize-small' href='%{link_email}'>If this is not your contact email, change here</a>"
+        share: Share
+        tweet: Tweet
+        share_back: 'Share with your friends and help this project hit the goal!'
+        follow: 'follow'
+        follow_category: 'Do you like the %{category} category? You can receive first-hand and directly in your email when new projects come on the air!'
+        project_recommendations: 'Project recommendations for you'
+        profile_link: 'Through your profile'
+      show:
+        header_subtitle: Without you maybe this project did not stand a chance. Welcome to the team
+        header_title: Thank you very much! :D
+        moip_message: Your transaction verification is in progress and the code Moip is " %{code}". If you have any questions regarding the transaction, please in contact with Moip. An email will be sent when payment is confirmed.
+        recommended_projects: 'You can also enjoy these projects:'
+        text_subtitle: Tell everyone what you just did
+        text_title_html: You are now part of the group that does everything for the project% {link} to happen.
+        title: Thank you very much

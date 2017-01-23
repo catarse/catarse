@@ -1,24 +1,84 @@
 en:
   admin: &admin
-    confirm_dialog: 'You are sure?'
+    filter:
+      title: "Filters"
+      confirm_dialog: "You are sure?"
     projects:
       index:
-        by_state: 'By state'
-        between_created_at: 'Created at between'
-        submit: 'Filter'
-        send_to_trash: 'Delete'
-        send_to_draft: 'Send to DRAFT!'
-        reject: 'Reject!'
-        approve: 'Approve!'
-        order_asc: 'Goal asc'
-        order_desc: 'Goal desc'
-        order_created_at: 'Submission date'
-        last_modification: 'Last update'
+        by_state: "By state"
+        between_created_at: "Created at between"
+        submit: "Filter"
+        send_to_trash: "Delete"
+        send_to_draft: "Send to DRAFT!"
+        reject: "Reject!"
+        approve: "Approve!"
+        order_asc: "Goal asc"
+        order_desc: "Goal desc"
+        order_created_at: "Submission date"
+        last_modification: "Last update"
+        with_state: "By state"
+        by_category: "By category"
+        project: "Project"
+        user: "User"
+        goal_between: "Goal among"
+        between_expires_at: "They expired between"
+        between_online_at: "They entered the air between"
+        between_updated_at: "Updated between"
+        by_user_email: "Director`s email"
+        id: ID
+        name: "Title"
+        user_id: "User ID"
+        goal: "Goal"
+        total_contributions: "Support"
+        online_date: "Came into the air"
+        pledged: "Reached"
+        recommended: "Recommended?"
+        state: "State"
+        no_projects: "No projects found"
+        menu: "Admin projects"
+        title: "Project management"
+        total_projects: "Business"
+        expires_at: "Ends at"
+        category: "Category"
+        order_table: "Sort table"
+        order_date: "Send date"
+
+    actions:
+      confirm: "Confirm"
     financials:
       index:
-        submit: 'Filter'
-        by_state: 'By state'
+        id: ID
+        name: "Title"
+        user: "MoIP User"
+        user_id: "User ID"
+        goal: "Goal"
+        total_payment_service_fee: "MP rate"
+        total_catarse_fee: "JVN Rate"
+        zero_fee: "Support without fee?"
+        repass_value: "Vl. Pass through"
+        expires_at: "Ends"
+        online_date: "Came into the air"
+        pledged: "Reached"
+        recommended: "Recommended?"
+        state: "state"
+        menu: "Financial Relation"
+        title: "Financial reports"
+        contribution_report: "Report of supporters"
+        search_report: "Search Report"
+        total_projects: "Business"
+        between_expires_at: "They expired between"
+        submit: "Filter"
+        by_state: "By state"
         by_progress: By progress %
+        details:
+          name: "Social reason"
+          bank_data: "Bank data"
+          document: "CPF / CNPJ"
+          email: "E-mail"
+          state_inscription: "State Incentive"
+          address: "Address"
+          phone_number: "Phone"
+          permalink: "Project Permalink"
     users:
       index:
         title: "Management contributions"
@@ -38,35 +98,70 @@ en:
         user: User
         value: Value
         provider: Provider
+        payer_email: Payment Email
     contributions:
       messages:
         successful:
-          confirm: 'Contribution confirmed!'
-          pendent: 'Contribution unconfirmed!'
-          refund: 'Contribution refunded!'
-          change_reward: 'Reward changed!'
-          hide: 'Contribution hidden!'
-          cancel: 'Contribution canceled!'
-          push_to_trash: 'Contribution deleted!'
+          confirm: "Contribution confirmed!"
+          pendent: "Contribution unconfirmed!"
+          refund: "Contribution refunded!"
+          change_reward: "Reward changed!"
+          hide: "Contribution hidden!"
+          cancel: "Contribution canceled!"
+          push_to_trash: "Contribution deleted!"
+          request_refund: "Refund requested successfully!"
+      show:
+        contribution_info: "Info of contribution %{key}"
+        payment_id: "Payment ID"
+        payment_method: "Payment method"
+        payment_fee: "Payment method fee"
+        payment_choice: "Payment choice"
+        payer_email: "Payer email"
+        user_email: "Catarse user email"
+        created_at: "Created at"
+        successful: "Successful"
       index:
-        send_refund_request_contribution: 'Send refund request'
-        push_to_trash: 'Delete contribution'
-        cancel: 'Cancel contribution'
-        refund_and_hide: 'Refund and hide'
-        contribution_info: 'Info of contribution %{key}'
-        payment_id: 'Payment ID'
-        payment_method: 'Payment method'
-        payment_fee: 'Payment method fee'
-        payment_choice: 'Payment choice'
-        payer_email: 'Payer email'
-        user_email: 'Catarse user email'
-        pending_to_refund: 'Pending to refund'
-        created_at: 'Created at'
+        details:
+          payer_email: "Payment medium email"
+          normal_email: "E-mail no JVN"
+          payment_id: "Payment ID"
+          acquirer_tid: "TID Operator"
+          payment_method: "Means of Payment"
+          payment_choice: "Payment option"
+          acquirer_name: "Card Operator"
+          installments: "Plots"
+          created_at: "Started in"
+        placeholders:
+          project: "Permalink or project name"
+          acquirer: "Cardholder Name"
+          user: "ID, Name, Email or Payment Email"
+          payment_id: Key, Payee ID or TID from operator
+        last_state: "previous state"
+        acquirer: "Operator"
+        payment_tax: "Means of payment rate"
+        project_state: "Project status"
+        send_refund_request_contribution: "Submit Refund Request"
+        payer_email: "Payment medium email"
+        payment_id: "Payment Id"
+        user_email: "Email used to JVN"
+        push_to_trash: "Delete contribution"
+        cancel: "Cancel contribution"
+        between_values: "Values ​​between"
+        by_state: "state"
+        refund_and_hide: "Refund and hide"
+        pending_to_refund: "Pending to refund"
+        confirm_contribution: "Confirm contribution"
+        unconfirm_contribution: "Unconfirm contribution"
+        refund_contribution: "Reverse contribution"
+        request_refund: "Request Refund"
+        direct_refund: "Direct Refund"
         title: "Contributions management"
+        state: "current state"
         menu: Contributions
         anonymous: Anonymous?
+        contribution: Contribution
         confirmed: Confirmed?
-        credits: "Used credits?"
+        credits_html: "Used credits? &nbsp;"
         id: ID
         key: Key
         no_contributions: "No contributions found."
@@ -80,8 +175,6 @@ en:
         total_contributors: contributors
         total_contributions: contributions
         total_users: Users
-        user: User
-        value: Value
     statistics:
       index:
         menu: "Statistics"
@@ -93,6 +186,8 @@ en:
         total_projects: "Projects"
         total_projects_success: "Successful"
         total_projects_online: "Online"
+      projects_in_analysis_by_week:
+        title: "Projects submitted for curation per week"
       projects_by_week:
         title: "Projects sent per week"
         current_period: "Last 8 weeks"
@@ -103,7 +198,9 @@ en:
         current_period: "Last 8 weeks"
         previous_period: "Previous 8 weeks"
         last_year: "Last year"
-
+      charts:
+        current_period: "Last 8 weeks without."
+        last_year: "Last year"
   channels:
     admin:
       <<: *admin

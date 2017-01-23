@@ -1,0 +1,70 @@
+en:
+  projects:
+    index_header:
+      subtitle: Fund projects collaboratively and become part of something larger. Promote a collective catharsis! You are the missing piece in this story.
+      title: Make projects happen that you believe in
+    index:
+      title: 'JVN'
+      back_a_project: 'Support a project'
+      banner_before: 'Remove '
+      banner_words:
+        0: 'Dreams'
+        1: 'Disks'
+        2: 'Exhibitions'
+        3: 'researches'
+        4: 'Carnivals'
+        5: 'Photos'
+        6: 'theater performances'
+        7: 'Documentaries'
+        8: 'Books'
+        9: 'Shows'
+        10: 'Passions'
+        11: 'Encounters'
+        12: 'Music'
+        13: 'products'
+        14: 'Attitudes'
+        15: 'movies'
+        16: 'Comic books'
+        17: 'Gift ideas'
+      banner_after: ' Of paper'
+      see_all: 'See all'
+      near_you: 'Next to you'
+      recents: Recent Updates
+      blog: Blog Archive
+      expiring: In the final stretch
+      recommended: Popular
+      banner_subtitle: 'Music, comics, cinema, social impact, technology and more. Get to know, inspire and support projects.'
+      box:
+        by: by
+        when: in
+      banner: "Know the research"
+      explore: "Explore projects"
+      links:
+        channels: "Discover the Channel Wings"
+        recommended: "Discover Recommended Projects"
+        expiring: "Discover projects in the final stretch"
+        recents: "Discover recent projects"
+        near: "Discover projects near you"
+      sidebar:
+        titles:
+          blog: blog
+          facebook: "Did you like our face?"
+          newsletter: "Subscribe to our news"
+          faq: "Are you sure?"
+          schedule: appointment book
+        placeholders:
+          email: "Type your e-mail"
+        buttons:
+          newsletter: To send
+      sections:
+        near:
+          title: 'Next to me'
+        recommended:
+          title: 'Popular'
+        expiring:
+          title: "In the final stretch"
+        recents:
+          title: "Recent Updates"
+        channels:
+          title: 'Canal Asas'
+

@@ -39,8 +39,9 @@ gem 'mixpanel_client'
 
 # Payment engines
 
-gem 'catarse_pagarme', '~> 2.10.0'
+gem 'catarse_pagarme', '~> 2.10.1'
 #gem 'catarse_pagarme', path: '../catarse_pagarme'
+gem 'esewa'
 
 # Decorators
 gem 'draper'
@@ -105,11 +106,11 @@ group :production do
 
   # Enabling Gzip on Heroku
   # If you don't use Heroku, please comment the line below.
-  gem 'heroku-deflater', '>= 0.4.1'
+  # gem 'heroku-deflater', '>= 0.4.1'
 
   # Make heroku serve static assets and loggin with stdout
   #gem 'rails_on_heroku'
-  gem 'rails_12factor'
+  # gem 'rails_12factor'
 
   # Monitoring with the new new relic
   gem 'newrelic_rpm'

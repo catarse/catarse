@@ -1,0 +1,141 @@
+en:
+  users:
+    balance:
+      debit: 'debit'
+      credit: 'credit'
+      totals: 'Balance '
+      withdraw: "To withdraw money"
+      withdraw_cta: '$ Perform Cash Out'
+      success_message: 'Your withdrawal was successfully requested. In up to 10 business days your money will be in your bank account!'
+      bank:
+        account: "Account:"
+        name: 'Name / Company Name:'
+        cpf_cnpj: 'CPF / CNPJ:'
+        bank_name: 'Bank:'
+        agency: 'Agency'
+    profile:
+      user_since: "Arrived together on %{date}"
+      no_project_contribution: "Has not yet supported projects"
+      single_project_contribution: "Supported 1 project"
+      multiple_project_contribution: "Supported %{n_projects} projects"
+      single_project_created: " And has already created 1 project"
+      multiple_project_created: " And already created %{n_projects} projects"
+    contribution_row:
+      anonymous: I want my support not to be public
+      print_slip: Print Ticket
+      slip_copy: Generate 2nd via
+      show_receipt: 'View Receipt'
+      contributed_projects: "Projects I supported"
+      contribution_value: "Value of support"
+      contribution_status: "Support Status"
+      request_refund: 'Request refund'
+      reward: Reward
+      no_reward: "You have not selected a reward"
+      delivery_estimate: "Estimated delivery:"
+    card:
+      twitter_profile: "Twitter Profile"
+      facebook_profile: "Facebook Profile"
+      author_website: "Site"
+      contact_author: "Send message"
+    failed_reactivation: "The reactivation link is invalid, please contact our team."
+    reactivated: "Welcome back, your account has been reactivated."
+    project:
+      confirmed: "Confirmed"
+      refunded: "Refunded"
+      requested_refund: "Refund requested"
+      waiting_confirmation: "Waiting confirmation"
+      tell_about_this_contribution: Tell the world about your support!
+    credit_cards:
+      index:
+        last_digits: 'Card'
+        brand: 'Operator'
+        title: 'Credit cards'
+        remove: 'To remove'
+    credits:
+      modal:
+        title: 'Do you really want to request a refund of your support?'
+        text: "Learn how the reimbursement process works in JVN:"
+        link: "Rules and Functioning of Refunds / Charges"
+        reject_btn: "No, I want to keep my credits"
+        accept_btn: "Yes, I would like to request a refund of my"
+      index:
+        contribution_date: "Date of support"
+        current_credits_html: "Your current balance is <span id=\"current_credits\"> %{credits} </span> in credits."
+        important_html: "To know all the rules of refund operation, <a href='http: //suporte.catarse.me/hc/en/articles/202365507-Regras-and-rebursements-results-results' target='_blank'> click here </a>. Any questions, please visit our <a href='http://suporte.catarse.me' target='_blank'> support </a>."
+        project: Project
+        refunded: "Request confirmed. We will contact you within 4 working days"
+        insufficient_credits: "You do not have enough credits to complete this chargeback."
+        refunds_title: "Supports that can be reversed"
+        request_refund: "Request a refund"
+        requested_refund: "Requested Reversal"
+        status: Status
+        title: "My credits"
+        value: Value
+      refund:
+        cannot_refund: "This support can not be reversed."
+        error: "Oops. There was an error requesting your chargeback."
+        no_credits: "You do not have enough credits to complete this chargeback."
+        refunded: "This support has already been reversed."
+        requested_refund: "You have already requested a chargeback for this support."
+      title: "My credits"
+    current_user_fields:
+      bank_account_title: "Bank data"
+      bank_account_hint: "Your bank details will be used to make the full refund of your support, if the project does not reach 100% of the established goal."
+      my_facebook: 'Integration with facebook'
+      newsletter: "I want to receive news from JVN by email"
+      password_hint: "<i>Leave blank if you do not want to change your password</i>"
+      deactivate: "Disable my account"
+      deactivate_notice: "The account for %{name} has been disabled."
+      deactivate_confirm: "Do you want to disable this account?"
+      deactivate_hint: "All your support will be converted into anonymous backups, your data will no longer be visible, you will automatically exit the system and your account will be permanently disabled."
+      bio_limit: 'only 140 characters'
+      updated: "Your information has been updated"
+      update_social_info: "Update info"
+      social_info: "Contact info"
+      twitter: "Twitter ( username )"
+      facebook_link: "Facebook profile (full link)"
+      other_link: "another Internet page"
+      change_password: "Change my password"
+      current_password_hint: "<i>We need your current password to confirm your changes.</i>"
+      email_hint: "Your email will only be used for communications from Catarse and the projects you contributed to. It won't be visible in your profile. When you contribute a project, we will give your email to the project owner so they can provide your rewards."
+      email_tooltip: "Click here to fill your email..."
+      gravatar_hint_html: "Want to change your picture? Use %{link} with your email. It's as simple as uploading an image and works for other sites as well ;)"
+      local_avatar: "My avatar"
+      submit_text: "Choose your picture"
+      submit: "Submit"
+      my_data: "My profile"
+      newsletter: "I want to receive news from Catarse via email"
+      password_hint: "<i>Leave blank if you don't want to change this.</i>"
+    unsubscribes:
+      projects_in_reminder: "Projects with active reminder:"
+      title: "Choose which projects you'd like to receive notifications:"
+      posts: "I want to receive project updates"
+    show:
+      projects:
+        here: 'on here'
+        no_projects: "%{name} has not yet performed any projects on JVN. Is the inspiration going to hit an hour like this?"
+        no_projects_current_user_html: "You have not done any projects in Catarse yet. Let the inspiration beat and click %{link} to get started!"
+        title: "%{name} Projects"
+        title_current_user: "My projects"
+      contributions:
+        anonymous: "Anonymous contribution."
+        no_contributions: "%{name} hasn't contributed to any project yet. But we know it's just a matter of time! :D"
+        no_contributions_current_user_html: "You haven't contributed tp any projects yet. Don't you think it's <a href=\"/\">time to start</a>?"
+        no_reward: "You didn't pick a reward"
+        title: "Projects %{name} has contributed"
+        # TODO: Not sure what the context is for this. "Project has been contributed to?" Or "has contributions"?
+        title_current_user: "Projects I've contributed to"
+        your_reward: "Your reward"
+      attention: Attention
+      tabs:
+        credit_cards: Credit cards
+        contributed_projects: "Contributed projects"
+        created_projects: "Created projects"
+        comments: Comments
+        credits: Credits
+        settings: Settings
+        unsubscribes: Notifications
+      user_social:
+        email: "Send me an email"
+        facebook: "Profile on Facebook"
+        twitter: "Profile on Twitter"

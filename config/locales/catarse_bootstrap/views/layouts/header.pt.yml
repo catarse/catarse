@@ -20,4 +20,20 @@ pt:
       logout: Sair
       my_credits: Saldo de créditos
       refund_link: Solicitar reembolso
+      email_text: Seu e-mail de cadastro é
+      my_history: Meu histórico
+      support_history: Histórico de apoio
+      projects_created: Projetos criados
+      settings: Configurações
+      about_you: Sobre você
+      notifications: Notificações
+      data_address: Dados e endereço
+      bank_cards: Banco e cartões
+      users: Usuários
+      support: Apoios
+      financial_rel: Rel. Financeiros
+      admin_projects: Admin projetos
+      change_email: alterar e-mail
+
+
 

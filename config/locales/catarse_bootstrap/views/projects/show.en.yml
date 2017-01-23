@@ -1,0 +1,137 @@
+en:
+  projects:
+    about_mobile:
+      by: 'by'
+      back: '< Come back'
+    project_embed:
+      insert: 'Insert a widget on your site'
+    mobile_video:
+      read_more: "read more"
+    metrics:
+      titles:
+        confirmed_by_day: 'Total supports confirmed per day'
+        confirmed_amount_by_day: 'Total collected per day'
+        address_state: 'Total support confirmed by State'
+    reminder:
+      ok: 'OK! We`ll email you a reminder 48 hours before the end of the campaign'
+      active_btn: 'Remind me of this project'
+      deactive_btn: 'I do not want to be remembered anymore'
+    announce_expiration: 'His project was for the final stretch.'
+    announce_expiration_error: 'The final line has already been defined!'
+    send_to_analysis: Your project was sent to our team.
+    send_to_analysis_error: Error submitting project for review. Fill in all required fields.
+    push_to_online: Your project is online!
+    push_to_online_error: Error putting the project online. Fill in all required fields.
+    twitter:
+      take_a_look: Check out the project %{name} on @JVN
+    video_embed:
+      a_project_by_html: A %{link} project in the
+    posts:
+      project_post:
+        exclusive: 'Exclusive post for supporters.'
+        unavailable: This news is only available to supporters.
+        contribute: Contribute
+        unavailable_contribute: This project to view it.
+        destroy: Remove New
+        destroy_confirmation: Do you want to remove this news?
+      new:
+        notice: New successfully sent!
+        comment: Text of your news
+        exclusive: Visible only to supporters
+        submit: Submit News
+        title: Title of your news
+        warning: Remember that every novelty post goes directly to the email of their supporters. So please review your text before submitting it.
+    project_reports:
+      all_contributions_without_reward: Download report from all supporters who did not select a reward
+      link_reports_confirmed: Download report of all confirmed supporters
+      link_reports_waiting_confirmation: Download report from all supporters with printed ticket
+      link_reward: Download reward report from %{value}
+    project_about:
+      embed: < embed >
+      embed_title: Embed this design on your website
+      active_btn: ' Remember Me Forgot your password?'
+      deactive_btn: ' Active Reminder'
+    show:
+      menu:
+        panel_html: "&nbsp;&nbsp;Control panel"
+        about: On
+        add_reward: Add reward
+        comments: Comments
+        contributions: Support
+        metrics: Metrics
+        edit: Edition
+        reports: Reports
+        posts: News
+    project_sidebar:
+      contributors_call: 'Supported by '
+      contributors_count:
+        one: '1 person'
+        other: '{{count}} person'
+      remaining_time:
+        days:
+          one: ' Remaining day'
+          other: ' Days Remaining'
+        hours:
+          one: ' Remaining time'
+          other: ' hours left'
+        minutes:
+          one: ' Remaining minute'
+          other: ' Minutes remaining'
+        seconds:
+          one: ' Second remaining'
+          other: ' Seconds left'
+        dias:
+          one: ' Remaining day'
+          other: ' Days Remaining'
+        horas:
+          one: ' Remaining time'
+          other: ' hours left'
+        minutos:
+          one: ' Remaining minute'
+          other: ' Minutes remaining'
+        segundos:
+          one: ' Second remaining'
+          other: ' Seconds left'
+        dia: ' Remaining day'
+        hora: ' Remaining time'
+        minuto: ' Remaining minute'
+        segundo: ' Second remaining'
+      submit: Support this project
+      display_status:
+        approved: "This project has already been approved by Catarse. Soon he will be on the air and ready to receive support."
+        online: "You can support this project by the day %{date} at 23:59:59"
+        failed: "This project did not reach the minimum of %{goal} through %{date} and was not funded"
+        rejected: "This project was not accepted. Can not support."
+        in_analysis: "This project is under review and is not yet open for support."
+        successful: "This project was successful and was funded on %{date}"
+        waiting_funds: "The deadline for capturing this project is closed. We are awaiting confirmation of the latest payments."
+        draft: "This project is only a draft and still can not receive support."
+      submit: Support this project
+    project_main:
+      post_call: 'All news published in the Catarse is sent directly to the email of who has already supported his project and is also available for viewing on the site. You can choose to leave it public, or visible only to your supporters here on this tab.'
+      send_post: 'Writing novelty'
+      share: "Share"
+      tweet: "Tweet"
+      project_by: Project by
+      funding_period: Campaign period
+      project_header:
+        subtitle_html: "A %{link}"
+        without_city: "A project of"
+        with_city: "A %{category_name} project by %{author} in %{city}"
+      menu:
+        about: On
+        add_reward: Add reward
+        comments: Comments
+        contributions: Support
+        metrics: Metrics
+        edit: Edition
+        reports: Reports
+        posts: News
+      no_rewards_warning: "Do not travel! Think about how you will deliver them and put everything This in the budget. Prometheus? COMPLY : D"
+      no_rewards_warning_title: Create your rewards here
+      contribution_states:
+        confirmed: "Confirmed"
+        pending: "Pending"
+      sidebar:
+        contributions: Supports
+        goal: Reach of %{total}

@@ -1,13 +1,382 @@
 en:
   activerecord:
+    models:
+      channel: Channel
+      project: Project
+      flexible_project: Project
+      reward: Reward
+      contribution: Support
+      category: Category
+      bank_account: Bank data
+    attributes:
+      project_account:
+        address_city: City
+        address_complement: Complement
+        address_neighbourhood: Neighborhood
+        address_number: Number
+        address_state: state
+        address_street: Address
+        address_zip_code: CEP
+        cpf: 'CPF / CNPJ '
+        state_inscription: 'State Registration'
+        email: Email
+        full_name: "Full Name / Company Name"
+        phone_number: "Phone"
+        bank: 'Bank'
+        bank_id: 'Bank'
+        owner_name: 'Cardholder Name'
+        owner_document: 'CPF of bank account holder'
+        agency: 'Agency'
+        agency_digit: 'Agency digit'
+        account: 'Account No.'
+        account_digit: 'Account Digit'
+        account_type: 'Account Type'
+      bank_account:
+        account_type: 'Account Type'
+        input_bank_number: "Bank Number"
+        bank: 'Bank'
+        bank_id: 'Bank'
+        owner_name: 'Cardholder Name'
+        owner_document: 'CPF / CNPJ of the holder'
+        agency: 'Agency'
+        agency_digit: 'Agency digit'
+        account: 'Account No.'
+        account_digit: 'Account Digit'
+      payment:
+        state: 'Status'
+      contribution:
+        payer_name: "Full Name / Company Name *"
+        payer_email: "Email"
+        payer_document: "CPF or CNPJ"
+        country: "Parents"
+        address_street: "Street"
+        address_number: "Number"
+        address_complement: "Complement"
+        address_neighbourhood: "Neighborhood"
+        address_state: "state"
+        address_city: "City"
+        address_zip_code: "CEP"
+        address_phone_number: "Phone"
+        value: Value of support
+        reward: Reward
+        project: project
+      reward:
+        deliver_at: Delivery forecast
+      flexible_project:
+        name: 'Project name'
+        channels: Channels
+        category: Category
+        expires_at: Deadline
+        online_days: "Deadline for collection"
+        headline: "Catchphrase"
+        image_url: "Image URL"
+        name: "Project name"
+        goal: "Amount to be collected"
+        about_html: "Project description"
+        user_id: "User ID"
+        service_fee: 'JVN rate'
+        video_url: "Video URL"
+        permalink: 'Link to your project on JVN'
+        all_tags: 'Admin Tags'
+        all_public_tags: 'Tags'
+        city: 'Project Location'
+        more_links: 'Indicate links so people know more about your project and its trajectory.'
+        traffic_sources: 'How did you know about JVN?'
+        first_contributions: "Who are the first people you're going to ask to support your project? "
+        budget: 'Project budget'
+        uploaded_image: 'Image of the project'
+      project:
+        name: 'Project name'
+        channels: Channels
+        category: Category
+        expires_at: Deadline
+        online_days: "Deadline for collection"
+        headline: "Catchphrase"
+        image_url: "Image URL"
+        name: "Project name"
+        goal: "Amount to be collected"
+        about_html: "Project description"
+        user_id: "User ID"
+        service_fee: 'JVN rate'
+        video_url: "Video URL"
+        permalink: 'Link to your project on JVN'
+        all_tags: 'Admin Tags'
+        all_public_tags: 'Tags'
+        city: 'Project Location'
+        more_links: 'Indicate links so people know more about your project and its trajectory.'
+        traffic_sources: 'How did you know about JVN?'
+        first_contributions: "Who are the first people you're going to ask to support your project? "
+        budget: 'Project budget'
+        uploaded_image: 'Image of the project'
+      user:
+        address_city: City
+        address_complement: Complement
+        address_neighbourhood: Neighborhood
+        address_number: Number
+        address_state: state
+        address_street: Address
+        address_zip_code: CEP
+        cpf: 'CPF / CNPJ '
+        cpf_hint: '(?)'
+        state_inscription: 'State Registration'
+        current_password: "current password"
+        email: Email
+        full_name: "Full Name / Company Name"
+        bio: 'Mini Bio'
+        name: "Nickname"
+        newsletter: 'I want to receive news from JVN'
+        password: password
+        password_confirmation: "Password Confirmation"
+        phone_number: "Phone"
+        cpf_hint_title: Invoice will be issued for this document
+        id: ID
+        moip_login: MoIP Login
+        moip_login_hint: "(How to create an account)"
+        reset_password_token: "Link to recreate password"
+      channel:
+        ga_code: Analytics code
+        description: Description
+        how_it_works: How it works
+        image: Image of novelty
+        name: Name
+        video_url: Video
+      channel_partner:
+        name: 'Name'
+        url: 'Site'
+        image: 'Image'
+      project_post:
+        title: 'Title'
+        comment: 'Text'
+      channel_post:
+        title: 'Title'
+        body: 'Content'
+        visible: 'Publish (check if you want to publish this novelty)'
     errors:
       models:
+        payment:
+          duplicate: "Your payment is already being processed"
+        contribution: "Error saving contribution"
+        bank_account:
+          invalid: "Invalid Account"
+          attributes:
+            bank:
+              blank: 'Bank can not be empty'
+            owner_name:
+              blank: 'Holder name can not be empty'
+              invalid: 'Enter a name with a minimum of 5 and a maximum of 30 letters'
+            owner_document:
+              blank: 'CPF / CNPJ of the holder can not be left blank'
+              invalid: 'Invalid CPF / CNPJ'
+            agency:
+              blank: 'Agency can not be left blank'
+              invalid: 'Invalid Agency'
+            account:
+              blank: 'Account No. can not be empty'
+            account_digit:
+              blank: 'Account digit can not be empty'
+              invalid: 'Invalid account digit'
+            agency_digit:
+              blank: 'Agency digit can not be empty'
+              invalid: 'Invalid agency digit'
+        project_account:
+          invalid: 'Account is not valid'
+          attributes:
+            full_name:
+              blank: "User's social reason can not be left blank"
+            email:
+              blank: "User email can not be empty"
+              invalid: "Invalid user email"
+            cpf:
+              blank: "User CPF can not be left blank"
+              invalid: "Invalid CPF"
+            address_street:
+              blank: "User address can not be left blank"
+            address_number:
+              blank: "Number at user address can not be empty"
+            address_city:
+              blank: "User city can not be left blank"
+            address_state:
+              blank: "User state can not be empty"
+            address_zip_code:
+              blank: "User zip code can not be left blank"
+            phone_number:
+              blank: "User's phone can not be empty"
+            bank:
+              blank: "User bank can not be empty"
+            agency:
+              blank: "User Agency can not be left blank"
+              invalid: "Invalid Agency"
+            agency_digit:
+              blank: "User agency digit can not be empty"
+            account:
+              blank: "User account No. can not be empty"
+              format: "Invalid user account no"
+            account_digit:
+              blank: "User account digit can not be empty"
+            owner_name:
+              blank: "Username can not be empty"
+            owner_document:
+              blank: "CPF / CNPJ of the user's title can not be left blank"
+              not_same: "CPF / CNPJ of the cadastral and banking data filled in are not the same."
+            account_type:
+              blank: "Account type can not be empty"
+        flexible_project:
+          attributes:
+            rewards:
+              at_least_one: 'There must be at least one reward'
+            city:
+              blank: Project location can not be left blank
+            video_url:
+              blank: 'Project video can not be empty'
+            budget:
+              blank: 'Project budget can not be left blank'
+            uploaded_image:
+              blank: 'Project image can not be empty'
+            name:
+              too_long: "Project name is too long (max: 50 characters)"
+              blank: "Project name can not be empty"
+            permalink:
+              blank: "Project URL can not be empty"
+              invalid: "The project URL is invalid"
+              taken: "This project URL already exists"
+            category:
+              blank: "You must choose a category for your project"
+            goal:
+              blank: "Goal value can not be empty"
+              greater_than: "Goal must be greater than 9"
+              not_a_number: "Collection goal only accepts numbers"
+            online_days:
+              blank: "The collection period can not be left blank"
+              greater_than: "The deadline for collection must be greater than 2 days"
+              less_than_or_equal_to: "The collection deadline must be less than or equal to 365 days for flex projects and less than or equal to 60 days for all-or-none projects"
+              not_a_number: "The deadline for collection must be a number of days"
+            about_html:
+              blank: "Project description can not be empty"
+            headline:
+              blank: "The design effect phrase can not be left blank"
+              too_long: "The effect phrase is too long. You can use up to 140 characters."
         project:
           attributes:
+            rewards:
+              at_least_one: 'There must be at least one reward'
+            city:
+              blank: Project location can not be left blank
+            video_url:
+              blank: 'Project video can not be empty'
+            budget:
+              blank: 'Project budget can not be left blank'
+            uploaded_image:
+              blank: 'Project image can not be empty'
+            name:
+              too_long: "Project name is too long (max: 50 characters)"
+              blank: "Project name can not be empty"
             permalink:
-              invalid: Invalid project URL
+              blank: "Project URL can not be empty"
+              invalid: "The project URL is invalid"
+              taken: "This project URL already exists"
+            category:
+              blank: "You must choose a category for your project"
+            public_tags:
+              less_than_or_equal_to: 'Total tags must be less than or equal to 5'
+            goal:
+              blank: "Goal value can not be empty"
+              greater_than: "Goal must be greater than 9"
+              not_a_number: "Collection goal only accepts numbers"
+            online_days:
+              blank: "The collection period can not be left blank"
+              greater_than: "The deadline for collection must be greater than 2 days"
+              less_than_or_equal_to: "The deadline for collection must be less than or equal to 60 days for all-or-none projects and less than or equal to 365 days for flex projects"
+              not_a_number: "The deadline for collection must be a number of days"
+            about_html:
+              blank: "Project description can not be empty"
+            headline:
+              blank: "The design effect phrase can not be left blank"
+              too_long: "The effect phrase is too long. You can use up to 140 characters."
         user:
           attributes:
             email:
-              not_found: "Email not found, please sign up"
-              taken: "Email has already been taken"
+              not_found: "Email is not registered, verify the address or make your registration"
+              taken: "Email is already registered, sign in"
+              invalid: "This email address is invalid"
+              blank: "Email can not be empty"
+            password:
+              too_short: "The password is too short. At least 6 characters"
+              confirmation: "The completed password and password confirmation are not the same"
+              blank: "Password can not be left blank"
+            current_password:
+              invalid: "Current password is not valid"
+            reset_password_token:
+              invalid: 'Token has expired. Go to <a href="/password/new" class="alt-link"> reset password </a> and ask to reset the password again.'
+            name:
+              blank: "Username can not be empty"
+            about_html:
+              blank: "About you can not be left blank"
+            uploaded_image:
+              blank: "User image can not be empty"
+  project:
+    update:
+      success: Information was updated
+      failed: 'Your information has not been saved, please verify that all fields have been filled out correctly'
+    delete:
+      posts: 'New successfully deleted'
+    video_regex_validation: Only Youtube or Vimeo URLs are accepted
+  payment:
+    state:
+      pending: "Awaiting payment confirmation"
+      paid: "Confirmed on %{date}"
+      refunded: "Refunded on %{date}"
+      pending_refund: "Refund requested on %{date}"
+      refused: "Payment declined on %{date}"
+      chargeback: "chargeback"
+  contribution:
+    payment_details:
+      desconhecido: ""
+      credits: "Credits"
+      bank_slip: "Bank Slip"
+      credit_card: "Credit card"
+      bank_debit: "Bank debit"
+      debit_card: "Debit card"
+      bank_transfer: "Bank transfer"
+      moip_portfolio: "MoIP Portfolio"
+      banking_financing: "Banking Financing"
+    project_should_be_online: You can not support a project that is not in the air.
+    reward_must_be_from_project: Must be from the same project
+    should_not_contribute_if_maximum_contributions_been_reached: Already reached your maximum number of supporters
+    value_must_be_at_least_rewards_value: Must be at least %{minimum_value} for the selected reward
+  contribution_report_to_project_owner:
+    reward_description: Reward Description
+    deliver_at: Reward submission date
+    confirmed_at: Payment Confirmation Date
+    contribution_value: Value of support
+    service_fee: JVN Rate
+    user_name: Supporter's name
+    user_email: Email profile JVN
+    cpf: Supporter Cpf
+    payer_email: Payment medium email
+    gateway: Means of Payment
+    street: Street
+    address_number: Number
+    complement: Complement
+    neighbourhood: Neighborhood
+    city: city
+    address_state: state
+    zip_code: CEP
+    anonymous: Anonymous
+  user:
+    no_name: Unnamed
+    contributions_text:
+      many: "Supported this and more %{total} projects"
+      one: "Only supported this project so far"
+      two: "He supported this and 1 other project"
+  channels_subscribers:
+    created: 'You now follow the %{channel}'
+    deleted: 'You have stopped following %{channel}'
+  channels:
+    edit: Update channel
+    image_hint: Maximum size (600x121px)
+    subscribed: "+ %{count} Followers"
+    back_to_news: '← Back to the news'
+    follow: "Follow the channel"
+    following: "Following"
+    unfollow: "Unfollow"
+    subscribed: "%{count} Following the channel"

@@ -1,0 +1,20 @@
+- content_for :title, t('.title')
+= render 'shared/header_big'
+
+.page-header.negative.u-marginbottom-40
+  .w-container
+    h1.fontsize-largest.u-text-center = t('.title')
+
+.section-one-column
+  .w-container
+    .headline = t('.content.explanation')
+    p.fontsize-base = t('.content.explanation_text').html_safe
+    p.fontsize-base.u-marginbottom-60 = t('.content.explanation_text_cont').html_safe
+
+    .headline = t('.content.email')
+    p.fontsize-base.u-marginbottom-60 = t('.content.email_text').html_safe
+
+    .headline = t('.content.update')
+    p.fontsize-base.u-marginbottom-60 = t('.content.update_text').html_safe
+
+= render 'shared/footer_big'
