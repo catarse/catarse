@@ -117,6 +117,7 @@ class UsersController < ApplicationController
   private
 
   def update_user
+    params[:user][:confirmed_email_at] = DateTime.now if params[:user].try(:[], :confirmed_email_at).present?
     email_update?
     drop_and_create_subscriptions
     update_reminders
