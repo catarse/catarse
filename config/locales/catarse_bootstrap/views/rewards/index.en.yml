@@ -13,7 +13,7 @@ en:
     index:
       link_tip: "The above link leads to the contribution page with this reward already selected."
       select_reward: "Select this reward"
-      display_remaining: "%{Remaining} of %{maximum} available"
+      display_remaining: "%{remaining} of %{maximum} available"
       dont_want: "I do not want any reward"
       or_more: "or more"
       limited: Limited
