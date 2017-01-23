@@ -142,7 +142,7 @@ class Project < ActiveRecord::Base
   scope :in_funding, -> { not_expired.with_states(['online']) }
   scope :name_contains, ->(term) { where("unaccent(upper(name)) LIKE ('%'||unaccent(upper(?))||'%')", term) }
   scope :user_name_contains, ->(term) { joins(:user).where("unaccent(upper(users.name)) LIKE ('%'||unaccent(upper(?))||'%')", term) }
-  scope :to_finish, ->{ expired.with_states(['online', 'waiting_funds']) }
+  scope :to_finish, ->{ expired.where(skip_finish: false).with_states(['online', 'waiting_funds']) }
   scope :visible, -> { without_states(['draft', 'rejected', 'deleted']) }
   scope :expired, -> { where("projects.is_expired") }
   scope :not_expired, -> { where("not projects.is_expired") }
@@ -186,10 +186,6 @@ class Project < ActiveRecord::Base
   ##validation for all states
   validates_presence_of :name, :user, :category, :service_fee
   validates_length_of :headline, maximum: HEADLINE_MAXLENGTH
-  validates_numericality_of :online_days, less_than_or_equal_to: 60, greater_than_or_equal_to: 1,
-    if: ->(p){ !p.is_flexible? && p.online_days.present? && ( p.online_days_was.nil? || p.online_days_was <= 60 ) }
-  validates_numericality_of :online_days, less_than_or_equal_to: 365, greater_than_or_equal_to: 1,
-    if: ->(p){ p.is_flexible? && p.online_days.present? && ( p.online_days_was.nil? || p.online_days_was <= 365 ) }
   validates_numericality_of :goal, greater_than: 9, allow_blank: true
   validates_numericality_of :service_fee, greater_than: 0, less_than_or_equal_to: 1
   validates_uniqueness_of :permalink, case_sensitive: false
