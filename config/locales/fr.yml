@@ -40,7 +40,6 @@ fr:
     service_fee: 'Honoraires Catarse'
     user_name: 'Nom du bailleur'
     user_email: "Email de l'utilisateur Catarse"
-    payer_email: 'Email utilisateur pour passerelle de paiement'
     payment_method: 'Méthode de paiement'
     address_street: 'Rue'
     address_complement: 'Complément'

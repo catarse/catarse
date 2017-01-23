@@ -266,7 +266,6 @@ fr:
     user_name: Nom du donateur
     user_email: Email du profil Catarse
     cpf: Cpf du donateur
-    payer_email: Email du moyen de paiement
     payment_method: moyen de paiement
     street: Rue
     address_number: Numero

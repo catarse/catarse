@@ -40,7 +40,6 @@ en:
     service_fee: 'Catarse fee'
     user_name: 'Contribution name'
     user_email: 'Catarse user profile email'
-    payer_email: 'Payment gateway user email'
     payment_method: 'Payment method'
     address_street: 'Street'
     address_complement: 'Complement'
