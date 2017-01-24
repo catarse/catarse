@@ -327,7 +327,7 @@ class Project < ActiveRecord::Base
       total_contributions: self.total_contributions,
       pledged: self.pledged,
       project_state: self.state,
-      category: self.category.name_pt,
+      category: self.category.name_en,
       project_goal: self.goal,
       project_online_date: self.online_at,
       project_expires_at: self.expires_at,
@@ -347,7 +347,7 @@ class Project < ActiveRecord::Base
         state: self.city.try(:state).try(:acronym) || self.account.try(:address_state)
       },
       category_id: self.category.id,
-      category_name: self.category.name_pt,
+      category_name: self.category.name_en,
       elapsed_time: {
         total: self.elapsed_time[:time],
         unit: self.elapsed_time[:unit]
@@ -371,7 +371,7 @@ class Project < ActiveRecord::Base
       posts_count: self.total_posts,
       pledged: self.pledged,
       project_state: self.state,
-      category: self.category.name_pt,
+      category: self.category.name_en,
       online_date: self.online_at,
       online_days: self.online_days,
       name: self.name,

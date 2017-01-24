@@ -7,8 +7,8 @@ class Category < ActiveRecord::Base
   delegate :display_name, to: :decorator
 
 
-  validates_presence_of :name_pt
-  validates_uniqueness_of :name_pt
+  validates_presence_of :name_en
+  validates_uniqueness_of :name_en
 
   scope :with_projects_on_this_week, -> {
     joins(:projects).merge(Project.with_state('online').of_current_week).uniq

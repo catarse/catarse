@@ -2,7 +2,7 @@ en:
   devise:
     registrations:
       new:
-        have_account_html: "Have an account? <strong>%{link}</strong>"
+        have_account_html: "Have an account?"
         titles:
           site: 'Sign up'
           header: 'Sign up'

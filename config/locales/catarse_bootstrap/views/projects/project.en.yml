@@ -3,10 +3,10 @@ en:
     home:
       header_html: 'Joint Venture Nepal'
       row_title: 'Popular'
-      see_all: see all
+      see_all: more
       banners:
         1:
-          title: 'Collective financing for all'
+          title: 'Collective Financing For All'
           subtitle: ''
           link: '/start?ref=home_banner'
           cta: 'Start your campaign'
