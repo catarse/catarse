@@ -96,7 +96,7 @@ en:
         title: "%{name}, unfortunately it was not this time."
         subtitle_html: "You submitted your project for JVN review and we understand that it does not match the site profile. Having a rejected project does not prevent you from submitting new projects for evaluation or reformulating your current project. Chat with our customer service! We recommend that you take a good look at %{link1} and %{link2}."
       online:
-        title: "%{name}, your campaign is up in the air!"
+        title: "%{name}, your campaign is online!"
         subtitle_html: "Your project is running, and your campaign will close at 23:55:45 p.m. on day %{date}. Until that day and time you can receive support. Remember, it's all-or-nothing and you'll only take the funds raised if you hit the goal that was stipulated. Visit our% {link2} for other questions!"
         explanation_html: |
                     <div class='fontsize-base u-marginbottom-40 card card-terciary'>

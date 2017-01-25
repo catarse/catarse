@@ -38,7 +38,7 @@ div[itemtype="http://schema.org/CreativeWork" class="#{defined?(wrapper_class) ?
         .w-col.w-col-4.w-col-small-4.w-col-tiny-4.u-text-center-small-only
           .fontsize-smaller.fontweight-semibold 
             = @project.display_pledged
-          .fontsize-smallest.lineheight-tightest Lifted
+          .fontsize-smallest.lineheight-tightest Raised
         .w-col.w-col-4.w-col-small-4.w-col-tiny-4.u-text-right
           - unless @project.expired?
             - if @project.time_to_go[:time] > 0
