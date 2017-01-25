@@ -132,7 +132,7 @@ en:
           installments: "Plots"
           created_at: "Started in"
         placeholders:
-          project: "Permalink or project name"
+          project: "Permalink or campaign name"
           acquirer: "Cardholder Name"
           user: "ID, Name, Email or Payment Email"
           payment_id: Key, Payee ID or TID from operator

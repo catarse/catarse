@@ -38,7 +38,7 @@ en:
         edit_title: Edit Partner
       form:
         hint_image: Image Size 370x320
-        save_submit: To save
+        save_submit: Save
       index:
         new_button: Add partner
         table:
