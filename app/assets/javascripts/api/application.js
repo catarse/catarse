@@ -95,6 +95,7 @@
         view: function(ctrl){
             return m('#app', [
                 m.component(c.root.Menu, ctrl.attr),
+                m.component(c.root.CheckEmail, ctrl.attr),
                 m.component(component, ctrl.attr),
                 m.component(c.root.Footer, ctrl.attr)
             ]);
