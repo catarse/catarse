@@ -63,43 +63,42 @@ en:
       reward:
         deliver_at: Delivery forecast
       flexible_project:
-        name: 'Project name'
+        name: 'Camapign Name'
         channels: Channels
         category: Category
         expires_at: Deadline
         online_days: "Deadline for collection"
         headline: "Catchphrase"
         image_url: "Image URL"
-        name: "Project name"
         goal: "Amount to be collected"
         about_html: "Project description"
         user_id: "User ID"
         service_fee: 'JVN rate'
         video_url: "Video URL"
-        permalink: 'Link to your project on JVN'
+        permalink: 'Link to your campaign on JVN'
         all_tags: 'Admin Tags'
         all_public_tags: 'Tags'
-        city: 'Project Location'
+        city: 'Campaign Location'
         more_links: 'Indicate links so people know more about your project and its trajectory.'
         traffic_sources: 'How did you know about JVN?'
         first_contributions: "Who are the first people you're going to ask to support your project? "
-        budget: 'Project budget'
+        budget: 'Campaign budget'
         uploaded_image: 'Image of the project'
       project:
-        name: 'Project name'
+        name: 'Camapign Name'
         channels: Channels
         category: Category
         expires_at: Deadline
         online_days: "Deadline for collection"
         headline: "Catchphrase"
         image_url: "Image URL"
-        name: "Project name"
+        name: "Campaign name"
         goal: "Amount to be collected"
         about_html: "Project description"
         user_id: "User ID"
         service_fee: 'JVN rate'
         video_url: "Video URL"
-        permalink: 'Link to your project on JVN'
+        permalink: 'Link to your campaign on JVN'
         all_tags: 'Admin Tags'
         all_public_tags: 'Tags'
         city: 'Project Location'

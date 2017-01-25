@@ -160,7 +160,7 @@ class Contribution < ActiveRecord::Base
       contribution_id: self.id,
       value: self.value,
       project: {
-        category: project.category.name_pt,
+        category: project.category.name_en,
         user_thumb: project.user.decorate.display_image,
         permalink: project.permalink,
         total_contributions: project.total_contributions,

@@ -11,8 +11,8 @@ en:
       projects: My projects
       signin: Login
       signup: Signup
-      submit: Start your project
-      search: Search for projects
+      submit: Start your campaign
+      search: Search for campaigns
     login:
       login_with_facebook: Sign in using facebook
     user:

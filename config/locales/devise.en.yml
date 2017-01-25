@@ -4,7 +4,7 @@ en:
   devise:
     feedback_tab:
       title: 'Feedback and support'
-      header_html: "Welcome to <br/> Catarse's new login"
+      header_html: "Welcome to <br/> JVN's new login"
       blog_button: 'Read more'
       form_feedback_link: 'Give feedback'
       contact_link: 'Contact support'
