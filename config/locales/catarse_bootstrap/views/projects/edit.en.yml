@@ -24,7 +24,7 @@ en:
       card: 'Card'
       card_subtitle: 'Do you know that design card that appears in the home and the search? Well, it makes it nice because they say the first impression is the one that stays ;)'
       basics: 'Fill in the information below'
-      basics_subtitle: 'The data reported in this section can not be modified when the project is aired. Fill in carefully and review before launching the project. '
+      basics_subtitle: 'The data reported in this section can not be modified when the campaign is published. Fill in carefully and review before launching the campaign. '
       goal: 'Financing'
       goal_subtitle: 'Please fill in the section below because this information can no longer be changed if the project is aired.'
       reports: 'Support reports'
@@ -43,7 +43,7 @@ en:
       description: "Description:"
       limit_reward: "Limit reward"
       available: "Available quantity"
-      submit: "To save"
+      submit: "Save"
       index:
         select_reward: "Select this reward"
         display_remaining: "%{remaining} of %{maximum} available"
@@ -71,7 +71,7 @@ en:
        user_data_subtitle_html: "This data will be used for the issuance of our Nota Fiscal and for the transfer of the money, in case your project is successful."
        account_subtitle_html: "We need the data below to make the financial transfer to successful projects. <B> ATTENTION: The CPF / CNPJ listed in the cadastral data and banking data must be the same. </b>"
        account_edit_disabled_html: "The information below was informed by you at the time of publication of your project. To avoid mistakes in passing on resources, the editing of this data was blocked as soon as your project went live. If you want to change them, it's just %{link} telling you the changes you want to make."
-       submit: "To save"
+       submit: "Save"
     dashboard_home_templates:
       status: "Status:"
       project_numbers:
@@ -96,7 +96,7 @@ en:
         title: "%{name}, unfortunately it was not this time."
         subtitle_html: "You submitted your project for JVN review and we understand that it does not match the site profile. Having a rejected project does not prevent you from submitting new projects for evaluation or reformulating your current project. Chat with our customer service! We recommend that you take a good look at %{link1} and %{link2}."
       online:
-        title: "%{name}, your campaign is up in the air!"
+        title: "%{name}, your campaign is online!"
         subtitle_html: "Your project is running, and your campaign will close at 23:55:45 p.m. on day %{date}. Until that day and time you can receive support. Remember, it's all-or-nothing and you'll only take the funds raised if you hit the goal that was stipulated. Visit our% {link2} for other questions!"
         explanation_html: |
                     <div class='fontsize-base u-marginbottom-40 card card-terciary'>
@@ -120,8 +120,8 @@ en:
         questions: "We also sent an email to you with two questions. If you have the time and the head, it would be great if you could take a look. Your feedback helps us build a better and cooler JVN for you."
       draft:
         title: "%{name}, build your project!"
-        subtitle: "The more careful and well-formatted a project, the greater the chances of it being successful in its catchment campaign. Before you submit your project for our review, fill all the tabs next to it with care. You can save the changes and go back to the draft project as many times as you want. When everything is ready, click on the SEND button and we will contact you to evaluate your project."
-        subtitle_flex: "The more careful and well-formatted a project, the greater the chances of it being successful in its catchment campaign. Before publishing your project, fill all the adjacent flaps with care. You can save the changes and go back to the draft project as many times as you want. When everything is ready, click on the SEND button and we will contact you to evaluate your project."
+        subtitle: "The more careful and well-formatted a campaign, the greater the chances of it being successful and reaching the goal. Before you submit your project for our review, fill all the tabs next to it with care. You can save the changes and go back to the draft project as many times as you want. When everything is ready, click on the SEND button and we will contact you to evaluate your project."
+        subtitle_flex: "The more careful and well-formatted a campaign, the greater the chances of it being successful and reaching the goal. Before publishing your project, fill all the adjacent flaps with care. You can save the changes and go back to the draft project as many times as you want. When everything is ready, click on the SEND button and we will contact you to evaluate your project."
         study_title: "Did you feel you need to study harder to build your project? Check out the links in the box beside."
       approved:
         title: "%{name}, your project has been approved!"
@@ -172,7 +172,7 @@ en:
         expiration_text: "In the Flexible Campaign, you can keep your campaign in captivity for up to 1 year! With it in the air, you will have the option to set a project end date (minimum of 2 days). After the campaign ends, you receive everything you've collected (discounted rates) within 10 business days."
         expiration_title: "Deadline for collection"
     dashboard_user_about:
-      submit: "To save"
+      submit: "Save"
       twitter_label: "Twitter profile"
       twitter_hint: "Paste your profile link"
       other_link_label: "Presence on the internet"
@@ -188,13 +188,13 @@ en:
       email_label: Registration Email
       email_hint: Email for you to log into the JVN and communicate with our team and with your supporters
     dashboard_goal:
-      submit: "To save"
+      submit: "Save"
       kind_label: "Type of financing"
       kind_link: "If you want to know more, click here"
       flex:
         kind_text: "You are participating in the flexible model trial period. Your participation is essential to understanding how we can expand this model for all users. %{link}"
     dashboard_description:
-      submit: "To save"
+      submit: "Save"
     dashboard_reward:
       submit: "Salvar"
       add_reward: "Add reward"
@@ -217,13 +217,13 @@ en:
       warning: "All published news is sent directly to its supporters by email. Review the post well before posting."
       old_posts: "Old news"
     dashboard_budget:
-      submit: To save
+      submit: Save
       budget_label: "Project budget"
     dashboard_card:
-      submit: To save
+      submit: Save
       card_label: "Card"
     dashboard_video:
-      submit: To save
+      submit: Save
       aon:
         card_label: "Video"
         video_url: "Project video"
@@ -235,11 +235,11 @@ en:
         video_url_hint: ""
         video_url_subtitle: "Link to Vimeo or Youtube. This is the main video for your campaign."
     dashboard_basics:
-      city: 'Project Location'
-      online_date: 'Date of entry into the air'
+      city: 'Campaign Location'
+      online_date: 'Published date'
       user_id: 'User ID'
-      service_fee: 'Jvn rate'
-      name: 'Project name'
+      service_fee: 'JVN rate'
+      name: 'Campaign Name'
       name_label: 'The more direct the better. Do not exceed 50 characters'
       url: 'Project URL'
       url_label: 'It is the address of your project, it should be easy to memorize. Avoid underline, hyphen and symbols'
@@ -250,7 +250,7 @@ en:
       value: 'Amount to be collected'
       value_secondary: 'Plan a goal that is consistent with what your project proposes. Review your budget and be sure to include the 13% fee charged by the JVN if your project is successful'
       form:
-        submit: 'To save'
+        submit: 'Save'
     contributions_report:
       legend_labels:
         failed:

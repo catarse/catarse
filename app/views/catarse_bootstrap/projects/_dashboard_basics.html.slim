@@ -67,7 +67,7 @@
                 preppend_input_text_wrapper_html: { class: 'fontcolor-secondary u-text-center fontsize-smallest' }
 
               = form.association :category, as: :select, 
-                collection: Category.order(:name_pt),
+                collection: Category.order(:name_en),
                 prompt: t('simple_form.prompts.project.category'),
                 wrapper: :two_columns,
                 wrapper_class: 'w-row u-marginbottom-30 card card-terciary medium',
