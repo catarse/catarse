@@ -1,0 +1,44 @@
+en:
+  layouts:
+    footer:
+      links:
+        how_it_works: How does it work?
+        novelty: Novelty
+        rate: Our Rate
+        jobs: Jobs
+        blog: Blogs
+        contact: Contact
+        press: News and Press
+        discover: Explore Projects
+        start: How does it work?
+        expiring: Expiring
+        facebook: Facebook
+        team: Our Team
+        flex: Catarse flex
+        crowdfunding_stats: "Portrait FC Brazil 2013/2014"
+        faq: FAQ
+        guides: Guide for Filmmakers
+        feedback: Feedback
+        github: Github
+        instagram: Instagram
+        near: Near you
+#        press: News and Press
+        privacy: Privacy & Policy
+        recents: Recent
+        recommended: Recommended
+        submit: Start your Project
+        terms: Terms of use
+        twitter: Twitter
+        help_support: Support Center
+        score: Popular
+        finished: Finished
+        online: Online
+      texts:
+        copyleft: Made with love.
+        email: Your Email address
+      titles:
+        about: Help
+        contact: Welcome
+        newsletter: Newsletter
+        sitemap: Sitemap
+        social: Social media
