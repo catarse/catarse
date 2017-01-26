@@ -4,7 +4,7 @@ class SpeedupCategoriesEndpoint < ActiveRecord::Migration
 CREATE OR REPLACE VIEW "1".categories AS
 SELECT
     c.id,
-    c.name_pt AS name,
+    c.name_en AS name,
     count(distinct p.id) filter (where public.is_current_and_online(p.expires_at, coalesce(fp.state, p.state))) as online_projects,
     (
         SELECT count(DISTINCT cf.user_id) AS count
@@ -23,7 +23,7 @@ GROUP BY c.id;
     execute <<-SQL
 CREATE OR REPLACE VIEW "1".categories AS
  SELECT c.id,
-    c.name_pt AS name,
+    c.name_en AS name,
     ( SELECT count(*) AS count
            FROM public.projects p
           WHERE (public.open_for_contributions(p.*) AND (p.category_id = c.id))) AS online_projects,

@@ -1,6 +1,12 @@
 en:
   users:
     edit:
+      email_confirmation:
+        hello: "Namaste %{name}"
+        hello_sub: "We are having trouble talking to you...."
+        hello_email: "Is this your contact email? %{email}"
+        confirmed_title: "Be sure to check out our emails!"
+        confirmed_sub: "Check your SPAM and authorize JVN emails."
       contributions: "Contributions"
       project: "Projects"
       about_me: "About me"

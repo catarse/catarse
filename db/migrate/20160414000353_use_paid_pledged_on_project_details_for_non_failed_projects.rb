@@ -49,7 +49,7 @@ SELECT p.id AS project_id,
     p.permalink,
     p.video_embed_url,
     p.video_url,
-    c.name_pt AS category_name,
+    c.name_en AS category_name,
     c.id AS category_id,
     public.original_image(p.*) AS original_image,
     public.thumbnail_image(p.*, 'thumb'::text) AS thumb_image,
@@ -94,7 +94,7 @@ SELECT p.id AS project_id,
      LEFT JOIN public.cities ct ON ((ct.id = p.city_id)))
      LEFT JOIN public.states st ON ((st.id = ct.state_id)))
      LEFT JOIN public.project_reminders pr ON ((pr.project_id = p.id)))
-  GROUP BY p.id, fp.id, c.id, u.id, c.name_pt, ct.name, u.address_city, st.acronym, u.address_state, st.name, pt.progress, pt.pledged, pt.paid_pledged, pt.total_contributions, p.state, p.expires_at, pt.total_payment_service_fee, fp.state, pt.total_contributors;
+  GROUP BY p.id, fp.id, c.id, u.id, c.name_en, ct.name, u.address_city, st.acronym, u.address_state, st.name, pt.progress, pt.pledged, pt.paid_pledged, pt.total_contributions, p.state, p.expires_at, pt.total_payment_service_fee, fp.state, pt.total_contributors;
     SQL
   end
 
@@ -147,7 +147,7 @@ SELECT p.id AS project_id,
     p.permalink,
     p.video_embed_url,
     p.video_url,
-    c.name_pt AS category_name,
+    c.name_en AS category_name,
     c.id AS category_id,
     public.original_image(p.*) AS original_image,
     public.thumbnail_image(p.*, 'thumb'::text) AS thumb_image,
@@ -192,7 +192,7 @@ SELECT p.id AS project_id,
      LEFT JOIN public.cities ct ON ((ct.id = p.city_id)))
      LEFT JOIN public.states st ON ((st.id = ct.state_id)))
      LEFT JOIN public.project_reminders pr ON ((pr.project_id = p.id)))
-  GROUP BY p.id, fp.id, c.id, u.id, c.name_pt, ct.name, u.address_city, st.acronym, u.address_state, st.name, pt.progress, pt.pledged, pt.total_contributions, p.state, p.expires_at, pt.total_payment_service_fee, fp.state, pt.total_contributors;
+  GROUP BY p.id, fp.id, c.id, u.id, c.name_en, ct.name, u.address_city, st.acronym, u.address_state, st.name, pt.progress, pt.pledged, pt.total_contributions, p.state, p.expires_at, pt.total_payment_service_fee, fp.state, pt.total_contributors;
     SQL
   end
 end

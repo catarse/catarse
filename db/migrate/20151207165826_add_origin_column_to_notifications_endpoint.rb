@@ -6,7 +6,7 @@ class AddOriginColumnToNotificationsEndpoint < ActiveRecord::Migration
     CREATE VIEW "1".notifications AS
     SELECT * FROM
     (
-        SELECT c.name_pt AS origin, cn.user_id, cn.template_name, cn.created_at, cn.sent_at, cn.deliver_at
+        SELECT c.name_en AS origin, cn.user_id, cn.template_name, cn.created_at, cn.sent_at, cn.deliver_at
             FROM category_notifications cn JOIN categories c ON c.id = cn.category_id
         UNION ALL
         SELECT to_char(d.amount, 'L 999G990D00') AS origin, dn.user_id, dn.template_name, dn.created_at, dn.sent_at, dn.deliver_at

@@ -199,7 +199,7 @@ SET STATEMENT_TIMEOUT TO 0;
         p.permalink,
         p.video_embed_url,
         p.video_url,
-        c.name_pt AS category_name,
+        c.name_en AS category_name,
         c.id AS category_id,
         original_image(p.*) AS original_image,
         thumbnail_image(p.*, 'thumb'::text) AS thumb_image,
@@ -247,7 +247,7 @@ SET STATEMENT_TIMEOUT TO 0;
          LEFT JOIN cities ct ON ct.id = p.city_id
          LEFT JOIN states st ON st.id = ct.state_id
          LEFT JOIN project_reminders pr ON pr.project_id = p.id
-      GROUP BY p.id, c.id, u.id, c.name_pt, ct.name, u.address_city, st.acronym, u.address_state, st.name, pt.progress, pt.pledged, pt.paid_pledged, pt.total_contributions, p.state, p.expires_at, pt.total_payment_service_fee, pt.total_contributors;
+      GROUP BY p.id, c.id, u.id, c.name_en, ct.name, u.address_city, st.acronym, u.address_state, st.name, pt.progress, pt.pledged, pt.paid_pledged, pt.total_contributions, p.state, p.expires_at, pt.total_payment_service_fee, pt.total_contributors;
 
     grant select on "1".project_details to admin;
     grant select on "1".project_details to web_user;
@@ -291,7 +291,7 @@ SET STATEMENT_TIMEOUT TO 0;
     CREATE MATERIALIZED VIEW "1".category_totals AS
      WITH project_stats AS (
              SELECT ca.id AS category_id,
-                ca.name_pt AS name,
+                ca.name_en AS name,
                 count(DISTINCT p_1.id) FILTER (WHERE ( (p_1.state)::text = 'online'::text)) AS online_projects,
                 count(DISTINCT p_1.id) FILTER (WHERE ( (p_1.state)::text = 'successful'::text)) AS successful_projects,
                 count(DISTINCT p_1.id) FILTER (WHERE ( (p_1.state)::text = 'failed'::text)) AS failed_projects,
@@ -306,7 +306,7 @@ SET STATEMENT_TIMEOUT TO 0;
               GROUP BY ca.id
             ), contribution_stats AS (
              SELECT ca.id AS category_id,
-                ca.name_pt,
+                ca.name_en,
                 avg(pa.value) AS avg_value,
                 count(DISTINCT c_1.user_id) AS total_contributors
                FROM (((public.projects p_1
@@ -330,7 +330,7 @@ SET STATEMENT_TIMEOUT TO 0;
         p.avg_pledged,
         p.total_successful_value,
         p.total_value,
-        c.name_pt,
+        c.name_en,
         c.avg_value,
         c.total_contributors,
         cf.followers
