@@ -108,7 +108,7 @@ class UsersController < ApplicationController
       @user.reload
       render status: 200, json: {
                uploaded_image: @user.uploaded_image.url(:thumb_avatar),
-               cover_image: @user.cover_image.url
+               cover_image: @user.cover_image.url(:base)
              }
     else
       render status: 400, json: { errors: @user.errors.full_messages }
