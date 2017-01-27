@@ -103,10 +103,15 @@ class UsersController < ApplicationController
       uploaded_image: params[:uploaded_image],
       cover_image: params[:cover_image]
     }
-    @user.update_without_password permitted_params
-    @user.reload
-    respond_to do |format|
-      format.json { render :json => { :success => 'OK', uploaded_image: @user.uploaded_image.url(:thumb_avatar), cover_image: @user.cover_image.url } }
+
+    if @user.update_without_password permitted_params
+      @user.reload
+      render status: 200, json: {
+               uploaded_image: @user.uploaded_image.url(:thumb_avatar),
+               cover_image: @user.cover_image.url
+             }
+    else
+      render status: 400, json: { errors: @user.errors.full_messages }
     end
   end
 

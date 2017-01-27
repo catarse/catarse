@@ -120,6 +120,8 @@ pt:
         budget: 'Orçamento do projeto'
         uploaded_image: 'Imagem do projeto'
       user:
+        uploaded_image: 'Imagem do perfil'
+        cover_image: 'Imagem de capa do perfil'
         address_city: Cidade
         address_complement: Complemento
         address_neighbourhood: Bairro
