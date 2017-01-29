@@ -4,41 +4,41 @@
 - project_link = edit_project_url(project)
 - company_name = CatarseSettings[:company_name]
 
-|Olá, #{user.name}!
+|Hi, #{user.name}!
 br/
 br/
-| Obrigado por iniciar o processo de inscrição de um projeto no #{company_name}! 
+| Thank you for starting the application process for a project in #{company_name}!
 br/
-| Saiba que recebemos sua inscrição! 
-br/
-br/
-| Você acabou de criar a página de rascunho do projeto #{link_to project.name, project_link} no #{company_name}. 
+| Know that we have received your application!
 br/
 br/
-strong É hora de trabalhar na apresentação do seu projeto!
-br/
-| Seu projeto está no #{company_name} como um rascunho, ou seja, não está público.
-'  Você pode enviar o link acima para outras pessoas visualizarem a página e te ajudarem com críticas e sugestões.
+| You just created the draft sketch page #{link_to project.name, project_link} no #{company_name}.
 br/
 br/
-strong Ninguém poderá  apoiar o seu projeto até que ele seja aprovado e a campanha esteja no ar.
+strong It's time to work on presenting your project!
 br/
-| Para avançar para essas etapas você deve completar toda a página de rascunho do seu projeto e enviá-la para nossa análise. Quando considerar que a sua página está pronta, basta clicar no botão “ENVIAR”.
+| Your project is in #{company_name} as a draft, that is, it is not public.
+'  You can send the link above to others to view the page and help you with criticism and suggestions.
+br/
+br/
+strong No one can support your project until it is approved and the campaign is on the air.
+br/
+| To progress to these steps you must complete the entire draft page of your project and submit it for our review. When you feel your page is ready, just click the "SEND" button.
 br/
 br/
 = image_tag 'https://s3.amazonaws.com/cdn.catarse/notifications_assets/btn-send-to-analysis.gif', width: 600
 br/
 br/
-| Depois disso, a equipe do #{company_name} vai avaliar se o projeto está de acordo com os critérios da plataforma e te enviará uma resposta (para este e-mail mesmo) em até 4 dias úteis!
+|After that, the #{company_name} Will evaluate if the project meets the criteria of the platform and will send you a response (to this same email) in up to 4 business days!
 br/
 br/
-| Se ficou com alguma dúvida, responda a esta mensagem ou envie um email para #{mail_to CatarseSettings[:email_projects]}
+|If you have any questions, reply to this message or send an email to #{mail_to CatarseSettings[:email_projects]}
 br/
 br/
-| E por falar nisso, por favor <strong>não esqueça de incluir na sua lista de contatos os e-mails:</strong> 
-| #{mail_to CatarseSettings[:email_projects]} e #{mail_to CatarseSettings[:email_contact]} para evitar que nossas mensagens caiam na sua caixa de spam devido a filtros do seu email. 
+| And by the way, please <strong> do not forget to include in your contact list the emails:</strong>
+| #{mail_to CatarseSettings[:email_projects]} e #{mail_to CatarseSettings[:email_contact]} To prevent our messages from falling into your spam box due to your email filters.
 br/
 br/
-| Um abraço,
+| A hug,
 br/
 = company_name

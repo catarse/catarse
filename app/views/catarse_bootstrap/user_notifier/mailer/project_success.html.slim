@@ -5,27 +5,27 @@
 
 | Uhuu, #{project.user.name},
 br/
-p Parabéns pela campanha!
-p O projeto #{link_to project.name, project_link} foi financiado!
+p Congratulations on the campaign!
+p The project #{link_to project.name, project_link} Was funded!
 p
-  | Depois de comemorar com vontade o término bem sucedido da sua campanha, é hora de <strong>confirmar os seus dados bancários</strong> para que possamos fazer a transferência do dinheiro para você! Você pode fazer isso direto da página do seu projeto (ou clicando no botão abaixo).
+  | Once you have successfully celebrated the successful completion of your campaign, it's time to <strong> confirm your bank details </strong> so that we can transfer the money to you! You can do this directly from your project page (or by clicking the button below).
 br/
 br/
 center
-  = link_to('Confirme os dados bancários', insights_project_url(project.id, ref: 'notificacao_project_success'), style:'border: 1px solid #7cc142; border-radius: 5px; color: #fff; text-decoration: none; font-weight: bolder; text-align: center; padding: 19px 60px; background: #65bf1b; font-size: 15px;')
+  = link_to('Confirm bank details', insights_project_url(project.id, ref: 'notificacao_project_success'), style:'border: 1px solid #7cc142; border-radius: 5px; color: #fff; text-decoration: none; font-weight: bolder; text-align: center; padding: 19px 60px; background: #65bf1b; font-size: 15px;')
 
 br/
 p
-  | Após a confirmação dos dados, <strong>há um prazo de 10 dias úteis para realizarmos a sua transferência.</strong>
+  | After confirming the data, <strong> there is a period of 10 working days to make your transfer.</strong>
 
 p
-  = link_to 'Confira aqui mais detalhes de como será feito o repasse!', 'http://suporte.catarse.me/hc/pt-br/articles/217916143', target: '__blank'
+  = link_to 'Check here more details of how the transfer will be done!', 'http://suporte.catarse.me/hc/pt-br/articles/217916143', target: '__blank'
 p
-  | Se ficou com alguma dúvida, responda a esta mensagem diretamente ou fale conosco através do e-mail #{mail_to CatarseSettings[:email_projects]}. 
+  | If you have any questions, reply to this message directly or contact us via email #{mail_to CatarseSettings[:email_projects]}.
 p
-  | Um abraço apertado de parabéns!
+  | A tight hug of congratulations!
 br/
 br/
-| Abraços
+| Hugs
 br/
 | #{company_name}

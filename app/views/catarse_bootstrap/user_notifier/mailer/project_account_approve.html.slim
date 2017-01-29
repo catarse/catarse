@@ -3,39 +3,39 @@
 - project_account = project.account
 - metadata = @notification.metadata
 
-| Olá #{user.name},
+| Hi #{user.name},
 br/
 br/
-| Seus dados bancários foram confirmados!
+| Your bank details have been confirmed!
 br/
 br/
 strong
-  | Resumo da operação de repasse:
+  | Summary of the transfer operation:
 br/
 br/
-| Titulo do projeto: #{project.name}
+| Project title: #{project.name}
 br/
-| Data máxima para o repasse: #{metadata['transfer_limit_date']}
+| Maximum date for transfer: #{metadata['transfer_limit_date']}
 br/
-| Valor total do repasse: #{number_to_currency(metadata['transfer_amount'].to_f, precision: 2)} (taxas já descontadas)
+| Total value of the transfer: #{number_to_currency(metadata['transfer_amount'].to_f, precision: 2)} (Rates already discounted)
 br/
-| Banco: #{project_account.bank.name}
+| Bank: #{project_account.bank.name}
 br/
-| Agência: #{project_account.agency}-#{project_account.agency_digit}
+| Agency: #{project_account.agency}-#{project_account.agency_digit}
 br/
-| Conta: #{project_account.account}-#{project_account.account_digit}
+| Account: #{project_account.account}-#{project_account.account_digit}
 br/
-| Nome: #{project_account.owner_name}
+| Name: #{project_account.owner_name}
 br/
 | CPF: #{project_account.owner_document}
 br/
 br/
-| Nossa equipe pode entrar em contato com você caso ocorra algum problema com seu banco.
+| Our team may contact you in the event of a problem with your bank.
 br/
 br/
-| Lembrando que você pode tirar dúvidas conosco respondendo diretamente a esta mensagem ou através do e-mail #{mail_to CatarseSettings[:email_contact]} .
+| Remember that you can ask questions with us by replying directly to this message or through the email #{mail_to CatarseSettings[:email_contact]} .
 br/
 br/
-| Um abraço,
+| A hug,
 br/
 = CatarseSettings[:company_name]
