@@ -10,7 +10,7 @@
               .w-row.u-marginbottom-30
                 .w-col.w-col-6._w-sub-col
                   .fontsize-small.u-marginbottom-10
-                    | Em quantos dias, contados a partir de agora, você quer encerrar a sua arrecadação?
+                    | On how many days, from now on, do you want to close your collection?
                     br
                 .w-col.w-col-6
                   .w-row
@@ -22,7 +22,7 @@
                     .w-col.w-col-4.w-col-small-6.w-col-tiny-6.text-field.postfix.no-hover.medium.prefix-permalink
                       .fontcolor-secondary.u-text-center.fontsize-base.lineheight-tightest Dias
               .fontcolor-secondary.u-text-center
-                .fontsize-smaller Você poderá receber apoios até:
+                .fontsize-smaller You can receive support until:
                 .fontsize-base
                   span.expire-date=> l(2.days.from_now.to_date)
                   | as 23h59m
@@ -32,18 +32,18 @@
         .w-row
           .w-col.w-col-4
           .w-col.w-col-4
-            a#show-modal.btn.btn-large.u-marginbottom-20   Confirmar
+            a#show-modal.btn.btn-large.u-marginbottom-20   Confirm
 
     .modal-backdrop.w-hidden
       .modal-dialog-outer
         .modal-dialog-inner.modal-dialog-small
           a.w-inline-block.modal-close.fa.fa-close.fa-lg  href="#announce_expiration"
           .modal-dialog-content
-            .fontsize-large.u-text-center.u-marginbottom-30.fontweight-semibold Você confirma?
+            .fontsize-large.u-text-center.u-marginbottom-30.fontweight-semibold Do you confirm?
             .fontsize-large.u-text-center.u-marginbottom-30
-              'Sua arrecadação irá terminar no dia 
+              'Your collection will end on
               span.expire-date= l(2.days.from_now.to_date)
-              |, as 23h59. Até lá, você pode captar recursos e seguir firme na sua campanha! Assim que o seu prazo chegar ao fim, você deverá confirmar os seus dados bancários. A partir de então, depositaremos o dinheiro na sua conta em até 10 dias úteis.
+              |, At 11:50 p.m. Until then, you can capture resources and stay strong in your campaign! Once your deadline has expired, you will need to confirm your bank details. We will then deposit the money into your account within 10 business days.
           .modal-dialog-nav-bottom
             .w-row
               .w-col.w-col-2
@@ -51,5 +51,5 @@
                 = hidden_field_tag 'anchor', 'announce_expiration'
                 = form.button :submit, 'Sim', class:'btn btn-large', id: 'budget-save'
               .w-col.w-col-4
-                a#cancel.btn.btn-large.btn-terciary data-ix="modal-dialog-close" href="#announce_expiration"  Não
+                a#cancel.btn.btn-large.btn-terciary data-ix="modal-dialog-close" href="#announce_expiration"  No
               .w-col.w-col-2

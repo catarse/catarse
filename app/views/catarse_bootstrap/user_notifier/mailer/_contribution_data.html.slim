@@ -1,47 +1,47 @@
 - detail = contribution.details.ordered.first
 
-p Seguem todos os dados do pagamento:
+p Follow all payment details:
 p
-  | Nome do apoiador: #{contribution.user.display_name}
+  | Name of the supporter: #{contribution.user.display_name}
   br/
-  | CPF/CNPJ do apoiador: #{contribution.user.cpf}
+  | Supporter CPF / CNPJ: #{contribution.user.cpf}
   br/
-  | Data da confirmação do apoio: #{detail.decorate.display_date(:paid_at)}
+  | Date of confirmation of support: #{detail.decorate.display_date(:paid_at)}
   br/
-  | Opção de pagamento: #{detail.gateway}
+  | Payment option: #{detail.gateway}
   br/
-  | Valor da contribuição: #{number_to_currency contribution.value}
+  | Value of contribution: #{number_to_currency contribution.value}
   - if detail.installments > 1
     br/
-    | Número de parcelas: #{detail.installments}
+    | Number of installments: #{detail.installments}
     br/
-    | Valor da parcela: #{number_to_currency(detail.installment_value, precision: 2)}
+    | Plot value: #{number_to_currency(detail.installment_value, precision: 2)}
   br/
   -if contribution.reward.present?
-    | Recompensa selecionada: #{contribution.reward.description}
+    | Reward selected: #{contribution.reward.description}
     br/
-    | Estimativa de entrega: #{contribution.reward.display_deliver_estimate}
+    | Estimated delivery: #{contribution.reward.display_deliver_estimate}
     br/
-  | ID do apoio: #{detail.gateway_id}
+  | Support ID: #{detail.gateway_id}
   br/
   / We need the || for some old projects do not have the account info
   - owner = contribution.project.account || contribution.project.user
   - owner_name = owner.try(:owner_name) || owner.try(:name)
   - owner_document = owner.try(:owner_document) || owner.try(:cpf)
-  | Nome/Razão Social do realizador: #{owner_name}
+  | Name / Company Name of the director: #{owner_name}
   br/
-  | CPF/CNPJ do realizador: #{owner_document}
+  | CPF / CNPJ of the director: #{owner_document}
 
 p
-  ' É importante ressaltar que o Catarse é apenas intermediador desse processo,
-  ' portanto, se tiver alguma dúvida em relação ao projeto entre
-  ' em contato diretamente com o realizador através do e-mail #{mail_to owner.try(:email)}.
-  ' Ah! Lembre-se de guardar este email, pois ele contém informações importantes
-  ' a respeito da sua contribuição ao projeto.
-p Se ficou com alguma dúvida, entre em contato conosco respondendo a esta mensagem ou através do e-mail #{mail_to CatarseSettings[:email_contact]}
+  ' It is important to emphasize that the Catarse is only the intermediary of this process,
+  ' Therefore, if you have any questions regarding the project between
+  ' In direct contact with the director through the email #{mail_to owner.try(:email)}.
+  ' Ah! Remember to save this email because it contains important information
+  ' About their contribution to the project.
+p If you have any questions, please contact us by replying to this message or via email #{mail_to CatarseSettings[:email_contact]}
 
 p
-  | Um abraço e muito obrigado,
+  | A hug and thank you very much,
   br/
   | #{CatarseSettings[:company_name]}
 

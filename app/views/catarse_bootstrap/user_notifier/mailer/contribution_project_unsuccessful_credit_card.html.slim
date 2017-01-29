@@ -1,26 +1,26 @@
 - contribution = @notification.contribution
 - details = contribution.details.first
 
-|Olá, #{contribution.user.name}!
+|Hello, #{contribution.user.name}!
 br
 br
-| Infelizmente o projeto #{link_to(contribution.project.name, project_by_slug_url(permalink: contribution.project.permalink))} que você apoiou não atingiu a meta estabelecida no #{CatarseSettings[:company_name]}.
+| Unfortunately the project #{link_to(contribution.project.name, project_by_slug_url(permalink: contribution.project.permalink))} That you supported did not reach the target set in #{CatarseSettings[:company_name]}.
 br
 br
-| Em até 5 dias úteis faremos o reembolso do valor do seu apoio, que <strong>virá como crédito na próxima ou 
-| subsequente fatura do seu cartão</strong>. Assim que o reembolso for feito, você receberá um e-mail de confirmação da operação.
+| That you supported did not meet the target set in. In 5 working days, we will repay the amount of your support, which <strong> will come as credit in the next or
+| Subsequent billing of your card </strong>. Once the refund is done, you will receive an email confirming the transaction.
 br
 br
-p Valor do reembolso: #{number_to_currency details.value}
+p Refund amount: #{number_to_currency details.value}
 
-p Data do pedido reembolso: #{details.pending_refund_at.try(:to_date)}
+p Refund claim date: #{details.pending_refund_at.try(:to_date)}
 
-p Identificação na fatura do cartão de crédito: “Estorno do Catarse”
+p Identification on the credit card invoice: "Chargeback"
 
-| Se ficou com alguma dúvida, entre em contato conosco respondendo a esta mensagem ou através do e-mail #{mail_to CatarseSettings[:email_contact]} 
-| e nos informe a chave de identificação do seu apoio, que é: #{details.gateway_id}
+| If you have any questions, please contact us by replying to this message or via email #{mail_to CatarseSettings[:email_contact]}
+| And give us the key to identify your support, which is: #{details.gateway_id}
 br
 br
-|Um abraço,
+|A hug,
 br
 | #{CatarseSettings[:company_name]}

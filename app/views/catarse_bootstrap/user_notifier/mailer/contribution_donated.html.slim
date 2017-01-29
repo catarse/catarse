@@ -3,26 +3,26 @@
 - company_name = CatarseSettings[:company_name]
 - contact_email = CatarseSettings[:email_contact]
 
-p Olá, <strong>#{user.display_name}</strong>!
+p Hello, <strong>#{user.display_name}</strong>!
 
-p Muito obrigado! A sua doação é essencial para mantermos independente e livre esse vibrante ecossistema de viabilizacão de projetos que é o Catarse. Dessa forma você ajuda a gente a investir em inovação, a seguir firme na missão de democratizar o financiamento coletivo no Brasil e a tornar a prática um hábito no país.
-p Seguem todos os dados da doação:
-|Nome do apoiador: #{user.display_name}
+p Thank you very much! Your donation is essential to keep this vibrant ecosystem of project viability that is Catoing independent and free. That way you help people to invest in innovation, then firmly in the mission to democratize collective financing in Brazil and to make practice a habit in the country.
+p Here are all the details of the donation:
+|Supporter's name: #{user.display_name}
 br
-|CPF/CNPJ do apoiador: #{user.cpf}
+|Supporter's CPF / CNPJ: #{user.cpf}
 br
-|Valor da doação: #{amount}
+|Donation amount: #{amount}
 br
-|Nome/Razão Social do Catarse: GRUPO COMUM CONSULTORIA E INTERMEDIAÇÃO DE NEGÓCIOS LTDA
+|Name and Corporate Name of the JVN: COMMON GROUP CONSULTING AND INTERMEDIAÇÃO DE NEGÓCIOS LTDA
 br
-|CPF/CNPJ do Catarse: 14.512.425/0001-94
+|CPV / CNPJ of the JVN: 14.512.425/0001-94
 br
 br
-p Como singela forma de lhe agradecer, fizemos essa foto montagem da nossa equipe lhe agradecendo de coração!
+p As a simple way to thank you, we made this photo montage of our team thanking you from the heart!
 center
   = image_tag "https://i.imgur.com/LUeb5gM.jpg", width: 550
 
-p Qualquer dúvida, basta entrar em contato conosco respondendo a este email ou através do e-mail #{mail_to contact_email}
-p Um abraço,
+p Any questions, just contact us by replying to this email or via email#{mail_to contact_email}
+p A hug,
 br
 | #{company_name}

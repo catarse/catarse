@@ -35,7 +35,7 @@
             .w-col.w-col-5
               label.fontsize-smaller= t('.description') 
             .w-col.w-col-7
-              = form.input_field :description, as: :text,  class: 'positive', placeholder: "Descreva sua recompensa", required: true
+              = form.input_field :description, as: :text,  class: 'positive', placeholder: "Describe your reward", required: true
               .fontsize-smaller.text-error.u-marginbottom-20.fa.fa-exclamation-triangle.w-hidden[data-error-for="reward_description"] = t('simple_form.validation_texts.reward.description')
           .w-row
             .w-col.w-col-5
@@ -48,8 +48,8 @@
             .w-col.w-col-6.w-col-small-6.w-col-tiny-6.w-sub-col-middle
               = form.button :submit, t('.submit'),  class:'btn btn-small'
             .w-col.w-col-5.w-col-small-5.w-col-tiny-5.w-sub-col-middle
-              input.w-button.btn-terciary.btn.btn-small.reward-close-button type="submit" value="Fechar" 
+              input.w-button.btn-terciary.btn.btn-small.reward-close-button type="submit" value="Close"
             - if resource.persisted? && policy(resource).destroy?
               .w-col.w-col-1.w-col-small-1.w-col-tiny-1
-                = link_to [parent, resource], method: :delete, data: {confirm: 'Tem certeza?'} do
+                = link_to [parent, resource], method: :delete, data: {confirm: 'Are you sure?'} do
                   .btn.btn-small.btn-terciary.fa.fa-lg.fa-trash.btn-no-border

@@ -26,25 +26,25 @@
                 .card.u-radius.u-marginbottom-20.card-terciary data-ix="new-interaction" 
                   .fontsize-small.fontweight-semibold.u-marginbottom-20
                     span.fa.fa-download &nbsp;
-                    | Baixar relatórios
+                    | Download reports
                   ul.w-list-unstyled
                     li.fontsize-smaller.u-marginbottom-10
                       div
-                        | Apoiadores confirmados &nbsp;
+                        | Confirmed Supporters &nbsp;
                         = link_to 'CSV', reports_contribution_reports_for_project_owners_path(project_id: @project.id, state: default_states, format: :csv), class: 'alt-link'
                         | &nbsp;\&nbsp;
                         = link_to 'XLS', reports_contribution_reports_for_project_owners_path(project_id: @project.id, state: default_states, format: :xls), class: 'alt-link'
                     li.divider.u-marginbottom-10
                     li.fontsize-smaller.u-marginbottom-10
                       div
-                        | Apoiadores pendentes&nbsp;&nbsp;
+                        | Pending Supporters&nbsp;&nbsp;
                         = link_to 'CSV', reports_contribution_reports_for_project_owners_path(project_id: @project.id, state: 'pending', waiting_payment: 'true', format: :csv), class: 'alt-link'
                         | &nbsp;\&nbsp;
                         = link_to 'XLS', reports_contribution_reports_for_project_owners_path(project_id: @project.id, state: 'pending', waiting_payment: 'true', format: :xls), class: 'alt-link'
                     li.divider.u-marginbottom-10
                     li.fontsize-smaller.u-marginbottom-10
                       div
-                        | Apoiadores que não selecionaram recompensa&nbsp;&nbsp;
+                        | Supporters who did not select reward&nbsp;&nbsp;
                         = link_to 'CSV', reports_contribution_reports_for_project_owners_path(project_id: @project.id, state: default_states, reward_id: 0, format: :csv), class: 'alt-link'
                         | &nbsp;\&nbsp;
                         = link_to 'XLS', reports_contribution_reports_for_project_owners_path(project_id: @project.id, state: default_states, reward_id: 0, format: :xls), class: 'alt-link'

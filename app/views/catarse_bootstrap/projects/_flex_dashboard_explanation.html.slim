@@ -1,15 +1,15 @@
 .flex-days.card.medium.card-terciary.u-marginbottom-30[class="#{@project.is_flexible? ? '' : 'w-hidden'}"]
-  label.fontweight-semibold.fontsize-base Tempo de arrecadação
+  label.fontweight-semibold.fontsize-base Collection time
   .fontsize-small.u-marginbottom-60
-    ' É o período em que o seu projeto estará no ar, aberto a captação de recursos. No Flex, você escolhe se publica seu projeto com prazo já definido ou com prazo em aberto.
-    a.alt-link href=" https://catarse.attach.io/HJGoCzmJl" target="_blank" Conheça nossas dicas para definir seu prazo.
+    ' It is the period when your project will be on the air, open to fundraising. In Flex, you choose whether to publish your project with a deadline or an open deadline.
+    a.alt-link href=" https://catarse.attach.io/HJGoCzmJl" target="_blank" Know our tips for defining your deadline.
   .flex-row
     a.choose-time.choose-unlimited.w-inline-block.btn-select.flex-column.u-text-center[class="#{@project.online_days ? '' : 'selected'}" href="#"]
-      .fontsize-base.fontweight-semibold.u-marginbottom-20 Prazo em aberto
-      .w-hidden-tiny Seu projeto entra no ar sem um prazo definido. Você terá a opção de definir uma data de término do projeto (mínimo de 1 dia) a qualquer momento ​dentro de um período de 12 meses​ após a publicação.
+      .fontsize-base.fontweight-semibold.u-marginbottom-20 Open time
+      .w-hidden-tiny Your project goes live without a set deadline. You will have the option to set a project end date (minimum of 1 day) at any time within a 12-month period after publication.
     a.choose-time.choose-limited.w-inline-block.btn-select.flex-column.u-text-center[class="#{@project.online_days ? 'selected' : ''}" href="#"]
-      .fontsize-base.fontweight-semibold.u-marginbottom-20 Prazo definido
-      .w-hidden-tiny.u-marginbottom-30 Seu projeto já entra no ar com o tempo de captação já definido. Você poderá escolher um prazo de 1 a 365 dias. Após publicar o projeto, você não poderá alterar esse prazo.
+      .fontsize-base.fontweight-semibold.u-marginbottom-20 Definite time
+      .w-hidden-tiny.u-marginbottom-30 SI project is already in the air with the capture time already defined. You can choose between 1 to 365 days. After publishing the project, you can not change this deadline.
       .w-row
         .w-col.w-col-6
           = form.input :online_days,
@@ -19,4 +19,4 @@
             validation_text: false, hint:  false, label: ''
         .w-col.w-col-6
           .text-field.medium.prefix-permalink
-            div dias
+            div days

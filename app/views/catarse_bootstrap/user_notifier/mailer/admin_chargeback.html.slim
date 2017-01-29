@@ -1,17 +1,17 @@
 - contribution = @notification.contribution
 - payment = @notification.contribution.payments.last
 
-p Aviso sobre novo chargeback
+p Notice about new chargeback
 
-p Status do projeto: #{contribution.project.state}
+p Project Status: #{contribution.project.state}
 
-p Nome do apoiador: #{contribution.user.display_name}
-p Telefone apoiador: #{contribution.user.phone_number}
-p Email do apoiador: #{contribution.user.email}
-p Valor do apoio: #{number_to_currency contribution.value, precision: 2}
+p Supporter's name: #{contribution.user.display_name}
+p Supporter phone: #{contribution.user.phone_number}
+p Support Email: #{contribution.user.email}
+p Value of support: #{number_to_currency contribution.value, precision: 2}
 
-p ID pagarme: #{payment.gateway_id}
+p ID pay me: #{payment.gateway_id}
 p TID stone:  #{payment.gateway_data['acquirer_tid']}
-p Nome do projeto: #{contribution.project.name}
-p Telefone realizador: #{contribution.project.user.phone_number}
-p Email do realizador: #{contribution.project.user.email}
+p Project name: #{contribution.project.name}
+p Director phone: #{contribution.project.user.phone_number}
+p Email of the director: #{contribution.project.user.email}
