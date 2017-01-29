@@ -2,10 +2,10 @@
 a.link-footer href="/how-it-works"
   | #{t('layouts.footer.links.how_it_works')}&nbsp;
 a.link-footer href="#{team_url}"  #{t('layouts.footer.links.team')}
-a.link-footer href="#{CatarseSettings[:facebook_url]}"  #{t('layouts.footer.links.facebook')}
+a.link-footer target= "__blank" href="#{CatarseSettings[:facebook_url]}"  #{t('layouts.footer.links.facebook')}
 /a.link-footer href="#{CatarseSettings[:twitter_url]}"  #{t('layouts.footer.links.twitter')}
 /a.link-footer href="#{CatarseSettings[:instagram_url]}"  #{t('layouts.footer.links.instagram')}
-a.link-footer href="#{CatarseSettings[:github_url]}"  #{t('layouts.footer.links.github')}
-a.link-footer href="#{CatarseSettings[:blog_url]}?ref=ctrse_footer"  #{t('layouts.footer.links.blog')}
+a.link-footer target= "__blank" href="#{CatarseSettings[:github_url]}"  #{t('layouts.footer.links.github')}
+a.link-footer target= "__blank" href="#{CatarseSettings[:blog_url]}?ref=ctrse_footer"  #{t('layouts.footer.links.blog')}
 a.link-footer href="#{jobs_url}"  #{t('layouts.footer.links.jobs')}
 

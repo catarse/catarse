@@ -3,11 +3,11 @@
 - project_link = edit_project_url(project)
 - company_name = CatarseSettings[:company_name]
 
-| Oi #{project.user.name},
+| Hi #{project.user.name},
 br/
 br/
-p Você criou recompensas com estimativa de entrega daqui a 1 mês, porém ainda não definiu uma data de encerramento do seu projeto. Após o encerramento do projeto, em 10 dias úteis faremos o repasse do valor financiado (descontando as taxas do Catarse). Se esse repasse impacta a produção e entrega das recompensas é preciso que você finalize sua campanha.
-p Para garantir que receba os recursos captados, antes da data estimada para a entrega das recompensas, defina agora o prazo final.
+p You have created delivery rewards within 1 month, but you have not yet set a project end date. After the project closes, in 10 working days we will pass on the amount financed (discounting JVN fees). If this repassing impacts the production and delivery of the rewards, you need to finalize your campaign.
+p To ensure that you receive the funds raised, before the estimated date for the delivery of the rewards, now set the deadline.
 
 p
   center
@@ -15,9 +15,9 @@ p
       = image_tag "#{CatarseSettings[:base_url]}/assets/catarse_bootstrap/btn-definir-prazo.png"
 br/
 br/
-| Se ficou com alguma dúvida, responda a esta mensagem diretamente ou fale conosco através do e-mail #{mail_to CatarseSettings[:email_projects]}. 
+| If you have any questions, reply to this message directly or contact us via email #{mail_to CatarseSettings[:email_projects]}.
 br/
 br/
-| Um abraço,
+| A hug,
 br/
 = company_name

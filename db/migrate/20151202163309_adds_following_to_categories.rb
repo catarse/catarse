@@ -4,7 +4,7 @@ class AddsFollowingToCategories < ActiveRecord::Migration
 DROP VIEW "1".categories;
 CREATE OR REPLACE VIEW "1".categories AS
  SELECT c.id,
-    c.name_pt AS name,
+    c.name_en AS name,
     count(DISTINCT p.id) FILTER (WHERE public.is_current_and_online(p.expires_at, COALESCE(fp.state, (p.state)::text))) AS online_projects,
     ( SELECT count(DISTINCT cf.user_id)
            FROM public.category_followers cf
@@ -26,7 +26,7 @@ GRANT SELECT on "1".categories TO admin, web_user, anonymous;
 DROP VIEW "1".categories;
 CREATE OR REPLACE VIEW "1".categories AS
  SELECT c.id,
-    c.name_pt AS name,
+    c.name_en AS name,
     count(DISTINCT p.id) FILTER (WHERE public.is_current_and_online(p.expires_at, COALESCE(fp.state, (p.state)::text))) AS online_projects,
     ( SELECT count(DISTINCT cf.user_id) AS count
            FROM public.category_followers cf

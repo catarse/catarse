@@ -2,26 +2,26 @@
 - company_name = CatarseSettings[:company_name]
 - contact_email = CatarseSettings[:email_contact]
 
-|Olá, <strong>#{contribution.user.display_name}</strong>!
+|Hello, <strong>#{contribution.user.display_name}</strong>!
 br
 br
-| Vimos que você tentou apoiar o projeto #{link_to contribution.project.name, project_by_slug_url(contribution.project.permalink, {ref: 'notificacao_cancelado',utm_source:'notification',utm_medium:'email',utm_campaign:'contribution_canceled_link',utm_content:contribution.project.name})}, mas não conseguimos processar o pagamento do seu apoio. 
+| We saw that you tried to support the project. #{link_to contribution.project.name, project_by_slug_url(contribution.project.permalink, {ref: 'notificacao_cancelado',utm_source:'notification',utm_medium:'email',utm_campaign:'contribution_canceled_link',utm_content:contribution.project.name})}, But we could not process the payment of your support.
 br
 br
-p Você poderia tentar apoiar novamente? Para isso temos algumas sugestões:
+p Could you try to support it again? For this we have some suggestions:
 br
 br
-p - Entre em contato com o seu banco autorizando o pagamento do seu apoio, depois de autorizado refazer seu apoio; ou
-p - Se possível, utilize outro cartão de crédito; ou
-p - Apoie através do boleto bancário
+p - Contact your bank authorizing the payment of your support, once authorized to retake your support; or
+p - If possible, use another credit card; or
+p - Support via bank slip
 br
 br
-p #{link_to 'Não deixe isso te desanimar. Comece novamente seu apoio!', new_project_contribution_url(contribution.project, ref: 'notificacao_cancelado')} 
+p #{link_to 'Do not let this discourage you. Start your support again!', new_project_contribution_url(contribution.project, ref: 'notificacao_cancelado')}
 br
 br
-| Caso não consiga finalizar sua contribuição entre em contato respondendo a esta mensagem ou através do e-mail #{mail_to contact_email}
+| If you can not finalize your contribution please contact us by replying to this message or by e-mail #{mail_to contact_email}
 br
 br
-|Um abraço,
+|A hug,
 br
 | #{company_name}

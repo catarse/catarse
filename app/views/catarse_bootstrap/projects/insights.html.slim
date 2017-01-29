@@ -17,13 +17,13 @@
       .modal-dialog-header
         .fontsize-large.u-text-center
           span.fa.fa-times-circleM
-          ' Confirmar cancelamento
+          ' Confirm cancellation
       .modal-dialog-content
         = simple_form_for @project do |f|
           =  hidden_field_tag 'anchor', 'posts'
           =  hidden_field_tag 'cancel_project', 'true'
           = f.simple_fields_for :posts, @project.posts.build do |form|
-            .fontsize-smaller.u-marginbottom-20 Conte porque você está cancelando sua campanha. Essa mensagem será enviada por email para os seus apoiadores e estará pública na aba "Novidades" do seu projeto no Catarse.
+            .fontsize-smaller.u-marginbottom-20 Tell me why you're canceling your campaign. This message will be emailed to your supporters and will be public in the "News" tab of your JVN project.
             .w-form
               = form.label :title, as: :string, class: 'field-label fontweight-semibold'
               = form.input_field :title, as: :string, class: 'w-input text-field positive'
@@ -45,7 +45,7 @@
         a.w-inline-block.modal-close.fa.fa-close.fa-lg  href="#"
         .modal-dialog-content.u-text-center
           .fa.fa-check-circle.fa-5x.text-success.u-marginbottom-40
-          p.fontsize-large Seu prazo foi definido com sucesso! Você tem até o dia #{@project.display_expires_at}, às 23h59, para captar recursos para a sua campanha. Depois que o seu projeto for finalizado e você confirmar seus dados bancários, o Catarse irá depositar o dinheiro na sua conta corrente em um prazo de 10 dias úteis.
+          p.fontsize-large Your deadline has been successfully set! You have until #{@project.display_expires_at} at 23:59 to raise funds for your campaign. Once your project is finalized and you confirm your bank details, Catarse will deposit the money into your checking account within 10 business days.
 .w-section.section-product[class=@project.mode]
 #project-insights-root.min-height-70[data-mithril="Insights" data-id=@project.id]
 

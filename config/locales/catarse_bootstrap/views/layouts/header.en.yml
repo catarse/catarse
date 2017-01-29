@@ -23,9 +23,9 @@ en:
       my_history: My History
       email_text: Your email
       support_history: Support History
-      projects_created: Projects Created
+      projects_created: Camapigns Created
       settings: Settings
-      about_you: About you
+      about_you: About You
       notifications: Notifications
       data_address: Data & Address
       bank_cards: Bank & Cards
@@ -33,6 +33,6 @@ en:
       support: Support
       financial_rel: Financial Relation
       admin_projects: Admin projects
-      change_email: Change e-mail
+      change_email: Change
 
 

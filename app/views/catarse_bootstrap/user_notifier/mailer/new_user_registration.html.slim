@@ -1,15 +1,15 @@
 - user = @notification.user
 
 h2 style="text-align:center; line-height: 45px;"
-  | Olá
+  | Hi
   - if user.name
     | , #{user.name}!
   br/
   br/
-  | Bem-vindo ao Catarse! Lembrando que seu email de acesso é: #{user.email} .
+  | Welcome to Catarse! Remember that your access email is: #{user.email} .
 br/
 br/
-| Se você já pensou em tirar seu projeto do papel com financiamento coletivo,mas ainda tem dúvidas de como funciona o Catarse, baixe nosso Infográfico e receba por email dicas e informações úteis sobre crowdfunding.
+| If you have already thought about getting your project out of paper with collective funding, but still have doubts about how JVN works, download our Infographic and receive useful information and tips about crowdfunding by email.
 br/
 br/
 center
@@ -17,6 +17,6 @@ center
     = image_tag "#{CatarseSettings[:base_url]}/assets/catarse_bootstrap/banner-infografico-email.jpg"
 br
 br
-| Um abraço,
+| A hug,
 br
 = CatarseSettings[:company_name]

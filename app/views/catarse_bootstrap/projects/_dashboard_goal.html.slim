@@ -11,8 +11,8 @@
                 .w-hidden
                   = form.collection_radio_buttons :mode, [['aon', 'aon'] ,['flex', 'flex']], :first, :last
                 .u-marginbottom-30
-                  label.fontweight-semibold.fontsize-base  Tipo de financiamento
-                  .fontsize-small Escolha o modelo de sua campanha de financiamento coletivo. Após iniciar a sua campanha, não será permitido trocar.&nbsp;
+                  label.fontweight-semibold.fontsize-base  Type of financing
+                  .fontsize-small Choose the template for your collective financing campaign. After starting your campaign, you will not be allowed to trade.&nbsp;
                 .flex-row.u-marginbottom-30
                   a.choose-mode.choose-aon.w-inline-block.btn-select.flex-column.u-text-center[data-mode="aon" class="#{@project.is_flexible? ? '' : 'selected'}" href="#"]
                     = image_tag "catarse_bootstrap/badge-aon.png"
@@ -20,61 +20,61 @@
                     = image_tag "catarse_bootstrap/badge-flex.png"
                 .u-text-center.fontsize-smaller
                   a.mode-diff-toggle.link-hidden-light.fontweight-semibold href="#"
-                    ' Veja a diferença entre os modelos
+                    ' See the difference between the models
                     span.fa.fa-chevron-down
                 .mode-diff.u-margintop-30.div-display-none.w-hidden
                   .flex-row
                     .w-hidden-small.w-hidden-tiny.fontsize-smaller.flex-column
-                      span.fontweight-semibold Compromisso&nbsp;
+                      span.fontweight-semibold Commitment&nbsp;
                       br
-                      ' Você se compromete a executar o projeto e entregar as recompensas apenas
-                      span.fontweight-semibold se a arrecadação atingir ou superar a meta.
+                      ' You agree to execute the project and deliver the rewards only
+                      span.fontweight-semibold If the revenue reaches or exceeds the target.
                       br/
                       br/
-                      span.fontweight-semibold Como funciona?
+                      span.fontweight-semibold How it works?
                       br
-                      | Você só recebe o valor arrecadado se, ao final do prazo,&nbsp;tiver alcançado a meta de arrecadação . Caso contrário, todos seus apoiadores recebem seus pagamentos de volta.
+                      | You only get the amount collected if & nbsp; you have reached the collection goal by the end of the term. Otherwise, all your supporters receive their payments back.
                       br/
                       br/
                       span.fontweight-semibold
-                        'Prazo máximo do projeto no ar:
-                      | 60 dias&nbsp;&nbsp;
+                        'Deadline for the project in the air:
+                      | 60 days&nbsp;&nbsp;
                       br/
                       br/
                       span.fontweight-semibold
-                        'Taxas:
-                      | 13% sobre o total arrecadado
+                        'Rates:
+                      | 13% of total collected
                     .w-hidden-small.w-hidden-tiny.fontsize-smaller.flex-column
                       span.fontweight-semibold
-                        | Compromisso&nbsp;
+                        | Commitment&nbsp;
                         br
-                      ' Você se compromete a executar o projeto e entregar as recompensas (caso tenha optado por ofertá-las),
-                      span.fontweight-semibold independente do valor arrecadado
+                      ' You agree to execute the project and deliver the rewards (if you have chosen to offer them),
+                      span.fontweight-semibold Regardless of the amount collected
                       br/
                       br/
-                      span.fontweight-semibold Como funciona?
+                      span.fontweight-semibold How it works?
                       br
-                      | Você recebe, ao final do prazo, tudo o que tiver arrecadado (descontando apenas a taxa do Catarse), independente de alcançar a meta de arrecadação.
+                      | You receive, at the end of the term, all that you have collected (discounting only the rate of the Catarse), regardless of reaching the collection goal.
                       br/
                       br/
                       span.fontweight-semibold
-                        'Prazo máximo do projeto no ar:
-                      | 12 meses
+                        'Deadline for the project in the air:
+                      | 12 months
                       br/
                       br/
                       span.fontweight-semibold
-                        'Taxas:
-                      |13% sobre o total arrecadado
+                        'Rates:
+                      |13% of total collected
                   .u-text-center.u-margintop-30
                     .divider.u-marginbottom-20
-                    .fontsize-base Quer entender mais?
+                    .fontsize-base Want to understand more?
                     a.fontsize-small href="https://catarse.attach.io/BkLCRfXyg" target="_blank"
-                      ' Baixe nosso
-                      span.fontweight-bold ebook Flex vs Tudo ou Nada
+                      ' Download our
+                      span.fontweight-bold Ebook Flex vs All or Nothing
               #arrecadacao.card.medium.card-terciary.u-marginbottom-30
                 .u-marginbottom-30
-                  label.fontweight-semibold.fontsize-base  Meta de arrecadação
-                  .fontsize-small Quanto você precisa arrecadar? Defina uma meta coerente com o que seu projeto propõe. Não esqueça de incluir as taxas administrativas em seu cálculo.
+                  label.fontweight-semibold.fontsize-base  Goal of collection
+                  .fontsize-small How much do you need to raise? Set a goal consistent with what your project proposes. Do not forget to include administrative fees in your calculation.
                 .w-row.u-marginbottom-30
                   .w-col.w-col-2
                   .w-col.w-col-8
@@ -89,19 +89,19 @@
                   .w-col.w-col-2
                 .u-text-center.fontsize-smaller.fontweight-semibold
                   a.fee-toggle.link-hidden-light href="#" 
-                    ' Entenda as taxas do Catarse
+                    ' Understand JVN rates
                     span.fa.fa-chevron-down
                 .fee-explanation.u-margintop-30.div-display-none.w-hidden
                   .u-marginbottom-30
-                    .fontsize-small.fontweight-semibold Taxas do Catarse
-                    .aon-fee.fontsize-smaller[class="#{@project.is_flexible? ? 'w-hidden' : ''}"] É o valor que será descontado da sua arrecadação ao final da campanha, referente aos serviços do Catarse e do meio de pagamento. Se o seu projeto atingir ou ultrapassar a meta, serão cobrados 13% do total arrecadado ao final da campanha. Caso o seu projeto não atinja a meta, todo o dinheiro apoiado será devolvido aos seus apoiadores após o término da campanha, sem custo nenhum a você. É Tudo ou Nada!
-                    .flex-fee.fontsize-smaller[class="#{@project.is_flexible? ? '' : 'w-hidden'}"] É o valor que será descontado da sua arrecadação ao final da campanha, referente aos serviços do Catarse e do meio de pagamento. Serão cobrados 13% do total arrecadado ao final da campanha, independente se a meta for atingida ou não.
+                    .fontsize-small.fontweight-semibold JVN Fees
+                    .aon-fee.fontsize-smaller[class="#{@project.is_flexible? ? 'w-hidden' : ''}"] It is the amount that will be deducted from your collection at the end of the campaign, regarding the services of Catarse and the means of payment. If your project reaches or exceeds the target, 13% of the total collected at the end of the campaign will be charged. If your project does not reach the goal, all the money backed will be returned to your supporters after the campaign ends, at no cost to you. It's all or nothing!
+                    .flex-fee.fontsize-smaller[class="#{@project.is_flexible? ? '' : 'w-hidden'}"] It is the amount that will be deducted from your collection at the end of the campaign, regarding the services of Catarse and the means of payment. 13% of the total collected at the end of the campaign will be charged, regardless of whether the target is reached or not.
                   .u-text-center.u-margintop-30
                     .divider.u-marginbottom-20
-                    .fontsize-base Quer entender mais?
+                    .fontsize-base Want to understand more?
                     a.fontsize-small href="http://fazum.catarse.me/agradecimento-video-tutorial-orcamento-basico" target="_blank"
-                      ' Assista nossa
-                      span.fontweight-bold vídeo-aula Orçamento Básico
+                      ' Watch our
+                      span.fontweight-bold Basic budget video lesson
               = render "aon_dashboard_explanation", form: form
               = render "flex_dashboard_explanation", form: form
 

@@ -4,7 +4,7 @@ class CreateCategoriesEndpoint < ActiveRecord::Migration
     CREATE OR REPLACE VIEW "1".categories AS
     SELECT
         c.id,
-        name_pt as name,
+        name_en as name,
         (SELECT count(*) from projects p where p.open_for_contributions AND p.category_id = c.id) as online_projects,
         (SELECT count(DISTINCT user_id) from category_followers cf where cf.category_id = c.id) as followers
         FROM categories c

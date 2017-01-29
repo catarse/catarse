@@ -1,10 +1,10 @@
 - user = @notification.user
 - category = @notification.category
 
-| Olá #{user.name},
+| Hello #{user.name},
 br/
 br/
-| Novidades dessa semana na categoria #{category.name_en} do Catarse
+| What's new in this category #{category.name_en} of JVN
 br/
 br/
 - category.projects.of_current_week.with_state('online').each do |project|
@@ -15,9 +15,9 @@ br/
   br
 br/
 br/
-|Um abraço,
+|A hug,
 br/
 | #{CatarseSettings[:company_name]}
 br/
 br/
-| #{link_to 'Descadastrar', unsubscribe_category_url(category), target:'__blank'} o recebimento de projetos recentes dessa categoria.
+| #{link_to 'Describe', unsubscribe_category_url(category), target:'__blank'} The receipt of recent projects of this category.

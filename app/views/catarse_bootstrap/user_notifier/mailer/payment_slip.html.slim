@@ -1,21 +1,21 @@
 - contribution = @notification.contribution
 - expire_date = contribution.details.ordered.first.gateway_data["boleto_expiration_date"].to_datetime.strftime('%d/%m')
 
-p Olá, <strong>#{contribution.user.display_name}</strong> !
-p #{expire_date} é o dia do vencimento do boleto gerado para apoiar o #{contribution.project.name}.
+p Hi, <strong>#{contribution.user.display_name}</strong> !
+p #{expire_date} Is the expiration date of the ticket generated to support the #{contribution.project.name}.
 
-p #{contribution.project.user.display_name} está contando com o seu apoio para que o projeto seja financiado.
+p #{contribution.project.user.display_name} Is counting on your support for the project to be funded.
 
-p Se você não imprimiu seu boleto ainda, você pode clicar no link abaixo e fazer isso agora mesmo:
+p If you have not printed your ticket yet, you can click on the link below and do it right now:
 
 p
   center
     = link_to contribution.details.ordered.first.decorate.display_slip_url, target: '__blank' do
       = image_tag "#{CatarseSettings[:base_url]}/assets/catarse_bootstrap/display_slip.png"
 
-p Caso já tenha pago o boleto bancário, desconsidere esse email por favor.
+p If you have already paid the boleto bancário, please disregard this email.
 
 p
-  | Um abraço,
+  | A hug,
 p
   | #{CatarseSettings[:company_name]}

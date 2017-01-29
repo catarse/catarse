@@ -3,7 +3,7 @@ class FixCategories < ActiveRecord::Migration
     execute <<-SQL
     CREATE OR REPLACE VIEW "1".categories as
     SELECT c.id,
-    c.name_pt AS name,
+    c.name_en AS name,
     count(DISTINCT p.id) FILTER (WHERE is_current_and_online(p.expires_at, p.state::text)) AS online_projects,
     ( SELECT count(DISTINCT cf.user_id) AS count
            FROM category_followers cf

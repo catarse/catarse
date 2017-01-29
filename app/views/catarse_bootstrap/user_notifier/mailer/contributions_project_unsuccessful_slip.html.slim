@@ -3,34 +3,34 @@
 - user = @notification.contribution.user
 - bank_account = user.bank_account
 
-|Olá, #{contribution.user.name}!
+|Hi, #{contribution.user.name}!
 br
 br
-| Infelizmente o projeto #{link_to(contribution.project.name, project_by_slug_url(permalink: contribution.project.permalink))} que você apoiou não atingiu a meta estabelecida no #{CatarseSettings[:company_name]}.
+| Unfortunately the project #{link_to(contribution.project.name, project_by_slug_url(permalink: contribution.project.permalink))} That you supported did not reach the target set in #{CatarseSettings[:company_name]}.
 br
 br
-| Como o seu apoio foi efetuado através de boleto, realizaremos o reembolso diretamente na conta em até 10 dias.
+| Because your support was billed, we will refund your account directly within 10 days.
 br
 br
-| Banco: #{bank_account.bank.to_s}
+| Bank: #{bank_account.bank.to_s}
 br
-| Agência: #{bank_account.try(:agency)} - #{bank_account.try(:agency_digit)}
+| Agency: #{bank_account.try(:agency)} - #{bank_account.try(:agency_digit)}
 br
-| Conta: #{bank_account.try(:account)} - #{bank_account.try(:account_digit)}
+| Account: #{bank_account.try(:account)} - #{bank_account.try(:account_digit)}
 br
-| Nome do titular: #{bank_account.try(:owner_name)}
+| Cardholder Name: #{bank_account.try(:owner_name)}
 br
 | CPF: #{bank_account.try(:owner_document)}
 br
 br
-| Assim que o reembolso for feito, você receberá um e-mail de confirmação da operação.
+| Once the refund is done, you will receive an email confirming the transaction.
 br
 br
-| Se ficou com alguma dúvida, entre em contato conosco respondendo a esta mensagem ou através do e-mail #{mail_to CatarseSettings[:email_contact]} 
-| e nos informe a chave de identificação do seu apoio, que é: #{payment.gateway_id}
+| If you have any questions, please contact us by replying to this message or via email #{mail_to CatarseSettings[:email_contact]}
+| And give us the key to identify your support, which is: #{payment.gateway_id}
 br
 br
-|Um abraço,
+|A hug,
 br
 | #{CatarseSettings[:company_name]}
 

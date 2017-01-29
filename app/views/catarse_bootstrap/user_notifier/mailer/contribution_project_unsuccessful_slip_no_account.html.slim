@@ -4,18 +4,18 @@
 - detail = contribution.details.ordered.first
 - company_name = CatarseSettings[:company_name]
 p
-  |Olá, #{contribution.user.name}!
+  |Hi, #{contribution.user.name}!
 p
-  |O projeto #{link_to(contribution.project.name, project_by_slug_url(permalink: contribution.project.permalink))} não atingiu a meta de arrecadação estabelecida e, segundo as regras do Catarse, o seu apoio no valor de #{number_to_currency detail.value} ao projeto #{contribution.project.name} será devolvido a você.
+  |The project #{link_to(contribution.project.name, project_by_slug_url(permalink: contribution.project.permalink))} Did not meet the established collection goal and, according to Catarse rules, its support in the value of #{number_to_currency detail.value} athe project #{contribution.project.name} Will be returned to you.
 p
-  |Como o seu apoio foi efetuado através de boleto, para efetuar a devolução do dinheiro precisamos que você preencha seus dados bancários:
+  |As your support was made through a ticket, to make the return of money we need you to fill in your bank details:
 p
   center
-    = link_to no_account_refund_project_contribution_url(project, contribution, user_email: user.email, user_token: user.authentication_token), alt: 'Solicitar Reembolso', target: '__blank' do
+    = link_to no_account_refund_project_contribution_url(project, contribution, user_email: user.email, user_token: user.authentication_token), alt: 'Request Refund', target: '__blank' do
       = image_tag "#{CatarseSettings[:base_url]}/assets/catarse_bootstrap/request_refund.png"
 p
-  |Se ficou com alguma dúvida, entre em contato conosco respondendo a esta mensagem ou através do e-mail #{mail_to CatarseSettings[:email_contact]}. Não esqueça de nos informar a chave de identificação do seu apoio, que é: #{detail.gateway_id}.
+  |If you have any questions, please contact us by replying to this message or via email #{mail_to CatarseSettings[:email_contact]}. Do not forget to inform us the identification key of your support, which is: #{detail.gateway_id}.
 p
-  |Um abraço,
+  |A hug,
   br
   | #{company_name}

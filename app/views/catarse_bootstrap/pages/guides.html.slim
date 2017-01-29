@@ -4,24 +4,24 @@
   .hero-medium.hero-guide
     .w-container.u-text-center
       = image_tag "icon-guides.png", class: "icon-hero"
-      .u-text-center.u-marginbottom-20.fontsize-largest Guia dos realizadores
+      .u-text-center.u-marginbottom-20.fontsize-largest Producers Guide
 
   .section
     .w-container
       .w-tabs data-duration-in="300" data-duration-out="100" 
         nav.w-tab-menu.u-marginbottom-30.u-text-center
           = link_to '#starting', id: 'guides_starting_link', class: 'w-tab w-inline-block dashboard-nav-link ' , data: {target: '#guides_starting' } do
-            div Começando
+            div Starting
           = link_to '#you_history', id: 'guides_you_history_link', class: 'w-tab w-inline-block dashboard-nav-link ' , data: {target: '#guides_you_history' } do
-            div Sua história
+            div Your story
           = link_to '#goals', id: 'guides_goals_link', class: 'w-tab w-inline-block dashboard-nav-link ' , data: {target: '#guides_goals' } do
-            div Meta e prazo
+            div Goal and deadline
           = link_to '#rewards', id: 'guides_rewards_link', class: 'w-tab w-inline-block dashboard-nav-link ' , data: {target: '#guides_rewards' } do
-            div Recompensas
+            div Rewards
           = link_to '#social', id: 'guides_social_link', class: 'w-tab w-inline-block dashboard-nav-link ' , data: {target: '#guides_social' } do
-            div Mobilização
+            div Mobilization
           = link_to '#after_project', id: 'guides_after_project_link', class: 'w-tab w-inline-block dashboard-nav-link ' , data: {target: '#guides_after_project' } do
-            div Pós-campanha
+            div Post-campaign
         .w-tab-content.u-text-center
           #guides_starting.w-tab-pane.content.w-hide
             .w-embed.w-iframe

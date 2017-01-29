@@ -5,7 +5,7 @@ class MaterializeCategoryTotals < ActiveRecord::Migration
     CREATE MATERIALIZED VIEW "1".category_totals AS
      WITH project_stats AS (
          SELECT ca.id AS category_id,
-            ca.name_pt AS name,
+            ca.name_en AS name,
             count(DISTINCT p_1.id) FILTER (WHERE p_1.state::text = 'online'::text) AS online_projects,
             count(DISTINCT p_1.id) FILTER (WHERE p_1.state::text = 'successful'::text) AS successful_projects,
             count(DISTINCT p_1.id) FILTER (WHERE p_1.state::text = 'failed'::text) AS failed_projects,
@@ -20,7 +20,7 @@ class MaterializeCategoryTotals < ActiveRecord::Migration
           GROUP BY ca.id
         ), contribution_stats AS (
          SELECT ca.id AS category_id,
-            ca.name_pt,
+            ca.name_en,
             avg(pa.value) AS avg_value,
             count(DISTINCT c_1.user_id) AS total_contributors
            FROM projects p_1
@@ -44,7 +44,7 @@ class MaterializeCategoryTotals < ActiveRecord::Migration
     p.avg_pledged,
     p.total_successful_value,
     p.total_value,
-    c.name_pt,
+    c.name_en,
     c.avg_value,
     c.total_contributors,
     cf.followers
@@ -62,7 +62,7 @@ class MaterializeCategoryTotals < ActiveRecord::Migration
     CREATE VIEW "1".category_totals AS
      WITH project_stats AS (
          SELECT ca.id AS category_id,
-            ca.name_pt AS name,
+            ca.name_en AS name,
             count(DISTINCT p_1.id) FILTER (WHERE p_1.state::text = 'online'::text) AS online_projects,
             count(DISTINCT p_1.id) FILTER (WHERE p_1.state::text = 'successful'::text) AS successful_projects,
             count(DISTINCT p_1.id) FILTER (WHERE p_1.state::text = 'failed'::text) AS failed_projects,
@@ -77,7 +77,7 @@ class MaterializeCategoryTotals < ActiveRecord::Migration
           GROUP BY ca.id
         ), contribution_stats AS (
          SELECT ca.id AS category_id,
-            ca.name_pt,
+            ca.name_en,
             avg(pa.value) AS avg_value,
             count(DISTINCT c_1.user_id) AS total_contributors
            FROM projects p_1
@@ -101,7 +101,7 @@ class MaterializeCategoryTotals < ActiveRecord::Migration
     p.avg_pledged,
     p.total_successful_value,
     p.total_value,
-    c.name_pt,
+    c.name_en,
     c.avg_value,
     c.total_contributors,
     cf.followers

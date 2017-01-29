@@ -31,7 +31,7 @@ CREATE VIEW "1".project_details AS
     p.permalink,
     p.video_embed_url,
     p.video_url,
-    c.name_pt AS category_name,
+    c.name_en AS category_name,
     c.id AS category_id,
     public.original_image(p.*) AS original_image,
     public.thumbnail_image(p.*, 'thumb'::text) AS thumb_image,
@@ -75,7 +75,7 @@ CREATE VIEW "1".project_details AS
      LEFT JOIN public.cities ct ON ((ct.id = p.city_id)))
      LEFT JOIN public.states st ON ((st.id = ct.state_id)))
      LEFT JOIN public.project_notifications pn ON ((pn.project_id = p.id)))
-  GROUP BY p.id, c.id, u.id, c.name_pt, ct.name, u.address_city, st.acronym, u.address_state, st.name, pt.progress, pt.pledged, pt.total_contributions, p.state, p.expires_at, p.sent_to_analysis_at, pt.total_payment_service_fee, fp.state, pt.total_contributors;
+  GROUP BY p.id, c.id, u.id, c.name_en, ct.name, u.address_city, st.acronym, u.address_state, st.name, pt.progress, pt.pledged, pt.total_contributions, p.state, p.expires_at, p.sent_to_analysis_at, pt.total_payment_service_fee, fp.state, pt.total_contributors;
 
 REVOKE ALL ON TABLE "1".project_details FROM PUBLIC;
 GRANT SELECT ON TABLE "1".project_details TO admin;
@@ -233,7 +233,7 @@ CREATE VIEW "1".project_details AS
     p.permalink,
     p.video_embed_url,
     p.video_url,
-    c.name_pt AS category_name,
+    c.name_en AS category_name,
     c.id AS category_id,
     public.original_image(p.*) AS original_image,
     public.thumbnail_image(p.*, 'thumb'::text) AS thumb_image,
@@ -277,7 +277,7 @@ CREATE VIEW "1".project_details AS
      LEFT JOIN public.cities ct ON ((ct.id = p.city_id)))
      LEFT JOIN public.states st ON ((st.id = ct.state_id)))
      LEFT JOIN public.project_notifications pn ON ((pn.project_id = p.id)))
-  GROUP BY p.id, c.id, u.id, c.name_pt, ct.name, u.address_city, st.acronym, u.address_state, st.name, pt.progress, pt.pledged, pt.total_contributions, p.state, p.expires_at, p.sent_to_analysis_at, pt.total_payment_service_fee, fp.state, pt.total_contributors;
+  GROUP BY p.id, c.id, u.id, c.name_en, ct.name, u.address_city, st.acronym, u.address_state, st.name, pt.progress, pt.pledged, pt.total_contributions, p.state, p.expires_at, p.sent_to_analysis_at, pt.total_payment_service_fee, fp.state, pt.total_contributors;
 
 REVOKE ALL ON TABLE "1".project_details FROM PUBLIC;
 GRANT SELECT ON TABLE "1".project_details TO admin;
