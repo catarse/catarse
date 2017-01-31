@@ -54,7 +54,7 @@ en:
         goal: "Plan a goal that is consistent with what your campaign proposes. Review your budget and be sure to include the 13% fee charged by JVN"
         online_days: "You can choose between 1 and 60 days for your campaign. Check out the filmmakers' guide for timeline tips."
         video_url: "Link to your video on Vimeo or <br />Youtube."
-        about_html: "Speak with passion and clarity about what will be accomplished. Clarify possible questions about how the money will be used, who is behind the campaign, how and when the campaign will be delivered. Transparency attracts more supporters. Remember: your campaign will be accessed by ordinary people who will decide whether or not to support your campaign. Capriche! "
+        about_html: "Speak with passion and clarity about what will be accomplished. Clarify possible questions about how the money will be used, who is behind the campaign, how and when the campaign will be delivered. Transparency attracts more supporters. Remember: your campaign will be accessed by ordinary people who will decide whether or not to support your campaign."
         headline: "Phrase in the campaign card to call supporters. Must have a maximum of 100 characters and summarize the campaign well."
         uploaded_image: "This image will be used as the thumbnail of your campaign (PNG, JPG size 600 x 340)"
       project:
@@ -69,6 +69,6 @@ en:
         goal: "Plan a goal that is consistent with what your campaign proposes. Review your budget and be sure to include the 5% fee charged by JVN."
         online_days: "You can choose between 1 and 60 days for your campaign. Check out the directors guide for tips on deadlines"
         video_url: "Link of your video on Vimeo or <br/> Youtube"
-        about_html: "Speak with passion and clarity about what will be accomplished. Clarify possible questions about how the money will be used, who is behind the campaign, how and when the campaign will be delivered. Transparency attracts more supporters. Remember: your campaign will be accessed by ordinary people who will decide whether or not to support your campaign. Capriche! "
+        about_html: "Speak with passion and clarity about what will be accomplished. Clarify possible questions about how the money will be used, who is behind the campaign, how and when the campaign will be delivered. Transparency attracts more supporters. Remember: your campaign will be accessed by ordinary people who will decide whether or not to support your campaign."
         headline: "Phrase in the campaign card to call supporters. Must have a maximum of 100 characters and summarize the campaign well."
         uploaded_image: "This image will be used as the thumbnail of your campaign (PNG, JPG size 600 x 340)"

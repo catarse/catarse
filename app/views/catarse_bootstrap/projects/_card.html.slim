@@ -48,7 +48,7 @@ div[itemtype="http://schema.org/CreativeWork" class="#{defined?(wrapper_class) ?
                 = t('.remaining', count: @project.time_to_go[:time])
             - else
               .fontsize-smallest.lineheight-tight
-                ' Started there
+                ' Initiated
                 br
                 = "#{@project.elapsed_time[:time]}  #{@project.elapsed_time[:unit]}"
 

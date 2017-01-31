@@ -11,7 +11,7 @@
                 .w-hidden
                   = form.collection_radio_buttons :mode, [['aon', 'aon'] ,['flex', 'flex']], :first, :last
                 .u-marginbottom-30
-                  label.fontweight-semibold.fontsize-base  Type of financing
+                  label.fontweight-semibold.fontsize-base  Type Of Financing
                   .fontsize-small Choose the template for your collective financing campaign. After starting your campaign, you will not be allowed to trade.&nbsp;
                 .flex-row.u-marginbottom-30
                   a.choose-mode.choose-aon.w-inline-block.btn-select.flex-column.u-text-center[data-mode="aon" class="#{@project.is_flexible? ? '' : 'selected'}" href="#"]
@@ -28,43 +28,43 @@
                       span.fontweight-semibold Commitment&nbsp;
                       br
                       ' You agree to execute the project and deliver the rewards only
-                      span.fontweight-semibold If the revenue reaches or exceeds the target.
+                      span.fontweight-semibold if the revenue reaches or exceeds the target.
                       br/
                       br/
                       span.fontweight-semibold How it works?
                       br
-                      | You only get the amount collected if & nbsp; you have reached the collection goal by the end of the term. Otherwise, all your supporters receive their payments back.
+                      | You will only get the amount collected if &nbsp; you have reached the collection goal by the end of the term. Otherwise, all your supporters will be refunded.
                       br/
                       br/
                       span.fontweight-semibold
-                        'Deadline for the project in the air:
+                        'Maximum publish days:
                       | 60 days&nbsp;&nbsp;
                       br/
                       br/
                       span.fontweight-semibold
                         'Rates:
-                      | 13% of total collected
+                      | 5% + payment portal charges of total collected
                     .w-hidden-small.w-hidden-tiny.fontsize-smaller.flex-column
                       span.fontweight-semibold
                         | Commitment&nbsp;
                         br
                       ' You agree to execute the project and deliver the rewards (if you have chosen to offer them),
-                      span.fontweight-semibold Regardless of the amount collected
+                      span.fontweight-semibold regardless of the amount collected
                       br/
                       br/
                       span.fontweight-semibold How it works?
                       br
-                      | You receive, at the end of the term, all that you have collected (discounting only the rate of the Catarse), regardless of reaching the collection goal.
+                      | You receive, at the end of the term, all that you have collected, regardless of reaching the collection goal.
                       br/
                       br/
                       span.fontweight-semibold
-                        'Deadline for the project in the air:
+                        'Maximum publish days:
                       | 12 months
                       br/
                       br/
                       span.fontweight-semibold
                         'Rates:
-                      |13% of total collected
+                      |5% + payment portal charges of total collected
                   .u-text-center.u-margintop-30
                     .divider.u-marginbottom-20
                     .fontsize-base Want to understand more?
@@ -73,8 +73,8 @@
                       span.fontweight-bold Ebook Flex vs All or Nothing
               #arrecadacao.card.medium.card-terciary.u-marginbottom-30
                 .u-marginbottom-30
-                  label.fontweight-semibold.fontsize-base  Goal of collection
-                  .fontsize-small How much do you need to raise? Set a goal consistent with what your project proposes. Do not forget to include administrative fees in your calculation.
+                  label.fontweight-semibold.fontsize-base  Funding Required?
+                  .fontsize-small How much do you need to raise? Set a goal consistent with what your camapign proposes. Do not forget to include administrative fees in your calculation.
                 .w-row.u-marginbottom-30
                   .w-col.w-col-2
                   .w-col.w-col-8
@@ -89,13 +89,13 @@
                   .w-col.w-col-2
                 .u-text-center.fontsize-smaller.fontweight-semibold
                   a.fee-toggle.link-hidden-light href="#" 
-                    ' Understand JVN rates
+                    ' Understand JVN Rates
                     span.fa.fa-chevron-down
                 .fee-explanation.u-margintop-30.div-display-none.w-hidden
                   .u-marginbottom-30
                     .fontsize-small.fontweight-semibold JVN Fees
-                    .aon-fee.fontsize-smaller[class="#{@project.is_flexible? ? 'w-hidden' : ''}"] It is the amount that will be deducted from your collection at the end of the campaign, regarding the services of Catarse and the means of payment. If your project reaches or exceeds the target, 13% of the total collected at the end of the campaign will be charged. If your project does not reach the goal, all the money backed will be returned to your supporters after the campaign ends, at no cost to you. It's all or nothing!
-                    .flex-fee.fontsize-smaller[class="#{@project.is_flexible? ? '' : 'w-hidden'}"] It is the amount that will be deducted from your collection at the end of the campaign, regarding the services of Catarse and the means of payment. 13% of the total collected at the end of the campaign will be charged, regardless of whether the target is reached or not.
+                    .aon-fee.fontsize-smaller[class="#{@project.is_flexible? ? 'w-hidden' : ''}"] It is the amount that will be deducted from your collection at the end of the campaign, regarding the services of JVN and the means of payment. If your project reaches or exceeds the target, 5% + payment portal charges of the total collected at the end of the campaign will be charged. If your campaign does not reach the goal, all the money backed will be returned to your supporters after the campaign ends, at no cost to you. It's all or nothing!
+                    .flex-fee.fontsize-smaller[class="#{@project.is_flexible? ? '' : 'w-hidden'}"] It is the amount that will be deducted from your collection at the end of the campaign, regarding the services of JVN and the means of payment. 5% + payment portal charges of the total collected at the end of the campaign will be charged, regardless of whether the target is reached or not.
                   .u-text-center.u-margintop-30
                     .divider.u-marginbottom-20
                     .fontsize-base Want to understand more?
