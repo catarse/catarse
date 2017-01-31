@@ -44,7 +44,7 @@ class UserPolicy < ApplicationPolicy
   end
 
   def permitted_attributes
-    u_attrs = [:confirmed_email_at, :current_password, :password, :owner_document, :address_street, :subscribed_to_new_followers, :subscribed_to_project_post, :subscribed_to_friends_contributions, bank_account_attributes: [:id, :input_bank_number, :bank_id, :name, :agency, :account, :owner_name, :owner_document, :account_digit, :agency_digit]]
+    u_attrs = [:confirmed_email_at, :public_name, :current_password, :password, :owner_document, :address_street, :subscribed_to_new_followers, :subscribed_to_project_post, :subscribed_to_friends_contributions, bank_account_attributes: [:id, :input_bank_number, :bank_id, :name, :agency, :account, :owner_name, :owner_document, :account_digit, :agency_digit]]
     u_attrs << { category_follower_ids: [] }
     u_attrs << record.attribute_names.map(&:to_sym)
     u_attrs << { links_attributes: [:id, :_destroy, :link] }
@@ -55,6 +55,10 @@ class UserPolicy < ApplicationPolicy
       u_attrs.delete(:zero_credits)
       u_attrs.delete(:permalink)
       u_attrs.delete(:whitelisted_at)
+    end
+
+    if user.published_projects.present? && user.public_name.present?
+      u_attrs.delete(:public_name)
     end
 
     u_attrs.flatten
