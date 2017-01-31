@@ -1,70 +1,10 @@
-= simple_form_for @project, defaults: { wrapper: :two_columns, validation_text: false, label_wrapper_html: { class: 'w-col w-col-5 w-sub-col' } } , html: { class: 'project-form w-form' } do |f|
-  =  hidden_field_tag 'project_id', @project.id
-  =  hidden_field_tag 'anchor', 'user_about'
-  = f.simple_fields_for :user do |form|
-    .w-section.section
-      .w-container
-        .w-row
-          .w-col.w-col-10.w-col-push-1
-            = @project.display_errors(:user_about)
+= javascript_include_tag 'redactor'
+= javascript_include_tag "api/application"
+= stylesheet_link_tag 'redactor'
 
-            = form.input :name, as: :string, 
-              wrapper_class: 'w-row u-marginbottom-30 card card-terciary medium',
-              text_field_wrapper_html: { class: 'w-col w-col-7' },
-              input_html: { class: 'w-input text-field positive medium', required: true },
-              label: t('.name_label'),
-              hint: t('.name_hint')
+- parameters = { user_id: @project.user_id }.to_json
 
-            = form.input :email, as: :string, 
-              wrapper_class: 'w-row u-marginbottom-30 card card-terciary medium',
-              text_field_wrapper_html: { class: 'w-col w-col-7' },
-              input_html: { class: 'w-input text-field positive medium', required: true },
-              label: t('.email_label'),
-              hint: t('.email_hint')
-
-            = form.input :uploaded_image, as: :file, 
-              wrapper_class: 'w-row u-marginbottom-30 card card-terciary',
-              text_field_wrapper_html: { class: 'w-col w-col-6 w-sub-col' },
-              input_html: { required: (!@user.uploaded_image.present?) },
-              label: t('.uploaded_image_label'),
-              hint: @user.uploaded_image.present? ? image_tag(form.object.uploaded_image) : t('.uploaded_image_hint') 
-
-            = form.input :about_html, as: :text, 
-            wrapper: 'one_col',
-            wrapper_class: 'w-row u-marginbottom-30 card card-terciary',
-            text_field_wrapper_html: { class: 'w-col w-col-7' },
-            input_html: { class: 'redactor positive', required: true },
-            label: t('.about_label'),
-            hint: t('.about_hint')
-            .w-form.card.card-terciary.u-marginbottom-30
-              = form.input :facebook_link, as: :string, 
-                wrapper_class: 'w-row u-marginbottom-10',
-                text_field_wrapper_html: { class: 'w-col w-col-7' },
-                input_html: { class: 'positive' },
-                label: t('.facebook_link_label'),
-                hint: t('.facebook_link_hint')
-
-              = form.input :twitter, as: :string, 
-                wrapper_class: 'w-row u-marginbottom-10',
-                text_field_wrapper_html: { class: 'w-col w-col-7' },
-                input_html: { class: 'positive' },
-                label: t('.twitter_label'),
-                hint: t('.twitter_hint')
-
-            .w-form.card.card-terciary.u-marginbottom-30
-                .w-row.u-marginbottom-10
-                  .w-col.w-col-5.w-sub-col
-                    label.field-label.fontweight-semibold= t('.other_link_label')   
-                    label.field-label.fontsize-smallest.fontcolor-secondary= t('.other_link_hint')   
-                  .w-col.w-col-7
-                    = form.simple_fields_for :links do |link_form|
-                        = render partial: 'link_fields', locals: { f: link_form, parent_form: form }
-                    .w-row
-                      .w-col.w-col-6
-                      .w-col.w-col-6
-                        = link_to_add_association  t('users.edit.add_link'), form, :links, :'data-association-insertion-method' => :append, :'data-association-insertion-node' => '#links', class: 'btn btn-small btn-terciary'
-    .w-section.save-draft-btn-section
-      .w-container
-        .w-row
-          .w-col.w-col-4.w-col-push-4
-            = form.button :submit, t('.submit'),  class:'btn btn-medium'
+.w-row
+  .w-col.w-col-10.w-col-push-1
+    = @project.display_errors(:user_about)
+#project-edit-user-about data-mithril='projectEditUserAbout' data-parameters=parameters

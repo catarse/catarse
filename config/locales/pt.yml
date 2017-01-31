@@ -1,4 +1,17 @@
 pt:
+  errors:
+    messages:
+      carrierwave_processing_error: "Falha ao processar arquivo"
+      carrierwave_integrity_error: "Tipo de arquivo não permitido"
+      carrierwave_download_error: "Error ao baixar arquivo"
+      extension_white_list_error: "Arquivo do tipo invalido: %{extension}, tipos permitidos: %{allowed_types}"
+      extension_black_list_error: "Arquivo do tipo não permitido %{extension}, tipos não permitidos: %{prohibited_types}"
+      content_type_whitelist_error: "Tipo %{content_type} não reconhecido"
+      content_type_blacklist_error: "Tipo não habilitado %{content_type}"
+      rmagick_processing_error: "Erro ao manipular imagem"
+      mini_magick_processing_error: "Erro ao manipular imagem, Original Error: %{e}"
+      min_size_error: "Arquivo deve ser maior que %{min_size}"
+      max_size_error: "Arquivo deve ser menor que %{max_size}"
   not_filled: 'Não preenchido'
   days: dias
   facebook_locale: pt_BR

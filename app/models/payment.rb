@@ -23,9 +23,9 @@ class Payment < ActiveRecord::Base
   def slip_expiration_date
     # If payment does not exist gives expiration date based on current_timestamp
     if self.id.nil?
-      self.class.connection.select_one("SELECT public.weekdays_from(public.slip_expiration_weekdays(), current_timestamp::timestamp)")['weekdays_from'].to_time;
+      self.class.connection.select_one("SELECT public.weekdays_from(public.slip_expiration_weekdays(), current_timestamp::timestamp)")['weekdays_from'].try(:to_date);
     else
-      pluck_from_database("slip_expires_at")
+      pluck_from_database("slip_expires_at").try(:to_date)
     end
   end
 

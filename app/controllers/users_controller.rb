@@ -97,6 +97,24 @@ class UsersController < ApplicationController
     build_bank_account
   end
 
+  def upload_image
+    authorize resource, :update?
+    params[:user] = {
+      uploaded_image: params[:uploaded_image],
+      cover_image: params[:cover_image]
+    }
+
+    if @user.update_without_password permitted_params
+      @user.reload
+      render status: 200, json: {
+               uploaded_image: @user.uploaded_image.url(:thumb_avatar),
+               cover_image: @user.cover_image.url(:base)
+             }
+    else
+      render status: 400, json: { errors: @user.errors.full_messages }
+    end
+  end
+
   def update
     authorize resource
 

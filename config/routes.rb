@@ -115,6 +115,7 @@ Catarse::Application.routes.draw do
     resources :credit_cards, controller: 'users/credit_cards', only: [ :destroy ]
     member do
       #get :balance
+      post :upload_image
       get :credit_cards
       get :unsubscribe_notifications
       get :credits
