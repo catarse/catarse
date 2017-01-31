@@ -9,7 +9,7 @@ class BalanceTransferMachine
   state :rejected
 
   transition from: :pending, to: %i(authorized rejected)
-  transition from: :authorized, to: %i(error rejected processing)
+  transition from: :authorized, to: %i(error rejected processing pending)
   transition from: :processing, to: %i(error transferred)
   transition from: :error, to: %i(authorized)
 
