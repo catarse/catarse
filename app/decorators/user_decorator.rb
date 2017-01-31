@@ -17,7 +17,7 @@ class UserDecorator < Draper::Decorator
   end
 
   def display_name
-    source.name.presence || I18n.t('user.no_name')
+    source.public_name || source.name.presence || I18n.t('user.no_name')
   end
 
   def display_image
