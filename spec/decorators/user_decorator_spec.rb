@@ -67,6 +67,11 @@ RSpec.describe UserDecorator do
   describe "#display_name" do
     subject{ user.display_name }
 
+    context "whe we have public_name and name" do
+      let(:user) { create(:user, name: 'name', public_name: 'pname')}
+      it { is_expected.to eq('pname') }
+    end
+
     context "when we have only a name" do
       let(:user){ create(:user, name: 'name') }
       it{ is_expected.to eq('name') }

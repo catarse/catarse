@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
     :address_complement, :address_neighbourhood, :address_city, :address_state, :address_zip_code, :phone_number,
     :cpf, :state_inscription, :locale, :twitter, :facebook_link, :other_link, :moip_login, :deactivated_at, :reactivate_token,
     :bank_account_attributes, :country_id, :zero_credits, :links_attributes, :about_html, :cover_image, :category_followers_attributes, :category_follower_ids,
-    :subscribed_to_project_posts, :subscribed_to_new_followers, :subscribed_to_friends_contributions, :whitelisted_at, :confirmed_email_at
+    :subscribed_to_project_posts, :subscribed_to_new_followers, :subscribed_to_friends_contributions, :whitelisted_at, :confirmed_email_at, :public_name
 
   mount_uploader :uploaded_image, UserUploader
   mount_uploader :cover_image, CoverUploader
@@ -39,6 +39,7 @@ class User < ActiveRecord::Base
   validates_presence_of :password, if: :password_required?
   validates_confirmation_of :password, if: :password_confirmation_required?
   validates_length_of :password, within: Devise.password_length, allow_blank: true
+  validates_length_of :public_name, { maximum: 70 }
 
   belongs_to :country
   has_one :user_total
