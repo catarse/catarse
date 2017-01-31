@@ -3,43 +3,43 @@
 - project_link = edit_project_url(project)
 - company_name = CatarseSettings[:company_name]
 
-| Olá, #{project.user.name}, o <strong>#{link_to 'seu projeto foi aprovado', project_link}</strong> e pode ir ao ar quando você desejar.
+| Hi, #{project.user.name}, o <strong>#{link_to 'seu projeto foi aprovado', project_link}</strong> And can go on air when you wish.
 br/
 br/
 strong 
-  | Para iniciar a campanha você precisa fazer apenas 3 coisas!
+  | PTo start the campaign you need to do only 3 things!
 br/
 br/
 strong 
-  | 1. Preencher seus dados bancários na aba #{link_to 'CONTA', edit_project_url(project, anchor: 'user_settings')}.
+  | 1. Fill in your bank details on the#{link_to 'CONTA', edit_project_url(project, anchor: 'user_settings')}.
 br/
-| Precisamos dos seus dados bancários para realizar o repasse do dinheiro arrecadado caso você atinja sua meta de financiamento. 
-br/
-br/
-strong
-  | 2. Escolher a melhor data para começar.
-br/
-| É você mesmo quem escolhe a data de lançamento.
+| We need your bank details to pass on the money raised if you reach your funding goal.
 br/
 br/
 strong
-  | 3. E apertar o botão de publicar o projeto. 
+  | 2. Choose the best date to start.
+br/
+| You are the one who chooses the release date.
+br/
+br/
+strong
+  | 3. And push the button to publish the project.
 br/
 = image_tag 'https://s3.amazonaws.com/cdn.catarse/notifications_assets/btn-publish.gif', width: '600'
 br/
 br/
 strong
-  | Atenção
+  | Attention
 br/
-| - Após a públicação é Tudo-ou-Nada e alguns aspectos do projeto não podem ser alterados! 
+| - After the posting is All-or-Nothing and some aspects of the project can not be changed!
 br/
-| - Só cobramos nossa taxa de 13% caso você tenha sucesso em sua captação! Entenda como fazemos o #{link_to 'repasse do dinheiro', 'http://suporte.catarse.me/hc/pt-br/articles/202037493-Como-ser%C3%A1-feito-o-repasse-do-dinheiro-'}.
-br/
-br/
-| Lembrando que você pode tirar dúvidas conosco respondendo diretamente a esta mensagem ou através do e-mail #{mail_to CatarseSettings[:email_projects]}
+| - We only charge our 13% fee if you succeed in your capture! Understand how we do the#{link_to 'Money transfer', 'http://suporte.catarse.me/hc/pt-br/articles/202037493-Como-ser%C3%A1-feito-o-repasse-do-dinheiro-'}.
 br/
 br/
-| Um grande abraço,
+| Remember that you can ask questions with us by replying directly to this message or through the email #{mail_to CatarseSettings[:email_projects]}
 br/
-| A equipe do #{company_name} te deseja uma ótima campanha! 
+br/
+| A big hug,
+br/
+| #{company_name} team wishes you a great campaign!
 

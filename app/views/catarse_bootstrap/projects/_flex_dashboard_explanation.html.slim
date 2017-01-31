@@ -1,5 +1,5 @@
 .flex-days.card.medium.card-terciary.u-marginbottom-30[class="#{@project.is_flexible? ? '' : 'w-hidden'}"]
-  label.fontweight-semibold.fontsize-base Collection time
+  label.fontweight-semibold.fontsize-base Collection Time
   .fontsize-small.u-marginbottom-60
     ' It is the period when your project will be on the air, open to fundraising. In Flex, you choose whether to publish your project with a deadline or an open deadline.
     a.alt-link href=" https://catarse.attach.io/HJGoCzmJl" target="_blank" Know our tips for defining your deadline.
@@ -9,7 +9,7 @@
       .w-hidden-tiny Your project goes live without a set deadline. You will have the option to set a project end date (minimum of 1 day) at any time within a 12-month period after publication.
     a.choose-time.choose-limited.w-inline-block.btn-select.flex-column.u-text-center[class="#{@project.online_days ? 'selected' : ''}" href="#"]
       .fontsize-base.fontweight-semibold.u-marginbottom-20 Definite time
-      .w-hidden-tiny.u-marginbottom-30 SI project is already in the air with the capture time already defined. You can choose between 1 to 365 days. After publishing the project, you can not change this deadline.
+      .w-hidden-tiny.u-marginbottom-30  You can choose between 1 to 365 days. After publishing the campaign, you can not change this deadline.
       .w-row
         .w-col.w-col-6
           = form.input :online_days,

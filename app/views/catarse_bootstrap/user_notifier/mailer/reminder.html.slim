@@ -2,14 +2,14 @@
 - user = @notification.user
 - company_name = CatarseSettings[:company_name]
 
-|Olá, <strong>#{user.display_name}</strong>!
+|Hi, <strong>#{user.display_name}</strong>!
 br
 br
-| Este é o lembrete de que o projeto #{link_to project.name, project_by_slug_url(project.permalink, {ref: 'notificacao-reminder', utm_source:'notification',utm_medium:'email',utm_campaign:'reminder_link',utm_content:project.name})} termina em 48 horas
+| This is the reminder that the project #{link_to project.name, project_by_slug_url(project.permalink, {ref: 'notificacao-reminder', utm_source:'notification',utm_medium:'email',utm_campaign:'reminder_link',utm_content:project.name})} Starts in about 14 hours
 br
-| Agora é a hora de você fazer parte dessa campanha ;)
+| Now is the time for you to be part of this campaign. ;)
 br
 br
-|Um abraço,
+| A hug,
 br
 | #{company_name}

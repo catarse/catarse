@@ -71,11 +71,11 @@ en:
         headline: "Catchphrase"
         image_url: "Image URL"
         goal: "Amount to be collected"
-        about_html: "Project description"
+        about_html: "Campaign Description"
         user_id: "User ID"
         service_fee: 'JVN rate'
         video_url: "Video URL"
-        permalink: 'Link to your campaign on JVN'
+        permalink: 'Link To Your Campaign On JVN'
         all_tags: 'Admin Tags'
         all_public_tags: 'Tags'
         city: 'Campaign Location'
@@ -83,7 +83,7 @@ en:
         traffic_sources: 'How did you know about JVN?'
         first_contributions: "Who are the first people you're going to ask to support your project? "
         budget: 'Campaign budget'
-        uploaded_image: 'Image of the project'
+        uploaded_image: 'Campaign`s Image'
       project:
         name: 'Camapign Name'
         channels: Channels
@@ -92,21 +92,21 @@ en:
         online_days: "Deadline for collection"
         headline: "Catchphrase"
         image_url: "Image URL"
-        name: "Campaign name"
+        name: "Campaign Name"
         goal: "Amount to be collected"
-        about_html: "Project description"
+        about_html: "Campaign Description"
         user_id: "User ID"
         service_fee: 'JVN rate'
         video_url: "Video URL"
-        permalink: 'Link to your campaign on JVN'
+        permalink: 'Link To Your Campaign On JVN'
         all_tags: 'Admin Tags'
         all_public_tags: 'Tags'
         city: 'Project Location'
         more_links: 'Indicate links so people know more about your project and its trajectory.'
         traffic_sources: 'How did you know about JVN?'
         first_contributions: "Who are the first people you're going to ask to support your project? "
-        budget: 'Project budget'
-        uploaded_image: 'Image of the project'
+        budget: 'Camapign Budget'
+        uploaded_image: 'Campaign`s Image'
       user:
         address_city: City
         address_complement: Complement

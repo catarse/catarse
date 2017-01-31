@@ -4,25 +4,25 @@
 - project_link = project_by_slug_url(permalink: project.permalink)
 - company_name = CatarseSettings[:company_name]
 
-| Olá, <strong>#{project.user.decorate.display_name}</strong>!
+| Hi, <strong>#{project.user.decorate.display_name}</strong>!
 br
 br
-| Nas últimas 24 horas de campanha, seu projeto recebeu #{link_to "#{confirmed_contributions_today.length} novos apoios", project_by_slug_url(permalink: project.permalink, anchor: 'contributions')}, parabéns!
+| In the last 24 hours of the campaign, your project#{link_to "#{confirmed_contributions_today.length} New supports", project_by_slug_url(permalink: project.permalink, anchor: 'contributions')}, congratulations!
 br/
 br/
-| #{link_to 'Poste uma mensagem para os apoiadores', edit_project_url(project, anchor: 'posts')} e #{link_to 'acompanhe as métricas da sua arrecadação', edit_project_url(project, anchor: 'home')}!
+| #{link_to 'Post a message to supporters', edit_project_url(project, anchor: 'posts')} e #{link_to 'Track the metrics of your collection', edit_project_url(project, anchor: 'home')}!
 br
 br
-| Mais informações sobre os apoios do dia:
+| More information about the supports of the day:
 br
 br
 table width="500" border="1" cellpadding="10" cellspacing="0" style='font-size: 13px;'
   thead
     tr
-      th width="100" Nome do apoiador
-      th width="100" Email do apoiador
-      th width="100" Valor apoiado
-      th width="200" Recompensa selecionada
+      th width="100" Supporter's name
+      th width="100" Support Email
+      th width="100" Amount supported
+      th width="200" Reward selected
   tbody
     - confirmed_contributions_today.each do |contribution|
       tr
@@ -32,9 +32,9 @@ table width="500" border="1" cellpadding="10" cellspacing="0" style='font-size: 
         td= contribution.reward.try(:decorate).try(:display_description)
 br/
 br/
-|Lembrando que você pode baixar os #{link_to 'relatórios de apoios', edit_project_url(project, anchor: 'reports')} a qualquer momento. Para tirar dúvidas conosco respondendo diretamente a esta mensagem ou através do #{mail_to CatarseSettings[:email_projects] }
+|Remember that you can download the #{link_to 'Support reports', edit_project_url(project, anchor: 'reports')} any time. To ask questions about us by replying directly to this message or through #{mail_to CatarseSettings[:email_projects] }
 br/
 br/
-| Um abraço,
+| A hug,
 br
 = company_name

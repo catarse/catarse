@@ -2,24 +2,24 @@
 - detail = contribution.details.ordered.first
 - company_name = CatarseSettings[:company_name]
 - contact_email = CatarseSettings[:email_contact]
-|Olá, <strong>#{contribution.user.display_name}</strong>!
+|Hi, <strong>#{contribution.user.display_name}</strong>!
 br
 br
-|A devolução do seu apoio para o projeto #{contribution.project.name} no #{company_name} acabou de ser realizada. O crédito efetivo deverá acontecer na fatura vigente, caso ela ainda esteja em aberto, ou na subsequente, caso a desse mês já esteja fechada.
+|Returning your support for project #{contribution.project.name} to #{company_name} just completed. The effective credit must occur in the current invoice, if it is still open, or in the subsequent one, if that month is already closed.
 br
 br
-|Valor devolvido: #{number_to_currency detail.value}
+|Returned Value: #{number_to_currency detail.value}
 br
 br
-|Data do reembolso: #{I18n.l detail.refunded_at}
+|Date of refund: #{I18n.l detail.refunded_at}
 br
 br
-|Identificação na fatura do cartão de crédito: “Estorno do Catarse”
+|Identification on the credit card invoice: "Chargeback"
 br
 br
-|Se ficou com alguma dúvida, entre em contato conosco respondendo a esta mensagem ou através do e-mail #{mail_to contact_email}. Não esqueça de nos informar a chave de identificação do seu apoio, que é: #{detail.payment_id}
+|If you have any questions, please contact us by replying to this message or via email #{mail_to contact_email}. Do not forget to inform us the identification key of your support, which is: #{detail.payment_id}
 br
 br
-|Um abraço,
+|A hug,
 br
 | #{company_name}

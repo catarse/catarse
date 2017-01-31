@@ -3,42 +3,42 @@
 - project_link = edit_project_url(project)
 - company_name = CatarseSettings[:company_name]
 
-| Oi #{project.user.name},
+| Hi #{project.user.name},
 br/
 br/
-| O prazo do projeto #{link_to project.name, project_link} no #{company_name} chegou ao fim.
+| The project deadline #{link_to project.name, project_link} no #{company_name} Came to an end.
 br/
 br/
-| Devido a prazos de boletos existem pagamentos pendentes para o seu projeto.
-'  Para computar esses apoios ficaremos aguardando a confirmação dessas contribuições por até <strong>4 dias úteis após o término do projeto</strong>.
-'  Lembre-se, é nesse ponto que descontamos a taxa de 13% relativa aos serviços do Catarse e dos meios de pagamento. Essa taxa incide sobre o valor total arrecadado.
+| Due to ticket deadlines there are outstanding payments for your project.
+'  In order to compute these supports we will be awaiting confirmation of these contributions for up to <strong>4 business days after the end of the project</strong>.
+'  In order to compute these supports we will be awaiting confirmation of these contributions for up to <4 business days after the end of the project....
 br/
 br/
-| Confira o que pode acontecer depois dessa data:
+| Check out what may happen after this date:
 br/
 br/
 - if project.is_flexible?
-  | Estamos a esperar o prazo para contabilizar esses apoios de última hora. Com esse processo finalizado iremos repassar o valor arrecadado para você.
+  | We are waiting for the deadline to account for these last-minute support. With this process finalized we will pass on the amount collected for you.
 - else
-  | <strong>1) Se o seu projeto já atingiu ou ultrapassou a meta:</strong>
-  '  vamos apenas esperar o prazo para contabilizar esses apoios de última hora. Com esse processo finalizado, basta 
-  = link_to 'repassar o valor arrecadado para você.', 'http://suporte.catarse.me/hc/pt-br/articles/202037493-Como-ser%C3%A1-feito-o-repasse-do-dinheiro-', target: '__blank'
+  | <strong>1) If your project has already reached or exceeded the goal:</strong>
+  '  Let's just wait for the deadline to account for these last-minute endorsements. With this process completed,
+  = link_to 'Transfer the amount collected to you.', 'http://suporte.catarse.me/hc/pt-br/articles/202037493-Como-ser%C3%A1-feito-o-repasse-do-dinheiro-', target: '__blank'
   br/
   br/
-  | <strong>2) Se o seu projeto ainda não atingiu a meta:</strong> vamos esperar e torcer pela confirmação desses apoios! Atingindo 100% da meta iniciaremos o repasse do dinheiro para você.
+  | <strong>2) If your project has not yet reached the goal:</strong> Let's hope and hope for confirmation of these supports! Reaching 100% of the goal, we will start the money transfer for you.
   br/
-  | Caso contrário iniciaremos o #{link_to 'reembolso dos seus apoiadores', 'http://suporte.catarse.me/hc/pt-br/articles/202365507-Regras-e-funcionamento-dos-reembolsos-estornos', target: '__blank'}.
+  | Otherwise we will start the #{link_to 'Reimbursement from its supporters', 'http://suporte.catarse.me/hc/pt-br/articles/202365507-Regras-e-funcionamento-dos-reembolsos-estornos', target: '__blank'}.
 br/
 br/
-| <strong>ATENÇÃO:</strong> Para fazer o repasse utilizaremos as informações cadastrais e bancárias preenchidas na <strong>#{link_to 'aba Conta', edit_project_url(project, anchor: 'user_settings')}</strong> do seu projeto. <strong>Certifique-se de que os dados estão corretos.</strong>
+| <strong>ATTENTION:</strong> In order to make the transfer, we will use the cadastral and banking information <strong>#{link_to 'Account tab', edit_project_url(project, anchor: 'user_settings')}</strong> Of your project. <strong>Make sure the data is correct.</strong>
 br/
 br/
 = image_tag 'https://s3.amazonaws.com/cdn.catarse/notifications_assets/funded-conta.gif', width: 600
 br/
 br/
-| Se ficou com alguma dúvida, responda a esta mensagem diretamente ou fale conosco através do e-mail #{mail_to CatarseSettings[:email_projects]}.
+| If you have any questions, reply to this message directly or contact us via email #{mail_to CatarseSettings[:email_projects]}.
 br/
 br/
-| Um abraço,
+| A hug,
 br/
 = company_name

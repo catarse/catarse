@@ -9,35 +9,35 @@ en:
     edit:
       flex:
         budget_html: "Budget"
-        video_html: "Vídeo <span class='fontcolor-terciary'>(optional)</span>"
+        video_html: "Video <span class='fontcolor-terciary'>(optional)</span>"
         video_subtitle: 'Video is optional, but we highly recommend it! A good video makes the difference and can be largely responsible for the success of your project.'
       aon:
         budget_html: "Budget"
-        video_html: "Vídeo <span class='fontcolor-terciary'>(optional)</span>"
-        video_subtitle: 'Video is optional, but we highly recommend it! A good video makes the difference and can be largely responsible for the success of your project.'
+        video_html: "Video <span class='fontcolor-terciary'>(optional)</span>"
+        video_subtitle: 'Video is optional, but we highly recommend it! A good video makes the difference and can be largely responsible for the success of your campaign.'
       reward_html: "Rewards <span class='fontcolor-terciary'>(optional)</span>"
-      reward_subtitle: "If you want to start the project without reward and add later also, feel free!"
+      reward_subtitle: "If you want to start the campaign without reward and add later also, feel free!"
       posts: "Write a new story"
       announce_expiration: 'Deadline for collection'
       announce_expiration_subtitle: 'Choose the date well because you can not change it later. Once your deadline has expired, you will need to confirm your bank details. We will then deposit the money into your account within 10 business days.'
       budget_subtitle: "How will your money be used? The more transparency the better. Show what steps and processes will be involved in using these resources. A list with the top budget items or even a pie chart will go super well here."
       card: 'Card'
-      card_subtitle: 'Do you know that design card that appears in the home and the search? Well, it makes it nice because they say the first impression is the one that stays ;)'
-      basics: 'Fill in the information below'
+      card_subtitle: 'Do you know that these design card will appear in the home page and the JVN search result? Well, it makes it nice because they say the first impression is the one that stays ;)'
+      basics: 'Fill In The Information Below'
       basics_subtitle: 'The data reported in this section can not be modified when the campaign is published. Fill in carefully and review before launching the campaign. '
       goal: 'Financing'
-      goal_subtitle: 'Please fill in the section below because this information can no longer be changed if the project is aired.'
+      goal_subtitle: 'Please fill in the section below carefully because this information can no longer be changed after the campaign is published.'
       reports: 'Support reports'
       user_settings: 'Cadastral and banking data'
       user_settings_subtitle: 'With the data below complete, your project will be ready to air. After you complete the fill, click Save. Check it out. If everything is ok, just hit the Publish button and start your campaign!'
-      user_about: "Talk more about you!"
-      user_about_subtitle: "Supporters want to know project managers better. Links that help tell your story are always welcome. "
-      description: 'Tell the story of your project!'
-      description_subtitle: 'Take a good look at the narrative of the project. It is she who will enchant people and bring back supporters. A good video and description are differential!'
+      user_about: "Talk More About You!"
+      user_about_subtitle: "Supporters want to know campaign managers better. Links that help tell your story are always welcome. "
+      description: 'Tell The Story Of Your Campaign!'
+      description_subtitle: 'Take a good look at the narrative of the campaign. It is she who will enchant people and bring back supporters. A good video and description are differential!'
     reward_fields:
       edit: "Edit reward"
       reward: Reward
-      info_box: "Describe the reward value and place a real delivery date forecast for the supporters. You can also limit a reward and when the limit is reached it appears as SOLD. If you want to change the order that the rewards appear in your project, simply do this by dragging them up or down."
+      info_box: "Describe the reward value and place a real delivery date forecast for the supporters. You can also limit a reward and when the limit is reached it appears as SOLD. If you want to change the order that the rewards appear in your campaign, simply do this by dragging them up or down."
       minimum_value: "Value:"
       deliver_at: "Delivery forecast:"
       description: "Description:"
@@ -154,7 +154,7 @@ en:
         description_tab: Description
         video_tab: "Video <span class='fontsize-smallest fontcolor-secondary'>(optional)</span>"
         rewards_tab: "Rewards <span class='fontsize-smallest fontcolor-secondary'>(optional)</span>"
-        about_you_tab: About you
+        about_you_tab: About You
       aon:
         preview_tab: Preview
         account_tab: Account
@@ -165,7 +165,7 @@ en:
         description_tab: Description
         video_tab: "Video <span class='fontsize-smallest fontcolor-secondary'>(optional)</span>"
         rewards_tab: "Rewards <span class='fontsize-smallest fontcolor-secondary'>(optional)</span>"
-        about_you_tab: About you
+        about_you_tab: About You
     flex_dashboard_explanation:
       flex:
         kind_text: "You are participating in the flexible model trial period. Your participation is essential to understanding how we can expand this model for all users. %{link}"
@@ -173,20 +173,20 @@ en:
         expiration_title: "Deadline for collection"
     dashboard_user_about:
       submit: "Save"
-      twitter_label: "Twitter profile"
+      twitter_label: "Twitter Profile"
       twitter_hint: "Paste your profile link"
-      other_link_label: "Presence on the internet"
-      other_link_hint: "Include links that help supporters understand why you are the right person to do this project. "
+      other_link_label: "Presence On The Internet"
+      other_link_hint: "Include links that help supporters understand why you are the right person to do this campaign. "
       about_label: "About you"
-      about_hint: "Use this space if you want to describe you, your company or your institution better. Want to give credit to partners? Use some institutional video? This space is yours and use it any way you want. All this information will appear on the Tab About in your Public Profile."
-      facebook_link_label: "Facebook profile"
+      about_hint: "Use this space if you want to describe you, your company or your institution better. Want to give credit to partners? Use some institutional video? This space is yours and use it any way you want. All this information will appear on the About tab in your Public Profile."
+      facebook_link_label: "Facebook Profile"
       facebook_link_hint: "Paste your profile link"
-      uploaded_image_label: "Profile picture"
+      uploaded_image_label: "Profile Picture"
       uploaded_image_hint: "This image will be used as your profile thumbnail (PNG, JPG 280x280 ideal size)"
       name_label: "Name"
       name_hint: "This is the name that users will see in your profile."
       email_label: Registration Email
-      email_hint: Email for you to log into the JVN and communicate with our team and with your supporters
+      email_hint: Email for you to log into JVN and communicate with our team and with your supporters
     dashboard_goal:
       submit: "Save"
       kind_label: "Type of financing"
@@ -204,7 +204,7 @@ en:
       explanation_02: 'This is an irreversible action. After the final stretch is defined, the project will no longer be able to change its final deadline. At the end of the term, you receive all the amount collected.'
     dashboard_preview:
       aon:
-        header_subtitle: "It's time for feedbacks!"
+        header_subtitle: "It's Time For Feedbacks!"
         header_text: "Share the link below with your friends and take the time to make fine adjustments to help your campaign."
       flex:
         header_subtitle: "It's time to listen to suggestions!"
