@@ -39,6 +39,7 @@ class User < ActiveRecord::Base
   validates_presence_of :password, if: :password_required?
   validates_confirmation_of :password, if: :password_confirmation_required?
   validates_length_of :password, within: Devise.password_length, allow_blank: true
+  validates_length_of :public_name, { maximum: 70 }
 
   belongs_to :country
   has_one :user_total
