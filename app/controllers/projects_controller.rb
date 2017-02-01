@@ -82,6 +82,10 @@ class ProjectsController < ApplicationController
     authorize resource, :update?
   end
 
+  def posts
+    authorize resource, :update?
+  end
+
   def download_reports
     authorize resource, :update?
   end

@@ -92,6 +92,10 @@ class User < ActiveRecord::Base
     where("id IN (SELECT user_id FROM contributions WHERE contributions.was_confirmed AND project_id = ?)", project_id)
   }
 
+  scope :who_chose_reward, ->(reward_id) {
+    where("id IN (SELECT user_id FROM contributions WHERE contributions.was_confirmed AND reward_id = ?)", reward_id)
+  }
+
   scope :subscribed_to_posts, -> {
     where("subscribed_to_project_posts")
   }
