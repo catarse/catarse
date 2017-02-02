@@ -172,4 +172,3 @@ gem 'coffee-rails'
 gem 'compass-rails'
 gem 'uglifier'
 gem 'sprockets'
-gem "bower-rails", "~> 0.11.0"

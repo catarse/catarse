@@ -52,20 +52,6 @@ set :rvm_ruby_version, 'ruby-2.3.1' # Edit this if you are using MRI Ruby
 # set :bower_target_path, nil
 # set :bower_bin, '/home/deploy/.nvm/versions/node/v7.5.0/bin/bower'
 
-namespace :bower do
-  desc 'Install bower'
-  task :install do
-    on roles(:web) do
-      within release_path do
-        with rails_env: fetch(:rails_env) do
-          execute :rake, 'bower:install CI=true'
-        end
-      end
-    end
-  end
-end
-before 'deploy:compile_assets', 'bower:install'
-
 set :puma_rackup, -> { File.join(current_path, 'config.ru') }
 set :puma_state, "#{shared_path}/tmp/pids/puma.state"
 set :puma_pid, "#{shared_path}/tmp/pids/puma.pid"
