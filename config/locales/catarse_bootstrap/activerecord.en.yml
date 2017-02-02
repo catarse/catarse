@@ -108,6 +108,8 @@ en:
         budget: 'Camapign Budget'
         uploaded_image: 'Campaign`s Image'
       user:
+        uploaded_image: 'Profile Picture'
+        cover_image: 'Cover Image'
         address_city: City
         address_complement: Complement
         address_neighbourhood: Neighborhood

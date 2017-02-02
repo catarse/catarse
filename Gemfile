@@ -100,9 +100,10 @@ gem 'routing-filter', '~> 0.6.0'
 group :production do
   # Gem used to handle image uploading
   gem 'fog-aws'
-
+  # Use Puma as the app server
+  gem 'puma', '~> 3.0'
   # Workers, forks and all that jazz
-  gem 'unicorn'
+  # gem 'unicorn'
 
   # Enabling Gzip on Heroku
   # If you don't use Heroku, please comment the line below.
@@ -131,6 +132,14 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'thin'
+  gem 'capistrano'
+  gem 'capistrano3-puma'
+  gem 'capistrano-rails', require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano-rvm'
+  # gem 'capistrano-bower'
+  # gem 'capistrano-nvm', require: false
+
   # Uncomment only for optimization, should be commented on master branch
   # gem 'rack-mini-profiler'
   # gem 'ruby-prof'
@@ -163,3 +172,4 @@ gem 'coffee-rails'
 gem 'compass-rails'
 gem 'uglifier'
 gem 'sprockets'
+gem "bower-rails", "~> 0.11.0"

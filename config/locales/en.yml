@@ -1,4 +1,17 @@
 en:
+  errors:
+    messages:
+      carrierwave_processing_error: "Failed to process file"
+      carrierwave_integrity_error: "File type not allowed"
+      carrierwave_download_error: "Error downloading file"
+      extension_white_list_error: "File of invalid type: %{extension}, types allowed: %{allowed_types}"
+      extension_black_list_error: "File of type not allowed %{extension}, types not allowed: %{prohibited_types}"
+      content_type_whitelist_error: "Type %{content_type} not recognized"
+      content_type_blacklist_error: "Type not enabled %{content_type}"
+      rmagick_processing_error: "Error while handling image"
+      mini_magick_processing_error: "Error while handling image, Original Error: %{e}"
+      min_size_error: "File must be larger than %{min_size}"
+      max_size_error: "File must be less than %{max_size}"
   not_filled: Not filled
   days: days
   facebook_locale: en_BR
