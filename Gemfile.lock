@@ -87,7 +87,6 @@ GEM
       rack (>= 0.9.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
-    bower-rails (0.11.0)
     browser (1.0.1)
     builder (3.2.2)
     capistrano (3.7.2)
@@ -96,10 +95,14 @@ GEM
       i18n
       rake (>= 10.0.0)
       sshkit (>= 1.9.0)
+    capistrano-bower (1.1.0)
+      capistrano (~> 3.0)
     capistrano-bundler (1.2.0)
       capistrano (~> 3.1)
       sshkit (~> 1.2)
     capistrano-harrow (0.5.3)
+    capistrano-nvm (0.0.6)
+      capistrano (~> 3.1)
     capistrano-rails (1.2.2)
       capistrano (~> 3.1)
       capistrano-bundler (~> 1.1)
@@ -661,10 +664,11 @@ DEPENDENCIES
   best_in_place!
   better_errors
   binding_of_caller
-  bower-rails (~> 0.11.0)
   browser (= 1.0.1)
   capistrano
+  capistrano-bower
   capistrano-bundler
+  capistrano-nvm
   capistrano-rails
   capistrano-rvm
   capistrano3-puma
