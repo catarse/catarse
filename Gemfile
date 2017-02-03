@@ -137,8 +137,8 @@ group :development do
   gem 'capistrano-rails', require: false
   gem 'capistrano-bundler', require: false
   gem 'capistrano-rvm'
-  # gem 'capistrano-bower'
-  # gem 'capistrano-nvm', require: false
+  gem 'capistrano-bower'
+  gem 'capistrano-nvm', require: false
 
   # Uncomment only for optimization, should be commented on master branch
   # gem 'rack-mini-profiler'
