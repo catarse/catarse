@@ -76,7 +76,7 @@ Catarse::Application.routes.draw do
   end
   resources :projects, only: [ :create, :update, :edit, :new, :show] do
     resources :accounts, only: [:create, :update]
-    resources :posts, controller: 'projects/posts', only: [ :destroy, :show ]
+    resources :posts, controller: 'projects/posts', only: [ :destroy, :show, :create ]
     resources :rewards do
       post :sort, on: :member
     end
@@ -99,6 +99,7 @@ Catarse::Application.routes.draw do
     get 'video', on: :collection
     member do
       get 'insights'
+      get 'posts'
       get 'contributions_report'
       get 'download_reports'
       put 'pay'

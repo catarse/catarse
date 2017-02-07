@@ -128,6 +128,7 @@
           '/projects/:project_id/contributions/:contribution_id': wrap(c.root.ThankYou, {menuTransparency: false, footerBig: false}),
           '/pt/:project': wrap(c.root.ProjectsShow, {menuTransparency: false, footerBig: false}),
           '/projects/:project_id/insights': wrap(c.root.Insights, {menuTransparency: false, footerBig: false}),
+          '/projects/:project_id/posts': wrap(c.root.Posts, {menuTransparency: false, footerBig: false}),
           '/projects/:project_id': wrap(c.root.ProjectsShow, {menuTransparency: false, footerBig: false}),
           '/users/:user_id': wrap(c.root.UsersShow, {menuTransparency: true, footerBig: false}),
           '/pt/users/:user_id': wrap(c.root.UsersShow, {menuTransparency: true, footerBig: false}),
