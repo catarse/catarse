@@ -38,7 +38,6 @@ RSpec.describe UsersController, type: :controller do
 
   let(:successful_project){ create(:project, state: 'successful') }
   let(:failed_project){ create(:project, state: 'failed') }
-  let(:contribution){ create(:contribution, state: 'confirmed', user: user, project: failed_project) }
   let(:user){ create(:user, password: 'current_password', password_confirmation: 'current_password', authorizations: [create(:authorization, uid: 666, oauth_provider: create(:oauth_provider, name: 'facebook'))]) }
   let(:current_user){ user }
 
@@ -226,6 +225,62 @@ RSpec.describe UsersController, type: :controller do
 
       context "with right current password and right confirmation" do
         it{ is_expected.to redirect_to edit_user_path(user) }
+      end
+    end
+
+    context "public_name update" do
+      context "when user already have published projects" do
+        let(:user) { create(:user, public_name: 'foo' )}
+        let(:published_project) { create(:project, state: 'online', user: user) }
+        before do
+          published_project
+          put :update, id: user.id, locale: 'pt', user: { public_name: 'foo2' }
+        end
+
+        it "should not update public name" do
+          user.reload
+          expect(user.public_name).to eq('foo')
+        end
+      end
+
+      context "when user already have contributed projects" do
+        let(:user) { create(:user, public_name: 'foo' )}
+        before do
+          allow(user).to receive(:contributed_projects).and_return([1])
+          put :update, id: user.id, locale: 'pt', user: { public_name: 'foo2' }
+        end
+
+        it "should not update public name" do
+          user.reload
+          expect(user.public_name).to eq('foo')
+        end
+      end
+
+
+      context "when user not have published projects" do
+        let(:user) { create(:user, public_name: 'foo')}
+        before do
+          put :update, id: user.id, locale: 'pt', user: { public_name: 'foo2' }
+        end
+
+        it "should update public name" do
+          user.reload
+          expect(user.public_name).to eq('foo2')
+        end
+      end
+
+      context "when user have published project but public_name is not filled" do
+        let(:user) { create(:user, public_name: nil)}
+        let(:published_project) { create(:project, state: 'online', user: user) }
+        before do
+          published_project
+          put :update, id: user.id, locale: 'pt', user: { public_name: 'foo2' }
+        end
+
+        it "should not update public name" do
+          user.reload
+          expect(user.public_name).to eq('foo2')
+        end
       end
     end
 
