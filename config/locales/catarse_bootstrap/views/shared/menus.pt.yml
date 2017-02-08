@@ -2,7 +2,7 @@ pt:
   shared:
     menus:
       user:
-        about: 'Sobre você'
+        about: 'Perfil Público'
         access_address: 'Dados e endereço'
         activity: 'Atividade'
         banking: 'Banco e cartões'
