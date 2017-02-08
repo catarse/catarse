@@ -12,7 +12,7 @@ module Project::ErrorGroups
         card: [:uploaded_image, :headline],
         video: [:video_url],
         reward: [:'rewards.size', :'rewards.minimum_value', :'rewards.deliver_at'],
-        user_about: [:'user.uploaded_image', :'user.name', :'user.about_html'],
+        user_about: [:'user.uploaded_image', :'user.public_name', :'user.about_html'],
         user_settings: ProjectAccount.attribute_names.map{|attr| ('account.' + attr).to_sym} << :'account.agency_size' << :account
       }
     rescue Exception => e
