@@ -57,6 +57,7 @@ FactoryGirl.define do
     f.association :bank_account
     f.permalink { generate(:permalink) }
     f.name "Foo bar"
+    f.public_name "Public bar"
     f.password "123456"
     f.cpf "97666238991"
     f.uploaded_image File.open("#{Rails.root}/spec/support/testimg.png")
