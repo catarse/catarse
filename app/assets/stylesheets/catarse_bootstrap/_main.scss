@@ -256,6 +256,10 @@ a:hover {
   height: 170px;
 }
 
+.text-field.height-mini {
+  height: 110px;
+}
+
 .field-label {
   min-height: 20px;
   margin-bottom: 5px;
@@ -1268,10 +1272,6 @@ a:hover {
   margin-bottom: 20px;
 }
 
-.back-payment-info-reward {
-  margin-bottom: 35px;
-}
-
 .back-payment-reward-description {
   margin-top: -7px;
 }
@@ -1446,8 +1446,7 @@ a:hover {
 }
 
 .dropdown-link:hover {
-  background-color: #e9e9ec;
-  text-decoration: none;
+  background-color: #f1f4f4;
 }
 
 .dropdown-list {
@@ -3107,6 +3106,7 @@ a:hover {
 .table-row {
   padding-top: 17px;
   padding-bottom: 17px;
+  padding-left: 15px;
   border-bottom: 1px solid #f1f4f4;
   background-color: #fff;
 }
@@ -3975,6 +3975,21 @@ a:hover {
   margin-bottom: 20px;
   border-style: none;
   background-color: transparent;
+}
+
+.link-more {
+  position: relative;
+  z-index: 70;
+  display: block;
+  margin-top: -60px;
+  padding-top: 65px;
+  background-image: -webkit-linear-gradient(270deg, transparent, #fff 77%);
+  background-image: linear-gradient(180deg, transparent, #fff 77%);
+}
+
+.link-more.gray {
+  background-image: -webkit-linear-gradient(270deg, transparent, #f1f4f4 77%);
+  background-image: linear-gradient(180deg, transparent, #f1f4f4 77%);
 }
 
 html.w-mod-js *[data-ix="fade-in"] {
@@ -5153,6 +5168,9 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
   .table-outer {
     padding-right: 0px;
     padding-left: 0px;
+  }
+  .table-row {
+    padding-left: 5px;
   }
   .hero-who {
     padding-top: 190px;
