@@ -81,7 +81,7 @@
                     .w-row
                       .w-col.w-col-4.w-col-small-6.w-col-tiny-6.text-field.prefix.no-hover.medium.prefix-permalink
                         .fontcolor-secondary.u-text-center.fontsize-base.lineheight-tightest R$
-                      .w-col.w-col-8.w-col-small-6.w-col-tiny-6
+                      .w-col.w-col-8.w-col-small-6.w-col-tiny-6.label-hide
                         = form.input :goal,
                           as: :tel,
                           input_html: { id: 'project-goal-input', class: 'postfix positive medium', required: false, value: @project.localized.goal},

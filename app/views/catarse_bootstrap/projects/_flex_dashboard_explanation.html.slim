@@ -11,7 +11,7 @@
       .fontsize-base.fontweight-semibold.u-marginbottom-20 Prazo definido
       .w-hidden-tiny.u-marginbottom-30 Seu projeto já entra no ar com o tempo de captação já definido. Você poderá escolher um prazo de 1 a 365 dias. Após publicar o projeto, você não poderá alterar esse prazo.
       .w-row
-        .w-col.w-col-6
+        .w-col.w-col-6.label-hide
           = form.input :online_days,
             type: 'number',
             disabled: !@project.is_flexible?,
