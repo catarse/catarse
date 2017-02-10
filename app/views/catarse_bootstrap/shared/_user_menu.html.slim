@@ -13,6 +13,11 @@
         .fontweight-semibold.fontsize-smaller.u-marginbottom-10 Configurações
         ul.w-list-unstyled.u-marginbottom-20
           li.lineheight-looser
+            = link_to t('shared.menus.user.find_friends'), connect_fb_path, class: 'alt-link fontsize-smaller'
+            | &nbsp;
+            span.badge.badge-success
+              | Novidade
+          li.lineheight-looser
             = link_to t('shared.menus.user.about'), edit_user_path(current_user, anchor: :about_me), class: 'alt-link fontsize-smaller'
           li.lineheight-looser
             = link_to t('shared.menus.user.notifications'), edit_user_path(current_user, anchor: :notifications), class: 'alt-link fontsize-smaller'

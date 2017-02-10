@@ -2,6 +2,7 @@ pt:
   shared:
     menus:
       user:
+        find_friends: 'Encontrar amigos'
         about: 'Perfil Público'
         access_address: 'Dados e endereço'
         activity: 'Atividade'
