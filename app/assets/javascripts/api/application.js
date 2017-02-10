@@ -1,14 +1,14 @@
 //= require mithril/mithril.js
 //= require jquery
 //= require underscore
-//= require mithril-postgrest
+//= require mithril-jvn-postgrest
 //= require moment
 //= require replace-diacritics
 //= require chartjs
 //= require i18n/translations
 //= require ../analytics
 //= require api/init
-//= require jvn.js/dist/catarse.js
+//= require jvnjs/dist/catarse.js
 //= require_self
 
 (function(m, c, Chart, analytics){
