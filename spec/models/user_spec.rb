@@ -344,7 +344,9 @@ RSpec.describe User, type: :model do
     subject{ user.to_analytics_json }
     it do
       is_expected.to eq({
+        id: user.id,
         user_id: user.id,
+        public_name: user.public_name,
         email: user.email,
         name: user.name,
         contributions: user.total_contributed_projects,
