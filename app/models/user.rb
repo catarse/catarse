@@ -266,6 +266,7 @@ class User < ActiveRecord::Base
   def to_analytics
     {
       user_id: self.id,
+      public_name: self.public_name,
       email: self.email,
       name: self.name,
       contributions: self.total_contributed_projects,
