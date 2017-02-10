@@ -11,7 +11,7 @@
       .fontsize-base.fontweight-semibold.u-marginbottom-20 Definite time
       .w-hidden-tiny.u-marginbottom-30  You can choose between 1 to 365 days. After publishing the campaign, you can not change this deadline.
       .w-row
-        .w-col.w-col-6
+        .w-col.w-col-6.label-hide
           = form.input :online_days,
             type: 'number',
             disabled: !@project.is_flexible?,

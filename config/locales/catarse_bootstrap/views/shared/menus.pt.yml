@@ -2,7 +2,8 @@ pt:
   shared:
     menus:
       user:
-        about: 'Sobre você'
+        find_friends: 'Encontrar amigos'
+        about: 'Perfil Público'
         access_address: 'Dados e endereço'
         activity: 'Atividade'
         banking: 'Banco e cartões'

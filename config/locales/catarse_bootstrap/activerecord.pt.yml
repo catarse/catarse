@@ -120,7 +120,7 @@ pt:
         budget: 'Orçamento do projeto'
         uploaded_image: 'Imagem do projeto'
       user:
-        public_name: 'Nome no perfil público'
+        public_name: 'Nome público'
         uploaded_image: 'Imagem do perfil'
         cover_image: 'Imagem de capa do perfil'
         address_city: Cidade
@@ -323,6 +323,8 @@ pt:
               invalid: 'Token expirou. Vá para <a href="/password/new" class="alt-link">redefinir senha</a> e solicite novamente a redefinição da senha.'
             name:
               blank: "Nome do usuário não pode ficar em branco"
+            public_name:
+              blank: "Nome público não pode ficar em branco"
             about_html:
               blank: "Sobre você não pode ficar em branco"
             uploaded_image:

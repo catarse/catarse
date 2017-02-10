@@ -137,6 +137,7 @@
           '/pt/:project': wrap(c.root.ProjectsShow, {menuTransparency: false, footerBig: false}),
           '/en/:project': wrap(c.root.ProjectsShow, {menuTransparency: false, footerBig: false}),
           '/projects/:project_id/insights': wrap(c.root.Insights, {menuTransparency: false, footerBig: false}),
+          '/projects/:project_id/posts': wrap(c.root.Posts, {menuTransparency: false, footerBig: false}),
           '/projects/:project_id': wrap(c.root.ProjectsShow, {menuTransparency: false, footerBig: false}),
           '/users/:user_id': wrap(c.root.UsersShow, {menuTransparency: true, footerBig: false}),
           '/pt/users/:user_id': wrap(c.root.UsersShow, {menuTransparency: true, footerBig: false}),
@@ -144,7 +145,11 @@
           '/users/:user_id/edit': wrap(c.root.UsersEdit, {menuTransparency: true, footerBig: false}),
           '/pt/users/:user_id/edit': wrap(c.root.UsersEdit, {menuTransparency: true, footerBig: false}),
           '/en/users/:user_id/edit': wrap(c.root.UsersEdit, {menuTransparency: true, footerBig: false}),
-          '/:project': wrap(c.root.ProjectsShow, {menuTransparency: false, footerBig: false})
+          '/:project': wrap(c.root.ProjectsShow, {menuTransparency: false, footerBig: false}),
+          '/pt/follow-fb-friends': wrap(c.root.FollowFoundFriends, {menuTransparency: false, footerBig: false}),
+          '/en/follow-fb-friends': wrap(c.root.FollowFoundFriends, {menuTransparency: false, footerBig: false}),
+          '/follow-fb-friends': wrap(c.root.FollowFoundFriends, {menuTransparency: false, footerBig: false})
+
       });
   }
   _.each(document.querySelectorAll('div[data-mithril]'), function(el){

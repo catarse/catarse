@@ -73,12 +73,12 @@ RSpec.describe UserDecorator do
     end
 
     context "when we have only a name" do
-      let(:user){ create(:user, name: 'name') }
+      let(:user){ create(:user, name: 'name', public_name: nil) }
       it{ is_expected.to eq('name') }
     end
 
     context "when we have no name" do
-      let(:user){ create(:user, name: nil) }
+      let(:user){ create(:user, name: nil, public_name: nil) }
       it{ is_expected.to eq(I18n.t('user.no_name')) }
     end
   end
@@ -107,12 +107,12 @@ RSpec.describe UserDecorator do
     end
 
   describe "#short_name" do
-    subject { create(:user, name: 'My Name Is Lorem Ipsum Dolor Sit Amet') }
+    subject { create(:user, name: 'My Name Is Lorem Ipsum Dolor Sit Amet', public_name: nil) }
     its(:short_name) { should == 'My Name Is Lorem ...' }
   end
 
   describe "#medium_name" do
-    subject { create(:user, name: 'My Name Is Lorem Ipsum Dolor Sit Amet And This Is a Bit Name I Think') }
+    subject { create(:user, name: 'My Name Is Lorem Ipsum Dolor Sit Amet And This Is a Bit Name I Think', public_name: nil) }
     its(:medium_name) { should == 'My Name Is Lorem Ipsum Dolor Sit Amet A...' }
   end
 

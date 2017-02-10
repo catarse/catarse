@@ -268,20 +268,6 @@ RSpec.describe UsersController, type: :controller do
           expect(user.public_name).to eq('foo2')
         end
       end
-
-      context "when user have published project but public_name is not filled" do
-        let(:user) { create(:user, public_name: nil)}
-        let(:published_project) { create(:project, state: 'online', user: user) }
-        before do
-          published_project
-          put :update, id: user.id, locale: 'pt', user: { public_name: 'foo2' }
-        end
-
-        it "should not update public name" do
-          user.reload
-          expect(user.public_name).to eq('foo2')
-        end
-      end
     end
 
     context "with out password parameters" do

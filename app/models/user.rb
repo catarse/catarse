@@ -92,6 +92,10 @@ class User < ActiveRecord::Base
     where("id IN (SELECT user_id FROM contributions WHERE contributions.was_confirmed AND project_id = ?)", project_id)
   }
 
+  scope :who_chose_reward, ->(reward_id) {
+    where("id IN (SELECT user_id FROM contributions WHERE contributions.was_confirmed AND reward_id = ?)", reward_id)
+  }
+
   scope :subscribed_to_posts, -> {
     where("subscribed_to_project_posts")
   }
@@ -204,10 +208,6 @@ class User < ActiveRecord::Base
     if locale != language
       self.update_attributes locale: language
     end
-  end
-
-  def active_for_authentication?
-    super && deactivated_at.nil?
   end
 
   def reactivate
@@ -357,7 +357,7 @@ class User < ActiveRecord::Base
   end
 
   def active_for_authentication?
-    super && account_active?
+    super && account_active? && deactivated_at.nil?
   end
 
   def inactive_message
