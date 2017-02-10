@@ -210,10 +210,6 @@ class User < ActiveRecord::Base
     end
   end
 
-  def active_for_authentication?
-    super && deactivated_at.nil?
-  end
-
   def reactivate
     self.update_attributes deactivated_at: nil, reactivate_token: nil
   end
@@ -361,7 +357,7 @@ class User < ActiveRecord::Base
   end
 
   def active_for_authentication?
-    super && account_active?
+    super && account_active? && deactivated_at.nil?
   end
 
   def inactive_message
