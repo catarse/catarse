@@ -12,7 +12,7 @@ class ApiWrapper
 
   def request(endpoint, options = {})
     Typhoeus::Request.new(
-      "#{CatarseSettings[:api_host]}/#{endpoint}",
+      "#{CatarseSettings[:api_host]}#{endpoint}",
       params: options[:params] || {},
       body: options[:body] || {},
       headers: base_headers.merge(options[:headers] || {}),
