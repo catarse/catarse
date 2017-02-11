@@ -1,17 +1,10 @@
-# Catarse
-[![Circle CI](https://circleci.com/gh/catarse/catarse/tree/master.svg?style=svg)](https://circleci.com/gh/catarse/catarse/tree/master)
-[![Coverage Status](https://coveralls.io/repos/catarse/catarse/badge.svg?branch=master)](https://coveralls.io/r/catarse/catarse?branch=master)
-[![Code Climate](https://codeclimate.com/github/catarse/catarse/badges/gpa.svg)](https://codeclimate.com/github/catarse/catarse)
+# Joint Venture Nepal (JVN)
 
-The first crowdfunding platform from Brazil
+######A hyper local Nepali crowdfunding platform.
 
-## An open-source crowdfunding platform for creative projects
+Welcome to JVN code repo.JVN is a forked project of a popular crowdfunding project called [Catarse](https://github.com/catarse/catarse). Our goal with opening the source code is to stimulate the creation of a community of developers around a high-quality crowdfunding platform.
 
-Welcome to Catarse's source code repository.
-Our goal with opening the source code is to stimulate the creation of a community of developers around a high-quality crowdfunding platform.
-
-You can see the software in action in http://catarse.me.
-The official repo is https://github.com/catarse/catarse
+You can see the software in action in [http://myjvn.com](http://myjvn.com). The official repo is [https://github.com/sushant12/jvn](https://github.com/sushant12/jvn)
 
 ## Getting started
 
@@ -36,11 +29,11 @@ To run this project you need to have:
 
 * Clone the project
 
-        $ git clone https://github.com/catarse/catarse.git
+        $ git clone https://github.com/sushant12/jvn.git
 
 * Enter project folder
 
-        $ cd catarse
+        $ cd jvn
 
 * Create the `database.yml`
 
@@ -79,7 +72,7 @@ If everything goes OK, you can now run the project!
 
 	After downloading PostgREST 0.3.x you can unpack and run the executable as below.
 
-		$ ./postgrest postgres://postgrest@localhost/catarse_development -a anonymous --jwt-secret gZH75aKtMN3Yj0iPS4hcgUuTwjAzZr9C -s 1 -p 3004
+		$ ./postgrest postgres://user@localhost/db_name -a anonymous --jwt-secret gZH75aKtMN3Yj0iPS4hcgUuTwjAzZr9C -s 1 -p 3004
 
 * Run Rails server
 ```bash
@@ -90,20 +83,15 @@ Open [http://localhost:3000](http://localhost:3000)
 
 ### Translations
 
-We hope to support a lot of languages in the future, so we are willing to accept pull requests with translations to other languages.
-
-Thanks a lot to Daniel Walmsley, from http://purpose.com, for starting the internationalization and beginning the English translation.
+We hope to support Nepali languages in the future, so we are willing to accept pull requests with translations in Nepali.
 
 ## Payment gateways
 
-Currently, we support pagarme through our payment engines. Payment engines are extensions to Catarse that implement a specific payment gateway logic.
-
-If you have created a different payment engine to Catarse, please contact us so we can link your engine here.
-If you want to create a payment engine, please join our mailing list at http://groups.google.com/group/catarse-dev
+We have plans to integrate eSewa, Stripe, Everest Bank Payment System and NIBL Bank Payment System.
 
 ## How to contribute with code
 
-Discuss your plans in our mailing list (http://groups.google.com/group/catarse-dev).
+Discuss your plans in our mailing list (http://groups.google.com/group/joint-venture-nepal).
 
 After that, just fork the project, change what you want, and send us a pull request.
 
@@ -115,14 +103,6 @@ After that, just fork the project, change what you want, and send us a pull requ
 * Feel free to add specs to committed code that lacks coverage ;)
 * Let our tests serve as a style guide: we try to use implicit spec subjects and lazy evaluation wherever we can.
 
-## Credits
-
-Author: Daniel Weinmann
-
-Contributors: You know who you are ;) The commit history can help, but the list was getting bigger and pointless to keep in the README.
-
 ## License
-
-Copyright (c) 2016 Softa
 
 Licensed under the MIT license (see MIT-LICENSE file)
