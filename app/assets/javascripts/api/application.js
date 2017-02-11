@@ -1,7 +1,7 @@
 //= require mithril/mithril.js
 //= require jquery
 //= require underscore
-//= require mithril-postgrest
+//= require mithril-jvn-postgrest
 //= require moment
 //= require replace-diacritics
 //= require chartjs
