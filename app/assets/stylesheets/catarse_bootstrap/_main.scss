@@ -256,7 +256,13 @@ a:hover {
   height: 170px;
 }
 
+.text-field.height-mini {
+  height: 110px;
+}
+
 .field-label {
+  min-height: 20px;
+  margin-bottom: 5px;
   color: #3f4752;
   font-size: 16px;
   font-weight: 400;
@@ -925,11 +931,21 @@ a:hover {
   text-align: center;
 }
 
+.back-reward-input-reward.placeholder.medium {
+  font-size: 28px;
+}
+
 .back-reward-input-reward.error {
   margin-bottom: 10px;
   border-style: solid;
   border-color: #e86666;
   background-color: #fce7e7;
+}
+
+.back-reward-input-reward.medium {
+  height: 42px;
+  font-size: 34px;
+  line-height: 42px;
 }
 
 .back-reward-radio-reward {
@@ -1256,10 +1272,6 @@ a:hover {
   margin-bottom: 20px;
 }
 
-.back-payment-info-reward {
-  margin-bottom: 35px;
-}
-
 .back-payment-reward-description {
   margin-top: -7px;
 }
@@ -1426,13 +1438,15 @@ a:hover {
 }
 
 .dropdown-link {
+  display: block;
+  padding: 5px 10px;
   -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
+  color: #3f4752;
 }
 
 .dropdown-link:hover {
-  background-color: #e9e9ec;
-  text-decoration: none;
+  background-color: #f1f4f4;
 }
 
 .dropdown-list {
@@ -3092,6 +3106,7 @@ a:hover {
 .table-row {
   padding-top: 17px;
   padding-bottom: 17px;
+  padding-left: 15px;
   border-bottom: 1px solid #f1f4f4;
   background-color: #fff;
 }
@@ -3922,6 +3937,61 @@ a:hover {
   margin-left: 10px;
 }
 
+.checkbox-menu {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  margin-right: 10px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: hsla(217, 7%, 51%, .77);
+  border-radius: 3px;
+}
+
+.checkbox-menu:hover {
+  box-shadow: inset 0 0 3px 0 rgba(0, 0, 0, .17);
+}
+
+.checkbox-menu.checkbox-menu-partial-selected {
+  background-image: url('/assets/checkmark-partial_2x.png');
+  background-position: 50% 50%;
+  background-size: 180%;
+  background-repeat: no-repeat;
+}
+
+.checkbox-menu.checkbox-menu-selected {
+  background-image: url('/assets/checkmark_2x.png');
+  background-position: 50% 50%;
+  background-size: 200%;
+  background-repeat: no-repeat;
+}
+
+.menu-actions {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.text-field-neutral {
+  margin-bottom: 20px;
+  border-style: none;
+  background-color: transparent;
+}
+
+.link-more {
+  position: relative;
+  z-index: 70;
+  display: block;
+  margin-top: -60px;
+  padding-top: 65px;
+  background-image: -webkit-linear-gradient(270deg, transparent, #fff 77%);
+  background-image: linear-gradient(180deg, transparent, #fff 77%);
+}
+
+.link-more.gray {
+  background-image: -webkit-linear-gradient(270deg, transparent, #f1f4f4 77%);
+  background-image: linear-gradient(180deg, transparent, #f1f4f4 77%);
+}
+
 html.w-mod-js *[data-ix="fade-in"] {
   opacity: 0;
 }
@@ -4151,6 +4221,14 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
     height: 60px;
     font-size: 29px;
     line-height: 56px;
+  }
+  .back-reward-input-reward.placeholder.medium {
+    height: 42px;
+    font-size: 23px;
+    line-height: 41px;
+  }
+  .back-reward-input-reward.medium {
+    font-size: 28px;
   }
   .back-reward-radio-reward {
     border-width: 2px;
@@ -5091,6 +5169,9 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
     padding-right: 0px;
     padding-left: 0px;
   }
+  .table-row {
+    padding-left: 5px;
+  }
   .hero-who {
     padding-top: 190px;
     padding-bottom: 78px;
@@ -5353,6 +5434,13 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
   }
   .back-reward-input-reward.placeholder {
     font-size: 20px;
+  }
+  .back-reward-input-reward.placeholder.medium {
+    font-size: 19px;
+    line-height: 40px;
+  }
+  .back-reward-input-reward.medium {
+    font-size: 25px;
   }
   .back-reward-radio-reward {
     width: auto;

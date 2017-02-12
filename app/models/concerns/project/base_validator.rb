@@ -21,7 +21,7 @@ module Project::BaseValidator
         unless: ->(project) { project.video_thumbnail.present? }
 
       wo.validate do
-        [:uploaded_image, :about_html, :name].each do |attr|
+        [:uploaded_image, :about_html, :public_name].each do |attr|
           self.user.errors.add_on_blank(attr)
         end
 

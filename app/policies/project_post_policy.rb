@@ -26,7 +26,7 @@ class ProjectPostPolicy < ApplicationPolicy
 
   def permitted_attributes
     if done_by_owner_or_admin?
-      [:title, :comment_html, :exclusive, :user_id]
+      [:title, :comment_html, :exclusive, :user_id, :reward_id, :recipients]
     else
       []
     end

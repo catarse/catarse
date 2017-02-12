@@ -91,7 +91,7 @@ RSpec.describe Projects::ContributionsController, type: :controller do
       let(:contribution){ Contribution.last }
       it{ should redirect_to edit_project_contribution_path(project_id: project.id, id: contribution.id) }
       it "should copy user data to newly created contribution" do
-        expect(contribution.payer_name).to eq user.display_name
+        expect(contribution.payer_name).to eq user.name
         expect(contribution.payer_email).to eq user.email
       end
     end
