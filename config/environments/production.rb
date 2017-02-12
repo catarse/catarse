@@ -43,7 +43,7 @@ Catarse::Application.configure do
   # config.force_ssl = true
 
   # Set to :debug to see everything in the log.
-  config.log_level = :info
+  config.log_level = :debug
 
   # Prepend all log lines with the following tags.
   # config.log_tags = [ :subdomain, :uuid ]
@@ -86,6 +86,6 @@ Catarse::Application.configure do
     'X-Frame-Options' => 'ALLOWALL'
   }
 
-  # config.serve_static_assets = true
-  # config.action_dispatch.x_sendfile_header = nil
+  config.serve_static_assets = true
+  config.action_dispatch.x_sendfile_header = nil
 end
