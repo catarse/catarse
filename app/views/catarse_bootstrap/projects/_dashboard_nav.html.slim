@@ -23,7 +23,10 @@
             span.fa.fa-bullhorn.fa-fw.fa-lg
             = t('.posts_tab')
             | &nbsp
-            span.badge= @project.posts.count
+            - if @project.posts.count > 0
+              span.badge= @project.posts.count
+            - else
+              span.badge.badge-attention= 'Nenhuma'
 
       .edit-project-div
         - if @project.published? && !@project.is_flexible?
