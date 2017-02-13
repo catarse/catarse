@@ -248,7 +248,7 @@ end
     {name: 'Kapilvastu', state_id: '51'},
     {name: 'Chireshwarnath', state_id: '17'},
     {name: 'Devdaha', state_id: '49'},
-    {name: 'Hariwan', state_id: '19'}
+    {name: 'Hariwan', state_id: '19'},
     {name: 'Jhalari Pipaladi', state_id: '72'},
     {name: 'Tripur', state_id: '56'},
     {name: 'Kamalamai', state_id: '20'},
