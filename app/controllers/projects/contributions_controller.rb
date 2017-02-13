@@ -87,6 +87,22 @@ class Projects::ContributionsController < ApplicationController
     render "user_notifier/mailer/#{template}", locals: { contribution: resource }, layout: 'layouts/email'
   end
 
+  def confirm_delivery
+    authorize resource
+    resource.delivery_status = 'received'
+    resource.save!
+    return render nothing: true
+  end
+
+  def update_status
+    project = Project.find params['project_id']
+    authorize project, :update?
+    Contribution.where(id: params['contributions']).update_all(delivery_status: params['delivery_status'])
+    respond_to do |format|
+      format.json { render :json => { :success => 'OK' } }
+    end
+  end
+
   def toggle_anonymous
     authorize resource
     resource.toggle!(:anonymous)
