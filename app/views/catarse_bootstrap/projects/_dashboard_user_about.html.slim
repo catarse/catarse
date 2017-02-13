@@ -1,6 +1,4 @@
-= javascript_include_tag 'redactor'
 = javascript_include_tag "api/application"
-= stylesheet_link_tag 'redactor'
 
 - parameters = { user_id: @project.user_id }.to_json
 
@@ -8,4 +6,3 @@
   .w-col.w-col-10.w-col-push-1
     = @project.display_errors(:user_about)
 #project-edit-user-about data-mithril='projectEditUserAbout' data-parameters=parameters
-
