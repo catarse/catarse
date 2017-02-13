@@ -16,7 +16,7 @@ module Catarse
       VideoInfo.provider_api_keys = { youtube: CatarseSettings[:youtube_key], vimeo: CatarseSettings[:vimeo_key] }
 
       Raven.configure do |config|
-        config.dsn = CatarseSettings[:sentry_dns]
+        config.dsn = CatarseSettings[:sentry_dsn]
         config.environments = ['staging', 'production']
         config.sanitize_fields = Rails.application.config.filter_parameters.map(&:to_s)
       end
