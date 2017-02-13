@@ -14,6 +14,12 @@ module Catarse
     config.to_prepare do
       Devise::Mailer.layout "email" # email.haml or email.erb
       VideoInfo.provider_api_keys = { youtube: CatarseSettings[:youtube_key], vimeo: CatarseSettings[:vimeo_key] }
+
+      Raven.configure do |config|
+        config.dsn = CatarseSettings[:sentry_dsn] || ''
+        config.environments = ['staging', 'production']
+        config.sanitize_fields = Rails.application.config.filter_parameters.map(&:to_s)
+      end
     end
 
     config.paths['app/views'].unshift("#{Rails.root}/app/views/catarse_bootstrap")
@@ -58,6 +64,5 @@ module Catarse
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
-
   end
 end
