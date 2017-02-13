@@ -39,11 +39,12 @@ gem 'mixpanel_client'
 
 # Payment engines
 
-gem 'catarse_pagarme', '~> 2.10.1'
+gem 'catarse_pagarme', '~> 2.10.2'
 #gem 'catarse_pagarme', path: '../catarse_pagarme'
 
 # Decorators
 gem 'draper'
+gem "sentry-raven"
 
 # Frontend stuff
 gem 'slim-rails'
