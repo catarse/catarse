@@ -17,7 +17,7 @@ module Catarse
 
       Raven.configure do |config|
         config.dsn = CatarseSettings[:sentry_dsn] || ''
-        config.environments = ['staging', 'production']
+        config.environments = ['sandbox', 'production']
         config.sanitize_fields = Rails.application.config.filter_parameters.map(&:to_s)
       end
     end
