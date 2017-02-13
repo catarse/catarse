@@ -229,6 +229,21 @@ RSpec.describe UsersController, type: :controller do
     end
 
     context "public_name update" do
+      context "when admin changing public_name" do
+        let(:user) { create(:user, public_name: 'foo', admin: true )}
+        let(:published_project) { create(:project, state: 'online', user: user) }
+
+        before do
+          published_project
+          put :update, id: user.id, locale: 'pt', user: { public_name: 'foo2' }
+        end
+
+        it "should not update public name" do
+          user.reload
+          expect(user.public_name).to eq('foo2')
+        end
+      end
+
       context "when user already have published projects" do
         let(:user) { create(:user, public_name: 'foo' )}
         let(:published_project) { create(:project, state: 'online', user: user) }
