@@ -10,7 +10,7 @@ class SendgridEventProcessor
         email: event.attributes['email'],
         useragent: event.attributes['useragent'],
         sendgrid_data: event.attributes.to_json
-      )
+      ) if event.attributes['notification_type'].present?
     rescue Exception => e
       Raven.extra_context(sengrid_event: event.attributes)
       Raven.capture_exception(e)
