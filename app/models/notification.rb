@@ -44,7 +44,7 @@ class Notification < ActiveRecord::Base
   end
 
   def locale
-    @locale ||= (self.metadata.try(:[], 'locale') || 'pt')
+    @locale ||= (self.metadata.try(:[], 'locale') || 'en')
   end
 
   def project

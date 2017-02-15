@@ -12,20 +12,20 @@
             = link_to  t('shared.menus.user.activity'), edit_user_path(current_user, anchor: :feeds), class: 'alt-link fontsize-smaller'
         .fontweight-semibold.fontsize-smaller.u-marginbottom-10 Settings
         ul.w-list-unstyled.u-marginbottom-20
-          li.lineheight-looser
-            = link_to t('shared.menus.user.find_friends'), connect_fb_path, class: 'alt-link fontsize-smaller'
-            | &nbsp;
-            span.badge.badge-success
-              | Novidade
+          /li.lineheight-looser
+          /  = link_to t('shared.menus.user.find_friends'), connect_fb_path, class: 'alt-link fontsize-smaller'
+          /  | &nbsp;
+          /  span.badge.badge-success
+          /    | Novidade
           li.lineheight-looser
             = link_to t('shared.menus.user.about'), edit_user_path(current_user, anchor: :about_me), class: 'alt-link fontsize-smaller'
           li.lineheight-looser
             = link_to t('shared.menus.user.notifications'), edit_user_path(current_user, anchor: :notifications), class: 'alt-link fontsize-smaller'
-          li.lineheight-looser
-            = link_to t('shared.menus.user.access_address'), edit_user_path(current_user, anchor: :settings), class: 'alt-link fontsize-smaller'
-          li.lineheight-looser
-            = link_to t('shared.menus.user.banking'), edit_user_path(current_user, anchor: :billing), class: 'alt-link fontsize-smaller'
-        .divider.u-marginbottom-20
+        /  li.lineheight-looser
+        /    = link_to t('shared.menus.user.access_address'), edit_user_path(current_user, anchor: :settings), class: 'alt-link fontsize-smaller'
+        /  li.lineheight-looser
+        /    = link_to t('shared.menus.user.banking'), edit_user_path(current_user, anchor: :billing), class: 'alt-link fontsize-smaller'
+        /.divider.u-marginbottom-20
         - if current_user.admin?
           .fontweight-semibold.fontsize-smaller.u-marginbottom-10 Admin
           ul.w-list-unstyled.u-marginbottom-20
@@ -39,11 +39,11 @@
               = link_to t('admin.projects.index.menu'), admin_projects_path, class: 'alt-link fontsize-smaller'
             li.lineheight-looser
               = link_to 'Dataclips', dbhero_path, class: 'alt-link fontsize-smaller'
-        .fontsize-mini= t('shared.menus.user.your_email')
-        .fontsize-smallest.u-marginbottom-20
-          span.fontweight-semibold= current_user.email
-          = link_to t('shared.menus.user.update_email'), edit_user_path(current_user, anchor: :settings), class: 'alt-link'
-        .divider.u-marginbottom-20
+        /.fontsize-mini= t('shared.menus.user.your_email')
+        /.fontsize-smallest.u-marginbottom-20
+        /  span.fontweight-semibold= current_user.email
+        /  = link_to t('shared.menus.user.update_email'), edit_user_path(current_user, anchor: :settings), class: 'alt-link'
+        /.divider.u-marginbottom-20
         = link_to t('layouts.user.logout'), destroy_user_session_path, class: 'alt-link'
         
   

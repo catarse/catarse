@@ -33,7 +33,7 @@ CREATE OR REPLACE VIEW "1"."notifications" AS
             ufn.id
            FROM user_follow_notifications ufn
         UNION ALL   
-        SELECT c.name_pt AS origin,
+        SELECT c.name_en AS origin,
             cn.user_id,
             cn.template_name,
             cn.created_at,
@@ -124,7 +124,7 @@ CREATE OR REPLACE VIEW "1"."notifications" AS
     n.created_at,
     n.sent_at,
     n.deliver_at
-   FROM ( SELECT c.name_pt AS origin,
+   FROM ( SELECT c.name_en AS origin,
             cn.user_id,
             cn.template_name,
             cn.created_at,

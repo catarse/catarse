@@ -3,6 +3,6 @@ class CategoryDecorator < Draper::Decorator
   include Draper::LazyHelpers
 
   def display_name
-    I18n.available_locales.include?(params[:locale].to_sym) ? source.send('name_'+params[:locale]) : source.name_pt
+    I18n.available_locales.include?(params[:locale].to_sym) ? source.send('name_'+params[:locale]) : source.name_en
   end
 end

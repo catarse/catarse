@@ -21,7 +21,7 @@ AS $$
         full_text_index :=  setweight(to_tsvector('portuguese', unaccent(coalesce(project.name::text, ''))), 'A') || 
                             setweight(to_tsvector('portuguese', unaccent(coalesce(project.permalink::text, ''))), 'C') || 
                             setweight(to_tsvector('portuguese', unaccent(coalesce(project.headline::text, ''))), 'B') || 
-                            setweight(to_tsvector('portuguese', unaccent(coalesce((SELECT c.name_pt FROM categories c WHERE c.id = project.category_id)::text, ''))), 'B') || 
+                            setweight(to_tsvector('portuguese', unaccent(coalesce((SELECT c.name_en FROM categories c WHERE c.id = project.category_id)::text, ''))), 'B') || 
                             setweight(to_tsvector('portuguese', unaccent(coalesce((select array_agg(t.name)::text from public.taggings ta join public_tags t on t.id = ta.public_tag_id where ta.project_id = project.id)::text, ''))), 'B') || 
                             setweight(to_tsvector('portuguese', unaccent(coalesce((SELECT u.name FROM users u WHERE u.id = project.user_id)::text, ''))), 'C');
 
@@ -55,7 +55,7 @@ CREATE OR REPLACE FUNCTION public.update_full_text_index() RETURNS trigger
       new.full_text_index :=  setweight(to_tsvector('portuguese', unaccent(coalesce(NEW.name::text, ''))), 'A') || 
                               setweight(to_tsvector('portuguese', unaccent(coalesce(NEW.permalink::text, ''))), 'C') || 
                               setweight(to_tsvector('portuguese', unaccent(coalesce(NEW.headline::text, ''))), 'B');
-      new.full_text_index :=  new.full_text_index || setweight(to_tsvector('portuguese', unaccent(coalesce((SELECT c.name_pt FROM categories c WHERE c.id = NEW.category_id)::text, ''))), 'B');
+      new.full_text_index :=  new.full_text_index || setweight(to_tsvector('portuguese', unaccent(coalesce((SELECT c.name_en FROM categories c WHERE c.id = NEW.category_id)::text, ''))), 'B');
       RETURN NEW;
     END;
     $$;
