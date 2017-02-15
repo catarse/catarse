@@ -40,7 +40,7 @@ class ContributionPolicy < ApplicationPolicy
     done_by_owner_or_admin?
   end
 
-  def confirm_delivery?
+  def toggle_delivery?
     done_by_owner_or_admin?
   end
 

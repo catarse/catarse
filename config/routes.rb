@@ -87,7 +87,7 @@ Catarse::Application.routes.draw do
       end
       member do
         get 'toggle_anonymous'
-        get 'confirm_delivery'
+        get 'toggle_delivery'
         get :second_slip
         get :receipt
         get :no_account_refund

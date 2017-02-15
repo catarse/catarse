@@ -87,10 +87,15 @@ class Projects::ContributionsController < ApplicationController
     render "user_notifier/mailer/#{template}", locals: { contribution: resource }, layout: 'layouts/email'
   end
 
-  def confirm_delivery
+  def toggle_delivery
     authorize resource
-    resource.delivery_status = 'received'
-    resource.reward_received_at = Time.current
+    if resource.delivery_status == 'received'
+      resource.delivery_status = resource.reward_sent_at.nil? ? 'undelivered' : 'delivered'
+      resource.reward_received_at = nil
+    else
+      resource.delivery_status = 'received'
+      resource.reward_received_at = Time.current
+    end
     resource.save!
     return render nothing: true
   end
