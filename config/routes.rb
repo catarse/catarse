@@ -83,9 +83,11 @@ Catarse::Application.routes.draw do
     resources :contributions, {except: [:index], controller: 'projects/contributions'} do
       collection do
         get :fallback_create, to: 'projects/contributions#create'
+        put :update_status
       end
       member do
         get 'toggle_anonymous'
+        get 'confirm_delivery'
         get :second_slip
         get :receipt
         get :no_account_refund
