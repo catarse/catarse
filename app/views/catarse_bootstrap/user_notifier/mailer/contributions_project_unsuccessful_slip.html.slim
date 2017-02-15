@@ -3,7 +3,7 @@
 - user = @notification.contribution.user
 - bank_account = user.bank_account
 
-|Hi, #{contribution.user.name}!
+|Hi, #{contribution.user.display_name}!
 br
 br
 | Unfortunately the project #{link_to(contribution.project.name, project_by_slug_url(permalink: contribution.project.permalink))} That you supported did not reach the target set in #{CatarseSettings[:company_name]}.

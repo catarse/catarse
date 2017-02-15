@@ -1,4 +1,4 @@
-p Hi #{@notification.user.name},
+p Hi #{@notification.user.display_name},
 
 p 
   | Your JVN account is already disabled. If you're homesick, you can reactivate your account at any time, just#{link_to('Click here', reactivate_user_url(@notification.user, token: @notification.user.reactivate_token))} And back to supporting or realizing incredible projects.
