@@ -97,7 +97,12 @@ class Projects::ContributionsController < ApplicationController
   def update_status
     project = Project.find params['project_id']
     authorize project, :update?
-    Contribution.where(id: params['contributions']).update_all(delivery_status: params['delivery_status'])
+    contributions = project.contributions.where(id: params['contributions'])
+    contributions.update_all(delivery_status: params['delivery_status'])
+    if params[:delivery_status] == 'delivered'
+      contributions.update_all(reward_sent_at: Time.current)
+    end
+
     respond_to do |format|
       format.json { render :json => { :success => 'OK' } }
     end
