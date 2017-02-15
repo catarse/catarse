@@ -90,6 +90,7 @@ class Projects::ContributionsController < ApplicationController
   def confirm_delivery
     authorize resource
     resource.delivery_status = 'received'
+    resource.reward_received_at = Time.current
     resource.save!
     return render nothing: true
   end
