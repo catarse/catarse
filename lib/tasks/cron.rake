@@ -20,13 +20,13 @@ namespace :cron do
     ActiveRecord::Base.connection.
       execute('REFRESH MATERIALIZED VIEW CONCURRENTLY "1".finished_projects') rescue nil
     ActiveRecord::Base.connection.
-      execute('REFRESH MATERIALIZED VIEW CONCURRENTLY public.moments_project_start') rescue nil
-    ActiveRecord::Base.connection.
-      execute('REFRESH MATERIALIZED VIEW CONCURRENTLY public.moments_project_start_inferuser') rescue nil
-    ActiveRecord::Base.connection.
       execute('REFRESH MATERIALIZED VIEW CONCURRENTLY stats.control_panel') rescue nil
     ActiveRecord::Base.connection.
       execute('REFRESH MATERIALIZED VIEW CONCURRENTLY stats.int_payments_2016') rescue nil
+    ActiveRecord::Base.connection.
+      execute('REFRESH MATERIALIZED VIEW CONCURRENTLY public.moments_project_start') rescue nil
+    ActiveRecord::Base.connection.
+      execute('REFRESH MATERIALIZED VIEW CONCURRENTLY public.moments_project_start_inferuser') rescue nil
   end
 
   desc 'Request refund for failed credit card refunds'
