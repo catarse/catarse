@@ -39,7 +39,7 @@ App.views.ProjectForm.addChild('Permalink', {
   checkPermalink: function(){
     var that = this;
     if(this.re.test(this.$el.val())){
-      $.get('/pt/' + this.$el.val()).complete(function(data){
+      $.get('/en/' + this.$el.val()).complete(function(data){
         if(data.status != 404){
           that.$el.trigger('invalid');
         }

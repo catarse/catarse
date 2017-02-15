@@ -31,7 +31,7 @@ module Project::BaseValidator
       end
 
       wo.validates_presence_of :budget
-      wo.validates_presence_of :account, message: 'Dados Bancários não podem ficar em branco'		
+      wo.validates_presence_of :account, message: 'Bank details can not be left blank'
 
       wo.validates_numericality_of :online_days, less_than_or_equal_to: 365, greater_than_or_equal_to: 1, allow_nil: true
 
