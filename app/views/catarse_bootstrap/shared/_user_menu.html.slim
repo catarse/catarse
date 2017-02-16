@@ -23,8 +23,6 @@
             = link_to t('shared.menus.user.notifications'), edit_user_path(current_user, anchor: :notifications), class: 'alt-link fontsize-smaller'
           li.lineheight-looser
             = link_to t('shared.menus.user.access_address'), edit_user_path(current_user, anchor: :settings), class: 'alt-link fontsize-smaller'
-          li.lineheight-looser
-            = link_to t('shared.menus.user.banking'), edit_user_path(current_user, anchor: :billing), class: 'alt-link fontsize-smaller'
         .divider.u-marginbottom-20
         - if current_user.admin?
           .fontweight-semibold.fontsize-smaller.u-marginbottom-10 Admin
