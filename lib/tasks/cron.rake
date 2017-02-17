@@ -24,6 +24,10 @@ namespace :cron do
     ActiveRecord::Base.connection.
       execute('REFRESH MATERIALIZED VIEW CONCURRENTLY stats.int_payments_2016') rescue nil
     ActiveRecord::Base.connection.
+      execute('REFRESH MATERIALIZED VIEW CONCURRENTLY stats.financeiro_control_panel_simplificado') rescue nil
+    ActiveRecord::Base.connection.
+      execute('REFRESH MATERIALIZED VIEW CONCURRENTLY stats.financeiro_int_payments_2016_simplificado') rescue nil
+    ActiveRecord::Base.connection.
       execute('REFRESH MATERIALIZED VIEW CONCURRENTLY public.moments_project_start') rescue nil
     ActiveRecord::Base.connection.
       execute('REFRESH MATERIALIZED VIEW CONCURRENTLY public.moments_project_start_inferuser') rescue nil
