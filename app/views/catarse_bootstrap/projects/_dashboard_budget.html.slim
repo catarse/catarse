@@ -3,12 +3,6 @@
     .w-container
       .w-row
         .w-col.w-col-10.w-col-push-1
-          .u-marginbottom-60.u-text-center
-            .w-inline-block.card.fontsize-small.u-radius
-              span.fa.fa-fw.fa-lightbulb-o
-              | See tips to
-              a.alt-link href="http://fazum.catarse.me/agradecimento-video-tutorial-orcamento-basico?ref=ctrse_dashboard" target="_blank"  determine the goal of your campaign!
-
           .w-form
             = @project.display_errors(:budget)
             = form.input :budget, as: :text,
