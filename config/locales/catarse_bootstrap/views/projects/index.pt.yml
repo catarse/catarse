@@ -40,6 +40,8 @@ pt:
         when: em
       banner: "Conheça a pesquisa"
       explore: "Explore projetos"
+      explore_categories:
+        16: "http://crowdfunding.catarse.me/financiamento-coletivo-musica-independente?ref=ctrse_start"
       links:
         channels: "Descubra o Canal Asas"
         recommended: "Descubra projetos recomendados"
@@ -68,4 +70,3 @@ pt:
           title: "Recentes"
         channels:
           title: 'Canal Asas'
-
