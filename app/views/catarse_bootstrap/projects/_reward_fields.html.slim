@@ -4,11 +4,11 @@
   .reward-card
     - if reward.persisted?
       .w-row.card-persisted.card.card-terciary.u-marginbottom-20.medium[id="reward_#{reward.id}" data-update_url=sort_project_reward_path(@project, reward) class="sortable"]
-        .w-col.w-col-5.w-sub-col
-          .fontweight-semibold.fontsize-smallest.u-marginbottom-10
-            a.alt-link href="/projects/#{reward.project_id}/contributions/new?reward_id=#{reward.id}"
-              span.fa.fa-link  
-                span  Link para apoio direto
+        .w-sub-col.w-col.w-col-5
+          span.fontcolor-secondary.fontsize-smallest Link para apoio direto
+          .u-marginbottom-20.w-row
+            .w-col.w-col-12
+              .mithril-copy-link[data-mithril="ClipboardCopy" data-parameters={value: root_url(subdomain: 'www') + "/projects/#{reward.project_id}/contributions/new?reward_id=#{reward.id}"}.to_json]
           .fontcolor-secondary.fontsize-smallest.u-marginbottom-20= t('rewards.index.link_tip')
         .w-col.w-col-7
           .card
