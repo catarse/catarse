@@ -1,7 +1,7 @@
 //= require mithril/mithril.js
 //= require jquery
 //= require underscore
-//= require mithril-jvn-postgrest
+//= require mithril-postgrest
 //= require moment
 //= require replace-diacritics
 //= require chartjs
@@ -33,14 +33,14 @@
 
     var app = document.getElementById('application'),
         body = document.getElementsByTagName('body')[0];
-    var firstRun = true;//Indica se é a primeira vez q executa um controller.
+    var firstRun = true;//Indicates whether this is the first time a controller is running.
 
   var wrap = function(component, customAttr) {
       return {
         controller: function() {
             if(firstRun) {
                 firstRun=false;
-            } else {//só roda se nao for firstRun
+            } else {//Only if it is not firstRun
                 try {
                     analytics.pageView(false);
                 } catch(e) {console.error(e);}

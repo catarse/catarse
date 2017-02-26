@@ -220,23 +220,23 @@ en:
             answer: 'Each campaign in JVN has its own particularity and the amount of work varies. Joining a campaign on JVN is very easy, but a campaign has its challenges. The key is to have good campaign planning! We can help you! <a href="#start-form"> Just start your draft. </a>'
           3:
             question: 'Does JVN select campaigns that go online?'
-            answer: 'No. You create your draft and publish your campaign directly through the site, whenever you want. However, there are a few <a href="http://suporte.catarse.me/hc/en-us/articles/202387638-Directories-for-creation-of-campaigns"> rules to create campaigns </a> that you must follow so that your campaign has no risk of being reported by the community after the publication.'
+            answer: 'No. You create your draft and publish your campaign directly through the site, whenever you want. However, there are a few <a href="/rules"> rules to create campaigns </a> that you must follow so that your campaign has no risk of being reported by the community after the publication.'
           4:
             question: 'Who can use JVN?'
             answer: 'JVN provides support for site users and makes it possible for campaigns to capture resources quickly and easily using the internet. Anyone over 18 (or younger, but with a legal representative) can use our services and run a crowdfunding campaign.'
         col_2:
           1:
             question: 'I need to reach the goal to receive my money?'
-            answer: 'It depends on the type of financing you choose. In the "All or Nothing" model, you only get the money if you reach the collection goal in the campaign time stipulated by you. If the campaign does not meet the collection goal, we will fully refund the money to your supporters, at no cost to you or your supporter. <br> <br> In the flexible mode of financing, affectionately called "Flex", you get all the money you can get regardless of hitting the target or not. You can better understand the difference between the templates and what is the ideal for your campaign in this <a href="http://fazum.catarse.me/study-un-flex?ref=ctrse_start"> eBook we have prepared. </a>'
+            answer: 'It depends on the type of financing you choose. In the "All or Nothing" model, you only get the money if you reach the collection goal in the campaign time stipulated by you. If the campaign does not meet the collection goal, we will fully refund the money to your supporters, at no cost to you or your supporter. <br> <br> In the flexible mode of financing, affectionately called "Flex", you get all the money you can get regardless of hitting the target or not.'
           2:
             question: 'What are our rates?'
-            answer: 'In the All or Nothing model, JVN only charges the 5% + online payment fees on the total amount raised if you reach 100% or more of your goal. Otherwise, we will refund the money to the supporters and we will not charge anyone anything. <br> <br> In the Flex model, the JVN charges 5% of the total collected by the campaign. If you want to know why we charge this commission and where we invest our money, check out our <a href="http://crowdfunding.catarse.me/nossa-rate?ref=ctrse_start "> special (and transparent!) page talking about our rate. </a>'
+            answer: 'In the All or Nothing model, JVN only charges the 5% + online payment fees on the total amount raised if you reach 100% or more of your goal. Otherwise, we will refund the money to the supporters and we will not charge anyone anything. <br> <br> In the Flex model, the JVN charges 5% + online payment fees of the total collected by the campaign.'
           3:
             question: 'Where does the money for my campaign comes from?'
             answer: 'Family, friends, fans and members of communities that you are part of are your greatest contributors. You shake this network, win support and promote the campaign. Supporters advertise and recommend their campaign to others they know, and so the circle of supporters grows and the campaign gets funded. The key is to build a good campaign, plan your campaign well and know how to target your outreach efforts to those who really care about what you are proposing in your crowdfunding campaign.'
           4:
-            question: 'I have more doubts. How do I do so?'
-            answer: '<a href="http://suporte.catarse.me/hc/en-br"> Access our Support Center </a> or contact us by email: contato@catarse.me'
+            question: 'I have more doubts. What do I do?'
+            answer: '<a href="#"> Access our Support Center </a> or contact us by email: myjvn@gmail.com'
       form:
         title: 'I want to start a campaign called'
         select_default: 'Select a category'

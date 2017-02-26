@@ -65,12 +65,6 @@
                       span.fontweight-semibold
                         'Rates:
                       |5% + payment portal charges of total collected
-                  .u-text-center.u-margintop-30
-                    .divider.u-marginbottom-20
-                    .fontsize-base Want to understand more?
-                    a.fontsize-small href="https://catarse.attach.io/BkLCRfXyg" target="_blank"
-                      ' Download our
-                      span.fontweight-bold Ebook Flex vs All or Nothing
               #arrecadacao.card.medium.card-terciary.u-marginbottom-30
                 .u-marginbottom-30
                   label.fontweight-semibold.fontsize-base  Funding Required?
@@ -80,7 +74,7 @@
                   .w-col.w-col-8
                     .w-row
                       .w-col.w-col-4.w-col-small-6.w-col-tiny-6.text-field.prefix.no-hover.medium.prefix-permalink
-                        .fontcolor-secondary.u-text-center.fontsize-base.lineheight-tightest R$
+                        .fontcolor-secondary.u-text-center.fontsize-base.lineheight-tightest Rs
                       .w-col.w-col-8.w-col-small-6.w-col-tiny-6.label-hide
                         = form.input :goal,
                           as: :tel,
@@ -96,12 +90,6 @@
                     .fontsize-small.fontweight-semibold JVN Fees
                     .aon-fee.fontsize-smaller[class="#{@project.is_flexible? ? 'w-hidden' : ''}"] It is the amount that will be deducted from your collection at the end of the campaign, regarding the services of JVN and the means of payment. If your project reaches or exceeds the target, 5% + payment portal charges of the total collected at the end of the campaign will be charged. If your campaign does not reach the goal, all the money backed will be returned to your supporters after the campaign ends, at no cost to you. It's all or nothing!
                     .flex-fee.fontsize-smaller[class="#{@project.is_flexible? ? '' : 'w-hidden'}"] It is the amount that will be deducted from your collection at the end of the campaign, regarding the services of JVN and the means of payment. 5% + payment portal charges of the total collected at the end of the campaign will be charged, regardless of whether the target is reached or not.
-                  .u-text-center.u-margintop-30
-                    .divider.u-marginbottom-20
-                    .fontsize-base Want to understand more?
-                    a.fontsize-small href="http://fazum.catarse.me/agradecimento-video-tutorial-orcamento-basico" target="_blank"
-                      ' Watch our
-                      span.fontweight-bold Basic budget video lesson
               = render "aon_dashboard_explanation", form: form
               = render "flex_dashboard_explanation", form: form
 
