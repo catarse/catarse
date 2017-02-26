@@ -31,20 +31,20 @@ module Project::BaseValidator
       end
 
       wo.validates_presence_of :budget
-      wo.validates_presence_of :account, message: 'Bank details can not be left blank'
+      # wo.validates_presence_of :account, message: 'Bank details can not be left blank'
 
       wo.validates_numericality_of :online_days, less_than_or_equal_to: 365, greater_than_or_equal_to: 1, allow_nil: true
 
       wo.validate do
         if self.online_days.present? && self.rewards.any?(&:invalid_deliver_at?)
-          self.errors['rewards.deliver_at'] << "Existe uma ou mais recompensas com o prazo de entrega menor que a data do fim do projeto"
+          self.errors['rewards.deliver_at'] << "There are one or more rewards with the deadline shorter than the end date of the campaign"
         end
       end
-      wo.validate do
-        if self.account && (self.account.agency.try(:size) || 0) < 4
-          self.errors['account.agency_size'] << "Agência deve ter pelo menos 4 dígitos"
-        end
-      end
+      # wo.validate do
+      #   if self.account && (self.account.agency.try(:size) || 0) < 4
+      #     self.errors['account.agency_size'] << "Agency must be at least 4 digits"
+      #   end
+      # end
     end
   end
 end
