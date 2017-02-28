@@ -739,7 +739,6 @@ DEPENDENCIES
   schema_plus
   selenium-webdriver
   sendgrid-ruby
-  sentry-raven
   shoulda
   sidekiq (~> 4.0.1)
   simple_form

@@ -15,11 +15,11 @@ module Catarse
       Devise::Mailer.layout "email" # email.haml or email.erb
       VideoInfo.provider_api_keys = { youtube: CatarseSettings[:youtube_key], vimeo: CatarseSettings[:vimeo_key] }
 
-      Raven.configure do |config|
-        config.dsn = CatarseSettings.get_without_cache(:sentry_dsn) || ''
-        config.environments = ['sandbox', 'production']
-        config.sanitize_fields = Rails.application.config.filter_parameters.map(&:to_s)
-      end
+      # Raven.configure do |config|
+      #   config.dsn = CatarseSettings.get_without_cache(:sentry_dsn) || ''
+      #   config.environments = ['sandbox', 'production']
+      #   config.sanitize_fields = Rails.application.config.filter_parameters.map(&:to_s)
+      # end
     end
 
     config.paths['app/views'].unshift("#{Rails.root}/app/views/catarse_bootstrap")

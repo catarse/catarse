@@ -45,7 +45,7 @@ gem 'esewa'
 
 # Decorators
 gem 'draper'
-gem "sentry-raven"
+# gem "sentry-raven"
 
 # Frontend stuff
 gem 'slim-rails'
