@@ -104,6 +104,8 @@ class UserDecorator < Draper::Decorator
       'Pessoa Jurídica'
     when 'mei'
       'Pessoa Jurídica - MEI'
+    else
+      'Pessoa Física'
     end
   end
 end

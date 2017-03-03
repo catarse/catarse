@@ -15,14 +15,6 @@ class ProjectAccount < ActiveRecord::Base
 
   validates_length_of :agency, minimum: 4
 
-  def entity_type
-    if owner_document
-      owner_document.length > 14 ? 'Pessoa Jurídica' : 'Pessoa Física'
-    else
-      'Pessoa Física'
-    end
-  end
-
   def email=(value)
     self[:email] = value.to_s.strip
   end

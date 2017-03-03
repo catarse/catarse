@@ -25,24 +25,4 @@ RSpec.describe ProjectAccount, type: :model do
     it{ is_expected.to allow_value('12345').for(:account) }
     it{ is_expected.not_to allow_value('1A2345').for(:account) }
   end
-
-  describe '#entity_type' do
-    let(:document) { '111.111.111-11' }
-    let(:project_account) { build(:project_account, owner_document: document) }
-
-    subject { project_account.entity_type }
-
-    context 'when owner_document is CNPJ' do
-      let(:document) { '11.111.111/0001-11' }
-      it { is_expected.to eq('Pessoa Jurídica') }
-    end
-
-    context 'when owner_document is CPF' do
-      it { is_expected.to eq('Pessoa Física') }
-    end
-
-    context 'when owner_document is nil' do
-      it { is_expected.to eq('Pessoa Física') }
-    end
-  end
 end

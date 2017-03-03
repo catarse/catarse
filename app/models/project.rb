@@ -333,7 +333,7 @@ class Project < ActiveRecord::Base
       project_expires_at: self.expires_at,
       project_address_city: self.city.try(:name) || self.account.try(:address_city),
       project_address_state: self.city.try(:state).try(:acronym) || self.account.try(:address_state),
-      account_entity_type: self.account.try(:entity_type)
+      account_entity_type: self.user.try(:decorator).try(:entity_type)
     }
   end
 
