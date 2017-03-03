@@ -1,3 +1,4 @@
+# coding: utf-8
 class UserDecorator < Draper::Decorator
   decorates :user
   include Draper::LazyHelpers
@@ -73,5 +74,36 @@ class UserDecorator < Draper::Decorator
 
   def display_total_of_contributions
     number_to_currency source.payments.with_state('paid').sum(:value)
+  end
+
+  def display_bank_account
+    bank_account = source.bank_account
+    if bank_account.present?
+      "#{bank_account.bank.code} - #{bank_account.bank.name} /
+      AG. #{bank_account.agency}-#{bank_account.agency_digit} /
+      CC. #{bank_account.account}-#{bank_account.account_digit} (#{bank_account.account_type}) /
+    #{source.account_type}"
+    else
+      I18n.t('not_filled')
+    end
+  end
+
+  def display_bank_account_owner
+    "#{source.name} / CPF: #{source.cpf}"
+  end
+
+  def display_address
+    "#{source.address_street}, #{source.address_number} - #{source.address_complement}, #{source.address_neighbourhood}, #{source.address_city}, #{source.address_state} #{source.address_zip_code}"
+  end
+
+  def entity_type
+    case source.account_type
+    when "pf"
+      'Pessoa Física'
+    when "pj"
+      'Pessoa Jurídica'
+    when 'mei'
+      'Pessoa Jurídica - MEI'
+    end
   end
 end
