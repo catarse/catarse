@@ -115,7 +115,6 @@ FactoryGirl.define do
       end
     end
     after :build do |project|
-      project.account = build(:project_account, project: nil)
       project.rewards.build(deliver_at: 1.year.from_now, minimum_value: 10, description: 'test')
     end
   end
@@ -149,9 +148,6 @@ FactoryGirl.define do
         project: flex_project
       })
     end
-    after :build do |project|
-      project.account = build(:project_account, project: nil)
-    end
   end
 
   factory :project_transition do |f|
@@ -165,26 +161,6 @@ FactoryGirl.define do
     f.association :project_account
     f.solved false
     f.reason 'foo bar reason'
-  end
-
-  factory :project_account do |f|
-    f.association :project
-    f.association :bank
-    f.email "foo@bar.com"
-    f.address_zip_code "foo"
-    f.address_neighbourhood "foo"
-    f.address_state "foo"
-    f.address_city "foo"
-    f.address_number "foo"
-    f.address_street "foo"
-    f.phone_number "1234"
-    f.agency "fooo"
-    f.agency_digit "foo"
-    f.owner_document "foo"
-    f.owner_name "foo"
-    f.account "1"
-    f.account_digit "1000"
-    f.account_type "foo"
   end
 
   factory :user_link do |f|
