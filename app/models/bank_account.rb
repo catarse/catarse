@@ -23,4 +23,10 @@ class BankAccount < ActiveRecord::Base
   def complete_account_string
     "#{account} - #{account_digit}"
   end
+
+  def account_type_list
+    I18n.t('projects.successful_onboard.confirm_account.person.bank.account_type').to_a.map do |memo|
+      [memo[1], memo[0].to_s]
+    end
+  end
 end
