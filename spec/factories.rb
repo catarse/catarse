@@ -157,12 +157,6 @@ FactoryGirl.define do
     f.sort_key { generate(:serial) }
   end
 
-  factory :project_account_error do |f|
-    f.association :project_account
-    f.solved false
-    f.reason 'foo bar reason'
-  end
-
   factory :user_link do |f|
     f.association :user
     f.link "http://www.foo.com"
