@@ -174,8 +174,6 @@ class ProjectsController < ApplicationController
     @post =  (params[:project_post_id].present? ? resource.posts.where(id: params[:project_post_id]).first : resource.posts.build)
     @rewards = @project.rewards.rank(:row_order)
     @rewards = @project.rewards.build unless @rewards.present?
-
-    resource.build_account unless resource.account
   end
 
   def resource_action action_name, success_redirect=nil, show_modal=nil

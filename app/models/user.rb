@@ -52,7 +52,6 @@ class User < ActiveRecord::Base
   has_many :feeds, class_name: 'UserFeed'
   has_many :follows, class_name: 'UserFollow'
   has_many :credit_cards
-  has_many :project_accounts
   has_many :authorizations
   has_many :contributions
   has_many :contribution_details
