@@ -65,13 +65,8 @@ class ProjectPolicy < ApplicationPolicy
   end
 
   def user_attributes
-    { user_attributes:  [ User.attr_accessible[:default].to_a.map(&:to_sym), :id,
-                          bank_account_attributes: [
-                            :id, :bank_id, :agency, :agency_digit, :account,
-                            :account_digit, :owner_name, :owner_document, :account_type
-                          ],
-                          links_attributes: [:id, :_destroy, :link]
-                        ] }
+    user_policy = UserPolicy.new(user, record.user)
+    { user_attributes: user_policy.permitted_attributes }
   end
 
   def posts_attributes
