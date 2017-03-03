@@ -3,7 +3,6 @@ require 'rails_helper'
 RSpec.describe FlexProjectMachine, type: :model do
   let(:project_state) { 'draft' }
   let(:flexible_project) { create(:flexible_project, state: project_state) }
-  let!(:project_account) { create(:project_account, project: flexible_project) }
 
   subject { flexible_project.state_machine }
 
