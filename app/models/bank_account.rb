@@ -15,6 +15,8 @@ class BankAccount < ActiveRecord::Base
   # bank account via input_bank_number
   before_validation :load_bank_from_input_bank_number
 
+  accepts_nested_attributes_for :user, allow_destroy: false
+
   def complete_agency_string
     return agency unless agency_digit.present?
     "#{agency} - #{agency_digit}"

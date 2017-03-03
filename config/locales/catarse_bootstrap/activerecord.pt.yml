@@ -137,7 +137,7 @@ pt:
         email: Email
         full_name: "Nome completo / Razão Social"
         bio: 'Mini Bio'
-        name: "Apelido"
+        name: "Nome completo / Razão Social"
         newsletter: 'Quero receber novidades do Catarse'
         password: Senha
         password_confirmation: "Confirmação de senha"
