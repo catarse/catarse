@@ -20,7 +20,7 @@ RSpec.describe BankAccountsController, type: :controller do
       before do
         allow(controller).to receive(:current_user).and_return(nil)
         allow(controller).to receive(:authenticate_user!).and_call_original
-        get :edit, locale: :pt, id: bank_account_id
+        get :edit, locale: :en, id: bank_account_id
       end
 
       it{ is_expected.to redirect_to new_user_session_path }
@@ -28,7 +28,7 @@ RSpec.describe BankAccountsController, type: :controller do
 
     context "when user does not have pending refund payments" do
       before do
-        get :edit, locale: :pt, id: bank_account_id
+        get :edit, locale: :en, id: bank_account_id
       end
       it{ is_expected.to redirect_to root_path}
     end
@@ -63,7 +63,7 @@ RSpec.describe BankAccountsController, type: :controller do
     context "when user does not logged in" do
       before do
         allow(controller).to receive(:authenticate_user!).and_call_original
-        get :new, locale: :pt
+        get :new, locale: :en
       end
 
       it{ is_expected.to redirect_to new_user_session_path }
@@ -71,7 +71,7 @@ RSpec.describe BankAccountsController, type: :controller do
 
     context "when user does not have pending refund payments" do
       before do
-        get :new, locale: :pt
+        get :new, locale: :en
       end
       it{ is_expected.to redirect_to root_path }
     end
@@ -95,7 +95,7 @@ RSpec.describe BankAccountsController, type: :controller do
       end
 
       context "when user have a bank_account" do
-        before { get :new, locale: :pt }
+        before { get :new, locale: :en }
         it "should redirect to bank_account edit" do
           is_expected.to redirect_to edit_bank_account_path(user.bank_account)
         end
@@ -105,7 +105,7 @@ RSpec.describe BankAccountsController, type: :controller do
         let(:user) { create(:user, bank_account: nil) }
 
         before do
-          get :new, locale: :pt
+          get :new, locale: :en
         end
         it "should render form" do
           is_expected.to render_template(:edit)
@@ -118,7 +118,7 @@ RSpec.describe BankAccountsController, type: :controller do
     context "when user does not logged in" do
       before do
         allow(controller).to receive(:authenticate_user!).and_call_original
-        post :create, locale: :pt
+        post :create, locale: :en
       end
 
       it{ is_expected.to redirect_to new_user_session_path }
@@ -126,7 +126,7 @@ RSpec.describe BankAccountsController, type: :controller do
 
     context "when user does not have pending refund payments" do
       before do
-        post :create, locale: :pt
+        post :create, locale: :en
       end
       it{ is_expected.to redirect_to root_path }
     end
@@ -154,7 +154,7 @@ RSpec.describe BankAccountsController, type: :controller do
 
       before do
         post :create, {
-          locale: :pt,
+          locale: :en,
           bank_account: {
             bank_id: bank.id,
             owner_name: "Foo Bar",
@@ -179,7 +179,7 @@ RSpec.describe BankAccountsController, type: :controller do
       before do
         allow(controller).to receive(:current_user).and_return(nil)
         allow(controller).to receive(:authenticate_user!).and_call_original
-        put :update, locale: :pt, id: user.bank_account.id
+        put :update, locale: :en, id: user.bank_account.id
       end
 
       it{ is_expected.to redirect_to new_user_session_path }
@@ -188,7 +188,7 @@ RSpec.describe BankAccountsController, type: :controller do
     context "when user does not have pending refund payments" do
       let(:user) { create(:user) }
       before do
-        put :update, locale: :pt, id: user.bank_account.id
+        put :update, locale: :en, id: user.bank_account.id
       end
       it{ is_expected.to redirect_to root_path }
     end
@@ -214,7 +214,7 @@ RSpec.describe BankAccountsController, type: :controller do
 
       before do
         put :update, {
-          locale: :pt,
+          locale: :en,
           id: user.bank_account.id,
           bank_account: {
             owner_name: "Foo Bar 2",
@@ -239,7 +239,7 @@ RSpec.describe BankAccountsController, type: :controller do
       before do
         allow(controller).to receive(:current_user).and_return(nil)
         allow(controller).to receive(:authenticate_user!).and_call_original
-        put :request_refund, locale: :pt, id: user.bank_account.id
+        put :request_refund, locale: :en, id: user.bank_account.id
       end
 
       it{ is_expected.to redirect_to new_user_session_path }
@@ -248,7 +248,7 @@ RSpec.describe BankAccountsController, type: :controller do
     context "when user does not have pending refund payments" do
       let(:user) { create(:user) }
       before do
-        put :request_refund, locale: :pt, id: user.bank_account.id
+        put :request_refund, locale: :en, id: user.bank_account.id
       end
       it{ is_expected.to redirect_to root_path }
     end
@@ -274,7 +274,7 @@ RSpec.describe BankAccountsController, type: :controller do
         project.update_column(:state, 'failed')
 
         put :request_refund, {
-          locale: :pt,
+          locale: :en,
           id: user.bank_account.id
         }
       end
@@ -291,7 +291,7 @@ RSpec.describe BankAccountsController, type: :controller do
         Sidekiq::Testing.inline!
 
         put :request_refund, {
-          locale: :pt,
+          locale: :en,
           id: user.bank_account.id
         }
       end

@@ -9,7 +9,7 @@ RSpec.describe ContributionDetailDecorator do
   let(:detail){ contribution.details.ordered.last } 
 
   before do
-    I18n.locale = :pt
+    I18n.locale = :en
   end
 
   describe "#display_installments_details" do
@@ -57,7 +57,7 @@ RSpec.describe ContributionDetailDecorator do
         end
 
         #use the same hardcoded timezone as the db
-        it{ is_expected.to eq(I18n.l(payment.send(field).in_time_zone('Brasilia').to_date)) }
+        it{ is_expected.to eq(I18n.l(payment.send(field).in_time_zone('Kathmandu').to_date)) }
       end
     end
   end

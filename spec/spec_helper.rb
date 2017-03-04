@@ -28,8 +28,8 @@ RSpec.configure do |config|
     current_user = con.execute("SELECT current_user;")[0]["current_user"]
     con.execute %{ALTER USER #{current_user} SET search_path TO "$user", public, "1", "postgrest";}
     DatabaseCleaner.clean_with :truncation
-    I18n.locale = :pt
-    I18n.default_locale = :pt
+    I18n.locale = :en
+    I18n.default_locale = :en
 
     FakeWeb.register_uri(:get, "http://vimeo.com/api/v2/video/17298435.json", response: fixture_path('vimeo_default_json_request.txt'))
     FakeWeb.register_uri(:get, "http://vimeo.com/17298435", response: fixture_path('vimeo_default_request.txt'))
@@ -86,8 +86,8 @@ RSpec.configure do |config|
     allow(Blog).to receive(:fetch_last_posts).and_return([])
 
     # Default configurations
-    CatarseSettings[:base_domain] = 'localhost'
-    CatarseSettings[:host] = 'localhost'
+    CatarseSettings[:base_domain] = 'localhost:3000'
+    CatarseSettings[:host] = 'localhost:3000'
     CatarseSettings[:email_contact] = 'foo@bar.com'
     CatarseSettings[:email_payments] = 'foo@bar.com'
     CatarseSettings[:email_projects] = 'foo@bar.com'

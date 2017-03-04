@@ -15,7 +15,7 @@ RSpec.describe Admin::ProjectsController, type: :controller do
     subject { project.rejected? }
 
     before do
-      put :reject, id: project, locale: :pt
+      put :reject, id: project, locale: :en
       project.reload
     end
 
@@ -28,7 +28,7 @@ RSpec.describe Admin::ProjectsController, type: :controller do
 
     before do
       allow(controller).to receive(:current_user).and_return(admin)
-      put :push_to_draft, id: project, locale: :pt
+      put :push_to_draft, id: project, locale: :en
     end
 
     it do
@@ -43,7 +43,7 @@ RSpec.describe Admin::ProjectsController, type: :controller do
 
     before do
       allow(controller).to receive(:current_user).and_return(admin)
-      put :push_to_trash, id: project, locale: :pt
+      put :push_to_trash, id: project, locale: :en
     end
 
     it{ is_expected.to eq(true) }
@@ -54,14 +54,14 @@ RSpec.describe Admin::ProjectsController, type: :controller do
     context "when I'm not logged in" do
       let(:current_user){ nil }
       before do
-        get :index, locale: :pt
+        get :index, locale: :en
       end
       it{ is_expected.to redirect_to new_user_registration_path }
     end
 
     context "when I'm logged as admin" do
       before do
-        get :index, locale: :pt
+        get :index, locale: :en
       end
       its(:status){ should == 200 }
     end
@@ -71,14 +71,14 @@ RSpec.describe Admin::ProjectsController, type: :controller do
     let(:project) { create(:project, name: 'Project for search') }
     context "when there is a match" do
       before do
-        get :index, locale: :pt, pg_search: 'Project for search'
+        get :index, locale: :en, pg_search: 'Project for search'
       end
       it{ expect(assigns(:projects)).to eq([project]) }
     end
 
     context "when there is no match" do
       before do
-        get :index, locale: :pt, pg_search: 'Foo Bar'
+        get :index, locale: :en, pg_search: 'Foo Bar'
       end
       it{ expect(assigns(:projects)).to eq([]) }
     end
@@ -90,14 +90,14 @@ RSpec.describe Admin::ProjectsController, type: :controller do
     context "when I'm not logged in" do
       let(:current_user){ nil }
       before do
-        delete :destroy, id: project, locale: :pt
+        delete :destroy, id: project, locale: :en
       end
       it{ is_expected.to redirect_to new_user_registration_path }
     end
 
     context "when I'm logged as admin" do
       before do
-        delete :destroy, id: project, locale: :pt
+        delete :destroy, id: project, locale: :en
       end
 
       its(:status){ should redirect_to admin_projects_path }
