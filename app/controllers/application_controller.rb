@@ -52,7 +52,7 @@ class ApplicationController < ActionController::Base
   end
 
   def referral_it!
-    if request.env["HTTP_REFERER"] =~ /catarse\.me/
+    if request.env["HTTP_REFERER"] =~ /myjvn\.com/
       # For local referrers we only want to store the first ref parameter
       cookies[:referral_link] ||= build_cookie_structure(params[:ref])
       cookies[:origin_referral] ||= build_cookie_structure(request.env["HTTP_REFERER"])
@@ -103,7 +103,6 @@ class ApplicationController < ActionController::Base
 
   def subscribe_newsletter
     email = params['EMAIL']
-
     if email =~ EMAIL_REGEX
       list_id = CatarseSettings[:sendgrid_newsletter_list_id]
       client = sendgrid_api.client

@@ -10,8 +10,8 @@ RSpec.describe Category, type: :model do
     end
 
     it{ is_expected.to have_many :projects }
-    it{ is_expected.to validate_presence_of :name_pt }
-    it{ is_expected.to validate_uniqueness_of :name_pt }
+    it{ is_expected.to validate_presence_of :name_en }
+    it{ is_expected.to validate_uniqueness_of :name_en }
   end
 
   describe "#with_projects_on_this_week" do

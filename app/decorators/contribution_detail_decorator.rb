@@ -21,7 +21,8 @@ class ContributionDetailDecorator < Draper::Decorator
   end
 
   def display_value
-    number_to_currency source.localized.value
+    # number_to_currency source.localized.value
+    number_to_currency source.localized.value , unit: "Rs ", precision: 2
   end
 
   def display_date date_field

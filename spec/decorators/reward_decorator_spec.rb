@@ -16,7 +16,7 @@ RSpec.describe RewardDecorator do
   end
 
   it "should have a HTML-safe name that is a HTML composition from minimum_value, description and sold_out" do
-    I18n.locale = :pt
+    I18n.locale = :en
     r = build(:reward, minimum_value: 0, description: "Description<javascript>XSS()</javascript>", maximum_contributions: 0)
     expect(r.name).to include('Description&lt;javascript&gt;XSS()&lt;/javascript&gt;')
   end

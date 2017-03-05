@@ -67,11 +67,12 @@ RSpec.describe ContributionDetailDecorator do
 
     context "when the value has decimal places" do
       let(:value){ 99.99 }
-      it{ is_expected.to eq("R$ 99,99") }
+
+      it{ is_expected.to eq("Rs 99.99") }
     end
 
     context "when the value does not have decimal places" do
-      it{ is_expected.to eq("R$ 10,00") }
+      it{ is_expected.to eq("Rs 10.00") }
     end
   end
 

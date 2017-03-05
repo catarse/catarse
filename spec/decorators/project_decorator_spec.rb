@@ -7,7 +7,7 @@ RSpec.describe ProjectDecorator do
     let(:project){ create(:project, state: 'draft', online_days: nil) }
     subject{ project.time_to_go }
     before do
-      I18n.locale = :pt
+      I18n.locale = :en
     end
 
     context "when there is more than 1 day to go but less than 2" do
@@ -16,7 +16,7 @@ RSpec.describe ProjectDecorator do
           expires_at:  Time.zone.now + 25.hours
         })
       end
-      it{ is_expected.to eq({time:1, unit:"dia"}) }
+      it{ is_expected.to eq({time:1, unit:"days"}) }
     end
 
     context "when there is less than 1 day to go" do
@@ -25,7 +25,7 @@ RSpec.describe ProjectDecorator do
           expires_at:  Time.zone.now + 13.hours
         })
       end
-      it{ is_expected.to eq({time:13, unit:"horas"}) }
+      it{ is_expected.to eq({time:13, unit:"hours"}) }
     end
 
     context "when there is less than 1 hour to go" do
@@ -34,7 +34,7 @@ RSpec.describe ProjectDecorator do
           expires_at:  Time.zone.now + 59.minutes
         })
       end
-      it{ is_expected.to eq({time:59, unit:"minutos"}) }
+      it{ is_expected.to eq({time:59, unit:"minutes"}) }
     end
   end
 
@@ -78,7 +78,7 @@ RSpec.describe ProjectDecorator do
 
     context "when we have an online_date" do
       let(:project){ create_project({state: 'online', online_days: 2}, {to_state: 'online', created_at: Time.current.to_date}) }
-      it{ is_expected.to eq(I18n.l((Time.current + 2.day).in_time_zone('Brasilia').end_of_day.to_date)) }
+      it{ is_expected.to eq(I18n.l((Time.current + 2.day).in_time_zone('Kathmandu').end_of_day.to_date)) }
     end
   end
 
