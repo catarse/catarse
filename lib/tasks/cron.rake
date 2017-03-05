@@ -23,10 +23,43 @@ namespace :cron do
       execute('REFRESH MATERIALIZED VIEW CONCURRENTLY public.moments_project_start') rescue nil
     ActiveRecord::Base.connection.
       execute('REFRESH MATERIALIZED VIEW CONCURRENTLY public.moments_project_start_inferuser') rescue nil
+    
+    #stats
     ActiveRecord::Base.connection.
       execute('REFRESH MATERIALIZED VIEW CONCURRENTLY stats.control_panel') rescue nil
     ActiveRecord::Base.connection.
       execute('REFRESH MATERIALIZED VIEW CONCURRENTLY stats.int_payments_2016') rescue nil
+    ActiveRecord::Base.connection.
+      execute('REFRESH MATERIALIZED VIEW CONCURRENTLY stats.financeiro_control_panel_simplificado') rescue nil
+    ActiveRecord::Base.connection.
+      execute('REFRESH MATERIALIZED VIEW CONCURRENTLY stats.financeiro_int_payments_2016_simplificado') rescue nil
+    #stats aarrr
+    ActiveRecord::Base.connection.
+      execute('REFRESH MATERIALIZED VIEW CONCURRENTLY stats.project_points') rescue nil
+    ActiveRecord::Base.connection.
+      execute('REFRESH MATERIALIZED VIEW CONCURRENTLY stats.aarrr_realizador_draft_projetos') rescue nil
+    ActiveRecord::Base.connection.
+      execute('REFRESH MATERIALIZED VIEW CONCURRENTLY stats.aarrr_realizador_online_projetos') rescue nil
+    ActiveRecord::Base.connection.
+      execute('REFRESH MATERIALIZED VIEW stats.aarrr_realizador_draft_by_category') rescue nil
+    ActiveRecord::Base.connection.
+      execute('REFRESH MATERIALIZED VIEW stats.aarrr_realizador_draft') rescue nil
+    ActiveRecord::Base.connection.
+      execute('REFRESH MATERIALIZED VIEW stats.aarrr_realizador_online_by_category') rescue nil
+    ActiveRecord::Base.connection.
+      execute('REFRESH MATERIALIZED VIEW stats.aarrr_realizador_online') rescue nil
+    #stats growth
+    ActiveRecord::Base.connection.
+      execute('REFRESH MATERIALIZED VIEW CONCURRENTLY stats.growth_project_tags_weekly_contribs_mat') rescue nil
+    ActiveRecord::Base.connection.
+      execute('REFRESH MATERIALIZED VIEW CONCURRENTLY stats.growth_project_views') rescue nil
+    ActiveRecord::Base.connection.
+      execute('REFRESH MATERIALIZED VIEW CONCURRENTLY stats.growth_contributions') rescue nil
+    ActiveRecord::Base.connection.
+      execute('REFRESH MATERIALIZED VIEW CONCURRENTLY stats.growth_contributions_confirmed') rescue nil
+    ActiveRecord::Base.connection.
+      execute('REFRESH MATERIALIZED VIEW CONCURRENTLY stats.growth_analise_tipo') rescue nil
+    
   end
 
   desc 'Request refund for failed credit card refunds'
@@ -130,7 +163,7 @@ namespace :cron do
 
   desc 'Update all fb users'
   task update_fb_users: [:environment] do
-    User.joins(:project).uniq.where("users.fb_parsed_link~'^pages/\\d+$'").each do |u|
+    User.joins(:projects).uniq.where("users.fb_parsed_link~'^pages/\\d+$'").each do |u|
       FbPageCollectorWorker.perform_async(u.id)
     end
   end

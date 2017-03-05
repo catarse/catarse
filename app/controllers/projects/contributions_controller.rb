@@ -87,6 +87,33 @@ class Projects::ContributionsController < ApplicationController
     render "user_notifier/mailer/#{template}", locals: { contribution: resource }, layout: 'layouts/email'
   end
 
+  def toggle_delivery
+    authorize resource
+    if resource.delivery_status == 'received'
+      resource.delivery_status = resource.reward_sent_at.nil? ? 'undelivered' : 'delivered'
+      resource.reward_received_at = nil
+    else
+      resource.delivery_status = 'received'
+      resource.reward_received_at = Time.current
+    end
+    resource.save!
+    return render nothing: true
+  end
+
+  def update_status
+    project = Project.find params['project_id']
+    authorize project, :update?
+    contributions = project.contributions.where(id: params['contributions'])
+    contributions.update_all(delivery_status: params['delivery_status'])
+    if params[:delivery_status] == 'delivered'
+      contributions.update_all(reward_sent_at: Time.current)
+    end
+
+    respond_to do |format|
+      format.json { render :json => { :success => 'OK' } }
+    end
+  end
+
   def toggle_anonymous
     authorize resource
     resource.toggle!(:anonymous)

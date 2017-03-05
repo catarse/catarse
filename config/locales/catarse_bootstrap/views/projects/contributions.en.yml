@@ -31,7 +31,7 @@ en:
         flexible:
           explanation: 'This project will get all the features when finalizing '
           common_questions: 'Frequently Asked Questions'
-          how_contribute: 'How do I support this project?'
+          how_contribute: 'How do I support this campaign?'
           how_contribute_answer: 'Fill in the details of your support, as well as all your payment information to finalize support'
           when_made_payment: 'When is payment made?'
           when_made_payment_answer: 'If you paid with a credit card, confirmation should be the same day. If it was with ticket, within 4 business days.  '
@@ -44,7 +44,7 @@ en:
         all_or_nothing:
           explanation: 'If this project does not reach the goal, you get back 100% of what you paid through a refund.'
           common_questions: 'Frequently Asked Questions'
-          how_contribute: 'How do I support this project?'
+          how_contribute: 'How do I support this campaign?'
           how_contribute_answer: 'Fill in the details of your support, as well as all your payment information to finalize support'
           when_made_payment: 'When is payment made? '
           when_made_payment_answer: 'If you paid with a credit card, confirmation should be the same day. If it was with ticket, within 4 business days.'
@@ -206,7 +206,7 @@ en:
           payment_card_installments: 'Plots'
         installment_with_tax: 'interest-free'
         transaction_error: 'Transaction declined, please double check your data or contact the bank / card issuer for more information.'
-        pagarme_warning_html: "The JVN is in the process of testing a new means of payment that will facilitate financial support and possible reimbursement of amounts to supporters. Therefore, we caution that extra data, in addition to those mentioned in the Terms of Use, may be required to support this project. If you have any questions or concerns, please contact us at %{mailto}. Thank you."
+        pagarme_warning_html: "The JVN is in the process of testing a new means of payment that will facilitate financial support and possible reimbursement of amounts to supporters. Therefore, we caution that extra data, in addition to those mentioned in the Terms of Use, may be required to support this campaign. If you have any questions or concerns, please contact us at %{mailto}. Thank you."
         payment_save_card: 'I want to save my credit card to facilitate future support.'
         reward_sold_out: That reward is exhausted. Start new support.
         page-title: Support %{name}
@@ -236,7 +236,7 @@ en:
       new:
         no_rewards:
           label_title: 'Value of your support'
-          label_description: 'You can support this project from Rs 10'
+          label_description: 'You can support this campaign from Rs 10'
           label_btn: 'Continue'
           label_error: 'Support amount is incorrect'
         page-title: Support %{name}
