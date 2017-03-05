@@ -1,6 +1,7 @@
 - content_for :title, t('.page-title')
+- content_for :application_js do
+  = javascript_include_tag 'api/application'
 = render 'shared/header_big', overlayer: true
-
 .hero-jobs.hero-medium
   .w-container.u-text-center
     = image_tag "icon-assets.png", class: "icon-hero"
@@ -83,4 +84,4 @@
 
 
 
-= render 'shared/footer_big'
+#footer[data-mithril="Footer"]

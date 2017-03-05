@@ -1,6 +1,7 @@
 - content_for :title, t('.title')
+- content_for :application_js do
+  = javascript_include_tag 'api/application' 
 = render 'shared/header_big'
-
 .page-header.negative.u-marginbottom-40
   .w-container
     h1.fontsize-largest.u-text-center = t('.title')
@@ -50,7 +51,4 @@
     p.fontsize-base.u-marginbottom-60 = t('.content.law_text').html_safe
     p.fontsize-base.u-marginbottom-60 = t('.content.last_update').html_safe
 
-= render 'shared/footer_big'
-
-
-
+#footer[data-mithril="Footer"]
