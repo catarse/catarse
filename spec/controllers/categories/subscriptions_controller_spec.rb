@@ -13,7 +13,7 @@ RSpec.describe Categories::SubscriptionsController, type: :controller do
   describe "GET create" do
     context "when user not logged in" do
       before do
-        get :create, id: category.id, locale: :pt
+        get :create, id: category.id, locale: :en
       end
 
       it { is_expected.to redirect_to(new_user_session_path) }
@@ -24,7 +24,7 @@ RSpec.describe Categories::SubscriptionsController, type: :controller do
 
       before do
         allow(controller).to receive(:authenticate_user!).and_return(true)
-        get :create, id: category.id, locale: :pt
+        get :create, id: category.id, locale: :en
         current_user.reload
       end
 
@@ -42,7 +42,7 @@ RSpec.describe Categories::SubscriptionsController, type: :controller do
 
       it do
         expect {
-          get :create, id: category.id, locale: :pt
+          get :create, id: category.id, locale: :en
         }.to raise_error(ActiveRecord::RecordInvalid)
       end
     end
@@ -50,7 +50,7 @@ RSpec.describe Categories::SubscriptionsController, type: :controller do
     context "GET destroy" do
       context "when user not logged in" do
         before do
-          get :destroy, id: category.id, locale: :pt
+          get :destroy, id: category.id, locale: :en
         end
 
         it { is_expected.to redirect_to(new_user_session_path) }
@@ -61,7 +61,7 @@ RSpec.describe Categories::SubscriptionsController, type: :controller do
 
         before do
           allow(controller).to receive(:authenticate_user!).and_return(true)
-          get :destroy, id: category.id, locale: :pt
+          get :destroy, id: category.id, locale: :en
         end
 
         it { expect(current_user.following_this_category?(category.id)).to be(false) }
@@ -73,7 +73,7 @@ RSpec.describe Categories::SubscriptionsController, type: :controller do
         before do
           allow(controller).to receive(:authenticate_user!).and_return(true)
           category.users << current_user
-          get :destroy, id: category.id, locale: :pt
+          get :destroy, id: category.id, locale: :en
           current_user.reload
         end
 

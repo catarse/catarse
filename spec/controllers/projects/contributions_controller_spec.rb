@@ -46,7 +46,7 @@ RSpec.describe Projects::ContributionsController, type: :controller do
   describe "GET edit" do
     before do
       request.env['REQUEST_URI'] = "/test_path"
-      get :edit, {locale: :pt, project_id: project.id, id: contribution.id}
+      get :edit, {locale: :en, project_id: project.id, id: contribution.id}
     end
 
     context "when no user is logged" do
@@ -122,7 +122,7 @@ RSpec.describe Projects::ContributionsController, type: :controller do
       allow_any_instance_of(Project).to receive(:open_for_contributions?).and_return(open_for_contributions)
       allow(controller).to receive(:browser).and_return(browser)
       allow_any_instance_of(ApplicationController).to receive(:detect_old_browsers).and_call_original
-      get :new, {locale: :pt, project_id: project.id}
+      get :new, {locale: :en, project_id: project.id}
     end
 
     context "when browser is IE 9" do
@@ -153,7 +153,7 @@ RSpec.describe Projects::ContributionsController, type: :controller do
   describe "GET show" do
     let(:contribution){ create(:confirmed_contribution, value: 10.00) }
     before do
-      get :show, { locale: :pt, project_id: contribution.project.id, id: contribution.id }
+      get :show, { locale: :en, project_id: contribution.project.id, id: contribution.id }
     end
 
     context "when no user is logged in" do

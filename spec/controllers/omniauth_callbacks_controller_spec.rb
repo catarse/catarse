@@ -26,7 +26,7 @@ RSpec.describe OmniauthCallbacksController, type: :controller do
           id: "547955110",
           last_name: "Biazus",
           link: "http://www.facebook.com/diogo.biazus",
-          locale: "pt_BR",
+          locale: "en",
           name: "Diogo, Biazus",
           timezone: -3,
           updated_time: "2012-08-01T18:22:50+0000",

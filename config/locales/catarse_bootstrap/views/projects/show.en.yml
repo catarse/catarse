@@ -69,7 +69,7 @@ en:
         other: '{{count}} person'
       remaining_time:
         days:
-          one: ' Remaining day'
+          one: ' day remaining'
           other: ' Days Remaining'
         hours:
           one: ' Remaining time'

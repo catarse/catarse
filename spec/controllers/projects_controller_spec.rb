@@ -4,11 +4,11 @@ require 'rails_helper'
 RSpec.describe ProjectsController, type: :controller do
   before do
     allow(controller).to receive(:current_user).and_return(current_user)
-    request.env['HTTP_REFERER'] = 'https://catarse.me'
-    CatarseSettings[:base_url] = 'http://catarse.me' 
+    request.env['HTTP_REFERER'] = 'http://myjvn.com'
+    CatarseSettings[:base_url] = 'http://myjvn.com'
     CatarseSettings[:email_projects] = 'foo@bar.com'
   end
-  
+
   render_views
   subject{ response }
   let(:project){ create(:project, state: 'draft') }
@@ -17,7 +17,7 @@ RSpec.describe ProjectsController, type: :controller do
   describe "POST create" do
     let(:project){ build(:project, state: 'draft') }
     before do
-      post :create, { locale: :pt, project: project.attributes }
+      post :create, { locale: :en, project: project.attributes }
     end
 
     context "when no user is logged in" do
@@ -39,14 +39,14 @@ RSpec.describe ProjectsController, type: :controller do
 
     before do
       current_user.update_attributes({
-        address_city: 'foo',
-        address_state: 'MG',
-        address_street: 'bar',
-        address_number: '123',
-        address_neighbourhood: 'MMs',
-        address_zip_code: '000000',
-        phone_number: '33344455333'
-      })
+                                         address_city: 'foo',
+                                         address_state: 'MG',
+                                         address_street: 'bar',
+                                         address_number: '123',
+                                         address_neighbourhood: 'MMs',
+                                         address_zip_code: '000000',
+                                         phone_number: '33344455333'
+                                     })
       create(:reward, project: project)
       create(:bank_account, user: current_user)
       get :push_to_online, id: project.id, locale: :pt
@@ -132,11 +132,11 @@ RSpec.describe ProjectsController, type: :controller do
         end
 
         context "when I cancel the project" do
-          before do 
+          before do
             expect_any_instance_of(ApiWrapper).to receive(:request)
           end
           it "should call cancel API endpoint" do
-            put :update, id: project.id, project: { name: 'new_title', about_html: 'new_description' }, locale: :pt, cancel_project: 'true' 
+            put :update, id: project.id, project: { name: 'new_title', about_html: 'new_description' }, locale: :pt, cancel_project: 'true'
           end
         end
 

@@ -79,6 +79,7 @@ FactoryGirl.define do
 
   factory :category do |f|
     f.name_pt { generate(:name) }
+    f.name_en { generate(:name) }
   end
 
   factory :project do |f|
@@ -218,7 +219,7 @@ FactoryGirl.define do
         },
         origin_name: 'Foo Bar',
         origin_email: 'foo@bar.com',
-        locale: 'pt'
+        locale: 'en'
       }
     end
   end
@@ -229,7 +230,7 @@ FactoryGirl.define do
     f.template_name 'project_success'
     f.from_email 'from@email.com'
     f.from_name 'from_name'
-    f.locale 'pt'
+    f.locale 'en'
   end
 
 

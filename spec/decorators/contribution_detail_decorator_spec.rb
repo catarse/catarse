@@ -9,7 +9,7 @@ RSpec.describe ContributionDetailDecorator do
   let(:detail){ contribution.details.ordered.last } 
 
   before do
-    I18n.locale = :pt
+    I18n.locale = :en
   end
 
   describe "#display_installments_details" do
@@ -57,7 +57,7 @@ RSpec.describe ContributionDetailDecorator do
         end
 
         #use the same hardcoded timezone as the db
-        it{ is_expected.to eq(I18n.l(payment.send(field).in_time_zone('Brasilia').to_date)) }
+        it{ is_expected.to eq(I18n.l(payment.send(field).in_time_zone('Kathmandu').to_date)) }
       end
     end
   end
@@ -67,11 +67,12 @@ RSpec.describe ContributionDetailDecorator do
 
     context "when the value has decimal places" do
       let(:value){ 99.99 }
-      it{ is_expected.to eq("R$ 99,99") }
+
+      it{ is_expected.to eq("Rs 99.99") }
     end
 
     context "when the value does not have decimal places" do
-      it{ is_expected.to eq("R$ 10,00") }
+      it{ is_expected.to eq("Rs 10.00") }
     end
   end
 

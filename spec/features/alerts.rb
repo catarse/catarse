@@ -7,7 +7,7 @@ RSpec.describe "Alerts", type: :feature do
   describe "pending refunds top alert" do
     context "when not have logged user" do
       it "should not have pending refund alert" do
-        visit root_path(locale: :pt)
+        visit root_path(locale: :en)
         sleep FeatureHelpers::TIME_TO_SLEEP
         expect(page).to_not have_content(I18n.t("shared.alerts.pending_payment_link_text"))
       end
@@ -23,7 +23,7 @@ RSpec.describe "Alerts", type: :feature do
           project.update_column(:state, 'failed')
           project.reload
           current_user.reload
-          visit root_path(locale: :pt)
+          visit root_path(locale: :en)
         end
 
         it "should show a alert" do
@@ -35,7 +35,7 @@ RSpec.describe "Alerts", type: :feature do
       context "and not have pending_refund payments" do
         it "should not show a alert" do
           login
-          visit root_path(locale: :pt)
+          visit root_path(locale: :en)
           sleep FeatureHelpers::TIME_TO_SLEEP
           expect(page).to_not have_content(I18n.t("shared.alerts.pending_payment_link_text"))
         end

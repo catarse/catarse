@@ -113,7 +113,7 @@ class ProjectDecorator < Draper::Decorator
     time_json = source.pluck_from_database(column)
     {
       time: time_json.try(:[], 'total'),
-      unit: pluralize_without_number(time_json.try(:[], 'total'), "days")
+      unit: pluralize_without_number(time_json.try(:[], 'total'), "#{time_json.try(:[], 'unit')}".downcase)
     }
   end
 
