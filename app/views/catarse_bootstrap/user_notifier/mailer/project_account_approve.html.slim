@@ -1,6 +1,6 @@
 - project = @notification.project
 - user = @notification.user
-- project_account = project.account
+- bank_account = user.bank_account 
 - metadata = @notification.metadata
 
 | Olá #{user.display_name},
@@ -19,15 +19,15 @@ br/
 br/
 | Valor total do repasse: #{number_to_currency(metadata['transfer_amount'].to_f, precision: 2)} (taxas já descontadas)
 br/
-| Banco: #{project_account.bank.name}
+| Banco: #{bank_account.bank.name}
 br/
-| Agência: #{project_account.agency}-#{project_account.agency_digit}
+| Agência: #{bank_account.agency}-#{bank_account.agency_digit}
 br/
-| Conta: #{project_account.account}-#{project_account.account_digit}
+| Conta: #{bank_account.account}-#{bank_account.account_digit}
 br/
-| Nome: #{project_account.owner_name}
+| Nome: #{user.name}
 br/
-| CPF: #{project_account.owner_document}
+| CPF/CNPJ: #{user.cpf}
 br/
 br/
 | Nossa equipe pode entrar em contato com você caso ocorra algum problema com seu banco.

@@ -24,7 +24,6 @@ class Project < ActiveRecord::Base
             :display_image, :display_expires_at, :time_to_go, :elapsed_time,
             :display_pledged, :display_pledged_with_cents, :display_goal, :progress_bar,
             :status_flag, :display_errors, to: :decorator
-  delegate :bank, to: :account
 
   self.inheritance_column = 'mode'
   belongs_to :user
@@ -34,7 +33,6 @@ class Project < ActiveRecord::Base
   has_one :balance_transfer, inverse_of: :project
   has_one :project_transfer, inverse_of: :project
   has_one :project_total
-  has_one :account, class_name: "ProjectAccount", inverse_of: :project
   has_many :taggings
   has_many :tags, through: :taggings
   has_many :public_tags, through: :taggings
@@ -52,7 +50,6 @@ class Project < ActiveRecord::Base
 
   accepts_nested_attributes_for :rewards, allow_destroy: true
   accepts_nested_attributes_for :user
-  accepts_nested_attributes_for :account
   accepts_nested_attributes_for :posts, allow_destroy: true, reject_if: ->(x) { x[:title].blank? || x[:comment_html].blank? }
   accepts_nested_attributes_for :budgets, allow_destroy: true, reject_if: ->(x) { x[:name].blank? || x[:value].blank? }
 
@@ -170,13 +167,12 @@ class Project < ActiveRecord::Base
   }
 
   scope :pending_balance_confirmation, -> {
-    joins(:account).where(%Q{
+    where(%Q{
         projects.state = 'successful'
         and projects.expires_at + '7 days'::interval < now()
         and not exists(select true from balance_transfers bt where bt.project_id = projects.id)
         and not exists(select true from project_notifications pn
             where pn.template_name = 'pending_balance_transfer_confirmation' and pn.project_id = projects.id and pn.created_at + '7 days'::interval > current_timestamp)
-        and not exists(select true from project_account_errors pae where pae.project_account_id = project_accounts.id and not pae.solved)
       })
   }
 
@@ -331,9 +327,9 @@ class Project < ActiveRecord::Base
       project_goal: self.goal,
       project_online_date: self.online_at,
       project_expires_at: self.expires_at,
-      project_address_city: self.city.try(:name) || self.account.try(:address_city),
-      project_address_state: self.city.try(:state).try(:acronym) || self.account.try(:address_state),
-      account_entity_type: self.account.try(:entity_type)
+      project_address_city: self.city.try(:name) || self.user.try(:address_city),
+      project_address_state: self.city.try(:state).try(:acronym) || self.user.try(:address_state),
+      account_entity_type: self.user.try(:decorator).try(:entity_type)
     }
   end
 
@@ -342,9 +338,9 @@ class Project < ActiveRecord::Base
       about_html: self.about_html,
       budget: self.budget,
       address: {
-        city: self.city.try(:name) || self.account.try(:address_city),
-        state_acronym: self.city.try(:state).try(:acronym) || self.account.try(:address_state),
-        state: self.city.try(:state).try(:acronym) || self.account.try(:address_state)
+        city: self.city.try(:name) || self.user.try(:address_city),
+        state_acronym: self.city.try(:state).try(:acronym) || self.user.try(:address_state),
+        state: self.city.try(:state).try(:acronym) || self.user.try(:address_state)
       },
       category_id: self.category.id,
       category_name: self.category.name_pt,
@@ -411,12 +407,6 @@ class Project < ActiveRecord::Base
 
   def direct_url
     @direct_url ||= Rails.application.routes.url_helpers.project_by_slug_url(self.permalink, locale: '')
-  end
-
-  def has_account_error?
-    return false unless account.persisted?
-
-    return account.project_account_errors.where(solved: false).exists?
   end
 
   def all_public_tags=(names)

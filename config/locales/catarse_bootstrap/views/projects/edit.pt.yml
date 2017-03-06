@@ -303,19 +303,28 @@ pt:
         title: 'Os seus dados estão corretos?'
         person:
           label: 'Pessoa: '
-          juridical:
+          mei:
+            label: 'Jurídica MEI'
+            name: 'Razão social: '
+            document: 'CNPJ do titular da conta bancária: '
+          pj:
             label: 'Jurídica'
             name: 'Razão social: '
             document: 'CNPJ do titular da conta bancária: '
           state_inscription: 'Inscrição estadual: '
-          natural:
+          pf:
             label: 'Física'
             name: 'Nome completo do titular: '
             document: 'CPF do titular da conta bancária: '
           bank:
             name: 'Banco: '
             agency: 'Agência: '
-            account: 'Conta Corrente: '
+            account: 'Conta: '
+            account_type:
+              conta_corrente: 'Conta corrente'
+              conta_poupanca: 'Conta poupança'
+              conta_corrente_conjunta: 'Conta corrente conjunta'
+              conta_poupanca_conjunta: 'Conta poupança conjunta'
           address: 'Endereço: '
           neighbourhood: 'Bairro: '
           city: 'Cidade: '

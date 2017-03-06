@@ -3,7 +3,6 @@ require 'rails_helper'
 RSpec.describe AonProjectMachine, type: :model do
   let(:project_state) { 'draft' }
   let(:project) { create(:project, state: project_state) }
-  let!(:project_account) { create(:project_account, project: project) }
 
   describe "state_machine" do
     subject { project.state_machine }

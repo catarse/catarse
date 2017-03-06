@@ -91,15 +91,15 @@
                 tbody
                   tr
                     td
-                      = project.account.try(:decorate).try(:display_bank_account)
+                      = project.user.try(:decorator).try(:display_bank_account)
                       br/
-                      = project.account.try(:decorate).try(:display_bank_account_owner)
-                    td= project.account.try(:decorate).try(:display_name)
-                    td= project.account.try(:owner_document)
-                    td= project.account.try(:email)
-                    td= project.account.try(:state_inscription)
-                    td= project.account.try(:decorate).try(:display_address)
-                    td= project.account.try(:phone_number)
+                      = project.user.try(:decorator).try(:display_bank_account_owner)
+                    td= project.user.try(:decorator).try(:display_name)
+                    td= project.user.name
+                    td= project.user.email
+                    td= project.user.state_inscription
+                    td= project.user.try(:decorator).try(:display_address)
+                    td= project.user.phone_number
                     td= link_to project.permalink, project_by_slug_path(permalink: project.permalink), target: '_blank'
 
   = paginate @projects

@@ -1,3 +1,4 @@
+# coding: utf-8
 require 'rails_helper'
 
 RSpec.describe UserDecorator do
@@ -128,6 +129,32 @@ RSpec.describe UserDecorator do
         create(:confirmed_contribution, user: subject, value: 500.0)
       end
       its(:display_total_of_contributions) { should == 'R$ 500'}
+    end
+  end
+
+  describe '#entity_type' do
+    let(:acc_type) { 'pf'} 
+    let(:user) { create(:user, account_type: acc_type) }
+
+    subject { user.decorator.entity_type }
+
+    context 'when user account type is pj' do
+      let(:acc_type) { 'pj' }
+      it { is_expected.to eq('Pessoa Jurídica') }
+    end
+
+    context 'when user account type is mei' do
+      let(:acc_type) { 'mei' }
+      it { is_expected.to eq('Pessoa Jurídica - MEI') }
+    end
+
+    context 'when user account type is mei' do
+      let(:acc_type) { 'pf' }
+      it { is_expected.to eq('Pessoa Física') }
+    end
+
+    context 'when user account type is nil' do
+      it { is_expected.to eq('Pessoa Física') }
     end
   end
 end

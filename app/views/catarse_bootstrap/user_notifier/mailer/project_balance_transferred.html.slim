@@ -1,6 +1,6 @@
 - project = @notification.project
 - user = @notification.user
-- project_account = project.account
+- bank_account = user.bank_account
 - balance_transfer = project.balance_transfer
 - project_transfer = project.project_transfer
 
@@ -26,15 +26,15 @@ br/
 br/
 | Dados bancários cadastrados:
 br/
-| Banco: #{project_account.bank_code} - #{project_account.bank}
+| Banco: #{bank_account.bank_code} - #{bank_account.bank.name}
 br/
-| Agencia: #{project_account.agency}-#{project_account.agency_digit}
+| Agencia: #{bank_account.agency}-#{bank_account.agency_digit}
 br/
-| Conta: #{project_account.account}-#{project_account.account_digit}
+| Conta: #{bank_account.account}-#{bank_account.account_digit}
 br/
-| Nome: #{project_account.owner_name}
+| Nome: #{user.name}
 br/
-| CPF/CNPJ: #{project_account.owner_document}
+| CPF/CNPJ: #{user.cpf}
 br/
 br/
 | Se ficou com alguma dúvida, responda a esta mensagem diretamente ou fale conosco através do e-mail #{mail_to CatarseSettings[:email_contact]}.

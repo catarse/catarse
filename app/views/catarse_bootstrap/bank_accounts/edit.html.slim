@@ -15,11 +15,13 @@
       .w-col.w-col-2
       .w-col.w-col-8
         = simple_form_for resource, html: { class: 'w-form refund_bank_account_form' } do |bform|
-          .w-row
-            .w-col.w-col-6.w-sub-col
-              = bform.input :owner_name, as: :string, validation_text: true, input_html: {required: true}
-            .w-col.w-col-6.w-sub-col
-              = bform.input :owner_document, as: :tel, validation_text: true, input_html: { data: { :'validate-cpf-cnpj' => true }, required: true }
+          = bform.simple_fields_for :user do |uform|
+            - disable_fields = (resource.user.name.present? && resource.user.cpf.present?)
+            .w-row
+              .w-col.w-col-6.w-sub-col
+                  = uform.input :name, as: :string, validation_text: true, input_html: {required: true, disabled: disable_fields}
+              .w-col.w-col-6.w-sub-col
+                = uform.input :cpf, as: :tel, validation_text: true, input_html: { data: { :'validate-cpf-cnpj' => true }, required: true, disabled: disable_fields }
           .w-row
             = render 'shared/bank_select', bform: bform
             .w-col.w-col-6.w-sub-col
@@ -30,8 +32,7 @@
                   = bform.input :agency_digit, as: :string
           .w-row
             .w-col.w-col-6.w-sub-col
-              label.field-label.fontweight-semibold = t('activerecord.attributes.bank_account.account_type')
-              p.fontsize-smaller.u-marginbottom-20 = t('shared.account_type_value')
+              = bform.input :account_type, as: :select, collection: resource.account_type_list
             .w-col.w-col-6.w-sub-col
               .w-row
                 .w-col.w-col-6.w-col-small-6.w-col-tiny-6.w-sub-col-middle

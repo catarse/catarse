@@ -85,6 +85,10 @@
                 addToAttr({withAlert: false});
             }
 
+            if(document.getElementById('fixed-alert')) {
+                addToAttr({withFixedAlert: true});
+            }
+
             body.className = 'body-project closed';
 
 
