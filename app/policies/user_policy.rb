@@ -59,7 +59,7 @@ class UserPolicy < ApplicationPolicy
       u_attrs.delete(:permalink)
       u_attrs.delete(:whitelisted_at)
 
-      if (user.published_projects.present? || user.contributed_projects.present?) && user.public_name.present?
+      if user.published_projects.present? && user.public_name.present?
         u_attrs.delete(:public_name)
       end
 
