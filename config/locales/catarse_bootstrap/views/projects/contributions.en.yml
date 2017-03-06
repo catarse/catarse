@@ -236,7 +236,7 @@ en:
       new:
         no_rewards:
           label_title: 'Value of your support'
-          label_description: 'You can support this campaign from Rs 10'
+          label_description: 'You can support this campaign from Rs 100'
           label_btn: 'Continue'
           label_error: 'Support amount is incorrect'
         page-title: Support %{name}

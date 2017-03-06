@@ -196,7 +196,7 @@ en:
     dashboard_description:
       submit: "Save"
     dashboard_reward:
-      submit: "Salvar"
+      submit: "Save"
       add_reward: "Add reward"
       reward: "Reward"
     dashboard_announce_expiration:
