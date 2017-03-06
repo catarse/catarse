@@ -631,7 +631,7 @@ RSpec.describe Project, type: :model do
         project_expires_at: project.expires_at,
         project_address_city: project.city.try(:name) || project.user.try(:address_city),
         project_address_state: project.city.try(:state).try(:acronym) || project.user.try(:address_state),
-        account_entity_type: project.user.try(:entity_type)
+        account_entity_type: project.user.try(:decorator).try(:entity_type)
       }.to_json)
     end
   end
