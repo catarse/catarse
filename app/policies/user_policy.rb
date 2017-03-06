@@ -47,7 +47,7 @@ class UserPolicy < ApplicationPolicy
     return [] unless user
     u_attrs = [:account_type, :state_inscription, :birth_date, :confirmed_email_at, :public_name, :current_password, :password, :owner_document, :address_street, :subscribed_to_new_followers, :subscribed_to_project_post, :subscribed_to_friends_contributions, bank_account_attributes: [:id, :input_bank_number, :bank_id, :name, :agency, :account, :owner_name, :owner_document, :account_digit, :agency_digit, :account_type]]
     u_attrs << { category_follower_ids: [] }
-    if !record.kind_of?(User) && record.present?
+    if record.kind_of?(User)
       u_attrs << record.attribute_names.map(&:to_sym) 
     end
     u_attrs << { links_attributes: [:id, :_destroy, :link] }
