@@ -121,6 +121,7 @@ pt:
         uploaded_image: 'Imagem do projeto'
       user:
         public_name: 'Nome público'
+        birth_date: 'Data de nascimento'
         uploaded_image: 'Imagem do perfil'
         cover_image: 'Imagem de capa do perfil'
         address_city: Cidade
@@ -325,6 +326,8 @@ pt:
               blank: "Nome do usuário não pode ficar em branco"
             public_name:
               blank: "Nome público não pode ficar em branco"
+            birth_date:
+              blank: "Data de nascimento não pode ficar em branco"
             about_html:
               blank: "Sobre você não pode ficar em branco"
             uploaded_image:
