@@ -22,7 +22,7 @@ module Project::BaseValidator
 
       wo.validate do
         unless self.user.bank_account
-          self.errors.add(:bank_account, 'Dados bancários invalidos')
+          self.errors.add(:bank_account, 'Dados financeiros invalidos')
         end
 
         [:uploaded_image, :about_html, :public_name].each do |attr|
