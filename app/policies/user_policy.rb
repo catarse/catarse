@@ -66,6 +66,7 @@ class UserPolicy < ApplicationPolicy
       if user.name.present? && user.cpf.present?
         u_attrs.delete(:name)
         u_attrs.delete(:cpf)
+        u_attrs.delete(:account_type)
       end
     end
 
