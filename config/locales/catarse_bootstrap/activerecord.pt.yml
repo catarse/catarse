@@ -307,6 +307,25 @@ pt:
             headline:
               blank: "A frase de efeito do projeto não pode ficar em branco"
               too_long: "A frase de efeito é muito longa. Você pode usar um máximo de 140 caracteres."
+        bank_account:
+          attributes:
+            bank:
+              blank: "Banco do usuário não pode ficar em branco"
+              invalid: "Banco invalido"
+            agency:
+              blank: "Agência do usuário não pode ficar em branco"
+              invalid: "Agência inválida"
+            agency_digit:
+              blank: "Dígito agência do usuário não pode ficar em branco"
+            account:
+              blank: "No. da conta do usuário não pode ficar em branco"
+              format: "No. da conta do usuário invalido"
+              invalid: "No. da conta do usuário invalido"
+            account_digit:
+              blank: "Dígito conta do usuário não pode ficar em branco"
+            account_type:
+              blank: "Tipo de conta não pode ficar em branco"
+
         user:
           attributes:
             email:
