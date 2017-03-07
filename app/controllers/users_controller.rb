@@ -126,7 +126,7 @@ class UsersController < ApplicationController
       end
     else
       respond_to do |format|
-        format.json { render status: 400, :json => { :errors => @user.errors.full_messages } }
+        format.json { render status: 400, :json => { :errors => @user.errors.messages.map{ |e| e[1][0] }.uniq} }
         format.html { redirect_to edit_user_path(@user, anchor: params[:anchor])}
       end
     end
