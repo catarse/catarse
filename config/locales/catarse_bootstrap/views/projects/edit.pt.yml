@@ -29,7 +29,7 @@ pt:
       goal_subtitle: 'Preencha com carinho a seção abaixo, pois essas informações não poderão mais ser alteradas se o projeto for ao ar.'
       reports: 'Relatórios de apoios'
       user_settings: 'Dados financeiros e Endereço'
-      user_settings_subtitle: '<strong>Atenção ao preencher os campos abaixo! </strong> Eles devem identificar o responsável pelo recebimento do dinheiro e pela execução das propostas da campanha <a href="" target="blank">saiba mais</a>. Os dados de identificação do responsável <strong>não poderão ser alterados</strong> após a publicação do projeto. Após concluir o preenchimento, revise e clique em SALVAR. Quando estiver tudo pronto, basta apertar o botão CONTINUAR para seguir com a publicação da campanha.'
+      user_settings_subtitle: '<strong>Atenção ao preencher os campos abaixo! </strong> Eles devem identificar o responsável pelo recebimento do dinheiro e pela execução das propostas da campanha <a href="http://suporte.catarse.me/hc/pt-br/articles/213142846-tudo-sobre-CRIAR-UMA-CAMPANHA-NO-CATARSE#responsabilidade-realizador" target="blank">saiba mais</a>. Os dados de identificação do responsável <strong>não poderão ser alterados</strong> após a publicação do projeto. Após concluir o preenchimento, revise e clique em SALVAR. Quando estiver tudo pronto, basta apertar o botão CONTINUAR para seguir com a publicação da campanha.'
       user_about: "Fale mais sobre você!"
       user_about_subtitle: "Apoiadores querem conhecer melhor os realizadores de projetos. Links que ajudam a contar sua história são sempre bem vindos. "
       description: 'Conte a história do seu projeto!'
