@@ -298,7 +298,7 @@ pt:
       finished:
         icon: 'https://daks2k3a4ib2z.cloudfront.net/54b440b85608e3f4389db387/56c3511ee7d136a016bc34fa_succesful-icon.png'
         title: 'Boa sorte no seu projeto!'
-        text: 'Trabalhe sempre o relacionamento com seus apoiadores! Mantenha eles informados do andamento do seu projeto. Não deixe de olhar a seção de pós-projeto do Guia dos Realizadores!'
+        text: 'Trabalhe sempre o relacionamento com seus apoiadores! Mesmo depois do fim do projeto, você deve continuar usando a <a href="%{link_news}">aba Novidades</a> para avisá-los sobre andamento do projeto e entrega das recompensas.'
       confirm_account:
         title: 'Os seus dados estão corretos?'
         person:
