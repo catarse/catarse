@@ -346,6 +346,12 @@ pt:
               blank: "CEP não pode ficar em branco"
             phone_number:
               blank: "Telefone não pode ficar em branco"
+            country_id:
+              blank: "Pais não pode ficar em branco"
+            cpf:
+              blank: "CPF do usuário não pode ficar em branco"
+              invalid: "CPF inválido"
+
 
   project:
     update:
