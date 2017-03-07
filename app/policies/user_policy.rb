@@ -68,6 +68,7 @@ class UserPolicy < ApplicationPolicy
           u_attrs.delete(:name)
           u_attrs.delete(:cpf)
           u_attrs.delete(:account_type)
+          u_attrs.delete(:birtn_date) if user.birth_date
         end
       end
     end
