@@ -5,8 +5,6 @@ class ProjectDecorator < Draper::Decorator
   def show_city
     if source.city.present?
       source.city.show_name
-    elsif source.account && source.account.address_city.present? && source.account.address_state.present?
-      "#{source.account.address_city.capitalize}, #{source.account.address_state} "
     elsif source.user.address_city.present? && source.user.address_state.present?
       "#{source.user.address_city.capitalize}, #{source.user.address_state} "
     end

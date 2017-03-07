@@ -1,6 +1,7 @@
 - content_for :title, t('.title')
+- content_for :application_js do
+  = javascript_include_tag 'api/application' 
 = render 'shared/header_big'
-
 .page-header.negative.u-marginbottom-40
   .w-container
     h1.fontsize-largest.u-text-center = t('.title')
@@ -285,7 +286,4 @@
       font
         font Last updated: 03/01/2017
 
-= render 'shared/footer_big'
-
-
-
+#footer[data-mithril="Footer"]

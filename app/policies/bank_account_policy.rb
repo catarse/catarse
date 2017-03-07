@@ -28,7 +28,13 @@ class BankAccountPolicy < ApplicationPolicy
   end
 
   def permitted_attributes
-    [:bank_id, :name, :agency, :account, :owner_name, :owner_document, :account_digit, :agency_digit, :input_bank_number]
+    bank_attrs = [:bank_id, :name, :agency, :account, :owner_name, :owner_document, :account_digit, :agency_digit, :input_bank_number, :account_type]
+    bank_attrs << user_attributes
+  end
+
+  def user_attributes
+    user_policy = UserPolicy.new(user, record.user)
+    { user_attributes: user_policy.permitted_attributes }
   end
 
   protected

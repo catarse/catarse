@@ -61,31 +61,6 @@ RSpec.describe Project, type: :model do
     end
   end
 
-  describe '#has_account_error?' do
-    let(:project_account) { project.account }
-
-    subject { project.has_account_error? }
-
-    context 'when project account does not created' do
-      let(:project_account) { build(:project_account) }
-      it { is_expected.to eq(false) }
-    end
-
-    context 'when project account is fine' do
-      before do
-        create(:project_account_error, project_account: project_account, solved: true)
-      end
-      it { is_expected.to eq(false) }
-    end
-
-    context 'when have unsolved error on project account' do
-      before do
-        create(:project_account_error, project_account: project_account)
-      end
-      it { is_expected.to eq(true) }
-    end
-  end
-
   describe ".with_state" do
     let(:project_state) { 'online' }
     subject { Project.with_state(project_state).count }
@@ -654,9 +629,9 @@ RSpec.describe Project, type: :model do
         project_goal: project.goal,
         project_online_date: project.online_at,
         project_expires_at: project.expires_at,
-        project_address_city: project.city.try(:name) || project.account.try(:address_city),
-        project_address_state: project.city.try(:state).try(:acronym) || project.account.try(:address_state),
-        account_entity_type: project.account.try(:entity_type)
+        project_address_city: project.city.try(:name) || project.user.try(:address_city),
+        project_address_state: project.city.try(:state).try(:acronym) || project.user.try(:address_state),
+        account_entity_type: project.user.try(:decorator).try(:entity_type)
       }.to_json)
     end
   end

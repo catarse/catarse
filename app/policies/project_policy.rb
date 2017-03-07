@@ -22,10 +22,6 @@ class ProjectPolicy < ApplicationPolicy
     create? && record.state != 'deleted'
   end
 
-  def update_account?
-    record.account.new_record? || !record.published? || is_admin?
-  end
-
   def publish?
     done_by_owner_or_admin?
   end
@@ -43,7 +39,6 @@ class ProjectPolicy < ApplicationPolicy
       p_attr << budget_attributes
       p_attr << posts_attributes
       p_attr << reward_attributes
-      p_attr << account_attributes
 
       p_attr.flatten
 
@@ -70,13 +65,8 @@ class ProjectPolicy < ApplicationPolicy
   end
 
   def user_attributes
-    { user_attributes:  [ User.attr_accessible[:default].to_a.map(&:to_sym), :id,
-                          bank_account_attributes: [
-                            :id, :bank_id, :agency, :agency_digit, :account,
-                            :account_digit, :owner_name, :owner_document
-                          ],
-                          links_attributes: [:id, :_destroy, :link]
-                        ] }
+    user_policy = UserPolicy.new(user, record.user)
+    { user_attributes: user_policy.permitted_attributes }
   end
 
   def posts_attributes
@@ -90,12 +80,6 @@ class ProjectPolicy < ApplicationPolicy
     attrs[:rewards_attributes].delete(:deliver_at) if (record.waiting_funds? || record.failed? || record.successful?)
 
     attrs
-  end
-
-  def account_attributes
-    if done_by_owner_or_admin?
-      { account_attributes: ProjectAccount.attribute_names.map(&:to_sym) << :input_bank_number }
-    end
   end
 
 end

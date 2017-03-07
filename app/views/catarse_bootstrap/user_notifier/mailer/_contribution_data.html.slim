@@ -25,9 +25,9 @@ p
   | Support ID: #{detail.gateway_id}
   br/
   / We need the || for some old projects do not have the account info
-  - owner = contribution.project.account || contribution.project.user
-  - owner_name = owner.try(:owner_name) || owner.try(:name)
-  - owner_document = owner.try(:owner_document) || owner.try(:cpf)
+  - owner = contribution.project.user
+  - owner_name = owner.try(:name)
+  - owner_document = owner.try(:cpf)
   | Name / Company Name of the director: #{owner_name}
   br/
   | CPF / CNPJ of the director: #{owner_document}

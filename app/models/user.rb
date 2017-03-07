@@ -22,7 +22,8 @@ class User < ActiveRecord::Base
     :address_complement, :address_neighbourhood, :address_city, :address_state, :address_zip_code, :phone_number,
     :cpf, :state_inscription, :locale, :twitter, :facebook_link, :other_link, :moip_login, :deactivated_at, :reactivate_token,
     :bank_account_attributes, :country_id, :zero_credits, :links_attributes, :about_html, :cover_image, :category_followers_attributes, :category_follower_ids,
-    :subscribed_to_project_posts, :subscribed_to_new_followers, :subscribed_to_friends_contributions, :whitelisted_at, :confirmed_email_at, :public_name
+    :subscribed_to_project_posts, :subscribed_to_new_followers, :subscribed_to_friends_contributions, :whitelisted_at, :confirmed_email_at, :public_name,
+    :birth_date, :account_type
 
   mount_uploader :uploaded_image, UserUploader
   mount_uploader :cover_image, CoverUploader
@@ -40,6 +41,7 @@ class User < ActiveRecord::Base
   validates_confirmation_of :password, if: :password_confirmation_required?
   validates_length_of :password, within: Devise.password_length, allow_blank: true
   validates_length_of :public_name, { maximum: 70 }
+  validates :account_type, inclusion: { in: %w{pf pj mei} }
 
   belongs_to :country
   has_one :user_total
@@ -50,7 +52,6 @@ class User < ActiveRecord::Base
   has_many :feeds, class_name: 'UserFeed'
   has_many :follows, class_name: 'UserFollow'
   has_many :credit_cards
-  has_many :project_accounts
   has_many :authorizations
   has_many :contributions
   has_many :contribution_details
