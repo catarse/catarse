@@ -63,10 +63,12 @@ class UserPolicy < ApplicationPolicy
         u_attrs.delete(:public_name)
       end
 
-      if user.name.present? && user.cpf.present?
-        u_attrs.delete(:name)
-        u_attrs.delete(:cpf)
-        u_attrs.delete(:account_type)
+      if user.published_projects.present? || user.contributed_projects.present?
+        if user.name.present? && user.cpf.present?
+          u_attrs.delete(:name)
+          u_attrs.delete(:cpf)
+          u_attrs.delete(:account_type)
+        end
       end
     end
 
