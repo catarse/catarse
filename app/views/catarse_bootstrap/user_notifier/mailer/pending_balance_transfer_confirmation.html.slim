@@ -7,14 +7,32 @@
 br/
 p Você ainda não confirmou os dados bancários da campanha #{project.name}. Após a confirmação dos dados você receberá o dinheiro arrecadado (descontada a nossa taxa) em até 10 dias úteis
 br/
+p O processo de repasse do dinheiro dura em média <strong>10 dias úteis</strong> e é iniciado somente após a <strong>confirmação dos seus dados bancários na plataforma.</strong>
+p Para não atrasar o repasse, precisamos que você confirme o quanto antes - <strong>e com toda a atenção do mundo!</strong> - se os dados bancários que você informou estão corretos. Veja como você pode confirmar os dados bancários agora mesmo, em apenas 4 passos:
+
+p
+  center
+    | 1) Faça o login no Catarse
+    | 2) Entre na aba Minha campanha #{link_to 'Minha campanha',insights_project_url(project.id, ref: 'notificacao_project_success')}, dentro da página do seu projeto
+    | 3) Clique em "Confirmar dados bancários"
+    | 4) Verifique se os dados estão corretos:
+        | <strong>Se os seus dados estiverem corretos:</strong> basta clicar em: "solicitar transferência do dinheiro"
+        | <strong>Se os dados bancários estiverem incorretos:</strong> você deverá corrigir os seus dados e salvar. Depois que o sistema atualizar os novos dados, você deverá clicar em "solicitar transferência do dinheiro".
 br/
-center
-  p
+p
+  center
     = link_to('Confirme os dados bancários', insights_project_url(project.id, ref: 'ctrse_notification_pending_balance_transfer_confirmation'), style:'border: 1px solid #7cc142; border-radius: 5px; color: #fff; text-decoration: none; font-weight: bolder; text-align: center; padding: 19px 60px; background: #65bf1b; font-size: 15px;')
     br/
-  p
-    br/
-    = link_to 'Confira mais detalhes de como será feito o repasse', 'http://suporte.catarse.me/hc/pt-br/articles/217916143', target: '__blank'
+    
+p 
+  | <strong>Dúvidas frequentes:</strong>
+p 
+  = link_to 'Quais são as etapas e prazos do repasse?', 'http://suporte.catarse.me/hc/pt-br/articles/217916143#etapas', target: '__blank'
+  = link_to 'Quando o dinheiro estará disponível na minha conta?', 'http://suporte.catarse.me/hc/pt-br/articles/217916143#quando', target: '__blank'
+  = link_to 'Como funciona a cobrança de taxa do Catarse', 'http://suporte.catarse.me/hc/pt-br/articles/217916143#taxa', target: '__blank'
+br/
+p
+  = link_to 'Confira mais detalhes de como será feito o repasse', 'http://suporte.catarse.me/hc/pt-br/articles/217916143', target: '__blank'
 
 br/
 br/
