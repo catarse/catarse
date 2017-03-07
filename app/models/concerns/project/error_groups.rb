@@ -2,8 +2,8 @@ module Project::ErrorGroups
   extend ActiveSupport::Concern
 
   included do
-    begin
-      ATTR_GROUPS = {
+    def attr_error_groups
+      {
         basics: [:public_name, :permalink, :category_id, :city, :public_tags],
         goal: [:goal, :online_days],
         description: [:about_html],
@@ -13,18 +13,22 @@ module Project::ErrorGroups
         video: [:video_url],
         reward: [:'rewards.size', :'rewards.minimum_value', :'rewards.deliver_at'],
         user_about: [:'user.uploaded_image', :'user.public_name', :'user.about_html'],
-        user_settings: BankAccount.attribute_names.map{|attr| ('bank_account.' + attr).to_sym} << :"user.name" << :"user.cpf" << :"user.birth_date" << :bank_account
+        user_settings: user_settings_error_group
       }
-    rescue Exception => e
-      puts "problem while using ErrorGroups concern:\n '#{e.message}'"
     end
 
     def error_included_on_group? error_attr, group_name
-      Project::ATTR_GROUPS[group_name.to_sym].include?(error_attr)
+      attr_error_groups[group_name.to_sym].include?(error_attr)
     end
 
     def has_errors_for?(field)
       errors.include?(field)
+    end
+
+    def user_settings_error_group
+      attr_map = BankAccount.attribute_names.map{ |attr| ('bank_account.' + attr).to_sym }
+      attr_map.concat(%i(user.name user.cpf user.birth_date user.country_id user.address_state user.address_street user.address_number user.address_city user.address_neighbourhood bank_account))
+      attr_map
     end
 
   end
