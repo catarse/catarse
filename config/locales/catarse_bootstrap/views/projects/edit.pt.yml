@@ -146,7 +146,7 @@ pt:
     dashboard_nav_links:
       flex:
         preview_tab: Preview
-        account_tab: Conta
+        account_tab: Dados cadastrais
         basics_tab: Básico
         goal_tab: Financiamento
         budget_tab: Orçamento
@@ -157,7 +157,7 @@ pt:
         about_you_tab: Perfil Público
       aon:
         preview_tab: Preview
-        account_tab: Conta
+        account_tab: Dados cadastrais
         basics_tab: Básico
         goal_tab: Financiamento
         budget_tab: Orçamento

@@ -315,14 +315,19 @@ pt:
             agency:
               blank: "Agência do usuário não pode ficar em branco"
               invalid: "Agência inválida"
+              format: "Agência inválida"
             agency_digit:
               blank: "Dígito agência do usuário não pode ficar em branco"
+              invalid: "Dígito agência invalido"
+              format: "Dígito agência invalido"
             account:
-              blank: "No. da conta do usuário não pode ficar em branco"
-              format: "No. da conta do usuário invalido"
-              invalid: "No. da conta do usuário invalido"
+              blank: "No. da conta não pode ficar em branco"
+              format: "No. da conta invalido"
+              invalid: "No. da conta invalido"
             account_digit:
-              blank: "Dígito conta do usuário não pode ficar em branco"
+              blank: "Dígito da conta não pode ficar em branco"
+              format: "Dígito da conta invalido"
+              invalid: "Dígito da conta invalido"
             account_type:
               blank: "Tipo de conta não pode ficar em branco"
 
