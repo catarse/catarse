@@ -25,20 +25,20 @@ p
     | 4) Verifique se os dados estão corretos:
         | <strong>Se os seus dados estiverem corretos:</strong> basta clicar em: "solicitar transferência do dinheiro"
         | <strong>Se os dados bancários estiverem incorretos:</strong> você deverá corrigir os seus dados e salvar. Depois que o sistema atualizar os novos dados, você deverá clicar em "solicitar transferência do dinheiro".
-
-p
-  center
-    = link_to('Confirme os dados bancários', insights_project_url(project.id, ref: 'notificacao_project_success'), style:'border: 1px solid #7cc142; border-radius: 5px; color: #fff; text-decoration: none; font-weight: bolder; text-align: center; padding: 19px 60px; background: #65bf1b; font-size: 15px;')
-
 br/
+
 p 
   | <strong>Dúvidas frequentes:</strong>
 p 
   = link_to 'Quais são as etapas e prazos do repasse?', 'http://suporte.catarse.me/hc/pt-br/articles/217916143#etapas', target: '__blank'
   = link_to 'Quando o dinheiro estará disponível na minha conta?', 'http://suporte.catarse.me/hc/pt-br/articles/217916143#quando', target: '__blank'
   = link_to 'Como funciona a cobrança de taxa do Catarse', 'http://suporte.catarse.me/hc/pt-br/articles/217916143#taxa', target: '__blank'
+br/
 p
   = link_to 'Confira aqui mais detalhes de como será feito o repasse!', 'http://suporte.catarse.me/hc/pt-br/articles/217916143', target: '__blank'
+br/
+br/
+
 p
   | Se ficou com alguma dúvida, responda a esta mensagem diretamente ou fale conosco através do e-mail #{mail_to CatarseSettings[:email_projects]}. 
 p
