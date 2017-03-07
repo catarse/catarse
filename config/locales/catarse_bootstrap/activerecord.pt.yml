@@ -332,6 +332,21 @@ pt:
               blank: "Sobre você não pode ficar em branco"
             uploaded_image:
               blank: "Imagem do usuário não pode ficar em branco"
+            address_street:
+              blank: "Endereço não pode ficar em branco"
+            address_number:
+              blank: "Número no endereço não pode ficar em branco"
+            address_city:
+              blank: "Cidade não pode ficar em branco"
+            address_state:
+              blank: "Estado não pode ficar em branco"
+            address_neighbourhood:
+              blank: "Bairro não pode ficar em branco"
+            address_zip_code:
+              blank: "CEP não pode ficar em branco"
+            phone_number:
+              blank: "Telefone não pode ficar em branco"
+
   project:
     update:
       success: As informações foram atualizadas

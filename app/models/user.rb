@@ -30,8 +30,7 @@ class User < ActiveRecord::Base
   mount_uploader :uploaded_image, UserUploader
   mount_uploader :cover_image, CoverUploader
 
-
-  validates :about_html, presence: true, if: -> (user) { user.projects.where(state: %w(online failed waiting_funds successful)).present? }
+  validates :about_html, :public_name, :cpf, :address_zip_code, :phone_number, :address_state, :country_id, :address_city, :address_street, :address_number, :address_neighbourhood, presence: true, if: -> (user) { user.projects.where(state: %w(online failed waiting_funds successful)).present? || user.publishing_project }
   validates_presence_of :email
   validates_uniqueness_of :email, allow_blank: true, if: :email_changed?, message: I18n.t('activerecord.errors.models.user.attributes.email.taken')
   validates_uniqueness_of :permalink, allow_nil: true

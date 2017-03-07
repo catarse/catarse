@@ -25,9 +25,8 @@ module Project::BaseValidator
           self.errors.add(:bank_account, 'Dados financeiros invalidos')
         end
 
-        [:uploaded_image, :about_html, :public_name, :birth_date].each do |attr|
-          self.user.errors.add_on_blank(attr)
-        end
+        self.user.publishing_project = true
+        self.user.valid?
 
         self.user.errors.each do |error, error_message|
           self.errors.add('user.' + error.to_s, error_message)
