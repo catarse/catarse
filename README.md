@@ -101,6 +101,12 @@ Currently, we support pagarme through our payment engines. Payment engines are e
 If you have created a different payment engine to Catarse, please contact us so we can link your engine here.
 If you want to create a payment engine, please join our mailing list at http://groups.google.com/group/catarse-dev
 
+  List of payment enginees that are being developed or need to be developed further
+
+    https://github.com/catarse/catarse_pagarme (payment engine used by Catarse.me)
+    https://github.com/devton/catarse_paypal_express (currently out of date and not maintained)
+    https://github.com/sushant12/CatarseStripe (just starting to be developed and needs extra hands -- please pitch in...)
+
 ## How to contribute with code
 
 Discuss your plans in our mailing list (http://groups.google.com/group/catarse-dev).
