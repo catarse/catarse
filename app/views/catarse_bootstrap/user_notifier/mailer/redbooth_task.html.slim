@@ -1,5 +1,5 @@
 - project = @notification.project
-- project_account = project.account
+- bank_account = project.user.bank_account
 - project_link = project_by_slug_url(permalink: project.permalink)
 |#edgarp
 br/
@@ -14,22 +14,22 @@ br/
 = project.user.try(:moip_login)
 br/
 | CPF/CNPJ do realizador:
-= project_account.try(:owner_document)
+= bank_account.try(:owner_document)
 | Email do realizador:
-= project_account.try(:email)
+= bank_account.try(:email)
 br/
 | Data de expiração:
 = project.display_expires_at
 br/
 | Telefone:
-= project_account.try(:phone_number)
+= bank_account.try(:phone_number)
 br/
 | Dados Bancarios:
 br/
-| Banco: #{project_account.try(:bank).try(:name)}
+| Banco: #{bank_account.try(:bank).try(:name)}
 br/
-| Agência: #{project_account.try(:agency)}- #{project_account.try(:agency_digit)}
+| Agência: #{bank_account.try(:agency)}- #{bank_account.try(:agency_digit)}
 br/
-| Conta: #{project_account.try(:account)} - #{project_account.try(:account_digit)}
+| Conta: #{bank_account.try(:account)} - #{bank_account.try(:account_digit)}
 br/
-| Nome do titular: #{project_account.try(:owner_name)}
+| Nome do titular: #{project.user.name}

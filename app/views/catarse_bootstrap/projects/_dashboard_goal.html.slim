@@ -78,7 +78,7 @@
                       .w-col.w-col-8.w-col-small-6.w-col-tiny-6.label-hide
                         = form.input :goal,
                           as: :tel,
-                          input_html: { id: 'project-goal-input', class: 'postfix positive medium', required: false, value: @project.localized.goal},
+                          input_html: { id: 'project-goal-input', class: 'postfix positive medium', required: false, value: @project.goal},
                           validation_text: false, hint: false, label: ''
                   .w-col.w-col-2
                 .u-text-center.fontsize-smaller.fontweight-semibold

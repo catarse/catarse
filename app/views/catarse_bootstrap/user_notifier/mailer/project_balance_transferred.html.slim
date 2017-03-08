@@ -1,6 +1,6 @@
 - project = @notification.project
 - user = @notification.user
-- project_account = project.account
+- bank_account = user.bank_account
 - balance_transfer = project.balance_transfer
 - project_transfer = project.project_transfer
 
@@ -26,15 +26,15 @@ br/
 br/
 | Registered banking data:
 br/
-| Bank: #{project_account.bank_code} - #{project_account.bank}
+| Bank: #{bank_account.bank_code} - #{bank_account.bank.name}
 br/
-| Agency: #{project_account.agency}-#{project_account.agency_digit}
+| Agency: #{bank_account.agency}-#{bank_account.agency_digit}
 br/
-| Account: #{project_account.account}-#{project_account.account_digit}
+| Account: #{bank_account.account}-#{bank_account.account_digit}
 br/
-| Name: #{project_account.owner_name}
+| Name: #{user.name}
 br/
-| CPF/CNPJ: #{project_account.owner_document}
+| CPF/CNPJ: #{user.cpf}
 br/
 br/
 | If you have any questions, reply to this message directly or contact us via email #{mail_to CatarseSettings[:email_contact]}.

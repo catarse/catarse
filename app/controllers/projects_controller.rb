@@ -117,17 +117,7 @@ class ProjectsController < ApplicationController
       return render :edit
     end
 
-    if params[:solve_account_error] && current_user.admin && @project.account.persisted?
-      # NOTE: need to think a way to add web-server rules to
-      # validate presence on some filters to avoid mass update
-      api = ApiWrapper.new current_user
-      api.request("project_account_errors", {
-        params: { project_account_id: "eq.#{@project.account.id}" },
-        action: :delete
-      }).run()
-
-      redirect_to edit_project_path(@project, anchor: params[:anchor] || 'home')
-    elsif params[:cancel_project] == 'true'
+    if params[:cancel_project] == 'true'
       api = ApiWrapper.new current_user
       api.request("rpc/cancel_project", {
         body: { _project_id: @project.id }.to_json,
@@ -184,8 +174,6 @@ class ProjectsController < ApplicationController
     @post =  (params[:project_post_id].present? ? resource.posts.where(id: params[:project_post_id]).first : resource.posts.build)
     @rewards = @project.rewards.rank(:row_order)
     @rewards = @project.rewards.build unless @rewards.present?
-
-    resource.build_account unless resource.account
   end
 
   def resource_action action_name, success_redirect=nil, show_modal=nil

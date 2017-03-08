@@ -23,7 +23,7 @@ App.addChild('Contribution', {
 
   submitForm: function(event){
     var $target_row = $(event.target).parents('.back-reward-money'),
-        user_value = this.$('.selected').find('.user-reward-value').val().replace(/\./g,''),
+        user_value = this.$('.selected').find('.user-reward-value').val().replace(/\,/g,''),
         minimumValue=this.minimumValue();
     if(user_value === ''){
       this.$value.val(minimumValue);
@@ -42,7 +42,7 @@ App.addChild('Contribution', {
   },
 
   activate: function(){
-    this.$('.user-reward-value').mask('000.000.000', {reverse: true});
+    this.$('.user-reward-value').mask('00,00,00,000', {reverse: true});
     this.$value = this.$('#contribution_value');
     this.$minimum = this.$('#minimum-value');
     if(this.$('input[type=radio]').length > 0) {

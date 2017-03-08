@@ -21,6 +21,10 @@ module Project::BaseValidator
         unless: ->(project) { project.video_thumbnail.present? }
 
       wo.validate do
+        unless self.user.bank_account
+          self.errors.add(:bank_account, 'Invalid bank details')
+        end
+
         [:uploaded_image, :about_html, :public_name].each do |attr|
           self.user.errors.add_on_blank(attr)
         end
@@ -31,7 +35,6 @@ module Project::BaseValidator
       end
 
       wo.validates_presence_of :budget
-      # wo.validates_presence_of :account, message: 'Bank details can not be left blank'
 
       wo.validates_numericality_of :online_days, less_than_or_equal_to: 365, greater_than_or_equal_to: 1, allow_nil: true
 
@@ -40,11 +43,6 @@ module Project::BaseValidator
           self.errors['rewards.deliver_at'] << "There are one or more rewards with the deadline shorter than the end date of the campaign"
         end
       end
-      # wo.validate do
-      #   if self.account && (self.account.agency.try(:size) || 0) < 4
-      #     self.errors['account.agency_size'] << "Agency must be at least 4 digits"
-      #   end
-      # end
     end
   end
 end

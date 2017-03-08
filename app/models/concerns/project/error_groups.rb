@@ -4,7 +4,7 @@ module Project::ErrorGroups
   included do
     begin
       ATTR_GROUPS = {
-        basics: [:name, :permalink, :category_id, :city, :public_tags],
+        basics: [:public_name, :permalink, :category_id, :city, :public_tags],
         goal: [:goal, :online_days],
         description: [:about_html],
         budget: [:budget],
@@ -13,7 +13,7 @@ module Project::ErrorGroups
         video: [:video_url],
         reward: [:'rewards.size', :'rewards.minimum_value', :'rewards.deliver_at'],
         user_about: [:'user.uploaded_image', :'user.public_name', :'user.about_html'],
-        user_settings: ProjectAccount.attribute_names.map{|attr| ('account.' + attr).to_sym} << :'account.agency_size' << :account
+        user_settings: BankAccount.attribute_names.map{|attr| ('bank_account.' + attr).to_sym} << :name << :cpf << :bank_account
       }
     rescue Exception => e
       puts "problem while using ErrorGroups concern:\n '#{e.message}'"

@@ -1,6 +1,6 @@
 - project = @notification.project
 - user = @notification.user
-- project_account = project.account
+- bank_account = user.bank_account 
 - metadata = @notification.metadata
 
 | Hi #{user.display_name},
@@ -19,15 +19,15 @@ br/
 br/
 | Total value of the transfer: #{number_to_currency(metadata['transfer_amount'].to_f, precision: 2)} (Rates already discounted)
 br/
-| Bank: #{project_account.bank.name}
+| Bank: #{bank_account.bank.name}
 br/
-| Agency: #{project_account.agency}-#{project_account.agency_digit}
+| Agency: #{bank_account.agency}-#{bank_account.agency_digit}
 br/
-| Account: #{project_account.account}-#{project_account.account_digit}
+| Account: #{bank_account.account}-#{bank_account.account_digit}
 br/
-| Name: #{project_account.owner_name}
+| Name: #{user.name}
 br/
-| CPF: #{project_account.owner_document}
+| CPF/CNPJ: #{user.cpf}
 br/
 br/
 | Our team may contact you in the event of a problem with your bank.

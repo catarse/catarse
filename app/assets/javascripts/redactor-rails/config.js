@@ -9,27 +9,27 @@ window.init_redactor = function(){
   $('.redactor').redactor({
         source: false,
         formatting: ['p'],
-        formattingAdd: [
-          {
-              tag: 'blockquote',
-              title: 'Citar',
-              class: 'fontsize-base quote',
-              clear: true
-          },
-
-          {
-              tag: 'p',
-              title: 'Cabeçalho 1',
-              class: 'fontsize-larger fontweight-semibold',
-              clear: true
-          },
-          {
-              tag: 'p',
-              title: 'Cabeçalho 2',
-              class: 'fontsize-large',
-              clear: true
-          }],
-        lang: 'pt_br',
+        // formattingAdd: [
+        //   {
+        //       tag: 'blockquote',
+        //       title: 'Blockquote',
+        //       class: 'fontsize-base quote',
+        //       clear: true
+        //   },
+        //
+        //   {
+        //       tag: 'p',
+        //       title: 'Cabeçalho 1',
+        //       class: 'fontsize-larger fontweight-semibold',
+        //       clear: true
+        //   },
+        //   {
+        //       tag: 'p',
+        //       title: 'Cabeçalho 2',
+        //       class: 'fontsize-large',
+        //       clear: true
+        //   }],
+        // lang: 'pt_br',
         maxHeight: 800,
         minHeight: 300,
         convertVideoLinks: true,

@@ -1,4 +1,4 @@
-- content_for :title, t('.titles.site')
+- content_for :title, "Password Reset"
 
 .w-container
   .u-marginbottom-10
@@ -6,7 +6,7 @@
   .w-row
     .w-col.w-col-6.box-login.w-col-push-3
       div
-        .fontweight-semibold.u-text-center.fontsize-large.u-marginbottom-10= t ('.titles.header')
+        .fontweight-semibold.u-text-center.fontsize-large.u-marginbottom-10= "Password Reset"
       .login-fb
       .w-form.form-login
         = simple_form_for resource, as: resource_name, url: password_path(resource_name), html: {method: :put, novalidate: true} do |form|
@@ -14,4 +14,4 @@
           = form.hidden_field :reset_password_token
           = form.input :password, as: :password, label: t('.form.labels.password'), input_html: { class: 'w-input text-field' }
           = form.input :password_confirmation, as: :password, label: t('.form.labels.password_confirmation'), input_html: { class: 'w-input text-field' }
-          = form.button :submit, t('.form.inputs.submit'), class:'btn btn-medium'
+          = form.button :submit, "Submit", class:'btn btn-medium'

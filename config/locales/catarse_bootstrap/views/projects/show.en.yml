@@ -96,17 +96,17 @@ en:
         hora: ' Remaining time'
         minuto: ' Remaining minute'
         segundo: ' Second remaining'
-      submit: Support this project
+      submit: Support this campaign
       display_status:
         approved: "This project has already been approved by Catarse. Soon he will be on the air and ready to receive support."
-        online: "You can support this project until %{date} till 23h59m59s"
+        online: "You can support this campaign until %{date} till 23h59m59s"
         failed: "This project did not reach the minimum of %{goal} through %{date} and was not funded"
         rejected: "This project was not accepted. Can not support."
         in_analysis: "This project is under review and is not yet open for support."
         successful: "This project was successful and was funded on %{date}"
         waiting_funds: "The deadline for capturing this project is closed. We are awaiting confirmation of the latest payments."
         draft: "This project is only a draft and still can not receive support."
-      submit: Support this project
+      submit: Support this campaign
     project_main:
       post_call: 'All news published in JVN is sent directly to the email of who has already supported his project and is also available for viewing on the site. You can choose to leave it public, or visible only to your supporters here on this tab.'
       send_post: 'Writing novelty'

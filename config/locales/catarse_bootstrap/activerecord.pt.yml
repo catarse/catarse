@@ -137,7 +137,7 @@ pt:
         email: Email
         full_name: "Nome completo / Razão Social"
         bio: 'Mini Bio'
-        name: "Apelido"
+        name: "Nome completo / Razão Social"
         newsletter: 'Quero receber novidades do Catarse'
         password: Senha
         password_confirmation: "Confirmação de senha"
@@ -179,19 +179,19 @@ pt:
               blank: 'Nome do titular não pode ficar em branco'
               invalid: 'Informe um nome com no mínimo 5 e no máximo 30 letras'
             owner_document:
-              blank: 'CPF / CNPJ do titular não pode ficar em branco'
-              invalid: 'CPF / CNPJ inválido'
+              blank: 'do titular não pode ficar em branco'
+              invalid: 'inválido'
             agency:
-              blank: 'Agência não pode ficar em branco'
-              invalid: 'Agência inválida'
+              blank: 'não pode ficar em branco'
+              invalid: 'inválida'
             account:
-              blank: 'No. da conta não pode ficar em branco'
+              blank: 'não pode ficar em branco'
             account_digit:
-              blank: 'Dígito da conta não pode ficar em branco'
-              invalid: 'Digito da conta inválido'
+              blank: 'não pode ficar em branco'
+              invalid: 'inválido'
             agency_digit:
-              blank: 'Dígito da agência não pode ficar em branco'
-              invalid: 'Digito da agência inválido'
+              blank: 'não pode ficar em branco'
+              invalid: 'inválido'
         project_account:
           invalid: 'Conta não é válida'
           attributes:

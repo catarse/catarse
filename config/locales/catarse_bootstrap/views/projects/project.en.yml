@@ -6,10 +6,10 @@ en:
       see_all: more
       banners:
         1:
-          title: 'COLLECTIVE FINANCING FOR ALL'
+          title: 'Collective  Financing For All'
           subtitle: ''
           link: '/start?ref=home_banner'
-          cta: 'Start your campaign'
+          cta: 'Start Your Campaign'
           image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-fctodos.jpg'
 #        2:
 #          title: '2016'
@@ -220,7 +220,7 @@ en:
         description: If this project does not reach the goal, you get back 100% of what you paid through a refund.
         questions:
           1:
-            question: How do I support this project?
+            question: How do I support this campaign?
             answer: Fill in the details of your support, as well as all your payment information to finalize support
           2:
             question: When is payment made?
@@ -238,7 +238,7 @@ en:
         description: This project will get all the features when finalizing
         questions:
           1:
-            question: How do I support this project?
+            question: How do I support this campaign?
             answer: Fill in the details of your support, as well as all your payment information to finalize support
           2:
             question: When is payment made?
