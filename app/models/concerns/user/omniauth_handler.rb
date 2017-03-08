@@ -7,6 +7,7 @@ module User::OmniauthHandler
     def self.create_from_hash(hash)
       create!(
         {
+          public_name: hash['info']['name'],
           name: hash['info']['name'],
           email: hash['info']['email'],
           about_html: (hash["info"]["description"][0..139] rescue nil),
