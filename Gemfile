@@ -92,6 +92,7 @@ gem 'sitemap_generator'
 gem 'rdstation-ruby-client'
 gem 'therubyracer', platform: :ruby
 gem 'responders', '~> 2.0'
+gem "cpf_cnpj"
 
 # Translations
 gem 'http_accept_language'

@@ -133,6 +133,7 @@ GEM
       sprockets (< 4.0)
     concurrent-ruby (1.0.2)
     connection_pool (2.2.0)
+    cpf_cnpj (0.3.0)
     daemons (1.2.4)
     database_cleaner (1.5.3)
     dbhero (1.1.12)
@@ -652,6 +653,7 @@ DEPENDENCIES
   cocoon
   coffee-rails
   compass-rails
+  cpf_cnpj
   database_cleaner
   dbhero (>= 1.1.12)
   devise (= 3.5.10)
