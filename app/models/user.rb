@@ -31,7 +31,7 @@ class User < ActiveRecord::Base
   mount_uploader :cover_image, CoverUploader
 
  validates :bank_account, :name, :about_html, :public_name, :cpf, :address_zip_code, :phone_number, :address_state, :country_id, :address_city, :address_street, :address_number, :address_neighbourhood, presence: true, if: -> (user) { user.published_projects.present? || user.publishing_project }
- validates :birth_date,  presence: true, if: -> (user) { user.publishing_project }
+ validates :birth_date,  presence: true, if: -> (user) { user.publishing_project && user.account_type == 'pf' }
 
 
   validates_presence_of :email
