@@ -373,8 +373,8 @@ pt:
             country_id:
               blank: "Pais não pode ficar em branco"
             cpf:
-              blank: "CPF do usuário não pode ficar em branco"
-              invalid: "CPF inválido"
+              blank: "CPF / CNPJ não pode ficar em branco"
+              invalid: "CPF / CNPJ inválido"
 
 
   project:
