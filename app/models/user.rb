@@ -147,7 +147,7 @@ class User < ActiveRecord::Base
   end
 
   def owner_document_validation
-    if published_projects.present? || contributed_projects.present?
+    if published_projects.present? || contributed_projects.present? || publishing_project
       unless (account_type == 'pj' ? CNPJ.valid?(cpf) : CPF.valid?(cpf))
         errors.add(:cpf, :invalid)
       end
