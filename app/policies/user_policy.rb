@@ -52,14 +52,14 @@ class UserPolicy < ApplicationPolicy
     end
     u_attrs << { links_attributes: [:id, :_destroy, :link] }
     u_attrs << { category_followers_attributes: [:id, :user_id, :category_id] }
-    u_attrs.flatten!
+    u_attrs = u_attrs.flatten.uniq
 
     unless user.try(:admin?)
       u_attrs.delete(:zero_credits)
       u_attrs.delete(:permalink)
       u_attrs.delete(:whitelisted_at)
 
-      if user.published_projects.present? && user.public_name.present?
+      if user.published_projects.present?
         u_attrs.delete(:public_name)
       end
 
