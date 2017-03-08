@@ -4,7 +4,6 @@
 - content_for :stylesheets do
   = stylesheet_link_tag 'redactor'
 = render 'shared/header'
-= javascript_include_tag "api/application"
 
 .w-section.section-product[class=@project.mode]
 #dashboard-titles-root.w-section.dashboard-header.u-text-center data-stats="#{@project.try(:to_analytics_json)}"
@@ -54,5 +53,5 @@
           = render 'dashboard_preview'
         #dashboard_user_settings.content.w-hidden data-page_title="#{t('.user_settings')}" data-page_subtitle="#{t('.user_settings_subtitle')}"
           = render 'dashboard_user_settings'
-
+= javascript_include_tag "api/application"
 = render 'shared/footer'
