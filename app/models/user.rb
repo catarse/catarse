@@ -25,11 +25,16 @@ class User < ActiveRecord::Base
     :subscribed_to_project_posts, :subscribed_to_new_followers, :subscribed_to_friends_contributions, :whitelisted_at, :confirmed_email_at, :public_name,
     :birth_date, :account_type
 
+  attr_accessor :publishing_project, :publishing_user_settings, :publishing_user_about
+
   mount_uploader :uploaded_image, UserUploader
   mount_uploader :cover_image, CoverUploader
 
+ validates :bank_account, :name, :cpf, :address_zip_code, :phone_number, :address_state, :country_id, :address_city, :address_street, :address_number, :address_neighbourhood, presence: true, if: -> (user) { user.published_projects.present? || user.publishing_project || user.publishing_user_settings }
+ validates :birth_date,  presence: true, if: -> (user) { user.publishing_user_settings && user.account_type == 'pf' }
+ validates :about_html, :public_name,  presence: true, if: -> (user) { user.published_projects.present? || user.publishing_project || user.publishing_user_about }
 
-  validates :about_html, presence: true, if: -> (user) { user.projects.where(state: %w(online failed waiting_funds successful)).present? }
+
   validates_presence_of :email
   validates_uniqueness_of :email, allow_blank: true, if: :email_changed?, message: I18n.t('activerecord.errors.models.user.attributes.email.taken')
   validates_uniqueness_of :permalink, allow_nil: true
@@ -42,6 +47,8 @@ class User < ActiveRecord::Base
   validates_length_of :password, within: Devise.password_length, allow_blank: true
   validates_length_of :public_name, { maximum: 70 }
   validates :account_type, inclusion: { in: %w{pf pj mei} }
+
+  validate :owner_document_validation
 
   belongs_to :country
   has_one :user_total
@@ -139,6 +146,14 @@ class User < ActiveRecord::Base
 
   def self.find_active!(id)
     self.active.where(id: id).first!
+  end
+
+  def owner_document_validation
+    if cpf.present? || (published_projects.present? || contributed_projects.present? || publishing_project)
+      unless (account_type != 'pf' ? CNPJ.valid?(cpf) : CPF.valid?(cpf))
+        errors.add(:cpf, :invalid)
+      end
+    end
   end
 
   def fb_parsed_link

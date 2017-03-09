@@ -10,7 +10,7 @@ CatarsePagarme.configure do |config|
   config.protocol = 'https'
   config.max_installments = CatarseSettings.get_without_cache(:pagarme_max_installments)
   config.minimum_value_for_installment = CatarseSettings.get_without_cache(:pagarme_minimum_value_for_installment)
-  config.use_simility = false
+  config.use_simility = true
 
   config.pagarme_tax = CatarseSettings.get_without_cache(:pagarme_tax)
   config.cielo_tax = CatarseSettings.get_without_cache(:cielo_tax)

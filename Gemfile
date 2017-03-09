@@ -39,7 +39,7 @@ gem 'mixpanel_client'
 
 # Payment engines
 
-gem 'catarse_pagarme', '~> 2.10.4'
+gem 'catarse_pagarme', '~> 2.10.6'
 #gem 'catarse_pagarme', path: '../catarse_pagarme'
 
 # Decorators
@@ -92,6 +92,7 @@ gem 'sitemap_generator'
 gem 'rdstation-ruby-client'
 gem 'therubyracer', platform: :ruby
 gem 'responders', '~> 2.0'
+gem "cpf_cnpj"
 
 # Translations
 gem 'http_accept_language'

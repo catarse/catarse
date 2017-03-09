@@ -43,7 +43,7 @@ pt:
       explore_categories:
         16:
           icon: "https://daks2k3a4ib2z.cloudfront.net/54b440b85608e3f4389db387/58ae47fb9cd197f94ab5f96c_icon-music.png"
-          link: "http://crowdfunding.catarse.me/financiamento-coletivo-musica-independente?ref=ctrse_start"
+          link: "http://crowdfunding.catarse.me/financiamento-coletivo-musica-independente"
           title: "Lance sua música no Catarse!"
           cta: "Aprenda como"
       links:

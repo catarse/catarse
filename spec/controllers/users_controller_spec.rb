@@ -49,7 +49,7 @@ RSpec.describe UsersController, type: :controller do
 
   describe "GET billing" do
     it_should_behave_like "redirect to edit_user_path" do
-      let(:action) { :billing }
+      let(:action) { :settings }
     end
   end
 
@@ -238,7 +238,7 @@ RSpec.describe UsersController, type: :controller do
           put :update, id: user.id, locale: 'pt', user: { public_name: 'foo2' }
         end
 
-        it "should not update public name" do
+        it "should update public name" do
           user.reload
           expect(user.public_name).to eq('foo2')
         end
@@ -249,6 +249,7 @@ RSpec.describe UsersController, type: :controller do
         let(:published_project) { create(:project, state: 'online', user: user) }
         before do
           published_project
+          user.reload
           put :update, id: user.id, locale: 'pt', user: { public_name: 'foo2' }
         end
 
@@ -257,20 +258,6 @@ RSpec.describe UsersController, type: :controller do
           expect(user.public_name).to eq('foo')
         end
       end
-
-      context "when user already have contributed projects" do
-        let(:user) { create(:user, public_name: 'foo' )}
-        before do
-          allow(user).to receive(:contributed_projects).and_return([1])
-          put :update, id: user.id, locale: 'pt', user: { public_name: 'foo2' }
-        end
-
-        it "should not update public name" do
-          user.reload
-          expect(user.public_name).to eq('foo')
-        end
-      end
-
 
       context "when user not have published projects" do
         let(:user) { create(:user, public_name: 'foo')}

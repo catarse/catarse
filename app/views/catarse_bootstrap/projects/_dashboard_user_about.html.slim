@@ -1,6 +1,5 @@
-- parameters = { user_id: @project.user_id }.to_json
+- parameters = { user_id: @project.user_id, rails_errors: @project.errors.to_json }.to_json
 
 .w-row
   .w-col.w-col-10.w-col-push-1
-    = @project.display_errors(:user_about)
 #project-edit-user-about data-mithril='projectEditUserAbout' data-parameters=parameters

@@ -129,7 +129,8 @@ RSpec.describe Contribution, type: :model do
         address_state: (contribution.address_state || user.address_state),
         phone_number: (contribution.address_phone_number || user.phone_number),
         cpf: (user.cpf || contribution.payer_document),
-        name: (user.name || contribution.payer_name)
+        name: (user.name || contribution.payer_name),
+        public_name: (user.public_name || user.name || contribution.payer_name)
       }
     }
 

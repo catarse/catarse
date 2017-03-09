@@ -121,6 +121,7 @@ pt:
         uploaded_image: 'Imagem do projeto'
       user:
         public_name: 'Nome público'
+        birth_date: 'Data de nascimento'
         uploaded_image: 'Imagem do perfil'
         cover_image: 'Imagem de capa do perfil'
         address_city: Cidade
@@ -306,6 +307,30 @@ pt:
             headline:
               blank: "A frase de efeito do projeto não pode ficar em branco"
               too_long: "A frase de efeito é muito longa. Você pode usar um máximo de 140 caracteres."
+        bank_account:
+          attributes:
+            bank:
+              blank: "Banco do usuário não pode ficar em branco"
+              invalid: "Banco invalido"
+            agency:
+              blank: "Agência do usuário não pode ficar em branco"
+              invalid: "Agência inválida"
+              format: "Agência inválida"
+            agency_digit:
+              blank: "Dígito agência do usuário não pode ficar em branco"
+              invalid: "Dígito agência invalido"
+              format: "Dígito agência invalido"
+            account:
+              blank: "No. da conta não pode ficar em branco"
+              format: "No. da conta invalido"
+              invalid: "No. da conta invalido"
+            account_digit:
+              blank: "Dígito da conta não pode ficar em branco"
+              format: "Dígito da conta invalido"
+              invalid: "Dígito da conta invalido"
+            account_type:
+              blank: "Tipo de conta não pode ficar em branco"
+
         user:
           attributes:
             email:
@@ -325,10 +350,33 @@ pt:
               blank: "Nome do usuário não pode ficar em branco"
             public_name:
               blank: "Nome público não pode ficar em branco"
+            birth_date:
+              blank: "Data de nascimento não pode ficar em branco"
             about_html:
               blank: "Sobre você não pode ficar em branco"
             uploaded_image:
               blank: "Imagem do usuário não pode ficar em branco"
+            address_street:
+              blank: "Endereço não pode ficar em branco"
+            address_number:
+              blank: "Número no endereço não pode ficar em branco"
+            address_city:
+              blank: "Cidade não pode ficar em branco"
+            address_state:
+              blank: "Estado não pode ficar em branco"
+            address_neighbourhood:
+              blank: "Bairro não pode ficar em branco"
+            address_zip_code:
+              blank: "CEP não pode ficar em branco"
+            phone_number:
+              blank: "Telefone não pode ficar em branco"
+            country_id:
+              blank: "Pais não pode ficar em branco"
+            cpf:
+              blank: "CPF / CNPJ não pode ficar em branco"
+              invalid: "CPF / CNPJ inválido"
+
+
   project:
     update:
       success: As informações foram atualizadas
@@ -367,7 +415,8 @@ pt:
     confirmed_at: Data da confirmação do pagamento
     contribution_value: Valor do apoio
     service_fee: Taxa do Catarse
-    user_name: Nome do apoiador
+    user_name: Nome completo
+    public_name: Nome público
     user_email: Email perfil Catarse
     cpf: Cpf do apoiador
     gateway: Meio de pagamento
