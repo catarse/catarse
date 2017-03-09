@@ -1,6 +1,5 @@
-= javascript_include_tag "api/application"
-
+- parameters = { project_id: @project.id }.to_json
 .w-row
   .w-col.w-col-10.w-col-push-1
     = @project.display_errors(:reward)
-#project-edit-reward data-mithril='projectEditReward'
+#project-edit-reward data-mithril='projectEditReward' data-parameters=parameters
