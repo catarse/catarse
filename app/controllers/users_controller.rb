@@ -45,7 +45,7 @@ class UsersController < ApplicationController
 
   def billing
     authorize resource
-    redirect_to edit_user_path(current_user, anchor: 'billing')
+    redirect_to edit_user_path(current_user, anchor: 'settings')
   end
 
   def show
