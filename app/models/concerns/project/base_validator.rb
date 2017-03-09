@@ -21,9 +21,9 @@ module Project::BaseValidator
         unless: ->(project) { project.video_thumbnail.present? }
 
       wo.validate do
-        unless self.user.bank_account
-          self.errors.add(:bank_account, 'Invalid bank details')
-        end
+        # unless self.user.bank_account
+        #   self.errors.add(:bank_account, 'Invalid bank details')
+        # end
 
         [:uploaded_image, :about_html, :public_name].each do |attr|
           self.user.errors.add_on_blank(attr)
@@ -34,7 +34,7 @@ module Project::BaseValidator
         end
       end
 
-      wo.validates_presence_of :budget
+      # wo.validates_presence_of :budget
 
       wo.validates_numericality_of :online_days, less_than_or_equal_to: 365, greater_than_or_equal_to: 1, allow_nil: true
 
