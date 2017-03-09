@@ -136,9 +136,9 @@ class UsersController < ApplicationController
 
   def update_user
     params[:user][:confirmed_email_at] = DateTime.now if params[:user].try(:[], :confirmed_email_at).present?
-    if params[:user][:publishing_project].present?
-      @user.publishing_project = true
-    end
+    @user.publishing_project = params[:user][:publishing_project].presence
+    @user.publishing_user_about= params[:user][:publishing_user_about].presence
+    @user.publishing_user_settings= params[:user][:publishing_user_settings].presence
     email_update?
     drop_and_create_subscriptions
     update_reminders

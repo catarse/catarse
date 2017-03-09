@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
     :subscribed_to_project_posts, :subscribed_to_new_followers, :subscribed_to_friends_contributions, :whitelisted_at, :confirmed_email_at, :public_name,
     :birth_date, :account_type
 
-  attr_accessor :publishing_project
+  attr_accessor :publishing_project, :publishing_user_settings, :publishing_user_about
 
   mount_uploader :uploaded_image, UserUploader
   mount_uploader :cover_image, CoverUploader
