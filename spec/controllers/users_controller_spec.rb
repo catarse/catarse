@@ -49,7 +49,7 @@ RSpec.describe UsersController, type: :controller do
 
   describe "GET billing" do
     it_should_behave_like "redirect to edit_user_path" do
-      let(:action) { :billing }
+      let(:action) { :settings }
     end
   end
 
