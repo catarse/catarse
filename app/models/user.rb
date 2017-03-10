@@ -32,7 +32,6 @@ class User < ActiveRecord::Base
 
  validates :bank_account, :name, :cpf, :address_zip_code, :phone_number, :address_state, :country_id, :address_city, :address_street, :address_number, :address_neighbourhood, presence: true, if: -> (user) { user.published_projects.present? || user.publishing_project || user.publishing_user_settings }
  validates :birth_date,  presence: true, if: -> (user) { user.publishing_user_settings && user.account_type == 'pf' }
- validates :about_html, :public_name,  presence: true, if: -> (user) { user.published_projects.present? || user.publishing_project || user.publishing_user_about }
 
 
   validates_presence_of :email
