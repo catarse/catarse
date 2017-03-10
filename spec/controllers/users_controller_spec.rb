@@ -228,50 +228,6 @@ RSpec.describe UsersController, type: :controller do
       end
     end
 
-    context "public_name update" do
-      context "when admin changing public_name" do
-        let(:user) { create(:user, public_name: 'foo', admin: true )}
-        let(:published_project) { create(:project, state: 'online', user: user) }
-
-        before do
-          published_project
-          put :update, id: user.id, locale: 'pt', user: { public_name: 'foo2' }
-        end
-
-        it "should update public name" do
-          user.reload
-          expect(user.public_name).to eq('foo2')
-        end
-      end
-
-      context "when user already have published projects" do
-        let(:user) { create(:user, public_name: 'foo' )}
-        let(:published_project) { create(:project, state: 'online', user: user) }
-        before do
-          published_project
-          user.reload
-          put :update, id: user.id, locale: 'pt', user: { public_name: 'foo2' }
-        end
-
-        it "should not update public name" do
-          user.reload
-          expect(user.public_name).to eq('foo')
-        end
-      end
-
-      context "when user not have published projects" do
-        let(:user) { create(:user, public_name: 'foo')}
-        before do
-          put :update, id: user.id, locale: 'pt', user: { public_name: 'foo2' }
-        end
-
-        it "should update public name" do
-          user.reload
-          expect(user.public_name).to eq('foo2')
-        end
-      end
-    end
-
     context "with out password parameters" do
       let(:project){ create(:project, state: 'successful') }
       let(:category){ create(:category) }
