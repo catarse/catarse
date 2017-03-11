@@ -148,7 +148,7 @@ class User < ActiveRecord::Base
   end
 
   def owner_document_validation
-    if country_id == 36 and cpf.present? || (published_projects.present? || contributed_projects.present? || publishing_project)
+    if cpf.present? && (published_projects.present? || contributed_projects.present? || publishing_project)
       unless (account_type != 'pf' ? CNPJ.valid?(cpf) : CPF.valid?(cpf))
         errors.add(:cpf, :invalid)
       end
