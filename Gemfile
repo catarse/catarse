@@ -144,6 +144,7 @@ group :test, :development do
   gem 'rspec-collection_matchers'
   gem 'pry'
   gem 'jasmine-rails'
+  gem 'awesome_print'
 end
 
 group :test do
