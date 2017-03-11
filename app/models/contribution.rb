@@ -125,7 +125,7 @@ class Contribution < ActiveRecord::Base
 
   def update_user_billing_info
     user.update_attributes({
-      account_type: (user.cpf.present? ? user.account_type : (payer_document.try(:size) > 14 ? 'pj' : 'pf')),
+      account_type: (user.cpf.present? ? user.account_type : ((payer_document.try(:size) || 0 ) > 14 ? 'pj' : 'pf')),
       country_id: country_id.presence || user.country_id,
       address_street: address_street.presence || user.address_street,
       address_number: address_number.presence || user.address_number,
