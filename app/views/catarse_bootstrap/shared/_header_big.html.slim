@@ -7,7 +7,7 @@
   #discover-form-wrapper.w-form.w-hidden-small.w-hidden-tiny.header-search
     = form_tag explore_path, method: 'GET', class: 'discover-form', id: 'search-form' do
       = hidden_field_tag :ref, 'ctrse_header'
-      = text_field_tag :pg_search, nil, autocomplete: "off", value: params[:pg_search], class: "w-input text-field negative prefix search-input", placeholder: t('layouts.header.search')
+      = text_field_tag :pg_search, nil, autocomplete: "off", value: params[:pg_search], class: "w-input text-field prefix search-input", placeholder: t('layouts.header.search')
 
     .search-pre-result.w-hidden data-searchpath=auto_complete_projects_path
       .result
