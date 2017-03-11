@@ -3,7 +3,7 @@ footer.footer-simple
     .footer-signature-text.fontsize-smallest #{CatarseSettings[:company_name]} #{Time.current.strftime("%Y")}
     ul.w-list-unstyled.footer-simple-links.fontsize-smallest
       li.footer-simple-links-list
-        a.zendesk_widget.link-footer href="#{CatarseSettings[:zendesk_url]}/account/dropboxes/#{CatarseSettings[:zendesk_dropbox_id]}"  #{t('layouts.footer.links.contact')}
+        a.link-footer href="#{CatarseSettings[:contact_url]}"  #{t('layouts.footer.links.contact')}
       li.footer-simple-links-list
         a.link-footer href="#{press_url}"  #{t('layouts.footer.links.press')}
       li.footer-simple-links-list
