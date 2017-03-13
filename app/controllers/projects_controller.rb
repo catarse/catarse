@@ -100,7 +100,8 @@ class ProjectsController < ApplicationController
     #need to check this before setting new attributes
     should_validate = should_use_validate
 
-    resource.localized.attributes = permitted_params
+    resource.attributes = permitted_params
+    #resource.localized.attributes = permitted_params
     #can't use localized for fee
     if permitted_params[:service_fee]
       resource.service_fee = permitted_params[:service_fee]
