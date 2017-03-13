@@ -402,6 +402,7 @@ RSpec.describe User, type: :model do
       @p1 = create(:project)
       create(:confirmed_contribution, user: user, project: @p1)
       @u1 = create(:unsubscribe, project_id: @p1.id, user_id: user.id )
+      user.reload
     end
     it{ is_expected.to eq([@u1])}
   end
@@ -412,6 +413,7 @@ RSpec.describe User, type: :model do
       @p1 = create(:project)
       create(:confirmed_contribution, user: user, project: @p1)
       create(:confirmed_contribution, user: user, project: @p1)
+      user.reload
     end
     it{is_expected.to eq([@p1])}
   end
