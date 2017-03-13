@@ -1,6 +1,6 @@
 class UserPolicy < ApplicationPolicy
   def destroy?
-    done_by_owner_or_admin?
+    done_by_owner_or_admin? && record.published_projects.size <= 0
   end
 
   def credits?

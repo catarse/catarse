@@ -107,6 +107,19 @@ RSpec.describe UsersController, type: :controller do
   end
 
   describe "DELETE destroy" do
+    context "when user has published_projects" do
+      let(:project) { create(:project, state: 'online', user: user)}
+      before do
+        allow(controller).to receive(:current_user).and_call_original
+        delete :destroy, id: user.id, locale: :pt
+      end
+
+      it "should not set deactivated_at" do
+        expect(user.reload.deactivated_at).to be_nil
+      end
+
+      it { is_expected.not_to redirect_to user_path(user, anchor: 'settings')  }
+    end
     context "when user is beign deactivated by admin" do
       before do
         allow(controller).to receive(:current_user).and_call_original
