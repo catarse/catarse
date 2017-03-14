@@ -24,6 +24,7 @@ namespace :aws do
         )
         print "f-#{user.id}"
       else
+        user.remove_uploaded_image! rescue nil
         print "x-#{user.id}"
         count += 1
       end
