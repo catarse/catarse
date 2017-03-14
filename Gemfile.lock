@@ -77,6 +77,14 @@ GEM
       addressable (>= 2.3.1)
       extlib (>= 0.9.15)
       multi_json (>= 1.0.0)
+    aws-sdk (2.8.7)
+      aws-sdk-resources (= 2.8.7)
+    aws-sdk-core (2.8.7)
+      aws-sigv4 (~> 1.0)
+      jmespath (~> 1.0)
+    aws-sdk-resources (2.8.7)
+      aws-sdk-core (= 2.8.7)
+    aws-sigv4 (1.0.0)
     bcrypt (3.1.11)
     better_errors (2.1.1)
       coderay (>= 1.0.0)
@@ -261,6 +269,7 @@ GEM
       phantomjs (>= 1.9)
       railties (>= 3.2.0)
       sprockets-rails
+    jmespath (1.3.1)
     json (1.8.3)
     json_web_token (0.3.2)
       json (>= 1.8.3)
@@ -642,6 +651,7 @@ PLATFORMS
 DEPENDENCIES
   activerecord-nulldb-adapter
   auto_html (~> 1.6)
+  aws-sdk (~> 2)
   best_in_place!
   better_errors
   binding_of_caller

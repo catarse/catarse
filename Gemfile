@@ -93,6 +93,7 @@ gem 'rdstation-ruby-client'
 gem 'therubyracer', platform: :ruby
 gem 'responders', '~> 2.0'
 gem "cpf_cnpj"
+gem 'aws-sdk', '~> 2'
 
 # Translations
 gem 'http_accept_language'
