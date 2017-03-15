@@ -44,6 +44,15 @@ class FlexProjectMachine
             project.project_errors.create(error: message, to_state: to_state)
           end
         end
+
+        if %w(successful waiting_funds).include?(to_state) && project.pledged > 0 && !project.has_recent_invalid_finish_notification?
+          project.notify(
+            :invalid_finish,
+            project.user,
+            project, {
+              metadata: project.errors.to_json
+            })
+        end
       end
       valid
     end
