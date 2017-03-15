@@ -180,8 +180,8 @@ pt:
               blank: 'Nome do titular não pode ficar em branco'
               invalid: 'Informe um nome com no mínimo 5 e no máximo 30 letras'
             owner_document:
-              blank: 'do titular não pode ficar em branco'
-              invalid: 'inválido'
+              blank: 'CPF / CNPJ não pode ficar em branco'
+              invalid: 'CPF / CNPJ inválido'
             agency:
               blank: 'não pode ficar em branco'
               invalid: 'inválida'
@@ -309,6 +309,9 @@ pt:
               too_long: "A frase de efeito é muito longa. Você pode usar um máximo de 140 caracteres."
         bank_account:
           attributes:
+            bank_id:
+              blank: "Banco do usuário não pode ficar em branco"
+              invalid: "Banco invalido"
             bank:
               blank: "Banco do usuário não pode ficar em branco"
               invalid: "Banco invalido"
@@ -330,6 +333,12 @@ pt:
               invalid: "Dígito da conta invalido"
             account_type:
               blank: "Tipo de conta não pode ficar em branco"
+            owner_document:
+              blank: "CPF / CNPJ não pode ficar em branco"
+              invalid: "CPF / CNPJ inválido"
+            owner_name:
+              blank: "Nome do usuário não pode ficar em branco"
+              invalid: "Nome do usuário não pode ficar em branco"
 
         user:
           attributes:
