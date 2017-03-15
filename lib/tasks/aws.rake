@@ -15,15 +15,24 @@ namespace :aws do
     count = 0
     User.where("uploaded_image is not null").find_each do |user| 
       key = user.uploaded_image.path
+      fb_key = user.uploaded_image.versions[:thumb_facebook].try(:path)
+      av_key = user.uploaded_image.versions[:thumb_avatar].try(:path)
 
-      if new_bucket.object(key).exists?
+      if new_bucket.object(key).exists? && new_bucket.object(fb_key).exists? && new_bucket.object(av_key).exists?
         print ".-#{user.id}"
-      else if old_bucket.object(key).exists?
+      elsif old_bucket.object(key).exists?
         new_bucket.object(key).copy_from(
           old_bucket.object(key)
-        )
+        ) unless new_bucket.object(key).exists?
+        new_bucket.object(fb_key).copy_from(
+          old_bucket.object(fb_key)
+        ) if !new_bucket.object(fb_key).exists? && old_bucket.object(fb_key).exists?
+        new_bucket.object(av_key).copy_from(
+          old_bucket.object(av_key)
+        ) if !new_bucket.object(av_key).exists? && old_bucket.object(av_key).exists?
         print "f-#{user.id}"
       else
+        user.remove_uploaded_image! rescue nil
         print "x-#{user.id}"
         count += 1
       end
