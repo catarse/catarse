@@ -1,0 +1,35 @@
+- project = @notification.project
+- user = project.user
+- edit_url = edit_project_url(project.id, anchor: 'user_settings')
+
+| Oi #{user.decorator.display_name},
+br/
+br/
+| Detectamos que existem erro(s) ou ausência de preenchimento em algum(s) dos campos obrigatórios do seu projeto. Para que não isso não atrase <a href="http://suporte.catarse.me/hc/pt-br/articles/217916143-tudo-sobre-REPASSE#etapas" target="blank">os processos de finalização da campanha</a>, <strong>precisamos que você corrija esse(s) campo(s) o mais rápido possível.</strong>
+br/
+br/
+| O(s) erro(s) pode(m) ter acontecido <strong>por algum(s) dos motivos abaixo</strong>:
+br/
+br/
+| - Se algum dos dados financeiros (<i>Nome / CPF / data de nascimento ou Razão social / CNPJ,  Banco, Agência, conta ou dígitos</i>) estiver incorreto ou em branco. Você pode verificar e alterar essas informações na aba <strong>#{link_to 'Dados cadastrais', edit_url, target: 'blank'}</strong>
+br/
+br/
+| - Se algum dos dados de endereço (país, rua, número, bairro, cidade, estado, CEP ou telefone) estiver incorreto ou em branco. Você pode verificar e alterar essas informações na aba <strong>#{link_to 'Dados cadastrais', edit_url, target: 'blank'}</strong>.
+br/
+br/
+| - Se existir uma ou mais recompensas com o prazo de entrega menor que a data do fim do projeto. Para alterá-la, você precisará enviar uma novidade para os seus apoiadores avisando sobre a mudança da data de entrega e pedir a alteração deste campo para a equipe do Catarse, através do email #{mail_to CatarseSettings[:email_contact]}.
+br/
+br/
+p
+  center
+    = link_to('Corrigir dados', edit_url, style:'border: 1px solid #7cc142; border-radius: 5px; color: #fff; text-decoration: none; font-weight: bolder; text-align: center; padding: 19px 60px; background: #65bf1b; font-size: 15px;')
+br/
+br/
+| Se tiver qualquer dúvida ou problema na correção desses problemas, nos avise respondendo esta mensagem ou através do email: #{mail_to CatarseSettings[:email_contact]}.
+br/
+br/
+| Abraços,
+br/
+| Equipe do #{CatarseSettings[:company_name]}
+
+
