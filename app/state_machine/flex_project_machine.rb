@@ -146,14 +146,8 @@ class FlexProjectMachine
     transition_to(:online, to_state: 'online', skip_callbacks: true)
   end
 
-  #send notification to admin if there is a problem finishing the project
-  def send_errors_to_admin
-    self.object.notify_to_backoffice :project_finish_error if self.object.project_errors.where(to_state: FlexProjectMachine.need_expiration_states).present?
-    false #so finish returns false
-  end
-
   # put project in successful or waiting_funds state
   def finish
-    transition_to(:waiting_funds, to_state: 'waiting_funds') || transition_to(:failed, to_state: 'failed') || transition_to(:successful, to_state: 'successful') || send_errors_to_admin
+    transition_to(:waiting_funds, to_state: 'waiting_funds') || transition_to(:failed, to_state: 'failed') || transition_to(:successful, to_state: 'successful')
   end
 end
