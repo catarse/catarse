@@ -3972,7 +3972,7 @@ a:hover {
   margin-bottom: 20px;
 }
 
-.text-field-neutral {
+.text-field-disabled {
   margin-bottom: 20px;
   padding-left: 28px;
   border-style: dashed;
@@ -3986,16 +3986,16 @@ a:hover {
   cursor: default;
 }
 
-.text-field-neutral:hover {
+.text-field-disabled:hover {
   border-style: solid;
   border-color: hsla(217, 7%, 51%, .36);
 }
 
-.text-field-neutral:active {
+.text-field-disabled:active {
   border-color: hsla(217, 7%, 51%, .36);
 }
 
-.text-field-neutral:focus {
+.text-field-disabled:focus {
   border-color: hsla(217, 7%, 51%, .36);
 }
 
@@ -4023,6 +4023,19 @@ a:hover {
   border-color: #fff;
   background-color: #fff;
   color: #3f4752;
+}
+
+.text-field-light {
+  margin-bottom: 20px;
+  border: 1px solid #f1f4f4;
+  border-radius: 5px;
+  background-color: transparent;
+  -webkit-transition: all 500ms ease;
+  transition: all 500ms ease;
+}
+
+.text-field-light:hover {
+  border-color: #409bff;
 }
 
 html.w-mod-js *[data-ix="fade-in"] {
