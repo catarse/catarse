@@ -11,7 +11,7 @@ module Project::ErrorGroups
         announce_expiration: [:online_days],
         card: [:uploaded_image, :headline],
         video: [:video_url],
-        reward: [:'rewards.size', :'rewards.minimum_value', :'rewards.deliver_at'],
+        reward: [:'rewards.size', :'rewards.minimum_value', :'rewards.description', :'rewards.deliver_at'],
         user_about: [:'user.uploaded_image', :'user.public_name', :'user.about_html'],
         user_settings: user_settings_error_group
       }
