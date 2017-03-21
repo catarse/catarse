@@ -34,3 +34,4 @@ node_modules/
 public/sitemap.xml.gz
 config/secrets.yml
 dump.rdb
+.idea
