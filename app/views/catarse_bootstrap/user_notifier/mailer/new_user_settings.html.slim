@@ -1,0 +1,45 @@
+- user = @notification.user
+- settings_link = -> (text) { link_to text, edit_user_url(user, anchor: 'settings') }
+- ispf = user.account_type == 'pf'
+
+| Oi #{user.decorate.display_name},
+br/
+br/
+| A fim de melhorar a sua experiência no Catarse, estamos trabalhando para reorganizar suas informações dentro da plataforma e reforçar alguns processos de segurança. Dá só uma olhada no que mudou:
+br/
+br/
+|<strong>1. Organização dos dados dentro do dashboard de projetos</strong>
+br/
+br/
+| <strong>Perfil Público</strong> (antiga aba “<strong>Sobre você</strong>”)
+br/
+| Nessa aba estamos reunindo as informações que você disponibilizou para todos os usuários. Ali estão seu <strong>email de contato</strong>, seu <strong>nome público</strong> (ou nome artístico), <strong>imagem do perfil, perfis de redes sociais</strong> e <strong>outros links</strong> e informações que você decidiu compartilhar.
+br/
+br/
+| <strong>Dados cadastrais</strong> (antiga aba “<strong>Conta</strong>”)
+br/
+| Nessa aba reunimos os seus dados de cadastro. Eles indicam quem é pessoa responsável por <strong>esse perfil</strong>, pelo <strong>recebimento do dinheiro</strong>, pela <strong>execução do projeto</strong> e <strong>entrega de recompensas</strong> (caso aplicável). Além dessas informações, é aí que você poderá visualizar <strong>os dados bancários</strong> que você cadastrou e o seu <strong>endereço</strong>, para onde será emitida a Nota Fiscal.
+br/
+br/
+|<strong>2. Passamos a aceitar conta poupança</strong>
+br/
+br/
+| Passamos a aceitar além de conta corrente, a <strong>conta poupança</strong>! Caso você tenha uma conta poupança (que esteja no mesmo Nome completo/Razão Social) e prefira que a transferência seja feita para ela, você pode fazer essa alteração entrando na aba <strong>#{settings_link.call("Dados Cadastrais")}</strong>, dentro do dashboard do seu projeto.
+br/
+br/
+- if ispf
+  | <strong>3. [Ação necessária] Mais segurança</strong>
+  br/
+  br/
+  | Estamos implementando um novo protocolo de segurança e por isso, passamos a pedir também a sua <strong>data de nascimento</strong>. Como esse campo ainda não existia, <strong>precisamos que você preencha o quanto antes essa informação!</strong> Você pode fazer isso através da aba #{settings_link.call("Dados Cadastrais")}.
+  br/
+  br/
+| <strong>Importante:</strong> É possível que antes da reorganização de dados, existisse alguma diferença entre as informações bancárias (que você informou na antiga aba Conta) e as informações do seu perfil, uma vez que esses dados eram pedidos em momentos diferentes. Para esses casos, priorizamos os dados que foram preenchidos aba Conta, uma vez que eles indicam quem irá receber o dinheiro - caso o projeto seja financiado - e também quem é o responsável legal pela campanha. Se você notar alguma inconsistência nestes dados, por favor nos avise <strong>até o dia 17/03</strong>. Depois dessa data esses dados não poderão mais ser modificados
+br/
+br/
+| Caso tenha alguma dúvida ou problema, fique a vontade para nos avisar através do email: #{mail_to CatarseSettings[:email_contact]}
+br/
+br/
+| Abraços,
+br/
+| Equipe do #{CatarseSettings[:company_name]}

@@ -85,7 +85,7 @@ class ApplicationController < ActionController::Base
 
   def redirect_to_user_billing
     authorize current_user || User.new(), :edit?
-    redirect_to edit_user_path(current_user, anchor: 'billing')
+    redirect_to edit_user_path(current_user, anchor: 'settings')
   end
 
   def redirect_to_user_contributions

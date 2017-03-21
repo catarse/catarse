@@ -28,8 +28,8 @@ pt:
       goal: 'Financiamento'
       goal_subtitle: 'Preencha com carinho a seção abaixo, pois essas informações não poderão mais ser alteradas se o projeto for ao ar.'
       reports: 'Relatórios de apoios'
-      user_settings: 'Dados cadastrais e bancários'
-      user_settings_subtitle: 'Com os dados abaixo completos, seu projeto estará pronto para ir ao ar. Após concluir o preenchimento, clique em Salvar. Revise. Se tudo estiver ok, basta apertar o botão Publicar e começar sua campanha!'
+      user_settings: 'Dados cadastrais'
+      user_settings_subtitle: '<strong>Atenção ao preencher os campos abaixo!</strong> Eles devem identificar o responsável pelo projeto e pelo recebimento do dinheiro (<a href="http://suporte.catarse.me/hc/pt-br/articles/213142846-tudo-sobre-CRIAR-UMA-CAMPANHA-NO-CATARSE#responsabilidade-realizador" target="blank">saiba mais</a>). Após preencher esses dados, revise e clique em SALVAR. Quando estiver tudo pronto, basta apertar o botão CONTINUAR para seguir com a publicação da campanha.'
       user_about: "Fale mais sobre você!"
       user_about_subtitle: "Apoiadores querem conhecer melhor os realizadores de projetos. Links que ajudam a contar sua história são sempre bem vindos. "
       description: 'Conte a história do seu projeto!'
@@ -146,7 +146,7 @@ pt:
     dashboard_nav_links:
       flex:
         preview_tab: Preview
-        account_tab: Conta
+        account_tab: Dados cadastrais
         basics_tab: Básico
         goal_tab: Financiamento
         budget_tab: Orçamento
@@ -157,7 +157,7 @@ pt:
         about_you_tab: Perfil Público
       aon:
         preview_tab: Preview
-        account_tab: Conta
+        account_tab: Dados cadastrais
         basics_tab: Básico
         goal_tab: Financiamento
         budget_tab: Orçamento
@@ -298,7 +298,7 @@ pt:
       finished:
         icon: 'https://daks2k3a4ib2z.cloudfront.net/54b440b85608e3f4389db387/56c3511ee7d136a016bc34fa_succesful-icon.png'
         title: 'Boa sorte no seu projeto!'
-        text: 'Trabalhe sempre o relacionamento com seus apoiadores! Mantenha eles informados do andamento do seu projeto. Não deixe de olhar a seção de pós-projeto do Guia dos Realizadores!'
+        text: 'Trabalhe sempre o relacionamento com seus apoiadores! Mesmo depois do fim do projeto, você deve continuar usando a <a href="%{link_news}">aba Novidades</a> para avisá-los sobre andamento do projeto e entrega das recompensas.'
       confirm_account:
         title: 'Os seus dados estão corretos?'
         person:
@@ -321,10 +321,10 @@ pt:
             agency: 'Agência: '
             account: 'Conta: '
             account_type:
-              conta_corrente: 'Conta corrente'
-              conta_poupanca: 'Conta poupança'
-              conta_corrente_conjunta: 'Conta corrente conjunta'
-              conta_poupanca_conjunta: 'Conta poupança conjunta'
+              conta_corrente: 'Conta Corrente'
+              conta_poupanca: 'Conta Poupança'
+              conta_corrente_conjunta: 'Conta Corrente Conjunta'
+              conta_poupanca_conjunta: 'Conta Poupança Conjunta'
           address: 'Endereço: '
           neighbourhood: 'Bairro: '
           city: 'Cidade: '

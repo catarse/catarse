@@ -5,8 +5,8 @@
 
 center
   = image_tag follow.display_image, width: '50px', style: 'border-radius: 50px;'
-  h2 style="line-height: 5px"= follow.name
-  h3 style="font-weight: 500;"= "Has just supported a project #{project.category}"
+  h2 style="line-height: 5px"= follow.decorate.display_name
+  h3 style="font-weight: 500;"= "acabou de apoiar um projeto de #{project.category}"
 
 br/
 

@@ -8,8 +8,10 @@ class Reward < ActiveRecord::Base
 
   belongs_to :project
   has_many :payments, through: :contributions
+  has_many :shipping_fees
   has_many :contributions, dependent: :nullify
 
+  accepts_nested_attributes_for :shipping_fees, allow_destroy: true
   ranks :row_order, with_same: :project_id
 
   validates_presence_of :minimum_value, :description, :deliver_at #, :days_to_delivery

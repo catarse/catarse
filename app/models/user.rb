@@ -25,11 +25,15 @@ class User < ActiveRecord::Base
     :subscribed_to_project_posts, :subscribed_to_new_followers, :subscribed_to_friends_contributions, :whitelisted_at, :confirmed_email_at, :public_name,
     :birth_date, :account_type
 
+  attr_accessor :publishing_project, :publishing_user_settings, :publishing_user_about, :reseting_password
+
   mount_uploader :uploaded_image, UserUploader
   mount_uploader :cover_image, CoverUploader
 
+ validates :bank_account, :name, :cpf, :address_zip_code, :phone_number, :address_state, :country_id, :address_city, :address_street, :address_number, :address_neighbourhood, presence: true, if: -> (user) { !user.reseting_password && (user.published_projects.present? || user.publishing_project || user.publishing_user_settings) }
+ validates :birth_date,  presence: true, if: -> (user) { user.publishing_user_settings && user.account_type == 'pf' }
 
-  validates :about_html, presence: true, if: -> (user) { user.projects.where(state: %w(online failed waiting_funds successful)).present? }
+
   validates_presence_of :email
   validates_uniqueness_of :email, allow_blank: true, if: :email_changed?, message: I18n.t('activerecord.errors.models.user.attributes.email.taken')
   validates_uniqueness_of :permalink, allow_nil: true
@@ -42,6 +46,8 @@ class User < ActiveRecord::Base
   validates_length_of :password, within: Devise.password_length, allow_blank: true
   validates_length_of :public_name, { maximum: 70 }
   validates :account_type, inclusion: { in: %w{pf pj mei} }
+
+  validate :owner_document_validation
 
   belongs_to :country
   has_one :user_total
@@ -139,6 +145,14 @@ class User < ActiveRecord::Base
 
   def self.find_active!(id)
     self.active.where(id: id).first!
+  end
+
+  def owner_document_validation
+    if cpf.present? && (published_projects.present? || contributed_projects.present? || publishing_project)
+      unless (account_type != 'pf' ? CNPJ.valid?(cpf) : CPF.valid?(cpf))
+        errors.add(:cpf, :invalid)
+      end
+    end
   end
 
   def fb_parsed_link
@@ -365,5 +379,24 @@ class User < ActiveRecord::Base
 
   def inactive_message
     account_active? ? super : :locked
+  end
+
+  def self.reset_password_by_token(attributes={})
+    original_token       = attributes[:reset_password_token]
+    reset_password_token = Devise.token_generator.digest(self, :reset_password_token, original_token)
+
+    recoverable = find_or_initialize_with_error_by(:reset_password_token, reset_password_token)
+
+    recoverable.reseting_password = true
+    if recoverable.persisted?
+      if recoverable.reset_password_period_valid?
+        recoverable.reset_password(attributes[:password], attributes[:password_confirmation])
+      else
+        recoverable.errors.add(:reset_password_token, :expired)
+      end
+    end
+
+    recoverable.reset_password_token = original_token if recoverable.reset_password_token.present?
+    recoverable
   end
 end

@@ -6,13 +6,24 @@
 | Hi #{project.user.name},
 br/
 br/
-p You have created delivery rewards within 1 month, but you have not yet set a project end date. After the project closes, in 10 working days we will pass on the amount financed (discounting JVN fees). If this repassing impacts the production and delivery of the rewards, you need to finalize your campaign.
-p To ensure that you receive the funds raised, before the estimated date for the delivery of the rewards, now set the deadline.
+p Você criou recompensas com estimativa de entrega daqui a <strong>1 mês</strong>, porém ainda não definiu uma data de encerramento do seu projeto. 
+p Vale lembrar que assim o prazo chega ao fim, alguns processos acontecem antes de o dinheiro chegar na sua conta:
+p
+  center
+    | 1) Confirmação de boletos (aplicável apenas a campanhas com apoios pendentes) Duração: até 4 dias úteis
+    br/
+    | 2) Confirmação dos seus dados bancários na plataforma Duração: esse passo só depende de você
+    br/
+    | 3) Início do processo de repasse Duração: até 10 dias úteis <strong>após a confirmação dos dados.</strong>
+br/
+p É importante que você se certifique que a data de repasse do dinheiro não irá impactar a entrega das recompensas. Para te ajudar nesse cálculo, confira essa #{link_to "ferramenta", "http://fazum.catarse.me/calculadora-repasse", target: "__blank" }.
+p Caso o processo de repasse possa impactar a entrega de recompensas, é importante que você finalize a sua campanha o quanto antes. Você pode fazer isso diretamente na página do seu projeto ou através do botão abaixo:
+br/
 
 p
   center
     = link_to edit_project_url(project, anchor: 'announce_expiration'), target: '__blank' do
-      = image_tag "#{CatarseSettings[:base_url]}/assets/catarse_bootstrap/btn-definir-prazo.png"
+      = image_tag "#{CatarseSettings[:base_url]}/assets/catarse_bootstrap/btn-definir-prazo.png", height: '60px'
 br/
 br/
 | If you have any questions, reply to this message directly or contact us via email #{mail_to CatarseSettings[:email_projects]}.

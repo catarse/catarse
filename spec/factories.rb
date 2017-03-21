@@ -71,6 +71,7 @@ FactoryGirl.define do
     f.address_neighbourhood 'bar'
     f.address_zip_code '123344333'
     f.phone_number '1233443355'
+    f.birth_date '10/10/1989'
 
     trait :without_bank_data do
       bank_account { nil }

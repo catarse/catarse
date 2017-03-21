@@ -134,26 +134,24 @@ RSpec.describe UserDecorator do
 
   describe '#entity_type' do
     let(:acc_type) { 'pf'} 
-    let(:user) { create(:user, account_type: acc_type) }
+    let(:doc_number) { '071.223.556-67'}
+    let(:user) { create(:user, account_type: acc_type, cpf: doc_number) }
 
     subject { user.decorator.entity_type }
 
     context 'when user account type is pj' do
       let(:acc_type) { 'pj' }
+      let(:doc_number) { '13.525.060/0001-70'}
       it { is_expected.to eq('Pessoa Jurídica') }
     end
 
     context 'when user account type is mei' do
       let(:acc_type) { 'mei' }
+      let(:doc_number) { '13.525.060/0001-70'}
       it { is_expected.to eq('Pessoa Jurídica - MEI') }
     end
 
-    context 'when user account type is mei' do
-      let(:acc_type) { 'pf' }
-      it { is_expected.to eq('Pessoa Física') }
-    end
-
-    context 'when user account type is nil' do
+    context 'when user account type is pf' do
       it { is_expected.to eq('Pessoa Física') }
     end
   end

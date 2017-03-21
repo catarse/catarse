@@ -2,11 +2,12 @@
 - user = @notification.user
 - bank_account = user.bank_account 
 - metadata = @notification.metadata
+- balance_transfer = project.balance_transfer
 
 | Hi #{user.display_name},
 br/
 br/
-| Your bank details have been confirmed!
+| Seus dados bancários foram confirmados no dia #{balance_transfer.created_at.strftime('%d/%m/%Y')} e o processo de repasse já está em andamento!
 br/
 br/
 strong
@@ -15,7 +16,7 @@ br/
 br/
 | Project title: #{project.name}
 br/
-| Maximum date for transfer: #{metadata['transfer_limit_date']}
+| Data do repasse: #{metadata['transfer_limit_date']}
 br/
 | Total value of the transfer: #{number_to_currency(metadata['transfer_amount'].to_f, precision: 2)} (Rates already discounted)
 br/

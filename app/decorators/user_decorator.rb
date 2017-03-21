@@ -18,7 +18,7 @@ class UserDecorator < Draper::Decorator
   end
 
   def display_name
-    source.public_name || source.name.presence || I18n.t('user.no_name')
+    source.public_name.presence || source.name.presence || I18n.t('user.no_name')
   end
 
   def display_image
@@ -68,7 +68,7 @@ class UserDecorator < Draper::Decorator
 
   def display_bank_account_owner
     if source.bank_account.present?
-      "#{source.bank_account.owner_name} / CPF: #{source.bank_account.owner_document}"
+      "#{source.name} / CPF: #{source.cpf}"
     end
   end
 
