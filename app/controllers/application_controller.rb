@@ -25,6 +25,8 @@ class ApplicationController < ActionController::Base
 
   before_action :force_www
 
+  skip_before_action :verify_authenticity_token, only: [:subscribe_newsletter]
+
   def referral
     {
       ref: cookies[:referral_link],
@@ -106,7 +108,6 @@ class ApplicationController < ActionController::Base
     if email =~ EMAIL_REGEX
       list_id = CatarseSettings[:sendgrid_newsletter_list_id]
       client = sendgrid_api.client
-
       rr = client.contactdb.recipients.post(request_body: [{email: email}])
       recipient = JSON.parse(rr.body).try(:[], 'persisted_recipients').try(:first)
       client.contactdb.lists._(list_id).recipients.post(request_body: [recipient])

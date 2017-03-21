@@ -99,7 +99,7 @@ en:
           installments: 'Instalments'
           save_card: 'I want to save my credit card for future payments.'
           finish_payment: 'Finish payment'
-          terms_of_use_agreement: "By paying, you agree to JVN's <a class='alt-link' href='/pt/terms-of-use'>Terms of Use</a> and <a class='alt-link' href='/pt/privacy-policy'>Privacy Policy</a>."
+          terms_of_use_agreement: "By paying, you agree to JVN's <a class='alt-link' href='/en/terms-of-use'>Terms of Use</a> and <a class='alt-link' href='/en/privacy-policy'>Privacy Policy</a>."
         errors:
           global: 'Please, take a look at the following errors: '
           inline:
@@ -162,7 +162,7 @@ en:
           installments: 'Instalments'
           save_card: 'I want to save my credit card for future payments.'
           finish_payment: 'Finish payment'
-          terms_of_use_agreement: "By paying, you agree to JVN's <a class='alt-link' href='/pt/terms-of-use'>Terms of Use</a> and <a class='alt-link' href='/pt/privacy-policy'>Privacy Policy</a>."
+          terms_of_use_agreement: "By paying, you agree to JVN's <a class='alt-link' href='/en/terms-of-use'>Terms of Use</a> and <a class='alt-link' href='/en/privacy-policy'>Privacy Policy</a>."
         errors:
           global: 'Please, take a look at the following errors: '
           inline:
