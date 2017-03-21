@@ -171,10 +171,18 @@ pt:
         payment:
           duplicate: "O seu pagamento já está sendo processado"
         contribution: "Erro ao salvar apoio"
+        shipping_fee:
+          attributes:
+            destination:
+              blank: 'Estado do frete não pode ficar em branco'
+            value:
+              blank: 'Valor do frete não pode ficar em branco'
         reward:
           attributes:
             description:
               blank: 'Descrição não pode ficar em branco'
+            minimum_value:
+              blank: 'Valor mínimo não pode ficar em branco'
         bank_account:
           invalid: "Conta inválida"
           attributes:
