@@ -41,6 +41,11 @@ pt:
       minimum_value: "Valor:"
       deliver_at: "Previsão de entrega:"
       description: "Descrição:"
+      shipping_options:
+        free: 'Sem frete envolvido'
+        national: 'Frete Nacional'
+        international: 'Frete Nacional e Internacional'
+        presential: 'Retirada presencial'
       limit_reward: "Limitar recompensa"
       available: "Quantidade disponível"
       submit: "Salvar"
