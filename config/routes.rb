@@ -100,6 +100,7 @@ Catarse::Application.routes.draw do
     end
     get 'video', on: :collection
     member do
+      post :upload_image
       get 'insights'
       get 'posts'
       get 'contributions_report'
