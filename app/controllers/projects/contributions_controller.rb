@@ -50,6 +50,7 @@ class Projects::ContributionsController < ApplicationController
     @contribution.value = permitted_params[:value]
     @contribution.origin = Origin.process_hash(referral)
     @contribution.reward_id = (params[:contribution][:reward_id].to_i == 0 ? nil : params[:contribution][:reward_id])
+    @contribution.shipping_fee_id = (params[:contribution][:shipping_fee_id].to_i == 0 ? nil : params[:contribution][:shipping_fee_id])
     authorize @contribution
     @contribution.update_current_billing_info
     create! do |success,failure|
