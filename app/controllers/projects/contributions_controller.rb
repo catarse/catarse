@@ -105,10 +105,13 @@ class Projects::ContributionsController < ApplicationController
     project = Project.find params['project_id']
     authorize project, :update?
     contributions = project.contributions.where(id: params['contributions'])
-    contributions.update_all(delivery_status: params['delivery_status'])
     if params[:delivery_status] == 'delivered'
       contributions.update_all(reward_sent_at: Time.current)
+      contributions.where.not(delivery_status: 'delivered').each do |contribution|
+        Notification.create!(user_email: contribution.user.email, template_name: 'delivery_confirmed', metadata: {locale: "pt", message: params['message'], from_name: "#{project.user.display_name} via Catarse", from_email: project.user.email, associations: {project_id: project.id, contribution_id: contribution.id}}.to_json)
+      end
     end
+    contributions.update_all(delivery_status: params['delivery_status'])
 
     respond_to do |format|
       format.json { render :json => { :success => 'OK' } }
