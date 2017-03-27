@@ -295,7 +295,8 @@ pt:
       pending_transfer:
         icon: 'https://daks2k3a4ib2z.cloudfront.net/54b440b85608e3f4389db387/56c350c5e7d136a016bc34a4_transfer-ok-icon.png'
         title: 'Transferência bancária em andamento'
-        text: 'Até o dia %{transfer_limit_date}, R$%{total_amount} estarão em sua conta Banco %{bank_name}, Agência: %{agency}, Conta: %{account}. Fique atento no email %{user_email}, pois nossa equipe pode entrar em contato com você se ocorrer algum problema com seu banco!'
+        text: 'A transferência dos R$%{total_amount} será feita na conta do Banco %{bank_name}, Agência: %{agency}, Conta: %{account}. Caso haja qualquer problema, entraremos em contato com você pelo email %{user_email}.<br/><br/>
+<a href="http://fazum.catarse.me/calculadora-repasse" target="blank">Veja aqui</a> como calcular a data em que o dinheiro deverá entrar na sua conta!'
       error_account:
         icon: 'https://daks2k3a4ib2z.cloudfront.net/54b440b85608e3f4389db387/56c350fabfc50aef5095c67d_transfer-pending-icon.png'
         title: 'Transferência bancária pendente'
