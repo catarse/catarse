@@ -715,3 +715,21 @@ input#pg_search
 .label-hide
   label.field-label
     display: none
+
+.reward-description
+  max-height: 1000px
+  overflow: hidden
+  +transition(all 650ms)
+
+.reward-description.opened
+  max-height: 5em
+
+.reward-description.opened.extended
+  max-height: 1000px
+  margin-bottom: 10px
+
+.reward-description.opened.extended + a
+  background: none
+
+.fa.reversed
+  +rotate(180deg)
