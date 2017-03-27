@@ -94,6 +94,23 @@ class ProjectsController < ApplicationController
     authorize resource, :update?
   end
 
+  def upload_image
+    authorize resource, :update?
+    params[:project] = {
+      uploaded_image: params[:uploaded_image]
+    }
+
+    if resource.update permitted_params
+      resource.reload
+      render status: 200, json: {
+               uploaded_image: resource.uploaded_image.url(:project_thumb)
+             }
+    else
+      render status: 400, json: { errors: resource.errors.full_messages, errors_json: resource.errors.to_json }
+    end
+  end
+
+
   def update
     authorize resource
 
@@ -111,10 +128,17 @@ class ProjectsController < ApplicationController
 
     if resource.save(validate: should_validate)
       flash[:notice] = t('project.update.success')
+      return respond_to do |format|
+        format.json { render :json => { :success => 'OK' } }
+      end if request.format.json?
     else
       flash[:notice] = t('project.update.failed')
       build_dependencies
-      return render :edit
+
+      return respond_to do |format|
+        format.json { render status: 400, json: { errors: resource.errors.messages.map{ |e| e[1][0] }.uniq, errors_json: resource.errors.to_json} }
+        format.html { render :edit }
+      end
     end
 
     if params[:cancel_project] == 'true'
@@ -216,7 +240,7 @@ class ProjectsController < ApplicationController
   end
 
   def should_use_validate
-    resource.valid?
+    true #resource.valid?
   end
 
   def permitted_params

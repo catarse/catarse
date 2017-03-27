@@ -1,31 +1,5 @@
-= simple_form_for @project, html: { class: 'project-form w-form' } do |form|
-  .w-section.section
-    .w-container
-      .w-row
-        .w-col.w-col-10.w-col-push-1
-          .u-marginbottom-60.u-text-center
-            .w-inline-block.card.fontsize-small.u-radius
-              span.fa.fa-fw.fa-lightbulb-o
-              | Veja exemplos de 
-              a.alt-link href="http://crowdfunding.catarse.me/videomakers?ref=ctrse_dashboard_video" target="_blank"  vídeos de sucesso no Catarse!        
-          .w-form
-              = @project.display_errors(:video)
-              .w-row.u-marginbottom-30.card.card-terciary.medium
-                .w-col.w-col-6
-                  label.field-label.fontweight-semibold = t(".#{@project.mode}.video_url").html_safe
-                  label.field-label.fontsize-smallest.fontcolor-secondary = t(".#{@project.mode}.video_url_subtitle").html_safe
-                  - if @project.draft?
-                    label.field-label.fontsize-smallest.fontcolor-secondary.fontweight-bold = t(".#{@project.mode}.video_url_hint")
-                .w-col.w-col-6
-                  = form.input :video_url, as: :string,
-                    label: '',
-                    hint: false,
-                    input_html: { class: 'positive medium', required: false },
-                    validation_text: false
-  .w-section.save-draft-btn-section
-    .w-container
-      .w-row
-        .w-col.w-col-4.w-col-push-4
-          = hidden_field_tag 'anchor', 'video'
-          = form.hidden_field :project_id, value: @project.id
-          = form.button :submit, t('.submit'),  class:'btn btn-medium', id: 'project-save'
+- parameters = { project_id: @project.id, user_id: @project.user_id, rails_errors: @project.errors.to_json }.to_json
+
+.w-row
+  .w-col.w-col-10.w-col-push-1
+#project-edit-video data-mithril='projectEditVideo' data-parameters=parameters
