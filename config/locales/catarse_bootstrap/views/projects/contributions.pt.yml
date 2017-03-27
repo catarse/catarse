@@ -1,6 +1,11 @@
 pt:
   projects:
     contributions:
+      shipping_options:
+        national: "Em todo Brasil"
+        international: "Em todo o Mundo"
+        free: "Gratuíto"
+        presential: "Presencial"
       no_account_refund:
         fill_form_text: "Você possui %{amount} em reembolsos pendentes de projetos não financiados."
       no_estimate: "Não disponível"
