@@ -107,9 +107,7 @@ class Projects::ContributionsController < ApplicationController
     contributions = project.contributions.where(id: params['contributions'])
     if params[:delivery_status] == 'delivered'
       contributions.update_all(reward_sent_at: Time.current)
-      contributions.where.not(delivery_status: 'delivered').each do |contribution|
-        Notification.create!(user_email: contribution.user.email, template_name: 'delivery_confirmed', metadata: {locale: "pt", message: params['message'], from_name: "#{project.user.display_name} via Catarse", from_email: project.user.email, associations: {project_id: project.id, contribution_id: contribution.id}}.to_json)
-      end
+      send_delivered_notification contributions
     end
     contributions.update_all(delivery_status: params['delivery_status'])
 
@@ -125,6 +123,12 @@ class Projects::ContributionsController < ApplicationController
   end
 
   protected
+  def send_delivered_notification(contributions)
+    contributions.where.not(delivery_status: 'delivered').each do |contribution|
+      Notification.create!(user_email: contribution.user.email, template_name: 'delivery_confirmed', metadata: {locale: "pt", message: params['message'], from_name: "#{contribution.project.user.display_name} via Catarse", from_email: contribution.project.user.email, associations: {project_id: contribution.project.id, contribution_id: contribution.id}}.to_json)
+    end
+  end
+
   def load_rewards
     if @project.rewards.present?
       empty_reward = Reward.new(minimum_value: 0, description: t('projects.contributions.new.no_reward'))
