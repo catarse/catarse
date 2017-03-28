@@ -1149,6 +1149,15 @@ a:hover {
   background-color: #7cc142;
 }
 
+.bg-triangle-funnel {
+  height: 50px;
+  padding-top: 13px;
+  background-image: url("/assets/triangle-bg-2.svg");
+  background-position: 50% 50%;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
 .card-project-thumb {
   height: 170px;
   background-image: url('/assets/example-bg.png');
