@@ -8,6 +8,7 @@ class Contribution < ActiveRecord::Base
 
   belongs_to :project
   belongs_to :reward
+  belongs_to :shipping_fee
   belongs_to :user
   belongs_to :country
   belongs_to :donation
@@ -147,8 +148,9 @@ class Contribution < ActiveRecord::Base
       value: self.value,
       reward: {
         id: self.reward ? self.reward.id : nil,
-        description: self.reward ? self.reward.description : nil
-      }
+        description: self.reward ? self.reward.description : nil,
+      },
+      shipping_fee_id: self.shipping_fee_id ? self.shipping_fee_id : nil
     }
   end
 

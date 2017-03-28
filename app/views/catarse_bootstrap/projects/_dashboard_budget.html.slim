@@ -1,18 +1,5 @@
-= simple_form_for @project, html: { class: 'project-form w-form' } do |form|
-  .w-section.section
-    .w-container
-      .w-row
-        .w-col.w-col-10.w-col-push-1
-          .w-form
-            = @project.display_errors(:budget)
-            = form.input :budget, as: :text,
-              wrapper: :two_columns,
-              wrapper_class: 'w-row u-marginbottom-30 card card-terciary padding-redactor-description',
-              input_html: { class: 'redactor positive', required: false },
-              validation_text: false
-  .w-section.save-draft-btn-section
-    .w-container
-      .w-row
-        .w-col.w-col-4.w-col-push-4
-          = hidden_field_tag 'anchor', 'budget'
-          = form.button :submit, t('.submit'), class:'btn btn-medium', id: 'budget-save'
+- parameters = { project_id: @project.id, user_id: @project.user_id, rails_errors: @project.errors.to_json }.to_json
+
+.w-row
+  .w-col.w-col-10.w-col-push-1
+#project-edit-budget data-mithril='projectEditBudget' data-parameters=parameters
