@@ -6,6 +6,9 @@ module Project::BaseValidator
   included do
     ON_ONLINE_TO_END_STATES = %w(online successful waiting_funds failed).freeze
 
+    validates_numericality_of :online_days, less_than_or_equal_to: 365, greater_than_or_equal_to: 1, allow_nil: true, if: :is_flexible?
+    validates_numericality_of :online_days, less_than_or_equal_to: 60, greater_than_or_equal_to: 1, unless: :is_flexible?
+
     # Validation for online? only state
     with_options if: :online? do |wo|
       wo.validates_presence_of :city
@@ -42,7 +45,6 @@ module Project::BaseValidator
 
       wo.validates_presence_of :budget
 
-      wo.validates_numericality_of :online_days, less_than_or_equal_to: 365, greater_than_or_equal_to: 1, allow_nil: true
 
       wo.validate do
         if self.online_days.present? && self.rewards.any?(&:invalid_deliver_at?)

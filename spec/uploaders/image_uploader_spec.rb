@@ -18,7 +18,7 @@ RSpec.describe ImageUploader do
     subject{ @uploader.extension_white_list }
 
     context "when it's mounted as anything but :video_thumbnail" do
-      it{ is_expected.to eq(%w(jpg jpeg gif png)) }
+      it{ is_expected.to eq(%w(jpg jpeg png)) }
     end
 
     context "when it's mounted as :video_thumbnail" do
