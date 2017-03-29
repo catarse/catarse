@@ -2,8 +2,8 @@ pt:
   projects:
     contributions:
       shipping_options:
-        national: "Em todo Brasil"
-        international: "Em todo o Mundo"
+        national: "Somente para o Brasil"
+        international: "Para todo o Mundo"
         free: "Gratuíto"
         presential: "Presencial"
       no_account_refund:
