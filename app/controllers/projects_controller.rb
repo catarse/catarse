@@ -36,7 +36,7 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    @project = Project.new mode: 'flex'
+    @project = Project.new
     @project.attributes = permitted_params.merge(
       user: current_user,
       origin: Origin.process_hash(referral),
