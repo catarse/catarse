@@ -22,11 +22,9 @@ group by i.project_id
 WITH NO DATA;
 
 
-GRANT ALL ON TABLE "1".project_visitors_per_day TO catarse;
 GRANT SELECT ON TABLE "1".project_visitors_per_day TO anonymous;
 GRANT SELECT ON TABLE "1".project_visitors_per_day TO web_user;
 GRANT SELECT ON TABLE "1".project_visitors_per_day TO admin;
-GRANT SELECT ON TABLE "1".project_visitors_per_day TO metabase_catarse;
     SQL
   end
 
