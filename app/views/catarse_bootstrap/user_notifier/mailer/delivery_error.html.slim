@@ -1,0 +1,37 @@
+- contribution ||= @notification.contribution
+- detail = contribution.details.ordered.first
+p Olá, <strong>#{contribution.user.display_name}</strong>!
+
+-if @notification.metadata.try(:[], 'message').empty?
+  p #{contribution.project.user.display_name} acabou de marcar que aconteceu um  ERRO NO ENVIO de sua recompensa.
+-else
+  p #{contribution.project.user.display_name} acabou de marcar que aconteceu um  ERRO NO ENVIO de sua recompensa e lhe mandou a seguinte mensagem:
+  p #{@notification.metadata.try(:[], 'message')}
+
+p Para te lembrar sobre esse apoio, enviamos as informações abaixo:
+p
+  | Nome do apoiador: #{contribution.user.display_name}
+  br/
+  | CPF/CNPJ do apoiador: #{contribution.user.cpf}
+  br/
+  | Data da confirmação do apoio: #{detail.decorate.display_date(:paid_at)}
+  br/
+  | Valor da contribuição: #{number_to_currency contribution.value}
+  - if detail.installments > 1
+    br/
+    | Número de parcelas: #{detail.installments}
+    br/
+    | Valor da parcela: #{number_to_currency(detail.installment_value, precision: 2)}
+  br/
+  -if contribution.reward.present?
+    | Recompensa selecionada: #{contribution.reward.description}
+    br/
+    | Estimativa de entrega: #{contribution.reward.display_deliver_estimate}
+    br/
+  | ID do apoio: #{detail.gateway_id}
+
+p Entre em contato com o realizador agora mesmo respondendo diretamente esse email ou entrar em contato através do #{mail_to 'contato@catarse.me'}.
+
+p Um abraço,
+
+p Equipe Catarse 

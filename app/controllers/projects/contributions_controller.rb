@@ -107,7 +107,9 @@ class Projects::ContributionsController < ApplicationController
     contributions = project.contributions.where(id: params['contributions'])
     if params[:delivery_status] == 'delivered'
       contributions.update_all(reward_sent_at: Time.current)
-      send_delivered_notification contributions
+      send_delivery_notification contributions, 'delivered', 'delivery_confirmed'
+    elsif params[:delivery_status] == 'error'
+      send_delivery_notification contributions, 'error', 'delivery_error'
     end
     contributions.update_all(delivery_status: params['delivery_status'])
 
@@ -123,9 +125,9 @@ class Projects::ContributionsController < ApplicationController
   end
 
   protected
-  def send_delivered_notification(contributions)
-    contributions.where.not(delivery_status: 'delivered').each do |contribution|
-      Notification.create!(user_email: contribution.user.email, template_name: 'delivery_confirmed', metadata: {locale: "pt", message: params['message'], from_name: "#{contribution.project.user.display_name} via Catarse", from_email: contribution.project.user.email, associations: {project_id: contribution.project.id, contribution_id: contribution.id}}.to_json)
+  def send_delivery_notification(contributions, status, template_name)
+    contributions.where.not(delivery_status: status).each do |contribution|
+      Notification.create!(user_email: contribution.user.email, template_name: template_name, metadata: {locale: "pt", message: params['message'], from_name: "#{contribution.project.user.display_name} via Catarse", from_email: contribution.project.user.email, associations: {project_id: contribution.project.id, contribution_id: contribution.id}}.to_json)
     end
   end
 
