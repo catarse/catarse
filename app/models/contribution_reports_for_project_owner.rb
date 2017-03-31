@@ -11,7 +11,7 @@ class ContributionReportsForProjectOwner < ActiveRecord::Base
 
   def self.report
     report_sql = ""
-    I18n.t('contribution_report_to_project_owner').keys[0..-2].each{
+    I18n.t('contribution_report_to_project_owner').keys.each{
       |column| report_sql << "#{column} AS \"#{I18n.t("contribution_report_to_project_owner.#{column}")}\","
     }
 
