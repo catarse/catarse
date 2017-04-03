@@ -437,19 +437,21 @@ pt:
     created_at: Data de criação do apoio
     contribution_value: Valor do apoio
     service_fee: Taxa do Catarse
-    user_name: Nome completo
-    public_name: Nome público
     user_email: Email perfil Catarse
     cpf: Cpf do apoiador
+    user_name: Nome completo
+    public_name: Nome público
     gateway: Meio de pagamento
+    anonymous: Anônimo
     street: Rua
-    address_number: Número
     complement: Complemento
+    address_number: Número
     neighbourhood: Bairro
     city: Cidade
     address_state: Estado
     zip_code: CEP
-    anonymous: Anônimo
+    shipping_choice: 'Local de entrega'
+    shipping_option: 'Envio'
   user:
     no_name: Sem nome
     contributions_text:
