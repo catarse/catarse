@@ -15,6 +15,8 @@ module Project::BaseValidator
     # Start validations when project state
     # is included on ON_ONLINE_TO_END_STATE
     with_options if: -> (x) { ON_ONLINE_TO_END_STATES.include? x.state } do |wo| 
+      validates_numericality_of :online_days, less_than_or_equal_to: 365, greater_than_or_equal_to: 1, allow_nil: true, if: :is_flexible?
+      validates_numericality_of :online_days, less_than_or_equal_to: 60, greater_than_or_equal_to: 1, unless: :is_flexible?
       wo.validates_presence_of :about_html, :headline, :goal
 
       wo.validates_presence_of :uploaded_image,
@@ -42,7 +44,6 @@ module Project::BaseValidator
 
       # wo.validates_presence_of :budget
 
-      wo.validates_numericality_of :online_days, less_than_or_equal_to: 365, greater_than_or_equal_to: 1, allow_nil: true
 
       wo.validate do
         if self.online_days.present? && self.rewards.any?(&:invalid_deliver_at?)

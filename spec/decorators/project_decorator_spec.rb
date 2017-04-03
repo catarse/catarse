@@ -4,7 +4,7 @@ RSpec.describe ProjectDecorator do
   let(:project){ create(:project, about_html: 'Foo Bar http://www.foo.bar <javascript>xss()</javascript>"Click here":http://click.here') }
 
   describe "#time_to_go" do
-    let(:project){ create(:project, state: 'draft', online_days: nil) }
+    let(:project){ create(:project, state: 'draft', online_days: nil, mode: 'flex') }
     subject{ project.time_to_go }
     before do
       I18n.locale = :en

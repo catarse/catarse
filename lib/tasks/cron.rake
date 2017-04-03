@@ -63,6 +63,10 @@ namespace :cron do
       execute('REFRESH MATERIALIZED VIEW CONCURRENTLY "1".successful_projects') rescue nil
     ActiveRecord::Base.connection.
       execute('REFRESH MATERIALIZED VIEW CONCURRENTLY "1".finished_projects') rescue nil
+    ActiveRecord::Base.connection.
+      execute('REFRESH MATERIALIZED VIEW CONCURRENTLY public.moments_navigations') rescue nil
+    ActiveRecord::Base.connection.
+      execute('REFRESH MATERIALIZED VIEW CONCURRENTLY "1".project_visitors_per_day') rescue nil #depende do moments_navigations
   end
 
   desc 'Request refund for failed credit card refunds'

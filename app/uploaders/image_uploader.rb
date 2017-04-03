@@ -4,7 +4,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
   def extension_white_list
-    %w(jpg jpeg gif png) unless mounted_as == :video_thumbnail
+    %w(jpg jpeg png) unless mounted_as == :video_thumbnail
   end
 
   def self.choose_storage

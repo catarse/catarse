@@ -1,6 +1,5 @@
 class Notification < ActiveRecord::Base
   belongs_to :user
-  serialize :metadata, JSON
 
   def self.notify_once(template_name, user, params = {})
     #notify(template_name, user, source, params) if is_unique?(template_name, {self.user_association_name => user})
@@ -50,6 +49,11 @@ class Notification < ActiveRecord::Base
   def project
     project_id = metadata_associations.try(:[], 'project_id')
     @project ||= Project.find(project_id) if project_id
+  end
+
+  def contribution
+    contribution_id = metadata_associations.try(:[], 'contribution_id')
+    @contribution ||= Contribution.find(contribution_id) if contribution_id
   end
 
   private
