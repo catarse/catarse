@@ -226,7 +226,7 @@ class User < ActiveRecord::Base
   end
 
   def reactivate
-    self.update_attributes deactivated_at: nil, reactivate_token: nil
+    self.update_columns deactivated_at: nil, reactivate_token: nil
   end
 
   def deactivate
