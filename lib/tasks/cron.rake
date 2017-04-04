@@ -59,14 +59,27 @@ namespace :cron do
     Statistics.refresh_view
     UserTotal.refresh_view
     CategoryTotal.refresh_view
-    ActiveRecord::Base.connection.
-      execute('REFRESH MATERIALIZED VIEW CONCURRENTLY "1".successful_projects') rescue nil
-    ActiveRecord::Base.connection.
-      execute('REFRESH MATERIALIZED VIEW CONCURRENTLY "1".finished_projects') rescue nil
-    ActiveRecord::Base.connection.
-      execute('REFRESH MATERIALIZED VIEW CONCURRENTLY public.moments_navigations') rescue nil
-    ActiveRecord::Base.connection.
-      execute('REFRESH MATERIALIZED VIEW CONCURRENTLY "1".project_visitors_per_day') rescue nil #depende do moments_navigations
+
+    begin
+      ActiveRecord::Base.connection.
+        execute('REFRESH MATERIALIZED VIEW CONCURRENTLY "1".finished_projects')
+    rescue => e
+      Raven.capture_exception(e)
+    end
+
+    begin
+      ActiveRecord::Base.connection.
+        execute('REFRESH MATERIALIZED VIEW CONCURRENTLY public.moments_navigations')
+    rescue => e
+      Raven.capture_exception(e)
+    end
+
+    begin
+      ActiveRecord::Base.connection.
+        execute('REFRESH MATERIALIZED VIEW CONCURRENTLY "1".project_visitors_per_day')
+    rescue => e
+      Raven.capture_exception(e)
+    end
   end
 
   desc 'Request refund for failed credit card refunds'
