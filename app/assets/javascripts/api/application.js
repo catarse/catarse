@@ -119,6 +119,7 @@
           '/start': wrap(c.root.Start, {menuTransparency: true, footerBig: true}),
           '/projects/:project_id/contributions/new': wrap(c.root.ProjectsContribution),
           '/projects/:project_id/contributions/:contribution_id/edit': wrap(c.root.ProjectsPayment, {menuShort: true}),
+          '/pt/projects/:project_id/contributions/new': wrap(c.root.ProjectsContribution),
           '/pt/projects/:project_id/contributions/:contribution_id/edit': wrap(c.root.ProjectsPayment, {menuShort: true}),
           '/pt': wrap(c.root.ProjectsHome, {menuTransparency: true, footerBig: true}),
           '/pt/flexible_projects': wrap(c.root.ProjectsHome, {menuTransparency: true, footerBig: true}),
