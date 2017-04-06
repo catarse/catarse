@@ -65,7 +65,7 @@ CREATE OR REPLACE VIEW "1"."project_details" AS
     nullif(btrim(array_agg(distinct tags_lateral.tag_list)::text, '{}'), 'NULL') as tag_list,
     ct.id as city_id,
     (case when "current_user"() = 'admin'::name then admin_notes else null::text end) as admin_notes,
-    p.service_fee as service_fee
+    (case when "current_user"() = 'admin'::name then service_fee else null::numeric end) as service_fee
    FROM projects p
      JOIN categories c ON c.id = p.category_id
      JOIN users u ON u.id = p.user_id
