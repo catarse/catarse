@@ -36,6 +36,11 @@ class Contribution < ActiveRecord::Base
     puts "problem while using attr_protected in Contribution model:\n '#{e.message}'"
   end
 
+  #contributions that have not confirmed delivery after 14 days
+  def self.need_notify_about_delivery_confirmation
+    self.where("reward_received_at IS NULL AND reward_sent_at < current_timestamp - '14 days'::interval")
+  end
+
   # Return contributions that need notify pending refunds without bank accounts registered
   def self.need_notify_about_pending_refund
     self.joins("
