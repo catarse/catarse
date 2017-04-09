@@ -32,13 +32,13 @@ namespace :cron do
     views = %w(
       public.moments_project_start public.moments_project_start_inferuser
       stats.project_points
-      stats.aarrr_realizador_draft_projetos #A ordem aqui importa!
+      stats.aarrr_realizador_draft_projetos
       stats.aarrr_realizador_online_projetos
       stats.aarrr_realizador_draft_by_category
       stats.aarrr_realizador_draft
       stats.aarrr_realizador_online_by_category
       stats.aarrr_realizador_online
-      stats.growth_project_tags_weekly_contribs_mat #A ordem aqui importa!
+      stats.growth_project_tags_weekly_contribs_mat
       stats.growth_project_views
       stats.growth_contributions
       stats.growth_contributions_confirmed
@@ -47,7 +47,7 @@ namespace :cron do
       stats.financeiro_int_payments_2016_simplificado
       stats.financeiro_payment_refund_error_distribution
       stats.financeiro_status_pagarme_catarse
-      '"1".statistics' '"1".statistics_music' '"1".statistics_publicacoes')
+      "1".statistics "1".statistics_music "1".statistics_publicacoes)
     views.each do |v|
       refresh_views(v)
     end
@@ -59,14 +59,27 @@ namespace :cron do
     Statistics.refresh_view
     UserTotal.refresh_view
     CategoryTotal.refresh_view
-    ActiveRecord::Base.connection.
-      execute('REFRESH MATERIALIZED VIEW CONCURRENTLY "1".successful_projects') rescue nil
-    ActiveRecord::Base.connection.
-      execute('REFRESH MATERIALIZED VIEW CONCURRENTLY "1".finished_projects') rescue nil
-    ActiveRecord::Base.connection.
-      execute('REFRESH MATERIALIZED VIEW CONCURRENTLY public.moments_navigations') rescue nil
-    ActiveRecord::Base.connection.
-      execute('REFRESH MATERIALIZED VIEW CONCURRENTLY "1".project_visitors_per_day') rescue nil #depende do moments_navigations
+
+    begin
+      ActiveRecord::Base.connection.
+        execute('REFRESH MATERIALIZED VIEW CONCURRENTLY "1".finished_projects')
+    rescue => e
+      Raven.capture_exception(e)
+    end
+
+    begin
+      ActiveRecord::Base.connection.
+        execute('REFRESH MATERIALIZED VIEW CONCURRENTLY public.moments_navigations')
+    rescue => e
+      Raven.capture_exception(e)
+    end
+
+    begin
+      ActiveRecord::Base.connection.
+        execute('REFRESH MATERIALIZED VIEW CONCURRENTLY "1".project_visitors_per_day')
+    rescue => e
+      Raven.capture_exception(e)
+    end
   end
 
   desc 'Request refund for failed credit card refunds'
