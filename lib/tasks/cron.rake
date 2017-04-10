@@ -4,7 +4,7 @@ namespace :cron do
                 :refresh_materialized_views, :schedule_reminders, :sync_fb_friends]
 
   desc "Tasks that should run daily"
-  task daily: [ :notify_owners_of_deadline, :notify_project_owner_about_new_confirmed_contributions,
+  task daily: [:notify_delivery_confirmation, :notify_owners_of_deadline, :notify_project_owner_about_new_confirmed_contributions,
                :verify_pagarme_transactions, :notify_new_follows,
                :verify_pagarme_transfers, :verify_pagarme_user_transfers, :notify_pending_refunds, :request_direct_refund_for_failed_refund, :notify_expiring_rewards,
                :update_fb_users]
@@ -106,6 +106,13 @@ namespace :cron do
     Project.pending_balance_confirmation.each do |project| 
       Rails.logger.info "Notifying #{project.permalink} -> pending_balance_transfer_confirmation"
       project.notify(:pending_balance_transfer_confirmation, project.user)
+    end
+  end
+
+  desc 'Notify contributors about delivery confirmation'
+  task notify_delivery_confirmation: :environment do
+    Contribution.need_notify_about_delivery_confirmation.each do |contribution|
+     contribution.notify_to_contributor(:confirm_delivery)
     end
   end
 
