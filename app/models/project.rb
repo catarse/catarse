@@ -366,7 +366,8 @@ class Project < ActiveRecord::Base
       project_user_id: self.user_id,
       user: {
         id: self.user.id,
-        name: self.user.name
+        name: self.user.name,
+        public_name: self.user.public_name
       },
       permalink: self.permalink,
       total_contributions: self.total_contributions,
