@@ -1149,15 +1149,6 @@ a:hover {
   background-color: #7cc142;
 }
 
-.bg-triangle-funnel {
-  height: 50px;
-  padding-top: 13px;
-  background-image: url("/assets/triangle-bg-2.svg");
-  background-position: 50% 50%;
-  background-size: 100%;
-  background-repeat: no-repeat;
-}
-
 .card-project-thumb {
   height: 170px;
   background-image: url('/assets/example-bg.png');
@@ -4047,6 +4038,15 @@ a:hover {
   border-color: #409bff;
 }
 
+.bg-triangle-funnel {
+  height: 50px;
+  padding-top: 13px;
+  background-image: url("/assets/triangle-bg-2.svg");
+  background-position: 50% 50%;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
 html.w-mod-js *[data-ix="fade-in"] {
   opacity: 0;
 }
@@ -5050,7 +5050,7 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
     text-align: left;
   }
   .hero-full {
-    min-height: 450px;
+    min-height: 530px;
     padding-top: 143px;
     padding-bottom: 80px;
   }
