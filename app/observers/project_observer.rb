@@ -60,6 +60,7 @@ class ProjectObserver < ActiveRecord::Observer
   end
 
   def from_waiting_funds_to_failed(project)
+    request_refund_for_failed_project(project)
     from_online_to_failed(project)
   end
 
