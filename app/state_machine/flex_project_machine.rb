@@ -2,7 +2,7 @@ class FlexProjectMachine
   include Statesman::Machine
 
   def self.basic_validation_states
-    %i(online waiting_funds successful failed).freeze
+    %i(online successful).freeze
   end
 
   def self.need_expiration_states
@@ -45,7 +45,7 @@ class FlexProjectMachine
           end
         end
 
-        if %w(successful waiting_funds).include?(to_state) && project.pledged > 0 && !project.has_recent_invalid_finish_notification?
+        if to_state == 'successful' && project.pledged > 0 && !project.has_recent_invalid_finish_notification?
           project.notify(
             :invalid_finish,
             project.user,
