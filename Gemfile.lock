@@ -101,7 +101,7 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
-    catarse_pagarme (2.10.7)
+    catarse_pagarme (2.10.8)
       pagarme (= 2.1.4)
       rails (~> 4.0)
       sentry-raven
@@ -160,7 +160,7 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
-    domain_name (0.5.20170223)
+    domain_name (0.5.20170404)
       unf (>= 0.0.5, < 1.0.0)
     draper (2.1.0)
       actionpack (>= 3.0)
@@ -618,7 +618,7 @@ GEM
       execjs (>= 0.3.0, < 3)
     unf (0.1.4)
       unf_ext
-    unf_ext (0.0.7.2)
+    unf_ext (0.0.7.4)
     unicorn (5.1.0)
       kgio (~> 2.6)
       raindrops (~> 0.7)
@@ -658,7 +658,7 @@ DEPENDENCIES
   browser (= 1.0.1)
   capybara
   carrierwave!
-  catarse_pagarme (~> 2.10.7)
+  catarse_pagarme (~> 2.10.8)
   catarse_settings_db (>= 0.1.0)
   cocoon
   coffee-rails
