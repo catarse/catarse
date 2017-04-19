@@ -19,7 +19,8 @@ class ApplicationController < ActionController::Base
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
   helper_method :referral, :render_projects, :is_projects_home?,
-                :render_feeds, :can_display_pending_refund_alert?
+                :render_feeds, :can_display_pending_refund_alert?,
+                :public_settings
 
   before_filter :set_locale
 
@@ -114,6 +115,14 @@ class ApplicationController < ActionController::Base
     end
 
     redirect_to :back
+  end
+
+  def public_settings
+    {
+      base_url: CatarseSettings[:base_url],
+      support_forum: CatarseSettings[:support_forum],
+      blog_url: CatarseSettings[:blog_url]
+    }.to_json
   end
 
   def get_blog_posts

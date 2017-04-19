@@ -4,7 +4,7 @@ module Project::ErrorGroups
   included do
     def attr_error_groups
       {
-        basics: [:public_name, :permalink, :category_id, :city, :public_tags],
+        basics: [:public_name, :permalink, :category_id, :city, :public_tags, :name],
         goal: [:goal, :online_days],
         description: [:about_html],
         budget: [:budget],

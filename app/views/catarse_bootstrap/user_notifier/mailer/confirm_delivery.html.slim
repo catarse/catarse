@@ -1,0 +1,16 @@
+- contribution ||= @notification.contribution
+
+p Olá, <strong>#{contribution.user.display_name}</strong>!
+
+p Há duas semanas, #{contribution.project.user.display_name} mandou um comunicado dizendo que já havia enviado sua recompensa.
+
+p Caso você já tenha recebido, não deixe de marcar e controlar suas recompensas em #{link_to 'seu perfil', edit_user_url(contribution.user.id,  utm_campaign: 'reward_check', utm_medium: 'email', utm_source: 'notification', anchor: 'contributions'), target: '__blank'}.
+
+p É simples e rápido. Veja como no exemplo: 
+= image_tag 'http://g.recordit.co/Rrbbu9Cp9C.gif', width: 600 
+
+p Qualquer dúvida ou problema, entre em contato com #{contribution.project.user.display_name} através do email #{mail_to contribution.project.user.email}
+
+p Um abraço,
+
+p Catarse
