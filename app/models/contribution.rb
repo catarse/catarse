@@ -154,6 +154,7 @@ class Contribution < ActiveRecord::Base
       reward: {
         id: self.reward ? self.reward.id : nil,
         description: self.reward ? self.reward.description : nil,
+        title: self.reward ? self.reward.title : nil,
         shipping_options: self.reward ? self.reward.shipping_options : nil
       },
       shipping_fee_id: self.shipping_fee_id ? self.shipping_fee_id : nil
