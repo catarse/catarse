@@ -41,7 +41,6 @@ gem 'mixpanel_client'
 
 gem 'catarse_pagarme', '~> 2.10.7'
 #gem 'catarse_pagarme', path: '../catarse_pagarme'
-gem 'esewa'
 
 # Decorators
 gem 'draper'

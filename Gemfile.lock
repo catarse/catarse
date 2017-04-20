@@ -194,7 +194,6 @@ GEM
       activesupport (>= 3.0)
       request_store (~> 1.0)
     erubis (2.7.0)
-    esewa (0.1.0)
     ethon (0.10.1)
       ffi (>= 1.3.0)
     eventmachine (1.2.3)
@@ -707,7 +706,6 @@ DEPENDENCIES
   dbhero (>= 1.1.12)
   devise (= 3.5.10)
   draper
-  esewa
   factory_girl_rails
   fakeweb
   feedjira
