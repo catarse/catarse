@@ -15,6 +15,7 @@ namespace :cron do
       begin
         only_view = view_name.split('.').try(:[], 1)
         ActiveRecord::Base.connection.execute(%Q{
+          SET statement_timeout TO 0;
           DO language plpgsql $$
              BEGIN
               IF NOT EXISTS (SELECT true FROM pg_stat_activity WHERE pg_backend_pid() <> pid AND query ~* 'refresh materialized .*#{only_view}') THEN
