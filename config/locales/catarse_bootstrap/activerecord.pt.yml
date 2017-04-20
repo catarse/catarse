@@ -179,6 +179,8 @@ pt:
               blank: 'Valor do frete não pode ficar em branco'
         reward:
           attributes:
+            title:
+              blank: 'Título não pode ficar em branco'
             description:
               blank: 'Descrição não pode ficar em branco'
             minimum_value:
