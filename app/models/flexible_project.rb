@@ -33,10 +33,6 @@ class FlexibleProject < Project
     self.expires_at = (((self.state_was == 'online') ? Time.current : self.online_at.in_time_zone) + self.online_days.days).end_of_day
   end
 
-  def can_show_account_link?
-    true
-  end
-
   def max_deadline
     self.online_at + 365.days
   end
