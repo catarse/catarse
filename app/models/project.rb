@@ -19,8 +19,10 @@ class Project < ActiveRecord::Base
 
   mount_uploader :uploaded_image, ProjectUploader
 
-  delegate  :progress, :display_image, :display_expires_at, :time_to_go, :elapsed_time,
-            :display_pledged, :display_pledged_with_cents, :display_goal, :progress_bar, to: :decorator
+  delegate  :display_card_status, :display_status, :progress,
+            :display_image, :display_expires_at, :time_to_go, :elapsed_time,
+            :display_pledged, :display_pledged_with_cents, :display_goal, :progress_bar,
+            :status_flag, to: :decorator
 
   self.inheritance_column = 'mode'
   belongs_to :user

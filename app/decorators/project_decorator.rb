@@ -18,6 +18,18 @@ class ProjectDecorator < Draper::Decorator
     get_interval_from_db "remaining_time_json"
   end
 
+  def display_status
+    source.state
+  end
+
+  def display_card_status
+    if source.online?
+      (source.reached_goal? ? 'reached_goal' : 'not_reached_goal')
+    else
+      source.state
+    end
+  end
+
   def display_image(version = 'project_thumb' )
     use_uploaded_image(version) || use_video_tumbnail(version)
   end
@@ -48,6 +60,19 @@ class ProjectDecorator < Draper::Decorator
     content_tag(:div, nil, id: :progress, class: 'meter-fill', style: "width: #{width}%;")
   end
 
+  def status_flag
+    content_tag(:div, class: [:status_flag]) do
+      if source.successful?
+        image_tag "successful.#{I18n.locale}.png"
+      elsif source.failed?
+        image_tag "not_successful.#{I18n.locale}.png"
+      elsif source.waiting_funds?
+        image_tag "waiting_confirmation.#{I18n.locale}.png"
+      end
+    end
+
+  end
+
   private
 
   def get_interval_from_db(column)
@@ -72,4 +97,3 @@ class ProjectDecorator < Draper::Decorator
     nil
   end
 end
-
