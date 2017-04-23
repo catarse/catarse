@@ -8,9 +8,8 @@
 //= require i18n/translations
 //= require ../analytics
 //= require api/init
-//= require catarse.js/dist/catarse.js
+//= require jvnjs/dist/catarse.js
 //= require_self
-
 (function(m, c, Chart, analytics){
   //Chart.defaults.global.responsive = true;
   Chart.defaults.global.responsive = false;
