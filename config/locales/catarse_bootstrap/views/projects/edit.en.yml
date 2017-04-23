@@ -10,7 +10,7 @@ en:
       flex:
         budget_html: "Budget"
         video_html: "Video <span class='fontcolor-terciary'>(optional)</span>"
-        video_subtitle: 'Video is optional, but we highly recommend it! A good video makes the difference and can be largely responsible for the success of your project.'
+        video_subtitle: 'Video is optional, but we highly recommend it! A good video makes the difference and can be largely responsible for the success of your campaign.'
       aon:
         budget_html: "Budget"
         video_html: "Video <span class='fontcolor-terciary'>(optional)</span>"
@@ -60,6 +60,9 @@ en:
     dashboard_insights:
       finish_explanation: 'Your campaign is still open. In order to receive the funds in your bank account, you must set an end date for collection.'
       know_more: ' know more.'
+    dashboard_contribution_reports:
+      title: 'Support report'
+      subtitle_html: 'Track the support made for your campaign and manage the delivery of rewards.'
     dashboard_user_settings:
        natural: "Full name of holder"
        juridical: "Company Title"
