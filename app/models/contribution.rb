@@ -8,6 +8,7 @@ class Contribution < ActiveRecord::Base
 
   belongs_to :project
   belongs_to :reward
+  belongs_to :shipping_fee
   belongs_to :user
   belongs_to :country
   belongs_to :donation
@@ -33,6 +34,11 @@ class Contribution < ActiveRecord::Base
     attr_protected :state, :user_id
   rescue Exception => e
     puts "problem while using attr_protected in Contribution model:\n '#{e.message}'"
+  end
+
+  #contributions that have not confirmed delivery after 14 days
+  def self.need_notify_about_delivery_confirmation
+    self.where("reward_received_at IS NULL AND reward_sent_at < current_timestamp - '14 days'::interval")
   end
 
   # Return contributions that need notify pending refunds without bank accounts registered
@@ -125,6 +131,7 @@ class Contribution < ActiveRecord::Base
 
   def update_user_billing_info
     user.update_attributes({
+      account_type: (user.cpf.present? ? user.account_type : ((payer_document.try(:size) || 0 ) > 14 ? 'pj' : 'pf')),
       country_id: country_id.presence || user.country_id,
       address_street: address_street.presence || user.address_street,
       address_number: address_number.presence || user.address_number,
@@ -135,7 +142,8 @@ class Contribution < ActiveRecord::Base
       address_state: address_state.presence || user.address_state,
       phone_number: address_phone_number.presence || user.phone_number,
       cpf: user.cpf.presence || payer_document.presence,
-      name: user.name.presence || payer_name
+      name: user.name.presence || payer_name,
+      public_name: user.public_name.presence || user.name.presence || payer_name
     })
   end
 
@@ -145,8 +153,11 @@ class Contribution < ActiveRecord::Base
       value: self.value,
       reward: {
         id: self.reward ? self.reward.id : nil,
-        description: self.reward ? self.reward.description : nil
-      }
+        description: self.reward ? self.reward.description : nil,
+        title: self.reward ? self.reward.title : nil,
+        shipping_options: self.reward ? self.reward.shipping_options : nil
+      },
+      shipping_fee_id: self.shipping_fee_id ? self.shipping_fee_id : nil
     }
   end
 

@@ -157,6 +157,14 @@ en:
         payment:
           duplicate: "Your payment is already being processed"
         contribution: "Error saving contribution"
+        reward:
+          attributes:
+            title:
+              blank: 'Title can not be empty'
+            description:
+              blank: 'Description can not be empty'
+            minimum_value:
+              blank: 'Minimum value can not be empty'
         bank_account:
           invalid: "Invalid Account"
           attributes:

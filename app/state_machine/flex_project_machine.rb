@@ -2,7 +2,7 @@ class FlexProjectMachine
   include Statesman::Machine
 
   def self.basic_validation_states
-    %i(online waiting_funds successful failed).freeze
+    %i(online successful).freeze
   end
 
   def self.need_expiration_states
@@ -43,6 +43,15 @@ class FlexProjectMachine
           messages.each do |message|
             project.project_errors.create(error: message, to_state: to_state)
           end
+        end
+
+        if to_state == 'successful' && project.pledged > 0 && !project.has_recent_invalid_finish_notification?
+          project.notify(
+            :invalid_finish,
+            project.user,
+            project, {
+              metadata: project.errors.to_json
+            })
         end
       end
       valid
@@ -137,14 +146,8 @@ class FlexProjectMachine
     transition_to(:online, to_state: 'online', skip_callbacks: true)
   end
 
-  #send notification to admin if there is a problem finishing the project
-  def send_errors_to_admin
-    self.object.notify_to_backoffice :project_finish_error if self.object.project_errors.where(to_state: FlexProjectMachine.need_expiration_states).present?
-    false #so finish returns false
-  end
-
   # put project in successful or waiting_funds state
   def finish
-    transition_to(:waiting_funds, to_state: 'waiting_funds') || transition_to(:failed, to_state: 'failed') || transition_to(:successful, to_state: 'successful') || send_errors_to_admin
+    transition_to(:waiting_funds, to_state: 'waiting_funds') || transition_to(:failed, to_state: 'failed') || transition_to(:successful, to_state: 'successful')
   end
 end

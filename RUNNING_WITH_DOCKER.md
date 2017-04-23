@@ -110,7 +110,8 @@ In order to run the tests you have to first setup the test database, and then ex
 Create and migrate the database:
 
 ```
-% rake db:create rake db:migrate
+% rake db:create
+% rake db:migrate
 ```
 
 Run the tests:

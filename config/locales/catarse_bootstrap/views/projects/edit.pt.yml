@@ -28,8 +28,8 @@ pt:
       goal: 'Financiamento'
       goal_subtitle: 'Preencha com carinho a seção abaixo, pois essas informações não poderão mais ser alteradas se o projeto for ao ar.'
       reports: 'Relatórios de apoios'
-      user_settings: 'Dados cadastrais e bancários'
-      user_settings_subtitle: 'Com os dados abaixo completos, seu projeto estará pronto para ir ao ar. Após concluir o preenchimento, clique em Salvar. Revise. Se tudo estiver ok, basta apertar o botão Publicar e começar sua campanha!'
+      user_settings: 'Dados cadastrais'
+      user_settings_subtitle: '<strong>Atenção ao preencher os campos abaixo!</strong> Eles devem identificar o responsável pelo projeto e pelo recebimento do dinheiro (<a href="http://suporte.catarse.me/hc/pt-br/articles/213142846-tudo-sobre-CRIAR-UMA-CAMPANHA-NO-CATARSE#responsabilidade-realizador" target="blank">saiba mais</a>). Após preencher esses dados, revise e clique em SALVAR. Quando estiver tudo pronto, basta apertar o botão CONTINUAR para seguir com a publicação da campanha.'
       user_about: "Fale mais sobre você!"
       user_about_subtitle: "Apoiadores querem conhecer melhor os realizadores de projetos. Links que ajudam a contar sua história são sempre bem vindos. "
       description: 'Conte a história do seu projeto!'
@@ -41,6 +41,11 @@ pt:
       minimum_value: "Valor:"
       deliver_at: "Previsão de entrega:"
       description: "Descrição:"
+      shipping_options:
+        free: 'Sem frete envolvido'
+        national: 'Frete Nacional'
+        international: 'Frete Nacional e Internacional'
+        presential: 'Retirada presencial'
       limit_reward: "Limitar recompensa"
       available: "Quantidade disponível"
       submit: "Salvar"
@@ -60,6 +65,9 @@ pt:
     dashboard_insights:
       finish_explanation: 'Sua campanha ainda está com o prazo em aberto. Para receber os recursos em sua conta bancária, é preciso definir uma data final de arrecadação.'
       know_more: ' Saiba mais.'
+    dashboard_contribution_reports:
+      title: 'Relatório de apoios'
+      subtitle_html: 'Acompanhe os apoios feitos para sua campanha e gerencie a entrega de recompensas.'
     dashboard_user_settings:
        natural: "Nome completo do titular"
        juridical: "Razão Social do titular"
@@ -146,7 +154,7 @@ pt:
     dashboard_nav_links:
       flex:
         preview_tab: Preview
-        account_tab: Conta
+        account_tab: Dados cadastrais
         basics_tab: Básico
         goal_tab: Financiamento
         budget_tab: Orçamento
@@ -157,7 +165,7 @@ pt:
         about_you_tab: Perfil Público
       aon:
         preview_tab: Preview
-        account_tab: Conta
+        account_tab: Dados cadastrais
         basics_tab: Básico
         goal_tab: Financiamento
         budget_tab: Orçamento
@@ -188,6 +196,28 @@ pt:
       email_label: Email de Cadastro
       email_hint: Email para você se logar no Catarse e se comunicar com a nossa equipe e com os seus apoiadores
     dashboard_goal:
+      want_more: 'Quer entender mais?'
+      online_days_closed: 'Prazo definido'
+      online_days_closed_hint: 'Seu projeto já entra no ar com o tempo de captação já definido. Você poderá escolher um prazo de 1 a 365 dias. Após publicar o projeto, você não poderá alterar esse prazo.'
+      online_days_open: 'Prazo em aberto'
+      online_days_open_hint: 'Seu projeto entra no ar sem um prazo definido. Você terá a opção de definir uma data de término do projeto (mínimo de 1 dia) a qualquer momento ​dentro de um período de 12 meses​ após a publicação.'
+      online_days_label: 'Tempo de arrecadação'
+      online_days_flex_hint: 'É o período em que o seu projeto estará no ar, aberto a captação de recursos. No Flex, você escolhe se publica seu projeto com prazo já definido ou com prazo em aberto. <a class="alt-link" href=" https://catarse.attach.io/HJGoCzmJl" target="_blank">Conheça nossas dicas para definir seu prazo.</a>'
+      online_days_aon_hint: 'É o período em que o seu projeto estará no ar, aberto a captação de recursos. No Tudo ou Nada, você pode escolher entre 1 e 60 dias.&nbsp;<a class="alt-link" href=" https://catarse.attach.io/HJGoCzmJl" target="_blank">Conheça nossas dicas para definir seu prazo.</a>'
+      goal_label: 'Meta de arrecadação'
+      goal_hint: 'Quanto você precisa arrecadar? Defina uma meta coerente com o que seu projeto propõe. Não esqueça de incluir as taxas administrativas em seu cálculo.'
+      goal_taxes_link: 'Entenda as taxas do Catarse'
+      goal_taxes_label: 'Taxas do Catarse'
+      goal_taxes_watch_video_html: '<a class="fontsize-small" href="http://fazum.catarse.me/agradecimento-video-tutorial-orcamento-basico" target="_blank">Assista nossa <span class="fontweight-bold">vídeo-aula Orçamento Básico</span></a>'
+      goal_aon_taxes_hint: 'É o valor que será descontado da sua arrecadação ao final da campanha, referente aos serviços do Catarse e do meio de pagamento. Se o seu projeto atingir ou ultrapassar a meta, serão cobrados 13% do total arrecadado ao final da campanha. Caso o seu projeto não atinja a meta, todo o dinheiro apoiado será devolvido aos seus apoiadores após o término da campanha, sem custo nenhum a você. É Tudo ou Nada!
+'
+      goal_flex_taxes_hint: 'É o valor que será descontado da sua arrecadação ao final da campanha, referente aos serviços do Catarse e do meio de pagamento. Serão cobrados 13% do total arrecadado ao final da campanha, independente se a meta for atingida ou não.'
+      mode_label: 'Tipo de financiamento'
+      mode_hint: 'Escolha o modelo de sua campanha de financiamento coletivo. Após iniciar a sua campanha, não será permitido trocar.'
+      mode_diff_ebook: '<a class="fontsize-small" href="https://catarse.attach.io/BkLCRfXyg" target="_blank">Baixe nosso <span class="fontweight-bold">ebook Flex vs Tudo ou Nada</span></a>'
+      mode_diff_link: 'Veja a diferença entre os modelos'
+      flex_diff_html: '<span class="fontweight-semibold">Compromisso&nbsp;<br></span>Você se compromete a executar o projeto e entregar as recompensas (caso tenha optado por ofertá-las), <span class="fontweight-semibold">independente do valor arrecadado</span><br><br><span class="fontweight-semibold">Como funciona?</span><br>Você recebe, ao final do prazo, tudo o que tiver arrecadado (descontando apenas a taxa do Catarse), independente de alcançar a meta de arrecadação.<br><br><span class="fontweight-semibold">Prazo máximo do projeto no ar: </span>12 meses<br><br><span class="fontweight-semibold">Taxas: </span>13% sobre o total arrecadado'
+      aon_diff_html: '<span class="fontweight-semibold">Compromisso&nbsp;</span><br>Você se compromete a executar o projeto e entregar as recompensas apenas <span class="fontweight-semibold">se a arrecadação atingir ou superar a meta.</span><br><br><span class="fontweight-semibold">Como funciona?</span><br>Você só recebe o valor arrecadado se, ao final do prazo,&nbsp;tiver alcançado a meta de arrecadação . Caso contrário, todos seus apoiadores recebem seus pagamentos de volta.<br><br><span class="fontweight-semibold">Prazo máximo do projeto no ar: </span>60 dias&nbsp;&nbsp;<br><br><span class="fontweight-semibold">Taxas: </span>13% sobre o total arrecadado'
       submit: "Salvar"
       kind_label: "Tipo de financiamento"
       kind_link: "Se você quiser saber mais, clique aqui"
@@ -195,6 +225,9 @@ pt:
         kind_text: "Você está participando do período de testes do modelo flexível. Sua participação é essencial para entendermos como podemos expandir esse modelo para todos os usuários. %{link}"
     dashboard_description:
       submit: "Salvar"
+      description_label: 'Descrição do projeto'
+      description_hint: 'Fale com paixão e clareza sobre o que será realizado. Esclareça possíveis dúvidas sobre como o dinheiro será utilizado, quem está por trás do projeto, como e quando o projeto será entregue. Transparência atrai mais apoiadores. Lembre-se: seu projeto será acessado por pessoas comuns que decidirão se querem ou não apoiar seu projeto. Capriche!'
+      description_alert: '<span class="fa fa-fw fa-lightbulb-o"></span> Saiba como <a class="fa alt-link" href="https://catarse.attach.io/BJmQVOiR" target="blank"> criar uma descrição cativante!</a>'
     dashboard_reward:
       submit: "Salvar"
       add_reward: "Adicionar recompensa"
@@ -219,11 +252,20 @@ pt:
     dashboard_budget:
       submit: Salvar
       budget_label: "Orçamento do projeto"
+      budget_alert: '<span class="fa fa-fw fa-lightbulb-o"></span>Veja dicas de como<a class="alt-link" href="http://fazum.catarse.me/agradecimento-video-tutorial-orcamento-basico?ref=ctrse_dashboard" target="_blank"> determinar a meta de seu projeto!</a>
+'
     dashboard_card:
       submit: Salvar
       card_label: "Card do projeto"
+      headline_label: 'Frase de efeito'
+      headline_label_hint: 'Frase no card do projeto para chamar apoiadores. Deve ter no máximo 100 caracteres e resumir bem o projeto.'
+      uploaded_image_label: 'Imagem do projeto'
+      uploaded_image_hint: 'Essa imagem será utilizada como a miniatura de seu projeto (PNG, JPG tamanho 600 x 340)'
     dashboard_video:
       submit: Salvar
+      video_label: 'Vídeo do projeto'
+      video_hint: 'Link do Vimeo ou Youtube. Esse é o vídeo principal da sua campanha.'
+      video_alert: '<span class="fa fa-fw fa-lightbulb-o"></span>Veja exemplos de <a class="alt-link" href="http://crowdfunding.catarse.me/videomakers?ref=ctrse_dashboard_video" target="_blank"> vídeos de sucesso no Catarse!</a>'
       aon:
         card_label: "Vídeo"
         video_url: "Vídeo do projeto"
@@ -235,15 +277,26 @@ pt:
         video_url_hint: ""
         video_url_subtitle: "Link do Vimeo ou Youtube. Esse é o vídeo principal da sua campanha. "
     dashboard_basics:
+      permalink: 'Link para o seu projeto no Catarse'
+      permalink_hint: 'Você pode editá-lo até o projeto ir ao ar. Prefira algo simples, direto e que identifique bem seu projeto. Tente não usar hífen, underline etc.'
+      tags: 'Tags'
+      tags_hint: 'Liste até 5 palavras-chaves relacionadas a sua campanha e facilite a descoberta pelos apoiadores.'
+      admin_tags: 'Admin Tags'
+      admin_tags_hint: 'Informe tags separadas por vírgula'
+      user_id: 'Id do usuário'
+      tracker_snippet_html: 'Tracker snippet html'
       city: 'Local do projeto'
+      city_hint: 'Onde o seu projeto será realizado? Caso ele aconteça em mais de um lugar, uma dica é colocar a cidade onde sua rede de potenciais apoiadores é maior.'
       online_date: 'Data de entrada no ar'
       user_id: 'Id do usuário'
       service_fee: 'Taxa do catarse'
       name: 'Nome do projeto'
+      name_hint: 'Dê um nome que as pessoas se lembrem facilmente. Não ultrapasse 50 caracteres.'
       name_label: 'Quanto mais direto melhor. Não ultrapasse 50 caracteres'
       url: 'URL do projeto'
       url_label: 'É o endereço do seu projeto, deve ser fácil de memorizar. Evite underline, hífen e símbolos'
       category: 'Categoria'
+      category_hint: 'Escolha a mais adequada ao seu projeto.'
       category_label: 'Explore e se inspire em outros projetos da mesma categoria que o seu.'
       online_days: 'Prazo para arrecadação'
       online_days_label: 'Você pode escolher entre 1 e 60 dias para a sua campanha. Confira o guia dos realizadores para dicas sobre prazos.'
@@ -290,7 +343,8 @@ pt:
       pending_transfer:
         icon: 'https://daks2k3a4ib2z.cloudfront.net/54b440b85608e3f4389db387/56c350c5e7d136a016bc34a4_transfer-ok-icon.png'
         title: 'Transferência bancária em andamento'
-        text: 'Até o dia %{transfer_limit_date}, R$%{total_amount} estarão em sua conta Banco %{bank_name}, Agência: %{agency}, Conta: %{account}. Fique atento no email %{user_email}, pois nossa equipe pode entrar em contato com você se ocorrer algum problema com seu banco!'
+        text: 'A transferência dos R$%{total_amount} será feita na conta do Banco %{bank_name}, Agência: %{agency}, Conta: %{account}. Caso haja qualquer problema, entraremos em contato com você pelo email %{user_email}.<br/><br/>
+<a href="http://fazum.catarse.me/calculadora-repasse" target="blank">Veja aqui</a> como calcular a data em que o dinheiro deverá entrar na sua conta!'
       error_account:
         icon: 'https://daks2k3a4ib2z.cloudfront.net/54b440b85608e3f4389db387/56c350fabfc50aef5095c67d_transfer-pending-icon.png'
         title: 'Transferência bancária pendente'
@@ -298,7 +352,7 @@ pt:
       finished:
         icon: 'https://daks2k3a4ib2z.cloudfront.net/54b440b85608e3f4389db387/56c3511ee7d136a016bc34fa_succesful-icon.png'
         title: 'Boa sorte no seu projeto!'
-        text: 'Trabalhe sempre o relacionamento com seus apoiadores! Mantenha eles informados do andamento do seu projeto. Não deixe de olhar a seção de pós-projeto do Guia dos Realizadores!'
+        text: 'Trabalhe sempre o relacionamento com seus apoiadores! Mesmo depois do fim do projeto, você deve continuar usando a <a href="%{link_news}">aba Novidades</a> para avisá-los sobre andamento do projeto e entrega das recompensas.'
       confirm_account:
         title: 'Os seus dados estão corretos?'
         person:
@@ -321,10 +375,10 @@ pt:
             agency: 'Agência: '
             account: 'Conta: '
             account_type:
-              conta_corrente: 'Conta corrente'
-              conta_poupanca: 'Conta poupança'
-              conta_corrente_conjunta: 'Conta corrente conjunta'
-              conta_poupanca_conjunta: 'Conta poupança conjunta'
+              conta_corrente: 'Conta Corrente'
+              conta_poupanca: 'Conta Poupança'
+              conta_corrente_conjunta: 'Conta Corrente Conjunta'
+              conta_poupanca_conjunta: 'Conta Poupança Conjunta'
           address: 'Endereço: '
           neighbourhood: 'Bairro: '
           city: 'Cidade: '

@@ -8,9 +8,7 @@ p
   br/
   | Date of confirmation of support: #{detail.decorate.display_date(:paid_at)}
   br/
-  | Payment option: #{detail.gateway}
-  br/
-  | Value of contribution: #{number_to_currency contribution.value}
+  | Valor da contribuição: #{number_to_currency contribution.value}
   - if detail.installments > 1
     br/
     | Number of installments: #{detail.installments}

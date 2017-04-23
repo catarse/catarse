@@ -45,7 +45,7 @@ class UsersController < ApplicationController
 
   def billing
     authorize resource
-    redirect_to edit_user_path(current_user, anchor: 'billing')
+    redirect_to edit_user_path(current_user, anchor: 'settings')
   end
 
   def show
@@ -126,7 +126,7 @@ class UsersController < ApplicationController
       end
     else
       respond_to do |format|
-        format.json { render status: 400, :json => { :errors => @user.errors.full_messages } }
+        format.json { render status: 400, json: { errors: @user.errors.messages.map{ |e| e[1][0] }.uniq, errors_json: @user.errors.to_json} }
         format.html { redirect_to edit_user_path(@user, anchor: params[:anchor])}
       end
     end
@@ -136,6 +136,9 @@ class UsersController < ApplicationController
 
   def update_user
     params[:user][:confirmed_email_at] = DateTime.now if params[:user].try(:[], :confirmed_email_at).present?
+    @user.publishing_project = params[:user][:publishing_project].presence
+    @user.publishing_user_about= params[:user][:publishing_user_about].presence
+    @user.publishing_user_settings= params[:user][:publishing_user_settings].presence
     email_update?
     drop_and_create_subscriptions
     update_reminders

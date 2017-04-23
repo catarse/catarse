@@ -1,6 +1,6 @@
 CatarsePagarme.configure do |config|
-  config.api_key = CatarseSettings.get_without_cache(:pagarme_api_key)
-  config.ecr_key = CatarseSettings.get_without_cache(:pagarme_encryption_key)
+  config.api_key = CatarseSettings.get_without_cache(Rails.env.production? ? :pagarme_api_key : :pagarme_test_api_key)
+  config.ecr_key = CatarseSettings.get_without_cache(Rails.env.production? ? :pagarme_encryption_key : :pagarme_test_encryption_key)
   config.slip_tax = CatarseSettings.get_without_cache(:pagarme_slip_tax)
   config.credit_card_tax = CatarseSettings.get_without_cache(:pagarme_credit_card_tax)
   config.interest_rate = CatarseSettings.get_without_cache(:pagarme_interest_rate)
@@ -10,7 +10,7 @@ CatarsePagarme.configure do |config|
   config.protocol = 'https'
   config.max_installments = CatarseSettings.get_without_cache(:pagarme_max_installments)
   config.minimum_value_for_installment = CatarseSettings.get_without_cache(:pagarme_minimum_value_for_installment)
-  config.use_simility = false
+  config.use_simility = true
 
   config.pagarme_tax = CatarseSettings.get_without_cache(:pagarme_tax)
   config.cielo_tax = CatarseSettings.get_without_cache(:cielo_tax)

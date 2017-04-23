@@ -4,10 +4,57 @@ namespace :cron do
                 :refresh_materialized_views, :schedule_reminders, :sync_fb_friends]
 
   desc "Tasks that should run daily"
-  task daily: [ :notify_owners_of_deadline, :notify_project_owner_about_new_confirmed_contributions,
-               :verify_pagarme_transactions, :notify_new_follows,
-               :verify_pagarme_transfers, :verify_pagarme_user_transfers, :notify_pending_refunds, :request_direct_refund_for_failed_refund, :notify_expiring_rewards,
+  # task daily: [:notify_delivery_confirmation, :notify_owners_of_deadline, :notify_project_owner_about_new_confirmed_contributions,
+  #              :verify_pagarme_transactions, :notify_new_follows,
+  #              :verify_pagarme_transfers, :verify_pagarme_user_transfers, :notify_pending_refunds, :request_direct_refund_for_failed_refund, :notify_expiring_rewards,
+  #              :update_fb_users]
+  task daily: [ :notify_delivery_confirmation, :notify_owners_of_deadline, :notify_project_owner_about_new_confirmed_contributions, :notify_new_follows, :notify_expiring_rewards,
                :update_fb_users]
+
+  desc "Refresh statistics materialized views"
+  task refresh_stats_materialized_view: :environment do
+    def refresh_views view_name
+      begin
+        only_view = view_name.split('.').try(:[], 1)
+        ActiveRecord::Base.connection.execute(%Q{
+          SET statement_timeout TO 0;
+          DO language plpgsql $$
+             BEGIN
+              IF NOT EXISTS (SELECT true FROM pg_stat_activity WHERE pg_backend_pid() <> pid AND query ~* 'refresh materialized .*#{only_view}') THEN
+                 REFRESH MATERIALIZED VIEW CONCURRENTLY #{view_name};
+              END IF;
+             END;
+          $$;
+        })
+      rescue => e
+        puts e.inspect
+        Raven.capture_exception(e)
+      end
+    end
+
+    views = %w(
+      public.moments_project_start public.moments_project_start_inferuser
+      stats.project_points
+      stats.aarrr_realizador_draft_projetos
+      stats.aarrr_realizador_online_projetos
+      stats.aarrr_realizador_draft_by_category
+      stats.aarrr_realizador_draft
+      stats.aarrr_realizador_online_by_category
+      stats.aarrr_realizador_online
+      stats.growth_project_tags_weekly_contribs_mat
+      stats.growth_project_views
+      stats.growth_contributions
+      stats.growth_contributions_confirmed
+      stats.growth_analise_tipo
+      stats.financeiro_control_panel_simplificado
+      stats.financeiro_int_payments_2016_simplificado
+      stats.financeiro_payment_refund_error_distribution
+      stats.financeiro_status_pagarme_catarse
+      "1".statistics "1".statistics_music "1".statistics_publicacoes)
+    views.each do |v|
+      refresh_views(v)
+    end
+  end
 
   desc "Refresh all materialized views"
   task refresh_materialized_views: :environment do
@@ -15,51 +62,27 @@ namespace :cron do
     Statistics.refresh_view
     UserTotal.refresh_view
     CategoryTotal.refresh_view
-    ActiveRecord::Base.connection.
-      execute('REFRESH MATERIALIZED VIEW CONCURRENTLY "1".successful_projects') rescue nil
-    ActiveRecord::Base.connection.
-      execute('REFRESH MATERIALIZED VIEW CONCURRENTLY "1".finished_projects') rescue nil
-    ActiveRecord::Base.connection.
-      execute('REFRESH MATERIALIZED VIEW CONCURRENTLY public.moments_project_start') rescue nil
-    ActiveRecord::Base.connection.
-      execute('REFRESH MATERIALIZED VIEW CONCURRENTLY public.moments_project_start_inferuser') rescue nil
-    
-    #stats
-    ActiveRecord::Base.connection.
-      execute('REFRESH MATERIALIZED VIEW CONCURRENTLY stats.control_panel') rescue nil
-    ActiveRecord::Base.connection.
-      execute('REFRESH MATERIALIZED VIEW CONCURRENTLY stats.int_payments_2016') rescue nil
-    ActiveRecord::Base.connection.
-      execute('REFRESH MATERIALIZED VIEW CONCURRENTLY stats.financeiro_control_panel_simplificado') rescue nil
-    ActiveRecord::Base.connection.
-      execute('REFRESH MATERIALIZED VIEW CONCURRENTLY stats.financeiro_int_payments_2016_simplificado') rescue nil
-    #stats aarrr
-    ActiveRecord::Base.connection.
-      execute('REFRESH MATERIALIZED VIEW CONCURRENTLY stats.project_points') rescue nil
-    ActiveRecord::Base.connection.
-      execute('REFRESH MATERIALIZED VIEW CONCURRENTLY stats.aarrr_realizador_draft_projetos') rescue nil
-    ActiveRecord::Base.connection.
-      execute('REFRESH MATERIALIZED VIEW CONCURRENTLY stats.aarrr_realizador_online_projetos') rescue nil
-    ActiveRecord::Base.connection.
-      execute('REFRESH MATERIALIZED VIEW stats.aarrr_realizador_draft_by_category') rescue nil
-    ActiveRecord::Base.connection.
-      execute('REFRESH MATERIALIZED VIEW stats.aarrr_realizador_draft') rescue nil
-    ActiveRecord::Base.connection.
-      execute('REFRESH MATERIALIZED VIEW stats.aarrr_realizador_online_by_category') rescue nil
-    ActiveRecord::Base.connection.
-      execute('REFRESH MATERIALIZED VIEW stats.aarrr_realizador_online') rescue nil
-    #stats growth
-    ActiveRecord::Base.connection.
-      execute('REFRESH MATERIALIZED VIEW CONCURRENTLY stats.growth_project_tags_weekly_contribs_mat') rescue nil
-    ActiveRecord::Base.connection.
-      execute('REFRESH MATERIALIZED VIEW CONCURRENTLY stats.growth_project_views') rescue nil
-    ActiveRecord::Base.connection.
-      execute('REFRESH MATERIALIZED VIEW CONCURRENTLY stats.growth_contributions') rescue nil
-    ActiveRecord::Base.connection.
-      execute('REFRESH MATERIALIZED VIEW CONCURRENTLY stats.growth_contributions_confirmed') rescue nil
-    ActiveRecord::Base.connection.
-      execute('REFRESH MATERIALIZED VIEW CONCURRENTLY stats.growth_analise_tipo') rescue nil
-    
+
+    begin
+      ActiveRecord::Base.connection.
+        execute('REFRESH MATERIALIZED VIEW CONCURRENTLY "1".finished_projects')
+    rescue => e
+      Raven.capture_exception(e)
+    end
+
+    begin
+      ActiveRecord::Base.connection.
+        execute('REFRESH MATERIALIZED VIEW CONCURRENTLY public.moments_navigations')
+    rescue => e
+      Raven.capture_exception(e)
+    end
+
+    begin
+      ActiveRecord::Base.connection.
+        execute('REFRESH MATERIALIZED VIEW CONCURRENTLY "1".project_visitors_per_day')
+    rescue => e
+      Raven.capture_exception(e)
+    end
   end
 
   desc 'Request refund for failed credit card refunds'
@@ -86,6 +109,13 @@ namespace :cron do
     Project.pending_balance_confirmation.each do |project| 
       Rails.logger.info "Notifying #{project.permalink} -> pending_balance_transfer_confirmation"
       project.notify(:pending_balance_transfer_confirmation, project.user)
+    end
+  end
+
+  desc 'Notify contributors about delivery confirmation'
+  task notify_delivery_confirmation: :environment do
+    Contribution.need_notify_about_delivery_confirmation.each do |contribution|
+     contribution.notify_to_contributor(:confirm_delivery)
     end
   end
 

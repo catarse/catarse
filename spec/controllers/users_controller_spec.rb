@@ -49,7 +49,7 @@ RSpec.describe UsersController, type: :controller do
 
   describe "GET billing" do
     it_should_behave_like "redirect to edit_user_path" do
-      let(:action) { :billing }
+      let(:action) { :settings }
     end
   end
 
@@ -107,6 +107,19 @@ RSpec.describe UsersController, type: :controller do
   end
 
   describe "DELETE destroy" do
+    context "when user has published_projects" do
+      let(:project) { create(:project, state: 'online', user: user)}
+      before do
+        allow(controller).to receive(:current_user).and_call_original
+        delete :destroy, id: user.id, locale: :pt
+      end
+
+      it "should not set deactivated_at" do
+        expect(user.reload.deactivated_at).to be_nil
+      end
+
+      it { is_expected.not_to redirect_to user_path(user, anchor: 'settings')  }
+    end
     context "when user is beign deactivated by admin" do
       before do
         allow(controller).to receive(:current_user).and_call_original
@@ -225,49 +238,6 @@ RSpec.describe UsersController, type: :controller do
 
       context "with right current password and right confirmation" do
         it{ is_expected.to redirect_to edit_user_path(user) }
-      end
-    end
-
-    context "public_name update" do
-      context "when admin changing public_name" do
-        let(:user) { create(:user, public_name: 'foo', admin: true )}
-        let(:published_project) { create(:project, state: 'online', user: user) }
-
-        before do
-          published_project
-          put :update, id: user.id, locale: 'pt', user: { public_name: 'foo2' }
-        end
-
-        it "should not update public name" do
-          user.reload
-          expect(user.public_name).to eq('foo2')
-        end
-      end
-
-      context "when user already have published projects" do
-        let(:user) { create(:user, public_name: 'foo' )}
-        let(:published_project) { create(:project, state: 'online', user: user) }
-        before do
-          published_project
-          put :update, id: user.id, locale: 'pt', user: { public_name: 'foo2' }
-        end
-
-        it "should not update public name" do
-          user.reload
-          expect(user.public_name).to eq('foo')
-        end
-      end
-
-      context "when user not have published projects" do
-        let(:user) { create(:user, public_name: 'foo')}
-        before do
-          put :update, id: user.id, locale: 'pt', user: { public_name: 'foo2' }
-        end
-
-        it "should update public name" do
-          user.reload
-          expect(user.public_name).to eq('foo2')
-        end
       end
     end
 

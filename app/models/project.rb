@@ -213,6 +213,13 @@ class Project < ActiveRecord::Base
     order(sort_field)
   end
 
+  def has_recent_invalid_finish_notification?
+    self.notifications.where(%Q{
+      template_name = 'invalid_finish'
+      and created_at > (current_timestamp - '24 hours'::interval)
+    }).exists?
+  end
+
   def has_blank_service_fee?
     payments.with_state(:paid).where("NULLIF(gateway_fee, 0) IS NULL").present?
   end
@@ -359,7 +366,8 @@ class Project < ActiveRecord::Base
       project_user_id: self.user_id,
       user: {
         id: self.user.id,
-        name: self.user.name
+        name: self.user.name,
+        public_name: self.user.public_name
       },
       permalink: self.permalink,
       total_contributions: self.total_contributions,

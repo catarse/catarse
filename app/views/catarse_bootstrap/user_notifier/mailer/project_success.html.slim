@@ -8,24 +8,48 @@ br/
 p Congratulations on the campaign!
 p The project #{link_to project.name, project_link} Was funded!
 p
-  | Once you have successfully celebrated the successful completion of your campaign, it's time to <strong> confirm your bank details </strong> so that we can transfer the money to you! You can do this directly from your project page (or by clicking the button below).
-br/
-br/
-center
-  = link_to('Confirm bank details', insights_project_url(project.id, ref: 'notificacao_project_success'), style:'border: 1px solid #7cc142; border-radius: 5px; color: #fff; text-decoration: none; font-weight: bolder; text-align: center; padding: 19px 60px; background: #65bf1b; font-size: 15px;')
-
-br/
-p
-  | After confirming the data, <strong> there is a period of 10 working days to make your transfer.</strong>
+  | Depois de comemorar com vontade o término bem sucedido da sua campanha, é hora de <strong>confirmar os seus dados bancários</strong> para que possamos fazer a transferência do dinheiro para você!
+p 
+  | O processo de repasse do dinheiro dura em média <strong>10 dias úteis</strong> e é iniciado somente após a <strong>confirmação dos seus dados bancários na plataforma.</strong>
+p 
+  | Para não atrasar o repasse, precisamos que você confirme o quanto antes - <strong>e com toda a atenção do mundo!</strong> - se os dados bancários que você informou estão corretos. Veja como você pode confirmar os dados bancários agora mesmo, em apenas 4 passos:
 
 p
-  = link_to 'Check here more details of how the transfer will be done!', 'http://suporte.catarse.me/hc/pt-br/articles/217916143', target: '__blank'
+    | 1) Faça o login no Catarse 
+    br/
+    | 2) Entre na aba <strong>#{link_to 'Minha campanha',insights_project_url(project.id, ref: 'notificacao_project_success')}</strong>, dentro da página do seu projeto
+    br/
+    | 3) Clique em <strong>"Confirmar dados bancários"</strong>
+    br/
+    | 4) Verifique se os dados estão corretos:
+    br/
+    br/
+    | <strong>Se os seus dados estiverem corretos:</strong> basta clicar em: "solicitar transferência do dinheiro"
+    br/
+    | <strong>Se os dados bancários estiverem incorretos:</strong> você deverá corrigir os seus dados e salvar. Depois que o sistema atualizar os novos dados, você deverá clicar em "solicitar transferência do dinheiro".
+br/
+p
+  img src="https://s3.amazonaws.com/catarse.files/pendingbalanceconfirmation.gif"
+br/
+br/
+
+p 
+  | <strong>Dúvidas frequentes:</strong>
+p 
+  = link_to 'Quais são as etapas e prazos do repasse?', 'http://suporte.catarse.me/hc/pt-br/articles/217916143#etapas', target: '__blank'
+  br/
+  = link_to 'Quando o dinheiro estará disponível na minha conta?', 'http://suporte.catarse.me/hc/pt-br/articles/217916143#quando', target: '__blank'
+  br/
+  = link_to 'Como funciona a cobrança de taxa do Catarse', 'http://suporte.catarse.me/hc/pt-br/articles/217916143#taxa', target: '__blank' 
+  br/
+p
+  = link_to 'Confira aqui mais detalhes de como será feito o repasse!', 'http://suporte.catarse.me/hc/pt-br/articles/217916143', target: '__blank'
+br/
+
 p
   | If you have any questions, reply to this message directly or contact us via email #{mail_to CatarseSettings[:email_projects]}.
 p
-  | A tight hug of congratulations!
-br/
-br/
-| Hugs
+  | Um abraço apertado de parabéns!
+
 br/
 | #{company_name}

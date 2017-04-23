@@ -1,5 +1,12 @@
 pt:
   shared:
+    shipping_options:
+      free: 'Sem frete envolvido'
+      national: 'Frete Nacional'
+      international: 'Frete Nacional e Internacional'
+      presential: 'Retirada presencial'
+    successful_update: 'As suas informações foram atualizadas'
+    failed_update: 'Erro ao salvar informações.'
     account_type_value: 'Só aceitamos conta corrente'
     no_bank_label: 'Outro'
     alerts:

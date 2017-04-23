@@ -7,10 +7,10 @@
 | Hi, <strong>#{project.user.decorate.display_name}</strong>!
 br
 br
-| In the last 24 hours of the campaign, your project#{link_to "#{confirmed_contributions_today.length} New supports", project_by_slug_url(permalink: project.permalink, anchor: 'contributions')}, congratulations!
+| Nas últimas 24 horas de campanha, seu projeto recebeu #{link_to "#{confirmed_contributions_today.length} novos apoios", contributions_report_project_url(project)}, parabéns!
 br/
 br/
-| #{link_to 'Post a message to supporters', edit_project_url(project, anchor: 'posts')} e #{link_to 'Track the metrics of your collection', edit_project_url(project, anchor: 'home')}!
+| #{link_to 'Poste uma mensagem para os apoiadores', posts_project_url(project)} e #{link_to 'acompanhe as métricas da sua arrecadação', insights_project_url(project)}!
 br
 br
 | More information about the supports of the day:
@@ -32,7 +32,11 @@ table width="500" border="1" cellpadding="10" cellspacing="0" style='font-size: 
         td= contribution.reward.try(:decorate).try(:display_description)
 br/
 br/
+<<<<<<< HEAD
 |Remember that you can download the #{link_to 'Support reports', edit_project_url(project, anchor: 'reports')} any time. To ask questions about us by replying directly to this message or through #{mail_to CatarseSettings[:email_projects] }
+=======
+|Lembrando que você pode baixar os #{link_to 'relatórios de apoios', contributions_report_project_url(project)} a qualquer momento. Para tirar dúvidas conosco respondendo diretamente a esta mensagem ou através do #{mail_to CatarseSettings[:email_projects] }
+>>>>>>> upstream/master
 br/
 br/
 | A hug,

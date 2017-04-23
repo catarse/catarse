@@ -50,7 +50,7 @@ App.addChild('ProjectEdit', _.extend({
     var $tab_subtitle = $('#dashboard_' + window.location.hash.split('#')[1]).data('page_subtitle');
 
     $('#dashboard-page-title').html($tab_title);
-    $('#dashboard-page-subtitle').text($tab_subtitle);
+    $('#dashboard-page-subtitle').html($tab_subtitle);
 
     if(($tab_title == "" || $tab_title == undefined) && ($tab_subtitle == "" || $tab_subtitle == undefined)) {
         $('#dashboard-titles-root').hide();

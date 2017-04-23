@@ -1,20 +1,5 @@
-#dashboard-rewards-tab
-  .w-section.section
-    .w-container
-      .w-row
-        .w-col.w-col-10.w-col-push-1
-          = @project.display_errors(:reward)
-          = simple_form_for @project, html: { class: 'project-form w-form' } do |f|
-            =  hidden_field_tag 'project_id', @project.id
-            =  hidden_field_tag 'anchor', 'reward'
-            #dashboard-rewards
-              #rewards
-                = f.simple_fields_for :rewards, @rewards do |form|
-                  = render 'reward_fields', f: form
-              = link_to_add_association "+ #{t('.add_reward')}", f, :rewards, :'data-association-insertion-node' => '#rewards', :'data-association-insertion-method' => :append, class: 'btn btn-large btn-message show_reward_form new_reward_button'
-
-              .w-section.save-draft-btn-section
-                .w-container
-                  .w-row
-                    .w-col.w-col-4.w-col-push-4
-                      = f.button :submit, t('.submit'),  class:'btn btn-medium'
+- parameters = { project_id: @project.id, project_state: @project.state, user_id: @project.user_id }.to_json
+.w-row
+  .w-col.w-col-10.w-col-push-1
+    = @project.display_errors(:reward)
+#project-edit-reward data-mithril='projectEditReward' data-parameters=parameters

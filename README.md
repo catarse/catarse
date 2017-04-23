@@ -89,6 +89,12 @@ We hope to support Nepali languages in the future, so we are willing to accept p
 
 We have plans to integrate eSewa, Stripe, Everest Bank Payment System and NIBL Bank Payment System.
 
+  List of payment enginees that are being developed or need to be developed further
+
+    https://github.com/catarse/catarse_pagarme (payment engine used by Catarse.me)
+    https://github.com/devton/catarse_paypal_express (currently out of date and not maintained)
+    https://github.com/sushant12/CatarseStripe (just starting to be developed and needs extra hands -- please pitch in...)
+
 ## How to contribute with code
 
 Discuss your plans in our mailing list (http://groups.google.com/group/joint-venture-nepal).

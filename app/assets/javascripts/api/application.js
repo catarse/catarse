@@ -10,7 +10,6 @@
 //= require api/init
 //= require jvnjs/dist/catarse.js
 //= require_self
-
 (function(m, c, Chart, analytics){
   //Chart.defaults.global.responsive = true;
   Chart.defaults.global.responsive = false;
@@ -117,18 +116,17 @@
           '/': wrap(( isUserProfile ? c.root.UsersShow : c.root.ProjectsHome), {menuTransparency: true, footerBig: true, absoluteHome: isUserProfile}),
           '/explore': wrap(c.root.ProjectsExplore, {menuTransparency: true, footerBig: true}),
           '/start': wrap(c.root.Start, {menuTransparency: true, footerBig: true}),
-          // '/projects/:project_id/contribution': wrap(c.root.ProjectsReward),
-          // '/projects/:project_id/payment': wrap(c.root.ProjectsPayment),
-          // '/contribution': wrap(c.root.ProjectsPayment),
+          '/projects/:project_id/contributions/new': wrap(c.root.ProjectsContribution),
           '/projects/:project_id/contributions/:contribution_id/edit': wrap(c.root.ProjectsPayment, {menuShort: true}),
-          '/pt/projects/:project_id/contributions/:contribution_id/edit': wrap(c.root.ProjectsPayment, {menuShort: true}),
-          '/pt': wrap(c.root.ProjectsHome, {menuTransparency: true, footerBig: true}),
-          '/pt/flexible_projects': wrap(c.root.ProjectsHome, {menuTransparency: true, footerBig: true}),
-          '/pt/projects': wrap(c.root.ProjectsHome, {menuTransparency: true, footerBig: true}),
+          // '/pt/projects/:project_id/contributions/new': wrap(c.root.ProjectsContribution),
+          // '/pt/projects/:project_id/contributions/:contribution_id/edit': wrap(c.root.ProjectsPayment, {menuShort: true}),
+          // '/pt': wrap(c.root.ProjectsHome, {menuTransparency: true, footerBig: true}),
+          // '/pt/flexible_projects': wrap(c.root.ProjectsHome, {menuTransparency: true, footerBig: true}),
+          // '/pt/projects': wrap(c.root.ProjectsHome, {menuTransparency: true, footerBig: true}),
           '/projects': wrap(c.root.ProjectsHome, {menuTransparency: true, footerBig: true}),
-          '/pt/explore': wrap(c.root.ProjectsExplore, {menuTransparency: true, footerBig: true}),
-          '/pt/start': wrap(c.root.Start, {menuTransparency: true, footerBig: true}),
-          '/pt/projects/:project_id/contributions/:contribution_id': wrap(c.root.ThankYou, {menuTransparency: false, footerBig: false}),
+          // '/pt/explore': wrap(c.root.ProjectsExplore, {menuTransparency: true, footerBig: true}),
+          // '/pt/start': wrap(c.root.Start, {menuTransparency: true, footerBig: true}),
+          // '/pt/projects/:project_id/contributions/:contribution_id': wrap(c.root.ThankYou, {menuTransparency: false, footerBig: false}),
           '/en/projects/:project_id/contributions/:contribution_id/edit': wrap(c.root.ProjectsPayment, {menuShort: true}),
           '/en': wrap(c.root.ProjectsHome, {menuTransparency: true, footerBig: true}),
           '/en/flexible_projects': wrap(c.root.ProjectsHome, {menuTransparency: true, footerBig: true}),
@@ -138,19 +136,19 @@
           '/en/start': wrap(c.root.Start, {menuTransparency: true, footerBig: true}),
           '/en/projects/:project_id/contributions/:contribution_id': wrap(c.root.ThankYou, {menuTransparency: false, footerBig: false}),
           '/projects/:project_id/contributions/:contribution_id': wrap(c.root.ThankYou, {menuTransparency: false, footerBig: false}),
-          '/pt/:project': wrap(c.root.ProjectsShow, {menuTransparency: false, footerBig: false}),
+          // '/pt/:project': wrap(c.root.ProjectsShow, {menuTransparency: false, footerBig: false}),
           '/en/:project': wrap(c.root.ProjectsShow, {menuTransparency: false, footerBig: false}),
           '/projects/:project_id/insights': wrap(c.root.Insights, {menuTransparency: false, footerBig: false}),
           '/projects/:project_id/posts': wrap(c.root.Posts, {menuTransparency: false, footerBig: false}),
           '/projects/:project_id': wrap(c.root.ProjectsShow, {menuTransparency: false, footerBig: false}),
           '/users/:user_id': wrap(c.root.UsersShow, {menuTransparency: true, footerBig: false}),
-          '/pt/users/:user_id': wrap(c.root.UsersShow, {menuTransparency: true, footerBig: false}),
+          // '/pt/users/:user_id': wrap(c.root.UsersShow, {menuTransparency: true, footerBig: false}),
           '/en/users/:user_id': wrap(c.root.UsersShow, {menuTransparency: true, footerBig: false}),
           '/users/:user_id/edit': wrap(c.root.UsersEdit, {menuTransparency: true, footerBig: false}),
-          '/pt/users/:user_id/edit': wrap(c.root.UsersEdit, {menuTransparency: true, footerBig: false}),
+          // '/pt/users/:user_id/edit': wrap(c.root.UsersEdit, {menuTransparency: true, footerBig: false}),
           '/en/users/:user_id/edit': wrap(c.root.UsersEdit, {menuTransparency: true, footerBig: false}),
           '/:project': wrap(c.root.ProjectsShow, {menuTransparency: false, footerBig: false}),
-          '/pt/follow-fb-friends': wrap(c.root.FollowFoundFriends, {menuTransparency: false, footerBig: false}),
+          // '/pt/follow-fb-friends': wrap(c.root.FollowFoundFriends, {menuTransparency: false, footerBig: false}),
           '/en/follow-fb-friends': wrap(c.root.FollowFoundFriends, {menuTransparency: false, footerBig: false}),
           '/follow-fb-friends': wrap(c.root.FollowFoundFriends, {menuTransparency: false, footerBig: false})
 

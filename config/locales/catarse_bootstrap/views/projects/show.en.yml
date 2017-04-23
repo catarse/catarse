@@ -66,7 +66,7 @@ en:
       contributors_call: 'Supported by '
       contributors_count:
         one: '1 person'
-        other: '{{count}} person'
+        other: '{{count}} people'
       remaining_time:
         days:
           one: ' day remaining'
@@ -98,7 +98,7 @@ en:
         segundo: ' Second remaining'
       submit: Support this campaign
       display_status:
-        approved: "This project has already been approved by Catarse. Soon he will be on the air and ready to receive support."
+        approved: "This project has already been approved by JVN. Soon he will be on the air and ready to receive support."
         online: "You can support this campaign until %{date} till 23h59m59s"
         failed: "This project did not reach the minimum of %{goal} through %{date} and was not funded"
         rejected: "This project was not accepted. Can not support."

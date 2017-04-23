@@ -1,5 +1,12 @@
 en:
   shared:
+    shipping_options:
+      free: 'No freight involved'
+      national: 'National Freight'
+      international: 'National and International freight'
+      presential: 'Face-off'
+    successful_update: 'Your information has been updated'
+    failed_update: 'Error saving information'
     account_type_value: 'We only accept checking account'
     no_bank_label: 'Other'
     alerts:

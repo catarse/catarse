@@ -1,4 +1,4 @@
-- content_for :title, "Password Reset"
+- content_for :title, "Rest Password"
 
 .w-container
   .u-marginbottom-10
@@ -6,7 +6,7 @@
   .w-row
     .w-col.w-col-6.box-login.w-col-push-3
       div
-        .fontweight-semibold.u-text-center.fontsize-large.u-marginbottom-10= "Password Reset"
+        .fontweight-semibold.u-text-center.fontsize-large.u-marginbottom-10= "Reset Password"
       .login-fb
       .w-form.form-login
         = simple_form_for resource, as: resource_name, url: password_path(resource_name), html: {method: :put, novalidate: true} do |form|

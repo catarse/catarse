@@ -50,6 +50,7 @@ class Projects::ContributionsController < ApplicationController
     @contribution.value = permitted_params[:value]
     @contribution.origin = Origin.process_hash(referral)
     @contribution.reward_id = (params[:contribution][:reward_id].to_i == 0 ? nil : params[:contribution][:reward_id])
+    @contribution.shipping_fee_id = (params[:contribution][:shipping_fee_id].to_i == 0 ? nil : params[:contribution][:shipping_fee_id])
     authorize @contribution
     @contribution.update_current_billing_info
     create! do |success,failure|
@@ -104,10 +105,13 @@ class Projects::ContributionsController < ApplicationController
     project = Project.find params['project_id']
     authorize project, :update?
     contributions = project.contributions.where(id: params['contributions'])
-    contributions.update_all(delivery_status: params['delivery_status'])
     if params[:delivery_status] == 'delivered'
       contributions.update_all(reward_sent_at: Time.current)
+      send_delivery_notification contributions, 'delivered', 'delivery_confirmed'
+    elsif params[:delivery_status] == 'error'
+      send_delivery_notification contributions, 'error', 'delivery_error'
     end
+    contributions.update_all(delivery_status: params['delivery_status'])
 
     respond_to do |format|
       format.json { render :json => { :success => 'OK' } }
@@ -121,6 +125,12 @@ class Projects::ContributionsController < ApplicationController
   end
 
   protected
+  def send_delivery_notification(contributions, status, template_name)
+    contributions.where.not(delivery_status: status).each do |contribution|
+      Notification.create!(user_id: contribution.user_id, user_email: contribution.user.email, template_name: template_name, metadata: {locale: "pt", message: params['message'], from_name: "#{contribution.project.user.display_name} via Catarse", from_email: contribution.project.user.email, associations: {project_id: contribution.project.id, contribution_id: contribution.id}}.to_json)
+    end
+  end
+
   def load_rewards
     if @project.rewards.present?
       empty_reward = Reward.new(minimum_value: 0, description: t('projects.contributions.new.no_reward'))

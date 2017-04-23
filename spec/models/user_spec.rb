@@ -30,22 +30,6 @@ RSpec.describe User, type: :model do
     it{ is_expected.not_to allow_value('foo').for(:email) }
     it{ is_expected.not_to allow_value('foo@bar').for(:email) }
     it{ is_expected.to validate_uniqueness_of(:email) }
-
-    context "when user has an published project" do
-      let(:user) { failed_project.user }
-
-      it "should not valid when erease about_html" do
-        expect(user).not_to allow_value(nil).for(:about_html)
-      end
-    end
-
-    context "when user have no projects" do
-      let(:user) {create(:user)}
-      it "should not valid when erease about_html" do
-        expect(user).to allow_value(nil).for(:about_html)
-      end
-    end
-
   end
 
   describe ".to_send_category_notification" do
@@ -418,6 +402,7 @@ RSpec.describe User, type: :model do
       @p1 = create(:project)
       create(:confirmed_contribution, user: user, project: @p1)
       @u1 = create(:unsubscribe, project_id: @p1.id, user_id: user.id )
+      user.reload
     end
     it{ is_expected.to eq([@u1])}
   end
@@ -428,6 +413,7 @@ RSpec.describe User, type: :model do
       @p1 = create(:project)
       create(:confirmed_contribution, user: user, project: @p1)
       create(:confirmed_contribution, user: user, project: @p1)
+      user.reload
     end
     it{is_expected.to eq([@p1])}
   end

@@ -8,11 +8,21 @@ p
 p
   |The project #{link_to(contribution.project.name, project_by_slug_url(permalink: contribution.project.permalink))} Did not meet the established collection goal and, according to Catarse rules, its support in the value of #{number_to_currency detail.value} athe project #{contribution.project.name} Will be returned to you.
 p
-  |As your support was made through a ticket, to make the return of money we need you to fill in your bank details:
+  |Como o seu apoio foi efetuado através de boleto, para efetuar a devolução do dinheiro precisamos que você preencha seus dados bancários,basta fazer login no Catarse e seguir esses 3 passos:
+
 p
   center
-    = link_to no_account_refund_project_contribution_url(project, contribution, user_email: user.email, user_token: user.authentication_token), alt: 'Request Refund', target: '__blank' do
-      = image_tag "#{CatarseSettings[:base_url]}/assets/catarse_bootstrap/request_refund.png"
+    1. Clicar nesse link #{link_to no_account_refund_project_contribution_url(project, contribution, user_email: user.email, user_token: user.authentication_token), alt: 'Solicitar Reembolso', target: '__blank'}
+    /br
+    2.Preencher seus dados bancários
+    /br
+    3.Confirmar o pedido clicando no botão <strong>"Solicitar reembolso"</strong>
+    /br
+p
+
+  |Assim que o reembolso for feito, você receberá um e-mail confirmando a operação. O reembolso entrará na conta cadastra em até 10 dias úteis, identificado como \"PAGAR.ME PAGAMENTOS\".
+
+     
 p
   |If you have any questions, please contact us by replying to this message or via email #{mail_to CatarseSettings[:email_contact]}. Do not forget to inform us the identification key of your support, which is: #{detail.gateway_id}.
 p

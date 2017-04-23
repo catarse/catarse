@@ -10,7 +10,7 @@ en:
       flex:
         budget_html: "Budget"
         video_html: "Video <span class='fontcolor-terciary'>(optional)</span>"
-        video_subtitle: 'Video is optional, but we highly recommend it! A good video makes the difference and can be largely responsible for the success of your project.'
+        video_subtitle: 'Video is optional, but we highly recommend it! A good video makes the difference and can be largely responsible for the success of your campaign.'
       aon:
         budget_html: "Budget"
         video_html: "Video <span class='fontcolor-terciary'>(optional)</span>"
@@ -60,6 +60,9 @@ en:
     dashboard_insights:
       finish_explanation: 'Your campaign is still open. In order to receive the funds in your bank account, you must set an end date for collection.'
       know_more: ' know more.'
+    dashboard_contribution_reports:
+      title: 'Support report'
+      subtitle_html: 'Track the support made for your campaign and manage the delivery of rewards.'
     dashboard_user_settings:
        natural: "Full name of holder"
        juridical: "Company Title"
@@ -188,6 +191,27 @@ en:
       email_label: Registration Email
       email_hint: Email for you to log into JVN and communicate with our team and with your supporters
     dashboard_goal:
+      want_more: 'Want to understand more?'
+      online_days_closed: 'Definite time'
+      online_days_closed_hint: 'Your campaign is already online with the capture time already defined. You can choose between 1 and 365 days. After publishing the campaign, you can not change this deadline.'
+      online_days_open: 'Open time'
+      online_days_open_hint: 'Your campaign goes live without a set deadline. You will have the option to set a campaign end date (minimum of 1 day) at any time within a 12-month period after publication.'
+      online_days_label: 'Collection time'
+      online_days_flex_hint: 'This is the period when your campaign will be online, open to fundraising. In Flex, you choose whether to publish your campaign with a deadline already defined or with an open deadline. <a class="alt-link" href=" https://catarse.attach.io/HJGoCzmJl" target="_blank">Know our tips for defining your deadline.</a>'
+      online_days_aon_hint: 'It is the period when your campaign will be online, open to fundraising. In All or Nothing, you can choose between 1 and 60 days.&nbsp;<a class="alt-link" href=" https://catarse.attach.io/HJGoCzmJl" target="_blank">Know our tips for defining your deadline.</a>'
+      goal_label: 'Goal of collection'
+      goal_hint: 'How much do you need to raise? Set a goal consistent with what your campaign proposes. Do not forget to include administrative fees in your calculation.'
+      goal_taxes_link: 'Understand JVN rates'
+      goal_taxes_label: 'JVN Fees'
+      goal_taxes_watch_video_html: '<a class="fontsize-small" href="http://fazum.catarse.me/agradecimento-video-tutorial-orcamento-basico" target="_blank">Watch our <span class="fontweight-bold">Basic budget video lesson</span></a>'
+      goal_aon_taxes_hint: 'It is the amount that will be deducted from your collection at the end of the campaign, regarding the services of JVN and the means of payment. If your campaign reaches or exceeds the target, 5% of the total collected at the end of the campaign will be charged. If your campaign does not reach the goal, all the money backed will be returned to your supporters after the campaign ends, at no cost to you. It`s all or nothing!'
+      goal_flex_taxes_hint: 'It is the amount that will be deducted from your collection at the end of the campaign, regarding the services of the JVN and the means of payment. 5% of the total collected at the end of the campaign will be charged, regardless of whether the target is reached or not.'
+      mode_label: 'Type of financing'
+      mode_hint: 'Choose the template for your collective financing campaign. After starting your campaign, you will not be allowed to trade.'
+      mode_diff_ebook: '<a class="fontsize-small" href="https://catarse.attach.io/BkLCRfXyg" target="_blank">Download our <span class="fontweight-bold">Ebook Flex vs All or Nothing</span></a>'
+      mode_diff_link: 'See the difference between the models'
+      flex_diff_html: '<span class="fontweight-semibold">Commitment&nbsp;<br></span>You agree to execute the campaign and deliver the rewards (if you have chosen to offer them), <span class="fontweight-semibold">Regardless of the amount collected</span><br><br><span class="fontweight-semibold">How it works?</span><br>You receive, at the end of the term, all that you have collected (discounting only the rate of the JVN), regardless of reaching the collection goal.<br><br><span class="fontweight-semibold">Deadline for the project in the air: </span>12 months<br><br><span class="fontweight-semibold">Rates: </span>5% of total collected'
+      aon_diff_html: '<span class="fontweight-semibold">Commitment&nbsp;</span><br>You agree to execute the campaign and deliver the rewards only <span class="fontweight-semibold">If the revenue reaches or exceeds the target.</span><br><br><span class="fontweight-semibold">How it works?</span><br>You only receive the amount collected if, at the end of the term,&nbsp;Has reached the collection goal. Otherwise, all your supporters receive their payments back.<br><br><span class="fontweight-semibold">Deadline for the project in the air: </span>60 days&nbsp;&nbsp;<br><br><span class="fontweight-semibold">Rate: </span>5% of total collected'
       submit: "Save"
       kind_label: "Type of financing"
       kind_link: "If you want to know more, click here"
@@ -195,6 +219,9 @@ en:
         kind_text: "You are participating in the flexible model trial period. Your participation is essential to understanding how we can expand this model for all users. %{link}"
     dashboard_description:
       submit: "Save"
+      description_label: 'Campaign description'
+      description_hint: 'Speak with passion and clarity about what will be accomplished. Clarify possible questions about how the money will be used, who is behind the campaign, how and when the campaign will be delivered. Transparency attracts more supporters. Remember: your campaign will be accessed by ordinary people who will decide whether or not they want to support your campaign. Capriche!'
+      description_alert: '<span class="fa fa-fw fa-lightbulb-o"></span> know how <a class="fa alt-link" href="https://catarse.attach.io/BJmQVOiR" target="blank"> Create a captivating description!</a>'
     dashboard_reward:
       submit: "Save"
       add_reward: "Add reward"
@@ -219,11 +246,19 @@ en:
     dashboard_budget:
       submit: Save
       budget_label: "Project budget"
+      budget_alert: '<span class="fa fa-fw fa-lightbulb-o"></span>See how-to tips<a class="alt-link" href="http://fazum.catarse.me/agradecimento-video-tutorial-orcamento-basico?ref=ctrse_dashboard" target="_blank"> Determine the goal of your campaign!</a>'
     dashboard_card:
       submit: Save
       card_label: "Card"
+      headline_label: 'Catchphrase'
+      headline_label_hint: 'Phrase on the campaign card to call supporters. Must have a maximum of 100 characters and summarize the project well.'
+      uploaded_image_label: 'Image of the campaign'
+      uploaded_image_hint: 'This image will be used as the thumbnail of your campaign (PNG, JPG size 600 x 340)'
     dashboard_video:
       submit: Save
+      video_label: 'Campaign video'
+      video_hint: 'Link to Vimeo or Youtube. This is the main video for your campaign.'
+      video_alert: '<span class="fa fa-fw fa-lightbulb-o"></span>See examples of <a class="alt-link" href="http://crowdfunding.catarse.me/videomakers?ref=ctrse_dashboard_video" target="_blank"> Videos of JVN!</a>'
       aon:
         card_label: "Video"
         video_url: "Project video"
@@ -235,15 +270,26 @@ en:
         video_url_hint: ""
         video_url_subtitle: "Link to Vimeo or Youtube. This is the main video for your campaign."
     dashboard_basics:
+      permalink: 'Link to your campaign on JVN'
+      permalink_hint: 'You can edit it until the campaign goes online. Choose something simple, straightforward and that identifies your campaign well. Try not to use hyphen, underline etc.'
+      tags: 'Tags'
+      tags_hint: 'List up to 5 keywords related to your campaign and facilitate discovery by supporters.'
+      admin_tags: 'Admin Tags'
+      admin_tags_hint: 'Report tags separated by commas'
+      user_id: 'User ID'
+      tracker_snippet_html: 'Tracker snippet html'
       city: 'Campaign Location'
+      city_hint: 'Where will your campaign be carried out? If it happens in more than one place, one tip is to put the city where your network of potential supporters is larger.'
       online_date: 'Published date'
       user_id: 'User ID'
       service_fee: 'JVN rate'
       name: 'Campaign Name'
+      name_hint: 'Give a name that people will remember easily. Do not exceed more than 50 characters.'
       name_label: 'The more direct the better. Do not exceed 50 characters'
       url: 'Project URL'
       url_label: 'It is the address of your project, it should be easy to memorize. Avoid underline, hyphen and symbols'
       category: 'Category'
+      category_hint: 'Choose the one that best suits your campaign.'
       category_label: 'Explore and be inspired by other projects of the same category as yours.'
       online_days: 'Deadline for collection'
       online_days_label: 'You can choose between 1 and 60 days for your campaign. Check out the filmmakers` guide for timeline tips.'

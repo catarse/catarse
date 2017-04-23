@@ -24,8 +24,8 @@
     "jquery-ui": "~1.11.4",
     "jquery-ujs": "~1.0.3",
     "jquery.fixedmask": "~1.0.0",
-    "mithril": "0.2.4",
+    "mithril": "https://github.com/lhorie/mithril.js.git#0.2.4",
     "chartjs": "1.0.2",
-    "jvnjs": "1.0.31"
+    "jvnjs": "1.0.32"
   }
 }

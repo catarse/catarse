@@ -26,7 +26,7 @@
             - if @project.posts.count > 0
               span.badge= @project.posts.count
             - else
-              span.badge.badge-attention= 'Nenhuma'
+              span.badge.badge-attention= 'None'
 
       .edit-project-div
         - if @project.published? && !@project.is_flexible?
