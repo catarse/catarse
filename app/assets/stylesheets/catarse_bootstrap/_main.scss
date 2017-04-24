@@ -2378,7 +2378,7 @@ a:hover {
 .hero-half {
   position: relative;
   overflow: hidden;
-  height: 500px;
+  height: 600px;
   margin-bottom: -30px;
   padding-top: 199px;
   padding-bottom: 60px;
@@ -3117,13 +3117,13 @@ a:hover {
 
 .toggle {
   position: relative;
-  width: 110px;
-  height: 40px;
-  padding: 11px 13px;
+  width: 85px;
+  height: 36px;
+  padding: 8px 13px 11px;
   border-radius: 20px;
   background-color: #fff;
   color: #fff;
-  font-size: 18px;
+  font-size: 15px;
   text-decoration: none;
 }
 
@@ -3137,18 +3137,18 @@ a:hover {
 
 .toggle-btn {
   position: absolute;
-  left: 4px;
-  top: 4px;
-  width: 32px;
-  height: 32px;
+  left: 3px;
+  top: 3px;
+  width: 30px;
+  height: 30px;
   border-radius: 20px;
   background-color: #fff;
 }
 
 .toggle-btn.toggle-btn--off {
   left: auto;
-  top: 4px;
-  right: 4px;
+  top: 3px;
+  right: 3px;
   bottom: 0px;
 }
 
@@ -4047,6 +4047,40 @@ a:hover {
   background-repeat: no-repeat;
 }
 
+.u-text-center-big-only {
+  text-align: center;
+}
+
+.u-marginright-10 {
+  margin-right: 10px;
+}
+
+.options-list {
+  overflow: auto;
+  max-height: 200px;
+  margin-top: -20px;
+  box-shadow: 0 0 6px 0 rgba(44, 47, 51, .34);
+}
+
+.tag-div {
+  display: inline-block;
+  margin-right: 5px;
+  margin-bottom: 8px;
+  padding: 7px 16px;
+  border-radius: 5px;
+  background-color: #ddd;
+  color: #79808b;
+  font-size: 16px;
+}
+
+.tag-close-btn {
+  color: #79808b;
+}
+
+.tag-close-btn:hover {
+  color: #131414;
+}
+
 html.w-mod-js *[data-ix="fade-in"] {
   opacity: 0;
 }
@@ -4480,7 +4514,7 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
     font-size: 13px;
   }
   .hero-half {
-    height: 460px;
+    height: 560px;
     padding-top: 110px;
     padding-bottom: 50px;
   }
@@ -5070,7 +5104,7 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
     text-align: center;
   }
   .hero-half {
-    height: 310px;
+    height: 410px;
   }
   .hero-small {
     height: 160px;
@@ -5358,6 +5392,9 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
     width: 100%;
     padding-right: 0px;
     padding-left: 0px;
+  }
+  .u-text-center-big-only {
+    text-align: left;
   }
 }
 
@@ -5687,7 +5724,6 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
     padding-left: 0px;
   }
   .hero-half {
-    height: 320px;
     padding: 80px 15px 30px;
   }
   .hero-small {
