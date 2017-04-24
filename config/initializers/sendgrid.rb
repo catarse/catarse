@@ -6,7 +6,8 @@ begin
       authentication: :plain,
       user_name: CatarseSettings.get_without_cache(:sendgrid_user_name),
       password: CatarseSettings.get_without_cache(:sendgrid),
-      domain: 'myjvn.com'
+      domain: 'myjvn.com',
+      :openssl_verify_mode => 'none'
     }
     ActionMailer::Base.delivery_method = :smtp
   end
