@@ -89,7 +89,7 @@ class FlexProjectMachine
     # After transition run, persist the current state
     # into model.state field.
     after_transition do |project, transition|
-      project.save
+      project.save(validate: false) #make sure state persists even if project is invalid
       next if transition.metadata['skip_callbacks']
       from_state = transition.metadata[:from_state]
 
