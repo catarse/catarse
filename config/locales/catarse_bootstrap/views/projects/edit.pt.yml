@@ -147,28 +147,16 @@ pt:
       announce_expiration: Definir prazo
       publish: Continuar
     dashboard_nav_links:
-      flex:
-        preview_tab: Preview
-        account_tab: Dados cadastrais
-        basics_tab: Básico
-        goal_tab: Financiamento
-        budget_tab: Orçamento
-        card_tab: Card do projeto
-        description_tab: Descrição
-        video_tab: "Vídeo <span class='fontsize-smallest fontcolor-secondary'>(opcional)</span>"
-        rewards_tab: "Recompensas <span class='fontsize-smallest fontcolor-secondary'>(opcional)</span>"
-        about_you_tab: Perfil Público
-      aon:
-        preview_tab: Preview
-        account_tab: Dados cadastrais
-        basics_tab: Básico
-        goal_tab: Financiamento
-        budget_tab: Orçamento
-        card_tab: Card do projeto
-        description_tab: Descrição
-        video_tab: "Vídeo <span class='fontsize-smallest fontcolor-secondary'>(opcional)</span>"
-        rewards_tab: "Recompensas <span class='fontsize-smallest fontcolor-secondary'>(opcional)</span>"
-        about_you_tab: Perfil Público
+      preview_tab: Preview
+      account_tab: Dados cadastrais
+      basics_tab: Básico
+      goal_tab: Financiamento
+      budget_tab: Orçamento
+      card_tab: Card do projeto
+      description_tab: Descrição
+      video_tab: "Vídeo <span class='fontsize-smallest fontcolor-secondary'>(opcional)</span>"
+      rewards_tab: "Recompensas <span class='fontsize-smallest fontcolor-secondary'>(opcional)</span>"
+      about_you_tab: Perfil Público
     flex_dashboard_explanation:
       flex:
         kind_text: "Você está participando do período de testes do modelo flexível. Sua participação é essencial para entendermos como podemos expandir esse modelo para todos os usuários. %{link}"
