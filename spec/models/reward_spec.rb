@@ -102,22 +102,6 @@ RSpec.describe Reward, type: :model do
     it{ is_expected.to eq([@remaining]) }
   end
 
-  describe "#valid?" do
-    subject{ reward.valid? }
-
-    context "when deliver_at is in the past" do
-      let(:project){ create_project({state: 'online', online_days: 60}, {created_at: Time.now, to_state: 'online'}) }
-      let(:reward){ build(:reward, project: project, deliver_at: Time.current - 1.month) }
-      it{ is_expected.to eq false }
-    end
-
-    context "when deliver_at is in the future" do
-      let(:project){ create_project({state: 'online', online_days: 60}, {created_at: Time.now, to_state: 'online'}) }
-      let(:reward){ build(:reward, project: project, deliver_at: Time.current + 1.month) }
-      it{ is_expected.to eq true }
-    end
-  end
-
   describe "#total_contributions" do
     before do
       @remaining = create(:reward, maximum_contributions: 20)
