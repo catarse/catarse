@@ -43,12 +43,6 @@ module Project::BaseValidator
 
       wo.validates_presence_of :budget
 
-
-      wo.validate do
-        if self.online_days.present? && self.rewards.any?(&:invalid_deliver_at?)
-          self.errors['rewards.deliver_at'] << "Existe uma ou mais recompensas com o prazo de entrega menor que a data do fim do projeto"
-        end
-      end
     end
   end
 end
