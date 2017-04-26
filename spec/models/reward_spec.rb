@@ -64,15 +64,6 @@ RSpec.describe Reward, type: :model do
     expect(r).to be_valid
   end
 
-  it "should not allow delivery in the past" do
-    r = build(:reward, project: create(:project, state: 'draft'))
-    expect(r).to receive(:invalid_deliver_at?).at_least(:once).and_call_original()
-    r.deliver_at = Time.current - 1.month
-    expect(r).not_to be_valid
-    r.deliver_at = Time.current + 1.month
-    expect(r).to be_valid
-  end
-
   it "should have maximum contributions > 0" do
     r = build(:reward)
     r.maximum_contributions = -1
