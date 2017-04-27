@@ -66,11 +66,9 @@ class ProjectsController < ApplicationController
       raise SuccessfulProject
     end
   rescue InvalidProject
-    flash.now[:notice] = t("projects.push_to_online_error")
-    build_dependencies
-    render template: 'projects/edit'
+    render status: 400, json: { errors_json: resource.errors.to_json }
   rescue SuccessfulProject
-    redirect_to publish_project_path(resource)
+    render status: 200, json: { success: 'OK' }
   end
 
   def push_to_online
