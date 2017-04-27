@@ -7,16 +7,11 @@ en:
       publish: 'Continue'
       send: 'To send'
     edit:
-      flex:
-        budget_html: "Budget"
-        video_html: "Video <span class='fontcolor-terciary'>(optional)</span>"
-        video_subtitle: 'Video is optional, but we highly recommend it! A good video makes the difference and can be largely responsible for the success of your campaign.'
-      aon:
-        budget_html: "Budget"
-        video_html: "Video <span class='fontcolor-terciary'>(optional)</span>"
-        video_subtitle: 'Video is optional, but we highly recommend it! A good video makes the difference and can be largely responsible for the success of your campaign.'
       reward_html: "Rewards <span class='fontcolor-terciary'>(optional)</span>"
+      video_subtitle: 'Video is optional, but we highly recommend it! A good video makes the difference and can be largely responsible for the success of your campaign.'
       reward_subtitle: "If you want to start the campaign without reward and add later also, feel free!"
+      video_html: "Video <span class='fontcolor-terciary'>(optional)</span>"
+      budget: "Budget"
       posts: "Write a new story"
       announce_expiration: 'Deadline for collection'
       announce_expiration_subtitle: 'Choose the date well because you can not change it later. Once your deadline has expired, you will need to confirm your bank details. We will then deposit the money into your account within 10 business days.'
@@ -147,28 +142,16 @@ en:
       announce_expiration: Set deadline
       publish: Continue
     dashboard_nav_links:
-      flex:
-        preview_tab: Preview
-        account_tab: Account
-        basics_tab: Basic
-        goal_tab: Financing
-        budget_tab: Budget
-        card_tab: Card
-        description_tab: Description
-        video_tab: "Video <span class='fontsize-smallest fontcolor-secondary'>(optional)</span>"
-        rewards_tab: "Rewards <span class='fontsize-smallest fontcolor-secondary'>(optional)</span>"
-        about_you_tab: About You
-      aon:
-        preview_tab: Preview
-        account_tab: Account
-        basics_tab: Basic
-        goal_tab: Financing
-        budget_tab: Budget
-        card_tab: Card
-        description_tab: Description
-        video_tab: "Video <span class='fontsize-smallest fontcolor-secondary'>(optional)</span>"
-        rewards_tab: "Rewards <span class='fontsize-smallest fontcolor-secondary'>(optional)</span>"
-        about_you_tab: About You
+      preview_tab: Preview
+      account_tab: Registration data
+      basics_tab: Basic
+      goal_tab: Financing
+      budget_tab: Orçamento
+      card_tab: Card
+      description_tab: Description
+      video_tab: "Video <span class='fontsize-smallest fontcolor-secondary'>(optional)</span>"
+      rewards_tab: "Rewards <span class='fontsize-smallest fontcolor-secondary'>(optional)</span>"
+      about_you_tab: Public Profile
     flex_dashboard_explanation:
       flex:
         kind_text: "You are participating in the flexible model trial period. Your participation is essential to understanding how we can expand this model for all users. %{link}"
