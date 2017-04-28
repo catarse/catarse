@@ -17,7 +17,6 @@ class Reward < ActiveRecord::Base
   validates_presence_of :minimum_value, :description, :deliver_at #, :days_to_delivery
   validates_numericality_of :minimum_value, greater_than_or_equal_to: 10.00, message: 'Amount must be greater than or equal to Rs 100'
   validates_numericality_of :maximum_contributions, only_integer: true, greater_than: 0, allow_nil: true
-  validate :deliver_at_cannot_be_in_the_past
   scope :remaining, -> { where("
                                rewards.maximum_contributions IS NULL
                                OR (
@@ -39,15 +38,6 @@ class Reward < ActiveRecord::Base
 
   before_save :log_changes
   after_save :expires_project_cache
-
-  def deliver_at_cannot_be_in_the_past
-    self.errors.add(:deliver_at, "Delivery forecast must be higher than current") if invalid_deliver_at?
-  end
-
-  def invalid_deliver_at?
-    return false unless deliver_at.present?
-    deliver_at.end_of_month < Time.current.beginning_of_month
-  end
 
   def log_changes
     self.last_changes = self.changes.to_json
