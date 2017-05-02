@@ -19,6 +19,18 @@ RSpec.describe BalanceTransfer, type: :model do
     it { is_expected.to belong_to :project }
     it { is_expected.to belong_to :user }
     it { is_expected.to have_many :transitions }
+    it { is_expected.to have_many :balance_transactions }
+  end
+
+  describe 'from processing to error' do
+    it do
+        balance_transfer.transition_to(:authorized)
+        balance_transfer.transition_to(:processing)
+        expect(balance_transfer).to receive(:refund_balance).and_call_original
+        balance_transfer.transition_to(:error)
+        balance_transfer.reload
+        expect(balance_transfer.balance_transactions.last).not_to be_nil
+    end
   end
 
   describe 'from processing to transferred' do

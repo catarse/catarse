@@ -1,6 +1,7 @@
 class BalanceTransfer < ActiveRecord::Base
   belongs_to :project
   belongs_to :user
+  has_many :balance_transactions
 
   has_many :transitions,
     class_name: 'BalanceTransferTransition',
@@ -30,6 +31,16 @@ class BalanceTransfer < ActiveRecord::Base
 
   def state
     state_machine.current_state || 'pending'
+  end
+
+  def refund_balance
+    self.transaction do
+      balance_transactions.create!(
+        amount: amount,
+        user_id: user_id,
+        event_name: 'balance_transfer_error'
+      )
+    end
   end
 
   %w(pending authorized processing transferred error rejected).each do |st|
