@@ -3,9 +3,7 @@ class BalanceTransaction < ActiveRecord::Base
   belongs_to :contribution
   belongs_to :user
 
-  validates :event_name, uniqueness: { scope: %i(user_id project_id) }
-  validates :event_name, uniqueness: { scope: %i(user_id contribution_id) }
-  validates :event_name, inclusion: { in: %w(transfered_project_pledged successful_project_pledged catarse_project_service_fee irrf_tax_project) }
+  validates :event_name, inclusion: { in: %w(balance_transfer_request balance_transfer_error transfered_project_pledged successful_project_pledged catarse_project_service_fee irrf_tax_project) }
   validates :amount, :event_name, :user_id, presence: true
 
   def self.insert_successful_project_transactions(project_id)
