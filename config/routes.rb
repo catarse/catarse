@@ -164,6 +164,13 @@ Catarse::Application.routes.draw do
   resources :feedbacks, only: [:create]
 
   namespace :admin do
+    resources :balance_transfers do
+      collection do
+        post 'batch_approve'
+        post 'batch_reject'
+      end
+    end
+
     resources :projects, :flexible_projects, controller: 'projects', only: [ :index, :update, :destroy ] do
       member do
         put 'approve'
