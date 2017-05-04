@@ -22,20 +22,8 @@ module Project::BaseValidator
         unless: ->(project) { project.video_thumbnail.present? }
 
       wo.validate do
-        unless self.user.bank_account
-          self.errors.add(:bank_account, 'Dados financeiros invalidos')
-        end
-
         self.user.publishing_project = true
         self.user.valid?
-
-        if self.user.bank_account
-          self.user.bank_account.valid?
-        else
-          self.user.build_bank_account
-          self.user.bank_account.valid?
-        end
-
         self.user.errors.each do |error, error_message|
           self.errors.add('user.' + error.to_s, error_message)
         end
