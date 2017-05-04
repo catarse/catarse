@@ -11,7 +11,11 @@ class BalanceTransfer < ActiveRecord::Base
     where("balance_transfers.current_state = 'processing'")
   }
 
-  delegate :can_transition_to?, :transition_to, to: :state_machine
+  scope :pending, -> () {
+    where("balance_transfers.current_state = 'pending'")
+  }
+
+  delegate :can_transition_to?, :transition_to, :transition_to!, to: :state_machine
   delegate :project_transfer, to: :project
 
   def refresh_project_amount
