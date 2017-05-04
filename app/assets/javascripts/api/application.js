@@ -23,11 +23,30 @@
   var adminRoot = document.getElementById('new-admin');
 
   if(adminRoot){
+      var adminWrap = function(component, customAttr) {
+          return {
+              controller: function() {
+                  var attr = customAttr;
+
+                  return {
+                      attr: attr
+                  };
+              },
+              view: function(ctrl) {
+                  return m('#app', [
+                      m.component(c.root.Menu, ctrl.attr),
+                      m.component(component, ctrl.attr),
+                      (ctrl.attr.hideFooter ? '' : m.component(c.root.Footer, ctrl.attr))
+                  ]);
+              }
+          };
+      };
     m.route.mode = 'hash';
 
     m.route(adminRoot, '/', {
-      '/': m.component(c.root.AdminContributions, {root: adminRoot}),
-      '/users': m.component(c.root.AdminUsers)
+        '/': adminWrap(c.root.AdminContributions, {root: adminRoot, menuTransparency: false, hideFooter: true}),
+        '/users': adminWrap(c.root.AdminUsers, { menuTransparency: false, hideFooter: true }),
+        '/balance-transfers': adminWrap(c.root.AdminBalanceTranfers, { menuTransparency: false, hideFooter: true })
     });
   }
 
