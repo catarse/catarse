@@ -53,7 +53,7 @@ en:
         user_id: "User ID"
         goal: "Goal"
         total_payment_service_fee: "MP rate"
-        total_catarse_fee: "JVN Rate"
+        total_catarse_fee: "Grasruts Rate"
         zero_fee: "Support without fee?"
         repass_value: "Vl. Pass through"
         expires_at: "Ends"
@@ -123,7 +123,7 @@ en:
       index:
         details:
           payer_email: "Payment medium email"
-          normal_email: "E-mail no JVN"
+          normal_email: "E-mail no Grasruts"
           payment_id: "Payment ID"
           acquirer_tid: "TID Operator"
           payment_method: "Means of Payment"
@@ -143,7 +143,7 @@ en:
         send_refund_request_contribution: "Submit Refund Request"
         payer_email: "Payment medium email"
         payment_id: "Payment Id"
-        user_email: "Email used to JVN"
+        user_email: "Email used to Grasruts"
         push_to_trash: "Delete contribution"
         cancel: "Cancel contribution"
         between_values: "Values ​​between"

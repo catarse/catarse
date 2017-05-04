@@ -55,7 +55,7 @@ class ApplicationController < ActionController::Base
   end
 
   def referral_it!
-    if request.env["HTTP_REFERER"] =~ /myjvn\.com/
+    if request.env["HTTP_REFERER"] =~ /grasruts\.com/
       # For local referrers we only want to store the first ref parameter
       cookies[:referral_link] ||= build_cookie_structure(params[:ref])
       cookies[:origin_referral] ||= build_cookie_structure(request.env["HTTP_REFERER"])

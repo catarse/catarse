@@ -63,7 +63,7 @@ window.CatarseAnalytics = window.CatarseAnalytics || (function(){
       var UUID=function(){for(var dec2hex=[],i=0;15>=i;i++)dec2hex[i]=i.toString(16);return function(){for(var uuid="",i=1;36>=i;i++)uuid+=9===i||14===i||19===i||24===i?"-":15===i?4:20===i?dec2hex[4*Math.random()|8]:dec2hex[15*Math.random()|0];return uuid}}();
       sid=UUID();
     }
-    cookie.set('ctrse_sid',sid,180,'/',false,'.myjvn.com');
+    cookie.set('ctrse_sid',sid,180,'/',false,'.grasruts.com');
     return sid;
   })(monster);
 
@@ -106,7 +106,7 @@ window.CatarseAnalytics = window.CatarseAnalytics || (function(){
       } catch(e) {
         o = {createdAt: new Date()};
       }
-      var fromCatarse=request.referrer && /^https?:\/\/([^\\/]+\.)?myjvn\.com/.test(request.referrer);
+      var fromCatarse=request.referrer && /^https?:\/\/([^\\/]+\.)?grasruts\.com/.test(request.referrer);
       if(fromCatarse) {
         //Just get the last ref. Do not update utms...
         o.ref = (request.query&&request.query.ref) || o.ref; //Preference for query.
@@ -137,7 +137,7 @@ window.CatarseAnalytics = window.CatarseAnalytics || (function(){
       }
       //We do _time here because of the check up! O._time, indicating q was created now.
       o._time=new Date().getTime();
-      cookie.set('ctrse_origin',JSON.stringify(o),180,'/',false,'.myjvn.com');
+      cookie.set('ctrse_origin',JSON.stringify(o),180,'/',false,'.grasruts.com');
       return o;
     })(_actualRequest(),monster);
   } catch(e) {

@@ -54,7 +54,7 @@ en:
     credits:
       modal:
         title: 'Do you really want to request a refund of your support?'
-        text: "Learn how the reimbursement process works in JVN:"
+        text: "Learn how the reimbursement process works in Grasruts:"
         link: "Rules and Functioning of Refunds / Charges"
         reject_btn: "No, I want to keep my credits"
         accept_btn: "Yes, I would like to request a refund of my"
@@ -82,7 +82,7 @@ en:
       bank_account_title: "Bank data"
       bank_account_hint: "Your bank details will be used to make the full refund of your support, if the project does not reach 100% of the established goal."
       my_facebook: 'Integration with facebook'
-      newsletter: "I want to receive news from JVN by email"
+      newsletter: "I want to receive news from Grasruts by email"
       password_hint: "<i>Leave blank if you do not want to change your password</i>"
       deactivate: "Disable my account"
       deactivate_notice: "The account for %{name} has been disabled."
@@ -113,7 +113,7 @@ en:
     show:
       projects:
         here: 'on here'
-        no_projects: "%{name} has not yet performed any projects on JVN. Is the inspiration going to hit an hour like this?"
+        no_projects: "%{name} has not yet performed any projects on Grasruts. Is the inspiration going to hit an hour like this?"
         no_projects_current_user_html: "You have not done any projects in Catarse yet. Let the inspiration beat and click %{link} to get started!"
         title: "%{name} Projects"
         title_current_user: "My projects"

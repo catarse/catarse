@@ -17,7 +17,7 @@ en:
       announce_expiration_subtitle: 'Choose the date well because you can not change it later. Once your deadline has expired, you will need to confirm your bank details. We will then deposit the money into your account within 10 business days.'
       budget_subtitle: "How will your money be used? The more transparency the better. Show what steps and processes will be involved in using these resources. A list with the top budget items or even a pie chart will go super well here."
       card: 'Card'
-      card_subtitle: 'Do you know that these design card will appear in the home page and the JVN search result? Well, it makes it nice because they say the first impression is the one that stays ;)'
+      card_subtitle: 'Do you know that these design card will appear in the home page and the Grasruts search result? Well, it makes it nice because they say the first impression is the one that stays ;)'
       basics: 'Fill In The Information Below'
       basics_subtitle: 'The data reported in this section can not be modified when the campaign is published. Fill in carefully and review before launching the campaign. '
       goal: 'Financing'
@@ -92,7 +92,7 @@ en:
         header2: "Be sure to read:"
       rejected:
         title: "%{name}, unfortunately it was not this time."
-        subtitle_html: "You submitted your project for JVN review and we understand that it does not match the site profile. Having a rejected project does not prevent you from submitting new projects for evaluation or reformulating your current project. Chat with our customer service! We recommend that you take a good look at %{link1} and %{link2}."
+        subtitle_html: "You submitted your project for Grasruts review and we understand that it does not match the site profile. Having a rejected project does not prevent you from submitting new projects for evaluation or reformulating your current project. Chat with our customer service! We recommend that you take a good look at %{link1} and %{link2}."
       online:
         title: "%{name}, your campaign is online!"
         subtitle_html: "Your project is running, and your campaign will close at 23:55:45 p.m. on day %{date}. Until that day and time you can receive support. Remember, it's all-or-nothing and you'll only take the funds raised if you hit the goal that was stipulated. Visit our% {link2} for other questions!"
@@ -115,7 +115,7 @@ en:
       failed:
         title: "%{name}, do not be discouraged!"
         subtitle_html: "Your project has not hit the target and we know that this is not the best of sensations. But do not be discouraged. Take the process as an apprenticeship and be sure to consider a second try. Do not worry, all your supporters will get the money back. %{link}."
-        questions: "We also sent an email to you with two questions. If you have the time and the head, it would be great if you could take a look. Your feedback helps us build a better and cooler JVN for you."
+        questions: "We also sent an email to you with two questions. If you have the time and the head, it would be great if you could take a look. Your feedback helps us build a better and cooler Grasruts for you."
       draft:
         title: "%{name}, build your project!"
         subtitle: "The more careful and well-formatted a campaign, the greater the chances of it being successful and reaching the goal. Before you submit your project for our review, fill all the tabs next to it with care. You can save the changes and go back to the draft project as many times as you want. When everything is ready, click on the SEND button and we will contact you to evaluate your project."
@@ -172,7 +172,7 @@ en:
       name_label: "Name"
       name_hint: "This is the name that users will see in your profile."
       email_label: Registration Email
-      email_hint: Email for you to log into JVN and communicate with our team and with your supporters
+      email_hint: Email for you to log into Grasruts and communicate with our team and with your supporters
     dashboard_goal:
       want_more: 'Want to understand more?'
       online_days_closed: 'Definite time'
@@ -184,16 +184,16 @@ en:
       online_days_aon_hint: 'It is the period when your campaign will be online, open to fundraising. In All or Nothing, you can choose between 1 and 60 days.&nbsp;<a class="alt-link" href=" https://catarse.attach.io/HJGoCzmJl" target="_blank">Know our tips for defining your deadline.</a>'
       goal_label: 'Goal of collection'
       goal_hint: 'How much do you need to raise? Set a goal consistent with what your campaign proposes. Do not forget to include administrative fees in your calculation.'
-      goal_taxes_link: 'Understand JVN rates'
-      goal_taxes_label: 'JVN Fees'
+      goal_taxes_link: 'Understand Grasruts rates'
+      goal_taxes_label: 'Grasruts Fees'
       goal_taxes_watch_video_html: '<a class="fontsize-small" href="http://fazum.catarse.me/agradecimento-video-tutorial-orcamento-basico" target="_blank">Watch our <span class="fontweight-bold">Basic budget video lesson</span></a>'
-      goal_aon_taxes_hint: 'It is the amount that will be deducted from your collection at the end of the campaign, regarding the services of JVN and the means of payment. If your campaign reaches or exceeds the target, 5% of the total collected at the end of the campaign will be charged. If your campaign does not reach the goal, all the money backed will be returned to your supporters after the campaign ends, at no cost to you. It`s all or nothing!'
-      goal_flex_taxes_hint: 'It is the amount that will be deducted from your collection at the end of the campaign, regarding the services of the JVN and the means of payment. 5% of the total collected at the end of the campaign will be charged, regardless of whether the target is reached or not.'
+      goal_aon_taxes_hint: 'It is the amount that will be deducted from your collection at the end of the campaign, regarding the services of Grasruts and the means of payment. If your campaign reaches or exceeds the target, 5% of the total collected at the end of the campaign will be charged. If your campaign does not reach the goal, all the money backed will be returned to your supporters after the campaign ends, at no cost to you. It`s all or nothing!'
+      goal_flex_taxes_hint: 'It is the amount that will be deducted from your collection at the end of the campaign, regarding the services of the Grasruts and the means of payment. 5% of the total collected at the end of the campaign will be charged, regardless of whether the target is reached or not.'
       mode_label: 'Type of financing'
       mode_hint: 'Choose the template for your collective financing campaign. After starting your campaign, you will not be allowed to trade.'
       mode_diff_ebook: '<a class="fontsize-small" href="https://catarse.attach.io/BkLCRfXyg" target="_blank">Download our <span class="fontweight-bold">Ebook Flex vs All or Nothing</span></a>'
       mode_diff_link: 'See the difference between the models'
-      flex_diff_html: '<span class="fontweight-semibold">Commitment&nbsp;<br></span>You agree to execute the campaign and deliver the rewards (if you have chosen to offer them), <span class="fontweight-semibold">Regardless of the amount collected</span><br><br><span class="fontweight-semibold">How it works?</span><br>You receive, at the end of the term, all that you have collected (discounting only the rate of the JVN), regardless of reaching the collection goal.<br><br><span class="fontweight-semibold">Deadline for the project in the air: </span>12 months<br><br><span class="fontweight-semibold">Rates: </span>5% of total collected'
+      flex_diff_html: '<span class="fontweight-semibold">Commitment&nbsp;<br></span>You agree to execute the campaign and deliver the rewards (if you have chosen to offer them), <span class="fontweight-semibold">Regardless of the amount collected</span><br><br><span class="fontweight-semibold">How it works?</span><br>You receive, at the end of the term, all that you have collected (discounting only the rate of the Grasruts), regardless of reaching the collection goal.<br><br><span class="fontweight-semibold">Deadline for the project in the air: </span>12 months<br><br><span class="fontweight-semibold">Rates: </span>5% of total collected'
       aon_diff_html: '<span class="fontweight-semibold">Commitment&nbsp;</span><br>You agree to execute the campaign and deliver the rewards only <span class="fontweight-semibold">If the revenue reaches or exceeds the target.</span><br><br><span class="fontweight-semibold">How it works?</span><br>You only receive the amount collected if, at the end of the term,&nbsp;Has reached the collection goal. Otherwise, all your supporters receive their payments back.<br><br><span class="fontweight-semibold">Deadline for the project in the air: </span>60 days&nbsp;&nbsp;<br><br><span class="fontweight-semibold">Rate: </span>5% of total collected'
       submit: "Save"
       kind_label: "Type of financing"
@@ -241,7 +241,7 @@ en:
       submit: Save
       video_label: 'Campaign video'
       video_hint: 'Link to Vimeo or Youtube. This is the main video for your campaign.'
-      video_alert: '<span class="fa fa-fw fa-lightbulb-o"></span>See examples of <a class="alt-link" href="http://crowdfunding.catarse.me/videomakers?ref=ctrse_dashboard_video" target="_blank"> Videos of JVN!</a>'
+      video_alert: '<span class="fa fa-fw fa-lightbulb-o"></span>See examples of <a class="alt-link" href="http://crowdfunding.catarse.me/videomakers?ref=ctrse_dashboard_video" target="_blank"> Videos of Grasruts!</a>'
       aon:
         card_label: "Video"
         video_url: "Project video"
@@ -253,7 +253,7 @@ en:
         video_url_hint: ""
         video_url_subtitle: "Link to Vimeo or Youtube. This is the main video for your campaign."
     dashboard_basics:
-      permalink: 'Link to your campaign on JVN'
+      permalink: 'Link to your campaign on Grasruts'
       permalink_hint: 'You can edit it until the campaign goes online. Choose something simple, straightforward and that identifies your campaign well. Try not to use hyphen, underline etc.'
       tags: 'Tags'
       tags_hint: 'List up to 5 keywords related to your campaign and facilitate discovery by supporters.'
@@ -265,7 +265,7 @@ en:
       city_hint: 'Where will your campaign be carried out? If it happens in more than one place, one tip is to put the city where your network of potential supporters is larger.'
       online_date: 'Published date'
       user_id: 'User ID'
-      service_fee: 'JVN rate'
+      service_fee: 'Grasruts rate'
       name: 'Campaign Name'
       name_hint: 'Give a name that people will remember easily. Do not exceed more than 50 characters.'
       name_label: 'The more direct the better. Do not exceed 50 characters'
@@ -277,7 +277,7 @@ en:
       online_days: 'Deadline for collection'
       online_days_label: 'You can choose between 1 and 60 days for your campaign. Check out the filmmakers` guide for timeline tips.'
       value: 'Amount to be collected'
-      value_secondary: 'Plan a goal that is consistent with what your project proposes. Review your budget and be sure to include the 13% fee charged by the JVN if your project is successful'
+      value_secondary: 'Plan a goal that is consistent with what your project proposes. Review your budget and be sure to include the 13% fee charged by the Grasruts if your project is successful'
       form:
         submit: 'Save'
     contributions_report:
@@ -291,7 +291,7 @@ en:
             text: 'Amount refunded to supporter.'
           paid:
             label: 'Refund not started'
-            text: 'Sketchpad has not yet provided bank details for the JVN to make the refund or the data provided is incorrect.'
+            text: 'Sketchpad has not yet provided bank details for the Grasruts to make the refund or the data provided is incorrect.'
         successful:
           paid:
             label: 'Confirmed'
