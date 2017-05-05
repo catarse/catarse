@@ -31,11 +31,14 @@ p
   | CPF/CNPJ do realizador: #{owner_document}
 
 p
-  ' É importante ressaltar que o Catarse é apenas intermediador desse processo,
-  ' portanto, se tiver alguma dúvida em relação ao projeto entre
-  ' em contato diretamente com o realizador através do e-mail #{mail_to owner.try(:email)}.
-  ' Ah! Lembre-se de guardar este email, pois ele contém informações importantes
-  ' a respeito da sua contribuição ao projeto.
+  ' É importante ressaltar que o Catarse <strong>não uma loja</strong>,
+  ' e que esse recibo é referente a um apoio que você fez para uma projeto que você acredita ser viável.
+  ' O Catarse não é responsável pela execução desse projeto ou pela entrega das recompensas.
+  ' #{link_to 'Relembre aqui', 'http://suporte.catarse.me/hc/pt-br/articles/115002214043'} como funciona o Financiamento Coletivo e quais são os papéis e responsabilidades
+  ' do Catarse, do Apoiador e do Realizador.
+  ' Caso tenha alguma dúvida em relação ao projeto ou recompensa selecionada 
+  ' entre em contato diretamente com o realizador através do e-mail #{mail_to owner.try(:email)}.
+  
 p Se ficou com alguma dúvida, entre em contato conosco respondendo a esta mensagem ou através do e-mail #{mail_to CatarseSettings[:email_contact]}
 
 p
