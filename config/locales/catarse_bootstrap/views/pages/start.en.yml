@@ -230,7 +230,7 @@ en:
             answer: 'It depends on the type of financing you choose. In the "All or Nothing" model, you only get the money if you reach the collection goal in the campaign time stipulated by you. If the campaign does not meet the collection goal, we will fully refund the money to your supporters, at no cost to you or your supporter. <br> <br> In the flexible mode of financing, affectionately called "Flex", you get all the money you can get regardless of hitting the target or not.'
           2:
             question: 'What are our rates?'
-            answer: 'In the All or Nothing model, Grasruts only charges the 5% + online payment portal fees on the total amount raised if you reach 100% or more of your goal. Otherwise, we will refund the money to the supporters and we will not charge anyone anything. <br> <br> In the Flex model, the Grasruts charges 5% + online payment portal fees of the total collected by the campaign.'
+            answer: 'In the All or Nothing model, Grasruts only charges the 5% on the total amount raised if you reach 100% or more of your goal. Otherwise, we will refund the money to the supporters and we will not charge anyone anything. <br> <br> In the Flex model, the Grasruts charges 5% of the total collected by the campaign.'
           3:
             question: 'Where does the money for my campaign comes from?'
             answer: 'Family, friends, fans and members of communities that you are part of are your greatest contributors. You shake this network, win support and promote the campaign. Supporters advertise and recommend their campaign to others they know, and so the circle of supporters grows and the campaign gets funded. The key is to build a good campaign, plan your campaign well and know how to target your outreach efforts to those who really care about what you are proposing in your crowdfunding campaign.'
@@ -250,6 +250,6 @@ en:
         flex:
           info: 'At the end of the campaign, you get all the money, even without reaching the collection goal.'
           info_2: 'Maximum time online: 12 months'
-        tax_info: 'Rate: 5% of the total collected + online payment portal charges'
+        tax_info: 'Rate: 5% of the total collected'
         failed_info: 'Flex campaigns that do not reach the goal will get their total collected fund. '
         more_link: '<a href="http://fazum.catarse.me/tudoounada-ou-flex?utm_source=start&utm_medium=link&utm_content=Saiba%20mais%20sobre%20as%20taxas%20e%20modalidades&utm_campaign=ebook-tudoounada-flex" class="alt-link" target-"_blank">Learn more about rates and modalities</a>'
