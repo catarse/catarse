@@ -1,8 +1,12 @@
 - contribution = @notification.contribution
-- expire_date = contribution.details.ordered.first.gateway_data["boleto_expiration_date"].to_datetime.strftime('%d/%m')
+- expire_date = contribution.payments.last.gateway_data.try(:[], "boleto_expiration_date").try(:to_datetime).try(:strftime, '%d/%m')
 
 p Olá, <strong>#{contribution.user.display_name}</strong> !
-p #{expire_date} é o dia do vencimento do boleto gerado para apoiar o #{contribution.project.name}.
+
+- if expire_date.present?
+  p #{expire_date} é o dia do vencimento do boleto gerado para apoiar o #{contribution.project.name}.
+- else
+  p Boleto gerado para apoiar o #{contribution.project.name}.
 
 p #{contribution.project.user.display_name} está contando com o seu apoio para que o projeto seja financiado.
 
