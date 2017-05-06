@@ -24,7 +24,7 @@
 //= require jquery-typewatch
 //= require store
 //= require mithril/mithril.js
-//= require mithril-postgrest
+//= require mithrill-grasruts-postgrest
 // *********************************
 //  Rails GEMs front-end dependencies
 // *********************************
