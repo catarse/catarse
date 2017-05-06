@@ -1,7 +1,7 @@
 - content_for :title, t('.page-title', name: @project.name)
 - content_for :tracker_snippet_html do
   == @project.tracker_snippet_html
+- content_for :application_js do
+  = javascript_include_tag "api/application"
 
-  #application[data-parameters=@project.to_js_json(current_user) data-stats=@project.to_analytics_json]
-  - content_for :application_js do
-    = javascript_include_tag "api/application"
+#application[data-parameters=@project.to_js_json(current_user) data-stats=@project.to_analytics_json]
