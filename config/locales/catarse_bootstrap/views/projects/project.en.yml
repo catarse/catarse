@@ -6,10 +6,10 @@ en:
       see_all: more
       banners:
         1:
-          title: 'Collective  Financing For All'
+          title: 'How Can Crowdfunding Help You?'
           subtitle: ''
-          link: '/start?ref=home_banner'
-          cta: 'Start Your Campaign'
+          link: 'https://medium.com/grasruts/how-can-crowdfunding-help-you-8e06f1ed9bc3'
+          cta: ' Learn How '
           image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-fctodos.jpg'
 #        2:
 #          title: '2016'
