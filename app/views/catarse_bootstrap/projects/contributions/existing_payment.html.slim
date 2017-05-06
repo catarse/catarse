@@ -2,7 +2,7 @@
 
 = render 'shared/header'
 
-= render 'projects/project_header'
+//= render 'projects/project_header'
 
 - detail = @contribution.details.ordered.first 
 .w-section.section-one-column
@@ -16,11 +16,11 @@
             = t('.warning_subtitle')
           .w-row.w-hidden-small.w-hidden-tiny.card.card-secondary.fontsize-small.fontweight-semibold
             .w-col.w-col-4
-              = Contribution.human_attribute_name(:value)   
+              = Contribution.human_attribute_name(:value)
             .w-col.w-col-4
-              = Payment.human_attribute_name(:state)   
+              = Payment.human_attribute_name(:state)
             .w-col.w-col-4
-              = Contribution.human_attribute_name(:reward)   
+              = Contribution.human_attribute_name(:reward)
           .w-row.card.u-marginbottom-30
             .w-col.w-col-4.u-marginbottom-10
               .fontsize-base.inline-block

@@ -4,17 +4,17 @@ en:
       page-title: "know more"
       hero:
         title: "Take paper designs!"
-        people_html: "People have already supported at least 1 project in the JVN"
-        projects_html: "Projects have already been funded by the JVN"
+        people_html: "People have already supported at least 1 project in the Grasruts"
+        projects_html: "Projects have already been funded by the Grasruts"
         money_html: "Donated to projects published here"
-        success: "Projects have already been funded by the JVN"
+        success: "Projects have already been funded by the Grasruts"
         money: "Donated to projects published here"
       idea:
         title: "It all starts with a project!"
         subtitle: "But having a project is not enough. You need access to the people you care about and the resources you need to make it come true."
       fund:
         title: "Collective Financing"
-        subtitle: "In the JVN, this is possible. Multi-category project managers connect to supporters interested in contributing small grants."
+        subtitle: "In the Grasruts, this is possible. Multi-category project managers connect to supporters interested in contributing small grants."
       campaign:
         title: "Collection campaigns"
         subtitle: "Directors have up to 60 days to capture the financial goal they have determined for the project to take place. In exchange for the supports, they offer creative rewards."
@@ -25,7 +25,7 @@ en:
         title: "The project leaves the paper."
         subtitle: "Supporters want to see the project happen. With the success of the campaign, filmmakers produce the project and prepare the delivery of rewards to supporters!"
       cta:
-        title: "Get to know the JVN in practice"
+        title: "Get to know the Grasruts in practice"
         backer-cta: "Become a supporter, help people, and receive unique rewards"
         backer-link: "Support a project"
         maker-cta: "Be a director, show your project to the world and collect money"
@@ -34,7 +34,7 @@ en:
         humberto:
           text_html: "&#8220; It is a fascinating opportunity to be invited to share a person's dream and still receive a reward for the experience. &#8221;"
           name: "Humberto Figueira"
-          credentials: "Supported more than 150 projects in the JVN"
+          credentials: "Supported more than 150 projects in the Grasruts"
       details:
         fund:
           title: "Collective Financing or Crowdfunding?"
@@ -44,11 +44,11 @@ en:
           text_html: "We believe in the all or nothing model because, in addition to the campaigns collecting more, this is one way to ensure that a project will only happen if it can be delivered as it has been described and promised to the supporters."
         services:
           title: "Our services"
-          text: "The JVN provides support for site users and makes it possible for projects to capture resources quickly and easily using the internet. Anyone over the age of 18 (or younger, but with a legal representative) can use our services and run a crowdfunding campaign as long as the project meets our selection criteria."
+          text: "The Grasruts provides support for site users and makes it possible for projects to capture resources quickly and easily using the internet. Anyone over the age of 18 (or younger, but with a legal representative) can use our services and run a crowdfunding campaign as long as the project meets our selection criteria."
         fees:
           title: "How we stand"
-          text: "We charge 13% of the total value of projects that have met or exceeded the collection goal. We get about 9% and 4% is passed on to Paid.me, the payment method used in the JVN. Projects that did not reach the goal do not have any cost and all the supporters receive the money back."
+          text: "We charge 13% of the total value of projects that have met or exceeded the collection goal. We get about 9% and 4% is passed on to Paid.me, the payment method used in the Grasruts. Projects that did not reach the goal do not have any cost and all the supporters receive the money back."
         work:
           title: "We work with purpose and love."
-          text: "The JVN is independent, open-source, and love-built. Our passion is to build an environment where more and more projects can come to life. Today we are a team of 23 people very willing to help distribute more resources to projects spread throughout Brazil."
+          text: "The Grasruts is independent, open-source, and love-built. Our passion is to build an environment where more and more projects can come to life. Today we are a team of 23 people very willing to help distribute more resources to projects spread throughout Brazil."
       staff: "These are some of us waiting for you to take a project from paper..."

@@ -16,7 +16,7 @@ en:
   days: days
   facebook_locale: en_BR
   failure_title: 'Please fix the following errors:'
-  i_just_contributed: I just supported the project %{name} on JVN
+  i_just_contributed: I just supported the project %{name} on Grasruts
   'no': No
   'yes': Yes
   not_informed: uninformed
@@ -24,7 +24,7 @@ en:
   sending: Sending...
   share_my_contributions: 'Check the project '
   site:
-    description:  JVN is the first hyper local crowdfunding platform, or collective financing, in Nepal. Come and draw projects from paper!
+    description:  Grasruts is the first hyper local crowdfunding platform, or collective financing, in Nepal. Come and draw projects from paper!
     keywords: crowdfunding, Collective financing, project, jvn, community, open source
     meta_title: "%{title} · %{company_name}"
     title: Crowdfunding in Nepal

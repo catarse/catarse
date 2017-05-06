@@ -55,7 +55,7 @@ class ApplicationController < ActionController::Base
   end
 
   def referral_it!
-    if request.env["HTTP_REFERER"] =~ /myjvn\.com/
+    if request.env["HTTP_REFERER"] =~ /grasruts\.com/
       # For local referrers we only want to store the first ref parameter
       cookies[:referral_link] ||= build_cookie_structure(params[:ref])
       cookies[:origin_referral] ||= build_cookie_structure(request.env["HTTP_REFERER"])
@@ -108,8 +108,9 @@ class ApplicationController < ActionController::Base
     email = params['EMAIL']
     if email =~ EMAIL_REGEX
       list_id = CatarseSettings[:sendgrid_newsletter_list_id]
-      client = sendgrid_api.client.contactdb.recipients
-      rr = client.post(request_body: [{email: email}])
+      client = sendgrid_api.client
+
+      rr = client.contactdb.recipients.post(request_body: [{email: email}])
       recipient = JSON.parse(rr.body).try(:[], 'persisted_recipients').try(:first)
       client.contactdb.lists._(list_id).recipients.post(request_body: [recipient])
     end

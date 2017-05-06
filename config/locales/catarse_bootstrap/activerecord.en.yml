@@ -73,14 +73,14 @@ en:
         goal: "Amount to be collected"
         about_html: "Campaign Description"
         user_id: "User ID"
-        service_fee: 'JVN rate'
+        service_fee: 'Grasruts rate'
         video_url: "Video URL"
-        permalink: 'Link To Your Campaign On JVN'
+        permalink: 'Link To Your Campaign On Grasruts'
         all_tags: 'Admin Tags'
         all_public_tags: 'Tags'
         city: 'Campaign Location'
         more_links: 'Indicate links so people know more about your project and its trajectory.'
-        traffic_sources: 'How did you know about JVN?'
+        traffic_sources: 'How did you know about Grasruts?'
         first_contributions: "Who are the first people you're going to ask to support your project? "
         budget: 'Campaign budget'
         uploaded_image: 'Campaign`s Image'
@@ -96,14 +96,14 @@ en:
         goal: "Amount to be collected"
         about_html: "Campaign Description"
         user_id: "User ID"
-        service_fee: 'JVN rate'
+        service_fee: 'Grasruts rate'
         video_url: "Video URL"
-        permalink: 'Link To Your Campaign On JVN'
+        permalink: 'Link To Your Campaign On Grasruts'
         all_tags: 'Admin Tags'
         all_public_tags: 'Tags'
         city: 'Project Location'
         more_links: 'Indicate links so people know more about your project and its trajectory.'
-        traffic_sources: 'How did you know about JVN?'
+        traffic_sources: 'How did you know about Grasruts?'
         first_contributions: "Who are the first people you're going to ask to support your project? "
         budget: 'Camapign Budget'
         uploaded_image: 'Campaign`s Image'
@@ -125,7 +125,7 @@ en:
         full_name: "Full Name / Company Name"
         bio: 'Mini Bio'
         name: "Nickname"
-        newsletter: 'I want to receive news from JVN'
+        newsletter: 'I want to receive news from Grasruts'
         password: password
         password_confirmation: "Password Confirmation"
         phone_number: "Phone"
@@ -357,9 +357,9 @@ en:
     deliver_at: Reward submission date
     confirmed_at: Payment Confirmation Date
     contribution_value: Value of support
-    service_fee: JVN Rate
+    service_fee: Grasruts Rate
     user_name: Supporter's name
-    user_email: Email profile JVN
+    user_email: Email profile Grasruts
     cpf: Supporter Cpf
     payer_email: Payment medium email
     gateway: Means of Payment

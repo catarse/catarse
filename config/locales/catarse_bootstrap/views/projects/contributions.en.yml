@@ -38,7 +38,7 @@ en:
           when_about_my_payment_data: 'What can others see of my support?'
           when_about_my_payment_data_answer: 'The project will be added to your support history on your profile, but the amount you`ve backed and the reward you choose will not go public.'
           when_project_owner: 'Who is responsible for the project?'
-          when_project_owner_answer: 'JVN is only a middleman, if you`d like to understand more about the project, contact %{name}'
+          when_project_owner_answer: 'Grasruts is only a middleman, if you`d like to understand more about the project, contact %{name}'
           when_project_funded: 'How do I receive my reward?'
           when_project_funded_answer: 'When your reward is ready, %{name} will contact you to arrange delivery.'
         all_or_nothing:
@@ -99,7 +99,7 @@ en:
           installments: 'Instalments'
           save_card: 'I want to save my credit card for future payments.'
           finish_payment: 'Finish payment'
-          terms_of_use_agreement: "By paying, you agree to JVN's <a class='alt-link' href='/en/terms-of-use'>Terms of Use</a> and <a class='alt-link' href='/en/privacy-policy'>Privacy Policy</a>."
+          terms_of_use_agreement: "By paying, you agree to Grasruts's <a class='alt-link' href='/en/terms-of-use'>Terms of Use</a> and <a class='alt-link' href='/en/privacy-policy'>Privacy Policy</a>."
         errors:
           global: 'Please, take a look at the following errors: '
           inline:
@@ -162,7 +162,7 @@ en:
           installments: 'Instalments'
           save_card: 'I want to save my credit card for future payments.'
           finish_payment: 'Finish payment'
-          terms_of_use_agreement: "By paying, you agree to JVN's <a class='alt-link' href='/en/terms-of-use'>Terms of Use</a> and <a class='alt-link' href='/en/privacy-policy'>Privacy Policy</a>."
+          terms_of_use_agreement: "By paying, you agree to Grasruts's <a class='alt-link' href='/en/terms-of-use'>Terms of Use</a> and <a class='alt-link' href='/en/privacy-policy'>Privacy Policy</a>."
         errors:
           global: 'Please, take a look at the following errors: '
           inline:
@@ -193,7 +193,7 @@ en:
         review_errors_title: "Check the reported data"
         review_errors: "Some information is missing or has not been entered correctly, correct all fields marked in red and tesnte again"
         anonymous_confirmation_title: "Are you sure you want your support not to be public?"
-        anonymous_confirmation: "Choosing this option your support will not be public to other JVN users. Only you and the Project Director will have access to your support information."
+        anonymous_confirmation: "Choosing this option your support will not be public to other Grasruts users. Only you and the Project Director will have access to your support information."
         anonymous_contribution: "I want my support not to be public"
         form_labels:
           user_another_card: "Use another credit card"
@@ -206,11 +206,11 @@ en:
           payment_card_installments: 'Plots'
         installment_with_tax: 'interest-free'
         transaction_error: 'Transaction declined, please double check your data or contact the bank / card issuer for more information.'
-        pagarme_warning_html: "The JVN is in the process of testing a new means of payment that will facilitate financial support and possible reimbursement of amounts to supporters. Therefore, we caution that extra data, in addition to those mentioned in the Terms of Use, may be required to support this campaign. If you have any questions or concerns, please contact us at %{mailto}. Thank you."
+        pagarme_warning_html: "The Grasruts is in the process of testing a new means of payment that will facilitate financial support and possible reimbursement of amounts to supporters. Therefore, we caution that extra data, in addition to those mentioned in the Terms of Use, may be required to support this campaign. If you have any questions or concerns, please contact us at %{mailto}. Thank you."
         payment_save_card: 'I want to save my credit card to facilitate future support.'
         reward_sold_out: That reward is exhausted. Start new support.
         page-title: Support %{name}
-        credits_preview_html: "You have <strong> %{credits} </strong> credits for this support <strong> by 10/11 </strong>, as <a href='http://blog.catarse.me/simplification-refunds-and-end-of-credits/' target='__blank'> new rules </a> released by JVN."
+        credits_preview_html: "You have <strong> %{credits} </strong> credits for this support <strong> by 10/11 </strong>, as <a href='http://blog.catarse.me/simplification-refunds-and-end-of-credits/' target='__blank'> new rules </a> released by Grasruts."
         credits_submit: 'Make the payment'
         credits_title: 'Payment with credits'
         insufficient_credits: "You have %{credits} in credits. This amount is not enough to support, please choose another payment method."

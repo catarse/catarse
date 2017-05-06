@@ -1,27 +1,27 @@
 en:
   pages:
     start:
-      header_html: JVN - It`s Time To Fund Your Idea
-      description: 'JVN is a hyperlocal and open source crowdfunding platform, or collective financing, in Nepal. Come and draw campaigns from paper!'
+      header_html: Grasruts - It`s Time To Fund Your Idea
+      description: 'Grasruts is a hyperlocal and open source crowdfunding platform, or collective financing, in Nepal. Come and draw campaigns from paper!'
       title: 'Crowdfunding and collective financing in Nepal'
       tagline: 'Crowdfunding and collective financing in Nepal'
-      page-title: "How does JVN work?"
+      page-title: "How does Grasruts work?"
       page-subtitle: 'Get to know the basic pillars of collective financing campaign'
       title: "Finance your campaign collectively"
       submit: "GET STARTED FOR FREE"
       learn-more: "know more"
       slogan: 'It`s Time To Fund Your Idea'
       header:
-        people: "People have already supported at least 1 campaign in JVN"
+        people: "People have already supported at least 1 campaign in Grasruts"
         success: 'Campaigns have already been funded here'
-        money: 'They were invested in ideas published in the JVN'
+        money: 'They were invested in ideas published in the Grasruts'
       banner:
         1: 'Supporters'
         2: 'Your friends, family and other people interested in the campaign.'
         3: 'Rewards'
         4: 'It`s what you offer in exchange for the contribution.'
         5: 'Goal'
-        6: 'How much you want to raise in JVN.'
+        6: 'How much you want to raise in Grasruts.'
         7: 'Time'
         8: 'This is the period when your campaign will be open to receiving support.'
       features:
@@ -38,7 +38,7 @@ en:
         subtitle: 'Feel the rush...'
         src: 'z7FBAjkcLG8'
       categories:
-        title: 'JVN has room for various types of campaigns! View our categories!'
+        title: 'Grasruts has room for various types of campaigns! View our categories!'
         pledged: 'You raised Rs {{pledged}} with {{contributors}} support for the campaign'
         loading_featured: 'Loading Highlighted Campaigns...'
         no_featured: 'No Featured Campaigns.'
@@ -213,43 +213,43 @@ en:
       qa:
         col_1:
           1:
-            question: 'Why start campaign on JVN?'
+            question: 'Why start campaign on Grasruts?'
             answer: 'Firstly, because we are extremely committed and passionate about what we do and want to see your campaign funded. But also because we are the first platform in action in Nepal. We are working independently to develop the campaign financing scenario in Nepal and enable more people to realize their ideas, dreams, and visions.'
           2:
-            question: 'Is it too hard to have a JVN campaign?'
-            answer: 'Each campaign in JVN has its own particularity and the amount of work varies. Joining a campaign on JVN is very easy, but a campaign has its challenges. The key is to have good campaign planning! We can help you! <a href="#start-form"> Just start your draft. </a>'
+            question: 'Is it too hard to have a Grasruts campaign?'
+            answer: 'Each campaign in Grasruts has its own particularity and the amount of work varies. Joining a campaign on Grasruts is very easy, but a campaign has its challenges. The key is to have good campaign planning! We can help you! <a href="#start-form"> Just start your draft. </a>'
           3:
-            question: 'Does JVN select campaigns that go online?'
+            question: 'Does Grasruts select campaigns that go online?'
             answer: 'No. You create your draft and publish your campaign directly through the site, whenever you want. However, there are a few <a href="/rules"> rules to create campaigns </a> that you must follow so that your campaign has no risk of being reported by the community after the publication.'
           4:
-            question: 'Who can use JVN?'
-            answer: 'JVN provides support for site users and makes it possible for campaigns to capture resources quickly and easily using the internet. Anyone over 18 (or younger, but with a legal representative) can use our services and run a crowdfunding campaign.'
+            question: 'Who can use Grasruts?'
+            answer: 'Grasruts provides support for site users and makes it possible for campaigns to capture resources quickly and easily using the internet. Anyone over 18 (or younger, but with a legal representative) can use our services and run a crowdfunding campaign.'
         col_2:
           1:
             question: 'I need to reach the goal to receive my money?'
             answer: 'It depends on the type of financing you choose. In the "All or Nothing" model, you only get the money if you reach the collection goal in the campaign time stipulated by you. If the campaign does not meet the collection goal, we will fully refund the money to your supporters, at no cost to you or your supporter. <br> <br> In the flexible mode of financing, affectionately called "Flex", you get all the money you can get regardless of hitting the target or not.'
           2:
             question: 'What are our rates?'
-            answer: 'In the All or Nothing model, JVN only charges the 5% + online payment portal fees on the total amount raised if you reach 100% or more of your goal. Otherwise, we will refund the money to the supporters and we will not charge anyone anything. <br> <br> In the Flex model, the JVN charges 5% + online payment portal fees of the total collected by the campaign.'
+            answer: 'In the All or Nothing model, Grasruts only charges the 5% on the total amount raised if you reach 100% or more of your goal. Otherwise, we will refund the money to the supporters and we will not charge anyone anything. <br> <br> In the Flex model, the Grasruts charges 5% of the total collected by the campaign.'
           3:
             question: 'Where does the money for my campaign comes from?'
             answer: 'Family, friends, fans and members of communities that you are part of are your greatest contributors. You shake this network, win support and promote the campaign. Supporters advertise and recommend their campaign to others they know, and so the circle of supporters grows and the campaign gets funded. The key is to build a good campaign, plan your campaign well and know how to target your outreach efforts to those who really care about what you are proposing in your crowdfunding campaign.'
           4:
             question: 'I have more doubts. What do I do?'
-            answer: '<a href="https://jointventurenepal.zendesk.com/hc/en-us/"> Access our Support Center </a> or contact us by email: myjvn@gmail.com'
+            answer: '<a href="https://jointventurenepal.zendesk.com/hc/en-us/"> Access our Support Center </a> or contact us by email: contact@grasruts.com'
       form:
         title: 'I want to start a campaign called'
         select_default: 'Select a category'
         submit: 'Start Your Draft'
       mode:
         title: 'Two models. One fee.'
-        subtitle: 'At JVN you choose the ideal collective funding mode for your campaign, without paying anything extra for it!'
+        subtitle: 'At Grasruts you choose the ideal collective funding mode for your campaign, without paying anything extra for it!'
         aon:
           info: 'At the end of the campaign, you only get the money if you have reached the collection goal.'
           info_2: 'Maximum time online: 60 days'
         flex:
           info: 'At the end of the campaign, you get all the money, even without reaching the collection goal.'
           info_2: 'Maximum time online: 12 months'
-        tax_info: 'Rate: 5% of the total collected + online payment portal charges'
+        tax_info: 'Rate: 5% of the total collected'
         failed_info: 'Flex campaigns that do not reach the goal will get their total collected fund. '
         more_link: '<a href="http://fazum.catarse.me/tudoounada-ou-flex?utm_source=start&utm_medium=link&utm_content=Saiba%20mais%20sobre%20as%20taxas%20e%20modalidades&utm_campaign=ebook-tudoounada-flex" class="alt-link" target-"_blank">Learn more about rates and modalities</a>'

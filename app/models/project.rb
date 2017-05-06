@@ -14,7 +14,6 @@ class Project < ActiveRecord::Base
   include Project::AllOrNothingStateValidator
   include Project::VideoHandler
   include Project::CustomValidators
-  include Project::ErrorGroups
 
   has_notifications
 
@@ -23,7 +22,7 @@ class Project < ActiveRecord::Base
   delegate  :display_card_status, :display_status, :progress,
             :display_image, :display_expires_at, :time_to_go, :elapsed_time,
             :display_pledged, :display_pledged_with_cents, :display_goal, :progress_bar,
-            :status_flag, :display_errors, to: :decorator
+            :status_flag, to: :decorator
 
   self.inheritance_column = 'mode'
   belongs_to :user
@@ -222,14 +221,6 @@ class Project < ActiveRecord::Base
 
   def has_blank_service_fee?
     payments.with_state(:paid).where("NULLIF(gateway_fee, 0) IS NULL").present?
-  end
-
-  def can_show_account_link?
-    ['online', 'waiting_funds', 'successful', 'draft'].include? state
-  end
-
-  def can_show_preview_link?
-    !published?
   end
 
   def subscribed_users

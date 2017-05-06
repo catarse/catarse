@@ -283,7 +283,7 @@ pt:
               blank: "A descrição do projeto não pode ficar em branco"
             headline:
               blank: "A frase de efeito do projeto não pode ficar em branco"
-              too_long: "A frase de efeito é muito longa. Você pode usar um máximo de 140 caracteres."
+              too_long: "A frase de efeito é muito longa. Você pode usar um máximo de 100 caracteres."
         project:
           attributes:
             rewards:
@@ -320,7 +320,7 @@ pt:
               blank: "A descrição do projeto não pode ficar em branco"
             headline:
               blank: "A frase de efeito do projeto não pode ficar em branco"
-              too_long: "A frase de efeito é muito longa. Você pode usar um máximo de 140 caracteres."
+              too_long: "A frase de efeito é muito longa. Você pode usar um máximo de 100 caracteres."
         bank_account:
           attributes:
             bank_id:

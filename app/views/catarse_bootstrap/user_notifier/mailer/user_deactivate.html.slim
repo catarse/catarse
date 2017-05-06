@@ -1,10 +1,10 @@
 p Hi #{@notification.user.display_name},
 
 p 
-  | Your JVN account is already disabled. If you're homesick, you can reactivate your account at any time, just#{link_to('Click here', reactivate_user_url(@notification.user, token: @notification.user.reactivate_token))} And back to supporting or realizing incredible projects.
+  | Your Grasruts account is already disabled. If you're homesick, you can reactivate your account at any time, just#{link_to('Click here', reactivate_user_url(@notification.user, token: @notification.user.reactivate_token))} And back to supporting or realizing incredible projects.
 
 p 
   | Any questions you can contact us by replying to this message or via email #{mail_to CatarseSettings[:email_contact]}
 
 p A hug,
-p JVN
+p Grasruts

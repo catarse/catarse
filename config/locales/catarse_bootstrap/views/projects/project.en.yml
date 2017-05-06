@@ -1,19 +1,19 @@
 en:
   projects:
     home:
-      header_html: 'Joint Venture Nepal'
+      header_html: 'Grasruts'
       row_title: 'Popular'
       see_all: more
       banners:
         1:
-          title: 'Collective  Financing For All'
+          title: 'How Can Crowdfunding Help You?'
           subtitle: ''
-          link: '/start?ref=home_banner'
-          cta: 'Start Your Campaign'
+          link: 'https://medium.com/grasruts/how-can-crowdfunding-help-you-8e06f1ed9bc3'
+          cta: ' Learn How '
           image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-fctodos.jpg'
 #        2:
 #          title: '2016'
-#          subtitle: 'Conheça nossa perspectiva sobre como foi o ano no JVN.'
+#          subtitle: 'Conheça nossa perspectiva sobre como foi o ano no Grasruts.'
 #          link: 'http://ano.catarse.me/2016?ref=home_banner'
 #          cta: 'Saiba mais'
 #          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-2016.jpg'
@@ -53,7 +53,7 @@ en:
       finish_explanation: 'Your campaign is still open. In order to receive the funds in your bank account, you must set an end date for collection.'
       know_more: ' know more.'
       referral:
-        ctrse_explore: 'JVN search'
+        ctrse_explore: 'Grasruts search'
         ctrse_explore_featured_big: 'Big featured design on the explore'
         ctrse_explore_featured_medium: 'Medium featured project do not explore'
         home_recommended: 'Recommended projects on the homepage'
@@ -78,24 +78,24 @@ en:
         notificacao_projeto_nao_financiado: 'Non-funded project notification'
         notificacao_reminder: 'Reminder Notification 48 hours'
         profile_dashboard_created_projects: 'Private Profile of user (created projects)'
-        ctrse_hello: 'JVN Learn More Page'
+        ctrse_hello: 'Grasruts Learn More Page'
         credits_warning_more_group: 'Credit notification'
-        hotsitepesquisa3anos: 'RFCBR JVN Search'
+        hotsitepesquisa3anos: 'RFCBR Grasruts Search'
         ctrse_embed: 'Card project (embed)'
         home_near_of: 'Projects next to me on the homepage'
         credits_warning_less_group: 'Credit notification'
         notificação_resgate_botao: 'Credit redemption notification'
         notificação_resgate_rascunho: 'Creation notification created'
-        ctrse_newsletter: 'JVN Newsletter'
-        ctrse_facebook: 'Facebook from JVN'
-        ctrse_patrocinado_facebook: 'Facebook sponsored by the JVN'
-        ctrse_twitter: 'JVN Twitter'
-        ctrse_instagram: 'Instagram of the JVN'
-        ctrse_blog: 'JVN Blog'
-        ctrse_youtube: 'JVN Youtube'
-        ctrse_universohq: 'HQ Universe (JVN partnership)'
-        ctrse_catraca: 'Free Catraca (JVN partnership)'
-        ctrse_hypeness: 'Hypeness (JVN partnership)'
+        ctrse_newsletter: 'Grasruts Newsletter'
+        ctrse_facebook: 'Facebook from Grasruts'
+        ctrse_patrocinado_facebook: 'Facebook sponsored by the Grasruts'
+        ctrse_twitter: 'Grasruts Twitter'
+        ctrse_instagram: 'Instagram of the Grasruts'
+        ctrse_blog: 'Grasruts Blog'
+        ctrse_youtube: 'Grasruts Youtube'
+        ctrse_universohq: 'HQ Universe (Grasruts partnership)'
+        ctrse_catraca: 'Free Catraca (Grasruts partnership)'
+        ctrse_hypeness: 'Hypeness (Grasruts partnership)'
         others: 'Direct'
       ref_table:
         header:
@@ -110,7 +110,7 @@ en:
           successful: '<span class="fontweight-semibold">%{username} Celebrate that you deserve!</span> Your project was successful and now is the time to start working with your supporters! Special attention to the delivery of rewards. Prometheus? Delivered! Be sure to look at the post-project section of <a class="alt-link" href="/guides">Guide to Filmmakers</a> And to inquire about <a class="alt-link" href="http://suporte.catarse.me/hc/pt-br/articles/217916143" target="_blank">How the money transfer will be done</a>.'
           waiting_funds: '<span class="fontweight-semibold"> %{username} We`re processing the last payments! Your project has been finalized at %{expires_at} and is awaiting confirmation of tickets and payments. Due to the expiration date of tickets, projects that had last-minute endorsements stay for up to 4 business days in that status, counted from the project end date. <a class="alt-link" href="http://suporte.catarse.me/hc/pt-br/articles/217916143" target="_blank">Understand how the money transfer is done for successful projects</a>.'
           failed: '<span class="fontweight-semibold">%{username} Do not be discouraged!</span> Your project has not hit the target and we know that this is not the best of sensations. But do not be discouraged. Take the process as an apprenticeship and be sure to consider a second try. Do not worry, all your supporters will get the money back.<a class="alt-link" href="http://suporte.catarse.me/hc/pt-br/articles/202365507-Regras-e-funcionamento-dos-reembolsos-estornos" target="_blank">Understand how we make chargebacks and refunds</a>.'
-          rejected: '<span class="fontweight-semibold">%{username} Unfortunately it was not this time.</span> You submitted your project for JVN review and we understand that it does not match the site profile. Having a rejected project does not prevent you from submitting new projects for evaluation or reformulating your current project. Chat with our customer service! We recommend that you take a good look at the<a class="alt-link" href="http://suporte.catarse.me/hc/pt-br/articles/202387638-Diretrizes-para-cria%C3%A7%C3%A3o-de-projetos" target="_blank">Platform criteria</a> And in the <a class="alt-link" href="/guides">Director`s guide</a>.'
+          rejected: '<span class="fontweight-semibold">%{username} Unfortunately it was not this time.</span> You submitted your project for Grasruts review and we understand that it does not match the site profile. Having a rejected project does not prevent you from submitting new projects for evaluation or reformulating your current project. Chat with our customer service! We recommend that you take a good look at the<a class="alt-link" href="http://suporte.catarse.me/hc/pt-br/articles/202387638-Diretrizes-para-cria%C3%A7%C3%A3o-de-projetos" target="_blank">Platform criteria</a> And in the <a class="alt-link" href="/guides">Director`s guide</a>.'
           draft: '<span class="fontweight-semibold"> Build your campaign!</span><br/><br/> The more careful and well-formatted a campaign, the greater the chances of it being successful and reaching the goal. Before publishing your campaign, fill all the information with care. You can save the changes and go back to the draft project as many times as you want. When everything is ready, click the CONTINUE button.'
           in_analysis: '<span class="fontweight-semibold">%{username} You submitted your project for review at {sent_to_analysis_at} and will receive our feedback within 4 business days after submission! </span> While waiting for your response, you can continue editing your project. We also recommend that you go collecting feedback with people close to you and planning how your campaign will be. '
           approved: '<span class="fontweight-semibold">%{username} Your project has been approved!</span> To put your project in the air it is only necessary that you fill in the necessary data in the<a class="alt-link" href="#user_settings">Account</a>. It is important to know that we charge the rate of 13% of the total amount collected only for successful projects. Understand <a class="alt-link" href="http://suporte.catarse.me/hc/pt-br/articles/202037493-FINANCIADO-Como-ser%C3%A1-feito-o-repasse-do-dinheiro-" target="_blank">How do we pass the money?</a>.'
@@ -119,7 +119,7 @@ en:
           successful: '<span class = "fontweight-semibold">% {username} Celebrate what you deserve! </ span> Your project was successful and now is the time to start working with your supporters! Special attention to the delivery of rewards. Prometheus? Delivered! Be sure to look at the post-project section of the <a class="alt-link" href="/guides"> Directors Guide </a> and find out about <a class = "alt-link" href = "http://suporte.catarse.me/hc/en/articles/217916143" target = "_ blank"> how the money transfer will be done </a>. '
           failed: 'Your project did not raise any appeal. But do not be discouraged! Take the process as an apprenticeship and be sure to consider a second try.'
           waiting_funds: '<span class="fontweight-semibold">%{username} We`re processing the last payments!</span> Your project has been finalized at %{expires_at} and is awaiting confirmation of tickets and payments. Due to the expiration date of tickets, projects that had last-minute endorsements stay for up to 4 business days in that status, counted from the project end date. <a class="alt-link" href="http://suporte.catarse.me/hc/pt-br/articles/217916143" target="_blank">Understand how the money transfer is done</a> For successful projects.'
-          rejected: '<span class="fontweight-semibold">%{username} Unfortunately it was not this time.</span> You submitted your project for JVN review and we understand that it does not match the site profile. Having a rejected project does not prevent you from submitting new projects for evaluation or reformulating your current project. Chat with our customer service! We recommend that you take a good look at the<a class="alt-link" href="http://suporte.catarse.me/hc/pt-br/articles/202387638-Diretrizes-para-cria%C3%A7%C3%A3o-de-projetos" target="_blank">Platform criteria</a> And in the <a class="alt-link" href="/guides">Director`s guide</a>.'
+          rejected: '<span class="fontweight-semibold">%{username} Unfortunately it was not this time.</span> You submitted your project for Grasruts review and we understand that it does not match the site profile. Having a rejected project does not prevent you from submitting new projects for evaluation or reformulating your current project. Chat with our customer service! We recommend that you take a good look at the<a class="alt-link" href="http://suporte.catarse.me/hc/pt-br/articles/202387638-Diretrizes-para-cria%C3%A7%C3%A3o-de-projetos" target="_blank">Platform criteria</a> And in the <a class="alt-link" href="/guides">Director`s guide</a>.'
           draft: '<span class="fontweight-semibold">%{username} Build your project!</span> The more careful and well-formatted a campaign, the greater the chances of it being successful and reaching the goal. Before publishing your campaign, fill all the adjacent flaps with care. You can save the changes and go back to the draft campaign as many times as you want. When everything is ready, click the CONTINUE button.'
       visitors_per_day_label: 'Visitors per day'
       amount_per_day_label: 'Rs Collected per day'
@@ -215,7 +215,7 @@ en:
               answer: This project will be added to you Backed projects history on your public profile. The selected reward and the contribution amount won't be public.
             4:
               question: Who is the responsible for this project?
-              answer: JVN is just a link between you and the creator. If you want to know more about the project, please get in touch with <a href="%{userLink}" target="_blank">%{userName}</a>
+              answer: Grasruts is just a link between you and the creator. If you want to know more about the project, please get in touch with <a href="%{userLink}" target="_blank">%{userName}</a>
             5:
               question: If this project is funded, how do I get my reward?
               answer: When your reward is ready, <a href="%{userLink}" target="_blank">%{userName}</a> will get in touch with you to arrange the delivery.

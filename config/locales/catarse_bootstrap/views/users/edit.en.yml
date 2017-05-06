@@ -6,7 +6,7 @@ en:
         hello_sub: "We are having trouble talking to you...."
         hello_email: "Is this your contact email? %{email}"
         confirmed_title: "Be sure to check out our emails!"
-        confirmed_sub: "Check your SPAM and authorize JVN emails."
+        confirmed_sub: "Check your SPAM and authorize Grasruts emails."
       contributions: "Contributions"
       project: "Projects"
       about_me: "About me"
@@ -14,10 +14,10 @@ en:
       notifications: "Notifications"
       billing: "Bank and cards"
       profil: "Public profile"
-      feeds: "Ativities"
+      feeds: "Activities"
       submit: "Submit"
       contributions_fields:
-        no-project: "You have not yet supported any projects in &nbsp; JVN..."
+        no-project: "You have not yet supported any projects in &nbsp; Grasruts..."
         contribute: "Participate !"
       about_fields:
         add_link: "+ add a link"
@@ -46,4 +46,4 @@ en:
         bank_account_message: "If the projet that you support didn't succed. You bank account will be automatically refund."
       notifications_fields:
         newsletters: "Newsletters"
-        newsletter_description: "JVN weekly newsletter"
+        newsletter_description: "Grasruts weekly newsletter"

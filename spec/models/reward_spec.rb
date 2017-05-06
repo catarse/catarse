@@ -64,15 +64,6 @@ RSpec.describe Reward, type: :model do
     expect(r).to be_valid
   end
 
-  it "should not allow delivery in the past" do
-    r = build(:reward, project: create(:project, state: 'draft'))
-    expect(r).to receive(:invalid_deliver_at?).at_least(:once).and_call_original()
-    r.deliver_at = Time.current - 1.month
-    expect(r).not_to be_valid
-    r.deliver_at = Time.current + 1.month
-    expect(r).to be_valid
-  end
-
   it "should have maximum contributions > 0" do
     r = build(:reward)
     r.maximum_contributions = -1
@@ -100,34 +91,6 @@ RSpec.describe Reward, type: :model do
     end
 
     it{ is_expected.to eq([@remaining]) }
-  end
-
-  describe "#valid?" do
-    subject{ reward.valid? }
-
-    context "when we have online_date in project and deliver_at is after expires_at" do
-      let(:project){ create_project({state: 'online', online_days: 60}, {created_at: Time.now, to_state: 'online'}) }
-      let(:reward){ build(:reward, project: project, deliver_at: project.expires_at + 1.day) }
-      it{ is_expected.to eq true }
-    end
-
-    context "when we have online_date in project and deliver_at is before expires_at month" do
-      let(:reward){ build(:reward, project: project, deliver_at: project.expires_at - 1.month) }
-      let(:project){ create_project({state: 'online', online_days: 60}, {created_at: Time.now, to_state: 'online'}) }
-      it{ is_expected.to eq false }
-    end
-
-    context "when online_date in project is nil and deliver_at is after current month" do
-      let(:reward){ build(:reward, project: project, deliver_at: Time.now + 1.month) }
-      let(:project){ create(:project, state: 'draft') }
-      it{ is_expected.to eq true }
-    end
-
-    context "when online_date in project is nil and deliver_at is before current month" do
-      let(:reward){ build(:reward, project: project, deliver_at: Time.now - 2.month) }
-      let(:project){ create(:project, state: 'draft') }
-      it{ is_expected.to eq false }
-    end
   end
 
   describe "#total_contributions" do

@@ -23,7 +23,7 @@
           =  hidden_field_tag 'anchor', 'posts'
           =  hidden_field_tag 'cancel_project', 'true'
           = f.simple_fields_for :posts, @project.posts.build do |form|
-            .fontsize-smaller.u-marginbottom-20 Tell me why you're canceling your campaign. This message will be emailed to your supporters and will be public in the "News" tab of your JVN project.
+            .fontsize-smaller.u-marginbottom-20 Tell me why you're canceling your campaign. This message will be emailed to your supporters and will be public in the "News" tab of your Grasruts project.
             .w-form
               = form.label :title, as: :string, class: 'field-label fontweight-semibold'
               = form.input_field :title, as: :string, class: 'w-input text-field positive'

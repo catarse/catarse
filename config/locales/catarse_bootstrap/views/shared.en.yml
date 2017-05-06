@@ -10,7 +10,7 @@ en:
     account_type_value: 'We only accept checking account'
     no_bank_label: 'Other'
     alerts:
-      pending_payment_text: "You have outstanding repayments on JVN."
+      pending_payment_text: "You have outstanding repayments on Grasruts."
       pending_payment_link_text: "Decide what to do with your money here!"
     load_more: "Load more"
     terms: terms of use
@@ -35,7 +35,7 @@ en:
       terms: "Terms of use"
       privacy_policy: "privacy policy"
       how_it_works: "How %{name} works"
-      how_channels_work: "Understand the JVN Channels"
+      how_channels_work: "Understand the Grasruts Channels"
       contact: "Contact"
     header_big:
       projects: "My Projects"
