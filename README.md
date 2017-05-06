@@ -1,4 +1,4 @@
-# Joint Venture Nepal (JVN)
+# Grasruts (JVN)
 
 ######A hyper local Nepali crowdfunding platform.
 
