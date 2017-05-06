@@ -5,17 +5,17 @@ h2 style="text-align:center; line-height: 45px;"
   - if user.name
     | , #{user.name}!
   br/
-  br/
-  | Bem-vindo ao Catarse! Lembrando que seu email de acesso é: #{user.email} .
+  | Bem-vindo(a) ao Catarse!
+br/
+
+| O Catarse é uma poderosa ferramenta para viabilizar financeiramente projetos. Aqui iniciativas inovadoras, criativas e ambiciosas tornam-se realidade a partir da colaboração direta e da confiança entre as pessoas que se identificam com elas.
 br/
 br/
-| Se você já pensou em tirar seu projeto do papel com financiamento coletivo,mas ainda tem dúvidas de como funciona o Catarse, baixe nosso Infográfico e receba por email dicas e informações úteis sobre crowdfunding.
+| Nós, da equipe do Catarse, estamos diariamente trabalhando para criar e manter o ambiente mais seguro e confortável possível para toda a Comunidade.  E é por isso que, antes de apoiar ou publicar um projeto, é fundamental entender como funciona a plataforma, quais são as responsabilidades de cada um e qual a dinâmica para que o financiamento coletivo seja uma boa experiência para todxs!  #{link_to 'Clique aqui', 'https://crowdfunding.catarse.me/paratodos'} como funciona o Catarse e #{link_to 'aqui', 'http://suporte.catarse.me/hc/pt-br/articles/115002214043-Responsabilidades-e-Seguran%C3%A7a'} para saber mais sobre os diferentes papéis desse ecossistema.
 br/
 br/
-center
-  = link_to "http://fazum.catarse.me/infografico-como-funciona-bem-vindo?utm_source=notification&utm_medium=email&utm_campaign=new_user_registration_infographic", target: '__blank' do
-    = image_tag "#{CatarseSettings[:base_url]}/assets/catarse_bootstrap/banner-infografico-email.jpg"
-br
+|Só para você não se esquecer, o seu email de acesso é: #{user.email} 
+br/
 br
 | Um abraço,
 br
