@@ -2,6 +2,7 @@
 # DB_USER=dbuser DB_NAME=dnmame DB_HOST=localhost
 
 set :job_template, nil
+set :output, { standard: '~/cron.log' }
 
 def generate_psql_c(view)
   only_view = view.split('.')[1]
