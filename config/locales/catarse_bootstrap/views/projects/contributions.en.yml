@@ -2,7 +2,7 @@ en:
   projects:
     contributions:
       no_account_refund:
-        fill_form_text: "You have %{amount} on outstanding repayments for unfunded projects."
+        fill_form_text: "You have %{amount} on outstanding repayments for unfunded campaign."
       no_estimate: "Not available"
       you_selected: "You chose that one!"
       contribute_text:
@@ -29,30 +29,30 @@ en:
         click_here: 'click here'
       faq:
         flexible:
-          explanation: 'This project will get all the features when finalizing '
+          explanation: 'This campaign will get all the features when finalizing '
           common_questions: 'Frequently Asked Questions'
           how_contribute: 'How do I support this campaign?'
           how_contribute_answer: 'Fill in the details of your support, as well as all your payment information to finalize support'
           when_made_payment: 'When is payment made?'
           when_made_payment_answer: 'If you paid with a credit card, confirmation should be the same day. If it was with ticket, within 4 business days.  '
           when_about_my_payment_data: 'What can others see of my support?'
-          when_about_my_payment_data_answer: 'The project will be added to your support history on your profile, but the amount you`ve backed and the reward you choose will not go public.'
-          when_project_owner: 'Who is responsible for the project?'
-          when_project_owner_answer: 'Grasruts is only a middleman, if you`d like to understand more about the project, contact %{name}'
+          when_about_my_payment_data_answer: 'The campaign will be added to your support history on your profile, but the amount you`ve backed and the reward you choose will not go public.'
+          when_project_owner: 'Who is responsible for the campaign?'
+          when_project_owner_answer: 'Grasruts is only a middleman, if you`d like to understand more about the campaign, contact %{name}'
           when_project_funded: 'How do I receive my reward?'
           when_project_funded_answer: 'When your reward is ready, %{name} will contact you to arrange delivery.'
         all_or_nothing:
-          explanation: 'If this project does not reach the goal, you get back 100% of what you paid through a refund.'
+          explanation: 'If this campaign does not reach the goal, you get back 100% of what you paid through a refund.'
           common_questions: 'Frequently Asked Questions'
           how_contribute: 'How do I support this campaign?'
           how_contribute_answer: 'Fill in the details of your support, as well as all your payment information to finalize support'
           when_made_payment: 'When is payment made? '
           when_made_payment_answer: 'If you paid with a credit card, confirmation should be the same day. If it was with ticket, within 4 business days.'
           when_about_my_payment_data: 'What can others see of my support?'
-          when_about_my_payment_data_answer: 'The project will be added to your support history on your profile, but the amount you`ve backed and the reward you choose will not go public.'
-          when_project_fails: 'What if the project does not reach the goal?'
+          when_about_my_payment_data_answer: 'The campaign will be added to your support history on your profile, but the amount you`ve backed and the reward you choose will not go public.'
+          when_project_fails: 'What if the campaign does not reach the goal?'
           when_project_fails_answer: 'In that case, you get back 100% of what you paid through a refund.'
-          when_project_funded: 'If the project is funded, how do I get my reward?'
+          when_project_funded: 'If the campaign is funded, how do I get my reward?'
           when_project_funded_answer: 'When your reward is ready, %{name} will contact you to arrange delivery.'
       edit_international:
         selected_reward:
@@ -67,7 +67,7 @@ en:
         credit_card_select: 'Credit card'
         debit_card_info: '(Debit card not accepted)'
         anonymous_confirmation_title: "Are you sure you want to make you contribution non-public?"
-        anonymous_confirmation: "Choosing this option your name won't be shown on the public backers section area. Only you and this project's creator will have access to your name and contribution details."
+        anonymous_confirmation: "Choosing this option your name won't be shown on the public backers section area. Only you and this campaign's creator will have access to your name and contribution details."
         fields:
           complete_name: 'Full name *'
           email: 'Email *'
@@ -130,7 +130,7 @@ en:
         credit_card_select: 'Credit card'
         debit_card_info: '(Debit card not accepted)'
         anonymous_confirmation_title: "Are you sure you want to make you contribution non-public?"
-        anonymous_confirmation: "Choosing this option your name won't be shown on the public backers section area. Only you and this project's creator will have access to your name and contribution details."
+        anonymous_confirmation: "Choosing this option your name won't be shown on the public backers section area. Only you and this campaign's creator will have access to your name and contribution details."
         fields:
           complete_name: 'Full name *'
           email: 'Email *'
@@ -186,10 +186,10 @@ en:
         pay: 'Finish payment'
         slip_message: 'In generating the ticket, the director is already counting on his support. Pay through the internet due date, lottery houses, ATMs or bank branch.'
         review_title: 'Fill in and review the payment data'
-        review_subtitle: 'These data will be informed to the project director'
+        review_subtitle: 'These data will be informed to the campaign director'
         delivery_address: 'Address'
         # next_step: 'Próximo passo'
-        payment_slip_disclaimer: "If the project is not successful, we will repay your support. The bank details entered here will be used for this."
+        payment_slip_disclaimer: "If the campaign is not successful, we will repay your support. The bank details entered here will be used for this."
         review_errors_title: "Check the reported data"
         review_errors: "Some information is missing or has not been entered correctly, correct all fields marked in red and tesnte again"
         anonymous_confirmation_title: "Are you sure you want your support not to be public?"
@@ -210,14 +210,14 @@ en:
         payment_save_card: 'I want to save my credit card to facilitate future support.'
         reward_sold_out: That reward is exhausted. Start new support.
         page-title: Support %{name}
-        credits_preview_html: "You have <strong> %{credits} </strong> credits for this support <strong> by 10/11 </strong>, as <a href='http://blog.catarse.me/simplification-refunds-and-end-of-credits/' target='__blank'> new rules </a> released by Grasruts."
+        credits_preview_html: "You have <strong> %{credits} </strong> credits for this support <strong> by 10/11 </strong>, as <a href='http://blog.grasruts.me/simplification-refunds-and-end-of-credits/' target='__blank'> new rules </a> released by Grasruts."
         credits_submit: 'Make the payment'
         credits_title: 'Payment with credits'
         insufficient_credits: "You have %{credits} in credits. This amount is not enough to support, please choose another payment method."
         choose_payment: "Choose the payment method"
         choose_payment_subtitle: "PAYMENT SAFE"
         cpf: 'To proceed, please inform:'
-        credits_notice_html: This support will be paid with your credits. After confirmation, you'll have a balance of <strong> %{credits} </strong> on credits for support other projects.
+        credits_notice_html: This support will be paid with your credits. After confirmation, you'll have a balance of <strong> %{credits} </strong> on credits for support other campaign.
         live_in_brazil: I live in Brazil. (Uncheck if your support is international)
         number_card: Card data
         owner_card: Cardholder Data
@@ -230,7 +230,7 @@ en:
         submit:
           credits: Confirm
           moip: Make payment by MoIP
-        subtitle: These data will be informed to the project organizer.
+        subtitle: These data will be informed to the campaign organizer.
         title: Fill in and review the payment data
         you_are_about_html: You are about to join the group that does everything for %{link} to happen.
       new:
@@ -246,7 +246,7 @@ en:
         choose_value: Enter the amount of your support.
         minimum_disclaimer: 'From Rs <span> 10 </span> looks great ;)'
         next_step: "Review and make payment"
-        no_reward: Thank you. I just want to help the project.
+        no_reward: Thank you. I just want to help the campaign.
       review:
         PayPal: "PayPal"
         MoIP: "MoIP"
@@ -260,16 +260,16 @@ en:
         thank_you_text_html:  "<div class='fontsize-base'>Once the payment is completed, we will send the confirmation of your support to the registered email:</div><div class='fontsize-large u-marginbottom-10'>%{email}</div><a class='alt-link fontsize-small' href='%{link_email}'>If this is not your contact email, change here</a>"
         share: Share
         tweet: Tweet
-        share_back: 'Share with your friends and help this project hit the goal!'
+        share_back: 'Share with your friends and help this campaign hit the goal!'
         follow: 'follow'
-        follow_category: 'Do you like the %{category} category? You can receive first-hand and directly in your email when new projects come on the air!'
+        follow_category: 'Do you like the %{category} category? You can receive first-hand and directly in your email when new campaign come on the air!'
         project_recommendations: 'Project recommendations for you'
         profile_link: 'Through your profile'
       show:
-        header_subtitle: Without you maybe this project did not stand a chance. Welcome to the team
+        header_subtitle: Without you maybe this campaign did not stand a chance. Welcome to the team
         header_title: Thank you very much! :D
         moip_message: Your transaction verification is in progress and the code Moip is " %{code}". If you have any questions regarding the transaction, please in contact with Moip. An email will be sent when payment is confirmed.
-        recommended_projects: 'You can also enjoy these projects:'
+        recommended_projects: 'You can also enjoy these campaign:'
         text_subtitle: Tell everyone what you just did
-        text_title_html: You are now part of the group that does everything for the project% {link} to happen.
+        text_title_html: You are now part of the group that does everything for the campaign% {link} to happen.
         title: Thank you very much

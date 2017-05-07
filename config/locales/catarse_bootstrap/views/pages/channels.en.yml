@@ -29,7 +29,7 @@ en:
       no_partners: No partner registered
       no_posts: No news registered
       title: Business Management
-      total: Projects in total
+      total: Campaigns in total
     partners:
       back_to_list: "← Back to manage partners"
       new:
@@ -71,10 +71,10 @@ en:
     table:
       approve: To approve
       category: Category
-      confirmation: Are you sure you want to delete this project? All support will be reimbursed
-      confirmation_reject: Are you sure you want to reject this project? All support will be reimbursed
-      confirmation_draft: Are you sure you want to draft this project? All support will be reimbursed
-      contributed_projects: Support projects
+      confirmation: Are you sure you want to delete this campaign? All support will be reimbursed
+      confirmation_reject: Are you sure you want to reject this campaign? All support will be reimbursed
+      confirmation_draft: Are you sure you want to draft this campaign? All support will be reimbursed
+      contributed_projects: Support campaign
       created_projects: Design created
       destroy_action: Delete
       edit_action: To edit

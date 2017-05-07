@@ -36,14 +36,14 @@ fr:
     credits:
       modal:
         title: 'Voulez vous demander le remboursement de votre don?'
-        text: "Vous savez comment fonctionne le système de remboursement sur Catarse :"
+        text: "Vous savez comment fonctionne le système de remboursement sur Grasruts :"
         link: "Règles et Fonctionnement des remboursements/ reprises"
         reject_btn: "Non, je veux maintenir mes crédits"
         accept_btn: "Oui, je veux me faire rembourser mon don"
       index:
         contribution_date: "Date du don"
         current_credits_html: "Votre solde actuel est de <span id=\"current_credits\">%{credits}</span> en crédits."
-        important_html: "Pour connaitre toute les règles de remboursement, <a href='http://suporte.catarse.me/hc/pt-br/articles/202365507-Règles de remboursement- reprises' target='_blank'>clique aqui</a>. Une question ? Visitez notre <a href='http://suporte.catarse.me' target='_blank'>soutien</a>."
+        important_html: "Pour connaitre toute les règles de remboursement, <a href='http://suporte.grasruts.me/hc/pt-br/articles/202365507-Règles de remboursement- reprises' target='_blank'>clique aqui</a>. Une question ? Visitez notre <a href='http://suporte.grasruts.me' target='_blank'>soutien</a>."
         project: Projeto
         refunded: "Demande confirmer. Nous vous contacterons dans un délai de 4 jours ouvrés."
         insufficient_credits: "Vous ne disposez pas de crédit suffisant pour réaliser cette reprise. "
@@ -73,14 +73,14 @@ fr:
       other_link: "lien de votre page internet "
       change_password: "Modifier votre mot de pase"
       current_password_hint: "<i>Pour modifier votre mot de passe vous devez écrire votre mot de passe actuel. </i>"
-      email_hint: "Votre email sera utilisé uniquement pour communiquer avec Catarse et des projets que vous soutenez. Il ne sera pas visible dans mon profile. Quand vous soutiendrez un projet, nous communiquerons votre email au créateur du projet pour qu’il puisse vous donnez vos récompenses."
+      email_hint: "Votre email sera utilisé uniquement pour communiquer avec Grasruts et des projets que vous soutenez. Il ne sera pas visible dans mon profile. Quand vous soutiendrez un projet, nous communiquerons votre email au créateur du projet pour qu’il puisse vous donnez vos récompenses."
       email_tooltip: "Cliquez ici pour ajouter votre email… "
       gravatar_hint_html: "Vous pouvez aussi changer votre photo de profil à l’aide %{link} de votre email. <br>C’est aussi simple que d’envoyer une image et sa fonctionne déjà avec d’autre site.;)"
       local_avatar: "Mon avatar "
       submit_text: "Choisir votre image "
       submit: "Envoyer"
       my_data: "Mes données"
-      newsletter: "Je veux recevoir des nouvelles de Catarse par email "
+      newsletter: "Je veux recevoir des nouvelles de Grasruts par email "
       password_hint: "<i>Ne pas remplir si vous voulez conservez votre mot de passe actuel. </i>"
       deactivate: "Désactiver mon compte "
       deactivate_notice: "Le compte de %{name} à été désactiver."
@@ -93,8 +93,8 @@ fr:
     show:
       projects:
         here: 'ici'
-        no_projects: "%{name} n’a pas encore réalisé de projet sur Catarse. Peut être que l’inspiration viendra un jour ou l’autre ? "
-        no_projects_current_user_html: "Vous avez réalisez aucun projet sur Catarse. Laisser votre imagination faire et cliquez ici  %{link} pour commencer !"
+        no_projects: "%{name} n’a pas encore réalisé de projet sur Grasruts. Peut être que l’inspiration viendra un jour ou l’autre ? "
+        no_projects_current_user_html: "Vous avez réalisez aucun projet sur Grasruts. Laisser votre imagination faire et cliquez ici  %{link} pour commencer !"
         title: "Projets de  %{name}"
         title_current_user: "Mes projets"
       contributions:

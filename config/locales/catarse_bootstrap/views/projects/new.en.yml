@@ -1,7 +1,7 @@
 en:
   projects:
     new:
-      page-title: "Start your project"
+      page-title: "Start your campaign"
 
       faq:
         titles:
@@ -14,17 +14,17 @@ en:
           support_contact: "Contact us"
           how_it_works: "How does Grasruts work?"
           money: "How will I receive the money?"
-          selection: "How are projects selected?"
+          selection: "How are campaign selected?"
           all_or_nothing: "Why All or Nothing?"
 
       form:
         blocks:
           first:
             title: "Welcome!"
-            description: "Fill in the information below to begin the draft of your project."
+            description: "Fill in the information below to begin the draft of your campaign."
 
         info:
-          permalink: http://catarse.me/
+          permalink: http://grasruts.me/
           goal: Rs
           online_days: days
 

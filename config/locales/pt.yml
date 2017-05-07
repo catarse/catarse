@@ -16,7 +16,7 @@ pt:
   days: dias
   facebook_locale: pt_BR
   failure_title: 'Por favor, corrija os seguintes erros:'
-  i_just_contributed: Eu acabei de apoiar o projeto %{name} no @catarse
+  i_just_contributed: Eu acabei de apoiar o projeto %{name} no @grasruts
   'no': Não
   'yes': Sim
   not_informed: não informado
@@ -24,8 +24,8 @@ pt:
   sending: Enviando...
   share_my_contributions: 'Confira o projeto '
   site:
-    description:  O Catarse é a primeira e maior plataforma de crowdfunding, ou financiamento coletivo, do Brasil. Venha tirar projetos do papel!
-    keywords: crowdfunding, financiamento coletivo, projeto, catarse, comunidade, open source
+    description:  O Grasruts é a primeira e maior plataforma de crowdfunding, ou financiamento coletivo, do Brasil. Venha tirar projetos do papel!
+    keywords: crowdfunding, financiamento coletivo, projeto, grasruts, comunidade, open source
     meta_title: "%{title} · %{company_name}"
-    title: Crowdfunding e financiamento coletivo no Brasil é no Catarse
+    title: Crowdfunding e financiamento coletivo no Brasil é no Grasruts
 

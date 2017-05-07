@@ -3,8 +3,8 @@ pt:
     collections:
       project:
         traffic_sources:
-          one: "eu já tive outro projeto no Catarse"
-          two: "indicação de uma pessoa que já teve um projeto no Catarse"
+          one: "eu já tive outro projeto no Grasruts"
+          two: "indicação de uma pessoa que já teve um projeto no Grasruts"
           three: "indicação de amigo/colega/contato profissional"
           four: "a partir de um projeto que estava captando na plataforma"
           five: "artigo em um blog"
@@ -40,18 +40,18 @@ pt:
       project:
         category: "Selecione uma categoria"
         select: "Selecione uma opção"
-        traffic_sources: "Como você conheceu o Catarse?"
+        traffic_sources: "Como você conheceu o Grasruts?"
     hints:
       flexible_project:
         select: "Selecione uma opção"
-        traffic_sources: "Como você conheceu o Catarse?"
+        traffic_sources: "Como você conheceu o Grasruts?"
         name: "Dê um nome que as pessoas se lembrem facilmente. Não ultrapasse 50 caracteres."
         all_tags: "Informe tags separadas por vírgula"
         all_public_tags: "Liste até 5 palavras-chaves relacionadas a sua campanha e facilite a descoberta pelos apoiadores."
         permalink: "Você pode editá-lo até o projeto ir ao ar. Prefira algo simples, direto e que identifique bem seu projeto. Tente não usar hífen, underline etc."
         category: "Escolha a mais adequada ao seu projeto."
         city: "Onde o seu projeto será realizado? Caso ele aconteça em mais de um lugar, uma dica é colocar a cidade onde sua rede de potenciais apoiadores é maior."
-        goal: "Planeje uma meta coerente com o que seu projeto propõe. Revise seu orçamento e não esqueça de incluir a taxa de 13% cobrada pelo Catarse."
+        goal: "Planeje uma meta coerente com o que seu projeto propõe. Revise seu orçamento e não esqueça de incluir a taxa de 13% cobrada pelo Grasruts."
         online_days: "Você pode escolher entre 1 e 60 dias para a sua campanha. Confira o guia dos realizadores para dicas sobre prazos."
         video_url: "Link do seu vídeo no Vimeo ou <br/> Youtube."
         about_html: "Fale com paixão e clareza sobre o que será realizado. Esclareça possíveis dúvidas sobre como o dinheiro será utilizado, quem está por trás do projeto, como e quando o projeto será entregue. Transparência atrai mais apoiadores. Lembre-se: seu projeto será acessado por pessoas comuns que decidirão se querem ou não apoiar seu projeto. Capriche! "
@@ -59,14 +59,14 @@ pt:
         uploaded_image: "Essa imagem será utilizada como a miniatura de seu projeto (PNG, JPG tamanho 600 x 340)"
       project:
         select: "Selecione uma opção"
-        traffic_sources: "Como você conheceu o Catarse?"
+        traffic_sources: "Como você conheceu o Grasruts?"
         name: "Dê um nome que as pessoas se lembrem facilmente. Não ultrapasse 50 caracteres."
         all_tags: "Informe tags separadas por vírgula"
         all_public_tags: "Liste até 5 palavras-chaves relacionadas a sua campanha e facilite a descoberta pelos apoiadores."
         permalink: "Você pode editá-lo até o projeto ir ao ar. Prefira algo simples, direto e que identifique bem seu projeto. Tente não usar hífen, underline etc."
         category: "Escolha a mais adequada ao seu projeto."
         city: "Onde o seu projeto será realizado? Caso ele aconteça em mais de um lugar, uma dica é colocar a cidade onde sua rede de potenciais apoiadores é maior."
-        goal: "Planeje uma meta coerente com o que seu projeto propõe. Revise seu orçamento e não esqueça de incluir a taxa de 13% cobrada pelo Catarse."
+        goal: "Planeje uma meta coerente com o que seu projeto propõe. Revise seu orçamento e não esqueça de incluir a taxa de 13% cobrada pelo Grasruts."
         online_days: "Você pode escolher entre 1 e 60 dias para a sua campanha. Confira o guia dos realizadores para dicas sobre prazos."
         video_url: "Link do seu vídeo no Vimeo ou <br/> Youtube."
         about_html: "Fale com paixão e clareza sobre o que será realizado. Esclareça possíveis dúvidas sobre como o dinheiro será utilizado, quem está por trás do projeto, como e quando o projeto será entregue. Transparência atrai mais apoiadores. Lembre-se: seu projeto será acessado por pessoas comuns que decidirão se querem ou não apoiar seu projeto. Capriche! "

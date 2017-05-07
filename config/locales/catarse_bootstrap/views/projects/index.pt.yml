@@ -2,10 +2,10 @@ pt:
   projects:
     index_header:
       subtitle: Financie projetos de maneira colaborativa e torne-se parte de algo
-        maior. Promova uma catarse coletiva! Você é a peça que falta nesta história.
+        maior. Promova uma grasruts coletiva! Você é a peça que falta nesta história.
       title: Faça acontecer os projetos em que você acredita
     index:
-      title: 'Catarse'
+      title: 'Grasruts'
       back_a_project: 'Apoie um projeto'
       banner_before: 'Tire '
       banner_words:
@@ -31,7 +31,7 @@ pt:
       see_all: 'Ver todos'
       near_you: 'Próximos a você'
       recents: Recentes
-      blog: Blog do Catarse
+      blog: Blog do Grasruts
       expiring: Na reta final
       recommended: Populares
       banner_subtitle: 'Música, quadrinhos, cinema, impacto social, tecnologia e muito mais. Conheça, inspire-se e apoie projetos.'
@@ -42,14 +42,14 @@ pt:
       explore: "Explore projetos"
       explore_categories:
         16:
-          icon: "https://s3.amazonaws.com/cdn.catarse/assets/icon-music.png"
-          link: "http://crowdfunding.catarse.me/financiamento-coletivo-musica-independente"
-          title: "Lance sua música no Catarse!"
+          icon: "https://s3.amazonaws.com/cdn.grasruts/assets/icon-music.png"
+          link: "http://crowdfunding.grasruts.me/financiamento-coletivo-musica-independente"
+          title: "Lance sua música no Grasruts!"
           cta: "Aprenda como"
         20:
-          icon: "https://s3.amazonaws.com/cdn.catarse/assets/icon-publicacoes.png"
-          link: "https://crowdfunding.catarse.me/publicacoes-independentes-financiamento-coletivo"
-          title: "Lance seu livro ou revista no Catarse!"
+          icon: "https://s3.amazonaws.com/cdn.grasruts/assets/icon-publicacoes.png"
+          link: "https://crowdfunding.grasruts.me/publicacoes-independentes-financiamento-coletivo"
+          title: "Lance seu livro ou revista no Grasruts!"
           cta: "Aprenda como"
       links:
         channels: "Descubra o Canal Asas"

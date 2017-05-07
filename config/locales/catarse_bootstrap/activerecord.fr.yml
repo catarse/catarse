@@ -82,7 +82,7 @@ fr:
         video_url: "URL de la video"
         permalink: 'Link de votre projet'
         more_links: 'Autres link afin que les personnes en sachent un peu plus sur votre projet et sur sa trajectoire.'
-        traffic_sources: 'Comment avez-vous connu Catarse?'
+        traffic_sources: 'Comment avez-vous connu Grasruts?'
         first_contributions: "Qui sont les première personnes à qui vous allez demander de l’aide pour soutenir votre projet ?"
         budget: 'Budget du projet'
         uploaded_image: 'Image du projet'
@@ -102,7 +102,7 @@ fr:
         full_name: "Nom / Raison Social"
         bio: 'Mini Bio'
         name: "Prenom"
-        newsletter: 'Je souhaite recevoir les nouveauté de Catarse'
+        newsletter: 'Je souhaite recevoir les nouveauté de Grasruts'
         password: mot de passe
         password_confirmation: "Confirmer mot de passe"
         phone_number: "Téléphone"
@@ -262,9 +262,9 @@ fr:
     deliver_at: date de remise de la récompense
     confirmed_at: date confirmation du paiement
     contribution_value: valeur du don 
-    service_fee: Taxe de Catarse
+    service_fee: Taxe de Grasruts
     user_name: Nom du donateur
-    user_email: Email du profil Catarse
+    user_email: Email du profil Grasruts
     cpf: Cpf du donateur
     payment_method: moyen de paiement
     street: Rue

@@ -17,7 +17,7 @@ fr:
         title: 'statistiques'
         total_subscribers: 'Total des abonnés'
     projects:
-      send: "Soumettez votre project"
+      send: "Soumettez votre campaign"
       see_how_it_works: "Regardez comment ça marche et soumettez votre projet"
       how_it_works: "Comment ça marche"
       progress_html: "financé à hauter de <span>%{percent}%</span>"
@@ -31,7 +31,7 @@ fr:
       terms: "Conditions d'utilisation"
       privacy_policy: "Politique de confidentialité"
       how_it_works: "Comment ça marche"
-      how_channels_work: "Comprendre les chaînes Catarse"
+      how_channels_work: "Comprendre les chaînes Grasruts"
       contact: "Contact"
     accessibility:
       how_it_works: "Voir comment ça marche et soumettre un projet"

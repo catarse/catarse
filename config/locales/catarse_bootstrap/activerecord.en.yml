@@ -59,7 +59,7 @@ en:
         address_phone_number: "Phone"
         value: Value of support
         reward: Reward
-        project: project
+        project: campaign
       reward:
         deliver_at: Delivery forecast
       flexible_project:
@@ -79,9 +79,9 @@ en:
         all_tags: 'Admin Tags'
         all_public_tags: 'Tags'
         city: 'Campaign Location'
-        more_links: 'Indicate links so people know more about your project and its trajectory.'
+        more_links: 'Indicate links so people know more about your campaign and its trajectory.'
         traffic_sources: 'How did you know about Grasruts?'
-        first_contributions: "Who are the first people you're going to ask to support your project? "
+        first_contributions: "Who are the first people you're going to ask to support your campaign? "
         budget: 'Campaign budget'
         uploaded_image: 'Campaign`s Image'
       project:
@@ -102,9 +102,9 @@ en:
         all_tags: 'Admin Tags'
         all_public_tags: 'Tags'
         city: 'Project Location'
-        more_links: 'Indicate links so people know more about your project and its trajectory.'
+        more_links: 'Indicate links so people know more about your campaign and its trajectory.'
         traffic_sources: 'How did you know about Grasruts?'
-        first_contributions: "Who are the first people you're going to ask to support your project? "
+        first_contributions: "Who are the first people you're going to ask to support your campaign? "
         budget: 'Camapign Budget'
         uploaded_image: 'Campaign`s Image'
       user:
@@ -246,10 +246,10 @@ en:
               blank: "Project name can not be empty"
             permalink:
               blank: "Project URL can not be empty"
-              invalid: "The project URL is invalid"
-              taken: "This project URL already exists"
+              invalid: "The campaign URL is invalid"
+              taken: "This campaign URL already exists"
             category:
-              blank: "You must choose a category for your project"
+              blank: "You must choose a category for your campaign"
             goal:
               blank: "Goal value can not be empty"
               greater_than: "Goal must be greater than 9"
@@ -257,7 +257,7 @@ en:
             online_days:
               blank: "The collection period can not be left blank"
               greater_than: "The deadline for collection must be greater than 2 days"
-              less_than_or_equal_to: "The collection deadline must be less than or equal to 365 days for flex projects and less than or equal to 60 days for all-or-none projects"
+              less_than_or_equal_to: "The collection deadline must be less than or equal to 365 days for flex campaign and less than or equal to 60 days for all-or-none campaign"
               not_a_number: "The deadline for collection must be a number of days"
             about_html:
               blank: "Project description can not be empty"
@@ -281,10 +281,10 @@ en:
               blank: "Project name can not be empty"
             permalink:
               blank: "Project URL can not be empty"
-              invalid: "The project URL is invalid"
-              taken: "This project URL already exists"
+              invalid: "The campaign URL is invalid"
+              taken: "This campaign URL already exists"
             category:
-              blank: "You must choose a category for your project"
+              blank: "You must choose a category for your campaign"
             public_tags:
               less_than_or_equal_to: 'Total tags must be less than or equal to 5'
             goal:
@@ -294,7 +294,7 @@ en:
             online_days:
               blank: "The collection period can not be left blank"
               greater_than: "The deadline for collection must be greater than 2 days"
-              less_than_or_equal_to: "The deadline for collection must be less than or equal to 60 days for all-or-none projects and less than or equal to 365 days for flex projects"
+              less_than_or_equal_to: "The deadline for collection must be less than or equal to 60 days for all-or-none campaign and less than or equal to 365 days for flex campaign"
               not_a_number: "The deadline for collection must be a number of days"
             about_html:
               blank: "Project description can not be empty"
@@ -348,8 +348,8 @@ en:
       bank_transfer: "Bank transfer"
       moip_portfolio: "MoIP Portfolio"
       banking_financing: "Banking Financing"
-    project_should_be_online: You can not support a project that is not in the air.
-    reward_must_be_from_project: Must be from the same project
+    project_should_be_online: You can not support a campaign that is not in the air.
+    reward_must_be_from_project: Must be from the same campaign
     should_not_contribute_if_maximum_contributions_been_reached: Already reached your maximum number of supporters
     value_must_be_at_least_rewards_value: Must be at least %{minimum_value} for the selected reward
   contribution_report_to_project_owner:
@@ -374,9 +374,9 @@ en:
   user:
     no_name: Unnamed
     contributions_text:
-      many: "Supported this and more %{total} projects"
-      one: "Only supported this project so far"
-      two: "He supported this and 1 other project"
+      many: "Supported this and more %{total} campaign"
+      one: "Only supported this campaign so far"
+      two: "He supported this and 1 other campaign"
   channels_subscribers:
     created: 'You now follow the %{channel}'
     deleted: 'You have stopped following %{channel}'

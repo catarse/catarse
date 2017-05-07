@@ -24,7 +24,7 @@ en:
       profile: My Profile
       signin: Login
       signup: Signup
-      submit: Submit project
+      submit: Submit campaign
       how_work: How it works
     footer_channel:
       contact: Contact
@@ -38,4 +38,4 @@ en:
       how_channels_work: "Understand the Grasruts Channels"
       contact: "Contact"
     header_big:
-      projects: "My Projects"
+      projects: "My Campaigns"

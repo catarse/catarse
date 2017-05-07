@@ -24,7 +24,7 @@ pt:
       goal_subtitle: 'Preencha com carinho a seção abaixo, pois essas informações não poderão mais ser alteradas se o projeto for ao ar.'
       reports: 'Relatórios de apoios'
       user_settings: 'Dados cadastrais'
-      user_settings_subtitle: '<strong>Atenção ao preencher os campos abaixo!</strong> Eles devem identificar o responsável pelo projeto e pelo recebimento do dinheiro (<a href="http://suporte.catarse.me/hc/pt-br/articles/213142846-tudo-sobre-CRIAR-UMA-CAMPANHA-NO-CATARSE#responsabilidade-realizador" target="blank">saiba mais</a>). Após preencher esses dados, revise e clique em SALVAR. Quando estiver tudo pronto, basta apertar o botão CONTINUAR para seguir com a publicação da campanha.'
+      user_settings_subtitle: '<strong>Atenção ao preencher os campos abaixo!</strong> Eles devem identificar o responsável pelo projeto e pelo recebimento do dinheiro (<a href="http://suporte.grasruts.me/hc/pt-br/articles/213142846-tudo-sobre-CRIAR-UMA-CAMPANHA-NO-CATARSE#responsabilidade-realizador" target="blank">saiba mais</a>). Após preencher esses dados, revise e clique em SALVAR. Quando estiver tudo pronto, basta apertar o botão CONTINUAR para seguir com a publicação da campanha.'
       user_about: "Fale mais sobre você!"
       user_about_subtitle: "Apoiadores querem conhecer melhor os realizadores de projetos. Links que ajudam a contar sua história são sempre bem vindos. "
       description: 'Conte a história do seu projeto!'
@@ -97,7 +97,7 @@ pt:
         header2: "Não deixe de ler:"
       rejected:
         title: "%{name}, infelizmente não foi dessa vez."
-        subtitle_html: "Você enviou seu projeto para análise do Catarse e entendemos que ele não está de acordo com o perfil do site. Ter um projeto recusado não impede que você envie novos projetos para avaliação ou reformule seu projeto atual. Converse com nosso atendimento! Recomendamos que você dê uma boa olhada nos %{link1}  e no %{link2}."
+        subtitle_html: "Você enviou seu projeto para análise do Grasruts e entendemos que ele não está de acordo com o perfil do site. Ter um projeto recusado não impede que você envie novos projetos para avaliação ou reformule seu projeto atual. Converse com nosso atendimento! Recomendamos que você dê uma boa olhada nos %{link1}  e no %{link2}."
       online:
         title: "%{name}, sua campanha está no ar!"
         subtitle_html: "Seu projeto está no ar e sua campanha se encerrará às 23hs59min59s do dia %{date}. Até esse dia e horário você poderá receber apoios. Lembre-se, é tudo-ou-nada e você só levará os recursos captados se bater a meta que foi estipulada. Acesse a nossa %{link2} para outras dúvidas!"
@@ -120,7 +120,7 @@ pt:
       failed:
         title: "%{name}, não desanime!"
         subtitle_html: "Seu projeto não bateu a meta e sabemos que isso não é a melhor das sensações. Mas não desanime. Encare o processo como um aprendizado e não deixe de cogitar uma segunda tentativa. Não se preocupe, todos os seus apoiadores receberão o dinheiro de volta. %{link}."
-        questions: "Enviamos também um email para você com duas perguntinhas. Se você tiver tempo e cabeça, seria ótimo se pudesse dar uma olhada. Seu feedback nos ajuda a construir um Catarse melhor e mais legal pra você."
+        questions: "Enviamos também um email para você com duas perguntinhas. Se você tiver tempo e cabeça, seria ótimo se pudesse dar uma olhada. Seu feedback nos ajuda a construir um Grasruts melhor e mais legal pra você."
       draft:
         title: "%{name}, construa seu projeto!"
         subtitle: "Quanto mais cuidadoso e bem formatado for um projeto, maiores as chances de ele ser bem sucedido na sua campanha de captação. Antes de enviar seu projeto para a nossa análise, preencha todas as abas ao lado com carinho. Você pode salvar as alterações e voltar ao rascunho de projeto quantas vezes quiser. Quando tudo estiver pronto, clique no botão ENVIAR e entraremos em contato para avaliar o seu projeto."
@@ -177,7 +177,7 @@ pt:
       name_label: "Nome"
       name_hint: "Esse é o nome que os usuários irão ver no seu perfil."
       email_label: Email de Cadastro
-      email_hint: Email para você se logar no Catarse e se comunicar com a nossa equipe e com os seus apoiadores
+      email_hint: Email para você se logar no Grasruts e se comunicar com a nossa equipe e com os seus apoiadores
     dashboard_goal:
       want_more: 'Quer entender mais?'
       online_days_closed: 'Prazo definido'
@@ -185,21 +185,21 @@ pt:
       online_days_open: 'Prazo em aberto'
       online_days_open_hint: 'Seu projeto entra no ar sem um prazo definido. Você terá a opção de definir uma data de término do projeto (mínimo de 1 dia) a qualquer momento ​dentro de um período de 12 meses​ após a publicação.'
       online_days_label: 'Tempo de arrecadação'
-      online_days_flex_hint: 'É o período em que o seu projeto estará no ar, aberto a captação de recursos. No Flex, você escolhe se publica seu projeto com prazo já definido ou com prazo em aberto. <a class="alt-link" href=" https://catarse.attach.io/HJGoCzmJl" target="_blank">Conheça nossas dicas para definir seu prazo.</a>'
-      online_days_aon_hint: 'É o período em que o seu projeto estará no ar, aberto a captação de recursos. No Tudo ou Nada, você pode escolher entre 1 e 60 dias.&nbsp;<a class="alt-link" href=" https://catarse.attach.io/HJGoCzmJl" target="_blank">Conheça nossas dicas para definir seu prazo.</a>'
+      online_days_flex_hint: 'É o período em que o seu projeto estará no ar, aberto a captação de recursos. No Flex, você escolhe se publica seu projeto com prazo já definido ou com prazo em aberto. <a class="alt-link" href=" https://grasruts.attach.io/HJGoCzmJl" target="_blank">Conheça nossas dicas para definir seu prazo.</a>'
+      online_days_aon_hint: 'É o período em que o seu projeto estará no ar, aberto a captação de recursos. No Tudo ou Nada, você pode escolher entre 1 e 60 dias.&nbsp;<a class="alt-link" href=" https://grasruts.attach.io/HJGoCzmJl" target="_blank">Conheça nossas dicas para definir seu prazo.</a>'
       goal_label: 'Meta de arrecadação'
       goal_hint: 'Quanto você precisa arrecadar? Defina uma meta coerente com o que seu projeto propõe. Não esqueça de incluir as taxas administrativas em seu cálculo.'
-      goal_taxes_link: 'Entenda as taxas do Catarse'
-      goal_taxes_label: 'Taxas do Catarse'
-      goal_taxes_watch_video_html: '<a class="fontsize-small" href="http://fazum.catarse.me/agradecimento-video-tutorial-orcamento-basico" target="_blank">Assista nossa <span class="fontweight-bold">vídeo-aula Orçamento Básico</span></a>'
-      goal_aon_taxes_hint: 'É o valor que será descontado da sua arrecadação ao final da campanha, referente aos serviços do Catarse e do meio de pagamento. Se o seu projeto atingir ou ultrapassar a meta, serão cobrados 13% do total arrecadado ao final da campanha. Caso o seu projeto não atinja a meta, todo o dinheiro apoiado será devolvido aos seus apoiadores após o término da campanha, sem custo nenhum a você. É Tudo ou Nada!
+      goal_taxes_link: 'Entenda as taxas do Grasruts'
+      goal_taxes_label: 'Taxas do Grasruts'
+      goal_taxes_watch_video_html: '<a class="fontsize-small" href="http://fazum.grasruts.me/agradecimento-video-tutorial-orcamento-basico" target="_blank">Assista nossa <span class="fontweight-bold">vídeo-aula Orçamento Básico</span></a>'
+      goal_aon_taxes_hint: 'É o valor que será descontado da sua arrecadação ao final da campanha, referente aos serviços do Grasruts e do meio de pagamento. Se o seu projeto atingir ou ultrapassar a meta, serão cobrados 13% do total arrecadado ao final da campanha. Caso o seu projeto não atinja a meta, todo o dinheiro apoiado será devolvido aos seus apoiadores após o término da campanha, sem custo nenhum a você. É Tudo ou Nada!
 '
-      goal_flex_taxes_hint: 'É o valor que será descontado da sua arrecadação ao final da campanha, referente aos serviços do Catarse e do meio de pagamento. Serão cobrados 13% do total arrecadado ao final da campanha, independente se a meta for atingida ou não.'
+      goal_flex_taxes_hint: 'É o valor que será descontado da sua arrecadação ao final da campanha, referente aos serviços do Grasruts e do meio de pagamento. Serão cobrados 13% do total arrecadado ao final da campanha, independente se a meta for atingida ou não.'
       mode_label: 'Tipo de financiamento'
       mode_hint: 'Escolha o modelo de sua campanha de financiamento coletivo. Após iniciar a sua campanha, não será permitido trocar.'
-      mode_diff_ebook: '<a class="fontsize-small" href="https://catarse.attach.io/BkLCRfXyg" target="_blank">Baixe nosso <span class="fontweight-bold">ebook Flex vs Tudo ou Nada</span></a>'
+      mode_diff_ebook: '<a class="fontsize-small" href="https://grasruts.attach.io/BkLCRfXyg" target="_blank">Baixe nosso <span class="fontweight-bold">ebook Flex vs Tudo ou Nada</span></a>'
       mode_diff_link: 'Veja a diferença entre os modelos'
-      flex_diff_html: '<span class="fontweight-semibold">Compromisso&nbsp;<br></span>Você se compromete a executar o projeto e entregar as recompensas (caso tenha optado por ofertá-las), <span class="fontweight-semibold">independente do valor arrecadado</span><br><br><span class="fontweight-semibold">Como funciona?</span><br>Você recebe, ao final do prazo, tudo o que tiver arrecadado (descontando apenas a taxa do Catarse), independente de alcançar a meta de arrecadação.<br><br><span class="fontweight-semibold">Prazo máximo do projeto no ar: </span>12 meses<br><br><span class="fontweight-semibold">Taxas: </span>13% sobre o total arrecadado'
+      flex_diff_html: '<span class="fontweight-semibold">Compromisso&nbsp;<br></span>Você se compromete a executar o projeto e entregar as recompensas (caso tenha optado por ofertá-las), <span class="fontweight-semibold">independente do valor arrecadado</span><br><br><span class="fontweight-semibold">Como funciona?</span><br>Você recebe, ao final do prazo, tudo o que tiver arrecadado (descontando apenas a taxa do Grasruts), independente de alcançar a meta de arrecadação.<br><br><span class="fontweight-semibold">Prazo máximo do projeto no ar: </span>12 meses<br><br><span class="fontweight-semibold">Taxas: </span>13% sobre o total arrecadado'
       aon_diff_html: '<span class="fontweight-semibold">Compromisso&nbsp;</span><br>Você se compromete a executar o projeto e entregar as recompensas apenas <span class="fontweight-semibold">se a arrecadação atingir ou superar a meta.</span><br><br><span class="fontweight-semibold">Como funciona?</span><br>Você só recebe o valor arrecadado se, ao final do prazo,&nbsp;tiver alcançado a meta de arrecadação . Caso contrário, todos seus apoiadores recebem seus pagamentos de volta.<br><br><span class="fontweight-semibold">Prazo máximo do projeto no ar: </span>60 dias&nbsp;&nbsp;<br><br><span class="fontweight-semibold">Taxas: </span>13% sobre o total arrecadado'
       submit: "Salvar"
       kind_label: "Tipo de financiamento"
@@ -210,7 +210,7 @@ pt:
       submit: "Salvar"
       description_label: 'Descrição do projeto'
       description_hint: 'Fale com paixão e clareza sobre o que será realizado. Esclareça possíveis dúvidas sobre como o dinheiro será utilizado, quem está por trás do projeto, como e quando o projeto será entregue. Transparência atrai mais apoiadores. Lembre-se: seu projeto será acessado por pessoas comuns que decidirão se querem ou não apoiar seu projeto. Capriche!'
-      description_alert: '<span class="fa fa-fw fa-lightbulb-o"></span> Saiba como <a class="fa alt-link" href="https://catarse.attach.io/BJmQVOiR" target="blank"> criar uma descrição cativante!</a>'
+      description_alert: '<span class="fa fa-fw fa-lightbulb-o"></span> Saiba como <a class="fa alt-link" href="https://grasruts.attach.io/BJmQVOiR" target="blank"> criar uma descrição cativante!</a>'
     dashboard_reward:
       submit: "Salvar"
       add_reward: "Adicionar recompensa"
@@ -235,7 +235,7 @@ pt:
     dashboard_budget:
       submit: Salvar
       budget_label: "Orçamento do projeto"
-      budget_alert: '<span class="fa fa-fw fa-lightbulb-o"></span>Veja dicas de como<a class="alt-link" href="http://fazum.catarse.me/agradecimento-video-tutorial-orcamento-basico?ref=ctrse_dashboard" target="_blank"> determinar a meta de seu projeto!</a>
+      budget_alert: '<span class="fa fa-fw fa-lightbulb-o"></span>Veja dicas de como<a class="alt-link" href="http://fazum.grasruts.me/agradecimento-video-tutorial-orcamento-basico?ref=ctrse_dashboard" target="_blank"> determinar a meta de seu projeto!</a>
 '
     dashboard_card:
       submit: Salvar
@@ -248,7 +248,7 @@ pt:
       submit: Salvar
       video_label: 'Vídeo do projeto'
       video_hint: 'Link do Vimeo ou Youtube. Esse é o vídeo principal da sua campanha.'
-      video_alert: '<span class="fa fa-fw fa-lightbulb-o"></span>Veja exemplos de <a class="alt-link" href="http://crowdfunding.catarse.me/videomakers?ref=ctrse_dashboard_video" target="_blank"> vídeos de sucesso no Catarse!</a>'
+      video_alert: '<span class="fa fa-fw fa-lightbulb-o"></span>Veja exemplos de <a class="alt-link" href="http://crowdfunding.grasruts.me/videomakers?ref=ctrse_dashboard_video" target="_blank"> vídeos de sucesso no Grasruts!</a>'
       aon:
         card_label: "Vídeo"
         video_url: "Vídeo do projeto"
@@ -260,7 +260,7 @@ pt:
         video_url_hint: ""
         video_url_subtitle: "Link do Vimeo ou Youtube. Esse é o vídeo principal da sua campanha. "
     dashboard_basics:
-      permalink: 'Link para o seu projeto no Catarse'
+      permalink: 'Link para o seu projeto no Grasruts'
       permalink_hint: 'Você pode editá-lo até o projeto ir ao ar. Prefira algo simples, direto e que identifique bem seu projeto. Tente não usar hífen, underline etc.'
       tags: 'Tags'
       tags_hint: 'Liste até 5 palavras-chaves relacionadas a sua campanha e facilite a descoberta pelos apoiadores.'
@@ -272,7 +272,7 @@ pt:
       city_hint: 'Onde o seu projeto será realizado? Caso ele aconteça em mais de um lugar, uma dica é colocar a cidade onde sua rede de potenciais apoiadores é maior.'
       online_date: 'Data de entrada no ar'
       user_id: 'Id do usuário'
-      service_fee: 'Taxa do catarse'
+      service_fee: 'Taxa do grasruts'
       name: 'Nome do projeto'
       name_hint: 'Dê um nome que as pessoas se lembrem facilmente. Não ultrapasse 50 caracteres.'
       name_label: 'Quanto mais direto melhor. Não ultrapasse 50 caracteres'
@@ -284,7 +284,7 @@ pt:
       online_days: 'Prazo para arrecadação'
       online_days_label: 'Você pode escolher entre 1 e 60 dias para a sua campanha. Confira o guia dos realizadores para dicas sobre prazos.'
       value: 'Valor a ser arrecadado'
-      value_secondary: 'Planeje uma meta coerente com o que seu projeto propõe. Revise seu orçamento e não esqueça de incluir a taxa de 13% cobrada pelo Catarse caso seu projeto seja bem-sucedido'
+      value_secondary: 'Planeje uma meta coerente com o que seu projeto propõe. Revise seu orçamento e não esqueça de incluir a taxa de 13% cobrada pelo Grasruts caso seu projeto seja bem-sucedido'
       form:
         submit: 'Salvar'
     contributions_report:
@@ -298,7 +298,7 @@ pt:
             text: 'O valor foi reembolsado para o apoiador.'
           paid:
             label: 'Reembolso não iniciado'
-            text: 'Apoiador ainda não forneceu dados bancários para o Catarse efetuar o reembolso ou os dados fornecidos estão incorretos.'
+            text: 'Apoiador ainda não forneceu dados bancários para o Grasruts efetuar o reembolso ou os dados fornecidos estão incorretos.'
         successful:
           paid:
             label: 'Confirmado'
@@ -327,7 +327,7 @@ pt:
         icon: 'https://daks2k3a4ib2z.cloudfront.net/54b440b85608e3f4389db387/56c350c5e7d136a016bc34a4_transfer-ok-icon.png'
         title: 'Transferência bancária em andamento'
         text: 'A transferência dos R$%{total_amount} será feita na conta do Banco %{bank_name}, Agência: %{agency}, Conta: %{account}. Caso haja qualquer problema, entraremos em contato com você pelo email %{user_email}.<br/><br/>
-<a href="http://fazum.catarse.me/calculadora-repasse" target="blank">Veja aqui</a> como calcular a data em que o dinheiro deverá entrar na sua conta!'
+<a href="http://fazum.grasruts.me/calculadora-repasse" target="blank">Veja aqui</a> como calcular a data em que o dinheiro deverá entrar na sua conta!'
       error_account:
         icon: 'https://daks2k3a4ib2z.cloudfront.net/54b440b85608e3f4389db387/56c350fabfc50aef5095c67d_transfer-pending-icon.png'
         title: 'Transferência bancária pendente'

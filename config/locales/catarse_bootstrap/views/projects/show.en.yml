@@ -14,24 +14,24 @@ en:
         address_state: 'Total support confirmed by State'
     reminder:
       ok: 'OK! We`ll email you a reminder 48 hours before the end of the campaign'
-      active_btn: 'Remind me of this project'
+      active_btn: 'Remind me of this campaign'
       deactive_btn: 'I do not want to be remembered anymore'
-    announce_expiration: 'His project was for the final stretch.'
+    announce_expiration: 'His campaign was for the final stretch.'
     announce_expiration_error: 'The final line has already been defined!'
-    send_to_analysis: Your project was sent to our team.
-    send_to_analysis_error: Error submitting project for review. Fill in all required fields.
-    push_to_online: Your project is online!
-    push_to_online_error: Error putting the project online. Fill in all required fields.
+    send_to_analysis: Your campaign was sent to our team.
+    send_to_analysis_error: Error submitting campaign for review. Fill in all required fields.
+    push_to_online: Your campaign is online!
+    push_to_online_error: Error putting the campaign online. Fill in all required fields.
     twitter:
-      take_a_look: Check out the project %{name} on @Grasruts
+      take_a_look: Check out the campaign %{name} on @Grasruts
     video_embed:
-      a_project_by_html: A %{link} project in the
+      a_project_by_html: A %{link} campaign in the
     posts:
       project_post:
         exclusive: 'Exclusive post for supporters.'
         unavailable: This news is only available to supporters.
         contribute: Contribute
-        unavailable_contribute: This project to view it.
+        unavailable_contribute: This campaign to view it.
         destroy: Remove New
         destroy_confirmation: Do you want to remove this news?
       new:
@@ -98,17 +98,17 @@ en:
         segundo: ' Second remaining'
       submit: Support this campaign
       display_status:
-        approved: "This project has already been approved by Grasruts. Soon he will be on the air and ready to receive support."
+        approved: "This campaign has already been approved by Grasruts. Soon he will be on the air and ready to receive support."
         online: "You can support this campaign until %{date} till 23h59m59s"
-        failed: "This project did not reach the minimum of %{goal} through %{date} and was not funded"
-        rejected: "This project was not accepted. Can not support."
-        in_analysis: "This project is under review and is not yet open for support."
-        successful: "This project was successful and was funded on %{date}"
-        waiting_funds: "The deadline for capturing this project is closed. We are awaiting confirmation of the latest payments."
-        draft: "This project is only a draft and still can not receive support."
+        failed: "This campaign did not reach the minimum of %{goal} through %{date} and was not funded"
+        rejected: "This campaign was not accepted. Can not support."
+        in_analysis: "This campaign is under review and is not yet open for support."
+        successful: "This campaign was successful and was funded on %{date}"
+        waiting_funds: "The deadline for capturing this campaign is closed. We are awaiting confirmation of the latest payments."
+        draft: "This campaign is only a draft and still can not receive support."
       submit: Support this campaign
     project_main:
-      post_call: 'All news published in Grasruts is sent directly to the email of who has already supported his project and is also available for viewing on the site. You can choose to leave it public, or visible only to your supporters here on this tab.'
+      post_call: 'All news published in Grasruts is sent directly to the email of who has already supported his campaign and is also available for viewing on the site. You can choose to leave it public, or visible only to your supporters here on this tab.'
       send_post: 'Writing novelty'
       share: "Share"
       tweet: "Tweet"
@@ -116,8 +116,8 @@ en:
       funding_period: Campaign period
       project_header:
         subtitle_html: "A %{link}"
-        without_city: "A project of"
-        with_city: "A %{category_name} project by %{author} in %{city}"
+        without_city: "A campaign of"
+        with_city: "A %{category_name} campaign by %{author} in %{city}"
       menu:
         about: On
         add_reward: Add reward

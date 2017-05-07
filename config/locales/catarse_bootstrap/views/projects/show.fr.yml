@@ -21,7 +21,7 @@ fr:
     push_to_online: Votre projet est en ligne!
     push_to_online_error: Erreur lors de la mise en ligne de votre projet. Remplir tous les champs obligatoires.
     twitter:
-      take_a_look: Découvrez le projet %{name} no @catarse
+      take_a_look: Découvrez le projet %{name} no @grasruts
     video_embed:
       a_project_by_html: Un projet de  %{link} no
     posts:
@@ -64,13 +64,13 @@ fr:
         reports: Rapports
         posts: Nouveauté
     project_main:
-      post_call: 'Toutes les nouveauté publié sur Catarse est envoyé directement par mail aux personnes qui ont déjà soutenu votre projet et reste aussi disponible sur le site. Vous pouvez décider de la laisser public, ou visible uniquement pour vos donateurs sur cet onglet.'
+      post_call: 'Toutes les nouveauté publié sur Grasruts est envoyé directement par mail aux personnes qui ont déjà soutenu votre projet et reste aussi disponible sur le site. Vous pouvez décider de la laisser public, ou visible uniquement pour vos donateurs sur cet onglet.'
       send_post: 'Ecrire la nouveauté'
       share: "Partagez"
       tweet: "Tweetez"
       contribute_project:
         display_status:
-          approved: "Ce projet a deja été approuver par Catarse. En gros il sera mis en ligne et sera pour recevoir des dons."
+          approved: "Ce projet a deja été approuver par Grasruts. En gros il sera mis en ligne et sera pour recevoir des dons."
           reached_goal: "Ce projet sera couronné avec success en financié en %{date}"
           not_reached_goal: "Ce projet ne sera financé que si au minimum %{goal} seront atteint jusqu’au %{date}"
           failed: "Ce projet n’a pas atteint son minimum de %{goal} jusqu’au %{date} et n’a pas été financé"

@@ -3,8 +3,8 @@ fr:
     collections:
       project:
         traffic_sources:
-          one: " J’ai déjà eu un projet sur Catarse"
-          two: " Suggestion d’une personne qui à déjà eu un projet sur Catarse"
+          one: " J’ai déjà eu un projet sur Grasruts"
+          two: " Suggestion d’une personne qui à déjà eu un projet sur Grasruts"
           three: " Suggestion d’un ami/collègue/contact professionnel "
           four: " à partir d’un projet qui était sur la plateforme "
           five: "article sur un blog"
@@ -38,16 +38,16 @@ fr:
       project:
         category: "Sélectionnez une catégorie"
         select: " Sélectionnez une option "
-        traffic_sources: "Comment avez-vous connu Catarse ?"
+        traffic_sources: "Comment avez-vous connu Grasruts ?"
     hints:
       project:
         select: " Sélectionnez une option "
-        traffic_sources: " Comment avez-vous connu Catarse ?"
+        traffic_sources: " Comment avez-vous connu Grasruts ?"
         name: " Donnez un nom que les personnes pourront se souvenir facilement. Ne dépassez pas 50 caractères."
         permalink: " Préférer quelque chose de simple, direct et qui identifie bien votre projet. Essayez de ne pas utiliser de tiret etc."
         category: "Choisissez la plus appropriée à votre projet."
 
-        goal: "Planifiez un objectif compatible avec ce que propose votre projet. Passez en revue votre budget et n’oubliez pas d’inclure la taxe de 13% ajouté par Catarse au cas où votre projet serait un succès."
+        goal: "Planifiez un objectif compatible avec ce que propose votre projet. Passez en revue votre budget et n’oubliez pas d’inclure la taxe de 13% ajouté par Grasruts au cas où votre projet serait un succès."
         online_days: " Vous pouvez choisir entre 1 et 60 jours pour votre campagne. Consultez le guide d’administration pour obtenir des conseils sur les délais."
         video_url: " Lien de votre vidéo sur Vimeo ou <br/> Youtube."
         about_html: " Parlez avec passion et clarté à propos de ce qui sera réalisé. Répondre aux possibles questions telle que comment l’argent sera utilisé, qui est derrière le projet, comment et quand le projet sera livré. La transparence attire plus de donateurs. Souvenez-vous : votre projet sera consulté par des gens ordinaires qui décideront si oui ou non soutenir votre projet. Capriche! "

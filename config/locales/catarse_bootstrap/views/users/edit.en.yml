@@ -8,7 +8,7 @@ en:
         confirmed_title: "Be sure to check out our emails!"
         confirmed_sub: "Check your SPAM and authorize Grasruts emails."
       contributions: "Contributions"
-      project: "Projects"
+      project: "Campaigns"
       about_me: "About me"
       settings: "Personal informations"
       notifications: "Notifications"
@@ -17,7 +17,7 @@ en:
       feeds: "Activities"
       submit: "Submit"
       contributions_fields:
-        no-project: "You have not yet supported any projects in &nbsp; Grasruts..."
+        no-project: "You have not yet supported any campaign in &nbsp; Grasruts..."
         contribute: "Participate !"
       about_fields:
         add_link: "+ add a link"

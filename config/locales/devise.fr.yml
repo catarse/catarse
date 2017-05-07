@@ -2,7 +2,7 @@ fr:
   devise:
     feedback_tab:
       title: 'Feedback et aide'
-      header_html: 'Bienvenu au <br/> nouveau login de Catarse'
+      header_html: 'Bienvenu au <br/> nouveau login de Grasruts'
       blog_button: 'En lire plus sur le blog'
       form_feedback_link: 'Envoyer un feedback'
       contact_link: 'Entrez en contact'
@@ -52,7 +52,7 @@ fr:
         site_title: 'Définir un nouveau mot de passe'
         label_new_password: 'Nouveau mot de passe'
         title: 'Définir un nouveau mot de passe '
-        subtitle: 'Définir un nouveau mot de passe pour utiliser votre email et pour vous connectez à Catarse.'
+        subtitle: 'Définir un nouveau mot de passe pour utiliser votre email et pour vous connectez à Grasruts.'
         submit: 'Définir un nouveau mot de passe '
     registrations:
       destroyed: Au-revoir ! Votre compte a été supprimé avec succès. Nous espérons vous revoir bientôt.
@@ -78,7 +78,7 @@ fr:
         google_warning_html: "Si vous utilisiez un compte <strong>Google</strong>:"
         google_step_1: "1 – Cliquez ici %{link}"
         google_step_2: "2 – Suivez les prochaines étapes pour créer un nouveau mot de passe."
-        with_another_social_subtitle: "<a target=\"_blank\" href=\"http://blog.catarse.me/mudanca-no-sistema-de-login/\">Lire ce document</a> Pour plus d’information"
+        with_another_social_subtitle: "<a target=\"_blank\" href=\"http://blog.grasruts.me/mudanca-no-sistema-de-login/\">Lire ce document</a> Pour plus d’information"
       signed_in: ''
       #signed_in: Connexion effectué avec succès.
       signed_out: ''

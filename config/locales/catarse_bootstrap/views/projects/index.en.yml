@@ -1,11 +1,11 @@
 en:
   projects:
     index_header:
-      subtitle: Fund projects collaboratively and become part of something larger. You are the missing piece in this story.
-      title: Make projects happen that you believe in
+      subtitle: Fund campaign collaboratively and become part of something larger. You are the missing piece in this story.
+      title: Make campaign happen that you believe in
     index:
       title: 'Grasruts'
-      back_a_project: 'Support a project'
+      back_a_project: 'Support a campaign'
       banner_before: 'Remove '
       banner_words:
         0: 'Dreams'
@@ -33,24 +33,24 @@ en:
       blog: Blog Archive
       expiring: In the final stretch
       recommended: Popular
-      banner_subtitle: 'Music, comics, cinema, social impact, technology and more. Get to know, inspire and support projects.'
+      banner_subtitle: 'Music, comics, cinema, social impact, technology and more. Get to know, inspire and support campaign.'
       box:
         by: by
         when: in
       banner: "Know the research"
-      explore: "Explore projects"
+      explore: "Explore campaign"
       explore_categories:
         16:
           icon: "https://daks2k3a4ib2z.cloudfront.net/54b440b85608e3f4389db387/58ae47fb9cd197f94ab5f96c_icon-music.png"
-          link: "http://crowdfunding.catarse.me/financiamento-coletivo-musica-independente?ref=ctrse_start"
-          title: "Lance sua música no Catarse!"
+          link: "http://crowdfunding.grasruts.me/financiamento-coletivo-musica-independente?ref=ctrse_start"
+          title: "Lance sua música no Grasruts!"
           cta: "Aprenda como"
       links:
         channels: "Discover the Channel Wings"
-        recommended: "Discover Recommended Projects"
-        expiring: "Discover projects in the final stretch"
-        recents: "Discover recent projects"
-        near: "Discover projects near you"
+        recommended: "Discover Recommended Campaigns"
+        expiring: "Discover campaign in the final stretch"
+        recents: "Discover recent campaign"
+        near: "Discover campaign near you"
       sidebar:
         titles:
           blog: blog

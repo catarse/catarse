@@ -2,7 +2,7 @@ pt:
   devise:
     feedback_tab:
       title: 'Feedback e Ajuda'
-      header_html: 'Bem-vindo ao <br/> novo login do Catarse'
+      header_html: 'Bem-vindo ao <br/> novo login do Grasruts'
       blog_button: 'Leia mais no blog'
       form_feedback_link: 'Enviar feedback'
       contact_link: 'Entrar em contato'
@@ -51,7 +51,7 @@ pt:
         site_title: 'Defina uma nova senha'
         label_new_password: 'Nova senha'
         title: 'Defina uma nova senha'
-        subtitle: 'Defina uma nova senha para usar seu email e senha quando quiser entrar no Catarse.'
+        subtitle: 'Defina uma nova senha para usar seu email e senha quando quiser entrar no Grasruts.'
         submit: 'Definir nova senha'
     registrations:
       destroyed: Adeus! A sua conta foi cancelada com sucesso. Esperamos vê-lo novamente em breve.
@@ -77,7 +77,7 @@ pt:
         google_warning_html: "Se você usava uma conta do <strong>Google</strong>:"
         google_step_1: "1 - Clique em %{link}"
         google_step_2: "2 - Sigas os próximos passos para criar uma senha nova."
-        with_another_social_subtitle: "<a target=\"_blank\" href=\"http://blog.catarse.me/mudanca-no-sistema-de-login/\">Leia esse post</a> para mais informações"
+        with_another_social_subtitle: "<a target=\"_blank\" href=\"http://blog.grasruts.me/mudanca-no-sistema-de-login/\">Leia esse post</a> para mais informações"
       signed_in: ''
       #signed_in: Login efetuado com sucesso.
       signed_out: ''

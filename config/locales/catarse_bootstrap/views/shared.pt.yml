@@ -10,7 +10,7 @@ pt:
     account_type_value: 'Só aceitamos conta corrente'
     no_bank_label: 'Outro'
     alerts:
-      pending_payment_text: "Você tem reembolsos pendentes no Catarse."
+      pending_payment_text: "Você tem reembolsos pendentes no Grasruts."
       pending_payment_link_text: "Decida o que fazer com seu dinheiro aqui!"
     load_more: "Carregar mais"
     terms: termos de uso
@@ -35,7 +35,7 @@ pt:
       terms: "Termos de uso"
       privacy_policy: "Política de Privacidade"
       how_it_works: "Como funciona o %{name}"
-      how_channels_work: "Entenda os Canais no Catarse"
+      how_channels_work: "Entenda os Canais no Grasruts"
       contact: "Contato"
     header_big:
       projects: "Meus Projetos"

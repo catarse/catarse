@@ -6,7 +6,7 @@ pt:
         hello_sub: "Estamos tendo problemas em falar com você..."
         hello_email: "Esse é o seu email de contato? %{email}"
         confirmed_title: "Não deixe de olhar nossos emails!"
-        confirmed_sub: "Verifique seu SPAM e autorize os emails do Catarse."
+        confirmed_sub: "Verifique seu SPAM e autorize os emails do Grasruts."
       contributions: "Apoiados"
       projects: "Criados"
       about_me: "Sobre você"
@@ -17,7 +17,7 @@ pt:
       feeds: "Atividades"
       submit: "Salvar"
       contributions_fields:
-        no-project: "Você ainda não apoiou nenhum projeto no&nbsp;Catarse..."
+        no-project: "Você ainda não apoiou nenhum projeto no&nbsp;Grasruts..."
         contribute: "Apoie agora!"
       about_fields:
         add_link: "+ Adicionar link"
@@ -46,4 +46,4 @@ pt:
         bank_account_message: "Caso algum projeto que você tenha apoiado <b>com Boleto Bancário</b> não seja bem-sucedido, nós efetuaremos o reembolso de seu pagamento <b>automaticamente</b> na conta indicada abaixo."
       notifications_fields:
         newsletters: "Newsletters"
-        newsletter_description: "Newsletter do Catarse (semanal)"
+        newsletter_description: "Newsletter do Grasruts (semanal)"

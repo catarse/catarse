@@ -3,7 +3,7 @@ en:
     created: 'You are now following %{channel}'
     deleted: 'You are no longer following %{channel}'
   channels:
-    send_your_project: "Submit your project"
+    send_your_project: "Submit your campaign"
     send_a_email: "Send a email"
     follow: "Follow channel"
     following: "Following"
@@ -17,8 +17,8 @@ en:
         title: 'Channel statistics'
         total_subscribers: 'Total subscribers'
     projects:
-      send: "Submit your project"
-      see_how_it_works: "See how it works and submit your project."
+      send: "Submit your campaign"
+      see_how_it_works: "See how it works and submit your campaign."
       how_it_works: "How it works"
       progress_html: "<span>%{percent}%</span> funded"
       time_remaining_html:
@@ -31,11 +31,11 @@ en:
       terms: "Terms of use"
       privacy_policy: "Privacy Policy"
       how_it_works: "How %{name} works"
-      how_channels_work: "Understand Catarse channels"
+      how_channels_work: "Understand Grasruts channels"
       contact: "Contact"
     accessibility:
       how_it_works: "Clique para saber como o Canal funciona e enviar o seu projeto"
-      send_your_project: "Click to submit your project"
+      send_your_project: "Click to submit your campaign"
       link_to_twitter: "Channel twitter link"
       link_to_facebook: "Channel facebook link"
       link_to_website: "Channel website"

@@ -15,11 +15,11 @@ en:
         agency: 'Agency'
     profile:
       user_since: "Arrived together on %{date}"
-      no_project_contribution: "Has not yet supported projects"
-      single_project_contribution: "Supported 1 project"
-      multiple_project_contribution: "Supported %{n_projects} projects"
-      single_project_created: " And has already created 1 project"
-      multiple_project_created: " And already created %{n_projects} projects"
+      no_project_contribution: "Has not yet supported campaign"
+      single_project_contribution: "Supported 1 campaign"
+      multiple_project_contribution: "Supported %{n_projects} campaign"
+      single_project_created: " And has already created 1 campaign"
+      multiple_project_created: " And already created %{n_projects} campaign"
     contribution_row:
       anonymous: I want my support not to be public
       print_slip: Print Ticket
@@ -61,7 +61,7 @@ en:
       index:
         contribution_date: "Date of support"
         current_credits_html: "Your current balance is <span id=\"current_credits\"> %{credits} </span> in credits."
-        important_html: "To know all the rules of refund operation, <a href='http: //suporte.catarse.me/hc/en/articles/202365507-Regras-and-rebursements-results-results' target='_blank'> click here </a>. Any questions, please visit our <a href='http://suporte.catarse.me' target='_blank'> support </a>."
+        important_html: "To know all the rules of refund operation, <a href='http: //suporte.grasruts.me/hc/en/articles/202365507-Regras-and-rebursements-results-results' target='_blank'> click here </a>. Any questions, please visit our <a href='http://suporte.grasruts.me' target='_blank'> support </a>."
         project: Project
         refunded: "Request confirmed. We will contact you within 4 working days"
         insufficient_credits: "You do not have enough credits to complete this chargeback."
@@ -97,40 +97,40 @@ en:
       other_link: "another Internet page"
       change_password: "Change my password"
       current_password_hint: "<i>We need your current password to confirm your changes.</i>"
-      email_hint: "Your email will only be used for communications from Catarse and the projects you contributed to. It won't be visible in your profile. When you contribute a project, we will give your email to the project owner so they can provide your rewards."
+      email_hint: "Your email will only be used for communications from Grasruts and the campaign you contributed to. It won't be visible in your profile. When you contribute a campaign, we will give your email to the campaign owner so they can provide your rewards."
       email_tooltip: "Click here to fill your email..."
       gravatar_hint_html: "Want to change your picture? Use %{link} with your email. It's as simple as uploading an image and works for other sites as well ;)"
       local_avatar: "My avatar"
       submit_text: "Choose your picture"
       submit: "Submit"
       my_data: "My profile"
-      newsletter: "I want to receive news from Catarse via email"
+      newsletter: "I want to receive news from Grasruts via email"
       password_hint: "<i>Leave blank if you don't want to change this.</i>"
     unsubscribes:
-      projects_in_reminder: "Projects with active reminder:"
-      title: "Choose which projects you'd like to receive notifications:"
-      posts: "I want to receive project updates"
+      projects_in_reminder: "Campaigns with active reminder:"
+      title: "Choose which campaign you'd like to receive notifications:"
+      posts: "I want to receive campaign updates"
     show:
       projects:
         here: 'on here'
-        no_projects: "%{name} has not yet performed any projects on Grasruts. Is the inspiration going to hit an hour like this?"
-        no_projects_current_user_html: "You have not done any projects in Catarse yet. Let the inspiration beat and click %{link} to get started!"
-        title: "%{name} Projects"
-        title_current_user: "My projects"
+        no_projects: "%{name} has not yet performed any campaign on Grasruts. Is the inspiration going to hit an hour like this?"
+        no_projects_current_user_html: "You have not done any campaign in Grasruts yet. Let the inspiration beat and click %{link} to get started!"
+        title: "%{name} Campaigns"
+        title_current_user: "My campaign"
       contributions:
         anonymous: "Anonymous contribution."
-        no_contributions: "%{name} hasn't contributed to any project yet. But we know it's just a matter of time! :D"
-        no_contributions_current_user_html: "You haven't contributed tp any projects yet. Don't you think it's <a href=\"/\">time to start</a>?"
+        no_contributions: "%{name} hasn't contributed to any campaign yet. But we know it's just a matter of time! :D"
+        no_contributions_current_user_html: "You haven't contributed tp any campaign yet. Don't you think it's <a href=\"/\">time to start</a>?"
         no_reward: "You didn't pick a reward"
-        title: "Projects %{name} has contributed"
+        title: "Campaigns %{name} has contributed"
         # TODO: Not sure what the context is for this. "Project has been contributed to?" Or "has contributions"?
-        title_current_user: "Projects I've contributed to"
+        title_current_user: "Campaigns I've contributed to"
         your_reward: "Your reward"
       attention: Attention
       tabs:
         credit_cards: Credit cards
-        contributed_projects: "Contributed projects"
-        created_projects: "Created projects"
+        contributed_projects: "Contributed campaign"
+        created_projects: "Created campaign"
         comments: Comments
         credits: Credits
         settings: Settings

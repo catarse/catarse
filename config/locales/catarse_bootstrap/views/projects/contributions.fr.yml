@@ -39,11 +39,11 @@ fr:
           payment_card_installments: 'versements'
         installment_with_tax: "Pas d’interêt"
         transaction_error: "Transaction refusée, vérifiez vos données ou contactez votre banque pour plus d’informations."
-        pagarme_warning_html: "Catarse est en fase de test d’une nouvelle façon de paiement qui facilitera les dons financier ainsi que les éventuels remboursements des donateurs. D’autres informations supplémentaires vous seront sans doute demandées en plus de celles déjà mentionnées dans les Conditions d’utilisations pour soutenir un projet. Pour toutes informations ou difficultés, contactez-nous avec ce mail%{mailto}. Merci."
+        pagarme_warning_html: "Grasruts est en fase de test d’une nouvelle façon de paiement qui facilitera les dons financier ainsi que les éventuels remboursements des donateurs. D’autres informations supplémentaires vous seront sans doute demandées en plus de celles déjà mentionnées dans les Conditions d’utilisations pour soutenir un projet. Pour toutes informations ou difficultés, contactez-nous avec ce mail%{mailto}. Merci."
         payment_save_card: 'Enregistrer ma carte de crédits pour faciliter les prochains dons'
         reward_sold_out: 'Cette récompense n’est plus disponible. Entrer un nouveau don.'
         page-title: Vous soutenez %{name}
-        credits_preview_html: "Vous possedez <strong>%{credits}</strong> en credits pour réaliser ce don <strong>jusqu’au 10/11</strong>, selon <a href='http://blog.catarse.me/simplificacao-dos-reembolsos-e-o-fim-dos-creditos/' target='__blank'>novas regras</a> divulgadas pelo Catarse."
+        credits_preview_html: "Vous possedez <strong>%{credits}</strong> en credits pour réaliser ce don <strong>jusqu’au 10/11</strong>, selon <a href='http://blog.grasruts.me/simplificacao-dos-reembolsos-e-o-fim-dos-creditos/' target='__blank'>novas regras</a> divulgadas pelo Grasruts."
         credits_submit: 'Effectuer le paiement'
         credits_title: 'Paiement par crédits'
         insufficient_credits: "Vous possédez %{credits} en crédits. Cela n’est pas suffisent pour effectuer le paiement, choisissez un autre mode de paiement."

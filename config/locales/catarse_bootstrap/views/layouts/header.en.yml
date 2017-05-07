@@ -8,7 +8,7 @@ en:
       help: Contact
       help_support: Support Center
       profile: My Profile
-      projects: My projects
+      projects: My campaign
       signin: Login
       signup: Signup
       submit: Start Your Campaign
@@ -32,7 +32,7 @@ en:
       users: Users
       support: Support
       financial_rel: Financial Relation
-      admin_projects: Admin projects
+      admin_projects: Admin campaign
       change_email: Change
 
 

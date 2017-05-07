@@ -78,7 +78,7 @@ fr:
         header2: "N’arrêtez pas de lire : "
       rejected:
         title: "%{name}, malheureusement ce n’est pas cette fois. "
-        subtitle_html: "Vous avez envoyer votre projet pour l’analyse de Catarse et nous comprenons qu’il n’est pas en accord avec le profil du site. Avoir un projet refusé ne vous empêche pas d’envoyer de nouveaux projets pour réviser ou reformuler votre projet actuel. Parlez avec notre service clientèle ! Nous vous recommandons de regarder le %{link1} et le  %{link2}."
+        subtitle_html: "Vous avez envoyer votre projet pour l’analyse de Grasruts et nous comprenons qu’il n’est pas en accord avec le profil du site. Avoir un projet refusé ne vous empêche pas d’envoyer de nouveaux projets pour réviser ou reformuler votre projet actuel. Parlez avec notre service clientèle ! Nous vous recommandons de regarder le %{link1} et le  %{link2}."
       online:
         title: "%{name}, votre campagne et en ligne ! "
         subtitle_html: "Votre projet est en ligne et votre campagne et elle prendra fin à 23h59min59s le %{date}. Jusqu’à cette date vous pouvez recevoir des dons. Souvenez-vous, c’est tout ou rien et vous prendrez les ressources seulement si l’objectif défini a été atteint. Accéder a notre %{link2} pour d’autres questions ! "
@@ -100,7 +100,7 @@ fr:
       failed:
         title: "%{name}, ne vous découragez pas !"
         subtitle_html: "Votre projet n’a pas atteint sa cible et nous savons que ce n’est pas la meilleur des sensations. Mais ne vous découragez pas. Voyez le processus comme un apprentissage et réaliser une deuxième tentative. Ne vous inquiétez pas, tout vos donateur vont recevoir leur argent. %{link}."
-        questions: "Nous vous envoyons aussi un email avec deux petite questions. Si vous avez le temps et l’envie, sa serait super d’y jeter un coup d’œil. Votre retour nous aide à construire un Catarse meilleur et plus simple pour vous. "
+        questions: "Nous vous envoyons aussi un email avec deux petite questions. Si vous avez le temps et l’envie, sa serait super d’y jeter un coup d’œil. Votre retour nous aide à construire un Grasruts meilleur et plus simple pour vous. "
       draft:
         title: "%{name}, construire votre projet !"
         subtitle: " Plus votre projet sera prudent et formater, plus grandes seront les chances de sa réussite dans sa campagne de sensibilisation. Avant d’envoyer votre projet à notre analyse, remplissez touts les onglets ci-dessus avec soins. Vous pouvez sauvegarder les modifications et retourner à l’ébauche du projet quand vous voulez. Quand tout est prêt, cliquez sur le bouton ENVOYER et nous vous contacterons pour évaluer votre projet. "
@@ -178,7 +178,7 @@ fr:
       submit: Sauvegarder
       card_label: "Video"
       video_url: "Video du projet"
-      video_url_hint: "Important: Tout projet peut être envoyé sans la vidéo pour l'analyser par Catarse. La vidéo peut être analysé plus tard. Elle n'est nécessaire que pour les projets de plus 5000 Réal."
+      video_url_hint: "Important: Tout projet peut être envoyé sans la vidéo pour l'analyser par Grasruts. La vidéo peut être analysé plus tard. Elle n'est nécessaire que pour les projets de plus 5000 Réal."
       video_url_subtitle: "Liens vers Vimeo ou Youtube"
     dashboard_basics:
       online_date: 'Date de mise en ligne'
@@ -192,6 +192,6 @@ fr:
       online_days: 'Date limite pour la collecte'
       online_days_label: "Vous pouvez choisir entre 1 et 60 jours pour la campagne. Consultez le guide d'administration pour obtenir des conseils sur les durée."
       value: 'Montant à collecter'
-      value_secondary: "Planifiez un objectif conforme à ce que votre projet propose. Passez en revue votre budget et ne pas oublier d'inclure le taux de 13% prélevé par Catarse si votre projet est un succès"
+      value_secondary: "Planifiez un objectif conforme à ce que votre projet propose. Passez en revue votre budget et ne pas oublier d'inclure le taux de 13% prélevé par Grasruts si votre projet est un succès"
       form:
         submit: 'Sauvegarder'

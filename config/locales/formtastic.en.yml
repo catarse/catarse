@@ -7,18 +7,18 @@ en:
         # TODO: Change this depending on currency.
       project:
         video_url_edit: 'Paste here the URL of your Vimeo/Youtube video.'
-        about: "Tell us what inspired you to come up with this project. Be passionate, present your readers with something that moves them. Be honest and objective about the scope of your project!"
-        more_links: "Which channels will be used to spread the word about your project? List here your Facebook/Twitter/blog/site, or whatever else you want to use."
-        category: "Before you set up your project, explore other successful projects to inspire yourself!"
+        about: "Tell us what inspired you to come up with this campaign. Be passionate, present your readers with something that moves them. Be honest and objective about the scope of your campaign!"
+        more_links: "Which channels will be used to spread the word about your campaign? List here your Facebook/Twitter/blog/site, or whatever else you want to use."
+        category: "Before you set up your campaign, explore other successful campaign to inspire yourself!"
         expires_at: "Finally, choose how long you want your campaign to last. This is a strategic choice: if you put a lot of time, people will lose interest along the way; if put too little, you may not reach the minimum in time."
         online_days: "Finally, choose how long you want your campaign to last. This is a strategic choice: if you put a lot of time, people will lose interest along the way; if put too little, you may not reach the minimum in time."
         goal: "Values in reais (R$)"
         # TODO: Change this depending on currency.
         first_contributions: "To reach your financial goal, it’s indispensable to engage the people who are close to you and close to the cause. If you can list here your first 20 contributors, you're gonna be in great shape!"
-        headline: "Summarize your project in 140 characters. This sentence will be the first contact people will have with your project, before even seeing the video. Be creative, clear and direct."
+        headline: "Summarize your campaign in 140 characters. This sentence will be the first contact people will have with your campaign, before even seeing the video. Be creative, clear and direct."
         name: "Be succinct!. Leave explanations for the About section."
         uploaded_image: "Upload a 512x400 image(.jpg)."
-        video_url: "Paste the URL from a <a href=\"http://vimeo.com\" target=\"_blank\">Vimeo</a> video. We recommend Vimeo because it looks better and doesn't have ads. This way, your project will look better too! <strong>Produce your video as high-quality as possible, and make it specifically for your campaign</strong>. The single biggest predictor of successful projects is the quality of the video!"
+        video_url: "Paste the URL from a <a href=\"http://vimeo.com\" target=\"_blank\">Vimeo</a> video. We recommend Vimeo because it looks better and doesn't have ads. This way, your campaign will look better too! <strong>Produce your video as high-quality as possible, and make it specifically for your campaign</strong>. The single biggest predictor of successful campaign is the quality of the video!"
       reward:
         description: "Describe your reward in a way that inspires people to contribute. Don't be shy!"
         maximum_contributions: "If your reward is limited, tell us the maximum contributions."
@@ -31,14 +31,14 @@ en:
         reward: "Select your reward"
         value: "How much do you want to contribute?"
       comment:
-        comment: "Leave your comment about this project"
+        comment: "Leave your comment about this campaign"
       project:
-        more_links: "List project related links *"
-        traffic_sources: "How did you get to know Catarse?"
+        more_links: "List campaign related links *"
+        traffic_sources: "How did you get to know Grasruts?"
         headline: "Punch Line"
         category: 'Category'
         first_contributions: "List your first contributions *"
-        about: "About your project. How will you spend this money?"
+        about: "About your campaign. How will you spend this money?"
         expires_at: "What's the deadline to reach your goal?"
         goal: "How much do you intend to raise? (use only numbers)"
         name: "Project's Name"

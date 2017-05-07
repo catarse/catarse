@@ -12,7 +12,7 @@ pt:
           criteria: "Critérios de seleção"
           suport_central: "Central de suporte"
           support_contact: "Entre em contato com a gente"
-          how_it_works: "Como o Catarse funciona?"
+          how_it_works: "Como o Grasruts funciona?"
           money: "Como receberei o dinheiro?"
           selection: "Como os projetos são selecionados?"
           all_or_nothing: "Por que Tudo ou Nada?"
@@ -24,7 +24,7 @@ pt:
             description: "Preencha as informações abaixo para iniciar o rascunho do seu projeto."
 
         info:
-          permalink: http://catarse.me/
+          permalink: http://grasruts.me/
           goal: R$
           online_days: dias
 

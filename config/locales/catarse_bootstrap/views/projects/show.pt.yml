@@ -23,7 +23,7 @@ pt:
     push_to_online: Seu projeto está online!
     push_to_online_error: Erro ao colocar o projeto online. Preencha todos os campos obrigatórios.
     twitter:
-      take_a_look: Confira o projeto %{name} no @catarse
+      take_a_look: Confira o projeto %{name} no @grasruts
     video_embed:
       a_project_by_html: Um projeto de %{link} no
     posts:
@@ -101,7 +101,7 @@ pt:
         segundo: ' segundo restantes'
       submit: Apoiar este projeto
       display_status:
-        approved: "Esse projeto já foi aprovado pelo Catarse. Em breve ele entrará no ar e estará pronto para receber apoios."
+        approved: "Esse projeto já foi aprovado pelo Grasruts. Em breve ele entrará no ar e estará pronto para receber apoios."
         online: "Você pode apoiar este projeto até o dia %{date} às 23h59m59s"
         failed: "Este projeto não atingiu o mínimo de %{goal} até %{date} e não foi financiado"
         rejected: "Este projeto não foi aceito. Não é possível realizar um apoio."
@@ -111,7 +111,7 @@ pt:
         draft: "Este projeto é apenas um rascunho e ainda não pode receber apoios."
       submit: Apoiar este projeto
     project_main:
-      post_call: 'Toda novidade publicada no Catarse é enviada diretamente para o email de quem já apoiou seu projeto e também fica disponível para visualização no site. Você pode optar por deixá-la pública, ou visível somente para seus apoiadores aqui nesta aba.'
+      post_call: 'Toda novidade publicada no Grasruts é enviada diretamente para o email de quem já apoiou seu projeto e também fica disponível para visualização no site. Você pode optar por deixá-la pública, ou visível somente para seus apoiadores aqui nesta aba.'
       send_post: 'Escrever novidade'
       share: "Compartilhe"
       tweet: "Tweet"

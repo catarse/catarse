@@ -12,7 +12,7 @@ fr:
           criteria: "Critères de sélection"
           suport_central: "Centre des support"
           support_contact: "Nous contacter"
-          how_it_works: "Comment fonctionne Catarse ?"
+          how_it_works: "Comment fonctionne Grasruts ?"
           money: "Comment vais-je recevoir l’argent?"
           selection: "Comment les projets sont-ils séléctionnés?"
           all_or_nothing: "Porquoi tout ou rien?"
@@ -24,7 +24,7 @@ fr:
             description: "Remplissez les informations ci-dessous pour commencer la conception de votre projet."
 
         info:
-          permalink: https://www.catarse.me
+          permalink: https://www.grasruts.me
           goal: €
           online_days: jours
 
