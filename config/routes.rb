@@ -167,6 +167,7 @@ Catarse::Application.routes.draw do
     resources :balance_transfers do
       collection do
         post 'batch_approve'
+        post 'batch_manual'
         post 'batch_reject'
       end
     end
