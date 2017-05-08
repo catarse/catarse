@@ -42,12 +42,12 @@ pt:
       explore: "Explore projetos"
       explore_categories:
         16:
-          icon: "https://s3.amazonaws.com/cdn.grasruts/assets/icon-music.png"
+          icon: "https://s3.amazonaws.com/cdn.catarse/assets/icon-music.png"
           link: "http://crowdfunding.grasruts.me/financiamento-coletivo-musica-independente"
           title: "Lance sua música no Grasruts!"
           cta: "Aprenda como"
         20:
-          icon: "https://s3.amazonaws.com/cdn.grasruts/assets/icon-publicacoes.png"
+          icon: "https://s3.amazonaws.com/cdn.catarse/assets/icon-publicacoes.png"
           link: "https://crowdfunding.grasruts.me/publicacoes-independentes-financiamento-coletivo"
           title: "Lance seu livro ou revista no Grasruts!"
           cta: "Aprenda como"
