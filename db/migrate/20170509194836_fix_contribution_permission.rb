@@ -1,7 +1,7 @@
 class FixContributionPermission < ActiveRecord::Migration
   def change
     execute <<-SQL
-      revoke SELECT on "1".contribution_details from admin, anonymous, web_user;
+      revoke SELECT on "1".contribution_details from anonymous, web_user;
 
       create or replace function public.user_has_contributed_to_project(user_id integer, project_id integer) 
       returns boolean
