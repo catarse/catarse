@@ -1,6 +1,4 @@
 class Payment < ActiveRecord::Base
-  DUPLICATION_PERIOD = '30 minutes'
-
   include Shared::StateMachineHelpers
   include Payment::PaymentEngineHandler
   include Payment::RequestRefundHandler
@@ -14,7 +12,9 @@ class Payment < ActiveRecord::Base
   validates_presence_of :state, :key, :gateway, :payment_method, :value, :installments, :contribution_id
   validate :value_should_be_equal_or_greater_than_pledge
   validate :project_should_be_online, on: :create
-  validate :is_unique_within_period, on: :create
+  validate :is_unique_on_contribution, on: :create
+
+  attr_accessor :generating_second_slip
 
   def self.slip_expiration_weekdays
     connection.select_one("SELECT public.slip_expiration_weekdays()")['slip_expiration_weekdays'].to_i;
@@ -33,7 +33,7 @@ class Payment < ActiveRecord::Base
     pluck_from_database("slip_expired")
   end
 
-  def is_unique_within_period
+  def is_unique_on_contribution
     errors.add(:payment, I18n.t('activerecord.errors.models.payment.duplicate')) if exists_duplicate?
   end
 
@@ -147,10 +147,7 @@ class Payment < ActiveRecord::Base
 
   private
   def exists_duplicate?
-    self.contribution.payments.
-      where(payment_method: self.payment_method, value: self.value).
-      where("current_timestamp - payments.created_at < '#{DUPLICATION_PERIOD}'::interval").
-      exists?
+    self.contribution.payments.where("id is not null").exists? unless self.generating_second_slip
   end
 
   def pluck_from_database field
