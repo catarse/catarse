@@ -450,6 +450,16 @@ class Project < ActiveRecord::Base
     end
   end
 
+  def all_pledged_kind_transactions
+    balance_transactions.where(
+      event_name: %w(successful_project_pledged
+                    project_contribution_confirmed_after_finished))
+  end
+
+  def successful_pledged_transaction
+    balance_transactions.where(event_name: 'successful_project_pledged').last
+  end
+
   # State machine delegation methods
   delegate :push_to_draft, :reject, :push_to_online, :fake_push_to_online, :finish, :push_to_trash,
     :can_transition_to?, :transition_to, :can_reject?, :can_push_to_trash?,
