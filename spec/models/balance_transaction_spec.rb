@@ -71,6 +71,7 @@ RSpec.describe BalanceTransaction, type: :model do
         project.update_attributes(expires_at: 2.minutes.ago)
         expect(BalanceTransaction).to receive(:insert_successful_project_transactions).with(project.id).and_call_original
         project.finish
+        project.reload
       end
 
       it "should create successful_project_pledged transaction" do
