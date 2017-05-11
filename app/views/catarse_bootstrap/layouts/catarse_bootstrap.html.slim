@@ -36,6 +36,10 @@ html
     - if request.subdomain.include? "beta"
       meta name="robots" content="noindex, nofollow"
     = render_google_analytics_script
+    - if CatarseSettings[:sentry_dsn].present?
+      = javascript_include_tag "https://cdn.ravenjs.com/3.14.2/raven.min.js"
+      javascript:
+        Raven.config("#{CatarseSettings[:sentry_public_dsn]}").install()
     - if content_for? :tracker_snippet_html
       = yield :tracker_snippet_html
     - if Rails.env.production?

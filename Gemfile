@@ -26,6 +26,7 @@ gem 'postgres_ext'
 gem 'pg_search'
 gem 'i18n_alchemy'
 gem "i18n-js", ">= 3.0.0.rc11"
+gem 'whenever'
 
 gem 'schema_plus'
 gem 'catarse_settings_db', '>= 0.1.0'
@@ -39,7 +40,7 @@ gem 'mixpanel_client'
 
 # Payment engines
 
-gem 'catarse_pagarme', '~> 2.10.9'
+gem 'catarse_pagarme', '~> 2.10.10'
 #gem 'catarse_pagarme', path: '../catarse_pagarme'
 
 # Decorators

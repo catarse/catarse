@@ -1,10 +1,10 @@
-# Grasruts (JVN)
+# Grasruts
 
 ######A hyper local Nepali crowdfunding platform.
 
-Welcome to JVN code repo.JVN is a forked project of a popular crowdfunding project called [Catarse](https://github.com/catarse/catarse). Our goal with opening the source code is to stimulate the creation of a community of developers around a high-quality crowdfunding platform.
+Welcome to Grasrtus code repo.Grasrtus is a forked project of a popular crowdfunding project called [Catarse](https://github.com/catarse/catarse). Our goal with opening the source code is to stimulate the creation of a community of developers around a high-quality crowdfunding platform.
 
-You can see the software in action in [http://myjvn.com](http://myjvn.com). The official repo is [https://github.com/sushant12/jvn](https://github.com/sushant12/jvn)
+You can see the software in action in [http://grasruts.com](http://grasruts.com). The official repo is [https://github.com/sushant12/jvn](https://github.com/sushant12/jvn)
 
 ## Getting started
 

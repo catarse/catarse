@@ -181,7 +181,7 @@ class Project < ActiveRecord::Base
   ##validation for all states
   validates_presence_of :name, :user, :category, :service_fee
   validates_length_of :headline, maximum: HEADLINE_MAXLENGTH
-  validates_numericality_of :goal, greater_than: 9, allow_blank: true
+  validates_numericality_of :goal, greater_than: 10000, allow_blank: true
   validates_numericality_of :service_fee, greater_than: 0, less_than_or_equal_to: 1
   validates_uniqueness_of :permalink, case_sensitive: false
   validates_format_of :permalink, with: /\A(\w|-)*\Z/

@@ -252,7 +252,7 @@ en:
               blank: "You must choose a category for your campaign"
             goal:
               blank: "Goal value can not be empty"
-              greater_than: "Goal must be greater than 9"
+              greater_than: "Goal must be greater than 10,000"
               not_a_number: "Collection goal only accepts numbers"
             online_days:
               blank: "The collection period can not be left blank"
@@ -289,7 +289,7 @@ en:
               less_than_or_equal_to: 'Total tags must be less than or equal to 5'
             goal:
               blank: "Goal value can not be empty"
-              greater_than: "Goal must be greater than 9"
+              greater_than: "Goal must be greater than 10,000"
               not_a_number: "Collection goal only accepts numbers"
             online_days:
               blank: "The collection period can not be left blank"
