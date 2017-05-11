@@ -14,6 +14,50 @@ RSpec.describe BalanceTransaction, type: :model do
     it{ is_expected.to validate_inclusion_of(:event_name).in_array(%w(transfered_project_pledged successful_project_pledged catarse_project_service_fee irrf_tax_project)) }
   end
 
+  describe '#insert_contribution_confirmed_after_project_finished' do
+    let(:project) { create(:project, goal: 30, state: 'online')}
+    let!(:contribution) { create(:confirmed_contribution, value: 200, project: project) }
+    let!(:pending_contribution) { create(:pending_contribution, value: 200, project: project, created_at: 20.days.ago) }
+    let!(:pending_contribution_2) { create(:pending_contribution, value: 15, project: project, created_at: 22.days.ago) }
+
+    before do
+      project.update_attributes(expires_at: 10.days.ago)
+      expect(BalanceTransaction).to receive(:insert_successful_project_transactions).with(project.id).and_call_original
+      project.finish
+    end
+
+    context "when pending contribution is confirmed after project successful" do
+      before do
+        expect(BalanceTransaction).to receive(:insert_contribution_confirmed_after_project_finished).with(project.id, pending_contribution.id).and_call_original
+        pending_contribution.payments.last.pay
+      end
+
+      it "should create the balance transaction for contribution" do
+        bt = pending_contribution.balance_transactions
+        expect(bt.where(
+                 event_name: 'project_contribution_confirmed_after_finished'
+               ).exists?).to eq(true)
+
+        expect(bt.where(
+                 event_name: 'catarse_contribution_fee'
+               ).exists?).to eq(true)
+
+        expect(BalanceTransaction).to receive(:insert_contribution_confirmed_after_project_finished).with(project.id, pending_contribution_2.id).and_call_original
+        pending_contribution_2.payments.last.pay
+
+        bt = pending_contribution_2.balance_transactions
+        expect(bt.where(
+                 event_name: 'project_contribution_confirmed_after_finished'
+               ).exists?).to eq(true)
+
+        expect(bt.where(
+                 event_name: 'catarse_contribution_fee'
+               ).exists?).to eq(true)
+      end
+    end
+
+  end
+
   describe "#insert_successful_project_transactions" do
     let(:project) { create(:project, goal: 30, state: 'online')}
     let!(:contribution) { create(:confirmed_contribution, value: 20000, project: project) }
