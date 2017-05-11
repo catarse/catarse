@@ -35,11 +35,13 @@ RSpec.describe BalanceTransaction, type: :model do
       it "should create the balance transaction for contribution" do
         bt = pending_contribution.balance_transactions
         expect(bt.where(
-                 event_name: 'project_contribution_confirmed_after_finished'
+                 event_name: 'project_contribution_confirmed_after_finished',
+                 amount: pending_contribution.value
                ).exists?).to eq(true)
 
         expect(bt.where(
-                 event_name: 'catarse_contribution_fee'
+                 event_name: 'catarse_contribution_fee',
+                 amount: (pending_contribution.value * pending_contribution.project.service_fee)*-1
                ).exists?).to eq(true)
 
         expect(BalanceTransaction).to receive(:insert_contribution_confirmed_after_project_finished).with(project.id, pending_contribution_2.id).and_call_original
@@ -47,11 +49,13 @@ RSpec.describe BalanceTransaction, type: :model do
 
         bt = pending_contribution_2.balance_transactions
         expect(bt.where(
-                 event_name: 'project_contribution_confirmed_after_finished'
+                 event_name: 'project_contribution_confirmed_after_finished',
+                 amount: pending_contribution_2.value
                ).exists?).to eq(true)
 
         expect(bt.where(
-                 event_name: 'catarse_contribution_fee'
+                 event_name: 'catarse_contribution_fee',
+                 amount: (pending_contribution_2.value * pending_contribution_2.project.service_fee)*-1
                ).exists?).to eq(true)
       end
     end
