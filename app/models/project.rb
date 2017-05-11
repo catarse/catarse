@@ -32,6 +32,7 @@ class Project < ActiveRecord::Base
   has_one :balance_transfer, inverse_of: :project
   has_one :project_transfer, inverse_of: :project
   has_one :project_total
+  has_many :balance_transactions
   has_many :taggings
   has_many :tags, through: :taggings
   has_many :public_tags, through: :taggings
