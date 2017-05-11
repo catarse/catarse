@@ -35,7 +35,7 @@ class BalanceTransaction < ActiveRecord::Base
                 amount: contribution.value))
       create!(default_params.merge(
                 event_name: 'catarse_contribution_fee',
-                amount: contribution.value * contribution.project.service_fee))
+                amount: (contribution.value * contribution.project.service_fee) * -1))
     end
   end
 
