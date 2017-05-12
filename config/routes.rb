@@ -78,6 +78,7 @@ Catarse::Application.routes.draw do
     resources :accounts, only: [:create, :update]
     resources :posts, controller: 'projects/posts', only: [ :destroy, :show, :create ]
     resources :rewards do
+      resources :surveys, only: [:new], controller: 'surveys'
       post :sort, on: :member
     end
     resources :contributions, {except: [:index], controller: 'projects/contributions'} do
@@ -103,6 +104,7 @@ Catarse::Application.routes.draw do
       post :upload_image
       get 'insights'
       get 'posts'
+      get 'surveys'
       get 'contributions_report'
       get 'download_reports'
       put 'pay'

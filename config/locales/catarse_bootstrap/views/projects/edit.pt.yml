@@ -140,6 +140,7 @@ pt:
       leave_link_html: "&nbsp; Sair do painel de controle"
       start_tab: ' Minha Campanha'
       reports_tab: ' Relatórios de apoios'
+      surveys_tab: ' Questionários'
       preview_tab: Preview
       posts_tab: ' Novidades '
       edit_project: ' Editar projeto '

@@ -76,6 +76,10 @@ class ProjectsController < ApplicationController
     resource_action :push_to_online, nil, true
   end
 
+  def surveys
+    authorize resource, :update?
+  end
+
   def insights
     authorize resource, :update?
   end
