@@ -6,8 +6,6 @@
 - content_for :stylesheets do
   = stylesheet_link_tag 'redactor'
 
-= render 'shared/header'
-
 #google_oauth_client data-token=CatarseSettings[:google_oauth_client]
 
 #send-message.modal-backdrop.w-hidden
@@ -46,10 +44,8 @@
         .modal-dialog-content.u-text-center
           .fa.fa-check-circle.fa-5x.text-success.u-marginbottom-40
           p.fontsize-large Seu prazo foi definido com sucesso! Você tem até o dia #{@project.display_expires_at}, às 23h59, para captar recursos para a sua campanha. Depois que o seu projeto for finalizado e você confirmar seus dados bancários, o Catarse irá depositar o dinheiro na sua conta corrente em um prazo de 10 dias úteis.
-.w-section.section-product[class=@project.mode]
-#project-insights-root.min-height-70[data-mithril="Insights" data-id=@project.id]
+#application.min-height-70[data-id=@project.id]
 
 - content_for :application_js do
   = javascript_include_tag "//apis.google.com/js/client.js", "api/application"
 
-= render 'shared/footer'
