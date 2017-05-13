@@ -1,5 +1,7 @@
 pt:
   shared:
+    load_more: 'Carregar mais'
+    currency: 'R$ %{amount}' 
     shipping_options:
       free: 'Sem frete envolvido'
       national: 'Frete Nacional'
