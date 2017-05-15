@@ -50,6 +50,7 @@
                 projectUserIdParam = m.route.param('project_user_id'),
                 userParam = m.route.param('user_id') || app.getAttribute('data-userid'),
                 rewardIdParam = m.route.param('reward_id'),
+                surveyIdParam = m.route.param('survey_id'),
                 filterParam = m.route.param('filter'),
                 thankYouParam = app && JSON.parse(app.getAttribute('data-contribution'));
 
@@ -67,6 +68,10 @@
 
             if(projectUserIdParam) {
                 addToAttr({project_user_id: projectUserIdParam});
+            }
+
+            if(surveyIdParam) {
+                addToAttr({survey_id: surveyIdParam});
             }
 
             if(rewardIdParam) {
@@ -136,6 +141,7 @@
           '/projects/:project_id': wrap(c.root.ProjectsShow, {menuTransparency: false, footerBig: false}),
           '/users/:user_id': wrap(c.root.UsersShow, {menuTransparency: true, footerBig: false}),
           '/pt/users/:user_id': wrap(c.root.UsersShow, {menuTransparency: true, footerBig: false}),
+          '/surveys/:survey_id': wrap(c.root.SurveysShow, {menuTransparency: false, footerBig: false}),
           '/users/:user_id/edit': wrap(c.root.UsersEdit, {menuTransparency: true, footerBig: false}),
           '/pt/users/:user_id/edit': wrap(c.root.UsersEdit, {menuTransparency: true, footerBig: false}),
           '/projects/:project_id/edit': wrap(c.root.ProjectEdit, {menuTransparency: false, hideFooter: true, menuShort: true}),
