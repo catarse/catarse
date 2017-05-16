@@ -1,5 +1,8 @@
 pt:
   shared:
+    save_text: 'Salvar'
+    back_text: 'Voltar'
+    confirm_text: 'Confirmar'
     load_more: 'Carregar mais'
     currency: 'R$ %{amount}' 
     shipping_options:
