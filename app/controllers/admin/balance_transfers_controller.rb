@@ -29,7 +29,13 @@ class Admin::BalanceTransfersController < Admin::BaseController
 
   def batch_reject
     collection.find_each do |resource|
-      resource.transition_to!(:rejected, {authorized_by: current_user.id})
+      resource.transition_to!(
+        :rejected,
+        authorized_by: current_user.id,
+        transfer_data: {
+          bank_account: resource.user.bank_account.attributes
+        }
+      )
     end
 
     render json: { transfer_ids: collection.pluck(&:id) }
