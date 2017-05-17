@@ -16,7 +16,7 @@ class RewardDecorator < Draper::Decorator
   def name
     deliver = %{
       <div class="fontsize-smallest fontcolor-secondary">
-        Estimativa de entrega:&nbsp;#{source.display_deliver_estimate || I18n.t('projects.contributions.no_estimate')}
+        Estimated delivery:&nbsp;#{source.display_deliver_estimate || I18n.t('projects.contributions.no_estimate')}
       </div>
     }
     %{
@@ -25,15 +25,15 @@ class RewardDecorator < Draper::Decorator
         <div class="w-col w-col-8 w-col-small-8 w-col-tiny-8 w-sub-col-middle w-clearfix">
           <div class="w-row">
             <div class="w-col w-col-3 w-col-small-3 w-col-tiny-3">
-              <div class="back-reward-input-reward placeholder">R$</div>
+              <div class="back-reward-input-reward placeholder">Rs</div>
             </div>
             <div class="w-col w-col-9 w-col-small-9 w-col-tiny-9">
               <input class="user-reward-value back-reward-input-reward" type="tel" min="#{source.minimum_value.to_i}" placeholder="#{source.minimum_value > 0 ? source.minimum_value.to_i : '10'}">
             </div>
           </div>
-          <div class="fontsize-smaller text-error u-marginbottom-20 w-hidden"><span class="fa fa-exclamation-triangle"></span> O valor do apoio está incorreto</div>
+          <div class="fontsize-smaller text-error u-marginbottom-20 w-hidden"><span class="fa fa-exclamation-triangle"></span> Support amount is incorrect</div>
         </div>
-        <div class="submit-form w-col w-col-4 w-col-small-4 w-col-tiny-4"><a class="btn btn-large" href="#">Continuar&nbsp;&nbsp;<span class="fa fa-chevron-right"></span></a>
+        <div class="submit-form w-col w-col-4 w-col-small-4 w-col-tiny-4"><a class="btn btn-large" href="#">Continue&nbsp;&nbsp;<span class="fa fa-chevron-right"></span></a>
         </div>
       </div>
       <div class="back-reward-reward-description">
