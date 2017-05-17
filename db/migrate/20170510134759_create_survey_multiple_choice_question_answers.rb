@@ -3,7 +3,7 @@ class CreateSurveyMultipleChoiceQuestionAnswers < ActiveRecord::Migration
     create_table :survey_multiple_choice_question_answers do |t|
       t.references :survey_multiple_choice_question, null: false
       t.references :survey_question_choice, null: false
-      t.references :user, null: false
+      t.references :contribution, null: false
 
       t.timestamps
     end

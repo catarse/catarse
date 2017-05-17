@@ -74,9 +74,11 @@ Catarse::Application.routes.draw do
       get :finish
     end
   end
-  resources :surveys, only: [:show], controller: 'surveys' do
-    member do
-      put :answer
+  resources :contributions, only: [] do
+    resources :surveys, only: [:show], controller: 'surveys' do
+      member do
+        put :answer
+      end
     end
   end
   resources :projects, only: [ :create, :update, :edit, :new, :show] do
