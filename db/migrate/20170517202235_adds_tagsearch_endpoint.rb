@@ -1,4 +1,4 @@
-class AlterTagsEndpoint < ActiveRecord::Migration
+class AddsTagsearchEndpoint < ActiveRecord::Migration
   def up
     execute <<-SQL
     CREATE OR REPLACE FUNCTION "1".tag_search(query text, count integer)
