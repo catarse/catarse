@@ -90,10 +90,10 @@ gem 'video_info'
 gem 'typhoeus'
 gem 'parallel'
 gem 'sitemap_generator'
-gem 'rdstation-ruby-client'
-gem 'therubyracer', platform: :ruby
+# gem 'rdstation-ruby-client'
+# gem 'therubyracer', platform: :ruby
 gem 'responders', '~> 2.0'
-gem "cpf_cnpj"
+# gem "cpf_cnpj"
 gem 'aws-sdk', '~> 2'
 
 # Translations
@@ -117,7 +117,7 @@ group :production do
   # gem 'rails_12factor'
 
   # Monitoring with the new new relic
-  gem 'newrelic_rpm'
+  # gem 'newrelic_rpm'
 
   gem "activerecord-nulldb-adapter"
 
