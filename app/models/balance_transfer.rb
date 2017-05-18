@@ -17,14 +17,6 @@ class BalanceTransfer < ActiveRecord::Base
 
   delegate :can_transition_to?, :transition_to, :transition_to!, to: :state_machine
 
-  def refresh_project_amount
-    update_attribute :amount, project.paid_pledged
-  end
-
-  def project_amount_changed?
-    project.paid_pledged != amount
-  end
-
   def state_machine
     @stat_machine ||= BalanceTransferMachine.new(self, {
       transition_class: BalanceTransferTransition,

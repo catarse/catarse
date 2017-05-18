@@ -75,11 +75,11 @@ RSpec.describe BalanceTransaction, type: :model do
       end
 
       it "should create successful_project_pledged transaction" do
-        expect(BalanceTransaction.find_by(event_name: 'successful_project_pledged', project_id: project.id, user_id: project.user_id, amount: project.project_transfer.pledged)).not_to be_nil
+        expect(BalanceTransaction.find_by(event_name: 'successful_project_pledged', project_id: project.id, user_id: project.user_id, amount: project.paid_pledged)).not_to be_nil
       end
 
       it "should create catarse_project_service_fee transaction" do
-        expect(BalanceTransaction.find_by(event_name: 'catarse_project_service_fee', project_id: project.id, user_id: project.user_id, amount: project.project_transfer.catarse_fee * -1)).not_to be_nil
+        expect(BalanceTransaction.find_by(event_name: 'catarse_project_service_fee', project_id: project.id, user_id: project.user_id, amount: project.total_catarse_fee * -1)).not_to be_nil
       end
 
     end
@@ -93,7 +93,7 @@ RSpec.describe BalanceTransaction, type: :model do
       end
 
       it "should create irrf_tax_project transaction" do
-        expect(BalanceTransaction.find_by(event_name: 'irrf_tax_project', project_id: project.id, user_id: project.user_id, amount: project.project_transfer.irrf_tax)).not_to be_nil
+        expect(BalanceTransaction.find_by(event_name: 'irrf_tax_project', project_id: project.id, user_id: project.user_id, amount: project.irrf_tax)).not_to be_nil
       end
     end
 
