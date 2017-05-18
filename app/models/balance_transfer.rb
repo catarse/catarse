@@ -15,6 +15,10 @@ class BalanceTransfer < ActiveRecord::Base
     where("balance_transfers.current_state = 'pending'")
   }
 
+  scope :authorized, -> () {
+    where("balance_transfers.current_state = 'authorized'")
+  }
+
   delegate :can_transition_to?, :transition_to, :transition_to!, to: :state_machine
 
   def state_machine
