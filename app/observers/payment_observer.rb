@@ -70,7 +70,7 @@ class PaymentObserver < ActiveRecord::Observer
 
       if project.successful? && project.successful_pledged_transaction
         transfer_diff = (
-          project.project_transfer.pledged - project.all_pledged_kind_transactions.sum(:amount))
+          project.paid_pledged - project.all_pledged_kind_transactions.sum(:amount))
 
         if transfer_diff >= contribution.value
           BalanceTransaction.insert_contribution_confirmed_after_project_finished(

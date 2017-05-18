@@ -30,7 +30,6 @@ class Project < ActiveRecord::Base
   belongs_to :city
   belongs_to :origin
   has_one :balance_transfer, inverse_of: :project
-  has_one :project_transfer, inverse_of: :project
   has_one :project_total
   has_many :balance_transactions
   has_many :taggings
@@ -230,6 +229,14 @@ class Project < ActiveRecord::Base
 
   def decorator
     @decorator ||= ProjectDecorator.new(self)
+  end
+
+  def total_catarse_fee
+    @total_catarse_fee ||= pluck_from_database("total_catarse_fee")
+  end
+
+  def irrf_tax
+    @irrf_tax ||= pluck_from_database("irrf_tax")
   end
 
   def pledged

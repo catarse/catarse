@@ -2,7 +2,7 @@
 - user = @notification.user
 - bank_account = user.bank_account
 - balance_transfer = project.balance_transfer
-- project_transfer = project.project_transfer
+- total_amount = (project.paid_pledged - project.total_catarse_fee - project.irrf_tax)
 
 | Olá #{user.display_name},
 br/
@@ -15,13 +15,13 @@ br/
 br/
 | Titulo do projeto: #{project.name}
 br/
-| Valor alcançado: #{number_to_currency project_transfer.pledged, precision: 2}
+| Valor alcançado: #{number_to_currency project.paid_pledged, precision: 2}
 br/
-| (-) Taxa do Catarse: #{number_to_currency project_transfer.catarse_fee.to_f, precision: 2}
+| (-) Taxa do Catarse: #{number_to_currency project.total_catarse_fee.to_f, precision: 2}
 br/
-| (+) Impostos gerados a partir da nota fiscal do Catarse para PJ: #{number_to_currency (project_transfer.irrf_tax), precision: 2 }
+| (+) Impostos gerados a partir da nota fiscal do Catarse para PJ: #{number_to_currency ( project.irrf_tax), precision: 2 }
 br/
-| (=) Valor total do repasse: #{number_to_currency project_transfer.total_amount, precision: 2}
+| (=) Valor total do repasse: #{number_to_currency total_amount, precision: 2}
 br/
 br/
 | Dados bancários cadastrados:
