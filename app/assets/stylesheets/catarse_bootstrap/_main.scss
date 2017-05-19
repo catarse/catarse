@@ -474,6 +474,7 @@ a:hover {
 }
 
 .main-header {
+  height: 79px;
   padding: 15px 0px 8px 25px;
   border-bottom: 1px solid rgba(37, 49, 57, .6);
   background-color: #3f4752;
@@ -1479,7 +1480,7 @@ a:hover {
   width: 35px;
   height: 35px;
   margin-right: 8px;
-  float: none;
+  float: right;
   border-radius: 50%;
   -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
@@ -3931,6 +3932,7 @@ a:hover {
 .user-name-menu {
   display: inline-block;
   margin-right: 7px;
+  padding-top: 7px;
   color: #fff;
   font-weight: 400;
 }
@@ -4082,6 +4084,10 @@ a:hover {
   color: #131414;
 }
 
+.cursor-move {
+  cursor: move;
+}
+
 html.w-mod-js *[data-ix="fade-in"] {
   opacity: 0;
 }
@@ -4222,6 +4228,7 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
     height: 70px;
   }
   .main-header {
+    height: 69px;
     padding-top: 12px;
     padding-bottom: 0px;
     padding-left: 18px;
@@ -4767,6 +4774,7 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
   }
   .main-header {
     position: relative;
+    height: auto;
     padding-top: 7px;
     padding-bottom: 4px;
     padding-left: 15px;
@@ -5393,6 +5401,10 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
     width: 100%;
     padding-right: 0px;
     padding-left: 0px;
+  }
+  .user-name-menu {
+    margin-right: 5px;
+    padding-top: 5px;
   }
   .u-text-center-big-only {
     text-align: left;
