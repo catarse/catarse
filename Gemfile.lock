@@ -236,6 +236,7 @@ GEM
     foreman (0.83.0)
       thor (~> 0.19.1)
     formatador (0.2.5)
+    get_process_mem (0.2.1)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
     google-api-client (0.8.7)
@@ -404,6 +405,9 @@ GEM
       slop (~> 3.4)
     public_suffix (2.0.5)
     puma (3.8.2)
+    puma_worker_killer (0.1.0)
+      get_process_mem (~> 0.2)
+      puma (>= 2.7, < 4)
     pundit (1.1.0)
       activesupport (>= 3.0.0)
     rack (1.6.5)
@@ -733,6 +737,7 @@ DEPENDENCIES
   protected_attributes
   pry
   puma (~> 3.0)
+  puma_worker_killer
   pundit
   rails (~> 4.2.7.1)
   rails-erd
