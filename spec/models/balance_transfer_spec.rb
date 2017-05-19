@@ -3,10 +3,10 @@ require 'rails_helper'
 RSpec.describe BalanceTransfer, type: :model do
   let(:project) { create(:project, state: 'successful') }
   let(:balance_transfer) { create(:balance_transfer, amount: 100, project: project) }
-  let(:pagarme_delegator_mock) { double(transfer_funds: true) }
+  let(:transfer_funds_return) { true }
+  let(:pagarme_delegator_mock) { double(transfer_funds: transfer_funds_return) }
 
   before do
-
     #allow(balance_transfer).to receive(
     #  :pagarme_delegator).and_return(pagarme_delegator_mock)
   end
@@ -19,7 +19,7 @@ RSpec.describe BalanceTransfer, type: :model do
   end
 
   describe 'from processing to error' do
-    it do
+    it "should refund balance" do
         balance_transfer.transition_to(:authorized)
         balance_transfer.transition_to(:processing)
         expect(balance_transfer).to receive(:refund_balance).and_call_original
@@ -30,7 +30,7 @@ RSpec.describe BalanceTransfer, type: :model do
   end
 
   describe 'from processing to transferred' do
-    it do
+    it "sould notify about transferred" do
       balance_transfer.transition_to(:authorized)
       balance_transfer.transition_to(:processing)
       #expect(balance_transfer.pagarme_delegator).to receive(:transfer_funds)

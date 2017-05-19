@@ -47,22 +47,4 @@ class BalanceTransfer < ActiveRecord::Base
       self.state == st
     end
   end
-
-  def transfer_funds!
-    begin
-      Rails.logger.info "[BalanceTransfer] processing -> #{self.id} "
-      Raven.user_context(balance_transfer_id: bt.id)
-      self.pagarme_delegator.transfer_funds
-      self.reload
-      Rails.logger.info "[BalanceTransfer] processed to -> #{self.transfer_id}"
-    rescue Exception => e
-      Raven.capture_exception(e)
-      Ranve.user_context({})
-      Rails.logger.info "[BalanceTransfer] processing gateway error on -> #{self.id} "
-      self.transition_to!(
-        :gateway_error,
-        { error_msg: e.message, error: e.to_h })
-    end
-  end
-
 end
