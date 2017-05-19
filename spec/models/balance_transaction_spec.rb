@@ -30,6 +30,7 @@ RSpec.describe BalanceTransaction, type: :model do
       before do
         expect(BalanceTransaction).to receive(:insert_contribution_confirmed_after_project_finished).with(project.id, pending_contribution.id).and_call_original
         pending_contribution.payments.last.pay
+        project.reload
       end
 
       it "should create the balance transaction for contribution" do

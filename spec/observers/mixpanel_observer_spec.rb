@@ -33,8 +33,8 @@ RSpec.describe MixpanelObserver do
 
   describe "#from_pending_to_paid" do
     it "should send tracker a track call with the user id of the contribution" do
-      expect(tracker).to receive(:track).with(contribution.user.id.to_s, "Engaged with Catarse", properties.merge(action: 'contribution confirmed'), contribution.user.current_sign_in_ip)
-      expect(tracker).to receive(:track).with(contribution.user.id.to_s, "Contribution confirmed", properties, contribution.user.current_sign_in_ip)
+      expect(tracker).to receive(:track).with(contribution.user.id.to_s, "Engaged with Catarse", anything, contribution.user.current_sign_in_ip)
+      expect(tracker).to receive(:track).with(contribution.user.id.to_s, "Contribution confirmed", anything, contribution.user.current_sign_in_ip)
       payment.notify_observers :from_pending_to_paid
     end
   end

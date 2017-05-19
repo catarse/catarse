@@ -232,19 +232,19 @@ class Project < ActiveRecord::Base
   end
 
   def total_catarse_fee
-    @total_catarse_fee ||= pluck_from_database("total_catarse_fee")
+    total_catarse_fee ||= pluck_from_database("total_catarse_fee")
   end
 
   def irrf_tax
-    @irrf_tax ||= pluck_from_database("irrf_tax")
+    irrf_tax ||= pluck_from_database("irrf_tax")
   end
 
   def pledged
-    @pledged ||= project_total.try(:pledged).to_f
+    pledged ||= project_total.try(:pledged).to_f
   end
 
   def paid_pledged
-    @paid_pledged ||= project_total.try(:paid_pledged).to_f
+    paid_pledged ||= project_total.try(:paid_pledged).to_f
   end
 
   def total_contributions
