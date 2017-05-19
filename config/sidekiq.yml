@@ -1,3 +1,5 @@
+production:
+  :concurrency: 5
 :queues:
   - [actions, 3]
   - default
