@@ -9,7 +9,7 @@ class BalanceTransferMachine
   state :gateway_error
   state :rejected
 
-  transition from: :pending, to: %i(authorized rejected)
+  transition from: :pending, to: %i(authorized rejected gateway_error)
   transition from: :authorized, to: %i(gateway_error error rejected processing pending)
   transition from: :processing, to: %i(error transferred gateway_error)
   transition from: :gateway_error, to: %i(processing transferred error)
