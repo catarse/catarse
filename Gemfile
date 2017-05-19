@@ -101,6 +101,7 @@ gem 'http_accept_language'
 gem 'routing-filter', '~> 0.6.0'
 
 group :production do
+  gem 'scout_apm'
   # Gem used to handle image uploading
   gem 'fog-aws'
   # Use Puma as the app server
