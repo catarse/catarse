@@ -106,7 +106,6 @@ group :production do
   gem 'fog-aws'
   # Use Puma as the app server
   gem 'puma', '~> 3.0'
-  gem 'puma_worker_killer'
   # Workers, forks and all that jazz
   # gem 'unicorn'
 
