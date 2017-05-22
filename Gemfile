@@ -99,7 +99,7 @@ gem 'aws-sdk', '~> 2'
 # Translations
 gem 'http_accept_language'
 gem 'routing-filter', '~> 0.6.0'
-
+gem 'puma_worker_killer'
 group :production do
   gem 'scout_apm'
   # Gem used to handle image uploading
@@ -159,8 +159,8 @@ group :test, :development do
   gem 'awesome_print'
 end
 
-gem 'derailed_benchmarks', group: :production
-gem 'stackprof', group: :production
+# gem 'derailed_benchmarks', group: :development
+# gem 'stackprof', group: :development
 
 group :test do
   gem 'zonebie'
