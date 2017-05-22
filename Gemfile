@@ -82,7 +82,7 @@ gem "mini_magick"
 # Other Tools
 gem 'to_xls'
 gem 'ranked-model'
-gem 'feedjira'
+# gem 'feedjira'
 gem 'inherited_resources'
 gem 'has_scope'
 gem 'spectator-validates_email',  require: 'validates_email'
@@ -158,6 +158,9 @@ group :test, :development do
   gem 'jasmine-rails'
   gem 'awesome_print'
 end
+
+gem 'derailed_benchmarks', group: :production
+gem 'stackprof', group: :production
 
 group :test do
   gem 'zonebie'
