@@ -2,7 +2,7 @@ class FixRemindersTimeout < ActiveRecord::Migration
   def change
     execute <<-SQL
 
-    DROP INDEX index_project_notifications_user_project_template;
+    DROP INDEX if exists index_project_notifications_user_project_template;
 
     CREATE  INDEX index_project_notifications_user_project_template ON project_notifications USING btree (user_id, project_id, template_name) ;
 
