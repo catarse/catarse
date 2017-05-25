@@ -45,7 +45,7 @@
                     analytics.pageView(false);
                 } catch(e) {console.error(e);}
             }
-            var parameters = JSON.parse(app.getAttribute('data-parameters'));
+            var parameters = app.getAttribute('data-parameters') ? JSON.parse(app.getAttribute('data-parameters')) : {};
             var attr = customAttr,
                 projectParam = m.route.param('project_id') || parameters.project_id,
                 projectUserIdParam = m.route.param('project_user_id') || parameters.user_id,
