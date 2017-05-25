@@ -149,7 +149,7 @@ end
 
 group :test do
   gem 'zonebie'
-  gem 'fakeweb'
+  gem 'fakeweb', github: 'SamMolokanov/fakeweb', branch: 'ruby-2-4-1-support'
   gem 'poltergeist'
   gem 'launchy'
   gem 'database_cleaner'
