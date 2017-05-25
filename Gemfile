@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
-ruby '2.3.1'
+ruby '2.4.1'
 
-gem 'rails', '~> 4.2.7.1'
+gem 'rails', '~> 4.2.8'
 
 gem 'protected_attributes'
 gem 'rails-observers'
@@ -91,7 +91,6 @@ gem 'typhoeus'
 gem 'parallel'
 gem 'sitemap_generator'
 gem 'rdstation-ruby-client'
-gem 'therubyracer', platform: :ruby
 gem 'responders', '~> 2.0'
 gem "cpf_cnpj"
 gem 'aws-sdk', '~> 2'
