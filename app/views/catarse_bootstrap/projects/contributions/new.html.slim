@@ -4,5 +4,7 @@
 - content_for :application_js do
   = javascript_include_tag "api/application"
 
-#application[data-parameters=@project.to_js_json(current_user) data-stats=@project.to_analytics_json]
+- parameters = {project_id: @project.id, project_user_id: @project.user_id}.to_json
+
+#application[data-parameters=parameters data-stats=@project.to_analytics_json]
 

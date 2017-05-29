@@ -62,7 +62,7 @@ class Contribution < ActiveRecord::Base
   end
 
   def international?
-    !(country.name == 'Brasil')
+    !((country||user.country).try(:name) == 'Brasil')
   end
 
   def change_reward! reward

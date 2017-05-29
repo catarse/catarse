@@ -21,7 +21,8 @@ RSpec.describe Payment, type: :model do
   describe "#save" do
     let(:reward){ create(:reward, maximum_contributions: 1, project: project) }
     let(:contribution){ create(:contribution, reward: reward, project: reward.project) }
-    let(:payment){ build(:payment, contribution: contribution) }
+    let(:contribution_2){ create(:contribution, reward: reward, project: reward.project) }
+    let(:payment){ build(:payment, contribution: contribution_2) }
 
     context "when project is still open for payments" do
       let(:project){ create(:project) }
@@ -48,7 +49,7 @@ RSpec.describe Payment, type: :model do
     end
   end
 
-  describe "#is_unique_within_period" do
+  describe "#is_unique_on_contribution" do
     subject{ payment }
     let(:contribution){ create(:contribution) }
     let(:payment){ build(:payment,contribution: contribution) }
@@ -57,8 +58,8 @@ RSpec.describe Payment, type: :model do
       it{ is_expected.to be_valid }
     end
 
-    context "when we have a payment with same value and method within DUPLICATION_PERIOD" do
-      let!(:first_payment){ create(:payment,contribution: contribution, payment_method: payment.payment_method, value: payment.value) }
+    context "when we have already generate a payment" do
+      let!(:first_payment){ create(:payment,contribution: contribution) }
       it{ is_expected.not_to be_valid }
     end
   end
