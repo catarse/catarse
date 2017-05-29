@@ -77,8 +77,12 @@ RSpec.describe ProjectDecorator do
     end
 
     context "when we have an online_date" do
-      let(:project){ create_project({state: 'online', online_days: 2}, {to_state: 'online', created_at: Time.current.to_date}) }
-      it{ is_expected.to eq(I18n.l((Time.current + 2.day).in_time_zone('Kathmandu').end_of_day.to_date)) }
+      let(:start_date) { DateTime.now.in_time_zone('Kathmandu') }
+      let(:project) do
+        create_project(
+          {state: 'online', online_days: 2}, {to_state: 'online', created_at: start_date})
+      end
+      it{ is_expected.to eq(I18n.l((start_date + 2.days).in_time_zone('Kathmandu').end_of_day.to_date)) }
     end
   end
 
