@@ -166,7 +166,9 @@
           '/pt/follow-fb-friends': wrap(c.root.FollowFoundFriends, {menuTransparency: false, footerBig: false}),
           '/follow-fb-friends': wrap(c.root.FollowFoundFriends, {menuTransparency: false, footerBig: false}),
           '/pt/team': wrap(c.root.Team, {menuTransparency: true, footerBig: true}),
-          '/team': wrap(c.root.Team, {menuTransparency: true, footerBig: true})
+          '/team': wrap(c.root.Team, {menuTransparency: true, footerBig: true}),
+          '/pt/jobs': wrap(c.root.Jobs, {menuTransparency: true, footerBig: true}),
+          '/jobs': wrap(c.root.Jobs, {menuTransparency: true, footerBig: true})
       });
   }
   _.each(document.querySelectorAll('div[data-mithril]'), function(el){
