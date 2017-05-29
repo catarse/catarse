@@ -264,6 +264,7 @@ pt:
       permalink_hint: 'Você pode editá-lo até o projeto ir ao ar. Prefira algo simples, direto e que identifique bem seu projeto. Tente não usar hífen, underline etc.'
       tags: 'Tags'
       tags_hint: 'Liste até 5 palavras-chaves relacionadas a sua campanha e facilite a descoberta pelos apoiadores.'
+      tags_max_error: 'Você pode usar até no máximo 5 tags'
       admin_tags: 'Admin Tags'
       admin_tags_hint: 'Informe tags separadas por vírgula'
       user_id: 'Id do usuário'
