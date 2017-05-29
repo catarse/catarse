@@ -164,7 +164,9 @@
           '/pt/projects/:project_id/edit': wrap(c.root.ProjectEdit, {menuTransparency: false, hideFooter: true, menuShort: true}),
           '/:project': wrap(c.root.ProjectsShow, {menuTransparency: false, footerBig: false}),
           '/pt/follow-fb-friends': wrap(c.root.FollowFoundFriends, {menuTransparency: false, footerBig: false}),
-          '/follow-fb-friends': wrap(c.root.FollowFoundFriends, {menuTransparency: false, footerBig: false})
+          '/follow-fb-friends': wrap(c.root.FollowFoundFriends, {menuTransparency: false, footerBig: false}),
+          '/pt/team': wrap(c.root.Team, {menuTransparency: true, footerBig: true}),
+          '/team': wrap(c.root.Team, {menuTransparency: true, footerBig: true})
       });
   }
   _.each(document.querySelectorAll('div[data-mithril]'), function(el){
