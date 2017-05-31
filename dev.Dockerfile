@@ -1,19 +1,36 @@
-FROM ruby:2.3.1
-MAINTAINER Abraham Kuri <kurenn@icalialabs.com>
+FROM alpine
+MAINTAINER Catarse <contato@catarse.me>
 
-RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
+ENV BUILD_PACKAGES postgresql-dev libxml2-dev libxslt-dev imagemagick imagemagick-dev openssl libpq libffi-dev bash curl-dev libstdc++ tzdata bash ca-certificates build-base ruby-dev libc-dev linux-headers postgresql-client postgresql git nodejs
+ENV RUBY_PACKAGES ruby ruby-io-console ruby-bundler ruby-irb ruby-bigdecimal ruby-json
 
+# Update and install all of the required packages.
+# At the end, remove the apk cache
+RUN apk update && \
+    apk upgrade && \
+    apk --update add --virtual build_deps $BUILD_PACKAGES && \
+    apk --update add $RUBY_PACKAGES
+
+RUN mkdir /usr/app
+WORKDIR /usr/app
+
+COPY Gemfile /usr/app/
+COPY Gemfile.lock /usr/app/
+
+RUN bundle install
+COPY . /usr/app
+
+RUN cp /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime && echo "America/Sao_Paulo" >  /etc/timezone
+
+# ==================================================================================================
+# 7: Copy the rest of the application code, install nodejs as a build dependency, then compile the
+# app assets, and finally change the owner of the code to 'nobody':
 RUN set -ex \
-  && curl -sL "https://deb.nodesource.com/setup_6.x" | bash - \
-  && apt-get -y install nodejs \
-  && npm install -g bower
+  && mkdir -p /usr/app/tmp/cache \
+  && mkdir -p /usr/app/tmp/pids \
+  && mkdir -p /usr/app/tmp/sockets
+#  && chown -R nobody /usr/app
 
-RUN gem install bundler -v 1.11.2 --no-ri --no-rdoc
-
-ENV PATH=/usr/src/app/bin:$PATH LANG=C.UTF-8
-
-ADD Gemfile* /usr/src/app/
-
-# Run dependencies install commands
-RUN bundle
+# ==================================================================================================
+# 8: Set the container user to 'nobody':
+#USER nobody
