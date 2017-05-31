@@ -11,17 +11,19 @@ class SurveysController < ApplicationController
     render 'projects/surveys/show'
   end
 
-  def resource
-    @survey ||= Survey.find params[:id]
-  end
-
   def answer
     authorize resource
+    address_answer = SurveyAddressAnswer.find_or_initialize_by(contribution_id: params['contribution_id'])
+    if address_answer.address
+      address_answer.address.update_attributes(permitted_params[:address_attributes])
+    else
+      address = Address.create(permitted_params[:address_attributes])
+      address_answer.update_attribute(:address, address)
+    end
     params['open_questions'].each do |open_question|
       question = resource.survey_open_questions.find open_question['id']
-      answer = question.survey_open_question_answers.find_or_create_by(contribution_id: params['contribution_id'])
-      answer.answer = open_question['value']
-      answer.save!
+      question.survey_open_question_answers.
+        find_or_create_by(contribution_id: params['contribution_id']).update_attribute(:answer, open_question['value'])
     end
     params['multiple_choice_questions'].each do |mc_question|
       question = resource.survey_multiple_choice_questions.find mc_question['id']
@@ -32,6 +34,14 @@ class SurveysController < ApplicationController
       end
     end
     render status: 200, json: { success: 'OK' }
+  end
+
+  def resource
+    @survey ||= Survey.find params[:id]
+  end
+
+  def permitted_params
+    params.permit(policy(resource).permitted_attributes)
   end
 
 end
