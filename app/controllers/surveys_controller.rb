@@ -14,12 +14,8 @@ class SurveysController < ApplicationController
   def answer
     authorize resource
     address_answer = SurveyAddressAnswer.find_or_initialize_by(contribution_id: params['contribution_id'])
-    if address_answer.address
-      address_answer.address.update_attributes(permitted_params[:address_attributes])
-    else
-      address = Address.create(permitted_params[:address_attributes])
-      address_answer.update_attribute(:address, address)
-    end
+    address_answer.attributes = permitted_params[:survey_address_answer]
+    address_answer.save
     params['open_questions'].each do |open_question|
       question = resource.survey_open_questions.find open_question['id']
       question.survey_open_question_answers.

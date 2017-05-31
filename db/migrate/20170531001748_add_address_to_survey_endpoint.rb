@@ -36,8 +36,8 @@ SELECT s.id AS survey_id,
                   row_to_json(add.*)  as address
    FROM contributions c
      RIGHT JOIN surveys s ON s.reward_id = c.reward_id
-     right join survey_address_answers saa on saa.contribution_id = c.id
-     right join addresses add on add.id = saa.address_id;
+     LEFT join survey_address_answers saa on saa.contribution_id = c.id
+     LEFT join addresses add on add.id = saa.address_id;
     SQL
   end
 end
