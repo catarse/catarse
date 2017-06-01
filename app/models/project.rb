@@ -30,8 +30,8 @@ class Project < ActiveRecord::Base
   belongs_to :city
   belongs_to :origin
   has_one :balance_transfer, inverse_of: :project
-  has_one :project_transfer, inverse_of: :project
   has_one :project_total
+  has_many :balance_transactions
   has_many :taggings
   has_many :tags, through: :taggings
   has_many :public_tags, through: :taggings
@@ -231,12 +231,20 @@ class Project < ActiveRecord::Base
     @decorator ||= ProjectDecorator.new(self)
   end
 
+  def total_catarse_fee
+    total_catarse_fee ||= pluck_from_database("total_catarse_fee")
+  end
+
+  def irrf_tax
+    irrf_tax ||= pluck_from_database("irrf_tax")
+  end
+
   def pledged
-    @pledged ||= project_total.try(:pledged).to_f
+    pledged ||= project_total.try(:pledged).to_f
   end
 
   def paid_pledged
-    @paid_pledged ||= project_total.try(:paid_pledged).to_f
+    paid_pledged ||= project_total.try(:paid_pledged).to_f
   end
 
   def total_contributions
@@ -447,6 +455,16 @@ class Project < ActiveRecord::Base
     if self.online_days.present? && self.online_at.present?
       self.expires_at = (self.online_at.in_time_zone + self.online_days.days).end_of_day
     end
+  end
+
+  def all_pledged_kind_transactions
+    balance_transactions.where(
+      event_name: %w(successful_project_pledged
+                    project_contribution_confirmed_after_finished))
+  end
+
+  def successful_pledged_transaction
+    balance_transactions.where(event_name: 'successful_project_pledged').last
   end
 
   # State machine delegation methods

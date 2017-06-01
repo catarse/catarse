@@ -1,6 +1,38 @@
 pt:
   users:
     edit:
+      settings_tab:
+        credit_cards:
+          title: 'Cartões de crédito'
+          subtitle: 'Caso algum projeto que você tenha apoiado <strong>com Cartão de Crédito</strong> não seja bem-sucedido, nós efetuaremos o reembolso <strong>automaticamente</strong> no cartão utilizado para efetuar o apoio.'
+          card_label: 'Cartão'
+          provider_label: 'Operadora'
+          remove_label: 'Remover'
+        update_success_msg: 'As suas informações foram atualizadas'
+        legal_title: 'Responsável'
+        legal_subtitle: '<strong>IMPORTANTE</strong> Nome completo/Razão social e CPF/CNPJ <strong>não poderão ser modificados</strong> após serem salvos.'
+        account_types:
+          pf: 'Pessoa Física'
+          pj: 'Pessoa Jurídica'
+          mei: 'Pessoa Jurídica (Micro Empreendedor Individual - MEI)'
+        pf_label_name: 'Nome completo'
+        pj_label_name: 'Nome completo / Razão Social'
+        pf_label_document: 'CPF'
+        pj_label_document: 'CNPJ'
+        label_birth_date: 'Data de nascimento'
+        label_state_inscription: 'Inscrição Estadual'
+        address_title: 'Endereço'
+        address_subtitle: 'Os dados abaixo serão utilizados para envio de recompensas e para emissão de Nota Fiscal, caso aplicável.'
+        label_country: 'País'
+        label_address_street: 'Endereço (Rua, Avenida, Alameda...)'
+        label_address_number: 'Número'
+        label_address_complement: 'Complemento'
+        label_address_neighbourhood: 'Bairro'
+        label_address_city: 'Cidade'
+        label_address_state: 'Estado'
+        label_other_option: 'Outro / other'
+        label_address_zipcode: 'CEP'
+        label_address_phone: 'Telefone'
       email_confirmation:
         hello: "Olá %{name}"
         hello_sub: "Estamos tendo problemas em falar com você..."

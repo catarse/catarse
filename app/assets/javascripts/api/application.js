@@ -23,11 +23,30 @@
   var adminRoot = document.getElementById('new-admin');
 
   if(adminRoot){
+      var adminWrap = function(component, customAttr) {
+          return {
+              controller: function() {
+                  var attr = customAttr;
+
+                  return {
+                      attr: attr
+                  };
+              },
+              view: function(ctrl) {
+                  return m('#app', [
+                      m.component(c.root.Menu, ctrl.attr),
+                      m.component(component, ctrl.attr),
+                      (ctrl.attr.hideFooter ? '' : m.component(c.root.Footer, ctrl.attr))
+                  ]);
+              }
+          };
+      };
     m.route.mode = 'hash';
 
     m.route(adminRoot, '/', {
-      '/': m.component(c.root.AdminContributions, {root: adminRoot}),
-      '/users': m.component(c.root.AdminUsers)
+        '/': adminWrap(c.root.AdminContributions, {root: adminRoot, menuTransparency: false, hideFooter: true}),
+        '/users': adminWrap(c.root.AdminUsers, { menuTransparency: false, hideFooter: true }),
+        '/balance-transfers': adminWrap(c.root.AdminBalanceTranfers, { menuTransparency: false, hideFooter: true })
     });
   }
 
@@ -132,7 +151,10 @@
           '/projects/:project_id/contributions/:contribution_id': wrap(c.root.ThankYou, {menuTransparency: false, footerBig: false}),
           '/pt/:project': wrap(c.root.ProjectsShow, {menuTransparency: false, footerBig: false}),
           '/projects/:project_id/insights': wrap(c.root.Insights, {menuTransparency: false, footerBig: false}),
+          '/projects/:project_id/contributions_report': wrap(c.root.ProjectsContributionReport, {menuTransparency: false, footerBig: false}),
+          '/pt/projects/:project_id/contributions_report': wrap(c.root.ProjectsContributionReport, {menuTransparency: false, footerBig: false}),
           '/projects/:project_id/posts': wrap(c.root.Posts, {menuTransparency: false, footerBig: false}),
+          '/pt/projects/:project_id/posts': wrap(c.root.Posts, {menuTransparency: false, footerBig: false}),
           '/projects/:project_id': wrap(c.root.ProjectsShow, {menuTransparency: false, footerBig: false}),
           '/users/:user_id': wrap(c.root.UsersShow, {menuTransparency: true, footerBig: false}),
           '/pt/users/:user_id': wrap(c.root.UsersShow, {menuTransparency: true, footerBig: false}),
@@ -142,7 +164,11 @@
           '/pt/projects/:project_id/edit': wrap(c.root.ProjectEdit, {menuTransparency: false, hideFooter: true, menuShort: true}),
           '/:project': wrap(c.root.ProjectsShow, {menuTransparency: false, footerBig: false}),
           '/pt/follow-fb-friends': wrap(c.root.FollowFoundFriends, {menuTransparency: false, footerBig: false}),
-          '/follow-fb-friends': wrap(c.root.FollowFoundFriends, {menuTransparency: false, footerBig: false})
+          '/follow-fb-friends': wrap(c.root.FollowFoundFriends, {menuTransparency: false, footerBig: false}),
+          '/pt/team': wrap(c.root.Team, {menuTransparency: true, footerBig: true}),
+          '/team': wrap(c.root.Team, {menuTransparency: true, footerBig: true}),
+          '/pt/jobs': wrap(c.root.Jobs, {menuTransparency: true, footerBig: true}),
+          '/jobs': wrap(c.root.Jobs, {menuTransparency: true, footerBig: true})
       });
   }
   _.each(document.querySelectorAll('div[data-mithril]'), function(el){
