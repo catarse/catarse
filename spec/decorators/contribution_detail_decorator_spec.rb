@@ -46,22 +46,6 @@ RSpec.describe ContributionDetailDecorator do
     end
   end
 
-  describe "#display_date" do
-    [:paid_at, :refunded_at, :pending_refund_at].each do |field|
-      context "displaying #{field.to_s}" do
-        subject { detail.decorate.display_date(field)}
-        before do
-          attributes = {}
-          attributes[field] = Time.current
-          payment.update_attributes attributes
-        end
-
-        #use the same hardcoded timezone as the db
-        it{ is_expected.to eq(I18n.l(payment.send(field).in_time_zone('Brasilia').to_date)) }
-      end
-    end
-  end
-
   describe "#display_value" do
     subject{ detail.decorate.display_value }
 
@@ -82,12 +66,14 @@ RSpec.describe ContributionDetailDecorator do
       before do
         payment.update_attributes paid_at: Time.current
       end
-      it{ is_expected.to eq I18n.t("payment.state.#{payment.state}", date: detail.decorate.display_date(:paid_at)) }
+      it{
+        date = detail.paid_at.to_date
+        is_expected.to eq I18n.t("payment.state.#{payment.state}", date: I18n.l(date)) }
     end
 
     context "when payment is pending" do
       let(:contribution){ create(:pending_contribution) }
-      it{ is_expected.to eq I18n.t("payment.state.#{payment.state}", date: detail.decorate.display_date(:paid_at)) }
+      it{ is_expected.to eq I18n.t("payment.state.#{payment.state}", date: nil) }
     end
   end
 

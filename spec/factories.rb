@@ -336,7 +336,7 @@ FactoryGirl.define do
 
   factory :bank do
     name "Foo"
-    code { generate(:bank_number) }
+    code { rand 900...18000 }
   end
 
   factory :bank_account do |f|
@@ -348,7 +348,7 @@ FactoryGirl.define do
     account_digit "1"
     agency "1234"
     agency_digit "1"
-    account "1"
+    account "12345"
   end
 
   factory :single_bank_account, class: BankAccount do |f|

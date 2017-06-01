@@ -1,6 +1,7 @@
 class BalanceTransfer < ActiveRecord::Base
   belongs_to :project
   belongs_to :user
+  has_many :balance_transactions
 
   has_many :transitions,
     class_name: 'BalanceTransferTransition',
@@ -10,16 +11,15 @@ class BalanceTransfer < ActiveRecord::Base
     where("balance_transfers.current_state = 'processing'")
   }
 
-  delegate :can_transition_to?, :transition_to, to: :state_machine
-  delegate :project_transfer, to: :project
+  scope :pending, -> () {
+    where("balance_transfers.current_state = 'pending'")
+  }
 
-  def refresh_project_amount
-    update_attribute :amount, project_transfer.total_amount
-  end
+  scope :authorized, -> () {
+    where("balance_transfers.current_state = 'authorized'")
+  }
 
-  def project_amount_changed?
-    project_transfer.total_amount != amount
-  end
+  delegate :can_transition_to?, :transition_to, :transition_to!, to: :state_machine
 
   def state_machine
     @stat_machine ||= BalanceTransferMachine.new(self, {
@@ -30,6 +30,16 @@ class BalanceTransfer < ActiveRecord::Base
 
   def state
     state_machine.current_state || 'pending'
+  end
+
+  def refund_balance
+    self.transaction do
+      balance_transactions.create!(
+        amount: amount,
+        user_id: user_id,
+        event_name: 'balance_transfer_error'
+      )
+    end
   end
 
   %w(pending authorized processing transferred error rejected).each do |st|

@@ -1,10 +1,6 @@
 - content_for :title, t('.title')
 - content_for :application_js do
   = javascript_include_tag 'api/application'
-= render 'shared/header_big', overlayer: true
 
-body
- #start[data-mithril="Jobs"]
-  .w-section.hero-jobs.hero-medium
+#application
 
-= render 'shared/footer_big'

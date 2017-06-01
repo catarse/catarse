@@ -63,12 +63,20 @@ class PaymentObserver < ActiveRecord::Observer
   def notify_confirmation(payment)
     contribution = payment.contribution
     project = contribution.project
+    project.reload
 
     unless payment.paid_at.present?
       contribution.notify_to_contributor(:confirm_contribution) 
 
-      if project.expires_at.present? && (Time.current > project.expires_at  + 7.days)
-        contribution.notify_to_backoffice(:payment_confirmed_after_project_was_closed) rescue nil # just record notification on database
+      if project.successful? && project.successful_pledged_transaction
+        transfer_diff = (
+          project.paid_pledged - project.all_pledged_kind_transactions.sum(:amount))
+
+        if transfer_diff >= contribution.value
+          BalanceTransaction.insert_contribution_confirmed_after_project_finished(
+            project.id, contribution.id)
+          contribution.notify_to_backoffice(:payment_confirmed_after_project_was_closed) rescue nil # just record notification on database
+        end
       end
     end
   end

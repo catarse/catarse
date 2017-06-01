@@ -95,6 +95,10 @@ class FlexProjectMachine
 
       project.notify_observers :"from_#{from_state}_to_#{transition.to_state}"
     end
+
+    after_transition(to: :successful) do |project| 
+      BalanceTransaction.insert_successful_project_transactions(project.id)
+    end
   end
 
   setup_machine do

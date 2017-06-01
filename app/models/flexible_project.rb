@@ -37,4 +37,8 @@ class FlexibleProject < Project
     self.online_at + 365.days
   end
 
+  def expired?
+    pluck_from_database("is_expired")
+  end
+
 end

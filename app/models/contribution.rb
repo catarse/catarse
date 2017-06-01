@@ -16,6 +16,7 @@ class Contribution < ActiveRecord::Base
   has_many :payment_notifications
   has_many :payments
   has_many :details, class_name: 'ContributionDetail'
+  has_many :balance_transactions
 
   validates_presence_of :project, :user, :value
   validates_numericality_of :value, greater_than_or_equal_to: 10.00
@@ -61,7 +62,7 @@ class Contribution < ActiveRecord::Base
   end
 
   def international?
-    !(country.name == 'Brasil')
+    !((country||user.country).try(:name) == 'Brasil')
   end
 
   def change_reward! reward

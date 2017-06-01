@@ -11,11 +11,11 @@ pt:
           cta: 'Comece sua campanha'
           image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-fctodos.jpg'
         2:
-          title: 'Brazilian Way - O Filme'
-          subtitle: 'Um documentário histórico e inédito sobre como é fazer Cinema no Brasil.'
-          link: 'https://www.catarse.me/brazilian_way_o_filme_a98c?ref=home_banner'
+          title: 'Aos Fatos'
+          subtitle: 'Financie a primeira plataforma exclusivamente dedicada à checagem de fatos no Brasil.'
+          link: 'https://www.catarse.me/aosfatos?ref=home_banner'
           cta: 'Conheça o projeto'
-          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-brazilian_way_o_filme_a98c.jpg'
+          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-aosfatos.jpg'
         3:
           title: '<img src="https://daks2k3a4ib2z.cloudfront.net/573a70f6d5c3cb6532f8b1a7/58ead3167db7c241dbb93fbc_geek-news-logo.png" width="340">'
           subtitle: 'Um apanhado quinzenal de quadrinhos, boardgames, RPG e jogos digitais.'
@@ -23,11 +23,11 @@ pt:
           cta: 'Assine a news'
           image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-geek-news.jpg'
         4:
-          title: 'Bienal de Design Gráfico'
-          subtitle: 'Ajude a viabilizar a publicação do catálogo da 12ª Bienal Brasileira de Design Gráfico.'
-          link: 'https://www.catarse.me/12BienalDesign?ref=home_banner'
+          title: '#Uneafroresiste'
+          subtitle: 'Ajude a financiar a luta contra o racismo, machismo e o genocídio através da educação popular!'
+          link: 'https://www.catarse.me/uneafrobrasil?ref=home_banner'
           cta: 'Conheça o projeto'
-          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-12BienalDesign.jpg'
+          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-uneafrobrasil.jpg'
         5:
           title: 'Financiamento coletivo para Livros e Revistas independentes'
           subtitle: 'Junte-se a uma comunidade de autores e editoras e publique seu livro com a ajuda dos leitores'
