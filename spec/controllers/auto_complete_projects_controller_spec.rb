@@ -1,12 +1,14 @@
-#encoding:utf-8
+# encoding:utf-8
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe AutoCompleteProjectsController, type: :controller do
   render_views
-  subject{ response }
+  subject { response }
 
-  describe "GET index" do
-    context "pg_search param" do
+  describe 'GET index' do
+    context 'pg_search param' do
       before do
         @project_01 = create(:project, name: 'lorem dolor')
         @project_02 = create(:project, name: 'lorem ipsum')
@@ -18,5 +20,4 @@ RSpec.describe AutoCompleteProjectsController, type: :controller do
       it { expect(assigns(:projects)).to eq([@project_01, @project_02]) }
     end
   end
-
 end

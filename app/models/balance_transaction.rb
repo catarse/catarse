@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class BalanceTransaction < ActiveRecord::Base
-  EVENT_NAMES = %w(
+  EVENT_NAMES = %w[
     catarse_contribution_fee
     project_contribution_confirmed_after_finished
     balance_transfer_project
@@ -7,7 +9,8 @@ class BalanceTransaction < ActiveRecord::Base
     balance_transfer_error
     successful_project_pledged
     catarse_project_service_fee
-    irrf_tax_project )
+    irrf_tax_project
+  ].freeze
 
   belongs_to :project
   belongs_to :contribution
@@ -22,7 +25,7 @@ class BalanceTransaction < ActiveRecord::Base
     return unless project.successful?
     return unless contribution.confirmed?
 
-    self.transaction do
+    transaction do
       default_params = {
         contribution_id: contribution_id,
         project_id: project_id,
@@ -31,10 +34,12 @@ class BalanceTransaction < ActiveRecord::Base
 
       create!(default_params.merge(
                 event_name: 'project_contribution_confirmed_after_finished',
-                amount: contribution.value))
+                amount: contribution.value
+      ))
       create!(default_params.merge(
                 event_name: 'catarse_contribution_fee',
-                amount: (contribution.value * contribution.project.service_fee) * -1))
+                amount: (contribution.value * contribution.project.service_fee) * -1
+      ))
     end
   end
 
@@ -42,18 +47,23 @@ class BalanceTransaction < ActiveRecord::Base
     project = Project.find project_id
     return unless project.successful?
     return unless project.project_total.present?
-    self.transaction do
+    transaction do
       default_params = { project_id: project_id, user_id: project.user_id }
 
       create!(default_params.merge(
                 event_name: 'successful_project_pledged',
-                amount: project.paid_pledged))
+                amount: project.paid_pledged
+      ))
       create!(default_params.merge(
                 event_name: 'catarse_project_service_fee',
-                amount: (project.total_catarse_fee * -1)))
-      create!(default_params.merge(
-                event_name: 'irrf_tax_project',
-                amount: project.irrf_tax)) if project.irrf_tax > 0
+                amount: (project.total_catarse_fee * -1)
+      ))
+      if project.irrf_tax > 0
+        create!(default_params.merge(
+                  event_name: 'irrf_tax_project',
+                  amount: project.irrf_tax
+        ))
+      end
     end
   end
 end

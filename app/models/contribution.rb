@@ -1,4 +1,6 @@
 # coding: utf-8
+# frozen_string_literal: true
+
 class Contribution < ActiveRecord::Base
   has_notifications
 
@@ -23,7 +25,7 @@ class Contribution < ActiveRecord::Base
 
   scope :not_anonymous, -> { where(anonymous: false) }
   scope :confirmed_last_day, -> { where("EXISTS(SELECT true FROM payments p WHERE p.contribution_id = contributions.id AND p.state = 'paid' AND (current_timestamp - p.paid_at) < '1 day'::interval)") }
-  scope :was_confirmed, -> { where("contributions.was_confirmed") }
+  scope :was_confirmed, -> { where('contributions.was_confirmed') }
 
   scope :available_to_display, -> {
     where("EXISTS (SELECT true FROM payments p WHERE p.contribution_id = contributions.id AND p.state NOT IN ('deleted', 'refused'))")
@@ -37,14 +39,14 @@ class Contribution < ActiveRecord::Base
     puts "problem while using attr_protected in Contribution model:\n '#{e.message}'"
   end
 
-  #contributions that have not confirmed delivery after 14 days
+  # contributions that have not confirmed delivery after 14 days
   def self.need_notify_about_delivery_confirmation
-    self.where("reward_received_at IS NULL AND reward_sent_at < current_timestamp - '14 days'::interval")
+    where("reward_received_at IS NULL AND reward_sent_at < current_timestamp - '14 days'::interval")
   end
 
   # Return contributions that need notify pending refunds without bank accounts registered
   def self.need_notify_about_pending_refund
-    self.joins("
+    joins("
       join contribution_details cd on cd.contribution_id = contributions.id
       ").where("
       cd.project_state = 'failed'
@@ -58,20 +60,20 @@ class Contribution < ActiveRecord::Base
   end
 
   def recommended_projects
-    user.recommended_projects.where("projects.id <> ?", project.id).order("count DESC")
+    user.recommended_projects.where('projects.id <> ?', project.id).order('count DESC')
   end
 
   def international?
-    !((country||user.country).try(:name) == 'Brasil')
+    (country || user.country).try(:name) != 'Brasil'
   end
 
-  def change_reward! reward
+  def change_reward!(reward)
     self.reward_id = reward
-    self.save
+    save
   end
 
   def confirmed?
-    @confirmed ||= Contribution.where(id: self.id).pluck('contributions.is_confirmed').first
+    @confirmed ||= Contribution.where(id: id).pluck('contributions.is_confirmed').first
   end
 
   def over_refund_limit?
@@ -79,7 +81,7 @@ class Contribution < ActiveRecord::Base
   end
 
   def was_confirmed?
-    @was_confirmed ||= Contribution.where(id: self.id).pluck('contributions.was_confirmed').first
+    @was_confirmed ||= Contribution.where(id: id).pluck('contributions.was_confirmed').first
   end
 
   def slip_payment?
@@ -91,15 +93,15 @@ class Contribution < ActiveRecord::Base
   end
 
   def invalid_refund
-    notify(:invalid_refund, self.user)
+    notify(:invalid_refund, user)
     if over_refund_limit?
       backoffice_user = User.find_by(email: CatarseSettings[:email_contact])
-      notify_to_backoffice(:over_refund_limit, {from_email: self.user.email}, backoffice_user )
+      notify_to_backoffice(:over_refund_limit, { from_email: user.email }, backoffice_user)
     end
   end
 
   def notify_to_contributor(template_name, options = {})
-    notify_once(template_name, self.user, self, options)
+    notify_once(template_name, user, self, options)
   end
 
   def notify_to_backoffice(template_name, options = {}, backoffice_user = User.find_by(email: CatarseSettings[:email_payments]))
@@ -112,7 +114,7 @@ class Contribution < ActiveRecord::Base
 
   # Used in payment engines
   def price_in_cents
-    (self.value * 100).round
+    (value * 100).round
   end
 
   def update_current_billing_info
@@ -132,33 +134,33 @@ class Contribution < ActiveRecord::Base
 
   def update_user_billing_info
     user.update_attributes({
-      account_type: (user.cpf.present? ? user.account_type : ((payer_document.try(:size) || 0 ) > 14 ? 'pj' : 'pf')),
-      country_id: country_id.presence || user.country_id,
-      address_street: address_street.presence || user.address_street,
-      address_number: address_number.presence || user.address_number,
-      address_complement: address_complement.presence || user.address_complement,
-      address_neighbourhood: address_neighbourhood.presence || user.address_neighbourhood,
-      address_zip_code: address_zip_code.presence|| user.address_zip_code,
-      address_city: address_city.presence || user.address_city,
-      address_state: address_state.presence || user.address_state,
-      phone_number: address_phone_number.presence || user.phone_number,
-      cpf: user.cpf.presence || payer_document.presence,
-      name: user.name.presence || payer_name,
-      public_name: user.public_name.presence || user.name.presence || payer_name
-    })
+                             account_type: (user.cpf.present? ? user.account_type : ((payer_document.try(:size) || 0) > 14 ? 'pj' : 'pf')),
+                             country_id: country_id.presence || user.country_id,
+                             address_street: address_street.presence || user.address_street,
+                             address_number: address_number.presence || user.address_number,
+                             address_complement: address_complement.presence || user.address_complement,
+                             address_neighbourhood: address_neighbourhood.presence || user.address_neighbourhood,
+                             address_zip_code: address_zip_code.presence || user.address_zip_code,
+                             address_city: address_city.presence || user.address_city,
+                             address_state: address_state.presence || user.address_state,
+                             phone_number: address_phone_number.presence || user.phone_number,
+                             cpf: user.cpf.presence || payer_document.presence,
+                             name: user.name.presence || payer_name,
+                             public_name: user.public_name.presence || user.name.presence || payer_name
+                           })
   end
 
   def to_js
     {
-      id: self.id,
-      value: self.value,
+      id: id,
+      value: value,
       reward: {
-        id: self.reward ? self.reward.id : nil,
-        description: self.reward ? self.reward.description : nil,
-        title: self.reward ? self.reward.title : nil,
-        shipping_options: self.reward ? self.reward.shipping_options : nil
+        id: reward ? reward.id : nil,
+        description: reward ? reward.description : nil,
+        title: reward ? reward.title : nil,
+        shipping_options: reward ? reward.shipping_options : nil
       },
-      shipping_fee_id: self.shipping_fee_id ? self.shipping_fee_id : nil
+      shipping_fee_id: shipping_fee_id ? shipping_fee_id : nil
     }
   end
 
@@ -169,8 +171,8 @@ class Contribution < ActiveRecord::Base
   def contribution_attributes
     payment = payments.last
     {
-      contribution_id: self.id,
-      value: self.value,
+      contribution_id: id,
+      value: value,
       project: {
         category: project.category.name_pt,
         user_thumb: project.user.decorate.display_image,
@@ -179,17 +181,16 @@ class Contribution < ActiveRecord::Base
         service_fee: project.service_fee,
         name: project.name
       },
-      reward: self.reward ? {
-        reward_id:  self.reward.id,
-        minimum_value: self.reward.minimum_value
+      reward: reward ? {
+        reward_id:  reward.id,
+        minimum_value: reward.minimum_value
       } : nil,
-      contribution_email: self.user.email,
-      slip_url: payment && payment.slip_payment? ? payment.gateway_data["boleto_url"] : nil
+      contribution_email: user.email,
+      slip_url: payment && payment.slip_payment? ? payment.gateway_data['boleto_url'] : nil
     }
   end
 
   def contribution_json
     contribution_attributes.to_json
   end
-
 end

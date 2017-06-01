@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BalanceTransferMachine
   include Statesman::Machine
 
@@ -9,18 +11,18 @@ class BalanceTransferMachine
   state :gateway_error
   state :rejected
 
-  transition from: :pending, to: %i(authorized rejected gateway_error)
-  transition from: :authorized, to: %i(gateway_error error rejected processing pending)
-  transition from: :processing, to: %i(error transferred gateway_error)
-  transition from: :gateway_error, to: %i(processing transferred error)
+  transition from: :pending, to: %i[authorized rejected gateway_error]
+  transition from: :authorized, to: %i[gateway_error error rejected processing pending]
+  transition from: :processing, to: %i[error transferred gateway_error]
+  transition from: :gateway_error, to: %i[processing transferred error]
 
-  after_transition(from: :processing, to: :transferred) do |bt| 
+  after_transition(from: :processing, to: :transferred) do |bt|
     if bt.project.present?
       bt.project.notify(:project_balance_transferred, bt.project.user, bt.project)
     end
   end
 
-  after_transition(to: :error) do |bt| 
+  after_transition(to: :error) do |bt|
     bt.refund_balance
   end
 

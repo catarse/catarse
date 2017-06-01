@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Catarse::Application.routes.draw do
   mount RedactorRails::Engine => '/redactor_rails'
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
@@ -11,13 +13,13 @@ Catarse::Application.routes.draw do
   )
 
   devise_scope :user do
-    post '/sign_up', {to: 'devise/registrations#create', as: :sign_up}
+    post '/sign_up', { to: 'devise/registrations#create', as: :sign_up }
     get '/not-my-account', to: 'sessions#destroy_and_redirect', as: :not_my_account
   end
 
   # User permalink profile
   constraints SubdomainConstraint do
-    get "/", to: 'users#show'
+    get '/', to: 'users#show'
   end
 
   get '/amigos' => redirect('http://crowdfunding.catarse.me/amigos')
@@ -30,19 +32,19 @@ Catarse::Application.routes.draw do
   get '/user_contributions' => 'application#redirect_to_user_contributions'
   post '/subscribe_newsletter' => 'application#subscribe_newsletter'
 
-  get '/thank_you' => "static#thank_you"
-  get '/follow-fb-friends' => "users#follow_fb_friends", as: :follow_fb_friends
-  get '/connect-facebook' => "application#connect_facebook", as: :connect_fb
+  get '/thank_you' => 'static#thank_you'
+  get '/follow-fb-friends' => 'users#follow_fb_friends', as: :follow_fb_friends
+  get '/connect-facebook' => 'application#connect_facebook', as: :connect_fb
 
   get '/notifications/:notification_type/:notification_id' => 'notifications#show'
 
   filter :locale, exclude: /\/auth\//
 
-  mount CatarsePagarme::Engine => "/", as: :catarse_pagarme
- #mount CatarseWepay::Engine => "/", as: :catarse_wepay
-  mount Dbhero::Engine => "/dbhero", as: :dbhero
+  mount CatarsePagarme::Engine => '/', as: :catarse_pagarme
+  # mount CatarseWepay::Engine => "/", as: :catarse_wepay
+  mount Dbhero::Engine => '/dbhero', as: :dbhero
 
-  resources :bank_accounts, except: [:destroy, :index] do
+  resources :bank_accounts, except: %i[destroy index] do
     member do
       get 'confirm'
       put 'request_refund'
@@ -65,8 +67,8 @@ Catarse::Application.routes.draw do
 
   resources :projects, path: '/', only: [:index]
   resources :flexible_projects, path: '/', controller: 'projects', only: [:index]
-  #@TODO update links, we don't need this anymore
-  resources :flexible_projects, controller: 'projects', except: [:index]  do
+  # @TODO update links, we don't need this anymore
+  resources :flexible_projects, controller: 'projects', except: [:index] do
     member do
       get :publish
       get :push_to_online
@@ -74,13 +76,13 @@ Catarse::Application.routes.draw do
       get :finish
     end
   end
-  resources :projects, only: [ :create, :update, :edit, :new, :show] do
-    resources :accounts, only: [:create, :update]
-    resources :posts, controller: 'projects/posts', only: [ :destroy, :show, :create ]
+  resources :projects, only: %i[create update edit new show] do
+    resources :accounts, only: %i[create update]
+    resources :posts, controller: 'projects/posts', only: %i[destroy show create]
     resources :rewards do
       post :sort, on: :member
     end
-    resources :contributions, {except: [:index], controller: 'projects/contributions'} do
+    resources :contributions, { except: [:index], controller: 'projects/contributions' } do
       collection do
         get :fallback_create, to: 'projects/contributions#create'
         put :update_status
@@ -116,9 +118,9 @@ Catarse::Application.routes.draw do
     end
   end
   resources :users do
-    resources :credit_cards, controller: 'users/credit_cards', only: [ :destroy ]
+    resources :credit_cards, controller: 'users/credit_cards', only: [:destroy]
     member do
-      #get :balance
+      # get :balance
       post :upload_image
       get :credit_cards
       get :unsubscribe_notifications
@@ -138,20 +140,19 @@ Catarse::Application.routes.draw do
     end
   end
 
-  get "/terms-of-use" => 'high_voltage/pages#show', id: 'terms_of_use'
-  get "/privacy-policy" => 'high_voltage/pages#show', id: 'privacy_policy'
-  get "/start" => 'high_voltage/pages#show', id: 'start'
-  get "/jobs" => 'high_voltage/pages#show', id: 'jobs'
-  get "/hello" => redirect("/start")
-  get "/press" => 'high_voltage/pages#show', id: 'press'
-  get "/assets" => 'high_voltage/pages#show', id: 'assets'
-  get "/guides" => redirect("http://fazum.catarse.me/guia-financiamento-coletivo")
-  get "/new-admin" => 'high_voltage/pages#show', id: 'new_admin'
-  get "/explore" => 'high_voltage/pages#show', id: 'explore'
-  get "/team" => 'high_voltage/pages#show', id: 'team'
+  get '/terms-of-use' => 'high_voltage/pages#show', id: 'terms_of_use'
+  get '/privacy-policy' => 'high_voltage/pages#show', id: 'privacy_policy'
+  get '/start' => 'high_voltage/pages#show', id: 'start'
+  get '/jobs' => 'high_voltage/pages#show', id: 'jobs'
+  get '/hello' => redirect('/start')
+  get '/press' => 'high_voltage/pages#show', id: 'press'
+  get '/assets' => 'high_voltage/pages#show', id: 'assets'
+  get '/guides' => redirect('http://fazum.catarse.me/guia-financiamento-coletivo')
+  get '/new-admin' => 'high_voltage/pages#show', id: 'new_admin'
+  get '/explore' => 'high_voltage/pages#show', id: 'explore'
+  get '/team' => 'high_voltage/pages#show', id: 'team'
   get '/flex' => redirect('http://crowdfunding.catarse.me')
-  get "/projects_dashboard" => 'high_voltage/pages#show', id: 'projects_dashboard'
-
+  get '/projects_dashboard' => 'high_voltage/pages#show', id: 'projects_dashboard'
 
   # Root path should be after channel constraints
   root to: 'projects#index'
@@ -172,7 +173,7 @@ Catarse::Application.routes.draw do
       end
     end
 
-    resources :projects, :flexible_projects, controller: 'projects', only: [ :index, :update, :destroy ] do
+    resources :projects, :flexible_projects, controller: 'projects', only: %i[index update destroy] do
       member do
         put 'approve'
         put 'push_to_online'
@@ -182,7 +183,7 @@ Catarse::Application.routes.draw do
       end
     end
 
-    resources :financials, only: [ :index ]
+    resources :financials, only: [:index]
 
     resources :contributions, only: [] do
       member do
@@ -191,12 +192,11 @@ Catarse::Application.routes.draw do
     end
 
     namespace :reports do
-      resources :contribution_reports, only: [ :index ]
+      resources :contribution_reports, only: [:index]
     end
   end
 
   resource :api_token, only: [:show]
 
-  get "/:permalink" => "projects#show", as: :project_by_slug
-
+  get '/:permalink' => 'projects#show', as: :project_by_slug
 end

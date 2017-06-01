@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+# frozen_string_literal: true
+
 desc 'Sync all balance operations'
 task sync_balance_operations: [:environment] do
   PagarMe.api_key = CatarsePagarme.configuration.api_key
@@ -19,7 +21,7 @@ task sync_balance_operations: [:environment] do
     rescue Exception => e
       puts e.inspect
     end
-    page = page+1
+    page += 1
   end
 end
 
@@ -65,12 +67,11 @@ task verify_pagarme_user_transfers: [:environment] do
     payment_transfer.update_column(:status, transfer.status)
 
     payment_transfer.update_attribute(:transfer_data, transfer.to_hash)
-    if transfer.status == 'failed'
-      payment_transfer.notify(:invalid_refund, payment_transfer.user)
-      if payment_transfer.over_refund_limit?
-        backoffice_user = User.find_by(email: CatarseSettings[:email_contact])
-        payment_transfer.notify(:over_refund_limit, backoffice_user) if backoffice_user
-      end
+    next unless transfer.status == 'failed'
+    payment_transfer.notify(:invalid_refund, payment_transfer.user)
+    if payment_transfer.over_refund_limit?
+      backoffice_user = User.find_by(email: CatarseSettings[:email_contact])
+      payment_transfer.notify(:over_refund_limit, backoffice_user) if backoffice_user
     end
   end
 end
@@ -78,10 +79,10 @@ end
 desc 'Verify all paid credit card payments for failed project'
 task verify_pagarme_not_refunded_cards: [:environment] do
   PagarMe.api_key = CatarsePagarme.configuration.api_key
-  Payment.joins(contribution: [:project]).where(%Q{
+  Payment.joins(contribution: [:project]).where(%{
     projects.state = 'failed' and payments.state = 'paid'
     and lower(payments.gateway) = 'pagarme' and lower(payments.payment_method) = 'cartaodecredito'
-    }).each do |p| 
+    }).each do |p|
     Rails.logger.info "Refunding credit card on failed projects #{p.gateway_id}"
     p.direct_refund
   end
@@ -90,18 +91,17 @@ end
 desc 'Verify all pending_refund transactions in pagarme and adjusts'
 task verify_pagarme_refunds: [:environment] do
   PagarMe.api_key = CatarsePagarme.configuration.api_key
-  Payment.where(state: 'pending_refund').where("lower(gateway) = 'pagarme'").each do |p| 
+  Payment.where(state: 'pending_refund').where("lower(gateway) = 'pagarme'").each do |p|
     t = p.pagarme_delegator.transaction
-    if t.status != p.state
-      Rails.logger.info "updating #{p.gateway_id} #{p.state} -> to -> #{t.status}"
-      p.pagarme_delegator.update_transaction
-      p.pagarme_delegator.change_status_by_transaction t.status
-    end
+    next unless t.status != p.state
+    Rails.logger.info "updating #{p.gateway_id} #{p.state} -> to -> #{t.status}"
+    p.pagarme_delegator.update_transaction
+    p.pagarme_delegator.change_status_by_transaction t.status
   end
 end
 
 desc 'Sync all gateway payments using all transactions'
-task :gateway_payments_sync, [:nthreads, :page_size] => [:environment] do |t, args| 
+task :gateway_payments_sync, %i[nthreads page_size] => [:environment] do |t, args|
   args.with_defaults nthreads: 3, page_size: 500
   ActiveRecord::Base.connection_pool.with_connection do
     PagarMe.api_key = CatarsePagarme.configuration.api_key
@@ -114,16 +114,32 @@ task :gateway_payments_sync, [:nthreads, :page_size] => [:environment] do |t, ar
       transactions = PagarMe::Transaction.all(page, per_page)
 
       if transactions.empty?
-        Rails.logger.info "[GatewayPayment SYNC] -> exiting no transactions returned"
+        Rails.logger.info '[GatewayPayment SYNC] -> exiting no transactions returned'
         break
       end
 
-      Rails.logger.info "[GatewayPayment SYNC] - sync transactions"
-      Parallel.map(transactions, in_threads: args.nthreads.to_i) do |transaction| 
-        postbacks = transaction.postbacks.to_json rescue nil
-        payables = transaction.payables.to_json rescue nil
-        operations = transaction.operations.to_json rescue nil
-        events = transaction.events.to_json rescue nil
+      Rails.logger.info '[GatewayPayment SYNC] - sync transactions'
+      Parallel.map(transactions, in_threads: args.nthreads.to_i) do |transaction|
+        postbacks = begin
+                      transaction.postbacks.to_json
+                    rescue
+                      nil
+                    end
+        payables = begin
+                     transaction.payables.to_json
+                   rescue
+                     nil
+                   end
+        operations = begin
+                       transaction.operations.to_json
+                     rescue
+                       nil
+                     end
+        events = begin
+                   transaction.events.to_json
+                 rescue
+                   nil
+                 end
 
         gpayment = GatewayPayment.find_or_create_by transaction_id: transaction.id.to_s
         gpayment.update_attributes(
@@ -132,20 +148,19 @@ task :gateway_payments_sync, [:nthreads, :page_size] => [:environment] do |t, ar
           payables: payables,
           events: events,
           operations: operations,
-          last_sync_at: DateTime.now()
+          last_sync_at: DateTime.now
         )
         print '.'
       end
       Rails.logger.info "[GatewayPayment SYNC] - transactions synced on page #{page}"
 
-      page = page+1
+      page += 1
     end
   end
 end
 
-
-desc "Verify all transactions in pagarme for a given date range and check their consistency in our database"
-task :verify_pagarme_transactions, [:start_date, :end_date]  => :environment do |task, args|
+desc 'Verify all transactions in pagarme for a given date range and check their consistency in our database'
+task :verify_pagarme_transactions, %i[start_date end_date] => :environment do |task, args|
   args.with_defaults(start_date: Date.today - 1, end_date: Date.today)
   Rails.logger.info "Verifying transactions in range: #{args.inspect}"
   PAGE_SIZE = 50
@@ -172,33 +187,33 @@ task :verify_pagarme_transactions, [:start_date, :end_date]  => :environment do 
     request.run
   end
 
-  def find_payment source
+  def find_payment(source)
     gateway_id = source['id'].to_s
     p = Payment.find_by(gateway_id: gateway_id)
     unless p
       key = find_key source
       puts "Trying to find by key #{key}"
-      p = Payment.where("gateway_id IS NULL AND key = ?", key).first # Só podemos pegar o mesmo pagamento se o gateway_id for nulo para evitar conflito
+      p = Payment.where('gateway_id IS NULL AND key = ?', key).first # Só podemos pegar o mesmo pagamento se o gateway_id for nulo para evitar conflito
     end
     p
   end
 
-  def find_key source
+  def find_key(source)
     source['metadata'].try(:[], 'key').to_s
   end
 
-  def find_contribution source
+  def find_contribution(source)
     id = source['metadata'].try(:[], 'contribution_id').to_s
     if id.present?
       Contribution.find(id)
     else
       project_id = source['metadata'].try(:[], 'project_id').to_s
-      attributes = {project_id: project_id, payer_email: source['customer']['email'], value: (source['amount'] / 100)}
+      attributes = { project_id: project_id, payer_email: source['customer']['email'], value: (source['amount'] / 100) }
       Contribution.find_by(attributes)
     end
   end
 
-  def find_payment_method source
+  def find_payment_method(source)
     source['payment_method'] == 'boleto' ? 'BoletoBancario' : 'CartaoDeCredito'
   end
 
@@ -235,12 +250,12 @@ task :verify_pagarme_transactions, [:start_date, :end_date]  => :environment do 
           if c
             puts "\n\n>>>>>>>>>   FOUND"
             payment = c.payments.new({
-              gateway: 'Pagarme', 
-              gateway_id: source['id'],
-              payment_method: find_payment_method(source),
-              value: c.value,
-              key: find_key(source)
-            })
+                                       gateway: 'Pagarme',
+                                       gateway_id: source['id'],
+                                       payment_method: find_payment_method(source),
+                                       value: c.value,
+                                       key: find_key(source)
+                                     })
             payment.generate_key
             payment.save!(validate: false)
             yield(source, payment)
@@ -272,4 +287,3 @@ task :verify_pagarme_transactions, [:start_date, :end_date]  => :environment do 
     payment.pagarme_delegator.update_transaction
   end
 end
-

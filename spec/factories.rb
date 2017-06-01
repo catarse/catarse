@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryGirl.define do
   sequence :name do |n|
     "Foo bar #{n}"
@@ -12,7 +14,7 @@ FactoryGirl.define do
   end
 
   sequence :uid do |n|
-    "#{n}"
+    n.to_s
   end
 
   sequence :serial do |n|
@@ -23,7 +25,7 @@ FactoryGirl.define do
     "foo_page_#{n}"
   end
 
-  sequence :domain do |n| 
+  sequence :domain do |n|
     "foo#{n}lorem.com"
   end
 
@@ -33,7 +35,7 @@ FactoryGirl.define do
   end
 
   factory :country do |f|
-    f.name "Brasil"
+    f.name 'Brasil'
   end
 
   factory :origin do |f|
@@ -46,7 +48,7 @@ FactoryGirl.define do
     f.association :project
   end
 
-  factory :balance_transaction do |f| 
+  factory :balance_transaction do |f|
     f.association :user
     f.association :project
     f.amount 100
@@ -56,10 +58,10 @@ FactoryGirl.define do
   factory :user do |f|
     f.association :bank_account
     f.permalink { generate(:permalink) }
-    f.name "Foo bar"
-    f.public_name "Public bar"
-    f.password "123456"
-    f.cpf "97666238991"
+    f.name 'Foo bar'
+    f.public_name 'Public bar'
+    f.password '123456'
+    f.cpf '97666238991'
     f.uploaded_image File.open("#{Rails.root}/spec/support/testimg.png")
     f.email { generate(:email) }
     f.about_html "This is Foo bar's biography."
@@ -83,34 +85,34 @@ FactoryGirl.define do
   end
 
   factory :project do |f|
-    #after(:create) do |project|
+    # after(:create) do |project|
     #  create(:reward, project: project)
     #  if project.state == 'change_to_online_after_create'
     #    project.update_attributes(state: 'online')
     #  end
-    #end
-    f.name "Foo bar"
+    # end
+    f.name 'Foo bar'
     f.permalink { generate(:permalink) }
     f.association :user
     f.association :category
     f.association :city
-    f.about_html "Foo bar"
-    f.headline "Foo bar"
+    f.about_html 'Foo bar'
+    f.headline 'Foo bar'
     f.mode 'aon'
-    f.goal 10000
+    f.goal 10_000
     f.online_days 5
     f.more_links 'Ipsum dolor'
     f.video_url 'http://vimeo.com/17298435'
     f.state 'online'
     f.budget '1000'
     f.uploaded_image File.open("#{Rails.root}/spec/support/testimg.png")
-    after :create do |project| 
+    after :create do |project|
       unless project.project_transitions.where(to_state: project.state).present?
         FactoryGirl.create(:project_transition, to_state: project.state, project: project)
       end
 
       # should set expires_at when create a project in these states
-      if %w(online waiting_funds failed successful).include?(project.state) && project.online_days.present? && project.online_at.present?
+      if %w[online waiting_funds failed successful].include?(project.state) && project.online_days.present? && project.online_at.present?
         project.expires_at = (project.online_at + project.online_days.days).end_of_day
         project.save
       end
@@ -129,25 +131,25 @@ FactoryGirl.define do
   factory :flexible_project do |f|
     f.state 'draft'
     f.mode 'flex'
-    f.name "Foo bar"
+    f.name 'Foo bar'
     f.permalink { generate(:permalink) }
     f.association :user
     f.association :category
     f.association :city
-    f.about_html "Foo bar"
-    f.headline "Foo bar"
-    f.goal 10000
+    f.about_html 'Foo bar'
+    f.headline 'Foo bar'
+    f.goal 10_000
     f.online_days 5
     f.more_links 'Ipsum dolor'
     f.video_url 'http://vimeo.com/17298435'
     f.budget '1000'
     f.uploaded_image File.open("#{Rails.root}/spec/support/testimg.png")
 
-    after :create do |flex_project| 
+    after :create do |flex_project|
       FactoryGirl.create(:project_transition, {
-        to_state: flex_project.state,
-        project: flex_project
-      })
+                           to_state: flex_project.state,
+                           project: flex_project
+                         })
     end
   end
 
@@ -160,13 +162,13 @@ FactoryGirl.define do
 
   factory :user_link do |f|
     f.association :user
-    f.link "http://www.foo.com"
+    f.link 'http://www.foo.com'
   end
 
   factory :project_budget do |f|
     f.association :project
-    f.name "Foo Bar"
-    f.value "10"
+    f.name 'Foo Bar'
+    f.value '10'
   end
 
   factory :unsubscribe do |f|
@@ -174,7 +176,7 @@ FactoryGirl.define do
     f.association :project, factory: :project
   end
 
-  factory :project_invite do |f| 
+  factory :project_invite do |f|
     f.associations :project
     f.user_email { generate(:user_email) }
   end
@@ -203,17 +205,16 @@ FactoryGirl.define do
     f.locale 'pt'
   end
 
-
   factory :reward do |f|
     f.association :project, factory: :project
     f.minimum_value 10.00
-    f.description "Foo bar"
+    f.description 'Foo bar'
     f.deliver_at 1.year.from_now
   end
 
   factory :rewards, class: Reward do |f|
     f.minimum_value 10.00
-    f.description "Foo bar"
+    f.description 'Foo bar'
     f.deliver_at 1.year.from_now
   end
 
@@ -221,7 +222,6 @@ FactoryGirl.define do
     f.amount 10
     f.association :user
   end
-
 
   factory :contribution do |f|
     f.association :project, factory: :project
@@ -272,7 +272,7 @@ FactoryGirl.define do
     f.gateway 'Pagarme'
     f.value 10.00
     f.installment_value 10.00
-    f.payment_method "CartaoDeCredito"
+    f.payment_method 'CartaoDeCredito'
   end
 
   factory :user_follow do |f|
@@ -311,17 +311,17 @@ FactoryGirl.define do
   end
 
   factory :institutional_video do |f|
-    f.title "My title"
-    f.description "Some Description"
-    f.video_url "http://vimeo.com/35492726"
+    f.title 'My title'
+    f.description 'Some Description'
+    f.video_url 'http://vimeo.com/35492726'
     f.visible false
   end
 
   factory :project_post do |f|
     f.association :project, factory: :project
     f.association :user, factory: :user
-    f.title "My title"
-    f.comment_html "<p>This is a comment</p>"
+    f.title 'My title'
+    f.comment_html '<p>This is a comment</p>'
   end
 
   factory :state do
@@ -331,33 +331,32 @@ FactoryGirl.define do
 
   factory :city do |f|
     f.association :state
-    f.name "foo"
+    f.name 'foo'
   end
 
   factory :bank do
-    name "Foo"
-    code { rand 900...18000 }
+    name 'Foo'
+    code { rand 900...18_000 }
   end
 
   factory :bank_account do |f|
-    #f.association :user, factory: :user
+    # f.association :user, factory: :user
     f.association :bank, factory: :bank
     input_bank_number nil
-    #owner_name "Foo Bar"
-    #owner_document "97666238991"
-    account_digit "1"
-    agency "1234"
-    agency_digit "1"
-    account "12345"
+    # owner_name "Foo Bar"
+    # owner_document "97666238991"
+    account_digit '1'
+    agency '1234'
+    agency_digit '1'
+    account '12345'
   end
 
   factory :single_bank_account, class: BankAccount do |f|
     f.association :bank, factory: :bank
-    owner_name "Foo"
-    owner_document "000"
-    account_digit "1"
-    agency "1234"
+    owner_name 'Foo'
+    owner_document '000'
+    account_digit '1'
+    agency '1234'
     account '1'
   end
-
 end

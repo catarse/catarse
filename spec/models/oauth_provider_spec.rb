@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe OauthProvider, type: :model do
-  describe "Associations" do
-    it{ is_expected.to have_many :authorizations }
+  describe 'Associations' do
+    it { is_expected.to have_many :authorizations }
   end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Catarse::Application.configure do
   Slim::Engine.set_options pretty: true
   # Settings specified here will take precedence over those in config/application.rb.
@@ -32,10 +34,9 @@ Catarse::Application.configure do
   # mailcatcher configs
   config.action_mailer.delivery_method = :letter_opener
 
-  config.action_mailer.asset_host = "http://localhost:3000"
+  config.action_mailer.asset_host = 'http://localhost:3000'
 
   config.log_level = :debug
 
   config.assets.digest = false
 end
-

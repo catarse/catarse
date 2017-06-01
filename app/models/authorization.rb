@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Authorization < ActiveRecord::Base
   attr_accessible :oauth_provider, :oauth_provider_id, :uid, :user_id, :user
   belongs_to :user
@@ -9,9 +11,9 @@ class Authorization < ActiveRecord::Base
     joins(:oauth_provider).where(oauth_providers: { name: 'facebook' })
   }
 
-  scope :from_hash, ->(hash){
-    joins(:oauth_provider).
-    where("oauth_providers.name = :name AND uid = :uid", {name: hash['provider'], uid: hash['uid']})
+  scope :from_hash, ->(hash) {
+    joins(:oauth_provider)
+      .where('oauth_providers.name = :name AND uid = :uid', { name: hash['provider'], uid: hash['uid'] })
   }
 
   def self.find_from_hash(hash)

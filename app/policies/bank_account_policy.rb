@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BankAccountPolicy < ApplicationPolicy
   def show?
     done_by_owner_or_admin?
@@ -28,7 +30,7 @@ class BankAccountPolicy < ApplicationPolicy
   end
 
   def permitted_attributes
-    bank_attrs = [:bank_id, :name, :agency, :account, :owner_name, :owner_document, :account_digit, :agency_digit, :input_bank_number, :account_type]
+    bank_attrs = %i[bank_id name agency account owner_name owner_document account_digit agency_digit input_bank_number account_type]
     bank_attrs << user_attributes
   end
 
@@ -38,9 +40,8 @@ class BankAccountPolicy < ApplicationPolicy
   end
 
   protected
+
   def done_by_owner_or_admin?
     record.user == user || user.try(:admin?)
   end
 end
-
-

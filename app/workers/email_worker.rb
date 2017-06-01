@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 class EmailWorker
   include Sidekiq::Worker
   sidekiq_options retry: 5
 
-  def perform notification_id
+  def perform(notification_id)
     resource = Notification.find notification_id
 
     # We don't want to raise exceptions in case our notification does not exist in the database

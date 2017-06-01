@@ -1,5 +1,6 @@
-namespace :balance_transfer do
+# frozen_string_literal: true
 
+namespace :balance_transfer do
   desc 'process transfers that is authorized'
   task process_authorized: :environment do
     BalanceTransfer.authorized.find_each do |bt|
@@ -18,7 +19,8 @@ namespace :balance_transfer do
 
         bt.transition_to!(
           :gateway_error,
-          { error_msg: e.message, error: e.to_json })
+          { error_msg: e.message, error: e.to_json }
+        )
       end
 
       Raven.user_context({})
@@ -40,5 +42,4 @@ namespace :balance_transfer do
       end
     end
   end
-
 end

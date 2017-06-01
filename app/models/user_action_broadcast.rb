@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 class UserActionBroadcast
-  def initialize user
+  def initialize(user)
     @user = user
   end
 
-  def broadcast_action action = {}
+  def broadcast_action(action = {})
     @user.followers.each do |uf|
       uf.notifications.find_or_create_by(
         template_name: action['template_name'],
@@ -15,7 +17,8 @@ class UserActionBroadcast
         metadata: {
           follow_id: @user.id,
           project_id: action['project_id']
-        }.to_json)
+        }.to_json
+      )
     end
   end
 end

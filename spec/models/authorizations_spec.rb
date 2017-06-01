@@ -1,85 +1,87 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Authorization, type: :model do
-    let(:oauth_data){
+  let(:oauth_data) do
     Hashie::Mash.new({
-      credentials: {
-        expires: true,
-        expires_at: 1366644101,
-        token: "AAAHuZCwF61OkBAOmLTwrhv52pZCriPnTGIasdasdasdascNhZCZApsZCSg6POZCQqolxYjnqLSVH67TaRDONx72fXXXB7N7ZBByLZCV7ldvagm"
-      },
-      extra: {
-        raw_info: {
-          bio: "I, simply am not there",
-          email: "diogob@gmail.com",
-          first_name: "Diogo",
-          gender: "male",
-          id: "547955110",
-          last_name: "Biazus",
-          link: "http://www.facebook.com/diogo.biazus",
-          locale: "pt_BR",
-          name: "Diogo, Biazus",
-          timezone: -3,
-          updated_time: "2012-08-01T18:22:50+0000",
-          username: "diogo.biazus",
-          verified: true
-        },
-      },
-      info: {
-        description: "I, simply am not there",
-        email: "diogob@gmail.com",
-        first_name: "Diogo",
-        image: "http://graph.facebook.com/547955110/picture?type:, square",
-        last_name: "Biazus",
-        name: "Diogo, Biazus",
-        urls: {
-          Facebook: "http://www.facebook.com/diogo.biazus"
-        },
-        verified: true
-      },
-      provider: "facebook",
-      uid: "547955110"
-    })
-  }
-
-  describe "Associations" do
-    it{ is_expected.to belong_to :user }
-    it{ is_expected.to belong_to :oauth_provider }
+                       credentials: {
+                         expires: true,
+                         expires_at: 1_366_644_101,
+                         token: 'AAAHuZCwF61OkBAOmLTwrhv52pZCriPnTGIasdasdasdascNhZCZApsZCSg6POZCQqolxYjnqLSVH67TaRDONx72fXXXB7N7ZBByLZCV7ldvagm'
+                       },
+                       extra: {
+                         raw_info: {
+                           bio: 'I, simply am not there',
+                           email: 'diogob@gmail.com',
+                           first_name: 'Diogo',
+                           gender: 'male',
+                           id: '547955110',
+                           last_name: 'Biazus',
+                           link: 'http://www.facebook.com/diogo.biazus',
+                           locale: 'pt_BR',
+                           name: 'Diogo, Biazus',
+                           timezone: -3,
+                           updated_time: '2012-08-01T18:22:50+0000',
+                           username: 'diogo.biazus',
+                           verified: true
+                         }
+                       },
+                       info: {
+                         description: 'I, simply am not there',
+                         email: 'diogob@gmail.com',
+                         first_name: 'Diogo',
+                         image: 'http://graph.facebook.com/547955110/picture?type:, square',
+                         last_name: 'Biazus',
+                         name: 'Diogo, Biazus',
+                         urls: {
+                           Facebook: 'http://www.facebook.com/diogo.biazus'
+                         },
+                         verified: true
+                       },
+                       provider: 'facebook',
+                       uid: '547955110'
+                     })
   end
 
-  describe "Validations" do
-    it{ is_expected.to validate_presence_of :oauth_provider }
-    it{ is_expected.to validate_presence_of :user }
-    it{ is_expected.to validate_presence_of :uid }
+  describe 'Associations' do
+    it { is_expected.to belong_to :user }
+    it { is_expected.to belong_to :oauth_provider }
   end
 
-  describe ".find_from_hash" do
+  describe 'Validations' do
+    it { is_expected.to validate_presence_of :oauth_provider }
+    it { is_expected.to validate_presence_of :user }
+    it { is_expected.to validate_presence_of :uid }
+  end
+
+  describe '.find_from_hash' do
     before do
       provider = create(:oauth_provider, name: oauth_data[:provider])
       @authotization = create(:authorization, oauth_provider: provider, uid: oauth_data[:uid])
       create(:authorization, oauth_provider: provider)
     end
-    subject{ Authorization.find_from_hash(oauth_data) }
-    it{ is_expected.to eq(@authotization) }
+    subject { Authorization.find_from_hash(oauth_data) }
+    it { is_expected.to eq(@authotization) }
   end
 
-  describe ".create_from_hash" do
+  describe '.create_from_hash' do
     before do
       create(:oauth_provider, name: oauth_data[:provider])
     end
-    subject{ Authorization.create_from_hash(oauth_data, user) }
-    context "when user exists" do
-      let(:user){ create(:user, email: oauth_data['info']['email']) }
-      it{ is_expected.to be_persisted }
-      its(:uid){ should == oauth_data['uid'] }
-      its(:user){ should == user }
+    subject { Authorization.create_from_hash(oauth_data, user) }
+    context 'when user exists' do
+      let(:user) { create(:user, email: oauth_data['info']['email']) }
+      it { is_expected.to be_persisted }
+      its(:uid) { should == oauth_data['uid'] }
+      its(:user) { should == user }
     end
 
-    context "when user is new" do
-      let(:user){}
-      it{ is_expected.to be_persisted }
-      its(:uid){ should == oauth_data['uid'] }
-      its(:user){ should be_persisted }
+    context 'when user is new' do
+      let(:user) {}
+      it { is_expected.to be_persisted }
+      its(:uid) { should == oauth_data['uid'] }
+      its(:user) { should be_persisted }
     end
   end
 end

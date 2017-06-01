@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 module FeatureHelpers
   TIME_TO_SLEEP = 4
 
   def login
     visit new_user_session_path
 
-    within ".w-form" do
+    within '.w-form' do
       fill_in 'user_email', with: current_user.email
       fill_in 'user_password', with: 'test123'
       find('.btn.btn-large').click

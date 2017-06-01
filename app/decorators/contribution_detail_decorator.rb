@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ContributionDetailDecorator < Draper::Decorator
   decorates :contribution_detail
   include Draper::LazyHelpers
@@ -6,17 +8,17 @@ class ContributionDetailDecorator < Draper::Decorator
     if source.installments > 1
       "#{source.installments} x #{number_to_currency source.installment_value}"
     else
-      ""
+      ''
     end
   end
 
   def display_payment_details
     if source.credits?
-      I18n.t("contribution.payment_details.creditos")
+      I18n.t('contribution.payment_details.creditos')
     elsif source.payment_method.present?
       I18n.t("contribution.payment_details.#{source.payment_method.underscore}")
     else
-      ""
+      ''
     end
   end
 
@@ -26,7 +28,7 @@ class ContributionDetailDecorator < Draper::Decorator
 
   def display_slip_url
     gateway_data = source.try(:gateway_data)
-    return gateway_data["boleto_url"] if gateway_data.present?
+    return gateway_data['boleto_url'] if gateway_data.present?
   end
 
   def display_status
@@ -34,4 +36,3 @@ class ContributionDetailDecorator < Draper::Decorator
     I18n.t("payment.state.#{state}", date: I18n.l(source["#{state}_at".to_sym].to_date))
   end
 end
-

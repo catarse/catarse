@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+# frozen_string_literal: true
 
 # Set the host name for URL creation
 SitemapGenerator::Sitemap.default_host = CatarseSettings[:base_url]
@@ -11,7 +12,7 @@ SitemapGenerator::Sitemap.public_path = 'tmp/'
 
 # Set this to a directory/path if you don't want to upload to the root of your `sitemaps_host`
 SitemapGenerator::Sitemap.sitemaps_path = 'sitemaps/'
- 
+
 SitemapGenerator::Sitemap.adapter = SitemapGenerator::S3Adapter.new(
   fog_provider: 'AWS',
   aws_access_key_id: CatarseSettings[:aws_access_key],
@@ -43,25 +44,25 @@ SitemapGenerator::Sitemap.create do
   #     add article_path(article), :lastmod => article.updated_at
   #   end
 
-  #Páginas estáticas
+  # Páginas estáticas
   add '/start'
   add '/explore'
-  add '/flex' #deixemos aqui para que a palavra seja indexada?
+  add '/flex' # deixemos aqui para que a palavra seja indexada?
   add '/team'
   add '/jobs'
   add '/press'
   add '/terms-of-use'
   add '/privacy-policy'
 
-  #Outros sites
-  add '/', :host => 'http://suporte.catarse.me/'
-  add '/', :host => 'http://pesquisa.catarse.me/'
-  add '/guia-financiamento-coletivo', :host => 'http://fazum.catarse.me'
+  # Outros sites
+  add '/', host: 'http://suporte.catarse.me/'
+  add '/', host: 'http://pesquisa.catarse.me/'
+  add '/guia-financiamento-coletivo', host: 'http://fazum.catarse.me'
 
-  #Projetos
+  # Projetos
   Project.where("permalink in ('mola','alendadoheroi') or state in ('online','waiting_funds') or expires_at+'7 days'::interval > now() or (state='successful' and (mode='aon' or goal*0.50<(select sum(p.value) from payments p join contributions c on c.id=p.contribution_id and p.state='paid' and c.project_id=projects.id)))").update_ordered.each do |project|
-    add project.permalink, :lastmod => project.updated_at,\
-      :priority => (project.state=='successful' || project.state=='failed' ? 0.4 : 0.6),\
-      :changefreq => (project.state=='successful' || project.state=='failed' ? 'monthly' : 'daily')
+    add project.permalink, lastmod: project.updated_at,\
+                           priority: (project.state == 'successful' || project.state == 'failed' ? 0.4 : 0.6),\
+                           changefreq: (project.state == 'successful' || project.state == 'failed' ? 'monthly' : 'daily')
   end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Notification, type: :model do
@@ -21,12 +23,12 @@ RSpec.describe Notification, type: :model do
     it { is_expected.to belong_to :user }
   end
 
-  describe "#deliver" do
+  describe '#deliver' do
     before do
       allow(notification).to receive(:deliver!).and_return(true)
     end
 
-    context "when notification already sent" do
+    context 'when notification already sent' do
       before do
         expect(notification).not_to receive(:deliver!)
         notification.update_attribute(:sent_at, DateTime.now)
@@ -34,7 +36,7 @@ RSpec.describe Notification, type: :model do
       it { notification.deliver }
     end
 
-    context "when not sent notification" do
+    context 'when not sent notification' do
       before do
         expect(notification).to receive(:deliver!)
       end
@@ -42,7 +44,7 @@ RSpec.describe Notification, type: :model do
     end
   end
 
-  describe "#deliver!" do
+  describe '#deliver!' do
     before do
       allow(EmailWorker).to receive(:perform_at).and_call_original
       allow(Notification).to receive(:find).with(notification.id).and_return(notification)
@@ -52,7 +54,7 @@ RSpec.describe Notification, type: :model do
       expect(notification).to receive(:deliver_without_worker)
     end
 
-    it "should perform email worker to deliver notification" do
+    it 'should perform email worker to deliver notification' do
       expect(notification.sent_at).to eq(nil)
       notification.deliver!
       notification.reload
@@ -61,10 +63,10 @@ RSpec.describe Notification, type: :model do
   end
 
   describe '#deliver_without_worker' do
-    it "should use mailer deliveries" do
-      expect {
-       notification.deliver_without_worker
-      }.to change { ActionMailer::Base.deliveries.count }.by(1)
+    it 'should use mailer deliveries' do
+      expect do
+        notification.deliver_without_worker
+      end.to change { ActionMailer::Base.deliveries.count }.by(1)
     end
   end
 
@@ -85,12 +87,12 @@ RSpec.describe Notification, type: :model do
     end
 
     describe '#from_email' do
-      subject { notification.from_email}
+      subject { notification.from_email }
       it { is_expected.to eq('from@email.com') }
     end
 
     describe '#locale' do
-      subject { notification.locale}
+      subject { notification.locale }
       it { is_expected.to eq('pt') }
     end
   end

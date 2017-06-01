@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # run with .pgpass file and command:
 # DB_USER=dbuser DB_NAME=dnmame DB_HOST=localhost
 
@@ -7,7 +9,7 @@ set :output, { standard: '~/cron.log' }
 def generate_psql_c(view)
   only_view = view.split('.')[1]
   parsed_name = view.start_with?('"') ? view.inspect : view
-  %Q{ echo "DO language plpgsql \\$\\$BEGIN
+  %{ echo "DO language plpgsql \\$\\$BEGIN
   RAISE NOTICE 'begin updating';
   IF NOT EXISTS (SELECT true FROM pg_stat_activity WHERE pg_backend_pid() <> pid AND query ~* 'refresh materialized .*#{only_view}') THEN
      RAISE NOTICE 'refreshing view';
@@ -18,7 +20,7 @@ def generate_psql_c(view)
 }
 end
 
-%w(
+%w[
   "1".finished_projects
   public.moments_project_start
   public.moments_project_start_inferuser
@@ -42,26 +44,25 @@ end
   "1".statistics_music
   "1".category_totals
   "1".statistics_publicacoes
-).each do |v|
+].each do |v|
   every 1.hour do
     command generate_psql_c(v)
   end
 end
 
-%w(
+%w[
   public.moments_navigations
   "1".project_visitors_per_day
-).each do |v|
+].each do |v|
   every 1.day, at: '11:59 pm' do
     command generate_psql_c(v)
   end
 end
 
-%w(
+%w[
   "1".user_totals
-).each do |v|
+].each do |v|
   every 10.minutes do
     command generate_psql_c(v)
   end
 end
-
