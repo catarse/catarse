@@ -5,7 +5,6 @@ class BalanceTransaction < ActiveRecord::Base
     balance_transfer_project
     balance_transfer_request
     balance_transfer_error
-    transfered_project_pledged
     successful_project_pledged
     catarse_project_service_fee
     irrf_tax_project )

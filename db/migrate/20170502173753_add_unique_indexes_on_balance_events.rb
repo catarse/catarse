@@ -4,9 +4,6 @@ class AddUniqueIndexesOnBalanceEvents < ActiveRecord::Migration
 create unique index balance_error_evt_uniq on balance_transactions(event_name, balance_transfer_id)
     where event_name = 'balance_transfer_error';
 
-create unique index transfered_project_pledged_evt_uniq on balance_transactions(event_name, project_id)
-    where event_name = 'transfered_project_pledged';
-
 create unique index successful_project_pledged_evt_uniq on balance_transactions(event_name, project_id)
     where event_name = 'successful_project_pledged';
 
@@ -21,7 +18,6 @@ create unique index irrf_tax_project_evt_uniq on balance_transactions(event_name
   def down
     execute %Q{
 drop index balance_error_evt_uniq;
-drop index transfered_project_pledged_evt_uniq;
 drop index successful_project_pledged_evt_uniq;
 drop index catarse_project_service_fee_evt_uniq;
 drop index irrf_tax_project_evt_uniq;

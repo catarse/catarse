@@ -11,7 +11,7 @@ RSpec.describe BalanceTransaction, type: :model do
     it{ is_expected.to validate_presence_of(:amount) }
     it{ is_expected.to validate_presence_of(:event_name) }
     it{ is_expected.to validate_presence_of(:user_id) }
-    it{ is_expected.to validate_inclusion_of(:event_name).in_array(%w(transfered_project_pledged successful_project_pledged catarse_project_service_fee irrf_tax_project)) }
+    it{ is_expected.to validate_inclusion_of(:event_name).in_array(%w(successful_project_pledged catarse_project_service_fee irrf_tax_project)) }
   end
 
   describe '#insert_contribution_confirmed_after_project_finished' do
