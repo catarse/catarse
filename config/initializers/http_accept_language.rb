@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 if defined?(ActionDispatch::Request)
   ActionDispatch::Request.send :include, HttpAcceptLanguage
 elsif defined?(ActionDispatch::AbstractRequest)

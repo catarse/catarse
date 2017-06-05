@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ProjectPostDecorator < Draper::Decorator
   decorates :project_post
   include Draper::LazyHelpers
@@ -7,11 +9,10 @@ class ProjectPostDecorator < Draper::Decorator
     doc.xpath('//iframe').each do |iframe|
       src = iframe.attr('src')
       link = doc.create_element 'a'
-      link['href'] = src.gsub(/^\/\//,'http://')
-      link.content = src.gsub(/^\/\//,'')
+      link['href'] = src.gsub(/^\/\//, 'http://')
+      link.content = src.gsub(/^\/\//, '')
       iframe.replace link
     end
-    return doc.at('body').inner_html
+    doc.at('body').inner_html
   end
-
 end

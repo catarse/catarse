@@ -1,11 +1,12 @@
-class DonationsController < ApplicationController
+# frozen_string_literal: true
 
+class DonationsController < ApplicationController
   helper_method :resource
 
-  def confirm;end
+  def confirm; end
 
   def create
-    raise Pundit::NotAuthorizedError if !current_user
+    raise Pundit::NotAuthorizedError unless current_user
     return redirect_to explore_path if current_user.pending_refund_payments.empty?
     @donation = Donation.create(user: current_user)
     @donation.notify(:contribution_donated, current_user)
@@ -17,6 +18,7 @@ class DonationsController < ApplicationController
   end
 
   private
+
   def update_pending_refunds
     resource.update_attribute :amount, current_user.pending_refund_payments.sum(&:value)
     current_user.pending_refund_payments.each do |payment|
@@ -24,5 +26,4 @@ class DonationsController < ApplicationController
       payment.update_attribute :state, 'refunded'
     end
   end
-
 end

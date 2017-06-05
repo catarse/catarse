@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ContributionObserver < ActiveRecord::Observer
   observe :contribution
 
@@ -7,5 +9,4 @@ class ContributionObserver < ActiveRecord::Observer
       PendingContributionWorker.perform_at(2.day.from_now, contribution.id)
     end
   end
-
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class StaticController < ApplicationController
   def thank_you
     contribution = Contribution.find session[:thank_you_contribution_id]

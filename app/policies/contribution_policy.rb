@@ -1,5 +1,6 @@
-class ContributionPolicy < ApplicationPolicy
+# frozen_string_literal: true
 
+class ContributionPolicy < ApplicationPolicy
   self::UserScope = Struct.new(:current_user, :user, :scope) do
     def resolve
       if current_user.try(:admin?)
@@ -60,4 +61,3 @@ class ContributionPolicy < ApplicationPolicy
     record.attribute_names.map(&:to_sym) - %i[user_attributes user_id user payment_service_fee payment_id]
   end
 end
-

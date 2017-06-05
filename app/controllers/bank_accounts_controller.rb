@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BankAccountsController < ApplicationController
   after_action :verify_authorized
   helper_method :resource, :user_decorator
@@ -47,7 +49,7 @@ class BankAccountsController < ApplicationController
     authorize resource
 
     refunded_amount = user_decorator.display_pending_refund_payments_amount
-    #pagarme payments
+    # pagarme payments
     user.pending_refund_payments.each do |payment|
       payment.direct_refund
     end

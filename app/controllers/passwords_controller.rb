@@ -1,5 +1,6 @@
-class PasswordsController < Devise::PasswordsController
+# frozen_string_literal: true
 
+class PasswordsController < Devise::PasswordsController
   prepend_before_filter :redirect_user_already_logged, only: [:edit]
 
   def update
@@ -12,9 +13,7 @@ class PasswordsController < Devise::PasswordsController
       sign_in(resource_name, resource)
       respond_with resource, location: after_resetting_password_path_for(resource)
     else
-      if resource.errors[:password]
-        return respond_with resource
-      end
+      return respond_with resource if resource.errors[:password]
 
       flash[:notice] = I18n.t('devise.failure.password_token')
       redirect_to new_password_path(resource_name)
@@ -22,6 +21,7 @@ class PasswordsController < Devise::PasswordsController
   end
 
   protected
+
   def redirect_user_already_logged
     session[:return_to] = user_path(current_user, anchor: 'settings') if current_user.present?
   end

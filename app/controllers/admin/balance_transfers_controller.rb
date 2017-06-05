@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Admin::BalanceTransfersController < Admin::BaseController
   before_filter :authenticate_user!
   respond_to :json
@@ -9,7 +11,7 @@ class Admin::BalanceTransfersController < Admin::BaseController
 
   def batch_approve
     collection.find_each do |resource|
-      resource.transition_to!(:authorized, {authorized_by: current_user.id})
+      resource.transition_to!(:authorized, { authorized_by: current_user.id })
     end
 
     render json: { transfer_ids: collection.pluck(&:id) }
@@ -19,7 +21,8 @@ class Admin::BalanceTransfersController < Admin::BaseController
     collection.find_each do |resource|
       BalanceTransfer.transaction do
         resource.transition_to!(
-          :authorized, {authorized_by: current_user.id})
+          :authorized, { authorized_by: current_user.id }
+        )
         resource.transition_to!(:processing)
         resource.transition_to!(
           :transferred, {
@@ -27,7 +30,8 @@ class Admin::BalanceTransfersController < Admin::BaseController
               bank_account: resource.user.bank_account.attributes,
               manual_transfer: true
             }
-          })
+          }
+        )
       end
     end
 

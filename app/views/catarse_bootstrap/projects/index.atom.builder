@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 atom_feed language: 'pt-BR' do |feed|
   feed.title t('pages.explore.title')
   feed.updated Time.now

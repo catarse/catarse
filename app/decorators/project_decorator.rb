@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ProjectDecorator < Draper::Decorator
   decorates :project
   include Draper::LazyHelpers
@@ -11,11 +13,11 @@ class ProjectDecorator < Draper::Decorator
   end
 
   def elapsed_time
-    get_interval_from_db "elapsed_time_json"
+    get_interval_from_db 'elapsed_time_json'
   end
 
   def time_to_go
-    get_interval_from_db "remaining_time_json"
+    get_interval_from_db 'remaining_time_json'
   end
 
   def display_status
@@ -30,7 +32,7 @@ class ProjectDecorator < Draper::Decorator
     end
   end
 
-  def display_image(version = 'project_thumb' )
+  def display_image(version = 'project_thumb')
     use_uploaded_image(version) || use_video_tumbnail(version)
   end
 
@@ -70,7 +72,6 @@ class ProjectDecorator < Draper::Decorator
         image_tag "waiting_confirmation.#{I18n.locale}.png"
       end
     end
-
   end
 
   private

@@ -1,35 +1,35 @@
 # coding: utf-8
+# frozen_string_literal: true
 
 require 'rails_helper'
 
 RSpec.describe Reward, type: :model do
-  let(:reward){ create(:reward, description: 'envie um email para foo@bar.com') }
+  let(:reward) { create(:reward, description: 'envie um email para foo@bar.com') }
 
-  describe "Log modifications" do
-    describe "when change something" do
+  describe 'Log modifications' do
+    describe 'when change something' do
       before do
         reward.update_attributes(description: 'foo')
       end
 
-      it "should save the last changes" do
-        expect(reward.last_changes).to eq("{\"description\":[\"envie um email para foo@bar.com\",\"foo\"]}")
+      it 'should save the last changes' do
+        expect(reward.last_changes).to eq('{"description":["envie um email para foo@bar.com","foo"]}')
       end
-
     end
   end
 
-  describe "Associations" do
-    it{ is_expected.to belong_to :project }
-    it{ is_expected.to have_many :contributions }
-    it{ is_expected.to have_many(:payments).through(:contributions) }
+  describe 'Associations' do
+    it { is_expected.to belong_to :project }
+    it { is_expected.to have_many :contributions }
+    it { is_expected.to have_many(:payments).through(:contributions) }
   end
 
-  it "should have a minimum value" do
+  it 'should have a minimum value' do
     r = build(:reward, minimum_value: nil)
     expect(r).not_to be_valid
   end
 
-  describe "check_if_is_destroyable" do
+  describe 'check_if_is_destroyable' do
     before do
       create(:confirmed_contribution, project: reward.project, reward: reward)
       reward.reload
@@ -39,7 +39,7 @@ RSpec.describe Reward, type: :model do
     it { expect(reward.persisted?).to eq(true) }
   end
 
-  it "should have a greater than 10.00 minimum value" do
+  it 'should have a greater than 10.00 minimum value' do
     r = build(:reward)
     r.minimum_value = -0.01
     expect(r).not_to be_valid
@@ -51,12 +51,12 @@ RSpec.describe Reward, type: :model do
     expect(r).to be_valid
   end
 
-  it "should have a description" do
+  it 'should have a description' do
     r = build(:reward, description: nil)
     expect(r).not_to be_valid
   end
 
-  it "should have integer maximum contributions" do
+  it 'should have integer maximum contributions' do
     r = build(:reward)
     r.maximum_contributions = 10.01
     expect(r).not_to be_valid
@@ -64,7 +64,7 @@ RSpec.describe Reward, type: :model do
     expect(r).to be_valid
   end
 
-  it "should have maximum contributions > 0" do
+  it 'should have maximum contributions > 0' do
     r = build(:reward)
     r.maximum_contributions = -1
     expect(r).not_to be_valid
@@ -75,7 +75,7 @@ RSpec.describe Reward, type: :model do
   end
 
   describe '.remaining' do
-    let(:project){ create(:project) }
+    let(:project) { create(:project) }
     subject { Reward.remaining }
     before do
       project.rewards.first.destroy!
@@ -90,10 +90,10 @@ RSpec.describe Reward, type: :model do
       create(:pending_contribution, reward: @sold_out, project: @sold_out.project)
     end
 
-    it{ is_expected.to eq([@remaining]) }
+    it { is_expected.to eq([@remaining]) }
   end
 
-  describe "#total_contributions" do
+  describe '#total_contributions' do
     before do
       @remaining = create(:reward, maximum_contributions: 20)
       create(:confirmed_contribution, reward: @remaining, project: @remaining.project)
@@ -101,26 +101,26 @@ RSpec.describe Reward, type: :model do
       create(:refunded_contribution, reward: @remaining, project: @remaining.project)
     end
 
-    context "get total of paid and peding contributions" do
-      subject { @remaining.total_contributions %w(paid pending)}
+    context 'get total of paid and peding contributions' do
+      subject { @remaining.total_contributions %w[paid pending] }
 
       it { is_expected.to eq(2) }
     end
 
-    context "get total of refunded contributions" do
-      subject { @remaining.total_contributions %w(refunded)}
+    context 'get total of refunded contributions' do
+      subject { @remaining.total_contributions %w[refunded] }
 
       it { is_expected.to eq(1) }
     end
 
-    context "get tota of pending contributions" do
-      subject { @remaining.total_contributions %w(pending)}
+    context 'get tota of pending contributions' do
+      subject { @remaining.total_contributions %w[pending] }
 
       it { is_expected.to eq(1) }
     end
   end
 
-  describe "#total_compromised" do
+  describe '#total_compromised' do
     before do
       @remaining = create(:reward, maximum_contributions: 20)
       create(:confirmed_contribution, reward: @remaining, project: @remaining.project)
@@ -134,7 +134,7 @@ RSpec.describe Reward, type: :model do
     it { is_expected.to eq(2) }
   end
 
-  describe "#in_time_to_confirm" do
+  describe '#in_time_to_confirm' do
     before do
       @remaining = create(:reward, maximum_contributions: 20)
       create(:confirmed_contribution, reward: @remaining, project: @remaining.project)
@@ -172,7 +172,6 @@ RSpec.describe Reward, type: :model do
         create(:pending_contribution, reward: reward, project: reward.project)
       end
       it { is_expected.to eq(false) }
-
     end
   end
 end

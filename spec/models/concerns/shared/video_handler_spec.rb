@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Shared::VideoHandler, type: :model do
@@ -5,13 +7,13 @@ RSpec.describe Shared::VideoHandler, type: :model do
   subject { project }
 
   describe '.validations' do
-    it{ is_expected.to allow_value('http://vimeo.com/12111').for(:video_url) }
-    it{ is_expected.to allow_value('vimeo.com/12111').for(:video_url) }
-    it{ is_expected.to allow_value('https://vimeo.com/12111').for(:video_url) }
-    it{ is_expected.to allow_value('http://youtube.com/watch?v=UyU-xI').for(:video_url) }
-    it{ is_expected.to allow_value('youtube.com/watch?v=UyU-xI').for(:video_url) }
-    it{ is_expected.to allow_value('https://youtube.com/watch?v=UyU-xI').for(:video_url) }
-    it{ is_expected.not_to allow_value('http://www.foo.bar').for(:video_url) }
+    it { is_expected.to allow_value('http://vimeo.com/12111').for(:video_url) }
+    it { is_expected.to allow_value('vimeo.com/12111').for(:video_url) }
+    it { is_expected.to allow_value('https://vimeo.com/12111').for(:video_url) }
+    it { is_expected.to allow_value('http://youtube.com/watch?v=UyU-xI').for(:video_url) }
+    it { is_expected.to allow_value('youtube.com/watch?v=UyU-xI').for(:video_url) }
+    it { is_expected.to allow_value('https://youtube.com/watch?v=UyU-xI').for(:video_url) }
+    it { is_expected.not_to allow_value('http://www.foo.bar').for(:video_url) }
   end
 
   describe '#display_video_embed_url' do
@@ -19,7 +21,7 @@ RSpec.describe Shared::VideoHandler, type: :model do
       Sidekiq::Testing.inline!
     end
 
-    subject{ project.display_video_embed_url }
+    subject { project.display_video_embed_url }
 
     context 'source has a Vimeo video' do
       let(:project) { create(:project, video_url: 'http://vimeo.com/17298435') }
@@ -32,7 +34,7 @@ RSpec.describe Shared::VideoHandler, type: :model do
     end
 
     context 'source has an Youtube video' do
-      let(:project) { create(:project, video_url: "http://www.youtube.com/watch?v=Brw7bzU_t4c") }
+      let(:project) { create(:project, video_url: 'http://www.youtube.com/watch?v=Brw7bzU_t4c') }
 
       before do
         project.reload
@@ -45,32 +47,32 @@ RSpec.describe Shared::VideoHandler, type: :model do
       before do
         CatarseSettings[:minimum_goal_for_video] = 5000
       end
-      let(:project) { create(:project, video_url: "", goal: 3000) }
+      let(:project) { create(:project, video_url: '', goal: 3000) }
 
       it { is_expected.to be_nil }
     end
   end
 
-  describe "#video" do
+  describe '#video' do
     subject { project }
 
-    context "video_url is blank" do
-      before { project.video_url = ''}
+    context 'video_url is blank' do
+      before { project.video_url = '' }
 
-      its(:video){ should be_nil}
+      its(:video) { should be_nil }
     end
 
     context 'video_url is defined' do
-      before { project.video_url = "http://vimeo.com/17298435" }
+      before { project.video_url = 'http://vimeo.com/17298435' }
 
       context 'video_url is a Vimeo url' do
-        its(:video){ should be_an_instance_of(VideoInfo) }
+        its(:video) { should be_an_instance_of(VideoInfo) }
       end
 
       context 'video_url is an YouTube url' do
-        before { project.video_url = "http://www.youtube.com/watch?v=Brw7bzU_t4c" }
+        before { project.video_url = 'http://www.youtube.com/watch?v=Brw7bzU_t4c' }
 
-        its(:video){ should be_an_instance_of(VideoInfo) }
+        its(:video) { should be_an_instance_of(VideoInfo) }
       end
     end
   end

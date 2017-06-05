@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe ProjectFinancial, type: :model do
   let(:project) { create(:project, state: 'online') }
 
-  subject{ ProjectFinancial.where(project_id: project.id).first }
+  subject { ProjectFinancial.where(project_id: project.id).first }
 
   before do
     CatarseSettings[:base_url] = 'localhost'
@@ -14,16 +16,15 @@ RSpec.describe ProjectFinancial, type: :model do
     create_contribution_with_payment(project.id, 'pending_refund')
   end
 
-  describe "#name" do
-    it{ expect(subject.name).to eq(project.name) }
+  describe '#name' do
+    it { expect(subject.name).to eq(project.name) }
   end
 
-  describe "#goal" do
-    it{ expect(subject.goal).to eq(project.goal) }
+  describe '#goal' do
+    it { expect(subject.goal).to eq(project.goal) }
   end
 
-  describe "#reached" do
-    it{ expect(subject.reached).to eq(project.pledged) }
+  describe '#reached' do
+    it { expect(subject.reached).to eq(project.pledged) }
   end
 end
-

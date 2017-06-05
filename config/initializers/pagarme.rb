@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 CatarsePagarme.configure do |config|
   config.api_key = CatarseSettings.get_without_cache(Rails.env.production? ? :pagarme_api_key : :pagarme_test_api_key)
   config.ecr_key = CatarseSettings.get_without_cache(Rails.env.production? ? :pagarme_encryption_key : :pagarme_test_encryption_key)
@@ -22,4 +24,3 @@ CatarsePagarme.configure do |config|
   config.cielo_installment_amex_tax = CatarseSettings.get_without_cache(:cielo_installment_amex_tax)
   config.cielo_installment_not_amex_tax = CatarseSettings.get_without_cache(:cielo_installment_not_amex_tax)
 end
-

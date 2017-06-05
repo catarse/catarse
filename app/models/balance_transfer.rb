@@ -1,11 +1,13 @@
+# frozen_string_literal: true
+
 class BalanceTransfer < ActiveRecord::Base
   belongs_to :project
   belongs_to :user
   has_many :balance_transactions
 
   has_many :transitions,
-    class_name: 'BalanceTransferTransition',
-    autosave: false
+           class_name: 'BalanceTransferTransition',
+           autosave: false
 
   scope :processing, -> () {
     where("balance_transfers.current_state = 'processing'")
@@ -23,9 +25,9 @@ class BalanceTransfer < ActiveRecord::Base
 
   def state_machine
     @stat_machine ||= BalanceTransferMachine.new(self, {
-      transition_class: BalanceTransferTransition,
-      association_name: :transitions
-    })
+                                                   transition_class: BalanceTransferTransition,
+                                                   association_name: :transitions
+                                                 })
   end
 
   def state
@@ -33,7 +35,7 @@ class BalanceTransfer < ActiveRecord::Base
   end
 
   def refund_balance
-    self.transaction do
+    transaction do
       balance_transactions.create!(
         amount: amount,
         user_id: user_id,
@@ -42,9 +44,9 @@ class BalanceTransfer < ActiveRecord::Base
     end
   end
 
-  %w(pending authorized processing transferred error rejected).each do |st|
+  %w[pending authorized processing transferred error rejected].each do |st|
     define_method "#{st}?" do
-      self.state == st
+      state == st
     end
   end
 end

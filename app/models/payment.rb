@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Payment < ActiveRecord::Base
   include Shared::StateMachineHelpers
   include Payment::PaymentEngineHandler
@@ -17,12 +19,12 @@ class Payment < ActiveRecord::Base
   attr_accessor :generating_second_slip
 
   def self.slip_expiration_weekdays
-    connection.select_one("SELECT public.slip_expiration_weekdays()")['slip_expiration_weekdays'].to_i;
+    connection.select_one('SELECT public.slip_expiration_weekdays()')['slip_expiration_weekdays'].to_i
   end
 
   def slip_expiration_date
     # If payment does not exist gives expiration date based on current_timestamp
-    if self.id.nil?
+    if id.nil?
       self.class.connection.select_one("SELECT public.weekdays_from(public.slip_expiration_weekdays(), current_timestamp::timestamp) at time zone 'America/Sao_Paulo' as weekdays_from")['weekdays_from'].try(:to_datetime)
     else
       pluck_from_database("slip_expires_at at time zone 'America/Sao_Paulo'").try(:to_datetime)
@@ -30,7 +32,7 @@ class Payment < ActiveRecord::Base
   end
 
   def slip_expired?
-    pluck_from_database("slip_expired")
+    pluck_from_database('slip_expired')
   end
 
   def is_unique_on_contribution
@@ -44,22 +46,22 @@ class Payment < ActiveRecord::Base
 
   before_validation do
     generate_key
-    self.value ||= self.contribution.try(:value)
+    self.value ||= contribution.try(:value)
   end
 
   scope :waiting_payment, -> { where('payments.waiting_payment') }
 
   def waiting_payment?
-    pluck_from_database("waiting_payment")
+    pluck_from_database('waiting_payment')
   end
 
   # Check current status on pagarme and
   # move pending payment to deleted state
   def move_to_trash
-    if ['pending', 'waiting_payment'].include?(self.current_transaction_state)
-      self.trash
+    if %w[pending waiting_payment].include?(current_transaction_state)
+      trash
     else
-      self.change_status_from_transaction
+      change_status_from_transaction
     end
   end
 
@@ -68,30 +70,29 @@ class Payment < ActiveRecord::Base
   end
 
   def value_should_be_equal_or_greater_than_pledge
-    if self.contribution && self.value < self.contribution.value
-      errors.add(:value, I18n.t("activerecord.errors.models.payment.attributes.value.invalid"))
+    if contribution && self.value < contribution.value
+      errors.add(:value, I18n.t('activerecord.errors.models.payment.attributes.value.invalid'))
     end
   end
 
   def notification_template_for_failed_project
     if slip_payment?
-      self.user.bank_account.present? ? :contributions_project_unsuccessful_slip : :contribution_project_unsuccessful_slip_no_account
+      user.bank_account.present? ? :contributions_project_unsuccessful_slip : :contribution_project_unsuccessful_slip_no_account
     else
       :contribution_project_unsuccessful_credit_card
     end
   end
 
-
   def credits?
-    self.gateway == 'Credits'
+    gateway == 'Credits'
   end
 
   def is_credit_card?
-    self.payment_method == 'CartaoDeCredito'
+    payment_method == 'CartaoDeCredito'
   end
 
   def slip_payment?
-    self.payment_method == 'BoletoBancario'
+    payment_method == 'BoletoBancario'
   end
 
   state_machine :state, initial: :pending do
@@ -109,16 +110,16 @@ class Payment < ActiveRecord::Base
     end
 
     event :trash do
-      transition [:pending, :paid, :refunded, :refused] => :deleted
+      transition %i[pending paid refunded refused] => :deleted
     end
 
     event :pay do
-      transition [:pending, :pending_refund, :chargeback, :refunded] => :paid,
-        unless: ->(payment) { payment.is_donation? }
+      transition %i[pending pending_refund chargeback refunded] => :paid,
+                 unless: ->(payment) { payment.is_donation? }
     end
 
     event :refuse do
-      transition [:pending, :paid] => :refused
+      transition %i[pending paid] => :refused
     end
 
     event :request_refund do
@@ -126,11 +127,11 @@ class Payment < ActiveRecord::Base
     end
 
     event :refund do
-      transition [:pending_refund, :paid, :deleted] => :refunded
+      transition %i[pending_refund paid deleted] => :refunded
     end
 
     event :manual_refund do
-      transition [:pending_refund, :paid, :deleted] => :manual_refund
+      transition %i[pending_refund paid deleted] => :manual_refund
     end
 
     after_transition do |payment, transition|
@@ -142,15 +143,16 @@ class Payment < ActiveRecord::Base
   end
 
   def can_request_refund?
-    !self.slip_payment? || self.user.try(:bank_account).try(:valid?)
+    !slip_payment? || user.try(:bank_account).try(:valid?)
   end
 
   private
+
   def exists_duplicate?
-    self.contribution.payments.where("id is not null").exists? unless self.generating_second_slip
+    contribution.payments.where('id is not null').exists? unless generating_second_slip
   end
 
-  def pluck_from_database field
-    Payment.where(id: self.id).pluck("payments.#{field}").first
+  def pluck_from_database(field)
+    Payment.where(id: id).pluck("payments.#{field}").first
   end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Concerns
   module SocialHelpersHandler
     extend ActiveSupport::Concern
@@ -12,23 +14,23 @@ module Concerns
       render_to_string(partial: 'layouts/facebook_sdk').html_safe
     end
 
-    def render_twitter options={}
+    def render_twitter(options = {})
       render_to_string(partial: 'layouts/twitter', locals: options).html_safe
     end
 
-    def render_twitter_mobile options={}
+    def render_twitter_mobile(options = {})
       render_to_string(partial: 'layouts/twitter_mobile', locals: options).html_safe
     end
 
-    def render_facebook_like options={}
+    def render_facebook_like(options = {})
       render_to_string(partial: 'layouts/facebook_like', locals: options).html_safe
     end
 
-    def render_facebook_share options={}
+    def render_facebook_share(options = {})
       render_to_string(partial: 'layouts/facebook_share', locals: options).html_safe
     end
 
-    def render_facebook_share_mobile options={}
+    def render_facebook_share_mobile(options = {})
       render(partial: 'layouts/facebook_share_mobile', locals: options)[0].html_safe
     end
   end

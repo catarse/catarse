@@ -1,13 +1,15 @@
+# frozen_string_literal: true
+
 class Bank < ActiveRecord::Base
   MOST_POPULAR_LIMIT = 6
 
   has_many :bank_accounts
 
   validates :name, :code, presence: true
-  scope :order_popular, ->{
-    select('banks.code, banks.id, banks.name, count(bank_accounts.bank_id) as total').
-    joins('left join bank_accounts on bank_accounts.bank_id = banks.id').
-    group('banks.id, bank_accounts.bank_id').order('total DESC')
+  scope :order_popular, -> {
+    select('banks.code, banks.id, banks.name, count(bank_accounts.bank_id) as total')
+      .joins('left join bank_accounts on bank_accounts.bank_id = banks.id')
+      .group('banks.id, bank_accounts.bank_id').order('total DESC')
   }
 
   def self.to_collection
@@ -24,9 +26,7 @@ class Bank < ActiveRecord::Base
       [bank.to_s, bank.id]
     end
 
-    if current_bank.present?
-      collection << [current_bank.to_s, current_bank.id]
-    end
+    collection << [current_bank.to_s, current_bank.id] if current_bank.present?
 
     collection << [I18n.t('shared.no_bank_label'), 0]
 

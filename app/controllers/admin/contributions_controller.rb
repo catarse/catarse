@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Admin::ContributionsController < Admin::BaseController
   layout 'catarse_bootstrap'
 
@@ -12,10 +14,10 @@ class Admin::ContributionsController < Admin::BaseController
         return render json: []
       end
     end
-
   end
 
   protected
+
   def resource
     ContributionDetail.find_by_id params[:id]
   end

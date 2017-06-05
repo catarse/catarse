@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Concerns
   module AnalyticsHelpersHandler
     extend ActiveSupport::Concern
