@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class DirectRefundWorker
   include Sidekiq::Worker
   sidekiq_options retry: false, queue: 'actions'

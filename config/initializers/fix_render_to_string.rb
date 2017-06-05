@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Fix issue with render_to_string in Rails 4.1.1
 # Done according to https://github.com/rails/rails/issues/14125
 module AbstractController

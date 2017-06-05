@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'state_machines'
 module Shared
   module StateMachineHelpers
@@ -5,7 +7,7 @@ module Shared
 
     included do
       def self.state_names
-        self.state_machine.states.map(&:name)
+        state_machine.states.map(&:name)
       end
     end
   end

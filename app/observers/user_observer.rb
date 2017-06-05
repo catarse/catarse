@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UserObserver < ActiveRecord::Observer
   observe :user
 
@@ -21,8 +23,6 @@ class UserObserver < ActiveRecord::Observer
       FbPageCollectorWorker.perform_async(user.id)
     end
 
-    if user.newsletter_changed?
-      SendgridSyncWorker.perform_async(user.id)
-    end
+    SendgridSyncWorker.perform_async(user.id) if user.newsletter_changed?
   end
 end

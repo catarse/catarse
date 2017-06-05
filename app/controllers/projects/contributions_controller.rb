@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Projects::ContributionsController < ApplicationController
   DEFAULT_AMOUNT = 10
   inherit_resources
@@ -5,7 +7,7 @@ class Projects::ContributionsController < ApplicationController
   skip_before_filter :verify_authenticity_token, only: [:moip]
   after_filter :verify_authorized, except: [:index]
   belongs_to :project
-  before_filter :detect_old_browsers, only: [:new, :create]
+  before_filter :detect_old_browsers, only: %i[new create]
 
   helper_method :engine
 
@@ -22,7 +24,7 @@ class Projects::ContributionsController < ApplicationController
     authorize resource
     resource.update_attributes(permitted_params)
     resource.update_user_billing_info
-    render json: {message: 'updated'}
+    render json: { message: 'updated' }
   end
 
   def show
@@ -39,7 +41,7 @@ class Projects::ContributionsController < ApplicationController
 
     if params[:reward_id] && (@selected_reward = @project.rewards.find params[:reward_id]) && !@selected_reward.sold_out?
       @contribution.reward = @selected_reward
-      @contribution.value = "%0.0f" % @selected_reward.minimum_value
+      @contribution.value = format('%0.0f', @selected_reward.minimum_value)
     end
   end
 
@@ -53,7 +55,7 @@ class Projects::ContributionsController < ApplicationController
     @contribution.shipping_fee_id = (params[:contribution][:shipping_fee_id].to_i == 0 ? nil : params[:contribution][:shipping_fee_id])
     authorize @contribution
     @contribution.update_current_billing_info
-    create! do |success,failure|
+    create! do |success, failure|
       failure.html do
         flash[:alert] = resource.errors.full_messages.to_sentence
         load_rewards
@@ -98,7 +100,7 @@ class Projects::ContributionsController < ApplicationController
       resource.reward_received_at = Time.current
     end
     resource.save!
-    return render nothing: true
+    render nothing: true
   end
 
   def update_status
@@ -114,20 +116,21 @@ class Projects::ContributionsController < ApplicationController
     contributions.update_all(delivery_status: params['delivery_status'])
 
     respond_to do |format|
-      format.json { render :json => { :success => 'OK' } }
+      format.json { render json: { success: 'OK' } }
     end
   end
 
   def toggle_anonymous
     authorize resource
     resource.toggle!(:anonymous)
-    return render nothing: true
+    render nothing: true
   end
 
   protected
+
   def send_delivery_notification(contributions, status, template_name)
     contributions.where.not(delivery_status: status).each do |contribution|
-      Notification.create!(user_id: contribution.user_id, user_email: contribution.user.email, template_name: template_name, metadata: {locale: "pt", message: params['message'], from_name: "#{contribution.project.user.display_name} via Catarse", from_email: contribution.project.user.email, associations: {project_id: contribution.project.id, contribution_id: contribution.id}}.to_json)
+      Notification.create!(user_id: contribution.user_id, user_email: contribution.user.email, template_name: template_name, metadata: { locale: 'pt', message: params['message'], from_name: "#{contribution.project.user.display_name} via Catarse", from_email: contribution.project.user.email, associations: { project_id: contribution.project.id, contribution_id: contribution.id } }.to_json)
     end
   end
 

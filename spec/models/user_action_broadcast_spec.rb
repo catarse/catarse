@@ -1,4 +1,6 @@
-require "rails_helper"
+# frozen_string_literal: true
+
+require 'rails_helper'
 
 RSpec.describe UserActionBroadcast, type: :model do
   let(:user) { create(:user) }
@@ -13,8 +15,8 @@ RSpec.describe UserActionBroadcast, type: :model do
     Sidekiq::Testing.inline!
   end
 
-  describe ".broadcast_action" do
-    #context "when user as made a paid contribution" do
+  describe '.broadcast_action' do
+    # context "when user as made a paid contribution" do
     #  let(:payment) do
     #    c = create(:pending_contribution, project: project, user: user)
     #    c.payments.first
@@ -49,22 +51,22 @@ RSpec.describe UserActionBroadcast, type: :model do
     #    another_payment.pay
     #    expect(UserFollowNotification.where(template_name: 'follow_contributed_project').count).to eq(2)
     #  end
-    #end
+    # end
 
-    context "when user as published a new project" do
+    context 'when user as published a new project' do
       let(:project) { create(:project, user: user, state: 'draft') }
       before do
         project.push_to_online
       end
 
-      it "should create user_follow_notifications for user followers" do
+      it 'should create user_follow_notifications for user followers' do
         expect(UserFollowNotification.where(template_name: 'follow_project_online').count).to eq(2)
         expect(uf1.notifications.count).to eq(1)
         expect(uf2.notifications.count).to eq(1)
         expect(uf3.notifications.count).to eq(0)
       end
 
-      it "should not create repeated when same project" do
+      it 'should not create repeated when same project' do
         expect(UserFollowNotification.where(template_name: 'follow_project_online').count).to eq(2)
         project.project_transitions.destroy_all
         project.update_attributes(state: 'draft')

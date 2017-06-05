@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Categories::SubscriptionsController, type: :controller do
@@ -5,13 +7,13 @@ RSpec.describe Categories::SubscriptionsController, type: :controller do
     allow(controller).to receive(:current_user).and_return(current_user)
   end
 
-  subject{ response }
+  subject { response }
 
   let(:category) { create(:category) }
   let(:current_user) { nil }
 
-  describe "GET create" do
-    context "when user not logged in" do
+  describe 'GET create' do
+    context 'when user not logged in' do
       before do
         get :create, id: category.id, locale: :pt
       end
@@ -19,7 +21,7 @@ RSpec.describe Categories::SubscriptionsController, type: :controller do
       it { is_expected.to redirect_to(new_user_session_path) }
     end
 
-    context "with user" do
+    context 'with user' do
       let(:current_user) { create(:user) }
 
       before do
@@ -31,7 +33,7 @@ RSpec.describe Categories::SubscriptionsController, type: :controller do
       it { expect(current_user.following_this_category?(category.id)).to be(true) }
     end
 
-    context "with user already subscribed" do
+    context 'with user already subscribed' do
       let(:current_user) { create(:user) }
 
       before do
@@ -41,14 +43,14 @@ RSpec.describe Categories::SubscriptionsController, type: :controller do
       end
 
       it do
-        expect {
+        expect do
           get :create, id: category.id, locale: :pt
-        }.to raise_error(ActiveRecord::RecordInvalid)
+        end.to raise_error(ActiveRecord::RecordInvalid)
       end
     end
 
-    context "GET destroy" do
-      context "when user not logged in" do
+    context 'GET destroy' do
+      context 'when user not logged in' do
         before do
           get :destroy, id: category.id, locale: :pt
         end
@@ -56,7 +58,7 @@ RSpec.describe Categories::SubscriptionsController, type: :controller do
         it { is_expected.to redirect_to(new_user_session_path) }
       end
 
-      context "with user" do
+      context 'with user' do
         let(:current_user) { create(:user) }
 
         before do
@@ -67,7 +69,7 @@ RSpec.describe Categories::SubscriptionsController, type: :controller do
         it { expect(current_user.following_this_category?(category.id)).to be(false) }
       end
 
-      context "with user already subscribed" do
+      context 'with user already subscribed' do
         let(:current_user) { create(:user) }
 
         before do
@@ -81,5 +83,4 @@ RSpec.describe Categories::SubscriptionsController, type: :controller do
       end
     end
   end
-
 end

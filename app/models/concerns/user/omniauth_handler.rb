@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module User::OmniauthHandler
   extend ActiveSupport::Concern
 
@@ -10,7 +12,11 @@ module User::OmniauthHandler
           public_name: hash['info']['name'],
           name: hash['info']['name'],
           email: hash['info']['email'],
-          about_html: (hash["info"]["description"][0..139] rescue nil),
+          about_html: (begin
+                         hash['info']['description'][0..139]
+                       rescue
+                         nil
+                       end),
           locale: I18n.locale.to_s
         }
       ) do |user|
@@ -25,8 +31,7 @@ module User::OmniauthHandler
 
     def facebook_id
       auth = authorizations.joins(:oauth_provider).where("oauth_providers.name = 'facebook'").first
-      auth.uid if auth
+      auth&.uid
     end
   end
 end
-

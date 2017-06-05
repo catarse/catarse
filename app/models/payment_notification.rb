@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PaymentNotification < ActiveRecord::Base
   belongs_to :contribution
   serialize :extra_data, JSON
@@ -14,7 +16,6 @@ class PaymentNotification < ActiveRecord::Base
   private
 
   def deliver_contributor_notification(template_name)
-    self.contribution.notify_to_contributor(template_name)
+    contribution.notify_to_contributor(template_name)
   end
-
 end

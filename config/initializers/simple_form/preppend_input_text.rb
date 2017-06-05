@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module SimpleForm
   module Components
     # Needs to be enabled in order to do automatic lookups
@@ -18,4 +20,3 @@ module SimpleForm
 end
 
 SimpleForm::Inputs::Base.send(:include, SimpleForm::Components::PreppendInputText)
-

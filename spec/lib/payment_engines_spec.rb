@@ -1,10 +1,11 @@
 # encoding: utf-8
+# frozen_string_literal: true
 
 require 'rails_helper'
 
 RSpec.describe PaymentEngines do
-  let(:contribution){ FactoryGirl.create(:contribution) }
-  let(:payment){ FactoryGirl.create(:confirmed_contribution).payments.first }
+  let(:contribution) { FactoryGirl.create(:contribution) }
+  let(:payment) { FactoryGirl.create(:confirmed_contribution).payments.first }
   let(:paypal_engine) { double }
   let(:moip_engine) { double }
 
@@ -19,26 +20,26 @@ RSpec.describe PaymentEngines do
     allow(moip_engine).to receive(:locale).and_return('pt')
   end
 
-  let(:engine){ paypal_engine }
-  let(:engine_pt){ moip_engine }
+  let(:engine) { paypal_engine }
+  let(:engine_pt) { moip_engine }
 
-  describe ".configuration" do
-    subject{ PaymentEngines.configuration }
-    it{ is_expected.to eq(CatarseSettings) }
+  describe '.configuration' do
+    subject { PaymentEngines.configuration }
+    it { is_expected.to eq(CatarseSettings) }
   end
 
-  describe ".create_payment_notification" do
-    subject{ PaymentEngines.create_payment_notification({ contribution_id: contribution.id, extra_data: { test: true } }) }
-    it{ is_expected.to eq(PaymentNotification.where(contribution_id: contribution.id).first) }
+  describe '.create_payment_notification' do
+    subject { PaymentEngines.create_payment_notification({ contribution_id: contribution.id, extra_data: { test: true } }) }
+    it { is_expected.to eq(PaymentNotification.where(contribution_id: contribution.id).first) }
   end
 
-  describe ".find_contribution" do
-    subject{ PaymentEngines.find_contribution(contribution.id) }
-    it{ is_expected.to eq(contribution) }
+  describe '.find_contribution' do
+    subject { PaymentEngines.find_contribution(contribution.id) }
+    it { is_expected.to eq(contribution) }
   end
 
-  describe ".find_payment" do
-    subject{ PaymentEngines.find_payment({ id: payment.id }) }
-    it{ is_expected.to eq(payment) }
+  describe '.find_payment' do
+    subject { PaymentEngines.find_payment({ id: payment.id }) }
+    it { is_expected.to eq(payment) }
   end
 end

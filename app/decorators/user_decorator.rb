@@ -1,4 +1,6 @@
 # coding: utf-8
+# frozen_string_literal: true
+
 class UserDecorator < Draper::Decorator
   decorates :user
   include Draper::LazyHelpers
@@ -7,7 +9,7 @@ class UserDecorator < Draper::Decorator
     if source.total_contributed_projects == 2
       I18n.t('user.contributions_text.two')
     elsif source.total_contributed_projects > 1
-      I18n.t('user.contributions_text.many', total: (source.total_contributed_projects-1))
+      I18n.t('user.contributions_text.many', total: (source.total_contributed_projects - 1))
     else
       I18n.t('user.contributions_text.one')
     end
@@ -26,9 +28,9 @@ class UserDecorator < Draper::Decorator
   end
 
   def display_image_html
-    (%{<div class="avatar_wrapper">} +
-      h.image_tag(display_image, alt: "User", class: "thumb big u-round") +
-      %{</div>}).html_safe
+    (%(<div class="avatar_wrapper">) +
+      h.image_tag(display_image, alt: 'User', class: 'thumb big u-round') +
+      %(</div>)).html_safe
   end
 
   def short_name
@@ -47,7 +49,8 @@ class UserDecorator < Draper::Decorator
   def display_pending_refund_payments_amount
     number_to_currency(
       source.pending_refund_payments.sum(&:value), # + source.credits, for legacy
-      precision: 2)
+      precision: 2
+    )
   end
 
   # Return array with name of projects that user
@@ -67,9 +70,7 @@ class UserDecorator < Draper::Decorator
   end
 
   def display_bank_account_owner
-    if source.bank_account.present?
-      "#{source.name} / CPF: #{source.cpf}"
-    end
+    "#{source.name} / CPF: #{source.cpf}" if source.bank_account.present?
   end
 
   def display_total_of_contributions
@@ -98,9 +99,9 @@ class UserDecorator < Draper::Decorator
 
   def entity_type
     case source.account_type
-    when "pf"
+    when 'pf'
       'Pessoa Física'
-    when "pj"
+    when 'pj'
       'Pessoa Jurídica'
     when 'mei'
       'Pessoa Jurídica - MEI'

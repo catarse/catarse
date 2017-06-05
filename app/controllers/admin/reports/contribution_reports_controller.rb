@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Admin::Reports::ContributionReportsController < Admin::BaseController
   include Concerns::Admin::ReportsHandler
   actions :index
@@ -6,4 +8,3 @@ class Admin::Reports::ContributionReportsController < Admin::BaseController
     super.where(project_id: params[:project_id])
   end
 end
-

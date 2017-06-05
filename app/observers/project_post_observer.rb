@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ProjectPostObserver < ActiveRecord::Observer
   observe :project_post
 

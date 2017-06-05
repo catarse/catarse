@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # NOTE: EXPERIMENTAL FEATURE, just need a way to deliver notifications
 # where creates directly into database instead rails way
 namespace :listen do
@@ -11,16 +13,16 @@ namespace :listen do
       conn = connection.instance_variable_get(:@connection)
 
       begin
-        Rails.logger.info("STARTING LISTENER...")
-        conn.async_exec "LISTEN system_notifications;"
+        Rails.logger.info('STARTING LISTENER...')
+        conn.async_exec 'LISTEN system_notifications;'
 
         loop do
-          conn.wait_for_notify do |channel, pid, payload| 
-            if channel == "system_notifications"
+          conn.wait_for_notify do |channel, pid, payload|
+            if channel == 'system_notifications'
               begin
                 decoded = ActiveSupport::JSON.decode(payload)
-                kclass = decoded["table"].singularize.camelcase.constantize
-                resource = kclass.find(decoded["id"])
+                kclass = decoded['table'].singularize.camelcase.constantize
+                resource = kclass.find(decoded['id'])
                 deliver_job_id = resource.deliver
                 Rails.logger.info("[NOTIFICATIONS] => delivering message #{decoded['table']} - ID: #{decoded['id']} - JOB: #{deliver_job_id}")
               rescue Exception => e
@@ -31,12 +33,11 @@ namespace :listen do
           sleep 0.5
         end
       ensure
-        Rails.logger.info("unlisten time")
-        conn.async_exec "UNLISTEN system_notifications;"
+        Rails.logger.info('unlisten time')
+        conn.async_exec 'UNLISTEN system_notifications;'
       end
     end
   end
-
 
   desc 'listen from database and sync with rdstation'
   task sync_rdstation: [:environment] do
@@ -49,18 +50,18 @@ namespace :listen do
       )
 
       begin
-        Rails.logger.info("STARTING LISTENER...")
-        conn.async_exec "LISTEN catartico_rdstation"
+        Rails.logger.info('STARTING LISTENER...')
+        conn.async_exec 'LISTEN catartico_rdstation'
 
         loop do
-          conn.wait_for_notify do |channel, pid, payload| 
-            if channel == "catartico_rdstation"
+          conn.wait_for_notify do |channel, pid, payload|
+            if channel == 'catartico_rdstation'
               begin
                 decoded = ActiveSupport::JSON.decode(payload)
                 rd_params = {
                   identificador: decoded['event_name'],
                   email: decoded['email'],
-                  nome: decoded["name"]
+                  nome: decoded['name']
                 }
 
                 if decoded['status'] == 'won'
@@ -88,8 +89,8 @@ namespace :listen do
           sleep 0.5
         end
       ensure
-        Rails.logger.info("unlisten time rdstation")
-        conn.async_exec "UNLISTEN system_notifications;"
+        Rails.logger.info('unlisten time rdstation')
+        conn.async_exec 'UNLISTEN system_notifications;'
       end
     end
   end

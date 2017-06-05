@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Dbhero.configure do |config|
   config.max_rows_limit = 20_000
   # Use authentication on private pages
@@ -25,6 +27,3 @@ Dbhero.configure do |config|
 
   config.cached_query_exp = 5.minutes
 end
-
-
-

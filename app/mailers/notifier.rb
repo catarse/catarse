@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class Notifier < ActionMailer::Base
-  default template_path:'user_notifier/mailer/'
+  default template_path: 'user_notifier/mailer/'
   layout UserNotifier.email_layout
 
   def notify(notification)
@@ -38,7 +40,7 @@ class Notifier < ActionMailer::Base
     }.to_json
   end
 
-  def address_format email, name
+  def address_format(email, name)
     address = Mail::Address.new email
     address.display_name = name
     address.format

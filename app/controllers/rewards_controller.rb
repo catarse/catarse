@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RewardsController < ApplicationController
   respond_to :html, :json
   helper_method :resource, :parent

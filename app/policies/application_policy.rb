@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ApplicationPolicy
   attr_reader :user, :record
 
@@ -47,6 +49,7 @@ class ApplicationPolicy
   end
 
   protected
+
   def is_admin?
     user.try(:admin?) || false
   end
@@ -59,4 +62,3 @@ class ApplicationPolicy
     user.present? && record.user == user
   end
 end
-

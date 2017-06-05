@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Catarse::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -53,7 +55,7 @@ Catarse::Application.configure do
 
   # https://github.com/ryanb/cancan/issues/511
   config.logger = Logger.new(STDOUT)
-  config.logger.level = Logger.const_get((ENV["LOG_LEVEL"] || "ERROR").upcase)
+  config.logger.level = Logger.const_get((ENV['LOG_LEVEL'] || 'ERROR').upcase)
 
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
@@ -63,7 +65,7 @@ Catarse::Application.configure do
 
   # Precompile additional assets.
   # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
-  config.assets.precompile += %w( catarse.css redactor.css redactor.js )
+  config.assets.precompile += %w[catarse.css redactor.css redactor.js]
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
@@ -86,4 +88,3 @@ Catarse::Application.configure do
     'X-Frame-Options' => 'ALLOWALL'
   }
 end
-

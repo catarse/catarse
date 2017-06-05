@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe ProjectDownloaderWorker do
@@ -13,5 +15,5 @@ RSpec.describe ProjectDownloaderWorker do
     expect_any_instance_of(Project).to receive(:download_video_thumbnail)
   end
 
-  it("should satisfy expectations") { perform_project }
+  it('should satisfy expectations') { perform_project }
 end

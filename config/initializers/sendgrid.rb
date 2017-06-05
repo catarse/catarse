@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 begin
   if Rails.env.production?
     ActionMailer::Base.smtp_settings = {

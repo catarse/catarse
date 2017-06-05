@@ -1,11 +1,12 @@
-class ProjectPolicy < ApplicationPolicy
+# frozen_string_literal: true
 
+class ProjectPolicy < ApplicationPolicy
   self::UserScope = Struct.new(:current_user, :user, :scope) do
     def resolve
       if current_user.try(:admin?) || current_user == user
         scope.without_state('deleted')
       else
-        scope.without_state(['deleted', 'draft', 'rejected'])
+        scope.without_state(%w[deleted draft rejected])
       end
     end
   end
@@ -45,23 +46,23 @@ class ProjectPolicy < ApplicationPolicy
       # TODO: This code is to prevent not allowed
       # fields without admin for legacy dashboard
       unless user.admin?
-        not_allowed = [
-          :audited_user_name, :audited_user_cpf, :audited_user_phone_number,
-          :state, :origin_id, :service_fee, :total_installments,
-          :recommended, :created_at, :updated_at, :expires_at, :all_tags
+        not_allowed = %i[
+          audited_user_name audited_user_cpf audited_user_phone_number
+          state origin_id service_fee total_installments
+          recommended created_at updated_at expires_at all_tags
         ]
         p_attr.delete_if { |key| not_allowed.include?(key) }
       end
 
       p_attr
     else
-      [:about_html,:online_days, :video_url, :uploaded_image, :headline, :budget, :city_id, :city,
-                 user_attributes, posts_attributes, budget_attributes, reward_attributes]
+      [:about_html, :online_days, :video_url, :uploaded_image, :headline, :budget, :city_id, :city,
+       user_attributes, posts_attributes, budget_attributes, reward_attributes]
     end
   end
 
   def budget_attributes
-    { budgets_attributes: [:id, :name, :value, :_destroy] }
+    { budgets_attributes: %i[id name value _destroy] }
   end
 
   def user_attributes
@@ -70,17 +71,15 @@ class ProjectPolicy < ApplicationPolicy
   end
 
   def posts_attributes
-    { posts_attributes: [:_destroy, :title, :comment_html, :exclusive, :id]}
+    { posts_attributes: %i[_destroy title comment_html exclusive id] }
   end
 
   def reward_attributes
     attrs = { rewards_attributes: [:_destroy, :id, :maximum_contributions,
-                          :description, :deliver_at, :minimum_value, :title, :shipping_options, {shipping_fees_attributes: [:_destroy, :id, :value, :destination]}] }
+                                   :description, :deliver_at, :minimum_value, :title, :shipping_options, { shipping_fees_attributes: %i[_destroy id value destination] }] }
 
-    attrs[:rewards_attributes].delete(:deliver_at) if (record.waiting_funds? || record.failed? || record.successful?)
+    attrs[:rewards_attributes].delete(:deliver_at) if record.waiting_funds? || record.failed? || record.successful?
 
     attrs
   end
-
 end
-

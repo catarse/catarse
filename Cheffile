@@ -1,10 +1,10 @@
 #!/usr/bin/env ruby
- 
+# frozen_string_literal: true
+
 site 'http://community.opscode.com/api/v1'
- 
+
 cookbook 'apt'
 cookbook 'build-essential'
-
 
 cookbook 'git',     github: 'fnichol/chef-git'
 cookbook 'nodejs',  github: 'hectcastro/chef-nodejs'
@@ -20,7 +20,6 @@ cookbook 'rvm', github: 'fnichol/chef-rvm'
 # Database
 cookbook 'set_locale', github: 'chef-cookbooks/chef-postgres-locale', ref: '0.1.1'
 cookbook 'postgresql', github: 'phlipper/chef-postgresql', ref: '0.5.0'
-
 
 # Terminal utilities
 cookbook 'oh_my_zsh', github: 'chef-cookbooks/chef-oh-my-zsh', ref: '0.1.0'

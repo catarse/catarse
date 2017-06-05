@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Contribution::StateMachineHandler
   extend ActiveSupport::Concern
 
@@ -31,7 +33,7 @@ module Contribution::StateMachineHandler
       end
 
       event :confirm do
-        transition [:pending, :confirmed, :waiting_confirmation, :canceled, :deleted] => :confirmed
+        transition %i[pending confirmed waiting_confirmation canceled deleted] => :confirmed
       end
 
       event :cancel do
@@ -39,13 +41,13 @@ module Contribution::StateMachineHandler
       end
 
       event :request_refund do
-        transition confirmed: :requested_refund, if: ->(contribution){
+        transition confirmed: :requested_refund, if: ->(contribution) {
           contribution.user.credits >= contribution.value && !contribution.credits
         }
       end
 
       event :refund do
-        transition [:requested_refund, :confirmed] => :refunded
+        transition %i[requested_refund confirmed] => :refunded
       end
 
       event :hide do

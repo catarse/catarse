@@ -1,7 +1,7 @@
 # encoding: utf-8
+# frozen_string_literal: true
 
 class ProjectUploader < ImageUploader
-
   version :project_thumb
   version :project_thumb_small
   version :project_thumb_large
@@ -13,29 +13,28 @@ class ProjectUploader < ImageUploader
   end
 
   version :project_thumb do
-    process resize_to_fill: [220,172]
+    process resize_to_fill: [220, 172]
     process convert: :jpg
   end
 
   version :project_thumb_small, from_version: :project_thumb do
-    process resize_to_fill: [85,67]
+    process resize_to_fill: [85, 67]
     process convert: :jpg
   end
 
   version :project_thumb_large do
-    process resize_to_fill: [600,340]
+    process resize_to_fill: [600, 340]
     process convert: :jpg
   end
 
   version :project_thumb_facebook do
-    process resize_to_fill: [1200,630]
+    process resize_to_fill: [1200, 630]
     process convert: :jpg
   end
 
-  #facebook requires a minimum thumb size
+  # facebook requires a minimum thumb size
   version :project_thumb_video_cover do
-    process resize_to_fill: [666,488]
+    process resize_to_fill: [666, 488]
     process convert: :jpg
   end
-
 end

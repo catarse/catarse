@@ -1,14 +1,16 @@
+# frozen_string_literal: true
+
 class PaymentEngines
   @@engines = []
 
-  def self.find_engine name
+  def self.find_engine(name)
     # if name is nil we should return nil
     name && engines.find do |engine|
-      engine.name.downcase == name.downcase
+      engine.name.casecmp(name.downcase).zero?
     end
   end
 
-  def self.register options
+  def self.register(options)
     # This method is deprecated. Engines are now dynamicaly found.
   end
 
@@ -17,15 +19,15 @@ class PaymentEngines
   end
 
   def self.engines
-    ::Rails::Engine.subclasses.map do |e| 
+    ::Rails::Engine.subclasses.map do |e|
       engine_namespace = e.instance.railtie_namespace
       if engine_namespace && engine_namespace.constants.include?(:PaymentEngine)
         engine_namespace.const_get(:PaymentEngine).new
       end
-    end.compact 
+    end.compact
   end
 
-  def self.create_payment_notification attributes
+  def self.create_payment_notification(attributes)
     PaymentNotification.create! attributes
   end
 
@@ -33,15 +35,15 @@ class PaymentEngines
     CatarseSettings
   end
 
-  def self.find_contribution id
+  def self.find_contribution(id)
     Contribution.find(id)
   end
 
-  def self.find_payment filter
+  def self.find_payment(filter)
     Payment.where(filter).first
   end
 
-  def self.new_payment attributes={}
+  def self.new_payment(attributes = {})
     Payment.new attributes
   end
 end
