@@ -11,7 +11,7 @@ This will build the docker image for catarse project.
 
 Catarse uses PostgreSQL 9.4:
 `docker run -p 5432:5432 --name catarse_pg -d postgres:9.4`
-This will download and run a container with the postgres 9.4 image (for more configurations on Postgres take a look on https://hub.docker.com/_/postgres/).
+This will download and run a container with the postgres 9.4 image (for more Postgres configurations take a look at https://hub.docker.com/_/postgres/).
 
 Creating database:
 `docker run -it --rm --link catarse_pg:postgres postgres:9.4 createdb catarse_development -h postgres -U postgres`
@@ -35,7 +35,7 @@ You can run this local instead use docker, just grab the IP (`docker inspect con
 Running migrations:
 `docker run -i --rm -v ~/Code/catarse/:/usr/app/ -e "RAILS_ENV=development" -e "DATABASE_URL=postgres://postgres@postgres:5432/catarse_development" -p 3000:3000 --link catarse_pg:postgres catarse bundle exec rake db:migrate`
 
-Mount the current project path to get new migrations (not need to rebuild when are developing)
+Mount the current project path to get new migrations (no need to rebuild when developing)
 
 
 ### Running PostgREST server
@@ -61,7 +61,7 @@ This create a postgrest.conf on current path and link via mount on container, ne
 
 `docker run -i -d --rm  -v ~/Code/catarse/:/usr/app/ -v ~/Code/catarse.js:/usr/app/vendor/assets/components/catarse.js -e "RAILS_ENV=development" -e "DATABASE_URL=postgres://postgres@postgres:5432/catarse_development" -p 3000:3000 --link catarse_pg:postgres catarse bundle exec rails server -p 3000 -b 0.0.0.0`
 
-This will start rails server on port 3000 and mount the current project code and catarse.js lib on container (this is for you don’t need to rebuild the image when changing files)
+This will start rails server on port 3000 and mount the current project code and catarse.js lib on container (this is so you don’t need to rebuild the image when changing files)
 
 Sometimes this error can occur: `A server is already running. Check /usr/app/tmp/pids/server.pid.` this is because we are getting the tmp directory so we need to remove on your project folder `rm -rf tmp/pids/server.pid`
 
