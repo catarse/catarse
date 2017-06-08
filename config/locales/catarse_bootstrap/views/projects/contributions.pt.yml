@@ -1,6 +1,12 @@
 pt:
   projects:
     contributions:
+      contribution_warning:
+        title: "O Catarse não é uma loja."
+        subtitle: "É um meio de tirar projetos do papel."
+        info: "Não fazemos curadoria e não garantimos que o projeto ou as recompensas serão entregues - essa é uma responsabilidade exclusiva do(a) realizador(a)."
+        link: http://suporte.catarse.me/hc/pt-br/articles/115002214043-Responsabilidades-e-Seguran%C3%A7a
+        link_label: "Saiba sobre Responsabilidades e Segurança"
       shipping_options:
         national: "Somente para o Brasil"
         international: "Para todo o Mundo"
