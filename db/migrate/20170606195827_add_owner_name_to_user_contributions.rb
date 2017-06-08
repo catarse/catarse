@@ -53,13 +53,13 @@ SELECT pa.id,
     r.title AS reward_title,
     p.user_id as project_user_id,
     (SELECT COALESCE(public_name, name) from users u where u.id = p.user_id) as project_owner_name,
-    su.id as survey_id
+    row_to_json(su.*) as survey
    FROM projects p
      JOIN contributions c ON c.project_id = p.id
      JOIN payments pa ON c.id = pa.contribution_id
      JOIN users u ON c.user_id = u.id
      LEFT JOIN rewards r ON r.id = c.reward_id
-     LEFT JOIN surveys su on su.reward_id = r.id
+     LEFT JOIN "1".surveys su on su.contribution_id = c.id
   WHERE is_owner_or_admin(c.user_id);
     SQL
   end
