@@ -1,5 +1,6 @@
 pt:
   shared:
+    value_text: 'Valor'
     save_text: 'Salvar'
     back_text: 'Voltar'
     confirm_text: 'Confirmar'
