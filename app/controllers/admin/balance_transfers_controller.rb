@@ -27,7 +27,7 @@ class Admin::BalanceTransfersController < Admin::BaseController
         resource.transition_to!(
           :transferred, {
             transfer_data: {
-              bank_account: resource.user.bank_account.attributes,
+              bank_account: resource.user.bank_account.to_hash_with_bank,
               manual_transfer: true
             }
           }
@@ -44,7 +44,7 @@ class Admin::BalanceTransfersController < Admin::BaseController
         :rejected,
         authorized_by: current_user.id,
         transfer_data: {
-          bank_account: resource.user.bank_account.attributes
+          bank_account: resource.user.bank_account.to_hash_with_bank
         }
       )
     end
