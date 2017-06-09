@@ -10,7 +10,7 @@ pt:
         irrf_tax_project: 'Impostos gerados a partir da nota fiscal do Catarse para PJ'
         balance_transfer_request: 'Transferência para conta bancária em andamento'
         balance_transfer_error: 'Erro na transferência para conta bancária'
-        balance_transfer_project: 'Transferência para conta bancária confirmada'
+        balance_transfer_project: 'Transferência para conta bancária em andamento'
         project_contribution_chargeback: 'Pagamento contestado pelo apoiador: %{contributor_name}'
         project_contribution_reverse_chargeback: 'Pagamento confirmado após contestação pelo apoiador: %{contributor_name}'
         project_contribution_confirmed_after_finished: 'Pagamento confirmado após transferência'
