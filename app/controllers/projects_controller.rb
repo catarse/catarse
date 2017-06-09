@@ -45,7 +45,7 @@ class ProjectsController < ApplicationController
     )
     authorize @project
     if @project.save
-      redirect_to insights_project_path(@project)
+      redirect_to insights_project_path(@project, locale: '')
     else
       render :new
     end
