@@ -11,11 +11,11 @@ pt:
           cta: 'Comece sua campanha'
           image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-fctodos.jpg'
         2:
-          title: 'Aos Fatos'
-          subtitle: 'Financie a primeira plataforma exclusivamente dedicada à checagem de fatos no Brasil.'
-          link: 'https://www.catarse.me/aosfatos?ref=home_banner'
+          title: 'Jaguaretê'
+          subtitle: 'Um livro em homenagem à Onça Pintana pelas lentes de Araquém Alcântara'
+          link: 'https://www.catarse.me/araquem?ref=home_banner'
           cta: 'Conheça o projeto'
-          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-aosfatos.jpg'
+          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-araquem.jpg'
         3:
           title: '<img src="https://daks2k3a4ib2z.cloudfront.net/573a70f6d5c3cb6532f8b1a7/58ead3167db7c241dbb93fbc_geek-news-logo.png" width="340">'
           subtitle: 'Um apanhado quinzenal de quadrinhos, boardgames, RPG e jogos digitais.'
@@ -23,11 +23,11 @@ pt:
           cta: 'Assine a news'
           image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-geek-news.jpg'
         4:
-          title: '#Uneafroresiste'
-          subtitle: 'Ajude a financiar a luta contra o racismo, machismo e o genocídio através da educação popular!'
-          link: 'https://www.catarse.me/uneafrobrasil?ref=home_banner'
+          title: 'Trajetória do cinema de animação no Brasil'
+          subtitle: 'Um recorte dos 100 anos de animação no Brasil e o processo criativo de nossas produções.'
+          link: 'https://www.catarse.me/livro_trajetoria_do_cinema_de_animacao_no_brasil_f5f4?ref=home_banner'
           cta: 'Conheça o projeto'
-          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-uneafrobrasil.jpg'
+          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-livro_trajetoria_do_cinema_de_animacao_no_brasil_f5f4.jpg'
         5:
           title: 'Financiamento coletivo para Livros e Revistas independentes'
           subtitle: 'Junte-se a uma comunidade de autores e editoras e publique seu livro com a ajuda dos leitores'
