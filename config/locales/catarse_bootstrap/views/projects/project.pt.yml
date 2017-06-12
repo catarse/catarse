@@ -12,7 +12,7 @@ pt:
           image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-fctodos.jpg'
         2:
           title: 'Jaguaretê'
-          subtitle: 'Um livro em homenagem à Onça Pintana pelas lentes de Araquém Alcântara'
+          subtitle: 'Um livro em homenagem à Onça Pintada pelas lentes de Araquém Alcântara'
           link: 'https://www.catarse.me/araquem?ref=home_banner'
           cta: 'Conheça o projeto'
           image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-araquem.jpg'
