@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class ContributionReportsForProjectOwner < ActiveRecord::Base
   acts_as_copy_target
 
@@ -12,7 +10,7 @@ class ContributionReportsForProjectOwner < ActiveRecord::Base
   scope :project_owner_id, ->(project_owner_id) { where(project_owner_id: project_owner_id) }
 
   def self.report
-    report_sql = ''
+    report_sql = ""
     I18n.t('contribution_report_to_project_owner').keys.each do |column|
       report_sql << "#{column} AS \"#{I18n.t("contribution_report_to_project_owner.#{column}")}\","
     end
