@@ -210,12 +210,12 @@ class ProjectsController < ApplicationController
 
       flash[:notice] = t("projects.#{action_name}")
       if success_redirect
-        redirect_to edit_project_path(@project, anchor: success_redirect)
+        redirect_to edit_project_path(@project, anchor: success_redirect, locale: '')
       else
         if show_modal
-          redirect_to insights_project_path(@project, online_succcess: true)
+          redirect_to insights_project_path(@project, online_succcess: true, locale: '')
         else
-          redirect_to insights_project_path(@project)
+          redirect_to insights_project_path(@project, locale: '')
         end
       end
     else
