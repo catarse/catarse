@@ -35,12 +35,13 @@ class BalanceTransfer < ActiveRecord::Base
   end
 
   def refund_balance
+    return unless %w(error rejected).include?(state)
     transaction do
       balance_transactions.create!(
         amount: amount,
         user_id: user_id,
         event_name: 'balance_transfer_error'
-      )
+      ) unless balance_transactions.where(event_name: 'balance_transfer_error').exists?
     end
   end
 
