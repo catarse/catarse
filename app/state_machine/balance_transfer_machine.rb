@@ -23,10 +23,14 @@ class BalanceTransferMachine
   end
 
   after_transition(to: :error) do |bt|
+    Notification.notify(:balance_transfer_error, bt.user, {
+      balance_transfer_id: bt.id })
     bt.refund_balance
   end
 
   after_transition(to: :rejected) do |bt|
+    Notification.notify(:balance_transfer_error, bt.user, {
+      balance_transfer_id: bt.id })
     bt.refund_balance
   end
 end

@@ -25,6 +25,7 @@ RSpec.describe BalanceTransfer, type: :model do
       balance_transfer.transition_to(:authorized)
       balance_transfer.transition_to(:processing)
       expect(balance_transfer).to receive(:refund_balance).and_call_original
+      expect(Notification).to receive(:notify).with(:balance_transfer_error, balance_transfer.user, {balance_transfer_id: balance_transfer.id})
       balance_transfer.transition_to(:error)
       balance_transfer.reload
       expect(balance_transfer.balance_transactions.last).not_to be_nil
@@ -35,6 +36,7 @@ RSpec.describe BalanceTransfer, type: :model do
     it 'should refund balance' do
       balance_transfer.transition_to(:authorized)
       expect(balance_transfer).to receive(:refund_balance).and_call_original
+      expect(Notification).to receive(:notify).with(:balance_transfer_error, balance_transfer.user, {balance_transfer_id: balance_transfer.id})
       balance_transfer.transition_to(:rejected)
       balance_transfer.reload
       expect(balance_transfer.balance_transactions.last).not_to be_nil
