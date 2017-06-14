@@ -50,4 +50,10 @@ class BalanceTransfer < ActiveRecord::Base
       state == st
     end
   end
+
+  def bank_data
+    last_transition = state_machine.last_transition
+
+    last_transition.bank_account || user.bank_account.to_hash_with_bank
+  end
 end
