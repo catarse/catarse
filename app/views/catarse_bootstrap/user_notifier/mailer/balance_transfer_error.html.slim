@@ -1,0 +1,32 @@
+- user = @notification.user
+
+- company_name = CatarseSettings[:company_name]
+
+| Oi #{user.display_name},
+br/
+p
+  | Ocorreu um <strong>erro na na transferência</strong> para sua conta bancária.
+p
+  | Para que possamos transferir novamente, precisamos que você <strong>corrija os seus dados bancários</strong> e <strong>solicite o saque</strong> através da plataforma. 
+p
+  | Você pode fazer isso agora mesmo, basta seguir esses passos:
+p
+  | 1) Faça o login no Catarse
+  br/
+  | 2) Entre na aba <strong>SALDO</strong>, no seu perfil.
+  br/
+  | 3) Clique em <strong>"Realizar Saque"</strong>
+  br/
+  | 4) Corrija os seus dados e clique em "Solicitar saque"
+  br/
+  | 5) Clique em <strong>"Confirmar"</strong> para dar início ao novo processo de transferência.
+p
+  img src="https://s3.amazonaws.com/catarse.files/user_balance.gif"
+br/
+p
+  | Se ficar alguma dúvida, basta responder a esta mensagem diretamente ou enviar um email para #{mail_to CatarseSettings[:email_contact]}
+
+p
+  | Abraços,
+  br/
+  | Equipe do #{company_name}
