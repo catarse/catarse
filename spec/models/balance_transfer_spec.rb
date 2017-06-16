@@ -25,6 +25,7 @@ RSpec.describe BalanceTransfer, type: :model do
       balance_transfer.transition_to(:authorized)
       balance_transfer.transition_to(:processing)
       expect(balance_transfer).to receive(:refund_balance).and_call_original
+      expect(Notification).to receive(:notify).with(:balance_transfer_error, balance_transfer.user, { associations: { balance_transfer_id: balance_transfer.id } })
       balance_transfer.transition_to(:error)
       balance_transfer.reload
       expect(balance_transfer.balance_transactions.last).not_to be_nil
@@ -35,6 +36,7 @@ RSpec.describe BalanceTransfer, type: :model do
     it 'should refund balance' do
       balance_transfer.transition_to(:authorized)
       expect(balance_transfer).to receive(:refund_balance).and_call_original
+      expect(Notification).to receive(:notify).with(:balance_transfer_error, balance_transfer.user, { associations: { balance_transfer_id: balance_transfer.id } })
       balance_transfer.transition_to(:rejected)
       balance_transfer.reload
       expect(balance_transfer.balance_transactions.last).not_to be_nil
@@ -46,8 +48,68 @@ RSpec.describe BalanceTransfer, type: :model do
       balance_transfer.transition_to(:authorized)
       balance_transfer.transition_to(:processing)
       # expect(balance_transfer.pagarme_delegator).to receive(:transfer_funds)
-      expect(balance_transfer.project).to receive(:notify).with(:project_balance_transferred, balance_transfer.project.user, balance_transfer.project)
+      expect(Notification).to receive(:notify).with(:balance_transferred, balance_transfer.user, { associations: { balance_transfer_id: balance_transfer.id} })
       balance_transfer.transition_to(:transferred)
     end
   end
+
+  describe '.refund_balance' do
+    context 'when balance transfer is not refunded' do
+      context "and state is pending" do
+        subject { balance_transfer.refund_balance }
+        it { is_expected.to eq(nil) }
+      end
+
+      context "and state is authorized" do
+        before do
+          allow(balance_transfer).to receive(:state).and_return("authorized")
+        end
+        subject { balance_transfer.refund_balance }
+        it { is_expected.to eq(nil) }
+      end
+
+      context "and state is processing" do
+        before do
+          allow(balance_transfer).to receive(:state).and_return("processing")
+        end
+        subject { balance_transfer.refund_balance }
+        it { is_expected.to eq(nil) }
+      end
+
+      context "and state is transferred" do
+        before do
+          allow(balance_transfer).to receive(:state).and_return("transferred")
+        end
+        subject { balance_transfer.refund_balance }
+        it { is_expected.to eq(nil) }
+      end
+
+      context "and state is error" do
+        before do
+          allow(balance_transfer).to receive(:state).and_return("error")
+          @refund_balance = balance_transfer.refund_balance
+        end
+
+        it { expect(@refund_balance).to eq(balance_transfer.balance_transactions.where(event_name: 'balance_transfer_error').last) }
+
+        it "should return nil when already refunded" do
+          expect(balance_transfer.refund_balance).to eq(nil)
+        end
+      end
+
+      context "and state is rejected" do
+        before do
+          allow(balance_transfer).to receive(:state).and_return("rejected")
+          @refund_balance = balance_transfer.refund_balance
+        end
+
+        it { expect(@refund_balance).to eq(balance_transfer.balance_transactions.where(event_name: 'balance_transfer_error').last) }
+
+        it "should return nil when already refunded" do
+          expect(balance_transfer.refund_balance).to eq(nil)
+        end
+      end
+    end
+  end
+
 end

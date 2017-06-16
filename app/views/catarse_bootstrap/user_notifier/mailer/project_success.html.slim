@@ -5,31 +5,29 @@
 
 | Uhuu, #{project.user.display_name},
 br/
-p Parabéns pela campanha!
-p O projeto #{link_to project.name, project_link} foi financiado!
+p Parabéns pela campanha! O projeto #{link_to project.name, project_link} foi financiado \o/
 p
-  | Depois de comemorar com vontade o término bem sucedido da sua campanha, é hora de <strong>confirmar os seus dados bancários</strong> para que possamos fazer a transferência do dinheiro para você!
-p 
-  | O processo de sacar o dinheiro arrecadado dura em média <strong>10 dias úteis</strong> e é iniciado somente após a <strong>confirmação dos seus dados bancários.</strong>
-p 
-  | Para não atrasar o saque, precisamos que você confirme o quanto antes - <strong>e com toda a atenção do mundo!</strong>. Veja como você pode confirmar os dados bancários agora mesmo, em apenas 4 passos:
-
+  | Depois de comemorar com vontade o término bem sucedido da sua campanha, é hora de confirmar os dados bancários e solicitar a transferência do dinheiro para a sua conta.
+p
+  | O prazo para receber o dinheiro arrecadado dura em média <strong>10 dias úteis</strong> e é <strong>iniciado somente após solicitação do saque na plataforma.</strong>
+p
+  | Para fazer a solicitação de saque, basta seguir este passo-a-passo:
 p
     | 1) Faça o login no Catarse 
     br/
-    | 2) Entre na aba <strong>#{link_to 'saldo', edit_user_url(project.user_id, anchor: 'balance',ref: 'notificacao_project_success')}</strong>, dentro da página do seu projeto
+    | 2) Entre na aba <strong>#{link_to 'saldo', edit_user_url(project.user_id, anchor: 'balance',ref: 'notificacao_project_success')}</strong>, no seu perfil.
     br/
     | 3) Clique em <strong>"Realizar saque"</strong>
     br/
     | 4) Verifique se os dados estão corretos:
-    br/
-    br/
-    | <strong>Se os seus dados estiverem corretos:</strong> basta clicar em: "efetuar saque"
-    br/
-    | <strong>Se os dados bancários estiverem incorretos:</strong> você deverá corrigir os seus dados e salvar. Depois que o sistema atualizar os novos dados, você deverá clicar em "efetuar saque".
+    p style="padding-left: 20px;"
+      | <strong>Se os seus dados estiverem corretos:</strong> basta clicar em: "Solicitar Saque."
+      br/
+      | <strong>Se os dados bancários estiverem incorretos:</strong> você deverá <strong>corrigir os seus dados</strong> e depois clicar em <strong>"Solicitar o saque".</strong>
+    | 5) Clique em <strong>"Confirmar"</strong> para dar início ao processo de transferência do dinheiro.
 br/
 p
-  img src="https://s3.amazonaws.com/catarse.files/pendingbalanceconfirmation.gif"
+  img src="https://s3.amazonaws.com/catarse.files/user_balance.gif"
 br/
 br/
 
@@ -43,13 +41,10 @@ p
   = link_to 'Como funciona a cobrança de taxa do Catarse', 'http://suporte.catarse.me/hc/pt-br/articles/217916143#taxa', target: '__blank' 
   br/
 p
-  = link_to 'Confira aqui mais detalhes de como será feito o repasse!', 'http://suporte.catarse.me/hc/pt-br/articles/217916143', target: '__blank'
+  |Confira mais detalhes sobre o processo de repasse no artigo <strong>#{link_to 'tudo sobre: REPASSE', 'http://suporte.catarse.me/hc/pt-br/articles/217916143', target: '__blank'}</strong>
 br/
 
 p
-  | Se ficou com alguma dúvida, responda a esta mensagem diretamente ou fale conosco através do e-mail #{mail_to CatarseSettings[:email_projects]}. 
-p
-  | Um abraço apertado de parabéns!
-
-br/
-| #{company_name}
+  | Abraços,
+  br/
+  | Equipe #{company_name}

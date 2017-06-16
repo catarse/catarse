@@ -1,0 +1,46 @@
+- user = @notification.user
+- balance_transfer = @notification.balance_transfer
+- bank_account = user.bank_account
+- transfer_limit_date = 10.weekdays_from(balance_transfer.created_at)
+- company_name = CatarseSettings[:company_name]
+
+| Olá #{user.display_name},
+br/
+br/
+| O pedido de saque do dinheiro foi registrado no nosso sistema e o processo de transferência já está <strong>em andamento.</strong> :-)
+br/
+br/
+strong
+  | Resumo da operação de saque para conta bancária:
+br/
+br/
+| Pedido do saque: #{I18n.l(balance_transfer.created_at.to_date)}
+br/
+| Data máxima da transferência: #{I18n.l(transfer_limit_date.to_date)}
+br/
+| Valor total da transferência: #{number_to_currency(balance_transfer.amount, precision: 2)} (taxas já descontadas)
+br/
+| Banco: #{bank_account.bank.name}
+br/
+| Agência: #{bank_account.agency}-#{bank_account.agency_digit}
+br/
+| Conta: #{bank_account.account}-#{bank_account.account_digit}
+br/
+| Nome: #{user.name}
+br/
+| CPF/CNPJ: #{user.cpf}
+p
+  | <strong>Dúvidas frequentes:</strong>
+p
+  = link_to 'Quais são as etapas e prazos para a transferência do dinheiro?', 'http://suporte.catarse.me/hc/pt-br/articles/217916143#etapas', target: '__blank'
+  br/
+  = link_to 'Quando o dinheiro estará disponível na minha conta?', 'http://suporte.catarse.me/hc/pt-br/articles/217916143#quando', target: '__blank'
+  br/
+  = link_to 'Como funciona a cobrança de taxa do Catarse', 'http://suporte.catarse.me/hc/pt-br/articles/217916143#taxa', target: '__blank' 
+  br/
+| Se ficar alguma dúvida, basta responder a esta mensagem diretamente ou enviar um email para #{mail_to CatarseSettings[:email_contact]} .
+p
+  | Abraços,
+  br/
+  | Equipe #{company_name}
+
