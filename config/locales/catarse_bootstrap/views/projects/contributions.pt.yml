@@ -1,6 +1,17 @@
 pt:
   projects:
     contributions:
+      user_since: "Conta no Catarse desde %{date}"
+      backed_projects: "Apoiou %{count} projetos"
+      created_projects: "Criou %{count} projetos"
+      survey:
+        survey: Questionário
+        address_title: Nome e endereço
+        address_neighbourhood: 'Bairro:'
+        answered_at: "Respondido em %{date}"
+      report:
+        info: Info
+        profile: Perfil
       shipping_options:
         national: "Somente para o Brasil"
         international: "Para todo o Mundo"

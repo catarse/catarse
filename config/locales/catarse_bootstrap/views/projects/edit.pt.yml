@@ -55,6 +55,11 @@ pt:
       minimum_value: "Valor:"
       deliver_at: "Previsão de entrega:"
       description: "Descrição:"
+      delivery: "Envio: "
+      status:
+        error: Erro no envio
+        delivered: Enviada
+        received: Recebida
       shipping_options:
         free: 'Sem frete envolvido'
         national: 'Frete Nacional'
