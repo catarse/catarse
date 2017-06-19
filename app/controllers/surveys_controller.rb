@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SurveysController < ApplicationController
   respond_to :html, :json
   def new
@@ -13,23 +15,31 @@ class SurveysController < ApplicationController
 
   def answer
     authorize resource
-    address_answer = SurveyAddressAnswer.find_or_initialize_by(contribution_id: params['contribution_id'])
-    address_answer.attributes = permitted_params[:survey_address_answer]
-    address_answer.save
+    if permitted_params[:survey_address_answer]
+      SurveyAddressAnswer.find_or_initialize_by(contribution_id: params['contribution_id'])
+                         .update_attributes permitted_params[:survey_address_answer]
+    end
+    open_questions_answer
+    mc_questions_answer
+    render status: 200, json: { success: 'OK' }
+  end
+
+  protected
+
+  def open_questions_answer
     params['open_questions'].each do |open_question|
       question = resource.survey_open_questions.find open_question['id']
-      question.survey_open_question_answers.
-        find_or_create_by(contribution_id: params['contribution_id']).update_attribute(:answer, open_question['value'])
+      question.survey_open_question_answers
+              .find_or_create_by(contribution_id: params['contribution_id']).update_attribute(:answer, open_question['value'])
     end
+  end
+
+  def mc_questions_answer
     params['multiple_choice_questions'].each do |mc_question|
       question = resource.survey_multiple_choice_questions.find mc_question['id']
       answer = question.survey_multiple_choice_question_answers.find_or_initialize_by(contribution_id: params['contribution_id'])
-      if mc_question['value']
-        answer.survey_question_choice_id = mc_question['value']
-        answer.save!
-      end
+      answer.update_attribute(:survey_question_choice_id, mc_question['value'])
     end
-    render status: 200, json: { success: 'OK' }
   end
 
   def resource
@@ -39,5 +49,4 @@ class SurveysController < ApplicationController
   def permitted_params
     params.permit(policy(resource).permitted_attributes)
   end
-
 end
