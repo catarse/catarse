@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
-ruby '2.3.1'
+ruby '2.4.1'
 
-gem 'rails', '~> 4.2.7.1'
+gem 'rails', '~> 4.2.8'
 
 gem 'protected_attributes'
 gem 'rails-observers'
@@ -40,7 +40,7 @@ gem 'mixpanel_client'
 
 # Payment engines
 
-gem 'catarse_pagarme', '~> 2.10.10'
+gem 'catarse_pagarme', '~> 2.10.12'
 #gem 'catarse_pagarme', path: '../catarse_pagarme'
 
 # Decorators
@@ -91,7 +91,6 @@ gem 'typhoeus'
 gem 'parallel'
 gem 'sitemap_generator'
 gem 'rdstation-ruby-client'
-gem 'therubyracer', platform: :ruby
 gem 'responders', '~> 2.0'
 gem "cpf_cnpj"
 gem 'aws-sdk', '~> 2'
@@ -160,7 +159,7 @@ end
 
 group :test do
   gem 'zonebie'
-  gem 'fakeweb'
+  gem 'fakeweb', github: 'SamMolokanov/fakeweb', branch: 'ruby-2-4-1-support'
   gem 'poltergeist'
   gem 'launchy'
   gem 'database_cleaner'
