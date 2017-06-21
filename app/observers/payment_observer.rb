@@ -79,11 +79,10 @@ class PaymentObserver < ActiveRecord::Observer
           BalanceTransaction.insert_contribution_confirmed_after_project_finished(
             project.id, contribution.id
           )
-          begin
-            contribution.notify_to_backoffice(:payment_confirmed_after_project_was_closed)
-          rescue
-            nil
-          end # just record notification on database
+          contribution.notify(
+            :project_contribution_confirmed_after_finished,
+            project.user,
+            contribution)
         end
       end
     end
