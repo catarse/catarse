@@ -32,7 +32,7 @@ pt:
         feature_3: 'Painel de controle completo'
         feature_4: 'Blog da campanha'
         feature_5: 'Apoio parcelado'
-        feature_6: 'Repasse facilitado'
+        feature_6: 'Transferência facilitada'
       video:
         title: 'Uma campanha de financiamento coletivo é emoção garantida. '
         subtitle: 'Sente o gostinho...'
@@ -180,7 +180,7 @@ pt:
           label: 'Apoio parcelado'
           src: '/assets/start-apoio.gif'
         6:
-          label: 'Repasse facilitado'
+          label: 'Transferência facilitada'
           src: '/assets/start-repasse.gif'
       testimonials_title: 'O que estão dizendo por aí...'
       testimonials:
