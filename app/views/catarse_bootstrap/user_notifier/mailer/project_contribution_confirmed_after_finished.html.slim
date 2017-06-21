@@ -16,8 +16,11 @@ br/
 br/
 | Valor do apoio: #{contribution.details.ordered.first.decorate.display_value}
 br/
-| Recompensa selecionada:
-| #{contribution.reward.try(:decorate).try(:display_description)}
+- if contribution.reward
+  | Recompensa selecionada:
+  | #{contribution.reward.try(:decorate).try(:display_description)}
+- else
+  br/
 br/
 = link_to 'Veja seu o saldo atualizado', edit_user_url(project.user_id, anchor: 'balance')
 br/
