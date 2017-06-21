@@ -55,6 +55,8 @@ pt:
       paid_contributors: '%{count} apoiadores'
       reward_gone: 'Esgotada'
       reward_limited: 'Limitada'
+      delivery: 'Envio'
+      reward_limited_input: 'Recompensa limitada'
       reward_available: ' (%{available} de %{maximum} disponíveis)'
       delivery_estimation: 'Estimativa de entrega: '
       reward_link_label: 'Link para apoio direto'
