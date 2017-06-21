@@ -32,6 +32,25 @@ pt:
     reward_fields:
       edit: "Editar recompensa"
       reward: Recompensa
+      reward_know_more_cta_html: '&nbsp;Saiba como&nbsp;<a target="_blank" href="https://catarse.attach.io/Hk5H9HKeZ" class="alt-link">planejar suas recompensas.</a>'
+      reward_faq_intro: 'Antes de oferecer uma recompensa, é importante ter todos os processos de produção e entrega mapeados.'
+      reward_faq_sub_intro: 'Dicas para o preenchimento:'
+      faq:
+        1:
+          title: 'Descrição e Título da recompensa:'
+          description: 'Ajudam os apoiadores a entenderem o que você está oferecendo. Seja objetivo e transparente! Saiba neste artigo <a href="http://suporte.catarse.me/hc/pt-br/articles/212191546-Recompensas-realizadores-#o-que-oferecer" target="_blank" class="alt-link">o que você pode e o que não pode oferecer</a>  e se inspire com <a href="http://blog.catarse.me/mais-de-30-ideias-de-recompensa-para-seu-crowdfunding/" target="_blank" class="alt-link">ideias de recompensas</a>.'
+        2:
+          title: 'Valor da recompensa:'
+          description: 'Indica com quanto o apoiador deve contribuir para receber a recompensa. Procure ofertar um valor justo e realista. Para te ajudar a definir esses valores, recomendamos a <a href="http://blog.catarse.me/meta-crowdfunding-calculadora-orcamento/" target="_blank" class="alt-link">Calculadora de Orçamento</a>.'
+        3:
+          title: 'Previsão de entrega:'
+          description: 'Indica quando o apoiador irá receber a recompensa escolhida. Cuidado ao definir essa data para não frustrar seus apoiadores. Na dúvida, seja conservador nos prazos.'
+        4:
+          title: 'Tipo de entrega:'
+          description: 'Como será o envio da recompensa e quanto irá custar para o apoiador. Caso você adicione um valor de frete, ele será adicionado quando o apoiador selecionar a recompensa e a localidade. <a href="http://blog.catarse.me/o-calculo-de-envio-de-recompensas-financiamento-coletivo/" target="_blank" class="alt-link">Saiba mais</a>.'
+        5:
+          title: 'Número de recompensas:'
+          description: 'Você também pode Limitar uma recompensa para um determinado número de apoios e mudar a ordem que as recompensas aparecem em seu projeto. <a href="http://suporte.catarse.me/hc/pt-br/articles/212191546-tudo-sobre-RECOMPENSAS#como-editar" target="_blank" class="alt-link">Saiba mais</a>.'
       info_box: "Descreva o valor da recompensa e coloque uma previsão de data de entrega real para os apoiadores. Você também pode limitar uma recompensa e quando o limite é atingido ela aparece como ESGOTADA. Se quiser mudar a ordem que as recompensas aparecem em seu projeto, basta fazer isso arrastando-as para cima ou para baixo."
       minimum_value: "Valor:"
       deliver_at: "Previsão de entrega:"
@@ -264,6 +283,7 @@ pt:
       permalink_hint: 'Você pode editá-lo até o projeto ir ao ar. Prefira algo simples, direto e que identifique bem seu projeto. Tente não usar hífen, underline etc.'
       tags: 'Tags'
       tags_hint: 'Liste até 5 palavras-chaves relacionadas a sua campanha e facilite a descoberta pelos apoiadores.'
+      tags_max_error: 'Você pode usar até no máximo 5 tags'
       admin_tags: 'Admin Tags'
       admin_tags_hint: 'Informe tags separadas por vírgula'
       user_id: 'Id do usuário'
