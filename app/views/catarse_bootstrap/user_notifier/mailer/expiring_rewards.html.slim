@@ -7,17 +7,24 @@
 br/
 br/
 p Você criou recompensas com estimativa de entrega daqui a <strong>1 mês</strong>, porém ainda não definiu uma data de encerramento do seu projeto. 
-p Vale lembrar que assim o prazo chega ao fim, alguns processos acontecem antes de o dinheiro chegar na sua conta:
+p Vale lembrar que assim que o prazo chegar ao fim, alguns processos acontecem antes de o dinheiro chegar na sua conta:
 p
-  center
-    | 1) Confirmação de boletos (aplicável apenas a campanhas com apoios pendentes) Duração: até 4 dias úteis
-    br/
-    | 2) Confirmação dos seus dados bancários na plataforma Duração: esse passo só depende de você
-    br/
-    | 3) Início do processo de repasse Duração: até 10 dias úteis <strong>após a confirmação dos dados.</strong>
+  | 1) Contabilização de pagamentos pendentes (caso aplicável)
+  br/
+  | Duração: até 4 dias úteis. Durante esse estágio, o seu projeto ficará com o status "aguardando boletos".
+  br/
+  br/
+  | 2) Confirmação de dados bancários e pedido de saque do dinheiro
+  br/
+  | Duração: Você poderá fazer isso a qualquer momento após a contabilização dos pagamentos (ítem 1).
+  br/
+  br/
+  | 3) Transferência do dinheiro
+  br/
+  | Duração: 10 dias úteis após o pedido de saque (ítem 2).
 br/
 p É importante que você se certifique que a data de repasse do dinheiro não irá impactar a entrega das recompensas. Para te ajudar nesse cálculo, confira essa #{link_to "ferramenta", "http://fazum.catarse.me/calculadora-repasse", target: "__blank" }.
-p Caso o processo de repasse possa impactar a entrega de recompensas, é importante que você finalize a sua campanha o quanto antes. Você pode fazer isso diretamente na página do seu projeto ou através do botão abaixo:
+p Caso os prazos de transferência possam impactar a entrega de recompensas, é importante que você finalize a sua campanha o quanto antes. Você pode fazer isso diretamente na página do seu projeto ou através do botão abaixo:
 br/
 
 p
@@ -26,9 +33,9 @@ p
       = image_tag "#{CatarseSettings[:base_url]}/assets/catarse_bootstrap/btn-definir-prazo.png", height: '60px'
 br/
 br/
-| Se ficou com alguma dúvida, responda a esta mensagem diretamente ou fale conosco através do e-mail #{mail_to CatarseSettings[:email_projects]}. 
+| Se ficou com alguma dúvida, confira #{link_to 'este artigo', 'http://suporte.catarse.me/hc/pt-br/articles/217916143'} ou responda a esta mensagem.
 br/
 br/
 | Um abraço,
 br/
-= company_name
+| Equipe do #{company_name}
