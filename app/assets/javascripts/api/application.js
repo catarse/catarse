@@ -9,7 +9,7 @@
 //= require ../analytics
 //= require api/init
 //= require jvnjs/dist/catarse.js
-//require catarse.js/dist/catarse.js
+// require catarse.js/dist/catarse.js
 //= require_self
 (function(m, c, Chart, analytics){
   //Chart.defaults.global.responsive = true;
