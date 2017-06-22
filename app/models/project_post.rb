@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ProjectPost < ActiveRecord::Base
   include I18n::Alchemy
   has_notifications
@@ -14,14 +16,14 @@ class ProjectPost < ActiveRecord::Base
 
   before_validation :reference_user
 
-  scope :ordered, ->() { order("created_at desc") }
+  scope :ordered, ->() { order('created_at desc') }
 
   def reference_user
-    self.user_id = self.project.try(:user_id)
+    self.user_id = project.try(:user_id)
   end
 
   def to_partial_path
-    "projects/posts/project_post"
+    'projects/posts/project_post'
   end
 
   def decorator

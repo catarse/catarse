@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.configure do |config|
   require 'zonebie'
 
@@ -14,31 +16,29 @@ RSpec.configure do |config|
     mocks.syntax = :expect
     mocks.verify_partial_doubles = true
   end
-  if config.files_to_run.one?
-    config.default_formatter = 'doc'
-  end
+  config.default_formatter = 'doc' if config.files_to_run.one?
 
   config.before(:suite) do
     con = ActiveRecord::Base.connection
-    con.execute %{
+    con.execute %(
     SET client_min_messages TO warning;
     SET timezone TO 'utc';
     SET search_path TO "$user", public, "1", "postgrest";
-    }
-    current_user = con.execute("SELECT current_user;")[0]["current_user"]
-    con.execute %{ALTER USER #{current_user} SET search_path TO "$user", public, "1", "postgrest";}
+    )
+    current_user = con.execute('SELECT current_user;')[0]['current_user']
+    con.execute %(ALTER USER #{current_user} SET search_path TO "$user", public, "1", "postgrest";)
     DatabaseCleaner.clean_with :truncation
     I18n.locale = :pt
     I18n.default_locale = :pt
 
-    FakeWeb.register_uri(:get, "http://vimeo.com/api/v2/video/17298435.json", response: fixture_path('vimeo_default_json_request.txt'))
-    FakeWeb.register_uri(:get, "http://vimeo.com/17298435", response: fixture_path('vimeo_default_request.txt'))
-    FakeWeb.register_uri(:get, "http://www.youtube.com/watch?v=Brw7bzU_t4c", response: fixture_path("youtube_request.txt"))
-    con.execute %{
+    FakeWeb.register_uri(:get, 'http://vimeo.com/api/v2/video/17298435.json', response: fixture_path('vimeo_default_json_request.txt'))
+    FakeWeb.register_uri(:get, 'http://vimeo.com/17298435', response: fixture_path('vimeo_default_request.txt'))
+    FakeWeb.register_uri(:get, 'http://www.youtube.com/watch?v=Brw7bzU_t4c', response: fixture_path('youtube_request.txt'))
+    con.execute %(
     SET statement_timeout TO 0;
     REFRESH MATERIALIZED VIEW statistics;
     REFRESH MATERIALIZED VIEW user_totals;
-    }
+    )
     con.execute %{
     INSERT INTO public.project_states (state, state_order) VALUES
     ('deleted', 'archived'),
@@ -52,11 +52,11 @@ RSpec.configure do |config|
   end
 
   config.before(:each) do
-    if RSpec.current_example.metadata[:type] == :feature
-      DatabaseCleaner.strategy = :truncation
-    else
-      DatabaseCleaner.strategy = :transaction
-    end
+    DatabaseCleaner.strategy = if RSpec.current_example.metadata[:type] == :feature
+                                 :truncation
+                               else
+                                 :transaction
+                               end
     DatabaseCleaner.start
     ActionMailer::Base.deliveries.clear
     RoutingFilter.active = false # Because this issue: https://github.com/svenfuchs/routing-filter/issues/36
@@ -67,9 +67,9 @@ RSpec.configure do |config|
     DatabaseCleaner.clean
   end
 
-  [:controller, :feature].each do |spec_type|
+  %i[controller feature].each do |spec_type|
     config.before(:each, type: spec_type) do
-      [:detect_old_browsers, :render_facebook_sdk, :render_facebook_like, :render_twitter].each do |method|
+      %i[detect_old_browsers render_facebook_sdk render_facebook_like render_twitter].each do |method|
         allow_any_instance_of(ApplicationController).to receive(method)
       end
     end
@@ -111,13 +111,13 @@ RSpec.configure do |config|
     UserNotifier.from_name        = CatarseSettings[:company_name]
 
     allow_any_instance_of(Payment).to receive(:payment_engine).and_return(PaymentEngines::Interface.new)
-    allow_any_instance_of(MixpanelObserver).to receive_messages(tracker: double('mixpanel tracker', track: nil, people: double('mixpanel people', {set: nil})))
+    allow_any_instance_of(MixpanelObserver).to receive_messages(tracker: double('mixpanel tracker', track: nil, people: double('mixpanel people', { set: nil })))
   end
 end
 
 RSpec::Matchers.define :custom_permit do |action|
   match do |policy|
-    policy.public_send("#{action}")
+    policy.public_send(action.to_s)
   end
 
   failure_message do |policy|

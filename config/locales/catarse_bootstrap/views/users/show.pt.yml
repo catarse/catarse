@@ -1,9 +1,26 @@
 pt:
   users:
     balance:
+      value_text: 'Valor'
+      value: 'Valor'
+      request_fund: 'Solicitar saque'
+      event_names:
+        successful_project_pledged: 'Arrecadação de projeto financiado %{project_name}'
+        catarse_project_service_fee: 'Taxa de serviço do Catarse (%{service_fee}%)'
+        irrf_tax_project: 'Impostos gerados a partir da nota fiscal do Catarse para PJ'
+        balance_transfer_request: 'Solicitação de transferência para conta bancária'
+        balance_transfer_error: 'Erro na transferência para conta bancária'
+        balance_transfer_project:  'Solicitação de transferência para conta bancária'
+        project_contribution_chargeback: 'Pagamento contestado pelo apoiador: %{contributor_name}'
+        project_contribution_reverse_chargeback: 'Pagamento confirmado após contestação pelo apoiador: %{contributor_name}'
+        project_contribution_confirmed_after_finished: 'Pagamento confirmado após projeto finalizado'
+        catarse_contribution_fee: 'Taxa de serviço do Catarse (%{service_fee}%)'
+        project_contribution_refund: 'Reembolso de projeto não-financiado %{project_name}'
       debit: 'Saída'
       credit: 'Entrada'
       totals: 'Saldo '
+      totals_transactions_title: 'Extrato ( saldo em conta: R$ %{value} )'
+      day_balance: 'Saldo do dia'
       withdraw: "Sacar dinheiro"
       withdraw_cta: '$ Realizar Saque'
       success_message: 'Seu saque foi solicitado com sucesso. Em até 10 dias úteis o seu dinheiro estará em sua conta bancária!'

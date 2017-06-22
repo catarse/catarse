@@ -1,16 +1,17 @@
+# frozen_string_literal: true
+
 module Payment::PaymentEngineHandler
   extend ActiveSupport::Concern
 
   included do
-
     delegate :can_do_refund?, to: :payment_engine
 
     def is_paypal?
-      gateway.downcase == 'paypal'
+      gateway.casecmp('paypal').zero?
     end
 
     def is_pagarme?
-      gateway.downcase == 'pagarme'
+      gateway.casecmp('pagarme').zero?
     end
 
     # Get the current status from payment direct on gateway
@@ -25,11 +26,11 @@ module Payment::PaymentEngineHandler
 
     # References to current payment engine delegator
     def payment_delegator
-      self.try(:pagarme_delegator)
+      try(:pagarme_delegator)
     end
 
     def payment_engine
-      PaymentEngines.find_engine(self.gateway) || PaymentEngines::Interface.new
+      PaymentEngines.find_engine(gateway) || PaymentEngines::Interface.new
     end
 
     def review_path
@@ -37,9 +38,7 @@ module Payment::PaymentEngineHandler
     end
 
     def direct_refund
-      if self.can_request_refund?
-        DirectRefundWorker.perform_async(self.id)
-      end
+      DirectRefundWorker.perform_async(id) if can_request_refund?
     end
 
     def second_slip_path

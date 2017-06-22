@@ -1,16 +1,18 @@
+# frozen_string_literal: true
+
 class FlexProjectMachine
   include Statesman::Machine
 
   def self.basic_validation_states
-    %i(online successful).freeze
+    %i[online successful].freeze
   end
 
   def self.need_expiration_states
-    %i(waiting_funds successful failed).freeze
+    %i[waiting_funds successful failed].freeze
   end
 
   def self.finished_states
-    %i(successful failed).freeze
+    %i[successful failed].freeze
   end
 
   def self.setup_machine
@@ -22,11 +24,10 @@ class FlexProjectMachine
     state :waiting_funds
     state :deleted
 
-
     # this block receive all transition
     # definitions
     yield self if block_given?
-    
+
     # Ensure that project is valid when try change
     # the project state
     guard_transition(to: basic_validation_states) do |project, t, m|
@@ -37,7 +38,7 @@ class FlexProjectMachine
       project.state = project.state_was
 
       if project.errors.present?
-        #save errors on database
+        # save errors on database
         project.errors.messages.each do |error|
           messages = error[1]
           messages.each do |message|
@@ -51,7 +52,8 @@ class FlexProjectMachine
             project.user,
             project, {
               metadata: project.errors.to_json
-            })
+            }
+          )
         end
       end
       valid
@@ -89,21 +91,25 @@ class FlexProjectMachine
     # After transition run, persist the current state
     # into model.state field.
     after_transition do |project, transition|
-      project.save(validate: false) #make sure state persists even if project is invalid
+      project.save(validate: false) # make sure state persists even if project is invalid
       next if transition.metadata['skip_callbacks']
       from_state = transition.metadata[:from_state]
 
       project.notify_observers :"from_#{from_state}_to_#{transition.to_state}"
     end
+
+    after_transition(to: :successful) do |project|
+      BalanceTransaction.insert_successful_project_transactions(project.id)
+    end
   end
 
   setup_machine do
-    transition from: :deleted, to: %i(draft)
-    transition from: :rejected, to: %i(draft deleted)
-    transition from: :draft, to: %i(rejected deleted online)
-    transition from: :online, to: %i(draft rejected deleted waiting_funds successful failed)
-    transition from: :waiting_funds, to: %i(successful failed)
-    transition from: :failed, to: %i(deleted)
+    transition from: :deleted, to: %i[draft]
+    transition from: :rejected, to: %i[draft deleted]
+    transition from: :draft, to: %i[rejected deleted online]
+    transition from: :online, to: %i[draft rejected deleted waiting_funds successful failed]
+    transition from: :waiting_funds, to: %i[successful failed]
+    transition from: :failed, to: %i[deleted]
   end
 
   def can_reject?

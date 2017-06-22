@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe UserUploader do
   include CarrierWave::Test::Matchers
-  let(:user){ FactoryGirl.create(:user) }
+  let(:user) { FactoryGirl.create(:user) }
 
   before do
     UserUploader.enable_processing = true
@@ -15,13 +17,12 @@ RSpec.describe UserUploader do
   end
 
   describe '#thumb_avatar' do
-    subject{ @uploader.thumb_avatar }
-    it{ is_expected.to have_dimensions(119, 121) }
+    subject { @uploader.thumb_avatar }
+    it { is_expected.to have_dimensions(119, 121) }
   end
 
   describe '#thumb_facebook' do
-    subject{ @uploader.thumb_facebook }
-    it{ is_expected.to have_dimensions(512, 400) }
+    subject { @uploader.thumb_facebook }
+    it { is_expected.to have_dimensions(512, 400) }
   end
-
 end

@@ -1,9 +1,11 @@
-#encoding: utf-8
+# encoding: utf-8
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe StaticController, type: :controller do
   render_views
-  subject{ response }
+  subject { response }
 
   describe 'GET thank_you' do
     let(:contribution) { FactoryGirl.create(:contribution) }
@@ -14,11 +16,11 @@ RSpec.describe StaticController, type: :controller do
         get :thank_you, { locale: :pt }
       end
 
-      it{ is_expected.to redirect_to(project_contribution_path(contribution.project, contribution)) }
+      it { is_expected.to redirect_to(project_contribution_path(contribution.project, contribution)) }
     end
 
     context 'without session' do
-      it{ is_expected.to be_successful }
+      it { is_expected.to be_successful }
     end
   end
 end

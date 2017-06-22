@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe ProjectObserver do
-  let(:contribution){ create(:contribution, key: 'should be updated', payment_method: 'should be updated', state: 'confirmed', confirmed_at: nil) }
+  let(:contribution) { create(:contribution, key: 'should be updated', payment_method: 'should be updated', state: 'confirmed', confirmed_at: nil) }
   let(:project) do
     project = create(:project, state: 'draft', goal: 3000)
     create(:reward, project: project)
@@ -24,7 +26,7 @@ RSpec.describe ProjectObserver do
     create(:user, email: CatarseSettings[:email_contact])
   end
 
-  subject{ contribution }
+  subject { contribution }
 
   before do
     CatarseSettings[:support_forum] = 'http://support.com'
@@ -34,77 +36,77 @@ RSpec.describe ProjectObserver do
     CatarseSettings[:company_name] = 'Catarse'
   end
 
-  describe "#before_save" do
-    context "when video_url changed" do
+  describe '#before_save' do
+    context 'when video_url changed' do
       let(:project) { create(:project, video_url: 'https://www.youtube.com/watch?v=9QveBbn7t_c', video_embed_url: 'embed_url') }
 
-      it "should clean embed_url when video_is null" do
+      it 'should clean embed_url when video_is null' do
         expect(project.video_embed_url.present?).to eq(true)
         project.video_url = nil
         project.save
         expect(project.video_embed_url.present?).to eq(false)
       end
     end
-    context "when project is new" do
+    context 'when project is new' do
       before do
         expect(project).to receive(:update_expires_at)
       end
 
       let(:project) { build(:project, state: 'draft') }
 
-      it "should call update_expires_at" do
+      it 'should call update_expires_at' do
         project.save(validate: false)
       end
     end
 
-    context "when project is being updated and online_days does not change" do
+    context 'when project is being updated and online_days does not change' do
       before do
         expect(project).to_not receive(:update_expires_at)
       end
 
       let!(:project) { create(:project, state: 'draft', expires_at: Date.tomorrow) }
 
-      it "should not call update_expires_at" do
+      it 'should not call update_expires_at' do
         project.save(validate: false)
       end
     end
 
-    context "when expires_at is nil and we have both online_at and online_days" do
+    context 'when expires_at is nil and we have both online_at and online_days' do
       before do
         expect(project).to receive(:update_expires_at)
       end
 
       let!(:project) { create(:project, state: 'draft', online_days: 60) }
 
-      it "should not call update_expires_at" do
+      it 'should not call update_expires_at' do
         project.save(validate: false)
       end
     end
   end
 
-  describe "#after_save" do
+  describe '#after_save' do
     let(:project) { build(:project, state: 'draft') }
-    context "when we change the video_url" do
-      let(:project){ create(:project, video_url: 'http://vimeo.com/11198435', state: 'draft')}
+    context 'when we change the video_url' do
+      let(:project) { create(:project, video_url: 'http://vimeo.com/11198435', state: 'draft') }
       before do
         expect(ProjectDownloaderWorker).to receive(:perform_async).with(project.id).never
       end
-      it "should call project downloader" do
+      it 'should call project downloader' do
         project.save(validate: false)
       end
     end
   end
 
-  describe "#from_online_to_failed" do
+  describe '#from_online_to_failed' do
     let(:project) do
       create_project({
-        goal: 100,
-        online_days: 30,
-        state: 'online'
-      }, {
-        to_state: 'online',
-        created_at: 3.days.ago,
-      })
+                       goal: 100,
+                       online_days: 30,
+                       state: 'online'
+                     }, {
+                       to_state: 'online',
+                       created_at: 3.days.ago
+                     })
     end
 
     let(:contribution_invalid) do
@@ -115,7 +117,7 @@ RSpec.describe ProjectObserver do
       create(:confirmed_contribution, value: 10, project: project)
     end
 
-    context "not request refund to invalid bank_account slip payment" do
+    context 'not request refund to invalid bank_account slip payment' do
       let(:payment_valid) do
         contribution_valid.payments.first
       end
@@ -147,11 +149,11 @@ RSpec.describe ProjectObserver do
       project.notify_observers(:from_waiting_funds_to_successful)
     end
 
-    it "should create notification for admin" do
+    it 'should create notification for admin' do
       expect(ProjectNotification.where(template_name: 'redbooth_task', user: redbooth_user, project_id: project.id).count).to eq(1)
     end
 
-    it "should create notification for project owner" do
+    it 'should create notification for project owner' do
       expect(ProjectNotification.where(template_name: 'project_success', user: project.user, project_id: project.id).count).to eq(1)
     end
   end

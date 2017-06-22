@@ -1,11 +1,10 @@
+# frozen_string_literal: true
+
 class ProjectPostPolicy < ApplicationPolicy
-
   self::Scope = Struct.new(:user, :scope) do
-
     def resolve
       scope
     end
-
   end
 
   def create?
@@ -26,7 +25,7 @@ class ProjectPostPolicy < ApplicationPolicy
 
   def permitted_attributes
     if done_by_owner_or_admin?
-      [:title, :comment_html, :exclusive, :user_id, :reward_id, :recipients]
+      %i[title comment_html exclusive user_id reward_id recipients]
     else
       []
     end

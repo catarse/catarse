@@ -6,11 +6,9 @@
 - content_for :stylesheets do
   = stylesheet_link_tag 'redactor'
 
-= render 'shared/header'
+- parameters = { project_id: @project.id, user_id: @project.user_id }.to_json
 
-#project-posts.min-height-70[data-mithril="Posts" data-id=@project.id]
+#application data-parameters=parameters
 
 - content_for :application_js do
   = javascript_include_tag "api/application"
-
-= render 'shared/footer'

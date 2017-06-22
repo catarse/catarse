@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RewardDecorator < Draper::Decorator
   decorates :reward
   include Draper::LazyHelpers
@@ -14,12 +16,12 @@ class RewardDecorator < Draper::Decorator
   end
 
   def name
-    deliver = %{
+    deliver = %(
       <div class="fontsize-smallest fontcolor-secondary">
         Estimativa de entrega:&nbsp;#{source.display_deliver_estimate || I18n.t('projects.contributions.no_estimate')}
       </div>
-    }
-    %{
+    )
+    %(
       <label data-minimum-value="#{source.minimum_value > 0 ? source.minimum_value.to_i : '10'}" class="w-form-label fontsize-base fontweight-semibold u-marginbottom-10" for="contribution_reward#{source.id && "_#{source.id}"}">#{source.minimum_value > 0 ? "#{source.display_minimum}  #{I18n.t('rewards.index.or_more')}" : I18n.t('rewards.index.dont_want')}</label>
       <div class="w-row back-reward-money w-hidden">
         <div class="w-col w-col-8 w-col-small-8 w-col-tiny-8 w-sub-col-middle w-clearfix">
@@ -40,7 +42,7 @@ class RewardDecorator < Draper::Decorator
         <div class="fontsize-smaller u-marginbottom-10">#{html_escape(source.description)}</div>
         #{source.id ? deliver : ''}
       </div>
-    }.html_safe
+    ).html_safe
   end
 
   def display_minimum
@@ -63,6 +65,6 @@ class RewardDecorator < Draper::Decorator
   end
 
   def display_description
-    auto_html(source.description){ html_escape; simple_format }
+    auto_html(source.description) { html_escape; simple_format }
   end
 end

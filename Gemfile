@@ -115,7 +115,7 @@ group :production do
   gem 'rails_12factor'
 
   # Monitoring with the new new relic
-  gem 'newrelic_rpm'
+  gem 'newrelic_rpm', '~> 3.18.1.330'
 
   gem "activerecord-nulldb-adapter"
 

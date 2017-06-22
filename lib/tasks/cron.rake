@@ -1,14 +1,15 @@
+# frozen_string_literal: true
+
 namespace :cron do
-  desc "Tasks that should run hourly"
-  task hourly: [:finish_projects, :second_slip_notification,
-                 :schedule_reminders, :sync_fb_friends]
+  desc 'Tasks that should run hourly'
+  task hourly: %i[finish_projects second_slip_notification
+                  schedule_reminders sync_fb_friends]
 
-  desc "Tasks that should run daily"
-  task daily: [:notify_delivery_confirmation, :notify_owners_of_deadline, :notify_project_owner_about_new_confirmed_contributions,
-               :verify_pagarme_transactions, :notify_new_follows,
-               :verify_pagarme_transfers, :verify_pagarme_user_transfers, :notify_pending_refunds, :request_direct_refund_for_failed_refund, :notify_expiring_rewards,
-               :update_fb_users]
-
+  desc 'Tasks that should run daily'
+  task daily: %i[notify_delivery_confirmation notify_owners_of_deadline notify_project_owner_about_new_confirmed_contributions
+                 verify_pagarme_transactions notify_new_follows
+                 verify_pagarme_transfers verify_pagarme_user_transfers notify_pending_refunds request_direct_refund_for_failed_refund notify_expiring_rewards
+                 update_fb_users]
 
   desc 'Request refund for failed credit card refunds'
   task request_direct_refund_for_failed_refund: :environment do
@@ -29,18 +30,10 @@ namespace :cron do
     end
   end
 
-  desc 'Send pending balance transfer confirmation notifications'
-  task sent_balance_transfer_reminders: [:environment] do
-    Project.pending_balance_confirmation.each do |project| 
-      Rails.logger.info "Notifying #{project.permalink} -> pending_balance_transfer_confirmation"
-      project.notify(:pending_balance_transfer_confirmation, project.user)
-    end
-  end
-
   desc 'Notify contributors about delivery confirmation'
   task notify_delivery_confirmation: :environment do
     Contribution.need_notify_about_delivery_confirmation.each do |contribution|
-     contribution.notify_to_contributor(:confirm_delivery)
+      contribution.notify_to_contributor(:confirm_delivery)
     end
   end
 
@@ -50,7 +43,8 @@ namespace :cron do
       project.notify_once(
         'project_deadline',
         project.user,
-        project)
+        project
+      )
     end
   end
 
@@ -62,29 +56,30 @@ namespace :cron do
       project.notify_once(
         'reminder',
         reminder.user,
-        project)
+        project
+      )
     end
   end
 
-  desc "Send second slip notification"
+  desc 'Send second slip notification'
   task second_slip_notification: :environment do
-    puts "sending second slip notification"
+    puts 'sending second slip notification'
     ContributionDetail.slips_past_waiting.no_confirmed_contributions_on_project.each do |contribution_detail|
       contribution_detail.contribution.notify_to_contributor(:contribution_canceled_slip)
     end
   end
 
-  desc "Finish all expired projects"
+  desc 'Finish all expired projects'
   task finish_projects: :environment do
-    puts "Finishing projects..."
+    puts 'Finishing projects...'
     Project.to_finish.each do |project|
       CampaignFinisherWorker.perform_async(project.id)
     end
   end
 
-  desc "Send a notification to all project owners with contributions done..."
+  desc 'Send a notification to all project owners with contributions done...'
   task notify_project_owner_about_new_confirmed_contributions: :environment do
-    puts "Notifying project owners about contributions..."
+    puts 'Notifying project owners about contributions...'
     Project.in_funding.with_contributions_confirmed_last_day.each do |project|
       # We cannot use notify_owner for it's a notify_once and we need a notify
       project.notify(
@@ -111,8 +106,10 @@ namespace :cron do
   desc 'Send a notification about pending refunds'
   task notify_pending_refunds: [:environment] do
     Contribution.need_notify_about_pending_refund.each do |contribution|
-     contribution.notify(:contribution_project_unsuccessful_slip_no_account,
-                         contribution.user) unless contribution.user.bank_account.present?
+      unless contribution.user.bank_account.present?
+        contribution.notify(:contribution_project_unsuccessful_slip_no_account,
+                            contribution.user)
+      end
     end
   end
 
@@ -131,23 +128,21 @@ namespace :cron do
 
       begin
         koala = Koala::Facebook::API.new(authorization.last_token)
-        friends = koala.get_connections("me", "friends")
+        friends = koala.get_connections('me', 'friends')
 
         friends.each do |f|
           friend_auth = Authorization.find_by_uid(f['id'])
 
-          if friend_auth.present?
-            puts "creating friend #{friend_auth.user_id} to user #{authorization.user_id}"
-            UserFriend.create({
-              user_id: authorization.user_id,
-              friend_id: friend_auth.user_id
-            })
-          end
+          next unless friend_auth.present?
+          puts "creating friend #{friend_auth.user_id} to user #{authorization.user_id}"
+          UserFriend.create({
+                              user_id: authorization.user_id,
+                              friend_id: friend_auth.user_id
+                            })
         end
       rescue Exception => e
         puts "error #{e}"
       end
     end
   end
-
 end

@@ -37,6 +37,10 @@ pt:
           address: 'Endereço'
           phone_number: 'Telefone'
           permalink: 'Permalink do projeto'
+    balance_transfers:
+      admin_notes:
+        success_update: 'Anotação salva com sucesso'
+        failed_updated: 'Anotação não foi salva'
     projects:
       index:
         with_state: 'Por estado'

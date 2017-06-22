@@ -1,4 +1,6 @@
-require "rails_helper"
+# frozen_string_literal: true
+
+require 'rails_helper'
 
 RSpec.describe ApiWrapper, type: :model do
   let(:current_user) { create(:user) }
@@ -33,7 +35,8 @@ RSpec.describe ApiWrapper, type: :model do
           params: {
             project_id: 'eq.10'
           },
-          action: :get)
+          action: :get
+        )
       end
 
       it { expect(subject.base_url).to eq("#{api_host}/project_details") }
@@ -56,7 +59,8 @@ RSpec.describe ApiWrapper, type: :model do
           params: {
             project_id: 'eq.10'
           },
-          action: :get)
+          action: :get
+        )
       end
 
       it { expect(subject.base_url).to eq("#{api_host}/project_details") }

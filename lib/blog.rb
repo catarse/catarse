@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Blog
   class << self
     def fetch_last_posts

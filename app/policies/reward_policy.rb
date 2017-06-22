@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RewardPolicy < ApplicationPolicy
   def create?
     done_by_owner_or_admin?
@@ -32,4 +34,3 @@ class RewardPolicy < ApplicationPolicy
     record.project.user == user || user.try(:admin?)
   end
 end
-

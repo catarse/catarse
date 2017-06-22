@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ApiWrapper
   TOKEN_TTL = 1.hour
   attr_accessor :current_user

@@ -1,4 +1,6 @@
 # coding: utf-8
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe ContributionReportsForProjectOwner, type: :model do
@@ -17,18 +19,18 @@ RSpec.describe ContributionReportsForProjectOwner, type: :model do
     create(:confirmed_contribution, project: project_2, reward: reward_2)
   end
 
-  describe "scopes" do
+  describe 'scopes' do
     subject { ContributionReportsForProjectOwner }
 
-    it ".project_id" do
+    it '.project_id' do
       expect(subject.project_id(project.id).count).to eq(3)
     end
 
-    it ".reward_id" do
+    it '.reward_id' do
       expect(subject.reward_id(reward_2.id).count).to eq(2)
     end
 
-    it ".project_owner_id" do
+    it '.project_owner_id' do
       expect(subject.project_owner_id(project.user.id).count).to eq(3)
     end
 
@@ -36,13 +38,12 @@ RSpec.describe ContributionReportsForProjectOwner, type: :model do
       expect(subject.state('paid').count).to eq(4)
     end
 
-    it ".waiting_payment" do
+    it '.waiting_payment' do
       expect(subject.waiting_payment.count).to eq(2)
     end
 
     it ".state('pending')" do
-      expect(subject.state("pending").count).to eq(2)
+      expect(subject.state('pending').count).to eq(2)
     end
   end
 end
-

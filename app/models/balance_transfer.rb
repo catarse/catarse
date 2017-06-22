@@ -1,40 +1,59 @@
+# frozen_string_literal: true
+
 class BalanceTransfer < ActiveRecord::Base
   belongs_to :project
   belongs_to :user
+  has_many :balance_transactions
 
   has_many :transitions,
-    class_name: 'BalanceTransferTransition',
-    autosave: false
+           class_name: 'BalanceTransferTransition',
+           autosave: false
 
   scope :processing, -> () {
     where("balance_transfers.current_state = 'processing'")
   }
 
-  delegate :can_transition_to?, :transition_to, to: :state_machine
-  delegate :project_transfer, to: :project
+  scope :pending, -> () {
+    where("balance_transfers.current_state = 'pending'")
+  }
 
-  def refresh_project_amount
-    update_attribute :amount, project_transfer.total_amount
-  end
+  scope :authorized, -> () {
+    where("balance_transfers.current_state = 'authorized'")
+  }
 
-  def project_amount_changed?
-    project_transfer.total_amount != amount
-  end
+  delegate :can_transition_to?, :transition_to, :transition_to!, to: :state_machine
 
   def state_machine
     @stat_machine ||= BalanceTransferMachine.new(self, {
-      transition_class: BalanceTransferTransition,
-      association_name: :transitions
-    })
+                                                   transition_class: BalanceTransferTransition,
+                                                   association_name: :transitions
+                                                 })
   end
 
   def state
     state_machine.current_state || 'pending'
   end
 
-  %w(pending authorized processing transferred error rejected).each do |st|
-    define_method "#{st}?" do
-      self.state == st
+  def refund_balance
+    return unless %w(error rejected).include?(state)
+    transaction do
+      balance_transactions.create!(
+        amount: amount,
+        user_id: user_id,
+        event_name: 'balance_transfer_error'
+      ) unless balance_transactions.where(event_name: 'balance_transfer_error').exists?
     end
+  end
+
+  %w[pending authorized processing transferred error rejected].each do |st|
+    define_method "#{st}?" do
+      state == st
+    end
+  end
+
+  def bank_data
+    last_transition = state_machine.last_transition
+
+    last_transition.bank_account || user.bank_account.to_hash_with_bank
   end
 end

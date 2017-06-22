@@ -51,6 +51,17 @@ pt:
         5:
           title: 'Número de recompensas:'
           description: 'Você também pode Limitar uma recompensa para um determinado número de apoios e mudar a ordem que as recompensas aparecem em seu projeto. <a href="http://suporte.catarse.me/hc/pt-br/articles/212191546-tudo-sobre-RECOMPENSAS#como-editar" target="_blank" class="alt-link">Saiba mais</a>.'
+      minimum_value_title: 'Para R$ %{minimum_value} ou mais'
+      paid_contributors: '%{count} apoiadores'
+      reward_gone: 'Esgotada'
+      reward_limited: 'Limitada'
+      delivery: 'Envio'
+      reward_limited_input: 'Recompensa limitada'
+      reward_available: ' (%{available} de %{maximum} disponíveis)'
+      delivery_estimation: 'Estimativa de entrega: '
+      reward_link_label: 'Link para apoio direto'
+      reward_link_hint: 'O link acima leva para a página de contribuição com essa recompensa já selecionada.'
+      add_reward: '+ Adicionar recompensa'
       info_box: "Descreva o valor da recompensa e coloque uma previsão de data de entrega real para os apoiadores. Você também pode limitar uma recompensa e quando o limite é atingido ela aparece como ESGOTADA. Se quiser mudar a ordem que as recompensas aparecem em seu projeto, basta fazer isso arrastando-as para cima ou para baixo."
       minimum_value: "Valor:"
       deliver_at: "Previsão de entrega:"
@@ -341,8 +352,8 @@ pt:
         href: '#confirm_account'
         icon: 'https://daks2k3a4ib2z.cloudfront.net/54b440b85608e3f4389db387/56c3508dbfc50aef5095c66a_finish-icon.png'
         title: 'Parabéns!'
-        text: 'Seu projeto foi finalizado com sucesso e você tem <span class="fontweight-semibold">R$ %{total_amount}</span> para receber (<a id="tax_link" class="alt-link">veja extrato</a>)! Para efetuarmos a transferência, precisamos que você nos confirme seus dados bancários.'
-        cta: 'Confirmar dados bancários'
+        text: 'Seu projeto foi finalizado com sucesso e o saldo já está disponível para ser transferido para sua conta bancária.'
+        cta: 'Ver saldo'
       pending_transfer:
         icon: 'https://daks2k3a4ib2z.cloudfront.net/54b440b85608e3f4389db387/56c350c5e7d136a016bc34a4_transfer-ok-icon.png'
         title: 'Transferência bancária em andamento'

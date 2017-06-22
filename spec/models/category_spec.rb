@@ -1,20 +1,22 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Category, type: :model do
   let(:category) { create(:category) }
   let(:category_2) { create(:category) }
 
-  describe "Associations" do
+  describe 'Associations' do
     before do
       category
     end
 
-    it{ is_expected.to have_many :projects }
-    it{ is_expected.to validate_presence_of :name_pt }
-    it{ is_expected.to validate_uniqueness_of :name_pt }
+    it { is_expected.to have_many :projects }
+    it { is_expected.to validate_presence_of :name_pt }
+    it { is_expected.to validate_uniqueness_of :name_pt }
   end
 
-  describe "#with_projects_on_this_week" do
+  describe '#with_projects_on_this_week' do
     let(:category_1) { create(:category) }
     let(:category_2) { create(:category) }
     let(:category_3) { create(:category) }
@@ -22,15 +24,15 @@ RSpec.describe Category, type: :model do
     subject { Category.with_projects_on_this_week.order(id: :asc) }
 
     before do
-      3.times { create_project({category: category_1}, {to_state: 'online'}) }
-      4.times { create_project({category: category_2}, {to_state: 'online'}) }
-      5.times { create_project({category: category_3}, {to_state: 'online', created_at: 2.weeks.ago}) }
+      3.times { create_project({ category: category_1 }, { to_state: 'online' }) }
+      4.times { create_project({ category: category_2 }, { to_state: 'online' }) }
+      5.times { create_project({ category: category_3 }, { to_state: 'online', created_at: 2.weeks.ago }) }
     end
 
     it { is_expected.to eq([category_1, category_2]) }
   end
 
-  describe "#with_projects" do
+  describe '#with_projects' do
     before do
       create(:project, category: category, state: 'online')
       create(:project, category: category, state: 'successful')
@@ -40,12 +42,12 @@ RSpec.describe Category, type: :model do
 
     subject { Category.with_projects }
 
-    it "should return only categories that have a least one project (online, successful, failed or waiting_funds)" do
+    it 'should return only categories that have a least one project (online, successful, failed or waiting_funds)' do
       expect(subject.count).to eq(1)
     end
   end
 
-  describe ".deliver_projects_of_week_notification" do
+  describe '.deliver_projects_of_week_notification' do
     let(:category) { create(:category) }
     let(:user) { create(:user) }
 
@@ -64,7 +66,7 @@ RSpec.describe Category, type: :model do
       end
     end
 
-    context "when user already received the notification of this week" do
+    context 'when user already received the notification of this week' do
       before do
         category.deliver_projects_of_week_notification
         category.reload
@@ -75,7 +77,5 @@ RSpec.describe Category, type: :model do
         expect(category.notifications.where(template_name: 'categorized_projects_of_the_week')).to have(1).item
       end
     end
-
   end
-
 end

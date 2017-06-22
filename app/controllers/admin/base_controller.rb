@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Admin
   def self.policy_class
     AdminPolicy
@@ -26,4 +28,3 @@ module Admin
     end
   end
 end
-

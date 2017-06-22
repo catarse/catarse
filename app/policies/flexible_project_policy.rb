@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class FlexibleProjectPolicy < ProjectPolicy
   def publish?
     done_by_owner_or_admin?

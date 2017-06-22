@@ -1,4 +1,5 @@
 # coding: utf-8
+# frozen_string_literal: true
 # Uncomment to run ;) we don't need to run this in every test
 # require 'rails_helper'
 #

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Category < ActiveRecord::Base
   has_notifications
   has_many :projects
@@ -5,7 +7,6 @@ class Category < ActiveRecord::Base
   has_many :users, through: :category_followers
 
   delegate :display_name, to: :decorator
-
 
   validates_presence_of :name_pt
   validates_uniqueness_of :name_pt
@@ -19,21 +20,20 @@ class Category < ActiveRecord::Base
   end
 
   def self.array
-    order('name_'+ I18n.locale.to_s + ' ASC').collect { |c| [c.send('name_' + I18n.locale.to_s), c.id] }
+    order('name_' + I18n.locale.to_s + ' ASC').collect { |c| [c.send('name_' + I18n.locale.to_s), c.id] }
   end
 
   def to_s
-    self.send('name_' + I18n.locale.to_s)
+    send('name_' + I18n.locale.to_s)
   end
 
   def deliver_projects_of_week_notification
-    self.users.to_send_category_notification(self.id).each do |user|
-      self.notify(:categorized_projects_of_the_week, user, self)
+    users.to_send_category_notification(id).each do |user|
+      notify(:categorized_projects_of_the_week, user, self)
     end
   end
 
   def decorator
     @decorator ||= CategoryDecorator.new(self)
   end
-
 end

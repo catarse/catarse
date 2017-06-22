@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ProjectObserver < ActiveRecord::Observer
   observe :project
 
@@ -7,7 +9,7 @@ class ProjectObserver < ActiveRecord::Observer
     end
 
     unless project.permalink.present?
-      project.permalink = "#{project.name.parameterize.gsub(/\-/, '_')}_#{SecureRandom.hex(2)}"
+      project.permalink = "#{project.name.parameterize.tr('-', '_')}_#{SecureRandom.hex(2)}"
     end
 
     project.video_embed_url = project.video_valid? ? project.video.embed_url : nil
@@ -24,7 +26,7 @@ class ProjectObserver < ActiveRecord::Observer
     notify_users(project)
     project.notify_owner(:project_success)
   end
-  alias :from_online_to_successful :from_waiting_funds_to_successful
+  alias from_online_to_successful from_waiting_funds_to_successful
 
   def from_draft_to_online(project)
     project.update_expires_at
@@ -32,12 +34,14 @@ class ProjectObserver < ActiveRecord::Observer
       published_ip: project.user.current_sign_in_ip,
       audited_user_name: project.user.name,
       audited_user_cpf: project.user.cpf,
-      audited_user_phone_number: project.user.phone_number)
+      audited_user_phone_number: project.user.phone_number
+    )
 
     UserBroadcastWorker.perform_async(
       follow_id: project.user_id,
       template_name: 'follow_project_online',
-      project_id: project.id)
+      project_id: project.id
+    )
 
     FacebookScrapeReloadWorker.perform_async(project.direct_url)
   end
@@ -64,6 +68,7 @@ class ProjectObserver < ActiveRecord::Observer
   end
 
   private
+
   def notify_admin_that_project_is_successful(project)
     redbooth_user = User.find_by(email: CatarseSettings[:email_redbooth])
     project.notify_once(:redbooth_task, redbooth_user) if redbooth_user
@@ -81,6 +86,4 @@ class ProjectObserver < ActiveRecord::Observer
       payment.direct_refund
     end
   end
-
 end
-

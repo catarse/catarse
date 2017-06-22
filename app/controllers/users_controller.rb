@@ -1,11 +1,13 @@
 # coding: utf-8
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
   after_filter :verify_authorized, except: %i[reactivate]
   after_filter :redirect_user_back_after_login, only: %i[show]
   inherit_resources
   defaults finder: :find_active!
   actions :show, :update, :unsubscribe_notifications, :destroy, :edit
-  respond_to :json, only: [:contributions, :projects]
+  respond_to :json, only: %i[contributions projects]
   before_action :referral_it!, only: [:show]
   before_action :authenticate_user!, only: [:follow_fb_friends]
 
@@ -17,10 +19,10 @@ class UsersController < ApplicationController
     authorize current_user, :update?
     if params[:follow_user_id] && current_user.followers.pluck(:user_id).include?(params[:follow_user_id].to_i)
       api = ApiWrapper.new current_user
-      api.request("user_follows", {
-        body: { follow_id: params[:follow_user_id] }.to_json,
-        action: :post
-      }).run()
+      api.request('user_follows', {
+                    body: { follow_id: params[:follow_user_id] }.to_json,
+                    action: :post
+                  }).run
     end
   end
 
@@ -50,12 +52,12 @@ class UsersController < ApplicationController
 
   def show
     authorize resource
-    show!{
-      @title = "#{@user.display_name}"
-      #@unsubscribes = @user.project_unsubscribes
-      #@credit_cards = @user.credit_cards
-      #build_bank_account
-    }
+    show! do
+      @title = @user.display_name.to_s
+      # @unsubscribes = @user.project_unsubscribes
+      # @credit_cards = @user.credit_cards
+      # build_bank_account
+    end
   end
 
   def credit_cards
@@ -82,12 +84,12 @@ class UsersController < ApplicationController
     if params[:password]
       @user.password = params[:password]
       if @user.save
-        render :json => { :success => 'OK' }
+        render json: { success: 'OK' }
       else
-        render status: 400, :json => { :errors => @user.errors.full_messages  }
+        render status: 400, json: { errors: @user.errors.full_messages }
       end
     else
-      render status: 400, :json => { :errors => ['Missing parameter password'] }
+      render status: 400, json: { errors: ['Missing parameter password'] }
     end
   end
 
@@ -107,9 +109,9 @@ class UsersController < ApplicationController
     if @user.update_without_password permitted_params
       @user.reload
       render status: 200, json: {
-               uploaded_image: @user.uploaded_image.url(:thumb_avatar),
-               cover_image: @user.cover_image.url(:base)
-             }
+        uploaded_image: @user.uploaded_image.url(:thumb_avatar),
+        cover_image: @user.cover_image.url(:base)
+      }
     else
       render status: 400, json: { errors: @user.errors.full_messages }
     end
@@ -119,15 +121,15 @@ class UsersController < ApplicationController
     authorize resource
 
     if update_user
-      #flash[:notice] = t('users.current_user_fields.updated')
+      # flash[:notice] = t('users.current_user_fields.updated')
       respond_to do |format|
-        format.json { render :json => { :success => 'OK' } }
-        format.html { redirect_to edit_user_path(@user, anchor: params[:anchor])}
+        format.json { render json: { success: 'OK' } }
+        format.html { redirect_to edit_user_path(@user, anchor: params[:anchor]) }
       end
     else
       respond_to do |format|
-        format.json { render status: 400, json: { errors: @user.errors.messages.map{ |e| e[1][0] }.uniq, errors_json: @user.errors.to_json} }
-        format.html { redirect_to edit_user_path(@user, anchor: params[:anchor])}
+        format.json { render status: 400, json: { errors: @user.errors.messages.map { |e| e[1][0] }.uniq, errors_json: @user.errors.to_json } }
+        format.html { redirect_to edit_user_path(@user, anchor: params[:anchor]) }
       end
     end
   end
@@ -137,8 +139,8 @@ class UsersController < ApplicationController
   def update_user
     params[:user][:confirmed_email_at] = DateTime.now if params[:user].try(:[], :confirmed_email_at).present?
     @user.publishing_project = params[:user][:publishing_project].presence
-    @user.publishing_user_about= params[:user][:publishing_user_about].presence
-    @user.publishing_user_settings= params[:user][:publishing_user_settings].presence
+    @user.publishing_user_about = params[:user][:publishing_user_about].presence
+    @user.publishing_user_settings = params[:user][:publishing_user_settings].presence
     email_update?
     drop_and_create_subscriptions
     update_reminders
@@ -174,7 +176,7 @@ class UsersController < ApplicationController
   def update_reminders
     if params[:user][:reminders]
       params[:user][:reminders].keys.each do |project_id|
-        if params[:user][:reminders][:"#{project_id}"] == "false"
+        if params[:user][:reminders][:"#{project_id}"] == 'false'
           Project.find(project_id).delete_from_reminder_queue(@user.id)
           @user.reminders.where(project_id: project_id).destroy_all
         end
@@ -183,16 +185,14 @@ class UsersController < ApplicationController
   end
 
   def drop_and_create_subscriptions
-    if params[:unsubscribes]
-      params[:unsubscribes].each do |subscription|
-        project_id = subscription[0].to_i
-        #change from unsubscribed to subscribed
-        if subscription[1].present?
-          @user.unsubscribes.drop_all_for_project(project_id)
-        #change from subscribed to unsubscribed
-        else
-          @user.unsubscribes.create!(project_id: project_id)
-        end
+    params[:unsubscribes]&.each do |subscription|
+      project_id = subscription[0].to_i
+      # change from unsubscribed to subscribed
+      if subscription[1].present?
+        @user.unsubscribes.drop_all_for_project(project_id)
+      # change from subscribed to unsubscribed
+      else
+        @user.unsubscribes.create!(project_id: project_id)
       end
     end
   end

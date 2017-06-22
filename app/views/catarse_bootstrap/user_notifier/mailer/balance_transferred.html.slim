@@ -1,0 +1,45 @@
+- user = @notification.user
+- balance_transfer = @notification.balance_transfer
+- bank_account = balance_transfer.bank_data
+
+| Olá #{user.display_name},
+br/
+br/
+| O depósito do dinheiro <strong>já foi realizado!</strong> O valor será creditado na conta bancária cadastrada em até <strong>2 dias úteis</strong>.
+br/
+br/
+| Resumo da transação:
+br/
+| Valor total do repasse: #{number_to_currency balance_transfer.amount, precision: 2}
+br/
+br/
+| Dados bancários cadastrados:
+br/
+| Banco: #{bank_account['bank_code']} - #{bank_account['bank_name']}
+br/
+| Agencia: #{bank_account['agency']||bank_account['agencia']}-#{bank_account['agency_digit']||bank_account['agencia_dv']}
+br/
+| Conta: #{bank_account['account']||bank_account['conta']}-#{bank_account['account_digit']||bank_account['conta_dv']}
+br/
+| Nome: #{bank_account['legal_name']||user.name}
+br/
+| CPF/CNPJ: #{bank_account['document_number']||user.cpf}
+br/
+
+p
+  | <strong> Dúvidas frequentes: </strong>
+p
+  = link_to 'Impostos e documentos fiscais referentes ao valor arrecadado', 'http://suporte.catarse.me/hc/pt-br/articles/217916143-tudo-sobre-REPASSE#impostos', target: '__blank'
+  br/
+  = link_to 'Como falar com os meus apoiadores após a finalização da campanha?', 'http://suporte.catarse.me/hc/pt-br/articles/217916143#quando', target: '__blank'
+  br/
+  = link_to 'Projeto financiado: execução e entrega das recompensas', 'http://suporte.catarse.me/hc/pt-br/articles/115002247646-Projeto-financiado-execu%C3%A7%C3%A3o-e-entrega-das-recompensas', target: '__blank'
+br/
+
+| Confira outras dicas a qualquer momento na nossa #{link_to 'Central de Suporte', 'http://suporte.catarse.me/hc/pt-br', target: '__blank'} ou envie um email para #{mail_to CatarseSettings[:email_contact]}.
+br/
+br/
+| Um grande abraço de toda a nossa equipe,
+br/
+| Equipe do #{CatarseSettings[:company_name]}
+

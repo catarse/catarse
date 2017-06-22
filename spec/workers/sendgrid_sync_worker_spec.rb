@@ -1,11 +1,13 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe SendgridSyncWorker do
   let(:user) { create(:user) }
   let(:srmock) do
     double(
-      post: double( body: { persisted_recipients: ['xxx'] }.to_json ),
-      patch: double( body: { persisted_recipients: ['xxx'] }.to_json ),
+      post: double(body: { persisted_recipients: ['xxx'] }.to_json),
+      patch: double(body: { persisted_recipients: ['xxx'] }.to_json),
       search: double(
         get: double(
           body: {
@@ -15,7 +17,6 @@ RSpec.describe SendgridSyncWorker do
       )
     )
   end
-
 
   before do
     CatarseSettings[:sendgrid_mkt_api_key] = 'key'
@@ -78,5 +79,4 @@ RSpec.describe SendgridSyncWorker do
       it { subject.perform(user.id) }
     end
   end
-
 end

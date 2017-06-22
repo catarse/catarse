@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PublicTag < ActiveRecord::Base
   has_many :taggings
   has_many :projects, through: :taggings

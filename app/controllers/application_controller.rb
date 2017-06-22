@@ -1,4 +1,6 @@
 # coding: utf-8
+# frozen_string_literal: true
+
 class ApplicationController < ActionController::Base
   EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
   include Concerns::ExceptionHandler
@@ -7,7 +9,7 @@ class ApplicationController < ActionController::Base
   include Pundit
 
   if Rails.env.production?
-    require "new_relic/agent/instrumentation/rails3/action_controller"
+    require 'new_relic/agent/instrumentation/rails3/action_controller'
     include NewRelic::Agent::Instrumentation::ControllerInstrumentation
     include NewRelic::Agent::Instrumentation::Rails3::ActionController
   end
@@ -44,23 +46,23 @@ class ApplicationController < ActionController::Base
     controller_name == 'projects' && action_name == 'index'
   end
 
-  def render_projects collection, ref, locals = {}
-    render_to_string partial: 'projects/card', collection: collection, locals: {ref: ref}.merge!(locals)
+  def render_projects(collection, ref, locals = {})
+    render_to_string partial: 'projects/card', collection: collection, locals: { ref: ref }.merge!(locals)
   end
 
-  def render_feeds collection, locals = {}
+  def render_feeds(collection, locals = {})
     render_to_string partial: 'users/feeds/feed', collection: collection, locals: locals
   end
 
   def referral_it!
-    if request.env["HTTP_REFERER"] =~ /catarse\.me/
+    if request.env['HTTP_REFERER'] =~ /catarse\.me/
       # For local referrers we only want to store the first ref parameter
       cookies[:referral_link] ||= build_cookie_structure(params[:ref])
-      cookies[:origin_referral] ||= build_cookie_structure(request.env["HTTP_REFERER"])
+      cookies[:origin_referral] ||= build_cookie_structure(request.env['HTTP_REFERER'])
     else
       # For external referrers should always overwrite referral_link
       cookies[:referral_link] = build_cookie_structure((params[:ref] || cookies[:referral_link]))
-      cookies[:origin_referral] = build_cookie_structure((request.env["HTTP_REFERER"] || cookies[:origin_referral]))
+      cookies[:origin_referral] = build_cookie_structure((request.env['HTTP_REFERER'] || cookies[:origin_referral]))
     end
   end
 
@@ -83,12 +85,12 @@ class ApplicationController < ActionController::Base
   end
 
   def redirect_to_user_billing
-    authorize current_user || User.new(), :edit?
+    authorize current_user || User.new, :edit?
     redirect_to edit_user_path(current_user, anchor: 'settings')
   end
 
   def redirect_to_user_contributions
-    authorize current_user || User.new(), :edit?
+    authorize current_user || User.new, :edit?
     redirect_to edit_user_path(current_user, anchor: 'contributions')
   end
 
@@ -109,7 +111,7 @@ class ApplicationController < ActionController::Base
       list_id = CatarseSettings[:sendgrid_newsletter_list_id]
       client = sendgrid_api.client
 
-      rr = client.contactdb.recipients.post(request_body: [{email: email}])
+      rr = client.contactdb.recipients.post(request_body: [{ email: email }])
       recipient = JSON.parse(rr.body).try(:[], 'persisted_recipients').try(:first)
       client.contactdb.lists._(list_id).recipients.post(request_body: [recipient])
     end
@@ -126,7 +128,11 @@ class ApplicationController < ActionController::Base
   end
 
   def get_blog_posts
-    render json: (Blog.fetch_last_posts rescue [])[0..2].to_json
+    render json: (begin
+                    Blog.fetch_last_posts
+                  rescue
+                    []
+                  end)[0..2].to_json
   end
 
   private
@@ -137,12 +143,12 @@ class ApplicationController < ActionController::Base
 
   def force_www
     if request.subdomain.blank? && Rails.env.production?
-      return redirect_to url_for(params.merge(subdomain: 'www', locale: ''))
+      redirect_to url_for(params.merge(subdomain: 'www', locale: ''))
     end
   end
 
   def detect_old_browsers
-    return redirect_to page_path("bad_browser") if (!browser.modern? || browser.ie9?) && controller_name != 'pages'
+    return redirect_to page_path('bad_browser') if (!browser.modern? || browser.ie9?) && controller_name != 'pages'
   end
 
   def set_locale

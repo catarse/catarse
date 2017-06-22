@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Projects::PostsController < ApplicationController
   respond_to :json, only: [:create]
   def parent
@@ -16,7 +18,7 @@ class Projects::PostsController < ApplicationController
 
     if @post.save
       respond_to do |format|
-        format.json { render :json => { :success => 'OK' } }
+        format.json { render json: { success: 'OK' } }
       end
     end
   end

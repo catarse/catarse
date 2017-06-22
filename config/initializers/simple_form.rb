@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Use this setup block to configure all options available in SimpleForm.
 SimpleForm.setup do |config|
   # Wrappers are used by the form builder to generate a
@@ -6,7 +8,7 @@ SimpleForm.setup do |config|
   # stack. The options given below are used to wrap the
   # whole input.
   config.wrappers :input_with_error, class: :input,
-    error_class: [:field_with_errors, :error] do |b|
+                                     error_class: %i[field_with_errors error] do |b|
 
     b.use :html5
     b.use :placeholder
@@ -19,7 +21,7 @@ SimpleForm.setup do |config|
   end
 
   config.wrappers :one_col, class: :input,
-    hint_class: :field_with_hint, error_class: [:field_with_errors, :error] do |b|
+                            hint_class: :field_with_hint, error_class: %i[field_with_errors error] do |b|
 
     b.use :html5
     b.use :placeholder
@@ -28,15 +30,15 @@ SimpleForm.setup do |config|
     b.optional :min_max
     b.optional :readonly
 
-    b.use :label_text, wrap_with: { tag: :label, class: "field-label fontweight-semibold" }
-    b.use :hint,  wrap_with: { tag: :label, class: 'hint fontsize-smallest fontcolor-secondary u-marginbottom-20'}
+    b.use :label_text, wrap_with: { tag: :label, class: 'field-label fontweight-semibold' }
+    b.use :hint, wrap_with: { tag: :label, class: 'hint fontsize-smallest fontcolor-secondary u-marginbottom-20' }
 
     b.use :input
     b.use :validation_text, wrap_with: { tag: :div, class: 'fontsize-smaller text-error u-marginbottom-20 fa fa-exclamation-triangle w-hidden' }
   end
 
   config.wrappers :two_columns, class: :input,
-    hint_class: :field_with_hint, error_class: [:field_with_errors, :error] do |b|
+                                hint_class: :field_with_hint, error_class: %i[field_with_errors error] do |b|
 
     b.use :html5
     b.use :placeholder
@@ -46,8 +48,8 @@ SimpleForm.setup do |config|
     b.optional :readonly
 
     b.wrapper :label_wrapper, tag: 'div' do |ba|
-      ba.use :label_text, wrap_with: { tag: :label, class: "field-label fontweight-semibold fontsize-base" }
-      ba.use :hint,  wrap_with: { tag: :label, class: 'hint fontsize-smallest fontcolor-secondary'}
+      ba.use :label_text, wrap_with: { tag: :label, class: 'field-label fontweight-semibold fontsize-base' }
+      ba.use :hint, wrap_with: { tag: :label, class: 'hint fontsize-smallest fontcolor-secondary' }
     end
 
     b.wrapper :text_field_wrapper, tag: 'div' do |ba|
@@ -57,7 +59,7 @@ SimpleForm.setup do |config|
   end
 
   config.wrappers :two_columns_with_postfix, class: :input,
-    hint_class: :field_with_hint, error_class: [:field_with_errors, :error] do |b|
+                                             hint_class: :field_with_hint, error_class: %i[field_with_errors error] do |b|
 
     b.use :html5
     b.use :placeholder
@@ -67,8 +69,8 @@ SimpleForm.setup do |config|
     b.optional :readonly
 
     b.wrapper :label_wrapper, tag: 'div' do |ba|
-      ba.use :label_text, wrap_with: { tag: :label, class: "field-label fontweight-semibold" }
-      ba.use :hint,  wrap_with: { tag: :label, class: 'hint fontsize-smallest fontcolor-secondary'}
+      ba.use :label_text, wrap_with: { tag: :label, class: 'field-label fontweight-semibold' }
+      ba.use :hint, wrap_with: { tag: :label, class: 'hint fontsize-smallest fontcolor-secondary' }
     end
 
     b.wrapper :text_field_wrapper, tag: 'div' do |ba|
@@ -94,7 +96,7 @@ SimpleForm.setup do |config|
   end
 
   config.wrappers :default, class: :input,
-    hint_class: :field_with_hint, error_class: [:field_with_errors, :error] do |b|
+                            hint_class: :field_with_hint, error_class: %i[field_with_errors error] do |b|
     ## Extensions enabled by default
     # Any of these extensions can be disabled for a
     # given input by passing: `f.input EXTENSION_NAME => false`.
@@ -133,11 +135,11 @@ SimpleForm.setup do |config|
     #   ba.use :label_input
     #   ba.use :error, wrap_with: { tag: :span, class: :error }
     # end
-    b.use :label_text, wrap_with: { tag: :label, class: "field-label" }
-    b.use :hint,  wrap_with: { tag: :span, class: :hint }
+    b.use :label_text, wrap_with: { tag: :label, class: 'field-label' }
+    b.use :hint, wrap_with: { tag: :span, class: :hint }
     b.use :input
     b.use :validation_text, wrap_with: { tag: :div, class: 'fontsize-smaller text-error u-marginbottom-20 fa fa-exclamation-triangle w-hidden' }
-    #b.use :error, wrap_with: { tag: :span, class: :error }
+    # b.use :error, wrap_with: { tag: :span, class: :error }
   end
 
   # The default wrapper to be used by the FormBuilder.
@@ -187,7 +189,7 @@ SimpleForm.setup do |config|
   # config.item_wrapper_class = nil
 
   # How the label text should be generated altogether with the required text.
-  config.label_text = lambda { |label, required, explicit_label| label }
+  config.label_text = ->(label, required, explicit_label) { label }
 
   # You can define the class to use on all labels. Default is nil.
   config.label_class = 'field-label'

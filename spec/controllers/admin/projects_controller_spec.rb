@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Admin::ProjectsController, type: :controller do
-  subject{ response }
+  subject { response }
   let(:admin) { create(:user, admin: true) }
-  let(:current_user){ admin }
+  let(:current_user) { admin }
 
   before do
     allow(controller).to receive(:current_user).and_return(current_user)
@@ -39,60 +41,59 @@ RSpec.describe Admin::ProjectsController, type: :controller do
 
   describe 'PUT push_to_trash' do
     let(:project) { create(:project, state: 'draft') }
-    subject{ project.reload.deleted? }
+    subject { project.reload.deleted? }
 
     before do
       allow(controller).to receive(:current_user).and_return(admin)
       put :push_to_trash, id: project, locale: :pt
     end
 
-    it{ is_expected.to eq(true) }
+    it { is_expected.to eq(true) }
   end
 
-
-  describe "GET index" do
+  describe 'GET index' do
     context "when I'm not logged in" do
-      let(:current_user){ nil }
+      let(:current_user) { nil }
       before do
         get :index, locale: :pt
       end
-      it{ is_expected.to redirect_to new_user_registration_path }
+      it { is_expected.to redirect_to new_user_registration_path }
     end
 
     context "when I'm logged as admin" do
       before do
         get :index, locale: :pt
       end
-      its(:status){ should == 200 }
+      its(:status) { should == 200 }
     end
   end
 
   describe '.collection' do
     let(:project) { create(:project, name: 'Project for search') }
-    context "when there is a match" do
+    context 'when there is a match' do
       before do
         get :index, locale: :pt, pg_search: 'Project for search'
       end
-      it{ expect(assigns(:projects)).to eq([project]) }
+      it { expect(assigns(:projects)).to eq([project]) }
     end
 
-    context "when there is no match" do
+    context 'when there is no match' do
       before do
         get :index, locale: :pt, pg_search: 'Foo Bar'
       end
-      it{ expect(assigns(:projects)).to eq([]) }
+      it { expect(assigns(:projects)).to eq([]) }
     end
   end
 
-  describe "DELETE destroy" do
+  describe 'DELETE destroy' do
     let(:project) { create(:project, state: 'draft') }
 
     context "when I'm not logged in" do
-      let(:current_user){ nil }
+      let(:current_user) { nil }
       before do
         delete :destroy, id: project, locale: :pt
       end
-      it{ is_expected.to redirect_to new_user_registration_path }
+      it { is_expected.to redirect_to new_user_registration_path }
     end
 
     context "when I'm logged as admin" do
@@ -100,7 +101,7 @@ RSpec.describe Admin::ProjectsController, type: :controller do
         delete :destroy, id: project, locale: :pt
       end
 
-      its(:status){ should redirect_to admin_projects_path }
+      its(:status) { should redirect_to admin_projects_path }
 
       it 'should change state to deleted' do
         expect(project.reload.deleted?).to eq(true)
@@ -108,4 +109,3 @@ RSpec.describe Admin::ProjectsController, type: :controller do
     end
   end
 end
-

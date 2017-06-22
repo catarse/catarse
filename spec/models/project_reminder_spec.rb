@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe ProjectReminder, type: :model do
-  describe "associations" do
-    it{ is_expected.to belong_to :user }
-    it{ is_expected.to belong_to :project }
+  describe 'associations' do
+    it { is_expected.to belong_to :user }
+    it { is_expected.to belong_to :project }
   end
 
-  describe "validations" do
+  describe 'validations' do
     before do
       create(:project_reminder)
     end
@@ -16,10 +18,10 @@ RSpec.describe ProjectReminder, type: :model do
     it { is_expected.to validate_uniqueness_of(:user_id).scoped_to(:project_id) }
   end
 
-  describe ".can_deliver" do
+  describe '.can_deliver' do
     subject { ProjectReminder.can_deliver.count }
 
-    context "when project is expiring" do
+    context 'when project is expiring' do
       let(:project) { create(:project, state: 'online') }
 
       before do
@@ -30,7 +32,7 @@ RSpec.describe ProjectReminder, type: :model do
       it { is_expected.to eq(4) }
     end
 
-    context "when project is not expiring" do
+    context 'when project is not expiring' do
       let(:project) { create(:project, state: 'online', online_days: 10, expires_at: 60.hours.from_now) }
 
       before do
@@ -41,13 +43,13 @@ RSpec.describe ProjectReminder, type: :model do
     end
   end
 
-  describe ".without_notification" do
+  describe '.without_notification' do
     let(:project) { create(:project) }
-    let!(:reminder) { create(:project_reminder, project: project)}
+    let!(:reminder) { create(:project_reminder, project: project) }
 
     subject { ProjectReminder.without_notification.count }
 
-    context "when notification already created" do
+    context 'when notification already created' do
       before do
         project.notify_once(
           'reminder',
@@ -59,7 +61,7 @@ RSpec.describe ProjectReminder, type: :model do
       it { is_expected.to eq(0) }
     end
 
-    context "when notification is not created" do
+    context 'when notification is not created' do
       it { is_expected.to eq(1) }
     end
   end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   skip_before_filter :set_locale
 
@@ -10,12 +12,12 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
           if omniauth[:info][:email]
             @auth = Authorization.create_from_hash(omniauth, user)
           else
-            flash[:alert] = I18n.t("devise.omniauth_callbacks.failure", kind: p.name.capitalize, reason: 'email não foi informado')
+            flash[:alert] = I18n.t('devise.omniauth_callbacks.failure', kind: p.name.capitalize, reason: 'email não foi informado')
             return redirect_to sign_up_path
           end
         end
 
-        flash[:notice] = I18n.t("devise.omniauth_callbacks.success", kind: p.name.capitalize)
+        flash[:notice] = I18n.t('devise.omniauth_callbacks.success', kind: p.name.capitalize)
         @auth.update_attribute(:last_token, omniauth[:credentials][:token])
         FbFriendCollectorWorker.perform_async(@auth.id)
 

@@ -1,5 +1,11 @@
 pt:
   shared:
+    value_text: 'Valor'
+    save_text: 'Salvar'
+    back_text: 'Voltar'
+    confirm_text: 'Confirmar'
+    load_more: 'Carregar mais'
+    currency: 'R$ %{amount}' 
     shipping_options:
       free: 'Sem frete envolvido'
       national: 'Frete Nacional'

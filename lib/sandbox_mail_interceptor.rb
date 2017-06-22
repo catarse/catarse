@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class SandboxMailInterceptor
   def self.delivering_email(message)
-    message.to = CatarseSettings[:sandbox_emails_redirect].split(",")
+    message.to = CatarseSettings[:sandbox_emails_redirect].split(',')
   end
 end

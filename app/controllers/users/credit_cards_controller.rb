@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Users::CreditCardsController < ApplicationController
   after_filter :verify_authorized
 
@@ -10,4 +12,3 @@ class Users::CreditCardsController < ApplicationController
     destroy! { edit_user_path(parent, anchor: 'settings') }
   end
 end
-
