@@ -339,6 +339,11 @@ FactoryGirl.define do
     code { rand 900...18_000 }
   end
 
+  factory :user_admin_role do |f|
+    f.association :user, factory: user
+    role_label 'balance'
+  end
+
   factory :bank_account do |f|
     # f.association :user, factory: :user
     f.association :bank, factory: :bank

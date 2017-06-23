@@ -2,6 +2,7 @@
 
 class Admin::BalanceTransfersController < Admin::BaseController
   before_filter :authenticate_user!
+  before_action :ensure_balance_admin_role
   respond_to :json
 
   def update
@@ -54,6 +55,10 @@ class Admin::BalanceTransfersController < Admin::BaseController
 
   private
 
+  def ensure_balance_admin_role
+    raise Pundit::NotAuthorizedError unless AdminBalancePolicy.new(current_user, nil).access?
+  end
+
   def resource
     @resource ||= BalanceTransfer.find params[:id]
   end
@@ -65,4 +70,5 @@ class Admin::BalanceTransfersController < Admin::BaseController
   def transfer_params
     params.require(:balance_transfer).permit(:admin_notes)
   end
+
 end

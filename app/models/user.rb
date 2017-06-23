@@ -54,6 +54,7 @@ class User < ActiveRecord::Base
   has_one :user_total
   has_one :user_credit
   has_one :bank_account, dependent: :destroy
+  has_many :admin_roles, class_name: 'UserAdminRole'
   has_many :user_friends
   has_many :login_activities
   has_many :feeds, class_name: 'UserFeed'
