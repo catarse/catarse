@@ -9,7 +9,7 @@
 //= require ../analytics
 //= require api/init
 //= require jvnjs/dist/catarse.js
-//require catarse.js/dist/catarse.js
+// require catarse.js/dist/catarse.js
 //= require_self
 (function(m, c, Chart, analytics){
   //Chart.defaults.global.responsive = true;
@@ -45,10 +45,11 @@
                     analytics.pageView(false);
                 } catch(e) {console.error(e);}
             }
+            var parameters = app.getAttribute('data-parameters') ? JSON.parse(app.getAttribute('data-parameters')) : {};
             var attr = customAttr,
-                projectParam = m.route.param('project_id'),
-                projectUserIdParam = m.route.param('project_user_id'),
-                userParam = m.route.param('user_id') || app.getAttribute('data-userid'),
+                projectParam = m.route.param('project_id') || parameters.project_id,
+                projectUserIdParam = m.route.param('project_user_id') || parameters.user_id || parameters.project_user_id,
+                userParam = m.route.param('user_id') || app.getAttribute('data-userid') || parameters.user_id,
                 rewardIdParam = m.route.param('reward_id'),
                 filterParam = m.route.param('filter'),
                 thankYouParam = app && JSON.parse(app.getAttribute('data-contribution'));

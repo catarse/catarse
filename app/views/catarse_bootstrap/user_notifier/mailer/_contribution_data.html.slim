@@ -6,7 +6,7 @@ p
   br/
   | Supporter CPF / CNPJ: #{contribution.user.cpf}
   br/
-  | Date of confirmation of support: #{detail.decorate.display_date(:paid_at)}
+  | Data da confirmação do apoio: #{I18n.l(detail.paid_at.to_date)}
   br/
   | Valor da contribuição: #{number_to_currency contribution.value}
   - if detail.installments > 1
