@@ -57,7 +57,7 @@ en:
       edit_international:
         selected_reward:
           review_without_reward_html: You are going to back with <strong>%{value}</strong> and you don't want any reward.
-          value: 'Contribution details'
+          value: 'Support Details'
           reward: 'Selected reward'
           edit: 'Edit'
         title: 'Contact details and address'
@@ -120,7 +120,7 @@ en:
       edit:
         selected_reward:
           review_without_reward_html: You are going to back with <strong>%{value}</strong> and you don't want any reward.
-          value: 'Contribution details'
+          value: 'Support Details'
           reward: 'Selected reward'
           edit: 'Edit'
         title: 'Contact details and address'
