@@ -3,9 +3,9 @@
 class PaymentObserver < ActiveRecord::Observer
   observe :payment
 
-  def after_create(payment)
+  def after_save(payment)
     contribution = payment.contribution
-    contribution.notify_to_contributor(:payment_slip) if payment.slip_payment?
+    contribution.notify_to_contributor(:payment_slip) if payment.slip_payment? && payment.gateway_data
   end
 
   def from_pending_to_paid(payment)
