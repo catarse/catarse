@@ -8,9 +8,9 @@ RSpec.describe PaymentObserver do
 
   subject { payment }
 
-  describe 'after_create' do
+  describe 'after_save' do
     context 'when slip_payment is true' do
-      let(:payment) { create(:payment, payment_method: 'BoletoBancario', state: 'paid') }
+      let(:payment) { create(:payment, payment_method: 'BoletoBancario', state: 'paid', gateway_data: {}) }
       it('should notify the contribution') do
         expect(ContributionNotification.where(template_name: 'payment_slip', user: contribution.user, contribution: contribution).count).to eq 1
       end
