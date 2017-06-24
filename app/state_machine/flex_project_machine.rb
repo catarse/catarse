@@ -38,6 +38,7 @@ class FlexProjectMachine
 
       if project.errors.present?
         #save errors on database
+        ap "m here"
         project.errors.messages.each do |error|
           messages = error[1]
           messages.each do |message|

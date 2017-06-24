@@ -106,7 +106,7 @@ en:
         successful: "This campaign was successful and was funded on %{date}"
         waiting_funds: "The deadline for capturing this campaign is closed. We are awaiting confirmation of the latest payments."
         draft: "This campaign is only a draft and still can not receive support."
-      submit: Support this campaign
+      submit: Support
     project_main:
       post_call: 'All news published in Grasruts is sent directly to the email of who has already supported his campaign and is also available for viewing on the site. You can choose to leave it public, or visible only to your supporters here on this tab.'
       send_post: 'Writing novelty'

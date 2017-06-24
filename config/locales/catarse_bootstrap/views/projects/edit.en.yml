@@ -19,7 +19,7 @@ en:
       card: 'Card'
       card_subtitle: 'Do you know that these design card will appear in the home page and the Grasruts search result? Well, it makes it nice because they say the first impression is the one that stays ;)'
       basics: 'Fill In The Information Below'
-      basics_subtitle: 'The data reported in this section can not be modified when the campaign is published. Fill in carefully and review before launching the campaign. '
+      basics_subtitle: 'Please fill in the section below carefully because this information can no longer be changed after the campaign is published. '
       goal: 'Financing'
       goal_subtitle: 'Please fill in the section below carefully because this information can no longer be changed after the campaign is published.'
       reports: 'Support reports'
@@ -27,8 +27,8 @@ en:
       user_settings_subtitle: 'With the data below complete, your campaign will be ready to air. After you complete the fill, click Save. Check it out. If everything is ok, just hit the Publish button and start your campaign!'
       user_about: "Talk More About You!"
       user_about_subtitle: "Supporters want to know campaign managers better. Links that help tell your story are always welcome. "
-      description: 'Tell The Story Of Your Campaign!'
-      description_subtitle: 'Take a good look at the narrative of the campaign. It is she who will enchant people and bring back supporters. A good video and description are differential!'
+      description: 'Campaign Pitch'
+      description_subtitle: 'Tell potential contributors more about your campaign. Provide details that will motivate people to contribute. A good pitch is compelling, informative, and easy to digest.'
     reward_fields:
       edit: "Edit reward"
       reward: Reward
@@ -143,7 +143,7 @@ en:
       publish: Continue
     dashboard_nav_links:
       preview_tab: Preview
-      account_tab: Registration data
+      account_tab: Bank Details (optional)
       basics_tab: Basic
       goal_tab: Financing
       budget_tab: Budget
@@ -179,22 +179,22 @@ en:
       online_days_closed_hint: 'Your campaign is already online with the capture time already defined. You can choose between 1 and 365 days. After publishing the campaign, you can not change this deadline.'
       online_days_open: 'Open time'
       online_days_open_hint: 'Your campaign goes live without a set deadline. You will have the option to set a campaign end date (minimum of 1 day) at any time within a 12-month period after publication.'
-      online_days_label: 'Collection time'
-      online_days_flex_hint: 'This is the period when your campaign will be online, open to fundraising. In Flex, you choose whether to publish your campaign with a deadline already defined or with an open deadline. <a class="alt-link" href=" https://grasruts.attach.io/HJGoCzmJl" target="_blank">Know our tips for defining your deadline.</a>'
-      online_days_aon_hint: 'It is the period when your campaign will be online, open to fundraising. In All or Nothing, you can choose between 1 and 60 days.&nbsp;<a class="alt-link" href=" https://grasruts.attach.io/HJGoCzmJl" target="_blank">Know our tips for defining your deadline.</a>'
-      goal_label: 'Goal of collection'
-      goal_hint: 'How much do you need to raise? Set a goal consistent with what your campaign proposes. Do not forget to include administrative fees in your calculation.'
+      online_days_label: 'Campaign Duration'
+      online_days_flex_hint: 'How many days will you be running your campaign for? You can run a campaign for any number of days, with a 365 day duration maximum.'
+      online_days_aon_hint: 'How many days will you be running your campaign for? You can run a campaign for any number of days, with a 60 day duration maximum.'
+      goal_label: 'Goal'
+      goal_hint: 'How much money would you like to raise? Do not forget to include administrative fees in your calculation.'
       goal_taxes_link: 'Understand Grasruts rates'
       goal_taxes_label: 'Grasruts Fees'
       goal_taxes_watch_video_html: '<a class="fontsize-small" href="http://fazum.grasruts.me/agradecimento-video-tutorial-orcamento-basico" target="_blank">Watch our <span class="fontweight-bold">Basic budget video lesson</span></a>'
-      goal_aon_taxes_hint: 'It is the amount that will be deducted from your collection at the end of the campaign, regarding the services of Grasruts and the means of payment. If your campaign reaches or exceeds the target, 5% of the total collected at the end of the campaign will be charged. If your campaign does not reach the goal, all the money backed will be returned to your supporters after the campaign ends, at no cost to you. It`s all or nothing!'
-      goal_flex_taxes_hint: 'It is the amount that will be deducted from your collection at the end of the campaign, regarding the services of the Grasruts and the means of payment. 5% of the total collected at the end of the campaign will be charged, regardless of whether the target is reached or not.'
+      goal_aon_taxes_hint: 'We will charge 5% in your total collected amount for the service we provide if the goal is reached.'
+      goal_flex_taxes_hint: 'We will charge 5% in your total collected amount for the service we provide regardless of your goal.'
       mode_label: 'Type of financing'
-      mode_hint: 'Choose the template for your collective financing campaign. After starting your campaign, you will not be allowed to trade.'
+      mode_hint: 'Choose the mode for your campaign. After starting your campaign, you will not be allowed to trade.'
       mode_diff_ebook: '<a class="fontsize-small" href="https://grasruts.attach.io/BkLCRfXyg" target="_blank">Download our <span class="fontweight-bold">Ebook Flex vs All or Nothing</span></a>'
       mode_diff_link: 'See the difference between the models'
-      flex_diff_html: '<span class="fontweight-semibold">Commitment&nbsp;<br></span>You agree to execute the campaign and deliver the rewards (if you have chosen to offer them), <span class="fontweight-semibold">Regardless of the amount collected</span><br><br><span class="fontweight-semibold">How it works?</span><br>You receive, at the end of the term, all that you have collected (discounting only the rate of the Grasruts), regardless of reaching the collection goal.<br><br><span class="fontweight-semibold">Deadline for the campaign in the air: </span>12 months<br><br><span class="fontweight-semibold">Rates: </span>5% of total collected'
-      aon_diff_html: '<span class="fontweight-semibold">Commitment&nbsp;</span><br>You agree to execute the campaign and deliver the rewards only <span class="fontweight-semibold">If the revenue reaches or exceeds the target.</span><br><br><span class="fontweight-semibold">How it works?</span><br>You only receive the amount collected if, at the end of the term,&nbsp;Has reached the collection goal. Otherwise, all your supporters receive their payments back.<br><br><span class="fontweight-semibold">Deadline for the campaign in the air: </span>60 days&nbsp;&nbsp;<br><br><span class="fontweight-semibold">Rate: </span>5% of total collected'
+      flex_diff_html: '<span class="fontweight-semibold">Commitment&nbsp;<br></span>You agree to run the campaign and deliver the rewards (if you have chosen to offer them), <span class="fontweight-semibold">regardless of the amount collected</span><br><br><span class="fontweight-semibold">How it works?</span><br>You will receive all the collected amount even if your campaign goal is not reached before the deadline.<br><br><span class="fontweight-semibold">Campaign deadline: </span>12 months<br><br><span class="fontweight-semibold">Rates: </span>5% of total collected'
+      aon_diff_html: '<span class="fontweight-semibold">Commitment&nbsp;</span><br>You agree to run the campaign and deliver the rewards only <span class="fontweight-semibold">if the fund reaches or exceeds the goal.</span><br><br><span class="fontweight-semibold">How it works?</span><br>You will only receive the amount if, you are able to reach or exceed your goal before the deadline. Otherwise, all your supporters will get back their payments.<br><br><span class="fontweight-semibold">Campaign deadline: </span>60 days&nbsp;&nbsp;<br><br><span class="fontweight-semibold">Rate: </span>5% of total collected'
       submit: "Save"
       kind_label: "Type of financing"
       kind_link: "If you want to know more, click here"
@@ -202,8 +202,8 @@ en:
         kind_text: "You are participating in the flexible model trial period. Your participation is essential to understanding how we can expand this model for all users. %{link}"
     dashboard_description:
       submit: "Save"
-      description_label: 'Campaign description'
-      description_hint: 'Speak with passion and clarity about what will be accomplished. Clarify possible questions about how the money will be used, who is behind the campaign, how and when the campaign will be delivered. Transparency attracts more supporters. Remember: your campaign will be accessed by ordinary people who will decide whether or not they want to support your campaign. Capriche!'
+      description_label: 'Campaign Description'
+      description_hint: 'Speak with passion and clarity about what will be accomplished. Clarify possible questions about how the money will be used, who is behind the campaign, how and when the campaign will be delivered. Transparency attracts more supporters. Remember: your campaign will be accessed by ordinary people who will decide whether or not they want to support your campaign'
       description_alert: '<span class="fa fa-fw fa-lightbulb-o"></span> know how <a class="fa alt-link" href="https://grasruts.attach.io/BJmQVOiR" target="blank"> Create a captivating description!</a>'
     dashboard_reward:
       submit: "Save"
@@ -228,14 +228,14 @@ en:
       old_posts: "Old news"
     dashboard_budget:
       submit: Save
-      budget_label: "Project budget"
+      budget_label: "Project Budget"
       budget_alert: '<span class="fa fa-fw fa-lightbulb-o"></span>See how-to tips<a class="alt-link" href="http://fazum.grasruts.me/agradecimento-video-tutorial-orcamento-basico?ref=ctrse_dashboard" target="_blank"> Determine the goal of your campaign!</a>'
     dashboard_card:
       submit: Save
       card_label: "Card"
-      headline_label: 'Catchphrase'
+      headline_label: 'Slogan'
       headline_label_hint: 'Phrase on the campaign card to call supporters. Must have a maximum of 100 characters and summarize the campaign well.'
-      uploaded_image_label: 'Image of the campaign'
+      uploaded_image_label: 'Image'
       uploaded_image_hint: 'This image will be used as the thumbnail of your campaign (PNG, JPG size 600 x 340)'
     dashboard_video:
       submit: Save
@@ -256,7 +256,7 @@ en:
       permalink: 'Link to your campaign on Grasruts'
       permalink_hint: 'You can edit it until the campaign goes online. Choose something simple, straightforward and that identifies your campaign well. Try not to use hyphen, underline etc.'
       tags: 'Tags'
-      tags_hint: 'List up to 5 keywords related to your campaign and facilitate discovery by supporters.'
+      tags_hint: 'List up to 5 keywords related to your campaign.'
       admin_tags: 'Admin Tags'
       admin_tags_hint: 'Report tags separated by commas'
       user_id: 'User ID'

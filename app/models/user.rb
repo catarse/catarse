@@ -32,23 +32,24 @@ class User < ActiveRecord::Base
 
  # validates :bank_account, :name, :cpf, :address_zip_code, :phone_number, :address_state, :country_id, :address_city, :address_street, :address_number, :address_neighbourhood, presence: true, if: -> (user) { !user.reseting_password && (user.published_projects.present? || user.publishing_project || user.publishing_user_settings) }
 
- validates :birth_date,  presence: true, if: -> (user) { user.publishing_user_settings && user.account_type == 'pf' }
+ # validates :birth_date,  presence: true, if: -> (user) { user.publishing_user_settings && user.account_type == 'pf' }
+ validates :birth_date,  presence: true
 
 
   validates_presence_of :email
   validates_uniqueness_of :email, allow_blank: true, if: :email_changed?, message: I18n.t('activerecord.errors.models.user.attributes.email.taken')
   validates_uniqueness_of :permalink, allow_nil: true
   validates :permalink,  exclusion: { in: %w(api cdn secure suporte),
-    message: "Endereço já está em uso." }
+    message: "Address is alread in use" }
   validates_format_of :email, with: Devise.email_regexp, allow_blank: true, if: :email_changed?
 
   validates_presence_of :password, if: :password_required?
   validates_confirmation_of :password, if: :password_confirmation_required?
   validates_length_of :password, within: Devise.password_length, allow_blank: true
   validates_length_of :public_name, { maximum: 70 }
-  validates :account_type, inclusion: { in: %w{pf pj mei} }
+  # validates :account_type, inclusion: { in: %w{pf pj mei} }
 
-  validate :owner_document_validation
+  # validate :owner_document_validation
 
   belongs_to :country
   has_one :user_total

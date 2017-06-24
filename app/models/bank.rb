@@ -3,7 +3,7 @@ class Bank < ActiveRecord::Base
 
   has_many :bank_accounts
 
-  validates :name, :code, presence: true
+  # validates :name, :code, presence: true
   scope :order_popular, ->{
     select('banks.code, banks.id, banks.name, count(bank_accounts.bank_id) as total').
     joins('left join bank_accounts on bank_accounts.bank_id = banks.id').

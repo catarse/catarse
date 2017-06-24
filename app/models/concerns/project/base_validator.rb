@@ -21,13 +21,13 @@ module Project::BaseValidator
       wo.validates_presence_of :uploaded_image,
         unless: ->(project) { project.video_thumbnail.present? }
 
-      # wo.validate do
+      wo.validate do
       #   unless self.user.bank_account
       #     self.errors.add(:bank_account, 'Invalid bank details')
       #   end
       #
-      #   self.user.publishing_project = true
-      #   self.user.valid?
+        self.user.publishing_project = true
+        self.user.valid?
       #
       #   if self.user.bank_account
       #     self.user.bank_account.valid?
@@ -36,12 +36,12 @@ module Project::BaseValidator
       #     self.user.bank_account.valid?
       #   end
       #
-      #   self.user.errors.each do |error, error_message|
-      #     self.errors.add('user.' + error.to_s, error_message)
-      #   end
-      # end
+        self.user.errors.each do |error, error_message|
+          self.errors.add('user.' + error.to_s, error_message)
+        end
+      end
 
-      # wo.validates_presence_of :budget
+      wo.validates_presence_of :budget
 
     end
   end
