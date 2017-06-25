@@ -8,6 +8,10 @@ class SurveysController < ApplicationController
     render 'projects/surveys/new'
   end
 
+  def create
+    authorize resource
+  end
+
   def show
     authorize resource
     render 'projects/surveys/show'

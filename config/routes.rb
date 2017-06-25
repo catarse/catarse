@@ -64,7 +64,9 @@ Catarse::Application.routes.draw do
     end
   end
   resources :auto_complete_cities, only: [:index]
-
+  resources :rewards, only: [] do
+    resources :surveys, only: [:create, :update], controller: 'surveys'
+  end
   resources :projects, path: '/', only: [:index]
   resources :flexible_projects, path: '/', controller: 'projects', only: [:index]
   # @TODO update links, we don't need this anymore
