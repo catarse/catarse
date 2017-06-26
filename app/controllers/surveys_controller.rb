@@ -9,7 +9,14 @@ class SurveysController < ApplicationController
   end
 
   def create
-    authorize resource
+    @survey = Survey.new
+    @survey.attributes = permitted_params
+    authorize @survey
+    if @survey.save
+      render status: 200, json: { success: 'OK' }
+    else
+      render status: 400, json: { success: 'ERROR' }
+    end
   end
 
   def show
