@@ -104,7 +104,7 @@ pt:
         approved: "Esse projeto já foi aprovado pelo Catarse. Em breve ele entrará no ar e estará pronto para receber apoios."
         online: "Você pode apoiar este projeto até o dia %{date} às 23h59m59s"
         failed: "Este projeto não atingiu o mínimo de %{goal} até %{date} e não foi financiado"
-        rejected: "Este projeto não foi aceito. Não é possível realizar um apoio."
+        rejected: "Este projeto foi cancelado. Não é possível realizar um apoio.."
         in_analysis: "Este projeto está em análise e ainda não está aberto para receber apoios."
         successful: "Este projeto foi bem-sucedido e foi financiado em %{date}"
         waiting_funds: "O prazo de captação desse projeto está encerrado. Estamos aguardando a confirmação dos últimos pagamentos."
