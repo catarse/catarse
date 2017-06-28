@@ -1,9 +1,0 @@
-- contribution = current_user.contributions.last
-#fixed-alert.w-section.alert-top
-  .fontsize-small
-    span.fa.fa-exclamation-triangle.text-waiting
-    | &nbsp;
-    = t("shared.alerts.pending_payment_text")
-    | &nbsp;
-    = link_to t("shared.alerts.pending_payment_link_text"), no_account_refund_project_contribution_path(contribution.project, contribution), class: 'alt-link fontweight-semibold'
-
