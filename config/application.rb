@@ -46,7 +46,7 @@ module Catarse
       g.test_framework :rspec, fixture: false, views: false
     end
     config.active_record.observers = %i[
-      contribution_observer payment_observer user_observer project_post_observer project_observer
+      contribution_observer survey_observer payment_observer user_observer project_post_observer project_observer
       flexible_project_observer mixpanel_observer
     ]
 

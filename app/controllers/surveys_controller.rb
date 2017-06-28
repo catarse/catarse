@@ -30,8 +30,8 @@ class SurveysController < ApplicationController
       SurveyAddressAnswer.find_or_initialize_by(contribution_id: params['contribution_id'])
                          .update_attributes permitted_params[:survey_address_answer]
     end
-    open_questions_answer
-    mc_questions_answer
+    open_questions_answer if params['open_questions']
+    mc_questions_answer if params['multiple_choice_questions']
     render status: 200, json: { success: 'OK' }
   end
 
