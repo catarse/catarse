@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe Payment::PaymentEngineHandler, type: :model do
-  let(:payment) { create(:payment, gateway: 'MoIP') }
+  let(:payment) { create(:payment, gateway: 'MoIP', payment_method: 'CartãoDeCredito', state: 'paid') }
   let(:moip_engine) { double('moip engine', name: 'MoIP', review_path: "/#{payment.id}", locale: 'pt', can_do_refund?: false, direct_refund: false) }
 
   before do

@@ -15,17 +15,31 @@ RSpec.describe DirectRefundWorker do
   end
 
   context 'when job runs' do
-    before do
-      expect(payment.payment_engine).to receive(:direct_refund).and_return(true)
+    context "when payment is slip" do
+      before do
+        expect(BalanceTransaction).to receive(:insert_contribution_refund).with(payment.contribution_id)
+        expect(payment).to receive(:refund)
+      end
+
+      it 'should refund on balance' do
+        DirectRefundWorker.perform_async(payment.id)
+      end
     end
 
-    it 'should call direct refund at payment engine' do
-      DirectRefundWorker.perform_async(payment.id)
+    context "when payment is credit_card" do
+      before do
+        expect(payment.payment_engine).to receive(:direct_refund).and_return(true)
+        allow(payment).to receive(:slip_payment?).and_return(false)
+      end
+      it 'should call direct refund at payment engine' do
+        DirectRefundWorker.perform_async(payment.id)
+      end
     end
   end
 
   context 'when PagarMe error raises' do
     before do
+      allow(payment).to receive(:slip_payment?).and_return(false)
       allow(payment.payment_engine).to receive(:direct_refund).and_raise(Exception, 'Not found')
     end
 

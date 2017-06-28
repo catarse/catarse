@@ -143,8 +143,7 @@ class Payment < ActiveRecord::Base
   end
 
   def can_request_refund?
-    return false if contribution.balance_refunded?
-    !slip_payment? || user.try(:bank_account).try(:valid?)
+    !contribution.balance_refunded? && paid?
   end
 
   private

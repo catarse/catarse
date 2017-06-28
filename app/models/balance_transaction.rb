@@ -29,7 +29,8 @@ class BalanceTransaction < ActiveRecord::Base
       user_id: contribution.user_id,
       event_name: 'contribution_refund',
       amount: contribution.value,
-      contribution_id: contribution.id
+      contribution_id: contribution.id,
+      project_id: contribution.project_id
     )
   end
 

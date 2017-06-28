@@ -11,6 +11,7 @@ class PaymentObserver < ActiveRecord::Observer
   def from_pending_to_paid(payment)
     notify_confirmation(payment)
 
+    payment.direct_refund if payment.project.failed?
     # disabled due digest, remove soon
     # UserBroadcastWorker.perform_async(
     #  follow_id: payment.user.id,
@@ -39,21 +40,21 @@ class PaymentObserver < ActiveRecord::Observer
   alias from_paid_to_refunded from_pending_refund_to_refunded
   alias from_deleted_to_refunded from_pending_refund_to_refunded
 
-  def from_pending_refund_to_paid(payment)
-    payment.invalid_refund
-  end
-  alias from_refunded_to_paid from_pending_refund_to_paid
+  #def from_pending_refund_to_paid(payment)
+  #  payment.invalid_refund
+  #end
+  #alias from_refunded_to_paid from_pending_refund_to_paid
 
   def from_pending_to_invalid_payment(payment)
     payment.notify_to_backoffice :invalid_payment
   end
   alias from_waiting_confirmation_to_invalid_payment from_pending_to_invalid_payment
 
-  def from_paid_to_pending_refund(payment)
-    if payment.slip_payment?
-      payment.contribution.notify_to_contributor(:contributions_project_unsuccessful_slip)
-    end
-  end
+  #def from_paid_to_pending_refund(payment)
+  #  if payment.slip_payment?
+  #    payment.contribution.notify_to_contributor(:contributions_project_unsuccessful_slip)
+  #  end
+  #end
 
   def from_paid_to_refused(payment)
     contribution = payment.contribution
