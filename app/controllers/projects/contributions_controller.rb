@@ -70,10 +70,6 @@ class Projects::ContributionsController < ApplicationController
     @thank_you_id = @project.id
   end
 
-  def no_account_refund
-    authorize resource
-  end
-
   def second_slip
     authorize resource
     if resource.reward.try(:sold_out?)

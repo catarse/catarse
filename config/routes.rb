@@ -80,7 +80,6 @@ Catarse::Application.routes.draw do
         get 'toggle_delivery'
         get :second_slip
         get :receipt
-        get :no_account_refund
       end
       put :credits_checkout, on: :member
     end
