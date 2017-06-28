@@ -65,6 +65,7 @@ namespace :cron do
             SurveyAddressAnswer.where(contribution: contribution).empty? &&
             ContributionNotification.where(contribution: contribution, template_name: 'answer_survey').where("created_at > current_timestamp - '1 week'::interval ").empty?
           survey.notify_to_contributors(:answer_survey)
+        end
       end
     end
   end
