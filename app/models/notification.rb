@@ -58,6 +58,11 @@ class Notification < ActiveRecord::Base
     @contribution ||= Contribution.find(contribution_id) if contribution_id
   end
 
+  def balance_transfer
+    balance_transfer_id = metadata_associations.try(:[], 'balance_transfer_id')
+    @balance_transfer ||= BalanceTransfer.find balance_transfer_id
+  end
+
   private
 
   def metadata_associations

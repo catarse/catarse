@@ -107,7 +107,7 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
-    catarse_pagarme (2.10.11)
+    catarse_pagarme (2.10.12)
       pagarme (= 2.1.4)
       rails (~> 4.0)
       sentry-raven
@@ -322,7 +322,7 @@ GEM
     multipart-post (2.0.0)
     net_http_timeout_errors (0.3.0)
     netrc (0.11.0)
-    newrelic_rpm (3.16.3.323)
+    newrelic_rpm (3.18.1.330)
     nokogiri (1.7.2)
       mini_portile2 (~> 2.1.0)
     oauth (0.5.1)
@@ -661,7 +661,7 @@ DEPENDENCIES
   browser (= 1.0.1)
   capybara
   carrierwave!
-  catarse_pagarme (~> 2.10.11)
+  catarse_pagarme (~> 2.10.12)
   catarse_settings_db (>= 0.1.0)
   cocoon
   coffee-rails
@@ -694,7 +694,7 @@ DEPENDENCIES
   mini_magick
   mixpanel-ruby
   mixpanel_client
-  newrelic_rpm
+  newrelic_rpm (~> 3.18.1.330)
   omniauth
   omniauth-facebook
   parallel

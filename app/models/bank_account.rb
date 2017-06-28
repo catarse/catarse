@@ -66,4 +66,8 @@ class BankAccount < ActiveRecord::Base
       [memo[1], memo[0].to_s]
     end
   end
+
+  def to_hash_with_bank
+    self.attributes.merge(bank_code: bank_code, bank_name: bank.name)
+  end
 end

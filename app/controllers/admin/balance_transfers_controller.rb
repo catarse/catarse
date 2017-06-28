@@ -2,6 +2,7 @@
 
 class Admin::BalanceTransfersController < Admin::BaseController
   before_filter :authenticate_user!
+  before_action :ensure_balance_admin_role
   respond_to :json
 
   def update
@@ -27,7 +28,7 @@ class Admin::BalanceTransfersController < Admin::BaseController
         resource.transition_to!(
           :transferred, {
             transfer_data: {
-              bank_account: resource.user.bank_account.attributes,
+              bank_account: resource.user.bank_account.to_hash_with_bank,
               manual_transfer: true
             }
           }
@@ -44,7 +45,7 @@ class Admin::BalanceTransfersController < Admin::BaseController
         :rejected,
         authorized_by: current_user.id,
         transfer_data: {
-          bank_account: resource.user.bank_account.attributes
+          bank_account: resource.user.bank_account.to_hash_with_bank
         }
       )
     end
@@ -53,6 +54,10 @@ class Admin::BalanceTransfersController < Admin::BaseController
   end
 
   private
+
+  def ensure_balance_admin_role
+    raise Pundit::NotAuthorizedError unless AdminBalancePolicy.new(current_user, nil).access?
+  end
 
   def resource
     @resource ||= BalanceTransfer.find params[:id]
@@ -65,4 +70,5 @@ class Admin::BalanceTransfersController < Admin::BaseController
   def transfer_params
     params.require(:balance_transfer).permit(:admin_notes)
   end
+
 end

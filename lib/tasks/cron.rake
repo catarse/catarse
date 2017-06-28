@@ -30,14 +30,6 @@ namespace :cron do
     end
   end
 
-  desc 'Send pending balance transfer confirmation notifications'
-  task sent_balance_transfer_reminders: [:environment] do
-    Project.pending_balance_confirmation.each do |project|
-      Rails.logger.info "Notifying #{project.permalink} -> pending_balance_transfer_confirmation"
-      project.notify(:pending_balance_transfer_confirmation, project.user)
-    end
-  end
-
   desc 'Notify contributors about delivery confirmation'
   task notify_delivery_confirmation: :environment do
     Contribution.need_notify_about_delivery_confirmation.each do |contribution|

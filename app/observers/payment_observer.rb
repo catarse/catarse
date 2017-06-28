@@ -3,9 +3,9 @@
 class PaymentObserver < ActiveRecord::Observer
   observe :payment
 
-  def after_create(payment)
+  def after_save(payment)
     contribution = payment.contribution
-    contribution.notify_to_contributor(:payment_slip) if payment.slip_payment?
+    contribution.notify_to_contributor(:payment_slip) if payment.slip_payment? && payment.gateway_data
   end
 
   def from_pending_to_paid(payment)
@@ -79,11 +79,10 @@ class PaymentObserver < ActiveRecord::Observer
           BalanceTransaction.insert_contribution_confirmed_after_project_finished(
             project.id, contribution.id
           )
-          begin
-            contribution.notify_to_backoffice(:payment_confirmed_after_project_was_closed)
-          rescue
-            nil
-          end # just record notification on database
+          contribution.notify(
+            :project_contribution_confirmed_after_finished,
+            project.user,
+            contribution)
         end
       end
     end

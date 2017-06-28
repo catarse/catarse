@@ -40,7 +40,7 @@ gem 'mixpanel_client'
 
 # Payment engines
 
-gem 'catarse_pagarme', '~> 2.10.11'
+gem 'catarse_pagarme', '~> 2.10.12'
 #gem 'catarse_pagarme', path: '../catarse_pagarme'
 
 # Decorators
@@ -115,7 +115,7 @@ group :production do
   gem 'rails_12factor'
 
   # Monitoring with the new new relic
-  gem 'newrelic_rpm'
+  gem 'newrelic_rpm', '~> 3.18.1.330'
 
   gem "activerecord-nulldb-adapter"
 

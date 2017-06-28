@@ -1,0 +1,34 @@
+- user = @notification.user
+- contribution = @notification.contribution
+- project = contribution.project
+
+| Olá, #{project.user.decorate.display_name}!
+br/
+br/
+| Uma nova contribuição foi confirmada para o seu projeto após ter sido finalizado.
+br/
+br/
+strong
+  | Detalhes da contribuiçao:
+br/
+br/
+| Nome do apoiador: #{contribution.user.decorate.display_name}
+br/
+| Valor do apoio: #{contribution.details.ordered.first.decorate.display_value}
+br/
+- if contribution.reward
+  | Recompensa selecionada:
+  | #{contribution.reward.try(:decorate).try(:display_description)}
+- else
+  br/
+br/
+= link_to 'Veja seu o saldo atualizado', edit_user_url(project.user_id, anchor: 'balance')
+br/
+br/
+| Se sobrar alguma dúvida, basta responder a esta mensagem diretamente ou enviar um email para #{mail_to CatarseSettings[:email_contact]}.
+br/
+br/
+| Um abraço,
+br/
+| Equipe do #{CatarseSettings[:company_name]}
+
