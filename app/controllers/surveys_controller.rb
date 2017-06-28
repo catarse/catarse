@@ -3,8 +3,8 @@
 class SurveysController < ApplicationController
   respond_to :html, :json
   def new
-    authorize resource
     @project = Project.find params[:project_id]
+    authorize @project, :edit?
     render 'projects/surveys/new'
   end
 
