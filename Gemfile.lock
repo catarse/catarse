@@ -113,7 +113,7 @@ GEM
       sentry-raven
       sidekiq
       weekdays (>= 1.0.2)
-    catarse_settings_db (0.1.1)
+    catarse_settings_db (0.2.0)
       rails (>= 4.1.1)
     childprocess (0.5.9)
       ffi (~> 1.0, >= 1.0.11)
@@ -662,7 +662,7 @@ DEPENDENCIES
   capybara
   carrierwave!
   catarse_pagarme (~> 2.10.12)
-  catarse_settings_db (>= 0.1.0)
+  catarse_settings_db (>= 0.2.0)
   cocoon
   coffee-rails
   compass-rails
