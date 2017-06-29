@@ -6,4 +6,8 @@ class BalanceTransferTransition < ActiveRecord::Base
   def bank_account
     metadata.try(:[], 'transfer_data').try(:[], 'bank_account')
   end
+
+  def skip_notification?
+    metadata["skip_notification"]
+  end
 end
