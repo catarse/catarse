@@ -16,20 +16,28 @@ class BalanceTransferMachine
   transition from: :processing, to: %i[error transferred gateway_error]
   transition from: :gateway_error, to: %i[processing transferred error]
 
-  after_transition(to: :transferred) do |bt|
-    Notification.notify(:balance_transferred, bt.user, {
-      associations: { balance_transfer_id: bt.id } })
+  after_transition(to: :transferred) do |bt, transition|
+    unless transition.skip_notification?
+      Notification.notify(:balance_transferred, bt.user, {
+        associations: { balance_transfer_id: bt.id } })
+    end
   end
 
-  after_transition(to: :error) do |bt|
-    Notification.notify(:balance_transfer_error, bt.user, {
-      associations: { balance_transfer_id: bt.id } })
+  after_transition(to: :error) do |bt, transition|
+    unless transition.skip_notification?
+      Notification.notify(:balance_transfer_error, bt.user, {
+        associations: { balance_transfer_id: bt.id } })
+    end
+
     bt.refund_balance
   end
 
-  after_transition(to: :rejected) do |bt|
-    Notification.notify(:balance_transfer_error, bt.user, {
-      associations: { balance_transfer_id: bt.id } })
+  after_transition(to: :rejected) do |bt, transition|
+    unless transition.skip_notification?
+      Notification.notify(:balance_transfer_error, bt.user, {
+        associations: { balance_transfer_id: bt.id } })
+    end
+
     bt.refund_balance
   end
 end
