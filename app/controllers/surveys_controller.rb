@@ -32,6 +32,8 @@ class SurveysController < ApplicationController
     end
     open_questions_answer if params['open_questions']
     mc_questions_answer if params['multiple_choice_questions']
+    contribution = Contribution.find params['contribution_id']
+    contribution.update_attribute(:survey_answered_at, Time.current)
     render status: 200, json: { success: 'OK' }
   end
 
