@@ -1497,7 +1497,9 @@ a:hover {
 }
 
 .dropdown-toggle {
-  padding: 10px 0px;
+  position: relative;
+  display: block;
+  padding: 10px 20px;
 }
 
 .dropdown-toggle.w--open {
@@ -4384,6 +4386,10 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
     width: 30px;
     height: 30px;
   }
+  .dropdown-toggle {
+    padding-right: 10px;
+    padding-left: 5px;
+  }
   .dropdown-toggle.w--open {
     display: block;
   }
@@ -4983,6 +4989,7 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
   }
   .dropdown-toggle {
     padding-top: 7px;
+    padding-right: 5px;
     padding-bottom: 5px;
   }
   .header-search {

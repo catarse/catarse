@@ -44,10 +44,15 @@ RSpec.describe BalanceTransfer, type: :model do
   end
 
   describe 'from processing to transferred' do
+    it 'should not notify when skip notification on transition' do
+      balance_transfer.transition_to(:authorized)
+      balance_transfer.transition_to(:processing)
+      expect(Notification).not_to receive(:notify).with(:balance_transferred, balance_transfer.user, { associations: { balance_transfer_id: balance_transfer.id} })
+      balance_transfer.transition_to(:transferred, {skip_notification: true})
+    end
     it 'sould notify about transferred' do
       balance_transfer.transition_to(:authorized)
       balance_transfer.transition_to(:processing)
-      # expect(balance_transfer.pagarme_delegator).to receive(:transfer_funds)
       expect(Notification).to receive(:notify).with(:balance_transferred, balance_transfer.user, { associations: { balance_transfer_id: balance_transfer.id} })
       balance_transfer.transition_to(:transferred)
     end

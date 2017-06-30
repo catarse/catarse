@@ -29,7 +29,7 @@ gem "i18n-js", ">= 3.0.0.rc11"
 gem 'whenever'
 
 gem 'schema_plus'
-gem 'catarse_settings_db', '>= 0.1.0'
+gem 'catarse_settings_db', '>= 0.2.0'
 
 # Notifications
 gem 'user_notifier', '~> 0.4.0'
