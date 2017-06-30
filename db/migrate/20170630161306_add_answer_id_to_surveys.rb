@@ -23,6 +23,7 @@ SELECT s.id AS survey_id,
            FROM ( SELECT smcq.id,
                     smcq.question,
                     sa.survey_question_choice_id,
+                    sa.id as answer_id,
                     sa.created_at AS answered_at,
                     ( SELECT json_agg(question_choices.*) AS choice_json_agg
                            FROM ( SELECT sqc.id,
