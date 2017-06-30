@@ -26,34 +26,21 @@ class SurveysController < ApplicationController
 
   def answer
     authorize resource
-    if permitted_params[:survey_address_answer]
-      SurveyAddressAnswer.find_or_initialize_by(contribution_id: params['contribution_id'])
-                         .update_attributes permitted_params[:survey_address_answer]
+    contribution = Contribution.find params[:contribution_id]
+    if permitted_params[:survey_address_answers_attributes]
+      contribution.attributes = {addresses_attributes: permitted_params[:survey_address_answers_attributes]}
+      contribution.save
     end
-    open_questions_answer if params['open_questions']
-    mc_questions_answer if params['multiple_choice_questions']
-    contribution = Contribution.find params['contribution_id']
+    resource.attributes = permitted_params.except :survey_address_answers_attributes
     contribution.update_attribute(:survey_answered_at, Time.current)
-    render status: 200, json: { success: 'OK' }
+    if resource.save
+      render status: 200, json: { success: 'OK' }
+    else
+      render status: 400, json: { success: 'ERROR' }
+    end
   end
 
   protected
-
-  def open_questions_answer
-    params['open_questions'].each do |open_question|
-      question = resource.survey_open_questions.find open_question['id']
-      question.survey_open_question_answers
-              .find_or_create_by(contribution_id: params['contribution_id']).update_attribute(:answer, open_question['value'])
-    end
-  end
-
-  def mc_questions_answer
-    params['multiple_choice_questions'].each do |mc_question|
-      question = resource.survey_multiple_choice_questions.find mc_question['id']
-      answer = question.survey_multiple_choice_question_answers.find_or_initialize_by(contribution_id: params['contribution_id'])
-      answer.update_attribute(:survey_question_choice_id, mc_question['value'])
-    end
-  end
 
   def resource
     @survey ||= Survey.find params[:id]
