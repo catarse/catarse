@@ -1,8 +1,6 @@
 class AddAnsweredCountRpc < ActiveRecord::Migration
   def change
     add_column :contributions, :survey_answered_at, :datetime
-    execute 'grant SELECT on "1".surveys to catarse;'
-    execute "grant SELECT on surveys to catarse;"
     execute <<-SQL
       CREATE OR REPLACE FUNCTION "1".answered_survey_count(reward_id integer) RETURNS bigint
       LANGUAGE sql AS $$
