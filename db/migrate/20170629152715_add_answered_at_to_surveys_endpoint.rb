@@ -43,6 +43,8 @@ SELECT s.id AS survey_id,
      LEFT JOIN countries co ON co.id = add.country_id
      LEFT JOIN states st ON st.id = add.state_id;
 
+  grant SELECT on "1".surveys to web_user, admin;
+
 
      create or replace view "1".user_contributions as
 SELECT pa.id,
