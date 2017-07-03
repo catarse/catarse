@@ -18,6 +18,18 @@ class RewardsController < ApplicationController
     @project ||= Project.find params[:project_id]
   end
 
+  def toggle_survey_finish
+    authorize resource
+    survey = resource.survey
+    if survey.finished_at
+      survey.finished_at = nil
+    elsif survey.sent_at
+      survey.finished_at = Time.current
+    end
+    survey.save!
+    return render nothing: true
+  end
+
   def destroy
     authorize resource
     if resource.destroy!

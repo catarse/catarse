@@ -41,6 +41,8 @@ pt:
       anonymous: Quero que meu apoio não seja público
       print_slip: Imprimir boleto
       slip_copy: Gerar 2a via
+      status: Status
+      contact_author: "Enviar mensagem"
       show_receipt: 'Ver recibo'
       contributed_projects: "Projetos que apoiei"
       contribution_value: "Valor do apoio"
@@ -49,6 +51,8 @@ pt:
       reward: Recompensa
       no_reward: "Não selecionou recompensa"
       delivery_estimate: "Estimativa de entrega:"
+      delivery_status: "Status da entrega:"
+      answer_survey: "Responda o questionário"
     card:
       twitter_profile: "Perfil no Twitter"
       facebook_profile: "Perfil no Facebook"
@@ -133,6 +137,10 @@ pt:
         title: "Projetos de %{name}"
         title_current_user: "Meus projetos"
       contributions:
+        project_col: Projeto
+        contribution_col: Apoio
+        reward_col: Recompensa
+        survey_col: Questionário
         anonymous: "Apoio anônimo."
         no_contributions: "%{name} ainda não apoiou nenhum projeto. Mas a gente sabe que é só questão de tempo! :D"
         no_contributions_current_user_html: "Você ainda não apoiou nenhum projeto. Que tal <a href=\"/\">começar agora</a>?"

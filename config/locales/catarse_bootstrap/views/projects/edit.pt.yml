@@ -66,6 +66,11 @@ pt:
       minimum_value: "Valor:"
       deliver_at: "Previsão de entrega:"
       description: "Descrição:"
+      delivery: "Envio: "
+      status:
+        error: Erro no envio
+        delivered: Enviada
+        received: Recebida
       shipping_options:
         free: 'Sem frete envolvido'
         national: 'Frete Nacional'
@@ -170,6 +175,7 @@ pt:
       leave_link_html: "&nbsp; Sair do painel de controle"
       start_tab: ' Minha Campanha'
       reports_tab: ' Relatórios de apoios'
+      surveys_tab: ' Questionários'
       preview_tab: Preview
       posts_tab: ' Novidades '
       edit_project: ' Editar projeto '
