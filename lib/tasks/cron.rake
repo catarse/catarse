@@ -6,7 +6,7 @@ namespace :cron do
                   schedule_reminders sync_fb_friends]
 
   desc 'Tasks that should run daily'
-  task daily: %i[notify_delivery_confirmation notify_owners_of_deadline notify_project_owner_about_new_confirmed_contributions
+  task daily: %i[notify_delivery_confirmation notify_owners_of_deadline notify_project_owner_about_new_confirmed_contributions notify_unanswered_surveys
                  verify_pagarme_transactions notify_new_follows
                  verify_pagarme_transfers verify_pagarme_user_transfers notify_pending_refunds request_direct_refund_for_failed_refund notify_expiring_rewards
                  update_fb_users]
@@ -45,6 +45,20 @@ namespace :cron do
         project.user,
         project
       )
+    end
+  end
+
+  desc 'Notify who have not answered the survey after a week'
+  task notify_unanswered_surveys: :environment do
+    Survey.where(finished_at: nil).each do |survey|
+      survey.reward.contributions.was_confirmed.each do |contribution|
+        if SurveyMultipleChoiceQuestionAnswer.where(contribution: contribution).empty?  ||
+            SurveyOpenQuestionAnswer.where(contribution: contribution).empty?  ||
+            SurveyAddressAnswer.where(contribution: contribution).empty? &&
+            ContributionNotification.where(contribution: contribution, template_name: 'answer_survey').where("created_at > current_timestamp - '1 week'::interval ").empty?
+          survey.notify_to_contributors(:answer_survey)
+        end
+      end
     end
   end
 

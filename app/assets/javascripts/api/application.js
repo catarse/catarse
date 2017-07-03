@@ -70,6 +70,7 @@
                 projectUserIdParam = m.route.param('project_user_id') || parameters.user_id || parameters.project_user_id,
                 userParam = m.route.param('user_id') || app.getAttribute('data-userid') || parameters.user_id,
                 rewardIdParam = m.route.param('reward_id'),
+                surveyIdParam = m.route.param('survey_id'),
                 filterParam = m.route.param('filter'),
                 thankYouParam = app && JSON.parse(app.getAttribute('data-contribution'));
 
@@ -87,6 +88,10 @@
 
             if(projectUserIdParam) {
                 addToAttr({project_user_id: projectUserIdParam});
+            }
+
+            if(surveyIdParam) {
+                addToAttr({survey_id: surveyIdParam});
             }
 
             if(rewardIdParam) {
@@ -155,14 +160,18 @@
           '/projects/:project_id/contributions_report': wrap(c.root.ProjectsContributionReport, {menuTransparency: false, footerBig: false}),
           '/pt/projects/:project_id/contributions_report': wrap(c.root.ProjectsContributionReport, {menuTransparency: false, footerBig: false}),
           '/projects/:project_id/posts': wrap(c.root.Posts, {menuTransparency: false, footerBig: false}),
+          '/projects/:project_id/surveys': wrap(c.root.Surveys, {menuTransparency: false, footerBig: false, menuShort: true}),
           '/pt/projects/:project_id/posts': wrap(c.root.Posts, {menuTransparency: false, footerBig: false}),
           '/projects/:project_id': wrap(c.root.ProjectsShow, {menuTransparency: false, footerBig: false}),
           '/users/:user_id': wrap(c.root.UsersShow, {menuTransparency: true, footerBig: false}),
           '/pt/users/:user_id': wrap(c.root.UsersShow, {menuTransparency: true, footerBig: false}),
+          '/contributions/:contribution_id/surveys/:survey_id': wrap(c.root.SurveysShow, {menuTransparency: false, footerBig: false}),
+          '/pt/contributions/:contribution_id/surveys/:survey_id': wrap(c.root.SurveysShow, {menuTransparency: false, footerBig: false}),
           '/users/:user_id/edit': wrap(c.root.UsersEdit, {menuTransparency: true, footerBig: false}),
           '/pt/users/:user_id/edit': wrap(c.root.UsersEdit, {menuTransparency: true, footerBig: false}),
           '/projects/:project_id/edit': wrap(c.root.ProjectEdit, {menuTransparency: false, hideFooter: true, menuShort: true}),
           '/pt/projects/:project_id/edit': wrap(c.root.ProjectEdit, {menuTransparency: false, hideFooter: true, menuShort: true}),
+          '/projects/:project_id/rewards/:reward_id/surveys/new': wrap(c.root.SurveyCreate, {menuTransparency: false, hideFooter: true, menuShort: true}),
           '/:project': wrap(c.root.ProjectsShow, {menuTransparency: false, footerBig: false}),
           '/pt/follow-fb-friends': wrap(c.root.FollowFoundFriends, {menuTransparency: false, footerBig: false}),
           '/follow-fb-friends': wrap(c.root.FollowFoundFriends, {menuTransparency: false, footerBig: false}),
