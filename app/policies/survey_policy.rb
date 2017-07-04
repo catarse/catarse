@@ -23,7 +23,7 @@ class SurveyPolicy < ApplicationPolicy
      survey_open_question_answers_attributes: %i[id survey_open_question_id contribution_id answer], 
      survey_open_questions_attributes: %i[id question description], 
      survey_multiple_choice_questions_attributes: [:id, :question, :description, survey_question_choices_attributes: %i[option survey_multiple_choice_question_id]],
-     survey_address_answers_attributes: { addresses_attributes: %i[id country_id state_id address_street address_city address_neighbourhood address_number address_complement address_zip_code phone_number] }].flatten
+     survey_address_answers_attributes: { addresses_attributes: %i[id country_id state_id address_street address_city address_neighbourhood address_number address_complement address_zip_code address_state phone_number] }].flatten
   end
 
   protected
