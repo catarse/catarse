@@ -1447,7 +1447,7 @@ a:hover {
 }
 
 .dropdown-link:hover {
-  background-color: #f1f4f4;
+  background-color: #e9e9ec;
 }
 
 .dropdown-list {
@@ -3988,11 +3988,11 @@ a:hover {
   background-position: 9px 50%;
   background-size: 11px;
   background-repeat: no-repeat;
-  cursor: default;
+  cursor: not-allowed;
 }
 
 .text-field-disabled:hover {
-  border-style: solid;
+  border-style: dashed;
   border-color: hsla(217, 7%, 51%, .36);
 }
 
@@ -4088,6 +4088,27 @@ a:hover {
 
 .cursor-move {
   cursor: move;
+}
+
+.text-field-faded {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.text-field-faded:hover {
+  border: 1px solid #ddd;
+}
+
+.text-field-faded:focus {
+  border: 1px solid #ddd;
+}
+
+.text-field-locked {
+  cursor: not-allowed;
+}
+
+.text-field-locked:hover {
+  border: 1px solid #ddd;
 }
 
 html.w-mod-js *[data-ix="fade-in"] {
