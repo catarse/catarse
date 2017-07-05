@@ -8,6 +8,7 @@ class AonProjectMachine < FlexProjectMachine
     transition from: :online, to: %i[draft rejected deleted waiting_funds successful failed]
     transition from: :waiting_funds, to: %i[successful failed]
     transition from: :failed, to: %i[deleted]
+    transition from: :successful, to: :rejected
 
     guard_transition(to: :failed) do |project|
       !project.reached_goal?
