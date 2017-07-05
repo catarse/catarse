@@ -10,6 +10,10 @@ class AonProjectMachine < FlexProjectMachine
     transition from: :failed, to: %i[deleted]
     transition from: :successful, to: :rejected
 
+    guard_transition(from: :successful, to: :rejected) do |project, transition|
+      project.user.total_balance >= project.all_pledged_kind_transactions.sum(:amount).to_f
+    end
+
     guard_transition(to: :failed) do |project|
       !project.reached_goal?
     end
