@@ -64,6 +64,8 @@ Catarse::Application.routes.draw do
       get :push_to_online
       get :validate_publish
       get :finish
+      get :confirm_cancelation
+      post :cancel
     end
   end
   resources :contributions, only: [] do
@@ -116,6 +118,8 @@ Catarse::Application.routes.draw do
       get 'publish'
       get 'validate_publish'
       get 'push_to_online'
+      get :confirm_cancelation
+      post :cancel
     end
   end
   resources :users do
