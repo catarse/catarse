@@ -84,6 +84,7 @@ class User < ActiveRecord::Base
   has_many :category_followers, dependent: :destroy
   has_many :categories, through: :category_followers
   has_many :links, class_name: 'UserLink', inverse_of: :user
+  has_many :balance_transactions
   has_and_belongs_to_many :recommended_projects, join_table: :recommendations, class_name: 'Project'
 
   begin
@@ -402,5 +403,9 @@ class User < ActiveRecord::Base
 
     recoverable.reset_password_token = original_token if recoverable.reset_password_token.present?
     recoverable
+  end
+
+  def total_balance
+    @total_balance ||= balance_transactions.sum(:amount).to_f
   end
 end
