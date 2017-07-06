@@ -51,6 +51,7 @@ class ProjectObserver < ActiveRecord::Observer
   end
 
   def from_online_to_rejected(project)
+    notify_users(project)
     refund_all_payments(project)
   end
 
