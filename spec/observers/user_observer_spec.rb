@@ -12,7 +12,6 @@ RSpec.describe UserObserver do
 
     it 'send new user registration notification' do
       expect(user).to receive(:notify).with(:new_user_registration)
-      expect(SendgridSyncWorker).to receive(:perform_async)
       user.save
     end
 
