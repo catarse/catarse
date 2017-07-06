@@ -135,10 +135,7 @@ RSpec.describe ProjectsController, type: :controller do
 
         context 'when I cancel the project' do
           before do
-            expect_any_instance_of(ApiWrapper).to receive(:request)
-          end
-          it 'should call cancel API endpoint' do
-            put :update, id: project.id, project: { name: 'new_title', about_html: 'new_description' }, locale: :pt, cancel_project: 'true'
+            expect_any_instance_of(Notification).to receive(:project_cancelation_instructions, current_user, {associations: {project_id: project.id}})
           end
         end
 
