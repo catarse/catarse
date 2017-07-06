@@ -2,7 +2,7 @@
 
 class SurveyPolicy < ApplicationPolicy
   def show?
-    user.admin? || User.who_chose_reward(record.reward.id).pluck(:id).include?(user.id)
+    user.try(:admin?) || User.who_chose_reward(record.reward.id).pluck(:id).include?(user.try(:id))
   end
 
   def answer?
