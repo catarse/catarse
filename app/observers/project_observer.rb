@@ -77,8 +77,15 @@ class ProjectObserver < ActiveRecord::Observer
 
   def notify_users(project)
     project.payments.with_state('paid').each do |payment|
-      template_name = project.successful? ? :contribution_project_successful : payment.notification_template_for_failed_project
-      payment.contribution.notify_to_contributor(template_name)
+      if project.successful?
+        payment.contribution.
+          notify_to_contributor(
+            :contribution_project_successful)
+      elsif %w[failed rejected].include?(project.state) && payment.is_credit_card?
+        payment.contribution.
+          notify_to_contributor(
+            :contribution_project_unsuccessful_credit_card)
+      end
     end
   end
 
