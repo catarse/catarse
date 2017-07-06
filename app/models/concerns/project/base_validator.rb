@@ -6,7 +6,7 @@ module Project::BaseValidator
   extend ActiveSupport::Concern
 
   included do
-    ON_ONLINE_TO_END_STATES = %w[online successful waiting_funds failed].freeze
+    VALIDATION_STATES = %w[online].freeze
 
     # Validation for online? only state
     with_options if: :online? do |wo|
@@ -16,7 +16,7 @@ module Project::BaseValidator
 
     # Start validations when project state
     # is included on ON_ONLINE_TO_END_STATE
-    with_options if: ->(x) { ON_ONLINE_TO_END_STATES.include? x.state } do |wo|
+    with_options if: ->(x) { VALIDATION_STATES.include? x.state } do |wo|
       validates_numericality_of :online_days, less_than_or_equal_to: 365, greater_than_or_equal_to: 1, allow_nil: true, if: :is_flexible?
       wo.validates_presence_of :about_html, :headline, :goal
 
