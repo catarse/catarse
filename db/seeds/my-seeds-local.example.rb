@@ -24,15 +24,15 @@ puts "Adding OauthProvider settings..."
 puts "Creating Configuration entries..."
 {
   
-  catarse_fee: '0.13',
-  company_name: 'Catarse',
+  catarse_fee: '0.5',
+  company_name: 'Grasruts',
 
-  host: 'YOUR_HOST',
-  base_domain: 'YOUR_DOMAIN',
-  base_url: "YOUR_BASE_URL",
+  host: 'grasruts',
+  base_domain: 'grasruts.com',
+  base_url: "grasruts.com",
 
-  facebook_url: "http://facebook.com/MY-FACEBOOK-PAGE",
-  facebook_app_id: '556758001037275',
+  facebook_url: "https://www.facebook.com/grasruts",
+  facebook_app_id: '1354728827916287',
   uservoice_subdomain: 'MY-USER-VOICE.uservoice.com',                  
   uservoice_sso_key: 'MY-USER-VOICE-KEY',                         
   uservoice_secret_gadget: 'MY-USER-VOICE-SECRET', 

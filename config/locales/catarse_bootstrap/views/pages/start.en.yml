@@ -236,7 +236,7 @@ en:
             answer: 'Family, friends, fans and members of communities that you are part of are your greatest contributors. You shake this network, win support and promote the campaign. Supporters advertise and recommend their campaign to others they know, and so the circle of supporters grows and the campaign gets funded. The key is to build a good campaign, plan your campaign well and know how to target your outreach efforts to those who really care about what you are proposing in your crowdfunding campaign.'
           4:
             question: 'I have more doubts. What do I do?'
-            answer: '<a href="https://jointventurenepal.zendesk.com/hc/en-us/"> Access our Support Center </a> or contact us by email: contact@grasruts.com'
+            answer: '<a href="https://grasruts.zendesk.com/hc/en-us/"> Access our Support Center </a> or contact us by email: contact@grasruts.com'
       form:
         title: 'I want to start a campaign called'
         select_default: 'Select a category'

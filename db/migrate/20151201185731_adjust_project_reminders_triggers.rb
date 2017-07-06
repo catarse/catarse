@@ -78,7 +78,7 @@ CREATE OR REPLACE FUNCTION insert_project_reminder() RETURNS trigger
           insert into public.project_notifications (user_id, project_id, template_name, deliver_at, locale, from_email, from_name)
           values (current_user_id(), NEW.project_id, 'reminder', (
             select p.expires_at - '48 hours'::interval from projects p where p.id = NEW.project_id
-          ), 'pt', settings('email_contact'), settings('company_name'));
+          ), 'en', settings('email_contact'), settings('company_name'));
 
           return new;
         end;

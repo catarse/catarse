@@ -56,7 +56,7 @@ puts 'Seeding the database...'
   terms_url: 'http://suporte.catarse.me/knowledgebase/articles/161100-termos-de-uso',
   privacy_url: 'http://suporte.catarse.me/knowledgebase/articles/161103-pol%C3%ADtica-de-privacidade',
   about_channel_url: 'http://blog.catarse.me/conheca-os-canais-do-catarse/',
-  instagram_url: 'http://instagram.com/',
+  instagram_url: 'http://instagram.com/the_grasruts',
   blog_url: "http://medium.com/feed/grasruts",
   github_url: 'https://github.com/sushant12/jvn',
   contato_url: 'http://suporte.catarse.me/'

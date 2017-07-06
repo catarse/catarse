@@ -274,7 +274,7 @@ CREATE TABLE users (
     address_zip_code text,
     phone_number text,
     credits numeric DEFAULT 0,
-    locale text DEFAULT 'en'::text NOT NULL,
+    locale text DEFAULT 'pt'::text NOT NULL,
     cpf text,
     encrypted_password character varying(128) DEFAULT ''::character varying NOT NULL,
     reset_password_token character varying(255),

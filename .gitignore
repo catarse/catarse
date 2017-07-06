@@ -35,3 +35,4 @@ public/sitemap.xml.gz
 config/secrets.yml
 dump.rdb
 .idea
+/db/seed-sample

@@ -2,8 +2,8 @@
 class RenameCategories < ActiveRecord::Migration
   def up
     execute "
-    UPDATE categories SET name_en = 'Gastronomia', name_en = 'Gastronomy' WHERE name_en = 'Comida';
-    UPDATE categories SET name_en = 'Ciência e Tecnologia', name_en = 'Science & Technology' WHERE name_en = 'Tecnologia';
+    UPDATE categories SET name_pt = 'Gastronomia', name_en = 'Gastronomy' WHERE name_pt = 'Comida';
+    UPDATE categories SET name_pt = 'Ciência e Tecnologia', name_en = 'Science & Technology' WHERE name_pt = 'Tecnologia';
     "
   end
 

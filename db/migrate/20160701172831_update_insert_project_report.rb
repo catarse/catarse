@@ -18,7 +18,7 @@ class UpdateInsertProjectReport < ActiveRecord::Migration
         AS $$
         BEGIN
             INSERT INTO project_report_notifications(user_id, project_report_id, from_email, from_name, template_name, locale, created_at, updated_at ) VALUES
-                                                    ((select id from users where email = (select value from settings where name = 'email_projects' limit 1)), new.id, new.email, '', 'project_report', 'pt', current_timestamp, current_timestamp );
+                                                    ((select id from users where email = (select value from settings where name = 'email_projects' limit 1)), new.id, new.email, '', 'project_report', 'en', current_timestamp, current_timestamp );
             RETURN NEW;
         END;
         $$;

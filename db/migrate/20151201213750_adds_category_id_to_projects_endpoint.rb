@@ -66,7 +66,7 @@ FROM
     "1".projects p
 WHERE
     (
-        p.full_text_index @@ to_tsquery('english', unaccent(query))
+        p.full_text_index @@ to_tsquery('portuguese', unaccent(query))
         OR
         p.project_name % query
     )
@@ -74,7 +74,7 @@ WHERE
 ORDER BY
     p.open_for_contributions DESC,
     p.state_order,
-    ts_rank(p.full_text_index, to_tsquery('english', unaccent(query))) DESC,
+    ts_rank(p.full_text_index, to_tsquery('portuguese', unaccent(query))) DESC,
     p.project_id DESC;
 $function$;
     SQL
@@ -144,7 +144,7 @@ FROM
     "1".projects p
 WHERE
     (
-        p.full_text_index @@ to_tsquery('english', unaccent(query))
+        p.full_text_index @@ to_tsquery('portuguese', unaccent(query))
         OR
         p.project_name % query
     )
@@ -152,7 +152,7 @@ WHERE
 ORDER BY
     public.is_current_and_online(p.expires_at, p.state) DESC,
     p.state_order,
-    ts_rank(p.full_text_index, to_tsquery('english', unaccent(query))) DESC,
+    ts_rank(p.full_text_index, to_tsquery('portuguese', unaccent(query))) DESC,
     p.project_id DESC;
 $function$;
     SQL

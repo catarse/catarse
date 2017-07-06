@@ -99,7 +99,7 @@ en:
       submit: Support this campaign
       display_status:
         approved: "This campaign has already been approved by Grasruts. Soon he will be on the air and ready to receive support."
-        online: "You can support this campaign until %{date} till 23h59m59s"
+        online: "You can support this campaign until %{date}"
         failed: "This campaign did not reach the minimum of %{goal} through %{date} and was not funded"
         rejected: "This campaign was not accepted. Can not support."
         in_analysis: "This campaign is under review and is not yet open for support."

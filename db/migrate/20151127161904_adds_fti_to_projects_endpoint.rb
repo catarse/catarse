@@ -138,7 +138,7 @@ FROM
     "1".projects p
 WHERE
     (
-        p.full_text_index @@ to_tsquery('english', unaccent(query))
+        p.full_text_index @@ to_tsquery('portuguese', unaccent(query))
         OR
         p.project_name % query
     )
@@ -146,7 +146,7 @@ WHERE
 ORDER BY
     public.open_for_contributions(p.expires_at, p.state) DESC,
     p.state_order,
-    ts_rank(p.full_text_index, to_tsquery('english', unaccent(query))) DESC,
+    ts_rank(p.full_text_index, to_tsquery('portuguese', unaccent(query))) DESC,
     p.project_id DESC;
 $function$;
     SQL
@@ -201,14 +201,14 @@ FROM
     JOIN public.projects pr ON pr.id = p.project_id
 WHERE
     (
-        pr.full_text_index @@ to_tsquery('english', unaccent(query))
+        pr.full_text_index @@ to_tsquery('portuguese', unaccent(query))
         OR
         pr.name % query
     )
     AND pr.state_order >= 'published'
 ORDER BY
     p.listing_order,
-    ts_rank(pr.full_text_index, to_tsquery('english', unaccent(query))) DESC,
+    ts_rank(pr.full_text_index, to_tsquery('portuguese', unaccent(query))) DESC,
     pr.id DESC;
 $function$;
 

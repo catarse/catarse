@@ -6,7 +6,7 @@ class CreateDirectMessageTrigger < ActiveRecord::Migration
           AS $$
           BEGIN
               INSERT INTO direct_message_notifications(user_id, direct_message_id, from_email, from_name, template_name, locale, created_at, updated_at  ) 
-              VALUES (new.to_user_id, new.id, new.from_email, new.from_name, 'direct_message', 'pt', current_timestamp, current_timestamp );
+              VALUES (new.to_user_id, new.id, new.from_email, new.from_name, 'direct_message', 'en', current_timestamp, current_timestamp );
               RETURN NEW;
           END;
           $$;
