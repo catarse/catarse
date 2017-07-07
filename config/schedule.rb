@@ -42,6 +42,14 @@ end
   stats.financeiro_payment_refund_error_distribution
   stats.financeiro_payments_paid_refunded
   stats.financeiro_status_pagarme_catarse
+  public.moments_project_pageviews
+  public.moments_project_pageviews_inferuser
+  public.recommend_projects
+  public.recommend_tanimoto_projects
+  public.recommend_users
+  public.recommend_tanimoto_user_contributions
+  public.recommend_tanimoto_user_reminders
+  public.recommend_tanimoto_user_visited
   "1".statistics
   "1".statistics_music
   "1".category_totals
