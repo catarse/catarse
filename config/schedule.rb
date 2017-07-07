@@ -31,14 +31,16 @@ end
   stats.aarrr_realizador_draft
   stats.aarrr_realizador_online_by_category
   stats.aarrr_realizador_online
+  stats.growth_analise_tipo
   stats.growth_project_tags_weekly_contribs_mat
   stats.growth_project_views
   stats.growth_contributions
   stats.growth_contributions_confirmed
-  stats.growth_analise_tipo
   stats.financeiro_control_panel_simplificado
+  stats.financeiro_control_panel_simplificado_all_projects
   stats.financeiro_int_payments_2016_simplificado
   stats.financeiro_payment_refund_error_distribution
+  stats.financeiro_payments_paid_refunded
   stats.financeiro_status_pagarme_catarse
   "1".statistics
   "1".statistics_music
