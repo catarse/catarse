@@ -3501,6 +3501,14 @@ a:hover {
   background-color: #f1f4f4;
 }
 
+.hero-slide {
+  padding-top: 187px;
+  background-color: #3f4752;
+  background-image: url("https://d3e54v103j8qbb.cloudfront.net/img/example-bg.png");
+  background-position: 50% 50%;
+  background-size: cover;
+}
+
 .bg-backs-carrosel {
   background-image: url('/assets/carrosel-apoios-bg.jpg');
   background-position: 50% 50%;
@@ -5171,10 +5179,6 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
     height: 100px;
     margin-top: -60px;
   }
-  .hero-knowmore {
-    padding-top: 100px;
-    padding-bottom: 78px;
-  }
   .slide-testimonials-content {
     padding-top: 83px;
   }
@@ -5574,16 +5578,6 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
     padding-right: 16px;
     padding-left: 16px;
   }
-  .hero-full.hero-knowmore {
-    padding-top: 175px;
-  }
-  .hero-full.hero-zelo {
-    padding-top: 20px;
-  }
-  .hero-full.hero-2016 {
-    background-position: 50% 100%, 0px 0px;
-    background-size: 100%, auto;
-  }
   .hero-full.hero-full-slide {
     padding-right: 0px;
     padding-left: 0px;
@@ -5631,9 +5625,6 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
     margin-bottom: -5px;
     padding-top: 4px;
     padding-bottom: 4px;
-  }
-  .hero-hello {
-    height: 490px;
   }
   .card-big {
     padding-right: 15px;
@@ -5720,11 +5711,6 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
   }
   .slide-testimonials {
     min-height: 640px;
-  }
-  .hero-knowmore {
-    padding-top: 135px;
-    padding-right: 15px;
-    padding-left: 15px;
   }
   .how-col-02 {
     height: 162px;
