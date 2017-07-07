@@ -9,7 +9,7 @@ RSpec.describe Project::BaseValidator, type: :model do
   context 'when project is going to online to end state' do
     subject { project }
 
-    Project::ON_ONLINE_TO_END_STATES.each do |state|
+    Project::VALIDATION_STATES.each do |state|
       context "#{state} project validations" do
         let(:project_state) { state }
 
