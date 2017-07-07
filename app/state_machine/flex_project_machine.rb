@@ -111,6 +111,10 @@ class FlexProjectMachine
     transition from: :waiting_funds, to: %i[successful failed]
     transition from: :failed, to: %i[deleted]
     transition from: :successful, to: :rejected
+
+    guard_transition(from: :successful, to: :rejected) do |project, transition|
+      project.user_has_balance_gte_project_pledged_transactions?
+    end
   end
 
   def can_reject?
