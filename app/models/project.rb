@@ -470,6 +470,10 @@ class Project < ActiveRecord::Base
     balance_transactions.where(event_name: 'successful_project_pledged').last
   end
 
+  def user_has_balance_gte_project_pledged_transactions?
+      user.total_balance >= all_pledged_kind_transactions.sum(:amount).to_f
+  end
+
   # State machine delegation methods
   delegate :push_to_draft, :reject, :push_to_online, :fake_push_to_online, :finish, :push_to_trash,
            :can_transition_to?, :transition_to, :can_reject?, :can_push_to_trash?,
