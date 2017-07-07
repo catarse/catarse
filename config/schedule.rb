@@ -22,6 +22,49 @@ end
 
 %w[
   "1".finished_projects
+  "1".statistics
+  "1".statistics_music
+  "1".category_totals
+  "1".statistics_publicacoes
+].each do |v|
+  every 1.hour do
+    command generate_psql_c(v)
+  end
+end
+
+%w[
+  "1".project_visitors_per_day
+].each do |v|
+  every 1.day, at: '11:59 pm' do
+    command generate_psql_c(v)
+  end
+end
+
+%w[
+  "1".user_totals
+].each do |v|
+  every 10.minutes do
+    command generate_psql_c(v)
+  end
+end
+
+%w[
+  public.moments_project_pageviews
+  public.moments_project_pageviews_inferuser
+  public.recommend_projects
+  public.recommend_tanimoto_projects
+  public.recommend_users
+  public.recommend_tanimoto_user_contributions
+  public.recommend_tanimoto_user_reminders
+  public.recommend_tanimoto_user_visited
+].each do |v|
+  every 1.day, at: '00:30 am' do
+    command generate_psql_c(v)
+  end
+end
+
+%w[
+  public.moments_navigations
   public.moments_project_start
   public.moments_project_start_inferuser
   stats.project_points
@@ -42,37 +85,8 @@ end
   stats.financeiro_payment_refund_error_distribution
   stats.financeiro_payments_paid_refunded
   stats.financeiro_status_pagarme_catarse
-  public.moments_project_pageviews
-  public.moments_project_pageviews_inferuser
-  public.recommend_projects
-  public.recommend_tanimoto_projects
-  public.recommend_users
-  public.recommend_tanimoto_user_contributions
-  public.recommend_tanimoto_user_reminders
-  public.recommend_tanimoto_user_visited
-  "1".statistics
-  "1".statistics_music
-  "1".category_totals
-  "1".statistics_publicacoes
 ].each do |v|
-  every 1.hour do
-    command generate_psql_c(v)
-  end
-end
-
-%w[
-  public.moments_navigations
-  "1".project_visitors_per_day
-].each do |v|
-  every 1.day, at: '11:59 pm' do
-    command generate_psql_c(v)
-  end
-end
-
-%w[
-  "1".user_totals
-].each do |v|
-  every 10.minutes do
+  every 1.day, at: '00:30 am' do
     command generate_psql_c(v)
   end
 end
