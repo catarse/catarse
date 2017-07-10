@@ -187,14 +187,6 @@ class ProjectsController < ApplicationController
     render partial: 'project_embed'
   end
 
-  def confirm_cancelation
-    authorize resource, :update?
-  end
-
-  def cancel
-    authorize resource, :update?
-  end
-
   protected
 
   def authorize_and_build_resources
