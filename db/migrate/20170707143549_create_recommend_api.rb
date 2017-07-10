@@ -31,8 +31,6 @@ $BODY$
 $BODY$
   LANGUAGE sql STABLE;
 
-GRANT EXECUTE ON FUNCTION "1".recommend_projects2user(user_id integer) TO public;
-GRANT EXECUTE ON FUNCTION "1".recommend_projects2user(user_id integer) TO catarse;
 GRANT EXECUTE ON FUNCTION "1".recommend_projects2user(user_id integer) TO anonymous;
 GRANT EXECUTE ON FUNCTION "1".recommend_projects2user(user_id integer) TO web_user;
 GRANT EXECUTE ON FUNCTION "1".recommend_projects2user(user_id integer) TO admin;
