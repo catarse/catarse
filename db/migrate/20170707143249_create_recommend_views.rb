@@ -233,31 +233,38 @@ CREATE OR REPLACE VIEW public.recommend_projects2user AS
   select us.id as user_id, t.*
   from users us
   join lateral (
-    with sim_users as ( -- Pega X usuarios mais proximos a você
-      select user1_id, user2_id, tanimoto, ru1.contributions as user1_contribs
+    with ucprojects as (
+      select distinct c.project_id
+      from public.contributions c
+      join payments p on p.contribution_id=c.id and p.state=ANY(confirmed_states())
+      where c.user_id=us.id
+    ), sim_users as ( -- Pega X usuarios mais proximos a você
+      select u.user1_id, u.user2_id, u.tanimoto
       from public.recommend_tanimoto_users u
-      join public.recommend_users ru1 on ru1.user_id=u.user1_id
       where u.user1_id=us.id
-      order by tanimoto desc --limit 1000  --Aqui, se nao precisa ser realtime, podemos deixar sem limite.
+        and u.user2_id not in (select id from users where banned_at is not null or deactivated_at is not null) -- filtra banidos
+      order by tanimoto desc limit 1000  --Aqui, se nao precisar ser realtime, podemos deixar sem limite.
     ), contrib_projects as ( -- Pega projetos apoiados por esses X usuarios
-      select u.user1_id, u.user2_id, u.tanimoto as users_tanimoto, ru2.name, unnest(ru2.contributions) project_id, u.user1_contribs
+      select distinct c.project_id, u.user1_id, u.user2_id, u.tanimoto as users_tanimoto
       from sim_users u
-      join public.recommend_users ru2 on ru2.user_id=u.user2_id
+      join contributions c on c.user_id=u.user2_id and c.project_id not in (select project_id from public.recommend_projects_blacklist union select project_id from ucprojects)
+      join payments p on p.contribution_id=c.id and p.state=ANY(confirmed_states())
     ), balanced_projects as (--balanceia tanimoto com a média de tanimotos relativos aos projetos apoiados
-      select u.user1_id, u.user2_id, u.name, u.project_id, (u.users_tanimoto + avg(coalesce(pr.tanimoto,0)))/2 as tanimoto
+      select u.project_id, u.user1_id, u.user2_id,
+          (max(u.users_tanimoto) + avg(coalesce(pr.tanimoto,0)))/2 as tanimoto
       from contrib_projects u
       join projects p on p.id=u.project_id and p.state='online' and p.expires_at>current_timestamp+'1 day'::interval -- filtra só os que estão online
-      left join public.recommend_tanimoto_projects pr on pr.project1_id=project_id and pr.project2_id=ANY(u.user1_contribs)
-      group by u.user1_id, u.user2_id, u.name, u.project_id, u.users_tanimoto
+      left join public.recommend_tanimoto_projects pr on pr.project1_id=u.project_id
+       and pr.project2_id in (select project_id from ucprojects)
+      group by u.project_id, u.user1_id, u.user2_id
     )
-    select p.id as project_id, p.name, p.permalink, p.headline,
-      thumbnail_image(p.*, 'large'::text) AS project_img,
-      avg(tanimoto) as tanimoto, count(*) as num_usuarios, string_agg(u.name,',') users
+
+    select u.project_id, avg(tanimoto) as tanimoto
     from balanced_projects u
-    join projects p on p.id=u.project_id
-    where not exists (select true FROM contributions c JOIN payments pa on pa.contribution_id=c.id and pa.state=ANY(confirmed_states()) where c.project_id=p.id and c.user_id=u.user1_id limit 1) and not p.id in (select project_id from public.recommend_projects_blacklist)--aqui temos q usar o dado mais atualizado! Nao do Materilaized view
-    group by u.user1_id, p.id
+    group by u.project_id
+    order by avg(tanimoto) desc limit 10
   ) t on true
+  where us.banned_at IS NULL AND us.deactivated_at IS NULL
   order by tanimoto desc;
     }
   end
