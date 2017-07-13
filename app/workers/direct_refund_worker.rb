@@ -8,7 +8,7 @@ class DirectRefundWorker
     payment = Payment.find payment_id
 
     begin
-      if payment.slip_payment?
+      if payment.slip_payment? && payment.paid?
         Payment.transaction do
           BalanceTransaction.insert_contribution_refund(payment.contribution_id)
           payment.refund
