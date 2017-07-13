@@ -64,7 +64,18 @@ RSpec.describe PaymentObserver do
   describe '#from_pending_to_paid' do
     context 'when project is failed' do
       before do
-        allow(payment.project).to receive(:failed?).and_return(true)
+        allow(payment.project).to receive(:state).and_return('failed')
+        expect(payment).to receive(:direct_refund)
+      end
+
+      it 'should direct_refund the payment' do
+        payment.notify_observers(:from_pending_to_paid)
+      end
+    end
+
+    context 'when project is rejected' do
+      before do
+        allow(payment.project).to receive(:state).and_return('rejected')
         expect(payment).to receive(:direct_refund)
       end
 
