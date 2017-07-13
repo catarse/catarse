@@ -64,6 +64,7 @@ Catarse::Application.routes.draw do
       get :push_to_online
       get :validate_publish
       get :finish
+    end
   end
   resources :contributions, only: [] do
     resources :surveys, only: [:show], controller: 'surveys' do
