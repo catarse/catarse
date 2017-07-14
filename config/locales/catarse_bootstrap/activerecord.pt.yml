@@ -129,7 +129,7 @@ pt:
         address_state: Estado
         address_street: 'Endereço (Rua, Avenida, etc)'
         zipcode_unknown: 'Não sei meu CEP'
-        address_zip_code: CEP (Informe para prosseguir)
+        address_zip_code: CEP
         phone_number: Telefone
         country: País / Country
       user:
