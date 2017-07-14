@@ -455,6 +455,7 @@ pt:
     user_email: Email perfil Catarse
     cpf: Cpf do apoiador
     user_name: Nome completo
+    title: Título da recompensa
     public_name: Nome público
     gateway: Meio de pagamento
     anonymous: Anônimo
