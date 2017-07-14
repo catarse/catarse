@@ -453,7 +453,6 @@ pt:
     contribution_value: Valor do apoio
     service_fee: Taxa do Catarse
     user_email: Email perfil Catarse
-    cpf: Cpf do apoiador
     user_name: Nome completo
     public_name: Nome público
     gateway: Meio de pagamento
