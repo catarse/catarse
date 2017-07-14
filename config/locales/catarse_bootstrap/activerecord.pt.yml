@@ -465,6 +465,8 @@ pt:
     city: Cidade
     address_state: Estado
     zip_code: CEP
+    open_questions: open_questions
+    multiple_choice_questions: multiple_choice_questions
     shipping_choice: 'Local de entrega'
     shipping_option: 'Envio'
   user:
