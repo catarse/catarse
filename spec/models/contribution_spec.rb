@@ -91,13 +91,6 @@ RSpec.describe Contribution, type: :model do
     let(:contribution) { build(:contribution, user: user) }
     let(:user) do
       build(:user, {
-              address_street: 'test stret',
-              address_number: '123',
-              address_neighbourhood: 'test area',
-              address_zip_code: 'test zipcode',
-              address_city: 'test city',
-              address_state: 'test state',
-              phone_number: 'test phone',
               cpf: 'test doc number'
             })
     end

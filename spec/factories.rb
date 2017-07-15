@@ -57,6 +57,7 @@ FactoryGirl.define do
 
   factory :user do |f|
     f.association :bank_account
+    f.association :address
     f.permalink { generate(:permalink) }
     f.name 'Foo bar'
     f.public_name 'Public bar'
@@ -65,14 +66,6 @@ FactoryGirl.define do
     f.uploaded_image File.open("#{Rails.root}/spec/support/testimg.png")
     f.email { generate(:email) }
     f.about_html "This is Foo bar's biography."
-    f.association :country, factory: :country
-    f.address_street 'fooo'
-    f.address_number '123'
-    f.address_city 'fooo bar'
-    f.address_state 'fooo'
-    f.address_neighbourhood 'bar'
-    f.address_zip_code '123344333'
-    f.phone_number '1233443355'
     f.birth_date '10/10/1989'
 
     trait :without_bank_data do
@@ -342,6 +335,17 @@ FactoryGirl.define do
   factory :user_admin_role do |f|
     f.association :user, factory: user
     role_label 'balance'
+  end
+
+  factory :address do |f|
+    f.association :country, factory: :country
+    f.association :state, factory: :state
+    f.address_street 'fooo'
+    f.address_number '123'
+    f.address_city 'fooo bar'
+    f.address_neighbourhood 'bar'
+    f.address_zip_code '123344333'
+    f.phone_number '1233443355'
   end
 
   factory :bank_account do |f|
