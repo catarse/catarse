@@ -125,89 +125,6 @@ SELECT b.project_id,
 
 
 
-  create or replace view stats.financeiro_informe_rendimentos_2016 as
- WITH pays AS (
-         SELECT t.project_id,
-            t.monthyear AS month,
-            t.is_cnpj,
-            t.value,
-            row_number() OVER (PARTITION BY t.project_id, t.is_cnpj ORDER BY t.year_i, t.month_i) AS month_num
-           FROM ( SELECT c.project_id,
-                    date_part('month'::text, zone_timestamp(p.paid_at)) AS month_i,
-                    date_part('year'::text, zone_timestamp(p.paid_at)) AS year_i,
-                    to_char(zone_timestamp(p.paid_at), 'MM/YYYY'::text) AS monthyear,
-                    ((p.gateway_data -> 'customer'::text) ->> 'document_type'::text) IS NOT NULL AND ((p.gateway_data -> 'customer'::text) ->> 'document_type'::text) = 'cnpj'::text AS is_cnpj,
-                    sum(p.value) AS value
-                   FROM payments p
-                     JOIN contributions c ON c.id = p.contribution_id
-                     JOIN projects pr_1 ON pr_1.id = c.project_id
-                  WHERE pr_1.state::text = 'successful'::text AND p.state = 'paid'::text AND (EXISTS ( SELECT true AS bool
-                           FROM balance_transfers bt_1
-                          WHERE bt_1.project_id = pr_1.id AND zone_timestamp(bt_1.created_at) >= '2017-01-01'::date AND zone_timestamp(bt_1.created_at) <= '2018-01-01'::date
-                         LIMIT 1))
-                  GROUP BY c.project_id, (date_part('year'::text, zone_timestamp(p.paid_at))), (date_part('month'::text, zone_timestamp(p.paid_at))), (to_char(zone_timestamp(p.paid_at), 'MM/YYYY'::text)), (((p.gateway_data -> 'customer'::text) ->> 'document_type'::text) IS NOT NULL AND ((p.gateway_data -> 'customer'::text) ->> 'document_type'::text) = 'cnpj'::text)) t
-        )
- SELECT bt.id AS "ID transferencia no catarse",
-    pr.id AS project_id,
-    pr.user_id,
-    pr.permalink,
-    pr.name AS "Nome do projeto",
-    u.name AS "Responsável",
-    u.email AS "E-mail",
-    u.cpf AS "CPF/CNPJ",
-    replace(round(min(pa.value), 2)::text, '.'::text, ','::text) AS "Valor total arrecadado",
-    replace(round(min(pa.gateway_fee), 2)::text, '.'::text, ','::text) AS "Meio de pagamento",
-    replace(round(total_catarse_fee_without_gateway_fee(pr.*), 2)::text, '.'::text, ','::text) AS "Taxa líquida Catarse",
-    replace(round(irrf_tax(pr.*), 2)::text, '.'::text, ','::text) AS "Retenção IRRF",
-    replace(round(COALESCE(min(pa.value) - total_catarse_fee(pr.*) + irrf_tax(pr.*), 0::numeric), 2)::text, '.'::text, ','::text) AS "Repasse líquido",
-    min(pays.month) FILTER (WHERE pays.month_num = 1 AND NOT pays.is_cnpj) AS "PF 1 Mês",
-    replace(round(sum(pays.value) FILTER (WHERE pays.month_num = 1 AND NOT pays.is_cnpj), 2)::text, '.'::text, ','::text) AS "PF 1 Valor",
-    min(pays.month) FILTER (WHERE pays.month_num = 2 AND NOT pays.is_cnpj) AS "PF 2 Mês",
-    replace(round(sum(pays.value) FILTER (WHERE pays.month_num = 2 AND NOT pays.is_cnpj), 2)::text, '.'::text, ','::text) AS "PF 2 Valor",
-    min(pays.month) FILTER (WHERE pays.month_num = 3 AND NOT pays.is_cnpj) AS "PF 3 Mês",
-    replace(round(sum(pays.value) FILTER (WHERE pays.month_num = 3 AND NOT pays.is_cnpj), 2)::text, '.'::text, ','::text) AS "PF 3 Valor",
-    min(pays.month) FILTER (WHERE pays.month_num = 4 AND NOT pays.is_cnpj) AS "PF 4 Mês",
-    replace(round(sum(pays.value) FILTER (WHERE pays.month_num = 4 AND NOT pays.is_cnpj), 2)::text, '.'::text, ','::text) AS "PF 4 Valor",
-    min(pays.month) FILTER (WHERE pays.month_num = 5 AND NOT pays.is_cnpj) AS "PF 5 Mês",
-    replace(round(sum(pays.value) FILTER (WHERE pays.month_num = 5 AND NOT pays.is_cnpj), 2)::text, '.'::text, ','::text) AS "PF 5 Valor",
-    min(pays.month) FILTER (WHERE pays.month_num = 1 AND pays.is_cnpj) AS "PJ 1 Mês",
-    replace(round(sum(pays.value) FILTER (WHERE pays.month_num = 1 AND pays.is_cnpj), 2)::text, '.'::text, ','::text) AS "PJ 1 Valor",
-    min(pays.month) FILTER (WHERE pays.month_num = 2 AND pays.is_cnpj) AS "PJ 2 Mês",
-    replace(round(sum(pays.value) FILTER (WHERE pays.month_num = 2 AND pays.is_cnpj), 2)::text, '.'::text, ','::text) AS "PJ 2 Valor",
-    min(pays.month) FILTER (WHERE pays.month_num = 3 AND pays.is_cnpj) AS "PJ 3 Mês",
-    replace(round(sum(pays.value) FILTER (WHERE pays.month_num = 3 AND pays.is_cnpj), 2)::text, '.'::text, ','::text) AS "PJ 3 Valor",
-    min(pays.month) FILTER (WHERE pays.month_num = 4 AND pays.is_cnpj) AS "PJ 4 Mês",
-    replace(round(sum(pays.value) FILTER (WHERE pays.month_num = 4 AND pays.is_cnpj), 2)::text, '.'::text, ','::text) AS "PJ 4 Valor",
-    min(pays.month) FILTER (WHERE pays.month_num = 5 AND pays.is_cnpj) AS "PJ 5 Mês",
-    replace(round(sum(pays.value) FILTER (WHERE pays.month_num = 5 AND pays.is_cnpj), 2)::text, '.'::text, ','::text) AS "PJ 5 Valor",
-        CASE
-            WHEN max(pays.month_num) FILTER (WHERE NOT pays.is_cnpj) > 5 THEN 'sim'::text
-            ELSE 'não'::text
-        END AS "Tem mais meses PF",
-        CASE
-            WHEN max(pays.month_num) FILTER (WHERE pays.is_cnpj) > 5 THEN 'sim'::text
-            ELSE 'não'::text
-        END AS "Tem mais meses PJ",
-    add.address_street AS "Endereço",
-    add.address_number AS "Número",
-    add.address_complement AS "Complemento",
-    add.address_neighbourhood AS "Bairro",
-    add.address_city AS "Cidade",
-    add.address_state AS "Estado",
-    add.address_zip_code AS "CEP"
-   FROM projects pr
-     JOIN balance_transfers bt ON bt.project_id = pr.id
-     JOIN pays ON pays.project_id = pr.id
-     JOIN users u ON u.id = pr.user_id
-     left join addresses add on add.id = u.address_id
-     JOIN LATERAL ( SELECT sum(pa_1.value) AS value,
-            sum(pa_1.gateway_fee) AS gateway_fee
-           FROM payments pa_1
-             JOIN contributions c ON c.id = pa_1.contribution_id AND c.project_id = pr.id AND pa_1.state = 'paid'::text) pa ON true
-  WHERE (pr.id IN ( SELECT DISTINCT pays_1.project_id
-           FROM pays pays_1))
-  GROUP BY pr.id, bt.id, u.id,add.address_street, add.address_number, add.address_complement,add.address_neighbourhood,add.address_city, add.address_state,add.address_zip_code
-  ORDER BY bt.created_at, (zone_expires_at(pr.*)), pr.permalink;
 
 
   create or replace view "1".project_accounts as
@@ -441,36 +358,6 @@ SELECT u.id,
      JOIN "1".user_totals ut ON ut.user_id = u.id
   WHERE was_confirmed(c.*) AND u.id <> current_user_id() AND c.user_id = current_user_id() AND u.deactivated_at IS NULL
   GROUP BY u.id, ut.total_contributed_projects, ut.total_published_projects, add.address_city, st.acronym;
-
-  create or replace view financial.card_transactions as
-SELECT u.id AS user_id,
-    p.id AS payment_id,
-    pr.id AS project_id,
-    pr.name AS project_name,
-    p.state AS transaction_state,
-    p.value AS amount,
-    c.address_phone_number AS contribution_phone_number,
-    add.phone_number AS user_phone_number,
-    u.name AS user_name,
-    p.ip_address::character varying(255) AS transaction_ip,
-    (p.gateway_data -> 'card'::text) ->> 'id'::text AS card_id,
-    (((p.gateway_data -> 'card'::text) ->> 'first_digits'::text) || '****'::text) || ((p.gateway_data -> 'card'::text) ->> 'last_digits'::text) AS digits,
-    (p.gateway_data -> 'card'::text) ->> 'first_digits'::text AS f_digits,
-    (p.gateway_data -> 'card'::text) ->> 'last_digits'::text AS l_digits,
-    (p.gateway_data -> 'card'::text) ->> 'brand'::text AS brand,
-    (p.gateway_data -> 'card'::text) ->> 'holder_name'::text AS holder_name,
-    (p.gateway_data -> 'customer'::text) ->> 'name'::text AS customer_name,
-    (p.gateway_data -> 'customer'::text) ->> 'email'::text AS customer_email,
-    u.email AS catarse_email,
-    (p.gateway_data ->> 'date_created'::text)::date AS transaction_date_created,
-    (p.gateway_data ->> 'date_updated'::text)::date AS transaction_date_updated,
-    p.created_at
-   FROM payments p
-     JOIN contributions c ON c.id = p.contribution_id
-     JOIN users u ON u.id = c.user_id
-     left join addresses add on add.id = u.address_id
-     JOIN projects pr ON pr.id = c.project_id
-  WHERE (((p.gateway_data -> 'card'::text) -> 'first_digits'::text)::text) IS NOT NULL;
     SQL
   end
 end
