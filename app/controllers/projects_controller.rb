@@ -145,7 +145,14 @@ class ProjectsController < ApplicationController
     end
 
     if params[:cancel_project] == 'true'
-      @project.reject
+      unless resource.project_cancelation.present?
+        resource.create_project_cancelation!
+        resource.update_columns(
+          skip_finish: true,
+          expires_at: DateTime.now
+        )
+      end
+
       redirect_to edit_project_path(@project, anchor: params[:anchor] || 'home')
     elsif should_show_modal
       redirect_to insights_project_path(@project, show_modal: true)
