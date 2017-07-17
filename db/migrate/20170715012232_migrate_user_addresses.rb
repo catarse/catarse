@@ -1,7 +1,7 @@
 class MigrateUserAddresses < ActiveRecord::Migration
   def up
     states = State.all
-    User.all.find_each.with_index do |user, index|
+    User.find_each.with_index do |user, index|
       puts index if index % 1000 == 0
       if user.address_street
         state_id = states.where(acronym: user.address_state).first.try(:id)
