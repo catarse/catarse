@@ -23,7 +23,6 @@ RSpec.describe User, type: :model do
     it { is_expected.to have_many :authorizations }
     it { is_expected.to have_one :user_total }
     it { is_expected.to have_one :bank_account }
-    it { is_expected.to belong_to :country }
   end
 
   describe 'validations' do
