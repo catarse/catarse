@@ -13,6 +13,10 @@ class RewardPolicy < ApplicationPolicy
     done_by_owner_or_admin?
   end
 
+  def toggle_survey_finish?
+    done_by_owner_or_admin?
+  end
+
   def destroy?
     done_by_owner_or_admin? && !record.any_sold?
   end

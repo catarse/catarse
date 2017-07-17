@@ -1,0 +1,36 @@
+- contribution ||= @notification.contribution
+- project = contribution.project
+- detail = contribution.details.ordered.first
+
+p Olá #{contribution.user.display_name}!
+
+p #{project.user.display_name} precisa confirmar algumas informações para realizar a entrega da sua recompensa!
+
+p Relembrando as informações do seu apoio:
+
+br/
+| Projeto: #{project.name}
+br/
+| Valor da contribuição: #{number_to_currency contribution.value}
+- if detail.installments > 1
+  br/
+  | Número de parcelas: #{detail.installments}
+  br/
+  | Valor da parcela: #{number_to_currency(detail.installment_value, precision: 2)}
+br/
+-if contribution.reward.present?
+  | Recompensa selecionada: #{contribution.reward.description}
+  br/
+  | Estimativa de entrega: #{contribution.reward.display_deliver_estimate}
+  br/
+  br/
+
+p Para ver quais são as questões e responder o questionário, basta clicar no botão abaixo:
+
+= link_to 'Responder', contribution_survey_url(contribution_id: contribution.id, id: Survey.where(reward_id: contribution.reward_id).first.id)
+
+p Se tiver alguma dúvida, você pode entrar em contato diretamente com #{project.user.display_name} através do email: #{project.user.email}.
+
+p Um abraço,
+
+p Equipe do Catarse

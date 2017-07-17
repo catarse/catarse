@@ -1447,7 +1447,7 @@ a:hover {
 }
 
 .dropdown-link:hover {
-  background-color: #f1f4f4;
+  background-color: #e9e9ec;
 }
 
 .dropdown-list {
@@ -2263,54 +2263,18 @@ a:hover {
   background-color: #f1f4f4;
 }
 
-.hero-full.hero-knowmore {
-  background-color: #24494e;
-  background-image: url('/assets/hero-new-home.jpg');
-  background-size: cover;
-  color: #fff;
-}
-
-.hero-full.hero-zelo {
-  background-size: cover, auto;
-  background-repeat: no-repeat, repeat;
-}
-
 .hero-full.hero-full--new {
   margin-bottom: 0px;
   padding-top: 0px;
   padding-bottom: 0px;
 }
 
-.hero-full.hero-2016 {
-  padding-top: 136px;
-  background-image: url('/assets/hero-2015.png'), -webkit-linear-gradient(270deg, #392a75, #281c5d);
-  background-image: url('/assets/hero-2015.png'), linear-gradient(180deg, #392a75, #281c5d);
-  background-position: 50% 100%, 0px 0px;
-  background-size: 670px, auto;
-  background-repeat: no-repeat, repeat;
-}
-
 .hero-full.hero-full-slide {
   padding-top: 0px;
 }
 
-.hero-guide {
-  background-image: url('/assets/hero-guide.jpg');
-  background-position: 50% 50%;
-  background-size: cover;
-  background-attachment: scroll;
-  color: #fff;
-}
-
 .hero-jobs {
   background-image: url('/assets/hero-jobs.jpg');
-  background-position: 50% 50%;
-  background-size: cover;
-  color: #fff;
-}
-
-.hero-back {
-  background-image: url('/assets/hero-home-hello-1.jpg');
   background-position: 50% 50%;
   background-size: cover;
   color: #fff;
@@ -2554,12 +2518,6 @@ a:hover {
   padding-top: 130px;
 }
 
-.hero-blog {
-  background-image: url('/assets/hero-blog.jpg');
-  background-size: cover;
-  color: #fff;
-}
-
 .whr-description {
   font-size: 18px;
   line-height: 150%;
@@ -2567,16 +2525,6 @@ a:hover {
 
 .whr-date {
   display: none;
-}
-
-.bg-projectgrid {
-  padding-top: 219px;
-  padding-bottom: 185px;
-  background-image: url('/assets/bg-hello-people.jpg');
-  background-position: 50% 38%;
-  background-size: cover;
-  background-attachment: scroll;
-  color: #fff;
 }
 
 .hero-assets {
@@ -2619,14 +2567,6 @@ a:hover {
   height: 575px;
 }
 
-.section-cta.video4anos {
-  padding-top: 92px;
-  padding-bottom: 92px;
-  background-image: url('/assets/hello-user-bg.jpg');
-  background-position: 50% 50%;
-  background-size: cover;
-}
-
 .btn-play {
   width: 100px;
   margin-bottom: 20px;
@@ -2657,16 +2597,6 @@ a:hover {
   -webkit-transform: scale(1.01);
   -ms-transform: scale(1.01);
   transform: scale(1.01);
-}
-
-.cta-backer {
-  background-image: url('/assets/hello-cta-backer.jpg');
-  background-position: 50% 50%;
-  background-size: cover;
-}
-
-.cta-maker {
-  background-image: url('/assets/hello-cta-apoiador.jpg');
 }
 
 .back-reward-money {
@@ -2798,32 +2728,9 @@ a:hover {
   margin-left: 0px;
 }
 
-.bg-people {
-  height: 768px;
-  padding-top: 375px;
-  padding-bottom: 375px;
-  background-image: url('/assets/bg-hello-people.jpg');
-  background-size: cover;
-  color: #fff;
-}
-
 .section-large {
   padding-top: 125px;
   padding-bottom: 125px;
-}
-
-.section-large.hello-idea {
-  padding-bottom: 145px;
-  background-image: url('/assets/bg-hello-idea_1.jpg');
-  background-size: 1383px;
-  text-align: center;
-}
-
-.section-large.hello-catarse {
-  background-image: url('/assets/bg-hello-catarse.jpg');
-  background-size: contain;
-  background-repeat: repeat-y;
-  text-align: center;
 }
 
 .section-large.dark {
@@ -2861,12 +2768,6 @@ a:hover {
 
 .before-footer {
   margin-bottom: -80px;
-}
-
-.bg-humberto {
-  background-image: url('/assets/bg-hello-user.jpg');
-  background-position: 50% 50%;
-  background-size: cover;
 }
 
 .btn-dashboard {
@@ -3095,11 +2996,6 @@ a:hover {
   background-color: #f4fced;
 }
 
-.bg-stats {
-  background-image: url('/assets/bg-hello-idea.jpg');
-  background-size: cover;
-}
-
 .table-outer {
   border: 1px solid #ddd;
   border-radius: 3px;
@@ -3215,17 +3111,6 @@ a:hover {
   background-color: hsla(0, 0%, 100%, .12);
 }
 
-.hero-zelo {
-  margin-bottom: 0px;
-  padding-top: 103px;
-  background-image: url('/assets/bg-hero-flex.png'), -webkit-linear-gradient(270deg, #9d50da 41%, #716bd8);
-  background-image: url('/assets/bg-hero-flex.png'), linear-gradient(180deg, #9d50da 41%, #716bd8);
-  background-position: 50% 50%, 0px 0px;
-  background-size: 1383px, auto;
-  background-repeat: no-repeat, repeat;
-  color: #fff;
-}
-
 .bg-purple {
   background-color: #7658b0;
 }
@@ -3252,12 +3137,6 @@ a:hover {
   color: #fff;
   text-align: center;
   text-decoration: none;
-}
-
-.bg-catarse-zelo {
-  background-image: url('/assets/bg-catarse-zelo.jpg');
-  background-position: 50% 50%;
-  background-size: cover;
 }
 
 .checkbox-big {
@@ -3376,24 +3255,6 @@ a:hover {
   padding-top: 230px;
   padding-right: 86px;
   padding-left: 86px;
-}
-
-.bg-hero {
-  background-image: url('/assets/bg-podcycle.jpg');
-  background-position: 50% 50%;
-  background-size: cover;
-}
-
-.bg-knowmore {
-  background-image: url('/assets/HERO-HELLO-DEGRADE.jpg');
-  background-position: 50% 50%;
-  background-size: cover;
-}
-
-.bg-pedroca {
-  background-image: url('/assets/bg-pedroca.jpg');
-  background-position: 50% 50%;
-  background-size: cover;
 }
 
 .bg-greenlime {
@@ -3643,42 +3504,9 @@ a:hover {
 .hero-slide {
   padding-top: 187px;
   background-color: #3f4752;
-  background-image: url('/assets/example-bg.png');
+  background-image: url("https://d3e54v103j8qbb.cloudfront.net/img/example-bg.png");
   background-position: 50% 50%;
   background-size: cover;
-}
-
-.hero-slide.teatromagico {
-  background-image: url('/assets/banner-home-crioulas.jpg');
-}
-
-.hero-slide.anavitoria {
-  background-image: url('/assets/banner-home-dreamdogs.jpg');
-  background-size: 1430px;
-}
-
-.hero-slide.livros {
-  background-image: url('/assets/banner-home-livros-herois.jpg');
-  background-position: 0px 0px;
-  background-size: 1430px;
-}
-
-.hero-slide.centrdaterra {
-  background-image: url('/assets/banner-home-centrodaterra.jpg');
-}
-
-.hero-slide.pernas {
-  background-image: url('/assets/banner-home-pernas.jpg');
-  background-size: 1430px;
-}
-
-.hero-slide.crypto {
-  background-image: url('/assets/banner-home-crypto-rave.jpg');
-  background-size: 1430px;
-}
-
-.hero-slide.start {
-  background-image: url('/assets/bg-hero-start.jpg');
 }
 
 .bg-backs-carrosel {
@@ -3988,11 +3816,11 @@ a:hover {
   background-position: 9px 50%;
   background-size: 11px;
   background-repeat: no-repeat;
-  cursor: default;
+  cursor: not-allowed;
 }
 
 .text-field-disabled:hover {
-  border-style: solid;
+  border-style: dashed;
   border-color: hsla(217, 7%, 51%, .36);
 }
 
@@ -4088,6 +3916,37 @@ a:hover {
 
 .cursor-move {
   cursor: move;
+}
+
+.text-field-faded {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.text-field-faded:hover {
+  border: 1px solid #ddd;
+}
+
+.text-field-faded:focus {
+  border: 1px solid #ddd;
+}
+
+.text-field-locked {
+  cursor: not-allowed;
+}
+
+.text-field-locked:hover {
+  border: 1px solid #ddd;
+}
+
+.link-error {
+  color: #e86666;
+  text-decoration: underline;
+}
+
+.link-error:hover {
+  color: #e86666;
+  text-decoration: underline;
 }
 
 html.w-mod-js *[data-ix="fade-in"] {
@@ -4554,12 +4413,6 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
   .hero-medium {
     height: 330px;
     padding-top: 120px;
-  }
-  .hero-hello {
-    height: 490px;
-    background-color: #3f4752;
-    background-image: url('/assets/hero-hello.jpg');
-    background-size: cover;
   }
   .btn-play {
     width: 80px;
@@ -5326,10 +5179,6 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
     height: 100px;
     margin-top: -60px;
   }
-  .hero-knowmore {
-    padding-top: 100px;
-    padding-bottom: 78px;
-  }
   .slide-testimonials-content {
     padding-top: 83px;
   }
@@ -5729,16 +5578,6 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
     padding-right: 16px;
     padding-left: 16px;
   }
-  .hero-full.hero-knowmore {
-    padding-top: 175px;
-  }
-  .hero-full.hero-zelo {
-    padding-top: 20px;
-  }
-  .hero-full.hero-2016 {
-    background-position: 50% 100%, 0px 0px;
-    background-size: 100%, auto;
-  }
   .hero-full.hero-full-slide {
     padding-right: 0px;
     padding-left: 0px;
@@ -5786,9 +5625,6 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
     margin-bottom: -5px;
     padding-top: 4px;
     padding-bottom: 4px;
-  }
-  .hero-hello {
-    height: 490px;
   }
   .card-big {
     padding-right: 15px;
@@ -5875,11 +5711,6 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
   }
   .slide-testimonials {
     min-height: 640px;
-  }
-  .hero-knowmore {
-    padding-top: 135px;
-    padding-right: 15px;
-    padding-left: 15px;
   }
   .how-col-02 {
     height: 162px;

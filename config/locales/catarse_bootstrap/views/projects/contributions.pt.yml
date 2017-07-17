@@ -1,6 +1,17 @@
 pt:
   projects:
     contributions:
+      user_since: "Conta no Catarse desde %{date}"
+      backed_projects: "Apoiou %{count} projetos"
+      created_projects: "Criou %{count} projetos"
+      survey:
+        survey: Questionário
+        address_title: Nome e endereço
+        address_neighbourhood: 'Bairro:'
+        answered_at: "Respondido em %{date}"
+      report:
+        info: Info
+        profile: Perfil
       contribution_warning:
         title: "O Catarse não é uma loja."
         subtitle: "Apoiar um projeto é acreditar e confiar no potencial dele se tornar realidade."

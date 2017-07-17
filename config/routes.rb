@@ -64,7 +64,9 @@ Catarse::Application.routes.draw do
     end
   end
   resources :auto_complete_cities, only: [:index]
-
+  resources :rewards, only: [] do
+    resources :surveys, only: [:create, :update], controller: 'surveys'
+  end
   resources :projects, path: '/', only: [:index]
   resources :flexible_projects, path: '/', controller: 'projects', only: [:index]
   # @TODO update links, we don't need this anymore
@@ -76,10 +78,21 @@ Catarse::Application.routes.draw do
       get :finish
     end
   end
+  resources :contributions, only: [] do
+    resources :surveys, only: [:show], controller: 'surveys' do
+      member do
+        put :answer
+      end
+    end
+  end
   resources :projects, only: %i[create update edit new show] do
     resources :accounts, only: %i[create update]
     resources :posts, controller: 'projects/posts', only: %i[destroy show create]
     resources :rewards do
+      member do
+        get :toggle_survey_finish
+      end
+      resources :surveys, only: [:new], controller: 'surveys'
       post :sort, on: :member
     end
     resources :contributions, { except: [:index], controller: 'projects/contributions' } do
@@ -105,6 +118,7 @@ Catarse::Application.routes.draw do
       post :upload_image
       get 'insights'
       get 'posts'
+      get 'surveys'
       get 'contributions_report'
       get 'download_reports'
       put 'pay'

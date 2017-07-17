@@ -11,6 +11,7 @@ class Reward < ActiveRecord::Base
   belongs_to :project
   has_many :payments, through: :contributions
   has_many :shipping_fees, dependent: :destroy
+  has_one :survey
   has_many :contributions, dependent: :nullify
 
   accepts_nested_attributes_for :shipping_fees, allow_destroy: true

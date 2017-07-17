@@ -8,6 +8,7 @@ pt:
       contribution: Apoiador
       category: Categoria
       bank_account: Dados bancários
+      address: Endereço
     attributes:
       project_account:
         address_city: Cidade
@@ -119,6 +120,18 @@ pt:
         first_contributions: "Quem são as primeiras pessoas que você vai pedir para apoiar o seu projeto?"
         budget: 'Orçamento do projeto'
         uploaded_image: 'Imagem do projeto'
+      address:
+        delivery_address: Endereço de entrega
+        address_city: Cidade
+        address_complement: Complemento
+        address_neighbourhood: Bairro
+        address_number: Número
+        address_state: Estado
+        address_street: 'Endereço (Rua, Avenida, etc)'
+        zipcode_unknown: 'Não sei meu CEP'
+        address_zip_code: CEP
+        phone_number: Telefone
+        country: País / Country
       user:
         public_name: 'Nome público'
         birth_date: 'Data de nascimento'
@@ -440,7 +453,6 @@ pt:
     contribution_value: Valor do apoio
     service_fee: Taxa do Catarse
     user_email: Email perfil Catarse
-    cpf: Cpf do apoiador
     user_name: Nome completo
     public_name: Nome público
     gateway: Meio de pagamento
@@ -452,6 +464,8 @@ pt:
     city: Cidade
     address_state: Estado
     zip_code: CEP
+    open_questions: open_questions
+    multiple_choice_questions: multiple_choice_questions
     shipping_choice: 'Local de entrega'
     shipping_option: 'Envio'
   user:
