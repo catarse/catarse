@@ -11,7 +11,12 @@ class Reports::ContributionReportsForProjectOwnersController < ApplicationContro
     authorize project, :update?
     respond_to do |format|
       format.csv do
-        send_data collection.copy_to_string, filename: "#{project.permalink}.csv"
+        if params[:reward_id]
+          reward = Reward.find params[:reward_id]
+          send_data ContributionReportsForProjectOwner.to_csv(collection, params[:reward_id]), filename: "#{project.permalink}#{reward.title ? '_' + reward.title : ''}.csv" 
+        else
+          send_data collection.copy_to_string, filename: "#{project.permalink}.csv"
+        end
       end
 
       format.xls do
