@@ -26,6 +26,6 @@
     "jquery.fixedmask": "~1.0.0",
     "mithril": "https://github.com/mithriljs/mithril.js.git#0.2.4",
     "chartjs": "1.0.2",
-    "catarse.js": "https://github.com/catarse/catarse.js.git#1.0.35"
+    "catarse.js": "https://github.com/catarse/catarse.js.git#1.0.36"
   }
 }
