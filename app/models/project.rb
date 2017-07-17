@@ -32,6 +32,7 @@ class Project < ActiveRecord::Base
   belongs_to :city
   belongs_to :origin
   has_one :balance_transfer, inverse_of: :project
+  has_one :project_cancelation
   has_one :project_total
   has_many :balance_transactions
   has_many :taggings
