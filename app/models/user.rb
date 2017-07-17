@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
            :twitter_link, :display_bank_account, :display_bank_account_owner, to: :decorator
   :fb_parsed_link
   delegate :bank, to: :bank_account
-  delegate :address_city, :country, :state, :address_complement, :address_neighbourhood, :address_zip_code, :address_street, :address_number, :address_state , to: :address
+  delegate :address_city, :country_id, :phone_number, :country, :state, :address_complement, :address_neighbourhood, :address_zip_code, :address_street, :address_number, :address_state , to: :address
 
   # FIXME: Please bitch...
   attr_accessible :email, :password, :address_attributes, :password_confirmation, :remember_me, :name, :permalink,
@@ -31,7 +31,7 @@ class User < ActiveRecord::Base
   mount_uploader :uploaded_image, UserUploader
   mount_uploader :cover_image, CoverUploader
 
-  #validates :name, :cpf, :address_zip_code, :phone_number, :address_state, :country_id, :address_city, :address_street, :address_number, :address_neighbourhood, presence: true, if: ->(user) { !user.reseting_password && (user.published_projects.present? || user.publishing_project || user.publishing_user_settings) }
+  validates :name, :cpf, presence: true, if: ->(user) { !user.reseting_password && (user.published_projects.present? || user.publishing_project || user.publishing_user_settings) }
   validates :birth_date, presence: true, if: ->(user) { user.publishing_user_settings && user.account_type == 'pf' }
 
   validates_presence_of :email
@@ -48,6 +48,7 @@ class User < ActiveRecord::Base
   validates :account_type, inclusion: { in: %w[pf pj mei] }
 
   validate :owner_document_validation
+  validate :address_fields_validation
 
   belongs_to :address
   has_one :user_total
@@ -151,6 +152,14 @@ class User < ActiveRecord::Base
 
   def self.find_active!(id)
     active.where(id: id).first!
+  end
+
+  def address_fields_validation
+    if !reseting_password && (published_projects.present? || publishing_project || publishing_user_settings)
+      [:address_city, :address_zip_code, :phone_number, :address_neighbourhood, :address_street, :address_number, :address_state].each do |field|
+        errors.add(field, :invalid) if !address.send(field).present?
+      end
+    end
   end
 
   def owner_document_validation
