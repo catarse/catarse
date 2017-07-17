@@ -104,7 +104,7 @@ RSpec.describe Contribution, type: :model do
     its(:address_neighbourhood) { should eq(user.address_neighbourhood) }
     its(:address_zip_code) { should eq(user.address_zip_code) }
     its(:address_city) { should eq(user.address_city) }
-    its(:address_state) { should eq(user.address_state) }
+    its(:address_state) { should eq(user.state.try(:acronym)) }
     its(:address_phone_number) { should eq(user.phone_number) }
     its(:payer_document) { should eq(user.cpf) }
   end
@@ -115,15 +115,6 @@ RSpec.describe Contribution, type: :model do
     let(:contribution_attributes) do
       {
         account_type: (user.cpf.present? ? user.account_type : (contribution.payer_document.size > 14 ? 'pj' : 'pf')),
-        country_id: (contribution.country_id || user.country_id),
-        address_street: (contribution.address_street || user.address_street),
-        address_number: (contribution.address_number || user.address_number),
-        address_complement: (contribution.address_complement || user.address_complement),
-        address_neighbourhood: (contribution.address_neighbourhood || user.address_neighbourhood),
-        address_zip_code: (contribution.address_zip_code || user.address_zip_code),
-        address_city: (contribution.address_city || user.address_city),
-        address_state: (contribution.address_state || user.address_state),
-        phone_number: (contribution.address_phone_number || user.phone_number),
         cpf: (user.cpf || contribution.payer_document),
         name: (user.name || contribution.payer_name),
         public_name: (user.public_name || user.name || contribution.payer_name)
