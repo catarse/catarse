@@ -146,7 +146,7 @@ class Contribution < ActiveRecord::Base
                              name: user.name.presence || payer_name,
                              public_name: user.public_name.presence || user.name.presence || payer_name
                            })
-    user.address.update_attributes({
+    address_attributes = {
                              country_id: country_id.presence || user.country_id,
                              address_street: address_street.presence || user.address_street,
                              address_number: address_number.presence || user.address_number,
@@ -156,7 +156,13 @@ class Contribution < ActiveRecord::Base
                              address_city: address_city.presence || user.address_city,
                              address_state: address_state.presence || user.state.try(:acronym) || user.address_state,
                              phone_number: address_phone_number.presence || user.phone_number,
-                           })
+                         }
+    if user.address
+      user.address.update_attributes(address_attributes)
+    else
+      user.create_address(address_attributes)
+      user.save
+    end
   end
 
   def to_js
