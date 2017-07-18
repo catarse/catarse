@@ -1,6 +1,7 @@
 class AddHasCancelationRequestToProjects < ActiveRecord::Migration
   def up
     execute %Q{
+grant select on public.project_cancelations to admin, web_user, anonymous;
 CREATE OR REPLACE FUNCTION public.has_cancelation_request(p projects) RETURNS BOOLEAN
     LANGUAGE SQL AS $$
         SELECT exists((select true from project_cancelations where project_id = p.id));
@@ -102,6 +103,7 @@ CREATE OR REPLACE VIEW "1"."project_details" AS
   def down
     execute %Q{
 DROP FUNCTION public.has_cancelation_request(p projects);
+grant select on "1".project_details to admin, web_user, anonymous;
 drop view "1".project_details;
 CREATE OR REPLACE VIEW "1"."project_details" AS 
  SELECT p.id AS project_id,
