@@ -52,10 +52,7 @@ namespace :cron do
   task notify_unanswered_surveys: :environment do
     Survey.where(finished_at: nil).each do |survey|
       survey.reward.contributions.was_confirmed.each do |contribution|
-        if SurveyMultipleChoiceQuestionAnswer.where(contribution: contribution).empty?  ||
-            SurveyOpenQuestionAnswer.where(contribution: contribution).empty?  ||
-            SurveyAddressAnswer.where(contribution: contribution).empty? &&
-            ContributionNotification.where(contribution: contribution, template_name: 'answer_survey').where("created_at > current_timestamp - '1 week'::interval ").empty?
+        if !contribution.survey_answered_at && ContributionNotification.where(contribution: contribution, template_name: 'answer_survey').where("created_at > current_timestamp - '1 week'::interval ").empty?
           survey.notify_to_contributors(:answer_survey)
         end
       end
