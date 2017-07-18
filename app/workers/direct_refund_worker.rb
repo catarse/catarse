@@ -11,6 +11,7 @@ class DirectRefundWorker
       if payment.slip_payment? && payment.paid?
         Payment.transaction do
           BalanceTransaction.insert_contribution_refund(payment.contribution_id)
+          payment.contribution.notify_to_contributor(:contribution_refunded) unless payment.refunded?
           payment.refund
         end
       else
