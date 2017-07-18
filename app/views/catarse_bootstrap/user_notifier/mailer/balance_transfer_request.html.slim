@@ -30,17 +30,19 @@ br/
 br/
 | CPF/CNPJ: #{user.cpf}
 p
-  | <strong>Dúvidas frequentes:</strong>
+  | <strong>Saiba mais sobre o processo de transferência nos artigos listados abaixo:</strong>
 p
-  = link_to 'Quais são as etapas e prazos para a transferência do dinheiro?', 'http://suporte.catarse.me/hc/pt-br/articles/217916143#etapas', target: '__blank'
-  br/
-  = link_to 'Quando o dinheiro estará disponível na minha conta?', 'http://suporte.catarse.me/hc/pt-br/articles/217916143#quando', target: '__blank'
-  br/
-  = link_to 'Como funciona a cobrança de taxa do Catarse', 'http://suporte.catarse.me/hc/pt-br/articles/217916143#taxa', target: '__blank' 
-  br/
+  strong
+    | Para realizadores: 
+  = link_to 'A transferência do dinheiro', 'http://suporte.catarse.me/hc/pt-br/articles/217916143-A-transfer%C3%AAncia-do-dinheiro', target: '__blank'
+p
+  strong
+    | Para apoiadores: 
+  = link_to 'Regras e funcionamento dos reembolsos / estornos / cancelamentos', 'http://suporte.catarse.me/hc/pt-br/articles/202365507', target: '__blank'
+br/
 | Se ficar alguma dúvida, basta responder a esta mensagem diretamente ou enviar um email para #{mail_to CatarseSettings[:email_contact]} .
 p
   | Abraços,
   br/
-  | Equipe #{company_name}
+  | Equipe do #{company_name}
 
