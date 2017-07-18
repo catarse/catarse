@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
   :fb_parsed_link
   delegate :bank, to: :bank_account
 
-  delegate :address_city, :country_id, :phone_number, :country, :state, :address_complement, :address_neighbourhood, :address_zip_code, :address_street, :address_number, :address_state, to: :address
+  delegate :address_city, :country_id, :phone_number, :country, :state, :address_complement, :address_neighbourhood, :address_zip_code, :address_street, :address_number, :address_state, to: :address, allow_nil: true
 
   # FIXME: Please bitch...
   attr_accessible :email, :password, :address_attributes, :password_confirmation, :remember_me, :name, :permalink,
@@ -85,6 +85,7 @@ class User < ActiveRecord::Base
   has_many :category_followers, dependent: :destroy
   has_many :categories, through: :category_followers
   has_many :links, class_name: 'UserLink', inverse_of: :user
+  has_many :balance_transactions
   has_and_belongs_to_many :recommended_projects, join_table: :recommendations, class_name: 'Project'
 
   begin
@@ -412,5 +413,9 @@ class User < ActiveRecord::Base
 
     recoverable.reset_password_token = original_token if recoverable.reset_password_token.present?
     recoverable
+  end
+
+  def total_balance
+    @total_balance ||= balance_transactions.sum(:amount).to_f
   end
 end

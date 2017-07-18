@@ -117,12 +117,12 @@ RSpec.describe ProjectObserver do
       create(:confirmed_contribution, value: 10, project: project)
     end
 
-    context 'not request refund to invalid bank_account slip payment' do
-      let(:payment_valid) do
+    context 'should refund slip into balance' do
+      let!(:payment_valid) do
         contribution_valid.payments.first
       end
 
-      let(:payment_invalid) do
+      let!(:payment_slip) do
         p = contribution_invalid.payments.first
         p.update_column(:payment_method, 'BoletoBancario')
         p
@@ -130,12 +130,11 @@ RSpec.describe ProjectObserver do
 
       before do
         Sidekiq::Testing.inline!
-        payment_valid
-        payment_invalid
         contribution_invalid.user.bank_account.destroy
         project.update_attribute :online_days, 2
         expect(DirectRefundWorker).to receive(:perform_async).with(payment_valid.id)
-        expect(DirectRefundWorker).to_not receive(:perform_async).with(payment_invalid.id)
+        expect(DirectRefundWorker).to receive(:perform_async).with(payment_slip.id).and_call_original
+        expect(BalanceTransaction).to receive(:insert_contribution_refund).with(payment_slip.contribution_id)
       end
 
       it { project.finish }

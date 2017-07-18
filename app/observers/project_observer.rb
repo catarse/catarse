@@ -53,19 +53,10 @@ class ProjectObserver < ActiveRecord::Observer
   def from_online_to_rejected(project)
     refund_all_payments(project)
   end
-
-  def from_online_to_deleted(project)
-    refund_all_payments(project)
-  end
-
-  def from_online_to_failed(project)
-    notify_users(project)
-    refund_all_payments(project)
-  end
-
-  def from_waiting_funds_to_failed(project)
-    from_online_to_failed(project)
-  end
+  alias from_waiting_funds_to_rejected from_online_to_rejected
+  alias from_waiting_funds_to_failed from_online_to_rejected
+  alias from_online_to_deleted from_online_to_rejected
+  alias from_online_to_failed from_online_to_rejected
 
   private
 
@@ -76,8 +67,11 @@ class ProjectObserver < ActiveRecord::Observer
 
   def notify_users(project)
     project.payments.with_state('paid').each do |payment|
-      template_name = project.successful? ? :contribution_project_successful : payment.notification_template_for_failed_project
-      payment.contribution.notify_to_contributor(template_name)
+      if project.successful?
+        payment.contribution.
+          notify_to_contributor(
+            :contribution_project_successful)
+      end
     end
   end
 

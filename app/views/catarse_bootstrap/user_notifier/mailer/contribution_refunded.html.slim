@@ -1,0 +1,40 @@
+- contribution = @notification.contribution
+- project = contribution.project
+- detail = contribution.details.ordered.first
+- company_name = CatarseSettings[:company_name]
+- contact_email = CatarseSettings[:email_contact]
+
+|Olá, <strong>#{contribution.user.display_name}</strong>!
+br/
+br/
+| A devolução do valor do seu apoio para o projeto #{project.name}, que foi #{project.decorator.display_mailer_status}, no Catarse já está disponível para que você possa resgatar:
+br/
+br/
+| Valor devolvido: #{number_to_currency detail.value, precision: 2}
+br/
+br/
+| Para fazer a solicitação de saque desse valor, basta seguir este passo-a-passo:
+p
+    | 1) Faça o login no Catarse 
+    br/
+    | 2) Entre na aba <strong>#{link_to 'saldo', edit_user_url(project.user_id, anchor: 'balance',ref: 'notificacao_project_success')}</strong>, no seu perfil.
+    br/
+    | 3) Clique em <strong>"Realizar saque"</strong>
+    br/
+    | 4) Verifique se os dados estão corretos:
+    p style="padding-left: 20px;"
+      | <strong>Se os seus dados estiverem corretos:</strong> basta clicar em: "Solicitar Saque."
+      br/
+      | <strong>Se os dados bancários estiverem incorretos ou em branco:</strong> você deverá <strong>corrigir (ou preencher) seus dados</strong> e depois clicar em <strong>"Solicitar o saque".</strong>
+    | 5) Clique em <strong>"Confirmar"</strong> para dar início ao processo de transferência diretamente para a sua conta bancária. Após o pedido de transferência, faremos o depósito em até 10 dias úteis.
+br/
+br/
+p
+  img src="https://s3.amazonaws.com/catarse.files/user_balance.gif"
+br/
+|Se ficou com alguma dúvida, entre em contato conosco respondendo a esta mensagem ou através do e-mail #{mail_to contact_email}.
+br
+br
+|Um abraço,
+br
+| Equipe do #{company_name}

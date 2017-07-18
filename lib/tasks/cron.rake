@@ -116,12 +116,12 @@ namespace :cron do
 
   desc 'Send a notification about pending refunds'
   task notify_pending_refunds: [:environment] do
-    Contribution.need_notify_about_pending_refund.each do |contribution|
-      unless contribution.user.bank_account.present?
-        contribution.notify(:contribution_project_unsuccessful_slip_no_account,
-                            contribution.user)
-      end
-    end
+    #Contribution.need_notify_about_pending_refund.each do |contribution|
+    #  unless contribution.user.bank_account.present?
+    #    contribution.notify(:contribution_project_unsuccessful_slip_no_account,
+    #                        contribution.user)
+    #  end
+    #end
   end
 
   desc 'Update all fb users'

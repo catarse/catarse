@@ -44,13 +44,6 @@ Catarse::Application.routes.draw do
   # mount CatarseWepay::Engine => "/", as: :catarse_wepay
   mount Dbhero::Engine => '/dbhero', as: :dbhero
 
-  resources :bank_accounts, except: %i[destroy index] do
-    member do
-      get 'confirm'
-      put 'request_refund'
-    end
-  end
-
   resources :categories, only: [] do
     member do
       get :subscribe, to: 'categories/subscriptions#create'
@@ -58,11 +51,6 @@ Catarse::Application.routes.draw do
     end
   end
   resources :auto_complete_projects, only: [:index]
-  resources :donations, only: [:create] do
-    collection do
-      get :confirm
-    end
-  end
   resources :auto_complete_cities, only: [:index]
   resources :rewards, only: [] do
     resources :surveys, only: [:create, :update], controller: 'surveys'
@@ -105,7 +93,6 @@ Catarse::Application.routes.draw do
         get 'toggle_delivery'
         get :second_slip
         get :receipt
-        get :no_account_refund
       end
       put :credits_checkout, on: :member
     end

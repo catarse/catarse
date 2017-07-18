@@ -115,6 +115,9 @@ class Contribution < ActiveRecord::Base
   def pending?
     payments.with_state('pending').exists?
   end
+  def balance_refunded?
+    balance_transactions.where(event_name: 'contribution_refund').exists?
+  end
 
   # Used in payment engines
   def price_in_cents

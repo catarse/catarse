@@ -51,7 +51,7 @@ task verify_balance_transfers: [:environment] do
     case transfer.status
     when 'transferred' then
       bt.transition_to(:transferred, transfer_data: transfer.to_hash)
-    when 'failed' then
+    when 'failed', 'canceled' then
       bt.transition_to(:error, transfer_data: transfer.to_hash)
     end
   end

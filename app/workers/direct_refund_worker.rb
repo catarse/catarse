@@ -8,7 +8,15 @@ class DirectRefundWorker
     payment = Payment.find payment_id
 
     begin
-      payment.payment_engine.direct_refund(payment)
+      if payment.slip_payment? && payment.paid?
+        Payment.transaction do
+          BalanceTransaction.insert_contribution_refund(payment.contribution_id)
+          payment.contribution.notify_to_contributor(:contribution_refunded) unless payment.refunded?
+          payment.refund
+        end
+      else
+        payment.payment_engine.direct_refund(payment)
+      end
     rescue Exception => e
       payment.contribution.notify_to_backoffice(
         :direct_refund_worker_error,

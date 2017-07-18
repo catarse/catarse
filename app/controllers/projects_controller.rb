@@ -145,16 +145,12 @@ class ProjectsController < ApplicationController
     end
 
     if params[:cancel_project] == 'true'
-      api = ApiWrapper.new current_user
-      api.request('rpc/cancel_project', {
-                    body: { _project_id: @project.id }.to_json,
-                    action: :post
-                  }).try(:run)
-
-      if @project.reload && @project.failed?
-        @project.notify_observers :from_online_to_failed
-      else
-        flash[:notice] = t('project.update.failed')
+      unless resource.project_cancelation.present?
+        resource.create_project_cancelation!
+        resource.update_columns(
+          skip_finish: true,
+          expires_at: DateTime.now
+        )
       end
 
       redirect_to edit_project_path(@project, anchor: params[:anchor] || 'home')

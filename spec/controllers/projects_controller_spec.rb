@@ -135,10 +135,21 @@ RSpec.describe ProjectsController, type: :controller do
 
         context 'when I cancel the project' do
           before do
-            expect_any_instance_of(ApiWrapper).to receive(:request)
+            expect_any_instance_of(Project).to receive(:create_project_cancelation!).and_call_original
+            expect_any_instance_of(Project).to receive(:update_columns).with(
+            skip_finish: true,
+            expires_at: DateTime.now).and_call_original
+
+            put :update, id: project.id, cancel_project: 'true', project: { posts_attributes: {"0" => { title: "cancelamento de teste", comment_html: "<p>apenas um teste no cancelamento</p>" }}}, locale: :pt
+            project.reload
           end
-          it 'should call cancel API endpoint' do
-            put :update, id: project.id, project: { name: 'new_title', about_html: 'new_description' }, locale: :pt, cancel_project: 'true'
+
+          it "should mark with to skip finish queue" do
+            expect(project.skip_finish).to eq(true)
+          end
+
+          it "should generate a project cancelation order" do
+            expect(project.project_cancelation.present?).to eq(true)
           end
         end
 

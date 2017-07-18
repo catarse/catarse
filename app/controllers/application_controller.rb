@@ -21,8 +21,7 @@ class ApplicationController < ActionController::Base
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
   helper_method :referral, :render_projects, :is_projects_home?,
-                :render_feeds, :can_display_pending_refund_alert?,
-                :public_settings
+                :render_feeds, :public_settings
 
   before_filter :set_locale
 
@@ -33,13 +32,6 @@ class ApplicationController < ActionController::Base
       ref: cookies[:referral_link],
       domain: cookies[:origin_referral]
     }
-  end
-
-  def can_display_pending_refund_alert?
-    @can_display_alert ||= current_user && current_user.pending_refund_payments.present? &&
-                           controller_name.to_sym != :bank_accounts &&
-                           controller_name.to_sym != :donations &&
-                           action_name.to_sym != :no_account_refund
   end
 
   def is_projects_home?

@@ -36,7 +36,7 @@ namespace :balance_transfer do
       when 'transferred' then
         Rails.logger.info "[BalanceTransfer] #{bt.id} -> transferred"
         bt.transition_to(:transferred, transfer_data: transfer.to_hash)
-      when 'failed' then
+      when 'failed', 'canceled' then
         Rails.logger.info "[BalanceTransfer] #{bt.id} -> failed"
         bt.transition_to(:error, transfer_data: transfer.to_hash)
       end

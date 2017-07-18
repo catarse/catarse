@@ -75,14 +75,6 @@ class Payment < ActiveRecord::Base
     end
   end
 
-  def notification_template_for_failed_project
-    if slip_payment?
-      user.bank_account.present? ? :contributions_project_unsuccessful_slip : :contribution_project_unsuccessful_slip_no_account
-    else
-      :contribution_project_unsuccessful_credit_card
-    end
-  end
-
   def credits?
     gateway == 'Credits'
   end
@@ -143,7 +135,7 @@ class Payment < ActiveRecord::Base
   end
 
   def can_request_refund?
-    !slip_payment? || user.try(:bank_account).try(:valid?)
+    !contribution.balance_refunded? && paid?
   end
 
   private

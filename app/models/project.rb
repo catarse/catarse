@@ -32,6 +32,7 @@ class Project < ActiveRecord::Base
   belongs_to :city
   belongs_to :origin
   has_one :balance_transfer, inverse_of: :project
+  has_one :project_cancelation
   has_one :project_total
   has_many :balance_transactions
   has_many :taggings
@@ -468,6 +469,10 @@ class Project < ActiveRecord::Base
 
   def successful_pledged_transaction
     balance_transactions.where(event_name: 'successful_project_pledged').last
+  end
+
+  def user_has_balance_gte_project_pledged_transactions?
+      user.total_balance >= all_pledged_kind_transactions.sum(:amount).to_f
   end
 
   # State machine delegation methods

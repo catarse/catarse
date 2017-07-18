@@ -10,6 +10,7 @@ class BalanceTransaction < ActiveRecord::Base
     successful_project_pledged
     catarse_project_service_fee
     irrf_tax_project
+    contribution_refund
   ].freeze
 
   belongs_to :project
@@ -18,6 +19,20 @@ class BalanceTransaction < ActiveRecord::Base
 
   validates :event_name, inclusion: { in: EVENT_NAMES }
   validates :amount, :event_name, :user_id, presence: true
+
+  def self.insert_contribution_refund(contribution_id)
+    contribution = Contribution.find contribution_id
+    return unless contribution.confirmed?
+    return if contribution.balance_refunded?
+
+    create!(
+      user_id: contribution.user_id,
+      event_name: 'contribution_refund',
+      amount: contribution.value,
+      contribution_id: contribution.id,
+      project_id: contribution.project_id
+    )
+  end
 
   def self.insert_contribution_confirmed_after_project_finished(project_id, contribution_id)
     project = Project.find project_id
