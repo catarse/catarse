@@ -51,6 +51,7 @@ pt:
       finish_explanation: 'Sua campanha ainda está com o prazo em aberto. Para receber os recursos em sua conta bancária, é preciso definir uma data final de arrecadação.'
       finish_explanation: 'Sua campanha ainda está com o prazo de arrecadação em aberto. Para receber os recursos em sua conta bancária, é preciso definir uma data final de arrecadação. Saiba mais sobre como <a href="http://suporte.catarse.me/hc/pt-br/articles/213783503-tudo-sobre-Prazo-da-campanha">definir um prazo</a> e como funciona o <a href="http://suporte.catarse.me/hc/pt-br/articles/217916143-tudo-sobre-REPASSE" target="blank">processo de transferência.</a>'
       know_more: ' Saiba mais.'
+      has_cancelation_request_explanation: 'O cancelamento de sua campanha foi agendado. Dentro de 24h, ela será expirada e os seus <a href="http://suporte.catarse.me/hc/pt-br/articles/202365507-Regras-e-funcionamento-dos-reembolsos-estornos-cancelamentos" target="__blank">apoiadores serão reembolsados</a>.'
       referral:
         ctrse_explore: 'Busca do Catarse'
         ctrse_explore_featured_big: 'Projeto em destaque grande no explore'
