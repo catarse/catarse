@@ -13,15 +13,18 @@ class Reports::ContributionReportsForProjectOwnersController < ApplicationContro
       format.csv do
         if params[:reward_id]
           reward = Reward.find params[:reward_id]
-          send_data ContributionReportsForProjectOwner.to_csv(collection, params[:reward_id]), filename: "#{project.permalink}#{reward.title ? '_' + reward.title : ''}.csv" 
+          send_data ContributionReportsForProjectOwner.to_csv(collection(false), params[:reward_id]), filename: "#{project.permalink}#{reward.title ? '_' + reward.title : ''}.csv" 
         else
           send_data collection.copy_to_string, filename: "#{project.permalink}.csv"
         end
       end
 
       format.xls do
+        columns = I18n.t('contribution_report_to_project_owner').values
+        columns.delete 'open_questions'
+        columns.delete 'multiple_choice_questions'
         send_data collection.to_xls(
-          columns: I18n.t('contribution_report_to_project_owner').values
+          columns: columns
         ), filename: "#{project.permalink}.xls"
       end
     end
@@ -29,8 +32,8 @@ class Reports::ContributionReportsForProjectOwnersController < ApplicationContro
 
   protected
 
-  def collection
-    @collection ||= apply_scopes(ContributionReportsForProjectOwner.report)
+  def collection(remove_keys=true)
+    @collection ||= apply_scopes(ContributionReportsForProjectOwner.report(remove_keys))
     @collection.project_owner_id(current_user.id) unless current_user.admin?
     @collection
   end

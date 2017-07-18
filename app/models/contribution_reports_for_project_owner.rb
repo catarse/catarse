@@ -42,9 +42,12 @@ class ContributionReportsForProjectOwner < ActiveRecord::Base
     end
   end
 
-  def self.report
+  def self.report(remove_keys=true)
     report_sql = "".dup
-    I18n.t('contribution_report_to_project_owner').keys.each do |column|
+    keys = I18n.t('contribution_report_to_project_owner').keys
+    keys.delete :open_questions if remove_keys
+    keys.delete :multiple_choice_questions if remove_keys
+    keys.each do |column|
       report_sql << "#{column} AS \"#{I18n.t("contribution_report_to_project_owner.#{column}")}\","
     end
 
