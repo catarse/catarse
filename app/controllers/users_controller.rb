@@ -137,6 +137,7 @@ class UsersController < ApplicationController
   private
 
   def update_user
+    validate = @user.valid?
     params[:user][:confirmed_email_at] = DateTime.now if params[:user].try(:[], :confirmed_email_at).present?
     @user.publishing_project = params[:user][:publishing_project].presence
     @user.publishing_user_about = params[:user][:publishing_user_about].presence
@@ -152,6 +153,7 @@ class UsersController < ApplicationController
       end
     else
       @user.update_without_password permitted_params
+      @user.save(validate: validate)
     end
   end
 
