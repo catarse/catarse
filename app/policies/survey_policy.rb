@@ -18,7 +18,7 @@ class SurveyPolicy < ApplicationPolicy
   end
 
   def permitted_attributes
-    [:reward_id, :confirm_address,
+    [:reward_id, :confirm_address, :contribution_id,
      survey_multiple_choice_question_answers_attributes: %i[id contribution_id survey_question_choice_id survey_multiple_choice_question_id],
      survey_open_question_answers_attributes: %i[id survey_open_question_id contribution_id answer], 
      survey_open_questions_attributes: %i[id question description], 
