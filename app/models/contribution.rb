@@ -21,7 +21,7 @@ class Contribution < ActiveRecord::Base
   has_many :balance_transactions
   has_many :survey_address_answers
   has_many :addresses, through: :survey_address_answers
-  accepts_nested_attributes_for :survey_address_answers, allow_destroy: true
+  accepts_nested_attributes_for :survey_address_answers, allow_destroy: true, limit: 1
   accepts_nested_attributes_for :addresses, allow_destroy: true
 
   validates_presence_of :project, :user, :value
