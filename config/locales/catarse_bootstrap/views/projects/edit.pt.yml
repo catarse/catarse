@@ -279,7 +279,7 @@ pt:
       headline_label: 'Frase de efeito'
       headline_label_hint: 'Frase no card do projeto para chamar apoiadores. Deve ter no máximo 100 caracteres e resumir bem o projeto.'
       uploaded_image_label: 'Imagem do projeto'
-      uploaded_image_hint: 'Essa imagem será utilizada como a miniatura de seu projeto (PNG, JPG tamanho 600 x 340)'
+      uploaded_image_hint: 'Essa imagem será utilizada como a miniatura de seu projeto (PNG, JPG tamanho 720 x 400)'
     dashboard_video:
       submit: Salvar
       video_label: 'Vídeo do projeto'
