@@ -472,7 +472,7 @@ class Project < ActiveRecord::Base
   end
 
   def user_has_balance_gte_project_pledged_transactions?
-      user.total_balance >= all_pledged_kind_transactions.sum(:amount).to_f
+    user.total_balance >= (paid_pledged - total_catarse_fee)
   end
 
   # State machine delegation methods
