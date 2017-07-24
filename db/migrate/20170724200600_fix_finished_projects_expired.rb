@@ -16,7 +16,7 @@ SELECT p.id AS project_id,
     p.recommended,
     thumbnail_image(p.*, 'large'::text) AS project_img,
     remaining_time_json(p.*) AS remaining_time,
-    public.zone_timestamp(p.expires_at) as zone_expires_at,
+    public.zone_timestamp(p.expires_at) as expires_at,
     COALESCE(( SELECT pt.pledged
            FROM "1".project_totals pt
           WHERE pt.project_id = p.id), 0::numeric) AS pledged,
