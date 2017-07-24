@@ -11,6 +11,7 @@ class BalanceTransaction < ActiveRecord::Base
     catarse_project_service_fee
     irrf_tax_project
     contribution_refund
+    refund_contributions
   ].freeze
 
   belongs_to :project
