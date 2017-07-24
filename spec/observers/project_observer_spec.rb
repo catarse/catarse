@@ -100,13 +100,13 @@ RSpec.describe ProjectObserver do
   describe '#from_online_to_failed' do
     let(:project) do
       create_project({
-                       goal: 100,
-                       online_days: 30,
-                       state: 'online'
-                     }, {
-                       to_state: 'online',
-                       created_at: 3.days.ago
-                     })
+        goal: 100,
+        online_days: 30,
+        state: 'online'
+      }, {
+        to_state: 'online',
+        created_at: 3.days.ago
+      })
     end
 
     let(:contribution_invalid) do
@@ -138,6 +138,44 @@ RSpec.describe ProjectObserver do
       end
 
       it { project.finish }
+    end
+  end
+
+  describe 'from_successful_to_rejected' do
+    let(:project) do
+      create_project({
+        goal: 100,
+        online_days:5,
+        state: 'online'
+      }, {
+        to_state: 'online',
+        created_at: 3.days.ago
+      })
+    end
+
+    let!(:contribution) do
+      create(:confirmed_contribution, value: 150, project: project)
+    end
+
+    before do
+      expect(BalanceTransaction).to receive(:insert_project_refund_contributions).with(project.id).and_call_original
+      expect(BalanceTransaction).to receive(:insert_contribution_refund).with(contribution.id).and_call_original
+      expect(BalanceTransaction).to receive(:insert_successful_project_transactions).with(project.id).and_call_original
+
+      project.update_attribute(:online_days, 1)
+      Sidekiq::Testing.inline!
+
+      project.finish
+      project.reject
+    end
+
+    it 'should refund contributons' do
+      expect(contribution.payments.last.state).to eq('refunded')
+      expect(contribution.balance_transactions.where(event_name: 'contribution_refund').count).to eq(1)
+    end
+
+    it 'should remove project owner balance' do
+      expect(project.balance_transactions.where(event_name: 'refund_contributions').count).to eq(1)
     end
   end
 

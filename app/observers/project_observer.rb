@@ -50,6 +50,11 @@ class ProjectObserver < ActiveRecord::Observer
     refund_all_payments(project)
   end
 
+  def from_successful_to_rejected(project)
+    BalanceTransaction.insert_project_refund_contributions(project.id)
+    refund_all_payments(project)
+  end
+
   def from_online_to_rejected(project)
     refund_all_payments(project)
   end

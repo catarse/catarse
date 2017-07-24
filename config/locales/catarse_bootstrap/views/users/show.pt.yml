@@ -16,6 +16,7 @@ pt:
         project_contribution_confirmed_after_finished: 'Pagamento confirmado após projeto finalizado: %{project_name}'
         catarse_contribution_fee: 'Taxa de serviço do Catarse (%{service_fee}%)'
         contribution_refund: 'Reembolso do projeto %{project_name}'
+        refund_contributions: 'Reembolso para apoiadores do projeto %{project_name}'
       debit: 'Saída'
       credit: 'Entrada'
       totals: 'Saldo '
