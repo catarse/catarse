@@ -31,7 +31,7 @@ class BalanceTransaction < ActiveRecord::Base
 
       create!(default_params.merge(
         event_name: 'refund_contributions',
-        amount: project.all_pledged_kind_transactions.sum(:amount)*-1,
+        amount: -(project.paid_pledged - project.total_catarse_fee)
       ))
     end
   end
