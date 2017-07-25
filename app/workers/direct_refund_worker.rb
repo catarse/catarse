@@ -18,6 +18,7 @@ class DirectRefundWorker
         payment.payment_engine.direct_refund(payment)
       end
     rescue Exception => e
+      Raven.capture_exception(e)
       payment.contribution.notify_to_backoffice(
         :direct_refund_worker_error,
         {
