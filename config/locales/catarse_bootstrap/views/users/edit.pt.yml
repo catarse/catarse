@@ -22,7 +22,7 @@ pt:
         label_birth_date: 'Data de nascimento'
         label_state_inscription: 'Inscrição Estadual'
         address_title: 'Endereço'
-        address_subtitle: 'Os dados abaixo serão utilizados para envio de recompensas e para emissão de Nota Fiscal, caso aplicável.'
+        address_subtitle: 'Os dados de endereço serão utilizados para emissão de Nota Fiscal, caso aplicável.'
         label_country: 'País'
         label_address_street: 'Endereço (Rua, Avenida, Alameda...)'
         label_address_number: 'Número'
