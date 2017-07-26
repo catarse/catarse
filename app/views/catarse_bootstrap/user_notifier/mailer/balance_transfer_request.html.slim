@@ -1,7 +1,6 @@
 - user = @notification.user
 - balance_transfer = @notification.balance_transfer
 - bank_account = user.bank_account
-- transfer_limit_date = 10.weekdays_from(balance_transfer.created_at)
 - company_name = CatarseSettings[:company_name]
 
 | Olá #{user.display_name},
@@ -16,7 +15,7 @@ br/
 br/
 | Pedido do saque: #{I18n.l(balance_transfer.created_at.to_date)}
 br/
-| Data máxima da transferência: #{I18n.l(transfer_limit_date.to_date)}
+| Data máxima da transferência: #{I18n.l(balance_transfer.transfer_limit_date.to_date)}
 br/
 | Valor total da transferência: #{number_to_currency(balance_transfer.amount, precision: 2)} (taxas já descontadas)
 br/

@@ -56,4 +56,12 @@ class BalanceTransfer < ActiveRecord::Base
 
     last_transition.bank_account || user.bank_account.to_hash_with_bank
   end
+
+  def transfer_limit_date
+    pluck_from_database("transfer_limit_date")
+  end
+
+  def pluck_from_database(attribute)
+    BalanceTransfer.where(id: id).pluck("balance_transfers.#{attribute}").first
+  end
 end
