@@ -145,9 +145,7 @@ class ProjectsController < ApplicationController
     end
 
     if params[:cancel_project] == 'true'
-      if resource.successful? && !resource.user_has_balance_gte_project_pledged_transactions?
-        flash[:notice] = t('project.update.failed')
-      else
+      if resource.can_cancel?
         unless resource.project_cancelation.present?
           resource.create_project_cancelation!
           resource.update_columns(
@@ -155,6 +153,8 @@ class ProjectsController < ApplicationController
             expires_at: DateTime.now
           )
         end
+      else
+        flash[:notice] = t('project.update.failed')
       end
 
       redirect_to edit_project_path(@project, anchor: params[:anchor] || 'home')
