@@ -55,9 +55,9 @@ To run this project you need to have:
 
 * Install the front-end dependencies
 
-        $ bower install
+        $ npm install
 
-    Requires [bower](http://bower.io/#install-bower), which requires [Node.js](https://nodejs.org/download/) and its package manager, *npm*. Follow the instructions on the bower.io website.
+    Requires [Node.js](https://nodejs.org/download/) and its package manager, *npm*.
 
 * Create and seed the database
 

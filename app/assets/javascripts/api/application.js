@@ -1,10 +1,10 @@
-//= require mithril/mithril.js
+//= require mithril/mithril.min.js
 //= require jquery
-//= require underscore
+//= require underscore/underscore-min.js
 //= require mithril-postgrest
-//= require moment
-//= require replace-diacritics
-//= require chartjs
+//= require moment/min/moment.min.js
+//= require lib/replace-diacritics
+//= require chart.js/dist/Chart.bundle.min.js
 //= require i18n/translations
 //= require ../analytics
 //= require api/init
@@ -12,9 +12,8 @@
 //= require_self
 
 (function(m, c, Chart, analytics){
-  //Chart.defaults.global.responsive = true;
+  Chart.defaults.global.responsive = true;
   Chart.defaults.global.responsive = false;
-  Chart.defaults.Line.pointHitDetectionRadius = 0;
   Chart.defaults.global.scaleFontFamily = "proxima-nova";
 
   I18n.defaultLocale = "pt";
