@@ -113,7 +113,7 @@ class FlexProjectMachine
     transition from: :successful, to: :rejected
 
     guard_transition(from: :successful, to: :rejected) do |project, transition|
-      project.user_has_balance_gte_project_pledged_transactions?
+      project.can_cancel?
     end
   end
 

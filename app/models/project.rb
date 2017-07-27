@@ -471,8 +471,12 @@ class Project < ActiveRecord::Base
     balance_transactions.where(event_name: 'successful_project_pledged').last
   end
 
-  def user_has_balance_gte_project_pledged_transactions?
-    user.total_balance >= (paid_pledged - total_catarse_fee)
+  def total_amount_tax_included
+    pluck_from_database("total_amount_tax_included")
+  end
+
+  def can_cancel?
+    pluck_from_database("can_cancel")
   end
 
   # State machine delegation methods
