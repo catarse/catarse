@@ -12,7 +12,7 @@ class Contribution < ActiveRecord::Base
   belongs_to :reward
   belongs_to :shipping_fee
   belongs_to :user
-  belongs_to :country
+  belongs_to :address
   belongs_to :donation
   belongs_to :origin
   has_many :payment_notifications
@@ -22,7 +22,7 @@ class Contribution < ActiveRecord::Base
   has_many :survey_address_answers
   has_many :addresses, through: :survey_address_answers
   accepts_nested_attributes_for :survey_address_answers, allow_destroy: true, limit: 1
-  accepts_nested_attributes_for :addresses, allow_destroy: true
+  accepts_nested_attributes_for :address, allow_destroy: true, limit: 1
 
   validates_presence_of :project, :user, :value
   validates_numericality_of :value, greater_than_or_equal_to: 10.00
@@ -36,6 +36,7 @@ class Contribution < ActiveRecord::Base
   }
 
   scope :ordered, -> { order(id: :desc) }
+  delegate :address_city, :country_id, :phone_number, :country, :state, :address_complement, :address_neighbourhood, :address_zip_code, :address_street, :address_number, :address_state, to: :address, allow_nil: true
 
   begin
     attr_protected :state, :user_id
@@ -155,7 +156,7 @@ class Contribution < ActiveRecord::Base
                              address_zip_code: address_zip_code.presence || user.address_zip_code,
                              address_city: address_city.presence || user.address_city,
                              address_state: address_state.presence || user.state.try(:acronym) || user.address_state,
-                             phone_number: address_phone_number.presence || user.phone_number,
+                             phone_number: phone_number.presence || user.phone_number,
                          }
     if user.address
       user.address.update_attributes(address_attributes)
