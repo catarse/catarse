@@ -22,7 +22,7 @@ RSpec.describe Contribution, type: :model do
     it { is_expected.to belong_to(:project) }
     it { is_expected.to belong_to(:user) }
     it { is_expected.to belong_to(:reward) }
-    it { is_expected.to belong_to(:country) }
+    it { is_expected.to belong_to(:address) }
   end
 
   describe 'Validations' do
