@@ -26,6 +26,7 @@ Catarse::Application.routes.draw do
   get '/criadores' => redirect('http://crowdfunding.catarse.me/criadores')
   get '/paratodos' => redirect('http://crowdfunding.catarse.me/paratodos')
 
+  get '/support_forum' => 'zendesk_sessions#create', as: :zendesk_session_create
   get '/posts' => 'application#get_blog_posts'
   get '/project_edit' => 'application#redirect_to_last_edit'
   get '/billing_edit' => 'application#redirect_to_user_billing'

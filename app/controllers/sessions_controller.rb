@@ -4,6 +4,19 @@ class SessionsController < Devise::SessionsController
   def new
     super
     session[:return_to] = params[:redirect_to] if params[:redirect_to].present?
+    if params[:return_to] && params[:return_to].match?(/zendesk/)
+      session[:zendesk_return] = params[:return_to]
+    end
+  end
+
+  def after_sign_in_path_for(resource)
+    if session[:zendesk_return]
+      zlink = session[:zendesk_return].dup
+      session[:zendesk_return] = nil
+      zendesk_session_create_path(return_to: zlink)
+    else
+      super
+    end
   end
 
   def destroy_and_redirect
