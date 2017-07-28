@@ -4,7 +4,7 @@
 //= require mithril-postgrest
 //= require moment/min/moment.min.js
 //= require lib/replace-diacritics
-//= require chart.js/dist/Chart.bundle.min.js
+//= require chart.js/Chart.min.js
 //= require i18n/translations
 //= require ../analytics
 //= require api/init
