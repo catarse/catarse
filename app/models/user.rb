@@ -159,7 +159,7 @@ class User < ActiveRecord::Base
   def address_fields_validation
     if !reseting_password && (published_projects.present? || publishing_project || publishing_user_settings)
       [:address_city, :address_zip_code, :phone_number, :address_neighbourhood, :address_street, :address_number].each do |field|
-        errors.add(field, :invalid) if !address.send(field).present?
+        errors.add(field, :invalid) if !address.try(:send, field).present?
       end
     end
   end
