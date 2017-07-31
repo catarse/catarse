@@ -159,6 +159,8 @@ group :test do
   gem 'selenium-webdriver'
 end
 
+gem 'jquery-rails'
+gem 'jquery-ui-rails'
 gem 'sass-rails'
 gem 'coffee-rails'
 gem 'compass-rails'
