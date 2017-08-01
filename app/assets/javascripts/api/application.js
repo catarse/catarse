@@ -1,5 +1,6 @@
 //= require mithril/mithril.min.js
 //= require jquery
+//= require select
 //= require underscore/underscore-min.js
 //= require mithril-postgrest
 //= require moment/min/moment.min.js

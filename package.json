@@ -6,6 +6,7 @@
   "dependencies": {
     "backbone": "^1.3.3",
     "catarse.js": "git+https://github.com/catarse/catarse.js.git#develop",
-    "chart.js": "1.0.2"
+    "chart.js": "1.0.2",
+    "select": "^1.1.2"
   }
 }
