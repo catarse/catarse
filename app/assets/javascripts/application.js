@@ -14,6 +14,9 @@
 //  Bower front-end dependencies
 // *********************************
 //= require jquery
+//= require jquery_ujs
+//= require jquery-ui
+//= require best_in_place
 //= require underscore/underscore-min.js
 //= require backbone/backbone-min.js
 //= require ./lib/skull

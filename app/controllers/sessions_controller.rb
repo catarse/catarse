@@ -2,11 +2,14 @@
 
 class SessionsController < Devise::SessionsController
   def new
-    super
-    session[:return_to] = params[:redirect_to] if params[:redirect_to].present?
-    if params[:return_to] && params[:return_to].match?(/zendesk/)
+    if params[:return_to] && (
+        params[:return_to].match?(/zendesk/) || 
+        params[:return_to].match?(/suporte\.catarse/) )
       session[:zendesk_return] = params[:return_to]
     end
+
+    super
+    session[:return_to] = params[:redirect_to] if params[:redirect_to].present?
   end
 
   def after_sign_in_path_for(resource)

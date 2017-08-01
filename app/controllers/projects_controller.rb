@@ -157,7 +157,7 @@ class ProjectsController < ApplicationController
         flash[:notice] = t('project.update.failed')
       end
 
-      redirect_to edit_project_path(@project, anchor: params[:anchor] || 'home')
+      redirect_to insights_project_path(@project)
     elsif should_show_modal
       redirect_to insights_project_path(@project, show_modal: true)
     else
