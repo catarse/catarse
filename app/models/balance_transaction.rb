@@ -31,7 +31,7 @@ class BalanceTransaction < ActiveRecord::Base
 
       create!(default_params.merge(
         event_name: 'refund_contributions',
-        amount: project.total_amount_tax_included
+        amount: -(project.total_amount_tax_included)
       ))
     end
   end
