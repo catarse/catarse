@@ -65,7 +65,6 @@ html
     /page specific JS files
     = yield :js
   - if Rails.env.production?
-    = render 'layouts/hotjar'
     = render 'layouts/optinmonster'
   = render 'layouts/google_translate'
   - if content_for? :js_after
