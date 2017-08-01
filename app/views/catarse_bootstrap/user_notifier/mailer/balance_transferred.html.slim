@@ -25,18 +25,8 @@ br/
 br/
 | CPF/CNPJ: #{bank_account['document_number']||user.cpf}
 br/
-
-p
-  | <strong> Dúvidas frequentes: </strong>
-p
-  = link_to 'Impostos e documentos fiscais referentes ao valor arrecadado', 'http://suporte.catarse.me/hc/pt-br/articles/217916143-tudo-sobre-REPASSE#impostos', target: '__blank'
-  br/
-  = link_to 'Como falar com os meus apoiadores após a finalização da campanha?', 'http://suporte.catarse.me/hc/pt-br/articles/217916143#quando', target: '__blank'
-  br/
-  = link_to 'Projeto financiado: execução e entrega das recompensas', 'http://suporte.catarse.me/hc/pt-br/articles/115002247646-Projeto-financiado-execu%C3%A7%C3%A3o-e-entrega-das-recompensas', target: '__blank'
 br/
-
-| Confira outras dicas a qualquer momento na nossa #{link_to 'Central de Suporte', 'http://suporte.catarse.me/hc/pt-br', target: '__blank'} ou envie um email para #{mail_to CatarseSettings[:email_contact]}.
+| Caso tenha alguma dúvida, visite nossa #{link_to 'Central de Suporte', 'http://suporte.catarse.me/hc/pt-br', target: '__blank'} ou envie um email para #{mail_to CatarseSettings[:email_contact]}.
 br/
 br/
 | Um grande abraço de toda a nossa equipe,

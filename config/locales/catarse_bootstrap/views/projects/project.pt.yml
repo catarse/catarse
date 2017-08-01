@@ -11,11 +11,11 @@ pt:
           cta: 'Comece sua campanha'
           image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-fctodos.jpg'
         2:
-          title: 'Aldir 70'
-          subtitle: 'Coleção com 5 livros de crônicas comemorando os 70 anos de Aldir Blanc!'
-          link: 'https://www.catarse.me/aldir70?ref=home_banner'
+          title: 'A Primeira Lousa Musical do Mundo'
+          subtitle: 'Desenhe teclas, botões e componha músicas sem precisar saber de teoria musical!'
+          link: 'https://www.catarse.me/PiMu?ref=home_banner'
           cta: 'Conheça o projeto'
-          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-aldir70.jpg'
+          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-PiMu.jpg'
         3:
           title: '<img src="https://daks2k3a4ib2z.cloudfront.net/573a70f6d5c3cb6532f8b1a7/58ead3167db7c241dbb93fbc_geek-news-logo.png" width="340">'
           subtitle: 'Um apanhado quinzenal de quadrinhos, boardgames, RPG e jogos digitais.'
@@ -23,11 +23,11 @@ pt:
           cta: 'Assine a news'
           image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-geek-news.jpg'
         4:
-          title: 'Ancient Terrible Things'
-          subtitle: 'Você adentrará uma selva sombria em busca de segredos, mas será capaz de voltar vivo?'
-          link: 'https://www.catarse.me/att?ref=home_banner'
+          title: 'Faça Você Mesma'
+          subtitle: 'Um documentário contando a história do movimento punk feminista no Brasil!'
+          link: 'https://www.catarse.me/faca_voce_mesma_filme_9b8b?ref=home_banner'
           cta: 'Conheça o projeto'
-          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-att.jpg'
+          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-faca_voce_mesma_filme_9b8b.jpg'
         5:
           title: 'Financiamento coletivo para Livros e Revistas'
           subtitle: 'Junte-se a uma comunidade de autores e editoras e publique seu livro independente com a ajuda dos leitores'
@@ -51,6 +51,7 @@ pt:
       finish_explanation: 'Sua campanha ainda está com o prazo em aberto. Para receber os recursos em sua conta bancária, é preciso definir uma data final de arrecadação.'
       finish_explanation: 'Sua campanha ainda está com o prazo de arrecadação em aberto. Para receber os recursos em sua conta bancária, é preciso definir uma data final de arrecadação. Saiba mais sobre como <a href="http://suporte.catarse.me/hc/pt-br/articles/213783503-tudo-sobre-Prazo-da-campanha">definir um prazo</a> e como funciona o <a href="http://suporte.catarse.me/hc/pt-br/articles/217916143-tudo-sobre-REPASSE" target="blank">processo de transferência.</a>'
       know_more: ' Saiba mais.'
+      has_cancelation_request_explanation: 'O cancelamento de sua campanha foi agendado. Dentro de 24h, ela será expirada e os seus <a href="http://suporte.catarse.me/hc/pt-br/articles/202365507-Regras-e-funcionamento-dos-reembolsos-estornos-cancelamentos" target="__blank">apoiadores serão reembolsados</a>.'
       referral:
         ctrse_explore: 'Busca do Catarse'
         ctrse_explore_featured_big: 'Projeto em destaque grande no explore'

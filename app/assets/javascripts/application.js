@@ -14,26 +14,10 @@
 //  Bower front-end dependencies
 // *********************************
 //= require jquery
-//= require underscore
-//= require backbone
-//= require jquery.fixedmask
-//= require jquery-ujs
+//= require jquery_ujs
 //= require jquery-ui
-//= require jQuery-Mask-Plugin
-//= require jquery-sticky
-//= require jquery-typewatch
-//= require store
-//= require mithril/mithril.js
-//= require mithril-postgrest
-// *********************************
-//  Rails GEMs front-end dependencies
-// *********************************
 //= require best_in_place
-//= require cocoon
-// *********************************
-//  Call dependencies first
-// *********************************
+//= require underscore/underscore-min.js
+//= require backbone/backbone-min.js
 //= require ./lib/skull
 //= require_tree ./lib
-//= require ./app/app
-//= require_tree ./app

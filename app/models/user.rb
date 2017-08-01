@@ -18,11 +18,11 @@ class User < ActiveRecord::Base
   :fb_parsed_link
   delegate :bank, to: :bank_account
 
+  delegate :address_city, :country_id, :phone_number, :country, :state, :address_complement, :address_neighbourhood, :address_zip_code, :address_street, :address_number, :address_state, to: :address, allow_nil: true
+
   # FIXME: Please bitch...
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :permalink,
-                  :image_url, :uploaded_image, :newsletter, :address_street, :address_number,
-                  :address_complement, :address_neighbourhood, :address_city, :address_state, :address_zip_code, :phone_number,
-                  :cpf, :state_inscription, :locale, :twitter, :facebook_link, :other_link, :moip_login, :deactivated_at, :reactivate_token,
+  attr_accessible :email, :password, :address_attributes, :password_confirmation, :remember_me, :name, :permalink,
+                  :image_url, :uploaded_image, :newsletter, :cpf, :state_inscription, :locale, :twitter, :facebook_link, :other_link, :moip_login, :deactivated_at, :reactivate_token,
                   :bank_account_attributes, :country_id, :zero_credits, :links_attributes, :about_html, :cover_image, :category_followers_attributes, :category_follower_ids,
                   :subscribed_to_project_posts, :subscribed_to_new_followers, :subscribed_to_friends_contributions, :whitelisted_at, :confirmed_email_at, :public_name,
                   :birth_date, :account_type
@@ -32,7 +32,7 @@ class User < ActiveRecord::Base
   mount_uploader :uploaded_image, UserUploader
   mount_uploader :cover_image, CoverUploader
 
-  validates :name, :cpf, :address_zip_code, :phone_number, :address_state, :country_id, :address_city, :address_street, :address_number, :address_neighbourhood, presence: true, if: ->(user) { !user.reseting_password && (user.published_projects.present? || user.publishing_project || user.publishing_user_settings) }
+  validates :name, :cpf, presence: true, if: ->(user) { !user.reseting_password && (user.published_projects.present? || user.publishing_project || user.publishing_user_settings) }
   validates :birth_date, presence: true, if: ->(user) { user.publishing_user_settings && user.account_type == 'pf' }
 
   validates_presence_of :email
@@ -49,8 +49,9 @@ class User < ActiveRecord::Base
   validates :account_type, inclusion: { in: %w[pf pj mei] }
 
   validate :owner_document_validation
+  validate :address_fields_validation
 
-  belongs_to :country
+  belongs_to :address
   has_one :user_total
   has_one :user_credit
   has_one :bank_account, dependent: :destroy
@@ -84,6 +85,7 @@ class User < ActiveRecord::Base
   has_many :category_followers, dependent: :destroy
   has_many :categories, through: :category_followers
   has_many :links, class_name: 'UserLink', inverse_of: :user
+  has_many :balance_transactions
   has_and_belongs_to_many :recommended_projects, join_table: :recommendations, class_name: 'Project'
 
   begin
@@ -91,6 +93,7 @@ class User < ActiveRecord::Base
   rescue
     puts "No association found for name 'unsubscribes'. Has it been defined yet?"
   end
+  accepts_nested_attributes_for :address, allow_destroy: true
   accepts_nested_attributes_for :links, allow_destroy: true, reject_if: ->(x) { x['link'].blank? }
   accepts_nested_attributes_for :bank_account, allow_destroy: true, reject_if: ->(attr) { attr[:bank_id].blank? }
   accepts_nested_attributes_for :category_followers, allow_destroy: true
@@ -151,6 +154,14 @@ class User < ActiveRecord::Base
 
   def self.find_active!(id)
     active.where(id: id).first!
+  end
+
+  def address_fields_validation
+    if !reseting_password && (published_projects.present? || publishing_project || publishing_user_settings)
+      [:address_city, :address_zip_code, :phone_number, :address_neighbourhood, :address_street, :address_number].each do |field|
+        errors.add(field, :invalid) if !address.try(:send, field).present?
+      end
+    end
   end
 
   def owner_document_validation
@@ -402,5 +413,9 @@ class User < ActiveRecord::Base
 
     recoverable.reset_password_token = original_token if recoverable.reset_password_token.present?
     recoverable
+  end
+
+  def total_balance
+    @total_balance ||= balance_transactions.sum(:amount).to_f
   end
 end

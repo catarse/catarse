@@ -24,6 +24,14 @@ class ProjectDecorator < Draper::Decorator
     source.state
   end
 
+  def display_mailer_status
+    case project.state
+    when 'successful' then 'financiado'
+    when 'failed' then 'não financiado'
+    when 'rejected' then 'cancelado'
+    end
+  end
+
   def display_card_status
     if source.online?
       (source.reached_goal? ? 'reached_goal' : 'not_reached_goal')

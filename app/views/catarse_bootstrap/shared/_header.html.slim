@@ -1,5 +1,5 @@
 / = render 'layouts/global_alert'
-header class="main-header #{'alert' if can_display_pending_refund_alert?} #{((defined?(overlayer) && overlayer) ? 'overlayer' : '')}"
+header class="main-header #{((defined?(overlayer) && overlayer) ? 'overlayer' : '')}"
   .w-row
     .w-clearfix.w-col.w-col-8.w-col-small-8.w-col-tiny-8
       = link_to (image_tag "catarse_bootstrap/logo_big.png"), root_url(subdomain: 'www'), class: 'header-logo w-nav-brand', :title => CatarseSettings[:company_name]

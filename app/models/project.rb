@@ -32,6 +32,7 @@ class Project < ActiveRecord::Base
   belongs_to :city
   belongs_to :origin
   has_one :balance_transfer, inverse_of: :project
+  has_one :project_cancelation
   has_one :project_total
   has_many :balance_transactions
   has_many :taggings
@@ -468,6 +469,14 @@ class Project < ActiveRecord::Base
 
   def successful_pledged_transaction
     balance_transactions.where(event_name: 'successful_project_pledged').last
+  end
+
+  def total_amount_tax_included
+    pluck_from_database("total_amount_tax_included")
+  end
+
+  def can_cancel?
+    pluck_from_database("can_cancel")
   end
 
   # State machine delegation methods

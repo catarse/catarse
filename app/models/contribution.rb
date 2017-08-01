@@ -21,7 +21,7 @@ class Contribution < ActiveRecord::Base
   has_many :balance_transactions
   has_many :survey_address_answers
   has_many :addresses, through: :survey_address_answers
-  accepts_nested_attributes_for :survey_address_answers, allow_destroy: true
+  accepts_nested_attributes_for :survey_address_answers, allow_destroy: true, limit: 1
   accepts_nested_attributes_for :addresses, allow_destroy: true
 
   validates_presence_of :project, :user, :value
@@ -115,6 +115,9 @@ class Contribution < ActiveRecord::Base
   def pending?
     payments.with_state('pending').exists?
   end
+  def balance_refunded?
+    balance_transactions.where(event_name: 'contribution_refund').exists?
+  end
 
   # Used in payment engines
   def price_in_cents
@@ -129,7 +132,7 @@ class Contribution < ActiveRecord::Base
     self.address_neighbourhood = user.address_neighbourhood
     self.address_zip_code = user.address_zip_code
     self.address_city = user.address_city
-    self.address_state = user.address_state
+    self.address_state = user.state.try(:acronym) || user.address_state
     self.address_phone_number = user.phone_number
     self.payer_document = user.cpf
     self.payer_name = user.name
@@ -139,6 +142,11 @@ class Contribution < ActiveRecord::Base
   def update_user_billing_info
     user.update_attributes({
                              account_type: (user.cpf.present? ? user.account_type : ((payer_document.try(:size) || 0) > 14 ? 'pj' : 'pf')),
+                             cpf: user.cpf.presence || payer_document.presence,
+                             name: user.name.presence || payer_name,
+                             public_name: user.public_name.presence || user.name.presence || payer_name
+                           })
+    address_attributes = {
                              country_id: country_id.presence || user.country_id,
                              address_street: address_street.presence || user.address_street,
                              address_number: address_number.presence || user.address_number,
@@ -146,12 +154,15 @@ class Contribution < ActiveRecord::Base
                              address_neighbourhood: address_neighbourhood.presence || user.address_neighbourhood,
                              address_zip_code: address_zip_code.presence || user.address_zip_code,
                              address_city: address_city.presence || user.address_city,
-                             address_state: address_state.presence || user.address_state,
+                             address_state: address_state.presence || user.state.try(:acronym) || user.address_state,
                              phone_number: address_phone_number.presence || user.phone_number,
-                             cpf: user.cpf.presence || payer_document.presence,
-                             name: user.name.presence || payer_name,
-                             public_name: user.public_name.presence || user.name.presence || payer_name
-                           })
+                         }
+    if user.address
+      user.address.update_attributes(address_attributes)
+    else
+      user.create_address(address_attributes)
+      user.save
+    end
   end
 
   def to_js

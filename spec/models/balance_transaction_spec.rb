@@ -106,4 +106,47 @@ RSpec.describe BalanceTransaction, type: :model do
       end
     end
   end
+
+  describe 'insert_contribution_refund' do
+    let(:project) { create(:project, goal: 30, state: 'online') }
+    let!(:contribution) { create(:confirmed_contribution, value: 200, project: project) }
+
+    context 'when contribution already refunded' do
+      before do
+        BalanceTransaction.insert_contribution_refund(contribution.id)
+      end
+
+      it "should return at second try nil" do
+        expect(contribution.balance_refunded?).to eq(true)
+        expect(BalanceTransaction.insert_contribution_refund(contribution.id)).to eq(nil)
+        expect(BalanceTransaction.where(event_name: 'contribution_refund', contribution_id: contribution.id).count).to eq(1)
+      end
+    end
+
+    context 'when contributions is not confirmed' do
+      before do
+        allow(Contribution).to receive(:find).with(contribution.id).and_return(contribution)
+        allow(contribution).to receive(:confirmed?).and_return(false)
+        expect(contribution).not_to receive(:balance_refunded?)
+      end
+
+      it "should return nil" do
+        expect(BalanceTransaction.insert_contribution_refund(contribution.id)).to eq(nil)
+        expect(BalanceTransaction.where(event_name: 'contribution_refund', contribution_id: contribution.id).count).to eq(0)
+      end
+    end
+
+    context 'when contribution is avaiable to refund in balance' do
+      it "should create balance transaction" do
+        balance_transaction = BalanceTransaction.insert_contribution_refund(contribution.id)
+        expect(contribution.balance_refunded?).to eq(true)
+        expect(balance_transaction.event_name).to eq('contribution_refund')
+        expect(balance_transaction.amount).to eq(contribution.value)
+
+      end
+    end
+
+
+  end
+
 end

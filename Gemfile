@@ -73,7 +73,7 @@ gem 'simple_form'
 gem 'mail_form'
 gem "auto_html", "~> 1.6"
 gem 'kaminari'
-gem 'redactor-rails', github: 'catarse/redactor-rails'
+gem 'redactor-rails', github: 'catarse/redactor-rails', ref: '4bd0eadf2f4e451c755ab169fd6210220cda450b'
 
 # Uploads
 gem 'carrierwave', github: 'carrierwaveuploader/carrierwave', ref: '1578777fe3f30140347ebf27d1943471bbe4d425'
@@ -159,6 +159,8 @@ group :test do
   gem 'selenium-webdriver'
 end
 
+gem 'jquery-rails'
+gem 'jquery-ui-rails'
 gem 'sass-rails'
 gem 'coffee-rails'
 gem 'compass-rails'

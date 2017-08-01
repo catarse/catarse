@@ -413,6 +413,64 @@ RSpec.describe Project, type: :model do
     it { is_expected.to eq([@p]) }
   end
 
+  describe '#can_cancel?' do
+    let(:state) { 'online' }
+    let(:project) { create(:project, goal: 3000, state: state) }
+
+    subject { project.can_cancel? }
+
+    context "when project is draft" do
+      let(:state) { 'draft' }
+      it { is_expected.to eq(false) }
+    end
+
+    context 'when project already rejected' do
+      let(:state) { 'rejected' }
+      it { is_expected.to eq(false) }
+    end
+
+    context 'when project is failed' do
+      let(:state) { 'failed' }
+      it { is_expected.to eq(true) }
+    end
+
+    context 'when project is online' do
+      let(:state) { 'online' }
+      it { is_expected.to eq(true) }
+    end
+
+    context 'when project is successful' do
+      let(:state) { 'online' }
+      before do
+        create(:confirmed_contribution, value: 4000, project: project)
+        project.update_attribute(:expires_at, 1.day.ago)
+        project.finish
+      end
+
+      context "and owner not request a balance transfer" do
+        it { is_expected.to eq(true) }
+      end
+
+      context "and owner request a balance transfer" do
+        before do
+          bt = BalanceTransfer.create(
+            user_id: project.user.id,
+            amount: project.user.total_balance,
+          )
+          bt.balance_transactions.create!(
+            amount: -(project.user.total_balance),
+            event_name: 'balance_transfer_request',
+            user_id: project.user.id
+
+          )
+          project.reload
+        end
+
+        it { is_expected.to eq(false) }
+      end
+    end
+  end
+
   describe '#reached_goal?' do
     let(:project) { create(:project, goal: 3000) }
     subject { project.reached_goal? }
