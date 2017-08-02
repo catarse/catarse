@@ -219,6 +219,7 @@ FactoryGirl.define do
   factory :contribution do |f|
     f.association :project, factory: :project
     f.association :user, factory: :user
+    f.association :address
     f.value 10.00
     f.payer_name 'Foo Bar'
     f.payer_email 'foo@bar.com'

@@ -54,6 +54,6 @@ class ContributionPolicy < ApplicationPolicy
   end
 
   def permitted_attributes
-    record.attribute_names.map(&:to_sym) - %i[user_attributes user_id user payment_service_fee payment_id]
+    (record.attribute_names.map(&:to_sym) << [address_attributes: %i[address_street id country_id state_id address_number address_complement address_neighbourhood address_city address_state address_zip_code phone_number]]) - %i[user_attributes user_id user payment_service_fee payment_id]
   end
 end
