@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
   :fb_parsed_link
   delegate :bank, to: :bank_account
 
-  delegate :address_city, :country_id, :phone_number, :country, :state, :address_complement, :address_neighbourhood, :address_zip_code, :address_street, :address_number, :address_state, to: :address, allow_nil: true
+  delegate :address_city, :country_id, :state_id, :phone_number, :country, :state, :address_complement, :address_neighbourhood, :address_zip_code, :address_street, :address_number, :address_state, to: :address, allow_nil: true
 
   # FIXME: Please bitch...
   attr_accessible :email, :password, :address_attributes, :password_confirmation, :remember_me, :name, :permalink,
