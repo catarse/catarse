@@ -2,24 +2,8 @@
 
 class SessionsController < Devise::SessionsController
   def new
-    if params[:return_to] && (
-        params[:return_to].match?(/zendesk/) || 
-        params[:return_to].match?(/suporte\.catarse/) )
-      session[:zendesk_return] = params[:return_to]
-    end
-
     super
     session[:return_to] = params[:redirect_to] if params[:redirect_to].present?
-  end
-
-  def after_sign_in_path_for(resource)
-    if session[:zendesk_return]
-      zlink = session[:zendesk_return].dup
-      session[:zendesk_return] = nil
-      zendesk_session_create_path(return_to: zlink)
-    else
-      super
-    end
   end
 
   def destroy_and_redirect
@@ -28,6 +12,19 @@ class SessionsController < Devise::SessionsController
       redirect_to new_project_contribution_path(project_id: params[:project_id].to_i, locale: '')
     else
       redirect_to root_path
+    end
+  end
+
+  def require_no_authentication
+    set_zendesk_session
+    super
+  end
+
+  def set_zendesk_session
+    if params[:return_to] && (
+        params[:return_to].match?(/zendesk/) || 
+        params[:return_to].match?(/suporte\.catarse/) )
+      session[:zendesk_return] = params[:return_to]
     end
   end
 end
