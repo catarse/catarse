@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   include Concerns::SocialHelpersHandler
   include Concerns::AnalyticsHelpersHandler
   include Pundit
+  before_action :redirect_when_zendesk_session, unless: :devise_controller?
 
   if Rails.env.production?
     require 'new_relic/agent/instrumentation/rails3/action_controller'
@@ -128,6 +129,14 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
+  def redirect_when_zendesk_session
+    if session[:zendesk_return].present?
+      zlink = session[:zendesk_return].dup
+      session[:zendesk_return] = nil
+      redirect_to zendesk_session_create_path(return_to: zlink)
+    end
+  end
 
   def sendgrid_api
     @sendgrid ||= SendGrid::API.new(api_key: CatarseSettings[:sendgrid_mkt_api_key])
