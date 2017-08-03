@@ -56,7 +56,7 @@ class FlexProjectMachine
           )
         end
       end
-      valid
+      valid || m[:skip_validation]
     end
 
     # Ensure that project already expired to enter on waiting_funds or successful
