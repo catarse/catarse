@@ -109,14 +109,21 @@ RSpec.describe PaymentObserver do
 
     context 'when contribution is made with credit card' do
       before do
-        expect(payment.contribution).to receive(:notify_to_contributor).with(:refund_completed_credit_card).and_call_original
-        payment.notify_observers :from_pending_refund_to_refunded
       end
 
       let(:payment_method) { 'CartaoDeCredito' }
 
       it 'should notify contributor about refund' do
+        expect(payment.contribution).to receive(:notify_to_contributor).with(:refund_completed_credit_card).and_call_original
+        payment.notify_observers :from_pending_refund_to_refunded
         expect(ContributionNotification.where(template_name: 'refund_completed_credit_card', user_id: contribution.user.id).count).to eq 1
+      end
+
+      it 'should not notify when already refunded in balance' do
+        expect(payment.contribution).not_to receive(:notify_to_contributor).with(:refund_completed_credit_card).and_call_original
+        BalanceTransaction.insert_contribution_refund(payment.id)
+        payment.notify_observers :from_pending_refund_to_refunded
+        expect(ContributionNotification.where(template_name: 'refund_completed_credit_card', user_id: contribution.user.id).count).to eq 0
       end
     end
 

@@ -30,6 +30,7 @@ class PaymentObserver < ActiveRecord::Observer
 
   def from_pending_refund_to_refunded(payment)
     return if payment.is_donation?
+    return if payment.contribution.balance_refunded?
     payment.contribution.notify_to_contributor(:refund_completed_credit_card) if payment.is_credit_card?
   end
   alias from_paid_to_refunded from_pending_refund_to_refunded
