@@ -73,7 +73,7 @@ gem 'simple_form'
 gem 'mail_form'
 gem "auto_html", "~> 1.6"
 gem 'kaminari'
-gem 'redactor-rails', github: 'catarse/redactor-rails', ref: '4bd0eadf2f4e451c755ab169fd6210220cda450b'
+gem 'redactor-rails', github: 'catarse/redactor-rails', branch: 'master'
 
 # Uploads
 gem 'carrierwave', github: 'carrierwaveuploader/carrierwave', ref: '1578777fe3f30140347ebf27d1943471bbe4d425'
