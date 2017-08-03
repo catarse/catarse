@@ -447,6 +447,16 @@ RSpec.describe Project, type: :model do
         project.finish
       end
 
+      context "when project is on skip_finish flag" do
+        before do
+          project.update_column(:skip_finish, true)
+        end
+
+        it "should not can_cancel" do
+          is_expected.to eq(false)
+        end
+      end
+
       context "and owner not request a balance transfer" do
         it { is_expected.to eq(true) }
       end
