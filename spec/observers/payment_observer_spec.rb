@@ -120,8 +120,8 @@ RSpec.describe PaymentObserver do
       end
 
       it 'should not notify when already refunded in balance' do
+        allow(payment.contribution).to receive(:balance_refunded?).and_return(true)
         expect(payment.contribution).not_to receive(:notify_to_contributor).with(:refund_completed_credit_card).and_call_original
-        BalanceTransaction.insert_contribution_refund(payment.id)
         payment.notify_observers :from_pending_refund_to_refunded
         expect(ContributionNotification.where(template_name: 'refund_completed_credit_card', user_id: contribution.user.id).count).to eq 0
       end
