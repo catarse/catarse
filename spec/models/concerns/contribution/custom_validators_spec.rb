@@ -34,6 +34,32 @@ RSpec.describe Contribution::CustomValidators, type: :model do
       let(:value) { 500.01 }
       it { is_expected.to be_valid }
     end
+
+    context "when reward has shipping fees and not selected one" do
+      let!(:shipping_fee) { create(:shipping_fee, reward: reward)}
+      let(:value) { 500.00 }
+      it { is_expected.not_to be_valid }
+    end
+
+    context "when contribution has selected shipping fee but values does not match" do
+      let!(:shipping_fee) { create(:shipping_fee, reward: reward)}
+      before do
+        contribution.shipping_fee = shipping_fee
+        contribution.save
+      end
+      let(:value) { 500.00 }
+      it { is_expected.not_to be_valid }
+    end
+
+    context "when contributions has selected shipping and values match" do
+      let!(:shipping_fee) { create(:shipping_fee, reward: reward)}
+      before do
+        contribution.shipping_fee = shipping_fee
+        contribution.save
+      end
+      let(:value) { 520.00 }
+      it { is_expected.to be_valid }
+    end
   end
 
   describe '#should_not_back_if_maximum_contributions_been_reached' do

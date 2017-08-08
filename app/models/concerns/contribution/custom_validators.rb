@@ -15,7 +15,17 @@ module Contribution::CustomValidators
 
     def value_must_be_at_least_rewards_value
       return unless reward
-      errors.add(:value, I18n.t('contribution.value_must_be_at_least_rewards_value', minimum_value: reward.display_minimum)) unless value.to_f >= reward.minimum_value
+      has_error = false
+      value_to_validate = ((shipping_fee.try(:value)||0) + reward.minimum_value)
+      if reward.shipping_fees.present? && !shipping_fee.present?
+        has_error = true
+      end
+
+      if value.to_f < value_to_validate
+        has_error = true
+      end
+
+      errors.add(:value, I18n.t('contribution.value_must_be_at_least_rewards_value', minimum_value: value_to_validate)) if has_error
     end
 
     def should_not_contribute_if_maximum_contributions_been_reached
