@@ -369,4 +369,10 @@ FactoryGirl.define do
     agency '1234'
     account '1'
   end
+
+  factory :shipping_fee do |f|
+    f.association :reward
+    destination 'all'
+    value 20
+  end
 end
