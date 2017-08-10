@@ -104,7 +104,7 @@ RSpec.describe Contribution, type: :model do
     its(:address_neighbourhood) { should eq(user.address_neighbourhood) }
     its(:address_zip_code) { should eq(user.address_zip_code) }
     its(:address_city) { should eq(user.address_city) }
-    its(:address_phone_number) { should eq(user.phone_number) }
+    its(:phone_number) { should eq(user.phone_number) }
     its(:payer_document) { should eq(user.cpf) }
   end
 
