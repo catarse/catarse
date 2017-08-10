@@ -127,15 +127,6 @@ class Contribution < ActiveRecord::Base
   end
 
   def update_current_billing_info
-    self.country_id = user.country_id
-    self.address_street = user.address_street
-    self.address_number = user.address_number
-    self.address_complement = user.address_complement
-    self.address_neighbourhood = user.address_neighbourhood
-    self.address_zip_code = user.address_zip_code
-    self.address_city = user.address_city
-    self.address_state = user.state.try(:acronym) || user.address_state
-    self.address_phone_number = user.phone_number
     self.payer_document = user.cpf
     self.payer_name = user.name
     self.payer_email = user.email
