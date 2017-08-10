@@ -144,7 +144,7 @@ class ApplicationController < ActionController::Base
 
   def force_www
     if request.subdomain.blank? && Rails.env.production?
-      redirect_to url_for(params.merge(subdomain: 'www', locale: ''))
+      redirect_to request.original_url.gsub(/^https?\:\/\//, 'https://www.')
     end
   end
 
