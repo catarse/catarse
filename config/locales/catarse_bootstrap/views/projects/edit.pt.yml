@@ -60,7 +60,7 @@ pt:
       reward_available: ' (%{available} de %{maximum} disponíveis)'
       delivery_estimation: 'Estimativa de entrega: '
       reward_link_label: 'Link para apoio direto'
-      reward_link_hint: 'O link acima leva para a página de contribuição com essa recompensa já selecionada.'
+      reward_link_hint: 'O link abaixo leva para a página de contribuição com essa recompensa já selecionada.'
       add_reward: '+ Adicionar recompensa'
       info_box: "Descreva o valor da recompensa e coloque uma previsão de data de entrega real para os apoiadores. Você também pode limitar uma recompensa e quando o limite é atingido ela aparece como ESGOTADA. Se quiser mudar a ordem que as recompensas aparecem em seu projeto, basta fazer isso arrastando-as para cima ou para baixo."
       minimum_value: "Valor:"
