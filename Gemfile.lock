@@ -18,8 +18,8 @@ GIT
 
 GIT
   remote: git://github.com/catarse/redactor-rails.git
-  revision: 4bd0eadf2f4e451c755ab169fd6210220cda450b
-  ref: 4bd0eadf2f4e451c755ab169fd6210220cda450b
+  revision: 9a58b7ecbd33acad7e9cb66476e349262c72d093
+  branch: master
   specs:
     redactor-rails (0.5.0)
       devise
