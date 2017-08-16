@@ -1,0 +1,23 @@
+- project = @notification.project
+- first_deliver = project.rewards.order(:deliver_at).first.deliver_at.try(:strftime, '%m/%Y')
+- email_contact = CatarseSettings[:email_contact]
+
+p Olá #{project.user.display_name}!
+
+p Em seu projeto #{project.name} você ofereceu recompensas com estimativa de entrega para #{first_deliver}, porém ainda não marcou suas recompensas como enviadas para os seus apoiadores.
+
+p Veja como é fácil e simples controlar suas entregas:
+
+p
+  img src="https://s3-sa-east-1.amazonaws.com/cdn.br.catarse/notifications_assets/deliver.gif"
+
+p Acesse o #{link_to 'relatórios de apoios', contributions_report_project_url(project)} do seu projeto e atualize os seus apoiadores sobre o status das entregas das suas recompensas.
+
+p Se por algum acaso houver qualquer tipo atraso, é importante que você se comunique com os seus apoiadores através das #{link_to 'novidades', posts_project_url(project)}. É muito importante manter a transparência e deixar os apoiadores por dentro de tudo que envolve as recompensas, desde a produção até o acesso a elas.
+
+
+p Se ficou com alguma dúvida, responda a esta mensagem diretamente ou fale conosco através do e-mail #{mail_to email_contact}.
+
+|Abraços,
+br/
+|Equipe do Catarse
