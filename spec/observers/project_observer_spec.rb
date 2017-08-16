@@ -166,6 +166,8 @@ RSpec.describe ProjectObserver do
       Sidekiq::Testing.inline!
 
       project.finish
+
+      expect(project).to receive(:notify_owner).with(:project_canceled).and_call_original
       project.reject
     end
 
