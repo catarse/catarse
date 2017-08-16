@@ -1,0 +1,16 @@
+- project = @notification.project
+- company_name = CatarseSettings[:company_name]
+- email_contact = CatarseSettings[:email_contact]
+
+| Informamos que o projeto #{project.name} acabou de ser cancelado 
+- if project.pledged > 0
+  | e que o pedido de reembolso para os seus apoiadores já foi realizado (#{link_to 'saiba mais', 'https://suporte.catarse.me/hc/pt-br/articles/202365507-Regras-e-funcionamento-dos-reembolsos-estornos-cancelamentos', target: '__blank'}).
+br/
+br/
+| Caso tenha alguma dúvida,, basta responder a esta mensagem diretamente ou enviar um email para #{mail_to email_contact}.
+br/
+br/
+| Atenciosamente,
+br/
+| Equipe do Catarse
+
