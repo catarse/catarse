@@ -166,7 +166,7 @@ pt:
         credit_card:
           loading: 'Carregando informações de cartão...'
           use_another: 'Usar outro cartão de crédito.'
-          name: 'Nome no cartão de crédito *'
+          name: 'Nome completo do titular do cartão *'
           name_tip: 'Nome impresso na frente do seu cartão de crédito'
           document: 'CPF/CPNJ do titular *'
           document_tip: 'CPF/CNPJ do titular do cartão de crédito utilizado'
