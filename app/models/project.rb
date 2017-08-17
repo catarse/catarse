@@ -180,11 +180,23 @@ class Project < ActiveRecord::Base
   }
 
   scope :with_deliveries_approaching, -> {
-      where("exists(
+    successful.where("exists(
         select true from rewards r 
         where r.project_id = projects.id 
         AND (deliver_at > now()) 
         AND (deliver_at <= now() + '1 month'::interval))")
+  }
+
+  scope :with_late_deliveries, -> {
+    successful.where("projects.expires_at > now() - '1 year'::interval AND exists(
+        select true from rewards r
+        where r.project_id = projects.id
+        AND (deliver_at + '1 week'::interval < now())
+        ) AND NOT EXISTS (
+        select true from contributions c
+        where c.project_id = projects.id
+        and (c.reward_sent_at is not null OR c.reward_received_at is not null)
+        )")
   }
 
   attr_accessor :accepted_terms
