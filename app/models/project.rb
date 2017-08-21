@@ -179,6 +179,26 @@ class Project < ActiveRecord::Base
     joins(:contributions).merge(Contribution.confirmed_last_day).uniq
   }
 
+  scope :with_deliveries_approaching, -> {
+    successful.where("exists(
+        select true from rewards r 
+        where r.project_id = projects.id 
+        AND (deliver_at > now()) 
+        AND (deliver_at <= now() + '1 month'::interval))")
+  }
+
+  scope :with_late_deliveries, -> {
+    successful.where("projects.expires_at > now() - '1 year'::interval AND exists(
+        select true from rewards r
+        where r.project_id = projects.id
+        AND (deliver_at + '1 week'::interval < now())
+        ) AND NOT EXISTS (
+        select true from contributions c
+        where c.project_id = projects.id
+        and (c.reward_sent_at is not null OR c.reward_received_at is not null)
+        )")
+  }
+
   attr_accessor :accepted_terms
 
   validates_acceptance_of :accepted_terms, on: :create

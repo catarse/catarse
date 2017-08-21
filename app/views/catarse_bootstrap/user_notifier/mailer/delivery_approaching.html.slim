@@ -1,0 +1,22 @@
+- project = @notification.project
+- company_name = CatarseSettings[:company_name]
+- email_contact = CatarseSettings[:email_contact]
+
+p Olá #{project.user.display_name}!
+
+p Estamos enviando essa mensagem para te lembrar que, pela estimativa que você publicou na sua  #{link_to 'página da sua campanha', project_by_slug_url(project.permalink)}, nesse próximo mês já começam os envios das recompensas para as pessoas que contribuíram com o seu projeto!
+
+p Você pode baixar os dados dos apoiadores e gerenciar o envio das recompensas através da aba #{link_to 'relatórios de apoios', contributions_report_project_url(project)}. Conforme for realizando o envio, basta selecionar os apoios e marcar como "Entregue". Assim, você irá automaticamente avisar o seu apoiador de que a recompensa dele está a caminho. :-)
+
+p Veja como é fácil e simples controlar suas entregas:
+
+p
+  img src="https://s3-sa-east-1.amazonaws.com/cdn.br.catarse/notifications_assets/deliver.gif"
+
+p Caso queira publicar e enviar atualizações para todos os seus apoiadores, você pode também utilizar as #{link_to 'novidades', posts_project_url(project)} na sua página de projeto.
+
+p Se você tiver alguma dúvida, responda a esta mensagem diretamente ou fale conosco através do e-mail #{mail_to email_contact}.
+
+|Abraços,
+br/
+|Equipe do Catarse

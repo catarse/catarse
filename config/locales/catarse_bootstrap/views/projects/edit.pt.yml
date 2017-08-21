@@ -60,7 +60,7 @@ pt:
       reward_available: ' (%{available} de %{maximum} disponíveis)'
       delivery_estimation: 'Estimativa de entrega: '
       reward_link_label: 'Link para apoio direto'
-      reward_link_hint: 'O link acima leva para a página de contribuição com essa recompensa já selecionada.'
+      reward_link_hint: 'O link abaixo leva para a página de contribuição com essa recompensa já selecionada.'
       add_reward: '+ Adicionar recompensa'
       info_box: "Descreva o valor da recompensa e coloque uma previsão de data de entrega real para os apoiadores. Você também pode limitar uma recompensa e quando o limite é atingido ela aparece como ESGOTADA. Se quiser mudar a ordem que as recompensas aparecem em seu projeto, basta fazer isso arrastando-as para cima ou para baixo."
       minimum_value: "Valor:"
@@ -246,7 +246,7 @@ pt:
       submit: "Salvar"
       description_label: 'Descrição do projeto'
       description_hint: 'Fale com paixão e clareza sobre o que será realizado. Esclareça possíveis dúvidas sobre como o dinheiro será utilizado, quem está por trás do projeto, como e quando o projeto será entregue. Transparência atrai mais apoiadores. Lembre-se: seu projeto será acessado por pessoas comuns que decidirão se querem ou não apoiar seu projeto. Capriche!'
-      description_alert: '<span class="fa fa-fw fa-lightbulb-o"></span> Saiba como <a class="fa alt-link" href="https://catarse.attach.io/BJmQVOiR" target="blank"> criar uma descrição cativante!</a>'
+      description_alert: '<span class="fa fa-fw fa-lightbulb-o"></span> Saiba como <a class="alt-link" href="https://catarse.attach.io/BJmQVOiR" target="blank"> criar uma descrição cativante!</a>'
     dashboard_reward:
       submit: "Salvar"
       add_reward: "Adicionar recompensa"

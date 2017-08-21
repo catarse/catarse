@@ -11,7 +11,7 @@ pt:
       available: "Quantidade disponível"
       submit: "Salvar"
     index:
-      link_tip: "O link acima leva para a página de contribuição com essa recompensa já selecionada."
+      link_tip: "O link abaixo leva para a página de contribuição com essa recompensa já selecionada."
       select_reward: "Selecione essa recompensa"
       display_remaining: "%{remaining} de %{maximum} disponíveis"
       dont_want: "Não quero recompensa"

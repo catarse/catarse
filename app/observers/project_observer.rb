@@ -53,10 +53,12 @@ class ProjectObserver < ActiveRecord::Observer
   def from_successful_to_rejected(project)
     BalanceTransaction.insert_project_refund_contributions(project.id)
     refund_all_payments(project)
+    project.notify_owner(:project_canceled)
   end
 
   def from_online_to_rejected(project)
     refund_all_payments(project)
+    project.notify_owner(:project_canceled)
   end
   alias from_waiting_funds_to_rejected from_online_to_rejected
   alias from_waiting_funds_to_failed from_online_to_rejected

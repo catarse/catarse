@@ -22,7 +22,7 @@ RSpec.describe Contribution, type: :model do
     it { is_expected.to belong_to(:project) }
     it { is_expected.to belong_to(:user) }
     it { is_expected.to belong_to(:reward) }
-    it { is_expected.to belong_to(:country) }
+    it { is_expected.to belong_to(:address) }
   end
 
   describe 'Validations' do
@@ -104,8 +104,7 @@ RSpec.describe Contribution, type: :model do
     its(:address_neighbourhood) { should eq(user.address_neighbourhood) }
     its(:address_zip_code) { should eq(user.address_zip_code) }
     its(:address_city) { should eq(user.address_city) }
-    its(:address_state) { should eq(user.state.try(:acronym)) }
-    its(:address_phone_number) { should eq(user.phone_number) }
+    its(:phone_number) { should eq(user.phone_number) }
     its(:payer_document) { should eq(user.cpf) }
   end
 
