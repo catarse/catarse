@@ -7,6 +7,8 @@ class SendgridSyncWorker
 
   def perform(user_id)
     @user = User.find user_id
+    @newsletter_list = find_marketing_list 'newsletter'
+
     has_sendgrid_recipient = user.sendgrid_recipient_id.present?
 
     # update user data on sendgrid contactdb
@@ -14,20 +16,28 @@ class SendgridSyncWorker
       (has_sendgrid_recipient ? update_recipient : find_or_create_recipient)
     )
 
+    @user.mail_marketing_users.where(last_sync_at: nil).find_each do |mu|
+      push_on_list mu.mail_marketing_list.list_id
+    end
+
     # insert or remove user from newsletter list
-    user.reload && user.newsletter? ? put_on_newsletter : remove_from_newsletter
+    user.newsletter? ? put_on_list(@newsletter_list.list_id) : remove_from_list(@newsletter_list.list_id)
   end
 
   private
 
-  def put_on_newsletter
-    list_id = CatarseSettings[:sendgrid_newsletter_list_id]
+  def find_marketing_list list_label
+    MailMarketingList
+      .where(provider: 'sendgrid')
+      .find_by!(label: list_label)
+  end
+
+  def put_on_list list_id
     recipient_id = user.sendgrid_recipient_id
     sendgrid_lists._(list_id).recipients._(recipient_id).post
   end
 
-  def remove_from_newsletter
-    list_id = CatarseSettings[:sendgrid_newsletter_list_id]
+  def remove_from_list list_id
     recipient_id = user.sendgrid_recipient_id
     sendgrid_lists._(list_id).recipients._(recipient_id).delete
   end
