@@ -18,6 +18,22 @@ RSpec.describe SendgridSyncWorker do
     )
   end
 
+  let!(:newsletter_list) do
+    MailMarketingList.create(
+      provider: 'sendgrid',
+      list_id: 'xsb',
+      label: 'newsletter'
+    )
+  end
+
+  let!(:another_campaign) do
+    MailMarketingList.create(
+      provider: 'sendgrid',
+      list_id: 'xsb2',
+      label: 'another_campaign'
+    )
+  end
+
   before do
     CatarseSettings[:sendgrid_mkt_api_key] = 'key'
     Sidekiq::Testing.inline!
@@ -64,7 +80,7 @@ RSpec.describe SendgridSyncWorker do
     context 'when user want receive newsletter' do
       before do
         user.update_column(:newsletter, true)
-        expect(subject).to receive(:put_on_newsletter)
+        expect(subject).to receive(:put_on_list).with(newsletter_list.list_id)
       end
 
       it { subject.perform(user.id) }
@@ -73,7 +89,7 @@ RSpec.describe SendgridSyncWorker do
     context 'when user dont want receive newsltter' do
       before do
         user.update_column(:newsletter, false)
-        expect(subject).to receive(:remove_from_newsletter)
+        expect(subject).to receive(:remove_from_list).with(newsletter_list.list_id)
       end
 
       it { subject.perform(user.id) }
