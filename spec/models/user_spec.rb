@@ -21,6 +21,8 @@ RSpec.describe User, type: :model do
     it { is_expected.to have_many :project_posts }
     it { is_expected.to have_many :unsubscribes }
     it { is_expected.to have_many :authorizations }
+    it { is_expected.to have_many :balance_transactions }
+    it { is_expected.to have_many :mail_marketing_users }
     it { is_expected.to have_one :user_total }
     it { is_expected.to have_one :bank_account }
   end

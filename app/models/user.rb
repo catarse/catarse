@@ -86,6 +86,7 @@ class User < ActiveRecord::Base
   has_many :categories, through: :category_followers
   has_many :links, class_name: 'UserLink', inverse_of: :user
   has_many :balance_transactions
+  has_many :mail_marketing_users
   has_and_belongs_to_many :recommended_projects, join_table: :recommendations, class_name: 'Project'
 
   begin
