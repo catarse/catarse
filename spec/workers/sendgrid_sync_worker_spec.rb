@@ -4,6 +4,9 @@ require 'rails_helper'
 
 RSpec.describe SendgridSyncWorker do
   let(:user) { create(:user) }
+  before(:all) do
+    @newsletter_list ||= create(:mail_marketing_list, provider: 'sendgrid', label: 'newsletter', list_id: 'xsb')
+  end
   let(:srmock) do
     double(
       post: double(body: { persisted_recipients: ['xxx'] }.to_json),
@@ -18,13 +21,6 @@ RSpec.describe SendgridSyncWorker do
     )
   end
 
-  let!(:newsletter_list) do
-    MailMarketingList.create(
-      provider: 'sendgrid',
-      list_id: 'xsb',
-      label: 'newsletter'
-    )
-  end
 
   let!(:another_campaign) do
     MailMarketingList.create(
@@ -42,6 +38,20 @@ RSpec.describe SendgridSyncWorker do
   end
 
   subject { SendgridSyncWorker.new }
+
+  describe 'when user is deleting some list' do
+    let(:marketing_user) { create(:mail_marketing_user) }
+    let(:user) { marketing_user.user }
+    before do
+      expect(subject).not_to receive(:put_on_list)
+      expect(subject).to receive(:remove_from_list)
+        .with(marketing_user.mail_marketing_list.list_id)
+    end
+
+    it 'should only remove from list' do
+      subject.perform(marketing_user.user_id, marketing_user.mail_marketing_list_id)
+    end
+  end
 
   describe 'when user sendgrid recipient id is null' do
     context 'when user exists on sendgrid recipients' do
@@ -80,7 +90,7 @@ RSpec.describe SendgridSyncWorker do
     context 'when user want receive newsletter' do
       before do
         user.update_column(:newsletter, true)
-        expect(subject).to receive(:put_on_list).with(newsletter_list.list_id)
+        expect(subject).to receive(:put_on_list).with(@newsletter_list.list_id)
       end
 
       it { subject.perform(user.id) }
@@ -89,7 +99,7 @@ RSpec.describe SendgridSyncWorker do
     context 'when user dont want receive newsltter' do
       before do
         user.update_column(:newsletter, false)
-        expect(subject).to receive(:remove_from_list).with(newsletter_list.list_id)
+        expect(subject).to receive(:remove_from_list).with(@newsletter_list.list_id)
       end
 
       it { subject.perform(user.id) }
