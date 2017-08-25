@@ -99,9 +99,9 @@ class ApplicationController < ActionController::Base
 
   def subscribe_newsletter
     email = params['EMAIL']
+    list_id = (MailMarketingList.find_by list_id: params[:list_id]) || CatarseSettings[:sendgrid_newsletter_list_id]
 
     if email =~ EMAIL_REGEX
-      list_id = CatarseSettings[:sendgrid_newsletter_list_id]
       client = sendgrid_api.client
 
       rr = client.contactdb.recipients.post(request_body: [{ email: email }])
