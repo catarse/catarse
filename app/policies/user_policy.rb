@@ -52,6 +52,7 @@ class UserPolicy < ApplicationPolicy
     u_attrs << record.attribute_names.map(&:to_sym) if record.is_a?(User)
     u_attrs << { links_attributes: %i[id _destroy link] }
     u_attrs << { category_followers_attributes: %i[id user_id category_id] }
+    u_attrs << { mail_marketing_users_attributes: %i[id _destroy mail_marketing_list_id] }
     u_attrs = u_attrs.flatten.uniq
 
     unless user.try(:admin?)
