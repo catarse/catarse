@@ -257,6 +257,37 @@ RSpec.describe UsersController, type: :controller do
       it { is_expected.to redirect_to edit_user_path(user) }
     end
 
+    context 'with mail marteking attributes' do
+      let!(:marketing_list) { create(:mail_marketing_list) }
+      let!(:marketing_list_current) { create(:mail_marketing_list) }
+      let!(:marketing_user) { create(:mail_marketing_user, mail_marketing_list: marketing_list_current, user: user) }
+
+      before do
+        put :update, id: user.id, locale: 'pt', user: {
+          mail_marketing_users_attributes: [
+            { mail_marketing_list_id: marketing_list.id },
+            { id: marketing_user.id, "_destroy": '1'}
+          ]
+        }
+      end
+
+      it "should in new list" do
+        expect(
+          user.mail_marketing_users
+          .where(mail_marketing_list_id: marketing_list.id)
+          .exists?
+        ).to eq(true)
+      end
+
+      it "should be removed from list check for destroy" do
+        expect(
+          user.mail_marketing_users
+          .where(mail_marketing_list_id: marketing_list_current.id)
+          .exists?
+        ).to eq(false)
+      end
+    end
+
     context 'removing category followers' do
       let(:project) { create(:project, state: 'successful') }
       before do

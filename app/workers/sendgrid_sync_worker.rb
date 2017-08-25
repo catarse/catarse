@@ -5,29 +5,46 @@ class SendgridSyncWorker
   include Sidekiq::Worker
   sidekiq_options queue: 'actions'
 
-  def perform(user_id)
+  def perform(user_id, removed_from_list_id = nil)
     @user = User.find user_id
-    has_sendgrid_recipient = user.sendgrid_recipient_id.present?
 
-    # update user data on sendgrid contactdb
-    update_user_recipient_id(
-      (has_sendgrid_recipient ? update_recipient : find_or_create_recipient)
-    )
+    if removed_from_list_id.present?
+      list = MailMarketingList.find removed_from_list_id
+      remove_from_list(list.list_id)
+    else
+      # TODO: migrate newsletter from user to marketing lists
+      @newsletter_list = find_marketing_list 'newsletter'
 
-    # insert or remove user from newsletter list
-    user.reload && user.newsletter? ? put_on_newsletter : remove_from_newsletter
+      has_sendgrid_recipient = user.sendgrid_recipient_id.present?
+
+      # update user data on sendgrid contactdb
+      update_user_recipient_id(
+        (has_sendgrid_recipient ? update_recipient : find_or_create_recipient)
+      )
+
+      @user.mail_marketing_users.where(last_sync_at: nil).find_each do |mu|
+        push_on_list mu.mail_marketing_list.list_id
+      end
+
+      # insert or remove user from newsletter list
+      user.newsletter? ? put_on_list(@newsletter_list.list_id) : remove_from_list(@newsletter_list.list_id)
+    end
   end
 
   private
 
-  def put_on_newsletter
-    list_id = CatarseSettings[:sendgrid_newsletter_list_id]
+  def find_marketing_list list_label
+    MailMarketingList
+      .where(provider: 'sendgrid')
+      .find_by!(label: list_label)
+  end
+
+  def put_on_list list_id
     recipient_id = user.sendgrid_recipient_id
     sendgrid_lists._(list_id).recipients._(recipient_id).post
   end
 
-  def remove_from_newsletter
-    list_id = CatarseSettings[:sendgrid_newsletter_list_id]
+  def remove_from_list list_id
     recipient_id = user.sendgrid_recipient_id
     sendgrid_lists._(list_id).recipients._(recipient_id).delete
   end

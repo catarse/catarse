@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
                   :image_url, :uploaded_image, :newsletter, :cpf, :state_inscription, :locale, :twitter, :facebook_link, :other_link, :moip_login, :deactivated_at, :reactivate_token,
                   :bank_account_attributes, :country_id, :zero_credits, :links_attributes, :about_html, :cover_image, :category_followers_attributes, :category_follower_ids,
                   :subscribed_to_project_posts, :subscribed_to_new_followers, :subscribed_to_friends_contributions, :whitelisted_at, :confirmed_email_at, :public_name,
-                  :birth_date, :account_type
+                  :birth_date, :account_type, :mail_marketing_users_attributes
 
   attr_accessor :publishing_project, :publishing_user_settings, :publishing_user_about, :reseting_password
 
@@ -86,6 +86,7 @@ class User < ActiveRecord::Base
   has_many :categories, through: :category_followers
   has_many :links, class_name: 'UserLink', inverse_of: :user
   has_many :balance_transactions
+  has_many :mail_marketing_users
   has_and_belongs_to_many :recommended_projects, join_table: :recommendations, class_name: 'Project'
 
   begin
@@ -97,6 +98,7 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :links, allow_destroy: true, reject_if: ->(x) { x['link'].blank? }
   accepts_nested_attributes_for :bank_account, allow_destroy: true, reject_if: ->(attr) { attr[:bank_id].blank? }
   accepts_nested_attributes_for :category_followers, allow_destroy: true
+  accepts_nested_attributes_for :mail_marketing_users, allow_destroy: true
 
   scope :with_permalink, -> { where.not(permalink: nil) }
   scope :active, -> { where(deactivated_at: nil) }

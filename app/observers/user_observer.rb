@@ -23,6 +23,8 @@ class UserObserver < ActiveRecord::Observer
       FbPageCollectorWorker.perform_async(user.id)
     end
 
-    SendgridSyncWorker.perform_async(user.id) if user.newsletter_changed?
+    if user.newsletter_changed? || user.mail_marketing_users.present?
+      SendgridSyncWorker.perform_async(user.id)
+    end
   end
 end

@@ -375,4 +375,19 @@ FactoryGirl.define do
     destination 'all'
     value 20
   end
+
+  factory :mail_marketing_list do |f|
+    f.provider 'sendgrid'
+    sequence :label do |n|
+      "label_#{n}"
+    end
+    sequence :list_id do |n|
+      "list_#{n}"
+    end
+  end
+
+  factory :mail_marketing_user do |f|
+    f.association :user
+    f.association :mail_marketing_list
+  end
 end
