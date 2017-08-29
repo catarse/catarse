@@ -9,7 +9,13 @@ class UserObserver < ActiveRecord::Observer
 
   def after_create(user)
     user.notify(:new_user_registration)
-    SendgridSyncWorker.perform_async(user.id) if user.newsletter
+    if user.newsletter
+      newsletter_list = MailMarketingList.find_by_list_id CatarseSettings[:sendgrid_newsletter_list_id]
+      user.mail_marketing_users.create(
+        mail_marketing_list_id: newsletter_list.id
+      )
+      SendgridSyncWorker.perform_async(user.id)
+    end
   end
 
   def before_save(user)
