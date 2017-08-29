@@ -16,7 +16,7 @@ class MailMarketingUsersController < ApplicationController
       end
     end
 
-    redirect_to :back
+    redirect_to (params[:redirect_url] || :back)
   end
 
   def unsubscribe
