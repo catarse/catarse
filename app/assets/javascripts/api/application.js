@@ -178,7 +178,9 @@
           '/pt/team': wrap(c.root.Team, {menuTransparency: true, footerBig: true}),
           '/team': wrap(c.root.Team, {menuTransparency: true, footerBig: true}),
           '/pt/jobs': wrap(c.root.Jobs, {menuTransparency: true, footerBig: true}),
-          '/jobs': wrap(c.root.Jobs, {menuTransparency: true, footerBig: true})
+          '/jobs': wrap(c.root.Jobs, {menuTransparency: true, footerBig: true}),
+          '/press': wrap(c.root.Press, {menuTransparency: true, footerBig: true}),
+          '/pt/press': wrap(c.root.Press, {menuTransparency: true, footerBig: true})
       });
   }
   _.each(document.querySelectorAll('div[data-mithril]'), function(el){
