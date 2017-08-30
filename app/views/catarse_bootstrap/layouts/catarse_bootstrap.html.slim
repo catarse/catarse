@@ -16,7 +16,7 @@ html
     meta#rd-token name="rd-token" content=CatarseSettings[:rd_token]
     - if CatarseSettings[:simility_customer_id].present?
       meta#simility-customer name="simility-customer" content=CatarseSettings[:simility_customer_id]
-    meta#mailchimp-url name='mailchimp-url' content=subscribe_newsletter_url
+    meta#newsletter-url name='newsletter-url' content=subscribe_newsletter_url
     - if content_for? :meta_tags
       /project specific meta tags
       = yield :meta_tags
