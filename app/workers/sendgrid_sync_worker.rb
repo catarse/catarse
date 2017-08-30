@@ -11,33 +11,27 @@ class SendgridSyncWorker
     if removed_from_list_id.present?
       list = MailMarketingList.find removed_from_list_id
       remove_from_list(list.list_id)
+      if list.list_id == CatarseSettings[:sendgrid_newsletter_list_id]
+        @user.update_column(:newsletter, false)
+      end
     else
-      # TODO: migrate newsletter from user to marketing lists
-      @newsletter_list = find_marketing_list 'newsletter'
+      unsync_list = @user.mail_marketing_users.unsynced
+      return if unsync_list.empty?
 
       has_sendgrid_recipient = user.sendgrid_recipient_id.present?
 
-      # update user data on sendgrid contactdb
       update_user_recipient_id(
         (has_sendgrid_recipient ? update_recipient : find_or_create_recipient)
       )
 
-      @user.mail_marketing_users.where(last_sync_at: nil).find_each do |mu|
-        push_on_list mu.mail_marketing_list.list_id
+     unsync_list.find_each do |mu|
+        put_on_list mu.mail_marketing_list.list_id
+        mu.update_column(:last_sync_at, DateTime.now)
       end
-
-      # insert or remove user from newsletter list
-      user.newsletter? ? put_on_list(@newsletter_list.list_id) : remove_from_list(@newsletter_list.list_id)
     end
   end
 
   private
-
-  def find_marketing_list list_label
-    MailMarketingList
-      .where(provider: 'sendgrid')
-      .find_by!(label: list_label)
-  end
 
   def put_on_list list_id
     recipient_id = user.sendgrid_recipient_id
