@@ -96,6 +96,7 @@ pt:
       finish_explanation: 'Sua campanha ainda está com o prazo em aberto. Para receber os recursos em sua conta bancária, é preciso definir uma data final de arrecadação.'
       know_more: ' Saiba mais.'
     dashboard_contribution_reports:
+      help_link: 'Aprenda a usar o <a href="https://suporte.catarse.me/hc/pt-br/articles/115003361423-Relat%C3%B3rio-de-apoios" target="_blank" class="alt-link">Relatório de apoios!</a>'
       title: 'Relatório de apoios'
       subtitle_html: 'Acompanhe os apoios feitos para sua campanha e gerencie a entrega de recompensas.'
     dashboard_user_settings:
