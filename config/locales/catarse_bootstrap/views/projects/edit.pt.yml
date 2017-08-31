@@ -95,6 +95,12 @@ pt:
     dashboard_insights:
       finish_explanation: 'Sua campanha ainda está com o prazo em aberto. Para receber os recursos em sua conta bancária, é preciso definir uma data final de arrecadação.'
       know_more: ' Saiba mais.'
+    dashboard_surveys:
+      title: Questionários
+      subtitle: 'Confirme o endereço de entrega dos seus apoiadores e faça outras perguntas relacionadas às suas recompensas'
+      help_link: 'Aprenda como usar os <a href="https://suporte.catarse.me/hc/pt-br/articles/115003402146-Question%C3%A1rios-Como-envi%C3%A1-los-aos-seus-apoiadores" target="_blank" class="alt-link">Questionários na gestão de recompensas!</a>'
+      online_explanation: ' Como o seu projeto ainda não foi finalizado, você só pode enviar questionários para apoiadores de recompensas esgotadas. Após a finalização do projeto, você poderá enviar questionários a todos os apoiadores.'
+      create_survey: Criar questionário
     dashboard_contribution_reports:
       title: 'Relatório de apoios'
       subtitle_html: 'Acompanhe os apoios feitos para sua campanha e gerencie a entrega de recompensas.'
