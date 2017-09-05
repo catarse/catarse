@@ -17,7 +17,7 @@ module Contribution::CustomValidators
       return unless reward
       has_error = false
       value_to_validate = ((shipping_fee.try(:value)||0) + reward.minimum_value)
-      if reward.shipping_options != 'free' && reward.shipping_fees.present? && !shipping_fee.present?
+      if !%w(free presential).include?(reward.shipping_options) && reward.shipping_fees.present? && !shipping_fee.present?
         has_error = true
       end
 
