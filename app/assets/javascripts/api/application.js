@@ -143,6 +143,7 @@
           '/explore': wrap(c.root.ProjectsExplore, {menuTransparency: true, footerBig: true}),
           '/start': wrap(c.root.Start, {menuTransparency: true, footerBig: true}),
           '/projects/:project_id/contributions/new': wrap(c.root.ProjectsContribution),
+          '/projects/:project_id/contributions/fallback_create': wrap(c.root.ProjectsContribution),
           '/projects/:project_id/contributions/:contribution_id/edit': wrap(c.root.ProjectsPayment, {menuShort: true}),
           '/pt/projects/:project_id/contributions/new': wrap(c.root.ProjectsContribution),
           '/pt/projects/:project_id/contributions/:contribution_id/edit': wrap(c.root.ProjectsPayment, {menuShort: true}),
