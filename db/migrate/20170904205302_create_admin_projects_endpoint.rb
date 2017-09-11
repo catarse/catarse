@@ -22,18 +22,31 @@ class CreateAdminProjectsEndpoint < ActiveRecord::Migration
     c.name_pt as category_name,
     p.category_id,
     thumbnail_image(p.*, 'large'::text) AS project_img,
-    COALESCE(pledged.paid_pledged, 0::numeric) as pledged,
-    COALESCE(pledged.progress, 0::numeric) as progress,
+    COALESCE(
+    (
+    select (sum(pa.value) )/ p.goal * 100::numeric
+      from contributions co
+      LEFT JOIN payments pa on pa.contribution_id = co.id
+      where co.project_id = p.id
+      and
+        CASE
+            WHEN p.state::text <> ALL (VALUES('failed'::text), ('rejected'::text)) THEN pa.state = 'paid'::text
+            ELSE pa.state IN ('paid','pending_refund','refunded')
+        END
+      group by co.project_id
+  )
+    , 0::numeric) as progress,
+    COALESCE(
+    (
+    select sum(pa.value) FILTER (WHERE pa.state = 'paid'::text) 
+      from contributions co
+      LEFT JOIN payments pa on pa.contribution_id = co.id
+      where co.project_id = p.id
+      group by co.project_id
+  )
+    , 0::numeric) as pledged,
     od.od AS project_online_date
     from projects p
-    LEFT join LATERAL( ( SELECT
-                CASE
-                    WHEN p.state::text = 'failed'::text THEN pt.pledged
-                    ELSE pt.paid_pledged
-                END AS paid_pledged,
-                pt.progress
-           FROM "1".project_totals pt
-          WHERE pt.project_id = p.id)) as pledged on true
      JOIN LATERAL zone_timestamp(online_at(p.*)) od(od) ON true
      JOIN users u on u.id = p.user_id
      LEFT JOIN categories c on c.id = p.category_id
