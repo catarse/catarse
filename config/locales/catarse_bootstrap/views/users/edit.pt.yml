@@ -77,5 +77,12 @@ pt:
         bank_account: "Dados bancários"
         bank_account_message: "Caso algum projeto que você tenha apoiado <b>com Boleto Bancário</b> não seja bem-sucedido, nós efetuaremos o reembolso de seu pagamento <b>automaticamente</b> na conta indicada abaixo."
       notifications_fields:
-        newsletters: "Newsletters"
-        newsletter_description: "Newsletter do Catarse (semanal)"
+        newsletters:
+          750382:
+            title: 'Novidades da semana'
+            description: 'Projetos em destaque e pílulas do nosso Blog, selecionados com carinho pela nossa equipe.'
+            image_src: 'http://uploads.webflow.com/5849f4f0a275a2a744efd93e/59a714d438c73b0001ee8d83_news-img.jpg'
+          1370135:
+            title: 'Geek News'
+            description: 'Quadrinhos, boardgames, RPG e jogos digitais, dentro e fora do Catarse.'
+            image_src: 'http://uploads.webflow.com/5849f4f0a275a2a744efd93e/59a713dde51ca0000149ae85_geek-news-img.jpg'

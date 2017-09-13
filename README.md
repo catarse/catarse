@@ -19,7 +19,7 @@ The official repo is https://github.com/catarse/catarse
 
 To run this project you need to have:
 
-* Ruby 2.3.1
+* Ruby 2.4.1
 
 * Rails 4.2
 

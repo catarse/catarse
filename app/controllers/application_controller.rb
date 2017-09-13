@@ -97,21 +97,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def subscribe_newsletter
-    email = params['EMAIL']
-
-    if email =~ EMAIL_REGEX
-      list_id = CatarseSettings[:sendgrid_newsletter_list_id]
-      client = sendgrid_api.client
-
-      rr = client.contactdb.recipients.post(request_body: [{ email: email }])
-      recipient = JSON.parse(rr.body).try(:[], 'persisted_recipients').try(:first)
-      client.contactdb.lists._(list_id).recipients.post(request_body: [recipient])
-    end
-
-    redirect_to :back
-  end
-
   def public_settings
     {
       base_url: CatarseSettings[:base_url],
@@ -136,10 +121,6 @@ class ApplicationController < ActionController::Base
       session[:zendesk_return] = nil
       redirect_to zendesk_session_create_path(return_to: zlink)
     end
-  end
-
-  def sendgrid_api
-    @sendgrid ||= SendGrid::API.new(api_key: CatarseSettings[:sendgrid_mkt_api_key])
   end
 
   def force_www

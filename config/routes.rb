@@ -31,7 +31,8 @@ Catarse::Application.routes.draw do
   get '/project_edit' => 'application#redirect_to_last_edit'
   get '/billing_edit' => 'application#redirect_to_user_billing'
   get '/user_contributions' => 'application#redirect_to_user_contributions'
-  post '/subscribe_newsletter' => 'application#subscribe_newsletter'
+  post '/subscribe_newsletter' => 'mail_marketing_users#subscribe'
+  get '/unsubscribe_list' => 'mail_marketing_users#unsubscribe'
 
   get '/thank_you' => 'static#thank_you'
   get '/follow-fb-friends' => 'users#follow_fb_friends', as: :follow_fb_friends

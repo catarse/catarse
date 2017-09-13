@@ -102,7 +102,7 @@ pt:
           origin: 'Fonte'
           contributions: 'Apoios'
           amount: 'R$ apoiados (% do total)'
-        help_url: 'http://suporte.catarse.me/hc/pt-br/articles/214764343-tudo-sobre-MONITORAMENTO-DIVULGA%C3%87%C3%83O#origem-apoio'
+        help_url: 'https://suporte.catarse.me/hc/pt-br/articles/115002214463-Projeto-online-acompanhamento-e-divulga%C3%A7%C3%A3o#origem-apoio'
       campaign_title: 'Minha Campanha'
       campaign:
         aon:

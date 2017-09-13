@@ -149,7 +149,6 @@ class ProjectsController < ApplicationController
         unless resource.project_cancelation.present?
           resource.create_project_cancelation!
           resource.update_columns(
-            skip_finish: true,
             expires_at: DateTime.now
           )
         end
