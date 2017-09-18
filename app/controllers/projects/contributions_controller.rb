@@ -37,12 +37,6 @@ class Projects::ContributionsController < ApplicationController
     authorize @contribution
 
     @title = t('projects.contributions.new.title', name: @project.name)
-    load_rewards
-
-    if params[:reward_id] && (@selected_reward = @project.rewards.find params[:reward_id]) && !@selected_reward.sold_out?
-      @contribution.reward = @selected_reward
-      @contribution.value = format('%0.0f', @selected_reward.minimum_value)
-    end
   end
 
   def create
