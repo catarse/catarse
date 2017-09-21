@@ -23,7 +23,7 @@ class CreateSubProjectStates < ActiveRecord::Migration
         (
         SELECT state_order
         FROM
-        public.flexible_project_states ps
+        public.project_states ps
         WHERE
         ps.state = p.state
         )
