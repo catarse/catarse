@@ -17,7 +17,7 @@ class Reward < ActiveRecord::Base
   accepts_nested_attributes_for :shipping_fees, allow_destroy: true
   ranks :row_order, with_same: :project_id
 
-  validates_presence_of :minimum_value, :description, :deliver_at # , :days_to_delivery
+  validates_presence_of :minimum_value, :description, :deliver_at, :shipping_options # , :days_to_delivery
   validates_numericality_of :minimum_value, greater_than_or_equal_to: 10.00, message: 'Valor deve ser maior ou igual a R$ 10'
   validates_numericality_of :maximum_contributions, only_integer: true, greater_than: 0, allow_nil: true
   scope :remaining, -> {
