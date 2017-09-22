@@ -19,14 +19,14 @@ RSpec.describe Contribution::CustomValidators, type: :model do
   end
 
   describe '#value_must_be_at_least_rewards_value' do
-    let(:reward) { create(:reward, minimum_value: 500) }
+    let(:reward) { create(:reward, minimum_value: 500, shipping_options: 'national') }
     let(:contribution) { build(:contribution, reward: reward, project: reward.project, value: value) }
     subject { contribution }
     context 'when value is lower than reward minimum value' do
       let(:value) { 499.99 }
       it { is_expected.not_to be_valid }
     end
-    context 'when value is equal than reward minimum value' do
+    context 'when value is equal to reward minimum value' do
       let(:value) { 500.00 }
       it { is_expected.to be_valid }
     end
