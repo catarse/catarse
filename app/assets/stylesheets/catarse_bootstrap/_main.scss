@@ -1299,6 +1299,7 @@ a:hover {
   display: inline-block;
   margin-right: 15px;
   padding: 10px 12px 20px;
+  float: left;
   border-right: 1px none #f1f2f3;
   border-bottom: 3px solid #fff;
   background-color: #fff;
@@ -2145,6 +2146,15 @@ a:hover {
   color: #3f4752;
 }
 
+.btn-terciary.btn-terciary-negative {
+  border-color: hsla(0, 0%, 100%, .78);
+  color: hsla(0, 0%, 100%, .8);
+}
+
+.btn-terciary.btn-terciary-negative:hover {
+  color: #fff;
+}
+
 .btn-no-border {
   border: 1px solid transparent;
 }
@@ -2214,6 +2224,7 @@ a:hover {
 }
 
 .link-hidden-white:hover {
+  color: #fff;
   text-decoration: underline;
 }
 
@@ -2243,7 +2254,6 @@ a:hover {
 }
 
 .project-main {
-  background-color: #f1f4f4;
   text-align: left;
 }
 
@@ -3275,11 +3285,21 @@ a:hover {
   background-color: #409ade;
 }
 
+.section-product.assinatura {
+  background-color: #c1af4f;
+}
+
 .project-stats-inner {
   margin-bottom: 20px;
   padding: 20px;
   border-radius: 5px;
-  background-color: hsla(0, 0%, 100%, .8);
+  background-color: #fff;
+  color: #3f4752;
+}
+
+.project-stats-inner.dark {
+  background-color: #3f4752;
+  color: #fff;
 }
 
 .logo-flex-home {
@@ -3949,6 +3969,45 @@ a:hover {
   text-decoration: underline;
 }
 
+.project-main-container {
+  background-color: #f1f4f4;
+  color: #3f4752;
+}
+
+.project-main-container.dark {
+  background-color: #1a2029;
+  color: #f1f4f4;
+}
+
+.project-main-container.dark.project-with-background.teste-white {
+  background-image: -webkit-linear-gradient(270deg, rgba(241, 244, 244, .92), rgba(241, 244, 244, .92)), url('../images/bg-universohq.jpg');
+  background-image: linear-gradient(180deg, rgba(241, 244, 244, .92), rgba(241, 244, 244, .92)), url('../images/bg-universohq.jpg');
+  background-position: 0px 0px, 50% 50%;
+  background-size: auto, cover;
+  color: #3f4752;
+}
+
+.transparent-background {
+  background-color: transparent;
+}
+
+.fontcolor-primary {
+  color: #3f4752;
+}
+
+.project-with-background {
+  background-image: -webkit-linear-gradient(270deg, rgba(0, 4, 8, .89), rgba(0, 4, 8, .89)), url('../images/bg-universohq.jpg');
+  background-image: linear-gradient(180deg, rgba(0, 4, 8, .89), rgba(0, 4, 8, .89)), url('../images/bg-universohq.jpg');
+  background-position: 0px 0px, 50% 50%;
+  background-size: auto, cover;
+}
+
+.project-header {
+  margin-bottom: 0px;
+  padding-top: 44px;
+  padding-bottom: 44px;
+}
+
 html.w-mod-js *[data-ix="fade-in"] {
   opacity: 0;
 }
@@ -4541,6 +4600,10 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
     padding-right: 6px;
     padding-left: 18px;
   }
+  .project-header {
+    padding-top: 34px;
+    padding-bottom: 34px;
+  }
 }
 
 @media (max-width: 767px) {
@@ -4589,7 +4652,7 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
     margin-left: -10px;
     padding: 30px 30px 20px;
     border-top: 1px none #e9e9ec;
-    border-bottom: 1px solid #e9e9ec;
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
     text-align: center;
   }
   .project-stats.mf {
@@ -4618,7 +4681,7 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
     margin-bottom: 35px;
     padding-top: 0px;
     padding-bottom: 10px;
-    border-bottom: 1px solid #e9e9ec;
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
     text-align: center;
   }
   .icon-close {
@@ -5265,6 +5328,12 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
   .u-text-center-big-only {
     text-align: left;
   }
+    .fontcolor-primary {
+    color: #3f4752;
+  }
+  .project-header {
+    padding: 25px 10px 20px;
+  }
 }
 
 @media (max-width: 479px) {
@@ -5720,5 +5789,9 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
   }
   .card-backer {
     height: 255px;
+  }
+    .project-header {
+    padding-top: 18px;
+    padding-bottom: 16px;
   }
 }
