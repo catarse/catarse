@@ -58,7 +58,7 @@ class ProjectObserver < ActiveRecord::Observer
 
   def from_online_to_rejected(project)
     refund_all_payments(project)
-    project.notify_owner(:project_canceled)
+    project.notify_owner(:project_canceled) if project.rejected?
   end
   alias from_waiting_funds_to_rejected from_online_to_rejected
   alias from_waiting_funds_to_failed from_online_to_rejected

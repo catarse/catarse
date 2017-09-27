@@ -132,6 +132,7 @@ RSpec.describe ProjectObserver do
         Sidekiq::Testing.inline!
         contribution_invalid.user.bank_account.destroy
         project.update_attribute :online_days, 2
+        expect(project).not_to receive(:notify_owner).with(:project_canceled)
         expect(DirectRefundWorker).to receive(:perform_async).with(payment_valid.id)
         expect(DirectRefundWorker).to receive(:perform_async).with(payment_slip.id).and_call_original
         expect(BalanceTransaction).to receive(:insert_contribution_refund).with(payment_slip.contribution_id)
