@@ -220,8 +220,11 @@ class Project < ActiveRecord::Base
   end
 
   def self.find_sti_class(type_name)
-    if type_name == 'flex'
+    case type_name
+    when 'flex'
       FlexibleProject
+    when 'sub'
+      SubscriptionProject
     else
       Project
     end
