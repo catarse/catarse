@@ -10,6 +10,36 @@ class RewardsController < ApplicationController
     render nothing: true
   end
 
+  def create
+    @reward = Reward.new
+    @reward.localized.attributes = permitted_params
+    authorize @reward
+    if @reward.save
+      return respond_to do |format|
+        format.json { render json: { success: 'OK', reward_id: @reward.id } }
+      end
+    else
+      render status: 400
+    end
+  end
+
+  def update
+    authorize resource
+
+    resource.localized.attributes = permitted_params
+    if resource.save
+      if request.format.json?
+        return respond_to do |format|
+          format.json { render json: { success: 'OK' } }
+        end
+      end
+    else
+      return respond_to do |format|
+        format.json { render status: 400, json: { errors: resource.errors.messages.map { |e| e[1][0] }.uniq, errors_json: resource.errors.to_json } }
+      end
+    end
+  end
+
   def resource
     @reward ||= parent.rewards.find params[:id]
   end
@@ -37,5 +67,11 @@ class RewardsController < ApplicationController
     else
       render status: 400, json: { errors_json: resource.errors.to_json }
     end
+  end
+
+  protected
+
+  def permitted_params
+    params.require(:reward).permit(policy(resource).permitted_attributes)
   end
 end
