@@ -143,6 +143,7 @@
           '/': wrap(( isUserProfile ? c.root.UsersShow : c.root.ProjectsHome), {menuTransparency: true, footerBig: true, absoluteHome: isUserProfile}),
           '/explore': wrap(c.root.ProjectsExplore, {menuTransparency: true, footerBig: true}),
           '/start': wrap(c.root.Start, {menuTransparency: true, footerBig: true}),
+          '/start-sub': wrap(c.root.SubProjectNew, {menuTransparency: false }),
           '/projects/:project_id/contributions/new': wrap(c.root.ProjectsContribution),
           '/projects/:project_id/contributions/fallback_create': wrap(c.root.ProjectsContribution),
           '/projects/:project_id/contributions/:contribution_id/edit': wrap(c.root.ProjectsPayment, {menuShort: true}),
