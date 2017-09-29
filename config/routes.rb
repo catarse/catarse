@@ -1,16 +1,8 @@
 # frozen_string_literal: true
 
 class Blacklist
-  def initialize
-    @ips = Blacklist.banned_ips
-  end
-
   def matches?(request)
-    !@ips.include?(request.remote_ip)
-  end
-
-  def self.banned_ips
-    BannedIp.all.pluck :ip
+    !BannedIp.exists? ip: request.remote_ip
   end
 end
 
