@@ -146,6 +146,7 @@ Catarse::Application.routes.draw do
   get '/terms-of-use' => 'high_voltage/pages#show', id: 'terms_of_use'
   get '/privacy-policy' => 'high_voltage/pages#show', id: 'privacy_policy'
   get '/start' => 'high_voltage/pages#show', id: 'start'
+  get '/start-sub' => 'high_voltage/pages#show', id: 'start_sub'
   get '/jobs' => 'high_voltage/pages#show', id: 'jobs'
   get '/hello' => redirect('/start')
   get '/press' => 'high_voltage/pages#show', id: 'press'

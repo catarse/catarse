@@ -20,7 +20,6 @@ class Project < ActiveRecord::Base
   has_notifications
 
   mount_uploader :uploaded_image, ProjectUploader
-  mount_uploader :cover_image, CoverUploader
 
   delegate  :display_card_status, :display_status, :progress,
             :display_image, :display_expires_at, :time_to_go, :elapsed_time,
@@ -472,6 +471,11 @@ class Project < ActiveRecord::Base
 
   def is_flexible?
     mode == 'flex'
+  end
+
+
+  def is_sub?
+    mode == 'sub'
   end
 
   def is_in_reminder?(current_user)

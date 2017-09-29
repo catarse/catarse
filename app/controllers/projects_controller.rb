@@ -33,7 +33,6 @@ class ProjectsController < ApplicationController
   def new
     @project = Project.new user: current_user
     authorize @project
-    @project.rewards.build
   end
 
   def create

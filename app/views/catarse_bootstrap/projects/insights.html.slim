@@ -16,25 +16,27 @@
         .fontsize-large.u-text-center
           span.fa.fa-times-circleM
           ' Confirmar cancelamento
-      .modal-dialog-content
-        = simple_form_for @project do |f|
-          =  hidden_field_tag 'anchor', 'posts'
-          =  hidden_field_tag 'cancel_project', 'true'
-          = f.simple_fields_for :posts, @project.posts.build do |form|
-            .fontsize-smaller.u-marginbottom-20 Conte porque você está cancelando sua campanha. Essa mensagem será enviada por email para os seus apoiadores e estará pública na aba "Novidades" do seu projeto no Catarse.
-            .w-form
-              = form.label :title, as: :string, class: 'field-label fontweight-semibold'
-              = form.input_field :title, as: :string, class: 'w-input text-field positive'
+      //@TODO move to mithril
+      - unless @project.is_sub?
+        .modal-dialog-content
+          = simple_form_for @project do |f|
+            =  hidden_field_tag 'anchor', 'posts'
+            =  hidden_field_tag 'cancel_project', 'true'
+            = f.simple_fields_for :posts, @project.posts.build do |form|
+              .fontsize-smaller.u-marginbottom-20 Conte porque você está cancelando sua campanha. Essa mensagem será enviada por email para os seus apoiadores e estará pública na aba "Novidades" do seu projeto no Catarse.
+              .w-form
+                = form.label :title, as: :string, class: 'field-label fontweight-semibold'
+                = form.input_field :title, as: :string, class: 'w-input text-field positive'
 
-              = form.label :comment, as: :string, class: 'field-label fontweight-semibold'
-              = form.input_field :comment_html, class: 'redactor text-field'
-            div
-              .w-row
-                .w-col.w-col-3
-                .u-text-center.w-col.w-col-6
-                  = form.submit 'Cancelar campanha', class: 'btn btn-inactive btn-large u-marginbottom-20'
-                  #modal-close.fontsize-small.link-hidden-light  Cancelar
-                .w-col.w-col-3
+                = form.label :comment, as: :string, class: 'field-label fontweight-semibold'
+                = form.input_field :comment_html, class: 'redactor text-field'
+              div
+                .w-row
+                  .w-col.w-col-3
+                  .u-text-center.w-col.w-col-6
+                    = form.submit 'Cancelar campanha', class: 'btn btn-inactive btn-large u-marginbottom-20'
+                    #modal-close.fontsize-small.link-hidden-light  Cancelar
+                  .w-col.w-col-3
 
 - if params[:show_modal].present?
   .modal-backdrop
