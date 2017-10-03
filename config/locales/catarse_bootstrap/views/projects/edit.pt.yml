@@ -254,6 +254,7 @@ pt:
       description_label: 'Descrição do projeto'
       description_hint: 'Fale com paixão e clareza sobre o que será realizado. Esclareça possíveis dúvidas sobre como o dinheiro será utilizado, quem está por trás do projeto, como e quando o projeto será entregue. Transparência atrai mais apoiadores. Lembre-se: seu projeto será acessado por pessoas comuns que decidirão se querem ou não apoiar seu projeto. Capriche!'
       description_alert: '<span class="fa fa-fw fa-lightbulb-o"></span> Saiba como <a class="alt-link" href="https://catarse.attach.io/BJmQVOiR" target="blank"> criar uma descrição cativante!</a>'
+      description_video_alert: '<span class="fa fa-lightbulb-o"></span> Saiba como <a href="https://catarse.attach.io/BJmQVOiR" target="_blank" class="alt-link">criar uma descrição cativante</a> e veja exemplos de <a href="http://crowdfunding.catarse.me/videomakers?ref=ctrse_dashboard_video" target="_blank">vídeos de sucesso</a> no Catarse!'
     dashboard_reward:
       submit: "Salvar"
       add_reward: "Adicionar recompensa"
