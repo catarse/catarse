@@ -11,11 +11,11 @@ pt:
           cta: 'Comece sua campanha'
           image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-fctodos.jpg'
         2:
-          title: 'Deli&Co. + Roberta Sudbrack'
-          subtitle: 'Conheça o Dutch Oven, o utensílio que oferece infinitas possibilidades na cozinha!'
-          link: 'https://www.catarse.me/dutch_oven?ref=home_banner'
+          title: 'Livro Prédios de São Paulo Vol. 3'
+          subtitle: 'O maior e último livro da trilogia Prédios de São Paulo!'
+          link: 'https://www.catarse.me/prediosdesaopaulolivro3?ref=home_banner'
           cta: 'Conheça o projeto'
-          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-dutch_oven.jpg'
+          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-prediosdesaopaulolivro3.jpg'
         3:
           title: '<img src="https://daks2k3a4ib2z.cloudfront.net/573a70f6d5c3cb6532f8b1a7/59c3980fd03bd6000107e99c_logo-assinaturas.png" width="400">'
           subtitle: 'Nosso financiamento coletivo recorrente está chegando!'
@@ -23,11 +23,11 @@ pt:
           cta: 'Saiba mais'
           image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-assinaturas.jpg'
         4:
-          title: 'WarpZone Essencial: The King of Fighters'
-          subtitle: 'Aposte uma ficha na sua nostalgia. Apoie uma obra prima sobre The King of Fighters!'
-          link: 'https://www.catarse.me/kof?ref=home_banner'
+          title: 'Cine Mirante'
+          subtitle: 'Cinema grátis, espaço público ocupado. Fora do mainstream, a favor de todos.'
+          link: 'https://www.catarse.me/cinemirante?ref=home_banner'
           cta: 'Conheça o projeto'
-          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-kof.jpg'
+          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-cinemirante.jpg'
         5:
           title: 'Financiamento coletivo para Livros e Revistas'
           subtitle: 'Junte-se a uma comunidade de autores e editoras e publique seu livro independente com a ajuda dos leitores'
