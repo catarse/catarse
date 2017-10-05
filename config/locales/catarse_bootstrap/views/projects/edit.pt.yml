@@ -180,6 +180,7 @@ pt:
       next_steps: "Enquanto espera a sua resposta, você pode continuar editando o seu projeto! Recomendamos também que você vá coletando feedback com as pessoas próximas e planejando como será a sua campanha."
     dashboard_nav:
       leave_link_html: "&nbsp; Sair do painel de controle"
+      draft_start_tab: ' Início'
       start_tab: ' Minha Campanha'
       reports_tab: ' Relatórios de apoios'
       surveys_tab: ' Questionários'
@@ -258,6 +259,10 @@ pt:
       submit: "Salvar"
       add_reward: "Adicionar recompensa"
       reward: "Recompensa"
+    dashboard_start:
+      title:  "Viva do que você ama fazer"
+      description: "Olá %{name}! Esse é o momento para você construir e planejar a sua campanha. Preencha todas as abas ao lado com carinho e não se esqueça de salvá-las enquanto for preenchendo. Quando tudo estiver pronto para o lançamento, clique no botão CONTINUAR."
+      video_src: "https://www.youtube.com/embed/o4_1hS1aIC8"
     dashboard_announce_expiration:
       explanation_01: 'Ao iniciar a reta final, iremos abrir uma contagem regressiva de 7 dias. Você poderá receber apoios até:'
       explanation_02: 'Essa é uma ação irreversível. Depois que a reta final é definida, o projeto não poderá mais alterar o seu prazo final de captação. Ao final do prazo, você recebe todo o valor arrecadado.'
