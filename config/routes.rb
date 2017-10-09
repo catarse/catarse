@@ -78,6 +78,7 @@ Catarse::Application.routes.draw do
   resources :projects, only: %i[create update edit new show] do
     resources :accounts, only: %i[create update]
     resources :posts, controller: 'projects/posts', only: %i[destroy show create]
+    resources :goals
     resources :rewards do
       member do
         get :toggle_survey_finish
