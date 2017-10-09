@@ -198,6 +198,13 @@ FactoryGirl.define do
     f.locale 'pt'
   end
 
+  factory :goal do |f|
+    f.association :project, factory: :project
+    f.value 10.00
+    f.description 'Foo bar'
+    f.title 'Foo bar'
+  end
+
   factory :reward do |f|
     f.association :project, factory: :project
     f.minimum_value 10.00
