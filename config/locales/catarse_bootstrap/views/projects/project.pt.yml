@@ -167,6 +167,10 @@ pt:
         one: "<span>%{count} %{unit}</span> restante"
         other: "<span>%{count} %{unit}</span> restantes"
       pledged_html: "<span>%{value}</span> levantados"
+      pledged:
+        sub: "por mês"
+        flex: "Levantados"
+        aon: "Levantados"
       display_status:
         flex_successful: "Financiado Flex"
         expired: "Finalizado"
