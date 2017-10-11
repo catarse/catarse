@@ -194,7 +194,7 @@ RSpec.describe ProjectObserver do
     end
 
     it 'should create notification for project owner' do
-      expect(ProjectNotification.where(template_name: 'project_success', user: project.user, project_id: project.id).count).to eq(1)
+      expect(ProjectNotification.where(template_name: 'project_success', user: project.user, project_id: project.id).count).to eq(5)
     end
   end
 end
