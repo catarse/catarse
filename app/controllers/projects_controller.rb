@@ -44,7 +44,7 @@ class ProjectsController < ApplicationController
     )
     authorize @project
     if @project.save
-      redirect_to insights_project_path(@project, locale: '')
+      redirect_after_create(@project)
     else
       render :new
     end
@@ -259,5 +259,13 @@ class ProjectsController < ApplicationController
     url = project_by_slug_url(resource.permalink, protocol: 'http', subdomain: 'www').split('/')
     url.delete_at(3) # remove language from url
     url.join('/')
+  end
+
+  def redirect_after_create(project)
+    if project.is_sub?
+      redirect_to edit_project_path(project, locale: '', anchor: 'start')
+    else
+      redirect_to insights_project_path(project, locale: '')
+    end
   end
 end
