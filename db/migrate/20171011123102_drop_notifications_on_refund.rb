@@ -30,8 +30,8 @@ class DropNotificationsOnRefund < ActiveRecord::Migration
                      'associations', json_build_object('balance_transfer_id', v_balance_transfer_id) 
                  )::jsonb, now(), now()); 
 
-             DELETE from contribution_notifications where template_name = 'contribution_refunded' and user_id = NEW.user_id;
-             DELETE from project_notifications where template_name = 'project_success' and user_id = NEW.user_id;
+             DELETE from contribution_notifications where template_name = 'contribution_refunded' and user_id = NEW.user_id and deliver_at > current_timestamp;
+             DELETE from project_notifications where template_name = 'project_success' and user_id = NEW.user_id and deliver_at > current_timestamp;
 
              SELECT * FROM "1".balance_transfers WHERE id = v_balance_transfer_id 
                  INTO v_balance_transfer; 
