@@ -18,7 +18,10 @@ module Project::BaseValidator
     # is included on ON_ONLINE_TO_END_STATE
     with_options if: ->(x) { ON_ONLINE_TO_END_STATES.include? x.state } do |wo|
       validates_numericality_of :online_days, less_than_or_equal_to: 365, greater_than_or_equal_to: 1, allow_nil: true, if: :is_flexible?
-      wo.validates_presence_of :about_html, :headline, :goal
+      wo.validates_presence_of :about_html, :headline
+      wo.validates_presence_of :goal,
+                               unless: ->(project) { project.mode == 'sub' }
+
 
       wo.validates_presence_of :uploaded_image,
                                unless: ->(project) { project.video_thumbnail.present? }
@@ -31,7 +34,8 @@ module Project::BaseValidator
         end
       end
 
-      wo.validates_presence_of :budget
+      wo.validates_presence_of :budget,
+                               unless: ->(project) { project.mode == 'sub' }
     end
   end
 end
