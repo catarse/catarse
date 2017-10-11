@@ -296,6 +296,8 @@ pt:
       headline_label: 'Frase de efeito'
       headline_label_hint: 'Frase no card do projeto para chamar apoiadores. Deve ter no máximo 100 caracteres e resumir bem o projeto.'
       uploaded_image_label: 'Imagem do projeto'
+      cover_image_label: 'Imagem de fundo <span class="fontcolor-secondary">(opcional)</span>'
+      cover_image_hint: "Essa imagem será utilizada no fundo da área principal de sua página (veja um exemplo). O arquivo não pode ultrapassar 1MB, e as dimensões devem ser 1340 X 860 px , em formato JPG, GIF ou PNG."
       uploaded_image_hint: 'Essa imagem será utilizada como a miniatura de seu projeto (PNG, JPG tamanho 720 x 400)'
     dashboard_video:
       submit: Salvar
