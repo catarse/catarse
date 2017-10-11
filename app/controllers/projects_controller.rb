@@ -99,13 +99,15 @@ class ProjectsController < ApplicationController
   def upload_image
     authorize resource, :update?
     params[:project] = {
-      uploaded_image: params[:uploaded_image]
+      uploaded_image: params[:uploaded_image],
+      cover_image: params[:cover_image]
     }
 
     if resource.update permitted_params
       resource.reload
       render status: 200, json: {
-        uploaded_image: resource.uploaded_image.url(:project_thumb)
+        uploaded_image: resource.uploaded_image.url(:project_thumb),
+        cover_image: resource.cover_image.url(:base)
       }
     else
       render status: 400, json: { errors: resource.errors.full_messages, errors_json: resource.errors.to_json }
