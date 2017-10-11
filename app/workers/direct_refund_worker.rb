@@ -14,7 +14,7 @@ class DirectRefundWorker
           unless payment.refunded?
             payment.contribution.notify_to_contributor(:contribution_refunded)
             [15, 30, 60, 90].each do |day|
-              payment.contribution.notify(:contribution_refunded, contribution.user, contribution, {deliver_at: Time.now + day.days})
+              payment.contribution.notify(:contribution_refunded, payment.contribution.user, payment.contribution, {deliver_at: Time.now + day.days})
             end
           end
           payment.refund
