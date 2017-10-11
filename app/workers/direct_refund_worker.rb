@@ -11,7 +11,12 @@ class DirectRefundWorker
       if payment.slip_payment? && payment.paid?
         Payment.transaction do
           BalanceTransaction.insert_contribution_refund(payment.contribution_id)
-          payment.contribution.notify_to_contributor(:contribution_refunded) unless payment.refunded?
+          unless payment.refunded?
+            payment.contribution.notify_to_contributor(:contribution_refunded)
+            [15, 30, 60, 90].each do |day|
+              payment.contribution.notify(:contribution_refunded, contribution.user, contribution, {deliver_at: Time.now + day.days})
+            end
+          end
           payment.refund
         end
       else
