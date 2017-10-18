@@ -10,22 +10,22 @@ class Reports::ContributionReportsForProjectOwnersController < ApplicationContro
   def index
     authorize project, :update?
     respond_to do |format|
+      if params[:reward_id]
+        reward = Reward.find params[:reward_id]
+        data = ContributionReportsForProjectOwner.to_csv(collection(false), params[:reward_id])
+      else
+        data = collection.copy_to_string
+      end
       format.csv do
         if params[:reward_id]
-          reward = Reward.find params[:reward_id]
-          send_data ContributionReportsForProjectOwner.to_csv(collection(false), params[:reward_id]), filename: "#{project.permalink}#{reward.title ? '_' + reward.title : ''}.csv" 
+          send_data data, filename: "#{project.permalink}#{reward.title ? '_' + reward.title : ''}.csv" 
         else
-          send_data collection.copy_to_string, filename: "#{project.permalink}.csv"
+          send_data data, filename: "#{project.permalink}.csv"
         end
       end
 
       format.xls do
-        columns = I18n.t('contribution_report_to_project_owner').values
-        columns.delete 'open_questions'
-        columns.delete 'multiple_choice_questions'
-        send_data collection.to_xls(
-          columns: columns
-        ), filename: "#{project.permalink}.xls"
+        send_data Excelinator.csv_to_xls(data)
       end
     end
   end
