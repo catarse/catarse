@@ -80,7 +80,7 @@ gem 'carrierwave', github: 'carrierwaveuploader/carrierwave', ref: '1578777fe3f3
 gem "mini_magick"
 
 # Other Tools
-gem 'to_xls'
+gem 'excelinator'
 gem 'ranked-model'
 gem 'feedjira'
 gem 'inherited_resources'
