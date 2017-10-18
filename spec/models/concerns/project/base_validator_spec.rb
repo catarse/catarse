@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe Project::BaseValidator, type: :model do
   let(:project_state) { 'draft' }
   let(:project) { create(:project, state: project_state, mode: 'flex') }
-  let(:sub_project) { create(:project, state: project_state, mode: 'sub', goal: nil, budget: nil) }
+  let(:sub_project) { create(:subscription_project, state: project_state) }
 
   context 'when sub project is going online' do
     subject { sub_project }
