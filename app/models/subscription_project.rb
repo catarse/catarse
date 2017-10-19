@@ -2,7 +2,6 @@
 
 class SubscriptionProject < Project
   include Project::BaseValidator
-  has_many :goals, foreign_key: :project_id
 
   accepts_nested_attributes_for :goals, allow_destroy: true
   mount_uploader :cover_image, CoverUploader
