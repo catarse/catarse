@@ -27,6 +27,16 @@ RSpec.describe Project::BaseValidator, type: :model do
     subject { project }
 
     Project::ON_ONLINE_TO_END_STATES.each do |state|
+      context 'when sub goals are not present' do
+        let(:project_state) { state }
+        before do
+          sub_project.goals.destroy_all
+          sub_project.valid?
+        end
+
+        it { expect(sub_project.errors['goals.size']).not_to be_empty }
+      end
+
       context "#{state} project validations" do
         let(:project_state) { state }
 

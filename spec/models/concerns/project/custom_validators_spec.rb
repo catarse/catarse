@@ -13,34 +13,6 @@ RSpec.describe Project::CustomValidators, type: :model do
     end
   end
 
-  describe 'ensure_at_least_one_goal' do
-    let(:project) { create(:subscription_project) }
-
-    subject { project.errors['goals.size'].present? }
-
-    context 'when project has no goals' do
-      before do
-        project.goals.destroy_all
-        project.ensure_at_least_one_goal
-      end
-
-      it do
-        is_expected.to eq true
-      end
-    end
-
-    context 'when project has goals' do
-      before do
-        create(:goal, project: project)
-        project.ensure_at_least_one_goal
-      end
-
-      it do
-        is_expected.to eq false
-      end
-    end
-  end
-
   describe 'ensure_at_least_one_reward_validation' do
     let(:project) { create(:project) }
 
