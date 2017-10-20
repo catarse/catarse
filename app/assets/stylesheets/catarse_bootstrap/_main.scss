@@ -1972,9 +1972,10 @@ a:hover {
   padding-top: 35px;
   padding-right: 20px;
   padding-left: 0px;
-  border-width: 0px;
-  border-color: #000;
-  background-color: #1d2024;
+  border-width: 0px 1px 0px 0px;
+  border-color: #000 #323437 #000 #000;
+  border-right-style: solid;
+  background-color: #101112;
   box-shadow: none;
   color: #3f4752;
 }
@@ -2783,7 +2784,7 @@ a:hover {
   position: fixed;
   left: 205px;
   bottom: 0px;
-  z-index: 3001;
+  z-index: 999999;
   width: 50px;
   height: 55px;
   min-height: 55px;
@@ -2791,7 +2792,7 @@ a:hover {
   padding-top: 12px;
   padding-left: 15px;
   border-top-right-radius: 3px;
-  background-color: #1d2024;
+  background-color: #101112;
   color: #f1f2f3;
   text-decoration: none;
 }
@@ -2879,7 +2880,7 @@ a:hover {
   overflow: hidden;
   width: 205px;
   padding: 24px 16px;
-  background-color: #1d2024;
+  background-color: #101112;
 }
 
 .btn-desactivated {
