@@ -397,7 +397,7 @@ pt:
       finished:
         icon: 'https://daks2k3a4ib2z.cloudfront.net/54b440b85608e3f4389db387/56c3511ee7d136a016bc34fa_succesful-icon.png'
         title: 'Boa sorte no seu projeto!'
-        text: 'Trabalhe sempre o relacionamento com seus apoiadores! Mesmo depois do fim do projeto, você deve continuar usando a <a href="%{link_news}">aba Novidades</a> para avisá-los sobre andamento do projeto e entrega das recompensas.'
+        text: 'Trabalhe sempre o relacionamento com seus apoiadores! Mesmo após o fim do projeto, continue usando a <a href="%{link_news}">aba Novidades</a>. Para confirmar o endereço de entrega e outras questões relacionadas à entrega das recompensas, use a <a href="%{link_surveys}">aba Questionários</a>.'
       confirm_account:
         title: 'Os seus dados estão corretos?'
         person:
