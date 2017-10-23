@@ -11,11 +11,11 @@ pt:
           cta: 'Comece sua campanha'
           image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-fctodos.jpg'
         2:
-          title: 'Livro Prédios de São Paulo Vol. 3'
-          subtitle: 'O maior e último livro da trilogia Prédios de São Paulo!'
-          link: 'https://www.catarse.me/prediosdesaopaulolivro3?ref=home_banner'
+          title: 'Marcatti 40'
+          subtitle: 'Uma homenagem alucinada ao mestre do quadrinho independente brasileiro!'
+          link: 'https://www.catarse.me/marcatti40?ref=home_banner'
           cta: 'Conheça o projeto'
-          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-prediosdesaopaulolivro3.jpg'
+          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-marcatti40.jpg'
         3:
           title: '<img src="https://daks2k3a4ib2z.cloudfront.net/573a70f6d5c3cb6532f8b1a7/59c3980fd03bd6000107e99c_logo-assinaturas.png" width="400">'
           subtitle: 'Nosso financiamento coletivo recorrente está chegando!'
@@ -23,11 +23,11 @@ pt:
           cta: 'Saiba mais'
           image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-assinaturas.jpg'
         4:
-          title: 'Cine Mirante'
-          subtitle: 'Cinema grátis, espaço público ocupado. Fora do mainstream, a favor de todos.'
-          link: 'https://www.catarse.me/cinemirante?ref=home_banner'
+          title: 'Calendário Ilustrado Athos Bulcão 2018'
+          subtitle: 'Calendário comemorativo dos 100 anos de Athos Bulcão!'
+          link: 'https://www.catarse.me/calendarioathosbulcao2018?ref=home_banner'
           cta: 'Conheça o projeto'
-          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-cinemirante.jpg'
+          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-calendarioathosbulcao2018.jpg'
         5:
           title: 'Financiamento coletivo para Livros e Revistas'
           subtitle: 'Junte-se a uma comunidade de autores e editoras e publique seu livro independente com a ajuda dos leitores'
