@@ -45,16 +45,6 @@ class FlexProjectMachine
             project.project_errors.create(error: message, to_state: to_state)
           end
         end
-
-        if to_state == 'successful' && project.pledged > 0 && !project.has_recent_invalid_finish_notification?
-          project.notify(
-            :invalid_finish,
-            project.user,
-            project, {
-              metadata: project.errors.to_json
-            }
-          )
-        end
       end
       valid || m[:skip_validation]
     end
