@@ -34,6 +34,12 @@ pt:
           link: 'https://crowdfunding.catarse.me/publicacoes-independentes-financiamento-coletivo?ref=home_banner'
           cta: 'Saiba mais'
           image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-landing-publicacoes.jpg'
+        7:
+          title: 'Música é no Catarse!'
+          subtitle: 'Junte-se a uma comunidade vibrante de artistas, arrecade para seu projeto e faça história com seus fãs'
+          link: 'https://crowdfunding.catarse.me/financiamento-coletivo-musica-independente?ref=home_banner'
+          cta: 'Saiba mais'
+          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-catarse-musica.jpg'
         1:
           title: 'A Chapada dos Veadeiros pede Socorro'
           subtitle: 'Você pode contribuir agora e ajudar no combate aos incêndios!'
