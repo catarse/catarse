@@ -339,7 +339,9 @@ pt:
             text: 'Apoiador já forneceu os dados bancários e reembolso está em andamento.'
           refunded:
             label: 'Reembolsado'
-            text: 'O valor foi reembolsado para o apoiador.'
+            text: 'Apoios feitos com cartão de crédito: o valor já foi estornado no cartão utilizado pelo apoiador e deve aparecer como crédito em até 2 faturas. <br/>
+                   Apoios feitos com boleto bancário: o valor já foi transferido para o SALDO do apoiador para que ele realize o saque. <br/>
+                   <a href="http://suporte.catarse.me/hc/pt-br/articles/202365507-Regras-e-funcionamento-dos-reembolsos-estornos-cancelamentos" target="blank">(saiba mais)</a>'
           paid:
             label: 'Reembolso não iniciado'
             text: 'Apoiador ainda não forneceu dados bancários para o Catarse efetuar o reembolso ou os dados fornecidos estão incorretos.'
@@ -379,7 +381,7 @@ pt:
       finished:
         icon: 'https://daks2k3a4ib2z.cloudfront.net/54b440b85608e3f4389db387/56c3511ee7d136a016bc34fa_succesful-icon.png'
         title: 'Boa sorte no seu projeto!'
-        text: 'Trabalhe sempre o relacionamento com seus apoiadores! Mesmo depois do fim do projeto, você deve continuar usando a <a href="%{link_news}">aba Novidades</a> para avisá-los sobre andamento do projeto e entrega das recompensas.'
+        text: 'Trabalhe sempre o relacionamento com seus apoiadores! Mesmo após o fim do projeto, continue usando a <a href="%{link_news}">aba Novidades</a>. Para confirmar o endereço de entrega e outras questões relacionadas à entrega das recompensas, use a <a href="%{link_surveys}">aba Questionários</a>.'
       confirm_account:
         title: 'Os seus dados estão corretos?'
         person:
