@@ -260,6 +260,24 @@ pt:
           5:
             question: Como eu recebo minha recompensa?
             answer: Quando sua recompensa estiver pronta, <a href="%{userLink}" target="_blank">%{userName}</a> vai entrar em contato com você para combinar a entrega.
+      sub:
+        description: Esse projeto irá receber todo mês o valor apoiado por você.
+        questions:
+          1:
+            question: Como eu assino este projeto?
+            answer: Confirme o valor, a recompensa a as suas informações de pagamento para confirmar sua assinatura mensal.
+          2:
+            question: Quando o pagamento é efetivado?
+            answer: Se você pagou com cartão de crédito, a confirmação deverá ser no mesmo dia. Se foi com boleto, em até 4 dias úteis.
+          3:
+            question: Quando será minha próxima cobrança?
+            answer: Sua assinatura vence sempre no dia do mês em que o seu primeiro pagamento for efetivado. No caso de pagamento via cartão de crédito, você não precisa fazer nada, que nós iremos realizar sua cobrança por mês automaticamente. No caso de boleto, você receberá todo mês, com 2 dias úteis de antecedência, um boleto de cobrança em seu email.
+          4:
+            question: Quando vou poder usufruir dos meus benefícios como assinante?
+            answer: Assim que este pagamento for efetivado, sua assinatura estará ativa e você poderá, então, usufruir de todos os benefícios de ser um assinante! Qualquer dúvida que você tiver com relação ao projeto e suas recompensas, não deixe de entrar em contato direto com <a href="%{userLink}" target="_blank">%{userName}</a>.
+          5:
+            question: E se eu quiser mudar meu apoio mensal no futuro?
+            answer: No momento, para alterar o valor de apoio mensal, você precisa cancelar sua assinatura e iniciar uma nova com o novo valor desejado.
     payment:
       paid: Confirmado
       refused: Recusado
