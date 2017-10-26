@@ -7,6 +7,7 @@ gem 'rails', '~> 4.2.8'
 gem 'protected_attributes'
 gem 'rails-observers'
 gem 'rb-readline'
+gem 'ruby-progressbar'
 
 gem 'sidekiq',  '~> 4.0.1'
 

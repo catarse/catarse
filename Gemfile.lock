@@ -470,6 +470,7 @@ GEM
       ansi
       ast
     ruby-ole (1.2.12)
+    ruby-progressbar (1.9.0)
     ruby_http_client (3.0.0)
     rubyzip (1.2.0)
     sass (3.4.22)
@@ -725,6 +726,7 @@ DEPENDENCIES
   rspec-its
   rspec-mocks
   rspec-rails
+  ruby-progressbar
   sass-rails
   schema_plus
   selenium-webdriver
