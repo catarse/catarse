@@ -466,4 +466,14 @@ class User < ActiveRecord::Base
       created_at: created_at
     }.merge(id_hash)
   end
+
+  def index_on_common
+    common_wrapper.index_user(self) if common_wrapper
+  end
+
+  def common_wrapper
+    common_api_key = CatarseSettings[:common_api_key]
+    return unless common_api_key.present?
+    @common_wrapper ||= CommonWrapper.new(common_api_key)
+  end
 end
