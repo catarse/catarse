@@ -33,6 +33,30 @@ RSpec.describe UserObserver do
   context 'after_save' do
     subject { create(:user, newsletter: false, facebook_link: '') }
 
+    describe 'with common integration' do
+      context 'and api key in place' do
+        before do
+          CatarseSettings[:common_api_key] = 'abc'
+          expect_any_instance_of(CommonWrapper).to receive(:index_user).at_least(:once)
+        end
+
+        it 'should call index on common' do
+          subject.update_attribute(:name, 'foo barr')
+        end
+      end
+
+      context 'without api key' do
+        before do
+          CatarseSettings[:common_api_key] = nil
+          expect_any_instance_of(CommonWrapper).to_not receive(:index_user).with(subject)
+        end
+
+        it 'should not update on index' do
+          subject.update_attribute(:name, 'foo barr')
+        end
+      end
+    end
+
     context 'when user not have marketing lists unsynced' do
       let(:list) { create(:mail_marketing_list) }
       before do
