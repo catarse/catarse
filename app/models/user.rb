@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   include I18n::Alchemy
   acts_as_token_authenticatable
   include User::OmniauthHandler
+  include Shared::CommonWrapper
   has_notifications
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
@@ -469,11 +470,5 @@ class User < ActiveRecord::Base
 
   def index_on_common
     common_wrapper.index_user(self) if common_wrapper
-  end
-
-  def common_wrapper
-    common_api_key = CatarseSettings[:common_api_key]
-    return unless common_api_key.present?
-    @common_wrapper ||= CommonWrapper.new(common_api_key)
   end
 end
