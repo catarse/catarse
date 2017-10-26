@@ -14,20 +14,43 @@ class CommonWrapper
     }
   end
 
-  def index_user(user)
+  def index_user(resource)
     response = Typhoeus::Request.new(
       "#{services_endpoint[:community_service]}/rpc/user",
       body: {
-        data: user.common_index.to_json
+        data: resource.common_index.to_json
       }.to_json,
-      headers: base_headers(user.current_sign_in_ip),
+      headers: base_headers(resource.current_sign_in_ip),
       method: :post
     ).run
+
     if response.code == 200
       json = ActiveSupport::JSON.decode(response.body)
-      common_id = json.try(:[], 0).try(:[], 'user').try(:[], 'id')
-      user.update_column(:common_id, common_id)
+      common_id = json.try(:[], 'id') || json.try(:[], 0).try(:[], 'user').try(:[], 'id')
+      resource.update_column(:common_id, common_id)
       return common_id;
+    else
+      puts response.body
+    end
+  end
+
+  def index_project(resource)
+    response = Typhoeus::Request.new(
+      "#{services_endpoint[:project_service]}/rpc/project",
+      body: {
+        data: resource.common_index.to_json
+      }.to_json,
+      headers: base_headers(resource.user.current_sign_in_ip),
+      method: :post
+    ).run
+
+    if response.code == 200
+      json = ActiveSupport::JSON.decode(response.body)
+      common_id = json.try(:[], 'id') || json.try(:[], 0).try(:[], 'project').try(:[], 'id')
+      resource.update_column(:common_id, common_id)
+      return common_id;
+    else
+      puts response.body
     end
   end
 
