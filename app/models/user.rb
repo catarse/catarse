@@ -420,4 +420,50 @@ class User < ActiveRecord::Base
   def total_balance
     @total_balance ||= balance_transactions.sum(:amount).to_f
   end
+
+  def common_index
+    id_hash = if common_id.present?
+                {id: common_id }
+              else
+                {}
+              end
+
+    phone_matches = phone_number.
+      gsub(/[\s,-]/, '').match(/\((.*)\)(\d+)/) rescue nil
+
+    {
+      name: name,
+      email: email,
+      password: encrypted_password,
+      document_number: cpf,
+      document_type: (account_type == 'pf' ? "CPF" : "CNPJ"),
+      born_at: birth_date,
+      address: {
+        street: address_street,
+        street_number: address_number,
+        neighborhood: address_neighbourhood,
+        zipcode: address_zip_code,
+        country: address.try(:country).try(:name),
+        state: address_state,
+        city: address_city,
+        complementary: address_complement
+      },
+      phone: {
+        ddi: "55",
+        ddd: phone_matches.try(:[], 1),
+        number: phone_matches.try(:[], 2)
+      },
+      bank_account: {
+        bank_code: bank_account.try(:bank_code),
+        account: bank_account.try(:account),
+        account_digit: bank_account.try(:account_digit),
+        agency: bank_account.try(:agency),
+        agency_digit: bank_account.try(:agency_digit)
+      },
+      metadata: {
+        user_id_on_platform: id
+      },
+      created_at: created_at
+    }.merge(id_hash)
+  end
 end
