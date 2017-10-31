@@ -433,9 +433,11 @@ class User < ActiveRecord::Base
       gsub(/[\s,-]/, '').match(/\((.*)\)(\d+)/) rescue nil
 
     {
+      external_id: id,
       name: name,
       email: email,
       password: encrypted_password,
+      password_encrypted: true,
       document_number: cpf,
       document_type: (account_type == 'pf' ? "CPF" : "CNPJ"),
       born_at: birth_date,

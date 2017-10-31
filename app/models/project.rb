@@ -550,6 +550,7 @@ class Project < ActiveRecord::Base
   def common_index
     id_hash = common_id.present? ? {id: common_id} : {}
     {
+      external_id: id,
       user_id: user.common_id,
       current_ip: user.current_sign_in_ip,
       name: name,
