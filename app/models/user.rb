@@ -463,9 +463,6 @@ class User < ActiveRecord::Base
         agency: bank_account.try(:agency),
         agency_digit: bank_account.try(:agency_digit)
       },
-      metadata: {
-        user_id_on_platform: id
-      },
       created_at: created_at
     }.merge(id_hash)
   end

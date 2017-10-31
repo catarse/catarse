@@ -563,9 +563,6 @@ class Project < ActiveRecord::Base
       address: {
         city: city.try(:name),
         state: city.try(:state).try(:acronym)
-      },
-      metadata: {
-        in_platform_id: id
       }
     }.merge!(id_hash)
   end
