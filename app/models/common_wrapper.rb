@@ -14,6 +14,25 @@ class CommonWrapper
     }
   end
 
+  def find_project(external_id)
+    response = request(
+      "#{services_endpoint[:project_service]}/projects",
+      params: {
+        "external_id::integer" => "eq.#{external_id}"
+      },
+      action: :get,
+      headers: { 'Accept' => 'application/vnd.pgrst.object+json' },
+    ).run
+
+    if response.success?
+      json = ActiveSupport::JSON.decode(response.body)
+      common_id = json.try(:[], 'id')
+      return common_id
+    end
+
+    return
+  end
+
   def find_user(external_id)
     response = request(
       "#{services_endpoint[:community_service]}/users",
