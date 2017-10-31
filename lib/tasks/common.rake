@@ -28,7 +28,32 @@ namespace :common do
     end
   end
 
-      page += 1
+  desc 'index all projects'
+  task index_projects: :environment do
+    nthreads = ENV['COMMON_INDEXER_NTHREADS'].presence || 3
+    page_size = ENV['COMMON_INDEXER_PAGE_SIZE'].presence || 500
+    cw = CommonWrapper.new(CatarseSettings[:common_api_key])
+    page = 1
+    per_page = page_size.to_i
+    total = Project.count
+    total_pages = (total / per_page).to_i
+
+    ActiveRecord::Base.connection_pool.with_connection do
+      loop do
+        collection = Project.order(id: :asc).limit(per_page).offset((page-1)*per_page)
+
+        if collection.empty?
+          Rails.logger.info 'empty collection'
+          break
+        end
+
+        Parallel.each(collection, in_threads: nthreads.to_i, progress: "indexing projects page #{page}/#{total_pages}") do |resource|
+          indexed_id = cw.index_project(resource)
+          Rails.logger.info "indexing project #{resource.id} on common id #{indexed_id}"
+        end
+
+        page += 1
+      end
     end
   end
 end
