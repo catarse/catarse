@@ -44,6 +44,7 @@ class Reward < ActiveRecord::Base
 
   before_save :log_changes
   after_save :expires_project_cache
+  after_save :index_on_common
 
   def log_changes
     self.last_changes = changes.to_json
