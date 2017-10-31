@@ -67,4 +67,14 @@ class CommonWrapper
     h
   end
 
+  def request(endpoint, options = {})
+    Typhoeus::Request.new(
+      endpoint,
+      params: options[:params] || {},
+      body: options[:body] || {},
+      headers: base_headers(options[:current_ip]).merge(options[:headers] || {}),
+      method: options[:action] || :get
+    )
+  end
+
 end
