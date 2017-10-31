@@ -51,44 +51,56 @@ class CommonWrapper
 
     return
   end
+
   def index_user(resource)
-    response = Typhoeus::Request.new(
+    response = request(
       "#{services_endpoint[:community_service]}/rpc/user",
       body: {
         data: resource.common_index.to_json
       }.to_json,
-      headers: base_headers(resource.current_sign_in_ip),
-      method: :post
+      action: :post,
+      current_ip: resource.current_sign_in_ip
     ).run
 
-    if response.code == 200
+    if response.success?
       json = ActiveSupport::JSON.decode(response.body)
-      common_id = json.try(:[], 'id') || json.try(:[], 0).try(:[], 'user').try(:[], 'id')
-      resource.update_column(:common_id, common_id)
-      return common_id;
+      common_id = json.try(:[], 'id')
     else
-      puts response.body
+      common_id = find_user(resource.id)
     end
+
+    resource.update_column(:common_id,
+                           common_id.presence || resource.common_id)
+    return common_id;
   end
 
   def index_project(resource)
-    response = Typhoeus::Request.new(
+    unless resource.user.common_id.present?
+      resource.user.index_on_common
+      resource.user.reload
+    end
+    response = request(
       "#{services_endpoint[:project_service]}/rpc/project",
       body: {
         data: resource.common_index.to_json
       }.to_json,
-      headers: base_headers(resource.user.current_sign_in_ip),
-      method: :post
+      action: :post,
+      current_ip: resource.user.current_sign_in_ip
     ).run
 
-    if response.code == 200
+    if response.success?
       json = ActiveSupport::JSON.decode(response.body)
-      common_id = json.try(:[], 'id') || json.try(:[], 0).try(:[], 'project').try(:[], 'id')
-      resource.update_column(:common_id, common_id)
-      return common_id;
+      common_id = json.try(:[], 'id')
     else
-      puts response.body
+      common_id = find_project(resource.id)
     end
+
+    resource.update_column(
+      :common_id,
+      (common_id.presence || resource.common_id)
+    )
+
+    return common_id;
   end
 
   def base_headers(current_ip)
