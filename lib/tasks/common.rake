@@ -7,7 +7,7 @@ namespace :common do
     page = 1
     per_page = page_size.to_i
     total = User.where(common_id: nil).count
-    total_pages = (total / per_page).to_i
+    total_pages = (total / per_page).round + 1
 
     ActiveRecord::Base.connection_pool.with_connection do
       loop do
@@ -35,12 +35,12 @@ namespace :common do
     cw = CommonWrapper.new(CatarseSettings[:common_api_key])
     page = 1
     per_page = page_size.to_i
-    total = Project.count
-    total_pages = (total / per_page).to_i
+    total = Project.where(common_id: nil).count
+    total_pages = (total / per_page).round + 1
 
     ActiveRecord::Base.connection_pool.with_connection do
       loop do
-        collection = Project.order(id: :asc).limit(per_page).offset((page-1)*per_page)
+        collection = Project.where(common_id: nil).order(id: :asc).limit(per_page).offset((page-1)*per_page)
 
         if collection.empty?
           Rails.logger.info 'empty collection'
