@@ -28,6 +28,8 @@ class CommonWrapper
       json = ActiveSupport::JSON.decode(response.body)
       common_id = json.try(:[], 'id')
       return common_id
+    else
+      Rails.logger.info(response.body)
     end
 
     return
@@ -47,6 +49,8 @@ class CommonWrapper
       json = ActiveSupport::JSON.decode(response.body)
       common_id = json.try(:[], 'id')
       return common_id
+    else
+      Rails.logger.info(response.body)
     end
 
     return
@@ -66,6 +70,7 @@ class CommonWrapper
       json = ActiveSupport::JSON.decode(response.body)
       common_id = json.try(:[], 'id')
     else
+      Rails.logger.info(response.body)
       common_id = find_user(resource.id)
     end
 
@@ -92,6 +97,7 @@ class CommonWrapper
       json = ActiveSupport::JSON.decode(response.body)
       common_id = json.try(:[], 'id')
     else
+      Rails.logger.info(response.body)
       common_id = find_project(resource.id)
     end
 
