@@ -56,6 +56,27 @@ class CommonWrapper
     return
   end
 
+  def find_reward(external_id)
+    response = request(
+      "#{services_endpoint[:project_service]}/rewards",
+      params: {
+        "external_id::integer" => "eq.#{external_id}"
+      },
+      action: :get,
+      headers: { 'Accept' => 'application/vnd.pgrst.object+json' },
+    ).run
+
+    if response.success?
+      json = ActiveSupport::JSON.decode(response.body)
+      common_id = json.try(:[], 'id')
+      return common_id
+    else
+      Rails.logger.info(response.body)
+    end
+
+    return
+  end
+
   def index_user(resource)
     response = request(
       "#{services_endpoint[:community_service]}/rpc/user",
@@ -99,6 +120,36 @@ class CommonWrapper
     else
       Rails.logger.info(response.body)
       common_id = find_project(resource.id)
+    end
+
+    resource.update_column(
+      :common_id,
+      (common_id.presence || resource.common_id)
+    )
+
+    return common_id;
+  end
+
+  def index_reward(resource)
+    unless resource.project.common_id.present?
+      resource.project.index_on_common
+      resource.project.reload
+    end
+    response = request(
+      "#{services_endpoint[:project_service]}/rpc/reward",
+      body: {
+        data: resource.common_index.to_json
+      }.to_json,
+      action: :post,
+      current_ip: resource.project.user.current_sign_in_ip
+    ).run
+
+    if response.success?
+      json = ActiveSupport::JSON.decode(response.body)
+      common_id = json.try(:[], 'id')
+    else
+      Rails.logger.info(response.body)
+      common_id = find_reward(resource.id)
     end
 
     resource.update_column(
