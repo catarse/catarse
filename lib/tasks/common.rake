@@ -56,4 +56,33 @@ namespace :common do
       end
     end
   end
+
+  desc 'index all rewards'
+  task index_rewards: :environment do
+    nthreads = ENV['COMMON_INDEXER_NTHREADS'].presence || 3
+    page_size = ENV['COMMON_INDEXER_PAGE_SIZE'].presence || 500
+    cw = CommonWrapper.new(CatarseSettings[:common_api_key])
+    page = 1
+    per_page = page_size.to_i
+    total = Reward.where(common_id: nil).count
+    total_pages = (total / per_page).round + 1
+
+    ActiveRecord::Base.connection_pool.with_connection do
+      loop do
+        collection = Reward.where(common_id: nil).order(id: :asc).limit(per_page).offset((page-1)*per_page)
+
+        if collection.empty?
+          Rails.logger.info 'empty collection'
+          break
+        end
+
+        Parallel.each(collection, in_threads: nthreads.to_i, progress: "indexing rewards page #{page}/#{total_pages}") do |resource|
+          indexed_id = cw.index_reward(resource)
+          Rails.logger.info "indexing reward #{resource.id} on common id #{indexed_id}"
+        end
+
+        page += 1
+      end
+    end
+  end
 end
