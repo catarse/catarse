@@ -70,7 +70,7 @@ pt:
       contributors_count:
         one: '1 pessoa'
         other: '{{count}} pessoas'
-      subscribers_call: 'apoiados por '
+      subscribers_call: 'assinados por '
       remaining_time:
         days:
           one: ' dia restante'
