@@ -28,7 +28,7 @@ class SurveysController < ApplicationController
     authorize resource
     contribution = Contribution.find params[:contribution_id]
     if permitted_params[:survey_address_answers_attributes].present? && permitted_params[:survey_address_answers_attributes][:addresses_attributes].present?
-      contribution.attributes = {addresses_attributes: permitted_params[:survey_address_answers_attributes]}
+      contribution.attributes = { address_answer_attributes: permitted_params[:survey_address_answers_attributes][:addresses_attributes]}
       contribution.save
     end
     open_questions_answer if params[:survey_open_question_answers_attributes]
