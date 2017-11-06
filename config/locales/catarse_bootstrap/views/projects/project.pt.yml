@@ -4,31 +4,31 @@ pt:
       header_html: 'Crowdfunding e financiamento coletivo no Brasil é no Catarse'
       row_title: 'Populares'
       banners:
-        2:
+        1:
           title: 'Financiamento coletivo para todos'
           subtitle: ''
           link: '/start?ref=home_banner'
           cta: 'Comece sua campanha'
           image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-fctodos.jpg'
-        3:
-          title: 'Marcatti 40'
-          subtitle: 'Uma homenagem alucinada ao mestre do quadrinho independente brasileiro!'
-          link: 'https://www.catarse.me/marcatti40?ref=home_banner'
+        2:
+          title: 'Livro Fé Latina'
+          subtitle: 'Uma volta de bicicleta pela América Latina, feita a base de amor, feijão e bicicleta!'
+          link: 'https://www.catarse.me/livrofelatina?ref=home_banner'
           cta: 'Conheça o projeto'
-          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-marcatti40.jpg'
+          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-livrofelatina.jpg'
         4:
           title: '<img src="https://daks2k3a4ib2z.cloudfront.net/573a70f6d5c3cb6532f8b1a7/59c3980fd03bd6000107e99c_logo-assinaturas.png" width="400">'
           subtitle: 'Nosso financiamento coletivo recorrente está chegando!'
           link: 'https://crowdfunding.catarse.me/assinaturas?ref=home_banner'
           cta: 'Saiba mais'
           image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-assinaturas.jpg'
-        5:
+        3:
           title: 'Calendário Ilustrado Athos Bulcão 2018'
           subtitle: 'Calendário comemorativo dos 100 anos de Athos Bulcão!'
           link: 'https://www.catarse.me/calendarioathosbulcao2018?ref=home_banner'
           cta: 'Conheça o projeto'
           image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-calendarioathosbulcao2018.jpg'
-        6:
+        5:
           title: 'Financiamento coletivo para Livros e Revistas'
           subtitle: 'Junte-se a uma comunidade de autores e editoras e publique seu livro independente com a ajuda dos leitores'
           link: 'https://crowdfunding.catarse.me/publicacoes-independentes-financiamento-coletivo?ref=home_banner'
@@ -40,12 +40,12 @@ pt:
           link: 'https://crowdfunding.catarse.me/financiamento-coletivo-musica-independente?ref=home_banner'
           cta: 'Saiba mais'
           image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-catarse-musica.jpg'
-        1:
-          title: 'A Chapada dos Veadeiros pede Socorro'
-          subtitle: 'Você pode contribuir agora e ajudar no combate aos incêndios!'
-          link: 'https://www.catarse.me/redecontrafogoveadeiros?ref=home_banner'
+        6:
+          title: 'Livro Arena Corinthians, Tu És Orgulho'
+          subtitle: 'O livro do Hospício feito pelo Bando de Loucos!'
+          link: 'https://www.catarse.me/livroarenacorinthians?ref=home_banner'
           cta: 'Conheça o projeto'
-          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-redecontrafogoveadeiros.jpg'
+          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-livroarenacorinthians.jpg'
     new_feature_badge: 'Novidade'
     posts:
       empty: '<span class="fontweight-semibold">%{project_user_name}</span> ainda não publicou nenhuma novidade. <a href="/projects/%{project_id}/contributions/new" class="alt-link">Faça um apoio</a> e receba em seu email todas as notícias do projeto assim que elas forem publicadas!'
