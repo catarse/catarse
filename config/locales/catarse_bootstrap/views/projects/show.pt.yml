@@ -100,7 +100,6 @@ pt:
         hora: ' hora restante'
         minuto: ' minuto restante'
         segundo: ' segundo restantes'
-      submit: Apoiar este projeto
       display_status:
         approved: "Esse projeto já foi aprovado pelo Catarse. Em breve ele entrará no ar e estará pronto para receber apoios."
         online: "Você pode apoiar este projeto até o dia %{date} às 23h59m59s"
@@ -110,7 +109,9 @@ pt:
         successful: "Este projeto foi bem-sucedido e foi financiado em %{date}"
         waiting_funds: "O prazo de captação desse projeto está encerrado. Estamos aguardando a confirmação dos últimos pagamentos."
         draft: "Este projeto é apenas um rascunho e ainda não pode receber apoios."
-      submit: Apoiar este projeto
+      submit_aon: Apoiar este projeto
+      submit_flex: Apoiar este projeto
+      submit_sub: Assinar este projeto
     project_main:
       post_call: 'Toda novidade publicada no Catarse é enviada diretamente para o email de quem já apoiou seu projeto e também fica disponível para visualização no site. Você pode optar por deixá-la pública, ou visível somente para seus apoiadores aqui nesta aba.'
       send_post: 'Escrever novidade'
