@@ -190,4 +190,13 @@ namespace :common do
     end
   end
 
+  desc 'generate balance transaction for subscription payments'
+  task generate_subscription_balance: :environment do
+    SubscriptionPayment.where(status: 'paid').find_each do |sp|
+      unless sp.already_in_balance?
+        BalanceTransaction.insert_subscription_payment(sp.id)
+      end
+    end
+  end
+
 end
