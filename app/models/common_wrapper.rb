@@ -14,6 +14,27 @@ class CommonWrapper
     }
   end
 
+  def user_api_key(resource)
+    response = request(
+      "#{services_endpoint[:community_service]}/rpc/create_scoped_user_session",
+      body: {
+        id: resource.common_id
+      }.to_json,
+      action: :post,
+      current_ip: resource.current_sign_in_ip
+    ).run
+
+    if response.success?
+      json = ActiveSupport::JSON.decode(response.body)
+      token = json.try(:[], 'token')
+      return token
+    else
+      Rails.logger.info(response.body)
+    end
+
+    return
+  end
+
   def find_project(external_id)
     response = request(
       "#{services_endpoint[:project_service]}/projects",
