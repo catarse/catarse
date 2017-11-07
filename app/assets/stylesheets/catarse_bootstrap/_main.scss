@@ -260,6 +260,10 @@ a:hover {
   height: 110px;
 }
 
+.text-field.height-supermini {
+  height: 32px;
+}
+
 .field-label {
   min-height: 20px;
   margin-bottom: 5px;
@@ -1090,6 +1094,7 @@ a:hover {
   padding: 18px;
   border: 1px solid #ddd;
   background-color: #fff;
+  box-shadow: 1px 1px 0 0 rgba(0, 0, 0, .09);
 }
 
 .card.medium {
