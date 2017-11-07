@@ -1,3 +1,4 @@
+require './app/models/subscription'
 namespace :common do
   desc 'index all users'
   task index_users: :environment do
@@ -85,4 +86,60 @@ namespace :common do
       end
     end
   end
+
+  desc 'fetch all subscriptions'
+  task fetch_subscriptions: :environment do
+    nthreads = ENV['COMMON_INDEXER_NTHREADS'].presence || 3
+    page_size = ENV['COMMON_INDEXER_PAGE_SIZE'].presence || 500
+    cw = CommonWrapper.new(CatarseSettings[:common_api_key])
+    page = 1
+    per_page = page_size.to_i
+
+    ActiveRecord::Base.connection_pool.with_connection do
+      loop do
+        collection = cw.list_subscriptions(
+          limit: page_size,
+          offset: (page - 1) * per_page
+        )
+
+        if collection.empty?
+          Rails.logger.info 'empty collection'
+          break
+        end
+
+        Parallel.each(collection, in_threads: nthreads.to_i, progress: "feching subscriptions page #{page}") do |resource|
+          subscription = ::Subscription.where.not(common_id: nil).find_by common_id: resource['id']
+          user = User.where.not(common_id: nil).find_by common_id: resource['user_id']
+          project = Project.where.not(common_id: nil).find_by common_id: resource['project_id']
+          reward = Reward.where.not(common_id: nil).find_by common_id: resource['reward_id']
+
+          if (user.present? && project.present?)
+            if subscription.present?
+              subscription.update_attributes(
+                user_id: user.id,
+                project_id: project.id,
+                status: resource['status'],
+                amount: resource['checkout_data']['amount'].to_f / 100.0,
+                reward_id: reward.try(:id)
+              )
+            else
+              subscription = Subscription.create(
+                common_id: resource['id'],
+                user_id: user.id,
+                project_id: project.id,
+                status: resource['status'],
+                amount: resource['checkout_data']['amount'].to_f / 100.0,
+                reward_id: reward.try(:id)
+              )
+            end
+            Rails.logger.info "subscription common id #{resource['id']} feteched into #{subscription.id} id"
+          end
+        end
+
+        page += 1
+      end
+    end
+  end
+
+
 end
