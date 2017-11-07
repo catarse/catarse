@@ -14,6 +14,44 @@ class CommonWrapper
     }
   end
 
+  def list_subscriptions(opts = {})
+    opts[:limit] = 10 unless opts[:limit].present? || opts[:limit].to_i > 30
+    opts[:offset] = 0 unless opts[:offset].present?
+
+    response = request(
+      "#{services_endpoint[:payment_service]}/subscriptions",
+      { params: opts }
+    ).run
+
+    if response.success?
+      json = ActiveSupport::JSON.decode(response.body)
+      return json
+    else
+      Rails.logger.info(response.body)
+    end
+
+    return
+  end
+
+  def list_payments(opts = {})
+    opts[:limit] = 10 unless opts[:limit].present? || opts[:limit].to_i > 30
+    opts[:offset] = 10 unless opts[:offset].present?
+
+    response = request(
+      "#{services_endpoint[:payment_service]}/payments",
+      { params: opts }
+    ).run
+
+    if response.success?
+      json = ActiveSupport::JSON.decode(response.body)
+      return json
+    else
+      Rails.logger.info(response.body)
+    end
+
+    return
+  end
+
   def user_api_key(resource)
     response = request(
       "#{services_endpoint[:community_service]}/rpc/create_scoped_user_session",
