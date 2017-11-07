@@ -129,7 +129,8 @@ namespace :common do
                 project_id: project.id,
                 status: resource['status'],
                 amount: resource['checkout_data']['amount'].to_f / 100.0,
-                reward_id: reward.try(:id)
+                reward_id: reward.try(:id),
+                created_at: resource['created_at']
               )
             end
             Rails.logger.info "subscription common id #{resource['id']} feteched into #{subscription.id} id"
@@ -141,5 +142,52 @@ namespace :common do
     end
   end
 
+  desc 'fetch all subscription payments'
+  task fetch_subscription_payments: :environment do
+    nthreads = ENV['COMMON_INDEXER_NTHREADS'].presence || 3
+    page_size = ENV['COMMON_INDEXER_PAGE_SIZE'].presence || 500
+    cw = CommonWrapper.new(CatarseSettings[:common_api_key])
+    page = 1
+    per_page = page_size.to_i
+
+    ActiveRecord::Base.connection_pool.with_connection do
+      loop do
+        collection = cw.list_payments(
+          limit: page_size,
+          offset: (page - 1) * per_page
+        )
+
+        if collection.empty?
+          Rails.logger.info 'empty collection'
+          break
+        end
+
+        Parallel.each(collection, in_threads: nthreads.to_i, progress: "feching subscriptions page #{page}") do |resource|
+          subscription = ::Subscription.where.not(common_id: nil).find_by common_id: resource['subscription_id']
+
+          if subscription.present?
+            subscription_payment = ::SubscriptionPayment.where.not(common_id: nil).find_by common_id: resource['id']
+
+            if subscription_payment.present?
+              subscription_payment.update_attributes(
+                status: resource['status'],
+                gateway_data: resource
+              )
+            else
+              subscription_payment = subscription.subscription_payments.create(
+                common_id: resource['id'],
+                status: resource['status'],
+                gateway_data: resource,
+                created_at: resource['created_at']
+              )
+            end
+            Rails.logger.info "subscription payment id #{resource['id']} feteched into #{subscription.id} id"
+          end
+        end
+
+        page += 1
+      end
+    end
+  end
 
 end
