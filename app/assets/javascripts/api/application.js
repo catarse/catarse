@@ -166,6 +166,8 @@
           '/pt/projects/:project_id/insights': wrap(c.root.Insights, {menuTransparency: false, footerBig: false}),
           '/projects/:project_id/contributions_report': wrap(c.root.ProjectsContributionReport, {menuTransparency: false, footerBig: false}),
           '/pt/projects/:project_id/contributions_report': wrap(c.root.ProjectsContributionReport, {menuTransparency: false, footerBig: false}),
+          '/projects/:project_id/subscriptions_report': wrap(c.root.ProjectsSubscriptionReport, {menuTransparency: false, footerBig: false}),
+          '/pt/projects/:project_id/subscriptions_report': wrap(c.root.ProjectsSubscriptionReport, {menuTransparency: false, footerBig: false}),
           '/projects/:project_id/posts': wrap(c.root.Posts, {menuTransparency: false, footerBig: false}),
           '/projects/:project_id/surveys': wrap(c.root.Surveys, {menuTransparency: false, footerBig: false, menuShort: true}),
           '/pt/projects/:project_id/posts': wrap(c.root.Posts, {menuTransparency: false, footerBig: false}),

@@ -96,6 +96,10 @@ class ProjectsController < ApplicationController
     authorize resource, :update?
   end
 
+  def subscriptions_report
+    authorize resource, :update?
+  end
+
   def upload_image
     authorize resource, :update?
     params[:project] = {
