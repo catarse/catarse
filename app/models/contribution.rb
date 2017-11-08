@@ -13,17 +13,15 @@ class Contribution < ActiveRecord::Base
   belongs_to :shipping_fee
   belongs_to :user
   belongs_to :address
+  belongs_to :address_answer, class_name: 'Address'
   belongs_to :donation
   belongs_to :origin
   has_many :payment_notifications
   has_many :payments
   has_many :details, class_name: 'ContributionDetail'
   has_many :balance_transactions
-  has_many :survey_address_answers
-  has_many :addresses, through: :survey_address_answers
-  accepts_nested_attributes_for :survey_address_answers, allow_destroy: true, limit: 1
   accepts_nested_attributes_for :address, allow_destroy: true, limit: 1 #payment address
-  accepts_nested_attributes_for :addresses, allow_destroy: true #survey answer addresses
+  accepts_nested_attributes_for :address_answer, allow_destroy: true #survey answer addresses
 
   validates_presence_of :project, :user, :value
   validates_numericality_of :value, greater_than_or_equal_to: 10.00

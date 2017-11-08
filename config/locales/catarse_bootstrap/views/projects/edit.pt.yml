@@ -358,7 +358,9 @@ pt:
             text: 'Apoiador já forneceu os dados bancários e reembolso está em andamento.'
           refunded:
             label: 'Reembolsado'
-            text: 'O valor foi reembolsado para o apoiador.'
+            text: 'Apoios feitos com cartão de crédito: o valor já foi estornado no cartão utilizado pelo apoiador e deve aparecer como crédito em até 2 faturas. <br/>
+                   Apoios feitos com boleto bancário: o valor já foi transferido para o SALDO do apoiador para que ele realize o saque. <br/>
+                   <a href="http://suporte.catarse.me/hc/pt-br/articles/202365507-Regras-e-funcionamento-dos-reembolsos-estornos-cancelamentos" target="blank">(saiba mais)</a>'
           paid:
             label: 'Reembolso não iniciado'
             text: 'Apoiador ainda não forneceu dados bancários para o Catarse efetuar o reembolso ou os dados fornecidos estão incorretos.'
