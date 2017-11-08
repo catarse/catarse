@@ -34,7 +34,6 @@ class BalanceTransaction < ActiveRecord::Base
         user_id: subscription.project.user_id,
         project_id: subscription.project_id,
         subscription_payment_id: subscription_payment.id,
-        created_at: subscription_payment.created_at
       }
 
       create!(default_params.merge(
