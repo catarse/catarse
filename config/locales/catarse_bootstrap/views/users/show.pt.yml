@@ -26,6 +26,9 @@ pt:
       day_balance: 'Saldo do dia'
       withdraw: "Sacar dinheiro"
       withdraw_cta: '$ Realizar Saque'
+      last_withdraw_msg: 'Você já sacou %{amount} em %{date}'
+      no_withdraws_this_month: 'Nenhum saque realizado em %{month_name}'
+      withdraw_limits_msg: 'Você pode realizar 01 saque por mês. O valor sacado é sempre o total disponível no saldo'
       success_message: 'Seu saque foi solicitado com sucesso. Em até 10 dias úteis o seu dinheiro estará em sua conta bancária!'
       bank:
         account: "Conta:"
