@@ -10,6 +10,7 @@ class CommonWrapper
     @services_endpoint ||= {
       community_service: CatarseSettings[:common_community_service_api],
       project_service: CatarseSettings[:common_project_service_api],
+      analytics_service: CatarseSettings[:common_analytics_service_api],
       payment_service: CatarseSettings[:common_payment_service_api]
     }
   end
