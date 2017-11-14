@@ -8,7 +8,6 @@
 //= require chart.js/Chart.min.js
 //= require i18n/translations
 //= require ../analytics
-//= require api/init
 //= require catarse.js/dist/catarse.js
 //= require_self
 
