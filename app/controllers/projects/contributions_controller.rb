@@ -89,7 +89,7 @@ class Projects::ContributionsController < ApplicationController
       resource.delivery_status = 'received'
       resource.reward_received_at = Time.current
     end
-    resource.save!
+    resource.save!(validate: false)
     render nothing: true
   end
 
