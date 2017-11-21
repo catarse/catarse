@@ -12,6 +12,8 @@ br/
 br/
 | Valor devolvido: #{number_to_currency detail.value, precision: 2}
 br/
+| Data do reembolso: #{I18n.l detail.refunded_at}
+br/
 br/
 | Para fazer a solicitação de saque desse valor, basta seguir este passo-a-passo:
 p
@@ -31,6 +33,9 @@ br/
 br/
 p
   img src="https://s3.amazonaws.com/catarse.files/user_balance.gif"
+br/
+| IMPORTANTE: caso o valor esteja disponível há mais de 90 dias, a contar da data do reembolso do apoio, o saldo será considerado renunciado e poderá ser utilizado para outros fins, conforme previsto nos #{link_to 'Termos de Uso', 'https://www.catarse.me/terms-of-use', target: '__blank'}
+br/
 br/
 |Se ficou com alguma dúvida, entre em contato conosco respondendo a esta mensagem ou através do e-mail #{mail_to contact_email}.
 br
