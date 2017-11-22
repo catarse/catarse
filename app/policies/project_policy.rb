@@ -40,6 +40,7 @@ class ProjectPolicy < ApplicationPolicy
       p_attr << budget_attributes
       p_attr << posts_attributes
       p_attr << reward_attributes
+      p_attr << goal_attributes
 
       p_attr.flatten
 
@@ -80,6 +81,12 @@ class ProjectPolicy < ApplicationPolicy
 
     attrs[:rewards_attributes].delete(:deliver_at) if record.waiting_funds? || record.failed? || record.successful?
 
+    attrs
+  end
+
+  def goal_attributes
+    attrs = { goals_attributes: [:_destroy, :id, :value,
+                                   :description, :title ]}
     attrs
   end
 end

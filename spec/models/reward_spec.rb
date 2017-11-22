@@ -6,6 +6,16 @@ require 'rails_helper'
 RSpec.describe Reward, type: :model do
   let(:reward) { create(:reward, description: 'envie um email para foo@bar.com') }
 
+  describe 'Index on common' do
+    context 'whould index on common api after save' do
+      before do
+        expect(reward).to receive(:index_on_common)
+      end
+
+      it { reward.update_attribute(:description, 'foo bar') }
+    end
+  end
+
   describe 'Log modifications' do
     describe 'when change something' do
       before do

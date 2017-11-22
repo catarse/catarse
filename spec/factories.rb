@@ -121,6 +121,27 @@ FactoryGirl.define do
     f.association :user
   end
 
+  factory :subscription_project do |f|
+    f.state 'draft'
+    f.mode 'sub'
+    f.name 'Foo bar'
+    f.permalink { generate(:permalink) }
+    f.association :user
+    f.association :category
+    f.association :city
+    f.about_html 'Foo bar'
+    f.headline 'Foo bar'
+    f.online_days 5
+    f.more_links 'Ipsum dolor'
+    f.video_url 'http://vimeo.com/17298435'
+    f.budget '1000'
+    f.uploaded_image File.open("#{Rails.root}/spec/support/testimg.png")
+
+    after :build do |project|
+      project.goals.build(description: 'test', value: 10, title: 'bar')
+    end
+  end
+
   factory :flexible_project do |f|
     f.state 'draft'
     f.mode 'flex'
@@ -196,6 +217,13 @@ FactoryGirl.define do
     f.from_email 'from@email.com'
     f.from_name 'from_name'
     f.locale 'pt'
+  end
+
+  factory :goal do |f|
+    f.association :project, factory: :project
+    f.value 10.00
+    f.description 'Foo bar'
+    f.title 'Foo bar'
   end
 
   factory :reward do |f|

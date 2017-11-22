@@ -16,11 +16,16 @@ pt:
       announce_expiration: 'Prazo de arrecadação'
       announce_expiration_subtitle: 'Escolha bem a data, pois você não poderá alterá-la depois. Assim que o seu prazo chegar ao fim, você deverá confirmar os seus dados bancários. A partir de então, depositaremos o dinheiro na sua conta em até 10 dias úteis.'
       budget_subtitle: "Como o seu dinheiro será utilizado? Quanto mais transparência melhor. Mostre que etapas e processos estarão envolvidos no uso desses recursos. Uma lista com os principais itens do orçamento ou até mesmo um gráfico de pizza vão super bem aqui."
-      card: 'Card do projeto'
-      card_subtitle: 'Sabe aquele cardzinho de projeto que aparece na home e na busca? Pois então, faz bonito pois dizem que a primeira impressão é a que fica ;)'
+      card_aon: 'Card do projeto'
+      card_subtitle_aon: 'Sabe aquele cardzinho de projeto que aparece na home e na busca? Pois então, faz bonito pois dizem que a primeira impressão é a que fica ;)'
+      card_flex: 'Card do projeto'
+      card_subtitle_flex: 'Sabe aquele cardzinho de projeto que aparece na home e na busca? Pois então, faz bonito pois dizem que a primeira impressão é a que fica ;)'
+      card_sub: 'Personalize sua campanha'
+      card_subtitle_sub: 'Faz bonito, pois dizem que a primeira impressão é a que fica ;)'
       basics: 'Preencha as informações abaixo'
       basics_subtitle: 'Os dados informados nessa seção não poderão ser modificados quando o projeto for ao ar. Preencha com atenção e revise antes de lançar o projeto. '
       goal: 'Financiamento'
+      goals: 'Metas de arrecadação'
       goal_subtitle: 'Preencha com carinho a seção abaixo, pois essas informações não poderão mais ser alteradas se o projeto for ao ar.'
       reports: 'Relatórios de apoios'
       user_settings: 'Dados cadastrais'
@@ -52,7 +57,9 @@ pt:
           title: 'Número de recompensas:'
           description: 'Você também pode Limitar uma recompensa para um determinado número de apoios e mudar a ordem que as recompensas aparecem em seu projeto. <a href="http://suporte.catarse.me/hc/pt-br/articles/212191546-tudo-sobre-RECOMPENSAS#como-editar" target="_blank" class="alt-link">Saiba mais</a>.'
       minimum_value_title: 'Para R$ %{minimum_value} ou mais'
+      minimum_value_subscription_title: 'Para R$ %{minimum_value} ou mais por mês'
       paid_contributors: '%{count} apoiadores'
+      paid_subscribers: '%{count} assinantes'
       reward_gone: 'Esgotada'
       reward_limited: 'Limitada'
       delivery: 'Envio'
@@ -180,8 +187,10 @@ pt:
       next_steps: "Enquanto espera a sua resposta, você pode continuar editando o seu projeto! Recomendamos também que você vá coletando feedback com as pessoas próximas e planejando como será a sua campanha."
     dashboard_nav:
       leave_link_html: "&nbsp; Sair do painel de controle"
+      draft_start_tab: ' Início'
       start_tab: ' Minha Campanha'
       reports_tab: ' Relatórios de apoios'
+      subscriptions_tab: ' Base de assinantes'
       surveys_tab: ' Questionários'
       preview_tab: Preview
       posts_tab: ' Novidades '
@@ -194,8 +203,11 @@ pt:
       account_tab: Dados cadastrais
       basics_tab: Básico
       goal_tab: Financiamento
+      goals_tab: Metas
       budget_tab: Orçamento
-      card_tab: Card do projeto
+      card_tab_aon: Card do projeto
+      card_tab_sub: Imagens
+      card_tab_flex: Card do projeto
       description_tab: Descrição
       video_tab: "Vídeo <span class='fontsize-smallest fontcolor-secondary'>(opcional)</span>"
       rewards_tab: "Recompensas <span class='fontsize-smallest fontcolor-secondary'>(opcional)</span>"
@@ -254,10 +266,15 @@ pt:
       description_label: 'Descrição do projeto'
       description_hint: 'Fale com paixão e clareza sobre o que será realizado. Esclareça possíveis dúvidas sobre como o dinheiro será utilizado, quem está por trás do projeto, como e quando o projeto será entregue. Transparência atrai mais apoiadores. Lembre-se: seu projeto será acessado por pessoas comuns que decidirão se querem ou não apoiar seu projeto. Capriche!'
       description_alert: '<span class="fa fa-fw fa-lightbulb-o"></span> Saiba como <a class="alt-link" href="https://catarse.attach.io/BJmQVOiR" target="blank"> criar uma descrição cativante!</a>'
+      description_video_alert: '<span class="fa fa-lightbulb-o"></span> Saiba como <a href="https://catarse.attach.io/BJmQVOiR" target="_blank" class="alt-link">criar uma descrição cativante</a> e veja exemplos de <a href="http://crowdfunding.catarse.me/videomakers?ref=ctrse_dashboard_video" target="_blank">vídeos de sucesso</a> no Catarse!'
     dashboard_reward:
       submit: "Salvar"
       add_reward: "Adicionar recompensa"
       reward: "Recompensa"
+    dashboard_start:
+      title:  "Viva do que você ama fazer"
+      description: "Olá %{name}! Esse é o momento para você construir e planejar a sua campanha. Preencha todas as abas ao lado com carinho e não se esqueça de salvá-las enquanto for preenchendo. E não deixa de olhar a mensagem que preparamos especialmente para você abaixo:"
+      video_src: "https://www.youtube.com/embed/CJhLZgT6_9k?rel=0"
     dashboard_announce_expiration:
       explanation_01: 'Ao iniciar a reta final, iremos abrir uma contagem regressiva de 7 dias. Você poderá receber apoios até:'
       explanation_02: 'Essa é uma ação irreversível. Depois que a reta final é definida, o projeto não poderá mais alterar o seu prazo final de captação. Ao final do prazo, você recebe todo o valor arrecadado.'
@@ -286,6 +303,8 @@ pt:
       headline_label: 'Frase de efeito'
       headline_label_hint: 'Frase no card do projeto para chamar apoiadores. Deve ter no máximo 100 caracteres e resumir bem o projeto.'
       uploaded_image_label: 'Imagem do projeto'
+      cover_image_label: 'Imagem de fundo <span class="fontcolor-secondary">(opcional)</span>'
+      cover_image_hint: "Essa imagem será utilizada no fundo da área principal de sua página (veja um exemplo). O arquivo não pode ultrapassar 1MB, e as dimensões devem ser 1340 X 860 px , em formato JPG, GIF ou PNG."
       uploaded_image_hint: 'Essa imagem será utilizada como a miniatura de seu projeto (PNG, JPG tamanho 720 x 400)'
     dashboard_video:
       submit: Salvar

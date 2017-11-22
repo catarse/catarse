@@ -299,6 +299,8 @@ pt:
               too_long: "A frase de efeito é muito longa. Você pode usar um máximo de 100 caracteres."
         project:
           attributes:
+            goals:
+              at_least_one: 'Deve haver pelo menos uma meta'
             rewards:
               at_least_one: 'Deve haver pelo menos uma recompensa'
             city:

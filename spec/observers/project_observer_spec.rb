@@ -86,6 +86,17 @@ RSpec.describe ProjectObserver do
 
   describe '#after_save' do
     let(:project) { build(:project, state: 'draft') }
+
+    context 'common integration' do
+      before do
+        expect(project).to receive(:index_on_common)
+      end
+      it 'should call index on common' do
+        project.update_attribute(:name, 'foo bar')
+      end
+    end
+
+
     context 'when we change the video_url' do
       let(:project) { create(:project, video_url: 'http://vimeo.com/11198435', state: 'draft') }
       before do

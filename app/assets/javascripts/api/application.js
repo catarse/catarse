@@ -8,7 +8,6 @@
 //= require chart.js/Chart.min.js
 //= require i18n/translations
 //= require ../analytics
-//= require api/init
 //= require catarse.js/dist/catarse.js
 //= require_self
 
@@ -143,11 +142,16 @@
           '/': wrap(( isUserProfile ? c.root.UsersShow : c.root.ProjectsHome), {menuTransparency: true, footerBig: true, absoluteHome: isUserProfile}),
           '/explore': wrap(c.root.ProjectsExplore, {menuTransparency: true, footerBig: true}),
           '/start': wrap(c.root.Start, {menuTransparency: true, footerBig: true}),
+          '/start-sub': wrap(c.root.SubProjectNew, {menuTransparency: false }),
           '/projects/:project_id/contributions/new': wrap(c.root.ProjectsContribution),
           '/projects/:project_id/contributions/fallback_create': wrap(c.root.ProjectsContribution),
           '/projects/:project_id/contributions/:contribution_id/edit': wrap(c.root.ProjectsPayment, {menuShort: true}),
+          '/projects/:project_id/subscriptions/start': wrap(c.root.ProjectsSubscriptionContribution, {menuShort: true}),
+          '/projects/:project_id/subscriptions/checkout': wrap(c.root.ProjectsSubscriptionCheckout, {menuShort: true}),
           '/pt/projects/:project_id/contributions/new': wrap(c.root.ProjectsContribution),
           '/pt/projects/:project_id/contributions/:contribution_id/edit': wrap(c.root.ProjectsPayment, {menuShort: true}),
+          '/pt/projects/:project_id/subscriptions/start': wrap(c.root.ProjectsSubscriptionContribution, {menuShort: true}),
+          '/pt/projects/:project_id/subscriptions/checkout': wrap(c.root.ProjectsSubscriptionCheckout, {menuShort: true}),
           '/pt': wrap(c.root.ProjectsHome, {menuTransparency: true, footerBig: true}),
           '/pt/flexible_projects': wrap(c.root.ProjectsHome, {menuTransparency: true, footerBig: true}),
           '/pt/projects': wrap(c.root.ProjectsHome, {menuTransparency: true, footerBig: true}),
@@ -161,6 +165,8 @@
           '/pt/projects/:project_id/insights': wrap(c.root.Insights, {menuTransparency: false, footerBig: false}),
           '/projects/:project_id/contributions_report': wrap(c.root.ProjectsContributionReport, {menuTransparency: false, footerBig: false}),
           '/pt/projects/:project_id/contributions_report': wrap(c.root.ProjectsContributionReport, {menuTransparency: false, footerBig: false}),
+          '/projects/:project_id/subscriptions_report': wrap(c.root.ProjectsSubscriptionReport, {menuTransparency: false, footerBig: false}),
+          '/pt/projects/:project_id/subscriptions_report': wrap(c.root.ProjectsSubscriptionReport, {menuTransparency: false, footerBig: false}),
           '/projects/:project_id/posts': wrap(c.root.Posts, {menuTransparency: false, footerBig: false}),
           '/projects/:project_id/surveys': wrap(c.root.Surveys, {menuTransparency: false, footerBig: false, menuShort: true}),
           '/pt/projects/:project_id/posts': wrap(c.root.Posts, {menuTransparency: false, footerBig: false}),

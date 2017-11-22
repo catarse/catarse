@@ -83,8 +83,10 @@ Catarse::Application.routes.draw do
       end
     end
     resources :projects, only: %i[create update edit new show] do
+      get 'subscriptions/:any', to: 'projects#show', on: :member
       resources :accounts, only: %i[create update]
       resources :posts, controller: 'projects/posts', only: %i[destroy show create]
+      resources :goals
       resources :rewards do
         member do
           get :toggle_survey_finish
@@ -116,6 +118,7 @@ Catarse::Application.routes.draw do
         get 'posts'
         get 'surveys'
         get 'contributions_report'
+        get 'subscriptions_report'
         get 'download_reports'
         put 'pay'
         get 'embed'
@@ -153,6 +156,7 @@ Catarse::Application.routes.draw do
     get '/terms-of-use' => 'high_voltage/pages#show', id: 'terms_of_use'
     get '/privacy-policy' => 'high_voltage/pages#show', id: 'privacy_policy'
     get '/start' => 'high_voltage/pages#show', id: 'start'
+    get '/start-sub' => 'high_voltage/pages#show', id: 'start_sub'
     get '/jobs' => 'high_voltage/pages#show', id: 'jobs'
     get '/hello' => redirect('/start')
     get '/press' => 'high_voltage/pages#show', id: 'press'
@@ -206,7 +210,11 @@ Catarse::Application.routes.draw do
       end
     end
 
-    resource :api_token, only: [:show]
+    resource :api_token, only: [:show] do
+      collection do
+        get :common
+      end
+    end
 
     get '/:permalink' => 'projects#show', as: :project_by_slug
   end

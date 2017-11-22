@@ -49,7 +49,7 @@ I18n.config.enforce_available_locales = false
     end
     config.active_record.observers = %i[
       contribution_observer survey_observer payment_observer user_observer project_post_observer project_observer
-      flexible_project_observer mixpanel_observer
+      flexible_project_observer subscription_project_observer mixpanel_observer
     ]
 
     # Enable the asset pipeline

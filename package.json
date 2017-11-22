@@ -5,7 +5,8 @@
   },
   "dependencies": {
     "backbone": "^1.3.3",
-    "catarse.js": "git+https://github.com/catarse/catarse.js.git#1.0.43",
+    "catarse.js": "git+https://github.com/catarse/catarse.js.git#develop",
+    "mithril-postgrest": "^3.0.0",
     "chart.js": "1.0.2",
     "select": "^1.1.2"
   }

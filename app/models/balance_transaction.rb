@@ -12,6 +12,8 @@ class BalanceTransaction < ActiveRecord::Base
     irrf_tax_project
     contribution_refund
     refund_contributions
+    subscription_fee
+    subscription_payment
   ].freeze
 
   belongs_to :project
@@ -20,6 +22,31 @@ class BalanceTransaction < ActiveRecord::Base
 
   validates :event_name, inclusion: { in: EVENT_NAMES }
   validates :amount, :event_name, :user_id, presence: true
+
+  def self.insert_subscription_payment(subscription_payment_id)
+    subscription_payment = SubscriptionPayment.find subscription_payment_id
+    subscription = subscription_payment.subscription
+    return if subscription_payment.status != 'paid'
+    return if subscription_payment.already_in_balance?
+
+    transaction do
+      default_params = {
+        user_id: subscription.project.user_id,
+        project_id: subscription.project_id,
+        subscription_payment_id: subscription_payment.id,
+      }
+
+      create!(default_params.merge(
+        event_name: 'subscription_payment',
+        amount: (subscription_payment.gateway_data['amount'].to_f / 100.0)
+      ))
+
+      create!(default_params.merge(
+        event_name: 'subscription_fee',
+        amount: ((subscription_payment.gateway_data['amount'].to_f / 100.0) * subscription.project.service_fee) * -1
+      ))
+    end
+  end
 
   def self.insert_project_refund_contributions(project_id)
     project = Project.find project_id

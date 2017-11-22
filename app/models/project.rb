@@ -11,6 +11,7 @@ class Project < ActiveRecord::Base
   include PgSearch
 
   include Shared::Queued
+  include Shared::CommonWrapper
 
   include Project::BaseValidator
   include Project::AllOrNothingStateValidator
@@ -36,6 +37,7 @@ class Project < ActiveRecord::Base
   has_one :project_total
   has_many :balance_transactions
   has_many :taggings
+  has_many :goals, foreign_key: :project_id
   has_many :tags, through: :taggings
   has_many :public_tags, through: :taggings
   has_many :rewards
@@ -220,8 +222,11 @@ class Project < ActiveRecord::Base
   end
 
   def self.find_sti_class(type_name)
-    if type_name == 'flex'
+    case type_name
+    when 'flex'
       FlexibleProject
+    when 'sub'
+      SubscriptionProject
     else
       Project
     end
@@ -470,6 +475,11 @@ class Project < ActiveRecord::Base
     mode == 'flex'
   end
 
+
+  def is_sub?
+    mode == 'sub'
+  end
+
   def is_in_reminder?(current_user)
     (current_user ? reminders.where(user_id: current_user.try(:id), project_id: id).exists? : false)
   end
@@ -533,5 +543,36 @@ class Project < ActiveRecord::Base
         state == st
       end
     end
+  end
+
+  # common integration
+
+  def common_index
+    id_hash = common_id.present? ? {id: common_id} : {}
+    {
+      external_id: id,
+      user_id: user.common_id,
+      current_ip: user.current_sign_in_ip,
+      name: name,
+      status: state,
+      permalink: permalink,
+      mode: mode,
+      about_html: about_html,
+      budget_html: budget_html,
+      online_days: online_days,
+      address: {
+        city: city.try(:name),
+        state: city.try(:state).try(:acronym)
+      }
+    }.merge!(id_hash)
+  end
+
+  def index_on_common
+    unless user.common_id.present?
+      user.index_on_common
+      user.reload
+    end
+
+    common_wrapper.index_project(self) if common_wrapper
   end
 end
