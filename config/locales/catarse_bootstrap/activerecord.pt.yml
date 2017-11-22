@@ -450,6 +450,7 @@ pt:
     deliver_at: Data de entrega da recompensa
     confirmed_at: Data da confirmação do pagamento
     created_at: Data de criação do apoio
+    contribution_id: ID do apoio
     contribution_value: Valor do apoio
     service_fee: Taxa do Catarse
     user_id: ID do usuário

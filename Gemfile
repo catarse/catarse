@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.4.1'
 
-gem 'rails', '~> 4.2.8'
+gem 'rails', '~> 4.2.10'
 
 gem 'protected_attributes'
 gem 'rails-observers'
@@ -40,7 +40,7 @@ gem 'mixpanel_client'
 
 # Payment engines
 
-gem 'catarse_pagarme', '~> 2.10.14'
+gem 'catarse_pagarme', '~> 2.10.15'
 #gem 'catarse_pagarme', path: '../catarse_pagarme'
 
 # Decorators
