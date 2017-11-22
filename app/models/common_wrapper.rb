@@ -8,10 +8,10 @@ class CommonWrapper
 
   def services_endpoint
     @services_endpoint ||= {
-      community_service: CatarseSettings[:common_community_service_api],
-      project_service: CatarseSettings[:common_project_service_api],
-      analytics_service: CatarseSettings[:common_analytics_service_api],
-      payment_service: CatarseSettings[:common_payment_service_api]
+      community_service: URI::parse(CatarseSettings[:common_community_service_api]),
+      project_service: URI::parse(CatarseSettings[:common_project_service_api]),
+      analytics_service: URI::parse(CatarseSettings[:common_analytics_service_api]),
+      payment_service: URI::parse(CatarseSettings[:common_payment_service_api])
     }
   end
 
@@ -19,8 +19,10 @@ class CommonWrapper
     opts[:limit] = 10 unless opts[:limit].present? || opts[:limit].to_i > 30
     opts[:offset] = 0 unless opts[:offset].present?
 
+    uri = services_endpoint[:payment_service]
+    uri.path = '/subscriptions'
     response = request(
-      "#{services_endpoint[:payment_service]}/subscriptions",
+      uri.to_s,
       { params: opts }
     ).run
 
@@ -38,8 +40,10 @@ class CommonWrapper
     opts[:limit] = 10 unless opts[:limit].present? || opts[:limit].to_i > 30
     opts[:offset] = 10 unless opts[:offset].present?
 
+    uri = services_endpoint[:payment_service]
+    uri.path = '/payments'
     response = request(
-      "#{services_endpoint[:payment_service]}/payments",
+      uri.to_s,
       { params: opts }
     ).run
 
@@ -54,8 +58,10 @@ class CommonWrapper
   end
 
   def user_api_key(resource)
+    uri = services_endpoint[:community_service]
+    uri.path = '/rpc/create_scoped_user_session'
     response = request(
-      "#{services_endpoint[:community_service]}/rpc/create_scoped_user_session",
+      uri.to_s,
       body: {
         id: resource.common_id
       }.to_json,
@@ -75,8 +81,10 @@ class CommonWrapper
   end
 
   def find_project(external_id)
+    uri = services_endpoint[:project_service]
+    uri.path = '/projects'
     response = request(
-      "#{services_endpoint[:project_service]}/projects",
+      uri.to_s,
       params: {
         "external_id::integer" => "eq.#{external_id}"
       },
@@ -96,8 +104,10 @@ class CommonWrapper
   end
 
   def find_user(external_id)
+    uri = services_endpoint[:community_service]
+    uri.path = '/users'
     response = request(
-      "#{services_endpoint[:community_service]}/users",
+      uri.to_s,
       params: {
         "external_id::integer" => "eq.#{external_id}"
       },
@@ -117,8 +127,10 @@ class CommonWrapper
   end
 
   def find_reward(external_id)
+    uri = services_endpoint[:project_service]
+    uri.path = '/rewards'
     response = request(
-      "#{services_endpoint[:project_service]}/rewards",
+      uri.to_s,
       params: {
         "external_id::integer" => "eq.#{external_id}"
       },
@@ -138,8 +150,10 @@ class CommonWrapper
   end
 
   def index_user(resource)
+    uri = services_endpoint[:community_service]
+    uri.path = '/rpc/user'
     response = request(
-      "#{services_endpoint[:community_service]}/rpc/user",
+      uri.to_s,
       body: {
         data: resource.common_index.to_json
       }.to_json,
@@ -165,8 +179,11 @@ class CommonWrapper
       resource.user.index_on_common
       resource.user.reload
     end
+
+    uri = services_endpoint[:project_service]
+    uri.path = '/rpc/project'
     response = request(
-      "#{services_endpoint[:project_service]}/rpc/project",
+      uri.to_s,
       body: {
         data: resource.common_index.to_json
       }.to_json,
@@ -195,8 +212,11 @@ class CommonWrapper
       resource.project.index_on_common
       resource.project.reload
     end
+
+    uri = services_endpoint[:project_service]
+    uri.path = '/rpc/reward'
     response = request(
-      "#{services_endpoint[:project_service]}/rpc/reward",
+      uri.to_s,
       body: {
         data: resource.common_index.to_json
       }.to_json,
