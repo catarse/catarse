@@ -34,6 +34,14 @@ pt:
       user_about_subtitle: "Apoiadores querem conhecer melhor os realizadores de projetos. Links que ajudam a contar sua história são sempre bem vindos. "
       description: 'Conte a história do seu projeto!'
       description_subtitle: 'Pense bem na narrativa do projeto. É ela quem encantará as pessoas e trará apoiadores. Um bom video e descrição são diferenciais!'
+    subscription_fields:
+      boleto: ' Boleto'
+      credit_card: ' CC'
+      status:
+        started: ' Iniciada'
+        active: ' Ativa'
+        inactive: ' Inativa'
+        canceled: ' Cancelada'
     reward_fields:
       edit: "Editar recompensa"
       reward: Recompensa
