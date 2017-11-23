@@ -33,3 +33,4 @@ node_modules/
 *.env
 public/sitemap.xml.gz
 config/secrets.yml
+package-lock.json
