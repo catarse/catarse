@@ -102,10 +102,10 @@ class ProjectsController < ApplicationController
 
   def upload_image
     authorize resource, :update?
-    params[:project] = {
-      uploaded_image: params[:uploaded_image],
-      cover_image: params[:cover_image]
-    }
+    params[:project] = {}
+
+    params[:project][:uploaded_image] = params[:uploaded_image] if !params[:uploaded_image].nil?
+    params[:project][:cover_image] = params[:cover_image] if !params[:cover_image].nil?
 
     if resource.update permitted_params
       resource.reload
