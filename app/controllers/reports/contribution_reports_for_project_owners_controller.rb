@@ -10,14 +10,14 @@ class Reports::ContributionReportsForProjectOwnersController < ApplicationContro
   def index
     authorize project, :update?
     respond_to do |format|
-      if params[:reward_id]
+      if params[:reward_id] && params[:reward_id] != '0'
         reward = Reward.find params[:reward_id]
         data = ContributionReportsForProjectOwner.to_csv(collection(false), params[:reward_id])
       else
         data = collection.copy_to_string
       end
       format.csv do
-        if params[:reward_id]
+        if params[:reward_id] && params[:reward_id] != '0'
           send_data data, filename: "#{project.permalink}#{reward.title ? '_' + reward.title : ''}.csv" 
         else
           send_data data, filename: "#{project.permalink}.csv"
