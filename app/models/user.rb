@@ -111,6 +111,14 @@ class User < ActiveRecord::Base
     where('id IN (SELECT user_id FROM contributions WHERE contributions.was_confirmed AND project_id = ?)', project_id)
   }
 
+  scope :who_subscribed_to_project, ->(project_id) {
+    where("id IN (SELECT user_id FROM subscriptions WHERE status = 'active' AND project_id = ?)", project_id)
+  }
+
+  scope :who_subscribed_reward, ->(reward_id) {
+    where("id IN (SELECT user_id FROM subscriptions WHERE status = 'active' AND reward_id = ?)", reward_id)
+  }
+
   scope :who_chose_reward, ->(reward_id) {
     where('id IN (SELECT user_id FROM contributions WHERE contributions.was_confirmed AND reward_id = ?)', reward_id)
   }
@@ -132,8 +140,13 @@ class User < ActiveRecord::Base
             ))")
   }
 
-  scope :subscribed_to_project, ->(project_id) {
+  scope :contributed_to_project, ->(project_id) {
     who_contributed_project(project_id)
+      .where('id NOT IN (SELECT user_id FROM unsubscribes WHERE project_id = ?)', project_id)
+  }
+
+  scope :subscribed_to_project, ->(project_id) {
+    who_subscribed_to_project(project_id)
       .where('id NOT IN (SELECT user_id FROM unsubscribes WHERE project_id = ?)', project_id)
   }
 
