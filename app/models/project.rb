@@ -253,7 +253,11 @@ class Project < ActiveRecord::Base
   end
 
   def subscribed_users
-    User.subscribed_to_posts.subscribed_to_project(id)
+    if is_sub?
+      User.subscribed_to_posts.subscribed_to_project(id)
+    else
+      User.subscribed_to_posts.contributed_to_project(id)
+    end
   end
 
   def decorator
