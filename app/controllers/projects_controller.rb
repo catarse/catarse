@@ -110,8 +110,8 @@ class ProjectsController < ApplicationController
     if resource.update permitted_params
       resource.reload
       render status: 200, json: {
-        uploaded_image: resource.uploaded_image.url(:project_thumb),
-        cover_image: resource.cover_image.url(:base)
+        uploaded_image: resource.uploaded_image.try(:url, :project_thumb),
+        cover_image: resource.cover_image.try(:url, :base)
       }
     else
       render status: 400, json: { errors: resource.errors.full_messages, errors_json: resource.errors.to_json }
