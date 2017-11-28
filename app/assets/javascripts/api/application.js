@@ -46,6 +46,7 @@
         '/': adminWrap(c.root.AdminContributions, {root: adminRoot, menuTransparency: false, hideFooter: true}),
         '/users': adminWrap(c.root.AdminUsers, { menuTransparency: false, hideFooter: true }),
         '/projects': adminWrap(c.root.AdminProjects, { menuTransparency: false, hideFooter: true }),
+        '/notifications': adminWrap(c.root.AdminNotifications, { menuTransparency: false, hideFooter: true }),
         '/balance-transfers': adminWrap(c.root.AdminBalanceTranfers, { menuTransparency: false, hideFooter: true })
     });
   }
