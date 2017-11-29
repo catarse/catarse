@@ -313,6 +313,7 @@ class User < ActiveRecord::Base
     {
       id: id,
       user_id: id,
+      common_id: common_id,
       public_name: public_name,
       email: email,
       name: name,
