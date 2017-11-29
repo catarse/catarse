@@ -65,7 +65,7 @@ pt:
           title: 'Número de recompensas:'
           description: 'Você também pode Limitar uma recompensa para um determinado número de apoios e mudar a ordem que as recompensas aparecem em seu projeto. <a href="http://suporte.catarse.me/hc/pt-br/articles/212191546-tudo-sobre-RECOMPENSAS#como-editar" target="_blank" class="alt-link">Saiba mais</a>.'
       minimum_value_title: 'Para R$ %{minimum_value} ou mais'
-      minimum_value_subscription_title: 'Para R$ %{minimum_value} ou mais por mês'
+      minimum_value_subscription_title: 'R$ %{minimum_value} por mês'
       paid_contributors: '%{count} apoiadores'
       paid_subscribers: '%{count} assinantes'
       reward_gone: 'Esgotada'
