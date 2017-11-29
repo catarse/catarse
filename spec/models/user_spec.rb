@@ -335,6 +335,7 @@ RSpec.describe User, type: :model do
       is_expected.to eq({
         id: user.id,
         user_id: user.id,
+        common_id: user.common_id,
         public_name: user.public_name,
         email: user.email,
         name: user.name,
