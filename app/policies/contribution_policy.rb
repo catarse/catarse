@@ -14,11 +14,11 @@ class ContributionPolicy < ApplicationPolicy
   end
 
   def new?
-    record.project.open_for_contributions?
+    record.project.open_for_contributions? && !record.project.is_sub?
   end
 
   def create?
-    done_by_owner_or_admin? && record.project.open_for_contributions?
+    done_by_owner_or_admin? && record.project.open_for_contributions? && !record.project.is_sub?
   end
 
   def update?
