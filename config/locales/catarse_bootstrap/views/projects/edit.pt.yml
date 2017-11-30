@@ -297,6 +297,26 @@ pt:
     dashboard_posts:
       only_to_backers: "Quero que essa novidade seja visível apenas para apoiadores."
       publish: 'Publicar novidade'
+      preview: 'Pré-visualizar'
+      all_backers_aon: ' os apoiadores e ficará '
+      all_backers_flex: ' os apoiadores e ficará '
+      all_backers_sub: ' os assinantes e ficará '
+      backers_aon: 'Todos os apoiadores'
+      email_backers_aon: 'enviada por email para todos os apoiadores'
+      email_backers_flex: 'enviada por email para todos os apoiadores'
+      email_backers_sub: 'enviada por email para todos os assinantes'
+      backers_only_aon: 'visível na plataforma somente para esses apoiadores.'
+      backers_only_flex: 'visível na plataforma somente para esses apoiadores.'
+      backers_only_sub: 'visível na plataforma somente para esses assinantes.'
+      backers_flex: 'Todos os apoiadores'
+      backers_sub: 'Todos os assinantes'
+      successful: 'Mensagem enviada com sucesso'
+      send_a_message_sub: 'Envie uma novidade para seus assinantes'
+      send_a_message_flex: 'Envie uma novidade para seus apoiadores'
+      send_a_message_aon: 'Envie uma novidade para seus apoiadores'
+      everyone_aon: 'Todo mundo (apoiadores e não apoiadores)'
+      everyone_flex: 'Todo mundo (apoiadores e não apoiadores)'
+      everyone_sub: 'Todo mundo (assinantes e não assinantes)'
       discard: 'Descartar'
       warning: "Toda novidade publicada é enviada diretamente aos seus apoiadores por email. Revise bem o post antes de publicar."
       old_posts: "Novidades antigas"
