@@ -46,6 +46,7 @@
         '/': adminWrap(c.root.AdminContributions, {root: adminRoot, menuTransparency: false, hideFooter: true}),
         '/users': adminWrap(c.root.AdminUsers, { menuTransparency: false, hideFooter: true }),
         '/projects': adminWrap(c.root.AdminProjects, { menuTransparency: false, hideFooter: true }),
+        '/notifications': adminWrap(c.root.AdminNotifications, { menuTransparency: false, hideFooter: true }),
         '/balance-transfers': adminWrap(c.root.AdminBalanceTranfers, { menuTransparency: false, hideFooter: true })
     });
   }
@@ -146,12 +147,14 @@
           '/projects/:project_id/contributions/new': wrap(c.root.ProjectsContribution),
           '/projects/:project_id/contributions/fallback_create': wrap(c.root.ProjectsContribution),
           '/projects/:project_id/contributions/:contribution_id/edit': wrap(c.root.ProjectsPayment, {menuShort: true}),
-          '/projects/:project_id/subscriptions/start': wrap(c.root.ProjectsSubscriptionContribution, {menuShort: true}),
-          '/projects/:project_id/subscriptions/checkout': wrap(c.root.ProjectsSubscriptionCheckout, {menuShort: true}),
+          '/projects/:project_id/subscriptions/start': wrap(c.root.ProjectsSubscriptionContribution, {menuShort: true, footerBig: false}),
+          '/projects/:project_id/subscriptions/checkout': wrap(c.root.ProjectsSubscriptionCheckout, {menuShort: true, footerBig: false}),
+          '/projects/subscriptions/thank_you': wrap(c.root.ProjectsSubscriptionThankYou, {menuShort: true, footerBig: false}),
           '/pt/projects/:project_id/contributions/new': wrap(c.root.ProjectsContribution),
           '/pt/projects/:project_id/contributions/:contribution_id/edit': wrap(c.root.ProjectsPayment, {menuShort: true}),
-          '/pt/projects/:project_id/subscriptions/start': wrap(c.root.ProjectsSubscriptionContribution, {menuShort: true}),
-          '/pt/projects/:project_id/subscriptions/checkout': wrap(c.root.ProjectsSubscriptionCheckout, {menuShort: true}),
+          '/pt/projects/:project_id/subscriptions/start': wrap(c.root.ProjectsSubscriptionContribution, {menuShort: true, footerBig: false}),
+          '/pt/projects/:project_id/subscriptions/checkout': wrap(c.root.ProjectsSubscriptionCheckout, {menuShort: true, footerBig: false}),
+          '/pt/projects/subscriptions/thank_you': wrap(c.root.ProjectsSubscriptionThankYou, {menuShort: true, footerBig: false}),
           '/pt': wrap(c.root.ProjectsHome, {menuTransparency: true, footerBig: true}),
           '/pt/flexible_projects': wrap(c.root.ProjectsHome, {menuTransparency: true, footerBig: true}),
           '/pt/projects': wrap(c.root.ProjectsHome, {menuTransparency: true, footerBig: true}),
