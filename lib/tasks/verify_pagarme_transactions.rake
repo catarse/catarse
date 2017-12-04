@@ -1,13 +1,61 @@
 # -*- coding: utf-8 -*-
 # frozen_string_literal: true
 
-desc 'Sync all balance operations'
+desc 'Sync all "available" balance operations'
 task sync_balance_operations: [:environment] do
   PagarMe.api_key = CatarsePagarme.configuration.api_key
 
   page = 1
   loop do
-    params = { page: page, count: 100 }
+    params = { page: page, count: 100, status: 'available' }
+    begin
+      operations = PagarMe::Request.get('/balance/operations', params: params).call
+      puts page
+      break if operations.empty?
+      operations.map do |op|
+        opjson = op.to_json
+        gateway_operation = GatewayBalanceOperation.find_or_create_by operation_id: ActiveSupport::JSON.decode(opjson)['id']
+        gateway_operation.update_attribute(:operation_data, opjson)
+      end
+      sleep 0.2
+    rescue Exception => e
+      puts e.inspect
+    end
+    page += 1
+  end
+end
+
+desc 'Sync all "waiting_funds" balance operations'
+task sync_balance_operations_waiting_funds: [:environment] do
+  PagarMe.api_key = CatarsePagarme.configuration.api_key
+
+  page = 1
+  loop do
+    params = { page: page, count: 100, status: 'waiting_funds' }
+    begin
+      operations = PagarMe::Request.get('/balance/operations', params: params).call
+      puts page
+      break if operations.empty?
+      operations.map do |op|
+        opjson = op.to_json
+        gateway_operation = GatewayBalanceOperation.find_or_create_by operation_id: ActiveSupport::JSON.decode(opjson)['id']
+        gateway_operation.update_attribute(:operation_data, opjson)
+      end
+      sleep 0.2
+    rescue Exception => e
+      puts e.inspect
+    end
+    page += 1
+  end
+end
+
+desc 'Sync all "transferred" balance operations'
+task sync_balance_operations_transferred: [:environment] do
+  PagarMe.api_key = CatarsePagarme.configuration.api_key
+
+  page = 1
+  loop do
+    params = { page: page, count: 100, status: 'transferred' }
     begin
       operations = PagarMe::Request.get('/balance/operations', params: params).call
       puts page
