@@ -1,6 +1,30 @@
 pt:
   projects:
     contributions:
+      backers:
+        aon: 'Apoiadores'
+        flex: 'Apoiadores'
+        sub: 'Assinantes'
+      people_back:
+        aon: 'pessoas apoiam este projeto'
+        flex: 'pessoas apoiam este projeto'
+        sub: 'pessoas assinam este projeto'
+      new_backers:
+        aon: 'Apoiadores novos'
+        flex: 'Apoiadores novos'
+        sub: 'Assinantes novos'
+      new_backers_explanation:
+        aon: 'apoiadores que nunca tinham apoiado um projeto no Catarse'
+        flex: 'apoiadores que nunca tinham apoiado um projeto no Catarse'
+        sub: 'assinantes que nunca tinham apoiado um projeto no Catarse'
+      recurring_backers:
+        aon: 'Apoiadores recorrentes'
+        flex: 'Apoiadores recorrentes'
+        sub: 'Assinantes recorrentes'
+      recurring_backers_explanation:
+        aon: 'apoiadores que já tinham apoiado um projeto no Catarse'
+        flex: 'apoiadores que já tinham apoiado um projeto no Catarse'
+        sub: 'assinantes que já tinham assinado um projeto no Catarse'
       user_since: "Conta no Catarse desde %{date}"
       backed_projects: "Apoiou %{count} projetos"
       created_projects: "Criou %{count} projetos"
