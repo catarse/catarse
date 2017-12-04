@@ -40,6 +40,8 @@ class AddSubsToUserTotals < ActiveRecord::Migration
           and sp.status = 'paid'
           GROUP BY s.user_id) subs ON u.id = subs.user_id ;
 
+  create index user_totals_user_id_ix on "1".user_totals(user_id);
+
 
           create view "1".team_members as
  SELECT u.id,
