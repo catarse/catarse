@@ -307,6 +307,7 @@ pt:
       thank_you:
         thank_you: 'Valeu! Seu apoio está sendo processado.'
         thank_you_text_html:  "<div class='fontsize-base'>Assim que o pagamento for concluído, enviaremos a confirmação do seu apoio para o email cadastrado:</div><div class='fontsize-large u-marginbottom-10'>%{email}</div><a class='alt-link fontsize-small' href='%{link_email}'>Se esse não é seu email de contato, altere aqui</a>"
+        thank_you_slip_text_html: "<div class='fontsize-base'>Se tudo correr bem, você vai receber um email em breve com o boleto para pagamento no email cadastrado:</div><div class='fontsize-large u-marginbottom-10'>%{email}</div><a class='alt-link fontsize-small' href='%{link_email}'>Se esse não é seu email de contato, altere aqui</a>"
         share: Compartilhe
         tweet: Tuíte
         share_back: 'Compartilhe com seus amigos e ajude esse projeto a bater a meta!'
