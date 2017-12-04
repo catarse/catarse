@@ -1,28 +1,44 @@
 # -*- coding: utf-8 -*-
 # frozen_string_literal: true
 
-desc 'Sync all balance operations'
-task sync_balance_operations: [:environment] do
-  PagarMe.api_key = CatarsePagarme.configuration.api_key
 
-  page = 1
-  loop do
-    params = { page: page, count: 100 }
-    begin
-      operations = PagarMe::Request.get('/balance/operations', params: params).call
-      puts page
-      break if operations.empty?
-      operations.map do |op|
-        opjson = op.to_json
-        gateway_operation = GatewayBalanceOperation.find_or_create_by operation_id: ActiveSupport::JSON.decode(opjson)['id']
-        gateway_operation.update_attribute(:operation_data, opjson)
+def sync_balance_operations(status)
+  PagarMe.api_key = CatarsePagarme.configuration.api_key
+  
+    page = 1
+    loop do
+      params = { page: page, count: 100, status: status }
+      begin
+        operations = PagarMe::Request.get('/balance/operations', params: params).call
+        puts page
+        break if operations.empty?
+        operations.map do |op|
+          opjson = op.to_json
+          gateway_operation = GatewayBalanceOperation.find_or_create_by operation_id: ActiveSupport::JSON.decode(opjson)['id']
+          gateway_operation.update_attribute(:operation_data, opjson)
+        end
+        sleep 0.2
+      rescue Exception => e
+        puts e.inspect
       end
-      sleep 0.2
-    rescue Exception => e
-      puts e.inspect
+      page += 1
     end
-    page += 1
   end
+
+
+desc 'Sync all "available" balance operations'
+task sync_balance_operations_available: [:environment] do
+  sync_balance_operations('available')
+end
+
+desc 'Sync all "waiting_funds" balance operations'
+task sync_balance_operations_waiting_funds: [:environment] do
+  sync_balance_operations('waiting_funds')
+end
+
+desc 'Sync all "transferred" balance operations'
+task sync_balance_operations_transferred: [:environment] do
+  sync_balance_operations('transferred')
 end
 
 desc 'Sync payment_transfers with pagar.me transfers'
