@@ -1,7 +1,9 @@
 class UseFdwTablesOnViews < ActiveRecord::Migration
+  # WARNING - before running this migration you will need to generate FDW tables by running `rake common:generate_fdw` (don't forget to set appropriate settings first)
   def change
-    # this is needed to create a fake external db for use on fdw
     if Rails.env.test?
+      # circleci specific
+      # this is needed to create a fake external db for use with fdw
       execute <<-SQL
       create schema common_schema;
       DROP SCHEMA IF EXISTS payment_service CASCADE;
@@ -496,10 +498,6 @@ CREATE OR REPLACE VIEW "1"."projects" AS
      LEFT JOIN states s ON ((s.id = c.state_id)))
      JOIN LATERAL zone_timestamp(online_at(p.*)) od(od) ON (true))
      JOIN LATERAL state_order(p.*) so(so) ON (true));
-
-
-
-
 
     SQL
   end
