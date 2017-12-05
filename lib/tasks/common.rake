@@ -212,6 +212,10 @@ namespace :common do
         SERVER common_db
         OPTIONS (user '#{CatarseSettings[:common_db_user]}', password '#{CatarseSettings[:common_db_password]}');
 
+      CREATE USER MAPPING FOR catarse
+        SERVER common_db
+        OPTIONS (user '#{CatarseSettings[:common_db_user]}', password '#{CatarseSettings[:common_db_password]}');
+
       DROP SCHEMA IF EXISTS common_schema CASCADE;
       CREATE SCHEMA common_schema;
       DROP SCHEMA IF EXISTS payment_service CASCADE;
