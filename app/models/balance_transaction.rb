@@ -38,12 +38,12 @@ class BalanceTransaction < ActiveRecord::Base
 
       create!(default_params.merge(
         event_name: 'subscription_payment',
-        amount: (subscription_payment.gateway_data['amount'].to_f / 100.0)
+        amount: (subscription_payment.data['amount'].to_f / 100.0)
       ))
 
       create!(default_params.merge(
         event_name: 'subscription_fee',
-        amount: ((subscription_payment.gateway_data['amount'].to_f / 100.0) * subscription.project.service_fee) * -1
+        amount: ((subscription_payment.data['amount'].to_f / 100.0) * subscription.project.service_fee) * -1
       ))
     end
   end
