@@ -199,4 +199,50 @@ namespace :common do
     end
   end
 
+  desc 'generate common tables fdw'
+  task generate_fdw: :environment do
+    ActiveRecord::Base.connection.execute <<-SQL
+      BEGIN;
+      CREATE EXTENSION IF NOT EXISTS postgres_fdw;
+      DROP SERVER IF EXISTS common_db CASCADE;
+      CREATE SERVER common_db
+        FOREIGN DATA WRAPPER postgres_fdw
+        OPTIONS (host '#{CatarseSettings[:common_db_host]}', dbname '#{CatarseSettings[:common_db_name]}', port '#{CatarseSettings[:common_db_port]}');
+      CREATE USER MAPPING FOR #{CatarseSettings[:fdw_user]}
+        SERVER common_db
+        OPTIONS (user '#{CatarseSettings[:common_db_user]}', password '#{CatarseSettings[:common_db_password]}');
+
+      DROP SCHEMA IF EXISTS common_schema CASCADE;
+      CREATE SCHEMA common_schema;
+      DROP SCHEMA IF EXISTS payment_service CASCADE;
+      CREATE SCHEMA payment_service;
+
+      CREATE TYPE payment_service.payment_status AS ENUM (
+          'pending',
+          'paid',
+          'refused',
+          'refunded',
+          'chargedback',
+          'deleted',
+          'error'
+      );
+
+      CREATE TYPE payment_service.subscription_status AS ENUM (
+          'started',
+          'active',
+          'inactive',
+          'canceled',
+          'deleted',
+          'error'
+      );
+
+      IMPORT FOREIGN SCHEMA payment_service
+        LIMIT TO (subscriptions, catalog_payments, payment_status_transitions)
+        FROM SERVER common_db
+        INTO common_schema;
+      COMMIT;
+
+    SQL
+  end
+
 end

@@ -1,4 +1,5 @@
 class SubscriptionPayment < ActiveRecord::Base
+  self.table_name = 'common_schema.catalog_payments'
   belongs_to :subscription
   has_many :balance_transactions
 
