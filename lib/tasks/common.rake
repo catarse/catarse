@@ -240,13 +240,60 @@ namespace :common do
           'error'
       );
 
-      IMPORT FOREIGN SCHEMA payment_service
-        LIMIT TO (subscriptions, catalog_payments, payment_status_transitions)
-        FROM SERVER common_db
-        INTO common_schema;
+      CREATE FOREIGN TABLE common_schema.subscriptions (
+          id uuid NOT NULL,
+          platform_id uuid NOT NULL,
+          project_id uuid NOT NULL,
+          user_id uuid NOT NULL,
+          reward_id uuid,
+          credit_card_id uuid,
+          status payment_service.subscription_status NOT NULL,
+          created_at timestamp without time zone NOT NULL,
+          updated_at timestamp without time zone NOT NULL,
+          checkout_data jsonb NOT NULL
+      ) SERVER common_db
+      OPTIONS (schema_name 'payment_service', table_name 'subscriptions');
+      ;
+
+      CREATE FOREIGN TABLE common_schema.catalog_payments (
+          id uuid NOT NULL,
+          platform_id uuid NOT NULL,
+          project_id uuid NOT NULL,
+          user_id uuid NOT NULL,
+          subscription_id uuid,
+          reward_id uuid,
+          data jsonb NOT NULL,
+          gateway text NOT NULL,
+          gateway_cached_data jsonb,
+          created_at timestamp without time zone NOT NULL,
+          updated_at timestamp without time zone NOT NULL,
+          common_contract_data jsonb NOT NULL,
+          gateway_general_data jsonb NOT NULL,
+          status payment_service.payment_status NOT NULL,
+          external_id text,
+          error_retry_at timestamp without time zone
+      ) SERVER common_db 
+      OPTIONS (schema_name 'payment_service', table_name 'catalog_payments');
+
+      CREATE FOREIGN TABLE common_schema.payment_status_transitions (
+          id uuid NOT NULL,
+          catalog_payment_id uuid NOT NULL,
+          from_status payment_service.payment_status NOT NULL,
+          to_status payment_service.payment_status NOT NULL,
+          data jsonb NOT NULL,
+          created_at timestamp without time zone NOT NULL,
+          updated_at timestamp without time zone NOT NULL
+      ) SERVER common_db
+      OPTIONS (schema_name 'payment_service', table_name 'payment_status_transitions');
+
       COMMIT;
 
     SQL
+    # todo: when upgrade to 9.5+ can use this
+    #IMPORT FOREIGN SCHEMA payment_service
+    #  LIMIT TO (subscriptions, catalog_payments, payment_status_transitions)
+    #  FROM SERVER common_db
+    #  INTO common_schema;
   end
 
 end
