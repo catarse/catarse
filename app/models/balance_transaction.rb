@@ -33,7 +33,7 @@ class BalanceTransaction < ActiveRecord::Base
       default_params = {
         user_id: subscription.project.user_id,
         project_id: subscription.project_id,
-        subscription_payment_id: subscription_payment.id,
+        subscription_payment_uuid: subscription_payment.id,
       }
 
       create!(default_params.merge(
