@@ -112,11 +112,11 @@ class User < ActiveRecord::Base
   }
 
   scope :who_subscribed_to_project, ->(project_id) {
-    where("id IN (SELECT user_id FROM subscriptions WHERE status = 'active' AND project_id = ?)", project_id)
+    where("common_id IN (SELECT user_id FROM common_schema.subscriptions WHERE status = 'active' AND project_id = ?)", project_id)
   }
 
   scope :who_subscribed_reward, ->(reward_id) {
-    where("id IN (SELECT user_id FROM subscriptions WHERE status = 'active' AND reward_id = ?)", reward_id)
+    where("common_id IN (SELECT user_id FROM common_schema.subscriptions WHERE status = 'active' AND reward_id = ?)", reward_id)
   }
 
   scope :who_chose_reward, ->(reward_id) {
@@ -147,12 +147,9 @@ class User < ActiveRecord::Base
 
   scope :subscribed_to_project, ->(project_id) {
     who_subscribed_to_project(project_id)
-      .where('id NOT IN (SELECT user_id FROM unsubscribes WHERE project_id = ?)', project_id)
+      .where('id NOT IN (SELECT user_id FROM unsubscribes WHERE project_id = (select id from projects where common_id = ? limit 1))', project_id)
   }
 
-  # FIXME: very slow query
-  # This query is executed once a day in worst case and taks 1/2 second to excute
-  # LGTM
   scope :to_send_category_notification, ->(category_id) {
     where("NOT EXISTS (
           select true from category_notifications n
