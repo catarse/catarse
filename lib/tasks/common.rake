@@ -91,7 +91,11 @@ namespace :common do
   task generate_subscription_balance: :environment do
     SubscriptionPayment.where(platform_id: CatarseSettings[:common_platform_id], status: 'paid').find_each do |sp|
       unless sp.already_in_balance?
-        BalanceTransaction.insert_subscription_payment(sp.id)
+        begin
+          BalanceTransaction.insert_subscription_payment(sp.id)
+        rescue Exception => e
+          puts e.inspect
+        end
       end
     end
   end
