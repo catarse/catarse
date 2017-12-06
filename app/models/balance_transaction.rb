@@ -32,7 +32,7 @@ class BalanceTransaction < ActiveRecord::Base
     transaction do
       default_params = {
         user_id: subscription.project.user_id,
-        project_id: subscription.project_id,
+        project_id: subscription.project.id,
         subscription_payment_uuid: subscription_payment.id,
       }
 
