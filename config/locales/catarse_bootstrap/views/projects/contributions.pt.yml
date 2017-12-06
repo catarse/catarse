@@ -204,7 +204,8 @@ pt:
           installments: 'Parcelas'
           save_card: 'Quero salvar meu cartão de crédito para facilitar apoios futuros.'
           finish_payment: 'Finalizar pagamento'
-          terms_of_use_agreement: 'Ao apoiar, você concorda com os <a class="alt-link" href="/pt/terms-of-use">Termos de Uso</a> e <a class="alt-link" href="/pt/privacy-policy">Política de Privacidade</a>.'
+          terms_of_use_agreement: 'Ao apoiar, você concorda com os <a class="alt-link" target="_blank" href="/pt/terms-of-use">Termos de Uso</a> e <a class="alt-link" target="_blank" href="/pt/privacy-policy">Política de Privacidade</a>.'
+          terms_of_use_agreement_sub: 'Ao apoiar, você concorda com os <a class="alt-link" target="_blank" href="/pt/terms-of-use">Termos de Uso</a>, <a class="alt-link" target="_blank" href="https://suporte.catarse.me/hc/pt-br/articles/115005588243">Regras do Catarse Assinaturas</a> e <a class="alt-link" target="_blank" href="/pt/privacy-policy">Política de Privacidade</a>.'
         errors:
           global: 'Por favor, reveja os campos abaixo antes de prosseguir'
           inline:
