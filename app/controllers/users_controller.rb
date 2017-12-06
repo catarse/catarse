@@ -153,7 +153,12 @@ class UsersController < ApplicationController
       end
     else
       @user.update_without_password permitted_params
-      @user.save(validate: validate)
+      begin
+        @user.save!(validate: validate)
+      rescue
+        # need a second save to catch remote validation errors
+        @user.save!(validate: @user.valid?)
+      end
     end
   end
 
