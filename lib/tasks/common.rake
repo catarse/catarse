@@ -87,116 +87,114 @@ namespace :common do
     end
   end
 
-  desc 'fetch all subscriptions'
-  task fetch_subscriptions: :environment do
-    nthreads = ENV['COMMON_INDEXER_NTHREADS'].presence || 3
-    page_size = ENV['COMMON_INDEXER_PAGE_SIZE'].presence || 500
-    cw = CommonWrapper.new(CatarseSettings[:common_api_key])
-    page = 1
-    per_page = page_size.to_i
-
-    ActiveRecord::Base.connection_pool.with_connection do
-      loop do
-        collection = cw.list_subscriptions(
-          limit: page_size,
-          offset: (page - 1) * per_page
-        )
-
-        if collection.empty?
-          Rails.logger.info 'empty collection'
-          break
-        end
-
-        Parallel.each(collection, in_threads: nthreads.to_i, progress: "feching subscriptions page #{page}") do |resource|
-          subscription = ::Subscription.where.not(common_id: nil).find_by common_id: resource['id']
-          user = User.where.not(common_id: nil).find_by common_id: resource['user_id']
-          project = Project.where.not(common_id: nil).find_by common_id: resource['project_id']
-          reward = Reward.where.not(common_id: nil).find_by common_id: resource['reward_id']
-
-          if (user.present? && project.present?)
-            if subscription.present?
-              subscription.update_attributes(
-                user_id: user.id,
-                project_id: project.id,
-                status: resource['status'],
-                amount: resource['checkout_data']['amount'].to_f / 100.0,
-                reward_id: reward.try(:id)
-              )
-            else
-              subscription = Subscription.create(
-                common_id: resource['id'],
-                user_id: user.id,
-                project_id: project.id,
-                status: resource['status'],
-                amount: resource['checkout_data']['amount'].to_f / 100.0,
-                reward_id: reward.try(:id),
-                created_at: resource['created_at']
-              )
-            end
-            Rails.logger.info "subscription common id #{resource['id']} feteched into #{subscription.id} id"
-          end
-        end
-
-        page += 1
-      end
-    end
-  end
-
-  desc 'fetch all subscription payments'
-  task fetch_subscription_payments: :environment do
-    nthreads = ENV['COMMON_INDEXER_NTHREADS'].presence || 3
-    page_size = ENV['COMMON_INDEXER_PAGE_SIZE'].presence || 500
-    cw = CommonWrapper.new(CatarseSettings[:common_api_key])
-    page = 1
-    per_page = page_size.to_i
-
-    ActiveRecord::Base.connection_pool.with_connection do
-      loop do
-        collection = cw.list_payments(
-          limit: page_size,
-          offset: (page - 1) * per_page
-        )
-
-        if collection.empty?
-          Rails.logger.info 'empty collection'
-          break
-        end
-
-        Parallel.each(collection, in_threads: nthreads.to_i, progress: "feching subscriptions page #{page}") do |resource|
-          subscription = ::Subscription.where.not(common_id: nil).find_by common_id: resource['subscription_id']
-
-          if subscription.present?
-            subscription_payment = ::SubscriptionPayment.where.not(common_id: nil).find_by common_id: resource['id']
-
-            if subscription_payment.present?
-              subscription_payment.update_attributes(
-                status: resource['status'],
-                gateway_data: resource
-              )
-            else
-              subscription_payment = subscription.subscription_payments.create(
-                common_id: resource['id'],
-                status: resource['status'],
-                gateway_data: resource,
-                created_at: resource['created_at']
-              )
-            end
-            Rails.logger.info "subscription payment id #{resource['id']} feteched into #{subscription.id} id"
-          end
-        end
-
-        page += 1
-      end
-    end
-  end
-
   desc 'generate balance transaction for subscription payments'
   task generate_subscription_balance: :environment do
-    SubscriptionPayment.where(status: 'paid').find_each do |sp|
+    SubscriptionPayment.where(platform_id: CatarseSettings[:common_platform_id], status: 'paid').find_each do |sp|
       unless sp.already_in_balance?
-        BalanceTransaction.insert_subscription_payment(sp.id)
+        begin
+          BalanceTransaction.insert_subscription_payment(sp.id)
+        rescue Exception => e
+          puts e.inspect
+        end
       end
     end
+  end
+
+  desc 'generate common tables fdw'
+  task generate_fdw: :environment do
+    ActiveRecord::Base.connection.execute <<-SQL
+      BEGIN;
+      CREATE EXTENSION IF NOT EXISTS postgres_fdw;
+      DROP SERVER IF EXISTS common_db CASCADE;
+      CREATE SERVER common_db
+        FOREIGN DATA WRAPPER postgres_fdw
+        OPTIONS (host '#{CatarseSettings[:common_db_host]}', dbname '#{CatarseSettings[:common_db_name]}', port '#{CatarseSettings[:common_db_port]}');
+      CREATE USER MAPPING FOR #{CatarseSettings[:fdw_user]}
+        SERVER common_db
+        OPTIONS (user '#{CatarseSettings[:common_db_user]}', password '#{CatarseSettings[:common_db_password]}');
+
+      CREATE USER MAPPING FOR catarse
+        SERVER common_db
+        OPTIONS (user '#{CatarseSettings[:common_db_user]}', password '#{CatarseSettings[:common_db_password]}');
+
+      DROP SCHEMA IF EXISTS common_schema CASCADE;
+      CREATE SCHEMA common_schema;
+      DROP SCHEMA IF EXISTS payment_service CASCADE;
+      CREATE SCHEMA payment_service;
+
+      CREATE TYPE payment_service.payment_status AS ENUM (
+          'pending',
+          'paid',
+          'refused',
+          'refunded',
+          'chargedback',
+          'deleted',
+          'error'
+      );
+
+      CREATE TYPE payment_service.subscription_status AS ENUM (
+          'started',
+          'active',
+          'inactive',
+          'canceled',
+          'deleted',
+          'error'
+      );
+
+      CREATE FOREIGN TABLE common_schema.subscriptions (
+          id uuid NOT NULL,
+          platform_id uuid NOT NULL,
+          project_id uuid NOT NULL,
+          user_id uuid NOT NULL,
+          reward_id uuid,
+          credit_card_id uuid,
+          status payment_service.subscription_status NOT NULL,
+          created_at timestamp without time zone NOT NULL,
+          updated_at timestamp without time zone NOT NULL,
+          checkout_data jsonb NOT NULL
+      ) SERVER common_db
+      OPTIONS (schema_name 'payment_service', table_name 'subscriptions');
+      ;
+
+      CREATE FOREIGN TABLE common_schema.catalog_payments (
+          id uuid NOT NULL,
+          platform_id uuid NOT NULL,
+          project_id uuid NOT NULL,
+          user_id uuid NOT NULL,
+          subscription_id uuid,
+          reward_id uuid,
+          data jsonb NOT NULL,
+          gateway text NOT NULL,
+          gateway_cached_data jsonb,
+          created_at timestamp without time zone NOT NULL,
+          updated_at timestamp without time zone NOT NULL,
+          common_contract_data jsonb NOT NULL,
+          gateway_general_data jsonb NOT NULL,
+          status payment_service.payment_status NOT NULL,
+          external_id text,
+          error_retry_at timestamp without time zone
+      ) SERVER common_db 
+      OPTIONS (schema_name 'payment_service', table_name 'catalog_payments');
+
+      CREATE FOREIGN TABLE common_schema.payment_status_transitions (
+          id uuid NOT NULL,
+          catalog_payment_id uuid NOT NULL,
+          from_status payment_service.payment_status NOT NULL,
+          to_status payment_service.payment_status NOT NULL,
+          data jsonb NOT NULL,
+          created_at timestamp without time zone NOT NULL,
+          updated_at timestamp without time zone NOT NULL
+      ) SERVER common_db
+      OPTIONS (schema_name 'payment_service', table_name 'payment_status_transitions');
+
+      COMMIT;
+
+    SQL
+    # todo: when upgrade to 9.5+ can use this
+    #IMPORT FOREIGN SCHEMA payment_service
+    #  LIMIT TO (subscriptions, catalog_payments, payment_status_transitions)
+    #  FROM SERVER common_db
+    #  INTO common_schema;
   end
 
 end
