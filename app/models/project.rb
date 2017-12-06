@@ -254,7 +254,7 @@ class Project < ActiveRecord::Base
 
   def subscribed_users
     if is_sub?
-      User.subscribed_to_posts.subscribed_to_project(id)
+      User.subscribed_to_posts.subscribed_to_project(common_id)
     else
       User.subscribed_to_posts.contributed_to_project(id)
     end
