@@ -96,6 +96,16 @@ class ProjectsController < ApplicationController
     authorize resource, :update?
   end
 
+  def subscriptions_report_for_project_owners
+    authorize resource, :update?
+    respond_to do |format|
+      format.csv { send_data resource.subscriptions.to_csv }
+      format.xls do
+        send_data Excelinator.csv_to_xls(resource.subscriptions.to_csv)
+      end
+    end
+  end
+
   def subscriptions_report
     authorize resource, :update?
   end

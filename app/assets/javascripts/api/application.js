@@ -2,6 +2,7 @@
 //= require jquery
 //= require select
 //= require underscore/underscore-min.js
+//= require liquidjs/dist/liquid.min.js
 //= require mithril-postgrest
 //= require moment/min/moment.min.js
 //= require lib/replace-diacritics
