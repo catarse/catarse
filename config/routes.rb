@@ -119,6 +119,7 @@ Catarse::Application.routes.draw do
         get 'surveys'
         get 'contributions_report'
         get 'subscriptions_report'
+        get 'subscriptions_report_for_project_owners'
         get 'download_reports'
         put 'pay'
         get 'embed'
