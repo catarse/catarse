@@ -6,7 +6,7 @@ class Subscription < ActiveRecord::Base
   has_many :subscription_payments
 
   def self.to_csv(options = {})
-    columns = ['Nome completo',	'Nome público', 'Email perfil Catarse',	'Valor do apoio mensal',	'Título da recompensa',	'Descrição da recompensa',	'Total apoiado até hoje', 'Status da Assinatura',	'Meio de pagamento',	'Data de confirmação do último apoio',	'Data de início da Assinatura',	'Tempo de assinatura',	'ID do usuário', 'Anônimo', 'Tipo de endereço', 'Rua',	'Complemento',	'Número',	'Bairro',	'Cidade',	'Estado',	'CEP']
+    columns = ['Nome completo',	'Nome público', 'Email perfil Catarse',	'Valor do apoio mensal',	'Título da recompensa',	'Descrição da recompensa',	'Total apoiado até hoje', 'Status da Assinatura',	'Meio de pagamento',	'Data de confirmação do último apoio',	'Data de início da Assinatura',	'Tempo de assinatura',	'ID do usuário', 'Anônimo', 'Rua', 'Complemento',	'Número',	'Bairro',	'Cidade',	'Estado',	'CEP']
     CSV.generate(options) do |csv|
       csv << columns
       all.each do |subscription|
@@ -27,7 +27,6 @@ class Subscription < ActiveRecord::Base
                 I18n.t('datetime.distance_in_words.x_months', count: all_payments.count),
                 subscription.user.id,
                 last_payment.nil? ? '' : (last_payment['data']['anonymous'] ? 'Sim' : 'Não'),
-                subscription.user.address.nil? ? 'Pagamento' : 'Usuário',
                 subscription.checkout_data['customer']['address']['street'] || subscription.user.address.address_street,
                 subscription.checkout_data['customer']['address']['complementary'] || subscription.user.address.address_complement,
                 subscription.checkout_data['customer']['address']['street_number'] || subscription.user.address.address_number,
