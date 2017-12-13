@@ -1,0 +1,51 @@
+- owner = @notification.project.user
+- payment_transitions = @notification.project.subscription_payment_transitions.where(created_at: Time.current - 1.day .. Time.current)
+- new_active = payment_transitions.where(from_status: 'pending', to_status: 'paid')
+- new_started = payment_transitions.where(to_status: 'pending')
+
+strong
+  p Olá #{owner.display_name},
+
+p Seu saldo atual no Catarse é R$#{owner.total_balance}.
+
+p Nas últimas 24h da sua campanha:
+
+
+-if new_started.count == 1
+  |#{new_started.count} Nova Assinatura foi Iniciada
+- else
+  |#{new_started.count} Novas Assinaturas foram Iniciadas
+br
+- if new_active.count == 1
+  |#{new_active.count} Nova Assinatura foi Ativada
+- else
+  |#{new_active.count} Novas Assinaturas foram Ativadas
+br
+
+p Abaixo você pode conferir mais detalhes sobre cada atualização:
+
+strong Novas Assinaturas Ativas
+br
+table
+  tr
+    th Nome
+    th Apoio mensal
+    th Recompensa
+  - new_active.each do |transition|
+    tr
+      td= transition.subscription_payment.user.display_name
+      td= transition.subscription_payment.amount
+      td= transition.subscription_payment.reward.try(:description)
+
+strong Novas Assinaturas Iniciadas
+br
+table
+  tr
+    th Nome
+    th Apoio mensal
+    th Recompensa
+  - new_started.each do |transition|
+    tr
+      td= transition.subscription_payment.user.display_name
+      td= transition.subscription_payment.amount
+      td= transition.subscription_payment.reward.try(:description)
