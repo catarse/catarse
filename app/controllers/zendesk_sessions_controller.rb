@@ -21,7 +21,7 @@ class ZendeskSessionsController < ApplicationController
       name: current_user.display_name,
       email: current_user.email,
       external_id: current_user.id.to_s,
-      custom_fields: {
+      user_fields: {
         paid_count: current_user.contributions.where('contributions.was_confirmed').count,
         pending_count: current_user.payments.where(state: 'pending').where("payments.created_at > current_timestamp - '7 days'::interval ").count
       }
