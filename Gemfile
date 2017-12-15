@@ -68,6 +68,7 @@ gem 'json_web_token'
 # Email marketing
 gem 'gridhook'
 gem 'sendgrid-ruby'
+gem 'zendesk_api'
 
 # HTML manipulation and formatting
 gem 'simple_form'
