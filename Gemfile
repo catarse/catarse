@@ -43,6 +43,8 @@ gem 'mixpanel_client'
 
 gem 'catarse_pagarme', '~> 2.10.15'
 #gem 'catarse_pagarme', path: '../catarse_pagarme'
+#gem 'catarse_redecoin', path: '../catarse_redecoin'
+gem 'catarse_redecoin', github: 'catarse/catarse_redecoin', branch: 'master'
 
 # Decorators
 gem 'draper'
