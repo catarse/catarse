@@ -193,7 +193,9 @@ class Contribution < ActiveRecord::Base
         minimum_value: reward.minimum_value
       } : nil,
       contribution_email: user.email,
-      slip_url: payment && payment.slip_payment? ? payment.gateway_data['boleto_url'] : nil
+      slip_url: payment && payment.slip_payment? ? payment.gateway_data['boleto_url'] : nil,
+      payment_method: payment.try(:payment_method),
+      payment_gateway_data: payment.try(:gateway_data)
     }
   end
 
