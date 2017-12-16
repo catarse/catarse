@@ -160,12 +160,13 @@ Catarse::Application.routes.draw do
     get '/start-sub' => 'high_voltage/pages#show', id: 'start_sub'
     get '/jobs' => 'high_voltage/pages#show', id: 'jobs'
     get '/hello' => redirect('/start')
-    get '/press' => 'high_voltage/pages#show', id: 'press'
-    get '/assets' => 'high_voltage/pages#show', id: 'assets'
+    get '/press' => redirect('https://crowdfunding.catarse.me/imprensa')
+    get '/assets' => redirect('https://crowdfunding.catarse.me/assets')
     get '/guides' => redirect('http://fazum.catarse.me/guia-financiamento-coletivo')
     get '/new-admin' => 'high_voltage/pages#show', id: 'new_admin'
     get '/explore' => 'high_voltage/pages#show', id: 'explore'
-    get '/team' => 'high_voltage/pages#show', id: 'team'
+    get '/team' => redirect('https://crowdfunding.catarse.me/nosso-time')
+    get '/about' => redirect('https://crowdfunding.catarse.me/quem-somos')
     get '/flex' => redirect('http://crowdfunding.catarse.me')
     get '/projects_dashboard' => 'high_voltage/pages#show', id: 'projects_dashboard'
 
