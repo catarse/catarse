@@ -50,6 +50,7 @@ Catarse::Application.routes.draw do
     filter :locale, exclude: /\/auth\//
 
     mount CatarsePagarme::Engine => '/', as: :catarse_pagarme
+    mount CatarseRedecoin::Engine => '/', as: :catarse_redecoin
     # mount CatarseWepay::Engine => "/", as: :catarse_wepay
     mount Dbhero::Engine => '/dbhero', as: :dbhero
 
