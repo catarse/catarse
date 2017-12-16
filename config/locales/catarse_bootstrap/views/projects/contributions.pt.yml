@@ -110,8 +110,10 @@ pt:
         required: '* Required fields'
         payment_info: 'Payment information'
         safe_payment: ' SECURE PAYMENT'
+        bitcoin_select: 'Bitcoin payment'
         credit_card_select: 'Credit card'
         debit_card_info: '(Debit card not accepted)'
+        bitcoin_info: ''
         anonymous_confirmation_title: "Are you sure you want to make you contribution non-public?"
         anonymous_confirmation: "Choosing this option your name won't be shown on the public backers section area. Only you and this project's creator will have access to your name and contribution details."
         fields:
@@ -172,6 +174,8 @@ pt:
         payment_info: 'Escolha o meio de pagamento'
         safe_payment: ' PAGAMENTO SEGURO'
         credit_card_select: 'Cartão de crédito'
+        bitcoin_select: 'Bitcoin'
+        bitcoin_info: ''
         debit_card_info: '(não aceitamos cartão de débito)'
         next_step: 'Próximo passo'
         fields:
@@ -302,6 +306,9 @@ pt:
         MoIP: "MoIP"
         Credits: 'Créditos'
         error: Ooops. Ocorreu um erro ao registrar seu apoio. Por favor, tente novamente.
+      thank_you_btc:
+        thank_you: 'Estou contando com seu apoio...'
+        thank_you_text_html:  "<div class='fontsize-base'>Deposite <b>%{btc_amount}btc</b> no endereço abaixo:</div>"
       thank_you_slip:
         thank_you: 'Estou contando com seu apoio...'
         thank_you_text_html:  "<div class='fontsize-base'>Você também recebeu esse boleto no email:</div><div class='fontsize-large u-marginbottom-10'>%{email}</div><a class='alt-link fontsize-small' href='%{link_email}'>Se esse não é seu email de contato, altere aqui</a>"
