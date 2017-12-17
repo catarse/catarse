@@ -105,7 +105,7 @@ namespace :common do
     ActiveRecord::Base.connection.execute <<-SQL
       BEGIN;
       CREATE EXTENSION IF NOT EXISTS postgres_fdw;
-      DROP SERVER IF EXISTS common_db CASCADE;
+      --DROP SERVER IF EXISTS common_db CASCADE;
       CREATE SERVER common_db
         FOREIGN DATA WRAPPER postgres_fdw
         OPTIONS (host '#{CatarseSettings[:common_db_host]}', dbname '#{CatarseSettings[:common_db_name]}', port '#{CatarseSettings[:common_db_port]}');
@@ -117,9 +117,21 @@ namespace :common do
         SERVER common_db
         OPTIONS (user '#{CatarseSettings[:common_db_user]}', password '#{CatarseSettings[:common_db_password]}');
 
-      DROP SCHEMA IF EXISTS common_schema CASCADE;
+      CREATE USER MAPPING FOR anonymous
+    SERVER common_db
+    OPTIONS (user '#{CatarseSettings[:common_db_user]}', password '#{CatarseSettings[:common_db_password]}');
+
+      CREATE USER MAPPING FOR admin
+    SERVER common_db
+    OPTIONS (user '#{CatarseSettings[:common_db_user]}', password '#{CatarseSettings[:common_db_password]}');
+
+      CREATE USER MAPPING FOR web_user
+    SERVER common_db
+    OPTIONS (user '#{CatarseSettings[:common_db_user]}', password '#{CatarseSettings[:common_db_password]}');
+
+      --DROP SCHEMA IF EXISTS common_schema CASCADE;
       CREATE SCHEMA common_schema;
-      DROP SCHEMA IF EXISTS payment_service CASCADE;
+      --DROP SCHEMA IF EXISTS payment_service CASCADE;
       CREATE SCHEMA payment_service;
 
       CREATE TYPE payment_service.payment_status AS ENUM (
