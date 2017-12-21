@@ -10,7 +10,7 @@ class ContributionReportsForProjectOwner < ActiveRecord::Base
   scope :project_owner_id, ->(project_owner_id) { where(project_owner_id: project_owner_id) }
 
   def self.to_csv(collection, reward_id)
-    attributes = collection.first.attributes.keys
+    attributes = I18n.t('contribution_report_to_project_owner').values
     attributes.delete('open_questions')
     attributes.delete('multiple_choice_questions')
 
