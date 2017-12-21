@@ -8,7 +8,7 @@ CatarsePagarme.configure do |config|
   config.interest_rate = CatarseSettings.get_without_cache(:pagarme_interest_rate)
   config.credit_card_cents_fee = CatarseSettings.get_without_cache(:pagarme_cents_fee)
   config.host = CatarseSettings.get_without_cache(:host)
-  config.subdomain = 'www'
+  config.subdomain = Rails.env.production? ? 'www' : 'sandbox'
   config.protocol = 'https'
   config.max_installments = CatarseSettings.get_without_cache(:pagarme_max_installments)
   config.minimum_value_for_installment = CatarseSettings.get_without_cache(:pagarme_minimum_value_for_installment)

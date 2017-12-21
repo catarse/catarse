@@ -3253,6 +3253,11 @@ a:hover {
   box-shadow: 1px 1px 49px 0 rgba(63, 71, 82, .29);
 }
 
+.modal-dialog-inner.modal-dialog-mini {
+  width: 540px;
+  height: 200px;
+}
+
 .modal-dialog-content {
   height: 70%;
   padding-top: 35px;
@@ -4555,6 +4560,10 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
     height: 100%;
   }
   .modal-dialog-inner.modal-dialog-small {
+    width: auto;
+    height: auto;
+  }
+   .modal-dialog-inner.modal-dialog-mini {
     width: auto;
     height: auto;
   }

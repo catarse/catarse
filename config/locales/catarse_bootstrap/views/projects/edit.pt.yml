@@ -42,6 +42,7 @@ pt:
         active: ' Ativa'
         inactive: ' Inativa'
         canceled: ' Cancelada'
+        canceling: ' Cancelamento solicitado'
     reward_fields:
       edit: "Editar recompensa"
       reward: Recompensa
