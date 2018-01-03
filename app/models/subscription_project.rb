@@ -5,6 +5,7 @@ class SubscriptionProject < Project
   has_many :subscriptions, primary_key: :common_id, foreign_key: :project_id
   has_many :subscription_payments, through: :subscriptions
   has_many :subscription_payment_transitions, through: :subscription_payments
+  has_many :subscription_transitions, through: :subscriptions
   accepts_nested_attributes_for :goals, allow_destroy: true
   mount_uploader :cover_image, CoverUploader
   # delegate reusable methods from state_machine
