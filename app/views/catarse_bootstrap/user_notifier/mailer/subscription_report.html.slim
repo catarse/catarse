@@ -1,0 +1,95 @@
+- owner = @notification.project.user
+- transitions = @notification.project.subscription_transitions.where(created_at: Time.current - 1.day .. Time.current)
+- new_active = transitions.where(to_status: 'active')
+- new_started = transitions.where(to_status: 'started')
+- new_inactive = transitions.where(to_status: 'inactive')
+- new_canceled = transitions.where(to_status: 'canceled')
+
+strong
+  p Olá #{owner.display_name},
+
+p Seu saldo atual no Catarse é R$#{owner.total_balance}.
+
+p Nas últimas 24h da sua campanha:
+
+
+-if new_started.count == 1
+  |#{new_started.count} Nova Assinatura foi Iniciada
+- else
+  |#{new_started.count} Novas Assinaturas foram Iniciadas
+br
+- if new_active.count == 1
+  |#{new_active.count} Nova Assinatura foi Ativada
+- else
+  |#{new_active.count} Novas Assinaturas foram Ativadas
+br
+- if new_inactive.count == 1
+  |#{new_inactive.count} Nova Assinatura foi Inativada
+- else
+  |#{new_inactive.count} Novas Assinaturas foram Inativadas
+br
+- if new_canceled.count == 1
+  |#{new_canceled.count} Nova Assinatura foi Cancelada
+- else
+  |#{new_canceled.count} Novas Assinaturas foram Canceladas
+br
+
+p Abaixo você pode conferir mais detalhes sobre cada atualização:
+
+- if new_started.count >= 1
+  strong Novas Assinaturas Iniciadas
+  br
+  table
+    tr
+      th Nome
+      th Apoio mensal
+      th Recompensa
+    - new_started.each do |transition|
+      tr
+        td= transition.subscription.user.display_name
+        td= transition.subscription.amount
+        td= transition.subscription.reward.try(:description)
+
+- if new_active.count >= 1
+  strong Novas Assinaturas Ativas
+  br
+  table
+    tr
+      th Nome
+      th Apoio mensal
+      th Recompensa
+    - new_active.each do |transition|
+      tr
+        td= transition.subscription.user.display_name
+        td= transition.subscription.amount
+        td= transition.subscription.reward.try(:description)
+
+
+- if new_inactive.count >= 1
+  strong Novas Assinaturas Inativas
+  br
+  table
+    tr
+      th Nome
+      th Apoio mensal
+      th Recompensa
+    - new_inactive.each do |transition|
+      tr
+        td= transition.subscription.user.display_name
+        td= transition.subscription.amount
+        td= transition.subscription.reward.try(:description)
+
+
+- if new_canceled.count >= 1
+  strong Novas Assinaturas Canceladas
+  br
+  table
+    tr
+      th Nome
+      th Apoio mensal
+      th Recompensa
+    - new_canceled.each do |transition|
+      tr
+        td= transition.subscription.user.display_name
+        td= transition.subscription.amount
+        td= transition.subscription.reward.try(:description)
