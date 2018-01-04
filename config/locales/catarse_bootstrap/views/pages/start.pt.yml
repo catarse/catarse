@@ -242,7 +242,7 @@ pt:
         select_default: 'Selecione uma categoria'
         submit: 'Comece seu rascunho'
       mode:
-        title: 'Dois modelos. Uma só taxa.'
+        title: 'Três modelos. Uma só taxa.'
         subtitle: 'No Catarse você escolhe a modalidade de financiamento coletivo ideal para sua campanha, sem pagar nada a mais por isso!'
         aon:
           info: 'Ao final da campanha, você só recebe o dinheiro se tiver atingido a meta de arrecadação.'
