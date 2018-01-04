@@ -198,7 +198,7 @@ class UsersController < ApplicationController
     params[:unsubscribes]&.each do |subscription|
       project_id = subscription[0].to_i
       # change from unsubscribed to subscribed
-      if subscription[1].present?
+      if subscription[1] == '1'
         @user.unsubscribes.drop_all_for_project(project_id)
       # change from subscribed to unsubscribed
       else

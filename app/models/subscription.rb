@@ -4,5 +4,9 @@ class Subscription < ActiveRecord::Base
   belongs_to :project, primary_key: :common_id
   belongs_to :reward, primary_key: :common_id
   has_many :subscription_payments
+  has_many :subscription_transitions, foreign_key: :subscription_id
 
+  def amount
+    checkout_data['amount'].to_f / 100
+  end
 end
