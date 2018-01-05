@@ -15,6 +15,7 @@ class BalanceTransferMachine
   transition from: :authorized, to: %i[gateway_error error rejected processing pending]
   transition from: :processing, to: %i[error transferred gateway_error]
   transition from: :gateway_error, to: %i[authorized processing transferred error]
+  transition from: :transferred, to: %i[gateway_error error]
 
   after_transition(to: :transferred) do |bt, transition|
     unless transition.skip_notification?
