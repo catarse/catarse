@@ -17,12 +17,10 @@
       link rel="canonical" href=project_post_url(@project, locale:'')
     meta property="og:site_name" content=CatarseSettings[:company_name]
 
-= render 'shared/header_big'
-
-#project-show-root[data-mithril="ProjectsShow" data-parameters={post_id: @post.id, project_id: @project.id, project_user_id: @project.user_id}.to_json data-stats=@project.to_analytics_json]
+- parameters = {post_id: @post.id,  project_id: @project.id, project_user_id: @project.user_id, user_id: @project.user_id }.to_json
+#application[data-parameters=parameters data-stats=@project.to_analytics_json]
 
 - content_for :application_js do
   = javascript_include_tag "api/application"
   = javascript_include_tag "jquery"
 
-= render 'shared/footer_big'
