@@ -1,0 +1,10 @@
+- content_for :title, "#{@project.name} · #{CatarseSettings[:company_name]}"
+
+- parameters = { project_id: @project.id, user_id: @project.user_id }.to_json
+
+#application data-parameters=parameters
+
+- content_for :application_js do
+  = javascript_include_tag "api/application"
+
+

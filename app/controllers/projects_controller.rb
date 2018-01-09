@@ -96,6 +96,17 @@ class ProjectsController < ApplicationController
     authorize resource, :update?
   end
 
+  def subscriptions_monthly_report_for_project_owners
+    authorize resource, :update?
+    report = SubscriptionMonthlyReportForProjectOwner.project_id(resource.common_id).created_at(params[:created_at]).to_csv
+    respond_to do |format|
+      format.csv { send_data  report}
+      format.xls do
+        send_data Excelinator.csv_to_xls(report)
+      end
+    end
+  end
+
   def subscriptions_report_for_project_owners
     authorize resource, :update?
     report = SubscriptionReportForProjectOwner.project_id(resource.common_id).to_csv
@@ -108,6 +119,10 @@ class ProjectsController < ApplicationController
   end
 
   def subscriptions_report
+    authorize resource, :update?
+  end
+
+  def subscriptions_report_download
     authorize resource, :update?
   end
 
