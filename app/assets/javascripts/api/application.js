@@ -68,6 +68,7 @@
             }
             var parameters = app.getAttribute('data-parameters') ? JSON.parse(app.getAttribute('data-parameters')) : {};
             var attr = customAttr,
+                postParam = m.route.param('post_id') || parameters.post_id,
                 projectParam = m.route.param('project_id') || parameters.project_id,
                 projectUserIdParam = m.route.param('project_user_id') || parameters.user_id || parameters.project_user_id,
                 userParam = m.route.param('user_id') || app.getAttribute('data-userid') || parameters.user_id,
@@ -79,6 +80,10 @@
             var addToAttr = function(newAttr) {
                 attr = _.extend({}, newAttr, attr);
             };
+            
+            if(postParam) {
+              addToAttr({post_id: postParam});
+            }
 
             if(projectParam) {
                 addToAttr({project_id: projectParam});
@@ -171,9 +176,11 @@
           '/pt/projects/:project_id/contributions_report': wrap(c.root.ProjectsContributionReport, {menuTransparency: false, footerBig: false}),
           '/projects/:project_id/subscriptions_report': wrap(c.root.ProjectsSubscriptionReport, {menuTransparency: false, footerBig: false}),
           '/pt/projects/:project_id/subscriptions_report': wrap(c.root.ProjectsSubscriptionReport, {menuTransparency: false, footerBig: false}),
-          '/projects/:project_id/posts': wrap(c.root.Posts, {menuTransparency: false, footerBig: false}),
           '/projects/:project_id/surveys': wrap(c.root.Surveys, {menuTransparency: false, footerBig: false, menuShort: true}),
+          '/projects/:project_id/posts': wrap(c.root.Posts, {menuTransparency: false, footerBig: false}),
+          '/projects/:project_id/posts/:post_id': wrap(c.root.ProjectsShow, {menuTransparency: false, footerBig: true}),
           '/pt/projects/:project_id/posts': wrap(c.root.Posts, {menuTransparency: false, footerBig: false}),
+          '/pt/projects/:project_id/posts/:post_id': wrap(c.root.ProjectsShow, {menuTransparency: false, footerBig: true}),
           '/projects/:project_id': wrap(c.root.ProjectsShow, {menuTransparency: false, footerBig: false}),
           '/users/:user_id': wrap(c.root.UsersShow, {menuTransparency: true, footerBig: false}),
           '/pt/users/:user_id': wrap(c.root.UsersShow, {menuTransparency: true, footerBig: false}),
