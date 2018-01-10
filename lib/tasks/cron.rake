@@ -191,7 +191,7 @@ namespace :cron do
 
   desc 'send subscription reports'
   task notify_sub_reports: [:environment] do
-    SubscriptionProject.with_state(:online).each do |project| 
+    SubscriptionProject.with_state(:online).find_each do |project| 
       transitions = project.subscription_transitions.where("common_schema.subscription_status_transitions.created_at between now() - '1 day'::interval and now()")
       if transitions.count > 0
         project.notify(:subscription_report, project.user)
