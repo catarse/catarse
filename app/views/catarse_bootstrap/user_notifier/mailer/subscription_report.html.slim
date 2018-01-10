@@ -14,82 +14,87 @@ p Nas últimas 24h da sua campanha:
 
 
 -if new_started.count == 1
-  |#{new_started.count} Nova Assinatura foi Iniciada
+  |#{new_started.count} Assinatura foi Iniciada
 - else
-  |#{new_started.count} Novas Assinaturas foram Iniciadas
+  |#{new_started.count} Assinaturas foram Iniciadas
 br
 - if new_active.count == 1
-  |#{new_active.count} Nova Assinatura foi Ativada
+  |#{new_active.count} Assinatura foi Ativada
 - else
-  |#{new_active.count} Novas Assinaturas foram Ativadas
+  |#{new_active.count} Assinaturas foram Ativadas
 br
 - if new_inactive.count == 1
-  |#{new_inactive.count} Nova Assinatura foi Inativada
+  |#{new_inactive.count} Assinatura foi Inativada
 - else
-  |#{new_inactive.count} Novas Assinaturas foram Inativadas
+  |#{new_inactive.count} Assinaturas foram Inativadas
 br
 - if new_canceled.count == 1
-  |#{new_canceled.count} Nova Assinatura foi Cancelada
+  |#{new_canceled.count} Assinatura foi Cancelada
 - else
-  |#{new_canceled.count} Novas Assinaturas foram Canceladas
+  |#{new_canceled.count} Assinaturas foram Canceladas
+br
+br
+br
+hr
+br
+br
+br
+p Abaixo você pode conferir mais detalhes sobre cada atualização:
+br
+br
+- if new_started.count >= 1
+  strong Assinaturas Iniciadas
+  br
+  table
+    tr style=("border-bottom: 1px solid #ddd; background-color: #f1f4f4;") 
+      th Nome
+      th Apoio mensal
+    - new_started.each do |transition|
+      tr style=("border-bottom: 1px solid #ddd;") 
+        td= transition.subscription.user.display_name
+        td= transition.subscription.amount
+br
+br
+br
+- if new_active.count >= 1
+  strong Assinaturas Ativas
+  br
+  table
+    tr style=("border-bottom: 1px solid #ddd; background-color: #f1f4f4;")
+      th Nome
+      th Apoio mensal
+    - new_active.each do |transition|
+      tr style=("border-bottom: 1px solid #ddd;") 
+        td= transition.subscription.user.display_name
+        td= transition.subscription.amount
+br
+br
 br
 
-p Abaixo você pode conferir mais detalhes sobre cada atualização:
-
-- if new_started.count >= 1
-  strong Novas Assinaturas Iniciadas
-  br
-  table
-    tr
-      th Nome
-      th Apoio mensal
-      th Recompensa
-    - new_started.each do |transition|
-      tr
-        td= transition.subscription.user.display_name
-        td= transition.subscription.amount
-        td= transition.subscription.reward.try(:description)
-
-- if new_active.count >= 1
-  strong Novas Assinaturas Ativas
-  br
-  table
-    tr
-      th Nome
-      th Apoio mensal
-      th Recompensa
-    - new_active.each do |transition|
-      tr
-        td= transition.subscription.user.display_name
-        td= transition.subscription.amount
-        td= transition.subscription.reward.try(:description)
-
-
 - if new_inactive.count >= 1
-  strong Novas Assinaturas Inativas
+  strong Assinaturas Inativas
   br
   table
-    tr
+    tr style=("border-bottom: 1px solid #ddd; background-color: #f1f4f4;")
       th Nome
       th Apoio mensal
-      th Recompensa
     - new_inactive.each do |transition|
-      tr
+      tr style=("border-bottom: 1px solid #ddd;") 
         td= transition.subscription.user.display_name
         td= transition.subscription.amount
-        td= transition.subscription.reward.try(:description)
 
+br
+br
+br
 
 - if new_canceled.count >= 1
-  strong Novas Assinaturas Canceladas
+  strong Assinaturas Canceladas
   br
   table
-    tr
+    tr style=("border-bottom: 1px solid #ddd; background-color: #f1f4f4;")
       th Nome
       th Apoio mensal
-      th Recompensa
     - new_canceled.each do |transition|
-      tr
+      tr style=("border-bottom: 1px solid #ddd;") 
         td= transition.subscription.user.display_name
         td= transition.subscription.amount
-        td= transition.subscription.reward.try(:description)
