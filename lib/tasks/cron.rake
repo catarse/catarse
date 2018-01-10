@@ -10,6 +10,7 @@ namespace :cron do
   task daily: %i[notify_delivery_confirmation notify_owners_of_deadline notify_project_owner_about_new_confirmed_contributions notify_unanswered_surveys
                  notify_delivery_approaching
                  notify_late_delivery
+                 notify_sub_reports
                  verify_pagarme_transactions notify_new_follows
                  verify_pagarme_transfers verify_pagarme_user_transfers notify_pending_refunds request_direct_refund_for_failed_refund notify_expiring_rewards
                  update_fb_users]
@@ -186,6 +187,16 @@ namespace :cron do
     #                        contribution.user)
     #  end
     #end
+  end
+
+  desc 'send subscription reports'
+  task notify_sub_reports: [:environment] do
+    SubscriptionProject.with_state(:online).find_each do |project| 
+      transitions = project.subscription_transitions.where("common_schema.subscription_status_transitions.created_at between now() - '1 day'::interval and now()")
+      if transitions.count > 0
+        project.notify(:subscription_report, project.user)
+      end
+    end
   end
 
   desc 'Update all fb users'
