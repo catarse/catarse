@@ -458,6 +458,7 @@ pt:
     user_id: ID do usuário
     user_email: Email perfil Catarse
     user_name: Nome completo
+    cpf: CPF
     title: Título da recompensa
     public_name: Nome público
     gateway: Meio de pagamento
