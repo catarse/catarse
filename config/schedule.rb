@@ -48,7 +48,7 @@ end
 %w[
   "1".project_visitors_per_day
 ].each do |v|
-  every 1.day, at: '11:59 pm' do
+  every 1.day, at: '01:00 am' do
     command generate_psql_c(v)
   end
 end
