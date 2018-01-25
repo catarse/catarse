@@ -2,7 +2,7 @@
 
 class UserPolicy < ApplicationPolicy
   def destroy?
-    done_by_owner_or_admin? && record.published_projects.size <= 0
+    done_by_owner_or_admin? && record.projects.with_state(['online', 'waiting_funds', 'successful']).size <= 0
   end
 
   def credits?
