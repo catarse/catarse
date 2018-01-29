@@ -284,6 +284,15 @@ pt:
           5:
             question: E se eu quiser mudar meu apoio mensal no futuro?
             answer: No momento, para alterar o valor de apoio mensal, você precisa cancelar sua assinatura e iniciar uma nova com o novo valor desejado.
+      sub_edit:
+        description: Ao editar uma assinatura, você tem a opção de mudar o valor assinado, a recompensa e o método de pagamento. Todas as mudanças que você fizer hoje só entrarão em vigor na sua próxima cobrança. 
+        questions:
+          1:
+            question: O que acontece se eu mudar o valor de minha assinatura? 
+            answer: Caso sua assinatura seja em boleto, você irá receber na sua próxima data de cobrança um boleto com o novo valor. Caso seja em cartão, sua próxima cobrança será processada com o novo valor.
+          2:
+            question: O que acontece se eu mudar o método de pagamento?
+            answer: O pagamento com o novo método de pagamento será processado na próxima cobrança. Caso você tenha alterado para boleto, você receberá um boleto em seu email próximo a data de vencimento de sua assinatura. Caso você tenha alterado para cartão, este será processado na sua próxima cobrança.
     payment:
       paid: Confirmado
       refused: Recusado
