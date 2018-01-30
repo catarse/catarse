@@ -329,3 +329,6 @@ pt:
         text_title_html: Você agora é parte do grupo que faz de tudo para o projeto %{link}
           acontecer.
         title: Muito obrigado
+      subscription_start_title: Escolha a recompensa e em seguida o valor do apoio mensal
+      subscription_edit_title: Você está editando uma assinatura já existente 
+      subscription_edit_subtitle: Escolha sua recompensa e o valor de sua assinatura

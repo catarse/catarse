@@ -5,11 +5,9 @@
 - new_inactive = transitions.where(to_status: 'inactive')
 - new_canceled = transitions.where(to_status: 'canceled')
 
-strong
-  p Olá #{owner.display_name},
-
-p Seu saldo atual no Catarse é R$#{owner.total_balance}.
-
+h3 Olá #{owner.display_name},
+h3 Seu saldo atual no Catarse é R$#{owner.total_balance}.
+br
 p Nas últimas 24h da sua campanha:
 
 table style="border-collapse:collapse;border-spacing:0;width:100%;" 
@@ -31,13 +29,12 @@ hr
 br
 p Abaixo você pode conferir mais detalhes sobre cada atualização:
 br
-br
 - if new_started.count >= 1
   h3
-  span style="color:#ffae42;"  ●
-  | Assinaturas Iniciadas
+    span style="color:#ffae42;"  ●
+    | Assinaturas Iniciadas
   
-  table style="border-collapse:collapse;border-spacing:0;border-color:#ccc;width:100%;" 
+  table style="border-collapse:collapse;border-spacing:0;border-color:#ccc;width:100%;margin-bottom:60px;" 
     tr
       th style="font-size:14px;font-weight:bold;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;border-top-width:1px;border-bottom-width:1px;text-align:left;width:70%;"  Nome
       th style="font-size:14px;font-weight:bold;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;border-top-width:1px;border-bottom-width:1px;text-align:center"  Apoio mensal
@@ -46,14 +43,13 @@ br
         td style="font-size:14px;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;border-top-width:1px;border-bottom-width:1px;width:70%;"  #{transition.subscription.user.display_name}
         td style="font-size:14px;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;border-top-width:1px;border-bottom-width:1px;text-align:center"  R$#{transition.subscription.amount}
         
-br
-br
+
 - if new_active.count >= 1
   h3
-  span style="color:#7cc142;"  ●
-  | Assinaturas Ativadas
+    span style="color:#7cc142;"  ●
+    | Assinaturas Ativadas
   
-  table style="border-collapse:collapse;border-spacing:0;border-color:#ccc;width:100%;" 
+  table style="border-collapse:collapse;border-spacing:0;border-color:#ccc;width:100%;margin-bottom:60px;" 
     tr
       th style="font-size:14px;font-weight:bold;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;border-top-width:1px;border-bottom-width:1px;text-align:left;width:70%;"  Nome
       th style="font-size:14px;font-weight:bold;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;border-top-width:1px;border-bottom-width:1px;text-align:center"  Apoio mensal
@@ -61,15 +57,14 @@ br
       tr
         td style="font-size:14px;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;border-top-width:1px;border-bottom-width:1px;width:70%;"  #{transition.subscription.user.display_name}
         td style="font-size:14px;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;border-top-width:1px;border-bottom-width:1px;text-align:center"  R$#{transition.subscription.amount}
-br
-br
+
 
 - if new_inactive.count >= 1
   h3
-  span style="color:#e86666;"  ●
-  | Assinaturas Inativadas
+    span style="color:#e86666;"  ●
+    | Assinaturas Inativadas
   
-  table style="border-collapse:collapse;border-spacing:0;border-color:#ccc;width:100%;" 
+  table style="border-collapse:collapse;border-spacing:0;border-color:#ccc;width:100%;margin-bottom:60px;" 
     tr
       th style="font-size:14px;font-weight:bold;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;border-top-width:1px;border-bottom-width:1px;text-align:left;width:70%;"  Nome
       th style="font-size:14px;font-weight:bold;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;border-top-width:1px;border-bottom-width:1px;text-align:center"  Apoio mensal
@@ -78,15 +73,13 @@ br
         td style="font-size:14px;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;border-top-width:1px;border-bottom-width:1px;width:70%;"  #{transition.subscription.user.display_name}
         td style="font-size:14px;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;border-top-width:1px;border-bottom-width:1px;text-align:center"  R$#{transition.subscription.amount}
 
-br
-br
 
 - if new_canceled.count >= 1
   h3
-  span style="color:#e86666;"  ●
-  | Assinaturas Canceladas
+    span style="color:#e86666;"  ●
+    | Assinaturas Canceladas
 
-  table style="border-collapse:collapse;border-spacing:0;border-color:#ccc;width:100%;" 
+  table style="border-collapse:collapse;border-spacing:0;border-color:#ccc;width:100%;margin-bottom:60px;" 
     tr
       th style="font-size:14px;font-weight:bold;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;border-top-width:1px;border-bottom-width:1px;text-align:left;width:70%;"  Nome
       th style="font-size:14px;font-weight:bold;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;border-top-width:1px;border-bottom-width:1px;text-align:center"  Apoio mensal
@@ -95,8 +88,6 @@ br
         td style="font-size:14px;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;border-top-width:1px;border-bottom-width:1px;width:70%;"  #{transition.subscription.user.display_name}
         td style="font-size:14px;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;border-top-width:1px;border-bottom-width:1px;text-align:center"  R$#{transition.subscription.amount}
 
-br
-br
 hr
 br
 p
