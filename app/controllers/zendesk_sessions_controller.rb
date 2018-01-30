@@ -31,7 +31,7 @@ class ZendeskSessionsController < ApplicationController
                                     last_backed_project: current_user.contributions.last.try(:project).try(:permalink),
                                     has_subscription: Subscription.where(status: :active, user: current_user).present?,
                                     user_phone_number: current_user.address.try(:phone_number),
-                                    last_message: DirectMessage.where(user: current_user).last.content,
+                                    last_message: DirectMessage.where(user: current_user).last.try(:content),
                                     pending_count: current_user.payments.where(state: 'pending').where("payments.created_at > current_timestamp - '7 days'::interval ").count
                                   }
                                 }, key: CatarseSettings[:zendesk_shared_secret])
