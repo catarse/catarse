@@ -4,7 +4,6 @@ class SubscriptionMonthlyReportForProjectOwner < ActiveRecord::Base
 
   scope :project_id, ->(project_id) { where(project_id: project_id) }
   scope :reward_id, ->(reward_id) { where(reward_id: reward_id) }
-  scope :created_at, ->(date) { where(created_at: date.to_date .. date.to_date + 1.month) }
 
   def self.to_csv
     attributes = ['Nome completo',	'Nome público', 'CPF', 'Email perfil Catarse',	'Valor do apoio',	'Título da recompensa',	'Descrição da recompensa', 'Meio de pagamento',	'Data do apoio',	'Status do apoio',	'ID do usuário', 'Anônimo', 'Rua', 'Complemento',	'Número',	'Bairro',	'Cidade',	'Estado',	'CEP']
@@ -12,7 +11,7 @@ class SubscriptionMonthlyReportForProjectOwner < ActiveRecord::Base
     CSV.generate(headers: true) do |csv|
       csv << attributes
 
-      all.each do |sub|
+      all.order(:created_at).each do |sub|
         csv << [
           sub.name,
           sub.public_name,
