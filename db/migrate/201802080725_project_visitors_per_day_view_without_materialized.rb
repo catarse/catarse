@@ -1,4 +1,4 @@
-class FixProjectVisitorsPerDayView < ActiveRecord::Migration
+class ProjectVisitorsPerDayViewWithoutMaterialized < ActiveRecord::Migration
   def up
     execute <<-SQL
 DROP MATERIALIZED VIEW "1".project_visitors_per_day;
