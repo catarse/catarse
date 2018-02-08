@@ -98,7 +98,7 @@ class ProjectsController < ApplicationController
 
   def subscriptions_monthly_report_for_project_owners
     authorize resource, :update?
-    report = SubscriptionMonthlyReportForProjectOwner.project_id(resource.common_id).created_at(params[:created_at]).to_csv
+    report = SubscriptionMonthlyReportForProjectOwner.project_id(resource.common_id).to_csv
     respond_to do |format|
       format.csv { send_data  report}
       format.xls do
