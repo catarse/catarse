@@ -203,8 +203,7 @@ AS
     sum(i.visitors) AS total,
     json_agg(json_build_object('day', i.day, 'visitors', i.visitors)) AS source
    FROM public.project_visitors_per_day_tbl i
-  GROUP BY i.project_id
-WITH NO DATA;
+  GROUP BY i.project_id;
 
 GRANT ALL ON TABLE "1".project_visitors_per_day TO catarse;
 GRANT SELECT ON TABLE "1".project_visitors_per_day TO anonymous;
