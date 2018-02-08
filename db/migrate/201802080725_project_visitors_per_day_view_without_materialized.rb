@@ -198,7 +198,6 @@ $BODY$;
 
 
 CREATE VIEW "1".project_visitors_per_day
-TABLESPACE pg_default
 AS
  SELECT i.project_id,
     sum(i.visitors) AS total,
