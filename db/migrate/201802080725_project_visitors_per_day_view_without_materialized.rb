@@ -205,10 +205,10 @@ AS
    FROM public.project_visitors_per_day_tbl i
   GROUP BY i.project_id;
 
-GRANT ALL ON TABLE "1".project_visitors_per_day TO catarse;
-GRANT SELECT ON TABLE "1".project_visitors_per_day TO anonymous;
-GRANT SELECT ON TABLE "1".project_visitors_per_day TO web_user;
-GRANT SELECT ON TABLE "1".project_visitors_per_day TO admin;
+GRANT ALL ON "1".project_visitors_per_day TO catarse;
+GRANT SELECT ON "1".project_visitors_per_day TO anonymous;
+GRANT SELECT ON "1".project_visitors_per_day TO web_user;
+GRANT SELECT ON "1".project_visitors_per_day TO admin;
 
 
 
