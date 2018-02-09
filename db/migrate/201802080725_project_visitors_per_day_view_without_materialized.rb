@@ -135,7 +135,7 @@ INSERT into public.moments_navigation_projects_tbl
     (moments.data -> 'origin') ->> 'ref' AS origin_ref,
     moments.data ->> 'request' AS request,
     moments.data ->> 'origin' AS origin
-   FROM moments
+   FROM public.moments
   WHERE (moments.data ->> 'category') = 'navigation'
     AND moments_project_identifier_from_label((moments.data ->> 'label')) is not null
 	AND moments.created_at > coalesce((select max(created_at) from public.moments_navigation_projects_tbl),'20100101')
