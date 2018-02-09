@@ -1,4 +1,4 @@
-class RemoveMomentNavigationsView < ActiveRecord::Migration
+class RemoveMomentsNavigations < ActiveRecord::Migration
     def up
         execute <<-SQL
      DROP MATERIALIZED VIEW public.moments_navigations;
