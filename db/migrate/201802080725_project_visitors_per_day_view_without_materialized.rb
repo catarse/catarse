@@ -1,7 +1,7 @@
 class ProjectVisitorsPerDayViewWithoutMaterialized < ActiveRecord::Migration
   def up
     execute <<-SQL
-DROP MATERIALIZED VIEW "1".project_visitors_per_day;
+
 
 CREATE OR REPLACE FUNCTION public.moments_project_identifier_from_label(label text)
 RETURNS text
@@ -197,6 +197,8 @@ $BODY$;
 ------------------------------
 
 
+DROP MATERIALIZED VIEW "1".project_visitors_per_day;
+
 CREATE OR REPLACE VIEW "1".project_visitors_per_day
 AS
  SELECT i.project_id,
@@ -205,10 +207,10 @@ AS
    FROM public.project_visitors_per_day_tbl i
   GROUP BY i.project_id;
 
---GRANT ALL ON "1".project_visitors_per_day TO catarse;
---GRANT SELECT ON "1".project_visitors_per_day TO anonymous;
---GRANT SELECT ON "1".project_visitors_per_day TO web_user;
---GRANT SELECT ON "1".project_visitors_per_day TO admin;
+GRANT ALL ON "1".project_visitors_per_day TO catarse;
+GRANT SELECT ON "1".project_visitors_per_day TO anonymous;
+GRANT SELECT ON "1".project_visitors_per_day TO web_user;
+GRANT SELECT ON "1".project_visitors_per_day TO admin;
 
 
 
