@@ -1,7 +1,7 @@
 class ProjectVisitorsPerDayViewWithoutMaterialized < ActiveRecord::Migration
   def up
     execute <<-SQL
-DROP MATERIALIZED VIEW "1".project_visitors_per_day;
+DROP MATERIALIZED VIEW IF EXISTS "1".project_visitors_per_day;
 
 CREATE OR REPLACE FUNCTION public.moments_project_identifier_from_label(label text)
 RETURNS text
