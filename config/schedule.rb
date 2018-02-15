@@ -46,14 +46,6 @@ end
 end
 
 %w[
-  "1".project_visitors_per_day
-].each do |v|
-  every 1.day, at: '01:00 am' do
-    command generate_psql_c(v)
-  end
-end
-
-%w[
   "1".user_totals
 ].each do |v|
   every 10.minutes do
@@ -77,7 +69,6 @@ end
 end
 
 %w[
-  public.moments_navigations
   public.moments_project_start
   public.moments_project_start_inferuser
   stats.project_points
@@ -95,6 +86,14 @@ end
   end
 end
 
+
+%w[
+  public.project_visitors_per_day_tbl_refresh
+].each do |v|
+  every 1.hour do
+    command generate_psql_function(v)
+  end
+end
 
 %w[
   stats.growth_refresh
