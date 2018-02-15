@@ -3,7 +3,7 @@
 |Olá <strong>#{message.project.try(:user).try(:display_name)}</strong>
 br
 
-|Você recebeu uma nova mensagem de #{message.user.try(:display_name)}, através da página do projeto: #{message.project.name}:
+|Você recebeu uma nova mensagem de #{link_to message.user.try(:display_name), user_url(message.user)}, através da página do projeto: #{link_to message.project.name, project_url(message.project)}:
 br
 br
 
@@ -13,4 +13,4 @@ p == message.content
 p Ao responder este email, <strong>você estará enviando uma mensagem diretamente para o endereço #{message.user.try(:email)}, que é o email de #{message.user.try(:display_name)}</strong>.
 
 
-p <strong>Importante</strong>: O Catarse não se responsabiliza pelo conteúdo das mensagens enviadas através da plataforma. Caso entenda que o conteúdo da mensagem se trata de spam ou que infringe de alguma forma os nossos Termos de Uso, pedimos que avise a nossa equipe através do email: #{mail_to CatarseSettings[:email_contact]}.
+p <strong>Importante</strong>: O Catarse não se responsabiliza pelo conteúdo das mensagens enviadas pelos usuários e recomenda cautela especial para proposta de parcerias, empréstimos ou pedido de dados pessoais. Caso você entenda que o conteúdo da mensagem acima é spam ou que infringe de alguma forma os nossos Termos de Uso, pedimos que avise a nossa equipe através do email: #{mail_to CatarseSettings[:email_contact]}.
