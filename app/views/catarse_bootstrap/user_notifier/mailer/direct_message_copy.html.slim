@@ -6,7 +6,7 @@ br
 |Esta é a mensagem que você enviou para o #{link_to message.project.try(:user).try(:display_name), user_url(message.project.try(:user))}, através da página do #{link_to message.project.name, project_url(message.project)}:
 br
 br
-p == message.content
+p style=("background-color:#f1f4f4; padding: 20px; margin: 20px 30px 50px 30px; border-radius:5px;") == message.content
 
 p Ao responder este email, <strong>você estará enviando uma mensagem diretamente para o endereço #{message.project.try(:user).try(:email)}, que é o email de #{message.project.try(:user).try(:display_name)}</strong>.
 
