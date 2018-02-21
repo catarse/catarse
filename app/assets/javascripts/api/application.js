@@ -156,7 +156,7 @@
           '/projects/:project_id/contributions/:contribution_id/edit': wrap(c.root.ProjectsPayment, {menuShort: true}),
           '/projects/:project_id/subscriptions/start': wrap(c.root.ProjectsSubscriptionContribution, {menuShort: true, footerBig: false}),
           '/projects/:project_id/subscriptions/checkout': wrap(c.root.ProjectsSubscriptionCheckout, {menuShort: true, footerBig: false}),
-          '/projects/subscriptions/thank_you': wrap(c.root.ProjectsSubscriptionThankYou, {menuShort: true, footerBig: false}),
+          '/projects/:project_id/subscriptions/thank_you': wrap(c.root.ProjectsSubscriptionThankYou, {menuShort: true, footerBig: false}),
           '/pt/projects/:project_id/contributions/new': wrap(c.root.ProjectsContribution),
           '/pt/projects/:project_id/contributions/:contribution_id/edit': wrap(c.root.ProjectsPayment, {menuShort: true}),
           '/pt/projects/:project_id/subscriptions/start': wrap(c.root.ProjectsSubscriptionContribution, {menuShort: true, footerBig: false}),
