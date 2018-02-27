@@ -10,11 +10,11 @@ def generate_psql_c(view)
   only_view = view.split('.')[1]
   parsed_name = view.start_with?('"') ? view.inspect : view
   %{ echo "DO language plpgsql \\$\\$BEGIN
-  RAISE NOTICE 'begin updating #{parsed_name}';
+  RAISE NOTICE 'begin updating #{parsed_name} %1',now();
   IF NOT EXISTS (SELECT true FROM pg_stat_activity WHERE pg_backend_pid() <> pid AND query ~* 'refresh materialized .*#{only_view}') THEN
-     RAISE NOTICE 'refreshing view #{parsed_name}';
+     RAISE NOTICE 'refreshing view #{parsed_name} %1',now();
      REFRESH MATERIALIZED VIEW CONCURRENTLY #{parsed_name};
-    RAISE NOTICE 'view refreshed #{parsed_name}';
+    RAISE NOTICE 'view refreshed #{parsed_name} %1',now();
   END IF;
  END\\$\\$;" | psql -U #{ENV['DB_USER']} -h #{ENV['DB_HOST']} -d #{ENV['DB_NAME']}
 }
@@ -22,11 +22,11 @@ end
 
 def generate_psql_function(function)
   %{ echo "DO language plpgsql \\$\\$BEGIN
-      RAISE NOTICE 'begin updating #{function}()';
+      RAISE NOTICE 'begin updating #{function}() %1',now();
       IF NOT EXISTS (SELECT true FROM pg_stat_activity WHERE pg_backend_pid() <> pid AND query ~* '#{function}') THEN
-        RAISE NOTICE 'running function #{function}()';
+        RAISE NOTICE 'running function #{function}() %1',now();
           PERFORM #{function}();
-        RAISE NOTICE 'function runned #{function}()';
+        RAISE NOTICE 'function runned #{function}() %1',now();
       END IF;
       END\\$\\$;" | psql -U #{ENV['DB_USER']} -h #{ENV['DB_HOST']} -d #{ENV['DB_NAME']}
   }
