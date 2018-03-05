@@ -320,4 +320,25 @@ RSpec.describe UsersController, type: :controller do
       expect(cookies[:referral_link]).to eq 'test'
     end
   end
+
+  describe 'POST ban' do
+    context 'without admin permissions' do
+      before do
+        post :ban, id: user.id, locale: 'pt', format: :json
+      end
+
+      it { expect(response.status).to eq 302 }
+    end
+
+    context 'with admin permissions' do
+      before do
+        user.update_column(:admin, true)
+        post :ban, id: user.id, locale: 'pt', format: :json
+        user.reload
+      end
+
+      it { expect(response.status).to eq 200 }
+      it { expect(user.banned_at.present?).to eq(true) }
+    end
+  end
 end

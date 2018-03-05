@@ -145,6 +145,7 @@ Catarse::Application.routes.draw do
         get :billing
         get :reactivate
         post :new_password
+        post :ban
       end
 
       resources :unsubscribes, only: [:create]
