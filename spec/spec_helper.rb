@@ -95,10 +95,12 @@ RSpec.configure do |config|
     CatarseSettings[:company_name] = 'Foo Bar Company'
     CatarseSettings[:timezone] = ActiveSupport::TimeZone.find_tzinfo(timezone).name
     CatarseSettings[:jwt_secret] = 'gZH75aKtMN3Yj0iPS4hcgUuTwjAzZr9C'
+    CatarseSettings[:pagarme_api_key] = ENV['TEST_GATEWAY_API_KEY']
+    CatarseSettings[:pagarme_encryption_key] = ENV['TEST_GATEWAY_ENCRYPTION_KEY']
 
     CatarsePagarme.configure do |config|
-      config.api_key = 'ak_test_XLoo19QDn9kg5JFGU70x12IA4NqbAv'
-      config.ecr_key = 'ek_test_zwAwnRvqD1c9GUERQ7oAP4FPyN9o2v'
+      config.api_key = CatarseSettings[:pagarme_api_key]
+      config.ecr_key = CatarseSettings[:pagarme_encryption_key]
       config.slip_tax = 0
       config.credit_card_tax = 0
       config.interest_rate = 0
