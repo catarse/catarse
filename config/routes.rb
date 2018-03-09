@@ -114,6 +114,8 @@ Catarse::Application.routes.draw do
       get 'video', on: :collection
       member do
         post :upload_image
+        get :debit_note
+        get :inform
         get 'insights'
         get 'posts'
         get 'surveys'

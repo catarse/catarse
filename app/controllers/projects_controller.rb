@@ -218,6 +218,38 @@ class ProjectsController < ApplicationController
     render partial: 'project_embed'
   end
 
+  def debit_note
+    authorize resource
+    project = resource
+    if project.state=='successful'
+      fiscal_data = project.project_fiscal_data
+      if(!fiscal_data.nil?)
+        template = 'project_debit_note'
+        render "user_notifier/mailer/#{template}", locals: { project: project, fiscal_data:fiscal_data }, layout: 'layouts/email'
+      else
+        redirect_to edit_project_path(project, locale: '')
+      end
+    else
+      redirect_to edit_project_path(project, locale: '')
+    end
+  end
+
+  def inform
+    authorize resource
+    project = resource
+    if project.state=='successful'
+      fiscal_data = project.project_fiscal_data
+      if(!fiscal_data.nil?)
+        template = 'project_inform'
+        render "user_notifier/mailer/#{template}", locals: { project: project, fiscal_data:fiscal_data }, layout: 'layouts/email'
+      else
+        redirect_to edit_project_path(project, locale: '')
+      end
+    else
+      redirect_to edit_project_path(project, locale: '')
+    end
+  end
+
   protected
 
   def authorize_and_build_resources
@@ -300,4 +332,5 @@ class ProjectsController < ApplicationController
       redirect_to insights_project_path(project, locale: '')
     end
   end
+
 end

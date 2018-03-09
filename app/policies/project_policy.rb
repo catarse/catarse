@@ -31,6 +31,14 @@ class ProjectPolicy < ApplicationPolicy
     done_by_owner_or_admin?
   end
 
+  def debit_note?
+    done_by_owner_or_admin?
+  end
+
+  def inform?
+    done_by_owner_or_admin?
+  end
+  
   def permitted_attributes
     if user.present? && (user.admin? || (record.draft? || record.rejected?))
       p_attr = record.attribute_names.map(&:to_sym)
