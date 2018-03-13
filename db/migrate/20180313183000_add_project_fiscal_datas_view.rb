@@ -68,6 +68,7 @@ where pr.state in ('online','successful')
 
 CREATE OR REPLACE VIEW public.project_fiscal_informs AS
 select project_id, user_id, mode, fiscal_year,
+    max(fiscal_date) as fiscal_date,
     sum(project_pledged_amount) project_pledged_amount,
     sum(service_fee) service_fee,
     sum(irrf) irrf,
