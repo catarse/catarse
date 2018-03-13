@@ -207,6 +207,7 @@ pt:
           terms_of_use_agreement: 'Ao apoiar, você concorda com os <a class="alt-link" target="_blank" href="/pt/terms-of-use">Termos de Uso</a> e <a class="alt-link" target="_blank" href="/pt/privacy-policy">Política de Privacidade</a>.'
           terms_of_use_agreement_sub: 'Ao apoiar, você concorda com os <a class="alt-link" target="_blank" href="/pt/terms-of-use">Termos de Uso</a>, <a class="alt-link" target="_blank" href="https://suporte.catarse.me/hc/pt-br/articles/115005588243">Regras do Catarse Assinaturas</a> e <a class="alt-link" target="_blank" href="/pt/privacy-policy">Política de Privacidade</a>.'
         subscription_edit: 'Confirmar alterações na assinatura'
+        invoice_none: 'Nenhuma'
         pay_slip: 'Imprimir Boleto'
         errors:
           global: 'Por favor, reveja os campos abaixo antes de prosseguir'
@@ -333,4 +334,5 @@ pt:
         title: Muito obrigado
       subscription_start_title: Escolha a recompensa e em seguida o valor do apoio mensal
       subscription_edit_title: Você está editando uma assinatura já existente 
+      subscription_reactivation_title: Você está reativando uma assinatura suspensa
       subscription_edit_subtitle: Escolha sua recompensa e o valor de sua assinatura

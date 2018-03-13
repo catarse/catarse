@@ -72,6 +72,10 @@ class UserPolicy < ApplicationPolicy
     u_attrs.flatten
   end
 
+  def ban?
+    user.try(:admin?)
+  end
+
   protected
 
   def done_by_owner_or_admin?

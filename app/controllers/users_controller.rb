@@ -134,6 +134,16 @@ class UsersController < ApplicationController
     end
   end
 
+  def ban
+    authorize resource
+    resource.update_column(:banned_at, DateTime.now)
+
+    respond_to do |format|
+      format.json { render json: { success: 'OK' } }
+      format.html { redirect_to edit_user_path(@user) }
+    end
+  end
+
   private
 
   def update_user
