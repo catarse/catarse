@@ -80,6 +80,10 @@ class ProjectsController < ApplicationController
     authorize resource, :update?
   end
 
+  def fiscal
+    authorize resource, :update?
+  end
+
   def insights
     authorize resource, :update?
   end
@@ -156,7 +160,7 @@ class ProjectsController < ApplicationController
       resource.service_fee = permitted_params[:service_fee]
     end
 
-    should_show_modal = resource.online? && resource.mode == 'flex' && resource.online_days_changed?
+    # should_show_modal = resource.online? && resource.mode == 'flex' && resource.online_days_changed?
 
     if resource.save(validate: should_validate)
       flash[:notice] = t('project.update.success')
@@ -216,38 +220,6 @@ class ProjectsController < ApplicationController
   def embed_panel
     resource
     render partial: 'project_embed'
-  end
-
-  def debit_note
-    authorize resource
-    project = resource
-    if project.state=='successful'
-      fiscal_data = project.project_fiscal_data
-      if(!fiscal_data.nil?)
-        template = 'project_debit_note'
-        render "user_notifier/mailer/#{template}", locals: { project: project, fiscal_data:fiscal_data }, layout: 'layouts/email'
-      else
-        redirect_to edit_project_path(project, locale: '')
-      end
-    else
-      redirect_to edit_project_path(project, locale: '')
-    end
-  end
-
-  def inform
-    authorize resource
-    project = resource
-    if project.state=='successful'
-      fiscal_data = project.project_fiscal_data
-      if(!fiscal_data.nil?)
-        template = 'project_inform'
-        render "user_notifier/mailer/#{template}", locals: { project: project, fiscal_data:fiscal_data }, layout: 'layouts/email'
-      else
-        redirect_to edit_project_path(project, locale: '')
-      end
-    else
-      redirect_to edit_project_path(project, locale: '')
-    end
   end
 
   protected

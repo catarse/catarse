@@ -1,7 +1,7 @@
 - project ||= @notification.project
 - fiscal_data ||= @notification.fiscal_data
 - user = project.user
-- finished_date = project.successful_at.strftime('%d/%m/%Y')
+- finished_date = fiscal_data.fiscal_date.to_date.strftime('%d/%m/%Y')
 
 center
   h1 style="line-height: 5px" INFORME DE RENDIMENTOS
@@ -58,12 +58,12 @@ table style="border: 1px solid;width:100%;border-collapse: collapse;"
     td style="border: 1px solid;text-align:left;vertical-align: middle;white-space: nowrap;"
       span Meio de Pagamento (-)
     td style="border: 1px solid;text-align:center;vertical-align: middle;white-space: nowrap;"
-      span #{number_to_currency fiscal_data.total_gateway_fee, precision: 2}
+      span #{number_to_currency fiscal_data.total_gateway_fee||0, precision: 2}
   tr
     td style="border: 1px solid;text-align:left;vertical-align: middle;white-space: nowrap;"
       span Taxa Líquida Catarse (-)
     td style="border: 1px solid;text-align:center;vertical-align: middle;white-space: nowrap;"
-      span #{number_to_currency (-fiscal_data.service_fee-fiscal_data.total_gateway_fee), precision: 2}
+      span #{number_to_currency (-fiscal_data.service_fee-(fiscal_data.total_gateway_fee||0)), precision: 2}
   tr
     td style="border: 1px solid;text-align:left;vertical-align: middle;white-space: nowrap;"
       span Retenção IRRF (+)

@@ -3,7 +3,7 @@
 - user = project.user
 - address = user.address
 - project_link = project_by_slug_url(permalink: project.permalink)
-- finished_date = project.successful_at.strftime('%d/%m/%Y')
+- finished_date = fiscal_data.fiscal_date.to_date.strftime('%d/%m/%Y')
 
 center
   h1 style="line-height: 5px" NOTA DE DÉBITO

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-class ProjectFiscalData < ActiveRecord::Base
-  self.table_name = 'public.project_fiscal_datas'
+class ProjectFiscalInform < ActiveRecord::Base
+  self.table_name = 'public.project_fiscal_informs'
   belongs_to :project
   belongs_to :user
 
