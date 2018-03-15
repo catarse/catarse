@@ -180,6 +180,7 @@
           '/projects/:project_id/subscriptions_report_download': wrap(c.root.ProjectsSubscriptionReportDownload, {menuTransparency: false, footerBig: false}),
           '/pt/projects/:project_id/subscriptions_report_download': wrap(c.root.ProjectsSubscriptionReportDownload, {menuTransparency: false, footerBig: false}),
           '/projects/:project_id/surveys': wrap(c.root.Surveys, {menuTransparency: false, footerBig: false, menuShort: true}),
+          '/projects/:project_id/fiscal': wrap(c.root.ProjectsFiscal, {menuTransparency: false, footerBig: false, menuShort: true}),
           '/projects/:project_id/posts': wrap(c.root.Posts, {menuTransparency: false, footerBig: false}),
           '/projects/:project_id/posts/:post_id': wrap(c.root.ProjectsShow, {menuTransparency: false, footerBig: true}),
           '/pt/projects/:project_id/posts': wrap(c.root.Posts, {menuTransparency: false, footerBig: false}),

@@ -94,6 +94,12 @@ Catarse::Application.routes.draw do
         resources :surveys, only: [:new], controller: 'surveys'
         post :sort, on: :member
       end
+      get 'debit_note/:fiscal_date', to: 'projects/project_fiscal_data#debit_note'
+      get 'inform/:fiscal_year', to: 'projects/project_fiscal_data#inform'
+#      resources :debit_note,  { only: [:show], controller: 'projects/project_fiscal_data', action: 'debit_note' } do
+#        get '/:fiscal_date', to: 'projects/project_fiscal_data#debit_note'
+#      end
+#      resources :inform,  { only: [:show], controller: 'projects/project_fiscal_data', action: 'inform' }
       resources :contributions, { except: [:index], controller: 'projects/contributions' } do
         collection do
           get :fallback_create, to: 'projects/contributions#create'
@@ -117,6 +123,7 @@ Catarse::Application.routes.draw do
         get 'insights'
         get 'posts'
         get 'surveys'
+        get 'fiscal'
         get 'contributions_report'
         get 'subscriptions_report'
         get 'subscriptions_report_download'

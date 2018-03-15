@@ -1,0 +1,49 @@
+- project ||= @notification.project
+- fiscal_data ||= @notification.fiscal_data
+- user = project.user
+- address = user.address
+- project_link = project_by_slug_url(permalink: project.permalink)
+- finished_date = fiscal_data.fiscal_date.to_date.strftime('%d/%m/%Y')
+
+center
+  h1 style="line-height: 5px" NOTA DE DÉBITO
+
+hr/
+
+br/
+h3 EMITENTE
+p style="margin:0;" Grupo Comum Consultoria e Intermediação de Negócios Ltda ME
+p style="margin:0;" CNPJ: 14.512.425/0001-94 | CCM 4.675.208-0
+p style="margin:0;"  Endereço: Rua Itapeva, 220 – Conj. 42 – Bela Vista – São Paulo/SP
+p style="margin:0;"  CEP: 01332-000
+
+h3 DEVEDOR
+
+p style="margin:0;"  Nome/Razão Social: #{user.name}
+p style="margin:0;"  CPF/CNPJ: #{user.cpf}
+- if address
+  p style="margin:0;"  Endereço: #{address.address_street}, #{address.address_number} #{address.address_complement}, #{address.address_neighbourhood}, #{address.address_city}, #{address.state.name}, #{address.address_zip_code}
+
+h3 DISCRIMINAÇÃO DOS DÉBITOS
+
+table style="border: 1px solid;max-width:100%;border-collapse: collapse;"
+  tr
+    td style="border: 1px solid;text-align:center;font-weight:bold;" Data
+    td style="border: 1px solid;text-align:center;font-weight:bold;" Histórico
+    td style="border: 1px solid;text-align:center;font-weight:bold;" Valor
+  tr
+    td style="border: 1px solid;text-align:center;vertical-align: middle;white-space: nowrap;"
+      span #{finished_date}
+    td style="border: 1px solid;text-align:center;vertical-align: middle;"
+      span Tarifas dos meios de pagamento dos apoios ao projeto "#{project.name}".
+      br/
+      span #{project_link}
+    td style="border: 1px solid;text-align:center;vertical-align: middle;white-space: nowrap;"
+      span #{number_to_currency fiscal_data.total_gateway_fee, precision: 2}
+
+br/
+p Declaro para os devidos fins ter recebido a importância acima discriminada dando plena e irrevogável quitação.
+br/
+p style="text-align:center;" São Paulo, #{finished_date}
+
+p Catarse - GRUPO COMUM CONSULTORIA E INTERMEDIAÇÃO DE NEGÓCIOS
