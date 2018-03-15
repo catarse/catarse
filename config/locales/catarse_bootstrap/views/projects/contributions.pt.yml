@@ -309,6 +309,9 @@ pt:
         thank_you: 'Estou contando com seu apoio...'
         thank_you_text_html: "<div class='fontsize-base'>Você também recebeu esse boleto no email:</div><div class='fontsize-large u-marginbottom-10'>%{email}</div><a class='alt-link fontsize-small' href='%{link_email}'>Se esse não é seu email de contato, altere aqui</a>"
       thank_you:
+        subscription_edit:
+          thank_you: "Quase lá!"
+          text_html: "<div class='fontsize-base'>A alteração de sua assinatura foi processada, mas só será efetivada na sua próxima cobrança. Enviamos uma mensagem com detalhes para o email abaixo:</div><div class='fontsize-large u-marginbottom-10'>%{email}</div><a class='alt-link fontsize-small' href='%{link_email}'>Se esse não é seu email de contato, altere aqui</a>" 
         thank_you_error: 'Ocorreu um erro ao solicitar os dados do seu pagamento. Tente novamente em alguns instantes.'
         thank_you: 'Valeu! Seu apoio está sendo processado.'
         thank_you_text_html: "<div class='fontsize-base'>Assim que o pagamento for concluído, enviaremos a confirmação do seu apoio para o email cadastrado:</div><div class='fontsize-large u-marginbottom-10'>%{email}</div><a class='alt-link fontsize-small' href='%{link_email}'>Se esse não é seu email de contato, altere aqui</a>"
