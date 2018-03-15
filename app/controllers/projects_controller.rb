@@ -160,7 +160,7 @@ class ProjectsController < ApplicationController
       resource.service_fee = permitted_params[:service_fee]
     end
 
-    # should_show_modal = resource.online? && resource.mode == 'flex' && resource.online_days_changed?
+    should_show_modal = resource.online? && resource.mode == 'flex' && resource.online_days_changed?
 
     if resource.save(validate: should_validate)
       flash[:notice] = t('project.update.success')
