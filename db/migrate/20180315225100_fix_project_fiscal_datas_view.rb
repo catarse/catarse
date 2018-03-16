@@ -1,11 +1,15 @@
 class FixProjectFiscalDatasView < ActiveRecord::Migration
     def up
         execute <<-SQL
+DROP VIEW "1".project_fiscal_ids;
+DROP VIEW public.project_fiscal_informs;
+DROP VIEW public.project_fiscal_datas;
+
 CREATE OR REPLACE VIEW public.project_fiscal_datas AS
 select pr.id as project_id, pr.user_id, pr.mode,
 --    pto.created_at as online_at,
     b.fiscal_date,
-    extract(year from b.fiscal_date::date-'1 day'::interval) as fiscal_year,
+    extract(year from b.fiscal_date::date-'1 day'::interval)::integer as fiscal_year,
     round(b.project_pledged_amount,2) project_pledged_amount,
     round(b.service_fee,2) service_fee,
     round(b.irrf,2) irrf,
@@ -90,7 +94,7 @@ group by project_id, user_id, mode, fiscal_year;
 CREATE OR REPLACE VIEW "1".project_fiscal_ids AS
 select pfd.project_id,
     array_agg(fiscal_date ORDER BY fiscal_date) debit_notes,
-    array_agg(distinct fiscal_year ORDER BY fiscal_year)FILTER(where pfd.mode<>'sub' or fiscal_date::date<date_trunc('year',current_timestamp)) informs
+    array_agg(distinct fiscal_year ORDER BY fiscal_year)FILTER(where pfd.mode<>'sub' or fiscal_year<extract(year from current_timestamp)) informs
 from public.project_fiscal_datas pfd
 where is_owner_or_admin(user_id)
 group by pfd.project_id;
