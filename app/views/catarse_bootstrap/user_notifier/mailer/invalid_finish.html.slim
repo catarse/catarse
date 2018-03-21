@@ -25,11 +25,4 @@ p
     = link_to('Corrigir dados', edit_url, style:'border: 1px solid #7cc142; border-radius: 5px; color: #fff; text-decoration: none; font-weight: bolder; text-align: center; padding: 19px 60px; background: #65bf1b; font-size: 15px;')
 br/
 br/
-| Se tiver qualquer dúvida ou problema na correção desses problemas, nos avise respondendo esta mensagem ou através do email: #{mail_to CatarseSettings[:email_contact]}.
-br/
-br/
-| Abraços,
-br/
-| Equipe do #{CatarseSettings[:company_name]}
-
-
+= render partial: 'user_notifier/mailer/contact_info'
