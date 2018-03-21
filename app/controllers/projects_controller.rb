@@ -80,6 +80,10 @@ class ProjectsController < ApplicationController
     authorize resource, :update?
   end
 
+  def fiscal
+    authorize resource, :update?
+  end
+
   def insights
     authorize resource, :update?
   end
@@ -300,4 +304,5 @@ class ProjectsController < ApplicationController
       redirect_to insights_project_path(project, locale: '')
     end
   end
+
 end

@@ -1,0 +1,83 @@
+- project ||= @notification.project
+- fiscal_data ||= @notification.fiscal_data
+- user = project.user
+- finished_date = fiscal_data.fiscal_date.to_date.strftime('%d/%m/%Y')
+
+center
+  h1 style="line-height: 5px" INFORME DE RENDIMENTOS
+
+hr/
+
+br/
+p style="margin:0;"
+  span style="font-weight:bold;" Projeto: 
+  span #{project.name}
+p style="margin:0;"
+  span style="font-weight:bold;" Beneficiário: 
+  span #{user.name}
+p style="margin:0;"
+  span style="font-weight:bold;" CPF/CNPJ: 
+  span #{user.cpf}
+  
+
+- unless fiscal_data.pf_pledget_by_month.nil? || fiscal_data.pf_pledget_by_month.empty?
+  h3 PESSOAS FÍSICAS:
+  table style="border: 1px solid;width:100%;border-collapse: collapse;"
+    tr
+      td style="border: 1px solid;text-align:center;font-weight:bold;" MÊS/ANO
+      td style="border: 1px solid;text-align:center;font-weight:bold;" VALOR
+    - fiscal_data.pf_pledget_by_month.each do |item|
+      tr
+        td style="border: 1px solid;text-align:center;vertical-align: middle;white-space: nowrap;"
+          span #{item["month"]}/#{item["year"]}
+        td style="border: 1px solid;text-align:center;vertical-align: middle;white-space: nowrap;"
+          span #{number_to_currency item["value"], precision: 2}
+
+- unless fiscal_data.pj_pledget_by_month.nil? || fiscal_data.pj_pledget_by_month.empty?
+  h3 PESSOAS JURÍDICAS:
+  table style="border: 1px solid;width:100%;border-collapse: collapse;"
+    tr
+      td style="border: 1px solid;text-align:center;font-weight:bold;" MÊS/ANO
+      td style="border: 1px solid;text-align:center;font-weight:bold;" VALOR
+    - fiscal_data.pj_pledget_by_month.each do |item|
+      tr
+        td style="border: 1px solid;text-align:center;vertical-align: middle;white-space: nowrap;"
+          span #{item["month"]}/#{item["year"]}
+        td style="border: 1px solid;text-align:center;vertical-align: middle;white-space: nowrap;"
+          span #{number_to_currency item["value"], precision: 2}
+
+
+h3 DISCRIMINAÇÃO DOS RENDIMENTOS:
+
+table style="border: 1px solid;width:100%;border-collapse: collapse;"
+  tr
+    td style="border: 1px solid;text-align:center;font-weight:bold;" Valor Arrecadado
+    td style="border: 1px solid;text-align:center;font-weight:bold;"
+      span #{number_to_currency fiscal_data.project_pledged_amount, precision: 2}
+  tr
+    td style="border: 1px solid;text-align:left;vertical-align: middle;white-space: nowrap;"
+      span Meio de Pagamento (-)
+    td style="border: 1px solid;text-align:center;vertical-align: middle;white-space: nowrap;"
+      span #{number_to_currency fiscal_data.total_gateway_fee||0, precision: 2}
+  tr
+    td style="border: 1px solid;text-align:left;vertical-align: middle;white-space: nowrap;"
+      span Taxa Líquida Catarse (-)
+    td style="border: 1px solid;text-align:center;vertical-align: middle;white-space: nowrap;"
+      span #{number_to_currency (-fiscal_data.service_fee-(fiscal_data.total_gateway_fee||0)), precision: 2}
+  tr
+    td style="border: 1px solid;text-align:left;vertical-align: middle;white-space: nowrap;"
+      span Retenção IRRF (+)
+    td style="border: 1px solid;text-align:center;vertical-align: middle;white-space: nowrap;"
+      span #{number_to_currency (fiscal_data.irrf || 0), precision: 2}
+  tr
+    td style="border: 1px solid;text-align:left;vertical-align: middle;white-space: nowrap;"
+      span style="font-weight:bold;" Repasse líquido (#{(1-project.service_fee)*100}% + Retenções) (=)
+    td style="border: 1px solid;text-align:center;vertical-align: middle;white-space: nowrap;"
+      span #{number_to_currency fiscal_data.balance, precision: 2}
+
+
+br/
+p style="text-align:right;" São Paulo, #{finished_date}
+
+p style="margin:0;" GRUPO COMUM CONSULTORIA E INTERMEDIAÇÃO DE NEGÓCIOS
+p style="margin:0;" CNPJ 14.512.524/0001-94

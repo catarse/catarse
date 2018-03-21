@@ -293,6 +293,21 @@ pt:
           2:
             question: O que acontece se eu mudar o método de pagamento?
             answer: O pagamento com o novo método de pagamento será processado na próxima cobrança. Caso você tenha alterado para boleto, você receberá um boleto em seu email próximo a data de vencimento de sua assinatura. Caso você tenha alterado para cartão, este será processado na sua próxima cobrança.
+      sub_reactivate:
+        description: Ao reativar uma assinatura suspensa, a data de vencimento de sua assinatura passa a ser considerada a data em que este pagamento que você está fazendo agora for confirmado.
+        questions:
+          1:
+            question: Como eu reativo minha assinatura suspensa?
+            answer: Confirme o valor, a recompensa a as suas informações de pagamento para confirmar a reativação de sua assinatura.
+          2:
+            question: Quando o pagamento é efetivado?
+            answer: Se você pagou com cartão de crédito, a confirmação deverá ser no mesmo dia. Se foi com boleto, em até 4 dias úteis.
+          3:
+            question: A data de vencimento da minha assinatura irá mudar?
+            answer: Sim. A data de vencimento de sua assinatura passará a ser o dia em que este pagamento que você esta fazendo agora for confirmado. Assim, a gente garante que você está pagando somente pelos dias que de fato esteve assinando!
+          4:
+            question: Quando vou poder usufruir novamente dos meus benefícios como assinante?
+            answer: Assim que este pagamento for confirmado, sua assinatura voltará a estar ativa e você poderá, então, usufruir de todos os benefícios!
     payment:
       paid: Confirmado
       refused: Recusado

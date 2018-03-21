@@ -35,6 +35,7 @@ class Project < ActiveRecord::Base
   has_one :balance_transfer, inverse_of: :project
   has_one :project_cancelation
   has_one :project_total
+  has_one :project_fiscal_data
   has_many :balance_transactions
   has_many :taggings
   has_many :goals, foreign_key: :project_id
@@ -294,6 +295,10 @@ class Project < ActiveRecord::Base
 
   def total_payment_service_fee
     project_total.try(:total_payment_service_fee).to_f
+  end
+
+  def paid_total_payment_service_fee
+    project_total.try(:paid_total_payment_service_fee).to_f
   end
 
   def selected_rewards
