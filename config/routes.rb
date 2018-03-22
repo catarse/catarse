@@ -164,8 +164,8 @@ Catarse::Application.routes.draw do
       end
     end
 
-    get '/terms-of-use' => 'high_voltage/pages#show', id: 'terms_of_use'
-    get '/privacy-policy' => 'high_voltage/pages#show', id: 'privacy_policy'
+    get '/terms-of-use' => redirect('https://crowdfunding.catarse.me/legal/termos-de-uso')
+    get '/privacy-policy' => redirect('https://crowdfunding.catarse.me/legal/politica-de-privacidade')
     get '/start' => redirect('https://crowdfunding.catarse.me/comece')
     get '/start-sub' => redirect('https://crowdfunding.catarse.me/comece')
     get '/jobs' => 'high_voltage/pages#show', id: 'jobs'
