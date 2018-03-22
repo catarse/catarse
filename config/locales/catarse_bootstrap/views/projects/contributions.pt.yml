@@ -337,5 +337,5 @@ pt:
         title: Muito obrigado
       subscription_start_title: Escolha a recompensa e em seguida o valor do apoio mensal
       subscription_edit_title: Você está editando uma assinatura já existente 
-      subscription_reactivation_title: Você está reativando uma assinatura suspensa
+      subscription_reactivation_title: Você está reativando uma assinatura inativa
       subscription_edit_subtitle: Escolha sua recompensa e o valor de sua assinatura

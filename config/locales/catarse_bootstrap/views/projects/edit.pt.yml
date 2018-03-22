@@ -291,8 +291,8 @@ pt:
       reward: "Recompensa"
     dashboard_start:
       title:  "Viva do que você ama fazer"
-      description: "Olá %{name}! Esse é o momento para você construir e planejar a sua campanha. Preencha todas as abas ao lado com carinho e não se esqueça de salvá-las enquanto for preenchendo. E não deixa de olhar a mensagem que preparamos especialmente para você abaixo:"
-      video_src: "https://www.youtube.com/embed/CJhLZgT6_9k?rel=0"
+      description: "Olá %{name}! Esse é o momento para você construir e planejar a sua campanha. Preencha todas as abas ao lado com carinho e não se esqueça de salvá-las enquanto for preenchendo. Confira abaixa um ebook que preparamos especialmente você:"
+      video_src: "https://docs.google.com/presentation/d/e/2PACX-1vSPpwgSNq-eoCLK_DuoZKvGjEHv0jRqPyGtVcc8agBbi201-nVGn31l3cS2Q6uqSdFJ_1vtsySewT1d/embed?start=false&loop=false&delayms=60000"
     dashboard_announce_expiration:
       explanation_01: 'Ao iniciar a reta final, iremos abrir uma contagem regressiva de 7 dias. Você poderá receber apoios até:'
       explanation_02: 'Essa é uma ação irreversível. Depois que a reta final é definida, o projeto não poderá mais alterar o seu prazo final de captação. Ao final do prazo, você recebe todo o valor arrecadado.'
