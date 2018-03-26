@@ -98,7 +98,7 @@ class Payment < ActiveRecord::Base
     state :manual_refund
 
     event :chargeback do
-      transition [:paid] => :chargeback
+      transition [:paid, :refunded] => :chargeback
     end
 
     event :trash do
