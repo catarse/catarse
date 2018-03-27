@@ -35,10 +35,4 @@ p Assim que você estiver com a sua recompensa não esqueça de avisar em #{link
 p Veja como nesse exemplo: 
 = image_tag 'http://g.recordit.co/Rrbbu9Cp9C.gif', width: 600 
 
-p Caso tenha alguma dúvida você pode responder diretamente esse email ou entrar em contato através do #{mail_to contribution.project.user.email}. Caso queira entrar em contato com o suporte do Catarse, envie um email para #{mail_to 'contato@catarse.me'}.
-
-p Obrigado!
-
-p Um abraço,
-
-p Equipe Catarse 
+= render partial: 'user_notifier/mailer/contact_info'
