@@ -17,10 +17,4 @@ p Data do pedido reembolso: #{details.pending_refund_at.try(:to_date)}
 
 p Identificação na fatura do cartão de crédito: “Estorno do Catarse”
 
-| Se ficou com alguma dúvida, entre em contato conosco respondendo a esta mensagem ou através do e-mail #{mail_to CatarseSettings[:email_contact]} 
-| e nos informe a chave de identificação do seu apoio, que é: #{details.gateway_id}
-br
-br
-|Um abraço,
-br
-| #{CatarseSettings[:company_name]}
+= render partial: 'user_notifier/mailer/contact_info'
