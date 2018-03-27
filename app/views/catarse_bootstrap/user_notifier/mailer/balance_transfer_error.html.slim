@@ -24,9 +24,5 @@ p
   img src="https://s3.amazonaws.com/catarse.files/user_balance.gif"
 br/
 p
-  | Se ficar alguma dúvida, basta responder a esta mensagem diretamente ou enviar um email para #{mail_to CatarseSettings[:email_contact]}
 
-p
-  | Abraços,
-  br/
-  | Equipe do #{company_name}
+= render partial: 'user_notifier/mailer/contact_info'
