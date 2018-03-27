@@ -33,9 +33,4 @@ p
       = image_tag "#{CatarseSettings[:base_url]}/assets/catarse_bootstrap/btn-definir-prazo.png", height: '60px'
 br/
 br/
-| Se ficou com alguma dúvida, confira #{link_to 'este artigo', 'http://suporte.catarse.me/hc/pt-br/articles/217916143'} ou responda a esta mensagem.
-br/
-br/
-| Um abraço,
-br/
-| Equipe do #{company_name}
+= render partial: 'user_notifier/mailer/contact_info'
