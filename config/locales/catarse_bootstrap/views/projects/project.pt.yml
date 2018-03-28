@@ -230,6 +230,24 @@ pt:
             5:
               question: If this project is funded, how do I get my reward?
               answer: When your reward is ready, <a href="%{userLink}" target="_blank">%{userName}</a> will get in touch with you to arrange the delivery.
+        sub:
+          description: Each month this project will receive the value being backed by you
+          questions:
+            1:
+              question: How do I subscribe to this project?
+              answer: Fill the contact details, address and your credit card details and click on Finish payment to confirm your monthly subscription. If everything is right, you will be redirected to a 'Thank you' page (in Portuguese).
+            2:
+              question: When do I start benefiting from my subscription?
+              answer: As soon as your payment is confirmed, your subscription will be activated and you can start using it! If you have any doubts regarding the project and the rewards, please contact <a href="%{userLink}" target="_blank">%{userName}</a>.
+            3:
+              question: When is my card charged? 
+              answer: The confirmation of your payment should be sent to your email on the same day.
+            4:
+              question: When does the next charge happen?
+              answer: You'll be automatically charged on the same day of the month that you started your subscription.
+            5:
+              question: What if I want to change the value of my monthly subscription?
+              answer: You can edit your subscription at any time by clicking on your profile picture on the top, following the link to your "Histórico de apoios", finding the subscription you want to edit there and clicking on the "Editar assinatura" button at the right. 
       aon:
         description: Caso esse projeto não atinja a meta, você recebe de volta 100% do que pagou através de um reembolso.
         questions:
