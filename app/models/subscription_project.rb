@@ -23,8 +23,13 @@ class SubscriptionProject < Project
                                               })
   end
 
+  #@TODO move to db view
   def pledged
-    subscriptions.where(status: 'active').sum("(checkout_data->>'amount')::numeric") / 100
+    sum = 0
+    subscriptions.where(status: 'active').each do |subscription|
+      sum += subscription.subscription_payments.where(status: ['paid', 'pending']).order(:created_at).last.data['amount'].to_f/100
+    end
+    sum
   end
 
   def current_goal
