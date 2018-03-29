@@ -301,7 +301,7 @@ pt:
             answer: Sua assinatura vence sempre no dia do mês do seu primeiro pagamento. No caso de pagamento via cartão de crédito, você não precisa fazer nada, que nós iremos realizar sua cobrança por mês automaticamente. No caso de boleto, você receberá todo mês um boleto de cobrança em seu email.
           5:
             question: E se eu quiser mudar meu apoio mensal no futuro?
-            answer: No momento, para alterar o valor de apoio mensal, você precisa cancelar sua assinatura e iniciar uma nova com o novo valor desejado.
+            answer: Você pode alterar sua assinatura a qualquer momento. Basta clicar na sua imagem de perfil no topo da página, acessar seu "Histrico de apoios", encontrar a assinatura que deseja editar e então clicar no botão "Editar assinatura".
       sub_edit:
         description: Ao editar uma assinatura, você tem a opção de mudar o valor assinado, a recompensa e o método de pagamento. Todas as mudanças que você fizer hoje só entrarão em vigor na sua próxima cobrança. 
         questions:
