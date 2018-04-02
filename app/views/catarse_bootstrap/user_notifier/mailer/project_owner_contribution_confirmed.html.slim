@@ -32,9 +32,6 @@ table width="500" border="1" cellpadding="10" cellspacing="0" style='font-size: 
         td= contribution.reward.try(:decorate).try(:display_description)
 br/
 br/
-|Lembrando que você pode baixar os #{link_to 'relatórios de apoios', contributions_report_project_url(project)} a qualquer momento. Para tirar dúvidas conosco respondendo diretamente a esta mensagem ou através do #{mail_to CatarseSettings[:email_projects] }
-br/
-br/
-| Um abraço,
-br
-= company_name
+|Lembrando que você pode baixar os #{link_to 'relatórios de apoios', contributions_report_project_url(project)} a qualquer momento. 
+
+= render partial: 'user_notifier/mailer/contact_info'
