@@ -200,6 +200,19 @@ RSpec.describe FlexProjectMachine, type: :model do
         .and_return(true)
     end
 
+    context 'when have a cancelation request' do
+      before do
+        create(:project_cancelation, project: flexible_project)
+
+        expect(subject).not_to receive(:transition_to)
+          .with(:waiting_funds, { to_state: 'waiting_funds' }).and_return(true)
+        expect(subject).not_to receive(:transition_to)
+          .with(:successful, { to_state: 'successful' })
+      end
+
+      it { subject.finish }
+    end
+
     context "when can't go to successful" do
       before do
         allow(flexible_project).to receive(:in_time_to_wait?)
