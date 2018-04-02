@@ -12,9 +12,4 @@ p Veja como é fácil e simples controlar suas entregas:
 br/
 p Acesse o #{link_to 'Relatório de Apoios', project_link} do seu projeto e atualize o status das entregas das suas recompensas. 
 
-
-
-p Se você precisar de alguma ajuda ou quiser tirar qualquer dúvida, basta responder esse email ou entrar em contato através do #{mail_to CatarseSettings[:email_projects]}.
-|Um abraço!
-br/
-|Catarse
+= render partial: 'user_notifier/mailer/contact_info'
