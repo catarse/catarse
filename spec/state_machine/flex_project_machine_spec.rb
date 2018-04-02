@@ -205,7 +205,7 @@ RSpec.describe FlexProjectMachine, type: :model do
         create(:project_cancelation, project: flexible_project)
 
         expect(subject).not_to receive(:transition_to)
-          .with(:waiting_funds, { to_state: 'waiting_funds' }).and_return(true)
+          .with(:waiting_funds, { to_state: 'waiting_funds' })
         expect(subject).not_to receive(:transition_to)
           .with(:successful, { to_state: 'successful' })
       end
