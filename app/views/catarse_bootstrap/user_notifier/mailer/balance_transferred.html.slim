@@ -26,10 +26,5 @@ br/
 | CPF/CNPJ: #{bank_account['document_number']||user.cpf}
 br/
 br/
-| Caso tenha alguma dúvida, visite nossa #{link_to 'Central de Suporte', 'http://suporte.catarse.me/hc/pt-br', target: '__blank'} ou envie um email para #{mail_to CatarseSettings[:email_contact]}.
-br/
-br/
-| Um grande abraço de toda a nossa equipe,
-br/
-| Equipe do #{CatarseSettings[:company_name]}
 
+= render partial: 'user_notifier/mailer/contact_info'

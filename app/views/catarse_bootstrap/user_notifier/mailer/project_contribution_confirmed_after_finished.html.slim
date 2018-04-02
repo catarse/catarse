@@ -25,10 +25,4 @@ br/
 = link_to 'Veja seu o saldo atualizado', edit_user_url(project.user_id, anchor: 'balance')
 br/
 br/
-| Se sobrar alguma dúvida, basta responder a esta mensagem diretamente ou enviar um email para #{mail_to CatarseSettings[:email_contact]}.
-br/
-br/
-| Um abraço,
-br/
-| Equipe do #{CatarseSettings[:company_name]}
-
+= render partial: 'user_notifier/mailer/contact_info'

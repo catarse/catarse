@@ -62,6 +62,4 @@ br/
 '  #{mail_to CatarseSettings[:email_projects]} e #{mail_to CatarseSettings[:email_contact]} para evitar que nossas mensagens caiam na sua caixa de spam devido a filtros do seu email.
 br/
 br/
-| Um abraço,
-br/
-| A equipe do #{company_name} te deseja uma boa campanha!!!!
+= render partial: 'user_notifier/mailer/contact_info'

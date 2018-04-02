@@ -16,8 +16,5 @@ p Acesse o #{link_to 'relatórios de apoios', contributions_report_project_url(p
 p Se por algum acaso houver qualquer tipo atraso, é importante que você se comunique com os seus apoiadores através das #{link_to 'novidades', posts_project_url(project)}. É muito importante manter a transparência e deixar os apoiadores por dentro de tudo que envolve as recompensas, desde a produção até o acesso a elas.
 
 
-p Se ficou com alguma dúvida, responda a esta mensagem diretamente ou fale conosco através do e-mail #{mail_to email_contact}.
-
-|Abraços,
-br/
-|Equipe do Catarse
+p 
+= render partial: 'user_notifier/mailer/contact_info'

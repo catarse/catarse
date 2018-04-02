@@ -39,10 +39,6 @@ p
   ' Caso tenha alguma dúvida em relação ao projeto ou recompensa selecionada 
   ' entre em contato diretamente com o realizador através do e-mail #{mail_to owner.try(:email)}.
   
-p Se ficou com alguma dúvida, entre em contato conosco respondendo a esta mensagem ou através do e-mail #{mail_to CatarseSettings[:email_contact]}
+p += render partial: 'user_notifier/mailer/contact_info'
 
-p
-  | Um abraço e muito obrigado,
-  br/
-  | #{CatarseSettings[:company_name]}
 
