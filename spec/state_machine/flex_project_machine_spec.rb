@@ -204,10 +204,12 @@ RSpec.describe FlexProjectMachine, type: :model do
       before do
         create(:project_cancelation, project: flexible_project)
 
-        expect(subject).not_to receive(:transition_to)
-          .with(:waiting_funds, { to_state: 'waiting_funds' })
-        expect(subject).not_to receive(:transition_to)
-          .with(:successful, { to_state: 'successful' })
+        expect(subject).to receive(:transition_to)
+          .with(:waiting_funds, { to_state: 'waiting_funds' }).and_return(false)
+        expect(subject).to receive(:transition_to)
+          .with(:successful, { to_state: 'successful' }).and_return(false)
+        expect(subject).to receive(:transition_to)
+          .with(:failed, { to_state: 'failed' }).and_return(false)
       end
 
       it { subject.finish }
