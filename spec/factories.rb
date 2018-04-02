@@ -115,6 +115,10 @@ FactoryGirl.define do
     end
   end
 
+  factory :project_cancelation do |f|
+    f.association :project
+  end
+
   factory :balance_transfer do |f|
     f.amount 50
     f.association :project
