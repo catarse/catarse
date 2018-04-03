@@ -254,7 +254,7 @@ class CommonWrapper
         id: resource.common_id
       }.to_json,
       action: :post,
-      current_ip: resource.project.user.current_sign_in_ip
+      current_ip: resource.user.current_sign_in_ip
     ).run
 
     if response.success?
