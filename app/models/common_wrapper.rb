@@ -207,18 +207,18 @@ class CommonWrapper
     return common_id;
   end
 
-  def index_reward(resource)
-    unless resource.project.common_id.present?
-      resource.project.index_on_common
-      resource.project.reload
+  def cancel_project(resource)
+    unless resource.common_id.present?
+      resource.index_on_common
+      resource.reload
     end
 
     uri = services_endpoint[:project_service]
-    uri.path = '/rpc/reward'
+    uri.path = '/rpc/cancel_project'
     response = request(
       uri.to_s,
       body: {
-        data: resource.common_index.to_json
+        id: resource.common_id
       }.to_json,
       action: :post,
       current_ip: resource.project.user.current_sign_in_ip
@@ -229,13 +229,8 @@ class CommonWrapper
       common_id = json.try(:[], 'id')
     else
       Rails.logger.info(response.body)
-      common_id = find_reward(resource.id)
+      common_id = find_project(resource.id)
     end
-
-    resource.update_column(
-      :common_id,
-      (common_id.presence || resource.common_id)
-    )
 
     return common_id;
   end
