@@ -585,12 +585,12 @@ class Project < ActiveRecord::Base
     common_wrapper.index_project(self) if common_wrapper
   end
 
-  def common_cancel_project
+  def common_finish!
     unless user.common_id.present?
       user.index_on_common
       user.reload
     end
 
-    common_wrapper.cancel_project(self) if common_wrapper
+    common_wrapper.finish_project(self) if common_wrapper
   end
 end

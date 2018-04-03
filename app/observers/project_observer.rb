@@ -25,10 +25,15 @@ class ProjectObserver < ActiveRecord::Observer
 
   def from_waiting_funds_to_successful(project)
     notify_admin_that_project_is_successful(project)
-    notify_users(project)
-    project.notify_owner(:project_success)
-    [15, 30, 60, 90].each do |day|
-      project.notify(:project_success, project.user, project, {deliver_at: Time.now + day.days})
+
+    if project.is_sub?
+      project.common_finish!
+    else
+      notify_users(project)
+      project.notify_owner(:project_success)
+      [15, 30, 60, 90].each do |day|
+        project.notify(:project_success, project.user, project, {deliver_at: Time.now + day.days})
+      end
     end
   end
   alias from_online_to_successful from_waiting_funds_to_successful

@@ -240,14 +240,14 @@ class CommonWrapper
     return common_id;
   end
 
-  def cancel_project(resource)
+  def finish_project(resource)
     unless resource.common_id.present?
       resource.index_on_common
       resource.reload
     end
 
     uri = services_endpoint[:project_service]
-    uri.path = '/rpc/cancel_project'
+    uri.path = '/rpc/finish_project'
     response = request(
       uri.to_s,
       body: {
