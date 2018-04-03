@@ -11,6 +11,7 @@ class SubProjectMachine
     state :draft, initial: true
     state :online
     state :deleted
+    state :rejected
 
     # this block receive all transition
     # definitions
@@ -60,7 +61,7 @@ class SubProjectMachine
   setup_machine do
     transition from: :deleted, to: %i[draft]
     transition from: :draft, to: %i[deleted online]
-    transition from: :online, to: %i[draft deleted ]
+    transition from: :online, to: %i[draft deleted rejected]
 
   end
 
