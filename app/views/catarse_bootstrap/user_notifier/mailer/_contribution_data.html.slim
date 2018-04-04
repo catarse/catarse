@@ -39,6 +39,7 @@ p
   ' Caso tenha alguma dúvida em relação ao projeto ou recompensa selecionada 
   ' entre em contato diretamente com o realizador através do e-mail #{mail_to owner.try(:email)}.
   
-p += render partial: 'user_notifier/mailer/contact_info'
+p
+  = render partial: 'user_notifier/mailer/contact_info'
 
 
