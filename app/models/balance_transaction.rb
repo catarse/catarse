@@ -9,10 +9,10 @@ class BalanceTransaction < ActiveRecord::Base
     balance_transfer_error
     successful_project_pledged
     catarse_project_service_fee
-    irrf_tax_project
     contribution_refund
     refund_contributions
     subscription_fee
+    irrf_tax_project
     subscription_payment
   ].freeze
 
@@ -116,12 +116,14 @@ class BalanceTransaction < ActiveRecord::Base
         event_name: 'catarse_project_service_fee',
         amount: (project.total_catarse_fee * -1)
       ))
-      if project.irrf_tax > 0
-        create!(default_params.merge(
-          event_name: 'irrf_tax_project',
-          amount: project.irrf_tax
-        ))
-      end
+
+      # uncomment to use irrf tax
+      # if project.irrf_tax > 0
+      #   create!(default_params.merge(
+      #     event_name: 'irrf_tax_project',
+      #     amount: project.irrf_tax
+      #   ))
+      # end
     end
   end
 end

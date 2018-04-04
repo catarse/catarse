@@ -39,9 +39,5 @@ p
     | Para apoiadores: 
   = link_to 'Regras e funcionamento dos reembolsos / estornos / cancelamentos', 'http://suporte.catarse.me/hc/pt-br/articles/202365507', target: '__blank'
 br/
-| Se ficar alguma dúvida, basta responder a esta mensagem diretamente ou enviar um email para #{mail_to CatarseSettings[:email_contact]} .
-p
-  | Abraços,
-  br/
-  | Equipe do #{company_name}
 
+= render partial: 'user_notifier/mailer/contact_info'

@@ -11,6 +11,8 @@ class SubProjectMachine
     state :draft, initial: true
     state :online
     state :deleted
+    state :successful
+    state :rejected
 
     # this block receive all transition
     # definitions
@@ -60,8 +62,7 @@ class SubProjectMachine
   setup_machine do
     transition from: :deleted, to: %i[draft]
     transition from: :draft, to: %i[deleted online]
-    transition from: :online, to: %i[draft deleted ]
-
+    transition from: :online, to: %i[draft deleted successful rejected]
   end
 
   def can_push_to_draft?
@@ -95,4 +96,7 @@ class SubProjectMachine
     transition_to(:online, to_state: 'online', skip_callbacks: true)
   end
 
+  def finish
+    transition_to(:successful, to_state: 'successful')
+  end
 end

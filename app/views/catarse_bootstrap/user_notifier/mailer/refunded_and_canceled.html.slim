@@ -11,9 +11,4 @@ br
 | A chave de identificação do seu apoio é: #{detail.payment_id}
 br
 br
-| Se ficou com alguma dúvida, entre em contato conosco respondendo a esta mensagem ou através do e-mail #{mail_to contact_email}
-br
-br
-|Um abraço,
-br
-| #{company_name}
+= render partial: 'user_notifier/mailer/contact_info'

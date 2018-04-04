@@ -17,6 +17,5 @@ br/
 |Só para você não se esquecer, o seu email de acesso é: #{user.email} 
 br/
 br
-| Um abraço,
-br
-= CatarseSettings[:company_name]
+
+= render partial: 'user_notifier/mailer/contact_info'

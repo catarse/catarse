@@ -37,9 +37,4 @@ br/
 | <strong>Importante:</strong> É possível que antes da reorganização de dados, existisse alguma diferença entre as informações bancárias (que você informou na antiga aba Conta) e as informações do seu perfil, uma vez que esses dados eram pedidos em momentos diferentes. Para esses casos, priorizamos os dados que foram preenchidos aba Conta, uma vez que eles indicam quem irá receber o dinheiro - caso o projeto seja financiado - e também quem é o responsável legal pela campanha. Se você notar alguma inconsistência nestes dados, por favor nos avise <strong>até o dia 17/03</strong>. Depois dessa data esses dados não poderão mais ser modificados
 br/
 br/
-| Caso tenha alguma dúvida ou problema, fique a vontade para nos avisar através do email: #{mail_to CatarseSettings[:email_contact]}
-br/
-br/
-| Abraços,
-br/
-| Equipe do #{CatarseSettings[:company_name]}
+= render partial: 'user_notifier/mailer/contact_info'

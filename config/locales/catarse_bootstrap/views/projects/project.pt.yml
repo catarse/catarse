@@ -5,17 +5,17 @@ pt:
       row_title: 'Populares'
       banners:
         1:
-          title: 'Financiamento coletivo para todos'
+          title: 'Traga seu projeto criativo ao mundo'
           subtitle: ''
           link: '/start?ref=home_banner'
           cta: 'Comece sua campanha'
           image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-fctodos.jpg'
         3:
-          title: 'Custom Shop Brasil'
-          subtitle: 'Uma série que te levará pra dentro das oficinas dos maiores luthiers do Brasil.'
-          link: 'https://www.catarse.me/CustomShopBrasil?ref=home_banner'
+          title: 'Ritos do Nascer ao Parir'
+          subtitle: 'Até onde mãe e filha vão uma pela outra? Até onde não vão e se libertam. Uma biografia-ficcional.'
+          link: 'https://www.catarse.me/ritos?ref=home_banner'
           cta: 'Conheça o projeto'
-          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-CustomShopBrasil.jpg'
+          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-ritos.jpg'
         2:
           title: '<img src="https://daks2k3a4ib2z.cloudfront.net/573a70f6d5c3cb6532f8b1a7/59c3980fd03bd6000107e99c_logo-assinaturas.png" width="400">'
           subtitle: 'Nosso financiamento coletivo recorrente chegou!'
@@ -23,11 +23,11 @@ pt:
           cta: 'Saiba mais'
           image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-assinaturas.jpg'
         4:
-          title: 'Do Incrível ao Bizarro'
-          subtitle: 'A paixão pelas incríveis artes clássicas e estranhas, redescobertas em uma enciclopédia vintage.'
-          link: 'https://www.catarse.me/livrosantigos?ref=home_banner'
+          title: 'Cinema em Cena'
+          subtitle: 'O cinema nos emociona, nos conforta, nos transforma. Há 20 anos somos movidos por essa paixão.'
+          link: 'https://www.catarse.me/cinemaemcena?ref=home_banner'
           cta: 'Conheça o projeto'
-          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-livrosantigos.jpg'
+          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-cinemaemcena.jpg'
         7:
           title: 'Financiamento coletivo para Livros e Revistas'
           subtitle: 'Junte-se a uma comunidade de autores e editoras e publique seu livro independente com a ajuda dos leitores'
@@ -35,17 +35,17 @@ pt:
           cta: 'Saiba mais'
           image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-landing-publicacoes.jpg'
         6:
-          title: 'Livros Sagrados de Thelema'
-          subtitle: 'Os 15 principais e mais importantes livros de Magia escritos por Aleister Crowley.'
-          link: 'https://www.catarse.me/thelema?ref=home_banner'
+          title: 'Construa PONTE'
+          subtitle: 'A violência de Estado é cotidiana, precisamos da Ponte todo dia.'
+          link: 'https://www.catarse.me/construa_ponte?ref=home_banner'
           cta: 'Conheça o projeto'
-          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-thelema.jpg'
+          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-construa_ponte.jpg'
         5:
-          title: 'Eu financio a Mídia NINJA'
-          subtitle: 'Eu, você e todos nós. Seja NINJA!'
-          link: 'https://www.catarse.me/midianinja?ref=home_banner'
+          title: 'WarpZone Essencial: Street Fighter'
+          subtitle: 'A CAPCOM e a WarpZone se uniram para lançar o maior livro sobre Street Fighter do mundo!'
+          link: 'https://www.catarse.me/streetfighter?ref=home_banner'
           cta: 'Conheça o projeto'
-          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-midianinja.jpg'
+          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-streetfighter.jpg'
     new_feature_badge: 'Novidade'
     posts:
       empty: '<span class="fontweight-semibold">%{project_user_name}</span> ainda não publicou nenhuma novidade. <a href="/projects/%{project_id}/contributions/new" class="alt-link">Faça um apoio</a> e receba em seu email todas as notícias do projeto assim que elas forem publicadas!'
@@ -230,6 +230,24 @@ pt:
             5:
               question: If this project is funded, how do I get my reward?
               answer: When your reward is ready, <a href="%{userLink}" target="_blank">%{userName}</a> will get in touch with you to arrange the delivery.
+        sub:
+          description: Each month this project will receive the value being backed by you
+          questions:
+            1:
+              question: How do I subscribe to this project?
+              answer: Fill the contact details, address and your credit card details and click on Finish payment to confirm your monthly subscription. If everything is right, you will be redirected to a 'Thank you' page (in Portuguese).
+            2:
+              question: When do I start benefiting from my subscription?
+              answer: As soon as your payment is confirmed, your subscription will be activated and you can start using it! If you have any doubts regarding the project and the rewards, please contact <a href="%{userLink}" target="_blank">%{userName}</a>.
+            3:
+              question: When is my card charged? 
+              answer: The confirmation of your payment should be sent to your email on the same day.
+            4:
+              question: When does the next charge happen?
+              answer: You'll be automatically charged on the same day of the month that you started your subscription.
+            5:
+              question: What if I want to change the value of my monthly subscription?
+              answer: You can edit your subscription at any time by clicking on your profile picture on the top, following the link to your "Histórico de apoios", finding the subscription you want to edit there and clicking on the "Editar assinatura" button at the right. 
       aon:
         description: Caso esse projeto não atinja a meta, você recebe de volta 100% do que pagou através de um reembolso.
         questions:
@@ -283,7 +301,7 @@ pt:
             answer: Sua assinatura vence sempre no dia do mês do seu primeiro pagamento. No caso de pagamento via cartão de crédito, você não precisa fazer nada, que nós iremos realizar sua cobrança por mês automaticamente. No caso de boleto, você receberá todo mês um boleto de cobrança em seu email.
           5:
             question: E se eu quiser mudar meu apoio mensal no futuro?
-            answer: No momento, para alterar o valor de apoio mensal, você precisa cancelar sua assinatura e iniciar uma nova com o novo valor desejado.
+            answer: Você pode alterar sua assinatura a qualquer momento. Basta clicar na sua imagem de perfil no topo da página, acessar seu "Histórico de apoios", encontrar a assinatura que deseja editar e então clicar no botão "Editar assinatura".
       sub_edit:
         description: Ao editar uma assinatura, você tem a opção de mudar o valor assinado, a recompensa e o método de pagamento. Todas as mudanças que você fizer hoje só entrarão em vigor na sua próxima cobrança. 
         questions:

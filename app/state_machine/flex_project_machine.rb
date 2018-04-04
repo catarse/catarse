@@ -56,11 +56,11 @@ class FlexProjectMachine
 
     # Ensure that project has pending contributions before enter on waiting_funds
     guard_transition(to: :waiting_funds) do |project|
-      project.in_time_to_wait?
+      project.in_time_to_wait? && !project.project_cancelation.present?
     end
 
     guard_transition(to: finished_states) do |project|
-      !project.in_time_to_wait?
+      !project.in_time_to_wait? && !project.project_cancelation.present?
     end
 
     # Ensure that project has not more pending contributions

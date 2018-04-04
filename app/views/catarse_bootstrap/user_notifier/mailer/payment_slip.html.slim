@@ -20,6 +20,4 @@ p
 p Caso já tenha pago o boleto bancário, desconsidere esse email por favor.
 
 p
-  | Um abraço,
-p
-  | #{CatarseSettings[:company_name]}
+= render partial: 'user_notifier/mailer/contact_info'

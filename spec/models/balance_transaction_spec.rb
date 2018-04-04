@@ -13,7 +13,7 @@ RSpec.describe BalanceTransaction, type: :model do
     it { is_expected.to validate_presence_of(:amount) }
     it { is_expected.to validate_presence_of(:event_name) }
     it { is_expected.to validate_presence_of(:user_id) }
-    it { is_expected.to validate_inclusion_of(:event_name).in_array(%w[successful_project_pledged catarse_project_service_fee irrf_tax_project]) }
+    it { is_expected.to validate_inclusion_of(:event_name).in_array(BalanceTransaction::EVENT_NAMES) }
   end
 
   describe '#insert_contribution_confirmed_after_project_finished' do
@@ -93,8 +93,8 @@ RSpec.describe BalanceTransaction, type: :model do
         project.finish
       end
 
-      it 'should create irrf_tax_project transaction' do
-        expect(BalanceTransaction.find_by(event_name: 'irrf_tax_project', project_id: project.id, user_id: project.user_id, amount: project.irrf_tax)).not_to be_nil
+      it 'should not create irrf_tax_project transaction' do
+        expect(BalanceTransaction.find_by(event_name: 'irrf_tax_project', project_id: project.id, user_id: project.user_id, amount: project.irrf_tax)).to be_nil
       end
     end
 

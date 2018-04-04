@@ -240,6 +240,34 @@ class CommonWrapper
     return common_id;
   end
 
+  def finish_project(resource)
+    unless resource.common_id.present?
+      resource.index_on_common
+      resource.reload
+    end
+
+    uri = services_endpoint[:project_service]
+    uri.path = '/rpc/finish_project'
+    response = request(
+      uri.to_s,
+      body: {
+        id: resource.common_id
+      }.to_json,
+      action: :post,
+      current_ip: resource.user.current_sign_in_ip
+    ).run
+
+    if response.success?
+      json = ActiveSupport::JSON.decode(response.body)
+      common_id = json.try(:[], 'id')
+    else
+      Rails.logger.info(response.body)
+      common_id = find_project(resource.id)
+    end
+
+    return common_id;
+  end
+
   def base_headers(current_ip)
     h = {
       'Accept' => 'application/json',

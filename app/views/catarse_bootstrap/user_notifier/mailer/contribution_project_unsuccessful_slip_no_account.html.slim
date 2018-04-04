@@ -21,10 +21,4 @@ p
 
   |Assim que o reembolso for feito, você receberá um e-mail confirmando a operação. O reembolso entrará na conta cadastra em até 10 dias úteis, identificado como \"PAGAR.ME PAGAMENTOS\".
 
-     
-p
-  |Se ficou com alguma dúvida, entre em contato conosco respondendo a esta mensagem ou através do e-mail #{mail_to CatarseSettings[:email_contact]}. Não esqueça de nos informar a chave de identificação do seu apoio, que é: #{detail.gateway_id}.
-p
-  |Um abraço,
-  br
-  | #{company_name}
+= render partial: 'user_notifier/mailer/contact_info'

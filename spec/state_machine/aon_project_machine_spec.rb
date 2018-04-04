@@ -510,6 +510,23 @@ RSpec.describe AonProjectMachine, type: :model do
           end
 
           context "can't go to successful" do
+            context 'when project have cancelation request' do
+              before do
+                create(:project_cancelation, project: project)
+
+                expect(subject).to receive(:transition_to)
+                  .with(:waiting_funds, { to_state: 'waiting_funds' }).and_return(false)
+
+                expect(subject).to receive(:transition_to)
+                  .with(:failed, { to_state: 'failed' }).and_return(false)
+
+                expect(subject).to receive(:transition_to)
+                  .with(:successful, { to_state: 'successful' }).and_return(false)
+              end
+
+              it { subject.finish }
+            end
+
             context 'when project still have pending contributions' do
               before do
                 allow(project).to receive(:in_time_to_wait?)
@@ -576,6 +593,23 @@ RSpec.describe AonProjectMachine, type: :model do
           end
 
           context "can't go to failed" do
+            context 'when project have cancelation request' do
+              before do
+                create(:project_cancelation, project: project)
+
+                expect(subject).to receive(:transition_to)
+                  .with(:waiting_funds, { to_state: 'waiting_funds' }).and_return(false)
+
+                expect(subject).to receive(:transition_to)
+                  .with(:successful, { to_state: 'successful' }).and_return(false)
+
+                expect(subject).to receive(:transition_to)
+                  .with(:failed, { to_state: 'failed' }).and_return(false)
+              end
+
+              it { subject.finish }
+            end
+
             context 'when project have pending contributions' do
               before do
                 allow(project).to receive(:in_time_to_wait?)
@@ -631,6 +665,25 @@ RSpec.describe AonProjectMachine, type: :model do
           end
 
           context "can't go to waiting_funds" do
+
+            context 'when project have cancelation request' do
+              before do
+                create(:project_cancelation, project: project)
+
+                expect(subject).to receive(:transition_to)
+                  .with(:waiting_funds, { to_state: 'waiting_funds' }).and_return(false)
+
+                expect(subject).to receive(:transition_to)
+                  .with(:failed, { to_state: 'failed' }).and_return(false)
+
+                expect(subject).to receive(:transition_to)
+                  .with(:successful, { to_state: 'successful' }).and_return(false)
+
+              end
+
+              it { subject.finish }
+            end
+
             context 'when project not have pending contributions' do
               before do
                 allow(project).to receive(:in_time_to_wait?)
@@ -672,6 +725,24 @@ RSpec.describe AonProjectMachine, type: :model do
           end
 
           context "can't go to successful" do
+
+            context 'when project have cancelation request' do
+              before do
+                create(:project_cancelation, project: project)
+
+                expect(subject).to receive(:transition_to)
+                  .with(:waiting_funds, { to_state: 'waiting_funds' }).and_return(false)
+
+                expect(subject).to receive(:transition_to)
+                  .with(:failed, { to_state: 'failed' }).and_return(false)
+
+                expect(subject).to receive(:transition_to)
+                  .with(:successful, { to_state: 'successful' }).and_return(false)
+              end
+
+              it { subject.finish }
+            end
+
             context 'when project has pending contributions' do
               before do
                 allow(project).to receive(:in_time_to_wait?)
