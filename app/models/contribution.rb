@@ -119,6 +119,10 @@ class Contribution < ActiveRecord::Base
     balance_transactions.where(event_name: 'contribution_refund').exists?
   end
 
+  def chargedback_on_balance?
+    balance_transactions.where(event_name: 'contribution_chargedback').exists?
+  end
+
   # Used in payment engines
   def price_in_cents
     (value * 100).round
