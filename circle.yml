@@ -12,6 +12,8 @@ deployment:
       - "git push sub-staging subscription-mode:master"
 
 dependencies:
+  pre:
+    - gem install bundler --pre
   post:
     - npm install
     - createuser postgrest
