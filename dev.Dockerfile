@@ -1,4 +1,4 @@
-FROM alpine
+FROM alpine:3.7
 MAINTAINER Catarse <contato@catarse.me>
 
 ENV BUILD_PACKAGES postgresql-dev libxml2-dev libxslt-dev imagemagick imagemagick-dev openssl libpq libffi-dev bash curl-dev libstdc++ tzdata bash ca-certificates build-base ruby-dev libc-dev linux-headers postgresql-client postgresql git nodejs
