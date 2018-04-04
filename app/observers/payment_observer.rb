@@ -19,7 +19,11 @@ class PaymentObserver < ActiveRecord::Observer
                                    from_email: payment.user.email,
                                    from_name: payment.user.display_name
                                  })
+    BalanceTransaction.insert_contribution_chargeback(payment.id)
   end
+  alias from_refunded_to_chargeback from_paid_to_chargeback
+  alias from_pending_to_chargeback from_paid_to_chargeback
+  alias from_pending_refund_to_chargeback from_paid_to_chargeback
 
   def from_chargeback_to_paid(payment)
     payment.notify_to_backoffice(:chargeback_reverse, {

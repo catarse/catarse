@@ -77,6 +77,7 @@ RSpec.describe BalanceTransaction, type: :model do
     end
 
     context 'when payment is chargeback' do
+      subject { payment.contribution.balance_transactions.last }
       before do
         payment.chargeback
       end
@@ -91,12 +92,12 @@ RSpec.describe BalanceTransaction, type: :model do
     end
 
     context 'when already have event generated' do
+      subject { payment.contribution.balance_transactions.last }
       before do
         payment.chargeback
       end
       it 'should not create a new transaction' do
-        transaction = subject
-        expect(transaction.event_name).to eq('contribution_chargedback')
+        expect(subject.event_name).to eq('contribution_chargedback')
         call_again = BalanceTransaction.insert_contribution_chargeback(payment.id) 
         expect(call_again).to be_nil
       end
