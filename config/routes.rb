@@ -215,6 +215,9 @@ Catarse::Application.routes.draw do
         member do
           put 'gateway_refund'
         end
+        collection do
+          post 'batch_chargeback'
+        end
       end
 
       namespace :reports do

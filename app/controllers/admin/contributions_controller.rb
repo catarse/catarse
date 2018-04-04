@@ -3,6 +3,18 @@
 class Admin::ContributionsController < Admin::BaseController
   layout 'catarse_bootstrap'
 
+  # batch_chargeback is used as external action in catarse.js
+  def batch_chargeback
+    # TODO: move the chargeback task to queue 
+    # to avoid timeouts when using a lot of ids
+    collection.each do |contribution_detail|
+      payment = contribution_detail.payment
+      payment.chargeback
+    end
+
+    render json: { contribution_ids: collection.pluck(:id) }
+  end
+
   # gateway_refund is used as external action in catarse.js
   def gateway_refund
     resource.direct_refund
@@ -20,5 +32,9 @@ class Admin::ContributionsController < Admin::BaseController
 
   def resource
     ContributionDetail.find_by_id params[:id]
+  end
+
+  def collection
+    ContributionDetail.where(id: params[:contribution_ids])
   end
 end
