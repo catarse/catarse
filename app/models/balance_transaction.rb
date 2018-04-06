@@ -41,7 +41,7 @@ class BalanceTransaction < ActiveRecord::Base
     )
   end
 
-  def self.insert_subscription_payment_chargeback(payment_id)
+  def self.insert_subscription_payment_chargedback(payment_id)
     payment = SubscriptionPayment.find payment_id
 
     return unless payment.chargeback?

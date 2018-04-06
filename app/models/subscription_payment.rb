@@ -26,6 +26,7 @@ class SubscriptionPayment < ActiveRecord::Base
   end
 
   def chargeback
+    BalanceTransaction.insert_subscription_payment_chargedback(id)
     common_wrapper.chargeback_payment(id)
   end
 end
