@@ -15,6 +15,7 @@ class BalanceTransaction < ActiveRecord::Base
     irrf_tax_project
     subscription_payment
     contribution_chargedback
+    subscription_payment_chargedback
   ].freeze
 
   belongs_to :project
@@ -37,6 +38,21 @@ class BalanceTransaction < ActiveRecord::Base
       amount: ((contribution.value - (contribution.value * contribution.project.service_fee)) * -1),
       contribution_id: contribution.id,
       project_id: contribution.project_id
+    )
+  end
+
+  def self.insert_subscription_payment_chargeback(payment_id)
+    payment = SubscriptionPayment.find payment_id
+
+    return unless payment.chargeback?
+    return if payment.chargedback_on_balance?
+
+    create!(
+      user_id: contribution.project.user_id,
+      event_name: 'subscription_payment_chargedback',
+      amount: ((payment.amount - (payment.amount * payment.project.service_fee)) * -1),
+      subscription_payment_uuid: payment.id,
+      project_id: payment.project.id
     )
   end
 

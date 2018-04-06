@@ -21,6 +21,10 @@ class SubscriptionPayment < ActiveRecord::Base
     data['amount'].to_f / 100
   end
 
+  def chargeback?
+    status == 'chargedback'
+  end
+
   def chargeback
     common_wrapper.chargeback_payment(id)
   end
