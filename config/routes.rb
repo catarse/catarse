@@ -211,6 +211,12 @@ Catarse::Application.routes.draw do
 
       resources :financials, only: [:index]
 
+      resources :subscription_payments do
+        collection do
+          post :batch_chargeback
+        end
+      end
+
       resources :contributions, only: [] do
         member do
           put 'gateway_refund'
