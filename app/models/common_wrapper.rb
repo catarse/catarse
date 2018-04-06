@@ -268,6 +268,21 @@ class CommonWrapper
     return common_id;
   end
 
+  def chargeback_payment(payment_uuid)
+    uri = services_endpoint[:payment_service]
+    uri.path = '/rpc/chargeback_payment'
+    response = request(
+      uri.to_s,
+      body: {
+        id: payment_uuid
+      }.to_json,
+      action: :post
+    ).run
+
+    Rails.logger.info(response.body)
+    response.success?
+  end
+
   def base_headers(current_ip)
     h = {
       'Accept' => 'application/json',
