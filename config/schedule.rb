@@ -80,6 +80,8 @@ end
   stats.financeiro_payments_paid_refunded
   stats.financeiro_status_pagarme_catarse
   stats.pagarme__payments
+  stats.subscription_info_by_week
+  stats.subscription_info_by_month
 ].each do |v|
   every 1.day, at: '00:30 am' do
     command generate_psql_c(v)
