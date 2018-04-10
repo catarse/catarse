@@ -31,7 +31,7 @@ class FixPaidAtToReport < ActiveRecord::Migration
      LEFT JOIN rewards r ON ((r.common_id = s.reward_id)))
      JOIN common_schema.payment_status_transitions pst on pst.catalog_payment_id=s.id and pst.to_status='paid'
   WHERE (s.status = 'paid'::payment_service.payment_status)
-  GROUP BY s.project_id, u.name, u.public_name, u.email, s.data, r.title, r.description, s.created_at, s.updated_at, u.id;
+  GROUP BY s.project_id, u.name, u.public_name, u.email, s.data, r.title, r.description, s.created_at, s.updated_at, u.id, pst.id;
     SQL
   end
 end
