@@ -10,7 +10,7 @@ class FixPaidAtToReport < ActiveRecord::Migration
     r.title,
     r.description,
     (s.data ->> 'payment_method'::text) AS payment_method,
-    zone_timestamp(s.created_at),
+    zone_timestamp(s.created_at) created_at,
     zone_timestamp(pst.created_at) as paid_at,
     'Confirmado'::text AS confirmed,
     u.id AS user_id,
