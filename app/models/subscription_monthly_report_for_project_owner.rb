@@ -6,7 +6,7 @@ class SubscriptionMonthlyReportForProjectOwner < ActiveRecord::Base
   scope :reward_id, ->(reward_id) { where(reward_id: reward_id) }
 
   def self.to_csv
-    attributes = ['Nome completo',	'Nome público', 'CPF', 'Email perfil Catarse',	'Valor do apoio',	'Título da recompensa',	'Descrição da recompensa', 'Meio de pagamento',	'Data do apoio', 'Status do apoio',	'ID do usuário', 'Anônimo', 'Rua', 'Complemento',	'Número',	'Bairro',	'Cidade',	'Estado',	'CEP']
+    attributes = ['Nome completo',	'Nome público', 'CPF', 'Email perfil Catarse',	'Valor do apoio',	'Título da recompensa',	'Descrição da recompensa', 'Meio de pagamento',	'Data do apoio', 'Status do apoio',	'ID do usuário', 'Anônimo', 'Rua', 	'Número',	'Complemento', 'Bairro',	'Cidade',	'Estado',	'CEP']
 
     CSV.generate(headers: true) do |csv|
       csv << attributes
@@ -27,8 +27,8 @@ class SubscriptionMonthlyReportForProjectOwner < ActiveRecord::Base
           sub.user_id,
           sub.anonymous,
           sub.street,
-          sub.complement,
           sub.number,
+          sub.complement,
           sub.neighborhood,
           sub.city,
           sub.state,
