@@ -38,7 +38,7 @@ CREATE OR REPLACE VIEW "1"."project_contributions" AS
      JOIN users u ON ((c.user_id = u.id)))
      JOIN projects p ON ((p.id = c.project_id)))
      JOIN payments pa ON ((pa.contribution_id = c.id)))
-     LEFT JOIN user_totals ut ON ((ut.id = u.id)))
+     LEFT JOIN "1".user_totals ut ON ((ut.id = u.id)))
      LEFT JOIN rewards r ON ((r.id = c.reward_id)))
      LEFT JOIN surveys s ON ((s.reward_id = c.reward_id)))
   WHERE is_owner_or_admin(p.user_id)
