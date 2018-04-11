@@ -86,6 +86,7 @@ class FlexProjectMachine
       from_state = transition.metadata[:from_state]
 
       project.notify_observers :"from_#{from_state}_to_#{transition.to_state}"
+      project.index_on_common
     end
 
     after_transition(to: :successful) do |project|
