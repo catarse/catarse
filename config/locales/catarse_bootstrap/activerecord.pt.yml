@@ -465,8 +465,8 @@ pt:
     anonymous: Anônimo
     address_type: Tipo de endereço
     street: Rua
-    complement: Complemento
     address_number: Número
+    complement: Complemento
     neighbourhood: Bairro
     city: Cidade
     address_state: Estado
