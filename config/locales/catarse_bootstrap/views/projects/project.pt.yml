@@ -130,12 +130,16 @@ pt:
           draft: '<span class="fontweight-semibold">Bem-vindo ao rascunho %{username}</span><br/><br/>Esse é o momento para você construir a sua página e planejar a sua campanha! Antes de publicar seu projeto, preencha todas as abas ao lado com carinho. Conforme você for preenchendo a sua página, vá salvando as alterações. Você pode trabalhar em seu rascunho durante o tempo que quiser. Quando tudo estiver pronto para o lançamento, clique no botão CONTINUAR.<br/><br/><span class="card u-radius"><span class="fa fa-lightbulb-o"></span> Aprenda a planejar <a class="alt-link" target="_blank" href="https://catarse.attach.io/HySxkQXkg">sua campanha de financiamento coletivo!</a></span>'
       visitors_per_day_label: 'Visitantes por dia'
       amount_per_day_label: 'R$ arrecadados por dia'
+      amount_per_day_label_sub: 'Nova receita por dia'
       contributions_per_day_label: 'Apoios confirmados por dia'
+      contributions_per_day_label_sub: 'Novos assinantes por dia'
       location_origin_title: 'Localização geográfica dos apoios'
       ref_origin_title: 'Origem dos apoios'
       visitors_per_day_empty: Assim que visitantes começarem a aparecer você terá acesso a um gráfico aqui com o número de visitantes por dia. Com isso, você terá um controle diário de quantas pessoas visitam seu projeto.
       amount_per_day_empty: Assim que os apoios começarem a aparecer você terá acesso a um gráfico aqui com o total de R$ arrecadados dia a dia. Com isso, você terá um controle diário de quanto falta para você atingir a sua meta de arrecadação.
+      amount_per_day_empty_sub: Assim que o seu primeiro assinante for confirmado, você terá acesso a um gráfico mostrando o total de Receita mensal que seus novos assinantes (dos últimos 30 dias) estão trazendo ao seu projeto.
       contributions_per_day_empty: Você ainda não tem nenhum apoio ao seu projeto. Assim que os apoios começarem a aparecer você terá acesso a um gráfico aqui com o total de apoios confirmados dia a dia. Boa sorte!
+      contributions_per_day_empty_sub: Assim que o seu primeiro assinante for confirmado , você terá acesso a um gráfico mostrando o número de novos assinantes confirmados por dia (somente dos últimos 30 dias).
       contributions_per_ref_empty: Assim que os apoios começarem a aparecer você terá acesso a uma tabela aqui com a origem dos seus apoios. Com isso você poderá medir suas ações de comunicação e marketing da campanha!
       contributions_per_location_empty: Assim que os apoios começarem a aparecer você terá acesso a uma tabela aqui com a localização geográfica dos seus apoiadores. Com isso você pode saber de que parte do país estão vindo os seus principais colaboradores!
     project:
