@@ -82,6 +82,7 @@ end
   stats.pagarme__payments
   stats.subscription_info_by_week
   stats.subscription_info_by_month
+  stats.financeiro_transferencias_desde_14032018
 ].each do |v|
   every 1.day, at: '00:30 am' do
     command generate_psql_c(v)
