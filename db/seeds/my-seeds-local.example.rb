@@ -6,7 +6,7 @@ puts "Adding OauthProvider settings..."
   puts "  Facebook..."
 
   ## catarse-local-dev Facebook App
-  facebook = OauthProvider.find_or_initialize_by_name 'facebook' 
+  facebook = OauthProvider.where(name: 'facebook').first_or_initialize
   facebook.update_attributes(
     key: '556758001037275',
     secret: '5b3a847321b426f9dabd011359a21400',
@@ -50,10 +50,7 @@ puts "Creating Configuration entries..."
   support_forum: 'YOUR_SUPPORT_URL',
   
 }.each do |name, value|
-   conf = Configuration.find_or_initialize_by_name name
-   conf.update_attributes({
-     value: value
-   })
+  CatarseSettings[name] = value
 end
 
 puts 
@@ -76,7 +73,7 @@ puts '============================================='
 puts ' Showing all entries in Configuration Table...'
 puts '---------------------------------------------'
 
-Configuration.all.each do |conf|
+CatarseSettings.all.each do |conf|
   a = conf.attributes
   puts "  #{a['name']}: #{a['value']}"
 end
