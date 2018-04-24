@@ -12,7 +12,7 @@ class Admin::ContributionsController < Admin::BaseController
       payment.chargeback
     end
 
-    render json: { contribution_ids: collection.pluck(:id) }
+    render json: { payment_ids: collection.pluck(:id) }
   end
 
   # gateway_refund is used as external action in catarse.js
@@ -35,6 +35,6 @@ class Admin::ContributionsController < Admin::BaseController
   end
 
   def collection
-    ContributionDetail.where(id: params[:contribution_ids])
+    ContributionDetail.where(id: params[:payment_ids])
   end
 end
