@@ -13,7 +13,7 @@ pt:
         confirmed_amount_by_day: 'Total arrecadado por dia'
         address_state: 'Total de apoios confirmados por Estado'
     reminder:
-      ok: 'Ok! Vamos te mandar um lembrete por e-mail 48 horas antes do fim da campanha'
+      ok: 'Ok, Vamos te mandar um lembrete por e-mail antes do fim da campanha!'
       active_btn: 'Lembre-me deste projeto'
       deactive_btn: 'Não quero mais ser lembrado'
     announce_expiration: 'Seu projeto foi para reta final.'
