@@ -83,7 +83,7 @@ pt:
         profile_contributed_projects: 'Perfil público de usuário (projetos apoiados)'
         user_contributions: 'Perfil de usuário (projetos apoiados)'
         notificacao_projeto_nao_financiado: 'Notificação de projeto não financiado'
-        notificacao_reminder: 'Notificação de Lembrete 48 horas'
+        notificacao_reminder: 'Notificação de Lembrete final da campanha'
         profile_dashboard_created_projects: 'Perfil privado de usuário (projetos criados)'
         ctrse_hello: 'Página Saiba Mais do Catarse'
         credits_warning_more_group: 'Notificação de créditos'
