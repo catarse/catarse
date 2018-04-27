@@ -8,6 +8,16 @@ RSpec.describe ContributionObserver do
   subject { contribution }
 
   describe 'after_create' do
+    context 'every contribution' do
+      let(:project) { create_project({ online_days: 2 }, { to_state: 'online', created_at: Time.now - 1.day }) }
+      before do
+        expect(RecommenderTrainWorker).to receive(:perform_async)
+      end
+      it 'should train collaborative filtering model' do
+        contribution.save
+      end
+    end
+
     context 'when project expires_at less than 2 days in the future' do
       let(:project) { create_project({ online_days: 2 }, { to_state: 'online', created_at: Time.now - 1.day }) }
 
@@ -19,6 +29,7 @@ RSpec.describe ContributionObserver do
         contribution.save
       end
     end
+
 
     context 'when project expires_at is 2 days in the future' do
       let(:project) { create_project({ online_days: 3 }, { to_state: 'online', created_at: Time.now }) }
