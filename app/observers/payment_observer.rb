@@ -19,6 +19,12 @@ class PaymentObserver < ActiveRecord::Observer
                                    from_email: payment.user.email,
                                    from_name: payment.user.display_name
                                  })
+    payment.contribution.notify_once(
+      :project_owner_chargeback,
+      payment.project.user,
+      payment.contribution,
+      {}
+    ) unless %w(failed draft rejected).include?(project.state)
     BalanceTransaction.insert_contribution_chargeback(payment.id)
   end
   alias from_refunded_to_chargeback from_paid_to_chargeback
