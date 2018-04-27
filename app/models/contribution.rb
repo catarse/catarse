@@ -123,6 +123,10 @@ class Contribution < ActiveRecord::Base
     balance_transactions.where(event_name: 'contribution_chargedback').exists?
   end
 
+	def project_owner_has_balance_to_cover_chargeback?
+		project.user.total_balance >= (value - (value * project.service_fee))
+	end
+
   # Used in payment engines
   def price_in_cents
     (value * 100).round
