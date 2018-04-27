@@ -28,9 +28,11 @@ class BalanceTransaction < ActiveRecord::Base
   def self.insert_contribution_chargeback(payment_id)
     payment = Payment.find payment_id
     contribution = payment.contribution
+    project = contribution.project
 
     return unless payment.chargeback?
     return if contribution.chargedback_on_balance?
+    return unless project.successful_pledged_transaction.present?
 
     create!(
       user_id: contribution.project.user_id,

@@ -79,6 +79,7 @@ RSpec.describe BalanceTransaction, type: :model do
     context 'when payment is chargeback' do
       subject { payment.contribution.balance_transactions.last }
       before do
+        allow_any_instance_of(Project).to receive(:successful_pledged_transaction).and_return({id: 'mock'})
         payment.chargeback
       end
       it 'should create a balance transaction with negative amount' do
@@ -94,12 +95,27 @@ RSpec.describe BalanceTransaction, type: :model do
     context 'when already have event generated' do
       subject { payment.contribution.balance_transactions.last }
       before do
+        allow_any_instance_of(Project).to receive(:successful_pledged_transaction).and_return({id: 'mock'})
         payment.chargeback
       end
       it 'should not create a new transaction' do
         expect(subject.event_name).to eq('contribution_chargedback')
         call_again = BalanceTransaction.insert_contribution_chargeback(payment.id) 
         expect(call_again).to be_nil
+      end
+    end
+
+    context 'when project is not received the successful project pledged event' do
+      subject { BalanceTransaction.insert_contribution_chargeback(payment.id) }
+
+      before do
+        allow_any_instance_of(Project).to receive(:successful_pledged_transaction).and_return(nil)
+      end
+
+      it { is_expected.to be_nil }
+
+      it 'should not create chargeback on balance' do
+        expect(payment.contribution.chargedback_on_balance?).to eq(false)
       end
     end
 
