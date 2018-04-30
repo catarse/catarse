@@ -24,7 +24,7 @@ class PaymentObserver < ActiveRecord::Observer
       payment.project.user,
       payment.contribution,
       {}
-    ) unless %w(failed draft rejected).include?(project.state)
+    ) unless %w(failed draft rejected).include?(payment.project.state)
     BalanceTransaction.insert_contribution_chargeback(payment.id)
   end
   alias from_refunded_to_chargeback from_paid_to_chargeback
