@@ -220,6 +220,7 @@ RSpec.describe Contribution, type: :model do
 
     context 'when payment is chargeback with balance' do
       before do
+        allow_any_instance_of(Project).to receive(:successful_pledged_transaction).and_return({id: 'mock'})
         payment.chargeback
         BalanceTransaction.insert_contribution_chargeback(payment.id) 
       end

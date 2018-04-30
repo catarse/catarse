@@ -48,6 +48,7 @@ RSpec.describe Admin::ContributionsController, type: :controller do
 
     context 'when admin logged' do
       before do
+        allow_any_instance_of(Project).to receive(:successful_pledged_transaction).and_return({id: 'mock'})
         post :batch_chargeback, payment_ids: [payment.id, payment_2.id, payment_3.id], locale: :pt
       end
 
