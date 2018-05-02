@@ -11,6 +11,7 @@ class CommonWrapper
       community_service: URI::parse(CatarseSettings[:common_community_service_api]),
       project_service: URI::parse(CatarseSettings[:common_project_service_api]),
       analytics_service: URI::parse(CatarseSettings[:common_analytics_service_api]),
+      recommender_service: URI::parse(CatarseSettings[:common_recommender_service_api]),
       payment_service: URI::parse(CatarseSettings[:common_payment_service_api])
     }
   end
@@ -142,6 +143,24 @@ class CommonWrapper
       json = ActiveSupport::JSON.decode(response.body)
       common_id = json.try(:[], 'id')
       return common_id
+    else
+      Rails.logger.info(response.body)
+    end
+
+    return
+  end
+
+  def train_recommender(resource)
+    uri = services_endpoint[:recommender_service]
+    uri.path = '/traincf'
+    response = request(
+      uri.to_s,
+      action: :get,
+      current_ip: resource.current_sign_in_ip
+    ).run
+
+    if response.success?
+      return ActiveSupport::JSON.decode(response.body)
     else
       Rails.logger.info(response.body)
     end
