@@ -19,6 +19,8 @@ pt:
         subscription_payment: '%{subscriber_name} %{subscription_reward_label} - (Assinatura %{project_name})'
         contribution_refund: 'Reembolso do projeto %{project_name}'
         refund_contributions: 'Reembolso para apoiadores do projeto %{project_name}'
+        contribution_chargedback: 'Contestação de apoio para o projeto %{project_name}'
+        subscription_payment_chargedback: 'Contestação de apoio para o projeto %{project_name}'
       debit: 'Saída'
       credit: 'Entrada'
       totals: 'Saldo '

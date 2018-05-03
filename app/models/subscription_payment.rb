@@ -1,4 +1,6 @@
 class SubscriptionPayment < ActiveRecord::Base
+  include Shared::CommonWrapper
+
   self.table_name = 'common_schema.catalog_payments'
   belongs_to :user, primary_key: :common_id
   belongs_to :project, primary_key: :common_id
@@ -11,7 +13,20 @@ class SubscriptionPayment < ActiveRecord::Base
     balance_transactions.where(event_name: %i[subscription_fee subscription_payment]).present?
   end
 
+  def chargedback_on_balance?
+    balance_transactions.where(event_name: 'subscription_payment_chargedback').exists?
+  end
+
   def amount
     data['amount'].to_f / 100
+  end
+
+  def chargeback?
+    status == 'chargedback'
+  end
+
+  def chargeback
+    BalanceTransaction.insert_subscription_payment_chargedback(id)
+    common_wrapper.chargeback_payment(id)
   end
 end

@@ -64,6 +64,63 @@ RSpec.describe BalanceTransaction, type: :model do
     end
   end
 
+  describe 'insert_contribution_chargeback' do
+    let!(:confirmed_contribution) { create(:confirmed_contribution) }
+    let!(:payment) { confirmed_contribution.payments.last }
+
+    subject { BalanceTransaction.insert_contribution_chargeback(payment.id) }
+
+    context 'when payment is not chargeback' do
+      it 'should do nothing' do
+        is_expected.to be_nil
+      end
+    end
+
+    context 'when payment is chargeback' do
+      subject { payment.contribution.balance_transactions.last }
+      before do
+        allow_any_instance_of(Project).to receive(:successful_pledged_transaction).and_return({id: 'mock'})
+        payment.chargeback
+      end
+      it 'should create a balance transaction with negative amount' do
+        expect(subject.event_name).to eq('contribution_chargedback')
+        expect(subject.user_id).to eq(confirmed_contribution.project.user_id)
+        expect(subject.contribution_id).to eq(confirmed_contribution.id)
+        expect(subject.amount).to eq(
+          (((confirmed_contribution.value) - (confirmed_contribution.value * confirmed_contribution.project.service_fee)) * -1)
+        )
+      end
+    end
+
+    context 'when already have event generated' do
+      subject { payment.contribution.balance_transactions.last }
+      before do
+        allow_any_instance_of(Project).to receive(:successful_pledged_transaction).and_return({id: 'mock'})
+        payment.chargeback
+      end
+      it 'should not create a new transaction' do
+        expect(subject.event_name).to eq('contribution_chargedback')
+        call_again = BalanceTransaction.insert_contribution_chargeback(payment.id) 
+        expect(call_again).to be_nil
+      end
+    end
+
+    context 'when project is not received the successful project pledged event' do
+      subject { BalanceTransaction.insert_contribution_chargeback(payment.id) }
+
+      before do
+        allow_any_instance_of(Project).to receive(:successful_pledged_transaction).and_return(nil)
+      end
+
+      it { is_expected.to be_nil }
+
+      it 'should not create chargeback on balance' do
+        expect(payment.contribution.chargedback_on_balance?).to eq(false)
+      end
+    end
+
+  end
+
   describe '#insert_successful_project_transactions' do
     let(:project) { create(:project, goal: 30, state: 'online') }
     let!(:contribution) { create(:confirmed_contribution, value: 20_000, project: project) }
