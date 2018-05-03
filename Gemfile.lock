@@ -145,7 +145,7 @@ GEM
     concurrent-ruby (1.0.5)
     connection_pool (2.2.0)
     cpf_cnpj (0.3.0)
-    crass (1.0.3)
+    crass (1.0.4)
     daemons (1.2.4)
     database_cleaner (1.5.3)
     dbhero (1.1.12)
@@ -411,8 +411,8 @@ GEM
       activesupport (>= 3.2)
       choice (~> 0.2.0)
       ruby-graphviz (~> 1.2)
-    rails-html-sanitizer (1.0.3)
-      loofah (~> 2.0)
+    rails-html-sanitizer (1.0.4)
+      loofah (~> 2.2, >= 2.2.2)
     rails-observers (0.1.2)
       activemodel (~> 4.0)
     rails_12factor (0.0.3)
@@ -726,6 +726,7 @@ DEPENDENCIES
   pundit
   rails (~> 4.2.10)
   rails-erd
+  rails-html-sanitizer (~> 1.0.4)
   rails-observers
   rails_12factor
   ranked-model
