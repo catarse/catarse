@@ -16,6 +16,7 @@ class BalanceTransaction < ActiveRecord::Base
     subscription_payment
     contribution_chargedback
     subscription_payment_chargedback
+    balance_expired
   ].freeze
 
   belongs_to :project
@@ -24,6 +25,21 @@ class BalanceTransaction < ActiveRecord::Base
 
   validates :event_name, inclusion: { in: EVENT_NAMES }
   validates :amount, :event_name, :user_id, presence: true
+
+  ## CLASS METHODS
+
+  def self.insert_balance_expired(balance_transaction_id)
+		transaction = self.find balance_transaction_id
+		return unless transaction.can_expire_on_balance?
+
+    create!(
+      user_id: transaction.user_id,
+      event_name: 'balance_expired',
+      amount: (transaction.amount * -1),
+      contribution_id: transaction.contribution_id,
+      project_id: transaction.project_id
+    )
+  end
 
   def self.insert_contribution_chargeback(payment_id)
     payment = Payment.find payment_id
@@ -160,5 +176,18 @@ class BalanceTransaction < ActiveRecord::Base
       #   ))
       # end
     end
+  end
+
+
+  ## INSTANCE METHODS
+
+  def can_expire_on_balance?
+		pluck_from_database("can_expire_on_balance")
+  end
+
+  private
+
+  def pluck_from_database(field)
+		BalanceTransaction.where(id: id).pluck("balance_transactions.#{field}").first
   end
 end
