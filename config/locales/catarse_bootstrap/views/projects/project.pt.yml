@@ -133,6 +133,7 @@ pt:
       amount_per_day_label_sub: 'Nova receita por dia'
       contributions_per_day_label: 'Apoios confirmados por dia'
       contributions_per_day_label_sub: 'Novos assinantes por dia'
+      last_30_days_indication: 'Últimos 30 dias'
       location_origin_title: 'Localização geográfica dos apoios'
       ref_origin_title: 'Origem dos apoios'
       visitors_per_day_empty: Assim que visitantes começarem a aparecer você terá acesso a um gráfico aqui com o número de visitantes por dia. Com isso, você terá um controle diário de quantas pessoas visitam seu projeto.
