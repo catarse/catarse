@@ -21,7 +21,7 @@ pt:
         refund_contributions: 'Reembolso para apoiadores do projeto %{project_name}'
         contribution_chargedback: 'Contestação de apoio para o projeto %{project_name}'
         subscription_payment_chargedback: 'Contestação de apoio para o projeto %{project_name}'
-        balance_expired: "Reembolso não requisitado dentro do prazo de 90 dias. Consulte <a target='__blank' href='https://suporte.catarse.me/hc/pt-br/articles/202365507-Regras-e-funcionamento-dos-reembolsos-estornos-cancelamentos'>nossa política</a>"
+        balance_expired: "Reembolso não requisitado dentro do prazo de 90 dias. Consulte <a target='__blank' href='https://suporte.catarse.me/hc/pt-br/articles/202365507-Regras-e-funcionamento-dos-reembolsos-estornos-cancelamentos#reembolso90dias'>nossa política</a>"
       debit: 'Saída'
       credit: 'Entrada'
       totals: 'Saldo '
