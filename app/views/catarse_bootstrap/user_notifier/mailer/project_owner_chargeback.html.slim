@@ -6,7 +6,7 @@
 - terms_link = terms_of_use_url
 - company_name = CatarseSettings[:company_name]
 - value_without_fee = (contribution.value - (contribution.value * project.service_fee))
-- fmt_value_without_fee = number_to_currency(value_without_fee)
+- fmt_value_without_fee = number_to_currency(value_without_fee, precision: 2)
 
 | Olá #{project.user.display_name},
 br/
@@ -58,11 +58,12 @@ p
 	br/
 	| Telefone do apoiador: #{contribution.user.phone_number}
 	br/
-	| Valor apoiado: #{number_to_currency contribution.value}
+	| Valor apoiado: #{number_to_currency contribution.value, precision: 2}
 	br/
-	| Recompensa selecionada:
-	br/
-	= contribution.reward.try(:description)
+    - if contribution.reward.present?
+	  | Recompensa selecionada:
+	  br/
+	  = contribution.reward.try(:description)
 
 p
 	| Você pode acessar o #{link_to 'relatório de apoios', contributions_report_project_url(project)} contestados a qualquer momento.
