@@ -11,6 +11,7 @@ class CommonWrapper
       community_service: URI::parse(CatarseSettings[:common_community_service_api]),
       project_service: URI::parse(CatarseSettings[:common_project_service_api]),
       analytics_service: URI::parse(CatarseSettings[:common_analytics_service_api]),
+      recommender_service: URI::parse(CatarseSettings[:common_recommender_service_api]),
       payment_service: URI::parse(CatarseSettings[:common_payment_service_api])
     }
   end
@@ -149,6 +150,24 @@ class CommonWrapper
     return
   end
 
+  def train_recommender(resource)
+    uri = services_endpoint[:recommender_service]
+    uri.path = '/traincf'
+    response = request(
+      uri.to_s,
+      action: :get,
+      current_ip: resource.current_sign_in_ip
+    ).run
+
+    if response.success?
+      return ActiveSupport::JSON.decode(response.body)
+    else
+      Rails.logger.info(response.body)
+    end
+
+    return
+  end
+
   def index_user(resource)
     uri = services_endpoint[:community_service]
     uri.path = '/rpc/user'
@@ -266,6 +285,21 @@ class CommonWrapper
     end
 
     return common_id;
+  end
+
+  def chargeback_payment(payment_uuid)
+    uri = services_endpoint[:payment_service]
+    uri.path = '/rpc/chargeback_payment'
+    response = request(
+      uri.to_s,
+      body: {
+        id: payment_uuid
+      }.to_json,
+      action: :post
+    ).run
+
+    Rails.logger.info(response.body)
+    response.success?
   end
 
   def base_headers(current_ip)
