@@ -104,6 +104,7 @@ class BalanceTransaction < ActiveRecord::Base
   def self.insert_project_refund_contributions(project_id)
     project = Project.find project_id
     return unless project.all_pledged_kind_transactions.present?
+    return if project.balance_transactions.where(event_name: 'refund_contributions').exists?
 
     transaction do
       default_params = {

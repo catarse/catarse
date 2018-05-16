@@ -322,4 +322,55 @@ RSpec.describe BalanceTransaction, type: :model do
     end
   end
 
+  describe 'insert_project_refund_contributions' do
+    let(:project) { create(:project, goal: 30, state: 'online') }
+    let!(:contribution) { create(:confirmed_contribution, value: 20_000, project: project) }
+    let!(:contribution_2) { create(:confirmed_contribution, value: 20_000, project: project) }
+
+    subject { BalanceTransaction.insert_project_refund_contributions(project.id)}
+
+    context 'when project not received any pledged on balance' do
+      it 'should nil' do
+        expect(subject).to be_nil
+      end
+    end
+
+    context 'when project already received any pledged balance' do
+      before do
+        project.update_attributes(expires_at: 2.minutes.ago)
+        project.finish
+        project.reload
+      end
+
+      it 'should generate refund_contributions on project owner' do
+        expect(subject.event_name).to eq('refund_contributions')
+        expect(subject.project_id).to eq(project.id)
+        expect(subject.user_id).to eq(project.user_id)
+        expect(subject.amount).to eq(-(project.total_amount_tax_included))
+        expect(project.user.total_balance.to_f).to eq(0)
+      end
+
+      it 'should do nothing when already refund_contributions event' do
+        subject
+        attempt_2 = BalanceTransaction.insert_project_refund_contributions(project.id)
+        expect(attempt_2).to be_nil
+      end
+    end
+
+    context 'when project have pledged on balance and have contribution_refunded in period' do
+      before do
+        Sidekiq::Testing.inline!
+        project.update_attributes(expires_at: 2.minutes.ago)
+        project.finish
+        contribution_2.payments.last.direct_refund
+        project.reload
+      end
+
+      it 'should refund with correct value' do
+        expect(subject.amount).to eq((contribution.value-(contribution.value*project.service_fee))*-1)
+      end
+    end
+
+  end
+
 end
