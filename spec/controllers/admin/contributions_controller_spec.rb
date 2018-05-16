@@ -13,13 +13,28 @@ RSpec.describe Admin::ContributionsController, type: :controller do
 
   describe 'POST batch_chargeback' do
     let!(:confirmed_contribution) { create(:confirmed_contribution) }
-    let!(:payment) { confirmed_contribution.payments.last }
+    let!(:payment) do
+      _p = confirmed_contribution.payments.last
+      _p.gateway_id = _p.id
+      _p.save
+      _p
+    end
 
     let!(:confirmed_contribution_2) { create(:confirmed_contribution) }
-    let!(:payment_2) { confirmed_contribution_2.payments.last }
+    let!(:payment_2) do
+      _p = confirmed_contribution_2.payments.last
+      _p.gateway_id = _p.id
+      _p.save
+      _p
+    end
 
     let!(:pending_contribution) { create(:pending_contribution) }
-    let!(:payment_3) { pending_contribution.payments.last }
+    let!(:payment_3) do
+      _p = pending_contribution.payments.last
+      _p.gateway_id = _p.id
+      _p.save
+      _p
+    end
 
 
     context 'when not logged' do
