@@ -88,6 +88,7 @@ class User < ActiveRecord::Base
   has_many :links, class_name: 'UserLink', inverse_of: :user
   has_many :balance_transactions
   has_many :mail_marketing_users
+  has_many :subscriptions,  foreign_key: :user_id, primary_key: :common_id
   has_and_belongs_to_many :recommended_projects, join_table: :recommendations, class_name: 'Project'
 
   begin
@@ -261,6 +262,9 @@ class User < ActiveRecord::Base
     notify(:user_deactivate)
     update_attributes deactivated_at: Time.current, reactivate_token: Devise.friendly_token
     contributions.update_all(anonymous: true)
+    subscriptions.where(status: %w(inactive active started canceling)).find_each do |_sub|
+      common_wrapper.cancel_subscription(_sub)
+    end
   end
 
   def made_any_contribution_for_this_project?(project_id)
