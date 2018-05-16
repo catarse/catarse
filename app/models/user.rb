@@ -262,7 +262,7 @@ class User < ActiveRecord::Base
     notify(:user_deactivate)
     update_attributes deactivated_at: Time.current, reactivate_token: Devise.friendly_token
     contributions.update_all(anonymous: true)
-    subscriptions.where(status: %w(inactive active started canceling)).find_each do |_sub|
+    subscriptions.where(status: %w(inactive active started canceling)).order(id: :desc).find_each do |_sub|
       common_wrapper.cancel_subscription(_sub)
     end
   end
