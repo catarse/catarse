@@ -203,6 +203,21 @@ RSpec.describe BalanceTransaction, type: :model do
       end
     end
 
+    context 'when project already received the successful pledged' do
+      before do
+        allow_any_instance_of(Project).to receive(:successful?).and_return(true)
+        allow_any_instance_of(Project).to receive(:successful_pledged_transaction).and_return([1])
+      end
+
+      it 'should generate a negative transaction on project owner balance' do
+        BalanceTransaction.insert_contribution_refund(contribution.id)
+        expect(project.user.balance_transactions.where(
+          event_name: 'contribution_refunded_after_successful_pledged',
+          amount: (contribution.value - (contribution.value*project.service_fee))*-1,
+        ).exists?).to eq(true)
+      end
+    end
+
 
   end
 

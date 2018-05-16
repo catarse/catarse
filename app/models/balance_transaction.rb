@@ -17,6 +17,8 @@ class BalanceTransaction < ActiveRecord::Base
     contribution_chargedback
     subscription_payment_chargedback
     balance_expired
+    contribution_refunded_after_successful_pledged
+    subscription_payment_refunded
   ].freeze
 
   belongs_to :project
@@ -116,8 +118,19 @@ class BalanceTransaction < ActiveRecord::Base
 
   def self.insert_contribution_refund(contribution_id)
     contribution = Contribution.find contribution_id
+    project = contribution.project
     return unless contribution.confirmed?
     return if contribution.balance_refunded?
+
+    if project.successful? && project.successful_pledged_transaction.present?
+      create!(
+        user_id: project.user_id,
+        event_name: 'contribution_refunded_after_successful_pledged',
+        amount: (contribution.value-(contribution.value*project.service_fee))*-1,
+        contribution_id: contribution.id,
+        project_id: project.id
+      )
+    end
 
     create!(
       user_id: contribution.user_id,
