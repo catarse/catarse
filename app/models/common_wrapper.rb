@@ -302,6 +302,26 @@ class CommonWrapper
     response.success?
   end
 
+  def cancel_subscription(resource)
+    uri = services_endpoint[:payment_service]
+    uri.path = '/rpc/cancel_subscription'
+    response = request(
+      uri.to_s,
+      body: {
+        id: resource.id
+      }.to_json,
+      action: :post,
+      current_ip: resource.user.current_sign_in_ip
+    ).run
+
+    if response.success?
+      json = ActiveSupport::JSON.decode(response.body)
+      return json.try(:[], 'id')
+    else
+      Rails.logger.info(response.body)
+    end
+  end
+
   def base_headers(current_ip)
     h = {
       'Accept' => 'application/json',

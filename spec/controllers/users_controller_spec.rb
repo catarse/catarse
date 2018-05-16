@@ -35,6 +35,7 @@ RSpec.describe UsersController, type: :controller do
   subject { response }
   before do
     allow(controller).to receive(:current_user).and_return(current_user)
+    allow_any_instance_of(User).to receive(:cancel_all_subscriptions).and_return(true)
   end
 
   let(:successful_project) { create(:project, state: 'successful') }
