@@ -373,4 +373,44 @@ RSpec.describe BalanceTransaction, type: :model do
 
   end
 
+  describe 'insert_balance_transfer_between_users' do
+    let(:project) { create(:project, goal: 30, state: 'online') }
+    let!(:contribution) { create(:confirmed_contribution, value: 200, project: project) }
+    let(:user) { contribution.user }
+    let(:project_owner) { project.user }
+    
+    subject { BalanceTransaction.insert_balance_transfer_between_users(project_owner, user)}
+
+    context 'when user has no balance' do
+      it 'should not transfer' do
+        is_expected.to be_nil
+      end
+    end
+
+    context 'when user has balance' do
+      before do
+        # generate some balance to project owner
+        project.update_column(:expires_at, 5.days.ago)
+        project.finish
+      end
+
+      it 'should transfer all balance to another user' do
+        expect(subject).to_not be_nil
+        expect(user.balance_transactions.where(
+          event_name: 'balance_received_from',
+          from_user_id: project_owner.id,
+          to_user_id: user.id,
+          amount: contribution.value-(contribution.value*project.service_fee)
+        ).exists?).to eq(true)
+
+        expect(project_owner.balance_transactions.where(
+          event_name: 'balance_transferred_to',
+          from_user_id: project_owner.id,
+          to_user_id: user.id,
+          amount: (contribution.value-(contribution.value*project.service_fee))*-1
+        ).exists?).to eq(true)
+      end
+    end
+  end
+
 end

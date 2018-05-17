@@ -19,6 +19,8 @@ class BalanceTransaction < ActiveRecord::Base
     balance_expired
     contribution_refunded_after_successful_pledged
     subscription_payment_refunded
+    balance_transferred_to
+    balance_received_from
   ].freeze
 
   belongs_to :project
@@ -29,6 +31,28 @@ class BalanceTransaction < ActiveRecord::Base
   validates :amount, :event_name, :user_id, presence: true
 
   ## CLASS METHODS
+
+  def self.insert_balance_transfer_between_users(from_user, to_user)
+    from_user.reload
+    return if from_user.total_balance <= 0
+
+    transaction do
+      create!(
+        user_id: from_user.id,
+        from_user_id: from_user.id,
+        to_user_id: to_user.id,
+        amount: from_user.total_balance*-1,
+        event_name: 'balance_transferred_to'
+      )
+      create!(
+        user_id: to_user.id,
+        from_user_id: from_user.id,
+        to_user_id: to_user.id,
+        amount: from_user.total_balance,
+        event_name: 'balance_received_from'
+      )
+    end
+  end
 
   def self.insert_balance_expired(balance_transaction_id)
 		transaction = self.find balance_transaction_id
