@@ -15,8 +15,8 @@ class ChangeViewProjectReports < ActiveRecord::Migration
       FROM public.project_reports as project_reports
       WHERE is_owner_or_admin(project_reports.user_id);
 
-      grant select on public.project_reports to admin, postgrest, postgres;
-      grant select on "1"."project_reports" to admin, postgrest, postgres;
+      grant select on public.project_reports to admin, postgrest;
+      grant select on "1"."project_reports" to admin, postgrest;
 
       CREATE TRIGGER insert_project_report INSTEAD OF INSERT ON "1".project_reports FOR EACH ROW EXECUTE PROCEDURE insert_project_report();
 
@@ -56,8 +56,8 @@ class ChangeViewProjectReports < ActiveRecord::Migration
       FROM public.project_reports as project_reports
       WHERE is_owner_or_admin(project_reports.user_id);
 
-      grant select on public.project_reports to admin, postgrest, postgres;
-      grant select on "1"."project_reports" to admin, postgrest, postgres;
+      grant select on public.project_reports to admin, postgrest;
+      grant select on "1"."project_reports" to admin, postgrest;
 
       CREATE TRIGGER insert_project_report INSTEAD OF INSERT ON "1".project_reports FOR EACH ROW EXECUTE PROCEDURE insert_project_report();
 
