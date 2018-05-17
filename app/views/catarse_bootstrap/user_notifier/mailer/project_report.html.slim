@@ -21,6 +21,51 @@ br
 |Motivo da denúncia:
 = message.reason
 br
+
+- if message.data.cpf
+  |CPF
+  = message.data.cpf
+  br
+
+- if message.data.telephone
+  |Telefone
+  = message.data.telephone
+  br
+
+- if message.data.business_name
+  |Empresa
+  = message.data.business_name
+  br
+
+- if message.data.cnpj
+  |CNPJ
+  = message.data.cnpj
+  br
+
+- if message.data.business_role
+  |Cargo
+  = message.data.business_role
+  br
+
+- if message.data.relation_with_violated_property
+  |Relação com a propriedade que está sendo violada
+  = message.data.relation_with_violated_property
+  br
+
+- if message.data.full_name
+  |Nome Completo
+  = message.data.full_name
+  br
+
+- if message.data.project_infringes
+  |Este projeto está infringindo
+  = message.data.project_infringes
+  br
+
+- if message.data.terms_agreed
+  |Aceitou os termos
+  br
+
 |Detalhes:
 = message.details
 br
