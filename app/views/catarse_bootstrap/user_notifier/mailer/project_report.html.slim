@@ -22,47 +22,47 @@ br
 = message.reason
 br
 
-- if message.data['cpf']
+- if message.data['cpf'].present?
   |CPF
   = message.data['cpf']
   br
 
-- if message.data['telephone']
+- if message.data['telephone'].present?
   |Telefone
   = message.data['telephone']
   br
 
-- if message.data['business_name']
+- if message.data['business_name'].present?
   |Empresa
   = message.data['business_name']
   br
 
-- if message.data['cnpj']
+- if message.data['cnpj'].present?
   |CNPJ
   = message.data['cnpj']
   br
 
-- if message.data['business_role']
+- if message.data['business_role'].present?
   |Cargo
   = message.data['business_role']
   br
 
-- if message.data['relation_with_violated_property']
+- if message.data['relation_with_violated_property'].present?
   |Relação com a propriedade que está sendo violada
   = message.data['relation_with_violated_property']
   br
 
-- if message.data['full_name']
+- if message.data['full_name'].present?
   |Nome Completo
   = message.data['full_name']
   br
 
-- if message.data['project_infringes']
+- if message.data['project_infringes'].present?
   |Este projeto está infringindo
   = message.data['project_infringes']
   br
 
-- if message.data['terms_agreed']
+- if message.data['terms_agreed'].present?
   |Aceitou os termos
   br
 
