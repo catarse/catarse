@@ -1,64 +1,64 @@
 - message = @notification.project_report
 
-|Nome projeto denunciado:
+|Nome projeto denunciado: 
 = message.project.name
 br
-|Link projeto denunciado:
+|Link projeto denunciado: 
 = "catarse.me/#{message.project.permalink}"
 br
-|Status projeto:
+|Status projeto: 
 = message.project.state
 br
-|$ arrecadado:
+|$ arrecadado: 
 = message.project.pledged
 br
-|Contato realizador: email
+|Contato realizador: email 
 = message.project.user.email
 br
-|Telefone:
+|Telefone: 
 = message.project.user.phone_number
 br
-|Motivo da denúncia:
+|Motivo da denúncia: 
 = message.reason
 br
 
 - if message.data['cpf'].present?
-  |CPF
+  |CPF: 
   = message.data['cpf']
   br
 
 - if message.data['telephone'].present?
-  |Telefone
+  |Telefone: 
   = message.data['telephone']
   br
 
 - if message.data['business_name'].present?
-  |Empresa
+  |Empresa: 
   = message.data['business_name']
   br
 
 - if message.data['cnpj'].present?
-  |CNPJ
+  |CNPJ: 
   = message.data['cnpj']
   br
 
 - if message.data['business_role'].present?
-  |Cargo
+  |Cargo: 
   = message.data['business_role']
   br
 
 - if message.data['relation_with_violated_property'].present?
-  |Relação com a propriedade que está sendo violada
+  |Relação com a propriedade que está sendo violada: 
   = message.data['relation_with_violated_property']
   br
 
 - if message.data['full_name'].present?
-  |Nome Completo
+  |Nome Completo: 
   = message.data['full_name']
   br
 
 - if message.data['project_infringes'].present?
-  |Este projeto está infringindo
+  |Este projeto está infringindo: 
   = message.data['project_infringes']
   br
 
@@ -66,9 +66,9 @@ br
   |Aceitou os termos
   br
 
-|Detalhes:
+|Detalhes: 
 = message.details
 br
-|Email do denunciador:
+|Email do denunciador: 
 = message.email
 br
