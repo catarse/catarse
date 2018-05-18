@@ -203,6 +203,12 @@ RSpec.describe BalanceTransaction, type: :model do
       end
     end
 
+  end
+
+  describe 'insert_contribution_refunded_after_successful_pledged' do
+    let(:project) { create(:project, goal: 30, state: 'online') }
+    let!(:contribution) { create(:confirmed_contribution, value: 200, project: project) }
+
     context 'when project already received the successful pledged' do
       before do
         allow_any_instance_of(Project).to receive(:successful?).and_return(true)
@@ -210,15 +216,14 @@ RSpec.describe BalanceTransaction, type: :model do
       end
 
       it 'should generate a negative transaction on project owner balance' do
-        BalanceTransaction.insert_contribution_refund(contribution.id)
+        BalanceTransaction.insert_contribution_refunded_after_successful_pledged(contribution.id)
+
         expect(project.user.balance_transactions.where(
           event_name: 'contribution_refunded_after_successful_pledged',
           amount: (contribution.value - (contribution.value*project.service_fee))*-1,
         ).exists?).to eq(true)
       end
     end
-
-
   end
 
   describe 'insert_balance_expired' do

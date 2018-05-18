@@ -147,6 +147,20 @@ class BalanceTransaction < ActiveRecord::Base
     return unless contribution.confirmed?
     return if contribution.balance_refunded?
 
+    create!(
+      user_id: contribution.user_id,
+      event_name: 'contribution_refund',
+      amount: contribution.value,
+      contribution_id: contribution.id,
+      project_id: contribution.project_id
+    )
+  end
+
+  def self.insert_contribution_refunded_after_successful_pledged(contribution_id)
+    contribution = Contribution.find contribution_id
+    project = contribution.project
+    return unless contribution.confirmed?
+
     if project.successful? && project.successful_pledged_transaction.present?
       create!(
         user_id: project.user_id,
@@ -156,14 +170,6 @@ class BalanceTransaction < ActiveRecord::Base
         project_id: project.id
       )
     end
-
-    create!(
-      user_id: contribution.user_id,
-      event_name: 'contribution_refund',
-      amount: contribution.value,
-      contribution_id: contribution.id,
-      project_id: contribution.project_id
-    )
   end
 
   def self.insert_contribution_confirmed_after_project_finished(project_id, contribution_id)
