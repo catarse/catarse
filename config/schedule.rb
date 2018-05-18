@@ -56,12 +56,6 @@ end
 %w[
   public.moments_project_pageviews
   public.moments_project_pageviews_inferuser
-  public.recommend_projects
-  public.recommend_tanimoto_projects
-  public.recommend_users
-  public.recommend_tanimoto_user_contributions
-  public.recommend_tanimoto_user_reminders
-  public.recommend_tanimoto_user_visited
 ].each do |v|
   every 1.day, at: '00:30 am' do
     command generate_psql_c(v)
