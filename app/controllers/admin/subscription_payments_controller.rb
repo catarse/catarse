@@ -7,16 +7,17 @@ class Admin::SubscriptionPaymentsController < Admin::BaseController
 
   # batch_chargeback is used as external action in catarse.js
   def batch_chargeback
-    collection.each do |subscription_payment|
+    authorize Admin, :batch_chargeback?
+    collection_for_chargeback.each do |subscription_payment|
       susbcription_payment.chargeback
     end
 
-    render json: { subscription_payment_ids: collection.pluck(:id) }
+    render json: { subscription_payment_ids: collection_for_chargeback.pluck(:id) }
   end
 
   protected
 
-  def collection
-    SubscriptionPayment.where(id: params[:subscription_payment_ids])
+  def collection_for_chargeback
+    @collection_for_chargeback ||= SubscriptionPayment.where("gateway_general_data->>'gateway_id' in (?) and gateway_general_data->>'gateway_id' is not null", params[:gateway_payment_ids])
   end
 end
