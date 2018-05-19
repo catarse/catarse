@@ -1,7 +1,7 @@
 class ChangeContributionsWebReport < ActiveRecord::Migration
   def up
 	execute %Q{
-REATE OR REPLACE VIEW "1"."project_contributions" AS 
+CREATE OR REPLACE VIEW "1"."project_contributions" AS 
  SELECT c.anonymous,
     c.project_id,
     (c.reward_id)::numeric AS reward_id,
