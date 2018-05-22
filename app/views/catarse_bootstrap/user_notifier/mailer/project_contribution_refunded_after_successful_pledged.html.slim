@@ -1,0 +1,35 @@
+- contribution = @notification.contribution
+- project = contribution.project
+- owner = project.user
+- terms_link = terms_of_use_url
+- value_without_fee = (contribution.value - (contribution.value * project.service_fee))
+- fmt_value_without_fee = number_to_currency(value_without_fee, precision: 2)
+- company_name = CatarseSettings[:company_name]
+
+p
+  | Olá #{project.user.decorate.display_name},
+
+p
+  | O apoio realizado pelo #{contribution.user.decorate.display_name} foi cancelado e reembolsado. 
+
+p
+  | Isso pode ter acontecido por algum dos dois motivos seguintes:
+  br/
+  | - O próprio apoiador pediu o cancelamento do apoio e o Catarse executou o reembolso;
+  br/
+  | - Nosso sistema de segurança identificou comportamento fora do padrão e por isso cancelou a transação.
+p
+  | Seguindo nossos #{link_to 'termos de uso', terms_link}, o #{company_name} deduziu o valor do apoio do seu #{link_to 'saldo no Catarse', edit_user_url(owner, anchor: 'balance')}.
+p
+  | Caso seu saldo no Catarse não seja suficiente para quitar essa contestação, o valor será lançado e o saldo permanecerá negativo até que esse débito seja quitado através das seguintes opções:
+  br/
+  br/
+  | - Opção 1: Realizar o depósito de #{fmt_value_without_fee} para a conta do Catarse (Banco Itau, Ag 4465, CC 11152-6, CNPJ 14.512.425/0001-94) e enviar o comprovante para a nossa equipe, através deste #{link_to 'link', 'https://suporte.catarse.me/hc/pt-br/requests/new'}.
+  br/
+  br/
+  | - Opção 2: Entrar em contato com nosso #{link_to 'atendimento', 'https://suporte.catarse.me/hc/pt-br/requests/new'} e realizar o pagamento via  boleto bancário. 
+p
+  | Você pode acessar o #{link_to 'relatório de apoios', contributions_report_project_url(project)} cancelados e reembolsados a qualquer momento.
+
+p
+  = render partial: 'user_notifier/mailer/contact_info'

@@ -222,6 +222,11 @@ RSpec.describe BalanceTransaction, type: :model do
           event_name: 'contribution_refunded_after_successful_pledged',
           amount: (contribution.value - (contribution.value*project.service_fee))*-1,
         ).exists?).to eq(true)
+
+        expect(contribution.notifications.where(
+          user_id: project.user_id,
+          template_name: 'project_contribution_refunded_after_successful_pledged'
+        ).exists?).to eq(true)
       end
     end
   end
