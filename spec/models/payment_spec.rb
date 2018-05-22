@@ -82,6 +82,21 @@ RSpec.describe Payment, type: :model do
       end
     end
 
+    context 'when project is reaching 100% of goal first time' do
+      let(:project) { create(:project, state: 'online', goal: 100) }
+      let(:contribution) { create(:pending_contribution, value: 1000, project: project) }
+
+      it 'should create rdevent for 100_goal_reached' do
+        payment.pay
+        expect(Rdevent.where(
+            project_id: project.id,
+            user_id: project.user_id,
+            event_name: '100_goal_reached'
+        ).exists?).to eq(true)
+      end
+
+    end
+
     context 'when payment is not donated' do
       let(:contribution) { create(:refunded_contribution) }
       before { payment.pay }
