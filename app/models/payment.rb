@@ -22,10 +22,6 @@ class Payment < ActiveRecord::Base
     where('payments.slip_expired and payment_method = \'BoletoBancario\' and state = \'pending\'')
   }
 
-  # def self.all_boleto_that_should_be_refused
-  #   where('payments.slip_expired and payment_method = \'BoletoBancario\' and state = \'pending\'')
-  # end
-
   def self.slip_expiration_weekdays
     connection.select_one('SELECT public.slip_expiration_weekdays()')['slip_expiration_weekdays'].to_i
   end
