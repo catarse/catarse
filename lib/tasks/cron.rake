@@ -206,6 +206,14 @@ namespace :cron do
     end
   end
 
+  desc 'Refuse boleto payments that are 4 days or more old and not paid'
+  task refuse_4_days_more_unpaid_boletos: [:environment] do
+    Payment.all_boleto_that_should_be_refused.find_each do |payment|
+      payment.update_column('state', 'refused')
+      payment.save!
+    end
+  end
+
   desc 'sync FB friends'
   task sync_fb_friends: [:environment] do
     Authorization.where("last_token is not null and updated_at >= current_timestamp - '24 hours'::interval").each do |authorization|
@@ -229,6 +237,18 @@ namespace :cron do
       rescue Exception => e
         puts "error #{e}"
       end
+    end
+  end
+
+  desc 'register 100_goal_reached rdevent for projects'
+  task rdevent_100_goal_reached: [:environment] do
+    Project.joins(:project_total).where("project_totals.progress > 100 and not exists(select true from rdevents r  where r.project_id = projects.id and r.event_name = '100_goal_reached') and projects.state = 'online'").find_each do |project|
+      Rdevent.create(
+        project_id: project.id,
+        user_id: project.user.id,
+        event_name: '100_goal_reached'
+      )
+      puts "[100_goal_reached rdevent] project #{project.id}"
     end
   end
 end

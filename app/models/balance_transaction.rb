@@ -162,13 +162,20 @@ class BalanceTransaction < ActiveRecord::Base
     return unless contribution.confirmed?
 
     if project.successful? && project.successful_pledged_transaction.present?
-      create!(
-        user_id: project.user_id,
-        event_name: 'contribution_refunded_after_successful_pledged',
-        amount: (contribution.value-(contribution.value*project.service_fee))*-1,
-        contribution_id: contribution.id,
-        project_id: project.id
-      )
+      transaction do
+        contribution.notify_once(
+          :project_contribution_refunded_after_successful_pledged,
+          project.user,
+          contribution
+        )
+        create!(
+          user_id: project.user_id,
+          event_name: 'contribution_refunded_after_successful_pledged',
+          amount: (contribution.value-(contribution.value*project.service_fee))*-1,
+          contribution_id: contribution.id,
+          project_id: project.id
+        )
+      end
     end
   end
 
