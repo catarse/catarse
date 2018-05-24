@@ -110,7 +110,7 @@ class Payment < ActiveRecord::Base
     end
 
     event :pay do
-      transition %i[pending pending_refund chargeback refunded] => :paid,
+      transition %i[pending pending_refund chargeback refunded refused] => :paid,
                  unless: ->(payment) { payment.is_donation? }
     end
 
