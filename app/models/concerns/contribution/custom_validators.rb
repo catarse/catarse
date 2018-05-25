@@ -21,7 +21,7 @@ module Contribution::CustomValidators
         has_error = true
       end
 
-      if value.to_f < value_to_validate
+      if value < value_to_validate
         has_error = true
       end
 

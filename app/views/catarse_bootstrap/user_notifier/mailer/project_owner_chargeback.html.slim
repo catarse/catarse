@@ -6,7 +6,7 @@
 - terms_link = terms_of_use_url
 - company_name = CatarseSettings[:company_name]
 - value_without_fee = (contribution.value - (contribution.value * project.service_fee))
-- fmt_value_without_fee = number_to_currency(value_without_fee)
+- fmt_value_without_fee = number_to_currency(value_without_fee, precision: 2)
 
 | Olá #{project.user.display_name},
 br/
@@ -19,9 +19,9 @@ p
 
   p
     | Para reaver esse pagamento, 
-		strong
-			|recomendamos que entre em contato diretamente com o apoiador através do email ou telefone
-			|, pedindo para efetuar um novo pagamento para o seu projeto.
+	strong
+      |recomendamos que entre em contato diretamente com o apoiador através do email ou telefone
+      |, pedindo para efetuar um novo pagamento para o seu projeto.
 
 - elsif contribution.project_owner_has_balance_to_cover_chargeback?
 	p
@@ -29,13 +29,13 @@ p
 	p
 		| Para reaver esse pagamento, 
 		strong 
-			| recomendamos que entre em contato diretamente com o apoiador através do email ou telefone
+          | recomendamos que entre em contato diretamente com o apoiador através do email ou telefone
 		|, e peça para ele realizar um depósito direto na sua conta bancária.
 - elsif !contribution.project_owner_has_balance_to_cover_chargeback?
 	p
 		| Segundo nossos #{link_to 'termos de uso', terms_link}, como a transferência dos apoios ao projeto já foi efetuada, 
 		strong 
-			| você é o responsável por devolver o valor do apoio, descontadas as taxas de serviço cobradas pelo Catarse.
+          | você é o responsável por devolver o valor do apoio, descontadas as taxas de serviço cobradas pelo Catarse.
 	p
 		| Caso seu saldo no Catarse não seja suficiente para quitar essa contestação, o valor será lançado e o saldo permanecerá negativo até que esse débito seja quitado através das seguintes opções:
 		br/
@@ -58,11 +58,12 @@ p
 	br/
 	| Telefone do apoiador: #{contribution.user.phone_number}
 	br/
-	| Valor apoiado: #{number_to_currency contribution.value}
+	| Valor apoiado: #{number_to_currency contribution.value, precision: 2}
 	br/
-	| Recompensa selecionada:
-	br/
-	= contribution.reward.description
+    - if contribution.reward.present?
+	  | Recompensa selecionada:
+	  br/
+	  = contribution.reward.try(:description)
 
 p
 	| Você pode acessar o #{link_to 'relatório de apoios', contributions_report_project_url(project)} contestados a qualquer momento.

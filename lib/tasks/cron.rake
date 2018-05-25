@@ -239,4 +239,16 @@ namespace :cron do
       end
     end
   end
+
+  desc 'register 100_goal_reached rdevent for projects'
+  task rdevent_100_goal_reached: [:environment] do
+    Project.joins(:project_total).where("project_totals.progress > 100 and not exists(select true from rdevents r  where r.project_id = projects.id and r.event_name = '100_goal_reached') and projects.state = 'online'").find_each do |project|
+      Rdevent.create(
+        project_id: project.id,
+        user_id: project.user.id,
+        event_name: '100_goal_reached'
+      )
+      puts "[100_goal_reached rdevent] project #{project.id}"
+    end
+  end
 end

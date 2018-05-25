@@ -13,6 +13,10 @@ class BalanceTransfer < ActiveRecord::Base
     where("balance_transfers.current_state = 'processing'")
   }
 
+  scope :gateway_error, -> () {
+    where("balance_transfers.current_state = 'gateway_error'")
+  }
+
   scope :pending, -> () {
     where("balance_transfers.current_state = 'pending'")
   }

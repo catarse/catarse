@@ -9,6 +9,10 @@ RSpec.describe User, type: :model do
   let(:failed_project) { create(:project, state: 'online') }
   let(:facebook_provider) { create :oauth_provider, name: 'facebook' }
 
+  before do
+    allow_any_instance_of(User).to receive(:cancel_all_subscriptions).and_return(true)
+  end
+
   describe 'associations' do
     it { is_expected.to have_many(:payments).through(:contributions) }
     it { is_expected.to have_many :contributions }
@@ -261,6 +265,7 @@ RSpec.describe User, type: :model do
   describe '#deactivate' do
     before do
       @contribution = create(:contribution, user: user, anonymous: false)
+      expect(user).to receive(:cancel_all_subscriptions)
       user.deactivate
     end
 

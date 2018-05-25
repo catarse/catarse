@@ -203,7 +203,32 @@ RSpec.describe BalanceTransaction, type: :model do
       end
     end
 
+  end
 
+  describe 'insert_contribution_refunded_after_successful_pledged' do
+    let(:project) { create(:project, goal: 30, state: 'online') }
+    let!(:contribution) { create(:confirmed_contribution, value: 200, project: project) }
+
+    context 'when project already received the successful pledged' do
+      before do
+        allow_any_instance_of(Project).to receive(:successful?).and_return(true)
+        allow_any_instance_of(Project).to receive(:successful_pledged_transaction).and_return([1])
+      end
+
+      it 'should generate a negative transaction on project owner balance' do
+        BalanceTransaction.insert_contribution_refunded_after_successful_pledged(contribution.id)
+
+        expect(project.user.balance_transactions.where(
+          event_name: 'contribution_refunded_after_successful_pledged',
+          amount: (contribution.value - (contribution.value*project.service_fee))*-1,
+        ).exists?).to eq(true)
+
+        expect(contribution.notifications.where(
+          user_id: project.user_id,
+          template_name: 'project_contribution_refunded_after_successful_pledged'
+        ).exists?).to eq(true)
+      end
+    end
   end
 
   describe 'insert_balance_expired' do
@@ -303,6 +328,97 @@ RSpec.describe BalanceTransaction, type: :model do
 
       it 'should not create balance_expired event' do
         it { is_expected.to eq(false) }
+      end
+    end
+  end
+
+  describe 'insert_project_refund_contributions' do
+    let(:project) { create(:project, goal: 30, state: 'online') }
+    let!(:contribution) { create(:confirmed_contribution, value: 20_000, project: project) }
+    let!(:contribution_2) { create(:confirmed_contribution, value: 20_000, project: project) }
+
+    subject { BalanceTransaction.insert_project_refund_contributions(project.id)}
+
+    context 'when project not received any pledged on balance' do
+      it 'should nil' do
+        expect(subject).to be_nil
+      end
+    end
+
+    context 'when project already received any pledged balance' do
+      before do
+        project.update_attributes(expires_at: 2.minutes.ago)
+        project.finish
+        project.reload
+      end
+
+      it 'should generate refund_contributions on project owner' do
+        expect(subject.event_name).to eq('refund_contributions')
+        expect(subject.project_id).to eq(project.id)
+        expect(subject.user_id).to eq(project.user_id)
+        expect(subject.amount).to eq(-(project.total_amount_tax_included))
+        expect(project.user.total_balance.to_f).to eq(0)
+      end
+
+      it 'should do nothing when already refund_contributions event' do
+        subject
+        attempt_2 = BalanceTransaction.insert_project_refund_contributions(project.id)
+        expect(attempt_2).to be_nil
+      end
+    end
+
+    context 'when project have pledged on balance and have contribution_refunded in period' do
+      before do
+        Sidekiq::Testing.inline!
+        project.update_attributes(expires_at: 2.minutes.ago)
+        project.finish
+        contribution_2.payments.last.direct_refund
+        project.reload
+      end
+
+      it 'should refund with correct value' do
+        expect(subject.amount).to eq((contribution.value-(contribution.value*project.service_fee))*-1)
+      end
+    end
+
+  end
+
+  describe 'insert_balance_transfer_between_users' do
+    let(:project) { create(:project, goal: 30, state: 'online') }
+    let!(:contribution) { create(:confirmed_contribution, value: 200, project: project) }
+    let(:user) { contribution.user }
+    let(:project_owner) { project.user }
+    
+    subject { BalanceTransaction.insert_balance_transfer_between_users(project_owner, user)}
+
+    context 'when user has no balance' do
+      it 'should not transfer' do
+        is_expected.to be_nil
+      end
+    end
+
+    context 'when user has balance' do
+      before do
+        # generate some balance to project owner
+        project.update_column(:expires_at, 5.days.ago)
+        project.finish
+      end
+
+      it 'should transfer all balance to another user' do
+        expect(subject).to_not be_nil
+        expect(user.balance_transactions.where(
+          event_name: 'balance_received_from',
+          from_user_id: project_owner.id,
+          to_user_id: user.id,
+          amount: contribution.value-(contribution.value*project.service_fee)
+        ).exists?).to eq(true)
+
+        expect(project_owner.balance_transactions.where(
+          event_name: 'balance_transferred_to',
+          from_user_id: project_owner.id,
+          to_user_id: user.id,
+          amount: (contribution.value-(contribution.value*project.service_fee))*-1
+        ).exists?).to eq(true)
       end
     end
   end

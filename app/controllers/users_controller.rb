@@ -147,15 +147,6 @@ class UsersController < ApplicationController
   private
 
   def update_user
-    local_valid = @user.valid?
-    remote_valid = true
-    # we need to save with old params to run pagarme validations and check if user was valid
-    # we do not validate already invalid users due to legacy validation issues
-    begin
-      @user.save!
-    rescue
-      remote_valid = @user.valid?
-    end
     params[:user][:confirmed_email_at] = DateTime.now if params[:user].try(:[], :confirmed_email_at).present?
     @user.publishing_project = params[:user][:publishing_project].presence
     @user.publishing_user_about = params[:user][:publishing_user_about].presence
@@ -171,7 +162,7 @@ class UsersController < ApplicationController
       end
     else
       @user.update_without_password permitted_params
-      @user.save(validate: local_valid && remote_valid)
+      @user.save
     end
   end
 

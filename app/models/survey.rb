@@ -12,7 +12,7 @@ class Survey < ActiveRecord::Base
   accepts_nested_attributes_for :survey_multiple_choice_question_answers, allow_destroy: true
 
   def notify_to_contributors(template_name, options = {})
-    reward.contributions.was_confirmed.each do |contribution|
+    reward.contributions.is_confirmed.each do |contribution|
       contribution.notify(template_name, contribution.user, contribution, options)
     end
   end
