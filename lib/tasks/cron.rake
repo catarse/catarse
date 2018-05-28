@@ -210,6 +210,7 @@ namespace :cron do
   task refuse_4_days_more_unpaid_boletos: [:environment] do
     Payment.all_boleto_that_should_be_refused.find_each do |payment|
       payment.update_column('state', 'refused')
+      payment.update_column('refused_at', Time.current)
       payment.save!
     end
   end
