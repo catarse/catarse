@@ -113,6 +113,8 @@ class Reward < ActiveRecord::Base
       deliver_at: deliver_at.try(:strftime, "%FT%T"),
       row_order: row_order,
       title: title,
+      welcome_message_subject: welcome_message_subject,
+      welcome_message_body: welcome_message_body,
       description: description,
       created_at: created_at.strftime("%FT%T")
     }.merge!(id_hash)
