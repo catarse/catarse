@@ -23,11 +23,18 @@ p
   | ID do apoio: #{detail.gateway_id}
   br/
   / We need the || for some old projects do not have the account info
-  - owner = contribution.project.user
-  - owner_name = owner.try(:public_name)
-  | Nome público do realizador: #{owner_name}
-  br/
-
+  - if provisional_receipt
+    - owner = contribution.project.user
+    - owner_name = owner.try(:public_name)
+    | Nome público do realizador: #{owner_name}
+    br/
+  - else
+    - owner = contribution.project.user
+    - owner_name = owner.try(:name)
+    - owner_document = owner.try(:cpf)
+    | Nome/Razão Social do realizador: #{owner_name}
+    br/
+    | CPF/CNPJ do realizador: #{owner_document} 
 p
   ' É importante ressaltar que o Catarse <strong>não é uma loja</strong>,
   ' e que esse recibo é referente a um apoio que você fez para um projeto que você acredita ser viável.
