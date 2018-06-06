@@ -429,7 +429,7 @@ pt:
         paid: "Confirmado em %{date}"
         refunded: "Reembolsado em %{date}"
         pending_refund: "Reembolso solicitado em %{date}"
-        refused: "Pagamento não realizado até %{date}"
+        refused: "Pagamento não realizado"
         chargeback: "Contestado"      
       cartaodecredito:
         pending: "Aguardando confirmação do pagamento"
