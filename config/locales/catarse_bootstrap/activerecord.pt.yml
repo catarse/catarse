@@ -424,12 +424,20 @@ pt:
     video_regex_validation: somente URLs do Youtube ou Vimeo são aceitas
   payment:
     state:
-      pending: "Aguardando confirmação do pagamento"
-      paid: "Confirmado em %{date}"
-      refunded: "Reembolsado em %{date}"
-      pending_refund: "Reembolso solicitado em %{date}"
-      refused: "Pagamento recusado em %{date}"
-      chargeback: "Contestado"
+      boletobancario:
+        pending: "Aguardando confirmação do pagamento"
+        paid: "Confirmado em %{date}"
+        refunded: "Reembolsado em %{date}"
+        pending_refund: "Reembolso solicitado em %{date}"
+        refused: "Pagamento não realizado até %{date}"
+        chargeback: "Contestado"      
+      cartaodecredito:
+        pending: "Aguardando confirmação do pagamento"
+        paid: "Confirmado em %{date}"
+        refunded: "Reembolsado em %{date}"
+        pending_refund: "Reembolso solicitado em %{date}"
+        refused: "Pagamento recusado em %{date}"
+        chargeback: "Contestado"      
   contribution:
     payment_details:
       desconhecido: ""
