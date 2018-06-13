@@ -48,7 +48,7 @@ pt:
     reward_fields:
       edit: "Editar recompensa"
       reward: Recompensa
-      reward_know_more_cta_html: '&nbsp;Saiba como&nbsp;<a target="_blank" href="https://catarse.attach.io/Hk5H9HKeZ" class="alt-link">planejar suas recompensas.</a>'
+      reward_know_more_cta_html: '&nbsp;Saiba como&nbsp;<a target="_blank" href="https://catarse.attach.io/Hk5H9HKeZ" class="alt-link">planejar suas recompensas com esse ebook!</a>'
       reward_faq_intro: 'Antes de oferecer uma recompensa, é importante ter todos os processos de produção e entrega mapeados.'
       reward_faq_sub_intro: 'Dicas para o preenchimento:'
       faq:
