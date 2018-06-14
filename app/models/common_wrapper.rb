@@ -6,6 +6,10 @@ class CommonWrapper
     @api_key = api_key
   end
 
+  def common_api_endpoint
+    @common_api_endpoint ||= URI::parse(CatarseSettings[:common_api])
+  end
+
   def services_endpoint
     @services_endpoint ||= {
       community_service: URI::parse(CatarseSettings[:common_community_service_api]),
@@ -216,6 +220,43 @@ class CommonWrapper
     else
       Rails.logger.info(response.body)
       common_id = find_project(resource.id)
+    end
+
+    resource.update_column(
+      :common_id,
+      (common_id.presence || resource.common_id)
+    )
+
+    return common_id;
+  end
+
+  def index_goal(resource)
+    unless resource.project.common_id.present?
+      resource.project.index_on_common
+      resource.project.reload
+    end
+
+    uri = common_api_endpoint
+    uri.path = if resource.common_id.present?
+                 '/projects/' + resource.project.common_id + '/goals/' + resource.common_id
+               else
+                 '/projects/' + resource.project.common_id + '/goals'
+               end
+    response = request(
+      uri.to_s,
+      body: {
+        data: resource.common_index.to_json
+      }.to_json,
+      action: resource.common_id.present? ? :patch : :post,
+      current_ip: resource.project.user.current_sign_in_ip
+    ).run
+
+    if response.success?
+      json = ActiveSupport::JSON.decode(response.body)
+      common_id = json.try(:[], 'id')
+    else
+      Rails.logger.info(response.body)
+      common_id = find_goal(resource.id)
     end
 
     resource.update_column(
