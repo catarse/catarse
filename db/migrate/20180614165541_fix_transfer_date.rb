@@ -6,7 +6,7 @@ CREATE OR REPLACE FUNCTION public.transfer_limit_date(bt balance_transfers)
  LANGUAGE sql
 AS $function$
         select
-            zone_timestamp(weekdays_from(10, bt.created_at));
+            (weekdays_from(10, zone_timestamp(bt.created_at)));
     $function$
     SQL
   end
