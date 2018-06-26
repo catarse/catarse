@@ -8,7 +8,7 @@ p
   br/
   | Data da confirmação do apoio: #{I18n.l(detail.paid_at.to_date)}
   br/
-  | Valor total da contribuição: #{number_to_currency detail.gateway_amount}
+  | Valor total da contribuição: #{number_to_currency detail.gateway_amount, precision: 2}
   - if detail.installments > 1
     br/
     | Número de parcelas: #{detail.installments}
