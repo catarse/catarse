@@ -179,10 +179,23 @@ class User < ActiveRecord::Base
   end
 
   def owner_document_validation
-    if cpf.present? && (published_projects.present? || contributed_projects.present? || publishing_project)
-      unless account_type != 'pf' ? CNPJ.valid?(cpf) : CPF.valid?(cpf)
-        errors.add(:cpf, :invalid)
-      end
+    is_blacklisted = false
+    strippedCpf = ""
+<<<<<<< HEAD
+    
+=======
+>>>>>>> 6da5b3b76... blacklist documents to avoid publishing projects
+    if cpf.present?
+      strippedCpf = cpf.gsub(".","").gsub("-","")
+      blentry = BlacklistDocument.find_by_number(strippedCpf)
+      is_blacklisted = !blentry.nil?
+    end
+
+    document_is_invalid = cpf.present? && !(account_type != 'pf' ? CNPJ.valid?(cpf) : CPF.valid?(cpf))    
+    is_contributing_or_publishing_project = published_projects.present? || contributed_projects.present? || publishing_project
+
+    if cpf.present? && is_contributing_or_publishing_project && (document_is_invalid || is_blacklisted)
+      errors.add(:cpf, :invalid)
     end
   end
 
