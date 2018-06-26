@@ -8,12 +8,10 @@ p
   br/
   | Data da confirmação do apoio: #{I18n.l(detail.paid_at.to_date)}
   br/
-  | Valor da contribuição: #{number_to_currency contribution.value}
+  | Valor total da contribuição: #{number_to_currency detail.gateway_amount}
   - if detail.installments > 1
     br/
     | Número de parcelas: #{detail.installments}
-    br/
-    | Valor da parcela: #{number_to_currency(detail.installment_value, precision: 2)}
   br/
   -if contribution.reward.present?
     | Recompensa selecionada: #{contribution.reward.description}

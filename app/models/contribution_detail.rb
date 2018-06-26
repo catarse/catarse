@@ -55,6 +55,14 @@ class ContributionDetail < ActiveRecord::Base
 
   scope :ordered, -> { order(id: :desc) }
 
+  def gateway_amount
+    if payment && payment.gateway_data.present? && payment.gateway_data['amount'].present?
+      payment.gateway_data['amount'] / 100.0
+    else
+      payment.value
+    end
+  end
+
   def can_show_slip?
     slip_payment? && !slip_expired?
   end
