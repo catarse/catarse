@@ -157,4 +157,16 @@ class ApplicationController < ActionController::Base
       u.permit(:name, :email, :password, :newsletter)
     end
   end
+
+  def after_sign_in_path_for(resource)
+    session_return_to = session[:return_to]
+    session[:return_to] = nil
+    stored_location_for(resource) || session_return_to || root_path
+  end
+
+  def after_sign_up_path_for(resource)
+    session_return_to = session[:return_to]
+    session[:return_to] = nil
+    store_location_for(resource) || session_return_to || root_path
+  end
 end
