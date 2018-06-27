@@ -181,10 +181,7 @@ class User < ActiveRecord::Base
   def owner_document_validation
     is_blacklisted = false
     strippedCpf = ""
-<<<<<<< HEAD
     
-=======
->>>>>>> 6da5b3b76... blacklist documents to avoid publishing projects
     if cpf.present?
       strippedCpf = cpf.gsub(".","").gsub("-","")
       blentry = BlacklistDocument.find_by_number(strippedCpf)
