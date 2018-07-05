@@ -74,6 +74,10 @@ FactoryGirl.define do
     end
   end
 
+  factory :blacklist_document do |f|
+    f.number '97666238991'
+  end
+
   factory :category do |f|
     f.name_pt { generate(:name) }
   end

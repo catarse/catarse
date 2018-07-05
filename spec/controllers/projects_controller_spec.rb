@@ -61,7 +61,8 @@ RSpec.describe ProjectsController, type: :controller do
   describe 'GET push_to_online banned document' do
     let(:project) { create(:project, state: 'draft') }
     let(:current_user) { project.user }
-
+    let(:blacklist_document) { create(:blacklist_document, number: "123.456.789-01")}
+    
     before do
       current_user.update_attributes({
                                        address_city: 'foo',
@@ -73,7 +74,7 @@ RSpec.describe ProjectsController, type: :controller do
                                        phone_number: '33344455333',
                                        cpf: "123.456.789-01"
                                      })
-      create(:blacklist_document, number: current_user.cpf)
+      
       create(:reward, project: project)
       create(:bank_account, user: current_user)
       get :push_to_online, id: project.id, locale: :pt
