@@ -58,6 +58,31 @@ RSpec.describe ProjectsController, type: :controller do
     it { expect(project.online?).to eq(true) }
   end
 
+  describe 'GET push_to_online banned document' do
+    let(:project) { create(:project, state: 'draft') }
+    let(:current_user) { project.user }
+
+    before do
+      current_user.update_attributes({
+                                       address_city: 'foo',
+                                       address_state: 'MG',
+                                       address_street: 'bar',
+                                       address_number: '123',
+                                       address_neighbourhood: 'MMs',
+                                       address_zip_code: '000000',
+                                       phone_number: '33344455333',
+                                       cpf: "123.456.789-01"
+                                     })
+      create(:blacklist_document, number: current_user.cpf)
+      create(:reward, project: project)
+      create(:bank_account, user: current_user)
+      get :push_to_online, id: project.id, locale: :pt
+      project.reload
+    end
+
+    it { expect(project.online?).to eq(false) }
+  end
+
   describe 'GET index' do
     before do
       get :index, locale: :pt
