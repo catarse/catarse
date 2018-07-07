@@ -75,7 +75,7 @@ FactoryGirl.define do
   end
 
   factory :blacklist_document do |f|
-    f.number '97666238991'
+    f.number '10987654321'
   end
 
   factory :category do |f|

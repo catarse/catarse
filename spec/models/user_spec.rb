@@ -3,6 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
+  let(:blacklist_document) { create(:blacklist_document) }
   let(:user) { create(:user) }
   let(:unfinished_project) { create(:project, state: 'online') }
   let(:successful_project) { create(:project, state: 'online') }
@@ -37,6 +38,10 @@ RSpec.describe User, type: :model do
     it { is_expected.not_to allow_value('foo').for(:email) }
     it { is_expected.not_to allow_value('foo@bar').for(:email) }
     it { is_expected.to validate_uniqueness_of(:email) }
+    it "Should be a valid cpf" do
+      user.cpf = "12345678901"
+      user.valid?
+    end
   end
 
   describe '.to_send_category_notification' do
