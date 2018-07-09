@@ -25,6 +25,7 @@ class Contribution < ActiveRecord::Base
 
   validates_presence_of :project, :user, :value
   validates_numericality_of :value, greater_than_or_equal_to: 10.00
+  validate :banned_user_validation, :on => :update
 
   scope :not_anonymous, -> { where(anonymous: false) }
   scope :confirmed_last_day, -> { where("EXISTS(SELECT true FROM payments p WHERE p.contribution_id = contributions.id AND p.state = 'paid' AND (current_timestamp - p.paid_at) < '1 day'::interval)") }
@@ -208,5 +209,15 @@ class Contribution < ActiveRecord::Base
 
   def contribution_json
     contribution_attributes.to_json
+  end
+
+  def banned_user_validation
+  
+    if self.user.cpf.present?
+      document = BlacklistDocument.find_document self.user.cpf
+      unless document.nil?
+        errors.add(:user, :invalid)
+      end
+    end
   end
 end

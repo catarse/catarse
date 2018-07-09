@@ -3,6 +3,8 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
+  let(:blacklist_document) { create(:blacklist_document) }
+  let(:blacklisted_user) { create(:blacklisted_user) }
   let(:user) { create(:user) }
   let(:unfinished_project) { create(:project, state: 'online') }
   let(:successful_project) { create(:project, state: 'online') }
@@ -31,12 +33,22 @@ RSpec.describe User, type: :model do
     it { is_expected.to have_one :bank_account }
   end
 
-  describe 'validations' do
+  describe 'validations' do    
+    let(:bld) { create(:blacklist_document, number: "64118189402") }
+   
     before { user }
+
     it { is_expected.to allow_value('foo@bar.com').for(:email) }
     it { is_expected.not_to allow_value('foo').for(:email) }
     it { is_expected.not_to allow_value('foo@bar').for(:email) }
     it { is_expected.to validate_uniqueness_of(:email) }
+    it "Should be a blacklisted cpf" do
+      bld.save
+      bl_user = build(:blacklisted_user)
+      bl_user.publishing_project
+      bl_user.save
+      expect(bl_user.errors.include?(:cpf)).to eq(true)
+    end
   end
 
   describe '.to_send_category_notification' do

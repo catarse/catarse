@@ -74,6 +74,25 @@ FactoryGirl.define do
     end
   end
 
+  factory :blacklisted_user, :class => User do |f|
+    f.association :bank_account
+    f.association :address
+    f.permalink { generate(:permalink) }
+    f.name 'Foo bar'
+    f.public_name 'Public bar'
+    f.password '123456'
+    f.cpf '64118189402'
+    f.email { generate(:email) }
+    
+    trait :without_bank_data do
+      bank_account { nil }
+    end
+  end
+
+  factory :blacklist_document do |f|
+    f.number '64118189402'
+  end
+
   factory :category do |f|
     f.name_pt { generate(:name) }
   end
