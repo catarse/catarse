@@ -9,7 +9,7 @@ class Admin::SubscriptionPaymentsController < Admin::BaseController
   def batch_chargeback
     authorize Admin, :batch_chargeback?
     collection_for_chargeback.each do |subscription_payment|
-      susbcription_payment.chargeback
+        subscription_payment.chargeback
     end
 
     render json: { subscription_payment_ids: collection_for_chargeback.pluck(:id) }
@@ -18,6 +18,6 @@ class Admin::SubscriptionPaymentsController < Admin::BaseController
   protected
 
   def collection_for_chargeback
-    @collection_for_chargeback ||= SubscriptionPayment.where("gateway_general_data->>'gateway_id' in (?) and gateway_general_data->>'gateway_id' is not null", params[:gateway_payment_ids])
+    @collection_for_chargeback ||= SubscriptionPayment.where("(gateway_general_data->>'gateway_id')::text in (?) and (gateway_general_data->>'gateway_id')::text is not null", params[:gateway_payment_ids])
   end
 end
