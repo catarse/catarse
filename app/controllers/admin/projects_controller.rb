@@ -18,6 +18,19 @@ class Admin::ProjectsController < Admin::BaseController
     end
   end
 
+  def revert_or_finish
+    @project = SubscriptionProject.find params[:id]
+    if @project.subscriptions.active_and_started.exists?
+      @project.finish
+    else
+      @project.push_to_draft
+    end
+
+    @project.reload
+
+    render json: {project_id: @project.id, current_state: @project.state}
+  end
+
   def destroy
     @project = Project.find params[:id]
     @project.push_to_trash if @project.can_push_to_trash?

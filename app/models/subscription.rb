@@ -6,6 +6,8 @@ class Subscription < ActiveRecord::Base
   has_many :subscription_payments
   has_many :subscription_transitions, foreign_key: :subscription_id
 
+  scope :active_and_started, -> { where(status: %w(active started)) }
+
   def amount
     checkout_data['amount'].to_f / 100
   end
