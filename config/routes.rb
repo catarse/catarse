@@ -202,6 +202,7 @@ Catarse::Application.routes.draw do
 
       resources :projects, :flexible_projects, controller: 'projects', only: %i[index update destroy] do
         member do
+          put :revert_or_finish
           put 'approve'
           put 'push_to_online'
           put 'reject'
