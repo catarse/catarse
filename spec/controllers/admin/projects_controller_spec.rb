@@ -12,6 +12,55 @@ RSpec.describe Admin::ProjectsController, type: :controller do
     request.env['HTTP_REFERER'] = admin_projects_path
   end
 
+  describe 'PUT revert_or_finish' do
+    let(:project) do
+      sub = create(:subscription_project)
+      sub.push_to_online
+      sub
+    end
+
+    context 'when project is not sub' do
+      let(:project) { create(:project, state: 'online', mode: 'flex') }
+      before do
+        put :revert_or_finish, id: project.id, locale: :pt
+      end
+      it { expect(response.code).to eq("404") }
+    end
+
+    context 'when project have active or started subscriptions' do
+      before do
+        allow(SubscriptionProject).to receive(:find).and_return(project)
+        allow(project).to receive_message_chain(:subscriptions, :active_and_started, :exists?).and_return(true)
+        allow(project).to receive(:common_finish!).and_return(true)
+
+        expect(project).to receive(:finish).and_call_original
+        expect(project).to receive(:common_finish!)
+
+        put :revert_or_finish, id: project.id, locale: :pt
+        project.reload
+      end
+      it { expect(response.code).to eq("200") }
+      it { expect(project.state).to eq("successful") }
+    end
+
+    context 'when project does not have any subscription' do
+      before do
+        allow(SubscriptionProject).to receive(:find).and_return(project)
+        allow(project).to receive_message_chain(:subscriptions, :active_and_started, :exists?).and_return(false)
+        allow(project).to receive(:common_finish!).and_return(true)
+
+        expect(project).to_not receive(:finish).and_call_original
+        expect(project).to_not receive(:common_finish!)
+
+        put :revert_or_finish, id: project.id, locale: :pt
+        project.reload
+      end
+      it { expect(response.code).to eq("200") }
+      it { expect(project.state).to eq("draft") }
+    end
+
+  end
+
   describe 'PUT reject' do
     let(:project) { create(:project, state: 'draft') }
     subject { project.rejected? }
