@@ -69,6 +69,8 @@ html
     = yield :application_js
   - else
     = javascript_include_tag :application
+  - if Rails.configuration.webpack_dev_server 
+    = javascript_include_tag "http://localhost:8080/catarse.js"
 
   - if content_for? :js
     /page specific JS files
