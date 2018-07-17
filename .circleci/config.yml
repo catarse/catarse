@@ -20,6 +20,7 @@ jobs:
     machine:
       enabled: true
     steps:
+      - checkout
       - add_ssh_keys
       - run: ssh-keyscan -H $STAGING_SERVER >> ~/.ssh/known_hosts
       - run: git remote add staging $STAGING_DEPLOY_REMOTE
