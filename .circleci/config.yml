@@ -17,10 +17,10 @@ jobs:
       - run: RAILS_ENV=test DATABASE_URL=postgres://postgres:example@localhost:5432/catarse_test bundle exec rspec spec
 
   deploy_sandbox:
-    - add_ssh_keys
     machine:
       enabled: true
     steps:
+      - add_ssh_keys
       - run: ssh-keyscan -H $STAGING_SERVER >> ~/.ssh/known_hosts
       - run: git remote add staging $STAGING_DEPLOY_REMOTE
       - run: git push staging develop:master
