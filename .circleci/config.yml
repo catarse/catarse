@@ -23,7 +23,7 @@ jobs:
       - checkout
       - setup_remote_docker:
           version: 17.05.0-ce
-      - run: git remote add staging ${STAGING_DEPLOY_REMOTE}
+      - run: git remote add staging $STAGING_DEPLOY_REMOTE
       - run: git push staging develop:master
 
 
