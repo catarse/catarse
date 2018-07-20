@@ -89,7 +89,11 @@ namespace :common do
 
   desc 'generate balance transaction for subscription payments'
   task generate_subscription_balance: :environment do
-    SubscriptionPayment.where(platform_id: CatarseSettings[:common_platform_id], status: 'paid').find_each do |sp|
+    ActiveRecord::Base.connection.execute("SET statement_timeout = '20s'")
+    SubscriptionPayment.
+      where('not exists(select true from balance_transactions where subscription_payment_uuid = catalog_payments.id)').
+      where(platform_id: CatarseSettings[:common_platform_id], status: 'paid').
+      find_each(batch_size: 20) do |sp|
       unless sp.already_in_balance?
         begin
           BalanceTransaction.insert_subscription_payment(sp.id)
