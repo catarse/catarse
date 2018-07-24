@@ -54,7 +54,7 @@ pt:
       chargeback: Contestado
       deleted: Apagado
       last_status:
-        creditcard:
+        credit_card:
           pending: 'Pendente'
           paid: 'Confirmado'
           refused: 'Recusado'
