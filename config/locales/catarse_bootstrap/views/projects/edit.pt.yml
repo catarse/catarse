@@ -45,6 +45,31 @@ pt:
         inactive: ' Inativa'
         canceled: ' Cancelada'
         canceling: ' Cancelamento solicitado'
+    payment:
+      paid: Confirmado
+      refused: Recusado
+      pending: Pendente
+      pending_refund: Reembolso pendente
+      refunded: Reembolsado
+      chargeback: Contestado
+      deleted: Apagado
+      last_status:
+        creditcard:
+          pending: 'Pendente'
+          paid: 'Confirmado'
+          refused: 'Recusado'
+          refunded: 'Reembolsado'
+          chargedback: 'Estornado'
+          deleted: 'Apagado'
+          error: 'Erro'
+        boleto:
+          pending: 'Pendente'
+          paid: 'Confirmado'
+          refused: 'Não confirmado'
+          refunded: 'Reembolsado'
+          chargedback: 'Estornado'
+          deleted: 'Apagado'
+          error: 'Erro'
     reward_fields:
       edit: "Editar recompensa"
       reward: Recompensa
