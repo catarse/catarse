@@ -1,0 +1,40 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/ruby:2.4.4-jessie-node-browsers
+      - image: postgres:9.4
+        environment:
+          POSTGRES_DB: catarse_test
+    steps:
+      - checkout
+      - setup_remote_docker:
+          version: 17.05.0-ce
+      - run: sudo apt update && sudo apt install postgresql-client
+      - run: bundle install
+      - run: npm install
+      - run: RAILS_ENV=test DATABASE_URL=postgres://postgres:example@localhost:5432/catarse_test bundle exec rake db:migrate
+      - run: RAILS_ENV=test DATABASE_URL=postgres://postgres:example@localhost:5432/catarse_test bundle exec rspec spec
+
+  deploy_sandbox:
+    machine:
+      enabled: true
+    steps:
+      - checkout
+      - add_ssh_keys
+      - run: ssh-keyscan -H $STAGING_SERVER >> ~/.ssh/known_hosts
+      - run: git remote add staging $STAGING_DEPLOY_REMOTE
+      - run: git push staging develop:master
+
+
+workflows:
+  version: 2
+  build-and-push:
+    jobs:
+      - build
+      - deploy_sandbox:
+          requires:
+            - build
+          filters:
+            branches:
+              only: develop
