@@ -229,6 +229,28 @@ RSpec.describe BalanceTransaction, type: :model do
         ).exists?).to eq(true)
       end
     end
+
+    context 'when project have cancelation request' do
+      before do
+        allow_any_instance_of(Project).to receive(:successful?).and_return(true)
+        allow_any_instance_of(Project).to receive(:successful_pledged_transaction).and_return([1])
+        allow_any_instance_of(Project).to receive(:project_cancelation).and_return({id: '123'})
+      end
+
+      it 'should not generate a project_contribution_refunded_after_successful_pledged transaction on project owner balance' do
+        BalanceTransaction.insert_contribution_refunded_after_successful_pledged(contribution.id)
+
+        expect(project.user.balance_transactions.where(
+          event_name: 'contribution_refunded_after_successful_pledged',
+          amount: (contribution.value - (contribution.value*project.service_fee))*-1,
+        ).exists?).to eq(false)
+
+        expect(contribution.notifications.where(
+          user_id: project.user_id,
+          template_name: 'project_contribution_refunded_after_successful_pledged'
+        ).exists?).to eq(false)
+      end
+    end
   end
 
   describe 'insert_balance_expired' do
