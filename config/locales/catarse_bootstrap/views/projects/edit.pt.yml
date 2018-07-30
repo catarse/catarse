@@ -70,6 +70,9 @@ pt:
           chargedback: 'Estornado'
           deleted: 'Apagado'
           error: 'Erro'
+    payment_method:
+      boleto: 'Boleto'
+      credit_card: 'Cartão'
     reward_fields:
       edit: "Editar recompensa"
       reward: Recompensa
