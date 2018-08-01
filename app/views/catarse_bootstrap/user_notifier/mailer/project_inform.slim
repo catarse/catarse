@@ -64,14 +64,19 @@ table style="border: 1px solid;width:100%;border-collapse: collapse;"
       span Taxa Líquida Catarse (-)
     td style="border: 1px solid;text-align:center;vertical-align: middle;white-space: nowrap;"
       span #{number_to_currency (-fiscal_data.service_fee-(fiscal_data.total_gateway_fee||0)), precision: 2}
+  - unless fiscal_data.irrf.nil? || fiscal_data.irrf == 0
+    tr
+      td style="border: 1px solid;text-align:left;vertical-align: middle;white-space: nowrap;"
+        span Retenção IRRF (+)
+      td style="border: 1px solid;text-align:center;vertical-align: middle;white-space: nowrap;"
+        span #{number_to_currency fiscal_data.irrf, precision: 2}
   tr
     td style="border: 1px solid;text-align:left;vertical-align: middle;white-space: nowrap;"
-      span Retenção IRRF (+)
-    td style="border: 1px solid;text-align:center;vertical-align: middle;white-space: nowrap;"
-      span #{number_to_currency (fiscal_data.irrf || 0), precision: 2}
-  tr
-    td style="border: 1px solid;text-align:left;vertical-align: middle;white-space: nowrap;"
-      span style="font-weight:bold;" Repasse líquido (#{(1-project.service_fee)*100}% + Retenções) (=)
+      span style="font-weight:bold;"
+        span Repasse líquido (#{(1-project.service_fee)*100}%
+        - unless fiscal_data.irrf.nil? || fiscal_data.irrf == 0
+          span + Retenções
+        span ) (=)
     td style="border: 1px solid;text-align:center;vertical-align: middle;white-space: nowrap;"
       span #{number_to_currency fiscal_data.balance, precision: 2}
 
