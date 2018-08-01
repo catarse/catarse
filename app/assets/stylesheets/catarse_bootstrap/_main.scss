@@ -3208,6 +3208,10 @@ a:hover {
   box-shadow: 4px 4px 16px 0 rgba(63, 71, 82, .38);
 }
 
+.card-clickable {
+  cursor: pointer;
+}
+
 .card-clickable:hover {
   background-color: #fafafa;
 }
