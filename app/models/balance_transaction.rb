@@ -160,6 +160,7 @@ class BalanceTransaction < ActiveRecord::Base
     contribution = Contribution.find contribution_id
     project = contribution.project
     return unless contribution.confirmed?
+    return if project.project_cancelation.present?
 
     if project.successful? && project.successful_pledged_transaction.present?
       transaction do
