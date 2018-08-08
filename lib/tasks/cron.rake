@@ -70,7 +70,7 @@ namespace :cron do
 
   desc 'Notify about approaching deliveries'
   task notify_delivery_approaching: :environment do
-    Project.with_deliveries_approaching.find_each do |project|
+    Project.with_deliveries_approaching.find_each(batch_size: 20) do |project|
       puts "notifying about expiring rewards -> #{project.id}"
       project.notify_owner(:delivery_approaching)
     end
@@ -78,7 +78,7 @@ namespace :cron do
 
   desc 'Notify about late deliveries'
   task notify_late_delivery: :environment do
-    Project.with_late_deliveries.find_each do |project|
+    Project.with_late_deliveries.find_each(batch_size: 20) do |project|
       puts "notifying about late rewards -> #{project.id}"
       project.notify_owner(:late_delivery)
     end
@@ -86,7 +86,7 @@ namespace :cron do
 
   desc 'Notify about rewards about to expire'
   task notify_expiring_rewards: :environment do
-    FlexibleProject.with_expiring_rewards.find_each do |project|
+    FlexibleProject.with_expiring_rewards.find_each(batch_size: 20) do |project|
       puts "notifying about expiring rewards -> #{project.id}"
       project.notify(
         :expiring_rewards,
@@ -104,7 +104,7 @@ namespace :cron do
 
   desc 'Notify projects with no deadline 1 week before max deadline'
   task notify_owners_of_deadline: :environment do
-    Project.with_state(:online).where(online_days: nil).where("current_timestamp > online_at(projects.*) + '358 days'::interval").find_each do |project|
+    Project.with_state(:online).where(online_days: nil).where("current_timestamp > online_at(projects.*) + '358 days'::interval").find_each(batch_size: 20) do |project|
       project.notify_once(
         'project_deadline',
         project.user,
@@ -126,7 +126,7 @@ namespace :cron do
 
   desc 'Add reminder to scheduler'
   task schedule_reminders: :environment do
-    ProjectReminder.can_deliver.find_each do |reminder|
+    ProjectReminder.can_deliver.find_each(batch_size: 20) do |reminder|
       puts "found reminder for user -> #{reminder.user_id} project -> #{reminder.project}"
       project = reminder.project
       project.notify_once(
@@ -191,7 +191,7 @@ namespace :cron do
 
   desc 'send subscription reports'
   task notify_sub_reports: [:environment] do
-    SubscriptionProject.with_state(:online).find_each do |project| 
+    SubscriptionProject.with_state(:online).find_each(batch_size: 20) do |project| 
       transitions = project.subscription_transitions.where("common_schema.subscription_status_transitions.created_at between now() - '1 day'::interval and now()")
       if transitions.count > 0
         project.notify(:subscription_report, project.user)
@@ -208,7 +208,7 @@ namespace :cron do
 
   desc 'Refuse boleto payments that are 4 days or more old and not paid'
   task refuse_4_days_more_unpaid_boletos: [:environment] do
-    Payment.all_boleto_that_should_be_refused.find_each do |payment|
+    Payment.all_boleto_that_should_be_refused.find_each(batch_size: 20) do |payment|
       payment.update_column('state', 'refused')
       payment.update_column('refused_at', Time.current)
       payment.save!
@@ -243,7 +243,7 @@ namespace :cron do
 
   desc 'register 100_goal_reached rdevent for projects'
   task rdevent_100_goal_reached: [:environment] do
-    Project.joins(:project_total).where("project_totals.progress > 100 and not exists(select true from rdevents r  where r.project_id = projects.id and r.event_name = '100_goal_reached') and projects.state = 'online'").find_each do |project|
+    Project.joins(:project_total).where("project_totals.progress > 100 and not exists(select true from rdevents r  where r.project_id = projects.id and r.event_name = '100_goal_reached') and projects.state = 'online'").find_each(batch_size: 20) do |project|
       Rdevent.create(
         project_id: project.id,
         user_id: project.user.id,
