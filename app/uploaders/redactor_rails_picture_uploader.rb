@@ -22,15 +22,24 @@ class RedactorRailsPictureUploader < ImageUploader
   # end
 
   process :read_dimensions
-  process resize_to_limit: [667, -1]
+  process gif_resize: [667, -1]
+
 
   # Create different versions of your uploaded files:
-  version :thumb do
-    process resize_to_fill: [118, 100]
+  version :thumb, if: :gif? do
+    process gif_resize: [118, 100]
   end
 
-  version :content do
+  version :thumb, unless: :gif? do
+    process resize_to_limit: [118, 100]
+  end
+
+  version :content, unless: :gif? do
     process resize_to_limit: [680, 800]
+  end
+
+  version :content, if: :gif? do
+    process gif_resize: [680, 800]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.
@@ -44,4 +53,28 @@ class RedactorRailsPictureUploader < ImageUploader
   # def filename
   #   "something.jpg" if original_filename
   # end
+
+  private
+
+  def gif?(new_file)
+    new_file.content_type == "image/gif"
+  end
+
+  def gif_safe_transform!
+    MiniMagick::Tool::Convert.new do |image| # Calls imagemagick's "convert" command
+      image << file.path
+      image.coalesce # Remove optimizations so each layer shows the full image.
+
+      yield image
+
+      image.layers "Optimize" # Re-optimize the image.
+      image << file.path
+    end
+  end
+
+  def gif_resize(w,h)
+    gif_safe_transform! do |image|
+      image.resize "#{w}x#{h}"
+    end
+  end
 end
