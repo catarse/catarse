@@ -44,7 +44,16 @@ pt:
         name: 'Nome / Razão Social:'
         cpf_cnpj: 'CPF / CNPJ:'
         bank_name: 'Banco:'
-        agency: 'Agência'
+        agency: 'Agência:'
+        pf: 'CPF:'
+        pj: 'CNPJ:'
+        name: 'Nome:'
+        account_type_name: 'Tipo de conta:'
+        account_type:
+          conta_corrente: 'Conta Corrente'
+          conta_poupanca: 'Conta Poupança'
+          conta_corrente_conjunta: 'Conta Corrente Conjunta'
+          conta_poupanca_conjunta: 'Conta Poupança Conjunta'
     profile:
       user_since: "Chegou junto em %{date}"
       no_project_contribution: "Ainda não apoiou projetos"
