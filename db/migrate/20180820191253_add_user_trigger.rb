@@ -6,8 +6,6 @@ CREATE OR REPLACE FUNCTION public.update_payments_full_text_index_from_user()
  RETURNS trigger
  LANGUAGE plpgsql
 AS $function$
-     DECLARE
-       payment payments%ROWTYPE;
      BEGIN
        update payments pa 
        set full_text_index = public.generate_payments_full_text_index(pa.*) 
@@ -15,8 +13,6 @@ AS $function$
        return NULL;
      END;
     $function$;
-
-
 
     CREATE TRIGGER update_payments_full_text_index_from_user
     AFTER INSERT OR UPDATE OF name, email
