@@ -339,27 +339,29 @@ pt:
         bank_account:
           attributes:
             bank_id:
-              blank: "Banco do usuário não pode ficar em branco"
               invalid: "Banco invalido"
+              blank: "Banco do usuário não pode ficar em branco"
             bank:
-              blank: "Banco do usuário não pode ficar em branco"
               invalid: "Banco invalido"
+              blank: "Banco do usuário não pode ficar em branco"
             agency:
-              blank: "Agência do usuário não pode ficar em branco"
-              invalid: "Agência inválida"
-              format: "Agência inválida"
+              blank: "Agência não pode ficar em branco."
+              invalid: "Agência inválida - só pode conter números."
+              format: "Não possui o tamanho esperado (4 caracteres)."
             agency_digit:
-              blank: "Dígito agência do usuário não pode ficar em branco"
+              blank: "Dígito agência não pode ficar em branco."
               invalid: "Dígito agência invalido"
-              format: "Dígito agência invalido"
+              format: "Não possui o tamanho esperado (1 caracteres)."
             account:
-              blank: "No. da conta não pode ficar em branco"
-              format: "No. da conta invalido"
-              invalid: "No. da conta invalido"
+              blank: "No. da conta não pode ficar em branco."
+              format: "No. da conta inválida - só pode conter números."
+              invalid: "No. da conta é diferente do esperado "
+              maximum: "(máximo: %d)."
+              equal: "(deve ser igual: %d)."
             account_digit:
-              blank: "Dígito da conta não pode ficar em branco"
-              format: "Dígito da conta invalido"
-              invalid: "Dígito da conta invalido"
+              blank: "Dígito da conta não pode ficar em branco."
+              format: "Não possui o tamanho esperado (1 caracteres)."
+              invalid: "Dígito da conta invalido."
             account_type:
               blank: "Tipo de conta não pode ficar em branco"
             owner_document:
