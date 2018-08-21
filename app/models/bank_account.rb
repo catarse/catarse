@@ -58,7 +58,7 @@ class BankAccount < ActiveRecord::Base
       return false
     end
 
-    if !account.match? /\d+/
+    if account.match? /\D+/
       errors.add(:account, :format)
       return false
     end
