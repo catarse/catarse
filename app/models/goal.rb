@@ -20,7 +20,7 @@ class Goal < ActiveRecord::Base
       value: value,
       title: title,
       description: description,
-      created_at: created_at.strftime("%FT%T")
+      created_at: created_at.try(:strftime, "%FT%T")
     }.merge!(id_hash)
   end
 

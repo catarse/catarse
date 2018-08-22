@@ -131,6 +131,29 @@ class CommonWrapper
     return
   end
 
+  def find_goal(external_id)
+    uri = services_endpoint[:project_service]
+    uri.path = '/goals'
+    response = request(
+      uri.to_s,
+      params: {
+        "external_id::integer" => "eq.#{external_id}"
+      },
+      action: :get,
+      headers: { 'Accept' => 'application/vnd.pgrst.object+json' },
+    ).run
+
+    if response.success?
+      json = ActiveSupport::JSON.decode(response.body)
+      common_id = json.try(:[], 'id')
+      return common_id
+    else
+      Rails.logger.info(response.body)
+    end
+
+    return
+  end
+
   def find_reward(external_id)
     uri = services_endpoint[:project_service]
     uri.path = '/rewards'
@@ -237,18 +260,22 @@ class CommonWrapper
     end
 
     uri = common_api_endpoint
+
+    return if resource.project.common_id.nil?
     uri.path = if resource.common_id.present?
-                 '/projects/' + resource.project.common_id + '/goals/' + resource.common_id
+                 '/v1/projects/' + resource.project.common_id + '/goals/' + resource.common_id
                else
-                 '/projects/' + resource.project.common_id + '/goals'
+                 '/v1/projects/' + resource.project.common_id + '/goals'
                end
     response = request(
       uri.to_s,
       body: {
-        data: resource.common_index.to_json
+        goal:
+        resource.common_index
       }.to_json,
       action: resource.common_id.present? ? :patch : :post,
-      current_ip: resource.project.user.current_sign_in_ip
+      current_ip: resource.project.user.current_sign_in_ip,
+      headers: {'Content-Type' => 'application/json'},
     ).run
 
     if response.success?
