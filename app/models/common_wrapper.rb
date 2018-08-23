@@ -8,6 +8,7 @@ class CommonWrapper
 
   def services_endpoint
     @services_endpoint ||= {
+      proxy_service: URI::parse(CatarseSettings[:common_proxy_service_api]),
       community_service: URI::parse(CatarseSettings[:common_community_service_api]),
       project_service: URI::parse(CatarseSettings[:common_project_service_api]),
       analytics_service: URI::parse(CatarseSettings[:common_analytics_service_api]),
@@ -51,6 +52,30 @@ class CommonWrapper
     if response.success?
       json = ActiveSupport::JSON.decode(response.body)
       return json
+    else
+      Rails.logger.info(response.body)
+    end
+
+    return
+  end
+
+  def temp_login_api_key(resource)
+    uri = services_endpoint[:proxy_service]
+    uri.path = '/v1/users/login'
+    response = request(
+      uri.to_s,
+      body: {
+        user: {
+          id: resource.common_id
+        }
+      }.to_json,
+      action: :post,
+    ).run
+
+    if response.success?
+      json = ActiveSupport::JSON.decode(response.body)
+      token = json.try(:[], 'api_key')
+      return token
     else
       Rails.logger.info(response.body)
     end

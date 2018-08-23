@@ -236,6 +236,7 @@ Catarse::Application.routes.draw do
     resource :api_token, only: [:show] do
       collection do
         get :common
+        get :common_proxy
       end
     end
 
