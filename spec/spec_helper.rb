@@ -97,6 +97,7 @@ RSpec.configure do |config|
     CatarseSettings[:jwt_secret] = 'gZH75aKtMN3Yj0iPS4hcgUuTwjAzZr9C'
     CatarseSettings[:pagarme_api_key] = ENV['TEST_GATEWAY_API_KEY']
     CatarseSettings[:pagarme_encryption_key] = ENV['TEST_GATEWAY_ENCRYPTION_KEY']
+    CatarseSettings[:common_proxy_service_api] = 'http://localhost'
     CatarseSettings[:common_recommender_service_api] = 'http://localhost'
     CatarseSettings[:common_community_service_api] = 'http://localhost'
     CatarseSettings[:common_project_service_api]= 'http://localhost'

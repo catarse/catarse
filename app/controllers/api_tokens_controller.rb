@@ -5,6 +5,21 @@ class ApiTokensController < ApplicationController
   TOKEN_TTL = 1.hour
   before_filter :set_cache_headers
 
+  def common_proxy
+    proxy_api_key = CatarseSettings[:common_proxy_api_key]
+    unless proxy_api_key.present?
+      return render json: { error: 'you need to have common_proxy_api_key setted' }, status: 500
+    end
+
+    unless user_signed_in?
+      return render json: { error: 'only authenticated users can request the common proxy API token' }, status: 401
+    end
+
+    common_wrapper = CommonWrapper.new(proxy_api_key)
+
+    render json: { token: common_wrapper.temp_login_api_key(current_user) }, status: 200
+  end
+
   def common
     unless CatarseSettings[:common_api_key]
       return render json: { error: 'you need to have common_api_key setted' }, status: 500
