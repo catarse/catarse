@@ -4148,6 +4148,86 @@ a:hover {
   flex: 1;
 }
 
+.project-progress-bar {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 22px;
+  margin-bottom: 100px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.project-progress-bar-step {
+  width: 44px;
+  height: 44px;
+}
+
+.project-progress-bar-line {
+  width: 160px;
+  height: 4px;
+  background-color: #e6e6e6;
+}
+
+.project-progress-bar-line.done {
+  background-color: #7cc142;
+}
+
+.project-progress-bar-circle {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 44px;
+  margin-bottom: 8px;
+  padding: 5px;
+  border: 4px solid #e6e6e6;
+  border-radius: 50%;
+  background-color: #e6e6e6;
+  color: #fff;
+}
+
+.project-progress-bar-circle.done {
+  border-color: #7cc142;
+  background-color: #7cc142;
+}
+
+.project-progress-bar-circle.current {
+  width: 70px;
+  height: 70px;
+  margin-top: -10px;
+  border-color: #7cc142;
+  background-color: #fff;
+}
+
+.project-progress-bar-description {
+  display: inline-block;
+  width: 230px;
+  text-align: center;
+}
+
+.project-progress-bar-content {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
 html.w-mod-js *[data-ix="fade-in"] {
   opacity: 0;
 }
@@ -5545,6 +5625,28 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
   .noscroll {
     overflow: hidden;
   }
+  .project-progress-bar-step {
+    width: 30px;
+    height: 30px;
+  }
+  .project-progress-bar-line {
+    width: 110px;
+    height: 3px;
+  }
+  .project-progress-bar-circle {
+    width: 30px;
+    height: 30px;
+    padding: 0px;
+    border-width: 3px;
+  }
+  .project-progress-bar-circle.current {
+    width: 50px;
+    height: 50px;
+    margin-top: -10px;
+  }
+  .project-progress-bar-description {
+    width: 100px;
+  }
 }
 
 @media (max-width: 479px) {
@@ -6005,4 +6107,7 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
     padding-top: 18px;
     padding-bottom: 16px;
   }
+  .project-progress-bar-line {
+    width: 80px;
+  }  
 }

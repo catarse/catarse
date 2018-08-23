@@ -24,8 +24,10 @@ class RewardPolicy < ApplicationPolicy
   def permitted_attributes
     attributes = record.attribute_names.map(&:to_sym)
     attributes << { shipping_fees_attributes: %i[_destroy id value destination] }
-    attributes.delete(:minimum_value) if record.persisted? && record.any_sold?
-    attributes.delete(:deliver_at) if record.persisted? && project_finished?
+    unless user.try(:admin?)
+      attributes.delete(:minimum_value) if record.persisted? && record.any_sold?
+      attributes.delete(:deliver_at) if record.persisted? && project_finished?
+    end
     attributes
   end
 
