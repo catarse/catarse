@@ -85,6 +85,13 @@ namespace :common do
     end
   end
 
+  desc 'index all posts'
+  task index_posts: :environment do
+    cw = CommonWrapper.new(CatarseSettings[:common_api_key])
+    collection = ProjectPost.where(common_id: nil)
+    index_model(collection) { |resource| cw.index_project_post(resource) }
+  end
+
   desc 'index all goals'
   task index_goals: :environment do
     cw = CommonWrapper.new(CatarseSettings[:common_api_key])
