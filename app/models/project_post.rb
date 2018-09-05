@@ -39,7 +39,7 @@ class ProjectPost < ActiveRecord::Base
     {
       external_id: id,
       project_id: project.common_id,
-      reward_id: reward.common_id,
+      reward_id: reward.try(:common_id),
       current_ip: project.user.current_sign_in_ip,
       comment_html: comment_html,
       title: title,
