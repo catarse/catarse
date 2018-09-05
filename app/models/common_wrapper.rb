@@ -157,7 +157,7 @@ class CommonWrapper
   end
 
   def find_post(external_id)
-    uri = services_endpoint[:project_service]
+    uri = services_endpoint[:proxy_service]
     uri.path = '/posts'
     response = request(
       uri.to_s,
@@ -307,9 +307,8 @@ class CommonWrapper
       resource.project.reload
     end
 
-    uri = common_api_endpoint
+    uri = services_endpoint[:proxy_service]
 
-    binding.pry
     return if resource.project.common_id.nil?
     uri.path = if resource.common_id.present?
                  '/v1/projects/' + resource.project.common_id + '/posts/' + resource.common_id
