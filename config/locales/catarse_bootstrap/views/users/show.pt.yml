@@ -1,6 +1,18 @@
 pt:
   users:
     balance:
+      activities_group: 'Atividades'
+      withdraw_history_group: 'Histórico de saques'
+      transfer_labels:
+        amount: 'Valor: '
+        requested_in: 'Solicitado em: '
+        user_name: 'Nome: '
+        funding_estimated_date: 'Recebimento previsto: '
+        transfer_error: 'Erro na transferência'
+        transfer_error_line1: 'Solicite um novo saque ou entre em'
+        transfer_error_line2: ' contato conosco '
+        transfer_error_line3: 'para mais informações.'
+        received_at: 'Recebido em: '
       value_text: 'Valor'
       value: 'Valor'
       request_fund: 'Solicitar saque'
@@ -40,15 +52,17 @@ pt:
       withdraw_canceling_msg: 'Você só poderá solicitar um saque após o projeto ser definitivamente cancelado e os apoiadores reembolsados.'
       success_message: 'Seu saque foi solicitado com sucesso. Em até 10 dias úteis o seu dinheiro estará em sua conta bancária!'
       bank:
-        account: "Conta:"
-        name: 'Nome / Razão Social:'
-        cpf_cnpj: 'CPF / CNPJ:'
-        bank_name: 'Banco:'
-        agency: 'Agência:'
-        pf: 'CPF:'
-        pj: 'CNPJ:'
-        name: 'Nome:'
-        account_type_name: 'Tipo de conta:'
+        account: 'Conta: '
+        name: 'Nome / Razão Social: '
+        cpf_cnpj: 'CPF / CNPJ: '
+        bank_name: 'Banco: '
+        agency: 'Agência: '
+        pf: 'CPF: '
+        pj: 'CNPJ: '
+        cpf: 'CPF: '
+        cnpj: 'CNPJ: '
+        name: 'Nome: '
+        account_type_name: 'Tipo de conta: '
         account_type:
           conta_corrente: 'Conta Corrente'
           conta_poupanca: 'Conta Poupança'
