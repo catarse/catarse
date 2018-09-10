@@ -202,6 +202,29 @@ class CommonWrapper
     return
   end
 
+  def find_direct_message(external_id)
+    uri = services_endpoint[:proxy_service]
+    uri.path = '/direct_messages'
+    response = request(
+      uri.to_s,
+      params: {
+        "external_id::integer" => "eq.#{external_id}"
+      },
+      action: :get,
+      headers: { 'Accept' => 'application/vnd.pgrst.object+json' },
+    ).run
+
+    if response.success?
+      json = ActiveSupport::JSON.decode(response.body)
+      common_id = json.try(:[], 'id')
+      return common_id
+    else
+      Rails.logger.info(response.body)
+    end
+
+    return
+  end
+
   def find_reward(external_id)
     uri = services_endpoint[:project_service]
     uri.path = '/rewards'
@@ -291,6 +314,43 @@ class CommonWrapper
     else
       Rails.logger.info(response.body)
       common_id = find_project(resource.id)
+    end
+
+    resource.update_column(
+      :common_id,
+      (common_id.presence || resource.common_id)
+    )
+
+    return common_id;
+  end
+
+  def index_direct_message(resource)
+    if resource.project && !resource.project.common_id.present?
+      resource.project.index_on_common
+      resource.project.reload
+    end
+
+    uri = services_endpoint[:proxy_service]
+
+    uri.path = '/v1/direct_messages'
+
+    response = request(
+      uri.to_s,
+      body: {
+        direct_message:
+        resource.common_index
+      }.to_json,
+      action: :post,
+      current_ip: resource.project.user.current_sign_in_ip,
+      headers: {'Content-Type' => 'application/json'},
+    ).run
+
+    if response.success?
+      json = ActiveSupport::JSON.decode(response.body)
+      common_id = json.try(:[], 'id')
+    else
+      Rails.logger.info(response.body)
+      common_id = find_direct_message(resource.id)
     end
 
     resource.update_column(
