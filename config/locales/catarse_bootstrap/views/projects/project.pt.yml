@@ -17,11 +17,11 @@ pt:
           cta: 'Saiba mais'
           image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-assinaturas.jpg'
         3:
-          title: 'Enxaqueca'
-          subtitle: 'Uma autobiografia surreal, sobre um ser humano amaldiçoado por uma entidade cósmica mal-humorada.'
-          link: 'https://www.catarse.me/enxaqueca?ref=home_banner'
+          title: 'Valente - O amor em jogo'
+          subtitle: 'Um jogo de cartas baseado na HQ de Vitor Cafaggi.'
+          link: 'https://www.catarse.me/valente?ref=home_banner'
           cta: 'Conheça o projeto'
-          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-enxaqueca.jpg'          
+          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-valente.jpg'          
         4:
           title: 'Pathfinder Guia do Mar Interior'
           subtitle: 'O fantástico mundo de Pathfinder vai ficar ainda maior!'
