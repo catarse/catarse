@@ -17,36 +17,42 @@ pt:
           cta: 'Saiba mais'
           image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-assinaturas.jpg'
         3:
+          title: 'Valente - O amor em jogo'
+          subtitle: 'Um jogo de cartas baseado na HQ de Vitor Cafaggi.'
+          link: 'https://www.catarse.me/valente?ref=home_banner'
+          cta: 'Conheça o projeto'
+          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-valente.jpg'          
+        4:
+          title: 'Pathfinder Guia do Mar Interior'
+          subtitle: 'O fantástico mundo de Pathfinder vai ficar ainda maior!'
+          link: 'https://www.catarse.me/pathfinder?ref=home_banner'
+          cta: 'Conheça o projeto'
+          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-pathfinder.jpg'
+        5:
+          title: 'Mouse Guard RPG'
+          subtitle: 'Junte-se a Guarda e nos ajude a proteger os Territórios dos Ratos.'
+          link: 'https://www.catarse.me/mouse_guard?ref=home_banner'
+          cta: 'Conheça o projeto'
+          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-mouse_guard.jpg'
+        6:
+          title: 'Carol Biazin | Meu Projeto Autoral'
+          subtitle: 'Eu tô muito afim de fazer meu EP e clipe acontecer e queria que vcs participassem deles comigo.'
+          link: 'https://www.catarse.me/carolbiazin?ref=home_banner'
+          cta: 'Conheça o projeto'
+          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-carolbiazin.jpg'
+        7:
+          title: 'Escola Comum'
+          subtitle: 'Uma escola de governo para a formação de novas lideranças políticas entre jovens de periferia.'
+          link: 'https://www.catarse.me/escolacomum?ref=home_banner'
+          cta: 'Conheça o projeto'
+          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-escolacomum.jpg'
+        8:
           title: '<img src="https://uploads-ssl.webflow.com/573a70f6d5c3cb6532f8b1a7/58ead3167db7c241dbb93fbc_geek-news-logo.png" width="400">'
           subtitle: 'Quadrinhos, boardgames, RPG e jogos digitais, dentro e fora do Catarse.'
           link: 'https://crowdfunding.catarse.me/geek-news'
           cta: 'Assine a Geek News'
-          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-geek-news.jpg'
-        4:
-          title: 'Nudus Magazine #6'
-          subtitle: 'Edição especial e limitada. Garanta seu exemplar sem censura com 152 páginas e mais de 30 boys.'
-          link: 'https://www.catarse.me/nudusmagazine6?ref=home_banner'
-          cta: 'Conheça o projeto'
-          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-nudusmagazine6.jpg'
-        5:
-          title: 'Intercept Brasil nas eleições'
-          subtitle: 'Ajude o Intercept Brasil a cavucar ainda mais fundo na cobertura das eleições deste ano.'
-          link: 'https://www.catarse.me/tibnaseleicoes?ref=home_banner'
-          cta: 'Conheça o projeto'
-          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-tibnaseleicoes.jpg'
-        6:
-          title: 'CHAOS'
-          subtitle: 'A Máquina reage...'
-          link: 'https://www.catarse.me/aurora2chaos?ref=home_banner'
-          cta: 'Conheça o projeto'
-          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-aurora2chaos.jpg'
-        7:
-          title: 'Grasse - Mestres Perfumistas'
-          subtitle: 'Venha ser um mestre perfumista de Grasse e ajude a deixar o mundo dos boardgames mais perfumado!'
-          link: 'https://www.catarse.me/grasse?ref=home_banner'
-          cta: 'Conheça o projeto'
-          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-grasse.jpg'
-        8:
+          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-geek-news.jpg'          
+        9:
           title: 'Financiamento coletivo para Livros e Revistas'
           subtitle: 'Junte-se a uma comunidade de autores e editoras e publique seu livro independente com a ajuda dos leitores'
           link: 'https://crowdfunding.catarse.me/publicacoes-independentes-financiamento-coletivo?ref=home_banner'
