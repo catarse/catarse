@@ -6,8 +6,13 @@ class CommonWrapper
     @api_key = api_key
   end
 
+  def common_api_endpoint
+    @common_api_endpoint ||= URI::parse(CatarseSettings[:common_api])
+  end
+
   def services_endpoint
     @services_endpoint ||= {
+      proxy_service: URI::parse(CatarseSettings[:common_proxy_service_api]),
       community_service: URI::parse(CatarseSettings[:common_community_service_api]),
       project_service: URI::parse(CatarseSettings[:common_project_service_api]),
       analytics_service: URI::parse(CatarseSettings[:common_analytics_service_api]),
@@ -51,6 +56,30 @@ class CommonWrapper
     if response.success?
       json = ActiveSupport::JSON.decode(response.body)
       return json
+    else
+      Rails.logger.info(response.body)
+    end
+
+    return
+  end
+
+  def temp_login_api_key(resource)
+    uri = services_endpoint[:proxy_service]
+    uri.path = '/v1/users/login'
+    response = request(
+      uri.to_s,
+      body: {
+        user: {
+          id: resource.common_id
+        }
+      }.to_json,
+      action: :post,
+    ).run
+
+    if response.success?
+      json = ActiveSupport::JSON.decode(response.body)
+      token = json.try(:[], 'api_key')
+      return token
     else
       Rails.logger.info(response.body)
     end
@@ -107,6 +136,52 @@ class CommonWrapper
   def find_user(external_id)
     uri = services_endpoint[:community_service]
     uri.path = '/users'
+    response = request(
+      uri.to_s,
+      params: {
+        "external_id::integer" => "eq.#{external_id}"
+      },
+      action: :get,
+      headers: { 'Accept' => 'application/vnd.pgrst.object+json' },
+    ).run
+
+    if response.success?
+      json = ActiveSupport::JSON.decode(response.body)
+      common_id = json.try(:[], 'id')
+      return common_id
+    else
+      Rails.logger.info(response.body)
+    end
+
+    return
+  end
+
+  def find_post(external_id)
+    uri = services_endpoint[:proxy_service]
+    uri.path = '/posts'
+    response = request(
+      uri.to_s,
+      params: {
+        "external_id::integer" => "eq.#{external_id}"
+      },
+      action: :get,
+      headers: { 'Accept' => 'application/vnd.pgrst.object+json' },
+    ).run
+
+    if response.success?
+      json = ActiveSupport::JSON.decode(response.body)
+      common_id = json.try(:[], 'id')
+      return common_id
+    else
+      Rails.logger.info(response.body)
+    end
+
+    return
+  end
+
+  def find_goal(external_id)
+    uri = services_endpoint[:project_service]
+    uri.path = '/goals'
     response = request(
       uri.to_s,
       params: {
@@ -216,6 +291,88 @@ class CommonWrapper
     else
       Rails.logger.info(response.body)
       common_id = find_project(resource.id)
+    end
+
+    resource.update_column(
+      :common_id,
+      (common_id.presence || resource.common_id)
+    )
+
+    return common_id;
+  end
+
+  def index_project_post(resource)
+    unless resource.project.common_id.present?
+      resource.project.index_on_common
+      resource.project.reload
+    end
+
+    uri = services_endpoint[:proxy_service]
+
+    return if resource.project.common_id.nil?
+    uri.path = if resource.common_id.present?
+                 '/v1/projects/' + resource.project.common_id + '/posts/' + resource.common_id
+               else
+                 '/v1/projects/' + resource.project.common_id + '/posts'
+               end
+    response = request(
+      uri.to_s,
+      body: {
+        post:
+        resource.common_index
+      }.to_json,
+      action: resource.common_id.present? ? :patch : :post,
+      current_ip: resource.project.user.current_sign_in_ip,
+      headers: {'Content-Type' => 'application/json'},
+    ).run
+
+    if response.success?
+      json = ActiveSupport::JSON.decode(response.body)
+      common_id = json.try(:[], 'id')
+    else
+      Rails.logger.info(response.body)
+      common_id = find_post(resource.id)
+    end
+
+    resource.update_column(
+      :common_id,
+      (common_id.presence || resource.common_id)
+    )
+
+    return common_id;
+  end
+
+  def index_goal(resource)
+    unless resource.project.common_id.present?
+      resource.project.index_on_common
+      resource.project.reload
+    end
+
+    uri = common_api_endpoint
+
+    return if resource.project.common_id.nil?
+    uri.path = if resource.common_id.present?
+                 '/v1/projects/' + resource.project.common_id + '/goals/' + resource.common_id
+               else
+                 '/v1/projects/' + resource.project.common_id + '/goals'
+               end
+    response = request(
+      uri.to_s,
+      body: {
+        goal:
+        resource.common_index
+      }.to_json,
+      action: resource.common_id.present? ? :patch : :post,
+      current_ip: resource.project.user.current_sign_in_ip,
+      headers: {'Content-Type' => 'application/json'},
+    ).run
+
+    if response.success?
+      json = ActiveSupport::JSON.decode(response.body)
+      common_id = json.try(:[], 'id')
+    else
+      Rails.logger.info(response.body)
+      common_id = find_goal(resource.id)
     end
 
     resource.update_column(

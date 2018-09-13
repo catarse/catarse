@@ -20,9 +20,10 @@ class RedactorRailsPictureUploader < ImageUploader
   # def scale(width, height)
   #   # do something
   # end
+  MAX_WIDTH = 667
 
   process :read_dimensions
-  process gif_resize: [667, -1]
+  process gif_resize: [MAX_WIDTH, -1]
 
 
   # Create different versions of your uploaded files:
@@ -61,14 +62,17 @@ class RedactorRailsPictureUploader < ImageUploader
   end
 
   def gif_safe_transform!
-    MiniMagick::Tool::Convert.new do |image| # Calls imagemagick's "convert" command
-      image << file.path
-      image.coalesce # Remove optimizations so each layer shows the full image.
+    MiniMagick::Tool::Convert.new do |convert| # Calls imagemagick's "convert" command
+      convert << file.path
+      convert.coalesce # Remove optimizations so each layer shows the full image.
 
-      yield image
+      image = MiniMagick::Image.open(file.path)
+      if image.width > MAX_WIDTH
+        yield convert
+      end
 
-      image.layers "Optimize" # Re-optimize the image.
-      image << file.path
+      convert.layers "Optimize" # Re-optimize the image.
+      convert << file.path
     end
   end
 
