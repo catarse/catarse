@@ -330,6 +330,14 @@ class CommonWrapper
       resource.project.reload
     end
 
+    if resource.user && !resource.user.common_id.present?
+      resource.user.index_on_common
+    end
+
+    if resource.to_user && !resource.to_user.common_id.present?
+      resource.to_user.index_on_common
+    end
+
     uri = services_endpoint[:proxy_service]
 
     uri.path = '/v1/direct_messages'

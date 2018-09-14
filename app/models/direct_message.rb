@@ -4,6 +4,7 @@
 class DirectMessage < ActiveRecord::Base
   has_notifications
   belongs_to :user
+  belongs_to :to_user, class_name: 'User', foreign_key: 'to_user_id'
   belongs_to :project
   validates_presence_of :user_id, :from_email, :content
 
@@ -15,8 +16,8 @@ class DirectMessage < ActiveRecord::Base
     {
       project_id: project.common_id,
       current_ip: project.user.current_sign_in_ip,
-      user_id: user_id,
-      to_user_id: to_user_id,
+      user_id: user.common_id,
+      to_user_id: to_user.common_id,
       from_email: from_email,
       from_name: from_name,
       content: content,
