@@ -1,6 +1,6 @@
 class UsePaymentMethodInsteadGatewayOnContributionReportsForProjectOwners < ActiveRecord::Migration
   def up
-    <<-SQL
+    execute <<-SQL
 CREATE OR REPLACE VIEW "public"."contribution_reports_for_project_owners" AS 
  SELECT b.project_id,
     COALESCE(r.id, 0) AS reward_id,
@@ -83,7 +83,7 @@ CREATE OR REPLACE VIEW "public"."contribution_reports_for_project_owners" AS
   end
 
   def down
-    <<-SQL
+    execute <<-SQL
 CREATE OR REPLACE VIEW "public"."contribution_reports_for_project_owners" AS 
  SELECT b.project_id,
     COALESCE(r.id, 0) AS reward_id,
