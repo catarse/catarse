@@ -158,7 +158,8 @@ class CommonWrapper
 
   def find_post(external_id)
     uri = services_endpoint[:proxy_service]
-    uri.path = '/posts'
+    resource = ProjectPost.find external_id
+    uri.path = '/v1/projects/' + resource.project.common_id + '/posts'
     response = request(
       uri.to_s,
       params: {
@@ -180,8 +181,9 @@ class CommonWrapper
   end
 
   def find_goal(external_id)
-    uri = services_endpoint[:project_service]
-    uri.path = '/goals'
+    uri = services_endpoint[:proxy_service]
+    resource = Goal.find external_id
+    uri.path = '/v1/projects/' + resource.project.common_id + '/goals'
     response = request(
       uri.to_s,
       params: {
@@ -355,7 +357,7 @@ class CommonWrapper
 
     if response.success?
       json = ActiveSupport::JSON.decode(response.body)
-      common_id = json.try(:[], 'id')
+      common_id = json.try(:[], 'direct_message_id')
     else
       Rails.logger.info(response.body)
       common_id = find_direct_message(resource.id)
@@ -396,7 +398,7 @@ class CommonWrapper
 
     if response.success?
       json = ActiveSupport::JSON.decode(response.body)
-      common_id = json.try(:[], 'id')
+      common_id = json.try(:[], 'post_id')
     else
       Rails.logger.info(response.body)
       common_id = find_post(resource.id)
@@ -416,7 +418,7 @@ class CommonWrapper
       resource.project.reload
     end
 
-    uri = common_api_endpoint
+    uri = services_endpoint[:proxy_service]
 
     return if resource.project.common_id.nil?
     uri.path = if resource.common_id.present?
@@ -437,7 +439,7 @@ class CommonWrapper
 
     if response.success?
       json = ActiveSupport::JSON.decode(response.body)
-      common_id = json.try(:[], 'id')
+      common_id = json.try(:[], 'goal_id')
     else
       Rails.logger.info(response.body)
       common_id = find_goal(resource.id)
@@ -457,20 +459,27 @@ class CommonWrapper
       resource.project.reload
     end
 
-    uri = services_endpoint[:project_service]
-    uri.path = '/rpc/reward'
+    uri = services_endpoint[:proxy_service]
+
+    uri.path = if resource.common_id.present?
+                 '/v1/projects/' + resource.project.common_id + '/rewards/' + resource.common_id
+               else
+                 '/v1/projects/' + resource.project.common_id + '/rewards'
+               end
+
     response = request(
       uri.to_s,
       body: {
-        data: resource.common_index.to_json
+        reward: {data: resource.common_index}
       }.to_json,
       action: :post,
-      current_ip: resource.project.user.current_sign_in_ip
+      current_ip: resource.project.user.current_sign_in_ip,
+      headers: {'Content-Type' => 'application/json'}
     ).run
 
     if response.success?
       json = ActiveSupport::JSON.decode(response.body)
-      common_id = json.try(:[], 'id')
+      common_id = json.try(:[], 'reward_id')
     else
       Rails.logger.info(response.body)
       common_id = find_reward(resource.id)
