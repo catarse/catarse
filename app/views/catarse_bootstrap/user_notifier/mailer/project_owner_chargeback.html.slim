@@ -1,4 +1,5 @@
 - contribution = @notification.contribution
+- detail = contribution.details.ordered.first
 - project = contribution.project
 - contributor = contribution.user
 - owner = @notification.user
@@ -58,7 +59,10 @@ p
 	br/
 	| Telefone do apoiador: #{contribution.user.phone_number}
 	br/
-	| Valor apoiado: #{number_to_currency contribution.value, precision: 2}
+	- if detail.payment.gateway_data['paid_amount'].present?
+  		| Valor devolvido: #{number_to_currency detail.payment.gateway_data['paid_amount']/100.0, precision: 2}
+	- else
+  		| Valor devolvido: #{number_to_currency detail.value, precision: 2}
 	br/
     - if contribution.reward.present?
 	  | Recompensa selecionada:

@@ -10,7 +10,11 @@ br/
 | A devolução do valor do seu apoio para o projeto #{project.name}, que foi #{project.decorator.display_mailer_status} no Catarse, já está disponível para que você possa resgatar:
 br/
 br/
-| Valor devolvido: #{number_to_currency detail.value, precision: 2}
+- if detail.payment.gateway_data['paid_amount'].present?
+  |Valor devolvido: #{number_to_currency detail.payment.gateway_data['paid_amount']/100.0, precision: 2}
+- else
+  |Valor devolvido: #{number_to_currency detail.value, precision: 2}
+
 br/
 | Data do reembolso: #{I18n.l detail.refunded_at}
 br/

@@ -65,6 +65,10 @@ class Contribution < ActiveRecord::Base
       and (current_timestamp - un.created_at) > '7 days'::interval) or not exists(select true from contribution_notifications un where un.contribution_id = contributions.id and un.template_name = 'contribution_project_unsuccessful_slip_no_account'))").uniq
   end
 
+  def payment
+    Payment.find_by_contribution_id(id)
+  end
+
   def recommended_projects
     user.recommended_projects.where('projects.id <> ?', project.id).order('count DESC')
   end

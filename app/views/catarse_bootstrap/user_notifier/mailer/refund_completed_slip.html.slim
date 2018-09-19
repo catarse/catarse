@@ -21,7 +21,7 @@ br
 br
 | CPF: #{bank_account.try(:owner_document)}  
 br
-| Valor devolvido: #{number_to_currency detail.value}
+| Valor devolvido: #{number_to_currency detail.value, precision: 2}
 br
 | Identificação no seu extrato bancário: "PAGAR.ME PAGAMENTOS"
 br
