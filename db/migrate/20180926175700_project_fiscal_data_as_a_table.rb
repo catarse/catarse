@@ -19,7 +19,7 @@ class ProjectFiscalDataAsATable < ActiveRecord::Migration
             user_info json NOT NULL,
             user_address json
         );
-        create unique index project_fiscal_data_tbl_idx on public.project_fiscal_data_tbl(project_id,fiscal_date)
+        create unique index project_fiscal_data_tbl_idx on public.project_fiscal_data_tbl(project_id,fiscal_date);
 
         CREATE OR REPLACE FUNCTION public.project_fiscal_data_tbl_refresh()
         RETURNS void
