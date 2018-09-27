@@ -1,6 +1,6 @@
-- project ||= @notification.project
 - fiscal_data ||= @notification.fiscal_data
-- user = project.user
+- project = fiscal_data['project_info']
+- user = fiscal_data['user_info']
 - finished_date = fiscal_data.fiscal_date.to_date.strftime('%d/%m/%Y')
 
 center
@@ -11,35 +11,35 @@ hr/
 br/
 p style="margin:0;"
   span style="font-weight:bold;" Projeto: 
-  span #{project.name}
+  span #{project['name']}
 p style="margin:0;"
   span style="font-weight:bold;" Beneficiário: 
-  span #{user.name}
+  span #{user['name']}
 p style="margin:0;"
   span style="font-weight:bold;" CPF/CNPJ: 
-  span #{user.cpf}
+  span #{user['cpf']}
   
 
-- unless fiscal_data.pf_pledget_by_month.nil? || fiscal_data.pf_pledget_by_month.empty?
+- unless fiscal_data.pf_pledged_by_month.nil? || fiscal_data.pf_pledged_by_month.empty?
   h3 PESSOAS FÍSICAS:
   table style="border: 1px solid;width:100%;border-collapse: collapse;"
     tr
       td style="border: 1px solid;text-align:center;font-weight:bold;" MÊS/ANO
       td style="border: 1px solid;text-align:center;font-weight:bold;" VALOR
-    - fiscal_data.pf_pledget_by_month.each do |item|
+    - fiscal_data.pf_pledged_by_month.each do |item|
       tr
         td style="border: 1px solid;text-align:center;vertical-align: middle;white-space: nowrap;"
           span #{item["month"]}/#{item["year"]}
         td style="border: 1px solid;text-align:center;vertical-align: middle;white-space: nowrap;"
           span #{number_to_currency item["value"], precision: 2}
 
-- unless fiscal_data.pj_pledget_by_month.nil? || fiscal_data.pj_pledget_by_month.empty?
+- unless fiscal_data.pj_pledged_by_month.nil? || fiscal_data.pj_pledged_by_month.empty?
   h3 PESSOAS JURÍDICAS:
   table style="border: 1px solid;width:100%;border-collapse: collapse;"
     tr
       td style="border: 1px solid;text-align:center;font-weight:bold;" MÊS/ANO
       td style="border: 1px solid;text-align:center;font-weight:bold;" VALOR
-    - fiscal_data.pj_pledget_by_month.each do |item|
+    - fiscal_data.pj_pledged_by_month.each do |item|
       tr
         td style="border: 1px solid;text-align:center;vertical-align: middle;white-space: nowrap;"
           span #{item["month"]}/#{item["year"]}
@@ -73,7 +73,7 @@ table style="border: 1px solid;width:100%;border-collapse: collapse;"
   tr
     td style="border: 1px solid;text-align:left;vertical-align: middle;white-space: nowrap;"
       span style="font-weight:bold;"
-        span Repasse líquido (#{(1-project.service_fee)*100}%
+        span Repasse líquido (#{(1-project['service_fee'])*100}%
         - unless fiscal_data.irrf.nil? || fiscal_data.irrf == 0
           span + Retenções
         span ) (=)

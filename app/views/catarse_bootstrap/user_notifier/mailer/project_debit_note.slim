@@ -1,8 +1,8 @@
-- project ||= @notification.project
 - fiscal_data ||= @notification.fiscal_data
-- user = project.user
-- address = user.address
-- project_link = project_by_slug_url(permalink: project.permalink)
+- project = fiscal_data.project_info
+- user = fiscal_data.user_info
+- address = fiscal_data.user_address
+- project_link = project_by_slug_url(permalink: project['permalink'])
 - finished_date = fiscal_data.fiscal_date.to_date.strftime('%d/%m/%Y')
 
 center
@@ -19,10 +19,10 @@ p style="margin:0;"  CEP: 01332-000
 
 h3 DEVEDOR
 
-p style="margin:0;"  Nome/Razão Social: #{user.name}
-p style="margin:0;"  CPF/CNPJ: #{user.cpf}
+p style="margin:0;"  Nome/Razão Social: #{user['name']}
+p style="margin:0;"  CPF/CNPJ: #{user['cpf']}
 - if address
-  p style="margin:0;"  Endereço: #{address.address_street}, #{address.address_number} #{address.address_complement}, #{address.address_neighbourhood}, #{address.address_city}, #{address.state.name}, #{address.address_zip_code}
+  p style="margin:0;"  Endereço: #{address['address_street']}, #{address['address_number']} #{address['address_complement']}, #{address['address_neighbourhood']}, #{address['address_city']}, #{address['address_state']}, #{address['address_zip_code']}
 
 h3 DISCRIMINAÇÃO DOS DÉBITOS
 
@@ -35,7 +35,7 @@ table style="border: 1px solid;max-width:100%;border-collapse: collapse;"
     td style="border: 1px solid;text-align:center;vertical-align: middle;white-space: nowrap;"
       span #{finished_date}
     td style="border: 1px solid;text-align:center;vertical-align: middle;"
-      span Tarifas dos meios de pagamento dos apoios ao projeto "#{project.name}".
+      span Tarifas dos meios de pagamento dos apoios ao projeto "#{project['name']}".
       br/
       span #{project_link}
     td style="border: 1px solid;text-align:center;vertical-align: middle;white-space: nowrap;"
