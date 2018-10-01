@@ -41,7 +41,7 @@ class Reward < ActiveRecord::Base
   scope :sort_asc, -> { order('id ASC') }
 
   delegate :display_deliver_estimate, :display_remaining, :name, :display_minimum, :short_description,
-           :medium_description, :last_description, :display_description, to: :decorator
+           :medium_description, :last_description, :display_description, :display_label, to: :decorator
 
   before_save :log_changes
   after_save :expires_project_cache
