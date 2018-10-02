@@ -26,11 +26,43 @@ class BalanceTransaction < ActiveRecord::Base
   belongs_to :project
   belongs_to :contribution
   belongs_to :user
+  belongs_to :subscription_payment
+  belongs_to :from_user, class_name: 'User'
+  belongs_to :to_user, class_name: 'User'
 
   validates :event_name, inclusion: { in: EVENT_NAMES }
   validates :amount, :event_name, :user_id, presence: true
 
+  after_create :refresh_metadata
+
+  def refresh_metadata
+    ::BalanceTransaction.refresh_metadata(self)
+  end
+
   ## CLASS METHODS
+  def self.refresh_metadata(balance_transaction)
+    metadata = {
+      amount: balance_transaction.amount,
+      event_name: balance_transaction.event_name,
+      origin_objects: {
+        from_user_name: balance_transaction.from_user.try(:display_name),
+        to_user_name: balance_transaction.to_user.try(:display_name),
+        service_fee: balance_transaction.project.try(:service_fee),
+        contributor_name: balance_transaction.contribution.try(:user).try(:display_name),
+        subscriber_name: balance_transaction.subscription_payment.try(:user).try(:display_name),
+        subscription_reward_label: balance_transaction.subscription_payment.try(:reward).try(:display_label),
+        id: (balance_transaction.project_id.presence || balance_transaction.contribution_id),
+        project_id: balance_transaction.project_id,
+        contribution_id: balance_transaction.contribution_id,
+        project_name: balance_transaction.project.try(:name)
+      }
+    }
+    balance_transaction.update_column(:metadata, metadata)
+  rescue StandardError => e
+    Raven.extra_context(balance_transaction_id: balance_transaction.try(:id))
+    Raven.capture_exception(e)
+    Raven.extra_context({})
+  end
 
   def self.insert_balance_transfer_between_users(from_user, to_user)
     from_user.reload
