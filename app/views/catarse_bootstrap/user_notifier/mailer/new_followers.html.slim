@@ -35,9 +35,9 @@ tr
                       br/
                       br/
                       -if user.follows.pluck(:follow_id).include?(follower.user_id)
-                        = link_to 'Seguindo', follow_fb_friends_url(user_email: user.email, user_token: user.authentication_token, ref: 'new_followers', utm_campaign: 'new_followers', utm_medium: 'email', utm_source: 'notification', anchor: 'follows'), style: "font-weight:500;letter-spacing:normal;line-height:100%;text-align:center;text-decoration:none;color:#ffffff;display:inline-block;width:100px;background-color:#7cc142;border-radius:3px;padding:10px 25px", target: '_blank'
+                        = link_to 'Seguindo', follow_fb_friends_url(user_email: user.email, ref: 'new_followers', utm_campaign: 'new_followers', utm_medium: 'email', utm_source: 'notification', anchor: 'follows'), style: "font-weight:500;letter-spacing:normal;line-height:100%;text-align:center;text-decoration:none;color:#ffffff;display:inline-block;width:100px;background-color:#7cc142;border-radius:3px;padding:10px 25px", target: '_blank'
                       -else
-                        = link_to 'Seguir', follow_fb_friends_url(user_email: user.email, user_token: user.authentication_token, follow_user_id: follower.user.id, ref: 'new_followers', utm_campaign: 'new_followers', utm_medium: 'email', utm_source: 'notification', anchor: 'follows'), style: "font-weight:500;letter-spacing:normal;line-height:100%;text-align:center;text-decoration:none;color:#79808b;display:inline-block;width:100px;background-color:#ffffff;border-radius:3px;border:2px solid;border-color:#79808b;padding:10px 25px", target: '_blank'
+                        = link_to 'Seguir', follow_fb_friends_url(user_email: user.email, follow_user_id: follower.user.id, ref: 'new_followers', utm_campaign: 'new_followers', utm_medium: 'email', utm_source: 'notification', anchor: 'follows'), style: "font-weight:500;letter-spacing:normal;line-height:100%;text-align:center;text-decoration:none;color:#79808b;display:inline-block;width:100px;background-color:#ffffff;border-radius:3px;border:2px solid;border-color:#79808b;padding:10px 25px", target: '_blank'
 
 - if abridge_results
   table border="0" cellpadding="0" cellspacing="0" style="min-width:100%;border-collapse:collapse;table-layout:fixed!important" width="100%" 
@@ -57,7 +57,7 @@ tr
             tbody
               tr
                 td style="padding-top:0;padding-right:18px;padding-bottom:9px;padding-left:18px;word-break:break-word;color:#3f4752;font-family:Helvetica;font-size:16px;line-height:150%;text-align:center" valign="top" 
-                  = link_to follow_fb_friends_url(user_email: user.email, user_token: user.authentication_token, ref: 'new_followers', utm_campaign: 'new_followers', utm_medium: 'email', utm_source: 'notification', anchor: 'followers'), style: "color:#2baadf;font-weight:normal;text-decoration:underline", target: '_blank' do
+                  = link_to follow_fb_friends_url(user_email: user.email, ref: 'new_followers', utm_campaign: 'new_followers', utm_medium: 'email', utm_source: 'notification', anchor: 'followers'), style: "color:#2baadf;font-weight:normal;text-decoration:underline", target: '_blank' do
                     strong="E mais #{followers.count - 10} novos seguidores nessa lista."
 
 tr
@@ -91,7 +91,7 @@ tr
                   td style="padding-top:0;padding-right:18px;padding-bottom:9px;padding-left:18px;word-break:break-word;color:#656565;font-family:Helvetica;font-size:12px;line-height:150%;text-align:center" valign="top" 
                     | Quer mudar a forma como você recebe esses emails?
                     br/
-                    = link_to 'Gerencie notificações de seguir amigos', edit_user_url(user,user_email: user.email, user_token: user.authentication_token, anchor: 'notifications'), style: "color:#656565;font-weight:normal;text-decoration:underline"
+                    = link_to 'Gerencie notificações de seguir amigos', edit_user_url(user,user_email: user.email, anchor: 'notifications'), style: "color:#656565;font-weight:normal;text-decoration:underline"
             span.HOEnZb
               font color="#888888" 
 span.HOEnZb
