@@ -11,7 +11,7 @@ b Por isso, #{user.display_name}, é importante que você decida o que fazer com
 
 p
   center
-    = link_to no_account_refund_project_contribution_url(contribution.project, contribution, user_email: user.email, user_token: user.authentication_token), alt: 'Solicitar Reembolso', target: '__blank' do
+    = link_to no_account_refund_project_contribution_url(contribution.project, contribution, user_email: user.email), alt: 'Solicitar Reembolso', target: '__blank' do
       = image_tag "#{CatarseSettings[:base_url]}/assets/catarse_bootstrap/btn-querodecidir.png", height: 81
 
 |Adoraríamos se você topasse apoiar o Catarse! 
@@ -20,7 +20,7 @@ br
 br
 |Você é LIVRE para recusar ou aceitar o convite para doar seu apoio para o Catarse!
 br
-p #{link_to 'Acesse o Catarse e saiba quanto dinheiro você tem conosco!', no_account_refund_project_contribution_url(contribution.project, contribution, user_email: user.email, user_token: user.authentication_token),target: '__blank'}
+p #{link_to 'Acesse o Catarse e saiba quanto dinheiro você tem conosco!', no_account_refund_project_contribution_url(contribution.project, contribution, user_email: user.email),target: '__blank'}
 
 b Quer mais explicações? 
 br
