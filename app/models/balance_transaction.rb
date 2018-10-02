@@ -26,12 +26,18 @@ class BalanceTransaction < ActiveRecord::Base
   belongs_to :project
   belongs_to :contribution
   belongs_to :user
-  belongs_to :susbcription_payment
+  belongs_to :subscription_payment
   belongs_to :from_user, class_name: 'User'
   belongs_to :to_user, class_name: 'User'
 
   validates :event_name, inclusion: { in: EVENT_NAMES }
   validates :amount, :event_name, :user_id, presence: true
+
+  after_commit :refresh_metadata, on: :create
+
+  def refresh_metadata
+    ::BalanceTransaction.refresh_metadata(self)
+  end
 
   ## CLASS METHODS
   def self.refresh_metadata(balance_transaction)
@@ -47,8 +53,8 @@ class BalanceTransaction < ActiveRecord::Base
         subscription_reward_label: balance_transaction.subscription_payment.try(:reward).try(:display_label),
         id: (balance_transaction.project_id.presence || balance_transaction.contribution_id),
         project_id: balance_transaction.project_id,
-        contribution_id: balance_transaction.contrbution_id,
-        project_name: balance_transaction.project.try(:name),
+        contribution_id: balance_transaction.contribution_id,
+        project_name: balance_transaction.project.try(:name)
       }
     }
     balance_transaction.update_column(:metadata, metadata)
