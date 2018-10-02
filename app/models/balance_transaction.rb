@@ -33,7 +33,7 @@ class BalanceTransaction < ActiveRecord::Base
   validates :event_name, inclusion: { in: EVENT_NAMES }
   validates :amount, :event_name, :user_id, presence: true
 
-  after_commit :refresh_metadata, on: :create
+  after_create :refresh_metadata
 
   def refresh_metadata
     ::BalanceTransaction.refresh_metadata(self)
@@ -58,6 +58,10 @@ class BalanceTransaction < ActiveRecord::Base
       }
     }
     balance_transaction.update_column(:metadata, metadata)
+  rescue StandardError => e
+    Raven.extra_context(balance_transaction_id: balance_transaction.try(:id))
+    Raven.capture_exception(e)
+    Raven.extra_context({})
   end
 
   def self.insert_balance_transfer_between_users(from_user, to_user)
