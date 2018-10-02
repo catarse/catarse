@@ -26,7 +26,7 @@ class BalanceTransaction < ActiveRecord::Base
   belongs_to :project
   belongs_to :contribution
   belongs_to :user
-  belongs_to :subscription_payment
+  belongs_to :subscription_payment, foreign_key: :subscription_payment_uuid
   belongs_to :from_user, class_name: 'User'
   belongs_to :to_user, class_name: 'User'
 
