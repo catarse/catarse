@@ -2,6 +2,7 @@
 # frozen_string_literal: true
 
 class DirectMessage < ActiveRecord::Base
+  include Shared::CommonWrapper
   has_notifications
   belongs_to :user
   belongs_to :to_user, class_name: 'User', foreign_key: 'to_user_id'
