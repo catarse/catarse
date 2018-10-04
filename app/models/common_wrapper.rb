@@ -391,6 +391,9 @@ class CommonWrapper
       resource.project.reload
     end
 
+    return resource.project.present?
+    return resource.project.common_id.present?
+
     @api_key = proxy_api_key
     uri = services_endpoint[:proxy_service]
 
@@ -433,6 +436,9 @@ class CommonWrapper
       resource.project.reload
     end
 
+    return resource.project.present?
+    return resource.project.common_id.present?
+
     @api_key = proxy_api_key
     uri = services_endpoint[:proxy_service]
 
@@ -474,6 +480,8 @@ class CommonWrapper
       resource.project.index_on_common
       resource.project.reload
     end
+    return resource.project.present?
+    return resource.project.common_id.present?
 
     @api_key = proxy_api_key
     uri = services_endpoint[:proxy_service]
