@@ -280,6 +280,7 @@ class CommonWrapper
   end
 
   def index_user(resource)
+    return unless resource.id.present?
     @api_key = common_api_key
     uri = services_endpoint[:community_service]
     uri.path = '/rpc/user'
@@ -307,6 +308,7 @@ class CommonWrapper
   end
 
   def index_project(resource)
+    return unless resource.id.present?
     unless resource.user.common_id.present?
       resource.user.index_on_common
       resource.user.reload
@@ -340,6 +342,7 @@ class CommonWrapper
   end
 
   def index_direct_message(resource)
+    return unless resource.id.present?
     if resource.project && !resource.project.common_id.present?
       resource.project.index_on_common
       resource.project.reload
@@ -385,13 +388,14 @@ class CommonWrapper
   end
 
   def index_project_post(resource)
+    return unless resource.id.present?
     unless resource.project.common_id.present?
       resource.project.index_on_common
       resource.project.reload
     end
 
-    return resource.project.present?
-    return resource.project.common_id.present?
+    return unless resource.project.present?
+    return unless resource.project.common_id.present?
 
     @api_key = proxy_api_key
     uri = services_endpoint[:proxy_service]
@@ -429,13 +433,14 @@ class CommonWrapper
   end
 
   def index_goal(resource)
+    return unless resource.id.present?
     unless resource.project.common_id.present?
       resource.project.index_on_common
       resource.project.reload
     end
 
-    return resource.project.present?
-    return resource.project.common_id.present?
+    return unless resource.project.present?
+    return unless resource.project.common_id.present?
 
     @api_key = proxy_api_key
     uri = services_endpoint[:proxy_service]
@@ -473,12 +478,13 @@ class CommonWrapper
   end
 
   def index_reward(resource)
+    return unless resource.id.present?
     unless resource.project.common_id.present?
       resource.project.index_on_common
       resource.project.reload
     end
-    return resource.project.present?
-    return resource.project.common_id.present?
+    return unless resource.project.present?
+    return unless resource.project.common_id.present?
 
     @api_key = proxy_api_key
     uri = services_endpoint[:proxy_service]
@@ -515,6 +521,7 @@ class CommonWrapper
   end
 
   def finish_project(resource)
+    return unless resource.id.present?
     unless resource.common_id.present?
       resource.index_on_common
       resource.reload
