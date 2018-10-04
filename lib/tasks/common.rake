@@ -4,7 +4,7 @@ namespace :common do
   task index_users: :environment do
     nthreads = ENV['COMMON_INDEXER_NTHREADS'].presence || 3
     page_size = ENV['COMMON_INDEXER_PAGE_SIZE'].presence || 500
-    cw = CommonWrapper.new(CatarseSettings[:common_api_key])
+    cw = CommonWrapper.new()
     page = 1
     per_page = page_size.to_i
     total = User.where(common_id: nil).count
@@ -33,7 +33,7 @@ namespace :common do
   task index_projects: :environment do
     nthreads = ENV['COMMON_INDEXER_NTHREADS'].presence || 3
     page_size = ENV['COMMON_INDEXER_PAGE_SIZE'].presence || 500
-    cw = CommonWrapper.new(CatarseSettings[:common_api_key])
+    cw = CommonWrapper.new()
     page = 1
     per_page = page_size.to_i
     total = Project.where(common_id: nil).count
@@ -87,14 +87,14 @@ namespace :common do
 
   desc 'index all posts'
   task index_posts: :environment do
-    cw = CommonWrapper.new(CatarseSettings[:common_api_key])
+    cw = CommonWrapper.new()
     collection = ProjectPost.where(common_id: nil)
     index_model(collection) { |resource| cw.index_project_post(resource) }
   end
 
   desc 'index all goals'
   task index_goals: :environment do
-    cw = CommonWrapper.new(CatarseSettings[:common_api_key])
+    cw = CommonWrapper.new()
     collection = Goal.where(common_id: nil)
     index_model(collection) { |resource| cw.index_goal(resource) }
   end
@@ -102,7 +102,7 @@ namespace :common do
 
   desc 'index all rewards'
   task index_goals: :environment do
-    cw = CommonWrapper.new(CatarseSettings[:common_api_key])
+    cw = CommonWrapper.new()
     collection = Reward.where(common_id: nil)
     index_model(collection) { |resource| cw.index_reward(resource) }
   end

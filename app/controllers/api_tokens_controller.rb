@@ -15,7 +15,7 @@ class ApiTokensController < ApplicationController
       return render json: { error: 'only authenticated users can request the common proxy API token' }, status: 401
     end
 
-    common_wrapper = CommonWrapper.new(proxy_api_key)
+    common_wrapper = CommonWrapper.new
 
     render json: { token: common_wrapper.temp_login_api_key(current_user) }, status: 200
   end
@@ -29,7 +29,7 @@ class ApiTokensController < ApplicationController
       return render json: { error: 'only authenticated users can request the common API token' }, status: 401
     end
 
-    common_wrapper = CommonWrapper.new(CatarseSettings[:common_api_key])
+    common_wrapper = CommonWrapper.new
 
     render json: { token: common_wrapper.user_api_key(current_user) }, status: 200
   end
