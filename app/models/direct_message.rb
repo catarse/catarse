@@ -27,10 +27,6 @@ class DirectMessage < ActiveRecord::Base
     }.merge!(id_hash)
   end
 
-  def common_wrapper_key
-    CatarseSettings[:common_proxy_api_key]
-  end
-
   def index_on_common
     common_wrapper.index_direct_message(self) if common_wrapper
   end

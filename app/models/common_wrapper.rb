@@ -2,8 +2,8 @@
 class CommonWrapper
   attr_accessor :api_key
 
-  def initialize(api_key)
-    @api_key = api_key
+  def initialize()
+    #@api_key = api_key
   end
 
   def common_api_endpoint
@@ -22,6 +22,7 @@ class CommonWrapper
   end
 
   def list_subscriptions(opts = {})
+    @api_key = common_api_key
     opts[:limit] = 10 unless opts[:limit].present? || opts[:limit].to_i > 30
     opts[:offset] = 0 unless opts[:offset].present?
 
@@ -43,6 +44,7 @@ class CommonWrapper
   end
 
   def list_payments(opts = {})
+    @api_key = common_api_key
     opts[:limit] = 10 unless opts[:limit].present? || opts[:limit].to_i > 30
     opts[:offset] = 10 unless opts[:offset].present?
 
@@ -64,6 +66,7 @@ class CommonWrapper
   end
 
   def temp_login_api_key(resource)
+    @api_key = proxy_api_key
     uri = services_endpoint[:proxy_service]
     uri.path = '/v1/users/login'
     response = request(
@@ -88,6 +91,7 @@ class CommonWrapper
   end
 
   def user_api_key(resource)
+    @api_key = common_api_key
     uri = services_endpoint[:community_service]
     uri.path = '/rpc/create_scoped_user_session'
     response = request(
@@ -111,6 +115,7 @@ class CommonWrapper
   end
 
   def find_project(external_id)
+    @api_key = common_api_key
     uri = services_endpoint[:project_service]
     uri.path = '/projects'
     response = request(
@@ -134,6 +139,7 @@ class CommonWrapper
   end
 
   def find_user(external_id)
+    @api_key = common_api_key
     uri = services_endpoint[:community_service]
     uri.path = '/users'
     response = request(
@@ -157,6 +163,7 @@ class CommonWrapper
   end
 
   def find_post(external_id)
+    @api_key = proxy_api_key
     uri = services_endpoint[:proxy_service]
     resource = ProjectPost.find external_id
     uri.path = '/v1/projects/' + resource.project.common_id + '/posts'
@@ -181,6 +188,7 @@ class CommonWrapper
   end
 
   def find_goal(external_id)
+    @api_key = proxy_api_key
     uri = services_endpoint[:proxy_service]
     resource = Goal.find external_id
     uri.path = '/v1/projects/' + resource.project.common_id + '/goals'
@@ -205,6 +213,7 @@ class CommonWrapper
   end
 
   def find_direct_message(external_id)
+    @api_key = proxy_api_key
     uri = services_endpoint[:proxy_service]
     uri.path = '/direct_messages'
     response = request(
@@ -228,6 +237,7 @@ class CommonWrapper
   end
 
   def find_reward(external_id)
+    @api_key = common_api_key
     uri = services_endpoint[:project_service]
     uri.path = '/rewards'
     response = request(
@@ -251,6 +261,7 @@ class CommonWrapper
   end
 
   def train_recommender(resource)
+    @api_key = common_api_key
     uri = services_endpoint[:recommender_service]
     uri.path = '/traincf'
     response = request(
@@ -269,6 +280,7 @@ class CommonWrapper
   end
 
   def index_user(resource)
+    @api_key = common_api_key
     uri = services_endpoint[:community_service]
     uri.path = '/rpc/user'
     response = request(
@@ -290,7 +302,7 @@ class CommonWrapper
 
     resource.update_column(:common_id,
                            common_id.presence || resource.common_id)
-    return common_id;
+    return common_id
   end
 
   def index_project(resource)
@@ -299,6 +311,7 @@ class CommonWrapper
       resource.user.reload
     end
 
+    @api_key = common_api_key
     uri = services_endpoint[:project_service]
     uri.path = '/rpc/project'
     response = request(
@@ -323,7 +336,7 @@ class CommonWrapper
       (common_id.presence || resource.common_id)
     )
 
-    return common_id;
+    return common_id
   end
 
   def index_direct_message(resource)
@@ -340,6 +353,7 @@ class CommonWrapper
       resource.to_user.index_on_common
     end
 
+    @api_key = proxy_api_key
     uri = services_endpoint[:proxy_service]
 
     uri.path = '/v1/direct_messages'
@@ -368,7 +382,7 @@ class CommonWrapper
       (common_id.presence || resource.common_id)
     )
 
-    return common_id;
+    return common_id
   end
 
   def index_project_post(resource)
@@ -377,6 +391,7 @@ class CommonWrapper
       resource.project.reload
     end
 
+    @api_key = proxy_api_key
     uri = services_endpoint[:proxy_service]
 
     return if resource.project.common_id.nil?
@@ -409,7 +424,7 @@ class CommonWrapper
       (common_id.presence || resource.common_id)
     )
 
-    return common_id;
+    return common_id
   end
 
   def index_goal(resource)
@@ -418,6 +433,7 @@ class CommonWrapper
       resource.project.reload
     end
 
+    @api_key = proxy_api_key
     uri = services_endpoint[:proxy_service]
 
     return if resource.project.common_id.nil?
@@ -450,7 +466,7 @@ class CommonWrapper
       (common_id.presence || resource.common_id)
     )
 
-    return common_id;
+    return common_id
   end
 
   def index_reward(resource)
@@ -459,6 +475,7 @@ class CommonWrapper
       resource.project.reload
     end
 
+    @api_key = proxy_api_key
     uri = services_endpoint[:proxy_service]
 
     uri.path = if resource.common_id.present?
@@ -490,7 +507,7 @@ class CommonWrapper
       (common_id.presence || resource.common_id)
     )
 
-    return common_id;
+    return common_id
   end
 
   def finish_project(resource)
@@ -499,6 +516,7 @@ class CommonWrapper
       resource.reload
     end
 
+    @api_key = common_api_key
     uri = services_endpoint[:project_service]
     uri.path = '/rpc/finish_project'
     response = request(
@@ -518,10 +536,11 @@ class CommonWrapper
       common_id = find_project(resource.id)
     end
 
-    return common_id;
+    return common_id
   end
 
   def chargeback_payment(payment_uuid)
+    @api_key = common_api_key
     uri = services_endpoint[:payment_service]
     uri.path = '/rpc/chargeback_payment'
     response = request(
@@ -537,6 +556,7 @@ class CommonWrapper
   end
 
   def cancel_subscription(resource)
+    @api_key = common_api_key
     uri = services_endpoint[:payment_service]
     uri.path = '/rpc/cancel_subscription'
     response = request(
@@ -579,4 +599,13 @@ class CommonWrapper
     )
   end
 
+  private
+
+  def proxy_api_key
+    @proxy_api_key ||= CatarseSettings[:common_proxy_api_key]
+  end
+
+  def common_api_key
+    @common_api_key ||= CatarseSettings[:common_api_key]
+  end
 end

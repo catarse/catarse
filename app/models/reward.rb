@@ -124,10 +124,6 @@ class Reward < ActiveRecord::Base
     common_wrapper.index_reward(self) if common_wrapper
   end
 
-  def common_wrapper_key
-    CatarseSettings[:common_proxy_api_key]
-  end
-
   private
 
   def pluck_from_database(attribute)
