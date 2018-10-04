@@ -300,9 +300,10 @@ class CommonWrapper
       common_id = find_user(resource.id)
     end
 
-    resource.update_column(:common_id,
-                           common_id.presence || resource.common_id)
-    return common_id
+    resource.update_column(
+      :common_id, common_id
+    ) if common_id.present?
+    common_id
   end
 
   def index_project(resource)
@@ -332,11 +333,10 @@ class CommonWrapper
     end
 
     resource.update_column(
-      :common_id,
-      (common_id.presence || resource.common_id)
-    )
+      :common_id, common_id
+    ) if common_id.present?
 
-    return common_id
+    common_id
   end
 
   def index_direct_message(resource)
@@ -378,11 +378,10 @@ class CommonWrapper
     end
 
     resource.update_column(
-      :common_id,
-      (common_id.presence || resource.common_id)
-    )
+      :common_id, common_id
+    ) if common_id.present?
 
-    return common_id
+    common_id
   end
 
   def index_project_post(resource)
@@ -423,11 +422,10 @@ class CommonWrapper
     end
 
     resource.update_column(
-      :common_id,
-      (common_id.presence || resource.common_id)
-    )
+      :common_id, common_id
+    ) if common_id.present?
 
-    return common_id
+    common_id
   end
 
   def index_goal(resource)
@@ -468,11 +466,10 @@ class CommonWrapper
     end
 
     resource.update_column(
-      :common_id,
-      (common_id.presence || resource.common_id)
-    )
+      :common_id, common_id
+    ) if common_id.present?
 
-    return common_id
+    common_id
   end
 
   def index_reward(resource)
@@ -511,11 +508,10 @@ class CommonWrapper
     end
 
     resource.update_column(
-      :common_id,
-      (common_id.presence || resource.common_id)
-    )
+      :common_id, common_id
+    ) if common_id.present?
 
-    return common_id
+    common_id
   end
 
   def finish_project(resource)
