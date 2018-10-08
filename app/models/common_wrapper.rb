@@ -2,14 +2,6 @@
 class CommonWrapper
   attr_accessor :api_key
 
-  def initialize()
-    #@api_key = api_key
-  end
-
-  def common_api_endpoint
-    @common_api_endpoint ||= URI::parse(CatarseSettings[:common_api])
-  end
-
   def services_endpoint
     @services_endpoint ||= {
       proxy_service: URI::parse(CatarseSettings[:common_proxy_service_api]),
@@ -547,7 +539,7 @@ class CommonWrapper
       common_id = find_project(resource.id)
     end
 
-    return common_id
+    common_id
   end
 
   def chargeback_payment(payment_uuid)
