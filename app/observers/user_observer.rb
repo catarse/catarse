@@ -22,6 +22,7 @@ class UserObserver < ActiveRecord::Observer
     user.fix_twitter_user
     user.fix_facebook_link
     user.nullify_permalink
+    user.chache_uploaded_image_url
   end
 
   def after_save(user)

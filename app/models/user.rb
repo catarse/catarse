@@ -375,6 +375,12 @@ class User < ActiveRecord::Base
     self.permalink = nil if permalink.blank?
   end
 
+  def chache_uploaded_image_url
+    if uploaded_image.present?
+      self.thumbnail_url = uploaded_image.thumb_avatar.url
+    end
+  end
+
   def fix_facebook_link
     if facebook_link.present?
       self.facebook_link = ('http://' + facebook_link) unless facebook_link[/^https?:\/\//]
@@ -458,7 +464,13 @@ class User < ActiveRecord::Base
     {
       external_id: id,
       name: name,
+      public_name: public_name,
+      about_html: about_html,
+      permalink: permalink,
+      facebook_link: facebook_link,
+      other_link: other_link,
       email: email,
+      thumbnail_url: thumbnail_url,
       password: encrypted_password,
       password_encrypted: true,
       document_number: cpf,
