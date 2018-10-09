@@ -4,16 +4,16 @@ pt:
       header_html: 'Crowdfunding e financiamento coletivo no Brasil é no Catarse'
       row_title: 'Populares'
       banners:
-        1:
+        2:
           title: 'Traga seu projeto criativo ao mundo'
           subtitle: ''
           link: '/start?ref=home_banner'
           cta: 'Comece sua campanha'
           image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-fctodos.jpg'
-        2:
+        1:
           title: '<img src="https://daks2k3a4ib2z.cloudfront.net/573a70f6d5c3cb6532f8b1a7/59c3980fd03bd6000107e99c_logo-assinaturas.png" width="400">'
-          subtitle: 'Nosso financiamento coletivo recorrente chegou!'
-          link: 'https://crowdfunding.catarse.me/assinaturas?ref=home_banner'
+          subtitle: 'Conecte-se com seus fãs e receba pagamentos todo mês em nossa plataforma de financiamento recorrente.'
+          link: 'https://crowdfunding.catarse.me/assinaturas?ref=home_banner_01'
           cta: 'Saiba mais'
           image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-assinaturas.jpg'
         3:
