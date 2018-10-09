@@ -375,7 +375,7 @@ class User < ActiveRecord::Base
     self.permalink = nil if permalink.blank?
   end
 
-  def chache_uploaded_image_url
+  def cache_uploaded_image_url
     if uploaded_image.present?
       self.thumbnail_url = uploaded_image.thumb_avatar.url
     end
