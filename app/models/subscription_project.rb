@@ -11,6 +11,7 @@ class SubscriptionProject < Project
   # delegate reusable methods from state_machine
   delegate :push_to_online, :push_to_draft, :finish,
            :push_to_trash, to: :state_machine
+  accepts_nested_attributes_for :goals, allow_destroy: true
 
   def self.sti_name
     'sub'

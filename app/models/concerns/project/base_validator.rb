@@ -38,7 +38,7 @@ module Project::BaseValidator
         errors.add(
           'goals.size',
           I18n.t('activerecord.errors.models.project.attributes.goals.at_least_one')
-        ) if project.goals.empty? && project.is_sub?
+        ) if project.goals.all?(&:marked_for_destruction?) && project.is_sub?
       end
 
       wo.validates_presence_of :budget,

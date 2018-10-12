@@ -15,7 +15,7 @@ class GoalPolicy < ApplicationPolicy
 
   def permitted_attributes
     attributes = record.attribute_names.map(&:to_sym)
-    attributes
+    attributes << { goals_attributes: [:id, :_destroy] }
   end
 
   protected
