@@ -67,4 +67,8 @@ class RewardDecorator < Draper::Decorator
   def display_description
     auto_html(source.description) { html_escape; simple_format }
   end
+
+  def display_label
+    "#{source.minimum_value} - #{source.title}"
+  end
 end

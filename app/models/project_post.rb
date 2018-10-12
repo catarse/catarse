@@ -52,8 +52,4 @@ class ProjectPost < ActiveRecord::Base
   def index_on_common
     common_wrapper.index_project_post(self) if common_wrapper
   end
-
-  def common_wrapper_key
-    CatarseSettings[:common_proxy_api_key]
-  end
 end

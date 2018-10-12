@@ -20,10 +20,11 @@ class RedactorRailsPictureUploader < ImageUploader
   # def scale(width, height)
   #   # do something
   # end
-  MAX_WIDTH = 667
+  MAX_WIDTH = 667 * 2 # for retina displays
 
   process :read_dimensions
-  process gif_resize: [MAX_WIDTH, -1]
+  process resize_to_limit: [MAX_WIDTH, -1], if: :not_gif?
+  process gif_resize: [MAX_WIDTH, -1], if: :gif?
 
 
   # Create different versions of your uploaded files:
@@ -59,6 +60,10 @@ class RedactorRailsPictureUploader < ImageUploader
 
   def gif?(new_file)
     new_file.content_type == "image/gif"
+  end
+
+  def not_gif?(new_file)
+    !gif?(new_file)
   end
 
   def gif_safe_transform!

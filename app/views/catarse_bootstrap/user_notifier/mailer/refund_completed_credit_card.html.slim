@@ -10,7 +10,10 @@ br
 |A devolução do seu apoio para o projeto #{contribution.project.name}, que foi #{project.decorator.display_mailer_status}, no #{company_name} acabou de ser realizada. O crédito efetivo deverá acontecer na fatura vigente, caso ela ainda esteja em aberto, ou na subsequente, caso a desse mês já esteja fechada.
 br
 br
-|Valor devolvido: #{number_to_currency detail.value}
+- if detail.payment.gateway_data['paid_amount'].present?
+  | Valor devolvido: #{number_to_currency detail.payment.gateway_data['paid_amount']/100.0, precision: 2}
+- else
+  | Valor devolvido: #{number_to_currency detail.value, precision: 2}
 br
 br
 |Data do reembolso: #{I18n.l detail.refunded_at}

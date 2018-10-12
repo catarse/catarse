@@ -44,7 +44,8 @@ class GoalsController < ApplicationController
 
   def destroy
     authorize resource
-    if resource.destroy!
+    # need to send _destroy param to run parent validations
+    if parent.update(goals_attributes: [ { id: @goal.id, _destroy: '1' } ])
       render status: 200, json: { success: 'OK' }
     else
       render status: 400, json: { errors_json: resource.errors.to_json }

@@ -13,6 +13,7 @@ class PaymentObserver < ActiveRecord::Observer
 
     payment.direct_refund if %w(rejected failed).include?(payment.project.state)
   end
+  alias from_refused_to_paid from_pending_to_paid
 
   def from_paid_to_chargeback(payment)
     payment.notify_to_backoffice(:admin_chargeback, {

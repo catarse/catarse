@@ -2,14 +2,6 @@
 class CommonWrapper
   attr_accessor :api_key
 
-  def initialize(api_key)
-    @api_key = api_key
-  end
-
-  def common_api_endpoint
-    @common_api_endpoint ||= URI::parse(CatarseSettings[:common_api])
-  end
-
   def services_endpoint
     @services_endpoint ||= {
       proxy_service: URI::parse(CatarseSettings[:common_proxy_service_api]),
@@ -22,6 +14,7 @@ class CommonWrapper
   end
 
   def list_subscriptions(opts = {})
+    @api_key = common_api_key
     opts[:limit] = 10 unless opts[:limit].present? || opts[:limit].to_i > 30
     opts[:offset] = 0 unless opts[:offset].present?
 
@@ -43,6 +36,7 @@ class CommonWrapper
   end
 
   def list_payments(opts = {})
+    @api_key = common_api_key
     opts[:limit] = 10 unless opts[:limit].present? || opts[:limit].to_i > 30
     opts[:offset] = 10 unless opts[:offset].present?
 
@@ -64,6 +58,7 @@ class CommonWrapper
   end
 
   def temp_login_api_key(resource)
+    @api_key = proxy_api_key
     uri = services_endpoint[:proxy_service]
     uri.path = '/v1/users/login'
     response = request(
@@ -88,6 +83,7 @@ class CommonWrapper
   end
 
   def user_api_key(resource)
+    @api_key = common_api_key
     uri = services_endpoint[:community_service]
     uri.path = '/rpc/create_scoped_user_session'
     response = request(
@@ -111,6 +107,7 @@ class CommonWrapper
   end
 
   def find_project(external_id)
+    @api_key = common_api_key
     uri = services_endpoint[:project_service]
     uri.path = '/projects'
     response = request(
@@ -134,6 +131,7 @@ class CommonWrapper
   end
 
   def find_user(external_id)
+    @api_key = common_api_key
     uri = services_endpoint[:community_service]
     uri.path = '/users'
     response = request(
@@ -157,8 +155,10 @@ class CommonWrapper
   end
 
   def find_post(external_id)
+    @api_key = proxy_api_key
     uri = services_endpoint[:proxy_service]
-    uri.path = '/posts'
+    resource = ProjectPost.find external_id
+    uri.path = '/v1/projects/' + resource.project.common_id + '/posts'
     response = request(
       uri.to_s,
       params: {
@@ -180,8 +180,34 @@ class CommonWrapper
   end
 
   def find_goal(external_id)
-    uri = services_endpoint[:project_service]
-    uri.path = '/goals'
+    @api_key = proxy_api_key
+    uri = services_endpoint[:proxy_service]
+    resource = Goal.find external_id
+    uri.path = '/v1/projects/' + resource.project.common_id + '/goals'
+    response = request(
+      uri.to_s,
+      params: {
+        "external_id::integer" => "eq.#{external_id}"
+      },
+      action: :get,
+      headers: { 'Accept' => 'application/vnd.pgrst.object+json' },
+    ).run
+
+    if response.success?
+      json = ActiveSupport::JSON.decode(response.body)
+      common_id = json.try(:[], 'id')
+      return common_id
+    else
+      Rails.logger.info(response.body)
+    end
+
+    return
+  end
+
+  def find_direct_message(external_id)
+    @api_key = proxy_api_key
+    uri = services_endpoint[:proxy_service]
+    uri.path = '/direct_messages'
     response = request(
       uri.to_s,
       params: {
@@ -203,6 +229,7 @@ class CommonWrapper
   end
 
   def find_reward(external_id)
+    @api_key = common_api_key
     uri = services_endpoint[:project_service]
     uri.path = '/rewards'
     response = request(
@@ -226,6 +253,7 @@ class CommonWrapper
   end
 
   def train_recommender(resource)
+    @api_key = common_api_key
     uri = services_endpoint[:recommender_service]
     uri.path = '/traincf'
     response = request(
@@ -244,6 +272,8 @@ class CommonWrapper
   end
 
   def index_user(resource)
+    return unless resource.id.present?
+    @api_key = common_api_key
     uri = services_endpoint[:community_service]
     uri.path = '/rpc/user'
     response = request(
@@ -263,17 +293,20 @@ class CommonWrapper
       common_id = find_user(resource.id)
     end
 
-    resource.update_column(:common_id,
-                           common_id.presence || resource.common_id)
-    return common_id;
+    resource.update_column(
+      :common_id, common_id
+    ) if common_id.present?
+    common_id
   end
 
   def index_project(resource)
+    return unless resource.id.present?
     unless resource.user.common_id.present?
       resource.user.index_on_common
       resource.user.reload
     end
 
+    @api_key = common_api_key
     uri = services_endpoint[:project_service]
     uri.path = '/rpc/project'
     response = request(
@@ -294,19 +327,69 @@ class CommonWrapper
     end
 
     resource.update_column(
-      :common_id,
-      (common_id.presence || resource.common_id)
-    )
+      :common_id, common_id
+    ) if common_id.present?
 
-    return common_id;
+    common_id
+  end
+
+  def index_direct_message(resource)
+    return unless resource.id.present?
+    if resource.project && !resource.project.common_id.present?
+      resource.project.index_on_common
+      resource.project.reload
+    end
+
+    if resource.user && !resource.user.common_id.present?
+      resource.user.index_on_common
+    end
+
+    if resource.to_user && !resource.to_user.common_id.present?
+      resource.to_user.index_on_common
+    end
+
+    @api_key = proxy_api_key
+    uri = services_endpoint[:proxy_service]
+
+    uri.path = '/v1/direct_messages'
+
+    response = request(
+      uri.to_s,
+      body: {
+        direct_message:
+        resource.common_index
+      }.to_json,
+      action: :post,
+      current_ip: resource.project.user.current_sign_in_ip,
+      headers: {'Content-Type' => 'application/json'},
+    ).run
+
+    if response.success?
+      json = ActiveSupport::JSON.decode(response.body)
+      common_id = json.try(:[], 'direct_message_id')
+    else
+      Rails.logger.info(response.body)
+      common_id = find_direct_message(resource.id)
+    end
+
+    resource.update_column(
+      :common_id, common_id
+    ) if common_id.present?
+
+    common_id
   end
 
   def index_project_post(resource)
+    return unless resource.id.present?
     unless resource.project.common_id.present?
       resource.project.index_on_common
       resource.project.reload
     end
 
+    return unless resource.project.present?
+    return unless resource.project.common_id.present?
+
+    @api_key = proxy_api_key
     uri = services_endpoint[:proxy_service]
 
     return if resource.project.common_id.nil?
@@ -328,27 +411,31 @@ class CommonWrapper
 
     if response.success?
       json = ActiveSupport::JSON.decode(response.body)
-      common_id = json.try(:[], 'id')
+      common_id = json.try(:[], 'post_id')
     else
       Rails.logger.info(response.body)
       common_id = find_post(resource.id)
     end
 
     resource.update_column(
-      :common_id,
-      (common_id.presence || resource.common_id)
-    )
+      :common_id, common_id
+    ) if common_id.present?
 
-    return common_id;
+    common_id
   end
 
   def index_goal(resource)
+    return unless resource.id.present?
     unless resource.project.common_id.present?
       resource.project.index_on_common
       resource.project.reload
     end
 
-    uri = common_api_endpoint
+    return unless resource.project.present?
+    return unless resource.project.common_id.present?
+
+    @api_key = proxy_api_key
+    uri = services_endpoint[:proxy_service]
 
     return if resource.project.common_id.nil?
     uri.path = if resource.common_id.present?
@@ -369,59 +456,70 @@ class CommonWrapper
 
     if response.success?
       json = ActiveSupport::JSON.decode(response.body)
-      common_id = json.try(:[], 'id')
+      common_id = json.try(:[], 'goal_id')
     else
       Rails.logger.info(response.body)
       common_id = find_goal(resource.id)
     end
 
     resource.update_column(
-      :common_id,
-      (common_id.presence || resource.common_id)
-    )
+      :common_id, common_id
+    ) if common_id.present?
 
-    return common_id;
+    common_id
   end
 
   def index_reward(resource)
+    return unless resource.id.present?
     unless resource.project.common_id.present?
       resource.project.index_on_common
       resource.project.reload
     end
+    return unless resource.project.present?
+    return unless resource.project.common_id.present?
 
-    uri = services_endpoint[:project_service]
-    uri.path = '/rpc/reward'
+    @api_key = proxy_api_key
+    uri = services_endpoint[:proxy_service]
+
+    uri.path = if resource.common_id.present?
+                 '/v1/projects/' + resource.project.common_id + '/rewards/' + resource.common_id
+               else
+                 '/v1/projects/' + resource.project.common_id + '/rewards'
+               end
+
     response = request(
       uri.to_s,
       body: {
-        data: resource.common_index.to_json
+        reward: {data: resource.common_index}
       }.to_json,
       action: :post,
-      current_ip: resource.project.user.current_sign_in_ip
+      current_ip: resource.project.user.current_sign_in_ip,
+      headers: {'Content-Type' => 'application/json'}
     ).run
 
     if response.success?
       json = ActiveSupport::JSON.decode(response.body)
-      common_id = json.try(:[], 'id')
+      common_id = json.try(:[], 'reward_id')
     else
       Rails.logger.info(response.body)
       common_id = find_reward(resource.id)
     end
 
     resource.update_column(
-      :common_id,
-      (common_id.presence || resource.common_id)
-    )
+      :common_id, common_id
+    ) if common_id.present?
 
-    return common_id;
+    common_id
   end
 
   def finish_project(resource)
+    return unless resource.id.present?
     unless resource.common_id.present?
       resource.index_on_common
       resource.reload
     end
 
+    @api_key = common_api_key
     uri = services_endpoint[:project_service]
     uri.path = '/rpc/finish_project'
     response = request(
@@ -441,10 +539,11 @@ class CommonWrapper
       common_id = find_project(resource.id)
     end
 
-    return common_id;
+    common_id
   end
 
   def chargeback_payment(payment_uuid)
+    @api_key = common_api_key
     uri = services_endpoint[:payment_service]
     uri.path = '/rpc/chargeback_payment'
     response = request(
@@ -460,6 +559,7 @@ class CommonWrapper
   end
 
   def cancel_subscription(resource)
+    @api_key = common_api_key
     uri = services_endpoint[:payment_service]
     uri.path = '/rpc/cancel_subscription'
     response = request(
@@ -502,4 +602,13 @@ class CommonWrapper
     )
   end
 
+  private
+
+  def proxy_api_key
+    @proxy_api_key ||= CatarseSettings[:common_proxy_api_key]
+  end
+
+  def common_api_key
+    @common_api_key ||= CatarseSettings[:common_api_key]
+  end
 end
