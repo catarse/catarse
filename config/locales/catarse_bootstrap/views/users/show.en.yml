@@ -1,0 +1,221 @@
+en:
+  users:
+    balance:
+      activities_group: Activities
+      withdraw_history_group: History of withdrawals
+      transfer_labels:
+        amount: 'Value:'
+        requested_in: 'Requested in:'
+        user_name: 'Name:'
+        funding_estimated_date: 'Expected delivery:'
+        transfer_error: Download Error
+        transfer_error_line1: Request a new service or enter
+        transfer_error_line2: contact us
+        transfer_error_line3: for more information.
+        received_at: 'Received in:'
+      value_text: Value
+      value: Value
+      request_fund: Request withdrawal
+      event_names:
+        successful_project_pledged: Project funded project %{project_name}
+        catarse_project_service_fee: Catarse Service Rate (%{service_fee}%)
+        irrf_tax_project: Taxes generated from the invoice do Catarse para PJ
+        balance_transfer_request: Transfer request to bank account
+        balance_transfer_error: Error in transfer to bank account
+        balance_transfer_project: Transfer request to bank account
+        project_contribution_chargeback: "Payment disputed by the contributor: %{contributor_name}"
+        project_contribution_reverse_chargeback: "Payment confirmed after challenge by contributor: %{contributor_name}"
+        project_contribution_confirmed_after_finished: "Payment confirmed after completed project: %{project_name}"
+        catarse_contribution_fee: Catarse Service Rate ( %{service_fee}%)
+        subscription_fee: Catarse Service Rate ( %{service_fee}%)
+        subscription_payment: "%{subscriber_name} %{subscription_reward_label} - (Signature %{project_name})"
+        contribution_refund: Project repayment %{project_name}
+        refund_contributions: Reimbursement for project contributors %{project_name}
+        contribution_chargedback: Support challenge for project %{project_name}
+        subscription_payment_chargedback: Support challenge for project %{project_name}
+        balance_expired: Refund not required within 90 days. See <a target='__blank'
+          href='https://suporte.catarse.me/hc/pt-br/articles/202365507-Regras-e-funcionamento-dos-reembolsos-estornos-cancelamentos#reembolso90dias'>our
+          policy</a>
+        contribution_refunded_after_successful_pledged: Project repayment %{project_name}
+        subscription_payment_refunded: Project repayment %{project_name}
+        balance_received_from: Transfer received from %{from_user_name}
+        balance_transferred_to: Transfer sent to %{to_user_name}
+      debit: Output
+      credit: Input
+      totals: Balance
+      totals_transactions_title: 'Extract (balance in account: $%{value})'
+      day_balance: Balance of the day
+      withdraw: To withdraw money
+      withdraw_cta: "$ Perform Withdrawal"
+      last_withdraw_msg: You already have %{amount} on %{date}
+      no_withdraws_this_month: No draw made on %{month_name}
+      withdraw_limits_msg: You can make 1 withdrawal per month. The amount drawn is
+        always the total available in the balance
+      withdraw_canceling_title: Cancellation of project in progress
+      withdraw_canceling_msg: You can only request a withdrawal after the project
+        has been definitively canceled and the contributors reimbursed.
+      success_message: Your draft has been successfully requested. In up to 10 business
+        days your money will be in your bank account!
+      bank:
+        account: 'Account:'
+        name: 'Name:'
+        cpf_cnpj: 'CPF / CNPJ:'
+        bank_name: 'Bank:'
+        agency: 'Agency:'
+        pf: 'CPF:'
+        pj: 'CNPJ:'
+        cpf: 'CPF:'
+        cnpj: 'CNPJ:'
+        account_type_name: 'Account Type:'
+        account_type:
+          conta_corrente: Checking Account
+          conta_poupanca: Savings account
+          conta_corrente_conjunta: Joint Current Account
+          conta_poupanca_conjunta: Joint Savings Account
+    profile:
+      user_since: Arrived together on %{date}
+      no_project_contribution: Has not yet contributed to projects
+      single_project_contribution: Supported 1 project
+      multiple_project_contribution: Supported %{n_projects} projects
+      single_project_created: and has already created 1 project
+      multiple_project_created: and already created %{n_projects} projects
+    contribution_row:
+      total_amount: 'Total with interest: $%{total_amount}'
+      anonymous: I want my support not to be public
+      print_slip: Print Ticket
+      slip_copy: Generate 2nd via
+      status: Status
+      contact_author: Send Message
+      show_receipt: View Receipt
+      contributed_projects: Projects I contributed to
+      contribution_value: Value of support
+      contribution_status: Support Status
+      request_refund: Request refund
+      reward: Reward
+      no_reward: You have not selected a reward
+      delivery_estimate: 'Estimated delivery:'
+      delivery_status: 'Delivery Status:'
+      answer_survey: Answer the questionnaire
+    card:
+      twitter_profile: Twitter Profile
+      facebook_profile: Facebook profile
+      author_website: site
+      contact_author: Send Message
+    failed_reactivation: The reactivation link is invalid, please contact our team.
+    reactivated: Welcome back, your account has been reactivated.
+    project:
+      confirmed: Confirmed
+      refunded: Refunded
+      requested_refund: Reimbursement Requested
+      waiting_confirmation: Waiting confirmation
+      tell_about_this_contribution: Tell the world about your support!
+    credit_cards:
+      index:
+        last_digits: Card
+        brand: Operator
+        title: Credit cards
+        remove: To remove
+    credits:
+      modal:
+        title: Do you really want to request a refund of your support?
+        text: 'Learn how the Catarse refund process works:'
+        link: Rules and Functioning of Refunds / Charges
+        reject_btn: No, I want to keep my credits
+        accept_btn: Yes, I would like to request a refund of my
+      index:
+        contribution_date: Date of support
+        current_credits_html: Your current balance is <span id="current_credits">%{credits}</span> in credits.
+        important_html: To know all the working rules of refund, <a href='http://suporte.catarse.me/hc/pt-br/articles/202365507-Regras-e-funcionamento-dos-reembolsos-estornos'
+          target='_blank'>click here</a> . Any questions, please visit our <a href='http://suporte.catarse.me'
+          target='_blank'>support</a> .
+        project: Project
+        refunded: Request confirmed. We will contact you within 4 days.
+        insufficient_credits: You do not have enough credits to complete this chargeback.
+        refunds_title: Supports that can be reversed
+        request_refund: Request a refund
+        requested_refund: Requested Reversal
+        status: Status
+        title: My credits
+        value: Value
+      refund:
+        cannot_refund: This support can not be reversed.
+        error: Oops. There was an error requesting your chargeback.
+        no_credits: You do not have enough credits to complete this chargeback.
+        refunded: This support has already been reversed.
+        requested_refund: You have already requested a chargeback for this support.
+      title: My credits
+    current_user_fields:
+      bank_account_title: Bank data
+      bank_account_hint: Your bank details will be used to make full refund of your
+        support, if the project does not reach 100% of the established goal.
+      my_facebook: Facebook integration
+      bio_limit: up to 140 characters
+      updated: Your information has been updated
+      update_social_info: update the information
+      social_info: Contact information
+      twitter: twitter (user)
+      facebook_link: facebook profile (full link)
+      other_link: link from your website
+      change_password: Change my password
+      current_password_hint: "<i>In order for the password to be changed you must
+        confirm your current password.</i>"
+      email_hint: Your email will only be used for sending communications from Catarse
+        and the projects you support. It will not be visible in your profile. When
+        you support a project, we will give your email to the project owner so he
+        can arrange the rewards.
+      email_tooltip: Click here to fill in your email ...
+      gravatar_hint_html: "You can also change your photo using %{link} with your email.
+        <br> It's as simple as sending an image and already works for other sites
+        too;)"
+      local_avatar: My avatar
+      submit_text: Choose your image
+      submit: Submit
+      my_data: My data
+      newsletter: I want to receive news from Catare by email
+      password_hint: "<i>Leave blank if you do not want to change your password.</i>"
+      deactivate: Disable my account
+      deactivate_notice: The account for %{name} has been disabled.
+      deactivate_confirm: Do you want to disable this account?
+      deactivate_hint: All your support will be converted into anonymous backups,
+        your data will no longer be visible, you will automatically exit the system
+        and your account will be permanently disabled.
+    unsubscribes:
+      projects_in_reminder: 'Projects with active reminder:'
+      title: 'Choose which projects you would like to receive notifications:'
+      posts: I want to receive project updates
+    show:
+      projects:
+        here: on here
+        no_projects: "%{name} has not yet performed any projects on Catarse. Is the
+          inspiration going to hit an hour like this?"
+        no_projects_current_user_html: You have not done any projects in Catarse yet.
+          Let the inspiration hit and click %{link} to get started!
+        title: "%{Name} Projects"
+        title_current_user: My projects
+      contributions:
+        project_col: Project
+        contribution_col: Support
+        reward_col: Reward
+        survey_col: Quiz
+        anonymous: Anonymous support.
+        no_contributions: "%{name} has not yet contributed to any projects. But we know
+          it's only a matter of time! : D"
+        no_contributions_current_user_html: You have not yet contributed to any projects.
+          How about <a href="/">starting now</a> ?
+        no_reward: You have not selected any reward
+        title: Projects that %{name} already contributed to
+        title_current_user: "Projects I've already contributed to"
+        your_reward: Your reward
+      attention: Attention
+      tabs:
+        credit_cards: Credit cards
+        contributed_projects: Support projects
+        created_projects: Projects Created
+        comments: comments
+        credits: Credits
+        settings: Preferences
+        unsubscribes: Notifications
+      user_social:
+        email: Send me a email
+        facebook: Facebook profile
+        twitter: Profile on twitter

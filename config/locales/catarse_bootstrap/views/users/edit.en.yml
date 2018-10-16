@@ -1,43 +1,102 @@
 en:
   users:
     edit:
-      contributions: "Contributions"
-      project: "Projects"
-      about_me: "About me"
-      settings: "Personals informations"
-      notifications: "Notifications"
-      billing: "Banco e cartões"
-      profil: "Public profil"
-      feeds: "Ativities"
-      submit: "Submit"
+      settings_tab:
+        credit_cards:
+          title: Credit cards
+          subtitle: If any project you have contributed to <strong>with Credit Card</strong>
+            is not successful, we will <strong>automatically</strong> refund the card
+            used to make the contribution.
+          card_label: Card
+          provider_label: Operator
+          remove_label: To remove
+        update_success_msg: Your information has been updated
+        legal_title: Responsible
+        legal_subtitle: "<strong>IMPORTANT</strong> Full name / Corporate name and
+          CPF / CNPJ <strong>can not be modified</strong> after being saved."
+        account_types:
+          pf: Physical person
+          pj: Legal person
+          mei: Legal Entity (Individual Entrepreneur - MEI)
+        pf_label_name: Full name
+        pj_label_name: Full Name / Company Name
+        pf_label_document: CPF
+        pj_label_document: CNPJ
+        label_birth_date: Date of birth
+        label_state_inscription: State registration
+        address_title: Address
+        address_subtitle: The address data will be used for Invoice issue, if applicable.
+        label_country: Parents
+        label_address_street: Address (Street, Avenue, Alameda ...)
+        label_address_number: Number
+        label_address_complement: Complement
+        label_address_neighbourhood: Neighborhood
+        label_address_city: City
+        label_address_state: state
+        label_other_option: Other / other
+        label_address_zipcode: Zip code
+        label_address_phone: telephone
+      email_confirmation:
+        hello: Hi %{name}
+        hello_sub: We are having trouble talking to you ...
+        hello_email: Is this your contact email? %{email}
+        confirmed_title: Be sure to check our emails!
+        confirmed_sub: Check your SPAM and authorize Catarse emails.
+      contributions: Supported
+      projects: Created
+      about_me: About you
+      settings: Data and address
+      notification: Notifications
+      billing: Bank and cards
+      profil: Go to the public profile
+      feeds: Activities
+      submit: To save
       contributions_fields:
-        no-project: "Você ainda não apoiou nenhum projeto no&nbsp;Catarse..."
-        contribute: "Participate !"
+        no-project: You have not yet contributed to any projects in Catarse ...
+        contribute: Support now!
       about_fields:
-        add_link: "+ add a link"
-        image_title: "Profil picture"
-        image_description: "That will be your profil thumbnail (PNG , JPG size 280 x 280)"
-        cover_title: "Cover image"
-        cover_description: "That will be the cover image for your public profil (PNG ou JPG). If you don't choose a cover, your profil picture will be use"
-        profil_address_title: "Profil address"
-        profil_address_description: "Easy to memorize address for your profil"
-        name: "Name"
-        name_description: "The name that will be show for other members"
-        faceebook: "faceebook profil"
-        facebook_description: "Your facebook profil address"
-        twitter: "twitter profil"
-        twitter_description: "Your twitter profil address"
-        homepage: "Homepage(s)"
-        homepage_description: "URL to your personals webpages"
-        about: "About"
-        about_description: "Talk about you to help other members to know you"
+        add_link: "+ Add link"
+        image_title: Profile picture
+        image_description: This image will be used as your profile thumbnail (PNG,
+          JPG size 280x280)
+        cover_title: Profile Cover Image
+        cover_description: This image will be used as the background of your public
+          profile header (PNG or JPG). If you do not submit any images here, we will
+          use your profile image as an alternative.
+        profil_address_title: Your profile address
+        profil_address_description: Your public profile may have a custom URL. Choose
+          an easy to save!
+        name: Name
+        name_description: This is the name that users will see in your public profile
+        faceebook: Facebook profile
+        facebook_description: Paste your profile link
+        twitter: Twitter profile
+        twitter_description: Paste your profile link
+        homepage: Presence on the internet
+        homepage_description: Include links to help other users get to know you better.
+        about: About
+        about_description: Talk about yourself and try to provide the most relevant
+          information so visitors can get to know you better.
       billing_fields:
-        credit_card: "Credit card"
-        card_message: "If the projet that you support didn't succed. You credit card will be automatically refund."
-        card: "Card"
-        operator: "Operadora"
-        bank_account: "Bank account"
-        bank_account_message: "If the projet that you support didn't succed. You bank account will be automatically refund."
+        credit_card: Credit cards
+        card_message: If any project you have contributed to <b>with Credit Card</b> is
+          not successful, we will <b>automatically</b> refund the card used to make
+          the contribution.
+        card: Card
+        operator: Operator
+        bank_account: Bank data
+        bank_account_message: If any project you have contributed to <b>with Boleto Bancaria
+          is</b> not successful, we will <b>automatically</b> refund your payment
+          to the account indicated below.
       notifications_fields:
-        newsletters: "Newsletters"
-        newsletter_description: "Catarse weekly newsletter"
+        newsletters:
+          750382:
+            title: News of the week
+            description: Featured projects and pills from our Blog, selected with
+              care by our team.
+            image_src: http://uploads.webflow.com/5849f4f0a275a2a744efd93e/59a714d438c73b0001ee8d83_news-img.jpg
+          1370135:
+            title: Geek News
+            description: Comics, boardgames, RPGs and digital games, inside and outside
+              the Catarse.
+            image_src: http://uploads.webflow.com/5849f4f0a275a2a744efd93e/59a713dde51ca0000149ae85_geek-news-img.jpg
