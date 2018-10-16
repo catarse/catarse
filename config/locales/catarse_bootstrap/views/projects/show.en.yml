@@ -1,0 +1,150 @@
+en:
+  projects:
+    about_mobile:
+      by: per
+      back: "< Back"
+    project_embed:
+      insert: Insert a widget on your site
+    mobile_video:
+      read_more: read more
+    metrics:
+      titles:
+        confirmed_by_day: Total supports confirmed per day
+        confirmed_amount_by_day: Total collected per day
+        address_state: Total support confirmed by State
+    reminder:
+      ok: Ok, let us send you an email reminder before the end of the campaign!
+      active_btn: Remind me of this project
+      deactive_btn: I do not want to be remembered anymore
+    announce_expiration: His project was for the final stretch.
+    announce_expiration_error: The final line has already been defined!
+    send_to_analysis: Your project was sent to our team.
+    send_to_analysis_error: Error submitting project for review. Fill in all required
+      fields.
+    push_to_online: Your project is online!
+    push_to_online_error: Error putting the project online. Fill in all required fields.
+    twitter:
+      take_a_look: Check the project %{name} on @catarse
+    video_embed:
+      a_project_by_html: A %{link} project in the
+    posts:
+      project_post:
+        exclusive: Exclusive post for supporters.
+        unavailable: This news is only available to supporters.
+        contribute: Support
+        unavailable_contribute: this project to view it.
+        destroy: Remove Novelty
+        destroy_confirmation: Do you want to remove this news?
+      new:
+        notice: New successfully sent!
+        comment: Text of your news
+        exclusive: Visible only to supporters
+        submit: Submit News
+        title: Title of your news
+        warning: Remembering that every novelty post goes directly to the email of
+          your supporters. So please review your text before submitting it.
+    project_reports:
+      all_contributions_without_reward: Download report from all supporters who did
+        not select a reward
+      link_reports_confirmed: Download report of all confirmed supporters
+      link_reports_waiting_confirmation: Download report of all supporters with printed
+        tickets
+      link_reward: Download reward report from %{value}
+    project_about:
+      embed: "&lt;embed&gt;"
+      embed_title: Embed this design on your website
+      active_btn: Remember Me Forgot your password?
+      deactive_btn: Active Reminder
+    show:
+      menu:
+        panel_html: Control panel
+        about: About
+        add_reward: Add reward
+        comments: comments
+        contributions: Support
+        metrics: Metrics
+        edit: Edition
+        reports: Reports
+        posts: News
+    project_sidebar:
+      contributors_call: supported by
+      contributors_count:
+        one: 1 person
+        other: "{{count} people"
+      subscribers_call: signed by
+      remaining_time:
+        days:
+          one: remaining day
+          other: Days Remaining
+        hours:
+          one: remaining time
+          other: hours left
+        minutes:
+          one: remaining minute
+          other: minutes left
+        seconds:
+          one: second remaining
+          other: seconds left
+        dias:
+          one: remaining day
+          other: Days Remaining
+        horas:
+          one: remaining time
+          other: hours left
+        minutos:
+          one: remaining minute
+          other: minutes left
+        segundos:
+          one: second remaining
+          other: seconds left
+        dia: remaining day
+        hora: remaining time
+        minuto: remaining minute
+        segundo: second remaining
+      display_status:
+        approved: This project has already been approved by Catarse. Soon it will
+          be on the air and ready to receive support.
+        online: You can support this project by the day %{date} at 23:59:59
+        failed: This project did not reach the minimum of %{goal} through %{date}
+          and was not funded
+        rejected: This project has been canceled. Unable to support ..
+        in_analysis: This project is under review and is not yet open for support.
+        successful: This project was successful and was funded on %{date}
+        waiting_funds: The funding deadline for this project is now closed. We are
+          awaiting confirmation of the latest payments.
+        draft: This project is only a draft and still can not receive support.
+      submit_aon: Support this project
+      submit_flex: Support this project
+      submit_sub: Subscribe to this project
+    project_main:
+      post_call: All news published in the Catarse is sent directly to the email of
+        those who have already supported your project and is also available for viewing
+        on the site. You can choose to leave it public, or visible only to your supporters
+        here on this tab.
+      send_post: Writing novelty
+      share: Share
+      tweet: Tweet
+      project_by: project by
+      funding_period: Campaign period
+      project_header:
+        subtitle_html: A %{link}
+        without_city: A project of
+        with_city: A %{category_name} project by %{author} in %{city}
+      menu:
+        about: About
+        add_reward: Add reward
+        comments: comments
+        contributions: Support
+        metrics: Metrics
+        edit: Edition
+        reports: Reports
+        posts: News
+      no_rewards_warning: 'Do not travel! Think about how you will hand them over
+        and put it all in the budget. Prometheus?! COMPLY! : D'
+      no_rewards_warning_title: Create your rewards here
+      contribution_states:
+        confirmed: Confirmed
+        pending: Pending
+      sidebar:
+        contributions: supports
+        goal: reach of %{total}
