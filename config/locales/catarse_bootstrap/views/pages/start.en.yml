@@ -1,0 +1,316 @@
+en:
+  pages:
+    start:
+      header_html: Catarse - Take your design out of paper
+      description: The Catarse is the first and largest crowdfunding platform, or
+        collective financing, in Brazil. Come and take projects from paper!
+      title: Finance your project collectively
+      tagline: Crowdfunding and collective financing in Brazil is not Catarse
+      page-title: How does cataract work?
+      page-subtitle: Know the basic pillars of a collective financing campaign
+      submit: Get started for free
+      learn-more: know more
+      slogan: Take your design off the paper
+      header:
+        people: People have already supported at least 01 project in Catarse
+        success: Projects have already been funded here
+        money: They were invested in ideas published in Catarse
+      banner:
+        1: Supporters
+        2: Your friends, family and interested in the project.
+        3: Rewards
+        4: It&#39;s what you offer in exchange for the supports.
+        5: Goal
+        6: How much do you want to collect on Catarse.
+        7: Time
+        8: This is the period when your campaign will be open to receiving support.
+      features:
+        title: The ideal platform for your campaign
+        subtitle: Know the solutions that we develop for you to finance your idea!
+        feature_1: In the air without bureaucracy
+        feature_2: Fast and responsive service
+        feature_3: Complete control panel
+        feature_4: Campaign Blog
+        feature_5: Partial support
+        feature_6: Easy transfer
+      video:
+        title: A collective funding campaign is guaranteed excitement.
+        subtitle: Feel the taste ...
+        src: z7FBAjkcLG8
+      categories:
+        title: The Catarse has room for several types of projects! Meet our categories!
+        pledged: You raised $ {pledged}} with {{contributors}} support for the project
+        loading_featured: loading highlighted project ...
+        no_featured: No featured projects.
+      categoryProjects:
+        1:
+          category_id: 23
+          sample_project_ids:
+            primary: 4142
+            secondary: 1550
+        2:
+          category_id: 1
+          sample_project_ids:
+            primary: 6914
+            secondary: 9438
+        3:
+          category_id: 18
+          sample_project_ids:
+            primary: 17453
+            secondary: 1705
+        4:
+          category_id: 13
+          sample_project_ids:
+            primary: 10519
+            secondary: 17219
+        5:
+          category_id: 31
+          sample_project_ids:
+            primary: 9670
+            secondary: 16012
+        6:
+          category_id: 21
+          sample_project_ids:
+            primary: 14610
+            secondary: 10786
+        7:
+          category_id: 17
+          sample_project_ids:
+            primary: 7917
+            secondary: 12993
+        8:
+          category_id: 10
+          sample_project_ids:
+            primary: 16912
+            secondary: 7695
+        9:
+          category_id: 14
+          sample_project_ids:
+            primary: 5710
+            secondary: 15915
+        10:
+          category_id: 15
+          sample_project_ids:
+            primary: 9521
+            secondary: 15004
+        11:
+          category_id: 20
+          sample_project_ids:
+            primary: 11366
+            secondary: 8024
+        12:
+          category_id: 7
+          sample_project_ids:
+            primary: 14391
+            secondary: 11694
+        13:
+          category_id: 19
+          sample_project_ids:
+            primary: 11113
+            secondary: 12138
+        14:
+          category_id: 16
+          sample_project_ids:
+            primary: 11812
+            secondary: 15251
+        15:
+          category_id: 9
+          sample_project_ids:
+            primary: 22454
+            secondary: 20105
+        16:
+          category_id: 29
+          sample_project_ids:
+            primary: 11470
+            secondary: 6997
+        17:
+          category_id: 27
+          sample_project_ids:
+            primary: 18964
+            secondary: 8583
+        18:
+          category_id: 3
+          sample_project_ids:
+            primary: 11847
+            secondary: 10800
+        19:
+          category_id: 4
+          sample_project_ids:
+            primary: 6519
+            secondary: 14762
+        20:
+          category_id: 8
+          sample_project_ids:
+            primary: 9531
+            secondary: 13592
+        21:
+          category_id: 12
+          sample_project_ids:
+            primary: 2073
+            secondary: 9744
+        22:
+          category_id: 28
+          sample_project_ids:
+            primary: 14594
+            secondary: 16322
+        23:
+          category_id: 11
+          sample_project_ids:
+            primary: 13425
+            secondary: 7391
+        30:
+          category_id: 30
+          sample_project_ids:
+            primary: 2895
+            secondary: 8389
+      panes:
+        1:
+          label: In the air without bureaucracy
+          src: "/assets/start-publicar.gif"
+        2:
+          label: Fast and responsive service
+          src: "/assets/start-attending-ui.gif"
+        3:
+          label: Complete control panel
+          src: "/assets/start-painel-ui.gif"
+        4:
+          label: Campaign Blog
+          src: "/assets/start-blog-ui.gif"
+        5:
+          label: Partial support
+          src: "/assets/start-apoio.gif"
+        6:
+          label: Easy transfer
+          src: "/assets/start-repasse.gif"
+      testimonials_title: What are they saying ...
+      testimonials:
+        1:
+          thumb: "/assets/start/thumb-marcela.jpg"
+          content: I&#39;m sequencing the genome of the golden mussel. I jointly financed
+            my PhD research. This model could change the world.
+          name: Marcela Uliano
+          totals: It raised R $ 40,736 with the help of 344 people to make feasible
+            the Genomic Project of the Golden Mussel.
+        2:
+          thumb: "/assets/start/thumb-tiago.jpg"
+          content: What are you doing? Get in the face. Yes, the incentive law only
+            benefits those who have a name. So, are you going to stand still? Stop
+            complaining and pick up an alternative.
+          name: Tiago Vieira
+          totals: It raised R $ 34,260 with the help of 203 people to make feasible
+            the project &quot;When I stopped worrying about Canalhas&quot;. The movie
+            ended up in Cannes. ;)
+        3:
+          thumb: "/assets/start/thumb-natalia.png"
+          content: A good reporter knows how hard it is to get money to fund the story
+            of his dreams and still have editorial independence to actually write
+            what he has discovered.
+          name: Natalia Viana
+          totals: It raised R $ 129,159 when receiving 1771 support to carry out 2
+            projects of the Public Agency of Investigative Journalism
+        4:
+          thumb: "/assets/start/thumb-apanhador.jpg"
+          content: We have other possibilities to finance, but you choose crowdfunding
+            because you believe in this way. The more the public has the decisions
+            at hand, the better.
+          name: Alexandre Kumpinski (Catcher Only)
+          totals: It raised R $ 163,600 when receiving 2181 supports to carry out
+            2 projects
+        5:
+          thumb: "/assets/start/thumb-larissa.png"
+          content: I know that there are 200 more people there with me, sending positive
+            energy, cheering, being part of it and walking to the Olympics with me.
+          name: Larissa Juk
+          totals: It raised R $ 28,532 when receiving 218 support for the Larissa
+            Juk project towards the Rio 2016 Olympic Games
+      qa_title: Still having doubts?
+      qa:
+        col_1:
+          1:
+            question: Why campaign on Catarse?
+            answer: Firstly because we are extremely committed and passionate about
+              what we do and want to see your project funded. But also because we
+              are the first and largest platform in action in Brazil. We are working
+              independently to develop the project financing scenario in Brazil and
+              enable more people to make their ideas, dreams and visions feasible.
+          2:
+            question: Is it too hard to have a Catarse campaign?
+            answer: Each project in the Catarse has its own particularity and the
+              amount of work varies. Registering a project on Catarse is very easy,
+              but a campaign has its challenges. The key is to have good campaign
+              planning! We can help you! <a href="#start-form">Just start your draft.</a>
+          3:
+            question: Does Catarse select projects that go on the air?
+            answer: No. You create your draft and publish your campaign directly through
+              the site, whenever you want. However, there are some <a href="http://suporte.catarse.me/hc/pt-br/articles/202387638-Diretrizes-para-cria%C3%A7%C3%A3o-de-projetos">rules
+              for creating projects</a> that you must follow so that your project
+              has no risk of being reported by the community after publication.
+          4:
+            question: Who can use Catarse?
+            answer: Catarse provides support to site users and makes it possible for
+              projects to capture resources quickly and easily using the internet.
+              Anyone over 18 (or younger, but with a legal representative) can use
+              our services and run a crowdfunding campaign.
+        col_2:
+          1:
+            question: Do I need to reach the goal to receive my money?
+            answer: It depends on the type of financing you choose. In the &quot;All
+              or Nothing&quot; model, you only get the money if you reach the collection
+              goal in the campaign time stipulated by you. If the project does not
+              meet the collection goal, we will fully refund the money to your supporters,
+              at no cost to you or your supporter. <br><br> Already in the flexible
+              financing mode, affectionately called &quot;Flex&quot;, you get all
+              the money you can get regardless of hitting the target or not. You can
+              better understand the difference between the models and what is the
+              ideal for your project in this <a href="http://fazum.catarse.me/tudoounada-ou-flex?ref=ctrse_start">eBook
+              we prepare.</a>
+          2:
+            question: What are our rates?
+            answer: In the All or Nothing model, Catarse charges only 13% of the total
+              amount collected if you reach 100% or more of your goal. Otherwise,
+              we will refund the money to the supporters and will not charge anyone
+              anything. <br><br> In the Flex model, Catarse charges 13% of the total
+              collected by the campaign. If the project does not collect anything,
+              there will be no charge. <br><br> If you want to know why we charge
+              this commission and where we invest our money, check out our <a href="http://crowdfunding.catarse.me/nossa-taxa?ref=ctrse_start">special
+              (and transparent!) Page talking about our rate.</a>
+          3:
+            question: Where does the money from my project come from?
+            answer: Family, friends, fans and members of communities that you are
+              part of are your greatest contributors. You shake this network, win
+              support and promote the project. Supporters publicize and recommend
+              their campaign to others they know, and so the circle of supporters
+              grows and the campaign gets support. The key is to build a good project,
+              plan your campaign well and know how to target your outreach efforts
+              to those who really care about what you are proposing in your crowdfunding
+              campaign.
+          4:
+            question: I have more doubts. How do I do?
+            answer: '<a href="http://suporte.catarse.me/hc/pt-br">Access our Support
+              Center</a> or contact us by email: contato@catarse.me'
+      form:
+        title: I want to start a campaign called
+        select_default: Select a category
+        submit: Start your draft
+      mode:
+        title: Three models. One fee.
+        subtitle: At Catarse you choose the ideal collective financing method for
+          your campaign, without paying anything extra for it!
+        aon:
+          info: At the end of the campaign, you only get the money if you have reached
+            the collection goal.
+          info_2: 'Maximum time in the air: 60 days'
+        flex:
+          info: At the end of the campaign, you receive all the money, even without
+            reaching the collection goal.
+          info_2: 'Maximum time in the air: 12 months'
+        sub:
+          info: You get monthly payments from your fan base and followers.
+          info_2: Beta version. Launch in 2018.
+          more_link: <a href="https://crowdfunding.catarse.me/assinaturas?ref=catarse_start_beta"
+            class="alt-link" target-"_blank">know more</a>
+        tax_info: 'Rate: 13% on total collected'
+        failed_info: Campaigns All or Nothing that do not reach the goal do not pay
+          anything.
+        more_link: <a href="http://fazum.catarse.me/tudoounada-ou-flex?utm_source=start&utm_medium=link&utm_content=Saiba%20mais%20sobre%20as%20taxas%20e%20modalidades&utm_campaign=ebook-tudoounada-flex"
+          class="alt-link" target-"_blank">Learn more about rates and modalities</a>

@@ -1,13 +1,479 @@
 en:
   activerecord:
+    models:
+      channel: Channel
+      project: Project
+      flexible_project: Project
+      reward: Reward
+      contribution: Support
+      category: Category
+      bank_account: Bank data
+      address: Address
+    attributes:
+      project_account:
+        address_city: City
+        address_complement: Complement
+        address_neighbourhood: Neighborhood
+        address_number: Number
+        address_state: state
+        address_street: Address
+        address_zip_code: Zip code
+        cpf: CPF / CNPJ
+        state_inscription: State registration
+        email: Email
+        full_name: Full Name / Company Name
+        phone_number: telephone
+        bank: Bank
+        bank_id: Bank
+        owner_name: Cardholder Name
+        owner_document: CPF of bank account holder
+        agency: Agency
+        agency_digit: Agency digit
+        account: Account No.
+        account_digit: Account Digit
+        account_type: Account Type
+      bank_account:
+        account_type: Account Type
+        input_bank_number: Bank Number
+        bank: Bank
+        bank_id: Bank
+        owner_name: Cardholder Name
+        owner_document: CPF / CNPJ of the holder
+        agency: Agency
+        agency_digit: Agency digit
+        account: Account No.
+        account_digit: Account Digit
+      payment:
+        state: Status
+      contribution:
+        payer_name: Full Name / Company Name *
+        payer_email: Email
+        payer_document: CPF or CNPJ
+        country: Parents
+        address_street: Street
+        address_number: Number
+        address_complement: Complement
+        address_neighbourhood: Neighborhood
+        address_state: state
+        address_city: City
+        address_zip_code: Zip code
+        address_phone_number: telephone
+        value: Value of contribution
+        reward: Reward
+        project: project
+      reward:
+        deliver_at: Delivery forecast
+      flexible_project:
+        name: Project name
+        channels: Channels
+        category: Category
+        expires_at: Term
+        online_days: Deadline for collection
+        headline: Catchphrase
+        image_url: Image URL
+        goal: Amount to be collected
+        about_html: Project description
+        user_id: User ID
+        service_fee: CATARATE RATE
+        video_url: Video URL
+        permalink: Link to your project on Catarse
+        all_tags: Admin Tags
+        all_public_tags: Tags
+        city: Project Location
+        more_links: Indicate links so people know more about your project and its
+          trajectory.
+        traffic_sources: How did you first meet Catarse?
+        first_contributions: Who are the first people you will ask to contribution your
+          project?
+        budget: Project budget
+        uploaded_image: Image of the project
+      project:
+        name: Project name
+        channels: Channels
+        category: Category
+        expires_at: Term
+        online_days: Deadline for collection
+        headline: Catchphrase
+        image_url: Image URL
+        service_fee: CATARATE RATE
+        goal: Amount to be collected
+        about_html: Project description
+        user_id: User ID
+        video_url: Video URL
+        permalink: Link to your project
+        all_tags: Admin Tags
+        all_public_tags: Tags
+        city: Project Location
+        more_links: Indicate links so people know more about your project and its
+          trajectory.
+        traffic_sources: How did you first meet Catarse?
+        first_contributions: Who are the first people you will ask to contribution your
+          project?
+        budget: Project budget
+        uploaded_image: Image of the project
+      address:
+        delivery_address: Delivery address
+        address_city: City
+        address_complement: Complement
+        address_neighbourhood: Neighborhood
+        address_number: Number
+        address_state: state
+        address_street: Address (Street, Avenue, etc)
+        zipcode_unknown: I do not know my CEP
+        address_zip_code: Zip code
+        phone_number: telephone
+        country: Country / Country
+      user:
+        public_name: Public name
+        birth_date: Date of birth
+        uploaded_image: Profile picture
+        cover_image: Profile Cover Image
+        address_city: City
+        address_complement: Complement
+        address_neighbourhood: Neighborhood
+        address_number: Number
+        address_state: state
+        address_street: Address
+        address_zip_code: Zip code
+        cpf: CPF / CNPJ
+        cpf_hint: "(?)"
+        state_inscription: State registration
+        current_password: current password
+        email: Email
+        full_name: Full Name / Company Name
+        bio: Mini Bio
+        name: Full Name / Company Name
+        newsletter: I want to receive news from Catarse
+        password: password
+        password_confirmation: Password Confirmation
+        phone_number: telephone
+        cpf_hint_title: Invoice will be issued for this document
+        id: ID
+        moip_login: MoIP Login
+        moip_login_hint: "(How to create an account)"
+        reset_password_token: Link to recreate password
+      channel:
+        ga_code: Analytics code
+        description: description
+        how_it_works: How it works
+        image: Image of novelty
+        name: Name
+        video_url: Video
+      channel_partner:
+        name: Name
+        url: site
+        image: Image
+      project_post:
+        title: Title
+        comment: Text
+      channel_post:
+        title: Title
+        body: Content
+        visible: Publish (check if you want to publish this nóvidade)
     errors:
       models:
+        payment:
+          duplicate: Your payment is already being processed
+        contribution: Error saving contribution
+        shipping_fee:
+          attributes:
+            destination:
+              blank: Freight status can not be left blank
+            value:
+              blank: Shipping cost can not be left blank
+        reward:
+          attributes:
+            title:
+              blank: Title can not be empty
+            description:
+              blank: Description can not be empty
+            minimum_value:
+              blank: Minimum value can not be empty
+        bank_account:
+          attributes:
+            bank_id:
+              invalid: Invalid Bank
+              blank: User bank can not be empty
+            bank:
+              invalid: Invalid Bank
+              blank: User bank can not be empty
+            agency:
+              blank: Agency can not be left blank.
+              invalid: Invalid Agency - can only contain numbers.
+              format: Does not have the expected size (4 characters).
+            agency_digit:
+              blank: Digit agency can not be left blank.
+              invalid: Invalid Agency Digit
+              format: Does not have the expected size (1 characters).
+            account:
+              blank: Account No. can not be left blank.
+              format: Invalid account number - can only contain numbers.
+              invalid: Account No. is different than expected
+              maximum: "(maximum:% d)."
+              equal: "(must be equal to:% d)."
+            account_digit:
+              blank: Account digit can not be empty.
+              format: Does not have the expected size (1 characters).
+              invalid: Invalid account digit.
+            account_type:
+              blank: Account type can not be empty
+            owner_document:
+              blank: CPF / CNPJ can not be empty
+              invalid: Invalid CPF / CNPJ
+            owner_name:
+              blank: Username can not be empty
+              invalid: Username can not be empty
+        project_account:
+          invalid: Account is not valid
+          attributes:
+            full_name:
+              blank: User&#39;s social reason can not be left blank
+            email:
+              blank: User email can not be left blank
+              invalid: Invalid user email
+            cpf:
+              blank: User CPF can not be left blank
+              invalid: Invalid CPF
+            address_street:
+              blank: User address can not be left blank
+            address_number:
+              blank: Number at user address can not be empty
+            address_city:
+              blank: User city can not be empty
+            address_state:
+              blank: User state can not be empty
+            address_zip_code:
+              blank: User zip code can not be left blank
+            phone_number:
+              blank: User&#39;s phone can not be empty
+            bank:
+              blank: User bank can not be empty
+            agency:
+              blank: User Agency can not be left blank
+              invalid: Invalid Agency
+            agency_digit:
+              blank: User agency digit can not be empty
+            account:
+              blank: User account No. can not be empty
+              format: Invalid user account no.
+            account_digit:
+              blank: User account digit can not be empty
+            owner_name:
+              blank: Username can not be empty
+            owner_document:
+              blank: CPF / CNPJ of the user&#39;s title can not be left blank
+              not_same: CPF / CNPJ of the filled bank and cadastral data are not equal.
+            account_type:
+              blank: Account type can not be empty
+        flexible_project:
+          attributes:
+            rewards:
+              at_least_one: There must be at least one reward
+            city:
+              blank: Project location can not be left blank
+            video_url:
+              blank: Project video can not be empty
+            budget:
+              blank: Project budget can not be left blank
+            uploaded_image:
+              blank: Project image can not be empty
+            name:
+              too_long: 'Project name is too long (max: 50 characters)'
+              blank: Project name can not be empty
+            permalink:
+              blank: Project URL can not be empty
+              invalid: The project URL is invalid
+              taken: This project URL already exists
+            category:
+              blank: You must choose a category for your project
+            goal:
+              blank: Goal value can not be empty
+              greater_than: Goal must be greater than 9
+              not_a_number: Collection goal only accepts numbers
+            online_days:
+              blank: The collection period can not be left blank
+              greater_than: The deadline for collection must be greater than 2 days
+              less_than_or_equal_to: The collection deadline must be less than or
+                equal to 365 days for flex projects and less than or equal to 60 days
+                for all-or-none projects
+              not_a_number: The deadline for collection must be a number of days
+            about_html:
+              blank: Project description can not be left blank
+            headline:
+              blank: Design effect phrase can not be left blank
+              too_long: The effect phrase is too long. You can use a maximum of 100
+                characters.
         project:
           attributes:
+            goals:
+              at_least_one: There must be at least one goal
+            rewards:
+              at_least_one: There must be at least one reward
+            city:
+              blank: Project location can not be left blank
+            video_url:
+              blank: Project video can not be empty
+            budget:
+              blank: Project budget can not be left blank
+            uploaded_image:
+              blank: Project image can not be empty
+            name:
+              too_long: 'Project name is too long (max: 50 characters)'
+              blank: Project name can not be empty
             permalink:
-              invalid: Invalid project URL
+              blank: Project URL can not be empty
+              invalid: The project URL is invalid
+              taken: This project URL already exists
+            category:
+              blank: You must choose a category for your project
+            public_tags:
+              less_than_or_equal_to: Total tags must be less than or equal to 5
+            goal:
+              blank: Goal value can not be empty
+              greater_than: Goal must be greater than 9
+              not_a_number: Collection goal only accepts numbers
+            online_days:
+              blank: The collection period can not be left blank
+              greater_than: The deadline for collection must be greater than 2 days
+              less_than_or_equal_to: The deadline for collection must be less than
+                or equal to 60 days for all-or-none projects and less than or equal
+                to 365 days for flex projects
+              not_a_number: The deadline for collection must be a number of days
+            about_html:
+              blank: Project description can not be left blank
+            headline:
+              blank: Design effect phrase can not be left blank
+              too_long: The effect phrase is too long. You can use a maximum of 100
+                characters.
         user:
           attributes:
             email:
-              not_found: "Email not found, please sign up"
-              taken: "Email has already been taken"
+              not_found: Email is not registered, check the address or make your registration
+              taken: Email is already registered, sign in
+              invalid: This email address is invalid
+              blank: Email can not be empty
+            password:
+              too_short: The password is too short. Minimum 6 characters.
+              confirmation: The password and the password confirmation you entered
+                are not the same
+              blank: Password can not be empty
+            current_password:
+              invalid: Current password is not valid
+            reset_password_token:
+              invalid: Token has expired. Go to <a href="/password/new" class="alt-link">reset
+                password</a> and ask to reset the password again.
+            name:
+              blank: Username can not be empty
+            public_name:
+              blank: Public name can not be empty
+            birth_date:
+              blank: Date of birth can not be left blank
+            about_html:
+              blank: About you can not be left blank
+            uploaded_image:
+              blank: User image can not be left blank
+            address_street:
+              blank: Address can not be left blank
+            address_number:
+              blank: Number at address can not be empty
+            address_city:
+              blank: City can not be left blank
+            address_state:
+              blank: Status can not be left blank
+            address_neighbourhood:
+              blank: Neighborhood can not be left blank
+            address_zip_code:
+              blank: Zip code can not be empty
+            phone_number:
+              blank: Phone can not be left blank
+            country_id:
+              blank: Parents can not be left blank
+            cpf:
+              blank: CPF / CNPJ can not be empty
+              invalid: Invalid CPF / CNPJ
+  project:
+    update:
+      success: Information was updated
+      failed: Your information has not been saved, please verify that all fields have
+        been filled out correctly
+    delete:
+      posts: New successfully deleted
+    video_regex_validation: only Youtube or Vimeo URLs are accepted
+  payment:
+    state:
+      boletobancario:
+        pending: Awaiting payment confirmation
+        paid: Confirmed on %{date}
+        refunded: Refunded on %{date}
+        pending_refund: Refund requested on %{date}
+        refused: Unrealized payment
+        chargeback: Answered
+      cartaodecredito:
+        pending: Awaiting payment confirmation
+        paid: Confirmed on %{date}
+        refunded: Refunded on %{date}
+        pending_refund: Refund requested on %{date}
+        refused: Payment declined on %{date}
+        chargeback: Answered
+  contribution:
+    payment_details:
+      desconhecido: ''
+      creditos: Credits
+      boleto_bancario: Bank slip
+      cartao_de_credito: Credit card
+      debito_bancario: Bank debit
+      cartao_debito: Debit card
+      transferencia_bancaria: Bank transfer
+      carteira_mo_ip: MoIP Portfolio
+      financiamento_bancario: Financial Services
+    project_should_be_online: You can not contribution a project that is not in the air.
+    reward_must_be_from_project: must be from the same project
+    should_not_contribute_if_maximum_contributions_been_reached: has already reached
+      its maximum number of contributors
+    value_must_be_at_least_rewards_value: must be at least %{minimum_value} for the
+      selected reward
+  contribution_report_to_project_owner:
+    reward_description: Reward Description
+    deliver_at: Reward submission date
+    confirmed_at: Payment confirmation date
+    created_at: Date of creation of contribution
+    contribution_id: Support ID
+    contribution_value: Value of contribution
+    service_fee: CATARATE RATE
+    user_id: User ID
+    user_email: Email profile Catarse
+    user_name: Full name
+    cpf: CPF
+    title: Reward Title
+    public_name: Public name
+    gateway: Means of payment
+    anonymous: Anonymous
+    address_type: Type of address
+    street: Street
+    address_number: Number
+    complement: Complement
+    neighbourhood: Neighborhood
+    city: City
+    address_state: state
+    zip_code: Zip code
+    open_questions: open_questions
+    multiple_choice_questions: multiple_choice_questions
+    shipping_choice: Delivery place
+    shipping_option: Send
+  user:
+    no_name: Unnamed
+    contributions_text:
+      many: Supported this and other %{total} projects
+      one: Only contributed this project so far
+      two: Supported this and 1 other project
+  channels_subscribers:
+    created: You now follow the %{channel}
+    deleted: You have stopped following %{channel}
+  channels:
+    edit: Update channel
+    image_hint: Maximum size (600x121px)
+    subscribed: " %{count} following the channel"
+    back_to_news: "← Back to news"
+    follow: Follow the channel
+    following: Following
+    unfollow: Unfollow

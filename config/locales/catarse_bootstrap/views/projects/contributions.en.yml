@@ -97,7 +97,7 @@ en:
             history on your profile, but the amount you've backed and the reward
             you choose will not go public.
           when_project_owner: Who is responsible for the project?
-          when_project_owner_answer: The catharsis is only an intermediary, if you
+          when_project_owner_answer: The catarse is only an intermediary, if you
             want to understand more about the project, contact %{name}
           when_project_funded: How do I receive my reward?
           when_project_funded_answer: When your reward is ready, %{name} will contact
