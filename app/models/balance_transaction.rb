@@ -33,33 +33,27 @@ class BalanceTransaction < ActiveRecord::Base
   validates :event_name, inclusion: { in: EVENT_NAMES }
   validates :amount, :event_name, :user_id, presence: true
 
-  after_create :refresh_metadata
+  before_save :refresh_metadata
 
   def refresh_metadata
-    ::BalanceTransaction.refresh_metadata(self)
-  end
-
-  ## CLASS METHODS
-  def self.refresh_metadata(balance_transaction)
-    metadata = {
-      amount: balance_transaction.amount,
-      event_name: balance_transaction.event_name,
+    self.metadata = {
+      amount: self.amount,
+      event_name: self.event_name,
       origin_objects: {
-        from_user_name: balance_transaction.from_user.try(:display_name),
-        to_user_name: balance_transaction.to_user.try(:display_name),
-        service_fee: balance_transaction.project.try(:service_fee),
-        contributor_name: balance_transaction.contribution.try(:user).try(:display_name),
-        subscriber_name: balance_transaction.subscription_payment.try(:user).try(:display_name),
-        subscription_reward_label: balance_transaction.subscription_payment.try(:reward).try(:display_label),
-        id: (balance_transaction.project_id.presence || balance_transaction.contribution_id),
-        project_id: balance_transaction.project_id,
-        contribution_id: balance_transaction.contribution_id,
-        project_name: balance_transaction.project.try(:name)
+        from_user_name: self.from_user.try(:display_name),
+        to_user_name: self.to_user.try(:display_name),
+        service_fee: self.project.try(:service_fee),
+        contributor_name: self.contribution.try(:user).try(:display_name),
+        subscriber_name: self.subscription_payment.try(:user).try(:display_name),
+        subscription_reward_label: self.subscription_payment.try(:reward).try(:display_label),
+        id: (self.project_id.presence || self.contribution_id),
+        project_id: self.project_id,
+        contribution_id: self.contribution_id,
+        project_name: self.project.try(:name)
       }
     }
-    balance_transaction.update_column(:metadata, metadata)
   rescue StandardError => e
-    Raven.extra_context(balance_transaction_id: balance_transaction.try(:id))
+    Raven.extra_context(balance_transaction_id: self.try(:id), metadata_record: self.try(:metadata))
     Raven.capture_exception(e)
     Raven.extra_context({})
   end
