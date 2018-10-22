@@ -421,11 +421,6 @@ class CommonWrapper
       resource.reward.reload
     end
 
-    if resource.address && !resource.address.common_id.present?
-      resource.address.index_on_common
-      resource.address.reload
-    end
-
     return unless resource.project.present?
     return unless resource.project.common_id.present?
 

@@ -221,7 +221,7 @@ class Contribution < ActiveRecord::Base
       project_id: project.common_id,
       user_id: user.common_id,
       reward_id: reward&.common_id,
-      address_id: address&.common_id,
+      # address_id: address&.common_id,
       # address_answer_id: address_answer.common_id,
       value: value,
       anonymous: anonymous,
