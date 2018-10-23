@@ -7,6 +7,7 @@ class Contribution < ActiveRecord::Base
   include I18n::Alchemy
   include PgSearch
   include Contribution::CustomValidators
+  include Shared::CommonWrapper
 
   belongs_to :project
   belongs_to :reward
@@ -22,6 +23,7 @@ class Contribution < ActiveRecord::Base
   has_many :balance_transactions
   accepts_nested_attributes_for :address, allow_destroy: true, limit: 1 #payment address
   accepts_nested_attributes_for :address_answer, allow_destroy: true #survey answer addresses
+  after_save :index_on_common
 
   validates_presence_of :project, :user, :value
   validates_numericality_of :value, greater_than_or_equal_to: 10.00
@@ -209,6 +211,40 @@ class Contribution < ActiveRecord::Base
       contribution_email: user.email,
       slip_url: payment && payment.slip_payment? ? payment.gateway_data['boleto_url'] : nil
     }
+  end
+
+  def common_index
+    id_hash = common_id.present? ? {id: common_id} : {}
+
+    {
+      external_id: id,
+      project_id: project.common_id,
+      user_id: user.common_id,
+      reward_id: reward&.common_id,
+      # address_id: address&.common_id,
+      # address_answer_id: address_answer.common_id,
+      value: value,
+      anonymous: anonymous,
+      notified_finish: notified_finish,
+      payer_name: payer_name,
+      payer_email: payer_email,
+      payer_document: payer_document,
+      payment_choice: payment_choice,
+      payment_service_fee: payment_service_fee,
+      referral_link: referral_link,
+      card_owner_document: card_owner_document,
+      delivery_status: delivery_status,
+      reward_sent_at: reward_sent_at.try(:strftime, "%FT%T"),
+      reward_received_at: reward_received_at.try(:strftime, "%FT%T"),
+      survey_answered_at: survey_answered_at.try(:strftime, "%FT%T"),
+      deleted_at: deleted_at.try(:strftime, "%FT%T"),
+      created_at: created_at.try(:strftime, "%FT%T"),
+      updated_at: updated_at.try(:strftime, "%FT%T")
+    }.merge!(id_hash)
+  end
+
+  def index_on_common
+    common_wrapper.index_contribution(self) if common_wrapper
   end
 
   def contribution_json

@@ -179,6 +179,31 @@ class CommonWrapper
     return
   end
 
+  def find_contribution(external_id)
+    @api_key = proxy_api_key
+    uri = services_endpoint[:proxy_service]
+    resource = Contribution.find external_id
+    uri.path = '/v1/projects/' + resource.project.common_id + '/contributions'
+    response = request(
+      uri.to_s,
+      params: {
+        "external_id::integer" => "eq.#{external_id}"
+      },
+      action: :get,
+      headers: { 'Accept' => 'application/vnd.pgrst.object+json' },
+    ).run
+
+    if response.success?
+      json = ActiveSupport::JSON.decode(response.body)
+      common_id = json.try(:[], 'id')
+      return common_id
+    else
+      Rails.logger.info(response.body)
+    end
+
+    return
+  end
+
   def find_goal(external_id)
     @api_key = proxy_api_key
     uri = services_endpoint[:proxy_service]
@@ -370,6 +395,61 @@ class CommonWrapper
     else
       Rails.logger.info(response.body)
       common_id = find_direct_message(resource.id)
+    end
+
+    resource.update_column(
+      :common_id, common_id
+    ) if common_id.present?
+
+    common_id
+  end
+
+  def index_contribution(resource)
+    return unless resource.id.present?
+    unless resource.project.common_id.present?
+      resource.project.index_on_common
+      resource.project.reload
+    end
+
+    unless resource.user.common_id.present?
+      resource.user.index_on_common
+      resource.user.reload
+    end
+
+    if resource.reward && !resource.reward.common_id.present?
+      resource.reward.index_on_common
+      resource.reward.reload
+    end
+
+    return unless resource.project.present?
+    return unless resource.project.common_id.present?
+
+    @api_key = proxy_api_key
+    uri = services_endpoint[:proxy_service]
+
+    return if resource.project.common_id.nil?
+    uri.path = if resource.common_id.present?
+                 '/v1/projects/' + resource.project.common_id + '/contributions/' + resource.common_id
+               else
+                 '/v1/projects/' + resource.project.common_id + '/contributions'
+               end
+    response = request(
+      uri.to_s,
+      body: {
+        contribution:
+        resource.common_index
+      }.to_json,
+      action: resource.common_id.present? ? :patch : :post,
+      current_ip: resource.project.user.current_sign_in_ip,
+      headers: {'Content-Type' => 'application/json'},
+    ).run
+
+    if response.success?
+      json = ActiveSupport::JSON.decode(response.body)
+      common_id = json.try(:[], 'contribution_id')
+    else
+      Rails.logger.info(response.body)
+      common_id = find_contribution(resource.id)
     end
 
     resource.update_column(
