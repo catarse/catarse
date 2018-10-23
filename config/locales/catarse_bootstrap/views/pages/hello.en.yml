@@ -1,0 +1,77 @@
+en:
+  pages:
+    hello:
+      page-title: know more
+      hero:
+        title: Take paper designs!
+        people_html: People have already supported at least <br> 1 project no Catarse
+        projects_html: Projects have already been <br> not funded
+        money_html: Donated to projects <br> published here
+        success: Projects have already been funded in Catarse
+        money: Donated to projects published here
+      idea:
+        title: It all starts with a project!
+        subtitle: But having a project is not enough. You need access to the people
+          you care about and the resources you need to make it come true.
+      fund:
+        title: Collective Financing
+        subtitle: At Catarse, this is possible. Multi-category project managers connect
+          to supporters interested in contributing small grants.
+      campaign:
+        title: Collection campaigns
+        subtitle: Directors have up to 60 days to capture the financial goal they
+          have determined for the project to take place. In exchange for the supports,
+          they offer creative rewards.
+      allornothing:
+        title: Everything or nothing!
+        subtitle: The goal is to beat the goal in time to receive the amount raised
+          or all supporters receive the money back. Planning the campaign is the secret!
+      success:
+        title: The project leaves the paper.
+        subtitle: Supporters want to see the project happen. With the success of the
+          campaign, filmmakers produce the project and prepare the delivery of rewards
+          to supporters!
+      cta:
+        title: Know the Catarse in practice
+        backer-cta: Become a supporter, help people, and receive unique rewards
+        backer-link: Support a project
+        maker-cta: Be a director, show your project to the world and collect money
+        maker-link: Start your project
+      testimonial:
+        humberto:
+          text_html: "&quot;It is a fascinating opportunity to be invited to share
+            a person&#39;s dream and still receive a reward for the experience. &quot;"
+          name: Humberto Figueira
+          credentials: supported more than 150 projects in Catarse
+      details:
+        fund:
+          title: Collective Financing or Crowdfunding?
+          text: Two names for the same practice in which people contribute small sums
+            of money to make projects viable. Crowd is crowd in English, funding,
+            funding. Crowdfunding is funding by the crowd.
+        allornothing:
+          title: Why all or nothing?
+          text_html: We believe in the &quot;all or nothing&quot; model because, in
+            addition to the campaigns, it is one way of ensuring that a project will
+            only happen if it can be delivered as it has been described and promised
+            to the supporters.
+        services:
+          title: Our services
+          text: Catarse provides support to site users and makes it possible for projects
+            to capture resources quickly and easily using the internet. Anyone over
+            the age of 18 (or younger, but with a legal representative) can use our
+            services and run a crowdfunding campaign as long as the project meets
+            our selection criteria.
+        fees:
+          title: How we stand
+          text: We charge 13% of the total value of projects that have met or exceeded
+            the collection goal. We get about 9% and 4% is passed on to Pay.me, payment
+            method used in Catarse. Projects that did not reach the goal do not have
+            any cost and all the supporters receive the money back.
+        work:
+          title: We work with purpose and love.
+          text: Catarse is independent, open-source, and built with love. Our passion
+            is to build an environment where more and more projects can come to life.
+            Today we are a team of 23 people very willing to help distribute more
+            resources to projects spread throughout Brazil.
+      staff: These are some of us waiting for you to take a project out of paper ...

@@ -1,0 +1,17 @@
+en:
+  shared:
+    menus:
+      user:
+        find_friends: Meet friends
+        about: Public Profile
+        access_address: Registration data
+        activity: Activity
+        banking: Bank and cards
+        contributions_history: My history
+        contributions_history_nav: Contribution history
+        logged_as: You are logged in as
+        notifications: Notifications
+        project_contributions: Projects Contributions
+        projects_created: Projects Created
+        update_email: Change e-mail
+        your_email: 'Your e-mail address is:'

@@ -1,0 +1,14 @@
+en:
+  bank_accounts:
+    show:
+      success: Your request was successful!
+      success_detail: We will send you an email with transaction details and instructions
+        on how to proceed if there is a problem in this process.
+      review: Transaction Summary
+      page-title: Refund requested successfully
+      value_label: "Total refund amount: %{value}"
+      agency_label: "Agency: %{content}"
+      bank_label: "Bank: %{content}"
+      account_label: "Account: %{content}"
+      owner_name_label: "Name: %{content}"
+      owner_document_label: "CPF: %{content}"

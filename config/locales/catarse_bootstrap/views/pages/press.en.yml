@@ -1,0 +1,35 @@
+en:
+  pages:
+    press:
+      page-title: Press room
+      hero:
+        title: Press room
+      stats:
+        title: Our numbers
+        subtitle: Many artists, designers, researchers, gamers, scientists, entrepreneurs
+          and activists have found on the platform a powerful tool to make their actions
+          and projects financially viable. This story can be told in numbers.
+        people_html: People have already supported at least <br> 1 project no Catarse
+        projects_html: Projects have already been <br> not funded
+        money_html: Donated to projects <br> published here
+        cta_html: "View full data by category &gt;"
+      abstract:
+        title: Catarse is the first and largest crowdfunding site, or collective financing,
+          in Brazil. We are the meeting point of a growing community of people interested
+          in, together, contributing financially to take out projects of various categories.
+      history:
+        title: History of the Catarse Foundation
+        subtitle: 'First collective financing platform for creative projects in Brazil,
+          Catarse was launched on January 17, 2011. The foundation manifesto said
+          that the site was born because of a pain: to see brilliant people with projects
+          ...'
+        cta_html: "Read the full story &gt;"
+      social:
+        title: Follow Our Stories
+        news: Subscribe to our weekly newsletter
+      assets:
+        title: Need high resolution files of our brand and seals?
+        cta_html: "Download our brands &gt;"
+      email:
+        title: Want to talk with us?
+        cta: comunicacao@catarse.me

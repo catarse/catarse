@@ -1,0 +1,12 @@
+en:
+  donations:
+    confirm:
+      'yes': 'Yes'
+      'no': Not
+      title: Confirm your donation to the Catarse?
+      amount: You are making a %{amount} donation.
+      info1: Your money will be used to finance Catarse operations and a lot of innovations
+        coming around in 2016.
+      info2: Of course, you will be highlighted in a special page, which we will launch
+        shortly, with the list of supporters who do everything to spread collective
+        financing in Brazil!

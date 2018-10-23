@@ -1,0 +1,538 @@
+en:
+  projects:
+    home:
+      header_html: Crowdfunding and collective financing in Brazil is not Catarse
+      row_title: Most Popular
+      banners:
+        2:
+          title: Bring your creative project to the world
+          subtitle: ''
+          link: "/ start? ref = home_banner"
+          cta: Start your campaign
+          image: https://s3.amazonaws.com/cdn.catarse/assets/banner-home-fctodos.jpg
+        1:
+          title: <img src="https://daks2k3a4ib2z.cloudfront.net/573a70f6d5c3cb6532f8b1a7/59c3980fd03bd6000107e99c_logo-assinaturas.png" width="400">
+          subtitle: Connect with your fans and receive payments every month on our
+            recurring funding platform.
+          link: https://crowdfunding.catarse.me/subscriptions?utm_source=catarse&amp;utm_medium=banner_home_1&amp;utm_campaign=qualified_leads_from_home
+          cta: know more
+          image: https://s3.amazonaws.com/cdn.catarse/assets/banner-home-assinaturas.jpg
+        3:
+          title: '2001: A Space Odyssey - 50 years'
+          subtitle: A historical book commemorating the 50th anniversary of the classic
+            sci-fi.
+          link: https://www.catarse.me/2001?ref=home_banner
+          cta: Know the project
+          image: https://s3.amazonaws.com/cdn.catarse/assets/banner-home-2001.jpg
+        4:
+          title: LEGENDS | Chiaroscuro Studios Yearbook 2018
+          subtitle: 50 characters of folklore in the line of great Brazilian comics
+            of the present time.
+          link: https://www.catarse.me/lendas?ref=home_banner
+          cta: Know the project
+          image: spanish.cl
+        5:
+          title: Arcane Sally and Mr. Steam
+          subtitle: Agents of the Crown, dangerous mathematical theories of Lewis
+            Carroll and the supernatural in the Victorian Era.
+          link: https://www.catarse.me/arcanesally?ref=home_banner
+          cta: Know the project
+          image: https://s3.amazonaws.com/cdn.catarse/assets/banner-home-arcanesally.jpg
+        6:
+          title: One Night in L'Enfer
+          subtitle: Van Gogh meets Paul Gauguin, Gustav Klimt and Toulouse Lautrec
+            in the sinister Cabaret de L'Enfer.
+          link: https://www.catarse.me/lenfer?ref=home_banner
+          cta: Know the project
+          image: https://s3.amazonaws.com/cdn.catarse/assets/banner-home-lenfer.jpg
+        7:
+          title: Barbed wire
+          subtitle: Leadership is murdered every year and you do not know. We need
+            to talk about it!
+          link: https://www.catarse.me/aramefarpado?ref=home_banner
+          cta: Know the project
+          image: https://s3.amazonaws.com/cdn.catarse/assets/banner-home-aramefarpado.jpg
+        8:
+          title: <img src="https://uploads-ssl.webflow.com/573a70f6d5c3cb6532f8b1a7/58ead3167db7c241dbb93fbc_geek-news-logo.png" width="400">
+          subtitle: Comics, boardgames, RPGs and digital games, inside and outside
+            the Catarse.
+          link: https://crowdfunding.catarse.me/geek-news
+          cta: Subscribe to Geek News
+          image: https://s3.amazonaws.com/cdn.catarse/assets/banner-home-geek-news.jpg
+        9:
+          title: Collective funding for Books and Magazines
+          subtitle: Join a community of authors and publishers and publish your independent
+            book with the help of readers
+          link: https://crowdfunding.catarse.me/publicacoes-independentes-cofinanciero?ref=home_banner
+          cta: know more
+          image: https://s3.amazonaws.com/cdn.catarse/assets/banner-home-landing-publicacoes.jpg
+    new_feature_badge: Novelty
+    posts:
+      empty: <span class="fontweight-semibold"> %{project_user_name}</span> has not published any <span class="fontweight-semibold">notes</span> yet. <a href="/projects/%{project_id}/contributions/new" class="alt-link">Make a support</a> and receive in your email all project news as soon as they are published!
+    publish:
+      aon: Everything or nothing
+      sub: signature
+      flex: Flexible
+    insights:
+      progress_bar:
+        waiting_funds_processing_text: up to 4 business days
+        waiting_funds_success_text: "(if funded)"
+        successful_waiting_transfer_processing_text: finalized in
+        finished_initial: Campaign finalized
+        finished_initial_subtitle: in
+        finished_processing: Processing Payments
+        finished_withdraw: Service request
+      enabled_withdraw:
+        title: My campaign
+        text_1: ", to receive the money raised by his project,"
+        text_2: access your Catarse Balance and request a withdrawal
+        text_3: ". The transfer will be made to your bank account within 10 days after
+          you request the withdrawal."
+        text_4: Know more.
+        button_text: Go to my Catarse Balance
+      processing:
+        title: My campaign
+        text: ", due to the expiration date of tickets issued on the last days of
+          the campaign, some support may be for up to 4 business days with the status
+          &quot;Pending&quot;. After counting these supports, if your project is financed,
+          you can inform your bank account and collect the amount collected."
+        text_link: Know more.
+      tooltip: Tell us where your project came from. Learn how to use this table and
+        better plan your communication actions
+      finish_explanation: Your campaign is still with the collection deadline open. In order to receive the funds in your bank account, you must set an end date for collection. Learn more about <a href="http://suporte.catarse.me/hc/pt-br/articles/213783503-tudo-sobre-Prazo-da-campanha">setting a deadline</a> and how the <a href="http://suporte.catarse.me/hc/pt-br/articles/217916143-tudo-sobre-REPASSE" target="blank">transfer process works.</a>
+      know_more: Know more.
+      has_cancelation_request_explanation: Your campaign has been canceled for you.
+        Within 24 hours, it will expire and your <a href="http://suporte.catarse.me/hc/pt-br/articles/202365507-Regras-e-funcionamento-dos-reembolsos-estornos-cancelamentos"
+        target="__blank">supporters will be reimbursed</a> .
+      referral:
+        ctrse_explore: Catarse Search
+        ctrse_explore_featured_big: Big featured design on the explore
+        ctrse_explore_featured_medium: Medium featured project do not explore
+        home_recommended: Recommended projects on the homepage
+        user_menu_my_projects: User menu
+        profile_created_projects: Public User Profile (created projects)
+        home_banner: Featured banner on the homepage
+        notificacao_pending: Notification of pending support
+        notificacao_cancelado: Canceled support notification
+        home_recent: Recent projects on the home page
+        home_banner_explore: Featured banner on the homepage
+        user_projects: User profile (created projects)
+        home_near: Projects next to me on the home page
+        user_menu_my_contributions: User menu
+        home_expiring: Projects in the final stretch on the home page
+        notification_pending: Notification of pending support
+        notificacao_subscription_category: Notification of Following Category
+        banner_home: Featured banner on the homepage
+        ctrse_thankyou: Support thanks page
+        project_post: Project News Post
+        profile_contributed_projects: Public User Profile (projects supported)
+        user_contributions: User profile (projects supported)
+        notificacao_projeto_nao_financiado: Non-funded project notification
+        notificacao_reminder: Campaign Final Reminder Notification
+        profile_dashboard_created_projects: Profile Private User (projects created)
+        ctrse_hello: Learn More do Catarse Page
+        credits_warning_more_group: Credit notification
+        hotsitepesquisa3anos: RFCBR Catado Search
+        ctrse_embed: Card project (embed)
+        home_near_of: Projects next to me on the home page
+        credits_warning_less_group: Credit notification
+        notificação_resgate_botao: Credit redemption notice
+        notificação_resgate_rascunho: Creation notification created
+        ctrse_newsletter: Catarse Newsletter
+        ctrse_facebook: Facebook do Catarse
+        ctrse_patrocinado_facebook: Facebook sponsored by Catarse
+        ctrse_twitter: Twitter do Catarse
+        ctrse_instagram: Instagram do Catarse
+        ctrse_blog: Blog do Catarse
+        ctrse_youtube: Youtube do Catarse
+        ctrse_universohq: HQ Universe (Catar partnership)
+        ctrse_catraca: Catraca Livre (Catarse partnership)
+        ctrse_hypeness: Hypeness (partnership Catarse)
+        others: Direct
+      ref_table:
+        header:
+          origin: Source
+          contributions: Support
+          amount: R $ supported (% of total)
+        help_url: https://suporte.catarse.me/hc/en/articles/115002214463-Project-online-support-and-divulga%C3%A3o#origem-apoio
+      campaign_title: My Campaign
+      campaign:
+        aon:
+          online: You can receive support until 23:55:59 on the day %{expires_at}.
+            Remember, it's all-or-nothing and you'll only take the funds raised
+            if you hit your financial goal within that time frame. <a href="http://suporte.catarse.me/hc/pt-br/articles/217916143-tudo-sobre-REPASSE"
+            target="blank">Learn more about how the transfer process works.</a>
+          successful: <span class="fontweight-semibold"> %{username} celebrate what
+            you deserve!</span> Your project was successful and now is the time to
+            start working with your supporters! Special attention to the delivery
+            of rewards. Prometheus? Delivered! Be sure to look at the post-project
+            section of <a class="alt-link" href="/guides">the Directors Guide</a>
+            and find out <a class="alt-link" href="http://suporte.catarse.me/hc/pt-br/articles/217916143"
+            target="_blank">how the money transfer will be made</a> .
+          waiting_funds: <span class="fontweight-semibold"> %{username} <span>we're
+            processing the last payments! Your campaign has been finalized at %{expires_at}
+            and is awaiting the latest support payments confirmations. Due to the
+            expiration date of tickets, projects that had last-minute endorsements
+            stay for up to 4 business days with the status &quot;Waiting&quot;. <a
+            href="http://suporte.catarse.me/hc/pt-br/articles/217916143" target="blank">Understand
+            how the money transfer is made.</a></span></span>
+          failed: <span class="fontweight-semibold"> %{username} Do not be discouraged!</span>
+            your project was not funded :-( But do not be discouraged! Take the process
+            as learning and plan a new campaign. <br/> <a href="http://suporte.catarse.me/hc/pt-br/articles/202365507-Regras-e-funcionamento-dos-reembolsos-estornos"
+            target="blank">Also understand how we make rebates and refunds from your
+            supporters.</a>
+          rejected: <span class="fontweight-semibold"> %{username}, this project has
+            been canceled. If you have any questions about the reason for the cancellation,
+            please contact our service.</span>
+          draft: <span class="fontweight-semibold">Welcome to draft %{username}</span>
+            <br/><br/> This is the time for you to build your page and plan your campaign!
+            Before publishing your project, fill all the adjacent flaps with care.
+            As you fill out your page, save your changes. You can work on your draft
+            for as long as you want. When everything is ready for launch, click the
+            CONTINUE button. <br/><br/> <span class="card u-radius"><span class="fa
+            fa-lightbulb-o"></span> Learn how to plan <a class="alt-link" target="_blank"
+            href="https://catarse.attach.io/HySxkQXkg">your collective funding campaign!</a></span>
+          in_analysis: <span class="fontweight-semibold"> %{username} you submitted
+            your project for review at {sent_to_analysis_at} and will receive our
+            feedback within 4 business days after submission!</span> While waiting
+            for your response, you can continue editing your project. We also recommend
+            that you go collecting feedback with people close to you and planning
+            how your campaign will work.
+          approved: <span class="fontweight-semibold"> %{username} Your project has
+            been approved!</span> To put your project in the air you only need to
+            fill in the necessary data in the <a class="alt-link" href="#user_settings">Account</a>
+            tab. It is important to know that we charge the rate of 13% of the total
+            amount collected only for successful projects. Understand <a class="alt-link"
+            href="http://suporte.catarse.me/hc/pt-br/articles/202037493-FINANCIADO-Como-ser%C3%A1-feito-o-repasse-do-dinheiro-"
+            target="_blank">how we pass the money</a> .
+        flex:
+          online: You can receive support until 23:55:59 on the day %{expires_at}.
+            Understand how the <a href="http://suporte.catarse.me/hc/pt-br/articles/217916143"
+            target="blank">resource transfer</a> flow works <a href="http://suporte.catarse.me/hc/pt-br/articles/217916143"
+            target="blank">after the end of your campaign.</a>
+          successful: <span class="fontweight-semibold"> %{username} celebrate what
+            you deserve!</span> Your project was successful and now is the time to
+            start working with your supporters! Special attention to the delivery
+            of rewards. Prometheus? Delivered! Be sure to look at the post-project
+            section of <a class="alt-link" href="/guides">the Directors Guide</a>
+            and find out <a class="alt-link" href="http://suporte.catarse.me/hc/pt-br/articles/217916143"
+            target="_blank">how the money transfer will be made</a> .
+          failed: <span class="fontweight-semibold"> %{username} Do not be discouraged!</span>
+            your project was not funded :-( But do not be discouraged! Take the process
+            as learning and plan a new campaign. <br/> <a href="http://suporte.catarse.me/hc/pt-br/articles/202365507-Regras-e-funcionamento-dos-reembolsos-estornos"
+            target="blank">Also understand how we make rebates and refunds from your
+            supporters.</a>
+          waiting_funds: <span class="fontweight-semibold"> %{username} <span>we're
+            processing the last payments! Your campaign ended at %{expires_at} and
+            is waiting for the latest support payment confirmations. Due to the expiration
+            date of tickets, projects that had last-minute endorsements stay for up
+            to 4 business days with the status &quot;Waiting&quot;. Understand how
+            the <a href="http://suporte.catarse.me/hc/pt-br/articles/217916143" target="blank">money
+            transfer is made.</a></span></span>
+          rejected: <span class="fontweight-semibold"> %{username}, this project has
+            been canceled. If you have any questions about the reason for the cancellation,
+            please contact our service.</span>
+          draft: <span class="fontweight-semibold">Welcome to draft %{username}</span>
+            <br/><br/> This is the time for you to build your page and plan your campaign!
+            Before publishing your project, fill all the adjacent flaps with care.
+            As you fill out your page, save your changes. You can work on your draft
+            for as long as you want. When everything is ready for launch, click the
+            CONTINUE button. <br/><br/> <span class="card u-radius"><span class="fa
+            fa-lightbulb-o"></span> Learn how to plan <a class="alt-link" target="_blank"
+            href="https://catarse.attach.io/HySxkQXkg">your collective funding campaign!</a></span>
+      visitors_per_day_label: Visitors per day
+      amount_per_day_label: R $ collected per day
+      amount_per_day_label_sub: New recipe per day
+      contributions_per_day_label: Support confirmed per day
+      contributions_per_day_label_sub: New subscribers per day
+      last_30_days_indication: Last 30 days
+      location_origin_title: Geographical location of the supports
+      ref_origin_title: Origin of the supports
+      visitors_per_day_empty: Once visitors start appearing you will have access to
+        a chart here with the number of visitors per day. With this, you will have
+        a daily control of how many people visit your project.
+      amount_per_day_empty: As soon as the supports begin to appear you will have
+        access to a chart here with the total R $ collected day by day. With this
+        you will have a daily control of how much you need to reach your collection
+        goal.
+      amount_per_day_empty_sub: You have not won any new subscribers in the last 30
+        days. Here are some <a href="https://catarse.attach.io/rJq3ueP9M" class="alt-link">golden
+        tips</a> from Catarse Signature directors that can help you win subscribers!
+      contributions_per_day_empty: You do not have any support for your project yet.
+        As soon as the backups start appearing you will have access to a chart here
+        with the total of support confirmed day by day. Good luck!
+      contributions_per_day_empty_sub: You have not won any new subscribers in the
+        last 30 days. Here are some <a href="https://catarse.attach.io/rJq3ueP9M"
+        class="alt-link">golden tips</a> from Catarse Signature directors that can
+        help you win subscribers!
+      contributions_per_ref_empty: Once the backups begin to appear you will have
+        access to a table here with the source of your backups. With this you can
+        measure your campaign communication and marketing actions!
+      contributions_per_location_empty: As soon as the supports start appearing you
+        will have access to a table here with the geographical location of your supporters.
+        With this you can know from which part of the country are coming its main
+        collaborators!
+    project:
+      contributed: raised
+      reached: hit
+      progress_html: "<span> %{percent}%</span> financed"
+      time_remaining_small_html:
+        one: "<div class='fontsize-smallest lineheight-tightest'>  %{count} %{unit}
+          </div><div class='fontsize-smallest lineheight-tightest'> remaining </div>"
+        other: "<div class='fontsize-smallest lineheight-tightest'>  %{count} %{unit}
+          </div><div class='fontsize-smallest lineheight-tightest'> remaining </div>"
+      time_remaining_html:
+        one: "<span> %{count} %{unit}</span> left"
+        other: "<span> %{count} %{unit}</span> remaining"
+      pledged_html: "<span> %{value}</span> lifted"
+      display_status:
+        online: online
+        expired: finalized
+        rejected: refused
+        failed: not funded
+        successful: financed
+        approved: approved
+        reached_goal: financed
+        waiting_confirmation: waiting
+        waiting_funds: waiting
+        not_reached_goal: waiting
+        draft: draft
+        in_analysis: under analysis
+    card:
+      by: per
+      remaining:
+        one: remaining
+        other: remaining
+      contributed: raised
+      reached: hit
+      progress_html: "<span> %{percent}%</span> financed"
+      time_remaining_html:
+        one: "<span> %{count} %{unit}</span> left"
+        other: "<span> %{count} %{unit}</span> remaining"
+      pledged_html: "<span> %{value}</span> lifted"
+      pledged:
+        sub: a month
+        flex: Lifted
+        aon: Lifted
+      display_status:
+        flex_successful: Funded Flex
+        expired: Finished
+        rejected: Rejected
+        failed: Unfinanced
+        successful: Funded
+        approved: Approved
+        reached_goal: Funded
+        waiting_funds: Deadline closed
+        not_reached_goal: Waiting
+        draft: Draft
+        in_analysis: Under analysis
+    faq:
+      title: Frequently Asked Questions
+      international_title: Home
+      international:
+        aon:
+          description: If this project can not reach its goal by its deadline, you
+            will get 100% of your payment refunded to your credit card.
+          questions:
+            1:
+              question: How do I back this project?
+              answer: Fill in the contact details, address and your credit card details
+                and click on Finish payment. If everything is right, you will be redirected
+                to a 'Thank you' page (in Portuguese).
+            2:
+              question: When is my card charged?
+              answer: The confirmation of your payment should be sent to your email
+                on the same day.
+            3:
+              question: What can others see about my contribution?
+              answer: This project will be added to you Backed projects history on
+                your public profile. The selected reward and the contribution amount
+                will not be public.
+            4:
+              question: What if the project can not reach its goal?
+              answer: You will have your payment 100% refunded to your credit card.
+            5:
+              question: If this project is funded, how do I get my reward?
+              answer: When your reward is ready, <a href="%{userLink}" target="_blank">%
+                {userName}</a> will get in touch with you to arrange the delivery.
+        flex:
+          description: The project will get all the money when it finishes.
+          questions:
+            1:
+              question: How do I back this project?
+              answer: Fill in the contact details, address and your credit card details
+                and click on Finish payment. If everything is right, you will be redirected
+                to a 'Thank you' page (in Portuguese).
+            2:
+              question: When is my card charged?
+              answer: The confirmation of your payment should be sent to your email
+                on the same day.
+            3:
+              question: What can others see about my contribution?
+              answer: This project will be added to you Backed projects history on
+                your public profile. The selected reward and the contribution amount
+                will not be public.
+            4:
+              question: Who is responsible for this project?
+              answer: Catarse is just a link between you and the creator. If you want
+                to know more about the project, please get in touch with <a href="%{userLink}"
+                target="_blank"> %{userName}</a>
+            5:
+              question: If this project is funded, how do I get my reward?
+              answer: When your reward is ready, <a href="%{userLink}" target="_blank">%
+                {userName}</a> will get in touch with you to arrange the delivery.
+        sub:
+          description: Each month this project will receive the value being backed
+            by you
+          questions:
+            1:
+              question: How do I subscribe to this project?
+              answer: Fill in the contact details, address and your credit card details
+                and click on Finish payment to confirm your monthly subscription.
+                If everything is right, you will be redirected to a 'Thank you'
+                page (in Portuguese).
+            2:
+              question: When do I start benefiting from my subscription?
+              answer: As soon as your payment is confirmed, your subscription will
+                be activated and you can start using it! If you have any doubts regarding
+                the project and the rewards, please contact <a href="%{userLink}"
+                target="_blank"> %{userName}</a> .
+            3:
+              question: When is my card charged?
+              answer: The confirmation of your payment should be sent to your email
+                on the same day.
+            4:
+              question: When does the next charge happen?
+              answer: You will be automatically charged on the same day of the month
+                that you started your subscription.
+            5:
+              question: What if I want to change the value of my monthly subscription?
+              answer: You can edit your subscription at any time by clicking on your
+                profile picture on the top, following the link to your &quot;Support
+                history&quot;, finding the subscription you want to edit there and
+                clicking on the &quot;Edit subscription&quot; button at the right.
+      aon:
+        description: If this project does not reach the goal, you get back 100% of
+          what you paid through a refund.
+        questions:
+          1:
+            question: How do I support this project?
+            answer: Fill in the details of your support as well as all your payment
+              information to finalize the support
+          2:
+            question: When is payment made?
+            answer: If you paid with a credit card, confirmation should be the same
+              day. If it was with ticket, within 4 business days.
+          3:
+            question: What can others see of my support?
+            answer: The project will be added to your support history on your profile,
+              but the amount you've backed and the reward you choose will not
+              go public.
+          4:
+            question: What if the project does not reach the goal?
+            answer: In that case, you get back 100% of what you paid through a refund.
+          5:
+            question: If the project is funded, how do I get my reward?
+            answer: When your reward is ready, <a href="%{userLink}" target="_blank">%
+              {userName}</a> will contact you to arrange delivery.
+      flex:
+        description: This project will get all the features when finalizing
+        questions:
+          1:
+            question: How do I support this project?
+            answer: Fill in the details of your support as well as all your payment
+              information to finalize the support
+          2:
+            question: When is payment made?
+            answer: If you paid with a credit card, confirmation should be the same
+              day. If it was with ticket, within 4 business days.
+          3:
+            question: What can others see of my support?
+            answer: The project will be added to your support history on your profile,
+              but the amount you've backed and the reward you choose will not
+              go public.
+          4:
+            question: Who is responsible for the project?
+            answer: Catharsis is only an intermediary, if you want to understand more
+              about the project, contact <a href="%{userLink}" target="_blank"> %{userName}</a>
+          5:
+            question: How do I receive my reward?
+            answer: When your reward is ready, <a href="%{userLink}" target="_blank">%
+              {userName}</a> will contact you to arrange delivery.
+      sub:
+        description: This project will receive every month the amount backed by you.
+        questions:
+          1:
+            question: How do I subscribe to this project?
+            answer: Confirm the value, reward your payment information to confirm
+              your monthly subscription.
+          2:
+            question: When will I be able to enjoy my benefits as a subscriber?
+            answer: Once this payment is completed, your subscription will be active
+              and you will then be able to enjoy all the benefits of being a subscriber!
+              If you have any questions about the project and its rewards, please
+              do not hesitate to contact <a href="%{userLink}" target="_blank"> %{userName}</a>
+              directly.
+          3:
+            question: When is payment made?
+            answer: If you paid with a credit card, confirmation should be the same
+              day. If it was with ticket, within 4 business days.
+          4:
+            question: When will my next charge be?
+            answer: Your subscription always expires on the day of the month of your
+              first payment. In case of payment by credit card, you do not have to
+              do anything, we will automatically charge you for the month. In the
+              case of a ticket, you will receive a billing receipt every month in
+              your email.
+          5:
+            question: What if I want to change my monthly support in the future?
+            answer: You can change your subscription at any time. Just click on your
+              profile image at the top of the page, access your &quot;Support History&quot;,
+              find the signature you want to edit and then click the &quot;Edit Signature&quot;
+              button.
+      sub_edit:
+        description: When you edit a signature, you have the option to change the
+          signed amount, the reward, and the method of payment. Any changes you make
+          today will only take effect on your next charge.
+        questions:
+          1:
+            question: What happens if I change the value of my subscription?
+            answer: If your subscription is billed, you will receive on your next
+              billing date a ticket with the new amount. If it is in card, your next
+              charge will be processed with the new value.
+          2:
+            question: What happens if I change the payment method?
+            answer: Payment with the new payment method will be processed on the next
+              charge. If you have changed to ticket, you will receive a ticket in
+              your email near the expiration date of your subscription. If you have
+              changed to card, it will be processed on your next charge.
+      sub_reactivate:
+        description: When you reactivate an inactive subscription, the expiration
+          date of your subscription will be considered the date that this payment
+          you are now making is confirmed.
+        questions:
+          1:
+            question: How do I reactivate my inactive signature?
+            answer: Please confirm the amount, the reward to your payment information
+              to confirm the reactivation of your subscription.
+          2:
+            question: When is payment made?
+            answer: If you paid with a credit card, confirmation should be the same
+              day. If it was with ticket, within 4 business days.
+          3:
+            question: Will the expiration date of my subscription change?
+            answer: Yes. The expiration date of your subscription will be the day
+              that this payment you are now making is confirmed. So we make sure you're
+              only paying for the days you've actually been signing!
+          4:
+            question: When will I be able to enjoy my subscriber benefits again?
+            answer: Once this payment is confirmed, your subscription will be back
+              active and you will then be able to enjoy all the benefits!
+    payment:
+      paid: Confirmed
+      refused: Refused
+      pending: Pending
+      pending_refund: Refund pending
+      refunded: Refunded
+      chargeback: Answered
+      deleted: Wiped out
