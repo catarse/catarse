@@ -38,6 +38,7 @@ pt:
         subscription_payment_refunded: 'Reembolso do projeto %{project_name}'
         balance_received_from: 'Transferência recebida de %{from_user_name}'
         balance_transferred_to: 'Transferência enviada para %{to_user_name}'
+        revert_chargeback: 'Devolução de chargeback em conta.'
       debit: 'Saída'
       credit: 'Entrada'
       totals: 'Saldo '
