@@ -1,0 +1,5 @@
+en:
+  errors:
+    not_found:
+      text: You may have typed the wrong address or the page may have been moved.
+      title: We did not find this address :(

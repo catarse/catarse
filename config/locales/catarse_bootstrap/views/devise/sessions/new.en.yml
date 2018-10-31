@@ -8,10 +8,12 @@ en:
           header: 'Log in'
         links:
           register: "Sign up"
+          password: "Password"
           forgot_password: "I forgot my password"
         form:
           labels:
             remember_me: 'Remember me'
           inputs:
             submit: 'Log me in'
+            password: "Password"
             facebook: 'Log in with Facebook'

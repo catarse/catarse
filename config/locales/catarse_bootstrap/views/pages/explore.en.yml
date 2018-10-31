@@ -1,0 +1,21 @@
+en:
+  pages:
+    explore:
+      header_html: Explore amazing projects
+      success_follow: Thank you! We will send you a weekly email with recent projects
+        in the %{name} category.
+      success_unfollow: You have stopped following the %{name} category.
+      follow: follow
+      unfollow: Unfollow
+      following: followers
+      categories: Categories
+      expiring: In the final stretch
+      in_funding: Up in the air
+      near: Next to me
+      quick_explore: Quick search
+      recent: Recent Updates
+      recommended: Most Popular
+      subtitle: Explore the projects, find the ones that move your heart, and make
+        it happen!
+      successful: Successful
+      title: Find incredible projects

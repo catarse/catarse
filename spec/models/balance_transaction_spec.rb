@@ -64,6 +64,28 @@ RSpec.describe BalanceTransaction, type: :model do
     end
   end
 
+  describe 'insert_revert_chargeback' do
+    let!(:confirmed_contribution) { create(:confirmed_contribution) }
+    let!(:payment) { confirmed_contribution.payments.last }
+    before do
+      allow_any_instance_of(Project).to receive(:successful_pledged_transaction).and_return({id: 'mock'})
+      payment.chargeback
+    end
+
+    subject do
+      BalanceTransaction.insert_revert_chargeback(payment.contribution.balance_transactions.where(event_name: 'contribution_chargedback').first)
+    end
+
+    it 'should create balance transaction reverting chargeback' do
+        expect(subject.event_name).to eq('revert_chargeback')
+        expect(subject.user_id).to eq(confirmed_contribution.project.user_id)
+        expect(subject.contribution_id).to eq(confirmed_contribution.id)
+        expect(subject.amount).to eq(subject.balance_transaction.amount.abs)
+        expect(subject.balance_transaction.event_name).to eq('contribution_chargedback')
+        expect(subject.balance_transaction.contribution_id).to eq(confirmed_contribution.id)
+    end
+  end
+
   describe 'insert_contribution_chargeback' do
     let!(:confirmed_contribution) { create(:confirmed_contribution) }
     let!(:payment) { confirmed_contribution.payments.last }

@@ -1,0 +1,102 @@
+en:
+  admin:
+    menu: Moderation of Channels
+    followers_menu: Followers
+    statistics_menu: Statistics
+    profile_menu: Edit channel
+    partners_menu: Edit partners
+    statistics:
+      title: Channel Stats
+      total_subscribers: Total subscribers
+    confirmations:
+      destroy: Are you sure you want to delete?
+    filter:
+      between_created_at: Created between
+      by_id: By id
+      order_table: Sort table
+      pg_search: Project
+      submit: Filter
+      title: Filter
+      user_name_contains: User
+      with_state: With the status
+      by_payment_method: Means of payment
+      by_gateway: Gateway
+    followers:
+      index:
+        download: Download list
+        title: Followers
+    management:
+      no_partners: No partner registered
+      no_posts: No news registered
+      title: Business Management
+      total: projects in total
+    partners:
+      back_to_list: "← Back to Manage Partners"
+      new:
+        add_partner: Add partner
+      edit:
+        edit_title: Edit Partner
+      form:
+        hint_image: Image Size 370x320
+        save_submit: To save
+      index:
+        new_button: Add Partner
+        table:
+          created_at: Created on
+          image: Image
+          name: Name
+          url: site
+          actions: Actions
+        title: Manage partners
+    posts:
+      back_to_list: "← Back to Manage News"
+      new:
+        create_news: Create new
+      edit:
+        edit_news: Edit New
+      index:
+        new_post_button: Create new
+        table:
+          actions: Actions
+          created_at: Created on
+          published_at: Posted in
+          title: Novelty Title
+        title: Manage news
+      form:
+        save_submit: Save and view
+      update:
+        published_message: Its news was published and e-mailed to followers of the
+          channel.
+      warning_html: Remembering that all published news goes directly to the email
+        of his followers. So please review your text before submitting it.
+    posts_menu: Manage news
+    table:
+      approve: To approve
+      category: Category
+      confirmation: Are you sure you want to delete this project? All contributions will
+        be reimbursed
+      confirmation_reject: Are you sure you want to reject this project? All contributions
+        will be reimbursed
+      confirmation_draft: Are you sure you want to draft this project? All contributions
+        will be reimbursed
+      contributed_projects: Support projects
+      created_projects: Design created
+      destroy_action: Delete
+      edit_action: To edit
+      expires_at: Term
+      goal: Goal
+      name: Title
+      online_date: Publication
+      pledged: Reached
+      publish_action: Publish
+      recommended: To recommend
+      reject: Reject
+      send_to_draft: Send to draft
+      put_online: Put on the air
+      send_to_trash: DELETE PROJECT
+      show_action: To view
+      state: state
+      total_contributions: Support
+      unpublish_action: Unpublish
+      user: User
+      user_id: User

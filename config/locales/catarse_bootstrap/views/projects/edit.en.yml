@@ -1,0 +1,715 @@
+en:
+  projects:
+    flex_nav_actions:
+      publish: Continue
+      announce_expiration: Set deadline
+    aon_nav_actions:
+      publish: Continue
+      send: Submit
+    edit:
+      reward_html: Rewards <span class='fontcolor-terciary'>(optional)</span>
+      video_subtitle: Video is optional, but we highly recommend it! A good video
+        makes the difference and can be largely responsible for the success of your
+        project.
+      reward_subtitle: If you want to start the project without reward and add later
+        also, feel free!
+      video_html: Video <span class='fontcolor-terciary'>(optional)</span>
+      budget: Budget
+      posts: Write a new story
+      announce_expiration: Deadline for collection
+      announce_expiration_subtitle: Choose the date well because you can not change
+        it later. Once your deadline has expired, you will need to confirm your bank
+        details. We will then deposit the money into your account within 10 business
+        days.
+      budget_subtitle: How will your money be used? The more transparency the better.
+        Show what steps and processes will be involved in using these resources. A
+        list with the main budget items or even a pie chart will go super well here.
+      card_aon: Card
+      card_subtitle_aon: Do you know that design card that appears in the home and
+        in the search? Well then, it makes it beautiful because they say the first
+        impression is the one that stays;)
+      card_flex: Card
+      card_subtitle_flex: Do you know that design card that appears in the home and
+        in the search? Well then, it makes it beautiful because they say the first
+        impression is the one that stays;)
+      card_sub: Customize your campaign
+      card_subtitle_sub: It looks beautiful, because they say the first impression
+        is the one that stays;)
+      welcome: Welcome email
+      welcome_subtitle: Tell how happy you are with the contribution and give rewards instructions
+        to your new subscribers
+      basics: Fill in the information below
+      basics_subtitle: The data reported in this section can not be modified when
+        the project is aired. Fill in carefully and review before launching the project.
+      goal: Financing
+      goals: Collection goals
+      goal_subtitle: Please fill in the section below because this information can
+        no longer be changed if the project is aired.
+      reports: Support reports
+      user_settings: Registration data
+      user_settings_subtitle: "<strong>Please fill out the fields below!</strong>
+        They must identify the person responsible for the project and the receipt
+        of the money."
+      user_about: Talk more about you!
+      user_about_subtitle: Supporters want to get to know project managers better.
+        Links that help tell your story are always welcome.
+      description: Tell the story of your project!
+      description_subtitle: Take a good look at the narrative of the project. It is
+        she who will enchant people and bring back contributors. A good video and description
+        are differential!
+    subscription_fields:
+      boleto: Ticket
+      credit_card: CC
+      status:
+        started: Started
+        active: Active
+        inactive: Inactive
+        canceled: Canceled
+        canceling: Cancellation requested
+    payment:
+      paid: Confirmed
+      refused: Refused
+      pending: Pending
+      pending_refund: Refund pending
+      refunded: Refunded
+      chargeback: Answered
+      deleted: Wiped out
+      last_status:
+        credit_card:
+          pending: Pending
+          paid: Confirmed
+          refused: Refused
+          refunded: Refunded
+          chargedback: Reversed
+          deleted: Wiped out
+          error: Error
+        boleto:
+          pending: Pending
+          paid: Confirmed
+          refused: Not confirmed
+          refunded: Refunded
+          chargedback: Reversed
+          deleted: Wiped out
+          error: Error
+    payment_method:
+      boleto: Ticket
+      credit_card: Card
+    reward_fields:
+      edit: Edit reward
+      reward: Reward
+      reward_know_more_cta_html: Learn how to <a target="_blank" href="https://catarse.attach.io/Hk5H9HKeZ"
+        class="alt-link">plan your rewards with this ebook!</a>
+      reward_faq_intro: Before offering a reward, it is important to have all production
+        and delivery processes mapped.
+      reward_faq_sub_intro: 'Tips for completing:'
+      faq:
+        1:
+          title: 'Reward Description and Title:'
+          description: They help contributors understand what you are offering. Be objective
+            and transparent! Learn in this article <a href="http://suporte.catarse.me/hc/pt-br/articles/212191546-Recompensas-realizadores-#o-que-oferecer"
+            target="_blank" class="alt-link">what you can and can not offer</a> and
+            get inspired with <a href="http://blog.catarse.me/mais-de-30-ideias-de-recompensa-para-seu-crowdfunding/"
+            target="_blank" class="alt-link">rewards ideas</a> .
+        2:
+          title: 'Reward value:'
+          description: Indicates how much the contributor must contribute to receive
+            the reward. Try to offer a fair and realistic value. To help you set these
+            values, we recommend the <a href="http://blog.catarse.me/meta-crowdfunding-calculadora-orcamento/"
+            target="_blank" class="alt-link">Budget Calculator</a> .
+        3:
+          title: 'Delivery forecast:'
+          description: Indicates when the contributor will receive the chosen reward.
+            Be careful when setting this date so as not to frustrate your contributors.
+            When in doubt, be conservative on time.
+        4:
+          title: 'Type of delivery:'
+          description: How will the reward be sent and how much will it cost to the
+            contributor. If you add a freight value, it will be added when the contributor
+            selects the reward and locale. <a href="http://blog.catarse.me/o-calculo-de-envio-de-recompensas-financiamento-coletivo/"
+            target="_blank" class="alt-link">Learn More</a> .
+        5:
+          title: 'Number of rewards:'
+          description: You can also limit a reward to a certain number of contributions
+            and change the order that the rewards appear in your project. <a href="http://suporte.catarse.me/hc/pt-br/articles/212191546-tudo-sobre-RECOMPENSAS#como-editar"
+            target="_blank" class="alt-link">Learn More</a> .
+      minimum_value_title: For $%{minimum_value} or more
+      minimum_value_subscription_title: $%{minimum_value} per month
+      paid_contributors: " %{count} contributors"
+      paid_subscribers: " %{count} subscribers"
+      reward_gone: Out of stock
+      reward_limited: Limited
+      delivery: 'Send:'
+      reward_limited_input: Limited Reward
+      reward_available: "( %{available} of %{maximum} available)"
+      delivery_estimation: 'Estimated delivery:'
+      reward_link_label: Link to direct support
+      reward_link_hint: The link below leads to the contribution page with this reward
+        already selected.
+      add_reward: "+ Add reward"
+      info_box: Describe the reward amount and place a real delivery date forecast
+        for the contributors. You can also limit a reward and when the limit is reached
+        it appears as SOLD. If you want to change the order that the rewards appear
+        in your project, simply do this by dragging them up or down.
+      minimum_value: 'Value:'
+      deliver_at: 'Delivery forecast:'
+      description: 'Description:'
+      status:
+        error: Sending error
+        delivered: Sent
+        received: Received
+      shipping_options:
+        free: No freight involved
+        national: National Freight
+        international: National and International Freight
+        presential: Face-off
+      limit_reward: Limit reward
+      available: Available quantity
+      submit: To save
+      index:
+        select_reward: Select this reward
+        display_remaining: " %{remaining} of %{maximum} available"
+        dont_want: I do not want any reward
+        limited: Limited
+        sold_out: Out of stock
+        contributions_to_confirm:
+          one: 1 contribution in confirmation period.
+          other: " %{count} contributions in time of confirmation."
+        edit_reward: Edit reward
+        new_reward: Reward reward
+        reward_deliver_time: "<b>Estimated Delivery:</b>  %{estimate}"
+        reward_title: For %{minimum} or more
+    dashboard_insights:
+      finish_explanation: Your campaign is still open. In order to receive the funds
+        in your bank account, you must set an end date for collection.
+      know_more: Know more.
+    dashboard_surveys:
+      title: Questionnaires
+      subtitle: Please check your contributors' delivery addresses and ask other
+        questions related to your rewards.
+      help_link: Learn how to use <a href="https://suporte.catarse.me/hc/pt-br/articles/115003402146-Question%C3%A1rios-Como-envi%C3%A1-los-aos-seus-apoiadores"
+        target="_blank" class="alt-link">Questionnaires in rewards management!</a>
+      online_explanation: Since your project has not yet been finalized, you can only
+        submit questionnaires to out-of-pocket rewards. After completing the project,
+        you can submit questionnaires to all contributors.
+      create_survey: Create questionnaire
+    dashboard_fiscal:
+      title: Fiscal documents
+      subtitle: Download the tax documents related to your collection.
+      help_link: If you are uncertain about taxation, see our Article on <a href="http://fazum.catarse.me/manual-tributacao-realizadores"
+        target="_blank" class="alt-link">Taxation for Directors</a>
+      nodoc_explanation: You will have access to tax documents as soon as your project
+        is finalized and funded successfully.
+      nodoc_explanation_sub: You will have access to tax documents monthly.
+      doc_download: Download documents
+      doc_download_explanation: As the current legislation is not formalized Collective
+        Financing, we <b>always recommend that the director consult an accountant
+        or accounting firm before formalizing the receipt of the money collected</b>
+        to make an informed decision about which modality most closely approximates
+        the relationship between your project and its contributors .
+    dashboard_contribution_reports:
+      help_link: Learn how to use the Support <a href="https://suporte.catarse.me/hc/pt-br/articles/115003361423-Relat%C3%B3rio-de-apoios"
+        target="_blank" class="alt-link">Report!</a>
+      title: Support report
+      subtitle_html: Track the contributions made to your campaign and manage the delivery
+        of rewards.
+    dashboard_user_settings:
+      natural: Full name of holder
+      juridical: Company Title
+      title: Registration and banking data
+      subtitle_html: With the data below complete, your project will be ready to air.
+        After you complete the fill, click Save. Check it out. If everything is ok,
+        just hit the Publish button and start your campaign!
+      owner_document_natural: CPF of bank account holder
+      owner_document_juridical: CNPJ of the bank account holder
+      user_data_title: Bank data
+      user_data_subtitle_html: These data will be used for the issuance of our Nota
+        Fiscal and for the transfer of the money, in case your project is successful.
+      account_subtitle_html: 'We need the data below to make the financial transfer
+        to successful projects. <b>ATTENTION: The CPF / CNPJ listed in the cadastral
+        data and banking data must be the same.</b>'
+      account_edit_disabled_html: The information below was informed by you at the
+        time of publication of your project. To avoid mistakes in passing on resources,
+        the editing of this data was blocked as soon as your project went live. If
+        you want to change them, it's only %{link} that tells you the changes
+        you want to make.
+      submit: To save
+    dashboard_home_templates:
+      status: 'Status:'
+      project_numbers:
+        financed: financed
+        backed: raised
+        contributions: contributions
+        left: remaining
+      waiting_funds:
+        title: " %{name}, we're processing the last payments."
+        subtitle_html: Your project has been finalized at %{expires} and is awaiting
+          ticket confirmation and payments. Due to the expiration date of tickets,
+          projects that had last-minute contributions stay for up to 4 business days in
+          that status, counted from the project end date. %{link}.
+        header: "From here your project can hit the target or not. Here's what
+          happens in each case:"
+        success: 'I hit the target:'
+        failed: 'I did not hit the target:'
+        good_luck: Good luck!
+      successful:
+        title: " %{name}, celebrate that you deserve!"
+        subtitle_html: Your project was successful and now is the time to start working
+          with your contributors! Special attention to the delivery of rewards. Prometheus?
+          Delivered! Be sure to look at the %{link1} post-project section and find
+          out about %{link2}.
+        header1: 'And do not forget: transparency is everything.'
+        transparent_html: Keeping an informed contributor is keeping a contributor happy.
+          Even if you go inform it of a fault or setback. Happy contributors are %{link}.
+          Therefore, use and abuse (always in moderation) of the novelties tab. What
+          you write over there comes straight to your contributors' email box. Already
+          starting to deliver rewards? In the &quot;reports&quot; tab you download
+          information so that you can manage your project's rewards delivery.
+        header2: 'Be sure to read:'
+      rejected:
+        title: " %{name}, unfortunately it was not this time."
+        subtitle_html: You have submitted your project for analysis to Catarse and
+          we understand that it is not in accordance with the site profile. Having
+          a rejected project does not prevent you from submitting new projects for
+          evaluation or reformulating your current project. Chat with our customer
+          service! We recommend that you take a good look at %{link1} and %{link2}.
+      online:
+        title: " %{name}, your campaign is up!"
+        subtitle_html: Your project is running, and your campaign will close at 11:59:39
+          p.m. on day %{date}. Until that day and time you can receive support. Remember,
+          it's all-or-nothing and you'll only take the funds raised if you
+          hit the goal that was stipulated. Visit our %{link2} for other questions!
+        explanation_html: "<div class='fontsize-base u-marginbottom-40 card card-terciary'><p
+          class='fontweight-bold'> With the project in the air, some information can
+          no longer be edited </p><p> You will no longer be able to change: <br> -
+          its funding goal; <br> - the deadline; <br> - the URL of the project; <br>
+          - the user who owns the project. </p><p class='fontweight-bold'> Need more
+          information about campaign processes? See the box next to it. </p><p> %{Link1}
+          is also a great source of data on the Brazilian scenario. A good
+          read on %{link2} can be inspiring. There you will find stories of successful
+          projects and campaign tips. </p></div>"
+      failed:
+        title: " %{name}, do not be discouraged!"
+        subtitle_html: Your project did not hit the target and we know that this is
+          not the best of sensations. But do not be discouraged. Take the process
+          as an apprenticeship and be sure to consider a second try. Do not worry,
+          all your contributors will get the money back. %{link}.
+        questions: We also sent an email to you with two questions. If you have the
+          time and the head, it would be great if you could take a look. Your feedback
+          helps us build a better and nicer Catarse for you.
+      draft:
+        title: " %{name}, build your project!"
+        subtitle: The more careful and well-formatted a project, the greater the chances
+          of it being successful in its catchment campaign. Before submitting your
+          project for our analysis, fill all the adjacent flaps with care. You can
+          save the changes and go back to the draft project as many times as you like.
+          When everything is ready, click on the SEND button and we will contact you
+          to evaluate your project.
+        subtitle_flex: The more careful and well-formatted a project, the greater
+          the chances of it being successful in its catchment campaign. Before publishing
+          your project, fill all the adjacent flaps with care. You can save the changes
+          and go back to the draft project as many times as you like. When everything
+          is ready, click on the SEND button and we will contact you to evaluate your
+          project.
+        study_title: Did you feel you need to study harder to build your project?
+          Check out the links in the box beside.
+      approved:
+        title: " %{name}, your project has been approved!"
+        subtitle_html: To put your project in the air you only need to fill in the
+          required data in the %{link1} tab. It is important to know that we charge
+          the rate of 13% of the total amount collected only for successful projects.
+          Understand %{link2}.
+      in_analysis:
+        title: " %{name}, you submitted your project for review and will receive our
+          response within 4 business days"
+        subtitle_html: Thank you! Our team will evaluate all the content of your project
+          and within 4 business days you will receive an email informing if it has
+          been Approved, Declined or if it will continue in Analysis for some more
+          time so that you can make suggested adjustments. Take advantage of this
+          time to collect feedback from people close to you!
+    dashboard_analysis_success:
+      title: " %{name}, your project has been submitted for review!"
+      subtitle: 'You will receive our response within 4 business days in the email:'
+      next_steps: While waiting for your response, you can continue editing your project!
+        We also recommend that you go collecting feedback with people close to you
+        and planning how your campaign will work.
+    dashboard_nav:
+      leave_link_html: Exit Control Panel
+      draft_start_tab: Start
+      start_tab: My Campaign
+      reports_tab: Support reports
+      subscriptions_tab: Subscriber Base
+      surveys_tab: Questionnaires
+      preview_tab: Preview
+      posts_tab: News
+      edit_project: Edit project
+      fiscal_tab: Fiscal documents
+      send: Submit
+      announce_expiration: Set deadline
+      publish: Continue
+    dashboard_nav_links:
+      preview_tab: Preview
+      account_tab: Registration data
+      basics_tab: Basic
+      goal_tab: Financing
+      goals_tab: Goals
+      budget_tab: Budget
+      card_tab_aon: Card
+      card_tab_sub: Images
+      card_tab_flex: Card
+      description_tab: description
+      video_tab: Video <span class='fontsize-smallest fontcolor-secondary'>(optional)</span>
+      rewards_tab: Rewards <span class='fontsize-smallest fontcolor-secondary'>(optional)</span>
+      about_you_tab: Public Profile
+    flex_dashboard_explanation:
+      flex:
+        kind_text: You are participating in the flexible model trial period. Your
+          participation is essential to understanding how we can expand this model
+          for all users. %{link}
+        expiration_text: In Flexible Campaign, you can stay with your campaign captive
+          for up to 1 year! With it in the air, you will have the option to set a
+          project end date (minimum of 2 days). After the campaign ends, you receive
+          everything you've collected (discounted rates) within 10 business days.
+        expiration_title: Deadline for collection
+    dashboard_user_about:
+      submit: To save
+      twitter_label: Twitter profile
+      twitter_hint: Paste your profile link
+      other_link_label: Presence on the internet
+      other_link_hint: Include links that help contributors understand why you are the
+        right person to do this project.
+      about_label: About you
+      about_hint: Use this space if you want to better describe you, your company
+        or your institution. Want to give credit to partners? Use some institutional
+        video? This space is yours and use it any way you want. All this information
+        will appear on the Tab About in your Public Profile.
+      facebook_link_label: Facebook profile
+      facebook_link_hint: Paste your profile link
+      uploaded_image_label: Profile picture
+      uploaded_image_hint: This image will be used as the thumbnail of your profile
+        (PNG, JPG 280x280 ideal size)
+      name_label: Name
+      name_hint: This is the name that users will see on your profile.
+      email_label: Registration Email
+      email_hint: Email for you to log on to Catarse and communicate with our team
+        and its contributors
+    dashboard_goal:
+      want_more: Want to understand more?
+      online_days_closed: Definite time
+      online_days_closed_hint: Your project is already in the air with the capture
+        time already defined. You can choose between 1 and 365 days. After publishing
+        the project, you can not change this deadline.
+      online_days_open: Open time
+      online_days_open_hint: Your project goes live without a set deadline. You will
+        have the option to set a project end date (1 day minimum) at any time within
+        a 12-month period after publication.
+      online_days_label: Collection time
+      online_days_flex_hint: This is the period when your project will be on the air,
+        open to fundraising. In Flex, you choose whether to publish your project with
+        a deadline or an open deadline. <a class="alt-link" href=" https://catarse.attach.io/HJGoCzmJl"
+        target="_blank">Know our tips for setting your deadline.</a>
+      online_days_aon_hint: This is the period when your project will be on the air,
+        open to fundraising. In All or Nothing, you can choose between 1 and 60 days.
+        <a class="alt-link" href=" https://catarse.attach.io/HJGoCzmJl" target="_blank">Know
+        our tips for setting your deadline.</a>
+      goal_label: Goal of collection
+      goal_hint: How much do you need to raise? Set a goal consistent with what your
+        project proposes. Do not forget to include administrative fees in your calculation.
+      goal_taxes_link: Understand Catarse rates
+      goal_taxes_label: Catarse Fees
+      goal_taxes_watch_video_html: <a class="fontsize-small" href="http://fazum.catarse.me/agradecimento-video-tutorial-orcamento-basico"
+        target="_blank">Watch our <span class="fontweight-bold">Basic Budget video
+        lesson</span></a>
+      goal_aon_taxes_hint: It is the amount that will be deducted from your collection
+        at the end of the campaign, regarding the services of Catarse and the means
+        of payment. If your project reaches or exceeds the target, 13% of the total
+        collected at the end of the campaign will be charged. If your project does
+        not reach the goal, all the money backed will be returned to your contributors
+        after the campaign ends, at no cost to you. It's all or nothing!
+      goal_flex_taxes_hint: It is the amount that will be deducted from your collection
+        at the end of the campaign, regarding the services of Catarse and the means
+        of payment. 13% of the total collected at the end of the campaign will be
+        charged, regardless of whether the target is reached or not.
+      mode_label: Type of financing
+      mode_hint: Choose the template for your collective financing campaign. After
+        starting your campaign, you will not be allowed to trade.
+      mode_diff_ebook: <a class="fontsize-small" href="https://catarse.attach.io/BkLCRfXyg"
+        target="_blank">Download our <span class="fontweight-bold">Flex vs All or
+        Nothing ebook</span></a>
+      mode_diff_link: See the difference between the models
+      flex_diff_html: <span class="fontweight-semibold">Commitment <br></span> You
+        agree to execute the project and deliver the rewards (if you have chosen to
+        offer them), <span class="fontweight-semibold">regardless of the amount collected</span>
+        <br><br> <span class="fontweight-semibold">How it works?</span> <br> You receive,
+        at the end of the term, all that you have collected (discounting only the
+        rate of the Catarse), regardless of reaching the collection goal. <br><br>
+        <span class="fontweight-semibold">Maximum project deadline in air:</span>
+        12 months <br><br> <span class="fontweight-semibold">Fees:</span> 13% of the
+        total collected
+      aon_diff_html: <span class="fontweight-semibold">Commitment</span> <br> You
+        commit to execute the project and deliver the rewards only <span class="fontweight-semibold">if
+        the revenue reaches or exceeds the goal.</span> <br><br> <span class="fontweight-semibold">How
+        it works?</span> <br> You only receive the amount collected if, at the end
+        of the term, you have reached the collection goal. Otherwise, all your contributors
+        receive their payments back. <br><br> <span class="fontweight-semibold">Deadline
+        for the project in the air:</span> 60 days <br><br> <span class="fontweight-semibold">Fees:</span>
+        13% of the total collected
+      submit: To save
+      kind_label: Type of financing
+      kind_link: If you want to know more, click here
+      flex:
+        kind_text: You are participating in the flexible model trial period. Your
+          participation is essential to understanding how we can expand this model
+          for all users. %{link}
+    dashboard_description:
+      submit: To save
+      description_label: Project description
+      description_hint: 'Speak with passion and clarity about what will be accomplished.
+        Clarify possible questions about how the money will be used, who is behind
+        the project, how and when the project will be delivered. Transparency attracts
+        more contributors. Remember: your project will be accessed by ordinary people
+        who will decide whether or not to contribute to your project. Capriche!'
+      description_alert: <span class="fa fa-fw fa-lightbulb-o"></span> Learn how to
+        <a class="alt-link" href="https://catarse.attach.io/BJmQVOiR" target="blank">create
+        a captivating description!</a>
+      description_video_alert: <span class="fa fa-lightbulb-o"></span> Learn how to
+        <a href="https://catarse.attach.io/BJmQVOiR" target="_blank" class="alt-link">create
+        a captivating description</a> and see examples <a href="http://crowdfunding.catarse.me/videomakers?ref=ctrse_dashboard_video"
+        target="_blank">of successful videos</a> on Catarse!
+    dashboard_reward:
+      submit: To save
+      add_reward: Add reward
+      reward: Reward
+    dashboard_start:
+      title: Live what you love to do
+      description: 'Hello %{name}! This is the time for you to build and plan your
+        campaign. Fill all the adjacent flaps with care and be sure to save them as
+        you fill. Check out lowers an ebook we have prepared especially for you:'
+      video_src: https://docs.google.com/presentation/d/e
+    dashboard_announce_expiration:
+      explanation_01: 'When we start the final stretch, we will open a 7 day countdown.
+        You can receive contribution until:'
+      explanation_02: This is an irreversible action. Once the final stretch is defined,
+        the project will no longer be able to change its deadline for funding. At
+        the end of the term, you receive all the amount collected.
+    dashboard_preview:
+      aon:
+        header_subtitle: It's time for feedbacks!
+        header_text: Share the link below with your friends and take the time to make
+          fine adjustments to help with your campaign.
+      flex:
+        header_subtitle: It's time to listen to suggestions!
+        header_text: Share the %{link} link with your friends and take the time to
+          make fine adjustments to help with your campaign.
+        publish_btn_html: I am satisfied! <br> I want to publish my project now
+    dashboard_posts:
+      only_to_backers: I want this news to be visible only to contributors.
+      publish: Publish novelty
+      preview: Preview
+      all_backers_aon: the contributors and will
+      all_backers_flex: the contributors and will
+      all_backers_sub: subscribers and will be
+      backers_aon: All contributors
+      email_backers_aon: sent by email to all contributors
+      email_backers_flex: sent by email to all contributors
+      email_backers_sub: sent by email to all subscribers
+      backers_only_aon: visible on the platform only for these contributors.
+      backers_only_flex: visible on the platform only for these contributors.
+      backers_only_sub: visible on the platform only to those subscribers.
+      backers_flex: All contributors
+      backers_sub: All Subscribers
+      successful: Message sent successfully
+      send_a_message_sub: Submit a news story to your subscribers
+      send_a_message_flex: Submit a news story to your contributors
+      send_a_message_aon: Submit a news story to your contributors
+      everyone_aon: Everyone (contributors and non-contributors)
+      everyone_flex: Everyone (contributors and non-contributors)
+      everyone_sub: Everyone (subscribers and non-subscribers)
+      discard: To discard
+      warning: All news releases are sent directly to their contributors by email. Review
+        the post well before posting.
+      old_posts: Old news
+    dashboard_budget:
+      submit: To save
+      budget_label: Project budget
+      budget_alert: <span class="fa fa-fw fa-lightbulb-o"></span> See tips on how
+        to <a class="alt-link" href="http://fazum.catarse.me/agradecimento-video-tutorial-orcamento-basico?ref=ctrse_dashboard"
+        target="_blank">determine the goal of your project!</a>
+    dashboard_card:
+      submit: To save
+      card_label: Card
+      headline_label: Catchphrase
+      headline_label_hint: Phrase on the project card to call contributors. Must have
+        a maximum of 100 characters and summarize the project well.
+      uploaded_image_label: Image of the project
+      cover_image_label: Background image <span class="fontcolor-secondary">(optional)</span>
+      cover_image_hint: This image will be used at the bottom of the main area of
+        ​​your page (see an example). The file can not exceed 1MB, and the dimensions
+        should be 1340 X 860 px, in JPG, GIF or PNG format.
+      uploaded_image_hint: This image will be used as the thumbnail of your project
+        (PNG, JPG size 720 x 400)
+    dashboard_video:
+      submit: To save
+      video_label: Project video
+      video_hint: Link to Vimeo or Youtube. This is the main video for your campaign.
+      video_alert: <span class="fa fa-fw fa-lightbulb-o"></span> See examples of <a
+        class="alt-link" href="http://crowdfunding.catarse.me/videomakers?ref=ctrse_dashboard_video"
+        target="_blank">successful videos on Catarse!</a>
+      aon:
+        card_label: Video
+        video_url: Project video
+        video_url_hint: ''
+        video_url_subtitle: Link to Vimeo or Youtube. This is the main video for your
+          campaign.
+      flex:
+        card_label: Video
+        video_url: Project video
+        video_url_hint: ''
+        video_url_subtitle: Link to Vimeo or Youtube. This is the main video for your
+          campaign.
+    dashboard_basics:
+      permalink: Link to your project on Catarse
+      permalink_hint: You can edit it until the project goes online. Choose something
+        simple, straightforward, and identify your project well. Try not to use hyphen,
+        underline etc.
+      tags: Tags
+      tags_hint: List up to 5 keywords related to your campaign and facilitate discovery
+        by contributors.
+      tags_max_error: You can use up to 5 tags
+      admin_tags: Admin Tags
+      admin_tags_hint: Report tags separated by commas
+      user_id: User ID
+      tracker_snippet_html: Html tracker snippet
+      city: Project Location
+      city_hint: Where will your project be carried out? If it happens in more than
+        one place, one tip is to put the city where your network of potential contributors
+        is greatest.
+      online_date: Date of entry into the air
+      service_fee: Rate of catarse
+      name: Project name
+      name_hint: Give a name that people will remember easily. Do not exceed 50 characters.
+      name_label: The more direct the better. Do not exceed 50 characters
+      url: Project URL
+      url_label: It is the address of your project, it should be easy to memorize.
+        Avoid underline, hyphen and symbols
+      category: Category
+      category_hint: Choose the one that best suits your project.
+      category_label: Explore and be inspired by other projects of the same category
+        as yours.
+      online_days: Deadline for collection
+      online_days_label: You can choose between 1 and 60 days for your campaign. Check
+        out the directors guide for tips on deadlines.
+      value: Amount to be collected
+      value_secondary: Plan a goal that is consistent with what your project proposes.
+        Review your budget and be sure to include the 13% fee charged by Catarse if
+        your project is successful
+      form:
+        submit: To save
+    contributions_report:
+      legend_labels:
+        failed:
+          pending_refund:
+            label: Refund in progress
+            text: Supporter already provided the bank details and repayment is in
+              progress.
+          refunded:
+            label: Refunded
+            text: 'Credit card support: The amount has already been reversed on the
+              card used by the contributor and should appear as credit on up to 2 invoices.
+              <br/> Supports made with boleto bancário: the value has already been
+              transferred to the BOND of the contributor so that he realizes the service.
+              <br/> <a href="http://suporte.catarse.me/hc/pt-br/articles/202365507-Regras-e-funcionamento-dos-reembolsos-estornos-cancelamentos"
+              target="blank">(know more)</a>'
+          paid:
+            label: Refund not started
+            text: Sketchpad has not yet provided bank details for Catarse to make
+              the refund or the data provided is incorrect.
+        successful:
+          paid:
+            label: Confirmed
+            text: Credit card or ticket support, which has been paid for and confirmed
+              by the system.
+          refunded:
+            label: Answered
+            text: Supports that were canceled by the contributor after payment.
+        online:
+          paid:
+            label: Confirmed
+            text: Credit card or ticket support, which has been paid for and confirmed
+              by the system.
+          pending:
+            label: Started
+            text: 'Ticket contributions that have not yet been paid or that have not yet
+              been accounted for in the system. <br/> Note: Once paid, the ticket
+              may take up to 2 business days to be confirmed in the system.'
+          refunded:
+            label: Answered
+            text: Supports that were canceled by the contributor after payment.
+    successful_onboard:
+      start:
+        href: "#confirm_account"
+        icon: https://daks2k3a4ib2z.cloudfront.net/54b440b85608e3f4389db387/56c3508dbfc50aef5095c66a_finish-icon.png
+        title: Congratulations!
+        text: Your project has been successfully completed and the balance is now
+          available to be transferred to your bank account.
+        cta: View balance
+      pending_transfer:
+        icon: https://daks2k3a4ib2z.cloudfront.net/54b440b85608e3f4389db387/56c350c5e7d136a016bc34a4_transfer-ok-icon.png
+        title: Bank transfer in progress
+        text: "The transfer of $%{total_amount} will be made to the Bank account %{bank_name}, Agency: %{agency}, Account: %{account}. If you have any problems,
+          we'll get back to you via email %{user_email}. <br/><br/> <a href='http://fazum.catarse.me/calculadora-repasse'
+          target='blank'>Here is</a> how to calculate the date the money should
+          enter your account!"
+      error_account:
+        icon: https://daks2k3a4ib2z.cloudfront.net/54b440b85608e3f4389db387/56c350fabfc50aef5095c67d_transfer-pending-icon.png
+        title: Bank transfer pending
+        text: Your bank details were with some wrong information and we have already
+          been notified about this problem! Keep an eye on <span class="fontweight-semibold">%{user_email}</span> , because we'll resolve this issue via email within
+          5 business days.
+      finished:
+        icon: https://daks2k3a4ib2z.cloudfront.net/54b440b85608e3f4389db387/56c3511ee7d136a016bc34fa_succesful-icon.png
+        title: Good luck in your project!
+        text: Always work on your relationship with your contributors! Even after the
+          end of the project, continue using the <a href="%{link_news}">What is
+          New tab</a> . To confirm the delivery address and other issues related to
+          the delivery of the rewards, use the <a href="%{link_surveys}">Questionnaire
+          tab</a> .
+      confirm_account:
+        title: Is your data correct?
+        person:
+          label: 'Person:'
+          mei:
+            label: Legal MEI
+            name: 'Company name:'
+            document: 'CNPJ of the bank account holder:'
+          pj:
+            label: Legal
+            name: 'Company name:'
+            document: 'CNPJ of the bank account holder:'
+          state_inscription: 'State registration:'
+          pf:
+            label: Physics
+            name: 'Full name of holder:'
+            document: 'CPF of bank account holder:'
+          bank:
+            name: 'Bank:'
+            agency: 'Agency:'
+            account: 'Account:'
+            account_type:
+              conta_corrente: Checking Account
+              conta_poupanca: Savings account
+              conta_corrente_conjunta: Joint Current Account
+              conta_poupanca_conjunta: Joint Savings Account
+          address: 'Address:'
+          neighbourhood: 'Neighborhood:'
+          city: 'City:'
+          state: 'State:'
+          zip_code: 'ZIP CODE:'
+        accept:
+          title: Are you sure?
+          info: Any wrong information in your data can delay the transfer of resources!
+          cta: Confirm
+        refuse:
+          title: What is wrong with your data?
+          placeholder: Help us by saying what needs to be adjusted! This will make
+            our job easier and save you time.
+          cta: Submit

@@ -1,0 +1,30 @@
+en:
+  rewards:
+    form:
+      edit: Edit reward
+      reward: Reward
+      info_box: You can limit the available amount of a reward. Once the limit is
+        reached, the reward will be marked SOLD OUT. The delivery forecast is the
+        date you intend to deliver the reward to contributors. If you want to change
+        the order of the rewards, just drag them here. Try it!
+      minimum_value: 'Minimum value:'
+      deliver_at: 'Delivery forecast:'
+      description: 'Description:'
+      limit_reward: Limit reward
+      available: Available quantity
+      submit: To save
+    index:
+      link_tip: The link below leads to the contribution page with this reward already selected.
+      select_reward: Select this reward
+      display_remaining: "%{remaining} of %{maximum} available"
+      dont_want: I do not want any reward
+      or_more: or more
+      limited: Limited
+      sold_out: Out of stock
+      contributions_to_confirm:
+        one: 1 contribution in confirmation period.
+        other: "%{count} contributions in time of confirmation."
+      edit_reward: Edit reward
+      new_reward: Reward reward
+      reward_deliver_time: "<b>Estimated Delivery:</b> %{estimate}"
+      reward_title: For %{minimum} or more

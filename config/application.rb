@@ -43,7 +43,7 @@ module Catarse
     config.time_zone = 'Brasilia'
     config.active_record.default_timezone = :utc
 
-I18n.config.enforce_available_locales = false
+    I18n.config.enforce_available_locales = false
     config.generators do |g|
       g.test_framework :rspec, fixture: false, views: false
     end

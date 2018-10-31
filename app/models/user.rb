@@ -458,7 +458,13 @@ class User < ActiveRecord::Base
     {
       external_id: id,
       name: name,
+      public_name: public_name,
+      about_html: about_html,
+      permalink: permalink,
+      facebook_link: facebook_link,
+      other_link: other_link,
       email: email,
+      thumbnail_url: uploaded_image.thumb_avatar.url,
       password: encrypted_password,
       password_encrypted: true,
       document_number: cpf,
@@ -486,7 +492,8 @@ class User < ActiveRecord::Base
         agency: bank_account.try(:agency),
         agency_digit: bank_account.try(:agency_digit)
       },
-      created_at: created_at
+      created_at: created_at,
+      deactivated_at: deactivated_at
     }.merge(id_hash)
   end
 

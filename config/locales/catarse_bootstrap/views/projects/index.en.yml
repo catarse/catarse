@@ -1,0 +1,82 @@
+en:
+  projects:
+    index_header:
+      subtitle: Fund projects collaboratively and become part of something bigger.
+        Promote a collective catarse! You are the missing piece in this story.
+      title: Make projects happen that you believe in
+    index:
+      title: Catharsis
+      back_a_project: Support a project
+      banner_before: Remove
+      banner_words:
+        0: dreams
+        1: disks
+        2: exhibitions
+        3: researches
+        4: carnivals
+        5: photos
+        6: theater performances
+        7: documentaries
+        8: books
+        9: shows
+        10: passions
+        11: encounters
+        12: music
+        13: products
+        14: attitudes
+        15: movies
+        16: comic books
+        17: ideas
+      banner_after: of paper
+      see_all: See all
+      near_you: Next to you
+      recents: Recent Updates
+      blog: Blog do Catarse
+      expiring: In the final stretch
+      recommended: Most Popular
+      banner_subtitle: Music, comics, cinema, social impact, technology and more.
+        Get to know, inspire and support projects.
+      box:
+        by: per
+        when: in
+      banner: Know the research
+      explore: Explore projects
+      explore_categories:
+        16:
+          icon: https://s3.amazonaws.com/cdn.catarse/assets/icon-music.png
+          link: http://crowdfunding.catarse.me/financing-collective-music-independent
+          title: Cast your music on Catarse!
+          cta: Learn how
+        20:
+          icon: https://s3.amazonaws.com/cdn.catarse/assets/icon-publicacoes.png
+          link: https://crowdfunding.catarse.me/publicacoes-independentes-financiamento-coletivo
+          title: Launch your book or magazine on Catarse!
+          cta: Learn how
+      links:
+        channels: Discover the Wings Channel
+        recommended: Discover Recommended Projects
+        expiring: Discover projects in the final stretch
+        recents: Discover recent projects
+        near: Discover projects near you
+      sidebar:
+        titles:
+          blog: blog
+          facebook: did you like our face?
+          newsletter: Subscribe to our news
+          faq: Are you sure?
+          schedule: schedule
+        placeholders:
+          email: Type your e-mail
+        buttons:
+          newsletter: Submit
+      sections:
+        near:
+          title: Next to me
+        recommended:
+          title: Most Popular
+        expiring:
+          title: In the final stretch
+        recents:
+          title: Recent Updates
+        channels:
+          title: Canal Asas

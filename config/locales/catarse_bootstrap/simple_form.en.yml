@@ -1,0 +1,101 @@
+en:
+  simple_form:
+    collections:
+      project:
+        traffic_sources:
+          one: I already had another project in Catarse
+          two: indication of a person who has already had a project in Catarse
+          three: friend / colleague / professional contact
+          four: from a project he was capturing on the platform
+          five: article in a blog
+          six: a story in the press (internet news portal, TV, newspaper, magazine)
+          seven: in a class / course / lecture / event
+          eight: I did a search on the internet about collective financing / alternative
+            forms of funding
+          nine: Other
+    validation_texts:
+      reward:
+        minimum_value: Enter a minimum value greater than or equal to 10
+        description: Please provide a description of the reward
+      bank_account:
+        input_bank_number: Invalid bank number
+        bank_id: Select a bank
+        agency: What&#39;s the agency number?
+        account: What&#39;s the account number?
+        account_digit: What is the check digit?
+        agency_digit: What is the agency digit?
+        owner_name: Enter a name with a minimum of 5 and a maximum of 30 letters
+        owner_document: Enter a valid CPF or CNPJ for the account holder
+      contribution:
+        payer_name: Please enter the name of the contributor
+        payer_email: Please, type a valid email
+        payer_document: Please enter a valid CPF or CNPJ
+        address_state: Select a state
+        address_street: Enter street name
+        address_number: Enter the address number
+        address_neighbourhood: Enter the name of the neighborhood
+        address_city: Enter the name of the city
+        address_zip_code: Enter the zip code
+        address_phone_number: Enter phone number
+    prompts:
+      project:
+        category: Select a category
+        select: select an option
+        traffic_sources: How did you first meet Catarse?
+    hints:
+      flexible_project:
+        select: select an option
+        traffic_sources: How did you first meet Catarse?
+        name: Give a name that people will remember easily. Do not exceed 50 characters.
+        all_tags: Report tags separated by commas
+        all_public_tags: List up to 5 keywords related to your campaign and facilitate
+          discovery by contributors.
+        permalink: You can edit it until the project goes online. Choose something
+          simple, straightforward, and identify your project well. Try not to use
+          hyphen, underline etc.
+        category: Choose the one that best suits your project.
+        city: Where will your project be carried out? If it happens in more than one
+          place, one tip is to put the city where your network of potential contributors
+          is greatest.
+        goal: Plan a goal that is consistent with what your project proposes. Review
+          your budget and be sure to include the 13% fee charged by Catarse.
+        online_days: You can choose between 1 and 60 days for your campaign. Check
+          out the directors guide for tips on deadlines.
+        video_url: Link of your video on Vimeo or <br/> YouTube.
+        about_html: 'Speak with passion and clarity about what will be accomplished.
+          Clarify possible questions about how the money will be used, who is behind
+          the project, how and when the project will be delivered. Transparency attracts
+          more contributors. Remember: your project will be accessed by ordinary people
+          who will decide whether or not to support your project. Capriche!'
+        headline: Phrase on the project card to call contributors. Must have a maximum
+          of 100 characters and summarize the project well.
+        uploaded_image: This image will be used as the thumbnail of your project (PNG,
+          JPG size 600 x 340)
+      project:
+        select: select an option
+        traffic_sources: How did you first meet Catarse?
+        name: Give a name that people will remember easily. Do not exceed 50 characters.
+        all_tags: Report tags separated by commas
+        all_public_tags: List up to 5 keywords related to your campaign and facilitate
+          discovery by contributors.
+        permalink: You can edit it until the project goes online. Choose something
+          simple, straightforward, and identify your project well. Try not to use
+          hyphen, underline etc.
+        category: Choose the one that best suits your project.
+        city: Where will your project be carried out? If it happens in more than one
+          place, one tip is to put the city where your network of potential contributors
+          is greatest.
+        goal: Plan a goal that is consistent with what your project proposes. Review
+          your budget and be sure to include the 13% fee charged by Catarse.
+        online_days: You can choose between 1 and 60 days for your campaign. Check
+          out the directors guide for tips on deadlines.
+        video_url: Link of your video on Vimeo or <br/> YouTube.
+        about_html: 'Speak with passion and clarity about what will be accomplished.
+          Clarify possible questions about how the money will be used, who is behind
+          the project, how and when the project will be delivered. Transparency attracts
+          more contributors. Remember: your project will be accessed by ordinary people
+          who will decide whether or not to support your project. Capriche!'
+        headline: Phrase on the project card to call contributors. Must have a maximum
+          of 100 characters and summarize the project well.
+        uploaded_image: This image will be used as the thumbnail of your project (PNG,
+          JPG size 600 x 340)

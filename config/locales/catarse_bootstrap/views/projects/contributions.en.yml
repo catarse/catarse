@@ -1,0 +1,438 @@
+en:
+  projects:
+    contributions:
+      backers:
+        aon: Supporters
+        flex: Supporters
+        sub: Subscribers
+      people_back:
+        aon: people contribution this project
+        flex: people contribution this project
+        sub: people sign this project
+      new_backers:
+        aon: New contributors
+        flex: New contributors
+        sub: New Subscribers
+      new_backers_explanation:
+        aon: contributors who had never contributioned a project in Catarse
+        flex: contributors who had never contributioned a project in Catarse
+        sub: subscribers who had never contributioned a project in Catarse
+      recurring_backers:
+        aon: Recurring Supporters
+        flex: Recurring Supporters
+        sub: Recurring Subscribers
+      recurring_backers_explanation:
+        aon: contributors who had already contributioned a project in Catarse
+        flex: contributors who had already contributioned a project in Catarse
+        sub: subscribers who had already signed a project in Catarse
+      user_since: Caching Account since %{date}
+      backed_projects: Supported %{count} projects
+      created_projects: Created %{count} projects
+      survey:
+        survey: Quiz
+        address_title: Name and address
+        address_neighbourhood: 'Neighborhood:'
+        answered_at: Answered on %{date}
+      report:
+        info: Info
+        profile: Profile
+      contribution_warning:
+        title: Catarse is not a store.
+        subtitle: Supporting a project is believing and trusting in its potential
+          to come true.
+        info: The execution of the proposal and the delivery of the rewards is the
+          sole responsibility of the project director.
+        link: http://suporte.catarse.me/hc/en/articles/115002214043-Responsibilities-and-Security
+        link_label: Learn About Responsibilities and Security
+      shipping_options:
+        national: Only for Brazil
+        international: For everyone
+        free: Free
+        presential: Presential
+      no_account_refund:
+        fill_form_text: You have %{amount} in outstanding repayments for unfunded
+          projects.
+      no_estimate: Not available
+      you_selected: You chose that one!
+      contribute_text:
+        credits_tab: My credits
+      checkout:
+        no_credits: You do not have enough credits to make this contribution.
+        success: Your contribution has been successful. Thank you!
+      contribution:
+        anonymous_contribution: Anonymous contributioner
+        anonymous_description: He chose to keep his contribution not public.
+        no_reward: This contributioner did not select any reward
+      selected_reward:
+        review_without_reward_html: You will contribution with <strong> %{value}</strong>
+          and do not want any reward for your contribution.
+        value: Value of contribution
+        reward: Reward selected
+        edit: To edit
+      existing_payment:
+        page_title: Your contribution for %{name} was performed
+        warning: Attention
+        warning_subtitle: 'You are trying to access an address for contribution you have
+          already started:'
+        check_email: Check in your email box if the temporary receipt of contribution has
+          been sent. If it was not, please enter %{mail_to_link} with us, informing
+          the code identifier of your contribution ( %{gateway_id}), that we will assist
+          you in what is needed.
+        new_contribution: If you have accessed this page in error and want to make
+          new contribution, %{link}
+        contact: contact
+        click_here: click here
+      faq:
+        flexible:
+          explanation: This project will get all the features when finalizing
+          common_questions: Frequently Asked Questions
+          how_contribute: How do I contribution this project?
+          how_contribute_answer: Fill in the details of your contribution as well as all
+            your payment information to finalize the contribution
+          when_made_payment: When is payment made?
+          when_made_payment_answer: If you paid with a credit card, confirmation should
+            be the same day. If it was with ticket, within 4 business days.
+          when_about_my_payment_data: What can others see of my contribution?
+          when_about_my_payment_data_answer: The project will be added to your contribution
+            history on your profile, but the amount you've backed and the reward
+            you choose will not go public.
+          when_project_owner: Who is responsible for the project?
+          when_project_owner_answer: The catarse is only an intermediary, if you
+            want to understand more about the project, contact %{name}
+          when_project_funded: How do I receive my reward?
+          when_project_funded_answer: When your reward is ready, %{name} will contact
+            you to arrange delivery.
+        all_or_nothing:
+          explanation: If this project does not reach the goal, you get back 100%
+            of what you paid through a refund.
+          common_questions: Frequently Asked Questions
+          how_contribute: How do I contribution this project?
+          how_contribute_answer: Fill in the details of your contribution as well as all
+            your payment information to finalize the contribution
+          when_made_payment: When is payment made?
+          when_made_payment_answer: If you paid with a credit card, confirmation should
+            be the same day. If it was with ticket, within 4 business days.
+          when_about_my_payment_data: What can others see of my contribution?
+          when_about_my_payment_data_answer: The project will be added to your contribution
+            history on your profile, but the amount you've backed and the reward
+            you choose will not go public.
+          when_project_fails: What if the project does not reach the goal?
+          when_project_fails_answer: In that case, you get back 100% of what you paid
+            through a refund.
+          when_project_funded: If the project is funded, how do I get my reward?
+          when_project_funded_answer: When your reward is ready, %{name} will contact
+            you to arrange delivery.
+      edit_international:
+        selected_reward:
+          review_without_reward_html: You are going to be back with <strong> %{value}</strong>
+            and you do not want any reward.
+          value: Contribution details
+          reward: Selected reward
+          edit: Edit
+          payment_plan: Payment plan
+          charged_today: 'Charged today:'
+          next_charge: 'Next charge at:'
+        title: Contact details and address
+        required: "* Required fields"
+        payment_info: Payment information
+        safe_payment: SECURE PAYMENT
+        credit_card_select: Credit card
+        debit_card_info: "(Debit card not accepted)"
+        anonymous_confirmation_title: Are you sure you want to make you non-public
+          contribution?
+        anonymous_confirmation: Choosing this option your name will not be shown on
+          the public backers section area. Only you and this project's creator
+          will have access to your name and contribution details.
+        fields:
+          complete_name: Full name *
+          email: Email *
+          anonymous: Do not show my name on the public backers section
+          street: Address *
+          street_number: Number *
+          street_complement: Compliment
+          neighbourhood: Neighborhood *
+          zipcode: ZIP code *
+          city: City *
+          state: State *
+          owner_document: CPF / CNPJ *
+          phone: Phone *
+        next_step: Next step
+        credit_card:
+          loading: Loading credit card info ...
+          use_another: Use another card.
+          name: Name on the credit card *
+          name_tip: Name printed on the front of your card
+          document: ''
+          document_tip: ''
+          number: Credit card number *
+          number_tip: Usually a 16 digit number printed on the front of your card
+          expiry: Expiration (mm / yyyy) *
+          expiry_tip: The validity date, usually on the front of your card
+          cvv: Security code (CVV / CVV2) *
+          cvv_tip: The 3 digit (when on the front) or 4 digit (when on the back) of
+            your card
+          cvv_tooltip: The 3 or 4 digits that are on the back of the VISA, MASTER,
+            DINERS and ELO cards on the front of the AMEX card.
+          installments: Installations
+          installments_number:
+            1: ''
+            2: "(with taxes)"
+            3: "(with taxes)"
+            4: "(with taxes)"
+            5: "(with taxes)"
+            6: "(with taxes)"
+          total: 'Total:'
+          save_card: I want to save my credit card for future payments.
+          finish_payment: Finish payment
+          terms_of_use_agreement: By paying, you agree to Catarse's <a class='alt-link'
+            href='/pt/terms-of-use'>Terms of Use</a> and <a class='alt-link' href='/pt/privacy-policy'>Privacy
+            Policy</a> .
+        errors:
+          global: 'Please, take a look at the following errors:'
+          inline:
+            creditcard_cvv: Security code is not valid.
+            creditcard_expiry: Expiration date is not valid.
+            creditcard_number: Credit card number is not valid.
+            creditcard_name: Name is not valid.
+          submission:
+            encryption_error: Please try again in a few moments.
+            payment_failed: Please review your credit card info and try again in a
+              few moments.
+            card_invalid: Credit card information is not valid. Please review your
+              credit card info and try again.
+            error: "<span>An error occurred while trying to process your payment.</span>
+              <br><br> Error: <i> %{message}</i>"
+          validation:
+            empty_field: The field can not be empty.
+            email: Email is not valid.
+      edit:
+        selected_reward:
+          review_without_reward_html: You will contribution with <strong> %{value}</strong>
+            and do not want any reward for your contribution.
+          value: Value of contribution
+          reward: Reward selected
+          edit: To edit
+          payment_plan: Payment plan
+          charged_today: 'Billing today:'
+          next_charge: 'Next charge:'
+        title: Fill in and review the payment data
+        required: "* Required field"
+        payment_info: Choose the payment method
+        safe_payment: PAYMENT SAFE
+        credit_card_select: Credit card
+        debit_card_info: "(we do not accept debit card)"
+        next_step: Next step
+        fields:
+          complete_name: Full name *
+          email: Email *
+          anonymous: I want my contribution not to be public
+          street: Street *
+          street_number: Number *
+          street_complement: Complement
+          neighbourhood: Neighborhood *
+          zipcode: ZIP CODE *
+          city: City *
+          state: State *
+          owner_document: CPF / CNPJ *
+          phone: Telephone *
+        credit_card:
+          loading: Loading card info ...
+          use_another: Use another credit card.
+          name: Full name of cardholder *
+          name_tip: Name printed on front of your credit card
+          document: CPF / CPNJ of the holder *
+          document_tip: CPF / CNPJ of the used credit card holder
+          number: Credit card number *
+          number_tip: The number usually 16 digits in front of your credit card
+          expiry: Expiration (mm / yyyy) *
+          expiry_tip: The expiration date, usually on the front of the card
+          cvv: Security Code (CVV / CVV2) *
+          cvv_tip: The 3 digits (when in front) or 4 digits (when behind) of your
+            card
+          cvv_tooltip: The 3 or 4 digits on the back of the VISA, MASTER, DINERS,
+            ELO and front AMEX cards.
+          installments: Plots
+          installments_number:
+            1: ''
+            2: "(with interest)"
+            3: "(with interest)"
+            4: "(with interest)"
+            5: "(with interest)"
+            6: "(with interest)"
+          total: 'Total:'
+          save_card: I want to save my credit card to facilitate future contribution.
+          finish_payment: Finish payment
+          terms_of_use_agreement: By contributioning, you agree to the <a class="alt-link"
+            target="_blank" href="/pt/terms-of-use">Terms of Use</a> and <a class="alt-link"
+            target="_blank" href="/pt/privacy-policy">Privacy Policy</a> .
+          terms_of_use_agreement_sub: By contributioning, you agree to the <a class="alt-link"
+            target="_blank" href="/pt/terms-of-use">Terms of Use</a> , <a class="alt-link"
+            target="_blank" href="https://suporte.catarse.me/hc/pt-br/articles/115005588243">Rules
+            of Registration</a> and <a class="alt-link" target="_blank" href="/pt/privacy-policy">Privacy
+            Policy</a> .
+        subscription_edit: Confirm signature changes
+        invoice_none: None
+        pay_slip: Print Ticket
+        errors:
+          global: Please review the fields below before proceeding.
+          inline:
+            creditcard_cvv: Security code is invalid.
+            creditcard_expiry: Invalid expiration date.
+            creditcard_number: Invalid credit card number.
+            creditcard_name: Invalid name.
+          submission:
+            slip_submission: There was an error while trying to generate the ticket.
+              Please try again in a few moments.
+            slip_validation: Error validating form data. Please review them and try
+              again.
+            encryption_error: Please try again in a few moments.
+            payment_failed: Please review your credit card information and try again
+              in a few moments.
+            card_invalid: Invalid credit card data. Please review your credit card
+              information and try again.
+            error: "<span>There was a problem processing your payment.</span> <br><br>
+              Error: <i> %{message}</i>"
+          validation:
+            empty_field: The field can not be empty.
+            email: Invalid email.
+            state: State is required.
+            phone: Invalid phone number.
+        review_slip_email: You will also receive an email with this ticket.
+        slip_expiration: This bank slip expires on day %{date}.
+        print_slip: Print Ticket
+        pay: Finish payment
+        slip_message: In generating the ticket, the director is already counting on
+          his contribution. Pay through the expiration date on the internet, lottery houses,
+          ATMs or bank branch.
+        review_title: Fill in and review the payment data
+        review_subtitle: These data will be informed to the project director
+        delivery_address: Address
+        payment_slip_disclaimer: If the project is not successful, we will repay your
+          contribution. The bank details entered here will be used for this.
+        review_errors_title: Check the reported data
+        review_errors: Some information is missing or not entered correctly, correct
+          all fields marked in red and tesnte again
+        anonymous_confirmation_title: Are you sure you want your contribution not to be
+          public?
+        anonymous_confirmation: Choosing this option your contribution will not be public
+          for other Catarse users. Only you and the Project Director will have access
+          to your contribution information.
+        anonymous_contribution: I want my contribution not to be public
+        form_labels:
+          user_another_card: Use another credit card
+          payment_card_number: card number
+          payment_card_flag: Flag
+          payment_card_source: Security Code
+          payment_card_source_short: CVC
+          payment_card_date: Expiration (mm / yyyy)
+          payment_card_name: Name printed on credit card
+          payment_card_installments: Plots
+        installment_with_tax: interest-free
+        transaction_error: Transaction declined, please double check your details
+          or contact the bank / card issuer for more information.
+        pagarme_warning_html: The Catarse is in the test phase of a new means of payment
+          that will facilitate the financial contribution and the possible reimbursement
+          of the values ​​to the contributors. Therefore, we caution that extra data,
+          besides those mentioned in the Terms of Use, may be required to contribution
+          this project. If you have any questions or concerns, please contact us at %{mailto}. Thank you.
+        payment_save_card: I want to save my credit card to facilitate future contribution.
+        reward_sold_out: That reward is exhausted. Start new contribution.
+        page-title: Support %{name}
+        credits_preview_html: "You have <strong> %{credits}</strong> in credits to
+          make this contribution <strong>until 10/11</strong> , according to <a href='http://blog.catarse.me/simplificacao-dos-reembolsos-e-o-fim-dos-creditos/'
+          target='__blank'>new rules</a> divulged by Catarse."
+        credits_submit: Make the payment
+        credits_title: Payment with credits
+        insufficient_credits: You have %{credits} in credits. This amount is not enough
+          to contribution, please choose another payment method.
+        choose_payment: Choose the payment method
+        choose_payment_subtitle: PAYMENT SAFE
+        cpf: 'To proceed, please inform:'
+        credits_notice_html: This contribution will be paid with your credits. After verification,
+          you will have a balance of <strong> %{credits}</strong> in credits to contribution
+          other projects.
+        live_in_brazil: I live in Brazil. (Uncheck if your contribution is international)
+        number_card: Card data
+        owner_card: Card holder data
+        payment_account: Debit Account Payment
+        payment_boleto: Payment with Ticket
+        payment_card: Payment with Card
+        review_with_reward_html: 'You will contribution with <strong> %{value}</strong>
+          and you will earn the following reward:'
+        select_account: "You will be redirected to your bank's website:"
+        select_boleto: 'To proceed please select:'
+        submit:
+          credits: Confirm
+          moip: Make payment by MoIP
+        subtitle: These data will be informed to the project organizer.
+        you_are_about_html: You are about to join the group that does everything for %{link} to happen.
+      new:
+        no_rewards:
+          label_title: Value of your contribution
+          label_description: You can contribution this project from $ 10
+          label_btn: Continue
+          label_error: Support amount is incorrect
+        page-title: Support %{name}
+        title: Oohh yeah!
+        you_have_credits: You have <strong> %{credits}</strong> in credits to make
+          this contribution.
+        choose_reward: Choose the reward and then the value of the contribution
+        choose_value: Enter the amount of your contribution.
+        minimum_disclaimer: Starting at $ <span id="minimum-value">10</span> is great;)
+        next_step: Review and make payment
+        no_reward: Thank you. I just want to help the project.
+      review:
+        PayPal: PayPal
+        MoIP: MoIP
+        Credits: Credits
+        error: Ooops. There was an error registering your contribution. Please try again.
+      thank_you_slip:
+        thank_you: I'm counting on your contribution ...
+        thank_you_text_html: "<div class='fontsize-base'> You also received this ticket
+          in the email: </div><div class='fontsize-large u-marginbottom-10'> %{email}
+          </div> <a class='alt-link fontsize-small' href='%{link_email}'>If this is
+          not your contact email, change here</a>"
+      thank_you:
+        subscription_edit:
+          thank_you: Almost there!
+          text_html: "<div class='fontsize-base'> Your subscription change has been
+            processed, but will only take effect on your next charge. We sent a message
+            with details to the email below: </div><div class='fontsize-large u-marginbottom-10'>
+            %{email} </div> <a class='alt-link fontsize-small' href='%{link_email}'>If
+            this is not your contact email, change here</a>"
+        thank_you_error: There was an error requesting your payment details. Please
+          try again in a few moments.
+        thank_you: Thanks! Your contribution is being processed.
+        thank_you_text_html: "<div class='fontsize-base'> Once the payment is completed,
+          we will send the confirmation of your contribution to the registered email: </div><div
+          class='fontsize-large u-marginbottom-10'> %{email} </div> <a class='alt-link
+          fontsize-small' href='%{link_email}'>If this is not your contact email,
+          change here</a>"
+        thank_you_slip_unconfirmed_text_html: "<div class='fontsize-base'> If all
+          goes well, you will receive an email soon with the payment slip in the registered
+          email: </div><div class='fontsize-large u-marginbottom-10'> %{email} </div>
+          <a class='alt-link fontsize-small' href='%{link_email}'>If this is not your
+          contact email, change here</a>"
+        share: Share
+        tweet: Tuite
+        share_back: Share with your friends and help this project hit the goal!
+        follow: follow
+        follow_category: Do you like the %{category} category? You can receive first-hand
+          and directly in your email when new projects come on the air!
+        project_recommendations: Project recommendations for you
+        profile_link: through your profile
+      show:
+        header_subtitle: Without you maybe this project did not stand a chance. Welcome
+          to the team!
+        header_title: 'Thank you! : D'
+        moip_message: Your transaction verification is in progress and the Moip code
+          is “%{code}″.<br> If you have any questions regarding the transaction,
+          please contact Moip. An email will be sent when payment is confirmed.
+        recommended_projects: 'You can also enjoy these projects:'
+        text_subtitle: Tell everyone what you just did
+        text_title_html: You are now part of the group that does everything for the %{link} project to happen.
+        title: Thank you very much
+      subscription_start_title: Choose the reward and then the monthly contribution amount
+      subscription_edit_title: You are editing an existing subscription
+      subscription_reactivation_title: You are reactivating an inactive signature
+      subscription_edit_subtitle: Choose your reward and the value of your signature

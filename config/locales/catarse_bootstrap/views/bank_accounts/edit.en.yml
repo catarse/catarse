@@ -1,0 +1,10 @@
+en:
+  bank_accounts:
+    edit:
+      project: project
+      page-title: Refund pending, fill in the bank details
+      fill_form: Fill in the bank details
+      fill_form_text: You have %{amount} on pending refunds. Enter your details and save your money!
+      request_refunds: Request refund
+      input_bank_number_label: Bank Number (3 digits)
+      search_bank_btn_html: Search by &nbsp;&gt;
