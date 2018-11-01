@@ -103,6 +103,7 @@ class BalanceTransaction < ActiveRecord::Base
       balance_transaction_id: chargeback_transaction.id,
       event_name: 'revert_chargeback',
       amount: chargeback_transaction.amount.abs,
+      project_id: chargeback_transaction.project_id,
       contribution_id: chargeback_transaction.contribution_id,
       subscription_payment_uuid: chargeback_transaction.subscription_payment_uuid
     )

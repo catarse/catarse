@@ -80,6 +80,7 @@ RSpec.describe BalanceTransaction, type: :model do
         expect(subject.event_name).to eq('revert_chargeback')
         expect(subject.user_id).to eq(confirmed_contribution.project.user_id)
         expect(subject.contribution_id).to eq(confirmed_contribution.id)
+        expect(subject.project_id).to eq(confirmed_contribution.project_id)
         expect(subject.amount).to eq(subject.balance_transaction.amount.abs)
         expect(subject.balance_transaction.event_name).to eq('contribution_chargedback')
         expect(subject.balance_transaction.contribution_id).to eq(confirmed_contribution.id)

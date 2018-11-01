@@ -515,6 +515,9 @@ en:
       backers_only_aon: visible on the platform only for these contributors.
       backers_only_flex: visible on the platform only for these contributors.
       backers_only_sub: visible on the platform only to those subscribers.
+      backers_some_aon: 'some contributors of some rewards.'
+      backers_some_flex: 'some contributors of some rewards.'
+      backers_some_sub: 'some subscribers of some rewards.'
       backers_flex: All contributors
       backers_sub: All Subscribers
       successful: Message sent successfully
