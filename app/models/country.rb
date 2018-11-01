@@ -5,6 +5,7 @@ class Country < ActiveRecord::Base
   after_save :index_on_common
 
   def common_index
+    # @TODO send translations
     id_hash = common_id.present? ? {id: common_id} : {}
 
     {
@@ -17,6 +18,6 @@ class Country < ActiveRecord::Base
   end
 
   def index_on_common
-    common_wrapper.index_state(self) if common_wrapper
+    common_wrapper.index_country(self) if common_wrapper
   end
 end

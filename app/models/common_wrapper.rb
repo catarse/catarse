@@ -429,8 +429,74 @@ class CommonWrapper
     common_id
   end
 
+  def index_country(resource)
+    return unless resource.id.present?
+
+    @api_key = proxy_api_key
+    uri = services_endpoint[:proxy_service]
+
+    uri.path = '/v1/countries'
+    response = request(
+      uri.to_s,
+      body: {
+        country:
+          resource.common_index
+      }.to_json,
+      action: :post,
+      headers: {'Content-Type' => 'application/json'},
+    ).run
+
+    if response.success?
+      json = ActiveSupport::JSON.decode(response.body)
+      common_id = json.try(:[], 'country_id')
+    end
+
+    resource.update_column(
+      :common_id, common_id
+    ) if common_id.present?
+
+    common_id
+  end
+
+  def index_state(resource)
+    return unless resource.id.present?
+
+    @api_key = proxy_api_key
+    uri = services_endpoint[:proxy_service]
+
+    uri.path = '/v1/states'
+    response = request(
+      uri.to_s,
+      body: {
+        state:
+        resource.common_index
+      }.to_json,
+      action: :post,
+      headers: {'Content-Type' => 'application/json'},
+    ).run
+
+    if response.success?
+      json = ActiveSupport::JSON.decode(response.body)
+      common_id = json.try(:[], 'state_id')
+    end
+
+    resource.update_column(
+      :common_id, common_id
+    ) if common_id.present?
+
+    common_id
+  end
+
   def index_address(resource)
     return unless resource.id.present?
+
+    if resource.state && !resource.state.common_id.present?
+      resource.country.index_on_common
+    end
+
+    if resource.country && !resource.country.common_id.present?
+      resource.country.index_on_common
+    end
 
     @api_key = proxy_api_key
     uri = services_endpoint[:proxy_service]

@@ -17,8 +17,8 @@ class State < ActiveRecord::Base
 
     {
       external_id: id,
-      country_id: country.common_id,
       name: name,
+      acronym: acronym,
       created_at: created_at.try(:strftime, "%FT%T"),
       updated_at: updated_at.try(:strftime, "%FT%T")
     }.merge!(id_hash)
