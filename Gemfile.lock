@@ -379,7 +379,7 @@ GEM
       slop (~> 3.4)
     pundit (1.1.0)
       activesupport (>= 3.0.0)
-    rack (1.6.10)
+    rack (1.6.11)
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (4.2.10)
