@@ -37,7 +37,8 @@ class PostDetailsVisibilityRuleForPostRewards < ActiveRecord::Migration
             
             return _minimum_value;
         end
-          $function$;
+          $function$
+          ;;
           
           
           CREATE OR REPLACE FUNCTION public.rewards_that_can_access_post(project_post_id integer)
@@ -66,7 +67,7 @@ class PostDetailsVisibilityRuleForPostRewards < ActiveRecord::Migration
                  return _rewards_json_array;
              end
                $function$
-         
+         ;;
          
 
 
