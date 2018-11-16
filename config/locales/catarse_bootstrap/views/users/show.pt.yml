@@ -76,9 +76,11 @@ pt:
       multiple_project_contribution: "Apoiou %{n_projects} projetos"
       single_project_created: " e já criou 1 projeto"
       multiple_project_created: " e já criou %{n_projects} projetos"
+    
     contribution_row:
       total_amount: "Total com juros: R$ %{total_amount}"
       anonymous: Quero que meu apoio não seja público
+      anonymous_sub: 'Quero que minha assinatura não seja pública'
       print_slip: Imprimir boleto
       slip_copy: Gerar 2a via
       status: Status
