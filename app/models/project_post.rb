@@ -9,6 +9,7 @@ class ProjectPost < ActiveRecord::Base
   belongs_to :reward
   belongs_to :user
   delegate :email_comment_html, to: :decorator
+  has_many :post_rewards, dependent: :delete_all
 
   before_save do
     reference_user

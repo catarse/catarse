@@ -653,8 +653,7 @@ class CommonWrapper
     response = request(
       uri.to_s,
       body: {
-        goal:
-        resource.common_index
+        goal: resource.common_index
       }.to_json,
       action: resource.common_id.present? ? :patch : :post,
       current_ip: resource.project.user.current_sign_in_ip,
@@ -697,9 +696,9 @@ class CommonWrapper
     response = request(
       uri.to_s,
       body: {
-        reward: {data: resource.common_index}
+        reward: resource.common_index
       }.to_json,
-      action: :post,
+      action: (resource.common_id.present? ? :put : :post),
       current_ip: resource.project.user.current_sign_in_ip,
       headers: {'Content-Type' => 'application/json'}
     ).run

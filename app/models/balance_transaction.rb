@@ -21,9 +21,11 @@ class BalanceTransaction < ActiveRecord::Base
     subscription_payment_refunded
     balance_transferred_to
     balance_received_from
+    revert_chargeback
   ].freeze
 
   belongs_to :project
+  belongs_to :balance_transaction
   belongs_to :contribution
   belongs_to :user
   belongs_to :subscription_payment, foreign_key: :subscription_payment_uuid
@@ -90,6 +92,20 @@ class BalanceTransaction < ActiveRecord::Base
       amount: (transaction.amount * -1),
       contribution_id: transaction.contribution_id,
       project_id: transaction.project_id
+    )
+  end
+
+  def self.insert_revert_chargeback(chargeback_transaction_id)
+    chargeback_transaction = find(chargeback_transaction_id)
+    return unless %w(contribution_chargedback subscription_payment_chargedback).include?(chargeback_transaction.event_name)
+    create!(
+      user_id: chargeback_transaction.user_id,
+      balance_transaction_id: chargeback_transaction.id,
+      event_name: 'revert_chargeback',
+      amount: chargeback_transaction.amount.abs,
+      project_id: chargeback_transaction.project_id,
+      contribution_id: chargeback_transaction.contribution_id,
+      subscription_payment_uuid: chargeback_transaction.subscription_payment_uuid
     )
   end
 

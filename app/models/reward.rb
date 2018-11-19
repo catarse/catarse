@@ -106,7 +106,6 @@ class Reward < ActiveRecord::Base
     {
       external_id: id,
       project_id: project.common_id,
-      current_ip: project.user.current_sign_in_ip,
       minimum_value: (minimum_value*100),
       maximum_contributions: maximum_contributions || 0,
       shipping_options: shipping_options,

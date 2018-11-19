@@ -40,6 +40,7 @@ en:
         subscription_payment_refunded: Project repayment %{project_name}
         balance_received_from: Transfer received from %{from_user_name}
         balance_transferred_to: Transfer sent to %{to_user_name}
+        revert_chargeback: Chargedback reverted
       debit: Output
       credit: Input
       totals: Balance

@@ -124,6 +124,14 @@ class User < ActiveRecord::Base
     where('id IN (SELECT user_id FROM contributions WHERE contributions.was_confirmed AND reward_id = ?)', reward_id)
   }
 
+  scope :who_subscribed_to_one_reward_of_the_project, ->(post_id) {
+    where("common_id IN (SELECT user_id FROM common_schema.subscriptions WHERE status = 'active' AND reward_id IN (SELECT common_id FROM rewards WHERE id IN (SELECT reward_id FROM post_rewards WHERE project_post_id = ?)))", post_id)
+  }
+
+  scope :who_choose_one_rewards_of_the_project, ->(post_id) {
+    where('id IN (SELECT user_id FROM contributions WHERE contributions.was_confirmed AND reward_id IN (SELECT reward_id FROM post_rewards WHERE project_post_id = ?))', post_id)
+  }
+
   scope :subscribed_to_posts, -> {
     where('subscribed_to_project_posts')
   }
