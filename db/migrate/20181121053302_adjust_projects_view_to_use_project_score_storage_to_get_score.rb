@@ -25,7 +25,7 @@ CREATE OR REPLACE VIEW "1"."projects" AS
                                 WHEN ((p.state)::text = 'failed'::text) THEN pt.pledged
                                 ELSE pt.paid_pledged
                             END AS paid_pledged
-                       FROM project_totals pt
+                       FROM "1".project_totals pt
                       WHERE (pt.project_id = p.id))
                 END AS paid_pledged), (0)::numeric) AS pledged,
     COALESCE(( SELECT
@@ -42,7 +42,7 @@ CREATE OR REPLACE VIEW "1"."projects" AS
                        FROM goals
                       WHERE (goals.project_id = p.id)))) * (100)::numeric)
                     ELSE ( SELECT pt.progress
-                       FROM project_totals pt
+                       FROM "1".project_totals pt
                       WHERE (pt.project_id = p.id))
                 END AS progress), (0)::numeric) AS progress,
     s.acronym AS state_acronym,
@@ -100,7 +100,7 @@ CREATE OR REPLACE VIEW "1"."projects" AS
                                 WHEN ((p.state)::text = 'failed'::text) THEN pt.pledged
                                 ELSE pt.paid_pledged
                             END AS paid_pledged
-                       FROM project_totals pt
+                       FROM "1".project_totals pt
                       WHERE (pt.project_id = p.id))
                 END AS paid_pledged), (0)::numeric) AS pledged,
     COALESCE(( SELECT
@@ -117,7 +117,7 @@ CREATE OR REPLACE VIEW "1"."projects" AS
                        FROM goals
                       WHERE (goals.project_id = p.id)))) * (100)::numeric)
                     ELSE ( SELECT pt.progress
-                       FROM project_totals pt
+                       FROM "1".project_totals pt
                       WHERE (pt.project_id = p.id))
                 END AS progress), (0)::numeric) AS progress,
     s.acronym AS state_acronym,
