@@ -36,6 +36,7 @@ class Project < ActiveRecord::Base
   has_one :project_cancelation
   has_one :project_total
   has_one :project_fiscal_data
+  has_one :project_score_storage
   has_many :balance_transactions
   has_many :taggings
   has_many :goals, foreign_key: :project_id
@@ -516,6 +517,10 @@ class Project < ActiveRecord::Base
 
   def can_cancel?
     pluck_from_database("can_cancel")
+  end
+
+  def refresh_project_score_storage
+    pluck_from_database('refresh_project_score_storage')
   end
 
   # State machine delegation methods

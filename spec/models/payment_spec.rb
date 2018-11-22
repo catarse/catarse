@@ -73,6 +73,19 @@ RSpec.describe Payment, type: :model do
 
     subject { payment.paid? }
 
+    context 'from pending to paid' do
+      let(:contribution) { create(:refunded_contribution) }
+      before do
+        payment.update_columns(state: 'pending', paid_at: nil)
+        expect(ProjectScoreStorageRefreshWorker).to receive(:perform_async).with(payment.project.id)
+        payment.pay
+      end
+
+      it 'should turn payment to paid' do
+        is_expected.to eq(true)
+      end
+    end
+
     context 'when payment is donation' do
       let(:contribution) { create(:refunded_contribution, donation: create(:donation)) }
       before { payment.pay }
@@ -84,7 +97,9 @@ RSpec.describe Payment, type: :model do
 
     context 'when payment is not donated' do
       let(:contribution) { create(:refunded_contribution) }
-      before { payment.pay }
+      before do
+        payment.pay
+      end
 
       it 'should turn payment to paid' do
         is_expected.to eq(true)
