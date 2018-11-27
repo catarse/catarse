@@ -7,7 +7,7 @@ class ProjectPostWorker
   def perform(post_id)
     post = ProjectPost.find post_id
     recipients = case post.recipients
-                 when 'reward'
+                 when 'reward', 'rewards'
                    if post.project.is_sub?
                      post.project.subscribed_users.who_subscribed_to_one_reward_of_the_project(post_id)
                    else
@@ -15,7 +15,7 @@ class ProjectPostWorker
                    end
                  else
                    post.project.subscribed_users
-    end
+                 end
 
     recipients.find_each(batch_size: 100) do |user|
       post.notify_once(:posts, user, post, { from_email: post.project.user.email, from_name: post.project.user.display_name })
