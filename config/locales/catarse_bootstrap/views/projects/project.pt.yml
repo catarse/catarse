@@ -5,7 +5,7 @@ pt:
       row_title: 'Populares'
       banners:
         1:
-          title: '<img src="https://uploads-ssl.webflow.com/5be3a7c348a4d2041509ee60/5be3a96ab70a8bd298953ce7_logo-multidao-hero-p-500.png" width="400">'
+          title: '<img src="https://s3.amazonaws.com/cdn.catarse/assets/logo-multidao-home.png" width="300">'
           subtitle: 'Ajude a construir um fundo coletivo para apoiar todo mês projetos jornalísticos independentes e fortalecer a liberdade de imprensa no Brasil.'
           link: 'https://www.multidao.com.br/?utm_source=banner-catarse-home'
           cta: 'Saiba mais'
