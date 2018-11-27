@@ -372,6 +372,11 @@ FactoryGirl.define do
     f.comment_html '<p>This is a comment</p>'
   end
 
+  factory :post_reward do |f|
+    f.association :project_post, factory: :project_post
+    f.association :reward, factory: :reward
+  end
+
   factory :state do
     name { generate(:name) }
     acronym { generate(:name) }
