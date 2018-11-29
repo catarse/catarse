@@ -169,3 +169,5 @@ gem 'coffee-rails'
 gem 'compass-rails'
 gem 'uglifier', '4.0.0'
 gem 'sprockets', '~> 3.7.2'
+gem "rack", ">= 1.6.11"
+gem "loofah", ">= 2.2.3"

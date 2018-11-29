@@ -297,7 +297,7 @@ GEM
     logging (2.1.0)
       little-plugger (~> 1.1)
       multi_json (~> 1.10)
-    loofah (2.2.2)
+    loofah (2.2.3)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.0)
@@ -325,7 +325,7 @@ GEM
     net_http_timeout_errors (0.3.0)
     netrc (0.11.0)
     newrelic_rpm (3.18.1.330)
-    nokogiri (1.8.4)
+    nokogiri (1.8.5)
       mini_portile2 (~> 2.3.0)
     oauth (0.5.1)
     oauth2 (1.2.0)
@@ -379,7 +379,7 @@ GEM
       slop (~> 3.4)
     pundit (1.1.0)
       activesupport (>= 3.0.0)
-    rack (1.6.10)
+    rack (1.6.11)
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (4.2.10)
@@ -699,6 +699,7 @@ DEPENDENCIES
   koala
   launchy
   letter_opener
+  loofah (>= 2.2.3)
   mail_form
   mini_magick
   mixpanel-ruby
@@ -715,6 +716,7 @@ DEPENDENCIES
   protected_attributes
   pry
   pundit
+  rack (>= 1.6.11)
   rails (~> 4.2.10)
   rails-erd
   rails-html-sanitizer (~> 1.0.4)
