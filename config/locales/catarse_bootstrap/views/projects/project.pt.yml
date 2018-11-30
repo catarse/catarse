@@ -22,43 +22,42 @@ pt:
           link: '/start?ref=home_banner'
           cta: 'Comece sua campanha'
           image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-fctodos.jpg'
-
         4:
+          title: 'Luzes de Niterói'
+          subtitle: 'A nova HQ do quadrinista Marcello Quintanilha, ganhador do prêmio Angoulême.'
+          link: 'https://www.catarse.me/luzesdeniteroi?ref=home_banner'
+          cta: 'Conheça o projeto'
+          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-luzesdeniteroi.jpg'          
+        5:
           title: 'São Paulo Eixo Z'
           subtitle: 'O livro fotográfico de Facundo Guerra convida você a olhar São Paulo através de uma nova perspectiva.'
           link: 'https://www.catarse.me/eixoz?ref=home_banner'
           cta: 'Conheça o projeto'
           image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-eixoz.jpg'          
-        5:
+        6:
           title: 'Starfinder'
           subtitle: 'um jogo de ficção científica, focado em aventuras de mundos fantásticos, exploração da galáxia e viagens em espaçonaves pela Deriva.'
           link: 'https://www.catarse.me/Starfinder?ref=home_banner'
           cta: 'Conheça o projeto'
           image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-Starfinder.jpg'
-        6:
+        7:
           title: 'Mamilos Podcast'
           subtitle: 'Venha ajudar a construir pontes.'
           link: 'https://www.catarse.me/mamilos?ref=home_banner'
           cta: 'Conheça o projeto'
           image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-mamilos.jpg'
-        7:
+        8:
           title: 'Enciclopédia Do Incrível ao Bizarro'
           subtitle: 'Um compêndio de artes antigas, livros raros e curiosidades sobre o passado, inédito no Brasil!'
           link: 'https://www.catarse.me/enciclopedia?ref=home_banner'
           cta: 'Conheça o projeto'
           image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-enciclopedia.jpg'
-        8:
+        9:
           title: 'Oráculo Houhou'
           subtitle: 'Um guia para aflorar o despertar espiritual, com 1 Livro-Guia + 28 Cartas. Criado por Verônica Alves'
           link: 'https://www.catarse.me/oraculohouhou?ref=home_banner'
           cta: 'Conheça o projeto'
-          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-oraculohouhou.jpg'
-        9:
-          title: '<img src="https://uploads-ssl.webflow.com/573a70f6d5c3cb6532f8b1a7/58ead3167db7c241dbb93fbc_geek-news-logo.png" width="400">'
-          subtitle: 'Quadrinhos, boardgames, RPG e jogos digitais, dentro e fora do Catarse.'
-          link: 'https://crowdfunding.catarse.me/geek-news'
-          cta: 'Assine a Geek News'
-          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-geek-news.jpg'          
+          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-oraculohouhou.jpg'        
         10:
           title: 'Financiamento coletivo para Livros e Revistas'
           subtitle: 'Junte-se a uma comunidade de autores e editoras e publique seu livro independente com a ajuda dos leitores'
