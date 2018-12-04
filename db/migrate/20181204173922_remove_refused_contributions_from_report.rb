@@ -42,7 +42,7 @@ class RemoveRefusedContributionsFromReport < ActiveRecord::Migration
         JOIN users u ON ((c.user_id = u.id)))
         JOIN projects p ON ((p.id = c.project_id)))
         JOIN payments pa ON (pa.state <> 'refused' AND (pa.contribution_id = c.id)))
-        LEFT JOIN user_totals ut ON ((ut.id = u.id)))
+        LEFT JOIN "1".user_totals ut ON ((ut.id = u.id)))
         LEFT JOIN rewards r ON ((r.id = c.reward_id)))
         LEFT JOIN surveys s ON ((s.reward_id = c.reward_id)))
      WHERE (is_owner_or_admin(p.user_id) OR (c.user_id = current_user_id()));
@@ -78,7 +78,7 @@ class RemoveRefusedContributionsFromReport < ActiveRecord::Migration
                   JOIN payments pa on (pa.state <> 'refused' AND pa.contribution_id = c.id)
                   LEFT JOIN addresses add ON ((add.id = c.address_id)))
                   LEFT JOIN states s ON ((add.state_id = s.id)))
-                  LEFT JOIN project_totals pt ON ((pt.project_id = c.project_id)))
+                  LEFT JOIN "1".project_totals pt ON ((pt.project_id = c.project_id)))
                WHERE was_confirmed(c.*)
                GROUP BY p.id, s.acronym, s.name, pt.pledged
                ORDER BY p.created_at DESC) addr_agg
@@ -87,7 +87,7 @@ class RemoveRefusedContributionsFromReport < ActiveRecord::Migration
        CREATE OR REPLACE VIEW "1"."project_contributions_per_ref" AS 
         SELECT i.project_id,
             json_agg(json_build_object('referral_link', i.referral_link, 'total', i.total, 'total_amount', i.total_amount, 'total_on_percentage', ((i.total_amount / ( SELECT pt.pledged
-                  FROM project_totals pt
+                  FROM "1".project_totals pt
                   WHERE (pt.project_id = i.project_id))) * (100)::numeric))) AS source
           FROM ( SELECT c.project_id,
                     COALESCE(NULLIF(o.referral, ''::text), o.domain) AS referral_link,
@@ -143,7 +143,7 @@ class RemoveRefusedContributionsFromReport < ActiveRecord::Migration
         JOIN users u ON ((c.user_id = u.id)))
         JOIN projects p ON ((p.id = c.project_id)))
         JOIN payments pa ON ((pa.contribution_id = c.id)))
-        LEFT JOIN user_totals ut ON ((ut.id = u.id)))
+        LEFT JOIN "1".user_totals ut ON ((ut.id = u.id)))
         LEFT JOIN rewards r ON ((r.id = c.reward_id)))
         LEFT JOIN surveys s ON ((s.reward_id = c.reward_id)))
      WHERE (is_owner_or_admin(p.user_id) OR (c.user_id = current_user_id()));
@@ -178,7 +178,7 @@ class RemoveRefusedContributionsFromReport < ActiveRecord::Migration
                   JOIN contributions c ON ((p.id = c.project_id)))
                   LEFT JOIN addresses add ON ((add.id = c.address_id)))
                   LEFT JOIN states s ON ((add.state_id = s.id)))
-                  LEFT JOIN project_totals pt ON ((pt.project_id = c.project_id)))
+                  LEFT JOIN "1".project_totals pt ON ((pt.project_id = c.project_id)))
                WHERE was_confirmed(c.*)
                GROUP BY p.id, s.acronym, s.name, pt.pledged
                ORDER BY p.created_at DESC) addr_agg
@@ -187,7 +187,7 @@ class RemoveRefusedContributionsFromReport < ActiveRecord::Migration
        CREATE OR REPLACE VIEW "1"."project_contributions_per_ref" AS 
         SELECT i.project_id,
             json_agg(json_build_object('referral_link', i.referral_link, 'total', i.total, 'total_amount', i.total_amount, 'total_on_percentage', ((i.total_amount / ( SELECT pt.pledged
-                  FROM project_totals pt
+                  FROM "1".project_totals pt
                   WHERE (pt.project_id = i.project_id))) * (100)::numeric))) AS source
           FROM ( SELECT c.project_id,
                     COALESCE(NULLIF(o.referral, ''::text), o.domain) AS referral_link,
