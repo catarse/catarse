@@ -11,8 +11,8 @@ class Address < ActiveRecord::Base
 
     {
       external_id: id,
-      country_id: country.common_id,
-      state_id: state.common_id,
+      country_id: country.try(:common_id),
+      state_id: state.try(:common_id),
       address_street: address_street,
       address_number: address_number,
       address_complement:	address_complement,
