@@ -12,7 +12,10 @@ class RemoveRefusedContributionsFromReport < ActiveRecord::Migration
        u.name AS user_name,
        c.value,
        pa.state,
-       u.email,
+       case
+          when pa.state = 'pending' then null
+          else u.email
+        end,
        (row_to_json(r.*))::jsonb AS reward,
        waiting_payment(pa.*) AS waiting_payment,
        is_owner_or_admin(p.user_id) AS is_owner_or_admin,
