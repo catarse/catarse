@@ -96,7 +96,7 @@ GEM
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
       mime-types (>= 1.16)
-    catarse_pagarme (2.11.0)
+    catarse_pagarme (2.12.0)
       pagarme (= 2.1.4)
       rails (~> 4.0)
       sentry-raven
@@ -667,7 +667,7 @@ DEPENDENCIES
   browser (= 1.0.1)
   capybara
   carrierwave (~> 1.0)
-  catarse_pagarme (~> 2.11)
+  catarse_pagarme (~> 2.12.0)
   catarse_settings_db (>= 0.2.0)
   cocoon
   coffee-rails
