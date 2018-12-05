@@ -1,0 +1,10 @@
+- contribution = @notification.contribution
+
+p Olá, <strong>#{contribution.user.display_name}</strong> !
+
+p Estamos apenas aguardando a aprovação do nosso meio de pagamento para confirma-lo.
+
+p A confirmação poderá demorar até 48 horas após efetuado o pagamento.
+
+p
+= render partial: 'user_notifier/mailer/contact_info'
