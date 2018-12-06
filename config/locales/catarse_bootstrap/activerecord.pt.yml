@@ -463,8 +463,10 @@ pt:
     confirmed_at: Data da confirmação do pagamento
     created_at: Data de criação do apoio
     contribution_id: ID do apoio
-    contribution_value: Valor do apoio
+    contribution_value: Valor do apoio (bruto)
     service_fee: Taxa do Catarse
+    payment_method_fee: Taxa do meio de pagamento
+    contribution_value_net: Valor do apoio (líquido)
     user_id: ID do usuário
     user_email: Email perfil Catarse
     user_name: Nome completo
@@ -485,6 +487,7 @@ pt:
     multiple_choice_questions: multiple_choice_questions
     shipping_choice: 'Local de entrega'
     shipping_option: 'Envio'
+
   user:
     no_name: Sem nome
     contributions_text:
