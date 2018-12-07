@@ -2,9 +2,8 @@
 
 p Olá, <strong>#{contribution.user.display_name}</strong> !
 
-p Estamos apenas aguardando a aprovação do nosso meio de pagamento para confirma-lo.
+p O seu apoio está sendo <strong>processado</strong> por nossos meios de pagamento e poderá ficar em análise por até 48h.
 
-p A confirmação poderá demorar até 48 horas após efetuado o pagamento.
+p Assim que o status do seu apoio for alterado, enviaremos uma notificação por aqui mesmo. Caso prefira, você pode seguir acompanhando o status  do seu apoio através do #{link_to 'seu perfil', edit_user_url(contribution.user.id, anchor: 'contributions'), target: '__blank'}.
 
-p
 = render partial: 'user_notifier/mailer/contact_info'
