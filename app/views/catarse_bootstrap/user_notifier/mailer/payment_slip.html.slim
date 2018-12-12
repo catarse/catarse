@@ -3,21 +3,19 @@
 
 p Olá, <strong>#{contribution.user.display_name}</strong> !
 
-- if expire_date.present?
-  p #{expire_date} é o dia do vencimento do boleto gerado para apoiar o #{contribution.project.name}.
-- else
-  p Boleto gerado para apoiar o #{contribution.project.name}.
+p O seu boleto para apoiar o projeto #{contribution.project.name} [ADICIONAR LINK] foi gerado com sucesso! 
 
-p #{contribution.project.user.display_name} está contando com o seu apoio para que o projeto seja financiado.
-
-p Se você não imprimiu seu boleto ainda, você pode clicar no link abaixo e fazer isso agora mesmo:
+p Caso ainda não tenha realizado o pagamento, você poderá acessar o boleto clicando no botão abaixo. Lembrando que o vencimento dele é dia: <strong>#{expire_date}</strong>
 
 p
   center
     = link_to contribution.details.ordered.first.decorate.display_slip_url, target: '__blank' do
       = image_tag "#{CatarseSettings[:base_url]}/assets/catarse_bootstrap/display_slip.png"
 
-p Caso já tenha pago o boleto bancário, desconsidere esse email por favor.
+%div.some{ :style => "font-size: 8px" } 
+| Caso você não seja redirecionado ao clicar na imagem acima, acesse seu boleto através deste link [ADICIONAR LINK DO BOLETO]
+
+p Caso já tenha feito o pagamento, o seu apoio será confirmado na plataforma em até 2 dias úteis. Você pode seguir acompanhando o status do seu apoio através do histórico de apoio [LINK PERFIL] em seu perfil no Catarse.
 
 p
 = render partial: 'user_notifier/mailer/contact_info'
