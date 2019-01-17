@@ -4228,6 +4228,10 @@ a:hover {
   align-items: center;
 }
 
+.card-message-error {
+  border: 1px solid #e86666;
+}
+
 html.w-mod-js *[data-ix="fade-in"] {
   opacity: 0;
 }
