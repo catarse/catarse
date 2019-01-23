@@ -6,6 +6,18 @@ GIT
     fakeweb (1.3.0)
 
 GIT
+  remote: git://github.com/catarse/catarse_pagarme.git
+  revision: 393140a2371f6db86346c49dc63ad1dd7331208e
+  branch: feature/rates_per_project
+  specs:
+    catarse_pagarme (2.12.0)
+      pagarme (= 2.1.4)
+      rails (~> 4.0)
+      sentry-raven
+      sidekiq
+      weekdays (>= 1.0.2)
+
+GIT
   remote: git://github.com/catarse/redactor-rails.git
   revision: 9a58b7ecbd33acad7e9cb66476e349262c72d093
   branch: master
@@ -96,12 +108,6 @@ GEM
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
       mime-types (>= 1.16)
-    catarse_pagarme (2.12.0)
-      pagarme (= 2.1.4)
-      rails (~> 4.0)
-      sentry-raven
-      sidekiq
-      weekdays (>= 1.0.2)
     catarse_settings_db (0.2.0)
       rails (>= 4.1.1)
     childprocess (0.9.0)
@@ -667,7 +673,7 @@ DEPENDENCIES
   browser (= 1.0.1)
   capybara
   carrierwave (~> 1.0)
-  catarse_pagarme (~> 2.12.0)
+  catarse_pagarme!
   catarse_settings_db (>= 0.2.0)
   cocoon
   coffee-rails
