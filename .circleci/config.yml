@@ -17,11 +17,14 @@ jobs:
       - run: RAILS_ENV=test DATABASE_URL=postgres://postgres:example@localhost:5432/catarse_test bundle exec rspec spec
 
   deploy_sandbox:
-    machine:
-      enabled: true
+    docker:
+      - image: comum/docker-build-env:latest
     steps:
       - checkout
       - add_ssh_keys
+      - setup_remote_docker:
+          version: 17.05.0-ce
+      - run: apk update && apk add git openssh
       - run: sh .circleci/deploy-sandbox.sh
 
 
