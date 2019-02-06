@@ -42,8 +42,7 @@ gem 'mixpanel_client'
 
 # Payment engines
 
-#gem 'catarse_pagarme', '~> 2.12.0'
-gem 'catarse_pagarme', github: 'catarse/catarse_pagarme', branch: 'feature/rates_per_project'
+gem 'catarse_pagarme', '~> 2.13.0'
 #gem 'catarse_pagarme', path: '../catarse_pagarme'
 
 # Decorators
