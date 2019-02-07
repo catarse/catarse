@@ -375,9 +375,10 @@ pt:
           attributes:
             email:
               not_found: "O email não está cadastrado, verifique o endereço ou faça seu cadastro"
-              taken: "O email já está cadastrado, faça seu login"
+              taken: 'Este email já está cadastrado no Catarse. <a href="https://suporte.catarse.me/hc/pt-br/articles/360019497612-Erro-ao-alterar-o-email" class="link-error" target="_blank">Saiba como resolver aqui</a>.'
               invalid: "Esse endereço de email é inválido"
               blank: "O email não pode ficar em branco"
+              confirmation: "Confirmação de email está incorreta."
             password:
               too_short: "A senha é muito curta. Mínimo 6 caracteres."
               confirmation: "A senha e a confirmação de senha preenchidas não estão iguais"
@@ -463,8 +464,10 @@ pt:
     confirmed_at: Data da confirmação do pagamento
     created_at: Data de criação do apoio
     contribution_id: ID do apoio
-    contribution_value: Valor do apoio
+    contribution_value: Valor do apoio (bruto)
     service_fee: Taxa do Catarse
+    payment_method_fee: Taxa do meio de pagamento
+    contribution_value_net: Valor do apoio (líquido)
     user_id: ID do usuário
     user_email: Email perfil Catarse
     user_name: Nome completo
@@ -485,6 +488,7 @@ pt:
     multiple_choice_questions: multiple_choice_questions
     shipping_choice: 'Local de entrega'
     shipping_option: 'Envio'
+
   user:
     no_name: Sem nome
     contributions_text:

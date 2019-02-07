@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.4.4'
 
-gem 'rails', '~> 4.2.10'
+gem 'rails', '~> 4.2.11'
 gem 'rails-html-sanitizer', '~> 1.0.4'
 
 gem 'protected_attributes'
@@ -42,7 +42,7 @@ gem 'mixpanel_client'
 
 # Payment engines
 
-gem 'catarse_pagarme', '~> 2.12.0'
+gem 'catarse_pagarme', '~> 2.13.0'
 #gem 'catarse_pagarme', path: '../catarse_pagarme'
 
 # Decorators
@@ -169,3 +169,5 @@ gem 'coffee-rails'
 gem 'compass-rails'
 gem 'uglifier', '4.0.0'
 gem 'sprockets', '~> 3.7.2'
+gem "rack", ">= 1.6.11"
+gem "loofah", ">= 2.2.3"
