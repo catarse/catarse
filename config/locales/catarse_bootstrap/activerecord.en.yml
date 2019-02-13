@@ -459,6 +459,7 @@ en:
     open_questions: open_questions
     multiple_choice_questions: multiple_choice_questions
     shipping_choice: Delivery place
+    shipping_amount: Delivery price
     shipping_option: Send
   user:
     no_name: Unnamed

@@ -487,6 +487,7 @@ pt:
     open_questions: open_questions
     multiple_choice_questions: multiple_choice_questions
     shipping_choice: 'Local de entrega'
+    shipping_amount: 'Valor do frete'
     shipping_option: 'Envio'
 
   user:
