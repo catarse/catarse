@@ -153,6 +153,7 @@ class ChangeProjectFiscalInformsToBalanceTransfer < ActiveRecord::Migration
         where r.project_id is not null and r.project_id<>69026
         order by r.transferred_at desc;
 
+        DROP FUNCTION project_fiscal_data_tbl_refresh();
         CREATE OR REPLACE FUNCTION public.project_fiscal_data_tbl_refresh()
         RETURNS integer
         LANGUAGE plpgsql
@@ -235,6 +236,7 @@ class ChangeProjectFiscalInformsToBalanceTransfer < ActiveRecord::Migration
       alter table project_fiscal_data_tbl drop COLUMN payment_ids;
       
 
+      DROP FUNCTION project_fiscal_data_tbl_refresh();
       CREATE OR REPLACE FUNCTION public.project_fiscal_data_tbl_refresh()
       RETURNS void
           LANGUAGE 'sql'
