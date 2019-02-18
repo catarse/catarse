@@ -1,6 +1,7 @@
 class FixProjectFiscalInformsView < ActiveRecord::Migration
     def up
         execute <<-SQL
+        DROP FUNCTION project_fiscal_data_tbl_refresh();
         CREATE OR REPLACE FUNCTION public.project_fiscal_data_tbl_refresh()
         RETURNS void
             LANGUAGE 'sql'
@@ -126,6 +127,7 @@ class FixProjectFiscalInformsView < ActiveRecord::Migration
 
     def down
       execute <<-SQL
+      DROP FUNCTION project_fiscal_data_tbl_refresh();
       CREATE OR REPLACE FUNCTION public.project_fiscal_data_tbl_refresh()
       RETURNS void
           LANGUAGE 'sql'
