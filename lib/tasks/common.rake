@@ -109,7 +109,7 @@ namespace :common do
 
   desc 'generate balance transaction for subscription payments'
   task generate_subscription_balance: :environment do
-    SubscriptionPayment.select("id")
+    SubscriptionPayment.select("id").
       where('not exists(select true from balance_transactions where subscription_payment_uuid = catalog_payments.id)').
       where(platform_id: CatarseSettings[:common_platform_id], status: 'paid').each do |sp|
       unless sp.already_in_balance?
