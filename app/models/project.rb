@@ -571,6 +571,7 @@ class Project < ActiveRecord::Base
       status: state,
       permalink: permalink,
       mode: mode,
+      service_fee: service_fee,
       about_html: about_html,
       budget_html: budget_html,
       online_days: online_days,
