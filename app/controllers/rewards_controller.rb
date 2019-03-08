@@ -40,6 +40,28 @@ class RewardsController < ApplicationController
     end
   end
 
+  # def upload_image 
+  #   authorize resource, :update?
+  #   params[:reward] = {
+  #     uploaded_image: params[:uploaded_image]
+  #   }
+
+  #   @reward = resource
+
+  #   if @reward.update_without_password permitted_params
+  #     @reward.reload
+  #     render status: 200, json: {
+  #       uploaded_image: @reward.uploaded_image.url(:thumb_avatar)
+  #     }
+  #   else
+  #     render status: 400, json: { errors: @reward.errors.full_messages }
+  #   end
+  # end
+
+  # def delete_image
+
+  # end
+
   def resource
     @reward ||= parent.rewards.find params[:id]
   end

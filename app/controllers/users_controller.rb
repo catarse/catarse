@@ -106,6 +106,11 @@ class UsersController < ApplicationController
       cover_image: params[:cover_image]
     }
 
+    puts '=================='
+    puts params.inspect
+    puts permitted_params.inspect
+    puts '=================='
+
     if @user.update_without_password permitted_params
       @user.reload
       render status: 200, json: {
