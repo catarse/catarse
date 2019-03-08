@@ -42,3 +42,9 @@ spec/
 
 # 3.3: bundler stuff
 .bundle/*
+
+.bundle
+db/*.sqlite3
+log/*.log
+tmp/**/*
+config/database.yml
