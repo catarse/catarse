@@ -39,6 +39,7 @@ end
   "1".statistics_music
   "1".category_totals
   "1".statistics_publicacoes
+  "1".statistics_jornalismo
 ].each do |v|
   every 1.hour do
     command generate_psql_c(v)
