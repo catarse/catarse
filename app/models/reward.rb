@@ -15,7 +15,7 @@ class Reward < ActiveRecord::Base
   has_one :survey
   has_many :contributions, dependent: :nullify
 
-  # mount_uploader :uploaded_image, RewardUploader
+  mount_uploader :uploaded_image, RewardUploader
 
   accepts_nested_attributes_for :shipping_fees, allow_destroy: true
   ranks :row_order, with_same: :project_id
