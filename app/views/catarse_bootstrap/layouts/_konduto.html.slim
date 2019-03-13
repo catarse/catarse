@@ -1,4 +1,4 @@
-- if Rails.env.production? && CatarseSettings['konduto_public_key'].present?
+- if CatarseSettings['konduto_public_key'].present?
     javascript:  
         var __kdt = __kdt || [];
         __kdt.push({"public_key": '#{CatarseSettings['konduto_public_key']}'}); // A chave pública identifica a sua loja  
