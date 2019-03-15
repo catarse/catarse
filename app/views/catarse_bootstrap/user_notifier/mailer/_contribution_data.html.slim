@@ -42,7 +42,7 @@ p
 
 p
   ' Caso tenha alguma dúvida em relação ao <strong>projeto ou à sua recompensa</strong>, 
-  ' entre em contato diretamente com o realizador através do e-mail #{mail_to owner.try(:email)}.
+  ' entre em contato diretamente com o realizador da página do projeto #{link_to contribution.project.name, project_by_slug_url(contribution.project.permalink)} ou do e-mail #{mail_to owner.try(:email)}.
 p
   ' É importante ressaltar que o Catarse <strong>não é uma loja</strong>,
   ' e que esse recibo é referente a um apoio que você fez para um projeto que você acredita ser viável.
