@@ -33,9 +33,9 @@ workflows:
   build-and-push:
     jobs:
       - build
-      - deploy_sandbox:
-          requires:
-            - build
-          filters:
-            branches:
-              only: develop
+      #- deploy_sandbox:
+      #    requires:
+      #      - build
+      #    filters:
+      #      branches:
+      #        only: develop
