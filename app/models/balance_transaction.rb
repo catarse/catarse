@@ -134,7 +134,7 @@ class BalanceTransaction < ActiveRecord::Base
     return if payment.chargedback_on_balance?
 
     create!(
-      user_id: contribution.project.user_id,
+      user_id: payment.project.user_id,
       event_name: 'subscription_payment_chargedback',
       amount: ((payment.amount - (payment.amount * payment.project.service_fee)) * -1),
       subscription_payment_uuid: payment.id,
@@ -185,7 +185,6 @@ class BalanceTransaction < ActiveRecord::Base
 
   def self.insert_contribution_refund(contribution_id)
     contribution = Contribution.find contribution_id
-    project = contribution.project
     return unless contribution.confirmed?
     return if contribution.balance_refunded?
 
