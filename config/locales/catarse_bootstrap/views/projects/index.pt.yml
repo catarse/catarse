@@ -45,12 +45,17 @@ pt:
           icon: "https://s3.amazonaws.com/cdn.catarse/assets/icon-music.png"
           link: "http://crowdfunding.catarse.me/financiamento-coletivo-musica-independente"
           title: "Lance sua música no Catarse!"
-          cta: "Aprenda como"
+          cta: "Saiba como"
         20:
           icon: "https://s3.amazonaws.com/cdn.catarse/assets/icon-publicacoes.png"
           link: "https://crowdfunding.catarse.me/publicacoes-independentes-financiamento-coletivo"
           title: "Lance seu livro ou revista no Catarse!"
-          cta: "Aprenda como"
+          cta: "Saiba como"
+        15:
+          icon: "https://s3.amazonaws.com/cdn.catarse/assets/icon-jornalismo-assinaturas.png"
+          link: "https://crowdfunding.catarse.me/jornalismo"
+          title: "Receba pagamentos mensais de seus leitores!"
+          cta: "Saiba como"          
       links:
         channels: "Descubra o Canal Asas"
         recommended: "Descubra projetos recomendados"
