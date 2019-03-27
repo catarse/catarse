@@ -1,7 +1,7 @@
 class AdjustOnSlipExpiresAt < ActiveRecord::Migration
   def up
     execute <<-SQL
-create function slip_expires_at(payments) returns timestamp without time zone
+create or replace function slip_expires_at(payments) returns timestamp without time zone
   stable
   language sql
 as
