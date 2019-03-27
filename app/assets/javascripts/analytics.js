@@ -102,18 +102,21 @@ window.CatarseAnalytics = window.CatarseAnalytics || (function(){
 
     var origin = (function(request,cookie) {
       try {
-        var o = JSON.parse(cookie.get('ctrse_origin')||null) || {createdAt: new Date()};
+        var o = JSON.parse(cookie.get('ctrse_origin')||null) || {createdAt: new Date(),updatedAt: new Date()};
       } catch(e) {
-        o = {createdAt: new Date()};
+        o = {createdAt: new Date(),updatedAt: new Date()};
       }
       var fromCatarse=request.referrer && /^https?:\/\/([^\\/]+\.)?catarse\.me/.test(request.referrer);
+      var query=request.query;
       if(fromCatarse) {
         //Só pega o ultimo ref. Não atualiza utms...
-        o.ref = (request.query&&request.query.ref) || o.ref; //preferencia para a query.
+        if(query && query.ref && o.ref!=query.ref) {
+          o.ref = query.ref;
+          o.updatedAt = new Date();
+        }
       } else if(/*!fromCatarse && */ request.referrer || (!o._time || new Date().getTime()-o._time>10*60*1000/*10min*/)) {
         var m=request.referrer && request.referrer.match(/https?:\/\/([^\/\?#]+)/);
         var refDomain=(m && m[1]) || undefined;
-        var query=request.query;
         //se, e somente se, tem algum utm na query...
         if(query && ['utm_campaign','utm_source','utm_medium','utm_content','utm_term'].some(function(p){
           return !!query[p];
@@ -124,15 +127,18 @@ window.CatarseAnalytics = window.CatarseAnalytics || (function(){
           o.medium=  query.utm_medium;
           o.content= query.utm_content;
           o.term=    query.utm_term;
+          o.updatedAt = new Date();
         } else if (refDomain && !['domain','utm_campaign','utm_source','utm_medium','utm_content','utm_term'].some(function(p){
           return !!o[p];
         })) {//se tem refDomain e não tem no origin algum utm ou domain anterior...
           o.domain  = refDomain;
+          o.updatedAt = new Date();
         }
 
         if(!o.campaign && query && query.ref) {
           //nesse caso, como veio de outro dominio, sem utm params, mas com ref, assumimos q esse ref é um campaign.
           o.campaign = query.ref;
+          o.updatedAt = new Date();
         }
       }
       //fazemos o _time aqui por causa da verificação acima !o._time, indicando q foi criado agora.
