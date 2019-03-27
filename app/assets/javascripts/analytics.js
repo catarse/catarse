@@ -128,7 +128,7 @@ window.CatarseAnalytics = window.CatarseAnalytics || (function(){
           o.content= query.utm_content;
           o.term=    query.utm_term;
           o.updatedAt = new Date();
-        } else if (refDomain && !['domain','utm_campaign','utm_source','utm_medium','utm_content','utm_term'].some(function(p){
+        } else if (refDomain && !['domain','campaign','source','medium','content','term'].some(function(p){
           return !!o[p];
         })) {//se tem refDomain e não tem no origin algum utm ou domain anterior...
           o.domain  = refDomain;
