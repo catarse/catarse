@@ -63,6 +63,7 @@ html
     = render 'layouts/flash' if notice.present?
     = yield
 
+  = render_konduto_script
   = javascript_include_tag :analytics
   - if CatarseSettings[:simility_customer_id].present?
     = javascript_include_tag "https://cdn.simility.com/b.js", data: { autoexecute: false }

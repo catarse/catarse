@@ -1,0 +1,11 @@
+- if CatarseSettings['konduto_public_key'].present?
+    javascript:  
+        var __kdt = __kdt || [];
+        __kdt.push({"public_key": '#{CatarseSettings['konduto_public_key']}'}); // A chave pública identifica a sua loja  
+        (function() {   
+            var kdt = document.createElement('script');   
+            kdt.id = 'kdtjs'; kdt.type = 'text/javascript';   
+            kdt.async = true;    kdt.src = 'https://i.k-analytix.com/k.js';   
+            var s = document.getElementsByTagName('body')[0];   
+            s.parentNode.insertBefore(kdt, s);
+        })();
