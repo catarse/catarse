@@ -56,6 +56,17 @@ window.CatarseAnalytics = window.CatarseAnalytics || (function(){
     }
   })();
 
+  var base_url = (()=>{
+    try {
+      var body =document.getElementsByTagName('body')[0];
+      var bu = JSON.parse((body && body.dataset && body.dataset.settings) || body.getAttribute('data-settings') ||'{}').base_url;
+      return bu.replace(/^(https?:\/\/)/,'');
+    } catch(e) {
+      console.error('Error getting base_url:',e);
+      return '.catarse.me';
+    }
+  })();
+
   var ctrse_sid=(function(cookie){
     var sid=cookie.get('ctrse_sid');
     if(!sid) {
@@ -63,7 +74,7 @@ window.CatarseAnalytics = window.CatarseAnalytics || (function(){
       var UUID=function(){for(var dec2hex=[],i=0;15>=i;i++)dec2hex[i]=i.toString(16);return function(){for(var uuid="",i=1;36>=i;i++)uuid+=9===i||14===i||19===i||24===i?"-":15===i?4:20===i?dec2hex[4*Math.random()|8]:dec2hex[15*Math.random()|0];return uuid}}();
       sid=UUID();
     }
-    cookie.set('ctrse_sid',sid,180,'/',false,'.catarse.me');
+    cookie.set('ctrse_sid',sid,180,'/');
     return sid;
   })(monster);
 
@@ -100,15 +111,15 @@ window.CatarseAnalytics = window.CatarseAnalytics || (function(){
       };
     };
 
-    var origin = (function(request,cookie) {
+    var origin = (function(request,cookie, base_url) {
       try {
         var o = JSON.parse(cookie.get('ctrse_origin')||null) || {createdAt: new Date(),updatedAt: new Date()};
       } catch(e) {
         o = {createdAt: new Date(),updatedAt: new Date()};
       }
-      var fromCatarse=request.referrer && /^https?:\/\/([^\\/]+\.)?catarse\.me/.test(request.referrer);
+      var fromSite=request.referrer && new RegExp(base_url).test(request.referrer);
       var query=request.query;
-      if(fromCatarse) {
+      if(fromSite) {
         //Só pega o ultimo ref. Não atualiza utms...
         if(query && query.ref && o.ref!=query.ref) {
           o.ref = query.ref;
@@ -143,9 +154,9 @@ window.CatarseAnalytics = window.CatarseAnalytics || (function(){
       }
       //fazemos o _time aqui por causa da verificação acima !o._time, indicando q foi criado agora.
       o._time=new Date().getTime();
-      cookie.set('ctrse_origin',JSON.stringify(o),180,'/',false,'.catarse.me');
+      cookie.set('ctrse_origin',JSON.stringify(o),180,'/');
       return o;
-    })(_actualRequest(),monster);
+    })(_actualRequest(),monster,base_url);
   } catch(e) {
     console.error('[CatarseAnalytics] error',e);
   }
