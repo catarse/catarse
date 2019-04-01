@@ -3,40 +3,32 @@
 p Olá, <strong>#{contribution.user.display_name}</strong>!
 
 -if @notification.metadata.try(:[], 'message').empty?
-  p #{contribution.project.user.display_name} acabou de marcar que a sua recompensa foi ENVIADA.
+  p #{contribution.project.user.display_name} acabou de marcar que a sua recompensa do projeto #{contribution.project.name} foi <strong>enviada</strong>.
 -else
-  p #{contribution.project.user.display_name} acabou de marcar que a sua recompensa foi ENVIADA e lhe mandou a seguinte mensagem:
-  p #{@notification.metadata.try(:[], 'message')}
+  p #{contribution.project.user.display_name} acabou de marcar que a sua recompensa do projeto #{contribution.project.name} foi ENVIADA e lhe mandou a seguinte mensagem:
+  p style="background-color:#f1f4f4; padding: 20px; margin: 20px 30px 50px 30px; border-radius:5px;"
+    | #{@notification.metadata.try(:[], 'message')}
 
 p Para te lembrar sobre esse apoio, enviamos as informações abaixo:
 p
-  | Nome do apoiador: #{contribution.user.display_name}
+  | <strong>Nome do realizador:</strong> #{contribution.project.user.display_name}
   br/
-  | CPF/CNPJ do apoiador: #{contribution.user.cpf}
+  | <strong>Projeto:</strong> #{contribution.project.name}
   br/
-  | Data da confirmação do apoio: #{I18n.l(detail.paid_at.to_date)}
+  | <strong>Data da confirmação do apoio:</strong> #{I18n.l(detail.paid_at.to_date)}
   br/
-  | Valor da contribuição: #{number_to_currency contribution.value}
-  - if detail.installments > 1
-    br/
-    | Número de parcelas: #{detail.installments}
-    br/
-    | Valor da parcela: #{number_to_currency(detail.installment_value, precision: 2)}
+  | <strong>Valor da contribuição:</strong> #{number_to_currency contribution.value}
   br/
   -if contribution.reward.present?
-    | Recompensa selecionada: #{contribution.reward.description}
-    br/
-    | Estimativa de entrega: #{contribution.reward.display_deliver_estimate}
-    br/
-  | ID do apoio: #{detail.gateway_id}
+    | <strong>Recompensa selecionada:</strong> #{contribution.reward.description}
 
-p Assim que você estiver com a sua recompensa não esqueça de avisar em #{link_to 'seu perfil', edit_user_url(contribution.user.id, anchor: 'contributions'), target: '__blank'} que você a recebeu. 
+p Assim que você estiver com a sua recompensa não esqueça de avisar no #{link_to 'histórico de apoio', edit_user_url(contribution.user.id, anchor: 'contributions'), target: '__blank'} de seu perfil que você a recebeu. :-)
 
 p Veja como nesse exemplo: 
-= image_tag 'http://g.recordit.co/Rrbbu9Cp9C.gif', width: 600 
+= image_tag "#{CatarseSettings[:base_url]}/assets/catarse_bootstrap/delivery_confirmed.gif", width: 600 
 
-p Entre em contato com o realizador agora mesmo respondendo diretamente esse email ou escrevendo para: #{mail_to contribution.project.user.email}.
+p Caso você tenha alguma dúvida em relação ao <strong>projeto ou à sua recompensa</strong>, entre em contato diretamente com o realizador através da página do projeto #{link_to contribution.project.name, project_by_slug_url(contribution.project.permalink)} ou através do e-mail #{mail_to owner.try(:email)}. 
 
-p Um abraço,
+p
+= render partial: 'user_notifier/mailer/contact_info'
 
-p Equipe Catarse 
