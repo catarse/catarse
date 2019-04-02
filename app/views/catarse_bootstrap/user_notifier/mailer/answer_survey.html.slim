@@ -4,12 +4,12 @@
 
 
 h2 style="text-align:center; line-height: 45px;"
-  -if contribution.user.name
-  |Olá, <strong>#{contribution.user.name}</strong>!
-  -else
-  |Olá!
-  br/
-  | #{project.user.display_name} precisa confirmar algumas informações para realizar a entrega da sua recompensa ao projeto #{project.name}!
+  - if contribution.user.name
+    |Olá, <strong>#{contribution.user.name}</strong>!
+  - else
+    |Olá!
+    br/
+    | #{project.user.display_name} precisa confirmar algumas informações para realizar a entrega da sua recompensa ao projeto #{project.name}!
 
 
 p Relembrando as informações do seu apoio:
@@ -19,7 +19,7 @@ br/
 br/
 | <strong>Valor da contribuição:</strong> #{number_to_currency contribution.value}
 br/
--if contribution.reward.present?
+- if contribution.reward.present?
   | <strong>Recompensa selecionada:</strong> #{contribution.reward.description}
   br/
   | <strong>Estimativa de entrega informada pelo realizador:</strong> #{contribution.reward.display_deliver_estimate}

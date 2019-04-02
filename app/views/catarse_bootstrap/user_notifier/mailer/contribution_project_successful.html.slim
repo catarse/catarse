@@ -1,10 +1,10 @@
 - contribution ||= @notification.contribution
 
 h2 style="text-align:center; line-height: 45px;"
-  -if contribution.user.name
-  |Olá, <strong>#{contribution.user.name}</strong>!
-  -else
-  |Olá!
+  - if contribution.user.name
+    |Olá, <strong>#{contribution.user.name}</strong>!
+  - else
+    |Olá!
   br/
   | Parabéns! O projeto #{link_to(contribution.project.name, project_by_slug_url(contribution.project.permalink, {utm_source:'notification',utm_medium:'email',utm_campaign:'contribution_project_successful_link',utm_content:contribution.project.name}))} que, 
   | incluindo você, teve #{contribution.project.total_contributors} apoiadores, foi financiado com sucesso no #{CatarseSettings[:company_name]}.

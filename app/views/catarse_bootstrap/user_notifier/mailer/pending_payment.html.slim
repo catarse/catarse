@@ -1,8 +1,8 @@
 - contribution = @notification.contribution
 
--if contribution.user.name
+- if contribution.user.name
   |Olá, <strong>#{contribution.user.name}</strong>!
--else
+- else
   |Olá!
 br
 br
@@ -18,5 +18,4 @@ p
       = image_tag "#{CatarseSettings[:base_url]}/assets/catarse_bootstrap/pending_payment.png"
 
 
-p
 = render partial: 'user_notifier/mailer/contact_info'
