@@ -7,43 +7,42 @@
 |Olá, <strong>#{contribution.user.display_name}</strong>!
 br/
 br/
-| A devolução do valor do seu apoio para o projeto #{project.name}, que foi #{project.decorator.display_mailer_status} no Catarse, já está disponível para que você possa resgatar:
-br/
-br/
-- if detail.payment.gateway_data['paid_amount'].present?
-  |Valor devolvido: #{number_to_currency detail.payment.gateway_data['paid_amount']/100.0, precision: 2}
+
+- if contribution.payment_choice['boletobancario'].present?
+  | O projeto #{project.name} foi #{project.decorator.display_mailer_status} e o valor do seu apoio já está disponível para saque em seu <strong>#{link_to 'perfil', edit_user_url(contribution.user_id, anchor: 'balance')}</strong> no Catarse. 
 - else
-  |Valor devolvido: #{number_to_currency detail.value, precision: 2}
+  | O projeto #{project.name} foi #{project.decorator.display_mailer_status} e, por isso, tentamos fazer o estorno do seu apoio para o cartão de crédito. Por algum motivo não foi possível estornar a transação diretamente para o seu cartão. Dessa forma, o valor do apoio está disponível para saque em seu <strong>#{link_to 'perfil', edit_user_url(contribution.user_id, anchor: 'balance')}</strong> no Catarse. 
+
+
+- if detail.payment.gateway_data['paid_amount'].present?
+  | <strong>Valor devolvido:</strong> #{number_to_currency detail.payment.gateway_data['paid_amount']/100.0, precision: 2}
+- else
+  | <strong>Valor devolvido:</strong> #{number_to_currency detail.value, precision: 2}
 
 br/
-| Data do reembolso: #{I18n.l detail.refunded_at}
+| <strong>Data da devolução:</strong> #{I18n.l detail.refunded_at}
 br/
 br/
-| Para fazer a solicitação de saque desse valor, basta seguir este passo-a-passo:
+| Para <strong>solicitar o saque</strong> desse valor diretamente para a sua conta bancária, basta seguir este passo-a-passo:
 p
     | 1) Faça o login no Catarse 
     br/
     | 2) Entre na aba <strong>#{link_to 'saldo', edit_user_url(contribution.user_id, anchor: 'balance',ref: 'notificacao_project_success')}</strong>, no seu perfil.
-      br/
-        | 3) Clique em <strong>"Realizar saque"</strong>
     br/
-    | 4) Verifique se os dados estão corretos:
-    p style="padding-left: 20px;"
-      | <strong>Se os seus dados estiverem corretos:</strong> basta clicar em: "Solicitar Saque."
-      br/
-      | <strong>Se os dados bancários estiverem incorretos ou em branco:</strong> você deverá <strong>corrigir (ou preencher) seus dados</strong> e depois clicar em <strong>"Solicitar o saque".</strong>
-    | 5) Clique em <strong>"Confirmar"</strong> para dar início ao processo de transferência diretamente para a sua conta bancária. Após o pedido de transferência, faremos o depósito em até 10 dias úteis.
+    | 3) Clique em <strong>"Realizar saque"</strong>
+    br/
+    | 4) Preencha seus dados bancários e confira se eles estão corretos
+    br/ 
+    | 5) Clique em <strong>Solicitar o saque</strong> e confirme. 
+    br/
+    | A transferência será realizada <strong>10 dias úteis</strong> após a solicitação de saque.
 br/
 br/
 p
   img src="https://s3.amazonaws.com/catarse.files/user_balance.gif"
 br/
-| IMPORTANTE: caso o valor esteja disponível há mais de 90 dias, a contar da data do reembolso do apoio, o saldo será considerado renunciado e poderá ser utilizado para outros fins, conforme previsto nos #{link_to 'Termos de Uso', 'https://www.catarse.me/terms-of-use', target: '__blank'}
 br/
+| <strong>IMPORTANTE:</strong> caso o valor esteja disponível há mais de 90 dias, <strong>a contar da data do reembolso do apoio</strong>, o saldo será considerado <strong>renunciado</strong> e poderá ser utilizado para outros fins, conforme previsto nos #{link_to 'Termos de Uso', 'https://www.catarse.me/terms-of-use', target: '__blank'}
 br/
-|Se ficou com alguma dúvida, entre em contato conosco respondendo a esta mensagem ou através do e-mail #{mail_to contact_email}.
-br
-br
-|Um abraço,
-br
-| Equipe do #{company_name}
+p
+= render partial: 'user_notifier/mailer/contact_info'
