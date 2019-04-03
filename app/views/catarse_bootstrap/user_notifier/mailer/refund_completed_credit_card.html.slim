@@ -7,19 +7,19 @@
 |Olá, <strong>#{contribution.user.display_name}</strong>!
 br
 br
-|A devolução do seu apoio para o projeto #{contribution.project.name}, que foi #{project.decorator.display_mailer_status}, no #{company_name} acabou de ser realizada. O crédito efetivo deverá acontecer na fatura vigente, caso ela ainda esteja em aberto, ou na subsequente, caso a desse mês já esteja fechada.
+|O projeto #{contribution.project.name} foi #{project.decorator.display_mailer_status} aqui no #{company_name} e por isso reembolsamos o valor do seu apoio. O crédito efetivo deverá acontecer na fatura vigente, caso ela ainda esteja em aberto, ou na subsequente, caso a desse mês já esteja fechada.
 br
 br
 - if detail.payment.gateway_data['paid_amount'].present?
-  | Valor devolvido: #{number_to_currency detail.payment.gateway_data['paid_amount']/100.0, precision: 2}
+  | <strong>Valor devolvido:</strong> #{number_to_currency detail.payment.gateway_data['paid_amount']/100.0, precision: 2}
 - else
-  | Valor devolvido: #{number_to_currency detail.value, precision: 2}
+  | <strong>Valor devolvido:</strong> #{number_to_currency detail.value, precision: 2}
 br
 br
-|Data do reembolso: #{I18n.l detail.refunded_at}
+|<strong>Data do reembolso:</strong> #{I18n.l detail.refunded_at}
 br
 br
-|Identificação na fatura do cartão de crédito: “Estorno do Catarse”
+|O reembolso deve aparecer na fatura em nome do <strong>Pagar.me</strong> (meio de pagamento que usamos) ou do <strong>Catarse</strong>.
 br
 br
 = render partial: 'user_notifier/mailer/contact_info'
