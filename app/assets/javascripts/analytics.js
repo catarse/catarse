@@ -60,10 +60,10 @@ window.CatarseAnalytics = window.CatarseAnalytics || (function(){
     try {
       var body =document.getElementsByTagName('body')[0];
       var bu = JSON.parse((body && body.dataset && body.dataset.settings) || body.getAttribute('data-settings') ||'{}').base_url;
-      return bu.replace(/^(https?:\/\/)/,'');
+      return bu.replace(/^(https?:\/\/)?(www\.)?/,'');
     } catch(e) {
       console.error('Error getting base_url:',e);
-      return '.catarse.me';
+      return 'catarse.me';
     }
   })();
 
@@ -122,6 +122,7 @@ window.CatarseAnalytics = window.CatarseAnalytics || (function(){
       if(fromSite) {
         //Só pega o ultimo ref. Não atualiza utms...
         if(query && query.ref && o.ref!=query.ref) {
+          if(!o.domain) o.domain=base_url;
           o.ref = query.ref;
           o.updatedAt = new Date();
         }
