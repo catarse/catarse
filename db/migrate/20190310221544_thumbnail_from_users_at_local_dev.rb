@@ -1,6 +1,6 @@
 class ThumbnailFromUsersAtLocalDev < ActiveRecord::Migration
   def up
-    
+    add_column :rewards, :uploaded_image, :string
     execute <<-SQL
 
     CREATE OR REPLACE FUNCTION public.thumbnail_image(projects)
@@ -138,6 +138,7 @@ class ThumbnailFromUsersAtLocalDev < ActiveRecord::Migration
    
 
     SQL
+    remove_column :rewards, :uploaded_image
 
   end
 end
