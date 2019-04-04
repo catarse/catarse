@@ -37,6 +37,7 @@ class Project < ActiveRecord::Base
   has_one :project_total
   has_one :project_fiscal_data
   has_one :project_score_storage
+  has_one :project_metric_storage
   has_many :balance_transactions
   has_many :taggings
   has_many :goals, foreign_key: :project_id
@@ -73,6 +74,12 @@ class Project < ActiveRecord::Base
                   against: 'name',
                   using: :trigram,
                   ignoring: :accents
+
+  after_commit :start_metric_storage_worker, on: :create
+
+  def start_metric_storage_worker
+    ProjectMetricStorageRefreshWorker.perform_async(id)
+  end
 
   def self.pg_search(term)
     search_tsearch(term).presence || search_trm(term)
@@ -522,6 +529,11 @@ class Project < ActiveRecord::Base
   def refresh_project_score_storage
     pluck_from_database('refresh_project_score_storage')
   end
+
+  def refresh_project_metric_storage
+    pluck_from_database('refresh_project_metric_storage')
+  end
+
 
   # State machine delegation methods
   delegate :push_to_draft, :reject, :push_to_online, :fake_push_to_online, :finish, :push_to_trash,
