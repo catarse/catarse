@@ -2,9 +2,9 @@
 - detail = contribution.details.ordered.first
 p Olá, <strong>#{contribution.user.display_name}</strong>!
 
--if @notification.metadata.try(:[], 'message').empty?
+- if @notification.metadata.try(:[], 'message').empty?
   p #{contribution.project.user.display_name} acabou de sinalizar na plataforma que aconteceu um <strong>ERRO NO ENVIO</strong> de sua recompensa do projeto #{contribution.project.name}.
--else
+- else
   p #{contribution.project.user.display_name} acabou de sinalizar na plataforma que aconteceu um <strong>ERRO NO ENVIO</strong> de sua recompensa do projeto #{contribution.project.name} e lhe mandou a seguinte mensagem:
   p style="background-color:#f1f4f4; padding: 20px; margin: 20px 30px 50px 30px; border-radius:5px;"
     | #{@notification.metadata.try(:[], 'message')}
@@ -20,10 +20,9 @@ p
   br/
   | <strong>Valor da contribuição:</strong> #{number_to_currency contribution.value}
   br/
-  -if contribution.reward.present?
+  - if contribution.reward.present?
     | <strong>Recompensa selecionada:</strong> #{contribution.reward.description}
 
 p Caso você tenha alguma dúvida em relação ao <strong>projeto ou à sua recompensa</strong>, entre em contato diretamente com o realizador através da página do projeto #{link_to contribution.project.name, project_by_slug_url(contribution.project.permalink)} ou através do e-mail #{mail_to owner.try(:email)}. 
 
-p
 = render partial: 'user_notifier/mailer/contact_info'

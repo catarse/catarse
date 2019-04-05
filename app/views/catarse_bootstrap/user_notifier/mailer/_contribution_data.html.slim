@@ -19,7 +19,7 @@ p
     - owner_document = owner.try(:cpf)
     | <strong>Nome/Razão Social do realizador:</strong> #{owner_name}
     br/
-    | <strong>CPF/CNPJ do realizador:</strong> #{owner_document}   
+    | <strong>CPF/CNPJ do realizador:</strong> #{owner_document}
   br/
   | <strong>ID do apoio:</strong> #{detail.gateway_id}
   br/
@@ -32,12 +32,12 @@ p
     br/
     | <strong>Número de parcelas:</strong> #{detail.installments}
   br/
-  -if contribution.reward.present?
+  - if contribution.reward.present?
     | <strong>Recompensa selecionada:</strong> #{contribution.reward.description}
     br/
     | <strong>Estimativa de entrega informada pelo realizador:</strong> #{contribution.reward.display_deliver_estimate}
     br/
-  
+
   br/
 
 p
