@@ -2,26 +2,27 @@
 - project = contribution.project
 - detail = contribution.details.ordered.first
 
-p Olá #{contribution.user.display_name}!
 
-p #{project.user.display_name} precisa confirmar algumas informações para realizar a entrega da sua recompensa!
+h2 style="text-align:center; line-height: 45px;"
+  - if contribution.user.name
+    |Olá, <strong>#{contribution.user.name}</strong>!
+  - else
+    |Olá!
+    br/
+    | #{project.user.display_name} precisa confirmar algumas informações para realizar a entrega da sua recompensa ao projeto #{project.name}!
+
 
 p Relembrando as informações do seu apoio:
 
 br/
-| Projeto: #{project.name}
+| <strong>Projeto:</strong> #{project.name}
 br/
-| Valor da contribuição: #{number_to_currency contribution.value}
-- if detail.installments > 1
-  br/
-  | Número de parcelas: #{detail.installments}
-  br/
-  | Valor da parcela: #{number_to_currency(detail.installment_value, precision: 2)}
+| <strong>Valor da contribuição:</strong> #{number_to_currency contribution.value}
 br/
--if contribution.reward.present?
-  | Recompensa selecionada: #{contribution.reward.description}
+- if contribution.reward.present?
+  | <strong>Recompensa selecionada:</strong> #{contribution.reward.description}
   br/
-  | Estimativa de entrega: #{contribution.reward.display_deliver_estimate}
+  | <strong>Estimativa de entrega informada pelo realizador:</strong> #{contribution.reward.display_deliver_estimate}
   br/
   br/
 
@@ -32,8 +33,10 @@ p
     = link_to contribution_survey_url(contribution_id: contribution.id, id: Survey.where(reward_id: contribution.reward_id).first.id), target: '__blank' do
       = image_tag "#{CatarseSettings[:base_url]}/assets/catarse_bootstrap/btn-answer-survey.png"
 
-p Se tiver alguma dúvida, você pode entrar em contato diretamente com #{project.user.display_name} através do email: #{project.user.email}.
+p Caso você não seja redirecionado ao clicar na imagem acima, acesse o questionário através #{link_to 'deste link', contribution_survey_url(contribution_id: contribution.id, id: Survey.where(reward_id: contribution.reward_id).first.id)}
 
-p Um abraço,
+p Caso você tenha alguma dúvida em relação ao <strong>projeto ou à sua recompensa</strong>, entre em contato diretamente com o realizador através da página do projeto #{link_to contribution.project.name, project_by_slug_url(contribution.project.permalink)} ou através do e-mail #{mail_to owner.try(:email)}. 
 
-p Equipe do Catarse
+br/
+
+= render partial: 'user_notifier/mailer/contact_info'

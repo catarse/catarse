@@ -35,10 +35,10 @@ pt:
         label_address_phone: 'Telefone'
       email_confirmation:
         hello: "Olá %{name}"
-        hello_sub: "Estamos tendo problemas em falar com você..."
+        hello_sub: "Queremos certificar que temos o seu contato atualizado!"
         hello_email: "Esse é o seu email de contato? %{email}"
         confirmed_title: "Não deixe de olhar nossos emails!"
-        confirmed_sub: "Verifique seu SPAM e autorize os emails do Catarse."
+        confirmed_sub: "Se tiver problemas, olhe sempre seu SPAM e autorize os emails do Catarse ;)"
       contributions: "Apoiados"
       projects: "Criados"
       about_me: "Sobre você"
