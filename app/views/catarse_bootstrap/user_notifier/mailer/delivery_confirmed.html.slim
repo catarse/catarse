@@ -1,5 +1,5 @@
 - contribution ||= @notification.contribution
-- owner = project.user
+- owner = contribution.project.user
 - detail = contribution.details.ordered.first
 p Olá, <strong>#{contribution.user.display_name}</strong>!
 
