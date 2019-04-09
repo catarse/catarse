@@ -2,7 +2,7 @@
 - detail = contribution.details.ordered.first
 p Olá, <strong>#{contribution.user.display_name}</strong>!
 
-- if @notification.metadata.try(:[], 'message').empty?
+- if !@notification.metadata.try(:[], 'message').present?
   p #{contribution.project.user.display_name} acabou de marcar que a sua recompensa do projeto #{contribution.project.name} foi <strong>enviada</strong>.
 - else
   p #{contribution.project.user.display_name} acabou de marcar que a sua recompensa do projeto #{contribution.project.name} foi ENVIADA e lhe mandou a seguinte mensagem:
