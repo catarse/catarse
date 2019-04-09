@@ -12,7 +12,8 @@ br/
   | O projeto #{project.name} foi #{project.decorator.display_mailer_status} e o valor do seu apoio já está disponível para saque em seu <strong>#{link_to 'perfil', edit_user_url(contribution.user_id, anchor: 'balance')}</strong> no Catarse. 
 - else
   | O projeto #{project.name} foi #{project.decorator.display_mailer_status} e, por isso, tentamos fazer o estorno do seu apoio para o cartão de crédito. Por algum motivo não foi possível estornar a transação diretamente para o seu cartão. Dessa forma, o valor do apoio está disponível para saque em seu <strong>#{link_to 'perfil', edit_user_url(contribution.user_id, anchor: 'balance')}</strong> no Catarse. 
-
+br/
+br/
 
 - if detail.payment.gateway_data['paid_amount'].present?
   | <strong>Valor devolvido:</strong> #{number_to_currency detail.payment.gateway_data['paid_amount']/100.0, precision: 2}
