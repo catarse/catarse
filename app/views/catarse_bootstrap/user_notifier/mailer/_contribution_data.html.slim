@@ -22,6 +22,7 @@ p
     br/
     | <strong>CPF/CNPJ do realizador:</strong> #{owner_document}
   br/
+  br/
   | <strong>ID do apoio:</strong> #{detail.gateway_id}
   br/
   | <strong>Data da confirmação do apoio:</strong> #{I18n.l(detail.paid_at.to_date)}
@@ -32,6 +33,7 @@ p
   - if detail.installments > 1
     br/
     | <strong>Número de parcelas:</strong> #{detail.installments}
+  br/
   br/
   - if contribution.reward.present?
     | <strong>Recompensa selecionada:</strong> #{contribution.reward.description}
