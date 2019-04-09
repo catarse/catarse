@@ -36,7 +36,7 @@ pt:
           image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-mortecrens.jpg'            
         6:
           title: 'Lenora'
-          subtitle: 'Uma adaptação em quadrinhos do poema 'Lenore' de Edgar Allan Poe.'
+          subtitle: "Uma adaptação em quadrinhos do poema 'Lenore' de Edgar Allan Poe."
           link: 'https://www.catarse.me/lenora?ref=home_banner'
           cta: 'Conheça o projeto'
           image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-lenora.jpg'          
