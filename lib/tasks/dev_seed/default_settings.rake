@@ -1,4 +1,40 @@
 namespace :dev_seed do
+  desc 'states'
+  task input_states: :environment do
+    ['Acre|AC',
+    'Alagoas|AL',
+    'Amapá|AP',
+    'Amazonas|AM',
+    'Bahia|BA',
+    'Ceará|CE',
+    'Distrito Federal|DF',
+    'Espírito Santo|ES',
+    'Goiás|GO',
+    'Maranhão|MA',
+    'Mato Grosso|MT',
+    'Mato Grosso do Sul|MS',
+    'Minas Gerais|MG',
+    'Pará|PA',
+    'Paraíba|PB',
+    'Paraná|PR',
+    'Pernambuco|PE',
+    'Piauí|PI',
+    'Rio de Janeiro|RJ',
+    'Rio Grande do Norte|RN',
+    'Rio Grande do Sul|RS',
+    'Rondônia|RO',
+    'Roraima|RR',
+    'Santa Catarina|SC',
+    'São Paulo|SP',
+    'Sergipe|SE',
+    'Tocantins|TO'].each do |state_str|
+      name, acronym = state_str.split('|')
+      state = State.find_or_initialize_by acronym: acronym
+      state.name = name
+      state.save!
+    end
+  end
+
   desc 'setup demo configurations'
   task demo_settings: :environment do |t, args|
     raise 'only run in development' unless Rails.env.development?
