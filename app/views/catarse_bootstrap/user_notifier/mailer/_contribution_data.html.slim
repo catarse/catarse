@@ -27,7 +27,7 @@ p
   br/
   | <strong>Data da confirmação do apoio:</strong> #{I18n.l(detail.paid_at.to_date)}
   br/
-  | <strong>Forma de pagamento:</strong> #{contribution.payment_choice}
+  | <strong>Forma de pagamento:</strong> #{detail.payment_method}
   br/
   | <strong>Valor total da contribuição:</strong> #{number_to_currency detail.gateway_amount, precision: 2}
   - if detail.installments > 1
