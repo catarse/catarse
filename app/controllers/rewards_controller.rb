@@ -40,6 +40,44 @@ class RewardsController < ApplicationController
     end
   end
 
+  def upload_image 
+    authorize resource, :update?
+    params[:reward] = {
+      uploaded_image: params[:uploaded_image]
+    }
+
+    puts '==============='
+    puts params[:uploaded_image].inspect
+    puts '==============='
+
+    @reward = resource
+
+    if @reward.update permitted_params
+      @reward.reload
+      render status: 200, json: {
+        uploaded_image: @reward.uploaded_image.url(:thumb_reward)
+      }
+    else
+      render status: 400, json: { errors: 'Error on uploading image' }
+    end
+  end
+
+  def delete_image
+    authorize resource, :update?
+
+    @reward = resource
+    @reward.remove_uploaded_image!
+
+    if @reward.save
+      @reward.reload
+      render status: 200, json: {
+        uploaded_image: @reward.uploaded_image.url(:thumb_reward)
+      }
+    else
+      render status: 400, json: { errors: 'Error deleting the image' }
+    end
+  end
+
   def resource
     @reward ||= parent.rewards.find params[:id]
   end

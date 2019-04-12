@@ -90,6 +90,8 @@ Catarse::Application.routes.draw do
       resources :rewards do
         member do
           get :toggle_survey_finish
+          post :upload_image
+          delete :delete_image
         end
         resources :surveys, only: [:new], controller: 'surveys'
         post :sort, on: :member
