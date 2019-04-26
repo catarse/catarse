@@ -46,10 +46,6 @@ class RewardsController < ApplicationController
       uploaded_image: params[:uploaded_image]
     }
 
-    puts '==============='
-    puts params[:uploaded_image].inspect
-    puts '==============='
-
     @reward = resource
 
     if @reward.update permitted_params
