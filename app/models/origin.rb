@@ -18,7 +18,6 @@ class Origin < ActiveRecord::Base
   # until found or create a new Origin
   # { ref: referral, domain: 'domain' }
   def self.process_hash(hash = {})
-    p 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',hash
     if !hash.nil? && (\
         !hash[:domain].blank?\
         || !hash[:ref].blank?\
@@ -36,7 +35,6 @@ class Origin < ActiveRecord::Base
         content:  hash[:content],
         term:     hash[:term]
       )
-      p 'YYYYYYYYYYYYYYYYYYYYYYYYYY',o
       o
     end
   end
