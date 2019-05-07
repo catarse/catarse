@@ -1,5 +1,6 @@
 - contribution ||= @notification.contribution
 - project = contribution.project
+- owner = project.user
 - detail = contribution.details.ordered.first
 
 
@@ -8,9 +9,9 @@ h2 style="text-align:center; line-height: 45px;"
     |Olá, <strong>#{contribution.user.name}</strong>!
   - else
     |Olá!
-    br/
-    | #{project.user.display_name} precisa confirmar algumas informações para realizar a entrega da sua recompensa ao projeto #{project.name}!
 
+br/
+| #{project.user.display_name} precisa confirmar algumas informações para realizar a entrega da sua recompensa ao projeto #{project.name}!
 
 p Relembrando as informações do seu apoio:
 

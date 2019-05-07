@@ -66,7 +66,7 @@ class Projects::ContributionsController < ApplicationController
 
   def second_slip
     authorize resource
-    if resource.reward.try(:sold_out?)
+    if resource.reward.try(:sold_out?) || resource.reward.try(:run_out)
       flash[:alert] = t('.reward_sold_out')
       return redirect_to new_project_contribution_path(resource.project)
     end

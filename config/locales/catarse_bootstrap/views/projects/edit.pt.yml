@@ -81,8 +81,8 @@ pt:
       reward_faq_sub_intro: 'Dicas para o preenchimento:'
       faq:
         1:
-          title: 'Descrição e Título da recompensa:'
-          description: 'Ajudam os apoiadores a entenderem o que você está oferecendo. Seja objetivo e transparente! Saiba neste artigo <a href="http://suporte.catarse.me/hc/pt-br/articles/212191546-Recompensas-realizadores-#o-que-oferecer" target="_blank" class="alt-link">o que você pode e o que não pode oferecer</a>  e se inspire com <a href="http://blog.catarse.me/mais-de-30-ideias-de-recompensa-para-seu-crowdfunding/" target="_blank" class="alt-link">ideias de recompensas</a>.'
+          title: 'Título, Descrição e Imagem da recompensa:'
+          description: 'Ajudam os apoiadores a entenderem e visualizarem o que você está oferecendo. Seja objetivo, criativo e transparente! Saiba neste artigo <a href="http://suporte.catarse.me/hc/pt-br/articles/212191546-Recompensas-realizadores-#o-que-oferecer" target="_blank" class="alt-link">o que você pode e o que não pode oferecer</a>  e se inspire com <a href="http://blog.catarse.me/mais-de-30-ideias-de-recompensa-para-seu-crowdfunding/" target="_blank" class="alt-link">ideias de recompensas</a>.'
         2:
           title: 'Valor da recompensa:'
           description: 'Indica com quanto o apoiador deve contribuir para receber a recompensa. Procure ofertar um valor justo e realista. Para te ajudar a definir esses valores, recomendamos a <a href="http://blog.catarse.me/meta-crowdfunding-calculadora-orcamento/" target="_blank" class="alt-link">Calculadora de Orçamento</a>.'
@@ -102,7 +102,8 @@ pt:
       reward_gone: 'Esgotada'
       reward_limited: 'Limitada'
       delivery: 'Envio'
-      reward_limited_input: 'Recompensa limitada'
+      run_out_reward: 'Esgotar recompensa'
+      reward_limited_input: 'Definir limite de apoiadores'
       reward_available: ' (%{available} de %{maximum} disponíveis)'
       delivery_estimation: 'Estimativa de entrega: '
       reward_link_label: 'Link para apoio direto'
@@ -240,7 +241,7 @@ pt:
       subscriptions_tab: ' Base de assinantes'
       surveys_tab: ' Questionários'
       preview_tab: Preview
-      posts_tab: ' Novidades '
+      posts_tab: ' Enviar Novidades '
       edit_project: ' Editar projeto '
       fiscal_tab: ' Documentos Fiscais'
       send: Enviar

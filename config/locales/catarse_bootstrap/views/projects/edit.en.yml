@@ -139,7 +139,8 @@ en:
       reward_gone: Out of stock
       reward_limited: Limited
       delivery: 'Send:'
-      reward_limited_input: Limited Reward
+      run_out_reward: 'Run out reward'
+      reward_limited_input: 'Set limit of contributors'
       reward_available: "( %{available} of %{maximum} available)"
       delivery_estimation: 'Estimated delivery:'
       reward_link_label: Link to direct support

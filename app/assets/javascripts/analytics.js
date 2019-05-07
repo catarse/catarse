@@ -56,6 +56,8 @@ window.CatarseAnalytics = window.CatarseAnalytics || (function(){
     }
   })();
 
+  var base_url = 'www.catarse.me', cookie_url='.catarse.me';
+
   var ctrse_sid=(function(cookie){
     var sid=cookie.get('ctrse_sid');
     if(!sid) {
@@ -63,86 +65,94 @@ window.CatarseAnalytics = window.CatarseAnalytics || (function(){
       var UUID=function(){for(var dec2hex=[],i=0;15>=i;i++)dec2hex[i]=i.toString(16);return function(){for(var uuid="",i=1;36>=i;i++)uuid+=9===i||14===i||19===i||24===i?"-":15===i?4:20===i?dec2hex[4*Math.random()|8]:dec2hex[15*Math.random()|0];return uuid}}();
       sid=UUID();
     }
-    cookie.set('ctrse_sid',sid,180,'/',false,'.catarse.me');
+    cookie.set('ctrse_sid',sid,180,'/',true,cookie_url);
     return sid;
   })(monster);
 
   var _apiHost,_user,_project;
   var _analyticsOneTimeEventFired={};
-  try {
-    function _actualRequest() {
-      var location = window.location;
-      var domain = location.origin || (location.protocol + '//' + location.hostname);
-      return {
-        referrer: document.referrer||undefined,
-        url: location.href,
-        protocol: location.protocol.substr(0,location.protocol.length-1),
-        hostname: location.hostname,
-        domain: domain,
-        pathname: location.pathname || location.href.substr(domain.length).replace(/[\?\#].*$/,''),
-        userAgent: typeof navigator!=='undefined' ? navigator.userAgent : undefined,
-        hash: location.hash.replace(/^\#/,''),
-        query: (function parseParams() {
-            if(location.search) {
-              try {
-                return location.search.replace(/^\?/,'').split('&').reduce(function (params, param) {
-                    var paramSplit = param.split('=').map(function (value) {
-                        return decodeURIComponent(value.replace('+', ' '));
-                    });
-                    params[paramSplit[0]] = paramSplit[1];
-                    return params;
-                }, {});
-              } catch(e) {
-                return location.search;
-              }
+  function _actualRequest() {
+    var location = window.location;
+    var domain = location.origin || (location.protocol + '//' + location.hostname);
+    return {
+      referrer: document.referrer||undefined,
+      url: location.href,
+      protocol: location.protocol.substr(0,location.protocol.length-1),
+      hostname: location.hostname,
+      domain: domain,
+      pathname: location.pathname || location.href.substr(domain.length).replace(/[\?\#].*$/,''),
+      userAgent: typeof navigator!=='undefined' ? navigator.userAgent : undefined,
+      hash: location.hash.replace(/^\#/,''),
+      query: (function parseParams() {
+          if(location.search) {
+            try {
+              return location.search.replace(/^\?/,'').split('&').reduce(function (params, param) {
+                  var paramSplit = param.split('=').map(function (value) {
+                      return decodeURIComponent(value.replace('+', ' '));
+                  });
+                  params[paramSplit[0]] = paramSplit[1];
+                  return params;
+              }, {});
+            } catch(e) {
+              return location.search;
             }
-        })()
-      };
+          }
+      })()
     };
+  };
 
-    var origin = (function(request,cookie) {
-      try {
-        var o = JSON.parse(cookie.get('ctrse_origin')||null) || {createdAt: new Date()};
-      } catch(e) {
-        o = {createdAt: new Date()};
-      }
-      var fromCatarse=request.referrer && /^https?:\/\/([^\\/]+\.)?catarse\.me/.test(request.referrer);
-      if(fromCatarse) {
-        //Só pega o ultimo ref. Não atualiza utms...
-        o.ref = (request.query&&request.query.ref) || o.ref; //preferencia para a query.
-      } else if(/*!fromCatarse && */ request.referrer || (!o._time || new Date().getTime()-o._time>10*60*1000/*10min*/)) {
-        var m=request.referrer && request.referrer.match(/https?:\/\/([^\/\?#]+)/);
-        var refDomain=(m && m[1]) || undefined;
-        var query=request.query;
-        //se, e somente se, tem algum utm na query...
-        if(query && ['utm_campaign','utm_source','utm_medium','utm_content','utm_term'].some(function(p){
-          return !!query[p];
-        })) {//então, substitui todos, mesmo os q nao tem, pois são um conjunto de informações...
-          o.domain  = refDomain;
-          o.campaign=query.utm_campaign;
-          o.source=  query.utm_source;
-          o.medium=  query.utm_medium;
-          o.content= query.utm_content;
-          o.term=    query.utm_term;
-        } else if (refDomain && !['domain','utm_campaign','utm_source','utm_medium','utm_content','utm_term'].some(function(p){
-          return !!o[p];
-        })) {//se tem refDomain e não tem no origin algum utm ou domain anterior...
-          o.domain  = refDomain;
-        }
+  var _firstPageView=true;
+  function _origin(_request) {
+    var _date=new Date();
+    try {
+      var o = JSON.parse(monster.get('ctrse_origin')||null) || {createdAt: _date,updatedAt: _date};
+    } catch(e) {
+      o = {createdAt: _date,updatedAt: _date};
+    }
 
-        if(!o.campaign && query && query.ref) {
-          //nesse caso, como veio de outro dominio, sem utm params, mas com ref, assumimos q esse ref é um campaign.
-          o.campaign = query.ref;
-        }
+    var query=_request.query;
+    var origin_has_utm=['domain','campaign','source','medium','content','term'].some(function(p){return !!o[p]});
+    var query_has_utm=query && ['utm_campaign','utm_source','utm_medium','utm_content','utm_term'].some(function(p){return !!query[p]});
+    var expired = !o._time || (_date.getTime()-o._time)>10*60*1000/*10 min*/;
+
+    var fromSite= (!_firstPageView)//se não é a primeira vez q passa aqui, só pode ser fromSite.
+            || (_request.referrer && new RegExp(base_url).test(_request.referrer));
+    if(fromSite) {
+      //Só pega o ultimo ref. Não atualiza utms...
+      if(query && query.ref && o.ref!=query.ref) {
+        if(!origin_has_utm) o.domain=base_url;
+        o.ref = query.ref;
+        o.updatedAt = _date;
       }
-      //fazemos o _time aqui por causa da verificação acima !o._time, indicando q foi criado agora.
-      o._time=new Date().getTime();
-      cookie.set('ctrse_origin',JSON.stringify(o),180,'/',false,'.catarse.me');
-      return o;
-    })(_actualRequest(),monster);
-  } catch(e) {
-    console.error('[CatarseAnalytics] error',e);
-  }
+    } else if(/*!fromSite && */ _request.referrer || expired) {
+      var m=_request.referrer && _request.referrer.match(/https?:\/\/([^\/\?#]+)/);
+      var refDomain=(m && m[1]) || undefined;
+      //se, e somente se, tem algum utm na query...
+      if(query_has_utm) {//então, substitui todos, mesmo os q nao tem, pois são um conjunto de informações...
+        o.domain  =refDomain;
+        o.campaign=query.utm_campaign;
+        o.source  =query.utm_source;
+        o.medium  =query.utm_medium;
+        o.content =query.utm_content;
+        o.term    =query.utm_term;
+        o.updatedAt=_date;
+      } else if (refDomain && !origin_has_utm) {//se tem refDomain e não tem no origin algum utm ou domain anterior...
+        o.domain   = refDomain;
+        o.updatedAt= _date;
+      }
+
+      if(!o.campaign && query && query.ref) {
+        //nesse caso, como veio de outro dominio, sem utm params, mas com ref, assumimos q esse ref é um campaign.
+        o.campaign = query.ref;
+        o.updatedAt= _date;
+      }
+    }
+    //fazemos o _time aqui por causa da verificação acima !o._time, indicando q foi criado agora.
+    o._time=_date.getTime();
+    monster.set('ctrse_origin',JSON.stringify(o),180,'/',true,cookie_url);
+    return o;
+  };
+
   //Metodos semelhantes ao modulo "h"
   function _getApiHost() {
     if(window.CatarseAnalyticsURL)
@@ -193,14 +203,15 @@ window.CatarseAnalytics = window.CatarseAnalytics || (function(){
         var gaTracker = (typeof ga==='function' && ga.getAll && ga.getAll() && ga.getAll()[0]) || null;
         ignoreGA = ignoreGA || typeof ga!=='function';
 
+        var _request = _actualRequest();
         var data = eventObj.extraData&&typeof eventObj.extraData==='object' ? JSON.parse(JSON.stringify(eventObj.extraData)) : {};
         data.ctrse_sid=ctrse_sid;
-        data.origin=origin;
+        data.origin=_origin(_request);
         data.category=eventObj.cat;
         data.action=eventObj.act;
         data.label=eventObj.lbl;
         data.value=eventObj.val;
-        data.request=_actualRequest();
+        data.request=_request;
         if(user&&user.user_id) {
           data.user={
             id: user.user_id,
@@ -265,11 +276,15 @@ window.CatarseAnalytics = window.CatarseAnalytics || (function(){
     }
   }*/
   var pvto;
-  function _pageView(ignoreGA) {
+  function _pageView(firstPageView) {
+    if(!firstPageView)
+      _firstPageView=false;
+    
     pvto&&clearTimeout(pvto);
     pvto=setTimeout(function() {
-      _event({cat:'navigation',act:'pageview',lbl:location.pathname}, null, true);
-      if(!ignoreGA && typeof ga!='undefined') {
+      _event({cat:'navigation',act:'pageview',lbl:location.pathname}, null, true);//ignoraGa pq vai mandar abaixo
+      //on first page view, GA will to this for us
+      if(!firstPageView && typeof ga!='undefined') {
         ga('set','page',location.pathname);
         ga('send', 'pageview', location.pathname);
       }
@@ -304,7 +319,10 @@ window.CatarseAnalytics = window.CatarseAnalytics || (function(){
   }
 
   return {
-    origin: origin,
+    origin: function(){
+      //Evita de passar outro request
+      return _origin(_actualRequest());
+    },
     event: _event,
     pageView: _pageView,
     oneTimeEvent: function(eventObj, fn) {
