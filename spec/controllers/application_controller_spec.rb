@@ -56,9 +56,9 @@ RSpec.describe ApplicationController, type: :controller do
         expect(cookies[:referral_link]).to eq nil
       end
 
-      it 'should store HTTP_REFERRER in origin' do
-        expect(cookies[:origin_referral]).to eq referrer
-      end
+      #it 'should store HTTP_REFERRER in origin' do
+      #  expect(cookies[:origin_referral]).to eq referrer
+      #end
     end
 
     context 'when we still have a referral link in session and the ref params is defined and referrer is nil' do

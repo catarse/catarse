@@ -317,9 +317,9 @@ RSpec.describe UsersController, type: :controller do
       it { is_expected.to be_successful }
     end
 
-    it 'should set referral session' do
-      expect(cookies[:referral_link]).to eq 'test'
-    end
+    #it 'should set referral session' do
+    #  expect(cookies[:referral_link]).to eq 'test'
+    #end
   end
 
   describe 'POST ban' do

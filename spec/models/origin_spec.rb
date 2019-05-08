@@ -8,10 +8,10 @@ RSpec.describe Origin, type: :model do
     it { is_expected.to have_many(:contributions) }
   end
 
-  describe 'validations' do
-    it { is_expected.to validate_presence_of(:domain) }
-    it { is_expected.to validate_uniqueness_of(:domain).scoped_to(:referral) }
-  end
+  #describe 'validations' do
+  #  it { is_expected.to validate_presence_of(:domain) }
+  #  it { is_expected.to validate_uniqueness_of(:domain).scoped_to(:referral) }
+  #end
 
   describe '#process_hash' do
     let(:domain) { nil }
