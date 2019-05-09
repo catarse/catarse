@@ -149,6 +149,9 @@ group :test, :development do
   gem 'rspec-collection_matchers'
   gem 'pry'
   gem 'jasmine-rails'
+end
+
+group :sandbox, :test, :development do
   gem 'faker'
   gem 'cpf_faker'
 end
