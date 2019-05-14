@@ -75,12 +75,6 @@ class Project < ActiveRecord::Base
                   using: :trigram,
                   ignoring: :accents
 
-  after_commit :start_metric_storage_worker, on: :create
-
-  def start_metric_storage_worker
-    ProjectMetricStorageRefreshWorker.perform_async(id)
-  end
-
   def self.pg_search(term)
     search_tsearch(term).presence || search_trm(term)
   end
@@ -491,7 +485,6 @@ class Project < ActiveRecord::Base
   def is_flexible?
     mode == 'flex'
   end
-
 
   def is_sub?
     mode == 'sub'
