@@ -62,6 +62,17 @@ RSpec.describe PaymentObserver do
   end
 
   describe '#from_pending_to_paid' do
+    context 'when first payment confirmation' do
+      before do
+        expect(payment.contribution).to receive(:notify_to_contributor).with(:confirm_contribution)
+        expect(ProjectScoreStorageRefreshWorker).to receive(:perform_async).with(payment.project.id)
+        expect(ProjectMetricStorageRefreshWorker).to receive(:perform_async).with(payment.project.id)
+      end
+
+      it 'should expectations' do
+        payment.notify_observers(:from_pending_to_paid)
+      end
+    end
     context 'when project is failed' do
       before do
         allow(payment.project).to receive(:state).and_return('failed')

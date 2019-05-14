@@ -54,6 +54,7 @@ class ProjectObserver < ActiveRecord::Observer
     )
 
     FacebookScrapeReloadWorker.perform_async(project.direct_url)
+    ProjectMetricStorageRefreshWorker.perform_in(5.seconds, project.id)
   end
 
   def from_online_to_draft(project)

@@ -108,6 +108,46 @@ RSpec.describe ProjectObserver do
     end
   end
 
+  describe "#from_draft_to_online" do
+    context 'expect that update expires_at and audited data' do
+      let(:project) { create(:project, state: 'draft') }
+      it do
+        expect(project).to receive(:update_expires_at).at_least(:once).and_return(true)
+        expect(project).to receive(:update_attributes).with(
+          published_ip: project.user.current_sign_in_ip,
+          audited_user_name: project.user.name,
+          audited_user_cpf: project.user.cpf,
+          audited_user_phone_number: project.user.phone_number
+        ).and_return(true)
+        project.push_to_online
+      end
+    end
+
+    context 'expect call worker to broadcast new project online to followers' do
+      let(:project) { create(:project, state: 'draft') }
+      it do
+        expect(UserBroadcastWorker).to receive(:perform_async).with(follow_id: project.user_id, template_name: 'follow_project_online', project_id: project.id)
+        project.push_to_online
+      end
+    end
+
+    context 'expect call worker to update fb cache' do
+      let(:project) { create(:project, state: 'draft') }
+      it do
+        expect(FacebookScrapeReloadWorker).to receive(:perform_async).with(project.direct_url)
+        project.push_to_online
+      end
+    end
+
+    context 'expect call worker to schedule project metrics storage' do
+      let(:project) { create(:project, state: 'draft') }
+      it do
+        expect(ProjectMetricStorageRefreshWorker).to receive(:perform_in).with(5.seconds, project.id)
+        project.push_to_online
+      end
+    end
+  end
+
   describe '#from_online_to_failed' do
     let(:project) do
       create_project({

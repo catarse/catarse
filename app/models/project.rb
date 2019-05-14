@@ -492,7 +492,6 @@ class Project < ActiveRecord::Base
     mode == 'flex'
   end
 
-
   def is_sub?
     mode == 'sub'
   end
