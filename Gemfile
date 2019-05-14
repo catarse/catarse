@@ -135,7 +135,8 @@ group :development do
   gem 'foreman'
   gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'thin'
+  #gem 'thin'
+  gem 'puma'
   # Uncomment only for optimization, should be commented on master branch
   # gem 'rack-mini-profiler'
   # gem 'ruby-prof'
@@ -148,6 +149,8 @@ group :test, :development do
   gem 'rspec-collection_matchers'
   gem 'pry'
   gem 'jasmine-rails'
+  gem 'faker'
+  gem 'cpf_faker'
 end
 
 group :test do

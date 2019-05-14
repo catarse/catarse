@@ -809,7 +809,7 @@ class CommonWrapper
     }.merge!({ 'Authorization' => "Bearer #{@api_key}" })
 
     if Rails.env.development?
-      h.merge!({ 'X-Forwarded-For' => current_ip })
+      h.merge!({ 'X-Forwarded-For' => (current_ip||'127.0.0.1') })
     end
 
     h
