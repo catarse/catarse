@@ -78,7 +78,8 @@ class PaymentObserver < ActiveRecord::Observer
 
     unless payment.paid_at.present?
       contribution.notify_to_contributor(:confirm_contribution)
-      ProjectScoreStorageRefreshWorker.perform_async(project.id) if project.open_for_contributions?
+      ProjectScoreStorageRefreshWorker.perform_async(project.id)
+      ProjectMetricStorageRefreshWorker.perform_async(project.id)
       if project.successful? && project.successful_pledged_transaction
         transfer_diff = (
           project.paid_pledged - project.all_pledged_kind_transactions.sum(:amount))
