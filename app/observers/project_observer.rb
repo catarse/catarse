@@ -23,6 +23,10 @@ class ProjectObserver < ActiveRecord::Observer
     project.index_on_common
   end
 
+  def after_destroy(project)
+    project.index_on_common
+  end
+
   def from_waiting_funds_to_successful(project)
     notify_admin_that_project_is_successful(project)
 
