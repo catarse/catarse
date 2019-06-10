@@ -10,7 +10,7 @@ else
 end
 
 # Requests with more than 30 sec will be killed
-timeout 30
+timeout (ENV['RACK_TIMEOUT'] || 30).to_i
 
 # Preload entire app for fast forking.
 preload_app true

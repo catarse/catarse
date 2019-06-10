@@ -24,14 +24,8 @@ class SubscriptionProject < Project
                                               })
   end
 
-  #@TODO move to db view
   def pledged
-    sum = 0
-    subscriptions.where(status: 'active').each do |subscription|
-      paid_or_pending = subscription.subscription_payments.where(status: ['paid', 'pending']).order(:created_at).last 
-      sum += paid_or_pending.data['amount'].to_f/100.0 if paid_or_pending.present?
-    end
-    sum
+    @pledged ||= subscriptions.where(status: 'active').sum("(checkout_data->>'amount')::integer/100")
   end
 
   def current_goal
