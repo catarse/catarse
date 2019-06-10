@@ -26,12 +26,14 @@ class SubscriptionProject < Project
 
   #@TODO move to db view
   def pledged
-    sum = 0
-    subscriptions.where(status: 'active').each do |subscription|
-      paid_or_pending = subscription.subscription_payments.where(status: ['paid', 'pending']).order(:created_at).last 
-      sum += paid_or_pending.data['amount'].to_f/100.0 if paid_or_pending.present?
+    Rails.cache.fetch("subscription_project/#{id}/pledged", expires_in: 12.hours) do
+      sum = 0
+      subscriptions.where(status: 'active').each do |subscription|
+        paid_or_pending = subscription.subscription_payments.where(status: ['paid', 'pending']).order(:created_at).last 
+        sum += paid_or_pending.data['amount'].to_f/100.0 if paid_or_pending.present?
+      end
+      sum
     end
-    sum
   end
 
   def current_goal
