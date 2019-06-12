@@ -3,7 +3,7 @@
 namespace :balance_transfer do
   desc 'process transfers that is authorized'
   task process_authorized: :environment do
-    BalanceTransfer.authorized.find_each do |bt|
+    BalanceTransfer.authorized.each do |bt|
       Raven.user_context(balance_transfer_id: bt.id)
 
       begin
