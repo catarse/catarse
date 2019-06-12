@@ -210,7 +210,7 @@ RSpec.describe ProjectObserver do
     end
 
     before do
-      expect(BalanceTransaction).to receive(:insert_project_refund_contributions).with(project.id).and_call_original
+      #expect(BalanceTransaction).to receive(:insert_project_refund_contributions).with(project.id).and_call_original
       expect(BalanceTransaction).to receive(:insert_contribution_refund).with(contribution.id).and_call_original
       expect(BalanceTransaction).to receive(:insert_successful_project_transactions).with(project.id).and_call_original
 

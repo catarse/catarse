@@ -66,7 +66,7 @@ class ProjectObserver < ActiveRecord::Observer
   end
 
   def from_successful_to_rejected(project)
-    BalanceTransaction.insert_project_refund_contributions(project.id)
+    #BalanceTransaction.insert_project_refund_contributions(project.id)
     refund_all_payments(project)
     ProjectNotification.where(user: project.user, template_name: 'project_success').where('deliver_at > now()').destroy_all
     project.notify_owner(:project_canceled)
