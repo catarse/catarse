@@ -7,7 +7,7 @@ class SubscriptionReportForProjectOwner < ActiveRecord::Base
   scope :status, ->(status) { where(status: status) }
 
   def self.to_csv
-    attributes = ['Nome completo',	'Nome público', 'CPF', 'Email perfil Catarse',	'Valor do apoio mensal',	'Título da recompensa',	'Descrição da recompensa',	'Total apoiado até hoje', 'Status da Assinatura',	'Meio de pagamento',	'Data de confirmação do último pagamento',	'Data de início da Assinatura',	'Qtde. de apoios confirmados',	'ID do usuário', 'Anônimo', 'Rua', 'Número', 'Complemento', 'Bairro',	'Cidade',	'Estado',	'CEP']
+    attributes = ['Nome completo',	'Nome público', 'CPF', 'Email perfil Catarse',	'Valor do pagamento mensal',	'Título da recompensa',	'Descrição da recompensa',	'Total pago até hoje', 'Status da Assinatura',	'Meio de pagamento',	'Data de confirmação da última cobrança',	'Data de início da Assinatura',	'Qtde. de pagamentos confirmados',	'ID do usuário', 'Anônimo', 'Rua', 'Número', 'Complemento', 'Bairro',	'Cidade',	'Estado',	'CEP']
     CSV.generate(headers: true) do |csv|
       csv << attributes
 
