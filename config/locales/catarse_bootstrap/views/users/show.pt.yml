@@ -51,7 +51,7 @@ pt:
       withdraw_limits_msg: 'Você pode realizar 01 saque por mês. O valor sacado é sempre o total disponível no saldo'
       withdraw_canceling_title: 'Cancelamento de projeto em andamento'
       withdraw_canceling_msg: 'Você só poderá solicitar um saque após o projeto ser definitivamente cancelado e os apoiadores reembolsados.'
-      success_message: 'Seu saque foi solicitado com sucesso. Em até 10 dias úteis o seu dinheiro estará em sua conta bancária!'
+      success_message: 'Seu saque foi solicitado com sucesso. Em 10 dias úteis o seu dinheiro estará em sua conta bancária!'
       bank:
         account: 'Conta: '
         name: 'Nome / Razão Social: '
