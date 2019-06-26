@@ -6,9 +6,6 @@ class ProjectReportExportWorker
 
   def perform(id)
     resource = ProjectReportExport.find(id)
-    #TODO:
-    # upload csv file
-    # upload xls file
-    # save output url (or maybe generate download url with id)
+    resource.fetch_report
   end
 end
