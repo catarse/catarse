@@ -83,7 +83,7 @@ Catarse::Application.routes.draw do
       end
     end
     resources :projects, only: %i[create update edit new show] do
-      resources :project_report_exports
+      resources :project_report_exports, controller: 'projects/project_report_exports'
       get 'subscriptions/:any', to: 'projects#show', on: :member
       resources :accounts, only: %i[create update]
       resources :posts, controller: 'projects/posts', only: %i[destroy show create]

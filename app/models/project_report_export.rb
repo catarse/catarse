@@ -24,10 +24,20 @@ class ProjectReportExport < ActiveRecord::Base
     write_data_and_upload(data)
   end
 
+  def content_type
+    case report_type_ext
+    when 'csv'
+      'application/csv'
+    when 'xls'
+      'application/vnd.ms-excel'
+    else
+    end
+  end
+
   private
 
   def report_name
-    "#{report_type}_#{created_at.iso8601}"
+    "#{report_type}_#{created_at.to_time.to_i}"
   end
 
   def write_data_and_upload(data)
