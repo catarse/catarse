@@ -264,7 +264,7 @@ pt:
     flex_dashboard_explanation:
       flex:
         kind_text: "Você está participando do período de testes do modelo flexível. Sua participação é essencial para entendermos como podemos expandir esse modelo para todos os usuários. %{link}"
-        expiration_text: "Na Campanha Flexível, você pode ficar com sua campanha em captação por até 1 ano! Com ela no ar, você terá a opção de definir uma data de término do projeto (mínimo de 2 dias). Após o final da campanha, você recebe tudo o que tiver arrecadado (taxas descontadas) em até 10 dias úteis."
+        expiration_text: "Na Campanha Flexível, você pode ficar com sua campanha em captação por até 1 ano! Com ela no ar, você terá a opção de definir uma data de término do projeto (mínimo de 2 dias). Após o final da campanha, você recebe tudo o que tiver arrecadado (taxas descontadas) em 10 dias úteis."
         expiration_title: "Prazo de arrecadação"
     dashboard_user_about:
       submit: "Salvar"
