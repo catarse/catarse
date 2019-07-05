@@ -173,7 +173,7 @@ pt:
       contributions_per_day_label: 'Apoios confirmados por dia'
       contributions_per_day_label_sub: 'Novas assinaturas por dia'
       last_30_days_indication: 'Últimos 30 dias'
-      paid_date_indication: 'Considerando a data de confirmação do pagamento'
+      paid_date_indication: 'Últimos 30 dias (Considerando a data de confirmação do pagamento)'
       location_origin_title: 'Localização geográfica dos apoios'
       ref_origin_title: 'Origem dos apoios'
       visitors_per_day_empty: Assim que visitantes começarem a aparecer você terá acesso a um gráfico aqui com o número de visitantes por dia. Com isso, você terá um controle diário de quantas pessoas visitam seu projeto.
