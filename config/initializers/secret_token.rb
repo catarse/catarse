@@ -9,7 +9,8 @@ require 'securerandom'
 def find_secure_token
   CatarseSettings[:secret_token] = SecureRandom.hex(64) unless ::CatarseSettings.get_without_cache(:secret_token)
   CatarseSettings.get_without_cache(:secret_token)
-rescue
+rescue => e
+  puts "find_secure_token error: #{e.inspect}"
   # Just to ensure that we can run migrations and create the settings table
   nil
 end
@@ -17,7 +18,8 @@ end
 def find_secure_key_base
   CatarseSettings[:secret_key_base] = SecureRandom.hex(64) unless ::CatarseSettings.get_without_cache(:secret_key_base)
   CatarseSettings.get_without_cache(:secret_key_base)
-rescue
+rescue => e
+  puts "find_secure_key_base error: #{e.inspect}"
   # Just to ensure that we can run migrations and create the settings table
   nil
 end

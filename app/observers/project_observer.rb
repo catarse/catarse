@@ -23,6 +23,10 @@ class ProjectObserver < ActiveRecord::Observer
     project.index_on_common
   end
 
+  def after_destroy(project)
+    project.index_on_common
+  end
+
   def from_waiting_funds_to_successful(project)
     notify_admin_that_project_is_successful(project)
 
@@ -54,6 +58,7 @@ class ProjectObserver < ActiveRecord::Observer
     )
 
     FacebookScrapeReloadWorker.perform_async(project.direct_url)
+    ProjectMetricStorageRefreshWorker.perform_in(5.seconds, project.id)
   end
 
   def from_online_to_draft(project)
@@ -61,7 +66,7 @@ class ProjectObserver < ActiveRecord::Observer
   end
 
   def from_successful_to_rejected(project)
-    BalanceTransaction.insert_project_refund_contributions(project.id)
+    #BalanceTransaction.insert_project_refund_contributions(project.id)
     refund_all_payments(project)
     ProjectNotification.where(user: project.user, template_name: 'project_success').where('deliver_at > now()').destroy_all
     project.notify_owner(:project_canceled)

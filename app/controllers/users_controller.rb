@@ -137,7 +137,7 @@ class UsersController < ApplicationController
   def ban
     authorize resource
     resource.update_column(:banned_at, DateTime.now)
-    BlacklistDocument.create(number: @user.cpf) unless @user.cpf.nil?
+    BlacklistDocument.find_or_create_by(number: @user.cpf) unless @user.cpf.nil?
 
     respond_to do |format|
       format.json { render json: { success: 'OK' } }
@@ -199,6 +199,11 @@ class UsersController < ApplicationController
   def drop_and_create_subscriptions
     params[:unsubscribes]&.each do |subscription|
       project_id = subscription[0].to_i
+
+      puts "+++++++++++++++++++++++"
+      puts subscription.inspect
+      puts project_id
+      puts "+++++++++++++++++++++++"
       # change from unsubscribed to subscribed
       if subscription[1] == '1'
         @user.unsubscribes.drop_all_for_project(project_id)

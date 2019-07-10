@@ -90,15 +90,15 @@ RSpec.describe ProjectsController, type: :controller do
     end
     it { is_expected.to be_success }
 
-    context 'with referral link' do
-      subject { cookies[:referral_link] }
+    #context 'with referral link' do
+    #  subject { cookies[:referral_link] }
 
-      before do
-        get :index, locale: :pt, ref: 'referral'
-      end
+    #  before do
+    #    get :index, locale: :pt, ref: 'referral'
+    #  end
 
-      it { is_expected.to eq('referral') }
-    end
+    #  it { is_expected.to eq('referral') }
+    #end
   end
 
   describe 'GET new' do

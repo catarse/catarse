@@ -19,19 +19,19 @@ RSpec.describe ApplicationController, type: :controller do
       controller.referral_it!
     end
 
-    context 'when we already have a referral link in session but referrer is external' do
-      let(:referrer) { 'http://www.foo.bar' }
-      let(:initial_session_value) { 'test' }
-      let(:initial_origin_value) { nil }
+    #context 'when we already have a referral link in session but referrer is external' do
+    #  let(:referrer) { 'http://www.foo.bar' }
+    #  let(:initial_session_value) { 'test' }
+    #  let(:initial_origin_value) { nil }
 
-      it 'should clear and store ref in session' do
-        expect(cookies[:referral_link]).to eq 'foo'
-      end
+    #  it 'should clear and store ref in session' do
+    #    expect(cookies[:referral_link]).to eq 'foo'
+    #  end
 
-      it 'should store origin referral in session' do
-        expect(cookies[:origin_referral]).to eq referrer
-      end
-    end
+    #  it 'should store origin referral in session' do
+    #    expect(cookies[:origin_referral]).to eq referrer
+    #  end
+    #end
 
     context 'when we already have a referral link in session' do
       let(:initial_session_value) { 'test' }
@@ -56,9 +56,9 @@ RSpec.describe ApplicationController, type: :controller do
         expect(cookies[:referral_link]).to eq nil
       end
 
-      it 'should store HTTP_REFERRER in origin' do
-        expect(cookies[:origin_referral]).to eq referrer
-      end
+      #it 'should store HTTP_REFERRER in origin' do
+      #  expect(cookies[:origin_referral]).to eq referrer
+      #end
     end
 
     context 'when we still have a referral link in session and the ref params is defined and referrer is nil' do
@@ -84,10 +84,6 @@ RSpec.describe ApplicationController, type: :controller do
 
       it 'should keep referal link equals' do
         expect(cookies[:referral_link]).to eq 'test'
-      end
-
-      it 'should store HTTP_REFERRER in origin' do
-        expect(cookies[:origin_referral]).to eq 'http://www.foo.bar'
       end
     end
 

@@ -1,5 +1,7 @@
 # coding: utf-8
 
+raise 'only run in development' unless Rails.env.development?
+
 puts 'Seeding the database...'
 
 [

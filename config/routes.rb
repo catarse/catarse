@@ -198,7 +198,7 @@ Catarse::Application.routes.draw do
           post 'batch_approve'
           post 'batch_manual'
           post 'batch_reject'
-          post 'process_transfers'
+          #post 'process_transfers'
         end
       end
 

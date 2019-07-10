@@ -9,7 +9,7 @@ else
   worker_processes 3
 end
 
-# Requests with more than will be killed
+# Requests with more than 30 sec will be killed
 timeout (ENV['RACK_TIMEOUT'] || 30).to_i
 
 # Preload entire app for fast forking.
