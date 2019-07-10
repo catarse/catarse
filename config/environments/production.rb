@@ -46,7 +46,7 @@ Catarse::Application.configure do
 
   # Set to :debug to see everything in the log.
   # config.log_level = :info
-  config.log_level = :debug
+  config.log_level = (ENV['RAILS_LOG_LEVEL'].presence || :info)
 
   # Prepend all log lines with the following tags.
   # config.log_tags = [ :subdomain, :uuid ]
