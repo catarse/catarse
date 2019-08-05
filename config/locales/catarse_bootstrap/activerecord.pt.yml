@@ -484,6 +484,7 @@ pt:
     city: Cidade
     address_state: Estado
     zip_code: CEP
+    address_country: País
     open_questions: open_questions
     multiple_choice_questions: multiple_choice_questions
     # shipping_choice: 'Local de entrega'
