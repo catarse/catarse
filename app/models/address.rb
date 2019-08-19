@@ -1,6 +1,10 @@
 class Address < ActiveRecord::Base
   include Shared::CommonWrapper
 
+  REQUIRED_ATTRIBUTES = %i[
+    address_city address_zip_code phone_number address_neighbourhood address_street address_number
+  ].freeze
+
   belongs_to :country
   belongs_to :state
 
@@ -28,5 +32,15 @@ class Address < ActiveRecord::Base
 
   def index_on_common
     common_wrapper.index_address(self) if common_wrapper
+  end
+
+  def required_attributes
+    return Address::REQUIRED_ATTRIBUTES unless international?
+
+    Address::REQUIRED_ATTRIBUTES - %i[address_number address_neighbourhood phone_number]
+  end
+
+  def international?
+    country.try(:name) != 'Brasil'
   end
 end
