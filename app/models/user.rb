@@ -180,7 +180,8 @@ class User < ActiveRecord::Base
 
   def address_fields_validation
     if !reseting_password && (published_projects.present? || publishing_project || publishing_user_settings)
-      address.required_attributes.each do |attribute|
+      required_address_attributes = address.try(:required_attributes) || Address::REQUIRED_ATTRIBUTES
+      required_address_attributes.each do |attribute|
         errors.add(attribute, :invalid) if address.try(:send, attribute).blank?
       end
     end
