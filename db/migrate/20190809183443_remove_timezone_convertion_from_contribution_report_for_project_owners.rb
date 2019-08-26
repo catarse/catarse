@@ -74,16 +74,21 @@ class RemoveTimezoneConvertionFromContributionReportForProjectOwners < ActiveRec
                ELSE 'Pagamento - Só use esse endereço se não conseguir confirmar o endereço de entrega! Para confirmar o endereço de entrega, envie um questionário. Saiba como aqui: http://catar.se/quest'::text
            END AS address_type,
        u.id AS user_id,
-       pa.gateway_id AS contribution_id
-      FROM ((((((((contributions b
-        JOIN users u ON ((u.id = b.user_id)))
-        JOIN projects p ON ((b.project_id = p.id)))
-        JOIN payments pa ON ((pa.contribution_id = b.id)))
-        LEFT JOIN rewards r ON ((r.id = b.reward_id)))
-        LEFT JOIN shipping_fees sf ON ((sf.id = b.shipping_fee_id)))
-        LEFT JOIN "1".surveys su ON ((su.contribution_id = pa.contribution_id)))
-        LEFT JOIN addresses add ON ((add.id = b.address_id)))
-        LEFT JOIN states st ON ((st.id = add.state_id)))
+       pa.gateway_id AS contribution_id,
+       CASE
+            WHEN (su.address IS NOT NULL) THEN (su.country_name)::text
+            ELSE country.name
+        END AS address_country
+      FROM contributions b
+        JOIN users u ON u.id = b.user_id
+        JOIN projects p ON b.project_id = p.id
+        JOIN payments pa ON pa.contribution_id = b.id
+        LEFT JOIN rewards r ON r.id = b.reward_id
+        LEFT JOIN shipping_fees sf ON sf.id = b.shipping_fee_id
+        LEFT JOIN "1".surveys su ON su.contribution_id = pa.contribution_id
+        LEFT JOIN addresses add ON add.id = b.address_id
+        LEFT JOIN states st ON st.id = add.state_id
+        LEFT JOIN countries country ON country.id = add.country_id
      WHERE (pa.state = ANY (ARRAY['paid'::text, 'pending'::text, 'pending_refund'::text, 'refunded'::text, 'chargeback'::text]));
 
     SQL
@@ -164,16 +169,21 @@ class RemoveTimezoneConvertionFromContributionReportForProjectOwners < ActiveRec
                ELSE 'Pagamento - Só use esse endereço se não conseguir confirmar o endereço de entrega! Para confirmar o endereço de entrega, envie um questionário. Saiba como aqui: http://catar.se/quest'::text
            END AS address_type,
        u.id AS user_id,
-       pa.gateway_id AS contribution_id
-      FROM ((((((((contributions b
-        JOIN users u ON ((u.id = b.user_id)))
-        JOIN projects p ON ((b.project_id = p.id)))
-        JOIN payments pa ON ((pa.contribution_id = b.id)))
-        LEFT JOIN rewards r ON ((r.id = b.reward_id)))
-        LEFT JOIN shipping_fees sf ON ((sf.id = b.shipping_fee_id)))
-        LEFT JOIN "1".surveys su ON ((su.contribution_id = pa.contribution_id)))
-        LEFT JOIN addresses add ON ((add.id = b.address_id)))
-        LEFT JOIN states st ON ((st.id = add.state_id)))
+       pa.gateway_id AS contribution_id,
+       CASE
+            WHEN (su.address IS NOT NULL) THEN (su.country_name)::text
+            ELSE country.name
+        END AS address_country
+    FROM contributions b
+        JOIN users u ON u.id = b.user_id
+        JOIN projects p ON b.project_id = p.id
+        JOIN payments pa ON pa.contribution_id = b.id
+        LEFT JOIN rewards r ON r.id = b.reward_id
+        LEFT JOIN shipping_fees sf ON sf.id = b.shipping_fee_id
+        LEFT JOIN "1".surveys su ON su.contribution_id = pa.contribution_id
+        LEFT JOIN addresses add ON add.id = b.address_id
+        LEFT JOIN states st ON st.id = add.state_id
+        LEFT JOIN countries country ON country.id = add.country_id
      WHERE (pa.state = ANY (ARRAY['paid'::text, 'pending'::text, 'pending_refund'::text, 'refunded'::text, 'chargeback'::text]));
 
     SQL
