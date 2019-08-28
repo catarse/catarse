@@ -1,7 +1,7 @@
 class RemoveTimezoneConvertionFromContributionReportForProjectOwners < ActiveRecord::Migration
   def up
     execute <<-SQL
-
+    drop view public.contribution_reports_for_project_owners;
     CREATE OR REPLACE VIEW "public"."contribution_reports_for_project_owners" AS 
     SELECT b.project_id,
        COALESCE(r.id, 0) AS reward_id,
@@ -96,7 +96,7 @@ class RemoveTimezoneConvertionFromContributionReportForProjectOwners < ActiveRec
 
   def down
     execute <<-SQL
-
+    drop view public.contribution_reports_for_project_owners;
     CREATE OR REPLACE VIEW "public"."contribution_reports_for_project_owners" AS 
     SELECT b.project_id,
        COALESCE(r.id, 0) AS reward_id,

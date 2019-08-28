@@ -1,7 +1,7 @@
 class RemoveTimezoneFromSubscriptionsMonthlyReportForProjectOwners < ActiveRecord::Migration
   def up
     execute <<-SQL
-
+    drop view "public"."subscription_monthly_report_for_project_owners";
     CREATE OR REPLACE VIEW "public"."subscription_monthly_report_for_project_owners" AS 
       SELECT s.project_id,
         u.name,
@@ -61,7 +61,7 @@ class RemoveTimezoneFromSubscriptionsMonthlyReportForProjectOwners < ActiveRecor
 
   def down
     execute <<-SQL
-
+    drop view "public"."subscription_monthly_report_for_project_owners";
       CREATE OR REPLACE VIEW "public"."subscription_monthly_report_for_project_owners" AS 
       SELECT s.project_id,
         u.name,
