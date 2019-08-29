@@ -16,13 +16,6 @@ class Projects::ProjectReportExportsController < ApplicationController
     authorize parent, :update?
     resource = parent.project_report_exports.find params[:id]
     if resource.try(:output).try(:url).present?  && resource.state.eql?('done')
-      data = 
-        if ReportUploader.choose_storage == :fog
-          open(resource.output.url)
-        else
-          open(resource.output.current_path)
-        end
-
       send_data resource.output.url,
         type: resource.content_type,
         x_sendfile: true
