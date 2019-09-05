@@ -31,7 +31,7 @@ namespace :balance_transfer do
   desc 'update balance_transfers status'
   task update_status: :environment do
     PagarMe.api_key = CatarseSettings[:pagarme_api_key]
-    BalanceTransfer.processing.find_each do |bt|
+    BalanceTransfer.processing.each do |bt|
       transfer = PagarMe::Transfer.find bt.transfer_id
 
       case transfer.status
