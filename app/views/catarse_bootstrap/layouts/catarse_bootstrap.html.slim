@@ -24,8 +24,6 @@ html
     meta#api-host name="api-host" content=CatarseSettings[:front_api_host]
     meta#api-moments-host name="api-moments-host" content=CatarseSettings[:front_api_moments_host]
     meta#rd-token name="rd-token" content=CatarseSettings[:rd_token]
-    - if CatarseSettings[:simility_customer_id].present?
-      meta#simility-customer name="simility-customer" content=CatarseSettings[:simility_customer_id]
     meta#newsletter-url name='newsletter-url' content=subscribe_newsletter_url
     - if content_for? :meta_tags
       /project specific meta tags
@@ -65,13 +63,11 @@ html
 
   = render_konduto_script
   = javascript_include_tag :analytics
-  - if CatarseSettings[:simility_customer_id].present?
-    = javascript_include_tag "https://cdn.simility.com/b.js", data: { autoexecute: false }
   - if content_for? :application_js
     = yield :application_js
   - else
     = javascript_include_tag :application
-  - if Rails.configuration.webpack_dev_server 
+  - if Rails.configuration.webpack_dev_server
     = javascript_include_tag "http://localhost:8080/catarse.js"
 
   - if content_for? :js
