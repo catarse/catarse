@@ -49,7 +49,7 @@ pt:
       feeds: "Atividades"
       submit: "Salvar"
       contributions_fields:
-        no-project: "Você ainda não apoiou nenhum projeto no&nbsp;Catarse..."
+        no-project: "Você ainda não apoiou nenhum projeto no Catarse..."
         contribute: "Apoie agora!"
       about_fields:
         add_link: "+ Adicionar link"
