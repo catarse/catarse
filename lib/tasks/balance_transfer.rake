@@ -3,6 +3,7 @@
 namespace :balance_transfer do
   desc 'process transfers that is authorized'
   task process_authorized: :environment do
+    PagarMe.api_key = CatarseSettings[:pagarme_api_key]
     BalanceTransfer.authorized.each do |bt|
       Raven.user_context(balance_transfer_id: bt.id)
 
@@ -29,7 +30,8 @@ namespace :balance_transfer do
 
   desc 'update balance_transfers status'
   task update_status: :environment do
-    BalanceTransfer.processing.find_each do |bt|
+    PagarMe.api_key = CatarseSettings[:pagarme_api_key]
+    BalanceTransfer.processing.each do |bt|
       transfer = PagarMe::Transfer.find bt.transfer_id
 
       case transfer.status

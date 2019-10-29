@@ -1,5 +1,6 @@
 - content_for :application_js do
-  = javascript_include_tag "api/application"
+  = javascript_include_tag 'api/application'
+  = javascript_include_tag 'api/catarse'
 
 - parameters = { survey_id: @survey.id }.to_json
 

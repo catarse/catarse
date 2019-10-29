@@ -1,6 +1,7 @@
 - content_for :title, "#{@project.name} · #{CatarseSettings[:company_name]}"
 - content_for :application_js do
-  = javascript_include_tag "api/application"
+  = javascript_include_tag 'api/application'
+  = javascript_include_tag 'api/catarse'
 
 - parameters = { project_id: @project.id, user_id: @project.user_id, project_state: @project.state }.to_json
 

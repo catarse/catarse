@@ -639,4 +639,40 @@ RSpec.describe User, type: :model do
       it { is_expected.to eq(:inactive) }
     end
   end
+
+  describe '#address_fields_validation' do
+    let(:user) { described_class.new }
+    let(:address) { Address.new }
+
+    before do
+      allow(user).to receive(:reseting_password).and_return(false)
+      allow(user).to receive_message_chain('published_projects.present?').and_return(true)
+      allow(user).to receive(:address).and_return(address)
+      allow(address).to receive(:required_attributes).and_return([:address_number])
+    end
+
+    context 'when has address' do
+      before { allow(user).to receive(:address).and_return(address) }
+
+      it 'validates address required attributes' do
+        user.address_fields_validation
+
+      expect(user.errors.size).to eq 1
+      expect(user.errors[:address_number]).to_not be_empty
+    end
+  end
+
+    context 'when hasn`t address' do
+      before { allow(user).to receive(:address).and_return(nil) }
+
+      it 'validates attributes in Address::REQUIRED_ATTRIBUTES constant' do
+        user.address_fields_validation
+
+        expect(user.errors.size).to eq Address::REQUIRED_ATTRIBUTES.size
+        Address::REQUIRED_ATTRIBUTES.each do |attribute|
+          expect(user.errors[attribute]).to_not be_empty
+        end
+      end
+    end
+  end
 end
