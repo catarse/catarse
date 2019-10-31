@@ -60,7 +60,7 @@ class ProjectReportExport < ActiveRecord::Base
 
   def report_method_call
     case report_type
-    when 'SubscriptionMonthlyReportForProjectOwner', 'SubscriptionMonthlyReportForProjectOwner'
+    when 'SubscriptionReportForProjectOwner', 'SubscriptionMonthlyReportForProjectOwner'
       report_class.project_id(project.common_id).to_csv
     else
     end
