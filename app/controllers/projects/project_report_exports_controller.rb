@@ -9,7 +9,8 @@ class Projects::ProjectReportExportsController < ApplicationController
   respond_to :json
 
   def index
-    render json: { report_ids: parent.project_report_exports.pluck(:id) }
+    authorize parent, :index?
+    render json: { data: parent.project_report_exports }
   end
 
   def show
