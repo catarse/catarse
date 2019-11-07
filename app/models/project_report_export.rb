@@ -1,4 +1,7 @@
 class ProjectReportExport < ActiveRecord::Base
+  
+  has_notifications
+
   REPORT_TYPE_LIST = %w[SubscriptionMonthlyReportForProjectOwner SubscriptionReportForProjectOwner]
   REPORT_TYPE_EXT_LIST = %w[csv xls]
 
@@ -22,6 +25,7 @@ class ProjectReportExport < ActiveRecord::Base
     data = report_method_call
     data = Excelinator.csv_to_xls(data) if report_type_ext == 'xls'
     write_data_and_upload(data)
+    notify(:project_report_exports, project.user, { project_report_exports_id: id })
   end
 
   def content_type
@@ -34,11 +38,20 @@ class ProjectReportExport < ActiveRecord::Base
     end
   end
 
+  def report_filename_locale
+    "#{I18n.t("projects.subscriptions.report_type.#{report_type}")}_#{created_at.to_time.to_i}.#{report_type_ext}"
+  end
+
+  def report_name_locale
+    "#{I18n.t("projects.subscriptions.report_type.#{report_type}")}"
+  end
+
   private
 
   def report_name
     "#{report_type}_#{created_at.to_time.to_i}"
   end
+
 
   def write_data_and_upload(data)
     file = Tempfile.new([report_name, '.', report_type_ext].join(''))

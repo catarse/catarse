@@ -8,8 +8,12 @@ class ReportUploader < CarrierWave::Uploader::Base
     %w[csv xls]
   end
 
+  def self.is_remote
+    CatarseSettings.get_without_cache(:aws_access_key).present?
+  end
+
   def self.choose_storage
-    CatarseSettings.get_without_cache(:aws_access_key).present? ? :fog : :file
+    self.is_remote ? :fog : :file
   end
 
   storage choose_storage
@@ -30,5 +34,9 @@ class ReportUploader < CarrierWave::Uploader::Base
 
   def report_bucket
     CatarseSettings.get_without_cache(:project_report_buckets)
+  end
+
+  def uploaded_file_location
+    ReportUploader.is_remote ? url : file.read
   end
 end
