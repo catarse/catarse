@@ -1,6 +1,4 @@
 class ProjectReportExport < ActiveRecord::Base
-  
-  has_notifications
 
   REPORT_TYPE_LIST = %w[SubscriptionMonthlyReportForProjectOwner SubscriptionReportForProjectOwner]
   REPORT_TYPE_EXT_LIST = %w[csv xls]
@@ -25,7 +23,7 @@ class ProjectReportExport < ActiveRecord::Base
     data = report_method_call
     data = Excelinator.csv_to_xls(data) if report_type_ext == 'xls'
     write_data_and_upload(data)
-    notify(:project_report_exports, project.user, { project_report_exports_id: id })
+    Notification.notify(:project_report_exports, project.user, { project_report_exports_id: id })
   end
 
   def content_type

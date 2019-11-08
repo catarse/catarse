@@ -1,12 +1,13 @@
 - report = @notification.try(:report) || @notification.report
 center
-|Olá, #{report.project.user.name}!
+  |Olá, #{report.project.user.name}!
 center
-p A exportação do relatório #{report.report_name_locale} está pronta.
+  p A exportação do relatório #{report.report_name_locale} está pronta.
 br
 br
 center
   = link_to "#{CatarseSettings[:base_url]}/projects/#{report.project.id}/project_report_exports/#{report.id}/", alt: 'Baixar relatório', target: '__blank' do
-    = image_tag "#{CatarseSettings[:base_url]}/assets/catarse_bootstrap/download_report.png"
-p
+    = image_tag "#{CatarseSettings[:base_url]}/assets/catarse_bootstrap/download_report.png", width: 200
+
+p O relatório foi gerado em #{report.created_at.strftime("%d/%m/%Y")} e o download ficará disponível até #{report.created_at.advance(days: 7).strftime("%d/%m/%Y")}
 = render partial: 'user_notifier/mailer/contact_info'
