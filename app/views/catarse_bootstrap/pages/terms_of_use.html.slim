@@ -1,6 +1,7 @@
 - content_for :title, t('.title')
 - content_for :application_js do
-  = javascript_include_tag 'api/application' 
+  = javascript_include_tag 'api/application'
+  = javascript_include_tag 'api/catarse' 
 = render 'shared/header_big'
 .page-header.negative.u-marginbottom-40
   .w-container
