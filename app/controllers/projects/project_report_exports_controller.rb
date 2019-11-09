@@ -21,7 +21,6 @@ class Projects::ProjectReportExportsController < ApplicationController
         type: resource.content_type,
         filename: resource.report_filename_locale,
         x_sendfile: true
-      # render nothing: true
     else
       render json: { error: 'report_not_done' }, status: 404
     end
