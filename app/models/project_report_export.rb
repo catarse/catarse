@@ -1,3 +1,4 @@
+# coding: utf-8
 class ProjectReportExport < ActiveRecord::Base
 
   REPORT_TYPE_LIST = %w[SubscriptionMonthlyReportForProjectOwner SubscriptionReportForProjectOwner]
@@ -54,7 +55,7 @@ class ProjectReportExport < ActiveRecord::Base
   def write_data_and_upload(data)
     file = Tempfile.new([report_name, '.', report_type_ext].join(''))
     begin
-      file.write(data)
+      file.write(data.force_encoding("UTF-8"))
       file.rewind
       self.output = file
       self.state = 'done'
