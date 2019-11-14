@@ -43,7 +43,9 @@ RSpec.describe Projects::ProjectReportExportsController, type: :controller do
     context 'when user is logged and is admin and report is done' do
       let(:before_lazy) do
         report_export.fetch_report
-        expect(controller).to receive(:send_data)
+        expect(controller).to receive(:send_data) {
+          controller.render nothing: true
+        }
       end
       let(:current_user) { create(:user, admin: true) }
       it { expect(response.status).to eq(200) }

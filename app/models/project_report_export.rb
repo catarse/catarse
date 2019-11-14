@@ -24,10 +24,7 @@ class ProjectReportExport < ActiveRecord::Base
     data = report_method_call
     data = Excelinator.csv_to_xls(data) if report_type_ext == 'xls'
     write_data_and_upload(data)
-    begin
-      Notification.notify(:project_report_exports, project.user, { project_report_exports_id: id })
-    rescue
-    end
+    Notification.notify(:project_report_exports, project.user, { project_report_exports_id: id })
   end
 
   def content_type
