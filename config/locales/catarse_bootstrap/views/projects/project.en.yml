@@ -1,5 +1,9 @@
 en:
   projects:
+    subscriptions:
+      report_type:
+        SubscriptionReportForProjectOwner: 'Subscribers Base'
+        SubscriptionMonthlyReportForProjectOwner: 'Confirmed Payments'
     home:
       header_html: Crowdfunding and collective financing in Brazil is not Catarse
       row_title: Most Popular
