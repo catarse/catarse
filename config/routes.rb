@@ -53,6 +53,8 @@ Catarse::Application.routes.draw do
     # mount CatarseWepay::Engine => "/", as: :catarse_wepay
     mount Dbhero::Engine => '/dbhero', as: :dbhero
 
+    resources :home_banners, path: '/home_banners', controller: 'home/banners'
+
     resources :categories, only: [] do
       member do
         get :subscribe, to: 'categories/subscriptions#create'
