@@ -63,6 +63,11 @@ class Notification < ActiveRecord::Base
     @balance_transfer ||= BalanceTransfer.find balance_transfer_id
   end
 
+  def report
+    project_report_exports_id = metadata.try(:[], 'project_report_exports_id')
+    @report ||= ProjectReportExport.find project_report_exports_id
+  end
+
   private
 
   def metadata_associations
