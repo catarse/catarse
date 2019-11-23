@@ -2,21 +2,18 @@ class Home::BannersController < ApplicationController
     respond_to :json
 
     def update
-
         authorize resource
-
-        resource.title = params.try(:title) || ''
-        resource.subtitle = params.try(:title) || ''
-        resource.cta = params.try(:cta) || ''
-        resource.link = params.try(:link) || ''
-        resource.image = params.try(:image) || ''
-        resource.save
         
-        render json: { success: 'ok'}, status: 200
+        if resource.update(permitted_params)
+            # render json: { success: 'ok'}, status: 200
+            render json: resource, status: 200
+        else
+            render json: resource.errors, status: 401
+        end
     end
 
     def index
-        render json: { data: HomeBanner.all }
+        render json: { data: HomeBanner.all.order(:id) }
     end
 
     private
@@ -24,4 +21,13 @@ class Home::BannersController < ApplicationController
     def resource
         HomeBanner.find params[:id]
     end
+
+    def permitted_params
+        banner_params.permit(:title, :subtitle, :cta, :link, :image)
+    end
+
+    def banner_params
+        params[:banner]
+    end
+
 end
