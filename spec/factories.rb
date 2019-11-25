@@ -455,4 +455,12 @@ FactoryGirl.define do
     f.report_type_ext 'csv'
     f.report_type 'SubscriptionMonthlyReportForProjectOwner'
   end
+
+  factory :home_banner do |f|
+    f.title 'title'
+    f.subtitle 'subtitle'
+    f.link 'link'
+    f.cta 'cta'
+    f.image 'image'
+  end
 end

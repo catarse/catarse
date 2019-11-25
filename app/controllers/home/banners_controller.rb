@@ -5,15 +5,14 @@ class Home::BannersController < ApplicationController
         authorize resource
         
         if resource.update(permitted_params)
-            # render json: { success: 'ok'}, status: 200
-            render json: resource, status: 200
+            render json: { success: 'ok'}, status: 200
         else
             render json: resource.errors, status: 401
         end
     end
 
     def index
-        render json: { data: HomeBanner.all.order(:id) }
+        render json: { data: HomeBanner.all.order(:id) }, status: 200
     end
 
     private
