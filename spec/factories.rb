@@ -183,6 +183,7 @@ FactoryGirl.define do
     f.video_url 'http://vimeo.com/17298435'
     f.budget '1000'
     f.uploaded_image File.open("#{Rails.root}/spec/support/testimg.png")
+    f.content_rating 0
 
     after :create do |flex_project|
       FactoryGirl.create(:project_transition, {
