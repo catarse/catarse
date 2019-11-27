@@ -131,6 +131,38 @@ RSpec.describe ProjectsController, type: :controller do
 
         it { is_expected.to redirect_to edit_project_path(project, anchor: 'home') }
       end
+
+      context 'with content rating equal to 18' do
+        before { put :update, id: project.id, project: { name: 'My Updated Title', content_rating: 18 }, locale: :pt }
+        it {
+          project.reload
+          expect(project.content_rating).to eq(18)
+          expect(project.all_tags).to include(I18n.t('project.adult_content_admin_tag'))
+        }
+
+        it { is_expected.to redirect_to edit_project_path(project, anchor: 'home') }
+      end
+
+      context 'with content rating less than 18' do
+        before { put :update, id: project.id, project: { name: 'My Updated Title', content_rating: 0 }, locale: :pt }
+        it {
+          project.reload
+          expect(project.content_rating).to eq(0)
+          expect(project.all_tags).not_to include(I18n.t('project.adult_content_admin_tag'))
+        }
+
+        it { is_expected.to redirect_to edit_project_path(project, anchor: 'home') }
+      end
+
+      context 'with content rating null' do
+        before { put :update, id: project.id, project: { name: 'My Updated Title', content_rating: 0 }, locale: :pt }
+        it {
+          project.reload
+          expect(response.status).to eq(302)
+        }
+
+        it { is_expected.to redirect_to edit_project_path(project, anchor: 'home') }
+      end
     end
 
     shared_examples_for 'protected project' do

@@ -163,7 +163,7 @@ class ProjectsController < ApplicationController
 
     all_tags = resource.all_tags.split(', ')
 
-    if permitted_params[:content_rating].present? and permitted_params[:content_rating] >= 18
+    if content_rating >= 18
       unless all_tags.include? adult_content_admin_tag
         all_tags |= [adult_content_admin_tag]
       end
@@ -211,6 +211,14 @@ class ProjectsController < ApplicationController
       redirect_to insights_project_path(@project, show_modal: true)
     else
       redirect_to edit_project_path(@project, anchor: params[:anchor] || 'home')
+    end
+  end
+
+  def content_rating
+    if permitted_params[:content_rating].present? 
+      permitted_params[:content_rating].to_i
+    else
+      0
     end
   end
 
