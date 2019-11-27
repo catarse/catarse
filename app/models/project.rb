@@ -222,6 +222,7 @@ class Project < ActiveRecord::Base
   validates_uniqueness_of :permalink, case_sensitive: false
   validates_format_of :permalink, with: /\A(\w|-)*\Z/
   validates_presence_of :permalink, allow_nil: true
+  validates_presence_of :content_rating
 
   %i[between_created_at between_expires_at between_online_at between_updated_at].each do |name|
     define_singleton_method name do |starts_at, ends_at|
