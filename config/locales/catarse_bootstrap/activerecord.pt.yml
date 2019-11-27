@@ -423,6 +423,7 @@ pt:
 
 
   project:
+    adult_content_admin_tag: 'conteudo_sexo'
     update:
       success: As informações foram atualizadas
       failed: 'As informações não foram salvas, verifique se todos os campos foram preenchidos corretamente'
