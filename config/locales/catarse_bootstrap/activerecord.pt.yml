@@ -298,7 +298,7 @@ pt:
               blank: "A frase de efeito do projeto não pode ficar em branco"
               too_long: "A frase de efeito é muito longa. Você pode usar um máximo de 100 caracteres."
             content_rating:
-              blank: "É necessário declarar se o seu projeto contém nudez e/ou cenas de sexo explícito."
+              blank: "Este campo é obrigatório."
         project:
           attributes:
             goals:
@@ -339,7 +339,7 @@ pt:
               blank: "A frase de efeito do projeto não pode ficar em branco"
               too_long: "A frase de efeito é muito longa. Você pode usar um máximo de 100 caracteres."
             content_rating:
-              blank: "É necessário declarar se o seu projeto contém nudez e/ou cenas de sexo explícito."
+              blank: "Este campo é obrigatório."
         bank_account:
           attributes:
             bank_id:
