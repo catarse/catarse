@@ -91,7 +91,7 @@ pt:
           description: 'Indica quando o apoiador irá receber a recompensa escolhida. Cuidado ao definir essa data para não frustrar seus apoiadores. Na dúvida, seja conservador nos prazos.'
         4:
           title: 'Tipo de entrega:'
-          description: 'Como será o envio da recompensa e quanto irá custar para o apoiador. Caso você adicione um valor de frete, ele será adicionado quando o apoiador selecionar a recompensa e a localidade. <a href="http://blog.catarse.me/o-calculo-de-envio-de-recompensas-financiamento-coletivo/" target="_blank" class="alt-link">Saiba mais</a>.'
+          description: 'Como será o envio da recompensa e quanto irá custar para o apoiador. Caso você adicione um valor de frete, ele será adicionado quando o apoiador selecionar a recompensa e a localidade. Lembre-se que a taxa do Catarse será aplicada também sobre o valor de frete. <a href="http://blog.catarse.me/o-calculo-de-envio-de-recompensas-financiamento-coletivo/" target="_blank" class="alt-link">Saiba mais</a>.'
         5:
           title: 'Número de recompensas:'
           description: 'Você também pode Limitar uma recompensa para um determinado número de apoios e mudar a ordem que as recompensas aparecem em seu projeto. <a href="http://suporte.catarse.me/hc/pt-br/articles/212191546-tudo-sobre-RECOMPENSAS#como-editar" target="_blank" class="alt-link">Saiba mais</a>.'
