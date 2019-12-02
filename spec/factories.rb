@@ -161,6 +161,7 @@ FactoryGirl.define do
     f.video_url 'http://vimeo.com/17298435'
     f.budget '1000'
     f.uploaded_image File.open("#{Rails.root}/spec/support/testimg.png")
+    f.content_rating 0
 
     after :build do |project|
       project.goals.build(description: 'test', value: 10, title: 'bar')

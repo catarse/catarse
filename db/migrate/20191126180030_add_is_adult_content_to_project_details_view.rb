@@ -90,7 +90,7 @@ class AddIsAdultContentToProjectDetailsView < ActiveRecord::Migration
       FROM ((((((((projects p
         JOIN categories c ON ((c.id = p.category_id)))
         JOIN users u ON ((u.id = p.user_id)))
-        LEFT JOIN project_totals pt ON ((pt.project_id = p.id)))
+        LEFT JOIN "1".project_totals  pt ON ((pt.project_id = p.id)))
         LEFT JOIN cities ct ON ((ct.id = p.city_id)))
         LEFT JOIN states st ON ((st.id = ct.state_id)))
         LEFT JOIN LATERAL ( SELECT count(1) AS count
@@ -195,7 +195,7 @@ class AddIsAdultContentToProjectDetailsView < ActiveRecord::Migration
       FROM ((((((((projects p
         JOIN categories c ON ((c.id = p.category_id)))
         JOIN users u ON ((u.id = p.user_id)))
-        LEFT JOIN project_totals pt ON ((pt.project_id = p.id)))
+        LEFT JOIN "1".project_totals pt ON ((pt.project_id = p.id)))
         LEFT JOIN cities ct ON ((ct.id = p.city_id)))
         LEFT JOIN states st ON ((st.id = ct.state_id)))
         LEFT JOIN LATERAL ( SELECT count(1) AS count
