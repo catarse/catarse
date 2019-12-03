@@ -1,6 +1,6 @@
 class AddAdultDeclarationToProject < ActiveRecord::Migration
   def up
-    add_column :projects, :content_rating, :integer
+    add_column :projects, :content_rating, :integer, default: 0, null: false
   end
 
   def down
