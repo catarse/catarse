@@ -144,10 +144,10 @@ RSpec.describe ProjectsController, type: :controller do
       end
 
       context 'with content rating less than 18' do
-        before { put :update, id: project.id, project: { name: 'My Updated Title', content_rating: 0 }, locale: :pt }
+        before { put :update, id: project.id, project: { name: 'My Updated Title', content_rating: 1 }, locale: :pt }
         it {
           project.reload
-          expect(project.content_rating).to eq(0)
+          expect(project.content_rating).to eq(1)
           expect(project.all_tags).not_to include(I18n.t('project.adult_content_admin_tag'))
         }
 
@@ -155,13 +155,11 @@ RSpec.describe ProjectsController, type: :controller do
       end
 
       context 'with content rating null' do
-        before { put :update, id: project.id, project: { name: 'My Updated Title', content_rating: 0 }, locale: :pt }
+        before { put :update, id: project.id, project: { name: 'My Updated Title', content_rating: nil}, locale: :pt }
         it {
           project.reload
-          expect(response.status).to eq(302)
+          expect(project.content_rating).to eq(1)
         }
-
-        it { is_expected.to redirect_to edit_project_path(project, anchor: 'home') }
       end
     end
 
