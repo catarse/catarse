@@ -17,7 +17,7 @@ class Projects::ProjectReportExportsController < ApplicationController
     authorize parent, :update?
     resource = parent.project_report_exports.find params[:id]
     if resource.try(:output).try(:url).present?  && resource.state.eql?('done')
-      send_data resource.output.uploaded_file_location,
+      send_data resource.output.file.read,
         type: resource.content_type,
         filename: resource.report_filename_locale,
         x_sendfile: true
