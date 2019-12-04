@@ -153,27 +153,13 @@ class ProjectsController < ApplicationController
 
     # need to check this before setting new attributes
     should_validate = should_use_validate
-    adult_content_admin_tag = t('project.adult_content_admin_tag')
+    
 
     resource.localized.attributes = permitted_params
     # can't use localized for fee
     if permitted_params[:service_fee]
       resource.service_fee = permitted_params[:service_fee]
     end
-
-    all_tags = resource.all_tags.split(', ')
-
-    if content_rating >= 18
-      unless all_tags.include? adult_content_admin_tag
-        all_tags |= [adult_content_admin_tag]
-      end
-    elsif 
-      if resource.all_tags.include? adult_content_admin_tag
-        all_tags = all_tags.reject{|tag| tag == adult_content_admin_tag}
-      end
-    end
-
-    resource.all_tags = all_tags.join(',')
 
     should_show_modal = resource.online? && resource.mode == 'flex' && resource.online_days_changed?
 

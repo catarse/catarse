@@ -27,6 +27,8 @@ class Project < ActiveRecord::Base
             :display_pledged, :display_pledged_with_cents, :display_goal, :progress_bar,
             :status_flag, to: :decorator
 
+  before_save :set_adult_content_tag
+
   self.inheritance_column = 'mode'
   belongs_to :user
   belongs_to :category
@@ -222,7 +224,7 @@ class Project < ActiveRecord::Base
   validates_uniqueness_of :permalink, case_sensitive: false
   validates_format_of :permalink, with: /\A(\w|-)*\Z/
   validates_presence_of :permalink, allow_nil: true
-  validates :content_rating, inclusion: [1, 18], allow_nil: false
+  validates :content_rating, inclusion: [1, 18], presence: true, on: :update
 
   %i[between_created_at between_expires_at between_online_at between_updated_at].each do |name|
     define_singleton_method name do |starts_at, ends_at|
@@ -488,6 +490,26 @@ class Project < ActiveRecord::Base
 
   def all_tags
     tags.map(&:name).join(', ')
+  end
+
+  def set_adult_content_tag
+    
+    adult_content_admin_tag = I18n.t('project.adult_content_admin_tag')
+    
+    _all_tags = tags.map(&:name)
+    
+    should_include_adult_content_tag = content_rating >= 18 && _all_tags.exclude?(adult_content_admin_tag)
+    if should_include_adult_content_tag
+      _all_tags |= [adult_content_admin_tag]
+    else
+      _all_tags = _all_tags.reject{|tag| tag == adult_content_admin_tag}
+    end
+        
+    self.tags = _all_tags.map do |name|
+      Tag.find_or_create_by(slug: name.parameterize) do |tag|
+        tag.name = name.strip
+      end
+    end
   end
 
   def is_flexible?

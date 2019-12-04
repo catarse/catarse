@@ -36,7 +36,7 @@ RSpec.describe ProjectsController, type: :controller do
   end
 
   describe 'GET push_to_online' do
-    let(:project) { create(:project, state: 'draft') }
+    let(:project) { create(:project, state: 'draft', content_rating: 1) }
     let(:current_user) { project.user }
 
     before do
@@ -59,7 +59,7 @@ RSpec.describe ProjectsController, type: :controller do
   end
 
   describe 'GET push_to_online banned document' do
-    let(:project) { create(:project, state: 'draft') }
+    let(:project) { create(:project, state: 'draft', content_rating: 1) }
     let(:current_user) { project.user }
     let(:blacklist_document) { create(:blacklist_document, number: "123.456.789-01")}
     
@@ -117,7 +117,7 @@ RSpec.describe ProjectsController, type: :controller do
   describe 'PUT update' do
     shared_examples_for 'updatable project' do
       context 'with tab anchor' do
-        before { put :update, id: project.id, project: { name: 'My Updated Title' }, locale: :pt, anchor: 'basics' }
+        before { put :update, id: project.id, project: { name: 'My Updated Title', content_rating: 1 }, locale: :pt, anchor: 'basics' }
 
         it { is_expected.to redirect_to edit_project_path(project, anchor: 'basics') }
       end
@@ -154,8 +154,9 @@ RSpec.describe ProjectsController, type: :controller do
         it { is_expected.to redirect_to edit_project_path(project, anchor: 'home') }
       end
 
-      context 'with content rating null' do
-        before { put :update, id: project.id, project: { name: 'My Updated Title', content_rating: nil}, locale: :pt }
+      context 'with content rating to a not included number' do
+        before { put :update, id: project.id, project: { name: 'My Updated Title', content_rating: 0}, locale: :pt }
+
         it {
           project.reload
           expect(project.content_rating).to eq(1)
@@ -164,7 +165,7 @@ RSpec.describe ProjectsController, type: :controller do
     end
 
     shared_examples_for 'protected project' do
-      before { put :update, id: project.id, project: { name: 'My Updated Title' }, locale: :pt }
+      before { put :update, id: project.id, project: { name: 'My Updated Title', content_rating: 1 }, locale: :pt }
       it {
         project.reload
         expect(project.name).to eq('Foo bar')
@@ -195,13 +196,23 @@ RSpec.describe ProjectsController, type: :controller do
             expect_any_instance_of(Project).to receive(:update_columns).with(
             expires_at: DateTime.now).and_call_original
 
-            put :update, id: project.id, cancel_project: 'true', project: { posts_attributes: {"0" => { title: "cancelamento de teste", comment_html: "<p>apenas um teste no cancelamento</p>" }}}, locale: :pt
+            put :update, id: project.id, cancel_project: 'true', project: { content_rating: 1, posts_attributes: {"0" => { title: "cancelamento de teste", comment_html: "<p>apenas um teste no cancelamento</p>" }}}, locale: :pt
             project.reload
           end
 
           it "should generate a project cancelation order" do
             expect(project.project_cancelation.present?).to eq(true)
           end
+        end
+
+        context 'with content rating change' do
+          before { put :update, id: project.id, project: { name: 'My Updated Title', content_rating: 18 }, locale: :pt }
+          it {
+            project.reload
+            expect(project.content_rating).to eq(1)
+          }
+  
+          it { is_expected.to redirect_to edit_project_path(project, anchor: 'home') }
         end
 
         context 'when I try to update the project name and the about_html field' do
@@ -213,7 +224,7 @@ RSpec.describe ProjectsController, type: :controller do
         end
 
         context 'when I try to update only the about_html field' do
-          before { put :update, id: project.id, project: { about_html: 'new_description' }, locale: :pt }
+          before { put :update, id: project.id, project: { about_html: 'new_description', content_rating: 1 }, locale: :pt }
           it 'should update it' do
             project.reload
             expect(project.about_html).to eq('new_description')

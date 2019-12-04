@@ -120,6 +120,7 @@ FactoryGirl.define do
     f.budget '1000'
     f.uploaded_image File.open("#{Rails.root}/spec/support/testimg.png")
     f.content_rating 1
+
     after :create do |project|
       unless project.project_transitions.where(to_state: project.state).present?
         FactoryGirl.create(:project_transition, to_state: project.state, project: project)
