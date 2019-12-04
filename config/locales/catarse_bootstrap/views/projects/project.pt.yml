@@ -1,5 +1,9 @@
 pt:
   projects:
+    subscriptions:
+      report_type:
+        SubscriptionReportForProjectOwner: 'Base de Assinantes'
+        SubscriptionMonthlyReportForProjectOwner: 'Pagamentos confirmados'
     home:
       header_html: 'Crowdfunding e financiamento coletivo no Brasil é no Catarse'
       row_title: 'Populares'
