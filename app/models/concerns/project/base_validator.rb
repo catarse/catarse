@@ -26,6 +26,8 @@ module Project::BaseValidator
       wo.validates_presence_of :uploaded_image,
                                unless: ->(project) { project.video_thumbnail.present? }
 
+      wo.validates :content_rating, inclusion: [1, 18], presence: true, on: :update
+
       wo.validate do
         user.publishing_project = true
         user.valid?

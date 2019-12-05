@@ -200,14 +200,6 @@ class ProjectsController < ApplicationController
     end
   end
 
-  def content_rating
-    if permitted_params[:content_rating].present? 
-      permitted_params[:content_rating].to_i
-    else
-      0
-    end
-  end
-
   def show
     resource
     @post ||= resource.posts.where(id: params[:project_post_id].to_i).first if params[:project_post_id].present?
