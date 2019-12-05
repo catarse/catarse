@@ -159,7 +159,7 @@ RSpec.describe ProjectsController, type: :controller do
 
         it {
           project.reload
-          expect(project.content_rating).to eq(1)
+          expect(project.content_rating).to eq(0)
         }
       end
     end
