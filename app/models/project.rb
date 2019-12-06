@@ -498,7 +498,7 @@ class Project < ActiveRecord::Base
     return if has_adult_content_tag? && content_rating >= 18
 
     _all_tags = tags.map(&:name)
-    if should_include_adult_content_tag
+    if should_include_adult_content_tag?
       _all_tags |= [adult_content_admin_tag]
     else
       _all_tags = _all_tags.reject{|tag| tag == adult_content_admin_tag}
