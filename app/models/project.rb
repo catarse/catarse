@@ -6,6 +6,7 @@ class Project < ActiveRecord::Base
   PUBLISHED_STATES = %w[online waiting_funds successful failed].freeze
   HEADLINE_MAXLENGTH = 100
   NAME_MAXLENGTH = 50
+  adult_content_admin_tag => ADULT_CONTENT_ADMIN_TAG = I18n.t('project.adult_content_admin_tag')
 
   include Statesman::Adapters::ActiveRecordQueries
   include PgSearch
@@ -493,8 +494,9 @@ class Project < ActiveRecord::Base
 
   def set_adult_content_tag
     
-    adult_content_admin_tag = I18n.t('project.adult_content_admin_tag')
-    
+    return if !should_include_adult_content_tag?
+    return if has_adult_content_tag? && content_rating >= 18
+
     _all_tags = tags.map(&:name)
     
     should_include_adult_content_tag = content_rating >= 18 && _all_tags.exclude?(adult_content_admin_tag)
@@ -509,6 +511,14 @@ class Project < ActiveRecord::Base
         tag.name = name.strip
       end
     end
+  end
+
+  def should_include_adult_content_tag?
+    content_rating >= 18 && tags.map(&:name).exclude?(adult_content_admin_tag)
+  end
+
+  def has_adult_content_tag?
+    tags.map(&:name).any?(adult_content_admin_tag)
   end
 
   def is_flexible?
