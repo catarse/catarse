@@ -82,10 +82,7 @@ class AddIsAdultContentToProjectDetailsView < ActiveRecord::Migration
        p.tracker_snippet_html,
        cover_image_thumb(p.*) AS cover_image,
        p.common_id,
-       CASE
-            WHEN p.content_rating >= 18 THEN true
-            ELSE false
-        END AS is_adult_content,
+        p.content_rating >= 18 AS is_adult_content,
        p.content_rating
       FROM ((((((((projects p
         JOIN categories c ON ((c.id = p.category_id)))
