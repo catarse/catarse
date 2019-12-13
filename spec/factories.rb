@@ -119,6 +119,8 @@ FactoryGirl.define do
     f.state 'online'
     f.budget '1000'
     f.uploaded_image File.open("#{Rails.root}/spec/support/testimg.png")
+    f.content_rating 1
+
     after :create do |project|
       unless project.project_transitions.where(to_state: project.state).present?
         FactoryGirl.create(:project_transition, to_state: project.state, project: project)
@@ -160,6 +162,7 @@ FactoryGirl.define do
     f.video_url 'http://vimeo.com/17298435'
     f.budget '1000'
     f.uploaded_image File.open("#{Rails.root}/spec/support/testimg.png")
+    f.content_rating 1
 
     after :build do |project|
       project.goals.build(description: 'test', value: 10, title: 'bar')
@@ -182,6 +185,7 @@ FactoryGirl.define do
     f.video_url 'http://vimeo.com/17298435'
     f.budget '1000'
     f.uploaded_image File.open("#{Rails.root}/spec/support/testimg.png")
+    f.content_rating 1
 
     after :create do |flex_project|
       FactoryGirl.create(:project_transition, {

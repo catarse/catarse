@@ -297,6 +297,8 @@ pt:
             headline:
               blank: "A frase de efeito do projeto não pode ficar em branco"
               too_long: "A frase de efeito é muito longa. Você pode usar um máximo de 100 caracteres."
+            content_rating:
+              blank: "Este campo é obrigatório."
         project:
           attributes:
             goals:
@@ -336,6 +338,8 @@ pt:
             headline:
               blank: "A frase de efeito do projeto não pode ficar em branco"
               too_long: "A frase de efeito é muito longa. Você pode usar um máximo de 100 caracteres."
+            content_rating:
+              blank: "Este campo é obrigatório."
         bank_account:
           attributes:
             bank_id:
@@ -419,6 +423,7 @@ pt:
 
 
   project:
+    adult_content_admin_tag: 'conteudo_sexo'
     update:
       success: As informações foram atualizadas
       failed: 'As informações não foram salvas, verifique se todos os campos foram preenchidos corretamente'
