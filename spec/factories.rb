@@ -119,6 +119,8 @@ FactoryGirl.define do
     f.state 'online'
     f.budget '1000'
     f.uploaded_image File.open("#{Rails.root}/spec/support/testimg.png")
+    f.content_rating 1
+
     after :create do |project|
       unless project.project_transitions.where(to_state: project.state).present?
         FactoryGirl.create(:project_transition, to_state: project.state, project: project)
@@ -160,6 +162,7 @@ FactoryGirl.define do
     f.video_url 'http://vimeo.com/17298435'
     f.budget '1000'
     f.uploaded_image File.open("#{Rails.root}/spec/support/testimg.png")
+    f.content_rating 1
 
     after :build do |project|
       project.goals.build(description: 'test', value: 10, title: 'bar')
@@ -182,6 +185,7 @@ FactoryGirl.define do
     f.video_url 'http://vimeo.com/17298435'
     f.budget '1000'
     f.uploaded_image File.open("#{Rails.root}/spec/support/testimg.png")
+    f.content_rating 1
 
     after :create do |flex_project|
       FactoryGirl.create(:project_transition, {
@@ -448,5 +452,19 @@ FactoryGirl.define do
   factory :mail_marketing_user do |f|
     f.association :user
     f.association :mail_marketing_list
+  end
+
+  factory :project_report_export do |f|
+    f.association :project
+    f.report_type_ext 'csv'
+    f.report_type 'SubscriptionMonthlyReportForProjectOwner'
+  end
+
+  factory :home_banner do |f|
+    f.title 'title'
+    f.subtitle 'subtitle'
+    f.link 'link'
+    f.cta 'cta'
+    f.image 'image'
   end
 end

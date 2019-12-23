@@ -1,5 +1,9 @@
 pt:
   projects:
+    subscriptions:
+      report_type:
+        SubscriptionReportForProjectOwner: 'Base de Assinantes'
+        SubscriptionMonthlyReportForProjectOwner: 'Pagamentos confirmados'
     home:
       header_html: 'Crowdfunding e financiamento coletivo no Brasil é no Catarse'
       row_title: 'Populares'
@@ -11,35 +15,35 @@ pt:
           cta: 'Comece sua campanha'
           image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-fctodos.jpg'
         2:
-          title: 'CROWD! O seu guia de financiamentos coletivos'
-          subtitle: 'Editora Wish + Catarse apresentam dicas, cases e estratégias do financiamento coletivo para livros'
-          link: 'https://www.catarse.me/guia?ref=home_banner'
+          title: 'Prédios do Brasil'
+          subtitle: 'O livro que vai retratar a aventura em busca de ícones da verticalização na arquitetura brasileira.'
+          link: 'https://www.catarse.me/prediosdobrasil?ref=home_banner'
           cta: 'Conheça o projeto'
-          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-guia.jpg'          
+          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-prediosdobrasil.jpg'          
         3:
-          title: 'Tulipa & Donato'
-          subtitle: 'O atemporal João Donato e a inquieta Tulipa Ruiz juntam suas vozes em um inédito compacto de vinil'
-          link: 'https://www.catarse.me/tulipadonato?ref=home_banner'
+          title: 'Sumud, o filme - Vozes da terra palestina'
+          subtitle: 'Documentário militante sobre a resistência enraizada e cotidiana do povo palestino.'
+          link: 'https://www.catarse.me/sumud?ref=home_banner'
           cta: 'Conheça o projeto'
-          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-tulipadonato.jpg'          
+          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-sumud.jpg'          
         4:
-          title: 'Amigo Dragão'
-          subtitle: 'RPG Solo em um mundo fantástico de aventura e amizade.'
-          link: 'https://www.catarse.me/amigodragao?ref=home_banner'
+          title: 'Cogito - RPG'
+          subtitle: 'Um RPG moderno sobre Anjos e Demônios vivendo na terra.'
+          link: 'https://www.catarse.me/cogito_rpg?ref=home_banner'
           cta: 'Conheça o projeto'
-          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-amigodragao.jpg'          
+          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-cogito_rpg.jpg'          
         5:
-          title: 'Coisas que Aprendi com um Bebê'
-          subtitle: 'Você tem um bebê, quer ter um bebê ou já foi um bebê? Então este é o livro perfeito para você.'
-          link: 'https://www.catarse.me/bebe?ref=home_banner'
+          title: 'Sheiloca!!!'
+          subtitle: 'Imprima o gibi de 200 páginas da Sheiloca! Uma distopia feminista da criadora de Garota Siririca.'
+          link: 'https://www.catarse.me/sheiloca?ref=home_banner'
           cta: 'Conheça o projeto'
-          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-bebe.jpg'
+          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-sheiloca.gif'
         6:
-          title: 'Ô Mainha!'
-          subtitle: 'Uma coletânea de tirinhas sobre uma família engraçada, loucos por cuscuz!'
-          link: 'https://www.catarse.me/omainha?ref=home_banner'
+          title: 'No rastro da tragédia nas praias do Nordeste'
+          subtitle: 'Ajude a Revista Fórum a mergulhar na realidade dessa grande tragédia.'
+          link: 'https://www.catarse.me/no_rastro_da_tragedia_nas_praias_do_nordeste?ref=home_banner'
           cta: 'Conheça o projeto'
-          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-omainha.jpg'             
+          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-no_rastro_da_tragedia_nas_praias_do_nordeste.jpg'             
         7:
           title: '<img src="https://daks2k3a4ib2z.cloudfront.net/573a70f6d5c3cb6532f8b1a7/59c3980fd03bd6000107e99c_logo-assinaturas.png" width="400">'
           subtitle: 'Conecte-se com seus fãs e receba pagamentos todo mês em nossa plataforma de financiamento recorrente.'

@@ -6,6 +6,7 @@ class Project < ActiveRecord::Base
   PUBLISHED_STATES = %w[online waiting_funds successful failed].freeze
   HEADLINE_MAXLENGTH = 100
   NAME_MAXLENGTH = 50
+  
 
   include Statesman::Adapters::ActiveRecordQueries
   include PgSearch
@@ -26,6 +27,8 @@ class Project < ActiveRecord::Base
             :display_image, :display_expires_at, :time_to_go, :elapsed_time,
             :display_pledged, :display_pledged_with_cents, :display_goal, :progress_bar,
             :status_flag, to: :decorator
+
+  before_save :set_adult_content_tag
 
   self.inheritance_column = 'mode'
   belongs_to :user
@@ -52,6 +55,7 @@ class Project < ActiveRecord::Base
   has_many :budgets, class_name: 'ProjectBudget', inverse_of: :project
   has_many :unsubscribes
   has_many :reminders, class_name: 'ProjectReminder', inverse_of: :project
+  has_many :project_report_exports, dependent: :destroy
 
   has_many :project_transitions, autosave: false
 
@@ -488,6 +492,33 @@ class Project < ActiveRecord::Base
     tags.map(&:name).join(', ')
   end
 
+  def set_adult_content_tag
+    
+    return if !should_include_adult_content_tag?
+    return if has_adult_content_tag? && content_rating >= 18
+
+    _all_tags = tags.map(&:name)
+    if should_include_adult_content_tag?
+      _all_tags |= [adult_content_admin_tag]
+    else
+      _all_tags = _all_tags.reject{|tag| tag == adult_content_admin_tag}
+    end
+        
+    self.tags = _all_tags.map do |name|
+      Tag.find_or_create_by(slug: name.parameterize) do |tag|
+        tag.name = name.strip
+      end
+    end
+  end
+
+  def should_include_adult_content_tag?
+    content_rating >= 18 && tags.map(&:name).exclude?(adult_content_admin_tag)
+  end
+
+  def has_adult_content_tag?
+    tags.map(&:name).include?(adult_content_admin_tag)
+  end
+
   def is_flexible?
     mode == 'flex'
   end
@@ -533,6 +564,9 @@ class Project < ActiveRecord::Base
     pluck_from_database('refresh_project_metric_storage')
   end
 
+  def adult_content_admin_tag 
+    I18n.t('project.adult_content_admin_tag')
+  end
 
   # State machine delegation methods
   delegate :push_to_draft, :reject, :push_to_online, :fake_push_to_online, :finish, :push_to_trash,

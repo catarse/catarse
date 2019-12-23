@@ -53,6 +53,8 @@ Catarse::Application.routes.draw do
     # mount CatarseWepay::Engine => "/", as: :catarse_wepay
     mount Dbhero::Engine => '/dbhero', as: :dbhero
 
+    resources :home_banners, path: '/home_banners', controller: 'home/banners'
+
     resources :categories, only: [] do
       member do
         get :subscribe, to: 'categories/subscriptions#create'
@@ -83,6 +85,7 @@ Catarse::Application.routes.draw do
       end
     end
     resources :projects, only: %i[create update edit new show] do
+      resources :project_report_exports, controller: 'projects/project_report_exports'
       get 'subscriptions/:any', to: 'projects#show', on: :member
       post 'subscriptions/:any', to: 'projects#show', on: :member
       resources :accounts, only: %i[create update]

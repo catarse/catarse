@@ -42,6 +42,8 @@ class ProjectPolicy < ApplicationPolicy
       p_attr << reward_attributes
       p_attr << goal_attributes
 
+      p_attr << :content_rating if (user.admin? || (record.draft? || record.rejected?))
+
       p_attr.flatten
 
       # TODO: This code is to prevent not allowed

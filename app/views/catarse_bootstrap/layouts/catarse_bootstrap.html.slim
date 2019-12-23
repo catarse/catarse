@@ -21,6 +21,8 @@ html
     meta name="common-recommender-api-host" content=CatarseSettings[:front_common_recommender_service_api]
     meta name="common-proxy-api-host" content=CatarseSettings[:front_common_proxy_service_api]
     meta name="pagarme-encryption-key" content=CatarseSettings[:pagarme_encryption_key]
+    - if CatarseSettings[:sentry_public_dsn].present?
+      meta name="sentry-public-dsn" content=CatarseSettings[:sentry_public_dsn]
     meta#api-host name="api-host" content=CatarseSettings[:front_api_host]
     meta#api-moments-host name="api-moments-host" content=CatarseSettings[:front_api_moments_host]
     meta#rd-token name="rd-token" content=CatarseSettings[:rd_token]
@@ -44,10 +46,6 @@ html
     - if request.subdomain.include? "beta"
       meta name="robots" content="noindex, nofollow"
     = render_google_analytics_script
-    - if CatarseSettings[:sentry_dsn].present? && !Rails.env.development?
-      = javascript_include_tag "https://cdn.ravenjs.com/3.14.2/raven.min.js"
-      javascript:
-        Raven.config("#{CatarseSettings[:sentry_public_dsn]}").install()
     - if content_for? :tracker_snippet_html
       = yield :tracker_snippet_html
     - if Rails.env.production?
