@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
   include Concerns::ExceptionHandler
   include Concerns::SocialHelpersHandler
   include Concerns::AnalyticsHelpersHandler
+  include Concerns::PixelHelpersHandler
   include Concerns::KondutoHandler
   include Pundit
   before_action :redirect_when_zendesk_session, unless: :devise_controller?
