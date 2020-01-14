@@ -96,7 +96,9 @@ GEM
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
       mime-types (>= 1.16)
-    catarse_pagarme (2.13.0)
+    catarse_pagarme (2.14.0)
+      countries (= 3.0.0)
+      konduto-ruby (= 2.1.0)
       pagarme (= 2.1.4)
       rails (~> 4.0)
       sentry-raven
@@ -138,6 +140,10 @@ GEM
       sprockets (< 4.0)
     concurrent-ruby (1.1.3)
     connection_pool (2.2.0)
+    countries (3.0.0)
+      i18n_data (~> 0.8.0)
+      sixarm_ruby_unaccent (~> 1.1)
+      unicode_utils (~> 1.4)
     cpf_cnpj (0.3.0)
     cpf_faker (1.3.0)
       clipboard
@@ -159,7 +165,7 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
-    domain_name (0.5.20180417)
+    domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
     draper (2.1.0)
       actionpack (>= 3.0)
@@ -245,6 +251,7 @@ GEM
     heroku-deflater (0.6.2)
       rack (>= 1.4.5)
     high_voltage (3.0.0)
+    http-accept (1.7.0)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
     http_accept_language (2.0.5)
@@ -257,6 +264,7 @@ GEM
     i18n_alchemy (0.2.2)
       activesupport (>= 3.2.0, < 5.0.0)
       i18n (~> 0.6)
+    i18n_data (0.8.0)
     inflection (1.0.0)
     inherited_resources (1.6.0)
       actionpack (>= 3.2, < 5)
@@ -292,6 +300,7 @@ GEM
       addressable
       faraday
       multi_json (>= 1.3.0)
+    konduto-ruby (2.1.0)
     launchy (2.4.3)
       addressable (~> 2.3)
     letter_opener (1.4.1)
@@ -440,7 +449,8 @@ GEM
     responders (2.4.0)
       actionpack (>= 4.2.0, < 5.3)
       railties (>= 4.2.0, < 5.3)
-    rest-client (2.0.2)
+    rest-client (2.1.0)
+      http-accept (>= 1.7.0, < 2.0)
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
@@ -583,6 +593,7 @@ GEM
       devise (>= 3.2, < 6)
     sitemap_generator (5.2.0)
       builder (~> 3.0)
+    sixarm_ruby_unaccent (1.2.0)
     slim (3.0.7)
       temple (~> 0.7.6)
       tilt (>= 1.3.3, < 2.1)
@@ -622,7 +633,8 @@ GEM
       execjs (>= 0.3.0, < 3)
     unf (0.1.4)
       unf_ext
-    unf_ext (0.0.7.5)
+    unf_ext (0.0.7.6)
+    unicode_utils (1.4.0)
     unicorn (5.1.0)
       kgio (~> 2.6)
       raindrops (~> 0.7)
@@ -669,7 +681,7 @@ DEPENDENCIES
   browser (= 1.0.1)
   capybara
   carrierwave (~> 1.0)
-  catarse_pagarme (~> 2.13.0)
+  catarse_pagarme (~> 2.14.0)
   catarse_settings_db (>= 0.2.0)
   cocoon
   coffee-rails
@@ -767,4 +779,4 @@ RUBY VERSION
    ruby 2.4.4p296
 
 BUNDLED WITH
-   1.16.6
+   1.17.3
