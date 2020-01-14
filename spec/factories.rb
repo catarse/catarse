@@ -467,4 +467,10 @@ FactoryGirl.define do
     f.cta 'cta'
     f.image 'image'
   end
+
+  factory :project_integration do |f|
+    f.name 'GA'
+    f.data '{"data":{"id":"UA-12345678-1"}}'
+    f.association :project, factory: :project
+  end
 end

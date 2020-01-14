@@ -41,6 +41,7 @@ class ProjectPolicy < ApplicationPolicy
       p_attr << posts_attributes
       p_attr << reward_attributes
       p_attr << goal_attributes
+      p_attr << project_integrations_attributes
 
       p_attr << :content_rating if (user.admin? || (record.draft? || record.rejected?))
 
@@ -60,7 +61,7 @@ class ProjectPolicy < ApplicationPolicy
       p_attr
     else
       [:about_html, :online_days, :video_url, :cover_image, :uploaded_image, :headline, :budget, :city_id, :city,
-       user_attributes, posts_attributes, budget_attributes, reward_attributes]
+       user_attributes, posts_attributes, budget_attributes, reward_attributes, project_integrations_attributes]
     end
   end
 
@@ -90,5 +91,9 @@ class ProjectPolicy < ApplicationPolicy
     attrs = { goals_attributes: [:_destroy, :id, :value,
                                    :description, :title ]}
     attrs
+  end
+
+  def project_integrations_attributes
+    { project_integrations_attributes: %i[_destroy name data]}
   end
 end

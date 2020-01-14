@@ -7,6 +7,8 @@ pt:
       publish: 'Continuar'
       send: 'Enviar'
     edit:
+      integrations_html: "Integrações <span class='fontcolor-terciary'>(opcional)</span>"
+      integrations_subtitle: 'Envie informações de seu projeto diretamente para o Google Analytics e Facebook e amplifique o marketing de sua campanha'
       reward_html: "Recompensas <span class='fontcolor-terciary'>(opcional)</span>"
       video_subtitle: 'O vídeo é opcional, mas recomendamos muito que você faça! Um bom vídeo faz a diferença e pode ser o grande responsável pelo sucesso do seu projeto.'
       reward_subtitle: "Se você quiser iniciar o projeto sem recompensa e adicionar depois também, fique a vontade!"

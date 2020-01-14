@@ -120,6 +120,8 @@ Catarse::Application.routes.draw do
         put :credits_checkout, on: :member
       end
 
+      resources :integrations, { only: [:index, :create, :update], controller: 'projects/integrations' }
+
       collection do
         get :fallback_create, to: 'projects#create'
       end

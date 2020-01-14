@@ -48,8 +48,7 @@ html
     = render_google_analytics_script
     - if content_for? :tracker_snippet_html
       = yield :tracker_snippet_html
-    - if Rails.env.production?
-      = render 'layouts/facebook_pixel'
+    = render_facebook_pixel_script
   body#catarse_bootstrap[data-environment=Rails.env.to_s data-controller-name=controller_name data-action=action_name data-settings="#{public_settings}" data-user="#{current_user.try(:to_analytics_json)}" data-referral="#{session[:referral_link]}" data-id=params[:id] data-blog="#{(Blog.fetch_last_posts rescue [])[0..2].to_json if is_projects_home?}" data-mobile=browser.mobile?.to_s itemscope itemtype="http://schema.org/WebPage" class="#{content_for :body_class}"]
     - if CatarseSettings[:rd_token]
       script(async src="https://d335luupugsy2.cloudfront.net/js/loader-scripts/09f3866f-4c20-40a4-bfb8-68c2310d3964-loader.js" type="text/javascript")
