@@ -1,34 +1,46 @@
-/ - if Rails.env.production? && CatarseSettings['google_analytics_id'].present?
-<style>.async-hide { opacity: 0 !important}</style>
-javascript:
-  (function(a,s,y,n,c,h,i,d,e){s.className+=' '+y;h.start=1*new Date;
-  h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
-  (a[n]=a[n]||[]).hide=h;setTimeout(function(){i();h.end=null},c);h.timeout=c;
-  })(window,document.documentElement,'async-hide','dataLayer',4000,
-  {'#{CatarseSettings['google_optimize_id']}':true});
-javascript:
-  window.optimizeObserver = {
-    optimizeVariantName : null,
-    observers : [],
-    addListener : function(listener) {
-      this.observers.push(listener);
-      if (this.optimizeVariantName && listener) {
-        listener(this.optimizeVariantName);
-      }
-    },
-    setVariant : function(variantName) {
-      this.optimizeVariantName = variantName;
-      this.observers.forEach(function(func) {
-        if (func) func(variantName);
-      });
-    }
-  };
 
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  ga('create', '#{CatarseSettings['google_analytics_id']}', '#{CatarseSettings[:host]}'); // analytics id, key
-  ga('require', 'ecommerce');
-  ga('require', '#{CatarseSettings['google_optimize_id']}'); // optimize id, key
-  ga('send', 'pageview');
+- if Rails.env.production?
+  <style>.async-hide { opacity: 0 !important}</style>
+  javascript:
+    (function(a,s,y,n,c,h,i,d,e){s.className+=' '+y;h.start=1*new Date;
+    h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
+    (a[n]=a[n]||[]).hide=h;setTimeout(function(){i();h.end=null},c);h.timeout=c;
+    })(window,document.documentElement,'async-hide','dataLayer',4000,
+    {'#{CatarseSettings['google_optimize_id']}':true});
+  javascript:
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    window.optimizeObserver = {
+      optimizeVariantName : null,
+      observers : [],
+      addListener : function(listener) {
+        this.observers.push(listener);
+        if (this.optimizeVariantName && listener) {
+          listener(this.optimizeVariantName);
+        }
+      },
+      setVariant : function(variantName) {
+        this.optimizeVariantName = variantName;
+        this.observers.forEach(function(func) {
+          if (func) func(variantName);
+        });
+      }
+    };
+
+    window.trackingFunctions = window.trackingFunctions || {};
+
+    window.trackingFunctions['GA'] = function(google_analytics_id) {
+      var analyticsId = 'UA-' + google_analytics_id;
+      ga('create', analyticsId, 'auto', { name: 'project' })
+      ga('require', 'ecommerce');
+      ga('project.send', 'pageview');
+    };
+
+  - if CatarseSettings['google_analytics_id'].present?
+    javascript:
+      ga('create', '#{CatarseSettings['google_analytics_id']}', '#{CatarseSettings[:host]}'); // analytics id, key
+      ga('require', 'ecommerce');
+      ga('require', '#{CatarseSettings['google_optimize_id']}'); // optimize id, key
+      ga('send', 'pageview');
