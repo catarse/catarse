@@ -1,4 +1,4 @@
-- if Rails.env.production?
+- if Rails.env.production? || Rails.env.sandbox?
   <style>.async-hide { opacity: 0 !important}</style>
   javascript:
     (function(a,s,y,n,c,h,i,d,e){s.className+=' '+y;h.start=1*new Date;
