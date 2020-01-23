@@ -1,3 +1,21 @@
+javascript:
+  window.optimizeObserver = {
+    optimizeVariantName : null,
+    observers : [],
+    addListener : function(listener) {
+      this.observers.push(listener);
+      if (this.optimizeVariantName && listener) {
+        listener(this.optimizeVariantName);
+      }
+    },
+    setVariant : function(variantName) {
+      this.optimizeVariantName = variantName;
+      this.observers.forEach(function(func) {
+        if (func) func(variantName);
+      });
+    }
+  };
+  
 - if Rails.env.production? || Rails.env.sandbox?
   <style>.async-hide { opacity: 0 !important}</style>
   javascript:
@@ -11,22 +29,6 @@
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-    window.optimizeObserver = {
-      optimizeVariantName : null,
-      observers : [],
-      addListener : function(listener) {
-        this.observers.push(listener);
-        if (this.optimizeVariantName && listener) {
-          listener(this.optimizeVariantName);
-        }
-      },
-      setVariant : function(variantName) {
-        this.optimizeVariantName = variantName;
-        this.observers.forEach(function(func) {
-          if (func) func(variantName);
-        });
-      }
-    };
 
     window.trackingFunctions = window.trackingFunctions || {};
 
