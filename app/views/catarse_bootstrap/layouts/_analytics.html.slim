@@ -15,8 +15,7 @@ javascript:
       });
     }
   };
-  
-- if Rails.env.production? || Rails.env.sandbox?
+- if Rails.env.production? || Rails.env.sandbox? || CatarseSettings['google_analytics_id'].present?
   <style>.async-hide { opacity: 0 !important}</style>
   javascript:
     (function(a,s,y,n,c,h,i,d,e){s.className+=' '+y;h.start=1*new Date;
