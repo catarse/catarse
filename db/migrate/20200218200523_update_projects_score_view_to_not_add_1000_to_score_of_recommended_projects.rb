@@ -6,7 +6,10 @@ class UpdateProjectsScoreViewToNotAdd1000ToScoreOfRecommendedProjects < ActiveRe
     SELECT p.id AS project_id,
           CASE
             WHEN (p.mode = 'sub'::text) THEN
-              lt_sub.score::numeric
+              CASE
+                  WHEN p.recommended THEN (COALESCE((lt_sub.score)::numeric, (0)::numeric) + (1000)::numeric)
+                  ELSE (lt_sub.score)::numeric
+              END
             ELSE
               lt_non_sub.score::numeric
           END AS score
