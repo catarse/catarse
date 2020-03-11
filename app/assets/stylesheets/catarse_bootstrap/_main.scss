@@ -39,7 +39,7 @@ a:hover {
 .btn:hover {
   border-color: #65bf1b;
   background-color: #65bf1b;
-  box-shadow: 1px 1px 3px 0 rgba(63, 71, 82, .38);
+  box-shadow: 1px 1px 3px 0 rgba(63, 71, 82, 0.38);
 }
 
 .btn.bt-medium {
@@ -131,7 +131,7 @@ a:hover {
 }
 
 .bootstrap-color-swatch.blue-light {
-  background-color: rgba(64, 155, 255, .09);
+  background-color: rgba(64, 155, 255, 0.09);
   color: #3f4752;
 }
 
@@ -184,21 +184,21 @@ a:hover {
   margin-top: 0px;
   margin-bottom: 0px;
   border-style: solid;
-  border-color: hsla(0, 0%, 100%, .09);
+  border-color: hsla(0, 0%, 100%, 0.09);
   background-color: transparent;
-  color: hsla(0, 0%, 100%, .61);
+  color: hsla(0, 0%, 100%, 0.61);
 }
 
 .text-field.negative:hover {
   border-style: solid;
   background-color: #f1f4f4;
-  box-shadow: inset 0 0 23px 0 rgba(0, 0, 0, .18);
+  box-shadow: inset 0 0 23px 0 rgba(0, 0, 0, 0.18);
   color: #3f4752;
 }
 
 .text-field.negative:focus {
   background-color: #f1f4f4;
-  box-shadow: inset 0 0 23px 0 rgba(0, 0, 0, .18);
+  box-shadow: inset 0 0 23px 0 rgba(0, 0, 0, 0.18);
   color: #3f4752;
 }
 
@@ -218,7 +218,7 @@ a:hover {
 .text-field.error {
   margin-bottom: 5px;
   border-color: #e86666;
-  background-color: hsla(0, 74%, 65%, .09);
+  background-color: rgba(232, 102, 102, 0.09);
 }
 
 .text-field.bottom {
@@ -542,7 +542,7 @@ a:hover {
   right: -73px;
   padding-top: 9px;
   padding-bottom: 9px;
-  background-color: rgba(37, 49, 57, .6);
+  background-color: rgba(37, 49, 57, 0.6);
   color: #f1f2f3;
   line-height: 20px;
 }
@@ -616,7 +616,7 @@ a:hover {
   display: block;
   padding-top: 7px;
   padding-bottom: 7px;
-  color: rgba(241, 244, 244, .54);
+  color: rgba(241, 244, 244, 0.54);
   text-decoration: none;
 }
 
@@ -651,7 +651,7 @@ a:hover {
   z-index: 1;
   display: inline-block;
   height: 100%;
-  background-color: rgba(0, 178, 45, .84);
+  background-color: rgba(0, 178, 45, 0.84);
   color: #fff;
   font-size: 20px;
   font-weight: 600;
@@ -724,7 +724,7 @@ a:hover {
   margin-top: 15px;
   padding-top: 8px;
   padding-bottom: 21px;
-  border-top: 1px solid hsla(0, 0%, 100%, .61);
+  border-top: 1px solid hsla(0, 0%, 100%, 0.61);
   font-family: proxima-nova, sans-serif;
 }
 
@@ -739,7 +739,7 @@ a:hover {
 .project-video {
   height: 488px;
   margin-bottom: 30px;
-  background-color: hsla(0, 0%, 87%, .57);
+  background-color: hsla(0, 0%, 87.1%, 0.57);
 }
 
 .fontsize-smaller {
@@ -834,7 +834,7 @@ a:hover {
 }
 
 .page-header.negative {
-  border-top: 1px none rgba(0, 0, 0, .2);
+  border-top: 1px none rgba(0, 0, 0, 0.2);
   background-color: #3f4752;
   color: #f1f4f4;
 }
@@ -850,14 +850,14 @@ a:hover {
   padding-top: 12px;
   padding-bottom: 12px;
   border: 1px solid rgba(64, 155, 255, 0);
-  background-color: rgba(64, 155, 255, .09);
+  background-color: rgba(64, 155, 255, 0.09);
   color: #409bff;
   text-decoration: none;
 }
 
 .btn-message:hover {
-  border-color: rgba(64, 155, 255, .09);
-  background-color: rgba(64, 155, 255, .2);
+  border-color: rgba(64, 155, 255, 0.09);
+  background-color: rgba(64, 155, 255, 0.2);
   color: #409bff;
 }
 
@@ -1071,7 +1071,7 @@ a:hover {
   z-index: 2;
   display: block;
   height: 100%;
-  background-color: rgba(63, 71, 82, .72);
+  background-color: rgba(63, 71, 82, 0.72);
 }
 
 .project-embed-container {
@@ -1229,7 +1229,7 @@ a:hover {
   height: 460px;
   border: 1px solid #ddd;
   border-radius: 5px;
-  box-shadow: 0 0 6px 0 hsla(217, 7%, 51%, .2);
+  box-shadow: 0 0 6px 0 rgba(121, 128, 139, 0.2);
 }
 
 .cardbig-description {
@@ -1330,7 +1330,7 @@ a:hover {
 
 .dashboard-nav-link.selected {
   border-bottom: 3px solid #409ade;
-  background-color: rgba(241, 244, 244, .2);
+  background-color: rgba(241, 244, 244, 0.2);
   color: #3f4752;
   font-weight: 600;
 }
@@ -1365,19 +1365,19 @@ a:hover {
   border-bottom-width: 0px;
   border-left-width: 5px;
   background-color: transparent;
-  color: hsla(210, 8%, 95%, .89);
+  color: rgba(241, 242, 243, 0.89);
   font-size: 15px;
 }
 
 .dashboard-nav-link.fixed:hover {
   border-color: #409bff;
-  background-color: rgba(241, 244, 244, .2);
+  background-color: rgba(241, 244, 244, 0.2);
 }
 
 .dashboard-nav-link.fixed.w--current {
   border-left-width: 5px;
   border-left-color: #409ade;
-  background-color: rgba(241, 244, 244, .2);
+  background-color: rgba(241, 244, 244, 0.2);
   font-weight: 600;
 }
 
@@ -1392,7 +1392,7 @@ a:hover {
 }
 
 .bootstrap-header-dropdown-link:hover {
-  background-color: hsla(217, 7%, 51%, .09);
+  background-color: rgba(121, 128, 139, 0.09);
   text-decoration: none;
 }
 
@@ -1417,14 +1417,14 @@ a:hover {
 }
 
 .creditcard-records:hover {
-  background-color: rgba(241, 244, 244, .36);
+  background-color: rgba(241, 244, 244, 0.36);
 }
 
 .creditcard-records.selected {
   position: relative;
   z-index: 1;
   border-color: #00b22d;
-  background-color: rgba(241, 244, 244, .36);
+  background-color: rgba(241, 244, 244, 0.36);
 }
 
 .footer-full-signature-text {
@@ -1436,8 +1436,8 @@ a:hover {
 .footer-full-copyleft {
   margin-top: 80px;
   padding-top: 35px;
-  border-top: 1px solid hsla(217, 7%, 51%, .27);
-  color: rgba(241, 244, 244, .54);
+  border-top: 1px solid rgba(121, 128, 139, 0.27);
+  color: rgba(241, 244, 244, 0.54);
   text-align: center;
 }
 
@@ -1468,7 +1468,7 @@ a:hover {
   position: absolute;
   margin-top: 2px;
   border-radius: 5px;
-  box-shadow: 1px 1px 3px 0 rgba(63, 71, 82, .81);
+  box-shadow: 1px 1px 3px 0 rgba(63, 71, 82, 0.81);
 }
 
 .dropdown-list.user-menu.w--open {
@@ -1520,7 +1520,7 @@ a:hover {
 
 .divider.negative.u-marginbottom-30 {
   border-top-width: 1px;
-  border-top-color: hsla(0, 0%, 100%, .28);
+  border-top-color: hsla(0, 0%, 100%, 0.28);
 }
 
 .text-success {
@@ -1737,7 +1737,7 @@ a:hover {
   background-color: #fff;
   -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
-  color: hsla(217, 7%, 51%, .68);
+  color: rgba(122, 129, 140, 0.68);
   font-size: 15px;
   text-decoration: none;
 }
@@ -1799,8 +1799,8 @@ a:hover {
 }
 
 .card-user {
-  border-color: rgba(64, 155, 255, .09);
-  background-color: rgba(64, 155, 255, .09);
+  border-color: rgba(64, 155, 255, 0.09);
+  background-color: rgba(64, 155, 255, 0.09);
 }
 
 .u-round {
@@ -1862,12 +1862,12 @@ a:hover {
 .card-reward:hover {
   border: 1px solid #7cc142;
   background-color: #f1f4f4;
-  box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, .28);
+  box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.28);
 }
 
 .card-gone {
   position: relative;
-  color: hsla(217, 7%, 51%, .36);
+  color: rgba(121, 128, 139, 0.36);
 }
 
 .project-name {
@@ -1913,7 +1913,7 @@ a:hover {
 
 .zindex-10 {
   z-index: 10;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .62);
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.62);
 }
 
 .card-error {
@@ -1967,7 +1967,7 @@ a:hover {
   padding-top: 15px;
   padding-bottom: 15px;
   background-color: #4389bf;
-  box-shadow: 0 -1px 5px 0 rgba(0, 0, 0, .32);
+  box-shadow: 0 -1px 5px 0 rgba(0, 0, 0, 0.32);
 }
 
 .dashboard-nav.side {
@@ -2032,8 +2032,8 @@ a:hover {
 }
 
 .card-message {
-  border: 1px solid rgba(64, 155, 255, .09);
-  background-color: rgba(64, 155, 255, .09);
+  border: 1px solid rgba(64, 155, 255, 0.09);
+  background-color: rgba(64, 155, 255, 0.09);
 }
 
 .u-margintop-20 {
@@ -2066,7 +2066,7 @@ a:hover {
 
 .zindex-20 {
   z-index: 30;
-  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, .62);
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.62);
 }
 
 ._w-sub-col {
@@ -2143,7 +2143,7 @@ a:hover {
 }
 
 .btn-terciary {
-  border: 2px solid hsla(217, 7%, 51%, .78);
+  border: 2px solid rgba(121, 128, 139, 0.78);
   background-color: transparent;
   color: #79808b;
 }
@@ -2175,7 +2175,7 @@ a:hover {
   overflow: hidden;
   margin-bottom: 40px;
   padding: 0px;
-  box-shadow: 0 0 6px 0 hsla(217, 7%, 51%, .22);
+  box-shadow: 0 0 6px 0 rgba(121, 128, 139, 0.22);
 }
 
 .card-project-author {
@@ -2184,9 +2184,11 @@ a:hover {
 }
 
 .card-project-author.altt {
-  height: 40px;
-  padding-right: 20px;
-  padding-left: 20px;
+  height: auto;
+  margin-top: 5px;
+  padding: 8px 13px;
+  border-top: 1px solid #e4e4e4;
+  background-color: hsla(0, 0%, 89.4%, 0.22);
 }
 
 .card-terciary {
@@ -2397,7 +2399,15 @@ a:hover {
 }
 
 .inline-block.fa.fa-angle-down {
+  margin-left: 15px;
+}
+
+.inline-block.fa.fa-times {
   margin-left: 10px;
+}
+
+.inline-block.far.fa-times {
+  margin-left: 15px;
 }
 
 .u-right-big-only {
@@ -2445,7 +2455,7 @@ a:hover {
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
   background-color: #f1f4f4;
-  box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, .33);
+  box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.33);
 }
 
 .content-hero-profile {
@@ -2456,7 +2466,7 @@ a:hover {
   z-index: 10;
   margin-top: 115px;
   color: #fff;
-  text-shadow: 2px 2px 1px rgba(0, 0, 0, .44);
+  text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.44);
 }
 
 .btn-category {
@@ -2541,7 +2551,7 @@ a:hover {
 
 .creditcard-brand {
   margin-top: -15px;
-  color: hsla(217, 7%, 51%, .52);
+  color: rgba(121, 128, 139, 0.52);
   font-size: 16px;
   letter-spacing: 1px;
 }
@@ -2579,7 +2589,7 @@ a:hover {
   right: 0px;
   z-index: 50;
   background-color: #fff;
-  box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, .24);
+  box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.24);
 }
 
 .hero-hello {
@@ -2631,7 +2641,7 @@ a:hover {
 }
 
 .card-cta:hover {
-  box-shadow: 0 0 12px 0 rgba(63, 71, 82, .41);
+  box-shadow: 0 0 12px 0 rgba(63, 71, 82, 0.41);
   -webkit-transform: scale(1.01);
   -ms-transform: scale(1.01);
   transform: scale(1.01);
@@ -2673,7 +2683,7 @@ a:hover {
   position: fixed;
   padding-top: 14px;
   padding-bottom: 22px;
-  box-shadow: 1px 1px 14px -4px rgba(63, 71, 82, .47);
+  box-shadow: 1px 1px 14px -4px rgba(63, 71, 82, 0.47);
 }
 
 .faq-card {
@@ -2695,7 +2705,7 @@ a:hover {
 }
 
 .btn-inline.w--current {
-  background-color: #fffff;
+  background-color: #fff;
   color: #2c2f33;
 }
 
@@ -2733,12 +2743,12 @@ a:hover {
   padding: 32px 35px;
   border-radius: 5px;
   background-color: #fff;
-  box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, .33);
+  box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.33);
   text-align: center;
 }
 
 .right-divider {
-  border-right: 1px solid hsla(217, 7%, 51%, .2);
+  border-right: 1px solid rgba(121, 128, 139, 0.2);
 }
 
 .card-project-thumb-big {
@@ -2839,7 +2849,7 @@ a:hover {
 }
 
 .card-alert {
-  border-color: rgba(158, 156, 32, .2);
+  border-color: rgba(158, 156, 32, 0.2);
   background-color: #ffffc0;
 }
 
@@ -2927,7 +2937,7 @@ a:hover {
   bottom: 0px;
   display: block;
   height: 100%;
-  background-color: rgba(241, 244, 244, .87);
+  background-color: rgba(241, 244, 244, 0.87);
   opacity: 1;
 }
 
@@ -2957,7 +2967,7 @@ a:hover {
   width: 100%;
   padding: 9px 12px 9px 14px;
   border-left: 5px solid transparent;
-  color: hsla(210, 8%, 95%, .89);
+  color: rgba(241, 242, 243, 0.89);
   font-size: 14px;
   text-decoration: none;
 }
@@ -2974,7 +2984,7 @@ a:hover {
 
 .dashboard-nav-link-left.selected.w--current {
   border-left-color: #409ade;
-  background-color: rgba(241, 244, 244, .2);
+  background-color: rgba(241, 244, 244, 0.2);
 }
 
 .dashboard-nav-link-left.indent {
@@ -3049,7 +3059,7 @@ a:hover {
 }
 
 .table-row.header {
-  background-color: rgba(241, 244, 244, .49);
+  background-color: rgba(241, 244, 244, 0.49);
 }
 
 .toggle {
@@ -3171,7 +3181,7 @@ a:hover {
   padding: 15px;
   border-radius: 50%;
   background-color: #409ade;
-  box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, .41);
+  box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.41);
   color: #fff;
   text-align: center;
   text-decoration: none;
@@ -3238,7 +3248,7 @@ a:hover {
   width: 47px;
   margin-right: 10px;
   padding: 5px;
-  background-color: hsla(0, 0%, 100%, .71);
+  background-color: hsla(0, 0%, 100%, 0.71);
   text-align: center;
 }
 
@@ -3271,7 +3281,7 @@ a:hover {
   padding-left: 40px;
   border-radius: 5px;
   background-color: #fff;
-  box-shadow: 1px 1px 49px 0 rgba(63, 71, 82, .29);
+  box-shadow: 1px 1px 49px 0 rgba(63, 71, 82, 0.29);
 }
 
 .modal-dialog-inner.modal-dialog-small {
@@ -3382,7 +3392,7 @@ a:hover {
   padding: 14px;
   border-radius: 5px;
   background-color: #fff;
-  box-shadow: 0 5px 14px 0 rgba(63, 71, 82, .51);
+  box-shadow: 0 5px 14px 0 rgba(63, 71, 82, 0.51);
 }
 
 .tooltip.dark {
@@ -3445,13 +3455,13 @@ a:hover {
 
 .radio-btn:hover {
   background-color: #fff;
-  box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, .15);
+  box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.15);
 }
 
 .radio-btn.selected {
   border: 2px solid #7cc142;
   background-color: #fff;
-  box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, .15);
+  box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.15);
 }
 
 .badge-product {
@@ -3462,7 +3472,7 @@ a:hover {
   height: 35px;
   padding: 5px;
   background-color: #fff;
-  box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, .34);
+  box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.34);
   text-align: center;
 }
 
@@ -3679,7 +3689,7 @@ a:hover {
   padding-top: 20px;
   padding-bottom: 20px;
   background-color: #fff;
-  box-shadow: 0 -3px 21px 0 rgba(63, 71, 82, .21);
+  box-shadow: 0 -3px 21px 0 rgba(63, 71, 82, 0.21);
 }
 
 .save-draft-btn-section.closed {
@@ -3835,12 +3845,12 @@ a:hover {
   margin-right: 10px;
   border-style: solid;
   border-width: 1px;
-  border-color: hsla(217, 7%, 51%, .77);
+  border-color: rgba(121, 128, 139, 0.77);
   border-radius: 3px;
 }
 
 .checkbox-menu:hover {
-  box-shadow: inset 0 0 3px 0 rgba(0, 0, 0, .17);
+  box-shadow: inset 0 0 3px 0 rgba(0, 0, 0, 0.17);
 }
 
 .checkbox-menu.checkbox-menu-partial-selected {
@@ -4066,16 +4076,23 @@ a:hover {
 }
 
 .explore-span-filter {
-  display: inline-block;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   margin-top: 6px;
   margin-bottom: 6px;
   padding: 20px 14px;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   border-style: solid;
   border-width: 1px;
-  border-color: rgba(0, 0, 0, .11);
+  border-color: rgba(0, 0, 0, 0.11);
   border-radius: 5px;
   background-color: #273755;
-  box-shadow: 1px 1px 7px 0 rgba(9, 11, 22, .32);
+  box-shadow: 1px 1px 7px 0 rgba(9, 11, 22, 0.32);
   color: #f1f4f4;
   font-size: 20px;
   line-height: 26px;
@@ -4557,6 +4574,32 @@ a:hover {
   align-items: flex-start;
 }
 
+.relative {
+  position: relative;
+}
+
+.btn-search {
+  position: absolute;
+  left: auto;
+  top: 0%;
+  right: 0%;
+  bottom: auto;
+  display: inline-block;
+  overflow: hidden;
+  width: auto;
+  height: 42px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-top: 10px;
+}
+
+.explore-span-filter-name {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
 html.w-mod-js *[data-ix="fade-in"] {
   opacity: 0;
 }
@@ -4972,8 +5015,8 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
     padding-bottom: 5px;
   }
   .card-project-author.altt {
-    height: 31px;
     padding-top: 7px;
+    padding-bottom: 7px;
   }
   .dashboard-header {
     margin-top: 30px;
@@ -5192,11 +5235,14 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
     padding-top: 50px;
   }
   .text-field.negative {
-    background-color: rgba(241, 244, 244, .61);
+    background-color: rgba(241, 244, 244, 0.61);
     color: #3f4752;
   }
   .text-field.negative:hover {
-    background-color: rgba(241, 244, 244, .61);
+    background-color: rgba(241, 244, 244, 0.61);
+  }
+  .text-field.positive.city-search {
+    margin-top: 43px;
   }
   .box-login {
     border-style: solid;
@@ -5582,7 +5628,7 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
     z-index: 20;
     padding-top: 10px;
     background-color: #fff;
-    box-shadow: 0 -2px 12px -3px rgba(63, 71, 82, .53);
+    box-shadow: 0 -2px 12px -3px rgba(63, 71, 82, 0.53);
     text-align: left;
   }
   .hero-full {
@@ -5617,6 +5663,9 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
     display: inline;
   }
   .inline-block.fa.fa-angle-down {
+    float: right;
+  }
+  .inline-block.far.fa-times {
     float: right;
   }
   .u-right-big-only {
@@ -5917,7 +5966,7 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
     display: none;
   }
   .explore-span-filter {
-    display: block;
+    width: 100%;
     font-size: 18px;
     text-align: left;
   }
@@ -5955,7 +6004,7 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
   .explore-mobile-label {
     display: inline-block;
     margin-right: 10px;
-    color: rgba(241, 244, 244, .35);
+    color: rgba(241, 244, 244, 0.35);
     font-size: 12px;
     line-height: 12px;
   }
