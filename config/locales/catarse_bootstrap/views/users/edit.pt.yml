@@ -81,8 +81,8 @@ pt:
           750382:
             title: 'Novidades da semana'
             description: 'Projetos em destaque e pílulas do nosso Blog, selecionados com carinho pela nossa equipe.'
-            image_src: 'http://uploads.webflow.com/5849f4f0a275a2a744efd93e/59a714d438c73b0001ee8d83_news-img.jpg'
+            image_src: 'https://uploads.webflow.com/5849f4f0a275a2a744efd93e/59a714d438c73b0001ee8d83_news-img.jpg'
           1370135:
             title: 'Geek News'
             description: 'Quadrinhos, boardgames, RPG e jogos digitais, dentro e fora do Catarse.'
-            image_src: 'http://uploads.webflow.com/5849f4f0a275a2a744efd93e/59a713dde51ca0000149ae85_geek-news-img.jpg'
+            image_src: 'https://uploads.webflow.com/5849f4f0a275a2a744efd93e/59a713dde51ca0000149ae85_geek-news-img.jpg'
