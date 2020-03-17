@@ -4,15 +4,32 @@
 
     window.trackingFunctions = window.trackingFunctions || {};
 
-    window.trackingFunctions['PIXEL'] = function(facebook_pixel_id) {
+    window.trackingFunctions.PIXEL = function(facebook_pixel_id, eventArray) {
       fbq('init', facebook_pixel_id);
-      fbq('track', "PageView");
+      fbq('track', 'PageView');
+
+      var acceptedPixelEvents = ['ViewContent', 'AddToCart', 'Purchase', 'Subscribe'];
+
+      for (var eventIndex = 0; eventIndex < eventArray.length; eventIndex++) {
+        var eventObject = eventArray[eventIndex];
+        var event = eventObject.event;
+
+        if (acceptedPixelEvents.includes(event)) {
+          var params = eventObject.params;
+
+          if (event && params) {
+            fbq('track', event, params);
+          } else if (event) {
+            fbq('track', event);
+          }
+        }
+      }
     };
 
   - if CatarseSettings[:facebook_pixel_id].present?
     javascript:
       fbq('init', '#{CatarseSettings[:facebook_pixel_id]}');
-      fbq('track', "PageView");
+      fbq('track', 'PageView');
 
   - if CatarseSettings[:facebook_pixel_id].present?
     noscript
