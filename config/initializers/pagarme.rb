@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-
+PagarMe::Request::DEFAULT_HEADERS.merge!('X-Pagarme-Version' => '2019-09-01')
 CatarsePagarme.configure do |config|
   config.api_key = CatarseSettings.get_without_cache(Rails.env.production? ? :pagarme_api_key : :pagarme_test_api_key)
   config.konduto_api_key = CatarseSettings.get_without_cache(Rails.env.production? ? :konduto_api_key : :konduto_test_api_key)
