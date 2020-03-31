@@ -42,4 +42,18 @@ RSpec.describe PaymentEngines do
     subject { PaymentEngines.find_payment({ id: payment.id }) }
     it { is_expected.to eq(payment) }
   end
+
+  describe '.was_credit_card_used_before?' do
+    before { payment.update(gateway_data: { card: { id: 'some-id' } }) }
+
+    context 'when there is a paid payment with given card_id' do
+      subject { described_class.was_credit_card_used_before?('some-id') }
+      it { is_expected.to be_truthy }
+    end
+
+    context 'when there isn`t a paid payment with given card_id' do
+      subject { described_class.was_credit_card_used_before?('fake-id') }
+      it { is_expected.to be_falsey }
+    end
+  end
 end

@@ -7,6 +7,8 @@ pt:
       publish: 'Continuar'
       send: 'Enviar'
     edit:
+      integrations_html: "Integrações <span class='fontcolor-terciary'>(opcional)</span>"
+      integrations_subtitle: 'Envie informações de seu projeto diretamente para o Google Analytics e Facebook e amplifique o marketing de sua campanha'
       reward_html: "Recompensas <span class='fontcolor-terciary'>(opcional)</span>"
       video_subtitle: 'O vídeo é opcional, mas recomendamos muito que você faça! Um bom vídeo faz a diferença e pode ser o grande responsável pelo sucesso do seu projeto.'
       reward_subtitle: "Se você quiser iniciar o projeto sem recompensa e adicionar depois também, fique a vontade!"
@@ -427,8 +429,8 @@ pt:
       adult_content_support_url: 'https://suporte.catarse.me/hc/pt-br/articles/360037450852'
       url: 'URL do projeto'
       url_label: 'É o endereço do seu projeto, deve ser fácil de memorizar. Evite underline, hífen e símbolos'
-      category: 'O seu projeto contém nudez e/ou cenas de sexo explícito?'
-      category_hint: ''
+      category: 'Categoria'
+      category_hint: 'Escolha a mais adequada ao seu projeto.'
       category_label: 'Explore e se inspire em outros projetos da mesma categoria que o seu.'
       online_days: 'Prazo para arrecadação'
       online_days_label: 'Você pode escolher entre 1 e 60 dias para a sua campanha. Confira o guia dos realizadores para dicas sobre prazos.'

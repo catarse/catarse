@@ -46,4 +46,8 @@ class PaymentEngines
   def self.new_payment(attributes = {})
     Payment.new attributes
   end
+
+  def self.was_credit_card_used_before?(card_id)
+    Payment.where(state: 'paid').where("gateway_data -> 'card' ->> 'id' = ?", card_id).exists?
+  end
 end
