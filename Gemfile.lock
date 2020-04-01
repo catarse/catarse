@@ -96,7 +96,7 @@ GEM
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
       mime-types (>= 1.16)
-    catarse_pagarme (2.14.3)
+    catarse_pagarme (2.14.11)
       countries (= 3.0.0)
       konduto-ruby (= 2.1.0)
       pagarme (= 2.1.4)
@@ -633,7 +633,7 @@ GEM
       execjs (>= 0.3.0, < 3)
     unf (0.1.4)
       unf_ext
-    unf_ext (0.0.7.6)
+    unf_ext (0.0.7.7)
     unicode_utils (1.4.0)
     unicorn (5.1.0)
       kgio (~> 2.6)
@@ -681,7 +681,7 @@ DEPENDENCIES
   browser (= 1.0.1)
   capybara
   carrierwave (~> 1.0)
-  catarse_pagarme (~> 2.14.3)
+  catarse_pagarme (~> 2.14.11)
   catarse_settings_db (>= 0.2.0)
   cocoon
   coffee-rails

@@ -44,15 +44,27 @@ RSpec.describe PaymentEngines do
   end
 
   describe '.was_credit_card_used_before?' do
-    before { payment.update(gateway_data: { card: { id: 'some-id' } }) }
+    before do
+      payment.update(
+        state: 'paid',
+        gateway: 'Pagarme',
+        payment_method: 'CartaoDeCredito',
+        gateway_data: { card: { id: 'some-id' } }
+      )
+    end
 
-    context 'when there is a paid payment with given card_id' do
-      subject { described_class.was_credit_card_used_before?('some-id') }
+    context 'when there is a paid payment with given card_id and given user_id' do
+      subject { described_class.was_credit_card_used_before?('some-id', payment.contribution.user.id) }
       it { is_expected.to be_truthy }
     end
 
     context 'when there isn`t a paid payment with given card_id' do
-      subject { described_class.was_credit_card_used_before?('fake-id') }
+      subject { described_class.was_credit_card_used_before?('fake-id', payment.contribution.user.id) }
+      it { is_expected.to be_falsey }
+    end
+
+    context 'when there isn`t a paid payment with given card_id but with different user_id' do
+      subject { described_class.was_credit_card_used_before?('some-id', 'fake-user-id') }
       it { is_expected.to be_falsey }
     end
   end
