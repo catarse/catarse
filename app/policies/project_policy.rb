@@ -41,8 +41,7 @@ class ProjectPolicy < ApplicationPolicy
       p_attr << posts_attributes
       p_attr << reward_attributes
       p_attr << goal_attributes
-      p_attr << project_integrations_attributes
-
+      p_attr << integrations_attributes
       p_attr << :content_rating if (user.admin? || (record.draft? || record.rejected?))
 
       p_attr.flatten
@@ -57,11 +56,13 @@ class ProjectPolicy < ApplicationPolicy
         ]
         p_attr.delete_if { |key| not_allowed.include?(key) }
       end
+      
+      p_attr << allow_fields_conditionally
 
       p_attr
     else
       [:about_html, :online_days, :video_url, :cover_image, :uploaded_image, :headline, :budget, :city_id, :city,
-       user_attributes, posts_attributes, budget_attributes, reward_attributes, project_integrations_attributes]
+        user_attributes, posts_attributes, budget_attributes, reward_attributes, integrations_attributes]
     end
   end
 
@@ -93,7 +94,20 @@ class ProjectPolicy < ApplicationPolicy
     attrs
   end
 
-  def project_integrations_attributes
-    { project_integrations_attributes: %i[_destroy name data]}
+  def integrations_attributes
+    { integrations_attributes: %i[_destroy name data]}
+  end
+
+  private
+
+  def allow_fields_conditionally
+    allowed_fields = %i[]
+    allowed_fields << service_fee
+
+    allowed_fields
+  end
+
+  def service_fee
+    %i[ :service_fee ] if record.integrations.include?({ name: 'COVID19'}) && record.service_fee >= 0.04 && record.service_fee <= 0.20
   end
 end

@@ -61,6 +61,7 @@ class Project < ActiveRecord::Base
 
   has_many :integrations, class_name: 'ProjectIntegration', inverse_of: :project
 
+  accepts_nested_attributes_for :integrations, allow_destroy: true
   accepts_nested_attributes_for :rewards, allow_destroy: true
   accepts_nested_attributes_for :user
   accepts_nested_attributes_for :posts, allow_destroy: true, reject_if: ->(x) { x[:title].blank? || x[:comment_html].blank? }
