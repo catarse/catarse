@@ -9,6 +9,7 @@ module Project::CustomValidators
     # This code might come back in a near future
     # validate :ensure_at_least_one_reward_validation, unless: :is_flexible?
     validate :validate_tags
+    validate :solidarity_service_fee
 
     def validate_tags
       errors.add(:public_tags, :less_than_or_equal_to, count: 5) if public_tags.size > 5
@@ -35,6 +36,24 @@ module Project::CustomValidators
           I18n.t('activerecord.errors.models.project.attributes.rewards.at_least_one')
         )
       end
+    end    
+
+    def solidarity_service_fee
+
+      unless !user || user.admin?        
+        solidarity_integration = integrations.find { |integration| integration.name === 'SOLIDARITY_SERVICE_FEE' }
+        default_service_fee = CatarseSettings[:service_fee] || 0.13
+        if service_fee != default_service_fee && solidarity_integration.present?
+          min_service_fee = 0.04
+          max_service_fee = 0.20
+          solidarity_name = solidarity_integration.data['name']
+          accepted_fee = service_fee >= min_service_fee && service_fee <= max_service_fee
+          errors.add(:service_fee, I18n.t('project.solidarity_service_fee', solidarity_name: solidarity_name, min_service_fee: (min_service_fee * 100).to_i, max_service_fee: (max_service_fee * 100).to_i)) unless accepted_fee
+        elsif service_fee != default_service_fee
+          errors.add(:service_fee, I18n.t('project.solidarity_service_fee_failed'))
+        end
+      end
+
     end
   end
 end

@@ -57,7 +57,7 @@ class ProjectPolicy < ApplicationPolicy
         p_attr.delete_if { |key| not_allowed.include?(key) }
       end
       
-      p_attr << allow_fields_conditionally
+      p_attr << :service_fee
 
       p_attr
     else
@@ -95,19 +95,7 @@ class ProjectPolicy < ApplicationPolicy
   end
 
   def integrations_attributes
-    { integrations_attributes: %i[_destroy name data]}
+    { integrations_attributes: [:_destroy, :name, :data => [ :name ]]}
   end
 
-  private
-
-  def allow_fields_conditionally
-    allowed_fields = %i[]
-    allowed_fields << service_fee
-
-    allowed_fields
-  end
-
-  def service_fee
-    %i[ :service_fee ] if record.integrations.include?({ name: 'COVID19'}) && record.service_fee >= 0.04 && record.service_fee <= 0.20
-  end
 end
