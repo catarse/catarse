@@ -3,7 +3,7 @@
 
 class ProjectIntegration < ActiveRecord::Base
 
-    INTEGRATIONS_AVAILABLE = %w[GA PIXEL]
+    INTEGRATIONS_AVAILABLE = %w[GA PIXEL SOLIDARITY_SERVICE_FEE]
 
     include I18n::Alchemy
 

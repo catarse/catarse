@@ -399,6 +399,9 @@ en:
     delete:
       posts: New successfully deleted
     video_regex_validation: only Youtube or Vimeo URLs are accepted
+    solidarity_service_fee: 'Taxes for projects %{solidarity_name} must be between %{min_service_fee}% and %{max_service_fee}%.'
+    solidarity_service_fee_failed: 'Taxes for solidarity projects can only be changed on official campaigns.'
+
   payment:
     state:
       boletobancario:

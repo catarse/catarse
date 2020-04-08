@@ -430,6 +430,9 @@ pt:
     delete:
       posts: 'Novidade apagada com sucesso'
     video_regex_validation: somente URLs do Youtube ou Vimeo são aceitas
+    solidarity_service_fee: 'As taxas para projetos %{solidarity_name} devem ser entre %{min_service_fee}% e %{max_service_fee}%.'
+    solidarity_service_fee_failed: 'As taxas para projetos solidários só podem ser alteradas nas campanhas oficiais.'
+
   payment:
     state:
       boletobancario:
