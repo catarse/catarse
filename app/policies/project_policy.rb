@@ -1,6 +1,15 @@
 # frozen_string_literal: true
 
 class ProjectPolicy < ApplicationPolicy
+
+  attr_reader :user, :record, :params
+
+  def initialize(user, record, params = {})
+    @user = user
+    @record = record
+    @params = params
+  end
+
   self::UserScope = Struct.new(:current_user, :user, :scope) do
     def resolve
       if current_user.try(:admin?) || current_user == user
@@ -56,8 +65,8 @@ class ProjectPolicy < ApplicationPolicy
         ]
         p_attr.delete_if { |key| not_allowed.include?(key) }
       end
-      
-      p_attr << :service_fee
+
+      p_attr << allow_conditionally
 
       p_attr
     else
@@ -98,4 +107,20 @@ class ProjectPolicy < ApplicationPolicy
     { integrations_attributes: [:_destroy, :name, :data => [ :name ]]}
   end
 
+  def allow_conditionally
+    integrations = params[:integrations_attributes] || record.integrations
+    service_fee = params[:service_fee]
+
+    if service_fee.present? && integrations.present? && record.state == 'draft'
+      
+      solidarity_integration = integrations.find { |integration| integration[:name] === 'SOLIDARITY_SERVICE_FEE' } || integrations.find_by(name: 'SOLIDARITY_SERVICE_FEE')
+      
+      if solidarity_integration.present?
+        min_service_fee = 0.04
+        max_service_fee = 0.20
+        accepted_fee = service_fee.to_f >= min_service_fee && service_fee.to_f <= max_service_fee
+        return :service_fee if accepted_fee
+      end
+    end
+  end
 end
