@@ -40,17 +40,19 @@ module Project::CustomValidators
 
     def solidarity_service_fee
 
-      unless !user || user.admin?        
-        solidarity_integration = integrations.find { |integration| integration.name === 'SOLIDARITY_SERVICE_FEE' }
-        default_service_fee = CatarseSettings[:service_fee] || 0.13
-        if service_fee != default_service_fee && solidarity_integration.present?
-          min_service_fee = 0.04
-          max_service_fee = 0.20
-          solidarity_name = solidarity_integration.data['name']
-          accepted_fee = service_fee >= min_service_fee && service_fee <= max_service_fee
-          errors.add(:service_fee, I18n.t('project.solidarity_service_fee', solidarity_name: solidarity_name, min_service_fee: (min_service_fee * 100).to_i, max_service_fee: (max_service_fee * 100).to_i)) unless accepted_fee
-        elsif service_fee != default_service_fee
-          errors.add(:service_fee, I18n.t('project.solidarity_service_fee_failed'))
+      if service_fee.present?
+        unless !user || user.admin?        
+          solidarity_integration = integrations.find { |integration| integration.name === 'SOLIDARITY_SERVICE_FEE' }
+          default_service_fee = CatarseSettings[:service_fee] || 0.13
+          if service_fee != default_service_fee && solidarity_integration.present?
+            min_service_fee = 0.04
+            max_service_fee = 0.20
+            solidarity_name = solidarity_integration.data['name']
+            accepted_fee = service_fee >= min_service_fee && service_fee <= max_service_fee
+            errors.add(:service_fee, I18n.t('project.solidarity_service_fee', solidarity_name: solidarity_name, min_service_fee: (min_service_fee * 100).to_i, max_service_fee: (max_service_fee * 100).to_i)) unless accepted_fee
+          elsif service_fee != default_service_fee
+            errors.add(:service_fee, I18n.t('project.solidarity_service_fee_failed'))
+          end
         end
       end
 
