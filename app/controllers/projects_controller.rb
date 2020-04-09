@@ -305,4 +305,8 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def policy(resource)
+    require_model = params.key?(:flexible_project) ? :flexible_project : :project
+    ProjectPolicy.new(current_user, resource, params.fetch(require_model, {}))
+  end
 end
