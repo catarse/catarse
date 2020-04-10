@@ -3,7 +3,7 @@ class Projects::IntegrationsController < ApplicationController
     helper_method :resource, :parent
 
     def index
-        integrations = parent.integrations.order(created_at: :desc).limit(2) || []
+        integrations = parent.integrations.order(created_at: :desc) || []
         render status: 200, json: integrations
     end
 

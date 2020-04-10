@@ -176,6 +176,7 @@ Catarse::Application.routes.draw do
     get '/privacy-policy' => redirect('https://crowdfunding.catarse.me/legal/politica-de-privacidade')
     get '/start' => redirect('https://crowdfunding.catarse.me/comece')
     get '/start-sub' => redirect('https://crowdfunding.catarse.me/comece')
+    get '/solidaria' => redirect('https://crowdfunding.catarse.me/solidaria')
     get '/jobs' => 'high_voltage/pages#show', id: 'jobs'
     get '/hello' => redirect('/start')
     get '/press' => redirect('https://crowdfunding.catarse.me/imprensa')

@@ -68,4 +68,5 @@ RSpec.describe Project::CustomValidators, type: :model do
       end
     end
   end
+
 end

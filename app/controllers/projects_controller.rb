@@ -154,9 +154,9 @@ class ProjectsController < ApplicationController
     # need to check this before setting new attributes
     should_validate = should_use_validate
     
-    resource.localized.attributes = permitted_params
+    resource.localized.attributes = permitted_params.compact
     # can't use localized for fee
-    if permitted_params[:service_fee]
+    if permitted_params[:service_fee].present?
       resource.service_fee = permitted_params[:service_fee]
     end
 
@@ -305,4 +305,8 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def policy(resource)
+    require_model = params.key?(:flexible_project) ? :flexible_project : :project
+    ProjectPolicy.new(current_user, resource, params.fetch(require_model, {}))
+  end
 end

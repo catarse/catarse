@@ -48,10 +48,10 @@ class PaymentEngines
   end
 
   def self.was_credit_card_used_before?(card_id, user_id)
-    Payment.
-      joins(:contribution).
-      where(contributions: { user_id: user_id}).
-      where(state: 'paid', gateway: 'Pagarme', payment_method: 'CartaoDeCredito').
-      where("gateway_data -> 'card' ->> 'id' = ?", card_id).exists?
+    Payment
+      .joins(:contribution)
+      .where(contributions: { user_id: user_id })
+      .where(gateway: 'Pagarme', payment_method: 'CartaoDeCredito', state: 'paid')
+      .where("gateway_data -> 'card' ->> 'id' = ?", card_id).exists?
   end
 end

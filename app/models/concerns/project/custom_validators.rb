@@ -35,6 +35,7 @@ module Project::CustomValidators
           I18n.t('activerecord.errors.models.project.attributes.rewards.at_least_one')
         )
       end
-    end
+    end    
+
   end
 end
