@@ -5,6 +5,8 @@ ruby '2.4.4'
 gem 'rails', '~> 4.2.11'
 gem 'rails-html-sanitizer', '~> 1.0.4'
 
+gem 'countries', '3.0.0'
+
 gem 'protected_attributes'
 gem 'rails-observers'
 gem 'rb-readline'
@@ -41,7 +43,7 @@ gem 'mixpanel-ruby'
 gem 'mixpanel_client'
 
 # Payment engines
-gem 'catarse_pagarme', '~> 2.14.12'
+gem 'catarse_pagarme', '~> 2.14.13'
 # gem 'catarse_pagarme', path: '../catarse_pagarme'
 
 # Decorators

@@ -96,7 +96,7 @@ GEM
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
       mime-types (>= 1.16)
-    catarse_pagarme (2.14.12)
+    catarse_pagarme (2.14.13)
       countries (= 3.0.0)
       konduto-ruby (= 2.1.0)
       pagarme (= 2.1.4)
@@ -681,11 +681,12 @@ DEPENDENCIES
   browser (= 1.0.1)
   capybara
   carrierwave (~> 1.0)
-  catarse_pagarme (~> 2.14.12)
+  catarse_pagarme (~> 2.14.13)
   catarse_settings_db (>= 0.2.0)
   cocoon
   coffee-rails
   compass-rails
+  countries (= 3.0.0)
   cpf_cnpj
   cpf_faker
   database_cleaner
