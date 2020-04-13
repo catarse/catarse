@@ -444,16 +444,16 @@ en:
         at the end of the term, all that you have collected (discounting only the
         rate of the Catarse), regardless of reaching the collection goal. <br><br>
         <span class="fontweight-semibold">Maximum project deadline in air:</span>
-        12 months <br><br> <span class="fontweight-semibold">Fees:</span> 13% of the
-        total collected
+        12 months <br><br>
+      flex_diff_fees_html: <span class="fontweight-semibold">Fees:</span> %{percentage}% of the total collected
       aon_diff_html: <span class="fontweight-semibold">Commitment</span> <br> You
         commit to execute the project and deliver the rewards only <span class="fontweight-semibold">if
         the revenue reaches or exceeds the goal.</span> <br><br> <span class="fontweight-semibold">How
         it works?</span> <br> You only receive the amount collected if, at the end
         of the term, you have reached the collection goal. Otherwise, all your contributors
         receive their payments back. <br><br> <span class="fontweight-semibold">Deadline
-        for the project in the air:</span> 60 days <br><br> <span class="fontweight-semibold">Fees:</span>
-        13% of the total collected
+        for the project in the air:</span> 60 days <br><br>
+      aon_diff_fees_html: <span class="fontweight-semibold">Fees:</span> %{percentage}% of the total collected
       submit: To save
       kind_label: Type of financing
       kind_link: If you want to know more, click here
