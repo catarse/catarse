@@ -309,18 +309,14 @@ pt:
       flex_diff_fees_html: '<span class="fontweight-semibold">Taxas: </span>%{percentage}% sobre o total arrecadado'
       aon_diff_html: '<span class="fontweight-semibold">Compromisso&nbsp;</span><br>Você se compromete a executar o projeto e entregar as recompensas apenas <span class="fontweight-semibold">se a arrecadação atingir ou superar a meta.</span><br><br><span class="fontweight-semibold">Como funciona?</span><br>Você só recebe o valor arrecadado se, ao final do prazo,&nbsp;tiver alcançado a meta de arrecadação . Caso contrário, todos seus apoiadores recebem seus pagamentos de volta.<br><br><span class="fontweight-semibold">Prazo máximo do projeto no ar: </span>60 dias&nbsp;&nbsp;<br><br>'
       aon_diff_fees_html: '<span class="fontweight-semibold">Taxas: </span>%{percentage}% sobre o total arrecadado'
-    
-    solidarity_taxes:
-      title: '<strong>O que é a taxa do Catarse?<br>&zwj;</strong>'
-      p1: '<br>É o valor que será descontado do total arrecadado ao final da campanha, referente aos serviços do Catarse e do meio de pagamento.<br>'
-      p2: '<br>Como o seu projeto faz parte do Programa Catarse Solidária, a taxa que será descontada no fim do seu projeto é definida por você mesmo.<strong>Quando você criou o seu rascunho, você disse que achava justo pagar %{percentage}% para o Catarse.</strong><br>'
-      p3: '<br><strong>Lembre-se, depois que sua campanha for publicada, você não poderá mais alterar essa taxa.</strong> Se mudou de ideia e quiser escolher outra taxa, o <a href="http://crowdfunding.catarse.me/solidaria/novo?utm_source=Catarse&amp;utm_medium=project_dashboard_goal&amp;utm_campaign=solidaria" target="_blank" class="alt-link">melhor é criar um outro rascunho.</a>'
-
       submit: "Salvar"
       kind_label: "Tipo de financiamento"
       kind_link: "Se você quiser saber mais, clique aqui"
       flex:
         kind_text: "Você está participando do período de testes do modelo flexível. Sua participação é essencial para entendermos como podemos expandir esse modelo para todos os usuários. %{link}"
+    
+    solidarity_taxes_description_html: '<div class="card u-radius u-marginbottom-30 medium u-margintop-60"><img src="https://uploads-ssl.webflow.com/57ba58b4846cc19e60acdd5b/5e8b035bacdbb521ac436d8f_5e86f85606a3a305c596fa7c_catarsesolidariablueheart.png" width="177" alt="" class="u-marginbottom-30"><div class="fontsize-small"><strong>O que é a taxa do Catarse?<br>&zwj;</strong><br>É o valor que será descontado do total arrecadado ao final da campanha, referente aos serviços do Catarse e do meio de pagamento.<br><br>Como o seu projeto faz parte do Programa Catarse Solidária, a taxa que será descontada no fim do seu projeto é definida por você mesmo. <strong>Quando você criou o seu rascunho, você disse que achava justo pagar %{percentage}% para o Catarse.</strong> <br><br><strong>Lembre-se, depois que sua campanha for publicada, você não poderá mais alterar essa taxa.</strong> Se mudou de ideia e quiser escolher outra taxa, o <a href="http://crowdfunding.catarse.me/solidaria/novo?utm_source=Catarse&amp;utm_medium=project_dashboard_goal&amp;utm_campaign=solidaria" target="_blank" class="alt-link">melhor é criar um outro rascunho.</a></div></div>'
+
     dashboard_description:
       submit: "Salvar"
       description_label: 'Descrição do projeto'

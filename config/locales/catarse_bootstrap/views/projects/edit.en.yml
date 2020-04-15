@@ -461,11 +461,8 @@ en:
         kind_text: You are participating in the flexible model trial period. Your
           participation is essential to understanding how we can expand this model
           for all users. %{link}
-    solidarity_taxes:
-      title: '<strong>What is Catarse tax?<br>&zwj;</strong>'
-      p1: '<br>It is the amount that will be deducted from the total collected at the end of the campaign, referring to Catarse services and the payment method.<br>'
-      p2: '<br> As your project is part of the Catharsis Solidarity Program, the fee that will be discounted at the end of your project is defined by yourself. <strong> When you created your draft, you said you thought it was fair to pay %{percentage}% for Catarse. </strong> <br>'
-      p3: '<br><strong>Remember, once your campaign is published, you will no longer be able to change that rate.</strong> If you have changed your mind and want to choose another rate, <a href="http://crowdfunding.catarse.me/solidaria/novo?utm_source=Catarse&amp;utm_medium=project_dashboard_goal&amp;utm_campaign=solidaria" target="_blank" class="alt-link">it is best to create another draft.</a>'
+    solidarity_taxes_description_html: '<div class="card u-radius u-marginbottom-30 medium u-margintop-60"><img src="https://uploads-ssl.webflow.com/57ba58b4846cc19e60acdd5b/5e8b035bacdbb521ac436d8f_5e86f85606a3a305c596fa7c_catarsesolidariablueheart.png" width="177" alt="" class="u-marginbottom-30"><div class="fontsize-small"><strong>What is the Catarse tax?<br>&zwj;</strong><br>It is the amount that will be deducted from the total collected at the end of the campaign, referring to Catarse services and the payment method. <br><br>As your project is part of the Catarse Solidarity Program, the fee that will be discounted at the end of your project is defined by yourself. <strong>When you created your draft, you said you thought it was fair to pay %{percentage}% for Catarse. </strong><br><br><strong>Remember, once your campaign is published, you will no longer be able to change this rate.</strong>If you have changed your mind and want to choose another rate, <a href="http://crowdfunding.catarse.me/solidaria/novo?utm_source=Catarse&amp;utm_medium=project_dashboard_goal&amp;utm_campaign=solidaria" target="_blank" class="alt-link">it is best to create another draft.</a></div></div>'
+
     dashboard_description:
       submit: To save
       description_label: Project description
