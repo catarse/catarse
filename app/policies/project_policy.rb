@@ -104,7 +104,7 @@ class ProjectPolicy < ApplicationPolicy
   end
 
   def integrations_attributes
-    { integrations_attributes: [:_destroy, :name, :data => [ :name ]]}
+    { integrations_attributes: [:_destroy, :name, :id, :data => [ :name ]]}
   end
 
   def allow_conditionally

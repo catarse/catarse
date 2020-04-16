@@ -415,6 +415,7 @@ pt:
       online_date: 'Data de entrada no ar'
       user_id: 'Id do usuário'
       service_fee: 'Taxa do catarse'
+      solidarity_covid: 'Projeto COVID-19?'
       name: 'Nome do projeto'
       name_hint: 'Dê um nome que as pessoas se lembrem facilmente. Não ultrapasse 50 caracteres.'
       name_label: 'Quanto mais direto melhor. Não ultrapasse 50 caracteres'

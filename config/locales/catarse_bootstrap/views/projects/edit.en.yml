@@ -591,6 +591,7 @@ en:
         is greatest.
       online_date: Date of entry into the air
       service_fee: Rate of catarse
+      solidarity_covid: 'Is COVID-19 project?'
       name: Project name
       name_hint: Give a name that people will remember easily. Do not exceed 50 characters.
       name_label: The more direct the better. Do not exceed 50 characters
