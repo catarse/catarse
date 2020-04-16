@@ -161,6 +161,7 @@ en:
         help_url: https://suporte.catarse.me/hc/en/articles/115002214463-Project-online-support-and-divulga%C3%A3o#origem-apoio
       campaign_title: My Campaign
       campaign:
+        solidarity_project_insights_welcome_draft_html: '<div class="card u-radius card-terciary card-big"><img src="https://uploads-ssl.webflow.com/57ba58b4846cc19e60acdd5b/5e8b035bacdbb521ac436d8f_5e86f85606a3a305c596fa7c_catarsesolidariablueheart.png" width="178" alt="" class="u-marginbottom-20"><div class="fontsize-small lineheight-loose u-marginbottom-20">This is where you can build your campaign page! Before publishing your project, fill in all the tabs on the side and always remember to save. You can work on your draft for as long as you like. When everything is ready for launch, click on the CONTINUE button.</div><div><div class="fontsize-small fontweight-semibold"><span class="fontcolor-secondary">Status:</span>&nbsp;<span>DRAFT</span></div></div></div><div class="card u-radius u-marginbottom-20 u-margintop-20"><div class="fontsize-small lineheight-loose"><span class="fa fa-lightbulb-o" aria-hidden="true">&nbsp;</span>Learn to plan <a href="https://catarse.attach.io/HySxkQXkg" target="_blank" class="alt-link">your crowdfunding campaign!</a></div></div>'
         aon:
           online: You can receive support until 23:55:59 on the day %{expires_at}.
             Remember, it's all-or-nothing and you'll only take the funds raised
