@@ -444,16 +444,16 @@ en:
         at the end of the term, all that you have collected (discounting only the
         rate of the Catarse), regardless of reaching the collection goal. <br><br>
         <span class="fontweight-semibold">Maximum project deadline in air:</span>
-        12 months <br><br> <span class="fontweight-semibold">Fees:</span> 13% of the
-        total collected
+        12 months <br><br>
+      flex_diff_fees_html: <span class="fontweight-semibold">Fees:</span> %{percentage}% of the total collected
       aon_diff_html: <span class="fontweight-semibold">Commitment</span> <br> You
         commit to execute the project and deliver the rewards only <span class="fontweight-semibold">if
         the revenue reaches or exceeds the goal.</span> <br><br> <span class="fontweight-semibold">How
         it works?</span> <br> You only receive the amount collected if, at the end
         of the term, you have reached the collection goal. Otherwise, all your contributors
         receive their payments back. <br><br> <span class="fontweight-semibold">Deadline
-        for the project in the air:</span> 60 days <br><br> <span class="fontweight-semibold">Fees:</span>
-        13% of the total collected
+        for the project in the air:</span> 60 days <br><br>
+      aon_diff_fees_html: <span class="fontweight-semibold">Fees:</span> %{percentage}% of the total collected
       submit: To save
       kind_label: Type of financing
       kind_link: If you want to know more, click here
@@ -461,6 +461,8 @@ en:
         kind_text: You are participating in the flexible model trial period. Your
           participation is essential to understanding how we can expand this model
           for all users. %{link}
+    solidarity_taxes_description_html: '<div class="card u-radius u-marginbottom-30 medium u-margintop-60"><img src="https://uploads-ssl.webflow.com/57ba58b4846cc19e60acdd5b/5e8b035bacdbb521ac436d8f_5e86f85606a3a305c596fa7c_catarsesolidariablueheart.png" width="177" alt="" class="u-marginbottom-30"><div class="fontsize-small"><strong>What is the Catarse tax?<br>&zwj;</strong><br>It is the amount that will be deducted from the total collected at the end of the campaign, referring to Catarse services and the payment method. <br><br>As your project is part of the Catarse Solidarity Program, the fee that will be discounted at the end of your project is defined by yourself. <strong>When you created your draft, you said you thought it was fair to pay %{percentage}% for Catarse. </strong><br><br><strong>Remember, once your campaign is published, you will no longer be able to change this rate.</strong>If you have changed your mind and want to choose another rate, <a href="http://crowdfunding.catarse.me/solidaria/novo?utm_source=Catarse&amp;utm_medium=project_dashboard_goal&amp;utm_campaign=solidaria" target="_blank" class="alt-link">it is best to create another draft.</a></div></div>'
+
     dashboard_description:
       submit: To save
       description_label: Project description
@@ -589,6 +591,7 @@ en:
         is greatest.
       online_date: Date of entry into the air
       service_fee: Rate of catarse
+      solidarity_covid: 'Is COVID-19 project?'
       name: Project name
       name_hint: Give a name that people will remember easily. Do not exceed 50 characters.
       name_label: The more direct the better. Do not exceed 50 characters

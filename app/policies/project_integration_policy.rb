@@ -7,6 +7,10 @@ class ProjectIntegrationPolicy < ApplicationPolicy
     def update?
         done_by_owner_or_admin?
     end
+
+    def destroy?
+        is_admin?
+    end
     
     protected
 
