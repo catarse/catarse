@@ -68,6 +68,15 @@ CREATE TABLE common_schema.payment_status_transitions (
     updated_at timestamp without time zone NOT NULL
 );
 
+CREATE TABLE common_schema.antifraud_analyses (
+  id uuid NOT NULL,
+  catalog_payment_id uuid NOT NULL,
+  cost numeric NOT NULL,
+  data jsonb NOT NULL,
+  created_at timestamp without time zone NOT NULL,
+  updated_at timestamp without time zone NOT NULL
+);
+
       SQL
     end
     execute <<-SQL
