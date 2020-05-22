@@ -66,7 +66,7 @@ html
     = javascript_include_tag :application
   - if Rails.configuration.webpack_dev_server
     = javascript_include_tag "http://localhost:8080/catarse.js"
-
+  = javascript_include_tag "https://kit.fontawesome.com/79b2459371.js", crossorigin: "anonymous"
   - if content_for? :js
     /page specific JS files
     = yield :js

@@ -1,7 +1,74 @@
 require 'faker'
 require 'cpf_faker'
+require 'net/http'
+require 'json'
 
 namespace :dev_seed do
+
+  desc 'generate projects'
+  task :generate_projects, [:project_base_name, :user_id, :city_id, :mode, :number_of_projects] => [:environment] do |task, args|
+
+    number_of_projects_to_generate = args[:number_of_projects].to_i
+
+    def getFromIdOrRandom(model, id)
+      if id.present?
+        model.find_by_id(id)
+      else
+        model.offset(rand(model.count)).first
+      end
+    end
+
+    for i in 0..(number_of_projects_to_generate - 1) do
+      name = "#{args[:project_base_name]} #{i}"
+      category = getFromIdOrRandom(Category, nil)
+      city = getFromIdOrRandom(City, args[:city_id])
+      user = getFromIdOrRandom(User, args[:user_id])
+      mode = args.fetch(:mode, 'flex')
+
+      _project = user.projects.new
+      _project.name = name
+      _project.category = category
+      _project.city = city
+      _project.about_html = '<p>about</p>'
+      _project.headline = 'headline'
+      _project.mode = 'flex'
+      _project.goal = rand(2000..100000)
+      _project.online_days = rand(30..59)
+      _project.video_url = 'http://vimeo.com/17298435'
+      _project.budget = '10000'
+      _project.content_rating = 1
+      _project.save!
+    end
+
+    Project.where(state: 'draft').each do |pr|
+      pr.about_html = '<p>about</p>'
+      pr.headline = 'headline'
+      pr.content_rating = 1
+      pr.state_machine.transition_to!(:online)
+      puts "#{pr.mode} project #{pr.id} is online"
+    end
+
+    puts ':generate_projects', task, args
+  end
+
+  desc 'fill cities from states'
+  task fill_cities_from_state: :environment do
+    State.all.each do |state| 
+      uri_string = "http://educacao.dadosabertosbr.com/api/cidades/#{state.acronym.downcase}"
+      uri = URI(uri_string)
+      response = Net::HTTP.get(uri)
+      cities = JSON.parse(response)
+      
+      puts "Creating cities from state #{state.name}"
+      
+      cities.each do |ibge_number_city_name|
+        city_name = ibge_number_city_name.split(':')[1]
+        city = City.find_or_initialize_by(name: city_name.titleize, state: state)
+        city.save!
+      end
+    end
+  end
+
   desc 'add some users projects and contributions'
   task dummy_data: :environment do
     Faker::Config.locale = :"pt-BR"
