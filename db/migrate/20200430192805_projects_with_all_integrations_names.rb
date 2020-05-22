@@ -44,13 +44,13 @@ class ProjectsWithAllIntegrationsNames < ActiveRecord::Migration
                 WHERE ((p.id = pr.project_id) AND (pr.user_id = current_user_id()))
             )
         ) AS saved_projects,
-        COALESCE(category.name_pt, category.name_en) as category_name,
         (
             SELECT 
                 array_to_string(array_agg(COALESCE(integration.data->>'name'::text, integration.name)), ',') as integration_name 
             FROM project_integrations AS integration 
             WHERE integration.project_id = p.id
-        ) as integrations
+        ) as integrations,
+        COALESCE(category.name_pt, category.name_en) as category_name
     FROM projects p
     JOIN users u ON p.user_id = u.id
     LEFT JOIN project_score_storages pss ON pss.project_id = p.id

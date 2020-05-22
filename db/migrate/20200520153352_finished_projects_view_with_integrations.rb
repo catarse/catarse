@@ -35,10 +35,11 @@ class FinishedProjectsViewWithIntegrations < ActiveRecord::Migration
        (EXISTS ( SELECT true AS bool
               FROM project_reminders pr
              WHERE ((p.id = pr.project_id) AND (pr.user_id = current_user_id())))) AS saved_projects,
-             COALESCE(category.name_pt, category.name_en) as category_name,
+             
        ( SELECT array_to_string(array_agg(COALESCE((integration.data ->> 'name'::text), (integration.name)::text)), ','::text) AS integration_name
               FROM project_integrations integration
-             WHERE (integration.project_id = p.id)) AS integrations
+             WHERE (integration.project_id = p.id)) AS integrations,
+        COALESCE(category.name_pt, category.name_en) as category_name
       FROM projects p
         JOIN users u ON p.user_id = u.id
         JOIN cities c ON c.id = p.city_id

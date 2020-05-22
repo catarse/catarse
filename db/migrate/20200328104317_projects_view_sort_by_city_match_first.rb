@@ -40,6 +40,9 @@ class ProjectsViewSortByCityMatchFirst < ActiveRecord::Migration
        (EXISTS ( SELECT true AS bool
               FROM project_reminders pr
              WHERE ((p.id = pr.project_id) AND (pr.user_id = current_user_id())))) AS saved_projects,
+        ( SELECT array_to_string(array_agg(COALESCE((integration.data ->> 'name'::text), (integration.name)::text)), ','::text) AS integration_name
+          FROM project_integrations integration
+        WHERE (integration.project_id = p.id)) AS integrations,
        COALESCE(cat.name_pt, (cat.name_en)::text) AS category_name
       FROM ((((((((projects p
         JOIN users u ON ((p.user_id = u.id)))
