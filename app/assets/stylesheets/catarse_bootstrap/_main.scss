@@ -2027,6 +2027,13 @@ a:hover {
   text-decoration: none;
 }
 
+.fa.fa-check.list-dashboard {
+  position: absolute;
+  left: 0px;
+  padding-right: 0px;
+  padding-left: 0px;
+}
+
 .u-margintop-30 {
   margin-top: 30px;
 }
@@ -3276,9 +3283,7 @@ a:hover {
   bottom: 0px;
   overflow: auto;
   margin: auto;
-  padding-right: 40px;
-  padding-bottom: 25px;
-  padding-left: 40px;
+  padding: 49px 40px 25px;
   border-radius: 5px;
   background-color: #fff;
   box-shadow: 1px 1px 49px 0 rgba(63, 71, 82, 0.29);
@@ -3293,6 +3298,13 @@ a:hover {
 .modal-dialog-inner.modal-dialog-mini {
   width: 540px;
   height: 200px;
+}
+.modal-dialog-inner.modal-dialog-big {
+  max-height: 88vh;
+  max-width: 1000px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
 }
 
 .modal-dialog-content {
@@ -3553,17 +3565,48 @@ a:hover {
   position: absolute;
   top: 0px;
   right: 0px;
+  z-index: 9999;
   margin-top: 15px;
   margin-right: 20px;
   color: #c2c2c2;
   text-decoration: none;
 }
 
+.modal-close.fa.fa-close.fa-lg {
+  float: right;
+  -webkit-align-self: flex-end;
+  -ms-flex-item-align: end;
+  align-self: flex-end;
+}
+
 .modal-dialog-header {
-  height: 10%;
-  margin-right: -40px;
-  margin-left: -40px;
-  padding-top: 10px;
+  position: absolute;
+  left: 0%;
+  top: 0%;
+  right: 0%;
+  bottom: auto;
+  z-index: 99;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 50px;
+  margin-right: 0px;
+  margin-left: 0px;
+  padding-top: 0px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   border-bottom: 1px solid #e9e9ec;
   background-color: #f1f4f4;
 }
@@ -4598,6 +4641,90 @@ a:hover {
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
+}
+
+.arrow-left {
+  position: absolute;
+  width: 0px;
+  height: 0px;
+  margin-top: -20px;
+  margin-left: -49px;
+  border-top: 30px solid transparent;
+  border-right: 30px solid #f1f4f4;
+  border-bottom: 30px solid transparent;
+}
+
+.div-block-5 {
+  position: relative;
+}
+
+.dashboard-column-tips.description {
+  margin-top: 263px;
+}
+
+.dashboard-column-tips.amount {
+  margin-top: 144px;
+}
+
+.dashboard-column-tips.url-project {
+  margin-top: 579px;
+}
+
+.dashboard-column-tips.public-name {
+  margin-top: 111px;
+}
+
+.dashboard-column-tips.internet {
+  margin-top: 307px;
+}
+
+.dashboard-column-tips.admin {
+  margin-top: 257px;
+}
+
+.dashboard-questions {
+  position: relative;
+}
+
+.div-block-6 {
+  overflow: scroll;
+  height: 100%;
+}
+
+.title-dashboard {
+  margin-bottom: 49px;
+  font-size: 30px;
+  line-height: 100%;
+  font-weight: 600;
+  text-align: center;
+}
+
+.title-dashboard.big {
+  margin-bottom: 35px;
+  font-size: 40px;
+}
+
+.list-dashboard-item {
+  position: relative;
+  margin-bottom: 23px;
+  padding-left: 21px;
+  font-size: 17px;
+  list-style-type: none;
+}
+
+.list-dashboard {
+  padding-right: 20px;
+  padding-left: 20px;
+}
+
+.column {
+  position: relative;
+}
+
+.search-cities-pre-result {
+  display: block;
+  overflow: auto;
+  min-height: 300px;
 }
 
 html.w-mod-js *[data-ix="fade-in"] {
