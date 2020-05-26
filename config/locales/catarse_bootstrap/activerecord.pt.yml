@@ -475,6 +475,7 @@ pt:
     contribution_value: Valor do apoio (bruto)
     service_fee: Taxa do Catarse
     payment_method_fee: Taxa do meio de pagamento
+    antifraud_cost: Taxa do serviço de antifraude
     contribution_value_net: Valor do apoio (líquido)
     user_id: ID do usuário
     user_email: Email perfil Catarse
