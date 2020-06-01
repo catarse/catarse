@@ -22,6 +22,8 @@ class BalanceTransaction < ActiveRecord::Base
     balance_transferred_to
     balance_received_from
     revert_chargeback
+    contribution_payment
+    antecipation_fee
   ].freeze
 
   belongs_to :project
