@@ -192,9 +192,15 @@ namespace :cron do
   desc 'send subscription reports'
   task notify_sub_reports: [:environment] do
     SubscriptionProject.with_state(:online).find_each(batch_size: 20) do |project| 
-      transitions = project.subscription_transitions.where("common_schema.subscription_status_transitions.created_at between now() - '1 day'::interval and now()")
-      if transitions.count > 0
-        project.notify(:subscription_report, project.user)
+      begin
+        transitions = project.subscription_transitions.where("common_schema.subscription_status_transitions.created_at between now() - '1 day'::interval and now()")
+        if transitions.count > 0
+          project.notify(:subscription_report, project.user)
+        end
+      rescue StandardError => e
+        Raven.extra_context(task: :notify_sub_reports, project_id: project.id)
+        Raven.capture_exception(e)
+        Raven.extra_context({})
       end
     end
   end
