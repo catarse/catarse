@@ -1,0 +1,8 @@
+- project = @project
+- content_for :title, "#{project.name} · #{CatarseSettings[:company_name]}"
+
+#application.min-height-70[data-mithril="Publish by Steps" data-id=project.id]
+
+- content_for :application_js do
+  = javascript_include_tag 'api/application'
+  = javascript_include_tag 'api/catarse'

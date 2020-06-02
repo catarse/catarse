@@ -59,6 +59,10 @@ class ProjectsController < ApplicationController
     authorize resource
   end
 
+  def publish_by_steps
+    authorize resource
+  end
+
   def validate_publish
     authorize resource
     Project.transaction do

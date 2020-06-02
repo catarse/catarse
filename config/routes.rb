@@ -72,6 +72,7 @@ Catarse::Application.routes.draw do
     resources :flexible_projects, controller: 'projects', except: [:index] do
       member do
         get :publish
+        get 'publish-by-steps'
         get :push_to_online
         get :validate_publish
         get :finish
@@ -144,6 +145,7 @@ Catarse::Application.routes.draw do
         get 'embed_panel'
         get 'send_to_analysis'
         get 'publish'
+        get 'publish-by-steps'
         get 'validate_publish'
         get 'push_to_online'
       end

@@ -36,6 +36,10 @@ class ProjectPolicy < ApplicationPolicy
     done_by_owner_or_admin?
   end
 
+  def publish_by_steps?
+    done_by_owner_or_admin?
+  end
+
   def validate_publish?
     done_by_owner_or_admin?
   end
