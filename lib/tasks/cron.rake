@@ -194,7 +194,7 @@ namespace :cron do
     SubscriptionProject.with_state(:online).find_each(batch_size: 20) do |project| 
       begin
         transitions = project.subscription_transitions.where("common_schema.subscription_status_transitions.created_at between now() - '1 day'::interval and now()")
-        if transitions.count > 0
+        if transitions.exists?
           project.notify(:subscription_report, project.user)
         end
       rescue StandardError => e
