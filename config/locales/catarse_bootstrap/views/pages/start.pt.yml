@@ -253,7 +253,7 @@ pt:
         sub:
           info: 'Você recebe pagamentos mensais de sua base de fãs e seguidores.'
           info_2: 'Versão em beta. Lançamento em 2018.'
-          more_link:  '<a href="https://crowdfunding.catarse.me/assinaturas?ref=catarse_start_beta" class="alt-link" target-"_blank">Saiba mais</a>'
+          more_link:  '<a href="https://crowdfunding.catarse.me/assinaturas?ref=catarse_start_beta" class="alt-link" target="_blank">Saiba mais</a>'
         tax_info: 'Taxa: 13% sobre o total arrecadado'
         failed_info: 'Campanhas Tudo ou Nada que não atingem a meta não pagam nada. '
-        more_link: '<a href="http://fazum.catarse.me/tudoounada-ou-flex?utm_source=start&utm_medium=link&utm_content=Saiba%20mais%20sobre%20as%20taxas%20e%20modalidades&utm_campaign=ebook-tudoounada-flex" class="alt-link" target-"_blank">Saiba mais sobre as taxas e modalidades</a>'
+        more_link: '<a href="http://fazum.catarse.me/tudoounada-ou-flex?utm_source=start&utm_medium=link&utm_content=Saiba%20mais%20sobre%20as%20taxas%20e%20modalidades&utm_campaign=ebook-tudoounada-flex" class="alt-link" target="_blank">Saiba mais sobre as taxas e modalidades</a>'
