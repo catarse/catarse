@@ -89,6 +89,16 @@ namespace :common do
         ) SERVER common_db
         OPTIONS (schema_name 'payment_service', table_name 'payment_status_transitions');
 
+        CREATE FOREIGN TABLE common_schema.antifraud_analyses (
+          id uuid NOT NULL,
+          catalog_payment_id uuid NOT NULL,
+          cost numeric NOT NULL ,
+          data jsonb DEFAULT '{}'::jsonb NOT NULL,
+          created_at timestamp without time zone NOT NULL,
+          updated_at timestamp without time zone NOT NULL
+        ) SERVER common_db
+        OPTIONS (schema_name 'payment_service', table_name 'antifraud_analyses');
+
         COMMIT;
       SQL
 

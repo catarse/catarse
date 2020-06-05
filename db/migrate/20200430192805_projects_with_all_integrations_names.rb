@@ -49,7 +49,8 @@ class ProjectsWithAllIntegrationsNames < ActiveRecord::Migration
                 array_to_string(array_agg(COALESCE(integration.data->>'name'::text, integration.name)), ',') as integration_name 
             FROM project_integrations AS integration 
             WHERE integration.project_id = p.id
-        ) as integrations
+        ) as integrations,
+        COALESCE(category.name_pt, category.name_en) as category_name
     FROM projects p
     JOIN users u ON p.user_id = u.id
     LEFT JOIN project_score_storages pss ON pss.project_id = p.id
@@ -57,7 +58,8 @@ class ProjectsWithAllIntegrationsNames < ActiveRecord::Migration
     LEFT JOIN cities c ON c.id = p.city_id
     LEFT JOIN states s ON s.id = c.state_id
     JOIN LATERAL zone_timestamp(online_at(p.*)) od(od) ON true
-    JOIN LATERAL state_order(p.*) so(so) ON true;
+    JOIN LATERAL state_order(p.*) so(so) ON true
+    LEFT JOIN categories category ON category.id = p.category_id;
     
     grant select on "1"."projects" to admin, anonymous, web_user;
 
