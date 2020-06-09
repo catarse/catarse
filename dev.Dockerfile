@@ -32,8 +32,9 @@ RUN npm install
 RUN set -ex \
   && mkdir -p /usr/app/tmp/cache \
   && mkdir -p /usr/app/tmp/pids \
-  && mkdir -p /usr/app/tmp/sockets \
-  && chown -R nobody /usr/app
+  && mkdir -p /usr/app/tmp/sockets 
+  #\
+  #&& chown -R nobody /usr/app
 #
 ## ==================================================================================================
 ## 8: Set the container user to 'nobody':
