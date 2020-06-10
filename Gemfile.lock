@@ -443,7 +443,7 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     raindrops (0.17.0)
-    rake (12.3.1)
+    rake (13.0.1)
     ranked-model (0.4.0)
       activerecord (>= 3.1.12)
     rb-fsevent (0.9.7)
