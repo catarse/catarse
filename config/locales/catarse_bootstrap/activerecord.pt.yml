@@ -266,6 +266,8 @@ pt:
           attributes:
             rewards:
               at_least_one: 'Deve haver pelo menos uma recompensa'
+            city_id:
+              blank: Local do projeto não pode ficar em branco
             city:
               blank: Local do projeto não pode ficar em branco
             video_url:
