@@ -10,7 +10,10 @@ jobs:
       - checkout
       - setup_remote_docker:
           version: 17.05.0-ce
-      - run: sudo apt update && sudo apt install postgresql-client
+      - run: sudo tee /etc/apt/sources.list.d/pgdg.list <<END deb http://apt.postgresql.org/pub/repos/apt/ bionic-pgdg main END
+      - run: sudo wget https://www.postgresql.org/media/keys/ACCC4CF8.asc && sudo apt-key add ACCC4CF8.asc
+      - run: sudo apt update
+      - run: sudo apt install postgresql-client-11
       - run: bundle install
       - run: npm install
       - run: RAILS_ENV=test DATABASE_URL=postgres://postgres:example@localhost:5432/catarse_test bundle exec rake db:migrate
