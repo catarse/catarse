@@ -78,6 +78,10 @@ class Reward < ActiveRecord::Base
     paid_count + in_time_to_confirm
   end
 
+  def refresh_reward_metric_storage
+    pluck_from_database('refresh_reward_metric_storage')
+  end
+
   def paid_count
     pluck_from_database('paid_count')
   end
