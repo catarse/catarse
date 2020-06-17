@@ -11,9 +11,10 @@ class Reward < ActiveRecord::Base
 
   belongs_to :project
   has_many :payments, through: :contributions
+  has_many :contributions, dependent: :nullify
   has_many :shipping_fees, dependent: :destroy
   has_one :survey
-  has_many :contributions, dependent: :nullify
+  has_one :reward_metric_storage
 
   mount_uploader :uploaded_image, RewardUploader
 
