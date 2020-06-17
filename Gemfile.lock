@@ -695,6 +695,7 @@ DEPENDENCIES
   cocoon
   coffee-rails
   compass-rails
+  concurrent-ruby
   countries (= 3.0.0)
   cpf_cnpj
   cpf_faker
