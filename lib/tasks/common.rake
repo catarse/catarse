@@ -109,14 +109,17 @@ namespace :common do
 
   desc 'generate balance transaction for subscription payments'
   task generate_subscription_balance: :environment do
-    SubscriptionPayment.select("id").
+    SubscriptionPayment.select("id, reward_id").
       where('not exists(select true from balance_transactions where subscription_payment_uuid = catalog_payments.id)').
       where(platform_id: CatarseSettings[:common_platform_id], status: 'paid').each do |sp|
       unless sp.already_in_balance?
         begin
           BalanceTransaction.insert_subscription_payment(sp.id)
-        rescue Exception => e
-          puts e.inspect
+          RewardMetricStorage.perform_async(sp.reward_id)
+        rescue StandardError => e
+          Raven.extra_context(task: :generate_subscription_balance, subscription_payment_id: sp.id)
+          Raven.capture_exception(e)
+          Raven.extra_context({})
         end
       end
     end

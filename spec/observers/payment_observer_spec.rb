@@ -3,6 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe PaymentObserver do
+  let(:reward) { create(:reward, project: contribution.project)}
   let(:contribution) { payment.contribution }
   let(:payment) { create(:payment, payment_method: 'should be updated', state: 'paid', paid_at: nil) }
 
@@ -64,9 +65,11 @@ RSpec.describe PaymentObserver do
   describe '#from_pending_to_paid' do
     context 'when first payment confirmation' do
       before do
+        contribution.update_attribute(:reward_id, reward.id)
         expect(payment.contribution).to receive(:notify_to_contributor).with(:confirm_contribution)
         expect(ProjectScoreStorageRefreshWorker).to receive(:perform_async).with(payment.project.id)
         expect(ProjectMetricStorageRefreshWorker).to receive(:perform_async).with(payment.project.id)
+        expect(RewardMetricStorageRefreshWorker).to receive(:perform_async).with(payment.contribution.reward_id)
       end
 
       it 'should expectations' do
