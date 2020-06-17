@@ -147,7 +147,7 @@ SET STATEMENT_TIMEOUT TO 0;
 
     GRANT select ON "1".project_transitions TO admin, web_user, anonymous;
 
-    DROP MATERIALIZED VIEW "1".finished_projects;
+    DROP MATERIALIZED VIEW IF EXISTS "1".finished_projects;
     CREATE MATERIALIZED VIEW "1".finished_projects AS
      SELECT p.id AS project_id,
         p.category_id,
@@ -186,7 +186,7 @@ SET STATEMENT_TIMEOUT TO 0;
 
       GRANT SELECT ON "1".finished_projects TO anonymous, web_user, admin;
 
-      DROP VIEW "1".project_details;
+      DROP VIEW IF EXISTS "1".project_details;
       CREATE OR REPLACE VIEW "1".project_details AS
         SELECT p.id AS project_id,
         p.id,
@@ -215,7 +215,7 @@ SET STATEMENT_TIMEOUT TO 0;
         COALESCE(pt.total_contributions, 0::bigint) AS total_contributions,
         COALESCE(pt.total_contributors, 0::bigint) AS total_contributors,
         p.state::text AS state,
-        mode(p.*) AS mode,
+        p.mode AS mode,
         state_order(p.*) AS state_order,
         p.expires_at,
         zone_timestamp(p.expires_at) AS zone_expires_at,
@@ -253,7 +253,7 @@ SET STATEMENT_TIMEOUT TO 0;
     grant select on "1".project_details to web_user;
     grant select on "1".project_details to anonymous;
 
-    DROP MATERIALIZED VIEW "1".statistics;
+    DROP MATERIALIZED VIEW IF EXISTS "1".statistics;
     CREATE MATERIALIZED VIEW "1".statistics AS
      SELECT ( SELECT count(*) AS count
                FROM public.users) AS total_users,
@@ -287,7 +287,7 @@ SET STATEMENT_TIMEOUT TO 0;
     GRANT SELECT ON "1".statistics TO admin, web_user, anonymous;
 
 
-    DROP MATERIALIZED VIEW "1".category_totals;
+    DROP MATERIALIZED VIEW IF EXISTS "1".category_totals;
     CREATE MATERIALIZED VIEW "1".category_totals AS
      WITH project_stats AS (
              SELECT ca.id AS category_id,
