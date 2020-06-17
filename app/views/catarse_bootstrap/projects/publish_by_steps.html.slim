@@ -4,7 +4,7 @@
 - content_for :stylesheets do
   = stylesheet_link_tag 'redactor'
 
-- parameters = { project_id: @project.id, user_id: @project.user_id, project_state: @project.state, rails_errors: @project.errors.to_json }.to_json
+- parameters = { project_id: @project.id, id: @project.id, user_id: @project.user_id, project_state: @project.state, mode: @project.mode, rails_errors: @project.errors.to_json }.to_json
 
 #application data-parameters=parameters
 
