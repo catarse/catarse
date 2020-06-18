@@ -171,6 +171,7 @@ task :gateway_payments_sync, %i[nthreads page_size] => [:environment] do |t, arg
       Rails.logger.info "[GatewayPayment SYNC] - transactions synced on page #{page}"
 
       page += 1
+      sleep 1
     end
   end
 end

@@ -22,6 +22,9 @@ class BalanceTransaction < ActiveRecord::Base
     balance_transferred_to
     balance_received_from
     revert_chargeback
+    contribution_payment
+    project_antecipation_fee
+    antecipation_fee
   ].freeze
 
   belongs_to :project
@@ -45,6 +48,7 @@ class BalanceTransaction < ActiveRecord::Base
         from_user_name: self.from_user.try(:display_name),
         to_user_name: self.to_user.try(:display_name),
         service_fee: self.project.try(:service_fee),
+        antecipation_fee: self.project.try(:antecipation_fee),
         contributor_name: self.contribution.try(:user).try(:display_name),
         subscriber_name: self.subscription_payment.try(:user).try(:display_name),
         subscription_reward_label: self.subscription_payment.try(:reward).try(:display_label),
