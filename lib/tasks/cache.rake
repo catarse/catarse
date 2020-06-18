@@ -11,7 +11,7 @@ namespace :cache do
           reward_to_refresh << reward
         end
       rescue StandardError => e
-          Raven.extra_context(task: :cache_reward_metric_storage_subscription_payment_collection, reward_id: reward.id)
+          Raven.extra_context(task: :cache_reward_metric_storage_subscription_payment_collection)
           Raven.capture_exception(e)
           Raven.extra_context({})
       end
@@ -22,7 +22,7 @@ namespace :cache do
           reward_to_refresh << reward
         end
       rescue StandardError => e
-          Raven.extra_context(task: :cache_reward_metric_contribution_collection, reward_id: reward.id)
+          Raven.extra_context(task: :cache_reward_metric_contribution_collection)
           Raven.capture_exception(e)
           Raven.extra_context({})
       end
