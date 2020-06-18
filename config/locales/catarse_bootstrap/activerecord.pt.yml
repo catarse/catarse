@@ -411,6 +411,8 @@ pt:
               blank: "Cidade não pode ficar em branco"
             address_state:
               blank: "Estado não pode ficar em branco"
+            state_id:
+              blank: "Estado não pode ficar em branco"
             address_neighbourhood:
               blank: "Bairro não pode ficar em branco"
             address_zip_code:
