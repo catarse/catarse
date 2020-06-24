@@ -169,7 +169,7 @@ RSpec.describe FlexProjectMachine, type: :model do
   context '#push_to_trash' do
     before do
       expect(subject).to receive(:transition_to).with(:deleted, { to_state: 'deleted' }).and_call_original
-      expect(subject).to receive(:index_on_common).and_call_original
+      expect(flexible_project).to receive(:index_on_common).and_call_original
     end
 
     it { subject.push_to_trash }
