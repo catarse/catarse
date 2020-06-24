@@ -3,10 +3,11 @@
 namespace :cache do
   desc 'Refresh reward metric storage from latest used rewards'
   task reward_metric_storages: [:environment] do
+    sql_cond = "(created_at >= now() - '30 seconds'::interval) or (updated_at >= now() - '30 seconds'::interval)"
     loop do
       reward_to_refresh = []
       begin
-        SubscriptionPayment.where("created_at > now() - '30 seconds'::interval").pluck(:reward_id).uniq.each do |rid|
+        SubscriptionPayment.where(sql_cond).pluck(:reward_id).uniq.each do |rid|
           reward = Reward.find_by common_id: rid
           reward_to_refresh << reward
         end
@@ -17,8 +18,9 @@ namespace :cache do
       end
 
       begin
-        Contribution.where("created_at > now() - '30 seconds'::interval").pluck(:reward_id).uniq.each do |rid|
-          reward = Reward.find rid
+        Payment.where(sql_cond).pluck(:contribution_id).uniq.each do |cid|
+          c = Contribution.find cid
+          reward = c.reward
           reward_to_refresh << reward
         end
       rescue StandardError => e
@@ -27,7 +29,7 @@ namespace :cache do
           Raven.extra_context({})
       end
 
-      reward_to_refresh.each do |reward|
+      reward_to_refresh.uniq.each do |reward|
         begin
           Rails.logger.debug("cache:reward_metric_storages -> refreshing reward: #{reward.id}")
           reward.refresh_reward_metric_storage
