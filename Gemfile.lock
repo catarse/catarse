@@ -1,12 +1,12 @@
 GIT
-  remote: git://github.com/SamMolokanov/fakeweb.git
-  revision: 10be5e089608606953d5df7b560cef23b0469b47
+  remote: https://github.com/SamMolokanov/fakeweb.git
+  revision: 28076a40b286e2a6cbc2a5e451c79e29154a0aa8
   branch: ruby-2-4-1-support
   specs:
     fakeweb (1.3.0)
 
 GIT
-  remote: git://github.com/catarse/redactor-rails.git
+  remote: https://github.com/catarse/redactor-rails.git
   revision: 9a58b7ecbd33acad7e9cb66476e349262c72d093
   branch: master
   specs:
@@ -81,6 +81,7 @@ GEM
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
       rack (>= 0.9.0)
+    bigdecimal (1.3.5)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     browser (1.0.1)
@@ -686,6 +687,7 @@ DEPENDENCIES
   aws-sdk (~> 2)
   best_in_place
   better_errors
+  bigdecimal (= 1.3.5)
   binding_of_caller
   browser (= 1.0.1)
   capybara
@@ -787,7 +789,7 @@ DEPENDENCIES
   zonebie
 
 RUBY VERSION
-   ruby 2.4.4p296
+   ruby 2.7.1p83
 
 BUNDLED WITH
    1.17.3
