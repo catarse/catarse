@@ -2544,8 +2544,22 @@ a:hover {
 }
 
 .hero-search.explore {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  min-height: 410px;
   padding-top: 131px;
   padding-bottom: 106px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   background-color: #5e4496;
   background-image: none;
 }
@@ -4134,9 +4148,9 @@ a:hover {
   border-width: 1px;
   border-color: rgba(0, 0, 0, 0.11);
   border-radius: 5px;
-  background-color: #273755;
+  background-color: #fff;
   box-shadow: 1px 1px 7px 0 rgba(9, 11, 22, 0.32);
-  color: #f1f4f4;
+  color: #273755;
   font-size: 20px;
   line-height: 26px;
   cursor: pointer;
@@ -4163,7 +4177,7 @@ a:hover {
   flex-direction: column;
   border: 1px solid #4389bf;
   border-radius: 5px;
-  background-color: #273755;
+  background-color: #fff;
   text-align: left;
 }
 
@@ -4175,13 +4189,14 @@ a:hover {
   position: relative;
   display: inline-block;
   margin-right: 8px;
+  margin-bottom: 15px;
   margin-left: 8px;
 }
 
 .explore-filter-link {
   display: block;
   margin-bottom: 13px;
-  color: #f1f4f4;
+  color: #273755;
   font-size: 16px;
 }
 
@@ -5185,6 +5200,9 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
   .hero-search {
     padding-top: 79px;
   }
+  .hero-search.explore {
+    min-height: auto;
+  }
   .creditcard-brand {
     font-size: 15px;
   }
@@ -5827,6 +5845,7 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
     background-position: 50% 50%;
   }
   .hero-search.explore {
+    display: block;
     padding-bottom: 55px;
   }
   .following {
