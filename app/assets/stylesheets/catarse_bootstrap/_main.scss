@@ -5284,6 +5284,9 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
     width: auto;
     height: auto;
   }
+  .modal-dialog-inner.modal-dialog-big {
+    max-height: 100vh;
+  }
    .modal-dialog-inner.modal-dialog-mini {
     width: auto;
     height: auto;
