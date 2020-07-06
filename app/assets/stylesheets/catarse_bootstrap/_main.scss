@@ -5383,11 +5383,28 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
     padding-top: 50px;
   }
   .text-field.negative {
-    background-color: rgba(241, 244, 244, 0.61);
+    background-color: #fff;
     color: #3f4752;
   }
   .text-field.negative:hover {
-    background-color: rgba(241, 244, 244, 0.61);
+    background-color: #fff;
+    box-shadow: none;
+  }
+  .text-field.negative:focus {
+    background-color: #fff;
+    box-shadow: none;
+  }
+  .text-field.negative::-webkit-input-placeholder {
+    color: #2c2f33;
+  }
+  .text-field.negative:-ms-input-placeholder {
+    color: #2c2f33;
+  }
+  .text-field.negative::-ms-input-placeholder {
+    color: #2c2f33;
+  }
+  .text-field.negative::placeholder {
+    color: #2c2f33;
   }
   .text-field.positive.city-search {
     margin-top: 43px;
@@ -5692,6 +5709,7 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
   }
   .btn-dark.btn-attached {
     width: 100%;
+    border-color: hsla(0, 0%, 100%, 0.49);
   }
   .project-stats-numbers {
     display: inline-block;
@@ -6153,7 +6171,7 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
   .explore-mobile-label {
     display: inline-block;
     margin-right: 10px;
-    color: rgba(241, 244, 244, 0.35);
+    color: rgba(44, 47, 51, 0.66);
     font-size: 12px;
     line-height: 12px;
   }
