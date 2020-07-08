@@ -23,11 +23,12 @@ class RefreshPaymentRewardsMetricsTask
           end
         end
       rescue StandardError => e
-        Raven.extra_context(task: :refresh_payment_reward_metrics, contribution_id: cid)
+        Raven.extra_context(task: :refresh_payment_reward_metrics)
         Raven.capture_exception(e)
         Raven.extra_context({})
       end
 
+      break if Rails.env.test?
       sleep 5
     end
   end
