@@ -306,7 +306,7 @@ RSpec.describe ProjectsController, type: :controller do
         expect(Project.last.service_fee).to eq 0.04
       end
 
-      it { is_expected.to redirect_to insights_project_path(Project.last, locale: '') }
+      it { is_expected.to redirect_to publish_by_steps_project_path(Project.last) }
 
       its(:status) { should == 302 }
     end
@@ -336,7 +336,7 @@ RSpec.describe ProjectsController, type: :controller do
         expect(Project.last.service_fee).to eq 0.13
       end
 
-      it { is_expected.to redirect_to insights_project_path(Project.last, locale: '') }
+      it { is_expected.to redirect_to publish_by_steps_project_path(Project.last) }
 
       its(:status) { should == 302 }
     end
@@ -366,7 +366,7 @@ RSpec.describe ProjectsController, type: :controller do
         expect(Project.last.service_fee).to eq 0.13
       end
 
-      it { is_expected.to redirect_to insights_project_path(Project.last, locale: '') }
+      it { is_expected.to redirect_to publish_by_steps_project_path(Project.last) }
 
       its(:status) { should == 302 }
     end
@@ -396,7 +396,7 @@ RSpec.describe ProjectsController, type: :controller do
         expect(Project.last.service_fee).to eq 0.13
       end
 
-      it { is_expected.to redirect_to insights_project_path(Project.last, locale: '') }
+      it { is_expected.to redirect_to publish_by_steps_project_path(Project.last) }
 
       its(:status) { should == 302 }
     end

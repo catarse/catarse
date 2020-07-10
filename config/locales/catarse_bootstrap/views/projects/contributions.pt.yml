@@ -206,7 +206,7 @@ pt:
           use_another: 'Usar outro cartão de crédito.'
           name: 'Nome completo do titular do cartão *'
           name_tip: 'Nome impresso na frente do seu cartão de crédito'
-          document: 'CPF/CPNJ do titular *'
+          document: 'CPF/CNPJ do titular *'
           document_tip: 'CPF/CNPJ do titular do cartão de crédito utilizado'
           number: 'Número do cartão de crédito *'
           number_tip: 'O número normalmente com 16 dígitos na frente do seu cartão de crédito'

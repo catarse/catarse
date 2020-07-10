@@ -1,5 +1,6 @@
 pt:
   activerecord:
+    publish_by_steps_fields_errors: Não foi possìvel salvar as informações. Confira os erros na página e tente novamente.
     models:
       channel: Canal
       project: Projeto
@@ -266,6 +267,8 @@ pt:
           attributes:
             rewards:
               at_least_one: 'Deve haver pelo menos uma recompensa'
+            city_id:
+              blank: Local do projeto não pode ficar em branco
             city:
               blank: Local do projeto não pode ficar em branco
             video_url:
@@ -408,6 +411,8 @@ pt:
             address_city:
               blank: "Cidade não pode ficar em branco"
             address_state:
+              blank: "Estado não pode ficar em branco"
+            state_id:
               blank: "Estado não pode ficar em branco"
             address_neighbourhood:
               blank: "Bairro não pode ficar em branco"

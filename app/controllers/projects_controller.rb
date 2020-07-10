@@ -44,7 +44,12 @@ class ProjectsController < ApplicationController
     )
     authorize @project
     if @project.save
-      redirect_after_create(@project)
+
+      if @project.is_supportive?
+        redirect_to publish_by_steps_project_path(@project)
+      else
+        redirect_after_create(@project)
+      end      
     else
       render :new
     end
@@ -56,6 +61,10 @@ class ProjectsController < ApplicationController
   end
 
   def publish
+    authorize resource
+  end
+
+  def publish_by_steps
     authorize resource
   end
 

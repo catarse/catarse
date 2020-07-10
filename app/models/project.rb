@@ -162,7 +162,7 @@ class Project < ActiveRecord::Base
   scope :of_current_week, -> {
     between_dates('online_at', 7.days.ago, Time.current)
   }
-
+  
   scope :by_permalink, ->(p) { without_state('deleted').where('lower(permalink) = lower(?)', p) }
   scope :recommended, -> { where(recommended: true) }
   scope :in_funding, -> { not_expired.with_states(['online']) }
@@ -262,6 +262,10 @@ class Project < ActiveRecord::Base
       template_name = 'invalid_finish'
       and created_at > (current_timestamp - '24 hours'::interval)
     }).exists?
+  end
+
+  def is_supportive?
+    integrations.where(name: 'SOLIDARITY_SERVICE_FEE').present?
   end
 
   def has_blank_service_fee?

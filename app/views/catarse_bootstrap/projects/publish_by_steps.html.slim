@@ -1,0 +1,14 @@
+- content_for :title, "#{@project.name} · #{CatarseSettings[:company_name]}"
+- content_for :js do
+  = javascript_include_tag 'redactor'
+- content_for :stylesheets do
+  = stylesheet_link_tag 'redactor'
+
+- parameters = { project_id: @project.id, id: @project.id, user_id: @project.user_id, project_state: @project.state, mode: @project.mode, rails_errors: @project.errors.to_json }.to_json
+
+#application data-parameters=parameters
+
+- content_for :application_js do
+  = javascript_include_tag 'api/application'
+  = javascript_include_tag 'api/catarse'
+  = javascript_include_tag "jquery-ui"

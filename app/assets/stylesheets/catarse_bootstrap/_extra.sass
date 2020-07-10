@@ -737,7 +737,20 @@ input#pg_search
 .section-product.sub
   background-color: #c1af4f
 
-.search-cities-pre-result
-  max-height: 300px
-  overflow: auto
-  display: block
+.list-dashboard .list-dashboard-item:before
+  color: #ddd
+  content: "•"
+  font-size: 2rem
+  left: -.25rem
+  position: absolute
+  top: -.1875rem
+  z-index: 1
+
+.list-dashboard .list-dashboard-item:not(:last-child):after
+  background: #ddd
+  content: ''
+  height: 100%
+  left: 0
+  position: absolute
+  top: 1.1875rem
+  width: 1px

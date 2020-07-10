@@ -1,5 +1,6 @@
 en:
   activerecord:
+    publish_by_steps_fields_errors: Saving info was not possible. Check errors on page and try again.
     models:
       channel: Channel
       project: Project
