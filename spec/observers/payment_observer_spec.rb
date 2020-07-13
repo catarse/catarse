@@ -16,6 +16,17 @@ RSpec.describe PaymentObserver do
         expect(ContributionNotification.where(template_name: 'payment_slip', user: contribution.user, contribution: contribution).count).to eq 1
       end
     end
+    context "when project is not open_for_contributions" do
+      let(:payment) { build(:payment, payment_method: 'BoletoBancario', state: 'paid', gateway_data: {}) }
+      before do
+        allow(payment.contribution.project).to receive(:open_for_contributions?).and_return(false)
+        expect(payment.contribution.project).to receive(:open_for_contributions?).and_call_original()
+        payment.save
+      end
+      it('should not notify the contribution') do
+        expect(ContributionNotification.where(template_name: 'payment_slip', user: contribution.user, contribution: contribution).count).to eq 0
+      end
+    end
   end
 
   describe 'from_chargeback_to_paid' do
