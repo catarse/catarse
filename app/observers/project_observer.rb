@@ -3,6 +3,12 @@
 class ProjectObserver < ActiveRecord::Observer
   observe :project
 
+  def after_create(project)
+    if project.is_supportive?
+      project.send_supportive_project_created_event
+    end
+  end
+
   def before_save(project)
     if project.try(:online_days_changed?) || project.try(:expires_at).nil?
       project.update_expires_at

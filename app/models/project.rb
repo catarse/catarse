@@ -264,8 +264,21 @@ class Project < ActiveRecord::Base
     }).exists?
   end
 
+  def send_supportive_project_created_event
+    Rdevent.create(
+      :user_id => self.user.id,
+      :project_id => id,
+      :event_name => :supportive_project_created,
+      :metadata => supportive_integration.as_json
+    )
+  end
+
   def is_supportive?
-    integrations.where(name: 'SOLIDARITY_SERVICE_FEE').present?
+    supportive_integration.present?
+  end
+
+  def supportive_integration
+    integrations.where(name: 'SOLIDARITY_SERVICE_FEE')
   end
 
   def has_blank_service_fee?

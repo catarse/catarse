@@ -701,4 +701,17 @@ RSpec.describe Project, type: :model do
       }.to_json)
     end
   end
+
+  describe 'send_supportive_project_created_event' do
+    
+    let(:integrations_attributes) { [{ name: 'SOLIDARITY_SERVICE_FEE', data: { name: 'SOLIDARITY FEE NAME' } }] }
+    let(:category) { create(:category) }
+    let(:project) { create(:project, name: "NEW PROJECT NAME", service_fee: 0.04, mode: 'flex', category_id: category.id, integrations_attributes: integrations_attributes) }
+    
+    subject { project.send_supportive_project_created_event }
+
+    it do
+      is_expected.to eq(Rdevent.last)
+    end
+  end
 end
