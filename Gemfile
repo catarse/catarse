@@ -1,12 +1,14 @@
 source 'https://rubygems.org'
+git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.4.4'
+ruby '2.7.1'
 
 gem 'rails', '~> 4.2.11'
 gem 'rails-html-sanitizer', '~> 1.0.4'
 
-gem 'countries', '3.0.0'
+gem 'bigdecimal', '1.3.5'
 
+gem 'countries', '3.0.0'
 gem 'protected_attributes'
 gem 'rails-observers'
 gem 'rb-readline'

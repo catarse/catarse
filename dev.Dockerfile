@@ -1,4 +1,4 @@
-FROM ruby:2.4.4-alpine
+FROM ruby:2.7.1-alpine
 #FROM alpine:3.7
 MAINTAINER Catarse <contato@catarse.me>
 
@@ -14,6 +14,8 @@ RUN apk update && \
 #
 RUN mkdir /usr/app
 WORKDIR /usr/app
+#
+RUN gem install bundler:2.1.4
 #
 COPY Gemfile /usr/app/
 COPY Gemfile.lock /usr/app/
@@ -32,7 +34,7 @@ RUN npm install
 RUN set -ex \
   && mkdir -p /usr/app/tmp/cache \
   && mkdir -p /usr/app/tmp/pids \
-  && mkdir -p /usr/app/tmp/sockets 
+  && mkdir -p /usr/app/tmp/sockets
   #  && chown -R nobody /usr/app
 #
 ## ==================================================================================================
