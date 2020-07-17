@@ -4,9 +4,7 @@ class ProjectObserver < ActiveRecord::Observer
   observe :project
 
   def after_create(project)
-    if project.is_supportive?
-      project.send_supportive_project_created_event
-    end
+    project.create_event_to_state
   end
 
   def before_save(project)

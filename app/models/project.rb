@@ -264,13 +264,22 @@ class Project < ActiveRecord::Base
     }).exists?
   end
 
-  def send_supportive_project_created_event
+  def create_event_to_state
     Rdevent.create(
-      :user_id => self.user.id,
-      :project_id => id,
-      :event_name => :supportive_project_created,
-      :metadata => supportive_integration.as_json
+      user_id: user.id,
+      project_id: id,
+      event_name: "#{event_mode_prefix}project_#{state}"
     )
+  end
+
+  def event_mode_prefix 
+    if is_supportive?
+      'solidaria_'
+    elsif is_sub?
+      'sub_'
+    else
+      ''
+    end
   end
 
   def is_supportive?

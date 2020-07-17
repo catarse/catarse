@@ -702,16 +702,18 @@ RSpec.describe Project, type: :model do
     end
   end
 
-  describe 'send_supportive_project_created_event' do
+  describe 'create_event_to_status' do
     
     let(:integrations_attributes) { [{ name: 'SOLIDARITY_SERVICE_FEE', data: { name: 'SOLIDARITY FEE NAME' } }] }
     let(:category) { create(:category) }
-    let(:project) { create(:project, name: "NEW PROJECT NAME", service_fee: 0.04, mode: 'flex', category_id: category.id, integrations_attributes: integrations_attributes) }
+    let(:project) { create(:project, name: "NEW PROJECT NAME", service_fee: 0.04, mode: 'flex', state: 'draft', category_id: category.id, integrations_attributes: integrations_attributes) }
     
-    subject { project.send_supportive_project_created_event }
+    let(:event) { project.create_event_to_state }
 
     it do
-      is_expected.to eq(Rdevent.last)
+      expect(event.project_id).to eq(project.id)
+      expect(event.user_id).to eq(project.user.id)
+      expect(event.event_name).to eq('solidaria_project_draft')
     end
   end
 end

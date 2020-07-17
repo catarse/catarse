@@ -45,8 +45,8 @@ RSpec.describe ProjectObserver do
       let(:category) { create(:category) }
       let(:project) { create(:project, name: "NEW PROJECT NAME", service_fee: 0.04, mode: 'flex', category_id: category.id, integrations_attributes: integrations_attributes) }
     
-      it 'should have called send send_supportive_project_created_event method' do
-        expect(project).to receive(:send_supportive_project_created_event)
+      it 'should have called send create_event_to_state method' do
+        expect(project).to receive(:create_event_to_state)
         subject.after_create(project)
       end
 
