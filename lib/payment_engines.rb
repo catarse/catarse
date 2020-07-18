@@ -54,4 +54,8 @@ class PaymentEngines
       .where(gateway: 'Pagarme', payment_method: 'CartaoDeCredito', state: 'paid')
       .where("gateway_data -> 'card' ->> 'id' = ?", card_id).exists?
   end
+
+  def self.import_payables(payment)
+    ImportMissingPayablesAction.new(payment: payment).call
+  end
 end

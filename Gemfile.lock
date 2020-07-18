@@ -1,12 +1,12 @@
 GIT
-  remote: git://github.com/SamMolokanov/fakeweb.git
-  revision: 10be5e089608606953d5df7b560cef23b0469b47
+  remote: https://github.com/SamMolokanov/fakeweb.git
+  revision: 28076a40b286e2a6cbc2a5e451c79e29154a0aa8
   branch: ruby-2-4-1-support
   specs:
     fakeweb (1.3.0)
 
 GIT
-  remote: git://github.com/catarse/redactor-rails.git
+  remote: https://github.com/catarse/redactor-rails.git
   revision: 9a58b7ecbd33acad7e9cb66476e349262c72d093
   branch: master
   specs:
@@ -73,7 +73,7 @@ GEM
     aws-sdk-resources (2.8.7)
       aws-sdk-core (= 2.8.7)
     aws-sigv4 (1.0.0)
-    bcrypt (3.1.11)
+    bcrypt (3.1.13)
     best_in_place (3.1.1)
       actionpack (>= 3.2)
       railties (>= 3.2)
@@ -81,6 +81,7 @@ GEM
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
       rack (>= 0.9.0)
+    bigdecimal (1.3.5)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     browser (1.0.1)
@@ -96,7 +97,7 @@ GEM
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
       mime-types (>= 1.16)
-    catarse_pagarme (2.16.1)
+    catarse_pagarme (2.16.2)
       countries (= 3.0.0)
       konduto-ruby (= 2.1.0)
       pagarme (= 2.1.4)
@@ -157,12 +158,11 @@ GEM
       sass-rails
       slim-rails
     debug_inspector (0.0.2)
-    devise (3.5.10)
+    devise (4.7.2)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
-      railties (>= 3.2.6, < 5)
+      railties (>= 4.1.0)
       responders
-      thread_safe (~> 0.1)
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
     domain_name (0.5.20190701)
@@ -318,7 +318,7 @@ GEM
     logging (2.1.0)
       little-plugger (~> 1.1)
       multi_json (~> 1.10)
-    loofah (2.3.1)
+    loofah (2.6.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
@@ -347,7 +347,7 @@ GEM
     netrc (0.11.0)
     newrelic_rpm (3.18.1.330)
     nio4r (2.5.2)
-    nokogiri (1.10.9)
+    nokogiri (1.10.10)
       mini_portile2 (~> 2.4.0)
     oauth (0.5.1)
     oauth2 (1.2.0)
@@ -403,7 +403,7 @@ GEM
       nio4r (~> 2.0)
     pundit (1.1.0)
       activesupport (>= 3.0.0)
-    rack (1.6.12)
+    rack (1.6.13)
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (4.2.11)
@@ -455,9 +455,9 @@ GEM
     redcarpet (3.3.4)
     redis (3.3.1)
     request_store (1.3.1)
-    responders (2.4.0)
-      actionpack (>= 4.2.0, < 5.3)
-      railties (>= 4.2.0, < 5.3)
+    responders (2.4.1)
+      actionpack (>= 4.2.0, < 6.0)
+      railties (>= 4.2.0, < 6.0)
     rest-client (2.1.0)
       http-accept (>= 1.7.0, < 2.0)
       http-cookie (>= 1.0.2, < 2.0)
@@ -686,11 +686,12 @@ DEPENDENCIES
   aws-sdk (~> 2)
   best_in_place
   better_errors
+  bigdecimal (= 1.3.5)
   binding_of_caller
   browser (= 1.0.1)
   capybara
   carrierwave (~> 1.0)
-  catarse_pagarme (~> 2.16.1)
+  catarse_pagarme (~> 2.16.2)
   catarse_settings_db (>= 0.2.0)
   cocoon
   coffee-rails
@@ -701,7 +702,7 @@ DEPENDENCIES
   cpf_faker
   database_cleaner
   dbhero (>= 1.1.12)
-  devise (= 3.5.10)
+  devise (= 4.7.2)
   draper
   excelinator
   factory_girl_rails
@@ -787,7 +788,7 @@ DEPENDENCIES
   zonebie
 
 RUBY VERSION
-   ruby 2.4.4p296
+   ruby 2.7.1p83
 
 BUNDLED WITH
    1.17.3

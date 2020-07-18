@@ -150,9 +150,7 @@ class ApplicationController < ActionController::Base
   end
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:sign_up) do |u|
-      u.permit(:name, :email, :password, :newsletter)
-    end
+    devise_parameter_sanitizer.permit(:sign_up, keys: %i[name email password newsletter])
   end
 
   def after_sign_in_path_for(resource)

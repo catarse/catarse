@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/ruby:2.4.4-stretch-node-browsers
+      - image: circleci/ruby:2.7.1-node-browsers
       - image: postgres:11.5
         environment:
           POSTGRES_DB: catarse_test
@@ -11,7 +11,7 @@ jobs:
       - setup_remote_docker:
           version: 17.05.0-ce
       - run: |
-          sudo tee /etc/apt/sources.list.d/pgdg.list <<END 
+          sudo tee /etc/apt/sources.list.d/pgdg.list <<END
             deb http://apt.postgresql.org/pub/repos/apt/ bionic-pgdg main
           END
       - run: sudo wget https://www.postgresql.org/media/keys/ACCC4CF8.asc && sudo apt-key add ACCC4CF8.asc

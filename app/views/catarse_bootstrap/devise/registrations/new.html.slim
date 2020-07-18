@@ -2,12 +2,12 @@
 
 .w-section
   .w-container
-    = render 'devise/shared/header'     
+    = render 'devise/shared/header'
     #signup.w-row
       .w-col.w-col-6.box-login.w-col-push-3
         .fontweight-semibold.u-text-center.fontsize-large.u-marginbottom-30= t '.titles.header'
         .login-fb
-          = link_to t('.form.inputs.facebook'), user_omniauth_authorize_path(provider: :facebook, locale: nil), class: 'btn btn-medium btn-fb'
+          = link_to t('.form.inputs.facebook'), user_facebook_omniauth_authorize_path(locale: nil), class: 'btn btn-medium btn-fb'
         .separator
           .text.or = t('or')
         .w-form
