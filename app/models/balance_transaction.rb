@@ -25,6 +25,7 @@ class BalanceTransaction < ActiveRecord::Base
     contribution_payment
     project_antecipation_fee
     antecipation_fee
+    balance_transaction_fee
   ].freeze
 
   belongs_to :project
@@ -64,23 +65,25 @@ class BalanceTransaction < ActiveRecord::Base
     Raven.extra_context({})
   end
 
-  def self.insert_balance_transfer_between_users(from_user, to_user)
+  def self.insert_balance_transfer_between_users(from_user, to_user, amount_to_transfer = nil)
     from_user.reload
     return if from_user.total_balance <= 0
+    return if from_user.total_balance < amount_to_transfer && amount_to_transfer.present?
+    amount_to_transfer = from_user.total_balance if amount_to_transfer.nil?
 
     transaction do
       create!(
         user_id: from_user.id,
         from_user_id: from_user.id,
         to_user_id: to_user.id,
-        amount: from_user.total_balance*-1,
+        amount: amount_to_transfer*-1,
         event_name: 'balance_transferred_to'
       )
       create!(
         user_id: to_user.id,
         from_user_id: from_user.id,
         to_user_id: to_user.id,
-        amount: from_user.total_balance,
+        amount: amount_to_transfer,
         event_name: 'balance_received_from'
       )
     end
