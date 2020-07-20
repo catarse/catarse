@@ -3,6 +3,10 @@
 class ProjectObserver < ActiveRecord::Observer
   observe :project
 
+  def after_create(project)
+    project.create_event_to_state
+  end
+
   def before_save(project)
     if project.try(:online_days_changed?) || project.try(:expires_at).nil?
       project.update_expires_at

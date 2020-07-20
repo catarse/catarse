@@ -14,7 +14,6 @@ class ImportMissingPayablesAction
       update_payment_fee
     end
   rescue => e
-    raise e
     Raven.extra_context(payment_id: @payment.id)
     Raven.capture_exception(e, level: 'fatal')
   end

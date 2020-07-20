@@ -701,4 +701,19 @@ RSpec.describe Project, type: :model do
       }.to_json)
     end
   end
+
+  describe 'create_event_to_status' do
+    
+    let(:integrations_attributes) { [{ name: 'SOLIDARITY_SERVICE_FEE', data: { name: 'SOLIDARITY FEE NAME' } }] }
+    let(:category) { create(:category) }
+    let(:project) { create(:project, name: "NEW PROJECT NAME", service_fee: 0.04, mode: 'flex', state: 'draft', category_id: category.id, integrations_attributes: integrations_attributes) }
+    
+    let(:event) { project.create_event_to_state }
+
+    it do
+      expect(event.project_id).to eq(project.id)
+      expect(event.user_id).to eq(project.user.id)
+      expect(event.event_name).to eq('solidaria_project_draft')
+    end
+  end
 end

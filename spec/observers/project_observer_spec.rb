@@ -36,6 +36,23 @@ RSpec.describe ProjectObserver do
     CatarseSettings[:company_name] = 'Catarse'
   end
 
+  describe '#after_create' do
+    
+    subject { ProjectObserver.instance }
+
+    context 'when supportive project is created' do
+      let(:integrations_attributes) { [{ name: 'SOLIDARITY_SERVICE_FEE', data: { name: 'SOLIDARITY FEE NAME' } }] }
+      let(:category) { create(:category) }
+      let(:project) { create(:project, name: "NEW PROJECT NAME", service_fee: 0.04, mode: 'flex', category_id: category.id, integrations_attributes: integrations_attributes) }
+    
+      it 'should have called send create_event_to_state method' do
+        expect(project).to receive(:create_event_to_state)
+        subject.after_create(project)
+      end
+
+    end
+  end
+
   describe '#before_save' do
     context 'when video_url changed' do
       let(:project) { create(:project, video_url: 'https://www.youtube.com/watch?v=9QveBbn7t_c', video_embed_url: 'embed_url') }

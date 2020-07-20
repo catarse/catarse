@@ -264,8 +264,30 @@ class Project < ActiveRecord::Base
     }).exists?
   end
 
+  def create_event_to_state
+    Rdevent.create(
+      user_id: user.id,
+      project_id: id,
+      event_name: "#{event_mode_prefix}project_#{state}"
+    )
+  end
+
+  def event_mode_prefix 
+    if is_supportive?
+      'solidaria_'
+    elsif is_sub?
+      'sub_'
+    else
+      ''
+    end
+  end
+
   def is_supportive?
-    integrations.where(name: 'SOLIDARITY_SERVICE_FEE').present?
+    supportive_integration.present?
+  end
+
+  def supportive_integration
+    integrations.where(name: 'SOLIDARITY_SERVICE_FEE')
   end
 
   def has_blank_service_fee?
