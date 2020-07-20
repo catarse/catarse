@@ -18,7 +18,7 @@ class RefreshSubscriptionRewardsMetricsTask
       begin
         SubscriptionPayment.where(sql_cond).pluck(:reward_id).uniq.each do |rid|
           reward = Reward.find_by common_id: rid
-          reward.refresh_reward_metric_storage
+          reward.refresh_reward_metric_storage if reward.present?
         end
       rescue StandardError => e
         Raven.extra_context(task: :refresh_subscription_reward_metrics)
