@@ -434,7 +434,7 @@ RSpec.describe BalanceTransaction, type: :model do
     let(:user) { contribution.user }
     let(:project_owner) { project.user }
     
-    subject { BalanceTransaction.insert_balance_transfer_between_users(project_owner, user)}
+    subject { BalanceTransaction.insert_balance_transfer_between_users(project_owner, user, 15)}
 
     context 'when user has no balance' do
       it 'should not transfer' do
@@ -455,14 +455,14 @@ RSpec.describe BalanceTransaction, type: :model do
           event_name: 'balance_received_from',
           from_user_id: project_owner.id,
           to_user_id: user.id,
-          amount: contribution.value-(contribution.value*project.service_fee)
+          amount: 15,
         ).exists?).to eq(true)
 
         expect(project_owner.balance_transactions.where(
           event_name: 'balance_transferred_to',
           from_user_id: project_owner.id,
           to_user_id: user.id,
-          amount: (contribution.value-(contribution.value*project.service_fee))*-1
+          amount: 15*-1,
         ).exists?).to eq(true)
       end
     end

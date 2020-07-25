@@ -14,7 +14,7 @@ class Reward < ActiveRecord::Base
   has_many :contributions, dependent: :nullify
   has_many :shipping_fees, dependent: :destroy
   has_one :survey
-  has_one :reward_metric_storage
+  has_one :reward_metric_storage, dependent: :destroy
 
   mount_uploader :uploaded_image, RewardUploader
 
