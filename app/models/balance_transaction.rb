@@ -68,7 +68,7 @@ class BalanceTransaction < ActiveRecord::Base
   def self.insert_balance_transfer_between_users(from_user, to_user, amount_to_transfer = nil)
     from_user.reload
     return if from_user.total_balance <= 0
-    return if from_user.total_balance < amount_to_transfer && amount_to_transfer.present?
+    return if amount_to_transfer.present? && from_user.total_balance < amount_to_transfer
     amount_to_transfer = from_user.total_balance if amount_to_transfer.nil?
 
     transaction do
