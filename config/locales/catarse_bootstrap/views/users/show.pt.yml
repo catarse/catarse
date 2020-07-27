@@ -42,6 +42,8 @@ pt:
         project_antecipation_fee: 'Adiantamento de repasse do projeto %{project_name}'
         antecipation_fee: 'Adiantamento de repasse'
         contribution_payment: '%{contributor_name} - (Apoio %{project_name})'
+        balance_transaction_fee: 'Taxa de serviço'
+
       debit: 'Saída'
       credit: 'Entrada'
       totals: 'Saldo '
