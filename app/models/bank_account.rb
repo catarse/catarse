@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+require 'net/http'
 
 class BankAccount < ActiveRecord::Base
   BANK_CODE_TABLE = %w[237 001 341 033 104 399 745].freeze
@@ -20,6 +21,7 @@ class BankAccount < ActiveRecord::Base
   validate :agency, :agency_validation
   validate :account, :account_validation
   validate :account_digit, :account_digit_validation
+  validate :bank_account_valid
 
   def agency_validation
     
@@ -117,6 +119,15 @@ class BankAccount < ActiveRecord::Base
     end
 
     bank_code_in_validation_table?
+  end
+
+  def bank_account_valid
+    validation = Transfeera::BankAccountValidator.validate(self)
+    if !validation[:valid]
+      validation[:errors].each do |error|
+        errors.add(error[:field], error[:message])
+      end
+    end
   end
 
   # before validate bank account we inject the founded
