@@ -8,3 +8,6 @@ pt:
       request_refunds: "Solicitar reembolso"
       input_bank_number_label: "Número do banco (3 números)"
       search_bank_btn_html: "Busca por nome  &nbsp;&gt;"
+      document_owner_mismatch_error: "O nome ou documento não correspondem com os dados bancários. Para alterá-los, <a href='%{profile_link}' target='_self' class='alt-link'>acesse os seus dados cadastrais</a>."
+      validation_error: "Não foi possível validar a conta bancária. Tente novamente mais tarde."
+      select_bank: "Selecione um banco"
