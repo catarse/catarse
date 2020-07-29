@@ -8,3 +8,4 @@ en:
       request_refunds: Request refund
       input_bank_number_label: Bank Number (3 digits)
       search_bank_btn_html: Search by &nbsp;&gt;
+      document_owner_mismatch_error: "CPF does not match the bank details. To change CPF, <a href='%{profile_link}' target='_self' class='alt-link'>access your profile</a>."
