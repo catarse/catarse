@@ -172,7 +172,7 @@ pt:
           waiting_funds: '<span class="fontweight-semibold">%{username}<span> estamos processando os últimos pagamentos! Sua campanha foi finalizada em %{expires_at} e está aguardando as últimas confirmações de pagamento de apoios. Devido à data de vencimento de boletos, projetos que tiveram apoios de última hora ficam por até 4 dias úteis com o status "Aguardando". Entenda como o <a href="http://suporte.catarse.me/hc/pt-br/articles/217916143" target="blank">transferência do dinheiro é feita.</a>'
           rejected: '<span class="fontweight-semibold">%{username}, este projeto foi cancelado. Caso tenha alguma dúvida do motivo do cancelamento, entre em contato com o nosso atendimento.'
           draft: '<span class="fontweight-semibold">Bem-vindo ao rascunho %{username}</span><br/><br/>Esse é o momento para você construir a sua página e planejar a sua campanha! Antes de publicar seu projeto, preencha todas as abas ao lado com carinho. Conforme você for preenchendo a sua página, vá salvando as alterações. Você pode trabalhar em seu rascunho durante o tempo que quiser. Quando tudo estiver pronto para o lançamento, clique no botão CONTINUAR.<br/><br/><span class="card u-radius"><span class="fa fa-lightbulb-o"></span> Aprenda a planejar <a class="alt-link" target="_blank" href="https://catarse.attach.io/HySxkQXkg">sua campanha de financiamento coletivo!</a></span>'
-      visitors_per_day_label: 'Visitantes por dia'
+      visitors_per_day_label: 'Visitas por dia'
       amount_per_day_label: 'R$ arrecadados por dia'
       amount_per_day_label_sub: 'Novas assinaturas por dia (R$)'
       contributions_per_day_label: 'Apoios confirmados por dia'
@@ -181,7 +181,7 @@ pt:
       paid_date_indication: 'Últimos 30 dias (Considerando a data de confirmação do pagamento)'
       location_origin_title: 'Localização geográfica dos apoios'
       ref_origin_title: 'Origem dos apoios'
-      visitors_per_day_empty: Assim que visitantes começarem a aparecer você terá acesso a um gráfico aqui com o número de visitantes por dia. Com isso, você terá um controle diário de quantas pessoas visitam seu projeto.
+      visitors_per_day_empty: Assim que visitantes começarem a aparecer você terá acesso a um gráfico aqui com o número de visitas por dia. Com isso, você terá um controle diário de quantas pessoas visitam seu projeto.
       amount_per_day_empty: Assim que os apoios começarem a aparecer você terá acesso a um gráfico aqui com o total de R$ arrecadados dia a dia. Com isso, você terá um controle diário de quanto falta para você atingir a sua meta de arrecadação.
       amount_per_day_empty_sub: 'Você não ganhou nenhum novo assinante nos últimos 30 dias. Veja algumas <a href="https://catarse.attach.io/rJq3ueP9M" class="alt-link">dicas de ouro</a> de realizadores de Assinaturas do Catarse que podem te ajudar a conquistar assinantes!'
       contributions_per_day_empty: Você ainda não tem nenhum apoio ao seu projeto. Assim que os apoios começarem a aparecer você terá acesso a um gráfico aqui com o total de apoios confirmados dia a dia. Boa sorte!
