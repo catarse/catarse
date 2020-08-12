@@ -2298,10 +2298,6 @@ a:hover {
 }
 
 .hero-full.hero-full-slide {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   min-height: 420px;
   padding-top: 0px;
   -webkit-box-align: center;
@@ -3635,7 +3631,7 @@ a:hover {
 }
 
 .hero-slide {
-  padding-top: 110px;
+  height: 100%;
   background-color: #3f4752;
   background-image: url("https://d3e54v103j8qbb.cloudfront.net/img/example-bg.png");
   background-position: 50% 50%;
@@ -4763,6 +4759,23 @@ a:hover {
   font-size: 18px;
 }
 
+.hero-slide-wrapper {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
 html.w-mod-js *[data-ix="fade-in"] {
   opacity: 0;
 }
@@ -5345,9 +5358,6 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
   }
   .modal-dialog-header {
     height: 50px;
-  }
-  .hero-slide {
-    padding-top: 83px;
   }
   .flex-row {
     margin-right: -10px;
@@ -6101,7 +6111,7 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
     position: fixed;
   }
   .hero-slide {
-    padding-top: 99px;
+    padding-top: 37px;
   }
   .flex-row {
     -webkit-box-orient: vertical;
@@ -6609,7 +6619,7 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
     padding-left: 16px;
   }
   .hero-full.hero-full-slide {
-    min-height: 360px;
+    min-height: 380px;
     padding-right: 0px;
     padding-left: 0px;
   }
@@ -6748,6 +6758,9 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
   }
   .how-row {
     margin-top: 30px;
+  }
+  .hero-slide {
+    padding-top: 49px;
   }
   .card-backer {
     height: 255px;
