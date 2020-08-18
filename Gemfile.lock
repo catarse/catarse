@@ -287,7 +287,7 @@ GEM
       thor (>= 0.14, < 2.0)
     jquery-ui-rails (6.0.1)
       railties (>= 3.2.16)
-    json (2.1.0)
+    json (2.3.1)
     json_web_token (0.3.2)
       json (>= 1.8.3)
     jwt (1.5.6)

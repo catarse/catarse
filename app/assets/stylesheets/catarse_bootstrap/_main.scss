@@ -2298,7 +2298,12 @@ a:hover {
 }
 
 .hero-full.hero-full-slide {
+  min-height: 420px;
   padding-top: 0px;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .hero-jobs {
@@ -3626,7 +3631,7 @@ a:hover {
 }
 
 .hero-slide {
-  padding-top: 187px;
+  height: 100%;
   background-color: #3f4752;
   background-image: url("https://d3e54v103j8qbb.cloudfront.net/img/example-bg.png");
   background-position: 50% 50%;
@@ -4739,7 +4744,36 @@ a:hover {
 .search-cities-pre-result {
   display: block;
   overflow: auto;
-  max-height: 300px;
+  min-height: 300px;
+}
+
+.hero-home-title {
+  margin-bottom: 13px;
+  color: #fff;
+  font-size: 44px;
+  line-height: 40px;
+}
+
+.hero-home-subtitle {
+  color: #fff;
+  font-size: 18px;
+}
+
+.hero-slide-wrapper {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 
 html.w-mod-js *[data-ix="fade-in"] {
@@ -5176,6 +5210,9 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
   .hero-full.hero-2016 {
     background-size: 70%, auto;
   }
+  .hero-full.hero-full-slide {
+    min-height: 350px;
+  }
   .card-project-meter {
     font-size: 13px;
   }
@@ -5363,6 +5400,15 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
   }
   .loved-projects-container {
     padding-left: 12px;
+  }
+  .hero-home-title {
+    margin-bottom: 11px;
+    font-size: 40px;
+    line-height: 38px;
+  }
+  .hero-home-subtitle {
+    font-size: 16px;
+    line-height: 19px;
   }
 }
 
@@ -5798,7 +5844,7 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
     text-align: left;
   }
   .hero-full {
-    min-height: 530px;
+    min-height: 450px;
     padding-top: 143px;
     padding-bottom: 80px;
   }
@@ -6065,7 +6111,7 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
     position: fixed;
   }
   .hero-slide {
-    padding-top: 138px;
+    padding-top: 37px;
   }
   .flex-row {
     -webkit-box-orient: vertical;
@@ -6573,6 +6619,7 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
     padding-left: 16px;
   }
   .hero-full.hero-full-slide {
+    min-height: 380px;
     padding-right: 0px;
     padding-left: 0px;
   }
@@ -6712,6 +6759,9 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
   .how-row {
     margin-top: 30px;
   }
+  .hero-slide {
+    padding-top: 49px;
+  }
   .card-backer {
     height: 255px;
   }
@@ -6742,6 +6792,13 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
   .aon-badge-start {
     width: 120px;
     margin-bottom: -16px;
+  }
+  .hero-home-title {
+    font-size: 32px;
+    line-height: 36px;
+  }
+  .hero-home-subtitle {
+    font-size: 14px;
   }
 }
 
