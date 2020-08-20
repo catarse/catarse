@@ -11,7 +11,7 @@ class ImportMissingPayablesAction
 
     ActiveRecord::Base.transaction do
       import_payables
-      update_payment_fee
+      update_payment
     end
   rescue => e
     Raven.extra_context(payment_id: @payment.id)
@@ -42,8 +42,10 @@ class ImportMissingPayablesAction
     gateway_payable.save!
   end
 
-  def update_payment_fee
-    @payment.update!(gateway_fee: calculate_fee)
+  def update_payment
+    @payment.gateway_fee = calculate_fee
+    @payment.gateway_data['cost'] = @transaction.cost if @transaction.cost > 0
+    @payment.save!
   end
 
   def calculate_fee
