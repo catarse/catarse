@@ -18,35 +18,20 @@ RSpec.describe ProjectMetricStorageRefreshWorker do
     before do
       expect(Project).to receive(:find).with(project.id).and_return(project)
       expect(project).not_to receive(:refresh_project_metric_storage)
-      expect(ProjectMetricStorageRefreshWorker).not_to receive(:perform_in).with(10.seconds, project.id)
     end
     it 'should not call refresh function' do
       ProjectMetricStorageRefreshWorker.perform_async(project.id)
     end
   end
 
-  context 'when project is not subscription type' do
-    let(:project) { create(:project, mode: 'flex', state: 'online') }
-    before do
-      expect(Project).to receive(:find).with(project.id).and_return(project)
-      expect(project).to receive(:refresh_project_metric_storage)
-      expect(ProjectMetricStorageRefreshWorker).not_to receive(:perform_in).with(10.seconds, project.id)
-    end
-
-    it 'should not reschedule a next run for metrics refresh' do
-      ProjectMetricStorageRefreshWorker.perform_async(project.id)
-    end
-  end
-
-  context 'when project is subscription type' do
+  context 'when project can be processed' do
     let(:project) { create(:subscription_project, state: 'online') }
     before do
       expect(Project).to receive(:find).with(project.id).and_return(project)
       expect(project).to receive(:refresh_project_metric_storage)
-      expect(ProjectMetricStorageRefreshWorker).to receive(:perform_in).with(10.seconds, project.id)
     end
 
-    it 'should reschedule a next run for metrics refresh' do
+    it 'should call refresh_project_metric_storage' do
       ProjectMetricStorageRefreshWorker.perform_async(project.id)
     end
   end
