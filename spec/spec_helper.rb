@@ -84,6 +84,7 @@ RSpec.configure do |config|
     allow_any_instance_of(Calendar).to receive(:fetch_events_from)
     allow_any_instance_of(Payment).to receive(:refund_queue_set).and_return(DirectRefundWorker.jobs)
     allow(Blog).to receive(:fetch_last_posts).and_return([])
+    allow(Transfeera::BankAccountValidator).to receive(:validate).and_return({valid: true})
 
     # Default configurations
     CatarseSettings[:base_domain] = 'localhost'
