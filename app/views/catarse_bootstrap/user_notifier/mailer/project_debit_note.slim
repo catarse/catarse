@@ -40,6 +40,15 @@ table style="border: 1px solid;max-width:100%;border-collapse: collapse;"
       span #{project_link}
     td style="border: 1px solid;text-align:center;vertical-align: middle;white-space: nowrap;"
       span #{number_to_currency fiscal_data.total_gateway_fee, precision: 2}
+  tr
+    td style="border: 1px solid;text-align:center;vertical-align: middle;white-space: nowrap;"
+      span #{finished_date}
+    td style="border: 1px solid;text-align:center;vertical-align: middle;"
+      span Tarifas das análises de antifraude dos apoios ao projeto "#{project['name']}".
+      br/
+      span #{project_link}
+    td style="border: 1px solid;text-align:center;vertical-align: middle;white-space: nowrap;"
+      span #{number_to_currency fiscal_data.total_antifraud_cost.to_f, precision: 2}
 
 br/
 p Declaro para os devidos fins ter recebido a importância acima discriminada dando plena e irrevogável quitação.
