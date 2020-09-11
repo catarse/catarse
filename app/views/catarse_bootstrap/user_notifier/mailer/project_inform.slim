@@ -59,11 +59,17 @@ table style="border: 1px solid;width:100%;border-collapse: collapse;"
       span Meio de Pagamento (-)
     td style="border: 1px solid;text-align:center;vertical-align: middle;white-space: nowrap;"
       span #{number_to_currency fiscal_data.total_gateway_fee||0, precision: 2}
+
+  tr
+    td style="border: 1px solid;text-align:left;vertical-align: middle;white-space: nowrap;"
+      span Custo do Antifraude (-)
+    td style="border: 1px solid;text-align:center;vertical-align: middle;white-space: nowrap;"
+      span #{number_to_currency fiscal_data.total_antifraud_cost ||0, precision: 2}
   tr
     td style="border: 1px solid;text-align:left;vertical-align: middle;white-space: nowrap;"
       span Taxa Líquida Catarse (-)
     td style="border: 1px solid;text-align:center;vertical-align: middle;white-space: nowrap;"
-      span #{number_to_currency (-fiscal_data.service_fee-(fiscal_data.total_gateway_fee||0)), precision: 2}
+      span #{number_to_currency (-fiscal_data.service_fee - (fiscal_data.total_gateway_fee || 0) - (fiscal_data.total_antifraud_cost || 0)), precision: 2}
   - unless fiscal_data.irrf.nil? || fiscal_data.irrf == 0
     tr
       td style="border: 1px solid;text-align:left;vertical-align: middle;white-space: nowrap;"
