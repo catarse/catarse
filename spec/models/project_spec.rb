@@ -716,4 +716,19 @@ RSpec.describe Project, type: :model do
       expect(event.event_name).to eq('solidaria_project_draft')
     end
   end
+
+  describe 'full_text_index' do
+
+    let(:project) { create(:project, { name: 'Project name', state: 'draft', full_text_index: nil, online_days: 3 }) }
+
+    it 'should update full_text_index from nil when state updates' do
+      expect(project.full_text_index).to eq(nil)
+      
+      project.state = 'online'      
+      project.save
+      project.reload
+
+      expect(project.full_text_index).not_to eq(nil)
+    end
+  end
 end
