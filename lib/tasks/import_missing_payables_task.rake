@@ -27,3 +27,5 @@ class ImportMissingPayablesTask
     end
   end
 end
+
+ImportMissingPayablesTask.new

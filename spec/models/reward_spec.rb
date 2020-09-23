@@ -32,6 +32,8 @@ RSpec.describe Reward, type: :model do
     it { is_expected.to belong_to :project }
     it { is_expected.to have_many :contributions }
     it { is_expected.to have_many(:payments).through(:contributions) }
+    it { is_expected.to have_one(:reward_metric_storage).dependent(:destroy) }
+    it { is_expected.to have_many(:shipping_fees).dependent(:destroy) }
   end
 
   it 'should have a minimum value' do
