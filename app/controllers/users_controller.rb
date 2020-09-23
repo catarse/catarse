@@ -163,7 +163,6 @@ class UsersController < ApplicationController
       end
     else
       @user.update_without_password permitted_params
-      @user.save
     end
   end
 

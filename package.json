@@ -8,7 +8,6 @@
     "catarse.js": "git+https://github.com/catarse/catarse.js.git#2.0.41",
     "chart.js": "1.0.2",
     "liquidjs": "^2.1.1",
-    "mithril-postgrest": "^3.0.2",
     "select": "^1.1.2"
   }
 }
