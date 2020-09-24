@@ -257,7 +257,7 @@ class BalanceTransaction < ActiveRecord::Base
     return unless project.successful?
     return unless project.project_total.present?
     transaction do
-      default_params = { project_id: project_id, user_id: project.user_id }
+      default_params = { project_id: project.id, user_id: project.user_id }
 
       create!(default_params.merge(
         event_name: 'successful_project_pledged',
@@ -268,13 +268,12 @@ class BalanceTransaction < ActiveRecord::Base
         amount: (project.total_catarse_fee * -1)
       ))
 
-      # uncomment to use irrf tax
-      # if project.irrf_tax > 0
-      #   create!(default_params.merge(
-      #     event_name: 'irrf_tax_project',
-      #     amount: project.irrf_tax
-      #   ))
-      # end
+      if project.irrf_tax > 0
+        create!(default_params.merge(
+          event_name: 'irrf_tax_project',
+          amount: project.irrf_tax
+        ))
+      end
     end
   end
 

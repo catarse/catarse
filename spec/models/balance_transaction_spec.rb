@@ -173,8 +173,8 @@ RSpec.describe BalanceTransaction, type: :model do
         project.finish
       end
 
-      it 'should not create irrf_tax_project transaction' do
-        expect(BalanceTransaction.find_by(event_name: 'irrf_tax_project', project_id: project.id, user_id: project.user_id, amount: project.irrf_tax)).to be_nil
+      it 'should create irrf_tax_project transaction' do
+        expect(BalanceTransaction.find_by(event_name: 'irrf_tax_project', project_id: project.id, user_id: project.user_id, amount: project.irrf_tax)).to be_present
       end
     end
 
