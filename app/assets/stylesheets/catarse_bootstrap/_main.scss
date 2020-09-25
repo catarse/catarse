@@ -4744,7 +4744,7 @@ a:hover {
 .search-cities-pre-result {
   display: block;
   overflow: auto;
-  min-height: 300px;
+  max-height: 300px;
 }
 
 .hero-home-title {
