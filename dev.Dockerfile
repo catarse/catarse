@@ -2,7 +2,7 @@ FROM ruby:2.7.1-alpine
 #FROM alpine:3.7
 MAINTAINER Catarse <contato@catarse.me>
 
-ENV BUILD_PACKAGES postgresql-dev libxml2-dev libxslt-dev imagemagick imagemagick-dev openssl libpq libffi-dev bash curl-dev libstdc++ tzdata bash ca-certificates build-base ruby-dev libc-dev linux-headers postgresql-client postgresql git
+ENV BUILD_PACKAGES less postgresql-dev libxml2-dev libxslt-dev imagemagick imagemagick-dev openssl libpq libffi-dev bash curl-dev libstdc++ tzdata bash ca-certificates build-base ruby-dev libc-dev linux-headers postgresql-client postgresql git
 ENV RUBY_PACKAGES ruby ruby-io-console ruby-bundler ruby-irb ruby-bigdecimal ruby-json nodejs nodejs-npm zlib-dev yaml-dev readline-dev ruby-dev ncurses
 #
 ## Update and install all of the required packages.

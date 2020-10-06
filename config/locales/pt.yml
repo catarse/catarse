@@ -12,6 +12,7 @@ pt:
       mini_magick_processing_error: "Erro ao manipular imagem, Original Error: %{e}"
       min_size_error: "Arquivo deve ser maior que %{min_size}"
       max_size_error: "Arquivo deve ser menor que %{max_size}"
+      base64_images_not_allowed: "O formato de imagem base64 não é permitido. Por favor, inclua imagens usando o botão de adicionar imagens do editor de texto. <a target='_blank' href='https://suporte.catarse.me/hc/pt-br/articles/360023812172-Como-adicionar-imagens-e-v%C3%ADdeos-%C3%A0-descri%C3%A7%C3%A3o-do-projeto-'> Saiba como aqui.</a>"
   not_filled: 'Não preenchido'
   days: dias
   facebook_locale: pt_BR
