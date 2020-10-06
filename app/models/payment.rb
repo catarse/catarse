@@ -26,9 +26,11 @@ class Payment < ActiveRecord::Base
 
   scope :with_missing_payables, lambda {
     joins('LEFT JOIN gateway_payables gp ON gp.payment_id = payments.id')
-      .where(gateway: 'Pagarme', state: 'paid')
-      .where('gp.id IS NULL AND payments.gateway_id IS NOT NULL')
+      .where("gateway = 'Pagarme' AND state = 'paid' AND payments.gateway_id IS NOT NULL")
+      .group('payments.id')
+      .having('count(gp.id) < payments.installments')
   }
+
   def self.slip_expiration_weekdays
     connection.select_one('SELECT public.slip_expiration_weekdays()')['slip_expiration_weekdays'].to_i
   end
