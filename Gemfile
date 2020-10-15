@@ -3,7 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.1'
 
-gem 'rails', '~> 4.2.11'
+gem 'rails', '4.2.11.3'
 gem 'rails-html-sanitizer', '~> 1.0.4'
 
 gem 'bigdecimal', '1.3.5'
@@ -62,7 +62,7 @@ gem 'high_voltage'
 
 # Authentication and Authorization
 gem 'simple_token_authentication', '~> 1.0' # see semver.org
-gem 'omniauth', '~> 1.3.2'
+gem 'omniauth', '1.9.1'
 gem 'omniauth-facebook'
 gem 'koala'
 gem 'devise', '4.7.2'
