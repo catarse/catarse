@@ -1,0 +1,46 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/catarse/catarse.js
+    parallelism: 1
+    shell: /bin/bash --login
+    environment:
+      CIRCLE_ARTIFACTS: /tmp/circleci-artifacts
+      CIRCLE_TEST_REPORTS: /tmp/circleci-test-results
+    docker:
+      - image: circleci/node:10.7.0-stretch
+      # - command: /sbin/init
+    steps:
+      - checkout
+      - run: mkdir -p $CIRCLE_ARTIFACTS $CIRCLE_TEST_REPORTS
+      - run:
+          working_directory: ~/catarse/catarse.js
+          command: |
+            set -ex \
+            && mkdir -p $CIRCLE_ARTIFACTS $CIRCLE_TEST_REPORTS \
+            && cd services/catarse.js \
+            && nvm install 10 && nvm alias default 10 \
+            && sudo curl -sS -o - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - \
+            && sudo echo "deb [arch=amd64]  http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list \
+            && sudo apt-get -y update \
+            && sudo apt-get -y install google-chrome-stable
+      - restore_cache:
+          keys:
+            - v1-dep-{{ .Branch }}-
+      - run: if [ -z "${NODE_ENV:-}" ]; then export NODE_ENV=test; fi
+      - run: export PATH="~/catarse/catarse.js/node_modules/.bin:$PATH"
+      - run: npm install
+      - save_cache:
+          key: v1-dep-{{ .Branch }}-{{ epoch }}
+          paths:
+            # This is a broad list of cache paths to include many possible development environments
+            # You can probably delete some of these entries
+            - ./node_modules
+      - run: npm test
+      - store_test_results:
+          path: /tmp/circleci-test-results
+      # Save artifacts
+      - store_artifacts:
+          path: /tmp/circleci-artifacts
+      - store_artifacts:
+          path: /tmp/circleci-test-results

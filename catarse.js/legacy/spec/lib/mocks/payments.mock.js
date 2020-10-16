@@ -1,0 +1,16 @@
+beforeAll(function(){
+    PaymentsMockery = function(attrs){
+
+        var paymentsCards = [
+                                {"id":"b8d764c9-4b4f-47ab-8477-77efc73a6876","subscription_id":"ff7660d6-0d19-48fb-a799-8cdd996cdfd6","amount":600,"project_id":"2dd09da4-0469-4be6-a8ce-0da49bb81abb","status":"paid","paid_at":"2018-05-17T10:21:00.694197","created_at":"2018-05-17T10:21:00.163389","project_status":"online","project_mode":"sub","payment_method":"credit_card","billing_data":{"name": "indie", "email": "indie@mail.com", "phone": {"ddd": "21", "ddi": "55", "number": "22222222"}, "address": {"city": "Blah", "state": "XX", "street": "Rua Belisário Távora", "country": "Gmadl", "zipcode": "12345-123", "neighborhood": "Bandeiras", "complementary": "", "street_number": "560"}, "document_number": "12345678912"},"payment_method_details":{"first_digits" : "411111", "last_digits" : "1111", "brand" : "visa", "country" : "UNITED STATES"},"gateway_id":"3512322","project":{"id" : "2dd09da4-0469-4be6-a8ce-0da49bb81abb", "permalink" : "qa_9_fevereiro_5a36", "name" : "Qa 9 fevereiro"}}, 
+                                {"id":"468442ed-8209-4683-95ba-d77266a6b80b","subscription_id":"ff7660d6-0d19-48fb-a799-8cdd996cdfd6","amount":600,"project_id":"2dd09da4-0469-4be6-a8ce-0da49bb81abb","status":"paid","paid_at":"2018-05-13T10:20:55.767941","created_at":"2018-05-13T10:20:54.970987","project_status":"online","project_mode":"sub","payment_method":"credit_card","billing_data":{"name": "indie", "email": "indie@mail.com", "phone": {"ddd": "21", "ddi": "55", "number": "22222222"}, "address": {"city": "Blah", "state": "XX", "street": "Rua Belisário Távora", "country": "Gmadl", "zipcode": "12345-123", "neighborhood": "Bandeiras", "complementary": "", "street_number": "560"}, "document_number": "12345678912"},"payment_method_details":{"first_digits" : "411111", "last_digits" : "1111", "brand" : "visa", "country" : "UNITED STATES"},"gateway_id":"3483484","project":{"id" : "2dd09da4-0469-4be6-a8ce-0da49bb81abb", "permalink" : "qa_9_fevereiro_5a36", "name" : "Qa 9 fevereiro"}}, 
+                                {"id":"502fdf97-15d0-4955-a4a7-311dc2d15f09","subscription_id":"ff7660d6-0d19-48fb-a799-8cdd996cdfd6","amount":1000,"project_id":"2dd09da4-0469-4be6-a8ce-0da49bb81abb","status":"paid","paid_at":"2018-05-09T10:20:34.3096","created_at":"2018-05-09T10:20:33.169894","project_status":"online","project_mode":"sub","payment_method":"credit_card","billing_data":{"name": "indie", "email": "indie@mail.com", "phone": {"ddd": "21", "ddi": "55", "number": "22222222"}, "address": {"city": "Blah", "state": "XX", "street": "Rua Belisário Távora", "country": "Gmadl", "zipcode": "12345-123", "neighborhood": "Bandeiras", "complementary": "", "street_number": "560"}, "document_number": "12345678912"},"payment_method_details":{"first_digits" : "411111", "last_digits" : "1111", "brand" : "visa", "country" : "UNITED STATES"},"gateway_id":"3453521","project":{"id" : "2dd09da4-0469-4be6-a8ce-0da49bb81abb", "permalink" : "qa_9_fevereiro_5a36", "name" : "Qa 9 fevereiro"}}
+                            ];
+
+        return paymentsCards;
+    };
+
+    jasmine.Ajax.stubRequest(new RegExp("("+apiPrefix + '\/payments)'+'(.*)')).andReturn({
+        'responseText' : JSON.stringify(PaymentsMockery())
+    });
+});

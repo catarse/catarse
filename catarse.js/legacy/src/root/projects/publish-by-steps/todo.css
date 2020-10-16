@@ -1,0 +1,29 @@
+.list-dashboard .list-dashboard-item::before {
+    color: #ddd;
+    content: "•";
+    font-size: 2rem;
+    left: -.25rem;
+    position: absolute;
+    top: -.1875rem;
+    z-index: 1;
+}
+
+.list-dashboard .list-dashboard-item:not(:last-child):after {
+    background: #ddd;
+    content: '';
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 1.1875rem;
+    width: 1px;
+}
+
+.fa.fa-check-circle.list-dashboard {
+    position: absolute;
+    left: -6px;
+    z-index: 10;
+    padding-right: 0px;
+    padding-left: 0px;
+    background-color: #f8fafa;
+    color: #1ca34a;
+}

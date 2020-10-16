@@ -1,0 +1,72 @@
+.explore-lightbox-filter-link {
+    display: block;
+    margin-bottom: 10px;
+    color: #f1f4f4;
+    font-size: 30px;
+    line-height: 36px;
+}
+
+.explore-lightbox-filter-link:hover {
+    color: #409ade;
+}
+
+.explore-lightbox {
+    position: fixed;
+    left: 0%;
+    top: 0%;
+    right: 0%;
+    bottom: 0%;
+    z-index: 999;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    overflow: auto;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    background-color: #273755;
+}
+
+.explore-lightbox-container {
+    max-width: 1200px;
+    min-width: 980px;
+}
+
+
+.modal-close-container {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 30px;
+    right: 0px;
+    float: right;
+    color: #c2c2c2;
+    text-decoration: none;
+}
+
+
+@media (max-width: 991px) {
+    .explore-lightbox-container {
+        min-width: 100%;
+        padding-right: 31px;
+        padding-left: 31px;
+    }
+}
+
+@media (max-width: 767px) {
+    .explore-lightbox-filter-link {
+        font-size: 24px;
+        line-height: 31px;
+    }
+
+    .explore-lightbox-container {
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+}
