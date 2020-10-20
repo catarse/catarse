@@ -48,6 +48,22 @@ RSpec.describe Project, type: :model do
     it { is_expected.not_to allow_value('agua.sp.01').for(:permalink) }
   end
 
+  describe 'before validations' do
+    let(:xss_string) { "<h1><script>alert('pwned')</script></h1>" }
+
+    it 'sanitizes about_html' do
+      project = Project.new(about_html: xss_string)
+      project.validate
+      expect(project.about_html).to eq "<h1>alert('pwned')</h1>"
+    end
+
+    it 'sanitizes budget' do
+      project = Project.new(budget: xss_string)
+      project.validate
+      expect(project.budget).to eq "<h1>alert('pwned')</h1>"
+    end
+  end
+
   context 'state check methods' do
     all_machine_states.each do |st|
       describe "##{st}? when project state is #{st}" do

@@ -219,6 +219,8 @@ class Project < ActiveRecord::Base
 
   attr_accessor :accepted_terms
 
+  before_validation :sanitize_fields
+
   validates_acceptance_of :accepted_terms, on: :create
   # #validation for all states
   validates_presence_of :name, :user, :category, :service_fee
@@ -672,5 +674,10 @@ class Project < ActiveRecord::Base
     end
 
     common_wrapper.finish_project(self) if common_wrapper
+  end
+
+  def sanitize_fields
+    self.about_html = SanitizeScriptTag.sanitize(about_html)
+    self.budget = SanitizeScriptTag.sanitize(budget)
   end
 end

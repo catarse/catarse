@@ -51,6 +51,16 @@ RSpec.describe User, type: :model do
     end
   end
 
+  describe 'before validations' do
+    let(:xss_string) { "<h1><script>alert('pwned')</script></h1>" }
+
+    it 'sanitizes about_html' do
+      user = User.new(about_html: xss_string)
+      user.validate
+      expect(user.about_html).to eq "<h1>alert('pwned')</h1>"
+    end
+  end
+
   describe '.to_send_category_notification' do
     let(:category) { create(:category) }
     let(:user_1) { create(:user) }

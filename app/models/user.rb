@@ -33,6 +33,8 @@ class User < ActiveRecord::Base
   mount_uploader :uploaded_image, UserUploader
   mount_uploader :cover_image, CoverUploader
 
+  before_validation :sanitize_fields
+
   validates :name, :cpf, presence: true, if: ->(user) { !user.reseting_password && (user.published_projects.present? || user.publishing_project || user.publishing_user_settings) }
   validates :birth_date, presence: true, if: ->(user) { user.publishing_user_settings && user.account_type == 'pf' }
 
@@ -511,6 +513,10 @@ class User < ActiveRecord::Base
 
   def index_on_common
     common_wrapper.index_user(self) if common_wrapper
+  end
+
+  def sanitize_fields
+    self.about_html =  SanitizeScriptTag.sanitize(about_html)
   end
 
   private
