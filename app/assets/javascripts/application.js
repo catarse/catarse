@@ -18,7 +18,4 @@
 //= require best_in_place
 //= require jquery-ui
 //= require underscore/underscore-min.js
-//= require backbone/backbone-min.js
-//= require ./lib/skull
-//= require_tree ./lib
-//= require_tree ./app/admin
+//= require ./lib/replace-diacritics.js
