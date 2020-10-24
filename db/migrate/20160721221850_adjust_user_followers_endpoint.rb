@@ -1,4 +1,4 @@
-class AdjustUserFollowersEndpoint < ActiveRecord::Migration
+class AdjustUserFollowersEndpoint < ActiveRecord::Migration[4.2]
   def up
     execute %Q{
         create or replace view "1".user_followers as

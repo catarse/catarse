@@ -1,10 +1,10 @@
-class AddAccountTypeToUsers < ActiveRecord::Migration
+class AddAccountTypeToUsers < ActiveRecord::Migration[4.2]
   def up
     add_column :users, :account_type, :text, default: 'pf'
     add_column :users, :birth_date, :date
 
     execute %Q{
-CREATE OR REPLACE VIEW "1"."user_details" AS 
+CREATE OR REPLACE VIEW "1"."user_details" AS
  SELECT u.id,
     u.name,
     u.address_city,
@@ -69,7 +69,7 @@ CREATE OR REPLACE VIEW "1"."user_details" AS
     remove_column :users, :account_type, :text
 
     execute %Q{
-CREATE OR REPLACE VIEW "1"."user_details" AS 
+CREATE OR REPLACE VIEW "1"."user_details" AS
  SELECT u.id,
     u.name,
     u.address_city,

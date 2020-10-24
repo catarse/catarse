@@ -1,4 +1,4 @@
-class FixSlipExpiresAt < ActiveRecord::Migration
+class FixSlipExpiresAt < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
     CREATE OR REPLACE FUNCTION public.slip_expires_at(payments)

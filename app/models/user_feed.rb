@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class UserFeed < ActiveRecord::Base
+class UserFeed < ApplicationRecord
   self.primary_key = :user_id
 
   scope :ordered, -> { order(event_date: :desc) }

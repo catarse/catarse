@@ -1,4 +1,4 @@
-class AddSystemNotificationsDispatcher < ActiveRecord::Migration
+class AddSystemNotificationsDispatcher < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
 CREATE OR REPLACE FUNCTION system_notification_dispatcher() RETURNS trigger

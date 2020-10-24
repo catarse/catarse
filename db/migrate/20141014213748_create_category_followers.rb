@@ -1,4 +1,4 @@
-class CreateCategoryFollowers < ActiveRecord::Migration
+class CreateCategoryFollowers < ActiveRecord::Migration[4.2]
   def change
     create_table :category_followers do |t|
       t.references :category, index: true, null: false

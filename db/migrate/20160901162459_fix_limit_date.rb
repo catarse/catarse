@@ -1,4 +1,4 @@
-class FixLimitDate < ActiveRecord::Migration
+class FixLimitDate < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
       CREATE OR REPLACE FUNCTION addbusinessdays(date, integer)
@@ -17,7 +17,7 @@ class FixLimitDate < ActiveRecord::Migration
   ),
   businessdays as (
     select i, date, d.dow from days d
-    
+
     where d.dow between 1 and 5
     order by i
   )
@@ -34,7 +34,7 @@ class FixLimitDate < ActiveRecord::Migration
 
 
 
-  CREATE OR REPLACE VIEW "1"."balance_transfers" AS 
+  CREATE OR REPLACE VIEW "1"."balance_transfers" AS
    SELECT bt.id,
       bt.user_id,
       bt.project_id,

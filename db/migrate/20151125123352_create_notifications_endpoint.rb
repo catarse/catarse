@@ -1,4 +1,4 @@
-class CreateNotificationsEndpoint < ActiveRecord::Migration
+class CreateNotificationsEndpoint < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
     CREATE OR REPLACE VIEW "1".notifications AS

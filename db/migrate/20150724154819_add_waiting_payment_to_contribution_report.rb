@@ -1,9 +1,9 @@
-class AddWaitingPaymentToContributionReport < ActiveRecord::Migration
+class AddWaitingPaymentToContributionReport < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
     DROP VIEW "1".contribution_reports_for_project_owners;
     CREATE VIEW "1".contribution_reports_for_project_owners AS
-    SELECT 
+    SELECT
       b.project_id,
       COALESCE(r.id, 0) AS reward_id,
       p.user_id AS project_owner_id,

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class BalanceTransaction < ActiveRecord::Base
+class BalanceTransaction < ApplicationRecord
   EVENT_NAMES = %w[
     catarse_contribution_fee
     project_contribution_confirmed_after_finished
@@ -28,13 +28,13 @@ class BalanceTransaction < ActiveRecord::Base
     balance_transaction_fee
   ].freeze
 
-  belongs_to :project
-  belongs_to :balance_transaction
-  belongs_to :contribution
+  belongs_to :project, optional: true
+  belongs_to :balance_transaction, optional: true
+  belongs_to :contribution, optional: true
   belongs_to :user
-  belongs_to :subscription_payment, foreign_key: :subscription_payment_uuid
-  belongs_to :from_user, class_name: 'User'
-  belongs_to :to_user, class_name: 'User'
+  belongs_to :subscription_payment, optional: true, foreign_key: :subscription_payment_uuid
+  belongs_to :from_user, class_name: 'User', optional: true
+  belongs_to :to_user, class_name: 'User', optional: true
 
   validates :event_name, inclusion: { in: EVENT_NAMES }
   validates :amount, :event_name, :user_id, presence: true

@@ -1,8 +1,8 @@
-class UserBalanceTransfersBankAccountFromBalanceTransfersMetadata < ActiveRecord::Migration
+class UserBalanceTransfersBankAccountFromBalanceTransfersMetadata < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
 
-    CREATE OR REPLACE VIEW "1"."user_balance_transfers" AS 
+    CREATE OR REPLACE VIEW "1"."user_balance_transfers" AS
     SELECT bt.user_id,
         bt.amount,
         transfer_limit_date(bt.*) AS funding_estimated_date,
@@ -105,18 +105,18 @@ class UserBalanceTransfersBankAccountFromBalanceTransfersMetadata < ActiveRecord
               ORDER BY btt1.id DESC
             LIMIT 1) transferred_transition ON (true))
       WHERE is_owner_or_admin(bt.user_id);
-  
+
       grant select on "1".user_balance_transfers to admin, web_user;
       grant select on public.balance_transfers to admin, web_user;
       grant select on public.bank_accounts to admin, web_user;
-  
+
     SQL
   end
 
   def down
     execute <<-SQL
 
-    CREATE OR REPLACE VIEW "1"."user_balance_transfers" AS 
+    CREATE OR REPLACE VIEW "1"."user_balance_transfers" AS
     SELECT bt.user_id,
        bt.amount,
        transfer_limit_date(bt.*) AS funding_estimated_date,

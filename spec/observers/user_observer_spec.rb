@@ -27,7 +27,7 @@ RSpec.describe UserObserver do
   context 'before_save' do
     subject { create(:user, twitter: '@should_be_change') }
 
-    its(:twitter) { should == 'should_be_change' }
+    it { expect(subject.twitter).to eq 'should_be_change' }
   end
 
   context 'after_save' do
@@ -41,7 +41,7 @@ RSpec.describe UserObserver do
         end
 
         it 'should call index on common' do
-          subject.update_attribute(:name, 'foo barr')
+          subject.update(name: 'foo barr')
         end
       end
 
@@ -52,7 +52,7 @@ RSpec.describe UserObserver do
         end
 
         it 'should not update on index' do
-          subject.update_attribute(:name, 'foo barr')
+          subject.update(name: 'foo barr')
         end
       end
     end
@@ -61,7 +61,7 @@ RSpec.describe UserObserver do
       let(:list) { create(:mail_marketing_list) }
       before do
         expect(SendgridSyncWorker).not_to receive(:perform_async).with(subject.id)
-        subject.mail_marketing_users.create(mail_marketing_list: list, last_sync_at: DateTime.now) 
+        subject.mail_marketing_users.create(mail_marketing_list: list, last_sync_at: DateTime.now)
       end
 
       it { subject.save! }

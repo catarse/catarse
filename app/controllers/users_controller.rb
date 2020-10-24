@@ -2,8 +2,8 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-  after_filter :verify_authorized, except: %i[reactivate]
-  after_filter :redirect_user_back_after_login, only: %i[show]
+  after_action :verify_authorized, except: %i[reactivate]
+  after_action :redirect_user_back_after_login, only: %i[show]
   inherit_resources
   defaults finder: :find_active!
   actions :show, :update, :unsubscribe_notifications, :destroy, :edit
@@ -106,7 +106,7 @@ class UsersController < ApplicationController
       cover_image: params[:cover_image]
     }
 
-    if @user.update_without_password permitted_params
+    if @user.update_without_password permitted_params.except(:current_password)
       @user.reload
       render status: 200, json: {
         uploaded_image: @user.uploaded_image.url(:thumb_avatar),
@@ -162,7 +162,7 @@ class UsersController < ApplicationController
         sign_in(@user, bypass: true)
       end
     else
-      @user.update_without_password permitted_params
+      @user.update_without_password permitted_params.except(:current_password)
     end
   end
 

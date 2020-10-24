@@ -1,4 +1,4 @@
-class DropUnsuedTriggerOnBalanceTransfers < ActiveRecord::Migration
+class DropUnsuedTriggerOnBalanceTransfers < ActiveRecord::Migration[4.2]
     def up
     execute <<-SQL
 set statement_timeout to 0;
@@ -22,7 +22,7 @@ AS $function$
                 RAISE EXCEPTION 'insufficient privileges to insert balance_transactions';
             END IF;
 
-            SELECT * FROM "1".balances 
+            SELECT * FROM "1".balances
                 WHERE user_id = NEW.user_id
                 INTO v_balance;
 

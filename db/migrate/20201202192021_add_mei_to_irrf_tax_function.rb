@@ -1,4 +1,4 @@
-class AddMeiToIrrfTaxFunction < ActiveRecord::Migration
+class AddMeiToIrrfTaxFunction < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
       CREATE OR REPLACE FUNCTION public.irrf_tax(project projects)

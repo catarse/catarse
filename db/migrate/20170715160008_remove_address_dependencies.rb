@@ -1,4 +1,4 @@
-class RemoveAddressDependencies < ActiveRecord::Migration
+class RemoveAddressDependencies < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
     create or replace view "1".contribution_reports as

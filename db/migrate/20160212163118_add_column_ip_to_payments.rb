@@ -1,4 +1,4 @@
-class AddColumnIpToPayments < ActiveRecord::Migration
+class AddColumnIpToPayments < ActiveRecord::Migration[4.2]
   def up
     add_column :payments, :ip_address, :text
     add_index :payments, :ip_address

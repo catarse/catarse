@@ -1,4 +1,4 @@
-class AddsExceptionHandlingToCurrentUserId < ActiveRecord::Migration
+class AddsExceptionHandlingToCurrentUserId < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
 CREATE OR REPLACE FUNCTION public.current_user_id()

@@ -1,4 +1,4 @@
-class AddSendgridStatisticsToPost < ActiveRecord::Migration
+class AddSendgridStatisticsToPost < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
       CREATE OR REPLACE FUNCTION public.delivered_count(project_post project_posts) RETURNS bigint

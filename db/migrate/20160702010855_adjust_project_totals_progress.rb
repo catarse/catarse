@@ -1,4 +1,4 @@
-class AdjustProjectTotalsProgress < ActiveRecord::Migration
+class AdjustProjectTotalsProgress < ActiveRecord::Migration[4.2]
   def change
     execute %{
 CREATE OR REPLACE VIEW "1"."project_totals" AS

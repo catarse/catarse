@@ -1,4 +1,4 @@
-class AddFunctionsIsRepeatBackerAndHasTag < ActiveRecord::Migration
+class AddFunctionsIsRepeatBackerAndHasTag < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
 CREATE OR REPLACE FUNCTION public.is_repeat_backer(contributions) RETURNS boolean AS

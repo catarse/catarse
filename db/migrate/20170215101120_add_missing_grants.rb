@@ -1,4 +1,4 @@
-class AddMissingGrants < ActiveRecord::Migration
+class AddMissingGrants < ActiveRecord::Migration[4.2]
   def change
     execute %Q{
 grant select on sendgrid_events to anonymous;

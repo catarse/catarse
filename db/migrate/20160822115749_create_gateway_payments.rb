@@ -1,4 +1,4 @@
-class CreateGatewayPayments < ActiveRecord::Migration
+class CreateGatewayPayments < ActiveRecord::Migration[4.2]
   def up
     create_table :gateway_payments do |t|
       t.integer :payment_id

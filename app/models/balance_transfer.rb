@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-class BalanceTransfer < ActiveRecord::Base
-  belongs_to :project
+class BalanceTransfer < ApplicationRecord
+  belongs_to :project, optional: true
   belongs_to :user
   has_many :balance_transactions
 

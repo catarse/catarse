@@ -14,7 +14,6 @@
 //  Bower front-end dependencies
 // *********************************
 //= require jquery
-//= require jquery_ujs
-//= require best_in_place
+//= require rails-ujs
 //= require jquery-ui
 //= require ./lib/replace-diacritics.js

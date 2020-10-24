@@ -1,9 +1,9 @@
-class AddRelationToNotificationsView < ActiveRecord::Migration
+class AddRelationToNotificationsView < ActiveRecord::Migration[4.2]
   def up
     execute %Q{
 DROP VIEW "1".notifications;
-CREATE OR REPLACE VIEW "1"."notifications" AS 
- SELECT 
+CREATE OR REPLACE VIEW "1"."notifications" AS
+ SELECT
     n.id,
     n.origin,
     n.user_id,
@@ -12,7 +12,7 @@ CREATE OR REPLACE VIEW "1"."notifications" AS
     n.sent_at,
     n.deliver_at,
     n.relation
-   FROM ( 
+   FROM (
         SELECT ''::text AS origin,
             dmn.user_id,
             dmn.template_name,
@@ -32,7 +32,7 @@ CREATE OR REPLACE VIEW "1"."notifications" AS
             'user_follow_notifications' as relation,
             ufn.id
            FROM user_follow_notifications ufn
-        UNION ALL   
+        UNION ALL
         SELECT c.name_pt AS origin,
             cn.user_id,
             cn.template_name,
@@ -117,7 +117,7 @@ CREATE OR REPLACE VIEW "1"."notifications" AS
   def down
     execute %Q{
 DROP VIEW "1".notifications;
-CREATE OR REPLACE VIEW "1"."notifications" AS 
+CREATE OR REPLACE VIEW "1"."notifications" AS
  SELECT n.origin,
     n.user_id,
     n.template_name,

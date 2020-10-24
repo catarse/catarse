@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class OauthProvider < ActiveRecord::Base
+class OauthProvider < ApplicationRecord
   # schema_associations was not working well here,
   # maybe because we need this model during the application initialization
   # Not a big deal since we have only one association

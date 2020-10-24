@@ -1,4 +1,4 @@
-class FixProjectPostsPermissions < ActiveRecord::Migration
+class FixProjectPostsPermissions < ActiveRecord::Migration[4.2]
   def change
     execute  <<-SQL
     CREATE OR REPLACE FUNCTION public.current_user_has_contributed_to_reward(integer) RETURNS boolean
@@ -8,7 +8,7 @@ class FixProjectPostsPermissions < ActiveRecord::Migration
       $_$;
 
 
-      CREATE OR replace view "1".project_posts_details as 
+      CREATE OR replace view "1".project_posts_details as
 SELECT pp.id,
     pp.project_id,
     is_owner_or_admin(p.user_id) AS is_owner_or_admin,

@@ -1,4 +1,4 @@
-class AddNameToProjectReminders < ActiveRecord::Migration
+class AddNameToProjectReminders < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
     CREATE OR REPLACE VIEW "1".project_reminders as

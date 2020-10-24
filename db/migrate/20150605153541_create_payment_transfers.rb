@@ -1,4 +1,4 @@
-class CreatePaymentTransfers < ActiveRecord::Migration
+class CreatePaymentTransfers < ActiveRecord::Migration[4.2]
   def change
     create_table :payment_transfers do |t|
       t.integer :user_id, null: false

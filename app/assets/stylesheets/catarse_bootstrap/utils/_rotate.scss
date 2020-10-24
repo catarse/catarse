@@ -1,0 +1,8 @@
+@mixin rotate(
+  $rotate:      45deg,
+  $perspective: false
+) {
+  $trans: rotate($rotate);
+  @if $perspective { $trans: perspective($perspective) $trans; }
+  @include transform($trans);
+}

@@ -1,4 +1,4 @@
-class FixViewBackerReportsForProjectOwner < ActiveRecord::Migration
+class FixViewBackerReportsForProjectOwner < ActiveRecord::Migration[4.2]
   def up
     execute "
     CREATE OR REPLACE VIEW backer_reports_for_project_owners AS
@@ -29,6 +29,6 @@ class FixViewBackerReportsForProjectOwner < ActiveRecord::Migration
   end
 
   def down
-    drop_view :backer_reports_for_project_owners
+    execute "DROP VIEW IF EXISTS backer_reports_for_project_owners;"
   end
 end

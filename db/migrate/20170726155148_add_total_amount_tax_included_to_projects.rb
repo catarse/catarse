@@ -1,4 +1,4 @@
-class AddTotalAmountTaxIncludedToProjects < ActiveRecord::Migration
+class AddTotalAmountTaxIncludedToProjects < ActiveRecord::Migration[4.2]
   def up
     execute %Q{
 create or replace function public.total_amount_tax_included(p public.projects) returns numeric

@@ -1,4 +1,4 @@
-class AddProjectPostsDetailsView < ActiveRecord::Migration
+class AddProjectPostsDetailsView < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
     CREATE FUNCTION original_image(projects) RETURNS text
@@ -11,16 +11,16 @@ class AddProjectPostsDetailsView < ActiveRecord::Migration
              '/' || $1.uploaded_image
       $_$;
 
-      create function public.user_has_contributed_to_project(user_id integer, project_id integer) 
+      create function public.user_has_contributed_to_project(user_id integer, project_id integer)
       returns boolean
-      language sql 
-      security definer 
+      language sql
+      security definer
       stable
       as $$
         select true from "1".contribution_details c where c.state = any(public.confirmed_states()) and c.project_id = $2 and c.user_id = $1;
       $$;
 
-      create function public.current_user_has_contributed_to_project(integer) 
+      create function public.current_user_has_contributed_to_project(integer)
       returns boolean
       language sql
       stable

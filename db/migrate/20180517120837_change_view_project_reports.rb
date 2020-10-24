@@ -1,4 +1,4 @@
-class ChangeViewProjectReports < ActiveRecord::Migration
+class ChangeViewProjectReports < ActiveRecord::Migration[4.2]
   def up
     execute %Q{
       DROP VIEW "1"."project_reports";

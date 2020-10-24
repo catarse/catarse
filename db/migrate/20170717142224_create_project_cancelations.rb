@@ -1,4 +1,4 @@
-class CreateProjectCancelations < ActiveRecord::Migration
+class CreateProjectCancelations < ActiveRecord::Migration[4.2]
   def change
     create_table :project_cancelations do |t|
       t.references :project, null: false, foreign_key: true, index: { unique: true}

@@ -1,4 +1,4 @@
-class CreateProjectReportExports < ActiveRecord::Migration
+class CreateProjectReportExports < ActiveRecord::Migration[4.2]
   def change
     create_table :project_report_exports do |t|
       t.references :project, index: true, foreign_key: true

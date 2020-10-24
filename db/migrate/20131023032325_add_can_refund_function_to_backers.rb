@@ -1,4 +1,4 @@
-class AddCanRefundFunctionToBackers < ActiveRecord::Migration
+class AddCanRefundFunctionToBackers < ActiveRecord::Migration[4.2]
   def up
     execute "
       create function can_refund(backers) returns boolean as $$

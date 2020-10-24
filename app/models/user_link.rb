@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class UserLink < ActiveRecord::Base
+class UserLink < ApplicationRecord
   include I18n::Alchemy
   before_save :prepend_protocol
   belongs_to :user

@@ -1,4 +1,4 @@
-class CreateAntifraudAnalyses < ActiveRecord::Migration
+class CreateAntifraudAnalyses < ActiveRecord::Migration[4.2]
   def change
     create_table :antifraud_analyses do |t|
       t.references :payment, foreign_key: true

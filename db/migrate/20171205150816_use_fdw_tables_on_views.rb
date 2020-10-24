@@ -1,4 +1,4 @@
-class UseFdwTablesOnViews < ActiveRecord::Migration
+class UseFdwTablesOnViews < ActiveRecord::Migration[4.2]
   # WARNING - before running this migration you will need to generate FDW tables by running `rake common:generate_fdw` (don't forget to set appropriate settings first)
   def change
     if Rails.env.test?
@@ -82,15 +82,15 @@ CREATE TABLE common_schema.antifraud_analyses (
     execute <<-SQL
     CREATE OR REPLACE FUNCTION paid_count(rewards) RETURNS bigint AS $$
     SELECT case when (SELECT p.mode from projects p join rewards r on r.project_id = p.id where r.id = $1.id) = 'sub' THEN
- (SELECT count(*) 
-                           FROM common_schema.subscriptions s 
+ (SELECT count(*)
+                           FROM common_schema.subscriptions s
                            where s.status = 'active'
                              AND s.reward_id = $1.common_id)
     else
- (SELECT count(*) 
-                           FROM payments p 
-                           JOIN contributions c ON c.id = p.contribution_id 
-                           JOIN projects prj ON c.project_id = prj.id 
+ (SELECT count(*)
+                           FROM payments p
+                           JOIN contributions c ON c.id = p.contribution_id
+                           JOIN projects prj ON c.project_id = prj.id
                            WHERE (CASE WHEN prj.state = 'failed' THEN p.state IN ('refunded', 'pending_refund', 'paid') ELSE p.state = 'paid' END)
                              AND c.reward_id = $1.id)
                              END
@@ -100,14 +100,14 @@ CREATE TABLE common_schema.antifraud_analyses (
     CREATE OR REPLACE FUNCTION waiting_payment_count(rewards) RETURNS bigint AS $$
     SELECT case when (SELECT p.mode from projects p join rewards r on r.project_id = p.id where r.id = $1.id) = 'sub' THEN
     (
-      SELECT count(*) 
+      SELECT count(*)
       FROM common_schema.subscriptions s
       WHERE s.status = 'started' and s.reward_id = $1.common_id
       )
     ELSE
     (
-      SELECT count(*) 
-      FROM payments p join contributions c on c.id = p.contribution_id 
+      SELECT count(*)
+      FROM payments p join contributions c on c.id = p.contribution_id
       WHERE p.waiting_payment AND c.reward_id = $1.id
       )
       END
@@ -206,10 +206,10 @@ SELECT uf.user_id,
   WHERE is_owner_or_admin(uf.user_id) AND f.deactivated_at IS NULL;
 
 
-CREATE TRIGGER insert_user_follow INSTEAD OF INSERT ON "1".user_follows 
+CREATE TRIGGER insert_user_follow INSTEAD OF INSERT ON "1".user_follows
 FOR EACH ROW EXECUTE PROCEDURE public.insert_user_follow();
 
-CREATE TRIGGER delete_user_follow INSTEAD OF DELETE ON "1".user_follows 
+CREATE TRIGGER delete_user_follow INSTEAD OF DELETE ON "1".user_follows
 FOR EACH ROW EXECUTE PROCEDURE public.delete_user_follow();
 
 GRANT SELECT, INSERT, DELETE ON "1".user_follows TO admin, web_user;
@@ -443,7 +443,7 @@ GRANT SELECT ON "1".project_contributions TO anonymous, web_user, admin;
 
 
 
-CREATE OR REPLACE VIEW "1"."projects" AS 
+CREATE OR REPLACE VIEW "1"."projects" AS
  SELECT p.id AS project_id,
     p.category_id,
     p.name AS project_name,

@@ -1,4 +1,4 @@
-class GrantsToProjectTransitions < ActiveRecord::Migration
+class GrantsToProjectTransitions < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
 GRANT select ON "1".project_transitions TO admin, web_user, anonymous;

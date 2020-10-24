@@ -1,4 +1,4 @@
-class AddPostgrestAuthTable < ActiveRecord::Migration
+class AddPostgrestAuthTable < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
       CREATE SCHEMA postgrest;
@@ -13,7 +13,7 @@ class AddPostgrestAuthTable < ActiveRecord::Migration
       CREATE FUNCTION postgrest.check_role_exists() RETURNS trigger
           LANGUAGE plpgsql
           AS $$
-      begin 
+      begin
       if not exists (select 1 from pg_roles as r where r.rolname = new.rolname) then
          raise foreign_key_violation using message = 'Cannot create user with unknown role: ' || new.rolname;
          return null;

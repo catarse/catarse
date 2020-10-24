@@ -1,7 +1,7 @@
 # coding: utf-8
 # frozen_string_literal: true
 
-class DirectMessage < ActiveRecord::Base
+class DirectMessage < ApplicationRecord
   include Shared::CommonWrapper
   has_notifications
   belongs_to :user

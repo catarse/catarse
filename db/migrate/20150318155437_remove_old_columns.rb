@@ -1,4 +1,4 @@
-class RemoveOldColumns < ActiveRecord::Migration
+class RemoveOldColumns < ActiveRecord::Migration[4.2]
   def change
     execute "DROP VIEW projects_for_home"
     execute <<-SQL

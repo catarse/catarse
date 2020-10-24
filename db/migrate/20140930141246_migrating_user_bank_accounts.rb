@@ -1,4 +1,4 @@
-class MigratingUserBankAccounts < ActiveRecord::Migration
+class MigratingUserBankAccounts < ActiveRecord::Migration[4.2]
   def up
     add_column :bank_accounts, :bank_id, :integer
   end

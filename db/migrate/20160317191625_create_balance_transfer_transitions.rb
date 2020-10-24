@@ -1,4 +1,4 @@
-class CreateBalanceTransferTransitions < ActiveRecord::Migration
+class CreateBalanceTransferTransitions < ActiveRecord::Migration[4.2]
   def change
     create_table :balance_transfer_transitions do |t|
       t.string :to_state, null: false

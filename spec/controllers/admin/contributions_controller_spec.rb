@@ -41,7 +41,10 @@ RSpec.describe Admin::ContributionsController, type: :controller do
       let(:current_user) { nil }
       before do
         allow(controller).to receive(:current_user).and_return(current_user)
-        post :batch_chargeback, gateway_payment_ids: [payment.gateway_id, payment_2.gateway_id, payment_3.gateway_id], locale: :pt
+        post :batch_chargeback, params: {
+          gateway_payment_ids: [payment.gateway_id, payment_2.gateway_id, payment_3.gateway_id],
+          locale: :pt
+        }
       end
 
       it "should be redirect" do
@@ -53,7 +56,10 @@ RSpec.describe Admin::ContributionsController, type: :controller do
       let(:current_user) { create(:user, admin: false) }
       before do
         allow(controller).to receive(:current_user).and_return(current_user)
-        post :batch_chargeback, gateway_payment_ids: [payment.gateway_id, payment_2.gateway_id, payment_3.gateway_id], locale: :pt
+        post :batch_chargeback, params: {
+          gateway_payment_ids: [payment.gateway_id, payment_2.gateway_id, payment_3.gateway_id],
+          locale: :pt
+        }
       end
 
       it "should be redirect" do
@@ -65,7 +71,10 @@ RSpec.describe Admin::ContributionsController, type: :controller do
       let(:current_user) { create(:user, admin: true) }
       before do
         allow(controller).to receive(:current_user).and_return(current_user)
-        post :batch_chargeback, gateway_payment_ids: [payment.gateway_id, payment_2.gateway_id, payment_3.gateway_id], locale: :pt
+        post :batch_chargeback, params: {
+          gateway_payment_ids: [payment.gateway_id, payment_2.gateway_id, payment_3.gateway_id],
+          locale: :pt
+        }
       end
 
       it "should be redirect" do
@@ -77,7 +86,10 @@ RSpec.describe Admin::ContributionsController, type: :controller do
       before do
         allow_any_instance_of(Project).to receive(:successful_pledged_transaction).and_return({id: 'mock'})
         current_user.admin_roles.create(role_label: 'balance')
-        post :batch_chargeback, gateway_payment_ids: [payment.gateway_id, payment_2.gateway_id, payment_3.gateway_id], locale: :pt
+        post :batch_chargeback, params: {
+          gateway_payment_ids: [payment.gateway_id, payment_2.gateway_id, payment_3.gateway_id],
+          locale: :pt
+        }
       end
 
       it "should be successful" do

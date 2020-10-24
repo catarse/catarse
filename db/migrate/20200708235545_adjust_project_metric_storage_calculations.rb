@@ -1,4 +1,4 @@
-class AdjustProjectMetricStorageCalculations < ActiveRecord::Migration
+class AdjustProjectMetricStorageCalculations < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
 CREATE OR REPLACE FUNCTION public.refresh_project_metric_storage(projects)
@@ -47,7 +47,7 @@ declare
                         max(g.value) as max_value
                     from public.goals g
                         where g.project_id = p.id
-                ) as goals_agg on true                
+                ) as goals_agg on true
             where p.id = $1.id into v_data;
         else
             select json_build_object(

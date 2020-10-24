@@ -1,4 +1,4 @@
-class AddPayablesToGatewayPayments < ActiveRecord::Migration
+class AddPayablesToGatewayPayments < ActiveRecord::Migration[4.2]
   def up
     execute %Q{
     ALTER TABLE gateway_payments

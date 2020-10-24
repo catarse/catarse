@@ -1,4 +1,4 @@
-class CreateBalanceTransferRequestViews < ActiveRecord::Migration
+class CreateBalanceTransferRequestViews < ActiveRecord::Migration[4.2]
     def up
         execute <<-SQL
             CREATE VIEW balance_transfer_requests_view AS
@@ -14,14 +14,14 @@ class CreateBalanceTransferRequestViews < ActiveRecord::Migration
 
             CREATE VIEW balance_transfer_requests_transferred_view AS
             select r.user_id,
-                r.transaction_id, 
+                r.transaction_id,
                 r.created_at as requested_at,
                 r.amount,
                 r.balance_transfer_id,
                 r.transfer_state_at transferred_at,
                 ltr.transaction_id last_transaction_id,
                 ltr.created_at as last_requested_at,
-                ltr.amount last_amount, 
+                ltr.amount last_amount,
                 ltr.balance_transfer_id last_balance_transfer_id,
                 ltr.transfer_state_at last_transferred_at,
                 r.project_id
@@ -38,19 +38,19 @@ class CreateBalanceTransferRequestViews < ActiveRecord::Migration
             where r.transfer_state='transferred';
 
             CREATE VIEW balance_transfer_requests_projects_view AS
-            select rt.transaction_id, btp.project_id, rt.user_id, rt.requested_at, rt.amount requested_amount, rt.balance_transfer_id, rt.transferred_at, 
+            select rt.transaction_id, btp.project_id, rt.user_id, rt.requested_at, rt.amount requested_amount, rt.balance_transfer_id, rt.transferred_at,
                 rt.last_transaction_id,rt.last_requested_at, rt.last_amount,rt.last_balance_transfer_id,rt.last_transferred_at,
-                
+
                 --btp.project_contribution_confirmed_after_finished não entra no project_pledged_amount pq ja esta somado em payments
                 (btp.payments+btp.contribution_refunded_after_successful_pledged+btp.chargeback_after_finished) as project_pledged_amount,
                 (btp.service_fee+btp.catarse_contribution_fee) total_service_fee,
-                
+
                 btp.payments, btp.service_fee, btp.irrf_tax,
                 btp.project_contribution_confirmed_after_finished,
                 btp.catarse_contribution_fee,
                 btp.contribution_refunded_after_successful_pledged,
                 btp.chargeback_after_finished,
-                bte.id balance_expired_id, 
+                bte.id balance_expired_id,
                 coalesce(bte.amount,0) as balance_expired_amount,
                 bto.other_events,
                 pa.payments_sum,
@@ -77,7 +77,7 @@ class CreateBalanceTransferRequestViews < ActiveRecord::Migration
                     left join contributions c on c.id=b.contribution_id
                     where b.user_id=rt.user_id
                     and ((
-                        CASE WHEN b.event_name='irrf_tax_project' 
+                        CASE WHEN b.event_name='irrf_tax_project'
                             THEN b.id < rt.transaction_id+2
                             WHEN b.event_name in ('subscription_payment','subscription_fee')
                             THEN b.id <= rt.transaction_id
@@ -104,7 +104,7 @@ class CreateBalanceTransferRequestViews < ActiveRecord::Migration
                         rt.transaction_id=18617 and b.id in (17772,17773,17803,17804)--caso especifico pq tem um request intermediario com balance_transfer_id=10223
                     ))
                 )
-                
+
                 --contribution_refund não entra em nenhum lugar pq é o recebimento do apoiador no refund
                 select project_id,
                     coalesce(sum(amount)FILTER(where event_name in ('successful_project_pledged','subscription_payment','project_contribution_confirmed_after_finished')),0) payments,
@@ -168,4 +168,3 @@ class CreateBalanceTransferRequestViews < ActiveRecord::Migration
         SQL
     end
   end
-  

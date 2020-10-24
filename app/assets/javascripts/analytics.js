@@ -279,7 +279,7 @@ window.CatarseAnalytics = window.CatarseAnalytics || (function(){
   function _pageView(firstPageView) {
     if(!firstPageView)
       _firstPageView=false;
-    
+
     pvto&&clearTimeout(pvto);
     pvto=setTimeout(function() {
       _event({cat:'navigation',act:'pageview',lbl:location.pathname}, null, true);//ignoraGa pq vai mandar abaixo

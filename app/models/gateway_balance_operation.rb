@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
-class GatewayBalanceOperation < ActiveRecord::Base
+class GatewayBalanceOperation < ApplicationRecord
   serialize :operation_data, JSON
 end

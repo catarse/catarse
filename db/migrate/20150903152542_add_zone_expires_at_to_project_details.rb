@@ -1,4 +1,4 @@
-class AddZoneExpiresAtToProjectDetails < ActiveRecord::Migration
+class AddZoneExpiresAtToProjectDetails < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
       create function public.settings(name text)

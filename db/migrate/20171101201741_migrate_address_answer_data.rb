@@ -1,4 +1,4 @@
-class MigrateAddressAnswerData < ActiveRecord::Migration
+class MigrateAddressAnswerData < ActiveRecord::Migration[4.2]
   def change
     # make sure we have no duplicated answers
     execute <<-SQL
@@ -18,7 +18,7 @@ class MigrateAddressAnswerData < ActiveRecord::Migration
 
     SurveyAddressAnswer.all.each do |answer|
       contribution = Contribution.find answer.contribution_id
-      contribution.update_attribute :address_answer_id, answer.address_id
+      contribution.update(address_answer_id: answer.address_id)
     end
   end
 end

@@ -1,4 +1,4 @@
-class AddCountryColumnToContributionReports < ActiveRecord::Migration
+class AddCountryColumnToContributionReports < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
       CREATE OR REPLACE VIEW "1".contribution_reports AS
@@ -100,5 +100,3 @@ class AddCountryColumnToContributionReports < ActiveRecord::Migration
     SQL
   end
 end
-
-

@@ -1,4 +1,4 @@
-class AddAntifraudCostToSubscriptionReport < ActiveRecord::Migration
+class AddAntifraudCostToSubscriptionReport < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
       DROP VIEW public.subscription_monthly_report_for_project_owners;

@@ -1,4 +1,4 @@
-class UpdateUsersFullTextIndex < ActiveRecord::Migration
+class UpdateUsersFullTextIndex < ActiveRecord::Migration[4.2]
   def up
     execute "SET STATEMENT_TIMEOUT to 0;"
     execute <<-SQL

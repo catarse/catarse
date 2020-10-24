@@ -1,4 +1,4 @@
-class CreateMailMarketingUsers < ActiveRecord::Migration
+class CreateMailMarketingUsers < ActiveRecord::Migration[4.2]
   def change
     enable_extension 'uuid-ossp'
     create_table :mail_marketing_users do |t|

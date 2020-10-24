@@ -1,4 +1,4 @@
-class AddProjectContributionsByGeo < ActiveRecord::Migration
+class AddProjectContributionsByGeo < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
       create view "1".project_contributions_per_location as

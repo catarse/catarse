@@ -1,4 +1,4 @@
-class AddLimitTransferDateToDb < ActiveRecord::Migration
+class AddLimitTransferDateToDb < ActiveRecord::Migration[4.2]
   def up
     execute %Q{
 drop function if exists approve_project_account();
@@ -9,7 +9,7 @@ create or replace function public.transfer_limit_date(bt public.balance_transfer
             zone_timestamp(weekdays_from(10, zone_timestamp(bt.created_at)));
     $$;
 
-CREATE OR REPLACE VIEW "1"."balance_transfers" AS 
+CREATE OR REPLACE VIEW "1"."balance_transfers" AS
  SELECT bt.id,
     bt.user_id,
     bt.project_id,
@@ -51,7 +51,7 @@ CREATE OR REPLACE VIEW "1"."balance_transfers" AS
 
   def down
     execute %Q{
-CREATE OR REPLACE VIEW "1"."balance_transfers" AS 
+CREATE OR REPLACE VIEW "1"."balance_transfers" AS
  SELECT bt.id,
     bt.user_id,
     bt.project_id,
@@ -87,7 +87,7 @@ CREATE OR REPLACE VIEW "1"."balance_transfers" AS
           WHERE ((btt1.balance_transfer_id = bt.id) AND ((btt1.to_state)::text = 'transferred'::text))
           ORDER BY btt1.id DESC
          LIMIT 1) transferred_transition ON (true))
-  WHERE is_owner_or_admin(bt.user_id);    
+  WHERE is_owner_or_admin(bt.user_id);
 
 drop function public.transfer_limit_date(bt public.balance_transfers);
 

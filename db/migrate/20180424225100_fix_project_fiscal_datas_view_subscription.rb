@@ -1,4 +1,4 @@
-class FixProjectFiscalDatasViewSubscription < ActiveRecord::Migration
+class FixProjectFiscalDatasViewSubscription < ActiveRecord::Migration[4.2]
     def up
         execute <<-SQL
         CREATE OR REPLACE VIEW public.project_fiscal_datas AS
@@ -151,4 +151,3 @@ class FixProjectFiscalDatasViewSubscription < ActiveRecord::Migration
       SQL
     end
   end
-  

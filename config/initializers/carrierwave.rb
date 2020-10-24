@@ -1,4 +1,4 @@
-# frozen_string_literal: true
+require 'fog/aws'
 
 CarrierWave.configure do |config|
   if CatarseSettings.get_without_cache(:aws_access_key)

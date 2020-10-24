@@ -1,4 +1,4 @@
-class AddCreatorSuggestionsEndpoint < ActiveRecord::Migration
+class AddCreatorSuggestionsEndpoint < ActiveRecord::Migration[4.2]
   def up
     execute %Q{
 create or replace view "1".creator_suggestions as

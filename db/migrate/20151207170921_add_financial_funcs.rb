@@ -1,4 +1,4 @@
-class AddFinancialFuncs < ActiveRecord::Migration
+class AddFinancialFuncs < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
 CREATE OR REPLACE FUNCTION total_catarse_fee(project projects) RETURNS numeric

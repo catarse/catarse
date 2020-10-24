@@ -16,11 +16,11 @@
         .w-form
           = simple_form_for resource, as: resource_name, html: {novalidate: true}, url: sign_up_path  do |form|
             = render 'devise/shared/alert'
-            = form.input :email, as: :email, wrapper_html: { class: 'no-asterisk' }, input_html: { class: 'w-input text-field' }, required: false
+            = form.input :email, as: :email, wrapper_html: { class: 'no-asterisk' }, input_html: { class: 'w-input text-field', autocomplete: 'email' }, required: false
             .u-right
               = form.input_field :show_password, as: :boolean, boolean_style: :inline, class: 'checkbox-fix', checked: false
               label.w-form-label.fontsize-smallest= t('.form.labels.show_password')
-            = form.input :password, as: :password, label: t('.form.labels.password'), input_html: { class: 'w-input text-field' }
+            = form.input :password, as: :password, label: t('.form.labels.password'), input_html: { class: 'w-input text-field', autocomplete: 'new-password' }
             .u-marginbottom-20
               = form.input_field :newsletter, as: :boolean, boolean_style: :inline, class: 'checkbox-fix', checked: false
               label.w-form-label.fontsize-smallest= t('.form.labels.newsletter')

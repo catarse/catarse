@@ -1,4 +1,4 @@
-class AddAntifraudCostToContributionReport < ActiveRecord::Migration
+class AddAntifraudCostToContributionReport < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
       DROP VIEW public.contribution_reports_for_project_owners;

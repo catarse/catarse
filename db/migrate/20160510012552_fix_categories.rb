@@ -1,4 +1,4 @@
-class FixCategories < ActiveRecord::Migration
+class FixCategories < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
     CREATE OR REPLACE VIEW "1".categories as

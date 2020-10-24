@@ -1,4 +1,4 @@
-class CreateSurveyAddressAnswer < ActiveRecord::Migration
+class CreateSurveyAddressAnswer < ActiveRecord::Migration[4.2]
   def change
     create_table :addresses do |t|
       t.references :country, null: false

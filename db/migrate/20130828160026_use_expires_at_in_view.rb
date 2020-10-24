@@ -1,4 +1,4 @@
-class UseExpiresAtInView < ActiveRecord::Migration
+class UseExpiresAtInView < ActiveRecord::Migration[4.2]
   def up
     execute "
     DROP VIEW if exists financial_reports ;

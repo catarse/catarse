@@ -1,4 +1,4 @@
-class CreateProjectReminders < ActiveRecord::Migration
+class CreateProjectReminders < ActiveRecord::Migration[4.2]
   def change
     create_table :project_reminders do |t|
       t.integer :user_id, null: false

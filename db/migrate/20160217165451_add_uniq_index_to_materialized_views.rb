@@ -1,4 +1,4 @@
-class AddUniqIndexToMaterializedViews < ActiveRecord::Migration
+class AddUniqIndexToMaterializedViews < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
 set statement_timeout to 0;

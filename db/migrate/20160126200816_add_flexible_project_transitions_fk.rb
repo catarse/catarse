@@ -1,4 +1,4 @@
-class AddFlexibleProjectTransitionsFk < ActiveRecord::Migration
+class AddFlexibleProjectTransitionsFk < ActiveRecord::Migration[4.2]
   def up
     execute "SET statement_timeout TO 0"
     execute <<-SQL

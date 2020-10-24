@@ -1,7 +1,7 @@
-class AddChargebackOnContributionReportsForProjectOwners < ActiveRecord::Migration
+class AddChargebackOnContributionReportsForProjectOwners < ActiveRecord::Migration[4.2]
   def up
     execute %Q{
-CREATE OR REPLACE VIEW "public"."contribution_reports_for_project_owners" AS 
+CREATE OR REPLACE VIEW "public"."contribution_reports_for_project_owners" AS
  SELECT b.project_id,
     COALESCE(r.id, 0) AS reward_id,
     p.user_id AS project_owner_id,
@@ -84,7 +84,7 @@ CREATE OR REPLACE VIEW "public"."contribution_reports_for_project_owners" AS
 
   def down
     execute %Q{
-CREATE OR REPLACE VIEW "public"."contribution_reports_for_project_owners" AS 
+CREATE OR REPLACE VIEW "public"."contribution_reports_for_project_owners" AS
  SELECT b.project_id,
     COALESCE(r.id, 0) AS reward_id,
     p.user_id AS project_owner_id,

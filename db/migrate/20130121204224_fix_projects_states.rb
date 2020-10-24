@@ -1,4 +1,4 @@
-class FixProjectsStates < ActiveRecord::Migration
+class FixProjectsStates < ActiveRecord::Migration[4.2]
   def up
     execute "
     UPDATE projects SET state = 'waiting_funds' WHERE state IN ('successful', 'online') AND current_timestamp BETWEEN expires_at and expires_at + '4 day'::interval;

@@ -15,7 +15,7 @@ class ZendeskSessionsController < ApplicationController
     iat = Time.now.to_i
     jti = "#{iat}/#{SecureRandom.hex(18)}"
 
-    payload = JsonWebToken.sign({
+    payload = JWT.encode({
                                   iat: iat,
                                   jti: jti,
                                   name: current_user.display_name,
@@ -34,7 +34,7 @@ class ZendeskSessionsController < ApplicationController
                                     last_message: DirectMessage.where(user: current_user).last.try(:content),
                                     pending_count: current_user.payments.where(state: 'pending').where("payments.created_at > current_timestamp - '7 days'::interval ").count
                                   }
-                                }, key: CatarseSettings[:zendesk_shared_secret])
+                                }, CatarseSettings[:zendesk_shared_secret], 'HS256')
 
     redirect_to zendesk_sso_url(payload)
   end

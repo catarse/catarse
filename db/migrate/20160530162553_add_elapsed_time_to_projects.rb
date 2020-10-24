@@ -1,4 +1,4 @@
-class AddElapsedTimeToProjects < ActiveRecord::Migration
+class AddElapsedTimeToProjects < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
     CREATE OR REPLACE VIEW "1".projects AS
@@ -41,7 +41,7 @@ class AddElapsedTimeToProjects < ActiveRecord::Migration
     grant select on "1".projects to admin;
     grant select on "1".projects to web_user;
     grant select on "1".projects to anonymous;
-     
+
     SQL
   end
 end

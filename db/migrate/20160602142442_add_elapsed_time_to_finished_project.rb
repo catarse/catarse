@@ -1,4 +1,4 @@
-class AddElapsedTimeToFinishedProject < ActiveRecord::Migration
+class AddElapsedTimeToFinishedProject < ActiveRecord::Migration[4.2]
   def up
     execute %{
 DROP MATERIALIZED VIEW "1".finished_projects;
@@ -83,7 +83,7 @@ CREATE MATERIALIZED VIEW "1".finished_projects AS
           WHERE (((pt.state)::text = ANY (ARRAY['successful'::text, 'waiting_funds'::text, 'failed'::text])) AND pt.most_recent AND (pt.project_id = p.id)))) WITH NO DATA;
 
 CREATE UNIQUE INDEX finished_project_uidx ON "1".finished_projects(project_id);
-grant select on "1".finished_projects to anonymous, admin, web_user;    
+grant select on "1".finished_projects to anonymous, admin, web_user;
     }
   end
 end

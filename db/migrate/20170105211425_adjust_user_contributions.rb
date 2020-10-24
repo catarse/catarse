@@ -1,7 +1,7 @@
-class AdjustUserContributions < ActiveRecord::Migration
+class AdjustUserContributions < ActiveRecord::Migration[4.2]
   def change
     execute %Q{
-CREATE OR REPLACE VIEW "1".user_contributions AS 
+CREATE OR REPLACE VIEW "1".user_contributions AS
  SELECT pa.id,
     c.id AS contribution_id,
     pa.id AS payment_id,

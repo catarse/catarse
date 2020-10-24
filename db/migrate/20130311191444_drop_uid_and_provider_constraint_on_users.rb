@@ -1,4 +1,4 @@
-class DropUidAndProviderConstraintOnUsers < ActiveRecord::Migration
+class DropUidAndProviderConstraintOnUsers < ActiveRecord::Migration[4.2]
   def up
     execute "
     ALTER TABLE users DROP CONSTRAINT users_provider_uid_unique;

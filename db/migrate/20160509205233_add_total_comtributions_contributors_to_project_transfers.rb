@@ -1,4 +1,4 @@
-class AddTotalComtributionsContributorsToProjectTransfers < ActiveRecord::Migration
+class AddTotalComtributionsContributorsToProjectTransfers < ActiveRecord::Migration[4.2]
   def up
     execute %Q{
 DROP VIEW "1".project_transfers;

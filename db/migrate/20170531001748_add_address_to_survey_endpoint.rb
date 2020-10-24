@@ -1,4 +1,4 @@
-class AddAddressToSurveyEndpoint < ActiveRecord::Migration
+class AddAddressToSurveyEndpoint < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
 

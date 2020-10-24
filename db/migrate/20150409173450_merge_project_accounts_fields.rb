@@ -1,4 +1,4 @@
-class MergeProjectAccountsFields < ActiveRecord::Migration
+class MergeProjectAccountsFields < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
       update project_accounts set owner_name = full_name, owner_document = cpf where cpf IS NOT NULL AND full_name IS NOT NULL;

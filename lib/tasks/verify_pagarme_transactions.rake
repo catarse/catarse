@@ -4,7 +4,7 @@
 
 def sync_balance_operations(status)
   PagarMe.api_key = CatarsePagarme.configuration.api_key
-  
+
     page = 1
     loop do
       params = { page: page, count: 100, status: status }
@@ -15,7 +15,7 @@ def sync_balance_operations(status)
         operations.map do |op|
           opjson = op.to_json
           gateway_operation = GatewayBalanceOperation.find_or_create_by operation_id: ActiveSupport::JSON.decode(opjson)['id']
-          gateway_operation.update_attribute(:operation_data, opjson)
+          gateway_operation.update(operation_data: opjson)
         end
         sleep 0.2
       rescue Exception => e
@@ -53,7 +53,7 @@ task verify_pagarme_transfers: [:environment] do
       payment_transfer.payment.update_column(:refunded_at, transfer.try(:funding_estimated_date).try(:to_datetime))
     end
 
-    payment_transfer.update_attribute(:transfer_data, transfer.to_hash)
+    payment_transfer.update(transfer_data: transfer.to_hash)
   end
 end
 
@@ -82,7 +82,7 @@ task verify_pagarme_user_transfers: [:environment] do
 
     payment_transfer.update_column(:status, transfer.status)
 
-    payment_transfer.update_attribute(:transfer_data, transfer.to_hash)
+    payment_transfer.update(transfer_data: transfer.to_hash)
     next unless transfer.status == 'failed'
     payment_transfer.notify(:invalid_refund, payment_transfer.user)
     if payment_transfer.over_refund_limit?
@@ -158,7 +158,7 @@ task :gateway_payments_sync, %i[nthreads page_size] => [:environment] do |t, arg
                  end
 
         gpayment = GatewayPayment.find_or_create_by transaction_id: transaction.id.to_s
-        gpayment.update_attributes(
+        gpayment.update(
           gateway_data: transaction.to_json,
           postbacks: postbacks,
           payables: payables,
@@ -256,7 +256,7 @@ task :verify_pagarme_transactions, %i[start_date end_date] => :environment do |t
           # Caso tenha encontrado o pagamento pela chave mas ele tenha gateway_id nulo nós atualizamos o gateway_id antes de prosseguir
           if payment.gateway_id.nil?
             puts "Updating payment gateway_id to #{source['id']}"
-            payment.update_attributes gateway_id: source['id']
+            payment.update(gateway_id: source['id'])
           end
 
           # Atualiza os dados usando o pagarme_delegator caso o status não esteja batendo

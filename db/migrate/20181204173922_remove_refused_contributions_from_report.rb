@@ -1,8 +1,8 @@
-class RemoveRefusedContributionsFromReport < ActiveRecord::Migration
+class RemoveRefusedContributionsFromReport < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
-    
-    CREATE OR REPLACE VIEW "1"."project_contributions" AS 
+
+    CREATE OR REPLACE VIEW "1"."project_contributions" AS
     SELECT c.anonymous,
        c.project_id,
        (c.reward_id)::numeric AS reward_id,
@@ -49,7 +49,7 @@ class RemoveRefusedContributionsFromReport < ActiveRecord::Migration
 
 
 
-     CREATE OR REPLACE VIEW "1"."project_contributions_per_day" AS 
+     CREATE OR REPLACE VIEW "1"."project_contributions_per_day" AS
      SELECT i.project_id,
         json_agg(json_build_object('paid_at', i.created_at, 'created_at', i.created_at, 'total', i.total, 'total_amount', i.total_amount)) AS source
        FROM ( SELECT c.project_id,
@@ -63,7 +63,7 @@ class RemoveRefusedContributionsFromReport < ActiveRecord::Migration
               ORDER BY (p.created_at)::date) i
       GROUP BY i.project_id;
 
-      CREATE OR REPLACE VIEW "1"."project_contributions_per_location" AS 
+      CREATE OR REPLACE VIEW "1"."project_contributions_per_location" AS
       SELECT addr_agg.project_id,
          json_agg(json_build_object('state_acronym', addr_agg.state_acronym, 'state_name', addr_agg.state_name, 'total_contributions', addr_agg.total_contributions, 'total_contributed', addr_agg.total_contributed, 'total_on_percentage', addr_agg.total_on_percentage) ORDER BY addr_agg.state_acronym) AS source
         FROM ( SELECT p.id AS project_id,
@@ -73,7 +73,7 @@ class RemoveRefusedContributionsFromReport < ActiveRecord::Migration
                  sum(c.value) AS total_contributed,
                  ((sum(c.value) * (100)::numeric) / COALESCE(pt.pledged, (0)::numeric)) AS total_on_percentage
                 FROM ((((projects p
-                 
+
                   JOIN contributions c ON ((p.id = c.project_id)))
                   JOIN payments pa on (pa.state <> 'refused' AND pa.contribution_id = c.id)
                   LEFT JOIN addresses add ON ((add.id = c.address_id)))
@@ -84,7 +84,7 @@ class RemoveRefusedContributionsFromReport < ActiveRecord::Migration
                ORDER BY p.created_at DESC) addr_agg
        GROUP BY addr_agg.project_id;
 
-       CREATE OR REPLACE VIEW "1"."project_contributions_per_ref" AS 
+       CREATE OR REPLACE VIEW "1"."project_contributions_per_ref" AS
         SELECT i.project_id,
             json_agg(json_build_object('referral_link', i.referral_link, 'total', i.total, 'total_amount', i.total_amount, 'total_on_percentage', ((i.total_amount / ( SELECT pt.pledged
                   FROM "1".project_totals pt
@@ -105,8 +105,8 @@ class RemoveRefusedContributionsFromReport < ActiveRecord::Migration
 
   def down
     execute <<-SQL
-    
-    CREATE OR REPLACE VIEW "1"."project_contributions" AS 
+
+    CREATE OR REPLACE VIEW "1"."project_contributions" AS
     SELECT c.anonymous,
        c.project_id,
        (c.reward_id)::numeric AS reward_id,
@@ -150,7 +150,7 @@ class RemoveRefusedContributionsFromReport < ActiveRecord::Migration
 
 
 
-     CREATE OR REPLACE VIEW "1"."project_contributions_per_day" AS 
+     CREATE OR REPLACE VIEW "1"."project_contributions_per_day" AS
      SELECT i.project_id,
         json_agg(json_build_object('paid_at', i.created_at, 'created_at', i.created_at, 'total', i.total, 'total_amount', i.total_amount)) AS source
        FROM ( SELECT c.project_id,
@@ -164,7 +164,7 @@ class RemoveRefusedContributionsFromReport < ActiveRecord::Migration
               ORDER BY (p.created_at)::date) i
       GROUP BY i.project_id;
 
-      CREATE OR REPLACE VIEW "1"."project_contributions_per_location" AS 
+      CREATE OR REPLACE VIEW "1"."project_contributions_per_location" AS
       SELECT addr_agg.project_id,
          json_agg(json_build_object('state_acronym', addr_agg.state_acronym, 'state_name', addr_agg.state_name, 'total_contributions', addr_agg.total_contributions, 'total_contributed', addr_agg.total_contributed, 'total_on_percentage', addr_agg.total_on_percentage) ORDER BY addr_agg.state_acronym) AS source
         FROM ( SELECT p.id AS project_id,
@@ -174,7 +174,7 @@ class RemoveRefusedContributionsFromReport < ActiveRecord::Migration
                  sum(c.value) AS total_contributed,
                  ((sum(c.value) * (100)::numeric) / COALESCE(pt.pledged, (0)::numeric)) AS total_on_percentage
                 FROM ((((projects p
-                 
+
                   JOIN contributions c ON ((p.id = c.project_id)))
                   LEFT JOIN addresses add ON ((add.id = c.address_id)))
                   LEFT JOIN states s ON ((add.state_id = s.id)))
@@ -184,7 +184,7 @@ class RemoveRefusedContributionsFromReport < ActiveRecord::Migration
                ORDER BY p.created_at DESC) addr_agg
        GROUP BY addr_agg.project_id;
 
-       CREATE OR REPLACE VIEW "1"."project_contributions_per_ref" AS 
+       CREATE OR REPLACE VIEW "1"."project_contributions_per_ref" AS
         SELECT i.project_id,
             json_agg(json_build_object('referral_link', i.referral_link, 'total', i.total, 'total_amount', i.total_amount, 'total_on_percentage', ((i.total_amount / ( SELECT pt.pledged
                   FROM "1".project_totals pt

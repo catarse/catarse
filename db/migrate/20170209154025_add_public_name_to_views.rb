@@ -1,7 +1,7 @@
-class AddPublicNameToViews < ActiveRecord::Migration
+class AddPublicNameToViews < ActiveRecord::Migration[4.2]
   def change
     execute %Q{
-CREATE OR REPLACE VIEW "1"."contributors" AS 
+CREATE OR REPLACE VIEW "1"."contributors" AS
  SELECT u.id,
     u.id AS user_id,
     c.project_id,
@@ -20,7 +20,7 @@ CREATE OR REPLACE VIEW "1"."contributors" AS
         END AND (NOT c.anonymous) AND (u.deactivated_at IS NULL))
   GROUP BY u.id, c.project_id, ut.total_contributed_projects, ut.total_published_projects;
 
-CREATE OR REPLACE VIEW "1"."user_follows" AS 
+CREATE OR REPLACE VIEW "1"."user_follows" AS
  SELECT uf.user_id,
     uf.follow_id,
     json_build_object('public_name', f.public_name, 'name', f.name, 'avatar', thumbnail_image(f.*), 'total_contributed_projects', ut.total_contributed_projects, 'total_published_projects', ut.total_published_projects, 'city', f.address_city, 'state', f.address_state) AS source,
@@ -30,7 +30,7 @@ CREATE OR REPLACE VIEW "1"."user_follows" AS
      JOIN users f ON ((f.id = uf.follow_id)))
   WHERE (is_owner_or_admin(uf.user_id) AND (f.deactivated_at IS NULL));
 
-CREATE OR REPLACE VIEW "1"."user_contributions" AS 
+CREATE OR REPLACE VIEW "1"."user_contributions" AS
  SELECT pa.id,
     c.id AS contribution_id,
     pa.id AS payment_id,

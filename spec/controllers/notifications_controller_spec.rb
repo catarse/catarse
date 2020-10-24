@@ -18,7 +18,7 @@ RSpec.describe NotificationsController, type: :controller do
     context 'when user is not authenticated' do
       let(:current_user) { nil }
       before do
-        get :show, notification_type: 'project_notification', notification_id: project_notification.id
+        get :show, params: { notification_type: 'project_notification', notification_id: project_notification.id }
       end
 
       it { is_expected.to_not be_successful }
@@ -27,7 +27,7 @@ RSpec.describe NotificationsController, type: :controller do
     context 'when user is authenticated' do
       context 'when requesting self notification' do
         before do
-          get :show, notification_type: 'project_notification', notification_id: project_notification.id
+          get :show, params: { notification_type: 'project_notification', notification_id: project_notification.id }
         end
 
         it { is_expected.to be_successful }
@@ -36,7 +36,7 @@ RSpec.describe NotificationsController, type: :controller do
       context 'when requesting somone else notification' do
         let(:current_user) { create(:user) }
         before do
-          get :show, notification_type: 'project_notification', notification_id: project_notification.id
+          get :show, params: { notification_type: 'project_notification', notification_id: project_notification.id }
         end
 
         it { is_expected.to_not be_successful }
@@ -45,7 +45,7 @@ RSpec.describe NotificationsController, type: :controller do
       context 'when requesting somone else notification has admin' do
         let(:current_user) { create(:user, admin: true) }
         before do
-          get :show, notification_type: 'project_notification', notification_id: project_notification.id
+          get :show, params: { notification_type: 'project_notification', notification_id: project_notification.id }
         end
 
         it { is_expected.to be_successful }

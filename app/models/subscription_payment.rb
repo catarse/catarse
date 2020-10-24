@@ -1,7 +1,9 @@
-class SubscriptionPayment < ActiveRecord::Base
+class SubscriptionPayment < ApplicationRecord
   include Shared::CommonWrapper
 
   self.table_name = 'common_schema.catalog_payments'
+  self.primary_key = :id
+
   belongs_to :user, primary_key: :common_id
   belongs_to :project, primary_key: :common_id
   belongs_to :reward, primary_key: :common_id
@@ -31,7 +33,7 @@ class SubscriptionPayment < ActiveRecord::Base
     BalanceTransaction.insert_subscription_payment_chargedback(id)
   end
 
-  def banned_user_validation  
+  def banned_user_validation
     if self.user.cpf.present?
       document = BlacklistDocument.find_document self.user.cpf
       unless document.nil?

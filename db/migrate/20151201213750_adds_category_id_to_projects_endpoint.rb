@@ -1,4 +1,4 @@
-class AddsCategoryIdToProjectsEndpoint < ActiveRecord::Migration
+class AddsCategoryIdToProjectsEndpoint < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
 DROP VIEW "1".projects CASCADE;

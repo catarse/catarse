@@ -1,4 +1,4 @@
-class AddBalanceExpiredOnBalance < ActiveRecord::Migration
+class AddBalanceExpiredOnBalance < ActiveRecord::Migration[4.2]
   def up
     execute %Q{
     create or replace function public.can_expire_on_balance(public.balance_transactions)
@@ -10,7 +10,7 @@ class AddBalanceExpiredOnBalance < ActiveRecord::Migration
                                                   where t.user_id=$1.user_id
                                                       and t.id > $1.id
                                                       and t.event_name in ('balance_transfer_request','balance_transfer_project')
-                                              ) 
+                                              )
                        and not exists (
                                        select true from public.balance_transactions t
                                            where t.user_id = $1.user_id

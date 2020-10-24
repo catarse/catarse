@@ -1,4 +1,4 @@
-class AddApplicationUserToIsOwnerOrAdmin < ActiveRecord::Migration
+class AddApplicationUserToIsOwnerOrAdmin < ActiveRecord::Migration[4.2]
   def up
     execute %Q{
 CREATE OR REPLACE VIEW "1".project_transfers AS

@@ -1,4 +1,4 @@
-class CreateOrigins < ActiveRecord::Migration
+class CreateOrigins < ActiveRecord::Migration[4.2]
   def change
     create_table :origins do |t|
       t.text :domain, null: false

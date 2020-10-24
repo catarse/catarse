@@ -1,4 +1,4 @@
-class FixProjectFiscalDataTblRefresh < ActiveRecord::Migration
+class FixProjectFiscalDataTblRefresh < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
       CREATE OR REPLACE FUNCTION public.project_fiscal_data_tbl_refresh()

@@ -1,4 +1,4 @@
-class RemoveFunctionOverloading < ActiveRecord::Migration
+class RemoveFunctionOverloading < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
 CREATE OR REPLACE FUNCTION public.is_past(expires_at timestamp without time zone)

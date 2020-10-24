@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class PasswordsController < Devise::PasswordsController
-  prepend_before_filter :redirect_user_already_logged, only: [:edit]
+  prepend_before_action :redirect_user_already_logged, only: [:edit]
 
   def update
     self.resource = resource_class.reset_password_by_token(resource_params)

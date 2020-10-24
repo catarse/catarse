@@ -1,4 +1,4 @@
-class CreatePostRewards < ActiveRecord::Migration
+class CreatePostRewards < ActiveRecord::Migration[4.2]
   def change
     create_table :post_rewards do |t|
       t.references :project_post, index: true, foreign_key: true

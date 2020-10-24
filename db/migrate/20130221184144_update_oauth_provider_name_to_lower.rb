@@ -1,4 +1,4 @@
-class UpdateOauthProviderNameToLower < ActiveRecord::Migration
+class UpdateOauthProviderNameToLower < ActiveRecord::Migration[4.2]
   def up
     execute "UPDATE oauth_providers SET name = lower(name);"
   end

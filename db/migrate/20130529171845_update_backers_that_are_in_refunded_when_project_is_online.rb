@@ -1,4 +1,4 @@
-class UpdateBackersThatAreInRefundedWhenProjectIsOnline < ActiveRecord::Migration
+class UpdateBackersThatAreInRefundedWhenProjectIsOnline < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
       UPDATE backers

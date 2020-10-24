@@ -1,4 +1,4 @@
-class RemoveUserFullDetails < ActiveRecord::Migration
+class RemoveUserFullDetails < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
     DROP VIEW "1".user_full_details CASCADE;

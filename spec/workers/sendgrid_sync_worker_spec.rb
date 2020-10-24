@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe SendgridSyncWorker do
   let(:user) { create(:user) }
-  before(:all) do
+  before(:each) do
     @newsletter_list ||= create(:mail_marketing_list, provider: 'sendgrid', label: 'newsletter', list_id: 'xsb')
     CatarseSettings[:sendgrid_newsletter_list_id] = @newsletter_list.list_id
   end
@@ -58,6 +58,13 @@ RSpec.describe SendgridSyncWorker do
 
   describe 'when user sendgrid recipient id is null' do
     let!(:mail_marketing_user_alone) { create(:mail_marketing_user, user: user, last_sync_at: nil)}
+
+    before do
+      list_id = mail_marketing_user_alone.mail_marketing_list.list_id
+      mock_url = "https://api.sendgrid.com/v3/contactdb/lists/#{list_id}/recipients"
+      stub_request(:post, mock_url).to_return(status: 200)
+    end
+
     context 'when user exists on sendgrid recipients' do
       before do
         allow(subject).to receive(:search_recipient).and_return('xxx')
@@ -83,6 +90,10 @@ RSpec.describe SendgridSyncWorker do
     let!(:mail_marketing_user_alone) { create(:mail_marketing_user, user: user, last_sync_at: nil)}
     context 'just refreshing' do
       before do
+        list_id = mail_marketing_user_alone.mail_marketing_list.list_id
+        mock_url = "https://api.sendgrid.com/v3/contactdb/lists/#{list_id}/recipients/xxx"
+        stub_request(:post, mock_url).to_return(status: 200)
+
         allow(user).to receive(:sendgrid_recipient_id).and_return('xxx')
         expect(subject).to receive(:update_recipient)
       end

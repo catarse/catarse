@@ -1,4 +1,4 @@
-class CreateSubReportView < ActiveRecord::Migration
+class CreateSubReportView < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
     create or replace view subscription_report_for_project_owners as

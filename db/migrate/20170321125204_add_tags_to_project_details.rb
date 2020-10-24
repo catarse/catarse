@@ -1,7 +1,7 @@
-class AddTagsToProjectDetails < ActiveRecord::Migration
+class AddTagsToProjectDetails < ActiveRecord::Migration[4.2]
   def change
     execute %Q{
-CREATE OR REPLACE VIEW "1"."project_details" AS 
+CREATE OR REPLACE VIEW "1"."project_details" AS
  SELECT p.id AS project_id,
     p.id,
     p.user_id,
@@ -58,7 +58,7 @@ CREATE OR REPLACE VIEW "1"."project_details" AS
            FROM (contributions c_1
              JOIN user_follows uf ON ((uf.follow_id = c_1.user_id)))
           WHERE (is_confirmed(c_1.*) AND (uf.user_id = current_user_id()) AND (c_1.project_id = p.id)))) AS contributed_by_friends,
-    (case 
+    (case
         when "current_user"() = 'admin'::name then btrim(array_agg(distinct tags_lateral.admin_tag_list)::text, '{}')
         else null::text end
     ) as admin_tag_list,

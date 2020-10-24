@@ -1,4 +1,4 @@
-class AddsProjectContributionsSurveysStatus < ActiveRecord::Migration
+class AddsProjectContributionsSurveysStatus < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
     CREATE OR REPLACE VIEW "1".project_contributions AS
@@ -27,7 +27,7 @@ class AddsProjectContributionsSurveysStatus < ActiveRecord::Migration
         s.sent_at,
         s.finished_at,
         COALESCE(
-          (CASE 
+          (CASE
             WHEN c.survey_answered_at is not NULL THEN 'answered'
             WHEN s.sent_at is not NULL THEN 'sent'
             WHEN s.sent_at is NULL THEN 'not_sent'

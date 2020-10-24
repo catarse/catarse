@@ -6,6 +6,8 @@ RSpec.describe Payment, type: :model do
   let(:payment) { create(:payment) }
 
   describe 'associations' do
+    subject { payment }
+
     it { should belong_to :contribution }
     it { should have_many :payment_notifications }
   end

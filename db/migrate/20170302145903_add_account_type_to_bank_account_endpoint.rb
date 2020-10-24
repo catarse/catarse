@@ -1,7 +1,7 @@
-class AddAccountTypeToBankAccountEndpoint < ActiveRecord::Migration
+class AddAccountTypeToBankAccountEndpoint < ActiveRecord::Migration[4.2]
   def change
     execute %Q{
-CREATE OR REPLACE VIEW "1"."bank_accounts" AS 
+CREATE OR REPLACE VIEW "1"."bank_accounts" AS
  SELECT ba.user_id,
     b.name AS bank_name,
     b.code AS bank_code,

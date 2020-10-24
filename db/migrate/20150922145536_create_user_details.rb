@@ -1,4 +1,4 @@
-class CreateUserDetails < ActiveRecord::Migration
+class CreateUserDetails < ActiveRecord::Migration[4.2]
   def up
     execute " set statement_timeout to 0;"
     execute <<-SQL
@@ -48,10 +48,10 @@ class CreateUserDetails < ActiveRecord::Migration
       grant select on "1".team_members to web_user;
       grant select on "1".team_members to anonymous;
 
-      create function public.has_published_projects(users) 
+      create function public.has_published_projects(users)
       returns boolean
-      language sql 
-      security definer 
+      language sql
+      security definer
       stable as $$
         select true from public.projects p where p.is_published and p.user_id = $1.id
       $$;

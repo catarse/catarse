@@ -1,4 +1,4 @@
-class AddsUserNameToPaymentsFti < ActiveRecord::Migration
+class AddsUserNameToPaymentsFti < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
     CREATE OR REPLACE FUNCTION update_payments_full_text_index() RETURNS TRIGGER AS $$

@@ -1,4 +1,4 @@
-class AddWaitingPaymentFunc < ActiveRecord::Migration
+class AddWaitingPaymentFunc < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
       DROP FUNCTION public.can_delete(payments);

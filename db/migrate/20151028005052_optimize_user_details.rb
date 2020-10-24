@@ -1,4 +1,4 @@
-class OptimizeUserDetails < ActiveRecord::Migration
+class OptimizeUserDetails < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
     SET statement_timeout TO 0;

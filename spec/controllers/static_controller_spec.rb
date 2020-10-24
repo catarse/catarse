@@ -8,12 +8,12 @@ RSpec.describe StaticController, type: :controller do
   subject { response }
 
   describe 'GET thank_you' do
-    let(:contribution) { FactoryGirl.create(:contribution) }
+    let(:contribution) { create(:contribution) }
 
     context 'with a session with contribution' do
       before do
         request.session[:thank_you_contribution_id] = contribution.id
-        get :thank_you, { locale: :pt }
+        get :thank_you, params: { locale: :pt }
       end
 
       it { is_expected.to redirect_to(project_contribution_path(contribution.project, contribution)) }

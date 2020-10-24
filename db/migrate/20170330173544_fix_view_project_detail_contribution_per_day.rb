@@ -1,4 +1,4 @@
-class FixViewProjectDetailContributionPerDay < ActiveRecord::Migration
+class FixViewProjectDetailContributionPerDay < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
       CREATE OR REPLACE VIEW "1".project_contributions_per_day AS

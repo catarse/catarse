@@ -47,7 +47,7 @@ namespace :config do
     puts
     puts "Adding #{args[:name]}=#{args[:value]} to configuration table..."
     conf = Configuration.find_or_initialize_by_name args[:name]
-    conf.update_attributes(
+    conf.update(
       value: args[:value]
     )
     puts 'Done!'

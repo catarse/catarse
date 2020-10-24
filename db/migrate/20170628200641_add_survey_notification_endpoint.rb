@@ -1,4 +1,4 @@
-class AddSurveyNotificationEndpoint < ActiveRecord::Migration
+class AddSurveyNotificationEndpoint < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
       CREATE OR REPLACE FUNCTION "1".sent_survey_count(reward_id integer) RETURNS bigint

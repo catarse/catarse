@@ -1,4 +1,4 @@
-class AdjustTotalAmountTaxIncludedToRemoveIrrfTaxFromCalculation < ActiveRecord::Migration
+class AdjustTotalAmountTaxIncludedToRemoveIrrfTaxFromCalculation < ActiveRecord::Migration[4.2]
   def up
     execute %Q{
 CREATE OR REPLACE FUNCTION public.total_amount_tax_included(p projects)

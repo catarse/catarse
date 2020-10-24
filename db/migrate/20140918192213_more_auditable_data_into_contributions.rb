@@ -1,4 +1,4 @@
-class MoreAuditableDataIntoContributions < ActiveRecord::Migration
+class MoreAuditableDataIntoContributions < ActiveRecord::Migration[4.2]
   def change
     add_column :contributions, :waiting_confirmation_at, :datetime
     add_column :contributions, :canceled_at, :datetime

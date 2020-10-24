@@ -1,7 +1,7 @@
-class AdjustUserDetailsWhenDeactivated < ActiveRecord::Migration
+class AdjustUserDetailsWhenDeactivated < ActiveRecord::Migration[4.2]
   def up
     execute %Q{
-CREATE OR REPLACE VIEW "1"."user_details" AS 
+CREATE OR REPLACE VIEW "1"."user_details" AS
  SELECT u.id,
     (CASE WHEN u.deactivated_at is not null AND NOT is_owner_or_admin(u.id) THEN ''::character varying(255)
     ELSE u.name END) as name,
@@ -38,13 +38,13 @@ CREATE OR REPLACE VIEW "1"."user_details" AS
         END AS owner_document,
     cover_image_url(u.*) AS profile_cover_image,
     u.created_at,
-    (CASE WHEN u.deactivated_at is not null AND NOT is_owner_or_admin(u.id) THEN null::text 
+    (CASE WHEN u.deactivated_at is not null AND NOT is_owner_or_admin(u.id) THEN null::text
     ELSE u.about_html END) as about_html,
     is_owner_or_admin(u.id) AS is_owner_or_admin,
     (CASE WHEN u.deactivated_at is not null AND NOT is_owner_or_admin(u.id) THEN false
     ELSE u.newsletter END) as newsletter,
     (CASE WHEN u.deactivated_at is not null AND NOT is_owner_or_admin(u.id) THEN false
-    ELSE u.subscribed_to_project_posts END) as subscribed_to_project_posts,    
+    ELSE u.subscribed_to_project_posts END) as subscribed_to_project_posts,
     (CASE WHEN u.deactivated_at is not null AND NOT is_owner_or_admin(u.id) THEN false
     ELSE u.subscribed_to_new_followers END) as subscribed_to_new_followers,
     (CASE WHEN u.deactivated_at is not null AND NOT is_owner_or_admin(u.id) THEN false
@@ -81,7 +81,7 @@ CREATE OR REPLACE VIEW "1"."user_details" AS
 
   def down
     execute %Q{
-CREATE OR REPLACE VIEW "1"."user_details" AS 
+CREATE OR REPLACE VIEW "1"."user_details" AS
  SELECT u.id,
     u.name,
     u.deactivated_at,

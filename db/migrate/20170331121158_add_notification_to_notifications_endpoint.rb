@@ -1,7 +1,7 @@
-class AddNotificationToNotificationsEndpoint < ActiveRecord::Migration
+class AddNotificationToNotificationsEndpoint < ActiveRecord::Migration[4.2]
   def change
     execute %Q{
-CREATE OR REPLACE VIEW "1"."notifications" AS 
+CREATE OR REPLACE VIEW "1"."notifications" AS
  SELECT n.id,
     n.origin,
     n.user_id,

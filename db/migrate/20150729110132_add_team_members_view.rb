@@ -1,4 +1,4 @@
-class AddTeamMembersView < ActiveRecord::Migration
+class AddTeamMembersView < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
       DO

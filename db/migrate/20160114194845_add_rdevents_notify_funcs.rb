@@ -1,4 +1,4 @@
-class AddRdeventsNotifyFuncs < ActiveRecord::Migration
+class AddRdeventsNotifyFuncs < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
 CREATE OR REPLACE FUNCTION public.rdevents_notify() RETURNS trigger

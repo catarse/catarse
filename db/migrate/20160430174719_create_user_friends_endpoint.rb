@@ -1,17 +1,17 @@
-class CreateUserFriendsEndpoint < ActiveRecord::Migration
+class CreateUserFriendsEndpoint < ActiveRecord::Migration[4.2]
   def up
     execute %Q{
 CREATE OR REPLACE FUNCTION public.user_following_this_user(uid integer, fid integer) returns boolean
     stable
     language sql
     as $$
-    select 
+    select
         coalesce(
-            (select true from public.user_follows uf where uf.user_id = uid and uf.follow_id = fid), 
-            false);    
+            (select true from public.user_follows uf where uf.user_id = uid and uf.follow_id = fid),
+            false);
     $$;
 
-create or replace view "1".user_friends as 
+create or replace view "1".user_friends as
     select
         uf.user_id,
         uf.friend_id,

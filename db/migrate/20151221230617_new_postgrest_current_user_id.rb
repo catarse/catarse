@@ -1,4 +1,4 @@
-class NewPostgrestCurrentUserId < ActiveRecord::Migration
+class NewPostgrestCurrentUserId < ActiveRecord::Migration[4.2]
   def up
     #current_database = execute("SELECT current_database();")[0]["current_database"]
     #execute "alter database #{current_database} set postgrest.claims.user_id = '';"

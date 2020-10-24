@@ -1,4 +1,4 @@
-class AddSkipFinishToCanCancelFunction < ActiveRecord::Migration
+class AddSkipFinishToCanCancelFunction < ActiveRecord::Migration[4.2]
   def up
     execute %Q{
 CREATE OR REPLACE FUNCTION public.can_cancel(p projects)

@@ -1,4 +1,4 @@
-class GrantUpdateContributionDetails < ActiveRecord::Migration
+class GrantUpdateContributionDetails < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
     GRANT update ON "1".contribution_details TO admin;

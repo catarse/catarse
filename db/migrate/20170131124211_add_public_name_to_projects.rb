@@ -1,7 +1,7 @@
-class AddPublicNameToProjects < ActiveRecord::Migration
+class AddPublicNameToProjects < ActiveRecord::Migration[4.2]
   def up
     execute %Q{
-CREATE OR REPLACE VIEW "1"."projects" AS 
+CREATE OR REPLACE VIEW "1"."projects" AS
  SELECT p.id AS project_id,
     p.category_id,
     p.name AS project_name,
@@ -51,7 +51,7 @@ CREATE OR REPLACE VIEW "1"."projects" AS
 
   def down
     execute %Q{
-CREATE OR REPLACE VIEW "1"."projects" AS 
+CREATE OR REPLACE VIEW "1"."projects" AS
  SELECT p.id AS project_id,
     p.category_id,
     p.name AS project_name,

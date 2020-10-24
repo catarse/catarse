@@ -1,8 +1,8 @@
-class ProjectsWithAllIntegrationsNames < ActiveRecord::Migration
+class ProjectsWithAllIntegrationsNames < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
 
-    CREATE OR REPLACE VIEW "1"."projects" AS 
+    CREATE OR REPLACE VIEW "1"."projects" AS
     SELECT p.id AS project_id,
         p.category_id,
         p.name AS project_name,
@@ -38,16 +38,16 @@ class ProjectsWithAllIntegrationsNames < ActiveRecord::Migration
         (p.content_rating >= 18) AS is_adult_content,
         p.content_rating,
         (
-            EXISTS ( 
+            EXISTS (
                 SELECT true AS bool
                 FROM project_reminders pr
                 WHERE ((p.id = pr.project_id) AND (pr.user_id = current_user_id()))
             )
         ) AS saved_projects,
         (
-            SELECT 
-                array_to_string(array_agg(COALESCE(integration.data->>'name'::text, integration.name)), ',') as integration_name 
-            FROM project_integrations AS integration 
+            SELECT
+                array_to_string(array_agg(COALESCE(integration.data->>'name'::text, integration.name)), ',') as integration_name
+            FROM project_integrations AS integration
             WHERE integration.project_id = p.id
         ) as integrations,
         COALESCE(category.name_pt, category.name_en) as category_name
@@ -60,7 +60,7 @@ class ProjectsWithAllIntegrationsNames < ActiveRecord::Migration
     JOIN LATERAL zone_timestamp(online_at(p.*)) od(od) ON true
     JOIN LATERAL state_order(p.*) so(so) ON true
     LEFT JOIN categories category ON category.id = p.category_id;
-    
+
     grant select on "1"."projects" to admin, anonymous, web_user;
 
     grant select on public.project_integrations to admin, anonymous, web_user;

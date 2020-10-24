@@ -1,8 +1,8 @@
-class AdjustProjectContributionsEndpoint < ActiveRecord::Migration
+class AdjustProjectContributionsEndpoint < ActiveRecord::Migration[4.2]
   def up
     %Q{
-CREATE OR REPLACE VIEW "1"."project_contributions" AS 
- SELECT 
+CREATE OR REPLACE VIEW "1"."project_contributions" AS
+ SELECT
     c.anonymous,
     c.project_id,
     c.reward_id::numeric,
@@ -32,7 +32,7 @@ CREATE OR REPLACE VIEW "1"."project_contributions" AS
 
   def down
     %Q{
-CREATE OR REPLACE VIEW "1"."project_contributions" AS 
+CREATE OR REPLACE VIEW "1"."project_contributions" AS
  SELECT c.anonymous,
     c.project_id,
         CASE

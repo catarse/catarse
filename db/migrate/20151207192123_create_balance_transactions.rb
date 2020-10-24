@@ -1,4 +1,4 @@
-class CreateBalanceTransactions < ActiveRecord::Migration
+class CreateBalanceTransactions < ActiveRecord::Migration[4.2]
   def change
     create_table :balance_transactions do |t|
       t.integer :project_id

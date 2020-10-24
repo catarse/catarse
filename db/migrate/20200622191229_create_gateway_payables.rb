@@ -1,4 +1,4 @@
-class CreateGatewayPayables < ActiveRecord::Migration
+class CreateGatewayPayables < ActiveRecord::Migration[4.2]
   def change
     create_table :gateway_payables do |t|
       t.references :payment, index: true, foreign_key: true, null: false

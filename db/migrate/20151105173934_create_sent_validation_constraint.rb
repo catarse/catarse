@@ -1,4 +1,4 @@
-class CreateSentValidationConstraint < ActiveRecord::Migration
+class CreateSentValidationConstraint < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
 UPDATE project_accounts SET agency = lpad(agency, 4, '0') WHERE length(agency) < 4;

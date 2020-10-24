@@ -1,9 +1,9 @@
-class FixSubIsExpired < ActiveRecord::Migration
+class FixSubIsExpired < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
 CREATE OR REPLACE FUNCTION is_expired(project "1".projects) RETURNS boolean
     LANGUAGE sql STABLE
-    AS $_$ 
+    AS $_$
             select
             case when $1.mode = 'aon' then
                public.is_past($1.expires_at)

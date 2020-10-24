@@ -18,7 +18,7 @@ RSpec.describe UserDecorator do
                    project: failed_project,
                    user: user
                  }).payments.first
-      p.update_attribute(:payment_method, 'BoletoBancario')
+      p.update(payment_method: 'BoletoBancario')
       p
     end
     let(:payment_2) do
@@ -27,7 +27,7 @@ RSpec.describe UserDecorator do
                    project: failed_project_2,
                    user: user
                  }).payments.first
-      p.update_attribute(:payment_method, 'BoletoBancario')
+      p.update(payment_method: 'BoletoBancario')
       p
     end
 
@@ -52,7 +52,7 @@ RSpec.describe UserDecorator do
                    project: failed_project,
                    user: user
                  }).payments.first
-      p.update_attribute(:payment_method, 'BoletoBancario')
+      p.update(payment_method: 'BoletoBancario')
       p
     end
 
@@ -109,17 +109,17 @@ RSpec.describe UserDecorator do
 
   describe '#short_name' do
     subject { create(:user, name: 'My Name Is Lorem Ipsum Dolor Sit Amet', public_name: nil) }
-    its(:short_name) { should == 'My Name Is Lorem ...' }
+    it { expect(subject.short_name).to eq 'My Name Is Lorem ...' }
   end
 
   describe '#medium_name' do
     subject { create(:user, name: 'My Name Is Lorem Ipsum Dolor Sit Amet And This Is a Bit Name I Think', public_name: nil) }
-    its(:medium_name) { should == 'My Name Is Lorem Ipsum Dolor Sit Amet A...' }
+    it { expect(subject.medium_name).to eq 'My Name Is Lorem Ipsum Dolor Sit Amet A...' }
   end
 
   describe '#display_credits' do
     subject { create(:user) }
-    its(:display_credits) { should == 'R$ 0' }
+    it { expect(subject.display_credits).to eq 'R$ 0' }
   end
 
   describe '#display_total_of_contributions' do
@@ -128,7 +128,7 @@ RSpec.describe UserDecorator do
       before do
         create(:confirmed_contribution, user: subject, value: 500.0)
       end
-      its(:display_total_of_contributions) { should == 'R$ 500' }
+      it { expect(subject.display_total_of_contributions).to eq 'R$ 500' }
     end
   end
 

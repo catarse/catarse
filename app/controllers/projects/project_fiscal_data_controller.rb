@@ -13,7 +13,7 @@ class Projects::ProjectFiscalDataController < ApplicationController
       template = 'project_debit_note'
       render "user_notifier/mailer/#{template}", locals: { fiscal_data:fiscal_data }, layout: 'layouts/email'
     else
-      redirect_to edit_project_path(params[:project_id], locale: '')
+      redirect_to edit_project_path(params[:project_id], locale: nil)
     end
   end
 
@@ -25,7 +25,7 @@ class Projects::ProjectFiscalDataController < ApplicationController
       template = 'project_inform'
       render "user_notifier/mailer/#{template}", locals: { fiscal_data:fiscal_data }, layout: 'layouts/email'
     else
-      redirect_to edit_project_path(params[:project_id], locale: '')
+      redirect_to edit_project_path(params[:project_id], locale: nil)
     end
   end
 end

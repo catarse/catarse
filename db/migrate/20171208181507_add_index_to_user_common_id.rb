@@ -1,4 +1,4 @@
-class AddIndexToUserCommonId < ActiveRecord::Migration
+class AddIndexToUserCommonId < ActiveRecord::Migration[4.2]
   disable_ddl_transaction!
   def change
     execute %{

@@ -1,4 +1,4 @@
-class MigrateContributionsDataToPayments < ActiveRecord::Migration
+class MigrateContributionsDataToPayments < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
     INSERT INTO payments (
@@ -38,7 +38,7 @@ class MigrateContributionsDataToPayments < ActiveRecord::Migration
         ELSE c.state
       END,
       coalesce(c.key, md5(id::text || current_timestamp::text)),
-      CASE 
+      CASE
         WHEN c.credits THEN 'Credits'
         WHEN c.payment_method = 'Credits' THEN 'Credits'
         WHEN c.payment_method = 'PayPal' THEN 'PayPal'

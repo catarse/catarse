@@ -1,4 +1,4 @@
-class PermalinkNotNull < ActiveRecord::Migration
+class PermalinkNotNull < ActiveRecord::Migration[4.2]
   def up
     execute "set statement_timeout to 0;"
 

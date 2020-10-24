@@ -1,4 +1,4 @@
-class ProjectVisitorsPerDayViewWithoutMaterialized < ActiveRecord::Migration
+class ProjectVisitorsPerDayViewWithoutMaterialized < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
 DROP MATERIALIZED VIEW "1".project_visitors_per_day;
@@ -31,7 +31,7 @@ BEGIN
 	IF identifier is null or identifier ~ '^\d+$'
 		THEN RETURN identifier::integer;
 	END IF;
-    
+
     RETURN (SELECT p.id
             FROM projects p
             WHERE lower(p.permalink) = identifier
@@ -95,7 +95,7 @@ CREATE INDEX moments_navigation_projects_tbl_projectid_createdat_userid_idx
 CREATE OR REPLACE FUNCTION public.moments_navigation_projects_tbl_refresh()
 RETURNS void
     LANGUAGE 'sql'
-    VOLATILE 
+    VOLATILE
 AS $BODY$
 
 INSERT into public.moments_navigation_projects_tbl
@@ -155,16 +155,16 @@ CREATE UNIQUE INDEX project_visitors_per_day_tbl_idx
 CREATE INDEX project_visitors_per_day_tbl_day_idx
     ON public.project_visitors_per_day_tbl (day);
 
-	
+
 CREATE OR REPLACE FUNCTION public.project_visitors_per_day_tbl_refresh()
 RETURNS void
     LANGUAGE 'sql'
-    VOLATILE 
+    VOLATILE
 AS $BODY$
 SELECT public.moments_navigation_projects_tbl_refresh();
 
 --Apaga as entradas de hoje.  Na 9.5 pode trocar pelo UPSET
-DELETE FROM public.project_visitors_per_day_tbl 
+DELETE FROM public.project_visitors_per_day_tbl
 WHERE day >= to_char(zone_timestamp(CURRENT_TIMESTAMP::timestamp without time zone), 'YYYY-MM-DD');
 
 INSERT into public.project_visitors_per_day_tbl
@@ -180,7 +180,7 @@ INSERT into public.project_visitors_per_day_tbl
                   WHERE ptf_1.project_id = p.id AND (ptf_1.to_state = ANY (ARRAY['waiting_funds'::character varying, 'successful'::character varying, 'failed'::character varying]::text[]))
                   ORDER BY ptf_1.created_at
                  LIMIT 1) ptf ON true
-          WHERE n.created_at >= pt.created_at 
+          WHERE n.created_at >= pt.created_at
 			AND (ptf.* IS NULL OR n.created_at <= ptf.created_at)
 			AND (n.user_id IS NULL OR n.user_id <> p.user_id)
 			AND n.path !~ '^/projects/d+/.+'
@@ -224,9 +224,9 @@ GRANT SELECT ON TABLE "1".project_visitors_per_day TO admin;
  DROP TABLE public.moments_navigation_projects_tbl;
  DROP FUNCTION public.moments_projectid_from_label(label text);
  DROP FUNCTION public.moments_project_identifier_from_label(label text);
-  
 
- CREATE MATERIALIZED VIEW "1".project_visitors_per_day AS 
+
+ CREATE MATERIALIZED VIEW "1".project_visitors_per_day AS
  select i.project_id, sum(visitors) as total,
      json_agg(json_build_object('day', i.day, 'visitors', i.visitors)) AS source
  from (
@@ -245,8 +245,8 @@ GRANT SELECT ON TABLE "1".project_visitors_per_day TO admin;
  )i
  group by i.project_id
  WITH NO DATA;
- 
- 
+
+
  GRANT SELECT ON TABLE "1".project_visitors_per_day TO anonymous;
  GRANT SELECT ON TABLE "1".project_visitors_per_day TO web_user;
  GRANT SELECT ON TABLE "1".project_visitors_per_day TO admin;

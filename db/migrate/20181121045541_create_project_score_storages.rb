@@ -1,4 +1,4 @@
-class CreateProjectScoreStorages < ActiveRecord::Migration
+class CreateProjectScoreStorages < ActiveRecord::Migration[4.2]
   def change
     create_table :project_score_storages, id: false do |t|
       t.references :project, foreign_key: true

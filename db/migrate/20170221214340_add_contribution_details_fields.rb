@@ -1,4 +1,4 @@
-class AddContributionDetailsFields < ActiveRecord::Migration
+class AddContributionDetailsFields < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
     CREATE OR REPLACE VIEW "1".contribution_details AS

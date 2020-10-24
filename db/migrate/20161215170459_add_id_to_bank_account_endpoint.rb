@@ -1,4 +1,4 @@
-class AddIdToBankAccountEndpoint < ActiveRecord::Migration
+class AddIdToBankAccountEndpoint < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
     CREATE OR REPLACE VIEW "1".bank_accounts AS

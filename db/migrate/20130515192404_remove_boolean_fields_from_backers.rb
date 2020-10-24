@@ -1,4 +1,4 @@
-class RemoveBooleanFieldsFromBackers < ActiveRecord::Migration
+class RemoveBooleanFieldsFromBackers < ActiveRecord::Migration[4.2]
   def up
     execute "
     ALTER TABLE backers DROP IF EXISTS confirmed;

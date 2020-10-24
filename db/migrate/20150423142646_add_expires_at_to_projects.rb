@@ -1,4 +1,4 @@
-class AddExpiresAtToProjects < ActiveRecord::Migration
+class AddExpiresAtToProjects < ActiveRecord::Migration[4.2]
   def change
     execute "
     DROP VIEW IF EXISTS user_feeds;
@@ -8,7 +8,7 @@ class AddExpiresAtToProjects < ActiveRecord::Migration
     DROP FUNCTION expires_at(projects);
     "
     add_column :projects, :expires_at, :timestamp
-    execute " CREATE OR REPLACE VIEW financial_reports AS 
+    execute " CREATE OR REPLACE VIEW financial_reports AS
       SELECT p.name,
     u.moip_login,
     p.goal,

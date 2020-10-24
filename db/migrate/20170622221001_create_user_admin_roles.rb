@@ -1,4 +1,4 @@
-class CreateUserAdminRoles < ActiveRecord::Migration
+class CreateUserAdminRoles < ActiveRecord::Migration[4.2]
   def change
     create_table :user_admin_roles do |t|
       t.references :user, null: false

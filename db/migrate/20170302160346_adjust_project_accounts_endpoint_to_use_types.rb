@@ -1,7 +1,7 @@
-class AdjustProjectAccountsEndpointToUseTypes < ActiveRecord::Migration
+class AdjustProjectAccountsEndpointToUseTypes < ActiveRecord::Migration[4.2]
   def change
     execute %Q{
-CREATE OR REPLACE VIEW "1"."project_accounts" AS 
+CREATE OR REPLACE VIEW "1"."project_accounts" AS
  SELECT p.id,
     p.id as project_id,
     p.user_id,

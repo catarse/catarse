@@ -1,4 +1,4 @@
-class CreateDirectMessages < ActiveRecord::Migration
+class CreateDirectMessages < ActiveRecord::Migration[4.2]
   def change
     create_table :direct_messages do |t|
       t.references :user

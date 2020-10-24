@@ -6,7 +6,7 @@ class Admin::ProjectsController < Admin::BaseController
   has_scope :by_user_email, :by_id, :pg_search, :user_name_contains, :with_state, :by_category_id, :order_by
   has_scope :between_created_at, :between_expires_at, :between_online_at, :between_updated_at, :goal_between, using: %i[start_at ends_at]
 
-  before_filter do
+  before_action do
     @total_projects = Project.count(:all)
   end
 
@@ -14,7 +14,7 @@ class Admin::ProjectsController < Admin::BaseController
     define_method name do
       @project = Project.find params[:id]
       @project.send(name.to_s)
-      redirect_to :back
+      redirect_back(fallback_location: admin_projects_path)
     end
   end
 
@@ -39,7 +39,7 @@ class Admin::ProjectsController < Admin::BaseController
   end
 
   def update
-    resource.update_attributes(permitted_params)
+    resource.update(permitted_params)
     super
   end
 

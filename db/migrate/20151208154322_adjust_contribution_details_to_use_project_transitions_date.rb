@@ -1,4 +1,4 @@
-class AdjustContributionDetailsToUseProjectTransitionsDate < ActiveRecord::Migration
+class AdjustContributionDetailsToUseProjectTransitionsDate < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
 CREATE OR REPLACE VIEW "1".contribution_details AS

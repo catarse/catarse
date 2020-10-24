@@ -4,8 +4,8 @@ require 'rails_helper'
 
 RSpec.describe BalanceTransaction, type: :model do
   describe 'associations' do
-    it { is_expected.to belong_to(:project) }
-    it { is_expected.to belong_to(:contribution) }
+    it { is_expected.to belong_to(:project).optional }
+    it { is_expected.to belong_to(:contribution).optional }
     it { is_expected.to belong_to(:user) }
   end
 
@@ -23,7 +23,7 @@ RSpec.describe BalanceTransaction, type: :model do
     let!(:pending_contribution_2) { create(:pending_contribution, value: 15, project: project, created_at: 22.days.ago) }
 
     before do
-      project.update_attributes(expires_at: 10.days.ago)
+      project.update(expires_at: 10.days.ago)
       expect(BalanceTransaction).to receive(:insert_successful_project_transactions).with(project.id).and_call_original
       project.finish
     end
@@ -73,7 +73,9 @@ RSpec.describe BalanceTransaction, type: :model do
     end
 
     subject do
-      BalanceTransaction.insert_revert_chargeback(payment.contribution.balance_transactions.where(event_name: 'contribution_chargedback').first)
+      BalanceTransaction.insert_revert_chargeback(
+        payment.contribution.balance_transactions.where(event_name: 'contribution_chargedback').first.id
+      )
     end
 
     it 'should create balance transaction reverting chargeback' do
@@ -123,7 +125,7 @@ RSpec.describe BalanceTransaction, type: :model do
       end
       it 'should not create a new transaction' do
         expect(subject.event_name).to eq('contribution_chargedback')
-        call_again = BalanceTransaction.insert_contribution_chargeback(payment.id) 
+        call_again = BalanceTransaction.insert_contribution_chargeback(payment.id)
         expect(call_again).to be_nil
       end
     end
@@ -150,7 +152,7 @@ RSpec.describe BalanceTransaction, type: :model do
 
     context 'when given project is finished' do
       before do
-        project.update_attributes(expires_at: 2.minutes.ago)
+        project.update(expires_at: 2.minutes.ago)
         expect(BalanceTransaction).to receive(:insert_successful_project_transactions).with(project.id).and_call_original
         project.finish
         project.reload
@@ -167,9 +169,9 @@ RSpec.describe BalanceTransaction, type: :model do
 
     context 'when project owner is pj' do
       before do
-        contribution.payments.last.update_attributes(gateway_fee: '400')
-        project.user.update_attributes(account_type: 'pj', cpf: '38.414.365/0001-35')
-        project.update_attributes(expires_at: 2.minutes.ago)
+        contribution.payments.last.update(gateway_fee: '400')
+        project.user.update(account_type: 'pj', cpf: '38.414.365/0001-35')
+        project.update(expires_at: 2.minutes.ago)
         project.finish
       end
 
@@ -372,7 +374,7 @@ RSpec.describe BalanceTransaction, type: :model do
       end
 
       it 'should not create balance_expired event' do
-        it { is_expected.to eq(false) }
+        is_expected.to eq(false)
       end
     end
   end
@@ -392,7 +394,7 @@ RSpec.describe BalanceTransaction, type: :model do
 
     context 'when project already received any pledged balance' do
       before do
-        project.update_attributes(expires_at: 2.minutes.ago)
+        project.update(expires_at: 2.minutes.ago)
         project.finish
         project.reload
       end
@@ -415,7 +417,7 @@ RSpec.describe BalanceTransaction, type: :model do
     context 'when project have pledged on balance and have contribution_refunded in period' do
       before do
         Sidekiq::Testing.inline!
-        project.update_attributes(expires_at: 2.minutes.ago)
+        project.update(expires_at: 2.minutes.ago)
         project.finish
         contribution_2.payments.last.direct_refund
         project.reload
@@ -433,7 +435,7 @@ RSpec.describe BalanceTransaction, type: :model do
     let!(:contribution) { create(:confirmed_contribution, value: 200, project: project) }
     let(:user) { contribution.user }
     let(:project_owner) { project.user }
-    
+
     subject { BalanceTransaction.insert_balance_transfer_between_users(project_owner, user, 15)}
 
     context 'when user has no balance' do

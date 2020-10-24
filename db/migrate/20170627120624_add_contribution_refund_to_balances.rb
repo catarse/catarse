@@ -1,4 +1,4 @@
-class AddContributionRefundToBalances < ActiveRecord::Migration
+class AddContributionRefundToBalances < ActiveRecord::Migration[4.2]
   def up
     execute %Q{
     create unique index idx_contribution_refund_evt_uniq on balance_transactions (event_name, contribution_id) where event_name = 'contribution_refund';

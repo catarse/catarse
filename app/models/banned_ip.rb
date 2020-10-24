@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class BannedIp < ActiveRecord::Base
+class BannedIp < ApplicationRecord
 
   validates :ip, presence: true
 end

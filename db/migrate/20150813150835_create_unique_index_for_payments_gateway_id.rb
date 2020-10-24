@@ -1,4 +1,4 @@
-class CreateUniqueIndexForPaymentsGatewayId < ActiveRecord::Migration
+class CreateUniqueIndexForPaymentsGatewayId < ActiveRecord::Migration[4.2]
   def up
     execute "
     DROP INDEX IF EXISTS payments_gateway_id_gateway_idx;

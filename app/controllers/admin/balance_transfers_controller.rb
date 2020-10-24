@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
 class Admin::BalanceTransfersController < Admin::BaseController
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
   before_action :ensure_balance_admin_role
   respond_to :json
 
   def update
-    resource.update_attributes(transfer_params)
+    resource.update(transfer_params)
     render json: { updated: :ok }
   end
 

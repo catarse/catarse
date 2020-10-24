@@ -1,4 +1,4 @@
-class RemoveAddressFields < ActiveRecord::Migration
+class RemoveAddressFields < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
       alter table contributions drop column address_city;

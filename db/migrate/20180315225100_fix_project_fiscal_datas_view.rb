@@ -1,4 +1,4 @@
-class FixProjectFiscalDatasView < ActiveRecord::Migration
+class FixProjectFiscalDatasView < ActiveRecord::Migration[4.2]
     def up
         execute <<-SQL
 DROP VIEW "1".project_fiscal_ids;
@@ -205,4 +205,3 @@ GRANT SELECT ON TABLE "1".project_fiscal_ids TO admin;
     SQL
     end
   end
-  

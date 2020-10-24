@@ -1,4 +1,4 @@
-class ByeUnsuedFieldsIntoProjects < ActiveRecord::Migration
+class ByeUnsuedFieldsIntoProjects < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
 CREATE OR REPLACE VIEW "1".projects AS

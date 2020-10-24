@@ -1,4 +1,4 @@
-class RefactorDatabaseUserId < ActiveRecord::Migration
+class RefactorDatabaseUserId < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
 CREATE OR REPLACE FUNCTION public.current_user_id() RETURNS int

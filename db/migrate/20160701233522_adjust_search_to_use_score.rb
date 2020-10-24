@@ -1,4 +1,4 @@
-class AdjustSearchToUseScore < ActiveRecord::Migration
+class AdjustSearchToUseScore < ActiveRecord::Migration[4.2]
   def change
     execute %{
 CREATE OR REPLACE FUNCTION "1".project_search(query text)

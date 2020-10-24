@@ -5,34 +5,34 @@ class ContributionDetailDecorator < Draper::Decorator
   include Draper::LazyHelpers
 
   def display_installment_details
-    if source.installments > 1
-      "#{source.installments} x #{number_to_currency source.installment_value}"
+    if object.installments > 1
+      "#{object.installments} x #{number_to_currency object.installment_value}"
     else
       ''
     end
   end
 
   def display_payment_details
-    if source.credits?
+    if object.credits?
       I18n.t('contribution.payment_details.creditos')
-    elsif source.payment_method.present?
-      I18n.t("contribution.payment_details.#{source.payment_method.underscore}")
+    elsif object.payment_method.present?
+      I18n.t("contribution.payment_details.#{object.payment_method.underscore}")
     else
       ''
     end
   end
 
   def display_value
-    number_to_currency source.localized.value
+    number_to_currency object.localized.value
   end
 
   def display_slip_url
-    gateway_data = source.try(:gateway_data)
+    gateway_data = object.try(:gateway_data)
     return gateway_data['boleto_url'] if gateway_data.present?
   end
 
   def display_status
-    state = source.state
-    I18n.t("payment.state.#{state}", date: I18n.l(source["#{state}_at".to_sym].to_date))
+    state = object.state
+    I18n.t("payment.state.#{state}", date: I18n.l(object["#{state}_at".to_sym].to_date))
   end
 end

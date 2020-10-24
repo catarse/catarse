@@ -1,4 +1,4 @@
-class FixTransferDate < ActiveRecord::Migration
+class FixTransferDate < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
 CREATE OR REPLACE FUNCTION public.transfer_limit_date(bt balance_transfers)

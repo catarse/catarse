@@ -1,4 +1,4 @@
-class MigrateUserTotalViewToContributions < ActiveRecord::Migration
+class MigrateUserTotalViewToContributions < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
       DROP VIEW user_totals;

@@ -1,7 +1,7 @@
-class OptimizeContributionDetails < ActiveRecord::Migration
+class OptimizeContributionDetails < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
-      CREATE OR REPLACE VIEW "1".contribution_details AS 
+      CREATE OR REPLACE VIEW "1".contribution_details AS
        SELECT pa.id,
           c.id AS contribution_id,
           pa.id AS payment_id,
@@ -50,7 +50,7 @@ class OptimizeContributionDetails < ActiveRecord::Migration
 
   def down
     execute <<-SQL
-      CREATE OR REPLACE VIEW "1".contribution_details AS 
+      CREATE OR REPLACE VIEW "1".contribution_details AS
        SELECT pa.id,
           c.id AS contribution_id,
           pa.id AS payment_id,

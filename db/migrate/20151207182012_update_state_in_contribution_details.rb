@@ -1,4 +1,4 @@
-class UpdateStateInContributionDetails < ActiveRecord::Migration
+class UpdateStateInContributionDetails < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
 CREATE OR REPLACE FUNCTION public.update_from_details_to_contributions()

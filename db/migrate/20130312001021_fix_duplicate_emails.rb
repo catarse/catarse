@@ -1,4 +1,4 @@
-class FixDuplicateEmails < ActiveRecord::Migration
+class FixDuplicateEmails < ActiveRecord::Migration[4.2]
   def up
     execute "
     CREATE TEMP TABLE target AS SELECT min(id) id, email FROM users WHERE trim(email) <> '' GROUP BY email HAVING count(*) > 1;

@@ -8,17 +8,17 @@ module Admin
   class BaseController < ApplicationController
     inherit_resources
 
-    before_filter do
+    before_action do
       authorize Admin, :access?
     end
 
     def update
       update! do |format|
         if resource.errors.empty?
-          format.json { respond_with_bip(resource) }
+          format.json { respond_with(resource) }
         else
           format.html { render :edit }
-          format.json { respond_with_bip(resource) }
+          format.json { respond_with(resource) }
         end
       end
     end

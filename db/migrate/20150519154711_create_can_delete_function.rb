@@ -1,4 +1,4 @@
-class CreateCanDeleteFunction < ActiveRecord::Migration
+class CreateCanDeleteFunction < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
     CREATE OR REPLACE FUNCTION public.can_delete(payments)
@@ -6,7 +6,7 @@ class CreateCanDeleteFunction < ActiveRecord::Migration
      LANGUAGE sql
     AS $function$
             SELECT
-              $1.state = 'pending' 
+              $1.state = 'pending'
               AND
               (
                 SELECT count(1) AS total_of_days

@@ -1,4 +1,4 @@
-class RenameUpdatesToProjectPosts < ActiveRecord::Migration
+class RenameUpdatesToProjectPosts < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
     ALTER TABLE "updates" RENAME TO project_posts;

@@ -1,4 +1,4 @@
-class FixFinishedProjectsExpired < ActiveRecord::Migration
+class FixFinishedProjectsExpired < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
     drop materialized view "1".finished_projects;

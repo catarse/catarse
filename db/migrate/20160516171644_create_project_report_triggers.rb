@@ -1,4 +1,4 @@
-class CreateProjectReportTriggers < ActiveRecord::Migration
+class CreateProjectReportTriggers < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
     CREATE FUNCTION send_project_report() RETURNS trigger
@@ -13,7 +13,7 @@ class CreateProjectReportTriggers < ActiveRecord::Migration
     CREATE TRIGGER send_project_report AFTER INSERT ON project_reports FOR EACH ROW EXECUTE PROCEDURE send_project_report();
     CREATE TRIGGER system_notification_dispatcher AFTER INSERT ON public.project_report_notifications FOR EACH ROW EXECUTE PROCEDURE public.system_notification_dispatcher();
 
-    CREATE OR REPLACE VIEW "1".project_reports AS 
+    CREATE OR REPLACE VIEW "1".project_reports AS
     SELECT user_id, reason, project_id, email, details
     from project_reports WHERE is_owner_or_admin(user_id);
 

@@ -1,4 +1,4 @@
-class AdjustNearMeFunction < ActiveRecord::Migration
+class AdjustNearMeFunction < ActiveRecord::Migration[4.2]
   def up
     execute %Q{
 CREATE OR REPLACE FUNCTION near_me("1".projects) RETURNS boolean

@@ -1,4 +1,4 @@
-class RemoveImageUrlFromProjects < ActiveRecord::Migration
+class RemoveImageUrlFromProjects < ActiveRecord::Migration[4.2]
   def up
     execute "ALTER TABLE projects DROP IF EXISTS image_url;"
   end

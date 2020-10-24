@@ -1,4 +1,4 @@
-class ChangeVarcharToTextInChannels < ActiveRecord::Migration
+class ChangeVarcharToTextInChannels < ActiveRecord::Migration[4.2]
   def up
     execute "
       ALTER TABLE channels ALTER name TYPE text;

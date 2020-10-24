@@ -1,7 +1,7 @@
-class AdjustProjectsViewToUseProjectScoreStorageToGetScore < ActiveRecord::Migration
+class AdjustProjectsViewToUseProjectScoreStorageToGetScore < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
-CREATE OR REPLACE VIEW "1"."projects" AS 
+CREATE OR REPLACE VIEW "1"."projects" AS
  SELECT p.id AS project_id,
     p.category_id,
     p.name AS project_name,
@@ -76,7 +76,7 @@ grant select on table project_score_storages to admin, web_user, anonymous;
 
   def down
     execute <<-SQL
-CREATE OR REPLACE VIEW "1"."projects" AS 
+CREATE OR REPLACE VIEW "1"."projects" AS
  SELECT p.id AS project_id,
     p.category_id,
     p.name AS project_name,

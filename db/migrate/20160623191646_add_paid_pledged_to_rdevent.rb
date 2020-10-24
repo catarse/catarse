@@ -1,4 +1,4 @@
-class AddPaidPledgedToRdevent < ActiveRecord::Migration
+class AddPaidPledgedToRdevent < ActiveRecord::Migration[4.2]
   def up
     execute %{
 CREATE OR REPLACE FUNCTION public.rdevents_notify()

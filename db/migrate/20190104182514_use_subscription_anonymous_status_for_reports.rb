@@ -1,8 +1,8 @@
-class UseSubscriptionAnonymousStatusForReports < ActiveRecord::Migration
+class UseSubscriptionAnonymousStatusForReports < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
 
-      CREATE OR REPLACE VIEW "public"."subscription_report_for_project_owners" AS 
+      CREATE OR REPLACE VIEW "public"."subscription_report_for_project_owners" AS
         SELECT s.project_id,
             u.name,
             u.public_name,
@@ -44,7 +44,7 @@ class UseSubscriptionAnonymousStatusForReports < ActiveRecord::Migration
           GROUP BY s.project_id, u.name, u.public_name, u.email, s.checkout_data, r.title, r.description, s.status, last_paid_payment.created_at, s.created_at, u.id, last_paid_payment.data;;
       ;;
 
-      CREATE OR REPLACE VIEW "public"."subscription_monthly_report_for_project_owners" AS 
+      CREATE OR REPLACE VIEW "public"."subscription_monthly_report_for_project_owners" AS
         SELECT s.project_id,
             u.name,
             u.public_name,
@@ -83,7 +83,7 @@ class UseSubscriptionAnonymousStatusForReports < ActiveRecord::Migration
   def down
     execute <<-SQL
 
-      CREATE OR REPLACE VIEW "public"."subscription_report_for_project_owners" AS 
+      CREATE OR REPLACE VIEW "public"."subscription_report_for_project_owners" AS
         SELECT s.project_id,
             u.name,
             u.public_name,
@@ -125,7 +125,7 @@ class UseSubscriptionAnonymousStatusForReports < ActiveRecord::Migration
           GROUP BY s.project_id, u.name, u.public_name, u.email, s.checkout_data, r.title, r.description, s.status, last_paid_payment.created_at, s.created_at, u.id, last_paid_payment.data;;
       ;;
 
-      CREATE OR REPLACE VIEW "public"."subscription_monthly_report_for_project_owners" AS 
+      CREATE OR REPLACE VIEW "public"."subscription_monthly_report_for_project_owners" AS
       SELECT s.project_id,
        u.name,
        u.public_name,

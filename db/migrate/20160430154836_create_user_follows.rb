@@ -1,4 +1,4 @@
-class CreateUserFollows < ActiveRecord::Migration
+class CreateUserFollows < ActiveRecord::Migration[4.2]
   def up
     create_table :user_follows do |t|
       t.references :user, index: true

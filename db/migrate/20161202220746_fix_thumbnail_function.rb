@@ -1,4 +1,4 @@
-class FixThumbnailFunction < ActiveRecord::Migration
+class FixThumbnailFunction < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
     CREATE OR REPLACE FUNCTION thumbnail_image(projects, size text) RETURNS text
@@ -17,7 +17,7 @@ class FixThumbnailFunction < ActiveRecord::Migration
                 || COALESCE($1.uploaded_image, $1.video_thumbnail)
           $_$;
 
-    
+
     SQL
   end
 end

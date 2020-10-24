@@ -20,7 +20,7 @@ RSpec.describe Projects::ProjectReportExportsController, type: :controller do
 
     before do
       before_lazy
-      get :show, { locale: :pt, project_id: project.id, id: report_export.id}
+      get :show, params: { locale: :pt, project_id: project.id, id: report_export.id}
     end
 
     context 'when no user is logged in' do
@@ -44,7 +44,7 @@ RSpec.describe Projects::ProjectReportExportsController, type: :controller do
       let(:before_lazy) do
         report_export.fetch_report
         expect(controller).to receive(:send_data) {
-          controller.render nothing: true
+          controller.render body: nil
         }
       end
       let(:current_user) { create(:user, admin: true) }
@@ -55,7 +55,7 @@ RSpec.describe Projects::ProjectReportExportsController, type: :controller do
 
   describe 'POST create' do
     before do
-      post :create, { locale: :pt, project_id: project.id, project_report_export: create_params}
+      post :create, params: { locale: :pt, project_id: project.id, project_report_export: create_params}
     end
 
     context 'when no user is logged in' do

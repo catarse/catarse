@@ -1,4 +1,4 @@
-class AddCodeToCountries < ActiveRecord::Migration
+class AddCodeToCountries < ActiveRecord::Migration[4.2]
   def up
     add_column :countries, :code, :string, limit: 2
 

@@ -1,4 +1,4 @@
-class AddsMarketingMailUserIdToUserDetails < ActiveRecord::Migration
+class AddsMarketingMailUserIdToUserDetails < ActiveRecord::Migration[4.2]
    def up
     execute <<-SQL
 drop view "1".mail_marketing_lists;
@@ -14,7 +14,7 @@ grant select on "1".mail_marketing_lists to admin, web_user, anonymous;
 
 drop view "1".user_details;
 
-CREATE OR REPLACE VIEW "1"."user_details" AS 
+CREATE OR REPLACE VIEW "1"."user_details" AS
  SELECT u.id,
         CASE
             WHEN ((u.deactivated_at IS NOT NULL) AND (NOT is_owner_or_admin(u.id))) THEN (''::character varying(255))::text
@@ -129,7 +129,7 @@ grant select on "1".mail_marketing_lists to admin, web_user, anonymous;
 
 drop view "1".user_details;
 
-CREATE OR REPLACE VIEW "1"."user_details" AS 
+CREATE OR REPLACE VIEW "1"."user_details" AS
  SELECT u.id,
         CASE
             WHEN ((u.deactivated_at IS NOT NULL) AND (NOT is_owner_or_admin(u.id))) THEN (''::character varying(255))::text

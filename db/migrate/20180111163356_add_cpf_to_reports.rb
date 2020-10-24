@@ -1,8 +1,8 @@
 # coding: utf-8
-class AddCpfToReports < ActiveRecord::Migration
+class AddCpfToReports < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
-CREATE OR REPLACE VIEW "public"."subscription_report_for_project_owners" AS 
+CREATE OR REPLACE VIEW "public"."subscription_report_for_project_owners" AS
  SELECT s.project_id,
     u.name,
     u.public_name,
@@ -43,7 +43,7 @@ CREATE OR REPLACE VIEW "public"."subscription_report_for_project_owners" AS
   GROUP BY s.project_id, u.name, u.public_name, u.email, s.checkout_data, r.title, r.description, p.data, s.status, last_paid_payment.created_at, s.created_at, u.id, last_paid_payment.data;
 
 
-CREATE OR REPLACE VIEW "public"."subscription_monthly_report_for_project_owners" AS 
+CREATE OR REPLACE VIEW "public"."subscription_monthly_report_for_project_owners" AS
  SELECT s.project_id,
     u.name,
     u.public_name,

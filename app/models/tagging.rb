@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-class Tagging < ActiveRecord::Base
+class Tagging < ApplicationRecord
   belongs_to :project
-  belongs_to :tag
-  belongs_to :public_tag
+  belongs_to :tag, optional: true
+  belongs_to :public_tag, optional: true
 end

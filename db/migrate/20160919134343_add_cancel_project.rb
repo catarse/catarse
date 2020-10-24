@@ -1,4 +1,4 @@
-class AddCancelProject < ActiveRecord::Migration
+class AddCancelProject < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
 
@@ -15,7 +15,7 @@ class AddCancelProject < ActiveRecord::Migration
                 end if;
 
                 update project_transitions pt set most_recent = false where pt.project_id = _project_id;
-                insert into public.project_transitions (to_state, metadata, sort_key, project_id, most_recent, created_at, updated_at) 
+                insert into public.project_transitions (to_state, metadata, sort_key, project_id, most_recent, created_at, updated_at)
                 values ('failed', '{"to_state":"failed", "from_state":' || v_project.state || '}', 30, _project_id, true, current_timestamp, current_timestamp);
                 update projects set state = 'failed' where id = _project_id;
               end;

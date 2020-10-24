@@ -1,4 +1,4 @@
-class RemoveProjectsManagers < ActiveRecord::Migration
+class RemoveProjectsManagers < ActiveRecord::Migration[4.2]
   def up
     drop_table :projects_managers
   end

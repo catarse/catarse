@@ -1,4 +1,4 @@
-class AdjustRdDispacher < ActiveRecord::Migration
+class AdjustRdDispacher < ActiveRecord::Migration[4.2]
   def up
     execute %{
 CREATE OR REPLACE FUNCTION project_rdevents_dispatcher() RETURNS trigger

@@ -1,4 +1,4 @@
-class FixesPaidCountFunction < ActiveRecord::Migration
+class FixesPaidCountFunction < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
     CREATE OR REPLACE FUNCTION paid_count(rewards) RETURNS bigint AS $$

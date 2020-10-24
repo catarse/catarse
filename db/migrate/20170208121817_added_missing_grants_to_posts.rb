@@ -1,4 +1,4 @@
-class AddedMissingGrantsToPosts < ActiveRecord::Migration
+class AddedMissingGrantsToPosts < ActiveRecord::Migration[4.2]
   def up
     execute %Q{
 grant select on sendgrid_events to admin, web_user;

@@ -1,4 +1,4 @@
-class AddProjectScoreView < ActiveRecord::Migration
+class AddProjectScoreView < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
 CREATE VIEW "1".project_scores AS

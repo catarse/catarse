@@ -1,4 +1,4 @@
-class AddAntifraudCostToCatarseFeeWithoutGatewayFee < ActiveRecord::Migration
+class AddAntifraudCostToCatarseFeeWithoutGatewayFee < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
       CREATE OR REPLACE FUNCTION public.total_catarse_fee_without_gateway_fee(project projects)

@@ -1,4 +1,4 @@
-class AddSubsToUserDetails < ActiveRecord::Migration
+class AddSubsToUserDetails < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
     create or replace view "1".user_details as

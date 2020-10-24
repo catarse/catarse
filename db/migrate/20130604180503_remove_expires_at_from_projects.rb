@@ -1,4 +1,4 @@
-class RemoveExpiresAtFromProjects < ActiveRecord::Migration
+class RemoveExpiresAtFromProjects < ActiveRecord::Migration[4.2]
   def up
     execute "
     ALTER TABLE projects DROP IF EXISTS expires_at;

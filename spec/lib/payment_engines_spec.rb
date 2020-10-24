@@ -4,8 +4,8 @@
 require 'rails_helper'
 
 RSpec.describe PaymentEngines do
-  let(:contribution) { FactoryGirl.create(:contribution) }
-  let(:payment) { FactoryGirl.create(:confirmed_contribution).payments.first }
+  let(:contribution) { create(:contribution) }
+  let(:payment) { create(:confirmed_contribution).payments.first }
   let(:paypal_engine) { double }
   let(:moip_engine) { double }
 

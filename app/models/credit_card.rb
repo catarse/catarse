@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class CreditCard < ActiveRecord::Base
+class CreditCard < ApplicationRecord
   belongs_to :user
 
   validates :user, :last_digits, :card_brand, presence: true

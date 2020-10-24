@@ -1,8 +1,8 @@
-class FixProjectPostsView < ActiveRecord::Migration
+class FixProjectPostsView < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
-CREATE OR REPLACE VIEW "1"."project_contributions" AS 
- SELECT 
+CREATE OR REPLACE VIEW "1"."project_contributions" AS
+ SELECT
     c.anonymous,
     c.project_id,
     c.reward_id::numeric,

@@ -1,4 +1,4 @@
-class ProjectAccountTriggers < ActiveRecord::Migration
+class ProjectAccountTriggers < ActiveRecord::Migration[4.2]
     def up
       execute <<-SQL
 CREATE UNIQUE INDEX unq_project_id_idx

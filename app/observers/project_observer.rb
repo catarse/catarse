@@ -8,7 +8,7 @@ class ProjectObserver < ActiveRecord::Observer
   end
 
   def before_save(project)
-    if project.try(:online_days_changed?) || project.try(:expires_at).nil?
+    if project.try(:will_save_change_to_online_days?) || project.try(:expires_at).nil?
       project.update_expires_at
     end
 
@@ -20,7 +20,7 @@ class ProjectObserver < ActiveRecord::Observer
   end
 
   def after_save(project)
-    if project.try(:video_url_changed?)
+    if project.try(:saved_change_to_video_url?)
       ProjectDownloaderWorker.perform_async(project.id)
     end
 
@@ -48,7 +48,7 @@ class ProjectObserver < ActiveRecord::Observer
 
   def from_draft_to_online(project)
     project.update_expires_at
-    project.update_attributes(
+    project.update(
       published_ip: project.user.current_sign_in_ip,
       audited_user_name: project.user.name,
       audited_user_cpf: project.user.cpf,

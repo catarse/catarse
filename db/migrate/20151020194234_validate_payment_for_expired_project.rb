@@ -1,4 +1,4 @@
-class ValidatePaymentForExpiredProject < ActiveRecord::Migration
+class ValidatePaymentForExpiredProject < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
     CREATE FUNCTION public.validate_project_expires_at()

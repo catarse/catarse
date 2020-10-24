@@ -1,4 +1,4 @@
-class AddFinishedProjectsMaterializedView < ActiveRecord::Migration
+class AddFinishedProjectsMaterializedView < ActiveRecord::Migration[4.2]
   def up
     execute %Q{
 CREATE MATERIALIZED VIEW "1".finished_projects AS

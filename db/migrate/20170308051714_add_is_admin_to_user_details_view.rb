@@ -1,7 +1,7 @@
-class AddIsAdminToUserDetailsView < ActiveRecord::Migration
+class AddIsAdminToUserDetailsView < ActiveRecord::Migration[4.2]
   def change
     execute %Q{
-CREATE OR REPLACE VIEW "1"."user_details" AS 
+CREATE OR REPLACE VIEW "1"."user_details" AS
  SELECT u.id,
     u.name,
     u.address_city,

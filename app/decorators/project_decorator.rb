@@ -5,10 +5,10 @@ class ProjectDecorator < Draper::Decorator
   include Draper::LazyHelpers
 
   def show_city
-    if source.city.present?
-      source.city.show_name
-    elsif source.user.address_city.present? && source.user.address_state.present?
-      "#{source.user.address_city.capitalize}, #{source.user.address_state} "
+    if object.city.present?
+      object.city.show_name
+    elsif object.user.address_city.present? && object.user.address_state.present?
+      "#{object.user.address_city.capitalize}, #{object.user.address_state} "
     end
   end
 
@@ -21,7 +21,7 @@ class ProjectDecorator < Draper::Decorator
   end
 
   def display_status
-    source.state
+    object.state
   end
 
   def display_mailer_status
@@ -33,10 +33,10 @@ class ProjectDecorator < Draper::Decorator
   end
 
   def display_card_status
-    if source.online?
-      (source.reached_goal? ? 'reached_goal' : 'not_reached_goal')
+    if object.online?
+      (object.reached_goal? ? 'reached_goal' : 'not_reached_goal')
     else
-      source.state
+      object.state
     end
   end
 
@@ -45,38 +45,38 @@ class ProjectDecorator < Draper::Decorator
   end
 
   def display_expires_at
-    source.expires_at ? I18n.l(source.pluck_from_database('zone_expires_at').to_date) : ''
+    object.expires_at ? I18n.l(object.pluck_from_database('zone_expires_at').to_date) : ''
   end
 
   def progress
-    return 0 if source.goal == 0.0 || source.goal.nil?
-    ((source.pledged / source.goal) * 100).to_i
+    return 0 if object.goal == 0.0 || object.goal.nil?
+    ((object.pledged / object.goal) * 100).to_i
   end
 
   def display_pledged
-    number_to_currency source.pledged.floor
+    number_to_currency object.pledged.floor
   end
 
   def display_pledged_with_cents
-    number_to_currency source.pledged, precision: 2
+    number_to_currency object.pledged, precision: 2
   end
 
   def display_goal
-    number_to_currency source.goal
+    number_to_currency object.goal
   end
 
   def progress_bar
-    width = source.progress > 100 ? 100 : source.progress
+    width = object.progress > 100 ? 100 : object.progress
     content_tag(:div, nil, id: :progress, class: 'meter-fill', style: "width: #{width}%;")
   end
 
   def status_flag
     content_tag(:div, class: [:status_flag]) do
-      if source.successful?
+      if object.successful?
         image_tag "successful.#{I18n.locale}.png"
-      elsif source.failed?
+      elsif object.failed?
         image_tag "not_successful.#{I18n.locale}.png"
-      elsif source.waiting_funds?
+      elsif object.waiting_funds?
         image_tag "waiting_confirmation.#{I18n.locale}.png"
       end
     end
@@ -85,7 +85,8 @@ class ProjectDecorator < Draper::Decorator
   private
 
   def get_interval_from_db(column)
-    time_json = source.pluck_from_database(column)
+    time_json = object.pluck_from_database(column)
+    time_json = JSON.parse(time_json) if time_json.is_a?(String)
     {
       time: time_json.try(:[], 'total'),
       unit: pluralize_without_number(time_json.try(:[], 'total'), I18n.t("datetime.prompts.#{time_json.try(:[], 'unit')}").downcase)
@@ -93,14 +94,14 @@ class ProjectDecorator < Draper::Decorator
   end
 
   def use_uploaded_image(version)
-    source.uploaded_image.send(version).url if source.uploaded_image.present?
+    object.uploaded_image.send(version).url if object.uploaded_image.present?
   end
 
   def use_video_tumbnail(version)
-    if source.video_thumbnail.url.present?
-      source.video_thumbnail.send(version).url
-    elsif source.video
-      source.video.thumbnail_large
+    if object.video_thumbnail.url.present?
+      object.video_thumbnail.send(version).url
+    elsif object.video
+      object.video.thumbnail_large
     end
   rescue
     nil

@@ -1,4 +1,4 @@
-class AddUidxGatewayIdOnPayables < ActiveRecord::Migration
+class AddUidxGatewayIdOnPayables < ActiveRecord::Migration[4.2]
   def up
      execute <<-SQL
       create unique index uidx_gateway_id_gateway_payables on gateway_payables(gateway_id);

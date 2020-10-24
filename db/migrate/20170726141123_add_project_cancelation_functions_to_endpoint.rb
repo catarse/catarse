@@ -1,4 +1,4 @@
-class AddProjectCancelationFunctionsToEndpoint < ActiveRecord::Migration
+class AddProjectCancelationFunctionsToEndpoint < ActiveRecord::Migration[4.2]
   def up
     execute %Q{
 create or replace function public.user_total_balance(u public.users) returns numeric

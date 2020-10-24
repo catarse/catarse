@@ -1,4 +1,4 @@
-class MoveStatisticsToMaterializedView < ActiveRecord::Migration
+class MoveStatisticsToMaterializedView < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
       DROP VIEW "1".statistics;

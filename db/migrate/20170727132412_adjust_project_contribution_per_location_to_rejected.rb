@@ -1,7 +1,7 @@
-class AdjustProjectContributionPerLocationToRejected < ActiveRecord::Migration
+class AdjustProjectContributionPerLocationToRejected < ActiveRecord::Migration[4.2]
   def up
     execute %Q{
-CREATE OR REPLACE VIEW "1"."project_contributions_per_location" AS 
+CREATE OR REPLACE VIEW "1"."project_contributions_per_location" AS
  SELECT addr_agg.project_id,
     json_agg(json_build_object('state_acronym', addr_agg.state_acronym, 'state_name', addr_agg.state_name, 'total_contributions', addr_agg.total_contributions, 'total_contributed', addr_agg.total_contributed, 'total_on_percentage', addr_agg.total_on_percentage) ORDER BY addr_agg.state_acronym) AS source
    FROM ( SELECT p.id AS project_id,
@@ -23,7 +23,7 @@ CREATE OR REPLACE VIEW "1"."project_contributions_per_location" AS
 
   def down
     execute %Q{
-CREATE OR REPLACE VIEW "1"."project_contributions_per_location" AS 
+CREATE OR REPLACE VIEW "1"."project_contributions_per_location" AS
  SELECT addr_agg.project_id,
     json_agg(json_build_object('state_acronym', addr_agg.state_acronym, 'state_name', addr_agg.state_name, 'total_contributions', addr_agg.total_contributions, 'total_contributed', addr_agg.total_contributed, 'total_on_percentage', addr_agg.total_on_percentage) ORDER BY addr_agg.state_acronym) AS source
    FROM ( SELECT p.id AS project_id,

@@ -1,4 +1,4 @@
-class AddMultipleGoals < ActiveRecord::Migration
+class AddMultipleGoals < ActiveRecord::Migration[4.2]
   def change
     create_table :goals do |t|
       t.references :project, null: false

@@ -1,4 +1,4 @@
-class AdustProjectSearchOrdering < ActiveRecord::Migration
+class AdustProjectSearchOrdering < ActiveRecord::Migration[4.2]
   def up
     %Q{
 CREATE OR REPLACE FUNCTION "1".project_search(query text)

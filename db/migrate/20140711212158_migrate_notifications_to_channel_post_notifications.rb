@@ -1,4 +1,4 @@
-class MigrateNotificationsToChannelPostNotifications < ActiveRecord::Migration
+class MigrateNotificationsToChannelPostNotifications < ActiveRecord::Migration[4.2]
   def change
     execute "
     INSERT INTO channel_post_notifications

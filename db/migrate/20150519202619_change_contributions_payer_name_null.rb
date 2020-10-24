@@ -1,4 +1,4 @@
-class ChangeContributionsPayerNameNull < ActiveRecord::Migration
+class ChangeContributionsPayerNameNull < ActiveRecord::Migration[4.2]
   def change
     execute "UPDATE contributions SET payer_name = (SELECT coalesce(name, email, 'Usuário ' || u.id::text) FROM users u WHERE u.id = contributions.user_id) WHERE payer_name IS NULL;"
     change_column_null :contributions, :payer_name, false

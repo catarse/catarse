@@ -1,4 +1,4 @@
-class DropContributorNumbers < ActiveRecord::Migration
+class DropContributorNumbers < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
     DROP MATERIALIZED VIEW public.contributor_numbers;

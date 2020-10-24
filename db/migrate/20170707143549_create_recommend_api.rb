@@ -1,4 +1,4 @@
-class CreateRecommendApi < ActiveRecord::Migration
+class CreateRecommendApi < ActiveRecord::Migration[4.2]
   def up
     execute %Q{
 CREATE OR REPLACE VIEW "1".recommend_projects2user AS

@@ -1,4 +1,4 @@
-class AdjustUserFeed < ActiveRecord::Migration
+class AdjustUserFeed < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
       drop view user_feeds;

@@ -62,7 +62,7 @@ RSpec.describe Category, type: :model do
       end
 
       it do
-        expect(category.notifications.where(template_name: 'categorized_projects_of_the_week')).to have(1).item
+        expect(category.notifications.where(template_name: 'categorized_projects_of_the_week').count).to eq 1
       end
     end
 
@@ -74,7 +74,7 @@ RSpec.describe Category, type: :model do
       end
 
       it do
-        expect(category.notifications.where(template_name: 'categorized_projects_of_the_week')).to have(1).item
+        expect(category.notifications.where(template_name: 'categorized_projects_of_the_week').count).to eq 1
       end
     end
   end

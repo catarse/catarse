@@ -1,4 +1,4 @@
-class AddIndexToStateOnProjectTransitions < ActiveRecord::Migration
+class AddIndexToStateOnProjectTransitions < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
 CREATE INDEX to_state_project_tran_idx ON public.project_transitions ( to_state );

@@ -1,4 +1,4 @@
-class CreateFlexibleProjects < ActiveRecord::Migration
+class CreateFlexibleProjects < ActiveRecord::Migration[4.2]
   def up
     create_table :flexible_projects do |t|
       t.references :project, null: false

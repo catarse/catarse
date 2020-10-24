@@ -1,7 +1,7 @@
-class AddIsFollowToContributors < ActiveRecord::Migration
+class AddIsFollowToContributors < ActiveRecord::Migration[4.2]
   def change
     %Q{
-        CREATE OR REPLACE VIEW "1".contributors AS 
+        CREATE OR REPLACE VIEW "1".contributors AS
         SELECT u.id,
             u.id AS user_id,
             c.project_id,

@@ -1,4 +1,4 @@
-class AddReminderHandlersToProjectDetails < ActiveRecord::Migration
+class AddReminderHandlersToProjectDetails < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
       create function public.user_signed_in() returns boolean

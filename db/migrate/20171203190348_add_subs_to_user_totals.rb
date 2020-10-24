@@ -1,4 +1,4 @@
-class AddSubsToUserTotals < ActiveRecord::Migration
+class AddSubsToUserTotals < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
 
@@ -85,10 +85,10 @@ SELECT uf.user_id,
   WHERE is_owner_or_admin(uf.user_id) AND f.deactivated_at IS NULL;
 
 
-CREATE TRIGGER insert_user_follow INSTEAD OF INSERT ON "1".user_follows 
+CREATE TRIGGER insert_user_follow INSTEAD OF INSERT ON "1".user_follows
 FOR EACH ROW EXECUTE PROCEDURE public.insert_user_follow();
 
-CREATE TRIGGER delete_user_follow INSTEAD OF DELETE ON "1".user_follows 
+CREATE TRIGGER delete_user_follow INSTEAD OF DELETE ON "1".user_follows
 FOR EACH ROW EXECUTE PROCEDURE public.delete_user_follow();
 
 GRANT SELECT, INSERT, DELETE ON "1".user_follows TO admin, web_user;

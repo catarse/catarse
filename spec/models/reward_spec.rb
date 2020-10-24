@@ -12,14 +12,14 @@ RSpec.describe Reward, type: :model do
         expect(reward).to receive(:index_on_common)
       end
 
-      it { reward.update_attribute(:description, 'foo bar') }
+      it { reward.update(description: 'foo bar') }
     end
   end
 
   describe 'Log modifications' do
     describe 'when change something' do
       before do
-        reward.update_attributes(description: 'foo')
+        reward.update(description: 'foo')
       end
 
       it 'should save the last changes' do

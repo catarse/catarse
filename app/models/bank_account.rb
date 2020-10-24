@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 require 'net/http'
 
-class BankAccount < ActiveRecord::Base
+class BankAccount < ApplicationRecord
   BANK_CODE_TABLE = %w[237 001 341 033 104 399 745].freeze
   include CatarsePagarme::BankAccountConcern
   include Shared::BankAccountHelper
@@ -24,16 +24,16 @@ class BankAccount < ActiveRecord::Base
   validate :bank_account_valid
 
   def agency_validation
-    
+
     errors.delete :agency
 
     if agency == nil || agency.length == 0
-      errors.add(:agency, :blank) 
+      errors.add(:agency, :blank)
       return false
     end
 
     if agency.length != 4
-      errors.add(:agency, :format) 
+      errors.add(:agency, :format)
       return false
     end
 
@@ -69,38 +69,38 @@ class BankAccount < ActiveRecord::Base
       account_error = (account_invalid_locale + account_maximum_locale) % [7]
       errors.add(:account, account_error)
       return false
-    end 
+    end
 
     if %w[001 033].include?(bank_code.to_s) && account.length > 8
       account_error = (account_invalid_locale + account_maximum_locale) % [8]
       errors.add(:account, account_error)
       return false
-    end 
+    end
 
     if %w[341].include?(bank_code.to_s) && account.length != 5
       account_error = (account_invalid_locale + account_equal_locale) % [5]
       errors.add(:account, account_error)
       return false
-    end 
+    end
 
     if %w[104].include?(bank_code.to_s) && account.length > 11
       account_error = (account_invalid_locale + account_maximum_locale) % [11]
       errors.add(:account, account_error)
       return false
-    end 
+    end
 
     if %w[399].include?(bank_code.to_s) && account.length != 6
       account_error = (account_invalid_locale + account_equal_locale) % [6]
       errors.add(:account, account_error)
       return false
-    end 
+    end
 
     if %w[745].include?(bank_code.to_s) && account.length != 7
       account_error = (account_invalid_locale + account_equal_locale) % [7]
       errors.add(:account, account_error)
       return false
-    end 
-    
+    end
+
     return true
   end
 

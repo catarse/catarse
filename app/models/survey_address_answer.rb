@@ -1,4 +1,4 @@
-class SurveyAddressAnswer < ActiveRecord::Base
+class SurveyAddressAnswer < ApplicationRecord
   belongs_to :address
   belongs_to :contribution
 

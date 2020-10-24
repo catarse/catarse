@@ -1,4 +1,4 @@
-class AddSuccessfulProjectEndpoint < ActiveRecord::Migration
+class AddSuccessfulProjectEndpoint < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
 CREATE MATERIALIZED VIEW "1".successful_projects AS

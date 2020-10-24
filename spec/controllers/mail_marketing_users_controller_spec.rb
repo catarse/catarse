@@ -15,7 +15,7 @@ RSpec.describe MailMarketingUsersController, type: :controller do
       let!(:user) { create(:user, email: 'foo@bar.com') }
       before do
         expect(SendgridSyncWorker).to receive(:perform_async).with(user.id)
-        get :subscribe, locale: 'pt', EMAIL: "foo@bar.com", list_id: mail_list.list_id
+        get :subscribe, params: { locale: 'pt', EMAIL: "foo@bar.com", list_id: mail_list.list_id }
       end
 
       it 'should insert mail_marketing_users to user' do
@@ -34,14 +34,14 @@ RSpec.describe MailMarketingUsersController, type: :controller do
       end
 
       it "should subscribe only on sendgrid" do
-        get :subscribe, locale: 'pt', EMAIL: "foo@bar.com", list_id: mail_list.list_id
+        get :subscribe, params: { locale: 'pt', EMAIL: "foo@bar.com", list_id: mail_list.list_id }
       end
     end
 
     context 'using invalid email' do
       before do
         expect(SendgridSyncWorker).not_to receive(:perform_async)
-        get :subscribe, locale: 'pt', EMAIL: "foobar.com", list_id: mail_list.list_id
+        get :subscribe, params: { locale: 'pt', EMAIL: "foobar.com", list_id: mail_list.list_id }
       end
 
       it 'should do nothing' do
@@ -54,7 +54,7 @@ RSpec.describe MailMarketingUsersController, type: :controller do
     context 'with invalid token' do
       before do
         expect(SendgridSyncWorker).not_to receive(:perform_async)
-        get :unsubscribe, locale: 'pt', unsubcribe_token: SecureRandom.uuid
+        get :unsubscribe, params: { locale: 'pt', unsubcribe_token: SecureRandom.uuid }
       end
 
       it 'should not found' do
@@ -66,7 +66,7 @@ RSpec.describe MailMarketingUsersController, type: :controller do
       let!(:mail_marketing_user) { create(:mail_marketing_user, unsubcribe_token: SecureRandom.uuid ) }
       before do
         expect(SendgridSyncWorker).to receive(:perform_async).with(mail_marketing_user.user_id, mail_marketing_user.mail_marketing_list_id)
-        get :unsubscribe, locale: 'pt', unsubcribe_token: mail_marketing_user.unsubcribe_token
+        get :unsubscribe, params: { locale: 'pt', unsubcribe_token: mail_marketing_user.unsubcribe_token }
       end
 
       it 'should delete mail marketing user' do

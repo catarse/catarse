@@ -1,17 +1,17 @@
-class AddHasCancelationRequestToProjects < ActiveRecord::Migration
+class AddHasCancelationRequestToProjects < ActiveRecord::Migration[4.2]
   def up
     execute %Q{
 grant select on public.project_cancelations to admin, web_user, anonymous;
 CREATE OR REPLACE FUNCTION public.has_cancelation_request(p projects) RETURNS BOOLEAN
     LANGUAGE SQL AS $$
-        SELECT (case 
+        SELECT (case
           when p.state = 'rejected' then false
-          else 
+          else
             exists((select true from project_cancelations where project_id = p.id))
           end);
     $$;
 
-CREATE OR REPLACE VIEW "1"."project_details" AS 
+CREATE OR REPLACE VIEW "1"."project_details" AS
  SELECT p.id AS project_id,
     p.id,
     p.user_id,
@@ -109,7 +109,7 @@ CREATE OR REPLACE VIEW "1"."project_details" AS
 DROP FUNCTION public.has_cancelation_request(p projects);
 grant select on "1".project_details to admin, web_user, anonymous;
 drop view "1".project_details;
-CREATE OR REPLACE VIEW "1"."project_details" AS 
+CREATE OR REPLACE VIEW "1"."project_details" AS
  SELECT p.id AS project_id,
     p.id,
     p.user_id,

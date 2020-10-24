@@ -1,4 +1,4 @@
-class AbstrasctPaymentFullTextIndexGeneration < ActiveRecord::Migration
+class AbstrasctPaymentFullTextIndexGeneration < ActiveRecord::Migration[4.2]
   def up
     execute %Q{
 CREATE OR REPLACE FUNCTION public.update_payments_full_text_index()
@@ -44,7 +44,7 @@ AS $function$
                                setweight(to_tsvector(unaccent(coalesce(v_origin.referral::text, ''))), 'B') ||
                                setweight(to_tsvector(unaccent(coalesce(v_origin.domain::text, ''))), 'B');
 
-       v_full_text_index :=  v_full_text_index || 
+       v_full_text_index :=  v_full_text_index ||
                                setweight(to_tsvector(unaccent(coalesce(v_user.email::text, ''))), 'A') ||
                                setweight(to_tsvector(unaccent(coalesce(v_user.name::text, ''))), 'B');
 
@@ -88,7 +88,7 @@ AS $function$
        NEW.full_text_index :=  NEW.full_text_index ||
                                setweight(to_tsvector(unaccent(coalesce(v_origin.referral::text, ''))), 'B') ||
                                setweight(to_tsvector(unaccent(coalesce(v_origin.domain::text, ''))), 'B');
-       NEW.full_text_index :=  NEW.full_text_index || 
+       NEW.full_text_index :=  NEW.full_text_index ||
                                setweight(to_tsvector(unaccent(coalesce(v_user.email::text, ''))), 'A') ||
                                setweight(to_tsvector(unaccent(coalesce(v_user.name::text, ''))), 'B');
        NEW.full_text_index :=  NEW.full_text_index || (SELECT full_text_index FROM projects p WHERE p.id = v_contribution.project_id);

@@ -1,4 +1,4 @@
-class FinishedProjectsViewWithIntegrations < ActiveRecord::Migration
+class FinishedProjectsViewWithIntegrations < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
     drop materialized view "1".finished_projects;
@@ -35,7 +35,7 @@ class FinishedProjectsViewWithIntegrations < ActiveRecord::Migration
        (EXISTS ( SELECT true AS bool
               FROM project_reminders pr
              WHERE ((p.id = pr.project_id) AND (pr.user_id = current_user_id())))) AS saved_projects,
-             
+
        ( SELECT array_to_string(array_agg(COALESCE((integration.data ->> 'name'::text), (integration.name)::text)), ','::text) AS integration_name
               FROM project_integrations integration
              WHERE (integration.project_id = p.id)) AS integrations,

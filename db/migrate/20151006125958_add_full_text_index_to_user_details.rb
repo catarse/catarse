@@ -1,4 +1,4 @@
-class AddFullTextIndexToUserDetails < ActiveRecord::Migration
+class AddFullTextIndexToUserDetails < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
       DROP VIEW "1".user_details;

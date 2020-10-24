@@ -1,4 +1,4 @@
-class CreateMoments < ActiveRecord::Migration
+class CreateMoments < ActiveRecord::Migration[4.2]
   def up
     create_table :moments do |t|
       t.timestamps

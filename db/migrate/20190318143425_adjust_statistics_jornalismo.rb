@@ -1,4 +1,4 @@
-class AdjustStatisticsJornalismo < ActiveRecord::Migration
+class AdjustStatisticsJornalismo < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
 drop materialized view "1".statistics_jornalismo;
@@ -15,7 +15,7 @@ from (
         round(sum(last_payment.amount)FILTER(where pr.permalink='azmina')/100,2) azmina_amount,
         count(distinct s.id)FILTER(where pr.permalink='mamilos') mamilos_subscribers,
         round(sum(last_payment.amount)FILTER(where pr.permalink='mamilos')/100,2) mamilos_amount
-    
+
     from projects pr
     join common_schema.subscriptions s on s.project_id = pr.common_id and s.status='active'
     left join lateral (
@@ -67,7 +67,7 @@ grant select on "1".statistics_jornalismo to anonymous;
             round(sum(last_payment.amount)FILTER(where pr.permalink='azmina')/100,2) azmina_amount,
             count(distinct s.id)FILTER(where pr.permalink='mamilos') mamilos_subscribers,
             round(sum(last_payment.amount)FILTER(where pr.permalink='mamilos')/100,2) mamilos_amount
-        
+
         from projects pr
         join common_schema.subscriptions s on s.project_id = pr.common_id and s.status='active'
         left join lateral (
@@ -91,9 +91,9 @@ grant select on "1".statistics_jornalismo to anonymous;
             group by user_id
         )t
     )s on true;
-    
+
     create unique index statistics_jornalismo_idx on "1".statistics_jornalismo(projects);
-    
+
     grant select on "1".statistics_jornalismo to admin;
     grant select on "1".statistics_jornalismo to web_user;
     grant select on "1".statistics_jornalismo to anonymous;

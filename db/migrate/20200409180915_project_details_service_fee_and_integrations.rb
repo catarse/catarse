@@ -1,8 +1,8 @@
-class ProjectDetailsServiceFeeAndIntegrations < ActiveRecord::Migration
+class ProjectDetailsServiceFeeAndIntegrations < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
-    
-    CREATE OR REPLACE VIEW "1"."project_details" AS 
+
+    CREATE OR REPLACE VIEW "1"."project_details" AS
     SELECT
         p.id AS project_id,
         p.id,
@@ -141,7 +141,7 @@ class ProjectDetailsServiceFeeAndIntegrations < ActiveRecord::Migration
         p.content_rating,
         p.recommended,
         CASE
-            WHEN integrations_size.count > 0 THEN 
+            WHEN integrations_size.count > 0 THEN
                 (
                     select
                         json_agg(
@@ -229,7 +229,7 @@ class ProjectDetailsServiceFeeAndIntegrations < ActiveRecord::Migration
         p.expires_at,
         pt.total_payment_service_fee,
         pt.total_contributors;
-    
+
     SQL
   end
 
@@ -238,7 +238,7 @@ class ProjectDetailsServiceFeeAndIntegrations < ActiveRecord::Migration
 
     DROP VIEW "1"."project_details";
 
-    CREATE OR REPLACE VIEW "1"."project_details" AS 
+    CREATE OR REPLACE VIEW "1"."project_details" AS
     SELECT p.id AS project_id,
     p.id,
     p.user_id,

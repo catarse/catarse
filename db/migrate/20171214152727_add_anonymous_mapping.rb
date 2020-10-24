@@ -1,4 +1,4 @@
-class AddAnonymousMapping < ActiveRecord::Migration
+class AddAnonymousMapping < ActiveRecord::Migration[4.2]
   def change
     if !Rails.env.test?
       execute <<-SQL

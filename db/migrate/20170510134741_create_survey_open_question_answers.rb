@@ -1,4 +1,4 @@
-class CreateSurveyOpenQuestionAnswers < ActiveRecord::Migration
+class CreateSurveyOpenQuestionAnswers < ActiveRecord::Migration[4.2]
   def change
     create_table :survey_open_question_answers do |t|
       t.references :survey_open_question, null: false

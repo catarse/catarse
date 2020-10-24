@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Payment < ActiveRecord::Base
+class Payment < ApplicationRecord
   include Shared::StateMachineHelpers
   include Payment::PaymentEngineHandler
   include Payment::RequestRefundHandler
@@ -143,7 +143,7 @@ class Payment < ActiveRecord::Base
       payment.notify_observers :"from_#{transition.from}_to_#{transition.to}"
 
       to_column = "#{transition.to}_at".to_sym
-      payment.update_attribute(to_column, DateTime.current) if payment.has_attribute?(to_column)
+      payment.update(to_column => DateTime.current) if payment.has_attribute?(to_column)
     end
   end
 

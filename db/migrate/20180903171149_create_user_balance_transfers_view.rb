@@ -1,8 +1,8 @@
-class CreateUserBalanceTransfersView < ActiveRecord::Migration
+class CreateUserBalanceTransfersView < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
-    CREATE OR REPLACE VIEW "1"."user_balance_transfers" AS 
-    
+    CREATE OR REPLACE VIEW "1"."user_balance_transfers" AS
+
     SELECT bt.user_id,
     bt.amount,
     transfer_limit_date(bt.*) AS funding_estimated_date,
@@ -11,7 +11,7 @@ class CreateUserBalanceTransfersView < ActiveRecord::Migration
     (zone_timestamp(transferred_transition.created_at))::date AS transferred_date,
     zone_timestamp(bt.created_at) AS requested_in,
     u.name AS user_name,
-    CASE 
+    CASE
         when transferred_transition.bank_name is null then bank_account.bank_name
         else transferred_transition.bank_name
     END as bank_name,
@@ -23,7 +23,7 @@ class CreateUserBalanceTransfersView < ActiveRecord::Migration
         when transferred_transition.agency_digit is null then bank_account.agency_digit
         else transferred_transition.agency_digit
     END as agency_digit,
-    CASE 
+    CASE
         when transferred_transition.account is null then bank_account.account
         else transferred_transition.account
     END as account,
@@ -36,9 +36,9 @@ class CreateUserBalanceTransfersView < ActiveRecord::Migration
         else transferred_transition.bank_account_type
     END as account_type,
     CASE
-        when transferred_transition.document_type is null 
+        when transferred_transition.document_type is null
             then (
-                    CASE 
+                    CASE
                         when bank_account.document_type = 'pf' then 'cpf'::text
                         else 'cnpj'::text
                     END )
@@ -48,7 +48,7 @@ class CreateUserBalanceTransfersView < ActiveRecord::Migration
         when transferred_transition.document_number is null then regexp_replace(bank_account.document_number, '[^0-9]+'::text, ''::text, 'g'::text)
         else regexp_replace(transferred_transition.document_number, '[^0-9]+'::text, ''::text, 'g'::text)
     END as document_number
-    
+
    FROM ((((balance_transfers bt
         LEFT JOIN LATERAL ( SELECT ba.user_id,
                     b.name AS bank_name,
@@ -112,7 +112,7 @@ class CreateUserBalanceTransfersView < ActiveRecord::Migration
           WHERE ((btt1.balance_transfer_id = bt.id) AND ((btt1.to_state)::text <> 'authorized'::text))
           ORDER BY btt1.id DESC
          LIMIT 1) transferred_transition ON (true))
-     
+
       WHERE is_owner_or_admin(bt.user_id);
 
       grant select on "1"."user_balance_transfers" to web_user, admin;

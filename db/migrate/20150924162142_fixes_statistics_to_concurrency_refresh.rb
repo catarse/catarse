@@ -1,4 +1,4 @@
-class FixesStatisticsToConcurrencyRefresh < ActiveRecord::Migration
+class FixesStatisticsToConcurrencyRefresh < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
       create unique index statistics_total_users_idx on "1".statistics (total_users);

@@ -1,4 +1,4 @@
-class AdjustProjectCheckTrigger < ActiveRecord::Migration
+class AdjustProjectCheckTrigger < ActiveRecord::Migration[4.2]
   def up
     execute %Q{
 CREATE OR REPLACE FUNCTION public.has_error_on_project_account(pid integer) RETURNS boolean

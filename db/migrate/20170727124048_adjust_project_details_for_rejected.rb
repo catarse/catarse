@@ -1,7 +1,7 @@
-class AdjustProjectDetailsForRejected < ActiveRecord::Migration
+class AdjustProjectDetailsForRejected < ActiveRecord::Migration[4.2]
   def up
     execute %Q{
-CREATE OR REPLACE VIEW "1"."project_details" AS 
+CREATE OR REPLACE VIEW "1"."project_details" AS
  SELECT p.id AS project_id,
     p.id,
     p.user_id,
@@ -100,7 +100,7 @@ CREATE OR REPLACE VIEW "1"."project_details" AS
 
   def down
     execute %Q{
-CREATE OR REPLACE VIEW "1"."project_details" AS 
+CREATE OR REPLACE VIEW "1"."project_details" AS
  SELECT p.id AS project_id,
     p.id,
     p.user_id,

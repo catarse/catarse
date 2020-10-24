@@ -1,4 +1,4 @@
-class CreateCategoryFollowersEndpoint < ActiveRecord::Migration
+class CreateCategoryFollowersEndpoint < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
     CREATE OR REPLACE VIEW "1".category_followers AS

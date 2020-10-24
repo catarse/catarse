@@ -1,4 +1,4 @@
-class FixNearMeFunction < ActiveRecord::Migration
+class FixNearMeFunction < ActiveRecord::Migration[4.2]
   def change
     execute "
         CREATE OR REPLACE FUNCTION public.near_me(\"1\".projects)
@@ -6,7 +6,7 @@ class FixNearMeFunction < ActiveRecord::Migration
          LANGUAGE sql
          STABLE SECURITY DEFINER
         AS $function$
-          SELECT 
+          SELECT
       COALESCE($1.state_acronym, (SELECT pa.address_state FROM project_accounts pa WHERE pa.project_id = $1.project_id)) = (SELECT u.address_state FROM users u WHERE u.id = nullif(current_setting('user_vars.user_id'), '')::int)
         $function$
       "

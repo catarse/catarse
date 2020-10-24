@@ -1,4 +1,4 @@
-class AddRowOrderToRewards < ActiveRecord::Migration
+class AddRowOrderToRewards < ActiveRecord::Migration[4.2]
   def change
     add_column :rewards, :row_order, :integer
     #placeholder value as ranked-model doesn't seem to like null values

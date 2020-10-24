@@ -1,4 +1,4 @@
-class FixCategoryFollowersEndpoint < ActiveRecord::Migration
+class FixCategoryFollowersEndpoint < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
 CREATE OR REPLACE FUNCTION public.insert_category_followers()
@@ -33,16 +33,16 @@ CREATE OR REPLACE FUNCTION public.delete_category_followers()
  LANGUAGE plpgsql
 AS $function$
         begin
-          delete from public.category_followers 
-          where 
+          delete from public.category_followers
+          where
             user_id = current_user_id()
             and category_id = OLD.category_id;
           return old;
         end;
       $function$;
 
-CREATE TRIGGER delete_category_followers INSTEAD OF DELETE 
-ON "1".category_followers FOR EACH ROW 
+CREATE TRIGGER delete_category_followers INSTEAD OF DELETE
+ON "1".category_followers FOR EACH ROW
 EXECUTE PROCEDURE public.delete_category_followers();
 
 GRANT SELECT,INSERT, DELETE ON public.category_followers TO admin, web_user;

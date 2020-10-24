@@ -1,4 +1,4 @@
-class AddCountryColumnToSubscriptionMonthlyReportForProjectOwners < ActiveRecord::Migration
+class AddCountryColumnToSubscriptionMonthlyReportForProjectOwners < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
       CREATE OR REPLACE VIEW "public"."subscription_monthly_report_for_project_owners" AS

@@ -1,4 +1,4 @@
-class AddedRdeventIdToNotify < ActiveRecord::Migration
+class AddedRdeventIdToNotify < ActiveRecord::Migration[4.2]
   def up
     execute %Q{
 CREATE OR REPLACE FUNCTION public.rdevents_notify()

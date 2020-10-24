@@ -1,4 +1,4 @@
-class RefactorOrigins < ActiveRecord::Migration
+class RefactorOrigins < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
         DROP INDEX public.index_origins_on_domain_and_referral;

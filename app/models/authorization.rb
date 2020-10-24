@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
-class Authorization < ActiveRecord::Base
-  attr_accessible :oauth_provider, :oauth_provider_id, :uid, :user_id, :user
+class Authorization < ApplicationRecord
   belongs_to :user
   belongs_to :oauth_provider
 

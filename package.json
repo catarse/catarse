@@ -1,12 +1,12 @@
 {
     "engines": {
         "node": "12",
-        "npm": "6"
+        "yarn": "~1.22"
     },
     "dependencies": {
         "catarse.js": "file:./catarse.js"
     },
     "scripts": {
-        "preinstall": "cd catarse.js && npm install --dev && npm run build:prod"
+        "preinstall": "sh yarn_preinstall.sh"
     }
 }

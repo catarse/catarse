@@ -1,4 +1,4 @@
-class CreateSlipExpiresAtFunction < ActiveRecord::Migration
+class CreateSlipExpiresAtFunction < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
     CREATE FUNCTION slip_expires_at(public.payments)

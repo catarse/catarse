@@ -1,4 +1,4 @@
-class DropProjectConstraints < ActiveRecord::Migration
+class DropProjectConstraints < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
       ALTER TABLE projects DROP CONSTRAINT projects_about_not_blank;

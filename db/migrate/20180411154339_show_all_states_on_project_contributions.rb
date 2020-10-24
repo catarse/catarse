@@ -1,7 +1,7 @@
-class ShowAllStatesOnProjectContributions < ActiveRecord::Migration
+class ShowAllStatesOnProjectContributions < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
-CREATE OR REPLACE VIEW "1"."project_contributions" AS 
+CREATE OR REPLACE VIEW "1"."project_contributions" AS
  SELECT c.anonymous,
     c.project_id,
     (c.reward_id)::numeric AS reward_id,
@@ -47,7 +47,7 @@ SQL
   end
   def down
     execute <<-SQL
-CREATE OR REPLACE VIEW "1"."project_contributions" AS 
+CREATE OR REPLACE VIEW "1"."project_contributions" AS
  SELECT c.anonymous,
     c.project_id,
     (c.reward_id)::numeric AS reward_id,

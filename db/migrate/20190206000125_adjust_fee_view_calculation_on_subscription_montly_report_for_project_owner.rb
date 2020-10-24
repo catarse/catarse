@@ -1,8 +1,8 @@
-class AdjustFeeViewCalculationOnSubscriptionMontlyReportForProjectOwner < ActiveRecord::Migration
+class AdjustFeeViewCalculationOnSubscriptionMontlyReportForProjectOwner < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
     DROP VIEW subscription_monthly_report_for_project_owners;
-    CREATE OR REPLACE VIEW subscription_monthly_report_for_project_owners AS 
+    CREATE OR REPLACE VIEW subscription_monthly_report_for_project_owners AS
 SELECT s.project_id,
        u.name,
        u.public_name,
@@ -57,7 +57,7 @@ GROUP BY proj.id, s.gateway_general_data, s.project_id, u.name, u.public_name, u
   def down
     execute <<-SQL
     DROP VIEW subscription_monthly_report_for_project_owners;
-    CREATE OR REPLACE VIEW subscription_monthly_report_for_project_owners AS 
+    CREATE OR REPLACE VIEW subscription_monthly_report_for_project_owners AS
     SELECT s.project_id,
       u.name,
       u.public_name,
@@ -93,7 +93,7 @@ GROUP BY proj.id, s.gateway_general_data, s.project_id, u.name, u.public_name, u
       LEFT JOIN projects proj ON sub.project_id = proj.common_id
     WHERE (s.status = 'paid'::payment_service.payment_status)
     GROUP BY proj.id, s.gateway_general_data, s.project_id, u.name, u.public_name, u.email, s.data, r.title, r.description, s.created_at, s.updated_at, u.id, pst.created_at, sub.checkout_data;
-    
+
     grant select on subscription_monthly_report_for_project_owners to admin, web_user;
     SQL
   end

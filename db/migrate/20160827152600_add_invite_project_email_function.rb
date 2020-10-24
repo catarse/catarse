@@ -1,4 +1,4 @@
-class AddInviteProjectEmailFunction < ActiveRecord::Migration
+class AddInviteProjectEmailFunction < ActiveRecord::Migration[4.2]
   def up
     execute %Q{
 create or replace function "1".invite_project_email(data json)

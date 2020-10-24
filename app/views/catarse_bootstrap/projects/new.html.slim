@@ -25,8 +25,7 @@
               label.fontsize-large.field-label for="field"= t('simple_form.prompts.project.traffic_sources')
               = form.input :traffic_sources, as: :select, collection: t('simple_form.collections.project.traffic_sources').values, prompt: t('simple_form.prompts.project.select'), class: 'medium', label: '', required: false, hint: ''
           .w-row
-            .w-col.w-col-6.w-col-push-3   
+            .w-col.w-col-6.w-col-push-3
               = form.button :submit, t('.form.submit'), class:'btn btn-large'
 
 = render 'shared/footer'
-

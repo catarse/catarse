@@ -1,4 +1,4 @@
-class CreateUserAndPostgrestAuthSync < ActiveRecord::Migration
+class CreateUserAndPostgrestAuthSync < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
     CREATE EXTENSION pgcrypto;
@@ -11,9 +11,9 @@ class CreateUserAndPostgrestAuthSync < ActiveRecord::Migration
 
     CREATE OR REPLACE FUNCTION postgrest.update_api_user() RETURNS TRIGGER AS $$
     BEGIN
-      UPDATE postgrest.auth SET 
+      UPDATE postgrest.auth SET
         id = new.id::text,
-        rolname = CASE WHEN new.admin THEN 'admin' ELSE 'web_user' END, 
+        rolname = CASE WHEN new.admin THEN 'admin' ELSE 'web_user' END,
         pass = CASE WHEN new.authentication_token <> old.authentication_token THEN public.crypt(new.authentication_token, public.gen_salt('bf')) ELSE pass END
       WHERE id = old.id::text;
       return new;
@@ -32,7 +32,7 @@ class CreateUserAndPostgrestAuthSync < ActiveRecord::Migration
     FOR EACH ROW
     EXECUTE PROCEDURE postgrest.create_api_user();
 
-    CREATE TRIGGER update_api_user AFTER UPDATE OF id, admin, authentication_token 
+    CREATE TRIGGER update_api_user AFTER UPDATE OF id, admin, authentication_token
     ON public.users
     FOR EACH ROW
     EXECUTE PROCEDURE postgrest.update_api_user();

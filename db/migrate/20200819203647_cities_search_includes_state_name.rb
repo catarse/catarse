@@ -1,8 +1,8 @@
-class CitiesSearchIncludesStateName < ActiveRecord::Migration
+class CitiesSearchIncludesStateName < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
 
-    CREATE OR REPLACE VIEW "1"."cities" AS 
+    CREATE OR REPLACE VIEW "1"."cities" AS
       SELECT c.id,
         c.state_id,
         c.name,
@@ -19,7 +19,7 @@ class CitiesSearchIncludesStateName < ActiveRecord::Migration
   def down
     execute <<-SQL
 
-    CREATE OR REPLACE VIEW "1"."cities" AS 
+    CREATE OR REPLACE VIEW "1"."cities" AS
       SELECT c.id,
         c.state_id,
         c.name,

@@ -1,4 +1,4 @@
-class FixDefaultPermalink < ActiveRecord::Migration
+class FixDefaultPermalink < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
     alter table projects

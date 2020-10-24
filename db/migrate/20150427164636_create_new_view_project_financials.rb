@@ -1,4 +1,4 @@
-class CreateNewViewProjectFinancials < ActiveRecord::Migration
+class CreateNewViewProjectFinancials < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
      CREATE OR REPLACE VIEW project_financials AS

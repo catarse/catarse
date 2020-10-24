@@ -14,7 +14,7 @@ RSpec.describe AutoCompleteProjectsController, type: :controller do
         @project_02 = create(:project, name: 'lorem ipsum')
         @project_03 = create(:project, name: 'Dolor')
 
-        get :index, locale: :pt, pg_search: 'lorem'
+        get :index, params: { locale: :pt, pg_search: 'lorem' }
       end
 
       it { expect(assigns(:projects)).to eq([@project_01, @project_02]) }

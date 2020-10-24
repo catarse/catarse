@@ -1,8 +1,8 @@
-class RemovePostgrestAuthTable < ActiveRecord::Migration
+class RemovePostgrestAuthTable < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
     DROP SCHEMA postgrest CASCADE;
-    
+
     SQL
   end
 
@@ -20,7 +20,7 @@ class RemovePostgrestAuthTable < ActiveRecord::Migration
       CREATE FUNCTION postgrest.check_role_exists() RETURNS trigger
           LANGUAGE plpgsql
           AS $$
-      begin 
+      begin
       if not exists (select 1 from pg_roles as r where r.rolname = new.rolname) then
          raise foreign_key_violation using message = 'Cannot create user with unknown role: ' || new.rolname;
          return null;
@@ -44,9 +44,9 @@ class RemovePostgrestAuthTable < ActiveRecord::Migration
 
     CREATE OR REPLACE FUNCTION postgrest.update_api_user() RETURNS TRIGGER AS $$
     BEGIN
-      UPDATE postgrest.auth SET 
+      UPDATE postgrest.auth SET
         id = new.id::text,
-        rolname = CASE WHEN new.admin THEN 'admin' ELSE 'web_user' END, 
+        rolname = CASE WHEN new.admin THEN 'admin' ELSE 'web_user' END,
         pass = CASE WHEN new.authentication_token <> old.authentication_token THEN public.crypt(new.authentication_token, public.gen_salt('bf')) ELSE pass END
       WHERE id = old.id::text;
       return new;
@@ -65,7 +65,7 @@ class RemovePostgrestAuthTable < ActiveRecord::Migration
     FOR EACH ROW
     EXECUTE PROCEDURE postgrest.create_api_user();
 
-    CREATE TRIGGER update_api_user AFTER UPDATE OF id, admin, authentication_token 
+    CREATE TRIGGER update_api_user AFTER UPDATE OF id, admin, authentication_token
     ON public.users
     FOR EACH ROW
     EXECUTE PROCEDURE postgrest.update_api_user();

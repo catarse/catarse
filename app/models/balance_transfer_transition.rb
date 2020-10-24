@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class BalanceTransferTransition < ActiveRecord::Base
+class BalanceTransferTransition < ApplicationRecord
   belongs_to :balance_transfer, inverse_of: :transitions
 
   def bank_account

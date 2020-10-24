@@ -1,9 +1,9 @@
-class FixReportValuesCalc < ActiveRecord::Migration
+class FixReportValuesCalc < ActiveRecord::Migration[4.2]
 
   def up
     execute <<-SQL
     DROP VIEW "contribution_reports_for_project_owners";
-    CREATE OR REPLACE VIEW "public"."contribution_reports_for_project_owners" AS 
+    CREATE OR REPLACE VIEW "public"."contribution_reports_for_project_owners" AS
     SELECT b.project_id,
        COALESCE(r.id, 0) AS reward_id,
        p.user_id AS project_owner_id,
@@ -81,7 +81,7 @@ class FixReportValuesCalc < ActiveRecord::Migration
         LEFT JOIN "1".surveys su ON ((su.contribution_id = pa.contribution_id)))
         LEFT JOIN addresses add ON ((add.id = b.address_id)))
      WHERE (pa.state = ANY (ARRAY['paid'::text, 'pending'::text, 'pending_refund'::text, 'refunded'::text, 'chargeback'::text]));;
-    
+
     grant select on contribution_reports_for_project_owners to admin, web_user;
 
     SQL
@@ -90,7 +90,7 @@ class FixReportValuesCalc < ActiveRecord::Migration
   def down
     execute <<-SQL
     DROP VIEW "contribution_reports_for_project_owners";
-    CREATE OR REPLACE VIEW "contribution_reports_for_project_owners" AS 
+    CREATE OR REPLACE VIEW "contribution_reports_for_project_owners" AS
      SELECT b.project_id,
         COALESCE(r.id, 0) AS reward_id,
         p.user_id AS project_owner_id,
@@ -168,7 +168,7 @@ class FixReportValuesCalc < ActiveRecord::Migration
          LEFT JOIN "1".surveys su ON ((su.contribution_id = pa.contribution_id)))
          LEFT JOIN addresses add ON ((add.id = b.address_id)))
       WHERE (pa.state = ANY (ARRAY['paid'::text, 'pending'::text, 'pending_refund'::text, 'refunded'::text, 'chargeback'::text]));
-    
+
     grant select on contribution_reports_for_project_owners to admin, web_user;
 
     SQL

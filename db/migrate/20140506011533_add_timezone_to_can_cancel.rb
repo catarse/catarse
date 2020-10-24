@@ -1,4 +1,4 @@
-class AddTimezoneToCanCancel < ActiveRecord::Migration
+class AddTimezoneToCanCancel < ActiveRecord::Migration[4.2]
   def change
     execute "
 CREATE OR REPLACE FUNCTION public.can_cancel(contributions)

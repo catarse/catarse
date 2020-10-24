@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-class Notifier < ActionMailer::Base
-  default template_path: 'user_notifier/mailer/'
+class Notifier < ApplicationMailer
+  default template_path: 'user_notifier/mailer'
   layout UserNotifier.email_layout
 
   def notify(notification)

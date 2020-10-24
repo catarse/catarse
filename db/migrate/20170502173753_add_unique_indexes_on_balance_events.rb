@@ -1,4 +1,4 @@
-class AddUniqueIndexesOnBalanceEvents < ActiveRecord::Migration
+class AddUniqueIndexesOnBalanceEvents < ActiveRecord::Migration[4.2]
   def up
     execute %Q{
 create unique index balance_error_evt_uniq on balance_transactions(event_name, balance_transfer_id)

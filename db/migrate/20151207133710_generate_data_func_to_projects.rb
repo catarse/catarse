@@ -1,4 +1,4 @@
-class GenerateDataFuncToProjects < ActiveRecord::Migration
+class GenerateDataFuncToProjects < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
 CREATE OR REPLACE VIEW "1".project_transitions AS

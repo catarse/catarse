@@ -1,0 +1,11 @@
+// ┌────────┐
+// │ Inline │
+// └────────┘
+
+@mixin inline() {
+  display: inline-block;
+}
+
+%inline {
+  @include inline();
+}

@@ -1,4 +1,4 @@
-class MigrateProjectTotalsAndProjectFinancialsViewBackerToContribution < ActiveRecord::Migration
+class MigrateProjectTotalsAndProjectFinancialsViewBackerToContribution < ActiveRecord::Migration[4.2]
   def up
 
     # project_totals VIEW

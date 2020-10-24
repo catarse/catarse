@@ -9,7 +9,7 @@ class EmailWorker
 
     # We don't want to raise exceptions in case our notification does not exist in the database
     if resource
-      resource.update_attribute :sent_at, DateTime.now
+      resource.update(sent_at: DateTime.now)
       resource.deliver_without_worker
     else
       raise "Notification #{notification_id} not found.. sending to retry queue"

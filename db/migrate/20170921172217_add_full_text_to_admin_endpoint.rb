@@ -1,4 +1,4 @@
-class AddFullTextToAdminEndpoint < ActiveRecord::Migration
+class AddFullTextToAdminEndpoint < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
     drop view "1".admin_projects;

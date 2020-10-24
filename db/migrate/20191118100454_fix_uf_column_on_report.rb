@@ -1,4 +1,4 @@
-class FixUfColumnOnReport < ActiveRecord::Migration
+class FixUfColumnOnReport < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
     drop view public.contribution_reports_for_project_owners;

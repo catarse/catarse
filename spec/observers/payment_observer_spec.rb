@@ -76,7 +76,7 @@ RSpec.describe PaymentObserver do
   describe '#from_pending_to_paid' do
     context 'when first payment confirmation' do
       before do
-        contribution.update_attribute(:reward_id, reward.id)
+        contribution.update(reward_id: reward.id)
         expect(payment.contribution).to receive(:notify_to_contributor).with(:confirm_contribution)
         expect(ProjectScoreStorageRefreshWorker).to receive(:perform_async).with(payment.project.id)
         expect(ProjectMetricStorageRefreshWorker).to receive(:perform_async).with(payment.project.id)
@@ -112,7 +112,7 @@ RSpec.describe PaymentObserver do
 
   #describe '#from_paid_to_pending_refund' do
   #  before do
-  #    payment.update_attributes(payment_method: payment_method)
+  #    payment.update(payment_method: payment_method)
   #    payment.notify_observers :from_paid_to_pending_refund
   #  end
 
@@ -129,7 +129,7 @@ RSpec.describe PaymentObserver do
 
   describe '#from_pending_refund_to_refunded' do
     before do
-      payment.update_attributes(payment_method: payment_method)
+      payment.update(payment_method: payment_method)
     end
 
     context 'when contribution is made with credit card' do

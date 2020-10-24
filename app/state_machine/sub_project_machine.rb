@@ -52,7 +52,7 @@ class SubProjectMachine
     after_transition do |project, transition|
       project.save(validate: false) # make sure state persists even if project is invalid
       next if transition.metadata['skip_callbacks']
-      from_state = transition.metadata[:from_state]
+      from_state = transition.metadata.to_h.with_indifferent_access[:from_state]
 
       project.notify_observers :"from_#{from_state}_to_#{transition.to_state}"
       project.index_on_common

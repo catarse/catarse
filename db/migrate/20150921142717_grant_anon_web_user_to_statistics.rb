@@ -1,4 +1,4 @@
-class GrantAnonWebUserToStatistics < ActiveRecord::Migration
+class GrantAnonWebUserToStatistics < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
       grant select on "1".statistics to admin;

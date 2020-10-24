@@ -1,4 +1,4 @@
-class CreateCreditCards < ActiveRecord::Migration
+class CreateCreditCards < ActiveRecord::Migration[4.2]
   def change
     create_table :credit_cards do |t|
       t.references :user, index: true

@@ -1,4 +1,4 @@
-class AddIsSecondSlipFunctionAndAdjustContributionDetails < ActiveRecord::Migration
+class AddIsSecondSlipFunctionAndAdjustContributionDetails < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
       CREATE OR REPLACE FUNCTION public.is_second_slip(payments) RETURNS boolean

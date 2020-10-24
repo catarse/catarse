@@ -1,4 +1,4 @@
-class FixTransitionsPartialIndexes < ActiveRecord::Migration
+class FixTransitionsPartialIndexes < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
     DROP INDEX index_project_transitions_parent_most_recent;

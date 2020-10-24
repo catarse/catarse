@@ -1,4 +1,4 @@
-class AdjustMailerOnApproveProejctAccount < ActiveRecord::Migration
+class AdjustMailerOnApproveProejctAccount < ActiveRecord::Migration[4.2]
   def up
     execute %Q{
 CREATE OR REPLACE FUNCTION public.approve_project_account()

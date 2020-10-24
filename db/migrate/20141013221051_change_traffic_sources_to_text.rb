@@ -1,4 +1,4 @@
-class ChangeTrafficSourcesToText < ActiveRecord::Migration
+class ChangeTrafficSourcesToText < ActiveRecord::Migration[4.2]
   def change
     execute "DROP VIEW projects_for_home"
     change_column :projects, :traffic_sources, :text

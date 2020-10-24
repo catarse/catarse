@@ -12,7 +12,7 @@ namespace :users do
   task sync_with_mailee: :environment do
     print 'Synchronizing contacts...'
     User.where(newsletter: true).each do |user|
-      user.update_attribute :newsletter, true
+      user.update(newsletter: true)
     end
     puts 'OK!'
   end
@@ -55,7 +55,7 @@ namespace :users do
       next
     end
 
-    u.update_attribute :admin, true
+    u.update(admin: true)
     puts "#{u.name}: #{u.email} is now an administrator!"
     puts 'Done!'
     puts
@@ -74,7 +74,7 @@ namespace :users do
     end
 
     u = User.first
-    u.update_attribute :admin, true
+    u.update(admin: true)
     puts "#{u.name}: #{u.email} is now an administrator!"
     puts 'Done!'
     puts

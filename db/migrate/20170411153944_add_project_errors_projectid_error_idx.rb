@@ -1,4 +1,4 @@
-class AddProjectErrorsProjectidErrorIdx < ActiveRecord::Migration
+class AddProjectErrorsProjectidErrorIdx < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
       CREATE INDEX project_errors_projectid_error_idx

@@ -1,4 +1,4 @@
-class CreateChannelPosts < ActiveRecord::Migration
+class CreateChannelPosts < ActiveRecord::Migration[4.2]
   def change
     create_table :channel_posts do |t|
       t.text :title, null: false

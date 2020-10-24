@@ -1,4 +1,4 @@
-class ChangeVaryingCharToTextOnRewards < ActiveRecord::Migration
+class ChangeVaryingCharToTextOnRewards < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
 

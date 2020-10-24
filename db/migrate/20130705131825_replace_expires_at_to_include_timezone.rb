@@ -1,4 +1,4 @@
-class ReplaceExpiresAtToIncludeTimezone < ActiveRecord::Migration
+class ReplaceExpiresAtToIncludeTimezone < ActiveRecord::Migration[4.2]
   def up
     execute "
     DROP FUNCTION expires_at(projects);

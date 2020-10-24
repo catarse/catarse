@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class UserTransfer < ActiveRecord::Base
+class UserTransfer < ApplicationRecord
   has_notifications
   belongs_to :user
 

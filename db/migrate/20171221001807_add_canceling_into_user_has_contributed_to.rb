@@ -1,4 +1,4 @@
-class AddCancelingIntoUserHasContributedTo < ActiveRecord::Migration
+class AddCancelingIntoUserHasContributedTo < ActiveRecord::Migration[4.2]
   def up
     execute %Q{
 CREATE OR REPLACE FUNCTION public.user_has_contributed_to_project(user_id integer, project_id integer)

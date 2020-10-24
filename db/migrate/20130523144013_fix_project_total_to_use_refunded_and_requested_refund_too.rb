@@ -1,4 +1,4 @@
-class FixProjectTotalToUseRefundedAndRequestedRefundToo < ActiveRecord::Migration
+class FixProjectTotalToUseRefundedAndRequestedRefundToo < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
       CREATE OR REPLACE VIEW project_totals AS

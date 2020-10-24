@@ -1,4 +1,4 @@
-class FixProjectSearchForFlex < ActiveRecord::Migration
+class FixProjectSearchForFlex < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
 CREATE OR REPLACE FUNCTION "1".project_search(query text)

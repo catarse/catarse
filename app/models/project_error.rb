@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class ProjectError < ActiveRecord::Base
+class ProjectError < ApplicationRecord
   belongs_to :project
 
   validates :error, :to_state, presence: true

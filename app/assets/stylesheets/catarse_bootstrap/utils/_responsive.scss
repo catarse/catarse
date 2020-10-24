@@ -1,0 +1,15 @@
+// ┌────────────┐
+// │ Respond-To │
+// └────────────┘
+
+@mixin respond-to($max: null, $min: null, $type: screen) {
+  @if $max and $min {
+    @media #{$type} and (max-width: $max) and (min-width: $min) {
+      @content;
+    }
+  } @else {
+    @media #{$type} and (max-width: $max) {
+      @content;
+    }
+  }
+}

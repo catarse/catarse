@@ -1,4 +1,4 @@
-class CreateHomeBanners < ActiveRecord::Migration
+class CreateHomeBanners < ActiveRecord::Migration[4.2]
   def change
     create_table :home_banners do |t|
       t.string :title

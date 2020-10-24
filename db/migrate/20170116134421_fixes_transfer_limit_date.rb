@@ -1,4 +1,4 @@
-class FixesTransferLimitDate < ActiveRecord::Migration
+class FixesTransferLimitDate < ActiveRecord::Migration[4.2]
   def up
     execute %Q{
 CREATE OR REPLACE VIEW "1"."balance_transfers" AS

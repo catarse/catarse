@@ -1,4 +1,4 @@
-class FixesPaymentValidationFunction < ActiveRecord::Migration
+class FixesPaymentValidationFunction < ActiveRecord::Migration[4.2]
   def up
     execute %Q{
 CREATE OR REPLACE FUNCTION validate_project_expires_at() RETURNS trigger
@@ -7,8 +7,8 @@ CREATE OR REPLACE FUNCTION validate_project_expires_at() RETURNS trigger
     DECLARE
         v_project public.projects;
     BEGIN
-    SELECT * 
-        FROM public.projects p 
+    SELECT *
+        FROM public.projects p
         JOIN public.contributions c on c.project_id = p.id
         WHERE c.id = new.contribution_id
         INTO v_project;

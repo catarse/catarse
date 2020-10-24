@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require File.expand_path('../boot', __FILE__)
+require_relative 'boot'
 require 'rails/all'
 require 'sitemap_generator/tasks'
 
@@ -13,6 +13,9 @@ end
 
 module Catarse
   class Application < Rails::Application
+    # Initialize configuration defaults for originally generated Rails version.
+    config.load_defaults 6.1
+
     config.to_prepare do
       Devise::Mailer.layout 'email' # email.haml or email.erb
       VideoInfo.provider_api_keys = { youtube: CatarseSettings[:youtube_key], vimeo: CatarseSettings[:vimeo_key] }
@@ -49,7 +52,7 @@ module Catarse
     end
     config.active_record.observers = %i[
       contribution_observer survey_observer payment_observer user_observer project_post_observer project_observer
-      flexible_project_observer subscription_project_observer mixpanel_observer
+      flexible_project_observer subscription_project_observer
     ]
 
     # Enable the asset pipeline
@@ -64,12 +67,6 @@ module Catarse
     config.assets.paths << "#{Rails.root}/node_modules"
 
     config.active_record.dump_schema_after_migration = true
-
-    # TODO: remove
-    config.active_record.whitelist_attributes = false
-
-    # Do not swallow errors in after_commit/after_rollback callbacks.
-    config.active_record.raise_in_transactional_callbacks = true
 
     # Custom webpack-dev-server. Set it to true to use webpack-dev-server
     config.webpack_dev_server = false

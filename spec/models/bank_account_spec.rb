@@ -62,9 +62,12 @@ RSpec.describe BankAccount, type: :model do
   end
 
   describe '#valid?' do
+    let(:bank_account) { BankAccount.new }
+
     before do
       expect(bank_account).to receive(:load_bank_from_input_bank_number)
     end
+
     it { bank_account.valid? }
   end
 

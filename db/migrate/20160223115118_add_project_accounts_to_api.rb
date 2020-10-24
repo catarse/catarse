@@ -1,4 +1,4 @@
-class AddProjectAccountsToApi < ActiveRecord::Migration
+class AddProjectAccountsToApi < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
 CREATE OR REPLACE VIEW "1".project_accounts AS

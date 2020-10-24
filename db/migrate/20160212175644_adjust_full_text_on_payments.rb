@@ -1,4 +1,4 @@
-class AdjustFullTextOnPayments < ActiveRecord::Migration
+class AdjustFullTextOnPayments < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
 CREATE OR REPLACE FUNCTION update_payments_full_text_index() RETURNS trigger
@@ -28,7 +28,7 @@ CREATE OR REPLACE FUNCTION update_payments_full_text_index() RETURNS trigger
        NEW.full_text_index :=  NEW.full_text_index ||
                                setweight(to_tsvector(unaccent(coalesce(v_origin.referral::text, ''))), 'B') ||
                                setweight(to_tsvector(unaccent(coalesce(v_origin.domain::text, ''))), 'B');
-       NEW.full_text_index :=  NEW.full_text_index || 
+       NEW.full_text_index :=  NEW.full_text_index ||
                                setweight(to_tsvector(unaccent(coalesce(v_user.email::text, ''))), 'A') ||
                                setweight(to_tsvector(unaccent(coalesce(v_user.name::text, ''))), 'B');
        NEW.full_text_index :=  NEW.full_text_index || (SELECT full_text_index FROM projects p WHERE p.id = v_contribution.project_id);

@@ -1,4 +1,4 @@
-class AddWithdrawOperationToApi < ActiveRecord::Migration
+class AddWithdrawOperationToApi < ActiveRecord::Migration[4.2]
   def change
     execute %Q{
 create or replace function withdraw_balance() returns trigger as $$
@@ -10,7 +10,7 @@ create or replace function withdraw_balance() returns trigger as $$
         IF NOT public.is_owner_or_admin(NEW.user_id) THEN
             RAISE EXCEPTION 'insufficient privileges to insert balance_transactions';
         END IF;
-        SELECT * FROM "1".balances 
+        SELECT * FROM "1".balances
             WHERE user_id = NEW.user_id
             INTO v_balance;
         IF COALESCE(v_balance.amount, 0) <= 0 THEN

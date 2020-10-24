@@ -1,4 +1,4 @@
-class StatisticsJornalismo < ActiveRecord::Migration
+class StatisticsJornalismo < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
 
@@ -15,7 +15,7 @@ from (
         round(sum(last_payment.amount)FILTER(where pr.permalink='azmina')/100,2) azmina_amount,
         count(distinct s.id)FILTER(where pr.permalink='mamilos') mamilos_subscribers,
         round(sum(last_payment.amount)FILTER(where pr.permalink='mamilos')/100,2) mamilos_amount
-    
+
     from projects pr
     join common_schema.subscriptions s on s.project_id = pr.common_id and s.status='active'
     left join lateral (

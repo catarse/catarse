@@ -1,4 +1,4 @@
-class AddContributionIdToProjectReport < ActiveRecord::Migration
+class AddContributionIdToProjectReport < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
     create or replace view contribution_reports_for_project_owners as

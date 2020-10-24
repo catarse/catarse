@@ -8,8 +8,9 @@ RSpec.describe Project::VideoHandler, type: :model do
   describe '#download_video_thumbnail' do
     before do
       expect(project).to receive(:download_video_thumbnail).and_call_original
-      expect(project).to receive(:open).and_return(File.open("#{Rails.root}/spec/fixtures/image.png"))
-
+      expect(project).to receive(:open).and_return(File.open('spec/fixtures/files/image.png'))
+      stub_request(:any, 'https://vimeo.com/17298435')
+          .to_return(body: file_fixture('vimeo_default_request.txt'))
       project.download_video_thumbnail
     end
 

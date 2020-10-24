@@ -1,4 +1,4 @@
-class CreatePaymentsReverseIndex < ActiveRecord::Migration
+class CreatePaymentsReverseIndex < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
     create unique index ON  payments (id desc);

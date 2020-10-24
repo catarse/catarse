@@ -1,11 +1,11 @@
-class MigrateFullName < ActiveRecord::Migration
+class MigrateFullName < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
       UPDATE users set name = full_name where full_name is not null;
     SQL
-    drop_view :contribution_reports_for_project_owners
 
     execute <<-SQL
+          DROP VIEW IF EXISTS contribution_reports_for_project_owners;
           CREATE OR REPLACE VIEW contribution_reports_for_project_owners AS
           SELECT
             b.project_id,

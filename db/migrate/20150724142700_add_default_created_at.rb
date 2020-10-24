@@ -1,4 +1,4 @@
-class AddDefaultCreatedAt < ActiveRecord::Migration
+class AddDefaultCreatedAt < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
      ALTER TABLE public.contributions ALTER created_at SET DEFAULT current_timestamp;

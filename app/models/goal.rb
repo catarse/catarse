@@ -1,7 +1,7 @@
 # coding: utf-8
 # frozen_string_literal: true
 
-class Goal < ActiveRecord::Base
+class Goal < ApplicationRecord
   include I18n::Alchemy
   include Shared::CommonWrapper
   belongs_to :project

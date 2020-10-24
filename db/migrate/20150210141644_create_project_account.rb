@@ -1,4 +1,4 @@
-class CreateProjectAccount < ActiveRecord::Migration
+class CreateProjectAccount < ActiveRecord::Migration[4.2]
   def change
     create_table :project_accounts do |t|
       t.references :user, index: true, null: false

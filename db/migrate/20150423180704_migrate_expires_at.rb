@@ -1,6 +1,6 @@
-class MigrateExpiresAt < ActiveRecord::Migration
+class MigrateExpiresAt < ActiveRecord::Migration[4.2]
   def change
-    execute "UPDATE projects SET expires_at = 
+    execute "UPDATE projects SET expires_at =
  (((
   (online_date AT TIME ZONE coalesce((SELECT value FROM settings WHERE name = 'timezone'), 'America/Sao_Paulo')
    + (online_days || ' days')::interval)

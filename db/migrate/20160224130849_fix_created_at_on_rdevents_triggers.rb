@@ -1,4 +1,4 @@
-class FixCreatedAtOnRdeventsTriggers < ActiveRecord::Migration
+class FixCreatedAtOnRdeventsTriggers < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
 ALTER TABLE rdevents

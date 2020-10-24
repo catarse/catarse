@@ -4,12 +4,12 @@ require 'rails_helper'
 
 RSpec.describe ProjectUploader do
   include CarrierWave::Test::Matchers
-  let(:project) { FactoryGirl.create(:project) }
+  let(:project) { create(:project) }
 
   before do
     ProjectUploader.enable_processing = true
     @uploader = ProjectUploader.new(project, :uploaded_image)
-    @uploader.store!(File.open("#{Rails.root}/spec/fixtures/image.png"))
+    @uploader.store!(File.open('spec/fixtures/files/image.png'))
   end
 
   after do

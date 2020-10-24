@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Country < ActiveRecord::Base
+class Country < ApplicationRecord
   include Shared::CommonWrapper
   after_save :index_on_common
 

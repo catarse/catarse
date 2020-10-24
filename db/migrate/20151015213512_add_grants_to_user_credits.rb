@@ -1,4 +1,4 @@
-class AddGrantsToUserCredits < ActiveRecord::Migration
+class AddGrantsToUserCredits < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
 

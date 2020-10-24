@@ -1,4 +1,4 @@
-class AddBalanceTransferTransitionsApi < ActiveRecord::Migration
+class AddBalanceTransferTransitionsApi < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
 CREATE OR REPlACE VIEW "1".balance_transfer_transitions AS

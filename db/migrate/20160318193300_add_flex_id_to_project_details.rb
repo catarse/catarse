@@ -1,4 +1,4 @@
-class AddFlexIdToProjectDetails < ActiveRecord::Migration
+class AddFlexIdToProjectDetails < ActiveRecord::Migration[4.2]
   def change
     execute "drop view \"1\".project_details;"
     execute <<-SQL
@@ -59,8 +59,8 @@ class AddFlexIdToProjectDetails < ActiveRecord::Migration
      LEFT JOIN cities ct ON ct.id = p.city_id
      LEFT JOIN states st ON st.id = ct.state_id
      LEFT JOIN project_reminders pr ON pr.project_id = p.id
-  GROUP BY p.id, fp.id, c.id, u.id, c.name_pt, ct.name, u.address_city, st.acronym, u.address_state, st.name, pt.progress, pt.pledged, pt.total_contributions, p.state, p.expires_at, pt.total_payment_service_fee, fp.state, pt.total_contributors; 
-    
+  GROUP BY p.id, fp.id, c.id, u.id, c.name_pt, ct.name, u.address_city, st.acronym, u.address_state, st.name, pt.progress, pt.pledged, pt.total_contributions, p.state, p.expires_at, pt.total_payment_service_fee, fp.state, pt.total_contributors;
+
   SQL
   execute "GRANT SELECT ON \"1\".project_details TO admin, anonymous, web_user;"
   end

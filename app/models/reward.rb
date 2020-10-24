@@ -1,7 +1,7 @@
 # coding: utf-8
 # frozen_string_literal: true
 
-class Reward < ActiveRecord::Base
+class Reward < ApplicationRecord
   include I18n::Alchemy
   include RankedModel
   include ERB::Util
@@ -10,8 +10,8 @@ class Reward < ActiveRecord::Base
   before_destroy :check_if_is_destroyable
 
   belongs_to :project
-  has_many :payments, through: :contributions
   has_many :contributions, dependent: :nullify
+  has_many :payments, through: :contributions
   has_many :shipping_fees, dependent: :destroy
   has_one :survey
   has_one :reward_metric_storage, dependent: :destroy
@@ -22,8 +22,16 @@ class Reward < ActiveRecord::Base
   ranks :row_order, with_same: :project_id
 
   validates_presence_of :minimum_value, :description, :deliver_at, :shipping_options # , :days_to_delivery
-  validates_numericality_of :minimum_value, greater_than_or_equal_to: 10.00, message: 'Valor deve ser maior ou igual a R$ 10', if: ->() {!project.is_sub?}
-  validates_numericality_of :minimum_value, greater_than_or_equal_to: 5.00, message: 'Valor deve ser maior ou igual a R$ 5', if: ->() {project.is_sub?}
+  validates_numericality_of :minimum_value,
+    greater_than_or_equal_to: 10.00,
+    message: 'Valor deve ser maior ou igual a R$ 10',
+    if: ->{ project && !project.is_sub? }
+
+  validates_numericality_of :minimum_value,
+    greater_than_or_equal_to: 5.00,
+    message: 'Valor deve ser maior ou igual a R$ 5',
+    if: -> { project && project.is_sub? }
+
   validates_numericality_of :maximum_contributions, only_integer: true, greater_than: 0, allow_nil: true
   scope :remaining, -> {
     where("
@@ -99,7 +107,7 @@ class Reward < ActiveRecord::Base
   def check_if_is_destroyable
     if any_sold?
       project.errors.add 'reward.destroy', "can't destroy"
-      false
+      throw :abort
     end
   end
 

@@ -1,4 +1,4 @@
-class FixWeekdaysFromFunction < ActiveRecord::Migration
+class FixWeekdaysFromFunction < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
     CREATE OR REPLACE FUNCTION public.weekdays_from(weekdays integer, from_ts timestamp without time zone)

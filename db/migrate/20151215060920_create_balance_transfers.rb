@@ -1,4 +1,4 @@
-class CreateBalanceTransfers < ActiveRecord::Migration
+class CreateBalanceTransfers < ActiveRecord::Migration[4.2]
   def up
     create_table :balance_transfers do |t|
       t.integer :user_id, null: false

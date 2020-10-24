@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
-class UserCredit < ActiveRecord::Base
+class UserCredit < ApplicationRecord
   self.primary_key = :id
 end

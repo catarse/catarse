@@ -1,4 +1,4 @@
-class AddStateAndCountriesEndpoint < ActiveRecord::Migration
+class AddStateAndCountriesEndpoint < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
     CREATE MATERIALIZED VIEW "1".countries AS

@@ -1,4 +1,4 @@
-class CopyProjectCityFromProjectAccount < ActiveRecord::Migration
+class CopyProjectCityFromProjectAccount < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
 UPDATE project_accounts SET address_city = 'Curitiba' WHERE lower(address_city) = 'ctba';

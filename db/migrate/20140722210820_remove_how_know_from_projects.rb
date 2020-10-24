@@ -1,4 +1,4 @@
-class RemoveHowKnowFromProjects < ActiveRecord::Migration
+class RemoveHowKnowFromProjects < ActiveRecord::Migration[4.2]
   def up
     execute "DROP VIEW projects_for_home"
     remove_column :projects, :how_know, :text

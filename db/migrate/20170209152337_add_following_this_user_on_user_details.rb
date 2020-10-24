@@ -1,7 +1,7 @@
-class AddFollowingThisUserOnUserDetails < ActiveRecord::Migration
+class AddFollowingThisUserOnUserDetails < ActiveRecord::Migration[4.2]
   def up
     execute %Q{
-CREATE OR REPLACE VIEW "1"."user_details" AS 
+CREATE OR REPLACE VIEW "1"."user_details" AS
  SELECT u.id,
     u.name,
     u.address_city,
@@ -49,7 +49,7 @@ CREATE OR REPLACE VIEW "1"."user_details" AS
         ELSE NULL::boolean
     END) AS email_active,
     u.public_name,
-    (case when current_user = 'anonymous' then false 
+    (case when current_user = 'anonymous' then false
     else public.user_following_this_user(public.current_user_id(), u.id) end) AS following_this_user
    FROM (users u
      LEFT JOIN "1".user_totals ut ON ((ut.user_id = u.id)));
@@ -59,7 +59,7 @@ CREATE OR REPLACE VIEW "1"."user_details" AS
   def down
     execute %Q{
 DROP VIEW "1".user_details;
-CREATE OR REPLACE VIEW "1"."user_details" AS 
+CREATE OR REPLACE VIEW "1"."user_details" AS
  SELECT u.id,
     u.name,
     u.address_city,

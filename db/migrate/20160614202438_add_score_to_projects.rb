@@ -1,4 +1,4 @@
-class AddScoreToProjects < ActiveRecord::Migration
+class AddScoreToProjects < ActiveRecord::Migration[4.2]
   def up
     execute %{
 DROP FUNCTION public.score(pr "1".projects);

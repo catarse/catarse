@@ -1,4 +1,4 @@
-class AdjustsWithdrawToNotify < ActiveRecord::Migration
+class AdjustsWithdrawToNotify < ActiveRecord::Migration[4.2]
   def change
     execute %Q{
 CREATE OR REPLACE FUNCTION public.withdraw_balance()
@@ -13,7 +13,7 @@ AS $function$
         IF NOT public.is_owner_or_admin(NEW.user_id) THEN
             RAISE EXCEPTION 'insufficient privileges to insert balance_transactions';
         END IF;
-        SELECT * FROM "1".balances 
+        SELECT * FROM "1".balances
             WHERE user_id = NEW.user_id
             INTO v_balance;
         IF COALESCE(v_balance.amount, 0) <= 0 THEN

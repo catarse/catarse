@@ -1,7 +1,7 @@
-class FixesOnSlowQueryBalanceTransactions < ActiveRecord::Migration
+class FixesOnSlowQueryBalanceTransactions < ActiveRecord::Migration[4.2]
   def up
     execute %Q{
-CREATE OR REPLACE VIEW "1"."balance_transactions" AS 
+CREATE OR REPLACE VIEW "1"."balance_transactions" AS
 SELECT bt.user_id,
     sum(
         CASE
@@ -17,21 +17,21 @@ SELECT bt.user_id,
     (zone_timestamp(bt.created_at))::date AS created_at,
     json_agg(
         json_build_object(
-            'amount', bt.amount, 
-            'event_name', bt.event_name, 
-            'origin_objects', 
+            'amount', bt.amount,
+            'event_name', bt.event_name,
+            'origin_objects',
             json_build_object(
-                'service_fee', p.service_fee, 
-                'contributor_name', coalesce(fu.public_name, fu.name), 
-                'subscriber_name', coalesce(su.public_name, su.name), 
+                'service_fee', p.service_fee,
+                'contributor_name', coalesce(fu.public_name, fu.name),
+                'subscriber_name', coalesce(su.public_name, su.name),
                 'subscription_reward_label', ((r.minimum_value || ' - '::text) || r.title),
-                'id', COALESCE(bt.project_id, bt.contribution_id), 
+                'id', COALESCE(bt.project_id, bt.contribution_id),
                 'project_name', p.name
             )
         ) ORDER BY bt.id DESC
     ) AS source
    FROM balance_transactions bt
-   left join projects p on p.id = bt.project_id 
+   left join projects p on p.id = bt.project_id
    left join contributions c on c.id = bt.contribution_id
    left join users fu on fu.id = c.user_id
    left join common_schema.catalog_payments sp on sp.id = bt.subscription_payment_uuid
@@ -45,7 +45,7 @@ SELECT bt.user_id,
 
   def down
     execute %Q{
-CREATE OR REPLACE VIEW "1"."balance_transactions" AS 
+CREATE OR REPLACE VIEW "1"."balance_transactions" AS
  SELECT bt.user_id,
     sum(
         CASE

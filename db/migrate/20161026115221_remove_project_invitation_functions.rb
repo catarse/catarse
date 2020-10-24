@@ -1,4 +1,4 @@
-class RemoveProjectInvitationFunctions < ActiveRecord::Migration
+class RemoveProjectInvitationFunctions < ActiveRecord::Migration[4.2]
   def up
     execute %Q{
 DROP TRIGGER project_invite_dispatch ON project_invites;

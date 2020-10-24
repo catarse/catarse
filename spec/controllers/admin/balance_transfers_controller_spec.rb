@@ -19,7 +19,7 @@ RSpec.describe Admin::BalanceTransfersController, type: :controller do
       let(:balance_transfer) { create(:balance_transfer, project: successful_project)}
       before do
         current_user.admin_roles.create!(role_label: 'balance')
-        post :batch_approve, {transfer_ids: [balance_transfer.id]}
+        post :batch_approve, params:{ transfer_ids: [balance_transfer.id] }
       end
 
       it "should be successful" do
@@ -34,7 +34,7 @@ RSpec.describe Admin::BalanceTransfersController, type: :controller do
     context "when user has not admin roles" do
       let(:balance_transfer) { create(:balance_transfer, project: successful_project)}
       before do
-        post :batch_approve, {transfer_ids: [balance_transfer.id]}
+        post :batch_approve, params:{ transfer_ids: [balance_transfer.id] }
       end
 
       it "should be redirect" do
@@ -52,7 +52,7 @@ RSpec.describe Admin::BalanceTransfersController, type: :controller do
       let(:balance_transfer) { create(:balance_transfer, project: successful_project)}
       before do
         current_user.admin_roles.create!(role_label: 'balance')
-        post :batch_reject, {transfer_ids: [balance_transfer.id]}
+        post :batch_reject, params: { transfer_ids: [balance_transfer.id] }
       end
 
       it "should be successful" do
@@ -67,7 +67,7 @@ RSpec.describe Admin::BalanceTransfersController, type: :controller do
     context "when user has not admin roles" do
       let(:balance_transfer) { create(:balance_transfer, project: successful_project)}
       before do
-        post :batch_reject, {transfer_ids: [balance_transfer.id]}
+        post :batch_reject, params: { transfer_ids: [balance_transfer.id] }
       end
 
       it "should be redirect" do
@@ -85,7 +85,7 @@ RSpec.describe Admin::BalanceTransfersController, type: :controller do
       let(:balance_transfer) { create(:balance_transfer, project: successful_project)}
       before do
         current_user.admin_roles.create!(role_label: 'balance')
-        post :batch_manual, {transfer_ids: [balance_transfer.id]}
+        post :batch_manual, params: { transfer_ids: [balance_transfer.id] }
       end
 
       it "should be successful" do
@@ -100,7 +100,7 @@ RSpec.describe Admin::BalanceTransfersController, type: :controller do
     context "when user has not admin roles" do
       let(:balance_transfer) { create(:balance_transfer, project: successful_project)}
       before do
-        post :batch_manual, {transfer_ids: [balance_transfer.id]}
+        post :batch_manual, params: { transfer_ids: [balance_transfer.id] }
       end
 
       it "should be redirect" do

@@ -1,4 +1,4 @@
-class MigrateNotificationsTemplateNameToContribution < ActiveRecord::Migration
+class MigrateNotificationsTemplateNameToContribution < ActiveRecord::Migration[4.2]
   TEMPLATE_NAMES = [ [:backer_confirmed_after_project_was_closed, :contribution_confirmed_after_project_was_closed],
                      [:backer_project_successful, :contribution_project_successful],
                      [:backer_project_unsuccessful, :contribution_project_unsuccessful],

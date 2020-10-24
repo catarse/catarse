@@ -1,4 +1,4 @@
-class RemoveBooleanFieldsFromProjects < ActiveRecord::Migration
+class RemoveBooleanFieldsFromProjects < ActiveRecord::Migration[4.2]
   def up
     execute "
     ALTER TABLE projects DROP IF EXISTS can_finish;

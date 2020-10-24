@@ -1,4 +1,4 @@
-class CreateRewardMetricStorages < ActiveRecord::Migration
+class CreateRewardMetricStorages < ActiveRecord::Migration[4.2]
   def change
     create_table :reward_metric_storages do |t|
       t.references :reward, index: true, foreign_key: true

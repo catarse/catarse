@@ -13,7 +13,7 @@ class SessionsController < Devise::SessionsController
     if params[:redirect_to]
       redirect_to params[:redirect_to]
     elsif params[:project_id]
-      url_params = {project_id: params[:project_id].to_i, locale: ''}
+      url_params = { project_id: params[:project_id].to_i, locale: nil }
       url_params[:reward_id] = params[:reward_id].to_i if params[:reward_id] && params[:reward_id] != 'null'
       url_params[:value] = params[:value] if params[:value]
       redirect_to new_project_contribution_path(url_params)
@@ -29,7 +29,7 @@ class SessionsController < Devise::SessionsController
 
   def set_zendesk_session
     if params[:return_to] && (
-        params[:return_to].match?(/zendesk/) || 
+        params[:return_to].match?(/zendesk/) ||
         params[:return_to].match?(/suporte\.catarse/) )
       session[:zendesk_return] = params[:return_to]
     end

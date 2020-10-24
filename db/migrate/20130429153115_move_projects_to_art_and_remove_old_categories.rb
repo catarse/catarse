@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-class MoveProjectsToArtAndRemoveOldCategories < ActiveRecord::Migration
+class MoveProjectsToArtAndRemoveOldCategories < ActiveRecord::Migration[4.2]
   def up
     execute "
       UPDATE projects SET category_id = (SELECT id FROM categories WHERE name_pt = 'Arte') WHERE category_id = (SELECT id FROM categories WHERE name_pt = 'Feito à mão');

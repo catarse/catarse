@@ -1,4 +1,4 @@
-class FixUserFollowers < ActiveRecord::Migration
+class FixUserFollowers < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
     CREATE OR REPLACE VIEW "1".user_followers AS

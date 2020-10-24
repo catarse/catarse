@@ -1,7 +1,7 @@
-class ReplaceProjectDetailsAndDropOldImgFunction < ActiveRecord::Migration
+class ReplaceProjectDetailsAndDropOldImgFunction < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
-      CREATE OR REPLACE VIEW "1".project_details AS 
+      CREATE OR REPLACE VIEW "1".project_details AS
        SELECT p.id AS project_id,
           p.id,
           p.user_id,
@@ -72,7 +72,7 @@ class ReplaceProjectDetailsAndDropOldImgFunction < ActiveRecord::Migration
                         '/project_thumb_' || size || '_' || $1.uploaded_image
                   $function$;
 
-      CREATE OR REPLACE VIEW "1".project_details AS 
+      CREATE OR REPLACE VIEW "1".project_details AS
        SELECT p.id AS project_id,
           p.id,
           p.user_id,

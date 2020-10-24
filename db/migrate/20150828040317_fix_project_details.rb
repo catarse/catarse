@@ -1,4 +1,4 @@
-class FixProjectDetails < ActiveRecord::Migration
+class FixProjectDetails < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
       drop view "1".project_details;

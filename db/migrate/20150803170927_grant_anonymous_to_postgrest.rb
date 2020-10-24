@@ -1,4 +1,4 @@
-class GrantAnonymousToPostgrest < ActiveRecord::Migration
+class GrantAnonymousToPostgrest < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
     GRANT anonymous TO postgrest;

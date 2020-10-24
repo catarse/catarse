@@ -1,4 +1,4 @@
-class FixRemindersTimeout < ActiveRecord::Migration
+class FixRemindersTimeout < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
 
@@ -17,7 +17,7 @@ class FixRemindersTimeout < ActiveRecord::Migration
     and public.is_past((p.expires_at - '48 hours'::interval))
     );
     $_$;
-    
+
     SQL
   end
 end

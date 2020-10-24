@@ -1,4 +1,4 @@
-class AddCommonIdToSubscriptionsAndSubscriptionPayments < ActiveRecord::Migration
+class AddCommonIdToSubscriptionsAndSubscriptionPayments < ActiveRecord::Migration[4.2]
   def change
     remove_column :subscriptions, :gateway_subscription_id
     add_column :subscriptions, :common_id, :uuid, null: false, foreign_key: false
