@@ -84,7 +84,7 @@ pt:
       faq:
         1:
           title: 'Título, Descrição e Imagem da recompensa:'
-          description: 'Ajudam os apoiadores a entenderem e visualizarem o que você está oferecendo. Seja objetivo, criativo e transparente! Saiba neste artigo <a href="http://suporte.catarse.me/hc/pt-br/articles/212191546-Recompensas-realizadores-#o-que-oferecer" target="_blank" class="alt-link">o que você pode e o que não pode oferecer</a>  e se inspire com <a href="http://blog.catarse.me/mais-de-30-ideias-de-recompensa-para-seu-crowdfunding/" target="_blank" class="alt-link">ideias de recompensas</a>.'
+          description: 'Ajudam os apoiadores a entenderem e visualizarem o que você está oferecendo. Seja objetivo, criativo e transparente! Saiba neste artigo <a href="https://suporte.catarse.me/hc/pt-br/articles/360023813092-O-que-posso-oferecer-como-recompensa-" target="_blank" class="alt-link">o que você pode e o que não pode oferecer</a>  e se inspire com <a href="http://blog.catarse.me/mais-de-30-ideias-de-recompensa-para-seu-crowdfunding/" target="_blank" class="alt-link">ideias de recompensas</a>.'
         2:
           title: 'Valor da recompensa:'
           description: 'Indica com quanto o apoiador deve contribuir para receber a recompensa. Procure ofertar um valor justo e realista. Para te ajudar a definir esses valores, recomendamos a <a href="http://blog.catarse.me/meta-crowdfunding-calculadora-orcamento/" target="_blank" class="alt-link">Calculadora de Orçamento</a>.'
@@ -96,7 +96,7 @@ pt:
           description: 'Como será o envio da recompensa e quanto irá custar para o apoiador. Caso você adicione um valor de frete, ele será adicionado quando o apoiador selecionar a recompensa e a localidade. Lembre-se que a taxa do Catarse será aplicada também sobre o valor de frete. <a href="http://blog.catarse.me/o-calculo-de-envio-de-recompensas-financiamento-coletivo/" target="_blank" class="alt-link">Saiba mais</a>.'
         5:
           title: 'Número de recompensas:'
-          description: 'Você também pode Limitar uma recompensa para um determinado número de apoios e mudar a ordem que as recompensas aparecem em seu projeto. <a href="http://suporte.catarse.me/hc/pt-br/articles/212191546-tudo-sobre-RECOMPENSAS#como-editar" target="_blank" class="alt-link">Saiba mais</a>.'
+          description: 'Você também pode Limitar uma recompensa para um determinado número de apoios e mudar a ordem que as recompensas aparecem em seu projeto. <a href="https://suporte.catarse.me/hc/pt-br/articles/360023813232-Como-criar-editar-deletar-uma-recompensa-no-projeto-" target="_blank" class="alt-link">Saiba mais</a>.'
       minimum_value_title: 'Para R$ %{minimum_value} ou mais'
       minimum_value_subscription_title: 'R$ %{minimum_value} por mês'
       paid_contributors: '%{count} apoiadores'
@@ -314,7 +314,7 @@ pt:
       kind_link: "Se você quiser saber mais, clique aqui"
       flex:
         kind_text: "Você está participando do período de testes do modelo flexível. Sua participação é essencial para entendermos como podemos expandir esse modelo para todos os usuários. %{link}"
-    
+
     solidarity_taxes_description_html: '<div class="card u-radius u-marginbottom-30 medium u-margintop-60"><img src="https://www.catarse.me/assets/catarsesolidariablueheart.png" width="177" alt="" class="u-marginbottom-30"><div class="fontsize-small"><strong>O que é a taxa do Catarse?<br>&zwj;</strong><br>É o valor que será descontado do total arrecadado ao final da campanha, referente aos serviços do Catarse e do meio de pagamento.<br><br>Como o seu projeto faz parte do Programa Catarse Solidária, a taxa que será descontada no fim do seu projeto é definida por você mesmo. <strong>Quando você criou o seu rascunho, você disse que achava justo pagar %{percentage}% para o Catarse.</strong> <br><br><strong>Lembre-se, depois que sua campanha for publicada, você não poderá mais alterar essa taxa.</strong> Se mudou de ideia e quiser escolher outra taxa, o <a href="http://crowdfunding.catarse.me/solidaria/novo?utm_source=Catarse&amp;utm_medium=project_dashboard_goal&amp;utm_campaign=solidaria" target="_blank" class="alt-link">melhor é criar um outro rascunho.</a></div></div>'
 
     dashboard_description:
