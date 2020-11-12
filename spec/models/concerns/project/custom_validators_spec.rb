@@ -69,4 +69,52 @@ RSpec.describe Project::CustomValidators, type: :model do
     end
   end
 
+  describe '#no_base64_images' do
+    let(:project) { Project.new }
+
+    context 'when about_html has base64 images' do
+      before do
+        project.about_html = "<img src='data:image/png;base64'></img>"
+        project.valid?
+      end
+
+      it 'adds error message to about_html'  do
+        expect(project.errors[:about_html]).to include(I18n.t("errors.messages.base64_images_not_allowed"))
+      end
+    end
+
+    context 'when about_html hasn`t base64 images' do
+      before do
+        project.about_html = "<img src='image.png'></img>"
+        project.valid?
+      end
+
+      it 'don`t add error message to about_html' do
+        expect(project.errors[:about_html]).to_not include(I18n.t("errors.messages.base64_images_not_allowed"))
+      end
+    end
+
+    context 'when budget has base64 images' do
+      before do
+        project.budget = "<img src='data:image/png;base64'></img>"
+        project.valid?
+      end
+
+      it 'adds error message to budget' do
+        expect(project.errors[:budget]).to include(I18n.t("errors.messages.base64_images_not_allowed"))
+      end
+    end
+
+    context 'when budget hasn`t base64 images' do
+      before do
+        project.budget = "<img src='image.png'></img>"
+        project.valid?
+      end
+
+      it 'don`t add error message to budget' do
+        expect(project.errors[:budget]).to_not include(I18n.t("errors.messages.base64_images_not_allowed"))
+      end
+    end
+  end
+
 end

@@ -9,6 +9,7 @@ module Project::CustomValidators
     # This code might come back in a near future
     # validate :ensure_at_least_one_reward_validation, unless: :is_flexible?
     validate :validate_tags
+    validate :no_base64_images
 
     def validate_tags
       errors.add(:public_tags, :less_than_or_equal_to, count: 5) if public_tags.size > 5
@@ -35,7 +36,12 @@ module Project::CustomValidators
           I18n.t('activerecord.errors.models.project.attributes.rewards.at_least_one')
         )
       end
-    end    
+    end
+
+    def no_base64_images
+      errors.add(:about_html, :base64_images_not_allowed) if about_html.try(:match?, 'data:image/.*;base64')
+      errors.add(:budget, :base64_images_not_allowed) if budget.try(:match?, 'data:image/.*;base64')
+    end
 
   end
 end

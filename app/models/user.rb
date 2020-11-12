@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   include I18n::Alchemy
   acts_as_token_authenticatable
   include User::OmniauthHandler
+  include User::CustomValidators
   include Shared::CommonWrapper
   has_notifications
   # Include default devise modules. Others available are:

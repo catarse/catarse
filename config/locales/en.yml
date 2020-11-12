@@ -12,6 +12,7 @@ en:
       mini_magick_processing_error: "Error while handling image, Original Error: %{e}"
       min_size_error: File must be larger than %{min_size}
       max_size_error: File must be less than %{max_size}
+      base64_images_not_allowed: "Base64 images are not allowed. Please, upload images using the upload button. <a target='_blank' href='https://suporte.catarse.me/hc/pt-br/articles/360023812172-Como-adicionar-imagens-e-v%C3%ADdeos-%C3%A0-descri%C3%A7%C3%A3o-do-projeto-'> Learn more.</a>"
   not_filled: Not filled
   days: days
   facebook_locale: en
