@@ -6,16 +6,15 @@ javascript:
       status     : true, // check login status
       cookie     : true, // enable cookies to allow the server to access the session
       xfbml      : true,  // parse XFBML
-      version    : 'v2.0'
+      version    : 'v9.0'
     });
-
   };
 
   // Load the SDK Asynchronously
   (function(d){
-     var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement('script'); js.id = id; js.async = true;
-     js.src = "//connect.facebook.net/#{t('facebook_locale')}/sdk.js";
-     ref.parentNode.insertBefore(js, ref);
-   }(document));
+    var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+    if (d.getElementById(id)) {return;}
+    js = d.createElement('script'); js.id = id; js.async = true;
+    js.src = "//connect.facebook.net/#{t('facebook_locale')}/sdk.js";
+    ref.parentNode.insertBefore(js, ref);
+  }(document));

@@ -20,7 +20,7 @@ module User::OmniauthHandler
           locale: I18n.locale.to_s
         }
       ) do |user|
-        user.remote_uploaded_image_url = "https://graph.facebook.com/#{hash['uid']}/picture?type=large"
+        user.remote_uploaded_image_url = "https://graph.facebook.com/v9.0/#{hash['uid']}/picture?type=large"
       end
     end
 
