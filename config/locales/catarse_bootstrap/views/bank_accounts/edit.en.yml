@@ -8,6 +8,6 @@ en:
       request_refunds: Request refund
       input_bank_number_label: Bank Number (3 digits)
       search_bank_btn_html: Search by &nbsp;&gt;
-      document_owner_mismatch_error: "Name or document doesn't match to bank account. To change, <a href='%{profile_link}' target='_self' class='alt-link'>access your profile</a>."
-      validation_error: "Not possible to validate bank account. Try again later."
+      document_owner_mismatch_error: "Name doesn't match with the document informed. <a href='https://suporte.catarse.me/hc/pt-br/articles/360052525491' target='_blank' class='alt-link'>Know how you can solve this problem</a>."
+      validation_error: "Not possible to validate bank account. <a href='https://suporte.catarse.me/hc/pt-br/articles/360052525491' target='_blank' class='alt-link'>Know how you can solve this problem</a>."
       select_bank: "Select a bank"
