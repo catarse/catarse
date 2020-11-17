@@ -16,6 +16,11 @@ en:
       value_text: Value
       value: Value
       request_fund: Request withdrawal
+      withdraw_irrf_message_html: |
+          Creator,<br>
+          According to article 718 from RIR/2018, we must withhold income tax on the amount paid by a legal entity, due to intermediation service provided.<br>
+          <br>
+          Remember that in this case you are responsible for collecting the tax!! Check your invoice if this is your case and talk to your accountant to understand how to proceed.
       event_names:
         successful_project_pledged: Project funded project %{project_name}
         catarse_project_service_fee: Catarse Service Rate (%{service_fee}%)
