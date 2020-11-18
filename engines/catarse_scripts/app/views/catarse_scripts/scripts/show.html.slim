@@ -1,0 +1,56 @@
+= render 'layouts/catarse_scripts/code_mirror'
+
+.card
+  .m-2
+    .tile.level.mb-2
+      .tile__icon
+        .figure.avatar.avatar--small.m-0(title=@script.status class=script_status_class(@script.status))
+      .tile__container
+        h3.tile__title = @script.title
+
+    .row
+      .col-4
+        h6.m-0 = "Sent by #{@script.creator.name}"
+      - if @script.ticket_url.present?
+        .col-4
+          = link_to 'Ticket URL', @script.ticket_url, target: '_blank'
+      .col-4
+        - @script.tags.each do |tag|
+          .tag.tag--link = tag
+
+    p = @script.description
+
+    - if @script.executor.present?
+      p
+        | Executed by
+        b =< @script.executor.name
+
+    .row
+      .col-12.u-text-right
+        = link_to 'Back', :back, class: 'btn p-2 mx-1'
+
+        - if @policy.can_update?(@script)
+          = link_to 'Edit', edit_script_path(@script), class: 'btn p-2 mx-1'
+
+        - if @policy.can_destroy?(@script)
+          = link_to 'Destroy', script_path(@script), method: :delete, data: { confirm: 'Are you sure?'}, class: 'btn btn-danger p-2 mx-1'
+
+        - if @policy.can_execute?(@script)
+          = link_to 'Execute', execute_script_path(@script), method: :post, class: 'btn btn-info p-2 mx-1', data: { confirm: 'Are you sure?'}
+
+.space
+
+textarea#script_code
+  = @script.code
+
+javascript:
+    let textArea = document.getElementById('script_code')
+    var myCodeMirror = CodeMirror.fromTextArea(textArea, {
+      mode:  "ruby",
+      theme: 'dracula',
+      tabSize: 2,
+      lineNumbers: true,
+      indentWithTabs: false,
+      readOnly: true
+    });
+    myCodeMirror.setSize("100%", "100%")

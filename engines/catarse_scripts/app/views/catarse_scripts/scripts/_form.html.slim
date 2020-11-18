@@ -1,0 +1,66 @@
+= render 'layouts/catarse_scripts/code_mirror'
+= render 'layouts/catarse_scripts/tagify'
+
+.space
+
+.card
+  .content
+    .space.large
+    = form_for script do |f|
+      ul
+        - script.errors.each do |error|
+          li = error.full_message
+
+      p
+        = f.label :title
+        = f.text_field :title
+
+      p
+        = f.label :description
+        = f.text_area :description
+
+      p
+        = f.label :ticket_url
+        = f.text_field :ticket_url
+
+      p
+        = f.label :tags
+        = f.text_field :tags, value: script.tags.join(', '), data: { tags: tags }
+
+      p
+        = f.label :code
+        = f.text_area :code, value: script.code || render('code_placeholder')
+
+      p.u-text-right
+        = link_to 'Back to scripts', scripts_path, class: 'btn p-2'
+        = f.submit class: 'btn btn-primary mx-2'
+
+javascript:
+  let textArea = document.getElementById('script_code')
+  var myCodeMirror = CodeMirror.fromTextArea(textArea, {
+    mode:  "ruby",
+    theme: 'dracula',
+    tabSize: 2,
+    lineNumbers: true,
+    indentWithTabs: false
+  });
+  myCodeMirror.setSize("100%", "100%")
+
+  myCodeMirror.setOption("extraKeys", {
+    Tab: function(cm) {
+      var spaces = Array(cm.getOption("indentUnit") + 1).join(" ");
+      cm.replaceSelection(spaces);
+    }
+  });
+
+  const input = document.getElementById('script_tags')
+  const tagify = new Tagify(input, {
+    whitelist: input.dataset.tags.split(', '),
+    maxTags: 10,
+    dropdown: {
+      maxItems: 20,           // <- mixumum allowed rendered suggestions
+      classname: "tags-look", // <- custom classname for this dropdown, so it could be targeted
+      enabled: 0,             // <- show suggestions on focus
+      closeOnSelect: false    // <- do not hide the suggestions dropdown once an item has been selected
+    }
+  })

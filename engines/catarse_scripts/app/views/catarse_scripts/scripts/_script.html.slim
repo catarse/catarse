@@ -1,0 +1,17 @@
+.card
+  .mx-3
+    .space
+    .tile.tile--center
+      .tile__icon.u-center
+        .figure.avatar.avatar--xsmall(title=script.status class=script_status_class(script.status))
+      .tile__container
+        = link_to script.title, script_path(script), class: 'text-gray-900 tile__title m-0'
+        p.tile__subtitle
+          | Sent by
+          b.text-gray-900 =< script.creator.name
+    p
+      = script.description.truncate(80)
+      - script.tags.each do |tag|
+        .tag.tag--link.text-gray-000.bg-purple-500
+          = link_to tag, scripts_path(q: { tags_cont: tag }), class: 'text-gray-000'
+  .card-footer.level.content.mx-3(title=script.created_at) = time_ago_in_words(script.created_at)

@@ -1,5 +1,6 @@
 # frozen_string_literal: true
-
+require 'sidekiq/web'
+require 'sidekiq-status/web'
 class Blacklist
   def matches?(request)
     !BannedIp.exists? ip: request.remote_ip
@@ -8,6 +9,12 @@ end
 
 Catarse::Application.routes.draw do
   constraints Blacklist.new do
+    authenticate :user, lambda { |u| u.admin? } do
+      mount Sidekiq::Web => '/sidekiq'
+    end
+
+    mount CatarseScripts::Engine => '/catarse_scripts'
+
     devise_for :users, only: :omniauth_callbacks, controllers: { omniauth_callbacks: :omniauth_callbacks }
 
     scope "(:locale)", locale: /en|pt|fr/ do

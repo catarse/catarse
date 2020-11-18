@@ -1,0 +1,21 @@
+doctype html
+html
+  head
+    meta content=("text/html; charset=UTF-8") http-equiv="Content-Type"
+    meta name="viewport" content="width=device-width, initial-scale=1.0"
+    title Catarse scripts
+
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag "catarse_scripts/application", media: "all"
+    = javascript_include_tag "catarse_scripts/application"
+    link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/cirrus-ui@0.6.0/dist/cirrus.min.css" integrity="sha256-Fw+8zMyjQUP5yYjs4Fg6hViIwa051EBMgfDihtBzks8=" rel="stylesheet"
+
+  body
+    = render 'layouts/catarse_scripts/navbar'
+    .row
+      .col-2
+        = render 'layouts/catarse_scripts/sidebar'
+      .col-10
+        .content
+          = yield

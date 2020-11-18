@@ -1,0 +1,23 @@
+/ This template is i18n-ready: if you don't use i18n, then you can replace the pagy_t
+/ calls with the actual strings ("&lsaquo; Prev", "Next &rsaquo;", "&hellip;").
+
+/ The link variable is set to a proc that returns the link tag.
+/ Usage: link.call( page_number [, text [, extra_attributes_string ]])
+
+- link = pagy_link_proc(pagy)
+
+.pagination.no-bullets role="navigation" aria-label="pager"
+
+  - if pagy.prev
+    .pagination-item.pagination-prev
+      = link_to pagy_url_for(pagy.prev, pagy), class: 'u-block' do
+        h5.m-0 Previous
+  - else
+    h5.m-0.text-gray-400 Previous
+
+  - if pagy.next
+    .pagination-item.pagination-next
+      = link_to pagy_url_for(pagy.next, pagy), class: 'u-block' do
+        h5.m-0 Next
+  - else
+    h5.m-0.text-gray-400 Next

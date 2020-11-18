@@ -1,0 +1,55 @@
+= render 'layouts/catarse_scripts/tagify'
+
+= search_form_for @q do |f|
+  .row
+    .col-6
+      = f.label :status
+      = f.select :status_eq, statuses, { include_blank: 'All', selected: params.dig(:q, :status_eq) }, { class: 'input-small' }
+    .col-6
+      = f.label :creator
+      = f.select :creator_id_eq,
+        options_from_collection_for_select(creators, :id, :name, params.dig(:q, :creator_id_eq)),
+        { include_blank: 'All' },
+        { class: 'input-small' }
+
+  .row
+    .col-6
+      = f.label :title_or_description
+      = f.text_field :title_or_description_cont, class: 'input-small'
+    .col-6
+      = f.label :ticket_url
+      = f.text_field :ticket_url_eq, class: 'input-small'
+
+  .row
+    .col-12
+      = f.label :tags
+      = f.text_field :tags_contains_array, data: { tags: tags }, class: 'input-small'
+
+  .row
+    .col-6
+      = f.label :created_at_gteq, "Created At (begin date)"
+      = f.date_field :created_at_gteq, class: 'input-small'
+    .col-6
+      = f.label :created_at_lteq, "Created At (end date)"
+      = f.date_field :created_at_lteq, class: 'input-small'
+
+  .row
+    .col-12.u-text-right
+      .space
+      a.btn.btn-small.p-2(href="#anchor-to-background" aria-label="Close") Close
+      = link_to 'Clear', scripts_path, class: 'btn btn-small p-2 mx-2'
+      = f.submit class: 'btn-primary btn-small'
+
+javascript:
+  var input = document.getElementById('q_tags_contains_array')
+
+  tagify = new Tagify(input, {
+    whitelist: input.dataset.tags.split(', '),
+    maxTags: 10,
+    dropdown: {
+      maxItems: 20,           // <- mixumum allowed rendered suggestions
+      classname: "tags-look", // <- custom classname for this dropdown, so it could be targeted
+      enabled: 0,             // <- show suggestions on focus
+      closeOnSelect: false    // <- do not hide the suggestions dropdown once an item has been selected
+    }
+  })
