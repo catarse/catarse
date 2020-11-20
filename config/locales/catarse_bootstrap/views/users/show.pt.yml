@@ -17,10 +17,10 @@ pt:
       value: 'Valor'
       request_fund: 'Solicitar saque'
       withdraw_irrf_message_html: |
-          Realizador,<br>
-          De acordo com o artigo 718 do RIR/2018 devemos reter o imposto de renda na fonte sobre o valor pago por pessoa jurídica, pelo serviço prestado de intermediação.<br>
-          <br>
-          Lembre que neste caso você é responsável por recolher o imposto!! Confira em sua Nota Fiscal se este é o seu caso e converse com o seu contador para entender como proceder.
+          <b>Aviso a Realizadores com cadastro de Pessoa Jurídica:</b> De acordo com o artigo 718 do RIR/2018 devemos
+          reter o imposto de renda na fonte sobre o valor pago por pessoa jurídica, pelo serviço prestado de
+          intermediação. Lembre que neste caso você é responsável por recolher o imposto!! Confira em sua Nota Fiscal se
+          este é o seu caso e converse com o seu contador para entender como proceder.
       event_names:
         successful_project_pledged: 'Arrecadação de projeto financiado %{project_name}'
         catarse_project_service_fee: 'Taxa de serviço do Catarse (%{service_fee}%)'
