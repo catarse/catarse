@@ -4,6 +4,6 @@
         "npm": "~5.3.0"
     },
     "dependencies": {
-        "catarse.js": "git+https://github.com/catarse/catarse.js.git#2.0.48"
+        "catarse.js": "git+https://github.com/catarse/catarse.js.git#2.0.49"
     }
 }
