@@ -133,9 +133,6 @@ const paymentVM = () => {
 
     const validate = () => {
         fields.errors([]);
-        if (!fields.address().fields.validate()) {
-            return false;
-        }
 
         checkEmptyFields(['completeName']);
 
@@ -143,8 +140,9 @@ const paymentVM = () => {
             checkEmptyFields(['ownerDocument']);
             checkDocument();
         }
-
-        return _.isEmpty(fields.errors());
+        const validAddressFields = fields.address().fields.validate();
+        const validUserFields = _.isEmpty(fields.errors());
+        return validAddressFields && validUserFields;
     };
 
     const getSlipPaymentDate = (contribution_id) => {
