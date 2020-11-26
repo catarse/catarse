@@ -1,0 +1,1 @@
+export const apiCatarseAddress = 'https://api.catarse.me'

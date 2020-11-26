@@ -1,0 +1,66 @@
+{
+    "presets": [
+        [
+            "@babel/preset-typescript",
+            {
+                "allowDeclareFields": true,
+                "typeRoots": [
+                    "./legacy/spec/@types",
+                    "./legacy/src/@types"
+                ]
+            }
+        ],
+        [
+            "@babel/preset-env",
+            {
+                "targets": {
+                    "chrome": "40",
+                    "ie": "11"
+                }
+            }
+        ]
+    ],
+    "plugins": [
+        [
+            "babel-plugin-root-import",
+            {
+                "paths" : [
+                {
+                    "rootPathSuffix": "./legacy/src/",
+                    "rootPathPrefix": "@/"
+                }
+            ]
+            }
+        ],
+        "@babel/plugin-transform-typescript",
+        [
+            "@babel/plugin-transform-react-jsx",
+            {
+                "pragma": "m",
+                "pragmaFrag": "'['"
+            }
+        ],
+        [
+            "@babel/plugin-transform-runtime",
+            {
+                "corejs": 3,
+                "regenerator": true,
+                "useESModules": false
+            }
+        ],
+        "@babel/plugin-transform-parameters",
+        "@babel/plugin-syntax-async-generators",
+        [
+            "@babel/plugin-transform-for-of",
+            {
+                "assumeArray": true // defaults to false
+            }
+        ],
+        "@babel/plugin-transform-classes",
+        "@babel/plugin-transform-destructuring",
+        "@babel/plugin-proposal-class-properties",
+        "@babel/plugin-proposal-object-rest-spread",
+        "@babel/plugin-transform-shorthand-properties",
+        "@babel/plugin-transform-eval"
+    ]
+}

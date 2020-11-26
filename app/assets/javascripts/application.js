@@ -17,5 +17,4 @@
 //= require jquery_ujs
 //= require best_in_place
 //= require jquery-ui
-//= require underscore/underscore-min.js
 //= require ./lib/replace-diacritics.js

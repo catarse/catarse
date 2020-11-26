@@ -1,0 +1,12 @@
+[ignore]
+.*/bower_components/.*
+.*/node_modules/.*
+.*/dist/.*
+.*/spec/.*
+.*/compiled/.*
+
+[include]
+
+[libs]
+
+[options]

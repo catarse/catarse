@@ -1,0 +1,8 @@
+languages:
+  Ruby: true
+  JavaScript: true
+  PHP: true
+  Python: true
+exclude_paths:
+- "dist/catarse.js"
+- "dist/catarse.min.js"

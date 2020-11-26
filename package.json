@@ -1,9 +1,12 @@
 {
     "engines": {
-        "node": "~8.2.1",
-        "npm": "~5.3.0"
+        "node": "12",
+        "npm": "6"
     },
     "dependencies": {
-        "catarse.js": "git+https://github.com/catarse/catarse.js.git#2.0.50"
+        "catarse.js": "file:./catarse.js"
+    },
+    "scripts": {
+        "preinstall": "cd catarse.js && npm install --dev && npm run build:prod"
     }
 }
