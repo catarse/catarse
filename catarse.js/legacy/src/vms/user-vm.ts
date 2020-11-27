@@ -2,13 +2,29 @@ import m from 'mithril';
 import prop from 'mithril/stream';
 import _ from 'underscore';
 import { catarse, commonPayment } from '../api';
+import { UserDetails } from '../entities';
 import h from '../h';
 import models from '../models';
 import projectFilters from './project-filters-vm';
 
 const idVM = h.idVM,
     currentUser = prop({}),
-    createdVM = catarse.filtersVM({ project_user_id: 'eq' });
+    createdVM = catarse.filtersVM({ project_user_id: 'eq' }),
+    myUser = h.RedrawStream<UserDetails>(null);
+
+async function getMyUser() : Promise<UserDetails | null> {
+    if (h.getUserID() && myUser() === null) {
+        try {
+            const usersLoadResult = await fetchUser(h.getUserID(), false)
+            myUser(_.first(usersLoadResult))
+            return myUser()
+        } catch(error) {
+            console.log('Error loading logged in user', error)
+        }
+    } else {
+        return myUser()
+    }
+}
 
 const getUserCreatedProjects = (user_id, pageSize = 3) => {
     createdVM.project_user_id(user_id).order({ project_id: 'desc' });
@@ -166,7 +182,6 @@ const fetchUser = (user_id, handlePromise = true, customProp = currentUser) => {
     if (!handlePromise) {
         return lUser.load();
     } else {
-        customProp(currentUser()); // first load user from cache
         lUser
             .load()
             .then(
@@ -183,6 +198,14 @@ const fetchUser = (user_id, handlePromise = true, customProp = currentUser) => {
 const getCurrentUser = () => {
     fetchUser(h.getUserID());
     return currentUser;
+};
+
+const firstDisplayName = user => {
+    const name = userVM.displayName(user)
+    if (!!name) {
+        return name.split(' ')[0]
+    }
+    return ''
 };
 
 const displayName = user => {
@@ -299,6 +322,7 @@ const userVM = {
     displayImage,
     displayCover,
     displayName,
+    firstDisplayName,
     fetchUser,
     getCurrentUser,
     currentUser,
@@ -307,6 +331,8 @@ const userVM = {
     get isLoggedIn() {
         return h.getUserID() !== null;
     },
+    getMyUser,
+    myUser
 };
 
 export default userVM;

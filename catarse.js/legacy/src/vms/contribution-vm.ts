@@ -5,8 +5,16 @@ import prop from 'mithril/stream';
 import moment from 'moment';
 import _ from 'underscore';
 import models from '../models';
+import { RewardDetails } from '../entities';
 
-const currentContribution = prop({});
+type ContributionSSRData = {
+    id: number
+    reward?: RewardDetails
+    shipping_fee_id: number
+    value: number
+}
+
+const currentContribution = prop<ContributionSSRData | null>(null);
 
 const getUserProjectContributions = (userId, projectId, states) => {
     const vm = catarse.filtersVM({
@@ -24,18 +32,16 @@ const getUserProjectContributions = (userId, projectId, states) => {
     return lProjectContributions.load();
 };
 
-const getCurrentContribution = () => {
+const getCurrentContribution = (): ContributionSSRData | null => {
     const root = document.getElementById('application'),
         data = root && root.getAttribute('data-contribution');
 
     if (data) {
         currentContribution(JSON.parse(data));
-
-        m.redraw(true);
-
-        return currentContribution;
+        h.redraw();
+        return currentContribution();
     }
-    return false;
+    return null;
 };
 
 const wasConfirmed = contribution => _.contains(['paid', 'pending_refund', 'refunded'], contribution.state);

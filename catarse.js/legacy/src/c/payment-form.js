@@ -8,8 +8,8 @@ import paymentCreditCard from './payment-credit-card';
 const I18nScope = _.partial(h.i18nScope, 'projects.contributions.edit');
 const I18nIntScope = _.partial(h.i18nScope, 'projects.contributions.edit_international');
 
-const paymentForm = {
-    oninit: function(vnode) {
+export default class PaymentForm {
+    oninit(vnode) {
         const isSlip = prop(false),
             scope = () => vnode.attrs.vm.isInternational()
                        ? I18nIntScope()
@@ -19,8 +19,9 @@ const paymentForm = {
             scope,
             vm: vnode.attrs.vm
         };
-    },
-    view: function({state, attrs}) {
+    }
+
+    view({state, attrs}) {
         return m('#catarse_pagarme_form', [
             m('.u-text-center-small-only.u-marginbottom-30', [
                 m('.fontsize-large.fontweight-semibold',
@@ -60,6 +61,4 @@ const paymentForm = {
             ]) : ''
         ]);
     }
-};
-
-export default paymentForm;
+}

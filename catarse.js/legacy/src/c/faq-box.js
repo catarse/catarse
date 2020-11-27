@@ -6,8 +6,8 @@ import h from '../h';
 
 const I18nScope = _.partial(h.i18nScope, 'projects.faq');
 
-const faqBox = {
-    oninit: function(vnode) {
+export default class FaqBox {
+    oninit(vnode) {
         const mode = vnode.attrs.mode === 'sub' && vnode.attrs.isEdit ? vnode.attrs.isReactivate ? 'sub_reactivate' : 'sub_edit' : vnode.attrs.mode,
             questions = vnode.attrs.faq.questions,
             selectedQuestion = prop(-1),
@@ -48,8 +48,9 @@ const faqBox = {
             selectedQuestion,
             tKey
         };
-    },
-    view: function({state, attrs}) {
+    }
+
+    view({state, attrs}) {
         const image = attrs.mode === 'sub'
             ? m('div', m('img.u-marginbottom-10[width="130"][src="/assets/catarse_bootstrap/badge-sub-h.png"]'))
             : m('.w-col.w-col-2.w-col-small-2.w-col-tiny-2',
@@ -92,6 +93,4 @@ const faqBox = {
             ]
         );
     }
-};
-
-export default faqBox;
+}
