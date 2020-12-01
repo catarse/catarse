@@ -8,11 +8,13 @@ import railsErrorsVM from '../vms/rails-errors-vm';
 import popNotification from './pop-notification';
 import inlineError from './inline-error';
 import projectEditSaveBtn from './project-edit-save-btn';
+import textEditor from '../shared/components/text-editor';
 
 const userAboutEdit = {
     oninit: function(vnode) {
         let parsedErrors = userAboutVM.mapRailsErrors(railsErrorsVM.railsErrors());
         let deleteUser;
+        const userId = vnode.attrs.userId;
         const user = vnode.attrs.user || {},
             fields = {
                 password: prop(''),
@@ -51,6 +53,7 @@ const userAboutEdit = {
                     fields.twitter(data.twitter_username);
                     fields.links(data.links);
                     fields.about_html(data.about_html);
+                    h.redraw();
                 });
             },
             uploadImage = () => {
@@ -69,7 +72,7 @@ const userAboutEdit = {
 
                     return m.request({
                         method: 'POST',
-                        url: `/users/${user.id}/upload_image.json`,
+                        url: `/users/${userId}/upload_image.json`,
                         data: formData,
                         config: h.setCsrfToken,
                         serialize(data) {
@@ -117,7 +120,7 @@ const userAboutEdit = {
 
                 return m.request({
                     method: 'PUT',
-                    url: `/users/${user.id}.json`,
+                    url: `/users/${userId}.json`,
                     data: {
                         user: userData
                     },
@@ -196,6 +199,7 @@ const userAboutEdit = {
             };
         // Temporary fix for the menu selection bug. Should be fixed/removed as soon as we route all tabs from mithril.
         setTimeout(m.redraw, 0);
+        updateFieldsFromUser();
 
         vnode.state = {
             removeLinks,
@@ -388,7 +392,13 @@ const userAboutEdit = {
                                             m('.w-form',
                                                 m('.preview-container.u-marginbottom-40', {
                                                     class: state.parsedErrors.hasError('about_html') ? 'error' : false
-                                                }, h.redactor('user[about_html]', fields.about_html)),
+                                                },
+                                                    m(textEditor, {
+                                                        name: 'user[about_html]',
+                                                        value: fields.about_html(),
+                                                        onChange: (newValue) => fields.about_html(newValue)
+                                                    })
+                                                ),
                                                 state.parsedErrors.inlineError('about_html')
                                             )
                                         ])

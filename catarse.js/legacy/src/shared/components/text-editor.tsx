@@ -35,6 +35,10 @@ function TextEditor(props : TextEditorProps) {
         <textarea
             name={name}
             class="input_field redactor w-input text-field bottom jumbo positive"
+            onupdate={vnodeInner => {
+                const $editor = $(vnodeInner.dom)
+                $editor.redactor('code.set', value)
+            }}
             oncreate={vnodeInner => {
                 const $editor = $(vnodeInner.dom)
                 const csrf_token = h.authenticityToken()
