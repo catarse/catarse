@@ -29,7 +29,7 @@ const projectsSubscriptionCheckout = {
             ViewContentEvent,
             AddToCartEvent
         } = projectVM;
-        
+
         projectVM.sendPageViewForCurrentProject(null, [ ViewContentEvent(), AddToCartEvent() ]);
         projectVM.getCurrentProject();
 
@@ -91,8 +91,10 @@ const projectsSubscriptionCheckout = {
         const validateForm = () => {
             if (vm.validate()) {
                 showPaymentForm(true);
-                h.redraw();
+            } else {
+                h.scrollTop();
             }
+            h.redraw();
         };
 
         const fieldHasError = (fieldName) => {

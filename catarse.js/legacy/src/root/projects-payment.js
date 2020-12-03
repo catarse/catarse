@@ -23,12 +23,12 @@ const I18nIntScope = _.partial(h.i18nScope, 'projects.contributions.edit_interna
 
 const projectsPayment = {
     oninit: function (vnode) {
-        
+
         const {
             ViewContentEvent,
             AddToCartEvent
         } = projectVM;
-        
+
         projectVM.sendPageViewForCurrentProject(null, [ ViewContentEvent(), AddToCartEvent() ]);
 
         const project = projectVM.currentProject;
@@ -43,7 +43,7 @@ const projectsPayment = {
         const currentUserID = h.getUserID();
         const countriesLoader = catarse.loader(models.country.getPageOptions());
         const user = usersVM.getCurrentUser();
-        
+
         vm.fields.address().setFields(vnode.attrs.address || vm.fields.address());
 
         const shippingFee = () =>
@@ -55,8 +55,10 @@ const projectsPayment = {
             if (vm.validate()) {
                 vm.kondutoExecute();
                 showPaymentForm(true);
-                h.redraw();
+            } else {
+                h.scrollTop();
             }
+            h.redraw();
         };
 
         const fieldHasError = fieldName => {
