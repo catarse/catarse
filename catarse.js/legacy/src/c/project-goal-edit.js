@@ -12,12 +12,12 @@ import { SolidarityProjectDescription } from './solidarity-project-description';
 const I18nScope = _.partial(h.i18nScope, 'projects.dashboard_goal');
 
 const projectGoalEdit = {
-    oninit: function(vnode) {
+    oninit: function (vnode) {
         const vm = projectGoalVM,
             mapErrors = [
-                  ['mode', ['mode']],
-                  ['goal', ['goal']],
-                  ['online_days', ['online_days']]
+                ['mode', ['mode']],
+                ['goal', ['goal']],
+                ['online_days', ['online_days']]
             ],
             showSuccess = h.toggleProp(false, true),
             showError = h.toggleProp(false, true),
@@ -61,10 +61,10 @@ const projectGoalEdit = {
             loading,
         };
     },
-    view: function({state, attrs}) {
+    view: function ({ state, attrs }) {
         const vm = state.vm;
         const serviceFee = (vm.fields.service_fee() * 100).toFixed(2).replace(/(\.|,)?0+$/g, '');
-        
+
         return m('#goal-tab', [
             (state.showSuccess() ? m(popNotification, {
                 message: window.I18n.t('shared.successful_update'),
@@ -155,7 +155,7 @@ const projectGoalEdit = {
                                     (
                                         vm.fields.is_solidarity() ?
                                             m(SolidarityProjectDescription, { percentage: serviceFee })
-                                        :
+                                            :
                                             (
                                                 m('.u-text-center.fontsize-smaller.fontweight-semibold', [
                                                     m('a.fee-toggle.link-hidden-light[href="javascript:void(0)"]', {
@@ -192,7 +192,8 @@ const projectGoalEdit = {
                                                     m('.input.integer.optional.disabled.project_online_days', [
                                                         m('label.field-label'),
                                                         m('input.numeric.integer.optional.disabled.w-input.text-field.positive.medium[id="project_online_days"][name="project[online_days]"][type="number"]', {
-                                                            onchange: m.withAttr('value', vm.fields.online_days),
+                                                            onchange: (event) => vm.fields.online_days(event.target.value),
+                                                            oninput: (event) => vm.fields.online_days(event.target.value),
                                                             value: vm.fields.online_days(),
                                                             class: vm.e.hasError('online_days') ? 'error' : false
                                                         })
@@ -207,43 +208,50 @@ const projectGoalEdit = {
                                         ])
                                     ])
                                 ] : [
-                                    m('.flex-row', [
-                                        m('a.choose-time.choose-unlimited.w-inline-block.btn-select.flex-column.u-text-center', {
-                                            class: _.isEmpty(vm.fields.online_days().toString()) ? 'selected' : '',
-                                            onclick: () => { vm.fields.online_days(''); }
-                                        }, [
-                                            m('.fontsize-base.fontweight-semibold.u-marginbottom-20', window.I18n.t('online_days_open', I18nScope())),
-                                            m('.w-hidden-tiny', window.I18n.t('online_days_open_hint', I18nScope())),
-                                        ]),
-                                        m('a.choose-time.choose-limited.w-inline-block.btn-select.flex-column.u-text-center', {
-                                            class: _.isEmpty(vm.fields.online_days().toString()) ? '' : 'selected',
-                                            onclick: () => { vm.fields.online_days(1); }
-                                        }, [
-                                            m('.fontsize-base.fontweight-semibold.u-marginbottom-20', window.I18n.t('online_days_closed', I18nScope())),
-                                            m('.w-hidden-tiny.u-marginbottom-30', window.I18n.t('online_days_closed_hint', I18nScope())),
-                                            m('.w-row', [
-                                                m('.w-col.w-col-6.w-col-tiny-6.w-col-small-6.label-hide', [
-                                                    m('.input.integer.optional.project_online_days', [
-                                                        m('label.field-label'),
-                                                        m('input.numeric.integer.optional.w-input.text-field.field.w-input.text-field.medium.prefix[id="project_online_days"][name="project[online_days]"][type="number"]', {
-                                                            onchange: m.withAttr('value', vm.fields.online_days),
-                                                            value: vm.fields.online_days(),
-                                                            class: vm.e.hasError('online_days') ? 'error' : false
-                                                        })
-                                                    ]),
-                                                ]),
-                                                m('.w-col.w-col-6.w-col-tiny-6.w-col-small-6', [
-                                                    m('.text-field.medium.prefix-permalink', {
-                                                        class: vm.e.hasError('online_days') ? 'error' : false
-                                                    }, [
-                                                        m('', 'dias')
-                                                    ])
-                                                ])
+                                        m('.flex-row', [
+                                            m('a.choose-time.choose-unlimited.w-inline-block.btn-select.flex-column.u-text-center', {
+                                                class: !vm.fields.online_days() ? 'selected' : '',
+                                                onclick: () => { vm.fields.online_days(''); }
+                                            }, [
+                                                m('.fontsize-base.fontweight-semibold.u-marginbottom-20', window.I18n.t('online_days_open', I18nScope())),
+                                                m('.w-hidden-tiny', window.I18n.t('online_days_open_hint', I18nScope())),
                                             ]),
-                                            m('.w-row', vm.e.inlineError('online_days'))
+                                            m('a.choose-time.choose-limited.w-inline-block.btn-select.flex-column.u-text-center', {
+                                                class: !vm.fields.online_days() ? '' : 'selected',
+                                                onclick: (event) => {
+                                                    event.stopPropagation();
+                                                    const isOnlineDaysFieldSelected = !!vm.fields.online_days();
+                                                    if (!isOnlineDaysFieldSelected) {
+                                                        vm.fields.online_days(1);
+                                                    }
+                                                }
+                                            }, [
+                                                m('.fontsize-base.fontweight-semibold.u-marginbottom-20', window.I18n.t('online_days_closed', I18nScope())),
+                                                m('.w-hidden-tiny.u-marginbottom-30', window.I18n.t('online_days_closed_hint', I18nScope())),
+                                                m('.w-row', [
+                                                    m('.w-col.w-col-6.w-col-tiny-6.w-col-small-6.label-hide', [
+                                                        m('.input.integer.optional.project_online_days', [
+                                                            m('label.field-label'),
+                                                            m('input.numeric.integer.optional.w-input.text-field.field.w-input.text-field.medium.prefix[id="project_online_days"][name="project[online_days]"][type="number"][min=1]', {
+                                                                onchange: (event) => vm.fields.online_days(event.target.value),
+                                                                oninput: (event) => vm.fields.online_days(event.target.value),
+                                                                value: vm.fields.online_days(),
+                                                                class: vm.e.hasError('online_days') ? 'error' : false
+                                                            })
+                                                        ]),
+                                                    ]),
+                                                    m('.w-col.w-col-6.w-col-tiny-6.w-col-small-6', [
+                                                        m('.text-field.medium.prefix-permalink', {
+                                                            class: vm.e.hasError('online_days') ? 'error' : false
+                                                        }, [
+                                                            m('', 'dias')
+                                                        ])
+                                                    ])
+                                                ]),
+                                                m('.w-row', vm.e.inlineError('online_days'))
+                                            ])
                                         ])
                                     ])
-                                ])
                             })
                         ])
                     ])
