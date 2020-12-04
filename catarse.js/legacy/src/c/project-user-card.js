@@ -60,11 +60,12 @@ const projectUserCard = {
                                       }"]`,
                                       {
                                           oncreate: m.route.link,
-                                          onclick: () => {
+                                          onclick: (event) => {
+                                              event.preventDefault();
                                               if (!_.isNull(userDetail.deactivated_at)) {
                                                   return false;
                                               }
-                                              m.route(`/users/${userDetail.id}`, {
+                                              m.route.set(`/users/${userDetail.id}`, {
                                                   user_id: userDetail.id,
                                               });
                                               h.analytics.event({
