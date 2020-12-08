@@ -11,8 +11,8 @@ import subscriptionNextChargeDate from './subscription-next-charge-date';
 import h from '../h';
 import { getPaymentsListVM } from '../vms/payments-list-vm';
 
-const dashboardSubscriptionCardDetailPaymentHistory = {
-    oninit: function(vnode) {
+export default class DashboardSubscriptionCardDetailPaymentHistory {
+    oninit(vnode) {
         const loadingFirstPage = prop(true);
         const errorOcurred = prop(false);
         const payments = getPaymentsListVM();
@@ -33,11 +33,9 @@ const dashboardSubscriptionCardDetailPaymentHistory = {
             payments,
             loadingFirstPage
         };
-    },
-    view: function({
-        state,
-        attrs
-    }) {
+    }
+
+    view({ state, attrs }) {
         const payments = state.payments.collection();
         const {
             subscription
@@ -63,6 +61,4 @@ const dashboardSubscriptionCardDetailPaymentHistory = {
             ])
         ]);
     }
-};
-
-export default dashboardSubscriptionCardDetailPaymentHistory;
+}

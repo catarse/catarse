@@ -8,17 +8,17 @@ import models from '../models';
 
 const I18nScope = _.partial(h.i18nScope, 'projects.subscription_fields');
 
-const subscriptionStatusIcon = {
-    oninit: function(vnode) {
+export default class SubscriptionStatusIcon {
+    oninit(vnode) {
         const statusClass = {
-                active: 'fa-circle.text-success',
-                started: 'fa-circle.text-waiting',
-                inactive: 'fa-circle.text-error',
-                canceled: 'fa-times-circle.text-error',
-                canceling: 'fa-times-circle-o.text-error',
-                deleted: 'fa-circle.text-error',
-                error: 'fa-circle.text-error',
-            },
+            active: 'fa-circle.text-success',
+            started: 'fa-circle.text-waiting',
+            inactive: 'fa-circle.text-error',
+            canceled: 'fa-times-circle.text-error',
+            canceling: 'fa-times-circle-o.text-error',
+            deleted: 'fa-circle.text-error',
+            error: 'fa-circle.text-error',
+        },
             subscriptionTransition = prop(null);
 
         // get last subscription status transition from '/subscription_status_transitions' from this subscription
@@ -47,8 +47,9 @@ const subscriptionStatusIcon = {
         vnode.state = {
             statusClass,
         };
-    },
-    view: function({ state, attrs }) {
+    }
+
+    view({ state, attrs }) {
         const subscription = attrs.subscription,
             statusClass = state.statusClass,
             statusToShowTransitionDate = ['started', 'canceling', 'canceled', 'inactive'],
@@ -59,14 +60,12 @@ const subscriptionStatusIcon = {
                 m(`span.fa.${statusClass[subscription.status] || 'Erro'}`, ' '),
                 window.I18n.t(`status.${subscription.status}`, I18nScope()),
             ]),
-            shouldShowTransitionDate
-                ? m(
-                      '.fontcolor-secondary.fontsize-mini.fontweight-semibold.lineheight-tightest',
-                      `em ${h.momentify(subscription.transition_date, 'DD/MM/YYYY')}`
-                  )
+            shouldShowTransitionDate ?
+                m(
+                    '.fontcolor-secondary.fontsize-mini.fontweight-semibold.lineheight-tightest',
+                    `em ${h.momentify(subscription.transition_date, 'DD/MM/YYYY')}`
+                )
                 : '',
         ]);
-    },
-};
-
-export default subscriptionStatusIcon;
+    }
+}
