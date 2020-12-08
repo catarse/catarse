@@ -45,7 +45,7 @@ class User < ActiveRecord::Base
   validates :permalink, exclusion: { in: %w[api cdn secure suporte],
                                      message: 'Endereço já está em uso.' }
   validates_format_of :email,
-    with:  /\A[a-zA-Z0-9!#\\&$%'*+=?^`{}|~_-](\.?[a-zA-Z0-9\\!#$&%'*+=?^`{}|~_-]){0,}@[a-zA-Z0-9]+\.(?!-)([a-zA-Z0-9]?((-?[a-zA-Z0-9]+)+\.(?!-))){0,}[a-zA-Z0-9]{2,8}\z/,
+    with:  /\A[a-zA-Z0-9!#\\&$%'*+=?^`{}|~_-](\.?[a-zA-Z0-9\\!#$&%'*+=?^`{}|~_-]){0,}@[a-zA-Z0-9]+(?:\.|\-)(?!-)([a-zA-Z0-9]?((-?[a-zA-Z0-9]+)+\.(?!-))){0,}[a-zA-Z0-9]{2,8}\z/,
     allow_blank: true,
     if: :email_changed?
 
