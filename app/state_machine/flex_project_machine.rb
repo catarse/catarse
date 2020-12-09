@@ -154,6 +154,7 @@ class FlexProjectMachine
 
   # put project in successful or waiting_funds state
   def finish
+    ProjectMetricStorageRefreshWorker.perform_async(self.object.id)
     transition_to(:waiting_funds, to_state: 'waiting_funds') || transition_to(:failed, to_state: 'failed') || transition_to(:successful, to_state: 'successful')
   end
 end

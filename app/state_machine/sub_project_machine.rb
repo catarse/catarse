@@ -98,6 +98,7 @@ class SubProjectMachine
   end
 
   def finish
+    ProjectMetricStorageRefreshWorker.perform_async(self.object.id)
     transition_to(:successful, to_state: 'successful')
   end
 end
