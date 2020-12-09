@@ -33,9 +33,9 @@ RSpec.describe User, type: :model do
     it { is_expected.to have_one :bank_account }
   end
 
-  describe 'validations' do    
+  describe 'validations' do
     let(:bld) { create(:blacklist_document, number: "64118189402") }
-   
+
     before { user }
 
     it { is_expected.to allow_value('foo@bar.com').for(:email) }
@@ -681,6 +681,58 @@ RSpec.describe User, type: :model do
         expect(user.errors.size).to eq Address::REQUIRED_ATTRIBUTES.size
         Address::REQUIRED_ATTRIBUTES.each do |attribute|
           expect(user.errors[attribute]).to_not be_empty
+        end
+      end
+    end
+  end
+
+  describe '#before_save' do
+    context 'when user is being created' do
+      context 'when user email domain includes `catarse`' do
+        let(:user) { create(:user, email: 'example@catarse.me') }
+
+        it 'adds error to user mail' do
+          expect(user.errors[:email]).to include(I18n.t('activerecord.errors.models.user.attributes.email.invalid'))
+        end
+      end
+
+      context 'when user email domain doesn`t  include catarse' do
+        let(:user) { create(:user, email: 'example@gmail.com') }
+
+        it 'doesn`t  add error to user email' do
+          user.validate
+          expect(user.errors[:email]).to be_empty
+        end
+      end
+    end
+
+    context 'when the user is being updated' do
+      context 'when user email domain includes `catarse`' do
+        let(:user) { create(:user, email: 'example@gmail.me') }
+
+        it 'adds error to user mail' do
+          user.update(email: 'example2@catarse.com')
+          expect(user.errors[:email]).to include(I18n.t('activerecord.errors.models.user.attributes.email.invalid'))
+        end
+      end
+
+      context 'when user email domain doesn`t  include catarse' do
+        let(:user) { create(:user, email: 'example@gmail.me') }
+
+        it 'doesn`t  add error to user email' do
+          user.update(email: 'example2@gmail.com')
+          expect(user.errors[:email]).to be_empty
+        end
+      end
+
+      context 'when user user email domain includes `catarse` and tries to update another parameter' do
+        let(:user) { build(:user, email: 'example@catarse.me') }
+
+        it 'doesn`t  add error to user email' do
+          user.save!(validate: false)
+          user.update!(name: 'New Name')
+          user.reload
+          expect(user.name).to eq 'New Name'
         end
       end
     end
