@@ -49,5 +49,5 @@ test:
   host: localhost
   port: 5432
   database: catarse_test
-  username: postgres # <== Change me!
-  password: password # <== Same here!
+  username: postgres
+  password: example
