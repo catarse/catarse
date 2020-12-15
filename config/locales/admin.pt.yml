@@ -101,6 +101,16 @@ pt:
         value: Valor
         payer_email: Email do pagamento
         provider: Provedor
+      view:
+        details:
+          transfer:
+            property: 'balance_transaction'
+            label_receiver_id: 'ID de Usuário do Destinatário:'
+            transfer_balance: 'Transferir saldo'
+            property_sender: 'from_user_id'
+            property_receiver: 'to_user_id'
+            property_amount: 'amount'
+
     contributions:
       messages:
         successful:
@@ -200,6 +210,23 @@ pt:
       charts:
         current_period: "Últimas 8 sem."
         last_year: "Ano anterior"
+    balance_transactions:
+      transfer_success: "Transferência realizada com sucesso."
+      invalid_amount: "Valor inválido."
+      insufficient_balance: "Saldo insuficiente."
+      view:
+        data_confirmation: "Confirme se os dados abaixo estão corretos:"
+        amount: "Valor:"
+        sender: "De:"
+        receiver: "Para:"
+        confirm: "Confirmar"
+        back: "Voltar"
+        error: "Ocorreu um erro ao processar a transferência. Detalhes: "
+        check_balance: "Ver saldo"
+        success: "Transferência realizada"
+        current_balance: "Saldo atual"
+        receiver_id: "Id do destinatário:"
+        next_step: "Próximo passo"
   channels:
     admin:
       <<: *admin

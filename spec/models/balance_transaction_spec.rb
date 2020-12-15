@@ -431,41 +431,103 @@ RSpec.describe BalanceTransaction, type: :model do
   end
 
   describe 'insert_balance_transfer_between_users' do
-    let(:project) { create(:project, goal: 30, state: 'online') }
-    let!(:contribution) { create(:confirmed_contribution, value: 200, project: project) }
-    let(:user) { contribution.user }
-    let(:project_owner) { project.user }
+    let(:from_user) { create(:user) }
+    let(:from_user_balance) { 1000 }
+    let(:to_user) { create(:user) }
 
-    subject { BalanceTransaction.insert_balance_transfer_between_users(project_owner, user, 15)}
+    before { create(:balance_transaction, user: from_user,
+                    amount: from_user_balance, event_name: 'subscription_payment') }
 
-    context 'when user has no balance' do
-      it 'should not transfer' do
-        is_expected.to be_nil
+    subject { BalanceTransaction.insert_balance_transfer_between_users(from_user, to_user, amount_to_transfer)}
+
+    context 'when the the amount to transfer is 0' do
+      let(:amount_to_transfer) { 0 }
+      it 'raises `invalid_amount` error message' do
+        expect { subject }.to raise_error(I18n.t("admin.balance_transactions.invalid_amount"))
       end
     end
 
-    context 'when user has balance' do
-      before do
-        # generate some balance to project owner
-        project.update_column(:expires_at, 5.days.ago)
-        project.finish
+    context 'when the the amount to transfer is negative' do
+      let(:amount_to_transfer) { -1 }
+      it 'raises `invalid_amount` error message' do
+        expect { subject }.to raise_error(I18n.t("admin.balance_transactions.invalid_amount"))
+      end
+    end
+
+    context 'when the amount to transfer is higher than the user`s balance' do
+      let(:amount_to_transfer) { from_user_balance + 1 }
+      it 'raises `insufficient_balance` error message' do
+        expect { subject }.to raise_error(I18n.t("admin.balance_transactions.insufficient_balance"))
+      end
+    end
+
+    context 'when the amount to transfer is nil' do
+      let(:amount_to_transfer) { nil }
+      context 'when user has balance' do
+        it 'transfers the user`s balance to the receiver' do
+          subject
+          balance_transaction = to_user.balance_transactions.find_by(
+            event_name: 'balance_received_from',
+            from_user_id: from_user.id,
+            to_user_id: to_user.id,
+            amount: from_user_balance,
+          )
+          expect(balance_transaction).to be_present
+        end
+
+        it 'subtracts the amount from the user`s balance' do
+          subject
+          balance_transaction = from_user.balance_transactions.find_by(
+            event_name: 'balance_transferred_to',
+            from_user_id: from_user.id,
+            to_user_id: to_user.id,
+            amount: from_user_balance*-1,
+          )
+          expect(balance_transaction).to be_present
+        end
       end
 
-      it 'should transfer all balance to another user' do
-        expect(subject).to_not be_nil
-        expect(user.balance_transactions.where(
-          event_name: 'balance_received_from',
-          from_user_id: project_owner.id,
-          to_user_id: user.id,
-          amount: 15,
-        ).exists?).to eq(true)
+      context 'when user has no balance' do
+        before { allow(from_user).to receive(:total_balance).and_return(0) }
+        it 'raises `invalid_amount` error message' do
+          expect { subject }.to raise_error(I18n.t("admin.balance_transactions.invalid_amount"))
+        end
+      end
+    end
 
-        expect(project_owner.balance_transactions.where(
-          event_name: 'balance_transferred_to',
-          from_user_id: project_owner.id,
-          to_user_id: user.id,
-          amount: 15*-1,
-        ).exists?).to eq(true)
+    context 'when the amount is valid' do
+      let(:amount_to_transfer) { from_user_balance - 1 }
+
+      context 'when user has balance' do
+        it 'transfers the user`s balance to the receiver' do
+          subject
+          balance_transaction = to_user.balance_transactions.find_by(
+            event_name: 'balance_received_from',
+            from_user_id: from_user.id,
+            to_user_id: to_user.id,
+            amount: amount_to_transfer,
+          )
+          expect(balance_transaction).to be_present
+        end
+
+        it 'subtracts the amount from the user`s balance' do
+          subject
+
+          balance_transaction = from_user.balance_transactions.find_by(
+            event_name: 'balance_transferred_to',
+            from_user_id: from_user.id,
+            to_user_id: to_user.id,
+            amount: amount_to_transfer*-1,
+          )
+          expect(balance_transaction).to be_present
+        end
+      end
+
+      context 'when user has no balance' do
+        before { allow(from_user).to receive(:total_balance).and_return(0) }
+        it 'raises `insufficient_balance` error message' do
+          expect { subject }.to raise_error(I18n.t("admin.balance_transactions.insufficient_balance"))
+        end
       end
     end
   end

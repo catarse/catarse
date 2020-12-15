@@ -213,6 +213,12 @@ Catarse::Application.routes.draw do
           end
         end
 
+        resources :balance_transactions do
+          collection do
+            post 'transfer_balance'
+          end
+        end
+
         resources :projects, :flexible_projects, controller: 'projects', only: %i[index update destroy] do
           member do
             put :revert_or_finish

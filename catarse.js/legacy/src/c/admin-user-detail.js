@@ -17,8 +17,11 @@ import adminResetPassword from './admin-reset-password';
 import adminInputAction from './admin-input-action';
 import adminNotificationHistory from './admin-notification-history';
 import adminUserBalanceTransactionsList from './admin-user-balance-transactions-list';
+import adminTransferBalance from './admin-transfer-balance';
 import h from '../h';
 import { catarse } from '../api';
+
+const I18nScope = _.partial(h.i18nScope, 'admin.users.view.details');
 
 const adminUserDetail = {
     oninit: function(vnode) {
@@ -49,6 +52,14 @@ const adminUserDetail = {
                     outerLabel: 'Reativar usuário',
                     forceValue: null,
                     model: models.user
+                },
+                transfer: {
+                    property: window.I18n.t('transfer.property', I18nScope()),
+                    propertySender: window.I18n.t('transfer.property_sender', I18nScope()),
+                    propertyAmount: window.I18n.t('transfer.property_amount', I18nScope()),
+                    propertyReceiver: window.I18n.t('transfer.property_receiver', I18nScope()),
+                    outerLabel: window.I18n.t('transfer.transfer_balance', I18nScope()),
+                    model: models.user
                 }
             },
         };
@@ -68,6 +79,12 @@ const adminUserDetail = {
                     url: (`/users/${id}/new_password`),
                     method: 'POST'
                 }
+            }),
+            transferBalance = (builder, id) => _.extend({}, builder, {
+                requestOptions: {
+                    url: (`admin/balance_transactions/transfer_balance`),
+                    method: 'POST'
+                }
             });
 
         return m('#admin-contribution-detail-box', [
@@ -79,6 +96,10 @@ const adminUserDetail = {
                 }),
                 m(adminExternalAction, {
                     data: banUser(actions.ban, item.id),
+                    item
+                }),
+                m(adminTransferBalance, {
+                    data: transferBalance(actions.transfer, item.id),
                     item
                 }),
                 (item.deactivated_at) ?

@@ -67,9 +67,11 @@ class BalanceTransaction < ApplicationRecord
 
   def self.insert_balance_transfer_between_users(from_user, to_user, amount_to_transfer = nil)
     from_user.reload
-    return if from_user.total_balance <= 0
-    return if amount_to_transfer.present? && from_user.total_balance < amount_to_transfer
-    amount_to_transfer = from_user.total_balance if amount_to_transfer.nil?
+
+    amount_to_transfer ||= from_user.total_balance
+
+    raise I18n.t("admin.balance_transactions.invalid_amount") if amount_to_transfer <= 0
+    raise I18n.t("admin.balance_transactions.insufficient_balance") if amount_to_transfer > from_user.total_balance
 
     transaction do
       create!(
