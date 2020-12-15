@@ -73,10 +73,10 @@ const projectInsights = {
             column.push(contribution.state_acronym || 'Outro/other');
             column.push(contribution.total_contributions);
             column.push([contribution.total_contributed, [// Adding row with custom comparator => read project-data-table description
-                m(`input[type="hidden"][value="${contribution.total_contributed}"`),
+                m(`input[type="hidden"][value="${contribution.total_contributed}"]`),
                 'R$ ',
                 h.formatNumber(contribution.total_contributed, 2, 3),
-                m('span.w-hidden-small.w-hidden-tiny', ` (${contribution.total_on_percentage.toFixed(2)}%)`)
+                ` (${contribution.total_on_percentage.toFixed(2)}%)`
             ]]);
             return contributionsPerLocationTable.push(column);
         }) : [];
@@ -110,10 +110,10 @@ const projectInsights = {
             column.push(contribution.referral_link ? window.I18n.t(`referral.${contribution.referral_link}`, I18nScope({ defaultValue: contribution.referral_link })) : window.I18n.t('referral.others', I18nScope()));
             column.push(contribution.total);
             column.push([contribution.total_amount, [
-                m(`input[type="hidden"][value="${contribution.total_contributed}"`),
+                m(`input[type="hidden"][value="${contribution.total_contributed}"]`),
                 'R$ ',
                 h.formatNumber(contribution.total_amount, 2, 3),
-                m('span.w-hidden-small.w-hidden-tiny', ` (${contribution.total_on_percentage.toFixed(2)}%)`)
+                ` (${contribution.total_on_percentage.toFixed(2)}%)`
             ]]);
             return contributionsPerRefTable.push(column);
         }) : [];
@@ -177,8 +177,8 @@ const projectInsights = {
                 content: [onlineSuccessModalContent]
             }) : ''),
 
-            m('.w-container', 
-                ((project.state === 'successful' || project.state === 'waiting_funds' ) && !project.has_cancelation_request) ? 
+            m('.w-container',
+                ((project.state === 'successful' || project.state === 'waiting_funds' ) && !project.has_cancelation_request) ?
                     m(projectSuccessfullNextSteps, { project: prop(project) }) : [
                         m('.w-row.u-marginbottom-40', [
                             m('.w-col.w-col-8.w-col-push-2', [
@@ -188,21 +188,21 @@ const projectInsights = {
                                     (project.state === 'draft' && !project.has_cancelation_request && isSolidarityProject()) ?
                                         [
                                             m(SolidarityProjectInsightsWelcomeDraft),
-                                        ] 
+                                        ]
                                     :
                                         [
                                             (project.state === 'online' && !project.has_cancelation_request ? m(projectInviteCard, { project }) : ''),
                                             (project.state === 'draft' && !project.has_cancelation_request ? m(adminProjectDetailsCard, { resource: project }) : ''),
                                             m(`p.${project.state}-project-text.u-text-center.fontsize-small.lineheight-loose`,
-                                                project.has_cancelation_request ? 
+                                                project.has_cancelation_request ?
                                                     m.trust(window.I18n.t('has_cancelation_request_explanation', I18nScope())) : [
-                                                        project.mode === 'flex' && _.isNull(project.expires_at) && project.state !== 'draft' ? 
+                                                        project.mode === 'flex' && _.isNull(project.expires_at) && project.state !== 'draft' ?
                                                             m('span', [
                                                                 m.trust(window.I18n.t('finish_explanation', I18nScope())),
                                                                 m('a.alt-link[href="http://suporte.catarse.me/hc/pt-br/articles/213783503-tudo-sobre-Prazo-da-campanha"][target="_blank"]', window.I18n.t('know_more', I18nScope()))
-                                                            ]) : 
+                                                            ]) :
                                                             m.trust(
-                                                                window.I18n.t(`campaign.${project.mode}.${project.state}`, 
+                                                                window.I18n.t(`campaign.${project.mode}.${project.state}`,
                                                                 I18nScope({ username: project.user.name, expires_at: h.momentify(project.zone_expires_at), sent_to_analysis_at: h.momentify(project.sent_to_analysis_at) })))
                                                     ]
                                             )
