@@ -6911,3 +6911,11 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
   -ms-grid-row-span: 1;
   grid-row-end: 3;
 }
+
+input:required {
+  box-shadow:none;
+}
+
+textarea:required {
+  box-shadow:none;
+}
