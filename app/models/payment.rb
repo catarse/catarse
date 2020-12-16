@@ -21,7 +21,7 @@ class Payment < ActiveRecord::Base
   attr_accessor :generating_second_slip
 
   scope :all_boleto_that_should_be_refused, -> {
-    where('payments.slip_expires_at + \'3 days\'::interval < current_timestamp and payment_method = \'BoletoBancario\' and state = \'pending\'')
+    where('payments.slip_expires_at < current_timestamp and payment_method = \'BoletoBancario\' and state = \'pending\'')
   }
 
   scope :with_missing_payables, lambda {
