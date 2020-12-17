@@ -174,8 +174,8 @@ namespace :cron do
 
   desc 'Send a notification about new follows'
   task notify_new_follows: [:environment] do
-    User.followed_since_last_day.each do |user|
-      user.notify(:new_followers) if user.subscribed_to_new_followers
+    User.where(subscribed_to_new_followers: true).followed_since_last_day.each do |user|
+      Notification.notify(:new_followers, user, user_follow_ids: user.followers_since_last_day.pluck(:id))
     end
   end
 
@@ -191,7 +191,7 @@ namespace :cron do
 
   desc 'send subscription reports'
   task notify_sub_reports: [:environment] do
-    SubscriptionProject.with_state(:online).find_each(batch_size: 20) do |project| 
+    SubscriptionProject.with_state(:online).find_each(batch_size: 20) do |project|
       begin
         transitions = project.subscription_transitions.where("common_schema.subscription_status_transitions.created_at between now() - '1 day'::interval and now()")
         if transitions.exists?
