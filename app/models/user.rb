@@ -360,11 +360,6 @@ class User < ActiveRecord::Base
     to_analytics.to_json
   end
 
-  def to_param
-    return id.to_s unless display_name
-    "#{id}-#{display_name.parameterize}"
-  end
-
   def project_unsubscribes
     contributed_projects.map do |project|
       unsubscribes.posts_unsubscribe(project.id)
