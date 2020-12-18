@@ -157,7 +157,7 @@ const userSubscriptionBox = {
             }
             // selected one rewared on subscription start, now selected another reward and last and current rewards are different
             else if (is_active && current_reward_data && subscription.reward && subscription.reward_id != current_reward_id) {
-                const reward_description_formated = h.simpleFormat(`${current_reward_data.description.substring(0, 90)} (...)`);
+                const reward_description_formated = h.simpleFormat(`${h.strip(current_reward_data.description).substring(0, 90)} (...)`);
                 return [
                     m('.fontsize-smallest.fontweight-semibold', current_reward_data.title),
                     m('p.fontcolor-secondary.fontsize-smallest', m.trust(reward_description_formated)),
@@ -169,7 +169,7 @@ const userSubscriptionBox = {
             }
             // no edition to rewards yet
             else if (last_paid_sub_data.reward) {
-                const reward_description = last_paid_sub_data.reward.description.substring(0, 90);
+                const reward_description = h.strip(last_paid_sub_data.reward.description).substring(0, 90);
                 const reward_description_formated = h.simpleFormat(`${reward_description} (...)`);
                 return [
                     m('.fontsize-smallest.fontweight-semibold', last_paid_sub_data.reward.title),
@@ -306,7 +306,7 @@ const userSubscriptionBox = {
                           ]),
                           m('.u-marginbottom-20.w-col.w-col-3', state.showLastSubscriptionVersionRewardTitleIfHasOne()),
                           m(userSubscriptionBoxControl, {
-                              subscription, 
+                              subscription,
                               displayCancelModal: state.displayCancelModal,
                               isGeneratingSecondSlip: state.isGeneratingSecondSlip,
                               generateSecondSlip: state.generateSecondSlip,

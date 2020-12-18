@@ -119,7 +119,7 @@ const editRewardCard = {
                     project_id: vnode.attrs.project_id,
                     shipping_options: reward.shipping_options(),
                     minimum_value: reward.minimum_value(),
-                    description: reward.description(),
+                    description: h.strip(reward.description()),
                     deliver_at: reward.deliver_at()
                 };
                 if (reward.shipping_options() === 'national' || reward.shipping_options() === 'international') {
@@ -156,7 +156,7 @@ const editRewardCard = {
                                     isUploadingImage(false);
                                     h.redraw();
                                 });
-                            
+
                             isSavingReward(false);
                             h.redraw();
                         })
