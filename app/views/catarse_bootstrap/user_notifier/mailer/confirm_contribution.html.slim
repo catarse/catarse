@@ -11,14 +11,14 @@ h2 style="text-align:center; line-height: 45px;"
 
 br/
 
-| Seu apoio para o projeto #{link_to(contribution.project.name, project_by_slug_url(project.permalink, {ref: 'confirm_contribution_notification',utm_source:'notification',utm_medium:'email',utm_campaign:'confirm_contribution_link',utm_content:contribution.project.name}))} foi confirmado com sucesso!
+| Seu apoio para o projeto #{link_to(contribution.project.name, project_by_slug_url(permalink: project.permalink, ref: 'confirm_contribution_notification',utm_source:'notification',utm_medium:'email',utm_campaign:'confirm_contribution_link',utm_content:contribution.project.name))} foi confirmado com sucesso!
 
 - if first_contribution
   | Parabéns! Você é o primeiro a contribuir para tornar esse projeto uma realidade!
 
 br/
 p
- | Esse e-mail serve como um <strong>recibo provisório da sua contribuição</strong>. O recibo definitivo será enviado após o final da campanha, caso o projeto seja financiado. 
+ | Esse e-mail serve como um <strong>recibo provisório da sua contribuição</strong>. O recibo definitivo será enviado após o final da campanha, caso o projeto seja financiado.
 
 = render partial: 'user_notifier/mailer/contribution_data', locals: {contribution: contribution, provisional_receipt: true}
 
@@ -27,5 +27,5 @@ br/
 center
   p style="text-align:center"
     h3 Compartilhe esse projeto com seus amigos
-    = link_to "http://www.facebook.com/share.php?u=#{url_encode(project_by_slug_url(project.permalink, {ref: 'confirm_contribution_facebook',utm_source:'facebook.com',utm_medium:'email',utm_campaign:'confirm_contribution_share',utm_content:'Compartilhe esse projeto com seus amigos'}))}", target: :_blank, data: { title: project.name } do
+    = link_to "http://www.facebook.com/share.php?u=#{url_encode(project_by_slug_url(permalink: project.permalink, ref: 'confirm_contribution_facebook',utm_source:'facebook.com',utm_medium:'email',utm_campaign:'confirm_contribution_share',utm_content:'Compartilhe esse projeto com seus amigos'))}", target: :_blank, data: { title: project.name } do
       = image_tag 'https://s3.amazonaws.com/cdn.catarse/notifications_assets/fb01.png'

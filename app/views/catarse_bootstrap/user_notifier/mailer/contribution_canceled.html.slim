@@ -4,13 +4,13 @@
 
 |Olá, <strong>#{contribution.user.display_name}</strong>!
 br
-| Lamentamos informar que não foi possível processar seu pagamento e seu apoio ao projeto #{link_to contribution.project.name, project_by_slug_url(contribution.project.permalink, {ref: 'notificacao_cancelado',utm_source:'notification',utm_medium:'email',utm_campaign:'contribution_canceled_link',utm_content:contribution.project.name})} foi cancelado. 
+| Lamentamos informar que não foi possível processar seu pagamento e seu apoio ao projeto #{link_to contribution.project.name, project_by_slug_url(permalink: contribution.project.permalink, ref: 'notificacao_cancelado',utm_source:'notification',utm_medium:'email',utm_campaign:'contribution_canceled_link',utm_content:contribution.project.name)} foi cancelado.
 br
 p Para ter seu apoio confirmado, sugerimos algumas soluções:
 p - Entre em contato com o <strong>seu banco</strong> autorizando o pagamento do seu apoio. Após a confirmação deles, você poderá fazer um novo apoio; ou
 p - Refaça seu apoio utilizando <strong>outro cartão</strong> de crédito; ou
 p - Apoie através do <strong>boleto bancário.</strong>
 br
-p #{link_to 'Não deixe isso te desanimar. Comece novamente seu apoio!', new_project_contribution_url(contribution.project, ref: 'notificacao_cancelado')} 
+p #{link_to 'Não deixe isso te desanimar. Comece novamente seu apoio!', new_project_contribution_url(contribution.project, ref: 'notificacao_cancelado')}
 br
 = render partial: 'user_notifier/mailer/contact_info'

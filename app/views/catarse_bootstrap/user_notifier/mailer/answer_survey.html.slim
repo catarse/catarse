@@ -36,7 +36,7 @@ p
 
 p Caso você não seja redirecionado ao clicar na imagem acima, acesse o questionário através #{link_to 'deste link', contribution_survey_url(contribution_id: contribution.id, id: Survey.where(reward_id: contribution.reward_id).first.id)}
 
-p Caso você tenha alguma dúvida em relação ao <strong>projeto ou à sua recompensa</strong>, entre em contato diretamente com o realizador através da página do projeto #{link_to contribution.project.name, project_by_slug_url(contribution.project.permalink)} ou através do e-mail #{mail_to owner.try(:email)}. 
+p Caso você tenha alguma dúvida em relação ao <strong>projeto ou à sua recompensa</strong>, entre em contato diretamente com o realizador através da página do projeto #{link_to contribution.project.name, project_by_slug_url(permalink: contribution.project.permalink)} ou através do e-mail #{mail_to owner.try(:email)}.
 
 br/
 

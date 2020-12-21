@@ -5,18 +5,18 @@
   - else
     meta name="robots" content="noindex, nofollow"
 
-  - if @post.present? 
+  - if @post.present?
     meta name="description" content=@post.title
     meta property="og:title" content=@post.title
     meta property="og:description" content=@post.comment_html
-    meta property="og:url" content=project_by_slug_url(@project.permalink, project_post_id: @post.id, locale:'')
-    link rel="canonical" href=project_by_slug_url(@project.permalink, project_post_id: @post.id, locale:'')
+    meta property="og:url" content=project_by_slug_url(permalink: @project.permalink, project_post_id: @post.id, locale: nil)
+    link rel="canonical" href=project_by_slug_url(permalink: @project.permalink, project_post_id: @post.id, locale: nil)
   - else
     meta name="description" content=@project.headline
     meta property="og:title" content=@project.name
     meta property="og:description" content=@project.headline
-    meta property="og:url" content=project_by_slug_url(@project.permalink, locale:'')
-    link rel="canonical" href=project_by_slug_url(@project.permalink, locale:'')
+    meta property="og:url" content=project_by_slug_url(permalink: @project.permalink, locale: nil)
+    link rel="canonical" href=project_by_slug_url(permalink: @project.permalink, locale: nil)
   meta property="og:type" content='cause'
   meta property="og:image" content=@project.display_image('project_thumb_facebook')
   meta property="og:site_name" content=CatarseSettings[:company_name]

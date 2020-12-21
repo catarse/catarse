@@ -498,7 +498,7 @@ class Project < ApplicationRecord
   end
 
   def direct_url
-    @direct_url ||= Rails.application.routes.url_helpers.project_by_slug_url(permalink, locale: nil)
+    @direct_url ||= Rails.application.routes.url_helpers.project_by_slug_url(permalink: permalink, locale: nil)
   end
 
   def all_public_tags=(names)

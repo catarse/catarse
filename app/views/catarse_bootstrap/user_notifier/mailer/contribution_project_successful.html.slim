@@ -6,10 +6,10 @@ h2 style="text-align:center; line-height: 45px;"
   - else
     |Olá!
   br/
-  | Parabéns! O projeto #{link_to(contribution.project.name, project_by_slug_url(contribution.project.permalink, {utm_source:'notification',utm_medium:'email',utm_campaign:'contribution_project_successful_link',utm_content:contribution.project.name}))} que, 
+  | Parabéns! O projeto #{link_to(contribution.project.name, project_by_slug_url(permalink: contribution.project.permalink, utm_source:'notification',utm_medium:'email',utm_campaign:'contribution_project_successful_link',utm_content:contribution.project.name))} que,
   | incluindo você, teve #{contribution.project.total_contributors} apoiadores, foi financiado com sucesso no #{CatarseSettings[:company_name]}.
-  
+
 br/
-  
+
 p Esse e-mail serve como um <strong>recibo definitivo da sua contribuição</strong>.
 = render partial: 'user_notifier/mailer/contribution_data', locals: {contribution: contribution, provisional_receipt: false}

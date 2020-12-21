@@ -7,12 +7,12 @@ h2 style="text-align:center"
 p == update.email_comment_html.html_safe
 center
   p style="text-align:center"
-    h3 Visite o projeto: #{link_to update.project.name, project_by_slug_url(project.permalink, {ref: 'project_post',utm_source:'notification',utm_medium:'email',utm_campaign:'project_post',utm_content:update.project.name})}
+    h3 Visite o projeto: #{link_to update.project.name, project_by_slug_url(permalink: project.permalink, ref: 'project_post',utm_source:'notification',utm_medium:'email',utm_campaign:'project_post',utm_content:update.project.name)}
 br/
 center
   p style="text-align:center"
     h4 Compartilhe esse projeto com seus amigos!
-    = link_to "http://www.facebook.com/share.php?u=#{url_encode(project_by_slug_url(project.permalink, {ref: 'project_post_facebook',utm_source:'facebook.com',utm_medium:'email',utm_campaign:'project_post',utm_content:'Compartilhe esse projeto com seus amigos!'}))}", target: :_blank, data: { title: project.name } do
+    = link_to "http://www.facebook.com/share.php?u=#{url_encode(project_by_slug_url(permalink: project.permalink, ref: 'project_post_facebook',utm_source:'facebook.com',utm_medium:'email',utm_campaign:'project_post',utm_content:'Compartilhe esse projeto com seus amigos!'))}", target: :_blank, data: { title: project.name } do
       = image_tag 'https://s3.amazonaws.com/cdn.catarse/notifications_assets/fb01.png'
 br/
 center

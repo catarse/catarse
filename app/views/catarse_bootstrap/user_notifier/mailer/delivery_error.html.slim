@@ -24,6 +24,6 @@ p
   - if contribution.reward.present?
     | <strong>Recompensa selecionada:</strong> #{contribution.reward.description}
 
-p Caso você tenha alguma dúvida em relação ao <strong>projeto ou à sua recompensa</strong>, entre em contato diretamente com o realizador através da página do projeto #{link_to contribution.project.name, project_by_slug_url(contribution.project.permalink)} ou através do e-mail #{mail_to owner.try(:email)}. 
+p Caso você tenha alguma dúvida em relação ao <strong>projeto ou à sua recompensa</strong>, entre em contato diretamente com o realizador através da página do projeto #{link_to contribution.project.name, project_by_slug_url(permalink: contribution.project.permalink)} ou através do e-mail #{mail_to owner.try(:email)}.
 
 = render partial: 'user_notifier/mailer/contact_info'

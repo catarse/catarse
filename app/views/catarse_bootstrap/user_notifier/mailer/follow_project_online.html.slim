@@ -11,26 +11,26 @@ center
 br/
 
 
-table border="0" cellpadding="0" cellspacing="0" style="min-width:100%;border-collapse:collapse" width="100%" 
+table border="0" cellpadding="0" cellspacing="0" style="min-width:100%;border-collapse:collapse" width="100%"
   tbody
     tr
-      td style="padding-top:9px" valign="top" 
-        table align="center" border="0" cellpadding="0" cellspacing="0" style="max-width:300px;border-collapse:collapse" width="100%" 
+      td style="padding-top:9px" valign="top"
+        table align="center" border="0" cellpadding="0" cellspacing="0" style="max-width:300px;border-collapse:collapse" width="100%"
           tbody
             tr
-              td style="padding-top:0;padding-left:18px;padding-bottom:9px;padding-right:18px;word-break:break-word;color:#3f4752;font-family:Helvetica;font-size:16px;line-height:150%;text-align:center" valign="top" 
-                div style="text-align:center" 
-                  = link_to(image_tag(project.display_image, width: '250px'), project_by_slug_url(project.permalink, {ref: 'notificacao_follow_published_project',utm_source:'notification',utm_medium:'email',utm_campaign:"follow_project_#{follow.id}",utm_content:project.permalink}))
-        table align="center" border="0" cellpadding="0" cellspacing="0" style="max-width:300px;border-collapse:collapse" width="100%" 
+              td style="padding-top:0;padding-left:18px;padding-bottom:9px;padding-right:18px;word-break:break-word;color:#3f4752;font-family:Helvetica;font-size:16px;line-height:150%;text-align:center" valign="top"
+                div style="text-align:center"
+                  = link_to(image_tag(project.display_image, width: '250px'), project_by_slug_url(permalink: project.permalink, ref: 'notificacao_follow_published_project',utm_source:'notification',utm_medium:'email',utm_campaign:"follow_project_#{follow.id}",utm_content:project.permalink))
+        table align="center" border="0" cellpadding="0" cellspacing="0" style="max-width:300px;border-collapse:collapse" width="100%"
           tbody
             tr
-              td style="padding-top:0;padding-left:18px;padding-bottom:9px;padding-right:18px;word-break:break-word;color:#3f4752;font-family:Helvetica;font-size:16px;line-height:150%;text-align:center" valign="top" 
+              td style="padding-top:0;padding-left:18px;padding-bottom:9px;padding-right:18px;word-break:break-word;color:#3f4752;font-family:Helvetica;font-size:16px;line-height:150%;text-align:center" valign="top"
                 h3 style="text-align:center;display:block;margin:0;padding:0;color:#202020;font-family:Helvetica;font-size:20px;font-style:normal;font-weight:bold;line-height:125%;letter-spacing:normal"=project.name
-                div style="text-align:center" 
+                div style="text-align:center"
                   = project.headline
                   br/
-                div style="text-align:center;margin-top:20px" 
-                  a href="#{project_by_slug_url(project.permalink, {ref:'notificacao_follow_published_project',utm_source:'notification',utm_medium:'email',utm_campaign:"follow_project_#{follow.id}",utm_content:project.permalink})}" style=("font-weight:500;letter-spacing:normal;line-height:100%;text-align:center;text-decoration:none;color:#ffffff;display:inline-block;background-color:#7cc142;border-radius:3px;padding:15px 25px") title="Apoie o projeto" target="_blank"  Conheça a campanha
+                div style="text-align:center;margin-top:20px"
+                  a href="#{project_by_slug_url(permalink: project.permalink, ref:'notificacao_follow_published_project',utm_source:'notification',utm_medium:'email',utm_campaign:"follow_project_#{follow.id}",utm_content:project.permalink)}" style=("font-weight:500;letter-spacing:normal;line-height:100%;text-align:center;text-decoration:none;color:#ffffff;display:inline-block;background-color:#7cc142;border-radius:3px;padding:15px 25px") title="Apoie o projeto" target="_blank"  Conheça a campanha
 
 
 br/
