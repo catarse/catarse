@@ -15,12 +15,6 @@ class ApplicationController < ActionController::Base
   include Pundit
   before_action :redirect_when_zendesk_session, unless: :devise_controller?
 
-  if Rails.env.production?
-    require 'new_relic/agent/instrumentation/rails3/action_controller'
-    include NewRelic::Agent::Instrumentation::ControllerInstrumentation
-    include NewRelic::Agent::Instrumentation::Rails3::ActionController
-  end
-
   acts_as_token_authentication_handler_for User, fallback: :none
   layout 'catarse_bootstrap'
   protect_from_forgery
