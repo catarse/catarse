@@ -1,4 +1,4 @@
-class CreateBalanceTransferPings < ActiveRecord::Migration
+class CreateBalanceTransferPings < ActiveRecord::Migration[4.2]
   def up
     create_table :balance_transfer_pings do |t|
       t.references :balance_transfer, index: true

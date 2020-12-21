@@ -18,14 +18,14 @@ RSpec.describe ContributionDetailDecorator do
     subject { detail.decorate.display_installment_details }
     context 'when I have 1 installment' do
       before do
-        payment.update_attributes installments: 1
+        payment.update installments: 1
       end
       it { is_expected.to eq '' }
     end
 
     context 'when I have >1 installment' do
       before do
-        payment.update_attributes installments: 2, installment_value: 10
+        payment.update installments: 2, installment_value: 10
       end
       it { is_expected.to eq "#{payment.installments} x #{number_to_currency payment.installment_value}" }
     end
@@ -35,14 +35,14 @@ RSpec.describe ContributionDetailDecorator do
     subject { detail.decorate.display_payment_details }
     context 'when contribution is made with credits' do
       before do
-        payment.update_attributes gateway: 'Credits'
+        payment.update gateway: 'Credits'
       end
       it { is_expected.to eq I18n.t('contribution.payment_details.creditos') }
     end
 
     context 'when contribution is not made with credits' do
       before do
-        payment.update_attributes gateway: 'Pagarme', payment_method: 'CartaoDeCredito'
+        payment.update gateway: 'Pagarme', payment_method: 'CartaoDeCredito'
       end
       it { is_expected.to eq I18n.t('contribution.payment_details.cartao_de_credito') }
     end
@@ -66,7 +66,7 @@ RSpec.describe ContributionDetailDecorator do
 
     context 'when payment is paid' do
       before do
-        payment.update_attributes paid_at: Time.current
+        payment.update paid_at: Time.current
       end
       it {
         date = detail.paid_at.to_date
@@ -84,7 +84,7 @@ RSpec.describe ContributionDetailDecorator do
     let(:contribution) { create(:confirmed_contribution) }
     context 'when slip_url is filled' do
       before do
-        payment.update_attributes gateway_data: { boleto_url: 'http://foo.bar/' }
+        payment.update gateway_data: { boleto_url: 'http://foo.bar/' }
       end
 
       subject { detail.decorate.display_slip_url }

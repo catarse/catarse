@@ -1,4 +1,4 @@
-class FixWaitingPaymentFunction < ActiveRecord::Migration
+class FixWaitingPaymentFunction < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
       CREATE OR REPLACE FUNCTION public.waiting_payment(payments) RETURNS boolean

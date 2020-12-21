@@ -1,4 +1,4 @@
-class UsePublicNameOnProjectContributions < ActiveRecord::Migration
+class UsePublicNameOnProjectContributions < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
     create or replace view "1".project_contributions as

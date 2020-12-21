@@ -1,4 +1,4 @@
-class AddProjectIdToBalanceTransfers < ActiveRecord::Migration
+class AddProjectIdToBalanceTransfers < ActiveRecord::Migration[4.2]
    def up
     add_column :balance_transfers, :project_id, :integer
 
@@ -14,7 +14,7 @@ CREATE VIEW "1".balance_transfers AS
     public.zone_timestamp(bt.created_at) AS created_at,
     public.zone_timestamp(
         (
-            (bt.created_at + '10 days'::interval) + 
+            (bt.created_at + '10 days'::interval) +
             (
                 (select count(1) from (
                     select

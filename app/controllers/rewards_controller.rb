@@ -6,8 +6,8 @@ class RewardsController < ApplicationController
 
   def sort
     authorize resource
-    resource.update_attribute :row_order_position, params[:reward][:row_order_position]
-    render nothing: true
+    resource.update(row_order_position: params[:reward][:row_order_position])
+    render body: nil
   end
 
   def create
@@ -40,7 +40,7 @@ class RewardsController < ApplicationController
     end
   end
 
-  def upload_image 
+  def upload_image
     authorize resource, :update?
     params[:reward] = {
       uploaded_image: params[:uploaded_image]
@@ -91,7 +91,7 @@ class RewardsController < ApplicationController
       survey.finished_at = Time.current
     end
     survey.save!
-    return render nothing: true
+    return render body: nil
   end
 
   def destroy

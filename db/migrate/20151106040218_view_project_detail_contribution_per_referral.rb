@@ -1,4 +1,4 @@
-class ViewProjectDetailContributionPerReferral < ActiveRecord::Migration
+class ViewProjectDetailContributionPerReferral < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
       create view "1".project_contributions_per_ref as
@@ -15,11 +15,11 @@ class ViewProjectDetailContributionPerReferral < ActiveRecord::Migration
         (
 			   (sum(c.value) * 100) / COALESCE(pt.pledged, 0)
 	      )::numeric as total_on_percentage
-        from 
+        from
         	contributions c
         join "1".project_totals pt on pt.project_id = c.project_id
-        group by 
-        	c.referral_link::text, 
+        group by
+        	c.referral_link::text,
         	c.project_id,
         	pt.pledged
         order by c.referral_link::text asc) as i

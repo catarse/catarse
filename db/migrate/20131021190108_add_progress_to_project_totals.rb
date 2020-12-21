@@ -1,4 +1,4 @@
-class AddProgressToProjectTotals < ActiveRecord::Migration
+class AddProgressToProjectTotals < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
      DROP VIEW project_totals;

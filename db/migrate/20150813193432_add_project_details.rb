@@ -1,4 +1,4 @@
-class AddProjectDetails < ActiveRecord::Migration
+class AddProjectDetails < ActiveRecord::Migration[4.2]
   def up
     #current_database = execute("SELECT current_database();")[0]["current_database"]
       #-- alter database #{current_database} set user_vars.user_id = '';

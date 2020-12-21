@@ -33,7 +33,7 @@ class SurveysController < ApplicationController
     end
     open_questions_answer if params[:survey_open_question_answers_attributes]
     mc_questions_answer if params[:survey_multiple_choice_question_answers_attributes]
-    contribution.update_attribute(:survey_answered_at, Time.current)
+    contribution.update(survey_answered_at: Time.current)
     render status: 200, json: { success: 'OK' }
   end
 
@@ -43,7 +43,7 @@ class SurveysController < ApplicationController
     params[:survey_open_question_answers_attributes].each do |answer|
       question = resource.survey_open_questions.find answer['survey_open_question_id']
       question.survey_open_question_answers
-        .find_or_initialize_by(contribution_id: answer['contribution_id']).update_attributes({ answer: answer['answer'] }) if answer['answer']
+        .find_or_initialize_by(contribution_id: answer['contribution_id']).update(answer: answer['answer']) if answer['answer']
     end
   end
 
@@ -51,7 +51,7 @@ class SurveysController < ApplicationController
     params[:survey_multiple_choice_question_answers_attributes].each do |answer|
       question = resource.survey_multiple_choice_questions.find answer['survey_multiple_choice_question_id']
       question.survey_multiple_choice_question_answers
-        .find_or_initialize_by(contribution_id: answer['contribution_id']).update_attributes({ survey_question_choice_id: answer['survey_question_choice_id'] }) if answer['survey_question_choice_id']
+        .find_or_initialize_by(contribution_id: answer['contribution_id']).update(survey_question_choice_id: answer['survey_question_choice_id']) if answer['survey_question_choice_id']
     end
   end
 

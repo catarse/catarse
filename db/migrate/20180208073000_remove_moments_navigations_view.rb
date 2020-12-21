@@ -1,4 +1,4 @@
-class RemoveMomentsNavigationsView < ActiveRecord::Migration
+class RemoveMomentsNavigationsView < ActiveRecord::Migration[4.2]
     def up
         execute <<-SQL
      DROP MATERIALIZED VIEW public.moments_navigations;
@@ -7,7 +7,7 @@ class RemoveMomentsNavigationsView < ActiveRecord::Migration
 
     def down
       execute <<-SQL
-  CREATE MATERIALIZED VIEW public.moments_navigations AS 
+  CREATE MATERIALIZED VIEW public.moments_navigations AS
    SELECT moments.id,
       moments.created_at,
       moments.data ->> 'ctrse_sid'::text AS ctrse_sid,
@@ -55,33 +55,32 @@ class RemoveMomentsNavigationsView < ActiveRecord::Migration
      FROM moments
     WHERE (moments.data ->> 'category'::text) = 'navigation'::text
   WITH NO DATA;
-  
+
   CREATE INDEX moments_navigations_createdat_idx
     ON public.moments_navigations
     USING btree
     (created_at);
-  
+
   CREATE UNIQUE INDEX moments_navigations_idx
     ON public.moments_navigations
     USING btree
     (id);
-  
+
   CREATE INDEX moments_navigations_path_idx
     ON public.moments_navigations
     USING btree
     (path COLLATE pg_catalog."default");
-  
+
   CREATE INDEX moments_navigations_projectid_idx
     ON public.moments_navigations
     USING btree
     (project_id);
-  
+
   CREATE INDEX moments_navigations_projectid_path_idx
     ON public.moments_navigations
     USING btree
     (project_id, path COLLATE pg_catalog."default");
-  
+
       SQL
     end
   end
-  

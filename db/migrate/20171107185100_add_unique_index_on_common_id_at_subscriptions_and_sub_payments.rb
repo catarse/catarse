@@ -1,4 +1,4 @@
-class AddUniqueIndexOnCommonIdAtSubscriptionsAndSubPayments < ActiveRecord::Migration
+class AddUniqueIndexOnCommonIdAtSubscriptionsAndSubPayments < ActiveRecord::Migration[4.2]
   def up
     execute %Q{
     create unique index uniq_common_id_at_subscriptions on subscriptions(common_id);

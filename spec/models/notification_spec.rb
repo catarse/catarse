@@ -12,7 +12,7 @@ RSpec.describe Notification, type: :model do
       from_name: 'from_name',
       from_email: 'from@email.com',
       locale: 'pt'
-    }.to_json)
+    })
   end
 
   before do
@@ -20,7 +20,7 @@ RSpec.describe Notification, type: :model do
   end
 
   describe 'associations' do
-    it { is_expected.to belong_to :user }
+    it { is_expected.to belong_to(:user).optional }
   end
 
   describe '#deliver' do
@@ -31,7 +31,7 @@ RSpec.describe Notification, type: :model do
     context 'when notification already sent' do
       before do
         expect(notification).not_to receive(:deliver!)
-        notification.update_attribute(:sent_at, DateTime.now)
+        notification.update(sent_at: DateTime.now)
       end
       it { notification.deliver }
     end
@@ -65,6 +65,7 @@ RSpec.describe Notification, type: :model do
   describe '#deliver_without_worker' do
     it 'should use mailer deliveries' do
       expect do
+        # byebug
         notification.deliver_without_worker
       end.to change { ActionMailer::Base.deliveries.count }.by(1)
     end

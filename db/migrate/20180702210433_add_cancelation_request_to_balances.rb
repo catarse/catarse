@@ -1,7 +1,7 @@
-class AddCancelationRequestToBalances < ActiveRecord::Migration
+class AddCancelationRequestToBalances < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
-CREATE OR REPLACE VIEW "1"."balances" AS 
+CREATE OR REPLACE VIEW "1"."balances" AS
  SELECT u.id AS user_id,
     balance.amount,
     last_transfer.amount AS last_transfer_amount,

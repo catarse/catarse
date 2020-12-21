@@ -1,8 +1,8 @@
-class CreateUserNotifications < ActiveRecord::Migration
+class CreateUserNotifications < ActiveRecord::Migration[4.2]
   def change
     create_table :user_notifications do |t|
       t.integer :user_id, null: false
-      
+
       t.text :from_email, null: false
       t.text :from_name, null: false
       t.text :template_name, null: false

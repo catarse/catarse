@@ -1,3 +1,3 @@
-class HomeBanner < ActiveRecord::Base
-    
+class HomeBanner < ApplicationRecord
+
 end

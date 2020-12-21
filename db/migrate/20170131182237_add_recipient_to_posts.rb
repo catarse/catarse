@@ -1,4 +1,4 @@
-class AddRecipientToPosts < ActiveRecord::Migration
+class AddRecipientToPosts < ActiveRecord::Migration[4.2]
   def change
     add_column :project_posts, :recipients, :string, index: true
     execute "update project_posts set recipients = 'public' where exclusive = 'f';"

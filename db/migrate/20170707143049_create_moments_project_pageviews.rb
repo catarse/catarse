@@ -1,7 +1,7 @@
-class CreateMomentsProjectPageviews < ActiveRecord::Migration
+class CreateMomentsProjectPageviews < ActiveRecord::Migration[4.2]
   def up
     execute %Q{
-CREATE MATERIALIZED VIEW public.moments_project_pageviews AS 
+CREATE MATERIALIZED VIEW public.moments_project_pageviews AS
  SELECT m.id,
     ((m.data -> 'project'::text) ->> 'id'::text)::integer AS project_id,
     m.data ->> 'ctrse_sid'::text AS ctrse_sid,
@@ -24,7 +24,7 @@ CREATE INDEX moments_project_pageviews_userid
   ON public.moments_project_pageviews
   USING btree (user_id);
 
-CREATE MATERIALIZED VIEW public.moments_project_pageviews_inferuser AS 
+CREATE MATERIALIZED VIEW public.moments_project_pageviews_inferuser AS
  SELECT m.id,
     m.project_id,
     m.ctrse_sid,

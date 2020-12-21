@@ -1,4 +1,4 @@
-class ChangePaymentSlipDeleteDate < ActiveRecord::Migration
+class ChangePaymentSlipDeleteDate < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
     CREATE OR REPLACE FUNCTION can_delete(payments) RETURNS boolean AS $$

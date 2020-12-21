@@ -1,4 +1,4 @@
-class FixProjectTransfers < ActiveRecord::Migration
+class FixProjectTransfers < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
 CREATE OR REPLACE VIEW "1".project_transfers AS

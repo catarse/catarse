@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/ruby:2.7.1-node-browsers
+      - image: circleci/ruby:2.7.2-node-browsers
       - image: postgres:11.5
         environment:
           POSTGRES_DB: catarse_test
@@ -19,7 +19,7 @@ jobs:
       - run: sudo apt install postgresql-client-11
       - run: bundle install
       - run: npm install
-      - run: RAILS_ENV=test DATABASE_URL=postgres://postgres:example@localhost:5432/catarse_test bundle exec rake db:migrate
+      - run: RAILS_ENV=test DATABASE_URL=postgres://postgres:example@localhost:5432/catarse_test bundle exec rails db:migrate
       - run: RAILS_ENV=test DATABASE_URL=postgres://postgres:example@localhost:5432/catarse_test bundle exec rspec spec
 
   deploy_sandbox:

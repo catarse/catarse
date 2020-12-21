@@ -1,7 +1,7 @@
-class CreateDirectMessagesView < ActiveRecord::Migration
+class CreateDirectMessagesView < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
-      CREATE VIEW "1".direct_messages AS 
+      CREATE VIEW "1".direct_messages AS
         SELECT dm.user_id, dm.to_user_id, dm.project_id, dm.from_email, dm.from_name, dm.content
         from direct_messages dm;
 

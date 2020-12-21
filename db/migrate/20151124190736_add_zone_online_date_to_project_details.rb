@@ -1,4 +1,4 @@
-class AddZoneOnlineDateToProjectDetails < ActiveRecord::Migration
+class AddZoneOnlineDateToProjectDetails < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
 CREATE OR REPLACE FUNCTION public.zone_timestamp(timestamp)

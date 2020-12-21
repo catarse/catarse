@@ -1,4 +1,4 @@
-class AddAntifraudCostToProjectTotals < ActiveRecord::Migration
+class AddAntifraudCostToProjectTotals < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
       CREATE OR REPLACE VIEW "1".project_totals AS

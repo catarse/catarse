@@ -1,10 +1,10 @@
-class ShowContactMessageOrigin < ActiveRecord::Migration
+class ShowContactMessageOrigin < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
       ALTER TABLE "direct_messages"
       ADD "data" JSON NOT NULL DEFAULT E'{}';
-      
-      CREATE OR REPLACE VIEW "1"."direct_messages" AS 
+
+      CREATE OR REPLACE VIEW "1"."direct_messages" AS
       SELECT dm.user_id,
           dm.to_user_id,
           dm.project_id,
@@ -27,17 +27,17 @@ class ShowContactMessageOrigin < ActiveRecord::Migration
                     begin
                       insert into public.direct_messages (user_id, to_user_id, project_id, from_email, from_name, content, data)
                       values (current_user_id(), NEW.to_user_id, NEW.project_id, NEW.from_email, NEW.from_name, NEW.content, NEW.data);
-                      
+
                       return new;
                     end;
-                  $function$      
+                  $function$
     SQL
   end
 
   def down
     execute <<-SQL
       DROP VIEW "1"."direct_messages";
-      CREATE OR REPLACE VIEW "1"."direct_messages" AS 
+      CREATE OR REPLACE VIEW "1"."direct_messages" AS
       SELECT dm.user_id,
         dm.to_user_id,
         dm.project_id,
@@ -62,7 +62,7 @@ class ShowContactMessageOrigin < ActiveRecord::Migration
                     begin
                       insert into public.direct_messages (user_id, to_user_id, project_id, from_email, from_name, content)
                       values (current_user_id(), NEW.to_user_id, NEW.project_id, NEW.from_email, NEW.from_name, NEW.content);
-                      
+
                       return new;
                     end;
                   $function$

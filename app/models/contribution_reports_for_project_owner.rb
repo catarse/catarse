@@ -1,4 +1,4 @@
-class ContributionReportsForProjectOwner < ActiveRecord::Base
+class ContributionReportsForProjectOwner < ApplicationRecord
   acts_as_copy_target
 
   belongs_to :payment

@@ -1,8 +1,7 @@
-class AdjustContributionReportsView < ActiveRecord::Migration
+class AdjustContributionReportsView < ActiveRecord::Migration[4.2]
   def up
-    drop_view :contribution_reports
-
     execute <<-SQL
+    DROP VIEW IF EXISTS contribution_reports;
       CREATE OR REPLACE VIEW contribution_reports AS
         SELECT b.project_id,
            u.name,
@@ -37,9 +36,8 @@ class AdjustContributionReportsView < ActiveRecord::Migration
   end
 
   def down
-    drop_view :contribution_reports
-
     execute <<-SQL
+      DROP VIEW IF EXISTS contribution_reports;
       CREATE OR REPLACE VIEW contribution_reports AS
         SELECT b.project_id,
            u.name,

@@ -1,4 +1,4 @@
-class CreateFlexibleProjectTransitions < ActiveRecord::Migration
+class CreateFlexibleProjectTransitions < ActiveRecord::Migration[4.2]
   def change
     create_table :flexible_project_transitions do |t|
       t.string :to_state, null: false

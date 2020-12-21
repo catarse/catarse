@@ -1,4 +1,4 @@
-class AdjustProjectRemindersTriggers < ActiveRecord::Migration
+class AdjustProjectRemindersTriggers < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
 CREATE OR REPLACE FUNCTION insert_project_reminder() RETURNS trigger

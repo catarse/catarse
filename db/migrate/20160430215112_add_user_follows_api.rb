@@ -1,7 +1,7 @@
-class AddUserFollowsApi < ActiveRecord::Migration
+class AddUserFollowsApi < ActiveRecord::Migration[4.2]
   def up
     execute %Q{
-ALTER TABLE public.user_follows 
+ALTER TABLE public.user_follows
     ADD CONSTRAINT ufollowfk FOREIGN KEY (follow_id) REFERENCES public.users (id);
 
 create or replace view "1".user_follows as
@@ -42,7 +42,7 @@ CREATE OR REPLACE FUNCTION public.insert_user_follow() RETURNS trigger
         END;
     $$;
 
-CREATE TRIGGER insert_user_follow INSTEAD OF INSERT ON "1".user_follows 
+CREATE TRIGGER insert_user_follow INSTEAD OF INSERT ON "1".user_follows
 FOR EACH ROW EXECUTE PROCEDURE public.insert_user_follow();
 
 
@@ -56,14 +56,14 @@ CREATE OR REPLACE FUNCTION public.delete_user_follow() RETURNS trigger
                 RAISE EXCEPTION 'missing follow';
             END IF;
 
-            DELETE FROM public.user_follows 
+            DELETE FROM public.user_follows
                 WHERE user_id = current_user_id() AND follow_id = OLD.follow_id;
 
             RETURN OLD;
         END;
     $$;
 
-CREATE TRIGGER delete_user_follow INSTEAD OF DELETE ON "1".user_follows 
+CREATE TRIGGER delete_user_follow INSTEAD OF DELETE ON "1".user_follows
 FOR EACH ROW EXECUTE PROCEDURE public.delete_user_follow();
     }
   end

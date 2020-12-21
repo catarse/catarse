@@ -1,4 +1,4 @@
-class FixesProjectSearchOrderAgain < ActiveRecord::Migration
+class FixesProjectSearchOrderAgain < ActiveRecord::Migration[4.2]
     def up
     execute <<-SQL
       DROP FUNCTION "1".project_search(query text);

@@ -1,4 +1,4 @@
-class AddConversionFuncs < ActiveRecord::Migration
+class AddConversionFuncs < ActiveRecord::Migration[4.2]
   def up
     change_column_null :rdevents, :user_id, false
     change_column_default :rdevents, :created_at, 'now()'

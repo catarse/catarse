@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class PaymentNotification < ActiveRecord::Base
+class PaymentNotification < ApplicationRecord
   belongs_to :contribution
   serialize :extra_data, JSON
 

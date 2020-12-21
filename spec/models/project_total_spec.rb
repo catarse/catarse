@@ -12,7 +12,7 @@ RSpec.describe ProjectTotal, type: :model do
       create_contribution_with_payment(project.id, 'paid')
       create_contribution_with_payment(project.id, 'refunded')
       create_contribution_with_payment(project.id, 'pending_refund')
-      project.update_attribute(:state, 'failed')
+      project.update(state: 'failed')
     end
 
     describe '#pledged' do

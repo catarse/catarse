@@ -1,4 +1,4 @@
-class AddTransitionsToBalanceTransfer < ActiveRecord::Migration
+class AddTransitionsToBalanceTransfer < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
 CREATE OR REPLACE FUNCTION public.current_state(bt public.balance_transfers) RETURNS text
@@ -17,7 +17,7 @@ CREATE OR REPLACE VIEW "1".balance_transfers AS
     public.zone_timestamp(bt.created_at) AS created_at,
     public.zone_timestamp(
         (
-            (bt.created_at + '10 days'::interval) + 
+            (bt.created_at + '10 days'::interval) +
             (
                 (select count(1) from (
                     select
@@ -47,7 +47,7 @@ CREATE OR REPLACE VIEW "1".balance_transfers AS
     public.zone_timestamp(bt.created_at) AS created_at,
     public.zone_timestamp(
         (
-            (bt.created_at + '10 days'::interval) + 
+            (bt.created_at + '10 days'::interval) +
             (
                 (select count(1) from (
                     select

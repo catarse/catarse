@@ -3,14 +3,14 @@
 <head>
   <title>The change you wanted was rejected (422)</title>
   <style>
-  body {
+  .rails-default-error-page {
     background-color: #EFEFEF;
     color: #2E2F30;
     text-align: center;
     font-family: arial, sans-serif;
   }
 
-  div.dialog {
+  .rails-default-error-page div.dialog {
     width: 25em;
     margin: 4em auto 0 auto;
     border: 1px solid #CCC;
@@ -24,13 +24,13 @@
     padding: 7px 4em 0 4em;
   }
 
-  h1 {
+  .rails-default-error-page h1 {
     font-size: 100%;
     color: #730E15;
     line-height: 1.5em;
   }
 
-  body > p {
+  .rails-default-error-page div.dialog > p {
     width: 33em;
     margin: 0 auto 1em;
     padding: 1em 0;
@@ -47,7 +47,7 @@
   </style>
 </head>
 
-<body>
+<body class="rails-default-error-page">
   <!-- This file lives in public/422.html -->
   <div class="dialog">
     <h1>The change you wanted was rejected.</h1>

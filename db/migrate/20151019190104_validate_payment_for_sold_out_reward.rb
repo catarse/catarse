@@ -1,4 +1,4 @@
-class ValidatePaymentForSoldOutReward < ActiveRecord::Migration
+class ValidatePaymentForSoldOutReward < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
     CREATE FUNCTION public.validate_reward_sold_out()

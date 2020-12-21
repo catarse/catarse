@@ -1,9 +1,9 @@
-class RefactorContributionReports < ActiveRecord::Migration
+class RefactorContributionReports < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
     DROP VIEW contribution_reports;
     CREATE OR REPLACE VIEW "1".contribution_reports AS
-      SELECT 
+      SELECT
         b.project_id,
         u.name,
         replace(b.value::text, '.'::text, ','::text) AS value,
@@ -41,7 +41,7 @@ class RefactorContributionReports < ActiveRecord::Migration
     execute <<-SQL
     DROP VIEW "1".contribution_reports;
     CREATE OR REPLACE VIEW contribution_reports AS
-      SELECT 
+      SELECT
         b.project_id,
         u.name,
         replace(b.value::text, '.'::text, ','::text) AS value,

@@ -1,4 +1,4 @@
-class AddDeleteProjectsEndpoint < ActiveRecord::Migration
+class AddDeleteProjectsEndpoint < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
 
@@ -10,11 +10,11 @@ class AddDeleteProjectsEndpoint < ActiveRecord::Migration
             full_text_index tsvector;
         BEGIN
 
-            full_text_index :=  setweight(to_tsvector('portuguese', unaccent(coalesce(project.name::text, ''))), 'A') || 
-                                setweight(to_tsvector('portuguese', unaccent(coalesce(project.permalink::text, ''))), 'C') || 
-                                setweight(to_tsvector('portuguese', unaccent(coalesce(project.headline::text, ''))), 'B') || 
-                                setweight(to_tsvector('portuguese', unaccent(coalesce((SELECT c.name_pt FROM categories c WHERE c.id = project.category_id)::text, ''))), 'B') || 
-                                setweight(to_tsvector('portuguese', unaccent(coalesce((select array_agg(t.name)::text from public.taggings ta join public_tags t on t.id = ta.public_tag_id where ta.project_id = project.id)::text, ''))), 'B') || 
+            full_text_index :=  setweight(to_tsvector('portuguese', unaccent(coalesce(project.name::text, ''))), 'A') ||
+                                setweight(to_tsvector('portuguese', unaccent(coalesce(project.permalink::text, ''))), 'C') ||
+                                setweight(to_tsvector('portuguese', unaccent(coalesce(project.headline::text, ''))), 'B') ||
+                                setweight(to_tsvector('portuguese', unaccent(coalesce((SELECT c.name_pt FROM categories c WHERE c.id = project.category_id)::text, ''))), 'B') ||
+                                setweight(to_tsvector('portuguese', unaccent(coalesce((select array_agg(t.name)::text from public.taggings ta join public_tags t on t.id = ta.public_tag_id where ta.project_id = project.id)::text, ''))), 'B') ||
                                 setweight(to_tsvector('portuguese', unaccent(coalesce((SELECT u.name FROM users u WHERE u.id = project.user_id)::text, ''))), 'C');
 
           RETURN full_text_index;
@@ -47,7 +47,7 @@ class AddDeleteProjectsEndpoint < ActiveRecord::Migration
                 end if;
 
                 update project_transitions pt set most_recent = false where pt.project_id = _project_id;
-                insert into public.project_transitions (to_state, metadata, sort_key, project_id, most_recent, created_at, updated_at) 
+                insert into public.project_transitions (to_state, metadata, sort_key, project_id, most_recent, created_at, updated_at)
                 values ('deleted', '{"to_state":"deleted", "from_state":' || v_project.state || '}', 0, _project_id, true, current_timestamp, current_timestamp);
                 update projects set state = 'deleted', permalink = ('_deleted_' || _project_id) where id = _project_id;
               end;

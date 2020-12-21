@@ -1,4 +1,4 @@
-class FixTotalContributedStatisticsView < ActiveRecord::Migration
+class FixTotalContributedStatisticsView < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
     SET statement_timeout to 0;

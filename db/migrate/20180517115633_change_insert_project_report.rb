@@ -1,4 +1,4 @@
-class ChangeInsertProjectReport < ActiveRecord::Migration
+class ChangeInsertProjectReport < ActiveRecord::Migration[4.2]
   def up
     execute %Q{
       CREATE OR REPLACE FUNCTION public.insert_project_report()
@@ -11,25 +11,25 @@ class ChangeInsertProjectReport < ActiveRecord::Migration
       begin
         cur_user_id := current_user_id();
         NEW.user_id := cur_user_id;
-        
+
         insert into public.project_reports (
-                      user_id, 
-                      project_id, 
-                      email, 
-                      reason, 
-                      details, 
+                      user_id,
+                      project_id,
+                      email,
+                      reason,
+                      details,
                       data,
                       created_at,
                       updated_at
-                    ) 
+                    )
         values (
-          cur_user_id, 
-          NEW.project_id, 
-          NEW.email, 
-          NEW.reason, 
+          cur_user_id,
+          NEW.project_id,
+          NEW.email,
+          NEW.reason,
           NEW.details,
           NEW.data,
-          current_timestamp, 
+          current_timestamp,
           current_timestamp
         );
         return new;

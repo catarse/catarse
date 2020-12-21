@@ -1,4 +1,4 @@
-class CreateRewardsSoldOut < ActiveRecord::Migration
+class CreateRewardsSoldOut < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
     CREATE FUNCTION public.sold_out(reward rewards)

@@ -1,4 +1,4 @@
-class AddUserFeedsView < ActiveRecord::Migration
+class AddUserFeedsView < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
       create or replace view user_feeds as

@@ -1,4 +1,4 @@
-class RefactorUserTotals < ActiveRecord::Migration
+class RefactorUserTotals < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
       CREATE OR REPLACE FUNCTION uses_credits(payments) RETURNS boolean AS $$
@@ -20,7 +20,7 @@ class RefactorUserTotals < ActiveRecord::Migration
                 WHEN p.state::text = 'failed'::text AND NOT pa.uses_credits AND pa.state::text = 'paid'::text THEN pa.value
                 ELSE pa.value * (-1)::numeric
             END) AS credits
-      FROM 
+      FROM
         contributions b
         JOIN payments pa ON b.id = pa.contribution_id
         JOIN projects p ON b.project_id = p.id

@@ -1,7 +1,7 @@
-class AdjustContributorsToRejected < ActiveRecord::Migration
+class AdjustContributorsToRejected < ActiveRecord::Migration[4.2]
   def up
     execute %Q{
-CREATE OR REPLACE VIEW "1"."contributors" AS 
+CREATE OR REPLACE VIEW "1"."contributors" AS
  SELECT u.id,
     u.id AS user_id,
     c.project_id,
@@ -26,7 +26,7 @@ CREATE OR REPLACE VIEW "1"."contributors" AS
 
   def down
     execute %Q{
-CREATE OR REPLACE VIEW "1"."contributors" AS 
+CREATE OR REPLACE VIEW "1"."contributors" AS
  SELECT u.id,
     u.id AS user_id,
     c.project_id,

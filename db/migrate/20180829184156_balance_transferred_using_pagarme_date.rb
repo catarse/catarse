@@ -1,7 +1,7 @@
-class BalanceTransferredUsingPagarmeDate < ActiveRecord::Migration
+class BalanceTransferredUsingPagarmeDate < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
-    CREATE OR REPLACE VIEW "1"."balance_transfers" AS 
+    CREATE OR REPLACE VIEW "1"."balance_transfers" AS
     SELECT bt.id,
        bt.user_id,
        bt.project_id,
@@ -46,7 +46,7 @@ class BalanceTransferredUsingPagarmeDate < ActiveRecord::Migration
 
   def down
     execute <<-SQL
-    CREATE OR REPLACE VIEW "1"."balance_transfers" AS 
+    CREATE OR REPLACE VIEW "1"."balance_transfers" AS
     SELECT bt.id,
        bt.user_id,
        bt.project_id,

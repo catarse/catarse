@@ -1,4 +1,4 @@
-class FixFtiOnContributionDetailsUpdate < ActiveRecord::Migration
+class FixFtiOnContributionDetailsUpdate < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
     CREATE OR REPLACE FUNCTION public.update_from_details_to_contributions() RETURNS trigger
@@ -7,21 +7,21 @@ class FixFtiOnContributionDetailsUpdate < ActiveRecord::Migration
       BEGIN
        -- Prevent mutiple updates
        IF EXISTS (
-        SELECT true 
-        FROM api_updates.contributions c 
+        SELECT true
+        FROM api_updates.contributions c
         WHERE c.contribution_id <> OLD.id AND transaction_id = txid_current()
        ) THEN
         RAISE EXCEPTION 'Just one contribution update is allowed per transaction';
        END IF;
-       INSERT INTO api_updates.contributions 
+       INSERT INTO api_updates.contributions
         (contribution_id, user_id, reward_id, transaction_id, updated_at)
        VALUES
         (OLD.id, OLD.user_id, OLD.reward_id, txid_current(), now());
 
        UPDATE public.contributions
-       SET 
+       SET
         user_id = new.user_id,
-        reward_id = new.reward_id 
+        reward_id = new.reward_id
        WHERE id = old.contribution_id;
 
        -- Just to update FTI

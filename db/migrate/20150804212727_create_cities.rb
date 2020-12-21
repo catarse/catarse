@@ -1,4 +1,4 @@
-class CreateCities < ActiveRecord::Migration
+class CreateCities < ActiveRecord::Migration[4.2]
   def change
     create_table :cities do |t|
       t.text     :name, null: false

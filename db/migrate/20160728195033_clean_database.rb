@@ -1,4 +1,4 @@
-class CleanDatabase < ActiveRecord::Migration
+class CleanDatabase < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
   CREATE  OR REPLACE FUNCTION state_order(project_id integer) RETURNS project_state_order

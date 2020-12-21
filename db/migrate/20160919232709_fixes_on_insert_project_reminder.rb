@@ -1,4 +1,4 @@
-class FixesOnInsertProjectReminder < ActiveRecord::Migration
+class FixesOnInsertProjectReminder < ActiveRecord::Migration[4.2]
   def up
   execute %Q{
 CREATE OR REPLACE FUNCTION insert_project_reminder() RETURNS trigger

@@ -1,4 +1,4 @@
-class AdjustSearchDictOnTransferFullTextIndexGeneration < ActiveRecord::Migration
+class AdjustSearchDictOnTransferFullTextIndexGeneration < ActiveRecord::Migration[4.2]
   def change
     execute %Q{
 CREATE OR REPLACE FUNCTION public.generate_transfer_full_text_index(bt balance_transfers)
@@ -20,7 +20,7 @@ AS $function$
                                     from balance_transactions btr
                                     where btr.user_id = bt.user_id
                                     order by btr.id desc limit 10) t
-                               ), '')), 'C') || 
+                               ), '')), 'C') ||
                                setweight(to_tsvector('english', unaccent(coalesce(bt.user_id::text, ''))), 'D') ||
                                setweight(to_tsvector('english', coalesce(bt.transfer_id::text, '')), 'D');
 

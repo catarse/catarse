@@ -1,4 +1,4 @@
-class AddTriggerToRdstationFirstWeekGoal < ActiveRecord::Migration
+class AddTriggerToRdstationFirstWeekGoal < ActiveRecord::Migration[4.2]
   def up
     execute %{
 CREATE OR REPLACE FUNCTION notify_about_confirmed_payments() RETURNS trigger
@@ -23,14 +23,14 @@ CREATE OR REPLACE FUNCTION notify_about_confirmed_payments() RETURNS trigger
           if v_contribution is not null then
             perform pg_notify('new_paid_contributions', v_contribution::text);
           end if;
-          
+
 
           SELECT p.* FROM contributions c
-          JOIN projects p ON p.id= c.project_id 
+          JOIN projects p ON p.id= c.project_id
           where c.id = NEW.contribution_id INTO v_project;
-          
+
           SELECT * FROM "1".project_totals WHERE project_id = v_project.id INTO v_p_total;
-          
+
           IF public.online_at(v_project) + '7 days'::interval >= now() THEN
             IF ((v_p_total.paid_pledged / v_project.goal) * (100)::numeric) >= 10 AND NOT EXISTS (
                 SELECT TRUE FROM public.rdevents WHERE user_id = v_project.user_id AND project_id = v_project.id AND event_name = 'project_first_week_goal') THEN

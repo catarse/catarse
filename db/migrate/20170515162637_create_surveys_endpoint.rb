@@ -1,7 +1,7 @@
-class CreateSurveysEndpoint < ActiveRecord::Migration
+class CreateSurveysEndpoint < ActiveRecord::Migration[4.2]
   def change
     execute %Q{
-    CREATE OR REPLACE VIEW "1".surveys AS 
+    CREATE OR REPLACE VIEW "1".surveys AS
     SELECT s.id as survey_id,
       c.project_id as project_id,
       c.id as contribution_id,
@@ -10,7 +10,7 @@ class CreateSurveysEndpoint < ActiveRecord::Migration
       s.sent_at,
       s.finished_at,
       ( SELECT json_agg(open_questions.*) AS json_agg
-             FROM ( SELECT 
+             FROM ( SELECT
                       soq.id,
                       soq.question,
                       soq.description,
@@ -20,7 +20,7 @@ class CreateSurveysEndpoint < ActiveRecord::Migration
                       LEFT JOIN survey_open_question_answers sa ON sa.contribution_id = c.id
                     WHERE (soq.survey_id = s.id)) open_questions) AS open_questions,
       ( SELECT json_agg(m_questions.*) AS json_agg
-             FROM ( SELECT 
+             FROM ( SELECT
                       smcq.id,
                       smcq.question,
                       sa.survey_question_choice_id,

@@ -1,4 +1,4 @@
-class AddRejectedToFunc < ActiveRecord::Migration
+class AddRejectedToFunc < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
 ALTER TABLE projects

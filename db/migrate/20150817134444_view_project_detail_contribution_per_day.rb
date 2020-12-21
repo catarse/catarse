@@ -1,4 +1,4 @@
-class ViewProjectDetailContributionPerDay < ActiveRecord::Migration
+class ViewProjectDetailContributionPerDay < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
       create view "1".project_contributions_per_day as

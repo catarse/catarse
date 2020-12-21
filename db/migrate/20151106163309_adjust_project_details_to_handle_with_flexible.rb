@@ -1,4 +1,4 @@
-class AdjustProjectDetailsToHandleWithFlexible < ActiveRecord::Migration
+class AdjustProjectDetailsToHandleWithFlexible < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
 SET statement_timeout TO 0;
@@ -6,7 +6,7 @@ SET statement_timeout TO 0;
 
     execute <<-SQL
 DROP VIEW "1".project_details;
-CREATE VIEW "1".project_details AS 
+CREATE VIEW "1".project_details AS
  SELECT p.id AS project_id,
     p.id,
     p.user_id,
@@ -132,7 +132,7 @@ SET statement_timeout TO 0;
 
     execute <<-SQL
 DROP VIEW "1".project_details;
-CREATE VIEW "1".project_details AS 
+CREATE VIEW "1".project_details AS
  SELECT p.id AS project_id,
     p.id,
     p.user_id,

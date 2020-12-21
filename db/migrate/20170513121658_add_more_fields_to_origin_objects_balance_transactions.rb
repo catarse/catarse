@@ -1,7 +1,7 @@
-class AddMoreFieldsToOriginObjectsBalanceTransactions < ActiveRecord::Migration
+class AddMoreFieldsToOriginObjectsBalanceTransactions < ActiveRecord::Migration[4.2]
   def change
     execute %Q{
-CREATE OR REPLACE VIEW "1"."balance_transactions" AS 
+CREATE OR REPLACE VIEW "1"."balance_transactions" AS
  SELECT bt.user_id,
     sum(
         CASE
@@ -17,14 +17,14 @@ CREATE OR REPLACE VIEW "1"."balance_transactions" AS
     (zone_timestamp(bt.created_at))::date AS created_at,
     json_agg(
         json_build_object(
-            'amount', bt.amount, 
-            'event_name', bt.event_name, 
+            'amount', bt.amount,
+            'event_name', bt.event_name,
             'origin_objects', json_build_object(
                 'service_fee', (select p1.service_fee from projects p1 where p1.id = bt.project_id limit 1),
                 'contributor_name', (select u1.public_name from users u1 where u1.id = (
                     select user_id from contributions where contributions.id = bt.contribution_id limit 1
                 ) limit 1),
-                'id', COALESCE(bt.project_id, bt.contribution_id), 
+                'id', COALESCE(bt.project_id, bt.contribution_id),
                 'project_name', ( SELECT projects.name
                        FROM projects
                       WHERE (projects.id = bt.project_id) limit 1)

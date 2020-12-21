@@ -1,4 +1,4 @@
-class AddShippingOptionsToRewardDetails < ActiveRecord::Migration
+class AddShippingOptionsToRewardDetails < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
  CREATE OR REPLACE VIEW "1".reward_details AS

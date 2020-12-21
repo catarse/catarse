@@ -1,4 +1,4 @@
-class ChangeProjectFiscalInformsToBalanceTransfer < ActiveRecord::Migration
+class ChangeProjectFiscalInformsToBalanceTransfer < ActiveRecord::Migration[4.2]
     def up
         execute <<-SQL
         CREATE OR REPLACE VIEW public.project_fiscal_informs_view AS
@@ -21,12 +21,12 @@ class ChangeProjectFiscalInformsToBalanceTransfer < ActiveRecord::Migration
                 (json_agg(project_info order by fiscal_date desc)->0) project_info,
                 (json_agg(user_info order by fiscal_date desc)->0) user_info,
                 (json_agg(user_address order by fiscal_date desc)->0) user_address
-                        
+
             from public.project_fiscal_data_tbl pfd
             group by project_id, user_id, mode, fiscal_year
         ) pfd
         left join lateral (
-            select count(user_id) c, min(n)FILTER(where t.user_id=pfd.user_id) n from ( 
+            select count(user_id) c, min(n)FILTER(where t.user_id=pfd.user_id) n from (
                 select user_id, row_number() OVER(ORDER BY user_id) n from (
                     select distinct user_id
                     from public.project_fiscal_data_tbl f
@@ -81,10 +81,10 @@ class ChangeProjectFiscalInformsToBalanceTransfer < ActiveRecord::Migration
             pr.mode as mode,
             to_char(zone_timestamp(r.transferred_at),'YYYYMMDD') fiscal_date,
             extract(year from zone_timestamp(r.transferred_at)::date)::integer fiscal_year,
-            
+
             round(r.project_pledged_amount,2) as project_pledged_amount,
             round(r.total_service_fee,2) as service_fee,
-            
+
             round(NULLIF(irrf_tax,0),2) as irrf,
             -- r.project_contribution_confirmed_after_finished nao entra pq está somado em payments
             round( (r.payments+
@@ -193,7 +193,7 @@ class ChangeProjectFiscalInformsToBalanceTransfer < ActiveRecord::Migration
 
     def down
       execute <<-SQL
-      CREATE OR REPLACE VIEW "public"."project_fiscal_informs_view" AS 
+      CREATE OR REPLACE VIEW "public"."project_fiscal_informs_view" AS
       SELECT pfd.project_id,
           pfd.user_id,
           pfd.mode,
@@ -218,7 +218,7 @@ class ChangeProjectFiscalInformsToBalanceTransfer < ActiveRecord::Migration
                 WHERE (p.p IS NOT NULL)) pf ON (true))
         GROUP BY pfd.project_id, pfd.user_id, pfd.mode, pfd.fiscal_year;
 
-      CREATE OR REPLACE VIEW "1"."project_fiscal_ids" AS 
+      CREATE OR REPLACE VIEW "1"."project_fiscal_ids" AS
       SELECT pfd.project_id,
           array_agg(pfd.fiscal_date ORDER BY pfd.fiscal_date) AS debit_notes,
           array_agg(DISTINCT pfd.fiscal_year ORDER BY pfd.fiscal_year) FILTER (WHERE ((pfd.mode <> 'sub'::text) OR ((pfd.fiscal_year)::double precision < date_part('year'::text, now())))) AS informs
@@ -234,14 +234,14 @@ class ChangeProjectFiscalInformsToBalanceTransfer < ActiveRecord::Migration
       alter table project_fiscal_data_tbl drop COLUMN balance_transfer_id;
       alter table project_fiscal_data_tbl drop COLUMN subscription_payment_uuids;
       alter table project_fiscal_data_tbl drop COLUMN payment_ids;
-      
+
 
       DROP FUNCTION project_fiscal_data_tbl_refresh();
       CREATE OR REPLACE FUNCTION public.project_fiscal_data_tbl_refresh()
       RETURNS void
           LANGUAGE 'sql'
           COST 100
-          VOLATILE 
+          VOLATILE
       AS $BODY$
           INSERT INTO public.project_fiscal_data_tbl
           SELECT pr.id as project_id, pr.user_id, pr.mode,
@@ -338,4 +338,3 @@ class ChangeProjectFiscalInformsToBalanceTransfer < ActiveRecord::Migration
       SQL
     end
   end
-  

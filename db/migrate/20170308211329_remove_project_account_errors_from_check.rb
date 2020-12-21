@@ -1,4 +1,4 @@
-class RemoveProjectAccountErrorsFromCheck < ActiveRecord::Migration
+class RemoveProjectAccountErrorsFromCheck < ActiveRecord::Migration[4.2]
   def up
     execute %Q{
 CREATE OR REPLACE FUNCTION public.project_checks_before_transfer()

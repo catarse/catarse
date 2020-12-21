@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
-class GatewayPayment < ActiveRecord::Base
+class GatewayPayment < ApplicationRecord
   belongs_to :payment
 end

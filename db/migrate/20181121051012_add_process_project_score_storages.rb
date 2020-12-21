@@ -1,8 +1,8 @@
-class AddProcessProjectScoreStorages < ActiveRecord::Migration
+class AddProcessProjectScoreStorages < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
 create or replace function public.refresh_project_score_storage(public.projects) returns numeric
-language plpgsql VOLATILE 
+language plpgsql VOLATILE
 as $$
     declare
         v_score numeric;
@@ -30,7 +30,7 @@ as $$
         v_project public.projects;
         v_score numeric;
     begin
-        for v_project in (select * from public.projects where state = 'online') 
+        for v_project in (select * from public.projects where state = 'online')
         loop
             v_score := public.refresh_project_score_storage(v_project);
             raise notice 'performed on project id % with score %', v_project.id, v_score;

@@ -1,4 +1,4 @@
-class AdjustProjectReminderDbFuncs < ActiveRecord::Migration
+class AdjustProjectReminderDbFuncs < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
 CREATE OR REPLACE FUNCTION user_has_reminder_for_project(user_id integer, project_id integer) RETURNS boolean

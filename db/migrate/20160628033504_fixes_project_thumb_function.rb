@@ -1,4 +1,4 @@
-class FixesProjectThumbFunction < ActiveRecord::Migration
+class FixesProjectThumbFunction < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
     CREATE OR REPLACE FUNCTION public.thumbnail_image(projects, size text)

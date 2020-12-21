@@ -6,7 +6,7 @@ RSpec.describe Address, type: :model do
   describe 'Constants' do
     it 'has REQUIRED_ATTRIBUTES constant' do
       expect(described_class::REQUIRED_ATTRIBUTES).to eq %i[
-        address_city address_zip_code phone_number address_neighbourhood address_street address_number
+        address_city address_zip_code phone_number address_neighbourhood address_street address_number state_id
       ].freeze
     end
   end
@@ -17,7 +17,9 @@ RSpec.describe Address, type: :model do
         before { allow(subject).to receive(:international?).and_return(true) }
 
         it 'doesn`t includes address_number address_neighbourhood and phone_number' do
-          expect(subject.required_attributes).to_not include(:address_number, :address_neighbourhood, :phone_number)
+          expect(subject.required_attributes).to_not include(
+            :address_number, :address_neighbourhood, :phone_number, :state_id
+          )
         end
       end
 

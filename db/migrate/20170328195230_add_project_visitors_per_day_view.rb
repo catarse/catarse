@@ -1,7 +1,7 @@
-class AddProjectVisitorsPerDayView < ActiveRecord::Migration
+class AddProjectVisitorsPerDayView < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
-CREATE MATERIALIZED VIEW "1".project_visitors_per_day AS 
+CREATE MATERIALIZED VIEW "1".project_visitors_per_day AS
 select i.project_id, sum(visitors) as total,
     json_agg(json_build_object('day', i.day, 'visitors', i.visitors)) AS source
 from (

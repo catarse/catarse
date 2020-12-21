@@ -1,4 +1,4 @@
-class AddUniqueAddressAnswers < ActiveRecord::Migration
+class AddUniqueAddressAnswers < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
     ALTER TABLE survey_address_answers ADD UNIQUE (contribution_id, address_id);

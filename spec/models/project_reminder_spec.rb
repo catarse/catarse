@@ -25,7 +25,7 @@ RSpec.describe ProjectReminder, type: :model do
       let(:project) { create(:project, state: 'online') }
 
       before do
-        project.update_attribute :expires_at, 1.hour.from_now
+        project.update(expires_at: 1.hour.from_now)
         4.times { create(:project_reminder, project: project) }
       end
 

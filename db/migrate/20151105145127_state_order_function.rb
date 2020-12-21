@@ -1,4 +1,4 @@
-class StateOrderFunction < ActiveRecord::Migration
+class StateOrderFunction < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
 CREATE FUNCTION state_order(project projects)

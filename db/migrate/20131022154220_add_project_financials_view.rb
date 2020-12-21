@@ -1,4 +1,4 @@
-class AddProjectFinancialsView < ActiveRecord::Migration
+class AddProjectFinancialsView < ActiveRecord::Migration[4.2]
   def up
     execute "
       create or replace view project_financials as

@@ -1,4 +1,4 @@
-class AddEmailActiveToUserDetails < ActiveRecord::Migration
+class AddEmailActiveToUserDetails < ActiveRecord::Migration[4.2]
   def up
     execute %Q{
 CREATE OR REPLACE FUNCTION public.email_active(users)
@@ -6,13 +6,13 @@ CREATE OR REPLACE FUNCTION public.email_active(users)
  LANGUAGE sql
  STABLE SECURITY DEFINER
 AS $function$
-      SELECT EXISTS (SELECT true from sendgrid_events 
-        WHERE event IN ('open', 'click') and notification_user = $1.id and created_at > (current_timestamp - '1 month'::interval)) 
+      SELECT EXISTS (SELECT true from sendgrid_events
+        WHERE event IN ('open', 'click') and notification_user = $1.id and created_at > (current_timestamp - '1 month'::interval))
         OR coalesce(($1.confirmed_email_at > current_timestamp - '1 month'::interval), false);
     $function$
 ;
 
-CREATE OR REPLACE VIEW "1"."user_details" AS 
+CREATE OR REPLACE VIEW "1"."user_details" AS
  SELECT u.id,
     u.name,
     u.address_city,
@@ -68,12 +68,12 @@ REATE OR REPLACE FUNCTION public.email_active(users)
  LANGUAGE sql
  STABLE SECURITY DEFINER
 AS $function$
-      SELECT EXISTS (SELECT true from sendgrid_events 
+      SELECT EXISTS (SELECT true from sendgrid_events
         WHERE event IN ('open', 'click') and notification_user = $1.id and created_at > (current_timestamp - '1 month'::interval));
     $function$
 ;
 
-CREATE OR REPLACE VIEW "1"."user_details" AS 
+CREATE OR REPLACE VIEW "1"."user_details" AS
  SELECT u.id,
     u.name,
     u.address_city,

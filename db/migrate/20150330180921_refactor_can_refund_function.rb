@@ -1,4 +1,4 @@
-class RefactorCanRefundFunction < ActiveRecord::Migration
+class RefactorCanRefundFunction < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
     CREATE OR REPLACE FUNCTION can_refund(contributions) RETURNS boolean AS $$

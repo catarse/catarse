@@ -63,7 +63,7 @@ To run this project you need to have:
 
 * Create and seed the database
 
-        $ rake db:create db:migrate db:seed
+        $ rails db:create db:migrate db:seed
 
 * Configure the API server
 

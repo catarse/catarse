@@ -1,9 +1,9 @@
-class AddSavedProjectsToExploreFilters < ActiveRecord::Migration
+class AddSavedProjectsToExploreFilters < ActiveRecord::Migration[4.2]
 
   def up
     execute <<-SQL
 
-    CREATE OR REPLACE VIEW "1"."projects" AS 
+    CREATE OR REPLACE VIEW "1"."projects" AS
 
     SELECT p.id AS project_id,
       p.category_id,
@@ -31,7 +31,7 @@ class AddSavedProjectsToExploreFilters < ActiveRecord::Migration
             FROM (contributions c_1
               JOIN user_follows uf ON ((uf.follow_id = c_1.user_id)))
             WHERE ((is_confirmed(c_1.*) AND (uf.user_id = current_user_id())) AND (c_1.project_id = p.id)))) AS contributed_by_friends,
-            
+
       p.user_id AS project_user_id,
       p.video_embed_url,
       p.updated_at,
@@ -56,7 +56,7 @@ class AddSavedProjectsToExploreFilters < ActiveRecord::Migration
       LEFT JOIN states s ON ((s.id = c.state_id)))
       JOIN LATERAL zone_timestamp(online_at(p.*)) od(od) ON (true))
       JOIN LATERAL state_order(p.*) so(so) ON (true));
-      
+
     SQL
   end
 
@@ -65,7 +65,7 @@ class AddSavedProjectsToExploreFilters < ActiveRecord::Migration
 
     DROP VIEW "1"."projects";
 
-    CREATE OR REPLACE VIEW "1"."projects" AS 
+    CREATE OR REPLACE VIEW "1"."projects" AS
     SELECT p.id AS project_id,
        p.category_id,
        p.name AS project_name,

@@ -1,4 +1,4 @@
-class CreateProjectPostNotifications < ActiveRecord::Migration
+class CreateProjectPostNotifications < ActiveRecord::Migration[4.2]
   def change
     create_table :project_post_notifications do |t|
       t.integer :user_id, null: false

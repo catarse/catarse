@@ -1,4 +1,4 @@
-class DropCanCancelFunction < ActiveRecord::Migration
+class DropCanCancelFunction < ActiveRecord::Migration[4.2]
   def up
     execute "DROP FUNCTION can_cancel(contributions);"
   end

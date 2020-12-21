@@ -1,4 +1,4 @@
-class FixNotificationGrants < ActiveRecord::Migration
+class FixNotificationGrants < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
       grant all ON contribution_notifications to web_user;

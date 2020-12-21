@@ -1,4 +1,4 @@
-class ChangeProjectMode < ActiveRecord::Migration
+class ChangeProjectMode < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
 CREATE OR REPLACE FUNCTION mode(project projects) RETURNS text

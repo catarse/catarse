@@ -1,4 +1,4 @@
-class AddedFlexFailedToRdevents < ActiveRecord::Migration
+class AddedFlexFailedToRdevents < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
 CREATE OR REPLACE FUNCTION public.flexible_project_rdevents_dispatcher()

@@ -1,9 +1,9 @@
-class AddScoreForSubProjects < ActiveRecord::Migration
+class AddScoreForSubProjects < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
-  CREATE OR REPLACE VIEW "1"."project_scores" AS 
+  CREATE OR REPLACE VIEW "1"."project_scores" AS
    SELECT p.id AS project_id,
-          CASE 
+          CASE
               WHEN p.mode = 'sub' THEN
                   CASE
                       WHEN p.recommended THEN (COALESCE((lt_sub.score)::numeric, (0)::numeric) + (1000)::numeric)
@@ -19,7 +19,7 @@ class AddScoreForSubProjects < ActiveRecord::Migration
        LEFT JOIN LATERAL ( SELECT count(DISTINCT c.id) AS score
              FROM (contributions c
                LEFT JOIN payments pay ON ((pay.contribution_id = c.id)))
-            WHERE (((pay.state = ANY (confirmed_states())) AND 
+            WHERE (((pay.state = ANY (confirmed_states())) AND
             (pay.paid_at > (now() - '48:00:00'::interval))) AND (c.project_id = p.id)))
             lt_non_sub ON (true)
        LEFT JOIN LATERAL ( SELECT count(DISTINCT s.id) AS score
@@ -34,7 +34,7 @@ class AddScoreForSubProjects < ActiveRecord::Migration
 
   def down
     execute <<-SQL
-CREATE OR REPLACE VIEW "1"."project_scores" AS 
+CREATE OR REPLACE VIEW "1"."project_scores" AS
  SELECT p.id AS project_id,
         CASE
             WHEN p.recommended THEN (COALESCE((lt.score)::numeric, (0)::numeric) + (1000)::numeric)

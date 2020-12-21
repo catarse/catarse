@@ -1,4 +1,4 @@
-class CreateModeFunction < ActiveRecord::Migration
+class CreateModeFunction < ActiveRecord::Migration[4.2]
    def up
     execute <<-SQL
       CREATE FUNCTION public.mode(project projects) RETURNS text

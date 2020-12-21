@@ -12,11 +12,11 @@ class FlexibleProjectObserver < ActiveRecord::Observer
   def from_draft_to_online(flexible_project)
     project = flexible_project
 
-    project.update_attributes({
-                                audited_user_name: project.user.name,
-                                audited_user_cpf: project.user.cpf,
-                                audited_user_phone_number: project.user.phone_number
-                              })
+    project.update(
+      audited_user_name: project.user.name,
+      audited_user_cpf: project.user.cpf,
+      audited_user_phone_number: project.user.phone_number
+    )
     ProjectMetricStorageRefreshWorker.perform_in(5.seconds, flexible_project.id)
   end
 

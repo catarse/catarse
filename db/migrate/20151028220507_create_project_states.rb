@@ -1,4 +1,4 @@
-class CreateProjectStates < ActiveRecord::Migration
+class CreateProjectStates < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
     CREATE TYPE public.project_state_order AS ENUM ('archived', 'created', 'sent', 'publishable', 'published', 'finished');

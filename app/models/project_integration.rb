@@ -1,7 +1,7 @@
 # coding: utf-8
 # frozen_string_literal: true
 
-class ProjectIntegration < ActiveRecord::Base
+class ProjectIntegration < ApplicationRecord
 
     INTEGRATIONS_AVAILABLE = %w[GA PIXEL SOLIDARITY_SERVICE_FEE]
 

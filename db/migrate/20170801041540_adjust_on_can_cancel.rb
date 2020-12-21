@@ -1,4 +1,4 @@
-class AdjustOnCanCancel < ActiveRecord::Migration
+class AdjustOnCanCancel < ActiveRecord::Migration[4.2]
   def change
     execute %Q{
 CREATE OR REPLACE FUNCTION public.can_cancel(p projects)

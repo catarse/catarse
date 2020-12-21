@@ -1,4 +1,4 @@
-class AddCitiesEndpoint < ActiveRecord::Migration
+class AddCitiesEndpoint < ActiveRecord::Migration[4.2]
   def change
     execute %Q{
 create or replace view "1".cities as

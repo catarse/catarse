@@ -13,9 +13,9 @@
         .w-form
           = simple_form_for resource, as: resource_name, url: session_path(resource_name), html: {novalidate: true}, class: 'email-form' do |form|
             = render 'devise/shared/alert'
-            = form.input :email, as: :email, label: t('.email'), input_html: { class: 'w-input text-field' }, required: false
+            = form.input :email, as: :email, label: t('.email'), input_html: { class: 'w-input text-field', autocomplete: 'email' }, required: false
             = link_to t('.links.forgot_password'), new_password_path(resource_name), class: 'fontsize-smallest link-hidden fontcolor-secondary u-right', id: 'forgot_password'
-            = form.input :password, as: :password, label: t('.form.inputs.password'), input_html: { class: 'w-input text-field' }
+            = form.input :password, as: :password, label: t('.form.inputs.password'), input_html: { class: 'w-input text-field', autocomplete: 'current-password' }
             .u-marginbottom-20
               = form.input_field :remember_me, as: :boolean, boolean_style: :inline, class: 'checkbox-fix', checked: true
               label.w-form-label.fontsize-smallest= t('.form.labels.remember_me')

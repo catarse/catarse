@@ -1,4 +1,4 @@
-class SpeedupCategoriesEndpoint < ActiveRecord::Migration
+class SpeedupCategoriesEndpoint < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
 CREATE OR REPLACE VIEW "1".categories AS
@@ -13,8 +13,8 @@ SELECT
     ) AS followers
 FROM
     categories c
-    LEFT JOIN projects p ON p.category_id = c.id 
-    LEFT JOIN flexible_projects fp ON fp.project_id = p.id    
+    LEFT JOIN projects p ON p.category_id = c.id
+    LEFT JOIN flexible_projects fp ON fp.project_id = p.id
 GROUP BY c.id;
     SQL
   end

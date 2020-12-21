@@ -68,20 +68,22 @@ RSpec.describe Authorization, type: :model do
   describe '.create_from_hash' do
     before do
       create(:oauth_provider, name: oauth_data[:provider])
+      stub_request(:get, 'https://graph.facebook.com/v9.0/547955110/picture?type=large').to_return(status: 200)
     end
+
     subject { Authorization.create_from_hash(oauth_data, user) }
     context 'when user exists' do
       let(:user) { create(:user, email: oauth_data['info']['email']) }
       it { is_expected.to be_persisted }
-      its(:uid) { should == oauth_data['uid'] }
-      its(:user) { should == user }
+      it { expect(subject.uid).to eq oauth_data['uid'] }
+      it { expect(subject.user).to eq user }
     end
 
     context 'when user is new' do
       let(:user) {}
       it { is_expected.to be_persisted }
-      its(:uid) { should == oauth_data['uid'] }
-      its(:user) { should be_persisted }
+      it { expect(subject.uid).to eq oauth_data['uid'] }
+      it { expect(subject.user).to be_persisted }
     end
   end
 end

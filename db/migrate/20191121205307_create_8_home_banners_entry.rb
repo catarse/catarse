@@ -1,4 +1,4 @@
-class Create8HomeBannersEntry < ActiveRecord::Migration
+class Create8HomeBannersEntry < ActiveRecord::Migration[4.2]
   def up
     [0, 1, 2, 3, 4, 5, 6, 7].each { |item|
       HomeBanner.create(title: '', subtitle: '', link: '', cta: '', image: '')

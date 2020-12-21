@@ -1,4 +1,4 @@
-class WipMailMarketingLists < ActiveRecord::Migration
+class WipMailMarketingLists < ActiveRecord::Migration[4.2]
   def up
     execute %Q{
 drop view "1".mail_marketing_lists;
@@ -14,7 +14,7 @@ grant select on "1".mail_marketing_lists to admin, web_user, anonymous;
 
 drop view "1".user_details;
 
-CREATE OR REPLACE VIEW "1"."user_details" AS 
+CREATE OR REPLACE VIEW "1"."user_details" AS
  SELECT u.id,
         CASE
             WHEN ((u.deactivated_at IS NOT NULL) AND (NOT is_owner_or_admin(u.id))) THEN (''::character varying(255))::text
@@ -118,7 +118,7 @@ grant select on "1".user_details to admin, web_user, anonymous;
     execute %Q{
 drop view "1".user_details;
 
-CREATE OR REPLACE VIEW "1"."user_details" AS 
+CREATE OR REPLACE VIEW "1"."user_details" AS
  SELECT u.id,
         CASE
             WHEN ((u.deactivated_at IS NOT NULL) AND (NOT is_owner_or_admin(u.id))) THEN (''::character varying(255))::text
@@ -213,7 +213,7 @@ CREATE OR REPLACE VIEW "1"."user_details" AS
 grant select on "1".user_details to admin, web_user, anonymous;
 
 drop view "1".mail_marketing_lists;
-    CREATE OR REPLACE VIEW "1"."mail_marketing_lists" AS 
+    CREATE OR REPLACE VIEW "1"."mail_marketing_lists" AS
  SELECT mml.id,
     COALESCE(mmu.user_id, 0) AS user_id,
     mmu.id AS marketing_user_id,

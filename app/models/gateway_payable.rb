@@ -1,4 +1,4 @@
-class GatewayPayable < ActiveRecord::Base
+class GatewayPayable < ApplicationRecord
   belongs_to :payment
 
   validates :payment_id, presence: true

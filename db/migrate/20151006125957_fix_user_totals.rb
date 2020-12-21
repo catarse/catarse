@@ -1,4 +1,4 @@
-class FixUserTotals < ActiveRecord::Migration
+class FixUserTotals < ActiveRecord::Migration[4.2]
   def up
     execute "SET statement_timeout TO 0;"
     execute <<-SQL
@@ -9,7 +9,7 @@ class FixUserTotals < ActiveRecord::Migration
 
       DROP MATERIALIZED VIEW "1".user_totals;
 
-      CREATE MATERIALIZED VIEW "1".user_totals AS 
+      CREATE MATERIALIZED VIEW "1".user_totals AS
       SELECT u.id,
           u.id as user_id,
           coalesce(ct.total_contributed_projects, 0) as total_contributed_projects,
@@ -36,7 +36,7 @@ class FixUserTotals < ActiveRecord::Migration
           ELSE pa.value * (-1)::numeric
               END
           ) AS credits
-              FROM 
+              FROM
           contributions c
           JOIN payments pa ON c.id = pa.contribution_id
           JOIN projects p ON c.project_id = p.id

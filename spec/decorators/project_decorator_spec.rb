@@ -13,29 +13,20 @@ RSpec.describe ProjectDecorator do
     end
 
     context 'when there is more than 1 day to go but less than 2' do
-      before do
-        project.update_attributes({
-                                    expires_at:  Time.zone.now + 25.hours
-                                  })
-      end
+      before { project.update(expires_at:  Time.zone.now + 25.hours) }
+
       it { is_expected.to eq({ time: 1, unit: 'dia' }) }
     end
 
     context 'when there is less than 1 day to go' do
-      before do
-        project.update_attributes({
-                                    expires_at:  Time.zone.now + 13.hours
-                                  })
-      end
+      before { project.update(expires_at:  Time.zone.now + 13.hours) }
+
       it { is_expected.to eq({ time: 13, unit: 'horas' }) }
     end
 
     context 'when there is less than 1 hour to go' do
-      before do
-        project.update_attributes({
-                                    expires_at:  Time.zone.now + 59.minutes
-                                  })
-      end
+      before { project.update(expires_at:  Time.zone.now + 59.minutes) }
+
       it { is_expected.to eq({ time: 59, unit: 'minutos' }) }
     end
   end
@@ -94,17 +85,22 @@ RSpec.describe ProjectDecorator do
     subject { project.display_image }
 
     context 'when we have a video_url without thumbnail' do
+      before do
+        stub_request(:any, 'https://vimeo.com/17298435')
+          .to_return(body: file_fixture('vimeo_default_request.txt'))
+      end
+
       let(:project) { build(:project, state: 'draft', uploaded_image: nil, video_thumbnail: nil) }
       it { is_expected.to eq(project.video.thumbnail_large) }
     end
 
     context 'when we have a video_thumbnail' do
-      let(:project) { build(:project, state: 'draft', uploaded_image: nil, video_thumbnail: File.open("#{Rails.root}/spec/fixtures/image.png")) }
+      let(:project) { build(:project, state: 'draft', uploaded_image: nil, video_thumbnail: File.open('spec/fixtures/files/image.png')) }
       it { is_expected.to eq(project.video_thumbnail.project_thumb.url) }
     end
 
     context 'when we have an uploaded_image' do
-      let(:project) { build(:project, state: 'draft', uploaded_image: File.open("#{Rails.root}/spec/fixtures/image.png"), video_thumbnail: nil) }
+      let(:project) { build(:project, state: 'draft', uploaded_image: File.open('spec/fixtures/files/image.png'), video_thumbnail: nil) }
       it { is_expected.to eq(project.uploaded_image.project_thumb.url) }
     end
   end
@@ -180,7 +176,7 @@ RSpec.describe ProjectDecorator do
       it 'should return a successful image flag when the project is successful' do
         allow(project).to receive(:successful?).and_return(true)
 
-        expect(project.status_flag).to include("Successful.#{I18n.locale}")
+        expect(project.status_flag).to include("successful.#{I18n.locale}")
       end
     end
 
@@ -188,7 +184,7 @@ RSpec.describe ProjectDecorator do
       it 'should return a not successful image flag when the project is not successful' do
         allow(project).to receive(:failed?).and_return(true)
 
-        expect(project.status_flag).to include("Not successful.#{I18n.locale}")
+        expect(project.status_flag).to include("not_successful.#{I18n.locale}")
       end
     end
 
@@ -196,7 +192,7 @@ RSpec.describe ProjectDecorator do
       it 'should return a waiting funds image flag when the project is waiting funds' do
         allow(project).to receive(:waiting_funds?).and_return(true)
 
-        expect(project.status_flag).to include("Waiting confirmation.#{I18n.locale}")
+        expect(project.status_flag).to include("waiting_confirmation.#{I18n.locale}")
       end
     end
   end

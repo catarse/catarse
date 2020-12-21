@@ -1,4 +1,4 @@
-class AddDeliverAtToNotifications < ActiveRecord::Migration
+class AddDeliverAtToNotifications < ActiveRecord::Migration[4.2]
   def up
     add_column :category_notifications, :deliver_at, :timestamp
     add_column :channel_post_notifications, :deliver_at, :timestamp

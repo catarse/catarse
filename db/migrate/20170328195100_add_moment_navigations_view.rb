@@ -1,7 +1,7 @@
-class AddMomentNavigationsView < ActiveRecord::Migration
+class AddMomentNavigationsView < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
-CREATE MATERIALIZED VIEW public.moments_navigations AS 
+CREATE MATERIALIZED VIEW public.moments_navigations AS
  SELECT moments.id,
     moments.created_at,
     moments.data ->> 'ctrse_sid'::text AS ctrse_sid,

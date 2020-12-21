@@ -1,4 +1,4 @@
-class RemovePcc < ActiveRecord::Migration
+class RemovePcc < ActiveRecord::Migration[4.2]
   def up
     execute %Q{
 DROP VIEW "1".project_transfers;

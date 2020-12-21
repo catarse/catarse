@@ -1,5 +1,5 @@
 # coding: utf-8
-class SubscriptionMonthlyReportForProjectOwner < ActiveRecord::Base
+class SubscriptionMonthlyReportForProjectOwner < ApplicationRecord
   acts_as_copy_target
 
   scope :project_id, ->(project_id) { where(project_id: project_id) }

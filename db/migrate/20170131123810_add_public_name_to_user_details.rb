@@ -1,7 +1,7 @@
-class AddPublicNameToUserDetails < ActiveRecord::Migration
+class AddPublicNameToUserDetails < ActiveRecord::Migration[4.2]
   def up
     execute %Q{
-CREATE OR REPLACE VIEW "1"."user_details" AS 
+CREATE OR REPLACE VIEW "1"."user_details" AS
  SELECT u.id,
     u.name,
     u.address_city,
@@ -56,7 +56,7 @@ CREATE OR REPLACE VIEW "1"."user_details" AS
 
   def down
     execute %Q{
-CREATE OR REPLACE VIEW "1"."user_details" AS 
+CREATE OR REPLACE VIEW "1"."user_details" AS
  SELECT u.id,
     u.name,
     u.address_city,

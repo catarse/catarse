@@ -1,4 +1,4 @@
-class AlterProjectsDropVideoUrlConstraint < ActiveRecord::Migration
+class AlterProjectsDropVideoUrlConstraint < ActiveRecord::Migration[4.2]
   def up
     execute "
     ALTER TABLE projects ALTER video_url DROP NOT NULL;

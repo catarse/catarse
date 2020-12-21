@@ -1,7 +1,7 @@
-class AddTrackerToProjectDetails < ActiveRecord::Migration
+class AddTrackerToProjectDetails < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
-    create or replace view "1".project_details as 
+    create or replace view "1".project_details as
 SELECT p.id AS project_id,
     p.id,
     p.user_id,

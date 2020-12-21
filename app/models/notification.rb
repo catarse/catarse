@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-class Notification < ActiveRecord::Base
-  belongs_to :user
+class Notification < ApplicationRecord
+  belongs_to :user, optional: true
 
   def self.notify_once(template_name, user, params = {})
     # notify(template_name, user, source, params) if is_unique?(template_name, {self.user_association_name => user})

@@ -1,4 +1,4 @@
-class AddCoverImageToProjectDetails < ActiveRecord::Migration
+class AddCoverImageToProjectDetails < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
 

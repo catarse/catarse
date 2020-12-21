@@ -1,7 +1,7 @@
-class AdjustProjectTotalsForRejected < ActiveRecord::Migration
+class AdjustProjectTotalsForRejected < ActiveRecord::Migration[4.2]
   def up
     execute %Q{
-CREATE OR REPLACE VIEW "1"."project_totals" AS 
+CREATE OR REPLACE VIEW "1"."project_totals" AS
  SELECT c.project_id,
     sum(p.value) AS pledged,
     sum(p.value) FILTER (WHERE (p.state = 'paid'::text)) AS paid_pledged,
@@ -24,7 +24,7 @@ CREATE OR REPLACE VIEW "1"."project_totals" AS
 
   def down
     execute %Q{
-CREATE OR REPLACE VIEW "1"."project_totals" AS 
+CREATE OR REPLACE VIEW "1"."project_totals" AS
  SELECT c.project_id,
     sum(p.value) AS pledged,
     sum(p.value) FILTER (WHERE (p.state = 'paid'::text)) AS paid_pledged,

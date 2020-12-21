@@ -1,7 +1,7 @@
-class AdjustScoreCalculations < ActiveRecord::Migration
+class AdjustScoreCalculations < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
-CREATE OR REPLACE VIEW "1"."project_scores" AS 
+CREATE OR REPLACE VIEW "1"."project_scores" AS
  SELECT p.id AS project_id,
         CASE
             WHEN (p.mode = 'sub'::text) THEN (lt_sub.score)::numeric
@@ -19,7 +19,7 @@ CREATE OR REPLACE VIEW "1"."project_scores" AS
   WHERE open_for_contributions(p.*);
 
 
-CREATE OR REPLACE VIEW "1"."projects" AS 
+CREATE OR REPLACE VIEW "1"."projects" AS
  SELECT p.id AS project_id,
     p.category_id,
     p.name AS project_name,
@@ -69,7 +69,7 @@ CREATE OR REPLACE VIEW "1"."projects" AS
      LEFT JOIN states s ON s.id = c.state_id
      JOIN LATERAL zone_timestamp(online_at(p.*)) od(od) ON true
      JOIN LATERAL state_order(p.*) so(so) ON true
-     JOIN LATERAL ( 
+     JOIN LATERAL (
        SELECT cat_1.id,
         cat_1.name_pt,
         cat_1.created_at,
@@ -84,7 +84,7 @@ CREATE OR REPLACE VIEW "1"."projects" AS
 
   def down
     execute <<-SQL
-CREATE OR REPLACE VIEW "1"."project_scores" AS 
+CREATE OR REPLACE VIEW "1"."project_scores" AS
  SELECT p.id AS project_id,
         CASE
             WHEN (p.mode = 'sub'::text) THEN
@@ -106,7 +106,7 @@ CREATE OR REPLACE VIEW "1"."project_scores" AS
   WHERE open_for_contributions(p.*);
 
 
-CREATE OR REPLACE VIEW "1"."projects" AS 
+CREATE OR REPLACE VIEW "1"."projects" AS
  SELECT p.id AS project_id,
     p.category_id,
     p.name AS project_name,

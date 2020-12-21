@@ -18,11 +18,11 @@ RSpec.describe Contribution, type: :model do
     it { is_expected.to have_many(:payments) }
     it { is_expected.to have_many(:details) }
     it { is_expected.to have_many(:balance_transactions) }
-    it { is_expected.to belong_to(:origin) }
+    it { is_expected.to belong_to(:origin).optional }
     it { is_expected.to belong_to(:project) }
     it { is_expected.to belong_to(:user) }
-    it { is_expected.to belong_to(:reward) }
-    it { is_expected.to belong_to(:address) }
+    it { is_expected.to belong_to(:reward).optional }
+    it { is_expected.to belong_to(:address).optional }
   end
 
   describe 'Validations' do
@@ -46,7 +46,7 @@ RSpec.describe Contribution, type: :model do
 
     subject { Contribution.confirmed_last_day }
 
-    it { is_expected.to have(7).items }
+    it { expect(subject.count).to eq 7 }
   end
 
   describe '#pending?' do
@@ -81,7 +81,7 @@ RSpec.describe Contribution, type: :model do
         @recommended = create(:confirmed_contribution, user: @another_contribution.user).project
         # add a project successful that should not apear as recommended
         create(:confirmed_contribution, user: @another_contribution.user, project: successful_project)
-        successful_project.update_attributes state: 'successful'
+        successful_project.update state: 'successful'
       end
       it { is_expected.to eq [@recommended] }
     end
@@ -98,14 +98,14 @@ RSpec.describe Contribution, type: :model do
     before do
       contribution.update_current_billing_info
     end
-    its(:payer_name) { should eq(user.name) }
-    its(:address_street) { should eq(user.address_street) }
-    its(:address_number) { should eq(user.address_number) }
-    its(:address_neighbourhood) { should eq(user.address_neighbourhood) }
-    its(:address_zip_code) { should eq(user.address_zip_code) }
-    its(:address_city) { should eq(user.address_city) }
-    its(:phone_number) { should eq(user.phone_number) }
-    its(:payer_document) { should eq(user.cpf) }
+    it { expect(subject.payer_name).to eq user.name }
+    it { expect(subject.address_street).to eq user.address_street }
+    it { expect(subject.address_number).to eq user.address_number }
+    it { expect(subject.address_neighbourhood).to eq user.address_neighbourhood }
+    it { expect(subject.address_zip_code).to eq user.address_zip_code }
+    it { expect(subject.address_city).to eq user.address_city }
+    it { expect(subject.phone_number).to eq user.phone_number }
+    it { expect(subject.payer_document).to eq user.cpf }
   end
 
   describe '#update_user_billing_info' do
@@ -121,9 +121,9 @@ RSpec.describe Contribution, type: :model do
     end
 
     before do
-      contribution.update_attributes payer_document: '123'
+      contribution.update payer_document: '123'
       contribution.reload
-      expect(user).to receive(:update_attributes).with(contribution_attributes)
+      expect(user).to receive(:update).with(contribution_attributes)
     end
 
     it('should update user billing info attributes') { contribution.update_user_billing_info }
@@ -170,8 +170,8 @@ RSpec.describe Contribution, type: :model do
 
     subject { Contribution.need_notify_about_pending_refund }
     before do
-      paid_contribution.payments.first.update_attributes({ payment_method: 'BoletoBancario' })
-      paid_with_donation_contribution.payments.first.update_attributes({ payment_method: 'BoletoBancario' })
+      paid_contribution.payments.first.update({ payment_method: 'BoletoBancario' })
+      paid_with_donation_contribution.payments.first.update({ payment_method: 'BoletoBancario' })
       refunded_contribution
       project.update_column(:state, 'failed')
     end
@@ -222,7 +222,7 @@ RSpec.describe Contribution, type: :model do
       before do
         allow_any_instance_of(Project).to receive(:successful_pledged_transaction).and_return({id: 'mock'})
         payment.chargeback
-        BalanceTransaction.insert_contribution_chargeback(payment.id) 
+        BalanceTransaction.insert_contribution_chargeback(payment.id)
       end
 
       it { is_expected.to be(true)}

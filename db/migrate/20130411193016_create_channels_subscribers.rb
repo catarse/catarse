@@ -1,4 +1,4 @@
-class CreateChannelsSubscribers < ActiveRecord::Migration
+class CreateChannelsSubscribers < ActiveRecord::Migration[4.2]
   def up
     create_table :channels_subscribers do |t|
       t.integer :user_id, null: false

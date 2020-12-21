@@ -1,7 +1,7 @@
-class AddIdToUserDetailLinks < ActiveRecord::Migration
+class AddIdToUserDetailLinks < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
-    CREATE OR REPLACE VIEW "1".user_details as 
+    CREATE OR REPLACE VIEW "1".user_details as
 SELECT u.id,
     u.name,
     u.address_city,

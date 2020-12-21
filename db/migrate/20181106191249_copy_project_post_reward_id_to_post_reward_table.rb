@@ -1,10 +1,10 @@
-class CopyProjectPostRewardIdToPostRewardTable < ActiveRecord::Migration
+class CopyProjectPostRewardIdToPostRewardTable < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
 
     insert into post_rewards (project_post_id, reward_id, created_at, updated_at)
-    select id as project_post_id, reward_id, created_at, updated_at 
-    from project_posts 
+    select id as project_post_id, reward_id, created_at, updated_at
+    from project_posts
     where recipients = 'reward' and reward_id <> 0;
 
     update project_posts set recipients = 'rewards' where recipients = 'reward';

@@ -1,4 +1,4 @@
-class RefactorProjectTotals < ActiveRecord::Migration
+class RefactorProjectTotals < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
       DROP VIEW IF EXISTS project_financials;
@@ -9,7 +9,7 @@ class RefactorProjectTotals < ActiveRecord::Migration
         sum(p.value) / projects.goal * 100::numeric AS progress,
         sum(p.gateway_fee) AS total_payment_service_fee,
         count(DISTINCT c.id) AS total_contributions
-      FROM 
+      FROM
         contributions c
         JOIN projects ON c.project_id = projects.id
         JOIN payments p ON p.contribution_id = c.id

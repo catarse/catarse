@@ -1,8 +1,8 @@
-class AddUserCreditsView < ActiveRecord::Migration
+class AddUserCreditsView < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
 
-    CREATE OR REPLACE VIEW "1".user_credits AS 
+    CREATE OR REPLACE VIEW "1".user_credits AS
       SELECT u.id,
           u.id as user_id,
           case when u.zero_credits THEN 0 ELSE coalesce(ct.credits, 0) END as credits
@@ -21,7 +21,7 @@ class AddUserCreditsView < ActiveRecord::Migration
               END
           ) - COALESCE((SELECT sum(amount)/100 FROM user_transfers ut WHERE ut.status = 'transferred' AND ut.user_id = c.user_id), 0::numeric)
             - COALESCE((SELECT sum(amount) FROM donations d WHERE d.user_id = c.user_id AND NOT EXISTS(SELECT 1 FROM contributions c WHERE c.donation_id = d.id)), 0::numeric) AS credits
-              FROM 
+              FROM
           contributions c
           JOIN payments pa ON c.id = pa.contribution_id
           JOIN projects p ON c.project_id = p.id

@@ -1,4 +1,4 @@
-class CreateCreditCardsEndpoint < ActiveRecord::Migration
+class CreateCreditCardsEndpoint < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
     CREATE OR REPLACE VIEW "1".user_credit_cards AS

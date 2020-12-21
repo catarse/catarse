@@ -1,8 +1,8 @@
-class AddMarketingUserIdForCurrentUser < ActiveRecord::Migration
+class AddMarketingUserIdForCurrentUser < ActiveRecord::Migration[4.2]
   def up
     execute %Q{
 DROP VIEW "1".mail_marketing_lists;
-CREATE OR REPLACE VIEW "1"."mail_marketing_lists" AS 
+CREATE OR REPLACE VIEW "1"."mail_marketing_lists" AS
 SELECT mml.id,
     coalesce(mmu.user_id, 0) as user_id,
     mmu.id as marketing_user_id,

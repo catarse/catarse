@@ -1,4 +1,4 @@
-class CreateDirectMessageNotifications < ActiveRecord::Migration
+class CreateDirectMessageNotifications < ActiveRecord::Migration[4.2]
   def change
     create_table :direct_message_notifications do |t|
       t.integer :user_id, null: false

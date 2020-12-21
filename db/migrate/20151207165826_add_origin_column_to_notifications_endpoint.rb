@@ -1,4 +1,4 @@
-class AddOriginColumnToNotificationsEndpoint < ActiveRecord::Migration
+class AddOriginColumnToNotificationsEndpoint < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
     DROP VIEW "1".notifications;

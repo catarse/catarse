@@ -1,5 +1,7 @@
-class Subscription < ActiveRecord::Base
+class Subscription < ApplicationRecord
   self.table_name = 'common_schema.subscriptions'
+  self.primary_key = :id
+
   belongs_to :user, primary_key: :common_id
   belongs_to :project, primary_key: :common_id
   belongs_to :reward, primary_key: :common_id

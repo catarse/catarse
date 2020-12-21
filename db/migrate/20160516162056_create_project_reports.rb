@@ -1,4 +1,4 @@
-class CreateProjectReports < ActiveRecord::Migration
+class CreateProjectReports < ActiveRecord::Migration[4.2]
   def change
     create_table :project_reports do |t|
       t.references :project, null: false

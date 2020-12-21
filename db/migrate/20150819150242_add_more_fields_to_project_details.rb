@@ -1,4 +1,4 @@
-class AddMoreFieldsToProjectDetails < ActiveRecord::Migration
+class AddMoreFieldsToProjectDetails < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
       drop function if exists public.published_states();

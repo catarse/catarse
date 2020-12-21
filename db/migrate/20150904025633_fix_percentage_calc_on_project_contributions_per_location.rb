@@ -1,4 +1,4 @@
-class FixPercentageCalcOnProjectContributionsPerLocation < ActiveRecord::Migration
+class FixPercentageCalcOnProjectContributionsPerLocation < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
       drop view "1".project_contributions_per_location;

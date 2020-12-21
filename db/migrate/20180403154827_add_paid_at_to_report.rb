@@ -1,8 +1,8 @@
-class AddPaidAtToReport < ActiveRecord::Migration
+class AddPaidAtToReport < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
   drop view "public"."subscription_monthly_report_for_project_owners";
-  CREATE OR REPLACE VIEW "public"."subscription_monthly_report_for_project_owners" AS 
+  CREATE OR REPLACE VIEW "public"."subscription_monthly_report_for_project_owners" AS
    SELECT s.project_id,
     u.name,
     u.public_name,

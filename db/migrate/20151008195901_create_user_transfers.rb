@@ -1,4 +1,4 @@
-class CreateUserTransfers < ActiveRecord::Migration
+class CreateUserTransfers < ActiveRecord::Migration[4.2]
   def change
     create_table :user_transfers do |t|
       t.text :status, null: false

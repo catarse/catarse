@@ -1,4 +1,4 @@
-class AddsFullTextIndexToContributionDetails < ActiveRecord::Migration
+class AddsFullTextIndexToContributionDetails < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
     DROP MATERIALIZED VIEW public.contributor_numbers;

@@ -1,4 +1,4 @@
-class AddProjectsHomeView < ActiveRecord::Migration
+class AddProjectsHomeView < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
       CREATE OR REPLACE VIEW projects_for_home AS

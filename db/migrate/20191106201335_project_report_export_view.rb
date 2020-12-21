@@ -1,8 +1,8 @@
-class ProjectReportExportView < ActiveRecord::Migration
+class ProjectReportExportView < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
 
-    CREATE OR REPLACE VIEW "1"."project_report_exports" AS 
+    CREATE OR REPLACE VIEW "1"."project_report_exports" AS
       SELECT
           proj_export.*
       FROM project_report_exports proj_export

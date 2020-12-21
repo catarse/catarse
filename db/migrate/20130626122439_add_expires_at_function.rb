@@ -1,4 +1,4 @@
-class AddExpiresAtFunction < ActiveRecord::Migration
+class AddExpiresAtFunction < ActiveRecord::Migration[4.2]
   def up
     execute "
     CREATE FUNCTION expires_at(projects) RETURNS timestamp AS $$

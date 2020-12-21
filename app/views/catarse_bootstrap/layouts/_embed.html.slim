@@ -6,6 +6,7 @@ html lang="#{I18n.locale}" xmlns:fb="http://ogp.me/ns/fb#"
     = stylesheet_link_tag 'catarse_bootstrap/catarse'
     = stylesheet_link_tag '//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css'
     = csrf_meta_tag
+    = csp_meta_tag
 
     / Embeds shouls never be indexed
     meta name="robots" content="noindex, nofollow"
@@ -15,4 +16,3 @@ html lang="#{I18n.locale}" xmlns:fb="http://ogp.me/ns/fb#"
   body#catarse_bootstrap[data-controller-name=controller_name data-action=action_name data-user="#{current_user.try(:to_analytics_json)}"]
     = javascript_include_tag "https://kit.fontawesome.com/79b2459371.js", crossorigin: "anonymous"
     = yield
-

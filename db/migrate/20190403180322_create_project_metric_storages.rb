@@ -1,4 +1,4 @@
-class CreateProjectMetricStorages < ActiveRecord::Migration
+class CreateProjectMetricStorages < ActiveRecord::Migration[4.2]
   def change
     create_table :project_metric_storages, id: false do |t|
       t.references :project, index: { unique: true }, foreign_key: true, primary_key: true, null: false

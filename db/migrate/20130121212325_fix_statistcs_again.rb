@@ -1,4 +1,4 @@
-class FixStatistcsAgain < ActiveRecord::Migration
+class FixStatistcsAgain < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
  CREATE OR REPLACE VIEW statistics AS

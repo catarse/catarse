@@ -1,7 +1,7 @@
-class AddContributorNameAndRewardLabelToBalanceTransactions < ActiveRecord::Migration
+class AddContributorNameAndRewardLabelToBalanceTransactions < ActiveRecord::Migration[4.2]
   def up
     execute %Q{
-CREATE OR REPLACE VIEW "1"."balance_transactions" AS 
+CREATE OR REPLACE VIEW "1"."balance_transactions" AS
     SELECT bt.user_id,
     sum(
         CASE
@@ -17,14 +17,14 @@ CREATE OR REPLACE VIEW "1"."balance_transactions" AS
     (zone_timestamp(bt.created_at))::date AS created_at,
     json_agg(
         json_build_object(
-            'amount', bt.amount, 
-            'event_name', bt.event_name, 
-            'origin_objects', 
+            'amount', bt.amount,
+            'event_name', bt.event_name,
+            'origin_objects',
             json_build_object(
             'service_fee', ( SELECT p1.service_fee
                 FROM projects p1
                 WHERE (p1.id = bt.project_id)
-                LIMIT 1), 
+                LIMIT 1),
             'contributor_name', ( SELECT u1.public_name
                 FROM users u1
                 WHERE (u1.id = ( SELECT contributions.user_id
@@ -50,15 +50,15 @@ CREATE OR REPLACE VIEW "1"."balance_transactions" AS
                         AND (subscription_payments.id = bt.subscription_payment_id)
                         AND subscriptions.reward_id is not null
                     LIMIT 1))
-                LIMIT 1),            
-            'id', COALESCE(bt.project_id, bt.contribution_id), 
+                LIMIT 1),
+            'id', COALESCE(bt.project_id, bt.contribution_id),
             'project_name', ( SELECT projects.name
                 FROM projects
                 WHERE (projects.id = bt.project_id)
                 LIMIT 1))
             ) ORDER BY bt.id DESC) AS source
     FROM balance_transactions bt
-    WHERE is_owner_or_admin(bt.user_id) 
+    WHERE is_owner_or_admin(bt.user_id)
     GROUP BY (zone_timestamp(bt.created_at))::date, bt.user_id
     ORDER BY (zone_timestamp(bt.created_at))::date DESC;
 }
@@ -66,7 +66,7 @@ CREATE OR REPLACE VIEW "1"."balance_transactions" AS
 
   def down
     execute %Q{
-CREATE OR REPLACE VIEW "1"."balance_transactions" AS 
+CREATE OR REPLACE VIEW "1"."balance_transactions" AS
  SELECT bt.user_id,
     sum(
         CASE

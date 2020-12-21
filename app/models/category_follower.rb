@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class CategoryFollower < ActiveRecord::Base
+class CategoryFollower < ApplicationRecord
   belongs_to :category
   belongs_to :user
 

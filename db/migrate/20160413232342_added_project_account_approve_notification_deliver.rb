@@ -1,4 +1,4 @@
-class AddedProjectAccountApproveNotificationDeliver < ActiveRecord::Migration
+class AddedProjectAccountApproveNotificationDeliver < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
 CREATE OR REPLACE FUNCTION approve_project_account() RETURNS trigger
@@ -47,7 +47,7 @@ CREATE OR REPLACE FUNCTION approve_project_account() RETURNS trigger
                     (project_id, user_id, event_name, amount, created_at) VALUES
                     (v_project.id, v_project.user_id, 'irrf_tax_project', v_project_transfer.irrf_tax, now());
             END IF;
-            
+
             INSERT INTO public.project_notifications(project_id, user_id, locale, template_name, from_email, from_name, metadata) VALUES
                 (v_project.id, v_project.user_id, 'pt', 'project_account_approve', settings('email_adm'), settings('company_name'), json_build_object(
                     'transfer_limit_date', to_char(v_project_acc.transfer_limit_date, 'DD/MM/YYYY'),

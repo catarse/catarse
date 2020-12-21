@@ -1,4 +1,4 @@
-class AddSubscriptionTransitionsFdw < ActiveRecord::Migration
+class AddSubscriptionTransitionsFdw < ActiveRecord::Migration[4.2]
   def change
     # need this to fool circleci into thinking the table is local
     if Rails.env.test?

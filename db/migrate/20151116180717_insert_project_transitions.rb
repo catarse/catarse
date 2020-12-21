@@ -1,4 +1,4 @@
-class InsertProjectTransitions < ActiveRecord::Migration
+class InsertProjectTransitions < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
 SET statement_timeout TO 0;

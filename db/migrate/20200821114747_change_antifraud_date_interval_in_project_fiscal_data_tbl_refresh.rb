@@ -1,4 +1,4 @@
-class ChangeAntifraudDateIntervalInProjectFiscalDataTblRefresh < ActiveRecord::Migration
+class ChangeAntifraudDateIntervalInProjectFiscalDataTblRefresh < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
       CREATE OR REPLACE VIEW public.project_fiscal_data_tbl_refresh_supportview AS

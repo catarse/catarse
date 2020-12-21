@@ -1,9 +1,9 @@
-class AddsCommonidToUserDetails < ActiveRecord::Migration
+class AddsCommonidToUserDetails < ActiveRecord::Migration[4.2]
     def up
         execute <<-SQL
     drop view "1".user_details;
-    
-    CREATE OR REPLACE VIEW "1"."user_details" AS 
+
+    CREATE OR REPLACE VIEW "1"."user_details" AS
      SELECT u.id,
             u.common_id,
             CASE
@@ -99,17 +99,17 @@ class AddsCommonidToUserDetails < ActiveRecord::Migration
          LEFT JOIN public.mail_marketing_users mmu on mmu.user_id = u.id
          LEFT JOIN public.mail_marketing_lists mml on mml.id = mmu.mail_marketing_list_id
         group by u.id, add.*, ut.total_contributed_projects, ut.total_published_projects;
-    
+
     grant select on "1".user_details to admin, web_user, anonymous;
     SQL
    end
-    
+
 
     def down
     execute <<-SQL
 drop view "1".user_details;
 
-CREATE OR REPLACE VIEW "1"."user_details" AS 
+CREATE OR REPLACE VIEW "1"."user_details" AS
  SELECT u.id,
         CASE
             WHEN ((u.deactivated_at IS NOT NULL) AND (NOT is_owner_or_admin(u.id))) THEN (''::character varying(255))::text

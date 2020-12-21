@@ -1,4 +1,4 @@
-class CreateUpdatePaymentsFullTextIndex < ActiveRecord::Migration
+class CreateUpdatePaymentsFullTextIndex < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
     CREATE INDEX payments_full_text_index_ix ON payments USING GIN (full_text_index);
@@ -24,7 +24,7 @@ class CreateUpdatePaymentsFullTextIndex < ActiveRecord::Migration
        RETURN NEW;
      END;
     $$ LANGUAGE plpgsql;
-    CREATE TRIGGER update_payments_full_text_index 
+    CREATE TRIGGER update_payments_full_text_index
     BEFORE INSERT OR UPDATE OF key, gateway, gateway_id, gateway_data, state
     ON payments FOR EACH ROW EXECUTE PROCEDURE update_payments_full_text_index();
     SQL

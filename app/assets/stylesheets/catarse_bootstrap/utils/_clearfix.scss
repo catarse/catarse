@@ -1,0 +1,15 @@
+// ┌──────────┐
+// │ Clearfix │
+// └──────────┘
+
+@mixin clearfix() {
+  &:after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+
+%clearfix {
+  @include clearfix();
+}

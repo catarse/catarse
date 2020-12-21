@@ -1,4 +1,4 @@
-class RefactorStatistics < ActiveRecord::Migration
+class RefactorStatistics < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
       DROP VIEW statistics;
@@ -11,13 +11,13 @@ class RefactorStatistics < ActiveRecord::Migration
         projects_totals.total_projects,
         projects_totals.total_projects_success,
         projects_totals.total_projects_online
-      FROM 
+      FROM
         (
-          SELECT 
+          SELECT
             count(DISTINCT c.id) AS total_contributions,
             count(DISTINCT c.user_id) AS total_contributors,
             sum(p.value) AS total_contributed
-          FROM 
+          FROM
             contributions c
             JOIN payments p ON p.contribution_id = c.id
           WHERE p.state::text = ANY (confirmed_states())
@@ -52,9 +52,9 @@ class RefactorStatistics < ActiveRecord::Migration
         projects_totals.total_projects,
         projects_totals.total_projects_success,
         projects_totals.total_projects_online
-      FROM 
+      FROM
         (
-          SELECT 
+          SELECT
             count(*) AS total_contributions,
             count(DISTINCT contributions.user_id) AS total_contributors,
             sum(contributions.value) AS total_contributed

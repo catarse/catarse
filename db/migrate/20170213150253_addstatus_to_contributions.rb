@@ -1,7 +1,7 @@
-class AddstatusToContributions < ActiveRecord::Migration
+class AddstatusToContributions < ActiveRecord::Migration[4.2]
   def change
     execute %Q{
-CREATE OR REPLACE VIEW "1"."user_contributions" AS 
+CREATE OR REPLACE VIEW "1"."user_contributions" AS
  SELECT pa.id,
     c.id AS contribution_id,
     pa.id AS payment_id,
@@ -58,8 +58,8 @@ CREATE OR REPLACE VIEW "1"."user_contributions" AS
 
 
 
-CREATE OR REPLACE VIEW "1"."project_contributions" AS 
- SELECT 
+CREATE OR REPLACE VIEW "1"."project_contributions" AS
+ SELECT
     c.anonymous,
     c.project_id,
     c.reward_id::numeric,
@@ -85,8 +85,8 @@ CREATE OR REPLACE VIEW "1"."project_contributions" AS
      LEFT JOIN "1".user_totals ut ON ((ut.id = u.id)))
      LEFT JOIN public.rewards r ON ((r.id = c.reward_id)))
   WHERE (((public.was_confirmed(c.*) and pa.state <> 'pending') OR public.waiting_payment(pa.*)) AND public.is_owner_or_admin(p.user_id));
-  
+
 }
-    
+
   end
 end

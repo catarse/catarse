@@ -1,7 +1,7 @@
-class AdjustBalanceTransactionsToLookFromUserToUser < ActiveRecord::Migration
+class AdjustBalanceTransactionsToLookFromUserToUser < ActiveRecord::Migration[4.2]
   def up
     execute %Q{
-CREATE OR REPLACE VIEW "1"."balance_transactions" AS 
+CREATE OR REPLACE VIEW "1"."balance_transactions" AS
  SELECT bt.user_id,
     sum(
         CASE
@@ -17,16 +17,16 @@ CREATE OR REPLACE VIEW "1"."balance_transactions" AS
     (zone_timestamp(bt.created_at))::date AS created_at,
     json_agg(
         json_build_object(
-            'amount', bt.amount, 
-            'event_name', bt.event_name, 
+            'amount', bt.amount,
+            'event_name', bt.event_name,
             'origin_objects', json_build_object(
                 'from_user_name', coalesce(fromuser.public_name, fromuser.name),
                 'to_user_name', coalesce(touser.public_name, touser.name),
-                'service_fee', p.service_fee, 
-                'contributor_name', COALESCE(fu.public_name, fu.name), 
-                'subscriber_name', COALESCE(su.public_name, su.name), 
-                'subscription_reward_label', ((r.minimum_value || ' - '::text) || r.title), 
-                'id', COALESCE(bt.project_id, bt.contribution_id), 
+                'service_fee', p.service_fee,
+                'contributor_name', COALESCE(fu.public_name, fu.name),
+                'subscriber_name', COALESCE(su.public_name, su.name),
+                'subscription_reward_label', ((r.minimum_value || ' - '::text) || r.title),
+                'id', COALESCE(bt.project_id, bt.contribution_id),
                 'project_name', p.name)
         ) ORDER BY bt.id DESC
     ) AS source
@@ -47,7 +47,7 @@ CREATE OR REPLACE VIEW "1"."balance_transactions" AS
 
   def down
     execute %Q{
-    CREATE OR REPLACE VIEW "1"."balance_transactions" AS 
+    CREATE OR REPLACE VIEW "1"."balance_transactions" AS
  SELECT bt.user_id,
     sum(
         CASE

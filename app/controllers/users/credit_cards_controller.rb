@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Users::CreditCardsController < ApplicationController
-  after_filter :verify_authorized
+  after_action :verify_authorized
 
   inherit_resources
   actions :destroy

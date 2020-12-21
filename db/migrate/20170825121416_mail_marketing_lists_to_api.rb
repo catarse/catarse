@@ -1,7 +1,7 @@
-class MailMarketingListsToApi < ActiveRecord::Migration
+class MailMarketingListsToApi < ActiveRecord::Migration[4.2]
   def up
     execute %Q{
-create or replace view "1".mail_marketing_lists as 
+create or replace view "1".mail_marketing_lists as
     select
         mml.id as id,
         mmu.user_id as user_id,

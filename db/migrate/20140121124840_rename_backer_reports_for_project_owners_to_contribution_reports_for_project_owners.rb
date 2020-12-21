@@ -1,4 +1,4 @@
-class RenameBackerReportsForProjectOwnersToContributionReportsForProjectOwners < ActiveRecord::Migration
+class RenameBackerReportsForProjectOwnersToContributionReportsForProjectOwners < ActiveRecord::Migration[4.2]
   def up
     execute "ALTER VIEW backer_reports_for_project_owners RENAME TO contribution_reports_for_project_owners"
   end

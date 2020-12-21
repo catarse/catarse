@@ -1,4 +1,4 @@
-class AddCanCancelToProjectDetails < ActiveRecord::Migration
+class AddCanCancelToProjectDetails < ActiveRecord::Migration[4.2]
   def change
     execute %Q{
 CREATE OR REPLACE VIEW "1"."project_details" AS

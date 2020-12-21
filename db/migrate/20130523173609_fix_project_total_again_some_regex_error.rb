@@ -1,4 +1,4 @@
-class FixProjectTotalAgainSomeRegexError < ActiveRecord::Migration
+class FixProjectTotalAgainSomeRegexError < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
       CREATE OR REPLACE VIEW project_totals AS

@@ -1,4 +1,4 @@
-class CreateUsersView < ActiveRecord::Migration
+class CreateUsersView < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
     CREATE VIEW "1".users AS

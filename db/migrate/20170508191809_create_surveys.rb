@@ -1,4 +1,4 @@
-class CreateSurveys < ActiveRecord::Migration
+class CreateSurveys < ActiveRecord::Migration[4.2]
   def change
     create_table :surveys do |t|
       t.references :reward, null: false

@@ -1,4 +1,4 @@
-class AddFollowAllFriendsRpc < ActiveRecord::Migration
+class AddFollowAllFriendsRpc < ActiveRecord::Migration[4.2]
   def up
     execute %Q{
 alter table public.user_follows
@@ -26,13 +26,13 @@ create or replace function "1".follow_all_friends() RETURNS void
             (
                 SELECT
                     distinct
-                        current_user_id() as user_id, 
+                        current_user_id() as user_id,
                         uf.friend_id as follow_id
                 FROM public.user_friends uf
-                WHERE uf.user_id = current_user_id() 
+                WHERE uf.user_id = current_user_id()
                     AND NOT EXISTS(
-                        SELECT TRUE 
-                        FROM public.user_follows ufo 
+                        SELECT TRUE
+                        FROM public.user_follows ufo
                         WHERE ufo.user_id = current_user_id()
                             AND ufo.follow_id = uf.friend_id
                     )

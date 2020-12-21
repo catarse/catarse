@@ -1,4 +1,4 @@
-class CreateBanksEndpoint < ActiveRecord::Migration
+class CreateBanksEndpoint < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
     create view "1".banks as

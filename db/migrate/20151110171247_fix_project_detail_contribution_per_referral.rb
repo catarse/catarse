@@ -1,4 +1,4 @@
-class FixProjectDetailContributionPerReferral < ActiveRecord::Migration
+class FixProjectDetailContributionPerReferral < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
       create or replace view "1".project_contributions_per_ref as
@@ -19,12 +19,12 @@ class FixProjectDetailContributionPerReferral < ActiveRecord::Migration
                 c.referral_link::text as referral_link,
                 count(c) as total,
                 sum(c.value) as total_amount
-            from 
+            from
                 public.contributions c
             where
                 c.was_confirmed
-            group by 
-                c.referral_link::text, 
+            group by
+                c.referral_link::text,
                 c.project_id
           ) as i
         group by i.project_id;
@@ -47,11 +47,11 @@ class FixProjectDetailContributionPerReferral < ActiveRecord::Migration
         (
 			   (sum(c.value) * 100) / COALESCE(pt.pledged, 0)
 	      )::numeric as total_on_percentage
-        from 
+        from
         	contributions c
         join "1".project_totals pt on pt.project_id = c.project_id
-        group by 
-        	c.referral_link::text, 
+        group by
+        	c.referral_link::text,
         	c.project_id,
         	pt.pledged
         order by c.referral_link::text asc) as i

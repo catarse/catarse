@@ -7,7 +7,7 @@ RSpec.describe Bank, type: :model do
   describe '.order_popular' do
     subject { Bank.order_popular }
 
-    let!(:user_01) { create(:user, :without_bank_data) }
+    let!(:user_01) { create(:user) }
     let!(:bank_01) { create(:bank, name: 'Foo') }
     let!(:bank_02) { create(:bank, name: 'Foo bar', code: '0010') }
 
@@ -16,8 +16,10 @@ RSpec.describe Bank, type: :model do
       let!(:bank_account02) { create(:bank_account, user: user_01, bank: bank_01) }
       let!(:bank_account03) { create(:bank_account, user: user_01, bank: bank_02) }
 
+
       it 'returns a collection with banks in order of most used' do
-        is_expected.to eq([bank_01, bank_02])
+        expect(subject.first).to eq(bank_01)
+        expect(subject.second).to eq(bank_02)
       end
     end
   end
@@ -25,7 +27,7 @@ RSpec.describe Bank, type: :model do
   describe '.most_popular_collection' do
     subject { Bank.most_popular_collection }
 
-    let!(:user_01) { create(:user, :without_bank_data) }
+    let!(:user_01) { create(:user) }
     let!(:bank_01) { create(:bank, name: 'Foo') }
     let!(:bank_02) { create(:bank, name: 'Foo bar', code: '0012') }
     let!(:bank_03) { create(:bank, name: 'Foo bar 2', code: '0020') }

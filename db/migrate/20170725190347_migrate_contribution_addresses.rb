@@ -1,10 +1,10 @@
-class MigrateContributionAddresses < ActiveRecord::Migration
+class MigrateContributionAddresses < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
 alter table addresses add column contribution_id integer;
 
 WITH contribution_addresses AS (
-      select * from contributions u where u.address_street is not null 
+      select * from contributions u where u.address_street is not null
       ),
 rows AS (
     INSERT INTO addresses

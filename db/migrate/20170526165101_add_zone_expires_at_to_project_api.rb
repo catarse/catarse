@@ -1,7 +1,7 @@
-class AddZoneExpiresAtToProjectApi < ActiveRecord::Migration
+class AddZoneExpiresAtToProjectApi < ActiveRecord::Migration[4.2]
   def change
     execute %Q{
-CREATE OR REPLACE VIEW "1"."projects" AS 
+CREATE OR REPLACE VIEW "1"."projects" AS
  SELECT p.id AS project_id,
     p.category_id,
     p.name AS project_name,
@@ -40,7 +40,7 @@ CREATE OR REPLACE VIEW "1"."projects" AS
     p.video_embed_url,
     p.updated_at,
     u.public_name AS owner_public_name,
-    zone_timestamp(p.expires_at) AS zone_expires_at    
+    zone_timestamp(p.expires_at) AS zone_expires_at
    FROM (((((projects p
      JOIN users u ON ((p.user_id = u.id)))
      LEFT JOIN cities c ON ((c.id = p.city_id)))

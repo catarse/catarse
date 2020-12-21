@@ -1,4 +1,4 @@
-class UpdateProjectContribution < ActiveRecord::Migration
+class UpdateProjectContribution < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
     CREATE OR REPLACE VIEW "1".project_contributions AS

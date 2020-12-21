@@ -1,4 +1,4 @@
-class AdjustBalanceTransactionOnSubscriptionPaymentId < ActiveRecord::Migration
+class AdjustBalanceTransactionOnSubscriptionPaymentId < ActiveRecord::Migration[4.2]
   def change
     execute %Q{
 alter table balance_transactions
@@ -10,7 +10,7 @@ update balance_transactions
     where balance_transactions.subscription_payment_id is not null
         and sp.id = balance_transactions.subscription_payment_id;
 
-CREATE OR REPLACE VIEW "1"."balance_transactions" AS 
+CREATE OR REPLACE VIEW "1"."balance_transactions" AS
  SELECT bt.user_id,
     sum(
         CASE

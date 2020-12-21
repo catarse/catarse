@@ -1,4 +1,3 @@
-require './app/models/subscription'
 namespace :common do
   desc 'index all users'
   task index_users: :environment do

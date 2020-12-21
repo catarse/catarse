@@ -1,7 +1,7 @@
-class AdjustsOnBalanceTransactions < ActiveRecord::Migration
+class AdjustsOnBalanceTransactions < ActiveRecord::Migration[4.2]
   def change
     execute %Q{
-CREATE OR REPLACE VIEW "1"."balance_transactions" AS 
+CREATE OR REPLACE VIEW "1"."balance_transactions" AS
  SELECT bt.user_id,
     sum(
         CASE

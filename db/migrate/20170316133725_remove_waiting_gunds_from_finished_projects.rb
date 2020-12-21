@@ -1,4 +1,4 @@
-class RemoveWaitingGundsFromFinishedProjects < ActiveRecord::Migration
+class RemoveWaitingGundsFromFinishedProjects < ActiveRecord::Migration[4.2]
   def change
     execute %Q{
 DROP MATERIALIZED VIEW "1".finished_projects;

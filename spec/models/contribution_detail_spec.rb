@@ -16,32 +16,32 @@ RSpec.describe ContributionDetail, type: :model do
 
     let!(:contribution_1) do
       p = create(:confirmed_contribution, value: 20, project: project).payments.first
-      p.update_attributes(payment_method: 'BoletoBancario', state: 'pending')
+      p.update(payment_method: 'BoletoBancario', state: 'pending')
       p.contribution.details.first
     end
     let!(:contribution_2) do
       p = create(:confirmed_contribution, value: 20, project: project).payments.first
-      p.update_attributes(payment_method: 'BoletoBancario')
+      p.update(payment_method: 'BoletoBancario')
       p.contribution.details.first
     end
     let!(:contribution_3) do
       p = create(:confirmed_contribution, value: 20, project: project).payments.first
-      p.update_attributes(payment_method: 'CartaoDeCredito')
+      p.update(payment_method: 'CartaoDeCredito')
       p.contribution.details.first
     end
     let!(:contribution_4) do
       p = create(:confirmed_contribution, value: 20, project: project).payments.first
-      p.update_attributes(payment_method: 'CartaoDeCredito', state: 'deleted')
+      p.update(payment_method: 'CartaoDeCredito', state: 'deleted')
       p.contribution.details.first
     end
 
     subject { ContributionDetail.for_online_projects }
 
     it 'should return valid contributions' do
-      expect(subject.include?(contribution_1)).to eq(true)
-      expect(subject.include?(contribution_2)).to eq(true)
-      expect(subject.include?(contribution_3)).to eq(true)
-      expect(subject.include?(contribution_4)).to eq(false)
+      expect(subject).to include contribution_1
+      expect(subject).to include contribution_2
+      expect(subject).to include contribution_3
+      expect(subject).to_not include contribution_4
     end
   end
 
@@ -81,10 +81,10 @@ RSpec.describe ContributionDetail, type: :model do
       create(:confirmed_contribution, value: 10)
       create(:contribution, value: 100, project: project)
 
-      project.update_attributes(state: 'successful')
+      project.update(state: 'successful')
     end
 
-    it { is_expected.to have(2).itens }
+    it { expect(subject.count).to eq 2 }
   end
 
   describe '.for_failed_projects' do
@@ -99,10 +99,10 @@ RSpec.describe ContributionDetail, type: :model do
       create(:refunded_contribution, project: project)
       create(:confirmed_contribution)
       create(:contribution, project: project)
-      project.update_attributes(state: 'failed')
+      project.update(state: 'failed')
     end
 
-    it { is_expected.to have(4).itens }
+    it { expect(subject.count).to eq 4 }
   end
 
   describe '.was_confirmed' do
@@ -148,7 +148,7 @@ RSpec.describe ContributionDetail, type: :model do
 
     subject { ContributionDetail.available_to_display }
 
-    its(:count) { is_expected.to eq 3 }
+    it { expect(subject.count).to eq 3 }
   end
 
   describe '#full_text_index' do

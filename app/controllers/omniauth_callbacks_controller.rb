@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class OmniauthCallbacksController < Devise::OmniauthCallbacksController
-  skip_before_filter :set_locale
+  skip_before_action :set_locale
 
   def self.add_providers
     OauthProvider.all.each do |p|
@@ -18,7 +18,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
         end
 
         flash[:notice] = I18n.t('devise.omniauth_callbacks.success', kind: p.name.capitalize)
-        @auth.update_attribute(:last_token, omniauth[:credentials][:token])
+        @auth.update(last_token: omniauth[:credentials][:token])
         FbFriendCollectorWorker.perform_async(@auth.id)
 
         sign_in @auth.user, event: :authentication

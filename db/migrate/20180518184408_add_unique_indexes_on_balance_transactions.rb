@@ -1,4 +1,4 @@
-class AddUniqueIndexesOnBalanceTransactions < ActiveRecord::Migration
+class AddUniqueIndexesOnBalanceTransactions < ActiveRecord::Migration[4.2]
   def up
     execute %Q{
 create unique index idx_contribution_chargeback_evt_uniq on balance_transactions(event_name, contribution_id) where event_name = 'contribution_chargedback';

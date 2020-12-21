@@ -1,4 +1,4 @@
-class MailMarketingUser < ActiveRecord::Base
+class MailMarketingUser < ApplicationRecord
   belongs_to :user
   belongs_to :mail_marketing_list
 

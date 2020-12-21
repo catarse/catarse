@@ -20,7 +20,7 @@
       .w-col-2.w-col
         = form.button :submit, t('admin.filter.submit'), class: 'button medium negative'
       .w-col-2.w-col
-        = link_to t('.search_report'), admin_financials_path(params: params,format: :csv)
+        = link_to t('.search_report'), admin_financials_path(params: params.to_unsafe_h, format: :csv)
       .w-col-2.w-col
         p.filtered-number = @scoped_projects.count(:all)
         p.filtered-number-label

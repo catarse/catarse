@@ -1,4 +1,4 @@
-class AddRefundContributionsUniqueness < ActiveRecord::Migration
+class AddRefundContributionsUniqueness < ActiveRecord::Migration[4.2]
   def up
     execute %Q{
 create unique index refund_contributions_evt_uniq on balance_transactions(event_name, project_id)

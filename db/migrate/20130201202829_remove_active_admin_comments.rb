@@ -1,4 +1,4 @@
-class RemoveActiveAdminComments < ActiveRecord::Migration
+class RemoveActiveAdminComments < ActiveRecord::Migration[4.2]
   def up
     drop_table :active_admin_comments
   end

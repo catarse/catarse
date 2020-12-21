@@ -1,4 +1,4 @@
 # frozen_string_literal: true
 
-class Rdevent < ActiveRecord::Base
+class Rdevent < ApplicationRecord
 end

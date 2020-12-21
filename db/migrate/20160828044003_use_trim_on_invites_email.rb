@@ -1,4 +1,4 @@
-class UseTrimOnInvitesEmail < ActiveRecord::Migration
+class UseTrimOnInvitesEmail < ActiveRecord::Migration[4.2]
   def change
     execute %Q{
 CREATE OR REPLACE FUNCTION "1".invite_project_email(data json)

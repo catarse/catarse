@@ -12,7 +12,7 @@ RSpec.describe Project, type: :model do
   let(:user) { create(:user) }
 
   describe 'associations' do
-    it { is_expected.to belong_to :origin }
+    it { is_expected.to belong_to(:origin).optional }
     it { is_expected.to belong_to :user }
     it { is_expected.to belong_to :category }
     it { is_expected.to have_many :contributions }
@@ -212,7 +212,7 @@ RSpec.describe Project, type: :model do
     end
 
     it 'should return a collection with projects of current week' do
-      is_expected.to have(6).itens
+      expect(subject.count).to eq 6
     end
   end
 
@@ -225,9 +225,9 @@ RSpec.describe Project, type: :model do
     context 'when have confirmed contributions last day' do
       before do
         @confirmed_today = create(:confirmed_contribution, project: project_01)
-        @confirmed_today.payments.first.update_attributes paid_at: Time.now
+        @confirmed_today.payments.first.update paid_at: Time.now
         old = create(:confirmed_contribution, project: project_02)
-        old.payments.first.update_attributes paid_at: 2.days.ago
+        old.payments.first.update paid_at: 2.days.ago
       end
 
       it { is_expected.to eq [project_01] }
@@ -286,7 +286,7 @@ RSpec.describe Project, type: :model do
       create(:confirmed_contribution, value: 10, project: @project_03)
     end
 
-    it { is_expected.to have(2).itens }
+    it { expect(subject.count).to eq 2}
   end
 
   describe '.by_goal' do
@@ -459,7 +459,7 @@ RSpec.describe Project, type: :model do
       let(:state) { 'online' }
       before do
         create(:confirmed_contribution, value: 4000, project: project)
-        project.update_attribute(:expires_at, 1.day.ago)
+        project.update(expires_at: 1.day.ago)
         project.finish
       end
 
@@ -719,11 +719,11 @@ RSpec.describe Project, type: :model do
   end
 
   describe 'create_event_to_status' do
-    
+
     let(:integrations_attributes) { [{ name: 'SOLIDARITY_SERVICE_FEE', data: { name: 'SOLIDARITY FEE NAME' } }] }
     let(:category) { create(:category) }
     let(:project) { create(:project, name: "NEW PROJECT NAME", service_fee: 0.04, mode: 'flex', state: 'draft', category_id: category.id, integrations_attributes: integrations_attributes) }
-    
+
     let(:event) { project.create_event_to_state }
 
     it do
@@ -739,8 +739,8 @@ RSpec.describe Project, type: :model do
 
     it 'should update full_text_index from nil when state updates' do
       expect(project.full_text_index).to eq(nil)
-      
-      project.state = 'online'      
+
+      project.state = 'online'
       project.save
       project.reload
 

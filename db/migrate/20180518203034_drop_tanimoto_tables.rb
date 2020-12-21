@@ -1,4 +1,4 @@
-class DropTanimotoTables < ActiveRecord::Migration
+class DropTanimotoTables < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
     drop view IF EXISTS "1".recommend_projects2user;

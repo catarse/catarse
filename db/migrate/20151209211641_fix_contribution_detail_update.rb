@@ -1,4 +1,4 @@
-class FixContributionDetailUpdate < ActiveRecord::Migration
+class FixContributionDetailUpdate < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
  CREATE OR REPLACE FUNCTION public.update_from_details_to_contributions()

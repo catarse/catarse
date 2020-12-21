@@ -1,4 +1,4 @@
-class FixProjectsForHome < ActiveRecord::Migration
+class FixProjectsForHome < ActiveRecord::Migration[4.2]
   def change
     execute "DROP VIEW IF EXISTS projects_for_home;"
     execute <<-SQL

@@ -1,4 +1,4 @@
-class PostDetailsVisibilityRuleForPostRewards < ActiveRecord::Migration
+class PostDetailsVisibilityRuleForPostRewards < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
       CREATE OR REPLACE FUNCTION public.current_user_has_contributed_to_one_of_selected_rewards(project_post_id integer, project_id integer)
@@ -9,17 +9,17 @@ class PostDetailsVisibilityRuleForPostRewards < ActiveRecord::Migration
           select
             case when (select mode from projects where id = $2) = 'sub' then
               exists(
-                select true from common_schema.subscriptions s 
-                where s.status::text in('active', 'canceling') 
-                    and s.reward_id = (select common_id from rewards where id = (select reward_id from post_rewards where project_post_id = $1 limit 1) limit 1) 
+                select true from common_schema.subscriptions s
+                where s.status::text in('active', 'canceling')
+                    and s.reward_id = (select common_id from rewards where id = (select reward_id from post_rewards where project_post_id = $1 limit 1) limit 1)
                     and s.user_id = current_user_uuid())
             else
               exists(select true from "1".project_contributions c where c.state = any(public.confirmed_states()) and c.reward_id = (select reward_id from post_rewards where project_post_id = $1 limit 1) and c.user_id = current_user_id())
             end
         $function$
     ;;
-    
-    
+
+
     CREATE OR REPLACE FUNCTION public.minimum_value_to_access_post(project_post_id integer)
       RETURNS numeric
       LANGUAGE plpgsql
@@ -28,19 +28,19 @@ class PostDetailsVisibilityRuleForPostRewards < ActiveRecord::Migration
         declare
             _minimum_value numeric;
         begin
-        
-            select r.minimum_value 
-            from post_rewards pr 
-            inner join rewards r on r.id = pr.reward_id and pr.project_post_id = $1 
+
+            select r.minimum_value
+            from post_rewards pr
+            inner join rewards r on r.id = pr.reward_id and pr.project_post_id = $1
             limit 1
             into _minimum_value;
-            
+
             return _minimum_value;
         end
           $function$
           ;;
-          
-          
+
+
           CREATE OR REPLACE FUNCTION public.rewards_that_can_access_post(project_post_id integer)
           RETURNS json
           LANGUAGE plpgsql
@@ -49,30 +49,30 @@ class PostDetailsVisibilityRuleForPostRewards < ActiveRecord::Migration
              declare
                  _rewards_json_array json;
              begin
-             
+
                  select array_to_json(ARRAY_AGG(json_build_object(
-                                 'common_id', r.common_id, 
-                                 'id', r.id, 
-                                 'minimum_value', r.minimum_value, 
+                                 'common_id', r.common_id,
+                                 'id', r.id,
+                                 'minimum_value', r.minimum_value,
                                  'title', r.title
                              )))
-                 from post_rewards pr 
-                 inner join rewards r on 
-                     r.id = pr.reward_id and 
+                 from post_rewards pr
+                 inner join rewards r on
+                     r.id = pr.reward_id and
                      pr.project_post_id = $1
-                 
+
                  into _rewards_json_array;
-                 
-                 
+
+
                  return _rewards_json_array;
              end
                $function$
          ;;
-         
+
 
 
     drop view "1"."project_posts_details";
-    CREATE OR REPLACE VIEW "1"."project_posts_details" AS 
+    CREATE OR REPLACE VIEW "1"."project_posts_details" AS
      SELECT pp.id,
         pp.project_id,
         is_owner_or_admin(p.user_id) AS is_owner_or_admin,

@@ -1,4 +1,4 @@
-class AddTotalContributorsAndElapsedToProjectDetails < ActiveRecord::Migration
+class AddTotalContributorsAndElapsedToProjectDetails < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
 SET statement_timeout TO 0;
@@ -7,7 +7,7 @@ SET statement_timeout TO 0;
     execute <<-SQL
 SELECT deps_save_and_drop_dependencies('1', 'project_details');
 DROP VIEW "1".project_details;
-CREATE VIEW "1".project_details AS 
+CREATE VIEW "1".project_details AS
  SELECT p.id AS project_id,
     p.id,
     p.user_id,
@@ -77,7 +77,7 @@ grant select on "1".project_details to anonymous;
     execute <<-SQL
 SELECT deps_save_and_drop_dependencies('1', 'project_details');
 DROP VIEW "1".project_details;
-CREATE VIEW "1".project_details AS 
+CREATE VIEW "1".project_details AS
  SELECT p.id AS project_id,
     p.id,
     p.user_id,

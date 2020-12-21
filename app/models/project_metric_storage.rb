@@ -1,3 +1,3 @@
-class ProjectMetricStorage < ActiveRecord::Base
+class ProjectMetricStorage < ApplicationRecord
   belongs_to :project
 end

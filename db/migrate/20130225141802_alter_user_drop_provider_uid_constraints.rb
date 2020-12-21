@@ -1,4 +1,4 @@
-class AlterUserDropProviderUidConstraints < ActiveRecord::Migration
+class AlterUserDropProviderUidConstraints < ActiveRecord::Migration[4.2]
   def up
     execute "
     ALTER TABLE users ALTER provider DROP NOT NULL;

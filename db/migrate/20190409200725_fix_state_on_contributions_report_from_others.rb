@@ -1,8 +1,8 @@
-class FixStateOnContributionsReportFromOthers < ActiveRecord::Migration
+class FixStateOnContributionsReportFromOthers < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
 
-    CREATE OR REPLACE VIEW "public"."contribution_reports_for_project_owners" AS 
+    CREATE OR REPLACE VIEW "public"."contribution_reports_for_project_owners" AS
     SELECT b.project_id,
        COALESCE(r.id, 0) AS reward_id,
        p.user_id AS project_owner_id,
@@ -93,7 +93,7 @@ class FixStateOnContributionsReportFromOthers < ActiveRecord::Migration
   def down
     execute <<-SQL
 
-    CREATE OR REPLACE VIEW "public"."contribution_reports_for_project_owners" AS 
+    CREATE OR REPLACE VIEW "public"."contribution_reports_for_project_owners" AS
     SELECT b.project_id,
        COALESCE(r.id, 0) AS reward_id,
        p.user_id AS project_owner_id,

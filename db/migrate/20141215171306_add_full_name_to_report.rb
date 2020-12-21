@@ -1,8 +1,7 @@
-class AddFullNameToReport < ActiveRecord::Migration
+class AddFullNameToReport < ActiveRecord::Migration[4.2]
   def change
-    drop_view :contribution_reports_for_project_owners
-
     execute <<-SQL
+        DROP VIEW IF EXISTS contribution_reports_for_project_owners;
         CREATE OR REPLACE VIEW contribution_reports_for_project_owners AS
         SELECT
           b.project_id,

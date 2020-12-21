@@ -1,4 +1,4 @@
-class CreateContributorNumbers < ActiveRecord::Migration
+class CreateContributorNumbers < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
       CREATE MATERIALIZED VIEW public.contributor_numbers AS

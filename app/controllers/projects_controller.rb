@@ -4,8 +4,8 @@
 class InvalidProject < StandardError; end
 class SuccessfulProject < StandardError; end
 class ProjectsController < ApplicationController
-  after_filter :verify_authorized, except: %i[show index video video_embed embed embed_panel about_mobile]
-  after_filter :redirect_user_back_after_login, only: %i[index show]
+  after_action :verify_authorized, except: %i[show index video video_embed embed embed_panel about_mobile]
+  after_action :redirect_user_back_after_login, only: %i[index show]
   before_action :authorize_and_build_resources, only: %i[edit]
 
   has_scope :pg_search, :by_category_id
@@ -49,7 +49,7 @@ class ProjectsController < ApplicationController
         redirect_to publish_by_steps_project_path(@project)
       else
         redirect_after_create(@project)
-      end      
+      end
     else
       render :new
     end
@@ -162,14 +162,14 @@ class ProjectsController < ApplicationController
 
     # need to check this before setting new attributes
     should_validate = should_use_validate
-    
-    resource.localized.attributes = permitted_params.compact
+
+    resource.localized.attributes = permitted_params.to_unsafe_hash.compact
     # can't use localized for fee
     if permitted_params[:service_fee].present?
       resource.service_fee = permitted_params[:service_fee]
     end
 
-    should_show_modal = resource.online? && resource.mode == 'flex' && resource.online_days_changed?
+    should_show_modal = resource.online? && resource.mode == 'flex' && resource.will_save_change_to_online_days?
 
     if resource.save(validate: should_validate)
       flash[:notice] = t('project.update.success')
@@ -250,19 +250,17 @@ class ProjectsController < ApplicationController
   def resource_action(action_name, success_redirect = nil, show_modal = nil)
     if resource.send(action_name)
       if resource.origin.nil? && referral.present?
-        resource.update_attribute(
-          :origin_id, Origin.process_hash(referral).try(:id)
-        )
+        resource.update(origin_id: Origin.process_hash(referral).try(:id))
       end
 
       flash[:notice] = t("projects.#{action_name}")
       if success_redirect
-        redirect_to edit_project_path(@project, anchor: success_redirect, locale: '')
+        redirect_to edit_project_path(@project, anchor: success_redirect, locale: nil)
       else
         if show_modal
-          redirect_to insights_project_path(@project, online_succcess: true, locale: '')
+          redirect_to insights_project_path(@project, online_succcess: true, locale: nil)
         else
-          redirect_to insights_project_path(@project, locale: '')
+          redirect_to insights_project_path(@project, locale: nil)
         end
       end
     else
@@ -308,9 +306,9 @@ class ProjectsController < ApplicationController
 
   def redirect_after_create(project)
     if project.is_sub?
-      redirect_to edit_project_path(project, locale: '', anchor: 'start')
+      redirect_to edit_project_path(project, locale: nil, anchor: 'start')
     else
-      redirect_to insights_project_path(project, locale: '')
+      redirect_to insights_project_path(project, locale: nil)
     end
   end
 

@@ -1,4 +1,4 @@
-class MovesUserTotalsToMaterializedViews < ActiveRecord::Migration
+class MovesUserTotalsToMaterializedViews < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
     DROP VIEW "1".user_totals;

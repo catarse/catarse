@@ -5,11 +5,13 @@ require 'json'
 
 class ApplicationController < ActionController::Base
   EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
-  include Concerns::ExceptionHandler
-  include Concerns::SocialHelpersHandler
-  include Concerns::AnalyticsHelpersHandler
-  include Concerns::PixelHelpersHandler
-  include Concerns::KondutoHandler
+  include LocaleHandler
+  include ExceptionHandler
+  include SocialHelpersHandler
+  include AnalyticsHelpersHandler
+  include PixelHelpersHandler
+  include KondutoHandler
+  include OldBrowserChecker
   include Pundit
   before_action :redirect_when_zendesk_session, unless: :devise_controller?
 
@@ -23,12 +25,10 @@ class ApplicationController < ActionController::Base
   layout 'catarse_bootstrap'
   protect_from_forgery
 
-  before_filter :configure_permitted_parameters, if: :devise_controller?
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
   helper_method :referral, :render_projects, :is_projects_home?,
                 :render_feeds, :public_settings
-
-  before_filter :set_locale
 
   before_action :force_www
 
@@ -90,7 +90,7 @@ class ApplicationController < ActionController::Base
       redirect_to follow_fb_friends_path
     else
       session[:return_to] = follow_fb_friends_path
-      redirect_to('/auth/facebook')
+      redirect_to user_facebook_omniauth_authorize_path
     end
   end
 
@@ -124,19 +124,6 @@ class ApplicationController < ActionController::Base
     if request.subdomain.blank? && Rails.env.production?
       redirect_to request.original_url.gsub(/^https?\:\/\//, 'https://www.')
     end
-  end
-
-  def detect_old_browsers
-    return redirect_to page_path('bad_browser') if (!browser.modern? || browser.ie9?) && controller_name != 'pages'
-  end
-
-  def set_locale
-    return redirect_to url_for(locale: I18n.default_locale, only_path: true) unless is_locale_available?
-    I18n.locale = params[:locale] || I18n.default_locale
-  end
-
-  def is_locale_available?
-    params[:locale].blank? || I18n.available_locales.include?(params[:locale].to_sym)
   end
 
   def after_sign_in_path_for(resource_or_scope)

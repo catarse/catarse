@@ -1,4 +1,4 @@
-class RefactorViews < ActiveRecord::Migration
+class RefactorViews < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
 SET STATEMENT_TIMEOUT TO 0;

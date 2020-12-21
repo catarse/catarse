@@ -1,4 +1,4 @@
-class UserDetailsAgain < ActiveRecord::Migration
+class UserDetailsAgain < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
     CREATE OR REPLACE VIEW "1".user_details AS

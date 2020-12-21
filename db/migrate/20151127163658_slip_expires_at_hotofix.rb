@@ -1,4 +1,4 @@
-class SlipExpiresAtHotofix < ActiveRecord::Migration
+class SlipExpiresAtHotofix < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
 CREATE OR REPLACE FUNCTION public.slip_expiration_weekdays()

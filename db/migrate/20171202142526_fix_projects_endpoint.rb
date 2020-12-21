@@ -1,4 +1,4 @@
-class FixProjectsEndpoint < ActiveRecord::Migration
+class FixProjectsEndpoint < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
     create or replace view "1".projects as
@@ -24,7 +24,7 @@ class FixProjectsEndpoint < ActiveRecord::Migration
                       ELSE pt.paid_pledged
                   END AS paid_pledged
              FROM "1".project_totals pt
-            WHERE pt.project_id = p.id)) 
+            WHERE pt.project_id = p.id))
     END), 0::numeric) AS pledged,
     COALESCE((SELECT CASE WHEN p.mode = 'sub' THEN
     ((SELECT sum(amount) from subscriptions s where s.project_id = p.id and status = 'active')/

@@ -1,7 +1,7 @@
-class FixCitiesViewProjectEditCitySearch < ActiveRecord::Migration
+class FixCitiesViewProjectEditCitySearch < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
-    CREATE OR REPLACE VIEW "1"."cities" AS 
+    CREATE OR REPLACE VIEW "1"."cities" AS
       SELECT c.id,
         c.state_id,
         c.name,
@@ -12,10 +12,10 @@ class FixCitiesViewProjectEditCitySearch < ActiveRecord::Migration
       JOIN states s ON s.id = c.state_id;
     SQL
   end
-  
+
   def down
     execute <<-SQL
-    CREATE OR REPLACE VIEW "1"."cities" AS 
+    CREATE OR REPLACE VIEW "1"."cities" AS
       SELECT c.id,
         c.state_id,
         c.name,

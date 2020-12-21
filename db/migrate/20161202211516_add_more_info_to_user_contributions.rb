@@ -1,4 +1,4 @@
-class AddMoreInfoToUserContributions < ActiveRecord::Migration
+class AddMoreInfoToUserContributions < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
     CREATE OR REPLACE FUNCTION public.sold_out(reward rewards)
@@ -57,7 +57,7 @@ class AddMoreInfoToUserContributions < ActiveRecord::Migration
      JOIN payments pa ON c.id = pa.contribution_id
      JOIN users u ON c.user_id = u.id
      JOIN rewards r on r.id = c.reward_id
-  WHERE is_owner_or_admin(c.user_id);  
+  WHERE is_owner_or_admin(c.user_id);
 
     SQL
   end

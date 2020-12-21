@@ -1,4 +1,4 @@
-class UpdateOnlineDateForLegacyProjects < ActiveRecord::Migration
+class UpdateOnlineDateForLegacyProjects < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
       UPDATE projects

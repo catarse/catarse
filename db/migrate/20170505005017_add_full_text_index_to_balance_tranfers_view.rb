@@ -1,7 +1,7 @@
-class AddFullTextIndexToBalanceTranfersView < ActiveRecord::Migration
+class AddFullTextIndexToBalanceTranfersView < ActiveRecord::Migration[4.2]
   def change
     execute %Q{
-CREATE OR REPLACE VIEW "1"."balance_transfers" AS 
+CREATE OR REPLACE VIEW "1"."balance_transfers" AS
  SELECT bt.id,
     bt.user_id,
     bt.project_id,
@@ -24,7 +24,7 @@ CREATE OR REPLACE VIEW "1"."balance_transfers" AS
      LEFT JOIN LATERAL (
         select
             *
-        from balance_transfer_transitions btt1 
+        from balance_transfer_transitions btt1
         where btt1.balance_transfer_id = bt.id
             and btt1.to_state = 'transferred'
         order by btt1.id desc limit 1

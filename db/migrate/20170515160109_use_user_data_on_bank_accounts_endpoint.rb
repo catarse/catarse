@@ -1,7 +1,7 @@
-class UseUserDataOnBankAccountsEndpoint < ActiveRecord::Migration
+class UseUserDataOnBankAccountsEndpoint < ActiveRecord::Migration[4.2]
   def up
     execute %Q{
-CREATE OR REPLACE VIEW "1"."bank_accounts" AS 
+CREATE OR REPLACE VIEW "1"."bank_accounts" AS
  SELECT ba.user_id,
     b.name AS bank_name,
     b.code AS bank_code,
@@ -25,7 +25,7 @@ CREATE OR REPLACE VIEW "1"."bank_accounts" AS
 
   def down
     execute %Q{
-CREATE OR REPLACE VIEW "1"."bank_accounts" AS 
+CREATE OR REPLACE VIEW "1"."bank_accounts" AS
  SELECT ba.user_id,
     b.name AS bank_name,
     b.code AS bank_code,

@@ -1,4 +1,4 @@
-class AddProjectContributorsStats < ActiveRecord::Migration
+class AddProjectContributorsStats < ActiveRecord::Migration[4.2]
   def up
     execute %{
 CREATE OR REPLACE FUNCTION is_confirmed(contributions) RETURNS boolean
@@ -6,8 +6,8 @@ CREATE OR REPLACE FUNCTION is_confirmed(contributions) RETURNS boolean
     AS $_$
       SELECT EXISTS (
         SELECT true
-        FROM 
-          public.payments p 
+        FROM
+          public.payments p
         WHERE p.contribution_id = $1.id AND p.state = 'paid'
       );
     $_$;
@@ -27,7 +27,7 @@ join lateral (
     from public.contributions cl
     where cl.user_id = c.user_id and cl.was_confirmed and cl.created_at <= c.created_at and cl.project_id<>p.id
 ) as lt on true
-where 
+where
     (case when p.state = 'failed' then c.was_confirmed else c.is_confirmed end)
 group by p.id;
 
@@ -38,12 +38,12 @@ grant select on "1".project_stat_contributors to web_user, anonymous, admin;
   def down
     execute %{
 CREATE OR REPLACE FUNCTION is_confirmed(contributions) RETURNS boolean
-    LANGUAGE sql 
+    LANGUAGE sql
     AS $_$
       SELECT EXISTS (
         SELECT true
-        FROM 
-          public.payments p 
+        FROM
+          public.payments p
         WHERE p.contribution_id = $1.id AND p.state = 'paid'
       );
     $_$;

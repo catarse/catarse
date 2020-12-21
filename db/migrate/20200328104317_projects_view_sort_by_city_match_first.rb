@@ -1,8 +1,8 @@
-class ProjectsViewSortByCityMatchFirst < ActiveRecord::Migration
+class ProjectsViewSortByCityMatchFirst < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
-    
-    CREATE OR REPLACE VIEW "1"."projects" AS 
+
+    CREATE OR REPLACE VIEW "1"."projects" AS
     SELECT p.id AS project_id,
        p.category_id,
        p.name AS project_name,

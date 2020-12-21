@@ -56,6 +56,8 @@ RSpec.describe UserActionBroadcast, type: :model do
     context 'when user as published a new project' do
       let(:project) { create(:project, user: user, state: 'draft') }
       before do
+        mocked_url = "https://graph.facebook.com/v9.0?access_token=%7C&id=#{project.direct_url}&scrape=true"
+        stub_request(:post, mocked_url).to_return(status: 200)
         project.push_to_online
       end
 
@@ -69,7 +71,7 @@ RSpec.describe UserActionBroadcast, type: :model do
       it 'should not create repeated when same project' do
         expect(UserFollowNotification.where(template_name: 'follow_project_online').count).to eq(2)
         project.project_transitions.destroy_all
-        project.update_attributes(state: 'draft')
+        project.update(state: 'draft')
         project.push_to_online
         expect(UserFollowNotification.where(template_name: 'follow_project_online').count).to eq(2)
       end

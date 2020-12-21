@@ -1,4 +1,4 @@
-class AdjustContributionReportsOwnerToLookOnRefundedStates < ActiveRecord::Migration
+class AdjustContributionReportsOwnerToLookOnRefundedStates < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
 CREATE OR REPLACE VIEW "1".contribution_reports_for_project_owners AS

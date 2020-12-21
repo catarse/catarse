@@ -161,7 +161,8 @@ const paymentVM = () => {
         m.request({
             method: 'post',
             url: `/payment/pagarme/${contribution_id}/pay_slip.json`,
-            dataType: 'json'
+            dataType: 'json',
+            config: setCsrfToken
         }).then((data) => {
             if (data.payment_status == 'failed') {
                 error(window.I18n.t('submission.slip_submission', scope()));

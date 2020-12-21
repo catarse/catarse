@@ -1,10 +1,10 @@
-class UpdateStatisticsToUseFlex < ActiveRecord::Migration
+class UpdateStatisticsToUseFlex < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
 set statement_timeout to 0;
 DROP MATERIALIZED VIEW "1".statistics;
 CREATE MATERIALIZED VIEW "1".statistics AS
-    SELECT 
+    SELECT
         ( SELECT count(*) AS count
             FROM users) AS total_users,
         contributions_totals.total_contributions,
@@ -13,18 +13,18 @@ CREATE MATERIALIZED VIEW "1".statistics AS
         projects_totals.total_projects,
         projects_totals.total_projects_success,
         projects_totals.total_projects_online
-    FROM ( 
-        SELECT 
+    FROM (
+        SELECT
             count(DISTINCT c.id) AS total_contributions,
             count(DISTINCT c.user_id) AS total_contributors,
             sum(p.value) AS total_contributed
         FROM contributions c
         JOIN payments p ON p.contribution_id = c.id
-        WHERE 
+        WHERE
             p.state = ANY (confirmed_states())
     ) contributions_totals,
-    ( 
-        SELECT 
+    (
+        SELECT
             count(*) AS total_projects,
             count(
                 CASE

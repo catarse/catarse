@@ -1,4 +1,4 @@
-class AddTotalPaidToProjectTotals < ActiveRecord::Migration
+class AddTotalPaidToProjectTotals < ActiveRecord::Migration[4.2]
     def up
     execute <<-SQL
 set statement_timeout to 0;
@@ -30,7 +30,7 @@ SELECT deps_restore_dependencies('1', 'project_totals');
 
 
 SELECT deps_save_and_drop_dependencies('1', 'projects');
-CREATE OR REPLACE VIEW "1".projects AS 
+CREATE OR REPLACE VIEW "1".projects AS
  SELECT p.id AS project_id,
     p.category_id,
     p.name AS project_name,
@@ -133,7 +133,7 @@ CREATE OR REPLACE VIEW "1".project_totals AS
 SELECT deps_restore_dependencies('1', 'project_totals');
 
 SELECT deps_save_and_drop_dependencies('1', 'projects');
-CREATE OR REPLACE VIEW "1".projects AS 
+CREATE OR REPLACE VIEW "1".projects AS
  SELECT p.id AS project_id,
     p.category_id,
     p.name AS project_name,

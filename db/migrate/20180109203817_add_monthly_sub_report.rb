@@ -1,5 +1,5 @@
 # coding: utf-8
-class AddMonthlySubReport < ActiveRecord::Migration
+class AddMonthlySubReport < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
     create or replace view subscription_monthly_report_for_project_owners as

@@ -1,10 +1,10 @@
-class FixesSomeAccess < ActiveRecord::Migration
+class FixesSomeAccess < ActiveRecord::Migration[4.2]
   def change
     execute %Q{
-REVOKE SELECT ON "1".direct_messages FROM anonymous, web_user; 
-REVOKE SELECT ON "1".user_totals FROM anonymous, web_user; 
+REVOKE SELECT ON "1".direct_messages FROM anonymous, web_user;
+REVOKE SELECT ON "1".user_totals FROM anonymous, web_user;
 
-CREATE OR REPLACE VIEW "1"."user_details" AS 
+CREATE OR REPLACE VIEW "1"."user_details" AS
  SELECT u.id,
     u.name,
     u.address_city,

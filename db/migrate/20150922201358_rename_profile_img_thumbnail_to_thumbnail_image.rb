@@ -1,4 +1,4 @@
-class RenameProfileImgThumbnailToThumbnailImage < ActiveRecord::Migration
+class RenameProfileImgThumbnailToThumbnailImage < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
       DROP VIEW IF EXISTS "1".contribution_details2;

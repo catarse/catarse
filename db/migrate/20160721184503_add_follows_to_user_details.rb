@@ -1,4 +1,4 @@
-class AddFollowsToUserDetails < ActiveRecord::Migration
+class AddFollowsToUserDetails < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
     CREATE OR REPLACE VIEW "1".user_details AS

@@ -1,4 +1,4 @@
-class UnifyUsers < ActiveRecord::Migration
+class UnifyUsers < ActiveRecord::Migration[4.2]
   def change
     User.select("users.*, (SELECT string_agg(id::text, ',') FROM users u WHERE u.id <> users.id AND u.email = users.email) AS doppelgangers").where("id IN (SELECT min(id) FROM users WHERE trim(email) <> '' GROUP BY email HAVING count(*) > 1)").each do |user|
       puts "Fixing merging #{user.email} (#{user.doppelgangers}) into #{user.id}"

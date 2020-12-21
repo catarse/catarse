@@ -1,4 +1,4 @@
-class AddCanDeliverIntoProjectReminders < ActiveRecord::Migration
+class AddCanDeliverIntoProjectReminders < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
 CREATE OR REPLACE FUNCTION public.can_deliver(public.project_reminders) returns boolean

@@ -1,4 +1,4 @@
-class AlterTimestampToIncludeTimezone < ActiveRecord::Migration
+class AlterTimestampToIncludeTimezone < ActiveRecord::Migration[4.2]
   def up
     execute "
       DROP FUNCTION if exists expires_at(projects);

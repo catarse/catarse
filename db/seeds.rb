@@ -38,10 +38,10 @@ puts 'Seeding the database...'
   { pt: 'Saúde', en: 'Health', fr: 'Santé' }
 ].each do |name|
    category = Category.find_or_initialize_by(name_pt: name[:pt])
-   category.update_attributes({
+   category.update({
      name_en: name[:en]
    })
-   category.update_attributes({
+   category.update({
      name_fr: name[:fr]
    })
  end
@@ -79,7 +79,7 @@ puts 'Seeding the database...'
   contato_url: 'http://suporte.catarse.me/'
 }.each do |name, value|
    conf = CatarseSettings.find_or_initialize_by(name: name)
-   conf.update_attributes({
+   conf.update({
      value: value
    }) if conf.new_record?
 end

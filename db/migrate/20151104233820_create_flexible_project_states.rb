@@ -1,4 +1,4 @@
-class CreateFlexibleProjectStates < ActiveRecord::Migration
+class CreateFlexibleProjectStates < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
     CREATE TABLE public.flexible_project_states (

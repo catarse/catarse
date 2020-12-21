@@ -1,7 +1,7 @@
-class FixBalanceTransfers < ActiveRecord::Migration
+class FixBalanceTransfers < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
-    CREATE OR REPLACE VIEW "1"."balance_transfers" AS 
+    CREATE OR REPLACE VIEW "1"."balance_transfers" AS
    SELECT bt.id,
       bt.user_id,
       bt.project_id,

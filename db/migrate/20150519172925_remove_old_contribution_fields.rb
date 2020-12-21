@@ -1,4 +1,4 @@
-class RemoveOldContributionFields < ActiveRecord::Migration
+class RemoveOldContributionFields < ActiveRecord::Migration[4.2]
   def change
     execute "DROP VIEW IF EXISTS temp.contribution_to_fix_details;"
     execute "DROP VIEW IF EXISTS user_feeds;"

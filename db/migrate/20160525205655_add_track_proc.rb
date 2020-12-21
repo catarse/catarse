@@ -1,4 +1,4 @@
-class AddTrackProc < ActiveRecord::Migration
+class AddTrackProc < ActiveRecord::Migration[4.2]
   def up
     execute %{
 CREATE OR REPLACE FUNCTION "1".track(event jsonb) RETURNS public.moments

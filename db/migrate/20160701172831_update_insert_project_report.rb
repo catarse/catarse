@@ -1,4 +1,4 @@
-class UpdateInsertProjectReport < ActiveRecord::Migration
+class UpdateInsertProjectReport < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
       CREATE OR REPLACE FUNCTION insert_project_report() RETURNS trigger

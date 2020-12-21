@@ -3,7 +3,7 @@
 
 class ApiTokensController < ApplicationController
   TOKEN_TTL = 1.hour
-  before_filter :set_cache_headers
+  before_action :set_cache_headers
 
   def common_proxy
     proxy_api_key = CatarseSettings[:common_proxy_api_key]

@@ -1,8 +1,8 @@
-class RewardDetailsWithRewardImage < ActiveRecord::Migration
+class RewardDetailsWithRewardImage < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
 
-    CREATE OR REPLACE VIEW "1"."reward_details" AS 
+    CREATE OR REPLACE VIEW "1"."reward_details" AS
     SELECT r.id,
        r.project_id,
        r.description,

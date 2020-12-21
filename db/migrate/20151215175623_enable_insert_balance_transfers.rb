@@ -1,4 +1,4 @@
-class EnableInsertBalanceTransfers < ActiveRecord::Migration
+class EnableInsertBalanceTransfers < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
 CREATE OR REPLACE FUNCTION public.insert_balance_transfer() RETURNS TRIGGER
@@ -13,7 +13,7 @@ CREATE OR REPLACE FUNCTION public.insert_balance_transfer() RETURNS TRIGGER
                 RAISE EXCEPTION 'insufficient privileges to insert balance_transactions';
             END IF;
 
-            SELECT * FROM "1".balances 
+            SELECT * FROM "1".balances
                 WHERE user_id = NEW.user_id
                 INTO v_balance;
 

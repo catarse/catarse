@@ -1,4 +1,4 @@
-class CreateChannelPartners < ActiveRecord::Migration
+class CreateChannelPartners < ActiveRecord::Migration[4.2]
   def change
     create_table :channel_partners do |t|
       t.text :name, null: false

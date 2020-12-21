@@ -1,8 +1,8 @@
-class UpdateProjectsScoreViewToNotAdd1000ToScoreOfRecommendedProjects < ActiveRecord::Migration
+class UpdateProjectsScoreViewToNotAdd1000ToScoreOfRecommendedProjects < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
 
-    CREATE OR REPLACE VIEW "1"."project_scores" AS 
+    CREATE OR REPLACE VIEW "1"."project_scores" AS
     SELECT p.id AS project_id,
           CASE
             WHEN (p.mode = 'sub'::text) THEN
@@ -31,7 +31,7 @@ class UpdateProjectsScoreViewToNotAdd1000ToScoreOfRecommendedProjects < ActiveRe
   def down
     execute <<-SQL
 
-    CREATE OR REPLACE VIEW "1"."project_scores" AS 
+    CREATE OR REPLACE VIEW "1"."project_scores" AS
     SELECT p.id AS project_id,
            CASE
                WHEN (p.mode = 'sub'::text) THEN

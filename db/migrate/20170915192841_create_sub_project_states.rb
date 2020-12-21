@@ -1,4 +1,4 @@
-class CreateSubProjectStates < ActiveRecord::Migration
+class CreateSubProjectStates < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
     CREATE TABLE public.subscription_project_states (

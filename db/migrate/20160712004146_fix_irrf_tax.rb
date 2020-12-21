@@ -1,4 +1,4 @@
-class FixIrrfTax < ActiveRecord::Migration
+class FixIrrfTax < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
     CREATE OR REPLACE FUNCTION irrf_tax(project projects) RETURNS numeric

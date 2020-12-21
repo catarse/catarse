@@ -1,4 +1,4 @@
-class DropFutureRemindersNotifications < ActiveRecord::Migration
+class DropFutureRemindersNotifications < ActiveRecord::Migration[4.2]
   def up
     execute " set statement_timeout to 0;"
     execute <<-SQL

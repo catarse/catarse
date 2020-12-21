@@ -59,20 +59,20 @@ RSpec.describe Shared::VideoHandler, type: :model do
     context 'video_url is blank' do
       before { project.video_url = '' }
 
-      its(:video) { should be_nil }
+      it { expect(subject.video).to be_nil }
     end
 
     context 'video_url is defined' do
       before { project.video_url = 'http://vimeo.com/17298435' }
 
       context 'video_url is a Vimeo url' do
-        its(:video) { should be_an_instance_of(VideoInfo) }
+        it { expect(subject.video).to be_an_instance_of(VideoInfo) }
       end
 
       context 'video_url is an YouTube url' do
         before { project.video_url = 'http://www.youtube.com/watch?v=Brw7bzU_t4c' }
 
-        its(:video) { should be_an_instance_of(VideoInfo) }
+        it { expect(subject.video).to be_an_instance_of(VideoInfo) }
       end
     end
   end

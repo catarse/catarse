@@ -1,4 +1,4 @@
-class AddsSlugifyFunction < ActiveRecord::Migration
+class AddsSlugifyFunction < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
     CREATE OR REPLACE FUNCTION public.slugify(val text)

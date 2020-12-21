@@ -1,4 +1,4 @@
-class AddCoverImageToUserDetails < ActiveRecord::Migration
+class AddCoverImageToUserDetails < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
     CREATE OR REPLACE FUNCTION cover_image_url(users) RETURNS text

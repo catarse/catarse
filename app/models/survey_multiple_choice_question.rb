@@ -1,4 +1,4 @@
-class SurveyMultipleChoiceQuestion < ActiveRecord::Base
+class SurveyMultipleChoiceQuestion < ApplicationRecord
   belongs_to :survey
   has_many :survey_multiple_choice_question_answers
   has_many :survey_question_choices

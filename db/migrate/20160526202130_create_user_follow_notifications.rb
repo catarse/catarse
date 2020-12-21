@@ -1,4 +1,4 @@
-class CreateUserFollowNotifications < ActiveRecord::Migration
+class CreateUserFollowNotifications < ActiveRecord::Migration[4.2]
   def up
     create_table :user_follow_notifications do |t|
       t.integer :user_id, null: false

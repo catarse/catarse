@@ -1,4 +1,4 @@
-class AddProjectContributionsView < ActiveRecord::Migration
+class AddProjectContributionsView < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
       create view "1".project_contributions as

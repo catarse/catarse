@@ -1,4 +1,4 @@
-class CreateSocialFollowers < ActiveRecord::Migration
+class CreateSocialFollowers < ActiveRecord::Migration[4.2]
   def up
   execute %Q{
     CREATE SEQUENCE public.social_followers_id_seq

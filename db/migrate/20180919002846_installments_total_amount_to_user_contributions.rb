@@ -1,7 +1,7 @@
-class InstallmentsTotalAmountToUserContributions < ActiveRecord::Migration
+class InstallmentsTotalAmountToUserContributions < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
-    CREATE OR REPLACE VIEW "1"."user_contributions" AS 
+    CREATE OR REPLACE VIEW "1"."user_contributions" AS
       SELECT pa.id,
         c.id AS contribution_id,
         pa.id AS payment_id,
@@ -74,7 +74,7 @@ class InstallmentsTotalAmountToUserContributions < ActiveRecord::Migration
   def down
     execute <<-SQL
     DROP VIEW "1"."user_contributions";
-    CREATE OR REPLACE VIEW "1"."user_contributions" AS 
+    CREATE OR REPLACE VIEW "1"."user_contributions" AS
       SELECT pa.id,
         c.id AS contribution_id,
         pa.id AS payment_id,

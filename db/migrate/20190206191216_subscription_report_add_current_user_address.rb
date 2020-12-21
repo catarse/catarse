@@ -1,8 +1,8 @@
-class SubscriptionReportAddCurrentUserAddress < ActiveRecord::Migration
+class SubscriptionReportAddCurrentUserAddress < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
 
-    CREATE OR REPLACE VIEW "public"."subscription_monthly_report_for_project_owners" AS 
+    CREATE OR REPLACE VIEW "public"."subscription_monthly_report_for_project_owners" AS
     SELECT s.project_id,
        u.name,
        u.public_name,
@@ -41,10 +41,10 @@ class SubscriptionReportAddCurrentUserAddress < ActiveRecord::Migration
                        WHEN ((s.gateway_general_data ->> 'gateway_payment_method'::text) = 'credit_card'::text) THEN (COALESCE(((s.gateway_general_data ->> 'gateway_cost'::text))::numeric, (0)::numeric) + COALESCE(((s.gateway_general_data ->> 'payable_total_fee'::text))::numeric, (0)::numeric))
                        ELSE (COALESCE((s.gateway_general_data ->> 'payable_total_fee'::text), (s.gateway_general_data ->> 'gateway_cost'::text), '0'::text))::numeric
                    END / (100)::numeric), 2) AS gateway_fee) fees ON (true))
-                   
+
            LEFT JOIN LATERAL (
-           
-           select 
+
+           select
                a.id,
                a.address_street as street,
                a.address_complement as complement,
@@ -53,12 +53,12 @@ class SubscriptionReportAddCurrentUserAddress < ActiveRecord::Migration
                a.address_city as city,
                s.acronym as state,
                a.address_zip_code as zipcode
-               
-           from 
+
+           from
                addresses as a left join states as s on a.state_id = s.id where u.address_id = a.id
        ) user_address ON (true))
      WHERE (s.status = 'paid'::payment_service.payment_status)
-     GROUP BY     
+     GROUP BY
            user_address.street,
            user_address.complement,
            user_address.number,
@@ -67,15 +67,15 @@ class SubscriptionReportAddCurrentUserAddress < ActiveRecord::Migration
            user_address.state,
            user_address.zipcode,
            proj.id, s.gateway_general_data, s.project_id, u.name, u.public_name, u.email, s.data, r.title, r.description, s.created_at, s.updated_at, u.id, pst.created_at, sub.checkout_data, fees.gateway_fee;
-   
-   
+
+
     SQL
   end
 
   def down
     execute <<-SQL
 
-    CREATE OR REPLACE VIEW "public"."subscription_monthly_report_for_project_owners" AS 
+    CREATE OR REPLACE VIEW "public"."subscription_monthly_report_for_project_owners" AS
     SELECT s.project_id,
        u.name,
        u.public_name,
@@ -116,7 +116,7 @@ class SubscriptionReportAddCurrentUserAddress < ActiveRecord::Migration
                    END / (100)::numeric), 2) AS gateway_fee) fees ON (true))
      WHERE (s.status = 'paid'::payment_service.payment_status)
      GROUP BY proj.id, s.gateway_general_data, s.project_id, u.name, u.public_name, u.email, s.data, r.title, r.description, s.created_at, s.updated_at, u.id, pst.created_at, sub.checkout_data, fees.gateway_fee;
-    
+
     SQL
   end
 end

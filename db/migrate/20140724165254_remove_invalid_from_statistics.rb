@@ -1,4 +1,4 @@
-class RemoveInvalidFromStatistics < ActiveRecord::Migration
+class RemoveInvalidFromStatistics < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
        DROP VIEW statistics;

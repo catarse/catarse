@@ -1,4 +1,4 @@
-class AddListenNotifyToContributions < ActiveRecord::Migration
+class AddListenNotifyToContributions < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
       create or replace function public.notify_about_confirmed_payments() returns trigger

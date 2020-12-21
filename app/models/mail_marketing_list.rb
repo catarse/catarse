@@ -1,4 +1,4 @@
-class MailMarketingList < ActiveRecord::Base
+class MailMarketingList < ApplicationRecord
   has_many :mail_marketing_users
   validates :provider, :label, :list_id, presence: true
   validates :provider,  uniqueness: {scope: :label }

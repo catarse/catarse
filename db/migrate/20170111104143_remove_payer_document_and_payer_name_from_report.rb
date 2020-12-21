@@ -1,4 +1,4 @@
-class RemovePayerDocumentAndPayerNameFromReport < ActiveRecord::Migration
+class RemovePayerDocumentAndPayerNameFromReport < ActiveRecord::Migration[4.2]
   def up
     execute %Q{
 DROP VIEW "1"."contribution_reports_for_project_owners";

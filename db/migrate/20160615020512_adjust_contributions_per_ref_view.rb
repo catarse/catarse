@@ -1,4 +1,4 @@
-class AdjustContributionsPerRefView < ActiveRecord::Migration
+class AdjustContributionsPerRefView < ActiveRecord::Migration[4.2]
   def up
     execute %{
 CREATE OR REPLACE VIEW "1".project_contributions_per_ref AS

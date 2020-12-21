@@ -1,5 +1,5 @@
 # encoding: utf-8
-class RenameCategories < ActiveRecord::Migration
+class RenameCategories < ActiveRecord::Migration[4.2]
   def up
     execute "
     UPDATE categories SET name_pt = 'Gastronomia', name_en = 'Gastronomy' WHERE name_pt = 'Comida';

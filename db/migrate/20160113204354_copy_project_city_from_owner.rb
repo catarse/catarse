@@ -1,4 +1,4 @@
-class CopyProjectCityFromOwner < ActiveRecord::Migration
+class CopyProjectCityFromOwner < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
     SET statement_timeout TO 0;

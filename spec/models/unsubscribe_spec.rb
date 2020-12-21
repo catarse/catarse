@@ -20,7 +20,7 @@ RSpec.describe Unsubscribe, type: :model do
       create(:unsubscribe, project: project_02)
     end
 
-    it { is_expected.to have(2).itens }
+    it { expect(subject.count).to eq 2 }
   end
 
   describe '.drop_all_for_project' do
@@ -43,13 +43,13 @@ RSpec.describe Unsubscribe, type: :model do
   describe '.posts_unsubscribe' do
     subject { Unsubscribe.posts_unsubscribe(1618) }
     it { is_expected.not_to be_persisted }
-    its(:class) { should == Unsubscribe }
-    its(:project_id) { should == 1618 }
+    it { expect(subject.class).to eq Unsubscribe }
+    it { expect(subject.project_id).to eq 1618 }
 
     context 'when project_id is nil' do
       subject { Unsubscribe.posts_unsubscribe(nil) }
-      its(:class) { should == Unsubscribe }
-      its(:project_id) { should be_nil }
+      it { expect(subject.class).to eq Unsubscribe }
+      it { expect(subject.project_id).to be_nil }
     end
   end
 end

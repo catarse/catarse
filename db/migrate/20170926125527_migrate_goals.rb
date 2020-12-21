@@ -1,4 +1,4 @@
-class MigrateGoals < ActiveRecord::Migration
+class MigrateGoals < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
         WITH project_goals AS (

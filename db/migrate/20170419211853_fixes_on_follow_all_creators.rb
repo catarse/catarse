@@ -1,4 +1,4 @@
-class FixesOnFollowAllCreators < ActiveRecord::Migration
+class FixesOnFollowAllCreators < ActiveRecord::Migration[4.2]
   def change
     execute %Q{
     grant select on public.contributions to admin, web_user;

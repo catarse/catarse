@@ -1,7 +1,7 @@
-class AddWelcomeNotificationToRewardDetails < ActiveRecord::Migration
+class AddWelcomeNotificationToRewardDetails < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
-  CREATE OR REPLACE VIEW "1"."reward_details" AS 
+  CREATE OR REPLACE VIEW "1"."reward_details" AS
    SELECT r.id,
     r.project_id,
     r.description,
@@ -32,7 +32,7 @@ class AddWelcomeNotificationToRewardDetails < ActiveRecord::Migration
 
   def down
     execute <<-SQL
-  CREATE OR REPLACE VIEW "1"."reward_details" AS 
+  CREATE OR REPLACE VIEW "1"."reward_details" AS
    SELECT r.id,
     r.project_id,
     r.description,

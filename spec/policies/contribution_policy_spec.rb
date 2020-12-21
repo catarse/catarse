@@ -33,7 +33,7 @@ RSpec.describe ContributionPolicy do
 
     %w[draft deleted rejected successful failed waiting_funds].each do |state|
       it "should deny access if project is #{state}" do
-        contribution.project.update_attributes state: state
+        contribution.project.update(state: state)
         is_expected.not_to permit(user, contribution)
       end
     end
@@ -42,7 +42,7 @@ RSpec.describe ContributionPolicy do
   permissions(:new?) do
     %w[draft deleted rejected successful failed waiting_funds].each do |state|
       it "should deny access if project is #{state}" do
-        contribution.project.update_attributes state: state
+        contribution.project.update(state: state)
       end
     end
   end
@@ -74,7 +74,7 @@ RSpec.describe ContributionPolicy do
       context 'when user is admin' do
         let(:current_user) { create(:user, admin: true) }
 
-        it { is_expected.to have(3).itens }
+        it { expect(subject.count).to eq 3 }
       end
 
       context 'when user is a contributor' do

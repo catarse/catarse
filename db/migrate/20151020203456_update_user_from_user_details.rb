@@ -1,4 +1,4 @@
-class UpdateUserFromUserDetails < ActiveRecord::Migration
+class UpdateUserFromUserDetails < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
     CREATE OR REPLACE FUNCTION public.update_user_from_user_details() RETURNS trigger

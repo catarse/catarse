@@ -1,4 +1,4 @@
-class UpdateUserFromUserFullDetails < ActiveRecord::Migration
+class UpdateUserFromUserFullDetails < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
     CREATE TRIGGER update_user_from_user_details

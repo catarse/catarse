@@ -1,4 +1,4 @@
-class AddZoneToDatefuncs < ActiveRecord::Migration
+class AddZoneToDatefuncs < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
 CREATE OR REPLACE FUNCTION online_at(project projects) RETURNS timestamp without time zone

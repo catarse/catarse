@@ -1,4 +1,4 @@
-class RemoveNotificationTypes < ActiveRecord::Migration
+class RemoveNotificationTypes < ActiveRecord::Migration[4.2]
   def up
     remove_column :unsubscribes, :notification_type_id
     remove_column :notifications, :notification_type_id

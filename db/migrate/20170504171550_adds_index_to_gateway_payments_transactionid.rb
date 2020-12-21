@@ -1,4 +1,4 @@
-class AddsIndexToGatewayPaymentsTransactionid < ActiveRecord::Migration
+class AddsIndexToGatewayPaymentsTransactionid < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
     CREATE INDEX idx_transactionid_gp

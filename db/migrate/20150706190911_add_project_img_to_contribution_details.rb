@@ -1,9 +1,9 @@
-class AddProjectImgToContributionDetails < ActiveRecord::Migration
+class AddProjectImgToContributionDetails < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
-    CREATE OR REPLACE FUNCTION public.img_thumbnail(projects) RETURNS text AS $$ 
-    SELECT 
-      'https://' || (SELECT value FROM settings WHERE name = 'aws_host') || 
+    CREATE OR REPLACE FUNCTION public.img_thumbnail(projects) RETURNS text AS $$
+    SELECT
+      'https://' || (SELECT value FROM settings WHERE name = 'aws_host') ||
       '/' || (SELECT value FROM settings WHERE name = 'aws_bucket') ||
       '/uploads/project/uploaded_image/' || $1.id::text ||
       '/project_thumb_small_' || $1.uploaded_image
@@ -54,8 +54,8 @@ class AddProjectImgToContributionDetails < ActiveRecord::Migration
       coalesce(' ' || pa.key, '') ||
       coalesce(' ' || c.payer_email, '') ||
       coalesce(' ' || pa.gateway_id, '') ||
-      coalesce(' ' || (pa.gateway_data->>'acquirer_name'), '') || 
-      coalesce(' ' || (pa.gateway_data->>'card_brand'), '') || 
+      coalesce(' ' || (pa.gateway_data->>'acquirer_name'), '') ||
+      coalesce(' ' || (pa.gateway_data->>'card_brand'), '') ||
       coalesce(' ' || (pa.gateway_data->>'tid'), '')
     ) AS search_text
    FROM projects p

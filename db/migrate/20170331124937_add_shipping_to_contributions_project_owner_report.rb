@@ -1,7 +1,7 @@
-class AddShippingToContributionsProjectOwnerReport < ActiveRecord::Migration
+class AddShippingToContributionsProjectOwnerReport < ActiveRecord::Migration[4.2]
   def change
     execute %Q{
-CREATE OR REPLACE VIEW "public"."contribution_reports_for_project_owners" AS 
+CREATE OR REPLACE VIEW "public"."contribution_reports_for_project_owners" AS
  SELECT b.project_id,
     COALESCE(r.id, 0) AS reward_id,
     p.user_id AS project_owner_id,
@@ -28,16 +28,16 @@ CREATE OR REPLACE VIEW "public"."contribution_reports_for_project_owners" AS
     COALESCE(u.address_city, b.address_city) AS city,
     COALESCE(u.address_state, b.address_state) AS address_state,
     COALESCE(u.address_zip_code, b.address_zip_code) AS zip_code,
-    (CASE 
-    WHEN sf.id is null THEN '' 
+    (CASE
+    WHEN sf.id is null THEN ''
     ELSE sf.destination||' R$ '||sf.value END) as shipping_choice,
-    COALESCE((case 
+    COALESCE((case
         when r.shipping_options = 'free' then 'Sem frete envolvido'
         when r.shipping_options = 'presential' then 'Retirada presencial'
         when r.shipping_options = 'international' then 'Frete Nacional e Internacional'
         when r.shipping_options = 'national' then 'Frete Nacional'
         end
-    ), '') as shipping_option    
+    ), '') as shipping_option
    FROM contributions b
      JOIN users u ON u.id = b.user_id
      JOIN projects p ON b.project_id = p.id

@@ -1,4 +1,4 @@
-class ThumbnailFromUsersAtLocalDev < ActiveRecord::Migration
+class ThumbnailFromUsersAtLocalDev < ActiveRecord::Migration[4.2]
   def up
     add_column :rewards, :uploaded_image, :string
     execute <<-SQL
@@ -12,7 +12,7 @@ class ThumbnailFromUsersAtLocalDev < ActiveRecord::Migration
         $function$
   ;
   ---
-  
+
   CREATE OR REPLACE FUNCTION public.thumbnail_image(users)
     RETURNS text
     LANGUAGE sql
@@ -28,11 +28,11 @@ class ThumbnailFromUsersAtLocalDev < ActiveRecord::Migration
                       ),
                       '/uploads/user/uploaded_image/' || $1.id::text || '/thumb_avatar_' || $1.uploaded_image
                   )
-                  
+
   $function$
   ;
   ---
-  
+
   CREATE OR REPLACE FUNCTION public.thumbnail_image(projects, size text)
     RETURNS text
     LANGUAGE sql
@@ -50,20 +50,20 @@ class ThumbnailFromUsersAtLocalDev < ActiveRecord::Migration
                   || $1.id::text
                   || '/project_thumb_'
                   || COALESCE(nullif(size,'') || '_', '')
-                  || COALESCE($1.uploaded_image, $1.video_thumbnail)        
+                  || COALESCE($1.uploaded_image, $1.video_thumbnail)
               ),
               '/uploads/project/'
                   || (CASE WHEN $1.uploaded_image IS NOT NULL THEN 'uploaded_image/' ELSE 'video_thumbnail/' END)::text
                   || $1.id::text
                   || '/project_thumb_'
                   || COALESCE(nullif(size,'') || '_', '')
-                  || COALESCE($1.uploaded_image, $1.video_thumbnail)        
+                  || COALESCE($1.uploaded_image, $1.video_thumbnail)
           )
-  
+
       $function$
       ;
       ---
-      
+
       CREATE OR REPLACE FUNCTION public.thumbnail_image(rewards)
         RETURNS text
         LANGUAGE sql
@@ -79,7 +79,7 @@ class ThumbnailFromUsersAtLocalDev < ActiveRecord::Migration
                           ),
                           '/uploads/reward/uploaded_image/' || $1.id::text || '/thumb_reward_' || $1.uploaded_image
                       )
-                      
+
       $function$
       ;
       ---
@@ -101,7 +101,7 @@ class ThumbnailFromUsersAtLocalDev < ActiveRecord::Migration
             $function$
       ;
       ---
-      
+
       CREATE OR REPLACE FUNCTION public.thumbnail_image(users)
         RETURNS text
         LANGUAGE sql
@@ -112,11 +112,11 @@ class ThumbnailFromUsersAtLocalDev < ActiveRecord::Migration
             '/' || (SELECT value FROM settings WHERE name = 'aws_bucket') ||
             '/uploads/user/uploaded_image/' || $1.id::text ||
             '/thumb_avatar_' || $1.uploaded_image
-                      
+
       $function$
       ;
       ---
-      
+
       CREATE OR REPLACE FUNCTION public.thumbnail_image(projects, size text)
         RETURNS text
         LANGUAGE sql
@@ -132,10 +132,10 @@ class ThumbnailFromUsersAtLocalDev < ActiveRecord::Migration
             || $1.id::text
             || '/project_thumb_'
             || COALESCE(nullif(size,'') || '_', '')
-            || COALESCE($1.uploaded_image, $1.video_thumbnail)        
-      
+            || COALESCE($1.uploaded_image, $1.video_thumbnail)
+
       $function$;;
-   
+
 
     SQL
     remove_column :rewards, :uploaded_image

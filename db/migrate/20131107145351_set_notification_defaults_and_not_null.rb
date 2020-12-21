@@ -1,4 +1,4 @@
-class SetNotificationDefaultsAndNotNull < ActiveRecord::Migration
+class SetNotificationDefaultsAndNotNull < ActiveRecord::Migration[4.2]
   def up
     # origin_name
     execute "

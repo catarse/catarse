@@ -1,4 +1,4 @@
-class AddTransferFullTextIndexes < ActiveRecord::Migration
+class AddTransferFullTextIndexes < ActiveRecord::Migration[4.2]
   def change
     execute %Q{
 CREATE OR REPLACE FUNCTION public.generate_transfer_full_text_index(bt balance_transfers)
@@ -20,7 +20,7 @@ CREATE OR REPLACE FUNCTION public.generate_transfer_full_text_index(bt balance_t
                                     from balance_transactions btr
                                     where btr.user_id = bt.user_id
                                     order by btr.id desc limit 10) t
-                               ), '')), 'C') || 
+                               ), '')), 'C') ||
                                setweight(to_tsvector('portuguese', unaccent(coalesce(bt.user_id::text, ''))), 'D') ||
                                setweight(to_tsvector('portuguese', coalesce(bt.transfer_id::text, '')), 'D');
 
@@ -28,7 +28,7 @@ CREATE OR REPLACE FUNCTION public.generate_transfer_full_text_index(bt balance_t
         END;
 $$;
 
-create or replace function update_balance_transfer_full_text_index() returns trigger 
+create or replace function update_balance_transfer_full_text_index() returns trigger
     language plpgsql
     as $$
         BEGIN

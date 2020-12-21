@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Admin::Reports::ContributionReportsController < Admin::BaseController
-  include Concerns::Admin::ReportsHandler
+  include Admin::ReportsHandler
   actions :index
 
   def end_of_association_chain

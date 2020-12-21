@@ -17,6 +17,6 @@ RSpec.describe ProjectPost, type: :model do
 
   describe '.create' do
     subject { create(:project_post, comment_html: 'this is a comment') }
-    its(:comment_html) { should == 'this is a comment' }
+    it { expect(subject.comment_html).to eq 'this is a comment' }
   end
 end

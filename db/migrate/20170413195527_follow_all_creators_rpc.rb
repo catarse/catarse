@@ -1,4 +1,4 @@
-class FollowAllCreatorsRpc < ActiveRecord::Migration
+class FollowAllCreatorsRpc < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
       create or replace function "1".follow_all_creators() RETURNS void

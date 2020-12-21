@@ -1,4 +1,4 @@
-class AddMetadataIntoNotificationTables < ActiveRecord::Migration
+class AddMetadataIntoNotificationTables < ActiveRecord::Migration[4.2]
   def change
     add_column :contribution_notifications, :metadata, :jsonb, null: false, default: '{}'
     add_column :project_notifications, :metadata, :jsonb, null: false, default: '{}'

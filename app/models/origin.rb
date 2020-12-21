@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Origin < ActiveRecord::Base
+class Origin < ApplicationRecord
   has_many :projects
   has_many :contributions
 

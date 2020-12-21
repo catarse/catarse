@@ -1,4 +1,4 @@
-class AddAuditedUserToProjects < ActiveRecord::Migration
+class AddAuditedUserToProjects < ActiveRecord::Migration[4.2]
   def change
     add_column :projects, :audited_user_name, :text
     add_column :projects, :audited_user_cpf, :text

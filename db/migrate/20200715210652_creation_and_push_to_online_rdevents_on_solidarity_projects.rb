@@ -1,4 +1,4 @@
-class CreationAndPushToOnlineRdeventsOnSolidarityProjects < ActiveRecord::Migration
+class CreationAndPushToOnlineRdeventsOnSolidarityProjects < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
 
@@ -8,7 +8,7 @@ class CreationAndPushToOnlineRdeventsOnSolidarityProjects < ActiveRecord::Migrat
       AS $$
         select exists(
           select integration.project_id
-          from public.project_integrations integration 
+          from public.project_integrations integration
           where integration.project_id = $1 and integration.name = 'SOLIDARITY_SERVICE_FEE'
         );
       $$
@@ -59,8 +59,8 @@ class CreationAndPushToOnlineRdeventsOnSolidarityProjects < ActiveRecord::Migrat
                 INTO v_project;
 
             v_mode_concat = (CASE WHEN is_solidarity_project(NEW.project_id) THEN 'solidaria_project_'
-                                  WHEN v_project.mode = 'flex' THEN 'flex_project_' 
-                                  WHEN v_project.mode = 'sub' THEN 'sub_project_' 
+                                  WHEN v_project.mode = 'flex' THEN 'flex_project_'
+                                  WHEN v_project.mode = 'sub' THEN 'sub_project_'
                                   ELSE 'project_' END);
 
             IF NEW.to_state = ANY(v_enabled_events) THEN
@@ -76,7 +76,7 @@ class CreationAndPushToOnlineRdeventsOnSolidarityProjects < ActiveRecord::Migrat
       drop trigger project_received_conversion on projects;
 
       drop function project_received_conversion;
-    
+
     SQL
   end
 
@@ -99,8 +99,8 @@ class CreationAndPushToOnlineRdeventsOnSolidarityProjects < ActiveRecord::Migrat
           SELECT * FROM projects WHERE id = NEW.project_id
               INTO v_project;
 
-          v_mode_concat = (CASE WHEN v_project.mode = 'flex' THEN 'flex_project_' 
-                                WHEN v_project.mode = 'sub' THEN 'sub_project_' 
+          v_mode_concat = (CASE WHEN v_project.mode = 'flex' THEN 'flex_project_'
+                                WHEN v_project.mode = 'sub' THEN 'sub_project_'
                                 ELSE 'project_' END);
 
           IF NEW.to_state = ANY(v_enabled_events) THEN
@@ -112,7 +112,7 @@ class CreationAndPushToOnlineRdeventsOnSolidarityProjects < ActiveRecord::Migrat
         END;
       $function$
       ;
-      
+
       CREATE OR REPLACE FUNCTION public.flexible_project_rdevents_dispatcher()
         RETURNS trigger
         LANGUAGE plpgsql
@@ -139,7 +139,7 @@ class CreationAndPushToOnlineRdeventsOnSolidarityProjects < ActiveRecord::Migrat
       $function$
       ;
       ---
-      
+
       CREATE OR REPLACE FUNCTION public.project_received_conversion()
         RETURNS trigger
         LANGUAGE plpgsql
@@ -157,7 +157,7 @@ class CreationAndPushToOnlineRdeventsOnSolidarityProjects < ActiveRecord::Migrat
         END;
       $function$
       ;
-      ---     
+      ---
 
     SQL
   end

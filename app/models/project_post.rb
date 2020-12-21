@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-class ProjectPost < ActiveRecord::Base
+class ProjectPost < ApplicationRecord
   include I18n::Alchemy
   include Shared::CommonWrapper
   has_notifications
 
   belongs_to :project, inverse_of: :posts
-  belongs_to :reward
+  belongs_to :reward, optional: true
   belongs_to :user
   delegate :email_comment_html, to: :decorator
   has_many :post_rewards, dependent: :delete_all

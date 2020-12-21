@@ -1,4 +1,4 @@
-class AddCountryColumnToContributionReportsForProjectOwners < ActiveRecord::Migration
+class AddCountryColumnToContributionReportsForProjectOwners < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
       CREATE OR REPLACE VIEW "public"."contribution_reports_for_project_owners" AS
@@ -215,4 +215,3 @@ class AddCountryColumnToContributionReportsForProjectOwners < ActiveRecord::Migr
     SQL
   end
 end
-

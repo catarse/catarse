@@ -1,7 +1,7 @@
-class AddServiceFeeToProjectDetails < ActiveRecord::Migration
+class AddServiceFeeToProjectDetails < ActiveRecord::Migration[4.2]
   def change
     execute %Q{
-CREATE OR REPLACE VIEW "1"."project_details" AS 
+CREATE OR REPLACE VIEW "1"."project_details" AS
  SELECT p.id AS project_id,
     p.id,
     p.user_id,
@@ -58,7 +58,7 @@ CREATE OR REPLACE VIEW "1"."project_details" AS
            FROM (contributions c_1
              JOIN user_follows uf ON ((uf.follow_id = c_1.user_id)))
           WHERE (is_confirmed(c_1.*) AND (uf.user_id = current_user_id()) AND (c_1.project_id = p.id)))) AS contributed_by_friends,
-    (case 
+    (case
         when "current_user"() = 'admin'::name then nullif(btrim(array_agg(distinct admin_tags_lateral.tag_list)::text, '{}'), 'NULL')
         else null::text end
     ) as admin_tag_list,
@@ -74,7 +74,7 @@ CREATE OR REPLACE VIEW "1"."project_details" AS
             t1.name as tag_list
         from taggings tgs
             JOIN tags t1 ON t1.id = tgs.tag_id
-            where tgs.project_id = p.id     
+            where tgs.project_id = p.id
             and tgs.tag_id is not null
      ) as admin_tags_lateral on true
      left join lateral (

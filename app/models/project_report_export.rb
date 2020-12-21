@@ -1,5 +1,5 @@
 # coding: utf-8
-class ProjectReportExport < ActiveRecord::Base
+class ProjectReportExport < ApplicationRecord
 
   REPORT_TYPE_LIST = %w[SubscriptionMonthlyReportForProjectOwner SubscriptionReportForProjectOwner]
   REPORT_TYPE_EXT_LIST = %w[csv xls]

@@ -1,4 +1,4 @@
-class CreateShippingFees < ActiveRecord::Migration
+class CreateShippingFees < ActiveRecord::Migration[4.2]
   def change
     create_table :shipping_fees do |t|
       t.references :reward, null: false

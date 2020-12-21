@@ -1,8 +1,8 @@
-class SubscriptionReportOwnerCurrentAddress < ActiveRecord::Migration
+class SubscriptionReportOwnerCurrentAddress < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
 
-    CREATE OR REPLACE VIEW "public"."subscription_report_for_project_owners" AS 
+    CREATE OR REPLACE VIEW "public"."subscription_report_for_project_owners" AS
     SELECT s.project_id,
        u.name,
        u.public_name,
@@ -41,8 +41,8 @@ class SubscriptionReportOwnerCurrentAddress < ActiveRecord::Migration
              ORDER BY cp.created_at DESC
             LIMIT 1) last_paid_payment ON (true))
        LEFT JOIN LATERAL (
-           
-           select 
+
+           select
                a.id,
                a.address_street as street,
                a.address_complement as complement,
@@ -51,12 +51,12 @@ class SubscriptionReportOwnerCurrentAddress < ActiveRecord::Migration
                a.address_city as city,
                s.acronym as state,
                a.address_zip_code as zipcode
-               
-           from 
+
+           from
                addresses as a left join states as s on a.state_id = s.id where u.address_id = a.id
        ) user_address ON (true))
      WHERE (s.status <> 'deleted'::payment_service.subscription_status)
-     GROUP BY 
+     GROUP BY
            user_address.street,
            user_address.complement,
            user_address.number,
@@ -72,7 +72,7 @@ class SubscriptionReportOwnerCurrentAddress < ActiveRecord::Migration
   def down
     execute <<-SQL
 
-    CREATE OR REPLACE VIEW "public"."subscription_report_for_project_owners" AS 
+    CREATE OR REPLACE VIEW "public"."subscription_report_for_project_owners" AS
     SELECT s.project_id,
        u.name,
        u.public_name,

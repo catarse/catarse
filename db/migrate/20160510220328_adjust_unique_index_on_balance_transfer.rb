@@ -1,4 +1,4 @@
-class AdjustUniqueIndexOnBalanceTransfer < ActiveRecord::Migration
+class AdjustUniqueIndexOnBalanceTransfer < ActiveRecord::Migration[4.2]
   def up
     execute %Q{
 DROP INDEX index_balance_transfer_transitions_parent_most_recent;

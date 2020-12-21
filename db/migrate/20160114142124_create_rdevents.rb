@@ -1,4 +1,4 @@
-class CreateRdevents < ActiveRecord::Migration
+class CreateRdevents < ActiveRecord::Migration[4.2]
   def change
     create_table :rdevents do |t|
       t.integer :user_id

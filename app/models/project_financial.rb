@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
-class ProjectFinancial < ActiveRecord::Base
+class ProjectFinancial < ApplicationRecord
   acts_as_copy_target
 end

@@ -1,4 +1,4 @@
-class RevertExpiresAt < ActiveRecord::Migration
+class RevertExpiresAt < ActiveRecord::Migration[4.2]
   def up
     execute "
     CREATE OR REPLACE FUNCTION expires_at(projects) RETURNS timestamptz AS $$

@@ -7,7 +7,7 @@ RSpec.describe ProjectObserver do
   let(:project) do
     project = create(:project, state: 'draft', goal: 3000)
     create(:reward, project: project)
-    project.update_attribute :state, :online
+    project.update(state: :online)
     project
   end
 
@@ -37,14 +37,14 @@ RSpec.describe ProjectObserver do
   end
 
   describe '#after_create' do
-    
+
     subject { ProjectObserver.instance }
 
     context 'when supportive project is created' do
       let(:integrations_attributes) { [{ name: 'SOLIDARITY_SERVICE_FEE', data: { name: 'SOLIDARITY FEE NAME' } }] }
       let(:category) { create(:category) }
       let(:project) { create(:project, name: "NEW PROJECT NAME", service_fee: 0.04, mode: 'flex', category_id: category.id, integrations_attributes: integrations_attributes) }
-    
+
       it 'should have called send create_event_to_state method' do
         expect(project).to receive(:create_event_to_state)
         subject.after_create(project)
@@ -109,7 +109,7 @@ RSpec.describe ProjectObserver do
         expect(project).to receive(:index_on_common)
       end
       it 'should call index on common' do
-        project.update_attribute(:name, 'foo bar')
+        project.update(name: 'foo bar')
       end
     end
 
@@ -130,7 +130,7 @@ RSpec.describe ProjectObserver do
       let(:project) { create(:project, state: 'draft') }
       it do
         expect(project).to receive(:update_expires_at).at_least(:once).and_return(true)
-        expect(project).to receive(:update_attributes).with(
+        expect(project).to receive(:update).with(
           published_ip: project.user.current_sign_in_ip,
           audited_user_name: project.user.name,
           audited_user_cpf: project.user.cpf,
@@ -178,7 +178,7 @@ RSpec.describe ProjectObserver do
     end
 
     let(:contribution_invalid) do
-      create(:confirmed_contribution, value: 10, project: project)
+      create(:confirmed_contribution, value: 10, project: project, user: create(:user, :with_bank_account))
     end
 
     let(:contribution_valid) do
@@ -199,7 +199,7 @@ RSpec.describe ProjectObserver do
       before do
         Sidekiq::Testing.inline!
         contribution_invalid.user.bank_account.destroy
-        project.update_attribute :online_days, 2
+        project.update(online_days: 2)
         expect(project).not_to receive(:notify_owner).with(:project_canceled)
         expect(DirectRefundWorker).to receive(:perform_async).with(payment_valid.id)
         expect(DirectRefundWorker).to receive(:perform_async).with(payment_slip.id).and_call_original
@@ -231,7 +231,7 @@ RSpec.describe ProjectObserver do
       expect(BalanceTransaction).to receive(:insert_contribution_refund).with(contribution.id).and_call_original
       expect(BalanceTransaction).to receive(:insert_successful_project_transactions).with(project.id).and_call_original
 
-      project.update_attribute(:online_days, 1)
+      project.update(online_days: 1)
       Sidekiq::Testing.inline!
 
       project.finish

@@ -1,4 +1,4 @@
-class AddAnsweredCountRpc < ActiveRecord::Migration
+class AddAnsweredCountRpc < ActiveRecord::Migration[4.2]
   def change
     add_column :contributions, :survey_answered_at, :datetime
     execute <<-SQL

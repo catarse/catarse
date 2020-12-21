@@ -1,4 +1,4 @@
-class AddMoreFdwViews < ActiveRecord::Migration
+class AddMoreFdwViews < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
 
@@ -13,10 +13,10 @@ class AddMoreFdwViews < ActiveRecord::Migration
     END
     $$;
 
-      CREATE OR REPLACE FUNCTION public.user_has_contributed_to_project(user_id integer, project_id integer) 
+      CREATE OR REPLACE FUNCTION public.user_has_contributed_to_project(user_id integer, project_id integer)
       returns boolean
-      language sql 
-      security definer 
+      language sql
+      security definer
       stable
       as $$
       select

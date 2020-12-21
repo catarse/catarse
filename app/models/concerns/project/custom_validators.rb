@@ -17,7 +17,7 @@ module Project::CustomValidators
 
     def self.get_routes
       @@mapped_routes ||= @@routes.each_with_object(Set.new) do |item, memo|
-        memo << Regexp.last_match(1) if item.path.spec.to_s.match(/^\/([\w]+)\S/)
+        memo << Regexp.last_match(1) if item.path.spec.to_s.gsub('(/:locale)', '').match(/^\/([\w]+)\S/)
       end
     end
 
@@ -42,6 +42,5 @@ module Project::CustomValidators
       errors.add(:about_html, :base64_images_not_allowed) if about_html.try(:match?, 'data:image/.*;base64')
       errors.add(:budget, :base64_images_not_allowed) if budget.try(:match?, 'data:image/.*;base64')
     end
-
   end
 end

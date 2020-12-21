@@ -1,13 +1,13 @@
-class AddInfoAboutLastTransferRequestOnBalance < ActiveRecord::Migration
+class AddInfoAboutLastTransferRequestOnBalance < ActiveRecord::Migration[4.2]
   def up
     execute %Q{
-CREATE OR REPLACE VIEW "1".balances as 
+CREATE OR REPLACE VIEW "1".balances as
     select
         id as user_id,
         balance.amount as amount,
         last_transfer.amount as last_transfer_amount,
         last_transfer.created_at as last_transfer_created_at,
-        last_transfer.in_period_yet        
+        last_transfer.in_period_yet
     from public.users u
         left join lateral (
             SELECT sum(bt.amount) AS amount
@@ -15,7 +15,7 @@ CREATE OR REPLACE VIEW "1".balances as
             WHERE bt.user_id = u.id
         ) as balance on true
         left join lateral (
-            select 
+            select
                 (bt.amount * -1) as amount,
                 bt.created_at,
                 (to_char(bt.created_at, 'MM/YYY') = to_char(now(), 'MM/YYY')) as in_period_yet
@@ -23,7 +23,7 @@ CREATE OR REPLACE VIEW "1".balances as
                 where bt.user_id = u.id
                     and bt.event_name in ('balance_transfer_request', 'balance_transfer_project')
                     and not exists (
-                        select true 
+                        select true
                             from balance_transactions bt2
                             where bt2.user_id = u.id
                                 and bt2.created_at > bt.created_at
@@ -39,7 +39,7 @@ CREATE OR REPLACE VIEW "1".balances as
   def down
     execute %Q{
 drop view "1".balances;
-CREATE OR REPLACE VIEW "1"."balances" AS 
+CREATE OR REPLACE VIEW "1"."balances" AS
  SELECT bt.user_id,
     sum(bt.amount) AS amount
    FROM balance_transactions bt

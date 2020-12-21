@@ -1,4 +1,4 @@
-class AddSurveyToProjectContributions < ActiveRecord::Migration
+class AddSurveyToProjectContributions < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
 

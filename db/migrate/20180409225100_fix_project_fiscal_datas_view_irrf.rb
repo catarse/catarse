@@ -1,4 +1,4 @@
-class FixProjectFiscalDatasViewIrrf < ActiveRecord::Migration
+class FixProjectFiscalDatasViewIrrf < ActiveRecord::Migration[4.2]
     def up
         execute <<-SQL
 CREATE OR REPLACE VIEW public.project_fiscal_datas AS
@@ -141,4 +141,3 @@ where pr.state in ('online','successful');
           SQL
     end
   end
-  

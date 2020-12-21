@@ -1,20 +1,20 @@
-class CreateRewardDetails < ActiveRecord::Migration
+class CreateRewardDetails < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
     CREATE OR REPLACE FUNCTION paid_count(rewards) RETURNS bigint AS $$
-      SELECT count(*) 
-      FROM payments p join contributions c on c.id = p.contribution_id 
+      SELECT count(*)
+      FROM payments p join contributions c on c.id = p.contribution_id
       WHERE p.state = 'paid' AND c.reward_id = $1.id
     $$ LANGUAGE SQL STABLE SECURITY DEFINER;
 
     CREATE OR REPLACE FUNCTION waiting_payment_count(rewards) RETURNS bigint AS $$
-      SELECT count(*) 
-      FROM payments p join contributions c on c.id = p.contribution_id 
+      SELECT count(*)
+      FROM payments p join contributions c on c.id = p.contribution_id
       WHERE p.waiting_payment AND c.reward_id = $1.id
     $$ LANGUAGE SQL STABLE SECURITY DEFINER;
 
     CREATE VIEW "1".reward_details AS
-    SELECT 
+    SELECT
       r.id,
       r.description,
       r.minimum_value,

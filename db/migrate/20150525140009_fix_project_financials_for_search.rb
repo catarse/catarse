@@ -1,4 +1,4 @@
-class FixProjectFinancialsForSearch < ActiveRecord::Migration
+class FixProjectFinancialsForSearch < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
      CREATE OR REPLACE VIEW project_financials AS(
@@ -32,4 +32,3 @@ class FixProjectFinancialsForSearch < ActiveRecord::Migration
     SQL
   end
 end
-

@@ -1,4 +1,4 @@
-class AdjustIsPublishedOnProjectToSupportFlexible < ActiveRecord::Migration
+class AdjustIsPublishedOnProjectToSupportFlexible < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
 CREATE OR REPLACE FUNCTION is_expired(projects) RETURNS boolean
@@ -39,7 +39,7 @@ SELECT
         ps.state = project.state
         )
     END
-FROM projects p 
+FROM projects p
 LEFT JOIN flexible_projects fp on fp.project_id = $1.id
 WHERE p.id = $1.id;
 $$;

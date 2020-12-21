@@ -1,4 +1,4 @@
-class FixAddressStateColumn < ActiveRecord::Migration
+class FixAddressStateColumn < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
       CREATE OR REPLACE VIEW "public"."contribution_reports_for_project_owners" AS

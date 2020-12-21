@@ -1,4 +1,4 @@
-class AddSolidarityIntegrationsNamesCampaignAsColumn < ActiveRecord::Migration
+class AddSolidarityIntegrationsNamesCampaignAsColumn < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
 
@@ -10,7 +10,7 @@ class AddSolidarityIntegrationsNamesCampaignAsColumn < ActiveRecord::Migration
           SELECT * FROM project_integrations AS integration WHERE integration.project_id = $1;
       $function$;
     --
-  
+
     CREATE OR REPLACE FUNCTION public.integrations(project projects)
       RETURNS project_integrations
       LANGUAGE sql
@@ -20,7 +20,7 @@ class AddSolidarityIntegrationsNamesCampaignAsColumn < ActiveRecord::Migration
       $function$;
     --
 
-    CREATE OR REPLACE VIEW "1"."projects" AS 
+    CREATE OR REPLACE VIEW "1"."projects" AS
     SELECT p.id AS project_id,
         p.category_id,
         p.name AS project_name,
@@ -56,7 +56,7 @@ class AddSolidarityIntegrationsNamesCampaignAsColumn < ActiveRecord::Migration
         (p.content_rating >= 18) AS is_adult_content,
         p.content_rating,
         (
-            EXISTS ( 
+            EXISTS (
                 SELECT true AS bool
                 FROM project_reminders pr
                 WHERE ((p.id = pr.project_id) AND (pr.user_id = current_user_id()))

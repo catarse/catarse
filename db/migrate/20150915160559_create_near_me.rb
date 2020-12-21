@@ -1,4 +1,4 @@
-class CreateNearMe < ActiveRecord::Migration
+class CreateNearMe < ActiveRecord::Migration[4.2]
   def change
     create_table :near_mes do |t|
       execute "
@@ -9,7 +9,7 @@ class CreateNearMe < ActiveRecord::Migration
       AS $function$
         SELECT
           pa.address_state = (SELECT u.address_state FROM users u WHERE u.id = nullif(current_setting('user_vars.user_id'), '')::int)
-        FROM 
+        FROM
           project_accounts pa
         WHERE
           pa.project_id = $1.project_id;

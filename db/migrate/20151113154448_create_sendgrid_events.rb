@@ -1,4 +1,4 @@
-class CreateSendgridEvents < ActiveRecord::Migration
+class CreateSendgridEvents < ActiveRecord::Migration[4.2]
   def change
     create_table :sendgrid_events do |t|
       t.integer :notification_id, null: false, foreign_key: false

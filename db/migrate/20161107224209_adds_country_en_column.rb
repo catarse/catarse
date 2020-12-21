@@ -1,4 +1,4 @@
-class AddsCountryEnColumn < ActiveRecord::Migration
+class AddsCountryEnColumn < ActiveRecord::Migration[4.2]
   def change
     add_column :countries, :name_en, :string
     execute <<-SQL

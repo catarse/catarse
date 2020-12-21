@@ -4,10 +4,10 @@ class Projects::ContributionsController < ApplicationController
   DEFAULT_AMOUNT = 10
   inherit_resources
   actions :index, :show, :new, :update, :review, :create
-  skip_before_filter :verify_authenticity_token, only: [:moip]
-  after_filter :verify_authorized, except: [:index]
+  skip_before_action :verify_authenticity_token, only: [:moip]
+  after_action :verify_authorized, except: [:index]
   belongs_to :project
-  before_filter :detect_old_browsers, only: %i[new create]
+  before_action :detect_old_browsers, only: %i[new create]
 
   helper_method :engine
 
@@ -22,7 +22,7 @@ class Projects::ContributionsController < ApplicationController
 
   def update
     authorize resource
-    resource.update_attributes(permitted_params)
+    resource.update(permitted_params)
     resource.update_user_billing_info
     render json: { message: 'updated' }
   end
@@ -90,7 +90,7 @@ class Projects::ContributionsController < ApplicationController
       resource.reward_received_at = Time.current
     end
     resource.save!(validate: false)
-    render nothing: true
+    render body: nil
   end
 
   def update_status
@@ -113,14 +113,14 @@ class Projects::ContributionsController < ApplicationController
   def toggle_anonymous
     authorize resource
     resource.toggle!(:anonymous)
-    render nothing: true
+    render body: nil
   end
 
   protected
 
   def send_delivery_notification(contributions, status, template_name)
     contributions.where.not(delivery_status: status).each do |contribution|
-      Notification.create!(user_id: contribution.user_id, user_email: contribution.user.email, template_name: template_name, metadata: { locale: 'pt', message: params['message'], from_name: "#{contribution.project.user.display_name} via Catarse", from_email: contribution.project.user.email, associations: { project_id: contribution.project.id, contribution_id: contribution.id } }.to_json)
+      Notification.create!(user_id: contribution.user_id, user_email: contribution.user.email, template_name: template_name, metadata: { locale: 'pt', message: params['message'], from_name: "#{contribution.project.user.display_name} via Catarse", from_email: contribution.project.user.email, associations: { project_id: contribution.project.id, contribution_id: contribution.id } })
     end
   end
 

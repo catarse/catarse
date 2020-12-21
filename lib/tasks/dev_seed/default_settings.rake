@@ -115,7 +115,7 @@ namespace :dev_seed do
         conf = CatarseSettings.find_or_initialize_by(name: name)
         if conf.new_record? || rewrite
           puts "setting value for CatarseSettings[:#{name}]"
-          conf.update_attributes({
+          conf.update({
             value: value
           })
         end

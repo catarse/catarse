@@ -1,4 +1,4 @@
-class AdjustProjectDetailsToHandleWithTransferRequest < ActiveRecord::Migration
+class AdjustProjectDetailsToHandleWithTransferRequest < ActiveRecord::Migration[4.2]
   def up
     execute %{
 DROP VIEW "1"."project_details";

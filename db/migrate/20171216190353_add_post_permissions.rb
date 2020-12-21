@@ -1,4 +1,4 @@
-class AddPostPermissions < ActiveRecord::Migration
+class AddPostPermissions < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
     grant select on rewards to admin, web_user, anonymous;

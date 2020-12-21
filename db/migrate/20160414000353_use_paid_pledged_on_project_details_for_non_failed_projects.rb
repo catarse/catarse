@@ -1,4 +1,4 @@
-class UsePaidPledgedOnProjectDetailsForNonFailedProjects < ActiveRecord::Migration
+class UsePaidPledgedOnProjectDetailsForNonFailedProjects < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
 CREATE OR REPLACE VIEW "1".projects AS
@@ -15,7 +15,7 @@ CREATE OR REPLACE VIEW "1".projects AS
     public.thumbnail_image(p.*, 'large'::text) AS project_img,
     public.remaining_time_json(p.*) AS remaining_time,
     p.expires_at,
-    COALESCE(( SELECT 
+    COALESCE(( SELECT
                 CASE WHEN COALESCE(fp.state, p.state)::text = 'failed' THEN pt.pledged
                 ELSE pt.paid_pledged END
            FROM "1".project_totals pt
@@ -114,7 +114,7 @@ CREATE OR REPlACE VIEW "1".projects AS
     public.thumbnail_image(p.*, 'large'::text) AS project_img,
     public.remaining_time_json(p.*) AS remaining_time,
     p.expires_at,
-    COALESCE(( SELECT 
+    COALESCE(( SELECT
                 pt.pledged
            FROM "1".project_totals pt
           WHERE (pt.project_id = p.id)), (0)::numeric) AS pledged,

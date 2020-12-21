@@ -1,4 +1,4 @@
-class AddCompatibilityFunctions < ActiveRecord::Migration
+class AddCompatibilityFunctions < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
     CREATE OR REPLACE FUNCTION confirmed_states() RETURNS text[] AS $$
@@ -8,8 +8,8 @@ class AddCompatibilityFunctions < ActiveRecord::Migration
     CREATE OR REPLACE FUNCTION is_confirmed(contributions) RETURNS boolean AS $$
       SELECT EXISTS (
         SELECT true
-        FROM 
-          payments p 
+        FROM
+          payments p
         WHERE p.contribution_id = $1.id AND p.state = 'paid'
       );
     $$ LANGUAGE SQL;
@@ -17,8 +17,8 @@ class AddCompatibilityFunctions < ActiveRecord::Migration
     CREATE OR REPLACE FUNCTION was_confirmed(contributions) RETURNS boolean AS $$
       SELECT EXISTS (
         SELECT true
-        FROM 
-          payments p 
+        FROM
+          payments p
         WHERE p.contribution_id = $1.id AND p.state = ANY(confirmed_states())
       );
     $$ LANGUAGE SQL;

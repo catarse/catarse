@@ -13,7 +13,7 @@ RSpec.describe Users::CreditCardsController, type: :controller do
 
   describe 'DELETE destroy' do
     before do
-      delete :destroy, user_id: user.id, id: credit_card.id, locale: :pt
+      delete :destroy, params: { user_id: user.id, id: credit_card.id, locale: :pt }
     end
 
     context 'when user is card owner' do

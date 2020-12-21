@@ -1,4 +1,4 @@
-class AdjustProjectTransitionsRdEventsToUseSubscription < ActiveRecord::Migration
+class AdjustProjectTransitionsRdEventsToUseSubscription < ActiveRecord::Migration[4.2]
   def up
     execute %Q{
 CREATE OR REPLACE FUNCTION public.project_rdevents_dispatcher()
@@ -15,8 +15,8 @@ AS $function$
             SELECT * FROM projects WHERE id = NEW.project_id
                 INTO v_project;
 
-            v_mode_concat = (CASE WHEN v_project.mode = 'flex' THEN 'flex_project_' 
-                                  WHEN v_project.mode = 'sub' THEN 'sub_project_' 
+            v_mode_concat = (CASE WHEN v_project.mode = 'flex' THEN 'flex_project_'
+                                  WHEN v_project.mode = 'sub' THEN 'sub_project_'
                                   ELSE 'project_' END);
 
             IF NEW.to_state = ANY(v_enabled_events) THEN

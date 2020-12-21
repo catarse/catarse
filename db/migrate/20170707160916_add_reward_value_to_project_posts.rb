@@ -1,4 +1,4 @@
-class AddRewardValueToProjectPosts < ActiveRecord::Migration
+class AddRewardValueToProjectPosts < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
     drop view "1".project_posts_details;

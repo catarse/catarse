@@ -1,4 +1,4 @@
-class CreateProjectSearchFunction < ActiveRecord::Migration
+class CreateProjectSearchFunction < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
 CREATE INDEX ON projects USING gist (name gist_trgm_ops);

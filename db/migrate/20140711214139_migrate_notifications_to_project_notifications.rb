@@ -1,4 +1,4 @@
-class MigrateNotificationsToProjectNotifications < ActiveRecord::Migration
+class MigrateNotificationsToProjectNotifications < ActiveRecord::Migration[4.2]
   def change
     execute "
     INSERT INTO project_notifications

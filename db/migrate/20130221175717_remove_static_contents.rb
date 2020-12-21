@@ -1,4 +1,4 @@
-class RemoveStaticContents < ActiveRecord::Migration
+class RemoveStaticContents < ActiveRecord::Migration[4.2]
   def up
     drop_table :static_contents
   end

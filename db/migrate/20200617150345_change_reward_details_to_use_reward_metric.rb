@@ -1,7 +1,7 @@
-class ChangeRewardDetailsToUseRewardMetric < ActiveRecord::Migration
+class ChangeRewardDetailsToUseRewardMetric < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
-CREATE OR REPLACE VIEW "1"."reward_details" AS 
+CREATE OR REPLACE VIEW "1"."reward_details" AS
  SELECT r.id,
     r.project_id,
     r.description,
@@ -39,7 +39,7 @@ CREATE OR REPLACE VIEW "1"."reward_details" AS
 
   def down
     execute <<-SQL
-CREATE OR REPLACE VIEW "1"."reward_details" AS 
+CREATE OR REPLACE VIEW "1"."reward_details" AS
  SELECT r.id,
     r.project_id,
     r.description,

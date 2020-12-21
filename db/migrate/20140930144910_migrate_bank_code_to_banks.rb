@@ -1,4 +1,4 @@
-class MigrateBankCodeToBanks < ActiveRecord::Migration
+class MigrateBankCodeToBanks < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
       update bank_accounts SET bank_id = (select b.id from banks b where split_part(bank_accounts.name, ' ', 1) = b.code);

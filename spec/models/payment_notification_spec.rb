@@ -10,7 +10,7 @@ RSpec.describe PaymentNotification, type: :model do
   describe '#extra_data' do
     let(:test_hash) { { 'test_hash' => 1 } }
     before do
-      @p = PaymentNotification.new(contribution_id: FactoryGirl.create(:contribution).id, extra_data: test_hash)
+      @p = PaymentNotification.new(contribution_id: create(:contribution).id, extra_data: test_hash)
       @p.save!
     end
     subject { @p.extra_data }

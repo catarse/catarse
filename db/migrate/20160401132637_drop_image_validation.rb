@@ -1,4 +1,4 @@
-class DropImageValidation < ActiveRecord::Migration
+class DropImageValidation < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
     CREATE OR REPLACE FUNCTION sent_validation() RETURNS trigger

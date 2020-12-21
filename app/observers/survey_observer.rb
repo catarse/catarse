@@ -5,7 +5,7 @@ class SurveyObserver < ActiveRecord::Observer
 
   def after_create(survey)
     survey.notify_to_contributors(:answer_survey)
-    survey.update_attribute(:sent_at, Time.current)
+    survey.update(sent_at: Time.current)
   end
 
 end

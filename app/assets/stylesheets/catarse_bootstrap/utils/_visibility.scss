@@ -1,0 +1,18 @@
+// ┌────────────┐
+// │ Visibility │
+// └────────────┘
+
+// Hide
+@mixin hide() {
+  display: none !important;
+}
+
+// Visible
+@mixin visible() {
+  visibility: visible;
+}
+
+// Invisible
+@mixin invisible() {
+  visibility: hidden;
+}

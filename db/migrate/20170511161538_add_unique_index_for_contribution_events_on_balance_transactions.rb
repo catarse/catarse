@@ -1,4 +1,4 @@
-class AddUniqueIndexForContributionEventsOnBalanceTransactions < ActiveRecord::Migration
+class AddUniqueIndexForContributionEventsOnBalanceTransactions < ActiveRecord::Migration[4.2]
   def up
     execute %Q{
 drop index if exists event_contribution_uidx;

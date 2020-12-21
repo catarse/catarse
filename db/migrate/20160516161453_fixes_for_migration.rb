@@ -1,4 +1,4 @@
-class FixesForMigration < ActiveRecord::Migration
+class FixesForMigration < ActiveRecord::Migration[4.2]
   def up
     execute %{
 CREATE OR REPLACE FUNCTION remaining_time_json(projects) RETURNS json

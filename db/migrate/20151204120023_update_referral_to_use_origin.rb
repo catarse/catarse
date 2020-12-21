@@ -1,4 +1,4 @@
-class UpdateReferralToUseOrigin < ActiveRecord::Migration
+class UpdateReferralToUseOrigin < ActiveRecord::Migration[4.2]
   def up
     execute " set statement_timeout to 0;"
     execute <<-SQL

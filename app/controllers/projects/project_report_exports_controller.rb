@@ -2,8 +2,8 @@
 # frozen_string_literal: true
 
 class Projects::ProjectReportExportsController < ApplicationController
-  after_filter :verify_authorized
-  after_filter :redirect_user_back_after_login, only: %i[index show]
+  after_action :verify_authorized
+  after_action :redirect_user_back_after_login, only: %i[index show]
 
   respond_to :html
   respond_to :json

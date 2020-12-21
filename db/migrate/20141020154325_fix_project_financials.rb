@@ -1,4 +1,4 @@
-class FixProjectFinancials < ActiveRecord::Migration
+class FixProjectFinancials < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
      DROP VIEW project_financials;

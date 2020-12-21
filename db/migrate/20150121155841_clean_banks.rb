@@ -1,4 +1,4 @@
-class CleanBanks < ActiveRecord::Migration
+class CleanBanks < ActiveRecord::Migration[4.2]
   def change
     execute "
     UPDATE bank_accounts SET bank_id = 131 WHERE bank_id IN (70, 73);

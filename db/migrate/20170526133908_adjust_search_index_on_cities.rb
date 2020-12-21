@@ -1,8 +1,8 @@
-class AdjustSearchIndexOnCities < ActiveRecord::Migration
+class AdjustSearchIndexOnCities < ActiveRecord::Migration[4.2]
   def up
     execute %Q{
 DROP VIEW "1".cities;
-CREATE OR REPLACE VIEW "1"."cities" AS 
+CREATE OR REPLACE VIEW "1"."cities" AS
  SELECT c.id,
     c.state_id,
     c.name,
@@ -18,7 +18,7 @@ GRANT SELECT ON "1".cities TO anonymous, web_user, admin;
   def down
     execute %Q{
 DROP VIEW "1".cities;
-CREATE OR REPLACE VIEW "1"."cities" AS 
+CREATE OR REPLACE VIEW "1"."cities" AS
  SELECT c.id,
     c.state_id,
     c.name,

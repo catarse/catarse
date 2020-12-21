@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Category < ActiveRecord::Base
+class Category < ApplicationRecord
   has_notifications
   has_many :projects
   has_many :category_followers
@@ -12,7 +12,7 @@ class Category < ActiveRecord::Base
   validates_uniqueness_of :name_pt
 
   scope :with_projects_on_this_week, -> {
-    joins(:projects).merge(Project.with_state('online').of_current_week).uniq
+    joins(:projects).merge(Project.with_state('online').of_current_week).distinct
   }
 
   def self.with_projects

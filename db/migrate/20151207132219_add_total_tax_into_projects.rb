@@ -1,4 +1,4 @@
-class AddTotalTaxIntoProjects < ActiveRecord::Migration
+class AddTotalTaxIntoProjects < ActiveRecord::Migration[4.2]
   def up
     add_column :projects, :service_fee, :numeric, default: 0.13
   end

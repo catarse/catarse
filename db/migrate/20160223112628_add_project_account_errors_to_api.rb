@@ -1,4 +1,4 @@
-class AddProjectAccountErrorsToApi < ActiveRecord::Migration
+class AddProjectAccountErrorsToApi < ActiveRecord::Migration[4.2]
     def up
     execute <<-SQL
 CREATE VIEW "1".project_account_errors AS
@@ -80,7 +80,7 @@ AS $function$
                     solved_at=now()
                 WHERE project_account_id = v_project_acc.id AND not solved;
 
-            SELECT * FROM "1".project_account_errors 
+            SELECT * FROM "1".project_account_errors
                 WHERE project_account_id = v_project_acc.id
                 AND solved ORDER BY created_at DESC LIMIT 1 INTO v_error;
 

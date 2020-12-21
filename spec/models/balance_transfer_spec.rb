@@ -14,7 +14,7 @@ RSpec.describe BalanceTransfer, type: :model do
   end
 
   describe 'associations' do
-    it { is_expected.to belong_to :project }
+    it { is_expected.to belong_to(:project).optional }
     it { is_expected.to belong_to :user }
     it { is_expected.to have_many :transitions }
     it { is_expected.to have_many :balance_transactions }

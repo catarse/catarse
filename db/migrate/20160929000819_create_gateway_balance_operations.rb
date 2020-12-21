@@ -1,4 +1,4 @@
-class CreateGatewayBalanceOperations < ActiveRecord::Migration
+class CreateGatewayBalanceOperations < ActiveRecord::Migration[4.2]
   def change
     create_table :gateway_balance_operations do |t|
       t.integer :operation_id, null: false, index: true, foreign_key: false

@@ -1,4 +1,4 @@
-class AlterTagsEndpoint < ActiveRecord::Migration
+class AlterTagsEndpoint < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
     CREATE OR REPLACE VIEW "1".public_tags AS

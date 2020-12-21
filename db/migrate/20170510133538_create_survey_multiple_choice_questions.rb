@@ -1,4 +1,4 @@
-class CreateSurveyMultipleChoiceQuestions < ActiveRecord::Migration
+class CreateSurveyMultipleChoiceQuestions < ActiveRecord::Migration[4.2]
   def change
     create_table :survey_multiple_choice_questions do |t|
       t.references :survey, null: false

@@ -18,7 +18,7 @@ RSpec.describe GoalsController, type: :controller do
     context 'with valid attributes' do
       it 'creates a new goal' do
         expect {
-          post :create, format: :json, project_id: goal.project_id, goal: goal.attributes.compact
+          post :create, params: { format: :json, project_id: goal.project_id, goal: goal.attributes.compact }
         }.to change(Goal, :count).by(1)
       end
     end

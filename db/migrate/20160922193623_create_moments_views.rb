@@ -1,7 +1,7 @@
-class CreateMomentsViews < ActiveRecord::Migration
+class CreateMomentsViews < ActiveRecord::Migration[4.2]
   def up
   execute %Q{
-CREATE MATERIALIZED VIEW public.moments_project_start AS 
+CREATE MATERIALIZED VIEW public.moments_project_start AS
  SELECT moments.id,
     moments.data ->> 'ctrse_sid'::text AS ctrse_sid,
     (moments.data -> 'user'::text) ->> 'id'::text AS user_id,
@@ -18,7 +18,7 @@ CREATE UNIQUE INDEX moments_project_start_idx
   (id);
 
 
-CREATE MATERIALIZED VIEW public.moments_project_start_inferuser AS 
+CREATE MATERIALIZED VIEW public.moments_project_start_inferuser AS
  SELECT t.id,
     t.ctrse_sid,
     t.user_id,

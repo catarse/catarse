@@ -1,9 +1,9 @@
-class CreateRecommendViews < ActiveRecord::Migration
+class CreateRecommendViews < ActiveRecord::Migration[4.2]
   def up
     execute %Q{
 CREATE TABLE public.recommend_projects_blacklist (
-   project_id integer not null, 
-   reason text, 
+   project_id integer not null,
+   reason text,
    CONSTRAINT recommend_projects_blacklist_pkey PRIMARY KEY (project_id),
    CONSTRAINT recommend_projects_blacklist_project_referencia FOREIGN KEY (project_id)
       REFERENCES public.projects (id) MATCH SIMPLE
@@ -11,7 +11,7 @@ CREATE TABLE public.recommend_projects_blacklist (
 );
 
 -- Materialized View: public.recommend_projects
-CREATE MATERIALIZED VIEW public.recommend_projects AS 
+CREATE MATERIALIZED VIEW public.recommend_projects AS
 -- some projects will be used only for name similarity
 SELECT p.id AS project_id,
        p.name,p.state,p.city_id,p.category_id,
@@ -68,7 +68,7 @@ CREATE INDEX reminders_projects_visits_idx
 
 -----------------------------------------------------------------------
 -- Materialized View: public.recommend_tanimoto_projects
-CREATE MATERIALIZED VIEW public.recommend_tanimoto_projects AS 
+CREATE MATERIALIZED VIEW public.recommend_tanimoto_projects AS
   SELECT t.* FROM (
 SELECT p1.project_id AS project1_id,
       p2.project_id AS project2_id,
@@ -119,7 +119,7 @@ CREATE INDEX recommend_tanimoto_projects_tanimoto_idx
 
 ------ USERS
 -- Materialized View: public.recommend_users
-CREATE MATERIALIZED VIEW public.recommend_users AS 
+CREATE MATERIALIZED VIEW public.recommend_users AS
   SELECT * from (
     SELECT u.id AS user_id, u.name,
        (select NULLIF(array_agg(DISTINCT c.project_id), '{NULL}'::integer[])
@@ -150,7 +150,7 @@ CREATE INDEX reminders_users_visits_idx ON public.recommend_users USING gin(visi
 
 -----------------------------------------------------------------------
 -- Materialized View: public.recommend_tanimoto_user_contributors
-CREATE MATERIALIZED VIEW public.recommend_tanimoto_user_contributions AS 
+CREATE MATERIALIZED VIEW public.recommend_tanimoto_user_contributions AS
 select * from (
  SELECT q1.user_id AS user1_id, q2.user_id AS user2_id,
     COALESCE(
@@ -173,7 +173,7 @@ CREATE INDEX recommend_tanimoto_user_contributions_user1id_idx
   USING btree (user1_id);
 -----------------------------------------------------------------------
 -- Materialized View: public.recommend_tanimoto_user_reminders
-CREATE MATERIALIZED VIEW public.recommend_tanimoto_user_reminders AS 
+CREATE MATERIALIZED VIEW public.recommend_tanimoto_user_reminders AS
  SELECT q1.user_id AS user1_id, q2.user_id AS user2_id,
     COALESCE(
       array_length(ARRAY(SELECT unnest(q1.reminders) AS unnest INTERSECT SELECT unnest(q2.reminders) AS unnest), 1)::numeric
@@ -195,7 +195,7 @@ CREATE INDEX recommend_tanimoto_user_reminders_user1id_idx
 
 -----------------------------------------------------------------------
 -- Materialized View: public.recommend_tanimoto_user_visited
-CREATE MATERIALIZED VIEW public.recommend_tanimoto_user_visited AS 
+CREATE MATERIALIZED VIEW public.recommend_tanimoto_user_visited AS
  SELECT q1.user_id AS user1_id, q2.user_id AS user2_id,
     COALESCE(
       array_length(ARRAY(SELECT unnest(q1.visited) AS unnest INTERSECT SELECT unnest(q2.visited) AS unnest), 1)::numeric
@@ -217,7 +217,7 @@ CREATE INDEX recommend_tanimoto_user_visited_user1id_idx
 
 --------------------------------------------------------------------------------------
 -- View: public.recommend_tanimoto_users
-CREATE OR REPLACE VIEW public.recommend_tanimoto_users AS 
+CREATE OR REPLACE VIEW public.recommend_tanimoto_users AS
  SELECT u1.user_id AS user1_id, u2.user_id AS user2_id,
     round((COALESCE(c.tanimoto, 0::numeric) + COALESCE(r.tanimoto, 0::numeric) + COALESCE(r.tanimoto, 0::numeric))/3::numeric,4) AS tanimoto
    FROM public.recommend_users u1

@@ -1,11 +1,11 @@
-class AddUtilityFunctions < ActiveRecord::Migration
+class AddUtilityFunctions < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
       create table if not exists deps_saved_ddl
       (
-        deps_id serial primary key, 
-        deps_view_schema text, 
-        deps_view_name text, 
+        deps_id serial primary key,
+        deps_view_schema text,
+        deps_view_name text,
         deps_ddl_to_run text
       );
 
@@ -14,17 +14,17 @@ class AddUtilityFunctions < ActiveRecord::Migration
       declare
         v_curr record;
       begin
-      for v_curr in 
+      for v_curr in
       (
         select obj_schema, obj_name, obj_type from
         (
-        with recursive recursive_deps(obj_schema, obj_name, obj_type, depth) as 
+        with recursive recursive_deps(obj_schema, obj_name, obj_type, depth) as
         (
           select p_view_schema, p_view_name, null::varchar, 0
           union
-          select dep_schema::varchar, dep_name::varchar, dep_type::varchar, recursive_deps.depth + 1 from 
+          select dep_schema::varchar, dep_name::varchar, dep_type::varchar, recursive_deps.depth + 1 from
           (
-            select ref_nsp.nspname ref_schema, ref_cl.relname ref_name, 
+            select ref_nsp.nspname ref_schema, ref_cl.relname ref_name,
           rwr_cl.relkind dep_type,
             rwr_nsp.nspname dep_schema,
             rwr_cl.relname dep_name
@@ -41,7 +41,7 @@ class AddUtilityFunctions < ActiveRecord::Migration
           where (deps.ref_schema != deps.dep_schema or deps.ref_name != deps.dep_name)
         )
         select obj_schema, obj_name, obj_type, depth
-        from recursive_deps 
+        from recursive_deps
         where depth > 0
         ) t
         group by obj_schema, obj_name, obj_type
@@ -68,12 +68,12 @@ class AddUtilityFunctions < ActiveRecord::Migration
         join pg_namespace n on n.oid = c.relnamespace
         join pg_description d on d.objoid = c.oid and d.objsubid = a.attnum
         where n.nspname = v_curr.obj_schema and c.relname = v_curr.obj_name and d.description is not null;
-        
+
         insert into deps_saved_ddl(deps_view_schema, deps_view_name, deps_ddl_to_run)
         select p_view_schema, p_view_name, 'GRANT ' || privilege_type || ' ON ' || quote_ident(table_schema) || '.' || quote_ident(table_name) || ' TO ' || grantee
         from information_schema.role_table_grants
         where table_schema = v_curr.obj_schema and table_name = v_curr.obj_name;
-        
+
         if v_curr.obj_type = 'v' then
           insert into deps_saved_ddl(deps_view_schema, deps_view_name, deps_ddl_to_run)
           select p_view_schema, p_view_name, 'CREATE VIEW ' || quote_ident(v_curr.obj_schema) || '.' || quote_ident(v_curr.obj_name) || ' AS ' || view_definition
@@ -85,14 +85,14 @@ class AddUtilityFunctions < ActiveRecord::Migration
           from pg_matviews
           where schemaname = v_curr.obj_schema and matviewname = v_curr.obj_name;
         end if;
-        
+
         execute 'DROP ' ||
-        case 
+        case
           when v_curr.obj_type = 'v' then 'VIEW'
           when v_curr.obj_type = 'm' then 'MATERIALIZED VIEW'
         end
         || ' ' || quote_ident(v_curr.obj_schema) || '.' || quote_ident(v_curr.obj_name);
-        
+
       end loop;
       end;
       $$
@@ -103,9 +103,9 @@ class AddUtilityFunctions < ActiveRecord::Migration
       declare
         v_curr record;
       begin
-      for v_curr in 
+      for v_curr in
       (
-        select deps_ddl_to_run 
+        select deps_ddl_to_run
         from deps_saved_ddl
         where deps_view_schema = p_view_schema and deps_view_name = p_view_name
         order by deps_id desc
@@ -120,4 +120,3 @@ class AddUtilityFunctions < ActiveRecord::Migration
     SQL
   end
 end
-

@@ -1,8 +1,8 @@
-class AddsWaitingPaymentToContributionDetails < ActiveRecord::Migration
+class AddsWaitingPaymentToContributionDetails < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
     DROP VIEW "1".contribution_details;
-    CREATE VIEW "1".contribution_details AS 
+    CREATE VIEW "1".contribution_details AS
     SELECT pa.id,
         c.id AS contribution_id,
         pa.id AS payment_id,
@@ -54,7 +54,7 @@ class AddsWaitingPaymentToContributionDetails < ActiveRecord::Migration
   def down
     execute <<-SQL
     DROP VIEW "1".contribution_details;
-    CREATE VIEW "1".contribution_details AS 
+    CREATE VIEW "1".contribution_details AS
     SELECT pa.id,
         c.id AS contribution_id,
         pa.id AS payment_id,

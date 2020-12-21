@@ -1,4 +1,4 @@
-class CreateProjectAccountErrors < ActiveRecord::Migration
+class CreateProjectAccountErrors < ActiveRecord::Migration[4.2]
   def change
     create_table :project_account_errors do |t|
       t.integer :project_account_id, null: false

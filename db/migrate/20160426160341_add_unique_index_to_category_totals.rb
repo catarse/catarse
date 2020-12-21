@@ -1,4 +1,4 @@
-class AddUniqueIndexToCategoryTotals < ActiveRecord::Migration
+class AddUniqueIndexToCategoryTotals < ActiveRecord::Migration[4.2]
   disable_ddl_transaction!
 
   def up

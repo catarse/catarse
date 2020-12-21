@@ -1,4 +1,4 @@
-class CreateProjectBudgets < ActiveRecord::Migration
+class CreateProjectBudgets < ActiveRecord::Migration[4.2]
   def change
     create_table :project_budgets do |t|
       t.integer :project_id, null: false

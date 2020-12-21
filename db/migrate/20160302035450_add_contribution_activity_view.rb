@@ -1,4 +1,4 @@
-class AddContributionActivityView < ActiveRecord::Migration
+class AddContributionActivityView < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
 CREATE VIEW "1".contribution_activities AS (
@@ -15,7 +15,7 @@ CREATE VIEW "1".contribution_activities AS (
     JOIN contributions c on c.id = pay.contribution_id
     JOIN users u on c.user_id = u.id
     JOIN projects p on p.id = c.project_id
-    WHERE 
+    WHERE
         pay.paid_at BETWEEN current_timestamp - '24 hours'::interval and current_timestamp
         AND NOT c.anonymous
         AND pay.state = 'paid'

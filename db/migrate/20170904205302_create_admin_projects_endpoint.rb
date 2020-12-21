@@ -1,4 +1,4 @@
-class CreateAdminProjectsEndpoint < ActiveRecord::Migration
+class CreateAdminProjectsEndpoint < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
     create or replace view "1".admin_projects AS
@@ -38,7 +38,7 @@ class CreateAdminProjectsEndpoint < ActiveRecord::Migration
     , 0::numeric) as progress,
     COALESCE(
     (
-    select sum(pa.value) FILTER (WHERE pa.state = 'paid'::text) 
+    select sum(pa.value) FILTER (WHERE pa.state = 'paid'::text)
       from contributions co
       LEFT JOIN payments pa on pa.contribution_id = co.id
       where co.project_id = p.id

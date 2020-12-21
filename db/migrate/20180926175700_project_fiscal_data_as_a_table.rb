@@ -1,4 +1,4 @@
-class ProjectFiscalDataAsATable < ActiveRecord::Migration
+class ProjectFiscalDataAsATable < ActiveRecord::Migration[4.2]
     def up
         execute <<-SQL
         CREATE TABLE public.project_fiscal_data_tbl
@@ -25,7 +25,7 @@ class ProjectFiscalDataAsATable < ActiveRecord::Migration
         RETURNS void
             LANGUAGE 'sql'
             COST 100
-            VOLATILE 
+            VOLATILE
         AS $BODY$
             INSERT INTO public.project_fiscal_data_tbl
             SELECT pr.id as project_id, pr.user_id, pr.mode,
@@ -165,4 +165,3 @@ class ProjectFiscalDataAsATable < ActiveRecord::Migration
       SQL
     end
   end
-  

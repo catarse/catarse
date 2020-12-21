@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Unsubscribe < ActiveRecord::Base
+class Unsubscribe < ApplicationRecord
   belongs_to :user
   belongs_to :project
 

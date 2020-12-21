@@ -1,7 +1,7 @@
-class AddSimilityIdToContributionDetails < ActiveRecord::Migration
+class AddSimilityIdToContributionDetails < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
-CREATE OR REPLACE VIEW "1"."contribution_details" AS 
+CREATE OR REPLACE VIEW "1"."contribution_details" AS
  SELECT pa.id,
     c.id AS contribution_id,
     pa.id AS payment_id,
@@ -46,7 +46,7 @@ CREATE OR REPLACE VIEW "1"."contribution_details" AS
    FROM (((projects p
      JOIN contributions c ON ((c.project_id = p.id)))
      JOIN payments pa ON ((c.id = pa.contribution_id)))
-     JOIN users u ON ((c.user_id = u.id)) 
+     JOIN users u ON ((c.user_id = u.id))
      LEFT JOIN gateway_payments gp on gp.transaction_id=pa.gateway_id
      left join lateral (
         select string_agg(id,',') id

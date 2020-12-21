@@ -1,4 +1,4 @@
-class FixProjectFiscalInformsView < ActiveRecord::Migration
+class FixProjectFiscalInformsView < ActiveRecord::Migration[4.2]
     def up
         execute <<-SQL
         DROP FUNCTION project_fiscal_data_tbl_refresh();
@@ -6,7 +6,7 @@ class FixProjectFiscalInformsView < ActiveRecord::Migration
         RETURNS void
             LANGUAGE 'sql'
             COST 100
-            VOLATILE 
+            VOLATILE
         AS $BODY$
             INSERT INTO public.project_fiscal_data_tbl
             SELECT pr.id as project_id, pr.user_id, pr.mode,
@@ -99,7 +99,7 @@ class FixProjectFiscalInformsView < ActiveRecord::Migration
             where (pr.state='online' or (pr.state='successful' and pts.created_at>'20170101'))
             and not exists (select 1 from project_fiscal_data_tbl t where t.project_id=pr.id and t.fiscal_date=to_char(b.fiscal_date,'YYYYMMDD'));
         $BODY$;
-        
+
         CREATE OR REPLACE VIEW public.project_fiscal_informs_view AS
         select project_id, user_id, mode, fiscal_year,
             max(fiscal_date) as fiscal_date,
@@ -113,7 +113,7 @@ class FixProjectFiscalInformsView < ActiveRecord::Migration
             json_agg(project_info)->0 project_info,
             json_agg(user_info)->0 user_info,
             json_agg(user_address)->0 user_address
-            
+
         from public.project_fiscal_data_tbl pfd
         left join lateral (
             select array_agg(p ORDER BY p->>'year', p->>'month') pledged_by_month from unnest(pfd.pj_pledged_by_month) p where p is not null
@@ -132,7 +132,7 @@ class FixProjectFiscalInformsView < ActiveRecord::Migration
       RETURNS void
           LANGUAGE 'sql'
           COST 100
-          VOLATILE 
+          VOLATILE
       AS $BODY$
           INSERT INTO public.project_fiscal_data_tbl
           SELECT pr.id as project_id, pr.user_id, pr.mode,
@@ -224,7 +224,7 @@ class FixProjectFiscalInformsView < ActiveRecord::Migration
           ) tp on true
           where (pr.state='online' or (pr.state='successful' and pts.created_at>'20170101'))
           and not exists (select 1 from project_fiscal_data_tbl t where t.project_id=pr.id and t.fiscal_date=to_char(b.fiscal_date,'YYYYMMDD'));
-      $BODY$; 
+      $BODY$;
 
       CREATE OR REPLACE VIEW public.project_fiscal_informs_view AS
       select project_id, user_id, mode, fiscal_year,
@@ -250,4 +250,3 @@ class FixProjectFiscalInformsView < ActiveRecord::Migration
     SQL
     end
   end
-  

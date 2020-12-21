@@ -1,8 +1,7 @@
-class AddDeliverAtToOwnersReport < ActiveRecord::Migration
+class AddDeliverAtToOwnersReport < ActiveRecord::Migration[4.2]
   def up
-    drop_view :contribution_reports_for_project_owners
-
     execute <<-SQL
+      DROP VIEW IF EXISTS contribution_reports_for_project_owners;
       CREATE OR REPLACE VIEW contribution_reports_for_project_owners AS
       SELECT
         b.project_id,
@@ -37,9 +36,8 @@ class AddDeliverAtToOwnersReport < ActiveRecord::Migration
   end
 
   def down
-    drop_view :contribution_reports_for_project_owners
-
     execute <<-SQL
+      DROP VIEW IF EXISTS contribution_reports_for_project_owners;
       CREATE OR REPLACE VIEW contribution_reports_for_project_owners AS
       SELECT
         b.project_id,
@@ -72,4 +70,3 @@ class AddDeliverAtToOwnersReport < ActiveRecord::Migration
     SQL
   end
 end
-

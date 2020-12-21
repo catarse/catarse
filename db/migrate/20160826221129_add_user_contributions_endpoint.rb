@@ -1,4 +1,4 @@
-class AddUserContributionsEndpoint < ActiveRecord::Migration
+class AddUserContributionsEndpoint < ActiveRecord::Migration[4.2]
   def up
     execute %Q{
 CREATE OR REPLACE VIEW "1".user_contributions AS
@@ -46,7 +46,7 @@ CREATE OR REPLACE VIEW "1".user_contributions AS
      JOIN public.users u ON ((c.user_id = u.id)))
     WHERE public.is_owner_or_admin(c.user_id);
 
-GRANT SELECT ON "1".user_contributions TO admin, web_user;    
+GRANT SELECT ON "1".user_contributions TO admin, web_user;
     }
   end
 

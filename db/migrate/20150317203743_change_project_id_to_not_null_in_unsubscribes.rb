@@ -1,4 +1,4 @@
-class ChangeProjectIdToNotNullInUnsubscribes < ActiveRecord::Migration
+class ChangeProjectIdToNotNullInUnsubscribes < ActiveRecord::Migration[4.2]
   def change
     execute "
     UPDATE users SET subscribed_to_project_posts = false

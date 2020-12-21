@@ -1,4 +1,4 @@
-class CreateDbheroDataclips < ActiveRecord::Migration
+class CreateDbheroDataclips < ActiveRecord::Migration[4.2]
   def change
     create_table :dbhero_dataclips do |t|
       t.text :description, null: false
@@ -14,4 +14,3 @@ class CreateDbheroDataclips < ActiveRecord::Migration
     add_index :dbhero_dataclips, :user
   end
 end
-

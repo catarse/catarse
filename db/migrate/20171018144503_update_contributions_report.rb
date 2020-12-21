@@ -1,4 +1,4 @@
-class UpdateContributionsReport < ActiveRecord::Migration
+class UpdateContributionsReport < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
     drop view contribution_reports_for_project_owners;
@@ -22,31 +22,31 @@ SELECT b.project_id,
     b.anonymous,
     pa.state,
     waiting_payment(pa.*) AS waiting_payment,
-    case when su.address is not null then 
+    case when su.address is not null then
       su.address ->> 'address_street'::text
       else add.address_street
     end as street,
-    case when su.address is not null then 
+    case when su.address is not null then
       su.address ->> 'address_complement'::text
       else add.address_complement
     end as complement,
-    case when su.address is not null then 
+    case when su.address is not null then
       su.address ->> 'address_number'::text
       else add.address_number
     end as address_number,
-    case when su.address is not null then 
+    case when su.address is not null then
       su.address ->> 'address_neighbourhood'::text
       else add.address_neighbourhood
     end as neighbourhood,
-    case when su.address is not null then 
+    case when su.address is not null then
       su.address ->> 'address_city'::text
       else add.address_city
     end as city,
-    case when su.address is not null then 
+    case when su.address is not null then
       su.state_name::text
       else add.address_state
     end as address_state,
-    case when su.address is not null then 
+    case when su.address is not null then
       su.address ->> 'address_zip_code'::text
       else add.address_zip_code
     end as zip_code,
@@ -65,7 +65,7 @@ SELECT b.project_id,
     su.open_questions,
     su.multiple_choice_questions,
     r.title,
-    case when su.address is not null then 
+    case when su.address is not null then
       'Entrega'::text
       else
       'Pagamento - Só use esse endereço se não conseguir confirmar o endereço de entrega! Para confirmar o endereço de entrega, envie um questionário. Saiba como aqui: http://catar.se/quest'::text

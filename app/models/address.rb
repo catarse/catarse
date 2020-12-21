@@ -1,12 +1,12 @@
-class Address < ActiveRecord::Base
+class Address < ApplicationRecord
   include Shared::CommonWrapper
 
   REQUIRED_ATTRIBUTES = %i[
-    address_city address_zip_code phone_number address_neighbourhood address_street address_number
+    address_city address_zip_code phone_number address_neighbourhood address_street address_number state_id
   ].freeze
 
   belongs_to :country
-  belongs_to :state
+  belongs_to :state, optional: true
 
   after_save :index_on_common
 
@@ -37,7 +37,7 @@ class Address < ActiveRecord::Base
   def required_attributes
     return Address::REQUIRED_ATTRIBUTES unless international?
 
-    Address::REQUIRED_ATTRIBUTES - %i[address_number address_neighbourhood phone_number]
+    Address::REQUIRED_ATTRIBUTES - %i[address_number address_neighbourhood phone_number state_id]
   end
 
   def international?

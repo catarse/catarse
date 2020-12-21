@@ -20,7 +20,13 @@ RSpec.describe Projects::ContributionsController, type: :controller do
 
     before do
       set_expectations
-      put :update, { locale: :pt, project_id: project.id, id: contribution.id, contribution: contribution_info, format: :json }
+      put :update, params: {
+        locale: :pt,
+        project_id: project.id,
+        id: contribution.id,
+        contribution: contribution_info,
+        format: :json
+      }
     end
 
     context 'when no user is logged in' do
@@ -48,7 +54,7 @@ RSpec.describe Projects::ContributionsController, type: :controller do
   describe 'GET edit' do
     before do
       request.env['REQUEST_URI'] = '/test_path'
-      get :edit, { locale: :pt, project_id: project.id, id: contribution.id }
+      get :edit, params: { locale: :pt, project_id: project.id, id: contribution.id }
     end
 
     context 'when no user is logged' do
@@ -80,7 +86,11 @@ RSpec.describe Projects::ContributionsController, type: :controller do
     let(:value) { '20.00' }
     before do
       request.env['REQUEST_URI'] = '/test_path'
-      post :create, { locale: :pt, project_id: project.id, contribution: { value: value, reward_id: nil, anonymous: '0' } }
+      post :create, params: {
+        locale: :pt,
+        project_id: project.id,
+        contribution: { value: value, reward_id: nil, anonymous: '0' }
+      }
     end
 
     context 'when no user is logged' do
@@ -117,23 +127,23 @@ RSpec.describe Projects::ContributionsController, type: :controller do
     let(:secure_review_host) { nil }
     let(:user) { create(:user) }
     let(:open_for_contributions) { true }
-    let(:browser) { double('browser', ie9?: false, modern?: true, mobile?: false) }
+    let(:browser) { Browser.new('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.29 Safari/537.36 Edg/79.0.309.18') }
 
     before do
       CatarseSettings[:secure_review_host] = secure_review_host
       allow_any_instance_of(Project).to receive(:open_for_contributions?).and_return(open_for_contributions)
       allow(controller).to receive(:browser).and_return(browser)
       allow_any_instance_of(ApplicationController).to receive(:detect_old_browsers).and_call_original
-      get :new, { locale: :pt, project_id: project.id }
+      get :new, params: { locale: :pt, project_id: project.id }
     end
 
     context 'when browser is IE 9' do
-      let(:browser) { double('browser', ie9?: true, modern?: true) }
+      let(:browser) { Browser.new('Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)') }
       it { is_expected.to redirect_to page_path('bad_browser') }
     end
 
     context 'when browser is old' do
-      let(:browser) { double('browser', ie9?: false, modern?: false) }
+      let(:browser) { Browser.new('Mozilla/5.0 (Linux; U; Android 2.3.3; en-us; Sensation_4G Build/GRI40) AppleWebKit/533.1 (KHTML, like Gecko) Version/5.0 Safari/533.16') }
       it { is_expected.to redirect_to page_path('bad_browser') }
     end
 
@@ -155,7 +165,7 @@ RSpec.describe Projects::ContributionsController, type: :controller do
   describe 'GET show' do
     let(:contribution) { create(:confirmed_contribution, value: 10.00) }
     before do
-      get :show, { locale: :pt, project_id: contribution.project.id, id: contribution.id }
+      get :show, params: { locale: :pt, project_id: contribution.project.id, id: contribution.id }
     end
 
     context 'when no user is logged in' do
@@ -169,7 +179,10 @@ RSpec.describe Projects::ContributionsController, type: :controller do
 
     context 'when contribution is logged in' do
       let(:user) { contribution.user }
-      it { is_expected.to be_successful }
+
+      it "has response successful" do
+        expect(response.code.to_i).to eq(200)
+      end
     end
   end
 end

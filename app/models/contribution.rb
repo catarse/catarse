@@ -1,22 +1,22 @@
 # coding: utf-8
 # frozen_string_literal: true
 
-class Contribution < ActiveRecord::Base
+class Contribution < ApplicationRecord
   has_notifications
 
   include I18n::Alchemy
-  include PgSearch
+  include PgSearch::Model
   include Contribution::CustomValidators
   include Shared::CommonWrapper
 
   belongs_to :project
-  belongs_to :reward
-  belongs_to :shipping_fee
+  belongs_to :reward, optional: true
+  belongs_to :shipping_fee, optional: true
   belongs_to :user
-  belongs_to :address
-  belongs_to :address_answer, class_name: 'Address'
-  belongs_to :donation
-  belongs_to :origin
+  belongs_to :address, optional: true
+  belongs_to :address_answer, optional: true, class_name: 'Address'
+  belongs_to :donation, optional: true
+  belongs_to :origin, optional: true
   has_many :payment_notifications
   has_many :payments
   has_many :details, class_name: 'ContributionDetail'
@@ -41,12 +41,6 @@ class Contribution < ActiveRecord::Base
   scope :ordered, -> { order(id: :desc) }
   delegate :address_city, :country_id, :state_id, :state, :phone_number, :country, :state, :address_complement, :address_neighbourhood, :address_zip_code, :address_street, :address_number, :address_state, to: :address, allow_nil: true
 
-  begin
-    attr_protected :state, :user_id
-  rescue Exception => e
-    puts "problem while using attr_protected in Contribution model:\n '#{e.message}'"
-  end
-
   # contributions that have not confirmed delivery after 14 days
   def self.need_notify_about_delivery_confirmation
     where("reward_received_at IS NULL AND reward_sent_at < current_timestamp - '14 days'::interval")
@@ -64,7 +58,7 @@ class Contribution < ActiveRecord::Base
       and lower(cd.payment_method) = 'boletobancario'
       and (exists(select true from contribution_notifications un where un.contribution_id = contributions.id
       and un.template_name = 'contribution_project_unsuccessful_slip_no_account'
-      and (current_timestamp - un.created_at) > '7 days'::interval) or not exists(select true from contribution_notifications un where un.contribution_id = contributions.id and un.template_name = 'contribution_project_unsuccessful_slip_no_account'))").uniq
+      and (current_timestamp - un.created_at) > '7 days'::interval) or not exists(select true from contribution_notifications un where un.contribution_id = contributions.id and un.template_name = 'contribution_project_unsuccessful_slip_no_account'))").distinct
   end
 
   def payment
@@ -147,26 +141,26 @@ class Contribution < ActiveRecord::Base
   end
 
   def update_user_billing_info
-    user.update_attributes({
-                             account_type: (user.cpf.present? ? user.account_type : ((payer_document.try(:size) || 0) > 14 ? 'pj' : 'pf')),
-                             cpf: user.cpf.presence || payer_document.presence,
-                             name: user.name.presence || payer_name,
-                             public_name: user.public_name.presence || user.name.presence || payer_name
-                           })
+    user.update(
+      account_type: (user.cpf.present? ? user.account_type : ((payer_document.try(:size) || 0) > 14 ? 'pj' : 'pf')),
+      cpf: user.cpf.presence || payer_document.presence,
+      name: user.name.presence || payer_name,
+      public_name: user.public_name.presence || user.name.presence || payer_name
+    )
     address_attributes = {
-                             country_id: country_id.presence || user.country_id,
-                             state_id: state_id.presence || user.state_id,
-                             address_street: address_street.presence || user.address_street,
-                             address_number: address_number.presence || user.address_number,
-                             address_complement: address_complement.presence || user.address_complement,
-                             address_neighbourhood: address_neighbourhood.presence || user.address_neighbourhood,
-                             address_zip_code: address_zip_code.presence || user.address_zip_code,
-                             address_city: address_city.presence || user.address_city,
-                             address_state: address_state.presence || user.state.try(:acronym) || user.address_state,
-                             phone_number: phone_number.presence || user.phone_number,
-                         }
+      country_id: country_id.presence || user.country_id,
+      state_id: state_id.presence || user.state_id,
+      address_street: address_street.presence || user.address_street,
+      address_number: address_number.presence || user.address_number,
+      address_complement: address_complement.presence || user.address_complement,
+      address_neighbourhood: address_neighbourhood.presence || user.address_neighbourhood,
+      address_zip_code: address_zip_code.presence || user.address_zip_code,
+      address_city: address_city.presence || user.address_city,
+      address_state: address_state.presence || user.state.try(:acronym) || user.address_state,
+      phone_number: phone_number.presence || user.phone_number,
+    }
     if user.address
-      user.address.update_attributes(address_attributes)
+      user.address.update(address_attributes)
     else
       user.create_address(address_attributes)
       user.save
@@ -252,7 +246,6 @@ class Contribution < ActiveRecord::Base
   end
 
   def banned_user_validation
-  
     if self.user.cpf.present?
       document = BlacklistDocument.find_document self.user.cpf
       unless document.nil?

@@ -1,4 +1,4 @@
-class RefactorContributionReportsForProjectOwners < ActiveRecord::Migration
+class RefactorContributionReportsForProjectOwners < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
      DROP VIEW contribution_reports_for_project_owners;

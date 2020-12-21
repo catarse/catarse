@@ -1,4 +1,4 @@
-class AddFunctionCanCancelToBackers < ActiveRecord::Migration
+class AddFunctionCanCancelToBackers < ActiveRecord::Migration[4.2]
   def up
     execute "
       create function can_cancel(backers) returns boolean as $$

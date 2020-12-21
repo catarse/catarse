@@ -1,12 +1,12 @@
-class FixContributionPermission < ActiveRecord::Migration
+class FixContributionPermission < ActiveRecord::Migration[4.2]
   def change
     execute <<-SQL
       revoke SELECT on "1".contribution_details from anonymous, web_user;
 
-      create or replace function public.user_has_contributed_to_project(user_id integer, project_id integer) 
+      create or replace function public.user_has_contributed_to_project(user_id integer, project_id integer)
       returns boolean
-      language sql 
-      security definer 
+      language sql
+      security definer
       stable
       as $$
         select true from "1".project_contributions c where c.state = any(public.confirmed_states()) and c.project_id = $2 and c.user_id = $1;

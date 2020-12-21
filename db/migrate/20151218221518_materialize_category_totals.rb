@@ -1,4 +1,4 @@
-class MaterializeCategoryTotals < ActiveRecord::Migration
+class MaterializeCategoryTotals < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
     DROP VIEW IF EXISTS "1".category_totals;

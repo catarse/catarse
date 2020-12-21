@@ -1,4 +1,4 @@
-class UserTotalsBackToStateMachine < ActiveRecord::Migration
+class UserTotalsBackToStateMachine < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
       CREATE OR REPLACE VIEW user_totals AS

@@ -77,7 +77,7 @@ namespace :listen do
 
                 if decoded['rdevent_id'].present?
                   rdevent = Rdevent.find(decoded['rdevent_id'].to_i)
-                  rdevent.update_attribute(:sync_at, DateTime.now)
+                  rdevent.update(sync_at: DateTime.now)
                 end
 
                 Rails.logger.info("[RD-SYNC] => sync #{payload}")

@@ -1,4 +1,4 @@
-class RemoveInstitutionalVideos < ActiveRecord::Migration
+class RemoveInstitutionalVideos < ActiveRecord::Migration[4.2]
   def up
     drop_table :institutional_videos
   end

@@ -1,3 +1,3 @@
-class RewardMetricStorage < ActiveRecord::Base
+class RewardMetricStorage < ApplicationRecord
   belongs_to :reward
 end

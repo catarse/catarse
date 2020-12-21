@@ -1,4 +1,4 @@
-class AntifraudAnalysis < ActiveRecord::Base
+class AntifraudAnalysis < ApplicationRecord
   belongs_to :payment
 
   validates :payment_id, presence: true

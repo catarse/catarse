@@ -1,4 +1,4 @@
-class CreateSubscriptionPayments < ActiveRecord::Migration
+class CreateSubscriptionPayments < ActiveRecord::Migration[4.2]
   def change
     create_table :subscription_payments do |t|
       t.bigint :gateway_payment_id, null: false
