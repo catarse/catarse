@@ -10,7 +10,7 @@ Catarse::Application.routes.draw do
   constraints Blacklist.new do
     devise_for :users, only: :omniauth_callbacks, controllers: { omniauth_callbacks: :omniauth_callbacks }
 
-    scope "(:locale)", locale: /en|pt|fr/ do
+    scope "(:locale)", locale: /en|pt|fr/, defaults: { locale: nil } do
       mount RedactorRails::Engine => '/redactor_rails'
       devise_for(:users,
         path: '',
