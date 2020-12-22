@@ -18,8 +18,8 @@ const projectsFiscal = {
             {
                 project_id
             } = vnode.attrs,
-            projectDetail = prop({}),
-            projectFiscalData = prop({});
+            projectDetail = h.RedrawStream({}),
+            projectFiscalData = h.RedrawStream({});
         filterVM.project_id(project_id);
         const l = loader(models.projectFiscalId.getRowOptions(filterVM.parameters()));
         l.load().then((data) => {
@@ -41,7 +41,7 @@ const projectsFiscal = {
         const projectFiscalData = state.projectFiscalData();
         const loading = state.l() || state.l2();
         const hasData = !loading && projectFiscalData && (!_.isEmpty(projectFiscalData.debit_notes) || !_.isEmpty(projectFiscalData.informs));
-        
+
         return m('.project-fiscal',
             (project.is_owner_or_admin ? m(projectDashboardMenu, {
                 project: prop(project)
