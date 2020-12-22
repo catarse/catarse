@@ -59,7 +59,7 @@ class Reward < ApplicationRecord
   after_save :index_on_common
 
   def log_changes
-    self.last_changes = changes.to_json
+    self.last_changes = changes
   end
 
   def to_s

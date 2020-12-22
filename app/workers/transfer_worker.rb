@@ -39,7 +39,7 @@ class TransferWorker
     # avoid sending notification
     user.user_transfers.create!({
                                   gateway_id: transfer.id,
-                                  transfer_data: transfer.to_json,
+                                  transfer_data: transfer,
                                   amount: transfer.amount,
                                   status: transfer.status
                                 })

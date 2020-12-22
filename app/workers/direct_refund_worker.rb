@@ -33,7 +33,7 @@ class DirectRefundWorker
             payment_id: payment.id,
             error_message: e.message,
             error_class: e.class.to_s
-          }.to_json
+          }
         },
         User.find_by(email: CatarseSettings[:email_contact])
       )

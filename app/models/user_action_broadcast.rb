@@ -17,7 +17,7 @@ class UserActionBroadcast
         metadata: {
           follow_id: @user.id,
           project_id: action['project_id']
-        }.to_json
+        }
       )
     end
   end
