@@ -12,6 +12,19 @@ GIT
       weekdays (>= 1.0.2)
 
 GIT
+  remote: https://github.com/catarse/dbhero.git
+  revision: d1e4e5742beb00a8b35017d5675f05e9aa7db421
+  branch: master
+  specs:
+    dbhero (1.1.12)
+      google_drive (~> 1.0.4)
+      has_scope
+      rails (> 4.2.7)
+      responders
+      sass-rails
+      slim-rails
+
+GIT
   remote: https://github.com/catarse/redactor-rails.git
   revision: d7eedc44bbb7a5d91eb3352cba8e863be4bb06aa
   branch: master
@@ -145,13 +158,6 @@ GEM
     cpf_cnpj (0.5.0)
     crack (0.4.4)
     crass (1.0.6)
-    dbhero (1.1.12)
-      google_drive (~> 1.0.4)
-      has_scope
-      rails (>= 4.1)
-      responders
-      sass-rails
-      slim-rails
     devise (4.7.3)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -588,7 +594,7 @@ DEPENDENCIES
   concurrent-ruby (= 1.1.7)
   countries (= 3.0.1)
   cpf_cnpj (= 0.5.0)
-  dbhero (= 1.1.12)
+  dbhero!
   devise (= 4.7.3)
   draper (= 4.0.1)
   excelinator (= 1.3.1)
