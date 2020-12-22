@@ -23,7 +23,7 @@ RSpec.describe Reward, type: :model do
       end
 
       it 'should save the last changes' do
-        expect(reward.last_changes).to eq('{"description":["envie um email para foo@bar.com","foo"]}')
+        expect(reward.last_changes).to eq({"description" => ["envie um email para foo@bar.com","foo"]}.to_json)
       end
     end
   end
