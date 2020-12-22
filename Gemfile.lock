@@ -39,6 +39,14 @@ GIT
       rails (>= 4.0.0)
       sidekiq
 
+GIT
+  remote: https://github.com/yespark/gridhook.git
+  revision: 3adac666507a2878c39353c2a95a3ed1567ddbc1
+  branch: master
+  specs:
+    gridhook (0.2.1)
+      rails (>= 3.1.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -224,9 +232,6 @@ GEM
       nokogiri (>= 1.4.4, != 1.5.2, != 1.5.1)
       oauth (>= 0.3.6)
       oauth2 (>= 0.5.0)
-    gridhook (0.2.0)
-      multi_json (>= 1.3.0)
-      rails (>= 3.1.0)
     has_scope (0.7.2)
       actionpack (>= 4.1)
       activesupport (>= 4.1)
@@ -596,7 +601,7 @@ DEPENDENCIES
   faker (= 2.15.1)
   feedjira (= 3.1.2)
   fog-aws (= 3.7.0)
-  gridhook (= 0.2.0)
+  gridhook!
   has_scope (= 0.7.2)
   high_voltage (= 3.1.2)
   i18n-js (= 3.8.0)
