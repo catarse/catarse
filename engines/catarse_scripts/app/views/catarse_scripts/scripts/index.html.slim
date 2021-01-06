@@ -1,0 +1,26 @@
+h2.mb-6 Scripts
+
+.modal.modal-animated--zoom-in.modal-large#test-modal
+  .modal-content
+    .modal-header
+      h4 Filters
+    .modal-body
+      = render 'search_form', creators: @creators, statuses: @statuses, tags: @tags
+
+.row
+  .col-6
+    b.text-gray-600 = "Total Scripts: #{@pagy.count}"
+  .col-6.u-text-right
+    = sort_link @q, :created_at, {}, class: 'mx-2'
+    a.btn.btn-primary.p-2(href="#test-modal") Filter
+.space
+= render partial: 'script', collection: @scripts
+
+- if @scripts.empty?
+  .placeholder
+    h6.placeholder-title No scripts were found
+
+- if @pagy.count > 20
+  .row
+    .col-12
+      = render partial: 'catarse_scripts/shared/pagy', locals: {pagy: @pagy}

@@ -1,0 +1,33 @@
+ul.menu(style="position: sticky; top: 80px;")
+  li.menu-item
+    .menu-addon
+      span.icon
+        strong +
+    = link_to 'New Script', new_script_path
+  li.menu-item
+    .menu-addon
+      span.icon
+        .figure.avatar(class='bg-purple-500' style="width: 16px; height: 16px")
+    = link_to 'My workspace',
+      scripts_path(q: {status_in: CatarseScripts::Script.statuses.values_at(:pending, :running, :with_error),
+        creator_id_eq: current_user.id})
+  li.menu-item
+    .menu-addon
+      span.icon
+        .figure.avatar(class=script_status_class('pending') style="width: 16px; height: 16px")
+    = link_to 'Pending', scripts_path(q: { status_eq: CatarseScripts::Script.statuses[:pending] })
+  li.menu-item
+    .menu-addon
+      span.icon
+        .figure.avatar(class=script_status_class('with_error') style="width: 16px; height: 16px")
+    = link_to 'With Error', scripts_path(q: { status_eq: CatarseScripts::Script.statuses[:with_error] })
+  li.menu-item
+    .menu-addon
+      span.icon
+        .figure.avatar(class=script_status_class('running') style="width: 16px; height: 16px")
+    = link_to 'Running', scripts_path(q: { status_eq: CatarseScripts::Script.statuses[:running] })
+  li.menu-item
+    .menu-addon
+      span.icon
+        .figure.avatar(class=script_status_class('done') style="width: 16px; height: 16px")
+    = link_to 'Done', scripts_path(q: { status_eq: CatarseScripts::Script.statuses[:done] })
