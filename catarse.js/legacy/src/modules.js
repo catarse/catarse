@@ -1,7 +1,7 @@
 export { default as AdminHomeBanners } from './root/admin-home-banners';
 export { default as AdminNotifications } from './root/admin-notifications';
 export { default as AdminProjects } from './root/admin-projects';
-export { default as Menu } from './root/menu';
+export { HeaderMenu } from './root/header-menu';
 export { default as Footer } from './root/footer';
 export { default as CheckEmail } from './root/check-email';
 export { default as AdminUsers } from './root/admin-users';

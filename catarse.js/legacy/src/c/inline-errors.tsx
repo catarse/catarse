@@ -1,14 +1,16 @@
 import m from 'mithril'
+import { withHooks } from 'mithril-hooks'
 import InlineError from './inline-error'
 
+export const InlineErrors = withHooks<InlineErrorsProps>(_InlineErrors)
+
 export type InlineErrorsProps = {
-    messages: string[]
-    className: string
-    style: string
+    messages?: string[]
+    className?: string
+    style?: string
 }
 
-export class InlineErrors implements m.Component<InlineErrorsProps> {
-    view({attrs} : m.Vnode<InlineErrorsProps>) {
-        return attrs.messages && attrs.messages.map(message => <InlineError message={message} className={attrs.className} style={attrs.style} />)
-    }
+function _InlineErrors(props : InlineErrorsProps) {
+    const { className, messages, style } = props
+    return messages && messages.map(message => <InlineError message={message} className={className} style={style} />)
 }

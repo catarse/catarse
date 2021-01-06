@@ -9,7 +9,7 @@ m.originalTrust = m.trust;
 m.trust = (text) => h.trust(text);
 
 (function () {
-    
+
     window.m = m;
     h.SentryInitSDK();
 
@@ -24,7 +24,7 @@ m.trust = (text) => h.trust(text);
         pushState.apply(history, arguments);
         h.scrollTop();
     };
-    
+
     Chart.defaults.global.responsive = true;
     Chart.defaults.global.responsive = false;
     Chart.defaults.global.scaleFontFamily = 'proxima-nova';
@@ -48,8 +48,8 @@ m.trust = (text) => h.trust(text);
                 view: function ({ state }) {
                     const { attr } = state;
                     return m('#app', [
-                        m(c.root.Menu, attr), 
-                        m(component, attr), 
+                        m(c.root.HeaderMenu, attr),
+                        m(component, attr),
                         attr.hideFooter ? '' : m(c.root.Footer, attr)
                     ]);
                 },
@@ -86,10 +86,10 @@ m.trust = (text) => h.trust(text);
 
         /**
          * Contribution/Subscription flow.
-         * 
+         *
          * ProjectShow ->
          *      contribution: ProjectsContribution -> ProjectsPayment -> ThankYou
-         *      subscription: ProjectsSubscriptionContribution -> ProjectsSubscriptionCheckout -> ProjectsSubscriptionThankYou 
+         *      subscription: ProjectsSubscriptionContribution -> ProjectsSubscriptionCheckout -> ProjectsSubscriptionThankYou
          */
 
         m.route(rootEl, '/', {

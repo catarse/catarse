@@ -126,7 +126,7 @@ const footer = {
                                                 ),
                                                 m('a.link-footer[href=\'https://crowdfunding.catarse.me/jornalismo?ref=ctrse_footer\']',
                                                     ' Jornalismo'
-                                                ),                                            
+                                                ),
                                                 m('a.u-marginbottom-30.link-footer[href=\'https://crowdfunding.catarse.me/assinaturas?ref=ctrse_footer\']',
                                                     'Catarse Assinaturas'
                                                  ),

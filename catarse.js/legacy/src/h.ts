@@ -7,6 +7,7 @@ import { catarse } from './api';
 import contributionVM from './vms/contribution-vm';
 import generativeTrust from '../vendor/mithril-generative-trust';
 import Stream from 'mithril/stream';
+import { UserDetails } from './entities';
 
 function getCallStack() {
     const callStackStr = new Error().stack;
@@ -66,7 +67,7 @@ function RedrawScheduler() {
 RedrawScheduler();
 
 const { CatarseAnalytics, $ } = window;
-const _dataCache = {},
+const _dataCache : { [key:string]: any } = {},
     autoRedrawProp = startData => {
         const p = prop(startData);
 
@@ -488,7 +489,7 @@ const _dataCache = {},
         const meta = _.first(document.querySelectorAll('[name=newsletter-url]'));
         return meta ? (_dataCache.newsletterUrl = meta.getAttribute('content')) : null;
     },
-    getUser = () => {
+    getUser = () : UserDetails => {
         if (_dataCache.user) {
             return _dataCache.user;
         }
@@ -502,7 +503,7 @@ const _dataCache = {},
     },
     getUserID = () => {
         const user = getUser();
-        return user == null || user.user_id == null ? null : user.user_id;
+        return user === null || user?.id == null ? null : user.id;
     },
     getUserCommonID = () => {
         const user = getUser();
@@ -588,7 +589,7 @@ const _dataCache = {},
             });
         }
     },
-    navigateToDevise = params => {
+    navigateToDevise = (params?: string) => {
         if (params) {
             window.location.href = `/${window.I18n.locale}/login${params}`;
         } else {

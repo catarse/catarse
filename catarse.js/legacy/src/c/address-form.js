@@ -9,8 +9,8 @@ import addressVM from '../vms/address-vm';
 import addressFormInternational from './address-form-international';
 import addressFormNational from './address-form-national';
 
-const addressForm = {
-    oninit: function(vnode) {
+export default class AddressForm {
+    oninit(vnode) {
         const parsedErrors = vnode.attrs.parsedErrors;
         const statesLoader = catarse.loader(models.state.getPageOptions()),
             defaultCountryID = addressVM.defaultCountryID,
@@ -57,7 +57,7 @@ const addressForm = {
             fields.states(states());
             h.redraw();
         });
-        
+
         vnode.state = {
             lookupZipCode,
             zipCodeErrorMessage,
@@ -70,8 +70,9 @@ const addressForm = {
             states,
             parsedErrors
         };
-    },
-    view: function({ state, attrs }) {
+    }
+
+    view({ state, attrs }) {
 
         if (state.parsedErrors) {
             const parsedErrors = state.parsedErrors;
@@ -142,7 +143,5 @@ const addressForm = {
                     applyPhoneMask,
                 }),
         ]);
-    },
-};
-
-export default addressForm;
+    }
+}

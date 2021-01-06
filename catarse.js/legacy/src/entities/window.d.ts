@@ -25,6 +25,13 @@ export type ThisWindow = Window & typeof globalThis & {
     onpushstate(): void
 }
 
+export type CatarseAnalyticsType = {
+    pageView(param : boolean): void
+    origin(): void
+    event(eventData: {[key:string]: any}, callback?: Function): void
+    oneTimeEvent(eventData: {[key:string]: any}): void
+}
+
 export type I18ScopeType = {
     [key:string]: any
     scope: string
