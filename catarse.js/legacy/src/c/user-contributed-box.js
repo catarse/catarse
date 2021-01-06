@@ -22,7 +22,7 @@ const userContributedBox = {
                 });
             },
             installmentTotalAmount = prop(h.formatNumber(vnode.attrs.contribution.installments_total_amount, 2));
-        
+
         vnode.state = {
             toggleAnonymous: userVM.toggleAnonymous,
             displayModal,
@@ -93,8 +93,8 @@ const userContributedBox = {
                                     (contribution.payment_method === 'BoletoBancario' ? 'Boleto Bancário' : 'Cartão de Crédito')
                                 ),
                                 (
-                                    contribution.installments > 1 ? 
-                                        m(".fontsize-smallest.fontweight-semibold.u-marginbottom-10", 
+                                    contribution.installments > 1 ?
+                                        m(".fontsize-smallest.fontweight-semibold.u-marginbottom-10",
                                             I18n.t('total_amount', contributionScope({
                                                 total_amount: state.installmentTotalAmount()
                                             }))
@@ -126,11 +126,18 @@ const userContributedBox = {
                         )
                     ]),
                     m('.u-marginbottom-20.w-col.w-col-3', [
-                        (contribution.reward_id ? [m('.fontsize-smallest.fontweight-semibold',
-                            contribution.reward_title
-                        ), m('p.fontcolor-secondary.fontsize-smallest', m.trust(h.simpleFormat(
-                            `${contribution.reward_description.substring(0, 90)} (...)`
-                        )))] : ` ${window.I18n.t('no_reward', contributionScope())} `),
+                        (contribution.reward_id ?
+                            [
+                                m('.fontsize-smallest.fontweight-semibold', contribution.reward_title),
+                                m('p.fontcolor-secondary.fontsize-smallest',
+                                    m.trust(
+                                        h.simpleFormat(
+                                            `${h.strip(contribution.reward_description).substring(0, 90)} (...)`
+                                        )
+                                    )
+                                )
+                            ]
+                            : ` ${window.I18n.t('no_reward', contributionScope())} `),
                         contribution.deliver_at ? m('.fontsize-smallest', [
                             m('span.fontweight-semibold',
                                 `${window.I18n.t('delivery_estimate', contributionScope())} `
