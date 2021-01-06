@@ -24,7 +24,7 @@ class DispatchProjectMetricStorageRefreshTask
     ProjectMetricStorage
       .joins(:project)
       .where("refreshed_at < now() - '5 minutes'::interval")
-      .where(projects: {state: 'online'})
+      .where(projects: { state: %i[online waiting_funds] })
       .pluck(:project_id)
       .each do |id|
       ProjectMetricStorageRefreshWorker.perform_async(id)
