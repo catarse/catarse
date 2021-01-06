@@ -168,6 +168,7 @@ pt:
             encryption_error: 'Please try again in a few moments.'
             payment_failed: 'Please review your credit card info and try again in a few moments.'
             card_invalid: 'Credit card information is not valid. Please review your credit card info and try again.'
+            card_processing_failure: 'Houve um erro no processamento do seu pagamento. Tente novamente mais tarde e, caso o problema persista, entre em contato com a nossa Central de Suporte através do link: <a class="alt-link" target="_blank" href="https://suporte.catarse.me/hc/pt-br/requests/new" style="color: #fff">https://suporte.catarse.me/hc/pt-br/requests/new</a>'
             error: '<span>An error ocurred while trying to process your payment.</span><br><br>Error: <i>%{message}</i>'
           validation:
             empty_field: 'The field cannot be empty.'
@@ -242,6 +243,7 @@ pt:
             slip_submission: 'Ocorreu um erro ao tentar gerar o boleto. Por favor, tente novamente em alguns instantes.'
             slip_validation: 'Erro ao validar dados do formulário. Por favor, revise-os e tente novamente.'
             encryption_error: 'Por favor, tente novamente em alguns instantes.'
+            card_processing_failure: 'Houve um erro no processamento do seu pagamento. Tente novamente mais tarde e, caso o problema persista, entre em contato com a nossa Central de Suporte através do link: <a class="alt-link" target="_blank" href="https://suporte.catarse.me/hc/pt-br/requests/new" style="color: #fff">https://suporte.catarse.me/hc/pt-br/requests/new</a>'
             payment_failed: 'Por favor, revise os dados de seu cartão de crédito e tente novamente em alguns instantes.'
             card_invalid: 'Dados de cartão de crédito inválidos. Por favor, revise os dados de seu cartão de crédito e tente novamente.'
             error: '<span>Ocorreu um problema ao processar o seu pagamento.</span><br><br>Erro: <i>%{message}</i>'
@@ -333,7 +335,7 @@ pt:
       thank_you:
         subscription_edit:
           thank_you: "Quase lá!"
-          text_html: "<div class='fontsize-base'>A alteração de sua assinatura foi processada, mas só será efetivada na sua próxima cobrança. Enviamos uma mensagem com detalhes para o email abaixo:</div><div class='fontsize-large u-marginbottom-10'>%{email}</div><a class='alt-link fontsize-small' href='%{link_email}'>Se esse não é seu email de contato, altere aqui</a>" 
+          text_html: "<div class='fontsize-base'>A alteração de sua assinatura foi processada, mas só será efetivada na sua próxima cobrança. Enviamos uma mensagem com detalhes para o email abaixo:</div><div class='fontsize-large u-marginbottom-10'>%{email}</div><a class='alt-link fontsize-small' href='%{link_email}'>Se esse não é seu email de contato, altere aqui</a>"
         thank_you_error: 'Ocorreu um erro ao solicitar os dados do seu pagamento. Tente novamente em alguns instantes.'
         thank_you: 'Valeu! Seu apoio está sendo processado.'
         thank_you_text_html: "<div class='fontsize-base'>Assim que o pagamento for concluído, enviaremos a confirmação do seu apoio para o email cadastrado:</div><div class='fontsize-large u-marginbottom-10'>%{email}</div><a class='alt-link fontsize-small' href='%{link_email}'>Se esse não é seu email de contato, altere aqui</a>"
@@ -358,6 +360,6 @@ pt:
           acontecer.
         title: Muito obrigado
       subscription_start_title: Escolha a recompensa e em seguida o valor do apoio mensal
-      subscription_edit_title: Você está editando uma assinatura já existente 
+      subscription_edit_title: Você está editando uma assinatura já existente
       subscription_reactivation_title: Você está reativando uma assinatura inativa
       subscription_edit_subtitle: Escolha sua recompensa e o valor de sua assinatura

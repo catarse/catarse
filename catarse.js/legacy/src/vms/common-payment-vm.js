@@ -136,7 +136,7 @@ const getPaymentInfoUntilNoError = (paymentMethod, isEdit) => ({ id, catalog_pay
 let creditCardRetries = 5;
 const waitForSavedCreditCard = promise => (creditCardId) => {
     if (creditCardRetries <= 0) {
-        return promise.reject({ message: 'Could not save card' });
+        return promise.reject({ message: I18n.t('submission.card_processing_failure', I18nScope()) });
     }
 
     creditCardInfo(creditCardId).then(([infoR]) => {

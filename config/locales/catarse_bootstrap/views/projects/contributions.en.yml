@@ -200,6 +200,7 @@ en:
               few moments.
             card_invalid: Credit card information is not valid. Please review your
               credit card info and try again.
+            card_processing_failure: 'Houve um erro no processamento do seu pagamento. Tente novamente mais tarde e, caso o problema persista, entre em contato com a nossa Central de Suporte através do link: <a class="alt-link" target="_blank" href="https://suporte.catarse.me/hc/pt-br/requests/new" style="color: #fff">https://suporte.catarse.me/hc/pt-br/requests/new</a>'
             error: "<span>An error occurred while trying to process your payment.</span>
               <br><br> Error: <i> %{message}</i>"
           validation:
@@ -290,6 +291,7 @@ en:
               in a few moments.
             card_invalid: Invalid credit card data. Please review your credit card
               information and try again.
+            card_processing_failure: 'Houve um erro no processamento do seu pagamento. Tente novamente mais tarde e, caso o problema persista, entre em contato com a nossa Central de Suporte através do link: <a class="alt-link" target="_blank" href="https://suporte.catarse.me/hc/pt-br/requests/new" style="color: #fff">https://suporte.catarse.me/hc/pt-br/requests/new</a>'
             error: "<span>There was a problem processing your payment.</span> <br><br>
               Error: <i> %{message}</i>"
           validation:
