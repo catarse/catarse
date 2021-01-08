@@ -40,5 +40,9 @@ module CatarseScripts
 
       self.status = :pending if with_error?
     end
+
+    ransacker :tags do
+      Arel.sql("array_to_string(tags, ',')")
+    end
   end
 end
