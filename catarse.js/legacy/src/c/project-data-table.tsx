@@ -90,7 +90,8 @@ const projectDataTable = {
                 _.map(body, rowData => m('.w-row.table-row',
                         _.map(rowData, (row) => {
                             // Check if a custom comparator is used => Read component description
-                            row = (_.isArray(row) && row.length > 1) ? row[1] : row;
+                            // You need to concatenate a custom comparator into an Array
+                            row = (_.isArray(row) && row.length > 1) ? [].concat(row[1].map(obj => obj)) : row;
                             return m('.w-col.w-col-4.w-col-small-4.w-col-tiny-4.table-col', [
                                 m('div', row)
                             ]);
