@@ -37,7 +37,7 @@ function TextEditor(props : TextEditorProps) {
             class="input_field redactor w-input text-field bottom jumbo positive"
             onupdate={vnodeInner => {
                 const $editor = $(vnodeInner.dom)
-                $editor.redactor('code.set', value)
+                $editor.redactor('code.set', value || '')
             }}
             oncreate={vnodeInner => {
                 const $editor = $(vnodeInner.dom)
@@ -52,7 +52,8 @@ function TextEditor(props : TextEditorProps) {
                     },
                     imageUploadCallback: onImageUploaded
                 })
-                $editor.redactor('code.set', value)
+
+                $editor.redactor('code.set', value || '')
 
                 $('.redactor-editor').on('input', (event : string & Event) => {
                     onChange($editor.redactor('code.get'))
