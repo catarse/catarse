@@ -419,6 +419,55 @@ en:
         pending_refund: Refund requested on %{date}
         refused: Payment declined on %{date}
         chargeback: Answered
+      creditos:
+        pending: Awaiting payment confirmation
+        paid: Confirmed on %{date}
+        refunded: Refunded on %{date}
+        pending_refund: Refund requested on %{date}
+        refused: Unrealized payment
+        chargeback: Answered
+      cartaodebito:
+        pending: Awaiting payment confirmation
+        paid: Confirmed on %{date}
+        refunded: Refunded on %{date}
+        pending_refund: Refund requested on %{date}
+        refused: Unrealized payment
+        chargeback: Answered
+      carteiramoip:
+        pending: Awaiting payment confirmation
+        paid: Confirmed on %{date}
+        refunded: Refunded on %{date}
+        pending_refund: Refund requested on %{date}
+        refused: Unrealized payment
+        chargeback: Answered
+      debitobancario:
+        pending: Awaiting payment confirmation
+        paid: Confirmed on %{date}
+        refunded: Refunded on %{date}
+        pending_refund: Refund requested on %{date}
+        refused: Unrealized payment
+        chargeback: Answered
+      desconhecido:
+        pending: Awaiting payment confirmation
+        paid: Confirmed on %{date}
+        refunded: Refunded on %{date}
+        pending_refund: Refund requested on %{date}
+        refused: Unrealized payment
+        chargeback: Answered
+      financiamentobancario:
+        pending: Awaiting payment confirmation
+        paid: Confirmed on %{date}
+        refunded: Refunded on %{date}
+        pending_refund: Refund requested on %{date}
+        refused: Unrealized payment
+        chargeback: Answered
+      transferenciabancaria:
+        pending: Awaiting payment confirmation
+        paid: Confirmed on %{date}
+        refunded: Refunded on %{date}
+        pending_refund: Refund requested on %{date}
+        refused: Unrealized payment
+        chargeback: Answered
   contribution:
     payment_details:
       desconhecido: ''
