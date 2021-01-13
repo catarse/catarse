@@ -4,6 +4,7 @@ import _ from 'underscore';
 import c from './c';
 import Chart from 'chart.js';
 import { Wrap } from './wrap';
+import { AdminWrap } from './admin-wrap';
 
 m.originalTrust = m.trust;
 m.trust = (text) => h.trust(text);
@@ -36,35 +37,16 @@ m.trust = (text) => h.trust(text);
     const adminRoot = document.getElementById('new-admin');
 
     if (adminRoot) {
-        const adminWrap = function (component, customAttr) {
-            return {
-                oninit: function (vnode) {
-                    const attr = customAttr;
-
-                    vnode.state = {
-                        attr,
-                    };
-                },
-                view: function ({ state }) {
-                    const { attr } = state;
-                    return m('#app', [
-                        m(c.root.HeaderMenu, attr),
-                        m(component, attr),
-                        attr.hideFooter ? '' : m(c.root.Footer, attr)
-                    ]);
-                },
-            };
-        };
         m.route.prefix('#');
 
         m.route(adminRoot, '/', {
-            '/': adminWrap(c.root.AdminContributions, { root: adminRoot, menuTransparency: false, hideFooter: true }),
-            '/home-banners': adminWrap(c.root.AdminHomeBanners, { menuTransparency: false, hideFooter: true }),
-            '/users': adminWrap(c.root.AdminUsers, { menuTransparency: false, hideFooter: true }),
-            '/subscriptions': adminWrap(c.root.AdminSubscriptions, { menuTransparency: false, hideFooter: true }),
-            '/projects': adminWrap(c.root.AdminProjects, { menuTransparency: false, hideFooter: true }),
-            '/notifications': adminWrap(c.root.AdminNotifications, { menuTransparency: false, hideFooter: true }),
-            '/balance-transfers': adminWrap(c.root.AdminBalanceTranfers, { menuTransparency: false, hideFooter: true }),
+            '/': AdminWrap(c.root.AdminContributions, { root: adminRoot, menuTransparency: false, hideFooter: true }),
+            '/home-banners': AdminWrap(c.root.AdminHomeBanners, { menuTransparency: false, hideFooter: true }),
+            '/users': AdminWrap(c.root.AdminUsers, { menuTransparency: false, hideFooter: true }),
+            '/subscriptions': AdminWrap(c.root.AdminSubscriptions, { menuTransparency: false, hideFooter: true }),
+            '/projects': AdminWrap(c.root.AdminProjects, { menuTransparency: false, hideFooter: true }),
+            '/notifications': AdminWrap(c.root.AdminNotifications, { menuTransparency: false, hideFooter: true }),
+            '/balance-transfers': AdminWrap(c.root.AdminBalanceTranfers, { menuTransparency: false, hideFooter: true }),
         });
     }
 
