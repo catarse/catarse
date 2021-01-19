@@ -114,7 +114,7 @@ namespace :common do
       unless sp.already_in_balance?
         begin
           BalanceTransaction.insert_subscription_payment(sp.id)
-          RewardMetricStorageRefreshWorker.perform_async(sp.reward_id)
+          RewardMetricStorageRefreshWorker.perform_async(sp.reward.id) if sp.reward.present?
         rescue StandardError => e
           Raven.extra_context(task: :generate_subscription_balance, subscription_payment_id: sp.id)
           Raven.capture_exception(e)
