@@ -10,7 +10,7 @@ class BankAccount < ApplicationRecord
   belongs_to :bank
 
   validates :bank_id, :account_digit, :account_type, presence: true
-  validates :account_type, inclusion: { in: %w[conta_corrente conta_poupanca conta_corrente_conjunta conta_poupanca_conjunta] }
+  validates :account_type, inclusion: { in: %w[conta_corrente conta_poupanca conta_facil conta_corrente_conjunta conta_poupanca_conjunta] }
 
   attr_accessor :input_bank_number
   validate :input_bank_number_validation

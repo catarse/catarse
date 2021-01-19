@@ -11,7 +11,7 @@ export function setupMithrilRequestOptions(headers : HttpHeaders, body : Body, r
         extract(xhr : XMLHttpRequest) : Response {
 
             const headers = parseResponseHeadersToObject(xhr.getAllResponseHeaders())
-            
+
             return {
                 status: xhr.status,
                 statusText: xhr.statusText,
@@ -39,5 +39,5 @@ function parseResponseHeadersToObject(headers : string) : HttpHeaders {
         const value = parts.join(': ')
         headersObject[header] = value
     })
-    return new Headers(headersObject) as HttpHeaders
+    return headersObject as HttpHeaders
 }

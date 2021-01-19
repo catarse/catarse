@@ -8,7 +8,7 @@ gem 'auto_html', '2.0.0'
 gem 'bootsnap', '1.5.1', require: false
 gem 'browser', '5.1.0'
 gem 'carrierwave', '2.1.0'
-gem 'catarse_pagarme', github: 'catarse/catarse_pagarme', branch: 'qa/rails_6'
+gem 'catarse_pagarme', path: 'engines/catarse_pagarme'
 gem 'catarse_scripts', path: 'engines/catarse_scripts'
 gem 'catarse_settings_db', '0.2.0'
 gem 'concurrent-ruby', '1.1.7'
