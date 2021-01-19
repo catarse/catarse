@@ -11,7 +11,7 @@ RUN apk update && \
     apk --update add --virtual build_deps $BUILD_PACKAGES && \
     apk --update add $RUBY_PACKAGES
 #
-RUN apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/v3.10/main/ nodejs=12.18.4-r0
+RUN apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/v3.12/main/ nodejs=12.20.1-r0
 RUN apk add yarn=1.22.4-r0
 
 RUN node -v
@@ -22,10 +22,11 @@ RUN gem install bundler:2.1.4
 #
 COPY Gemfile /usr/app/
 COPY Gemfile.lock /usr/app/
+COPY . /usr/app
 #
+
 RUN bundle install
 
-COPY . /usr/app
 RUN yarn install
 
 #

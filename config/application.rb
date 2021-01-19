@@ -66,6 +66,7 @@ module Catarse
     config.assets.version = '1.0'
 
     config.assets.paths << "#{Rails.root}/node_modules"
+    config.assets.paths << "#{Rails.root}"
 
     config.active_record.dump_schema_after_migration = true
 
