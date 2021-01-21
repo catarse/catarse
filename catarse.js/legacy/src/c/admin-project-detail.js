@@ -105,6 +105,30 @@ const adminProjectDetail = {
             }
         };
 
+        const banishProject = {
+            toggler: h.toggleProp(false, true),
+            submit: () => {
+                banishProject.complete(false);
+                m.request({
+                    method: 'PUT',
+                    url: `/projects/${project_id}/banish_report`,
+                    config: h.setCsrfToken,
+                    }).then(() => {
+                        banishProject.complete(true);
+                        banishProject.success(true);
+                        banishProject.error(false);
+                    }).catch(() => {
+                        banishProject.complete(true);
+                        banishProject.success(true);
+                        banishProject.error(true);
+                    });
+                return false;
+            },
+            complete: prop(false),
+            error: prop(false),
+            success: prop(false),
+        };
+
         if (vnode.attrs.item.mode === 'sub') {
             commonAnalytics.loaderWithToken(models.projectSubscribersInfo.postOptions({
                 id: vnode.attrs.item.common_id
@@ -116,6 +140,7 @@ const adminProjectDetail = {
             bankAccount: loadBank(),
             subscriberInfo: projectSubscriberInfo,
             actions: {
+                banishProject,
                 changeUserAction,
                 projectRevert
             },
@@ -139,7 +164,7 @@ const adminProjectDetail = {
                     m('button.btn.btn-small.btn-terciary', {
                         onclick: state.actions.changeUserAction.toggler.toggle
                     }, 'Trocar realizador'),
-                    (state.actions.changeUserAction.toggler() ? 
+                    (state.actions.changeUserAction.toggler() ?
                         m('.dropdown-list.card.u-radius.dropdown-list-medium.zindex-10', {
                             oncreate: state.actionUnload(state.actions.changeUserAction)
                         }, [
@@ -165,6 +190,33 @@ const adminProjectDetail = {
                             ])
                         ]) : '')
                 ]),
+                m('.w-row.u-marginbottom-30', [
+                    m('.w-col.w-col-2', [
+                        m('button.btn.btn-small.btn-terciary', {
+                            onclick: state.actions.banishProject.toggler.toggle
+                        }, 'Banir Projeto'),
+                        (state.actions.banishProject.toggler() ?
+                            m('.dropdown-list.card.u-radius.dropdown-list-medium.zindex-10', {
+                                oncreate: state.actionUnload(state.actions.banishProject)
+                            }, [
+                                m('form.w-form',
+                                (!state.actions.banishProject.complete()) ? [
+                                    m('label', 'Você realmente deseja banir esse projeto?'),
+                                    m('input.w-button.btn.btn-small[type="submit"][value="Confirmar"]', {
+                                        onclick: state.actions.banishProject.submit
+                                    })
+                                ] : (!state.actions.banishProject.error()) ? [
+                                    m('.w-form-done[style="display:block;"]', [
+                                        m('p', 'O Processo de banimento foi iniciado com sucesso.')
+                                    ])
+                                ] : [
+                                    m('.w-form-error[style="display:block;"]', [
+                                        m('p', 'Houve um problema na requisição.')
+                                    ])
+                                ])
+                            ]) : '')
+                    ]),
+                ]),
                 m('.w-col.w-col-2', [
                     (item.mode === 'sub' ?
                         m('a.btn.btn-small.btn-terciary', { href: `/projects/${item.project_id}/subscriptions_report` }, 'Base de assinantes')
@@ -175,7 +227,7 @@ const adminProjectDetail = {
                         m('button.btn.btn-small.btn-terciary', {
                             onclick: state.actions.projectRevert.toggler.toggle
                         }, (totalSubscriptions > 0 ? 'Encerrar projeto' : 'Virar projeto para Draft')),
-                        (state.actions.projectRevert.toggler() ? 
+                        (state.actions.projectRevert.toggler() ?
                             (state.actions.projectRevert.loading() ? h.loader()
                                 : m('.dropdown-list.card.u-radius.dropdown-list-medium.zindex-10', [
                                     m('form.w-form', {
