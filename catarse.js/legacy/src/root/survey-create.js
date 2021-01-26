@@ -37,8 +37,20 @@ const surveyCreate = {
             l = loader(models.projectDetail.getRowOptions(filterVM.parameters()));
 
         const reward = prop([]);
-        l.load().then(projectDetails);
-        rewardVM.load().then(reward);
+
+
+        l
+            .load()
+            .then(projectDetailsResponse => {
+                projectDetails(projectDetailsResponse);
+                h.redraw();
+            });
+        rewardVM
+            .load()
+            .then(rewardResponse => {
+                reward(rewardResponse);
+                h.redraw();
+            });
 
         const choice = (type) => {
 
@@ -72,7 +84,6 @@ const surveyCreate = {
         };
 
         const choiceDropdown = question => {
-            console.log('question to drop down', question);
             return m('.w-col.w-col-4.w-sub-col',
                 m('.text-field.w-dropdown', {
                     onclick: () => {
@@ -146,7 +157,7 @@ const surveyCreate = {
         const project = _.first(state.projectDetails());
         const reward = _.first(state.reward());
         return [
-            project ? 
+            project ?
                 m('.project-surveys', [
                     (
                         project.is_owner_or_admin &&
@@ -154,7 +165,7 @@ const surveyCreate = {
                             project: prop(project)
                         })
                     ),
-                    state.showPreview() ? 
+                    state.showPreview() ?
                         m(surveyCreatePreview, {
                             confirmAddress: state.confirmAddress(),
                             showPreview: state.showPreview,
@@ -162,7 +173,7 @@ const surveyCreate = {
                             reward,
                             sendQuestions: state.sendQuestions
                         })
-                        : 
+                        :
                         [
                             (
                                 reward &&
@@ -225,7 +236,7 @@ const surveyCreate = {
                                                         m(dashboardOpenQuestion, {
                                                             question,
                                                             index
-                                                        })                
+                                                        })
                                                 ),
                                                 m('button.btn.btn-inline.btn-no-border.btn-small.btn-terciary.fa.fa-lg.fa-trash.u-right', {
                                                     onclick: state.deleteDashboardQuestion(question)
