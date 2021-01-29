@@ -145,9 +145,11 @@ const userAboutEdit = {
                 });
             },
             removeLinks = [],
-            addLink = () => fields.links().push({
-                link: ''
-            }),
+            addLink = () => {
+                const links = fields.links() || [];
+                links.push({ link: '' });
+                fields.links(links);
+            },
             removeLink = (linkId, idx) => () => {
                 fields.links()[idx]._destroy = true;
                 return false;
