@@ -8,10 +8,11 @@ export default {
 
 export type PaymentMethodIconProps = {
     subscription: Subscription
+    paymentMethodOverride?: string
 }
 
-function PaymentMethodIcon({subscription} : PaymentMethodIconProps) {
-    const lastPaymentMethod = subscription?.last_payment_data?.payment_method || subscription.payment_method
+function PaymentMethodIcon({subscription, paymentMethodOverride} : PaymentMethodIconProps) {
+    const lastPaymentMethod = paymentMethodOverride || subscription?.last_payment_data?.payment_method || subscription.payment_method
     const paymentClass = { boleto: 'fa-barcode', credit_card: 'fa-credit-card' }[lastPaymentMethod]
     return (
         <span>
