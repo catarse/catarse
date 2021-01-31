@@ -5,6 +5,7 @@ import { DateFormat } from "../shared/components/date-format"
 import { I18nText } from "../shared/components/i18n-text"
 import { If } from "../shared/components/if"
 import rewardVM from "../vms/reward-vm"
+import h from '../h'
 
 export const ProjectsPaymentRewardDetails = withHooks<ProjectsPaymentRewardDetailsProps>(_ProjectsPaymentRewardDetails)
 
@@ -59,7 +60,7 @@ function _ProjectsPaymentRewardDetails(props : ProjectsPaymentRewardDetailsProps
                     </If>
                     <If condition={!hasDescription}>
                         <I18nText trust={true} scope={`${scope}.selected_reward.review_without_reward_html`} params={{
-                            value: <CurrencyFormat label='R$' value={value} />
+                            value: `R$ ${h.formatNumber(Number(value), 2, 3)}`
                         }} />
                     </If>
                 </div>
