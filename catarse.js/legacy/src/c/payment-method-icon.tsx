@@ -1,10 +1,9 @@
 import m from 'mithril'
+import { withHooks } from 'mithril-hooks'
 import { Subscription } from '../entities'
 import { I18nText } from '../shared/components/i18n-text'
 
-export default {
-    view: ({attrs}) => PaymentMethodIcon(attrs)
-}
+export default withHooks<PaymentMethodIconProps>(PaymentMethodIcon);
 
 export type PaymentMethodIconProps = {
     subscription: Subscription

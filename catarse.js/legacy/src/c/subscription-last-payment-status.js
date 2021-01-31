@@ -5,8 +5,8 @@ import h from '../h';
 
 const I18nScope = _.partial(h.i18nScope, 'projects.payment');
 
-const subscriptionLastPaymentStatus = {
-    oninit: function(vnode) {
+export default class SubscriptionLastPaymentStatus {
+    oninit(vnode) {
         const statusClass = {
             paid: '.text-success',
             pending: '.text-waiting',
@@ -23,8 +23,9 @@ const subscriptionLastPaymentStatus = {
             lastPaymentStatus: vnode.attrs.subscription.last_payment_data.status,
             lastPaymentMethod: vnode.attrs.subscription.last_payment_data.payment_method
         };
-    },
-    view: function({state, attrs}) {
+    }
+
+    view({state, attrs}) {
         return m('span', [
             m(".fontsize-smaller",
                 state.lastPaymentDate ? h.momentify(state.lastPaymentDate, 'DD/MM/YYYY') : ''
@@ -34,6 +35,4 @@ const subscriptionLastPaymentStatus = {
             )
         ]);
     }
-};
-
-export default subscriptionLastPaymentStatus;
+}

@@ -6,8 +6,8 @@ import dashboardSubscriptionCardDetailSubscriptionDetails from './dashboard-subs
 import dashboardSubscriptionCardDetailUserProfile from './dashboard-subscription-card-detail-user-profile';
 import dashboardSubscriptionCardDetailUserAddress from './dashboard-subscription-card-detail-user-address';
 
-const dashboardSubscriptionCardDetail = {
-    oninit: function(vnode) {
+export default class DashboardSubscriptionCardDetail {
+    oninit(vnode) {
         const userDetailsOptions = {
             id: vnode.attrs.user.common_id
         };
@@ -22,9 +22,9 @@ const dashboardSubscriptionCardDetail = {
         vnode.state = {
             displayModal: h.toggleProp(false, true)
         };
-    },
+    }
 
-    view: function({state, attrs}) {
+    view({state, attrs}) {
         const subscription = attrs.subscription,
             user = _.extend({ project_id: subscription.project_external_id }, attrs.user),
             reward = attrs.reward,
@@ -44,6 +44,4 @@ const dashboardSubscriptionCardDetail = {
             )
         );
     }
-};
-
-export default dashboardSubscriptionCardDetail;
+}

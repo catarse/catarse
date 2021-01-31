@@ -13,21 +13,19 @@ import SubscriptionLastPaymentStatus from './subscription-last-payment-status';
 import h from '../h';
 import AnonymousBadge from './anonymous-badge';
 import { RewardDetails } from '../entities/reward-details';
-
-const subscriptionScope = _.partial(h.i18nScope, 'users.subscription_row');
+import { I18nText } from '../shared/components/i18n-text';
 
 const dashboardSubscriptionCard = {
     oninit: function(vnode) {
-        const subscription = vnode.attrs.subscription,
-            reward = prop(),
-            toggleDetails = h.toggleProp(false, true),
-            user = prop(vnode.attrs.user);
+        const subscription = vnode.attrs.subscription
+        const toggleDetails = h.toggleProp(false, true)
+        const user = prop(vnode.attrs.user)
 
         if (subscription.user_external_id) {
             const filterUserVM = catarse.filtersVM({
                     id: 'eq'
                 }).id(subscription.user_external_id),
-                lU = catarse.loaderWithToken(models.userDetail.getRowOptions(filterUserVM.parameters()));
+                lU = catarse.loaderWithToken(models.userDetail.getRowOptions(filterUserVM.parameters()))
 
             lU.load().then((data) => {
                 user(_.first(data))
@@ -35,47 +33,12 @@ const dashboardSubscriptionCard = {
             }).catch(() => h.redraw())
         }
 
-        loadCurrentPaidSubscriptionReward()
-
-        async function loadCurrentPaidSubscriptionReward() {
-            const currentPaidRewardExternalId = subscription.current_reward_external_id
-            if (currentPaidRewardExternalId) {
-                try {
-                    reward(await loadRewardById(currentPaidRewardExternalId))
-                } catch(error) {
-                    console.log('Error loading paid subscription reward:', error);
-                }
-            }
-
-            const unpaidRewardExternalId = subscription.reward_external_id
-            const isFirstSubscriptionCreation = subscription.paid_count === 0
-            const shouldLoadUnpaidReward = unpaidRewardExternalId && !currentPaidRewardExternalId && isFirstSubscriptionCreation
-            if (shouldLoadUnpaidReward) {
-                const nextReward = await loadRewardById(unpaidRewardExternalId)
-                reward(nextReward)
-            }
-        }
-
-        async function loadRewardById(rewardId : number) : Promise<RewardDetails> {
-            try {
-                h.redraw();
-                const filterRewVM = catarse.filtersVM({id: 'eq'}).id(rewardId)
-                const lRew = catarse.loaderWithToken(models.rewardDetail.getRowOptions(filterRewVM.parameters()))
-                const rewardsResponse = await lRew.load()
-                return _.first(rewardsResponse)
-            } catch(error) {
-                console.log('Error:', error)
-            } finally {
-                h.redraw();
-            }
-        }
-
         vnode.state.toggleDetails = toggleDetails
-        vnode.state.reward = reward
         vnode.state.user = user
     },
     view: function({state, attrs}) {
         const subscription = attrs.subscription
+        const reward = subscription.current_reward_data
         const user = state.user()
         const cardClass = state.toggleDetails() ? '.card-detailed-open' : ''
 
@@ -96,7 +59,9 @@ const dashboardSubscriptionCard = {
                                         </div>
                                         <AnonymousBadge
                                             isAnonymous={subscription.anonymous}
-                                            text={window.I18n.t('anonymous_sub_title', subscriptionScope())}
+                                            text={
+                                                <I18nText scope={'users.subscription_row.anonymous_sub_title'} />
+                                            }
                                             />
                                         <div className="fontcolor-secondary fontsize-smallest">
                                             {subscription.user_email}
@@ -106,7 +71,7 @@ const dashboardSubscriptionCard = {
                             </div>
                             <div className="table-col w-col w-col-2">
                                 <div className="fontsize-smaller">
-                                    {_.isEmpty(state.reward()) ? '' : `${state.reward().description.substring(0, 20)}...`}
+                                    {_.isEmpty(reward) ? '' : `${reward.description.substring(0, 20)}...`}
                                 </div>
                             </div>
                             <div className="table-col w-col w-col-1 u-text-center">
@@ -139,7 +104,7 @@ const dashboardSubscriptionCard = {
                     state.toggleDetails() &&
                     <DashboardSubscriptionCardDetail
                         subscription={subscription}
-                        reward={state.reward()}
+                        reward={reward}
                         user={user}
                         />
                 }
