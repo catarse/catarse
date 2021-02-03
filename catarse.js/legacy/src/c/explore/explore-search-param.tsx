@@ -25,7 +25,7 @@ export class ExploreSearchParam implements m.Component {
                         </div>
                     </div>
 
-                    <div onclick={onClose} class='inline-block far fa-times'></div>
+                    <div onclick={onClose} class='inline-block fa fa-times'></div>
                 </div>
             </div>
         )
