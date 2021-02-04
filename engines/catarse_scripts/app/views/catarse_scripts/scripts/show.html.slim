@@ -16,7 +16,8 @@
           = link_to 'Ticket URL', @script.ticket_url, target: '_blank'
       .col-4
         - @script.tags.each do |tag|
-          .tag.tag--link = tag
+          .tag.tag--link
+            = link_to tag, scripts_path(q: { tags_contains_array: "[{\"value\":\"#{tag}\"}]" }), class: 'text-gray-000'
 
     p = @script.description
 
