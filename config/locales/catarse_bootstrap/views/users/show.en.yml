@@ -76,6 +76,7 @@ en:
         account_type:
           conta_corrente: Checking Account
           conta_poupanca: Savings account
+          conta_facil: Easy Account
           conta_corrente_conjunta: Joint Current Account
           conta_poupanca_conjunta: Joint Savings Account
     profile:

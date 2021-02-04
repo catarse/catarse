@@ -1,17 +1,4 @@
 GIT
-  remote: https://github.com/catarse/catarse_pagarme.git
-  revision: a159106d7c920c8e996ad10714f884931a3cc406
-  branch: qa/rails_6
-  specs:
-    catarse_pagarme (3.0.1)
-      konduto-ruby (= 2.1.0)
-      pagarme (= 2.1.4)
-      rails
-      sentry-raven
-      sidekiq
-      weekdays (>= 1.0.2)
-
-GIT
   remote: https://github.com/catarse/dbhero.git
   revision: d1e4e5742beb00a8b35017d5675f05e9aa7db421
   branch: master
@@ -59,6 +46,17 @@ GIT
     user_notifier (0.4.0)
       rails (>= 4.0.0)
       sidekiq
+
+PATH
+  remote: engines/catarse_pagarme
+  specs:
+    catarse_pagarme (3.0.1)
+      konduto-ruby (= 2.1.0)
+      pagarme (= 2.1.4)
+      rails
+      sentry-raven
+      sidekiq
+      weekdays (>= 1.0.2)
 
 PATH
   remote: engines/catarse_scripts

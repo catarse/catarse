@@ -519,6 +519,7 @@ pt:
             account_type:
               conta_corrente: 'Conta Corrente'
               conta_poupanca: 'Conta Poupança'
+              conta_facil: 'Conta Fácil'
               conta_corrente_conjunta: 'Conta Corrente Conjunta'
               conta_poupanca_conjunta: 'Conta Poupança Conjunta'
           address: 'Endereço: '

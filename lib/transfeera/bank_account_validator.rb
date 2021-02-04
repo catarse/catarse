@@ -7,7 +7,6 @@ module Transfeera
         def self.validate(catarse_user_bank_account)
             authorization_data = Transfeera::Authorization.request()
             account_to_validate = map_to_transfeera_account_from catarse_user_bank_account
-        
             email_contact = CatarseSettings[:email_contact]
             access_token = authorization_data['access_token']
 
@@ -33,7 +32,9 @@ module Transfeera
         private
 
         def self.map_to_transfeera_account_from(catarse_user_bank_account)
-            account_type = if catarse_user_bank_account.account_type.include?('conta_corrente')
+            account_type = if catarse_user_bank_account.account_type.include?('conta_facil')
+                'CONTA_FACIL'
+            elsif catarse_user_bank_account.account_type.include?('conta_corrente')
                 'CONTA_CORRENTE'
             elsif catarse_user_bank_account.account_type.include?('conta_poupanca')
                 'CONTA_POUPANCA'

@@ -80,7 +80,7 @@ export function useWithdrawRequestFor(user : UserDetails, deps : UseWithdrawRequ
         setStage(WithdrawRequestStage.FILL_FORM)
         const bankAccountLoader = async () => setBankAccount((await deps.loadUserBankAccount(user)) || bankAccountWithUserDocumentAndName(EmptyBankAccount, user))
         const banksLoader = async () => setBanks(await deps.loadBanks())
-        
+
         const banksAndAccount = async () => {
             setIsLoading(true)
             await bankAccountLoader()
@@ -96,7 +96,7 @@ export function useWithdrawRequestFor(user : UserDetails, deps : UseWithdrawRequ
         async bankAccountUpdate() {
             await hadleUserBankAccountUpdate(user, bankAccount)
         },
-        async withdraw() {            
+        async withdraw() {
             await handleWithdrawFunds(user)
         },
         banks,
@@ -130,5 +130,5 @@ function bankAccountWithUserDocumentAndName(bankAccount : BankAccount, user : Us
         ...bankAccount,
         owner_document: user.owner_document,
         owner_name: user.name,
-    }    
+    }
 }

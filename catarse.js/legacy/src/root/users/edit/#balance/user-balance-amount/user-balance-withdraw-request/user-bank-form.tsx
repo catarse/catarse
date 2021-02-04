@@ -32,14 +32,14 @@ function _UserBankForm(props : UserBankFormProps) {
         manualBankCode,
         onChangeManualBankCode,
     } = props
-    
+
     const popularBanksOptions : Option[] = popularBanks.map(popBank => (
         {
             label: `${popBank.code} . ${popBank.name}`,
             value: `${popBank.id}`
         }
     ))
-    
+
     const preFilledBankAccountNotIsPopularOnes = !popularBanks.find(popBank => popBank.id === bankAccount.bank_id)
     const shouldDisplayUserBankAccountAsOption = preFilledBankAccountNotIsPopularOnes && bankAccount.bank_code && bankAccount.bank_name && bankAccount.bank_id
     const nonPopularBankPreFilled : Option[] = shouldDisplayUserBankAccountAsOption && [
@@ -60,7 +60,7 @@ function _UserBankForm(props : UserBankFormProps) {
             value: '0'
         }
     ]
-        
+
     const getHandleFor = (field : string) => ({
         errors: getErrors(field),
         value: getValueFor(field),
@@ -79,7 +79,7 @@ function _UserBankForm(props : UserBankFormProps) {
     return (
         <div>
             <div class='w-row'>
-                <UserBankAccountSelectValue 
+                <UserBankAccountSelectValue
                     id='bank_select'
                     className={`w-col w-col-5 w-sub-col ${shouldShowOtherBanksInput ? 'w-hidden' : ''} `}
                     labelText='Banco'
@@ -104,7 +104,7 @@ function _UserBankForm(props : UserBankFormProps) {
                                     <label class='field-label fontsize-smaller'>
                                         Número do banco (3 números)
                                     </label>
-                                    <input 
+                                    <input
                                         type='text'
                                         id='user_bank_account_attributes_input_bank_number'
                                         maxlength='3'
@@ -114,7 +114,7 @@ function _UserBankForm(props : UserBankFormProps) {
                                         onchange={(event : HTMLInputEvent) => {
                                             const bankCode = event.target.value
                                             onChangeManualBankCode(bankCode)
-                                            
+
                                             const bank = banks.find(bank => bank.code === bankCode)
                                             if (bank) {
                                                 onChange({...bankAccount, bank_id: bank.id, bank_code: bank.code, bank_name: bank.name } as BankAccount)
@@ -144,13 +144,13 @@ function _UserBankForm(props : UserBankFormProps) {
                 }
                 <div class='w-col w-col-7'>
                     <div class='w-row'>
-                        <UserBankAccountInputTextField 
+                        <UserBankAccountInputTextField
                             id='user_bank_account_attributes_agency'
                             className='w-col w-col-7 w-col-small-7 w-col-tiny-7 w-sub-col-middle'
                             labelText='Agência'
                             {...getHandleFor('agency')}
                             />
-        
+
                         <UserBankAccountInputTextField
                             id='user_bank_account_attributes_agency_digit'
                             className='w-col w-col-5 w-col-small-5 w-col-tiny-5'
@@ -195,27 +195,27 @@ const popularBanks : Bank[] = [
         id: 51,
         code: '001',
         name: 'Banco do Brasil S.A.'
-    }, 
+    },
     {
         id: 131,
         code: '341',
         name: 'Itaú Unibanco S.A.'
-    }, 
+    },
     {
         id: 122,
         code: '104',
         name: 'Caixa Econômica Federal'
-    }, 
+    },
     {
         id: 104,
         code: '033',
         name: 'Banco Santander  (Brasil)  S.A.'
-    }, 
+    },
     {
         id: 127,
         code: '399',
         name: 'HSBC Bank Brasil S.A. - Banco Múltiplo'
-    }, 
+    },
     {
         id: 23,
         code: '237',
@@ -231,6 +231,10 @@ const accountTypeOptions : { label : string, value : string }[] = [
     {
         label: 'Conta poupança',
         value: 'conta_poupanca',
+    },
+    {
+        label: 'Conta Fácil',
+        value: 'conta_facil',
     },
     {
         label: 'Conta corrente conjunta',
