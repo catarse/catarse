@@ -90,8 +90,13 @@ const userContributedBox = {
                                 ]),
                                 m('.fontsize-smallest',
                                     (contribution.installments > 1 ? (`${contribution.installments} x R$ ${ h.formatNumber(contribution.installment_value, 2) } `) : ''),
-                                    (contribution.payment_method === 'BoletoBancario' ? 'Boleto Bancário' : 'Cartão de Crédito')
+                                    (contribution.payment_method === 'BoletoBancario' ? window.I18n.t('bank_slip', contributionScope()) : window.I18n.t('credit_card', contributionScope()))
                                 ),
+                                (contribution.gateway_id ?
+                                    m('.fontsize-smallest',
+                                    ` ${window.I18n.t('id_payment_gateway', contributionScope())} ${contribution.gateway_id}`
+                                    ) : ''),
+
                                 (
                                     contribution.installments > 1 ?
                                         m(".fontsize-smallest.fontweight-semibold.u-marginbottom-10",
@@ -165,18 +170,18 @@ const userContributedBox = {
                                         ''
                                     ),
                                     m.trust('&nbsp;'),
-                                    'Questionário',
+                                    window.I18n.t('survey', contributionScope()),
                                     m('br'),
-                                    'Não respondido'
+                                    window.I18n.t('not_answered', contributionScope())
                                 ])
                             )
                         ) : answeredAt ?
                         m('.u-text-center.w-col.w-col-2', [
                             m('.fontsize-smaller.fontweight-semibold.lineheight-tighter',
                                 m(`a.link-hidden-dark[href='/contributions/${contribution.contribution_id}/surveys/${contribution.survey.survey_id}'][target='_blank']`, [
-                                    'Questionário',
+                                    window.I18n.t('survey', contributionScope()),
                                     m('br'),
-                                    'Respondido'
+                                    window.I18n.t('answered', contributionScope())
                                 ])
                             ),
                             m('.fontcolor-secondary.fontsize-smallest',
