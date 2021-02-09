@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/ruby:2.7.2-node-browsers
+      - image: circleci/ruby:3.0.0-node-browsers
       - image: postgres:11.5
         environment:
           POSTGRES_DB: catarse_test

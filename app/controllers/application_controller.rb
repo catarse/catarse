@@ -30,7 +30,7 @@ class ApplicationController < ActionController::Base
   def referral
     #ctrse_origin is created on frontend (analytics.js).
     #Expected to have this fields: domain,ref,campaign,source,medium,content,term to create an Origin object.
-    json = URI.unescape(cookies[:ctrse_origin]) if !cookies[:ctrse_origin].blank?
+    json = URI::Parser.new.unescape(cookies[:ctrse_origin]) if !cookies[:ctrse_origin].blank?
     ctrse_origin = (JSON.parse(json) if !json.nil?) || {}
     ctrse_origin.with_indifferent_access
   end

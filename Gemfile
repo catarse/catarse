@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.2'
+ruby '3.0.0'
 
 gem 'auto_html', '2.0.0'
 gem 'bootsnap', '1.7.2', require: false
@@ -19,13 +19,13 @@ gem 'cpf_cnpj', '0.5.0'
 gem 'dbhero', github: 'catarse/dbhero', branch: 'master'
 gem 'devise', '4.7.3'
 gem 'draper', '4.0.1'
-gem 'excelinator', '1.3.1'
+gem 'excelinator', github: 'stephannv/excelinator', branch: 'master'
 gem 'feedjira', '3.1.2'
 gem 'gridhook', github: 'catarse/gridhook', branch: 'master'
 gem 'has_scope', '0.8.0'
 gem 'high_voltage', '3.1.2'
 gem 'i18n_alchemy', '0.3.1', github: 'stephannv/i18n_alchemy', branch: 'master'
-gem 'i18n-js', '3.8.0'
+gem 'i18n-js', '3.8.1'
 gem 'inherited_resources', '1.12.0'
 gem 'jquery-rails', '4.4.0'
 gem 'jquery-ui-rails', '6.0.1'
@@ -39,7 +39,7 @@ gem 'parallel', '1.20.1'
 gem 'pg', '1.2.3'
 gem 'pg_search', '2.3.5'
 gem 'postgres-copy', '1.5.0'
-gem 'puma', '5.2.1'
+gem 'puma', '5.2.2'
 gem 'pundit', '2.1.0'
 gem 'rack-cors', '1.1.1'
 gem 'rails', '6.1.3'
@@ -73,7 +73,7 @@ gem 'whenever', '1.0.0'
 gem 'zendesk_api', '1.28.0'
 
 group :production do
-  gem 'fog-aws', '3.8.0'
+  gem 'fog-aws', '3.9.0'
 end
 
 group :development do
@@ -96,12 +96,12 @@ end
 group :test do
   gem 'rails-controller-testing', '1.0.5'
   gem 'shoulda-matchers', '4.5.1'
-  gem 'webmock', '3.11.2'
+  gem 'webmock', '3.12.0'
 end
 
 group :code_analysis do
-  gem 'rubocop', '1.10.0'
-  gem 'rubocop-performance', '1.9.2'
+  gem 'rubocop', '1.11.0'
+  gem 'rubocop-performance', '1.10.1'
   gem 'rubocop-rails', '2.9.1'
   gem 'rubocop-rspec', '2.2.0'
 end

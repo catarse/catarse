@@ -63,3 +63,9 @@ Style/FrozenStringLiteralComment:
 
 Style/StringLiterals:
   AutoCorrect: true
+
+Style/SymbolProc:
+  AllowMethodsWithArguments: true
+
+Style/UnlessLogicalOperators:
+  EnforcedStyle: forbid_logical_operators

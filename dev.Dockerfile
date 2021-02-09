@@ -1,4 +1,4 @@
-FROM ruby:2.7.2-alpine
+FROM ruby:3.0.0-alpine
 #FROM alpine:3.7
 MAINTAINER Catarse <contato@catarse.me>
 
@@ -18,7 +18,7 @@ RUN node -v
 RUN mkdir /usr/app
 WORKDIR /usr/app
 #
-RUN gem install bundler:2.1.4
+RUN gem install bundler:2.2.8
 #
 COPY Gemfile /usr/app/
 COPY Gemfile.lock /usr/app/
