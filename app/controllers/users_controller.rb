@@ -119,8 +119,10 @@ class UsersController < ApplicationController
 
   def update
     authorize resource
+    is_user_updated = update_user
+    bank_account_update?
 
-    if update_user
+    if is_user_updated && @user.errors.empty?
       # flash[:notice] = t('users.current_user_fields.updated')
       respond_to do |format|
         format.json { render json: { success: 'OK' } }
@@ -163,6 +165,17 @@ class UsersController < ApplicationController
       end
     else
       @user.update_without_password permitted_params.except(:current_password)
+    end
+  end
+
+  def bank_account_update?
+    if permitted_params[:bank_account_attributes]
+      validation = Transfeera::BankAccountValidator.validate(@user.bank_account)
+      if !validation[:valid]
+        validation[:errors].each do |error|
+          @user.errors.add("bank_account.#{error[:field]}", error[:message])
+        end
+      end
     end
   end
 
