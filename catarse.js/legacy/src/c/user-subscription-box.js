@@ -124,7 +124,7 @@ const userSubscriptionBox = {
                     m('span.badge.badge-attention.fontweight-semibold', [
                         m('span.fa.fa-arrow-right', ''),
                         m.trust('&nbsp;'),
-                        m(paymentMethodIcon, { subscription }),
+                        m(paymentMethodIcon, { subscription, paymentMethodOverride: subscription.payment_method }),
                     ]),
                 ];
             }
