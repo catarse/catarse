@@ -38,6 +38,11 @@ class Admin::ProjectsController < Admin::BaseController
     redirect_to admin_projects_path
   end
 
+  def banish_report
+    @project = Project.find params[:id]
+    BanishProjectWorker.perform_async(@project.id)
+  end
+
   def update
     resource.update(permitted_params)
     super

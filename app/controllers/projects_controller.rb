@@ -109,11 +109,6 @@ class ProjectsController < ApplicationController
     authorize resource, :update?
   end
 
-  def banish_report
-    authorize resource, :update?
-    BanishProjectWorker.perform_async(@project.id)
-  end
-
   def subscriptions_monthly_report_for_project_owners
     authorize resource, :update?
     report = SubscriptionMonthlyReportForProjectOwner.project_id(resource.common_id).to_csv
