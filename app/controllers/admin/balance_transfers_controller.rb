@@ -11,15 +11,29 @@ class Admin::BalanceTransfersController < Admin::BaseController
   end
 
   def batch_approve
-    collection.find_each do |resource|
-      resource.transition_to!(:authorized, { authorized_by: current_user.id })
+    batch_id = nil
+    ActiveRecord::Base.transaction do
+      pending_transfers.find_each do |resource|
+        resource.transition_to!(:authorized, { authorized_by: current_user.id })
+      end
+
+      batch_id = Transfeera::BatchTransfer.create(authorized_transfers)
+      authorized_transfers.update_all(:batch_id => batch_id)
+      authorized_transfers.find_each do |resource|
+        resource.transition_to!(:processing)
+      end
     end
 
-    render json: { transfer_ids: collection.pluck(&:id) }
+    render json: { transfer_ids: processing_transfers.pluck(&:id) }
+
+  rescue StandardError => error_message
+    Sentry.capture_exception(error_message)
+    Transfeera::BatchTransfer.remove(batch_id) unless batch_id.nil?
+    render json: { transfer_ids: [], error_message: error_message }, status: :unprocessable_entity
   end
 
   def batch_manual
-    collection.find_each do |resource|
+    pending_transfers.find_each do |resource|
       BalanceTransfer.transaction do
         resource.transition_to!(
           :authorized, { authorized_by: current_user.id }
@@ -36,11 +50,11 @@ class Admin::BalanceTransfersController < Admin::BaseController
       end
     end
 
-    render json: { transfer_ids: collection.pluck(&:id) }
+    render json: { transfer_ids: pending_transfers.pluck(&:id) }
   end
 
   def batch_reject
-    collection.find_each do |resource|
+    pending_transfers.find_each do |resource|
       resource.transition_to!(
         :rejected,
         authorized_by: current_user.id,
@@ -50,36 +64,8 @@ class Admin::BalanceTransfersController < Admin::BaseController
       )
     end
 
-    render json: { transfer_ids: collection.pluck(&:id) }
+    render json: { transfer_ids: pending_transfers.pluck(&:id) }
   end
-
-  # def process_transfers
-  #   _collection = BalanceTransfer.authorized
-  #   _collection.find_each do |bt|
-  #     begin
-  #       Rails.logger.info "[BalanceTransfer] processing -> #{bt.id} "
-  #       bt.pagarme_delegator.transfer_funds
-  #       bt.reload
-  #       Rails.logger.info "[BalanceTransfer] processed to -> #{bt.transfer_id}"
-  #     rescue Exception => e
-  #       Sentry.capture_exception(e, user: { balance_transfer_id: bt.id })
-  #       Rails.logger.info "[BalanceTransfer] processing gateway error on -> #{bt.id} "
-
-  #       bt.transition_to!(
-  #         :gateway_error,
-  #         { error_msg: e.message, error: e.to_json }
-  #       )
-  #     end
-  #   end
-
-  #   _processing_collection = BalanceTransfer.processing
-  #   _error_collection = BalanceTransfer.gateway_error
-
-  #   render json: {
-  #     error_ids: _error_collection.pluck(:id),
-  #     _processing_ids: _processing_collection.pluck(:id)
-  #   }
-  # end
 
   private
 
@@ -91,8 +77,16 @@ class Admin::BalanceTransfersController < Admin::BaseController
     @resource ||= BalanceTransfer.find params[:id]
   end
 
-  def collection
-    @collection ||= BalanceTransfer.pending.where(id: params[:transfer_ids])
+  def pending_transfers
+    @pending_transfers ||= BalanceTransfer.pending.where(id: params[:transfer_ids])
+  end
+
+  def authorized_transfers
+    @authorized_transfers ||= BalanceTransfer.authorized.where(id: params[:transfer_ids])
+  end
+
+  def processing_transfers
+    @processing_transfers ||= BalanceTransfer.processing.where(id: params[:transfer_ids])
   end
 
   def transfer_params

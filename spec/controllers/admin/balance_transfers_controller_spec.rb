@@ -16,8 +16,11 @@ RSpec.describe Admin::BalanceTransfersController, type: :controller do
 
   describe 'POST batch_approve' do
     context "when user has admin roles" do
+
       let(:balance_transfer) { create(:balance_transfer, project: successful_project)}
       before do
+        allow(Transfeera::BatchTransfer).to receive(:create).and_return({id: 1})
+        allow(Transfeera::BatchTransfer).to receive(:remove)
         current_user.admin_roles.create!(role_label: 'balance')
         post :batch_approve, params:{ transfer_ids: [balance_transfer.id] }
       end
@@ -26,8 +29,8 @@ RSpec.describe Admin::BalanceTransfersController, type: :controller do
         expect(response.code.to_i).to eq(200)
       end
 
-      it "expect balance_transfer to authorized" do
-        expect(balance_transfer.state).to eq("authorized")
+      it "expect balance_transfer to processing" do
+        expect(balance_transfer.state).to eq("processing")
       end
     end
 

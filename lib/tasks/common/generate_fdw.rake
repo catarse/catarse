@@ -77,7 +77,7 @@ namespace :common do
             status payment_service.payment_status NOT NULL,
             external_id text,
             error_retry_at timestamp without time zone
-        ) SERVER common_db 
+        ) SERVER common_db
         OPTIONS (schema_name 'payment_service', table_name 'catalog_payments');
 
         CREATE FOREIGN TABLE common_schema.payment_status_transitions (
