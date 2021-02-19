@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 namespace :projects do
   desc 'reject projects'
   task process_cancelation_requests: :environment do

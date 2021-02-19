@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SanitizeScriptTag
   def self.sanitize(string)
     scrubber = Rails::Html::TargetScrubber.new

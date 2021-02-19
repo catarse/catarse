@@ -1,4 +1,6 @@
 # coding: utf-8
+# frozen_string_literal: true
+
 class ProjectReportExport < ApplicationRecord
 
   REPORT_TYPE_LIST = %w[SubscriptionMonthlyReportForProjectOwner SubscriptionReportForProjectOwner]

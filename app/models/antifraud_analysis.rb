@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AntifraudAnalysis < ApplicationRecord
   belongs_to :payment
 

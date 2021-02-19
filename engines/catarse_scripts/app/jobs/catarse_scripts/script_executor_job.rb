@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module CatarseScripts
   class ScriptExecutorJob < ApplicationJob
     include Sidekiq::Status::Worker

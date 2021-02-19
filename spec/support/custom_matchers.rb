@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 
 RSpec::Matchers.define :custom_permit do |action|
   match do |policy|

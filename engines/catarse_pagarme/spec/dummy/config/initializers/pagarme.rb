@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 CatarsePagarme.configure do |config|
   config.api_key =  'foo'
   config.konduto_api_key = 'bar'

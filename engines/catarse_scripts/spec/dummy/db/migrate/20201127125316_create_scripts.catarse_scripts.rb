@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This migration comes from catarse_scripts (originally 20201118174237)
 class CreateScripts < ActiveRecord::Migration[6.1]
   def change

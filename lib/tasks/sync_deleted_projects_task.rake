@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SyncDeletedProjectsTask
   include Rake::DSL
 

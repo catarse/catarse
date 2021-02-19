@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'securerandom' unless defined?(SecureRandom)
 
 class ZendeskSessionsController < ApplicationController

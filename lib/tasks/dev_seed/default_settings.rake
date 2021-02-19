@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 namespace :dev_seed do
   desc 'states'
   task input_states: :environment do

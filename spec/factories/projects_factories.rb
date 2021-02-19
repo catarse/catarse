@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :project do
     # after(:create) do |project|
@@ -24,19 +26,22 @@ FactoryBot.define do
     content_rating { 1 }
 
     after :create do |project|
-      unless project.project_transitions.where(to_state: project.state).present?
+      if project.project_transitions.where(to_state: project.state).blank?
         create(:project_transition, to_state: project.state, project: project)
       end
 
       # should set expires_at when create a project in these states
-      if %w[online waiting_funds failed successful].include?(project.state) && project.online_days.present? && project.online_at.present?
+      if %w[online waiting_funds failed
+            successful].include?(project.state) && project.online_days.present? && project.online_at.present?
         project.expires_at = (project.online_at + project.online_days.days).end_of_day
         project.save
       end
     end
 
     after :build do |project|
-      project.rewards.build(deliver_at: 1.year.from_now, minimum_value: 10, description: 'test', shipping_options: 'free')
+      project.rewards.build(deliver_at: 1.year.from_now, minimum_value: 10, description: 'test',
+                            shipping_options: 'free'
+                           )
     end
   end
 end

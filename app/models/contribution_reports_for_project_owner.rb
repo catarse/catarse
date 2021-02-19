@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ContributionReportsForProjectOwner < ApplicationRecord
   acts_as_copy_target
 

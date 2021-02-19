@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PaymentEngines
   def self.new_payment(attributes={})
     Payment.new attributes

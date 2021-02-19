@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_dependency "catarse_scripts/application_controller"
 
 module CatarseScripts

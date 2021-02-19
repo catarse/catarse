@@ -1,4 +1,6 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
+
 # Load Spring without loading other gems in the Gemfile, for speed.
 require "bundler"
 Bundler.locked_gems.specs.find { |spec| spec.name == "spring" }&.tap do |spring|

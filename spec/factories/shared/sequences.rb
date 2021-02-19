@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   sequence :name do |n|
     "Foo bar #{n}"
@@ -11,9 +13,7 @@ FactoryBot.define do
     "person#{n}@example.com"
   end
 
-  sequence :uid do |n|
-    n.to_s
-  end
+  sequence :uid, &:to_s
 
   sequence :serial do |n|
     n

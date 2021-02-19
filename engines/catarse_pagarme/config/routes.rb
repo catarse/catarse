@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 CatarsePagarme::Engine.routes.draw do
   resources :pagarme, only: [], path: "payment/pagarme" do
 

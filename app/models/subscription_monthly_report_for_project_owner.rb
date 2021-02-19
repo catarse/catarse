@@ -1,4 +1,6 @@
 # coding: utf-8
+# frozen_string_literal: true
+
 class SubscriptionMonthlyReportForProjectOwner < ApplicationRecord
   acts_as_copy_target
 

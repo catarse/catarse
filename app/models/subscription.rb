@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Subscription < ApplicationRecord
   self.table_name = 'common_schema.subscriptions'
   self.primary_key = :id

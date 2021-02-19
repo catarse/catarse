@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'fog/aws'
 
 CarrierWave.configure do |config|
@@ -13,8 +15,8 @@ CarrierWave.configure do |config|
     }
     config.fog_directory  = CatarseSettings.get_without_cache(:aws_bucket)
     config.fog_attributes = { 'Cache-Control' => 'max-age=315576000' } # optional, defaults to {}
-  else
-    config.enable_processing = false if Rails.env.test? || Rails.env.cucumber?
+  elsif Rails.env.test? || Rails.env.cucumber?
+    config.enable_processing = false
   end
 end
 

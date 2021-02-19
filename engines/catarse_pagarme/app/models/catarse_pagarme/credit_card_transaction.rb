@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module CatarsePagarme
   class CreditCardTransaction < TransactionBase
     def process!

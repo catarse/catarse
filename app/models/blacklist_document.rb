@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BlacklistDocument < ApplicationRecord
   validates_uniqueness_of :number
   def number=(number)

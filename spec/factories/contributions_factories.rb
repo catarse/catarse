@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :contribution do
     association :project
@@ -38,7 +40,8 @@ FactoryBot.define do
           value: contribution.value,
           contribution: contribution,
           created_at: contribution.created_at,
-          payment_method: 'BoletoBancario')
+          payment_method: 'BoletoBancario'
+        )
       end
     end
 
@@ -70,7 +73,8 @@ FactoryBot.define do
           state: 'refunded',
           value: contribution.value,
           contribution: contribution,
-          created_at: contribution.created_at)
+          created_at: contribution.created_at
+        )
       end
     end
 
@@ -80,7 +84,8 @@ FactoryBot.define do
           state: 'paid',
           gateway: 'Credits',
           value: contribution.value,
-          contribution: contribution)
+          contribution: contribution
+        )
       end
     end
   end

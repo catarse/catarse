@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 namespace :common do
   desc 'generate common tables fdw'
   task generate_fdw: :environment do

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CatarsePagarme::VerifyPagarmeWorker
   include Sidekiq::Worker
   sidekiq_options retry: 5

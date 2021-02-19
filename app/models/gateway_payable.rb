@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class GatewayPayable < ApplicationRecord
   belongs_to :payment
 

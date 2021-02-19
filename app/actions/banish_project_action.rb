@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BanishProjectAction
 
   def initialize(project_id:)

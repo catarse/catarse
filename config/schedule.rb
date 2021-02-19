@@ -6,12 +6,14 @@
 set :job_template, nil
 set :output, { standard: '~/cron.log', error: '~/cron.log' }
 
-def generate_psql_c(view)
+def generate_psql_c(view) # rubocop:disable Metrics/MethodLength
   only_view = view.split('.')[1]
   parsed_name = view.start_with?('"') ? view.inspect : view
   %{ echo "DO language plpgsql \\$\\$BEGIN
   RAISE NOTICE 'begin updating #{parsed_name} %1',now();
-  IF NOT EXISTS (SELECT true FROM pg_stat_activity WHERE pg_backend_pid() <> pid AND query ~* 'refresh materialized .*#{only_view}') THEN
+  IF NOT EXISTS (
+    SELECT true FROM pg_stat_activity WHERE pg_backend_pid() <> pid AND query ~* 'refresh materialized .*#{only_view}'
+  ) THEN
      RAISE NOTICE 'refreshing view #{parsed_name} %1',now();
      REFRESH MATERIALIZED VIEW CONCURRENTLY #{parsed_name};
     RAISE NOTICE 'view refreshed #{parsed_name} %1',now();
@@ -31,7 +33,6 @@ def generate_psql_function(function)
       END\\$\\$;" | psql -U #{ENV['DB_USER']} -h #{ENV['DB_HOST']} -d #{ENV['DB_NAME']}
   }
 end
-
 
 %w[
   "1".finished_projects
@@ -71,7 +72,6 @@ end
     command generate_psql_c(v)
   end
 end
-
 
 %w[
   public.project_visitors_per_day_tbl_refresh

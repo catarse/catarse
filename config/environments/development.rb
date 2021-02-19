@@ -1,4 +1,6 @@
-require "active_support/core_ext/integer/time"
+# frozen_string_literal: true
+
+require 'active_support/core_ext/integer/time'
 
 Catarse::Application.configure do
   Slim::Engine.set_options pretty: true
@@ -15,10 +17,10 @@ Catarse::Application.configure do
   config.eager_load = true
 
   # Show full error reports.
-  config.consider_all_requests_local       = true
+  config.consider_all_requests_local = true
 
   # Enable/disable caching. By default caching is disabled.
-  if Rails.root.join('tmp', 'caching-dev.txt').exist?
+  if Rails.root.join('tmp/caching-dev.txt').exist?
     config.action_controller.perform_caching = true
     config.action_controller.enable_fragment_cache_logging = true
 
@@ -31,7 +33,7 @@ Catarse::Application.configure do
     config.cache_store = :null_store
   end
 
-# Store uploaded files on the local file system (see config/storage.yml for options)
+  # Store uploaded files on the local file system (see config/storage.yml for options)
   config.active_storage.service = :local
 
   # Don't care if the mailer can't send.
@@ -46,7 +48,6 @@ Catarse::Application.configure do
 
   # Tell Active Support which deprecation messages to disallow.
   config.active_support.disallowed_deprecation_warnings = []
-
 
   # Raise an error on page load if there are pending migrations
   config.active_record.migration_error = :page_load

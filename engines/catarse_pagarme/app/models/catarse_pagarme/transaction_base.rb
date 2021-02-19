@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module CatarsePagarme
   class TransactionBase
     attr_accessor :attributes, :payment,

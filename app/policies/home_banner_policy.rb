@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class HomeBannerPolicy < ApplicationPolicy
 
     def update?

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module CatarsePagarme
   class BalanceTransferDelegator
     attr_accessor :balance_transfer, :transfer

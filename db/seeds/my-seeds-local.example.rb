@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 ## Update this configuration seed and then run
 ## rake db:seed:my-seeds
 

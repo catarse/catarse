@@ -2,7 +2,7 @@
 
 atom_feed language: 'pt-BR' do |feed|
   feed.title t('pages.explore.title')
-  feed.updated Time.now
+  feed.updated Time.zone.now
 
   projects.each do |project|
     feed.entry(project, published: project.online_at, url: project_by_slug_url(permalink: project.permalink)) do |entry|

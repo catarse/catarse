@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module CatarseScripts
   module ApplicationHelper
     include Pagy::Frontend

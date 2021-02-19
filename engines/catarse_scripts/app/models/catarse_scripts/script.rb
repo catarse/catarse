@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module CatarseScripts
   class Script < ApplicationRecord
     self.table_name = :scripts

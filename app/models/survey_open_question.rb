@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SurveyOpenQuestion < ApplicationRecord
   belongs_to :survey
   has_many :survey_open_question_answers

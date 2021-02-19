@@ -1,4 +1,6 @@
-require "active_support/core_ext/integer/time"
+# frozen_string_literal: true
+
+require 'active_support/core_ext/integer/time'
 
 Catarse::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
@@ -65,14 +67,14 @@ Catarse::Application.configure do
   # Use a different logger for distributed setups.
   # require 'syslog/logger'
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
-  if ENV["RAILS_LOG_TO_STDOUT"].present?
-    logger = ActiveSupport::Logger.new(STDOUT)
+  if ENV['RAILS_LOG_TO_STDOUT'].present?
+    logger = ActiveSupport::Logger.new($stdout)
     logger.formatter = config.log_formatter
     config.logger = ActiveSupport::TaggedLogging.new(logger)
   end
 
   # https://github.com/ryanb/cancan/issues/511
-  config.logger = Logger.new(STDOUT)
+  config.logger = Logger.new($stdout)
   config.logger.level = Logger.const_get((ENV['LOG_LEVEL'] || 'ERROR').upcase)
 
   # Log disallowed deprecations.

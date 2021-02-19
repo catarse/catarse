@@ -9,9 +9,8 @@ module AbstractController
     def _normalize_render(*args, &block)
       options = _normalize_args(*args, &block)
       # TODO: remove defined? when we restore AP <=> AV dependency
-      if defined?(request) && request && request.variant.present?
-        options[:variant] = request.variant
-      end
+      options[:variant] = request.variant if defined?(request) && request && request.variant.present?
+
       _normalize_options(options)
       options
     end

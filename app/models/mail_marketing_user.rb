@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class MailMarketingUser < ApplicationRecord
   belongs_to :user
   belongs_to :mail_marketing_list

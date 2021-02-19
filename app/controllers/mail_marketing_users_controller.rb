@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class MailMarketingUsersController < ApplicationController
   def subscribe
     email = params['EMAIL']

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module CatarsePagarme
   class Configuration
     attr_accessor :api_key, :konduto_api_key, :slip_tax, :credit_card_tax, :interest_rate, :host, :subdomain, :protocol,

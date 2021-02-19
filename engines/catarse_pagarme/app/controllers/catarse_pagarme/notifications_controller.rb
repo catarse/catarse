@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module CatarsePagarme
   class NotificationsController < CatarsePagarme::ApplicationController
     skip_before_action :authenticate_user!

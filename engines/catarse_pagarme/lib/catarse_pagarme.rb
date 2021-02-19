@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "pagarme"
 require "konduto-ruby"
 require "catarse_pagarme/engine"

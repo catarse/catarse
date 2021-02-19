@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Home::BannersController < ApplicationController
     respond_to :json
 

@@ -2,6 +2,6 @@
 
 begin
   OmniauthCallbacksController.add_providers
-rescue
+rescue StandardError
   nil
 end

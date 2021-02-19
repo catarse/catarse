@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 namespace :sendgrid do
   desc 'remove mail marketing users that is on unsubscribe group'
   task sync_unsubscribe_groups: :environment do

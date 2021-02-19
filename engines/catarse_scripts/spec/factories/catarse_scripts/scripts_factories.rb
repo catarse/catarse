@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :script, class: 'CatarseScripts::Script' do
     association :creator, factory: :user

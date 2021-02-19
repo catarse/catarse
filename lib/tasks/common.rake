@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 namespace :common do
   desc 'index all users'
   task index_users: :environment do

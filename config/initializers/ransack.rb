@@ -1,19 +1,25 @@
+# frozen_string_literal: true
+
 require 'ransack'
 
-Ransack::Adapters::ActiveRecord::Base.class_eval('remove_method :search')
+Ransack::Adapters::ActiveRecord::Base.class_eval('remove_method :search') # rubocop:disable Style/EvalWithLocation
 
 module Arel
-  class Nodes::ContainsArray < Arel::Nodes::Binary
-    def operator
-      :"@>"
+  module Nodes
+    class ContainsArray < Arel::Nodes::Binary
+      def operator
+        :"@>"
+      end
     end
   end
 
-  class Visitors::PostgreSQL
-    private
+  module Visitors
+    class PostgreSQL
+      private
 
-    def visit_Arel_Nodes_ContainsArray(o, collector)
-      infix_value o, collector, ' @> '
+      def visit_Arel_Nodes_ContainsArray(other, collector) # rubocop:disable Naming/MethodName
+        infix_value other, collector, ' @> '
+      end
     end
   end
 

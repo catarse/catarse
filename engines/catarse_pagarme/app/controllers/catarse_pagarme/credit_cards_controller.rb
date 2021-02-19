@@ -1,4 +1,6 @@
 # coding: utf-8
+# frozen_string_literal: true
+
 module CatarsePagarme
   class CreditCardsController < CatarsePagarme::ApplicationController
     MAX_SOFT_DESCRIPTOR_LENGTH = 13

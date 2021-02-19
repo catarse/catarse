@@ -12,10 +12,8 @@ begin
     }
     ActionMailer::Base.delivery_method = :smtp
   end
-rescue
+rescue StandardError
   nil
 end
 
-if Rails.env.sandbox?
-  ActionMailer::Base.register_interceptor(SandboxMailInterceptor)
-end
+ActionMailer::Base.register_interceptor(SandboxMailInterceptor) if Rails.env.sandbox?

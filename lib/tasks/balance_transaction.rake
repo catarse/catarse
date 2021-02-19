@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 namespace :balance_transaction do
   desc 'expire balance transactions that can be expired'
   task expire_transactions: [:environment] do

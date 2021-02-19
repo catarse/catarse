@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SubscriptionPayment < ApplicationRecord
   include Shared::CommonWrapper
 

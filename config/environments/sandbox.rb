@@ -54,7 +54,7 @@ Catarse::Application.configure do
   # config.logger = ActiveSupport::TaggedLogging.new(SyslogLogger.new)
 
   # https://github.com/ryanb/cancan/issues/511
-  config.logger = Logger.new(STDOUT)
+  config.logger = Logger.new($stdout)
   config.logger.level = Logger.const_get((ENV['LOG_LEVEL'] || 'ERROR').upcase)
 
   # Use a different cache store in production.

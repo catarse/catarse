@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
@@ -51,15 +53,15 @@ gem 'responders', '3.0.1'
 gem 'sass-rails', '6.0.0'
 gem 'sendgrid-ruby', '4.0.6'
 gem 'sentry-raven', '3.1.1'
-gem 'sidekiq',  '6.1.2'
+gem 'sidekiq', '6.1.2'
 gem 'sidekiq-status', '1.1.4'
 gem 'simple_form', '5.0.3'
 gem 'simple_token_authentication', '1.17.0'
 gem 'sitemap_generator', '6.1.2'
 gem 'slim-rails', '3.2.0'
 gem 'sprockets', '3.7.2'
-gem 'statesman', '7.4.1'
 gem 'state_machines-activerecord', '0.6.0'
+gem 'statesman', '7.4.1'
 gem 'typhoeus', '1.4.0'
 gem 'tzinfo-data', '1.2.7', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'user_notifier', '0.4.0', github: 'stephannv/user_notifier', branch: 'master'

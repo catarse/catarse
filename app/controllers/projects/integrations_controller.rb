@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Projects::IntegrationsController < ApplicationController
 
   helper_method :resource, :parent

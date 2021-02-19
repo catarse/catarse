@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ImportMissingPayablesAction
   def initialize(payment:)
     @payment = payment

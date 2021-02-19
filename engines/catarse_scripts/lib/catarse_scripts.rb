@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "catarse_scripts/version"
 require "catarse_scripts/engine"
 

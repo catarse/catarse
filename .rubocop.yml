@@ -3,6 +3,11 @@ require:
   - rubocop-rails
   - rubocop-rspec
 
+inherit_from: ./.rubocop-disable-legacy.yml
+inherit_mode:
+  merge:
+    - Exclude
+
 AllCops:
   NewCops: enable
   Exclude:
@@ -10,20 +15,28 @@ AllCops:
     - 'vendor/**/*'
     - 'db/schema.rb'
     - 'db/migrate/*'
+    - 'config/routes.rb'
     - 'node_modules/**/*'
-    - 'config/initializers/devise.rb'
+    - 'catarse.js/**/*'
+    - 'engines/**/*'
 
 Layout/ArgumentAlignment:
   EnforcedStyle: with_fixed_indentation
 
 Layout/CaseIndentation:
-  EnforcedStyle: case
+  EnforcedStyle: end
 
 Layout/EndAlignment:
   EnforcedStyleAlignWith: start_of_line
 
+Layout/FirstHashElementIndentation:
+  EnforcedStyle: consistent
+
 Layout/LineLength:
   Max: 120
+
+Layout/MultilineMethodCallBraceLayout:
+  EnforcedStyle: new_line
 
 Layout/MultilineMethodCallIndentation:
   EnforcedStyle: indented
@@ -33,8 +46,20 @@ Metrics/BlockLength:
     - 'spec/**/*'
     - 'config/environments/*'
 
+Rails/Delegate:
+  Enabled: false
+
+Rails/UnknownEnv:
+  Environments: ['production', 'test', 'development', 'sandbox', 'cucumber']
+
+RSpec/MessageSpies:
+  EnforcedStyle: receive
+
 Style/Documentation:
   Enabled: false
 
 Style/FrozenStringLiteralComment:
   Enabled: false
+
+Style/StringLiterals:
+  AutoCorrect: true

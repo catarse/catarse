@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SubscriptionTransition < ApplicationRecord
   self.table_name = 'common_schema.subscription_status_transitions'
   self.primary_key = :id

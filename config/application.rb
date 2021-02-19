@@ -6,7 +6,7 @@ require 'sitemap_generator/tasks'
 
 if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line
-  Bundler.require *Rails.groups(assets: %w[development test])
+  Bundler.require(*Rails.groups(assets: %w[development test]))
   # If you want your assets lazily compiled in production, use this line
   # Bundler.require(:default, :assets, Rails.env)
 end
@@ -28,12 +28,12 @@ module Catarse
       end
     end
 
-    config.paths['app/views'].unshift("#{Rails.root}/app/views/catarse_bootstrap")
+    config.paths['app/views'].unshift(Rails.root.join('app/views/catarse_bootstrap'))
 
     # NOTE: the custom view path is for build a new style without need to
     # edit the catarse_views
     # raise config.paths['app/views'].inspect
-    config.paths['app/views'].unshift("#{Rails.root}/app/views/custom")
+    config.paths['app/views'].unshift(Rails.root.join('app/views/custom'))
 
     config.active_record.schema_format = :sql
 
@@ -65,8 +65,8 @@ module Catarse
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
 
-    config.assets.paths << "#{Rails.root}/node_modules"
-    config.assets.paths << "#{Rails.root}"
+    config.assets.paths << Rails.root.join('node_modules')
+    config.assets.paths << Rails.root.to_s
 
     config.active_record.dump_schema_after_migration = true
 
