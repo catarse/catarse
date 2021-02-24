@@ -20,7 +20,7 @@ class Category < ApplicationRecord
   end
 
   def self.array
-    order('name_' + I18n.locale.to_s + ' ASC').collect { |c| [c.send('name_' + I18n.locale.to_s), c.id] }
+    order(Arel.sql("name_#{I18n.locale.to_s} ASC")).collect { |c| [c.send('name_' + I18n.locale.to_s), c.id] }
   end
 
   def to_s

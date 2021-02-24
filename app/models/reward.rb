@@ -141,6 +141,6 @@ class Reward < ApplicationRecord
   private
 
   def pluck_from_database(attribute)
-    Reward.where(id: id).pluck("rewards.#{attribute}").first
+    Reward.where(id: id).pluck(Arel.sql("rewards.#{attribute}")).first
   end
 end

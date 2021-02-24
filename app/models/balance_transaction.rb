@@ -289,6 +289,6 @@ class BalanceTransaction < ApplicationRecord
   private
 
   def pluck_from_database(field)
-		BalanceTransaction.where(id: id).pluck("balance_transactions.#{field}").first
+		BalanceTransaction.where(id: id).pluck(Arel.sql("balance_transactions.#{field}")).first
   end
 end

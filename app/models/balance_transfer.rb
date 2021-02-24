@@ -66,6 +66,6 @@ class BalanceTransfer < ApplicationRecord
   end
 
   def pluck_from_database(attribute)
-    BalanceTransfer.where(id: id).pluck("balance_transfers.#{attribute}").first
+    BalanceTransfer.where(id: id).pluck(Arel.sql("balance_transfers.#{attribute}")).first
   end
 end

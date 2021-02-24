@@ -162,6 +162,6 @@ class Payment < ApplicationRecord
   end
 
   def pluck_from_database(field)
-    Payment.where(id: id).pluck("payments.#{field}").first
+    Payment.where(id: id).pluck(Arel.sql("payments.#{field}")).first
   end
 end

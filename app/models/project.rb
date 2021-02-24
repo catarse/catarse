@@ -490,7 +490,7 @@ class Project < ApplicationRecord
   end
 
   def pluck_from_database(attribute)
-    Project.where(id: id).pluck("projects.#{attribute}").first
+    Project.where(id: id).pluck(Arel.sql("projects.#{attribute}")).first
   end
 
   def open_for_contributions?

@@ -1,0 +1,142 @@
+{
+  "ignored_warnings": [
+    {
+      "warning_type": "Dynamic Render Path",
+      "warning_code": 15,
+      "fingerprint": "0ba145b1abdd1ea8beecfbb6842349c21ee0fd8c3fc40d0f2a738a895f3b9041",
+      "check_name": "Render",
+      "message": "Render path contains parameter value",
+      "file": "app/controllers/notifications_controller.rb",
+      "line": 9,
+      "link": "https://brakemanscanner.org/docs/warning_types/dynamic_render_path/",
+      "code": "render(action => \"user_notifier/mailer/#{kclass.find(params[:notification_id]).template_name}\", { :locals => ({ :notification => kclass.find(params[:notification_id]) }), :layout => \"layouts/email\" })",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "NotificationsController",
+        "method": "show"
+      },
+      "user_input": "params[:notification_id]",
+      "confidence": "Weak",
+      "note": ""
+    },
+    {
+      "warning_type": "Unscoped Find",
+      "warning_code": 82,
+      "fingerprint": "4bf8cfe4a37ecbe09a59dd1bbb6ce4407cedff227c56b3e777943971044fcab2",
+      "check_name": "UnscopedFind",
+      "message": "Unscoped call to `Reward#find`",
+      "file": "app/controllers/reports/contribution_reports_for_project_owners_controller.rb",
+      "line": 14,
+      "link": "https://brakemanscanner.org/docs/warning_types/unscoped_find/",
+      "code": "Reward.find(params[:reward_id])",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "Reports::ContributionReportsForProjectOwnersController",
+        "method": "index"
+      },
+      "user_input": "params[:reward_id]",
+      "confidence": "Weak",
+      "note": ""
+    },
+    {
+      "warning_type": "Unscoped Find",
+      "warning_code": 82,
+      "fingerprint": "90c90c4a099bb2f68a9a53514e8cbbcac4e06e7510e98249719658fa336c2f3b",
+      "check_name": "UnscopedFind",
+      "message": "Unscoped call to `ContributionDetail#find_by_id`",
+      "file": "app/controllers/admin/contributions_controller.rb",
+      "line": 35,
+      "link": "https://brakemanscanner.org/docs/warning_types/unscoped_find/",
+      "code": "ContributionDetail.find_by_id(params[:id])",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "Admin::ContributionsController",
+        "method": "resource"
+      },
+      "user_input": "params[:id]",
+      "confidence": "Weak",
+      "note": ""
+    },
+    {
+      "warning_type": "Remote Code Execution",
+      "warning_code": 110,
+      "fingerprint": "9ae68e59cfee3e5256c0540dadfeb74e6b72c91997fdb60411063a6e8518144a",
+      "check_name": "CookieSerialization",
+      "message": "Use of unsafe cookie serialization strategy `:hybrid` might lead to remote code execution",
+      "file": "config/initializers/cookies_serializer.rb",
+      "line": 7,
+      "link": "https://brakemanscanner.org/docs/warning_types/unsafe_deserialization",
+      "code": "Rails.application.config.action_dispatch.cookies_serializer = :hybrid",
+      "render_path": null,
+      "location": null,
+      "user_input": null,
+      "confidence": "Medium",
+      "note": ""
+    },
+    {
+      "warning_type": "Unscoped Find",
+      "warning_code": 82,
+      "fingerprint": "a33b6d058c6144487c9654a98bf8727e7c59ce635a7dd1d7e11b34975917996c",
+      "check_name": "UnscopedFind",
+      "message": "Unscoped call to `Survey#find`",
+      "file": "app/controllers/surveys_controller.rb",
+      "line": 59,
+      "link": "https://brakemanscanner.org/docs/warning_types/unscoped_find/",
+      "code": "Survey.find(params[:id])",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "SurveysController",
+        "method": "resource"
+      },
+      "user_input": "params[:id]",
+      "confidence": "Weak",
+      "note": ""
+    },
+    {
+      "warning_type": "SQL Injection",
+      "warning_code": 0,
+      "fingerprint": "d9e611aeee62a3d511531f8ec4c08df6952a22e630ec0fb9c692acb791c5cc10",
+      "check_name": "SQL",
+      "message": "Possible SQL injection",
+      "file": "app/models/project.rb",
+      "line": 110,
+      "link": "https://brakemanscanner.org/docs/warning_types/sql_injection/",
+      "code": "where(\"projects.#{column} between :start and :end\", :start => start_at, :end => end_at)",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "Project",
+        "method": "between_dates"
+      },
+      "user_input": "column",
+      "confidence": "Medium",
+      "note": ""
+    },
+    {
+      "warning_type": "Remote Code Execution",
+      "warning_code": 24,
+      "fingerprint": "df35366bcde83f527ece86a6ec8ae815b33b7f48205668abb5ea6e0afc6edef1",
+      "check_name": "UnsafeReflection",
+      "message": "Unsafe reflection method `constantize` called with parameter value",
+      "file": "app/controllers/notifications_controller.rb",
+      "line": 15,
+      "link": "https://brakemanscanner.org/docs/warning_types/remote_code_execution/",
+      "code": "params[:notification_type].camelize.singularize.constantize",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "NotificationsController",
+        "method": "kclass"
+      },
+      "user_input": "params[:notification_type].camelize.singularize",
+      "confidence": "High",
+      "note": ""
+    }
+  ],
+  "updated": "2021-02-24 10:19:18 -0300",
+  "brakeman_version": "5.0.0"
+}

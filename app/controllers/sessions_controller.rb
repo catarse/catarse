@@ -11,7 +11,7 @@ class SessionsController < Devise::SessionsController
   def destroy_and_redirect
     sign_out current_user
     if params[:redirect_to]
-      redirect_to params[:redirect_to]
+      redirect_to URI.parse(params[:redirect_to]).path
     elsif params[:project_id]
       url_params = { project_id: params[:project_id].to_i, locale: nil }
       url_params[:reward_id] = params[:reward_id].to_i if params[:reward_id] && params[:reward_id] != 'null'
