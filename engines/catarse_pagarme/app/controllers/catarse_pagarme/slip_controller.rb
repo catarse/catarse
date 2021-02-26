@@ -34,11 +34,14 @@ module CatarsePagarme
     def slip_attributes
       {
         payment_method: 'boleto',
+        boleto_rules: ['strict_expiration_date'],
         boleto_expiration_date: payment.slip_expiration_date,
         amount: delegator.value_for_transaction,
-        postback_url: ipn_pagarme_index_url(host: CatarsePagarme.configuration.host,
-                                            subdomain: CatarsePagarme.configuration.subdomain,
-                                            protocol: CatarsePagarme.configuration.protocol),
+        postback_url: ipn_pagarme_index_url(
+          host: CatarsePagarme.configuration.host,
+          subdomain: CatarsePagarme.configuration.subdomain,
+          protocol: CatarsePagarme.configuration.protocol
+        ),
         customer: {
           email: payment.user.email,
           name: payment.user.name,
