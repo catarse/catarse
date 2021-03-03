@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
   helper_method :referral, :render_projects, :is_projects_home?,
                 :render_feeds, :public_settings
 
-  before_action :force_www
+  before_action :detect_old_browsers, :force_www
 
   def referral
     #ctrse_origin is created on frontend (analytics.js).

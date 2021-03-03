@@ -7,7 +7,6 @@ class Projects::ContributionsController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:moip]
   after_action :verify_authorized, except: [:index]
   belongs_to :project
-  before_action :detect_old_browsers, only: %i[new create]
 
   helper_method :engine
 

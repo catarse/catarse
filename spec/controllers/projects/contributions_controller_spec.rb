@@ -127,24 +127,11 @@ RSpec.describe Projects::ContributionsController, type: :controller do
     let(:secure_review_host) { nil }
     let(:user) { create(:user) }
     let(:open_for_contributions) { true }
-    let(:browser) { Browser.new('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.29 Safari/537.36 Edg/79.0.309.18') }
 
     before do
       CatarseSettings[:secure_review_host] = secure_review_host
       allow_any_instance_of(Project).to receive(:open_for_contributions?).and_return(open_for_contributions)
-      allow(controller).to receive(:browser).and_return(browser)
-      allow_any_instance_of(ApplicationController).to receive(:detect_old_browsers).and_call_original
       get :new, params: { locale: :pt, project_id: project.id }
-    end
-
-    context 'when browser is IE 9' do
-      let(:browser) { Browser.new('Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)') }
-      it { is_expected.to redirect_to page_path('bad_browser') }
-    end
-
-    context 'when browser is old' do
-      let(:browser) { Browser.new('Mozilla/5.0 (Linux; U; Android 2.3.3; en-us; Sensation_4G Build/GRI40) AppleWebKit/533.1 (KHTML, like Gecko) Version/5.0 Safari/533.16') }
-      it { is_expected.to redirect_to page_path('bad_browser') }
     end
 
     context 'when no user is logged' do
