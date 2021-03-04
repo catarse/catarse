@@ -106,6 +106,12 @@ pt:
       delivery_estimate: "Estimativa de entrega:"
       delivery_status: "Status da entrega:"
       answer_survey: "Responda o questionário"
+      id_payment_gateway: "ID do Apoio:"
+      survey: "Questionário"
+      not_answered: "Não respondido"
+      answered: "Respondido"
+      bank_slip: "Boleto Bancário"
+      credit_card: "Cartão de Crédito"
     subscription_row:
       anonymous_sub: 'Quero que minha assinatura não seja pública'
       anonymous_sub_title: 'Assinatura anônima'

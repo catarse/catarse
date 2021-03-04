@@ -103,6 +103,12 @@ en:
       delivery_estimate: 'Estimated delivery:'
       delivery_status: 'Delivery Status:'
       answer_survey: Answer the questionnaire
+      id_payment_gateway: "Contribution ID:"
+      survey: "Survey"
+      not_answered: "Not answered"
+      answered: "Answered"
+      bank_slip: "Bank Slip"
+      credit_card: "Credit Card"
     card:
       twitter_profile: Twitter Profile
       facebook_profile: Facebook profile
