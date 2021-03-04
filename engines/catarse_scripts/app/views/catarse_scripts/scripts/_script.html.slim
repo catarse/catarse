@@ -13,5 +13,5 @@
       = script.description.truncate(80)
       - script.tags.each do |tag|
         .tag.tag--link.text-gray-000.bg-purple-500
-          = link_to tag, scripts_path(q: { tags_cont: tag }), class: 'text-gray-000'
+          = link_to tag, scripts_path(q: { tags_contains_array: "[{\"value\":\"#{tag}\"}]" }), class: 'text-gray-000'
   .card-footer.level.content.mx-3(title=script.created_at) = time_ago_in_words(script.created_at)
