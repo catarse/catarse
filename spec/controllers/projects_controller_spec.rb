@@ -339,13 +339,6 @@ RSpec.describe ProjectsController, type: :controller do
     end
   end
 
-  describe 'PUT banish_report' do
-    before do
-      put :banish_report, params: { id: project }
-    end
-    it { is_expected.to have_http_status(302) }
-  end
-
   describe 'Solidarity project' do
     let(:integrations_attributes) { [{ name: 'SOLIDARITY_SERVICE_FEE', data: { name: 'SOLIDARITY FEE NAME' } }] }
 

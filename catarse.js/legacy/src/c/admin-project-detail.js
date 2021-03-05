@@ -111,7 +111,7 @@ const adminProjectDetail = {
                 banishProject.complete(false);
                 m.request({
                     method: 'PUT',
-                    url: `/projects/${project_id}/banish_report`,
+                    url: `admin/projects/${project_id}/banish_report`,
                     config: h.setCsrfToken,
                     }).then(() => {
                         banishProject.complete(true);
