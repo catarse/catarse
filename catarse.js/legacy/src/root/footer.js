@@ -35,8 +35,8 @@ const footer = {
                                                 m(`a.link-footer[href=\'https://www.catarse.me/${window.I18n.locale}/press?ref=ctrse_footer\']`,
                                                     ' Imprensa'
                                                 ),
-                                                m('a.u-marginbottom-30.link-footer[href=\'http://ano.catarse.me/2019?ref=ctrse_footer\']',
-                                                    ' Retrospectiva 2019'
+                                                m('a.u-marginbottom-30.link-footer[href=\'http://ano.catarse.me/2020?ref=ctrse_footer\']',
+                                                    ' Retrospectiva 2020'
                                                 ),
                                                 m('.footer-full-signature-text.fontsize-small',
                                                     'Redes Sociais'
