@@ -116,65 +116,65 @@ task verify_pagarme_refunds: [:environment] do
   end
 end
 
-desc 'Sync all gateway payments using all transactions'
-task :gateway_payments_sync, %i[nthreads page_size] => [:environment] do |t, args|
-  args.with_defaults nthreads: 3, page_size: 500
-  ActiveRecord::Base.connection_pool.with_connection do
-    PagarMe.api_key = CatarsePagarme.configuration.api_key
-    page = 1
-    per_page = args.page_size.to_i
-
-    loop do
-      Rails.logger.info "[GatewayPayment SYNC] -> running on page #{page}"
-
-      transactions = PagarMe::Transaction.all(page, per_page)
-
-      if transactions.empty?
-        Rails.logger.info '[GatewayPayment SYNC] -> exiting no transactions returned'
-        break
-      end
-
-      Rails.logger.info '[GatewayPayment SYNC] - sync transactions'
-      Parallel.map(transactions, in_threads: args.nthreads.to_i) do |transaction|
-        postbacks = begin
-                      transaction.postbacks.to_json
-                    rescue
-                      nil
-                    end
-        payables = begin
-                     transaction.payables.to_json
-                   rescue
-                     nil
-                   end
-        operations = begin
-                       transaction.operations.to_json
-                     rescue
-                       nil
-                     end
-        events = begin
-                   transaction.events.to_json
-                 rescue
-                   nil
-                 end
-
-        gpayment = GatewayPayment.find_or_create_by transaction_id: transaction.id.to_s
-        gpayment.update(
-          gateway_data: transaction.to_json,
-          postbacks: postbacks,
-          payables: payables,
-          events: events,
-          operations: operations,
-          last_sync_at: DateTime.now
-        )
-        print '.'
-      end
-      Rails.logger.info "[GatewayPayment SYNC] - transactions synced on page #{page}"
-
-      page += 1
-      sleep 1
-    end
-  end
-end
+#desc 'Sync all gateway payments using all transactions'
+#task :gateway_payments_sync, %i[nthreads page_size] => [:environment] do |t, args|
+#  args.with_defaults nthreads: 3, page_size: 500
+#  ActiveRecord::Base.connection_pool.with_connection do
+#    PagarMe.api_key = CatarsePagarme.configuration.api_key
+#    page = 1
+#    per_page = args.page_size.to_i
+#
+#    loop do
+#      Rails.logger.info "[GatewayPayment SYNC] -> running on page #{page}"
+#
+#     transactions = PagarMe::Transaction.all(page, per_page)
+#
+#      if transactions.empty?
+#        Rails.logger.info '[GatewayPayment SYNC] -> exiting no transactions returned'
+#        break
+#      end
+#
+#      Rails.logger.info '[GatewayPayment SYNC] - sync transactions'
+#      Parallel.map(transactions, in_threads: args.nthreads.to_i) do |transaction|
+#        postbacks = begin
+#                      transaction.postbacks.to_json
+#                    rescue
+#                      nil
+#                    end
+#        payables = begin
+#                     transaction.payables.to_json
+#                   rescue
+#                     nil
+#                   end
+#        operations = begin
+#                       transaction.operations.to_json
+#                     rescue
+#                       nil
+#                     end
+#       events = begin
+#                   transaction.events.to_json
+#                 rescue
+#                   nil
+#                 end
+#
+#        gpayment = GatewayPayment.find_or_create_by transaction_id: transaction.id.to_s
+#        gpayment.update(
+#          gateway_data: transaction.to_json,
+#          postbacks: postbacks,
+#          payables: payables,
+#          events: events,
+#          operations: operations,
+#          last_sync_at: DateTime.now
+#        )
+#        print '.'
+#      end
+#      Rails.logger.info "[GatewayPayment SYNC] - transactions synced on page #{page}"
+#
+#      page += 1
+#      sleep 1
+#    end
+#  end
+#end
 
 desc 'Verify all transactions in pagarme for a given date range and check their consistency in our database'
 task :verify_pagarme_transactions, %i[start_date end_date] => :environment do |task, args|
