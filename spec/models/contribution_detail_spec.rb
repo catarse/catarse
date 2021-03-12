@@ -3,6 +3,9 @@
 require 'rails_helper'
 
 RSpec.describe ContributionDetail, type: :model do
+
+  let(:uuid_regexp) { /[0-9a-f]{8}\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\b[0-9a-f]{12}/ }
+
   describe 'associations' do
     it { should belong_to :user }
     it { should belong_to :project }
@@ -168,7 +171,10 @@ RSpec.describe ContributionDetail, type: :model do
       CatarseSettings[:aws_bucket] = 'bucket'
     end
 
-    it { is_expected.to eq "https://#{CatarseSettings[:aws_host]}/#{CatarseSettings[:aws_bucket]}/uploads/project/uploaded_image/#{contribution.project.id}/project_thumb_small_testimg.png" }
+    it do
+      url_regexp = Regexp.new("https\://#{CatarseSettings[:aws_host]}/#{CatarseSettings[:aws_bucket]}/uploads/project/uploaded_image/#{contribution.project.id}/project_thumb_small_#{uuid_regexp}\.png")
+      is_expected.to match(url_regexp)
+    end
   end
 
   describe '#user_profile_img' do
@@ -180,6 +186,9 @@ RSpec.describe ContributionDetail, type: :model do
       CatarseSettings[:aws_bucket] = 'bucket'
     end
 
-    it { is_expected.to eq "https://#{CatarseSettings[:aws_host]}/#{CatarseSettings[:aws_bucket]}/uploads/user/uploaded_image/#{contribution.user.id}/thumb_avatar_testimg.png" }
+    it do
+      url_regexp = Regexp.new("https://#{CatarseSettings[:aws_host]}/#{CatarseSettings[:aws_bucket]}/uploads/user/uploaded_image/#{contribution.user.id}/thumb_avatar_#{uuid_regexp}\.png")
+      is_expected.to match(url_regexp)
+    end
   end
 end
