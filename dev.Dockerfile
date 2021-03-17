@@ -1,8 +1,8 @@
-FROM ruby:3.0.0-alpine
+FROM ruby:3.0.0-alpine3.13
 #FROM alpine:3.7
 MAINTAINER Catarse <contato@catarse.me>
 
-ENV BUILD_PACKAGES postgresql-dev libxml2-dev libxslt-dev imagemagick imagemagick-dev openssl libpq libffi-dev bash curl-dev libstdc++ tzdata bash ca-certificates build-base ruby-dev libc-dev linux-headers postgresql-client postgresql git
+ENV BUILD_PACKAGES postgresql-dev libxml2-dev libxslt-dev imagemagick imagemagick-dev openssl libpq libffi-dev bash curl-dev libstdc++ tzdata bash ca-certificates build-base ruby-dev libc-dev linux-headers postgresql-client postgresql git nodejs yarn
 ENV RUBY_PACKAGES ruby ruby-io-console ruby-bundler ruby-irb ruby-bigdecimal ruby-json zlib-dev yaml-dev readline-dev ruby-dev ncurses
 ## Update and install all of the required packages.
 ## At the end, remove the apk cache
@@ -10,9 +10,7 @@ RUN apk update && \
     apk upgrade && \
     apk --update add --virtual build_deps $BUILD_PACKAGES && \
     apk --update add $RUBY_PACKAGES
-#
-RUN apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/v3.12/main/ nodejs=12.20.1-r0
-RUN apk add yarn=1.22.10-r0
+
 
 RUN node -v
 RUN mkdir /usr/app
