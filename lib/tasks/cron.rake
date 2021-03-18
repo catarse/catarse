@@ -116,9 +116,9 @@ namespace :cron do
   desc 'Notify who have not answered the survey after a week'
   task notify_unanswered_surveys: :environment do
     Survey.where(finished_at: nil).each do |survey|
-      survey.reward.contributions.was_confirmed.each do |contribution|
-        if !contribution.survey_answered_at && ContributionNotification.where(contribution: contribution, template_name: 'answer_survey').where("created_at > current_timestamp - '1 week'::interval ").empty?
-          survey.notify_to_contributors(:answer_survey)
+      survey.reward.contributions.where(survey_answered_at: nil).was_confirmed.each do |contribution|
+        if !contribution.survey_answered_at && contribution.notifications.where(template_name: 'answer_survey').where("created_at > current_timestamp - '1 week'::interval ").empty?
+          contribution.notify(:answer_survey, contribution.user, contribution, {})
         end
       end
     end
