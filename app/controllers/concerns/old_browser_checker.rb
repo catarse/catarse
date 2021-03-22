@@ -16,7 +16,7 @@ module OldBrowserChecker
   end
 
   def detect_old_browsers
-    return if modern_browser?(browser)
+    return if modern_browser?(browser) || request.original_fullpath.include?('bad_browser')
 
     redirect_to page_path('bad_browser')
   end
