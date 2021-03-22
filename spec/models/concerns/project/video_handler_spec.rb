@@ -4,6 +4,7 @@ require 'rails_helper'
 
 RSpec.describe Project::VideoHandler, type: :model do
   let(:project) { create(:project) }
+  let(:uuid_regexp) { /[0-9a-f]{8}\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\b[0-9a-f]{12}/ }
 
   describe '#download_video_thumbnail' do
     before do
@@ -18,7 +19,8 @@ RSpec.describe Project::VideoHandler, type: :model do
     end
 
     it 'should open the video_url and store it in video_thumbnail' do
-      expect(project.video_thumbnail.url).to match("/uploads/project/video_thumbnail/#{project.id}/")
+      url_regexp = Regexp.new("/uploads/project/video_thumbnail/#{project.id}/#{uuid_regexp}")
+      expect(project.video_thumbnail.url).to match(url_regexp)
     end
   end
 end
