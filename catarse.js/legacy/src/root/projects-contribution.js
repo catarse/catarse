@@ -16,7 +16,7 @@ const projectsContribution = {
         const {
             ViewContentEvent,
         } = projectVM;
-        
+
         projectVM.sendPageViewForCurrentProject(null, [ ViewContentEvent() ]);
 
         const rewards = () => _.union(
@@ -25,7 +25,7 @@ const projectsContribution = {
                 description: 'Obrigado. Eu só quero ajudar o projeto.',
                 minimum_value: 10,
                 shipping_options: null,
-                row_order: -9999999
+                row_order: Number.NEGATIVE_INFINITY
             }],
             projectVM.rewardDetails()
         );

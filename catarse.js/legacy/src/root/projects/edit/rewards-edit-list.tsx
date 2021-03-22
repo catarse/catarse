@@ -2,11 +2,8 @@ import m from 'mithril'
 import moment from 'moment'
 import _ from 'underscore'
 import h from '../../../h'
-import { RewardDetails } from '../../../entities/reward-details'
 import { RewardDetailsStream, ToggleStream, StreamType } from '../../../entities/reward-details-stream'
 import rewardVM from '../../../vms/reward-vm'
-import dashboardRewardCard from '../../dashboard-reward-card'
-import editRewardCard from '../../edit-reward-card'
 import userVM from '../../../vms/user-vm'
 import { ProjectDetails } from '../../../entities/project-details'
 import { RewardsEditListCard } from './rewards-edit-list-card'
@@ -69,7 +66,7 @@ export class RewardsEditList implements m.Component {
                 run_out: h.toggleProp(false, true) as any as ToggleStream<boolean>,
                 newReward: true,
                 uploaded_image: prop(null),
-                row_order: prop(999999999 + (rewards().length * 20)) // we need large and spaced apart numbers
+                row_order: prop(Number.POSITIVE_INFINITY),
             };
         }
 
@@ -229,7 +226,7 @@ export class RewardsEditList implements m.Component {
                         </div>
                     }
                 </div>
-                <AddRewardButton 
+                <AddRewardButton
                     shouldDisplayButton={shouldShowAddRewardButton}
                     onclick={() => {
                         state.rewards().push(prop(state.newReward()));
