@@ -14,7 +14,7 @@ import { UserBalance } from './#balance';
 const usersEdit = {
     oninit: function(vnode) {
         const userDetails = prop({}),
-            userId = vnode.attrs.user_id.split('-')[0],
+            userId = vnode.attrs.user_id,
             hash = prop(window.location.hash),
             displayTabContent = (user) => {
                 const tabs = {
@@ -101,14 +101,7 @@ const usersEdit = {
                             m(`a.dashboard-nav-link${(state.hash() === '#balance' ? '.selected' : '')}[data-target='#dashboard_balance'][href='#balance'][id='dashboard_balance_link']`,
                                 'Saldo'
                             ),
-                            m(`a.dashboard-nav-link.u-right-big-only[href='/${window.I18n.locale}/users/${user.id}']`, {
-                                oncreate: m.route.link,
-                                onclick: () => {
-                                    m.route(`/users/${user.id}`, {
-                                        user_id: user.id
-                                    });
-                                }
-                            },
+                            m(`a.dashboard-nav-link.u-right-big-only[href='/${window.I18n.locale}/users/${user.id}']`,
                                 'Ir para o perfil público'
                             )
                         ])

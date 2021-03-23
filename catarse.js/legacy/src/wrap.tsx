@@ -137,7 +137,7 @@ function setupWrap(customAttr: { [key:string] : any }) {
         }
 
         if (userParam) {
-            addToAttr({ user_id: userParam })
+            addToAttr({ user_id: parseInt(userParam, 10) })
         }
 
         if (projectUserIdParam) {
