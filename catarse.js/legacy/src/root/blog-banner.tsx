@@ -38,11 +38,11 @@ export default class BlogBanner implements m.Component {
             <section class="section-large bg-gray before-footer" id="blog">
                 <div class="w-container">
                     <div class="u-text-center">
-                        <a href="http://blog.catarse.me" target="blank">
+                        <a href="https://blog.catarse.me" target="blank">
                             <img src="/assets/icon-blog.png" alt="Icon blog" class="u-marginbottom-10"/>
                         </a>
                         <div class="fontsize-large u-marginbottom-60 text-success">
-                            <a href="http://blog.catarse.me" class="link-hidden-success" target="__blank">
+                            <a href="https://blog.catarse.me" class="link-hidden-success" target="__blank">
                                 Blog do Catarse
                             </a>
                         </div>
@@ -52,7 +52,7 @@ export default class BlogBanner implements m.Component {
                             posts.map(post => {
                                 const postHref = (post && post[1] && post[1][1]) || ''
                                 const postTitle = (post && post[0] && post[0][1]) || ''
-                                const postContent = (post && post[6] && post[6][1]) || ''
+                                const postContent = (post && post[3] && post[3][1]) || ''
                                 const postShrinkedContent = m.trust(`${h.strip(postContent).substr(0, 130)}...`)
                                 return (
                                     <BlogBannerPost
@@ -65,7 +65,7 @@ export default class BlogBanner implements m.Component {
                         }
                     </div>
                     {
-                        hasError && 
+                        hasError &&
                         <div class="w-row">
                             <div class="w-col w-col-12 u-text-center">
                                 Erro ao carregar posts...

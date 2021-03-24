@@ -8,7 +8,7 @@ class Blog
         begin
           response = Typhoeus.get("#{CatarseSettings[:blog_url]}?feed=rss2", followlocation: true, timeout: 1)
           encoded_data = response.body.force_encoding('utf-8')
-          feed = Feedjira::Feed.parse encoded_data
+          feed = Feedjira.parse encoded_data
           feed.entries
         rescue
           []
