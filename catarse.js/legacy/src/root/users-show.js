@@ -11,7 +11,7 @@ import userAbout from '../c/user-about';
 const usersShow = {
     oninit: function(vnode) {
         const userDetails = prop(vnode.attrs.user_details || {}),
-            user_id = vnode.attrs.user_id.split('-')[0],
+            user_id = vnode.attrs.user_id,
             hash = prop(window.location.hash),
             displayTabContent = (user) => {
                 const tabs = {
