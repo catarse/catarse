@@ -8,8 +8,9 @@ import rewardVM from './reward-vm';
 import projectGoalsVM from './project-goals-vm';
 import userVM from './user-vm';
 import Stream from 'mithril/stream';
+import { ProjectDetails } from '../entities';
 
-const currentProject = prop(),
+const currentProject = prop<ProjectDetails>(),
     userDetails = prop(),
     subscriptionData = prop(),
     projectContributions = prop([]),
@@ -115,7 +116,7 @@ const getCurrentProject = () => {
             currentProject(project_data);
         }
 
-        init(project_data.project_id, project_data.project_user_id);        
+        init(project_data.project_id, project_data.project_user_id);
 
         h.redraw();
 
@@ -207,7 +208,7 @@ const sendPageViewForCurrentProject = (project_id, eventsArray) => {
 }
 
 /**
- * @param {number} projectId 
+ * @param {number} projectId
  */
 const loadIntegrationsAndSendPageView = async (projectId, eventsArray) => {
 
@@ -274,7 +275,7 @@ const updateIntegration = (projectId, updatedIntegration) =>
     });
 
 /**
- * @param {ProjectIntegration[]} projectIntegrations 
+ * @param {ProjectIntegration[]} projectIntegrations
  */
 const SendPageView = (projectIntegrations, eventsArray) => {
 

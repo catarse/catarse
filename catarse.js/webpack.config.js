@@ -11,7 +11,7 @@ const ifDefOpts = {
 };
 
 module.exports = {
-    entry: './legacy/src/app.js',
+    entry: './legacy/src/app.ts',
     mode: isProd ? 'production' : 'development',
     module: {
         rules: [

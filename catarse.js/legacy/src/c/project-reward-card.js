@@ -49,7 +49,7 @@ const projectRewardCard = {
                 vm.error(`O valor de apoio para essa recompensa deve ser de no mínimo R$${vm.selectedReward().minimum_value} ${projectVM.isSubscription(projectVM.currentProject()) ? '' : `+ frete R$${h.formatNumber(shippingFee.value, 2, 3)}`} `);
             } else {
                 vm.error('');
-                
+
                 const valueUrl = window.encodeURIComponent(String(valueFloat).replace('.', ','));
 
                 if (projectVM.isSubscription(projectVM.currentProject())) {
@@ -101,9 +101,9 @@ const projectRewardCard = {
     view: function({state, attrs}) {
         // FIXME: MISSING ADJUSTS
         // - add draft admin modifications
-        const reward = state.reward,
-            project = attrs.project,
-            isSub = projectVM.isSubscription(project);
+        const reward = state.reward;
+        const project = attrs.project;
+        const isSub = projectVM.isSubscription(project);
         return m(`div[class="${h.rewardSouldOut(reward) || attrs.hasSubscription() ? 'card-gone' : `card-reward ${project.open_for_contributions ? 'clickable' : ''}`} card card-secondary u-marginbottom-10"]`, {
             onclick: h.analytics.event({
                 cat: 'contribution_create',

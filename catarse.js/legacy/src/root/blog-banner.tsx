@@ -1,5 +1,5 @@
 import m from 'mithril';
-import Stream from 'mithril/stream';
+import { Stream } from 'mithril/stream';
 import prop from 'mithril/stream';
 import _ from 'underscore';
 import h from '../h';

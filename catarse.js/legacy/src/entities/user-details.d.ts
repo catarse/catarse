@@ -21,14 +21,8 @@ export type UserDetails = {
     is_admin: boolean
     is_admin_role: boolean
     is_owner_or_admin: boolean | null
-    links: {
-        id: number | null
-        link: StringEmptyOrNull
-    }[]
-    mail_marketing_lists: {
-        user_marketing_list_id: number | null
-        marketing_list: string | null
-    }[]
+    links: UserLink[]
+    mail_marketing_lists: UserMailMarket[]
     name: StringEmptyOrNull
     newsletter: boolean
     owner_document: StringEmptyOrNull
@@ -43,4 +37,18 @@ export type UserDetails = {
     total_contributed_projects: number
     total_published_projects: number
     twitter_username: StringEmptyOrNull
+
+    // Cached extra fields
+    has_fb_auth?: boolean
+    is_null: boolean
+}
+
+export type UserLink = {
+    id: number | null
+    link: StringEmptyOrNull
+}
+
+export type UserMailMarket = {
+    user_marketing_list_id: number | null
+    marketing_list: string | null
 }
