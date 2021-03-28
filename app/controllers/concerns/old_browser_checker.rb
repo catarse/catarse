@@ -8,10 +8,11 @@ module OldBrowserChecker
       browser.chrome?(">= 65"), # 03/2018
       browser.safari?(">= 10"), # 09/2016
       browser.firefox?(">= 52"), # 03/2017
+      browser.platform.ios? && browser.firefox?(">= 19"),
       browser.ie?(">= 11") && !browser.compatibility_view?, #10/2013
       browser.edge?(">= 15"),
       browser.opera?(">= 50"), # 01/2018
-      browser.facebook? && browser.safari_webapp_mode? && browser.webkit_full_version.to_i >= 602 # 09/2016
+      (browser.facebook? || browser.instagram?) && browser.safari_webapp_mode? && browser.webkit_full_version.to_i >= 602, # 09/2016
     ].any?
   end
 
