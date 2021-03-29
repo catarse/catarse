@@ -37,7 +37,7 @@ RSpec.configure do |config|
 
   %i[controller feature].each do |spec_type|
     config.before(:each, type: spec_type) do
-      %i[detect_old_browsers render_facebook_sdk render_facebook_like render_twitter].each do |method|
+      %i[render_facebook_sdk render_facebook_like render_twitter].each do |method|
         allow_any_instance_of(ApplicationController).to receive(method)
       end
     end
