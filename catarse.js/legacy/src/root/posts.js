@@ -46,9 +46,9 @@ const posts = {
                         return fields
                             .get_selected_rewards()
                             .map(rc => `R$${h.formatNumber(parseInt(rc.reward.data.minimum_value))}${rc.reward.data.title ? ` - ${rc.reward.data.title}` : ''}`).join(', ');
-                    }                    
+                    }
                 },
-                get_selected_rewards: () => {                    
+                get_selected_rewards: () => {
                     return _.filter(fields.paid_rewards(), rc => rc.checked());
                 },
                 get_selected_reward_ids: () => {
@@ -56,7 +56,7 @@ const posts = {
                     const isSubscription = projectVM.isSubscription(project);
                     const getRewardId = (r) => isSubscription ? r.external_id : r.id;
                     return _.map(fields.get_selected_rewards(), rc => getRewardId(rc.reward));
-                }                    
+                }
             },
             filterVM = catarse.filtersVM({
                 project_id: 'eq'
@@ -77,6 +77,13 @@ const posts = {
 
                 return !commentHasError();
             },
+            validateCommentImage = () => {
+                const comment = String(fields.comment_html());
+                if (comment.search(/;base64/) > -1) {
+                    commentHasError(true);
+                }
+                return !commentHasError();
+            },
             validateSelectedRewards = () => {
                 const wants_to_send_to_ones_who_paid_for_rewards = fields.recipients() === 'rewards';
                 const wants_to_send_to_backers_or_public = !wants_to_send_to_ones_who_paid_for_rewards;
@@ -92,6 +99,9 @@ const posts = {
                     showError(true);
                 } else if (!validateComment()) {
                     errors('Mensagem não pode ficar em branco.');
+                    showError(true);
+                } else if (!validateCommentImage()) {
+                    errors(window.I18n.t('errors.messages.base64_images_not_allowed'));
                     showError(true);
                 } else if (!validateSelectedRewards()) {
                     errors('É necessário selecionar pelo menos uma recompensa.');
@@ -121,7 +131,7 @@ const posts = {
                 } else if (post.rewards_that_can_access_post && post.rewards_that_can_access_post.length) {
                     const preText = project.mode === 'sub' ? 'Assinantes de ' : 'Apoiadores de ';
                     return preText + _.map(
-                        post.rewards_that_can_access_post, 
+                        post.rewards_that_can_access_post,
                         reward => `R$${h.formatNumber(reward.minimum_value)}${reward.title ? ` - ${reward.title}` : ''}`
                     ).join(', ');
                 } else {
@@ -161,21 +171,21 @@ const posts = {
         const createCheckboxesControlForRewardSelected = (rewards) => {
             const filteredRewards = _.filter(rewards, filterOnlyPaidRewards);
             const paidRewardsSorted = _.sortBy(filteredRewards, pr => parseInt(pr.data.minimum_value));
-            const checkboxesArray = paidRewardsSorted.map(pr => { 
+            const checkboxesArray = paidRewardsSorted.map(pr => {
                 return {
                     checked: h.toggleProp(false, true),
                     reward: pr
                 };
             });
-            
+
             fields.paid_rewards(checkboxesArray);
             h.redraw();
             return rewards;
         };
 
         const addDataFieldToNoCommonRewards = (rewards) => rewards ? rewards.map(r => _.extend(r, { data: r })) : [];
-        const remapMinimumValue = (rewards) => rewards.map(r => {            
-            r.data.minimum_value = parseInt(r.data.minimum_value) / 100; 
+        const remapMinimumValue = (rewards) => rewards.map(r => {
+            r.data.minimum_value = parseInt(r.data.minimum_value) / 100;
             return r;
         });
 
@@ -187,7 +197,7 @@ const posts = {
                     .then(remapMinimumValue)
                     .then(createCheckboxesControlForRewardSelected)
                     .then(() => h.redraw());
-                    
+
             } else {
                 rewardVM
                     .fetchRewards(project_id)
@@ -225,7 +235,7 @@ const posts = {
         };
     },
     view: function({state}) {
-        
+
         const project = _.first(state.projectDetails()),
             isSubscription = projectVM.isSubscription(project),
             recipients = state.fields.recipients;
@@ -254,7 +264,8 @@ const posts = {
                 }) : ''),
                 (state.showError() ? m(popNotification, {
                     message: state.errors(),
-                    error: true
+                    error: true,
+                    time: 6000
                 }) : ''),
                 m('.dashboard-header.u-text-center',
                     m('.w-container',
@@ -333,15 +344,15 @@ const posts = {
 
                                         // SOME SELECTION CHECKBOXES CONTRIBUTORS/SUBSCRIBERS
                                         (
-                                            recipients() !== 'rewards' ? '' : 
+                                            recipients() !== 'rewards' ? '' :
                                             m('.card.u-radius', {
                                                 class: state.selectedRewardsHasError() ? 'card-message-error' : '',
-                                                onclick: () => { 
+                                                onclick: () => {
                                                     state.selectedRewardsHasError(false);
                                                     state.showError(false);
                                                 }
                                             },
-                                                _.map(state.fields.paid_rewards(), 
+                                                _.map(state.fields.paid_rewards(),
                                                     pr => m(postForRewardCheckbox, {
                                                         reward_checkbox: pr.checked,
                                                         reward: pr.reward,
