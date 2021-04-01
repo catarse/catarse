@@ -21,7 +21,7 @@ class GatewayPaymentSync
       transactions = fetch_transactions(page: page, per_page: 500)
       break if transactions.blank? || Rails.env.test?
 
-      import_gateway_payments(transaction)
+      import_gateway_payments(transactions)
       page += 1
       sleep 1
     end
