@@ -17,6 +17,7 @@ class BalanceTransaction < ApplicationRecord
     contribution_chargedback
     subscription_payment_chargedback
     balance_expired
+    revert_balance_expired
     contribution_refunded_after_successful_pledged
     subscription_payment_refunded
     balance_transferred_to
@@ -90,6 +91,21 @@ class BalanceTransaction < ApplicationRecord
       )
     end
   end
+
+  def self.insert_revert_balance_expired(balance_expired_transaction_id)
+    expired_transaction = find(balance_expired_transaction_id)
+    return if 'balance_expired' != expired_transaction.event_name
+    create!(
+      user_id: expired_transaction.user_id,
+      balance_transaction_id: expired_transaction.id,
+      event_name: 'revert_balance_expired',
+      amount: expired_transaction.amount.abs,
+      project_id: expired_transaction.project_id,
+      contribution_id: expired_transaction.contribution_id,
+      subscription_payment_uuid: expired_transaction.subscription_payment_uuid
+    )
+  end
+
 
   def self.insert_balance_expired(balance_transaction_id)
 		transaction = self.find balance_transaction_id
