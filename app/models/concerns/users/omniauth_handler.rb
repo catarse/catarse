@@ -20,7 +20,12 @@ module Users::OmniauthHandler
           locale: I18n.locale.to_s
         }
       ) do |user|
-        user.remote_uploaded_image_url = "https://graph.facebook.com/v9.0/#{hash['uid']}/picture?type=large"
+        case hash['provider']
+        when 'facebook'
+          user.remote_uploaded_image_url = "https://graph.facebook.com/v9.0/#{hash['uid']}/picture?type=large"
+        when 'google_oauth2'
+          user.remote_uploaded_image_url = hash['info']['image']
+        end
       end
     end
 
@@ -31,6 +36,16 @@ module Users::OmniauthHandler
 
     def facebook_id
       auth = authorizations.joins(:oauth_provider).where("oauth_providers.name = 'facebook'").first
+      auth&.uid
+    end
+
+    def has_google_oauth2_authentication?
+      oauth = OauthProvider.find_by_name 'google_oauth2'
+      authorizations.where(oauth_provider_id: oauth.id).present? if oauth
+    end
+
+    def google_oauth2_id
+      auth = authorizations.joins(:oauth_provider).where("oauth_providers.name = 'google_oauth2'").first
       auth&.uid
     end
   end

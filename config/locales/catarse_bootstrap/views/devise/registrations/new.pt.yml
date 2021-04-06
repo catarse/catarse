@@ -20,4 +20,5 @@ pt:
           inputs:
             submit: 'Efetuar cadastro'
             facebook: 'Entrar com Facebook'
+            google: 'Entrar com Google'
 

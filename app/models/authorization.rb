@@ -10,6 +10,10 @@ class Authorization < ApplicationRecord
     joins(:oauth_provider).where(oauth_providers: { name: 'facebook' })
   }
 
+  scope :google_oauth2, -> {
+    joins(:oauth_provider).where(oauth_providers: { name: 'google_oauth2' })
+  }
+
   scope :from_hash, ->(hash) {
     joins(:oauth_provider)
       .where('oauth_providers.name = :name AND uid = :uid', { name: hash['provider'], uid: hash['uid'] })

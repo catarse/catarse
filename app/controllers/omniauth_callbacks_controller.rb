@@ -19,7 +19,9 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
         flash[:notice] = I18n.t('devise.omniauth_callbacks.success', kind: p.name.capitalize)
         @auth.update(last_token: omniauth[:credentials][:token])
-        FbFriendCollectorWorker.perform_async(@auth.id)
+        if omniauth[:provider] == 'facebook'
+          FbFriendCollectorWorker.perform_async(@auth.id)
+        end
 
         sign_in @auth.user, event: :authentication
         redirect_to after_sign_in_path_for(@auth.user)

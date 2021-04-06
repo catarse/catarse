@@ -217,11 +217,17 @@ Devise.setup do |config|
     # We depend on facebook provider for the test env
     # As the test database is always empty in this stage we just create this fake provider
     config.omniauth 'facebook', 'dummy_key', 'dummy_secret', scope: ''
+    config.omniauth 'google_oauth2', 'dummy_key', 'dummy_secret', scope: ''
   else
     begin
       if ActiveRecord::Base.connection.table_exists? 'oauth_providers'
         OauthProvider.all.each do |p|
-          config.omniauth p.name, p.key, p.secret, scope: p.scope, info_fields: 'email,name'
+          case p.name
+          when 'facebook'
+            config.omniauth p.name, p.key, p.secret, scope: p.scope, info_fields: 'email,name'
+          when 'google_oauth2'
+            config.omniauth p.name, p.key, p.secret, scope: p.scope
+          end
         end
       end
     rescue StandardError => e
