@@ -39,7 +39,7 @@ const rewardSelectCard = {
                     const currentRewardId = rewardVM.selectedReward().id;
                     h.navigateTo(`/projects/${projectVM.currentProject().project_id}/subscriptions/checkout?contribution_value=${valueFloat}${currentRewardId ? `&reward_id=${currentRewardId}` : ''}${isEdit() ? `&subscription_id=${m.route.param('subscription_id')}` : ''}${isReactivation() ? `&subscription_status=${subscriptionStatus}` : ''}`);
                 } else {
-                    const valueUrl = window.encodeURIComponent(String(valueFloat).replace('.', ',')); 
+                    const valueUrl = window.encodeURIComponent(String(valueFloat).replace('.', ','));
                     h.navigateTo(`/projects/${projectVM.currentProject().project_id}/contributions/fallback_create?contribution%5Breward_id%5D=${rewardVM.selectedReward().id}&contribution%5Bvalue%5D=${valueUrl}&contribution%5Bshipping_fee_id%5D=${shippingFee.id}`);
                 }
             }
@@ -65,7 +65,7 @@ const rewardSelectCard = {
                     description: '',
                     minimum_value: 5,
                     shipping_options: null,
-                    row_order: -999999
+                    row_order: Number.NEGATIVE_INFINITY
                 };
             }
 
@@ -174,10 +174,10 @@ const rewardSelectCard = {
                 ),
                 m('.back-reward-reward-description', [
                     (
-                        reward.uploaded_image ? 
+                        reward.uploaded_image ?
                             (
                                 m("div.u-marginbottom-20.w-row", [
-                                    m("div.w-col.w-col-8", 
+                                    m("div.w-col.w-col-8",
                                         m(`img[src='${reward.uploaded_image}'][alt='']`)
                                     ),
                                     m("div.w-col.w-col-4")
