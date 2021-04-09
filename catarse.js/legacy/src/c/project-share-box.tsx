@@ -9,6 +9,7 @@ const projectShareBox = {
         };
     },
     view: function({state, attrs}) {
+        const showMessengerButton = false;
         const utm = attrs.utm || 'ctrse_project_share';
         const ref = attrs.ref || 'ctrse_project_share';
         const embedUrl = `https://www.catarse.me/pt/projects/${attrs.project().project_id}/embed`;
@@ -45,7 +46,7 @@ const projectShareBox = {
                 mobile: true,
                 url: facebookUrl
             }) : '',
-            attrs.project().permalink ? m(facebookButton, {
+            attrs.project().permalink && showMessengerButton ? m(facebookButton, {
                 mobile: true,
                 messenger: true,
                 url: facebookMessengerUrl
