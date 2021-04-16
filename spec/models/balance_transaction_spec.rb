@@ -64,6 +64,32 @@ RSpec.describe BalanceTransaction, type: :model do
     end
   end
 
+  describe 'insert_revert_balance_expired' do
+    let!(:confirmed_contribution) { create(:confirmed_contribution) }
+    let!(:payment) { confirmed_contribution.payments.last }
+    before do
+      allow_any_instance_of(Project).to receive(:successful_pledged_transaction).and_return({id: 'mock'})
+      transaction = BalanceTransaction.insert_contribution_refund(confirmed_contribution.id)
+      transaction.update(created_at: 300.days.ago)
+      @balance_expired_transaction = BalanceTransaction.insert_balance_expired(transaction.id)
+    end
+
+    subject do
+      BalanceTransaction.insert_revert_balance_expired(@balance_expired_transaction.id)
+    end
+
+    it 'should create balance transaction reverting chargeback' do
+        expect(subject.event_name).to eq('revert_balance_expired')
+        expect(subject.user_id).to eq(confirmed_contribution.user_id)
+        expect(subject.contribution_id).to eq(confirmed_contribution.id)
+        expect(subject.project_id).to eq(confirmed_contribution.project_id)
+        expect(subject.amount).to eq(subject.balance_transaction.amount.abs)
+        expect(subject.balance_transaction.event_name).to eq('balance_expired')
+        expect(subject.balance_transaction.contribution_id).to eq(confirmed_contribution.id)
+    end
+  end
+
+
   describe 'insert_revert_chargeback' do
     let!(:confirmed_contribution) { create(:confirmed_contribution) }
     let!(:payment) { confirmed_contribution.payments.last }
