@@ -4,6 +4,7 @@ import h from '../h';
 export type PopNotificationAttrs = {
     error: boolean
     message: string
+    time: number
     toggleOpt(newData? : boolean): boolean
 }
 
@@ -17,7 +18,7 @@ export default class PopNotification  {
     oninit(vnode : m.Vnode<PopNotificationAttrs, PopNotificationState>) {
         const displayNotification = vnode.attrs.toggleOpt || h.toggleProp(true, false),
             setPopTimeout = () => {
-                setTimeout(() => { displayNotification(false); m.redraw(); }, 3000);
+                setTimeout(() => { displayNotification(false); m.redraw(); }, (vnode.attrs.time || 3000));
             };
         vnode.state = {
             displayNotification,
