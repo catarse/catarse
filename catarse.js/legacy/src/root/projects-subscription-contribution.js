@@ -13,20 +13,20 @@ const I18nScope = _.partial(h.i18nScope, 'projects.contributions');
 
 const projectsSubscriptionContribution = {
     oninit: function(vnode) {
-        
+
         const {
             ViewContentEvent,
         } = projectVM;
-        
+
         projectVM.sendPageViewForCurrentProject(null, [ ViewContentEvent() ]);
-        
+
         const rewards = () => _.union(
             [{
                 id: null,
                 description: '',
                 minimum_value: 5,
                 shipping_options: null,
-                row_order: -9999999
+                row_order: Number.NEGATIVE_INFINITY
             }],
             projectVM.rewardDetails()
         );
