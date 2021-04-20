@@ -17,3 +17,4 @@ en:
             submit: 'Log me in'
             password: "Password"
             facebook: 'Log in with Facebook'
+            google: 'Log in with Google'

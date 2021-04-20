@@ -286,6 +286,7 @@ AllCops:
     - config/initializers/simple_form/append_input_text.rb
     - config/initializers/simple_form.rb
     - config/initializers/pagarme.rb
+    - config/initializers/devise.rb
 
     # SPEC
     - spec/config/initializers/secret_token_spec.rb

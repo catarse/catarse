@@ -6919,3 +6919,82 @@ input:required {
 textarea:required {
   box-shadow:none;
 }
+
+.btn-google {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #fff;
+  background-color: #fff;
+  box-shadow: 1px 1px 3px 0 #b9b9b9;
+  color: #6d6d6d;
+  font-weight: 600;
+}
+.btn-google:hover {
+  border-color: #eee;
+  background-color: #eee;
+  color: #6d6d6d;
+}
+.btn.btn-medium.btn-google {
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+.login-oauth {
+  margin-bottom: 10px;
+  padding-right: 8px;
+  padding-left: 8px;
+}
+.google-icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+}
+
+.fa {
+  display: inline-block;
+  font: normal normal normal 14px FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.btn-fb {
+  border: 1px solid #4b6fb8;
+  background-color: #4b6fb8;
+  color: #fff;
+
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-shadow: 1px 1px 3px 0 #b9b9b9;
+  font-weight: 600;
+}
+.btn-fb:hover {
+  border-color: #eee;
+  background-color: #eee;
+  color: #6d6d6d;
+}
+.btn.btn-medium.btn-fb {
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}

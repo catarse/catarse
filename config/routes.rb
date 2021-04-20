@@ -264,4 +264,10 @@ Catarse::Application.routes.draw do
       get '/:permalink' => 'projects#show', as: :project_by_slug
     end
   end
+
+  begin
+    OmniauthCallbacksController.add_providers
+  rescue StandardError
+    nil
+  end
 end

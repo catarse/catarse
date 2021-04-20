@@ -19,5 +19,6 @@ en:
           inputs:
             submit: 'Sign me up'
             facebook: 'Sign up with Facebook'
+            google: 'Sign up with Google'
 
 
