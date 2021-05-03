@@ -19,12 +19,16 @@ AllCops:
     - 'node_modules/**/*'
     - 'catarse.js/**/*'
     - 'engines/**/*'
+    - 'public/**/*'
 
 Layout/ArgumentAlignment:
   EnforcedStyle: with_fixed_indentation
 
 Layout/CaseIndentation:
   EnforcedStyle: end
+
+Layout/EmptyLineAfterMagicComment:
+  Enabled: true
 
 Layout/EndAlignment:
   EnforcedStyleAlignWith: start_of_line
@@ -59,7 +63,7 @@ Style/Documentation:
   Enabled: false
 
 Style/FrozenStringLiteralComment:
-  Enabled: false
+  Enabled: true
 
 Style/StringLiterals:
   AutoCorrect: true
