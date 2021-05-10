@@ -324,7 +324,7 @@ RSpec.describe ProjectsController, type: :controller do
       let(:project) { create(:project) }
       before do
         project.push_to_trash
-        get :show, params: { permalink: project.permalink, locale: :pt } 
+        get :show, params: { permalink: project.permalink, locale: :pt }
       end
 
       it 'should not found project' do
@@ -695,6 +695,28 @@ RSpec.describe ProjectsController, type: :controller do
 
       it { is_expected.to have_http_status(200) }
       it { expect(response.body).to eq({ success: 'OK' }.to_json) }
+    end
+  end
+
+  context 'when fetching the project by permalink of coming soon landing page' do
+
+    let(:user) { create(:user) }
+    let(:coming_soon) { create(:coming_soon_integration, { project: project }) }
+
+    before do
+      allow(controller).to receive(:current_user).and_return(user)
+    end
+
+    it 'fetch project draft page by draft url' do
+      get :show, params: { permalink: coming_soon.data['draft_url'] }
+
+      expect(response.status).to eq(200)
+    end
+
+    it 'fetch project by permalink' do
+      get :show, params: { permalink: coming_soon.project.permalink }
+
+      expect(response.status).to eq(200)
     end
   end
 end

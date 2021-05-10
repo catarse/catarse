@@ -10,6 +10,7 @@ const projectShareBox = {
     },
     view: function({state, attrs}) {
         const showMessengerButton = false;
+        const hideEmbed = attrs.hideEmbed;
         const utm = attrs.utm || 'ctrse_project_share';
         const ref = attrs.ref || 'ctrse_project_share';
         const embedUrl = `https://www.catarse.me/pt/projects/${attrs.project().project_id}/embed`;
@@ -31,17 +32,27 @@ const projectShareBox = {
             m('.w-widget.w-widget-twitter.w-hidden-small.w-hidden-tiny.share-block', [
                 m(`iframe[allowtransparency="true"][width="120px"][height="22px"][frameborder="0"][scrolling="no"][src="${twitterSrc}"]`)
             ]),
-            m('a.w-hidden-small.widget-embed.w-hidden-tiny.fontsize-small.link-hidden.fontcolor-secondary[href="javascript:void(0);"]', {
-                onclick: state.displayEmbed.toggle
-            }, '< embed >'), (state.displayEmbed() ? m('.embed-expanded.u-margintop-30', [
-                m('.fontsize-small.fontweight-semibold.u-marginbottom-20', 'Insira um widget em seu site'),
-                m('.w-form', [
-                    m(`input.w-input[type="text"][value="<iframe frameborder="0" height="340px" src="${embedUrl}" width="300px" scrolling="no"></iframe>"]`)
-                ]),
-                m('.card-embed', [
-                    m(`iframe[frameborder="0"][height="350px"][src="/projects/${attrs.project().project_id}/embed"][width="300px"][scrolling="no"]`)
-                ])
-            ]) : ''),
+            [
+                !hideEmbed &&
+                [
+                    m('a.w-hidden-small.widget-embed.w-hidden-tiny.fontsize-small.link-hidden.fontcolor-secondary[href="javascript:void(0);"]', {
+                        onclick: state.displayEmbed.toggle
+                    }, '< embed >'),
+                    (state.displayEmbed() ?
+                        m('.embed-expanded.u-margintop-30', [
+                            m('.fontsize-small.fontweight-semibold.u-marginbottom-20', 'Insira um widget em seu site'),
+                            m('.w-form', [
+                                m(`input.w-input[type="text"][value="<iframe frameborder="0" height="340px" src="${embedUrl}" width="300px" scrolling="no"></iframe>"]`)
+                            ]),
+                            m('.card-embed', [
+                                m(`iframe[frameborder="0"][height="350px"][src="/projects/${attrs.project().project_id}/embed"][width="300px"][scrolling="no"]`)
+                            ])
+                        ])
+                        :
+                        ''
+                    )
+                ]
+            ],
             attrs.project().permalink ? m(facebookButton, {
                 mobile: true,
                 url: facebookUrl

@@ -16,10 +16,10 @@ type PopNotificationState = {
 export default class PopNotification  {
 
     oninit(vnode : m.Vnode<PopNotificationAttrs, PopNotificationState>) {
-        const displayNotification = vnode.attrs.toggleOpt || h.toggleProp(true, false),
-            setPopTimeout = () => {
-                setTimeout(() => { displayNotification(false); m.redraw(); }, (vnode.attrs.time || 3000));
-            };
+        const displayNotification = vnode.attrs.toggleOpt || h.toggleProp(true, false);
+        const setPopTimeout = () => {
+            setTimeout(() => { displayNotification(false); m.redraw(); }, (vnode.attrs.time || 3000));
+        };
         vnode.state = {
             displayNotification,
             setPopTimeout

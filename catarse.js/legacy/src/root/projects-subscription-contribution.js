@@ -4,7 +4,7 @@ import _ from 'underscore';
 import rewardVM from '../vms/reward-vm';
 import paymentVM from '../vms/payment-vm';
 import projectVM from '../vms/project-vm';
-import projectHeaderTitle from '../c/project-header-title';
+import { ProjectHeaderTitle } from './projects/project-header-title';
 import rewardSelectCard from '../c/reward-select-card';
 import h from '../h';
 import faqBox from '../c/faq-box';
@@ -73,8 +73,8 @@ const projectsSubscriptionContribution = {
         return m('#contribution-new', !_.isEmpty(project()) ? [
             m(`.w-section.section-product.${project().mode}`),
             m('.dark.project-main-container',
-                m(projectHeaderTitle, {
-                    project
+                m(ProjectHeaderTitle, {
+                    project: project()
                 })
             ),
             m('.w-section.header-cont-new',

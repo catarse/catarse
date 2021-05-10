@@ -1,11 +1,11 @@
 import { Body } from './body'
 import { HttpHeaders } from './headers'
 
-export type Response = {
+export type Response<DataType = Body> = {
     status: number
     statusText: string
     headers: HttpHeaders
-    data: Body
+    data: DataType
     toJson() : JSON
     to<DataType>() : DataType
 }

@@ -1,9 +1,9 @@
 import m from 'mithril';
 import _ from 'underscore';
 import h from '../h';
-import projectHighlight from './project-highlight';
+import { ProjectHighlight } from '../root/projects/project-highlight';
 import projectSidebar from './project-sidebar';
-import projectHeaderTitle from './project-header-title';
+import { ProjectHeaderTitle } from '../root/projects/project-header-title';
 import userContributionDetail from './user-contribution-detail';
 import userSubscriptionDetail from './user-subscription-detail';
 import contributionVM from '../vms/contribution-vm';
@@ -72,15 +72,15 @@ const projectHeader = {
                 class: hasBackground ? 'project-with-background' : null,
                 style: hasBackground ? `background-image: linear-gradient(180deg, rgba(0, 4, 8, .82), rgba(0, 4, 8, .82)), url("${project().cover_image}");` : null
             }, [
-                m(projectHeaderTitle, {
-                    project,
+                m(ProjectHeaderTitle, {
+                    project: project(),
                     children: hasContribution
                 }),
                 m(`.w-section.project-main${projectVM.isSubscription(project) ? '.transparent-background' : ''}`, [
                     m('.w-container', [
                         m('.w-row', [
-                            m('.w-col.w-col-8.project-highlight', m(projectHighlight, {
-                                project
+                            m('.w-col.w-col-8.project-highlight', m(ProjectHighlight, {
+                                project: project()
                             })),
                             m('.w-col.w-col-4', m(projectSidebar, {
                                 project,

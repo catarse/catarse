@@ -10,6 +10,7 @@ export { default as AdminSubscriptions } from './root/admin-subscriptions';
 export { default as AdminBalanceTranfers } from './root/admin-balance-tranfers';
 export { default as Flex } from './root/flex';
 export { default as Insights } from './root/insights';
+export { ComingSoon } from './root/projects/edit/coming-soon';
 export { default as Posts } from './root/posts';
 export { default as Surveys } from './root/surveys';
 export { default as SurveyCreate } from './root/survey-create';
@@ -22,7 +23,7 @@ export { default as ProjectsSubscriptionReportDownload } from './root/projects-s
 export { default as ProjectsDashboard } from './root/projects-dashboard';
 export { default as ProjectsExplore } from './root/projects-explore';
 export { default as ProjectsHome } from './root/projects-home';
-export { default as ProjectsShow } from './root/projects-show';
+export { ProjectShow } from './root/projects/project-show';
 export { default as ProjectsContribution } from './root/projects-contribution';
 export { default as ProjectsSubscriptionContribution } from './root/projects-subscription-contribution';
 export { default as ProjectsSubscriptionCheckout } from './root/projects-subscription-checkout';

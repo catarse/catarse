@@ -126,6 +126,18 @@ RSpec.describe ProjectObserver do
   end
 
   describe "#from_draft_to_online" do
+    context 'expect that the project sends the notifications, empty the reminders and remove the coming soon integration' do
+      let(:project) { create(:project, state: 'draft') }
+      let(:coming_soon) { create(:coming_soon_integration, { project: project }) }
+
+      it do
+        expect(project).to receive(:notify_reminder_of_publish).at_least(:once)
+        project.push_to_online
+        expect(project.reminders.length).to eq(0)
+        expect(project.integrations.length).to eq(0)
+      end
+    end
+
     context 'expect that update expires_at and audited data' do
       let(:project) { create(:project, state: 'draft') }
       it do

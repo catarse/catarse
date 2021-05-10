@@ -1,5 +1,5 @@
 export type ProjectIntegration = {
-    id: number;
+    id?: number;
     name: string;
     data: {};
 };

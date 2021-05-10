@@ -16,12 +16,12 @@ export function createMithrilHttpRequestHandlers(middlewares : Middleware[]) {
 }
 
 function createMithrilHttpRequestHandler(middlewares : Middleware[], method : string) {
-    return async <T>(url: string, headers: HttpHeaders, body: Body, responseType : ResponseType = '') : Promise<Response> => {
+    return async <T>(url: string, headers: HttpHeaders, body: Body | T, responseType : ResponseType = '') : Promise<Response> => {
         for (const middleware of middlewares) {
-            middleware(url, headers, body)
+            middleware(url, headers, body as any)
         }
 
-        const options = setupMithrilRequestOptions(headers, body, responseType)
+        const options = setupMithrilRequestOptions(headers, body as any, responseType)
         options.method = method.toLowerCase()
         if (method === 'GET' || method === 'DELETE') {
             delete options['body']
@@ -29,7 +29,7 @@ function createMithrilHttpRequestHandler(middlewares : Middleware[], method : st
             options.useBody = true
             options['data'] = body
         }
-        
+
         return await m.request(url, options)
     }
 }

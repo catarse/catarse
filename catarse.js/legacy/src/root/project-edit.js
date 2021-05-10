@@ -17,7 +17,7 @@ import projectEditUserSettings from '../root/project-edit-user-settings';
 import projectEditReward from '../root/project-edit-reward';
 import projectEditCard from '../root/project-edit-card';
 import projectEditStart from '../root/project-edit-start';
-import projectPreview from '../root/project-preview';
+import { ProjectPreview } from '../root/project-preview';
 import projectDashboardMenu from '../c/project-dashboard-menu';
 import projectAnnounceExpiration from '../c/project-announce-expiration';
 import projectEditTab from '../c/project-edit-tab';
@@ -28,12 +28,14 @@ const I18nScope = _.partial(h.i18nScope, 'projects.edit');
 const projectEdit = {
     oninit: function (vnode) {
         const { project_id, user_id } = vnode.attrs;
-        const project = projectVM.fetchProject(project_id);
-        const c_opts = { project_id, user_id, project };
         const hash = prop(window.location.hash);
-
+        const project = h.RedrawStream();
+        projectVM.fetchProject(project_id, true, project);
         const displayTabContent = () => {
-
+            const c_opts = { project_id, user_id, project };
+            if (hash() !== window.location.hash) {
+              projectVM.fetchProject(project_id, true, project);
+            }
             hash(window.location.hash);
             const isUnpublishedAdmin = !project().is_published || project().is_admin_role;
             const isEmptyHash = _.isEmpty(hash()) || hash() === '#_=_';
@@ -118,7 +120,7 @@ const projectEdit = {
                     });
 
                 case '#preview':
-                    return m(projectPreview, _.extend({}, c_opts));
+                    return m(ProjectPreview, _.extend({}, c_opts));
 
                 case '#start':
                     return m(projectEditStart, _.extend({}, c_opts));

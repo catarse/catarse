@@ -127,6 +127,11 @@ Catarse::Application.routes.draw do
 
         resources :integrations, { only: [:index, :create, :update], controller: 'projects/integrations' }
 
+        member do
+          post 'coming-soon/activate', to: 'projects/coming_soon#activate'
+          delete 'coming-soon/deactivate', to: 'projects/coming_soon#deactivate'
+        end
+
         collection do
           get :fallback_create, to: 'projects#create'
         end
@@ -134,6 +139,7 @@ Catarse::Application.routes.draw do
         member do
           post :upload_image
           get 'insights'
+          get 'coming-soon'
           get 'posts'
           get 'surveys'
           get 'fiscal'

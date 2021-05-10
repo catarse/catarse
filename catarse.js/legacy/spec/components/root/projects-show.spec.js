@@ -1,5 +1,5 @@
 import mq from 'mithril-query';
-import projectsShow from '../../../src/root/projects-show';
+import projectPage from '../../../src/root/projects/project-page';
 
 describe('ProjectsShow', () => {
   let $output, projectDetail;
@@ -8,7 +8,7 @@ describe('ProjectsShow', () => {
     m.originalTrust = m.trust;
     window.location.hash = '';
     projectDetail = ProjectDetailsMockery()[0];
-    let component = m(projectsShow, {project_id: 123, project_user_id: 1231});
+    let component = m(projectPage, {project_id: 123, project_user_id: 1231});
     $output = mq(component);
   });
 

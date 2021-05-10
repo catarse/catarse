@@ -1388,6 +1388,13 @@ function clamp(value : number, min : number, max : number) : number {
     return Math.min(Math.max(value, min), max)
 }
 
+function copyToClipboard(copyText : HTMLInputElement) {
+    copyText.focus()
+    copyText.select()
+    copyText.setSelectionRange(0, 99999)
+    document.execCommand('copy')
+}
+
 /**
  * @typedef VNode
  * @property {Object} attrs
@@ -1502,5 +1509,6 @@ export default {
     isMobile,
     clamp,
     redactorConfig,
+    copyToClipboard,
 };
 

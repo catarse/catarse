@@ -14,6 +14,7 @@ import _ from 'underscore';
 import h from '../h';
 import railsErrorsVM from '../vms/rails-errors-vm';
 import projectVM from '../vms/project-vm';
+import { MenuLink } from '../root/projects/edit/menu-link';
 
 const I18nScope = _.partial(h.i18nScope, 'projects.dashboard_nav');
 const linksScope = _.partial(h.i18nScope, 'projects.dashboard_nav_links');
@@ -92,47 +93,67 @@ const projectDashboardMenu = {
                     ]),
                     m('#info-links.u-marginbottom-20', [
                         (project.state === 'draft' && projectVM.isSubscription(project)) ?
-                        m(`a#dashboard_home_link[class="${editLinkClass('#start')}"][href="${editRoute}#start"]`, [
-                            m('span.fa.fa-info.fa-lg.fa-fw'), window.I18n.t('draft_start_tab', I18nScope())
-                        ]) :
-                        m(`a#dashboard_home_link[class="dashboard-nav-link-left ${h.locationActionMatch('insights') ? 'selected' : ''}"][href="${projectRoute}/insights"]`, {
-                            oncreate: m.route.link
-                        }, [
-                            m('span.fa.fa-bar-chart.fa-lg.fa-fw'), window.I18n.t('start_tab', I18nScope())
-                        ]), (project.is_published ? [
-                            projectVM.isSubscription(project) ?
-                            m(`a#dashboard_subscriptions_link[class="dashboard-nav-link-left ${h.locationActionMatch('subscriptions_report') ? 'selected' : ''}"][href="${projectRoute}/subscriptions_report"]`, {
-                                oncreate: m.route.link
-                            }, [
-                                m('span.fa.fa.fa-users.fa-lg.fa-fw'), window.I18n.t('subscriptions_tab', I18nScope())
-                            ]) :
-                            m(`a#dashboard_reports_link[class="dashboard-nav-link-left ${h.locationActionMatch('contributions_report') ? 'selected' : ''}"][href="${projectRoute}/contributions_report"]`, {
-                                oncreate: m.route.link
-                            }, [
-                                m('span.fa.fa.fa-table.fa-lg.fa-fw'), window.I18n.t('reports_tab', I18nScope())
-                            ]),
-                            m(`a#dashboard_posts_link[class="dashboard-nav-link-left ${h.locationActionMatch('posts') ? 'selected' : ''}"][href="${projectRoute}/posts"]`, [
-                                m('span.fa.fa-bullhorn.fa-fw.fa-lg'),
-                                window.I18n.t('posts_tab', I18nScope()),
-                                project.posts_count > 0 ?
-                                m('span.badge', project.posts_count) :
-                                m('span.badge.badge-attention', '0')
-                            ]),
-
-                            (projectVM.isSubscription(project) ? '' :
-                                m(`a#dashboard_surveys_link[class="dashboard-nav-link-left ${h.locationActionMatch('surveys') ? 'selected' : ''}"][href="${projectRoute}/surveys"]`, {
-                                    oncreate: m.route.link
-                                }, [
-                                    m('span.fa.fa.fa-check-square-o.fa-lg.fa-fw'), window.I18n.t('surveys_tab', I18nScope())
-                                ])),
-
-                            m(`a#dashboard_fiscal_link[class="dashboard-nav-link-left ${h.locationActionMatch('fiscal') ? 'selected' : ''}"][href="${projectRoute}/fiscal"]`, {
-                                oncreate: m.route.link
-                            }, [
-                                m('span.fa.fa.fa-book.fa-lg.fa-fw'), window.I18n.t('fiscal_tab', I18nScope())
+                            m(`a#dashboard_home_link[class="${editLinkClass('#start')}"][href="${editRoute}#start"]`, [
+                                m('span.fa.fa-info.fa-lg.fa-fw'),
+                                window.I18n.t('draft_start_tab', I18nScope())
                             ])
+                            :
+                            m(`a#dashboard_home_link[class="dashboard-nav-link-left ${h.locationActionMatch('insights') ? 'selected' : ''}"][href="${projectRoute}/insights"]`, {
+                                oncreate: m.route.link
+                            }, [
+                                m('span.fa.fa-bar-chart.fa-lg.fa-fw'),
+                                window.I18n.t('start_tab', I18nScope())
+                            ]),
+                            (
+                                project.is_published ? [
+                                    projectVM.isSubscription(project) ?
+                                        m(`a#dashboard_subscriptions_link[class="dashboard-nav-link-left ${h.locationActionMatch('subscriptions_report') ? 'selected' : ''}"][href="${projectRoute}/subscriptions_report"]`, {
+                                            oncreate: m.route.link
+                                        }, [
+                                            m('span.fa.fa.fa-users.fa-lg.fa-fw'),
+                                            window.I18n.t('subscriptions_tab', I18nScope())
+                                        ])
+                                        :
+                                        m(`a#dashboard_reports_link[class="dashboard-nav-link-left ${h.locationActionMatch('contributions_report') ? 'selected' : ''}"][href="${projectRoute}/contributions_report"]`, {
+                                            oncreate: m.route.link
+                                        }, [
+                                            m('span.fa.fa.fa-table.fa-lg.fa-fw'), window.I18n.t('reports_tab', I18nScope())
+                                        ]),
+                                        m(`a#dashboard_posts_link[class="dashboard-nav-link-left ${h.locationActionMatch('posts') ? 'selected' : ''}"][href="${projectRoute}/posts"]`, [
+                                            m('span.fa.fa-bullhorn.fa-fw.fa-lg'),
+                                            window.I18n.t('posts_tab', I18nScope()),
+                                            project.posts_count > 0 ?
+                                            m('span.badge', project.posts_count) :
+                                            m('span.badge.badge-attention', '0')
+                                        ]),
 
-                        ] : '')
+                                    (projectVM.isSubscription(project) ?
+                                        ''
+                                        :
+                                        m(`a#dashboard_surveys_link[class="dashboard-nav-link-left ${h.locationActionMatch('surveys') ? 'selected' : ''}"][href="${projectRoute}/surveys"]`, {
+                                            oncreate: m.route.link
+                                        }, [
+                                            m('span.fa.fa.fa-check-square-o.fa-lg.fa-fw'), window.I18n.t('surveys_tab', I18nScope())
+                                        ])),
+
+                                    m(`a#dashboard_fiscal_link[class="dashboard-nav-link-left ${h.locationActionMatch('fiscal') ? 'selected' : ''}"][href="${projectRoute}/fiscal"]`, {
+                                        oncreate: m.route.link
+                                    }, [
+                                        m('span.fa.fa.fa-book.fa-lg.fa-fw'), window.I18n.t('fiscal_tab', I18nScope())
+                                    ])
+
+                                ] : ''
+                            ),
+                            (
+                                project.state === 'draft' &&
+                                m(MenuLink, {
+                                    label: 'Pré-Lançamento',
+                                    href: `/projects/${project.id}/coming-soon`,
+                                    isNew: true,
+                                    selectedClasses: `${h.locationActionMatch('coming-soon') ? 'selected' : '' }`,
+                                    iconClasses: 'fa-lg fa-rocket',
+                                })
+                            )
                     ]),
                     m('.edit-project-div', [
                         (!project.is_published ? '' : m('button#toggle-edit-menu.dashboard-nav-link-left', {

@@ -24,6 +24,14 @@ class ProjectObserver < ActiveRecord::Observer
       ProjectDownloaderWorker.perform_async(project.id)
     end
 
+    if project.has_comming_soon_landing_page_integration?
+      integration = project.comming_soon_landing_page_integration
+      integration.data = {
+        draft_url: "#{project.permalink.parameterize.tr('-', '_')}_#{SecureRandom.hex(4)}"
+      }
+      integration.save!
+    end
+
     project.index_on_common
   end
 
@@ -54,6 +62,11 @@ class ProjectObserver < ActiveRecord::Observer
       audited_user_cpf: project.user.cpf,
       audited_user_phone_number: project.user.phone_number
     )
+
+    coming_soon_integration = project.integrations.find_by_name 'COMING_SOON_LANDING_PAGE'
+    coming_soon_integration.destroy unless coming_soon_integration.nil?
+
+    project.notify_reminder_of_publish
 
     UserBroadcastWorker.perform_async(
       follow_id: project.user_id,

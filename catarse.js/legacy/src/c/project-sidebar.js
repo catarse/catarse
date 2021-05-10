@@ -11,6 +11,10 @@ import addressTag from './address-tag';
 import categoryTag from './category-tag';
 import projectVM from '../vms/project-vm';
 import { ProjectWeLovedTag } from './project-we-loved-tag';
+import { ComingSoonLandingPageBookmarkCardRemindButton } from '../root/projects/coming-soon-landing-page-bookmark-card-remind-button';
+import { remind } from '../root/projects/controllers/remind'
+import { removeRemind } from '../root/projects/controllers/removeRemind'
+import { comingSoonIntegration } from '../root/projects/edit/coming-soon/controllers/coming-soon-integration';
 
 const I18nScope = _.partial(h.i18nScope, 'projects.project_sidebar');
 
@@ -167,7 +171,16 @@ const projectSidebar = {
                 m('.friend-backed-card.project-page', [
                     (!_.isUndefined(project()) && project().contributed_by_friends ? m(projectFriends, { project: project(), wrapper: 'div' }) : '')
                 ]),
-                m(`div[class="fontsize-smaller u-marginbottom-30 ${displayCardClass()}"]`, displayStatusText())
+                m(`div[class="fontsize-smaller u-marginbottom-30 ${displayCardClass()}"]`, displayStatusText()),
+                [
+                    project().state === 'draft' && comingSoonIntegration(project()) &&
+                    m(ComingSoonLandingPageBookmarkCardRemindButton, {
+                        project: project(),
+                        isFollowing: project().in_reminder,
+                        remind,
+                        removeRemind
+                    })
+                ]
             ]),
             m('.project-share.w-hidden-main.w-hidden-medium', [
                 m(addressTag, { project, isDark: isSub }),

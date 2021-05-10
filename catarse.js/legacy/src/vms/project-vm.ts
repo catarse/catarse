@@ -7,7 +7,7 @@ import models from '../models';
 import rewardVM from './reward-vm';
 import projectGoalsVM from './project-goals-vm';
 import userVM from './user-vm';
-import Stream from 'mithril/stream';
+import { Stream } from 'mithril/stream';
 import { ProjectDetails } from '../entities';
 
 const currentProject = prop<ProjectDetails>(),
@@ -21,7 +21,7 @@ prop.merge([currentProject, userDetails, subscriptionData, projectContributions]
     h.redraw();
 });
 
-const isSubscription = (project = currentProject) => {
+const isSubscription = (project: Stream<ProjectDetails> | ProjectDetails = currentProject) => {
     if (_.isFunction(project)) {
         return project() ? project().mode === 'sub' : false;
     }
@@ -127,13 +127,15 @@ const getCurrentProject = () => {
 };
 
 const routeToProject = (project, ref) => () => {
-    currentProject(project);
+    if (project.is_published) {
+        currentProject(project);
 
-    resetData();
+        resetData();
 
-    m.route.set(h.buildLink(project.permalink, ref), { project_id: project.project_id, project_user_id: project.project_user_id });
+        m.route.set(h.buildLink(project.permalink, ref), { project_id: project.project_id, project_user_id: project.project_user_id });
 
-    return false;
+        return false;
+    }
 };
 
 const setProjectPageTitle = () => {

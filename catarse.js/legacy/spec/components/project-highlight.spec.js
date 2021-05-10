@@ -1,7 +1,7 @@
 import mq from 'mithril-query';
 import m from 'mithril';
 import prop from 'mithril/stream';
-import projectHighlight from '../../src/c/project-highlight';
+import { ProjectHighlight } from '../../src/root/projects/project-highlight';
 
 describe('ProjectHighlight', () => {
     let $output, projectDetail;
@@ -11,7 +11,7 @@ describe('ProjectHighlight', () => {
             original_image: 'original_image',
             video_embed_url: null
         }));
-        let component = m(projectHighlight, {
+        let component = m(ProjectHighlight, {
                 project: projectDetail
             });
         $output = mq(component);
@@ -23,8 +23,8 @@ describe('ProjectHighlight', () => {
     describe('view', () => {
         beforeAll(() => {
             projectDetail = prop(ProjectDetailsMockery()[0]);
-            $output = mq(projectHighlight, {
-                project: projectDetail
+            $output = mq(ProjectHighlight, {
+                project: projectDetail()
             });
         });
 

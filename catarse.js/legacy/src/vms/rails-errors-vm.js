@@ -4,7 +4,10 @@ import prop from 'mithril/stream';
 import h from '../h';
 
 const railsErrors = prop('');
-const setRailsErrors = errors => railsErrors(errors);
+const setRailsErrors = errors => {
+    railsErrors(errors);
+    h.redraw();
+};
 const errorGroups = {
     basics: ['public_name', 'permalink', 'category_id', 'city', 'public_tags', 'name', 'content_rating'],
     goal: ['goal', 'online_days'],
@@ -19,23 +22,29 @@ const errorGroups = {
     user_settings: ['bank_account.id', 'bank_account.user_id', 'bank_account.account', 'bank_account.agency', 'bank_account.owner_name', 'bank_account.owner_document', 'bank_account.created_at', 'bank_account.updated_at', 'bank_account.account_digit', 'bank_account.agency_digit', 'bank_account.bank_id', 'bank_account.account_type', 'user.name', 'user.cpf', 'user.birth_date', 'user.country_id', 'user.address_state', 'user.address_street', 'user.address_number', 'user.address_city', 'user.address_neighbourhood', 'bank_account', 'user.phone_number']
 };
 const errorsFor = (group) => {
-    let parsedErrors;
+    let parsedErrors = {};
     try {
         parsedErrors = JSON.parse(railsErrors());
     } catch (err) {
-        parsedErrors = {};
+        const errors = railsErrors()
+        if (!!errors && typeof errors === 'object') {
+            parsedErrors = errors;
+        }
     }
+
     if (_.find(errorGroups[group], key => parsedErrors.hasOwnProperty(key))) { return m('span.fa.fa-exclamation-circle.fa-fw.fa-lg.text-error'); }
     if (_.isEmpty(parsedErrors)) { return ''; }
     return m('span.fa.fa-check-circle.fa-fw.fa-lg.text-success');
 };
 
 const mapRailsErrors = (rails_errors, errorsFields, e) => {
-    let parsedErrors;
+    let parsedErrors = {};
     try {
         parsedErrors = JSON.parse(rails_errors);
     } catch (err) {
-        parsedErrors = {};
+        if (!!rails_errors && typeof rails_errors === 'object') {
+            parsedErrors = rails_errors;
+        }
     }
     const extractAndSetErrorMsg = (label, fieldArray) => {
         const value = _.first(_.compact(_.map(fieldArray, field => _.first(parsedErrors[field]))));

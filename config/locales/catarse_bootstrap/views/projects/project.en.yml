@@ -110,6 +110,7 @@ en:
         target="__blank">supporters will be reimbursed</a> .
       referral:
         ctrse_explore: Catarse Search
+        ctrse_coming_soon_email: 'Email to pre-Launch page followers'
         ctrse_explore_featured_big: Big featured design on the explore
         ctrse_explore_featured_medium: Medium featured project do not explore
         home_recommended: Recommended projects on the homepage

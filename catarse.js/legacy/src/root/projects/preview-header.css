@@ -1,0 +1,51 @@
+.radio-button.w--redirected-checked {
+    border: 6px solid #7cc142;
+    -webkit-transition: border-width 100ms ease;
+    transition: border-width 100ms ease;
+}
+.w-form-formradioinput--inputType-custom.w--redirected-checked {
+    border-top-width: 4px;
+    border-bottom-width: 4px;
+    border-left-width: 4px;
+    border-right-width: 4px;
+    border-top-color: #3898ec;
+    border-bottom-color: #3898ec;
+    border-left-color: #3898ec;
+    border-right-color: #3898ec;
+}
+.radio-button {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    background-color: #fff;
+}
+.w-form-formradioinput--inputType-custom {
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-color: #ccc;
+    border-bottom-color: #ccc;
+    border-left-color: #ccc;
+    border-right-color: #ccc;
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    border-right-style: solid;
+    width: 12px;
+    height: 12px;
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+}
+.w-radio-input {
+    margin-top: 3px;
+}
+.w-radio-input {
+    margin: 4px 0 0;
+    margin-top: 1px \9;
+    line-height: normal;
+    float: left;
+    margin-left: -20px;
+}

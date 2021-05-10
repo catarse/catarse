@@ -1,0 +1,83 @@
+.project-main.coming-soon {
+    padding-top: 62px;
+}
+
+.flag {
+    position: absolute;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    margin-top: 23px;
+    margin-left: -10px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: start;
+    -webkit-align-items: flex-start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+}
+
+.flag-container {
+    padding: 11px 13px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 1px;
+    border-bottom-right-radius: 1px;
+    background-color: #fff;
+    box-shadow: 1px 1px 3px 0 rgb(0 0 0 / 37%);
+    color: #3f4752;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.flag-curve {
+    width: 0px;
+    height: 0px;
+    border-top: 6px solid #79808b;
+    border-left: 10px solid transparent;
+}
+
+@media screen and (max-width: 767px) {
+    .flag-curve {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .flag {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .flag-container {
+        border-radius: 0px;
+        box-shadow: none;
+        padding-bottom: 6px;
+        padding-top: 6px;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 479px) {
+    .flag-container {
+        font-size: 13px;
+        font-weight: 400;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .author-coming-soon-wrapper {
+        -webkit-box-pack: center;
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .project-main.coming-soon {
+        padding-top: 0px;
+    }
+}

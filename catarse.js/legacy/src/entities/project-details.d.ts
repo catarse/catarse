@@ -36,6 +36,8 @@ export type ProjectDetails = {
     online_days: number | null;
     open_for_contributions: boolean;
     original_image: string | null;
+    owner_public_name: string | null;
+    owner_name: string | null;
     permalink: string | null;
     pledged: number;
     posts_count: number;

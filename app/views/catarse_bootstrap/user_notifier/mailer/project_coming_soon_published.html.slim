@@ -1,0 +1,70 @@
+- project = @notification.project
+- user = @notification.user
+- project_link = project_by_slug_url(project.permalink)
+- company_name = CatarseSettings[:company_name]
+- project_image_url = project.display_image
+- project_referral_link = "#{project_link}?ref=ctrse_coming_soon_email&utm=ctrse_coming_soon_email"
+
+table align="left" bgcolor="#fff" border="0" cellpadding="0" cellspacing="0" role="presentation" style="max-width:600px"
+  tbody
+    tr
+      th align="left" valign="bottom"
+        table border="0" cellpadding="0" cellspacing="0" role="presentation"
+          tbody
+            tr
+              td align="center" bgcolor="" style="min-width:300px!important;max-width:100%!important"
+                table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style=("text-align:center")
+                  tbody
+                    tr
+                      td style="font-size:1px;line-height:40px"
+                        h2 align="center" style="font-family:HelveticaNeue,sans-serif;font-weight:100;font-size:32px;line-height:36px;color:#181f28;background-color:#fff;border-bottom-width:3px;border-bottom-color:#7cc142;border-bottom-style:solid;margin:0;padding-bottom:18px"
+                          | Você está sabendo
+                          br/
+                          | em primeira mão!
+                table border="0" cellpadding="0" cellspacing="0" role="presentation"
+                  tbody
+                    tr
+                      td style="font-size:1px;line-height:40px"  &nbsp;
+                table border="0" cellpadding="0" cellspacing="0" role="presentation"
+                  tbody
+                    tr
+                      td style=("font-size:1px;line-height:40px;padding:0px 40px")
+                        span style="font-family:HelveticaNeue,serif;font-weight:500;text-align:left;color:#181f28;font-size:16px;line-height:28px;margin:0"
+                        table border="0" cellpadding="0" cellspacing="0" role="presentation" style="font-family:HelveticaNeue,serif;font-weight:500;text-align:left;color:#000;font-size:16px;line-height:24px!important;margin:0"
+                          tbody
+                            tr
+                              td align="left" style="font-family:HelveticaNeue,serif;font-weight:500;color:#181f28;font-size:18px;line-height:28px!important;margin:0"
+                                | Olá #{user.public_name || ''}, viemos aqui te contar que #{project.user.public_name} acabou de publicar um novo projeto, #{project.name}. Seja uma das primeiras pessoas a apoiá-lo.
+                        table border="0" cellpadding="0" cellspacing="0" role="presentation"
+                          tbody
+                            tr
+                              td style="font-size:1px;line-height:20px"  &nbsp;
+                        table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation"
+                          tbody
+                            tr
+                              td style="font-size:1px;line-height:5px"
+                                a data-saferedirecturl="#{project_referral_link}" href="#{project_referral_link}" style="text-decoration:none" target="_blank"
+                                  img.CToWUd alt="#{project.name}" border="0" src="#{project_image_url}" style=("display:block;max-width:90%;height:auto;line-height:100%;outline:none;text-decoration:none;margin:0 auto;padding:30px 0px 0px;border:0") /
+                        table border="0" cellpadding="0" cellspacing="0" role="presentation"
+                          tbody
+                            tr
+                              td style="font-size:1px;line-height:40px"  &nbsp;
+                        table bgcolor="#fff" border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"
+                          tbody
+                            tr
+                              td align="center" bgcolor="#fff" style=("padding:0px 15px") valign="top"
+                                a align="center" bgcolor="#7cc142" data-saferedirecturl="#{project_referral_link}" href="#{project_referral_link}" style="background-color:#7cc142;font-size:18px;color:#ffffff;font-family:HelveticaNeue-Medium;font-weight:bold;text-decoration:none;padding-top:25px;padding-bottom:25px;display:inline-block;width:280px;text-align:center!important;border-radius:5px" target="_blank"
+                                  | Apoiar agora
+                                table border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;max-width:280px"
+                                table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;max-width:550px"
+                                  tbody
+                                    tr
+                                      td align="left" valign="top"
+                                        table border="0" cellpadding="0" cellspacing="0" role="presentation"
+                                          tbody
+                                            tr
+                                              td style="font-size:1px;line-height:25px"  &nbsp;
+                        table border="0" cellpadding="0" cellspacing="0" role="presentation"
+                          tbody
+                            tr
+                              td style="font-size:1px;line-height:40px"  &nbsp;

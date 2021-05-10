@@ -10,10 +10,9 @@ import rewardCardEditDescription from './reward-card-edit-description';
 
 const editRewardCard = {
     oninit: function(vnode) {
-        const project = projectVM.getCurrentProject(),
+        const project = projectVM.fetchProject(vnode.attrs.project_id),
             reward = vnode.attrs.reward(),
             imageFileToUpload = prop(null),
-            minimumValue = projectVM.isSubscription(project) ? 5 : 10,
             destroyed = prop(false),
             isDeletingImage = prop(false),
             isUploadingImage = prop(false),
@@ -47,6 +46,7 @@ const editRewardCard = {
             fees = prop([]),
             statesLoader = rewardVM.statesLoader,
             validate = () => {
+                const minimumValue = projectVM.isSubscription(project) ? 5 : 10
                 vnode.attrs.error(false);
                 vnode.attrs.errors('Erro ao salvar informações. Confira os dados informados.');
                 descriptionError(false);
@@ -243,7 +243,6 @@ const editRewardCard = {
         });
 
         vnode.state.minimumValueError = minimumValueError;
-        vnode.state.minimumValue = minimumValue;
         vnode.state.deliverAtError = deliverAtError;
         vnode.state.descriptionError = descriptionError;
         vnode.state.confirmDelete = confirmDelete;
@@ -252,9 +251,9 @@ const editRewardCard = {
         vnode.state.saveReward = saveReward;
         vnode.state.destroyed = destroyed;
         vnode.state.states = states;
-        vnode.state.project = project;
         vnode.state.reward = reward;
         vnode.state.fees = fees;
+        vnode.state.project = project;
         vnode.state.tryDeleteImage = tryDeleteImage;
         vnode.state.onSelectImageFile = onSelectImageFile;
         vnode.state.isUploadingImage = isUploadingImage;
@@ -278,9 +277,12 @@ const editRewardCard = {
             isDeletingImage = state.isDeletingImage(),
             shouldAppearLoaderOnImageUploading = isUploadingImage || isDeletingImage,
             isSavingReward = state.isSavingReward(),
-            descriptionError = state.descriptionError;
+            descriptionError = state.descriptionError,
+            project = state.project(),
+            isSubscriptionProject = projectVM.isSubscription(project),
+            minimumValue = isSubscriptionProject ? 5 : 10;
 
-        return state.destroyed() ? m('div', '') : (isSavingReward ? h.loader() : m('.w-row.card-terciary.u-marginbottom-20.card-edition.medium', {
+        return state.destroyed() ? m('div', '') : ((isSavingReward || !project) ? h.loader() : m('.w-row.card-terciary.u-marginbottom-20.card-edition.medium', {
             class: attrs.class
         }, [
             m('.card',
@@ -320,14 +322,14 @@ const editRewardCard = {
                                     })
                                 )
                             ]),
-                            state.minimumValueError() ? inlineError(`Valor deve ser igual ou superior a R$${state.minimumValue}.`) : '',
+                            state.minimumValueError() ? inlineError(`Valor deve ser igual ou superior a R$${minimumValue}.`) : '',
 
                             m('.fontsize-smaller.text-error.u-marginbottom-20.fa.fa-exclamation-triangle.w-hidden[data-error-for=\'reward_minimum_value\']',
                                 'Informe um valor mínimo maior ou igual a 10'
                             )
                         ])
                     ]),
-                    state.project.mode === 'sub' ? null : m('.w-row', [
+                    isSubscriptionProject ? null : m('.w-row', [
                         m('.w-col.w-col-5',
                             m('label.fontsize-smaller',
                                 'Previsão de entrega:'
@@ -424,7 +426,7 @@ const editRewardCard = {
                     ),
                     // END REWARD IMAGE
 
-                    state.project.mode === 'sub' ? null : m('.u-marginbottom-30.w-row', [
+                    isSubscriptionProject ? null : m('.u-marginbottom-30.w-row', [
                         m('.w-col.w-col-3',
                             m("label.fontsize-smaller[for='field-2']",
                                 'Tipo de entrega'

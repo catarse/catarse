@@ -1,20 +1,19 @@
 import m from 'mithril';
 import prop from 'mithril/stream';
 import _ from 'underscore';
-import h from '../h';
-import projectVM from '../vms/project-vm';
-import userVM from '../vms/user-vm';
-import projectHeader from '../c/project-header';
-import projectTabs from '../c/project-tabs';
-import projectMain from '../c/project-main';
-import projectDashboardMenu from '../c/project-dashboard-menu';
-import subscriptionVM from '../vms/subscription-vm';
-import { AdultPopupModal, AdultPopupModalAttrs } from '../c/adult-popup-modal';
-import modalBox from '../c/modal-box';
-import { getCurrentUserCached } from '../shared/services/user/get-current-user-cached';
-import { isLoggedIn } from '../shared/services/user/is-logged-in';
+import h from '../../h';
+import projectVM from '../../vms/project-vm';
+import userVM from '../../vms/user-vm';
+import projectHeader from '../../c/project-header';
+import projectTabs from '../../c/project-tabs';
+import projectMain from '../../c/project-main';
+import subscriptionVM from '../../vms/subscription-vm';
+import { AdultPopupModal } from '../../c/adult-popup-modal';
+import modalBox from '../../c/modal-box';
+import { getCurrentUserCached } from '../../shared/services/user/get-current-user-cached';
+import { isLoggedIn } from '../../shared/services/user/is-logged-in';
 
-const projectsShow = {
+const projectPage = {
     oninit: function(vnode) {
         const {
             ViewContentEvent,
@@ -83,18 +82,16 @@ const projectsShow = {
             }
         };
 
+        loadUserSubscriptions();
+
         const hasSubscription = () => !_.isEmpty(userProjectSubscriptions()) && _.find(userProjectSubscriptions(), sub => sub.project_id === projectVM.currentProject().common_id);
 
-        const query = m.parseQueryString(window.location.search);
-
         vnode.state = {
-            loadUserSubscriptions,
             projectOwner,
             projectVM,
             hasSubscription,
             userProjectSubscriptions,
             displayAdultContentPopup,
-            shouldDisplayDashboardMenu: !!query['is_preview_without_dashboard_menu']
         };
     },
     view: function({state, attrs}) {
@@ -104,7 +101,6 @@ const projectsShow = {
         const displayAdultContentPopup = state.displayAdultContentPopup;
         const shouldDisplayAdultContentPopup = project() && project().is_adult_content && displayAdultContentPopup() && !project().is_owner_or_admin;
         const blurredScreenConditionalStyle = shouldDisplayAdultContentPopup ? { filter: 'blur(7px)' } : { };
-        const shouldDisplayDashboardMenu = project() && project().is_owner_or_admin && !attrs.hideDashboardMenu && !state.shouldDisplayDashboardMenu;
 
         return m('.project-show', {
             oncreate: projectVM.setProjectPageTitle(),
@@ -124,7 +120,6 @@ const projectsShow = {
                 hideCloseButton: true,
             }) : ''),
 
-            state.loadUserSubscriptions(),
             m(projectHeader, {
                 style: blurredScreenConditionalStyle,
                 project,
@@ -153,12 +148,9 @@ const projectsShow = {
                 goalDetails: projectVM.goalDetails,
                 userDetails: projectVM.userDetails,
                 projectContributions: projectVM.projectContributions
-            }),
-            (shouldDisplayDashboardMenu ? m(projectDashboardMenu, {
-                project
-            }) : '')
+            })
         ] : h.loader())
     }
 };
 
-export default projectsShow;
+export default projectPage;

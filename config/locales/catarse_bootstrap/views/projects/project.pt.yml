@@ -19,19 +19,19 @@ pt:
           subtitle: 'O livro que vai retratar a aventura em busca de ícones da verticalização na arquitetura brasileira.'
           link: 'https://www.catarse.me/prediosdobrasil?ref=home_banner'
           cta: 'Conheça o projeto'
-          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-prediosdobrasil.jpg'          
+          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-prediosdobrasil.jpg'
         3:
           title: 'Sumud, o filme - Vozes da terra palestina'
           subtitle: 'Documentário militante sobre a resistência enraizada e cotidiana do povo palestino.'
           link: 'https://www.catarse.me/sumud?ref=home_banner'
           cta: 'Conheça o projeto'
-          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-sumud.jpg'          
+          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-sumud.jpg'
         4:
           title: 'Cogito - RPG'
           subtitle: 'Um RPG moderno sobre Anjos e Demônios vivendo na terra.'
           link: 'https://www.catarse.me/cogito_rpg?ref=home_banner'
           cta: 'Conheça o projeto'
-          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-cogito_rpg.jpg'          
+          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-cogito_rpg.jpg'
         5:
           title: 'Sheiloca!!!'
           subtitle: 'Imprima o gibi de 200 páginas da Sheiloca! Uma distopia feminista da criadora de Garota Siririca.'
@@ -43,19 +43,19 @@ pt:
           subtitle: 'Ajude a Revista Fórum a mergulhar na realidade dessa grande tragédia.'
           link: 'https://www.catarse.me/no_rastro_da_tragedia_nas_praias_do_nordeste?ref=home_banner'
           cta: 'Conheça o projeto'
-          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-no_rastro_da_tragedia_nas_praias_do_nordeste.jpg'             
+          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-no_rastro_da_tragedia_nas_praias_do_nordeste.jpg'
         7:
           title: '<img src="https://daks2k3a4ib2z.cloudfront.net/573a70f6d5c3cb6532f8b1a7/59c3980fd03bd6000107e99c_logo-assinaturas.png" width="400">'
           subtitle: 'Conecte-se com seus fãs e receba pagamentos todo mês em nossa plataforma de financiamento recorrente.'
           link: 'https://crowdfunding.catarse.me/assinaturas?utm_source=catarse&utm_medium=banner_home_1&utm_campaign=qualified_leads_from_home'
           cta: 'Saiba mais'
-          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-assinaturas.jpg'            
+          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-assinaturas.jpg'
         8:
           title: 'Financiamento coletivo para publicações'
           subtitle: 'Viabilize projetos editoriais especiais e aproxime-se da sua comunidade de leitores.'
           link: 'https://crowdfunding.catarse.me/publicacoes?ref=home_banner'
           cta: 'Saiba mais'
-          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-landing-publicacoes.jpg'                
+          image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-landing-publicacoes.jpg'
     new_feature_badge: 'Novidade'
     posts:
       empty: 'Este projeto ainda não publicou nenhuma novidade. <a href="/projects/%{project_id}/contributions/new" class="alt-link">Faça um apoio</a> e receba em seu email todas as notícias do projeto assim que elas forem publicadas!'
@@ -90,6 +90,7 @@ pt:
       has_cancelation_request_explanation: 'O cancelamento de sua campanha foi agendado. Dentro de 24h, ela será expirada e os seus <a href="http://suporte.catarse.me/hc/pt-br/articles/202365507-Regras-e-funcionamento-dos-reembolsos-estornos-cancelamentos" target="__blank">apoiadores serão reembolsados</a>.'
       referral:
         ctrse_explore: 'Busca do Catarse'
+        ctrse_coming_soon_email: 'Email para seguidores da página de pré-lançamento'
         ctrse_explore_pgsearch: 'Busca do Catarse'
         ctrse_thankyou_r: 'Página de agradecimento de apoio no Catarse'
         ctrse_header: 'Menu do topo do Catarse'
@@ -290,14 +291,14 @@ pt:
               question: When do I start benefiting from my subscription?
               answer: As soon as your payment is confirmed, your subscription will be activated and you can start using it! If you have any doubts regarding the project and the rewards, please contact <a href="%{userLink}" target="_blank">%{userName}</a>.
             3:
-              question: When is my card charged? 
+              question: When is my card charged?
               answer: The confirmation of your payment should be sent to your email on the same day.
             4:
               question: When does the next charge happen?
               answer: You'll be automatically charged on the same day of the month that you started your subscription.
             5:
               question: What if I want to change the value of my monthly subscription?
-              answer: You can edit your subscription at any time by clicking on your profile picture on the top, following the link to your "Histórico de apoios", finding the subscription you want to edit there and clicking on the "Editar assinatura" button at the right. 
+              answer: You can edit your subscription at any time by clicking on your profile picture on the top, following the link to your "Histórico de apoios", finding the subscription you want to edit there and clicking on the "Editar assinatura" button at the right.
       aon:
         description: Caso esse projeto não atinja a meta, você recebe de volta 100% do que pagou através de um reembolso.
         questions:
@@ -353,10 +354,10 @@ pt:
             question: E se eu quiser mudar meu apoio mensal no futuro?
             answer: Você pode alterar sua assinatura a qualquer momento. Basta clicar na sua imagem de perfil no topo da página, acessar seu "Histórico de apoios", encontrar a assinatura que deseja editar e então clicar no botão "Editar assinatura".
       sub_edit:
-        description: Ao editar uma assinatura, você tem a opção de mudar o valor assinado, a recompensa e o método de pagamento. Todas as mudanças que você fizer hoje só entrarão em vigor na sua próxima cobrança. 
+        description: Ao editar uma assinatura, você tem a opção de mudar o valor assinado, a recompensa e o método de pagamento. Todas as mudanças que você fizer hoje só entrarão em vigor na sua próxima cobrança.
         questions:
           1:
-            question: O que acontece se eu mudar o valor de minha assinatura? 
+            question: O que acontece se eu mudar o valor de minha assinatura?
             answer: Caso sua assinatura seja em boleto, você irá receber na sua próxima data de cobrança um boleto com o novo valor. Caso seja em cartão, sua próxima cobrança será processada com o novo valor.
           2:
             question: O que acontece se eu mudar o método de pagamento?

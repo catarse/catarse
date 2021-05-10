@@ -2181,12 +2181,13 @@ a:hover {
 
 .btn-secondary {
   border: 1px solid #3f4752;
-  background-color: transparent;
+  background-color: #fff;
   color: #3f4752;
 }
 
 .btn-secondary:hover {
-  color: #fff;
+  color: #3f4752;
+  background-color: #ddd;
 }
 
 .u-margintop-40 {

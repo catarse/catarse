@@ -97,6 +97,10 @@ class ProjectsController < ApplicationController
     authorize resource, :update?
   end
 
+  def coming_soon
+    authorize resource, :update?
+  end
+
   def posts
     authorize resource, :update?
   end
@@ -295,7 +299,21 @@ class ProjectsController < ApplicationController
   end
 
   def resource
-    @project ||= (params[:permalink].present? ? Project.without_state('deleted').by_permalink(params[:permalink]).first! : Project.without_state('deleted').find(params[:id]))
+    permalink = params[:permalink]
+    @project ||= if permalink.present?
+      integration = ProjectIntegration.by_draft_url(permalink).first
+      if integration.present?
+        @selected_permalink = integration.data['draft_url']
+        integration.try(:project)
+      else
+        @selected_permalink = permalink
+        Project.without_state('deleted').by_permalink(permalink).first!
+      end
+    else
+      project = Project.without_state('deleted').find(params[:id])
+      @selected_permalink = project.permalink
+      project
+    end
   end
 
   def project_comments_canonical_url
