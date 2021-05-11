@@ -33,13 +33,9 @@ class GatewayPaymentSync
     Rails.logger.info "[GatewayPayment SYNC] -> running on page #{page}"
     transactions = PagarMe::Transaction.all(page, per_page)
 
-    if transactions.empty?
-      Rails.logger.info '[GatewayPayment SYNC] -> exiting no transactions returned'
-      nil
-    else
-      Rails.logger.info "[GatewayPayment SYNC] - transactions synced on page #{page}"
-      transactions
-    end
+    transactions_response(transactions, page)
+  rescue StandardError => e
+    handle_error(e)
   end
 
   def import_gateway_payments(transactions)
@@ -50,6 +46,12 @@ class GatewayPaymentSync
 
   def update_or_create_gateway_payment(transaction)
     gateway_payment = GatewayPayment.find_or_create_by transaction_id: transaction.id.to_s
+    gateway_payment_response_update(gateway_payment, transaction)
+  rescue StandardError => e
+    handle_error(e)
+  end
+
+  def gateway_payment_response_update(gateway_payment, transaction)
     gateway_payment.update(
       gateway_data: transaction.to_json,
       postbacks: parse_json(transaction.postbacks),
@@ -58,6 +60,16 @@ class GatewayPaymentSync
       operations: parse_json(transaction.operations),
       last_sync_at: Time.zone.now
     )
+  end
+
+  def transactions_response(transactions, page)
+    if transactions.empty?
+      Rails.logger.info '[GatewayPayment SYNC] -> exiting no transactions returned'
+      nil
+    else
+      Rails.logger.info "[GatewayPayment SYNC] - transactions synced on page #{page}"
+      transactions
+    end
   end
 
   def parse_json(data)
