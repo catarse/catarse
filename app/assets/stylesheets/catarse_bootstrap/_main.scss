@@ -6973,11 +6973,10 @@ textarea:required {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-.btn-fb {
+.btn-fb-flex {
   border: 1px solid #4b6fb8;
   background-color: #4b6fb8;
   color: #fff;
-
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -6991,7 +6990,7 @@ textarea:required {
   box-shadow: 1px 1px 3px 0 #b9b9b9;
   font-weight: 600;
 }
-.btn.btn-medium.btn-fb {
+.btn.btn-medium.btn-fb-flex {
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
