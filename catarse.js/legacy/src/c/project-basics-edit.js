@@ -172,7 +172,7 @@ const projectBasicsEdit = {
                 })
                 : '',
             // add pop notifications here
-            m('form.w-form', { onsubmit: state.onSubmit }, [
+            m('form.w-form.padding-bottom-80', { onsubmit: state.onSubmit }, [
                 m('.w-container', [
                     // admin fields
                     attrs.user.is_admin

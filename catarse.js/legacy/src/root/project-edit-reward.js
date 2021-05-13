@@ -35,7 +35,7 @@ const projectEditReward = {
 
         return m('[id="dashboard-rewards-tab"]',
             (project() ? [
-                m('.w-section.section',
+                m('.w-section.section.padding-bottom-80',
                     m('.w-container', [
                         (state.showSuccess() ? m(popNotification, {
                             message: 'Recompensa salva com sucesso'
@@ -83,7 +83,7 @@ const projectEditReward = {
                                         m('br'),
                                         _.map(state.tips,
                                             (tip, idx) => project().mode === 'sub' && (Number(idx) === 3 || Number(idx) === 4) ?
-                                                null 
+                                                null
                                                 :
                                                 [
                                                     m('.fontweight-semibold', tip.title),

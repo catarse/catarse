@@ -118,7 +118,7 @@ export class ProjectEditIntegrations {
                     error: true
                 }) : ''),
 
-                m('div.section',
+                m('div.section.padding-bottom-80',
                     m('div.w-container',
                         m('div.w-row', [
                             m('div.w-col.w-col-1'),

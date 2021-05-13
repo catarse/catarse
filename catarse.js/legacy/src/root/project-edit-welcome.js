@@ -94,7 +94,7 @@ const projectEditWelcome = {
                     message: 'Erro ao salvar. Preencha todos os campos',
                     error: true
                 }) : ''),
-                m('.section',
+                m('.section.padding-bottom-80',
                     m('.w-container',
                         m('.w-row', [
                             m('.w-col.w-col-1'),

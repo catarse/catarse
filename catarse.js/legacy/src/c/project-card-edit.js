@@ -79,7 +79,7 @@ const projectCardEdit = {
                 error: true
             }) : ''),
 
-            m('form.w-form', { onsubmit: state.onSubmit }, [
+            m('form.w-form.padding-bottom-80', { onsubmit: state.onSubmit }, [
                 m('.w-section.section', [
                     m('.w-container', [
                         (
@@ -104,7 +104,7 @@ const projectCardEdit = {
                                         })
                                     ])
                                 ])
-                                : 
+                                :
                                 ''
                         ),
                         m('.w-row', [
