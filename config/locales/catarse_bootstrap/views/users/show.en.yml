@@ -41,6 +41,7 @@ en:
         balance_expired: Refund not required within 90 days. See <a target='__blank'
           href='https://suporte.catarse.me/hc/pt-br/articles/202365507-Regras-e-funcionamento-dos-reembolsos-estornos-cancelamentos#reembolso90dias'>our
           policy</a>
+        revert_balance_expired: Refund expirated balance
         contribution_refunded_after_successful_pledged: Project repayment %{project_name}
         subscription_payment_refunded: Project repayment %{project_name}
         balance_received_from: Transfer received from %{from_user_name}
