@@ -236,7 +236,7 @@ const userAboutEdit = {
                 message: m.trust(state.errors()),
                 error: true
             }) : ''),
-            m('form.simple_form.w-form', {
+            m('form.simple_form.w-form.padding-bottom-80', {
                 onsubmit: state.onSubmit
             }, [
                 m('input[name="utf8"][type="hidden"][value="✓"]'),

@@ -75,7 +75,7 @@ const projectDescriptionEdit = {
                         toggleOpt={state.showError}
                         error={true} />
                 }
-                <form onsubmit={state.onSubmit} class="w-form">
+                <form onsubmit={state.onSubmit} class="w-form padding-bottom-80">
                     <div class="w-container">
                         <div class="w-row">
                             <div class="w-col w-col-10 w-col-push-1">

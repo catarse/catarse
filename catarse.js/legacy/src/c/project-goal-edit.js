@@ -76,7 +76,7 @@ const projectGoalEdit = {
                 error: true
             }) : ''),
 
-            m('form.w-form', { onsubmit: state.onSubmit }, [
+            m('form.w-form.padding-bottom-80', { onsubmit: state.onSubmit }, [
                 m('.w-container', [
                     m('.w-row', [
                         m('.w-col.w-col-10.w-col-push-1', [

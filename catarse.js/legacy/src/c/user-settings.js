@@ -160,7 +160,7 @@ const userSettings = {
         };
     },
     view: function({state, attrs}) {
-        
+
         const user = attrs.user();
         const fields = state.fields;
         const addVM = state.addVM;
@@ -178,29 +178,29 @@ const userSettings = {
 
         return m('[id=\'settings-tab\']', [
             (
-                state.showSuccess() ? 
+                state.showSuccess() ?
                     m(popNotification, {
                         message: window.I18n.t('update_success_msg', I18nScope()),
                         toggleOpt: state.showSuccess
-                    }) 
-                : 
+                    })
+                :
                 ''
             ),
             (
-                state.showError() ? 
+                state.showError() ?
                     m(popNotification, {
                         message: state.error(),
                         toggleOpt: state.showError,
                         error: true
-                    }) 
-                : 
+                    })
+                :
                     ''
             ),
-            m('form.w-form', { onsubmit: state.onSubmit }, [
+            m('form.w-form.padding-bottom-80', { onsubmit: state.onSubmit }, [
                 m('div', [
                     m('.w-container',
                         (
-                            isProjectUserEdit ? 
+                            isProjectUserEdit ?
                                 m('.w-row', [
                                     m(".w-col.w-col-8", [
                                         m(userSettingsResponsible, { parsedErrors, fields, user, disableFields, applyDocumentMask, applyBirthDateMask }),
@@ -208,7 +208,7 @@ const userSettings = {
                                     ]),
                                     m(userSettingsHelp, {})
                                 ])
-                            : 
+                            :
                                 m('.w-col.w-col-10.w-col-push-1', [
                                     m(userSettingsResponsible, { parsedErrors, fields, user, disableFields, applyDocumentMask, applyBirthDateMask }),
                                     m(userSettingsAddress, { addVM, parsedErrors }),
