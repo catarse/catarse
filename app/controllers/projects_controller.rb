@@ -295,7 +295,7 @@ class ProjectsController < ApplicationController
   end
 
   def resource
-    @project ||= (params[:permalink].present? ? Project.by_permalink(params[:permalink]).first! : Project.find(params[:id]))
+    @project ||= (params[:permalink].present? ? Project.without_state('deleted').by_permalink(params[:permalink]).first! : Project.without_state('deleted').find(params[:id]))
   end
 
   def project_comments_canonical_url

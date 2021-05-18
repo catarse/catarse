@@ -319,6 +319,18 @@ RSpec.describe ProjectsController, type: :controller do
       before { get :show, params: { permalink: project.permalink, project_post_id: project_post.id, locale: :pt } }
       it('should assign update to @update') { expect(assigns(:post)).to eq(project_post) }
     end
+
+    describe 'when project is deleted' do
+      let(:project) { create(:project) }
+      before do
+        project.push_to_trash
+        get :show, params: { permalink: project.permalink, locale: :pt } 
+      end
+
+      it 'should not found project' do
+        expect(response).to be_not_found
+      end
+    end
   end
 
   describe 'GET video' do
