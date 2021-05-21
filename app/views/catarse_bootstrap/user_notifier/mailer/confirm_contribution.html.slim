@@ -4,8 +4,8 @@
 - first_contribution = (total_contributors == 1)
 
 h2 style="text-align:center; line-height: 45px;"
-  - if contribution.user.name
-    | Olá, <strong>#{contribution.user.name}</strong>!
+  - if contribution.user.display_name
+    | Olá, <strong>#{contribution.user.display_name}</strong>!
   - else
     | Olá!
 

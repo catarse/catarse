@@ -2,8 +2,8 @@
 
 h2 style="text-align:center; line-height: 45px;"
   | Olá
-  - if user.name
-    | , #{user.name}!
+  - if user.display_name
+    | , #{user.display_name}!
   br/
   | Bem-vindo(a) ao Catarse!
 br/
@@ -14,7 +14,7 @@ br/
 | Nós, da equipe do Catarse, estamos diariamente trabalhando para criar e manter o ambiente mais seguro e confortável possível para toda a Comunidade.  E é por isso que, antes de apoiar ou publicar um projeto, é fundamental entender como funciona a plataforma, quais so os papéis de cada um e qual a dinâmica para que o financiamento coletivo seja uma boa experiência para todos!  #{link_to 'Clique aqui', 'https://crowdfunding.catarse.me/paratodos'} para conhecer mais sobre como funciona a plataforma e #{link_to 'aqui', 'http://suporte.catarse.me/hc/pt-br/articles/115002214043-Responsabilidades-e-Seguran%C3%A7a'} para saber mais sobre as Responsabilidades e Segurança dentro do Catarse.
 br/
 br/
-|Só para você não se esquecer, o seu email de acesso é: #{user.email} 
+|Só para você não se esquecer, o seu email de acesso é: #{user.email}
 br/
 br
 
