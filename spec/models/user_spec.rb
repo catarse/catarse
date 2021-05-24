@@ -168,9 +168,18 @@ RSpec.describe User, type: :model do
   end
 
   describe '.find_active!' do
-    it 'should raise error when user is inactive' do
-      @inactive_user = create(:user, deactivated_at: Time.now)
-      expect(-> { User.find_active!(@inactive_user.id) }).to raise_error(ActiveRecord::RecordNotFound)
+    it 'raises an error when user is banned' do
+      inactive_user = create(:user, banned_at: Time.now)
+      expect {
+        User.find_active!(inactive_user.id)
+      }.to raise_error(ActiveRecord::RecordNotFound)
+    end
+
+    it 'raise error when user is inactive' do
+      inactive_user = create(:user, deactivated_at: Time.now)
+      expect {
+        User.find_active!(inactive_user.id)
+      }.to raise_error(ActiveRecord::RecordNotFound)
     end
 
     it 'should return user when active' do
