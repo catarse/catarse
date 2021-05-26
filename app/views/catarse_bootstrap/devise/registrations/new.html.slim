@@ -12,12 +12,12 @@
         .w-row
           .w-col.w-col-6
             .login-oauth
-              = link_to user_google_oauth2_omniauth_authorize_path(locale: nil), class: 'btn btn-medium btn-google w-inline-block', :data_onsuccess => 'onSignIn'
+              = button_to user_google_oauth2_omniauth_authorize_path(locale: nil), class: 'btn btn-medium btn-google w-inline-block', :data_onsuccess => 'onSignIn'
                 img.google-icon[src="/assets/catarse_bootstrap/google-icon.png" loading="lazy"]
                 div = t('.form.inputs.google')
           .w-col.w-col-6
             .login-oauth
-              = link_to user_facebook_omniauth_authorize_path(locale: nil), class: 'btn btn-medium btn-fb btn-fb-flex'
+              = button_to user_facebook_omniauth_authorize_path(locale: nil), class: 'btn btn-medium btn-fb btn-fb-flex'
                 span.fa.fa-facebook-f&nbsp;
                 text = t('.form.inputs.facebook')
         .separator
