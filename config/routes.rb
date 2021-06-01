@@ -237,6 +237,7 @@ Catarse::Application.routes.draw do
         resources :subscription_payments do
           collection do
             post :batch_chargeback
+            post :refund
           end
         end
 

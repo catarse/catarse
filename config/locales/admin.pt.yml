@@ -227,6 +227,15 @@ pt:
         current_balance: "Saldo atual"
         receiver_id: "Id do destinatário:"
         next_step: "Próximo passo"
+    refund_subscriptions:
+      refund_success: "Reembolso realizado com sucesso."
+      view:
+        refund: "Reembolsar"
+        confirm: "Deseja realmente reembolsar este pagamento?"
+        positive: "Sim"
+        negative: "Não"
+        close: "Fechar"
+        wait: "Aguarde..."
   channels:
     admin:
       <<: *admin
