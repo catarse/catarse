@@ -24,6 +24,8 @@ import { useState, withHooks } from 'mithril-hooks';
 import { DateFormat } from '../shared/components/date-format';
 import { ProjectsPaymentRewardDetails } from '../c/projects-payment-reward-detail'
 import { Loader } from '../shared/components/loader';
+import { getCurrentUserCached } from '../shared/services/user/get-current-user-cached';
+import { isLoggedIn } from '../shared/services/user/is-logged-in';
 
 declare var window : ThisWindow
 declare var CatarseAnalytics : CatarseAnalyticsType
@@ -50,7 +52,7 @@ export default class ProjectsPayment {
         const documentMask = _.partial(h.mask, '999.999.999-99');
         const documentCompanyMask = _.partial(h.mask, '99.999.999/9999-99');
         const isCnpj = prop(false);
-        const currentUserID = h.getUserID();
+        const currentUser = getCurrentUserCached();
         const countriesLoader = catarse.loader(models.country.getPageOptions());
         const user = usersVM.getCurrentUser();
 
@@ -108,7 +110,7 @@ export default class ProjectsPayment {
 
         const isLongDescription = reward => reward.description && reward.description.length > 110;
 
-        if (_.isNull(currentUserID)) {
+        if (!isLoggedIn(currentUser)) {
             return h.navigateToDevise();
         }
         if (reward() && !_.isNull(reward().id)) {

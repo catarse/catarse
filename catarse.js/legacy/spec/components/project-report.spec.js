@@ -4,7 +4,7 @@ Test if project reports forms are rendered
  */
 
 import m from 'mithril';
-import projectReport from '../../src/c/project-report.js';
+import projectReport from '../../src/c/project-report';
 
 describe('ProjectReport', () => {
     let $projectReportMountedComponent;
@@ -15,7 +15,7 @@ describe('ProjectReport', () => {
 
             $projectReportMountedComponent = mq(m(projectReport, {project :{project_id: 1}, user}));
 
-            $projectReportMountedComponent.click('button.btn.btn-terciary.btn-inline.btn-medium.w-button'); 
+            $projectReportMountedComponent.click('button.btn.btn-terciary.btn-inline.btn-medium.w-button');
         });
 
         it('Should render normal report', () => {

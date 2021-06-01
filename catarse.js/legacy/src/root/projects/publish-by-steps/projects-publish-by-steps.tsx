@@ -14,6 +14,7 @@ import { Share } from './share'
 import { ShareReminder } from './share-reminder'
 import PopNotification from '../../../c/pop-notification'
 import { ThisWindow, I18ScopeType } from '../../../entities/window'
+import { getCurrentUserCached } from '../../../shared/services/user/get-current-user-cached'
 
 declare var window : ThisWindow
 
@@ -32,11 +33,12 @@ type ProjectsPublishByStepsState = {
 type ProjectsPublishByStepsVnode = m.Vnode<ProjectsPublishByStepsAttrs, ProjectsPublishByStepsState>;
 
 class ProjectsPublishBySteps implements m.Component<ProjectsPublishByStepsAttrs, ProjectsPublishByStepsState> {
-    
+
     oninit({attrs, state} : ProjectsPublishByStepsVnode) {
+        const currentUser = getCurrentUserCached()
         state.projectPublishByStepsVM = new ProjectPublishByStepsVM(attrs.project_id)
-        state.userInfoEditVM = new UserInfoEditViewModel(attrs.project_id, h.getUserID())
-        state.showPopError = h.RedrawStream(false)
+        state.userInfoEditVM = new UserInfoEditViewModel(attrs.project_id, currentUser.id)
+        state.showPopError = h.RedrawStream<boolean>(false)
 
         state.projectPublishByStepsVM.error.subscribe(error => {
             h.scrollTop()
@@ -103,7 +105,7 @@ class ProjectsPublishBySteps implements m.Component<ProjectsPublishByStepsAttrs,
 
                 case '#description': {
                     return (
-                        <DescriptionEdit 
+                        <DescriptionEdit
                             project={projectPublishByStepsVM.project}
                             isSaving={projectPublishByStepsVM.isSaving}
                             save={async (goNext : boolean) => {
@@ -132,7 +134,7 @@ class ProjectsPublishBySteps implements m.Component<ProjectsPublishByStepsAttrs,
 
                 case '#user': {
                     return (
-                        <UserInfoEdit 
+                        <UserInfoEdit
                             user={userInfoEditVM.user}
                             isSaving={userInfoEditVM.isSaving || projectPublishByStepsVM.isSaving}
                             hasErrorOn={(field : string) => userInfoEditVM.hasErrorOn(field)}
@@ -164,7 +166,7 @@ class ProjectsPublishBySteps implements m.Component<ProjectsPublishByStepsAttrs,
                         <ShareReminder project={project} />
                     )
                 }
-    
+
                 default: {
                     if (project.is_published) {
                         window.location.hash = '#to-do'

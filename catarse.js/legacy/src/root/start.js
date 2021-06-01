@@ -388,7 +388,7 @@ const start = {
                 ])
             ]),
             m(slider, {
-                slides: testimonials(),
+                slides: testimonials,
                 title: window.I18n.t('testimonials_title', I18nScope()),
                 slideClass: 'slide-testimonials-content',
                 wrapperClass: 'slide-testimonials',

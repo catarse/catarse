@@ -8,6 +8,8 @@ import contributionVM from './vms/contribution-vm';
 import generativeTrust from '../vendor/mithril-generative-trust';
 import Stream from 'mithril/stream';
 import { UserDetails } from './entities';
+import { getCurrentUserCached } from './shared/services/user/get-current-user-cached';
+import { isLoggedIn } from './shared/services/user/is-logged-in';
 
 function getCallStack() {
     const callStackStr = new Error().stack;
@@ -17,7 +19,7 @@ function getCallStack() {
     return realCallStack;
 }
 
-function RedrawScheduler() {
+const RedrawScheduler: any = () => {
     let redrawsRequestCounter = 0;
     const markedCallStack = {};
     const requestAnimationFramePolyfill = (function() {
@@ -66,7 +68,7 @@ function RedrawScheduler() {
 
 RedrawScheduler();
 
-const { CatarseAnalytics, $ } = window;
+const { CatarseAnalytics, $ } = window as any;
 const _dataCache : { [key:string]: any } = {},
     autoRedrawProp = startData => {
         const p = prop(startData);
@@ -92,7 +94,7 @@ const _dataCache : { [key:string]: any } = {},
             results = regex.exec(location.search);
         return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
     },
-    reduceSearchString = (/** @type {(keyValue:string) => any} */callback, initial) => window.location.search.replace('?', '').split('&').reduce(callback, initial),
+    reduceSearchString = (callback, initial) : { [key:string]: any } => window.location.search.replace('?', '').split('&').reduce(callback, initial),
     objectToSearchString = (obj) => '?' + Object.keys(obj).map(key => `${key}=${obj[key]}`).join('&'),
     setParamByName = (name, value) => {
         const keysAndValues = reduceSearchString((finalQueryObject, keyValue) => {
@@ -399,7 +401,7 @@ const _dataCache : { [key:string]: any } = {},
                         }
                     });
 
-                    return !validationErrors().length > 0 ? fn() : false;
+                    return !(validationErrors().length > 0) ? fn() : false;
                 };
             },
             hasError(fieldProp) {
@@ -489,27 +491,6 @@ const _dataCache : { [key:string]: any } = {},
         const meta = _.first(document.querySelectorAll('[name=newsletter-url]'));
         return meta ? (_dataCache.newsletterUrl = meta.getAttribute('content')) : null;
     },
-    getUser = () : UserDetails => {
-        if (_dataCache.user) {
-            return _dataCache.user;
-        }
-
-        const body = document.getElementsByTagName('body'),
-            data = _.first(body).getAttribute('data-user');
-        if (data) {
-            return (_dataCache.user = JSON.parse(data));
-        }
-        return null;
-    },
-    getUserID = () => {
-        const user = getUser();
-        return user === null || user?.id == null ? null : user.id;
-    },
-    getUserCommonID = () => {
-        const user = getUser();
-        return user && user.common_id
-    },
-    userSignedIn = () => !_.isNull(getUserID()),
     getBlogPosts = () => {
         if (_dataCache.blogPosts) {
             return _dataCache.blogPosts;
@@ -665,7 +646,7 @@ const _dataCache : { [key:string]: any } = {},
             scope,
         });
     },
-    redrawHashChange = before => {
+    redrawHashChange = (before?: any) => {
         const callback = _.isFunction(before)
             ? () => {
                     before();
@@ -796,7 +777,7 @@ const _dataCache : { [key:string]: any } = {},
                     eventObj.project = getCurrentProject();
                 }
                 if (!eventObj.user) {
-                    eventObj.user = getUser();
+                    eventObj.user = getCurrentUserCached()
                 }
                 CatarseAnalytics.event(eventObj);
             } catch (e) {
@@ -1188,22 +1169,24 @@ const _dataCache : { [key:string]: any } = {},
     trust = text => generativeTrust(text, { eliminateScriptTags: true }),
     SentryInitSDK = () => {
         const metaSentryUrlDSN = document.querySelector('[name="sentry-public-dsn"]');
-
+        const currentUser = getCurrentUserCached()
         if (metaSentryUrlDSN && metaSentryUrlDSN.getAttribute('content')) {
             Sentry.init({ dsn: metaSentryUrlDSN.getAttribute('content') });
-            if (getUserID()) {
-                Sentry.configureScope(scope => scope.setUser({ id: getUserID() }));
+            if (isLoggedIn(currentUser)) {
+                Sentry.configureScope(scope => scope.setUser({ id: currentUser.id }));
             }
         }
     },
-    captureException = (exception) => {
+    captureException = (exception: Error) => {
+        console.error(`CAPTURED EXCEPTION: ${exception}`);
         try {
             Sentry.captureException(exception);
         } catch (e) {
             Sentry.captureException(e);
         }
     },
-    captureMessage = (message) => {
+    captureMessage = (message: string) => {
+        console.error(`CAPTURED MESSAGE: ${message}`);
         try {
             Sentry.captureMessage(message);
         } catch (e) {
@@ -1446,9 +1429,6 @@ export default {
     lastDayOfNextMonth,
     formatNumber,
     idVM,
-    getUser,
-    getUserID,
-    getUserCommonID,
     getApiHost,
     getNewsletterUrl,
     getCurrentProject,
@@ -1514,7 +1494,6 @@ export default {
     setRedactor,
     redactor,
     setCsrfToken,
-    userSignedIn,
     isDevEnv,
     trust,
     attachEventsToHistory,
@@ -1524,3 +1503,4 @@ export default {
     clamp,
     redactorConfig,
 };
+

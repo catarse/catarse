@@ -89,10 +89,10 @@ const paymentCreditCard = {
             let isValid = false,
                 errorMessage = '';
 
-            if (document.length > 14) {
+            if (document && document.length > 14) {
                 isValid = h.validateCnpj(document);
                 errorMessage = 'CNPJ inválido.';
-            } else {
+            } else if (striped) {
                 isValid = h.validateCpf(striped);
                 errorMessage = 'CPF inválido.';
             }
@@ -417,9 +417,9 @@ const paymentCreditCard = {
                         ])
                     ]),
                     (
-                        (projectVM.isSubscription() || (state.loadingInstallments() || (state.installments().length <= 1))) ? 
-                            '' 
-                        : 
+                        (projectVM.isSubscription() || (state.loadingInstallments() || (state.installments().length <= 1))) ?
+                            ''
+                        :
                             m('.w-row', [
                                 m('.w-clearfix.w-col.w-col-6', [
                                     m('label.field-label.fontweight-semibold[for="split"]',
@@ -457,23 +457,23 @@ const paymentCreditCard = {
                 m('.w-row', [
                     m('.w-col.w-col-8.w-col-push-2', [
                         (
-                            !_.isEmpty(state.vm.submissionError()) ? 
+                            !_.isEmpty(state.vm.submissionError()) ?
                                 (
                                     m('.card.card-error.u-radius.zindex-10.u-marginbottom-30.fontsize-smaller',
-                                        m('.u-marginbottom-10.fontweight-bold', m.trust(state.vm.submissionError()))) 
+                                        m('.u-marginbottom-10.fontweight-bold', m.trust(state.vm.submissionError())))
                                 )
-                            : 
+                            :
                                 ''
                         ),
                         (
-                            state.vm.isLoading() ? 
-                                h.loader() 
-                            : 
-                                m('input.btn.btn-large.u-marginbottom-20[type="submit"]', { 
+                            state.vm.isLoading() ?
+                                h.loader()
+                            :
+                                m('input.btn.btn-large.u-marginbottom-20[type="submit"]', {
                                     value: (
-                                        state.isSubscriptionEdit() && !attrs.isReactivation() ? 
+                                        state.isSubscriptionEdit() && !attrs.isReactivation() ?
                                             window.I18n.t('subscription_edit', state.scope())
-                                        : 
+                                        :
                                             window.I18n.t('credit_card.finish_payment', state.scope())
                                     )
                                 })

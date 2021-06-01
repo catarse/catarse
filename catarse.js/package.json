@@ -37,7 +37,7 @@
         "@types/jasmine": "^3.5.14",
         "@types/jasmine-ajax": "^3.3.1",
         "@types/jwt-decode": "^2.2.1",
-        "@types/mithril": "^2.0.2",
+        "@types/mithril": "^1.1.11",
         "@types/underscore": "^1.9.4",
         "@typescript-eslint/eslint-plugin": "^3.8.0",
         "@typescript-eslint/parser": "^3.8.0",

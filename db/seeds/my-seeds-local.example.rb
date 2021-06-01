@@ -15,6 +15,15 @@ puts "Adding OauthProvider settings..."
     path: 'facebook'
   )
 
+  puts "  Google..."
+  google_oauth2 = OauthProvider.where(name: 'google_oauth2').first_or_initialize
+  google_oauth2.update(
+    key: '469244432923-nruvs4l2sf7hpah03k680vi4iev8ciis.apps.googleusercontent.com',
+    secret: '2nQJ-AsZ36qCDaHk3FQk0_50',
+    path: 'google_oauth2',
+    scope: 'userinfo.email,userinfo.profile'
+  )
+
 
   #OauthProvider.create :name => 'Twitter', :key => 'myconsumerkey', :secret => 'myconsumersecret', :strategy => 'Twitter', :path => 'twitter'
   #OauthProvider.create :name => 'LinkedIn', :key => 'myconsumerkey', :secret => 'myconsumersecret', :strategy => 'LinkedIn', :path => 'linked_in'

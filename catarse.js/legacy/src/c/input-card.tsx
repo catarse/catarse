@@ -14,7 +14,7 @@ export default class InputCard {
     view({attrs, children} : m.Vnode<InputCardProps>) {
         const {
             cardClass = '.u-marginbottom-30.card.card-terciary',
-            onclick = Function,
+            onclick = (event : any) => event.stopPropagation(),
             label,
             label_hint,
             children: attrsChildren,
