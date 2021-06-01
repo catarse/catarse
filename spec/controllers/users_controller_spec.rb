@@ -341,6 +341,11 @@ RSpec.describe UsersController, type: :controller do
       it { is_expected.to have_http_status(404) }
     end
 
+    context 'when user is banned' do
+      let(:user) { create(:user, banned_at: Time.now) }
+      it { is_expected.to have_http_status(404) }
+    end
+
     context 'when user is active' do
       it { is_expected.to be_successful }
     end

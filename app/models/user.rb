@@ -104,7 +104,7 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :mail_marketing_users, allow_destroy: true
 
   scope :with_permalink, -> { where.not(permalink: nil) }
-  scope :active, -> { where(deactivated_at: nil) }
+  scope :active, -> { where(deactivated_at: nil, banned_at: nil) }
   scope :with_user_totals, -> {
     joins('LEFT OUTER JOIN user_totals on user_totals.user_id = users.id')
   }
