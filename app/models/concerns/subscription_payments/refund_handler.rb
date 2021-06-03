@@ -40,9 +40,11 @@ module SubscriptionPayments
     end
 
     def refunded?(user_id:)
-      BalanceTransaction.where(event_name: 'subscription_payment_refunded',
-                               subscription_payment_uuid: id, user_id: user_id
-                              ).present?
+      BalanceTransaction.where(
+        event_name: 'subscription_payment_refunded',
+        subscription_payment_uuid: id,
+        user_id: user_id
+      ).present?
     end
 
     def update_payment_status
