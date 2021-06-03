@@ -1,9 +1,10 @@
 - user = @notification.user
-- projects = user.projects_backed_by_friends_in_last_day
+- projects_friends = @notification.projects_friends
 
 h1 style="text-align:center;display:block;margin:0;padding:0;color:#3f4752;font-family:Helvetica;font-size:20px;font-style:normal;font-weight:bold;line-height:125%;letter-spacing:normal"  Campanhas apoiadas por seus amigos
 
--projects.each do |project|
+-projects_friends.each do |info|
+  - project = Project.find(info[:project_id])
   tr
     td style="background-color:#ffffff;border-top:0;border-bottom:0;padding-top:20px;padding-bottom:20px" valign="top"
       table border="0" cellpadding="0" cellspacing="0" style="min-width:100%;border-collapse:collapse" width="100%"
@@ -15,17 +16,17 @@ h1 style="text-align:center;display:block;margin:0;padding:0;color:#3f4752;font-
                   tr
                     td style="padding-top:0;padding-right:18px;padding-bottom:9px;padding-left:18px;word-break:break-word;color:#3f4752;font-family:Helvetica;font-size:16px;line-height:150%;text-align:center" valign="top"
                       div style="text-align:center"
-                        - friends = user.contributing_friends_since_last_day(project)
+                        - friends = User.where(id: info[:friends_ids])
                         - friends.each do |friend|
-                          img.CToWUd src="#{friend.follow.display_image}" style="border-radius:50%;width:35px;border:0;min-height:auto!important;outline:none;text-decoration:none;min-height:auto!important" /
+                          img.CToWUd src="#{friend.display_image}" style="border-radius:50%;width:35px;border:0;min-height:auto!important;outline:none;text-decoration:none;min-height:auto!important" /
                         br/
                         strong
                           span style="font-size:12px"
                             - if friends.size == 1
-                              = "#{friends.first.follow.display_name} apoiou "
+                              = "#{friends.first.display_name} apoiou "
                             -else
-                              = friends[0..-2].map{|friend| friend.follow.display_name}.join(', ')
-                              = " e #{friends.last.follow.display_name} apoiaram "
+                              = friends[0..-2].map{|friend| friend.display_name}.join(', ')
+                              = " e #{friends.last.display_name} apoiaram "
                             ="um projeto de #{project.category.name_pt}"
                         br/
       table border="0" cellpadding="0" cellspacing="0" style="min-width:100%;border-collapse:collapse" width="100%"

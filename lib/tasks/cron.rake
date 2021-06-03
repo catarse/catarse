@@ -167,8 +167,17 @@ namespace :cron do
 
   desc 'Send a notification about new contributions from friends'
   task notify_new_friends_contributions: [:environment] do
-    User.with_contributing_friends_since_last_day.distinct.each do |user|
-      user.notify(:new_friends_contributions) if user.subscribed_to_friends_contributions
+    User.where(subscribed_to_friends_contributions: true).with_contributing_friends_since_last_day.distinct.each do |user|
+      Notification.notify(
+        :new_friends_contributions,
+        user,
+        projects_friends: user.projects_backed_by_friends_in_last_day.map do |project|
+          {
+            project_id: project.id,
+            friends_ids: user.contributing_friends_since_last_day(project).pluck(:follow_id)
+          }
+        end
+      )
     end
   end
 
