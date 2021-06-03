@@ -45,8 +45,15 @@ class GatewayPaymentSync
   end
 
   def update_or_create_gateway_payment(transaction)
+    retries ||= 0
     gateway_payment = GatewayPayment.find_or_create_by transaction_id: transaction.id.to_s
     gateway_payment_response_update(gateway_payment, transaction)
+  rescue RestClient::BadGateway => e
+    return handle_error(e) if retries > 3
+
+    retries += 1
+    sleep 3
+    retry
   rescue StandardError => e
     handle_error(e)
   end
