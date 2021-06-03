@@ -1,5 +1,5 @@
-FROM ruby:3.0.0-alpine3.13
-#FROM alpine:3.7
+FROM ruby:3.0.1-alpine3.13
+
 MAINTAINER Catarse <contato@catarse.me>
 
 ENV BUILD_PACKAGES postgresql-dev libxml2-dev libxslt-dev imagemagick imagemagick-dev openssl libpq libffi-dev bash curl-dev libstdc++ tzdata bash ca-certificates build-base ruby-dev libc-dev linux-headers postgresql-client postgresql git nodejs yarn
@@ -16,7 +16,7 @@ RUN node -v
 RUN mkdir /usr/app
 WORKDIR /usr/app
 #
-RUN gem install bundler:2.2.8
+RUN gem install bundler:2.2.17
 #
 COPY Gemfile /usr/app/
 COPY Gemfile.lock /usr/app/

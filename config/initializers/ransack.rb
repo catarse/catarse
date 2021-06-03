@@ -8,7 +8,7 @@ module Arel
   module Nodes
     class ContainsArray < Arel::Nodes::Binary
       def operator
-        :"@>"
+        :'@>'
       end
     end
   end
