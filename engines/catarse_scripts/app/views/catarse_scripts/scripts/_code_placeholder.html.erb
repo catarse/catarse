@@ -16,8 +16,7 @@ class <ScriptClassName>
     # begin
     #   ...
     # rescue => e
-    #   Raven.extra_context({ key => value })
-    #   Raven.capture_exception(e)
+    #   Sentry.capture_exception(e, extra: { key: 'value' })
     # end
   end
 end

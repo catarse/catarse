@@ -23,9 +23,7 @@ class RefreshContributionRewardsMetricsTask
           reward.refresh_reward_metric_storage
         end
       rescue StandardError => e
-        Raven.extra_context(task: :refresh_contribution_reward_metrics)
-        Raven.capture_exception(e)
-        Raven.extra_context({})
+        Sentry.capture_exception(e, extra: { task: :refresh_contribution_reward_metrics })
       end
 
       break if Rails.env.test?

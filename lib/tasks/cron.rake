@@ -198,9 +198,7 @@ namespace :cron do
           project.notify(:subscription_report, project.user)
         end
       rescue StandardError => e
-        Raven.extra_context(task: :notify_sub_reports, project_id: project.id)
-        Raven.capture_exception(e)
-        Raven.extra_context({})
+        Sentry.capture_exception(e, extra: { task: :notify_sub_reports, project_id: project.id })
       end
     end
   end

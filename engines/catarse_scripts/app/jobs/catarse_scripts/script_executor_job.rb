@@ -16,12 +16,8 @@ module CatarseScripts
       script.update(status: :done)
     rescue => e
       script.update(status: :with_error)
-      Raven.extra_context(
-        script_id: script.id,
-        script_title: script.title,
-        script_class_name: script.class_name
-      )
-      Raven.capture_exception(e)
+      extra = { script_id: script.id, script_title: script.title, script_class_name: script.class_name }
+      Sentry.capture_exception(e, extra: extra)
     end
   end
 end

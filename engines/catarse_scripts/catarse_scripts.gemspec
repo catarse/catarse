@@ -28,7 +28,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "factory_bot_rails"
   spec.add_development_dependency "rails-controller-testing"
   spec.add_development_dependency "rspec-rails"
-  spec.add_development_dependency "sentry-raven"
+  spec.add_development_dependency "sentry-ruby"
   spec.add_development_dependency "shoulda-matchers"
   spec.add_development_dependency "sidekiq-status"
 end

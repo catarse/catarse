@@ -15,8 +15,6 @@ class SendgridEventProcessor
       )
     end
   rescue Exception => e
-    Raven.extra_context(sengrid_event: event.attributes)
-    Raven.capture_exception(e)
-    Raven.extra_context({})
+    Sentry.capture_exception(e, extra: { sengrid_event: event.attributes })
   end
 end

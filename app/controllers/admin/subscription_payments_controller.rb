@@ -22,7 +22,7 @@ class Admin::SubscriptionPaymentsController < Admin::BaseController
 
       render json: { success: I18n.t("admin.refund_subscriptions.refund_success") }, status: :created
     rescue => exception
-      Raven.capture_exception(exception)
+      Sentry.capture_exception(exception)
       render json: { errors: [exception.message] }, status: :unprocessable_entity
     end
   end

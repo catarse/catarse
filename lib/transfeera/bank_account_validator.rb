@@ -14,10 +14,10 @@ module Transfeera
             begin
                 validation_response = request_validation(email_contact, access_token, account_to_validate)
                 validation = validation_response['_validation']
-                
+
                 map_to_catarse_bank_account_model validation
             rescue StandardError => e
-                Raven.capture_exception(e, level: 'fatal')
+                Sentry.capture_exception(e, level: :fatal)
                 {
                     valid: false,
                     errors: [
@@ -63,11 +63,11 @@ module Transfeera
             }
             JSON.parse(Net::HTTP.post(URI(validate_url), account_to_validate.to_json, headers).body).to_h
         end
-        
+
         def self.map_to_catarse_bank_account_model(validation)
             {
                 valid: validation['valid'],
-                errors: validation['errors'].map do |error| 
+                errors: validation['errors'].map do |error|
                     if error['field'] == 'name'
                         {
                             field: :user_name,

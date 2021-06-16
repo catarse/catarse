@@ -86,9 +86,7 @@ class GatewayPaymentSync
   end
 
   def handle_error(error)
-    Raven.extra_context(task: :gateway_payments_sync)
-    Raven.capture_exception(error)
-    Raven.extra_context({})
+    Sentry.capture_exception(error, extra: { task: :gateway_payments_sync })
   end
 end
 

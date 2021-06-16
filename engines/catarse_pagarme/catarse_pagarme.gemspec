@@ -24,7 +24,7 @@ Gem::Specification.new do |s|
   s.add_dependency "konduto-ruby", "2.1.0"
   s.add_dependency "weekdays", ">= 1.0.2"
   s.add_dependency "sidekiq"
-  s.add_dependency "sentry-raven"
+  s.add_dependency "sentry-ruby"
 
   s.add_development_dependency "rspec-rails", "~> 3.3"
   s.add_development_dependency "factory_girl_rails"

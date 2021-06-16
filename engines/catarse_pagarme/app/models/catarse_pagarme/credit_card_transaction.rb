@@ -66,7 +66,7 @@ module CatarsePagarme
       begin
         antifraud_wrapper.send(analyze: true)
       rescue RuntimeError => e
-        ::Raven.capture_exception(e, level: 'fatal')
+        ::Sentry.capture_exception(e, level: :fatal)
         OpenStruct.new(recommendation: :DECLINE)
       end
     end

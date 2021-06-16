@@ -16,8 +16,7 @@ class ImportMissingPayablesAction
       update_payment
     end
   rescue => e
-    Raven.extra_context(payment_id: @payment.id)
-    Raven.capture_exception(e, level: 'fatal')
+    Sentry.capture_exception(e, level: :fatal, extra: { payment_id: @payment.id })
   end
 
   def fetch_transaction

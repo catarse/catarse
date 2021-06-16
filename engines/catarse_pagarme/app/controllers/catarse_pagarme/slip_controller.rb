@@ -10,7 +10,7 @@ module CatarsePagarme
 
       render json: { boleto_url: transaction.boleto_url, payment_status: transaction.status, gateway_data: payment.gateway_data }
     rescue PagarMe::PagarMeError => e
-      raven_capture(e)
+      sentry_capture(e)
       render json: { boleto_url: nil, payment_status: 'failed', message: e.message }
     end
 

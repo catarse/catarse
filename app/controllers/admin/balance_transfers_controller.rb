@@ -56,14 +56,13 @@ class Admin::BalanceTransfersController < Admin::BaseController
   # def process_transfers
   #   _collection = BalanceTransfer.authorized
   #   _collection.find_each do |bt|
-  #     Raven.user_context(balance_transfer_id: bt.id)
   #     begin
   #       Rails.logger.info "[BalanceTransfer] processing -> #{bt.id} "
   #       bt.pagarme_delegator.transfer_funds
   #       bt.reload
   #       Rails.logger.info "[BalanceTransfer] processed to -> #{bt.transfer_id}"
   #     rescue Exception => e
-  #       Raven.capture_exception(e)
+  #       Sentry.capture_exception(e, user: { balance_transfer_id: bt.id })
   #       Rails.logger.info "[BalanceTransfer] processing gateway error on -> #{bt.id} "
 
   #       bt.transition_to!(
@@ -71,7 +70,6 @@ class Admin::BalanceTransfersController < Admin::BaseController
   #         { error_msg: e.message, error: e.to_json }
   #       )
   #     end
-  #     Raven.user_context({})
   #   end
 
   #   _processing_collection = BalanceTransfer.processing

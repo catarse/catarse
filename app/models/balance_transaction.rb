@@ -61,9 +61,8 @@ class BalanceTransaction < ApplicationRecord
       }
     }
   rescue StandardError => e
-    Raven.extra_context(balance_transaction_id: self.try(:id), metadata_record: self.try(:metadata))
-    Raven.capture_exception(e)
-    Raven.extra_context({})
+    extra = { balance_transaction_id: self.try(:id), metadata_record: self.try(:metadata) }
+    Sentry.capture_exception(e, extra: extra)
   end
 
   def self.insert_balance_transfer_between_users(from_user, to_user, amount_to_transfer = nil)

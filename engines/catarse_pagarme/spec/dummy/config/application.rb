@@ -6,14 +6,13 @@ require 'rails/all'
 
 Bundler.require(*Rails.groups)
 require "catarse_pagarme"
-require "sentry-raven"
+require "sentry-ruby"
 
 module Dummy
   class Application < Rails::Application
     config.to_prepare do
-      Raven.configure do |config|
+      Sentry.init do |config|
         config.dsn =  ''
-        config.environments = ['staging', 'production']
       end
     end
 

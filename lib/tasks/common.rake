@@ -118,9 +118,7 @@ namespace :common do
           BalanceTransaction.insert_subscription_payment(sp.id)
           RewardMetricStorageRefreshWorker.perform_async(sp.reward.id) if sp.reward.present?
         rescue StandardError => e
-          Raven.extra_context(task: :generate_subscription_balance, subscription_payment_id: sp.id)
-          Raven.capture_exception(e)
-          Raven.extra_context({})
+          Sentry.capture_exception(e, extra: { task: :generate_subscription_balance, subscription_payment_id: sp.id })
         end
       end
     end

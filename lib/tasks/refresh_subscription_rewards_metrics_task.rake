@@ -23,9 +23,7 @@ class RefreshSubscriptionRewardsMetricsTask
           reward.refresh_reward_metric_storage if reward.present?
         end
       rescue StandardError => e
-        Raven.extra_context(task: :refresh_subscription_reward_metrics)
-        Raven.capture_exception(e)
-        Raven.extra_context({})
+        Sentry.capture_exception(e, extra: { task: :refresh_subscription_reward_metrics })
       end
 
       break if Rails.env.test?

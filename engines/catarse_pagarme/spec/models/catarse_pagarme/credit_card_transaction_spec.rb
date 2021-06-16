@@ -263,8 +263,8 @@ describe CatarsePagarme::CreditCardTransaction do
       let(:exception) { RuntimeError.new('Error') }
       before { allow(card_transaction.antifraud_wrapper).to receive(:send).and_raise(exception) }
 
-      it 'captures exception with Raven' do
-        expect(Raven).to receive(:capture_exception).with(exception, { level: 'fatal' })
+      it 'captures exception with Sentry' do
+        expect(Sentry).to receive(:capture_exception).with(exception, { level: :fatal })
 
         card_transaction.process_antifraud
       end

@@ -5,8 +5,6 @@ namespace :balance_transfer do
   task process_authorized: :environment do
     PagarMe.api_key = CatarseSettings[:pagarme_api_key]
     BalanceTransfer.authorized.each do |bt|
-      Raven.user_context(balance_transfer_id: bt.id)
-
       begin
         Rails.logger.info "[BalanceTransfer] processing -> #{bt.id} "
 
@@ -15,7 +13,7 @@ namespace :balance_transfer do
 
         Rails.logger.info "[BalanceTransfer] processed to -> #{bt.transfer_id}"
       rescue Exception => e
-        Raven.capture_exception(e)
+        Sentry.capture_exception(e, user: { balance_transfer_id: bt.id })
         Rails.logger.info "[BalanceTransfer] processing gateway error on -> #{bt.id} "
 
         bt.transition_to!(
@@ -23,8 +21,6 @@ namespace :balance_transfer do
           { error_msg: e.message, error: e.to_json }
         )
       end
-
-      Raven.user_context({})
     end
   end
 
@@ -46,8 +42,7 @@ namespace :balance_transfer do
       end
     rescue RestClient::BadGateway => e
       if retries > 3
-        Raven.extra_context(task: :update_status)
-        Raven.capture_exception(e)
+        Sentry.capture_exception(e, extra: { task: :update_status })
         return
       end
 
@@ -55,8 +50,7 @@ namespace :balance_transfer do
       sleep 3
       retry
     rescue StandardError => e
-      Raven.extra_context(task: :update_status)
-      Raven.capture_exception(e)
+      Sentry.capture_exception(e, extra: { task: :update_status })
     end
 
     BalanceTransfer.processing.each do |bt|
