@@ -1,4 +1,4 @@
-class TimezonePostsCatarseApi < ActiveRecord::Migration[4.2]
+class TimezonePostsCatarseAPI < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
     CREATE OR REPLACE VIEW "1"."project_posts_details" AS

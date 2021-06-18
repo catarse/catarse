@@ -1,4 +1,4 @@
-class AddProjectAccountErrorsToApi < ActiveRecord::Migration[4.2]
+class AddProjectAccountErrorsToAPI < ActiveRecord::Migration[4.2]
     def up
     execute <<-SQL
 CREATE VIEW "1".project_account_errors AS

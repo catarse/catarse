@@ -2,9 +2,9 @@
 
 require 'rails_helper'
 
-RSpec.describe ApiWrapper, type: :model do
+RSpec.describe APIWrapper, type: :model do
   let(:current_user) { create(:user) }
-  let(:api_wrapper) { ApiWrapper.new(current_user) }
+  let(:api_wrapper) { APIWrapper.new(current_user) }
   let(:api_host) { CatarseSettings[:api_host] }
 
   context 'without user' do
@@ -86,7 +86,7 @@ RSpec.describe ApiWrapper, type: :model do
         is_expected.to eq(
           role: 'web_user',
           user_id: current_user.id.to_s,
-          exp: (Time.now + ApiWrapper::TOKEN_TTL).to_i
+          exp: (Time.now + APIWrapper::TOKEN_TTL).to_i
         )
       end
     end

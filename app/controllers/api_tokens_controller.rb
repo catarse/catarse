@@ -1,7 +1,7 @@
 # coding: utf-8
 # frozen_string_literal: true
 
-class ApiTokensController < ApplicationController
+class APITokensController < ApplicationController
   TOKEN_TTL = 1.hour
   before_action :set_cache_headers
 
@@ -43,7 +43,7 @@ class ApiTokensController < ApplicationController
       return render json: { error: 'only authenticated users can request the API token' }, status: 401
     end
 
-    api_wrapper = ApiWrapper.new(current_user)
+    api_wrapper = APIWrapper.new(current_user)
 
     expires_in TOKEN_TTL, public: false
     render json: { token: api_wrapper.jwt }, status: 200

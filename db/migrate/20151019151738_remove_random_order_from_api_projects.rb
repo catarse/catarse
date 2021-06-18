@@ -1,4 +1,4 @@
-class RemoveRandomOrderFromApiProjects < ActiveRecord::Migration[4.2]
+class RemoveRandomOrderFromAPIProjects < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
 CREATE OR REPLACE VIEW "1".projects AS

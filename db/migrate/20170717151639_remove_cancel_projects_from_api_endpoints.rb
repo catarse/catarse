@@ -1,4 +1,4 @@
-class RemoveCancelProjectsFromApiEndpoints < ActiveRecord::Migration[4.2]
+class RemoveCancelProjectsFromAPIEndpoints < ActiveRecord::Migration[4.2]
   def up
     execute %Q{
 drop function if exists "1".cancel_project(integer);

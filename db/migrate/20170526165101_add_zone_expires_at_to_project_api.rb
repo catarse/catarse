@@ -1,4 +1,4 @@
-class AddZoneExpiresAtToProjectApi < ActiveRecord::Migration[4.2]
+class AddZoneExpiresAtToProjectAPI < ActiveRecord::Migration[4.2]
   def change
     execute %Q{
 CREATE OR REPLACE VIEW "1"."projects" AS

@@ -1,4 +1,4 @@
-class AddWithdrawOperationToApi < ActiveRecord::Migration[4.2]
+class AddWithdrawOperationToAPI < ActiveRecord::Migration[4.2]
   def change
     execute %Q{
 create or replace function withdraw_balance() returns trigger as $$

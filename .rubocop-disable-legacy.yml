@@ -1,8 +1,8 @@
 AllCops:
   Exclude:
     # ACTIONS
-    - app/actions/banish_project_action.rb
-    - app/actions/import_missing_payables_action.rb
+    - app/old_actions/banish_project_action.rb
+    - app/old_actions/import_missing_payables_action.rb
 
     # CONTROLLERS
     - app/controllers/admin/balance_transactions_controller.rb
@@ -204,10 +204,10 @@ AllCops:
     - app/policies/user_policy.rb
 
     # STATE MACHINE
-    - app/state_machine/aon_project_machine.rb
-    - app/state_machine/balance_transfer_machine.rb
-    - app/state_machine/flex_project_machine.rb
-    - app/state_machine/sub_project_machine.rb
+    - app/state_machines/aon_project_machine.rb
+    - app/state_machines/balance_transfer_machine.rb
+    - app/state_machines/flex_project_machine.rb
+    - app/state_machines/sub_project_machine.rb
 
     # UPLOADERS
     - app/uploaders/cover_uploader.rb
@@ -406,8 +406,8 @@ AllCops:
     - spec/policies/reward_policy_spec.rb
     - spec/policies/user_policy_spec.rb
 
-    - spec/state_machine/aon_project_machine_spec.rb
-    - spec/state_machine/flex_project_machine_spec.rb
+    - spec/state_machines/aon_project_machine_spec.rb
+    - spec/state_machines/flex_project_machine_spec.rb
 
     - spec/uploaders/image_uploader_spec.rb
     - spec/uploaders/project_uploader_spec.rb

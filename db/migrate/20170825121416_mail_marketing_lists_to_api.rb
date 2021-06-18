@@ -1,4 +1,4 @@
-class MailMarketingListsToApi < ActiveRecord::Migration[4.2]
+class MailMarketingListsToAPI < ActiveRecord::Migration[4.2]
   def up
     execute %Q{
 create or replace view "1".mail_marketing_lists as

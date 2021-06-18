@@ -1,4 +1,4 @@
-class AddUserFollowsApi < ActiveRecord::Migration[4.2]
+class AddUserFollowsAPI < ActiveRecord::Migration[4.2]
   def up
     execute %Q{
 ALTER TABLE public.user_follows

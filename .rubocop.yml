@@ -45,16 +45,31 @@ Layout/MultilineMethodCallBraceLayout:
 Layout/MultilineMethodCallIndentation:
   EnforcedStyle: indented
 
+Lint/SuppressedException:
+  AllowComments: true
+
+Lint/UnusedMethodArgument:
+  AllowUnusedKeywordArguments: true
+
 Metrics/BlockLength:
   Exclude:
     - 'spec/**/*'
     - 'config/environments/*'
+
+Metrics/MethodLength:
+  CountAsOne: ['array', 'hash', 'heredoc']
+
+Naming/VariableNumber:
+  Enabled: false
 
 Rails/Delegate:
   Enabled: false
 
 Rails/UnknownEnv:
   Environments: ['production', 'test', 'development', 'sandbox', 'cucumber']
+
+RSpec/ExampleLength:
+  CountAsOne: ['array', 'hash', 'heredoc']
 
 RSpec/MessageSpies:
   EnforcedStyle: receive

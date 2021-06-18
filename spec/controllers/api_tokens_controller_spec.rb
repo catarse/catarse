@@ -3,7 +3,7 @@
 
 require 'rails_helper'
 
-RSpec.describe ApiTokensController, type: :controller do
+RSpec.describe APITokensController, type: :controller do
   let(:api_host) { 'https://api.foo.com' }
   let(:common_api_key) { 'someapikey' }
   let(:proxy_api_key) { 'platform_api_key_foobar' }
