@@ -46,7 +46,6 @@ const projectContributorCard = {
                     project: attrs.project()
                 })
             }, userVM.displayName(contribution.data)),
-            m('.fontcolor-secondary.fontsize-smallest.u-marginbottom-10', `${h.selfOrEmpty(contribution.data.city)}, ${h.selfOrEmpty(contribution.data.state)}`),
             m('.fontsize-smaller', [
                 m('span.fontweight-semibold', contribution.data.total_contributed_projects), ' apoiados  |  ',
                 m('span.fontweight-semibold', contribution.data.total_published_projects), ' criado'
