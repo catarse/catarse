@@ -31,7 +31,9 @@ namespace :balance_transfer do
   desc 'update balance_transfers status'
   task update_status: :environment do
     PagarMe.api_key = CatarseSettings[:pagarme_api_key]
-    BalanceTransfer.processing.each do |bt|
+
+    def balance_transfer_processing(bt)
+      retries ||= 0
       transfer = PagarMe::Transfer.find bt.transfer_id
 
       case transfer.status
@@ -42,6 +44,23 @@ namespace :balance_transfer do
         Rails.logger.info "[BalanceTransfer] #{bt.id} -> failed"
         bt.transition_to(:error, transfer_data: transfer.to_hash)
       end
+    rescue RestClient::BadGateway => e
+      if retries > 3
+        Raven.extra_context(task: :update_status)
+        Raven.capture_exception(e)
+        return
+      end
+
+      retries += 1
+      sleep 3
+      retry
+    rescue StandardError => e
+      Raven.extra_context(task: :update_status)
+      Raven.capture_exception(e)
+    end
+
+    BalanceTransfer.processing.each do |bt|
+      balance_transfer_processing(bt)
     end
   end
 end
