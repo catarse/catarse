@@ -151,6 +151,7 @@ class UsersController < ApplicationController
 
   def update_user
     params[:user][:confirmed_email_at] = DateTime.now if params[:user].try(:[], :confirmed_email_at).present?
+    params[:user][:links_attributes] = params[:user].try(:links_attributes) || []
     @user.publishing_project = params[:user][:publishing_project].presence
     @user.publishing_user_about = params[:user][:publishing_user_about].presence
     @user.publishing_user_settings = params[:user][:publishing_user_settings].presence

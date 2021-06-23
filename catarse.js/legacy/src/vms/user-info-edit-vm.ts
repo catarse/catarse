@@ -75,7 +75,7 @@ export class UserInfoEditViewModel {
 
             const userSaveAttributes = {
                 public_name: this._user.public_name,
-                links_attributes: this._user.links,
+                links_attributes: this._user.links || [],
                 cpf: this._user.owner_document,
                 name: this._user.name,
                 address_attributes: this._user.address,
