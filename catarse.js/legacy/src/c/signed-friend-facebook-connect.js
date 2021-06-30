@@ -1,6 +1,7 @@
 import m from 'mithril';
 import _ from 'underscore';
 import h from '../h';
+import connectFacebook from './connect-facebook';
 
 const SignedFriendFacebookConnect = {
     oninit: function(vnode) {
@@ -28,7 +29,13 @@ const SignedFriendFacebookConnect = {
                             m('.u-marginbottom-20', [
                                 _.map(state.mapWithAvatar(), item => m(`img.thumb.small.u-round.u-marginbottom-10[src="${item.avatar}"]`)),
                             ]),
-                                (total > 0 ? m('a.w-button.btn.btn-large[href="/follow-fb-friends"]', 'Procure seus amigos') : m('a.w-button.btn.btn-fb.btn-large.u-margintop-30.u-marginbottom-10[href="/connect-facebook"]', 'Conecte seu facebook'))
+                                (total > 0 ?
+                                    m(connectFacebook, {
+                                        label: 'Procure seus amigos',
+                                        linkClass: 'a.w-button.btn.btn-large',
+                                        buttonClass: 'input.btn.btn-fb.btn-large.u-margintop-30.u-marginbottom-10.w-button',
+                                    }) : ''
+                                )
                         ])
                     ])
                 ])

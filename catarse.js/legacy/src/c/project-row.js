@@ -2,6 +2,7 @@ import m from 'mithril';
 import _ from 'underscore';
 import h from '../h';
 import projectCard from './project-card';
+import connectFacebook from './connect-facebook';
 
 const projectRow = {
     view: function({attrs}) {
@@ -20,9 +21,15 @@ const projectRow = {
                         ]),
                         m((showFriends ? '.w-col.w-col-4.w-col-small-6.w-col-tiny-6' : '.w-col.w-col-2.w-col-small-6.w-col-tiny-6'), [
                             m('.w-row', [
-                                (showFriends ? m('.w-col.w-col-6', [
-                                    m(`a.btn.btn-no-border.btn-small.btn-terciary[href="/connect-facebook?ref=${ref}"]`, 'Encontrar amigos')
-                                ]) : ''),
+                                (showFriends ? m('.w-col.w-col-6',
+                                    [
+                                        m(connectFacebook, {
+                                            label: 'Encontrar amigos',
+                                            linkClass: 'a.btn.btn-no-border.btn-small.btn-terciary',
+                                            buttonClass: 'input.btn.btn-no-border.btn-small.btn-terciary.w-buttonn',
+                                        })
+                                    ]) : ''
+                                ),
                                 m((showFriends ? '.w-col.w-col-6' : '.w-col.w-col-12'),
                                     m(`a.btn.btn-small.btn-terciary[href="/explore?ref=${ref}&filter=${collection.hash}"]`, {
                                         oncreate: m.route.link

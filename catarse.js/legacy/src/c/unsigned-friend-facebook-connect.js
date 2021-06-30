@@ -1,6 +1,7 @@
 import m from 'mithril';
 import _ from 'underscore';
 import h from '../h';
+import connectFacebook from './connect-facebook';
 
 const UnsignedFriendFacebookConnect = {
     oninit: function(vnode) {
@@ -23,7 +24,11 @@ const UnsignedFriendFacebookConnect = {
                             m('.fontsize-small', 'O universo do Catarse junto com a sua rede do Facebook te farão descobrir projetos incríveis!')
                         ]),
                         m('.w-col.w-col-4', [
-                            m('a.w-button.btn.btn-fb.btn-large.u-margintop-30.u-marginbottom-10[href="/connect-facebook"]', 'Conecte seu facebook'),
+                            m(connectFacebook, {
+                                label: 'Conecte seu facebook',
+                                linkClass: 'a.w-button.btn.btn-fb.btn-large.u-margintop-30.u-marginbottom-10',
+                                buttonClass: 'input.btn.btn-fb.btn-large.u-margintop-30.u-marginbottom-10.w-button'
+                            }),
                             m('.fontsize-smallest.fontcolor-secondary.u-text-center', 'Nós nunca postaremos nada no facebook sem sua permissão')
                         ])
                     ])
