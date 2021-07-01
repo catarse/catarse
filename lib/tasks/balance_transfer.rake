@@ -53,7 +53,7 @@ namespace :balance_transfer do
       Sentry.capture_exception(e, extra: { task: :update_status })
     end
 
-    BalanceTransfer.processing.each do |bt|
+    BalanceTransfer.processing.where.not(transfer_id: nil).find_each do |bt|
       balance_transfer_processing(bt)
     end
   end

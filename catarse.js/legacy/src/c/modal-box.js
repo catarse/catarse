@@ -14,16 +14,23 @@
  *              ])
  */
 import m from 'mithril';
+import h from '../h';
 
 const modalBox = {
     view: function({ attrs }) {
+        const isLoading = attrs.loading && attrs.loading();
         return m('.modal-backdrop', [
             m('.modal-dialog-outer', [
                 m('.modal-dialog-inner.modal-dialog-small.fontcolor-primary', [
                     m(`a.w-inline-block.fa.fa-lg.modal-close${attrs.hideCloseButton ? '' : '.fa-close'}[href="javascript:void(0);"]`, {
                         onclick: attrs.displayModal.toggle,
                     }),
-                    m(attrs.content[0], attrs.content[1]),
+                    (
+                        isLoading ?
+                            h.loader()
+                            :
+                            m(attrs.content[0], attrs.content[1])
+                    )
                 ]),
             ]),
         ]);

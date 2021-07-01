@@ -25,6 +25,10 @@ class BalanceTransfer < ApplicationRecord
     where("balance_transfers.current_state = 'authorized'")
   }
 
+  scope :processing, -> () {
+    where("balance_transfers.current_state = 'processing'")
+  }
+
   delegate :can_transition_to?, :transition_to, :transition_to!, to: :state_machine
 
   def state_machine

@@ -5,12 +5,12 @@ require 'net/http'
 module Transfeera
     class Authorization
         def self.request()
-            login_url = CatarseSettings[:transfeera_login_url]
+            login_url = CatarseSettings.get_without_cache(:transfeera_login_url)
 
             payload = {
                 grant_type: 'client_credentials',
-                client_id: CatarseSettings[:transfeera_client_id],
-                client_secret: CatarseSettings[:transfeera_client_secret]
+                client_id: CatarseSettings.get_without_cache(:transfeera_client_id),
+                client_secret: CatarseSettings.get_without_cache(:transfeera_client_secret)
             }
 
             headers = {

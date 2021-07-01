@@ -10,6 +10,11 @@ require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
+def compute_hmac_sha256_hex(secret, message)
+  digest = OpenSSL::Digest.new('sha256')
+  OpenSSL::HMAC.hexdigest(digest, secret, message)
+end
+
 begin
   # ActiveRecord::Migration.maintain_test_schema!
 rescue ActiveRecord::PendingMigrationError => e
