@@ -265,7 +265,9 @@ const projectContributionReportContentCard = {
                                             window.I18n.t('survey.survey', contributionScope())
                                         ),
                                         m('.fontsize-smaller.lineheight-tighter.u-marginbottom-20',
-                                            window.I18n.t('survey.answered_at', contributionScope({ date: moment(survey.survey_answered_at).format('DD/MM/YYYY') }))
+                                            survey.survey_answered_at != null ?
+                                               window.I18n.t('survey.answered_at', contributionScope({ date: moment(survey.survey_answered_at).format('DD/MM/YYYY') })) :
+                                               window.I18n.t('survey.not_answered', contributionScope())
                                         ),
                                         survey.confirm_address && survey.address ? [
                                             m('.fontsize-small', [
