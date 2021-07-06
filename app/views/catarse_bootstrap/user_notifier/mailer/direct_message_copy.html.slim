@@ -1,10 +1,11 @@
 - message = @notification.direct_message
 - to_user = User.find message.to_user_id
+- project = Project.find message.project_id
 - message_origin_name = message.data['page_title'].present? && message.data['page_title'].length > 0 ? message.data['page_title'] : message.data['page_url']
 
 |Olá <strong>#{message.from_name}</strong>
 br
-|Esta é a mensagem que você enviou para o #{link_to to_user.try(:display_name), user_url(to_user)} a partir da página #{link_to message_origin_name, message.data['page_url'], target: :_blank }:
+|Esta é a mensagem que você enviou para o #{link_to to_user.try(:display_name), user_url(to_user)} a partir da página #{link_to message_origin_name, message.data['page_url'], target: :_blank }, referente ao projeto #{link_to project.name, project_url(project)}:
 br
 br
 p style=("background-color:#f1f4f4; padding: 20px; margin: 20px 30px 50px 30px; border-radius:5px;") == message.content
