@@ -12,7 +12,10 @@ const context = () => {
         transfer_id: 'eq',
         created_date: 'between',
         transferred_date: 'between',
-        amount: 'between'
+        amount: 'between',
+        batch_id: 'eq',
+        id: 'eq',
+        transfeera_id: 'eq'
     });
 
     const paramToString = p => (p || '').toString().trim();

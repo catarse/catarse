@@ -36,10 +36,17 @@ const adminBalanceTransferItem = {
             ]),
             m('.w-col.w-col-2.w-hidden-small.w-hidden-tiny', [
                 m('span', item.state),
-                (item.transfer_id ? m('.fontcolor-secondary.fontsize-smallest',
-                    m(`a[href="https://dashboard.pagar.me/#/transfers/${item.transfer_id}"]`,
-                        `ID: ${item.transfer_id}`))
-                    : '')
+                (
+                    item.transfer_id &&
+                    m('.fontcolor-secondary.fontsize-smallest',
+                        m(`a[href="https://dashboard.pagar.me/#/transfers/${item.transfer_id}"]`,
+                            `ID Pagarme: ${item.transfer_id}`
+                        )
+                    )
+                ),
+                m('.fontcolor-secondary.fontsize-smallest', `ID Catarse: ${item.id}`),
+                item.transfeera_id && m('.fontcolor-secondary.fontsize-smallest', `ID TR: ${item.transfeera_id}`),
+                item.batch_id && m('.fontcolor-secondary.fontsize-smallest', `LOTE: ${item.batch_id}`)
             ]),
             m('.w-col.w-col-2', [
                 m('.fontsize-smallest', [
