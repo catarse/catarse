@@ -25,7 +25,7 @@ module CatarsePagarme
             seed: SecureRandom.hex(4)
           }
         })
-        transfer.create
+        transfer.create("#{balance_transfer.class.name}-#{balance_transfer.id}")
         raise "unable to create a transfer" unless transfer.id.present?
 
         balance_transfer.update(transfer_id: transfer.id)

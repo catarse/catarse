@@ -25,3 +25,11 @@ CatarsePagarme.configure do |config|
   config.cielo_installment_amex_tax = CatarseSettings.get_without_cache(:cielo_installment_amex_tax)
   config.cielo_installment_not_amex_tax = CatarseSettings.get_without_cache(:cielo_installment_not_amex_tax)
 end
+
+class PagarMe::Transfer
+  def create(idempotency_key = nil)
+    headers = idempotency_key ? { 'Idempotency-Key' => idempotency_key } : Hash.new
+    update PagarMe::Request.post(self.class.url, params: to_hash, headers: headers).run
+    self
+  end
+end
