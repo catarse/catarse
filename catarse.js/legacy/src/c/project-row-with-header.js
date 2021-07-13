@@ -2,6 +2,7 @@ import m from 'mithril';
 import _ from 'underscore';
 import h from '../h';
 import projectCard from './project-card';
+import connectFacebook from './connect-facebook';
 
 const projectRowWithHeader = {
     view: function ({ attrs }) {
@@ -12,8 +13,11 @@ const projectRowWithHeader = {
             wrapper = attrs.wrapper || `.section.u-marginbottom-40${attrs.isOdd ? '.bg-gray' : ''}`,
             showFriendsLinkComponent = (
                 showFriends ?
-                    m(`a.btn.btn-small.btn-terciary.btn-inline.u-right-big-only.btn-no-border[href="/connect-facebook?ref=${ref}"]`,
-                        'Encontrar amigos') : ''
+                    m(connectFacebook, {
+                        label: 'Encontrar amigos',
+                        linkClass: 'a.btn.btn-small.btn-terciary.btn-inline.u-right-big-only.btn-no-border',
+                        buttonClass: 'input.btn.btn-small.btn-terciary.btn-inline.u-right-big-only.btn-no-border.w-button',
+                    }) : ''
             ),
             collectionHeaderComponent = (
                 (!_.isUndefined(collection.title) || !_.isUndefined(collection.hash)) ?

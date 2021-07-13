@@ -122,6 +122,10 @@ export class UserDetailsAccessWrapper implements UserDetails {
         this._user.id = value
     }
 
+    get has_fb_auth(): boolean {
+        return tryAccessPropertyValue('user', this._user, 'has_fb_auth')
+    }
+
     get is_admin(): boolean {
         return tryAccessPropertyValue('user', this._user, 'is_admin')
     }

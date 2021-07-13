@@ -2153,6 +2153,12 @@ a:hover {
   position: relative;
 }
 
+.btn-link {
+  background-color: transparent;
+  border: 1px solid transparent;
+  padding-left: 0px;
+}
+
 .btn-terciary {
   border: 2px solid rgba(121, 128, 139, 0.78);
   background-color: transparent;
