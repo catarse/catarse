@@ -12,15 +12,19 @@ const projectEditUserSettings = {
 
         const user = prop({});
 
-        getUserDetailsWithUserId(vnode.attrs.user_id)
+
+        function reloadUserData() {
+            getUserDetailsWithUserId(vnode.attrs.user_id)
             .then((userDate) => {
                 user(userDate);
                 h.redraw();
             });
+        }
 
-        vnode.state = {
-            user
-        };
+        reloadUserData()
+
+        vnode.state.user = user
+        vnode.state.reloadUserData = reloadUserData
     },
 
     view: function({state, attrs}) {
@@ -30,7 +34,8 @@ const projectEditUserSettings = {
             hideCreditCards: true,
             useFloatBtn: true,
             publishingUserSettings: true,
-            isProjectUserEdit: true
+            isProjectUserEdit: true,
+            reloadUserData: state.reloadUserData,
         }) : m('div', h.loader()));
     }
 };
