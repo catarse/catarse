@@ -33,6 +33,7 @@ en:
         address_title: Name and address
         address_neighbourhood: 'Neighborhood:'
         answered_at: Answered on %{date}
+        not_answered: Not Answered
       report:
         info: Info
         profile: Profile
