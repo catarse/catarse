@@ -22,8 +22,8 @@ const projectDeleteButton = {
                 content: [deleteProjectModalContent, { displayDeleteModal: state.displayDeleteModal, project: attrs.project }]
             }) : ''),
             m('.u-margintop-80',
-              m('.w-container',
-                m('a.btn.btn-inline.btn-no-border.btn-small.btn-terciary.u-marginbottom-20.u-right.w-button[href=\'javascript:void(0);\']', { onclick: state.displayDeleteModal.toggle, style: { transition: 'all 0.5s ease 0s' } },
+              m('.w-container.u-text-center',
+                m('a.btn.btn-inline.btn-no-border.btn-small.btn-terciary.u-marginbottom-20.w-button[href=\'javascript:void(0);\']', { onclick: state.displayDeleteModal.toggle, style: { transition: 'all 0.5s ease 0s' } },
                     [
                         m.trust('&nbsp;'),
                         'Deletar projeto ',

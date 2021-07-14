@@ -22,8 +22,8 @@ const projectCancelButton = {
             }) : ''),
             m('.w-row.before-footer',
               m('.w-col.w-col-12',
-                m('.w-container',
-                    m('button.btn.btn-cancel.btn-inline.btn-no-border.btn-small.btn-terciary.u-marginbottom-20.u-right.w-button', { onclick: state.displayCancelModal.toggle, style: { transition: 'all 0.5s ease 0s' } },
+                m('.w-container.u-text-center',
+                    m('button.btn.btn-cancel.btn-inline.btn-no-border.btn-small.btn-terciary.u-marginbottom-20.w-button', { onclick: state.displayCancelModal.toggle, style: { transition: 'all 0.5s ease 0s' } },
                         [
                             m('span.fa.fa-times-circle', ''),
                             m.trust('&nbsp;'),
