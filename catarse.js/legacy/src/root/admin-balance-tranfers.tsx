@@ -10,6 +10,7 @@ import filterMain from '../c/filter-main';
 import filterDropdown from '../c/filter-dropdown';
 import filterDateRange from '../c/filter-date-range';
 import filterNumberRange from '../c/filter-number-range';
+import filterNumber from '../c/filter-number';
 import modalBox from '../c/modal-box';
 import adminBalanceTransferItem from '../c/admin-balance-transfer-item';
 import adminBalanceTransferItemDetail from '../c/admin-balance-transfer-item-detail';
@@ -31,6 +32,30 @@ const adminBalanceTranfers = {
                     data: {
                         vm: filterVM.full_text_index,
                         placeholder: 'Busque pelo email, ids do usuario, ids de transferencia e eventos de saldo'
+                    }
+                },
+                {
+                    component: filterNumber,
+                    data: {
+                        label: 'ID do Lote',
+                        first: filterVM.batch_id,
+                        placeholder: 'ID do Lote',
+                    }
+                },
+                {
+                    component: filterNumber,
+                    data: {
+                        label: 'ID Catarse',
+                        first: filterVM.id,
+                        placeholder: 'ID Catarse',
+                    }
+                },
+                {
+                    component: filterNumber,
+                    data: {
+                        label: 'ID Transfeera',
+                        first: filterVM.transfeera_id,
+                        placeholder: 'ID Transfeera',
                     }
                 },
                 {
@@ -91,7 +116,7 @@ const adminBalanceTranfers = {
                         first: filterVM.amount.gte,
                         last: filterVM.amount.lte
                     }
-                }
+                },
             ],
             selectedItemsIDs = prop([]),
             displayApprovalModal = h.toggleProp(false, true),
