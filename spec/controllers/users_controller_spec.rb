@@ -223,156 +223,127 @@ RSpec.describe UsersController, type: :controller do
     end
   end
 
-  describe 'PUT update' do
-    context 'with password parameters' do
-      let(:current_password) { 'current_password' }
-      let(:password) { 'newpassword123' }
-      let(:password_confirmation) { 'newpassword123' }
+  describe 'update user links' do
 
-      before do
-        put :update, params: {
-          id: user.id,
-          locale: 'pt',
+    def stub_link_params(links)
+      params = {
+        id: current_user.id,
+        user: { links_attributes: links }
+      }
+    end
+
+    context 'save user links' do
+      it 'should create one link' do
+        # given
+        params = stub_link_params([{ link: 'http://link' }])
+
+        # when
+        patch :update, params: params
+        current_user.reload
+
+        # then
+        expect(current_user.links.length).to eq(1)
+        expect(current_user.links[0].link).to eq('http://link')
+      end
+
+      it 'should create two links' do
+        # given
+        params = stub_link_params [
+          { link: 'http://link1' },
+          { link: 'http://link2' }
+        ]
+
+        # when
+        patch :update, params: params
+        current_user.reload
+
+        # then
+        expect(current_user.links.length).to eq(2)
+        expect(current_user.links[0].link).to eq('http://link1')
+        expect(current_user.links[1].link).to eq('http://link2')
+      end
+
+      it 'should update one link' do
+        # given
+        params = stub_link_params [{ link: 'http://link1' }]
+        patch :update, params: params
+
+        # when
+        params = stub_link_params [
+          { id: current_user.links[0].id, link: 'http://new_link1' },
+        ]
+        patch :update, params: params
+        current_user.reload
+
+        # then
+        expect(current_user.links[0].link).to eq('http://new_link1')
+      end
+
+      it 'should make no updates to the links' do
+        # given
+        params = stub_link_params []
+        params[:user][:name] = 'new name'
+
+        # when
+        patch :update, params: params
+        current_user.reload
+
+        # then
+        expect(current_user.links.length).to eq(0)
+      end
+
+      it 'should make no updates to the links when it is null' do
+        # given
+        params = {
+          id: current_user.id,
           user: {
-            current_password: current_password,
-            password: password,
-            password_confirmation: password_confirmation
+            name: 'new user name',
+            links_attributes: nil
           }
         }
+
+        # when
+        patch :update, params: params
+        current_user.reload
+
+        # then
+        expect(current_user.links.length).to eq(0)
       end
 
-      context 'with wrong current password' do
-        let(:current_password) { 'wrong_password' }
-        it { expect(user.errors).not_to be_nil }
-      end
-
-      context 'with right current password and right confirmation' do
-        it { is_expected.to redirect_to edit_user_path(user) }
-      end
-    end
-
-    context 'with out password parameters' do
-      let(:project) { create(:project, state: 'successful') }
-      let(:category) { create(:category) }
-      before do
-        create(:category_follower, user: user)
-        put :update, params: {
-          id: user.id,
-          locale: 'pt',
+      it 'should allow updates to user data' do
+        # given
+        params = {
+          id: current_user.id,
           user: {
-            twitter: 'test',
-            unsubscribes: { project.id.to_s => '1' }
+            name: 'new user name'
           }
         }
-      end
-      it('should update the user and nested models') do
-        user.reload
-        expect(user.twitter).to eq('test')
-        expect(user.category_followers.size).to eq(1)
-      end
-      it { is_expected.to redirect_to edit_user_path(user) }
-    end
 
-    context 'with mail marteking attributes' do
-      let!(:marketing_list) { create(:mail_marketing_list) }
-      let!(:marketing_list_current) { create(:mail_marketing_list) }
-      let!(:marketing_user) { create(:mail_marketing_user, mail_marketing_list: marketing_list_current, user: user) }
+        # when
+        patch :update, params: params
+        current_user.reload
 
-      before do
-        put :update, params: {
-          id: user.id,
-          locale: 'pt',
-          user: {
-            mail_marketing_users_attributes: {
-              '0' => { mail_marketing_list_id: marketing_list.id },
-              '1' => { id: marketing_user.id, "_destroy": '1'}
-            }
-          }
-        }
-      end
-
-      it "should in new list" do
-        expect(
-          user.mail_marketing_users
-          .where(mail_marketing_list_id: marketing_list.id)
-          .exists?
-        ).to eq(true)
-      end
-
-      it "should be removed from list check for destroy" do
-        expect(
-          user.mail_marketing_users
-          .where(mail_marketing_list_id: marketing_list_current.id)
-          .exists?
-        ).to eq(false)
+        # then
+        expect(current_user.links.length).to eq(0)
       end
     end
 
-    context 'removing category followers' do
-      let(:project) { create(:project, state: 'successful') }
-      before do
-        create(:category_follower, user: user)
-        put :update, params: {
-          id: user.id,
-          category_followers_form: true,
-          locale: 'pt',
-          user: {
-            twitter: 'test',
-            unsubscribes: { project.id.to_s => '1' },
-            category_followers_attributes: []
-          }
-        }
+    context 'destroy user link' do
+      it 'should destroy link' do
+        # given
+        params = stub_link_params [{ link: 'http://link1' }]
+        patch :update, params: params
+
+        # when
+        params = stub_link_params [
+          { id: current_user.links[0].id, link: 'http://new_link1', _destroy: true },
+        ]
+        patch :update, params: params
+        current_user.reload
+
+        # then
+        expect(current_user.links.length).to eq(0)
       end
-      it('should clear category followers') do
-        user.reload
-        expect(user.category_followers.size).to eq(0)
-      end
-      it { is_expected.to redirect_to edit_user_path(user) }
-    end
-  end
-
-  describe 'GET show' do
-    before do
-      get :show, params: { id: user.id, locale: 'pt', ref: 'test' }
-    end
-
-    context 'when user is no longer active' do
-      let(:user) { create(:user, deactivated_at: Time.now) }
-      it { is_expected.to have_http_status(404) }
-    end
-
-    context 'when user is banned' do
-      let(:user) { create(:user, banned_at: Time.now) }
-      it { is_expected.to have_http_status(404) }
-    end
-
-    context 'when user is active' do
-      it { is_expected.to be_successful }
-    end
-
-    #it 'should set referral session' do
-    #  expect(cookies[:referral_link]).to eq 'test'
-    #end
-  end
-
-  describe 'POST ban' do
-    context 'without admin permissions' do
-      before do
-        post :ban, params: { id: user.id, locale: 'pt', format: :json }
-      end
-
-      it { expect(response.status).to eq 302 }
-    end
-
-    context 'with admin permissions' do
-      before do
-        user.update_column(:admin, true)
-        post :ban, params: { id: user.id, locale: 'pt', format: :json }
-        user.reload
-      end
-
-      it { expect(response.status).to eq 200 }
-      it { expect(user.banned_at.present?).to eq(true) }
     end
   end
 end
