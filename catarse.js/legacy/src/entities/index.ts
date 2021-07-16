@@ -1,4 +1,6 @@
 export * from './user-details'
+export { UserAddress } from './user-address'
+export { Address } from './address'
 export * from './project-details'
 export * from './reward-details'
 export * from './event-target'

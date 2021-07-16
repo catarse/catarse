@@ -4,7 +4,7 @@ import h from '../h';
 import models from '../models';
 import dashboardSubscriptionCardDetailSubscriptionDetails from './dashboard-subscription-card-detail-subscription-details';
 import dashboardSubscriptionCardDetailUserProfile from './dashboard-subscription-card-detail-user-profile';
-import dashboardSubscriptionCardDetailUserAddress from './dashboard-subscription-card-detail-user-address';
+import { DashboardSubscriptionCardDetailUserAddress } from './dashboard-subscription-card-detail-user-address';
 
 export default class DashboardSubscriptionCardDetail {
     oninit(vnode) {
@@ -38,7 +38,7 @@ export default class DashboardSubscriptionCardDetail {
                     ]),
                     m('.w-col.w-col-5', [
                         m(dashboardSubscriptionCardDetailUserProfile, { user, subscription, displayModal }),
-                        m(dashboardSubscriptionCardDetailUserAddress, { user })
+                        m(DashboardSubscriptionCardDetailUserAddress, { user })
                     ])
                 ])
             )
