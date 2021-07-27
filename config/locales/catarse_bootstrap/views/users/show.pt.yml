@@ -94,7 +94,9 @@ pt:
       anonymous: Quero que meu apoio não seja público
       anonymous_sub: 'Quero que minha assinatura não seja pública'
       print_slip: Imprimir boleto
+      print_pix: Visualizar Pix
       slip_copy: Gerar 2a via
+      pix_copy: Gerar 2a via
       status: Status
       contact_author: "Enviar mensagem"
       show_receipt: 'Ver recibo'

@@ -184,6 +184,42 @@ const paymentVM = () => {
         });
     };
 
+    const getPixPaymentDate = (contribution_id) => {
+        const paymentDate = prop();
+
+        m.request({
+            method: 'GET',
+            config: setCsrfToken,
+            url: `/payment/pagarme/${contribution_id}/pix_expiration_date`
+        }).then(paymentDate);
+
+        return paymentDate;
+    };
+
+    const sendPixPayment = (contribution_id, project_id, error, loading, completed) => {
+        m.request({
+            method: 'post',
+            url: `/payment/pagarme/${contribution_id}/pay_pix.json`,
+            dataType: 'json',
+            config: setCsrfToken
+        }).then((data) => {
+            if (data.payment_status == 'failed') {
+                error(window.I18n.t('submission.pix_submission', scope()));
+            } else if (data.pix_qr_code) {
+                completed(true);
+                window.location.href = `/projects/${project_id}/contributions/${contribution_id}`;
+            }
+            loading(false);
+            m.redraw();
+        }).catch((errorCatched) => {
+            error(window.I18n.t('submission.pix_submission', scope()));
+            loading(false);
+            completed(false);
+            m.redraw();
+            h.captureException(errorCatched);
+        });
+    };
+
     const updateContributionData = (contribution_id, project_id) => {
         const contributionData = {
             anonymous: fields.anonymous(),
@@ -221,6 +257,26 @@ const paymentVM = () => {
         } else {
             loading(false);
             error(window.I18n.t('submission.slip_validation', scope()));
+            m.redraw();
+        }
+    };
+
+    const payPix = (contribution_id, project_id, error, loading, completed) => {
+        error(false);
+        m.redraw();
+        if (validate()) {
+            updateContributionData(contribution_id, project_id)
+                .then(() => {
+                    sendPixPayment(contribution_id, project_id, error, loading, completed);
+                })
+                .catch(() => {
+                    loading(false);
+                    error(window.I18n.t('submission.pix_validation', scope()));
+                    m.redraw();
+                });
+        } else {
+            loading(false);
+            error(window.I18n.t('submission.pix_validation', scope()));
             m.redraw();
         }
     };
@@ -428,7 +484,9 @@ const paymentVM = () => {
         isInternational,
         resetFieldError,
         getSlipPaymentDate,
+        getPixPaymentDate,
         paySlip,
+        payPix,
         installments,
         getInstallments,
         savedCreditCards,

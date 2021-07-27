@@ -55,7 +55,7 @@ class ImportMissingPayablesAction
 
     if @payment.is_credit_card?
       cost + payables_fee
-    elsif @payment.slip_payment?
+    elsif @payment.slip_payment? || @payment.pix_payment?
       payables_fee == 0 ? cost : payables_fee
     end
   end

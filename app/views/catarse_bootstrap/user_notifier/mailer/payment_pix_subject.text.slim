@@ -1,0 +1,2 @@
+- expire_date = @notification.contribution.details.ordered.first.gateway_data["pix_expiration_date"].to_datetime.strftime('%d/%m')
+|Estamos contando com o seu apoio! #{expire_date} vence o pix gerado para #{@notification.contribution.project.name}

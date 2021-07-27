@@ -29,9 +29,18 @@ module CatarsePagarme
       true
     end
 
+    def can_generate_second_pix?
+      true
+    end
+
     def second_slip_path(payment)
       # The second slip generates a new payment base on the contribution ID
       url_helpers.second_slip_pagarme_path(id: payment.contribution.id)
+    end
+
+    def second_pix_path(payment)
+      # The second pix generates a new payment base on the contribution ID
+      url_helpers.second_pix_pagarme_path(id: payment.contribution.id)
     end
 
     protected

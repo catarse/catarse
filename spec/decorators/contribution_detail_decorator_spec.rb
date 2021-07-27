@@ -91,4 +91,16 @@ RSpec.describe ContributionDetailDecorator do
       it { is_expected.to eq('http://foo.bar/') }
     end
   end
+
+  describe '#display_pix_qr_code' do
+    let(:contribution) { create(:confirmed_contribution) }
+    context 'when pix_qr_code is filled' do
+      before do
+        payment.update gateway_data: { pix_qr_code: 'http://foo.bar/' }
+      end
+
+      subject { detail.decorate.display_pix_qr_code }
+      it { is_expected.to eq(QRCode::Renderer.as_svg('http://foo.bar/')) }
+    end
+  end
 end

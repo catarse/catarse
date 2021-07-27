@@ -275,6 +275,7 @@ en:
         subscription_edit: Confirm signature changes
         invoice_none: None
         pay_slip: Print Ticket
+        pay_pix: Print Pix
         errors:
           global: Please review the fields below before proceeding.
           inline:
@@ -286,6 +287,10 @@ en:
             slip_submission: There was an error while trying to generate the ticket.
               Please try again in a few moments.
             slip_validation: Error validating form data. Please review them and try
+              again.
+            pix_submission: There was an error while trying to generate the ticket.
+              Please try again in a few moments.
+            pix_validation: Error validating form data. Please review them and try
               again.
             encryption_error: Please try again in a few moments.
             payment_failed: Please review your credit card information and try again
@@ -302,15 +307,23 @@ en:
             phone: Invalid phone number.
         review_slip_email: You will also receive an email with this ticket.
         slip_expiration: This bank slip expires on day %{date}.
+        review_pix_email: You will also receive an email with this ticket.
+        pix_expiration: This bank pix expires on day %{date}.
         print_slip: Print Ticket
+        print_pix: Print Pix
         pay: Finish payment
         slip_message: In generating the ticket, the director is already counting on
+          his contribution. Pay through the expiration date on the internet, lottery houses,
+          ATMs or bank branch.
+        pix_message: In generating the ticket, the director is already counting on
           his contribution. Pay through the expiration date on the internet, lottery houses,
           ATMs or bank branch.
         review_title: Fill in and review the payment data
         review_subtitle: These data will be informed to the project director
         delivery_address: Address
         payment_slip_disclaimer: If the project is not successful, we will repay your
+          contribution. The bank details entered here will be used for this.
+        payment_pix_disclaimer: If the project is not successful, we will repay your
           contribution. The bank details entered here will be used for this.
         review_errors_title: Check the reported data
         review_errors: Some information is missing or not entered correctly, correct
@@ -391,26 +404,18 @@ en:
         error: Ooops. There was an error registering your contribution. Please try again.
       thank_you_slip:
         thank_you: I'm counting on your contribution ...
-        thank_you_text_html: "<div class='fontsize-base'> You also received this ticket
-          in the email: </div><div class='fontsize-large u-marginbottom-10'> %{email}
-          </div> <a class='alt-link fontsize-small' href='%{link_email}'>If this is
-          not your contact email, change here</a>"
+        thank_you_text_html: "<div class='fontsize-smaller'>You also received this ticket on %{email}</div>"
+      thank_you_pix:
+        thank_you_pix_html: "<div class='fontsize-smaller'>You also received the QR code on %{email}</div>"
       thank_you:
         subscription_edit:
-          thank_you: Almost there!
-          text_html: "<div class='fontsize-base'> Your subscription change has been
-            processed, but will only take effect on your next charge. We sent a message
-            with details to the email below: </div><div class='fontsize-large u-marginbottom-10'>
-            %{email} </div> <a class='alt-link fontsize-small' href='%{link_email}'>If
-            this is not your contact email, change here</a>"
+          thank_you: "Almost there! The change will only be confirmed on your next charge."
+          text_html: "<div class='fontsize-smaller'>You will receive more details at %{email}</div>"
         thank_you_error: There was an error requesting your payment details. Please
           try again in a few moments.
         thank_you: Thanks! Your contribution is being processed.
-        thank_you_text_html: "<div class='fontsize-base'> Once the payment is completed,
-          we will send the confirmation of your contribution to the registered email: </div><div
-          class='fontsize-large u-marginbottom-10'> %{email} </div> <a class='alt-link
-          fontsize-small' href='%{link_email}'>If this is not your contact email,
-          change here</a>"
+        thank_you_text_html: "<div class='fontsize-smaller'>You will receive a confirmation at %{email}</div>"
+        another_email_html: "<a class='fontsize-smallest alt-link' href='%{link_email}'>Not your email?</a>"
         thank_you_slip_unconfirmed_text_html: "<div class='fontsize-base'> If all
           goes well, you will receive an email soon with the payment slip in the registered
           email: </div><div class='fontsize-large u-marginbottom-10'> %{email} </div>

@@ -40,4 +40,16 @@ RSpec.describe PaymentNotification, type: :model do
 
     it('should notify the contribution') { subject.deliver_slip_canceled_notification }
   end
+
+  describe '#deliver_pix_canceled_notification' do
+    before do
+      expect(ContributionNotification).to receive(:notify_once)
+    end
+
+    subject do
+      create(:payment_notification, contribution: create(:contribution, project: create(:project)))
+    end
+
+    it('should notify the contribution') { subject.deliver_pix_canceled_notification }
+  end
 end

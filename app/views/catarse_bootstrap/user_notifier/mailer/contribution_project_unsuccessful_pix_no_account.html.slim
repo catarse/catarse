@@ -1,0 +1,24 @@
+- contribution = @notification.contribution
+- user = contribution.user
+- project = contribution.project
+- detail = contribution.details.ordered.first
+- company_name = CatarseSettings[:company_name]
+p
+  |Olá, #{contribution.user.display_name}!
+p
+  |O projeto #{link_to(contribution.project.name, project_by_slug_url(permalink: contribution.project.permalink))} não atingiu a meta de arrecadação estabelecida e, segundo as regras do Catarse, o seu apoio no valor de #{number_to_currency detail.value} ao projeto #{contribution.project.name} será devolvido a você.
+p
+  |Como o seu apoio foi efetuado através de pix, para efetuar a devolução do dinheiro precisamos que você preencha seus dados bancários,basta fazer login no Catarse e seguir esses 3 passos:
+
+p
+    | 1. Clicar nesse #{link_to 'link', root_url, alt: 'Solicitar Reembolso', target: '__blank'}
+    br/
+    | 2. Preencher seus dados bancários
+    br/
+    | 3. Confirmar o pedido clicando no botão <strong>"Solicitar reembolso"</strong>
+    br/
+p
+
+  |Assim que o reembolso for feito, você receberá um e-mail confirmando a operação. O reembolso entrará na conta cadastra em 10 dias úteis, identificado como \"PAGAR.ME PAGAMENTOS\".
+
+= render partial: 'user_notifier/mailer/contact_info'

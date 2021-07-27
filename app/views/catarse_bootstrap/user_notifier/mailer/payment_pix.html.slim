@@ -1,0 +1,25 @@
+- contribution = @notification.contribution
+- expiry_date = contribution.payments.last.gateway_data.try(:[], "pix_expiration_date").try(:to_datetime).try(:strftime, '%d/%m')
+- pix_key = contribution.payments.last.gateway_data.try(:[], "pix_qr_code")
+- details = contribution.details.ordered.first
+
+p Olá, <strong>#{contribution.user.display_name}</strong> !
+
+p O seu código PIX para apoiar o projeto #{link_to(contribution.project.name, project_by_slug_url(permalink: contribution.project.permalink))} foi gerado com sucesso! Você tem até o dia #{expiry_date} para efetuar o pagamento.
+
+p Use o app do seu banco para escanear o QR Code abaixo:
+br
+p
+  center
+    <strong>#{details.decorate.display_pix_qr_code.html_safe}</strong>
+br
+p Ou se preferir, abra o app ou site do seu banco e informe a chave abaixo:
+br
+p
+  center
+    <strong>#{pix_key}</strong>
+br
+p Caso já tenha feito o pagamento, desconsidere este email. Você receberá um outro email com a confirmação do pagamento e também poderá seguir acompanhando o status do seu apoio #{link_to 'em seu perfil do Catarse', edit_user_url(contribution.user.id, anchor: 'contributions'), target: '__blank'}
+
+p
+= render partial: 'user_notifier/mailer/contact_info'

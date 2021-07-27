@@ -10,7 +10,7 @@ class DirectRefundWorker
     begin
       BalanceTransaction.insert_contribution_refunded_after_successful_pledged(payment.contribution_id)
 
-      if payment.slip_payment? && payment.paid?
+      if (payment.slip_payment? || payment.pix_payment?) && payment.paid?
         Payment.transaction do
           BalanceTransaction.insert_contribution_refund(payment.contribution_id)
           unless payment.refunded?

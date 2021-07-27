@@ -64,6 +64,22 @@ const canGenerateSlip = contribution =>
         .endOf('day')
         .isAfter(moment());
 
+const canShowPix = contribution =>
+    contribution.payment_method === 'Pix' &&
+    moment(contribution.gateway_data.pix_expiration_date)
+        .endOf('day')
+        .isAfter(moment()) &&
+    contribution.state === 'pending';
+
+const canGeneratePix = contribution =>
+    contribution.payment_method === 'Pix' &&
+    (contribution.state === 'pending' || contribution.state === 'refused') &&
+    contribution.project_state === 'online' &&
+    !contribution.reward_sold_out &&
+    !moment(contribution.gateway_data.pix_expiration_date)
+        .endOf('day')
+        .isAfter(moment());
+
 const canBeDelivered = contribution => contribution.state === 'paid' && contribution.reward_id && contribution.project_state !== 'failed';
 
 const getUserContributionsListWithFilter = () => {
@@ -96,6 +112,8 @@ const contributionVM = {
     canShowReceipt,
     canGenerateSlip,
     canShowSlip,
+    canGeneratePix,
+    canShowPix,
     getUserProjectContributions,
     canBeDelivered,
     getUserContributionsListWithFilter,

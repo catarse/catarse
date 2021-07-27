@@ -177,6 +177,29 @@ RSpec.describe Payment, type: :model do
     end
   end
 
+  describe '#pix_expired?' do
+    subject { payment.pix_expiration_date }
+
+    context 'when is a new record' do
+      let(:payment) { Payment.new }
+      it { is_expected.to_not be_nil }
+    end
+  end
+
+  describe '#pix_expired?' do
+    subject { payment.pix_expired? }
+
+    context 'when pix is past expiration date' do
+      let(:payment) { create(:payment, state: 'pending', created_at: (Time.now - (Payment.pix_expiration_weekdays.day + 3.day))) }
+      it { is_expected.to eq true }
+    end
+
+    context 'when pix is not past expiration date' do
+      let(:payment) { create(:payment, state: 'pending') }
+      it { is_expected.to eq false }
+    end
+  end
+
   describe '#waiting_payment?' do
     subject { payment.waiting_payment? }
 
@@ -284,6 +307,30 @@ RSpec.describe Payment, type: :model do
     context 'when the method is credit card' do
       let(:payment) { build(:payment, payment_method: 'CartaoDeCredito') }
       it { is_expected.to eq false }
+    end
+
+    context 'when the method is pix' do
+      let(:payment) { build(:payment, payment_method: 'Pix') }
+      it { is_expected.to eq false }
+    end
+  end
+
+  describe '#pix_payment?' do
+    subject { payment.pix_payment? }
+
+    context 'when the method is payment slip' do
+      let(:payment) { build(:payment, payment_method: 'BoletoBancario') }
+      it { is_expected.to eq false }
+    end
+
+    context 'when the method is credit card' do
+      let(:payment) { build(:payment, payment_method: 'CartaoDeCredito') }
+      it { is_expected.to eq false }
+    end
+
+    context 'when the method is pix' do
+      let(:payment) { build(:payment, payment_method: 'Pix') }
+      it { is_expected.to eq true }
     end
   end
 

@@ -1,0 +1,34 @@
+- contribution = @notification.contribution
+- expiry_date = contribution.payments.last.gateway_data.try(:[], "pix_expiration_date").try(:to_datetime).try(:strftime, '%d/%m')
+- pix_key = contribution.payments.last.gateway_data.try(:[], "pix_qr_code")
+- details = contribution.details.ordered.first
+
+p Olá, <strong>#{contribution.user.display_name}</strong>!
+
+p Notamos que você não realizou o pagamento do PIX para o projeto #{link_to contribution.project.name, project_by_slug_url(contribution.project.permalink, {ref: 'notificacao_cancelado',utm_source:'notification',utm_medium:'email',utm_campaign:'contribution_canceled_pix_link',utm_content:contribution.project.name})}.
+
+- if contribution.reward.try(:sold_out?) || contribution.reward.try(:run_out)
+  p Como a recompensa que você escolheu originalmente está esgotada, enviamos abaixo um link para que você possa escolher uma nova recompensa e finalizar seu apoio:
+  center
+    = link_to second_pix_project_contribution_url(contribution.project, contribution, host: CatarseSettings[:host]), target: '__blank' do
+      = image_tag "#{CatarseSettings[:base_url]}/assets/pix_second_button.png"
+
+- else
+  p Como o prazo de pagamento já venceu, enviamos abaixo a 2ª via do PIX para que você possa finalizar o seu apoio. :-)
+
+  p Você tem até o dia #{expiry_date} para efetuar o pagamento.
+
+  p Use o app do seu banco para escanear o QR Code abaixo:
+  br
+  p
+    center
+      <strong>#{details.decorate.display_pix_qr_code.html_safe}</strong>
+  br
+  p Ou se preferir, abra o app ou site do seu banco e informe a chave abaixo:
+  br
+  p
+    center
+      <strong>#{pix_key}</strong>
+  br
+
+= render partial: 'user_notifier/mailer/contact_info'

@@ -7,6 +7,7 @@
 ActiveSupport::Inflector.inflections do |inflect|
   inflect.irregular 'Dia', 'Dias'
   inflect.acronym 'API'
+  inflect.acronym 'QR'
 end
 #
 # These inflection rules are supported but not enabled by default:

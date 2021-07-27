@@ -48,7 +48,7 @@ module CatarsePagarme
     end
 
     def refund
-      if payment.is_credit_card?
+      if payment.is_credit_card? || payment.is_pix?
         transaction.refund
       else
         transaction.refund(bank_account_attributes)
@@ -137,6 +137,13 @@ module CatarsePagarme
       })
     end
 
+    def created_second_pix
+      payment.generating_second_pix = true
+      PixTransaction.new(pix_attributes, payment).charge!
+    rescue PagarMe::PagarMeError => e
+      sentry_capture(e)
+    end
+
     protected
 
     def bank_account_attributes
@@ -166,6 +173,63 @@ module CatarsePagarme
 
     def configure_pagarme
       ::PagarMe.api_key = CatarsePagarme.configuration.api_key
+    end
+
+    def pix_attributes
+      {
+        payment_method: 'pix',
+        amount: payment.pagarme_delegator.value_for_transaction,
+        pix_expiration_date: payment.pix_expiration_date,
+        postback_url: CatarsePagarme::Engine.routes.url_helpers.ipn_pagarme_index_path(
+          host: CatarsePagarme.configuration.host,
+          subdomain: CatarsePagarme.configuration.subdomain,
+          protocol: CatarsePagarme.configuration.protocol
+        ),
+        customer: {
+          external_id: payment.user.id.to_s,
+          email: payment.user.email,
+          name: payment.user.name,
+          type: payment.user.account_type == 'pf' ? 'individual' : 'corporation',
+          country: 'br',
+          documents: [{
+            type:  payment.user.account_type == 'pf' ? 'cpf' : 'cnpj',
+            number: payment.contribution.user.cpf.gsub(/[-.\/_\s]/,'')
+          }],
+          phone_numbers: [
+            '+55085999999999'
+          ],
+        },
+        metadata: metadata_attributes.merge({ second_pix: payment.generating_second_pix.to_s })
+      }
+    end
+
+    def metadata_attributes
+      {
+        key: payment.generate_key,
+        contribution_id: payment.contribution.id.to_s,
+        project_id: payment.project.id.to_s,
+        project_name: payment.project.name,
+        permalink: payment.project.permalink,
+        project_online: payment.project.online_at,
+        project_expires: payment.project.expires_at,
+        user_total_contributions: payment.user.contributions.was_confirmed.count,
+        user_id: payment.user.id,
+        common_user_id: payment.user.common_id.to_s,
+        user_name: payment.user.name,
+        user_email: payment.user.email
+      }
+    end
+
+    def sentry_capture exception
+      ::Sentry.capture_exception(exception, level: :fatal,
+        extra: {
+          contribution_id: payment.contribution_id,
+          user_id: payment.contribution.user_id,
+          payment_key: payment.key,
+          project_id: payment.contribution.project_id,
+          payment_method: payment.payment_method
+        }
+      )
     end
   end
 end

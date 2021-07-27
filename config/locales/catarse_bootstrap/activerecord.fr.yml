@@ -247,11 +247,12 @@ fr:
     payment_details:
       creditos: "Crédits"
       boleto_bancario: "Boleto Bancaire"
+      pix: "Pix"
       cartao_de_credito: "Carte de crédit"
       debito_bancario: "Débit bancaire"
       cartao_debito: "Carte de crédit"
-      transferencia_bancaria: "Transfère bancaire" 
-      carteira_mo_ip: "Argent MoIP" 
+      transferencia_bancaria: "Transfère bancaire"
+      carteira_mo_ip: "Argent MoIP"
       financiamento_bancario: "Financement bancaire"
     project_should_be_online: Vous ne pouvez pas souvenir un projet qui n’est pas en ligne
     reward_must_be_from_project: Cela doit être du même projet
@@ -261,7 +262,7 @@ fr:
     reward_description: Description de la récompense
     deliver_at: date de remise de la récompense
     confirmed_at: date confirmation du paiement
-    contribution_value: valeur du don 
+    contribution_value: valeur du don
     service_fee: Taxe de Catarse
     user_name: Nom du donateur
     user_email: Email du profil Catarse

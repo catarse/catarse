@@ -33,6 +33,10 @@ class ContributionPolicy < ApplicationPolicy
     done_by_owner_or_admin?
   end
 
+  def second_pix?
+    done_by_owner_or_admin?
+  end
+
   def toggle_anonymous?
     done_by_owner_or_admin?
   end

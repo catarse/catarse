@@ -7,6 +7,7 @@ import projectShareBox from '../c/project-share-box';
 import projectRow from '../c/project-row';
 import userVM from '../vms/user-vm';
 import projectVM from '../vms/project-vm';
+import pixCard from '../c/pix-card';
 import { getCurrentUserCached } from '../shared/services/user/get-current-user-cached';
 
 const { CatarseAnalytics } = window;
@@ -24,6 +25,7 @@ const thankYou = {
 
         const recommendedProjects = vnode.attrs.recommended_projects || userVM.getUserRecommendedProjects(),
             isSlip = vnode.attrs.contribution && !_.isEmpty(vnode.attrs.contribution.slip_url),
+            isPix = vnode.attrs.contribution && !_.isEmpty(vnode.attrs.contribution.pix_qr_code),
             sendContributionCreationData = () => {
                 const analyticsData = {
                     cat: 'contribution_creation',
@@ -42,7 +44,7 @@ const thankYou = {
             CatarseAnalytics.event({
                 cat: 'contribution_finish',
                 act: 'contribution_finished',
-                lbl: isSlip ? 'slip' : 'creditcard',
+                lbl: isSlip ? 'slip' : isPix ? 'pix' : 'creditcard',
                 val: vnode.attrs.contribution.value,
                 extraData: {
                     contribution_id: vnode.attrs.contribution.contribution_id
@@ -63,93 +65,104 @@ const thankYou = {
             setEvents,
             displayShareBox: h.toggleProp(false, true),
             isSlip,
+            isPix,
             recommendedProjects
         };
     },
     view: function ({ state, attrs }) {
         const currentUser = getCurrentUserCached();
+        const projectUrl = `${window.location.origin}/${attrs.contribution.project.permalink}`
         const facebookUrl = `https://www.catarse.me/${attrs.contribution.project.permalink}?ref=ctrse_thankyou&utm_source=facebook.com&utm_medium=social&utm_campaign=ctrse_thankyou`;
-        const messengerUrl = `https://www.catarse.me/${attrs.contribution.project.permalink}?ref=ctrse_thankyou&utm_source=facebook_messenger&utm_medium=social&utm_campaign=ctrse_thankyou`;
+        const whatsappShareLink = h.isMobile() ? `whatsapp://send?text=${encodeURIComponent(`${projectUrl}?utm_source=whatsapp&utm_medium=social&utm_campaign=project_share_simplified`)}` : `https://api.whatsapp.com/send?text=${encodeURIComponent(`${projectUrl}?utm_source=whatsapp&utm_medium=social&utm_campaign=project_share_simplified`)}`
         const twitterUrl = `https://twitter.com/intent/tweet?text=Acabei%20de%20apoiar%20o%20projeto%20${encodeURIComponent(attrs.contribution.project.name)}%20https://www.catarse.me/${attrs.contribution.project.permalink}%3Fref%3Dctrse_thankyou%26utm_source%3Dtwitter%26utm_medium%3Dsocial%26utm_campaign%3Dctrse_thankyou`;
         return m('#thank-you', { oncreate: state.setEvents }, [
             m('.page-header.u-marginbottom-30',
                 m('.w-container',
-                    m('.w-row',
-                        m('.w-col.w-col-10.w-col-push-1',
+                    m('.thanks-header',
+                        m('.thanks-header-title-wrapper',
                             [
-                                m('.u-marginbottom-20.u-text-center',
-                                    m(`img.big.thumb.u-round[src='${attrs.contribution.project.user_thumb}']`)
+                                m('.thanks-thumb-wrapper',
+                                    m(`img.thumb.u-round[src='${attrs.contribution.project.user_thumb}']`)
                                 ),
-                                m('#thank-you.u-text-center', !state.isSlip ?
-                                    [
-                                        m('#creditcard-thank-you.fontsize-larger.text-success.u-marginbottom-20',
-                                            window.I18n.t('thank_you.thank_you', I18nScope())
-                                        ),
-                                        m('.fontsize-base.u-marginbottom-40',
-                                            m.trust(
-                                                window.I18n.t('thank_you.thank_you_text_html',
+                                m('#thank-you.thanks-header-title',
+                                    m('.fontsize-large.text-success.lineheight-tighter.u-marginbottom-10.fontweight-semibold',
+                                        state.isSlip || state.isPix ?
+                                        window.I18n.t('thank_you_slip.thank_you', I18nScope()) : window.I18n.t('thank_you.thank_you', I18nScope())
+                                    ),
+                                    m('.thanks-header-instructions-wrapper',
+                                        m('.thanks-header-instructions',
+                                            m('.fontsize-smaller',
+                                                state.isSlip || state.isPix ? (
+                                                    m.trust(window.I18n.t(
+                                                    state.isSlip ? 'thank_you_slip.thank_you_text_html' : 'thank_you_pix.thank_you_pix_html',
                                                     I18nScope({
-                                                        total: attrs.contribution.project.total_contributions,
                                                         email: attrs.contribution.contribution_email,
-                                                        link2: `/${window.I18n.locale}/users/${currentUser.id}/edit#contributions`,
-                                                        link_email: `/${window.I18n.locale}/users/${currentUser.id}/edit#about_me`
-                                                    })
-                                                )
+                                                    })))
+                                                ) :
+                                                m.trust(window.I18n.t('thank_you.thank_you_text_html',
+                                                    I18nScope({
+                                                        email: attrs.contribution.contribution_email,
+                                                })))
                                             )
                                         ),
-                                        m('.fontsize-base.fontweight-semibold.u-marginbottom-20',
-                                            'Compartilhe com seus amigos e ajude esse projeto a bater a meta!'
-                                        )
-                                    ] : [
-                                        m('#slip-thank-you.fontsize-largest.text-success.u-marginbottom-20', window.I18n.t('thank_you_slip.thank_you', I18nScope())),
-                                        m('.fontsize-base.u-marginbottom-40',
-                                            m.trust(window.I18n.t('thank_you_slip.thank_you_text_html',
+                                        m('.fontsize-smallest.alt-link',
+                                            m.trust(window.I18n.t('thank_you.another_email_html',
                                                 I18nScope({
-                                                    email: attrs.contribution.contribution_email,
                                                     link_email: `/${window.I18n.locale}/users/${currentUser.id}/edit#about_me`
-                                                }))))
-                                    ]
+                                                }))
+                                            )
+                                        )
+                                    )
+                                )
+                            ]
+                        ),
+                        state.isSlip || state.isPix ? '' :
+                            m('.thanks-header-share',
+                                m('.divider.u-margintop-20.u-marginbottom-20'),
+                                m('.fontsize-smaller.fontweight-semibold.fontcolor-secondary.u-marginbottom-10.u-text-center.w-hidden-medium.w-hidden-small',
+                                    'Que tal compartilhar o projeto?'
                                 ),
-                                state.isSlip ? '' : m('.w-row',
-                                    [
-                                        m('.w-hidden-small.w-hidden-tiny',
+                                [
+                                    (
+                                        !h.isMobile() &&
+                                        m('.w-row.w-hidden-medium.w-hidden-small.w-hidden-tiny',
                                             [
-                                                m('.w-sub-col.w-col.w-col-4', m(facebookButton, {
+                                                m('.u-marginbottom-10.w-col.w-col-4', m(facebookButton, {
+                                                    class: 'thanks-margin',
                                                     url: facebookUrl,
-                                                    big: true
+                                                    medium: true
                                                 })),
-                                                m('.w-sub-col.w-col.w-col-4', m(facebookButton, {
-                                                    messenger: true,
-                                                    big: true,
-                                                    url: messengerUrl,
-                                                })),
-                                                m('.w-col.w-col-4',
-                                                    m(`a.btn.btn-large.btn-tweet.u-marginbottom-20[href="${twitterUrl}"][target="_blank"]`, [
+                                                m('.u-marginbottom-10.w-col.w-col-4', [
+                                                    m('a.btn.btn-medium[data-action="share/whatsapp/share"]', {
+                                                        href: whatsappShareLink
+                                                    }, [m('span.fa.fa-whatsapp'), ' Whatsapp'])
+                                                ]),
+                                                m('.u-marginbottom-10.w-col.w-col-4',
+                                                    m(`a.btn.btn-medium.btn-tweet[href="${twitterUrl}"][target="_blank"]`, [
                                                         m('span.fa.fa-twitter'),
                                                         ' Twitter'
                                                     ])
                                                 )
                                             ]
-                                        ),
-                                        m('.w-hidden-main.w-hidden-medium', [
-                                            m('.u-marginbottom-30.u-text-center-small-only', m('button.btn.btn-large.btn-terciary.u-marginbottom-40', {
-                                                onclick: state.displayShareBox.toggle
-                                            }, 'Compartilhe')),
-                                            state.displayShareBox() ? m(projectShareBox, {
-                                                // Mocking a project prop
-                                                project: prop({
-                                                    permalink: attrs.contribution.project.permalink,
-                                                    name: attrs.contribution.project.name
-                                                }),
-                                                displayShareBox: state.displayShareBox,
-                                                utm: 'ctrse_thankyou',
-                                                ref: 'ctrse_thankyou'
-                                            }) : ''
-                                        ])
-                                    ]
-                                ),
-                            ]
-                        )
+                                        )
+                                    ),
+                                    m('.w-hidden-main.w-hidden-medium', [
+                                        m('.u-marginbottom-30.u-text-center-small-only', m('button.btn.btn-large.btn-terciary.u-marginbottom-40', {
+                                            onclick: state.displayShareBox.toggle
+                                        }, 'Compartilhe')),
+                                        state.displayShareBox() ? m(projectShareBox, {
+                                            // Mocking a project prop
+                                            project: prop({
+                                                permalink: attrs.contribution.project.permalink,
+                                                name: attrs.contribution.project.name
+                                            }),
+                                            displayShareBox: state.displayShareBox,
+                                            utm: 'ctrse_thankyou',
+                                            ref: 'ctrse_thankyou'
+                                        }) : ''
+                                    ])
+                                ]
+                            )
                     )
                 )
             ),
@@ -165,7 +178,13 @@ const thankYou = {
                                 style: 'overflow: hidden;'
                             })
                         )
-                    ) : [
+                    ) :
+                    (
+                        state.isPix ? m(pixCard, {
+                            pix_qr_code: attrs.contribution.pix_qr_code,
+                            pix_key: attrs.contribution.pix_key
+                        }) :
+                        [
                             m('.fontsize-large.fontweight-semibold.u-marginbottom-30.u-text-center',
                                 window.I18n.t('thank_you.project_recommendations', I18nScope())
                             ),
@@ -174,6 +193,7 @@ const thankYou = {
                                 ref: 'ctrse_thankyou_r'
                             })
                         ]
+                    ),
                 )
             )
         ]);

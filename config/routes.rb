@@ -119,6 +119,7 @@ Catarse::Application.routes.draw do
             get 'toggle_anonymous'
             get 'toggle_delivery'
             get :second_slip
+            get :second_pix
             get :receipt
           end
           put :credits_checkout, on: :member

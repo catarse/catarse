@@ -18,10 +18,14 @@ class Payment < ApplicationRecord
   validate :project_should_be_online, on: :create
   validate :is_unique_on_contribution, on: :create
 
-  attr_accessor :generating_second_slip
+  attr_accessor :generating_second_slip, :generating_second_pix
 
   scope :all_boleto_that_should_be_refused, -> {
     where('payments.slip_expires_at < current_timestamp and payment_method = \'BoletoBancario\' and state = \'pending\'')
+  }
+
+  scope :all_pix_that_should_be_refused, -> {
+    where('payments.pix_expires_at < current_timestamp and payment_method = \'Pix\' and state = \'pending\'')
   }
 
   scope :with_missing_payables, lambda {
@@ -35,6 +39,10 @@ class Payment < ApplicationRecord
     connection.select_one('SELECT public.slip_expiration_weekdays()')['slip_expiration_weekdays'].to_i
   end
 
+  def self.pix_expiration_weekdays
+    connection.select_one('SELECT public.pix_expiration_weekdays()')['pix_expiration_weekdays'].to_i
+  end
+
   def slip_expiration_date
     # If payment does not exist gives expiration date based on current_timestamp
     if id.nil?
@@ -44,8 +52,21 @@ class Payment < ApplicationRecord
     end
   end
 
+  def pix_expiration_date
+    # If payment does not exist gives expiration date based on current_timestamp
+    if id.nil?
+      self.class.connection.select_one("SELECT public.weekdays_from(public.pix_expiration_weekdays(), current_timestamp::timestamp) at time zone 'America/Sao_Paulo' as weekdays_from")['weekdays_from'].try(:to_datetime)
+    else
+      pluck_from_database("pix_expires_at").try(:to_datetime)
+    end
+  end
+
   def slip_expired?
     pluck_from_database('slip_expired')
+  end
+
+  def pix_expired?
+    pluck_from_database('pix_expired')
   end
 
   def is_unique_on_contribution
@@ -98,6 +119,10 @@ class Payment < ApplicationRecord
 
   def slip_payment?
     payment_method == 'BoletoBancario'
+  end
+
+  def pix_payment?
+    payment_method == 'Pix'
   end
 
   state_machine :state, initial: :pending do
@@ -158,7 +183,7 @@ class Payment < ApplicationRecord
   private
 
   def exists_duplicate?
-    contribution.payments.where('id is not null').exists? unless generating_second_slip
+    contribution.payments.where('id is not null').exists? unless generating_second_slip || generating_second_pix
   end
 
   def pluck_from_database(field)

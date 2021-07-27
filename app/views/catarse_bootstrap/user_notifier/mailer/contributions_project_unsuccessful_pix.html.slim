@@ -1,0 +1,36 @@
+- contribution = @notification.contribution
+- payment = contribution.payments.last
+- user = @notification.contribution.user
+- bank_account = user.bank_account
+
+|Olá, #{contribution.user.display_name}!
+br
+br
+| Infelizmente o projeto #{link_to(contribution.project.name, project_by_slug_url(permalink: contribution.project.permalink))} que você apoiou não atingiu a meta estabelecida no #{CatarseSettings[:company_name]}.
+br
+br
+| Como o seu apoio foi efetuado através de pix, realizaremos o reembolso diretamente na conta em até 10 dias.
+br
+br
+| Banco: #{bank_account.bank.to_s}
+br
+| Agência: #{bank_account.try(:agency)} - #{bank_account.try(:agency_digit)}
+br
+| Conta: #{bank_account.try(:account)} - #{bank_account.try(:account_digit)}
+br
+| Nome do titular: #{bank_account.try(:owner_name)}
+br
+| CPF: #{bank_account.try(:owner_document)}
+br
+br
+| Assim que o reembolso for feito, você receberá um e-mail de confirmação da operação.
+br
+br
+| Se ficou com alguma dúvida, entre em contato conosco respondendo a esta mensagem ou através do e-mail #{mail_to CatarseSettings[:email_contact]}
+| e nos informe a chave de identificação do seu apoio, que é: #{payment.gateway_id}
+br
+br
+|Um abraço,
+br
+| #{CatarseSettings[:company_name]}
+

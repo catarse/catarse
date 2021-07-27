@@ -59,6 +59,9 @@ module CatarsePagarme
         slip_payment: [:payment_method, :amount, :postback_url,
                        customer: [:name, :email]
         ],
+        pix_payment: [:payment_method, :amount, :postback_url,
+                       customer: [:name, :email]
+        ],
         user: [
           bank_account_attributes: [
             :name, :account, :account_digit, :agency,

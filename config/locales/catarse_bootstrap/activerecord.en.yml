@@ -412,6 +412,13 @@ en:
         pending_refund: Refund requested on %{date}
         refused: Unrealized payment
         chargeback: Answered
+      pix:
+        pending: Awaiting payment confirmation
+        paid: Confirmed on %{date}
+        refunded: Refunded on %{date}
+        pending_refund: Refund requested on %{date}
+        refused: Unrealized payment
+        chargeback: Answered
       cartaodecredito:
         pending: Awaiting payment confirmation
         paid: Confirmed on %{date}
@@ -473,6 +480,7 @@ en:
       desconhecido: ''
       creditos: Credits
       boleto_bancario: Bank slip
+      pix: Pix
       cartao_de_credito: Credit card
       debito_bancario: Bank debit
       cartao_debito: Debit card

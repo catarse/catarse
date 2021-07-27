@@ -4,12 +4,15 @@ CatarsePagarme::Engine.routes.draw do
   resources :pagarme, only: [], path: "payment/pagarme" do
 
     member do
+      get  :pix_expiration_date, to: 'pix#pix_expiration_date'
+      get  :second_pix, to: 'pix#update'
       get  :slip_data, to: 'slip#slip_data'
       get  :second_slip, to: 'slip#update'
       get  :get_installment, to: 'credit_cards#get_installment_json'
       get  :get_encryption_key, to: 'credit_cards#get_encryption_key_json'
       post :pay_credit_card, to: 'credit_cards#create'
       post :pay_slip, to: 'slip#create'
+      post :pay_pix, to: 'pix#create'
     end
 
     collection do

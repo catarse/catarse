@@ -60,6 +60,18 @@ RSpec.describe ContributionDetail, type: :model do
     it { is_expected.to match_array [@contribution.details.first] }
   end
 
+  describe '.pixs_past_waiting' do
+    subject { ContributionDetail.pixs_past_waiting }
+
+    before do
+      @contribution = create(:contribution)
+      create(:payment, payment_method: 'Pix', contribution: @contribution, created_at: 6.days.ago, state: 'pending')
+      @credit_contribution = create(:pending_contribution)
+      @confirmed_contribution = create(:confirmed_contribution)
+    end
+    it { is_expected.to match_array [@contribution.details.first] }
+  end
+
   describe '.no_confirmed_contributions_on_project' do
     subject { ContributionDetail.no_confirmed_contributions_on_project }
 

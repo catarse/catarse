@@ -94,6 +94,10 @@ class Contribution < ApplicationRecord
     payments.last.slip_payment?
   end
 
+  def pix_payment?
+    payments.last.pix_payment?
+  end
+
   def is_donation?
     donation.present?
   end
@@ -203,7 +207,9 @@ class Contribution < ApplicationRecord
         minimum_value: reward.minimum_value
       } : nil,
       contribution_email: user.email,
-      slip_url: payment && payment.slip_payment? ? payment.gateway_data['boleto_url'] : nil
+      slip_url: payment && payment.slip_payment? ? payment.gateway_data['boleto_url'] : nil,
+      pix_qr_code: payment && payment.pix_payment? ? QRCode::Renderer.as_svg(payment.gateway_data['pix_qr_code']) : nil,
+      pix_key: payment && payment.pix_payment? ? payment.gateway_data['pix_qr_code'] : nil
     }
   end
 

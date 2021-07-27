@@ -3,37 +3,28 @@ import thankYou from '../../../src/root/thank-you'
 import prop from 'mithril/stream';
 
 describe('ThankYou', () => {
-    let $slip, $cc;
+    let $slip, $cc, $pix;
     let test = (payment) => {
         return {
             contribution: ContributionAttrMockery(null, payment)
         };
     };
 
-    beforeAll(() => {        
+    beforeAll(() => {
         const slipOptions = test('slip');
         $slip = mq(m(thankYou, slipOptions));
 
         const ccOptions = test('creditcard');
         $cc = mq(m(thankYou, ccOptions));
+
+        const pixOptions = test('pix');
+        $pix = mq(m(thankYou, pixOptions));
     });
 
     it('should render a thank you page', () => {
         $slip.should.have('#thank-you');
         $cc.should.have('#thank-you');
-    });
-
-    it('should render a specific message according to payment type', () => {
-        $cc.should.have('#creditcard-thank-you');
-        $cc.should.not.have('#slip-thank-you');
-        $slip.should.have('#slip-thank-you');
-        $slip.should.not.have('#creditcard-thank-you');
-    });
-
-    it('should render share buttons if credit card', () => {
-        // 3 desktop share buttons
-        expect($cc.find('.btn-large').length).toEqual(4)
-        expect($slip.find('.btn-large').length).toEqual(0);
+        $pix.should.have('#thank-you');
     });
 
     it('should render 3 recommended projects if not slip payment', () => {

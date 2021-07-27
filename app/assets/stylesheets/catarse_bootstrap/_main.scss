@@ -1857,6 +1857,129 @@ a:hover {
   margin-left: auto;
 }
 
+.thanks-header {
+	-webkit-box-flex: 1;
+	border-bottom-right-radius: 5px;
+	border-radius: 5px 5px 5px 0px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	flex: 1 1 0%;
+	padding: 19px;
+}
+@media screen and (max-width: 479px) {
+	.thanks-header {
+		margin-left: 0px;
+		margin-top: 10px;
+	}
+}
+
+.thanks-thumb-wrapper {
+	-webkit-box-flex: 0;
+	flex: 0 1 auto;
+	margin-right: 22px;
+}
+@media screen and (max-width: 991px) {
+	.thanks-thumb-wrapper {
+		margin-right: 17px;
+	}
+}
+@media screen and (max-width: 767px) {
+	.thanks-thumb-wrapper {
+		margin-bottom: 16px;
+		margin-right: 0px;
+	}
+}
+
+
+.thanks-header-title-wrapper {
+	-webkit-box-pack: center;
+	display: flex;
+	justify-content: center;
+}
+@media screen and (max-width: 767px) {
+	.thanks-header-title-wrapper {
+		-webkit-box-align: center;
+		-webkit-box-direction: normal;
+		-webkit-box-orient: vertical;
+		align-items: center;
+		flex-direction: column;
+	}
+}
+
+.thanks-header-title {
+	-webkit-box-direction: normal;
+	-webkit-box-orient: vertical;
+	display: flex;
+	flex-direction: column;
+}
+@media screen and (max-width: 767px) {
+	.thanks-header-title {
+		-webkit-box-align: center;
+		align-items: center;
+		text-align: center;
+	}
+}
+@media screen and (max-width: 479px) {
+	.thanks-header-title {
+		text-align: center;
+	}
+}
+
+.thanks-header-title {
+	-webkit-box-direction: normal;
+	-webkit-box-orient: vertical;
+	display: flex;
+	flex-direction: column;
+}
+@media screen and (max-width: 767px) {
+	.thanks-header-title {
+		-webkit-box-align: center;
+		align-items: center;
+		text-align: center;
+	}
+}
+@media screen and (max-width: 479px) {
+	.thanks-header-title {
+		text-align: center;
+	}
+}
+
+.thanks-header-instructions-wrapper {
+	-webkit-box-align: center;
+	-webkit-box-flex: 0;
+	-webkit-box-ordinal-group: 2;
+	align-items: center;
+	box-sizing: border-box;
+	display: flex;
+	flex: 0 1 auto;
+	order: 1;
+}
+@media screen and (max-width: 479px) {
+	.thanks-header-instructions-wrapper {
+		-webkit-box-direction: normal;
+		-webkit-box-orient: vertical;
+		flex-direction: column;
+	}
+}
+
+.thanks-header-instructions {
+	box-sizing: border-box;
+	color: #3f4752;
+	font-family: proxima-nova, sans-serif;
+	font-size: 14px;
+	line-height: 20px;
+	margin-right: 5px;
+}
+@media screen and (max-width: 479px) {
+	.thanks-header-instructions {
+		margin-bottom: 5px;
+	}
+}
+
+.thanks-margin {
+  margin-bottom: 0px;
+}
+
 .card-reward {
   position: relative;
   border: 1px solid transparent;

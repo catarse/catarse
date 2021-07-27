@@ -9,7 +9,7 @@ class Payment < ActiveRecord::Base
   validates_presence_of :state, :key, :gateway, :payment_method, :value, :installments
   validate :value_should_be_equal_or_greater_than_pledge
 
-  attr_accessor :generating_second_slip
+  attr_accessor :generating_second_slip, :generating_second_pix
 
   before_validation do
     generate_key
@@ -18,6 +18,10 @@ class Payment < ActiveRecord::Base
   end
 
   def slip_expiration_date
+    2.weekdays_from_now
+  end
+
+  def pix_expiration_date
     2.weekdays_from_now
   end
 
@@ -32,6 +36,8 @@ class Payment < ActiveRecord::Base
   def notification_template_for_failed_project
     if slip_payment?
       :contribution_project_unsuccessful_slip
+    elsif pix_payment?
+      :contribution_project_unsuccessful_pix
     else
       :contribution_project_unsuccessful_credit_card
     end
@@ -72,5 +78,9 @@ class Payment < ActiveRecord::Base
 
   def slip_payment?
     self.payment_method == 'BoletoBancario'
+  end
+
+  def pix_payment?
+    self.payment_method == 'Pix'
   end
 end

@@ -2,7 +2,7 @@
 - transfer = @notification.try(:user_transfer)
 - bank_account = (contribution || transfer).user.bank_account
 
-p Olá Suporte! 
+p Olá Suporte!
 
 p O número de tentativas de reembolso automático desse apoio foi excedido. Isso deve ter acontecido por erros nos dados bancáriso preenchidos ou por ser uma conta poupança:
 
@@ -19,7 +19,7 @@ p
 p
   |Nome do titular: #{bank_account.try(:owner_name)}
 p
-  |CPF: #{bank_account.try(:owner_document)}  
+  |CPF: #{bank_account.try(:owner_document)}
 
 p Cheque com o apoiador os dados informados e depois peça esse reembolso especial ou direto.
 

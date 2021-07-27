@@ -90,7 +90,11 @@ const userContributedBox = {
                                 ]),
                                 m('.fontsize-smallest',
                                     (contribution.installments > 1 ? (`${contribution.installments} x R$ ${ h.formatNumber(contribution.installment_value, 2) } `) : ''),
-                                    (contribution.payment_method === 'BoletoBancario' ? window.I18n.t('bank_slip', contributionScope()) : window.I18n.t('credit_card', contributionScope()))
+                                    {
+                                        'BoletoBancario': window.I18n.t('bank_slip', contributionScope()),
+                                        'Pix': 'Pix',
+                                        'CartaoDeCredito': window.I18n.t('credit_card', contributionScope())
+                                    }[contribution.payment_method]
                                 ),
                                 (contribution.gateway_id ?
                                     m('.fontsize-smallest',
@@ -115,10 +119,21 @@ const userContributedBox = {
                                         window.I18n.t('print_slip', contributionScope())
                                     ) : ''),
 
+                                (contribution.gateway_data && contributionVM.canShowPix(contribution) ?
+                                    m(`a.alt-link.u-margintop-10[href='/projects/${contribution.project_id}/contributions/${contribution.contribution_id}'][target='__blank']`,
+                                        window.I18n.t('print_pix', contributionScope())
+                                    ) : ''),
+
                                 (contribution.gateway_data && contributionVM.canGenerateSlip(contribution) ?
                                     m(`a.alt-link.u-margintop-10[href='/projects/${contribution.project_id}/contributions/${contribution.contribution_id}/second_slip'][target='__blank']`,
                                         window.I18n.t('slip_copy', contributionScope())
                                     ) : ''),
+
+                                (contribution.gateway_data && contributionVM.canGeneratePix(contribution)?
+                                    m(`a.alt-link.u-margintop-10[href='/projects/${contribution.project_id}/contributions/${contribution.contribution_id}/second_pix'][target='__blank']`,
+                                        window.I18n.t('pix_copy', contributionScope())
+                                    ) : ''),
+
                                 m('.w-checkbox.fontsize-smallest.fontcolor-secondary.u-margintop-10', [
                                     m(`input.w-checkbox-input[id='anonymous'][name='anonymous'][type='checkbox']${contribution.anonymous ? '[checked=\'checked\']' : ''}[value='1']`, {
                                         onclick: () => state.toggleAnonymous(contribution.project_id, contribution)

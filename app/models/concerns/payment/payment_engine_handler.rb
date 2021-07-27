@@ -48,5 +48,17 @@ module Payment::PaymentEngineHandler
     def can_generate_second_slip?
       payment_engine.try(:can_generate_second_slip?)
     end
+
+    def second_pix_path
+      payment_engine.second_pix_path(self) if payment_engine.try(:can_generate_second_pix?)
+    end
+
+    def generate_second_pix
+      payment_delegator.try(:created_second_pix) if payment_engine.try(:can_generate_second_pix?)
+    end
+
+    def can_generate_second_pix?
+      payment_engine.try(:can_generate_second_pix?)
+    end
   end
 end

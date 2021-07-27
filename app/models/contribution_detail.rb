@@ -15,9 +15,9 @@ class ContributionDetail < ApplicationRecord
 
   delegate :payer_email, :payer_name, to: :contribution
   delegate :pay, :refuse, :trash, :chargeback, :refund, :request_refund, :request_refund!,
-           :credits?, :paid?, :refused?, :pending?, :deleted?, :refunded?, :direct_refund,
-           :slip_payment?, :pending_refund?, :second_slip_path,
-           :pagarme_delegator, :waiting_payment?, :slip_expired?, to: :payment
+    :credits?, :paid?, :refused?, :pending?, :deleted?, :refunded?, :direct_refund,
+    :slip_payment?, :pix_payment?, :pending_refund?, :second_slip_path, :second_pix_path,
+    :generate_second_pix, :pagarme_delegator, :waiting_payment?, :slip_expired?, :pix_expired?, to: :payment
 
   scope :with_state, ->(state) { where(state: state) }
   scope :was_confirmed, -> { where('contribution_details.state = ANY(confirmed_states())') }
@@ -41,6 +41,14 @@ class ContributionDetail < ApplicationRecord
           state: 'pending',
           waiting_payment: false,
           project_state: 'online')
+  }
+
+  scope :pixs_past_waiting, lambda {
+    where(payment_method: 'Pix',
+          state: 'pending',
+          waiting_payment: false,
+          project_state: 'online'
+         )
   }
 
   scope :no_confirmed_contributions_on_project, -> {
@@ -69,6 +77,10 @@ class ContributionDetail < ApplicationRecord
     slip_payment? && !slip_expired?
   end
 
+  def can_show_pix?
+    pix_payment? && !pix_expired?
+  end
+
   def can_show_receipt?
     project = self.project
     contribution.was_confirmed? # && (project.successful? || project.online? || project.waiting_funds?)
@@ -79,6 +91,14 @@ class ContributionDetail < ApplicationRecord
       project.open_for_contributions? &&
       pending? &&
       slip_expired? &&
+      (reward.nil? || !reward.sold_out?)
+  end
+
+  def can_generate_pix?
+    pix_payment? &&
+      project.open_for_contributions? &&
+      pending? &&
+      pix_expired? &&
       (reward.nil? || !reward.sold_out?)
   end
 end

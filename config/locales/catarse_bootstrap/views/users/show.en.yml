@@ -91,7 +91,9 @@ en:
       total_amount: 'Total with interest: $%{total_amount}'
       anonymous: I want my support not to be public
       print_slip: Print Ticket
+      print_pix: Print Pix
       slip_copy: Generate 2nd via
+      pix_copy: Generate 2nd via
       status: Status
       contact_author: Send Message
       show_receipt: View Receipt
