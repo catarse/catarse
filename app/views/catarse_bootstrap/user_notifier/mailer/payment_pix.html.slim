@@ -2,6 +2,7 @@
 - expiry_date = contribution.payments.last.gateway_data.try(:[], "pix_expiration_date").try(:to_datetime).try(:strftime, '%d/%m')
 - pix_key = contribution.payments.last.gateway_data.try(:[], "pix_qr_code")
 - details = contribution.details.ordered.first
+- link_url = project_contribution_url(contribution.project, contribution)
 
 p Olá, <strong>#{contribution.user.display_name}</strong> !
 
@@ -11,7 +12,7 @@ p Use o app do seu banco para escanear o QR Code abaixo:
 br
 p
   center
-    img(src="data:image/png;base64,#{details.decorate.display_pix_qr_code_base64}")
+    <a href="#{link_url}" align=“center” style=“margin-top: 30px; margin-bottom: 30px; background-color:#7cc142;font-size:18px;color:#ffffff;font-family:HelveticaNeue-Medium;font-weight:bold;text-decoration:none;padding-top:25px;padding-bottom:25px;display:inline-block;width:280px;text-align:center!important;border-radius:5px” bgcolor=“#7CC142" target=“_blank” data-saferedirecturl="#{link_url}"> Visualizar QR Code </a>
 br
 p Ou se preferir, abra o app ou site do seu banco e informe a chave abaixo:
 br
