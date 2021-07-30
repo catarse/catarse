@@ -53,9 +53,15 @@ class Payment < ApplicationRecord
   end
 
   def pix_expiration_date
-    # If payment does not exist gives expiration date based on current_timestamp
+    # If payment isn`t persisted gives expiration date based on current_timestamp
     if id.nil?
-      self.class.connection.select_one("SELECT public.weekdays_from(public.pix_expiration_weekdays(), current_timestamp::timestamp) at time zone 'America/Sao_Paulo' as weekdays_from")['weekdays_from'].try(:to_datetime)
+      sql = <<-SQL
+        SELECT
+          (NOW() + (interval '1 day' * public.pix_expiration_weekdays()))::date + 1 - '1 second'::interval
+        AS expires_at
+      SQL
+
+      self.class.connection.select_one(sql)['expires_at'].try(:to_datetime)
     else
       pluck_from_database("pix_expires_at").try(:to_datetime)
     end
