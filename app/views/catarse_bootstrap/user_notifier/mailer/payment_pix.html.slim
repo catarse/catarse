@@ -11,7 +11,7 @@ p Use o app do seu banco para escanear o QR Code abaixo:
 br
 p
   center
-    <strong>#{details.decorate.display_pix_qr_code.html_safe}</strong>
+    img(src="data:image/png;base64,#{details.decorate.display_pix_qr_code_base64}")
 br
 p Ou se preferir, abra o app ou site do seu banco e informe a chave abaixo:
 br

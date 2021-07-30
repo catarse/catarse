@@ -36,6 +36,11 @@ class ContributionDetailDecorator < Draper::Decorator
     return QRCode::Renderer.as_svg(gateway_data['pix_qr_code']) if gateway_data.present?
   end
 
+  def display_pix_qr_code_base64
+    gateway_data = object.try(:gateway_data)
+    return QRCode::Renderer.as_base64_png(gateway_data['pix_qr_code']) if gateway_data.present?
+  end
+
   def display_status
     state = object.state
     I18n.t("payment.state.#{state}", date: I18n.l(object["#{state}_at".to_sym].to_date))

@@ -22,7 +22,7 @@ p Notamos que você não realizou o pagamento do PIX para o projeto #{link_to co
   br
   p
     center
-      <strong>#{details.decorate.display_pix_qr_code.html_safe}</strong>
+      img(src="data:image/png;base64,#{details.decorate.display_pix_qr_code_base64}")
   br
   p Ou se preferir, abra o app ou site do seu banco e informe a chave abaixo:
   br
