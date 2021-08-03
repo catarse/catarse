@@ -23,6 +23,7 @@ const projectContributionReportContent = {
                 projectsContributionReportVM.getAllContributions(vnode.attrs.filterVM).then((data) => {
                     const exceptReceived = _.filter(data, contrib => contrib.delivery_status !== 'received');
                     selectedContributions().push(..._.pluck(exceptReceived, 'id'));
+                    selectedContributions([...new Set(selectedContributions())]);
                     selectedAny(!_.isEmpty(exceptReceived));
                 });
             },
