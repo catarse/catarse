@@ -60,6 +60,7 @@ class Project < ApplicationRecord
   has_many :unsubscribes
   has_many :reminders, class_name: 'ProjectReminder', inverse_of: :project
   has_many :project_report_exports, dependent: :destroy
+  has_many :project_fiscals
 
   has_many :project_transitions, autosave: false
 
