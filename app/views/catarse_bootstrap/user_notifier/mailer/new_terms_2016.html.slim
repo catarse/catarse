@@ -1,5 +1,6 @@
-p Olá #{@notification.user.display_name}!
-p Enviamos esse email para lembrá-los sobre as novidades do #{link_to ' Catarse ', 'https://catarse.me', target: '_blank'} e sobre a atualização dos nossos Termos de Uso, que passou a valer a partir do dia 20 de Junho de 2016. 
+p
+= render partial: 'user_notifier/mailer/greetings', locals: { user: @notification.user }
+p Enviamos esse email para lembrá-los sobre as novidades do #{link_to ' Catarse ', 'https://catarse.me', target: '_blank'} e sobre a atualização dos nossos Termos de Uso, que passou a valer a partir do dia 20 de Junho de 2016.
 p Abaixo, um resumo das principais mudanças:
 strong Lançamento de uma nova modalidade: Catarse Flex
 p Com a mesma taxa do Tudo ou Nada (13% sob o valor arrecadado), projetos inscritos na modalidade Catarse Flex não precisam atingir a meta para receberem os recursos. #{link_to 'Saiba mais aqui.', 'http://blog.catarse.me/por-que-flex/', target: '_blank'}
@@ -27,11 +28,11 @@ br
 br
 
 strong Por que eu recebi essa mensagem?
-p Você recebeu essa mensagem por ter apoiado ou realizado um projeto no Catarse nos últimos 12 meses. Além de querermos compartilhar os avanços da plataforma, é nosso dever informar nossos usuários sobre alterações em nossos termos de uso. 
+p Você recebeu essa mensagem por ter apoiado ou realizado um projeto no Catarse nos últimos 12 meses. Além de querermos compartilhar os avanços da plataforma, é nosso dever informar nossos usuários sobre alterações em nossos termos de uso.
 strong Qual a diferença entre o Catarse Tudo ou Nada e o Catarse Flex?
-p Os dois modelos tem algumas diferenças e a principal delas é o compromisso. Projetos inscritos na modalidade Tudo ou Nada só assumem o compromisso de execução do projeto e entrega de recompensas caso atinjam (ou superem) a meta. No modelo Flex, os realizadores assumem o compromisso independente do valor arrecadado. Saiba mais sobre as diferenças entre as duas modalidades. 
+p Os dois modelos tem algumas diferenças e a principal delas é o compromisso. Projetos inscritos na modalidade Tudo ou Nada só assumem o compromisso de execução do projeto e entrega de recompensas caso atinjam (ou superem) a meta. No modelo Flex, os realizadores assumem o compromisso independente do valor arrecadado. Saiba mais sobre as diferenças entre as duas modalidades.
 strong Estou com projeto no ar, o que mudou no meu repasse?
-p O seu prazo de repasse será o mesmo: 10 dias úteis após a finalização da campanha. A única coisa que mudou é que, caso seu projeto seja financiado depois do dia 20/06/2016, pediremos que você confirme seus dados bancários antes de realizarmos a transferência do valor. Fique tranquilo que a confirmação é super rápida e pode ser feita através do seu painel de controle assim que o seu projeto for finalizado. Te enviaremos um passo-a-passo quando for o momento de você confirmá-los, mas, caso queira, você pode checar mais informações nesse artigo. 
+p O seu prazo de repasse será o mesmo: 10 dias úteis após a finalização da campanha. A única coisa que mudou é que, caso seu projeto seja financiado depois do dia 20/06/2016, pediremos que você confirme seus dados bancários antes de realizarmos a transferência do valor. Fique tranquilo que a confirmação é super rápida e pode ser feita através do seu painel de controle assim que o seu projeto for finalizado. Te enviaremos um passo-a-passo quando for o momento de você confirmá-los, mas, caso queira, você pode checar mais informações nesse artigo.
 strong Como eu posso publicar um projeto?
 p Caso ainda não tenha criado o seu rascunho, você poderá criá-lo através do botão Comece seu projeto. A partir daí, basta escolher a modalidade e preencher - no mínimo - todos os campos obrigatórios. Você poderá publicá-lo quando quiser, através do botão PUBLICAR.
 strong Se não existe mais curadoria, como eu posso conseguir dicas para a minha campanha?

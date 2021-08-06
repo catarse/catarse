@@ -7,10 +7,10 @@
 - company_name = CatarseSettings[:company_name]
 
 p
-  | Olá #{project.user.decorate.display_name},
+  = render partial: 'user_notifier/mailer/greetings', locals: { user: project.user.decorate }
 
 p
-  | O apoio realizado pelo #{contribution.user.decorate.display_name} foi cancelado e reembolsado. 
+  | O apoio realizado pelo #{contribution.user.decorate.display_name} foi cancelado e reembolsado.
 
 p
   | Isso pode ter acontecido por algum dos dois motivos seguintes:
@@ -27,7 +27,7 @@ p
   | - Opção 1: Realizar o depósito de #{fmt_value_without_fee} para a conta do Catarse (Banco Itau, Ag 4465, CC 11152-6, CNPJ 14.512.425/0001-94) e enviar o comprovante para a nossa equipe, através deste #{link_to 'link', 'https://suporte.catarse.me/hc/pt-br/requests/new'}.
   br/
   br/
-  | - Opção 2: Entrar em contato com nosso #{link_to 'atendimento', 'https://suporte.catarse.me/hc/pt-br/requests/new'} e realizar o pagamento via  boleto bancário. 
+  | - Opção 2: Entrar em contato com nosso #{link_to 'atendimento', 'https://suporte.catarse.me/hc/pt-br/requests/new'} e realizar o pagamento via  boleto bancário.
 p
   | Você pode acessar o #{link_to 'relatório de apoios', contributions_report_project_url(project)} cancelados e reembolsados a qualquer momento.
 

@@ -3,7 +3,7 @@
 - user = @notification.contribution.user
 - bank_account = user.bank_account
 
-|Olá, #{contribution.user.display_name}!
+= render partial: 'user_notifier/mailer/greetings', locals: { user: contribution.user }
 br
 br
 | Infelizmente o projeto #{link_to(contribution.project.name, project_by_slug_url(permalink: contribution.project.permalink))} que você apoiou não atingiu a meta estabelecida no #{CatarseSettings[:company_name]}.
@@ -26,7 +26,7 @@ br
 | Assim que o reembolso for feito, você receberá um e-mail de confirmação da operação.
 br
 br
-| Se ficou com alguma dúvida, entre em contato conosco respondendo a esta mensagem ou através do e-mail #{mail_to CatarseSettings[:email_contact]} 
+| Se ficou com alguma dúvida, entre em contato conosco respondendo a esta mensagem ou através do e-mail #{mail_to CatarseSettings[:email_contact]}
 | e nos informe a chave de identificação do seu apoio, que é: #{payment.gateway_id}
 br
 br

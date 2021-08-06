@@ -5,12 +5,13 @@
 - new_inactive = transitions.where(to_status: 'inactive')
 - new_canceled = transitions.where(to_status: 'canceled')
 
-h3 Olá #{owner.display_name},
+h3
+= render partial: 'user_notifier/mailer/greetings', locals: { user: owner }
 h3 Seu saldo atual no Catarse é R$#{owner.total_balance}.
 br
 p Nas últimas 24h da sua campanha:
 
-table style="border-collapse:collapse;border-spacing:0;width:100%;" 
+table style="border-collapse:collapse;border-spacing:0;width:100%;"
   tr
     th style="font-size:14px;font-weight:bold;padding:10px 5px;border-style:solid;border-width:4px;border-color:#fff;overflow:hidden;word-break:normal;background-color:#ffffc7;text-align:center"  Assinaturas Iniciadas
     th style="font-size:14px;font-weight:bold;padding:10px 5px;border-style:solid;border-width:4px;border-color:#fff;;overflow:hidden;word-break:normal;background-color:#d7f6d6;text-align:center"  Assinaturas Ativadas
@@ -33,8 +34,8 @@ br
   h3
     span style="color:#ffae42;"  ●
     | Assinaturas Iniciadas
-  
-  table style="border-collapse:collapse;border-spacing:0;border-color:#ccc;width:100%;margin-bottom:60px;" 
+
+  table style="border-collapse:collapse;border-spacing:0;border-color:#ccc;width:100%;margin-bottom:60px;"
     tr
       th style="font-size:14px;font-weight:bold;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;border-top-width:1px;border-bottom-width:1px;text-align:left;width:50%;"  Nome
       th style="font-size:14px;font-weight:bold;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;border-top-width:1px;border-bottom-width:1px;text-align:left;width:25%;"  Qtde. apoios
@@ -44,14 +45,14 @@ br
         td style="font-size:14px;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;border-top-width:1px;border-bottom-width:1px;width:50%;"  #{transition.subscription.user.display_name}
         td style="font-size:14px;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;border-top-width:1px;border-bottom-width:1px;width:25%;"  #{transition.subscription.subscription_payments.where(status: :paid).count}
         td style="font-size:14px;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;border-top-width:1px;border-bottom-width:1px;text-align:center;width:25%;"  R$#{transition.subscription.amount}
-        
+
 
 - if new_active.count >= 1
   h3
     span style="color:#7cc142;"  ●
     | Assinaturas Ativadas
-  
-  table style="border-collapse:collapse;border-spacing:0;border-color:#ccc;width:100%;margin-bottom:60px;" 
+
+  table style="border-collapse:collapse;border-spacing:0;border-color:#ccc;width:100%;margin-bottom:60px;"
     tr
       th style="font-size:14px;font-weight:bold;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;border-top-width:1px;border-bottom-width:1px;text-align:left;width:50%;"  Nome
       th style="font-size:14px;font-weight:bold;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;border-top-width:1px;border-bottom-width:1px;text-align:left;width:25%;"  Qtde. apoios
@@ -67,8 +68,8 @@ br
   h3
     span style="color:#e86666;"  ●
     | Assinaturas Inativadas
-  
-  table style="border-collapse:collapse;border-spacing:0;border-color:#ccc;width:100%;margin-bottom:60px;" 
+
+  table style="border-collapse:collapse;border-spacing:0;border-color:#ccc;width:100%;margin-bottom:60px;"
     tr
       th style="font-size:14px;font-weight:bold;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;border-top-width:1px;border-bottom-width:1px;text-align:left;width:50%;"  Nome
       th style="font-size:14px;font-weight:bold;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;border-top-width:1px;border-bottom-width:1px;text-align:left;width:25%;"  Qtde. apoios
@@ -85,7 +86,7 @@ br
     span style="color:#e86666;"  ●
     | Assinaturas Canceladas
 
-  table style="border-collapse:collapse;border-spacing:0;border-color:#ccc;width:100%;margin-bottom:60px;" 
+  table style="border-collapse:collapse;border-spacing:0;border-color:#ccc;width:100%;margin-bottom:60px;"
     tr
       th style="font-size:14px;font-weight:bold;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;border-top-width:1px;border-bottom-width:1px;text-align:left;width:50%;"  Nome
       th style="font-size:14px;font-weight:bold;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;border-top-width:1px;border-bottom-width:1px;text-align:left;width:25%;"  Qtde. apoios

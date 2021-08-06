@@ -4,21 +4,21 @@
 - project_link = edit_project_url(project)
 - company_name = CatarseSettings[:company_name]
 
-|Olá, #{user.decorate.display_name}.
+= render partial: 'user_notifier/mailer/greetings', locals: { user: user.decorate }
 br/
 br/
 | <strong>O projeto #{link_to project.name, project_link, target: '__blank'} está no ar e já pode receber apoios!</strong>
 br/
 br/
 | É muito importante se planejar para uma campanha. Mas se você não planejou suas ações anteriormente, não perca tempo.
-'  A hora é essa! Estamos aqui para te ajudar! Para conversar sobre estratégias de comunicação com nossa equipe e receber 
+'  A hora é essa! Estamos aqui para te ajudar! Para conversar sobre estratégias de comunicação com nossa equipe e receber
 '  sugestões sobre como agir na sua campanha, responda esse email ou envie uma mensagem para #{mail_to CatarseSettings[:email_projects]}.
 br/
 br/
 | Confira nosso #{link_to 'GUIA DE REALIZADORES', guides_url} para saber mais sobre como conduzir uma campanha!
 br/
 br/
-| Lembre-se que <strong>você é o responsável por promover a campanha e cuidar da divulgação do projeto.</strong> É da sua rede que virão grande parte dos apoios! 
+| Lembre-se que <strong>você é o responsável por promover a campanha e cuidar da divulgação do projeto.</strong> É da sua rede que virão grande parte dos apoios!
 br/
 br/
 strong Uma pequena lista sobre o que pode ou não ser alterado em um projeto no ar:

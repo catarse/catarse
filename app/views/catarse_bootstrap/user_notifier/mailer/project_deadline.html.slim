@@ -4,7 +4,7 @@
 - project_link = edit_project_url(project)
 - company_name = CatarseSettings[:company_name]
 
-|Olá, #{user.display_name}!
+= render partial: 'user_notifier/mailer/greetings', locals: { user: user }
 br/
 br/
 |Essa mensagem é para avisar que em 1 semana, o projeto #{project.name} irá completar 365 dias no ar.

@@ -2,7 +2,9 @@
 - bank_account = contribution.user.bank_account
 - detail = contribution.details.ordered.first
 - company_name = CatarseSettings[:company_name]
-|Olá, #{contribution.user.display_name}!
+
+= render partial: 'user_notifier/mailer/greetings', locals: { user: contribution.user }
+
 p O seu reembolso não foi efetuado devido a algum erro em seus dados bancários preenchidos:
 p
   |Banco: #{bank_account.try(:bank).to_s}

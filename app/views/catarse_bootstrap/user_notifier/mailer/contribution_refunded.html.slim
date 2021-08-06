@@ -4,7 +4,7 @@
 - company_name = CatarseSettings[:company_name]
 - contact_email = CatarseSettings[:email_contact]
 
-|Olá, <strong>#{contribution.user.display_name}</strong>!
+= render partial: 'user_notifier/mailer/greetings', locals: { user: contribution.user }
 br/
 br/
 

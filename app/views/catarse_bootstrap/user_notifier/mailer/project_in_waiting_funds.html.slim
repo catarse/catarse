@@ -3,7 +3,7 @@
 - project_link = edit_project_url(project)
 - company_name = CatarseSettings[:company_name]
 
-| Oi #{project.user.display_name},
+= render partial: 'user_notifier/mailer/greetings', locals: { user: project.user }
 br/
 br/
 | O prazo do projeto #{link_to project.name, project_link} no #{company_name} chegou ao fim.
@@ -21,7 +21,7 @@ br/
   | Estamos a esperar o prazo para contabilizar esses apoios de última hora. Com esse processo finalizado iremos repassar o valor arrecadado para você.
 - else
   | <strong>1) Se o seu projeto já atingiu ou ultrapassou a meta:</strong>
-  '  vamos apenas esperar o prazo para contabilizar esses apoios de última hora. Com esse processo finalizado, basta 
+  '  vamos apenas esperar o prazo para contabilizar esses apoios de última hora. Com esse processo finalizado, basta
   = link_to 'repassar o valor arrecadado para você.', 'http://suporte.catarse.me/hc/pt-br/articles/202037493-Como-ser%C3%A1-feito-o-repasse-do-dinheiro-', target: '__blank'
   br/
   br/

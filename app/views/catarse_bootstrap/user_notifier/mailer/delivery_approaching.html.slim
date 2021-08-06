@@ -1,8 +1,8 @@
 - project = @notification.project
 - company_name = CatarseSettings[:company_name]
 - email_contact = CatarseSettings[:email_contact]
-
-p Olá #{project.user.display_name}!
+p
+= render partial: 'user_notifier/mailer/greetings', locals: { user: project.user }
 
 p Estamos enviando essa mensagem para te lembrar que, pela estimativa que você publicou na sua  #{link_to 'página da sua campanha', project_by_slug_url(permalink: project.permalink)}, nesse próximo mês já começam os envios das recompensas para as pessoas que contribuíram com o seu projeto!
 

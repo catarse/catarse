@@ -3,7 +3,7 @@
 - project_link = edit_project_url(project)
 - company_name = CatarseSettings[:company_name]
 
-| Uhuu, #{project.user.display_name},
+= render partial: 'user_notifier/mailer/greetings', locals: { user: project.user }
 br/
 p Parabéns pela campanha! O projeto #{link_to project.name, project_link} foi financiado \o/
 p
@@ -13,7 +13,7 @@ p
 p
   | Para fazer a solicitação de saque, basta seguir este passo-a-passo:
 p
-    | 1) Faça o login no Catarse 
+    | 1) Faça o login no Catarse
     br/
     | 2) Entre na aba <strong>#{link_to 'saldo', edit_user_url(project.user_id, anchor: 'balance',ref: 'notificacao_project_success')}</strong>, no seu perfil.
     br/
@@ -31,14 +31,14 @@ p
 br/
 br/
 
-p 
+p
   | <strong>Dúvidas frequentes:</strong>
-p 
+p
   = link_to 'Quais são as etapas e prazos do repasse?', 'http://suporte.catarse.me/hc/pt-br/articles/217916143#etapas', target: '__blank'
   br/
   = link_to 'Quando o dinheiro estará disponível na minha conta?', 'http://suporte.catarse.me/hc/pt-br/articles/217916143#quando', target: '__blank'
   br/
-  = link_to 'Como funciona a cobrança de taxa do Catarse', 'http://suporte.catarse.me/hc/pt-br/articles/217916143#taxa', target: '__blank' 
+  = link_to 'Como funciona a cobrança de taxa do Catarse', 'http://suporte.catarse.me/hc/pt-br/articles/217916143#taxa', target: '__blank'
   br/
 p
   |Confira mais detalhes sobre o processo no artigo <strong>#{link_to 'A transferência do dinheiro', 'http://suporte.catarse.me/hc/pt-br/articles/217916143', target: '__blank'}</strong>
