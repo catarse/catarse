@@ -36,9 +36,9 @@ class ContributionDetailDecorator < Draper::Decorator
     return QRCode::Renderer.as_svg(gateway_data['pix_qr_code']) if gateway_data.present?
   end
 
-  def display_pix_qr_code_base64
+  def pix_qr_code_png
     gateway_data = object.try(:gateway_data)
-    return QRCode::Renderer.as_base64_png(gateway_data['pix_qr_code']) if gateway_data.present?
+    return QRCode::Renderer.as_png(gateway_data['pix_qr_code']) if gateway_data.present?
   end
 
   def display_status

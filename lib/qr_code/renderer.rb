@@ -15,10 +15,10 @@ module QRCode
       )
     end
 
-    def self.as_base64_png(string)
+    def self.as_png(string)
       qrcode = RQRCode::QRCode.new(string)
       png = qrcode.as_png(size: 350)
-      Base64.strict_encode64 png.to_blob(:fast_rgb)
+      png.to_blob(:fast_rgb)
     end
   end
 end
