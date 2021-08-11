@@ -27,9 +27,9 @@ p Notamos que você não realizou o pagamento do PIX para o projeto #{link_to co
   br
   p Ou se preferir, abra o app ou site do seu banco e informe a chave abaixo:
   br
-  p
-    center
-      <strong>#{pix_key}</strong>
+  p(align="center" style="background-color: #F8F8F7; padding: 30px; border-radius: 10px; color: #000; margin: 20px")
+    a(href="#" style="text-decoration:none; color:#000; cursor:default")
+      strong = pix_key
   br
 
 = render partial: 'user_notifier/mailer/contact_info'
