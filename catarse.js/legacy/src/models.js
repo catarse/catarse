@@ -1,11 +1,11 @@
-import { 
-    catarse, 
-    catarseMoments, 
-    commonPayment, 
-    commonAnalytics, 
-    commonProject, 
-    commonNotification, 
-    commonRecommender, 
+import {
+    catarse,
+    catarseMoments,
+    commonPayment,
+    commonAnalytics,
+    commonProject,
+    commonNotification,
+    commonRecommender,
     commonCommunity,
     commonProxy
 } from './api';
@@ -15,6 +15,7 @@ const models = {
     recommendedProjects2: commonRecommender.model('predictions/2'),
     notificationTemplates: commonNotification.model('notification_templates'),
     userNotification: commonNotification.model('user_notifications'),
+    userNotificationWithData: commonNotification.model('user_notifications_with_data'),
     commonNotificationTemplate: commonNotification.model('rpc/notification_template'),
     projectSubscriptionsPerDay: commonAnalytics.model('project_subscriptions_per_day'),
     projectSubscribersInfo: commonAnalytics.model('rpc/project_subscribers_info'),

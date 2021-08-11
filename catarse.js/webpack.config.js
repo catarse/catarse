@@ -1,6 +1,5 @@
 const path = require('path');
 const webpack = require('webpack');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 const isProd = process.env.NODE_ENV === 'production';
 
@@ -18,7 +17,6 @@ module.exports = {
             {
                 test: /\.[jt]sx?$/,
                 exclude: /node_modules/,
-
                 use: [
                     {
                         loader: 'babel-loader',
@@ -73,11 +71,5 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
         filename: 'catarse.js',
         sourceMapFilename: 'catarse.js.map',
-    },
-    plugins: isProd ? [new UglifyJsPlugin({
-        sourceMap: true,
-        uglifyOptions: {
-            compress: false
-        }
-    })] : [],
+    }
 };

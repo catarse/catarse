@@ -61,10 +61,9 @@ const ProjectsSubscriptionThankYou = {
 
         const loadProjectAndItsUser = async () => {
             try {
-                const projectsData = await projectVM.fetchProject(projectId, false)
-                const firstProject = _.first(projectsData)
-                project(firstProject);
-                const projectUserDetails = await getUserDetailsWithUserId(firstProject.user.id)
+                const projectData = await projectVM.fetchProject(projectId, false)
+                project(projectData);
+                const projectUserDetails = await getUserDetailsWithUserId(projectData.user.id)
                 projectUser(projectUserDetails)
                 return projectUser
             } catch (error) {

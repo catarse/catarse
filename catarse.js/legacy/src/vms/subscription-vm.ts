@@ -138,6 +138,14 @@ const getNewSubscriptionsInsightsFromLast2Week = project_id => {
     return getNewSubscriptionsInsightsFromPeriod(project_id, todayMinus14Days, todayMinus7Days);
 };
 
+const getPayment = id => {
+    const params = commonPayment.filtersVM({ id: 'eq' })
+    params.id(id)
+    return commonPayment
+        .loaderWithToken(models.commonPayments.getRowOptions({}))
+        .load();
+}
+
 const subscriptionVM = {
     getNewSubscriptions,
     getSubscriptionsPerMonth,
@@ -147,7 +155,8 @@ const subscriptionVM = {
     toogleAnonymous,
     getNewSubscriptionsInsightsFromPeriod,
     getNewSubscriptionsInsightsFromLastWeek,
-    getNewSubscriptionsInsightsFromLast2Week
+    getNewSubscriptionsInsightsFromLast2Week,
+    getPayment
 };
 
 export default subscriptionVM;
