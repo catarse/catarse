@@ -58,7 +58,8 @@ const projectTabs = {
     },
     view: function({state, attrs}) {
         const project = attrs.project,
-            rewards = attrs.rewardDetails;
+            rewards = attrs.rewardDetails,
+            isSubscription = projectVM.isSubscription(project);
 
         return m('nav-wrapper', { style: attrs.style }, project() ? [
             m('.w-section.project-nav', {
@@ -72,8 +73,8 @@ const projectTabs = {
                                     style: 'float: left;',
                                     onclick: h.analytics.event({
                                         cat: 'project_view', act: 'project_rewards_view', project: project() })
-                                }, 'Recompensas') 
-                                : 
+                                }, 'Recompensas')
+                                :
                                 m(`a[id="rewards-link"][class="w-hidden-main w-hidden-medium dashboard-nav-link mf ${(h.hashMatch('#contribution_suggestions') || (h.mobileScreen() && h.hashMatch('')) ? 'selected' : '')}"][href="/${project().permalink}#contribution_suggestions"]`, {
                                     style: 'float: left;',
                                     onclick: h.analytics.event({
@@ -92,18 +93,20 @@ const projectTabs = {
                                 'Novidades ',
                                 m('span.badge', project() ? project().posts_count : '')
                             ]),
-                            m(`a[id="contributions-link"][class="w-hidden-small w-hidden-tiny dashboard-nav-link mf ${(h.hashMatch('#contributions') ? 'selected' : '')}"][href="#contributions"]`, {
-                                style: 'float: left;',
-                                onclick: h.analytics.event({
-                                    cat: 'project_view', act: 'project_contributions_view', project: project() })
-                            }, projectVM.isSubscription(project) ? [
-                                'Assinantes ',
-                                m('span.badge.w-hidden-small.w-hidden-tiny', attrs.subscriptionData() ? attrs.subscriptionData().total_subscriptions : '-')
-                            ] : [
-                                'Apoiadores ',
-                                m('span.badge.w-hidden-small.w-hidden-tiny', project() ? project().total_contributors : '-')
-                            ]
-                            ),
+                            !isSubscription ?
+                                m(`a[id="contributions-link"][class="w-hidden-small w-hidden-tiny dashboard-nav-link mf ${(h.hashMatch('#contributions') ? 'selected' : '')}"][href="#contributions"]`, {
+                                    style: 'float: left;',
+                                    onclick: h.analytics.event({
+                                        cat: 'project_view', act: 'project_contributions_view', project: project() })
+                                }, isSubscription ? [
+                                    'Assinantes ',
+                                    m('span.badge.w-hidden-small.w-hidden-tiny', attrs.subscriptionData() ? attrs.subscriptionData().total_subscriptions : '-')
+                                ] : [
+                                    'Apoiadores ',
+                                    m('span.badge.w-hidden-small.w-hidden-tiny', project() ? project().total_contributors : '-')
+                                ]
+                                )
+                            : '',
                             m(`a[id="comments-link"][class="dashboard-nav-link mf ${(h.hashMatch('#comments') ? 'selected' : '')}"][href="#comments"]`, {
                                 style: 'float: left;',
                                 onclick: h.analytics.event({
