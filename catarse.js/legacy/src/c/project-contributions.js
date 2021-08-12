@@ -102,62 +102,48 @@ const projectContributions = {
 
         return m('#project_contributions', m('#contributions_top', [
             m('.section.w-section',
-                    m('.w-container',
-                        m('.w-row', state.lContributionsStats() ? h.loader() : !_.isEmpty(stats) ? [
-                            m('.u-marginbottom-20.u-text-center-small-only.w-col.w-col-6', [
-                                m('.fontsize-megajumbo',
-                                    projectVM.isSubscription(attrs.project()) ? stats.total_subscriptions : stats.total
-                                ),
-                                m('.fontsize-large',
-                                    window.I18n.t(`people_back.${attrs.project().mode}`, I18nScope())
-                                )
-                            ]),
-                            m('.w-col.w-col-6',
-                                m('.card.card-terciary.u-radius',
-                                    m('.w-row', [
-                                        m('.u-marginbottom-20.w-col.w-sub-col.w-col-6.w-col-small-6', [
-                                            m('.fontweight-semibold.u-marginbottom-10',
-                                                window.I18n.t(`new_backers.${attrs.project().mode}`, I18nScope())
-                                            ),
-                                            m('.fontsize-largest.u-marginbottom-10',
-                                                `${Math.floor(stats.new_percent)}%`
-                                            ),
-                                            m('.fontsize-smallest',
-                                                window.I18n.t(`new_backers_explanation.${attrs.project().mode}`, I18nScope())
-                                            )
-                                        ]),
-                                        m('.w-col.w-sub-col.w-col-6.w-col-small-6', [
-                                            m('.divider.u-marginbottom-20.w-hidden-main.w-hidden-medium.w-hidden-small'),
-                                            m('.fontweight-semibold.u-marginbottom-10',
-                                                window.I18n.t(`recurring_backers.${attrs.project().mode}`, I18nScope())
-                                            ),
-                                            m('.fontsize-largest.u-marginbottom-10',
-                                                `${Math.ceil(stats.returning_percent)}%`
-                                            ),
-                                            m('.fontsize-smallest',
-                                                window.I18n.t(`recurring_backers_explanation.${attrs.project().mode}`, I18nScope())
-                                            )
-                                        ])
-                                    ])
-                                )
+                m('.w-container',
+                    m('.w-row', state.lContributionsStats() ? h.loader() : !_.isEmpty(stats) ? [
+                        m('.u-marginbottom-20.u-text-center-small-only.w-col.w-col-6', [
+                            m('.fontsize-megajumbo',
+                                projectVM.isSubscription(attrs.project()) ? stats.total_subscriptions : stats.total
+                            ),
+                            m('.fontsize-large',
+                                window.I18n.t(`people_back.${attrs.project().mode}`, I18nScope())
                             )
-                        ] : '')
-                    )
-                ),
-            m('.divider.w-section'),
-            m('.section.w-section', m('.w-container', [
-                m('.fontsize-large.fontweight-semibold.u-marginbottom-40.u-text-center', window.I18n.t(`backers.${attrs.project().mode}`, I18nScope())),
-                m('.project-contributions.w-clearfix', _.map(groupedCollection, (group, idx) => m('.w-row', _.map(group, contribution => m('.project-contribution-item.w-col.w-col-4', [
-                    m(projectContributorCard, { project: attrs.project, contribution, isSubscription: projectVM.isSubscription(attrs.project()) })
-                ]))))),
-                m('.w-row.u-marginbottom-40.u-margintop-20', [
-                    m('.w-col.w-col-2.w-col-push-5', [!list.isLoading() ?
-                            list.isLastPage() ? '' : m('button#load-more.btn.btn-medium.btn-terciary', {
-                                onclick: list.nextPage
-                            }, 'Carregar mais') : h.loader(),
-                    ])
-                ])
-            ]))
+                        ]),
+                        m('.w-col.w-col-6',
+                            m('.card.card-terciary.u-radius',
+                                m('.w-row', [
+                                    m('.u-marginbottom-20.w-col.w-sub-col.w-col-6.w-col-small-6', [
+                                        m('.fontweight-semibold.u-marginbottom-10',
+                                            window.I18n.t(`new_backers.${attrs.project().mode}`, I18nScope())
+                                        ),
+                                        m('.fontsize-largest.u-marginbottom-10',
+                                            `${Math.floor(stats.new_percent)}%`
+                                        ),
+                                        m('.fontsize-smallest',
+                                            window.I18n.t(`new_backers_explanation.${attrs.project().mode}`, I18nScope())
+                                        )
+                                    ]),
+                                    m('.w-col.w-sub-col.w-col-6.w-col-small-6', [
+                                        m('.divider.u-marginbottom-20.w-hidden-main.w-hidden-medium.w-hidden-small'),
+                                        m('.fontweight-semibold.u-marginbottom-10',
+                                            window.I18n.t(`recurring_backers.${attrs.project().mode}`, I18nScope())
+                                        ),
+                                        m('.fontsize-largest.u-marginbottom-10',
+                                            `${Math.ceil(stats.returning_percent)}%`
+                                        ),
+                                        m('.fontsize-smallest',
+                                            window.I18n.t(`recurring_backers_explanation.${attrs.project().mode}`, I18nScope())
+                                        )
+                                    ])
+                                ])
+                            )
+                        )
+                    ] : '')
+                )
+            ),
         ]),
             (projectVM.isSubscription(attrs.project()) ? '' :
             m('.before-footer.bg-gray.section.w-section', m('.w-container', [
