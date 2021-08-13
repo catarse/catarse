@@ -22,7 +22,7 @@ class Payment < ActiveRecord::Base
   end
 
   def pix_expiration_date
-    2.weekdays_from_now
+    2.days.from_now
   end
 
   def generate_key
