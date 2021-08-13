@@ -1,4 +1,4 @@
-FROM ruby:3.0.1-alpine3.13
+FROM ruby:3.0.2-alpine3.13
 
 MAINTAINER Catarse <contato@catarse.me>
 
@@ -16,7 +16,7 @@ RUN node -v
 RUN mkdir /usr/app
 WORKDIR /usr/app
 #
-RUN gem install bundler:2.2.17
+RUN gem install bundler:2.2.25
 #
 COPY Gemfile /usr/app/
 COPY Gemfile.lock /usr/app/

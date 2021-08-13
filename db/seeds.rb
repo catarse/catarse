@@ -92,10 +92,10 @@ Rails.logger.debug '---------------------------------------------'
 
 OauthProvider.all.each do |conf|
   a = conf.attributes
-  Rails.logger.debug "  name #{a['name']}"
-  Rails.logger.debug "     key: #{a['key']}"
-  Rails.logger.debug "     secret: #{a['secret']}"
-  Rails.logger.debug "     path: #{a['path']}"
+  Rails.logger.debug { "  name #{a['name']}" }
+  Rails.logger.debug { "     key: #{a['key']}" }
+  Rails.logger.debug { "     secret: #{a['secret']}" }
+  Rails.logger.debug { "     path: #{a['path']}" }
   Rails.logger.debug
 end
 
@@ -106,7 +106,7 @@ Rails.logger.debug '---------------------------------------------'
 
 CatarseSettings.all.each do |conf|
   a = conf.attributes
-  Rails.logger.debug "  #{a['name']}: #{a['value']}"
+  Rails.logger.debug { "  #{a['name']}: #{a['value']}" }
 end
 
 Rails.cache.clear
