@@ -8,15 +8,19 @@ class CreateProjectFiscalToProjectFlexAndAonAction
   end
 
   def call
-    create_project_data
+    @project_data = new_project_data
+    unless @project_data.total_amount_cents.zero? && @project_data.total_chargeback_cost_cents.zero?
+      @project_data.save!
+      @project_data
+    end
   rescue StandardError => e
     Sentry.capture_exception(e, level: :fatal)
   end
 
   private
 
-  def create_project_data
-    ProjectFiscal.create(
+  def new_project_data
+    ProjectFiscal.new(
       user_id: @project.user_id,
       project_id: @project.id,
       total_amount_cents: total_amount,
