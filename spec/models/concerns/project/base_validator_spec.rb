@@ -43,7 +43,7 @@ RSpec.describe Project::BaseValidator, type: :model do
         it { is_expected.to validate_presence_of :about_html }
         it { is_expected.to validate_presence_of :headline }
         it { is_expected.to validate_presence_of :goal }
-        it { is_expected.to validate_numericality_of(:online_days).is_less_than_or_equal_to(365).is_greater_than_or_equal_to(1).allow_nil }
+        it { is_expected.to validate_numericality_of(:online_days).is_greater_than_or_equal_to(1).allow_nil }
       end
 
       context "#{state} project relation validations" do
