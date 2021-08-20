@@ -3,7 +3,7 @@
 - contribution = @notification.contribution
 - project = contribution.project
 
-| Oi #{user.display_name},
+= render partial: 'user_notifier/mailer/greetings', locals: { user: user }
 br/
 br/
 | Vimos que você fez uma contribuição aqui no #{company_name} para o projeto #{project.name} e que o seu apoio já foi confirmado no sistema. Apesar disso, notamos que <strong>você não informou todos seus dados</strong> no momento do apoio. O preenchimento do <strong>nome</strong>, <strong>CPF</strong> e do <strong>endereço completo (!)</strong> é fundamental para garantir a <strong>segurança do apoio, o controle do realizador</strong> e a <strong>entrega de recompensas.</strong>

@@ -3,7 +3,7 @@
 - bank_account = user.bank_account
 - company_name = CatarseSettings[:company_name]
 
-| Olá #{user.display_name},
+= render partial: 'user_notifier/mailer/greetings', locals: { user: user }
 br/
 br/
 | O pedido de saque do dinheiro foi registrado no nosso sistema e o processo de transferência já está <strong>em andamento.</strong> :-)
@@ -32,11 +32,11 @@ p
   | <strong>Saiba mais sobre o processo de transferência nos artigos listados abaixo:</strong>
 p
   strong
-    | Para realizadores: 
+    | Para realizadores:
   = link_to 'A transferência do dinheiro', 'http://suporte.catarse.me/hc/pt-br/articles/217916143-A-transfer%C3%AAncia-do-dinheiro', target: '__blank'
 p
   strong
-    | Para apoiadores: 
+    | Para apoiadores:
   = link_to 'Regras e funcionamento dos reembolsos / estornos / cancelamentos', 'http://suporte.catarse.me/hc/pt-br/articles/202365507', target: '__blank'
 br/
 

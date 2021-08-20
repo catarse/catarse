@@ -2,7 +2,8 @@
 - detail = contribution.details.ordered.first
 - company_name = CatarseSettings[:company_name]
 - contact_email = CatarseSettings[:email_contact]
-|Olá, <strong>#{contribution.user.display_name}</strong>!
+
+= render partial: 'user_notifier/mailer/greetings', locals: { user: contribution.user }
 br
 br
 | Seu reembolso foi realizado com sucesso e o pagamento para o projeto #{link_to contribution.project.name, project_by_slug_url(permalink: contribution.project.permalink)}, cancelado.

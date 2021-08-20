@@ -4,7 +4,7 @@
 - company_name = CatarseSettings[:company_name]
 - contact_email = CatarseSettings[:email_contact]
 
-|Olá, <strong>#{contribution.user.display_name}</strong>!
+= render partial: 'user_notifier/mailer/greetings', locals: { user: contribution.user }
 br
 br
 |Nós reembolsamos o seu apoio referente ao projeto #{contribution.project.name} aqui no #{company_name} . O crédito efetivo deverá acontecer na fatura vigente, caso ela ainda esteja em aberto, ou na subsequente, caso a desse mês já esteja fechada.

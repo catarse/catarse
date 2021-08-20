@@ -2,7 +2,7 @@
 - user = project.user
 - edit_url = edit_project_url(project.id, anchor: 'user_settings')
 
-| Oi #{user.decorator.display_name},
+= render partial: 'user_notifier/mailer/greetings', locals: { user: user.decorator }
 br/
 br/
 | Detectamos que existem erro(s) ou ausência de preenchimento em algum(s) dos campos obrigatórios do seu projeto. Para que não isso não atrase <a href="http://suporte.catarse.me/hc/pt-br/articles/217916143-tudo-sobre-REPASSE#etapas" target="blank">os processos de finalização da campanha</a>, <strong>precisamos que você corrija esse(s) campo(s) o mais rápido possível.</strong>

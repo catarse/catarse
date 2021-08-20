@@ -3,7 +3,8 @@
 - company_name = CatarseSettings[:company_name]
 - contact_email = CatarseSettings[:email_contact]
 
-p Olá, <strong>#{user.display_name}</strong>!
+p
+= render partial: 'user_notifier/mailer/greetings', locals: { user: user }
 
 p Muito obrigado! A sua doação é essencial para mantermos independente e livre esse vibrante ecossistema de viabilizacão de projetos que é o Catarse. Dessa forma você ajuda a gente a investir em inovação, a seguir firme na missão de democratizar o financiamento coletivo no Brasil e a tornar a prática um hábito no país.
 p Seguem todos os dados da doação:

@@ -4,7 +4,7 @@
 - project_link = project_by_slug_url(permalink: project.permalink)
 - company_name = CatarseSettings[:company_name]
 
-| Olá, <strong>#{project.user.decorate.display_name}</strong>!
+= render partial: 'user_notifier/mailer/greetings', locals: { user: project.user.decorate }
 br
 br
 | Nas últimas 24 horas de campanha, seu projeto recebeu #{link_to "#{confirmed_contributions_today.length} novos apoios", contributions_report_project_url(project)}, parabéns!
@@ -32,6 +32,6 @@ table width="500" border="1" cellpadding="10" cellspacing="0" style='font-size: 
         td= contribution.reward.try(:decorate).try(:display_description)
 br/
 br/
-|Lembrando que você pode baixar os #{link_to 'relatórios de apoios', contributions_report_project_url(project)} a qualquer momento. 
+|Lembrando que você pode baixar os #{link_to 'relatórios de apoios', contributions_report_project_url(project)} a qualquer momento.
 
 = render partial: 'user_notifier/mailer/contact_info'

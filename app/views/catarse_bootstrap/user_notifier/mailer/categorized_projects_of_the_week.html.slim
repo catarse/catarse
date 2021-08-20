@@ -1,7 +1,7 @@
 - user = @notification.user
 - category = @notification.category
 
-| Olá #{user.display_name},
+= render partial: 'user_notifier/mailer/greetings', locals: { user: user }
 br/
 br/
 | Novidades dessa semana na categoria #{category.name_pt} do Catarse

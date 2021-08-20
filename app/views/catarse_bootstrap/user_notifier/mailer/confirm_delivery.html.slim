@@ -1,7 +1,8 @@
 - contribution ||= @notification.contribution
 - owner = contribution.project.user
 
-p Olá, <strong>#{contribution.user.display_name}</strong>!
+p
+= render partial: 'user_notifier/mailer/greetings', locals: { user: contribution.user }
 
 p Há duas semanas, #{contribution.project.user.display_name} mandou um comunicado dizendo que já havia enviado sua recompensa do projeto #{contribution.project.name}.
 

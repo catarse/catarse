@@ -2,12 +2,12 @@
 
 - company_name = CatarseSettings[:company_name]
 
-| Oi #{user.display_name},
+= render partial: 'user_notifier/mailer/greetings', locals: { user: user }
 br/
 p
   | Ocorreu um <strong>erro na na transferência</strong> para sua conta bancária.
 p
-  | Para que possamos transferir novamente, precisamos que você <strong>corrija os seus dados bancários</strong> e <strong>solicite o saque</strong> através da plataforma. 
+  | Para que possamos transferir novamente, precisamos que você <strong>corrija os seus dados bancários</strong> e <strong>solicite o saque</strong> através da plataforma.
 p
   | Você pode fazer isso agora mesmo, basta seguir esses passos:
 p
