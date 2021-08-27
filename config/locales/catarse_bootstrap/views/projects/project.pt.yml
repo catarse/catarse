@@ -58,7 +58,7 @@ pt:
           image: 'https://s3.amazonaws.com/cdn.catarse/assets/banner-home-landing-publicacoes.jpg'                
     new_feature_badge: 'Novidade'
     posts:
-      empty: '<span class="fontweight-semibold">%{project_user_name}</span> ainda não publicou nenhuma novidade. <a href="/projects/%{project_id}/contributions/new" class="alt-link">Faça um apoio</a> e receba em seu email todas as notícias do projeto assim que elas forem publicadas!'
+      empty: 'Este projeto ainda não publicou nenhuma novidade. <a href="/projects/%{project_id}/contributions/new" class="alt-link">Faça um apoio</a> e receba em seu email todas as notícias do projeto assim que elas forem publicadas!'
     publish:
       aon: 'Tudo ou nada'
       sub: 'Assinatura'
