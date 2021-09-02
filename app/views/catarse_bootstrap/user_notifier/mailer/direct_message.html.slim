@@ -3,7 +3,7 @@
 - project = Project.find message.project_id
 - message_origin_name = message.data['page_title'].present? && message.data['page_title'].length > 0 ? message.data['page_title'] : message.data['page_url']
 
-|Olá <strong>#{to_user.try(:display_name)}</strong>
+= render partial: 'user_notifier/mailer/greetings', locals: { user: to_user }
 br
 
 |Você recebeu uma nova mensagem de #{link_to message.user.try(:display_name), user_url(message.user)}  a partir da página #{link_to(message_origin_name, message.data['page_url'], target: :_blank) }, referente ao projeto #{link_to project.name, project_url(project)}:

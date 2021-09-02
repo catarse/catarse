@@ -5,13 +5,10 @@
 
 
 h2 style="text-align:center; line-height: 45px;"
-  - if contribution.user.display_name
-    |Olá, <strong>#{contribution.user.display_name}</strong>!
-  - else
-    |Olá!
+= render partial: 'user_notifier/mailer/greetings', locals: { user: contribution.user }
 
 br/
-| #{project.user.display_name} precisa confirmar algumas informações para realizar a entrega da sua recompensa ao projeto #{project.name}!
+| #{project.user.public_name || project.user.name} precisa confirmar algumas informações para realizar a entrega da sua recompensa ao projeto #{project.name}!
 
 p Relembrando as informações do seu apoio:
 

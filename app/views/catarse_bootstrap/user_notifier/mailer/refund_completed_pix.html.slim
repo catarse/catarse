@@ -5,7 +5,7 @@
 - user = @notification.contribution.user
 - bank_account = user.bank_account
 
-|Olá, <strong>#{contribution.user.display_name}</strong>!
+= render partial: 'user_notifier/mailer/greetings', locals: { user: contribution.user }
 br
 br
 |A devolução do valor do seu apoio para o projeto #{contribution.project.name} no #{company_name} acabou de ser realizada para a conta bancária:
