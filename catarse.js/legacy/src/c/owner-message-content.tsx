@@ -76,9 +76,9 @@ const ownerMessageContent = {
                 m('.fa.fa-check-circle.fa-5x.text-success.u-marginbottom-40'),
                 m(
                     'p.fontsize-large',
-                    `Sua mensagem foi enviada com sucesso para ${
-                        state.userDetails.name
-                    }. Você vai receber uma cópia no seu email e pode seguir a conversa por lá!`
+                    `Enviamos um email para ${
+                        state.userDetails.public_name || state.userDetails.name
+                    } com a sua mensagem. Agora é aguardar pela resposta e seguir a conversa pelo email.`
                 ),
             ]),
             contactForm = [
@@ -127,7 +127,6 @@ const ownerMessageContent = {
                                     onchange: m.withAttr('value', state.content),
                                     class: h.validate().hasError(state.content) ? 'error' : '',
                                 }),
-                                m('.u-marginbottom-10.fontsize-smallest.fontcolor-terciary', 'Você receberá uma cópia desta mensagem em seu email.'),
                                 m(
                                     '.w-row',
                                     h.validationErrors().length
