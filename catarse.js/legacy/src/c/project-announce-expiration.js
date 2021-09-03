@@ -34,7 +34,7 @@ const projectAnnounceExpiration = {
                                                 'Em quantos dias, contados a partir de agora, você quer encerrar a sua arrecadação?',
                                                 m('br'),
                                                 m('span.fontsize-smaller.fontweight-semibold',
-                                                    '(mínimo de 2 dias)'
+                                                    '(mínimo de 1 dia)'
                                                 )
                                             ])
                                         ),
