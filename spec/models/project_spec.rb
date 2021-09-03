@@ -177,7 +177,7 @@ RSpec.describe Project, type: :model do
       context 'flex project' do
         subject { create(:project, state: 'online', online_days: 365, mode: 'flex') }
 
-        it { is_expected.not_to allow_value(366).for(:online_days) }
+        it { is_expected.to allow_value(366).for(:online_days) }
       end
     end
   end

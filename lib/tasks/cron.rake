@@ -102,17 +102,6 @@ namespace :cron do
     end
   end
 
-  desc 'Notify projects with no deadline 1 week before max deadline'
-  task notify_owners_of_deadline: :environment do
-    Project.with_state(:online).where(online_days: nil).where("current_timestamp > online_at(projects.*) + '358 days'::interval").find_each(batch_size: 20) do |project|
-      project.notify_once(
-        'project_deadline',
-        project.user,
-        project
-      )
-    end
-  end
-
   desc 'Notify who have not answered the survey after a week'
   task notify_unanswered_surveys: :environment do
     Survey.where(finished_at: nil).each do |survey|

@@ -4,8 +4,8 @@ class FlexibleProject < Project
   FINAL_LAP_INTERVAL = 7
   include Project::BaseValidator
 
-  validates_numericality_of :online_days, less_than_or_equal_to: 365, greater_than_or_equal_to: 1,
-                                          if: ->(p) { p.online_days.present? && (p.online_days_was.nil? || p.online_days_was <= 365) }
+  validates_numericality_of :online_days, greater_than_or_equal_to: 1,
+                                          if: ->(p) { p.online_days.present? && p.online_days_was.nil? }
 
   scope :without_expiration, -> { where(expires_at: nil) }
   scope :with_expiring_rewards, -> { without_expiration.with_state(:online).where('EXISTS(SELECT true from rewards r WHERE r.project_id = projects.id AND r.deliver_at < (current_timestamp + \'1 month\'::interval))') }
@@ -33,10 +33,6 @@ class FlexibleProject < Project
   def update_expires_at
     return unless online_days.present? && online_at.present?
     self.expires_at = ((state_was == 'online' ? Time.current : online_at.in_time_zone) + online_days.days).end_of_day
-  end
-
-  def max_deadline
-    online_at + 365.days
   end
 
   def expired?
