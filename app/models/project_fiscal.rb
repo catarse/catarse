@@ -12,4 +12,8 @@ class ProjectFiscal < ApplicationRecord
   monetize :total_amount_cents, numericality: { greater_than_or_equal_to: 1 }
   monetize :total_catarse_fee_cents, numericality: { greater_than_or_equal_to: 1 }
   monetize :total_gateway_fee_cents, numericality: { greater_than_or_equal_to: 1 }
+
+  def total_debit_invoice
+    total_catarse_fee_cents - total_gateway_fee_cents - total_antifraud_fee_cents
+  end
 end
