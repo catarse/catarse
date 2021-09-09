@@ -802,5 +802,23 @@ RSpec.describe AonProjectMachine, type: :model do
         end
       end
     end
+
+    context '#after_transaction' do
+      before do
+        project.state_machine.transition_to!(:online)
+        contribution = create(:confirmed_contribution, value: 10, project: project)
+        contribution.payments.last.update(created_at: Time.zone.now - 1.month)
+        create(:antifraud_analysis, payment: contribution.payments.last, created_at: Time.zone.now - 1.month)
+
+        allow(project).to receive(:expired?).and_return(true)
+        allow(project).to receive(:in_time_to_wait?).and_return(false)
+        allow(project).to receive(:reached_goal?).and_return(true)
+        project.state_machine.transition_to!(:successful)
+      end
+
+      it 'create project fiscal' do
+        expect(ProjectFiscal.last.attributes['project_id']).to eq(project.id)
+      end
+    end
   end
 end

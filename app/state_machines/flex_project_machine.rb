@@ -90,6 +90,7 @@ class FlexProjectMachine
 
     after_transition(to: :successful) do |project|
       BalanceTransaction.insert_successful_project_transactions(project.id)
+      CreateProjectFiscalToProjectFlexAndAonAction.new(project_id: project.id).call
     end
 
     after_transition(after_commit: true, to: :deleted) do |project|

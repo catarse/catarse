@@ -259,4 +259,21 @@ RSpec.describe FlexProjectMachine, type: :model do
       it { subject.finish }
     end
   end
+
+  context '#after_transaction' do
+    before do
+      flexible_project.state_machine.transition_to!(:online)
+      contribution = create(:confirmed_contribution, value: 10, project: flexible_project)
+      contribution.payments.last.update(created_at: Time.zone.now - 1.month)
+      create(:antifraud_analysis, payment: contribution.payments.last, created_at: Time.zone.now - 1.month)
+
+      allow(flexible_project).to receive(:expired?).and_return(true)
+      allow(flexible_project).to receive(:in_time_to_wait?).and_return(false)
+      flexible_project.state_machine.transition_to!(:successful)
+    end
+
+    it 'create project fiscal' do
+      expect(ProjectFiscal.last.attributes['project_id']).to eq(flexible_project.id)
+    end
+  end
 end

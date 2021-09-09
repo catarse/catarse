@@ -238,6 +238,26 @@ namespace :cron do
     end
   end
 
+  desc 'create project fiscal to project flex and aon'
+  task create_project_fiscal_to_project_flex_and_aon: :environment do
+    Project.joins(:project_fiscals).where(mode: %i[aon flex], state: %i[waiting_funds successful])
+      .where("project_fiscals.end_date > ?", Time.zone.now - 2.months).each do |project|
+        CreateProjectFiscalToProjectFlexAndAonAction.new(project_id: project.id).call
+    end
+  end
+
+  desc 'create project fiscal to project sub'
+  task create_project_fiscal_to_project_sub: :environment do
+    Project.where(mode: %i[sub], state: %i[online]).each do |project|
+      CreateProjectFiscalToProjectSubAction.new(project_id: project.id, month: Time.zone.now.month, year: Time.zone.now.year).call
+    end
+
+    Project.joins(:project_fiscals).where(mode: %i[sub], state: %i[successful])
+      .where("project_fiscals.end_date > ?", Time.zone.now - 2.months).each do |project|
+        CreateProjectFiscalToProjectSubAction.new(project_id: project.id, month: Time.zone.now.month, year: Time.zone.now.year).call
+    end
+  end
+
   desc 'sync FB friends'
   task sync_fb_friends: [:environment] do
     Authorization.where("last_token is not null and updated_at >= current_timestamp - '24 hours'::interval").each do |authorization|

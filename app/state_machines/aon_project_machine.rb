@@ -21,5 +21,9 @@ class AonProjectMachine < FlexProjectMachine
     guard_transition(to: :successful) do |project|
       project.reached_goal?
     end
+
+    after_transition(to: :successful) do |project|
+      CreateProjectFiscalToProjectFlexAndAonAction.new(project_id: project.id).call
+    end
   end
 end
