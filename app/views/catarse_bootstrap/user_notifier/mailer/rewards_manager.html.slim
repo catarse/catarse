@@ -2,14 +2,16 @@
 
 - project_link = contributions_report_project_url(project)
 
-p Olá #{project.user.name}!
-p Na semana passada, lançamos uma novidade: agora você pode <strong>controlar o envio das recompensas</strong> diretamente no <strong>Relatório de Apoios</strong> do seu projeto. Nosso objetivo é facilitar o seu controle de entregas e ter feedbacks sobre o status das contrapartidas prometidas a seus apoiadores.  
+p
+= render partial: 'user_notifier/mailer/greetings', locals: { user: project.user }
+
+p Na semana passada, lançamos uma novidade: agora você pode <strong>controlar o envio das recompensas</strong> diretamente no <strong>Relatório de Apoios</strong> do seu projeto. Nosso objetivo é facilitar o seu controle de entregas e ter feedbacks sobre o status das contrapartidas prometidas a seus apoiadores.
 
 p No entanto, muitos realizadores ainda não marcaram suas recompensas como enviadas. Gostaríamos de reforçar o pedido para preencherem essa informação, que é fundamental para desenvolver um ambiente confiável para o financiamento coletivo no Brasil.
 /br
 p Veja como é fácil e simples controlar suas entregas:
 = image_tag 'http://recordit.co/UrTAmpQ8kL.gif', width: '600'
 br/
-p Acesse o #{link_to 'Relatório de Apoios', project_link} do seu projeto e atualize o status das entregas das suas recompensas. 
+p Acesse o #{link_to 'Relatório de Apoios', project_link} do seu projeto e atualize o status das entregas das suas recompensas.
 
 = render partial: 'user_notifier/mailer/contact_info'

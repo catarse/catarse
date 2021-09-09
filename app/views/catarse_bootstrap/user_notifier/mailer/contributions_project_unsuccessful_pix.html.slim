@@ -3,7 +3,7 @@
 - user = @notification.contribution.user
 - bank_account = user.bank_account
 
-|Olá, #{contribution.user.display_name}!
+= render partial: 'user_notifier/mailer/greetings', locals: { user: contribution.user }
 br
 br
 | Infelizmente o projeto #{link_to(contribution.project.name, project_by_slug_url(permalink: contribution.project.permalink))} que você apoiou não atingiu a meta estabelecida no #{CatarseSettings[:company_name]}.

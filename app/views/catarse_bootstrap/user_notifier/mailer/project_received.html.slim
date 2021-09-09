@@ -4,15 +4,15 @@
 - project_link = edit_project_url(project)
 - company_name = CatarseSettings[:company_name]
 
-|Olá, #{user.name}!
+= render partial: 'user_notifier/mailer/greetings', locals: { user: user }
 br/
 br/
-| Obrigado por iniciar o processo de inscrição de um projeto no #{company_name}! 
+| Obrigado por iniciar o processo de inscrição de um projeto no #{company_name}!
 br/
-| Saiba que recebemos sua inscrição! 
+| Saiba que recebemos sua inscrição!
 br/
 br/
-| Você acabou de criar a página de rascunho do projeto #{link_to project.name, project_link} no #{company_name}. 
+| Você acabou de criar a página de rascunho do projeto #{link_to project.name, project_link} no #{company_name}.
 br/
 br/
 strong É hora de trabalhar na apresentação do seu projeto!
@@ -35,8 +35,8 @@ br/
 | Se ficou com alguma dúvida, responda a esta mensagem ou envie um email para #{mail_to CatarseSettings[:email_projects]}
 br/
 br/
-| E por falar nisso, por favor <strong>não esqueça de incluir na sua lista de contatos os e-mails:</strong> 
-| #{mail_to CatarseSettings[:email_projects]} e #{mail_to CatarseSettings[:email_contact]} para evitar que nossas mensagens caiam na sua caixa de spam devido a filtros do seu email. 
+| E por falar nisso, por favor <strong>não esqueça de incluir na sua lista de contatos os e-mails:</strong>
+| #{mail_to CatarseSettings[:email_projects]} e #{mail_to CatarseSettings[:email_contact]} para evitar que nossas mensagens caiam na sua caixa de spam devido a filtros do seu email.
 br/
 br/
 | Um abraço,

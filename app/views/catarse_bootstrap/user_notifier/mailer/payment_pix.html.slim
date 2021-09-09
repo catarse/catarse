@@ -4,7 +4,8 @@
 - details = contribution.details.ordered.first
 - attachments.inline['pix_qrcode.png'] = details.decorate.pix_qr_code_png if respond_to? :attachments
 
-p Olá, <strong>#{contribution.user.display_name}</strong> !
+p
+= render partial: 'user_notifier/mailer/greetings', locals: { user: contribution.user }
 
 p O seu código PIX para apoiar o projeto #{link_to(contribution.project.name, project_by_slug_url(permalink: contribution.project.permalink))} foi gerado com sucesso! Você tem até o dia #{expiry_date} para efetuar o pagamento.
 

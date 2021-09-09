@@ -1,9 +1,8 @@
 - user = @notification.user
 
 h2 style="text-align:center; line-height: 45px;"
-  | Olá
-  - if user.display_name
-    | , #{user.display_name}!
+
+= render partial: 'user_notifier/mailer/greetings', locals: { user: user }
   br/
   | Bem-vindo(a) ao Catarse!
 br/

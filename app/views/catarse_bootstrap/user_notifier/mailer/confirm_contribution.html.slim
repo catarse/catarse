@@ -4,11 +4,7 @@
 - first_contribution = (total_contributors == 1)
 
 h2 style="text-align:center; line-height: 45px;"
-  - if contribution.user.display_name
-    | Olá, <strong>#{contribution.user.display_name}</strong>!
-  - else
-    | Olá!
-
+= render partial: 'user_notifier/mailer/greetings', locals: { user: contribution.user }
 br/
 
 | Seu apoio para o projeto #{link_to(contribution.project.name, project_by_slug_url(permalink: project.permalink, ref: 'confirm_contribution_notification',utm_source:'notification',utm_medium:'email',utm_campaign:'confirm_contribution_link',utm_content:contribution.project.name))} foi confirmado com sucesso!

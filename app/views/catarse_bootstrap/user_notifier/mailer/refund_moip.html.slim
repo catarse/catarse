@@ -1,5 +1,6 @@
 - user = @notification.user
-|Olá #{user.name}, tudo bem?
+= render partial: 'user_notifier/mailer/greetings', locals: { user: user }
+| Tudo bem?
 br
 |Sabe quando você acha aquela nota de dinheiro no bolso de uma calça que não usava faz tempo? Pois esse e-mail é pra relembrarmos essa gostosa sensação. =D
 br

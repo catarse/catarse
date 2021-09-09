@@ -1,6 +1,6 @@
 - user = @notification.user
 
-| Olá #{user.name},
+= render partial: 'user_notifier/mailer/greetings', locals: { user: user }
 br/
 br/
 | No início desse ano anunciamos nossa parceria com o primeiro serviço de streaming de quadrinhos do Brasil: o Social Comics!

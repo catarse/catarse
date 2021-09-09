@@ -4,7 +4,8 @@
 - details = contribution.details.ordered.first
 - attachments.inline['pix_qrcode.png'] = details.decorate.pix_qr_code_png if respond_to? :attachments
 
-p Olá, <strong>#{contribution.user.display_name}</strong>!
+p
+= render partial: 'user_notifier/mailer/greetings', locals: { user: contribution.user }
 
 p Notamos que você não realizou o pagamento do PIX para o projeto #{link_to contribution.project.name, project_by_slug_url(contribution.project.permalink, {ref: 'notificacao_cancelado',utm_source:'notification',utm_medium:'email',utm_campaign:'contribution_canceled_pix_link',utm_content:contribution.project.name})}.
 
