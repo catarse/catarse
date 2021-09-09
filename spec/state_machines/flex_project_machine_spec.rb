@@ -265,6 +265,7 @@ RSpec.describe FlexProjectMachine, type: :model do
       flexible_project.state_machine.transition_to!(:online)
       contribution = create(:confirmed_contribution, value: 10, project: flexible_project)
       contribution.payments.last.update(created_at: Time.zone.now - 1.month)
+      contribution.user.update(account_type: 'pf')
       create(:antifraud_analysis, payment: contribution.payments.last, created_at: Time.zone.now - 1.month)
 
       allow(flexible_project).to receive(:expired?).and_return(true)

@@ -3,14 +3,14 @@
 require 'rails_helper'
 
 RSpec.describe CreateProjectFiscalToProjectSubAction, type: :action do
-  let(:value) { 10 }
+  let(:value) { 700 }
 
   describe '#call' do
     subject(:result) do
       described_class.new(
         project_id: subscription_project.id,
-        month: Time.zone.now.month,
-        year: Time.zone.now.year
+        month: 6,
+        year: 2020
       ).call
     end
 
@@ -18,8 +18,9 @@ RSpec.describe CreateProjectFiscalToProjectSubAction, type: :action do
     let(:contribution) do
       [
         create(:confirmed_contribution, value: value, project: subscription_project),
+        create(:confirmed_contribution, value: value, project: subscription_project),
         create(:confirmed_contribution, value: value, project: subscription_project,
-          created_at: Time.zone.now - 2.months
+          created_at: '04/04/2020'.to_date
         ),
         create(:contribution, value: value, project: subscription_project)
       ]
@@ -27,30 +28,42 @@ RSpec.describe CreateProjectFiscalToProjectSubAction, type: :action do
     let!(:payment) do
       [
         contribution[0].payments.last,
-        create(:payment, state: 'chargeback', contribution: contribution[2], value: value)
+        contribution[1].payments.last,
+        contribution[2].payments.last,
+        create(:payment, state: 'chargeback', contribution: contribution[3],
+          value: value, created_at: '04/06/2020'.to_date
+        )
       ]
     end
     let!(:antifraud) do
       [
-        create(:antifraud_analysis, payment: payment[0]),
-        create(:antifraud_analysis, payment: payment[1])
+        create(:antifraud_analysis, payment: payment[0], created_at: '28/06/2020'.to_date),
+        create(:antifraud_analysis, payment: payment[1], created_at: '11/06/2020'.to_date),
+        create(:antifraud_analysis, payment: payment[2], created_at: '04/04/2020'.to_date),
+        create(:antifraud_analysis, payment: contribution[3].payments.last, created_at: '06/06/2020'.to_date)
       ]
     end
 
     before do
-      contribution[1].payments.last.update(created_at: Time.zone.now - 2.months)
-      create(:antifraud_analysis, payment: contribution[1].payments.last, created_at: Time.zone.now - 2.months)
+      contribution[0].user.update(account_type: 'pj')
+      contribution[1].user.update(account_type: 'pf')
+      contribution[0].payments.last.update(created_at: '21/06/2020'.to_date)
+      contribution[1].payments.last.update(created_at: '07/06/2020'.to_date)
+      contribution[2].payments.last.update(created_at: '04/04/2020'.to_date)
     end
 
     it 'returns project fiscals attributes' do
       expect(result.attributes).to include(
         'user_id' => subscription_project.user_id,
         'project_id' => subscription_project.id,
-        'total_amount_cents' => payment[0].value.to_i,
-        'total_catarse_fee_cents' => (subscription_project.service_fee * payment[0].value).to_i,
-        'total_gateway_fee_cents' => payment[0].gateway_fee.to_i,
-        'total_antifraud_fee_cents' => antifraud[0].cost.to_i,
-        'total_chargeback_cost_cents' => (payment[1].gateway_fee + antifraud[1].cost).to_i
+        'total_irrf_cents' => (0.015 * (payment[1].value * 100)).to_i,
+        'total_amount_to_pj_cents' => payment[0].value.to_i * 100,
+        'total_amount_to_pf_cents' => payment[1].value.to_i * 100,
+        'total_catarse_fee_cents' => (subscription_project.service_fee * (payment[0].value +
+          payment[1].value)).to_i * 100,
+        'total_gateway_fee_cents' => (payment[0].gateway_fee + payment[1].gateway_fee).to_i * 100,
+        'total_antifraud_fee_cents' => (antifraud[0].cost + antifraud[1].cost).to_i * 100,
+        'total_chargeback_cost_cents' => (payment[2].gateway_fee + antifraud[2].cost).to_i * 100
       )
     end
   end

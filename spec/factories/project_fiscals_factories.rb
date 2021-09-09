@@ -5,7 +5,9 @@ FactoryBot.define do
     association :project
     association :user
     metadata { {} }
-    total_amount_cents { Faker::Number.number(digits: 4) }
+    total_irrf_cents { Faker::Number.number(digits: 4) }
+    total_amount_to_pf_cents { Faker::Number.number(digits: 4) }
+    total_amount_to_pj_cents { Faker::Number.number(digits: 4) }
     total_catarse_fee_cents { Faker::Number.number(digits: 4) }
     total_gateway_fee_cents { Faker::Number.number(digits: 4) }
     total_antifraud_fee_cents { Faker::Number.number(digits: 4) }
