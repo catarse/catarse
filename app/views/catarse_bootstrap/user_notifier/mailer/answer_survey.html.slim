@@ -5,10 +5,10 @@
 
 
 h2 style="text-align:center; line-height: 45px;"
-= render partial: 'user_notifier/mailer/greetings', locals: { user: contribution.user }
+| Olá!
 
 br/
-| #{project.user.public_name || project.user.name} precisa confirmar algumas informações para realizar a entrega da sua recompensa ao projeto #{project.name}!
+| #{project.user.display} precisa confirmar algumas informações para realizar a entrega da sua recompensa ao projeto #{project.name}!
 
 p Relembrando as informações do seu apoio:
 

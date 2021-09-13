@@ -2,7 +2,7 @@
 - company_name = CatarseSettings[:company_name]
 - contact_email = CatarseSettings[:email_contact]
 
-= render partial: 'user_notifier/mailer/greetings', locals: { user: contribution.user }
+| Olá!
 br
 | Lamentamos informar que não foi possível processar seu pagamento e seu apoio ao projeto #{link_to contribution.project.name, project_by_slug_url(permalink: contribution.project.permalink, ref: 'notificacao_cancelado',utm_source:'notification',utm_medium:'email',utm_campaign:'contribution_canceled_link',utm_content:contribution.project.name)} foi cancelado.
 br

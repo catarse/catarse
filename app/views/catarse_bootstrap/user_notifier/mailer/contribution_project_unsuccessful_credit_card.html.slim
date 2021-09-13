@@ -1,7 +1,7 @@
 - contribution = @notification.contribution
 - details = contribution.details.first
 
-= render partial: 'user_notifier/mailer/greetings', locals: { user: contribution.user }
+| Olá!
 br
 br
 | Infelizmente o projeto #{link_to(contribution.project.name, project_by_slug_url(permalink: contribution.project.permalink))} que você apoiou não atingiu a meta estabelecida no #{CatarseSettings[:company_name]}.

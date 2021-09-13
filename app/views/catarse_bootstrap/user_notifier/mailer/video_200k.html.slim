@@ -1,8 +1,8 @@
 = link_to 'https://www.youtube.com/watch?v=CRqXvKk5A1Q', target: :blank do
   img src="https://s3.amazonaws.com/catarse.files/video.jpg"
 
-p
-= render partial: 'user_notifier/mailer/greetings', locals: { user: @notification.user }
+p Olá!
+
 
 p
   'Você é o apoiador número <strong>#{@notification.user.contributor_number}</strong>

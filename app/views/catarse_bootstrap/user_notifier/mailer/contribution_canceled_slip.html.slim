@@ -2,8 +2,8 @@
 - company_name = CatarseSettings[:company_name]
 - contact_email = CatarseSettings[:email_contact]
 
-p
-= render partial: 'user_notifier/mailer/greetings', locals: { user: contribution.user }
+p Olá!
+
 p
   | Notamos que você não realizou o pagamento do boleto para o projeto #{link_to contribution.project.name, project_by_slug_url(permalink: contribution.project.permalink, ref: 'notificacao_cancelado',utm_source:'notification',utm_medium:'email',utm_campaign:'contribution_canceled_slip_link',utm_content:contribution.project.name)}.
 p Como o prazo de pagamento já venceu, enviamos abaixo a 2ª via do boleto para que você possa finalizar o seu apoio. :-)

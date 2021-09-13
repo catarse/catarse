@@ -2,8 +2,7 @@
 - first_deliver = project.rewards.order(:deliver_at).first.deliver_at.try(:strftime, '%m/%Y')
 - email_contact = CatarseSettings[:email_contact]
 
-p
-= render partial: 'user_notifier/mailer/greetings', locals: { user: project.user }
+p Olá!
 
 p Em seu projeto #{project.name} você ofereceu recompensas com estimativa de entrega para #{first_deliver}, porém ainda não marcou suas recompensas como enviadas para os seus apoiadores.
 

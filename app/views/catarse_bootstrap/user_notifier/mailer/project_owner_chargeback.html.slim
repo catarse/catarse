@@ -9,7 +9,7 @@
 - value_without_fee = (contribution.value - (contribution.value * project.service_fee))
 - fmt_value_without_fee = number_to_currency(value_without_fee, precision: 2)
 
-= render partial: 'user_notifier/mailer/greetings', locals: { user: project.user }
+| Olá!
 br/
 p
   | O apoiador #{contributor.display_name} contestou o apoio para o seu projeto junto à operadora de cartão de crédito.

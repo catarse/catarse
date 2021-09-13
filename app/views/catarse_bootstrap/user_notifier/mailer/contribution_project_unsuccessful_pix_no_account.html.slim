@@ -3,8 +3,7 @@
 - project = contribution.project
 - detail = contribution.details.ordered.first
 - company_name = CatarseSettings[:company_name]
-p
-= render partial: 'user_notifier/mailer/greetings', locals: { user: contribution.user }
+p Olá!
 p
   |O projeto #{link_to(contribution.project.name, project_by_slug_url(permalink: contribution.project.permalink))} não atingiu a meta de arrecadação estabelecida e, segundo as regras do Catarse, o seu apoio no valor de #{number_to_currency detail.value} ao projeto #{contribution.project.name} será devolvido a você.
 p

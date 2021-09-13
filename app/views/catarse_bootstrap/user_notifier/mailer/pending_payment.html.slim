@@ -1,6 +1,6 @@
 - contribution = @notification.contribution
 
-= render partial: 'user_notifier/mailer/greetings', locals: { user: contribution.user }
+| Olá!
 br
 br
 ' Verificamos que você iniciou um apoio para o projeto #{link_to contribution.project.name, project_by_slug_url(permalink: contribution.project.permalink, ref: 'notificacao_pending',utm_source:'notification',utm_medium:'email',utm_campaign:'pending_payment_link',utm_content:contribution.project.name)},

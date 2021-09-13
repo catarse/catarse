@@ -2,8 +2,7 @@
 - expire_date = contribution.payments.last.gateway_data.try(:[], "boleto_expiration_date").try(:to_datetime).try(:strftime, '%d/%m')
 - details = contribution.details.ordered.first
 
-p
-= render partial: 'user_notifier/mailer/greetings', locals: { user: contribution.user }
+p Olá!
 
 p O seu boleto para apoiar o projeto #{link_to(contribution.project.name, project_by_slug_url(permalink: contribution.project.permalink))} foi gerado com sucesso!
 

@@ -2,7 +2,7 @@
 - user = @notification.user
 - company_name = CatarseSettings[:company_name]
 
-= render partial: 'user_notifier/mailer/greetings', locals: { user: user }
+| Olá!
 br
 br
 | Este é o lembrete de que o projeto #{link_to project.name, project_by_slug_url(permalink: project.permalink, ref: 'notificacao-reminder', utm_source:'notification',utm_medium:'email',utm_campaign:'reminder_link',utm_content:project.name)} está terminando em breve!

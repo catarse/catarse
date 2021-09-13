@@ -1,5 +1,5 @@
-p
-= render partial: 'user_notifier/mailer/greetings', locals: { user: @notification.user }
+p Olá!
+
 p
   | Sua conta no Catarse já está desativada. Caso sinta saudades, você pode reativar a sua conta a qualquer momento, basta #{link_to('clicar aqui', reactivate_user_url(@notification.user, token: @notification.user.reactivate_token))} e voltar a apoiar ou realizar projetos incríveis.
 

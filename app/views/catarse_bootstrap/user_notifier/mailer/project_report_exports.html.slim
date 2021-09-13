@@ -1,6 +1,6 @@
 - report = @notification.try(:report) || @notification.report
 center
-  = render partial: 'user_notifier/mailer/greetings', locals: { user: report.project.user }
+  | Olá!
 center
   p A exportação do relatório #{report.report_name_locale} está pronta.
 br

@@ -2,8 +2,7 @@
 - owner = contribution.project.user
 - detail = contribution.details.ordered.first
 
-p
-= render partial: 'user_notifier/mailer/greetings', locals: { user: contribution.user }
+p Olá!
 
 - if !@notification.metadata.try(:[], 'message').present?
   p #{contribution.project.user.display_name} acabou de marcar que a sua recompensa do projeto #{contribution.project.name} foi <strong>enviada</strong>.
