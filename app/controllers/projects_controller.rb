@@ -93,6 +93,10 @@ class ProjectsController < ApplicationController
     authorize resource, :update?
   end
 
+  def project_fiscal
+    authorize resource, :update?
+  end
+
   def insights
     authorize resource, :update?
   end

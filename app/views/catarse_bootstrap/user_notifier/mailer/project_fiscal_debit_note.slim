@@ -1,0 +1,60 @@
+- project_fiscal ||= @notification.project_fiscal
+- project = project_fiscal.project
+- user = project_fiscal.user
+- address = project_fiscal.user.address
+- project_link = project_by_slug_url(permalink: project['permalink'])
+- begin_date = I18n.l(project_fiscal.begin_date.to_date)
+- end_date = I18n.l(project_fiscal.end_date.to_date)
+
+center
+  h1 style="line-height: 5px" NOTA DE DÉBITO
+
+hr/
+
+br/
+h3 EMITENTE
+p style="margin:0;" Grupo Comum Consultoria e Intermediação de Negócios Ltda ME
+p style="margin:0;" CNPJ: 14.512.425/0001-94 | CCM 4.675.208-0
+p style="margin:0;"  Endereço: Av. Paulista 171, 4º andar – Bela Vista – São Paulo/SP
+p style="margin:0;"  CEP: 01311-000
+
+h3 DEVEDOR
+
+p style="margin:0;"  Nome/Razão Social: #{user['name']}
+p style="margin:0;"  CPF/CNPJ: #{user['cpf']}
+- if address
+  p style="margin:0;"  Endereço: #{address['address_street']}, #{address['address_number']} #{address['address_complement']}, #{address['address_neighbourhood']}, #{address['address_city']}, #{address['address_state']}, #{address['address_zip_code']}
+
+h3 DISCRIMINAÇÃO DOS DÉBITOS
+
+table style="border: 1px solid;max-width:100%;border-collapse: collapse;"
+  tr
+    td style="border: 1px solid;text-align:center;font-weight:bold;" Data
+    td style="border: 1px solid;text-align:center;font-weight:bold;" Histórico
+    td style="border: 1px solid;text-align:center;font-weight:bold;" Valor
+  tr
+    td style="border: 1px solid;text-align:center;vertical-align: middle;white-space: nowrap;"
+      span #{begin_date} - #{end_date}
+    td style="border: 1px solid;text-align:center;vertical-align: middle;"
+      span Tarifas dos meios de pagamento dos apoios ao projeto "#{project['name']}".
+      br/
+      span #{project_link}
+    td style="border: 1px solid;text-align:center;vertical-align: middle;white-space: nowrap;"
+      span #{project_fiscal.total_gateway_fee.format}
+  trproject_link
+    td style="border: 1px solid;text-align:center;vertical-align: middle;white-space: nowrap;"
+      span #{begin_date} - #{end_date}
+    td style="border: 1px solid;text-align:center;vertical-align: middle;"
+      span Tarifas das análises de antifraude dos apoios ao projeto "#{project['name']}".
+      br/
+      span #{project_link}
+    td style="border: 1px solid;text-align:center;vertical-align: middle;white-space: nowrap;"
+      span #{project_fiscal.total_antifraud_fee.format}
+
+br/
+p Declaro para os devidos fins ter recebido a importância acima discriminada dando plena e irrevogável quitação.
+br/
+p style="text-align:center;" São Paulo
+p #{begin_date} - #{end_date}
+
+p Catarse - GRUPO COMUM CONSULTORIA E INTERMEDIAÇÃO DE NEGÓCIOS
