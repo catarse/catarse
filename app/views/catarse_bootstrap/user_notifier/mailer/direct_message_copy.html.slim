@@ -5,11 +5,13 @@
 
 |Olá <strong>#{message.from_name}</strong>
 br
-|Esta é a mensagem que você enviou para o #{link_to to_user.try(:display_name), user_url(to_user)} a partir da página #{link_to message_origin_name, message.data['page_url'], target: :_blank }, referente ao projeto #{link_to project.name, project_url(project)}:
+|Esta é a mensagem que você enviou por email para #{link_to to_user.try(:display_name), user_url(to_user)} a partir da página #{link_to message_origin_name, message.data['page_url'], target: :_blank }, referente ao projeto #{link_to project.name, project_url(project), target: :_blank}:
 br
 br
 p style=("background-color:#f1f4f4; padding: 20px; margin: 20px 30px 50px 30px; border-radius:5px;") == message.content
+br
+p Por questões de privacidade, não podemos informar o email de #{to_user.try(:display_name)} neste recibo de mensagem, logo nossa recomendação é que você espere pela resposta para seguir a sua conversa por lá.
+br
+p Abraços,
 
-p Ao responder este email, <strong>você estará enviando uma mensagem diretamente para o endereço #{to_user.try(:email)}, que é o email de #{to_user.try(:display_name)}</strong>.
-
-p <strong>Importante</strong>: O Catarse não se responsabiliza pelo conteúdo das mensagens enviadas através da plataforma. Caso entenda que o conteúdo da mensagem se trata de spam ou que infringe de alguma forma os nossos Termos de Uso, pedimos que avise a nossa equipe através do email: #{mail_to CatarseSettings[:email_contact]}.
+p Equipe do Catarse
