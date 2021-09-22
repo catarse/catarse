@@ -32,6 +32,35 @@ RSpec.describe Contribution, type: :model do
     it { is_expected.to_not allow_value(9).for(:value) }
     it { is_expected.to allow_value(10).for(:value) }
     it { is_expected.to allow_value(20).for(:value) }
+
+    context 'when the reward isn`t sold out' do
+      subject(:contribution) { build(:contribution, reward: reward, project: project) }
+
+      let!(:project) { create(:project) }
+      let!(:reward) { create(:reward, project: project, maximum_contributions: 2) }
+      let!(:confirmed_contribution) { create(:confirmed_contribution, project: project, reward: reward) }
+
+      it 'doesn`t add invalid reward sold_out error' do
+        contribution.valid?
+
+        expect(contribution.errors[:reward_sold_out]).to be_empty
+      end
+    end
+
+    context 'when the reward is sold out' do
+      subject(:contribution) { build(:contribution, reward: reward, project: project) }
+
+      let!(:project) { create(:project) }
+      let!(:reward) { create(:reward, project: project, maximum_contributions: 1) }
+      let!(:confirmed_contribution) { create(:confirmed_contribution, project: project, reward: reward) }
+
+      it 'adds invalid reward sold_out error message' do
+        contribution.valid?
+
+        error_message = I18n.t('projects.contributions.edit.reward_sold_out')
+        expect(contribution.errors[:reward_sold_out]).to include error_message
+      end
+    end
   end
 
   describe '.confirmed_last_day' do

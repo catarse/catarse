@@ -28,6 +28,7 @@ class Contribution < ApplicationRecord
   validates_presence_of :project, :user, :value
   validates_numericality_of :value, greater_than_or_equal_to: 10.00
   validate :banned_user_validation, :on => :update
+  validate :reward_sold_out, :on => :create
 
   scope :not_anonymous, -> { where(anonymous: false) }
   scope :confirmed_last_day, -> { where("EXISTS(SELECT true FROM payments p WHERE p.contribution_id = contributions.id AND p.state = 'paid' AND (current_timestamp - p.paid_at) < '1 day'::interval)") }
@@ -257,6 +258,14 @@ class Contribution < ApplicationRecord
       unless document.nil?
         errors.add(:user, :invalid)
       end
+    end
+  end
+
+  private
+
+  def reward_sold_out
+    if reward.present? && reward.sold_out?
+      errors.add(:reward_sold_out, I18n.t('projects.contributions.edit.reward_sold_out'))
     end
   end
 end
