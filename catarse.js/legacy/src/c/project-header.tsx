@@ -39,31 +39,35 @@ const projectHeader = {
             rewardDetails = attrs.rewardDetails,
             activeSubscriptions = _.filter(state.userProjectSubscriptions(), sub => sub.status === 'active'),
             sortedSubscriptions = _.sortBy(state.userProjectSubscriptions(), sub => _.indexOf(['active', 'started', 'canceling', 'inactive', 'canceled'], sub.status));
+        const hasContribution = {
+            view: () => (
+                (!_.isEmpty(state.projectContributions()) || state.hasSubscription()) ?
+                m(`.card.card-terciary.u-radius.u-marginbottom-40${projectVM.isSubscription(project) ? '.fontcolor-primary' : ''}`, [
+                    m('.fontsize-small.u-text-center', [
+                        m('span.fa.fa-thumbs-up'),
+                        m('span.fontweight-semibold', (!projectVM.isSubscription(project) ? ' Você é apoiador deste projeto! ' : ' Você tem uma assinatura neste projeto! ')),
+                        m('a.alt-link[href=\'javascript:void(0);\']', {
+                            onclick: state.showContributions.toggle
+                        }, 'Detalhes')
+                    ]),
+                    state.showContributions() ? m('.u-margintop-20.w-row',
+                        (!projectVM.isSubscription(project) ?
+                            _.map(state.projectContributions(), contribution => m(userContributionDetail, {
+                                contribution,
+                                rewardDetails
+                            })) :
+                        _.map(activeSubscriptions.length > 0 ? activeSubscriptions : sortedSubscriptions, subscription => m(userSubscriptionDetail, {
+                            subscription,
+                            project: project()
+                        }))
+                        )
+                    ) : ''
+                ])
+                :
+                ''
+            )
+        }
 
-        const hasContribution = (
-            (!_.isEmpty(state.projectContributions()) || state.hasSubscription()) ?
-            m(`.card.card-terciary.u-radius.u-marginbottom-40${projectVM.isSubscription(project) ? '.fontcolor-primary' : ''}`, [
-                m('.fontsize-small.u-text-center', [
-                    m('span.fa.fa-thumbs-up'),
-                    m('span.fontweight-semibold', (!projectVM.isSubscription(project) ? ' Você é apoiador deste projeto! ' : ' Você tem uma assinatura neste projeto! ')),
-                    m('a.alt-link[href=\'javascript:void(0);\']', {
-                        onclick: state.showContributions.toggle
-                    }, 'Detalhes')
-                ]),
-                state.showContributions() ? m('.u-margintop-20.w-row',
-                    (!projectVM.isSubscription(project) ?
-                        _.map(state.projectContributions(), contribution => m(userContributionDetail, {
-                            contribution,
-                            rewardDetails
-                        })) :
-                     _.map(activeSubscriptions.length > 0 ? activeSubscriptions : sortedSubscriptions, subscription => m(userSubscriptionDetail, {
-                         subscription,
-                         project: project()
-                     }))
-                    )
-                ) : ''
-            ]) :
-            '');
         const hasBackground = Boolean(project().cover_image);
 
         return !_.isUndefined(project()) ? m('#project-header', { style: attrs.style }, [
@@ -74,7 +78,7 @@ const projectHeader = {
             }, [
                 m(ProjectHeaderTitle, {
                     project: project(),
-                    children: hasContribution
+                    Component: hasContribution,
                 }),
                 m(`.w-section.project-main${projectVM.isSubscription(project) ? '.transparent-background' : ''}`, [
                     m('.w-container', [

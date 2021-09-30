@@ -9,12 +9,12 @@ import { withHooks } from 'mithril-hooks';
 
 export type ProjectHeaderTitleProps = {
     project: ProjectDetails
-    children?: JSX.Element
+    Component?: JSX.Element
 }
 
 export const ProjectHeaderTitle = withHooks<ProjectHeaderTitleProps>(_ProjectHeaderTitle)
 
-function _ProjectHeaderTitle({project, children}: ProjectHeaderTitleProps) {
+function _ProjectHeaderTitle({project, Component}: ProjectHeaderTitleProps) {
     if (project) {
         const projectNameOrEmpty = project.name || project['project_name'] || ''
         const isSubscriptionMode = projectVM.isSubscription(project)
@@ -23,7 +23,7 @@ function _ProjectHeaderTitle({project, children}: ProjectHeaderTitleProps) {
         return (
             <div class={`w-section page-header ${isSubscriptionMode ? 'transparent-background' : ''}`}>
                 <div class="w-container">
-                    {children}
+                    {!!Component && <Component />}
                     <h1 class="u-text-center fontsize-larger fontweight-semibold project-name">
                         {projectNameOrEmpty}
                     </h1>
