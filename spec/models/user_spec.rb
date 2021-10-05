@@ -747,4 +747,31 @@ RSpec.describe User, type: :model do
       end
     end
   end
+
+  describe '#has_ongoing_or_successful_projects?' do
+    let(:failed_project) { create(:project, state: 'failed') }
+    let(:user) { create(:user, projects: [failed_project, project]) }
+
+    subject { user.has_ongoing_or_successful_projects? }
+
+    context 'when user has successful projects' do
+      let(:project) { create(:project, state: 'successful') }
+      it { is_expected.to eq(true) }
+    end
+
+    context 'when user has online projects' do
+      let(:project) { create(:project, state: 'online') }
+      it { is_expected.to eq(true) }
+    end
+
+    context 'when user has waiting_funds projects' do
+      let(:project) { create(:project, state: 'waiting_funds') }
+      it { is_expected.to eq(true) }
+    end
+
+    context 'when the user hasn`t ongoing or successful projects' do
+      let(:project) { create(:project, state: 'deleted') }
+      it { is_expected.to eq(false) }
+    end
+  end
 end

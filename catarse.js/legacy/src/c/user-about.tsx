@@ -2,7 +2,7 @@ import m from 'mithril';
 import prop from 'mithril/stream';
 import _ from 'underscore';
 import h from '../h';
-import userCard from './user-card';
+import projectUserCard from './project-user-card';
 import userVM from '../vms/user-vm';
 import inlineError from './inline-error';
 import { getUserDetailsWithUserId } from '../shared/services/user/get-updated-current-user';
@@ -45,7 +45,7 @@ const userAbout = {
                       ".w-container[id='about-content']",
                       m('.w-row', [
                           m('.w-col.w-col-8', m('.fontsize-base', user.about_html ? m.trust(user.about_html) : '')),
-                          m('.w-col.w-col-4', user.id ? m(userCard, { userId: user.id }) : h.loader()),
+                          m('.w-col.w-col-4', user.id ? m(projectUserCard, { userDetails: prop(user), project: prop({}) }) : h.loader()),
                       ])
                   )
               );

@@ -53,7 +53,7 @@ const setProject = project_user_id => data => {
     }
 
     if (!project_user_id) {
-        userVM.fetchUser(currentProject().user_id, true, userDetails);
+        userDetails(userVM.fetchUser(currentProject().user_id)());
     }
 
     return currentProject;
