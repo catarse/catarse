@@ -58,7 +58,7 @@ const projectsSubscriptionCheckout = {
         if (isEdit) {
             subscriptionVM
                 .getSubscription(subscriptionId())
-                .then(data => oldSubscription(_.first(data)))
+                .then(data => oldSubscription(data))
                 .catch(error);
         }
 

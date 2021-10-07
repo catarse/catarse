@@ -1,0 +1,15 @@
+.notification-close {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    z-index: 9999;
+    margin-top: 9px;
+    margin-right: 9px;
+    color: #c2c2c2;
+    text-decoration: none;
+    float: right;
+}
+
+.position-relative {
+    position: relative;
+}

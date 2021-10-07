@@ -75,7 +75,6 @@
         "style-loader": "^1.1.2",
         "ts-loader": "^7.0.4",
         "typescript": "^3.9.2",
-        "uglifyjs-webpack-plugin": "^1.2.6",
         "webpack": "^4.43.0"
     },
     "scripts": {
@@ -89,6 +88,7 @@
     "dependencies": {
         "@sentry/browser": "^5.7.1",
         "chart.js": "1.0.2",
+        "liquidjs": "^9.25.1",
         "mithril": "^1.1.6",
         "mithril-hooks": "https://github.com/grpse/mithril-hooks.git#v0.6.1-root",
         "mithril-postgrest": "https://github.com/catarse/mithril-postgrest.git#4.1.0",
