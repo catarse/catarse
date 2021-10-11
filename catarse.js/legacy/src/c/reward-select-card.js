@@ -97,7 +97,7 @@ const rewardSelectCard = {
     view: function({state, attrs}) {
         const reward = state.normalReward(attrs.reward);
 
-        if (state.isSelected(reward) || !h.rewardSouldOut(reward)) {
+        if (!h.rewardSouldOut(reward)) {
             return(
                 m('span.radio.w-radio.w-clearfix.back-reward-radio-reward', {
                     class: state.isSelected(reward) ? 'selected' : '',

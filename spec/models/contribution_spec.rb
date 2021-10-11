@@ -47,12 +47,40 @@ RSpec.describe Contribution, type: :model do
       end
     end
 
+    context 'when the reward isn`t run out' do
+      subject(:contribution) { build(:contribution, reward: reward, project: project) }
+
+      let!(:project) { create(:project) }
+      let!(:reward) { create(:reward, project: project, maximum_contributions: 2, run_out: false) }
+      let!(:confirmed_contribution) { create(:confirmed_contribution, project: project, reward: reward) }
+
+      it 'doesn`t add invalid reward run_out error' do
+        contribution.valid?
+
+        expect(contribution.errors[:reward_sold_out]).to be_empty
+      end
+    end
+
     context 'when the reward is sold out' do
       subject(:contribution) { build(:contribution, reward: reward, project: project) }
 
       let!(:project) { create(:project) }
       let!(:reward) { create(:reward, project: project, maximum_contributions: 1) }
       let!(:confirmed_contribution) { create(:confirmed_contribution, project: project, reward: reward) }
+
+      it 'adds invalid reward sold_out error message' do
+        contribution.valid?
+
+        error_message = I18n.t('projects.contributions.edit.reward_sold_out')
+        expect(contribution.errors[:reward_sold_out]).to include error_message
+      end
+    end
+
+    context 'when the reward is run out' do
+      subject(:contribution) { build(:contribution, reward: reward, project: project) }
+
+      let!(:project) { create(:project) }
+      let!(:reward) { create(:reward, project: project, maximum_contributions: 3, run_out: true) }
 
       it 'adds invalid reward sold_out error message' do
         contribution.valid?
