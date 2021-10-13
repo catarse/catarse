@@ -163,7 +163,7 @@ const surveysShow = {
             openQuestions = state.openQuestions(),
             multipleChoiceQuestions = state.multipleChoiceQuestions(),
             project = state.projectVM.currentProject(),
-            reward = state.reward(),
+            reward = Array.isArray(state.reward()) ? _.first(state.reward()) : state.reward(),
             contactModalC = [ownerMessageContent, prop(project ? project.user : {})],
             profileImage = userVM.displayImage(user);
 
