@@ -3,7 +3,6 @@ import _ from 'underscore';
 import h from '../h';
 import { ProjectHighlight } from '../root/projects/project-highlight';
 import projectSidebar from './project-sidebar';
-import { ProjectHeaderTitle } from '../root/projects/project-header-title';
 import userContributionDetail from './user-contribution-detail';
 import userSubscriptionDetail from './user-subscription-detail';
 import contributionVM from '../vms/contribution-vm';
@@ -39,8 +38,8 @@ const projectHeader = {
             rewardDetails = attrs.rewardDetails,
             activeSubscriptions = _.filter(state.userProjectSubscriptions(), sub => sub.status === 'active'),
             sortedSubscriptions = _.sortBy(state.userProjectSubscriptions(), sub => _.indexOf(['active', 'started', 'canceling', 'inactive', 'canceled'], sub.status));
-        const hasContribution = {
-            view: () => (
+        const hasContribution =  m('.div', [
+           (
                 (!_.isEmpty(state.projectContributions()) || state.hasSubscription()) ?
                 m(`.card.card-terciary.u-radius.u-marginbottom-40${projectVM.isSubscription(project) ? '.fontcolor-primary' : ''}`, [
                     m('.fontsize-small.u-text-center', [
@@ -66,7 +65,7 @@ const projectHeader = {
                 :
                 ''
             )
-        }
+        ]);
 
         const hasBackground = Boolean(project().cover_image);
 
@@ -76,10 +75,27 @@ const projectHeader = {
                 class: hasBackground ? 'project-with-background' : null,
                 style: hasBackground ? `background-image: linear-gradient(180deg, rgba(0, 4, 8, .82), rgba(0, 4, 8, .82)), url("${project().cover_image}");` : null
             }, [
-                m(ProjectHeaderTitle, {
-                    project: project(),
-                    Component: hasContribution,
-                }),
+                m(`.w-section.page-header${projectVM.isSubscription(project) ? '.transparent-background' : ''}`, [
+                    m('.w-container', [
+                        hasContribution,
+                        m('h1.u-text-center.fontsize-larger.fontweight-semibold.project-name',
+                           project().name
+                        ),
+                        (projectVM.isSubscription(project) ?
+                            m('.w-row',[
+                                m('.w-col.w-col-6.w-col-push-3',
+                                    m('p.fontsize-small.lineheight-tight.u-margintop-10.u-text-center',
+                                        project().headline
+                                    )
+                                )
+                            ])
+                            :
+                            m('h2.u-text-center.fontsize-base.lineheight-looser',
+                                `por ${project().name}`
+                            )
+                        )
+                    ]),
+                ]),
                 m(`.w-section.project-main${projectVM.isSubscription(project) ? '.transparent-background' : ''}`, [
                     m('.w-container', [
                         m('.w-row', [
