@@ -5,8 +5,9 @@ import { ProjectHighlight } from '../root/projects/project-highlight';
 import projectSidebar from './project-sidebar';
 import userContributionDetail from './user-contribution-detail';
 import userSubscriptionDetail from './user-subscription-detail';
-import contributionVM from '../vms/contribution-vm';
-import projectVM from '../vms/project-vm';
+import contributionVM from '@/vms/contribution-vm';
+import projectVM from '@/vms/project-vm';
+import userVM from '@/vms/user-vm';
 import { getCurrentUserCached } from '../shared/services/user/get-current-user-cached';
 import { isLoggedIn } from '../shared/services/user/is-logged-in';
 
@@ -38,6 +39,7 @@ const projectHeader = {
             rewardDetails = attrs.rewardDetails,
             activeSubscriptions = _.filter(state.userProjectSubscriptions(), sub => sub.status === 'active'),
             sortedSubscriptions = _.sortBy(state.userProjectSubscriptions(), sub => _.indexOf(['active', 'started', 'canceling', 'inactive', 'canceled'], sub.status));
+        const projectOwnerName = project().user ? userVM.displayName(project().user) : (project().owner_public_name || project().owner_name);
         const hasContribution =  m('.div', [
            (
                 (!_.isEmpty(state.projectContributions()) || state.hasSubscription()) ?
@@ -91,7 +93,7 @@ const projectHeader = {
                             ])
                             :
                             m('h2.u-text-center.fontsize-base.lineheight-looser',
-                                `por ${project().name}`
+                                `por ${projectOwnerName}`
                             )
                         )
                     ]),
