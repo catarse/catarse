@@ -112,6 +112,7 @@ interface ProjectOwner {
     document_type:   string;
     fmt_created_at:  string;
     document_number: string;
+    public_name:     string;
 }
 
 interface Reward {
