@@ -294,7 +294,7 @@ const editRewardCard = {
                             )
                         ),
                         m('.w-col.w-col-7',
-                            m('input.w-input.text-field.positive[aria-required=\'true\'][autocomplete=\'off\'][type=\'tel\']', {
+                            m('input.w-input.text-field.positive[aria-required=\'true\'][autocomplete=\'off\'][type=\'text\']', {
                                 value: state.reward.title(),
                                 oninput: m.withAttr('value', state.reward.title)
                             })
