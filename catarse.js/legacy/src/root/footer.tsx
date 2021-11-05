@@ -178,10 +178,6 @@ const footer = {
                                             ]
                                         )
                                     ),
-                                    m('.footer-full-signature-text.fontsize-small',
-                                        'Change language'
-                                    ),
-                                    m('[id=\'google_translate_element\']')
                                 ]
                             )
                         ]
