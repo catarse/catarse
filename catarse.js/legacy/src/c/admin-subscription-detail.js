@@ -241,7 +241,9 @@ const adminSubscriptionDetail = {
                         m('br'),
                         `Id pagamento: ${currentPayment().id}`,
                         m('br'),
-                        `Id gateway: ${currentPayment().gateway_id}`,
+                        m(`a[href="https://beta.dashboard.pagar.me/#/transactions/${currentPayment().gateway_id}"]`,
+                            `ID gateway: ${currentPayment().gateway_id}`
+                        ),
                         m('br'),
                         'Apoio:',
                         m.trust('&nbsp;'),
