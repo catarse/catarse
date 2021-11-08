@@ -47,12 +47,6 @@ class BankAccount < ApplicationRecord
 
   def account_validation
 
-    # setup locale custom access
-    account_locale = 'activerecord.errors.models.bank_account.attributes.account'
-    account_equal_locale = I18n.t("#{account_locale}.equal")
-    account_maximum_locale = I18n.t("#{account_locale}.maximum")
-    account_invalid_locale = I18n.t("#{account_locale}.invalid")
-
     errors.delete :account
 
     if account == nil || account.length == 0
@@ -62,42 +56,6 @@ class BankAccount < ApplicationRecord
 
     if account.match? /\D+/
       errors.add(:account, :format)
-      return false
-    end
-
-    if %w[237].include?(bank_code.to_s) && account.length > 7
-      account_error = (account_invalid_locale + account_maximum_locale) % [7]
-      errors.add(:account, account_error)
-      return false
-    end
-
-    if %w[001 033].include?(bank_code.to_s) && account.length > 8
-      account_error = (account_invalid_locale + account_maximum_locale) % [8]
-      errors.add(:account, account_error)
-      return false
-    end
-
-    if %w[341].include?(bank_code.to_s) && account.length != 5
-      account_error = (account_invalid_locale + account_equal_locale) % [5]
-      errors.add(:account, account_error)
-      return false
-    end
-
-    if %w[104].include?(bank_code.to_s) && account.length > 11
-      account_error = (account_invalid_locale + account_maximum_locale) % [11]
-      errors.add(:account, account_error)
-      return false
-    end
-
-    if %w[399].include?(bank_code.to_s) && account.length != 6
-      account_error = (account_invalid_locale + account_equal_locale) % [6]
-      errors.add(:account, account_error)
-      return false
-    end
-
-    if %w[745].include?(bank_code.to_s) && account.length != 7
-      account_error = (account_invalid_locale + account_equal_locale) % [7]
-      errors.add(:account, account_error)
       return false
     end
 
