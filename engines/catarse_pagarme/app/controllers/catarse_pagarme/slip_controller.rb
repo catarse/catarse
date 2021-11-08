@@ -32,7 +32,7 @@ module CatarsePagarme
     protected
 
     def slip_attributes
-      attributes = {
+      {
         payment_method: 'boleto',
         boleto_rules: ['strict_expiration_date'],
         boleto_expiration_date: payment.slip_expiration_date,
@@ -43,59 +43,24 @@ module CatarsePagarme
           protocol: CatarsePagarme.configuration.protocol
         ),
         customer: {
-          external_id: payment.user.id.to_s,
           email: payment.user.email,
           name: payment.user.name,
           type: payment.user.account_type == 'pf' ? 'individual' : 'corporation',
-          country: contribution.country.try(:code).downcase || 'br',
           documents: [{
             type:  payment.user.account_type == 'pf' ? 'cpf' : 'cnpj',
             number: document_number
           }],
-          phone_numbers: [
-            '+55085999999999'
-          ]
-        },
-        billing: {
-          name: payment.user.name,
-          address: {
-            street: contribution.address_street,
-            neighborhood: neighborhood,
-            zipcode: zip_code,
-            street_number: address_number,
-            city: contribution.address_city,
-            state: contribution.address_state.downcase,
-            country: contribution.country.try(:code).downcase
-          }
         },
         metadata: metadata_attributes.merge({ second_slip: payment.generating_second_slip.to_s })
       }
-
-      if contribution.address_complement.present?
-        attributes[:billing][:address].merge(complementary: contribution.address_complement)
-      end
-
-      attributes
-    end
-
-    def address_number
-      international? ? 100 : contribution.address_number
     end
 
     def document_number
       international? ? '00000000000' : contribution.user.cpf.gsub(/[-.\/_\s]/,'')
     end
 
-    def neighborhood
-      international? ? 'international' : contribution.address_neighbourhood
-    end
-
     def international?
       contribution.international?
-    end
-
-    def zip_code
-      international? ? '00000000' : contribution.address_zip_code.gsub(/[-.]/, '')
     end
   end
 end
