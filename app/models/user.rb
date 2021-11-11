@@ -510,6 +510,10 @@ class User < ApplicationRecord
     self.about_html =  SanitizeScriptTag.sanitize(about_html)
   end
 
+  def has_ongoing_or_successful_projects?
+    projects.with_state(%w[online waiting_funds successful]).exists?
+  end
+
   private
   def cancel_all_subscriptions
     subscriptions.where(status: %w(inactive active started canceling)).order(id: :desc).find_each do |_sub|

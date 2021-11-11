@@ -21,15 +21,42 @@ const projectUserCard = {
                 }
 
                 displayModal(true);
-            };
+            },
+            userDetails = userVM.fetchUser(project().user_id) || vnode.attrs.userDetails,
+            userId = userDetails().id;
 
-        if (h.callStoredAction(storeId) == project().project_id) {
+        if (h.callStoredAction(storeId) === project().project_id) {
             displayModal(true);
         }
+
+        let builder = { requestOptions: {
+                        url: (`/users/${userId}/verify_can_receive_message`),
+                        method: 'GET'}
+                    };
+
+        const load = () => m.request(_.extend({}, {}, builder.requestOptions)),
+              resp = h.RedrawStream('');
+
+        builder.requestOptions.config = (xhr) => {
+            if (h.authenticityToken()) {
+                xhr.setRequestHeader('X-CSRF-Token', h.authenticityToken());
+            }
+        };
+
+        const requestSuccess = (res) => {
+            resp(res.can_receive_message);
+        };
+
+        const requestError = (e) => {
+            resp(false);
+        };
+
+        load().then(requestSuccess, requestError);
 
         vnode.state = {
             displayModal,
             sendMessage,
+            resp,
         };
     },
     view: function ({ state, attrs }) {
@@ -148,7 +175,7 @@ const projectUserCard = {
                             !_.isEmpty(userDetail)
                                 ? [
                                     !_.isNull(userDetail.deactivated_at)
-                                        ? ''
+                                        ?  ''
                                         : m(UserFollowBtn, {
                                             enabledClass: `a.w-button.btn.btn-terciary${attrs.isDark ? '.btn-terciary-negative' : ''
                                                 }.btn-small..u-marginbottom-10`,
@@ -157,21 +184,23 @@ const projectUserCard = {
                                             follow_id: userDetail.id,
                                             following: userDetail.following_this_user,
                                         }),
-                                    m(
-                                        `button.w-button.btn.btn-terciary${attrs.isDark ? '.btn-terciary-negative' : ''}.btn-small`,
-                                        {
-                                            onclick: h.analytics.event(
-                                                {
-                                                    cat: 'project_view',
-                                                    act: 'project_creator_sendmsg',
-                                                    lbl: userDetail.id,
-                                                    project: project(),
-                                                },
-                                                state.sendMessage
-                                            ),
-                                        },
-                                        'Contato'
-                                    ),
+                                    state.resp() ?
+                                        m(
+                                            `button.w-button.btn.btn-terciary${attrs.isDark ? '.btn-terciary-negative' : ''}.btn-small`,
+                                            {
+                                                onclick: h.analytics.event(
+                                                    {
+                                                        cat: 'project_view',
+                                                        act: 'project_creator_sendmsg',
+                                                        lbl: userDetail.id,
+                                                        project: project(),
+                                                    },
+                                                    state.sendMessage
+                                                ),
+                                            },
+                                            'Contato'
+                                        )
+                                    : ''
                                 ]
                                 : '',
                             attrs.project().is_admin_role ? m('p', userDetail.email) : '',

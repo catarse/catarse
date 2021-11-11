@@ -2,12 +2,12 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-  after_action :verify_authorized, except: %i[reactivate]
+  after_action :verify_authorized, except: %i[reactivate verify_can_receive_message]
   after_action :redirect_user_back_after_login, only: %i[show]
   inherit_resources
   defaults finder: :find_active!
   actions :show, :update, :unsubscribe_notifications, :destroy, :edit
-  respond_to :json, only: %i[contributions projects]
+  respond_to :json, only: %i[contributions projects verify_can_receive_message]
   before_action :referral_it!, only: [:show]
   before_action :authenticate_user!, only: [:follow_fb_friends]
 
@@ -145,6 +145,16 @@ class UsersController < ApplicationController
       format.json { render json: { success: 'OK' } }
       format.html { redirect_to edit_user_path(@user) }
     end
+  end
+
+  def verify_can_receive_message
+    can_receive_message = resource.has_ongoing_or_successful_projects?
+
+    render json: { can_receive_message: can_receive_message }
+  rescue StandardError => error_message
+    Sentry.capture_exception(error_message)
+
+    render json: { error: 'Internal server error.' }, status: :internal_server_error
   end
 
   private

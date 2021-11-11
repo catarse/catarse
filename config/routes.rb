@@ -173,6 +173,7 @@ Catarse::Application.routes.draw do
           get :reactivate
           post :new_password
           post :ban
+          get :verify_can_receive_message
         end
 
         resources :unsubscribes, only: [:create]
