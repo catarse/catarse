@@ -315,6 +315,84 @@ RSpec.describe AonProjectMachine, type: :model do
           end
         end
       end
+
+      context 'successful project can go to deleted or rejected' do
+        let(:project_state) { 'successful' }
+
+        context 'deleted transition' do
+          context 'when can go to deleted' do
+            context 'project not have waiting payments and not reached the goal' do
+              before do
+                allow(project).to receive(:in_time_to_wait?).and_return(false)
+                allow(project).to receive(:reached_goal?).and_return(false)
+              end
+
+              it_should_behave_like 'valid deleted project transaction'
+            end
+
+            context 'project not have waiting payments and reached the goal' do
+              before do
+                allow(project).to receive(:in_time_to_wait?).and_return(false)
+                allow(project).to receive(:reached_goal?).and_return(true)
+              end
+
+              it_should_behave_like 'valid deleted project transaction'
+            end
+
+            context 'project does not expired' do
+              before { allow(project).to receive(:expired?).and_return(false) }
+
+              it_should_behave_like 'valid deleted project transaction'
+            end
+
+            context 'project have pending payments and already reached the goal' do
+              before do
+                allow(project).to receive(:in_time_to_wait?).and_return(true)
+                allow(project).to receive(:reached_goal?).and_return(true)
+              end
+
+              it_should_behave_like 'valid deleted project transaction'
+            end
+          end
+        end
+
+        context 'rejected transition' do
+          context 'when can go to rejected' do
+            context 'project not have waiting payments and reached the goal' do
+              before do
+                allow(project).to receive(:in_time_to_wait?).and_return(false)
+                allow(project).to receive(:reached_goal?).and_return(true)
+              end
+
+              it_should_behave_like 'valid rejected project transaction'
+            end
+
+            context 'project have pending payments and already reached the goal' do
+              before do
+                allow(project).to receive(:in_time_to_wait?).and_return(true)
+                allow(project).to receive(:reached_goal?).and_return(true)
+              end
+
+              it_should_behave_like 'valid rejected project transaction'
+            end
+
+            context 'project not have pending payments and reached the goal' do
+              before do
+                allow(project).to receive(:in_time_to_wait?).and_return(false)
+                allow(project).to receive(:reached_goal?).and_return(true)
+              end
+
+              it_should_behave_like 'valid rejected project transaction'
+            end
+
+            context 'project does not expired' do
+              before { allow(project).to receive(:expired?).and_return(false) }
+
+              it_should_behave_like 'valid rejected project transaction'
+            end
+          end
+        end
+      end
     end
 
     context 'instance methods' do
