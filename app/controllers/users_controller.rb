@@ -2,12 +2,12 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-  after_action :verify_authorized, except: %i[reactivate verify_can_receive_message]
+  after_action :verify_authorized, except: %i[reactivate verify_has_ongoing_or_successful_projects]
   after_action :redirect_user_back_after_login, only: %i[show]
   inherit_resources
   defaults finder: :find_active!
   actions :show, :update, :unsubscribe_notifications, :destroy, :edit
-  respond_to :json, only: %i[contributions projects verify_can_receive_message]
+  respond_to :json, only: %i[contributions projects verify_has_ongoing_or_successful_projects]
   before_action :referral_it!, only: [:show]
   before_action :authenticate_user!, only: [:follow_fb_friends]
 
@@ -147,10 +147,10 @@ class UsersController < ApplicationController
     end
   end
 
-  def verify_can_receive_message
-    can_receive_message = resource.has_ongoing_or_successful_projects?
+  def verify_has_ongoing_or_successful_projects
+    has_ongoing_or_successful_projects = resource.has_ongoing_or_successful_projects?
 
-    render json: { can_receive_message: can_receive_message }
+    render json: { has_ongoing_or_successful_projects: has_ongoing_or_successful_projects }
   rescue StandardError => error_message
     Sentry.capture_exception(error_message)
 

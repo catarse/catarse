@@ -13,7 +13,8 @@ const userAbout = {
         const userDetails = prop<UserDetails>(),
             loader = prop(true),
             error = prop(false),
-            user_id = vnode.attrs.userId;
+            user_id = vnode.attrs.userId,
+            privateAboutMessage = 'Este é um perfil privado. Suas informações públicas serão exibidas somente quando tiver ao menos 1 projeto publicado no Catarse.';
 
         getUserDetailsWithUserId(user_id)
             .then(userDetailsData => {
@@ -27,10 +28,36 @@ const userAbout = {
                 h.redraw();
             });
 
+        let builder = { requestOptions: {
+            url: (`/users/${user_id}/verify_has_ongoing_or_successful_projects`),
+            method: 'GET'}
+        };
+
+        const load = () => m.request(_.extend({}, {}, builder.requestOptions)),
+            displayAbout = h.RedrawStream('');
+
+        builder.requestOptions.config = (xhr) => {
+            if (h.authenticityToken()) {
+                xhr.setRequestHeader('X-CSRF-Token', h.authenticityToken());
+            }
+        };
+
+        const requestSuccess = (res) => {
+            displayAbout(res.has_ongoing_or_successful_projects);
+        };
+
+        const requestError = (e) => {
+            displayAbout(false);
+        };
+
+        load().then(requestSuccess, requestError);
+    
         vnode.state = {
             userDetails,
             error,
             loader,
+            displayAbout,
+            privateAboutMessage,
         };
     },
     view: function({ state }) {
@@ -44,7 +71,11 @@ const userAbout = {
                   m(
                       ".w-container[id='about-content']",
                       m('.w-row', [
-                          m('.w-col.w-col-8', m('.fontsize-base', user.about_html ? m.trust(user.about_html) : '')),
+                          m('.w-col.w-col-8', 
+                            m('.fontsize-base', 
+                                state.displayAbout() ? (user.about_html ? m.trust(user.about_html) : '') : state.privateAboutMessage
+                            )
+                          ),
                           m('.w-col.w-col-4', user.id ? m(projectUserCard, { userDetails: prop(user), project: prop({}) }) : h.loader()),
                       ])
                   )

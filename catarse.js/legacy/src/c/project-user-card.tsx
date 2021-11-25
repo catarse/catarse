@@ -30,12 +30,12 @@ const projectUserCard = {
         }
 
         let builder = { requestOptions: {
-                        url: (`/users/${userId}/verify_can_receive_message`),
+                        url: (`/users/${userId}/verify_has_ongoing_or_successful_projects`),
                         method: 'GET'}
                     };
 
         const load = () => m.request(_.extend({}, {}, builder.requestOptions)),
-              resp = h.RedrawStream('');
+              canReceiveMessage = h.RedrawStream('');
 
         builder.requestOptions.config = (xhr) => {
             if (h.authenticityToken()) {
@@ -44,11 +44,11 @@ const projectUserCard = {
         };
 
         const requestSuccess = (res) => {
-            resp(res.can_receive_message);
+            canReceiveMessage(res.has_ongoing_or_successful_projects);
         };
 
         const requestError = (e) => {
-            resp(false);
+            canReceiveMessage(false);
         };
 
         load().then(requestSuccess, requestError);
@@ -56,7 +56,7 @@ const projectUserCard = {
         vnode.state = {
             displayModal,
             sendMessage,
-            resp,
+            canReceiveMessage,
         };
     },
     view: function ({ state, attrs }) {
@@ -184,7 +184,7 @@ const projectUserCard = {
                                             follow_id: userDetail.id,
                                             following: userDetail.following_this_user,
                                         }),
-                                    state.resp() ?
+                                    state.canReceiveMessage() ?
                                         m(
                                             `button.w-button.btn.btn-terciary${attrs.isDark ? '.btn-terciary-negative' : ''}.btn-small`,
                                             {

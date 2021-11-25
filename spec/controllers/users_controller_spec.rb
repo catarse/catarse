@@ -347,42 +347,42 @@ RSpec.describe UsersController, type: :controller do
     end
   end
 
-  describe 'GET verify_can_receive_message' do
+  describe 'GET verify_has_ongoing_or_successful_projects' do
     context 'when the user has ongoing or successful projects' do
       let(:user) { create(:user) }
 
       before do
         allow_any_instance_of(User).to receive(:has_ongoing_or_successful_projects?).and_return(true)
-        get :verify_can_receive_message, params: { id: user.id }
+        get :verify_has_ongoing_or_successful_projects, params: { id: user.id }
       end
 
       it 'returns `ok` http response' do
         expect(response).to have_http_status(:ok)
       end
 
-      it 'returns `can_receive_message` flag as true' do
-        expect(response.body).to eq({ can_receive_message: true }.to_json)
+      it 'returns `has_ongoing_or_successful_projects` flag as true' do
+        expect(response.body).to eq({ has_ongoing_or_successful_projects: true }.to_json)
       end
     end
 
     context 'when the user hasn`t ongoing or successful projects' do
       before do
         allow_any_instance_of(User).to receive(:has_ongoing_or_successful_projects?).and_return(false)
-        get :verify_can_receive_message, params: { id: user.id }
+        get :verify_has_ongoing_or_successful_projects, params: { id: user.id }
       end
 
       it 'returns `ok` http response' do
         expect(response).to have_http_status(:ok)
       end
 
-      it 'returns `can_receive_message` flag as false' do
-        expect(response.body).to eq({ can_receive_message: false }.to_json)
+      it 'returns `has_ongoing_or_successful_projects` flag as false' do
+        expect(response.body).to eq({ has_ongoing_or_successful_projects: false }.to_json)
       end
     end
 
     context 'when an error occurs' do
       before do
-        get :verify_can_receive_message, params: { id: [] }
+        get :verify_has_ongoing_or_successful_projects, params: { id: [] }
       end
 
       it 'returns `internal_server_error` http response' do
