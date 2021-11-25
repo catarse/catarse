@@ -1,6 +1,14 @@
 pt:
   users:
     edit:
+      menu: 
+        contributions: 'Apoiados'
+        projects: 'Criados'
+        about_me: 'Perfil público'
+        settings: 'Dados cadastrais'
+        contributions: 'Apoiados'
+        notifications: 'Notificações'
+        balance: 'Saldo'
       settings_tab:
         credit_cards:
           title: 'Cartões de crédito'
