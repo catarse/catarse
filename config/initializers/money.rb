@@ -49,7 +49,7 @@ MoneyRails.configure do |config|
   #   priority:            1,
   #   iso_code:            "EU4",
   #   name:                "Euro with subunit of 4 digits",
-  #   symbol:              "€", # rubocop:disable Style/AsciiComments
+  #   symbol:              "€",
   #   symbol_first:        true,
   #   subunit:             "Subcent",
   #   subunit_to_unit:     10000,
@@ -99,7 +99,7 @@ MoneyRails.configure do |config|
   #
   # Example:
   # Money.new(10_000_00, 'USD').format # => $10,000.00
-  # Money.new(10_000_00, 'EUR').format # => €10.000,00 # rubocop:disable Style/AsciiComments
+  # Money.new(10_000_00, 'EUR').format # => €10.000,00
   #
   # In case you don't need localization and would like to use default values
   # (can be redefined using config.default_format):
