@@ -4,6 +4,7 @@ import projectVM from '../../vms/project-vm'
 import { useState, withHooks } from 'mithril-hooks'
 import './coming-soon-landing-page.css'
 import { ComingSoonLandingPageBookmarkCard } from './coming-soon-landing-page-bookmark-card'
+import { ProjectWeLovedTag } from '../../c/project-we-loved-tag';
 import ProjectShareBox from '../../c/project-share-box';
 import FacebookButton from '../../c/facebook-button';
 import AddressTag from '../../c/address-tag';
