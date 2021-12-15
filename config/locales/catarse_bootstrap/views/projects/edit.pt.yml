@@ -154,7 +154,7 @@ pt:
       title: Documentos Fiscais
       subtitle: 'Baixe os documentos fiscais relacionados a sua arrecadação.'
       help_link: 'Se tiver dúvida com relação à tributação, consulte o nosso Artigo sobre a <a href="http://fazum.catarse.me/manual-tributacao-realizadores" target="_blank" class="alt-link">Tributação para Realizadores</a>'
-      nodoc_explanation: ' Você terá acesso aos documentos fiscais assim que seu projeto for encerrado e financiado com sucesso.'
+      nodoc_explanation: ' Você terá acesso aos documentos fiscais assim que o saque do projeto for realizado com sucesso.'
       nodoc_explanation_sub: ' Você terá acesso aos documentos fiscais mensalmente.'
       doc_download: 'Baixar documentos'
       doc_download_explanation: ' Como na legislação vigente não está formalizado o Financiamento Coletivo, <b>sempre recomendamos que o realizador consulte um contador ou empresa de contabilidade antes de formalizar o recebimento do dinheiro arrecadado</b> para tomar uma decisão informada sobre qual modalidade mais se aproxima da relação entre seu projeto e seus apoiadores.'
