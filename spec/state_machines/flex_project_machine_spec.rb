@@ -157,6 +157,85 @@ RSpec.describe FlexProjectMachine, type: :model do
     end
   end
 
+  context 'successful project can go to deleted or rejected' do
+    let(:project) { create(:project, state: project_state) }
+    let(:project_state) { 'successful' }
+
+    context 'deleted transition' do
+      context 'when can go to deleted' do
+        context 'project not have waiting payments and not reached the goal' do
+          before do
+            allow(project).to receive(:in_time_to_wait?).and_return(false)
+            allow(project).to receive(:reached_goal?).and_return(false)
+          end
+
+          it { should_be_valid_transition 'deleted' }
+        end
+
+        context 'project not have pending payments and reached the goal' do
+          before do
+            allow(project).to receive(:in_time_to_wait?).and_return(false)
+            allow(project).to receive(:reached_goal?).and_return(true)
+          end
+
+          it { should_be_valid_transition 'deleted' }
+        end
+
+        context 'project have pending payments and already reached the goal' do
+          before do
+            allow(project).to receive(:in_time_to_wait?).and_return(true)
+            allow(project).to receive(:reached_goal?).and_return(true)
+          end
+
+          it { should_be_valid_transition 'deleted' }
+        end
+
+        context 'project does not expired' do
+          before { allow(project).to receive(:expired?).and_return(false) }
+
+          it { should_be_valid_transition 'deleted' }
+        end
+      end
+    end
+
+    context 'rejected transition' do
+      context 'when can go to rejected' do
+        context 'project not have waiting payments and reached the goal' do
+          before do
+            allow(project).to receive(:in_time_to_wait?).and_return(false)
+            allow(project).to receive(:reached_goal?).and_return(true)
+          end
+
+          it { should_be_valid_transition 'rejected' }
+        end
+
+        context 'project have pending payments and already reached the goal' do
+          before do
+            allow(project).to receive(:in_time_to_wait?).and_return(true)
+            allow(project).to receive(:reached_goal?).and_return(true)
+          end
+
+          it { should_be_valid_transition 'rejected' }
+        end
+
+        context 'project not have pending payments and reached the goal' do
+          before do
+            allow(project).to receive(:in_time_to_wait?).and_return(false)
+            allow(project).to receive(:reached_goal?).and_return(true)
+          end
+
+          it { should_be_valid_transition 'rejected' }
+        end
+
+        context 'project does not expired' do
+          before { allow(project).to receive(:expired?).and_return(false) }
+
+          it { should_be_valid_transition 'rejected' }
+        end
+      end
+    end
+  end
+
   context '#push_to_draft' do
     before do
       expect(subject).to receive(:transition_to)
