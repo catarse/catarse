@@ -2,9 +2,10 @@
   = javascript_include_tag 'redactor'
 javascript:
   const userName = "#{resource.decorator.display_name}";
-  
+
   function updatePageTitle() {
-    var path = `users.edit.menu.${window.location.href.split("#")[1]}`;
+    const pageTitleKey = window.location.href.split("#")[1] || 'contributions'
+    const path = `users.edit.menu.${pageTitleKey}`;
     document.title = `${I18n.t(path)} - ${userName}`;
   };
 
