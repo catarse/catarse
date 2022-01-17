@@ -3219,7 +3219,10 @@ a:hover {
 }
 
 .table-row.header {
-  background-color: rgba(241, 244, 244, 0.49);
+  background-color: #f8fafa;
+  position: sticky;
+  top: 0;
+  z-index: 99;
 }
 
 .toggle {
