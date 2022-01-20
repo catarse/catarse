@@ -81,6 +81,7 @@ const rewardSelectCard = {
 
         vnode.state = {
             normalReward,
+            isEdit,
             isSelected,
             setInput,
             submitContribution,
@@ -97,7 +98,7 @@ const rewardSelectCard = {
     view: function({state, attrs}) {
         const reward = state.normalReward(attrs.reward);
 
-        if (!h.rewardSouldOut(reward)) {
+        if ((state.isEdit() && h.rewardSouldOut(reward) && state.isSelected(reward)) || !h.rewardSouldOut(reward)) {
             return(
                 m('span.radio.w-radio.w-clearfix.back-reward-radio-reward', {
                     class: state.isSelected(reward) ? 'selected' : '',
