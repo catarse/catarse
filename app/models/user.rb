@@ -312,7 +312,8 @@ class User < ApplicationRecord
   end
 
   def projects_backed_by_friends_in_last_day
-    Project.joins(:contributions)
+    Project.in_funding
+           .joins(:contributions)
            .joins('join user_follows on user_follows.follow_id = contributions.user_id
             join payments on payments.contribution_id = contributions.id')
            .where('contributions.is_confirmed and not contributions.anonymous')
