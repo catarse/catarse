@@ -53,6 +53,13 @@ RSpec.describe Authorization, type: :model do
     it { is_expected.to validate_presence_of :oauth_provider }
     it { is_expected.to validate_presence_of :user }
     it { is_expected.to validate_presence_of :uid }
+
+    before do
+      create(:authorization)
+    end
+
+    it { is_expected.to validate_uniqueness_of(:uid).scoped_to(:oauth_provider_id) }
+    it { is_expected.to validate_uniqueness_of(:user_id).scoped_to(:oauth_provider_id) }
   end
 
   describe '.find_from_hash' do

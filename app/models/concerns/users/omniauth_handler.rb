@@ -7,24 +7,25 @@ module Users::OmniauthHandler
 
   included do
     def self.create_from_hash(hash)
+      hash = hash.deep_symbolize_keys
       create!(
         {
-          public_name: hash['info']['name'],
-          name: hash['info']['name'],
-          email: hash['info']['email'],
+          public_name: hash[:info][:name],
+          name: hash[:info][:name],
+          email: hash[:info][:email],
           about_html: begin
-            hash['info']['description'][0..139]
+            hash[:info][:description][0..139]
           rescue
             nil
           end,
           locale: I18n.locale.to_s
         }
       ) do |user|
-        case hash['provider']
+        case hash[:provider]
         when 'facebook'
-          user.remote_uploaded_image_url = "https://graph.facebook.com/v9.0/#{hash['uid']}/picture?type=large"
+          user.remote_uploaded_image_url = "https://graph.facebook.com/v9.0/#{hash[:uid]}/picture?type=large"
         when 'google_oauth2'
-          user.remote_uploaded_image_url = hash['info']['image']
+          user.remote_uploaded_image_url = hash[:info][:image]
         end
       end
     end
