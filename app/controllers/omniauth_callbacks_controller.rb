@@ -6,7 +6,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def self.add_providers
     OauthProvider.all.each do |p|
       define_method p.name.downcase do
-        omniauth = request.env['omniauth.auth']
+        omniauth = request.env['omniauth.auth'].deep_symbolize_keys
         unless (@auth = Authorization.find_from_hash(omniauth))
           user = current_user || (User.find_by_email(omniauth[:info][:email]) if omniauth[:info][:email])
           if omniauth[:info][:email]
