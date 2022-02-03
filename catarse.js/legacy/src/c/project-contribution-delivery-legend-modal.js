@@ -23,7 +23,7 @@ const ProjectContributionDeliveryLegendModal = {
                 ]),
                 m('div',
                     m('span.fontsize-smaller.badge.badge-success',
-                        'Entregue'
+                        'Enviada'
                     )
                 ),
                 m('.u-marginbottom-20',
@@ -34,7 +34,7 @@ const ProjectContributionDeliveryLegendModal = {
                 m('.u-marginbottom-20', [
                     m('div',
                         m('span.fontsize-smaller.badge.badge-attention',
-                            'Erro na entrega'
+                            'Erro no envio'
                         )
                     ),
                     m('.fontsize-smaller',
