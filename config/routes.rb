@@ -110,6 +110,10 @@ Catarse::Application.routes.draw do
         get 'debit_note/:fiscal_date', to: 'projects/project_fiscal_data#debit_note'
         get 'inform/:fiscal_year', to: 'projects/project_fiscal_data#inform'
 
+        get 'project_debit_note/:id', to: 'projects/project_fiscal#debit_note'
+        get 'project_inform/:fiscal_year', to: 'projects/project_fiscal#inform'
+        get 'inform_years', to: 'projects/project_fiscal#inform_years'
+        get 'debit_note_end_dates', to: 'projects/project_fiscal#debit_note_end_dates'
         resources :contributions, { except: [:index], controller: 'projects/contributions' } do
           collection do
             get :fallback_create, to: 'projects/contributions#create'
@@ -143,6 +147,7 @@ Catarse::Application.routes.draw do
           get 'posts'
           get 'surveys'
           get 'fiscal'
+          get 'project_fiscal'
           get 'contributions_report'
           get 'subscriptions_report'
           get 'subscriptions_report_download'

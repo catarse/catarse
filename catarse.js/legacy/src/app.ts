@@ -142,6 +142,7 @@ m.trust = (text) => h.trust(text);
                 }),
                 '/projects/:project_id/surveys': Wrap(c.root.Surveys, { menuTransparency: false, footerBig: false, menuShort: true }),
                 '/projects/:project_id/fiscal': Wrap(c.root.ProjectsFiscal, { menuTransparency: false, footerBig: false, menuShort: true }),
+                '/projects/:project_id/project_fiscal': Wrap(c.root.ProjectFiscals, { menuTransparency: false, footerBig: false, menuShort: true }),
                 '/projects/:project_id/posts': Wrap(c.root.Posts, { menuTransparency: false, footerBig: false }),
                 '/projects/:project_id/posts/:post_id': Wrap(c.root.ProjectShow, { menuTransparency: false, footerBig: true }),
                 [urlWithLocale('/projects/:project_id/posts')]: Wrap(c.root.Posts, { menuTransparency: false, footerBig: false }),
