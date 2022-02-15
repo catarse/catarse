@@ -213,6 +213,13 @@ namespace :cron do
     end
   end
 
+  desc 'retry send notifications without sendgrid event'
+  task retry_send_notifications: [:environment] do
+    Queries::NotificationsWithoutSendgridEvent.new.call.each do |notification|
+      Notifier.notify(notification)
+    end
+  end
+
   desc 'Update all fb users'
   task update_fb_users: [:environment] do
     User.joins(:projects).distinct.where("users.fb_parsed_link~'^pages/\\d+$'").each do |u|
