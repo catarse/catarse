@@ -3,6 +3,7 @@ import { withHooks } from 'mithril-hooks'
 import { ThisWindow, UserDetails } from '../entities'
 import { CurrencyFormat } from '../shared/components/currency-format'
 import { AdminMenuLinks } from './admin-menu-links'
+import ConnectFacebook from './connect-facebook';
 
 declare var window : ThisWindow
 
@@ -124,10 +125,25 @@ const UserMenuItemLink = withHooks<{ item : MenuItem }>(_UserMenuItemLink)
 
 function _UserMenuItemLink({ item: { label, url }} : { item : MenuItem }) {
     return (
+        use_connect_facebook(label) ?
+        <ConnectFacebook
+            label={'Encontre amigos'}
+            linkClass={'a.alt-link.fontsize-smaller'}
+            buttonClass={'input.alt-link.fontsize-smaller'}
+            styleInput={'border: unset; background-color: unset; padding-left: 0'}
+        />
+        :
         <li class="lineheight-looser">
             <a href={`/${window.I18n.locale}${url}`} class="alt-link fontsize-smaller">
                 {label}
             </a>
         </li>
     )
+}
+
+function use_connect_facebook(label) {
+    if (label == 'Encontre amigos') {
+        return true
+    }
+    false
 }

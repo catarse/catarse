@@ -10,9 +10,10 @@ type ConnectFacebookProps = {
     linkClass: string
     label: string
     buttonClass: string
+    styleInput?: string
 }
 
-function ConnectFacebook({ label, linkClass, buttonClass} : ConnectFacebookProps) {
+function ConnectFacebook({ label, linkClass, buttonClass, styleInput } : ConnectFacebookProps) {
     const currentUser = getCurrentUserCached();
     const hasFBAuth = isLoggedIn(currentUser) && currentUser.has_fb_auth;
 
@@ -23,7 +24,7 @@ function ConnectFacebook({ label, linkClass, buttonClass} : ConnectFacebookProps
             action: '/users/auth/facebook',
             method: 'POST',
         }, [
-            m(`${buttonClass}[type="submit"][value="${label}"]`),
+            m(`${buttonClass}[type="submit"][value="${label}"][style="${styleInput}"]`),
             m(`input[name='authenticity_token'][type='hidden'][value='${h.authenticityToken()}']`),
         ])
     )

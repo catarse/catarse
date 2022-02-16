@@ -85,8 +85,7 @@ class ApplicationController < ActionController::Base
       FbFriendCollectorWorker.perform_async(current_user.fb_auth.id)
       redirect_to follow_fb_friends_path
     else
-      session[:return_to] = follow_fb_friends_path
-      redirect_to user_facebook_omniauth_authorize_path
+      redirect_to root_path
     end
   end
 
