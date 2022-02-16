@@ -119,23 +119,19 @@ const projectContributionReportContent = {
                                     m('button.btn.btn-inline.btn-small.btn-terciary.w-button', {
                                         onclick: state.showSelectedMenu.toggle
                                     }, [
-                                        'Marcar ',
-                                        m('span.w-hidden-tiny',
-                                            'entrega'
-                                        ),
-                                        ' como'
+                                        'Marcar como'
                                     ]),
                                     (state.showSelectedMenu() ?
                                         m('.card.dropdown-list.dropdown-list-medium.u-radius.zindex-10[id=\'transfer\']', [
                                             m('a.dropdown-link.fontsize-smaller[href=\'#\']', {
                                                 onclick: () => state.displayDeliverModal.toggle()
                                             },
-                                                'Entregue'
+                                                'Enviada'
                                             ),
                                             m('a.dropdown-link.fontsize-smaller[href=\'#\']', {
                                                 onclick: () => state.displayErrorModal.toggle()
                                             },
-                                                'Erro na entrega'
+                                                'Erro no envio'
                                             )
                                         ]) : '')
                                 ]) : '')
