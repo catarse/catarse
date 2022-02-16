@@ -10,14 +10,14 @@
 
   - if pagy.prev
     .pagination-item.pagination-prev
-      = link_to pagy_url_for(pagy.prev, pagy), class: 'u-block' do
+      = link_to pagy_url_for(pagy, pagy.prev), class: 'u-block' do
         h5.m-0 Previous
   - else
     h5.m-0.text-gray-400 Previous
 
   - if pagy.next
     .pagination-item.pagination-next
-      = link_to pagy_url_for(pagy.next, pagy), class: 'u-block' do
+      = link_to pagy_url_for(pagy, pagy.next), class: 'u-block' do
         h5.m-0 Next
   - else
     h5.m-0.text-gray-400 Next
