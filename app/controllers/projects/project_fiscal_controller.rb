@@ -3,6 +3,7 @@
 module Projects
   class ProjectFiscalController < ApplicationController
     before_action :set_date, only: [:inform]
+    before_action :set_project, only: %i[inform inform_years]
 
     inherit_resources
     actions :show
@@ -24,10 +25,7 @@ module Projects
     end
 
     def inform
-      where_clause = 'project_id = :project_id AND begin_date >= :begin_date AND end_date <= :end_date'
-      project_fiscals = ProjectFiscal.where(
-        where_clause, project_id: params[:project_id], begin_date: @begin_date, end_date: @end_date
-      )
+      project_fiscals = project_fiscals_to_informs
 
       if project_fiscals.blank?
         redirect_to edit_project_path(params[:project_id], locale: nil)
@@ -72,6 +70,23 @@ module Projects
     def set_date
       @begin_date = "01/#{params[:fiscal_year]}".to_date.beginning_of_month
       @end_date = "12/#{params[:fiscal_year]}".to_date.end_of_month
+    end
+
+    def set_project
+      @project = Project.find(params[:project_id])
+    end
+
+    def project_fiscals_to_informs
+      if @project.is_sub?
+        ProjectFiscal.where(
+          'project_id = :project_id AND begin_date >= :begin_date AND end_date <= :end_date',
+          project_id: params[:project_id], begin_date: @begin_date, end_date: @end_date
+        )
+      else
+        ProjectFiscal.where(
+          'project_id = :project_id AND end_date <= :end_date', project_id: params[:project_id], end_date: @end_date
+        )
+      end
     end
   end
 end
