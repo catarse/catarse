@@ -23,6 +23,7 @@ const models = {
     projectSubscriber: commonProject.model('subscribers'),
     commonPayment: commonPayment.model('rpc/pay'),
     cancelSubscription: commonPayment.model('rpc/cancel_subscription'),
+    restoreSubscription: commonPayment.model('rpc/restore_subscription'),
     commonPaymentInfo: commonPayment.model('rpc/payment_info'),
     commonPayments: commonPayment.model('payments'),
     subscriptionsPerMonth: commonPayment.model('subscriptions_per_month'),

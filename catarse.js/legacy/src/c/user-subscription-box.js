@@ -4,7 +4,7 @@ import _ from 'underscore';
 import h from '../h';
 import moment from 'moment';
 import models from '../models';
-import { catarse } from '../api';
+import { catarse, commonPayment } from '../api';
 import contributionVM from '../vms/contribution-vm';
 import subscriptionVM from '../vms/subscription-vm';
 import commonPaymentVM from '../vms/common-payment-vm';
@@ -18,6 +18,7 @@ import userVM from '../vms/user-vm';
 import userSubscriptionPaymentHistoryModal from './user-subscription-payment-history-modal';
 import subscriptionNextChargeDateCompact from './subscription-next-charge-date-compact';
 import userSubscriptionBoxControl from './user-subscription-box-control';
+import popNotification from './pop-notification';
 
 const I18nScope = _.partial(h.i18nScope, 'payment.state');
 const contributionScope = _.partial(h.i18nScope, 'users.contribution_row');
@@ -30,7 +31,9 @@ const userSubscriptionBox = {
             displayCancelModal = h.toggleProp(false, true),
             displayPaymentHistoryModal = h.toggleProp(false, true),
             contactModalInfo = prop({}),
-            isGeneratingSecondSlip = h.toggleProp(false, true);
+            isGeneratingSecondSlip = h.toggleProp(false, true),
+            showSuccess = prop(false),
+            showError = prop(false);
 
         const filterProjVM = catarse
                 .filtersVM({
@@ -89,6 +92,37 @@ const userSubscriptionBox = {
                     window.location.reload();
                 });
         };
+
+        const restoreSubscription = () => {
+            const l = commonPayment.loaderWithToken(models.restoreSubscription.postOptions({
+                id: vnode.attrs.subscription.id
+            }));
+
+            l.load().then(() => {
+                h.storeAction('display_pop', 'success')
+                window.location.reload();
+            }).catch(e => {
+                h.storeAction('display_pop', 'error')
+                window.location.reload();
+            });
+        };
+
+        function displayPop() {
+            const displayPop = localStorage.getItem('display_pop');
+
+            if (displayPop) {
+                if (displayPop == 'success') {
+                    showSuccess(true);
+                } else if (displayPop == 'error') {
+                    showError(true);
+                }
+
+                localStorage.removeItem('display_pop');
+            }
+            h.redraw();
+        }
+
+        displayPop();
 
         const showLastSubscriptionVersionValueIfHasOne = () => {
             const is_active = subscription.status === 'active';
@@ -215,6 +249,9 @@ const userSubscriptionBox = {
             showLastSubscriptionVersionEditionNextCharge,
             isGeneratingSecondSlip,
             generateSecondSlip,
+            restoreSubscription,
+            showSuccess,
+            showError
         };
     },
     view: function({ state }) {
@@ -222,7 +259,20 @@ const userSubscriptionBox = {
             project = subscription.project;
 
         return !_.isEmpty(subscription) && !_.isEmpty(subscription.project)
-            ? m(
+            ?
+            [
+                state.showSuccess() ?
+                m(popNotification, {
+                    message: 'A solicitação de cancelamento de sua assinatura foi desfeita.',
+                    time: 6000
+                }) : '',
+                state.showError() ?
+                m(popNotification, {
+                    message: 'Houve um erro na solicitação de cancelamento de sua assinatura.',
+                    error: true,
+                    time: 6000
+                }) : '',
+                m(
                   'div',
                   state.displayCancelModal() && !_.isEmpty(state.contactModalInfo())
                       ? m(modalBox, {
@@ -311,11 +361,13 @@ const userSubscriptionBox = {
                               isGeneratingSecondSlip: state.isGeneratingSecondSlip,
                               generateSecondSlip: state.generateSecondSlip,
                               showLastSubscriptionVersionEditionNextCharge: state.showLastSubscriptionVersionEditionNextCharge,
+                              restoreSubscription: state.restoreSubscription,
                           }),
                       ]),
                   ]
               )
-            : m('div', '');
+            ]
+        : m('div', '');
     },
 };
 

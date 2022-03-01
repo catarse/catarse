@@ -13,8 +13,9 @@ const UserSubscriptionBoxControl = {
             isGeneratingSecondSlip,
             generateSecondSlip,
             showLastSubscriptionVersionEditionNextCharge,
+            restoreSubscription,
         } = attrs;
-        
+
         if (subscription.status === 'started') {
 
             if (subscription.last_payment_data.status === 'refused' && subscription.payment_method != 'boleto') {
@@ -47,14 +48,14 @@ const UserSubscriptionBoxControl = {
                             m('span.fa.fa-exclamation-triangle'),
                             ` O boleto de sua assinatura venceu dia ${h.momentify(subscription.boleto_expiration_date)}`,
                         ]),
-                        isGeneratingSecondSlip() ? 
+                        isGeneratingSecondSlip() ?
                             h.loader()
-                        : 
+                        :
                             m('button.btn.btn-inline.btn-small.w-button', {
                                 disabled: isGeneratingSecondSlip(),
                                 onclick: generateSecondSlip,
                             }, 'Gerar segunda via'),
-                            
+
                         m('button.btn-link.fontsize-smallest.link-hidden-light.u-margintop-10', {
                             onclick: () => { displayCancelModal.toggle(); },
                         }, 'Cancelar assinatura'),
@@ -68,7 +69,7 @@ const UserSubscriptionBoxControl = {
                         m(`a.btn.btn-inline.btn-small.w-button[target=_blank][href=${
                             subscription.boleto_url
                         }]`, 'Imprimir boleto'),
-        
+
                         m('button.btn-link.fontsize-smallest.link-hidden-light.u-margintop-10', {
                             onclick: () => { displayCancelModal.toggle(); },
                         }, 'Cancelar assinatura'),
@@ -85,9 +86,9 @@ const UserSubscriptionBoxControl = {
             } else {
                 return '';
             }
-        
+
         } else if (subscription.status === 'inactive') {
-        
+
             if (subscription.payment_status === 'pending' && subscription.boleto_url && subscription.boleto_expiration_date) {
                 return [
                     m('.card-alert.fontsize-smaller.fontweight-semibold.u-marginbottom-10.u-radius', [
@@ -112,7 +113,7 @@ const UserSubscriptionBoxControl = {
                     ),
                 ]
             }
-        
+
         } else if (subscription.status === 'canceled' && subscription.project.state == 'online') {
             return [
                 m('.card-error.fontsize-smaller.fontweight-semibold.u-marginbottom-10.u-radius', [
@@ -129,16 +130,19 @@ const UserSubscriptionBoxControl = {
                     'Assinar novamente'
                 ),
             ]
-        
+
         } else if (subscription.status === 'canceling') {
-            return m('.u-radius.fontsize-smaller.u-marginbottom-10.fontweight-semibold.card-error',
+            return [m('.u-radius.fontsize-smaller.u-marginbottom-10.fontweight-semibold.card-error',
                 m('div', [
                     m('span.fa.fa-exclamation-triangle', ' '),
                     ` Sua assinatura será cancelada no dia ${
                         h.momentify(subscription.next_charge_at, 'DD/MM/YYYY')
                     }. Até lá, ela ainda será considerada ativa.`,
-                ])
-            );
+                ])),
+                m('button.btn.btn-inline.btn-small.btn-terciary.w-button', {
+                    onclick: restoreSubscription,
+                }, 'Desfazer cancelamento')
+            ]
         } else if (subscription.status === 'active') {
             if (subscription.last_payment_data.status === 'refused') {
                 return [
@@ -164,7 +168,7 @@ const UserSubscriptionBoxControl = {
                     }, 'Cancelar assinatura'),
                 ]
             } else {
-        
+
                 if (subscription.payment_status !== 'pending') {
                     const editHref = `/projects/${subscription.project_external_id}/subscriptions/start?${subscription.reward_external_id ? `reward_id=${subscription.reward_external_id}` : ''}&subscription_id=${subscription.id}&subscription_status=${subscription.status}`;
                     return [
@@ -172,7 +176,7 @@ const UserSubscriptionBoxControl = {
                         m('a.btn.btn-terciary.btn-inline.w-button', {
                             href: editHref,
                         }, 'Editar assinatura'),
-                        
+
                         m('button.btn-link.fontsize-smallest.link-hidden-light.u-margintop-10', {
                             onclick: () => { displayCancelModal.toggle(); },
                         }, 'Cancelar assinatura'),
@@ -188,18 +192,18 @@ const UserSubscriptionBoxControl = {
                                     h.momentify(subscription.boleto_expiration_date)
                                 }`,
                             ]),
-                            isGeneratingSecondSlip() ? 
+                            isGeneratingSecondSlip() ?
                                 h.loader()
-                            : 
+                            :
                                 m('button.btn.btn-inline.btn-small.u-marginbottom-20.w-button', {
                                     disabled: isGeneratingSecondSlip( ),
                                     onclick: generateSecondSlip,
                                 }, 'Gerar segunda via'),
-                            
+
                             m('button.btn-link.fontsize-smallest.link-hidden-light', {
                                 onclick: () => { displayCancelModal.toggle(); },
                             }, 'Cancelar assinatura'),
-                        ]                
+                        ]
                     } else {
                         return [
                             showLastSubscriptionVersionEditionNextCharge(),

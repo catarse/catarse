@@ -802,6 +802,26 @@ class CommonWrapper
     end
   end
 
+  def restore_subscription(resource)
+    @api_key = common_api_key
+    uri = services_endpoint[:payment_service]
+    uri.path = '/rpc/restore_subscription'
+    response = request(
+      uri.to_s,
+      body: {
+        id: resource.id
+      }.to_json,
+      action: :post,
+      current_ip: resource.user.current_sign_in_ip
+    ).run
+    if response.success?
+      json = ActiveSupport::JSON.decode(response.body)
+      return json.try(:[], 'id')
+    else
+      Rails.logger.info(response.body)
+    end
+  end
+
   def refund_subscription_payment(resource)
     @api_key = common_api_key
     uri = services_endpoint[:payment_service]
