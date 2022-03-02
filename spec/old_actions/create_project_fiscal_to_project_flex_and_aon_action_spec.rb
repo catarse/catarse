@@ -65,7 +65,7 @@ RSpec.describe CreateProjectFiscalToProjectFlexAndAonAction, type: :action do
 
     context 'when there are already fiscal projects' do
       before do
-        create(:project_fiscal, project: project, created_at: Time.zone.tomorrow - 60.days)
+        create(:project_fiscal, project: project, created_at: Time.zone.tomorrow - 2.months)
       end
 
       it 'returns project fiscals attributes' do
