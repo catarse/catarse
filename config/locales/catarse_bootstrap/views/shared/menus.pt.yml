@@ -4,7 +4,7 @@ pt:
       user:
         find_friends: 'Encontrar amigos'
         about: 'Perfil Público'
-        access_address: 'Dados cadastrais'
+        access_address: 'Dados e Privacidade'
         activity: 'Atividade'
         banking: 'Banco e cartões'
         contributions_history: 'Meu histórico'

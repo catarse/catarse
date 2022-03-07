@@ -251,7 +251,7 @@ pt:
       publish: Continuar
     dashboard_nav_links:
       preview_tab: Preview
-      account_tab: Dados cadastrais
+      account_tab: Dados e Privacidade
       basics_tab: Básico
       goal_tab: Financiamento
       goals_tab: Metas

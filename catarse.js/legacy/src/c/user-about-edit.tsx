@@ -12,14 +12,11 @@ import textEditor from '../shared/components/text-editor';
 import { getUserDetailsWithUserId } from '../shared/services/user/get-updated-current-user';
 
 const userAboutEdit = {
-    oninit: function(vnode) {
+    oninit: function(vnode) {        
         let parsedErrors = userAboutVM.mapRailsErrors(railsErrorsVM.railsErrors());
-        let deleteUser;
         const userId = vnode.attrs.userId;
         const user = vnode.attrs.user || {},
             fields = {
-                password: prop(''),
-                current_password: prop(''),
                 uploaded_image: prop(userVM.displayImage(user)),
                 cover_image: prop(user.profile_cover_image || ''),
                 email: prop(''),
@@ -100,8 +97,6 @@ const userAboutEdit = {
 
             updateUser = () => {
                 const userData = {
-                    current_password: fields.current_password(),
-                    password: fields.password(),
                     email: fields.email(),
                     permalink: fields.permalink(),
                     public_name: fields.public_name(),
@@ -169,31 +164,10 @@ const userAboutEdit = {
                 }
                 return !emailHasError();
             },
-            validatePassword = () => {
-                const pass = String(fields.password());
-                if (pass.length > 0 && pass.length <= 5) {
-                    passwordHasError(true);
-                }
-
-                return !passwordHasError();
-            },
-            setDeleteForm = (localVnode) => {
-                deleteUser = () => localVnode.dom.submit();
-            },
-            deleteAccount = () => {
-                if (window.confirm('Tem certeza que deseja desativar a sua conta?')) {
-                    deleteUser();
-                }
-
-                return false;
-            },
             onSubmit = (e) => {
                 e.preventDefault();
                 if (!validateEmailConfirmation()) {
                     errors('Confirmação de email está incorreta.');
-                    showError(true);
-                } else if (!validatePassword()) {
-                    errors('Nova senha está incorreta.');
                     showError(true);
                 } else {
                     updateUser();
@@ -219,9 +193,6 @@ const userAboutEdit = {
             showEmailForm,
             validateEmailConfirmation,
             passwordHasError,
-            validatePassword,
-            deleteAccount,
-            setDeleteForm,
             parsedErrors
         };
     },
@@ -486,68 +457,7 @@ const userAboutEdit = {
                                             ])
                                         ])
                                     ])
-                                ),
-                                (attrs.hidePasswordChange ? '' : m('.w-form.card.card-terciary.u-marginbottom-30',
-                                    m('.w-row.u-marginbottom-10', [
-                                        m('.fontsize-base.fontweight-semibold',
-                                            'Alterar minha senha'
-                                        ),
-                                        m('.fontsize-small.u-marginbottom-20',
-                                            'Para que a senha seja alterada você precisa confirmar a sua senha atual.'
-                                        ),
-                                        m('.w-row.u-marginbottom-20', [
-                                            m('.w-col.w-col-6.w-sub-col', [
-                                                m('label.field-label.fontweight-semibold',
-                                                    ' Senha atual'
-                                                ),
-                                                m('input.password.optional.w-input.text-field.w-input.text-field.positive[id=\'user_current_password\'][name=\'user[current_password]\'][type=\'password\']', {
-                                                    value: fields.current_password(),
-                                                    onchange: m.withAttr('value', fields.current_password)
-                                                })
-                                            ]),
-                                            m('.w-col.w-col-6', [
-                                                m('label.field-label.fontweight-semibold',
-                                                    ' Nova senha'
-                                                ),
-                                                m('input.password.optional.w-input.text-field.w-input.text-field.positive[id=\'user_password\'][name=\'user[password]\'][type=\'password\']', {
-                                                    class: state.passwordHasError() ? 'error' : '',
-                                                    value: fields.password(),
-                                                    onfocus: () => state.passwordHasError(false),
-                                                    onblur: state.validatePassword,
-                                                    onchange: m.withAttr('value', fields.password)
-                                                }), !state.passwordHasError() ? '' : m(inlineError, {
-                                                    message: 'A sua nova senha deve ter no mínimo 6 caracteres.'
-                                                })
-                                            ])
-                                        ]),
-
-                                    ])
-                                )),
-                                (!user.is_admin && (attrs.hideDisableAcc || user.total_published_projects > 0) ? '' : m('.w-form.card.card-terciary.u-marginbottom-30',
-                                    m('.w-row.u-marginbottom-10', [
-                                        m('.fontweight-semibold.fontsize-smaller',
-                                            'Desativar minha conta'
-                                        ),
-                                        m('.fontsize-smallest',
-                                            'Todos os seus apoios serão convertidos em apoios anônimos, seus dados não serão mais visíveis, você sairá automaticamente do sistema e sua conta será desativada permanentemente.'
-                                        ),
-                                        m(`a.alt-link.fontsize-smaller[href='/${window.I18n.locale}/users/${user.id}'][rel='nofollow']`, {
-                                            onclick: state.deleteAccount
-                                        },
-                                            'Desativar minha conta no Catarse'
-                                        ),
-                                        m('form.w-hidden', {
-                                            action: `/${window.I18n.locale}/users/${user.id}`,
-                                            method: 'post',
-                                            oncreate: state.setDeleteForm
-                                        }, [
-                                            m(`input[name='authenticity_token'][type='hidden'][value='${h.authenticityToken()}']`),
-                                            m('input[name=\'_method\'][type=\'hidden\'][value=\'delete\']')
-                                        ])
-
-                                    ])
-                                ))
-
+                                )
                             ])
                         )
                     ),

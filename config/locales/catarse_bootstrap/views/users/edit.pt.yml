@@ -5,7 +5,7 @@ pt:
         contributions: 'Apoiados'
         projects: 'Criados'
         about_me: 'Perfil público'
-        settings: 'Dados cadastrais'
+        settings: 'Dados e Privacidade'
         contributions: 'Apoiados'
         notifications: 'Notificações'
         balance: 'Saldo'
@@ -19,6 +19,16 @@ pt:
         update_success_msg: 'As suas informações foram atualizadas'
         legal_title: 'Responsável'
         legal_subtitle: '<strong>IMPORTANTE</strong> Nome completo/Razão social e CPF/CNPJ <strong>não poderão ser modificados</strong> após serem salvos.'
+        change_password:
+          title: 'Alterar Senha'
+          subtitle: 'Para que a senha seja alterada você precisa confirmar a sua senha atual.'
+          current_label: 'Senha atual'
+          new_label: 'Nova senha'
+        delete_account:
+          title: 'Desativar minha conta'
+          subtitle: 'Todos os seus apoios serão convertidos em apoios anônimos, seus dados não serão mais visíveis, você sairá automaticamente do sistema e sua conta será desativada permanentemente.'
+          label: 'Desativar minha conta no Catarse'
+          confirmation: 'Tem certeza que deseja desativar a sua conta?'
         account_types:
           pf: 'Pessoa Física'
           pj: 'Pessoa Jurídica'

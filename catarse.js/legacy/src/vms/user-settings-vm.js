@@ -28,7 +28,9 @@ const fields = {
     state_inscription: prop(''),
     birth_date: prop(''),
     account_type: prop(''),
-    bank_account_type: prop('')
+    bank_account_type: prop(''),
+    password: prop(''),
+    current_password: prop('')
 };
 
 const mapRailsErrors = (rails_errors) => {
@@ -67,6 +69,8 @@ const mapRailsErrors = (rails_errors) => {
     extractAndSetErrorMsg('bank_id', ['user.bank_account.bank', 'bank_account.bank']);
     extractAndSetErrorMsg('birth_date', ['user.birth_date', 'birth_date']);
     extractAndSetErrorMsg('account_type', ['user.account_type', 'account_type']);
+    extractAndSetErrorMsg('password', ['user.password', 'password']);
+    extractAndSetErrorMsg('current_password', ['user.current_password', 'current_password']);
 
     return e;
 };

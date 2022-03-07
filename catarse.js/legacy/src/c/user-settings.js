@@ -13,11 +13,14 @@ import userSettingsAddress from './user-settings-address';
 import userSettingsSavedCreditCards from './user-settings-saved-credit-cards';
 import userSettingsHelp from './user-settings-help';
 import addressVM from '../vms/address-vm';
+import userSettingsChangePassword from './user-settings-change-password';
+import userSettingsDeleteAccount from './user-settings-delete-account';
 
 const I18nScope = _.partial(h.i18nScope, 'users.edit.settings_tab');
 
 const userSettings = {
     oninit: function(vnode) {
+        let deleteUser;
         const reloadUserData = vnode.attrs.reloadUserData
         let parsedErrors = userSettingsVM.mapRailsErrors(railsErrorsVM.railsErrors());
         let deleteFormSubmit;
@@ -30,7 +33,9 @@ const userSettings = {
             state_inscription: prop(user.state_inscription || ''),
             address: prop(user.address || {}),
             birth_date: prop((user.birth_date ? h.momentify(user.birth_date) : '')),
-            account_type: prop(user.account_type || '')
+            account_type: prop(user.account_type || ''),
+            password: prop(''),
+            current_password: prop('')
         });
         const loading = prop(false);
         const user_id = vnode.attrs.userId;
@@ -63,7 +68,9 @@ const userSettings = {
                     address_attributes: addVM().getFields(),
                     account_type: fields().account_type(),
                     birth_date: fields().birth_date(),
-                    state_inscription: fields().state_inscription
+                    state_inscription: fields().state_inscription,
+                    password: fields().password(),
+                    current_password: fields().current_password()
                 };
 
                 if (vnode.attrs.publishingUserSettings) {
@@ -103,6 +110,16 @@ const userSettings = {
                     }
                     requestRedraw();
                 });
+            },
+            deleteAccount = () => {
+                if (window.confirm(window.I18n.t('delete_account.confirmation', I18nScope()))) {
+                    deleteUser();
+                }
+
+                return false;
+            },
+            setDeleteForm = (localVnode) => {
+                deleteUser = () => localVnode.dom.submit();
             },
             onSubmit = () => {
                 loading(true);
@@ -155,6 +172,8 @@ const userSettings = {
             setCardDeletionForm,
             applyBirthDateMask,
             loading,
+            deleteAccount,
+            setDeleteForm,
             parsedErrors,
             addVM
         };
@@ -164,6 +183,8 @@ const userSettings = {
         const user = attrs.user();
         const fields = state.fields;
         const addVM = state.addVM;
+        const deleteAccount = state.deleteAccount;
+        const setDeleteForm = state.setDeleteForm;
         const hasContributedOrPublished = (user.total_contributed_projects >= 1 || user.total_published_projects >= 1);
         const disableFields = (user.is_admin_role ? false : (hasContributedOrPublished && !_.isEmpty(user.name) && !_.isEmpty(user.owner_document)));
         const applyBirthDateMask = state.applyBirthDateMask;
@@ -175,6 +196,7 @@ const userSettings = {
         const setCardDeletionForm = state.setCardDeletionForm;
         const shouldHideCreditCards = attrs.hideCreditCards;
         const isProjectUserEdit = !!attrs.isProjectUserEdit;
+        const hideDisableAcc = !user.is_admin && user.total_published_projects > 0;
 
         return m('[id=\'settings-tab\']', [
             (
@@ -212,7 +234,9 @@ const userSettings = {
                                 m('.w-col.w-col-10.w-col-push-1', [
                                     m(userSettingsResponsible, { parsedErrors, fields, user, disableFields, applyDocumentMask, applyBirthDateMask }),
                                     m(userSettingsAddress, { addVM, parsedErrors }),
-                                    (shouldHideCreditCards ? '' : m(userSettingsSavedCreditCards, { user, creditCards, setCardDeletionForm, deleteCard, toDeleteCard }))
+                                    (shouldHideCreditCards ? '' : m(userSettingsSavedCreditCards, { user, creditCards, setCardDeletionForm, deleteCard, toDeleteCard })),
+                                    m(userSettingsChangePassword, { parsedErrors, fields }),
+                                    (hideDisableAcc ? '' : m(userSettingsDeleteAccount, { idUser: prop(user.id), deleteAccount, setDeleteForm  }))
                                 ])
                         )
                     ),

@@ -8,8 +8,6 @@ import generateErrorInstance from '../error';
 const e = generateErrorInstance();
 
 const fields = {
-    password: prop(''),
-    current_password: prop(''),
     uploaded_image: prop(''),
     cover_image: prop(''),
     email: prop(''),

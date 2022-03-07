@@ -93,7 +93,7 @@ const usersEdit = {
                                 'Perfil Público'
                             ),
                             m(`a.dashboard-nav-link${(state.hash() === '#settings' ? '.selected' : '')}[data-target='#dashboard_settings'][href='#settings'][id='dashboard_settings_link']`,
-                                'Dados cadastrais'
+                                'Dados e Privacidade'
                             ),
                             m(`a.dashboard-nav-link${(state.hash() === '#notifications' ? '.selected' : '')}[data-target='#dashboard_notifications'][href='#notifications'][id='dashboard_notifications_link']`,
                                 'Notificações'

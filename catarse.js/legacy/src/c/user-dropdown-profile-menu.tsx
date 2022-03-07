@@ -110,7 +110,7 @@ function createMenusItems(user: { id: number }, balance: number) {
             url: `/users/${user.id}/edit#notifications`
         },
         {
-            label: 'Dados cadastrais',
+            label: 'Dados e Privacidade',
             url: `/users/${user.id}/edit#settings`
         }
     ]
