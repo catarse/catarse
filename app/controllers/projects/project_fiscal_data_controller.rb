@@ -21,7 +21,7 @@ class Projects::ProjectFiscalDataController < ApplicationController
   def inform
     fiscal_data = ProjectFiscalInform.find_by(project_id: params[:project_id], fiscal_year: params[:fiscal_year])
     if !fiscal_data.nil?
-#      authorize fiscal_data
+      authorize fiscal_data
       template = 'project_inform'
       render "user_notifier/mailer/#{template}", locals: { fiscal_data:fiscal_data }, layout: 'layouts/email'
     else
