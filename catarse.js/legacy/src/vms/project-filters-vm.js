@@ -44,10 +44,9 @@ const projectFiltersVM = () => {
             open_for_contributions: 'eq'
         }).open_for_contributions('true'),
 
-        saved_projects = filtersVM({
-            open_for_contributions: 'eq',
-            saved_projects: 'eq'
-        }).open_for_contributions('true').saved_projects(true),
+        active_saved_projects = filtersVM({
+          active_saved_projects: 'eq'
+        }).active_saved_projects(true),
 
         contributed_by_friends = filtersVM({
             open_for_contributions: 'eq',
@@ -57,6 +56,11 @@ const projectFiltersVM = () => {
         successful = filtersVM({
             state: 'eq'
         }).state('successful'),
+
+        coming_soon_landing_page = filtersVM({
+            state: 'eq',
+            integrations: 'like',
+        }).state('draft').integrations('COMING_SOON_LANDING_PAGE'),
 
         finished = filtersVM({}),
 
@@ -68,7 +72,7 @@ const projectFiltersVM = () => {
             recommended: 'eq',
             mode: 'not.eq'
         }).recommended(true).mode('sub'),
-        
+
         filters = {
             projects_we_love_not_sub: {
                 title: 'Projetos que amamos',
@@ -106,12 +110,12 @@ const projectFiltersVM = () => {
                     filter: 'all'
                 }
             },
-            saved_projects: {
+            active_saved_projects: {
                 title: 'Projetos Salvos',
-                filter: saved_projects,
+                filter: active_saved_projects,
                 nicename: 'Projetos Salvos',
                 isContextual: false,
-                keyName: 'saved_projects'
+                keyName: 'active_saved_projects'
             },
             contributed_by_friends: {
                 title: 'Amigos',
@@ -160,6 +164,13 @@ const projectFiltersVM = () => {
                 nicename: 'Financiados',
                 isContextual: false,
                 keyName: 'successful'
+            },
+            coming_soon_landing_page: {
+                title: 'Em breve no Catarse',
+                filter: coming_soon_landing_page,
+                nicename: 'Em breve no Catarse',
+                isContextual: false,
+                keyName: 'coming_soon_landing_page'
             },
             not_sub: {
                 title: 'Projetos pontuais',

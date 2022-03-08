@@ -44,12 +44,12 @@ export type ProjectsExploreVMSearchParams = {
     filter?: string;
 }
 
-export type Filter = { 
+export type Filter = {
     title: string;
     nicename?: string;
-    filter: any; 
-    isContextual: boolean; 
-    keyName: string; 
+    filter: any;
+    isContextual: boolean;
+    keyName: string;
 }
 
 export type Query = {
@@ -88,7 +88,7 @@ export class ProjectsExploreViewModel {
         this._cityState = params.cityState || null;
         this._searchParam = params.searchParam || '';
         this._amountFoundOnLocation = 0;
-        
+
         this._projectsView = {
             collection: () => [],
             isLastPage: () => true,
@@ -97,7 +97,7 @@ export class ProjectsExploreViewModel {
             total: () => 0,
             firstPage: (p = {}) => new Promise<Project[]>(() => {}),
         };
-    
+
         this._foundCityStates = [];
         this._lastQuery = this.mountQuery();
         this._isLoadingLocationsSearch = false;
@@ -119,7 +119,7 @@ export class ProjectsExploreViewModel {
                 h.redraw();
             } catch(e) {
                 this.category = ALL_CATEGORIES;
-                this.dispatchNewQuery();                
+                this.dispatchNewQuery();
             }
         } else {
             this._category = ALL_CATEGORIES;
@@ -151,7 +151,7 @@ export class ProjectsExploreViewModel {
         this._isLoadingLocationsSearch = false;
         h.redraw();
     }
-    
+
     get foundLocations() : CityState[] {
         return this._foundCityStates;
     }
@@ -173,7 +173,7 @@ export class ProjectsExploreViewModel {
         return this._searchParam;
     }
 
-    set mode(mode : Mode) { 
+    set mode(mode : Mode) {
         this._mode = mode;
         if (mode === 'sub') {
             this._filter = 'all';
@@ -280,9 +280,9 @@ export class ProjectsExploreViewModel {
         models.category.pageSize(100);
         const params = filters({}).order({ name: 'asc' }).parameters();
         const categories = await models.category.getPageWithToken(params);
-        this._categories = [ALL_CATEGORIES].concat(categories);      
+        this._categories = [ALL_CATEGORIES].concat(categories);
         const category = this._categories.find(c => c.id === this._category_id);
-        
+
         if (category) {
             this._category = category;
         }
@@ -311,7 +311,7 @@ export class ProjectsExploreViewModel {
         if (this._category_id) {
             query.category_id = this._category_id;
         }
-        
+
         if (this._cityState) {
             query.state_acronym = this._cityState.state.acronym;
             query.state_name = this._cityState.state.state_name;
@@ -346,8 +346,8 @@ export class ProjectsExploreViewModel {
     }
 
     private resetContextFilter() {
-        const loggedInContextFilters = ['finished', 'projects_we_love', 'all', 'saved_projects', 'contributed_by_friends', 'expiring', 'recent'];
-        const notLoggedInContextFilters = ['finished', 'projects_we_love', 'all', 'expiring', 'recent'];
+        const loggedInContextFilters = ['finished', 'projects_we_love', 'all', 'active_saved_projects', 'contributed_by_friends', 'expiring', 'recent', 'coming_soon_landing_page'];
+        const notLoggedInContextFilters = ['finished', 'projects_we_love', 'all', 'expiring', 'recent', 'coming_soon_landing_page'];
         const contextFilters = userVM.isLoggedIn ? loggedInContextFilters : notLoggedInContextFilters;
         projectFiltersVM.setContextFilters(contextFilters);
     }
@@ -361,7 +361,7 @@ export class ProjectsExploreViewModel {
                 return projectsFound
             });
         } else if (this._cityState?.city?.name) {
-            
+
             const cityOnlyVmInstance = catarse.paginationVM(model, null, { Prefer: 'count=exact' });
             const stateOnlyVmInstance = catarse.paginationVM(model, null, { Prefer: 'count=exact' });
 
@@ -455,6 +455,11 @@ export class ProjectsExploreViewModel {
                 state: 'desc',
                 pledged: 'desc'
             };
+        } else if (this._filter === 'coming_soon_landing_page')  {
+            return {
+                count_project_reminders: 'desc',
+                updated_at: 'desc'
+            };
         } else {
             return {
                 open_for_contributions: 'desc',
@@ -467,7 +472,9 @@ export class ProjectsExploreViewModel {
     }
 
     private setOpenForContribution() {
-        if (this._filter !== 'finished') {
+        const skip_filter_open_for_contribution = ['finished', 'coming_soon_landing_page', 'active_saved_projects']
+
+        if (!skip_filter_open_for_contribution.includes(this._filter)) {
             return filters({ open_for_contributions: 'eq' }).open_for_contributions(true).parameters();
         } else {
             return {};
@@ -483,7 +490,7 @@ export class ProjectsExploreViewModel {
 
         const cityName = this._cityState?.city?.name;
         const stateAcronym = this._cityState?.state?.acronym;
-        
+
         if (!cityName && stateAcronym) {
             parametersFilter = Object.assign(parametersFilter, filters({ state_acronym: 'eq' }).state_acronym(stateAcronym).parameters());
         }

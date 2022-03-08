@@ -26,7 +26,7 @@ export const ExploreProjectsList = {
                             if (project.score >= 1) {
                                 ref = 'ctrse_explore_featured';
                             }
-                        } else if (filterKeyName === 'saved_projects') {
+                        } else if (filterKeyName === 'active_saved_projects') {
                             ref = 'ctrse_explore_saved_project';
                         } else if (filterKeyName === 'projects_we_love') {
                             ref = 'ctrse_explore_projects_we_love';

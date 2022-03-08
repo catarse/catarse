@@ -16,6 +16,10 @@ import { I18ScopeType, ThisWindow } from '../entities/window';
 import ExploreMobileSearch from '../c/explore/explore-mobile-search';
 import { getCurrentUserCached } from '../shared/services/user/get-current-user-cached';
 import { isLoggedIn } from '../shared/services/user/is-logged-in';
+import { removeRemindProject } from './projects/controllers/removeRemindProject'
+import { remindProject } from './projects/controllers/remindProject'
+import { catarse } from '../api'
+import models from '../models';
 
 declare var window : ThisWindow
 
@@ -108,6 +112,33 @@ const projectsExplore : m.Component<ProjectExploreAttrs, ProjectExploreState> = 
             defineDeepObject('state.state_name', state_name, cityState);
             return cityState as CityState;
         };
+
+        function findRemindProjectInLocalStorage() {
+            const reminder = parseInt(localStorage.getItem('reminder'));
+
+            if (isLoggedIn(getCurrentUserCached()) && reminder) {
+                const lProjectsDetails = catarse.loaderWithToken(models.projectDetail.getPageOptions(
+                    catarse.filtersVM({ project_id: 'eq' }).project_id(reminder).parameters())
+                );
+                lProjectsDetails.load().then((data) => { remindProjectInLocalStorage(_.first(data)) });
+            }
+
+            localStorage.removeItem('reminder');
+        }
+
+        function remindProjectInLocalStorage(projectsDetails) {
+            try {
+                remindProject(projectsDetails)
+                h.redraw()
+                h.storeAction('display_pop', 'success')
+                h.storeAction('set_bookmarked', projectsDetails.id)
+            } catch (error) {
+                h.redraw()
+                h.storeAction('display_pop', 'error')
+            }
+        }
+
+        findRemindProjectInLocalStorage()
 
         vnode.state = {
             projectsExploreVM,

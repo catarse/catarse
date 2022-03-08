@@ -215,6 +215,8 @@ class UsersController < ApplicationController
         if params[:user][:reminders][:"#{project_id}"] == 'false'
           Project.find(project_id).delete_from_reminder_queue(@user.id)
           @user.reminders.where(project_id: project_id).destroy_all
+        else
+          ProjectMetricStorageRefreshWorker.perform_async(project_id)
         end
       end
     end

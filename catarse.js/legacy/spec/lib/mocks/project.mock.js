@@ -61,22 +61,22 @@ beforeAll(function(){
       "open_for_contributions":false,
       "online_days":60,
       "remaining_time":{
-        "total" : 0, 
+        "total" : 0,
         "unit" : "seconds"
       },
       "elapsed_time":{
-        "total" : 0, 
+        "total" : 0,
         "unit" : "seconds"
       },
       "posts_count":0,
       "address":{
-        "city" : "fda", 
-        "state_acronym" : "RS", 
+        "city" : "fda",
+        "state_acronym" : "RS",
         "state" : "Rio Grande do Sul"
       },
       "user":{
-        "id" : 3, 
-        "name" : "test test", 
+        "id" : 3,
+        "name" : "test test",
         "public_name" : "Test1"
       },
       "reminder_count":0,
@@ -133,7 +133,7 @@ beforeAll(function(){
 
 
   ProjectsGenerator = function(numberOfProjects, overrides, url) {
-    
+
     const projectBase = {
       project_id: 5,
       category_id: 1,
@@ -172,7 +172,7 @@ beforeAll(function(){
       common_id: "a60eec2e-dbe0-4efb-876c-e8c5ec0c8adc",
       is_adult_content: false,
       content_rating: 1,
-      saved_projects: true
+      active_saved_projects: true
     };
 
     const projects = [];
@@ -190,6 +190,3 @@ beforeAll(function(){
   });
 
 });
-
-
-

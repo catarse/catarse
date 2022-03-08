@@ -73,6 +73,8 @@ interface Platform {
 }
 
 interface Project {
+    project_id:                         number;
+    in_reminder:                        boolean;
     id:                                 string;
     mode:                               string;
     name:                               string;

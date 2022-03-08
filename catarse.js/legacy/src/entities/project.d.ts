@@ -33,7 +33,8 @@ export type Project = {
     common_id: string;
     is_adult_content: boolean;
     content_rating:	number;
-    saved_projects: boolean;
     integrations: ProjectIntegration[];
     category_name: string;
+    active_saved_projects: boolean;
+    in_reminder: boolean;
 };
