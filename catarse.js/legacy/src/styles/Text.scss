@@ -1,0 +1,123 @@
+/* Text Styles - coloquei o início das classes com text-style para facilitar o entendimento do que a classe está se referindo, e acaba seguindo o padrão do Figma de certo modo*/
+
+.text-style-display-x-large {
+	font-size:48px;
+	font-family: proxima-nova, sans-serif;
+	line-height:48px;
+	text-decoration:none;
+}
+.text-style-display-large {
+	font-size:32px;
+	font-family: proxima-nova, sans-serif;
+	line-height:32px;
+	text-decoration:none;
+}
+.text-style-display-medium {
+	font-size:26px;
+	font-family: proxima-nova, sans-serif;
+	line-height:32px;
+	text-decoration:none;
+}
+.text-style-display-small {
+	font-size:20px;
+	font-family: proxima-nova, sans-serif;
+	line-height:28px;
+	text-decoration:none;
+}
+.text-style-heading {
+	font-size:20px;
+	font-family: proxima-nova, sans-serif;
+	font-weight: 600;
+	line-height:28px;
+	text-decoration:none;
+}
+.text-style-subheading {
+	font-size:14px;
+	font-family: proxima-nova, sans-serif;
+	line-height:20px;
+	text-decoration:none;
+}
+.text-style-caption {
+	font-size:14px;
+	font-family: proxima-nova, sans-serif;
+	font-weight:normal;
+	font-style:normal;
+	line-height:20px;
+	text-decoration:none;
+}
+.text-style-body {
+	font-size:16px;
+	font-family: proxima-nova, sans-serif;
+	font-weight:normal;
+	font-style:normal;
+	line-height:24px;
+	text-decoration:none;
+}
+.text-style-button {
+	font-size:16px;
+	font-family: proxima-nova, sans-serif;
+	line-height:24px;
+	text-decoration:none;
+}
+@media (max-width: 479px) {
+    .text-style-display-x-large {
+        font-size:27px;
+        font-family: proxima-nova, sans-serif;
+        line-height:36px;
+        text-decoration:none;
+    }
+    .text-style-display-large {
+        font-size:24px;
+        font-family: proxima-nova, sans-serif;
+        line-height:28px;
+        text-decoration:none;
+    }
+    .text-style-display-medium {
+        font-size:21px;
+        font-family: proxima-nova, sans-serif;
+        line-height:28px;
+        text-decoration:none;
+    }
+    .text-style-display-small {
+        font-size:16px;
+        font-family: proxima-nova, sans-serif;
+        font-weight:normal;
+        font-style:normal;
+        line-height:24px;
+        text-decoration:none;
+    }
+    .text-style-heading {
+        font-size:17px;
+        font-family: proxima-nova, sans-serif;
+        line-height:24px;
+        text-decoration:none;
+    }
+    .text-style-subheading {
+        font-size:13px;
+        font-family: proxima-nova, sans-serif;
+        line-height:16px;
+        text-decoration:none;
+    }
+    .text-style-body {
+        font-size:15px;
+        font-family: proxima-nova, sans-serif;
+        font-weight:normal;
+        font-style:normal;
+        line-height:20px;
+        text-decoration:none;
+    }
+    .text-style-caption {
+        font-size:13px;
+        font-family: proxima-nova, sans-serif;
+        font-weight:normal;
+        font-style:normal;
+        line-height:20px;
+        text-decoration:none;
+    }
+    .text-style-button {
+        font-size:15px;
+        font-family: proxima-nova, sans-serif;
+        line-height:20px;
+        text-decoration:none;
+    }
+}
