@@ -251,11 +251,21 @@ namespace :cron do
       .where("project_fiscals.end_date > ?", Time.zone.now - 2.months).each do |project|
         CreateProjectFiscalToProjectFlexAndAonAction.new(project_id: project.id).call
     end
+
+    Project.left_outer_joins(:project_fiscals).where('project_fiscals.id IS NULL')
+      .where(mode: %i[aon flex], state: %i[waiting_funds successful]).each do |project|
+      CreateProjectFiscalToProjectFlexAndAonAction.new(project_id: project.id).call
+    end
   end
 
   desc 'create project fiscal to project sub'
   task create_project_fiscal_to_project_sub: :environment do
     Project.where(mode: %i[sub], state: %i[online]).each do |project|
+      CreateProjectFiscalToProjectSubAction.new(project_id: project.id, month: Time.zone.now.month, year: Time.zone.now.year).call
+    end
+
+    Project.left_outer_joins(:project_fiscals).where('project_fiscals.id IS NULL')
+      .where(mode: %i[sub], state: %i[successful]).each do |project|
       CreateProjectFiscalToProjectSubAction.new(project_id: project.id, month: Time.zone.now.month, year: Time.zone.now.year).call
     end
 
