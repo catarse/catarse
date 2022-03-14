@@ -138,6 +138,7 @@ Catarse::Application.routes.draw do
 
         collection do
           get :fallback_create, to: 'projects#create'
+          get 'subscriptions/receipt/:payment_id', action: :receipt, controller: 'projects/subscriptions', to: 'projects/subscriptions#receipt', as: :subscriptions_receipt
         end
         get 'video', on: :collection
         member do
