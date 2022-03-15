@@ -95,13 +95,61 @@ RSpec.describe Projects::ProjectFiscalController, type: :controller do
     context 'when project fiscal exist and user is project owner' do
       let(:project) { project_fiscal.project }
       let(:user) {  project_fiscal.user }
-      let!(:project_fiscal) { create(:project_fiscal) }
+      let!(:project_fiscal) do
+        create(:project_fiscal, begin_date: '02/2020'.to_date.beginning_of_month,
+          end_date: '02/2020'.to_date.end_of_month
+        )
+      end
 
       before do
+        create(:project_fiscal, begin_date: (project_fiscal.begin_date - 1.month),
+          end_date: (project_fiscal.end_date - 1.year)
+        )
+        create(:project_fiscal, begin_date: (project_fiscal.begin_date - 1.month),
+          end_date: (project_fiscal.end_date - 1.month)
+        )
+
         get :inform, params: { project_id: project.id, fiscal_year: project_fiscal.end_date.year.to_s }
       end
 
-      it { is_expected.to render_template('user_notifier/mailer/project_fiscal_inform') }
+      it 'returns all project_fiscals' do
+        expect(described_class).to render_template(
+          'user_notifier/mailer/project_fiscal_inform',
+          locals: { project_fiscals: ProjectFiscal.all },
+          layout: 'layouts/email'
+        )
+      end
+    end
+
+    context 'when project fiscal is subscription and user is project owner' do
+      let(:project) { project_fiscal.project }
+      let(:user) {  project_fiscal.user }
+      let!(:project_fiscal) do
+        create(:project_fiscal, begin_date: '02/2020'.to_date.beginning_of_month,
+          end_date: '02/2020'.to_date.end_of_month
+        )
+      end
+
+      let!(:project_fiscal_1) do
+        create(:project_fiscal, begin_date: (project_fiscal.begin_date - 1.month),
+          end_date: (project_fiscal.end_date - 1.month)
+        )
+      end
+
+      before do
+        create(:project_fiscal, begin_date: (project_fiscal.begin_date - 1.month),
+          end_date: (project_fiscal.end_date - 1.year)
+        )
+        get :inform, params: { project_id: project.id, fiscal_year: project_fiscal.end_date.year.to_s }
+      end
+
+      it 'returns all project_fiscals in the year' do
+        expect(described_class).to render_template(
+          'user_notifier/mailer/project_fiscal_inform',
+          locals: { project_fiscals: ProjectFiscal.where(id: [project_fiscal.id, project_fiscal_1.id]) },
+          layout: 'layouts/email'
+        )
+      end
     end
   end
 
