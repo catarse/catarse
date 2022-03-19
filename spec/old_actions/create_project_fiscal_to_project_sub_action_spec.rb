@@ -66,5 +66,22 @@ RSpec.describe CreateProjectFiscalToProjectSubAction, type: :action do
         'total_chargeback_cost_cents' => (payment[2].gateway_fee + antifraud[2].cost).to_i * 100
       )
     end
+
+    context 'when project_fiscal generate invoice' do
+      before do
+        CatarseSettings[:enotes_initial_cut_off_date] = '01-01-2020'
+        allow_any_instance_of(ENotas::Client).to receive(:create_nfe).and_return({ 'id' => '1' }) # rubocop:disable RSpec/AnyInstance
+      end
+
+      it 'capture invoice generation' do
+        expect(ENotas::Client.new.create_nfe('invoice')).to eq({ 'id' => '1' })
+
+        result
+      end
+
+      it 'updates metadata' do
+        expect(result.metadata).to eq({ 'id' => '1' })
+      end
+    end
   end
 end
