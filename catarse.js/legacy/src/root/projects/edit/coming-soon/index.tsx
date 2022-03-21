@@ -48,7 +48,8 @@ function _ComingSoon({project_id}: ComingSoonProps) {
                 message: [
                     'Não foi possível publicar sua página.',
                     'Confira se a Imagem do Projeto e a Frase de Efeito',
-                    `estão preenchidas corretamente na aba ${project.mode === 'sub' ? 'Imagens' : 'Card do Projeto'}.`
+                    `estão preenchidas corretamente na aba ${project.mode === 'sub' ? 'Imagens' : 'Card do Projeto'}.`,
+                    `Você também pode usar um vídeo, na aba ${project.mode === 'sub' ? 'Descrição' : 'Vídeo'}.`
                 ].join(' '),
                 isError: true
             })
