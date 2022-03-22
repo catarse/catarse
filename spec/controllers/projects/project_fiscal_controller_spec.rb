@@ -184,7 +184,7 @@ RSpec.describe Projects::ProjectFiscalController, type: :controller do
       let(:project) { create(:project) }
       let(:user) { build(:user, admin: true) }
       let!(:project_fiscal_2) do
-        create(:project_fiscal, project: project, end_date: 1.year.from_now)
+        create(:project_fiscal, project: project, end_date: Time.zone.now.prev_year)
       end
 
       before do
@@ -202,7 +202,7 @@ RSpec.describe Projects::ProjectFiscalController, type: :controller do
       let(:project) { create(:project) }
       let(:user) { project.user }
       let!(:project_fiscal_2) do
-        create(:project_fiscal, user: user, project: project, end_date: 1.year.from_now)
+        create(:project_fiscal, user: user, project: project, end_date: Time.zone.now.prev_year)
       end
 
       before do

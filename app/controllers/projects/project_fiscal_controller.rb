@@ -44,9 +44,8 @@ module Projects
       authorize project_fiscal if project_fiscal.present?
 
       result = ProjectFiscal.select("DATE_PART('year', end_date) as year")
-        .where(project_id: params[:project_id]).distinct.map(&:year)
+        .where(project_id: params[:project_id], end_date: ...Time.zone.now.beginning_of_year).distinct.map(&:year)
 
-      result = result.select { |year| year > Time.zone.now.year }
       render json: { result: result }
     end
 
@@ -77,16 +76,25 @@ module Projects
     end
 
     def project_fiscals_to_informs
-      if @project.is_sub?
-        ProjectFiscal.where(
-          'project_id = :project_id AND begin_date >= :begin_date AND end_date <= :end_date',
-          project_id: params[:project_id], begin_date: @begin_date, end_date: @end_date
-        )
-      else
-        ProjectFiscal.where(
-          'project_id = :project_id AND end_date <= :end_date', project_id: params[:project_id], end_date: @end_date
-        )
-      end
+      return project_fiscals_from_sub_project if @project.is_sub?
+
+      project_fiscals_from_not_sub_project
+    end
+
+    def project_fiscals_from_sub_project
+      ProjectFiscal.where(
+        'project_id = :project_id AND begin_date >= :begin_date AND end_date <= :end_date',
+        project_id: params[:project_id], begin_date: @begin_date, end_date: @end_date
+      )
+    end
+
+    def project_fiscals_from_not_sub_project
+      last_end_date = ProjectFiscal.where(project_id: params[:project_id]).last&.end_date
+      return if last_end_date.try(:year).nil? || last_end_date.try(:year) < params[:fiscal_year].to_i
+
+      ProjectFiscal.where(
+        'project_id = :project_id AND end_date <= :end_date', project_id: params[:project_id], end_date: @end_date
+      )
     end
   end
 end
