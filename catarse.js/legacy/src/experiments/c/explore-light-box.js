@@ -46,10 +46,16 @@ export class ExploreLightBox {
                     mode: 'covid_19',
                 }
             },
+            {
+                name: 'Em breve no Catarse',
+                query: {
+                    filter: 'coming_soon_landing_page',
+                }
+            },
             userVM.isLoggedIn ? {
                 name: 'Projetos Salvos',
                 query: {
-                    filter: 'saved_projects',
+                    filter: 'active_saved_projects',
                 }
             } : null,
             userVM.isLoggedIn ? {
@@ -80,7 +86,7 @@ export class ExploreLightBox {
         };
 
         /**
-         * @param {{name: string, keyName: string}} filter 
+         * @param {{name: string, keyName: string}} filter
          * @returns {ListItem}
          */
         const mapFiltersToItems = (filter) => {
@@ -103,7 +109,7 @@ export class ExploreLightBox {
             };
         };
 
-        return m('div.explore-lightbox', 
+        return m('div.explore-lightbox',
             m('div.explore-lightbox-container.w-clearfix', [
                 m('a.modal-close-container.fa.fa-2x.fa-close.w-inline-block[href="#"]', { onclick: closePreventRedirect }),
 
@@ -137,7 +143,7 @@ class ExploreLightBoxList {
      */
 
     /**
-     * @param {{ attrs: Attrs }} vnode 
+     * @param {{ attrs: Attrs }} vnode
      */
     view({attrs}) {
 
@@ -147,7 +153,7 @@ class ExploreLightBoxList {
         const onSelect = attrs.onSelect;
 
         return m('div.u-marginbottom-30', [
-            m('div.u-margintop-30', 
+            m('div.u-margintop-30',
                 m('div.fontsize-base.fontcolor-terciary', title)
             ),
             items.map(item => {
@@ -165,16 +171,16 @@ class ExploreLightBoxList {
 }
 
 class ExploreLightBoxListItem {
-    
+
     /**
      * @typedef Attrs
-     * @property {() => void} onSelect 
+     * @property {() => void} onSelect
      * @property {string} url
      * @property {string} label
      */
 
     /**
-     * @param {{ attrs: Attrs }} vnode 
+     * @param {{ attrs: Attrs }} vnode
      */
     view({attrs}) {
         const label = attrs.label;

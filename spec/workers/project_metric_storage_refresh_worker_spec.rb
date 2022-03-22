@@ -15,24 +15,54 @@ RSpec.describe ProjectMetricStorageRefreshWorker do
 
   context 'when project is in draft' do
     let(:project) { create(:project, state: 'draft') }
+
     before do
       expect(Project).to receive(:find).with(project.id).and_return(project)
       expect(project).not_to receive(:refresh_project_metric_storage)
     end
-    it 'should not call refresh function' do
-      ProjectMetricStorageRefreshWorker.perform_async(project.id)
+
+    it 'does not call refresh function' do
+      described_class.perform_async(project.id)
+    end
+  end
+
+  context 'when project is in draft and has comming soon landing page' do
+    let(:project) { create(:project, state: 'draft') }
+
+    before do
+      create(:coming_soon_integration, { project: project })
+      expect(Project).to receive(:find).with(project.id).and_return(project)
+      expect(project).to receive(:refresh_project_metric_storage)
+    end
+
+    it 'calls refresh_project_metric_storage' do
+      described_class.perform_async(project.id)
+    end
+  end
+
+  context 'when project is in deleted' do
+    let(:project) { create(:project, state: 'deleted') }
+
+    before do
+      expect(Project).to receive(:find).with(project.id).and_return(project)
+      expect(project).not_to receive(:refresh_project_metric_storage)
+    end
+
+    it 'does not call refresh function' do
+      described_class.perform_async(project.id)
     end
   end
 
   context 'when project can be processed' do
     let(:project) { create(:subscription_project, state: 'online') }
+
     before do
       expect(Project).to receive(:find).with(project.id).and_return(project)
       expect(project).to receive(:refresh_project_metric_storage)
     end
 
-    it 'should call refresh_project_metric_storage' do
-      ProjectMetricStorageRefreshWorker.perform_async(project.id)
+    it 'calls refresh_project_metric_storage' do
+      described_class.perform_async(project.id)
     end
   end
 end

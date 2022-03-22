@@ -24,7 +24,7 @@ const projectsDisplay = {
             sample3 = _.partial(_.sample, _, 3),
             loader = catarse.loaderWithToken,
             project = models.project,
-            subHomeWith6CollectionsFilters = ['projects_we_love_not_sub', 'sub', 'covid_19', 'contributed_by_friends'],
+            subHomeWith6CollectionsFilters = ['projects_we_love_not_sub', 'sub', 'covid_19', 'contributed_by_friends', 'coming_soon_landing_page'],
             windowEventNOTDispatched = true;
 
         project.pageSize(20);
@@ -52,7 +52,7 @@ const projectsDisplay = {
                 .then(() => m.redraw());
 
             const query = f.query || {};
-            
+
             if (!f.query) {
                 if (f.mode) {
                     query.mode = f.mode;
