@@ -100,6 +100,6 @@ class CreateProjectFiscalToProjectFlexAndAonAction
   end
 
   def end_date
-    Time.zone.now.end_of_month
+    @project.successful_at || Time.zone.now.end_of_month
   end
 end

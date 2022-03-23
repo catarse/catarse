@@ -76,7 +76,7 @@ table style="border: 1px solid;width:100%;border-collapse: collapse;"
     td style="border: 1px solid;text-align:left;vertical-align: middle;white-space: nowrap;"
       span Taxa Líquida Catarse (-)
     td style="border: 1px solid;text-align:center;vertical-align: middle;white-space: nowrap;"
-      span #{project_fiscals.sum { |pf| -pf.total_catarse_fee - pf.total_gateway_fee - pf.total_antifraud_fee }.format}
+      span #{project_fiscals.sum { |pf| pf.total_catarse_fee - pf.total_gateway_fee - pf.total_antifraud_fee }.format}
   - unless total_irrf.positive?
     tr
       td style="border: 1px solid;text-align:left;vertical-align: middle;white-space: nowrap;"
