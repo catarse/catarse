@@ -175,13 +175,13 @@ const projectInsightsSub = {
                         ]),
                         m('.card.card-terciary.flex-column.u-marginbottom-10.u-radius', [
                             m('.fontsize-small.u-marginbottom-10',
-                                'Receita Mensal'
+                                'Arrecadação Mensal Potencial'
                             ),
                             m('.fontsize-largest.fontweight-semibold.u-marginbottom-10',
                                 `R$${h.formatNumber(subscribersDetails.amount_paid_for_valid_period, 2, 3)}`
                             ),
                             m('.fontsize-mini.fontcolor-secondary.lineheight-tighter',
-                                'Com base nas assinaturas ativas que você possui hoje (taxas já descontadas).'
+                                'Com base nas assinaturas ativas que você possui hoje (sem descontar taxas e sem considerar perdas com pagamentos que não serão bem-sucedidos).'
                             )
                         ]),
                         m('.card.flex-column.u-marginbottom-10.u-radius', [
@@ -209,7 +209,7 @@ const projectInsightsSub = {
                         m('.flex-row.u-marginbottom-40.u-text-center-small-only', [
                             m('.flex-column.card.u-radius.u-marginbottom-10', [
                                 m('div',
-                                    'Receita média por assinatura'
+                                    'Arrecadação média por assinatura'
                                 ),
                                 m('.fontsize-smallest.fontcolor-secondary.lineheight-tighter',
                                     `em ${moment().format('DD/MM/YYYY')}`
@@ -226,7 +226,7 @@ const projectInsightsSub = {
                                 oldCount: state.insightResumeDataLast2Week().subscriptions_count
                             }),
                             m(insightsInfoBox, {
-                                label: 'Nova receita',
+                                label: 'Nova arrecadação',
                                 info: `R$${h.formatNumber(totalAmountFromLastWeek, 2, 3)}`,
                                 newCount: totalAmountFromLastWeek,
                                 oldCount: totalAmountFromLast2Week
