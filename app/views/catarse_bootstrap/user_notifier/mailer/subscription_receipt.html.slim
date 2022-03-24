@@ -1,0 +1,78 @@
+- subscription_payment ||= @notification.subscription_payment
+- transaction = subscription_payment.gateway_cached_data["transaction"]
+- owner = subscription_payment.project.user
+- owner_name = owner.try(:name)
+- owner_document = owner.try(:cpf)
+
+table#bodyTable border="0" cellpadding="0" cellspacing="0" height="100%" width="100%"
+  tbody
+    tr
+      td align="center" valign="top"
+        table#emailContainer border="0" cellpadding="0" cellspacing="0"
+          tbody
+            tr
+              td align="center" valign="top"
+                table#emailHeader border="0" cellpadding="0" cellspacing="0" width="100%"
+                  tbody
+                    td align="center" valign="top"
+                      img src="https://daks2k3a4ib2z.cloudfront.net/5849f4f0a275a2a744efd93e/5a39380a6964a800012be94b_logo-ass-email.png" style=("margin: 45px 0 45px;") /
+            tr
+              td align="center" valign="top"
+                table#emailBody border="0" cellpadding="0" cellspacing="0" style=("background-color: #ffffff; border-radius: 10px; font-size: 16px; line-height: 24px;") width="100%"
+                  tbody
+                    tr
+                      td align="center" valign="top"
+                        p style=("font-size: 22px; font-weight: 500;") Seu apoio mensal para o projeto #{subscription_payment.project.name} foi confirmado com sucesso!
+                        p
+                          | Olá,
+            tr
+              td align="center" valign="top"
+                table#emailBody border="0" cellpadding="40" cellspacing="0" style=("background-color: #ffffff; border-radius: 10px; font-size: 16px; line-height: 24px; margin:30px 0 0px 0") width="100%"
+                  tbody
+                    tr
+                      td align="left" valign="top"
+                        p style=("text-align: center;")
+                          | Esse e-mail serve como um recibo definitivo do seu apoio este mês. Seguem todos os dados do pagamento:
+                        p style=("box-sizing: border-box; font-size: 14px; vertical-align: top; border-top-width: 1px; border-top-color: #eee; border-top-style: solid; margin: 0; padding: 5px 0;") valign="top"
+                          b Nome do apoiador:
+                          | #{subscription_payment.user.display_name}
+                        p style=("box-sizing: border-box; font-size: 14px; vertical-align: top; border-top-width: 1px; border-top-color: #eee; border-top-style: solid; margin: 0; padding: 5px 0;") valign="top"
+                          b CPF/CNPJ do apoiador:
+                          | #{subscription_payment.user.cpf}
+                        p style=("box-sizing: border-box; font-size: 14px; vertical-align: top; border-top-width: 1px; border-top-color: #eee; border-top-style: solid; margin: 0; padding: 5px 0;") valign="top"
+                          b Data da confirmação do apoio:
+                          | #{I18n.l(transaction["date_created"].to_date)}
+                        p style=("box-sizing: border-box; font-size: 14px; vertical-align: top; border-top-width: 1px; border-top-color: #eee; border-top-style: solid; margin: 0; padding: 5px 0;") valign="top"
+                          b Valor da contribuição:
+                          | #{number_to_currency (transaction["amount"].to_i / 100.0), precision: 2}
+                        p style=("box-sizing: border-box; font-size: 14px; vertical-align: top; border-top-width: 1px; border-top-color: #eee; border-top-style: solid; margin: 0; padding: 5px 0;") valign="top"
+                          b ID do apoio:
+                          | #{transaction["id"]}
+                        p style=("box-sizing: border-box; font-size: 14px; vertical-align: top; border-top-width: 1px; border-top-color: #eee; border-top-style: solid; margin: 0; padding: 5px 0;") valign="top"
+                          b Nome/Razão Social do realizador:
+                          | #{owner_name}
+                        p style=("box-sizing: border-box; font-size: 14px; vertical-align: top; border-top-width: 1px; border-top-color: #eee; border-top-style: solid; margin: 0; padding: 5px 0;") valign="top"
+                          b CPF/CNPJ do realizador:
+                          | #{owner_document}
+            tr
+              td align="center" valign="top"
+                table#emailBody border="0" cellpadding="40" cellspacing="0" style=("background-color: #ffffff; border-radius: 10px; font-size: 16px; line-height: 24px; margin:30px 0 30px") width="100%"
+                  tbody
+                    tr
+                      td align="center" valign="top"
+                        p
+                          b Dúvidas?
+                        p
+                          | Em caso de dúvida sobre o projeto ou a recompensa selecionada entre em contato com
+                          a style=("padding-left: 0.5em;") href=("mailto:#{owner.email}") #{owner.public_name}.
+                          | Em caso de dúvidas sobre o Catarse ou problemas técnicos, entre em contato conosco respondendo a esta mensagem ou através do e-mail
+                          a style=("padding-left: 0.5em;") href=("mailto:assinaturas@catarse.me") assinaturas@catarse.me.
+                        span style=("padding-right:3px; padding-top: 3px; display:inline-block;")
+                          img src="https://daks2k3a4ib2z.cloudfront.net/573a70f6d5c3cb6532f8b1a7/5a34004e5aec59000163f9e5_heart-catarsr.png" style=("width: 15px;") /
+                        | Equipe do Catarse
+            tr
+              td align="center" valign="top"
+                table#emailFooter border="0" cellpadding="30" cellspacing="0" width="100%"
+                  tbody
+                    tr
+                      td align="center" valign="top"

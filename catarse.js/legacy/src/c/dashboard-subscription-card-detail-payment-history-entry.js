@@ -25,6 +25,8 @@ const dashboardSubscriptionCardDetailPaymentHistoryEntry = {
     view: function({state, attrs}) {
         const
             captalize = (str) => str.charAt(0).toUpperCase() + str.slice(1),
+            contributionScope = _.partial(h.i18nScope, 'users.contribution_row'),
+            paymentId = attrs.payment.id,
             paymentStatus = attrs.payment.status,
             paymentAmount = attrs.payment.amount,
             paymentMethod = attrs.payment ? attrs.payment.payment_method : '',
@@ -49,7 +51,13 @@ const dashboardSubscriptionCardDetailPaymentHistoryEntry = {
                     m(`span.fa.fa-circle${state.statusClass[paymentStatus]}`, m.trust('&nbsp;')),
                     `R$${paymentAmount / 100} ${paymentStatusText} - ${captalize(paymentMethodText)} ${paymentMethodEndText}`,
                     m.trust('&nbsp;&nbsp;&nbsp;&nbsp;'),
-                    m('span.fontcolor-secondary', `( ID ${gatewayId} ) `)
+                    m('span.fontcolor-secondary', `( ID ${gatewayId} ) `),
+                    ( paymentStatus == 'paid' ?
+                        (
+                            m.trust('&nbsp;&nbsp;&nbsp;&nbsp;'),
+                            m(`a.alt-link.u-margintop-10[href='/projects/subscriptions/receipt/${paymentId}'][target='__blank']`,
+                              `- ${window.I18n.t('show_receipt', contributionScope())}`
+                        )) : ''),
                     ]
 
                 )

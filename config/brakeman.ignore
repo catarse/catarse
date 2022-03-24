@@ -103,7 +103,7 @@
       "check_name": "SQL",
       "message": "Possible SQL injection",
       "file": "app/models/project.rb",
-      "line": 110,
+      "line": 111,
       "link": "https://brakemanscanner.org/docs/warning_types/sql_injection/",
       "code": "where(\"projects.#{column} between :start and :end\", :start => start_at, :end => end_at)",
       "render_path": null,
@@ -135,8 +135,28 @@
       "user_input": "params[:notification_type].camelize.singularize",
       "confidence": "High",
       "note": ""
+    },
+    {
+      "warning_type": "Unscoped Find",
+      "warning_code": 82,
+      "fingerprint": "fd610f2e5d42b68af4a9e7337423e0679a9c5e3c6177087d3e1b16d374de19e5",
+      "check_name": "UnscopedFind",
+      "message": "Unscoped call to `SubscriptionPayment#find`",
+      "file": "app/controllers/projects/subscriptions_controller.rb",
+      "line": 6,
+      "link": "https://brakemanscanner.org/docs/warning_types/unscoped_find/",
+      "code": "SubscriptionPayment.find(params[:payment_id])",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "Projects::SubscriptionsController",
+        "method": "receipt"
+      },
+      "user_input": "params[:payment_id]",
+      "confidence": "Weak",
+      "note": ""
     }
   ],
-  "updated": "2021-02-24 10:19:18 -0300",
-  "brakeman_version": "5.0.0"
+  "updated": "2022-02-16 08:01:41 -0300",
+  "brakeman_version": "5.1.2"
 }
