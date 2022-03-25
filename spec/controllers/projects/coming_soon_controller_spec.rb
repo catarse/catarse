@@ -44,9 +44,9 @@ RSpec.describe Projects::ComingSoonController, type: :controller do
       post :activate, params: { format: :json, id: project.id }
     end
 
-    it 'deactivates coming soon landing page and have 0 reminders' do
+    it 'deactivates coming soon landing page' do
       delete :deactivate, params: { format: :json, id: project.id }
-      expect(project.reminders.length).to eq(0)
+      expect(project.integrations.coming_soon.first.present?).to be false
     end
   end
 end

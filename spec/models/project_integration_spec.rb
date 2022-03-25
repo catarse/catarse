@@ -14,7 +14,6 @@ RSpec.describe ProjectIntegration, type: :model do
       project.notify_reminder_of_publish
 
       expect(project.notifications.length).to eq(reminders_count)
-      expect(project.reminders.length).to eq(0)
     end
   end
 

@@ -18,8 +18,6 @@ module Projects
     def deactivate
       authorize resource, policy_class: ProjectIntegrationPolicy
 
-      parent.reminders.destroy_all
-
       resource.destroy
 
       respond_to do |format|
