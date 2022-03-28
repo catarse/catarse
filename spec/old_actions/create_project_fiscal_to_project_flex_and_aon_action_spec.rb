@@ -23,24 +23,24 @@ RSpec.describe CreateProjectFiscalToProjectFlexAndAonAction, type: :action do
         contribution[1].payments.last,
         contribution[2].payments.last,
         create(:payment, state: 'chargeback', contribution: contribution[3], value: value,
-          created_at: Time.zone.now - 1.month
+          created_at: 1.month.ago
         )
       ]
     end
 
     let!(:antifraud) do
       [
-        create(:antifraud_analysis, payment: payment[0], created_at: Time.zone.now - 1.month),
-        create(:antifraud_analysis, payment: payment[1], created_at: Time.zone.now - 1.month),
-        create(:antifraud_analysis, payment: payment[2], created_at: Time.zone.now - 2.months),
-        create(:antifraud_analysis, payment: payment[3], created_at: Time.zone.now - 1.month)
+        create(:antifraud_analysis, payment: payment[0], created_at: 1.month.ago),
+        create(:antifraud_analysis, payment: payment[1], created_at: 1.month.ago),
+        create(:antifraud_analysis, payment: payment[2], created_at: 2.months.ago),
+        create(:antifraud_analysis, payment: payment[3], created_at: 1.month.ago)
       ]
     end
 
     before do
-      payment[0].update(created_at: Time.zone.now - 1.month)
-      payment[1].update(created_at: Time.zone.now - 1.month)
-      payment[2].update(created_at: Time.zone.now - 2.months)
+      payment[0].update(created_at: 1.month.ago)
+      payment[1].update(created_at: 1.month.ago)
+      payment[2].update(created_at: 2.months.ago)
       contribution[0].user.update(account_type: 'pf')
       contribution[1].user.update(account_type: 'pj')
       contribution[2].user.update(account_type: 'pf')
@@ -80,6 +80,23 @@ RSpec.describe CreateProjectFiscalToProjectFlexAndAonAction, type: :action do
           'total_antifraud_fee_cents' => (antifraud[0].cost + antifraud[1].cost).to_i * 100,
           'total_chargeback_cost_cents' => (payment[2].gateway_fee + antifraud[2].cost).to_i * 100
         )
+      end
+    end
+
+    context 'when project_fiscal generate invoice' do
+      before do
+        CatarseSettings[:enotes_initial_cut_off_date] = '01-01-2020'
+        allow_any_instance_of(ENotas::Client).to receive(:create_nfe).and_return({ 'id' => '1' }) # rubocop:disable RSpec/AnyInstance
+      end
+
+      it 'capture invoice generation' do
+        expect(ENotas::Client.new.create_nfe('invoice')).to eq({ 'id' => '1' })
+
+        result
+      end
+
+      it 'updates metadata' do
+        expect(result.metadata).to eq({ 'id' => '1' })
       end
     end
   end

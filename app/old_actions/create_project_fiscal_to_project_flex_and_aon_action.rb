@@ -11,6 +11,11 @@ class CreateProjectFiscalToProjectFlexAndAonAction
     @project_data = new_project_data
     if @project_data.total_amount_to_pf_cents.positive? || @project_data.total_amount_to_pj_cents.positive?
       @project_data.save!
+      cut_off_date = CatarseSettings[:enotes_initial_cut_off_date]
+      if cut_off_date && @project_data.end_date >= cut_off_date.to_date
+        metadata = ENotas::Client.new.create_nfe(ENotas::ParamsBuilders::Order.new(@project_data).build)
+        @project_data.update(metadata: metadata)
+      end
       @project_data
     end
   rescue StandardError => e
