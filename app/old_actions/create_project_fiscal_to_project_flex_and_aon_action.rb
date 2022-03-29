@@ -100,8 +100,13 @@ class CreateProjectFiscalToProjectFlexAndAonAction
 
   def begin_date
     ProjectFiscal.where(project_id: @project.id)&.last&.created_at ||
-      Payment.joins(:contribution).where(contribution: { project_id: @project.id }, state: 'paid')
-        .order(:created_at).first.created_at.beginning_of_month
+      begin_date_from_payment ||
+      @project.online_at.beginning_of_month
+  end
+
+  def begin_date_from_payment
+    Payment.joins(:contribution).where(contribution: { project_id: @project.id }, state: 'paid')
+      .order(:created_at).first&.created_at&.beginning_of_month
   end
 
   def end_date
