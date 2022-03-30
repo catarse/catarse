@@ -26,7 +26,7 @@ function _Button({
 
     return (
         <button
-            className={`btn-main btn-${variant} btn-${theme} btn-size-${size} text-style-button `}
+            className={`button-main button-${variant} button-${theme} button-size-${size} text-style-button `}
             {...rest}
         >
             <div>
