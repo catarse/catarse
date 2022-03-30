@@ -1,0 +1,113 @@
+@import '@/styles/GlobalStyles.scss';
+
+.banner {
+    display: flex;
+    flex-direction: row;
+    padding: 1rem;
+    width: 100%;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.banner-content {
+    display: flex;
+    padding: 1rem;
+    width: 100%;
+    border: solid 1px;
+    border-radius: 8px;
+    justify-content: space-between;
+
+    .banner-inner-content {
+        display: flex;
+        gap: .375rem;
+        width: 100%;
+        flex-direction: column;
+        padding: 0 1rem;
+
+        .banner-footer {
+            display: flex;
+            flex-direction: row;
+            padding-top: 1rem;
+            gap: .5rem;
+        }
+
+        p {
+            padding: 0;
+            margin: 0;
+        }
+    }
+
+    .banner-dismiss {
+        max-width: fit-content;
+
+        svg, svg > path {
+            cursor: pointer;
+            color: $color-icon-default;
+            margin: 0;
+        }
+    }
+}
+
+
+
+// ** BANNER TYPES
+
+.banner-default {
+    .banner-content {
+        border-color: $color-surface-neutral-default;
+        background-color: $color-surface-neutral-subdued;
+    }
+    .alert-icon {
+        svg > path {
+            fill: $color-icon-default;
+        }
+    }
+}
+
+.banner-success {
+    .banner-content {
+        border-color: $color-surface-success-default;
+        background-color: $color-surface-success-subdued;
+    }
+    .alert-icon {
+        svg > path {
+            fill: $color-icon-success;
+        }
+    }
+}
+
+.banner-critical {
+    .banner-content {
+        border-color: $color-surface-critical-default ;
+        background-color: $color-surface-critical-subdued;
+    }
+    .alert-icon {
+        svg > path {
+            fill: $color-icon-critical;
+        }
+    }
+}
+
+.banner-informational {
+    .banner-content {
+        border-color: $color-surface-highlight-default;
+        background-color: $color-surface-highlight-subdued;
+    }
+    .alert-icon {
+        svg > path {
+            fill: $color-icon-highlight;
+        }
+    }
+}
+
+.banner-warning {
+    .banner-content {
+        border-color: $color-surface-warning-default;
+        background-color: $color-surface-warning-subdued;
+    }
+    .alert-icon {
+        svg > path {
+            fill: $color-icon-warning;
+        }
+    }
+}

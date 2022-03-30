@@ -5,6 +5,7 @@ import { UserBalanceWithdrawHistoryWithServices } from './user-balance-withdraw-
 import { UserDetails } from '@/entities'
 import { UserBalanceAmountWithServices } from './user-balance-amount'
 import { I18nText } from '@/shared/components/i18n-text'
+import { Banner } from '@/components/Molecule/Banner'
 
 export type UserBalanceProps = {
     user: UserDetails
@@ -32,9 +33,13 @@ function _IrrfRetentionMessage({user}: UserBalanceProps) {
     if (user.account_type === 'pj' || user.account_type === 'mei') {
         return (
             <div class="w-container">
-                <div class="card card-message u-radius fontsize-small">
-                    <I18nText scope="users.balance.withdraw_irrf_message_html" trust={true}/>
-                </div>
+                <Banner
+                    type='informational'
+                    content={<I18nText
+                                scope="users.balance.withdraw_irrf_message_html"
+                                trust={true}
+                            />}
+                />
             </div>
         )
     }
