@@ -33,7 +33,7 @@ class CreateProjectFiscalToProjectSubAction
       total_amount_to_pf_cents: total_amount_to_pf,
       total_amount_to_pj_cents: total_amount_to_pj,
       total_catarse_fee_cents: total_catarse_fee,
-      total_gateway_fee_cents: total_geteway_fee('paid'),
+      total_gateway_fee_cents: total_gateway_fee('paid'),
       total_antifraud_fee_cents: total_antifraud_fee('paid'),
       total_chargeback_cost_cents: total_chargeback_cost,
       total_irrf_cents: total_irrf,
@@ -43,61 +43,47 @@ class CreateProjectFiscalToProjectSubAction
   end
 
   def total_amount_to_pj
-    query = Payment.joins(contribution: :user).where(
-      contribution: { project_id: @project.id },
-      user: { account_type: %w[pj mei] }, state: 'paid'
-    )
-
-    time_interval(query, 'payments', 'paid').sum(:value) * 100
+    subscription_payments_in_time.joins(:user).where(user: { account_type: %w[pj mei] }).sum { |s| s.amount } * 100
   end
 
   def total_amount_to_pf
-    query = Payment.joins(contribution: :user).where(
-      contribution: { project_id: @project.id },
-      user: { account_type: 'pf' }, state: 'paid'
-    )
-
-    time_interval(query, 'payments', 'paid').sum(:value) * 100
+    subscription_payments_in_time.joins(:user).where(user: { account_type: %w[pf] }).sum { |s| s.amount } * 100
   end
 
   def total_irrf
     return 0 if total_catarse_fee > 666_660
 
-    query = Payment.joins(contribution: :user).where(
-      contribution: { project_id: @project.id },
-      user: { account_type: %w[pj mei] }, state: 'paid'
-    )
-
-    0.015 * (time_interval(query, 'payments', 'paid').sum(:value) * 100)
+    0.015 * total_amount_to_pj
   end
 
-  def total_catarse_fee
-    query = Payment.joins(:contribution).where(contribution: { project_id: @project.id }, state: 'paid')
+  def total_catarse_fee(state = 'paid')
+    sum_amount = subscription_payments_in_time(state).sum { |s| s.amount }
 
-    @project.service_fee * time_interval(query, 'payments', 'paid').sum(:value) * 100
+    (@project.service_fee * sum_amount) * 100
   end
 
-  def total_geteway_fee(state)
-    query = Payment.joins(:contribution).where(contribution: { project_id: @project.id }, state: state)
-
-    time_interval(query, 'payments', state).sum(:gateway_fee) * 100
+  def total_gateway_fee(state)
+    subscription_payments_in_time(state).sum { |s| s.gateway_fee } * 100
   end
 
   def total_antifraud_fee(state)
-    query = AntifraudAnalysis.joins(payment: :contribution)
-      .where(contribution: { project_id: @project.id }, payment: { state: state })
+    af_cost = subscription_payments_in_time(state).reduce(0) do |amount, item|
+      item.antifraud_analyses.each do |af|
+        amount += af.cost
+      end
 
-    time_interval(query, 'antifraud_analyses', state).sum('COALESCE(cost, 0)') * 100
+      amount
+    end
+
+    af_cost * 100
   end
 
   def total_chargeback_cost
-    total_antifraud_fee('chargeback') + total_geteway_fee('chargeback')
+    total_antifraud_fee('chargedback') + total_gateway_fee('chargedback')
   end
 
-  def time_interval(query, type_query, state)
-    return query.where(type_query => { created_at: begin_date..end_date, state: state }) if type_query == 'payments'
-
-    query.where(type_query => { created_at: begin_date..end_date }, payment: { state: state })
+  def subscription_payments_in_time(state = 'paid')
+    @project.subscription_payments.where(created_at: begin_date..end_date, status: state)
   end
 
   def begin_date
