@@ -20,10 +20,9 @@ development:
   <<: *default
   host: localhost
   port: 5432
-  database: catarse_development
-  username: postgres # <== Change me!!
-  password: password # <== Change me too!
-
+  database: catarse_db
+  username: catarse # <== Change me!!
+  password: example # <== Change me too!
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
@@ -47,7 +46,7 @@ development:
 test:
   <<: *default
   host: localhost
-  port: 5432
+  port: 5447
   database: catarse_test
   username: postgres
   password: example
