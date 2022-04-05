@@ -3,7 +3,7 @@
 
 // ** BUTTON MAIN
 
-.btn-main {
+.button-main {
     padding: 0 0.875rem;
     border-radius: 8px;
     width: auto;
@@ -23,15 +23,15 @@
 
 // ** BUTTON SIZES [SM, MD, LG]
 
-.btn-size-sm {
+.button-size-sm {
     height: 2.125rem;
 }
 
-.btn-size-md {
+.button-size-md {
     height: 2.5rem;
 }
 
-.btn-size-lg {
+.button-size-lg {
     padding: 0 1.625rem;
     height: 3rem;
 }
@@ -40,17 +40,17 @@
 
 // ** BUTTON VARIANT [CONTAINED, OUTLINE, TEXT]
 
-.btn-contained {
+.button-contained {
     border: none;
     color: $color-overlay !important;
 }
 
-.btn-outline {
+.button-outline {
     border: solid 1px;
     background-color: transparent !important;
 }
 
-.btn-text {
+.button-text {
     border: none;
     background-color: transparent !important;
 }
@@ -59,69 +59,69 @@
 
 // ** BUTTON STYLES [PRIMARY, SECONDARY, DANGER]
 
-.btn-primary {
+.button-primary {
     border-color: $color-action-primary-default;
     background-color: $color-action-primary-default;
     color: $color-action-primary-default;
 
-    &.btn-contained:hover {
+    &.button-contained:hover {
         background-color: $color-action-primary-hovered !important;
     }
 
-    &.btn-contained:active {
+    &.button-contained:active {
         background-color: $color-action-primary-pressed !important;
     }
 
-    &.btn-outline:hover, &.btn-text:hover {
+    &.button-outline:hover, &.button-text:hover {
         background-color:  $color-surface-success-subdued-hovered !important;
     }
 
-    &.btn-outline:active, &.btn-text:hover {
+    &.button-outline:active, &.button-text:hover {
         background-color: $color-surface-success-subdued-pressed !important;
     }
 
 }
 
-.btn-secondary {
+.button-secondary {
     border-color: $color-action-secondary-default;
     background-color: $color-action-secondary-default;
     color: $color-action-secondary-default;
 
-    &.btn-contained:hover {
+    &.button-contained:hover {
         background-color: $color-action-secondary-hovered !important;
     }
 
-    &.btn-contained:active {
+    &.button-contained:active {
         background-color: $color-action-secondary-pressed !important;
     }
 
-    &.btn-outline:hover, &.btn-text:hover {
+    &.button-outline:hover, &.button-text:hover {
         background-color:  $color-surface-base-hovered !important;
     }
 
-    &.btn-outline:active, &.btn-text:hover {
+    &.button-outline:active, &.button-text:hover {
         background-color: $color-surface-base-pressed !important;
     }
 }
 
-.btn-danger {
+.button-danger {
     border-color: $color-action-critical-default;
     background-color: $color-action-critical-default;
     color: $color-action-critical-default;
 
-    &.btn-contained:hover {
+    &.button-contained:hover {
         background-color: $color-action-critical-hovered !important;
     }
 
-    &.btn-contained:active {
+    &.button-contained:active {
         background-color: $color-action-critical-pressed !important;
     }
 
-    &.btn-outline:hover, &.btn-text:hover {
+    &.button-outline:hover, &.button-text:hover {
         background-color: $color-surface-critical-subdued-hovered !important;
     }
 
-    &.btn-outline:active, &.btn-text:hover {
+    &.button-outline:active, &.button-text:hover {
         background-color: $color-surface-critical-subdued-pressed !important;
     }
 }
