@@ -77,7 +77,16 @@ module CatarsePagarme
       gateway_id = self.payment.gateway_id
       return nil unless gateway_id.present?
 
-      @transaction ||= ::PagarMe::Transaction.find_by_id(gateway_id)
+      retries = 0
+      begin
+        @transaction ||= ::PagarMe::Transaction.find_by_id(gateway_id)
+      rescue PagarMe::NotFound => e
+        retries += 1
+        raise e if retries > 4
+        sleep 1
+        retry
+      end
+
       _transaction = @transaction.kind_of?(Array) ? @transaction.last : @transaction
 
       raise "transaction gateway not match #{_transaction.id} != #{gateway_id}" unless _transaction.id.to_s == gateway_id.to_s
