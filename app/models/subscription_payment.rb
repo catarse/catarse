@@ -13,6 +13,7 @@ class SubscriptionPayment < ApplicationRecord
   belongs_to :subscription
   has_many :balance_transactions, foreign_key: :subscription_payment_uuid
   has_many :subscription_payment_transitions, foreign_key: :catalog_payment_id
+  has_many :antifraud_analyses, class_name: 'SubscriptionAntifraudAnalysis', foreign_key: :catalog_payment_id
   validate :banned_user_validation
 
   def already_in_balance?
@@ -21,6 +22,17 @@ class SubscriptionPayment < ApplicationRecord
 
   def chargedback_on_balance?
     balance_transactions.where(event_name: 'subscription_payment_chargedback').exists?
+  end
+
+  def gateway_fee
+    return 0 unless gateway_general_data.present?
+    value = if gateway_general_data['gateway_payment_method'] == 'credit_card'
+      gateway_general_data['gateway_cost'].to_i + gateway_general_data['payable_total_fee'].to_i
+    else
+      gateway_general_data['payable_total_fee'].to_i || gateway_general_data['gateway_cost'].to_i
+    end
+
+    value / 100.0
   end
 
   def amount

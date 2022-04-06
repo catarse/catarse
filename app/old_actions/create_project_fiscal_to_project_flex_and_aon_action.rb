@@ -31,7 +31,7 @@ class CreateProjectFiscalToProjectFlexAndAonAction
       total_amount_to_pf_cents: total_amount_to_pf,
       total_amount_to_pj_cents: total_amount_to_pj,
       total_catarse_fee_cents: total_catarse_fee,
-      total_gateway_fee_cents: total_geteway_fee('paid'),
+      total_gateway_fee_cents: total_gateway_fee('paid'),
       total_antifraud_fee_cents: total_antifraud_fee('paid'),
       total_chargeback_cost_cents: total_chargeback_cost,
       total_irrf_cents: total_irrf,
@@ -75,7 +75,7 @@ class CreateProjectFiscalToProjectFlexAndAonAction
     @project.service_fee * time_interval(query, 'payments', 'paid').sum(:value) * 100
   end
 
-  def total_geteway_fee(state)
+  def total_gateway_fee(state)
     query = Payment.joins(:contribution).where(contribution: { project_id: @project.id }, state: state)
 
     time_interval(query, 'payments', state).sum(:gateway_fee) * 100
@@ -89,7 +89,7 @@ class CreateProjectFiscalToProjectFlexAndAonAction
   end
 
   def total_chargeback_cost
-    total_antifraud_fee('chargeback') + total_geteway_fee('chargeback')
+    total_antifraud_fee('chargeback') + total_gateway_fee('chargeback')
   end
 
   def time_interval(query, type_query, state)
