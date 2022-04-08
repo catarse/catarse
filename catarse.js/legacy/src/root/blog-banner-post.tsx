@@ -13,9 +13,6 @@ export default class BlogBannerPost implements m.Component {
                 <a href={href} class="link-hidden fontweight-semibold fontsize-base u-marginbottom-10" target="_blank">
                     {title}
                 </a>
-                <div class="fontsize-smaller fontcolor-secondary u-margintop-10">
-                    {summary}
-                </div>
             </div>
         )
     }
