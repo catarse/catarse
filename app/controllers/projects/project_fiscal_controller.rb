@@ -83,7 +83,7 @@ module Projects
 
     def project_fiscals_from_sub_project
       ProjectFiscal.where(
-        'project_id = :project_id AND begin_date >= :begin_date AND end_date <= :end_date',
+        'project_id = :project_id AND begin_date::date >= :begin_date AND end_date::date <= :end_date',
         project_id: params[:project_id], begin_date: @begin_date, end_date: @end_date
       )
     end
@@ -93,7 +93,7 @@ module Projects
       return if last_end_date.try(:year).nil? || last_end_date.try(:year) < params[:fiscal_year].to_i
 
       ProjectFiscal.where(
-        'project_id = :project_id AND end_date <= :end_date', project_id: params[:project_id], end_date: @end_date
+        'project_id = :project_id AND end_date::date <= :end_date', project_id: params[:project_id], end_date: @end_date
       )
     end
   end
