@@ -24,8 +24,8 @@ class CreateProjectFiscalToProjectFlexAndAonAction
 
   private
 
-  def new_project_data
-    ProjectFiscal.new(
+  def new_project_data_attributes
+    {
       user_id: @project.user_id,
       project_id: @project.id,
       total_amount_to_pf_cents: total_amount_to_pf,
@@ -36,8 +36,21 @@ class CreateProjectFiscalToProjectFlexAndAonAction
       total_chargeback_cost_cents: total_chargeback_cost,
       total_irrf_cents: total_irrf,
       begin_date: begin_date,
-      end_date: end_date
+      end_date: end_date,
+      created_at: DateTime.now,
+      updated_at: DateTime.now
+    }
+  end
+
+  def new_project_data
+    # rubocop:disable Rails/SkipsModelValidations
+    id = ProjectFiscal.upsert(
+      new_project_data_attributes,
+      returning: 'id',
+      unique_by: %w[project_id begin_date end_date]
     )
+    # rubocop:enable Rails/SkipsModelValidations
+    @project.project_fiscals.find id
   end
 
   def total_amount_to_pj
