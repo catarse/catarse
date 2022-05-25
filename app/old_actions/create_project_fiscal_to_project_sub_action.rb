@@ -26,8 +26,8 @@ class CreateProjectFiscalToProjectSubAction
 
   private
 
-  def new_project_data
-    ProjectFiscal.new(
+  def new_project_data_attributes
+    {
       user_id: @project.user_id,
       project_id: @project.id,
       total_amount_to_pf_cents: total_amount_to_pf,
@@ -39,7 +39,17 @@ class CreateProjectFiscalToProjectSubAction
       total_irrf_cents: total_irrf,
       begin_date: begin_date,
       end_date: end_date
-    )
+    }
+  end
+
+  def new_project_data
+    project_fiscal = ProjectFiscal.where(project_id: @project.id, begin_date: begin_date, end_date: end_date).first
+    if project_fiscal.present?
+      project_fiscal.update(new_project_data_attributes)
+      project_fiscal
+    else
+      ProjectFiscal.new(new_project_data_attributes)
+    end
   end
 
   def total_amount_to_pj
