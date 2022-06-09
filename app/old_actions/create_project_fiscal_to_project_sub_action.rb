@@ -45,13 +45,13 @@ class CreateProjectFiscalToProjectSubAction
 
   def new_project_data
     # rubocop:disable Rails/SkipsModelValidations
-    id = ProjectFiscal.upsert(
+    result = ProjectFiscal.upsert(
       new_project_data_attributes,
       returning: 'id',
       unique_by: %w[project_id begin_date end_date]
     )
     # rubocop:enable Rails/SkipsModelValidations
-    @project.project_fiscals.find id
+    @project.project_fiscals.find result.last&.dig('id')
   end
 
   def total_amount_to_pj
