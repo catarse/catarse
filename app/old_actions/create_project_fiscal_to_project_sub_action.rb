@@ -37,7 +37,9 @@ class CreateProjectFiscalToProjectSubAction
       total_chargeback_cost_cents: total_chargeback_cost,
       total_irrf_cents: total_irrf,
       begin_date: begin_date,
-      end_date: end_date
+      end_date: end_date,
+      created_at: DateTime.now,
+      updated_at: DateTime.now
     }
   end
 
