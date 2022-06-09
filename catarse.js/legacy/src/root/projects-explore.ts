@@ -177,10 +177,6 @@ const projectsExplore : m.Component<ProjectExploreAttrs, ProjectExploreState> = 
                 label: 'Assinaturas',
                 value: 'sub',
             },
-            {
-                label: 'Projetos COVID-19',
-                value: 'covid_19',
-            },
         ];
 
         return m('#explore', {

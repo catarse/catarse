@@ -41,12 +41,6 @@ export class ExploreLightBox {
                 }
             },
             {
-                name: 'Projetos COVID-19',
-                query: {
-                    mode: 'covid_19',
-                }
-            },
-            {
                 name: 'Em breve no Catarse',
                 query: {
                     filter: 'coming_soon_landing_page',
