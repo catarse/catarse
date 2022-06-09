@@ -26,7 +26,7 @@ interface Observer<T> {
 
 const projectFiltersVM = projectFilters();
 
-type Mode = 'all_modes' | 'sub' | 'not_sub' | 'covid_19';
+type Mode = 'all_modes' | 'sub' | 'not_sub' ;
 export type Category = {
     name: string;
     id: number;
