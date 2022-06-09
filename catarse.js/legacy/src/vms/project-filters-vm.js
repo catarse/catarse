@@ -4,9 +4,6 @@ import { catarse } from '../api';
 
 const projectFiltersVM = () => {
     const filtersVM = catarse.filtersVM,
-        covid19 = filtersVM({
-            integrations: 'like',
-        }).integrations('COVID-19'),
 
         all = filtersVM({
             state: 'eq'
@@ -97,18 +94,6 @@ const projectFiltersVM = () => {
                 nicename: 'Populares',
                 isContextual: false,
                 keyName: 'all'
-            },
-            covid_19: {
-                title: 'Projetos COVID-19',
-                filter: covid19,
-                mode: 'covid_19',
-                nicename: 'Projetos COVID-19',
-                isContextual: false,
-                keyName: 'covid_19',
-                query: {
-                    mode: 'covid_19',
-                    filter: 'all'
-                }
             },
             active_saved_projects: {
                 title: 'Projetos Salvos',
