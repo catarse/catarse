@@ -8,7 +8,7 @@ import { ComingSoonLandingPageExploreRemindButton } from '../root/projects/comin
 
 const I18nScope = _.partial(h.i18nScope, 'projects.card');
 const projectCard = {
-    oninit: function(vnode) {
+    oninit: function (vnode) {
         const project = vnode.attrs.project,
             progress = project.progress.toFixed(2),
             remainingTextObj = h.translatedTime(project.remaining_time),
@@ -86,7 +86,7 @@ const projectCard = {
             isFinished
         };
     },
-    view: function({state, attrs}) {
+    view: function ({ state, attrs }) {
         const project = attrs.project;
         const projectOwnerName = project.user ? (project.user.public_name || project.user.name) : (project.owner_public_name || project.owner_name);
 
@@ -115,7 +115,7 @@ const projectCard = {
                     }
                 }),
                 (
-                    project.recommended &&
+                    (project.state == 'online' && project.recommended) &&
                     m('div.loved-projects-container',
                         m(`a.loved-projects-badge[href="/${window.I18n.locale}/explore?filter=projects_we_love"]`, 'Projeto que amamos')
                     )
@@ -123,11 +123,11 @@ const projectCard = {
                 m(state.css().descriptionWrapper, [
                     m(state.css().description, [
                         m(state.css().title, [
-                            project.is_adult_content && [ m('span.badge', '+18'), m.trust('&nbsp;') ],
+                            project.is_adult_content && [m('span.badge', '+18'), m.trust('&nbsp;')],
                             m(`a.link-hidden[href="/${project.permalink}?ref=${attrs.ref}"]`, {
                                 onclick: projectVM.routeToProject(project, attrs.ref)
                             },
-                            project.project_name || project.name)
+                                project.project_name || project.name)
                         ]),
                         m(state.css().author, `${window.I18n.t('by', I18nScope())} ${projectOwnerName}`),
                         m(state.css().headline, [
@@ -136,13 +136,13 @@ const projectCard = {
                             }, project.headline)
                         ])
                     ]),
-                        project.state === 'draft' ?
+                    project.state === 'draft' ?
                         [
                             m(ComingSoonLandingPageExploreRemindButton, {
                                 project: project,
                                 isFollowing: project.in_reminder
                             })
-                        ]  :
+                        ] :
                         [
                             m(progressMeter, { progress: state.progress, project }),
                             m('.card-project-stats', [
@@ -158,20 +158,20 @@ const projectCard = {
                                 ])
                             ]),
                         ],
-                        m(state.css().city,
+                    m(state.css().city,
                         m('div', [
                             project.state != 'draft' ?
-                            m('div',
-                                m(`a.link-hidden-dark.fontsize-smallest.fontcolor-secondary[href="${projectLocalizationSearchUrl}"]`, {
-                                    onclick: (/** @type {Event} */ event) => {
-                                        event.preventDefault();
-                                        m.route.set(projectLocalizationSearchUrl);
-                                    }
-                                }, [
-                                    m('span.fa.fa-map-marker.fa-sm', ' '),
-                                    ` ${projectLocalizationName}`
-                                ])
-                            ) :  m('br'),
+                                m('div',
+                                    m(`a.link-hidden-dark.fontsize-smallest.fontcolor-secondary[href="${projectLocalizationSearchUrl}"]`, {
+                                        onclick: (/** @type {Event} */ event) => {
+                                            event.preventDefault();
+                                            m.route.set(projectLocalizationSearchUrl);
+                                        }
+                                    }, [
+                                        m('span.fa.fa-map-marker.fa-sm', ' '),
+                                        ` ${projectLocalizationName}`
+                                    ])
+                                ) : m('br'),
                             m('div',
                                 m(`a.link-hidden-dark.fontsize-smallest.fontcolor-secondary[href="${projectCategorySearchUrl}"]`, {
                                     onclick: (/** @type {Event} */ event) => {
@@ -187,10 +187,10 @@ const projectCard = {
                     ),
                 ]),
                 (attrs.showFriends && state.type === 'big' ?
-                 m('.w-col.w-col-4.w-col-medium-6', [m(projectFriends, { project })]) : '')
+                    m('.w-col.w-col-4.w-col-medium-6', [m(projectFriends, { project })]) : '')
             ]),
             (attrs.showFriends && state.type !== 'big' ?
-              m(projectFriends, { project }) : '')
+                m(projectFriends, { project }) : '')
         ]);
     }
 };

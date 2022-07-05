@@ -56,7 +56,7 @@ function _ProjectHighlight(props: ProjectHighlightProps) {
                     }
                     <CategoryTag project={Stream(project)} isDark={isSubscriptionMode} />
                     {
-                        project.recommended &&
+                        (project.state == 'online' && project.recommended) &&
                         <ProjectWeLovedTag project={Stream(project)} isDark={isSubscriptionMode} />
                     }
                 </div>
@@ -86,11 +86,11 @@ function _ProjectHighlight(props: ProjectHighlightProps) {
                             displayShareBox &&
                             <ProjectShareBox
                                 project={Stream(project)}
-                                displayShareBox={{toggle() { setDisplayShareBox(!displayShareBox) }}}
+                                displayShareBox={{ toggle() { setDisplayShareBox(!displayShareBox) } }}
                                 facebookUrl={facebookUrl}
                                 messengerUrl={messengerUrl}
                                 hideEmbed={hideEmbed}
-                                />
+                            />
                         }
                     </div>
                 </div>
