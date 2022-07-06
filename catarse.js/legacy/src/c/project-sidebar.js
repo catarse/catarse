@@ -19,7 +19,7 @@ import { comingSoonIntegration } from '../root/projects/edit/coming-soon/control
 const I18nScope = _.partial(h.i18nScope, 'projects.project_sidebar');
 
 const projectSidebar = {
-    oninit: function(vnode) {
+    oninit: function (vnode) {
         const project = vnode.attrs.project,
             animateProgress = localVnode => {
                 let animation,
@@ -69,7 +69,7 @@ const projectSidebar = {
             navigate
         };
     },
-    view: function({state, attrs}) {
+    view: function ({ state, attrs }) {
         // @TODO: remove all those things from the view
         const project = attrs.project,
             elapsed = project().elapsed_time,
@@ -185,7 +185,7 @@ const projectSidebar = {
             m('.project-share.w-hidden-main.w-hidden-medium', [
                 m(addressTag, { project, isDark: isSub }),
                 m(categoryTag, { project, isDark: isSub }),
-                project().recommended && m(ProjectWeLovedTag, { project, isDark: isSub }),
+                (project().state == 'online' && project().recommended) && m(ProjectWeLovedTag, { project, isDark: isSub }),
                 m('.u-marginbottom-30.u-text-center-small-only',
                     m(`button.btn.btn-inline.btn-medium.btn-terciary${projectVM.isSubscription(project) ? '.btn-terciary-negative' : ''}`, {
                         onclick: state.displayShareBox.toggle
