@@ -19,7 +19,7 @@ export class ExploreLightBox {
     /**
      * @param {{attrs: Attrs}} vnode
      */
-    view({attrs}) {
+    view({ attrs }) {
         const onClose = attrs.onClose;
         const categories = attrs.categories;
         const closePreventRedirect = (/** @type {Event} */ event) => {
@@ -29,7 +29,7 @@ export class ExploreLightBox {
 
         const filters = [
             {
-                name: 'Projetos que amamos',
+                name: 'Projetos de destaque',
                 query: {
                     filter: 'projects_we_love',
                 }
@@ -139,7 +139,7 @@ class ExploreLightBoxList {
     /**
      * @param {{ attrs: Attrs }} vnode
      */
-    view({attrs}) {
+    view({ attrs }) {
 
         const title = attrs.title;
         const items = attrs.items;
@@ -176,7 +176,7 @@ class ExploreLightBoxListItem {
     /**
      * @param {{ attrs: Attrs }} vnode
      */
-    view({attrs}) {
+    view({ attrs }) {
         const label = attrs.label;
         const url = attrs.url;
         const onSelect = attrs.onSelect;

@@ -42,7 +42,7 @@ const projectFiltersVM = () => {
         }).open_for_contributions('true'),
 
         active_saved_projects = filtersVM({
-          active_saved_projects: 'eq'
+            active_saved_projects: 'eq'
         }).active_saved_projects(true),
 
         contributed_by_friends = filtersVM({
@@ -72,18 +72,18 @@ const projectFiltersVM = () => {
 
         filters = {
             projects_we_love_not_sub: {
-                title: 'Projetos que amamos',
+                title: 'Projetos de destaque',
                 filter: projects_we_love_not_sub,
                 mode: 'not_sub',
-                nicename: 'Projetos que amamos',
+                nicename: 'Projetos de destaque',
                 isContextual: false,
                 keyName: 'projects_we_love',
                 header_badges: ['badge-aon-h-margin', 'badge-flex-h-margin']
             },
             projects_we_love: {
-                title: 'Projetos que amamos',
+                title: 'Projetos de destaque',
                 filter: projects_we_love,
-                nicename: 'Projetos que amamos',
+                nicename: 'Projetos de destaque',
                 isContextual: false,
                 keyName: 'projects_we_love',
                 header_badges: ['badge-aon-h-margin', 'badge-flex-h-margin']
@@ -191,10 +191,10 @@ const projectFiltersVM = () => {
         };
 
     const setContextFilters = (contextFilters) => {
-            _.map(contextFilters, filterKey => filters[filterKey].isContextual = true);
+        _.map(contextFilters, filterKey => filters[filterKey].isContextual = true);
 
-            return filters;
-        },
+        return filters;
+    },
         getContextFilters = () => _.filter(filters, filter => filter.isContextual),
         removeContextFilter = (filter) => {
             filters[filter.keyName].isContextual = false;
