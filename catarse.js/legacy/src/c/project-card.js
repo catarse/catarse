@@ -117,7 +117,7 @@ const projectCard = {
                 (
                     (project.state == 'online' && project.recommended) &&
                     m('div.loved-projects-container',
-                        m(`a.loved-projects-badge[href="/${window.I18n.locale}/explore?filter=projects_we_love"]`, 'Projeto que amamos')
+                        m(`a.loved-projects-badge[href="/${window.I18n.locale}/explore?filter=projects_we_love"]`, 'Projeto de destaque')
                     )
                 ),
                 m(state.css().descriptionWrapper, [

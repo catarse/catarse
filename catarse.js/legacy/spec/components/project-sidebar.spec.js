@@ -60,7 +60,7 @@ describe('ProjectSidebar', () => {
                 recommended: true
             });
 
-            expect(output.contains('Projeto que Amamos')).toBeTrue();
+            expect(output.contains('Projeto de destaque')).toBeTrue();
         });
 
         it('should show recommended tag darker', () => {
@@ -74,7 +74,7 @@ describe('ProjectSidebar', () => {
             });
 
             output.should.have.at.least(3, '.fontcolor-negative');
-            expect(output.contains('Projeto que Amamos')).toBeTrue();
+            expect(output.contains('Projeto de destaque')).toBeTrue();
         });
         describe('reminder', () => {
             it('should render reminder when project is open_for_contributions and user signed in and is in_reminder', () => {

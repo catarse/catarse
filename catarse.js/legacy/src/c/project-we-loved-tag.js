@@ -2,7 +2,7 @@ import m from 'mithril';
 import h from '../h';
 
 export const ProjectWeLovedTag = {
-    view({attrs}) {
+    view({ attrs }) {
         const project = attrs.project;
         const isDark = attrs.isDark;
         const filterSearchUrl = `/${window.I18n.locale}/explore?filter=projects_we_love`;
@@ -20,7 +20,7 @@ export const ProjectWeLovedTag = {
             }
         }, [
             m('img[src="https://uploads-ssl.webflow.com/5849f4f0a275a2a744efd93e/5e6ee98114890713cbd0c3d1_ctrse_heart_icon.png"][width="20"][alt=""]'),
-            m(`div.inline-block.link-hidden-light${isDark ? '.fontcolor-negative' : ''}`, 'Projeto que Amamos')
+            m(`div.inline-block.link-hidden-light${isDark ? '.fontcolor-negative' : ''}`, 'Projeto de destaque')
         ]);
     }
 }
