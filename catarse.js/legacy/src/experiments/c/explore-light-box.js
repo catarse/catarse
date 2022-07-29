@@ -29,7 +29,7 @@ export class ExploreLightBox {
 
         const filters = [
             {
-                name: 'Projetos de destaques',
+                name: 'Projetos de destaque',
                 query: {
                     filter: 'projects_we_love',
                 }

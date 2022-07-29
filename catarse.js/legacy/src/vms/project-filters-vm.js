@@ -72,18 +72,18 @@ const projectFiltersVM = () => {
 
         filters = {
             projects_we_love_not_sub: {
-                title: 'Projetos de destaques',
+                title: 'Projetos de destaque',
                 filter: projects_we_love_not_sub,
                 mode: 'not_sub',
-                nicename: 'Projetos de destaques',
+                nicename: 'Projetos de destaque',
                 isContextual: false,
                 keyName: 'projects_we_love',
                 header_badges: ['badge-aon-h-margin', 'badge-flex-h-margin']
             },
             projects_we_love: {
-                title: 'Projetos de destaques',
+                title: 'Projetos de destaque',
                 filter: projects_we_love,
-                nicename: 'Projetos de destaques',
+                nicename: 'Projetos de destaque',
                 isContextual: false,
                 keyName: 'projects_we_love',
                 header_badges: ['badge-aon-h-margin', 'badge-flex-h-margin']
