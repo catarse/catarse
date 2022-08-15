@@ -49,11 +49,11 @@ const projectSubscriptionReport = {
             isProjectDataLoaded = prop(false),
             isRewardsDataLoaded = prop(false),
             rewards = prop([]),
-            subscriptions = projectSubscriptionsListVM(),            
+            subscriptions = projectSubscriptionsListVM(),
             submit = () => {
                 // Set order by last paid on filters too
                 filterVM.order({ last_payment_data_created_at: 'desc' });
-                if (filterVM.reward_external_id() === 'null') {
+                if (filterVM.current_reward_external_id() === 'null') {
                     subscriptions.firstPage(filterVM.withNullParameters());
                 } else {
                     subscriptions.firstPage(filterVM.parameters());
@@ -121,8 +121,8 @@ const projectSubscriptionReport = {
                         { label: 'Recompensa' }
                     ],
                     onchange: submit,
-                    name: 'reward_external_id',
-                    vm: filterVM.reward_external_id,
+                    name: 'current_reward_external_id',
+                    vm: filterVM.current_reward_external_id,
                     wrapper_class: '.w-col.w-col-3',
                     options: []
                 }
@@ -265,17 +265,17 @@ const projectSubscriptionReport = {
             m.redraw();
         });
 
-        
+
 
         const isSendingReportDownloadRequest = prop(false);
 
         /**
-         * @param {string} reportTypes 
-         * @param {string} reportFileExtension 
+         * @param {string} reportTypes
+         * @param {string} reportFileExtension
          */
         const sendReportDownloadRequest = async (reportTypes, reportFileExtension) => {
             /**
-             * @param {boolean} done 
+             * @param {boolean} done
              */
             const updateLoader = (done) => {
                 isSendingReportDownloadRequest(!done);
@@ -288,7 +288,7 @@ const projectSubscriptionReport = {
 
                 try {
                     await createProjectReportExports(vnode.attrs.project_id, reportType, reportFileExtension);
-                } catch(e) {
+                } catch (e) {
                     console.log('Error on creating project report exports:', e);
                     updateLoader(true);
                     throw e;
@@ -342,26 +342,26 @@ const projectSubscriptionReport = {
             return m('div', [
                 [
                     shouldDisplaySelectReportsToExportModal &&
-                        m(modalBox, {
-                            hideCloseButton: true,
-                            displayModal: displayDownloadReportSelectionModal,
-                            content: [SelectSubscriptionReports, { 
-                                isSending: isSendingReportDownloadRequest,
-                                onClose: displayDownloadReportSelectionModal.toggle,
-                                onSend: sendReportDownloadRequest,
-                            }],
-                        }),
+                    m(modalBox, {
+                        hideCloseButton: true,
+                        displayModal: displayDownloadReportSelectionModal,
+                        content: [SelectSubscriptionReports, {
+                            isSending: isSendingReportDownloadRequest,
+                            onClose: displayDownloadReportSelectionModal.toggle,
+                            onSend: sendReportDownloadRequest,
+                        }],
+                    }),
 
                     shouldDisplayReportsExportingRedirectModal &&
-                        m(modalBox, {
-                            hideCloseButton: true,
-                            displayModal: displayDownloadReportSelectionModal,
-                            content: [RequestedSubscriptionReportsModal, { 
-                                projectUserEmail: projectUser().email,
-                                reportsExportingUrl: `/projects/${attrs.project_id}/subscriptions_report_download`,
-                                onClose: displayDownloadReportSelectionModal.toggle,
-                            }],
-                        })
+                    m(modalBox, {
+                        hideCloseButton: true,
+                        displayModal: displayDownloadReportSelectionModal,
+                        content: [RequestedSubscriptionReportsModal, {
+                            projectUserEmail: projectUser().email,
+                            reportsExportingUrl: `/projects/${attrs.project_id}/subscriptions_report_download`,
+                            onClose: displayDownloadReportSelectionModal.toggle,
+                        }],
+                    })
                 ],
                 m(projectDashboardMenu, {
                     project: prop(_.first(state.project()))
