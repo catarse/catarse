@@ -5,14 +5,15 @@ import models from '../models';
 const { replaceDiacritics } = window;
 
 const vm = commonPayment.filtersVM({
-        status: 'in',
-        search_index: 'plfts(portuguese)',
-        reward_external_id: 'eq',
-        payment_method: 'eq',
-        project_id: 'eq',
-        total_paid: 'between',
-        paid_count: 'between'
-    }),
+    status: 'in',
+    search_index: 'plfts(portuguese)',
+    reward_external_id: 'eq',
+    current_reward_external_id: 'eq',
+    payment_method: 'eq',
+    project_id: 'eq',
+    total_paid: 'between',
+    paid_count: 'between'
+}),
     paramToString = function (p) {
         return (p || '').toString().trim();
     };
@@ -35,7 +36,7 @@ vm.search_index.toFilter = function () {
 vm.getAllSubscriptions = (filterVM) => {
     models.userSubscription.pageSize(false);
     const allSubs = commonPayment.loaderWithToken(
-      models.userSubscription.getPageOptions(filterVM.parameters())).load();
+        models.userSubscription.getPageOptions(filterVM.parameters())).load();
     models.userSubscription.pageSize(9);
     return allSubs;
 };
@@ -43,6 +44,7 @@ vm.getAllSubscriptions = (filterVM) => {
 vm.withNullParameters = () => {
     const withNullVm = commonPayment.filtersVM({
         status: 'in',
+        reward_external_id: 'is',
         reward_external_id: 'is',
         search_index: 'plfts(portuguese)',
         payment_method: 'eq',
@@ -52,6 +54,7 @@ vm.withNullParameters = () => {
     withNullVm.order(vm.order());
     withNullVm.status(vm.status());
     withNullVm.reward_external_id(vm.reward_external_id());
+    withNullVm.current_reward_external_id(vm.reward_external_id())
     withNullVm.payment_method(vm.payment_method());
     withNullVm.search_index(vm.search_index());
     withNullVm.project_id(vm.project_id());
