@@ -1160,18 +1160,21 @@ a:hover {
 }
 
 .card-project-thumb {
-  height: 190px;
+  width: 100%;
+  aspect-ratio: 16 / 9;
   background-image: url('/assets/example-bg.png');
   background-position: 50% 50%;
   background-size: cover;
 }
 
 .card-project-thumb.big {
-  height: 395px;
+  width: 100%;
+  aspect-ratio: 16 / 9;
 }
 
 .card-project-thumb.medium {
-  height: 275px;
+  width: 100%;
+  aspect-ratio: 16 / 9;
 }
 
 .card-highlight {
@@ -2912,7 +2915,8 @@ a:hover {
 }
 
 .card-project-thumb-big {
-  height: 360px;
+  width: 100%;
+  aspect-ratio: 16 / 9;
   background-image: url('/assets/project_thumb_large_thumb.jpg');
   background-position: 50% 50%;
   background-size: cover;
@@ -3398,7 +3402,8 @@ a:hover {
 }
 
 .project-image {
-  height: 358px;
+  width: 100%;
+  aspect-ratio: 16 / 9;
   margin-bottom: 50px;
   background-image: url('/assets/thumb-projeto_1.png');
   background-position: 0px 50%;
@@ -5181,13 +5186,16 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
     height: 173px;
   }
   .card-project-thumb {
-    height: 129px;
+    width: 100%;
+    aspect-ratio: 16 / 9;
   }
   .card-project-thumb.big {
-    height: 255px;
+    width: 100%;
+    aspect-ratio: 16 / 9;
   }
   .card-project-thumb.medium {
-    height: 165px;
+    width: 100%;
+    aspect-ratio: 16 / 9;
   }
   .formwrapper {
     margin-bottom: 20px;
@@ -5448,7 +5456,8 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
     padding-top: 90px;
   }
   .project-image {
-    height: 271px;
+    width: 100%;
+    aspect-ratio: 16 / 9;
   }
   .modal-dialog-inner {
     width: 100%;
@@ -5797,14 +5806,17 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
     height: 9px;
   }
   .card-project-thumb {
-    height: 240px;
+    width: 100%;
+    aspect-ratio: 16 / 9;
     border-radius: 5px 0px 0px 5px;
   }
   .card-project-thumb.big {
-    height: 240px;
+    width: 100%;
+    aspect-ratio: 16 / 9;
   }
   .card-project-thumb.medium {
-    height: 240px;
+    width: 100%;
+    aspect-ratio: 16 / 9;
   }
   .card-infos-bottom-left {
     margin-right: 18%;
@@ -6189,7 +6201,8 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
     padding: 10px;
   }
   .project-image {
-    height: 318px;
+    width: 100%;
+    aspect-ratio: 16 / 9;
     margin-bottom: 40px;
   }
   .project-stats-inner {
@@ -6620,15 +6633,18 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
   }
   .card-project-thumb {
     display: block;
-    height: 170px;
+    width: 100%;
+    aspect-ratio: 16 / 9;
     float: none;
     border-radius: 5px 5px 0px 0px;
   }
   .card-project-thumb.big {
-    height: 170px;
+    width: 100%;
+    aspect-ratio: 16 / 9;
   }
   .card-project-thumb.medium {
-    height: 170px;
+    width: 100%;
+    aspect-ratio: 16 / 9;
   }
   .card-infos-bottom-left {
     margin-right: 16%;
@@ -6868,7 +6884,8 @@ html.w-mod-js *[data-ix="display-0-on-load"] {
     margin-bottom: 40px;
   }
   .project-image {
-    height: 178px;
+    width: 100%;
+    aspect-ratio: 16 / 9;
     margin-bottom: 20px;
   }
   .modal-dialog-inner {
