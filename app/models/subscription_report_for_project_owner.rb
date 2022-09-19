@@ -10,7 +10,7 @@ class SubscriptionReportForProjectOwner < ApplicationRecord
 
   def self.to_csv
     attributes = [
-      'Nome completo',	'Nome público', 'CPF', 'Email perfil Catarse',	'Valor do pagamento mensal',
+      'Nome completo',	'Nome público', 'CPF', 'Telefone', 'Email perfil Catarse',	'Valor do pagamento mensal',
       'Título da recompensa',	'Descrição da recompensa',	'Total pago até hoje', 'Status da Assinatura',
       'Meio de pagamento',	'Data de confirmação da última cobrança',	'Data de início da Assinatura',
       'Qtde. de pagamentos confirmados',	'ID do usuário', 'Anônimo', 'Rua', 'Número', 'Complemento', 'Bairro',
@@ -24,6 +24,7 @@ class SubscriptionReportForProjectOwner < ApplicationRecord
           sub.name,
           sub.public_name,
           sub.cpf,
+          sub.phone_number,
           sub.email,
           sub.amount,
           sub.title,
@@ -31,8 +32,8 @@ class SubscriptionReportForProjectOwner < ApplicationRecord
           sub.total_backed,
           I18n.t('projects.subscription_fields.status.' + sub.status),
           I18n.t('projects.subscription_fields.' + sub.payment_method),
-          sub.last_paid_at ? I18n.l(sub.last_paid_at.to_date) : '',
-          sub.started_at ? I18n.l(sub.started_at.to_date) : '',
+          sub.last_paid_at,
+          sub.started_at,
           I18n.t('datetime.distance_in_words.x_months', count: sub.payments_count),
           sub.user_id,
           sub.anonymous,

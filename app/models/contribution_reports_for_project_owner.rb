@@ -49,6 +49,7 @@ class ContributionReportsForProjectOwner < ApplicationRecord
     keys = I18n.t('contribution_report_to_project_owner').keys
     keys.delete :open_questions if remove_keys
     keys.delete :multiple_choice_questions if remove_keys
+    keys.delete :anonymous
     keys.each do |column|
       report_sql << "#{column} AS \"#{I18n.t("contribution_report_to_project_owner.#{column}")}\","
     end
