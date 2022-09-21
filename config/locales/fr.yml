@@ -40,6 +40,7 @@ fr:
     service_fee: 'Honoraires Catarse'
     user_name: 'Nom du bailleur'
     user_email: "Email de l'utilisateur Catarse"
+    phone_number: Phone
     payment_method: 'Méthode de paiement'
     address_street: 'Rue'
     address_complement: 'Complément'
@@ -919,4 +920,3 @@ fr:
     updates:
       subject: "If the league! Update of %{project_name} by %{project_owner}: %{update_title}"
       text: "%{update_title}<br />%{update_text}<br />Comments? Send it on in the project page: <a href='%{project_link}'>%{project_name}</a>."
-

@@ -81,10 +81,12 @@ en:
         all_tags: Admin Tags
         all_public_tags: Tags
         city: Project Location
-        more_links: Indicate links so people know more about your project and its
+        more_links:
+          Indicate links so people know more about your project and its
           trajectory.
         traffic_sources: How did you first meet Catarse?
-        first_contributions: Who are the first people you will ask to contribution your
+        first_contributions:
+          Who are the first people you will ask to contribution your
           project?
         budget: Project budget
         uploaded_image: Image of the project
@@ -105,10 +107,12 @@ en:
         all_tags: Admin Tags
         all_public_tags: Tags
         city: Project Location
-        more_links: Indicate links so people know more about your project and its
+        more_links:
+          Indicate links so people know more about your project and its
           trajectory.
         traffic_sources: How did you first meet Catarse?
-        first_contributions: Who are the first people you will ask to contribution your
+        first_contributions:
+          Who are the first people you will ask to contribution your
           project?
         budget: Project budget
         uploaded_image: Image of the project
@@ -279,7 +283,7 @@ en:
             uploaded_image:
               blank: Project image can not be empty
             name:
-              too_long: 'Project name is too long (max: 50 characters)'
+              too_long: "Project name is too long (max: 50 characters)"
               blank: Project name can not be empty
             permalink:
               blank: Project URL can not be empty
@@ -294,7 +298,8 @@ en:
             online_days:
               blank: The collection period can not be left blank
               greater_than: The deadline for collection must be greater than 2 days
-              less_than_or_equal_to: The collection deadline must be less than or
+              less_than_or_equal_to:
+                The collection deadline must be less than or
                 equal to 365 days for flex projects and less than or equal to 60 days
                 for all-or-none projects
               not_a_number: The deadline for collection must be a number of days
@@ -302,7 +307,8 @@ en:
               blank: Project description can not be left blank
             headline:
               blank: Design effect phrase can not be left blank
-              too_long: The effect phrase is too long. You can use a maximum of 100
+              too_long:
+                The effect phrase is too long. You can use a maximum of 100
                 characters.
         project:
           attributes:
@@ -319,7 +325,7 @@ en:
             uploaded_image:
               blank: Project image can not be empty
             name:
-              too_long: 'Project name is too long (max: 50 characters)'
+              too_long: "Project name is too long (max: 50 characters)"
               blank: Project name can not be empty
             permalink:
               blank: Project URL can not be empty
@@ -336,7 +342,8 @@ en:
             online_days:
               blank: The collection period can not be left blank
               greater_than: The deadline for collection must be greater than 2 days
-              less_than_or_equal_to: The deadline for collection must be less than
+              less_than_or_equal_to:
+                The deadline for collection must be less than
                 or equal to 60 days for all-or-none projects and less than or equal
                 to 365 days for flex projects
               not_a_number: The deadline for collection must be a number of days
@@ -344,7 +351,8 @@ en:
               blank: Project description can not be left blank
             headline:
               blank: Design effect phrase can not be left blank
-              too_long: The effect phrase is too long. You can use a maximum of 100
+              too_long:
+                The effect phrase is too long. You can use a maximum of 100
                 characters.
         user:
           attributes:
@@ -355,13 +363,15 @@ en:
               blank: Email can not be empty
             password:
               too_short: The password is too short. Minimum 6 characters.
-              confirmation: The password and the password confirmation you entered
+              confirmation:
+                The password and the password confirmation you entered
                 are not the same
               blank: Password can not be empty
             current_password:
               invalid: Current password is not valid
             reset_password_token:
-              invalid: Token has expired. Go to <a href="/password/new" class="alt-link">reset
+              invalid:
+                Token has expired. Go to <a href="/password/new" class="alt-link">reset
                 password</a> and ask to reset the password again.
             name:
               blank: Username can not be empty
@@ -395,13 +405,14 @@ en:
   project:
     update:
       success: Information was updated
-      failed: Your information has not been saved, please verify that all fields have
+      failed:
+        Your information has not been saved, please verify that all fields have
         been filled out correctly
     delete:
       posts: New successfully deleted
     video_regex_validation: only Youtube or Vimeo URLs are accepted
-    solidarity_service_fee: 'Taxes for projects %{solidarity_name} must be between %{min_service_fee}% and %{max_service_fee}%.'
-    solidarity_service_fee_failed: 'Taxes for solidarity projects can only be changed on official campaigns.'
+    solidarity_service_fee: "Taxes for projects %{solidarity_name} must be between %{min_service_fee}% and %{max_service_fee}%."
+    solidarity_service_fee_failed: "Taxes for solidarity projects can only be changed on official campaigns."
 
   payment:
     state:
@@ -477,7 +488,7 @@ en:
         chargeback: Answered
   contribution:
     payment_details:
-      desconhecido: ''
+      desconhecido: ""
       creditos: Credits
       boleto_bancario: Bank slip
       pix: Pix
@@ -489,9 +500,11 @@ en:
       financiamento_bancario: Financial Services
     project_should_be_online: You can not contribution a project that is not in the air.
     reward_must_be_from_project: must be from the same project
-    should_not_contribute_if_maximum_contributions_been_reached: has already reached
+    should_not_contribute_if_maximum_contributions_been_reached:
+      has already reached
       its maximum number of contributors
-    value_must_be_at_least_rewards_value: must be at least %{minimum_value} for the
+    value_must_be_at_least_rewards_value:
+      must be at least %{minimum_value} for the
       selected reward
   contribution_report_to_project_owner:
     reward_description: Reward Description
@@ -510,6 +523,7 @@ en:
     gateway: Means of payment
     anonymous: Anonymous
     address_type: Type of address
+    phone_number: Phone
     street: Street
     address_number: Number
     complement: Complement
