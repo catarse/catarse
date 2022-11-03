@@ -18,9 +18,11 @@ class RefreshSubscriptionRewardsMetricsTask
 
     loop do
       begin
-        SubscriptionPayment.where(sql_cond).pluck(:reward_id).uniq.each do |rid|
-          reward = Reward.find_by common_id: rid
-          reward.refresh_reward_metric_storage if reward.present?
+        ActiveRecord::Base.connection_pool.with_connection do
+          SubscriptionPayment.where(sql_cond).pluck(:reward_id).uniq.each do |rid|
+            reward = Reward.find_by common_id: rid
+            reward.refresh_reward_metric_storage if reward.present?
+          end
         end
       rescue StandardError => e
         Sentry.capture_exception(e, extra: { task: :refresh_subscription_reward_metrics })

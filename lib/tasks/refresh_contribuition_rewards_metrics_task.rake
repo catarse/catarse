@@ -18,9 +18,11 @@ class RefreshContributionRewardsMetricsTask
 
     loop do
       begin
-        Contribution.where(sql_cond).pluck(:reward_id).uniq.each do |rid|
-          reward = Reward.find rid
-          reward.refresh_reward_metric_storage
+        ActiveRecord::Base.connection_pool.with_connection do
+          Contribution.where(sql_cond).pluck(:reward_id).uniq.each do |rid|
+            reward = Reward.find rid
+            reward.refresh_reward_metric_storage
+          end
         end
       rescue StandardError => e
         Sentry.capture_exception(e, extra: { task: :refresh_contribution_reward_metrics })
