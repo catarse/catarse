@@ -18,10 +18,12 @@ class RefreshPaymentRewardsMetricsTask
 
     loop do
       begin
-        Payment.where(sql_cond).pluck(:contribution_id).uniq.each do |cid|
-          contribution = Contribution.find cid
-          if contribution.reward.present?
-            contribution.reward.refresh_reward_metric_storage
+        ActiveRecord::Base.connection_pool.with_connection do
+          Payment.where(sql_cond).pluck(:contribution_id).uniq.each do |cid|
+            contribution = Contribution.find cid
+            if contribution.reward.present?
+              contribution.reward.refresh_reward_metric_storage
+            end
           end
         end
       rescue StandardError => e
