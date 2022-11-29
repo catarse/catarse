@@ -45,7 +45,7 @@ vm.withNullParameters = () => {
     const withNullVm = commonPayment.filtersVM({
         status: 'in',
         reward_external_id: 'is',
-        reward_external_id: 'is',
+        current_reward_external_id: 'is',
         search_index: 'plfts(portuguese)',
         payment_method: 'eq',
         project_id: 'eq'
