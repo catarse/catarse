@@ -54,7 +54,7 @@ vm.withNullParameters = () => {
     withNullVm.order(vm.order());
     withNullVm.status(vm.status());
     withNullVm.reward_external_id(vm.reward_external_id());
-    withNullVm.current_reward_external_id(vm.reward_external_id())
+    withNullVm.current_reward_external_id(vm.current_reward_external_id())
     withNullVm.payment_method(vm.payment_method());
     withNullVm.search_index(vm.search_index());
     withNullVm.project_id(vm.project_id());
