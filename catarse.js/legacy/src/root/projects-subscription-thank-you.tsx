@@ -13,14 +13,14 @@ import { getUserDetailsWithUserId } from '../shared/services/user/get-updated-cu
 
 const I18nScope = _.partial(h.i18nScope, 'projects.contributions');
 const ProjectsSubscriptionThankYou = {
-    oninit: function(vnode) {
+    oninit: function (vnode) {
 
         const {
             ViewContentEvent,
             SubscribeEvent
         } = projectVM;
 
-        projectVM.sendPageViewForCurrentProject(vnode.attrs.project_id, [ ViewContentEvent(), SubscribeEvent() ]);
+        projectVM.sendPageViewForCurrentProject(vnode.attrs.project_id, [ViewContentEvent(), SubscribeEvent()]);
 
         const paymentMethod = m.route.param('payment_method');
         const paymentConfirmed = JSON.parse(m.route.param('payment_confirmed'));
@@ -62,7 +62,11 @@ const ProjectsSubscriptionThankYou = {
         const loadProjectAndItsUser = async () => {
             try {
                 const projectData = await projectVM.fetchProject(projectId, false)
-                project(projectData);
+                if (Array.isArray(projectData)) {
+                    project(projectData[0]);
+                } else {
+                    project(projectData);
+                }
                 const projectUserDetails = await getUserDetailsWithUserId(projectData.user.id)
                 projectUser(projectUserDetails)
                 return projectUser
@@ -86,7 +90,7 @@ const ProjectsSubscriptionThankYou = {
             isEdit
         };
     },
-    view: function({state, attrs}) {
+    view: function ({ state, attrs }) {
         const project = state.project();
         const user = getCurrentUserCached();
         const projectUser = state.projectUser();
@@ -106,11 +110,11 @@ const ProjectsSubscriptionThankYou = {
                                     m.trust(
                                         window.I18n.t(
                                             state.isEdit
-                                            ? 'thank_you.subscription_edit.thank_you'
-                                            : state.paymentMethod === 'credit_card'
-                                                ? 'thank_you.thank_you' : 'thank_you_slip.thank_you',
-                                    I18nScope()
-                                    ))
+                                                ? 'thank_you.subscription_edit.thank_you'
+                                                : state.paymentMethod === 'credit_card'
+                                                    ? 'thank_you.thank_you' : 'thank_you_slip.thank_you',
+                                            I18nScope()
+                                        ))
                                 ),
                                 m('.thanks-header-instructions-wrapper',
                                     m('.thanks-header-instructions',
@@ -118,12 +122,12 @@ const ProjectsSubscriptionThankYou = {
                                             m.trust(
                                                 window.I18n.t(
                                                     state.isEdit
-                                                    ? 'thank_you.subscription_edit.text_html'
-                                                    : state.paymentMethod === 'credit_card'
-                                                        ? 'thank_you.thank_you_text_html' : 'thank_you_slip.thank_you_text_html',
-                                            I18nScope({
-                                                email: user.email
-                                            })))
+                                                        ? 'thank_you.subscription_edit.text_html'
+                                                        : state.paymentMethod === 'credit_card'
+                                                            ? 'thank_you.thank_you_text_html' : 'thank_you_slip.thank_you_text_html',
+                                                    I18nScope({
+                                                        email: user.email
+                                                    })))
                                         )
                                     ),
                                     m('.fontsize-smallest.alt-link',
@@ -137,43 +141,43 @@ const ProjectsSubscriptionThankYou = {
                             ])
                         ]),
                         state.isEdit || state.paymentMethod === 'credit_card' ?
-                        m('.thanks-header-share',
-                            m('.divider.u-margintop-20.u-marginbottom-20'),
-                            m('.fontsize-smaller.fontweight-semibold.fontcolor-secondary.u-marginbottom-10.u-text-center.w-hidden-medium.w-hidden-small',
-                                'Que tal compartilhar o projeto?'
-                            ),
-                            (
-                                !h.isMobile() &&
-                                m('.w-row.w-hidden-medium.w-hidden-small.w-hidden-tiny', [
-                                    m('.u-marginbottom-10.w-col.w-col-4', m(facebookButton, {
-                                        class: 'thanks-margin',
-                                        url: `https://www.catarse.me/${project.permalink}?ref=ctrse_thankyou&utm_source=facebook.com&utm_medium=social&utm_campaign=project_share`,
-                                        medium: true
-                                    })),
-                                    m('.u-marginbottom-10.w-col.w-col-4', [
-                                        m('a.btn.btn-medium[data-action="share/whatsapp/share"]', {
-                                            href: whatsappShareLink
-                                        }, [m('span.fa.fa-whatsapp'), ' Whatsapp'])
-                                    ]),
-                                    m('.u-marginbottom-10.w-col.w-col-4',
-                                        m(`a.btn.btn-medium.btn-tweet[href="https://twitter.com/intent/tweet?text=Acabei%20de%20apoiar%20o%20projeto%20${encodeURIComponent(project.name)}%20https://www.catarse.me/${project.permalink}%3Fref%3Dtwitter%26utm_source%3Dtwitter.com%26utm_medium%3Dsocial%26utm_campaign%3Dproject_share"][target="_blank"]`, [
-                                        m('span.fa.fa-twitter'), ' Twitter'
-                                    ]))
+                            m('.thanks-header-share',
+                                m('.divider.u-margintop-20.u-marginbottom-20'),
+                                m('.fontsize-smaller.fontweight-semibold.fontcolor-secondary.u-marginbottom-10.u-text-center.w-hidden-medium.w-hidden-small',
+                                    'Que tal compartilhar o projeto?'
+                                ),
+                                (
+                                    !h.isMobile() &&
+                                    m('.w-row.w-hidden-medium.w-hidden-small.w-hidden-tiny', [
+                                        m('.u-marginbottom-10.w-col.w-col-4', m(facebookButton, {
+                                            class: 'thanks-margin',
+                                            url: `https://www.catarse.me/${project.permalink}?ref=ctrse_thankyou&utm_source=facebook.com&utm_medium=social&utm_campaign=project_share`,
+                                            medium: true
+                                        })),
+                                        m('.u-marginbottom-10.w-col.w-col-4', [
+                                            m('a.btn.btn-medium[data-action="share/whatsapp/share"]', {
+                                                href: whatsappShareLink
+                                            }, [m('span.fa.fa-whatsapp'), ' Whatsapp'])
+                                        ]),
+                                        m('.u-marginbottom-10.w-col.w-col-4',
+                                            m(`a.btn.btn-medium.btn-tweet[href="https://twitter.com/intent/tweet?text=Acabei%20de%20apoiar%20o%20projeto%20${encodeURIComponent(project.name)}%20https://www.catarse.me/${project.permalink}%3Fref%3Dtwitter%26utm_source%3Dtwitter.com%26utm_medium%3Dsocial%26utm_campaign%3Dproject_share"][target="_blank"]`, [
+                                                m('span.fa.fa-twitter'), ' Twitter'
+                                            ]))
+                                    ])
+                                ),
+                                m('.w-hidden-main.w-hidden-medium', [
+                                    m('.u-marginbottom-30.u-text-center-small-only', m('button.btn.btn-large.btn-terciary.u-marginbottom-40', {
+                                        onclick: state.displayShareBox.toggle
+                                    }, 'Compartilhe')),
+                                    state.displayShareBox() ? m(projectShareBox, {
+                                        project: prop({
+                                            permalink: project.permalink,
+                                            name: project.name
+                                        }),
+                                        displayShareBox: state.displayShareBox
+                                    }) : ''
                                 ])
-                            ),
-                            m('.w-hidden-main.w-hidden-medium', [
-                                m('.u-marginbottom-30.u-text-center-small-only', m('button.btn.btn-large.btn-terciary.u-marginbottom-40', {
-                                    onclick: state.displayShareBox.toggle
-                                }, 'Compartilhe')),
-                                state.displayShareBox() ? m(projectShareBox, {
-                                    project: prop({
-                                        permalink: project.permalink,
-                                        name: project.name
-                                    }),
-                                    displayShareBox: state.displayShareBox
-                                }) : ''
-                            ])
-                        ) : ''
+                            ) : ''
 
                     )
                 )
