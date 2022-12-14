@@ -4,7 +4,7 @@ PATH
     catarse_scripts (0.1.0)
       pagy
       rails (~> 6.1.0.rc1)
-      ransack
+      ransack (= 2.5.0)
       slim
 
 GEM
@@ -100,7 +100,7 @@ GEM
       activesupport (>= 4.2.0)
     i18n (1.8.10)
       concurrent-ruby (~> 1.0)
-    loofah (2.9.1)
+    loofah (2.19.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
@@ -108,17 +108,17 @@ GEM
     marcel (1.0.1)
     method_source (1.0.0)
     mini_mime (1.0.3)
-    mini_portile2 (2.5.1)
+    mini_portile2 (2.8.0)
     minitest (5.14.4)
     multipart-post (2.1.1)
     nio4r (2.5.7)
-    nokogiri (1.11.3)
-      mini_portile2 (~> 2.5.0)
+    nokogiri (1.13.10)
+      mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
     numerizer (0.1.1)
     pagy (4.1.0)
     pg (1.2.3)
-    racc (1.5.2)
+    racc (1.6.1)
     rack (2.2.3)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
@@ -153,7 +153,7 @@ GEM
       rake (>= 0.8.7)
       thor (~> 1.0)
     rake (13.0.3)
-    ransack (2.4.2)
+    ransack (2.5.0)
       activerecord (>= 5.2.4)
       activesupport (>= 5.2.4)
       i18n
