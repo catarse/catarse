@@ -35,7 +35,7 @@ class ContributionReportsForProjectOwner < ApplicationRecord
         if survey
           row += contribution.open_questions.map{ |attr| attr['answer'] } if contribution.open_questions
           row += contribution.multiple_choice_questions.map do |question|
-            question['question_choices'].find {|c| c['id'] == question['survey_question_choice_id']}.try(:[], 'option')
+            question['question_choices']&.find {|c| c['id'] == question['survey_question_choice_id']}.try(:[], 'option')
           end if contribution.multiple_choice_questions
         end
 
