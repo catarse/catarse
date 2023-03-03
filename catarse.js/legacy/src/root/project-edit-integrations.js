@@ -58,7 +58,7 @@ export class ProjectEditIntegrations {
 
             const response = shouldCreate ?
                 await projectVM.updateIntegration(projectId, integrationData)
-            :
+                :
                 await projectVM.createIntegration(projectId, integrationData);
 
             integrationData.id = response.integration_id;
@@ -75,7 +75,7 @@ export class ProjectEditIntegrations {
                 await requestForIntegration(FBPixelTracking);
 
                 showSuccess(true);
-            } catch(e) {
+            } catch (e) {
                 error(true);
                 showError(true);
             }
@@ -137,7 +137,7 @@ export class ProjectEditIntegrations {
                                             m('div.w-col.w-col-7',
                                                 m('div.w-row', [
                                                     m('div.text-field.prefix.no-hover.medium.prefix-permalink.w-col.w-col-2.w-col-tiny-2',
-                                                        m('div.fontcolor-secondary.u-text-center.fontsize-smallest', 'UA-')
+                                                        m('div.fontcolor-secondary.u-text-center.fontsize-smallest', 'G-')
                                                     ),
                                                     m('div.w-col.w-col-10.w-col-tiny-10',
                                                         m(`input${error() ? '.error' : ''}.text-field.postfix.positive.medium.w-input[type="text"][placeholder="1234567-1"][id="google-analytics-id"]`, {
@@ -151,11 +151,11 @@ export class ProjectEditIntegrations {
                                         m('div.u-marginbottom-20.card.card-terciary.medium.w-row', [
                                             m('div.w-col.w-col-5', [
                                                 m('label.fontweight-semibold.fontsize-base', 'Facebook Pixel'),
-                                                    m('label.field-label.fontsize-smallest.fontcolor-secondary', [
-                                                        'Envia informações dos visitantes de sua página para o seu Facebook Pixel ',
-                                                        m('a.alt-link[target="_blank"][href="https://suporte.catarse.me/hc/pt-br/articles/360040152071-Como-integrar-a-campanha-no-Catarse-com-os-an%C3%BAncios-do-Facebook-por-meio-do-Facebook-Pixel-"]', 'Saiba mais')
-                                                    ]),
-                                                    m('img[src="/assets/facebook-pixel-logotyp.png"][width="146"][alt=""]')
+                                                m('label.field-label.fontsize-smallest.fontcolor-secondary', [
+                                                    'Envia informações dos visitantes de sua página para o seu Facebook Pixel ',
+                                                    m('a.alt-link[target="_blank"][href="https://suporte.catarse.me/hc/pt-br/articles/360040152071-Como-integrar-a-campanha-no-Catarse-com-os-an%C3%BAncios-do-Facebook-por-meio-do-Facebook-Pixel-"]', 'Saiba mais')
+                                                ]),
+                                                m('img[src="/assets/facebook-pixel-logotyp.png"][width="146"][alt=""]')
                                             ]),
                                             m('div.w-col.w-col-7', [
                                                 m(`input${error() ? '.error' : ''}.text-field.medium.positive.w-input[type="text"][placeholder="123456789123456"][id="fb-pixel-id"]`, {
