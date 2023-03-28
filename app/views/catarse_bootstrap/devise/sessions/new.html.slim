@@ -8,16 +8,11 @@
         .u-marginbottom-30
           .fontweight-semibold.u-text-center.fontsize-large= t '.titles.header'
         .w-row
-          .w-col.w-col-6
+          .w-col.w-col-12
             .login-oauth
               = button_to user_google_oauth2_omniauth_authorize_path(locale: nil), class: 'btn btn-medium btn-google w-inline-block', :data_onsuccess => 'onSignIn'
                 img.google-icon[src="/assets/catarse_bootstrap/google-icon.png" loading="lazy"]
                 div = t('.form.inputs.google')
-          .w-col.w-col-6
-            .login-oauth
-              = button_to user_facebook_omniauth_authorize_path(locale: nil), class: 'btn btn-medium btn-fb'
-                span.fa.fa-facebook-f&nbsp;
-                text = t('.form.inputs.facebook')
         .separator
           .text.or= t('or')
         .w-form
